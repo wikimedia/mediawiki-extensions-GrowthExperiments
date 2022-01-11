@@ -50,8 +50,8 @@ StructuredTaskArticleTarget.prototype.updateToolbarSaveButtonState = function ()
  *
  * @abstract
  */
-StructuredTaskArticleTarget.prototype.beforeSurfaceReady = function () {
-	throw new Error( 'beforeSurfaceReady must be implemented by subclass' );
+StructuredTaskArticleTarget.prototype.beforeStructuredTaskSurfaceReady = function () {
+	throw new Error( 'beforeStructuredTaskSurfaceReady must be implemented by subclass' );
 };
 
 /**
@@ -59,8 +59,8 @@ StructuredTaskArticleTarget.prototype.beforeSurfaceReady = function () {
  *
  * @abstract
  */
-StructuredTaskArticleTarget.prototype.afterSurfaceReady = function () {
-	throw new Error( 'afterSurfaceReady must be implemented by subclass' );
+StructuredTaskArticleTarget.prototype.afterStructuredTaskSurfaceReady = function () {
+	throw new Error( 'afterStructuredTaskSurfaceReady must be implemented by subclass' );
 };
 
 /** @inheritDoc */
@@ -70,10 +70,10 @@ StructuredTaskArticleTarget.prototype.surfaceReady = function () {
 	// Remove any edit notices (T281960)
 	this.editNotices = [];
 
-	this.beforeSurfaceReady();
+	this.beforeStructuredTaskSurfaceReady();
 	this.constructor.parent.super.prototype.surfaceReady.apply( this, arguments );
 	this.updateHistory();
-	this.afterSurfaceReady();
+	this.afterStructuredTaskSurfaceReady();
 
 	// Save can be triggered from ToolbarDialog.
 	MachineSuggestionsMode.addSaveHook( this.surface );
