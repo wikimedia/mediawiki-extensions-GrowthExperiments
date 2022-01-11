@@ -532,7 +532,8 @@
 			],
 			"skinStyles": {
 				"minerva": [ "homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.minerva.less" ],
-				"vector": [ "homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.vector.less" ]
+				"vector": [ "homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.vector.less" ],
+				"vector-2022": [ "homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.vector.less" ]
 			},
 			"targets": [
 				"desktop",
