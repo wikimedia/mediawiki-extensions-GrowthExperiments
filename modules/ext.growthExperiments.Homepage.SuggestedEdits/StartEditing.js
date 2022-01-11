@@ -1,13 +1,13 @@
 ( function () {
-	var StartEditingDialog = require( './ext.growthExperiments.Homepage.StartEditingDialog.js' ),
+	var StartEditingDialog = require( './StartEditingDialog.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
-		TaskTypesAbFilter = require( './suggestededits/TaskTypesAbFilter.js' ),
+		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 		defaultTaskTypes = TaskTypesAbFilter.getDefaultTaskTypes(),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
-		GrowthTasksApi = require( './suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
+		GrowthTasksApi = require( './GrowthTasksApi.js' ),
 		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ),
 		// We pretend the module is activated on mobile for the purposes of the start editing
 		// dialog interactions
@@ -152,12 +152,20 @@
 		logger.log( 'suggested-edits', mode, 'se-cta-click', { trigger: 'impression' } );
 	}
 
-	// Try setup for desktop mode and server-side-rendered mobile mode
-	// See also the comment in ext.growthExperiments.Homepage.Mentorship/index.js.
-	// eslint-disable-next-line no-jquery/no-global-selector
-	setupCtaButton( $( '.growthexperiments-homepage-container' ) );
-	// eslint-disable-next-line no-jquery/no-global-selector
-	setupEmbeddedDialog( $( '.growthexperiments-homepage-container' ) );
+	/**
+	 * Set up info button tooltip for suggested edits and if applicable, initialize embedded topics
+	 * and task types filters dialog
+	 *
+	 * @param {jQuery} $container Container in which the module is initialized
+	 */
+	function initialize( $container ) {
+		// Try setup for desktop mode and server-side-rendered mobile mode
+		// See also the comment in ext.growthExperiments.Homepage.Mentorship/index.js.
+		setupCtaButton( $container );
+		if ( !isSuggestedEditsActivated ) {
+			setupEmbeddedDialog( $container );
+		}
+	}
 
 	/**
 	 * Allow activation from guided tour, welcome drawer, impact module CTA, etc.
@@ -185,5 +193,9 @@
 			launchCta( 'start-startediting', $content.data( 'mode' ), 'suggested-edits' );
 		} );
 	} );
+
+	module.exports = {
+		initialize: initialize
+	};
 
 }() );

@@ -18,7 +18,7 @@
 	 */
 	var configData = require( './data.json' ),
 		SuggestedEditsPanel = require( './HelpPanelProcessDialog.SuggestedEditsPanel.js' ),
-		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
+		TaskTypesAbFilter = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' ),
 		taskTypeData = TaskTypesAbFilter.getTaskTypes(),
 		linksConfig = configData.GEHelpPanelLinks,
 		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {

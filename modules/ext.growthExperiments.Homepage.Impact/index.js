@@ -76,7 +76,7 @@
 		};
 
 	// See comments in ext.growthExperiments.Homepage.Mentorship/index.js and
-	// homepage/ext.growthExperiments.Homepage.MobileOverlay.js
+	// ext.growthExperiments.Homepage.mobile/MobileOverlay.js
 	$( pageviewsIconSelector ).each( handler );
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
 		if ( moduleName === 'impact' ) {

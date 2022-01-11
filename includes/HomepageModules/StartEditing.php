@@ -55,7 +55,7 @@ class StartEditing extends BaseModule {
 	protected function getModules() {
 		return array_merge(
 			parent::getModules(),
-			[ 'ext.growthExperiments.Homepage.StartEditing' ]
+			[ 'ext.growthExperiments.Homepage.SuggestedEdits' ]
 		);
 	}
 

@@ -4,17 +4,17 @@
  * Displays a task card. Sort of a standalone module, but not formally defined as such, since
  * ResourceLoader module definitions are expensive. Instead, when including it into some module,
  * include the following files together:
- * - scripts: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js,
+ * - scripts: ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js,
  *   utils/ext.growthExperiments.IconUtils.js
- * - styles: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less
+ * - styles: ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.less
  * - messages: growthexperiments-homepage-suggestededits-pageviews
  * - dependencies: oojs-ui.styles.icons-media, ext.growthExperiments.icons
- * and use homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js to get the task
+ * and use ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js to get the task
  * parameter for the constructor, and the [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
  * callback to get the taskTypes parameter.
  */
 ( function () {
-	var IconUtils = require( '../../utils/ext.growthExperiments.IconUtils.js' );
+	var IconUtils = require( '../utils/ext.growthExperiments.IconUtils.js' );
 
 	/**
 	 * @class mw.libs.ge.SmallTaskCard

@@ -302,7 +302,7 @@ class TaskType implements JsonUnserializable {
 	/**
 	 * The quality gate data for this task type.
 	 *
-	 * @see QualityGateDecorator and modules/homepage/suggestededits/QualityGate.js
+	 * @see QualityGateDecorator and modules/ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js
 	 * @return string[] An array of quality gate names that will be applied for the task type.
 	 */
 	public function getQualityGateIds(): array {

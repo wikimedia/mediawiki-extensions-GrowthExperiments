@@ -357,7 +357,7 @@ class SpecialHomepage extends SpecialPage {
 
 		if ( $mode === IDashboardModule::RENDER_MOBILE_SUMMARY ) {
 			$out->addJsConfigVars( 'homepagemobile', true );
-			$out->addModules( 'ext.growthExperiments.Homepage.Mobile' );
+			$out->addModules( 'ext.growthExperiments.Homepage.mobile' );
 			$out->addHTML( Html::rawElement(
 				'div',
 				[ 'class' => 'growthexperiments-homepage-overlay-container' ],

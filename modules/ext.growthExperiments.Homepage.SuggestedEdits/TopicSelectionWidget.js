@@ -1,5 +1,5 @@
-var SuggestionWidget = require( './ext.growthExperiments.Homepage.SuggestionWidget.js' ),
-	SuggestionGroupWidget = require( './ext.growthExperiments.Homepage.SuggestionGroupWidget.js' ),
+var SuggestionWidget = require( './SuggestionWidget.js' ),
+	SuggestionGroupWidget = require( './SuggestionGroupWidget.js' ),
 	topicData = require( './Topics.json' ),
 	groupedTopics = ( function () {
 		var key, topic, grouped = {};

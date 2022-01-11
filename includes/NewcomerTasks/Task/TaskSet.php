@@ -190,7 +190,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 	 * An array of data to be used in controllers (for now, just client-side in QualityGate.js) for enforcing
 	 * quality gates.
 	 *
-	 * @see modules/homepage/suggestededits/QualityGate.js
+	 * @see modules/ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js
 	 * @return array Keys are task type IDs, values are arbitrary data to be used by controllers.
 	 */
 	public function getQualityGateConfig(): array {

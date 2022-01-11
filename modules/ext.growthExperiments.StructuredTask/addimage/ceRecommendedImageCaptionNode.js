@@ -1,5 +1,5 @@
 var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	taskTypes = require( '../../homepage/suggestededits/TaskTypes.json' ),
+	taskTypes = require( '../../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json' ),
 	MIN_CAPTION_LENGTH = taskTypes[ 'image-recommendation' ].minimumCaptionCharacterLength;
 
 /**

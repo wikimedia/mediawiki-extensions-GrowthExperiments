@@ -52,7 +52,7 @@
 					} );
 					// We need to embed the module name and mode so that we can access it
 					// on the mobile overlay info button, see setupCtaButton in
-					// ext.growthExperiments.Homepage.StartEditing.js
+					// ext.growthExperiments.Homepage.SuggestedEdits/StartEditing.js
 					infoButton.$element.data( 'module-name', options.moduleName );
 					infoButton.$element.data( 'mode', 'mobile-overlay' );
 					// HACK: make infusing this button (pretend to) work, even though

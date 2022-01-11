@@ -1,8 +1,8 @@
-var TopicSelectionWidget = require( './ext.growthExperiments.Homepage.TopicSelectionWidget.js' ),
+var TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
+	TaskTypeSelectionWidget = require( './TaskTypeSelectionWidget.js' ),
+	ArticleCountWidget = require( './ArticleCountWidget.js' ),
+	TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 	SwipePane = require( '../ui-components/SwipePane.js' ),
-	TaskTypeSelectionWidget = require( './suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js' ),
-	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
-	TaskTypesAbFilter = require( './suggestededits/TaskTypesAbFilter.js' ),
 	router = require( 'mediawiki.router' );
 
 /**
@@ -227,7 +227,8 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 			this.api.defaultTaskTypes;
 	this.articleCounter.setSearching();
 
-	/** Broadcast events so that in SuggestedEdits.js we can keep the unactivated/hidden
+	/**
+	 * Broadcast events so that in SuggestedEdits.js we can keep the unactivated/hidden
 	 * Suggested Edits module updated with the latest task type / topic state.
 	 *
 	 * @param {string[]} taskTypes List of active task type IDs in the task type selector
@@ -251,7 +252,7 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
 	var settings, logData,
 		dialog = this,
-		config = require( './suggestededits/config.json' );
+		config = require( './config.json' );
 
 	// Don't allow the dialog to be closed by the user in non-modal mode
 	if ( !this.getManager().modal && ( !action || action === 'close' || action === 'done' ) ) {
@@ -363,7 +364,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		imageUrl, generalImageUrl, $topicIntro, $topicMessage, $topicSelectorWrapper,
 		$topicDescription, descriptionImage,
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
-		config = require( './suggestededits/config.json' ),
+		config = require( './config.json' ),
 		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
 		responseMap = {
 			'add-image': {
@@ -612,7 +613,8 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 	if ( this.useTaskTypeSelector ) {
 		this.taskTypeSelector = new TaskTypeSelectionWidget( {
 			selectedTaskTypes: TaskTypesAbFilter.getDefaultTaskTypes(),
-			introLinks: require( './suggestededits/config.json' ).GEHomepageSuggestedEditsIntroLinks,
+			introLinks: require( './config.json' )
+				.GEHomepageSuggestedEditsIntroLinks,
 			classes: [ 'mw-ge-startediting-dialog-difficulty-taskTypeSelector' ]
 		} )
 			.connect( this, {
@@ -764,7 +766,7 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 			.addClass( 'activated' )
 			.removeClass( 'unactivated' )
 			.each( function ( i, module ) {
-				require( 'ext.growthExperiments.Homepage.Mobile' )
+				require( 'ext.growthExperiments.Homepage.mobile' )
 					.loadExtraDataForSuggestedEdits( module, true );
 			} );
 	}
