@@ -12,5 +12,6 @@
 	"apihelp-growthsetmentor-summary": "Sett brukerens fadder. Endringen blir logget offentlig.",
 	"apihelp-growthsetmentor-param-mentee": "Fadderbarnets brukernavn",
 	"apihelp-growthsetmentor-param-mentor": "Fadderens brukernavn",
-	"apihelp-growthsetmentor-param-reason": "Årsak for endringen"
+	"apihelp-growthsetmentor-param-reason": "Årsak for endringen",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Tittelen på artikkelen bildeforslagsoppgaven gjelder"
 }

@@ -410,5 +410,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Annet",
 	"growthexperiments-addimage-viewer-close-button": "Lukk",
 	"growthexperiments-newcomertasks-invalid-tasktype": "Ugyldig(e) oppgavetype(r): $1",
-	"growthexperiments-addimage-loading-title": "Laster bildeforhåndsvisning."
+	"growthexperiments-addimage-loading-title": "Laster bildeforhåndsvisning.",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Skjønner"
 }
