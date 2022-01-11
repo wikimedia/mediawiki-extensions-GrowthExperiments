@@ -142,6 +142,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "افزودن پیوند‌ها به افراد کمک می‌کند تا سریعتر یاد بگیرند.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|شما}} تصمیم خواهید گرفت که آیا کلمات یک مقاله {{SITENAME}} باید به مقاله‌های {{SITENAME}} دیگر پیوند داده شود یا خیر.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "ماه تنها <mark class=\"positive\">قمر طبیعی</mark> است که به دور <mark class=\"positive\">زمین</mark> <mark class=\"positive\">می‌چرخد</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "برای انجام این وظیفه نیاز به دانش خاصی دربارهٔ مقاله نیست.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "رهنمودها",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "\n* به مفهوم‌هایی که ممکن است مخاطب بخواهد دربارهٔ آن‌ها بیشتر باموزد، پیوند دهید.\n* مطمئن شوید که پیوند به مقالهٔ درست هدایت می‌شود.\n* به واژه‌های معمولی، سال‌ها یا تاریخ‌ها پیوند ندهید.\n* اگر از عمل درست مطمئن {{GENDER:$1|نیستید}}، از آن صرف نظر کنید.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "جملهٔ نمونه"
 }
