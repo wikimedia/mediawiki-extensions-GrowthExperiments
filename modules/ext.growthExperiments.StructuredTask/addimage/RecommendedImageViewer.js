@@ -45,7 +45,7 @@ RecommendedImageViewer.prototype.updateImage = function ( metadata ) {
 	// TODO: image caption as alt text?
 	var renderData = AddImageUtils.getImageRenderData( metadata, window );
 	this.$image.attr( { src: renderData.src } );
-	this.$image.css( 'max-width', renderData.maxWidth + 'px' );
+	this.$image.css( 'max-width', 'min(100%,' + renderData.maxWidth + 'px)' );
 };
 
 /** @inheritDoc **/
