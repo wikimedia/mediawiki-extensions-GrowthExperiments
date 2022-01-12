@@ -7,7 +7,7 @@
  * @class
  * @extends OO.ui.Widget
  * @constructor
- * @param {Object} config
+ * @param {Object} [config]
  */
 function ArticleCountWidget( config ) {
 	config = config || {};

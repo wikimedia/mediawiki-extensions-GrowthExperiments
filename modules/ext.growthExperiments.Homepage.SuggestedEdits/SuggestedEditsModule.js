@@ -167,8 +167,12 @@ SuggestedEditsModule.prototype.updateMobileSummarySmallTaskCard = function () {
 
 /**
  * User has clicked "Done" in the dialog after selecting filters.
+ *
+ * @param {jQuery.Deferred} [filtersDialogProcess] Promise from the filters ProcessDialog to
+ * resolve when the tasks are fetched or reject if the request failed. This is used to show the
+ * loading state in the filters dialog.
  */
-SuggestedEditsModule.prototype.filterSelection = function () {
+SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogProcess ) {
 	this.isFirstRender = true;
 	if ( !this.apiPromise ) {
 		this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery, {
@@ -177,7 +181,16 @@ SuggestedEditsModule.prototype.filterSelection = function () {
 	}
 	this.apiPromise.then( function () {
 		this.updateCardAndPreloadNext();
+		if ( filtersDialogProcess ) {
+			filtersDialogProcess.resolve();
+		}
 	}.bind( this ) );
+
+	if ( filtersDialogProcess ) {
+		this.apiPromise.fail( function () {
+			filtersDialogProcess.reject();
+		} );
+	}
 };
 
 /**

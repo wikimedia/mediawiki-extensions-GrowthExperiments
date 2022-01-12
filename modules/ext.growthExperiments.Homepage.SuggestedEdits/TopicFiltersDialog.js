@@ -1,35 +1,25 @@
 'use strict';
 
-var TopicFiltersDialog,
-	ArticleCountWidget = require( './ArticleCountWidget.js' ),
+var FiltersDialog = require( './FiltersDialog.js' ),
 	TopicSelectionWidget = require( './TopicSelectionWidget.js' );
 
 /**
  * Class for handling UI changes to topic filters.
  *
- * Emits the following OOJS events:
- * - search: when the filter selection changes. First argument is null (task types will be retrieved
- *   by the listener), and the second argument is the list of selected filters.
- * - done: when the dialog is closed (saved). First argument is null (task types will be retrieved
- *   by the listener), and the second argument is the list of selected filters.
- * On canceling the dialog, it will emit a search event with the original (pre-opening) filter list
- * if it differs from the filter list at closing, and the filter list at closing is not empty.
+ * @inheritDoc
  *
- * Expects updateMatchCount() to be called back with the number of matches after emitting
- * a search event.
- *
- * @class TopicFiltersDialog
- * @param {Object} config
- * @param {string[]} config.presets List of enabled topics. Will be updated on close.
+ * @class mw.libs.ge.TopicFiltersDialog
+ * @extends mw.libs.ge.FiltersDialog
  */
-TopicFiltersDialog = function ( config ) {
+function TopicFiltersDialog( config ) {
 	TopicFiltersDialog.super.call( this, config );
 	this.config = config;
 	this.updating = false;
 	this.performSearchUpdateActionsDebounced =
 		OO.ui.debounce( this.performSearchUpdateActions.bind( this ) );
-};
-OO.inheritClass( TopicFiltersDialog, OO.ui.ProcessDialog );
+}
+
+OO.inheritClass( TopicFiltersDialog, FiltersDialog );
 
 TopicFiltersDialog.static.name = 'topicfilters';
 TopicFiltersDialog.static.size = 'medium';
@@ -49,24 +39,16 @@ TopicFiltersDialog.static.actions = [
 	}
 ];
 
+/** @inheritDoc **/
 TopicFiltersDialog.prototype.initialize = function () {
 	TopicFiltersDialog.super.prototype.initialize.call( this );
 
-	this.content = new OO.ui.PanelLayout( {
-		padded: true,
-		expanded: false
-	} );
-	this.footerPanelLayout = new OO.ui.PanelLayout( {
-		padded: true,
-		expanded: false
-	} );
 	this.errorMessage = new OO.ui.MessageWidget( {
 		type: 'error',
 		inline: true,
 		classes: [ 'suggested-edits-filters-error' ],
 		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
 	} ).toggle( false );
-	this.articleCounter = new ArticleCountWidget();
 	this.footerPanelLayout
 		.toggle( false )
 		.$element.append( this.articleCounter.$element );
@@ -110,6 +92,8 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 /**
  * Toggle the suggestion widget status (checkbox and color) and also
  * expand the suggestion widget if enabled widgets exist below the fold.
+ *
+ * @override
  */
 TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 	// this.config.presets could be null ((e.g. user just initiated the module, see T238611#5800350)
@@ -125,6 +109,7 @@ TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 /**
  * Return an array of enabled topic types to use for searching.
  *
+ * @override
  * @return {Object[]}
  */
 TopicFiltersDialog.prototype.getEnabledFilters = function () {
@@ -144,14 +129,10 @@ TopicFiltersDialog.prototype.performSearchUpdateActions = function () {
 	}
 };
 
-TopicFiltersDialog.prototype.updateMatchCount = function ( count ) {
-	this.articleCounter.setCount( count );
-	this.footerPanelLayout.toggle( true );
-};
-
 /**
  * Set and save topic filter preferences for the user.
  *
+ * @override
  * @return {jQuery.Promise}
  */
 TopicFiltersDialog.prototype.savePreferences = function () {
@@ -171,23 +152,7 @@ TopicFiltersDialog.prototype.savePreferences = function () {
 	return new mw.Api().saveOption( prefName, prefValue );
 };
 
-TopicFiltersDialog.prototype.getActionProcess = function ( action ) {
-	return TopicFiltersDialog.super.prototype.getActionProcess.call( this, action )
-		.next( function () {
-			if ( action === 'close' ) {
-				this.savePreferences();
-				this.config.presets = this.getEnabledFilters();
-				this.emit( 'done', this.config.presets );
-				this.close( { action: 'done' } );
-			}
-			if ( action === 'cancel' ) {
-				this.updateFiltersFromState();
-				this.emit( 'cancel' );
-				this.close( { action: 'cancel' } );
-			}
-		}, this );
-};
-
+/** @inheritDoc **/
 TopicFiltersDialog.prototype.getSetupProcess = function ( data ) {
 	return TopicFiltersDialog.super.prototype.getSetupProcess.call( this, data )
 		.next( function () {

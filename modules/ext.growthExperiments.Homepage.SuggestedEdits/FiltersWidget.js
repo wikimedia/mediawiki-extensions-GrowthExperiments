@@ -5,6 +5,8 @@
 		topicData = require( './Topics.json' );
 
 	/**
+	 * @extends OO.ui.ButtonGroupWidget
+	 *
 	 * @param {Object} config Configuration options
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
 	 * @param {Array<string>|null} config.topicPresets List of IDs of enabled topic filters
@@ -35,9 +37,12 @@
 			this.topicFiltersDialog = new TopicFiltersDialog( {
 				presets: this.topicPresets
 			} ).connect( this, {
-				done: [ 'emit', 'done' ],
-				// forwards one argument, the list of enabled filters
-				search: [ 'emit', 'search' ],
+				done: function ( promise ) {
+					this.emit( 'done', promise );
+				},
+				search: function () {
+					this.emit( 'search' );
+				},
 				selectAll: function ( groupId ) {
 					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-select-all', {
 						isCta: false,
@@ -66,11 +71,11 @@
 		this.taskTypeFiltersDialog = new DifficultyFiltersDialog( {
 			presets: config.taskTypePresets
 		} ).connect( this, {
-			done: function () {
-				this.emit( 'done' );
+			done: function ( promise ) {
+				this.emit( 'done', promise );
 			},
-			search: function ( search ) {
-				this.emit( 'search', search );
+			search: function () {
+				this.emit( 'search' );
 			},
 			cancel: function () {
 				this.emit( 'cancel' );
