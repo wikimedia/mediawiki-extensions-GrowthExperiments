@@ -17,7 +17,7 @@
 	"growthexperiments-edit-config-pretext": "Ta strona umożliwia zmianę konfiguracji [[:mw:Special:MyLanguage/Growth|funkcji Growth (wspieranie nowicjuszy)]]. Spowoduje wykonanie edycji na stronie $1 w Twoim imieniu. Zmiany można zobaczyć w historii edycji tejże strony.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Ten formularz pozwala uprawnionym użytkownikom edytować konfigurację funkcji [[:mw:Special:MyLanguage/Growth|Growth]].",
 	"growthexperiments-edit-config-feedback-headline": "Czy masz jakieś pomysły lub pytania odnośnie tego formularza?",
-	"growthexperiments-edit-config-feedback-cta": "Wypowiedz sie",
+	"growthexperiments-edit-config-feedback-cta": "Wypowiedz się",
 	"growthexperiments-edit-config-error-invalid-title": "Strona konfiguracyjna nie została poprawnie ustawiona.",
 	"growthexperiments-edit-config-edit-summary": "Opis zmian",
 	"growthexperiments-edit-config-config-changed": "Konfiguracja została zmieniona. Być może będzie trzeba odczekać kilka minut na zastosowanie zmian.",

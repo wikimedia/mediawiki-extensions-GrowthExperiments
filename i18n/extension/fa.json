@@ -17,6 +17,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: آخرین بار در $2 توسط [[User:$1|$1]] به‌روز شده‌است.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: آخرین بار $1 توسط کاربری ناشناس به‌روز شده‌است.",
 	"growthexperiments-edit-config-pretext": "این صفحه به شما این امکان را می‌دهد که تنظیمات ویژگی‌های تیم [[:mw:Special:MyLanguage/Growth|رشد]] را ویرایش کنید. با این عمل، $1 به نمایندگی از شما ویرایش خواهد شد. می‌توانید تغییرات خود را در تاریخچهٔ آن صفحه مشاهده کنید.",
+	"growthexperiments-edit-config-pretext-unprivileged": "این فرم به کاربران دسترسی‌دار این امکان را می‌دهد تا پیکربندی ویژگی‌های تیم [[:mw:Special:MyLanguage/Growth|رشد]] را ویرایش کنند.",
 	"growthexperiments-edit-config-feedback-headline": "آیا در مورد این فرم ایده یا پرسشی دارید؟",
 	"growthexperiments-edit-config-feedback-cta": "ارائهٔ بازخورد",
 	"growthexperiments-edit-config-error-invalid-title": "صفحهٔ پیکربندی به‌درستی پیکربندی نشده‌است",

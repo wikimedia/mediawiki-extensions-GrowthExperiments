@@ -39,5 +39,8 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Mentoru saraksts",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Kā iepazīstināt ar sevi kā mentoru",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Kā pieņemt audzēkni",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "Izaugsmes rīki"
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Izaugsmes rīki",
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Tavi}} atzīmētie audzēkņi",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Tavi}} neatzīmētie audzēkņi",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Citi {{GENDER:|tev}} piešķirtie audzēkņi"
 }

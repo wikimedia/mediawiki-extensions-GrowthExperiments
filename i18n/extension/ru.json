@@ -7,7 +7,9 @@
 			"Nastua Buldakova",
 			"Vlad5250",
 			"DDPAT",
-			"Умар"
+			"Умар",
+			"NBS",
+			"Pacha Tchernof"
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
@@ -17,7 +19,7 @@
 	"growthexperiments-config-validator-contentmodel-mismatch": "Несоответствие модели содержимого: файл конфигурации GrowthExperiments должен иметь модель содержимого JSON, обнаружено $1",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Недействителен идентификатор обработчика типа задачи: <code>$1</code> недопустимое значение",
 	"growthexperiments-edit-config-disabled": "Конфигурация в настоящее время отключена.",
-	"growthexperiments-edit-config-title": "Изменить конфигурацию \"Роста\"",
+	"growthexperiments-edit-config-title": "Изменить конфигурацию «Роста»",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Последнее обновление [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последнее обновление неизвестным участником $1.",
 	"growthexperiments-edit-config-pretext": "Эта страница позволяет редактировать конфигурацию для инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]]. Оно будет редактировать $1 от вашего имени. Изменения можно просмотреть в истории страницы.",

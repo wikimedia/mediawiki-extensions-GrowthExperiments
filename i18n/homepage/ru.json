@@ -353,7 +353,7 @@
 	"growthexperiments-addlink-rejectiondialog-title": "Почему это плохая ссылка?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Ваши}} ответы помогут улучшить будущие рекомендации.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Практически все знают, что это такое",
-	"growthexperiments-addlink-rejectiondialog-reason-more-fewer-words": "В тексте должно быть больше или меньше слов (например, «пальмовое дерево» вместо «пальмы»).",
+	"growthexperiments-addlink-rejectiondialog-reason-more-fewer-words": "В тексте должно быть больше или меньше слов (например, «Млечный путь» вместо «путь»).",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Ссылка ведёт не туда (например, «земля» на «планета»)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Для изменения места назначения ссылки нажмите на карандаш $1 рядом с ссылкой",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Другое",
