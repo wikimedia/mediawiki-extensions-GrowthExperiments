@@ -8,6 +8,7 @@ use GrowthExperiments\HomepageHooks;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
+use OOUI\IconWidget;
 use OOUI\Theme;
 use PHPUnit\Framework\MockObject\MockObject;
 use Skin;
@@ -48,9 +49,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertSame(
 			'<div class="mw-ge-homepage-confirmemail-nojs mw-ge-homepage-confirmemail-nojs-desktop">' .
-			'<span aria-disabled=\'false\' class=\'oo-ui-widget ' .
-			'oo-ui-widget-enabled oo-ui-iconElement-icon oo-ui-icon-check oo-ui-iconElement ' .
-			'oo-ui-labelElement-invisible oo-ui-flaggedElement-success oo-ui-iconWidget\'></span>' .
+			new IconWidget( [ 'icon' => 'check', 'flags' => 'success' ] ) .
 			' <span class="mw-ge-homepage-confirmemail-nojs-message">confirmemail_loggedin</span></div>',
 			$siteNotice
 		);
