@@ -380,6 +380,7 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "キャンセル",
 	"growthexperiments-structuredtask-summary-submit": "送信する",
 	"growthexperiments-addimage-inspector-help-button": "編集についてヘルプしてもらう",
+	"growthexperiments-addimage-submitting-title": "送信中...",
 	"growthexperiments-structuredtask-user-error-login-cta": "ログイン",
 	"growthexperiments-addimage-summary-label": "概要"
 }

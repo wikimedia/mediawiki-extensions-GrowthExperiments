@@ -13,7 +13,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Se fadderbarna dine nedenfor. Bruk filtrene for å endre hvilke brukere som vises.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Tabellen krever JavaScript. Slå på JavaScript for å bruke denne modulen.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Hvem er i tabellen din?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Tabellen viser deg kun fadderbarna dine som har opprettet konto i løpet av de siste to ukene eller som har redigert i løpet av de siste seks månedene. Dataene oppdateres daglig.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Denne tabellen viser {{GENDER:|dine}} fadderbarn som har opprettet konto i løpet av de siste to ukene, eller har redigert de siste seks månedene, og har [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|nybegynnerhjemmesiden]] slått på. Dataene oppdateres hver tredje time.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Tegnforklaring",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Stjernemerk fadderbarn",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Brukernavn",
@@ -78,8 +78,16 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Neste steg for å slutte å være fadder er å tildele andre faddere fadderbarna dine. Trykk på knappen nedenfor hvis du er sikker på at du vil slutte.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Ja, omfordel fadderbarna mine",
 	"growthexperiments-quit-mentorship-success": "Fadderbarna dine blir omfordelt til andre faddere snart.",
+	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|Du}} har for tiden ingen fadderbarn.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|sluttet}} å være fadder",
 	"echo-category-title-ge-mentorship": "Fadderskap",
+	"echo-pref-tooltip-ge-mentorship": "Varsler som gjelder fadderfunksjoner som vedlikeholdes av Growth-teamet. Dette varselet gir deg beskjed om at du ble gjort krav på som fadderbarn, eller at ett av fadderbarna dine ble gjort krav på av noen andre.",
 	"growthexperiments-notification-header-mentee-claimed": "Ditt {{GENDER:$3|fadderbarn}}, $3, ble {{GENDER:$2|tatt opp}} av $1.",
-	"growthexperiments-notification-body-mentee-claimed": "Årsak: $1"
+	"growthexperiments-notification-body-mentee-claimed": "Årsak: $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Hva er «Gjør krav på fadderbarn»?",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Antall fadderbarn tildelt meg",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Halvparten av gjennomsnittet",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Gjennomsnittet (standard)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Dobbelt av gjennomsnittet",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Byrden {{GENDER:|din}} ble endret til «$1»."
 }

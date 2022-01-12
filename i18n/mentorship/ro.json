@@ -87,9 +87,9 @@
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Ce este „Revendicare ucenic”?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Numărul de ucenici atribuiți mie",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Înjumătățește media",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Medie (implicit)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Mediu (implicit)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Dublează media",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Încărcarea {{GENDER:|dvs.}} a fost schimbată la „$1”.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Schimbând la mai mulți sau la mai puțini ucenici vă {{GENDER:|va}} ajuta să administrați numărul de întrebări la care vă {{GENDER:|așteptați}} să răspundeți. Totuși, numărul de întrebări depinde de motivația ucenicilor atribuiți vouă.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Este recomandat să începeți cu ponderea „Medie” pentru a vă evalua capacitatea de asistență înainte de a schimba în celelalte opțiuni."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Este recomandat să începeți cu ponderea „Mediu” pentru a vă evalua capacitatea de asistență înainte de a schimba la celelalte opțiuni."
 }
