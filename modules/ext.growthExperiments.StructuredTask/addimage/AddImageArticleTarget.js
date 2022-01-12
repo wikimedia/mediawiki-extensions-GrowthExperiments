@@ -77,7 +77,7 @@ function AddImageArticleTarget() {
 	this.insertOffset = 0;
 }
 
-AddImageArticleTarget.prototype.beforeSurfaceReady = function () {
+AddImageArticleTarget.prototype.beforeStructuredTaskSurfaceReady = function () {
 	/**
 	 * @property {mw.libs.ge.ImageRecommendationImage[]} images
 	 */
@@ -87,7 +87,7 @@ AddImageArticleTarget.prototype.beforeSurfaceReady = function () {
 /**
  * Show the image inspector, hide save button
  */
-AddImageArticleTarget.prototype.afterSurfaceReady = function () {
+AddImageArticleTarget.prototype.afterStructuredTaskSurfaceReady = function () {
 	if ( this.isValidTask() ) {
 		// Set a reference to the toolbar up front so that it's available in subsequent calls
 		// (since VeUiTargetToolbar is constructed upon these method calls if it's not there)

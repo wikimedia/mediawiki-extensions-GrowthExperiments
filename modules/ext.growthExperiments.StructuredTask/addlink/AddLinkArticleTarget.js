@@ -53,7 +53,7 @@ AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
  *
  * @override
  */
-AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
+AddLinkArticleTarget.prototype.beforeStructuredTaskSurfaceReady = function () {
 	// HACK RecommendedLinkToolbarDialog doesn't have access to the target, so give it access to the
 	// link recommendation data by adding a property to the ui.Surface
 	this.getSurface().linkRecommendationFragments = this.findRecommendationFragments();
@@ -64,7 +64,7 @@ AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
  *
  * @override
  */
-AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
+AddLinkArticleTarget.prototype.afterStructuredTaskSurfaceReady = function () {
 	// On mobile, the surface is not yet attached to the DOM when this runs, so wait for that
 	// to happen. On desktop, the surface is already attached, and we can do this immediately.
 	if ( OO.ui.isMobile() ) {
