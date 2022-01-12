@@ -2,7 +2,6 @@
 	position: fixed;
 	bottom: 2em;
 	right: 1em;
-	z-index: 2;
 	animation: help-panel-slidein 800ms;
 
 	&.animate-out {
@@ -51,4 +50,8 @@
 	right: 1em;
 	bottom: 1em;
 	z-index: 2;
+
+	.secondary-navigation-enabled & {
+		z-index: 0;
+	}
 }
