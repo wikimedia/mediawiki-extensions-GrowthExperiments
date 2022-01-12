@@ -194,14 +194,7 @@
 
 	.mw-ge-small-task-card-mobile & {
 		&-title {
-			// Show two lines of text, with an ellipsis, with 16px font size.
-			// See &-description for desktop for explanation.
-			display: -webkit-box;
-			overflow: hidden;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: 2;
-			line-height: 1;
-			max-height: 2 * 1.4 * 1em;
+			.paragraph-ellipsis( @lines: 2, @parentFontSize: 16px, @targetFontSize: 16px, @targetLineHeight: 22px );
 		}
 
 		&-description {
