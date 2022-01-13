@@ -5,9 +5,11 @@
 		"minify-svg": "svgo --config=.svgo.config.js -q -r -f images/",
 		"selenium-daily": "npm run selenium-test",
 		"selenium-test": "wdio tests/selenium/wdio.conf.js",
-		"test": "grunt test"
+		"test": "grunt test && npm run test:jest",
+		"test:jest": "jest tests/jest"
 	},
 	"devDependencies": {
+		"@vue/test-utils": "^1.3.0",
 		"@wdio/cli": "7.16.10",
 		"@wdio/devtools-service": "7.16.10",
 		"@wdio/dot-reporter": "7.16.6",
@@ -16,13 +18,18 @@
 		"@wdio/mocha-framework": "7.16.6",
 		"@wdio/sync": "7.16.10",
 		"api-testing": "^1.4.2",
+		"babel-core": "^6.26.3",
 		"eslint-config-wikimedia": "0.21.0",
 		"grunt": "1.4.0",
 		"grunt-banana-checker": "0.9.0",
 		"grunt-eslint": "23.0.0",
 		"grunt-stylelint": "0.16.0",
+		"jest": "^27.4.7",
 		"stylelint-config-wikimedia": "0.11.1",
 		"svgo": "2.3.1",
+		"vue": "^2.6.14",
+		"vue-jest": "^3.0.7",
+		"vue-template-compiler": "^2.6.14",
 		"wdio-mediawiki": "1.1.1",
 		"webdriverio": "^7.16.10"
 	}
