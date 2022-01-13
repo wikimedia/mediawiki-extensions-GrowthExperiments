@@ -1,0 +1,30 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/client-es6",
+		"wikimedia/jquery",
+		"wikimedia/mediawiki"
+	],
+	"globals": {
+		"ge": "writable",
+		"ve": "readonly"
+	},
+	"env": {
+		"commonjs": true
+	},
+	"rules": {
+		"max-len": "off"
+	},
+	"overrides": [
+		{
+			"files": "**/*.vue",
+			"extends": "wikimedia/vue-es6"
+		},
+		{
+			"files": [ "**/*.test.js" ],
+			"env": {
+				"jest": true
+			}
+		}
+	]
+}
