@@ -108,7 +108,8 @@ return [
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
-			$growthServices->getNewcomerTaskTrackerFactory()
+			$growthServices->getNewcomerTaskTrackerFactory(),
+			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
 	},
 

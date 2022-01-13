@@ -19,6 +19,7 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Storage\RevisionLookup;
 use MediaWiki\User\UserIdentity;
 use Message;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use TitleFactory;
 use UnexpectedValueException;
@@ -47,6 +48,8 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 	private $configurationLoader;
 	/** @var TrackerFactory */
 	private $trackerFactory;
+	/** @var LoggerInterface */
+	private $logger;
 
 	/**
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
@@ -58,6 +61,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TrackerFactory $trackerFactory
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		LinkRecommendationHelper $linkRecommendationHelper,
@@ -68,7 +72,8 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		ConfigurationLoader $configurationLoader,
-		TrackerFactory $trackerFactory
+		TrackerFactory $trackerFactory,
+		LoggerInterface $logger
 	) {
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->addLinkSubmissionRecorder = $addLinkSubmissionRecorder;
@@ -79,6 +84,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->configurationLoader = $configurationLoader;
 		$this->trackerFactory = $trackerFactory;
+		$this->logger = $logger;
 	}
 
 	/** @inheritDoc */
@@ -118,7 +124,38 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 			$baseRevId,
 			RevisionLookup::READ_LATEST
 		);
+		/* @var Title $title */
+		$title = $this->titleFactory->castFromPageIdentity( $page );
+		if ( !$title ) {
+			// This should never happen, it's here to make Phan happy.
+			return StatusValue::newFatal( 'invalidtitle' );
+		}
 		if ( !$linkRecommendation ) {
+			$this->logger->warning( 'Unable to find link recommendation for title {title} ' .
+			  'with getByRevId(), using base revision ID of {baseRevId} and edit revision ID of ' .
+			  '{editRevId}. Additional data: {data}', [
+				'title' => $title->getPrefixedDBkey(),
+				'baseRevId' => $baseRevId,
+				'editRevId' => $editRevId,
+				'data' => json_encode( $data )
+			] );
+			// Try to find the find the link recommendation based on the link target.
+			$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget(
+				$title,
+				RevisionLookup::READ_LATEST,
+				true
+			);
+		}
+
+		if ( !$linkRecommendation ) {
+			$this->logger->error( 'Unable to find link recommendation for title {title} ' .
+			  'with getByLinkTarget using base revision ID of {baseRevId} and edit revision ID of ' .
+			  '{editRevId}. Additional data: {data}', [
+				'title' => $title->getPrefixedDBkey(),
+				'baseRevId' => $baseRevId,
+				'editRevId' => $editRevId,
+				'data' => json_encode( $data )
+			] );
 			return StatusValue::newFatal( 'growthexperiments-addlink-handler-notfound' );
 		}
 		$links = $this->normalizeTargets( $linkRecommendation->getLinks() );
