@@ -20,7 +20,7 @@ describe( 'Homepage', function () {
 		assert( HomepagePage.firstheading.getText(), `Hello, ${username}!` );
 	} );
 
-	it( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', () => {
+	it.skip( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', () => {
 		HomepagePage.open();
 		assert( HomepagePage.suggestedEditsCard.isExisting() );
 		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'Douglas Adams' );
