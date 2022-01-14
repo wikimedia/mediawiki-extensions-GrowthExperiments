@@ -365,7 +365,7 @@
 	"growthexperiments-addlink-summary-title": "Sammendrag",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Forslag",
 	"growthexperiments-addlink-summary-column-header-linked": "Lenket?",
-	"growthexperiments-addlink-summary-copyrightwarning": "Ved å lagre endringer samtykker {{GENDER:|du}} i [https://foundation.wikimedia.org/wiki/Terms_of_Use bruksvilkårene] og i å utgi bidraget ditt under lisensene [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] og [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
+	"growthexperiments-addlink-summary-copyrightwarning": "Ved å publisere endringene samtykker {{GENDER:|du}} i [https://foundation.wikimedia.org/wiki/Terms_of_Use bruksvilkårene] og i å utgi bidraget ditt under lisensene [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] og [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
 	"growthexperiments-addlink-summary-summary": "Lenkeforslagsfunksjonen: $1 {{PLURAL:$1|lenke|lenker}} lagt til.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Du}} hoppet over alle forslag for denne artikkelen.",
 	"growthexperiments-addlink-skip-body": "Er {{GENDER:|du}} sikker på at du ikke vil godkjenne eller avvise noen forslag?",
@@ -389,7 +389,7 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Bytt uten å sende inn",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Avbryt",
 	"growthexperiments-structuredtask-summary-submit": "Send",
-	"growthexperiments-addlink-suggestions-outdated": "En annen bruker redigerte denne artikkelen mens {{GENDER:|du}} gikk gjennom den, så endringene {{GENDER:|dine}} kunne ikke lagres.",
+	"growthexperiments-addlink-suggestions-outdated": "En annen bruker redigerte denne artikkelen mens {{GENDER:|du}} gikk gjennom den, så endringene {{GENDER:|dine}} kunne ikke publiseres.",
 	"growthexperiments-addimage-inspector-title": "$1 {{PLURAL:$1|foreslått bilde|foreslåtte bilder}} funnet",
 	"growthexperiments-addimage-inspector-cta": "Legg til dette bildet i begynnelsen av artikkelen?",
 	"growthexperiments-addimage-inspector-yes-button": "Ja",
@@ -411,5 +411,6 @@
 	"growthexperiments-addimage-viewer-close-button": "Lukk",
 	"growthexperiments-newcomertasks-invalid-tasktype": "Ugyldig(e) oppgavetype(r): $1",
 	"growthexperiments-addimage-loading-title": "Laster bildeforhåndsvisning.",
+	"growthexperiments-structuredtask-user-error": "Vi kunne ikke publisere redigeringen {{GENDER:|din}} fordi du ikke er logget inn. Logg inn og prøv igjen.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Skjønner"
 }
