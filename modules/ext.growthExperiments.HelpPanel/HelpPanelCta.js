@@ -1,6 +1,8 @@
 ( function () {
 	var Help = require( 'ext.growthExperiments.Help' ),
-		HelpPanelButton = require( '../ui-components/HelpPanelButton.js' ),
+		// HelpPanelButton = require( '../ui-components/HelpPanelButton.js' ),
+		Vue = require( 'vue' ),
+		HelpPanelButtonVue = require( '../ui-components/vue/HelpPanelButton.vue' ),
 		Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
 		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
@@ -66,6 +68,7 @@
 				suggestedEditSession: suggestedEditSession
 			} ),
 			helpCtaButton,
+			helpCtaButtonVue,
 			lifecycle,
 			onContextResizeDebounced;
 
@@ -152,22 +155,31 @@
 		$body.append( $overlay );
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
-		if ( $buttonToInfuse.length ) {
-			helpCtaButton = mw.libs.ge.HelpPanelButton.static.infuse( $buttonToInfuse );
-			// The button is already on the page, but it won't be visible until we add the -ready
-			// class to $buttonWrapper. While it's not yet visible, relocate it into the overlay.
-			$overlay.append( $buttonWrapper );
-		} else {
-			helpCtaButton = new HelpPanelButton( {
-				label: mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
-				href: mw.util.getUrl( configData.GEHelpPanelHelpDeskTitle )
-			} );
-			$buttonWrapper = $( '<div>' )
-				.addClass( 'mw-ge-help-panel-cta' )
-				.append( helpCtaButton.$element );
-		}
+		// if ( $buttonToInfuse.length ) {
+		// 	helpCtaButton = mw.libs.ge.HelpPanelButton.static.infuse( $buttonToInfuse );
+		// 	// The button is already on the page, but it won't be visible until we add the -ready
+		// 	// class to $buttonWrapper. While it's not yet visible, relocate it into the overlay.
+		// 	$overlay.append( $buttonWrapper );
+		// } else {
+		helpCtaButtonVue = new Vue( {
+			el: '#mw-ge-help-panel-cta-button',
+			render: function ( h ) {
+				return h( HelpPanelButtonVue );
+			}
+		} );
+		debugger;
+		// TODO to avoid this create a Vue component as a placeholder for the button
+		helpCtaButtonVue.$el.parentNode.classList.add(
+			'mw-ge-help-panel-ready'
+		);
+		// $buttonWrapper = $( '<div>' )
+		// 	.addClass( 'mw-ge-help-panel-cta mw-ge-help-panel-ready' )
+		// 	.append( helpCtaButtonVue.$element );
+
+		// $overlay.append( $buttonWrapper );
+		// }
 		// Make the button visible (with slide up animation) if it's already on the page
-		$buttonWrapper.addClass( 'mw-ge-help-panel-ready' );
+		// $buttonWrapper.addClass( 'mw-ge-help-panel-ready' );
 
 		function openHelpPanel( panel ) {
 			if ( OO.ui.isMobile() ) {
@@ -199,8 +211,8 @@
 					helpPanelShouldOpen: true
 				} );
 				helpPanelProcessDialog.updateEditMode();
-				helpCtaButton.setOpen( true );
 			} );
+
 			lifecycle.closing.done( function () {
 				if ( OO.ui.isMobile() ) {
 					$body.append( $mfOverlay );
@@ -211,7 +223,6 @@
 				}
 				$buttonWrapper.removeClass( 'mw-ge-help-panel-opened' );
 				helpPanelProcessDialog.setGuidanceAutoAdvance( false );
-				helpCtaButton.setOpen( false );
 			} );
 			return lifecycle;
 		}
@@ -315,7 +326,7 @@
 			}
 		}
 
-		helpCtaButton.on( 'click', function () {
+		helpCtaButtonVue.$el.addEventListener( 'click', function () {
 			if ( lifecycle && !lifecycle.isClosed() ) {
 				helpPanelProcessDialog.executeAction( 'close' );
 			} else {

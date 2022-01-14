@@ -3,65 +3,57 @@
 @import '../ext.growthExperiments.Homepage.styles/variables.less';
 
 .mw-ge-help-panel-button {
-	// High specificity in order to win the specificity war with very strong OOUI rules
-	&.oo-ui-buttonElement.oo-ui-iconElement.oo-ui-indicatorElement a.oo-ui-buttonElement-button {
+	border-radius: 50%;
+	box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.5 );
+	height: 3em;
+	// Unset padding that would make the button wider/taller than 3em
+	padding: 0;
+	width: 3em;
+
+	&:focus:not( :active ) {
+		// to increase border while keeping box-shadow conflicting with ooui style
+		border-width: 2px;
+	}
+
+	// Transition between the two icons: the ? is the icon, the ^ is the indicator.
+	// They are positioned on top of each other. In the closed state, the icon is visible and
+	// the indicator is hidden and rotated. When opening, the icon rotates and fades out,
+	// while the indicator rotates and fades in.
+	.icon-help,
+	.chevron-down {
+		width: 20/14em;
+		opacity: 1;
+
+		.transition-transform( @help-panel-transition-duration ~',' opacity @help-panel-transition-duration );
+	}
+
+	.chevron-down {
+		color: white;
+		.transform( rotate( 90deg ) );
+	}
+
+	&&&--open {
+		background-color: @wmui-color-accent30;
+		border: unset;
+		
+		&:hover, 
+		&:active {
+			background-color: @wmui-color-accent30;
+		}
+
 		&:focus:not( :active ) {
-			// to increase border while keeping box-shadow conflicting with ooui style
-			border-width: 2px;
-		}
-		box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.5 );
-		border-radius: 50%;
-		height: 3em;
-		width: 3em;
-		// Unset padding that would make the button wider/taller than 3em
-		padding: 0;
-
-		// Transition between the two icons: the ? is the icon, the ^ is the indicator.
-		// They are positioned on top of each other. In the closed state, the icon is visible and
-		// the indicator is hidden and rotated. When opening, the icon rotates and fades out,
-		// while the indicator rotates and fades in.
-		.oo-ui-iconElement-icon,
-		.oo-ui-indicatorElement-indicator {
-			left: 50%;
-			margin-left: -10/14em;
-			right: unset;
-			width: 20/14em;
-			opacity: 1;
-
-			.transition-transform( @help-panel-transition-duration ~',' opacity @help-panel-transition-duration );
+			border: 1px solid @wmui-color-base100;
+			outline: 1px solid @wmui-color-accent30;
 		}
 
-		.oo-ui-indicatorElement-indicator {
-			.transform( rotate( 90deg ) );
+		.icon-help {
+			.transform( rotate( -90deg ) );
 			opacity: 0;
 		}
 
-		.oo-ui-indicator-up {
-			top: 2px;
-			background-image: url( ../../images/chevron-down.svg );
-		}
-	}
-
-	&--opened {
-		// High specificity in order to win the specificity war with very strong OOUI rules
-		&.oo-ui-buttonElement.oo-ui-iconElement.oo-ui-indicatorElement a.oo-ui-buttonElement-button {
-			background-color: @wmui-color-accent30;
-			border: unset;
-
-			&:focus:not( :active ) {
-				border: 1px solid @wmui-color-base100;
-				outline: 1px solid @wmui-color-accent30;
-			}
-
-			.oo-ui-iconElement-icon {
-				.transform( rotate( -90deg ) );
-				opacity: 0;
-			}
-
-			.oo-ui-indicatorElement-indicator {
-				.transform( rotate( 0 ) );
-				opacity: 1;
-			}
+		.chevron-down {
+			.transform( rotate( 0 ) );
+			opacity: 1;
 		}
 	}
 }

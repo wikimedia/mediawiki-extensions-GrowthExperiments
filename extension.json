@@ -1356,6 +1356,7 @@
 			]
 		},
 		"ext.growthExperiments.HelpPanel": {
+			"es6": true,
 			"styles": [
 				"ext.growthExperiments.HelpPanel/HelpPanelPopup.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less",
@@ -1371,7 +1372,8 @@
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
-				"ui-components/HelpPanelButton.js",
+				"ui-components/vue/HelpPanelButton.vue",
+				"ui-components/icons.js",
 				{
 					"name": "homepage/suggestededits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
@@ -1386,6 +1388,8 @@
 				}
 			],
 			"dependencies": [
+				"vue",
+				"wvui",
 				"mediawiki.language",
 				"mediawiki.pulsatingdot",
 				"oojs-ui-widgets",
