@@ -782,6 +782,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js",
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
+				"ui-components/SwipePane.js",
 				{
 					"name": "homepage/suggestededits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
