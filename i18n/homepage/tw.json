@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AC Krah",
+			"Amoaniwaa",
 			"Naa2Darkoa",
 			"Robertjamal12"
 		]
@@ -13,5 +14,6 @@
 	"growthexperiments-addimage-detailsdialog-close": "Tom",
 	"growthexperiments-addimage-rejectiondialog-header": "Adɛn nti na wompɛ?",
 	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2": "{{GENDER:|Wo}} bɛtumi abue mfoni no sɛnea wo bɛ hu yiye.",
-	"growthexperiments-addimage-onboarding-content-article-title": "Hwɛ atwerɛsɛm no"
+	"growthexperiments-addimage-onboarding-content-article-title": "Hwɛ atwerɛsɛm no",
+	"growthexperiments-structuredtask-user-error": "Yɛantumi amma amansan anhu {{GENDER:|your}} nsakrae efisɛ {{GENDER:|you}} wamfa wo din ne wo password anni dwuma. Yɛsrɛ wo fa wo din ne wo password di dwuma na san yɛ bio."
 }

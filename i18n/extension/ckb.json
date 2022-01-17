@@ -5,6 +5,11 @@
 			"ئارام بکر"
 		]
 	},
+	"growthexperiments-edit-config-title": "دەستکاریی ڕێکخستنی گەشە بکە",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: دوا جار لەلایەن [[User:$1|$1]] $2 نوێ کراوەتەوە ([$4 جیاوازی]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: دوا جار لەلایەن بەکارھێنەرێکی نەناسراو $1 نوێ کراوەتەوە ([$3 جیاوازی]).",
+	"growthexperiments-edit-config-pretext": "ئەم پەڕە ڕێگەت پێ دەدات تا دەستکاریی ڕێکخستنی تایبەتمەندییەکانی دەستەی [[:mw:Special:MyLanguage/Growth|گەشە]] بکەیت. ئەمە لە بری تۆ دەستکاریی $1 دەکات. دەتوانیت گۆڕانکارییەکانت لە پەڕەی مێژووی ئەو پەڕە ببینیت.",
+	"growthexperiments-edit-config-feedback-headline": "بیرۆکە یان پرسیارت لەسەر ئەم فۆڕمە ھەیە؟",
 	"growthexperiments-edit-config-feedback-cta": "فیدباکمان پێ بدە",
 	"growthexperiments-edit-config-edit-summary": "کورتەی دەستکاری",
 	"growthexperiments-edit-config-help-panel": "ڕێکخستنەکانی پانێلی یارمەتی",
@@ -14,10 +19,17 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "پرسگا",
 	"growthexperiments-edit-config-help-panel-links": "بەستەرەکانی پانێلی یارمەتی",
 	"growthexperiments-edit-config-homepage": "پەڕەی سەرەکیی تازەکار",
+	"growthexperiments-edit-config-mentorship-enabled": "تایبەتمەندییەکانی مامۆستایی چالاک کراوە؟",
 	"growthexperiments-edit-config-mentorship-enabled-true": "بەڵێ",
 	"growthexperiments-edit-config-mentorship-enabled-false": "نەخێر",
 	"growthexperiments-edit-config-newcomertasks": "دەستکارییە پێشنیارکراوەکان",
+	"growthexperiments-edit-config-newcomer-tasks-description": "ھەندێ جۆری دەستکارییە پێشنیارکراوەکان لەڕێگەی داڕێژەکانی ڕاگرتن دەدۆزرێنەوە. ئەو وتارانەی کە ئەو داڕێژانەی تێدایە بۆ خۆراکەکە زیاد کراون. تا بزانی بۆ ھەر جۆرە ئەرکێک چەند وتار بەردەستە، بڕوانە [[Special:NewcomerTasksInfo|ئەم پەڕە]].",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "ناچالاککراو",
 	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "پەڕەیەک بۆ فێربوونی زیاتر دەربارەی زیادکردنی بەستەرەکان",
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "سەرچاوەکان: داڕێژەکان بۆ دۆزینەوەی ئەو وتارانەی کە پێویستیان بە سەرچاوەی زیاترە.",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "پەڕەیەک بۆ فێربوونی زیاتر دەربارەی نوێکردنەوەی وتارەکان"
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "پەڕەیەک بۆ فێربوونی زیاتر دەربارەی نوێکردنەوەی وتارەکان",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "ئەو وتارانەی کە داڕێژەکانی خوارەوەی تێدایە وەک ئەرکەکانی ئەم جۆرە ئەرکە بۆ بەکارھێنەران پیشان نادرێن.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "ئەو وتارانەی کە پۆلەکانی خوارەوەی تێدایە وەک ئەرکەکانی ئەم جۆرە ئەرکە بۆ بەکارھێنەران پیشان نادرێن.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "داڕێژەکانی سندووقی زانیاریدان",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "ئەم داڕێژانە بۆ تایبەتمەندیی ئەرکی تازەکاری [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|پێشنیارەکانی وێنە]] پێویستن. ئەو وتارانەی ئەم داڕێژانەی تێدایە وەک ئەرکەکانی پێشنیاری وێنە پێڕست ناکرێن."
 }

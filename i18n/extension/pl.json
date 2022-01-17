@@ -5,6 +5,7 @@
 			"Nux",
 			"Rail",
 			"Railfail536",
+			"Tar Lócesilion",
 			"Woytecr"
 		]
 	},
@@ -14,6 +15,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "oczekiwany typ danych dla <code>$1</code> to <code>$2</code>, ale podano <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "niewłaściwy model zawartości: strona konfiguracji GrowthExperiments musi mieć model zawartości \"JSON\", a obecnie ma $1.",
 	"growthexperiments-config-validator-array-toobig": "$1 zawiera za dużo elementów (maksimum to $2)",
+	"growthexperiments-edit-config-disabled": "Możliwość konfiguracji przez społeczność jest obecnie wyłączona.",
 	"growthexperiments-edit-config-title": "Zmień ustawienia funkcji dla nowicjuszy",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Ostatnio zmieniona przez [[User:$1|$1]] $2 ([$4 różnica]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Ostatnio zmieniona przez nieznanego użytkownika $1 ([$3 diff]).",
@@ -41,6 +43,12 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Strona pytań nowicjuszy",
 	"growthexperiments-edit-config-help-panel-links": "Linki w panelu pomocy",
 	"growthexperiments-edit-config-help-panel-links-description": "Panel pomocy wyświetla pięć linków oraz jeden link \"Zobacz więcej stron pomocy\". Można ustawić tu dowolne linki ale poniżej podano zalecane.",
+	"growthexperiments-edit-config-help-panel-links-mos-title": "1) Strona docelowa dla pierwszego linku w panelu pomocy (zalecana: poradnik stylu)",
+	"growthexperiments-edit-config-help-panel-links-mos-label": "1) Wyświetlana nazwa pierwszego linku w panelu pomocy (zalecana: nazwa strony poradnika stylu)",
+	"growthexperiments-edit-config-help-panel-links-editing-title": "2) Strona docelowa dla drugiego linku w panelu pomocy (zalecana: przewodnik po edytowaniu VisualEditora)",
+	"growthexperiments-edit-config-help-panel-links-editing-label": "2) Wyświetlana nazwa drugiego linku w panelu pomocy (zalecana: nazwa strony przewodnika po edytowaniu VisualEditora / \"jak edytować\")",
+	"growthexperiments-edit-config-help-panel-links-images-title": "3) Strona docelowa dla trzeciego linku w panelu pomocy (zalecana: wstawianie ilustracji w VisualEditorze)",
+	"growthexperiments-edit-config-help-panel-links-images-label": "3) Wyświetlana nazwa trzeciego linku w panelu pomocy (zalecana: nazwa strony przewodnika po wstawianiu ilustracji w VisualEditorze / \"jak dodawać ilustracje\")",
 	"growthexperiments-edit-config-homepage": "Strona domowa dla nowicjuszy",
 	"growthexperiments-edit-config-mentorship-description": "Na wiki można mieć dwie strony z listą przewodników: jedna z przewodnikami losowo przydzielanymi nowicjuszom i druga z przewodnikami, którzy nie są losowo przydzielani, ale sami mogą wybierać podopiecznych. Druga lista zawierać będzie przede wszystkim przewodników chcących zajmować się uczestnikami organizowanych przez siebie szkoleń.",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Tak",
