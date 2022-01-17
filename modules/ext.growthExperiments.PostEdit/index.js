@@ -29,6 +29,7 @@
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		isLinkRecommendationTask = ( suggestedEditSession.taskType === 'link-recommendation' ),
 		isImageRecommendationTask = ( suggestedEditSession.taskType === 'image-recommendation' ),
+		isStructuredTask = isLinkRecommendationTask || isImageRecommendationTask,
 		newcomerTaskLogger = new NewcomerTaskLogger(),
 		helpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
 			context: 'postedit',
@@ -268,8 +269,8 @@
 
 		closePromise = displayPanelPromises.closePromise;
 		closePromise.done( function () {
-			if ( isLinkRecommendationTask && suggestedEditSession.taskState !== 'cancelled' ) {
-				// Link recommendation tasks are different from the unstructured tasks in that they
+			if ( isStructuredTask && suggestedEditSession.taskState !== 'cancelled' ) {
+				// Structured tasks are different from the unstructured tasks in that they
 				// cannot be repeated immediately after edit. So, after post edit dialog is closed,
 				// clear out the task type ID and task data. Currently not used elsewhere,
 				// but in case some code is relying on it, better to have removed here.
@@ -278,11 +279,13 @@
 				suggestedEditSession.save();
 				if ( !OO.ui.isMobile() ) {
 					// On mobile, the page is reloaded automatically after making an edit.
-					// On desktop, a reload is needed to unload AddLinkArticleTarget.
+					// On desktop, a reload is needed to unload StructuredTaskArticleTarget.
 					// Reloading the window is kind of extreme but on the other hand
 					// canceling out of the post edit dialog isn't a path we are trying to
 					// optimize for.
-					window.location.reload();
+					var uri = new mw.Uri();
+					delete uri.query.gesuggestededit;
+					window.location.href = uri.toString();
 				}
 			}
 		} );
