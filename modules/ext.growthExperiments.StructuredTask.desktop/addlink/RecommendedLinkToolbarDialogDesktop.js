@@ -154,9 +154,14 @@ RecommendedLinkToolbarDialogDesktop.prototype.fadeIn = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogDesktop.prototype.showFirstRecommendation = function () {
-	var promise = $.Deferred();
+	var promise = $.Deferred(),
+		annotationView = this.getAnnotationViewAtIndex( 0 );
+	if ( !annotationView ) {
+		this.toggle( false );
+		return promise.reject();
+	}
 	this.fadeOut();
-	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( 0 ) ).always( function () {
+	this.scrollToAnnotationView( annotationView ).always( function () {
 		this.showRecommendationAtIndex( 0 );
 		this.fadeIn().then( promise.resolve );
 	}.bind( this ) );
