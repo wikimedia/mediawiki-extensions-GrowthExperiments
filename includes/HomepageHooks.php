@@ -858,7 +858,9 @@ class HomepageHooks implements
 			if ( $taskType ) {
 				$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
 				$rc->addTags( $taskTypeHandler->getChangeTags() );
-				$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.NewcomerTask.' . $taskType->getId() );
+				$this->perDbNameStatsdDataFactory->increment(
+					'GrowthExperiments.NewcomerTask.' . $taskType->getId() . '.Save'
+				);
 			}
 		}
 	}
