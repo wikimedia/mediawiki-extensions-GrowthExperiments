@@ -1,8 +1,39 @@
 {
 	"@metadata": {
 		"authors": [
-			"Otogi"
+			"Otogi",
+			"Გიო ოქრო"
 		]
 	},
-	"growthexperiments-help-panel-tog-help-panel": "რედაქტორის დახმარების პანელის ჩართვა"
+	"growthexperiments-help-panel-tog-help-panel": "რედაქტორის დახმარების პანელის ჩართვა",
+	"growthexperiments-help-panel-cta-button-text": "დახმარება რედაქტირებაში",
+	"growthexperiments-help-panel-question-button-text": "გაგრძელება",
+	"growthexperiments-help-panel-submit-question-button-text": "გამოქვეყნება",
+	"growthexperiments-help-panel-return-home-button-text": "შესრულდა",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "პოპულარული დახმარების გვერდები რედაქტირების შესახებ",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "დახმარების მეტი გვერდის ხილვა",
+	"growthexperiments-help-panel-question-widget-header": "გამოაქვეყნეთ თქვენი კითხვა საზოგადოების ფორუმზე",
+	"growthexperiments-help-panel-question-placeholder": "მიესალმეთ და დასვით თქვენი შეკითხვა.",
+	"growthexperiments-help-panel-back-home": "უკან",
+	"growthexperiments-help-panel-close": "შესრულდა",
+	"growthexperiments-help-panel-home-title": "დახმარება რედაქტირებაში",
+	"growthexperiments-help-panel-postedit-success-message-published": "თქვენი რედაქტირება გამოქვეყნდა. მადლობა, ასე განაგრძეთ!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "თქვენი რედაქტირება შენახულია. მადლობა, ასე განაგრძეთ!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "მადლობა, რომ გადახედეთ შემოთავაზებებს. ასე განაგრძეთ!",
+	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "დღეისათვის სულ ეს სურათდასამატებელი სტატიები იყო. ყოჩაღ!",
+	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "დღეისათვის სულ ამ სტატიებში იყო ბმულის შემოთავაზება. ყოჩაღ!",
+	"growthexperiments-help-panel-postedit-header": "შემდგომი ნაბიჯები",
+	"growthexperiments-help-panel-postedit-subheader-image-recommendation": "რედაქტირების სხვა გზები",
+	"growthexperiments-help-panel-postedit-subheader2-image-recommendation": "სცადეთ რედაქტირების სხვა გზა ან ხვალ დაბრუნდით სურათების მეტი შემოთავაზებისათვის.",
+	"growthexperiments-help-panel-postedit-subheader-link-recommendation": "რედაქტირების სხვა გზები",
+	"growthexperiments-help-panel-postedit-subheader2-link-recommendation": "სცადეთ რედაქტირების სხვა გზა ან ხვალ დაბრუნდით ბმულების მეტი შემოთავაზებისათვის.",
+	"growthexperiments-help-panel-postedit-subheader": "სხვა შემოთავაზების რედაქტირება:",
+	"growthexperiments-help-panel-postedit-subheader-notsaved": "შემდეგი შემოთავაზება:",
+	"growthexperiments-help-panel-postedit-subheader-refresh-label": "შემოთავაზების განახლება",
+	"growthexperiments-help-panel-postedit-footer": "მეტი შემოთავაზებული რედაქტირების ხილვა",
+	"growthexperiments-help-panel-postedit-footer2": "დახურვა და ამ სტატიის თავიდან რედაქტირება",
+	"growthexperiments-help-panel-postedit-footer2-notsaved": "დახურვა",
+	"growthexperiments-help-panel-questionreview-title": "კითხვის დასმა ფორუმზე",
+	"growthexperiments-help-panel-question-subject-template-with-title": "გვერდ „[[:$1|$1]]“-ზე დასმული კითხვა",
+	"tag-help_panel_question": "შეკითხვა დახმარების პანელიდან"
 }

@@ -430,7 +430,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "La imagen es ofensiva",
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "La imagen es de baja calidad",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "No conozco este tema",
-	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "No puedo leer el idioma de los detalles de la imagen.",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "No puedo leer el idioma de los detalles de la imagen",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Otro",
 	"growthexperiments-addimage-viewer-close-button": "Cerrar",
 	"growthexperiments-addimage-onboarding-content-intro-title": "Las imágenes facilitan el aprendizaje, pero muchos artículos no tienen ninguna.",
