@@ -221,7 +221,8 @@
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 				"GrowthExperimentsLinkRecommendationStore",
 				"GrowthExperimentsLinkRecommendationHelper",
-				"GrowthExperimentsSuggestionsInfo"
+				"GrowthExperimentsSuggestionsInfo",
+				"SpecialPageFactory"
 			]
 		},
 		"parserfunctions": {
@@ -295,9 +296,6 @@
 		}
 	},
 	"Hooks": {
-		"MobileMenu": [
-			"GrowthExperiments\\HomepageHooks::onMobileMenu"
-		],
 		"SpecialPage_initList": [
 			"welcomeSurvey",
 			"homepage",
@@ -365,6 +363,7 @@
 			"homepage",
 			"mentor"
 		],
+		"SidebarBeforeOutput": "homepage",
 		"SkinTemplateNavigation::Universal": "homepage",
 		"PersonalUrls": [
 			"homepage",
