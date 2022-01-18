@@ -365,6 +365,7 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "Kecerdasan buatan dapat memberikan saran pada kata-kata yang tidak diperlukan atau menyarankan untuk menautkan ke artikel yang salah. Gunakan penilaian {{GENDER:$1|Anda}} untuk memutuskan apakah benar atau salah.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Pelajari lebih lanjut mngenai saranan dari kecerdasan buatan",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Panduan",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Tautkan konsep yang pembaca mungkin ingin pelajari lebih lanjut.</li><li>Pastikan pranala mengarah ke artikel yang benar.</li><li>Jangan tautkan kata-kata umum, tahun, atau tanggal.</li><li>Jika {{GENDER:$1|Anda}} tidak yakin, lewati saja.</li>",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Lewatkan semua",
 	"growthexperiments-addlink-onboarding-dialog-title": "Pengenalan",
 	"growthexperiments-addlink-onboarding-dialog-progress": "$1 dari $2",

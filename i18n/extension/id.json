@@ -2,8 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Rachmat04",
-			"Sonic Speedy"
+			"Sonic Speedy",
+			"Daud I.F. Argana",
+			"WillsonEP09"
 		]
 	},
-	"growthexperiments-desc": "Ekstensi ini berisi uji coba yang dilakukan oleh tim Pertumbuhan."
+	"growthexperiments-desc": "Ekstensi ini berisi uji coba yang dilakukan oleh tim Pertumbuhan.",
+	"growthexperiments-config-validator-additional-fields": "Konfigurasi baru memiliki kunci konfigurasi yang tidak bisa diubahsuaikan di sini.",
+	"growthexperiments-config-validator-error": "Validasi untuk $1 gagal dengan: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> harusnya merupakan <code>$2</code>, bukan <code>$3</code>"
 }

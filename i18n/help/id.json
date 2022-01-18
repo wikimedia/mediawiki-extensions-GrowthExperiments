@@ -139,5 +139,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Menambahkan pranala akan membantu pembaca belajar lebih cepat.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Anda}} akan menentukan apakah kata dalam salah satu artikel {{SITENAME}} sebaiknya ditautkan ke artikel {{SITENAME}} lainnya.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Bulan adalah satu-satunya <mark class=\"positive\">satelit alami</mark> yang <mark class=\"positive\">mengorbit</mark> mengelilingi <mark class=\"positive\">Bumi</mark>.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Mengerjakan tugas ini tidak membutuhkan pengetahuan khusus mengenai artikel."
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Mengerjakan tugas ini tidak membutuhkan pengetahuan khusus mengenai artikel.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Panduan",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "\n* Tautkan konsep yang pembaca mungkin ingin pelajari lebih lanjut.\n* Pastikan pranala mengarah ke artikel yang benar.\n* Jangan tautkan kata-kata umum, tahun, atau tanggal.\n* Jika {{GENDER:$1|Anda}} tidak yakin, lewati saja.",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Kalimat contoh"
 }
