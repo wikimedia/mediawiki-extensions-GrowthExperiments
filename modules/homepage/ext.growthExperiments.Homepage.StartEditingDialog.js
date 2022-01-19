@@ -1,4 +1,5 @@
 var TopicSelectionWidget = require( './ext.growthExperiments.Homepage.TopicSelectionWidget.js' ),
+	SwipePane = require( '../ui-components/SwipePane.js' ),
 	TaskTypeSelectionWidget = require( './suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js' ),
 	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
 	TaskTypesAbFilter = require( './suggestededits/TaskTypesAbFilter.js' ),
@@ -126,6 +127,14 @@ StartEditingDialog.prototype.initialize = function () {
 	}
 
 	this.$element.addClass( 'mw-ge-startediting-dialog' );
+
+	this.swipeCard = new SwipePane( this.$element, {
+		isRtl: document.documentElement.dir === 'rtl',
+		isHorizontal: true
+	} );
+
+	this.swipeCard.setToStartHandler( this.swapPanel.bind( this, 'difficulty' ) );
+	this.swipeCard.setToEndHandler( this.swapPanel.bind( this, 'intro' ) );
 };
 
 /**
