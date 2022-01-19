@@ -7,6 +7,7 @@
 			"Meno25",
 			"Michel Bakni",
 			"Tala Ali",
+			"البراء صالح",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
 		]
@@ -63,7 +64,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "عندما {{GENDER:|تلاحظ|تلاحظين}} خطأً {{GENDER:|تريد|تريدين}} إصلاحه، {{GENDER:|اضغط|اضغطي}} على \"$1\" للبدء. ثم {{GENDER:|تابع وأصلح|تابعي وأصلحي}} الأخطاء عبر تغيير محتوى المقالة كلما احتاج الأمر إلى ذلك.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-step1": "عندما {{GENDER:|تلاحظ|تلاحظين}} خطأً {{GENDER:|تريد|تريدين}} إصلاحه، {{GENDER:|اُنقر|اُنقري}} فوق القلم أعلى القسم للبدء ثم {{GENDER:|تابع وأصلح|تابعي وأصلحي}} الأخطاء عبر تغيير محتوى المقالة كلما احتاج الأمر إلى ذلك.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "{{GENDER:|اِبحث|اِبحثي}} عن تغييرات أخرى للقيام بها، أو {{GENDER:|أنه|أنهي}} المهمّة و{{GENDER:|اضغط|اضغطي}} على \"$1\" لنشر تعديلك!",
-	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-publish": "{{GENDER:|اِبحث|اِبحثي}} عن تغييرات أخرى للقيام بها، أو {{GENDER:|أنه|أنهي}} المهمّة و{{GENDER:|انقر|انقري}} فوق زر السهم الأزرق لنشر تعديلك!",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-publish": "{{GENDER:|اِبحث|اِبحثي}} عن تغييرات أخرى للقيام بها، أو {{GENDER:|أنهِ|أنهي}} المهمّة و{{GENDER:|انقر|انقري}} فوق زر السهم الأزرق لنشر تعديلك!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|{{GENDER:|تعلَّم|تعلَّمي}} المزيد حول تحرير النسخ]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "يتمكّن القرّاء من معرفة المزيد حول موضوع ما مذكور في مقالة من {{SITENAME}} عبر الضّغط على الوصلة في هذه المقالة. فهي تساعد المستخدمين على تصفّح مقالات أخرى من {{SITENAME}} بكلّ سهولة.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "عطارد هو أصغر <mark class=\"positive\">كوكب</mark> في <mark class=\"positive\">نظام المجموعة الشمسية</mark>.",
@@ -111,7 +112,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2": "حين {{GENDER:|تضيف|تضيفين}} معلومة جديدة، {{GENDER:|تأكّد|تأكّدي}} من [[$1|إضافة المراجع]]، حينها سيرى الآخرون مصدر المعلومة.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2-no-link": "حين {{GENDER:|تضيف|تضيفين}} معلومة جديدة، {{GENDER:|تأكّد|تأكّدي}} من إضافة المراجع، حينها سيرى الآخرون مصدر المعلومة.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "حين {{GENDER:|تنته|تنتهين}} من توسعة المقالة، {{GENDER:|تابع واضغط|تابعي واضغطي}} على \"$1\" لنشر تعديلك!",
-	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "حين {{GENDER:|تنته|تنتهين}} من توسعة المقالة، {{GENDER:|تابع وانقر|تابعي وانقري}} فوق السهم الأزرق لنشر تعديلك!",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "حين {{GENDER:|تنتهِ|تنتهين}} من توسيع المقالة، {{GENDER:|تابع وانقر|تابعي وانقري}} فوق السهم الأزرق لنشر تعديلك!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|{{GENDER:|تعلّم|تعلّمي}} المزيد حول توسيع المقالات]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "إضافة الروابط ستساهم في تعلّمٍ أسرعَ للأشخاص.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|ستقرّر|ستقرّرين}} ما إذا كانت بعض كلمات من مقالة ما في {{SITENAME}} عليها أن تربط إلى مقالات أخرى من {{SITENAME}}.",
