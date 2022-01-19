@@ -271,6 +271,8 @@ class SpecialHomepage extends SpecialPage {
 					if ( !$module ) {
 						continue;
 					}
+					$module->setPageURL( $this->getPageTitle()->getLinkURL() );
+					$module->setClickId( $this->pageviewToken );
 					$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_DESKTOP );
 					$out->addHTML( $html );
 				}
@@ -290,20 +292,6 @@ class SpecialHomepage extends SpecialPage {
 		$this->getOutput()->addHTML( $html );
 	}
 
-	/**
-	 * @param string $moduleName
-	 * @param string $moduleHtml
-	 * @return string
-	 */
-	private function wrapMobileSummaryWithLink( $moduleName, $moduleHtml ) {
-		if ( $moduleHtml ) {
-			$moduleHtml = Html::rawElement( 'a', [
-				'href' => $this->getPageTitle( $moduleName )->getLinkURL(),
-			], $moduleHtml );
-		}
-		return $moduleHtml;
-	}
-
 	private function renderMobileSummary() {
 		$out = $this->getContext()->getOutput();
 		$modules = $this->getModules( true );
@@ -313,10 +301,9 @@ class SpecialHomepage extends SpecialPage {
 			$isOpeningOverlay ? 'growthexperiments-homepage-mobile-summary--opening-overlay' : ''
 		] );
 		foreach ( $modules as $moduleName => $module ) {
+			$module->setPageURL( $this->getPageTitle()->getLinkURL() );
+			$module->setClickId( $this->pageviewToken );
 			$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_MOBILE_SUMMARY );
-			if ( $module->supports( IDashboardModule::RENDER_MOBILE_DETAILS ) ) {
-				$html = $this->wrapMobileSummaryWithLink( $moduleName, $html );
-			}
 			$this->getOutput()->addHTML( $html );
 		}
 	}
@@ -355,14 +342,6 @@ class SpecialHomepage extends SpecialPage {
 		foreach ( $modules as $moduleName => $module ) {
 			try {
 				$data[$moduleName] = $module->getJsData( $mode );
-				if ( isset( $data[$moduleName]['html'] ) && $mode === IDashboardModule::RENDER_MOBILE_SUMMARY ) {
-					// This is slightly ugly, but making modules generate special-page-based
-					// links to themselves would be uglier.
-					if ( $module->supports( IDashboardModule::RENDER_MOBILE_DETAILS ) ) {
-						$data[$moduleName]['html'] = $this->wrapMobileSummaryWithLink( $moduleName,
-							$data[$moduleName]['html'] );
-					}
-				}
 				if ( isset( $data[$moduleName]['overlay'] ) ) {
 					$html .= $data[$moduleName]['overlay'];
 					unset( $data[$moduleName]['overlay'] );

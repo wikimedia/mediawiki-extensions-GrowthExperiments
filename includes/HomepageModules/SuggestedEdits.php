@@ -26,6 +26,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserOptionsLookup;
 use Message;
+use MWCryptRand;
 use OOUI\ButtonGroupWidget;
 use OOUI\ButtonWidget;
 use OOUI\Exception;
@@ -182,7 +183,7 @@ class SuggestedEdits extends BaseModule {
 		LinkRecommendationFilter $linkRecommendationFilter,
 		ImageRecommendationFilter $imageRecommendationFilter
 	) {
-		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
+		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager, false );
 		$this->editInfoService = $editInfoService;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->pageViewService = $pageViewService;
@@ -216,6 +217,29 @@ class SuggestedEdits extends BaseModule {
 		} else {
 			return parent::getHeaderTextElement();
 		}
+	}
+
+	/** @inheritDoc */
+	protected function getMobileSummaryHeader() {
+		$tasks = $this->getTaskSet();
+		$hasValidTasks = $tasks instanceof TaskSet && $tasks->count() > 0;
+		$headerCssClass = self::BASE_CSS_CLASS . '-header-text';
+
+		return $hasValidTasks ?
+			Html::rawElement( 'div', [ 'class' => $headerCssClass ],  $this->getTasksPaginationText() ) :
+			Html::element( 'div', [ 'class' => $headerCssClass ],  $this->getHeaderText() ) . $this->getNavIcon();
+	}
+
+	/**
+	 * Return the pagination text in the form "1 of 30" being 30 the total number of tasks shown
+	 * @return string
+	 */
+	protected function getTasksPaginationText() {
+		$tasks = $this->getTaskSet();
+
+		return $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
+			->numParams( 1, $tasks->getTotalCount() )
+			->parse();
 	}
 
 	/**
@@ -342,6 +366,7 @@ class SuggestedEdits extends BaseModule {
 					// The front-end code for constructing SuggestedEditCardWidget checks
 					// to see if pageId is set in order to construct a tracking URL.
 					'pageId' => $title->getArticleID(),
+					'token' => MWCryptRand::generateHex( 20 )
 				];
 				// Prevent loading of thumbnail for image recommendation tasks.
 				// FIXME find a better place for this
@@ -489,20 +514,19 @@ class SuggestedEdits extends BaseModule {
 		$showTaskPreview = $tasks instanceof TaskSet && $tasks->count() > 0;
 
 		if ( $showTaskPreview ) {
-			$taskPager = $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
-				->numParams( 1, $tasks->getTotalCount() )
-				->parse();
 			$button = new ButtonWidget( [
 				'label' => $this->getContext()->msg(
 					'growthexperiments-homepage-suggestededits-mobilesummary-footer-button' )->text(),
 				'classes' => [ 'suggested-edits-preview-cta-button' ],
 				'flags' => [ 'primary', 'progressive' ],
-				// can't nest links
-				'button' => new Tag( 'span' ),
+				'href' => $this->getPageURL() . '/' . $this->getName()
 			] );
+			$button->setAttributes( [
+				'data-overlay-route' => $this->getModuleRoute()
+			] );
+			$centeredButton = Html::rawElement( 'div', [ 'class' => 'suggested-edits-preview-footer' ], $button );
 			return Html::rawElement( 'div', [ 'class' => 'suggested-edits-main-with-preview' ],
-				Html::rawElement( 'div', [ 'class' => 'suggested-edits-preview-pager' ], $taskPager )
-					. $this->getTaskCard() . $button );
+				$this->getTaskCard() . $centeredButton );
 		} else {
 			// For some reason phan thinks $siteEditsPerDay and/or $metricNumber get double-escaped,
 			// but they are escaped just the right amount.
@@ -716,10 +740,20 @@ class SuggestedEdits extends BaseModule {
 		$cardTextContainer = Html::rawElement( 'div',
 			[ 'class' => 'mw-ge-small-task-card-text-container' ],
 			$title . $description . $glue . $cardMetadataContainer );
-		return Html::rawElement( 'div',
+		$basePageURL = $this->getPageURL();
+		$articleID = $this->titleFactory->newFromLinkTarget( $task->getTitle() )->getArticleID();
+		$query = http_build_query( [
+			'gesuggestededit' => '1',
+			'getasktype' => $taskTypeId,
+			'geclickid' => $this->getClickId(),
+			'genewcomertasktoken' => MWCryptRand::generateHex( 20 )
+		] );
+		return Html::rawElement( 'a',
 			// only called for mobile views
 			[ 'class' => 'mw-ge-small-task-card mw-ge-small-task-card-mobile '
-				. "mw-ge-small-task-card mw-ge-tasktype-$taskTypeId" ],
+				. "mw-ge-small-task-card mw-ge-tasktype-$taskTypeId",
+				'href' => $basePageURL . '/newcomertask/' . $articleID . '?' . $query
+			],
 		$image . $cardTextContainer );
 	}
 

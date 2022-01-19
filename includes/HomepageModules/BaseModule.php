@@ -35,21 +35,74 @@ abstract class BaseModule extends DashboardModule {
 	private $wikiConfig;
 
 	/**
+	 * @var bool
+	 */
+	private $shouldWrapModuleWithLink;
+
+	/**
+	 * @var string
+	 */
+	private $pageURL = null;
+
+	/**
+	 * @var string
+	 */
+	private $clickId = null;
+
+	/**
 	 * @param string $name Name of the module
 	 * @param IContextSource $ctx
 	 * @param Config $wikiConfig
 	 * @param ExperimentUserManager $experimentUserManager
+	 * @param bool $shouldWrapModuleWithLink
 	 */
 	public function __construct(
 		$name,
 		IContextSource $ctx,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager
+		ExperimentUserManager $experimentUserManager,
+		bool $shouldWrapModuleWithLink = true
 	) {
 		parent::__construct( $name, $ctx );
 
 		$this->wikiConfig = $wikiConfig;
 		$this->experimentUserManager = $experimentUserManager;
+		$this->shouldWrapModuleWithLink = $shouldWrapModuleWithLink;
+	}
+
+	/**
+	 * Sets the page base URL where the module is being rendered.
+	 * Can be later used for generating links from inside the module.
+	 * @param string $url
+	 */
+	public function setPageURL( string $url ): void {
+		$this->pageURL = $url;
+	}
+
+	/**
+	 * Gets the base page URL where the module is being rendered.
+	 * @return string|null
+	 */
+	public function getPageURL(): ?string {
+		return $this->pageURL;
+	}
+
+	/**
+	 * Gets the click id (aka pageview token) for tracking purposes.
+	 * Used in some links as query parameter "geclickid"
+	 * @return string|null
+	 */
+	public function getClickId(): ?string {
+		return $this->clickId;
+	}
+
+	/**
+	 * Sets a click id (aka pageview token) for tracking purposes.
+	 * Used in some links that require tracking as query parameter "geclickid"
+	 * @param string $clickId
+	 */
+	public function setClickId( string $clickId ): void {
+		$this->clickId = $clickId;
 	}
 
 	/**
@@ -135,7 +188,7 @@ abstract class BaseModule extends DashboardModule {
 	 * @inheritDoc
 	 */
 	protected function buildModuleWrapper( ...$sections ) {
-		return Html::rawElement(
+		$moduleContent = Html::rawElement(
 			'div',
 			[
 				'class' => array_merge( [
@@ -145,11 +198,23 @@ abstract class BaseModule extends DashboardModule {
 					self::BASE_CSS_CLASS . '-user-variant-' . $this->getUserVariant()
 				], $this->getCssClasses() ),
 				'data-module-name' => $this->name,
-				'data-module-route' => $this->getModuleRoute(),
 				'data-mode' => $this->getMode(),
 			],
 			implode( "\n", $sections )
 		);
+
+		if (
+			$this->getMode() === self::RENDER_MOBILE_SUMMARY &&
+			$this->supports( self::RENDER_MOBILE_DETAILS ) &&
+			$this->shouldWrapModuleWithLink
+		) {
+			return Html::rawElement( 'a', [
+				'href' => $this->getPageURL() . '/' . $this->getName(),
+				'data-overlay-route' => $this->getModuleRoute()
+			], $moduleContent );
+		}
+
+		return $moduleContent;
 	}
 
 	protected function outputDependencies() {

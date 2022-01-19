@@ -44,14 +44,14 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 		list( $data ) = $this->doApiRequest( $baseParams );
 		$this->assertSame( 6, $data['query']['growthtasks']['totalCount'] );
-		$this->assertSame( [
-			'title' => 'Copyedit-1',
-			'tasktype' => 'copyedit',
-			'difficulty' => 'easy',
-			'order' => 0,
-			'qualityGateIds' => [],
-			'qualityGateConfig' => []
-		], $data['query']['growthtasks']['suggestions'][0] );
+		$this->assertSame( 'Copyedit-1', $data['query']['growthtasks']['suggestions'][0]['title'] );
+		$this->assertSame( 'copyedit', $data['query']['growthtasks']['suggestions'][0]['tasktype'] );
+		$this->assertSame( 'easy', $data['query']['growthtasks']['suggestions'][0]['difficulty'] );
+		$this->assertSame( 0, $data['query']['growthtasks']['suggestions'][0]['order'] );
+		$this->assertSame( [], $data['query']['growthtasks']['suggestions'][0]['qualityGateIds'] );
+		$this->assertSame( [], $data['query']['growthtasks']['suggestions'][0]['qualityGateConfig'] );
+		$this->assertStringMatchesFormat( '%x', $data['query']['growthtasks']['suggestions'][0]['token'] );
+
 		$this->assertResponseContainsTitles( [ 'Copyedit-1', 'Link-1', 'Update-1', 'Copyedit-2',
 			'Update-2', 'Copyedit-3' ], $data );
 
@@ -81,17 +81,17 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
 		list( $data ) = $this->doApiRequest( [ 'action' => 'query', 'generator' => 'growthtasks' ] );
+		$pages = reset( $data['query']['pages'] );
 		$this->assertSame( 2, $data['growthtasks']['totalCount'] );
-		$this->assertSame( [
-			'ns' => 0,
-			'title' => 'Task-1',
-			'missing' => true,
-			'tasktype' => 'copyedit',
-			'difficulty' => TaskType::DIFFICULTY_EASY,
-			'order' => 0,
-			'qualityGateIds' => [],
-			'qualityGateConfig' => []
-		], reset( $data['query']['pages'] ) );
+		$this->assertSame( 0, $pages['ns'] );
+		$this->assertSame( 'Task-1', $pages['title'] );
+		$this->assertSame( true, $pages['missing'] );
+		$this->assertSame( 'copyedit', $pages['tasktype'] );
+		$this->assertSame( TaskType::DIFFICULTY_EASY, $pages['difficulty'] );
+		$this->assertSame( 0, $pages['order'] );
+		$this->assertSame( [], $pages['qualityGateIds'] );
+		$this->assertSame( [], $pages['qualityGateConfig'] );
+		$this->assertStringMatchesFormat( '%x', $pages['token'] );
 	}
 
 	public function testError() {
