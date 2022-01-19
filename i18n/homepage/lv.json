@@ -365,6 +365,7 @@
 	"grant-managementorship": "Pārvaldīt mentorēšanu",
 	"newcomertasksinfo": "Jaunpienācēju uzdevumi",
 	"newcomertasksinfo-no-data": "Nav datu.",
+	"newcomertasksinfo-config-form-info": "Jaunpienācēju uzdevumu konfigurāciju var apskatīt un izmainīt lapā [[Special:EditGrowthConfig]].",
 	"newcomertasksinfo-table-header-task-type": "Uzdevuma veids",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Skaits",
