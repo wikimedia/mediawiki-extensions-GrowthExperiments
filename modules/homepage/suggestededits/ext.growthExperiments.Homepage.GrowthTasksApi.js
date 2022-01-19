@@ -408,8 +408,10 @@
 			isRealError = false;
 		} else if ( error === 'http' ) {
 			// jQuery AJAX error; textStatus is AJAX status, exception is status code text
-			// from server
-			message = ( typeof details.exception === 'string' ) ? details.exception : details.textStatus;
+			// from server (empty string for network error and non 2xx/304 for HTTP/2)
+			message = details.exception === '' ?
+				'HTTP error' :
+				details.exception || details.textStatus;
 		} else if ( error === 'ok-but-empty' ) {
 			// maybe a PHP fatal; not much we can do
 			message = error;
