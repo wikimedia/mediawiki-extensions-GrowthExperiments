@@ -37,16 +37,16 @@
 
 			// The image should be resized if the target source width is smaller than the original
 			// or if the file needs to be re-rasterized (resizeUrl only works if the target width is
-			// smaller than the original image width) For vectors, the thumbnail can be used
-			// since the asset dimension doesn't really matter.
-			if ( targetSrcWidth < originalWidth ||
-				( targetSrcWidth === originalWidth && metadata.mustRender ) ||
-				metadata.isVectorized ) {
+			// smaller than the original image width). For vectors, the thumbnail can be used since
+			// the asset dimension doesn't really matter.
+			if ( targetSrcWidth < originalWidth || metadata.isVectorized ) {
 				imageSrc = thumb.resizeUrl( targetSrcWidth );
 				maxWidth = Math.floor( renderWidth );
+			} else if ( metadata.mustRender ) {
+				imageSrc = thumb.resizeUrl( originalWidth );
+				maxWidth = Math.min( Math.floor( renderWidth ), originalWidth );
 			}
 		}
-
 		return {
 			src: imageSrc,
 			maxWidth: maxWidth

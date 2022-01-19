@@ -33,7 +33,7 @@ AddImageDesktopSaveDialog.prototype.getImagePreview = function ( summaryData ) {
 			IMAGE_PREVIEW_WIDTH
 		);
 	$imagePreview.css( {
-		backgroundImage: 'url(' + imageRenderData.src + ')',
+		backgroundImage: 'url("' + imageRenderData.src + '")',
 		width: IMAGE_PREVIEW_WIDTH + 'px'
 	} );
 	return $imagePreview;

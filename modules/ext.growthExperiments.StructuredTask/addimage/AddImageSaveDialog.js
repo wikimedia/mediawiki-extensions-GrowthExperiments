@@ -112,7 +112,7 @@ AddImageSaveDialog.prototype.getImagePreview = function ( summaryData ) {
 		// but the image preview would come in after the other elements are rendered).
 		imageRenderData = AddImageUtils.getImageRenderData( summaryData.metadata, window );
 	$imagePreview.css( {
-		backgroundImage: 'url(' + imageRenderData.src + ')',
+		backgroundImage: 'url("' + imageRenderData.src + '")',
 		// Maintain the aspect ratio of the image preview container
 		paddingTop: ( 1 / IMAGE_PREVIEW_ASPECT_RATIO * 100 ) + '%'
 	} );

@@ -430,7 +430,7 @@ RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 		thumbWidth = window.innerWidth > COMPACT_VIEW_BREAKPOINT ? 160 : 120,
 		imageRenderData = AddImageUtils.getImageRenderData( metadata, window, thumbWidth );
 	this.$reason.text( metadata.reason );
-	this.$imageThumbnail.css( 'background-image', 'url(' + imageRenderData.src + ')' );
+	this.$imageThumbnail.css( 'background-image', 'url("' + imageRenderData.src + '")' );
 	this.$imageInfo.append( [
 		$( '<div>' ).append( [
 			this.getFilenameElement( imageData.displayFilename ),
