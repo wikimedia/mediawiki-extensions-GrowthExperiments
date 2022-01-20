@@ -70,7 +70,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		$this->getOutput()->addModuleStyles( [
 			'oojs-ui.styles.icons-interactions',
 			'ext.growthExperiments.icons',
-			'ext.growthExperiments.DonorSignupCampaign.styles',
+			'ext.growthExperiments.Account.styles',
 		] );
 
 		$benefitsList = '';

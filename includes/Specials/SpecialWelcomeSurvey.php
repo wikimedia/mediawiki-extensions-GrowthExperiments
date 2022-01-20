@@ -80,7 +80,8 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			$this->welcomeSurveyLogger->logInteraction( self::ACTION_SUBMIT_ATTEMPT );
 		}
 		$this->requireLogin();
-		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.WelcomeSurvey.styles' );
+		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.Account.styles' );
+		$this->getOutput()->addJsConfigVars( 'welcomesurvey', true );
 		parent::execute( $par );
 	}
 
