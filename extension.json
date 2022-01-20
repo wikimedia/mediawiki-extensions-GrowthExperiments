@@ -1200,13 +1200,6 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.contribs.styles": {
-			"styles": "homepage/ext.growthExperiments.Homepage.contribs.less",
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
 		"ext.growthExperiments.WelcomeSurvey": {
 			"localBasePath": "modules/ext.growthExperiments.WelcomeSurvey",
 			"remoteExtPath": "extensions/GrowthExperiments/modules/ext.growthExperiments.WelcomeSurvey",
@@ -1513,7 +1506,8 @@
 				"ext.growthExperiments.Homepage.styles/BannerModule.less",
 				"ext.growthExperiments.Homepage.styles/StartEmailModule.less",
 				"ext.growthExperiments.Homepage.styles/Homepage.less",
-				"ext.growthExperiments.Homepage.styles/StartEditingModule.less"
+				"ext.growthExperiments.Homepage.styles/StartEditingModule.less",
+				"ext.growthExperiments.Homepage.styles/SpecialContributions.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [
