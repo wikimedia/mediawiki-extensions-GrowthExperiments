@@ -970,7 +970,7 @@ class HomepageHooks implements
 		) {
 			$out = $sp->getOutput();
 			$out->enableOOUI();
-			$out->addModuleStyles( 'ext.growthExperiments.Homepage.contribs.styles' );
+			$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
 			$out->addHTML( self::getZeroContributionsHtml( $sp ) );
 		}
 	}
@@ -993,7 +993,7 @@ class HomepageHooks implements
 		) {
 			$out = $sp->getOutput();
 			$out->enableOOUI();
-			$out->addModuleStyles( 'ext.growthExperiments.Homepage.contribs.styles' );
+			$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
 			$out->addHTML(
 				Html::rawElement( 'div', [ 'class' => 'content-unstyled' ],
 					self::getZeroContributionsHtml( $sp, 'warningbox' )
