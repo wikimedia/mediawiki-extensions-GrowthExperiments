@@ -13,5 +13,6 @@
 	"apihelp-growthsetmentor-param-mentee": "Fadderbarnets brukernavn",
 	"apihelp-growthsetmentor-param-mentor": "Fadderens brukernavn",
 	"apihelp-growthsetmentor-param-reason": "Årsak for endringen",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Merk bildeforslagsoppgave som ugyldig",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Tittelen på artikkelen bildeforslagsoppgaven gjelder"
 }

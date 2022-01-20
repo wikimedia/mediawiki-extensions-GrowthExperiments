@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Can",
 			"Hedda",
 			"Jelican9",
 			"Joseph",
@@ -18,8 +19,8 @@
 	"growthexperiments-config-validator-contentmodel-mismatch": "İçerik-model uyumsuz: GrowthExperiments yapılandırma dosyası JSON içerik modeli olmalıdır, $1 algılandı",
 	"growthexperiments-edit-config-disabled": "Topluluk yapılandırması şu anda devre dışı.",
 	"growthexperiments-edit-config-title": "Growth yapılandırmasını düzenle",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: En son [[User:$1|$1]] tarafından güncellendi $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: En son bilinmeyen kullanıcı tarafından güncellendi $1.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: En son [[User:$1|$1]] tarafından güncellendi $2 ([$4 fark]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: En son bilinmeyen kullanıcı tarafından güncellendi $1 ([$3 fark]).",
 	"growthexperiments-edit-config-pretext": "Bu sayfa, [[:mw:Special:MyLanguage/Growth|Growth]] takımı özelliklerinin yapılandırmasını düzenlemenize izin verir. Sizin adınıza $1 sayfasını değiştirir. Değişikliklerinizi o sayfanın geçmişinde görebilirsiniz.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Bu form, ayrıcalıklı kullanıcıların [[:mw:Special:MyLanguage/Growth|Büyüme]] ekibi özelliklerinin yapılandırmasını düzenlemesine olanak tanır.",
 	"growthexperiments-edit-config-feedback-headline": "Bu form hakkında bir sorunuz veya fikriniz var mı?",
@@ -65,6 +66,7 @@
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Yalnızca manuel olarak atanabilen mentorların listesini içeren sayfa",
 	"growthexperiments-edit-config-newcomertasks": "Önerilen düzenlemeler",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Bazı önerilen düzenleme türleri, bakım şablonları aracılığıyla ortaya çıkar. Bu şablonları içeren makaleler beslemeye eklenir. Her bir görev türü için kaç makalenin mevcut olduğunu görmek için [[Special:NewcomerTasksInfo|this page]] konusuna bakın.",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Devre dışı",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Kopya düzenleme: Yazım, dil bilgisi ve noktalama iyileştirmeleri gibi kopya düzenlemesi gereken maddeleri bulmak için şablonlar.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Kopya düzenleme hakkında daha fazla bilgi edinmek için hedef sayfa.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Genişlet: Genişletilmesi gereken makaleleri bulmak için şablonlar.",

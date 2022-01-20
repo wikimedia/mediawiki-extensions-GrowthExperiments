@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Can",
 			"Hedda",
 			"Melissadilara",
 			"SaldırganSincap",
@@ -15,7 +16,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Aşağıda mentilerinizi görün. Hangi mentileri gösterileceğini değiştirmek için filtreleri kullanın.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Tablo için JavaScript gereklidir. Bu modülü kullanabilmek için lütfen JavaScript'i etkinleştirin.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Tablonuzda kim var?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Tablo yalnızca son iki hafta içinde hesap oluşturan veya son altı ay içinde düzenleme yapan mentilerinizi gösterir. Veriler her üç saatte bir güncellenir.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Bu tablo, hesabı son iki hafta içinde oluşturulan veya son altı ayda düzenleme yapan ve [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|yeni gelen ana sayfası etkin]] olan mentilerinizi gösterir. Veriler her üç saatte bir güncellenir.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Gösterge",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Danışanlarınızı yer işareti koyun",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Kullanıcı adı",
@@ -51,10 +52,16 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Danışman durumu",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Etkin",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "İptal",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Durdur",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "gün",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Bilinmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Durumunuz \"Etkin\" olarak değiştirildi.",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "Diğer eylemler",
 	"growthexperiments-rcfilters-mentorship-title": "Danışmanlık",
 	"growthexperiments-rcfilters-mentorship-starred-label": "Yıldızlanan danışanlarınız",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Danışman kontrol panelinizde yıldızladığınız size atanan danışanlar",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "Yıldızlanmayan danışanlarınız",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Size atanan diğer danışanlar",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 danışmanlıktan emekli oldu."
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 danışmanlıktan emekli oldu.",
+	"growthexperiments-notification-body-mentee-claimed": "Sebep: $1"
 }

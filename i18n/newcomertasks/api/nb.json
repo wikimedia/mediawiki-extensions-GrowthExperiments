@@ -15,6 +15,9 @@
 	"apihelp-query+growthtasks-example-2": "Hent oppgaveforslag for den gjeldende brukeren, med utvidet informasjon om sidene.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Parameteren «accepted» mangler fra dataene til bildeinnleggingsmodulen",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Parameteren «accepted» må være boolsk i dataene for bildeinnleggingsmodulen, er $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "Parameteren «reason» mangler fra dataene til bildeinnleggingsmodulen",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Parameteren «reason» må være et array i dataene til bildeinnleggingsmodulen, men er $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Ugyldig element «$1» for parameteren «reason»; må være én av: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Lenkeforslagshistorikk ikke funnet",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Uventede lenkeforslagsmål: $1"
 }
