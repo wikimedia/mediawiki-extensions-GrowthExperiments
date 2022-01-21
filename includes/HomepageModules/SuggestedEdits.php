@@ -26,7 +26,6 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserOptionsLookup;
 use Message;
-use MWCryptRand;
 use OOUI\ButtonGroupWidget;
 use OOUI\ButtonWidget;
 use OOUI\Exception;
@@ -366,7 +365,7 @@ class SuggestedEdits extends BaseModule {
 					// The front-end code for constructing SuggestedEditCardWidget checks
 					// to see if pageId is set in order to construct a tracking URL.
 					'pageId' => $title->getArticleID(),
-					'token' => MWCryptRand::generateHex( 20 )
+					'token' => $task->getToken()
 				];
 				// Prevent loading of thumbnail for image recommendation tasks.
 				// FIXME find a better place for this
@@ -746,7 +745,7 @@ class SuggestedEdits extends BaseModule {
 			'gesuggestededit' => '1',
 			'getasktype' => $taskTypeId,
 			'geclickid' => $this->getClickId(),
-			'genewcomertasktoken' => MWCryptRand::generateHex( 20 )
+			'genewcomertasktoken' => $task->getToken()
 		] );
 		return Html::rawElement( 'a',
 			// only called for mobile views

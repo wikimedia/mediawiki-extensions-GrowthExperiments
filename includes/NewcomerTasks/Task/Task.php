@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\Task;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use GrowthExperiments\Util;
 use MediaWiki\Json\JsonUnserializable;
 use MediaWiki\Json\JsonUnserializableTrait;
 use MediaWiki\Json\JsonUnserializer;
@@ -30,13 +31,32 @@ class Task implements JsonUnserializable {
 	/** @var float[] Match scores associated to the topics in $topics, keyed by topic ID. */
 	private $topicScores = [];
 
+	/** @var string unique task identifier for analytics purposes */
+	private $token;
+
 	/**
 	 * @param TaskType $taskType
 	 * @param LinkTarget $title The page this task is about.
+	 * @param string|null $token
 	 */
-	public function __construct( TaskType $taskType, LinkTarget $title ) {
+	public function __construct( TaskType $taskType, LinkTarget $title, string $token = null ) {
 		$this->taskType = $taskType;
 		$this->title = $title;
+		$this->token = $token ?? Util::generateRandomToken();
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getToken(): string {
+		return $this->token;
+	}
+
+	/**
+	 * @param string $token
+	 */
+	public function setToken( string $token ): void {
+		$this->token = $token;
 	}
 
 	/**
@@ -94,6 +114,7 @@ class Task implements JsonUnserializable {
 				return $topic->jsonSerialize();
 			}, $this->getTopics() ),
 			'topicScores' => $this->getTopicScores(),
+			'token' => $this->getToken()
 		];
 	}
 
@@ -105,7 +126,7 @@ class Task implements JsonUnserializable {
 			return $unserializer->unserialize( $topic, Topic::class );
 		}, $json['topics'] );
 
-		$task = new Task( $taskType, $title );
+		$task = new Task( $taskType, $title, $json['token'] ?? null );
 		$task->setTopics( $topics, $json['topicScores'] );
 		return $task;
 	}
