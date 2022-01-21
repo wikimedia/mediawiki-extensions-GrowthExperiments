@@ -439,18 +439,11 @@
 				"mediawiki.storage"
 			]
 		},
-		"ext.growthExperiments.Homepage.ConfirmEmail": {
-			"packageFiles": [ "ext.growthExperiments.Homepage.ConfirmEmail/index.js" ],
+		"ext.growthExperiments.Homepage.ConfirmEmailNotice": {
+			"packageFiles": [ "ext.growthExperiments.Homepage.ConfirmEmailNotice/index.js" ],
 			"messages": [
 				"confirmemail_loggedin"
 			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.Homepage.ConfirmEmail.styles": {
-			"styles": "ext.growthExperiments.Homepage.ConfirmEmail/ConfirmEmail.less",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -1405,7 +1398,8 @@
 				"ext.growthExperiments.Homepage.styles/BannerModule.less",
 				"ext.growthExperiments.Homepage.styles/StartEmailModule.less",
 				"ext.growthExperiments.Homepage.styles/Homepage.less",
-				"ext.growthExperiments.Homepage.styles/StartEditingModule.less"
+				"ext.growthExperiments.Homepage.styles/StartEditingModule.less",
+				"ext.growthExperiments.Homepage.styles/ConfirmEmailNotice.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [

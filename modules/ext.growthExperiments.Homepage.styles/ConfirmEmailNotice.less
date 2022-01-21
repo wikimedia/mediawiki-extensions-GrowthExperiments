@@ -28,19 +28,19 @@
 
 // The following block does not apply to Minerva with JS
 body:not( .skin-minerva ) {
-	.mw-ge-homepage-confirmemail-nojs,
 	.mw-notification-area {
-		left: 40%;
-		// Need !important to override core style.
-		overflow: visible !important; // stylelint-disable-line declaration-no-important
+		// Center the confirm email notification without impacting other notifications
 		.mw-notification-type-ge-homepage-confirmemail {
 			background-color: @wmui-color-green90;
 			border: 1px solid @wmui-color-green50;
 			font-size: 1em;
 			font-weight: bold;
 			color: @colorGray2;
-			-webkit-transform: translateY( -35px );
-			transform: translateY( -35px );
+			position: fixed;
+			left: 50%;
+			box-sizing: border-box;
+			max-width: 20em;
+			transform: translate( -50%, -35px );
 		}
 	}
 }
