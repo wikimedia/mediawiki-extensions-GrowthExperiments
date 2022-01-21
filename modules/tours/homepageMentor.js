@@ -1,6 +1,6 @@
 ( function ( gt ) {
 	var mentorTour,
-		tourUtils = require( '../utils/tourUtils.js' );
+		tourUtils = require( './tourUtils.js' );
 
 	mentorTour = new gt.TourBuilder( {
 		name: 'homepage_mentor',

@@ -1,6 +1,6 @@
 ( function ( gt ) {
 	var discoveryTour,
-		tourUtils = require( '../utils/tourUtils.js' );
+		tourUtils = require( './tourUtils.js' );
 
 	discoveryTour = new gt.TourBuilder( {
 		name: 'homepage_discovery',

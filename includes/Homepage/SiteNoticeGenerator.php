@@ -182,7 +182,7 @@ class SiteNoticeGenerator {
 		&$siteNotice, \Skin $skin, $contextName
 	) {
 		// No-JS banner (hidden from CSS when there's JS support). The JS version is in
-		// ext.growthExperiments.HomepageDiscovery/tour.js.
+		// tours/homepageDiscovery.js.
 
 		$output = $skin->getOutput();
 		$output->enableOOUI();

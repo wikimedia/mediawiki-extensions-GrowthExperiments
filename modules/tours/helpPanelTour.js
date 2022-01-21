@@ -1,6 +1,6 @@
 ( function ( gt ) {
 	var dashboardTour,
-		tourUtils = require( '../utils/tourUtils.js' );
+		tourUtils = require( './tourUtils.js' );
 
 	dashboardTour = new gt.TourBuilder( {
 		name: 'helppanel',

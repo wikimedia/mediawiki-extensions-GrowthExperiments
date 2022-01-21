@@ -973,6 +973,11 @@
 	 * @param {string} tourPreferenceKey
 	 */
 	HelpPanelProcessDialog.prototype.launchIntroTour = function ( tourName, tourPreferenceKey ) {
+		/**
+		 * The following tours are launched using this method:
+		 * - ext.guidedTour.tour.homepage_mentor
+		 * - ext.guidedTour.tour.helppanel
+		 */
 		if ( !mw.user.options.get( tourPreferenceKey ) ) {
 			mw.loader.using( 'ext.guidedTour.tour.' + tourName, function () {
 				mw.guidedTour.launchTour( tourName );
