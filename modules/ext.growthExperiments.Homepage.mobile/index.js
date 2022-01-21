@@ -2,11 +2,11 @@
 	'use strict';
 
 	var HomepageModuleLogger = require( 'ext.growthExperiments.Homepage.Logger' ),
-		NewcomerTaskLogger = require( './suggestededits/ext.growthExperiments.NewcomerTaskLogger.js' ),
-		QualityGate = require( './suggestededits/QualityGate.js' ),
+		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
+		QualityGate = require( '../ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js' ),
 		ImageSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js' ),
 		LinkSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js' ),
-		TaskTypesAbFilter = require( './suggestededits/TaskTypesAbFilter.js' ),
+		TaskTypesAbFilter = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
@@ -23,12 +23,12 @@
 	 */
 	function loadExtraDataForSuggestedEdits( suggestedEditsModuleNode, shouldLog ) {
 		// FIXME doesn't belong here; not sure what the right place would be though.
-		var GrowthTasksApi = require( './suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
-			SmallTaskCard = require( './suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js' ),
+		var GrowthTasksApi = require( '../ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js' ),
+			SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js' ),
 			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || null,
 			activationSettings = { 'growthexperiments-homepage-suggestededits-activated': 1 },
 			api = new GrowthTasksApi( {
-				suggestedEditsConfig: require( './suggestededits/config.json' ),
+				suggestedEditsConfig: require( '../ext.growthExperiments.Homepage.SuggestedEdits/config.json' ),
 				isMobile: isMobile,
 				logContext: 'mobilesummary'
 			} );
@@ -146,7 +146,7 @@
 				$summaryModules = $summaryModulesContainer.find( summaryModulesSelector ),
 				// eslint-disable-next-line no-jquery/no-global-selector
 				$overlayModules = $( '.growthexperiments-homepage-overlay-container' ),
-				MobileOverlay = require( './ext.growthExperiments.Homepage.MobileOverlay.js' ),
+				MobileOverlay = require( './MobileOverlay.js' ),
 				OverlayManager = mw.mobileFrontend.require( 'mobile.startup' ).OverlayManager,
 				router = require( 'mediawiki.router' ),
 				overlayManager = OverlayManager.getSingleton(),

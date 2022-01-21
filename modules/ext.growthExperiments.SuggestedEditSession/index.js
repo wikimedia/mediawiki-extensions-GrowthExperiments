@@ -73,8 +73,10 @@
 		this.helpPanelShouldOpen = true;
 		/** @member {string|null} The current help panel tip visible. */
 		this.helpPanelCurrentTip = null;
-		/** @member {boolean} Whether the user interacted with the help panel in
-		 * the suggested edits screen by navigating or clicking tips. */
+		/**
+		 * @member {boolean} Whether the user interacted with the help panel in
+		 * the suggested edits screen by navigating or clicking tips.
+		 */
 		this.helpPanelSuggestedEditsInteractionHappened = false;
 		/** @member {boolean} Whether the article should be opened in edit mode after loading. */
 		this.shouldOpenArticleInEditMode = false;

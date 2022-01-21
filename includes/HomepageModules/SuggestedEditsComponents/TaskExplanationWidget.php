@@ -12,7 +12,7 @@ use OOUI\Widget;
 /**
  * Server-side rendering of the TaskExplanationWidget in Suggested Edits.
  *
- * Corresponds roughly to ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanationWidget.js
+ * Corresponds roughly to TaskExplanationWidget.js
  */
 class TaskExplanationWidget extends Widget {
 

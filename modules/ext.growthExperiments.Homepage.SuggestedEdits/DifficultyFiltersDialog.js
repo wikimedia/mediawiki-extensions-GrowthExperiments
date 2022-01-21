@@ -1,8 +1,8 @@
 'use strict';
 
 var DifficultyFiltersDialog,
-	ArticleCountWidget = require( './ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
-	TaskTypeSelectionWidget = require( './ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js' );
+	ArticleCountWidget = require( './ArticleCountWidget.js' ),
+	TaskTypeSelectionWidget = require( './TaskTypeSelectionWidget.js' );
 
 /**
  * Class for handling UI changes to difficulty filters.

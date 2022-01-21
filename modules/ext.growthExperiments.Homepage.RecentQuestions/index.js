@@ -31,7 +31,7 @@
 		var sourceName = 'mentor',
 			moduleName = 'mentorship',
 			storage = 'growthexperiments-' + sourceName + '-questions',
-			$overlay = mw.loader.getState( 'ext.growthExperiments.Homepage.Mobile' ) === 'ready' ?
+			$overlay = mw.loader.getState( 'ext.growthExperiments.Homepage.mobile' ) === 'ready' ?
 				// eslint-disable-next-line no-jquery/no-global-selector
 				$( '.homepage-module-overlay .overlay-content' ) :
 				// eslint-disable-next-line no-jquery/no-global-selector

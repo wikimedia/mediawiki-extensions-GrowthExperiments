@@ -1,7 +1,7 @@
 @import 'mediawiki.mixins';
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
-@import '../../ext.growthExperiments.Homepage.styles/variables.less';
-@import '../../ext.growthExperiments.Homepage.styles/mixins.less';
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'variables.less';
+@import 'mixins.less';
 
 .mw-ge-small-task-card {
 	display: flex;
@@ -29,16 +29,16 @@
 
 		&-placeholder {
 			/* @embed */
-			background: url( ../../../images/suggestededits/placeholder-image.svg ) no-repeat center/40px, @wmui-color-base80;
+			background: url( ../../images/suggestededits/placeholder-image.svg ) no-repeat center/40px, @wmui-color-base80;
 
 			.mw-ge-tasktype-image-recommendation & {
 				/* @embed */
-				background: url( ../../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
+				background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
 
 				html:lang( he ) & {
 					// Use LTR asset for Hebrew since it contains a question mark
 					/* @noflip */
-					background: url( ../../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
+					background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
 				}
 			}
 		}

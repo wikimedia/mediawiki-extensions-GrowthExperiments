@@ -36,7 +36,7 @@
 		.on( 'click', '[data-link-id], [data-link-group-id] a', handleClick );
 
 	// If we're on mobile and the initial URI specifies a module to navigate to, let
-	// ext.growthExperiments.Homepage.Mobile.js log the intiial impression for only that module.
+	// ext.growthExperiments.Homepage.mobile/index.js log the initial impression for only that module.
 	// Otherwise, log impressions for all modules.
 	if ( !mw.config.get( 'homepagemobile' ) || !routeMatchesModule ) {
 		$modules.each( logImpression );

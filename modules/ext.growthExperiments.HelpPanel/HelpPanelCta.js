@@ -2,7 +2,7 @@
 	var Help = require( 'ext.growthExperiments.Help' ),
 		HelpPanelButton = require( '../ui-components/HelpPanelButton.js' ),
 		Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
-		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
+		TaskTypesAbFilter = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		HelpPanelLogger = Help.HelpPanelLogger,
 		HelpPanelProcessDialog = Help.HelpPanelProcessDialog,
@@ -20,7 +20,7 @@
 	if ( guidanceEnabled && suggestedEditSession.active &&
 		!suggestedEditSession.postEditDialogNeedsToBeShown
 	) {
-		require( './../homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js' );
+		require( './SuggestedEditsGuidance.js' );
 	}
 	taskTypeId = suggestedEditSession.taskType;
 	taskTypeLogData = taskTypeId ? { taskType: taskTypeId } : null;

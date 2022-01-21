@@ -48,7 +48,7 @@
 	function areImageRecommendationsEnabled() {
 		var config = require( './config.json' ),
 			taskTypes = require( './TaskTypes.json' ),
-			Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
+			Utils = require( '../utils/ext.growthExperiments.Utils.js' );
 		return config.GEImageRecommendationsEnabled &&
 			IMAGE_RECOMMENDATION_TASK_TYPE in taskTypes &&
 			Utils.isUserInVariant( [ IMAGE_RECOMMENDATION_VARIANT ] );
@@ -60,7 +60,7 @@
 	 * @return {boolean}
 	 */
 	function areDesktopImageRecommendationsEnabled() {
-		var Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
+		var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
 		return areImageRecommendationsEnabled() && Utils.isUserEligibleForAddImageDesktop();
 	}
 

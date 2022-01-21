@@ -2,7 +2,7 @@
 	'use strict';
 	var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
-		topicData = require( '../Topics.json' );
+		topicData = require( './Topics.json' );
 
 	/**
 	 * @param {Object} config Configuration options
@@ -15,8 +15,8 @@
 	 */
 	function SuggestedEditsFiltersWidget( config, logger ) {
 		var DifficultyFiltersDialog =
-				require( './ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js' ),
-			TopicFiltersDialog = require( './ext.growthExperiments.Homepage.SuggestedEdits.TopicFiltersDialog.js' ),
+				require( './DifficultyFiltersDialog.js' ),
+			TopicFiltersDialog = require( './TopicFiltersDialog.js' ),
 			windowManager = new OO.ui.WindowManager( { modal: true } ),
 			windows = [],
 			buttonWidgets = [];

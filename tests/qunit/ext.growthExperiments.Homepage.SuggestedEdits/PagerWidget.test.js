@@ -1,11 +1,11 @@
 'use strict';
 
-const pathToWidget = '../../../../modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js';
+const pathToWidget = '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js';
 const SuggestedEditPagerWidget = require( pathToWidget );
 
 let sandbox, suggestedEditPagerWidget;
 
-QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js', QUnit.newMwEnvironment( {
+QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js', QUnit.newMwEnvironment( {
 	beforeEach() {
 		sandbox = sinon.sandbox.create();
 		suggestedEditPagerWidget = new SuggestedEditPagerWidget();

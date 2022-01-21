@@ -1,8 +1,8 @@
 @import 'mediawiki.ui/variables.less';
 @import 'mediawiki.mixins.less';
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
-@import '../../ext.growthExperiments.Homepage.styles/variables.less';
-@import '../../ext.growthExperiments.Homepage.styles/mixins.less';
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'variables.less';
+@import 'mixins.less';
 
 // The following variables are defined in HomepageHooks::lessCallback, as their
 // values vary between Minerva and Vector.
@@ -406,20 +406,20 @@ body.mw-special-Homepage {
 		.se-card-end-of-queue {
 			.se-card-image {
 				/* @embed */
-				background: url( ../../../images/end-of-queue.svg ) no-repeat center center;
+				background: url( ../../images/end-of-queue.svg ) no-repeat center center;
 			}
 		}
 
 		.se-card-no-results {
 			.se-card-image {
 				/* @embed */
-				background: url( ../../../images/no-results.svg ) no-repeat center center;
+				background: url( ../../images/no-results.svg ) no-repeat center center;
 			}
 		}
 
 		.se-card-error {
 			.se-card-image {
-				background: url( ../../../images/suggestededits/error-message.svg ) no-repeat center center;
+				background: url( ../../images/suggestededits/error-message.svg ) no-repeat center center;
 			}
 		}
 
@@ -540,7 +540,7 @@ body.mw-special-Homepage {
 						&.no-image {
 							// This is also used during loading, with .skeleton added to it.
 							background-color: @colorGray14;
-							background-image: url( ../../../images/suggestededits/placeholder-image.svg );
+							background-image: url( ../../images/suggestededits/placeholder-image.svg );
 							background-repeat: no-repeat;
 							background-position: center center;
 							background-size: 60px;
@@ -548,7 +548,7 @@ body.mw-special-Homepage {
 
 						&.mw-ge-tasktype-image-recommendation {
 							background-color: @wmui-color-base30;
-							background-image: url( ../../../images/addimage/placeholder-with-question-mark-ltr.svg ), url( ../../../images/addimage/commons.svg );
+							background-image: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ), url( ../../images/addimage/commons.svg );
 							background-repeat: no-repeat;
 							background-position: center center, right 12px bottom 12px;
 							background-size: 75px, 100px;
@@ -556,7 +556,7 @@ body.mw-special-Homepage {
 							html:lang( he ) & {
 								// Use LTR asset for Hebrew since it contains a question mark
 								/* @noflip */
-								background-image: url( ../../../images/addimage/placeholder-with-question-mark-ltr.svg ), url( ../../../images/addimage/commons.svg );
+								background-image: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ), url( ../../images/addimage/commons.svg );
 							}
 						}
 					}
@@ -662,7 +662,7 @@ body.mw-special-Homepage {
 			.suggested-edits-icon {
 				width: 64px;
 				// Image URLs are relative to the current CSS
-				background-image: url( ../../../images/suggestededits/Topic-general-64w.svg );
+				background-image: url( ../../images/suggestededits/Topic-general-64w.svg );
 				background-repeat: no-repeat;
 				padding-right: 16px;
 			}
@@ -694,7 +694,7 @@ body.mw-special-Homepage {
 			.oo-ui-iconElement .oo-ui-iconElement-icon {
 				// Use an unpadded version of the info icon on mobile (T236854)
 				/* @embed */
-				background-image: url( ../../../images/info-unpadded.svg );
+				background-image: url( ../../images/info-unpadded.svg );
 				max-width: 20px;
 			}
 		}

@@ -1,8 +1,8 @@
 'use strict';
 
 var TopicFiltersDialog,
-	ArticleCountWidget = require( './ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
-	TopicSelectionWidget = require( '../ext.growthExperiments.Homepage.TopicSelectionWidget.js' );
+	ArticleCountWidget = require( './ArticleCountWidget.js' ),
+	TopicSelectionWidget = require( './TopicSelectionWidget.js' );
 
 /**
  * Class for handling UI changes to topic filters.

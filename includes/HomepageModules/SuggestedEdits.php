@@ -787,9 +787,7 @@ class SuggestedEdits extends BaseModule {
 	protected function getModules() {
 		return array_merge(
 			parent::getModules(),
-			[ 'ext.growthExperiments.Homepage.SuggestedEdits' ],
-			// The code to infuse the info button is in the StartEditing module
-			[ 'ext.growthExperiments.Homepage.StartEditing' ]
+			[ 'ext.growthExperiments.Homepage.SuggestedEdits' ]
 		);
 	}
 

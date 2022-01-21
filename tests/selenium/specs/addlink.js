@@ -18,7 +18,7 @@ describe( 'add link', function () {
 		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'Douglas Adams' );
 		HomepagePage.suggestedEditsCard.waitForClickable();
 		HomepagePage.suggestedEditsCard.click();
-		AddLinkArticlePage.linkInspector.waitForDisplayed( { timeout: 20000 } );
+		AddLinkArticlePage.linkInspector.waitForDisplayed( { timeout: 30000 } );
 		AddLinkArticlePage.linkInspector.waitForClickable( { timeout: 20000 } );
 		AddLinkArticlePage.yesButton.waitForDisplayed();
 		AddLinkArticlePage.yesButton.click();
