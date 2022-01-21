@@ -97,6 +97,7 @@ class QuestionRecord implements JsonSerializable {
 		return $this->timestamp;
 	}
 
+	#[\ReturnTypeWillChange]
 	public function jsonSerialize() {
 		return [
 			'questionText' => $this->getQuestionText(),
