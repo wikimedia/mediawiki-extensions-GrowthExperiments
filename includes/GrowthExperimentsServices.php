@@ -19,6 +19,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -163,6 +164,10 @@ class GrowthExperimentsServices {
 
 	public function getMentorManager(): MentorManager {
 		return $this->coreServices->get( 'GrowthExperimentsMentorManager' );
+	}
+
+	public function getMentorProvider(): MentorProvider {
+		return $this->coreServices->get( 'GrowthExperimentsMentorProvider' );
 	}
 
 	public function getMentorStatusManager(): MentorStatusManager {

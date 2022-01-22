@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
@@ -12,6 +13,9 @@ use MediaWiki\User\UserIdentity;
 class QuitMentorshipFactory {
 	/** @var MentorManager */
 	private $mentorManager;
+
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var MentorStore */
 	private $mentorStore;
@@ -27,6 +31,7 @@ class QuitMentorshipFactory {
 
 	/**
 	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
 	 * @param ChangeMentorFactory $changeMentorFactory
 	 * @param PermissionManager $permissionManager
@@ -34,12 +39,14 @@ class QuitMentorshipFactory {
 	 */
 	public function __construct(
 		MentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
 		ChangeMentorFactory $changeMentorFactory,
 		PermissionManager $permissionManager,
 		JobQueueGroupFactory $jobQueueGroupFactory
 	) {
 		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->mentorStore = $mentorStore;
 		$this->changeMentorFactory = $changeMentorFactory;
 		$this->permissionManager = $permissionManager;
@@ -57,6 +64,7 @@ class QuitMentorshipFactory {
 	): QuitMentorship {
 		$quitMentorship = new QuitMentorship(
 			$this->mentorManager,
+			$this->mentorProvider,
 			$this->mentorStore,
 			$this->changeMentorFactory,
 			$this->permissionManager,

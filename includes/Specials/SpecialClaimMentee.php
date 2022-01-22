@@ -5,9 +5,7 @@ namespace GrowthExperiments\Specials;
 use Config;
 use FormSpecialPage;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
-use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\Mentorship\MentorPageMentorManager;
-use GrowthExperiments\WikiConfigException;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use Html;
 use Linker;
 use MediaWiki\Logger\LoggerFactory;
@@ -28,13 +26,8 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 */
 	private $newMentor;
 
-	/**
-	 * @var string[]|null List of mentors that can be assigned.
-	 */
-	private $mentorsList;
-
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var ChangeMentorFactory */
 	private $changeMentorFactory;
@@ -43,17 +36,18 @@ class SpecialClaimMentee extends FormSpecialPage {
 	private $wikiConfig;
 
 	/**
-	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 * @param ChangeMentorFactory $changeMentorFactory
 	 * @param Config $wikiConfig
 	 */
 	public function __construct(
-		MentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		ChangeMentorFactory $changeMentorFactory,
 		Config $wikiConfig
 	) {
 		parent::__construct( 'ClaimMentee' );
-		$this->mentorManager = $mentorManager;
+
+		$this->mentorProvider = $mentorProvider;
 		$this->changeMentorFactory = $changeMentorFactory;
 		$this->wikiConfig = $wikiConfig;
 	}
@@ -99,59 +93,28 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function userCanExecute( User $user ) {
-		try {
-			$this->mentorsList = $this->mentorManager->getMentors();
-		} catch ( WikiConfigException $wikiConfigException ) {
-			return false;
-		}
-		return in_array( $user->getName(), $this->mentorsList );
+		return $this->mentorProvider->isMentor( $user );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function displayRestrictionError() {
-		if ( $this->mentorsList === null ) {
+		$signupTitle = $this->mentorProvider->getSignupTitle();
+
+		if ( $signupTitle === null ) {
 			throw new PermissionsError(
 				null,
 				[ 'growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic' ]
 			);
 		}
 
-		if ( $this->mentorManager instanceof MentorPageMentorManager ) {
-			// User is not signed up at a page
-			if ( $this->mentorManager->getManuallyAssignedMentorsPage() !== null ) {
-				// User is not signed up at either auto-assignment page, or the manual page
-				$error = [ 'growthexperiments-homepage-claimmentee-must-be-mentor-two-lists',
-					$this->getUser(),
-					str_replace(
-						'_',
-						' ',
-						$this->wikiConfig->get( 'GEHomepageMentorsList' )
-					),
-					str_replace(
-						'_',
-						' ',
-						$this->wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' )
-					)
-				];
-			} else {
-				// User is not signed up at the auto assignment page
-				$error = [ 'growthexperiments-homepage-claimmentee-must-be-mentor',
-					$this->getUser(),
-					str_replace(
-						'_',
-						' ',
-						$this->wikiConfig->get( 'GEHomepageMentorsList' )
-					)
-				];
-			}
-		} else {
-			// User is just not a mentor, display a generic access denied message - no details available
-			$error = [ 'growthexperiments-homepage-claimmentee-must-be-mentor-generic', $this->getUser() ];
-		}
-
-		throw new PermissionsError( null, [ $error ] );
+		throw new PermissionsError(
+			null,
+			[ [ 'growthexperiments-homepage-claimmentee-must-be-mentor',
+				$this->getUser()->getName(),
+				$signupTitle->getPrefixedText() ] ]
+		);
 	}
 
 	/**

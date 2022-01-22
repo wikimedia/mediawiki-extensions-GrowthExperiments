@@ -6,7 +6,6 @@ use Content;
 use DerivativeContext;
 use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -19,7 +18,6 @@ use ParserOutput;
 use PHPUnit\Framework\MockObject\MockObject;
 use RequestContext;
 use Title;
-use Wikimedia\TestingAccessWrapper;
 use WikiPage;
 
 /**
@@ -51,45 +49,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 			[ 'Mentor|list', 'wgGEHomepageMentorsList is invalid' ],
 			[ 'NonExistentPage', 'Page defined by wgGEHomepageMentorsList does not exist' ],
 		];
-	}
-
-	/**
-	 * @covers ::getAutoAssignedMentors
-	 * @dataProvider provideEmptyMentorsList
-	 * @param string $mentorListConfig
-	 */
-	public function testGetAutoAssignedMentorsForEmptyMentorList( $mentorListConfig ) {
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', $mentorListConfig );
-		$mentorManager = $this->getMentorManager();
-
-		$this->assertCount( 0, $mentorManager->getAutoAssignedMentors() );
-	}
-
-	public function provideEmptyMentorsList() {
-		return [
-			[ '' ],
-			[ null ]
-		];
-	}
-
-	/**
-	 * @covers ::getAutoAssignedMentors
-	 */
-	public function testGetAutoAssignedMentors() {
-		$firstMentor = $this->getMutableTestUser()->getUser();
-		$secondMentor = $this->getMutableTestUser()->getUser();
-
-		$this->insertPage(
-			'MentorsList',
-			'[[User:' . $firstMentor->getName() . ']]
-			[[User:' . $secondMentor->getName() . ']]'
-		);
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-
-		$this->assertArrayEquals(
-			[ $firstMentor->getName(), $secondMentor->getName() ],
-			$this->getMentorManager()->getAutoAssignedMentors()
-		);
 	}
 
 	/**
@@ -252,28 +211,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
-	 */
-	public function testGetMentorsNoInvalidUsers() {
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$mentorUser = $this->getMutableTestUser()->getUser();
-		$secondMentor = $this->getMutableTestUser()->getUser();
-		$this->insertPage(
-			'MentorsList',
-			'[[User:' . $mentorUser->getName() . ']]
-			[[User:' . $secondMentor->getName() . ']]
-			[[User:This user does not exist]]'
-		);
-		$mentorManager = $this->getMentorManager();
-
-		$autoAssignedMentors = $mentorManager->getAutoAssignedMentors();
-		$this->assertArrayEquals( [
-			$mentorUser->getName(),
-			$secondMentor->getName(),
-		], $autoAssignedMentors );
-	}
-
-	/**
 	 * @covers ::getMentorshipStateForUser
 	 */
 	public function testGetMentorshipStateForUser() {
@@ -339,70 +276,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers ::getWeightedAutoAssignedMentors
-	 */
-	public function testGetWeightedAutoAssignedMentors() {
-		$mentorHigh = $this->getMutableTestUser()->getUser();
-		$mentorLow = $this->getMutableTestUser()->getUser();
-		$this->insertPage(
-			'MentorsList',
-			'[[User:' . $mentorHigh->getName() . ']]
-			[[User:' . $mentorLow->getName() . ']]'
-		);
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$uom = $this->getServiceContainer()->getUserOptionsManager();
-		$manager = TestingAccessWrapper::newFromObject( $this->getMentorManager() );
-
-		// first, test without setting any weights
-		$this->assertArrayEquals(
-			[
-				$mentorHigh->getName(),
-				$mentorHigh->getName(),
-				$mentorLow->getName(),
-				$mentorLow->getName(),
-			],
-			$manager->getWeightedAutoAssignedMentors()
-		);
-
-		// set high's weight to 4 and check again
-		$uom->setOption(
-			$mentorHigh,
-			MentorWeightManager::MENTORSHIP_WEIGHT_PREF,
-			4
-		);
-		$uom->saveOptions( $mentorHigh );
-		$this->assertArrayEquals(
-			[
-				$mentorHigh->getName(),
-				$mentorHigh->getName(),
-				$mentorHigh->getName(),
-				$mentorHigh->getName(),
-				$mentorLow->getName(),
-				$mentorLow->getName(),
-			],
-			$manager->getWeightedAutoAssignedMentors()
-		);
-
-		// set low's weight to 1 and check again
-		$uom->setOption(
-			$mentorLow,
-			MentorWeightManager::MENTORSHIP_WEIGHT_PREF,
-			1
-		);
-		$uom->saveOptions( $mentorLow );
-		$this->assertArrayEquals(
-			[
-				$mentorHigh->getName(),
-				$mentorHigh->getName(),
-				$mentorHigh->getName(),
-				$mentorHigh->getName(),
-				$mentorLow->getName(),
-			],
-			$manager->getWeightedAutoAssignedMentors()
-		);
-	}
-
-	/**
 	 * @param IContextSource|null $context
 	 * @param array[] $pages title as prefixed text => content
 	 * @return MentorPageMentorManager
@@ -411,25 +284,16 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$coreServices = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
 		$context = $context ?? RequestContext::getMain();
-		$manager = new MentorPageMentorManager(
-			$coreServices->getMainWANObjectCache(),
-			$coreServices->getLocalServerObjectCache(),
+
+		return new MentorPageMentorManager(
 			$growthServices->getMentorStore(),
 			$growthServices->getMentorStatusManager(),
-			$growthServices->getMentorWeightManager(),
-			$coreServices->getTitleFactory(),
-			$pages ? $this->getMockWikiPageFactory( $pages )
-				: $coreServices->getWikiPageFactory(),
-			$coreServices->getUserNameUtils(),
+			$growthServices->getMentorProvider(),
 			$coreServices->getUserIdentityLookup(),
 			$coreServices->getUserOptionsLookup(),
 			$coreServices->getUserOptionsManager(),
-			$coreServices->getContentLanguage(),
-			$growthServices->getGrowthConfig()->get( 'GEHomepageMentorsList' ) ?: null,
-			$growthServices->getGrowthConfig()->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
 			$context->getRequest()->wasPosted()
 		);
-		return $manager;
 	}
 
 	/**

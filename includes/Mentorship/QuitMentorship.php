@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use IContextSource;
@@ -21,6 +22,9 @@ class QuitMentorship {
 
 	/** @var MentorManager */
 	private $mentorManager;
+
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var MentorStore */
 	private $mentorStore;
@@ -42,6 +46,7 @@ class QuitMentorship {
 
 	/**
 	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
 	 * @param ChangeMentorFactory $changeMentorFactory
 	 * @param PermissionManager $permissionManager
@@ -51,6 +56,7 @@ class QuitMentorship {
 	 */
 	public function __construct(
 		MentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
 		ChangeMentorFactory $changeMentorFactory,
 		PermissionManager $permissionManager,
@@ -59,6 +65,7 @@ class QuitMentorship {
 		IContextSource $context
 	) {
 		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->mentorStore = $mentorStore;
 		$this->changeMentorFactory = $changeMentorFactory;
 		$this->permissionManager = $permissionManager;
@@ -72,7 +79,7 @@ class QuitMentorship {
 	 * @return int One of QuitMentorship::STAGE_* constants
 	 */
 	public function getStage(): int {
-		if ( $this->mentorManager->isMentor( $this->mentor ) ) {
+		if ( $this->mentorProvider->isMentor( $this->mentor ) ) {
 			return self::STAGE_LISTED_AS_MENTOR;
 		} elseif ( $this->mentorStore->getMenteesByMentor( $this->mentor ) !== [] ) {
 			return self::STAGE_NOT_LISTED_HAS_MENTEES;

@@ -42,18 +42,6 @@ class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getAutoAssignedMentors
-	 */
-	public function testGetAutoAssignedMentors() {
-		$mentorManager = new StaticMentorManager( [
-			'Foo' => new Mentor( $this->getUser( 'FooMentor' ), 'text 1' ),
-			'Bar' => new Mentor( $this->getUser( 'BarMentor' ), 'text 2' ),
-			'Bar2' => new Mentor( $this->getUser( 'BarMentor' ), 'text 2' ),
-		] );
-		$this->assertSame( [ 'FooMentor', 'BarMentor' ], $mentorManager->getAutoAssignedMentors() );
-	}
-
-	/**
 	 * Creates a mock user.
 	 * @param string $name Must be properly formatted (capitalized, no underscores etc)
 	 * @return User

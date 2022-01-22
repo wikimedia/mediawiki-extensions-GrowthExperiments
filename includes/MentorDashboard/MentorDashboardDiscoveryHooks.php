@@ -3,7 +3,7 @@
 namespace GrowthExperiments\MentorDashboard;
 
 use Config;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\PersonalUrlsHook;
 use MediaWiki\User\UserIdentity;
@@ -17,24 +17,24 @@ class MentorDashboardDiscoveryHooks implements PersonalUrlsHook, BeforePageDispl
 	/** @var Config */
 	private $config;
 
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
 	/**
 	 * @param Config $config
-	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
 		Config $config,
-		MentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->config = $config;
-		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
@@ -48,7 +48,7 @@ class MentorDashboardDiscoveryHooks implements PersonalUrlsHook, BeforePageDispl
 		return $this->config->get( 'GEMentorDashboardEnabled' ) &&
 			$this->config->get( 'GEMentorDashboardDiscoveryEnabled' ) &&
 			$user->isRegistered() &&
-			$this->mentorManager->isMentor( $user );
+			$this->mentorProvider->isMentor( $user );
 	}
 
 	/**

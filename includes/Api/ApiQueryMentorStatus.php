@@ -5,12 +5,12 @@ namespace GrowthExperiments\Api;
 use ApiQuery;
 use ApiQueryBase;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 
 class ApiQueryMentorStatus extends ApiQueryBase {
 
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var MentorStatusManager */
 	private $mentorStatusManager;
@@ -18,18 +18,18 @@ class ApiQueryMentorStatus extends ApiQueryBase {
 	/**
 	 * @param ApiQuery $mainModule
 	 * @param string $moduleName
-	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 * @param MentorStatusManager $mentorStatusManager
 	 */
 	public function __construct(
 		ApiQuery $mainModule,
 		$moduleName,
-		MentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		MentorStatusManager $mentorStatusManager
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
-		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->mentorStatusManager = $mentorStatusManager;
 	}
 
@@ -39,7 +39,7 @@ class ApiQueryMentorStatus extends ApiQueryBase {
 	public function execute() {
 		if (
 			!$this->getConfig()->get( 'GEMentorDashboardEnabled' ) ||
-			!$this->mentorManager->isMentor( $this->getUser() )
+			!$this->mentorProvider->isMentor( $this->getUser() )
 		) {
 			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
 		}

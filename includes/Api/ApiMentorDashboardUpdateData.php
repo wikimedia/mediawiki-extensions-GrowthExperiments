@@ -5,13 +5,13 @@ namespace GrowthExperiments\Api;
 use ApiBase;
 use ApiMain;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewUpdateDataForMentorJob;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use JobQueueGroup;
 
 class ApiMentorDashboardUpdateData extends ApiBase {
 
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var JobQueueGroup */
 	private $jobQueueGroup;
@@ -19,18 +19,18 @@ class ApiMentorDashboardUpdateData extends ApiBase {
 	/**
 	 * @param ApiMain $mainModule
 	 * @param string $moduleName
-	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 * @param JobQueueGroup $jobQueueGroup
 	 */
 	public function __construct(
 		ApiMain $mainModule,
 		$moduleName,
-		MentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		JobQueueGroup $jobQueueGroup
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
-		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->jobQueueGroup = $jobQueueGroup;
 	}
 
@@ -40,7 +40,7 @@ class ApiMentorDashboardUpdateData extends ApiBase {
 	public function execute() {
 		if (
 			!$this->getConfig()->get( 'GEMentorDashboardBackendEnabled' ) ||
-			!$this->mentorManager->isMentor( $this->getUser() )
+			!$this->mentorProvider->isMentor( $this->getUser() )
 		) {
 			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
 		}

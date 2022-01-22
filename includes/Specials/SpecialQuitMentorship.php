@@ -4,7 +4,7 @@ namespace GrowthExperiments\Specials;
 
 use ErrorPageError;
 use FormSpecialPage;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\QuitMentorship;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use HTMLForm;
@@ -21,20 +21,20 @@ class SpecialQuitMentorship extends FormSpecialPage {
 	/** @var int One of QuitMentorship::STAGE_* constants */
 	private $quitMentorshipStage;
 
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/**
 	 * @param QuitMentorshipFactory $quitMentorshipFactory
-	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 */
 	public function __construct(
 		QuitMentorshipFactory $quitMentorshipFactory,
-		MentorManager $mentorManager
+		MentorProvider $mentorProvider
 	) {
 		parent::__construct( 'QuitMentorship', '', false );
 		$this->quitMentorshipFactory = $quitMentorshipFactory;
-		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 	}
 
 	/**
@@ -88,7 +88,7 @@ class SpecialQuitMentorship extends FormSpecialPage {
 	 * @throws ErrorPageError if mentor list is missing
 	 */
 	private function requireMentorList() {
-		if ( !$this->mentorManager->getAutoMentorsListTitle() ) {
+		if ( !$this->mentorProvider->getSignupTitle() ) {
 			throw new ErrorPageError(
 				'growthexperiments-quit-mentorship-title',
 				'growthexperiments-quit-mentorship-misconfigured-missing-list'
@@ -132,7 +132,7 @@ class SpecialQuitMentorship extends FormSpecialPage {
 		if ( $this->quitMentorshipStage === QuitMentorship::STAGE_LISTED_AS_MENTOR ) {
 			return $this->msg(
 				'growthexperiments-quit-mentorship-listed-as-mentor-pretext',
-				$this->mentorManager->getAutoMentorsListTitle()->getPrefixedText()
+				$this->mentorProvider->getSignupTitle()->getPrefixedText()
 			)->parseAsBlock();
 		} elseif ( $this->quitMentorshipStage === QuitMentorship::STAGE_NOT_LISTED_HAS_MENTEES ) {
 			return $this->msg(

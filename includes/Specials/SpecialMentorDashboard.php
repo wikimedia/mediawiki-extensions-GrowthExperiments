@@ -9,7 +9,7 @@ use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\MentorDashboard\MentorDashboardDiscoveryHooks;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Util;
 use Html;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
@@ -37,8 +37,8 @@ class SpecialMentorDashboard extends SpecialPage {
 	/** @var MentorDashboardModuleRegistry */
 	private $mentorDashboardModuleRegistry;
 
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
@@ -48,20 +48,20 @@ class SpecialMentorDashboard extends SpecialPage {
 
 	/**
 	 * @param MentorDashboardModuleRegistry $mentorDashboardModuleRegistry
-	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param JobQueueGroupFactory $jobQueueGroupFactory
 	 */
 	public function __construct(
 		MentorDashboardModuleRegistry $mentorDashboardModuleRegistry,
-		MentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		UserOptionsLookup $userOptionsLookup,
 		JobQueueGroupFactory $jobQueueGroupFactory
 	) {
 		parent::__construct( 'MentorDashboard' );
 
 		$this->mentorDashboardModuleRegistry = $mentorDashboardModuleRegistry;
-		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
 	}
@@ -134,7 +134,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	 * @throws ErrorPageError if mentor list is missing
 	 */
 	private function requireMentorList() {
-		if ( !$this->mentorManager->getAutoMentorsListTitle() ) {
+		if ( !$this->mentorProvider->getSignupTitle() ) {
 			throw new ErrorPageError(
 				'growthexperiments-mentor-dashboard-title',
 				'growthexperiments-mentor-dashboard-misconfigured-missing-list'
@@ -249,7 +249,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	public function userCanExecute( User $user ) {
 		// Require both enabled wiki config and user-specific access level to
 		// be able to use the special page.
-		return $this->mentorManager->isMentor( $this->getUser() ) &&
+		return $this->mentorProvider->isMentor( $this->getUser() ) &&
 			parent::userCanExecute( $user );
 	}
 
@@ -257,10 +257,19 @@ class SpecialMentorDashboard extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function displayRestrictionError() {
+		$signupTitle = $this->mentorProvider->getSignupTitle();
+
+		if ( $signupTitle === null ) {
+			throw new PermissionsError(
+				null,
+				[ 'growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic' ]
+			);
+		}
+
 		throw new PermissionsError(
 			null,
 			[ [ 'growthexperiments-mentor-dashboard-must-be-mentor',
-				$this->mentorManager->getAutoMentorsListTitle()->getPrefixedText() ] ]
+				$signupTitle->getPrefixedText() ] ]
 		);
 	}
 }
