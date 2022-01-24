@@ -239,6 +239,13 @@
 			 * Show welcome drawer for users who haven't already seen it.
 			 */
 			function maybeShowWelcomeDrawer() {
+				function setPreventScrolling( shouldPreventScrolling ) {
+					if ( shouldPreventScrolling ) {
+						document.body.classList.add( 'stop-scrolling' );
+					} else {
+						document.body.classList.remove( 'stop-scrolling' );
+					}
+				}
 				// Even though this drawer isn't really a tour, we reuse the preference
 				// set on desktop since if the user has seen the tour on desktop they
 				// should not see the drawer on mobile, and vice versa.
@@ -293,6 +300,7 @@
 					],
 					onBeforeHide: function () {
 						markAsSeen();
+						setPreventScrolling( false );
 						if ( !buttonClicked ) {
 							homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close',
 								{ type: 'outside-click' } );
@@ -317,8 +325,9 @@
 						} );
 					}
 					welcomeDrawer.hide();
+					setPreventScrolling( false );
 				} );
-				welcomeDrawer.show();
+				welcomeDrawer.show().then( setPreventScrolling.bind( null, true ) );
 				homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-impression' );
 			}
 
