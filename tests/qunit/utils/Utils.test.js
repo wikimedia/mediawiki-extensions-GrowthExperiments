@@ -1,6 +1,6 @@
 'use strict';
 
-const Utils = require( '../../../modules/utils/ext.growthExperiments.Utils.js' );
+const Utils = require( '../../../modules/utils/Utils.js' );
 
 QUnit.module( 'ext.growthExperiments.Utils.js', QUnit.newMwEnvironment() );
 

@@ -1,7 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
 	SuggestionsArticleTarget = StructuredTask.SuggestionsArticleTarget,
-	removeQueryParam = require( '../utils/ext.growthExperiments.Utils.js' ).removeQueryParam;
+	removeQueryParam = require( '../utils/Utils.js' ).removeQueryParam;
 
 /**
  * MobileArticleTarget where the user can only switch between visual and machine suggestions modes

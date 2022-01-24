@@ -5,7 +5,7 @@
  * ResourceLoader module definitions are expensive. Instead, when including it into some module,
  * include the following files together:
  * - scripts: ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js,
- *   utils/ext.growthExperiments.IconUtils.js
+ *   utils/IconUtils.js
  * - styles: ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.less
  * - messages: growthexperiments-homepage-suggestededits-pageviews
  * - dependencies: oojs-ui.styles.icons-media, ext.growthExperiments.icons
@@ -14,7 +14,7 @@
  * callback to get the taskTypes parameter.
  */
 ( function () {
-	var IconUtils = require( '../utils/ext.growthExperiments.IconUtils.js' );
+	var IconUtils = require( '../utils/IconUtils.js' );
 
 	/**
 	 * @class mw.libs.ge.SmallTaskCard

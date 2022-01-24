@@ -1,7 +1,7 @@
 module.exports = ( function () {
 	'use strict';
 
-	var Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
+	var Utils = require( '../utils/Utils.js' ),
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),

@@ -9,7 +9,7 @@
  */
 ( function () {
 
-	var formatTitle = require( '../utils/ext.growthExperiments.Utils.js' ).formatTitle;
+	var formatTitle = require( '../utils/Utils.js' ).formatTitle;
 
 	/**
 	 * @typedef {Object} mw.libs.ge.TaskData

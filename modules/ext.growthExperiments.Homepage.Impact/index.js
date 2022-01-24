@@ -70,7 +70,7 @@
 				} );
 				return;
 			}
-			// TODO: Make the following lines sharable via ext.growthExperiments.Utils.js
+			// TODO: Make the following lines sharable via Utils.js
 			window.history.replaceState( null, null, modulePath );
 			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 		};

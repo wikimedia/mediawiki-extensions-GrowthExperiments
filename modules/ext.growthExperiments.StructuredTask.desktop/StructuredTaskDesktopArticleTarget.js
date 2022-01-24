@@ -1,7 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskArticleTarget = StructuredTask.StructuredTaskArticleTarget,
 	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
-	Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+	Utils = require( '../utils/Utils.js' );
 
 /**
  * DesktopArticleTarget for structured task editing flow

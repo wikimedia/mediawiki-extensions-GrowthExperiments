@@ -189,7 +189,7 @@ StructuredTaskToolbarDialog.prototype.getSuggestionLogActionData = function () {
  * Navigate to suggested edits feed
  */
 StructuredTaskToolbarDialog.prototype.goToSuggestedEdits = function () {
-	var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+	var Utils = require( '../utils/Utils.js' );
 	window.location.href = Utils.getSuggestedEditsFeedUrl( 'suggestion-skip' );
 };
 

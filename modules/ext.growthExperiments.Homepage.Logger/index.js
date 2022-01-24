@@ -1,6 +1,6 @@
 ( function () {
 
-	var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+	var Utils = require( '../utils/Utils.js' );
 
 	/**
 	 * @param {boolean} enabled
