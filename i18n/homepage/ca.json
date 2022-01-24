@@ -12,11 +12,13 @@
 			"Skurz0",
 			"Townie",
 			"Vfc",
-			"Xavier Dengra"
+			"Xavier Dengra",
+			"Toniher"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hola}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Espai de progrés d'usuari",
+	"prefs-homepage": "Espai de progrés d'usuari",
 	"growthexperiments-homepage-enable": "Mostra l'espai de progrés d'usuari",
 	"growthexperiments-homepage-email-header-noemail": "Afegiu la {{GENDER:$1|vostra}} adreça de correu electrònic",
 	"growthexperiments-homepage-email-header-unconfirmed": "Confirmeu la {{GENDER:$1|vostra}} adreça de correu electrònic",

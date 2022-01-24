@@ -107,7 +107,7 @@
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "সাহায্যকেন্দ্রে আপনার প্রশ্ন দেখুন",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "আপনার প্রশ্নের বিজ্ঞপ্তি:",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "উত্তর দেওয়া হলে আপনি {{SITENAME}} থেকে একটি বিজ্ঞপ্তি পাবেন।",
-	"growthexperiments-help-panel-questioncomplete-notifications-email": "আপনি $1-এ একটি ইমেইল পাবেন ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "এছাড়া আপনি $1 ঠিকানায় একটি ইমেইল পাবেন ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "পরিবর্তন করুন",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "যদি {{GENDER:$2|আপনি}} ইমেইলের মাধ্যমেও বিজ্ঞপ্তি পেতে চান, তবে এখনি আপনার ইমেইল ঠিকানা নিশ্চিত করুন: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "আপনার ইমেইল ঠিকানা নিশ্চিত করুন",
