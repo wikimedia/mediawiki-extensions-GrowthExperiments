@@ -14,7 +14,7 @@ const getMetadata = ( overrides = {} ) => {
 		fullUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/HMS_Pandora.jpg',
 		originalWidth: 1024,
 		originalHeight: 768,
-		mustRender: true,
+		mustRender: false,
 		isVectorized: false,
 		...overrides
 	};
@@ -59,6 +59,36 @@ QUnit.test( 'getRenderData: the image file needs to be re-rasterized', function 
 		AddImageUtils.getImageRenderData( metadata, viewport ), {
 			src: getThumbUrl( viewport.innerWidth * viewport.devicePixelRatio ),
 			maxWidth: viewport.innerWidth
+		}
+	);
+} );
+
+QUnit.test( 'getRenderData: the image file needs to be re-rasterized, renderWidth > originalWidth', function ( assert ) {
+	const viewport = {
+		innerHeight: 629,
+		innerWidth: 375,
+		devicePixelRatio: 2
+	};
+	const metadata = getMetadata( { mustRender: true, originalWidth: 750 } );
+	assert.deepEqual(
+		AddImageUtils.getImageRenderData( metadata, viewport, 1000 ), {
+			src: getThumbUrl( 750 ),
+			maxWidth: 750
+		}
+	);
+} );
+
+QUnit.test( 'getRenderData: the image file needs to be re-rasterized, renderWidth < originalWidth', function ( assert ) {
+	const viewport = {
+		innerHeight: 629,
+		innerWidth: 375,
+		devicePixelRatio: 2
+	};
+	const metadata = getMetadata( { mustRender: true, originalWidth: 750 } );
+	assert.deepEqual(
+		AddImageUtils.getImageRenderData( metadata, viewport, 500 ), {
+			src: getThumbUrl( 750 ),
+			maxWidth: 500
 		}
 	);
 } );
