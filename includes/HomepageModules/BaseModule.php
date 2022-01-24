@@ -106,6 +106,24 @@ abstract class BaseModule extends DashboardModule {
 	}
 
 	/**
+	 * Gets whether the module will be wrapped in a link to its
+	 * full screen view or not
+	 * @return bool
+	 */
+	public function shouldWrapModuleWithLink(): bool {
+		return $this->shouldWrapModuleWithLink;
+	}
+
+	/**
+	 * Sets whether the module should be wrapped in a link to its
+	 * full screen view or not
+	 * @param bool $shouldWrapModuleWithLink
+	 */
+	public function setShouldWrapModuleWithLink( bool $shouldWrapModuleWithLink ): void {
+		$this->shouldWrapModuleWithLink = $shouldWrapModuleWithLink;
+	}
+
+	/**
 	 * Get an array of data needed by the Javascript code related to this module.
 	 * The data will be available in the 'homepagemodules' JS configuration field, keyed by module name.
 	 * Keys currently in use:
@@ -206,7 +224,7 @@ abstract class BaseModule extends DashboardModule {
 		if (
 			$this->getMode() === self::RENDER_MOBILE_SUMMARY &&
 			$this->supports( self::RENDER_MOBILE_DETAILS ) &&
-			$this->shouldWrapModuleWithLink
+			$this->shouldWrapModuleWithLink()
 		) {
 			return Html::rawElement( 'a', [
 				'href' => $this->getPageURL() . '/' . $this->getName(),

@@ -183,7 +183,7 @@ class SuggestedEdits extends BaseModule {
 		LinkRecommendationFilter $linkRecommendationFilter,
 		ImageRecommendationFilter $imageRecommendationFilter
 	) {
-		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager, false );
+		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->pageViewService = $pageViewService;
@@ -514,6 +514,7 @@ class SuggestedEdits extends BaseModule {
 		$showTaskPreview = $tasks instanceof TaskSet && $tasks->count() > 0;
 
 		if ( $showTaskPreview ) {
+			$this->setShouldWrapModuleWithLink( false );
 			$button = new ButtonWidget( [
 				'label' => $this->getContext()->msg(
 					'growthexperiments-homepage-suggestededits-mobilesummary-footer-button' )->text(),
