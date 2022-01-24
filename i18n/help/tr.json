@@ -12,7 +12,7 @@
 			"ToprakM"
 		]
 	},
-	"growthexperiments-help-panel-tog-help-panel": "Editör yardım panelini etkinleştir",
+	"growthexperiments-help-panel-tog-help-panel": "Düzenleyici yardım panelini etkinleştir",
 	"growthexperiments-help-panel-cta-button-text": "Düzenleme ile ilgili yardım alın",
 	"growthexperiments-help-panel-question-button-text": "Devam et",
 	"growthexperiments-help-panel-submit-question-button-text": "Gönder",
@@ -27,6 +27,7 @@
 	"growthexperiments-help-panel-postedit-success-message-published": "Bir düzenleme yayımladınız. Teşekkürler ve devam edin!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Bir düzenlemeyi kaydettiniz. Teşekkürler ve devam edin!",
 	"growthexperiments-help-panel-postedit-success-message-notsaved": "Önerileri gözden geçirdiğiniz için teşekkürler. Devam edin!",
+	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "Bugünlük bütün bağlantı öneri maddeleri tamamlandı. Tebrikler!",
 	"growthexperiments-help-panel-postedit-header": "Sonraki adımlar",
 	"growthexperiments-help-panel-postedit-subheader-image-recommendation": "Düzenlemenin daha fazla yolu",
 	"growthexperiments-help-panel-postedit-subheader2-image-recommendation": "Başka bir düzenleme türü deneyin veya yarın daha fazla görsel önerisi ile geri gelin.",
@@ -122,6 +123,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Rehber",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Okuyucunun daha fazla bilgi almak isteyebileceği kavramları bağlayın.\n* Bağlantının doğru sayfaya gittiğine emin olun.\n* Genel kelimeleri, yılları ya da tarihleri bağlamayın.\n* Eğer emin {{GENDER:$1|değilseniz}}, atlayın.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Örnek cümle",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "Görseller insanların öğrenmesine yardımcı olur, ancak çoğu maddede yoktur.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "Önerilen görsele bak",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "Maddeye bak",
 	"growthexperiments-help-panel-questioncomplete-title": "Bir soru sor",

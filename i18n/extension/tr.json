@@ -67,6 +67,7 @@
 	"growthexperiments-edit-config-newcomertasks": "Önerilen düzenlemeler",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Bazı önerilen düzenleme türleri, bakım şablonları aracılığıyla ortaya çıkar. Bu şablonları içeren makaleler beslemeye eklenir. Her bir görev türü için kaç makalenin mevcut olduğunu görmek için [[Special:NewcomerTasksInfo|this page]] konusuna bakın.",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Devre dışı",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Site yapılandırmasında devre dışı",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Kopya düzenleme: Yazım, dil bilgisi ve noktalama iyileştirmeleri gibi kopya düzenlemesi gereken maddeleri bulmak için şablonlar.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Kopya düzenleme hakkında daha fazla bilgi edinmek için hedef sayfa.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Genişlet: Genişletilmesi gereken makaleleri bulmak için şablonlar.",
@@ -76,5 +77,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Referanslar: Daha fazla referansa ihtiyaç duyan makaleleri bulmak için şablonlar.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Referans ekleme hakkında daha fazla bilgi edinmek için hedef sayfası.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Güncelleme: Güncel bilgilerle güncellenmesi gereken makaleleri bulmak için şablonlar.",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Makaleleri güncelleme hakkında daha fazla bilgi edinmek için hedef sayfa."
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Makaleleri güncelleme hakkında daha fazla bilgi edinmek için hedef sayfa.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Bilgikutusu şablonları"
 }
