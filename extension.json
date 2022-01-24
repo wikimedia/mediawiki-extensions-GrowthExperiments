@@ -521,15 +521,6 @@
 				"oojs-ui-widgets"
 			]
 		},
-		"ext.growthExperiments.WelcomeSurvey.styles": {
-			"styles": [
-				"ext.growthExperiments.WelcomeSurvey/WelcomeSurvey.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
 		"ext.growthExperiments.HelpPanelCta.styles": {
 			"styles": [
 				"ext.growthExperiments.HelpPanel/HelpPanelCta.less"
@@ -1135,26 +1126,6 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.WelcomeSurvey": {
-			"localBasePath": "modules/ext.growthExperiments.WelcomeSurvey",
-			"remoteExtPath": "extensions/GrowthExperiments/modules/ext.growthExperiments.WelcomeSurvey",
-			"packageFiles": [
-				"index.js",
-				"ULSTagMultiselectWidget.js"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			],
-			"messages": [
-				"welcomesurvey-question-languages-placeholder",
-				"welcomesurvey-question-languages-maximum"
-			],
-			"dependencies": [
-				"oojs-ui-widgets",
-				"mediawiki.router"
-			]
-		},
 		"ext.growthExperiments.Help": {
 			"styles": [
 				"ext.growthExperiments.Help/HelpPanelProcessDialog.less",
@@ -1421,13 +1392,6 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.ConfirmEmail.styles": {
-			"styles": "ext.growthExperiments.ConfirmEmail/ConfirmEmail.less",
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
 		"ext.growthExperiments.Homepage.styles": {
 			"class": "GrowthExperiments\\ResourceLoaderFileModuleWithLessVars",
 			"styles": [
@@ -1441,8 +1405,7 @@
 				"ext.growthExperiments.Homepage.styles/BannerModule.less",
 				"ext.growthExperiments.Homepage.styles/StartEmailModule.less",
 				"ext.growthExperiments.Homepage.styles/Homepage.less",
-				"ext.growthExperiments.Homepage.styles/StartEditingModule.less",
-				"ext.growthExperiments.Homepage.styles/SpecialContributions.less"
+				"ext.growthExperiments.Homepage.styles/StartEditingModule.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [
@@ -1450,19 +1413,33 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.DonorSignupCampaign.styles": {
-			"styles": [
-				"ext.growthExperiments.DonorSignupCampaign/DonorSignupCampaign.less"
+		"ext.growthExperiments.Account": {
+			"packageFiles": [
+				"ext.growthExperiments.Account/index.js",
+				"ext.growthExperiments.Account/ConfirmEmail.js",
+				"ext.growthExperiments.Account/ULSTagMultiselectWidget.js",
+				"ext.growthExperiments.Account/WelcomeSurvey.js"
+			],
+			"messages": [
+				"growthexperiments-confirmemail-emailwarning",
+				"welcomesurvey-question-languages-placeholder",
+				"welcomesurvey-question-languages-maximum"
 			],
 			"targets": [
 				"desktop",
 				"mobile"
+			],
+			"dependencies": [
+				"oojs-ui-widgets",
+				"mediawiki.router"
 			]
 		},
-		"ext.growthExperiments.ConfirmEmail": {
-			"scripts": "ext.growthExperiments.ConfirmEmail/index.js",
-			"messages": [
-				"growthexperiments-confirmemail-emailwarning"
+		"ext.growthExperiments.Account.styles": {
+			"styles": [
+				"ext.growthExperiments.Account.styles/ConfirmEmail.less",
+				"ext.growthExperiments.Account.styles/DonorSignupCampaign.less",
+				"ext.growthExperiments.Account.styles/SpecialContributions.less",
+				"ext.growthExperiments.Account.styles/WelcomeSurvey.less"
 			],
 			"targets": [
 				"desktop",

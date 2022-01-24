@@ -234,7 +234,7 @@ class WelcomeSurvey {
 				"label-message" => "welcomesurvey-question-languages-label",
 				"dependencies" => [
 					"modules" => [
-						"ext.growthExperiments.WelcomeSurvey",
+						"ext.growthExperiments.Account",
 						"ext.uls.mediawiki"
 					]
 				],
