@@ -81,8 +81,8 @@ AddLinkSaveDialog.prototype.initialize = function () {
 
 	this.savePanel.$element.append(
 		this.$summaryTable,
-		this.$copyrightFooter,
-		this.$watchlistFooter
+		this.$watchlistFooter,
+		this.$copyrightFooter
 	);
 };
 
