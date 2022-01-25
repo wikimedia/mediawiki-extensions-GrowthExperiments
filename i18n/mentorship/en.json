@@ -37,7 +37,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Show $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 of $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Mentee data unavailable",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "You may not have any mentees assigned yet. Data updates daily.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "You may not have any mentees assigned yet. Data is updated every three hours.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "No mentees found",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Change your filters to find mentees.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Resources",
