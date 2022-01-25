@@ -1,30 +1,22 @@
 'use strict';
 
-var DifficultyFiltersDialog,
-	ArticleCountWidget = require( './ArticleCountWidget.js' ),
+var FiltersDialog = require( './FiltersDialog.js' ),
 	TaskTypeSelectionWidget = require( './TaskTypeSelectionWidget.js' );
 
 /**
  * Class for handling UI changes to difficulty filters.
  *
- * Emits the following OOJS events:
- * - search: when the filter selection changes. First argument is the list of selected filters.
- * - done: when the dialog is closed (saved). First argument is the list of selected filters.
- * On canceling the dialog, it will emit a search event with the original (pre-opening) filter list
- * if it differs from the filter list at closing, and the filter list at closing is not empty.
+ * @inheritDoc
  *
- * Expects updateMatchCount() to be called back with the number of matches after emitting
- * a search event.
- *
- * @class DifficultyFiltersDialog
- * @param {Object} config
- * @param {Array} config.presets List of enabled task types. Will be updated on close.
+ * @class mw.libs.ge.DifficultyFiltersDialog
+ * @extends mw.libs.ge.FiltersDialog
  */
-DifficultyFiltersDialog = function ( config ) {
+function DifficultyFiltersDialog( config ) {
 	DifficultyFiltersDialog.super.call( this, config );
 	this.config = config;
-};
-OO.inheritClass( DifficultyFiltersDialog, OO.ui.ProcessDialog );
+}
+
+OO.inheritClass( DifficultyFiltersDialog, FiltersDialog );
 
 DifficultyFiltersDialog.static.name = 'difficultyfilters';
 DifficultyFiltersDialog.static.size = 'medium';
@@ -44,23 +36,15 @@ DifficultyFiltersDialog.static.actions = [
 	}
 ];
 
+/** @inheritDoc **/
 DifficultyFiltersDialog.prototype.initialize = function () {
 	DifficultyFiltersDialog.super.prototype.initialize.call( this );
 
-	this.content = new OO.ui.PanelLayout( {
-		padded: true,
-		expanded: false
-	} );
-	this.footerPanelLayout = new OO.ui.PanelLayout( {
-		padded: true,
-		expanded: false
-	} );
 	this.taskTypeSelector = new TaskTypeSelectionWidget( {
 		selectedTaskTypes: this.config.presets,
 		introLinks: require( './config.json' ).GEHomepageSuggestedEditsIntroLinks
 	} ).connect( this, { select: 'onTaskTypeSelect' } );
 	this.content.$element.append( this.taskTypeSelector.$element );
-	this.articleCounter = new ArticleCountWidget();
 	this.footerPanelLayout
 		.toggle( false )
 		.$element.append( this.articleCounter.$element );
@@ -72,6 +56,7 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 /**
  * Return an array of enabled task types to use for searching.
  *
+ * @override
  * @return {string[]}
  */
 DifficultyFiltersDialog.prototype.getEnabledFilters = function () {
@@ -92,11 +77,7 @@ DifficultyFiltersDialog.prototype.onTaskTypeSelect = function ( selected ) {
 	this.emit( 'search', selected );
 };
 
-DifficultyFiltersDialog.prototype.updateMatchCount = function ( count ) {
-	this.articleCounter.setCount( count );
-	this.footerPanelLayout.toggle( true );
-};
-
+/** @override **/
 DifficultyFiltersDialog.prototype.savePreferences = function () {
 	var enabledFilters = this.getEnabledFilters();
 	this.config.presets = enabledFilters;
@@ -106,27 +87,12 @@ DifficultyFiltersDialog.prototype.savePreferences = function () {
 	);
 };
 
-DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
-	return DifficultyFiltersDialog.super.prototype.getActionProcess.call( this, action )
-		.next( function () {
-			if ( action === 'close' ) {
-				this.savePreferences();
-				this.config.presets = this.getEnabledFilters();
-				this.emit( 'done', this.config.presets );
-				this.close( { action: 'done' } );
-			}
-			if ( action === 'cancel' ) {
-				this.updateFiltersFromState();
-				this.emit( 'cancel' );
-				this.close( { action: 'cancel' } );
-			}
-		}, this );
-};
-
+/** @override **/
 DifficultyFiltersDialog.prototype.updateFiltersFromState = function () {
 	this.taskTypeSelector.setSelected( this.config.presets );
 };
 
+/** @inheritDoc **/
 DifficultyFiltersDialog.prototype.getSetupProcess = function ( data ) {
 	return DifficultyFiltersDialog.super.prototype.getSetupProcess.call( this, data )
 		.next( function () {

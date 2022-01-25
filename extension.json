@@ -615,6 +615,7 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/PreviousNextWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/FiltersWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypeSelectionWidget.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/FiltersDialog.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/DifficultyFiltersDialog.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFiltersDialog.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
