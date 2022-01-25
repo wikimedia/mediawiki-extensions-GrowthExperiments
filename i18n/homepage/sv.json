@@ -135,7 +135,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Visa {{GENDER:$2|din}} {{GENDER:$1|fadders}} andra konversationer",
 	"growthexperiments-homepage-mentorship-dialog-title": "Fråga {{GENDER:$2|din}} {{GENDER:$1|fadder}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "När du ställer en fråga kommer den <strong>läggas upp offentligt</strong> under {{GENDER:$1|ditt}} användarnamn, \"$2\", på $3, som är där {{GENDER:$1|han|hon|hen}} kan hitta och svara på din fråga.",
-	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|din}} {{GENDER:$1|fadders}} disussionssida",
+	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|din}} {{GENDER:$1|fadders}} diskussionssida",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Din}} fråga finns nu på din fadders diskussionssida, där {{GENDER:$1|han|hon|hen}} kan besvara den så fort {{GENDER:$1|han|hon|hen}} kan.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Visa {{GENDER:$2|din}} fråga på din {{GENDER:$1|fadders}} diskussionsida.",
 	"growthexperiments-homepage-mentorship-question-subject": "Frågor från [[User:$1|$1]]",

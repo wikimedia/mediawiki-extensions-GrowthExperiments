@@ -56,7 +56,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Kad {{GENDER:|tu}} izveidoji {{GENDER:|savu}} kontu, {{GENDER:|tu}} teici, ka vēlies izveidot jaunu rakstu.</strong> Tas ir svarīgs bet izaicinošs labošanas veids, tāpēc mēs iesakām {{GENDER:|tev}} vispirms izmēģināt dažus vienkāršus labojumus. Ja {{GENDER:|tu}} drīzāk vēlies uzreiz pāriet pie jauna raksta izveides, {{GENDER:|tu}} vari [$1 šeit uzzināt, kā to izdarīt].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Izvēlies dažas tēmas, ko tu vēlētos labot",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Mēs mēģināsim ieteikt {{GENDER:|tavām}} interesēm atbilstošus rakstus.",
-	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrēt pēc tēmas",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrē pēc tēmas",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Izmanto tēmas, lai iegūtu ieteikumus, kas {{GENDER:|tev}} būtu interesanti. {{GENDER:|Tu}} vari izvēlēties tikai vienu tēmu vai vairākas.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Atpakaļ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Saņemt ieteikumus",
