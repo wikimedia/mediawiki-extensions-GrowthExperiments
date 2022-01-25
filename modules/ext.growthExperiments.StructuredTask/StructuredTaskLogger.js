@@ -1,5 +1,5 @@
 var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+	Utils = require( '../utils/Utils.js' );
 
 /**
  * Logger for structured task interactions

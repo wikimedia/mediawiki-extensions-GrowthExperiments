@@ -3,7 +3,7 @@ var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' )
 	CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
 	AnnotationAnimation = require( '../AnnotationAnimation.js' ),
 	suggestedEditsConfig = require( '../../ext.growthExperiments.Homepage.SuggestedEdits/config.json' ),
-	formatTitle = require( '../../utils/ext.growthExperiments.Utils.js' ).formatTitle,
+	formatTitle = require( '../../utils/Utils.js' ).formatTitle,
 	StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' );
 
 /**

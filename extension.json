@@ -424,7 +424,7 @@
 		"ext.growthExperiments.SuggestedEditSession": {
 			"packageFiles": [
 				"ext.growthExperiments.SuggestedEditSession/index.js",
-				"utils/ext.growthExperiments.Utils.js"
+				"utils/Utils.js"
 			],
 			"targets": [
 				"desktop",
@@ -479,8 +479,8 @@
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
-				"utils/ext.growthExperiments.Utils.js",
-				"utils/ext.growthExperiments.IconUtils.js",
+				"utils/Utils.js",
+				"utils/IconUtils.js",
 				{
 					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -531,7 +531,7 @@
 		"ext.growthExperiments.Homepage.Logger": {
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.Logger/index.js",
-				"utils/ext.growthExperiments.Utils.js"
+				"utils/Utils.js"
 			],
 			"dependencies": [
 				"oojs-ui-core",
@@ -630,8 +630,8 @@
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
-				"utils/ext.growthExperiments.Utils.js",
-				"utils/ext.growthExperiments.IconUtils.js",
+				"utils/Utils.js",
+				"utils/IconUtils.js",
 				"ui-components/SuggestedEditsPeek.js",
 				"ui-components/SwipePane.js",
 				{
@@ -832,7 +832,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/AddImageLinearDeleteKeyDownHandler.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js",
-				"utils/ext.growthExperiments.Utils.js",
+				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",
 				{
 					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
@@ -990,7 +990,7 @@
 				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopSaveDialog.js",
 				"ext.growthExperiments.StructuredTask.desktop/MinimizedToolbarDialogButton.js",
-				"utils/ext.growthExperiments.Utils.js"
+				"utils/Utils.js"
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask.desktop/MinimizedToolbarDialogButton.less",
@@ -1020,7 +1020,7 @@
 				"ext.growthExperiments.StructuredTask.mobile/addlink/RecommendedLinkToolbarDialogMobile.js",
 				"ext.growthExperiments.StructuredTask.mobile/addimage/AddImageMobileArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.mobile/addimage/AddImageMobileSaveDialog.js",
-				"utils/ext.growthExperiments.Utils.js",
+				"utils/Utils.js",
 				"ui-components/SwipePane.js"
 			],
 			"dependencies": [
@@ -1050,7 +1050,7 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
 				"ui-components/MultiPaneDialog.js",
 				"ui-components/SwipePane.js",
-				"utils/ext.growthExperiments.Utils.js",
+				"utils/Utils.js",
 				{
 					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
@@ -1130,8 +1130,8 @@
 				"ext.growthExperiments.Help/HelpPanelLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
-				"utils/ext.growthExperiments.Utils.js",
-				"utils/ext.growthExperiments.IconUtils.js",
+				"utils/Utils.js",
+				"utils/IconUtils.js",
 				"ext.growthExperiments.Help/HelpPanelSearchWidget.js",
 				"ext.growthExperiments.Help/HelpPanelHomeButtonWidget.js",
 				"ext.growthExperiments.Help/HelpPanelProcessDialog.js",
@@ -1267,8 +1267,8 @@
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
-				"utils/ext.growthExperiments.Utils.js",
-				"utils/ext.growthExperiments.IconUtils.js",
+				"utils/Utils.js",
+				"utils/IconUtils.js",
 				"ui-components/HelpPanelButton.js",
 				{
 					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
@@ -1332,8 +1332,8 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
-				"utils/ext.growthExperiments.Utils.js",
-				"utils/ext.growthExperiments.IconUtils.js",
+				"utils/Utils.js",
+				"utils/IconUtils.js",
 				{
 					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -1624,8 +1624,8 @@
 		"remoteExtPath": "GrowthExperiments",
 		"packageFiles": [
 			"tests/qunit/index.js",
-			"modules/utils/ext.growthExperiments.Utils.js",
-			"tests/qunit/utils/ext.growthExperiments.Utils.test.js",
+			"modules/utils/Utils.js",
+			"tests/qunit/utils/Utils.test.js",
 			"modules/ext.growthExperiments.Homepage.Logger/index.js",
 			"tests/qunit/ext.growthExperiments.Homepage.Logger/index.test.js",
 			"modules/ext.growthExperiments.Help/HelpPanelLogger.js",

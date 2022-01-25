@@ -1,7 +1,7 @@
 ( function () {
 	var Help = require( 'ext.growthExperiments.Help' ),
 		HelpPanelButton = require( '../ui-components/HelpPanelButton.js' ),
-		Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
+		Utils = require( '../utils/Utils.js' ),
 		TaskTypesAbFilter = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		HelpPanelLogger = Help.HelpPanelLogger,

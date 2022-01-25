@@ -4,7 +4,7 @@
 	var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/' +
 		'SmallTaskCard.js' );
 	var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
-		Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+		Utils = require( '../utils/Utils.js' );
 
 	/**
 	 * @class

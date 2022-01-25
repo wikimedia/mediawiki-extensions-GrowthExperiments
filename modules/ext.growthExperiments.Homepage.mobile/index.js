@@ -131,7 +131,7 @@
 		if ( !query.overlay && !query.source ) {
 			return;
 		}
-		var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+		var Utils = require( '../utils/Utils.js' );
 		Utils.removeQueryParam( uri, [ 'overlay', 'source' ], true );
 	}
 

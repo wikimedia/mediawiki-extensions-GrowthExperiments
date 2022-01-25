@@ -6,7 +6,7 @@
 		mobileFrontend = mw.mobileFrontend,
 		suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
 		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,
-		IconUtils = require( '../utils/ext.growthExperiments.IconUtils.js' );
+		IconUtils = require( '../utils/IconUtils.js' );
 
 	/**
 	 * @param {Object} config

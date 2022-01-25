@@ -1,5 +1,5 @@
 ( function () {
-	var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+	var Utils = require( '../utils/Utils.js' );
 	var states = {
 		/** Initial task state when the user opens a task. */
 		STARTED: 'started',

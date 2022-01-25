@@ -199,6 +199,7 @@
 	 *
 	 * @param {string} [source] How the user arrived Special:Homepage; value should correspond to
 	 *  referer_route enum in HomepageVisit schema
+	 *  @return {string}
 	 */
 	function getSuggestedEditsFeedUrl( source ) {
 		var titleHash = '',
