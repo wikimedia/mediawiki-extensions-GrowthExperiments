@@ -180,7 +180,7 @@ class MentorTools extends BaseModule {
 					Html::element(
 						'h4',
 						[],
-						$this->msg( 'growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline' )
+						$this->msg( 'growthexperiments-mentor-dashboard-mentor-tools-claim-mentee' )
 							->text()
 					),
 					Html::rawElement(
@@ -189,16 +189,9 @@ class MentorTools extends BaseModule {
 							'class' => self::BASE_MODULE_CSS_CLASS . '-claim-mentee'
 						],
 						implode( "\n", [
-							Html::element(
-								'p',
-								[],
-								$this->msg(
-									'growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee'
-								)->text()
-							),
 							new ButtonWidget( [
 								'label' => $this->msg(
-									'growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee'
+									'growthexperiments-mentor-dashboard-mentor-tools-claim-mentee'
 								),
 								'href' => SpecialPage::getTitleFor( 'ClaimMentee' )->getLocalURL()
 							] ),
@@ -208,7 +201,7 @@ class MentorTools extends BaseModule {
 									'class' => self::BASE_MODULE_CSS_CLASS . '-claim-mentee-footer'
 								],
 								$this->msg(
-									'growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee-footer'
+									'growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer'
 								)->text()
 							)
 						] )
