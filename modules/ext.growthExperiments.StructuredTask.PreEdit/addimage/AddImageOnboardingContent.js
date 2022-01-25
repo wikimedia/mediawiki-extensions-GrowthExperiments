@@ -103,34 +103,35 @@ module.exports = ( function () {
 	 * Construct localized title and content for each panel
 	 */
 	function constructPanelData() {
+		var heroImageModifier = OO.ui.isMobile() ? '' : '--desktop';
 		panelData = {
 			intro: {
 				title: mw.message(
 					'growthexperiments-addimage-onboarding-content-intro-title'
 				).text(),
 				$content: getIntroContent(),
-				heroImageClassName: 'addimage-onboarding-content-image1'
+				heroImageClassName: 'addimage-onboarding-content-image1' + heroImageModifier
 			},
 			imageDetails: {
 				title: mw.message(
 					'growthexperiments-addimage-onboarding-content-imagedetails-title'
 				).text(),
 				$content: getImageDetailsContent(),
-				heroImageClassName: 'addimage-onboarding-content-image2'
+				heroImageClassName: 'addimage-onboarding-content-image2' + heroImageModifier
 			},
 			article: {
 				title: mw.message(
 					'growthexperiments-addimage-onboarding-content-article-title'
 				).text(),
 				$content: getArticleContent(),
-				heroImageClassName: 'addimage-onboarding-content-image3'
+				heroImageClassName: 'addimage-onboarding-content-image3' + heroImageModifier
 			},
 			decision: {
 				title: mw.message(
 					'growthexperiments-addimage-onboarding-content-decision-title'
 				).text(),
 				$content: getDecisionContent(),
-				heroImageClassName: 'addimage-onboarding-content-image4'
+				heroImageClassName: 'addimage-onboarding-content-image4' + heroImageModifier
 			}
 		};
 	}
