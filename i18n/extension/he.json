@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"חיים"
 		]
 	},
 	"growthexperiments-desc": "ההרחבה הזאת מכילה ניסויים שעשה צוות הצמיחה.",
@@ -37,7 +38,7 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor": "לאן להפנות שאלות מחלונית העזרה?",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "דפי שיחה של חונכים",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "דלפק העזרה",
-	"growthexperiments-edit-config-help-panel-links": "קישורי חולנית עזרה",
+	"growthexperiments-edit-config-help-panel-links": "קישורי חלונית עזרה",
 	"growthexperiments-edit-config-help-panel-links-description": "חלונית העזרה מציגה חמישה קישורים ועוד קישור \"להציג עוד\". אפשר להגדיר אותם לכל קישור בוויקי, אבל כאן למטה מוצגות כמה המלצות.",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "1. דף היעד עבור הקישור הראשון של חלונית העזרה (מומלץ: מדריך סגנון)",
 	"growthexperiments-edit-config-help-panel-links-mos-label": "1. תווית לקישור הראשון בחלונית העזרה (מומלץ: מדריך הסגנון)",
@@ -52,9 +53,9 @@
 	"growthexperiments-edit-config-homepage": "דף הבית למתחילים",
 	"growthexperiments-edit-config-homepage-intro-links-create": "דף היעד על יצירת ערכים",
 	"growthexperiments-edit-config-homepage-intro-links-image": "דף היעד של קישור על הוספת תמונות בעורך החזותי",
-	"growthexperiments-edit-config-mentorship": "חונכוּת",
+	"growthexperiments-edit-config-mentorship": "חונכות",
 	"growthexperiments-edit-config-mentorship-description": "באתרי ויקי יכולות להיות שתי רשימות חונכים: אחת לחונכים שמוקצים באופן אקראי לכל העורכים החדשים, ואחרת לחונכים שלא מוקצים אקראית, אלא יכולים לקבל חניכים. הרשימה השנייה משמשת לחונכים שרק רוצים להיות חונכים של אנשים באירועים או שיעורים.",
-	"growthexperiments-edit-config-mentorship-enabled": "האם אפשרויות החונכוּת מופעלות?",
+	"growthexperiments-edit-config-mentorship-enabled": "האם אפשרויות החונכות מופעלות?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "כן",
 	"growthexperiments-edit-config-mentorship-enabled-false": "לא",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "דף שמכיל רשימת חונכים שמוקצים אוטומטית",
