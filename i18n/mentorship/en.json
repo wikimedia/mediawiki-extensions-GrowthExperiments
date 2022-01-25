@@ -65,7 +65,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Message to your mentees",
 	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "Other actions",
 	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee": "Claim mentee",
-	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee-footer": "You can change a mentee’s mentor to yourself.",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee-footer": "You can change a mentee’s mentor to yourself. Frequently used for editing events so that instructors can be a newcomer’s mentor both on and off wiki.",
 	"growthexperiments-rcfilters-mentorship-title": "Mentorship",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Your}} starred mentees",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Mentees assigned to {{GENDER:|you}} whom {{GENDER:|you}} have starred on {{GENDER:|your}} mentor dashboard",
@@ -84,10 +84,10 @@
 	"growthexperiments-notification-body-mentee-claimed": "Reason: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "What is \"Claim mentee\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Number of mentees assigned to me",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Half the average",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "About half the average",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Average (the default)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Twice the average",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "About twice the average",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Your}} load was changed to \"$1\".",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Changing to more or less mentees will help {{GENDER:|you}} manage the number of questions {{GENDER:|you}} may expect to answer. However, the number of questions only depends on the motivation of the mentees assigned to you.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "It’s recommended to start on the \"Average\" weighting to gauge your support capacity before changing to the other options."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Mentees are assigned randomly to mentors as their accounts are created.  You can manage how many mentees are assigned to you, but some mentees may ask questions more frequently than others",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "It’s recommended to start on the “Average” setting to gauge your support capacity before increasing or decreasing."
 }
