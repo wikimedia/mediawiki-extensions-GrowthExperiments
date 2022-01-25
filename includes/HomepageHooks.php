@@ -42,6 +42,7 @@ use Html;
 use IBufferingStatsdDataFactory;
 use IContextSource;
 use IDBAccessObject;
+use JobQueueGroup;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
@@ -149,6 +150,8 @@ class HomepageHooks implements
 	private $suggestionsInfo;
 	/** @var PrefixingStatsdDataFactoryProxy */
 	private $perDbNameStatsdDataFactory;
+	/** @var JobQueueGroup */
+	private $jobQueueGroup;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
@@ -164,6 +167,7 @@ class HomepageHooks implements
 	 * @param TitleFactory $titleFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+	 * @param JobQueueGroup $jobQueueGroup
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TrackerFactory $trackerFactory
 	 * @param ExperimentUserManager $experimentUserManager
@@ -185,6 +189,7 @@ class HomepageHooks implements
 		TitleFactory $titleFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
+		JobQueueGroup $jobQueueGroup,
 		ConfigurationLoader $configurationLoader,
 		TrackerFactory $trackerFactory,
 		ExperimentUserManager $experimentUserManager,
@@ -205,6 +210,7 @@ class HomepageHooks implements
 		$this->titleFactory = $titleFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->jobQueueGroup = $jobQueueGroup;
 		$this->configurationLoader = $configurationLoader;
 		$this->trackerFactory = $trackerFactory;
 		$this->experimentUserManager = $experimentUserManager;
@@ -1032,7 +1038,8 @@ class HomepageHooks implements
 		if ( self::isHomepageEnabled( $skin->getUser() ) ) {
 			$siteNoticeGenerator = new SiteNoticeGenerator(
 				$this->experimentUserManager,
-				$this->userOptionsLookup
+				$this->userOptionsLookup,
+				$this->jobQueueGroup
 			);
 			return $siteNoticeGenerator->setNotice(
 				$skin->getRequest()->getVal( 'source' ),

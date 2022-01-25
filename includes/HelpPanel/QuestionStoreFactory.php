@@ -21,6 +21,7 @@ class QuestionStoreFactory {
 			$services->getContentLanguage(),
 			$services->getUserOptionsManager(),
 			$services->getUserOptionsLookup(),
+			$services->getJobQueueGroup(),
 			$context->getRequest()->wasPosted()
 		);
 	}

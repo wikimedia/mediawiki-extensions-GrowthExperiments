@@ -211,6 +211,7 @@
 				"TitleFactory",
 				"StatsdDataFactory",
 				"PerDbNameStatsdDataFactory",
+				"JobQueueGroup",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsNewcomerTaskTrackerFactory",
 				"GrowthExperimentsExperimentUserManager",
