@@ -137,6 +137,9 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @covers ::setNotice
 	 */
 	public function testSetDiscoverySiteNoticeMobileSpecialWelcomeSurveySource() {
+		if ( !class_exists( SkinMinerva::class ) ) {
+			$this->markTestSkipped( 'Minerva is not available.' );
+		}
 		$skinMock = $this->getSkinMock( SkinMinerva::class );
 		$skinMock->getUser()->method( 'getName' )
 			->willReturn( 'Bar' );
@@ -174,6 +177,9 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @covers ::getHeader
 	 */
 	public function testSetDiscoverySiteMobileNoticeWelcomeSurveyOriginalContext() {
+		if ( !class_exists( SkinMinerva::class ) ) {
+			$this->markTestSkipped( 'Minerva is not available.' );
+		}
 		$skinMock = $this->getSkinMock( SkinMinerva::class );
 		$skinMock->getUser()->method( 'getName' )
 			->willReturn( 'Bar' );
