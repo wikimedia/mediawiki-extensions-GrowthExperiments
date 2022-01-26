@@ -857,6 +857,13 @@ class HomepageHooks implements
 				$pageId = $rc->getTitle()->getArticleID();
 				$tracker = $this->trackerFactory->getTracker( $rc->getPerformerIdentity() );
 				$taskType = $tracker->getTaskTypeForPage( $pageId );
+				if ( $taskType
+					&& $this->taskTypeHandlerRegistry->getByTaskType( $taskType ) instanceof StructuredTaskTypeHandler
+					&& !$this->trackerFactory->getTaskTypeOverride()
+				) {
+						// Structured task types are tracked via the override mechanism.
+						$taskType = null;
+				}
 			}
 			if ( $taskType ) {
 				$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
