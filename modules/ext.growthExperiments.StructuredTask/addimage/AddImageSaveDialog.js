@@ -24,7 +24,7 @@ function AddImageSaveDialog() {
 		active_interface: 'editsummary_dialog'
 		/* eslint-enable camelcase */
 	} );
-	/** @property {mw.libs.ge.ImageRecommendationSummary} summaryData **/
+	/** @property {mw.libs.ge.ImageRecommendationSummary} summaryData */
 	this.summaryData = {};
 }
 
@@ -53,8 +53,8 @@ AddImageSaveDialog.prototype.initialize = function () {
 
 	this.savePanel.$element.append(
 		this.$summaryContent,
-		this.$copyrightFooter,
-		this.$watchlistFooter
+		this.$watchlistFooter,
+		this.$copyrightFooter
 	);
 };
 
