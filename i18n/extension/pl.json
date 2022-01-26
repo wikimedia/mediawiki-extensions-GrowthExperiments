@@ -15,6 +15,7 @@
 	"growthexperiments-config-validator-error": "Nie powiodło się sprawdzanie poprawności $1 z powodu: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "oczekiwany typ danych dla <code>$1</code> to <code>$2</code>, ale podano <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "niewłaściwy model zawartości: strona konfiguracji GrowthExperiments musi mieć model zawartości \"JSON\", a obecnie ma $1.",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Błędny identyfikator komponentu obsługującego podany typ zadania. <code>$1</code> nie jest poprawną wartością",
 	"growthexperiments-edit-config-disabled": "Możliwość konfiguracji przez społeczność jest obecnie wyłączona.",
 	"growthexperiments-edit-config-title": "Zmień ustawienia funkcji dla nowicjuszy",
 	"growthexperiments-edit-config-pretext": "Ta strona umożliwia zmianę konfiguracji [[:mw:Special:MyLanguage/Growth|funkcji Growth (wspieranie nowicjuszy)]]. Spowoduje wykonanie edycji na stronie $1 w Twoim imieniu. Zmiany można zobaczyć w historii edycji tejże strony.",

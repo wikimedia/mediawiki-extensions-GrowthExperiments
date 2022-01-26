@@ -55,5 +55,21 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Það eru margar leiðir sem þú getur hjálpað til að gera {{SITENAME}} betri.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Auðveldar",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Miðlungs",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Erfiðar"
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Erfiðar",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Mælt með þegar {{GENDER:$1|þú}} ert að læra fyrstu breytingarnar.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Eftir að {{GENDER:$1|þú}} hefur lokið auðveldum breytingum.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Þegar {{GENDER:$1|þú}} hefur lært um bestu vinnbrögðin á Wikipediu.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Stafsetningarleiðrétting og að bæta við tenglum við aðrar greinar.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Bæta við áreiðanlegum heimildum og uppfæra greinar sem eru úreldar",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Búa til nýjar greinar og stækka smærri greinar.",
+	"growthexperiments-homepage-suggested-edits-header": "Tillögur að breytingum",
+	"growthexperiments-homepage-impact-header": "Áhrifin {{GENDER:$1|þín}}",
+	"growthexperiments-homepage-impact-subheader-text": "Fólk er að skoða greinarnar sem {{GENDER:$1|þú}} breyttir!",
+	"growthexperiments-homepage-impact-subheader-subtext": "Skoðanir frá breytingu {{GENDER:$1|þinni}} (síðustu 60 dagar):",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Þú}} hefur gert <strong>$1</strong> {{PLURAL:$1|breytingu|breytingar}} (sjá allar)",
+	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Þú}} hefur ekki enn búið til eða breytt neinum greinum.",
+	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Þetta svæði sýnir þér hversu oft fólk hefur skoðað greinarnar sem  {{GENDER:$1|þú}} hefur breytt eða búið til.",
+	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> breytingar á greinum",
+	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|breyting|breytingar}} á öðrum síðum (sjá allar)",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Skoða síðu"
 }

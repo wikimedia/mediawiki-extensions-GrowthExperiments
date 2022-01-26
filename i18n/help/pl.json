@@ -112,6 +112,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "Kiedy skończysz rozbudowywać artykuł, dotknij przycisku z niebieską strzałką, aby zapisać edycję!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Dowiedz się więcej o rozszerzaniu artykułów]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Dodawanie linków pomaga czytelnikom uczyć się szybciej.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Zdecydujesz}}, które słowa w artykule {{GRAMMAR:D.lp|{{SITENAME}}}} powinny linkować do innych stron na {{GRAMMAR:MS.lp|{{SITENAME}}}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Księżyc jest jedynym <mark class=\"positive\">naturalnym satelitą</mark>, który <mark class=\"positive\">krąży</mark> wokół <mark class=\"positive\">Ziemi</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "To zadanie nie wymaga szczególnej wiedzy o zawartości artykułu.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Sugerowane linki są dobierane przez maszynę i moga być niepoprawne.",

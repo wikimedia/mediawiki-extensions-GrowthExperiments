@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Snævar"
+		]
+	},
+	"growthexperiments-help-panel-suggestededits-title": "Tillögur að breytingum",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Stuttar byrjunar ábendingar",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Tilbúin/n?</strong> Smelltu á \"{{int:vector-view-edit}}\" til að byrja.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Tilbúin/n?</strong> Opnaðu kaflann sem þú vilt breyta og ýttu á blýantinn.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Stafsetningarleiðrétting snýst um að gera litla breytingu á því hvernig grein er skrifuð, eins og stafsetningu, málfræði eða gera textann skiljanlegri. Stafsetningarleiðrétting gerir greinar fagmannlegri og traustvekjandi.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Það að ná Merkúr frá <mark class=\"negative\">Jjörðunni</mark> felur í sér mikla tæknilega örðugleika.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "{{GENDER:|Þú}} þarft bara að gera eina eða tvær litlar leiðréttingar. {{GENDER:|Þú}} þarft ekki að vinna að allri greininni. {{GENDER:|Þú}} þarft heldur ekki að hafa neina sérþekkingu um viðfangsefnið.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|Þú}} getur lagað stafsetningu og málfræði. Þetta getur innifalið setningar sem eru of langar, endurtekin orð eða röng punktasetning.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Mars <mark class=\"negative\">hefur haft</mark> tvö lítil tungl.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules2": "{{GENDER:|Þú}} getur líka endurskrifað setningu svo hún innihaldi ekki skoðun. Efni á {{SITENAME}} á að vera hlutlaust, skýrt og alfræðilegt. Hinsvegar, passaðu að breyta ekki staðreyndunum í setningunni.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "Júpiter er stærsta<mark class=\"negative\">, og áhugaverðasta</mark> reikistjarnan í sólkerfinu.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Þessi setning innifelur skoðun sem á að fjarlægja.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "Þegar {{GENDER:|þú}} sérð leiðréttingu sem {{GENDER:|þú}} vilt gera, smelltu á \"$1\" til að hefjast handa. Síðan leiðréttir þú vandamálin með því að fjarlægja og skrifa eins og þurfa þykir.",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-step1": "Þegar {{GENDER:|þú}} sérð leiðréttingu sem {{GENDER:|þú}} vilt gera, ýttu á blýantinn við kaflann til að hefjast handa. Síðan lagar þú vandamálin með því að fjarlægja og skrifa eins og þurfa þykir.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Læra meira um stafsetningarleiðréttingu]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-value": "Allt á {{SITENAME}} kemur frá áreiðanlegri heimild eins og bækur eða fréttabréf. Þegar lesendur sjá heimildir í grein geta þeir verið vissir um það sem þeir eru að læra.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "Satúrnus er líklega best þekkt fyrir kerfi hringja sem gefur henni sitt einstaka útlit.<sup>[3]</sup>",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-value": "Þessi setning hefur tilvísun í lokin sem tengir í heimild.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-calm": "{{GENDER:|Þú}} þarft aðeins að bæta við einni heimild við þessa grein. {{GENDER:|Þú}} þarft ekki að vinna að allri greininni.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-rules1": "Setningar þurfa heimildir þegar þær nefna ákveðnar staðreyndir eins og tölur, dagsetningar eða sagnfræðilega atburði.\n\nEf setning inniheldur upplýsingr sem fólk gæti orðið ósammála um eða upplýsingar sem eru ekki almennt þekktar þá þarf hún líklega heimild.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step1": "Þegar {{GENDER:|þú}} finnur setningu sem þarf heimild, smelltu á \"$1\" til að hefjast handa.\n\nSumar setningar hafa meira að segja merkingu sem sýnir hvar þörf sé á heimild.",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-step1": "Þegar {{GENDER:|þú}} finnur setningu sem vantar heimild, smelltu á blýantinn til að hefjast handa.\n\nSumar setningar hafa meira að segja merkinu sem sýnir nákvæmlega er þörf á heimild."
+}
