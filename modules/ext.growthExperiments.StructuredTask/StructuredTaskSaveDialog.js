@@ -195,6 +195,9 @@ StructuredTaskSaveDialog.prototype.getWatchlistCheckbox = function () {
 	if ( !this.checkboxesByName.wpWatchthis ) {
 		return;
 	}
+	this.checkboxesByName.wpWatchthis.setSelected(
+		!!mw.user.options.get( 'watchdefault' )
+	);
 	this.$saveCheckboxes.addClass( 'ge-structuredTask-mwSaveDialog-watchlistCheckbox' );
 	return this.$saveCheckboxes;
 };
