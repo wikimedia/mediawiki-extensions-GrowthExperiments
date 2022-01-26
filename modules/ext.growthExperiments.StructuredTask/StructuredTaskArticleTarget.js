@@ -1,4 +1,5 @@
-var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' );
+var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
+	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 /**
  * Mixin for a ve.init.mw.ArticleTarget instance. Used by StructuredTaskDesktopArticleTarget and
@@ -74,6 +75,7 @@ StructuredTaskArticleTarget.prototype.surfaceReady = function () {
 	this.constructor.parent.super.prototype.surfaceReady.apply( this, arguments );
 	this.updateHistory();
 	this.afterStructuredTaskSurfaceReady();
+	suggestedEditSession.trackEditorReady();
 
 	// Save can be triggered from ToolbarDialog.
 	MachineSuggestionsMode.addSaveHook( this.surface );
