@@ -64,7 +64,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "మీ స్థితిని \"క్రియాశీలం\" కు మార్చాం.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "మీ స్థితిని \"ఇక్కడ లేరు\" కు మార్చాం.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "మీ శిష్యులకు సందేశం",
-	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "ఇతర చర్యలు",
-	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee": "శిష్యుడిని స్వీకరించండి",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "శిష్యుడిని స్వీకరించండి",
 	"growthexperiments-notification-body-mentee-claimed": "కారణం: $1"
 }

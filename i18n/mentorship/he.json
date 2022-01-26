@@ -40,7 +40,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "להציג $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 מתוך $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "נתוני החניך אינם זמינים",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "לא שויכו לך חניכים בינתיים. הנתונים מעודכנים מדי יום.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "לא שויכו לך חניכים בינתיים. הנתונים מעודכנים מדי שלוש שעות.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "לא נמצאו חניכים",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "{{GENDER:|שנה|שני}} את המסננים שלך כדי למצוא חניכים.",
 	"growthexperiments-mentor-dashboard-resources-headline": "משאבים",
@@ -66,9 +66,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "המצב שלך השתנה ל\"{{GENDER:|פעיל|פעילה}}\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "המצב שלך השתנה ל\"לא בסביבה\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "הודעה לחניכים שלך",
-	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "פעולות אחרות",
-	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee": "קליטת חניך",
-	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee-footer": "אי־אפשר לשנות חונך של חניך לעצמך.",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "קליטת חניך",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "באפשרותך לשנות את החונך של חניך לעצמך. זה משמש לעיתים קרובות לאירועי עריכה כדי שמדריך יוכל להיות החונך של משתמש חדש בוויקי ומחוץ לוויקי.",
 	"growthexperiments-rcfilters-mentorship-title": "חונכות",
 	"growthexperiments-rcfilters-mentorship-starred-label": "החניכים {{GENDER:|שלך}} שסומנו בכוכב",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "החניכים ששויכו {{GENDER:|אליך|אלייך}} ושסימנת בלוח הבקרה לחונכים אצלך",
@@ -91,6 +90,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "ממוצע (ברירת המחדל)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "בערך כפול מהממוצע",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "העומס שלך שוּנה ל{{GRAMMAR:תחילית|$1}}.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "שינוי ליותר או פחות חניכים יעזור לך לנהל את מספר השאלות שאפשר לצפות {{GENDER:|שתענה|שתעני}} עליהן. עם זאת, מספר השאלות תלוי רק במוטיבציה של החניכים שמשויכים אליך.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "מומלץ להתחיל במשקל \"ממוצע\" כדי לכוונן את קיבולת התמיכה שלך לפני שינוי לאפשרויות אחרות."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "חניכים משויכים באופן אקראי לחונכים כשהחשבונות שלהם נוצרים. באפשרותך לנהל כמה חניכים משויכים אליך, אבל חניכים מסוימים יכולים לשאול יותר שאלות מאחרים",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "מומלץ להתחיל בהגדרת \"ממוצע\" כדי לכוונן את קיבולת התמיכה שלך לפני העלאה או הפחתה."
 }
