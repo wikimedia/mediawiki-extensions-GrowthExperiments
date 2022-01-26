@@ -40,6 +40,29 @@ StructuredTaskArticleTarget.prototype.getSurfaceConfig = function ( config ) {
 	return this.constructor.parent.super.prototype.getSurfaceConfig.call( this, config );
 };
 
+/**
+ * Modify the return value from this.getSaveOptions().
+ *
+ * @param {Object} defaultSaveOptions
+ * @return {Object}
+ */
+StructuredTaskArticleTarget.prototype.formatSaveOptions = function ( defaultSaveOptions ) {
+	// Subclasses can override this method modify the save options.
+	return defaultSaveOptions;
+};
+
+/**
+ * @inheritDoc
+ */
+StructuredTaskArticleTarget.prototype.getSaveOptions = function () {
+	var saveOptions = this.constructor.parent.super.prototype.getSaveOptions.call( this );
+	// Don't add the article to the user's watchlist if no edits were made
+	if ( !this.hasEdits() ) {
+		saveOptions.watchlist = 'nochange';
+	}
+	return this.formatSaveOptions( saveOptions );
+};
+
 /** @override */
 StructuredTaskArticleTarget.prototype.updateToolbarSaveButtonState = function () {
 	// T281452 no-op, we have our own custom logic for this in StructuredTaskSaveDialog
