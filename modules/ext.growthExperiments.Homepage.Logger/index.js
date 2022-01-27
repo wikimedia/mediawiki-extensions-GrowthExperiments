@@ -1,3 +1,10 @@
+/**
+ * Logger for HomepageModule EventLogging schema.
+ *
+ * The following files must be included together:
+ * - ext.growthExperiments.Homepage.Logger/index.js
+ * - utils/Utils.js
+ */
 ( function () {
 
 	var Utils = require( '../utils/Utils.js' );

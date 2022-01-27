@@ -52,16 +52,6 @@ class StartEditing extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModules() {
-		return array_merge(
-			parent::getModules(),
-			[ 'ext.growthExperiments.Homepage.SuggestedEdits' ]
-		);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function getModuleStyles() {
 		return array_merge(
 			parent::getModuleStyles(),

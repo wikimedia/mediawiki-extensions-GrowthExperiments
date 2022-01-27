@@ -20,4 +20,6 @@
 			attachButton( config, $content );
 		}
 	} );
+
+	require( './RecentQuestions.js' );
 }() );

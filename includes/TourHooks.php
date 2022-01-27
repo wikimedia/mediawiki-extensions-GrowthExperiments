@@ -98,6 +98,8 @@ class TourHooks implements
 				'packageFiles' => [
 					'tours/homepageWelcome.js',
 					'tours/tourUtils.js',
+					"ext.growthExperiments.Homepage.Logger/index.js",
+					"utils/Utils.js"
 				],
 				'messages' => [
 					'growthexperiments-tour-welcome-title',

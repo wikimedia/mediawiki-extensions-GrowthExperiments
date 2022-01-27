@@ -3,7 +3,7 @@
 		ErrorCardWidget = require( './ErrorCardWidget.js' ),
 		NoResultsWidget = require( './NoResultsWidget.js' ),
 		GrowthTasksApi = require( './GrowthTasksApi.js' ),
-		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
+		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		SuggestedEditsModule = require( './SuggestedEditsModule.js' ),
 		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 		aqsConfig = require( './AQSConfig.json' ),

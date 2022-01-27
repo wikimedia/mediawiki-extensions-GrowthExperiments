@@ -1,6 +1,6 @@
 ( function () {
 	var StartEditingDialog = require( './StartEditingDialog.js' ),
-		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
+		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 		defaultTaskTypes = TaskTypesAbFilter.getDefaultTaskTypes(),
 		logger = new Logger(
