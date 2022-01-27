@@ -1577,6 +1577,7 @@
 				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2"
 			],
 			"dependencies": [
+				"ext.growthExperiments.icons",
 				"mediawiki.language",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
@@ -1586,7 +1587,6 @@
 				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-user",
 				"oojs-ui.styles.icons-moderation",
-				"oojs-ui.styles.icons-content",
 				"mediawiki.widgets.UserInputWidget"
 			],
 			"targets": [

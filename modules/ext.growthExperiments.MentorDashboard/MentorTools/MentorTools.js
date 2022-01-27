@@ -14,12 +14,12 @@
 		this.$body = $body;
 		this.$body.prepend(
 			new OO.ui.PopupButtonWidget( {
-				icon: 'info',
+				icon: 'info-unpadded',
 				id: 'growthexperiments-mentor-dashboard-module-mentor-tools-info-icon',
 				framed: false,
 				invisibleLabel: true,
 				popup: {
-					icon: 'info',
+					icon: 'info-unpadded',
 					align: 'backwards',
 					head: true,
 					padded: true,
@@ -65,7 +65,7 @@
 
 		this.$body.find( '.growthexperiments-mentor-dashboard-module-mentor-tools-mentor-weight' ).prepend(
 			new OO.ui.PopupButtonWidget( {
-				icon: 'info',
+				icon: 'info-unpadded',
 				id: 'growthexperiments-mentor-dashboard-module-mentor-tools-mentor-weight-info-icon',
 				framed: false,
 				invisibleLabel: true,

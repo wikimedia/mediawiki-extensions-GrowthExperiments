@@ -52,7 +52,7 @@
 		this.$element.html( '' );
 		this.$element.append(
 			new OO.ui.PopupButtonWidget( {
-				icon: 'info',
+				icon: 'info-unpadded',
 				id: 'growthexperiments-mentor-dashboard-module-mentee-overview-info-icon',
 				framed: false,
 				invisibleLabel: true,
