@@ -37,12 +37,12 @@
 			menu: {
 				items: [
 					new OO.ui.MenuOptionWidget( {
-						icon: 'check',
+						icon: 'play',
 						data: 'active',
 						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active' )
 					} ),
 					new OO.ui.MenuOptionWidget( {
-						icon: 'history',
+						icon: 'pause',
 						data: 'away',
 						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away' )
 					} )

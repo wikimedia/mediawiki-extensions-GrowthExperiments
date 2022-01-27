@@ -1588,6 +1588,7 @@
 				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-user",
 				"oojs-ui.styles.icons-moderation",
+				"oojs-ui.styles.icons-media",
 				"mediawiki.widgets.UserInputWidget"
 			],
 			"targets": [
