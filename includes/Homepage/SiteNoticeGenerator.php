@@ -6,6 +6,7 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
 use Html;
+use JobQueueGroup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use OOUI\IconWidget;
@@ -20,16 +21,22 @@ class SiteNoticeGenerator {
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
+	/** @var JobQueueGroup */
+	private $jobQueueGroup;
+
 	/**
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param JobQueueGroup $jobQueueGroup
 	 */
 	public function __construct(
 		ExperimentUserManager $experimentUserManager,
-		UserOptionsLookup $userOptionsLookup
+		UserOptionsLookup $userOptionsLookup,
+		JobQueueGroup $jobQueueGroup
 	) {
 		$this->experimentUserManager = $experimentUserManager;
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->jobQueueGroup = $jobQueueGroup;
 	}
 
 	/**
@@ -165,7 +172,7 @@ class SiteNoticeGenerator {
 			return true;
 		}
 
-		\JobQueueGroup::singleton()->lazyPush( new UserOptionsUpdateJob( [
+		$this->jobQueueGroup->lazyPush( new UserOptionsUpdateJob( [
 			'userId' => $user->getId(),
 			'options' => [ HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN => 1 ],
 		] ) );

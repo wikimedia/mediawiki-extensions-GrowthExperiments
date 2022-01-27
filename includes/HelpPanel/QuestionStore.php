@@ -48,6 +48,10 @@ class QuestionStore {
 	 */
 	private $userOptionsLookup;
 	/**
+	 * @var JobQueueGroup
+	 */
+	private $jobQueueGroup;
+	/**
 	 * @var bool
 	 */
 	private $wasPosted;
@@ -59,6 +63,7 @@ class QuestionStore {
 	 * @param Language $language
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param JobQueueGroup $jobQueueGroup
 	 * @param bool $wasPosted
 	 */
 	public function __construct(
@@ -68,6 +73,7 @@ class QuestionStore {
 		Language $language,
 		UserOptionsManager $userOptionsManager,
 		UserOptionsLookup $userOptionsLookup,
+		JobQueueGroup $jobQueueGroup,
 		$wasPosted
 	) {
 		$this->user = $user;
@@ -76,6 +82,7 @@ class QuestionStore {
 		$this->language = $language;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->jobQueueGroup = $jobQueueGroup;
 		$this->wasPosted = $wasPosted;
 	}
 
@@ -234,7 +241,7 @@ class QuestionStore {
 			'userId' => $this->user->getId(),
 			'options' => [ $storage => $formattedQuestions ]
 		] );
-		JobQueueGroup::singleton()->lazyPush( $job );
+		$this->jobQueueGroup->lazyPush( $job );
 	}
 
 	private function encodeQuestionsToJson( array $questionRecords ) {
