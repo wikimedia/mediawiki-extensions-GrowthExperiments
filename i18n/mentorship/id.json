@@ -1,14 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"ANukuma",
 			"Daud I.F. Argana",
 			"PutriAmalia1991"
 		]
 	},
-	"growthexperiments-mentor-dashboard-title": "Dasbor Pencipta",
+	"growthexperiments-mentor-dashboard-title": "Dasbor pembimbing",
 	"growthexperiments-mentor-dashboard-pt-link": "Dasbor pembimbing",
 	"growthexperiments-mentor-dashboard-disabled": "Dasbor pembimbing tidak diaktifkan di wiki ini.",
-	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Peringatan {{GENDER:|Anda}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Bimbingan {{GENDER:|Anda}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Penyaring",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Perbarui",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Minimum",
@@ -16,5 +17,5 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Cari",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "tidak diketahui",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 dari $2",
-	"growthexperiments-mentor-dashboard-resources-headline": "Sumber Daya"
+	"growthexperiments-mentor-dashboard-resources-headline": "Sumber daya"
 }

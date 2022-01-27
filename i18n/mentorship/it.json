@@ -42,7 +42,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Mostra $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 di $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Dati sull'allievo non disponibili",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Nessun allievo potrebbe esserti stato assegnato al momento. I dati sono aggiornati giornalmente.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Nessun allievo potrebbe esserti stato assegnato al momento. I dati sono aggiornati ogni tre ore.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nessun allievo trovato",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifica i filtri per trovare gli allievi.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Risorse",

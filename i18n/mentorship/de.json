@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ameisenigel",
+			"Brettchenweber",
 			"Reinhard Kraasch",
 			"Tkarcher",
 			"Umlaut",
@@ -34,6 +35,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "unbekannt",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 anzeigen",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 von $2",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Eventuell wurde dir noch kein Mentee zugewiesen. Die Daten werden alle drei Stunden aktualisiert.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Keine Mentees gefunden",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressourcen",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Liste der Lotsinnen/Lotsen",
@@ -49,5 +51,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Betreuung zuordnen",
 	"growthexperiments-rcfilters-mentorship-title": "Betreuung durch Lotsen",
 	"echo-category-title-ge-mentorship": "Betreuung durch Lotsen",
-	"growthexperiments-notification-body-mentee-claimed": "Grund: $1"
+	"growthexperiments-notification-body-mentee-claimed": "Grund: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Mentees werden bei der Erstellung ihres Benutzerkontos einem zufälligen Mentor zugewiesen. Du kannst festlegen, wie viele Mentees dir zugewiesen werden, aber manche Mentees haben mehr Fragen als andere."
 }

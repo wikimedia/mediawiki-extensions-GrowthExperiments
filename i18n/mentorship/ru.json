@@ -42,7 +42,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Показать $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 из $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Данные о подопечных недоступны",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Возможно, у вас еще не назначено ни одного подопечного. Данные обновляются ежедневно.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Возможно, у вас еще не назначено ни одного подопечного. Данные обновляются каждые три часа.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Подопечных не найдены.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Изменить фильтры, чтобы найти подопечных.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ресурсы",

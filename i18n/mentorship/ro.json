@@ -39,7 +39,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Arată $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 din $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Datele despre ucenici sunt indisponibile",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "S-ar putea să nu aveți niciun ucenic încă. Datele se actualizează zilnic.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "S-ar putea să nu aveți niciun ucenic încă. Datele sunt actualizate odată la trei ore.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Niciun ucenic găsit",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Schimbați-vă filtrele pentru a găsi ucenici.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Resurse",
@@ -66,6 +66,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Starea v-a fost schimbată la „{{GENDER:|Indisponibil|Indisponibilă}}”.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Mesajul adresat ucenicilor dvs.",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Revendicare ucenic",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Poți schimba mentorul unui ucenic cu dvs. Funcție utilizată pentru evenimente de editare în așa fel încât instructorii să poată fi mentorul nou-venitului atât pe wiki, cât și în afara sa.",
 	"growthexperiments-rcfilters-mentorship-title": "Activitate de mentor",
 	"growthexperiments-rcfilters-mentorship-starred-label": "Ucenicii cu stea ai {{GENDER:|dvs.}}",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Ucenici atribuiți {{GENDER:|dvs.}} pe {{GENDER:|care}} i-ați marcat cu stea pe pagina mentorului a {{GENDER:|dvs.}}",
@@ -84,10 +85,10 @@
 	"growthexperiments-notification-body-mentee-claimed": "Motiv: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Ce este „Revendicare ucenic”?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Numărul de ucenici atribuiți mie",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Înjumătățește media",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "În jur de jumătate din medie",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Mediu (implicit)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Dublează media",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "În jur de două ori mai mult din medie",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Încărcarea {{GENDER:|dvs.}} a fost schimbată la „$1”.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Schimbând la mai mulți sau la mai puțini ucenici vă {{GENDER:|va}} ajuta să administrați numărul de întrebări la care vă {{GENDER:|așteptați}} să răspundeți. Totuși, numărul de întrebări depinde de motivația ucenicilor atribuiți vouă.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Este recomandat să începeți cu ponderea „Mediu” pentru a vă evalua capacitatea de asistență înainte de a schimba la celelalte opțiuni."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Ucenicii sunt atribuiți aleatoriu mentorilor pe măsură ce le sunt create conturile. Poți administra cât de mulți ucenici sunt atribuiți dvs., dar unii ucenici pot pune întrebări mai frecvent decât alți",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Este recomandat să începeți cu setarea „Mediu” pentru a vă evalua capacitatea de asistență înainte de a o crește sau descrește."
 }
