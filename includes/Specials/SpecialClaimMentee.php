@@ -8,6 +8,7 @@ use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\WikiConfigException;
+use Html;
 use Linker;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserIdentity;
@@ -69,9 +70,13 @@ class SpecialClaimMentee extends FormSpecialPage {
 	}
 
 	protected function preText() {
-		return $this->msg( 'growthexperiments-homepage-claimmentee-pretext' )->params(
-			$this->getUser()->getName()
-		)->escaped();
+		return Html::element(
+			'p',
+			[],
+			$this->msg( 'growthexperiments-homepage-claimmentee-pretext' )->params(
+				$this->getUser()->getName()
+			)->text()
+		);
 	}
 
 	/**
