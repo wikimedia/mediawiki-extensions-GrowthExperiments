@@ -28,6 +28,17 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 			['php7.2-fpm', 'restart']
 		);
 	}
+	// Import the test articles and their suggestions
+	childProcess.spawnSync(
+		'php',
+		[ 'maintenance/importDump.php', path.resolve( __dirname + '/../' + '/selenium/fixtures/SuggestedEditsContent.xml' ) ],
+		{ cwd: ip }
+	);
+	childProcess.spawnSync(
+		'php',
+		[ 'maintenance/edit.php', '--user=Admin', 'MediaWiki:NewcomerTasks.json' ],
+		{ input: fs.readFileSync( path.resolve( __dirname + '/../' + '/selenium/fixtures/MediaWikiNewcomerTasks.json' ) ), cwd: ip }
+	);
 };
 
 exports.mochaGlobalTeardown = async function() {
