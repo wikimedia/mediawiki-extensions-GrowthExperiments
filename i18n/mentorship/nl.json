@@ -8,7 +8,7 @@
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Hieronder staan uw leerlingen. Met de filters kunt u bepalen welke leerlingen worden weergegeven.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Wie staat er in uw tabel?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "De tabel toont alleen uw leerlingen die in de afgelopen twee weken een account hebben aangemaakt of die in de afgelopen zes maanden iets hebben bewerkt. De gegevens worden elke drie uur bijgewerkt.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Deze tabel toont alleen uw leerlingen wier account in de afgelopen twee weken is aangemaakt of die in de afgelopen zes maanden iets hebben bewerkt, en voor wie [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|de thuispagina voor nieuwkomers]] is geactiveerd. De gegevens worden elke drie uur bijgewerkt.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Bladwijzer maken voor leerlingen",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Gebruikersnaam",
@@ -31,7 +31,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Toon $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 van $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Leerlinggegevens niet beschikbaar",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "U hebt wellicht nog geen leerlingen toegewezen gekregen. De gegevens worden dagelijks bijgewerkt.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "U hebt wellicht nog geen leerlingen toegewezen gekregen. De gegevens worden elke drie uur bijgewerkt.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Geen leerlingen gevonden",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Wijzig uw filters om leerlingen te vinden.",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Instellingen",
@@ -44,7 +44,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dagen",
 	"growthexperiments-quit-mentorship-title": "Mentorschap beëindigen",
 	"growthexperiments-notification-body-mentee-claimed": "Reden: $1",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~De helft van het gemiddelde",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Ongeveer de helft van het gemiddelde",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Gemiddeld (standaard)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Tweemaal het gemiddelde"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Ongeveer tweemaal het gemiddelde"
 }
