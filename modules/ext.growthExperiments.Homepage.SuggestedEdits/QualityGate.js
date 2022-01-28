@@ -14,9 +14,6 @@ function QualityGate( config ) {
 		'image-recommendation': {
 			dailyLimit: function () {
 				return this.checkDailyLimitForTaskType( 'image-recommendation' );
-			}.bind( this ),
-			mobileOnly: function () {
-				return this.checkMobileOnlyGate( 'image-recommendation' );
 			}.bind( this )
 		},
 		'link-recommendation': {
@@ -29,9 +26,6 @@ function QualityGate( config ) {
 		'image-recommendation': {
 			dailyLimit: function () {
 				return this.showImageRecommendationDailyLimitAlertDialog();
-			}.bind( this ),
-			mobileOnly: function () {
-				return this.showImageRecommendationMobileOnlyDialog();
 			}.bind( this )
 		},
 		'link-recommendation': {
@@ -71,27 +65,13 @@ QualityGate.prototype.checkAll = function ( taskType ) {
  * Check if the task type passes the daily limit gate.
  *
  * "dailyLimit" is set to true if the user has exceeded the maxTasksPerDay value in
- * NewcomerTasks.json. The value
- * is exported in QualityGateDecorator.php
+ * NewcomerTasks.json. The value is exported in QualityGateDecorator.php
  *
  * @param {string} taskType
  * @return {boolean} Whether the task passed the gate.
  */
 QualityGate.prototype.checkDailyLimitForTaskType = function ( taskType ) {
 	return !this.config.gateConfig[ taskType ].dailyLimit;
-};
-
-/**
- * Check if the user is on desktop or mobile.
- *
- * "mobileOnly" is set to true if the user is on a mobile skin. This is exported in
- * QualityGateDecorator.php.
- *
- * @param {string} taskType
- * @return {boolean} Whether the task passed the gate.
- */
-QualityGate.prototype.checkMobileOnlyGate = function ( taskType ) {
-	return this.config.gateConfig[ taskType ].mobileOnly;
 };
 
 /**
@@ -116,22 +96,6 @@ QualityGate.prototype.showImageRecommendationDailyLimitAlertDialog = function ()
 		{
 			action: 'accept',
 			label: mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded-dialog-button' ).text(),
-			flags: 'primary'
-		}
-	);
-};
-
-/**
- * Show an alert dialog for the mobileOnly gate for image-recommendation task type.
- */
-QualityGate.prototype.showImageRecommendationMobileOnlyDialog = function () {
-	this.loggers[ 'image-recommendation' ].log( 'impression', 'mobileOnly', this.config.loggerMetadataOverrides );
-	this.showAlertDialog(
-		'mobileOnly',
-		mw.message( 'growthexperiments-addimage-mobile-only' ).parse(),
-		{
-			action: 'accept',
-			label: mw.message( 'growthexperiments-addimage-mobile-only-dialog-button' ).text(),
 			flags: 'primary'
 		}
 	);
