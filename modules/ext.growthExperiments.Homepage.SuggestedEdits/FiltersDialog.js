@@ -22,7 +22,6 @@ var ArticleCountWidget = require( './ArticleCountWidget.js' );
  */
 function FiltersDialog( config ) {
 	FiltersDialog.super.call( this, config );
-
 }
 
 OO.inheritClass( FiltersDialog, OO.ui.ProcessDialog );
@@ -30,6 +29,8 @@ OO.inheritClass( FiltersDialog, OO.ui.ProcessDialog );
 /** @inheritDoc **/
 FiltersDialog.prototype.initialize = function () {
 	FiltersDialog.super.prototype.initialize.call( this );
+	this.$element.addClass( 'mw-ge-filtersDialog' );
+	this.$foot.addClass( 'mw-ge-filtersDialog-footer' );
 	this.content = new OO.ui.PanelLayout( {
 		padded: true,
 		expanded: false
@@ -39,6 +40,7 @@ FiltersDialog.prototype.initialize = function () {
 		expanded: false
 	} );
 	this.articleCounter = new ArticleCountWidget();
+	this.footerPanelLayout.$element.append( this.articleCounter.$element );
 };
 
 /**
@@ -73,7 +75,6 @@ FiltersDialog.prototype.updateFiltersFromState = function () {
  */
 FiltersDialog.prototype.updateMatchCount = function ( count ) {
 	this.articleCounter.setCount( count );
-	this.footerPanelLayout.toggle( true );
 };
 
 /** @inheritDoc **/

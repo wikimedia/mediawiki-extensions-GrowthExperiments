@@ -14,12 +14,17 @@ function ArticleCountWidget( config ) {
 	// Parent constructor
 	ArticleCountWidget.super.call( this, config );
 
-	this.animatedIcon = new OO.ui.IconWidget( { icon: 'live-broadcast-anim', classes: [ 'live-broadcast-anim' ] } );
+	this.animatedIcon = new OO.ui.IconWidget( {
+		icon: 'live-broadcast-anim',
+		classes: [ 'live-broadcast-anim' ]
+	} );
 	this.icon = new OO.ui.IconWidget( { icon: 'live-broadcast' } );
 	this.label = new OO.ui.LabelWidget();
 
 	this.$element.addClass( 'mw-ge-suggestededits-articleCountWidget' );
 	this.$element.append( this.icon.$element, this.animatedIcon.$element, this.label.$element );
+	// The loading state of the widget is shown initially.
+	this.toggleIcon( true );
 }
 
 OO.inheritClass( ArticleCountWidget, OO.ui.Widget );

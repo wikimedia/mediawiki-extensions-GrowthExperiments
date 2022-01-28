@@ -45,10 +45,6 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		introLinks: require( './config.json' ).GEHomepageSuggestedEditsIntroLinks
 	} ).connect( this, { select: 'onTaskTypeSelect' } );
 	this.content.$element.append( this.taskTypeSelector.$element );
-	this.footerPanelLayout
-		.toggle( false )
-		.$element.append( this.articleCounter.$element );
-
 	this.$body.append( this.content.$element );
 	this.$foot.append( this.footerPanelLayout.$element );
 };

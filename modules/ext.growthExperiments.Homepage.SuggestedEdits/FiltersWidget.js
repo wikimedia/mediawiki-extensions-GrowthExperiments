@@ -133,6 +133,12 @@
 
 	OO.inheritClass( SuggestedEditsFiltersWidget, OO.ui.ButtonGroupWidget );
 
+	/**
+	 * Update the article count in FiltersDialog, called from SuggestedEditsModule when the
+	 * article count changes when user selects a filter or cancels from FiltersDialog
+	 *
+	 * @param {number} count
+	 */
 	SuggestedEditsFiltersWidget.prototype.updateMatchCount = function ( count ) {
 		this.taskTypeFiltersDialog.updateMatchCount( count );
 		if ( this.topicFiltersDialog ) {

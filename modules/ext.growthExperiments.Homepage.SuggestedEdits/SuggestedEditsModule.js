@@ -129,12 +129,20 @@ function SuggestedEditsModule( config, logger, api ) {
 
 OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );
 
+/**
+ * Store the latest states of the task queue, called when the dialog is opened and when the task
+ * queue is updated when the dialog is first shown
+ */
 SuggestedEditsModule.prototype.backupState = function () {
 	this.backup.taskQueue = this.taskQueue;
 	this.backup.queuePosition = this.queuePosition;
 	this.backup.taskCount = this.taskCount;
 };
 
+/**
+ * Restore the previous states of the task queue and update the views, called when cancelling the
+ * filter selection
+ */
 SuggestedEditsModule.prototype.restoreState = function () {
 	this.isFirstRender = true;
 	this.taskQueue = this.backup.taskQueue;
@@ -258,13 +266,16 @@ SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function ( options ) {
 
 		this.taskQueueLoading = false;
 		this.taskQueue = data.tasks;
+		this.taskCount = data.count;
 		if ( options.firstTask ) {
 			this.taskQueue = this.taskQueue.filter( function ( task ) {
 				return task.title !== options.firstTask.title;
 			} );
 			this.taskQueue.unshift( options.firstTask );
+			// For the first task, if the dialog is shown before tasks are fetched, the backed up
+			// state will be incorrect since the backup is done when the dialog is opened.
+			this.backupState();
 		}
-		this.taskCount = data.count;
 		this.filters.updateMatchCount( this.taskCount );
 		if ( data.tasks && data.tasks.length ) {
 			this.maybeUpdateQualityGateConfig( data.tasks[ 0 ] );
