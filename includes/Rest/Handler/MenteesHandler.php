@@ -164,7 +164,7 @@ class MenteesHandler extends SimpleHandler {
 		} );
 
 		return [
-			'mentees' => $data,
+			'mentees' => array_values( $data ),
 			'totalRows' => $dataFilter->getTotalRows(),
 			'limit' => $limit,
 			'offset' => $offset

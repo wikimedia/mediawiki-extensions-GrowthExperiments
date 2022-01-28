@@ -336,16 +336,14 @@
 
 		// Render the table
 		var menteeOverview = this;
-		this.getData().then( function ( data ) {
-			if ( data.length === 0 ) {
+		this.getData().then( function ( mentees ) {
+			if ( mentees.length === 0 ) {
 				menteeOverview.updateNoResultsScreen( false );
 				return;
 			}
 
 			var $menteeTable = $( '<tbody>' );
-			Object.keys( data ).forEach( function ( ordinalId ) {
-				var userData = data[ ordinalId ];
-
+			mentees.forEach( function ( userData ) {
 				var userId = userData.user_id;
 				var $starMenteeDiv = $( '<div>' )
 					.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-userinfo-star' );
