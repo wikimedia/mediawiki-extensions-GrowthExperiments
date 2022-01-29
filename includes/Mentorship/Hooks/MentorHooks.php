@@ -6,14 +6,12 @@ use Config;
 use DeferredUpdates;
 use EchoAttributeManager;
 use EchoUserLocator;
-use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\EchoMenteeClaimPresentationModel;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Psr\Log\LogLevel;
 use Throwable;
@@ -95,11 +93,8 @@ class MentorHooks implements LocalUserCreatedHook, PageSaveCompleteHook {
 			try {
 				// Select a primary & backup mentor. FIXME Not really necessary, but avoids a
 				// change in functionality after introducing MentorManager, making debugging easier.
-				$mentorManager = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-					->getMentorManager();
-
-				$mentorManager->getMentorForUser( $user, MentorStore::ROLE_PRIMARY );
-				$mentorManager->getMentorForUser( $user, MentorStore::ROLE_BACKUP );
+				$this->mentorManager->getMentorForUser( $user, MentorStore::ROLE_PRIMARY );
+				$this->mentorManager->getMentorForUser( $user, MentorStore::ROLE_BACKUP );
 			} catch ( Throwable $throwable ) {
 				Util::logException( $throwable, [
 					'user' => $user->getId(),
