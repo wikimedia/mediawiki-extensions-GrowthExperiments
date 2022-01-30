@@ -84,21 +84,15 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 	/**
 	 * Get the mentor assigned to this user, if it exists.
 	 * @param UserIdentity $mentee
-	 * @param string|null $mentorRole One of MentorStore::ROLE_* constants; passing no value is
-	 * deprecated (results in using ROLE_PRIMARY).
+	 * @param string $mentorRole One of MentorStore::ROLE_* constants
 	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return UserIdentity|null
 	 */
 	public function loadMentorUser(
 		UserIdentity $mentee,
-		?string $mentorRole = null,
+		string $mentorRole,
 		$flags = self::READ_NORMAL
 	): ?UserIdentity {
-		if ( $mentorRole === null ) {
-			wfDeprecated( __METHOD__ . ' with no role parameter', '1.38' );
-			$mentorRole = self::ROLE_PRIMARY;
-		}
-
 		if ( !$this->validateMentorRole( $mentorRole ) ) {
 			throw new InvalidArgumentException( "Invalid \$mentorRole passed: $mentorRole" );
 		}
@@ -165,19 +159,13 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 	 *
 	 * @param UserIdentity $mentee
 	 * @param UserIdentity|null $mentor Null to drop the relationship
-	 * @param string|null $mentorRole One of MentorStore::ROLE_* constants; passing no value is
-	 * deprecated (results in ROLE_PRIMARY being used).
+	 * @param string $mentorRole One of MentorStore::ROLE_* constants
 	 */
 	public function setMentorForUser(
 		UserIdentity $mentee,
 		?UserIdentity $mentor,
-		?string $mentorRole = null
+		string $mentorRole
 	): void {
-		if ( $mentorRole === null ) {
-			wfDeprecated( __METHOD__ . ' with no role parameter', '1.38' );
-			$mentorRole = self::ROLE_PRIMARY;
-		}
-
 		if ( !$this->validateMentorRole( $mentorRole ) ) {
 			throw new InvalidArgumentException( "Invalid \$mentorRole passed: $mentorRole" );
 		}
