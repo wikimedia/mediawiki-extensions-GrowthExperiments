@@ -705,14 +705,25 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
 };
 
 /**
- * Rearranges the homepage and loads the suggested edits module.
- * In mobile-details mode, this method won't return and will send the browser to the suggested edits
+ * Show the activated state of the suggested edits module in the homepage
+ *
+ * @param {jQuery} $module
+ */
+StartEditingDialog.prototype.markSuggestedEditsModuleAsActivated = function ( $module ) {
+	$module.removeClass( 'unactivated' ).addClass( 'activated' );
+};
+
+/**
+ * In desktop mode, replace the embedded start editing module with the suggested edits module.
+ * In mobile modes, show the suggested edits module (start editing module is not shown on mobile).
+ * In mobile-details mode (ex: clicking on "See suggested edits" from the unactivated state of
+ * the impact module), this method won't return and will send the browser to the suggested edits
  * page instead.
  *
  * @return {jQuery.Promise}
  */
 StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
-	var $homepage, $homepageOverlay, $startEditingModule, moduleHtml, moduleDependencies;
+	var $homepage, $suggestedEditsModule, $startEditingModule, moduleDependencies;
 	if ( this.mode === 'mobile-details' ) {
 		window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
 		// Keep the dialog open while the page is reloading.
@@ -721,9 +732,7 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$homepage = $( '.growthexperiments-homepage-container:not(.homepage-module-overlay)' );
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$homepageOverlay = $( '.growthexperiments-homepage-container.homepage-module-overlay' );
-	moduleHtml = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ].html;
+	$suggestedEditsModule = $homepage.find( '.growthexperiments-homepage-module-suggested-edits' );
 	moduleDependencies = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ].rlModules;
 
 	// Rearrange the homepage.
@@ -733,45 +742,21 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		// Remove StartEditing module
 		$startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' );
 		$startEditingModule.remove();
-		// Mark suggested edits module as activated.
-		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
-			.removeClass( 'unactivated' )
-			.addClass( 'activated' );
+		this.markSuggestedEditsModuleAsActivated( $suggestedEditsModule );
 		this.emit( 'activation' );
 	} else if ( this.mode === 'mobile-overlay' ) {
-		// Update StartEditing module icon.
-		$homepage.add( $homepageOverlay )
-			.find( '.growthexperiments-homepage-module-start-startediting' )
-			.addClass( 'growthexperiments-homepage-module-completed' )
-			.find( '.growthexperiments-homepage-module-header-icon' )
-			.html( new OO.ui.IconWidget( {
-				icon: 'check',
-				// see BaseModule::getHeaderIcon
-				classes: [ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ]
-			} ).$element );
-		// Add SuggestedEdits module summary.
-		$homepage.find( '.growthexperiments-homepage-module-start' ).parent().after( moduleHtml );
-		// Mark suggested edits module as activated.
-		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
-			.addClass( 'activated' )
-			.removeClass( 'unactivated' );
+		// Dialog invoked via the info button in the suggested edits module
+		this.markSuggestedEditsModuleAsActivated( $suggestedEditsModule );
 	} else if ( this.mode === 'mobile-summary' ) {
-		$startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' ).parent();
-		// Add SuggestedEdits module summary
-		$startEditingModule.after( moduleHtml );
-		// Remove the start-startediting module
-		$startEditingModule.remove();
-		// Mark suggested edits module as activated.
-		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
-			.addClass( 'activated' )
-			.removeClass( 'unactivated' )
-			.each( function ( i, module ) {
-				require( 'ext.growthExperiments.Homepage.mobile' )
-					.loadExtraDataForSuggestedEdits( module, true );
-			} );
+		this.markSuggestedEditsModuleAsActivated( $suggestedEditsModule );
+		// Dialog invoked outside of the suggested edits module
+		$suggestedEditsModule.each( function ( i, module ) {
+			require( 'ext.growthExperiments.Homepage.mobile' )
+				.loadExtraDataForSuggestedEdits( module, true );
+		} );
 	}
 
-	return mw.loader.using( moduleDependencies ).then( function ( require ) {
+	return mw.loader.using( moduleDependencies ).then( function () {
 		if ( this.mode === 'mobile-overlay' ) {
 			// Replace the current URL, so that when the user exits the overlay or hits the
 			// back button, they go to the main page. If we used router.navigate() here,
@@ -781,9 +766,6 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		} else if ( this.mode === 'mobile-summary' ) {
 			router.navigate( '#/homepage/suggested-edits' );
 		}
-
-		// Wait for the module to initialize.
-		return require( 'ext.growthExperiments.Homepage.SuggestedEdits' );
 	}.bind( this ) );
 };
 
