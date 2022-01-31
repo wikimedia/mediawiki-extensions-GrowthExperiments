@@ -16,21 +16,19 @@
 	 *
 	 * @param {Object} task A task object, as returned by GrowthTasksApi
 	 * @param {number} [position] The position of the task in the task queue.
-	 * @return {string} A token stored under NewcomerTask.newcomer_task_token to identify this log
-	 *   event. Typically used to bind it to another log event such as a homepage module action.
 	 */
 	NewcomerTaskLogger.prototype.log = function ( task, position ) {
 		var data;
 
 		if ( task.isTaskLogged ) {
 			// already logged
-			return task.token;
+			return;
 		}
+
+		task.isTaskLogged = true;
 		data = this.getLogData( task, position );
 		mw.track( 'event.NewcomerTask', data );
 		this.events.push( data );
-		task.isTaskLogged = true;
-		return task.token;
 	};
 
 	/**

@@ -101,8 +101,9 @@
 					.replaceWith( taskCard.$element );
 
 				if ( shouldLog ) {
+					newcomerTaskLogger.log( task, 0 );
 					homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-impression',
-						{ newcomerTaskToken: newcomerTaskLogger.log( task, 0 ) } );
+						{ newcomerTaskToken: task.token } );
 				}
 			}, function ( jqXHR, textStatus, errorThrown ) {
 				// Error loading the task
