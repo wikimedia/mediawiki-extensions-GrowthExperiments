@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Bluetpp",
-			"Nghiemtrongdai VN"
+			"Nghiemtrongdai VN",
+			"NguoiDungKhongDinhDanh"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Bảng điều khiển cố vấn",
@@ -76,5 +77,6 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Bước tiếp theo để ngừng làm cố vấn là phân lại những người được cố vấn của bạn. Nếu bạn chắc chắn muốn ngừng, xin hãy ấn nút dưới đây.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Có, hãy phân lại những người được cố vấn của tôi",
 	"growthexperiments-quit-mentorship-success": "Những người được cố vấn của bạn sẽ nhanh chóng được phân lại cho các cố vấn khác.",
+	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|}}Bạn hiện không là cố vấn của bất kỳ thành viên nào.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 đã {{GENDER:$1|nghỉ}} làm cố vấn."
 }
