@@ -24,7 +24,8 @@
 			"Wolfdietmann",
 			"Inkowik",
 			"Reinhard Kraasch",
-			"Umlaut"
+			"Umlaut",
+			"Brettchenweber"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -131,7 +132,7 @@
 	"tag-mentorship_panel_question": "„Frage deine(n) Lotsin/Lotsen“ Funktion im Hilfebereich",
 	"tag-mentorship_panel_question-description": "Bearbeitung durchgeführt mit der Funktion „Frage deine(n) Lotsin/Lotsen“ im Hilfebereich",
 	"tag-newcomer_task": "Einstiegs-Aufgabe",
-	"tag-newcomer_task-description": "Bearbeitung basierend auf dem 'Vorgeschlagene Bearbeitungen' Modul der Neulings-Startseite",
+	"tag-newcomer_task-description": "Bearbeitung basierend auf dem Modul 'Vorgeschlagene Bearbeitungen' der Neulings-Startseite",
 	"tag-newcomer_task_add_link": "Vorschlag: Links hinzufügen",
 	"tag-newcomer_task_add_link-description": "„Link hinzufügen“ Bearbeitung basierend auf dem „Vorgeschlagene Bearbeitungen“ Modul der Neulings-Startseite",
 	"growthexperiments-homepage-help-dialog-title": "frage auf der Seite „Fragen von Neulingen“",
