@@ -226,7 +226,7 @@
 	"growthexperiments-addlink-summary-title": "Kokkuvõte",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Soovitus",
 	"growthexperiments-addlink-summary-column-header-linked": "Lingitud?",
-	"growthexperiments-addlink-summary-copyrightwarning": "Kui salvestad muudatused, nõustud [https://foundation.wikimedia.org/wiki/Terms_of_Use kasutustingimustega] ja oma kaastöö avaldamisega litsentside [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] ja [https://www.gnu.org/licenses/fdl-1.3.html GFDL] alusel.",
+	"growthexperiments-addlink-summary-copyrightwarning": "Kui avaldad muudatused, nõustud [https://foundation.wikimedia.org/wiki/Terms_of_Use kasutustingimustega] ja oma kaastöö avaldamisega litsentside [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] ja [https://www.gnu.org/licenses/fdl-1.3.html GFDL] alusel.",
 	"growthexperiments-addlink-skip-title": "Jätsid kõik selle artikli soovitused vahele.",
 	"growthexperiments-addlink-skip-body": "Kas oled kindel, et ei soovi heaks kiita ega tagasi lükata ühtegi soovitust?",
 	"growthexperiments-addlink-skip-accept": "Jäta kõik vahele",
@@ -246,5 +246,5 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Režiimi vahetamine võimaldab {{GENDER:$1|teha}} teistsuguseid muudatusi. Selleks tuleb ülevaatus lõpetada ja seni üle vaadatud soovitused ära saata.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Vaheta ilma saatmata",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Loobu",
-	"growthexperiments-addlink-suggestions-outdated": "Teine kasutaja muutis lehekülge samal ajal kui seda üle vaatasid ning sinu muudatusi ei õnnestunud salvestada."
+	"growthexperiments-addlink-suggestions-outdated": "Teine kasutaja muutis lehekülge samal ajal kui seda üle vaatasid ning sinu muudatusi ei õnnestunud avaldada."
 }
