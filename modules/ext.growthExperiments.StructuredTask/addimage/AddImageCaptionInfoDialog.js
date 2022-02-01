@@ -32,6 +32,8 @@ AddImageCaptionInfoDialog.static.title = mw.message(
 	'growthexperiments-addimage-caption-info-dialog-title'
 ).text();
 
+AddImageCaptionInfoDialog.static.size = OO.ui.isMobile() ? 'small' : 'medium';
+
 AddImageCaptionInfoDialog.static.message = function () {
 	var articleTitle = suggestedEditSession.getCurrentTitle().getNameText(),
 		/** @type {mw.libs.ge.AddImageArticleTarget} **/
