@@ -993,9 +993,7 @@ class HomepageHooks implements
 	 * @param string $subPage
 	 */
 	public function onSpecialPageAfterExecute( $sp, $subPage ) {
-		// Can't use $sp instanceof \SpecialMobileContributions because that fails if
-		// MobileFrontend is not installed
-		if ( get_class( $sp ) !== 'SpecialMobileContributions' ) {
+		if ( !( $sp instanceof \SpecialMobileContributions ) ) {
 			return;
 		}
 		$user = User::newFromName( $subPage, false );
