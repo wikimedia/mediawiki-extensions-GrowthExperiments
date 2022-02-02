@@ -4,8 +4,6 @@
 			"Hogweard"
 		]
 	},
-	"growthexperiments-homepage-claimmentee-must-be-mentor-generic": "{{GENDER:$1|Þu}} sceal beon bodere gif þu beneote",
-	"growthexperiments-homepage-claimmentee-must-be-mentor-two-lists": "{{GENDER:$1|Þu}} sceal be on þære bodendgetale for [[$1]] oððe [[$2]] gif ðu beneote Syndrig:CrafungBodingcniht",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Getalu of bodendum is misgedihted",
 	"growthexperiments-addlink-pagenotfound": "Tramet be naman \"$1\" ne byþ",
 	"growthexperiments-addlink-revdeleted": "Awendednys $1 be \"$1\" is ungefered",
