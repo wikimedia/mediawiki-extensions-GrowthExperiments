@@ -4,7 +4,7 @@ namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\WikiConfigException;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use Maintenance;
@@ -25,8 +25,8 @@ class UpdateMenteeData extends Maintenance {
 	/** @var MenteeOverviewDataUpdater */
 	private $menteeOverviewDataUpdater;
 
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var UserFactory */
 	private $userFactory;
@@ -64,7 +64,7 @@ class UpdateMenteeData extends Maintenance {
 
 		$this->menteeOverviewDataUpdater = $geServices->getMenteeOverviewDataUpdater();
 		$this->menteeOverviewDataUpdater->setBatchSize( $this->getBatchSize() );
-		$this->mentorManager = $geServices->getMentorManager();
+		$this->mentorProvider = $geServices->getMentorProvider();
 		$this->userFactory = $services->getUserFactory();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
 		$this->dataFactory = $services->getStatsdDataFactory();
@@ -105,7 +105,7 @@ class UpdateMenteeData extends Maintenance {
 			$mentors = [ $this->getOption( 'mentor' ) ];
 		} else {
 			try {
-				$mentors = $this->mentorManager->getMentors();
+				$mentors = $this->mentorProvider->getMentors();
 			} catch ( WikiConfigException $e ) {
 				$this->fatalError( 'List of mentors cannot be fetched.' );
 			}

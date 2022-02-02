@@ -6,21 +6,12 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
-use Title;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 /**
  * A service for handling mentors.
  */
 abstract class MentorManager implements ExpirationAwareness {
-
-	/**
-	 * If needed, invalidate cache of mentorship-related information
-	 *
-	 * Default implementation does nothing.
-	 */
-	public function invalidateCache(): void {
-	}
 
 	/** @var int */
 	public const MENTORSHIP_DISABLED = 0;
@@ -94,91 +85,6 @@ abstract class MentorManager implements ExpirationAwareness {
 	 * @return Mentor|null
 	 */
 	abstract public function getEffectiveMentorForUserSafe( UserIdentity $menteeUser ): ?Mentor;
-
-	/**
-	 * Construct a Mentor object for given UserIdentity
-	 *
-	 * This is useful for when you know the mentor's username, and need MentorManager to provide
-	 * specific details about them.
-	 *
-	 * @param UserIdentity $mentorUser
-	 * @param UserIdentity|null $menteeUser If passed, may be used to customize message using
-	 * mentee's username.
-	 * @return Mentor
-	 */
-	abstract public function newMentorFromUserIdentity(
-		UserIdentity $mentorUser,
-		?UserIdentity $menteeUser = null
-	): Mentor;
-
-	/**
-	 * Get all mentors, regardless on their auto-assignment status
-	 * @return string[] List of mentors usernames.
-	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.
-	 */
-	public function getMentors(): array {
-		return array_unique(
-			array_merge(
-				$this->getAutoAssignedMentors(),
-				$this->getManuallyAssignedMentors()
-			)
-		);
-	}
-
-	/**
-	 * Get all mentors, regardless of their auto-assignment status
-	 *
-	 * This does the same thing as getMentors(), but it suppresses any instance
-	 * of WikiConfigException (and returns an empty array instead).
-	 *
-	 * @return string[]
-	 */
-	public function getMentorsSafe(): array {
-		try {
-			return $this->getMentors();
-		} catch ( WikiConfigException $e ) {
-			return [];
-		}
-	}
-
-	/**
-	 * Checks if an user is a mentor (regardless of their auto-assignment status)
-	 * @param UserIdentity $user
-	 * @return bool
-	 */
-	public function isMentor( UserIdentity $user ): bool {
-		return $user->isRegistered() && in_array( $user->getName(), $this->getMentorsSafe() );
-	}
-
-	/**
-	 * Get all the mentors who are automatically assigned to mentees.
-	 * @return string[] List of mentor usernames.
-	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.
-	 */
-	abstract public function getAutoAssignedMentors(): array;
-
-	/**
-	 * Get a list of mentors who are not automatically assigned to mentees.
-	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.
-	 * @return string[] List of mentors usernames.
-	 */
-	abstract public function getManuallyAssignedMentors(): array;
-
-	/**
-	 * Link to the auto-assigned list of mentors, if there is any
-	 *
-	 * @return Title|null Null only if the page is not configured
-	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
-	 */
-	abstract public function getAutoMentorsListTitle(): ?Title;
-
-	/**
-	 * Link to the manual list of mentors, if there is any
-	 *
-	 * @return Title|null Null only if the page is not configured
-	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
-	 */
-	abstract public function getManualMentorsListTitle(): ?Title;
 
 	/**
 	 * Checks state of mentorship for an user

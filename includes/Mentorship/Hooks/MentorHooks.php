@@ -9,6 +9,7 @@ use EchoUserLocator;
 use GrowthExperiments\Mentorship\EchoMenteeClaimPresentationModel;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
@@ -24,16 +25,22 @@ class MentorHooks implements LocalUserCreatedHook, PageSaveCompleteHook {
 	/** @var MentorManager */
 	private $mentorManager;
 
+	/** @var MentorProvider */
+	private $mentorProvider;
+
 	/**
 	 * @param Config $wikiConfig
 	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 */
 	public function __construct(
 		Config $wikiConfig,
-		MentorManager $mentorManager
+		MentorManager $mentorManager,
+		MentorProvider $mentorProvider
 	) {
 		$this->wikiConfig = $wikiConfig;
 		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 	}
 
 	/**
@@ -113,13 +120,13 @@ class MentorHooks implements LocalUserCreatedHook, PageSaveCompleteHook {
 	) {
 		DeferredUpdates::addCallableUpdate( function () use ( $wikiPage ) {
 			$title = $wikiPage->getTitle();
-			$autoMentorsListTitle = $this->mentorManager->getAutoMentorsListTitle();
-			$manualMentorsListTitle = $this->mentorManager->getManualMentorsListTitle();
-			if (
-				( $autoMentorsListTitle && $title->equals( $autoMentorsListTitle ) ) ||
-				( $manualMentorsListTitle && $title->equals( $manualMentorsListTitle ) )
-			) {
-				$this->mentorManager->invalidateCache();
+
+			$sourceTitles = $this->mentorProvider->getSourceTitles();
+			foreach ( $sourceTitles as $sourceTitle ) {
+				if ( $sourceTitle->equals( $title ) ) {
+					$this->mentorProvider->invalidateCache();
+					break;
+				}
 			}
 		} );
 	}

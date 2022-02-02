@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\MentorDashboard\Modules;
 
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use Html;
 use IContextSource;
 use MalformedTitleException;
@@ -16,28 +16,28 @@ class Resources extends BaseModule {
 	/** @var LinkRenderer */
 	private $linkRenderer;
 
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/**
 	 * @param string $name
 	 * @param IContextSource $ctx
 	 * @param TitleParser $titleParser
 	 * @param LinkRenderer $linkRenderer
-	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 */
 	public function __construct(
 		$name,
 		IContextSource $ctx,
 		TitleParser $titleParser,
 		LinkRenderer $linkRenderer,
-		MentorManager $mentorManager
+		MentorProvider $mentorProvider
 	) {
 		parent::__construct( $name, $ctx );
 
 		$this->titleParser = $titleParser;
 		$this->linkRenderer = $linkRenderer;
-		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 	}
 
 	/**
@@ -82,13 +82,16 @@ class Resources extends BaseModule {
 				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-tools' )->text()
 			)
 		];
-		$mentorsTitle = $this->mentorManager->getAutoMentorsListTitle();
-		if ( $mentorsTitle ) {
+
+		// add link to the list of mentors, if it is used
+		$signupTitle = $this->mentorProvider->getSignupTitle();
+		if ( $signupTitle ) {
 			array_unshift( $links, $this->formatLink(
-				$mentorsTitle->getPrefixedText(),
+				$signupTitle->getPrefixedText(),
 				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-mentors-list' )->text()
 			) );
 		}
+
 		return Html::rawElement(
 			'ul',
 			[],

@@ -80,21 +80,21 @@
 		"growthsetmentorstatus": {
 			"class": "GrowthExperiments\\Api\\ApiSetMentorStatus",
 			"services": [
-				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorStatusManager"
 			]
 		},
 		"growthsetmentorweight": {
 			"class": "GrowthExperiments\\Api\\ApiSetMentorWeight",
 			"services": [
-				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorWeightManager"
 			]
 		},
 		"growthmentordashboardupdatedata": {
 			"class": "GrowthExperiments\\Api\\ApiMentorDashboardUpdateData",
 			"services": [
-				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorProvider",
 				"JobQueueGroup"
 			]
 		},
@@ -134,7 +134,7 @@
 		"growthmentorstatus": {
 			"class": "GrowthExperiments\\Api\\ApiQueryMentorStatus",
 			"services": [
-				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorStatusManager"
 			]
 		},
@@ -231,7 +231,8 @@
 			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorHooks",
 			"services": [
 				"GrowthExperimentsMultiConfig",
-				"GrowthExperimentsMentorManager"
+				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorProvider"
 			]
 		},
 		"mentorfilters": {
@@ -240,7 +241,7 @@
 				"GrowthExperimentsConfig",
 				"GrowthExperimentsMentorStore",
 				"GrowthExperimentsStarredMenteesStore",
-				"GrowthExperimentsMentorManager"
+				"GrowthExperimentsMentorProvider"
 			]
 		},
 		"mentoruseroptions": {
@@ -253,7 +254,7 @@
 			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardDiscoveryHooks",
 			"services": [
 				"GrowthExperimentsConfig",
-				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorProvider",
 				"UserOptionsLookup"
 			]
 		},
@@ -2059,7 +2060,7 @@
 			"class": "GrowthExperiments\\Specials\\SpecialMentorDashboard",
 			"services": [
 				"GrowthExperimentsMentorDashboardModuleRegistry",
-				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorProvider",
 				"UserOptionsLookup",
 				"JobQueueGroupFactory"
 			]
@@ -2068,7 +2069,7 @@
 			"class": "GrowthExperiments\\Specials\\SpecialQuitMentorship",
 			"services": [
 				"GrowthExperimentsQuitMentorshipFactory",
-				"GrowthExperimentsMentorManager"
+				"GrowthExperimentsMentorProvider"
 			]
 		},
 		"EditGrowthConfig": {

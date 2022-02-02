@@ -6,7 +6,6 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
-use Title;
 
 /**
  * MentorManager implementation for local testing and development.
@@ -90,28 +89,6 @@ class StaticMentorManager extends MentorManager {
 			}
 		}
 		throw new InvalidArgumentException( 'Invalid mentor passed' );
-	}
-
-	/** @inheritDoc */
-	public function getAutoAssignedMentors(): array {
-		return array_unique( array_values( array_map( static function ( Mentor $mentor ) {
-			return $mentor->getMentorUser()->getName();
-		}, $this->mentors ) ) );
-	}
-
-	/** @inheritDoc */
-	public function getManuallyAssignedMentors(): array {
-		return [];
-	}
-
-	/** @inheritDoc */
-	public function getAutoMentorsListTitle(): ?Title {
-		return null;
-	}
-
-	/** @inheritDoc */
-	public function getManualMentorsListTitle(): ?Title {
-		return null;
 	}
 
 	/** @inheritDoc */

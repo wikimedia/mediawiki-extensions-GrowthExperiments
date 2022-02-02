@@ -4,7 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use GlobalVarConfig;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\Mentorship\StaticMentorManager;
+use GrowthExperiments\Mentorship\Provider\StaticMentorProvider;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use MediaWiki\MediaWikiServices;
 use PermissionsError;
@@ -21,7 +21,7 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 	protected function newSpecialPage() {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		return new SpecialClaimMentee(
-			new StaticMentorManager( [] ),
+			new StaticMentorProvider( [] ),
 			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
 				->getChangeMentorFactory(),
 			// This would normally be GrowthExperimentsMultiConfig, but there

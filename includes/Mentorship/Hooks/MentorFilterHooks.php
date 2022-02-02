@@ -6,7 +6,7 @@ use ChangesListStringOptionsFilter;
 use ChangesListStringOptionsFilterGroup;
 use Config;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use HashBagOStuff;
@@ -31,8 +31,8 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 	/** @var StarredMenteesStore */
 	private $starredMenteesStore;
 
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var HashBagOStuff Mentor [starred|unstarred]:username => UserIdentity[] list of mentees */
 	private $menteeCache;
@@ -41,18 +41,18 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 	 * @param Config $config
 	 * @param MentorStore $mentorStore
 	 * @param StarredMenteesStore $starredMenteesStore
-	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 */
 	public function __construct(
 		Config $config,
 		MentorStore $mentorStore,
 		StarredMenteesStore $starredMenteesStore,
-		MentorManager $mentorManager
+		MentorProvider $mentorProvider
 	) {
 		$this->config = $config;
 		$this->mentorStore = $mentorStore;
 		$this->starredMenteesStore = $starredMenteesStore;
-		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->menteeCache = new HashBagOStuff();
 	}
 
@@ -62,7 +62,7 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 		// Also make sure the user is actually a mentor.
 		try {
 			if ( !$this->config->get( 'GEMentorDashboardEnabled' )
-				 || !$this->mentorManager->isMentor( $special->getUser() )
+				 || !$this->mentorProvider->isMentor( $special->getUser() )
 			) {
 				return;
 			}

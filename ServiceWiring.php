@@ -25,6 +25,8 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use GrowthExperiments\Mentorship\Provider\WikitextMentorProvider;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -380,27 +382,40 @@ return [
 		MediaWikiServices $services
 	): MentorManager {
 		$geServices = GrowthExperimentsServices::wrap( $services );
-		$wikiConfig = $geServices->getGrowthWikiConfig();
 
 		$manager = new MentorPageMentorManager(
-			$services->getMainWANObjectCache(),
-			$services->getLocalServerObjectCache(),
 			$geServices->getMentorStore(),
 			$geServices->getMentorStatusManager(),
+			$geServices->getMentorProvider(),
+			$services->getUserIdentityLookup(),
+			$services->getUserOptionsLookup(),
+			$services->getUserOptionsManager(),
+			RequestContext::getMain()->getRequest()->wasPosted()
+		);
+		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $manager;
+	},
+
+	'GrowthExperimentsMentorProvider' => static function (
+		MediaWikiServices $services
+	): MentorProvider {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		$wikiConfig = $geServices->getGrowthWikiConfig();
+
+		$provider = new WikitextMentorProvider(
+			$services->getMainWANObjectCache(),
+			$services->getLocalServerObjectCache(),
 			$geServices->getMentorWeightManager(),
 			$services->getTitleFactory(),
 			$services->getWikiPageFactory(),
 			$services->getUserNameUtils(),
 			$services->getUserIdentityLookup(),
-			$services->getUserOptionsLookup(),
-			$services->getUserOptionsManager(),
 			$services->getContentLanguage(),
 			$wikiConfig->get( 'GEHomepageMentorsList' ) ?: null,
-			$wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
-			RequestContext::getMain()->getRequest()->wasPosted()
+			$wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null
 		);
-		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
-		return $manager;
+		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $provider;
 	},
 
 	'GrowthExperimentsMentorStatusManager' => static function (
@@ -562,6 +577,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new QuitMentorshipFactory(
 			$growthServices->getMentorManager(),
+			$growthServices->getMentorProvider(),
 			$growthServices->getMentorStore(),
 			$growthServices->getChangeMentorFactory(),
 			$services->getPermissionManager(),

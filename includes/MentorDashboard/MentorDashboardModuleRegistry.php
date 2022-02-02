@@ -78,7 +78,7 @@ class MentorDashboardModuleRegistry {
 					$context,
 					$services->getTitleParser(),
 					$services->getLinkRenderer(),
-					$geServices->getMentorManager()
+					$geServices->getMentorProvider()
 				);
 			},
 			'mentor-tools' => static function (
@@ -89,7 +89,7 @@ class MentorDashboardModuleRegistry {
 				return new MentorTools(
 					'mentor-tools',
 					$context,
-					$geServices->getMentorManager(),
+					$geServices->getMentorProvider(),
 					$geServices->getMentorStatusManager(),
 					$geServices->getMentorWeightManager()
 				);

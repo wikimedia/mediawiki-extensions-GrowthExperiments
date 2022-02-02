@@ -4,7 +4,7 @@ namespace GrowthExperiments\MentorDashboard\Modules;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use Html;
 use IContextSource;
 use LogicException;
@@ -17,8 +17,8 @@ class MentorTools extends BaseModule {
 	/** @var string Base CSS class for this module */
 	private const BASE_MODULE_CSS_CLASS = 'growthexperiments-mentor-dashboard-module-mentor-tools';
 
-	/** @var MentorManager */
-	private $mentorManager;
+	/** @var MentorProvider */
+	private $mentorProvider;
 
 	/** @var MentorStatusManager */
 	private $mentorStatusManager;
@@ -29,20 +29,20 @@ class MentorTools extends BaseModule {
 	/**
 	 * @param string $name
 	 * @param IContextSource $ctx
-	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 * @param MentorStatusManager $mentorStatusManager
 	 * @param MentorWeightManager $mentorWeightManager
 	 */
 	public function __construct(
 		$name,
 		IContextSource $ctx,
-		MentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		MentorStatusManager $mentorStatusManager,
 		MentorWeightManager $mentorWeightManager
 	) {
 		parent::__construct( $name, $ctx );
 
-		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->mentorStatusManager = $mentorStatusManager;
 		$this->mentorWeightManager = $mentorWeightManager;
 	}
@@ -159,8 +159,7 @@ class MentorTools extends BaseModule {
 							new ButtonWidget( [
 								'icon' => 'edit',
 								'framed' => false,
-								'href' => $this->mentorManager->getAutoMentorsListTitle()
-									->getLocalURL()
+								'href' => $this->mentorProvider->getSignupTitle()->getLocalURL()
 							] ),
 						] )
 					),
@@ -169,7 +168,8 @@ class MentorTools extends BaseModule {
 						[
 							'id' => self::BASE_MODULE_CSS_CLASS . '-message-content'
 						],
-						$this->mentorManager->newMentorFromUserIdentity( $this->getUser() )->getIntroText()
+						$this->mentorProvider->newMentorFromUserIdentity( $this->getUser() )
+							->getIntroText()
 					)
 				] )
 			),
