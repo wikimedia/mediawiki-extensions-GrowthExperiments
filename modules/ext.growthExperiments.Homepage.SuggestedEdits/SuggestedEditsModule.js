@@ -72,6 +72,7 @@ function SuggestedEditsModule( config, logger, api ) {
 			cancel: 'restoreState',
 			open: 'backupState'
 		} );
+	this.newcomerTaskLogger = new NewcomerTaskLogger();
 
 	// Topic presets will be null if the user never set them.
 	// It's possible that config.topicPresets is an empty array if the user set,
@@ -444,10 +445,8 @@ SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
  * @return {string} Token to reference the log entry with.
  */
 SuggestedEditsModule.prototype.logCardData = function ( cardPosition ) {
-	var newcomerTaskLogger = new NewcomerTaskLogger(),
-		task = this.taskQueue[ cardPosition ];
-	this.newcomerTaskToken = newcomerTaskLogger.log( task, cardPosition );
-	return this.newcomerTaskToken;
+	var task = this.taskQueue[ cardPosition ];
+	this.newcomerTaskLogger.log( task, cardPosition );
 };
 
 /**
@@ -483,17 +482,14 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 		);
 	}
 	if ( this.currentCard instanceof EditCardWidget ) {
-		var newcomerTaskToken = this.logCardData( queuePosition );
+		var task = this.taskQueue[ queuePosition ];
+		this.logCardData( queuePosition );
 		this.logger.log(
 			'suggested-edits',
 			this.mode,
 			'se-task-impression',
-			{ newcomerTaskToken: newcomerTaskToken }
+			{ newcomerTaskToken: task.token }
 		);
-		// Update the newcomer task token as soon as possible, since this value is passed to the
-		// QualityGate instance setupQualityGateClickHandling (which can occur before a response
-		// is returned from getExtraDataAndUpdateQueue)
-		this.currentCard.data.token = newcomerTaskToken;
 	}
 	this.updateCardElement( OO.ui.isMobile() ).then( this.updateControls.bind( this ) );
 
@@ -697,8 +693,9 @@ SuggestedEditsModule.prototype.updateControls = function () {
  * @param {string} action Either 'se-task-click' or 'se-edit-button-click'
  */
 SuggestedEditsModule.prototype.logEditTaskClick = function ( action ) {
-	this.logger.log( 'suggested-edits', this.mode, action,
-		{ newcomerTaskToken: this.logCardData( this.queuePosition ) } );
+	var task = this.taskQueue[ this.queuePosition ];
+	this.logCardData( this.queuePosition );
+	this.logger.log( 'suggested-edits', this.mode, action, { newcomerTaskToken: task.token } );
 };
 
 /**
