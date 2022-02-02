@@ -503,8 +503,7 @@
 				"growthexperiments-homepage-welcome-notice-body-variant-d",
 				"growthexperiments-homepage-welcome-notice-button-text-variant-c",
 				"growthexperiments-homepage-welcome-notice-button-text-variant-d",
-				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
-				"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description"
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description"
 			],
 			"targets": [
 				"mobile"
@@ -761,7 +760,6 @@
 				"growthexperiments-homepage-suggestededits-tasktype-label-update",
 				"growthexperiments-homepage-suggestededits-tasktype-label-expand",
 				"growthexperiments-homepage-suggestededits-tasktype-label-links",
-				"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label-mobile",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy",
@@ -785,8 +783,6 @@
 				"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader",
 				"growthexperiments-addimage-daily-task-limit-exceeded",
 				"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button",
-				"growthexperiments-addimage-mobile-only",
-				"growthexperiments-addimage-mobile-only-dialog-button",
 				"growthexperiments-addlink-daily-task-limit-exceeded",
 				"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button"
 			]
@@ -1223,7 +1219,6 @@
 				"growthexperiments-help-panel-search-no-results",
 				"ellipsis",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
-				"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description",
 				"growthexperiments-homepage-suggestededits-tasktype-name-copyedit",
 				"growthexperiments-homepage-suggestededits-tasktype-name-references",
 				"growthexperiments-homepage-suggestededits-tasktype-name-update",
@@ -1303,8 +1298,7 @@
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard",
-				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
-				"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description"
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description"
 			],
 			"targets": [
 				"desktop",

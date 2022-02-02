@@ -1,7 +1,5 @@
 ( function () {
 
-	var ADD_IMAGE_DESKTOP_PREF = 'growthexperiments-addimage-desktop';
-
 	/**
 	 * Serialize data for use with action_data event logging property.
 	 *
@@ -156,44 +154,6 @@
 	}
 
 	/**
-	 * Check whether the current user can use Add an Image on desktop while the task is only
-	 * available on mobile
-	 *
-	 * @return {boolean}
-	 */
-	function isUserEligibleForAddImageDesktop() {
-		return !!mw.user.options.get( ADD_IMAGE_DESKTOP_PREF );
-	}
-
-	/**
-	 * Enable the full experience of Add an Image on desktop for the current user.
-	 * This is only used during the mobile-only era of Add an Image.
-	 *
-	 * @private For debug/QA purposes only.
-	 * @return {jQuery.Promise}
-	 */
-	function enableAddImageDesktop() {
-		var prefData = {
-			'growthexperiments-homepage-variant': 'imagerecommendation'
-		};
-		prefData[ ADD_IMAGE_DESKTOP_PREF ] = '1';
-		return updateTaskPreference( prefData );
-	}
-
-	/**
-	 * Disable the desktop experience of Add an Image for the current user.
-	 * This is only used during the mobile-only era of Add an Image.
-	 *
-	 * @private For debug/QA purposes only.
-	 * @return {jQuery.Promise}
-	 */
-	function disableAddImageDesktop() {
-		var prefData = {};
-		prefData[ ADD_IMAGE_DESKTOP_PREF ] = '0';
-		return updateTaskPreference( prefData );
-	}
-
-	/**
 	 * Get the URL to the suggested edits feed (Special:Homepage on desktop and suggested edits
 	 * overlay on top of Special:Homepage on mobile)
 	 *
@@ -220,9 +180,7 @@
 	window.ge = window.ge || {};
 	ge.utils = {
 		getUserVariant: getUserVariant,
-		setUserVariant: setUserVariant,
-		enableAddImageDesktop: enableAddImageDesktop,
-		disableAddImageDesktop: disableAddImageDesktop
+		setUserVariant: setUserVariant
 	};
 
 	module.exports = {
@@ -232,7 +190,6 @@
 		isUserInVariant: isUserInVariant,
 		getUserVariant: getUserVariant,
 		formatTitle: formatTitle,
-		isUserEligibleForAddImageDesktop: isUserEligibleForAddImageDesktop,
 		getSuggestedEditsFeedUrl: getSuggestedEditsFeedUrl
 	};
 

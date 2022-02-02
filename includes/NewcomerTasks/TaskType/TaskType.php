@@ -206,9 +206,6 @@ class TaskType implements JsonUnserializable {
 	 * @return array
 	 */
 	public function getIconData(): array {
-		$descriptionMessageKey = static::IS_MOBILE_ONLY ?
-			'growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description' :
-			'growthexperiments-homepage-suggestededits-tasktype-machine-description';
 		if ( static::IS_MACHINE_SUGGESTION ) {
 			return [
 				// The following classes are used here:
@@ -216,7 +213,7 @@ class TaskType implements JsonUnserializable {
 				// * robot-task-type-medium
 				'icon' => 'robot-task-type-' . $this->getDifficulty(),
 				'filterIcon' => 'robot',
-				'descriptionMessageKey' => $descriptionMessageKey
+				'descriptionMessageKey' => 'growthexperiments-homepage-suggestededits-tasktype-machine-description'
 			];
 		}
 		return [];

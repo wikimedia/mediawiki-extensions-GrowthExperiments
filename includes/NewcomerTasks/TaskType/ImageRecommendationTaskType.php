@@ -108,7 +108,7 @@ class ImageRecommendationTaskType extends TaskType {
 
 	/** @inheritDoc */
 	public function getQualityGateIds(): array {
-		return [ 'mobileOnly', 'dailyLimit' ];
+		return [ 'dailyLimit' ];
 	}
 
 	/** @inheritDoc */

@@ -219,7 +219,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Add links between articles",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Add a suggested image",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Machine suggestions",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "Machine suggestions (mobile-only)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biography (all)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biography (women)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Food and drink",
@@ -473,8 +472,6 @@
 	"growthexperiments-addimage-reason-commons": "One of several images linked to the Wikidata item for this article.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|You}} have completed all of today's image suggestions.\n\nAdjust {{GENDER:|your}} difficulty levels to see other types of edits or come back tomorrow for more image suggestions.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Got it",
-	"growthexperiments-addimage-mobile-only": "Image suggestions are only available on mobile devices. Adjust {{GENDER:|your}} difficulty levels to see other types of edits or use {{GENDER:|your}} mobile device to work on image suggestions.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Got it",
 	"growthexperiments-addimage-caption-warning-tooshort": "Captions must be $1 {{PLURAL:$1|character|characters}} or longer.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|You}} have completed all of today's link suggestions.\n\nAdjust {{GENDER:|your}} difficulty levels to see other types of edits or come back tomorrow for more link suggestions.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Got it"

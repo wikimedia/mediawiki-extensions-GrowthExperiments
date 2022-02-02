@@ -656,8 +656,7 @@ return [
 						'args' => [
 							$growthServices->getNewcomerTasksConfigurationLoader(),
 							$growthServices->getImageRecommendationSubmissionLogFactory(),
-							$growthServices->getLinkRecommendationSubmissionLogFactory(),
-							$services->getUserOptionsLookup()
+							$growthServices->getLinkRecommendationSubmissionLogFactory()
 						]
 					],
 				]

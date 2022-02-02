@@ -15,7 +15,7 @@
 		config = config || { invisibleLabel: true };
 		// The following messages are used here:
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
-		// * growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description
+		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
 		label = 'descriptionMessageKey' in iconData ? mw.message( iconData.descriptionMessageKey ).text() : '';
 		iconWidget = new OO.ui.IconWidget( $.extend( config, {
 			icon: iconData.icon,
