@@ -648,11 +648,9 @@ AddImageArticleTarget.prototype.saveWithoutShowingDialog = function () {
 };
 
 /** @inheritDoc **/
-AddImageArticleTarget.prototype.getSaveOptions = function () {
-	// Edit summary will be localized in the content language via FormatAutocomments hook
-	var editSummaryAutoComment = '/* growthexperiments-addimage-summary-summary: 1 */',
-		saveOptions = this.constructor.super.prototype.getSaveOptions.call( this );
-	saveOptions.summary = editSummaryAutoComment;
+AddImageArticleTarget.prototype.formatSaveOptions = function ( saveOptions ) {
+	// Edit summary will be localized in the content language via FormatAutocomments hook.
+	saveOptions.summary = '/* growthexperiments-addimage-summary-summary: 1 */';
 	return saveOptions;
 };
 
