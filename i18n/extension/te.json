@@ -11,6 +11,7 @@
 	"growthexperiments-config-validator-error": "దీనితో $1 మూల్యాంకనం విఫలమైంది: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> అనేది <code>$2</code> అయి ఉండాల్సింది, కానీ <code>$3</code> లాగా ఉంది",
 	"growthexperiments-config-validator-contentmodel-mismatch": "కంటెంటు రకం సరిపోలడం లేదు: GrowthExperiments కాన్ఫిగ్ ఫైలు JSON కంటెంటు మోడలు అయి ఉండాలి, $1 అని కనబడింది",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "చెల్లని టాస్కు రకం హాండ్లర్ ఐడి: <code>$1</code> చెల్లదు",
 	"growthexperiments-edit-config-disabled": "సాముదాయిక కాన్ఫిగరేషను ప్రస్తుతం అచేతనం చేసి ఉంది.",
 	"growthexperiments-edit-config-title": "గ్రోత్ కాన్ఫిగరేషను సవరణ",
 	"growthexperiments-edit-config-pretext": "ఈ పేజీ [[:mw:Special:MyLanguage/Growth|గ్రోత్]] బృందపు అంశాల కాన్ఫిగరేషన్ను మార్చుకునే వీలు కలిగిస్తుంది. ఇది మీ తరఫున $1 ను సవరిస్తుంది. మీ మార్పులను ఆ పేజీ చరితంలో చూడవచ్చు.",

@@ -4,7 +4,8 @@
 			"Rachmat04",
 			"Sonic Speedy",
 			"WillsonEP09",
-			"Daud I.F. Argana"
+			"Daud I.F. Argana",
+			"ANukuma"
 		]
 	},
 	"growthexperiments-desc": "Ekstensi ini berisi uji coba yang dilakukan oleh tim Pertumbuhan.",
@@ -35,6 +36,7 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Halaman pembicaraan pembimbing",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Meja bantuan",
 	"growthexperiments-edit-config-help-panel-links": "Pranala panel bantuan",
+	"growthexperiments-edit-config-homepage": "Beranda pengguna baru",
 	"growthexperiments-edit-config-mentorship": "Pembimbingan",
 	"growthexperiments-edit-config-mentorship-description": "Wiki bisa memiliki dua daftar pembimbing terpisah: satu untuk pembimbing yang ditugaskan secara acak kepada semua pendatang baru dan satu untuk pembimbing yang tidak ditugaskan secara acak, tetapi bisa memilih bimbingan. Daftar kedua digunakan untuk pembimbing yang hanya ingin membimbing orang-orang dari suatu acara atau kelas.",
 	"growthexperiments-edit-config-mentorship-enabled": "Apakah fitur pembimbingan dinyalakan?",
