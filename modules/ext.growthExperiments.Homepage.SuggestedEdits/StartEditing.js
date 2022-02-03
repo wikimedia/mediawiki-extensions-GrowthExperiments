@@ -188,12 +188,6 @@
 		}
 	} );
 
-	mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded.start-startediting' ).add( function ( $content ) {
-		$content.on( 'click', function () {
-			launchCta( 'start-startediting', $content.data( 'mode' ), 'suggested-edits' );
-		} );
-	} );
-
 	module.exports = {
 		initialize: initialize
 	};
