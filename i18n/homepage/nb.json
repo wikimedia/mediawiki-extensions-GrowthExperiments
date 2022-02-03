@@ -216,7 +216,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Legg til lenker mellom artikler",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Legg til et foreslått bilde",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Maskinforslag",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "Maskinforslag (kun på mobil)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografi (alle)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografi (kvinner)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Mat og drikke",
@@ -468,8 +467,6 @@
 	"growthexperiments-addimage-reason-commons": "Ett av flere bilder som lenkes til Wikidata-elementet for denne artikkelen.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Du}} har fullført alle bildeforslagene for i dag.\n\nJuster vanskelighetsgraden din for å se andre typer redigeringer, eller kom tilbake i morgen for å få flere bildeforslag.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Skjønner",
-	"growthexperiments-addimage-mobile-only": "Bildeforslag er kun tilgjengelige på mobile enheter. Juster vanskelighetsgraden din for å se andre typer redigeringer, eller bruk den mobile enheten din for å jobbe med bildeforslag.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Skjønner",
 	"growthexperiments-addimage-caption-warning-tooshort": "Bildetekster må være på minst $1 {{PLURAL:$1|tegn}}.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Du}} har fullført alle lenkeforslag for i dag.\n\nJuster vanskelighetsgraden din for å se andre typer redigeringer, eller kom tilbake i morgen for å få flere lenkeforslag.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Skjønner"

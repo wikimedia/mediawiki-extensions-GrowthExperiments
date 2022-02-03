@@ -228,7 +228,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "添加條目之間的連結",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "加入建議的圖片",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "機器建議",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "機器做出的建議（僅限移動裝置）",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "傳記（所有）",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "傳記（女性）",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "食物與飲料",
@@ -480,8 +479,6 @@
 	"growthexperiments-addimage-reason-commons": "連結到此條目的維基數據項目的圖片之一。",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|您}}已經完成今天所有的圖片建議。\n\n調整{{GENDER:|您的}}難度等級以看到其他類型的編輯或是在明天回來以獲得更多圖片建議。",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "了解",
-	"growthexperiments-addimage-mobile-only": "圖片建議僅能在移動版裝置上使用。調整{{GENDER:|您的}}難度等級以看到其他類型的編輯或使用{{GENDER:|您的}}移動版裝置來處理圖片建議。",
-	"growthexperiments-addimage-mobile-only-dialog-button": "了解",
 	"growthexperiments-addimage-caption-warning-tooshort": "說明應該至少要$1{{PLURAL:$1|個字}}。",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|您}}已經完成今天所有的連結建議。\n\n調整{{GENDER:|您的}}難度等級以看到其他類型的編輯或是在明天回來以獲得更多連結建議。",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "了解"

@@ -233,7 +233,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Tambahkan pranala antarartikel",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Tambahkan gambar yang disarankan",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Saran dari pemelajaran mesin",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "Saranan mesin (khusus peranti bergerak)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografi (semua)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografi (perempuan)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Makanan dan minuman",
@@ -486,8 +485,6 @@
 	"growthexperiments-addimage-reason-commons": "Salah satu dari beberapa gambar yang ditautkan ke butir Wikidata untuk artikel ini.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Anda}} telah menyelesaikan semua saranan gambar untuk hari ini.\n\nSesuaikan tingkat kesulitan {{GENDER:|Anda}} untuk melihat jenis suntingan lain atau kembali lagi besok untuk mendapat lebih banyak saranan gambar.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Mengerti",
-	"growthexperiments-addimage-mobile-only": "Saranan gambar hanya tersedia di peranti bergerak. Sesuaikan tingkat kesulitan {{GENDER:|Anda}} untuk melihat jenis suntingan lain atau gunakan peranti bergerak untuk mengerjakan saranan gambar.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Mengerti",
 	"growthexperiments-addimage-caption-warning-tooshort": "Takarir harus terdiri dari $1 {{PLURAL:$1|karakter}} atau lebih.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Anda}} telah menyelesaikan semua saranan pranala untuk hari ini.\n\nSesuaikan tingkat kesulitan {{GENDER:|Anda}} untuk melihat jenis suntingan lain atau kembali lagi besok untuk mendapat lebih banyak saranan pranala.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Mengerti"

@@ -216,7 +216,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Adăugați legături între articole",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Adăugați o imagine sugerată",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Sugestii automate",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "Sugestii automate (numai pe mobil)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografie (tot)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografie (femei)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Mâncare și băutură",
@@ -468,8 +467,6 @@
 	"growthexperiments-addimage-reason-commons": "Una dintre cele câteva imagini legate de elementul Wikidata pentru acest articol.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Ați}} finalizat toate sugestiile de imagine pentru astăzi. \n\n{{GENDER:|Ajustați-vă}} nivelurile de dificultate pentru a vedea alte tipuri de editări sau reveniți mâine pentru mai multe sugestii de imagine.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Am înțeles",
-	"growthexperiments-addimage-mobile-only": "Sugestiile de imagine sunt disponibile numai pe mobil. {{GENDER:|Ajustați-vă}} nivelurile de dificultate pentru a vedea alte tipuri de editări sau {{GENDER:|utilizați-vă}} dispozitivul mobil pentru a lucra la sugestii de imagine.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Am înțeles",
 	"growthexperiments-addimage-caption-warning-tooshort": "Descrierile scurte trebuie să aibă $1 {{PLURAL:$1|caracter|caractere}} sau mai mult.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Ați}} finalizat toate sugestiile de legare pentru astăzi. \n\n{{GENDER:|Ajustați-vă}} nivelurile de dificultate pentru a vedea alte tipuri de editări sau reveniți mâine pentru mai multe sugestii de legare.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Am înțeles"

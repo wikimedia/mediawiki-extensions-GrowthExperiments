@@ -228,7 +228,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "افزودن پیوند میان مقاله‌ها",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "افزودن تصویر پیشنهادی",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "پیشنهادهای ماشینی",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "پیشنهادهای ماشینی (فقط تلفن همراه)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "زندگی‌نامه (همه)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "زندگی‌نامه (زنان)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "غذا و نوشیدنی",
@@ -481,8 +480,6 @@
 	"growthexperiments-addimage-reason-commons": "یکی از چند تصویر پیوندشده به آیتم ویکی‌دادهٔ مرتبط با این مقاله.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|شما}} تمامی پیشنهادهای افزودن تصویر امروز را کامل کرده‌اید.\n\nبرای مشاهدهٔ سایر انواع ویرایش، سطح سختی {{GENDER:|خود}} را تغییر دهید، یا برای پیشنهادهای بیشتر، فردا دوباره بازگردید.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "گرفتم",
-	"growthexperiments-addimage-mobile-only": "تصاویر پیشنهادی تنها در دستگاه‌های موبایل در دسترس هستند. برای مشاهدهٔ سایر انواع ویرایش، سطح سختی {{GENDER:|خود}} را تغییر دهید، یا برای کار بر روی تصاویر پیشنهادی از تلفن همراه {{GENDER:|خود}} استفاده کنید.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "متوجه شدم",
 	"growthexperiments-addimage-caption-warning-tooshort": "توضیح باید دارای $1 {{PLURAL:$1|نویسه}} یا بیشتر باشد.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|شما}} تمام پیوندهای پیشنهادی امروز را انجام داده‌اید.\n\nبرای مشاهدهٔ سایر انواع ویرایش، سطح سختی {{GENDER:|خود}} را تغییر دهید، یا برای پیوندهای پیشنهادی بیشتر، فردا دوباره بازگردید.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "متوجه شدم"

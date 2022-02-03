@@ -239,7 +239,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Artikel verlinken",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Ein vorgeschlagenes Bild hinzufügen",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Maschinelle Vorschläge",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "Maschinelle Vorschläge (nur für Mobilgeräte)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografie (alle)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografie (Frauen)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Essen und Trinken",
@@ -491,8 +490,6 @@
 	"growthexperiments-addimage-reason-commons": "Eines von mehreren Bildern, die mit dem Wikidata-Eintrag zu diesem Artikel verlinkt sind.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Du}} hast alle Bildvorschläge von heute erledigt.\n\nPasse {{GENDER:|deinen}} Schwierigkeitsgrad an, um andere Arten von Bearbeitungen zu sehen oder komme morgen für weitere Bildvorschläge wieder.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Verstanden",
-	"growthexperiments-addimage-mobile-only": "Bildvorschläge sind nur auf mobilen Geräten verfügbar. Passe den Schwierigkeitsgrad an, um andere Bearbeitungsarten zu sehen, oder verwende {{GENDER:|dein}} Mobilgerät, um Bildvorschläge zu bearbeiten.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Verstanden",
 	"growthexperiments-addimage-caption-warning-tooshort": "Bildunterschriften müssen $1 {{PLURAL:$1|Zeichen}} oder länger sein.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Du}} hast alle Linkvorschläge von heute erledigt.\n\nPasse {{GENDER:|deinen}} Schwierigkeitsgrad an, um andere Arten von Bearbeitungen zu sehen oder komme morgen für weitere Linkvorschläge wieder.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Verstanden"

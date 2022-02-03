@@ -231,7 +231,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Wiązanie artykułów linkami",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Dodaj proponowany obraz",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Sugestie komputera",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "Sugestie komputera (tylko wersja mobilna)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biogramy (wszystkie)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biogramy (kobiety)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Pożywienie i napoje",
@@ -483,8 +482,6 @@
 	"growthexperiments-addimage-reason-commons": "Jeden z kilku obrazów dołączonych do elementu Wikidanych dla tego artykułu.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "Przejrzał{{GENDER:|eś|aś|eś(-aś)}} wszystkie dzisiejsze sugestie obrazków.\n\nDostosuj swój poziom trudności, aby zobaczyć również inne rodzaje edycji albo wróć jutro po więcej propozycji obrazków.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Wszystko jasne",
-	"growthexperiments-addimage-mobile-only": "Propozycje obrazków są dostępne wyłącznie na urządzeniach mobilnych. Dostosuj swój poziom trudności, aby zobaczyć inne rodzaje edycji albo skorzystaj ze swojego urządzenia mobilnego, by popracować nad propozycjami grafik.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Wszystko jasne",
 	"growthexperiments-addimage-caption-warning-tooshort": "Podpis musi mieć co najmniej $1 {{PLURAL:$1|znak|znaki|znaków}}.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "Przejrzał{{GENDER:|eś|aś|eś(-aś)}} wszystkie dzisiejsze sugestie linków.\n\nDostosuj swój poziom trudności, aby zobaczyć również inne rodzaje edycji albo wróć jutro po więcej propozycji linków.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Wszystko jasne"

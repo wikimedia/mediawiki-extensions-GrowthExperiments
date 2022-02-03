@@ -186,7 +186,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "بەستەرەکان لەنێوان وتارەکان زیاد بکە",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "وێنە پێشنیارکراوەکە زیاد بکە",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "پێشنیارەکانی ئامێر",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "پێشنیارەکانی ئامێر (تەنیا-مۆبایل)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "ژیاننامە (ھەموو)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "ژیاننامە (ژنان)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "خواردن و خواردنەوە",
@@ -371,6 +370,5 @@
 	"growthexperiments-structuredtask-anonuser": "چیتر بەکارهێنەر لە ژوورەوە نییە.",
 	"growthexperiments-addimage-summary-label": "پوختە",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "تێگەیشتم",
-	"growthexperiments-addimage-mobile-only-dialog-button": "تێگەیشتم",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "تێگەیشتم"
 }

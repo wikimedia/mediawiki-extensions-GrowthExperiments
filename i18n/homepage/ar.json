@@ -231,7 +231,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "أضف روابط بين المقالات",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "إضافة صورة مقترحة",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "الاقتراحات الآلية",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "اقتراحات الآلة (فقط على الجهاز الجوال)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "سيرة ذاتية (الكل)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "سيرة ذاتية (نساء)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "أكلات وشراب",
@@ -484,8 +483,6 @@
 	"growthexperiments-addimage-reason-commons": "واحدة من عدة صور مرتبطة بعنصر ويكي بيانات لهذه المقالة.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "لقد انتهيت من كلّ اقتراحات الصور لهذا اليوم.\n\n{{GENDER:|عدّل|عدّلي}} من مستوى الصعوبة للحصول على أنواع أخرى من التعديلات أو {{GENDER:|ارجع|ارجعي}} غداً للمزيد من اقتراحات الصّور.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "عُلم",
-	"growthexperiments-addimage-mobile-only": "تتوفّر اقتراحات الصور حصريا على الأجهزة الجوالة. {{GENDER:|عدّل|عدّلي}} مستوى الصعوبة الخاص بك للحصول على اقتراحات من نوع آخر أو {{GENDER:|استخدم|استخدمي}} جهازك الجوال للعمل على اقتراحات الصور.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "عُلم",
 	"growthexperiments-addimage-caption-warning-tooshort": "يجب أن يكون الشرح متكوّنا من {{PLURAL:$1||حرف واحد|حرفين|$1 أحرف|$1 حرفا|$1 حرف}} فأكثر.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "لقد انتهيت من كلّ اقتراحات الصور لهذا اليوم.\n\n{{GENDER:|عدّل|عدّلي}} من مستوى الصعوبة للحصول على أنواع أخرى من التعديلات أو {{GENDER:|ارجع|ارجعي}} غداً للمزيد من اقتراحات الصّور.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "عُلم"

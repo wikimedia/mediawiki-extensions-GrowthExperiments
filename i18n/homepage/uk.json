@@ -228,7 +228,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Додавайте посилання між статтями",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Додавання пропонованого зображення",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Машинні пропозиції",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "Машинні пропозиції (лише на мобільному)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Біографії (усі)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Біографії (жінки)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Їжа й напої",
@@ -481,8 +480,6 @@
 	"growthexperiments-addimage-reason-commons": "Одне з кількох зображень, пов'язаних з елементом Вікіданих для цієї статті.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Ви}} завершили усі сьогоднішні пропозиції зображень.\n\nЗмініть {{GENDER:|свої}} рівні складності, щоб бачити інші типи редагувань, або приходьте завтра по нові пропозиції зображень.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Зрозуміло",
-	"growthexperiments-addimage-mobile-only": "Пропозиції зображень доступні лише на мобільних пристроях. Змініть {{GENDER:|свої}} рівні складності, щоб бачити інші типи редагувань, або користуйтеся мобільним пристроєм, щоб працювати над пропозиціями зображень.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Зрозуміло",
 	"growthexperiments-addimage-caption-warning-tooshort": "Підпис має бути не менше $1 {{PLURAL:$1|символа|символів}} завдовжки.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Ви}} завершили усі сьогоднішні пропозиції посилань.\n\nЗмініть {{GENDER:|свої}} рівні складності, щоб бачити інші типи редагувань, або приходьте завтра по нові пропозиції посилань.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Зрозуміло"

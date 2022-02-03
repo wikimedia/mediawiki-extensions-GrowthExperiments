@@ -231,7 +231,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "নিবন্ধের মাঝে লিঙ্ক যুক্ত করুন",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "একটি পরামর্শকৃত ছবি যুক্ত করুন",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "যন্ত্র-প্রদত্ত পরামর্শ",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "যন্ত্র-প্রদত্ত পরামর্শ (কেবলমাত্র মোবাইলের জন্য)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "জীবনী (সকল)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "জীবনী (নারী)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "খাদ্য ও পানীয়",
@@ -481,7 +480,5 @@
 	"growthexperiments-addimage-reason-commons": "এই নিবন্ধের জন্য একাধিক ছবি উইকিউপাত্তের ভুক্তিতে যুক্ত করা হয়েছে।",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|আপনি}} আজকের ছবির সকল পরামর্শের কাজ সম্পন্ন করেছেন। {{GENDER:|আপনার}} সম্পাদনার ধরন থেকে অন্যান্য ধরনের সম্পাদনা দেখুন অথবা আগামীকাল পুনরায় ছবির পরামর্শের কাজ করুন।",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "বুঝেছি",
-	"growthexperiments-addimage-mobile-only": "ছবির পরামর্শ কেবলমাত্র মোবাইল ডিভাইস থেকে পাওয়া যাচ্ছে। {{GENDER:|আপনার}} সম্পাদনার ধরন পরিবর্তন করে অন্যান্য ধরনের সম্পাদনা করুন বা {{GENDER:|আপনার}} মোবাইল ডিভাইস ব্যবহার করে ছবির পরামর্শ নিয়ে কাজ করুন।",
-	"growthexperiments-addimage-mobile-only-dialog-button": "বুঝেছি",
 	"growthexperiments-addimage-caption-warning-tooshort": "ক্যাপশনের দৈর্ঘ্য $1 {{PLURAL:$1|অক্ষর}} বা তার বেশি হতে হবে।"
 }

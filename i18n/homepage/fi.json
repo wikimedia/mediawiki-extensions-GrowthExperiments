@@ -376,6 +376,5 @@
 	"growthexperiments-addimage-summary-label": "Yhteenveto",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|muu|muuta}}",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Selvä",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Selvä",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Selvä"
 }

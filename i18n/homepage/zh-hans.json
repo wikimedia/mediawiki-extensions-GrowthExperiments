@@ -250,7 +250,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "添加条目间的链接",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "添加建议图像",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "机器建议",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "来自机器的建议（仅手机版）",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "传记 (全部)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "传记 (女性)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "饮食",
@@ -502,8 +501,6 @@
 	"growthexperiments-addimage-reason-commons": "链接到此条目的维基数据项目的图片之一。",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|您}}已经完成今天所有的图片建议。\n\n调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或是在明天回来以获得更多图片建议。",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "明白了",
-	"growthexperiments-addimage-mobile-only": "图片建议仅能在移动版设备上使用。调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或使用{{GENDER:|您的}}移动版设备来处理图片建议。",
-	"growthexperiments-addimage-mobile-only-dialog-button": "明白了",
 	"growthexperiments-addimage-caption-warning-tooshort": "说明应该至少要$1{{PLURAL:$1|个字}}。",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|您}}已经完成今天所有的链接建议。\n\n调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或是在明天回来以获得更多链接建议。",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "明白了"

@@ -217,7 +217,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "వ్యాసాల మధ్య లింకులు ఇవ్వండి",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "సూచించిన బొమ్మను చేర్చండి",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "యాంత్రిక సూచనలు",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "యాంత్రిక సూచనలు (మొబైలుకు మాత్రమే)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "జీవిత చరిత్ర (అన్నీ)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "జీవిత చరిత్ర (మహిళలు)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "ఆహార పానీయాలు",
@@ -396,7 +395,6 @@
 	"growthexperiments-addimage-reason-wikipedia-project": "$1 లో ఇదే వ్యాసంలో వాడారు.",
 	"growthexperiments-addimage-reason-wikidata": "ఈ వ్యాసపు వికీడేటా ఐటములో కనబడింది (బలమైన పోలిక).",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "అర్థమైంది",
-	"growthexperiments-addimage-mobile-only-dialog-button": "అర్థమైంది",
 	"growthexperiments-addimage-caption-warning-tooshort": "వ్యాఖ్యలు $1 {{PLURAL:$1|కారెక్టరు|కారెక్టర్లు}} గానీ అంతకంటే ఎక్కువ గానీ ఉండాలి.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "ఇవ్వాళ్టి లింకు సూచనలన్నిటినీ పూర్తి {{GENDER:|చేసారు}}.\n\n{{GENDER:|మీ}} క్లిష్టత స్థాయిని మార్చుకుని ఇతర రకాల దిద్దుబాట్లను చూడండి. లేదా రేపొచ్చి మరిన్ని లింకు సూచనలు చూడండి.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "అర్థమైంది"

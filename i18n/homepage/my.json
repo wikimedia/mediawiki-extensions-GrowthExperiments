@@ -167,7 +167,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "ဆောင်းပါးများကြား လင့်ခ်ပေါင်းထည့်ရန်",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "အကြံပြုထားသောပုံကို ထည့်ရန်",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "စက်အကြံပြုချက်များ",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "စက်မှ အကြံပြုချက်များ (မိုဘိုင်းလ်တခုတည်းသာ)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "အတ္ထုပတ္တိ (အကုန်လုံး)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "အတ္ထုပတ္တိ (အမျိုးသမီး)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "အစားအသောက်",
@@ -320,6 +319,5 @@
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|အခြား|အခြားများ}}",
 	"growthexperiments-addimage-reason-wikipedia-project": "$1 ရှိ ထပ်တူညီသောဆောင်းပါးတွင် အသုံးပြုထားသည်။",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "သဘောပေါက်ပြီ",
-	"growthexperiments-addimage-mobile-only-dialog-button": "သဘောပေါက်ပြီ",
 	"growthexperiments-addimage-caption-warning-tooshort": "ပုံစာများသည် $1 {{PLURAL:$1|စာလုံး|စာလုံးများ}} သို့မဟုတ် ပိုမိုရှည်ရမည်။"
 }

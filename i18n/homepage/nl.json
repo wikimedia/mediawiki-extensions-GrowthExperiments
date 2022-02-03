@@ -415,6 +415,5 @@
 	"growthexperiments-addimage-summary-label": "Samenvatting",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|andere}}",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Begrepen",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Begrepen",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Begrepen"
 }

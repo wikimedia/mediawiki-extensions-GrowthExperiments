@@ -183,6 +183,5 @@
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|aneren|anerer}}",
 	"growthexperiments-addimage-reason-wikipedia-project": "Benotz am selwechten Artikel op $1",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Verstanen",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Verstanen",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Verstanen"
 }

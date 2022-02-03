@@ -226,7 +226,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Maddeler arasına bağlantılar ekleyin",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Önerilen bir resim ekle",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Makine önerileri",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "Makine önerileri (sadece-mobil)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biyografi (tümü)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biyografi (kadın)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Yiyecek ve içecek",
@@ -440,6 +439,5 @@
 	"growthexperiments-structuredtask-anonuser": "Kullanıcının oturumu artık açık değil.",
 	"growthexperiments-addimage-summary-label": "Özet",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Anladım",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Anladım",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Anladım"
 }

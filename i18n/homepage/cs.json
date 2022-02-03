@@ -231,7 +231,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Přidání odkazů mezi články",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Přidejte navržený obrázek",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Strojové návrhy",
-	"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description": "Strojové návrhy (pouze na mobilu)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografie (vše)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografie (ženy)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Jídlo a pití",
@@ -483,8 +482,6 @@
 	"growthexperiments-addimage-reason-commons": "Jeden z obrázků propojených s Wikidata položkou pro tento článek.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "Již jste {{GENDER:|dokončil|dokončila|dokončili}} všechny dnešní návrhy.\n\nZměňte zvolené typy editací, abyste {{GENDER:|viděl|viděla|viděli}} i další návrhy, anebo se vraťte zpět zítra, kdy se zde objeví další návrhy.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Rozumím",
-	"growthexperiments-addimage-mobile-only": "Navrhování obrázků je v tuto chvíli pouze dostupné na mobilních zařízení. Změňte {{GENDER:|své}} typy editací, abyste {{GENDER:|viděl|viděla|viděli}} i nějaké další úkoly, anebo použijte své mobilní zařízení, a pokračujte s prací na obrázcích.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Rozumím",
 	"growthexperiments-addimage-caption-warning-tooshort": "Popisek musí mít nejméně $1 {{PLURAL:$1|znak|znaky|znaků}}.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "Již jste {{GENDER:|dokončil|dokončila|dokončili}} všechny dnešní návrhy.\n\nZměňte zvolené typy editací, abyste {{GENDER:|viděl|viděla|viděli}} i další návrhy, anebo se vraťte zpět zítra, kdy se zde objeví další návrhy.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Rozumím"
