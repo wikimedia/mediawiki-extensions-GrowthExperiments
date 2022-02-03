@@ -430,23 +430,25 @@ abstract class DashboardModule implements IDashboardModule {
 	/**
 	 * @param string $name Name of the icon
 	 * @param bool $invert Whether the icon should be inverted
-	 * @return string HTML
+	 * @return IconWidget
 	 */
 	protected function getHeaderIcon( $name, $invert ) {
-		return Html::rawElement(
-			'div',
-			[ 'class' => self::BASE_CSS_CLASS . '-header-icon' ],
-			new IconWidget( [
-				'icon' => $name,
-				// HACK: IconWidget doesn't let us set 'invert' => true, and setting
-				// 'classes' => [ 'oo-ui-image-invert' ] doesn't work either, because
-				// Theme::getElementClasses() will unset it again. So instead, trick that code into
-				// thinking this is a checkbox icon, which will cause it to invert the icon
-				'classes' => $invert ?
-					[ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ] :
-					[]
-			] )
-		);
+		$defaultIconClasses = [
+			self::BASE_CSS_CLASS . '-header-icon',
+			'icon-' . $name
+		];
+		$invertClasses = $invert ?
+			[ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ] :
+			[];
+
+		return new IconWidget( [
+			'icon' => $name,
+			// HACK: IconWidget doesn't let us set 'invert' => true, and setting
+			// 'classes' => [ 'oo-ui-image-invert' ] doesn't work either, because
+			// Theme::getElementClasses() will unset it again. So instead, trick that code into
+			// thinking this is a checkbox icon, which will cause it to invert the icon
+			'classes' => array_merge( $defaultIconClasses, $invertClasses )
+		] );
 	}
 
 	/**
