@@ -483,6 +483,7 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 	}
 	if ( this.currentCard instanceof EditCardWidget ) {
 		var task = this.taskQueue[ queuePosition ];
+		this.newcomerTaskToken = task.token;
 		this.logCardData( queuePosition );
 		this.logger.log(
 			'suggested-edits',
