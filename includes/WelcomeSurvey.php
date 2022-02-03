@@ -369,7 +369,7 @@ class WelcomeSurvey {
 		$returnToQuery = $request->getVal( 'returntoquery' );
 
 		$welcomeSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
-		$welcomeSurveyToken = \Wikimedia\base_convert( \MWCryptRand::generateHex( 40 ), 16, 32, 32 );
+		$welcomeSurveyToken = Util::generateRandomToken();
 		$request->response()->setCookie( WelcomeSurveyLogger::WELCOME_SURVEY_TOKEN,
 			$welcomeSurveyToken, time() + 3600 );
 		$query = wfArrayToCgi( [

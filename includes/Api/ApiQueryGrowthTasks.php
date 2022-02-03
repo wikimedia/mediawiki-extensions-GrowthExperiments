@@ -13,7 +13,6 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use MWCryptRand;
 use StatusValue;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -124,7 +123,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				'order' => $i,
 				'qualityGateIds' => $task->getTaskType()->getQualityGateIds(),
 				'qualityGateConfig' => $tasks->getQualityGateConfig(),
-				'token' => MWCryptRand::generateHex( 20 )
+				'token' => $task->getToken()
 			];
 			if ( $task->getTopics() ) {
 				foreach ( $task->getTopicScores() as $id => $score ) {
