@@ -118,7 +118,7 @@ QualityGate.prototype.showAlertDialog = function ( qualityGateId, message, actio
 		.addClass( 'ge-qualitygate-alert-dialog' )
 		// The following classes are used here:
 		// * ge-qualitygate-alert-dialog-dailyLimit
-		// * ge-qualitygate-alert-dialog-mobileOnly
+		// * eslint insists on having one more line here
 		.addClass( 'ge-qualitygate-alert-dialog-' + qualityGateId );
 	this.windowManager.addWindows( [ messageDialog ] );
 	return this.windowManager.openWindow( messageDialog, {
