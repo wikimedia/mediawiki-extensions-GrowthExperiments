@@ -264,7 +264,8 @@
 			savedTaskType: suggestedEditSession.taskType,
 			errorMessage: errorMessage,
 			userTaskTypes: preferences.taskTypes,
-			userTopics: preferences.topics
+			userTopics: preferences.topics,
+			newcomerTaskToken: suggestedEditSession.newcomerTaskToken
 		} ) );
 
 		closePromise = displayPanelPromises.closePromise;

@@ -35,7 +35,6 @@
 		this.taskTypes = config.taskTypes;
 		this.newcomerTaskLogger = config.newcomerTaskLogger;
 		this.helpPanelLogger = config.helpPanelLogger;
-		this.newcomerTaskToken = null;
 		this.$taskCard = null;
 		this.imageRecommendationDailyTasksExceeded = config.imageRecommendationDailyTasksExceeded;
 		this.linkRecommendationDailyTasksExceeded = config.linkRecommendationDailyTasksExceeded;
@@ -199,11 +198,10 @@
 		var params, url, taskCard;
 
 		this.newcomerTaskLogger.log( task );
-		this.newcomerTaskToken = task.token;
 		params = {
 			geclickid: this.helpPanelLogger.helpPanelSessionId,
 			getasktype: task.tasktype,
-			genewcomertasktoken: this.newcomerTaskToken,
+			genewcomertasktoken: task.token,
 			gesuggestededit: 1
 		};
 		if ( task.url ) {
@@ -260,7 +258,7 @@
 				type: 'full',
 				savedTaskType: extraData.savedTaskType,
 				userTaskTypes: extraData.userTaskTypes,
-				newcomerTaskToken: this.newcomerTaskToken
+				newcomerTaskToken: extraData.newcomerTaskToken
 			};
 			if ( extraData.userTopics && extraData.userTopics.length ) {
 				data.userTopics = extraData.userTopics;
@@ -325,7 +323,7 @@
 		this.updateTask( task );
 		this.helpPanelLogger.log( 'postedit-impression', {
 			type: this.nextTask ? 'full' : 'small',
-			newcomerTaskToken: this.newcomerTaskToken
+			newcomerTaskToken: task.token
 		} );
 	};
 
