@@ -198,7 +198,8 @@
 	PostEditPanel.prototype.getCard = function ( task ) {
 		var params, url, taskCard;
 
-		this.newcomerTaskToken = this.newcomerTaskLogger.log( task );
+		this.newcomerTaskLogger.log( task );
+		this.newcomerTaskToken = task.token;
 		params = {
 			geclickid: this.helpPanelLogger.helpPanelSessionId,
 			getasktype: task.tasktype,
@@ -302,8 +303,8 @@
 	 * This is handled automatically by the class.
 	 */
 	PostEditPanel.prototype.logTaskClick = function () {
-		var joinToken = this.newcomerTaskLogger.log( this.nextTask );
-		this.helpPanelLogger.log( 'postedit-task-click', { newcomerTaskToken: joinToken } );
+		this.newcomerTaskLogger.log( this.nextTask );
+		this.helpPanelLogger.log( 'postedit-task-click', { newcomerTaskToken: this.nextTask.token } );
 	};
 
 	/**
