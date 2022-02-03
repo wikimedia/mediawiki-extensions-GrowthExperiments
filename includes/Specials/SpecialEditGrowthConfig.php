@@ -19,6 +19,7 @@ use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use PageProps;
 use PermissionsError;
+use ReadOnlyMode;
 use Status;
 use Title;
 use TitleFactory;
@@ -48,6 +49,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 	/** @var ILoadBalancer */
 	private $loadBalancer;
+
+	/** @var ReadOnlyMode */
+	private $readOnlyMode;
 
 	/** @var WikiPageConfigLoader */
 	private $configLoader;
@@ -81,6 +85,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @param RevisionLookup $revisionLookup
 	 * @param PageProps $pageProps
 	 * @param ILoadBalancer $loadBalancer
+	 * @param ReadOnlyMode $readOnlyMode
 	 * @param WikiPageConfigLoader $configLoader
 	 * @param WikiPageConfigWriterFactory $configWriterFactory
 	 * @param GrowthExperimentsMultiConfig $growthWikiConfig
@@ -90,6 +95,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		RevisionLookup $revisionLookup,
 		PageProps $pageProps,
 		ILoadBalancer $loadBalancer,
+		ReadOnlyMode $readOnlyMode,
 		WikiPageConfigLoader $configLoader,
 		WikiPageConfigWriterFactory $configWriterFactory,
 		GrowthExperimentsMultiConfig $growthWikiConfig
@@ -100,6 +106,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$this->revisionLookup = $revisionLookup;
 		$this->pageProps = $pageProps;
 		$this->loadBalancer = $loadBalancer;
+		$this->readOnlyMode = $readOnlyMode;
 		$this->configLoader = $configLoader;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->growthWikiConfig = $growthWikiConfig;
@@ -297,9 +304,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 		if ( !$this->userCanWrite ) {
 			$form->suppressDefaultSubmit( true );
-		} elseif ( wfReadOnly() ) {
+		} elseif ( $this->readOnlyMode->isReadOnly() ) {
 			$form->suppressDefaultSubmit( true );
-			$form->addPostText( $this->msg( 'readonlytext', wfReadOnlyReason() ) );
+			$form->addPostText( $this->msg( 'readonlytext', $this->readOnlyMode->getReason() ) );
 		}
 	}
 
