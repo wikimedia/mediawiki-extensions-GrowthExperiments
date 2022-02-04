@@ -98,11 +98,16 @@ abstract class MentorProvider {
 	 * @return string[]
 	 */
 	public function getMentorsSafe(): array {
+		$mentors = [];
 		try {
-			return $this->getMentors();
+			$mentors = array_merge( $mentors, $this->getAutoAssignedMentors() );
 		} catch ( WikiConfigException $e ) {
-			return [];
 		}
+		try {
+			$mentors = array_merge( $mentors, $this->getManuallyAssignedMentors() );
+		}  catch ( WikiConfigException $e ) {
+		}
+		return array_unique( $mentors );
 	}
 
 	/**
