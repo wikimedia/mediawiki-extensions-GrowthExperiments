@@ -49,10 +49,6 @@ TopicFiltersDialog.prototype.initialize = function () {
 		classes: [ 'suggested-edits-filters-error' ],
 		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
 	} ).toggle( false );
-	this.footerPanelLayout
-		.toggle( false )
-		.$element.append( this.articleCounter.$element );
-
 	this.buildTopicFilters();
 	this.$body.append( this.content.$element );
 	this.$foot.append( this.footerPanelLayout.$element );
