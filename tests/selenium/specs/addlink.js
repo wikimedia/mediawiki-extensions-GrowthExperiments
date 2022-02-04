@@ -3,11 +3,15 @@
 const assert = require( 'assert' ),
 	HomepagePage = require( '../pageobjects/homepage.page' ),
 	Util = require( 'wdio-mediawiki/Util' ),
+	isQuibbleUsingApache = process.env.QUIBBLE_APACHE || false,
 	AddLinkArticlePage = require( '../pageobjects/addlink.article.page' );
 
 describe( 'add link', function () {
 
 	it( 'link inspector appears after clicking through task from Special:Homepage', function () {
+		if ( !isQuibbleUsingApache ) {
+			this.skip( 'This test depends on using PHP-FPM and Apache as the backend.' );
+		}
 		Util.waitForModuleState( 'mediawiki.api', 'ready', 5000 );
 		browser.execute( async () => {
 			return new mw.Api().saveOptions( {
