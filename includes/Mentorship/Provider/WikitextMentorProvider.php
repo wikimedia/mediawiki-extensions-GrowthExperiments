@@ -318,20 +318,6 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 	/**
 	 * @inheritDoc
 	 */
-	public function getAutoAssignedMentorsSourceId(): string {
-		return 'page-' . $this->getAutoMentorsListTitle()->getId();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getManualMentorsSourceId(): string {
-		return 'page-' . $this->getManualMentorsListTitle()->getId();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function getAutoAssignedMentors(): array {
 		return $this->getMentorsForPage( $this->getMentorsPage() );
 	}
@@ -344,7 +330,7 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 			'GrowthExperiments',
 			__CLASS__,
 			'WeightedMentors',
-			$this->getAutoAssignedMentorsSourceId()
+			$this->getAutoMentorsListTitle()->getId()
 		);
 	}
 

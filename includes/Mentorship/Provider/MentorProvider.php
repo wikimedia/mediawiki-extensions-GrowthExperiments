@@ -111,28 +111,6 @@ abstract class MentorProvider {
 	}
 
 	/**
-	 * Returns an unique identifier of the source listing the auto assigned mentors
-	 *
-	 * The identifier can be used in cache keys that are expected to change when
-	 * the MentorProvider starts to use a different source. The identifier's implementation can
-	 * change at any time, do not rely on it for other purposes than cache keys.
-	 *
-	 * @return string
-	 */
-	abstract public function getAutoAssignedMentorsSourceId(): string;
-
-	/**
-	 * Returns an unique identifier of the source listing the manually assigned mentors
-	 *
-	 * The identifier can be used in cache keys that are expected to change when
-	 * the MentorProvider starts to use a different source. The identifier's implementation can
-	 * change at any time, do not rely on it for other purposes than cache keys.
-	 *
-	 * @return string
-	 */
-	abstract public function getManualMentorsSourceId(): string;
-
-	/**
 	 * Get all the mentors who are automatically assigned to mentees.
 	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 * @return string[] List of mentor usernames.
