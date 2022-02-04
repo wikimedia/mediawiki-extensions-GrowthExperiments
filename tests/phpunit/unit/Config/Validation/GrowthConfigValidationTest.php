@@ -3,12 +3,12 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\Config\Validation\GrowthConfigValidation;
-use MediaWikiIntegrationTestCase;
+use MediaWikiUnitTestCase;
 
 /**
  * @covers \GrowthExperiments\Config\Validation\GrowthConfigValidation
  */
-class GrowthConfigValidationTest extends MediaWikiIntegrationTestCase {
+class GrowthConfigValidationTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideValidate
