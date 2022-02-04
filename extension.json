@@ -1624,6 +1624,8 @@
 			"tests/qunit/index.js",
 			"modules/utils/Utils.js",
 			"tests/qunit/utils/Utils.test.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
+			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.test.js",
 			"modules/ext.growthExperiments.Homepage.Logger/index.js",
 			"tests/qunit/ext.growthExperiments.Homepage.Logger/index.test.js",
 			"modules/ext.growthExperiments.Help/HelpPanelLogger.js",
