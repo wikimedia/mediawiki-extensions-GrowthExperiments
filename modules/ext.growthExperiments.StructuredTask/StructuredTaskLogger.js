@@ -41,7 +41,10 @@ StructuredTaskLogger.prototype.log = function ( action, data, metadataOverride )
 		/* eslint-enable camelcase */
 	}, this.getMetadata(), metadataOverride );
 	event.$schema = this.schema;
-	mw.eventLog.submit( this.streamName, event );
+	// mw.eventLog isn't present if EventLogging isn't loaded
+	if ( mw.eventLog ) {
+		mw.eventLog.submit( this.streamName, event );
+	}
 	this.events.push( event );
 };
 
