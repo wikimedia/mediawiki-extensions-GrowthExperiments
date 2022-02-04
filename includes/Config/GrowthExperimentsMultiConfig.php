@@ -4,7 +4,6 @@ namespace GrowthExperiments\Config;
 
 use Config;
 use ConfigException;
-use GlobalVarConfig;
 use IDBAccessObject;
 
 /**
@@ -23,7 +22,7 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomRe
 	/** @var WikiPageConfig */
 	private $wikiPageConfig;
 
-	/** @var GlobalVarConfig */
+	/** @var Config */
 	private $globalVarConfig;
 
 	// This should be in sync with SpecialEditGrowthConfig::getFormFields
@@ -46,11 +45,11 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomRe
 
 	/**
 	 * @param WikiPageConfig $wikiPageConfig
-	 * @param GlobalVarConfig $globalVarConfig
+	 * @param Config $globalVarConfig
 	 */
 	public function __construct(
 		WikiPageConfig $wikiPageConfig,
-		GlobalVarConfig $globalVarConfig
+		Config $globalVarConfig
 	) {
 		$this->wikiPageConfig = $wikiPageConfig;
 		$this->globalVarConfig = $globalVarConfig;
