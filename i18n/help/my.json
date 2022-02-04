@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dr Lotus Black",
+			"Phosai",
 			"Teitei Para"
 		]
 	},
@@ -45,7 +46,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "အင်္ဂါဂြိုဟ်၌ ဂြိုဟ်ရံလငယ် ၂ စင်း <mark class=\"negative\">ရှိခဲ့ဖူးသည်။</mark>",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules2": "ဝါကျများကို {{GENDER:|သင်}} ပြန်လည်ရေးသားနိုင်ပါသည်။ {{SITENAME}} အကြောင်းအရာသည် ဘက်လိုက်မှုကင်း၊ ရှင်းလင်းပြီး စွယ်စုံကျမ်းဆန်သင့်သည်။ သို့သော်လည်း ဝါကျရှိ အချက်အလက်များကို မပြောင်းလဲမိစေရန် သတိပြုပေးပါ။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "{{GENDER:|သင်}} ပြောင်းလဲလိုသော အမှားပြင်ဆင်ချက်ကိုတွေ့ပါက \"$1\" ကိုနှိပ်လိုက်ပါ။ ထို့နောက် လိုအပ်သလို ပြင်ဆင်တည်းဖြတ်နိုင်ပါသည်။",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "ပြောင်းလဲမှုများပြုလုပ်ရန် ပိုမိုရှာဖွေပါ၊ သို့မဟုတ် \"$1\" ကိုနှိပ်၍ {{GENDER:|သင်၏}}တည်းဖြတ်မှုကို သိမ်းဆည်းလိုက်ပါ။",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "ပြောင်းလဲမှုများပြုလုပ်ရန် ပိုမိုရှာဖွေပါ၊ သို့မဟုတ် \"$1\" ကိုနှိပ်၍ {{GENDER:|သင်၏}}တည်းဖြတ်မှုကို လွှင့်တင်လိုက်ပါ။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|ကူးရေးတင်ခြင်းအကြောင်း ပိုမိုသင်ယူရန်]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "သောကြာဂြိုဟ်တွင် သိပ်သည်းသော <mark class=\"positive\">လေထု</mark> တည်ရှိသည်။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|လင့်ခ်များပေါင်းထည့်ခြင်းအကြောင်း ပိုမိုသင်ယူရန်]]",
@@ -57,7 +58,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step1": "အကိုးအကားလိုအပ်သည့် ဝါကျတခုကို {{GENDER:|သင်}}တွေ့ရှိပါက \"$1\" ကိုနှိပ်၍ စတင်လိုက်ပါ။\n\nအချို့ဝါကျများသည် မည်သည့်နေရာတွင် အကိုးအကားလိုအပ်သည်ကို အတိအကျ tag တွဲထားပေးပါသည်။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step2": "ရှာဖွေရေးအင်ဂျင်များ၊ သတင်းဆိုဒ်များ သို့မဟုတ် {{GENDER:|သင်၏}}စာကြည့်တိုက်မှတဆင့် ရင်းမြစ်များကို ရှာဖွေနိုင်ပါသည်။<br />$1&nbsp;&nbsp;$2&nbsp;&nbsp;$3&nbsp;&nbsp;$4<br />ကိုးကားချက်ထည့်သောအခါ အောက်ပါလမ်းညွှန်ချက်အတိုင်း ဆောင်ရွက်ပေးပါ-\n*ယုံကြည်စိတ်ချရသောရင်းမြစ်များတွင် စာအုပ်များ၊ သတင်းအဖွဲ့အစည်းများနှင့် မဂ္ဂဇင်းဆောင်းပါးများ။\n*လူမှုကွန်ယက် သို့မဟုတ် ဘလော့များသည် ပုံမှန်အားဖြင့် စိတ်ချရသောရင်းမြစ်များ မဟုတ်ပါ။\n*ကုမ္ပဏီ၏ကိုယ်ပိုင်ဝဘ်ဆိုဒ်မှတင်သော အကြောင်းအရာကဲ့သို့ သတင်းအချက်အလက်သည် ပုံမှန်အားဖြင့် စိတ်ချရသောရင်းမြစ်များ မဟုတ်ပါ။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step3": "ရင်းမြစ်တခုကို {{GENDER:|သင်}}တွေ့ပါက ဝါကျ၏အဆုံးသို့သွားကာ  \"$1\" ခလုတ်ကိုနှိပ်ပါ $2။ {{GENDER:|သင်}}သိသမျှ သတင်းအချက်အလက်ကို ပေါင်းထည့်ပြီး အကိုးအကား ထည့်သွင်းပါ။",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-publish": "အကိုးအကားများ ထပ်မံထည့်သွင်းပါ၊ သို့မဟုတ် \"$1\" ကိုနှိပ်၍ {{GENDER:|သင်၏}}တည်းဖြတ်မှုကို သိမ်းဆည်းလိုက်ပါ။",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-publish": "အကိုးအကားများ ထပ်မံထည့်သွင်းပါ၊ သို့မဟုတ် \"$1\" ကိုနှိပ်၍ {{GENDER:|သင်၏}}တည်းဖြတ်မှုကို လွှင့်တင်လိုက်ပါ။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-publish": "[[$1|အကိုးအကားများနှင့်ပတ်သက်၍ ပိုမိုလေ့လာရန်]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "အချိန်ကြာလာပြီး ဖြစ်ရပ်သစ်များပေါ်ပေါက်လာသောအခါ ဆောင်းပါးများသည် ခေတ်မမီတော့ပါ။ စာသားများကို မွမ်းမံပြီး အသေးစိတ်များကို {{GENDER:|သင်}}ပေါင်းထည့်နိုင်ပါသည်။ သို့မှသာ {{SITENAME}}သည် အမြဲတမ်း အကောင်းဆုံးသတင်းအချက်အလက် ပါရှိနေမည်ဖြစ်ပါသည်။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-example-value": "အာကာသယာဉ်သည် <mark class=\"negative\">၂၀၁၈ ခုနှစ်တွင်</mark> အင်္ဂါဂြိုဟ်သို့ ဆင်းသက်<mark class=\"negative\">လိမ့်မည်</mark>ဖြစ်သည်။",
@@ -74,7 +75,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step1": "{{GENDER:|သင်}} ချဲ့ကားလိုသော အပိုင်းကိုတွေ့ပါက \"$1\" ကိုနှိပ်လိုက်ပါ။ ဆန္ဒရှိပါက အပိုင်းတခုစတင်ရန် ခေါင်းစီးတခု ပေါင်းထည့်နိုင်ပါသည်။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2": "{{GENDER:|သင်}} အချက်အလက်သစ် ထည့်သွင်းမည်ဆိုပါက  [[$1|အကိုးအကားတခု]] ထည့်ရန် မမေ့ပါနှင့်၊ သို့မှသာ သတင်းအချက်အလက်က မည်သည့်နေရာက ရောက်လာသည်ဆိုသည်ကို အခြားသူများ မြင်နိုင်မည်ဖြစ်ပါသည်။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2-no-link": "{{GENDER:|သင်}} အချက်အလက်သစ် ထည့်သွင်းမည်ဆိုပါက အကိုးအကားတခု ထည့်ရန် မမေ့ပါနှင့်၊ သို့မှသာ သတင်းအချက်အလက်က မည်သည့်နေရာက ရောက်လာသည်ဆိုသည်ကို အခြားသူများ မြင်နိုင်မည်ဖြစ်ပါသည်။",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "{{GENDER:|သင်}} ဆောင်းပါး ချဲ့ကားရေးသားခြင်း ပြီးဆုံးပါက {{GENDER:|သင်၏}}တည်းဖြတ်မှုကို သိမ်းဆည်းရန် \"$1\" ကိုနှိပ်လိုက်ပါ။",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "{{GENDER:|သင်}} ဆောင်းပါး ချဲ့ကားရေးသားခြင်း ပြီးဆုံးပါက {{GENDER:|သင်၏}}တည်းဖြတ်မှုကိုလွှင့်တင်ရန် \"$1\" ကိုနှိပ်လိုက်ပါ။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|ဆောင်းပါးများချဲ့ရေးခြင်းအကြောင်း ပိုမိုလေ့လာရန်]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "လင့်ခ်များပေါင်းထည့်ခြင်းသည် အခြားသူများသင်ယူရန် ပိုမိုမြန်ဆန်စေသည်။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "ဤလုပ်ငန်းအားဆောင်ရွက်ရန် ဆောင်းပါးအကြောင်း အထူးကျွမ်းကျင်စရာမလိုအပ်ပါ။",

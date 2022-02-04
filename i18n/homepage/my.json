@@ -3,7 +3,8 @@
 		"authors": [
 			"Dr Lotus Black",
 			"NayiMuu",
-			"Ninjastrikers"
+			"Ninjastrikers",
+			"Phosai"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|မင်္ဂလာပါ}}၊ {{bidi:$1}}။",
@@ -311,7 +312,7 @@
 	"growthexperiments-addimage-loading-title": "ရုပ်ပုံအကြိုမြင်ကွင်း ဝန်ဆွဲတင်နေသည်...",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "ဤဆောင်းပါး၏ ဘာသာစကားတွင် ရေးသားရန်- $1။",
 	"growthexperiments-addimage-caption-info-dialog-confirm": "သဘောပေါက်ပြီ",
-	"growthexperiments-structuredtask-user-error": "{{GENDER:|သင်၏}}တည်းဖြတ်မှုကို မသိမ်းဆည်းနိုင်ပါ၊ အဘယ်ကြောင့်ဆိုသော် {{GENDER:|သင်}}သည် လော့ဂ်အင်မဝင်ထားတော့ပါ။ ကျေးဇူးပြု၍ လော့အင်ဂ်ဝင်ပြီး ထပ်မံကြိုးစားပါ။",
+	"growthexperiments-structuredtask-user-error": "{{GENDER:|သင်}}သည် ဆက်လက်၍ လော့ဂ်အင်ဝင်ထားခြင်း မရှိသဖြင့် {{GENDER:|သင်၏}}တည်းဖြတ်မှုကို မလွှင့်တင်နိုင်ပါ။ ကျေးဇူးပြု၍ ထပ်မံ၍ လော့အင်ဂ်ဝင်ပြီး ကြိုးစားကြည့်ပါ။",
 	"growthexperiments-structuredtask-user-error-login-cta": "အကောင့်ထဲဝင်ရန်",
 	"growthexperiments-structuredtask-anonuser": "အသုံးပြုသူသည် လော့ဂ်အင်မဝင်ထားပါ။",
 	"growthexperiments-addimage-summary-label": "အကျဉ်းချုပ်",
