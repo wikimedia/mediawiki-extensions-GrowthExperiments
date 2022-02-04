@@ -60,8 +60,6 @@ class WikiPageConfig implements Config, IDBAccessObject {
 
 			if (
 				$configTitle === null ||
-				// TODO: This should be probably replaced with something else
-				// once we will have our own editor (and content model)
 				!$configTitle->isSiteJsonConfigPage()
 			) {
 				throw new ConfigException( 'Invalid GEWikiConfigPageTitle' );
