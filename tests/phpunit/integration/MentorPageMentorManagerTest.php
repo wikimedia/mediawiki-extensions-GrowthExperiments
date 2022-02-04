@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use Content;
 use DerivativeContext;
 use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -12,13 +11,8 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Page\WikiPageFactory;
 use MediaWikiIntegrationTestCase;
-use ParserOutput;
-use PHPUnit\Framework\MockObject\MockObject;
 use RequestContext;
-use Title;
-use WikiPage;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Mentorship\MentorPageMentorManager
@@ -295,41 +289,4 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 			$context->getRequest()->wasPosted()
 		);
 	}
-
-	/**
-	 * Mock for $wikiPage->getContent() and $wikiPage->getParserOutput->getLinks().
-	 * @param array[] $pages title as prefixed text => [ content, [ mentor username, ... ] ]
-	 * @return WikiPageFactory|MockObject
-	 */
-	private function getMockWikiPageFactory( array $pages ) {
-		$wikiPageFactory = $this->getMockBuilder( WikiPageFactory::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'newFromTitle' ] )
-			->getMock();
-		$wikiPageFactory->method( 'newFromTitle' )->willReturnCallback(
-			function ( Title $title ) use ( $pages ) {
-				[ $text, $mentors ] = $pages[$title->getPrefixedText()];
-				$wikiPage = $this->getMockBuilder( WikiPage::class )
-					->disableOriginalConstructor()
-					->onlyMethods( [ 'getContent', 'getParserOutput' ] )
-					->getMock();
-				$content = $this->getMockBuilder( Content::class )
-					->addMethods( [ 'getText' ] )
-					->getMockForAbstractClass();
-				$parserOutput = $this->getMockBuilder( ParserOutput::class )
-					->onlyMethods( [ 'getLinks' ] )
-					->getMock();
-				$wikiPage->method( 'getContent' )->willReturn( $content );
-				$content->method( 'getText' )->willReturn( $text );
-				$wikiPage->method( 'getParserOutput' )->willReturn( $parserOutput );
-				$parserOutput->method( 'getLinks' )->willReturn( [
-					NS_USER => array_combine( $mentors, range( 1, count( $mentors ) ) ),
-				] );
-
-				return $wikiPage;
-			}
-		);
-		return $wikiPageFactory;
-	}
-
 }
