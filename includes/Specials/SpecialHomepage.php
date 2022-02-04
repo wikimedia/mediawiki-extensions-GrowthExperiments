@@ -19,6 +19,8 @@ use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
 use IBufferingStatsdDataFactory;
+use InvalidArgumentException;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserOptionsManager;
 use PrefixingStatsdDataFactoryProxy;
 use SpecialPage;
@@ -376,6 +378,33 @@ class SpecialHomepage extends SpecialPage {
 		$clickId = $request->getVal( 'geclickid' );
 		$newcomerTaskToken = $request->getVal( 'genewcomertasktoken' );
 		$taskTypeId = $request->getVal( 'getasktype', '' );
+		$missing = [];
+		if ( !$clickId ) {
+			$missing[] = 'geclickid';
+		}
+		if ( !$newcomerTaskToken ) {
+			$missing[] = 'genewcomertasktoken';
+		}
+		if ( !$taskTypeId ) {
+			$missing[] = 'getasktype';
+		}
+		if ( !$titleId ) {
+			$missing[] = 'titleId';
+		}
+		if ( count( $missing ) ) {
+			// Something is broken in our client-side code; these params should always be present.
+			$errorMessage = sprintf(
+				'Invalid parameters passed to Special:Homepage/newcomertask. Missing params: %s',
+				implode( ',', $missing )
+			);
+			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorMessage );
+			if ( $this->getConfig()->get( 'GEDeveloperSetup' ) ) {
+				// For developer setup wikis (local + beta/CI), throw an exception so we can
+				// catch the issue in testing/CI. For production, we should
+				// let the user go on to the task, even if we lose analytics for that interaction.
+				throw new InvalidArgumentException( $errorMessage );
+			}
+		}
 
 		$tracker = $this->trackerFactory->getTracker( $this->getUser() );
 		if ( $tracker->track( $titleId, $taskTypeId, $clickId, $newcomerTaskToken ) instanceof StatusValue ) {

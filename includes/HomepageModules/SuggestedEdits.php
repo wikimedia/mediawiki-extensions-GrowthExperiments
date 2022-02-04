@@ -882,10 +882,10 @@ class SuggestedEdits extends BaseModule {
 	/**
 	 * Get the query params for the redirect URL for the specified task type ID
 	 *
-	 * @param string $taskTypeId
+	 * @param string|null $taskTypeId
 	 * @return array
 	 */
-	public function getRedirectParams( string $taskTypeId ): array {
+	public function getRedirectParams( ?string $taskTypeId = null ): array {
 		$taskType = $this->configurationLoader->getTaskTypes()[ $taskTypeId ];
 		if ( !$taskType ) {
 			return [];
