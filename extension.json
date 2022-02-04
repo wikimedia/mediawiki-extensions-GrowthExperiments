@@ -1836,6 +1836,10 @@
 			"description": "Title of the wiki page that contains the list of manually assigned mentors (cf. GEHomepageMentorsList). Null if no such page exists.",
 			"value": null
 		},
+		"GEStructuredMentorList": {
+			"description": "Title of the wiki page that has the mentor list in JSON format (used by StructuredMentorProvider)",
+			"value": "MediaWiki:GrowthMentors.json"
+		},
 		"GEMentorDashboardEnabled": {
 			"description": "Should users be allowed to access Special:MentorDashboard?",
 			"value": true

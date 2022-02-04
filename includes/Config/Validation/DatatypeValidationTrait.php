@@ -17,6 +17,8 @@ trait DatatypeValidationTrait {
 		switch ( $expectedType ) {
 			case 'bool':
 				return is_bool( $value );
+			case 'int':
+				return is_int( $value );
 			case 'string':
 				return is_string( $value );
 			case '?string':
@@ -43,6 +45,17 @@ trait DatatypeValidationTrait {
 				}
 				foreach ( $value as $key => $item ) {
 					if ( !is_string( $key ) || !is_string( $item ) ) {
+						return false;
+					}
+				}
+				return true;
+			case 'array<int,array>':
+				if ( !is_array( $value ) ) {
+					// If it is not an array, it cannot be an array of the expected format
+					return false;
+				}
+				foreach ( $value as $key => $item ) {
+					if ( !is_int( $key ) || !is_array( $item ) ) {
 						return false;
 					}
 				}
