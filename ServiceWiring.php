@@ -26,6 +26,7 @@ use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\WikitextMentorProvider;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
@@ -401,6 +402,24 @@ return [
 		MediaWikiServices $services
 	): MentorProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		$mentorProviderName = $services->getMainConfig()->get( 'GEMentorProvider' );
+		switch ( $mentorProviderName ) {
+			case 'wikitext':
+				return $geServices->getMentorProviderWikitext();
+			case 'structured':
+				return $geServices->getMentorProviderStructured();
+			default:
+				throw new InvalidArgumentException(
+					'Invalid value of wgGEMentorProvider: ' . $mentorProviderName
+				);
+		}
+	},
+
+	'GrowthExperimentsMentorProviderWikitext' => static function (
+		MediaWikiServices $services
+	): WikitextMentorProvider {
+		$geServices = GrowthExperimentsServices::wrap( $services );
 		$wikiConfig = $geServices->getGrowthWikiConfig();
 
 		$provider = new WikitextMentorProvider(
@@ -414,6 +433,24 @@ return [
 			$services->getContentLanguage(),
 			$wikiConfig->get( 'GEHomepageMentorsList' ) ?: null,
 			$wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null
+		);
+		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $provider;
+	},
+
+	'GrowthExperimentsMentorProviderStructured' => static function (
+		MediaWikiServices $services
+	): StructuredMentorProvider {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		$provider = new StructuredMentorProvider(
+			$geServices->getWikiPageConfigLoader(),
+			$services->getUserIdentityLookup(),
+			$services->getUserNameUtils(),
+			new DerivativeContext( RequestContext::getMain() ),
+			$services->getTitleFactory()->newFromText(
+				$services->getMainConfig()->get( 'GEStructuredMentorList' )
+			)
 		);
 		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $provider;
