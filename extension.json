@@ -334,7 +334,6 @@
 		],
 		"SiteNoticeAfter": "homepage",
 		"SpecialContributionsBeforeMainOutput": "homepage",
-		"SpecialPageAfterExecute": "homepage",
 		"BeforePageDisplay": [
 			"helppanel",
 			"homepage",
