@@ -86,7 +86,6 @@ class HomepageHooks implements
 	\MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook,
 	\MediaWiki\Hook\RecentChange_saveHook,
 	\MediaWiki\Hook\SpecialContributionsBeforeMainOutputHook,
-	\MediaWiki\SpecialPage\Hook\SpecialPageAfterExecuteHook,
 	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
 	\MediaWiki\Hook\SiteNoticeAfterHook,
 	\MediaWiki\Content\Hook\SearchDataForIndexHook,
@@ -981,31 +980,6 @@ class HomepageHooks implements
 			$out->enableOOUI();
 			$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
 			$out->addHTML( self::getZeroContributionsHtml( $sp ) );
-		}
-	}
-
-	/**
-	 * @param SpecialPage $sp
-	 * @param string $subPage
-	 */
-	public function onSpecialPageAfterExecute( $sp, $subPage ) {
-		if ( !( $sp instanceof \SpecialMobileContributions ) ) {
-			return;
-		}
-		$user = User::newFromName( $subPage, false );
-		if (
-			$sp->getUser()->equals( $user ) &&
-			$sp->getUser()->getEditCount() === 0 &&
-			self::isHomepageEnabled( $sp->getUser() )
-		) {
-			$out = $sp->getOutput();
-			$out->enableOOUI();
-			$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
-			$out->addHTML(
-				Html::rawElement( 'div', [ 'class' => 'content-unstyled' ],
-					self::getZeroContributionsHtml( $sp, 'warningbox' )
-				)
-			);
 		}
 	}
 
