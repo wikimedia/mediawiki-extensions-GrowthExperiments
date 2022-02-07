@@ -372,14 +372,22 @@
 				} )
 			);
 		}
-		links.push(
-			new OO.ui.ButtonWidget( {
-				href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
-				label: mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text(),
-				icon: 'settings',
-				data: 'special-preferences'
-			} )
-		);
+
+		// The help panel is shown when gesuggestededit query parameter is present regardless of
+		// whether the help panel preference is enabled. Only show the link to disable the
+		// preference if it's enabled. (T284088)
+		if ( mw.user.options.get( 'growthexperiments-help-panel-tog-help-panel' ) ) {
+			links.push(
+				new OO.ui.ButtonWidget( {
+					href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
+					label: mw.message(
+						'growthexperiments-help-panel-settings-cog-preferences-link'
+					).text(),
+					icon: 'settings',
+					data: 'special-preferences'
+				} )
+			);
+		}
 
 		return links.reduce( function ( $list, button ) {
 			// This is a bit of a hack as these buttons are in no way progressive,
