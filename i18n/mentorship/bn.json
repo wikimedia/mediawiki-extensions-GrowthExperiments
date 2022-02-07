@@ -42,7 +42,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 জনকে দেখান",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 এর $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "পরামর্শগ্রহীতার উপাত্ত নেই",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "আপনাকে এখনো কোনো পরামর্শগ্রহীতা অর্পণ করা হয়নি। এই উপাত্ত দৈনিক হালনাগাদ হয়।",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "আপনাকে এখনো কোনো পরামর্শগ্রহীতা অর্পণ করা হয়নি। এই উপাত্ত প্রতি তিন ঘণ্টায় হালনাগাদ হয়।",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "কোনো পরামর্শগ্রহীতা খুঁজে পাওয়া যায়নি",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "পরামর্শগ্রহীতাকে খুঁজে পেতে ছাঁকনি পরিবর্তন করুন।",
 	"growthexperiments-mentor-dashboard-resources-headline": "সংস্থানসমূহ",
