@@ -12,3 +12,4 @@ require( './ext.growthExperiments.Homepage.SuggestedEdits/ErrorCardWidget.test.j
 require( './ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.test.js' );
 require( './ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.test.js' );
 require( './ext.growthExperiments.StructuredTask/addimage/AddImageUtils.test.js' );
+require( './ext.growthExperiments.PostEdit/PostEditPanel.test.js' );

@@ -1646,6 +1646,12 @@
 			"modules/ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js",
 			"tests/qunit/ext.growthExperiments.StructuredTask/addimage/AddImageUtils.test.js",
 			"modules/ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
+			"tests/qunit/ext.growthExperiments.PostEdit/PostEditPanel.test.js",
+			"modules/ext.growthExperiments.PostEdit/PostEditPanel.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
+			"modules/utils/IconUtils.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
+			"modules/ext.growthExperiments.Help/HelpPanelLogger.js",
 			{
 				"name": "modules/ext.growthExperiments.Help/data.json",
 				"file": "tests/qunit/ext.growthExperiments.Help/configData.json"
