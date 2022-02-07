@@ -338,6 +338,12 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 	 * @inheritDoc
 	 */
 	public function getWeightedAutoAssignedMentors(): array {
+		$mentorListTitle = $this->getAutoMentorsListTitle();
+		if ( !$mentorListTitle ) {
+			// makeCacheKeyWeightedAutoAssignedMentors does not work when title is not defined
+			return [];
+		}
+
 		return $this->wanCache->getWithSetCallback(
 			$this->makeCacheKeyWeightedAutoAssignedMentors(),
 			self::TTL_HOUR,

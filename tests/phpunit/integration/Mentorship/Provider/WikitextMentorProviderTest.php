@@ -65,14 +65,27 @@ class WikitextMentorProviderTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::getAutoAssignedMentors
+	 * @covers ::getWeightedAutoAssignedMentors
 	 * @dataProvider provideEmptyMentorsList
 	 * @param string $mentorListConfig
 	 */
-	public function testGetAutoAssignedMentorsForEmptyMentorList( $mentorListConfig ) {
+	public function testEmptyAutoAssignedMentorList( $mentorListConfig ) {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', $mentorListConfig );
 
 		$mentorProvider = $this->getMentorProvider();
 		$this->assertCount( 0, $mentorProvider->getAutoAssignedMentors() );
+		$this->assertCount( 0, $mentorProvider->getWeightedAutoAssignedMentors() );
+	}
+
+	/**
+	 * @covers ::getManuallyAssignedMentors
+	 * @dataProvider provideEmptyMentorsList
+	 */
+	public function testEmptyManuallyAssignedMentorList( $mentorListConfig ) {
+		$this->setMwGlobals( 'wgGEHomepageManualAssignmentMentorsList', $mentorListConfig );
+
+		$mentorProvider = $this->getMentorProvider();
+		$this->assertCount( 0, $mentorProvider->getManuallyAssignedMentors() );
 	}
 
 	public function provideEmptyMentorsList() {
