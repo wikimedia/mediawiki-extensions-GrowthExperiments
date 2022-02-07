@@ -978,7 +978,7 @@ class HomepageHooks implements
 		) {
 			$out = $sp->getOutput();
 			$out->enableOOUI();
-			$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
+			$out->addModuleStyles( 'ext.growthExperiments.Account.styles' );
 			$out->addHTML( self::getZeroContributionsHtml( $sp ) );
 		}
 	}
