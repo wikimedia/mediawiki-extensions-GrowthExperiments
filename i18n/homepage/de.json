@@ -24,7 +24,8 @@
 			"Umherirrender",
 			"Umlaut",
 			"Wikipeter-HH",
-			"Wolfdietmann"
+			"Wolfdietmann",
+			"Brettchenweber"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -113,7 +114,7 @@
 	"tag-mentorship_module_question": "Frage zum Lotsenmodul",
 	"tag-mentorship_module_question-description": "Bearbeitung durchgeführt vom Startseiten-Mentorschaft-Modulbeitrag, einer Fragefunktion.",
 	"tag-newcomer_task": "Einstiegs-Aufgabe",
-	"tag-newcomer_task-description": "Bearbeitung basierend auf dem 'Vorgeschlagene Bearbeitungen' Modul der Neulings-Startseite",
+	"tag-newcomer_task-description": "Bearbeitung basierend auf dem Modul 'Vorgeschlagene Bearbeitungen' der Neulings-Startseite",
 	"growthexperiments-homepage-help-dialog-title": "frage auf der Seite „Fragen von Neulingen“",
 	"growthexperiments-homepage-help-header": "Hilfe bei der Bearbeitung erhalten",
 	"growthexperiments-homepage-help-subheader": "Top-Hilfeseiten zur Bearbeitung",

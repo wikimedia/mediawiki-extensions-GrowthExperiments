@@ -76,7 +76,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Hecho",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Intenta algunas ediciones sugeridas <strong>fáciles</strong> en primer lugar",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Fácil",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Medio",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Intermedia",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difícil",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Recomendado para cuando {{GENDER:$1|estás}} aprendiendo a editar por primera vez.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Después de que {{GENDER:$1|hayas}} completado algunas ediciones fáciles.",
