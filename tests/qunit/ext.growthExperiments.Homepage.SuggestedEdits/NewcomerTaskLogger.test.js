@@ -11,7 +11,7 @@ QUnit.test( 'constructor', function ( assert ) {
 
 QUnit.test( 'should log impressions', function ( assert ) {
 	const logger = new NewcomerTaskLogger();
-	this.sandbox.stub( mw, 'track' );
+	this.sandbox.spy( mw, 'track' );
 	const task = {
 		pageId: 101,
 		revisionId: 102,

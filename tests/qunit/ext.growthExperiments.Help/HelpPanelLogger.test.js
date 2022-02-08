@@ -13,17 +13,20 @@ QUnit.module( 'ext.growthExperiments.Help/HelpPanelLogger.js', QUnit.newMwEnviro
 } ) );
 
 QUnit.test( 'disabled/enabled', function ( assert ) {
+	this.sandbox.spy( mw, 'track' );
 	let helpPanelLogger = new HelpPanelLogger( false );
 	helpPanelLogger.log();
-	let events = helpPanelLogger.getEvents();
-	assert.strictEqual( events.length, 0 );
+	assert.strictEqual( mw.track.notCalled, true );
+
 	helpPanelLogger = new HelpPanelLogger( true );
 	helpPanelLogger.log();
-	events = helpPanelLogger.getEvents();
-	assert.strictEqual( events.length, 1 );
+	assert.strictEqual( mw.track.calledOnce, true );
 } );
 
 QUnit.test( 'log', function ( assert ) {
+	this.sandbox.spy( mw, 'track' );
+	this.sandbox.stub( mw.user, 'sessionId' ).returns( '1234' );
+
 	const helpPanelLogger = new HelpPanelLogger( true, {
 		context: 'reading',
 		previousEditorInterface: 'visualeditor',
@@ -33,9 +36,10 @@ QUnit.test( 'log', function ( assert ) {
 	// eslint-disable-next-line camelcase
 	helpPanelLogger.log( 'impression', 'blah', { editor_interface: 'wikitext' } );
 
-	const events = helpPanelLogger.getEvents();
-	delete events[ 0 ].session_token;
-	assert.deepEqual( events[ 0 ], {
+	assert.strictEqual( mw.track.calledOnce, true );
+	assert.strictEqual( mw.track.firstCall.args[ 0 ], 'event.HelpPanel' );
+
+	assert.deepEqual( mw.track.firstCall.args[ 1 ], {
 		/* eslint-disable camelcase */
 		action: 'impression',
 		action_data: 'blah',
@@ -47,6 +51,7 @@ QUnit.test( 'log', function ( assert ) {
 		is_mobile: OO.ui.isMobile(),
 		page_id: 0,
 		page_title: '',
+		session_token: '1234',
 		page_ns: 0,
 		user_can_edit: true,
 		user_editcount: 42,

@@ -30,7 +30,6 @@
 		this.context = config.context || null;
 		this.isSuggestedTask = config.isSuggestedTask || false;
 		this.helpPanelSessionId = config.sessionId || mw.user.generateRandomSessionId();
-		this.events = [];
 	}
 
 	/**
@@ -59,12 +58,7 @@
 			metadataOverride
 		);
 
-		// Test/debug using: `mw.trackSubscribe( 'event.HelpPanel', console.log );`
-		mw.track(
-			'event.HelpPanel',
-			eventData
-		);
-		this.events.push( eventData );
+		mw.track( 'event.HelpPanel', eventData );
 
 		this.previousEditorInterface = eventData.editor_interface;
 	};
@@ -232,15 +226,6 @@
 
 	HelpPanelLogger.prototype.incrementUserEditCount = function () {
 		this.userEditCount++;
-	};
-
-	/**
-	 * Get events sent to mw.track by the logger.
-	 *
-	 * @return {Object[]}
-	 */
-	HelpPanelLogger.prototype.getEvents = function () {
-		return this.events;
 	};
 
 	module.exports = HelpPanelLogger;
