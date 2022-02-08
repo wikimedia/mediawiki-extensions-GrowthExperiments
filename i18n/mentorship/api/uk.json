@@ -13,5 +13,7 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Новий статус",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "При позначенні наставника як неактивного, треба вказати тривалість статусу «не на місці» (у днях)",
 	"apihelp-query+growthmentorstatus-summary": "Запит на те, який в поточного користувача статус наставника",
-	"apihelp-growthmentordashboardupdatedata-summary": "Запланувати позачергове оновлення модуля огляду підопічних на панелі наставника. З робочих міркувань, ви можете запланувати не більше одного оновлення упродовж двох годин."
+	"apihelp-growthmentordashboardupdatedata-summary": "Запланувати позачергове оновлення модуля огляду підопічних на панелі наставника. З робочих міркувань, ви можете запланувати не більше одного оновлення упродовж двох годин.",
+	"apihelp-growthsetmentorweight-summary": "Задати вагу для наставника, який зараз в системі",
+	"apihelp-growthsetmentorweight-param-geweight": "Числове значення ваги наставника: чим нижче значення, тим менше новачків призначається"
 }
