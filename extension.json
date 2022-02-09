@@ -412,7 +412,7 @@
 		"ext.growthExperiments.mobileMenu.icons": {
 			"class": "ResourceLoaderImageModule",
 			"selector": ".mw-ui-icon-minerva-{name}:before",
-			"defaultColor": "#4A4F53",
+			"defaultColor": "#54595d",
 			"images": {
 				"newspaper": {
 					"file": {
