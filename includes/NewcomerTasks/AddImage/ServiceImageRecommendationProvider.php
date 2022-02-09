@@ -250,11 +250,16 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 					'Invalid datasetId format for ' . $titleTextSafe );
 			}
 
-			$fileMetadata = $metadataProvider->getFileMetadata( $suggestion['filename'] );
+			$fileMetadata = $metadataProvider->getFileMetadata( $filename );
 			if ( is_array( $fileMetadata ) ) {
 				$imageWidth = $fileMetadata['originalWidth'] ?: 0;
-				if ( self::hasMinimumWidth( $suggestionFilters['minimumSize']['width'], $imageWidth ) &&
-					self::isValidMediaType( $suggestionFilters['validMediaTypes'], $fileMetadata['mediaType'] )
+				$minWidth = $suggestionFilters['minimumSize']['width'];
+				$validMediaTypes = $suggestionFilters['validMediaTypes'];
+				if (
+					self::hasMinimumWidth( $minWidth, $imageWidth, $filename, $titleTextSafe, $status ) &&
+					self::isValidMediaType(
+						$validMediaTypes, $fileMetadata['mediaType'], $filename, $titleTextSafe, $status
+					)
 				) {
 					$imageMetadata = $metadataProvider->getMetadata( [
 						'filename' => $suggestion['filename'],
@@ -281,13 +286,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			if ( $status->isGood() ) {
 				if ( !$data['pages'][0]['suggestions'] ) {
 					// $data['pages'][0]['suggestions'] was empty. This shouldn't happen.
-					$status->fatal( 'rawmessage', 'No recommendation found for page: ' . $titleTextSafe );
-				} else {
-					// $data['pages'][0]['suggestions'] was not empty so all recommendations were filtered by quality
-					// gate filters
-					return StatusValue::newGood()->error(
+					$status->fatal(
 						'rawmessage',
-						'All recommendations were filtered for page: ' . $titleTextSafe
+						'No recommendation found for page: ' . $titleTextSafe
 					);
 				}
 			}
@@ -304,18 +305,53 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/**
 	 * @param int $minimumWidth
 	 * @param int $imageWidth
+	 * @param string $filename
+	 * @param string $pageTitleText
+	 * @param StatusValue $status
 	 * @return bool
 	 */
-	private static function hasMinimumWidth( int $minimumWidth, int $imageWidth ): bool {
-		return $imageWidth >= $minimumWidth;
+	private static function hasMinimumWidth(
+		int $minimumWidth,
+		int $imageWidth,
+		string $filename,
+		string $pageTitleText,
+		StatusValue $status
+	): bool {
+		$res = $imageWidth >= $minimumWidth;
+		if ( !$res ) {
+			$status->error(
+				'rawmessage',
+				"Invalid file $filename in article $pageTitleText. " .
+				"Filtered because not wide enough: $imageWidth (minimum $minimumWidth)"
+			);
+		}
+		return $res;
 	}
 
 	/**
 	 * @param array $validMediaTypes
 	 * @param string $mediaType
+	 * @param string $filename
+	 * @param string $pageTitleText
+	 * @param StatusValue $status
 	 * @return bool
 	 */
-	private static function isValidMediaType( array $validMediaTypes, string $mediaType ): bool {
-		return in_array( $mediaType, $validMediaTypes );
+	private static function isValidMediaType(
+		array $validMediaTypes,
+		string $mediaType,
+		string $filename,
+		string $pageTitleText,
+		StatusValue $status
+	): bool {
+		$res = in_array( $mediaType, $validMediaTypes );
+		if ( !$res ) {
+			$validMediaTypesText = implode( ', ', $validMediaTypes );
+			$status->error(
+				'rawmessage',
+				"Invalid file $filename in article $pageTitleText. " .
+				"Filtered because $mediaType is not valid mime type ( $validMediaTypesText )"
+			);
+		}
+		return $res;
 	}
 }
