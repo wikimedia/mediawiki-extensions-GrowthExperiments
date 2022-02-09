@@ -17,22 +17,24 @@ QUnit.module( 'ext.growthExperiments.Homepage.Logger/index.js', QUnit.newMwEnvir
 } ) );
 
 QUnit.test( 'disabled/enabled', function ( assert ) {
+	this.sandbox.spy( mw, 'track' );
 	let homepageModuleLogger = new HomepageModuleLogger( false, 'blah' );
 	homepageModuleLogger.log();
-	let events = homepageModuleLogger.getEvents();
-	assert.strictEqual( events.length, 0 );
+	assert.strictEqual( mw.track.notCalled, true );
+
 	homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
 	homepageModuleLogger.log();
-	events = homepageModuleLogger.getEvents();
-	assert.strictEqual( events.length, 1 );
+	assert.strictEqual( mw.track.calledOnce, true );
 } );
 
 QUnit.test( 'log', function ( assert ) {
+	this.sandbox.spy( mw, 'track' );
 	const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
 	homepageModuleLogger.log( 'foo', 'desktop', 'impression', { foo: 'bar' } );
-	const events = homepageModuleLogger.getEvents();
-	assert.strictEqual( events.length, 1 );
-	assert.deepEqual( events[ 0 ], {
+
+	assert.strictEqual( mw.track.calledOnce, true );
+	assert.strictEqual( mw.track.firstCall.args[ 0 ], 'event.HomepageModule' );
+	assert.deepEqual( mw.track.firstCall.args[ 1 ], {
 		/* eslint-disable camelcase */
 		action: 'impression',
 		action_data: 'foo=bar',
@@ -49,12 +51,14 @@ QUnit.test( 'log', function ( assert ) {
 } );
 
 QUnit.test( 'do not include state in event if empty', function ( assert ) {
+	this.sandbox.spy( mw, 'track' );
 	const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
 	mw.config.set( 'wgGEHomepageModuleState-mentor', '' );
 	homepageModuleLogger.log( 'mentor', 'desktop', 'impression' );
-	const events = homepageModuleLogger.getEvents();
-	assert.strictEqual( events.length, 1 );
-	assert.deepEqual( events[ 0 ], {
+
+	assert.strictEqual( mw.track.calledOnce, true );
+	assert.strictEqual( mw.track.firstCall.args[ 0 ], 'event.HomepageModule' );
+	assert.deepEqual( mw.track.firstCall.args[ 1 ], {
 		/* eslint-disable camelcase */
 		action: 'impression',
 		action_data: '',
