@@ -93,5 +93,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Label in the \"Mentor tools\" mentor dashboard module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Confirmation message shown by the \"Mentor tools\" mentor dashboard module after changing mentor load\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Tooltip shown by the \"Mentor tools\" mentor dashboard module when allowing to change mentor load\n\n{{doc-growthexperiments-mentor-dashboard}}",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Tooltip shown by the \"Mentor tools\" mentor dashboard module when allowing to change mentor load\n\n{{doc-growthexperiments-mentor-dashboard}}"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Tooltip shown by the \"Mentor tools\" mentor dashboard module when allowing to change mentor load\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-list-missing-key": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
+	"growthexperiments-mentor-list-datatype-mismatch": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid."
 }

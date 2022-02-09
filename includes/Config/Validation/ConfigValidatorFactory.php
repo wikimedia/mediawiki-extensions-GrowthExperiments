@@ -32,6 +32,7 @@ class ConfigValidatorFactory {
 		'GENewcomerTasksConfigTitle' => NewcomerTasksValidator::class,
 		'GENewcomerTasksOresTopicConfigTitle' => NoValidationValidator::class,
 		'GENewcomerTasksTopicConfigTitle' => NoValidationValidator::class,
+		'GEStructuredMentorList' => StructuredMentorListValidator::class,
 	];
 
 	/**
@@ -101,6 +102,8 @@ class ConfigValidatorFactory {
 				return new NewcomerTasksValidator(
 					$this->taskTypeHandlerRegistry
 				);
+			case StructuredMentorListValidator::class:
+				return new StructuredMentorListValidator();
 			case NoValidationValidator::class:
 				return new NoValidationValidator();
 			default:
