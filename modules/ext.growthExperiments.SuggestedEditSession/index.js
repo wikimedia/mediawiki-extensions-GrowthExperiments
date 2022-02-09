@@ -100,6 +100,11 @@
 
 		/** @member {boolean} Flag to prevent double-opening of the post-edit dialog (T283120) */
 		this.postEditDialogIsOpen = false;
+		/**
+		 * @member {number|undefined} Timestamp when the suggested edit session starts.
+		 * Used for tracking load times for newcomer tasks. See HomepageHooks::onBeforePageDisplay.
+		 */
+		this.startTime = mw.config.get( 'suggestedEditSessionStartTime' );
 	}
 	OO.mixinClass( SuggestedEditSession, OO.EventEmitter );
 
@@ -439,6 +444,41 @@
 			self.setTaskState( data.newRevId ? states.SAVED : states.SUBMITTED );
 			self.showPostEditDialog( { resetSession: true, nextRequest: true } );
 		} );
+	};
+
+	/**
+	 * Track the duration for setting up the editing surface
+	 *
+	 * This is for structured tasks only (since the editor is opened automatically).
+	 */
+	SuggestedEditSession.prototype.trackEditorReady = function () {
+		if ( !this.startTime ) {
+			return;
+		}
+		mw.track(
+			'timing.growthExperiments.suggestedEdits.taskEditorReady.' + this.taskType +
+			( OO.ui.isMobile() ? '.mobile' : '.desktop' ),
+			mw.now() - this.startTime
+		);
+	};
+
+	/**
+	 * Track the duration for setting up the guidance panel
+	 *
+	 * This is for unstructured tasks only.
+	 * For mobile, this is when the mobile peek (first time with unstructured tasks) or the
+	 * help panel button is shown. For desktop, this is when the help panel button is shown.
+	 */
+	SuggestedEditSession.prototype.trackGuidanceShown = function () {
+		// If the editor is opened automatically, taskEditorReady should be used instead.
+		if ( this.shouldOpenArticleInEditMode || !this.startTime ) {
+			return;
+		}
+		mw.track(
+			'timing.growthExperiments.suggestedEdits.guidanceShown.' + this.taskType +
+			( OO.ui.isMobile() ? '.mobile' : '.desktop' ),
+			mw.now() - this.startTime
+		);
 	};
 
 	/**

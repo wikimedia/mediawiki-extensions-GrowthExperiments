@@ -77,8 +77,10 @@
 		 * the MobileFrontend editor is opened.
 		 *
 		 * @param {Object|string} editor Which editor is being opened
+		 * @param {boolean} [isFirstTime] Whether the help panel button is shown for
+		 * the first time (vs re-attached when the editor loads)
 		 */
-		function attachHelpButton( editor ) {
+		function attachHelpButton( editor, isFirstTime ) {
 			var metadataOverride = {};
 			helpPanelProcessDialog.updateEditMode();
 			// wikipage.editform gives us an object here, not a string.
@@ -96,6 +98,9 @@
 				$overlay.append( $buttonWrapper );
 			}
 			helpPanelProcessDialog.logger.log( 'impression', taskTypeLogData, metadataOverride );
+			if ( isFirstTime ) {
+				suggestedEditSession.trackGuidanceShown();
+			}
 		}
 
 		/**
@@ -226,6 +231,12 @@
 			}
 		}
 
+		/**
+		 * Show the mobile peek if it hasn't been shown during the session.
+		 * If the mobile peek has already been shown, the help panel button is shown.
+		 *
+		 * @param {Object} taskTypeData
+		 */
 		function maybeAddMobilePeek( taskTypeData ) {
 			var mobilePeek,
 				// Drawer.onBeforeHide fires whether the drawer was dismissed or tapped on
@@ -235,7 +246,7 @@
 			// If we've already shown the mobile peek once, don't show it again
 			// but do attach the help button
 			if ( suggestedEditSession.mobilePeekShown ) {
-				attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
+				attachHelpButton( helpPanelProcessDialog.logger.getEditor(), true );
 				return;
 			}
 
@@ -288,6 +299,7 @@
 			helpCtaButton.toggle( false );
 			logger.log( 'peek-impression', taskTypeLogData );
 			mobilePeek.show();
+			suggestedEditSession.trackGuidanceShown();
 			suggestedEditSession.mobilePeekShown = true;
 			suggestedEditSession.save();
 		}
@@ -299,8 +311,8 @@
 			} else {
 				// If guidance is available we want to attach the help button
 				// so the user can get back to it; this can happen if for example
-				// the user reloads the page they're on (in Read mode) .
-				attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
+				// the user reloads the page they're on (in Read mode).
+				attachHelpButton( helpPanelProcessDialog.logger.getEditor(), true );
 
 				if ( suggestedEditSession.helpPanelShouldOpen ) {
 					// Open the help panel to the suggested-edits panel, animating it in from
