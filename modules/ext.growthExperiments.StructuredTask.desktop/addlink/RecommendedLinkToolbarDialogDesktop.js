@@ -36,7 +36,6 @@ RecommendedLinkToolbarDialogDesktop.prototype.initialize = function () {
 	this.$body.append( this.$buttons );
 	this.$anchor = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-desktop-anchor' );
 	this.$element.prepend( this.$anchor );
-	this.$element.detach();
 };
 
 /**
@@ -46,8 +45,8 @@ RecommendedLinkToolbarDialogDesktop.prototype.afterSetupProcess = function () {
 	RecommendedLinkToolbarDialogDesktop.super.prototype.afterSetupProcess.call( this );
 	this.isRtl = this.surface.getDir() === 'rtl';
 	this.setupMinification();
+	this.moveDialogToSurfaceView();
 	var ceSurface = this.surface.getView();
-	ceSurface.$element.append( this.$element );
 	// Prevent virtual keyboard from showing up when desktop site is loaded on tablet
 	ceSurface.$documentNode.attr( 'inputMode', 'none' );
 	// Handle Esc keydown even if the user clicks on the surface (otherwise onDialogKeyDown

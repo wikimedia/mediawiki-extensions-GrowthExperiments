@@ -97,7 +97,7 @@ StructuredTaskToolbarDialog.prototype.hideDialog = function () {
 
 /**
  * Show the dialog and and hide the re-open dialog button
- **/
+ */
 StructuredTaskToolbarDialog.prototype.showDialog = function () {
 	if ( !this.isHidden ) {
 		return;
@@ -191,6 +191,16 @@ StructuredTaskToolbarDialog.prototype.getSuggestionLogActionData = function () {
 StructuredTaskToolbarDialog.prototype.goToSuggestedEdits = function () {
 	var Utils = require( '../utils/Utils.js' );
 	window.location.href = Utils.getSuggestedEditsFeedUrl( 'suggestion-skip' );
+};
+
+/**
+ * Move the ToolbarDialog from the toolbar to the surface view.
+ *
+ * This is used on desktop to position the dialog within the article instead of the toolbar.
+ */
+StructuredTaskToolbarDialog.prototype.moveDialogToSurfaceView = function () {
+	this.$element.detach();
+	this.surface.getView().$element.append( this.$element );
 };
 
 module.exports = StructuredTaskToolbarDialog;

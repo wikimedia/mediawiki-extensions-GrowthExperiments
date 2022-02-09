@@ -159,20 +159,21 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 	this.setUpToolbarDialogButton(
 		mw.message( 'growthexperiments-addimage-inspector-show-button' ).text()
 	);
-	// TBD: Desktop UI (help panel CTA button is shown by default)
 	if ( OO.ui.isMobile() ) {
 		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 		this.setupHelpButton(
 			mw.message( 'growthexperiments-addimage-inspector-help-button' ).text()
 		);
 		this.addArticleTitle();
+		$( window ).on( 'resize',
+			OO.ui.debounce( this.onResize.bind( this ), 250 )
+		);
+	} else {
+		this.moveDialogToSurfaceView();
 	}
 	this.showRecommendationAtIndex( 0 );
-	this.$element.removeClass( 'animate-below' );
-	this.logger.log( 'impression', this.getSuggestionLogActionData() );
-	$( window ).on( 'resize',
-		OO.ui.debounce( this.onResize.bind( this ), 250 )
-	);
+	this.animateIn();
+
 	mw.hook( 'growthExperiments.imageSuggestions.onImageCaptionReady' ).add(
 		this.onImageCaptionReady
 	);
@@ -211,9 +212,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 	this.logger.log( 'suggestion_reject', this.getSuggestionLogActionData() );
 
 	// Avoid showing an outline on the element if we cancel out of the rejection dialog.
-	this.$element.find(
-		'.mw-ge-recommendedImageToolbarDialog-buttons-no .oo-ui-buttonElement-button'
-	).blur();
+	this.noButton.$element.find( '.oo-ui-buttonElement-button' ).trigger( 'blur' );
 
 	rejectionDialogLifecycle.opening.then( function () {
 		this.logger.log(
@@ -526,12 +525,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 		articleTarget.toggleSaveTool( false );
 		$documentNode.removeClass( 'mw-ge-recommendedImageToolbarDialog-caption' );
 		this.toggle( true );
-
-		setTimeout( function () {
-			// Image inspector is shown again.
-			$inspector.removeClass( 'animate-below' );
-			this.logger.log( 'impression', this.getSuggestionLogActionData() );
-		}.bind( this ), RENDER_DELAY );
+		this.animateIn();
 		this.canShowCaption = false;
 	}.bind( this ) );
 };
@@ -570,6 +564,16 @@ RecommendedImageToolbarDialog.prototype.showInternalRoute = function (
  */
 RecommendedImageToolbarDialog.prototype.getSuggestionLogActionData = function () {
 	return this.getArticleTarget().getSuggestionLogActionData( this.currentIndex );
+};
+
+/**
+ * Animate in the dialog and log an impression event
+ */
+RecommendedImageToolbarDialog.prototype.animateIn = function () {
+	setTimeout( function () {
+		this.$element.removeClass( 'animate-below' );
+		this.logger.log( 'impression', this.getSuggestionLogActionData() );
+	}.bind( this ), RENDER_DELAY );
 };
 
 module.exports = RecommendedImageToolbarDialog;
