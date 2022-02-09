@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use MediaWiki\Json\JsonUnserializer;
+use MessageLocalizer;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 class LinkRecommendationTaskType extends TaskType {
@@ -15,6 +16,8 @@ class LinkRecommendationTaskType extends TaskType {
 	public const FIELD_MIN_LINK_SCORE = 'minimumLinkScore';
 	/** @see :getMaximumLinksPerTask */
 	public const FIELD_MAX_LINKS_PER_TASK = 'maximumLinksPerTask';
+	/** @see :getMaximumLinksToShowPerTask */
+	public const FIELD_MAX_LINKS_TO_SHOW_PER_TASK = 'maximumLinksToShowPerTask';
 	/** @see :getMinimumTimeSinceLastEdit */
 	public const FIELD_MIN_TIME_SINCE_LAST_EDIT = 'minimumTimeSinceLastEdit';
 	/** @see :getMinimumWordCount */
@@ -32,6 +35,7 @@ class LinkRecommendationTaskType extends TaskType {
 		self::FIELD_MIN_LINKS_PER_TASK => 2,
 		self::FIELD_MIN_LINK_SCORE => 0.5,
 		self::FIELD_MAX_LINKS_PER_TASK => 10,
+		self::FIELD_MAX_LINKS_TO_SHOW_PER_TASK => 3,
 		self::FIELD_MIN_TIME_SINCE_LAST_EDIT => ExpirationAwareness::TTL_DAY,
 		self::FIELD_MIN_WORD_COUNT => 0,
 		self::FIELD_MAX_WORD_COUNT => PHP_INT_MAX,
@@ -49,6 +53,8 @@ class LinkRecommendationTaskType extends TaskType {
 	protected $minimumLinkScore;
 	/** @var int */
 	protected $maximumLinksPerTask;
+	/** @var int */
+	protected $maximumLinksToShowPerTask;
 	/** @var int */
 	protected $minimumTimeSinceLastEdit;
 	/** @var int */
@@ -76,6 +82,7 @@ class LinkRecommendationTaskType extends TaskType {
 		$this->minimumLinksPerTask = $settings[self::FIELD_MIN_LINKS_PER_TASK];
 		$this->minimumLinkScore = $settings[self::FIELD_MIN_LINK_SCORE];
 		$this->maximumLinksPerTask = $settings[self::FIELD_MAX_LINKS_PER_TASK];
+		$this->maximumLinksToShowPerTask = $settings[self::FIELD_MAX_LINKS_TO_SHOW_PER_TASK];
 		$this->minimumTimeSinceLastEdit = $settings[self::FIELD_MIN_TIME_SINCE_LAST_EDIT];
 		$this->minimumWordCount = $settings[self::FIELD_MIN_WORD_COUNT];
 		$this->maximumWordCount = $settings[self::FIELD_MAX_WORD_COUNT];
@@ -110,11 +117,23 @@ class LinkRecommendationTaskType extends TaskType {
 	}
 
 	/**
-	 * Don't show more than this many link recommendations at the same time.
+	 * The maximum number of links that the refreshLinkRecommendations maintenance script will
+	 * request when calling the link recommendation service for an article.
+	 *
+	 * @see ServiceLinkRecommendationProvider::get()
 	 * @return int
 	 */
 	public function getMaximumLinksPerTask(): int {
 		return $this->maximumLinksPerTask;
+	}
+
+	/**
+	 * The maximum number of link recommendations that will be shown in the AddLink plugin to VisualEditor.
+	 * @see AddLinkArticleTarget.js#annotateSuggestions
+	 * @return int
+	 */
+	public function getMaximumLinksToShowPerTask(): int {
+		return (int)$this->maximumLinksToShowPerTask;
 	}
 
 	/**
@@ -168,6 +187,13 @@ class LinkRecommendationTaskType extends TaskType {
 	}
 
 	/** @inheritDoc */
+	public function getViewData( MessageLocalizer $messageLocalizer ): array {
+		return parent::getViewData( $messageLocalizer ) + [
+			self::FIELD_MAX_LINKS_TO_SHOW_PER_TASK => $this->getMaximumLinksToShowPerTask()
+		];
+	}
+
+	/** @inheritDoc */
 	protected function toJsonArray(): array {
 		return parent::toJsonArray() + [
 				'settings' => [
@@ -175,6 +201,7 @@ class LinkRecommendationTaskType extends TaskType {
 					'minimumLinksPerTask' => $this->minimumLinksPerTask,
 					'minimumLinkScore' => $this->minimumLinkScore,
 					'maximumLinksPerTask' => $this->maximumLinksPerTask,
+					'maximumLinksToShowPerTask' => $this->maximumLinksToShowPerTask,
 					'minimumTimeSinceLastEdit' => $this->minimumTimeSinceLastEdit,
 					'minimumWordCount' => $this->minimumWordCount,
 					'maximumWordCount' => $this->maximumWordCount,

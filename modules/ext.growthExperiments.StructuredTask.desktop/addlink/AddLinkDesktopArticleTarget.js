@@ -12,12 +12,15 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
  * @constructor
  */
 function AddLinkDesktopArticleTarget() {
-	AddLinkDesktopArticleTarget.super.apply( this, arguments );
-	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
-	this.logger = new LinkSuggestionInteractionLogger( {
+	var logger = new LinkSuggestionInteractionLogger( {
 		// eslint-disable-next-line camelcase
 		is_mobile: false
 	} );
+	AddLinkDesktopArticleTarget.super.apply( this, arguments );
+	AddLinkArticleTarget.call( this, logger );
+
+	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
+	this.logger = logger;
 	this.connect( this, { save: 'onSaveComplete' } );
 }
 

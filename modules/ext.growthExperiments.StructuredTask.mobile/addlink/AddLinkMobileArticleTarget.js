@@ -12,10 +12,13 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
  * @constructor
  */
 function AddLinkMobileArticleTarget() {
-	AddLinkMobileArticleTarget.super.apply( this, arguments );
-	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
 	// eslint-disable-next-line camelcase
-	this.logger = new LinkSuggestionInteractionLogger( { is_mobile: true } );
+	var logger = new LinkSuggestionInteractionLogger( { is_mobile: true } );
+	AddLinkMobileArticleTarget.super.apply( this, arguments );
+	AddLinkArticleTarget.call( this, logger );
+
+	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
+	this.logger = logger;
 	this.connect( this, { save: 'onSaveComplete' } );
 }
 
