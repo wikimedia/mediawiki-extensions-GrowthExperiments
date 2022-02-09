@@ -47,6 +47,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			MediaWikiServices::getInstance()->getStatsdDataFactory(),
 			MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory(),
 			$growthExperimentsServices->getExperimentUserManager(),
+			$growthExperimentsServices->getMentorManager(),
 			// This would normally be wiki-powered config, but
 			// there is no need to test this
 			GlobalVarConfig::newInstance(),

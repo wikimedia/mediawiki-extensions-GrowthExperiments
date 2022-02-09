@@ -487,5 +487,12 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Got it",
 	"growthexperiments-addimage-caption-warning-tooshort": "Captions must be $1 {{PLURAL:$1|character|characters}} or longer.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|You}} have completed all of today's link suggestions.\n\nAdjust {{GENDER:|your}} difficulty levels to see other types of edits or come back tomorrow for more link suggestions.",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Got it"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Got it",
+	"growthexperiments-homepage-mentorship-optin-header": "Mentor for editing",
+	"growthexperiments-homepage-mentorship-optin-text": "If {{GENDER:|you}} have questions about editing, an experienced editor can be assigned as your “mentor” to help you.",
+	"growthexperiments-homepage-mentorship-optin-button": "Get a mentor",
+	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Get a mentor?",
+	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Continue to get an experienced editor as {{GENDER:|your}} editing mentor.",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Cancel",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continue"
 }
