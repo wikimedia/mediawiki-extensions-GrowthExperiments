@@ -17,7 +17,6 @@
 	 * @constructor
 	 */
 	function ImageSuggestionInteractionLogger( config ) {
-		this.events = [];
 		this.config = config;
 		ImageSuggestionInteractionLogger.super.call( this, schema, streamName, config );
 	}
