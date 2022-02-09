@@ -4,6 +4,7 @@
 			"DreZhsh",
 			"Gomoko",
 			"Trizek (WMF)",
+			"Verdy p",
 			"Wladek92"
 		]
 	},
@@ -42,7 +43,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Afficher $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 sur $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Données de tutoré non disponibles",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Vous n’avez peut-être pas encore de tutoré assigné. Les données sont mises à jour toutes les trois heures.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Vous n’avez peut-être encore aucun tutoré assigné. Les données sont mises à jour toutes les trois heures.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Aucun tutoré trouvé",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifier vos filtres pour trouver des tutorés.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressources",
@@ -69,7 +70,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Votre statut a été changé en \"Absent\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Message à vos mentorés",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Demander un tutoré",
-	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Vous pouvez modifier le tuteur d’un tutoré pour vous-même. Fréquemment utilisé pour les événements d’édition afin que les instructeurs puissent devenir tuteurs d’un débutant à la fois sur et hors du wiki.",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Vous pouvez modifier le tuteur d’un tutoré pour vous-même. Fréquemment utilisé pour des événements de modification collective afin que les instructeurs puissent devenir tuteurs d’un débutant à la fois sur et hors du wiki.",
 	"growthexperiments-rcfilters-mentorship-title": "Mentorat",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Vos}} novices mis en favori",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Novices qui {{GENDER:|vous}} ont été affectés et à que {{GENDER:|vous}} avez mis en favori sur {{GENDER:|votre}} tableau de bord du tuteur",
@@ -92,6 +93,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Moyenne (par défaut)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Environ le double de la moyenne",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Votre}} chargement a été modifié en « $1 ».",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Les tutorés sont affectés aléatoirement aux tuteurs quand leurs comptes sont créés. Vous pouvez gérer combien de tutorés vous sont affectés, mais certains tutorés peuvent poser des questions plus fréquemment que d’autres",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Il est recommandé de démarrer avec le paramétrage « Moyenne » pour jauger votre capacité de support, avant de l’augmenter ou le diminuer."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Les tutorés sont affectés aléatoirement aux tuteurs quand leurs comptes sont créés. Vous pouvez gérer combien de tutorés vous sont affectés, mais certains tutorés peuvent poser des questions plus fréquemment que d’autres.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Il est recommandé de démarrer avec le paramétrage « Moyenne » pour jauger votre capacité d’assistance, avant de l’augmenter ou le diminuer."
 }
