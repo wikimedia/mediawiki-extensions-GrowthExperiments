@@ -1,6 +1,6 @@
 ( function ( gt ) {
 	var welcomeTour, step,
-		HomepageModuleLogger = require( 'ext.growthExperiments.Homepage.Logger' ),
+		HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		tourUtils = require( './tourUtils.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),

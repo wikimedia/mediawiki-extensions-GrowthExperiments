@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 
-	var HomepageModuleLogger = require( 'ext.growthExperiments.Homepage.Logger' ),
+	var HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
 		QualityGate = require( '../ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js' ),
 		ImageSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js' ),

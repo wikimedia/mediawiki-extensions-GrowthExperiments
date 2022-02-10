@@ -173,10 +173,7 @@ class Mentorship extends BaseModule {
 	 */
 	protected function getModules() {
 		return $this->getMode() !== self::RENDER_MOBILE_SUMMARY ?
-			[
-				'ext.growthExperiments.Homepage.Mentorship',
-				'ext.growthExperiments.Homepage.RecentQuestions'
-			] : [];
+			[ 'ext.growthExperiments.Homepage.Mentorship' ] : [];
 	}
 
 	/**

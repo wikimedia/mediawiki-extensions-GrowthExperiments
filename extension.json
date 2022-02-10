@@ -440,11 +440,15 @@
 				"mediawiki.storage"
 			]
 		},
-		"ext.growthExperiments.Homepage.ConfirmEmailNotice": {
-			"packageFiles": [ "ext.growthExperiments.Homepage.ConfirmEmailNotice/index.js" ],
-			"messages": [
-				"confirmemail_loggedin"
+		"ext.growthExperiments.HelpPanelCta.styles": {
+			"styles": [
+				"ext.growthExperiments.HelpPanel/HelpPanelCta.less"
 			],
+			"skinStyles": {
+				"minerva": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.minerva.less" ],
+				"vector": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less" ],
+				"vector-2022": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less" ]
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -472,6 +476,7 @@
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.mobile/index.js",
 				"ext.growthExperiments.Homepage.mobile/MobileOverlay.js",
+				"ext.growthExperiments.Homepage.Logger/index.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js",
@@ -508,77 +513,28 @@
 				"mobile"
 			],
 			"dependencies": [
-				"ext.growthExperiments.Homepage.Logger",
 				"ext.growthExperiments.icons",
 				"mediawiki.language",
 				"oojs-ui-widgets"
 			]
 		},
-		"ext.growthExperiments.HelpPanelCta.styles": {
-			"styles": [
-				"ext.growthExperiments.HelpPanel/HelpPanelCta.less"
-			],
-			"skinStyles": {
-				"minerva": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.minerva.less" ],
-				"vector": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less" ],
-				"vector-2022": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less" ]
-			},
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.Homepage.Logger": {
+		"ext.growthExperiments.Homepage": {
 			"packageFiles": [
+				"homepage.init.js",
+				"ext.growthExperiments.Homepage.ConfirmEmailNotice/index.js",
+				"ext.growthExperiments.Homepage.Impact/index.js",
 				"ext.growthExperiments.Homepage.Logger/index.js",
+				"ext.growthExperiments.Homepage.Logging/index.js",
 				"utils/Utils.js"
 			],
-			"dependencies": [
-				"oojs-ui-core",
-				"mediawiki.user"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.Homepage.Logging": {
-			"packageFiles": [
-				"ext.growthExperiments.Homepage.Logging/index.js"
-			],
-			"dependencies": [
-				"ext.growthExperiments.Homepage.Logger",
-				"mediawiki.Uri"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.Homepage.RecentQuestions": {
-			"packageFiles": [
-				"ext.growthExperiments.Homepage.RecentQuestions/index.js"
-			],
 			"messages": [
-				"growthexperiments-homepage-recent-questions-header"
-			],
-			"dependencies": [
-				"mediawiki.api"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.Homepage.Impact": {
-			"packageFiles": [
-				"ext.growthExperiments.Homepage.Impact/index.js"
-			],
-			"messages": [
+				"confirmemail_loggedin",
 				"growthexperiments-homepage-impact-empty-pageviews-tooltip-button"
 			],
 			"dependencies": [
-				"ext.growthExperiments.Homepage.Logger",
+				"mediawiki.Uri",
+				"mediawiki.user",
+				"oojs-ui-core",
 				"oojs-ui-windows"
 			],
 			"targets": [
@@ -589,7 +545,11 @@
 		"ext.growthExperiments.Homepage.Mentorship": {
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.Mentorship/index.js",
-				"ext.growthExperiments.Homepage.Mentorship/QuestionPoster.js"
+				"ext.growthExperiments.Homepage.Mentorship/QuestionPoster.js",
+				"ext.growthExperiments.Homepage.Mentorship/RecentQuestions.js"
+			],
+			"messages": [
+				"growthexperiments-homepage-recent-questions-header"
 			],
 			"targets": [
 				"desktop",
@@ -598,6 +558,7 @@
 			"dependencies": [
 				"ext.growthExperiments.Help",
 				"ext.growthExperiments.SuggestedEditSession",
+				"mediawiki.api",
 				"mediawiki.jqueryMsg",
 				"mediawiki.router"
 			]
@@ -631,6 +592,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
+				"ext.growthExperiments.Homepage.Logger/index.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				"ui-components/SuggestedEditsPeek.js",
@@ -675,13 +637,14 @@
 				"mediawiki.router",
 				"mediawiki.Title",
 				"mediawiki.Uri",
+				"mediawiki.user",
 				"mediawiki.util",
+				"oojs-ui-core",
 				"oojs-ui.styles.icons-media",
 				"oojs-ui.styles.icons-content",
 				"oojs-ui.styles.icons-editing-core",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"ext.growthExperiments.Homepage.Logger",
 				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"messages": [
@@ -784,6 +747,28 @@
 				"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button",
 				"growthexperiments-addlink-daily-task-limit-exceeded",
 				"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button"
+			]
+		},
+		"ext.growthExperiments.Homepage.styles": {
+			"class": "GrowthExperiments\\ResourceLoaderFileModuleWithLessVars",
+			"styles": [
+				"ext.growthExperiments.Homepage.styles/BaseModule.less",
+				"ext.growthExperiments.Homepage.styles/HelpModule.less",
+				"ext.growthExperiments.Homepage.styles/ImpactModule.less",
+				"ext.growthExperiments.Homepage.styles/MentorshipModule.less",
+				"ext.growthExperiments.Homepage.styles/SuggestedEditsModule.less",
+				"ext.growthExperiments.Homepage.styles/TaskExplanationWidget.less",
+				"ext.growthExperiments.Homepage.styles/SmallTaskCard.less",
+				"ext.growthExperiments.Homepage.styles/BannerModule.less",
+				"ext.growthExperiments.Homepage.styles/StartEmailModule.less",
+				"ext.growthExperiments.Homepage.styles/Homepage.less",
+				"ext.growthExperiments.Homepage.styles/StartEditingModule.less",
+				"ext.growthExperiments.Homepage.styles/ConfirmEmailNotice.less"
+			],
+			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
+			"targets": [
+				"desktop",
+				"mobile"
 			]
 		},
 		"ext.growthExperiments.StructuredTask": {
@@ -1376,28 +1361,6 @@
 				"growthexperiments-help-panel-postedit-footer2-notsaved",
 				"growthexperiments-homepage-suggestededits-pageviews"
 			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.Homepage.styles": {
-			"class": "GrowthExperiments\\ResourceLoaderFileModuleWithLessVars",
-			"styles": [
-				"ext.growthExperiments.Homepage.styles/BaseModule.less",
-				"ext.growthExperiments.Homepage.styles/HelpModule.less",
-				"ext.growthExperiments.Homepage.styles/ImpactModule.less",
-				"ext.growthExperiments.Homepage.styles/MentorshipModule.less",
-				"ext.growthExperiments.Homepage.styles/SuggestedEditsModule.less",
-				"ext.growthExperiments.Homepage.styles/TaskExplanationWidget.less",
-				"ext.growthExperiments.Homepage.styles/SmallTaskCard.less",
-				"ext.growthExperiments.Homepage.styles/BannerModule.less",
-				"ext.growthExperiments.Homepage.styles/StartEmailModule.less",
-				"ext.growthExperiments.Homepage.styles/Homepage.less",
-				"ext.growthExperiments.Homepage.styles/StartEditingModule.less",
-				"ext.growthExperiments.Homepage.styles/ConfirmEmailNotice.less"
-			],
-			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [
 				"desktop",
 				"mobile"

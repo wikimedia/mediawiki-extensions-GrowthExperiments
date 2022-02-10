@@ -1,5 +1,5 @@
 ( function () {
-	var Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
+	var Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )

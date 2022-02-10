@@ -1,5 +1,5 @@
 ( function () {
-	var Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
+	var Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
@@ -74,7 +74,6 @@
 			window.history.replaceState( null, null, modulePath );
 			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 		};
-
 	// See comments in ext.growthExperiments.Homepage.Mentorship/index.js and
 	// ext.growthExperiments.Homepage.mobile/MobileOverlay.js
 	$( pageviewsIconSelector ).each( handler );

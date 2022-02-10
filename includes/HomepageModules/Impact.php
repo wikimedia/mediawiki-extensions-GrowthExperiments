@@ -128,14 +128,6 @@ class Impact extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModules() {
-		return $this->getMode() !== self::RENDER_MOBILE_SUMMARY ?
-			[ 'ext.growthExperiments.Homepage.Impact' ] : [];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function getHeaderText() {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-impact-header' )
