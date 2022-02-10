@@ -6,7 +6,9 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
+use ResourceLoaderContext;
 
 /**
  * Mentorship-related hooks that touch user-preferences
@@ -16,7 +18,8 @@ use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
  */
 class MentorUserOptionsHooks implements
 	GetPreferencesHook,
-	UserGetDefaultOptionsHook
+	UserGetDefaultOptionsHook,
+	ResourceLoaderExcludeUserOptionsHook
 {
 
 	/** @inheritDoc */
@@ -41,4 +44,16 @@ class MentorUserOptionsHooks implements
 			MentorWeightManager::MENTORSHIP_WEIGHT_PREF => MentorWeightManager::MENTORSHIP_DEFAULT_WEIGHT,
 		];
 	}
+
+	/** @inheritDoc */
+	public function onResourceLoaderExcludeUserOptions(
+		array &$keysToExclude,
+		ResourceLoaderContext $context
+	): void {
+		$keysToExclude = array_merge( $keysToExclude, [
+			MentorWeightManager::MENTORSHIP_WEIGHT_PREF,
+			MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF,
+		] );
+	}
+
 }

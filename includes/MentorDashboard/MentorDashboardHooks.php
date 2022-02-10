@@ -7,10 +7,15 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use ResourceLoaderContext;
 
-class MentorDashboardHooks implements GetPreferencesHook, UserGetDefaultOptionsHook {
+class MentorDashboardHooks implements
+	GetPreferencesHook,
+	UserGetDefaultOptionsHook,
+	ResourceLoaderExcludeUserOptionsHook
+{
 	/**
 	 * @inheritDoc
 	 */
@@ -36,6 +41,18 @@ class MentorDashboardHooks implements GetPreferencesHook, UserGetDefaultOptionsH
 			MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 0,
 			MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE => null,
 		];
+	}
+
+	/** @inheritDoc */
+	public function onResourceLoaderExcludeUserOptions(
+		array &$keysToExclude,
+		ResourceLoaderContext $context
+	): void {
+		$keysToExclude = array_merge( $keysToExclude, [
+			StarredMenteesStore::STARRED_MENTEES_PREFERENCE,
+			MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF,
+			MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE,
+		] );
 	}
 
 	/**

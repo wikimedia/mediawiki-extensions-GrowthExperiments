@@ -14,6 +14,7 @@ use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MessageLocalizer;
 use RequestContext;
@@ -23,6 +24,7 @@ use User;
 class HelpPanelHooks implements
 	GetPreferencesHook,
 	UserGetDefaultOptionsHook,
+	ResourceLoaderExcludeUserOptionsHook,
 	LocalUserCreatedHook,
 	BeforePageDisplayHook,
 	ListDefinedTagsHook,
@@ -72,6 +74,17 @@ class HelpPanelHooks implements
 				self::HELP_PANEL_PREFERENCES_TOGGLE => false
 			];
 		}
+	}
+
+	/** @inheritDoc */
+	public function onResourceLoaderExcludeUserOptions(
+		array &$keysToExclude,
+		ResourceLoaderContext $context
+	): void {
+		$keysToExclude = array_merge( $keysToExclude, [
+			HelpdeskQuestionPoster::QUESTION_PREF,
+			SuggestedEdits::GUIDANCE_ENABLED_PREF,
+		] );
 	}
 
 	/** @inheritDoc */

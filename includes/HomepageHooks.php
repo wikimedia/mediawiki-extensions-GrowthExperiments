@@ -61,6 +61,7 @@ use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
@@ -97,6 +98,7 @@ class HomepageHooks implements
 	MessageCache__getHook,
 	GetPreferencesHook,
 	UserGetDefaultOptionsHook,
+	ResourceLoaderExcludeUserOptionsHook,
 	AuthChangeFormFieldsHook,
 	LocalUserCreatedHook,
 	ListDefinedTagsHook,
@@ -668,6 +670,21 @@ class HomepageHooks implements
 			self::HOMEPAGE_PREF_ENABLE => false,
 			self::HOMEPAGE_PREF_PT_LINK => false,
 		];
+	}
+
+	/** @inheritDoc */
+	public function onResourceLoaderExcludeUserOptions(
+		array &$keysToExclude,
+		ResourceLoaderContext $context
+	): void {
+		$keysToExclude = array_merge( $keysToExclude, [
+			self::HOMEPAGE_PREF_ENABLE,
+			self::HOMEPAGE_PREF_PT_LINK,
+			self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN,
+			Mentorship::QUESTION_PREF,
+			SuggestedEdits::PREACTIVATED_PREF,
+			SuggestedEdits::TOPICS_ENABLED_PREF,
+		] );
 	}
 
 	/**
