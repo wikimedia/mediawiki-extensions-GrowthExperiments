@@ -33,23 +33,25 @@
 			this.askHelpEnabled = config.askHelpEnabled;
 			this.taskTypeId = config.taskTypeId;
 			this.panelTitleMessages = {
-				// ask-help and questioncomplete are added in configureAskScreen()
+				// Messages for ask-help and questioncomplete are added later via
+				// AskHelpPanel.getPanelTitleMessages since they vary based on panel context.
 				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
 				'general-help': mw.message( 'growthexperiments-help-panel-general-help-title' ).text(),
 				'suggested-edits': mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text()
 			};
 			this.isQuestionPoster = config.isQuestionPoster;
-			this.configureAskScreen( config );
+			this.askSource = config.askSource;
 		},
 		HelpPanelSearchWidget = require( './HelpPanelSearchWidget.js' ),
 		HelpPanelHomeButtonWidget = require( './HelpPanelHomeButtonWidget.js' ),
+		AskHelpPanel = require( './AskHelpPanel.js' ),
 		MIN_DIALOG_HEIGHT = 368;
 
 	OO.inheritClass( HelpPanelProcessDialog, OO.ui.ProcessDialog );
 
 	HelpPanelProcessDialog.static.name = 'HelpPanel';
 	HelpPanelProcessDialog.static.actions = [
-		// The "Post" button on the ask help subpanel.
+		// The "Publish" button on the ask help subpanel, see onAskHelpTextInputChange.
 		{
 			label: OO.ui.deferMsg( 'growthexperiments-help-panel-submit-question-button-text' ),
 			modes: [ 'ask-help', 'ask-help-locked' ],
@@ -96,90 +98,6 @@
 	];
 
 	/**
-	 * Constructor helper for the ask screen.
-	 *
-	 * @param {Object} config Config object passed to the constructor
-	 */
-	HelpPanelProcessDialog.prototype.configureAskScreen = function ( config ) {
-		var askFromMentor, mentorName, mentorGender, primaryMentorName, primaryMentorGender,
-			mentorTalkLinkText, $mentorTalkLink, userName = mw.user.getName();
-
-		// mentor-homepage, mentor-helppanel or helpdesk
-		this.askSource = config.askSource || ( mw.config.get( 'wgGEHelpPanelAskMentor' ) ? 'mentor-helppanel' : 'helpdesk' );
-		askFromMentor = ( this.askSource !== 'helpdesk' );
-		this.storageKey = askFromMentor ? 'homepage-questionposter-question-text-mentorship' :
-			'help-panel-question-text';
-		// Do not post article title when asking from the homepage.
-		this.questionPosterAllowIncludingTitle = ( this.askSource !== 'mentor-homepage' );
-
-		if ( this.askSource === 'helpdesk' ) {
-			this.panelTitleMessages[ 'ask-help' ] =
-				mw.message( 'growthexperiments-help-panel-questionreview-title' ).text();
-			this.$askhelpHeader = $( '<p>' ).append(
-				mw.message( 'growthexperiments-help-panel-questionreview-header',
-					$( linksConfig.helpDeskLink ), userName ).parse()
-			);
-			this.questionCompleteConfirmationText =
-				mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text();
-			this.viewQuestionText =
-				mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text();
-			this.submitFailureMessage = mw.message(
-				'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink ).parse();
-		} else {
-			if ( this.askSource === 'mentor-homepage' ) {
-				mentorName = mw.config.get( 'GEHomepageMentorshipEffectiveMentorName' );
-				mentorGender = mw.config.get( 'GEHomepageMentorshipEffectiveMentorGender' );
-				primaryMentorName = mw.config.get( 'GEHomepageMentorshipMentorName' );
-				primaryMentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
-			} else { // mentor-helppanel
-				var mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
-				mentorName = mentorData.effectiveName;
-				mentorGender = mentorData.effectiveGender;
-				primaryMentorName = mentorData.name;
-				primaryMentorGender = mentorData.gender;
-			}
-			mentorTalkLinkText = mw.message(
-				'growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text',
-				mentorName, userName ).text();
-			$mentorTalkLink = $( '<a>' )
-				.attr( {
-					href: mw.Title.newFromText( mentorName, 3 ).getUrl(),
-					target: '_blank',
-					'data-link-id': 'mentor-talk'
-				} )
-				.text( mentorTalkLinkText );
-
-			this.panelTitleMessages[ 'ask-help' ] =
-				mw.message( 'growthexperiments-homepage-mentorship-dialog-title', mentorName, userName ).text();
-			this.panelTitleMessages.questioncomplete =
-				mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text();
-			this.$askhelpHeader = $( '<div>' );
-			if ( mentorName !== primaryMentorName ) {
-				// effective mentor name is not same as primary => mentor must be away
-				this.$askhelpHeader.append(
-					$( '<p>' ).append(
-						$( '<strong>' ).text(
-							mw.message( 'growthexperiments-homepage-mentorship-questionreview-header-away',
-								primaryMentorName, primaryMentorGender, mentorName, mentorGender ).text()
-						)
-					)
-				);
-			}
-			this.$askhelpHeader.append( $( '<p>' ).append(
-				mw.message( 'growthexperiments-homepage-mentorship-questionreview-header',
-					mentorName, userName, $mentorTalkLink ).parse()
-			) );
-			this.questionCompleteConfirmationText = mw.message(
-				'growthexperiments-homepage-mentorship-confirmation-text', mentorName, userName ).text();
-			this.viewQuestionText = mw.message(
-				'growthexperiments-homepage-mentorship-view-question-text', mentorName, userName ).text();
-			this.submitFailureMessage = mw.message( 'growthexperiments-help-panel-question-post-error',
-				$mentorTalkLink ).parse();
-		}
-		this.panelTitleMessages.questioncomplete = this.panelTitleMessages[ 'ask-help' ];
-	};
-
-	/**
 	 * Swap the state of the help panel dialog.
 	 *
 	 * Modeled off of VisualEditor's swapPanel().
@@ -221,10 +139,7 @@
 			this.toggleSearchResults( false );
 		}
 		if ( panelToSwitchTo === 'ask-help' ) {
-			this.getActions().setAbilities( {
-				questioncomplete: this.askhelpTextInput.getValue()
-			} );
-			this.questionIncludeFieldLayout.toggle( this.questionPosterAllowIncludingTitle );
+			this.askhelpPanel.prepareToShowPanel();
 		}
 		// When navigating to the home panel, don't change which panel is visible in this.panels
 		// The current panel needs to remain visible while the sliding transition happens
@@ -241,34 +156,6 @@
 		this.currentPanel = panelToSwitchTo;
 		this.updateMode();
 
-	};
-
-	/**
-	 * Connected to the askhelpTextInput field.
-	 */
-	HelpPanelProcessDialog.prototype.onTextInputChange = function () {
-		var reviewTextInputValue = this.askhelpTextInput.getValue();
-		// Enable the "Submit" button on the review step if there's text input.
-		this.getActions().setAbilities( {
-			questioncomplete: this.askhelpTextInput.getValue()
-		} );
-		// Copy the review text input back to the initial question field, in case the
-		// user clicks "back".
-		this.questionTextInput.setValue( reviewTextInputValue );
-		// Save the draft text in local storage in case the user reloads their page.
-		mw.storage.set( this.storageKey, reviewTextInputValue );
-	};
-
-	/**
-	 * Set the value of the text area on the review step.
-	 */
-	HelpPanelProcessDialog.prototype.populateReviewText = function () {
-		this.askhelpTextInput.setValue( this.questionTextInput.getValue() );
-
-		if ( !this.previousQuestionText && this.questionTextInput.getValue() ) {
-			this.logger.log( 'enter-question-text' );
-		}
-		this.previousQuestionText = this.questionTextInput.getValue();
 	};
 
 	HelpPanelProcessDialog.prototype.setNotificationLabelText = function () {
@@ -441,6 +328,7 @@
 		}.bind( this ) );
 	};
 
+	/** @inheritDoc **/
 	HelpPanelProcessDialog.prototype.initialize = function () {
 		var guidanceTipsPromise;
 
@@ -449,7 +337,9 @@
 		this.$content
 			.addClass( [
 				'mw-ge-help-panel-processdialog',
-				OO.ui.isMobile() ? 'mw-ge-help-panel-processdialog-mobile' : 'mw-ge-help-panel-processdialog-desktop'
+				OO.ui.isMobile() ?
+					'mw-ge-help-panel-processdialog-mobile' :
+					'mw-ge-help-panel-processdialog-desktop'
 			] );
 
 		this.panels = new OO.ui.StackLayout( {
@@ -464,11 +354,6 @@
 
 		this.userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
 		this.userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
-
-		/**
-		 * @type {mw.Title}
-		 */
-		this.relevantTitle = mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) );
 
 		this.searchWidget = new HelpPanelSearchWidget( this.logger, {
 			searchNamespaces: configData.GEHelpPanelSearchNamespaces,
@@ -493,10 +378,16 @@
 		} );
 		guidanceTipsPromise = this.suggestededitsPanel.build();
 
-		this.askhelpPanel = new OO.ui.PanelLayout( {
-			padded: true,
-			expanded: true
+		this.askhelpPanel = new AskHelpPanel( {
+			askSource: this.askSource,
+			logger: this.logger,
+			relevantTitle: mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) )
 		} );
+		this.askhelpPanel.on( 'askHelpTextInputChange', this.onAskHelpTextInputChange.bind( this ) );
+		this.panelTitleMessages = $.extend(
+			this.panelTitleMessages,
+			this.askhelpPanel.getPanelTitleMessages()
+		);
 
 		this.generalhelpPanel = new OO.ui.PanelLayout( {
 			padded: true,
@@ -508,43 +399,7 @@
 			expanded: true
 		} );
 
-		// Fields
-		this.previousQuestionText = mw.storage.get( this.storageKey );
-
-		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
-			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' )
-				.params( [ mw.user ] )
-				.text(),
-			multiline: true,
-			maxLength: 2000,
-			rows: 3,
-			maxRows: 3,
-			autosize: true,
-			value: mw.storage.get( this.storageKey ),
-			spellcheck: true,
-			required: true,
-			autofocus: false
-		} ).connect( this, { change: 'populateReviewText' } );
-
-		this.askhelpTextInput = new OO.ui.MultilineTextInputWidget( {
-			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' )
-				.params( [ mw.user ] )
-				.text(),
-			multiline: true,
-			maxLength: 2000,
-			rows: 6,
-			value: mw.storage.get( this.storageKey ),
-			spellcheck: true,
-			required: true,
-			autofocus: !OO.ui.isMobile()
-		} ).connect( this, { change: 'onTextInputChange' } );
-
-		this.questionIncludeTitleCheckbox = new OO.ui.CheckboxInputWidget( {
-			value: 1,
-			selected: this.questionPosterAllowIncludingTitle
-		} );
-
-		// Build home content of help panel.
+		// Build the content of General Help panel.
 		this.generalhelpSearchFieldContent = new OO.ui.FieldLayout(
 			this.searchWidget, {
 				align: 'top',
@@ -568,44 +423,13 @@
 			this.$generalhelpPanelEditingLinksViewMore
 		);
 
+		// Build the content of Home panel.
 		this.buildHomePanelButtons();
 		this.getInfoLinks().appendTo( this.homePanel.$element )
 			.wrapAll( $( '<ul>' ).addClass( 'mw-ge-help-panel-info-links' ) )
 			.wrap( '<li>' );
 
-		// Build step two of ask question process.
-		this.askhelpContent = new OO.ui.FieldsetLayout();
-
-		this.askhelpContent.addItems( [
-			new OO.ui.LabelWidget( {
-				label: this.$askhelpHeader
-			} )
-		] );
-
-		this.questionIncludeFieldLayout = new OO.ui.FieldLayout(
-			this.questionIncludeTitleCheckbox, {
-				label: mw.message( 'growthexperiments-help-panel-questionreview-include-article-title' ).text(),
-				align: 'inline',
-				helpInline: true,
-				help: this.relevantTitle.getPrefixedText()
-			}
-		);
-
-		this.askhelpContent.addItems( [
-			new OO.ui.FieldLayout(
-				this.askhelpTextInput, {
-					label: $( '<strong>' ).text(
-						mw.message( 'growthexperiments-help-panel-questionreview-label' ).text()
-					),
-					align: 'top'
-				} ),
-			this.questionIncludeFieldLayout
-		] );
-		this.askhelpPanel.$element.append( [
-			this.askhelpContent.$element,
-			this.getCopyrightWarning()
-		] );
-
+		// Build the content of Question Complete panel.
 		this.questionCompleteContent = new OO.ui.FieldsetLayout( {
 			label: new OO.ui.HorizontalLayout( {
 				items: [
@@ -619,7 +443,7 @@
 		} );
 
 		this.questionCompleteConfirmationLabel = new OO.ui.LabelWidget( {
-			label: $( '<p>' ).text( this.questionCompleteConfirmationText )
+			label: $( '<p>' ).text( this.askhelpPanel.getQuestionCompleteConfirmationLabel() )
 		} );
 		this.questionCompleteFirstEditText = new OO.ui.LabelWidget( {
 			label: $( '<p>' )
@@ -732,6 +556,7 @@
 		}
 	};
 
+	/** @inheritDoc **/
 	HelpPanelProcessDialog.prototype.getSetupProcess = function ( data ) {
 		return HelpPanelProcessDialog.super.prototype.getSetupProcess
 			.call( this, data )
@@ -743,6 +568,7 @@
 			}, this );
 	};
 
+	/** @inheritDoc **/
 	HelpPanelProcessDialog.prototype.getTeardownProcess = function ( data ) {
 		return HelpPanelProcessDialog.super.prototype.getTeardownProcess
 			.call( this, data )
@@ -842,15 +668,13 @@
 
 	};
 
+	/** @inheritDoc **/
 	HelpPanelProcessDialog.prototype.getActionProcess = function ( action ) {
 		return HelpPanelProcessDialog.super.prototype.getActionProcess.call( this, action )
 			.next( function () {
-				var submitAttemptData,
-					postData;
 				if ( action === 'close' || !action ) {
 					this.logger.log( 'close' );
-					// Show mentorship tour if that was the homepage module that was used
-					if ( this.askSource === 'mentor-homepage' ) {
+					if ( this.askhelpPanel.shouldShowHomepageMentorTour() ) {
 						this.launchIntroTour(
 							'homepage_mentor',
 							'growthexperiments-tour-homepage-mentorship'
@@ -886,93 +710,8 @@
 					this.swapPanel( 'general-help' );
 				}
 				if ( action === 'questioncomplete' ) {
-					// HACK: by default, the pending element is the head, but that results in brief
-					// flashes of pending state when switching panels or closing the dialog, which
-					// we don't want. Instead, make the head the pending element only while
-					// submitting a question.
-					this.setPendingElement( this.$backupPendingElement );
-
-					/* eslint-disable camelcase */
-					submitAttemptData = {
-						question_length: this.askhelpTextInput.getValue().length,
-						include_title: this.questionIncludeTitleCheckbox.isSelected(),
-						had_email: !!this.userEmail,
-						had_email_confirmed: !!this.userEmailConfirmed
-					};
-					/* eslint-enable camelcase */
-					this.logger.log( 'submit-attempt', submitAttemptData );
-
-					// Toggle the first edit text, will set depending on API response.
-					this.questionCompleteFirstEditText.toggle( false );
-					postData = {
-						source: this.askSource,
-						action: 'helppanelquestionposter',
-						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ?
-							this.relevantTitle.getPrefixedText() :
-							'',
-						body: this.askhelpTextInput.getValue()
-					};
-					// Start pre-loading tour for help panel.
-					if ( this.askSource === 'helpdesk' &&
-						!mw.user.options.get( 'growthexperiments-tour-help-panel' ) ) {
-						mw.loader.load( 'ext.guidedTour.tour.helppanel' );
-					}
-					return new mw.Api().postWithToken( 'csrf', postData )
-						.then( function ( data ) {
-							this.logger.incrementUserEditCount();
-							this.logger.log( 'submit-success', $.extend(
-								submitAttemptData,
-								/* eslint-disable camelcase */
-								{
-									revision_id: data.helppanelquestionposter.revision
-								}
-								/* eslint-enable camelcase */
-							) );
-
-							if ( data.helppanelquestionposter.isfirstedit ) {
-								this.questionCompleteFirstEditText.toggle( true );
-							}
-							this.questionCompleteViewQuestionText.setLabel(
-								$( '<p>' ).append(
-									$( '<strong>' ).append(
-										$( '<a>' ).attr( {
-											href: data.helppanelquestionposter.viewquestionurl,
-											target: '_blank',
-											'data-link-id': 'view-question'
-										} ).text( this.viewQuestionText )
-									)
-								)
-							);
-							this.setNotificationLabelText();
-							this.swapPanel( action );
-
-							if ( this.askSource === 'helpdesk' ) {
-								this.launchIntroTour(
-									'helppanel',
-									'growthexperiments-tour-help-panel'
-								);
-							}
-
-							mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).fire( data );
-							// Reset the post a question text inputs.
-							this.questionTextInput.setValue( '' );
-							mw.storage.set( this.storageKey, '' );
-						}.bind( this ), function ( errorCode, errorData ) {
-							// Return a recoverable error. The user can either try again, or they
-							// can follow the instructions in the error message for how to post
-							// their message manually.
-							// Re-enable the submit button once the user is done with modal.
-							submitAttemptData.error = errorCode;
-							this.logger.log( 'submit-failure', submitAttemptData );
-							return $.Deferred().reject(
-								new OO.ui.Error( $( '<p>' ).append(
-									errorCode === 'hookaborted' ? this.submitFailureMessage : errorData.error.info
-								) )
-							).promise();
-						}.bind( this ) )
-						.always( function () {
-							this.setPendingElement( $( [] ) );
-						}.bind( this ) );
+					// A promise is returned to show the ProcessDialog's loading state.
+					return this.publishQuestionDeferred();
 				}
 			}.bind( this ) );
 	};
@@ -1108,24 +847,101 @@
 	};
 
 	/**
-	 * Get the copyright warning element
+	 * Enable questioncomplete action in the dialog if the user enters a question
 	 *
-	 * @return {jQuery|undefined}
+	 * @param {string} question Question the user entered in the Ask Help panel
 	 */
-	HelpPanelProcessDialog.prototype.getCopyrightWarning = function () {
-		var message = mw.message( 'wikimedia-copyrightwarning' );
-		// The message only exists if WikimediaMessages extension is installed.
-		if ( !message.exists() ) {
-			return;
+	HelpPanelProcessDialog.prototype.onAskHelpTextInputChange = function ( question ) {
+		// Enable the "Publish" button on the dialog if there's a question to publish.
+		this.getActions().setAbilities( { questioncomplete: question } );
+	};
+
+	/**
+	 * Publish the question the user entered via Ask Help panel
+	 *
+	 * @return {jQuery.Promise}
+	 */
+	HelpPanelProcessDialog.prototype.publishQuestionDeferred = function () {
+		// HACK: by default, the pending element is the head, but that results in brief
+		// flashes of pending state when switching panels or closing the dialog, which
+		// we don't want. Instead, make the head the pending element only while
+		// submitting a question.
+		this.setPendingElement( this.$backupPendingElement );
+
+		var shouldShowHelpPanelTour = this.askhelpPanel.shouldShowHelpPanelTour(),
+			submitAttemptData = {
+				/* eslint-disable camelcase */
+				question_length: this.askhelpPanel.getQuestion().length,
+				include_title: this.askhelpPanel.isTitleIncludedInQuestion(),
+				had_email: !!this.userEmail,
+				had_email_confirmed: !!this.userEmailConfirmed
+				/* eslint-enable camelcase */
+			};
+
+		this.logger.log( 'submit-attempt', submitAttemptData );
+
+		// Hide the first edit text, which is shown depending on API response.
+		this.questionCompleteFirstEditText.toggle( false );
+		// Start pre-loading tour for help panel.
+		if ( shouldShowHelpPanelTour ) {
+			mw.loader.load( 'ext.guidedTour.tour.helppanel' );
 		}
-		return $( '<div>' )
-			.addClass( [
-				'mw-ge-askHelpPanel-copyright',
-				OO.ui.isMobile() ?
-					'mw-ge-askHelpPanel-copyright-mobile' :
-					'mw-ge-askHelpPanel-copyright-desktop'
-			] )
-			.append( message.parse() );
+		return new mw.Api().postWithToken( 'csrf', this.askhelpPanel.getPostData() )
+			.then( function ( data ) {
+				this.logger.incrementUserEditCount();
+				this.logger.log( 'submit-success', $.extend(
+					submitAttemptData,
+					/* eslint-disable camelcase */
+					{
+						revision_id: data.helppanelquestionposter.revision
+					}
+					/* eslint-enable camelcase */
+				) );
+
+				if ( data.helppanelquestionposter.isfirstedit ) {
+					this.questionCompleteFirstEditText.toggle( true );
+				}
+				this.questionCompleteViewQuestionText.setLabel(
+					$( '<p>' ).append(
+						$( '<strong>' ).append(
+							$( '<a>' ).attr( {
+								href: data.helppanelquestionposter.viewquestionurl,
+								target: '_blank',
+								'data-link-id': 'view-question'
+							} ).text( this.askhelpPanel.getViewQuestionText() )
+						)
+					)
+				);
+				this.setNotificationLabelText();
+				this.swapPanel( 'questioncomplete' );
+
+				if ( shouldShowHelpPanelTour ) {
+					this.launchIntroTour(
+						'helppanel',
+						'growthexperiments-tour-help-panel'
+					);
+				}
+
+				mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).fire( data );
+				this.askhelpPanel.onQuestionPosted();
+			}.bind( this ), function ( errorCode, errorData ) {
+				// Return a recoverable error. The user can either try again, or they
+				// can follow the instructions in the error message for how to post
+				// their message manually.
+				// Re-enable the submit button once the user is done with modal.
+				submitAttemptData.error = errorCode;
+				this.logger.log( 'submit-failure', submitAttemptData );
+				return $.Deferred().reject(
+					new OO.ui.Error( $( '<p>' ).append(
+						errorCode === 'hookaborted' ?
+							this.askhelpPanel.getSubmitFailureMessage() :
+							errorData.error.info
+					) )
+				).promise();
+			}.bind( this ) )
+			.always( function () {
+				this.setPendingElement( $( [] ) );
+			}.bind( this ) );
 	};
 
 	module.exports = HelpPanelProcessDialog;

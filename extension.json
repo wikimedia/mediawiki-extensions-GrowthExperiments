@@ -1106,7 +1106,8 @@
 			"styles": [
 				"ext.growthExperiments.Help/HelpPanelProcessDialog.less",
 				"ext.growthExperiments.Help/HelpPanelSearchWidget.less",
-				"ext.growthExperiments.Help/HelpPanelHomeButtonWidget.less"
+				"ext.growthExperiments.Help/HelpPanelHomeButtonWidget.less",
+				"ext.growthExperiments.Help/AskHelpPanel.less"
 			],
 			"packageFiles": [
 				"ext.growthExperiments.Help/index.js",
@@ -1120,6 +1121,7 @@
 				"ext.growthExperiments.Help/HelpPanelProcessDialog.js",
 				"ext.growthExperiments.Help/HelpPanelProcessDialog.SuggestedEditsPanel.js",
 				"ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.js",
+				"ext.growthExperiments.Help/AskHelpPanel.js",
 				"ui-components/SuggestedEditsPeek.js",
 				"ext.growthExperiments.Help/QuickStartTips.js",
 				"ext.growthExperiments.Help/QuickStartTipsTabPanelLayout.js",
@@ -1597,6 +1599,8 @@
 			"tests/qunit/ext.growthExperiments.Help/HelpPanelProcessDialog.test.js",
 			"modules/ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.js",
 			"tests/qunit/ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.test.js",
+			"modules/ext.growthExperiments.Help/AskHelpPanel.js",
+			"tests/qunit/ext.growthExperiments.Help/AskHelpPanel.test.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js",
 			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.test.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/ErrorCardWidget.js",

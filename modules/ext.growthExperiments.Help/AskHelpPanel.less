@@ -1,0 +1,16 @@
+@import '../../lib/ooui/wikimedia-ui-base';
+@import '../utils/mixins.less';
+
+.mw-ge-askHelpPanel {
+	&-copyright {
+		margin-top: 16px;
+		color: @wmui-color-base20;
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+	}
+
+	&-desktop {
+		.mw-ge-askHelpPanel-copyright {
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17.3px );
+		}
+	}
+}
