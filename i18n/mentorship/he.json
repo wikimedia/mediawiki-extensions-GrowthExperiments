@@ -91,5 +91,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "בערך כפול מהממוצע",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "העומס שלך שוּנה ל{{GRAMMAR:תחילית|$1}}.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "חניכים משויכים באופן אקראי לחונכים כשהחשבונות שלהם נוצרים. באפשרותך לנהל כמה חניכים משויכים אליך, אבל חניכים מסוימים יכולים לשאול יותר שאלות מאחרים",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "מומלץ להתחיל בהגדרת \"ממוצע\" כדי לכוונן את קיבולת התמיכה שלך לפני העלאה או הפחתה."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "מומלץ להתחיל בהגדרת \"ממוצע\" כדי לכוונן את קיבולת התמיכה שלך לפני העלאה או הפחתה.",
+	"growthexperiments-mentor-list-missing-key": "המפתח <code>$1</code> חסר",
+	"growthexperiments-mentor-list-datatype-mismatch": "מצופה שהערך של <code>$1</code> יהיה <code>$2</code>, אבל הוא <code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "הגדרת החונך מכילה את המפתח הבלתי־צפוי <code>$1</code>"
 }
