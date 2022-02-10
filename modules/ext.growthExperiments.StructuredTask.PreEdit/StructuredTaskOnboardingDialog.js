@@ -56,8 +56,14 @@ StructuredTaskOnboardingDialog.prototype.initialize = function () {
 		isHorizontal: true
 	} );
 
-	this.swipeCard.setToStartHandler( this.showNextPanel.bind( this ) );
-	this.swipeCard.setToEndHandler( this.showPrevPanel.bind( this ) );
+	this.swipeCard.setToStartHandler( function () {
+		this.logNavigation( 'next', true );
+		this.showNextPanel();
+	}.bind( this ) );
+	this.swipeCard.setToEndHandler( function () {
+		this.logNavigation( 'back', true );
+		this.showPrevPanel();
+	}.bind( this ) );
 };
 
 /** @inheritdoc */
@@ -86,6 +92,7 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 		classes: [ 'structuredtask-onboarding-dialog-footer-widget' ]
 	} ).$element;
 	this.$prevButton.on( 'click', function () {
+		this.logNavigation( 'back' );
 		this.showPrevPanel();
 	}.bind( this ) );
 
@@ -97,6 +104,7 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 		classes: [ 'structuredtask-onboarding-dialog-footer-widget', 'align-end' ]
 	} ).$element;
 	this.$nextButton.on( 'click', function () {
+		this.logNavigation( 'next' );
 		this.showNextPanel();
 	}.bind( this ) );
 
@@ -212,6 +220,18 @@ StructuredTaskOnboardingDialog.prototype.getLogMetadata = function () {
 		// eslint-disable-next-line camelcase
 		active_interface: 'onboarding_step_' + ( this.currentPanelIndex + 1 ) + '_dialog'
 	};
+};
+
+/**
+ * Log back or next navigation
+ *
+ * @param {string} action One of 'back' or 'next'
+ * @param {boolean} [isSwipe] Whether the navigation was triggered via swiping
+ */
+StructuredTaskOnboardingDialog.prototype.logNavigation = function ( action, isSwipe ) {
+	var navigationType = isSwipe ? 'swipe' : 'click';
+	// eslint-disable-next-line camelcase
+	this.logger.log( action, { navigation_type: navigationType }, this.getLogMetadata() );
 };
 
 module.exports = StructuredTaskOnboardingDialog;
