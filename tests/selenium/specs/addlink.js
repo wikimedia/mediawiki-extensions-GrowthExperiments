@@ -8,7 +8,7 @@ const assert = require( 'assert' ),
 
 describe( 'add link', function () {
 
-	it( 'link inspector appears after clicking through task from Special:Homepage', function () {
+	it( 'link inspector can be used to accept/reject links and save an article.', function () {
 		if ( !isQuibbleUsingApache ) {
 			this.skip( 'This test depends on using PHP-FPM and Apache as the backend.' );
 		}
@@ -20,21 +20,21 @@ describe( 'add link', function () {
 		} );
 		HomepagePage.open();
 		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'Douglas Adams' );
-		HomepagePage.suggestedEditsCard.waitForClickable();
+
+		HomepagePage.suggestedEditsCard.waitForDisplayed();
+		HomepagePage.suggestedEditsCard.waitForClickable( { timeout: 30000 } );
 		HomepagePage.suggestedEditsCard.click();
-		AddLinkArticlePage.linkInspector.waitForDisplayed( { timeout: 30000 } );
-		AddLinkArticlePage.linkInspector.waitForClickable( { timeout: 20000 } );
-		AddLinkArticlePage.yesButton.waitForDisplayed();
-		AddLinkArticlePage.yesButton.click();
-		// TODO: Wait for "Yes" to be toggled on before advancing.
-		AddLinkArticlePage.nextButton.click();
-		AddLinkArticlePage.nextButton.waitForDisplayed();
-		AddLinkArticlePage.nextButton.click();
-		AddLinkArticlePage.noButton.click();
-		AddLinkArticlePage.rejectionDialogDoneButton.waitForDisplayed();
-		AddLinkArticlePage.rejectionDialogDoneButton.click();
-		AddLinkArticlePage.publishButton.click();
-		// TODO: Make some assertion on what is presented in the publish dialog.
+
+		AddLinkArticlePage.waitForLinkInspector();
+
+		AddLinkArticlePage.acceptSuggestion();
+
+		AddLinkArticlePage.rejectSuggestion();
+		AddLinkArticlePage.closeRejectionDialog();
+
+		AddLinkArticlePage.clickPublishChangesButton();
+
+		AddLinkArticlePage.saveChangesToArticle();
 	} );
 
 } );

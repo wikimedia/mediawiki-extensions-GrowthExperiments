@@ -16,6 +16,49 @@ class AddLinkArticlePage extends Page {
 
 	get publishButton() { return $( '.oo-ui-tool-name-machineSuggestionsSave ' ); }
 
+	get saveDialog() { return $( '.ge-structuredTask-mwSaveDialog' ); }
+
+	get saveChangesButton() { return $( '.ge-structuredTask-mwSaveDialog .oo-ui-processDialog-actions-primary' ); }
+
+	waitForLinkInspector() {
+		this.waitForDisplayedAndClickable( this.linkInspector );
+	}
+
+	acceptSuggestion() {
+		this.clickButton( this.yesButton );
+	}
+
+	skipSuggestion() {
+		this.clickButton( this.nextButton );
+	}
+
+	rejectSuggestion() {
+		this.clickButton( this.noButton );
+	}
+
+	closeRejectionDialog() {
+		this.clickButton( this.rejectionDialogDoneButton );
+	}
+
+	clickPublishChangesButton() {
+		this.clickButton( this.publishButton );
+	}
+
+	saveChangesToArticle() {
+		this.waitForDisplayedAndClickable( this.saveDialog );
+		this.clickButton( this.saveChangesButton );
+	}
+
+	clickButton( button ) {
+		this.waitForDisplayedAndClickable( button );
+		button.click();
+	}
+
+	waitForDisplayedAndClickable( element ) {
+		element.waitForClickable( { timeout: 30000 } );
+		element.waitForDisplayed( { timeout: 30000 } );
+	}
+
 }
 
 module.exports = new AddLinkArticlePage();
