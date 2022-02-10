@@ -52,12 +52,14 @@ class Tracker {
 
 	/**
 	 * @param int $pageId
-	 * @param string $taskTypeId
+	 * @param string|null $taskTypeId
 	 * @param string|null $clickId
 	 * @param string|null $newcomerTaskToken
 	 * @return bool|StatusValue
 	 */
-	public function track( int $pageId, string $taskTypeId, string $clickId = null, string $newcomerTaskToken = null ) {
+	public function track(
+		int $pageId, ?string $taskTypeId = null, string $clickId = null, string $newcomerTaskToken = null
+	) {
 		$this->title = $this->titleFactory->newFromID( $pageId );
 		if ( !$this->title ) {
 			return $this->makeError( 'Unable to create a Title from page ID {pageId}', [
