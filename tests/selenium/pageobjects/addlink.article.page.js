@@ -20,43 +20,43 @@ class AddLinkArticlePage extends Page {
 
 	get saveChangesButton() { return $( '.ge-structuredTask-mwSaveDialog .oo-ui-processDialog-actions-primary' ); }
 
-	waitForLinkInspector() {
-		this.waitForDisplayedAndClickable( this.linkInspector );
+	async waitForLinkInspector() {
+		await this.waitForDisplayedAndClickable( this.linkInspector );
 	}
 
 	acceptSuggestion() {
-		this.clickButton( this.yesButton );
+		return this.clickButton( this.yesButton );
 	}
 
 	skipSuggestion() {
-		this.clickButton( this.nextButton );
+		return this.clickButton( this.nextButton );
 	}
 
 	rejectSuggestion() {
-		this.clickButton( this.noButton );
+		return this.clickButton( this.noButton );
 	}
 
 	closeRejectionDialog() {
-		this.clickButton( this.rejectionDialogDoneButton );
+		return this.clickButton( this.rejectionDialogDoneButton );
 	}
 
 	clickPublishChangesButton() {
-		this.clickButton( this.publishButton );
+		return this.clickButton( this.publishButton );
 	}
 
-	saveChangesToArticle() {
-		this.waitForDisplayedAndClickable( this.saveDialog );
-		this.clickButton( this.saveChangesButton );
+	async saveChangesToArticle() {
+		await this.waitForDisplayedAndClickable( this.saveDialog );
+		return this.clickButton( this.saveChangesButton );
 	}
 
-	clickButton( button ) {
-		this.waitForDisplayedAndClickable( button );
-		button.click();
+	async clickButton( button ) {
+		await this.waitForDisplayedAndClickable( button );
+		return button.click();
 	}
 
-	waitForDisplayedAndClickable( element ) {
-		element.waitForClickable( { timeout: 30000 } );
-		element.waitForDisplayed( { timeout: 30000 } );
+	async waitForDisplayedAndClickable( element ) {
+		await element.waitForClickable( { timeout: 30000 } );
+		await element.waitForDisplayed( { timeout: 30000 } );
 	}
 
 }
