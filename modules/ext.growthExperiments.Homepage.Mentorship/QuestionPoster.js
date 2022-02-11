@@ -95,6 +95,9 @@
 		ctaButton.on( 'click', function () {
 			routerInstance.navigate( '#' + questionRoute );
 		} );
+		// Open the dialog if the path is in the URL (for example, if the user reloads the page
+		// while the dialog is open)
+		routerInstance.checkRoute();
 	};
 	module.exports = attachButton;
 }() );
