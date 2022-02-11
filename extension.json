@@ -328,6 +328,13 @@
 			"mentordashboard",
 			"variant"
 		],
+		"ResourceLoaderExcludeUserOptions": [
+			"helppanel",
+			"homepage",
+			"mentordashboard",
+			"mentoruseroptions",
+			"variant"
+		],
 		"BeforeWelcomeCreation": [
 			"welcomeSurvey",
 			"variant"

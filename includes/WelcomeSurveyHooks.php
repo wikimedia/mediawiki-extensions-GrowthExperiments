@@ -63,7 +63,7 @@ class WelcomeSurveyHooks implements
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
 		if ( $this->isWelcomeSurveyEnabled() ) {
-			$preferences['welcomesurvey-responses'] = [
+			$preferences[WelcomeSurvey::SURVEY_PROP] = [
 				'type' => 'api',
 			];
 		}

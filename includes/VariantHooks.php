@@ -8,11 +8,13 @@ use IContextSource;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Hook\BeforeWelcomeCreationHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\User\UserOptionsManager;
 use RequestContext;
+use ResourceLoaderContext;
 use SpecialPage;
 
 /**
@@ -21,6 +23,7 @@ use SpecialPage;
  */
 class VariantHooks implements
 	GetPreferencesHook,
+	ResourceLoaderExcludeUserOptionsHook,
 	ResourceLoaderGetConfigVarsHook,
 	SpecialPage_initListHook,
 	LocalUserCreatedHook,
@@ -78,6 +81,16 @@ class VariantHooks implements
 		$preferences[self::GROWTH_CAMPAIGN] = [
 			'type' => 'api',
 		];
+	}
+
+	/** @inheritDoc */
+	public function onResourceLoaderExcludeUserOptions(
+		array &$keysToExclude,
+		ResourceLoaderContext $context
+	): void {
+		$keysToExclude = array_merge( $keysToExclude, [
+			self::GROWTH_CAMPAIGN,
+		] );
 	}
 
 	// Note: we intentionally do not make $wgGEHomepageDefaultVariant the default value in the
