@@ -27,7 +27,6 @@
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Última actualización por usuario desconocido $1 ([$3 diferencias]).",
 	"growthexperiments-edit-config-pretext": "Esta página te permite editar la configuración de las funciones del equipo [[:mw:Special:MyLanguage/Growth|Crecimiento]]. Editarás $1 con tu nombre. Puedes ver tus cambios en el historial de esa página.",
 	"growthexperiments-edit-config-pretext-banner": "También puedes mostrar un banner en la página principal para los recién llegados, para incluir anuncios sobre eventos importantes. Si quieres hacerlo, necesitas añadirlo a [[$1]] manualmente. Cualquier contenido añadido allí será mostrado en un banner amarillo en la parte superior de [[Special:Homepage|Especial:Homepage]].",
-	"growthexperiments-edit-config-pretext-unprivileged": "Este formulario permite a los usuarios con privilegios editar la configuración de [[:mw:Special:MyLanguage/Growth| Crecimiento]] características del equipo.",
 	"growthexperiments-edit-config-feedback-headline": "¿Tienes ideas o preguntas sobre este formulario?",
 	"growthexperiments-edit-config-feedback-cta": "Dejar comentarios",
 	"growthexperiments-edit-config-error-invalid-title": "La página de configuración no se configuró correctamente",
