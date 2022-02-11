@@ -423,12 +423,10 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 			return null;
 		}
 
-		// all uses of getCustomMentorIntroText() are escaped but phab seems to get that wrong
-		// @phan-suppress-next-line SecurityCheck-XSS
 		return wfMessage( 'quotation-marks' )
 			->inContentLanguage()
-			->rawParams( $this->language->truncateForVisual( $introText, self::INTRO_TEXT_LENGTH ) )
-			->text();
+			->params( $this->language->truncateForVisual( $introText, self::INTRO_TEXT_LENGTH ) )
+			->plain();
 	}
 
 	/**
