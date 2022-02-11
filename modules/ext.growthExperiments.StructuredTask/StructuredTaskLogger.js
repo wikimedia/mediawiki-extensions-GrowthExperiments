@@ -21,7 +21,6 @@ function StructuredTaskLogger( schema, streamName, config ) {
 	}
 	this.schema = schema;
 	this.streamName = streamName;
-	this.events = [];
 	this.config = config;
 }
 
@@ -45,7 +44,6 @@ StructuredTaskLogger.prototype.log = function ( action, data, metadataOverride )
 	if ( mw.eventLog ) {
 		mw.eventLog.submit( this.streamName, event );
 	}
-	this.events.push( event );
 };
 
 /**
@@ -62,15 +60,6 @@ StructuredTaskLogger.prototype.getMetadata = function () {
 		homepage_pageview_token: suggestedEditSession.clickId
 		/* eslint-enable camelcase */
 	} );
-};
-
-/**
- * Get events sent to mw.track by the logger. Exists for testing purposes.
- *
- * @return {Object[]}
- */
-StructuredTaskLogger.prototype.getEvents = function () {
-	return this.events;
 };
 
 module.exports = StructuredTaskLogger;

@@ -1614,6 +1614,7 @@
 			"modules/utils/IconUtils.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 			"modules/ext.growthExperiments.Help/HelpPanelLogger.js",
+			"tests/qunit/ext.growthExperiments.StructuredTask/StructuredTaskLogger.test.js",
 			{
 				"name": "modules/ext.growthExperiments.Help/data.json",
 				"file": "tests/qunit/ext.growthExperiments.Help/configData.json"

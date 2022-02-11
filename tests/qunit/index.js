@@ -10,6 +10,7 @@ require( './ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.
 require( './ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/ErrorCardWidget.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.test.js' );
+require( './ext.growthExperiments.StructuredTask/StructuredTaskLogger.test.js' );
 require( './ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.test.js' );
 require( './ext.growthExperiments.StructuredTask/addimage/AddImageUtils.test.js' );
 require( './ext.growthExperiments.PostEdit/PostEditPanel.test.js' );

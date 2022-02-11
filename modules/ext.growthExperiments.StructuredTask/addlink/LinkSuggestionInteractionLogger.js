@@ -17,7 +17,6 @@
 	 * @constructor
 	 */
 	function LinkSuggestionInteractionLogger( config ) {
-		this.events = [];
 		this.config = config;
 		LinkSuggestionInteractionLogger.super.call( this, schema, streamName, config );
 	}
