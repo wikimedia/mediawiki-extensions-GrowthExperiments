@@ -353,13 +353,15 @@ return [
 		MediaWikiServices $services
 	): MenteeOverviewDataProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
-		return new UncachedMenteeOverviewDataProvider(
+		$provider = new UncachedMenteeOverviewDataProvider(
 			$geServices->getMentorStore(),
 			$services->getChangeTagDefStore(),
 			$services->getActorMigration(),
 			$services->getUserIdentityLookup(),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA, 'vslow' )
 		);
+		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $provider;
 	},
 
 	'GrowthExperimentsMenteeOverviewDataUpdater' => static function (

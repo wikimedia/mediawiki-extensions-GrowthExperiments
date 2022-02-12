@@ -4,14 +4,18 @@ namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use ActorMigration;
 use ChangeTags;
+use ExtensionRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Extension\CentralAuth\CentralAuthServices;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -22,6 +26,8 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * scripts or jobs.
  */
 class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
+	use LoggerAwareTrait;
+
 	/** @var int Number of seconds in a day */
 	private const SECONDS_DAY = 86400;
 
@@ -65,6 +71,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		UserIdentityLookup $userIdentityLookup,
 		IDatabase $mainDbr
 	) {
+		$this->setLogger( new NullLogger() );
+
 		$this->mentorStore = $mentorStore;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->actorMigration = $actorMigration;
@@ -109,12 +117,59 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	}
 
 	/**
+	 * Return local user IDs of all globally locked mentees
+	 *
+	 * If CentralAuth is not installed, this returns an empty array (as
+	 * locking is not possible in that case).
+	 *
+	 * If CentralAuth is available, CentralAuthServices::getGlobalUserSelectQueryBuilderFactory
+	 * is used to get locked mentees only. The select query builder does not impose any explicit
+	 * limit on number of users that can be processed at once. UncachedMenteeOverviewDataProvider
+	 * runs certain queries similar to the CentralAuth extension, which run fine with the current
+	 * number of mentees (as of March 2022, the upper bound is 42,716).
+	 *
+	 * @param UserIdentity[] $mentees
+	 * @return int[]
+	 */
+	private function getLockedMenteesIds( array $mentees ): array {
+		if (
+			!ExtensionRegistry::getInstance()->isLoaded( 'CentralAuth' ) ||
+			$mentees === []
+		) {
+			return [];
+		}
+
+		if (
+			!method_exists( CentralAuthServices::class, 'getGlobalUserSelectQueryBuilderFactory' )
+		) {
+			$this->logger->error(
+				'Old version of CentralAuth found, CentralAuthServices::getGlobalUserSelectQueryBuilderFactory' .
+				' was not found'
+			);
+			return [];
+		}
+
+		$userIdentities = CentralAuthServices::getGlobalUserSelectQueryBuilderFactory()
+			->newGlobalUserSelectQueryBuilder()
+			->whereUserNames( array_map( static function ( UserIdentity $user ) {
+				return $user->getName();
+			}, $mentees ) )
+			->whereLocked( true )
+			->fetchLocalUserIdentitites();
+
+		return array_map( static function ( UserIdentity $user ) {
+			return $user->getId();
+		}, iterator_to_array( $userIdentities ) );
+	}
+
+	/**
 	 * Filter mentees according to business rules
 	 *
 	 * Only mentees that meet all of the following conditions
 	 * should be considered:
 	 *  * user is not a bot
 	 *  * user is not indefinitely blocked
+	 *  * user is not globally locked (via CentralAuth's implementation)
 	 *  * user registered less than 2 weeks ago OR made at least one edit in the last 6 months
 	 *
 	 * @param UserIdentity $mentor
@@ -124,7 +179,12 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$startTime = microtime( true );
 
 		$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
-		if ( $mentees === [] ) {
+		$menteeIds = array_diff(
+			$this->getIds( $mentees ),
+			$this->getLockedMenteesIds( $mentees )
+		);
+
+		if ( $menteeIds === [] ) {
 			return [];
 		}
 
@@ -136,7 +196,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			],
 			[
 				// filter to mentees only
-				'user_id' => $this->getIds( $mentees ),
+				'user_id' => $menteeIds,
 
 				// ensure mentees have homepage enabled
 				'user_id IN (' . $this->mainDbr->selectSQLText(
