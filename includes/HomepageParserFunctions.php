@@ -38,6 +38,6 @@ class HomepageParserFunctions {
 			return '';
 		}
 
-		return $mentor->getMentorUser()->getName();
+		return $mentor->getUserIdentity()->getName();
 	}
 }

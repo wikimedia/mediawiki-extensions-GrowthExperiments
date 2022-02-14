@@ -183,7 +183,7 @@ class Mentorship extends BaseModule {
 		$mentor = $this->getMentor();
 		$effectiveMentor = $this->mentorManager->getEffectiveMentorForUserSafe(
 			$this->getUser()
-		)->getMentorUser();
+		)->getUserIdentity();
 		$genderCache = MediaWikiServices::getInstance()->getGenderCache();
 		return [
 			'GEHomepageMentorshipMentorName' => $mentor->getName(),
@@ -322,7 +322,7 @@ class Mentorship extends BaseModule {
 		if ( !$this->mentor ) {
 			$mentor = $this->mentorManager->getMentorForUserSafe( $this->getContext()->getUser() );
 			if ( $mentor ) {
-				$this->mentor = $mentor->getMentorUser();
+				$this->mentor = $mentor->getUserIdentity();
 			} else {
 				return false;
 			}

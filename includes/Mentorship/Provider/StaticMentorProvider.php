@@ -47,7 +47,7 @@ class StaticMentorProvider extends MentorProvider {
 	): Mentor {
 		$mentors = array_merge( $this->autoMentors, $this->manualMentors );
 		foreach ( $mentors as $mentor ) {
-			if ( $mentor->getMentorUser()->equals( $mentorUser ) ) {
+			if ( $mentor->getUserIdentity()->equals( $mentorUser ) ) {
 				return $mentor;
 			}
 		}
@@ -59,7 +59,7 @@ class StaticMentorProvider extends MentorProvider {
 	 */
 	public function getAutoAssignedMentors(): array {
 		return array_unique( array_values( array_map( static function ( Mentor $mentor ) {
-			return $mentor->getMentorUser()->getName();
+			return $mentor->getUserIdentity()->getName();
 		}, $this->autoMentors ) ) );
 	}
 
@@ -75,7 +75,7 @@ class StaticMentorProvider extends MentorProvider {
 	 */
 	public function getManuallyAssignedMentors(): array {
 		return array_unique( array_values( array_map( static function ( Mentor $mentor ) {
-			return $mentor->getMentorUser()->getName();
+			return $mentor->getUserIdentity()->getName();
 		}, $this->manualMentors ) ) );
 	}
 }

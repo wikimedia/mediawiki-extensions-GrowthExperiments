@@ -70,7 +70,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$mentorManager = $this->getMentorManager();
 
 		$mentor = $mentorManager->getMentorForUser( $this->getTestUser()->getUser() );
-		$this->assertEquals( $sysop->getId(), $mentor->getMentorUser()->getId() );
+		$this->assertEquals( $sysop->getId(), $mentor->getUserIdentity()->getId() );
 	}
 
 	/**
@@ -89,7 +89,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		] );
 
 		$mentor = $mentorManager->getMentorForUser( $user );
-		$this->assertEquals( $sysop->getName(), $mentor->getMentorUser()->getName() );
+		$this->assertEquals( $sysop->getName(), $mentor->getUserIdentity()->getName() );
 	}
 
 	/**
@@ -124,7 +124,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$mentorManager = $this->getMentorManager();
 
 		$mentor = $mentorManager->getMentorForUser( $userMentee );
-		$this->assertEquals( $mentor->getMentorUser()->getName(), $userMentor->getName() );
+		$this->assertEquals( $mentor->getUserIdentity()->getName(), $userMentor->getName() );
 	}
 
 	/**

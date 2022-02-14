@@ -238,19 +238,19 @@ class HelpPanelHooks implements
 			return [];
 		}
 		return [
-			'name' => $mentor->getMentorUser()->getName(),
+			'name' => $mentor->getUserIdentity()->getName(),
 			'gender' => $genderCache->getGenderOf(
-				$mentor->getMentorUser(),
+				$mentor->getUserIdentity(),
 				__METHOD__
 			),
-			'effectiveName' => $effectiveMentor->getMentorUser()->getName(),
+			'effectiveName' => $effectiveMentor->getUserIdentity()->getName(),
 			'effectiveGender' => $genderCache->getGenderOf(
-				$effectiveMentor->getMentorUser(),
+				$effectiveMentor->getUserIdentity(),
 				__METHOD__
 			),
 			'editCount' => MediaWikiServices::getInstance()->getUserEditTracker()
-				->getUserEditCount( $mentor->getMentorUser() ),
-			'lastActive' => Mentorship::getMentorLastActive( $mentor->getMentorUser(), $user, $localizer ),
+				->getUserEditCount( $mentor->getUserIdentity() ),
+			'lastActive' => Mentorship::getMentorLastActive( $mentor->getUserIdentity(), $user, $localizer ),
 		];
 	}
 

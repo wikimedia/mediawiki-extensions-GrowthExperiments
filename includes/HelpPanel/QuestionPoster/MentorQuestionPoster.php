@@ -76,7 +76,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 */
 	protected function getDirectTargetTitle() {
 		$mentor = $this->mentorManager->getEffectiveMentorForUser( $this->getContext()->getUser() );
-		return User::newFromIdentity( $mentor->getMentorUser() )->getTalkPage();
+		return User::newFromIdentity( $mentor->getUserIdentity() )->getTalkPage();
 	}
 
 	/**

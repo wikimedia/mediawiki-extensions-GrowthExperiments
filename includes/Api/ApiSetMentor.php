@@ -74,7 +74,7 @@ class ApiSetMentor extends ApiBase {
 			'status' => 'ok',
 			'mentee' => $mentee,
 			'newMentor' => $mentor,
-			'oldMentor' => $oldMentorObj instanceof Mentor ? $oldMentorObj->getMentorUser() : false,
+			'oldMentor' => $oldMentorObj instanceof Mentor ? $oldMentorObj->getUserIdentity() : false,
 		] );
 	}
 

@@ -70,7 +70,7 @@ class ChangeMentor {
 		$this->logPager = $logPager;
 		$this->mentorStore = $mentorStore;
 		$this->userFactory = $userFactory;
-		$this->mentor = $mentor ? $mentor->getMentorUser() : null;
+		$this->mentor = $mentor ? $mentor->getUserIdentity() : null;
 	}
 
 	/**

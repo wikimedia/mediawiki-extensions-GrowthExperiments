@@ -84,7 +84,7 @@ class StaticMentorManager extends MentorManager {
 		?UserIdentity $menteeUser = null
 	): Mentor {
 		foreach ( $this->mentors as $mentee => $mentor ) {
-			if ( $mentor->getMentorUser()->equals( $mentorUser ) ) {
+			if ( $mentor->getUserIdentity()->equals( $mentorUser ) ) {
 				return $mentor;
 			}
 		}
@@ -102,7 +102,7 @@ class StaticMentorManager extends MentorManager {
 		array $excluded = []
 	): UserIdentity {
 		$autoAssignedMentors = array_values( $this->mentors );
-		return $autoAssignedMentors[rand( 0, count( $autoAssignedMentors ) - 1 )]->getMentorUser();
+		return $autoAssignedMentors[rand( 0, count( $autoAssignedMentors ) - 1 )]->getUserIdentity();
 	}
 
 	/** @inheritDoc */

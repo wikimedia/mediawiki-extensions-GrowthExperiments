@@ -189,7 +189,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$primaryMentor = $this->getMentorForUser( $menteeUser, MentorStore::ROLE_PRIMARY );
 		if (
 			$this->mentorStatusManager
-				->getMentorStatus( $primaryMentor->getMentorUser() ) === MentorStatusManager::STATUS_ACTIVE
+				->getMentorStatus( $primaryMentor->getUserIdentity() ) === MentorStatusManager::STATUS_ACTIVE
 		) {
 			return $primaryMentor;
 		} else {
@@ -206,7 +206,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			return null;
 		}
 
-		if ( $this->mentorStatusManager->getMentorStatus( $primaryMentor->getMentorUser() ) ===
+		if ( $this->mentorStatusManager->getMentorStatus( $primaryMentor->getUserIdentity() ) ===
 			MentorStatusManager::STATUS_ACTIVE ) {
 			return $primaryMentor;
 		} else {
