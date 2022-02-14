@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments;
 
+use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -30,7 +31,13 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				$this->getUserMock( 'Mentee', 1 ),
 				$this->getUserMock( 'Performer', 2 ),
 				new NullLogger(),
-				new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/', '' ),
+				new Mentor(
+					$this->getUserMock( 'OldMentor', 3 ),
+					'o/',
+					'',
+					true,
+					MentorWeightManager::WEIGHT_NORMAL
+				),
 				$this->getLogPagerMock(),
 				$this->getMentorStoreMock(),
 				$this->getUserFactoryMock()
@@ -51,7 +58,13 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/', '' ),
+			new Mentor(
+				$this->getUserMock( 'OldMentor', 3 ),
+				'o/',
+				'',
+				true,
+				MentorWeightManager::WEIGHT_NORMAL
+			),
 			$logPagerMock,
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()
@@ -67,7 +80,13 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 0 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/', '' ),
+			new Mentor(
+				$this->getUserMock( 'OldMentor', 3 ),
+				'o/',
+				true,
+				'',
+				MentorWeightManager::WEIGHT_NORMAL
+			),
 			$this->getLogPagerMock(),
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()
@@ -91,7 +110,13 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/', '' ),
+			new Mentor(
+				$this->getUserMock( 'OldMentor', 3 ),
+				'o/',
+				'',
+				true,
+				MentorWeightManager::WEIGHT_NORMAL
+			),
 			$this->getLogPagerMock(),
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()
@@ -111,7 +136,13 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/', '' ),
+			new Mentor(
+				$this->getUserMock( 'SameMentor', 3 ),
+				'o/',
+				'',
+				true,
+				MentorWeightManager::WEIGHT_NORMAL
+			),
 			$this->getLogPagerMock(),
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()
@@ -132,7 +163,13 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/', '' ),
+			new Mentor(
+				$this->getUserMock( 'SameMentor', 3 ),
+				'o/',
+				'',
+				true,
+				MentorWeightManager::WEIGHT_NORMAL
+			),
 			$this->getLogPagerMock(),
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()

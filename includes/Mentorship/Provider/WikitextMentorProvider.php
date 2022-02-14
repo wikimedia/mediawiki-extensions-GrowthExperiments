@@ -110,7 +110,9 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 		return new Mentor(
 			$mentorUser,
 			$this->getCustomMentorIntroText( $mentorUser ),
-			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ?? $mentorUser )
+			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ?? $mentorUser ),
+			in_array( $mentorUser->getName(), $this->getAutoAssignedMentors() ),
+			$this->mentorWeightManager->getWeightForMentor( $mentorUser )
 		);
 	}
 
