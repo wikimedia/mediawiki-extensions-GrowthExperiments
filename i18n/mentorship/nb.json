@@ -39,7 +39,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Vis $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 av $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Fadderbarndata utilgjengelig",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Du har kanskje ingen du er fadder for ennå. Dataene oppdateres daglig.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Du har kanskje ingen du er fadder for ennå. Dataene oppdateres hver tredje time.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Ingen fadderbarn funnet",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Endre filtrene for å finne fadderbarn.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressurser",
@@ -84,8 +84,8 @@
 	"growthexperiments-notification-body-mentee-claimed": "Årsak: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Hva er «Gjør krav på fadderbarn»?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Antall fadderbarn tildelt meg",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Halvparten av gjennomsnittet",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Rundt halvparten av gjennomsnittet",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Gjennomsnittet (standard)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Dobbelt av gjennomsnittet",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Rundt det dobbelte av gjennomsnittet",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Byrden {{GENDER:|din}} ble endret til «$1»."
 }

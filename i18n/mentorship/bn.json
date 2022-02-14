@@ -69,6 +69,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "আপনার অবস্থা \"নিষ্ক্রিয়\" হিসেবে পরিবর্তিত হয়েছে।",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "পরামর্শগ্রহীতাদের জন্য আপনার বার্তা",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "পরামর্শগ্রহীতা দাবিকরণ",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "আপনি একজন পরামর্শগ্রহীতার মেন্টর হিসেবে নিজেকে নির্বাচন করতে পারবেন। সাধারণত সম্পাদনা প্রশিক্ষণমূলক কার্যক্রমের সময় এটা করা যেন প্রশিক্ষক উইকিতে এবং উইকির বাইরেও নবাগতদের জন্য মেন্টর হিসেবে থাকতে পারেন।",
 	"growthexperiments-rcfilters-mentorship-title": "মেন্টরশিপ",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|আপনার}} চিহ্নিত পরামর্শগ্রহীতা",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "{{GENDER:|আপনি}} আপনার ড্যাশবোর্ডে সেই সকল পরামর্শগ্রহীতাদের চিহ্নিত করেছেন যাদের মেন্টর {{GENDER:|আপনি}} ছিলেন",
@@ -86,5 +87,14 @@
 	"growthexperiments-notification-header-mentee-claimed": "$1 আপনার {{GENDER:$3|পরামর্শগ্রহীতা}} $3-কে {{GENDER:$2|দাবি করেছেন}}।",
 	"growthexperiments-notification-body-mentee-claimed": "কারণ: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"পরামর্শগ্রহীতা দাবিকরণ\" কী?",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "আমার সঙ্গে নিযুক্ত পরামর্শগ্রহীতার সংখ্যা"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "আমার সঙ্গে নিযুক্ত পরামর্শগ্রহীতার সংখ্যা",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "সাধারণ গড়ের অর্ধেক",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "সাধারণ গড় (পূর্বনির্ধারিত)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "সাধারণ গড়ের দ্বিগুণ",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|আপনার}} কাজের ভার \"$1\"-এ পরিবর্তিত হয়েছে।",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "নতুন অ্যাকাউন্ট তৈরির পর এলোমেলোভাবে মেন্টর যুক্ত করা হয়। আপনি কতজন পরামর্শগ্রহীতা আপনার সাথে যুক্ত হবে তা নিয়ন্ত্রণ করতে পারবেন। তবে কিছু নবাগত অন্যদের চেয়ে নিয়মিত প্রশ্ন করতে পারেন।",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "\"সাধারণ গড়\" দ্বারা শুরু করাটা সুপারিশ করা হয়। ধীরে ধীরে আপনার সহযোগিতার ক্ষমতা বাড়াতে বা কমাতে পারবেন।",
+	"growthexperiments-mentor-list-missing-key": "<code>$1</code> চাবিটি পাওয়া যাচ্ছে না",
+	"growthexperiments-mentor-list-datatype-mismatch": "ধারণা করা হচ্ছে <code>$1</code> এর বদলে <code>$2</code> হবে, তবে হয়েছে <code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "মেন্টরের সংজ্ঞায় একটি অপ্রত্যাশিত চাবি <code>$1</code> রয়েছে।"
 }

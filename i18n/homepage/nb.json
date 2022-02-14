@@ -425,7 +425,7 @@
 	"growthexperiments-addimage-viewer-close-button": "Lukk",
 	"growthexperiments-addimage-onboarding-content-intro-title": "Bilder hjelper leserne å lære, men mange artikler mangler bilder.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "{{GENDER:|Du}} vil avgjøre hvorvidt et foreslått bilde skal legges til i en Wikipedia-artikkel.",
-	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Forslagene er maskingenererte, og {{GENDER:$1|}} du vil avgjøre hvorvidt de skal godtas eller avslås.",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Forslagene er maskingenererte, og {{GENDER:|du}} vil avgjøre hvorvidt de skal godtas eller avslås.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "Bildene kommer fra Wikimedia Commons, en samling med fritt lisensierte bilder som brukes av Wikipedia.",
 	"growthexperiments-addimage-onboarding-content-imagedetails-title": "Se på det foreslåtte bildet",
 	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1": "Bruk filnavnet, beskrivelsen og årsaken til at det ble foreslått til å hjelpe {{GENDER:|deg}} å avgjøre hvorvidt det skal legges til i artikkelen.",
