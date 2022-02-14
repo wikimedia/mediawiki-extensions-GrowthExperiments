@@ -46,6 +46,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 	 * @param string|null $introText
 	 * @dataProvider provideGetIntroText
 	 * @covers ::getIntroText
+	 * @covers ::hasCustomIntroText
 	 */
 	public function testGetIntroText( ?string $introText ) {
 		$mentor = new Mentor(
@@ -58,8 +59,10 @@ class MentorTest extends MediaWikiUnitTestCase {
 
 		if ( $introText === null ) {
 			$this->assertEquals( 'foo', $mentor->getIntroText() );
+			$this->assertFalse( $mentor->hasCustomIntroText() );
 		} else {
 			$this->assertEquals( $introText, $mentor->getIntroText() );
+			$this->assertTrue( $mentor->hasCustomIntroText() );
 		}
 	}
 
@@ -115,5 +118,65 @@ class MentorTest extends MediaWikiUnitTestCase {
 			[ MentorWeightManager::WEIGHT_LOW ],
 			[ MentorWeightManager::WEIGHT_HIGH ],
 		];
+	}
+
+	/**
+	 * @covers ::getIntroText
+	 * @covers ::hasCustomIntroText
+	 * @covers ::setIntroText
+	 */
+	public function testSetIntroText() {
+		$mentor = new Mentor(
+			new UserIdentityValue( 123, 'Mentor' ),
+			null,
+			'foo',
+			true,
+			MentorWeightManager::WEIGHT_NORMAL
+		);
+
+		$this->assertEquals( 'foo', $mentor->getIntroText() );
+		$this->assertFalse( $mentor->hasCustomIntroText() );
+
+		$mentor->setIntroText( 'baz' );
+		$this->assertEquals( 'baz', $mentor->getIntroText() );
+		$this->assertTrue( $mentor->hasCustomIntroText() );
+	}
+
+	/**
+	 * @covers ::getAutoAssigned
+	 * @covers ::setAutoAssigned
+	 */
+	public function testSetAutoAssigned() {
+		$mentor = new Mentor(
+			new UserIdentityValue( 123, 'Mentor' ),
+			null,
+			'foo',
+			true,
+			MentorWeightManager::WEIGHT_NORMAL
+		);
+
+		$this->assertTrue( $mentor->getAutoAssigned() );
+
+		$mentor->setAutoAssigned( false );
+		$this->assertFalse( $mentor->getAutoAssigned() );
+	}
+
+	/**
+	 * @covers ::getWeight
+	 * @covers ::setWeight
+	 */
+	public function testSetWeight() {
+		$mentor = new Mentor(
+			new UserIdentityValue( 123, 'Mentor' ),
+			null,
+			'foo',
+			true,
+			MentorWeightManager::WEIGHT_NORMAL
+		);
+
+		$this->assertEquals( MentorWeightManager::WEIGHT_NORMAL, $mentor->getWeight() );
+
+		$mentor->setWeight( MentorWeightManager::WEIGHT_LOW );
+		$this->assertEquals( MentorWeightManager::WEIGHT_LOW, $mentor->getWeight() );
 	}
 }
