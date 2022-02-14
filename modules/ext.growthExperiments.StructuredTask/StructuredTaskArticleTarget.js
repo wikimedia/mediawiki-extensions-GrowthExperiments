@@ -181,20 +181,14 @@ StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMod
 };
 
 /**
- * If the user has started reviewing suggestions, show a confirmation dialog
- * then switch only if the user confirms leaving with unsaved changes.
- * If the user hasn't started, switch to regular VE right away.
+ * Show a confirmation dialog then switch only if the user confirms leaving with unsaved changes.
  */
 StructuredTaskArticleTarget.prototype.maybeSwitchToVisualWithSuggestions = function () {
-	if ( this.edited ) {
-		this.confirmSwitchEditMode( 'visual' ).then( function ( shouldSwitch ) {
-			if ( shouldSwitch ) {
-				this.switchToVisualWithSuggestions();
-			}
-		}.bind( this ) );
-	} else {
-		this.switchToVisualWithSuggestions();
-	}
+	this.confirmSwitchEditMode( 'visual' ).then( function ( shouldSwitch ) {
+		if ( shouldSwitch ) {
+			this.switchToVisualWithSuggestions();
+		}
+	}.bind( this ) );
 };
 
 /**
@@ -284,6 +278,58 @@ StructuredTaskArticleTarget.prototype.saveErrorNewUser = function ( username ) {
 	// HACK: Resolve in order to stop the ProcessDialog's loading state instead of rejecting
 	// with an error in order to show a custom message instead
 	this.saveDeferred.resolve();
+};
+
+/**
+ * Show a dialog prompting the user to confirm whether to leave suggestions mode
+ *
+ * @return {jQuery.Promise} Promise that resolves when the user has confirmed or cancelled
+ */
+StructuredTaskArticleTarget.prototype.confirmLeavingSuggestionsMode = function () {
+	var promise = $.Deferred();
+	var abandonEditDialogPromise = this.getSurface().dialogs.openWindow( 'abandonedit' ),
+		// eslint-disable-next-line camelcase
+		metadataOverride = { active_interface: 'abandonedit_dialog' };
+
+	abandonEditDialogPromise.opening.then( function () {
+		this.logger.log( 'impression', '', metadataOverride );
+	}.bind( this ) );
+
+	abandonEditDialogPromise.closed.then( function ( data ) {
+		if ( data && data.action === 'discard' ) {
+			this.logger.log( 'discard', '', metadataOverride );
+			return promise.resolve();
+		}
+		this.logger.log( 'keep', '', metadataOverride );
+		return promise.reject();
+	}.bind( this ) );
+	return promise;
+};
+
+/**
+ * Exit the editing mode without showing any prompts
+ * @abstract
+ *
+ * @param {string} [trackMechanism] Abort mechanism (passed from tryTeardown)
+ * @return {jQuery.Promise} Promise that resolves when the surface has been torn down
+ */
+StructuredTaskArticleTarget.prototype.teardownWithoutPrompt = function ( trackMechanism ) {
+	throw new Error(
+		'teardownWithoutPrompt must be implemented by subclass. trackMechanism: ' + trackMechanism
+	);
+};
+
+/** @inheritDoc **/
+StructuredTaskArticleTarget.prototype.tryTeardown = function ( noPrompt, trackMechanism ) {
+	if ( this.edited ) {
+		return this.constructor.parent.super.prototype.tryTeardown.call(
+			this, noPrompt, trackMechanism
+		);
+	}
+	// Show a confirmation when the user hasn't made any edits (T300582)
+	return this.confirmLeavingSuggestionsMode().then( function () {
+		return this.teardownWithoutPrompt( trackMechanism );
+	}.bind( this ) );
 };
 
 module.exports = StructuredTaskArticleTarget;

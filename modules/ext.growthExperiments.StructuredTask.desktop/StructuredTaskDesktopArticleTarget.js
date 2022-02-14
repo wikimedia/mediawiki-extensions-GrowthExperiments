@@ -77,4 +77,9 @@ StructuredTaskDesktopArticleTarget.prototype.updateHistory = function () {
 	Utils.removeQueryParam( mw.Uri(), 'action' );
 };
 
+/** @override **/
+StructuredTaskDesktopArticleTarget.prototype.teardownWithoutPrompt = function () {
+	return this.teardown();
+};
+
 module.exports = StructuredTaskDesktopArticleTarget;
