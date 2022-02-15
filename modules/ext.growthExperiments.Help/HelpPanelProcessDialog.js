@@ -601,7 +601,10 @@
 				} ),
 			this.questionIncludeFieldLayout
 		] );
-		this.askhelpPanel.$element.append( this.askhelpContent.$element );
+		this.askhelpPanel.$element.append( [
+			this.askhelpContent.$element,
+			this.getCopyrightWarning()
+		] );
 
 		this.questionCompleteContent = new OO.ui.FieldsetLayout( {
 			label: new OO.ui.HorizontalLayout( {
@@ -1102,6 +1105,27 @@
 		if ( shouldDefaultToSuggestedEdits( this.suggestedEditSession ) ) {
 			return 'suggested-edits';
 		}
+	};
+
+	/**
+	 * Get the copyright warning element
+	 *
+	 * @return {jQuery|undefined}
+	 */
+	HelpPanelProcessDialog.prototype.getCopyrightWarning = function () {
+		var message = mw.message( 'wikimedia-copyrightwarning' );
+		// The message only exists if WikimediaMessages extension is installed.
+		if ( !message.exists() ) {
+			return;
+		}
+		return $( '<div>' )
+			.addClass( [
+				'mw-ge-askHelpPanel-copyright',
+				OO.ui.isMobile() ?
+					'mw-ge-askHelpPanel-copyright-mobile' :
+					'mw-ge-askHelpPanel-copyright-desktop'
+			] )
+			.append( message.parse() );
 	};
 
 	module.exports = HelpPanelProcessDialog;

@@ -1235,7 +1235,8 @@
 				"growthexperiments-homepage-mentorship-questionreview-header-away",
 				"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text",
 				"growthexperiments-homepage-mentorship-confirmation-text",
-				"growthexperiments-homepage-mentorship-view-question-text"
+				"growthexperiments-homepage-mentorship-view-question-text",
+				"wikimedia-copyrightwarning"
 			],
 			"targets": [
 				"desktop",
