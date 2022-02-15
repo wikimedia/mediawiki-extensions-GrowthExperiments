@@ -102,7 +102,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "わかりました",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "記事の編集<strong>$1</strong>{{PLURAL:$1|回|回}}",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "編集<strong>$1</strong>{{PLURAL:$1|回|回}}",
-	"growthexperiments-homepage-impact-mobilebody-pageviews": "最近の編集以降の閲覧回数を見る（直近60日間）：",
+	"growthexperiments-homepage-impact-mobilebody-pageviews": "最近の編集以降の閲覧回数を見る (直近60日間):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "編集した記事の閲覧回数をモニターします",
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "これまでに0回の編集",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:$1|あなた}}の興味が強いトピックを編集して、フリーの知識を世界に広めるのを手伝ってください。",
