@@ -15,6 +15,8 @@ QUnit.module( 'ext.growthExperiments.StructuredTask/StructuredTaskLogger.js', QU
 
 QUnit.test( 'should log events', function ( assert ) {
 	this.sandbox.stub( mw.eventLog, 'submit' );
+	mw.config.set( 'wgArticleId', 0 );
+
 	const logger = new StructuredTaskLogger( 'analytics/schema', 'some.stream', {} );
 	logger.log( 'action_name', 'data', {
 		/* eslint-disable camelcase */
