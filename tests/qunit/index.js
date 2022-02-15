@@ -7,6 +7,7 @@ require( './ext.growthExperiments.Homepage.Logger/index.test.js' );
 require( './ext.growthExperiments.Help/HelpPanelLogger.test.js' );
 require( './ext.growthExperiments.Help/HelpPanelProcessDialog.test.js' );
 require( './ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.test.js' );
+require( './ext.growthExperiments.Help/AskHelpPanel.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/ErrorCardWidget.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.test.js' );
