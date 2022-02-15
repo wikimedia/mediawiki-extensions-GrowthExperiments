@@ -213,17 +213,6 @@ class SuggestedEdits extends BaseModule {
 		}
 	}
 
-	/** @inheritDoc */
-	protected function getMobileSummaryHeader() {
-		$tasks = $this->getTaskSet();
-		$hasValidTasks = $tasks instanceof TaskSet && $tasks->count() > 0;
-		$headerCssClass = self::BASE_CSS_CLASS . '-header-text';
-
-		return $hasValidTasks ?
-			Html::rawElement( 'div', [ 'class' => $headerCssClass ],  $this->getTasksPaginationText() ) :
-			Html::element( 'div', [ 'class' => $headerCssClass ],  $this->getHeaderText() ) . $this->getNavIcon();
-	}
-
 	/**
 	 * Return the pagination text in the form "1 of 30" being 30 the total number of tasks shown
 	 * @return string
@@ -508,20 +497,23 @@ class SuggestedEdits extends BaseModule {
 		$showTaskPreview = $tasks instanceof TaskSet && $tasks->count() > 0;
 
 		if ( $showTaskPreview ) {
-			$this->setShouldWrapModuleWithLink( false );
 			$button = new ButtonWidget( [
 				'label' => $this->getContext()->msg(
 					'growthexperiments-homepage-suggestededits-mobilesummary-footer-button' )->text(),
 				'classes' => [ 'suggested-edits-preview-cta-button' ],
 				'flags' => [ 'primary', 'progressive' ],
-				'href' => $this->getPageURL() . '/' . $this->getName()
-			] );
-			$button->setAttributes( [
-				'data-overlay-route' => $this->getModuleRoute()
+				// Avoid nesting links, browsers will break markup
+				'button' => new Tag( 'span' ),
 			] );
 			$centeredButton = Html::rawElement( 'div', [ 'class' => 'suggested-edits-preview-footer' ], $button );
+			$subheader = Html::rawElement(
+				'div',
+				[ 'class' => 'suggested-edits-preview-pager' ],
+				$this->getTasksPaginationText()
+			);
+
 			return Html::rawElement( 'div', [ 'class' => 'suggested-edits-main-with-preview' ],
-				$this->getTaskCard() . $centeredButton );
+				$subheader . $this->getTaskCard() . $centeredButton );
 		} else {
 			// For some reason phan thinks $siteEditsPerDay and/or $metricNumber get double-escaped,
 			// but they are escaped just the right amount.
@@ -735,19 +727,10 @@ class SuggestedEdits extends BaseModule {
 		$cardTextContainer = Html::rawElement( 'div',
 			[ 'class' => 'mw-ge-small-task-card-text-container' ],
 			$title . $description . $glue . $cardMetadataContainer );
-		$basePageURL = $this->getPageURL();
-		$articleID = $this->titleFactory->newFromLinkTarget( $task->getTitle() )->getArticleID();
-		$query = http_build_query( [
-			'gesuggestededit' => '1',
-			'getasktype' => $taskTypeId,
-			'geclickid' => $this->getClickId(),
-			'genewcomertasktoken' => $task->getToken()
-		] );
-		return Html::rawElement( 'a',
+		return Html::rawElement( 'div',
 			// only called for mobile views
 			[ 'class' => 'mw-ge-small-task-card mw-ge-small-task-card-mobile '
-				. "mw-ge-small-task-card mw-ge-tasktype-$taskTypeId",
-				'href' => $basePageURL . '/newcomertask/' . $articleID . '?' . $query
+				. "mw-ge-small-task-card mw-ge-tasktype-$taskTypeId"
 			],
 		$image . $cardTextContainer );
 	}
