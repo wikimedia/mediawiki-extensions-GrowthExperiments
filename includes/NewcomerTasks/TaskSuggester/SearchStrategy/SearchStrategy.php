@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\PseudoOresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use Wikimedia\Assert\Assert;
@@ -55,6 +56,9 @@ class SearchStrategy {
 					$topicTerm = $this->getOresBasedTopicTerm( [ $topic ] );
 				} elseif ( $topic instanceof MorelikeBasedTopic ) {
 					$topicTerm = $this->getMorelikeBasedTopicTerm( [ $topic ] );
+				} elseif ( $topic instanceof PseudoOresBasedTopic ) {
+					// FIXME T301028 remove when campaign is done
+					$topicTerm = 'growtharticletopic:' . $topic->getId();
 				}
 				$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
 				$excludedPageIdTerm = $excludePageIds ? $this->getExcludedPageIdTerm( $excludePageIds ) : null;
@@ -81,8 +85,9 @@ class SearchStrategy {
 	 */
 	protected function validateParams( array $taskTypes, array $topics ) {
 		Assert::parameterElementType( TaskType::class, $taskTypes, '$taskTypes' );
-		Assert::parameterElementType( OresBasedTopic::class . '|' . MorelikeBasedTopic::class,
-			$topics, '$topics' );
+		// FIXME T301028 remove PseudoOresBasedTopic when campaign is done
+		Assert::parameterElementType( [ OresBasedTopic::class,  MorelikeBasedTopic::class,
+			PseudoOresBasedTopic::class ], $topics, '$topics' );
 	}
 
 	/**

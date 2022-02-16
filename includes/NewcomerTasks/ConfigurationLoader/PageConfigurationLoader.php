@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\PseudoOresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
@@ -38,6 +39,12 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		self::CONFIGURATION_TYPE_ORES,
 		self::CONFIGURATION_TYPE_MORELIKE,
 	];
+
+	// FIXME T301030 remove when campaign is done.
+	// FIXME lazy unregistered feature flag. T301029 will remove this and either make the
+	//   custom topic unconditional, or make it conditional on user settings.
+	/** @var bool */
+	public $useArgentinaTopic = false;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -274,6 +281,11 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 		if ( $this->topicType === self::CONFIGURATION_TYPE_ORES && $status->isGood() ) {
 			$this->configurationValidator->sortTopics( $topics, $groups );
+		}
+
+		// FIXME T301030 remove when campaign is done.
+		if ( $this->useArgentinaTopic ) {
+			array_unshift( $topics, new PseudoOresBasedTopic( 'argentina', 'glam' ) );
 		}
 
 		return $status->isGood() ? $topics : $status;
