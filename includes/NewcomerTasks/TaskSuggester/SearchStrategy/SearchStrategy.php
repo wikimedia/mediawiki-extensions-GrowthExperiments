@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy;
 
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
@@ -20,19 +19,13 @@ class SearchStrategy {
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
 
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param ConfigurationLoader $configurationLoader
 	 */
 	public function __construct(
-		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		ConfigurationLoader $configurationLoader
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	) {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
-		$this->configurationLoader = $configurationLoader;
 	}
 
 	/**

@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -43,8 +42,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$taskTypeHandler->method( 'getSearchTerm' )
 			->willReturn( 'hastemplate:"Copyedit" -hastemplate:"DontCopyedit"' );
 
-		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry,
-			new StaticConfigurationLoader( [], [] ) );
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
 
 		$morelikeQueries = $searchStrategy->getQueries( [ $taskType ],
 			[ $morelikeTopic1, $morelikeTopic2 ] );
@@ -102,8 +100,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		);
 		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
 
-		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry,
-			new StaticConfigurationLoader( [], [] ) );
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
 
 		$queries = $searchStrategy->getQueries( [ $taskType ], [] );
 		$this->assertQueryStrings( $queries, [

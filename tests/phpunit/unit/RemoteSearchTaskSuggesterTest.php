@@ -3,9 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use ApiRawMessage;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -65,8 +63,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$topics = $this->getTopics( $topicSpec );
 
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
-		$configurationLoader = new StaticConfigurationLoader( $taskTypes, $topics );
-		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry, $configurationLoader );
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
 		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
 		$linkBatchFactory = $this->getMockLinkBatchFactory();
 		$requestFactory = $this->getMockRequestFactory( $requests );
@@ -483,9 +480,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
 		$topics = $this->getTopics( $topicSpec );
 
-		$configurationLoader = new StaticConfigurationLoader( $taskTypes, $topics );
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
-		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry, $configurationLoader );
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
 		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
 		$linkBatchFactory = $this->getMockLinkBatchFactory( $pageIds );
 		$requestFactory = $this->getMockRequestFactory( $requests );
@@ -726,15 +722,13 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param ConfigurationLoader $configurationLoader
 	 * @return SearchStrategy|MockObject
 	 */
 	private function getMockSearchStrategy(
-		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		ConfigurationLoader $configurationLoader
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	) {
 		$searchStrategy = $this->getMockBuilder( SearchStrategy::class )
-			->setConstructorArgs( [ $taskTypeHandlerRegistry, $configurationLoader ] )
+			->setConstructorArgs( [ $taskTypeHandlerRegistry ] )
 			->onlyMethods( [ 'shuffleQueryOrder' ] )
 			->getMock();
 		$searchStrategy->method( 'shuffleQueryOrder' )
