@@ -129,7 +129,7 @@
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|תשאל|תשאלי}} את {{GENDER:$1|החונך|החונכת}} שלך",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "הצגת השיחות האחרות של {{GENDER:$1|החונך|החונכת}} {{GENDER:$2|שלך}}.",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|תשאל|תשאלי}} את {{GENDER:$1|החונך|החונכת}} שלך",
-	"growthexperiments-homepage-mentorship-questionreview-header": "{{GENDER:$2|כשאתה שואל|כשאת שואלת}} שאלה, היא <strong>נשלחת באופן ציבורי</strong> עם שם המשתמש שלך, \"$2\", אל $3, ושם {{GENDER:$1|הוא יכול|היא יכולה}} למצוא אותה ולהגיב עליה.",
+	"growthexperiments-homepage-mentorship-questionreview-header": "{{GENDER:$2|כשאתה שואל|כשאת שואלת}} שאלה, היא <strong>מתפרסמת</strong> עם שם המשתמש שלך, \"$2\", אל $3, ושם {{GENDER:$1|הוא יכול|היא יכולה}} למצוא אותה ולהגיב עליה.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|החונך הראשי|החונכת הראשית}} {{GENDER:|שלך}}, $1, לא בסביבה עכשיו. {{GENDER:$4|חונך אחר, $3, יענה|חונכת אחרת, $3, תענה}} לשאלות שלך לעת־עתה.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "דף השיחה של {{GENDER:$1|החונך|החונכת}} {{GENDER:$2|שלך}}.",
 	"growthexperiments-homepage-mentorship-confirmation-text": "השאלה {{GENDER:$2|שלך}} נמצאת עכשיו בדף השיחה של {{GENDER:$1|החונך שלך, ושם הוא יענה עליה ברגע שיוכל|החונכת שלך, ושם היא תענה עליה ברגע שתוכל}}.",

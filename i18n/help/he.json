@@ -39,7 +39,7 @@
 	"growthexperiments-help-panel-postedit-footer2-notsaved": "סגירה",
 	"growthexperiments-help-panel-questionreview-title": "לשאול בחממה",
 	"growthexperiments-help-panel-questionreview-title-mentor": "לשאול את החונך שלך",
-	"growthexperiments-help-panel-questionreview-header": "{{GENDER:$2|כשאתה שולח|כשאת שולחת}} שאלה, היא <strong>נשלחת באופן ציבורי</strong> עם שם המשתמש שלך, \"$2\", אל $1, ושם מתנדב אחר ינסה לספק תשובה בתוך יום בערך.",
+	"growthexperiments-help-panel-questionreview-header": "{{GENDER:$2|כשאתה שולח|כשאת שולחת}} שאלה, היא <strong>מתפרסמת</strong> עם שם המשתמש שלך, \"$2\", אל $1, ושם מתנדב אחר ינסה לספק תשובה בתוך יום בערך.",
 	"growthexperiments-help-panel-questionreview-label": "השאלה שלך",
 	"growthexperiments-help-panel-questionreview-include-article-title": "לכלול את שם הדף עם השאלה שלי",
 	"growthexperiments-help-panel-question-subject-template": "שאלה מחלונית העזרה",
