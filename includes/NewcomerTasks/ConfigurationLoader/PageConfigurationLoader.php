@@ -40,12 +40,6 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		self::CONFIGURATION_TYPE_MORELIKE,
 	];
 
-	// FIXME T301030 remove when campaign is done.
-	// FIXME lazy unregistered feature flag. T301029 will remove this and either make the
-	//   custom topic unconditional, or make it conditional on user settings.
-	/** @var bool */
-	public $useArgentinaTopic = false;
-
 	/** @var TitleFactory */
 	private $titleFactory;
 
@@ -77,6 +71,9 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	 * @var string One of the PageConfigurationLoader::CONFIGURATION_TYPE constants.
 	 */
 	private $topicType;
+
+	/** @var ?callable */
+	private $campaignConfigCallback;
 
 	/**
 	 * @param TitleFactory $titleFactory
@@ -284,11 +281,35 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		}
 
 		// FIXME T301030 remove when campaign is done.
-		if ( $this->useArgentinaTopic ) {
-			array_unshift( $topics, new CampaignTopic( 'argentina', 'growtharticletopic:argentina' ) );
+		$campaignTopics = array_map( static function ( $topic ) {
+			return new CampaignTopic( $topic[ 'id' ], $topic[ 'searchExpression' ] );
+		}, $this->getCampaignTopics() );
+		if ( count( $campaignTopics ) ) {
+			array_unshift( $topics, ...$campaignTopics );
 		}
 
 		return $status->isGood() ? $topics : $status;
 	}
 
+	/**
+	 * Set the callback used to retrieve CampaignConfig, used to show campaign-specific topics
+	 *
+	 * @param callable $callback
+	 */
+	public function setCampaignConfigCallback( callable $callback ) {
+		$this->campaignConfigCallback = $callback;
+	}
+
+	/**
+	 * Get campaign-specific topics
+	 *
+	 * @return array
+	 */
+	private function getCampaignTopics(): array {
+		if ( is_callable( $this->campaignConfigCallback ) ) {
+			$getCampaignConfig = $this->campaignConfigCallback;
+			return $getCampaignConfig()->getCampaignTopics();
+		}
+		return [];
+	}
 }

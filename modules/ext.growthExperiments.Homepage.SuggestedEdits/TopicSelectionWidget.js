@@ -1,6 +1,6 @@
 var SuggestionWidget = require( './SuggestionWidget.js' ),
 	SuggestionGroupWidget = require( './SuggestionGroupWidget.js' ),
-	topicData = require( './Topics.json' ),
+	topicData = require( './Topics.js' ),
 	groupedTopics = ( function () {
 		var key, topic, grouped = {};
 		for ( key in topicData ) {

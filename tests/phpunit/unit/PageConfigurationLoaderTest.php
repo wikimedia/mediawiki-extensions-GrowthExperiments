@@ -4,11 +4,13 @@ namespace GrowthExperiments\Tests;
 
 use Collation;
 use GrowthExperiments\Config\WikiPageConfigLoader;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -280,6 +282,23 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [ 'art', 'food', 'science' ], array_map( static function ( Topic $t ) {
 			return $t->getId();
 		}, $topics ) );
+	}
+
+	public function testLoadTopics_campaign() {
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$configurationLoader->setCampaignConfigCallback( static function () {
+			return new CampaignConfig( [
+				'growth-glam-2022' => [
+					'topics' => [ 'argentina' ],
+					'pattern' => '/^growth-glam-2022$/'
+				]
+			], [
+				'argentina' => 'growtharticletopic:argentina'
+			] );
+		} );
+		$campaignTopic = $configurationLoader->loadTopics()[0];
+		$this->assertInstanceOf( CampaignTopic::class, $campaignTopic );
 	}
 
 	/**

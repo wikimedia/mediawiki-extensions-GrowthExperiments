@@ -176,11 +176,24 @@
 		).getUrl( queryParams );
 	}
 
+	/**
+	 * Opt the user into growth-glam-2022 campaign
+	 *
+	 * @return {jQuery.Promise|undefined}
+	 */
+	function enableCampaign() {
+		return updateTaskPreference( {
+			'growthexperiments-homepage-variant': 'imagerecommendation',
+			'growthexperiments-campaign': 'growth-glam-2022'
+		} );
+	}
+
 	// Expose some methods for debugging.
 	window.ge = window.ge || {};
 	ge.utils = {
 		getUserVariant: getUserVariant,
-		setUserVariant: setUserVariant
+		setUserVariant: setUserVariant,
+		enableCampaign: enableCampaign
 	};
 
 	module.exports = {

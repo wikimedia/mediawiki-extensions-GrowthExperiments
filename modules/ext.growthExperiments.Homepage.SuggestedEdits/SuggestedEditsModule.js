@@ -453,7 +453,6 @@ SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
  *
  * @param {number} cardPosition Card position in the task queue. Assumes summary data has
  *   already been loaded for this position.
- * @return {string} Token to reference the log entry with.
  */
 SuggestedEditsModule.prototype.logCardData = function ( cardPosition ) {
 	var task = this.taskQueue[ cardPosition ];

@@ -41,6 +41,8 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomRe
 		'GEHomepageSuggestedEditsIntroLinks',
 		'GEInfoboxTemplates',
 		'GEInfoboxTemplatesTest',
+		'GECampaigns',
+		'GECampaignTopics'
 	];
 
 	/**

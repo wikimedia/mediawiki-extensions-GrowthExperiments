@@ -51,6 +51,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\EventGateSearchIn
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
@@ -490,12 +491,21 @@ return [
 			$topicConfigTitle,
 			$topicType
 		);
+
 		if ( !$config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$configurationLoader->disableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
 		}
 		if ( !$config->get( 'GENewcomerTasksImageRecommendationsEnabled' ) ) {
 			$configurationLoader->disableTaskType( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID );
 		}
+
+		$configurationLoader->setCampaignConfigCallback( static function () use ( $growthServices ) {
+			return new CampaignConfig(
+				$growthServices->getGrowthWikiConfig()->get( 'GECampaigns' ) ?? [],
+				$growthServices->getGrowthWikiConfig()->get( 'GECampaignTopics' ) ?? []
+			);
+		} );
+
 		return $configurationLoader;
 	},
 
@@ -656,7 +666,12 @@ return [
 						'args' => [
 							$growthServices->getNewcomerTasksConfigurationLoader(),
 							$growthServices->getImageRecommendationSubmissionLogFactory(),
-							$growthServices->getLinkRecommendationSubmissionLogFactory()
+							$growthServices->getLinkRecommendationSubmissionLogFactory(),
+							new CampaignConfig(
+								$growthServices->getGrowthWikiConfig()->get( 'GECampaigns' ) ?? [],
+								[],
+								$services->getUserOptionsLookup()
+							)
 						]
 					],
 				]

@@ -65,6 +65,12 @@ class GrowthConfigValidation implements IConfigValidator {
 				'type' => 'array',
 				'maxSize' => self::MAX_TEMPLATES_IN_COLLECTION,
 			],
+			'GECampaigns' => [
+				'type' => 'array',
+			],
+			'GECampaignTopics' => [
+				'type' => 'array',
+			],
 		];
 	}
 

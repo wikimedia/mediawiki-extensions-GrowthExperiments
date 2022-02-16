@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\HomepageModules;
 
+use Config;
 use GlobalVarConfig;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
@@ -22,6 +23,7 @@ use MediaWiki\User\UserOptionsLookup;
 use OOUI\BlankTheme;
 use OOUI\Theme;
 use OutputPage;
+use User;
 use WANObjectCache;
 use WebRequest;
 use Wikimedia\TestingAccessWrapper;
@@ -53,6 +55,63 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 		$this->assertNotEmpty( $out );
 		$widgetItems = $widget->getItems();
 		$this->assertCount( 1, $widgetItems );
+	}
+
+	/**
+	 * @covers ::getTopicsToExclude
+	 */
+	public function testGetTopicsToExclude() {
+		$userNoCampaign = $this->createMock( User::class );
+		$userGlamCampaign = $this->createMock( User::class );
+		$userArgentinaCampaign = $this->createMock( User::class );
+		$userCampaignWithoutTopics = $this->createMock( User::class );
+
+		$userOptionsLookup = $this->createMock( UserOptionsLookup::class );
+		$userOptionsLookup->method( 'getOption' )->willReturnCallback(
+			static function ( $user ) use (
+				$userGlamCampaign, $userArgentinaCampaign, $userCampaignWithoutTopics
+			) {
+				if ( $user === $userGlamCampaign ) {
+					return 'growth-glam-2022';
+				} elseif ( $user === $userArgentinaCampaign ) {
+					return 'growth-argentina-2022';
+				} elseif ( $user === $userCampaignWithoutTopics ) {
+					return 'growth-donor-campaign';
+				}
+				return '';
+			}
+		);
+		$configNotSet = $this->createMock( Config::class );
+		$configNotSet->method( 'get' )->willReturn( null );
+		$this->assertEmpty(
+			SuggestedEdits::getTopicsToExclude( $userOptionsLookup, $userNoCampaign, $configNotSet )
+		);
+
+		$config = $this->createMock( Config::class );
+		$config->method( 'get' )->willReturn( [
+			'growth-glam-2022' => [
+				'topics' => [ 'argentina', 'mexico', 'chile' ]
+			],
+			'growth-argentina-2022' => [
+				'topics' => [ 'argentina', 'argentina-expanded' ],
+			],
+		] );
+		$this->assertArrayEquals(
+			SuggestedEdits::getTopicsToExclude( $userOptionsLookup, $userNoCampaign, $config ),
+			[ 'argentina', 'mexico', 'chile', 'argentina-expanded' ]
+		);
+		$this->assertArrayEquals(
+			SuggestedEdits::getTopicsToExclude( $userOptionsLookup, $userGlamCampaign, $config ),
+			[ 'argentina-expanded' ]
+		);
+		$this->assertArrayEquals(
+			SuggestedEdits::getTopicsToExclude( $userOptionsLookup, $userArgentinaCampaign, $config ),
+			[ 'mexico', 'chile' ]
+		);
+		$this->assertArrayEquals(
+			SuggestedEdits::getTopicsToExclude( $userOptionsLookup, $userCampaignWithoutTopics, $config ),
+			[ 'argentina', 'mexico', 'chile', 'argentina-expanded' ]
+		);
 	}
 
 	private function getSuggestedEdits(): SuggestedEdits {

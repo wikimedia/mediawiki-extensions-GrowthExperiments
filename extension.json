@@ -588,6 +588,7 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/StartEditing.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/Topics.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TopicSelectionWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SuggestionWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SuggestionGroupWidget.js",
@@ -1991,6 +1992,14 @@
 		"GECampaignPattern": {
 			"description": "Regexp for campaign names which result in a special landing page. A full PHP PCRE regexp, including the delimiters and (if needed) start/end anchor (e.g. `/^foo$/`). Temporary code for T284740.",
 			"value": null
+		},
+		"GECampaigns": {
+			"description": "Mapping of campaign ID to \"topics\", an array of topic IDs, and \"pattern\", a regexp for the campaign name, used to show campaign-specific topics in the suggested edits module. The topic IDs must have a corresponding search expression defined in GECampaignTopics. Examples can be found at https://www.mediawiki.org/wiki/Extension:GrowthExperiments/Technical_documentation/Special:EditGrowthConfig.",
+			"value": {}
+		},
+		"GECampaignTopics": {
+			"description": "Mapping of topic IDs to its search expression, used to show campaign-specific topics in the suggested edits module. Examples can be found at https://www.mediawiki.org/wiki/Extension:GrowthExperiments/Technical_documentation/Special:EditGrowthConfig.",
+			"value": {}
 		},
 		"WelcomeSurveyExperimentalGroups": {
 			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",

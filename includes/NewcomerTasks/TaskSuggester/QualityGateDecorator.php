@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFactory;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
@@ -38,22 +39,28 @@ class QualityGateDecorator implements TaskSuggester {
 	/** @var int */
 	private $linkRecommendationCountForUser;
 
+	/** @var CampaignConfig */
+	private $campaignConfig;
+
 	/**
 	 * @param TaskSuggester $taskSuggester
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
 	 * @param LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory
+	 * @param CampaignConfig $campaignConfig
 	 */
 	public function __construct(
 		TaskSuggester $taskSuggester,
 		ConfigurationLoader $configurationLoader,
 		ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory,
-		LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory
+		LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory,
+		CampaignConfig $campaignConfig
 	) {
 		$this->taskSuggester = $taskSuggester;
 		$this->imageRecommendationSubmissionLogFactory = $imageRecommendationSubmissionLogFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationSubmissionLogFactory = $linkRecommendationSubmissionLogFactory;
+		$this->campaignConfig = $campaignConfig;
 	}
 
 	/** @inheritDoc */
@@ -122,6 +129,11 @@ class QualityGateDecorator implements TaskSuggester {
 		IContextSource $contextSource,
 		ImageRecommendationTaskType $imageRecommendationTaskType
 	): ?bool {
+		// FIXME remove when GLAM campaign is over
+		// Daily limit for image recommendation does not apply to users in the GLAM campaign.
+		if ( $this->campaignConfig->isUserInCampaign( $user, 'growth-glam-2022' ) ) {
+			return false;
+		}
 		return $this->getImageRecommendationTasksDoneByUserForCurrentDay(
 				$user,
 				$contextSource

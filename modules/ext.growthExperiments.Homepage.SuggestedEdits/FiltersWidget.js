@@ -2,7 +2,7 @@
 	'use strict';
 	var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
-		topicData = require( './Topics.json' );
+		topicData = require( './Topics.js' );
 
 	/**
 	 * @extends OO.ui.ButtonGroupWidget
