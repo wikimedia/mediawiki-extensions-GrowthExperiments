@@ -31,6 +31,10 @@
 			submit: [ 'onFilterDropdownSubmit' ]
 		} );
 
+		// filterDropdown has dynamic defaults, according to user's preferences; set them in the API client,
+		// so renderMenteeTable() has the expected result.
+		this.apiClient.setFilters( this.filterDropdown.getFilters() );
+
 		// pagination widget
 		this.paginationWidget = new Pagination();
 		this.apiClient.setLimit( this.paginationWidget.getPageSize() );
@@ -470,6 +474,12 @@
 
 		// Rerender the table
 		this.renderMenteeTable();
+
+		// Persist filters for next view (parsed in FilterDropdown's constructor)
+		new mw.Api().saveOption(
+			'growthexperiments-mentee-overview-filters',
+			JSON.stringify( filters )
+		);
 	};
 
 	MenteeOverview.prototype.onSearchInputEnter = function () {

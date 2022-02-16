@@ -5,6 +5,10 @@ namespace GrowthExperiments\MentorDashboard\Modules;
 use Html;
 
 class MenteeOverview extends BaseModule {
+
+	/** @var string Option name to store filters. This is hardcoded client-side. */
+	public const FILTERS_PREF = 'growthexperiments-mentee-overview-filters';
+
 	/**
 	 * @inheritDoc
 	 */
