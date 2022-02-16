@@ -244,7 +244,7 @@ class TaskType implements JsonUnserializable {
 		$excludedCategories = array_map( static function ( array $excludedCategory ) {
 			return new TitleValue( $excludedCategory[0], $excludedCategory[1] );
 		}, $json['excludedCategories'] ?? [] );
-		$taskType = new TaskType(
+		$taskType = new static(
 			$json['id'], $json['difficulty'], $json['extraData'], $excludedTemplates, $excludedCategories
 		);
 		$taskType->setHandlerId( $json['handlerId'] );

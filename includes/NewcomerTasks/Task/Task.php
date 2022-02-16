@@ -126,7 +126,7 @@ class Task implements JsonUnserializable {
 			return $unserializer->unserialize( $topic, Topic::class );
 		}, $json['topics'] );
 
-		$task = new Task( $taskType, $title, $json['token'] ?? null );
+		$task = new static( $taskType, $title, $json['token'] ?? null );
 		$task->setTopics( $topics, $json['topicScores'] );
 		return $task;
 	}

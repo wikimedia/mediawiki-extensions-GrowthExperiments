@@ -100,7 +100,7 @@ class Topic implements JsonUnserializable {
 
 	/** @inheritDoc */
 	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
-		return new Topic( $json['id'], $json['groupId'] );
+		return new static( $json['id'], $json['groupId'] );
 	}
 
 }
