@@ -616,7 +616,7 @@ return [
 
 		$taskTypeHandlerRegistry = $growthServices->getTaskTypeHandlerRegistry();
 		$configLoader = $growthServices->getNewcomerTasksConfigurationLoader();
-		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry, $configLoader );
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
 		if ( $config->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
 			$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory(
 				$taskTypeHandlerRegistry,
