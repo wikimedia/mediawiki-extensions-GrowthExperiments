@@ -179,13 +179,15 @@ class HelpPanelHooks implements
 	}
 
 	/**
-	 * Build the contents of the data.json file in the ext.growthExperiments.HelpPanel module.
+	 * Build the contents of the data.json file in the ext.growthExperiments.Help module.
 	 * @param ResourceLoaderContext $context
 	 * @param Config $config
 	 * @return array
 	 */
 	public static function getModuleData( ResourceLoaderContext $context, Config $config ) {
 		$helpdeskTitle = HelpPanel::getHelpDeskTitle( self::getGrowthWikiConfig() );
+		// The copyright warning can contain markup and has to be parsed via PHP messages API.
+		$copyrightWarningMessage = $context->msg( 'wikimedia-copyrightwarning' );
 		return [
 			'GEHelpPanelLoggingEnabled' => $config->get( 'GEHelpPanelLoggingEnabled' ),
 			'GEHelpPanelSearchNamespaces' => self::getGrowthWikiConfig()
@@ -198,6 +200,8 @@ class HelpPanelHooks implements
 			),
 			'GEHelpPanelSuggestedEditsPreferredEditor' => self::getPreferredEditor( $context, $config ),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null,
+			'GEAskHelpCopyrightWarning' => $copyrightWarningMessage->exists() ?
+				$copyrightWarningMessage->parse() : ''
 		];
 	}
 
