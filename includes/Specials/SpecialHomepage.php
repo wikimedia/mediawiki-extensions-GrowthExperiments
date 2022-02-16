@@ -229,13 +229,18 @@ class SpecialHomepage extends SpecialPage {
 	 * @return string[][][]
 	 */
 	private function getModuleGroups(): array {
+		$isSuggestedEditsEnabled = SuggestedEdits::isEnabledForAnyone(
+			$this->getContext()->getConfig()
+		);
 		return [
 			'main' => [
 				'primary' => [ 'banner', 'startemail' ],
-				'secondary' => [ 'start-startediting', 'suggested-edits' ]
+				'secondary' => $isSuggestedEditsEnabled ?
+					[ 'start-startediting', 'suggested-edits' ] :
+					[ 'impact' ]
 			],
 			'sidebar' => [
-				'primary' => [ 'impact' ],
+				'primary' => $isSuggestedEditsEnabled ? [ 'impact' ] : [],
 				'secondary' => [ 'mentorship', 'help' ]
 			]
 		];
