@@ -3,6 +3,7 @@
 namespace GrowthExperiments\MentorDashboard;
 
 use ChangeTags;
+use FormatJson;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
@@ -44,7 +45,10 @@ class MentorDashboardHooks implements
 			StarredMenteesStore::STARRED_MENTEES_PREFERENCE => '',
 			MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 0,
 			MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE => null,
-			MenteeOverview::FILTERS_PREF => '{}',
+			MenteeOverview::FILTERS_PREF => FormatJson::encode( [
+				'minedits' => 1,
+				'maxedits' => 500,
+			] ),
 		];
 	}
 
