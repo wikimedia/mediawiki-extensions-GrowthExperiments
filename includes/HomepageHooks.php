@@ -10,7 +10,6 @@ use CirrusSearch\Wikimedia\WeightedTagsHooks;
 use Config;
 use ConfigException;
 use DeferredUpdates;
-use DomainException;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
@@ -53,16 +52,15 @@ use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Hook\PersonalUrlsHook;
 use MediaWiki\Hook\RecentChange_saveHook;
+use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Hook\SiteNoticeAfterHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\SpecialContributionsBeforeMainOutputHook;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
-use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
-use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
+use MediaWiki\Special\SpecialPageFactory;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
@@ -87,6 +85,7 @@ use StatusValue;
 use stdClass;
 use Title;
 use TitleFactory;
+use TitleValue;
 use User;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -95,6 +94,7 @@ class HomepageHooks implements
 	SpecialPage_initListHook,
 	BeforePageDisplayHook,
 	SkinTemplateNavigation__UniversalHook,
+	SidebarBeforeOutputHook,
 	PersonalUrlsHook,
 	MessageCache__getHook,
 	GetPreferencesHook,
@@ -171,6 +171,8 @@ class HomepageHooks implements
 	private $perDbNameStatsdDataFactory;
 	/** @var JobQueueGroup */
 	private $jobQueueGroup;
+	/** @var SpecialPageFactory */
+	private $specialPageFactory;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
@@ -197,6 +199,7 @@ class HomepageHooks implements
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 * @param SuggestionsInfo $suggestionsInfo
+	 * @param SpecialPageFactory $specialPageFactory
 	 */
 	public function __construct(
 		Config $config,
@@ -218,7 +221,8 @@ class HomepageHooks implements
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkRecommendationStore $linkRecommendationStore,
 		LinkRecommendationHelper $linkRecommendationHelper,
-		SuggestionsInfo $suggestionsInfo
+		SuggestionsInfo $suggestionsInfo,
+		SpecialPageFactory $specialPageFactory
 	) {
 		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
@@ -240,6 +244,7 @@ class HomepageHooks implements
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->suggestionsInfo = $suggestionsInfo;
+		$this->specialPageFactory = $specialPageFactory;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -304,7 +309,7 @@ class HomepageHooks implements
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function isHomepageEnabled( UserIdentity $user = null ) {
+	public static function isHomepageEnabled( UserIdentity $user = null ): bool {
 		$services = MediaWikiServices::getInstance();
 		return (
 			$services->getMainConfig()->get( 'GEHomepageEnabled' ) &&
@@ -464,8 +469,14 @@ class HomepageHooks implements
 	 */
 	public function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
 		$user = $skin->getUser();
+
 		if ( !self::isHomepageEnabled( $user ) ) {
 			return;
+		}
+
+		$isMobile = Util::isMobile( $skin );
+		if ( $isMobile && $this->userHasPersonalToolsPrefEnabled( $user ) ) {
+			$this->updateProfileMenuEntry( $links );
 		}
 
 		$title = $skin->getTitle();
@@ -476,8 +487,6 @@ class HomepageHooks implements
 		$isHomepage = $title->equals( $homepageTitle );
 		$isUserSpace = $title->equals( $userpage ) || $title->isSubpageOf( $userpage );
 		$isUserTalkSpace = $title->equals( $usertalk ) || $title->isSubpageOf( $usertalk );
-
-		$isMobile = Util::isMobile( $skin );
 
 		if ( $isHomepage || $isUserSpace || $isUserTalkSpace ) {
 			unset( $links['namespaces']['special'] );
@@ -538,7 +547,6 @@ class HomepageHooks implements
 	 * @param array &$personal_urls
 	 * @param Title &$title
 	 * @param SkinTemplate $sk
-	 * @throws \MWException
 	 * @throws ConfigException
 	 */
 	public function onPersonalUrls( &$personal_urls, &$title, $sk ): void {
@@ -547,10 +555,8 @@ class HomepageHooks implements
 			return;
 		}
 
-		if ( self::userHasPersonalToolsPrefEnabled( $user, $this->userOptionsManager ) ) {
-			$personal_urls['userpage']['href'] = self::getPersonalToolsHomepageLinkUrl(
-				$title->getNamespace()
-			);
+		if ( $this->userHasPersonalToolsPrefEnabled( $user ) ) {
+			$personal_urls['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl( $title->getNamespace() );
 			// Make the link blue
 			unset( $personal_urls['userpage']['link-class'] );
 			// Remove the "this page doesn't exist" part of the tooltip
@@ -569,7 +575,7 @@ class HomepageHooks implements
 		if (
 			$lcKey === 'tooltip-pt-userpage' &&
 			self::isHomepageEnabled( $user ) &&
-			self::userHasPersonalToolsPrefEnabled( $user, $this->userOptionsManager )
+			$this->userHasPersonalToolsPrefEnabled( $user )
 		) {
 			$lcKey = 'tooltip-pt-homepage';
 		}
@@ -914,69 +920,57 @@ class HomepageHooks implements
 
 	/**
 	 * Helper method to update the "Profile" menu entry in menus
-	 * @param Group $group
-	 * @param string $menuEntryName The Profile menu entry - most probably 'auth' or 'profile'
+	 * @param array &$links
 	 * @throws \MWException
 	 */
-	private static function updateProfileMenuEntry( Group $group, $menuEntryName ) {
-		$context = RequestContext::getMain();
-		try {
-			/** @var IProfileMenuEntry $profileMenuEntry */
-			$profileMenuEntry = $group->getEntryByName( $menuEntryName );
-			// @phan-suppress-next-line PhanUndeclaredMethod
-			$profileMenuEntry->overrideProfileURL(
-				self::getPersonalToolsHomepageLinkUrl(
-					$context->getTitle()->getNamespace()
-				), null, 'homepage' );
-		}
-		catch ( DomainException $exception ) {
-			return;
-		}
-	}
-
-	/**
-	 * Helper method to update the "Home" menu entry in the Mobile Menu
-	 * @param Group $group
-	 */
-	private static function updateHomeMenuEntry( Group $group ) {
-		$context = RequestContext::getMain();
-		try {
-			/** @var HomeMenuEntry $homeMenuEntry */
-			$homeMenuEntry = $group->getEntryByName( 'home' );
-			// @phan-suppress-next-line PhanUndeclaredMethod
-			$homeMenuEntry->overrideText( $context->msg( 'mainpage-nstab' )->text() )
-				->overrideIcon( 'minerva-newspaper' );
-		}
-		catch ( DomainException $exception ) {
-			return;
-		}
-	}
-
-	/**
-	 * @param string $tool
-	 * @param Group $group
-	 * @throws ConfigException
-	 * @throws \MWException
-	 */
-	public static function onMobileMenu( $tool, Group $group ) {
-		if ( in_array( $tool, [ 'personal', 'discovery', 'user' ] ) ) {
+	private function updateProfileMenuEntry( array &$links ) {
+		$userItem = $links['user-menu']['userpage'] ?? [];
+		if ( $userItem ) {
 			$context = RequestContext::getMain();
-			$user = $context->getUser();
-			$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-			if ( self::isHomepageEnabled( $user ) &&
-				 self::userHasPersonalToolsPrefEnabled( $user, $userOptionsLookup ) ) {
-				switch ( $tool ) {
-					case 'personal':
-						self::updateProfileMenuEntry( $group, 'auth' );
-						break;
-					case 'user':
-						self::updateProfileMenuEntry( $group, 'profile' );
-						break;
-					case 'discovery':
-						self::updateHomeMenuEntry( $group );
-						break;
-				}
+			$userItem['href'] = $this->getPersonalToolsHomepageLinkUrl(
+				$context->getTitle()->getNamespace()
+			);
+			unset( $links['user-menu']['userpage'] );
+			$links['user-menu'] = [
+				'homepage' => $userItem,
+			] + $links['user-menu'];
+		}
+	}
+
+	/**
+	 * Helper method to update the "Home" menu entry in the Mobile Menu.
+	 *
+	 * We want "Home" to read "Main Page", because Special:Homepage is intended to be "Home"
+	 * for users with Growth features.
+	 *
+	 * @param array &$sidebar
+	 */
+	private function updateHomeMenuEntry( array &$sidebar ) {
+		foreach ( $sidebar['navigation'] ?? [] as $key => $item ) {
+			$id = $item['id'] ?? null;
+			if ( $id === 'n-mainpage-description' ) {
+				// MinervaNeue's BuilderUtil::getDiscoveryTools will override 'text'
+				// with the message key set in 'msg'.
+				$item['msg'] = 'mainpage-nstab';
+				$item['icon'] = 'newspaper';
+				$sidebar['navigation'][$key] = $item;
 			}
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onSidebarBeforeOutput( $skin, &$sidebar ): void {
+		if ( !Util::isMobile( $skin ) ) {
+			return;
+		}
+		$user = $skin->getUser();
+		if ( !self::isHomepageEnabled( $user ) ) {
+			return;
+		}
+		if ( $this->userHasPersonalToolsPrefEnabled( $user ) ) {
+			$this->updateHomeMenuEntry( $sidebar );
 		}
 	}
 
@@ -1254,14 +1248,11 @@ class HomepageHooks implements
 
 	/**
 	 * @param UserIdentity $user
-	 * @param UserOptionsLookup $userOptionsLookup
 	 * @return bool
 	 */
-	private static function userHasPersonalToolsPrefEnabled(
-		UserIdentity $user,
-		UserOptionsLookup $userOptionsLookup
-	) {
-		return $userOptionsLookup->getBoolOption( $user, self::HOMEPAGE_PREF_PT_LINK );
+	private function userHasPersonalToolsPrefEnabled( UserIdentity $user ): bool {
+		return $user->isRegistered() &&
+			$this->userOptionsLookup->getBoolOption( $user, self::HOMEPAGE_PREF_PT_LINK );
 	}
 
 	/**
@@ -1296,10 +1287,11 @@ class HomepageHooks implements
 	 * Get URL to Special:Homepage with query parameters appended for EventLogging.
 	 * @param int $namespace
 	 * @return string
-	 * @throws \MWException
 	 */
-	private static function getPersonalToolsHomepageLinkUrl( $namespace ) {
-		return SpecialPage::getTitleFor( 'Homepage' )->getLinkURL(
+	private function getPersonalToolsHomepageLinkUrl( int $namespace ): string {
+		return $this->titleFactory->newFromLinkTarget(
+			new TitleValue( NS_SPECIAL, $this->specialPageFactory->getLocalNameFor( 'Homepage' ) )
+		)->getLinkURL(
 			'source=personaltoolslink&namespace=' . $namespace
 		);
 	}
