@@ -10,7 +10,8 @@
 			"Gustavo.moraes",
 			"Luk3",
 			"Stanglavine",
-			"Teles"
+			"Teles",
+			"TheEduGobi"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
@@ -127,7 +128,7 @@
 	"growthexperiments-homepage-mentorship-question-button": "Faça uma pergunta {{GENDER:$1|ao {{GENDER:$2|seu}} mentor|à {{GENDER:$2|sua}} mentora}}",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Veja as outras conversas de {{GENDER:$2|seu|sua}} {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Responder {{GENDER:$2|seu|sua}} {{GENDER:$1|mentor|mentora}}",
-	"growthexperiments-homepage-mentorship-questionreview-header": "Quando faz uma pergunta, ela é <strong>publicada para acesso público</strong> com o {{GENDER:$2|seu}} nome de usuário, \"$2\", $3, que é onde {{GENDER:$1|ele|ela|ele}} pode encontrar a sua pergunta e responder.",
+	"growthexperiments-homepage-mentorship-questionreview-header": "Ao fazer uma pergunta, ela será <strong>publicada para acesso público</strong> com o seu nome de {{GENDER:$2|usuário|usuária}}, “$2”, na $3, que é onde {{GENDER:$1|ele|ela|ele}} poderá encontrar a sua pergunta e responder.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|sua}} página de discussão do(a) {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "A {{GENDER:$2|sua}} pergunta está agora na página de discussão {{GENDER:$1|do seu mentor, onde ele|da sua mentora, onde ela}} irá responder-lhe logo que possa.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Ver {{GENDER:$2|sua}} pergunta na página de discussão do(a) {{GENDER:$1|mentor|mentora}}.",

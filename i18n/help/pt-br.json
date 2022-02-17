@@ -6,6 +6,7 @@
 			"Eduardoaddad",
 			"Gustavo.moraes",
 			"Luk3",
+			"TheEduGobi",
 			"Tks4Fish"
 		]
 	},
@@ -33,7 +34,7 @@
 	"growthexperiments-help-panel-postedit-footer2-notsaved": "Fechar",
 	"growthexperiments-help-panel-questionreview-title": "Pergunte na central de ajuda",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Pergunte ao seu tutor",
-	"growthexperiments-help-panel-questionreview-header": "Quando você faz uma pergunta, ela é <strong>divulgada publicamente</strong> com o seu nome de usuário, \"$2\", na $1, onde outro editor voluntário tentará dar uma resposta no prazo aproximado de um dia.",
+	"growthexperiments-help-panel-questionreview-header": "Quando você faz uma pergunta, ela é <strong>divulgada publicamente</strong> com o seu nome de usuário, “$2”, na $1, onde outro editor voluntário tentará dar uma resposta no prazo aproximado de um dia.",
 	"growthexperiments-help-panel-questionreview-label": "Sua pergunta",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Incluir título da página com minha pergunta",
 	"growthexperiments-help-panel-question-subject-template": "Pergunta do painel de ajuda",
@@ -122,7 +123,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-step2": "Leia o artigo e pense se a imagem sugerida ajudará os leitores a entender o conteúdo. É apropriado ser exibido no artigo?",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "Decida se a imagem pertence",
 	"growthexperiments-help-panel-questioncomplete-title": "Faça uma pergunta",
-	"growthexperiments-help-panel-questioncomplete-header": "Sua pergunta foi postada!",
+	"growthexperiments-help-panel-questioncomplete-header": "Sua pergunta foi publicada!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Sua pergunta agora está na Central de Ajuda comunitária para que seja respondida por outro editor voluntário.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Veja sua pergunta na Central de Ajuda",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Notificações para sua pergunta:",

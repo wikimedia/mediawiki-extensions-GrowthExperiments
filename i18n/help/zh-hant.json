@@ -8,6 +8,7 @@
 			"Sunny00217",
 			"Wmr",
 			"Xiplus",
+			"列维劳德",
 			"羊羊32521",
 			"魔琴"
 		]
@@ -137,7 +138,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-step3": "建議可能和條目不相關、內容品質不高，或是出於別的原因不相關。請使用{{GENDER:|您的}}判斷來決定建議是否正確。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "對於{{GENDER:|您}}所接受的圖片，{{GENDER:|您}}會要編寫一段簡短描述，然後將會發布{{GENDER:|您的}}編輯。",
 	"growthexperiments-help-panel-questioncomplete-title": "提出問題",
-	"growthexperiments-help-panel-questioncomplete-header": "您的問題已發布！",
+	"growthexperiments-help-panel-questioncomplete-header": "您的問題已發佈！",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "您的問題已發布於社群的諮詢臺，並將由熱心的志願編輯者回覆。",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "檢視您在互助客棧上提出的問題",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "您提問的通知：",

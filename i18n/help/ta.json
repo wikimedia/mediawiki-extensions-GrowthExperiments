@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Balajijagadesh"
+			"Balajijagadesh",
+			"Murugeswari S"
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "தொடரவும்",
@@ -11,5 +12,6 @@
 	"growthexperiments-help-panel-close": "முடிந்தது",
 	"growthexperiments-help-panel-postedit-header": "அடுத்தப் படிகள்",
 	"growthexperiments-help-panel-postedit-footer2-notsaved": "மூடுக",
+	"growthexperiments-help-panel-questionreview-header": "நீங்கள் ஒரு வினாவை சமர்ப்பிக்கும் போது, அக்கேள்வி முக்கியத்துவம் பெற்று, <strong>பொதுவெளியில் வெளியிடல்.</strong> என்றவாறு பிற தன்னார்வ பதிப்பாசிரியர் மறுநாளோ அல்லது அதற்கடுத்தோ பதில் வழங்க ஏதுவாக, உங்கள் பயனர் பெயரில் \"$1\" க்கு \"$2\" ஆக பதிவிடப்படுகிறது.",
 	"growthexperiments-help-panel-suggestededits-title": "பரிந்துரைக்கப்படும் தொகுப்புகள்"
 }
