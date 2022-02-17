@@ -4,18 +4,33 @@
 	function FilterDropdown( config ) {
 		FilterDropdown.super.call( this, config );
 
+		// stored in MenteeOverview's onFilterDropdownSubmit; default value provided in PHP from MentorDashboardHooks
+		var savedFilters;
+		try {
+			savedFilters = JSON.parse( mw.user.options.get( 'growthexperiments-mentee-overview-filters' ) ) || {};
+		} catch ( e ) {
+			savedFilters = {};
+		}
+
 		// prepare widgets that contain information we filter by
 		this.filterDropdownEditsFrom = new OO.ui.NumberInputWidget( {
 			showButtons: false,
 			min: 0,
-			step: 1
+			step: 1,
+			input: {
+				value: typeof savedFilters.minedits === 'number' ? savedFilters.minedits : ''
+			}
 		} );
 		this.filterDropdownEditsTo = new OO.ui.NumberInputWidget( {
 			showButtons: false,
 			min: 0,
-			step: 1
+			step: 1,
+			input: {
+				value: typeof savedFilters.maxedits === 'number' ? savedFilters.maxedits : ''
+			}
 		} );
 
+		this.filterDropdownActiveDaysAgoValue = NaN; // stores currently selected value in days
 		this.filterDropdownActiveDaysAgo = new OO.ui.ButtonSelectWidget( {
 			items: [
 				this.newFilterByDaysAgoOption( 1 ),
@@ -30,10 +45,19 @@
 				this.newFilterByMonthsAgoOption( 6 )
 			]
 		} );
-		this.filterDropdownActiveDaysAgoValue = NaN; // stores currently selected value
+		if ( typeof savedFilters.activedaysago === 'number' ) {
+			this.filterDropdownActiveDaysAgoValue = savedFilters.activedaysago;
+			// if savedFilters.activedaysago is an integer smaller than 30 days, the option
+			// to select is in the days widget. If it is at least 30 days, it must be in the months widget.
+			if ( savedFilters.activedaysago < 30 ) {
+				this.filterDropdownActiveDaysAgo.selectItemByData( savedFilters.activedaysago );
+			} else {
+				this.filterDropdownActiveMonthsAgo.selectItemByData( savedFilters.activedaysago );
+			}
+		}
 
 		this.filterDropdownOnlyStarred = new OO.ui.CheckboxInputWidget( {
-			selected: false
+			selected: typeof savedFilters.onlystarred === 'boolean' ? savedFilters.onlystarred : false
 		} );
 
 		// prepare submit button
@@ -176,7 +200,7 @@
 		}
 	};
 
-	FilterDropdown.prototype.onFilterSubmitClicked = function () {
+	FilterDropdown.prototype.getFilters = function () {
 		var rawFilters = {
 				minedits: parseInt( this.filterDropdownEditsFrom.getValue() ),
 				maxedits: parseInt( this.filterDropdownEditsTo.getValue() ),
@@ -196,8 +220,12 @@
 			filters[ key ] = rawFilters[ key ];
 		} );
 
+		return filters;
+	};
+
+	FilterDropdown.prototype.onFilterSubmitClicked = function () {
 		// Emit event!
-		this.emit( 'submit', filters );
+		this.emit( 'submit', this.getFilters() );
 
 		// Close filtering popup, if opened
 		if ( this.filterBtn.popup.isVisible() ) {

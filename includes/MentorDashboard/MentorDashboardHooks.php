@@ -6,6 +6,7 @@ use ChangeTags;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
+use GrowthExperiments\MentorDashboard\Modules\MenteeOverview;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
@@ -29,6 +30,9 @@ class MentorDashboardHooks implements
 		$preferences[ MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE ] = [
 			'type' => 'api',
 		];
+		$preferences[ MenteeOverview::FILTERS_PREF ] = [
+			'type' => 'api',
+		];
 	}
 
 	/**
@@ -40,6 +44,7 @@ class MentorDashboardHooks implements
 			StarredMenteesStore::STARRED_MENTEES_PREFERENCE => '',
 			MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 0,
 			MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE => null,
+			MenteeOverview::FILTERS_PREF => '{}',
 		];
 	}
 
