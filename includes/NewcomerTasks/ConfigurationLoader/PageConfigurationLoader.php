@@ -6,9 +6,9 @@ use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
-use GrowthExperiments\NewcomerTasks\Topic\PseudoOresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
@@ -285,7 +285,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 		// FIXME T301030 remove when campaign is done.
 		if ( $this->useArgentinaTopic ) {
-			array_unshift( $topics, new PseudoOresBasedTopic( 'argentina', 'glam' ) );
+			array_unshift( $topics, new CampaignTopic( 'argentina', 'growtharticletopic:argentina' ) );
 		}
 
 		return $status->isGood() ? $topics : $status;

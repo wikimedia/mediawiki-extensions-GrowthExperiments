@@ -4,9 +4,9 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
-use GrowthExperiments\NewcomerTasks\Topic\PseudoOresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use Wikimedia\Assert\Assert;
@@ -51,15 +51,7 @@ class SearchStrategy {
 			foreach ( $topics as $topic ) {
 				$typeTerm = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )
 					->getSearchTerm( $taskType );
-				$topicTerm = null;
-				if ( $topic instanceof OresBasedTopic ) {
-					$topicTerm = $this->getOresBasedTopicTerm( [ $topic ] );
-				} elseif ( $topic instanceof MorelikeBasedTopic ) {
-					$topicTerm = $this->getMorelikeBasedTopicTerm( [ $topic ] );
-				} elseif ( $topic instanceof PseudoOresBasedTopic ) {
-					// FIXME T301028 remove when campaign is done
-					$topicTerm = 'growtharticletopic:' . $topic->getId();
-				}
+				$topicTerm = $this->getTopicTerm( $topic );
 				$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
 				$excludedPageIdTerm = $excludePageIds ? $this->getExcludedPageIdTerm( $excludePageIds ) : null;
 				$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
@@ -85,9 +77,8 @@ class SearchStrategy {
 	 */
 	protected function validateParams( array $taskTypes, array $topics ) {
 		Assert::parameterElementType( TaskType::class, $taskTypes, '$taskTypes' );
-		// FIXME T301028 remove PseudoOresBasedTopic when campaign is done
 		Assert::parameterElementType( [ OresBasedTopic::class,  MorelikeBasedTopic::class,
-			PseudoOresBasedTopic::class ], $topics, '$topics' );
+			CampaignTopic::class ], $topics, '$topics' );
 	}
 
 	/**
@@ -96,6 +87,22 @@ class SearchStrategy {
 	 */
 	protected function getTemplateTerm( array $templates ) {
 		return 'hastemplate:' . $this->escapeSearchTitleList( $templates );
+	}
+
+	/**
+	 * @param Topic|null $topic
+	 * @return string|null
+	 */
+	protected function getTopicTerm( ?Topic $topic ): ?string {
+		$topicTerm = null;
+		if ( $topic instanceof OresBasedTopic ) {
+			$topicTerm = $this->getOresBasedTopicTerm( [ $topic ] );
+		} elseif ( $topic instanceof MorelikeBasedTopic ) {
+			$topicTerm = $this->getMorelikeBasedTopicTerm( [ $topic ] );
+		} elseif ( $topic instanceof CampaignTopic ) {
+			$topicTerm = $topic->getSearchExpression();
+		}
+		return $topicTerm;
 	}
 
 	/**
