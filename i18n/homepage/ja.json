@@ -269,6 +269,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "科学、技術、数学",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "文化",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "地域",
+	"growthexperiments-homepage-suggestededits-topic-group-name-glam": "キャンペーン",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "お勧めの編集の設定が無効: 構造が正しくありません",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "お勧めの編集の設定が無効: \"$1\" id が無効です - 記入できるのは欧文文字と数字 a-z、0-9、- (マイナス記号) に限定されます",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "お勧めの編集の設定が無効:  作業のタイプ$2での無効な<code>type</code>パラメータ$1 - $3の1つでなければならない",

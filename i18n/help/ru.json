@@ -45,7 +45,7 @@
 	"growthexperiments-help-panel-postedit-footer2-notsaved": "Закрыть",
 	"growthexperiments-help-panel-questionreview-title": "Задайте вопрос в справочной",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Спросить своего наставника",
-	"growthexperiments-help-panel-questionreview-header": "Когда вы отправляете вопрос, он <strong>размещается публично</strong> под вашим именем «$2», на странице $1, где другой редактор-волонтер попытается дать ответ в течение следующего дня или около того.",
+	"growthexperiments-help-panel-questionreview-header": "Когда вы задаёте вопрос, он <strong>публикуется в открытом доступе</strong> под вашим именем пользователя «$2», по ссылке $1, где другой редактор-волонтёр попытается дать ответ на следующий день или около того.",
 	"growthexperiments-help-panel-questionreview-label": "Ваш вопрос",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Включить название страницы в мой вопрос",
 	"growthexperiments-help-panel-question-subject-template": "Вопрос с панели помощи",
