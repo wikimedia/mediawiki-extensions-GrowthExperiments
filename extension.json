@@ -281,7 +281,6 @@
 		"variant": {
 			"class": "GrowthExperiments\\VariantHooks",
 			"services": [
-				"MainConfig",
 				"UserOptionsManager"
 			]
 		},
