@@ -3,9 +3,6 @@
 
 	var HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
-		QualityGate = require( '../ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js' ),
-		ImageSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js' ),
-		LinkSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js' ),
 		TaskTypesAbFilter = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
@@ -54,47 +51,10 @@
 				previewTask = $.extend( {}, task );
 				previewTask.pageviews = null;
 
-				var taskUri = new mw.Uri(
-					new mw.Title( 'Special:Homepage/newcomertask/' + previewTask.pageId ).getUrl()
-				);
-
-				taskUri.query.gesuggestededit = '1';
-				taskUri.query.getasktype = previewTask.tasktype;
-				taskUri.query.geclickid = mw.config.get( 'wgGEHomepagePageviewToken' );
-				taskUri.query.genewcomertasktoken = task.token;
-
 				taskCard = new SmallTaskCard( {
 					task: previewTask,
 					taskTypes: TaskTypesAbFilter.getTaskTypes(),
-					taskUrl: taskUri.toString()
-				} );
-
-				taskCard.$element.on( 'click', function () {
-					var qualityGate = new QualityGate( {
-						gates: previewTask.qualityGateIds || [],
-						gateConfig: previewTask.qualityGateConfig,
-						/* eslint-disable camelcase */
-						loggers: {
-							'image-recommendation': new ImageSuggestionInteractionLogger( {
-								is_mobile: OO.ui.isMobile(),
-								active_interface: 'qualitygate_dialog'
-							} ),
-							'link-recommendation': new LinkSuggestionInteractionLogger( {
-								is_mobile: OO.ui.isMobile(),
-								active_interface: 'qualitygate_dialog'
-							} )
-						},
-						loggerMetadataOverrides: {
-							newcomer_task_token: task.token,
-							homepage_pageview_token: mw.config.get(
-								'wgGEHomepagePageviewToken'
-							),
-							page_id: previewTask.pageId,
-							page_title: previewTask.title
-						}
-						/* eslint-enable camelcase */
-					} );
-					return qualityGate.checkAll( previewTask.tasktype );
+					taskUrl: null
 				} );
 
 				$( suggestedEditsModuleNode ).find( '.mw-ge-small-task-card' )
@@ -142,7 +102,7 @@
 		mw.loader.using( 'mobile.init' ).done( function () {
 			// eslint-disable-next-line no-jquery/no-global-selector
 			var $summaryModulesContainer = $( '.growthexperiments-homepage-container' ),
-				summaryModulesSelector = '> .growthexperiments-homepage-module',
+				summaryModulesSelector = '> a > .growthexperiments-homepage-module',
 				summaryModulesOverlayLinksSelector = '[data-overlay-route]',
 				$summaryModules = $summaryModulesContainer.find( summaryModulesSelector ),
 				// eslint-disable-next-line no-jquery/no-global-selector

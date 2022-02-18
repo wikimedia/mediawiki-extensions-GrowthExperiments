@@ -45,11 +45,6 @@ abstract class BaseModule extends DashboardModule {
 	private $pageURL = null;
 
 	/**
-	 * @var string
-	 */
-	private $clickId = null;
-
-	/**
 	 * @param string $name Name of the module
 	 * @param IContextSource $ctx
 	 * @param Config $wikiConfig
@@ -88,39 +83,12 @@ abstract class BaseModule extends DashboardModule {
 	}
 
 	/**
-	 * Gets the click id (aka pageview token) for tracking purposes.
-	 * Used in some links as query parameter "geclickid"
-	 * @return string|null
-	 */
-	public function getClickId(): ?string {
-		return $this->clickId;
-	}
-
-	/**
-	 * Sets a click id (aka pageview token) for tracking purposes.
-	 * Used in some links that require tracking as query parameter "geclickid"
-	 * @param string $clickId
-	 */
-	public function setClickId( string $clickId ): void {
-		$this->clickId = $clickId;
-	}
-
-	/**
 	 * Gets whether the module will be wrapped in a link to its
 	 * full screen view or not
 	 * @return bool
 	 */
 	public function shouldWrapModuleWithLink(): bool {
 		return $this->shouldWrapModuleWithLink;
-	}
-
-	/**
-	 * Sets whether the module should be wrapped in a link to its
-	 * full screen view or not
-	 * @param bool $shouldWrapModuleWithLink
-	 */
-	public function setShouldWrapModuleWithLink( bool $shouldWrapModuleWithLink ): void {
-		$this->shouldWrapModuleWithLink = $shouldWrapModuleWithLink;
 	}
 
 	/**

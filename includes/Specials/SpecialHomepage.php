@@ -279,7 +279,6 @@ class SpecialHomepage extends SpecialPage {
 						continue;
 					}
 					$module->setPageURL( $this->getPageTitle()->getLinkURL() );
-					$module->setClickId( $this->pageviewToken );
 					$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_DESKTOP );
 					$out->addHTML( $html );
 				}
@@ -309,7 +308,6 @@ class SpecialHomepage extends SpecialPage {
 		] );
 		foreach ( $modules as $moduleName => $module ) {
 			$module->setPageURL( $this->getPageTitle()->getLinkURL() );
-			$module->setClickId( $this->pageviewToken );
 			$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_MOBILE_SUMMARY );
 			$this->getOutput()->addHTML( $html );
 		}

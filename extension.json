@@ -485,12 +485,8 @@
 				"ext.growthExperiments.Homepage.Logger/index.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
-				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
-				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
-				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				{
