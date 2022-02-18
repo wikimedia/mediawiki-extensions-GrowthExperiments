@@ -485,6 +485,8 @@
 				"ext.growthExperiments.Homepage.Logger/index.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/TaskPreviewWidget.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
 				"utils/Utils.js",
@@ -509,7 +511,10 @@
 				"growthexperiments-homepage-welcome-notice-body-variant-d",
 				"growthexperiments-homepage-welcome-notice-button-text-variant-c",
 				"growthexperiments-homepage-welcome-notice-button-text-variant-d",
-				"growthexperiments-homepage-suggestededits-tasktype-machine-description"
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
+				"growthexperiments-homepage-suggestededits-mobilesummary-footer-button",
+				"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle",
+				"growthexperiments-homepage-suggestededits-mobilesummary-footer"
 			],
 			"targets": [
 				"mobile"
@@ -758,6 +763,8 @@
 				"ext.growthExperiments.Homepage.styles/HelpModule.less",
 				"ext.growthExperiments.Homepage.styles/ImpactModule.less",
 				"ext.growthExperiments.Homepage.styles/MentorshipModule.less",
+				"ext.growthExperiments.Homepage.styles/TaskPreviewWidget.less",
+				"ext.growthExperiments.Homepage.styles/LastDayEditsWidget.less",
 				"ext.growthExperiments.Homepage.styles/SuggestedEditsModule.less",
 				"ext.growthExperiments.Homepage.styles/TaskExplanationWidget.less",
 				"ext.growthExperiments.Homepage.styles/SmallTaskCard.less",

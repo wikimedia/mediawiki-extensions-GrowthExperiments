@@ -1,9 +1,7 @@
 ( function () {
 	'use strict';
-
 	var HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
-		TaskTypesAbFilter = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
@@ -21,14 +19,25 @@
 	function loadExtraDataForSuggestedEdits( suggestedEditsModuleNode, shouldLog ) {
 		// FIXME doesn't belong here; not sure what the right place would be though.
 		var GrowthTasksApi = require( '../ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js' ),
-			SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js' ),
+			TaskPreviewWidget = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskPreviewWidget.js' ),
+			LastDayEditsWidget = require( '../ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js' ),
 			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || null,
+			extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ),
 			activationSettings = { 'growthexperiments-homepage-suggestededits-activated': 1 },
 			api = new GrowthTasksApi( {
 				suggestedEditsConfig: require( '../ext.growthExperiments.Homepage.SuggestedEdits/config.json' ),
 				isMobile: isMobile,
 				logContext: 'mobilesummary'
-			} );
+			} ),
+			contentPreviewSelector = '.growthexperiments-task-preview-widget, .growthexperiments-last-day-edits-widget',
+			previewTask = {
+				// Hide the page views in the small card preview by default.
+				pageviews: null,
+				// Avoid rendering the loading skeleton for the description.
+				// See SmallTaskCard.buildCard()
+				description: null
+			},
+			contentPreview;
 
 		if ( !isSuggestedEditsActivated ) {
 			// Tapping on the task card should be considered enough to activate the module, with no
@@ -45,20 +54,7 @@
 
 		if ( taskPreviewData && taskPreviewData.title ) {
 			api.getExtraDataFromPcs( taskPreviewData ).then( function ( task ) {
-				var previewTask, taskCard;
-
-				// Hide the pageview count in the preview card.
-				previewTask = $.extend( {}, task );
-				previewTask.pageviews = null;
-
-				taskCard = new SmallTaskCard( {
-					task: previewTask,
-					taskTypes: TaskTypesAbFilter.getTaskTypes(),
-					taskUrl: null
-				} );
-
-				$( suggestedEditsModuleNode ).find( '.mw-ge-small-task-card' )
-					.replaceWith( taskCard.$element );
+				$.extend( previewTask, task );
 
 				if ( shouldLog ) {
 					newcomerTaskLogger.log( task, 0 );
@@ -66,12 +62,31 @@
 						{ newcomerTaskToken: task.token } );
 				}
 			}, function ( jqXHR, textStatus, errorThrown ) {
+				// If the PCS request fails display the task
+				// with the preview data instead
+				$.extend( previewTask, taskPreviewData );
 				// Error loading the task
 				if ( shouldLog ) {
 					homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-pseudo-impression',
 						{ type: 'error', errorMessage: textStatus + ' ' + errorThrown } );
 				}
+			} ).always( function () {
+				contentPreview = new TaskPreviewWidget( {
+					task: previewTask,
+					taskPosition: taskPreviewData.taskPosition,
+					taskCount: extraData.taskCount
+				} );
+				$( suggestedEditsModuleNode )
+					.find( contentPreviewSelector )
+					.replaceWith( contentPreview.$element );
 			} );
+		} else if ( extraData && extraData.taskCount === 0 ) {
+			contentPreview = new LastDayEditsWidget( {
+				editCount: extraData.editCount
+			} );
+			$( suggestedEditsModuleNode )
+				.find( contentPreviewSelector )
+				.replaceWith( contentPreview.$element );
 		} else if ( taskPreviewData && taskPreviewData.error ) {
 			// Error loading the task, on the server side
 			if ( shouldLog ) {
