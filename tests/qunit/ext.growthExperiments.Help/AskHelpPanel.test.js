@@ -23,8 +23,7 @@ const expectedMentorMessageKeys = [
 	'growthexperiments-homepage-mentorship-questionreview-header',
 	'growthexperiments-homepage-mentorship-confirmation-text',
 	'growthexperiments-homepage-mentorship-view-question-text',
-	'growthexperiments-help-panel-question-post-error',
-	'wikimedia-copyrightwarning'
+	'growthexperiments-help-panel-question-post-error'
 ];
 
 QUnit.module( 'ext.growthExperiments.Help/AskHelpPanel.js', QUnit.newMwEnvironment( {
@@ -111,8 +110,7 @@ QUnit.test( 'AskHelpPanel from helpdesk', function ( assert ) {
 		'growthexperiments-help-panel-questionreview-header',
 		'growthexperiments-help-panel-questioncomplete-confirmation-text',
 		'growthexperiments-help-panel-questioncomplete-view-link-text',
-		'growthexperiments-help-panel-question-post-error',
-		'wikimedia-copyrightwarning'
+		'growthexperiments-help-panel-question-post-error'
 	];
 	expectedMessageKeys.forEach( ( messageKey ) => {
 		assert.strictEqual( spy.calledWith( messageKey ), true );

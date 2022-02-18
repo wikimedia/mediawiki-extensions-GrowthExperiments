@@ -181,13 +181,15 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
  * Initialize properties based on this.askSource
  */
 AskHelpPanel.prototype.initializePanelProperties = function () {
-	var askFromMentor = this.askSource !== 'helpdesk';
+	var askFromMentor = this.askSource !== 'helpdesk',
+		configData = require( './data.json' );
 	this.storageKey = askFromMentor ?
 		'homepage-questionposter-question-text-mentorship' :
 		'help-panel-question-text';
 	this.previousQuestionText = mw.storage.get( this.storageKey );
 	// Do not post article title when asking from the homepage.
 	this.questionPosterAllowIncludingTitle = this.askSource !== 'mentor-homepage';
+	this.copyrightWarningHtml = configData.GEAskHelpCopyrightWarning;
 
 	if ( this.askSource === 'helpdesk' ) {
 		this.initializeHelpDeskProperties();
@@ -309,17 +311,15 @@ AskHelpPanel.prototype.getViewQuestionText = function () {
 /**
  * Get the copyright warning element
  *
- * @return {jQuery}
+ * @return {jQuery|undefined}
  */
 AskHelpPanel.prototype.getCopyrightWarning = function () {
-	var message = mw.message( 'wikimedia-copyrightwarning' );
-	// The message only exists if WikimediaMessages extension is installed.
-	if ( !message.exists() ) {
+	if ( !this.copyrightWarningHtml ) {
 		return;
 	}
 	return $( '<div>' )
 		.addClass( [ 'mw-ge-askHelpPanel-copyright' ] )
-		.append( message.parse() );
+		.append( this.copyrightWarningHtml );
 };
 
 /**
