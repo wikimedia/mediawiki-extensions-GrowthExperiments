@@ -42,7 +42,7 @@
 	"growthexperiments-help-panel-postedit-footer2-notsaved": "إغلاق",
 	"growthexperiments-help-panel-questionreview-title": "{{GENDER:|اطرح|اطرحي}} سؤالك على ميدان المساعدة",
 	"growthexperiments-help-panel-questionreview-title-mentor": "{{GENDER:|اسأل|اسألي}} مرشدك",
-	"growthexperiments-help-panel-questionreview-header": "عند إرسالك لسؤال، سيتم نشره <strong>بشكل علني</strong> باسم المستخدم الخاص بك، \"$2\"، إلى $1، حيث سيحاول محرر متطوع آخر تقديم إجابة في غضون يوم أو يومين.",
+	"growthexperiments-help-panel-questionreview-header": "عند إرسالك لسؤال، <strong>سَيُنشَر علنًا</strong> باسم المستخدم الخاص بك، \"$2\"، إلى $1، حيث سيحاول محرر متطوع آخر تقديم إجابة في غضون يوم أو يومين.",
 	"growthexperiments-help-panel-questionreview-label": "سؤالك",
 	"growthexperiments-help-panel-questionreview-include-article-title": "تضمين عنوان الصفحة مع سؤالي",
 	"growthexperiments-help-panel-question-subject-template": "سؤال من لوحة المساعدة",

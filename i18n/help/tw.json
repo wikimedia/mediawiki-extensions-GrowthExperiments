@@ -3,14 +3,18 @@
 		"authors": [
 			"AC Krah",
 			"Amoaniwaa",
+			"Baidoom",
+			"Charity00",
 			"Robertjamal12"
 		]
 	},
+	"growthexperiments-help-panel-submit-question-button-text": "Ma amansan nhu",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-publish": "Sɛ wobɛyɛ nsakraeɛ ahodoɔ pii, anaa wobɛkɔ so amia akyerɛkwan buruburu no so, na woatintim.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "Sɛ wode nkekaaho pii bɛka ho, anaa wobɛtoa so amia akyerɛkwan buruburu no so ama no atintim.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-publish": "Ɛbɛyɛ sɛ wode references/beae a wonyaa nsɛm no firii bebree bɛka ho, anaasɛ wobɛ mia \"$1\" no so ama amansan ahu {{GENDER:|your}} nsakrae!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "Mfonin boa ma nnipa sua adeɛ, nanso atwerɛsɛm pii nni bi",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-value": "{{GENDER:|Wo}} na wo bɛ kyerɛ sɛ yɛn fa mfoni bi nto Wikipedia so",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-text-value": "Mfoni no fi Wikimedia Commons, beae a mfoni a wɔn gyɛ hwee wɔ ho a Wikipedia de yɛ adwuma.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "Mfoni a {{GENDER:|wo}} gye to mu no, {{GENDER:|wo bɛ} kyerɛw asɛm kitiwa bi afa ho, na nea {{GENDER:|wo}} sesa yɛ no aba ama obia ɛhu."
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "Mfoni a {{GENDER:|wo}} gye to mu no, {{GENDER:|wo bɛ} kyerɛw asɛm kitiwa bi afa ho, na nea {{GENDER:|wo}} sesa yɛ no aba ama obia ɛhu.",
+	"growthexperiments-help-panel-questioncomplete-header": "Wo nsem bisa no akɔda dwa!"
 }
