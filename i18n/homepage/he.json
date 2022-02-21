@@ -10,7 +10,8 @@
 			"דגש",
 			"המקיסט",
 			"ישראל קלר",
-			"מגזין יהלום"
+			"מגזין יהלום",
+			"לואיקה"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|שלום}}, {{bidi:$1}}!",
@@ -35,7 +36,7 @@
 	"growthexperiments-homepage-email-header-confirmed": "כתובת דוא\"ל נוספה",
 	"growthexperiments-homepage-email-text-noemail": "מומלץ בשביל שחזור החשבון",
 	"growthexperiments-homepage-email-text-unconfirmed": "{{GENDER:$1|חפש|חפשי}} בדוא\"ל שלך את הקישור לאישור, או {{GENDER:$1|שלח|שלחי}} קישור חדש.",
-	"growthexperiments-homepage-email-text-confirmed": "כתובת הדוא\"ל {{GENDER:$1|שלך}} אושרה. {{GENDER:$1|אתה|את}} יכול לשנות את הגדרות הדוא\"ל שלך בהעדפות.",
+	"growthexperiments-homepage-email-text-confirmed": "כתובת הדוא\"ל {{GENDER:$1|שלך}} אושרה. {{GENDER:$1|אתה יכול|את יכולה|ביכולתך}} לשנות את הגדרות הדוא\"ל שלך בהעדפות.",
 	"growthexperiments-homepage-email-button-noemail": "הוספת כתובת",
 	"growthexperiments-homepage-email-button-unconfirmed": "קבלת קישור חדש",
 	"growthexperiments-homepage-email-button-confirmed": "העדפות",

@@ -92,7 +92,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "わかりました",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "記事の編集<strong>$1</strong>{{PLURAL:$1|回|回}}",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "編集<strong>$1</strong>{{PLURAL:$1|回|回}}",
-	"growthexperiments-homepage-impact-mobilebody-pageviews": "最近の編集以降の閲覧回数を見る（直近60日間）：",
+	"growthexperiments-homepage-impact-mobilebody-pageviews": "最近の編集以降の閲覧回数を見る (直近60日間):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "編集した記事の閲覧回数をモニターします",
 	"growthexperiments-tour-helpdesk-response-tip-title": "利用案内の通知",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|あなた}}の質問に返信があると、{{GENDER:$1|}}ここに新しい通知が表示されます。",

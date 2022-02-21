@@ -27,6 +27,7 @@
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Ахьа}} <strong>$1</strong> {{PLURAL:$1|хийцам}} бина (мадарра)",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Кхузахь гойтура йу {{GENDER:$1|ахьа}} кхоьллина йа хийцамаш бина агӀонашка нах хьежар.",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Хьажа йаззаме",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Иштта хьажа агӀонга хьовсаран детализаци",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "ХӀокху агӀонна ахьа тахана дуьххьара хийцам бар бахьнехь, нах хьовсар карладаьлла дац. Хьажа кхана!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Кхетта",
 	"growthexperiments-tour-helpdesk-response-tip-title": "ГӀоьнан форумера хаам",
