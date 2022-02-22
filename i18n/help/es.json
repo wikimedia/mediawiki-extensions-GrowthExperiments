@@ -44,7 +44,7 @@
 	"growthexperiments-help-panel-postedit-footer2-notsaved": "Cerrar",
 	"growthexperiments-help-panel-questionreview-title": "Preguntar en el Café",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Pregunta a tu mentor",
-	"growthexperiments-help-panel-questionreview-header": "Cuando envías una pregunta, se <strong>publica</strong> incluyendo tu nombre de usuario, \"$2\", en el $1, y otro editor voluntario tratará de darte una respuesta en un plazo aproximado de un día.",
+	"growthexperiments-help-panel-questionreview-header": "Cuando envías una pregunta, se <strong>comparte públicamente</strong> con tu nombre de usuario («$2») en $1, donde otro voluntario tratará de responderte en un plazo aproximado de un día.",
 	"growthexperiments-help-panel-questionreview-label": "Tu pregunta",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Incluir el título de la página en mi pregunta",
 	"growthexperiments-help-panel-question-subject-template": "Pregunta del panel de ayuda",

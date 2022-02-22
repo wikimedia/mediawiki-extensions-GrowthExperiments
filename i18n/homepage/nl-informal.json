@@ -18,7 +18,7 @@
 	"growthexperiments-tour-mentor-response-tip-personal-text": "Wanneer {{GENDER:$1|jouw}} {{GENDER:$2|mentor}} reageert, krijg {{GENDER:$1|je}} hier een nieuwe melding.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Bekijk andere gesprekken van {{GENDER:$2|jouw}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Vraag {{GENDER:$2|jouw}} {{GENDER:$1|mentor}}",
-	"growthexperiments-homepage-mentorship-questionreview-header": "Wanneer je een vraag stelt, wordt deze <strong>openbaar geplaatst</strong> onder je gebruikersnaam, \"$2\", tot $3, waar {{GENDER:$1|hij|zij|de mentor}} je vraag kan vinden en beantwoorden.",
+	"growthexperiments-homepage-mentorship-questionreview-header": "Wanneer je een vraag stelt, wordt deze <strong>openbaar gepubliceerd</strong> onder {{GENDER:$2|je}} gebruikersnaam, \"$2\", tot $3, waar {{GENDER:$1|hij|zij|de mentor}} je vraag kan vinden en beantwoorden.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "de overlegpagina van {{GENDER:$2|jouw}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Je}} vraag staat nu op de overlegpagina van je mentor, en daar plaatst {{GENDER:$1|hij|zij|die}} zo snel mogelijk een antwoord.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Bekijk {{GENDER:$2|je}} vraag op de overlegpagina van je {{GENDER:$1|mentor}}.",
