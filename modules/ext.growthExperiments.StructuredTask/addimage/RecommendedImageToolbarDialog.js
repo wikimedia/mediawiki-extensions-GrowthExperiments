@@ -207,7 +207,15 @@ RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 	var rejectionReasons = ve.init.target.recommendationRejectionReasons,
 		rejectionDialogLifecycle = this.surface.dialogs.openWindow(
-			'recommendedImageRejection', rejectionReasons );
+			'recommendedImageRejection', rejectionReasons ),
+		// eslint-disable-next-line camelcase
+		metadataOverride = { active_interface: 'rejection_dialog' },
+		getLogActionData = function () {
+			return $.extend( this.getSuggestionLogActionData(), {
+				// eslint-disable-next-line camelcase
+				rejection_reasons: ve.init.target.recommendationRejectionReasons || []
+			} );
+		}.bind( this );
 
 	this.logger.log( 'suggestion_reject', this.getSuggestionLogActionData() );
 
@@ -215,31 +223,16 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 	this.noButton.$element.find( '.oo-ui-buttonElement-button' ).trigger( 'blur' );
 
 	rejectionDialogLifecycle.opening.then( function () {
-		this.logger.log(
-			'impression',
-			$.extend( this.getSuggestionLogActionData(), {
-				// eslint-disable-next-line camelcase
-				rejection_reason: rejectionReasons
-			} ),
-			// eslint-disable-next-line camelcase
-			{ active_interface: 'rejection_dialog' }
-		);
+		this.logger.log( 'impression', getLogActionData(), metadataOverride );
 	}.bind( this ) );
 
 	rejectionDialogLifecycle.closed.then( function ( data ) {
 		if ( data && data.action === 'done' ) {
 			this.setState( false, data.reasons );
 			this.getArticleTarget().saveWithoutShowingDialog();
+			this.logger.log( 'confirm_reject_suggestion', getLogActionData(), metadataOverride );
 		}
-		this.logger.log(
-			'close',
-			$.extend( this.getSuggestionLogActionData(), {
-				// eslint-disable-next-line camelcase
-				rejection_reason: ve.init.target.recommendationRejectionReasons
-			} ),
-			// eslint-disable-next-line camelcase
-			{ active_interface: 'rejection_dialog' }
-		);
+		this.logger.log( 'close', getLogActionData(), metadataOverride );
 	}.bind( this ) );
 };
 
