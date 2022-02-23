@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use MediaWikiUnitTestCase;
@@ -35,6 +36,8 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		] );
 		$oresTopic1 = new OresBasedTopic( 'art', 'culture', [ 'painting', 'drawing' ] );
 		$oresTopic2 = new OresBasedTopic( 'science', 'stem', [ 'physics', 'biology' ] );
+		$campaignTopic1 = new CampaignTopic( 'biology', 'hastemplate:Taxobox' );
+		$campaignTopic2 = new CampaignTopic( 'argentina', 'morelike:Argentina' );
 
 		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
@@ -71,6 +74,16 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$this->assertQueryStrings( $restrictedQueries, [
 			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:painting|drawing pageid:1|2|3',
 			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:physics|biology pageid:1|2|3'
+		] );
+
+		$searchExpressionBasedTopicQueries = $searchStrategy->getQueries( [ $taskType ],
+			[ $campaignTopic1, $campaignTopic2 ] );
+		$this->assertCount( 2, $searchExpressionBasedTopicQueries );
+		$this->assertTaskTypeInQueries( $searchExpressionBasedTopicQueries, [ 'copyedit' ] );
+		$this->assertTopicsInQueries( $searchExpressionBasedTopicQueries, [ 'biology', 'argentina' ] );
+		$this->assertQueryStrings( $searchExpressionBasedTopicQueries, [
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" hastemplate:Taxobox',
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" morelike:Argentina',
 		] );
 	}
 
