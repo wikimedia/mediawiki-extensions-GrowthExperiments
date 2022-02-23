@@ -321,7 +321,7 @@ StructuredTaskArticleTarget.prototype.teardownWithoutPrompt = function ( trackMe
 
 /** @inheritDoc **/
 StructuredTaskArticleTarget.prototype.tryTeardown = function ( noPrompt, trackMechanism ) {
-	if ( this.edited ) {
+	if ( this.edited || this.hasReviewedSuggestions() ) {
 		return this.constructor.parent.super.prototype.tryTeardown.call(
 			this, noPrompt, trackMechanism
 		);
