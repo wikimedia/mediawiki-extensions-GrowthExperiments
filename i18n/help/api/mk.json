@@ -6,6 +6,6 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Работа со прашања поставени преку за тековниот корисник.",
 	"apihelp-helppanelquestionposter-param-body": "Текстот на прашањето напишано од корисникот.",
-	"apihelp-helppanelquestionposter-param-source": "Составницата во изворот на прашањето. Важечки вредности се „helppanel“, „homepage-help“ и „homepage-mentorship“",
+	"apihelp-helppanelquestionposter-param-source": "Начинот на кој било поставено прашањето.",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Релеватниот наслов, ако се одбере, за приложување кон прашањето."
 }

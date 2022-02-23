@@ -30,7 +30,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "ఇట్టీవలి దిద్దుబాటు",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "ఇటీవలి రోజులు",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "ఇటీవలి నెలలు",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "సుక్కు గుర్తున్న శిష్యులనే చూపించు",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "చుక్క గుర్తున్న శిష్యులనే చూపించు",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "వెతుకు",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 కిందట చురుగ్గా ఉన్నారు",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "తెలియని",
@@ -43,5 +43,8 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "గురువుల జాబితా",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "మిమ్మల్ని మీరు గురువుగా పరిచయం చేసుకోవడం ఎలా",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "శిష్యుణ్ణి పొందడం ఎలా",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "గ్రోత్ పరికరాలు"
+	"growthexperiments-mentor-dashboard-resources-link-tools": "గ్రోత్ పరికరాలు",
+	"growthexperiments-rcfilters-mentorship-title": "గురూపదేశం",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "{{GENDER:|మీకు}} నిర్దేశించిన ఇతర శిష్యులు",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "ఔను, నా శిష్యులను వేరేవారికి జోడించు"
 }

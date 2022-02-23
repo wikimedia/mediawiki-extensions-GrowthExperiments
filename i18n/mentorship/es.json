@@ -9,7 +9,9 @@
 			"Zapipedia (WMF)"
 		]
 	},
+	"growthexperiments-mentor-dashboard-title": "Panel de control del mentor",
 	"growthexperiments-mentor-dashboard-pt-link": "Tablón de mentores",
+	"growthexperiments-mentor-dashboard-disabled": "El panel de control de mentores no está habilitado en esta wiki.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Tus}} aprendices",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Véase {{GENDER:|tus}} aprendices abajo. Usa los filtros para cambiar cuáles aprendices se muestran.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "¿Quién está en tu tabla?",
@@ -30,6 +32,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Edición más reciente",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Últimos días",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Últimos meses",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Mostrar sólo a los alumnos destacados",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Búsqueda",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "activo hace $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "desconocido",
@@ -42,7 +45,9 @@
 	"growthexperiments-mentor-dashboard-resources-headline": "Recursos",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "La lista de mentores y mentoras",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Cómo presentarte como mentor",
+	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Cómo solicitar un alumno",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Herramientas de Crecimiento",
 	"growthexperiments-rcfilters-mentorship-title": "Mentoría",
-	"growthexperiments-quit-mentorship-title": "Abandonar mentoría"
+	"growthexperiments-quit-mentorship-title": "Abandonar mentoría",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Sí, reasignar a mis alumnos"
 }

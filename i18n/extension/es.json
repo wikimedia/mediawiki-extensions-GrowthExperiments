@@ -9,7 +9,9 @@
 			"Mnivar",
 			"ZebaX2010",
 			"Avengium",
-			"Danniel07"
+			"Danniel07",
+			"DDPAT",
+			"Zapipedia (WMF)"
 		]
 	},
 	"growthexperiments-desc": "Esta extensión contiene experimentos llevados a cabo por el \"Growth team\" de la Fundación Wikimedia.",
@@ -23,7 +25,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Última actualización por [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Última actualización por usuario desconocido $1.",
 	"growthexperiments-edit-config-pretext": "Esta página te permite editar la configuración de las funciones del equipo [[:mw:Special:MyLanguage/Growth|Crecimiento]]. Editarás $1 con tu nombre. Puedes ver tus cambios en el historial de esa página.",
-	"growthexperiments-edit-config-pretext-unprivileged": "Este formulario permite a los usuarios con privilegios editar la configuración de [[:mw:Special:MyLanguage/Growth| Crecimiento]] características del equipo.",
+	"growthexperiments-edit-config-pretext-unprivileged": "Este formulario permite a los usuarios autorizados editar la configuración de las características del equipo [[:mw:Special:MyLanguage/Growth|Growth]].",
 	"growthexperiments-edit-config-feedback-headline": "¿Tienes ideas o preguntas sobre este formulario?",
 	"growthexperiments-edit-config-feedback-cta": "Dejar comentarios",
 	"growthexperiments-edit-config-error-invalid-title": "La página de configuración no se configuró correctamente",

@@ -50,7 +50,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Werkzeuge zur Neulings-Startseite",
 	"growthexperiments-rcfilters-mentorship-title": "Betreuung durch Lotsen",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Deine}} Sternchen-Mentees",
-	"growthexperiments-rcfilters-mentorship-starred-desc": "{{GENDER:|Deine}} Mentees, die {{GENDER:|du}} auf dem {{GENDER:|deinem}} Mentor-Dashboard mit einem Sternchen versehen hast.",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "{{GENDER:|Deine}} Mentees, die {{GENDER:|du}} auf {{GENDER:|deinem}} Mentor-Dashboard mit einem Sternchen versehen hast.",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Deine}} Mentees ohne Sternchen",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Andere Mentees, die {{GENDER:|dir}} zugewiesen wurden",
 	"growthexperiments-quit-mentorship-title": "Lotsen-Tätigkeit beenden",
