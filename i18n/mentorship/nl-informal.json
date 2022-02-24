@@ -6,7 +6,7 @@
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Hieronder staan jouw leerlingen. Met de filters kun je aangeven welke leerlingen je wilt weergegeven.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Wie staat er in jouw tabel?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "De tabel toont alleen jouw leerlingen die in de afgelopen twee weken een account hebben aangemaakt of die in de afgelopen zes maanden iets hebben bewerkt. De gegevens worden elke drie uur bijgewerkt.",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Misschien heb je nog geen leerlingen toegewezen gekregen. De gegevens worden iedere dag bijgewerkt.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "In deze tabel staan alleen jouw leerlingen van wie het account in de afgelopen twee weken is aangemaakt of die in de afgelopen zes maanden iets hebben bewerkt, en voor wie [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|de thuispagina voor nieuwkomers]] is geactiveerd. De gegevens worden elke drie uur bijgewerkt.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Misschien heb je nog geen leerlingen toegewezen gekregen. De gegevens worden elke drie uur bijgewerkt.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Wijzig je filters om leerlingen te vinden."
 }
