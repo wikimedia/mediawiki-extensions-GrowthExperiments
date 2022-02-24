@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 
 use Config;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use MediaWiki\Hook\BeforeWelcomeCreationHook;
 use MediaWiki\Logger\LoggerFactory;
@@ -28,13 +29,20 @@ class WelcomeSurveyHooks implements
 	/** @var WelcomeSurveyFactory */
 	private $welcomeSurveyFactory;
 
+	/** @var CampaignConfig */
+	private $campaignConfig;
+
 	/**
 	 * @param Config $config
 	 * @param WelcomeSurveyFactory $welcomeSurveyFactory
+	 * @param CampaignConfig $campaignConfig
 	 */
-	public function __construct( Config $config, WelcomeSurveyFactory $welcomeSurveyFactory ) {
+	public function __construct(
+		Config $config, WelcomeSurveyFactory $welcomeSurveyFactory, CampaignConfig $campaignConfig
+	) {
 		$this->config = $config;
 		$this->welcomeSurveyFactory = $welcomeSurveyFactory;
+		$this->campaignConfig = $campaignConfig;
 	}
 
 	/**
@@ -77,7 +85,7 @@ class WelcomeSurveyHooks implements
 	 */
 	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
 		if ( !$this->isWelcomeSurveyEnabled() ||
-			VariantHooks::isGrowthDonorCampaign( RequestContext::getMain() ) ||
+			VariantHooks::isDonorOrGlamCampaign( RequestContext::getMain(), $this->campaignConfig ) ||
 			HomepageHooks::getGrowthFeaturesOptInOptOutOverride() === HomepageHooks::GROWTH_FORCE_OPTOUT
 		) {
 			return;

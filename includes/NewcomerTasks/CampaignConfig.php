@@ -103,6 +103,19 @@ class CampaignConfig {
 	}
 
 	/**
+	 * Get the topic IDs to exclude for the specified campaign
+	 *
+	 * @param string $campaign
+	 * @return ?string
+	 */
+	public function getCampaignPattern( string $campaign ): ?string {
+		if ( array_key_exists( $campaign, $this->config ) ) {
+			return $this->config[ $campaign ][ 'pattern' ];
+		}
+		return null;
+	}
+
+	/**
 	 * Check whether the user is in the specified campaign
 	 *
 	 * @param UserIdentity $user
@@ -110,12 +123,12 @@ class CampaignConfig {
 	 * @return bool
 	 */
 	public function isUserInCampaign( UserIdentity $user, string $campaign ): bool {
-		if ( $this->userOptionsLookup && array_key_exists( $campaign, $this->config ) ) {
+		$campaignPattern = $this->getCampaignPattern( $campaign );
+		if ( $this->userOptionsLookup && $campaignPattern ) {
 			$userCampaign = $this->userOptionsLookup->getOption(
 				$user, VariantHooks::GROWTH_CAMPAIGN
 			);
-			return $userCampaign &&
-				preg_match( $this->config[ $campaign ][ 'pattern' ], $userCampaign );
+			return $userCampaign && preg_match( $campaignPattern, $userCampaign );
 		}
 		return false;
 	}

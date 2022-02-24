@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use Config;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialCreateAccountCampaign;
 use IContextSource;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
@@ -61,12 +62,18 @@ class VariantHooks implements
 
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
+	/** @var CampaignConfig */
+	private $campaignConfig;
 
 	/**
 	 * @param UserOptionsManager $userOptionsManager
+	 * @param CampaignConfig $campaignConfig
 	 */
-	public function __construct( UserOptionsManager $userOptionsManager ) {
+	public function __construct(
+		UserOptionsManager $userOptionsManager, CampaignConfig $campaignConfig
+	) {
 		$this->userOptionsManager = $userOptionsManager;
+		$this->campaignConfig = $campaignConfig;
 	}
 
 	/** @inheritDoc */
@@ -104,25 +111,37 @@ class VariantHooks implements
 	public function onSpecialPage_initList( &$list ) {
 		// FIXME: Temporary hack for T284740, should be removed after the end of the campaign.
 		$context = RequestContext::getMain();
-		if ( self::isGrowthDonorCampaign( $context ) ) {
+		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig ) ) {
 			$list['CreateAccount']['class'] = SpecialCreateAccountCampaign::class;
 		}
 	}
 
 	/**
-	 * Check if this is a Growth donor campaign by inspecting the campaign query parameter.
+	 * Check whether this is donor or GLAM campaign by inspecting the campaign query parameter.
 	 *
 	 * @param IContextSource $context
+	 * @param CampaignConfig $campaignConfig
 	 * @return bool
 	 */
-	public static function isGrowthDonorCampaign( IContextSource $context ): bool {
-		$geCampaignPattern = $context->getConfig()->get( 'GECampaignPattern' );
-		$campaign = self::getCampaign( $context );
-		return $geCampaignPattern
-			&& $campaign
-			// T285506: Don't assume the context has a title
-			&& ( !$context->getTitle() || $context->getTitle()->isSpecial( 'CreateAccount' ) )
-			&& preg_match( $geCampaignPattern, $campaign );
+	public static function isDonorOrGlamCampaign(
+		IContextSource $context, CampaignConfig $campaignConfig
+	): bool {
+		if ( self::shouldCheckForCampaign( $context ) ) {
+			$campaign = self::getCampaign( $context );
+
+			if ( !$campaign ) {
+				return false;
+			}
+
+			$geCampaignPattern = $context->getConfig()->get( 'GECampaignPattern' );
+			if ( $geCampaignPattern && preg_match( $geCampaignPattern, $campaign ) ) {
+				return true;
+			}
+			// FIXME remove when GLAM campaign is over
+			$glamCampaignPattern = $campaignConfig->getCampaignPattern( 'growth-glam-2022' );
+			return $glamCampaignPattern && preg_match( $glamCampaignPattern, $campaign );
+		}
+		return false;
 	}
 
 	/**
@@ -162,7 +181,7 @@ class VariantHooks implements
 			return;
 		}
 		$context = RequestContext::getMain();
-		if ( self::isGrowthDonorCampaign( $context ) ) {
+		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig ) ) {
 			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $this->getCampaign( $context ) );
 		}
 	}
@@ -170,8 +189,19 @@ class VariantHooks implements
 	/** @inheritDoc */
 	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
 		$context = RequestContext::getMain();
-		if ( self::isGrowthDonorCampaign( $context ) ) {
+		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig ) ) {
 			$context->getOutput()->redirect( SpecialPage::getSafeTitleFor( 'Homepage' )->getFullUrlForRedirect() );
 		}
+	}
+
+	/**
+	 * Check whether the campaign query parameter should be inspected
+	 *
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	private static function shouldCheckForCampaign( IContextSource $context ): bool {
+		// T285506: Don't assume the context has a title
+		return !$context->getTitle() || $context->getTitle()->isSpecial( 'CreateAccount' );
 	}
 }
