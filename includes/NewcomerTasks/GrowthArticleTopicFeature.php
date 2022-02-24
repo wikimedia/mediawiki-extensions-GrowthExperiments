@@ -7,7 +7,8 @@ use CirrusSearch\WarningCollector;
 use Message;
 
 /**
- * Customized articletopic: search query that recignizes an extra keyword ('argentina').
+ * Implementation of growtharticletopic: keyword which is similar to articletopic: but
+ * uses custom tags which are managed manually.
  * FIXME This is a hack that will be removed once the feature is not needed; see T301030.
  */
 class GrowthArticleTopicFeature extends ArticleTopicFeature {
@@ -16,20 +17,15 @@ class GrowthArticleTopicFeature extends ArticleTopicFeature {
 
 	public const TAG_PREFIX = 'classification.oneoff.T301028';
 
-	/** @override */
-	public const TERMS_TO_LABELS = [
-		'argentina' => 'Geography.Countries.Argentina',
-	];
-
 	/** @inheritDoc */
 	public function parseValue(
 		$key, $value, $quotedValue, $valueDelimiter, $suffix, WarningCollector $warningCollector
 	) {
 		$topics = explode( '|', $value );
-		$invalidTopics = array_diff( $topics, array_keys( self::TERMS_TO_LABELS ) );
-		$validTopics = array_values( array_filter( array_map( static function ( $topic ) {
-			return self::TERMS_TO_LABELS[$topic];
-		}, array_diff( $topics, $invalidTopics ) ) ) );
+		$validTopics = array_filter( $topics, static function ( string $topic ) {
+			return preg_match( '/^[a-zA-Z0-9-_]+$/', $topic );
+		} );
+		$invalidTopics = array_diff( $topics, $validTopics );
 
 		if ( $invalidTopics ) {
 			$warningCollector->addWarning( 'growthexperiments-homepage-suggestededits-articletopic-invalid-topic',
