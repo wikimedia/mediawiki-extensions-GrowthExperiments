@@ -35,21 +35,24 @@ class GrowthArticleTopicFeatureTest extends MediaWikiUnitTestCase {
 			$this->markTestSkipped( 'depends on CirrusSearch' );
 		}
 		return [
-			'argentina accepted' => [
+			'single keyword' => [
 				'argentina',
 				[
-					'topics' => [
-						GrowthArticleTopicFeature::TERMS_TO_LABELS['argentina'],
-					],
+					'topics' => [ 'argentina' ],
 					'tag_prefix' => GrowthArticleTopicFeature::TAG_PREFIX,
 				],
 			],
-			'articletopic topics not accepted' => [
-				'media|women|argentina',
+			'multiple keywords' => [
+				'argentina|chile',
 				[
-					'topics' => [
-						GrowthArticleTopicFeature::TERMS_TO_LABELS['argentina'],
-					],
+					'topics' => [ 'argentina', 'chile' ],
+					'tag_prefix' => GrowthArticleTopicFeature::TAG_PREFIX,
+				],
+			],
+			'invalid keyword' => [
+				'argentina|crêpe',
+				[
+					'topics' => [ 'argentina' ],
 					'tag_prefix' => GrowthArticleTopicFeature::TAG_PREFIX,
 				],
 				[ 'growthexperiments-homepage-suggestededits-articletopic-invalid-topic' ],
