@@ -500,10 +500,7 @@ return [
 		}
 
 		$configurationLoader->setCampaignConfigCallback( static function () use ( $growthServices ) {
-			return new CampaignConfig(
-				$growthServices->getGrowthWikiConfig()->get( 'GECampaigns' ) ?? [],
-				$growthServices->getGrowthWikiConfig()->get( 'GECampaignTopics' ) ?? []
-			);
+			return $growthServices->getGrowthExperimentsCampaignConfig();
 		} );
 
 		return $configurationLoader;
@@ -667,11 +664,7 @@ return [
 							$growthServices->getNewcomerTasksConfigurationLoader(),
 							$growthServices->getImageRecommendationSubmissionLogFactory(),
 							$growthServices->getLinkRecommendationSubmissionLogFactory(),
-							new CampaignConfig(
-								$growthServices->getGrowthWikiConfig()->get( 'GECampaigns' ) ?? [],
-								[],
-								$services->getUserOptionsLookup()
-							)
+							$growthServices->getGrowthExperimentsCampaignConfig()
 						]
 					],
 				]
@@ -820,5 +813,16 @@ return [
 			$services->getUserOptionsLookup()
 		);
 	},
+
+	'GrowthExperimentsCampaignConfig' => static function (
+		MediaWikiServices $services
+	): CampaignConfig {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new CampaignConfig(
+			$growthServices->getGrowthWikiConfig()->get( 'GECampaigns' ) ?? [],
+			$growthServices->getGrowthWikiConfig()->get( 'GECampaignTopics' ) ?? [],
+			$services->getUserOptionsLookup()
+		);
+	}
 
 ];

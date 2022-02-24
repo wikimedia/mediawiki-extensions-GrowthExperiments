@@ -915,15 +915,15 @@ class SuggestedEdits extends BaseModule {
 	 *
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param User $user
-	 * @param Config $config
+	 * @param Config $wikiConfig
 	 *
 	 * @return array
 	 */
 	public static function getTopicsToExclude(
-		UserOptionsLookup $userOptionsLookup, User $user, Config $config
+		UserOptionsLookup $userOptionsLookup, User $user, Config $wikiConfig
 	): array {
 		$campaignConfig = new CampaignConfig(
-			$config->get( 'GECampaigns' ) ?? [],
+			$wikiConfig->get( 'GECampaigns' ) ?? [],
 			[],
 			$userOptionsLookup
 		);
