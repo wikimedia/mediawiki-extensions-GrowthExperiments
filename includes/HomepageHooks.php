@@ -356,11 +356,16 @@ class HomepageHooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$context = $out->getContext();
-		if ( self::isHomepageEnabled( $skin->getUser() ) && Util::isMobile( $skin ) ) {
+		if (
+			Util::isMobile( $skin ) &&
+			// Optimisation: isHomepageEnabled() is non-trivial, check it last
+			self::isHomepageEnabled( $skin->getUser() )
+		) {
 			$out->addModuleStyles( 'ext.growthExperiments.mobileMenu.icons' );
 		}
 		if ( $context->getTitle()->inNamespaces( NS_MAIN, NS_TALK ) &&
-			SuggestedEdits::isEnabled( $context ) ) {
+			SuggestedEdits::isEnabled( $context )
+		) {
 			// Manage the suggested edit session.
 			$out->addModules( 'ext.growthExperiments.SuggestedEditSession' );
 		}
@@ -459,15 +464,15 @@ class HomepageHooks implements
 		SkinTemplate $skin,
 		SkinOptions $skinOptions
 	) {
-		if ( !self::isHomepageEnabled( $skin->getUser() ) ) {
-			return;
-		}
 		if ( $skin->getTitle()->isSpecial( 'Homepage' ) ||
-			 self::titleIsUserPageOrUserTalk( $skin->getTitle(), $skin->getUser() ) ) {
-			$skinOptions->setMultiple( [
-				SkinOptions::TALK_AT_TOP => true,
-				SkinOptions::TABS_ON_SPECIALS => true,
-			] );
+			 self::titleIsUserPageOrUserTalk( $skin->getTitle(), $skin->getUser() )
+		) {
+			if ( self::isHomepageEnabled( $skin->getUser() ) ) {
+				$skinOptions->setMultiple( [
+					SkinOptions::TALK_AT_TOP => true,
+					SkinOptions::TABS_ON_SPECIALS => true,
+				] );
+			}
 		}
 	}
 
@@ -563,7 +568,7 @@ class HomepageHooks implements
 	 */
 	public function onPersonalUrls( &$personal_urls, &$title, $sk ): void {
 		$user = $sk->getUser();
-		if ( !self::isHomepageEnabled( $user ) || Util::isMobile( $sk ) ) {
+		if ( Util::isMobile( $sk ) || !self::isHomepageEnabled( $user ) ) {
 			return;
 		}
 
@@ -583,13 +588,14 @@ class HomepageHooks implements
 	 * @throws ConfigException
 	 */
 	public function onMessageCache__get( &$lcKey ) {
-		$user = RequestContext::getMain()->getUser();
-		if (
-			$lcKey === 'tooltip-pt-userpage' &&
-			self::isHomepageEnabled( $user ) &&
-			$this->userHasPersonalToolsPrefEnabled( $user )
-		) {
-			$lcKey = 'tooltip-pt-homepage';
+		// Optimisation: There are 1000s of messages, limit cost for each one (T302623)
+		if ( $lcKey === 'tooltip-pt-userpage' ) {
+			$user = RequestContext::getMain()->getUser();
+			if ( self::isHomepageEnabled( $user ) &&
+				$this->userHasPersonalToolsPrefEnabled( $user )
+			) {
+				$lcKey = 'tooltip-pt-homepage';
+			}
 		}
 	}
 
