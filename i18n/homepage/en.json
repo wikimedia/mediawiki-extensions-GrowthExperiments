@@ -165,7 +165,7 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1B",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edits in the last day",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|edit|edits}} in the last day",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Volunteers like you have contributed to improving {{SITENAME}} today. Join in!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "See all suggestions",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Fix spelling, grammar, and tone",
