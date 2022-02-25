@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ailbeve",
-			"DDPAT"
+			"DDPAT",
+			"Ice bulldog"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Получить подходящее заданию, которое рекомендовано для новичков.",
