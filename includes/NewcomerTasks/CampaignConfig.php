@@ -94,7 +94,7 @@ class CampaignConfig {
 	 * @param ?string $campaign
 	 * @return array
 	 */
-	public function getTopicsToExcludeForCampaign( ?string $campaign = '' ): array {
+	public function getTopicsToExcludeForCampaign( ?string $campaign = null ): array {
 		if ( $campaign && array_key_exists( $campaign, $this->config ) ) {
 			// Make sure topics shared between multiple campaigns aren't excluded
 			return array_diff( $this->topics, $this->getTopicsForCampaign( $campaign ) );
