@@ -1,4 +1,6 @@
 'use strict';
+const TaskTypesAbFilter = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' );
+
 const linkRecommendationSuggestedEditSession = {
 	taskType: 'link-recommendation',
 	active: true,
@@ -11,23 +13,13 @@ const copyEditRecommendationSuggestedEditSession = {
 	connect: function () {},
 	save: function () {}
 };
-const suggestedEditsPanel = {
-	toggleFooter: function () {},
-	toggleSwitchEditorPanel: function () {}
-};
 
-let HelpPanelProcessDialog, TaskTypesAbFilter, sandbox;
+let HelpPanelProcessDialog;
 
 QUnit.module( 'ext.growthExperiments.Help/HelpPanelProcessDialog.js', QUnit.newMwEnvironment( {
-	beforeEach: function () {
+	beforeEach() {
+		this.sandbox.stub( TaskTypesAbFilter, 'getTaskTypes' ).returns( {} );
 		HelpPanelProcessDialog = require( '../../../modules/ext.growthExperiments.Help/HelpPanelProcessDialog.js' );
-		TaskTypesAbFilter = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' );
-		sandbox = sinon.sandbox.create();
-		sandbox.stub( TaskTypesAbFilter, 'getTaskTypes' ).returns( {} );
-	},
-
-	afterEach: function () {
-		sandbox.restore();
 	}
 } ) );
 
@@ -57,11 +49,12 @@ QUnit.test( 'updateEditMode for link-recommendation', function ( assert ) {
 			}
 		}
 	} );
-	helpPanelProcessDialog.suggestededitsPanel = suggestedEditsPanel;
-	sandbox.stub( helpPanelProcessDialog, 'updateMode' );
-	const spy = sandbox.spy( helpPanelProcessDialog, 'swapPanel' );
+	const windowManager = new OO.ui.WindowManager( { modal: false } );
+	windowManager.addWindows( [ helpPanelProcessDialog ] );
+	this.sandbox.stub( helpPanelProcessDialog, 'updateMode' );
+	this.sandbox.spy( helpPanelProcessDialog, 'swapPanel' );
 	helpPanelProcessDialog.updateEditMode();
-	assert.true( spy.notCalled );
+	assert.true( helpPanelProcessDialog.swapPanel.notCalled );
 } );
 
 QUnit.test( 'updateEditMode for copyedit, isEditing', function ( assert ) {
@@ -76,9 +69,10 @@ QUnit.test( 'updateEditMode for copyedit, isEditing', function ( assert ) {
 			}
 		}
 	} );
-	helpPanelProcessDialog.suggestededitsPanel = suggestedEditsPanel;
-	sandbox.stub( helpPanelProcessDialog, 'updateMode' );
-	const spy = sandbox.stub( helpPanelProcessDialog, 'swapPanel' );
+	const windowManager = new OO.ui.WindowManager( { modal: false } );
+	windowManager.addWindows( [ helpPanelProcessDialog ] );
+	this.sandbox.stub( helpPanelProcessDialog, 'updateMode' );
+	this.sandbox.stub( helpPanelProcessDialog, 'swapPanel' );
 	helpPanelProcessDialog.updateEditMode();
-	assert.true( spy.calledWith( 'home' ) );
+	assert.true( helpPanelProcessDialog.swapPanel.calledWith( 'home' ) );
 } );

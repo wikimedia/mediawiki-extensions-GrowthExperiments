@@ -1598,6 +1598,13 @@
 			"modules/ext.growthExperiments.Help/HelpPanelLogger.js",
 			"tests/qunit/ext.growthExperiments.Help/HelpPanelLogger.test.js",
 			"modules/ext.growthExperiments.Help/HelpPanelProcessDialog.js",
+			"modules/ext.growthExperiments.Help/HelpPanelSearchWidget.js",
+			"modules/ext.growthExperiments.Help/HelpPanelProcessDialog.SuggestedEditsPanel.js",
+			"modules/ui-components/SuggestedEditsPeek.js",
+			"modules/ext.growthExperiments.Help/QuickStartTips.js",
+			"modules/ext.growthExperiments.Help/QuickStartTipsTabPanelLayout.js",
+			"modules/ext.growthExperiments.Help/HelpPanelHomeButtonWidget.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
 			"tests/qunit/ext.growthExperiments.Help/HelpPanelProcessDialog.test.js",
 			"modules/ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.js",
 			"tests/qunit/ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.test.js",
@@ -1627,27 +1634,11 @@
 				"file": "tests/qunit/ext.growthExperiments.Help/configData.json"
 			},
 			{
-				"name": "modules/ext.growthExperiments.Help/HelpPanelProcessDialog.SuggestedEditsPanel.js",
-				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
-			},
-			{
-				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
-				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
-			},
-			{
 				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
 				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
 			},
 			{
 				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/DefaultTaskTypes.json",
-				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
-			},
-			{
-				"name": "modules/ext.growthExperiments.Help/HelpPanelSearchWidget.js",
-				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
-			},
-			{
-				"name": "modules/ext.growthExperiments.Help/HelpPanelHomeButtonWidget.js",
 				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
 			}
 		],
