@@ -59,17 +59,13 @@ class VariantHooks implements
 	/** @var string User option name for storing the campaign associated with account creation */
 	public const GROWTH_CAMPAIGN = 'growthexperiments-campaign';
 
-	/** @var Config */
-	private $config;
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
 	/**
-	 * @param Config $config
 	 * @param UserOptionsManager $userOptionsManager
 	 */
-	public function __construct( Config $config, UserOptionsManager $userOptionsManager ) {
-		$this->config = $config;
+	public function __construct( UserOptionsManager $userOptionsManager ) {
 		$this->userOptionsManager = $userOptionsManager;
 	}
 
@@ -101,7 +97,7 @@ class VariantHooks implements
 	/** @inheritDoc */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$vars['wgGEUserVariants'] = self::VARIANTS;
-		$vars['wgGEDefaultUserVariant'] = $this->config->get( 'GEHomepageDefaultVariant' );
+		$vars['wgGEDefaultUserVariant'] = $config->get( 'GEHomepageDefaultVariant' );
 	}
 
 	/** @inheritDoc */
@@ -129,6 +125,11 @@ class VariantHooks implements
 			&& preg_match( $geCampaignPattern, $campaign );
 	}
 
+	/**
+	 * @param IContextSource $context
+	 * @return string
+	 * @codeCoverageIgnore
+	 */
 	private static function getCampaign( IContextSource $context ): string {
 		return $context->getRequest()->getVal( 'campaign', '' );
 	}
