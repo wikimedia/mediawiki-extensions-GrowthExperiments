@@ -16,7 +16,7 @@ use MalformedTitleException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\ProperPageIdentity;
-use MediaWiki\Storage\RevisionLookup;
+use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\User\UserIdentity;
 use Message;
 use Psr\Log\LoggerInterface;

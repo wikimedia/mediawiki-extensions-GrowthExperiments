@@ -4,9 +4,9 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use MediaWiki\Revision\MutableRevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
-use MediaWiki\Storage\RevisionRecord;
 use MediaWikiIntegrationTestCase;
 use MockTitleTrait;
 use Wikimedia\TestingAccessWrapper;
