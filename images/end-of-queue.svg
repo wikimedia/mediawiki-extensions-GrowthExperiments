@@ -8,11 +8,11 @@
 		<circle cx="72" cy="72" r="64" fill="#FFF"/>
 		<rect width="8" height="96" x="24" y="32" fill="#A2A9B1" rx="1"/>
 		<rect width="8" height="96" x="112" y="32" fill="#A2A9B1" rx="1"/>
-		<use fill="#FFF" xlink:href="#a"/>
-		<use fill="#FC3" fill-opacity=".5" xlink:href="#a"/>
+		<use xlink:href="#a" fill="#FFF"/>
+		<use xlink:href="#a" fill="#FC3" fill-opacity=".5"/>
 		<path fill="#54595D" d="m114 41 12 18h-20L94 41h20zm-38 0 12 18H68L56 41h20zm-38 0 12 18H30L18 41h20z"/>
-		<use fill="#FFF" xlink:href="#b"/>
-		<use fill="#FC3" fill-opacity=".5" xlink:href="#b"/>
+		<use xlink:href="#b" fill="#FFF"/>
+		<use xlink:href="#b" fill="#FC3" fill-opacity=".5"/>
 		<path fill="#54595D" d="m114 81 12 18h-20L94 81h20zm-38 0 12 18H68L56 81h20zm-38 0 12 18H30L18 81h20z"/>
 	</g>
 </svg>

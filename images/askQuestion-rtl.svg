@@ -8,7 +8,7 @@
 			<mask id="mask-2" fill="#fff">
 				<use xlink:href="#path-1"/>
 			</mask>
-			<use id="Icon-AskQuestion" fill="#FFF" xlink:href="#path-1"/>
+			<use xlink:href="#path-1" id="Icon-AskQuestion" fill="#FFF"/>
 		</g>
 	</g>
 </svg>
