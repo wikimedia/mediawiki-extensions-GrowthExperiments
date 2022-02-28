@@ -92,4 +92,23 @@
 			}
 		}
 	}
+
+	&-glamcampaign {
+		@logoHeight: 200px;
+		background-image: url( ../../images/campaign/campaign-image-glam-2022.svg );
+		background-size: @logoHeight auto;
+
+		.mw-ge-donorsignup-title {
+			padding-top: @logoHeight;
+		}
+
+		.skin-minerva & {
+			@mobileLogoHeight: 180px;
+			background-size: @mobileLogoHeight auto;
+
+			.mw-ge-donorsignup-title {
+				padding-top: @mobileLogoHeight;
+			}
+		}
+	}
 }
