@@ -82,7 +82,7 @@ class SpecialMentorDashboard extends SpecialPage {
 
 		$moduleConfig = array_filter( [
 			'mentee-overview' => 'stable',
-			'mentor-tools' => 'beta',
+			'mentor-tools' => 'stable',
 			'resources' => 'stable',
 		], static function ( $el ) use ( $deploymentMode ) {
 			return in_array( $deploymentMode, self::REQUIRED_DEPLOYMENT_MODE[$el] );
