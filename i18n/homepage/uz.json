@@ -5,6 +5,8 @@
 		]
 	},
 	"growthexperiments-homepage-tab": "Bosh sahifa",
+	"prefs-homepage": "Yangi kelgan bosh sahifasi",
+	"growthexperiments-homepage-enable": "Yangi kelgan bosh sahifasini koʻrsatish",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Bajarildi",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Oson",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Oʻrtacha",
@@ -13,6 +15,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Maqolaga oʻtish",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Tushunarli",
 	"growthexperiments-tour-response-button-okay": "Tushunarli",
+	"tag-newcomer_task": "Yangi kelgan vazifasi",
 	"growthexperiments-homepage-recent-questions-posted-on": "$1 avval joylangan",
 	"growthexperiments-homepage-recent-questions-archived": "arxivlangan",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Siz}} {{GENDER:$2|mentor}}",
