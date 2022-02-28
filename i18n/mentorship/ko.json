@@ -57,5 +57,6 @@
 	"echo-category-title-ge-mentorship": "멘토",
 	"growthexperiments-notification-body-mentee-claimed": "이유: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "내게 할당된 멘티의 수",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "평균 (기본값)"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "평균 (기본값)",
+	"growthexperiments-mentor-list-missing-key": "<code>$1</code> 키가 없습니다"
 }
