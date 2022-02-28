@@ -184,7 +184,8 @@
 	function enableCampaign() {
 		return updateTaskPreference( {
 			'growthexperiments-homepage-variant': 'imagerecommendation',
-			'growthexperiments-campaign': 'growth-glam-2022'
+			'growthexperiments-campaign': 'growth-glam-2022',
+			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] )
 		} );
 	}
 
