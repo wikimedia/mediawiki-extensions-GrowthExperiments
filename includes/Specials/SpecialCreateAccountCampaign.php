@@ -99,6 +99,8 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 					// * growthexperiments-recurringcampaign-title
 					// * growthexperiments-signupcampaign-title
 					// * growthexperiments-josacampaign-title
+					// * growthexperiments-josacampaign-title
+					// * growthexperiments-glamcampaign-title
 					$this->msg( "growthexperiments-$campaignKey-title" )->parse()
 				)
 				. Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
@@ -106,6 +108,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 					// * growthexperiments-recurringcampaign-body
 					// * growthexperiments-signupcampaign-body
 					// * growthexperiments-josacampaign-body
+					// * growthexperiments-glamcampaign-body
 					$this->msg( "growthexperiments-$campaignKey-body" )->parse()
 				)
 				. $benefitsList
@@ -145,6 +148,8 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			return 'recurringcampaign';
 		} elseif ( strpos( $campaign, 'JOSA' ) !== false ) {
 			return 'josacampaign';
+		} elseif ( strpos( $campaign, 'glam' ) !== false ) {
+			return 'glamcampaign';
 		} else {
 			return 'signupcampaign';
 		}

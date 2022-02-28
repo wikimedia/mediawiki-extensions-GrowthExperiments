@@ -194,7 +194,7 @@
 	"HookHandlers": {
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
-			"services": [ "MainConfig", "GrowthExperimentsWelcomeSurveyFactory" ]
+			"services": [ "MainConfig", "GrowthExperimentsWelcomeSurveyFactory", "GrowthExperimentsCampaignConfig" ]
 		},
 		"helppanel": {
 			"class": "GrowthExperiments\\HelpPanelHooks"
@@ -281,7 +281,8 @@
 		"variant": {
 			"class": "GrowthExperiments\\VariantHooks",
 			"services": [
-				"UserOptionsManager"
+				"UserOptionsManager",
+				"GrowthExperimentsCampaignConfig"
 			]
 		},
 		"visualeditor": {
