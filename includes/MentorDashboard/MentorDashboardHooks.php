@@ -34,6 +34,9 @@ class MentorDashboardHooks implements
 		$preferences[ MenteeOverview::FILTERS_PREF ] = [
 			'type' => 'api',
 		];
+		$preferences[ MenteeOverview::PRESETS_PREF ] = [
+			'type' => 'api',
+		];
 	}
 
 	/**
@@ -48,6 +51,9 @@ class MentorDashboardHooks implements
 			MenteeOverview::FILTERS_PREF => FormatJson::encode( [
 				'minedits' => 1,
 				'maxedits' => 500,
+			] ),
+			MenteeOverview::PRESETS_PREF => FormatJson::encode( [
+				'usersToShow' => 10,
 			] ),
 		];
 	}

@@ -3,6 +3,7 @@
 	'use strict';
 
 	var MenteeOverviewApi = require( './MenteeOverviewApi.js' ),
+		MenteeOverviewPresets = require( './MenteeOverviewPresets.js' ),
 		Pagination = require( './Pagination.js' ),
 		FilterDropdown = require( './FilterDropdown.js' ),
 		MenteeSearchInputWidget = require( './MenteeSearchInputWidget.js' ),
@@ -18,8 +19,9 @@
 	function MenteeOverview( config ) {
 		MenteeOverview.super.call( this, config );
 
-		// construct api client
+		// construct api client and presets client
 		this.apiClient = new MenteeOverviewApi();
+		this.presetsClient = new MenteeOverviewPresets();
 
 		// construct filtering interface
 		this.searchInput = new MenteeSearchInputWidget();
@@ -464,6 +466,9 @@
 
 	MenteeOverview.prototype.onPageSizeChanged = function ( pageSize ) {
 		this.apiClient.setLimit( pageSize );
+
+		// Persist the new page size
+		this.presetsClient.setPreset( 'usersToShow', pageSize );
 
 		// Rerender the table, because the page size was changed
 		this.renderMenteeTable();

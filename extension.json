@@ -1490,6 +1490,7 @@
 				"ext.growthExperiments.MentorDashboard/index.js",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverview.js",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js",
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.js",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/Pagination.js",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/FilterDropdown.js",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeSearchInputWidget.js",

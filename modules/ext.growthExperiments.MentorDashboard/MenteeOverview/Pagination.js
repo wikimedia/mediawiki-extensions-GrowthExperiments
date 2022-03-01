@@ -1,9 +1,13 @@
 ( function () {
 	'use strict';
 
+	var MenteeOverviewPresets = require( './MenteeOverviewPresets.js' );
+
 	function Pagination( config ) {
+		this.presetsClient = new MenteeOverviewPresets();
+
 		this.config = $.extend( {
-			pageSize: 10,
+			pageSize: this.presetsClient.getPreset( 'usersToShow' ) || 10,
 			currentPage: 1,
 			totalPages: 1
 		}, config );

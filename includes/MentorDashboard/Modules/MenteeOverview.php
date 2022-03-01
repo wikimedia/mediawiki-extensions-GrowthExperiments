@@ -9,6 +9,9 @@ class MenteeOverview extends BaseModule {
 	/** @var string Option name to store filters. This is hardcoded client-side. */
 	public const FILTERS_PREF = 'growthexperiments-mentee-overview-filters';
 
+	/** @var string Option name to store user presets. This is client-side hardcoded. */
+	public const PRESETS_PREF = 'growthexperiments-mentee-overview-presets';
+
 	/**
 	 * @inheritDoc
 	 */
