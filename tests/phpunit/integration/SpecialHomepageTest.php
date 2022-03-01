@@ -44,14 +44,14 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		return new SpecialHomepage(
 			$growthExperimentsServices->getHomepageModuleRegistry(),
-			$growthExperimentsServices->getNewcomerTaskTrackerFactory(),
 			MediaWikiServices::getInstance()->getStatsdDataFactory(),
 			MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory(),
 			$growthExperimentsServices->getExperimentUserManager(),
 			// This would normally be wiki-powered config, but
 			// there is no need to test this
 			GlobalVarConfig::newInstance(),
-			MediaWikiServices::getInstance()->getUserOptionsManager()
+			MediaWikiServices::getInstance()->getUserOptionsManager(),
+			MediaWikiServices::getInstance()->getTitleFactory()
 		);
 	}
 
@@ -119,19 +119,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 */
 	public function provideTestMissingParametersToNewcomerTaskSubpath(): array {
 		return [
-			'missing title ID' => [
-				'',
-				[
-					'geclickid' => 1,
-					'genewcomertasktoken' => 2,
-					'getasktype' => 'links'
-				],
-				[
-					'titleId'
-				]
-			],
 			'missing click id' => [
-				123,
+				1,
 				[
 					'genewcomertasktoken' => 2,
 					'getasktype' => 'links'
@@ -193,30 +182,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 					'getasktype'
 				]
 			],
-			'everything missing' => [
-				'',
-				[],
-				[
-					'geclickid',
-					'genewcomertasktoken',
-					'getasktype',
-					'titleId'
-				]
-			],
-			'everything null' => [
-				null,
-				[
-					'genewcomertasktoken' => null,
-					'geclickid' => null,
-					'getasktype' => null
-				],
-				[
-					'geclickid',
-					'genewcomertasktoken',
-					'getasktype',
-					'titleId'
-				]
-			]
 		];
 	}
 

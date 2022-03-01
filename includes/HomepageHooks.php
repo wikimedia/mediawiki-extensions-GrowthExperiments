@@ -34,7 +34,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
-use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
@@ -52,7 +51,6 @@ use MediaWiki\Content\Hook\SearchDataForIndexHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Hook\PersonalUrlsHook;
-use MediaWiki\Hook\RecentChange_saveHook;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Hook\SiteNoticeAfterHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
@@ -74,7 +72,6 @@ use NamespaceInfo;
 use OOUI\ButtonWidget;
 use OutputPage;
 use PrefixingStatsdDataFactoryProxy;
-use RecentChange;
 use RequestContext;
 use ResourceLoaderContext;
 use Skin;
@@ -105,7 +102,6 @@ class HomepageHooks implements
 	LocalUserCreatedHook,
 	ListDefinedTagsHook,
 	ChangeTagsListActiveHook,
-	RecentChange_saveHook,
 	SpecialContributionsBeforeMainOutputHook,
 	ConfirmEmailCompleteHook,
 	SiteNoticeAfterHook,
@@ -150,8 +146,6 @@ class HomepageHooks implements
 	private $statsdDataFactory;
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
-	/** @var TrackerFactory */
-	private $trackerFactory;
 	/** @var ExperimentUserManager */
 	private $experimentUserManager;
 	/** @var HomepageModuleRegistry */
@@ -191,7 +185,6 @@ class HomepageHooks implements
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param JobQueueGroup $jobQueueGroup
 	 * @param ConfigurationLoader $configurationLoader
-	 * @param TrackerFactory $trackerFactory
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param HomepageModuleRegistry $moduleRegistry
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
@@ -214,7 +207,6 @@ class HomepageHooks implements
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		JobQueueGroup $jobQueueGroup,
 		ConfigurationLoader $configurationLoader,
-		TrackerFactory $trackerFactory,
 		ExperimentUserManager $experimentUserManager,
 		HomepageModuleRegistry $moduleRegistry,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -236,7 +228,6 @@ class HomepageHooks implements
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->configurationLoader = $configurationLoader;
-		$this->trackerFactory = $trackerFactory;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->moduleRegistry = $moduleRegistry;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
@@ -266,12 +257,12 @@ class HomepageHooks implements
 			$list['Homepage'] = function () {
 				return new SpecialHomepage(
 					$this->moduleRegistry,
-					$this->trackerFactory,
 					$this->statsdDataFactory,
 					$this->perDbNameStatsdDataFactory,
 					$this->experimentUserManager,
 					$this->wikiConfig,
-					$this->userOptionsManager
+					$this->userOptionsManager,
+					$this->titleFactory
 				);
 			};
 			if ( $pageViewInfoEnabled && $this->config->get( 'GEHomepageImpactModuleEnabled' ) ) {
@@ -903,41 +894,6 @@ class HomepageHooks implements
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			array_push( $tags,  ...$this->taskTypeHandlerRegistry->getChangeTags() );
-		}
-	}
-
-	/**
-	 * RecentChange_save hook handler
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/RecentChange_save
-	 *
-	 * @param RecentChange $rc
-	 */
-	public function onRecentChange_save( $rc ) {
-		$context = RequestContext::getMain();
-		if ( SuggestedEdits::isEnabled( $context ) &&
-			 SuggestedEdits::isActivated( $context, $this->userOptionsManager )
-		) {
-			$taskType = $this->trackerFactory->getTaskTypeOverride();
-			if ( !$taskType ) {
-				$pageId = $rc->getTitle()->getArticleID();
-				$tracker = $this->trackerFactory->getTracker( $rc->getPerformerIdentity() );
-				$taskType = $tracker->getTaskTypeForPage( $pageId );
-				if ( $taskType
-					&& $this->taskTypeHandlerRegistry->getByTaskType( $taskType ) instanceof StructuredTaskTypeHandler
-					&& !$this->trackerFactory->getTaskTypeOverride()
-				) {
-						// Structured task types are tracked via the override mechanism.
-						$taskType = null;
-				}
-			}
-			if ( $taskType ) {
-				$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
-				$rc->addTags( $taskTypeHandler->getChangeTags() );
-				$this->perDbNameStatsdDataFactory->increment(
-					'GrowthExperiments.NewcomerTask.' . $taskType->getId() . '.Save'
-				);
-			}
 		}
 	}
 

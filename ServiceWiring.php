@@ -58,6 +58,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigura
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
@@ -72,7 +73,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
+use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\EventBus\EventBusFactory;
@@ -93,7 +94,6 @@ return [
 			$geServices->getTaskSuggesterFactory(),
 			$geServices->getNewcomerTasksUserOptionsLookup(),
 			$geServices->getNewcomerTasksConfigurationLoader(),
-			$geServices->getNewcomerTaskTrackerFactory(),
 			$services->getMainWANObjectCache()
 		);
 	},
@@ -111,7 +111,6 @@ return [
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
-			$growthServices->getNewcomerTaskTrackerFactory(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
 	},
@@ -516,17 +515,6 @@ return [
 		);
 	},
 
-	'GrowthExperimentsNewcomerTaskTrackerFactory' => static function (
-		MediaWikiServices $services
-	): TrackerFactory {
-		return new TrackerFactory(
-			$services->getMainObjectStash(),
-			GrowthExperimentsServices::wrap( $services )->getNewcomerTasksConfigurationLoader(),
-			$services->getTitleFactory(),
-			LoggerFactory::getInstance( 'GrowthExperiments' )
-		);
-	},
-
 	'GrowthExperimentsNewcomerTasksUserOptionsLookup' => static function (
 		MediaWikiServices $services
 	): NewcomerTasksUserOptionsLookup {
@@ -823,6 +811,26 @@ return [
 			$growthServices->getGrowthWikiConfig()->get( 'GECampaignTopics' ) ?? [],
 			$services->getUserOptionsLookup()
 		);
-	}
+	},
+
+	'GrowthExperimentsTemplateBasedTaskSubmissionHandler' => static function (
+		MediaWikiServices $services
+	): TemplateBasedTaskSubmissionHandler {
+		return new TemplateBasedTaskSubmissionHandler();
+	},
+
+	'GrowthExperimentsNewcomerTasksChangeTagsManager' => static function (
+		MediaWikiServices $services
+	): NewcomerTasksChangeTagsManager {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new NewcomerTasksChangeTagsManager(
+			$services->getUserOptionsLookup(),
+			$growthServices->getTaskTypeHandlerRegistry(),
+			$growthServices->getNewcomerTasksConfigurationLoader(),
+			$services->getPerDbNameStatsdDataFactory(),
+			$services->getRevisionLookup(),
+			$services->getDBLoadBalancer()
+		);
+	},
 
 ];

@@ -2,12 +2,10 @@
 
 namespace GrowthExperiments;
 
-use DeferredUpdates;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPreSaveHook;
 use MediaWiki\Page\ProperPageIdentity;
@@ -35,25 +33,25 @@ class VisualEditorHooks implements
 	private $configurationLoader;
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
-	/** @var TrackerFactory */
-	private $trackerFactory;
+	/** @var NewcomerTasksChangeTagsManager */
+	private $newcomerTasksChangeTagsManager;
 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param TrackerFactory $trackerFactory
+	 * @param NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		ConfigurationLoader $configurationLoader,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		TrackerFactory $trackerFactory
+		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
-		$this->trackerFactory = $trackerFactory;
+		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
 	}
 
 	/** @inheritDoc */
@@ -65,7 +63,7 @@ class VisualEditorHooks implements
 		array $pluginData,
 		array &$apiResponse
 	) {
-		/** @var ?StructuredTaskTypeHandler $taskTypeHandler */
+		/** @var ?TaskTypeHandler $taskTypeHandler */
 		list( $data, $taskTypeHandler ) = $this->getDataFromApiRequest( $pluginData );
 		if ( !$data ) {
 			// Not an edit we are interested in looking at.
@@ -105,22 +103,11 @@ class VisualEditorHooks implements
 		if ( $apiResponse['result'] !== 'success' ) {
 			return;
 		}
-		/** @var ?StructuredTaskTypeHandler $taskTypeHandler */
+		/** @var ?TaskTypeHandler $taskTypeHandler */
 		list( $data, $taskTypeHandler ) = $this->getDataFromApiRequest( $pluginData );
 		if ( !$data ) {
 			// This is going to run on every edit and not in a deferred update, so at least filter
 			// by authenticated users to make this slightly faster for anons.
-			if ( $user->isRegistered() ) {
-				// The user is registered, obtain an edit tracker for the user, then check to see if
-				// the page that was edited is in their tracker and is also an instance of a link recommendation.
-				// Because we're already in this code path ($pluginData['linkrecommendation'] is not set), that means
-				// the edit came external to the add link interface. Untracking the page avoids adding the "add link"
-				// tag in the onRecentChanges_save hook.
-				$tracker = $this->trackerFactory->getTracker( $user );
-				if ( $tracker->getTaskTypeForPage( $page->getId() ) instanceof LinkRecommendationTaskType ) {
-					$tracker->untrack( $page->getId() );
-				}
-			}
 			return;
 		}
 		$title = $this->titleFactory->castFromPageIdentity( $page );
@@ -128,16 +115,19 @@ class VisualEditorHooks implements
 			throw new UnexpectedValueException( 'Unable to get Title from PageIdentity' );
 		}
 
+		$newRevId = $saveResult['edit']['newrevid'] ?? null;
+
 		$status = $taskTypeHandler->getSubmissionHandler()->handle(
 			$title->toPageIdentity(),
 			$user,
 			$params['oldid'],
-			$saveResult['edit']['newrevid'] ?? null,
+			$newRevId,
 			$data
 		);
 		if ( $status->isGood() ) {
 			$apiResponse['gelogid'] = $status->getValue()['logId'] ?? null;
 			$apiResponse['gewarnings'][] = $status->getValue()['warnings'] ?? '';
+
 		} else {
 			// FIXME expose error formatter to hook so this can be handled better
 			$errorMessage = Status::wrap( $status )->getWikiText();
@@ -145,19 +135,23 @@ class VisualEditorHooks implements
 			Util::logStatus( $status );
 		}
 
-		DeferredUpdates::addCallableUpdate( function () use ( $user, $page ) {
-			$tracker = $this->trackerFactory->getTracker( $user );
-			// Untrack the page so that future edits by the user are not tagged with
-			// the suggested link edit tag.
-			$tracker->untrack( $page->getId() );
-		} );
+		if ( $newRevId ) {
+			$result = $this->newcomerTasksChangeTagsManager->apply(
+				$data['taskType'], $saveResult['edit']['newrevid'], $user
+			);
+			if ( $result->isGood() ) {
+				$apiResponse['gechangetags'] = $result->getValue();
+			} else {
+				$apiResponse['errors'][] = Status::wrap( $status )->getWikiText();
+			}
+		}
 	}
 
 	/**
 	 * Extract the data sent by the frontend structured task logic from the API request.
 	 * @param array $pluginData
 	 * @return array [ JSON data from frontend, TaskTypeHandler ] or [ null, null ]
-	 * @phan-return array{0:?array,1:?StructuredTaskTypeHandler}
+	 * @phan-return array{0:?array,1:?TaskTypeHandler}
 	 */
 	private function getDataFromApiRequest( array $pluginData ): array {
 		// Fast-track the common case of a non-Growth-related save - getTaskTypes() is not free.
@@ -174,10 +168,6 @@ class VisualEditorHooks implements
 					$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
 				} catch ( OutOfBoundsException $e ) {
 					// Probably some sort of hand-crafted fake API request. Ignore it.
-					continue;
-				}
-				if ( !( $taskTypeHandler instanceof StructuredTaskTypeHandler ) ) {
-					// This mechanism is for structured tasks only.
 					continue;
 				}
 

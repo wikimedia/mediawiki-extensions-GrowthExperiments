@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
 use LogicException;
 use StatusValue;
@@ -58,7 +59,7 @@ class NullTaskTypeHandler extends TaskTypeHandler {
 	}
 
 	/** @inheritDoc */
-	public function getChangeTags(): array {
+	public function getChangeTags( ?string $taskType = null ): array {
 		return [];
 	}
 
@@ -70,4 +71,8 @@ class NullTaskTypeHandler extends TaskTypeHandler {
 		throw new LogicException( 'This should never be called' );
 	}
 
+	/** @inheritDoc */
+	public function getSubmissionHandler(): SubmissionHandler {
+		return new NullSubmissionHandler();
+	}
 }

@@ -6,7 +6,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
-use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
 use TitleParser;
 use Wikimedia\Assert\Assert;
@@ -27,10 +27,6 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 
 	/** @var AddLinkSubmissionHandler */
 	private $submissionHandler;
-	/**
-	 * @var TitleParser
-	 */
-	private $titleParser;
 
 	/**
 	 * @param ConfigurationValidator $configurationValidator
@@ -49,7 +45,6 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 		parent::__construct( $configurationValidator, $titleParser );
 		$this->recommendationProvider = $recommendationProvider;
 		$this->submissionHandler = $submissionHandler;
-		$this->titleParser = $titleParser;
 	}
 
 	/** @inheritDoc */
@@ -69,7 +64,7 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	 * @inheritDoc
 	 * @return AddLinkSubmissionHandler
 	 */
-	public function getSubmissionHandler(): RecommendationSubmissionHandler {
+	public function getSubmissionHandler(): SubmissionHandler {
 		return $this->submissionHandler;
 	}
 
@@ -99,7 +94,7 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	}
 
 	/** @inheritDoc */
-	public function getChangeTags(): array {
+	public function getChangeTags( ?string $taskType = null ): array {
 		return [ TaskTypeHandler::NEWCOMER_TASK_TAG, self::CHANGE_TAG ];
 	}
 

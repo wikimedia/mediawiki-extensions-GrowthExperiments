@@ -63,6 +63,11 @@
 		 *   immediately when we detect the save.
 		 */
 		this.postEditDialogNeedsToBeShown = false;
+		/**
+		 * @member {number|null} The revision ID associated with the suggested edit that occurred
+		 *   during the session.
+		 */
+		this.newRevId = null;
 		/** @member {boolean} Whether the mobile peek was already shown in this session. */
 		this.mobilePeekShown = false;
 		/** @member {boolean} Whether the help panel should be locked to its current panel. */
@@ -153,6 +158,7 @@
 			taskState: this.taskState,
 			editorInterface: this.editorInterface,
 			postEditDialogNeedsToBeShown: this.postEditDialogNeedsToBeShown,
+			newRevId: this.newRevId,
 			mobilePeekShown: this.mobilePeekShown,
 			helpPanelShouldBeLocked: this.helpPanelShouldBeLocked,
 			helpPanelCurrentPanel: this.helpPanelCurrentPanel,
@@ -205,6 +211,7 @@
 				this.taskState = data.taskState;
 				this.editorInterface = data.editorInterface;
 				this.postEditDialogNeedsToBeShown = data.postEditDialogNeedsToBeShown;
+				this.newRevId = data.newRevId;
 				this.mobilePeekShown = data.mobilePeekShown;
 				this.helpPanelShouldBeLocked = data.helpPanelShouldBeLocked;
 				this.helpPanelCurrentPanel = data.helpPanelCurrentPanel;
@@ -318,9 +325,9 @@
 		// we can check it at page load time.
 		$( function () {
 			var uri = new mw.Uri();
-
+			// "submit" can be in the URL query if the user switched from VE to source
 			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
-			if ( uri.query.action === 'edit' && $( '#wpTextbox1:visible' ).length ) {
+			if ( [ 'edit', 'submit' ].indexOf( uri.query.action ) !== -1 && $( '#wpTextbox1:visible' ).length ) {
 				saveEditorChanges( self, 'wikitext' );
 			}
 		} );
@@ -359,6 +366,8 @@
 	 *   due to a reload.
 	 * @param {boolean} [config.nextRequest] Don't try to display the dialog, schedule it for the
 	 *   next request instead. This is less fragile when we know for sure the editor will reload.
+	 * @param {number|null} [config.newRevId] The revision ID associated with the suggested edit.
+	 *   Will only be set for edits done via mobile.
 	 * @return {jQuery.Promise} A promise that resolves when the dialog is displayed.
 	 */
 	SuggestedEditSession.prototype.showPostEditDialog = function ( config ) {
@@ -374,6 +383,7 @@
 
 		if ( config.resetSession ) {
 			self.clickId = mw.user.generateRandomSessionId();
+			self.newRevId = null;
 			// Need to update the click ID in edit links as well.
 			self.updateEditLinkUrls();
 		}
@@ -384,6 +394,7 @@
 		// users an "edit again" option. Instead, use the session to display the dialog again
 		// after the reload if needed.
 		this.postEditDialogNeedsToBeShown = true;
+		this.newRevId = self.newRevId || config.newRevId;
 		this.save();
 
 		if ( !config.nextRequest && mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) &&
@@ -393,11 +404,24 @@
 		) {
 			this.postEditDialogIsOpen = true;
 			mw.hook( 'helpPanel.hideCta' ).fire();
+
 			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
 				return require( 'ext.growthExperiments.PostEdit' ).setupPanel().then( function ( result ) {
-					result.openPromise.done( function () {
+					result.openPromise.then( function () {
 						self.postEditDialogNeedsToBeShown = false;
 						self.save();
+					} ).then( function () {
+						if ( self.editorInterface === 'visualeditor' ) {
+							return $.Deferred().resolve();
+						} else {
+							// VisualEditor edits will receive change tags through
+							// ve.init.target.saveFields and VE's PostSave hook implementation
+							// in GrowthExperiments.
+							// For non-VisualEditor-edits, we'll query the revision that was just
+							// saved, and send a POST to the newcomertask/complete endpoint to apply
+							// the relevant change tags.
+							return self.tagNonVisualEditorEditWithGrowthChangeTags( self.taskType );
+						}
 					} );
 					result.closePromise.done( function () {
 						self.postEditDialogIsOpen = false;
@@ -407,6 +431,45 @@
 			} );
 		}
 		return $.Deferred().resolve().promise();
+	};
+
+	/**
+	 * Get the most recent revision to the article by the current user and tag it with the relevant
+	 * change tags for the task type.
+	 *
+	 * @param {string} taskType
+	 * @return {jQuery.Promise} that resolves after the POST to the newcomer change tags
+	 * manager endpoint
+	 * is complete.
+	 */
+	SuggestedEditSession.prototype.tagNonVisualEditorEditWithGrowthChangeTags = function (
+		taskType
+	) {
+		var revIdPromise = this.newRevId ? $.Deferred().resolve().promise() : new mw.Api().get( {
+			action: 'query',
+			prop: 'revisions',
+			pageids: mw.config.get( 'wgRelevantArticleId' ),
+			rvprop: 'ids|tags',
+			rvlimit: 1,
+			rvuser: mw.config.get( 'wgUserName' )
+		} );
+		return revIdPromise.done( function ( data ) {
+			// We didn't have the new revision ID already, so get it from the API response.
+			if ( !this.newRevId && data && data.query && data.query.pages ) {
+				var response = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
+				this.newRevId = response.revisions[ 0 ].revid;
+			}
+			if ( !this.newRevId ) {
+				mw.log.error( 'Unable to find a revision to apply edit tags to, no edit tags will be applied.' );
+				mw.errorLogger.logError( new Error( 'Unable to find a revision to apply edit tags to, no edit tags will be applied.' ), 'error.growthexperiments' );
+			}
+			var apiUrl = '/growthexperiments/v0/newcomertask/complete';
+			return new mw.Rest().post( apiUrl + '?' + $.param( { taskTypeId: taskType, revId: this.newRevId } ) )
+				.fail( function ( err ) {
+					mw.log.error( err );
+					mw.errorLogger.logError( new Error( err ), 'error.growthexperiments' );
+				} );
+		}.bind( this ) );
 	};
 
 	/**
@@ -443,7 +506,11 @@
 		 */
 		mw.hook( 'postEditMobile' ).add( function ( data ) {
 			self.setTaskState( data.newRevId ? states.SAVED : states.SUBMITTED );
-			self.showPostEditDialog( { resetSession: true, nextRequest: true } );
+			self.showPostEditDialog( {
+				resetSession: true,
+				nextRequest: true,
+				newRevId: data.newRevId
+			} );
 		} );
 	};
 
@@ -501,11 +568,33 @@
 
 	// Always initiate. We need to do this to be able to terminate the session when the user
 	// navigates away from the target page.
-	SuggestedEditSession.getInstance();
-
 	// To facilitate QA/debugging.
 	window.ge = window.ge || {};
 	ge.suggestedEditSession = SuggestedEditSession.getInstance();
+
+	/**
+	 * Set plugin data for VisualEditor. This is passed onto the pre/post save hooks. We use
+	 * the taskType for adding the relevant change tags (e.g. "newcomer task copyedit") to tasks.
+	 * Structured tasks already override VisualEditor's ArticleTarget and pass necessary metadata,
+	 * so we don't do anything for those.
+	 */
+	mw.hook( 've.activationComplete' ).add( function () {
+		if ( [ 'link-recommendation', 'image-recommendation' ].indexOf( ge.suggestedEditSession.taskType ) !== -1 ) {
+			return;
+		}
+		var pluginName = 'ge-task-' + ge.suggestedEditSession.taskType,
+			pluginDataKey = 'data-' + pluginName;
+		if ( !ve.init.target.saveFields[ pluginDataKey ] ) {
+			ve.init.target.saveFields[ pluginDataKey ] = function () {
+				return JSON.stringify( { taskType: ge.suggestedEditSession.taskType } );
+			};
+			var plugins = ve.init.target.saveFields.plugins ? ve.init.target.saveFields.plugins() : [];
+			plugins.push( pluginName );
+			ve.init.target.saveFields.plugins = function () {
+				return plugins;
+			};
+		}
+	} );
 
 	module.exports = SuggestedEditSession;
 }() );

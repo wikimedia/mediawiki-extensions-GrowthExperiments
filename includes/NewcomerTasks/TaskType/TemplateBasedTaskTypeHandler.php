@@ -4,6 +4,8 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
+use GrowthExperiments\NewcomerTasks\SubmissionHandler;
+use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use InvalidArgumentException;
 use StatusValue;
 use TitleParser;
@@ -15,19 +17,39 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 
 	public const ID = 'template-based';
 
+	public const NEWCOMER_TASK_COPYEDIT_TAG = 'newcomer task copyedit';
+	public const NEWCOMER_TASK_REFERENCES_TAG = 'newcomer task references';
+	public const NEWCOMER_TASK_UPDATE_TAG = 'newcomer task update';
+	public const NEWCOMER_TASK_EXPAND_TAG = 'newcomer task expand';
+	public const NEWCOMER_TASK_LINKS_TAG = 'newcomer task expand';
+
+	public const NEWCOMER_TASK_TEMPLATE_BASED_ALL_CHANGE_TAGS = [
+		self::NEWCOMER_TASK_COPYEDIT_TAG,
+		self::NEWCOMER_TASK_REFERENCES_TAG,
+		self::NEWCOMER_TASK_UPDATE_TAG,
+		self::NEWCOMER_TASK_EXPAND_TAG,
+		self::NEWCOMER_TASK_LINKS_TAG,
+	];
+
 	/** @var TitleParser */
 	private $titleParser;
 
+	/** @var TemplateBasedTaskSubmissionHandler */
+	private $submissionHandler;
+
 	/**
 	 * @param ConfigurationValidator $configurationValidator
+	 * @param TemplateBasedTaskSubmissionHandler $submissionHandler
 	 * @param TitleParser $titleParser
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
+		TemplateBasedTaskSubmissionHandler $submissionHandler,
 		TitleParser $titleParser
 	) {
 		parent::__construct( $configurationValidator, $titleParser );
 		$this->titleParser = $titleParser;
+		$this->submissionHandler = $submissionHandler;
 	}
 
 	/** @inheritDoc */
@@ -79,6 +101,40 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 		}
 		return parent::getSearchTerm( $taskType ) .
 			'hastemplate:' . Util::escapeSearchTitleList( $taskType->getTemplates() );
+	}
+
+	/**
+	 * @return TemplateBasedTaskSubmissionHandler
+	 */
+	public function getSubmissionHandler(): SubmissionHandler {
+		return $this->submissionHandler;
+	}
+
+	/** @inheritDoc */
+	public function getChangeTags( ?string $taskType = null ): array {
+		if ( !$taskType ) {
+			return self::NEWCOMER_TASK_TEMPLATE_BASED_ALL_CHANGE_TAGS;
+		}
+		switch ( $taskType ) {
+			case 'copyedit':
+				$taskTypeSpecificTag = self::NEWCOMER_TASK_COPYEDIT_TAG;
+				break;
+			case 'references':
+				$taskTypeSpecificTag = self::NEWCOMER_TASK_REFERENCES_TAG;
+				break;
+			case 'update':
+				$taskTypeSpecificTag = self::NEWCOMER_TASK_UPDATE_TAG;
+				break;
+			case 'expand':
+				$taskTypeSpecificTag = self::NEWCOMER_TASK_EXPAND_TAG;
+				break;
+			case 'links':
+				$taskTypeSpecificTag = self::NEWCOMER_TASK_LINKS_TAG;
+				break;
+			default:
+				throw new InvalidArgumentException( "$taskType is not valid." );
+		}
+		return array_merge( parent::getChangeTags(), [ $taskTypeSpecificTag ] );
 	}
 
 }

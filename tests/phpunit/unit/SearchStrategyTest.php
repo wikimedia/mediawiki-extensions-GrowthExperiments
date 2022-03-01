@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
@@ -142,8 +143,10 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$configurationValidator = $this->createMock( ConfigurationValidator::class );
 		$titleParser = $this->createNoOpMock( TitleParser::class );
+		$handler = $this->createMock( TemplateBasedTaskSubmissionHandler::class );
 		$taskTypeHandler = new TemplateBasedTaskTypeHandler(
 			$configurationValidator,
+			$handler,
 			$titleParser
 		);
 		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );

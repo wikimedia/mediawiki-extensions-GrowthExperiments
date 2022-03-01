@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
+use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use MalformedTitleException;
@@ -46,6 +47,11 @@ abstract class TaskTypeHandler {
 	 * @return string
 	 */
 	abstract public function getId(): string;
+
+	/**
+	 * @return SubmissionHandler
+	 */
+	abstract public function getSubmissionHandler(): SubmissionHandler;
 
 	/**
 	 * Validate task configuration used by ConfigurationLoader.
@@ -222,9 +228,10 @@ abstract class TaskTypeHandler {
 
 	/**
 	 * Get the list of change tags to apply to edits originating from this task type.
+	 * @param string|null $taskType
 	 * @return string[]
 	 */
-	public function getChangeTags(): array {
+	public function getChangeTags( ?string $taskType = null ): array {
 		return [ self::NEWCOMER_TASK_TAG ];
 	}
 

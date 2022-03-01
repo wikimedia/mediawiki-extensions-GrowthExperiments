@@ -63,7 +63,7 @@
 
 		this.difficultyFilterButtonWidget = new OO.ui.ButtonWidget( {
 			icon: 'difficulty-outline',
-			classes: [ this.topicMatching ? 'topic-matching' : '' ],
+			classes: this.topicMatching ? [ 'topic-matching', 'difficulty-filter-button' ] : [ '' ],
 			indicator: config.mode === 'desktop' ? null : 'down'
 		} );
 		buttonWidgets.push( this.difficultyFilterButtonWidget );

@@ -8,13 +8,12 @@ use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use ManualLogEntry;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
@@ -26,7 +25,7 @@ use WANObjectCache;
  * Record the user's decision on the recommendations for a given page.
  * Creates a Special:Log entry and handles updating the search index.
  */
-class AddImageSubmissionHandler extends AbstractSubmissionHandler implements RecommendationSubmissionHandler {
+class AddImageSubmissionHandler extends AbstractSubmissionHandler implements SubmissionHandler {
 
 	/**
 	 * List of valid reasons for rejecting an image. Keep in sync with
@@ -53,9 +52,6 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
-	/** @var TrackerFactory */
-	private $trackerFactory;
-
 	/** @var WANObjectCache */
 	private $cache;
 
@@ -64,7 +60,6 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param ConfigurationLoader $configurationLoader
-	 * @param TrackerFactory $trackerFactory
 	 * @param WANObjectCache $cache
 	 */
 	public function __construct(
@@ -72,14 +67,12 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		ConfigurationLoader $configurationLoader,
-		TrackerFactory $trackerFactory,
 		WANObjectCache $cache
 	) {
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->configurationLoader = $configurationLoader;
-		$this->trackerFactory = $trackerFactory;
 		$this->cache = $cache;
 	}
 
@@ -113,8 +106,6 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 			return $status;
 		}
 		[ $accepted, $reasons ] = $status->getValue();
-		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
-		$this->trackerFactory->setTaskTypeOverride( $imageRecommendation );
 
 		// Remove this image from being recommended in the future, unless it was rejected with
 		// one of the "not sure" options.

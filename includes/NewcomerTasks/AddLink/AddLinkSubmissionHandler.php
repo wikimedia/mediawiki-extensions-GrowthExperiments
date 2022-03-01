@@ -5,13 +5,12 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use IDBAccessObject;
 use MalformedTitleException;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -29,7 +28,7 @@ use Wikimedia\Rdbms\DBReadOnlyError;
 /**
  * Record the user's decision on the recommendations for a given page.
  */
-class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements RecommendationSubmissionHandler {
+class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements SubmissionHandler {
 
 	/** @var LinkRecommendationHelper */
 	private $linkRecommendationHelper;
@@ -47,8 +46,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 	private $newcomerTasksUserOptionsLookup;
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
-	/** @var TrackerFactory */
-	private $trackerFactory;
 	/** @var LoggerInterface */
 	private $logger;
 
@@ -61,7 +58,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param ConfigurationLoader $configurationLoader
-	 * @param TrackerFactory $trackerFactory
 	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
@@ -73,7 +69,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		ConfigurationLoader $configurationLoader,
-		TrackerFactory $trackerFactory,
 		LoggerInterface $logger
 	) {
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
@@ -84,7 +79,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->configurationLoader = $configurationLoader;
-		$this->trackerFactory = $trackerFactory;
 		$this->logger = $logger;
 	}
 
@@ -162,7 +156,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 		$links = $this->normalizeTargets( $linkRecommendation->getLinks() );
 		/** @var LinkRecommendationTaskType $linkRecommendationTaskType */
 		$linkRecommendationTaskType = $this->configurationLoader->getTaskTypes()['link-recommendation'];
-		$this->trackerFactory->setTaskTypeOverride( $linkRecommendationTaskType );
 
 		$acceptedTargets = $this->normalizeTargets( $data['acceptedTargets'] ?: [] );
 		$rejectedTargets = $this->normalizeTargets( $data['rejectedTargets'] ?: [] );

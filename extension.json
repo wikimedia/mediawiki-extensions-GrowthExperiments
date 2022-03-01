@@ -188,6 +188,14 @@
 			"services": [
 				"GrowthExperimentsMenteeOverviewDataProvider"
 			]
+		},
+		{
+			"path": "/growthexperiments/v0/newcomertask/complete",
+			"method": "POST",
+			"class": "GrowthExperiments\\Rest\\Handler\\NewcomerTaskCompleteHandler",
+			"services": [
+				"GrowthExperimentsNewcomerTasksChangeTagsManager"
+			]
 		}
 	],
 	"callback": "GrowthExperiments\\GrowthHooks::onRegistration",
@@ -213,7 +221,6 @@
 				"PerDbNameStatsdDataFactory",
 				"JobQueueGroup",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
-				"GrowthExperimentsNewcomerTaskTrackerFactory",
 				"GrowthExperimentsExperimentUserManager",
 				"GrowthExperimentsHomepageModuleRegistry",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
@@ -291,7 +298,7 @@
 				"TitleFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
-				"GrowthExperimentsNewcomerTaskTrackerFactory"
+				"GrowthExperimentsNewcomerTasksChangeTagsManager"
 			]
 		}
 	},
@@ -357,7 +364,6 @@
 			"helppanel",
 			"homepage"
 		],
-		"RecentChange_save": "homepage",
 		"PageSaveComplete": [
 			"config",
 			"homepage",
@@ -443,6 +449,7 @@
 				"mediawiki.Uri",
 				"mediawiki.user",
 				"mediawiki.util",
+				"mediawiki.api",
 				"mediawiki.storage"
 			]
 		},
@@ -1891,7 +1898,7 @@
 			"value": {
 				"template-based": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\TemplateBasedTaskTypeHandler",
-					"services": [ "GrowthExperimentsNewcomerTasksConfigurationValidator", "TitleParser" ]
+					"services": [ "GrowthExperimentsNewcomerTasksConfigurationValidator", "GrowthExperimentsTemplateBasedTaskSubmissionHandler", "TitleParser" ]
 				},
 				"link-recommendation": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\LinkRecommendationTaskTypeHandler",

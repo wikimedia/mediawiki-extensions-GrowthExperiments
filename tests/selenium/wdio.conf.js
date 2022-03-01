@@ -40,7 +40,7 @@ exports.config = { ...config,
 			).done( () => done() )
 		);
 	},
-	services: [ 'devtools' ],
+	services: [ 'devtools', 'intercept' ],
 	onPrepare: async function () {
 		fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ),
 			// Load the service overrides
@@ -67,24 +67,6 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 		await childProcess.spawnSync(
 			'php',
 			[ 'maintenance/importDump.php', path.resolve( __dirname + '/fixtures/SuggestedEditsContent.xml' ) ],
-			{ cwd: ip }
-		);
-		await childProcess.spawnSync(
-			'php',
-			[
-				'extensions/GrowthExperiments/maintenance/insertLinkRecommendation.php',
-				'--json-file=' + path.resolve( __dirname + '/fixtures/Douglas_Adams.suggestions.json' ),
-				'--title=Douglas_Adams'
-			],
-			{ cwd: ip }
-		);
-		await childProcess.spawnSync(
-			'php',
-			[
-				'extensions/GrowthExperiments/maintenance/insertLinkRecommendation.php',
-				'--json-file=' + path.resolve( __dirname + '/fixtures/The_Hitchhikers_Guide_to_the_Galaxy.suggestions.json' ),
-				'--title=The_Hitchhiker\'s_Guide_to_the_Galaxy'
-			],
 			{ cwd: ip }
 		);
 		await childProcess.spawnSync(

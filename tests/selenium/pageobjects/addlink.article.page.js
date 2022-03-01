@@ -1,6 +1,9 @@
 'use strict';
 
-const Page = require( 'wdio-mediawiki/Page' );
+const Page = require( 'wdio-mediawiki/Page' ),
+	childProcess = require( 'child_process' ),
+	path = require( 'path' ),
+	ip = path.resolve( __dirname + '/../../../../../' );
 
 class AddLinkArticlePage extends Page {
 
@@ -19,6 +22,8 @@ class AddLinkArticlePage extends Page {
 	get saveDialog() { return $( '.ge-structuredTask-mwSaveDialog' ); }
 
 	get saveChangesButton() { return $( '.ge-structuredTask-mwSaveDialog .oo-ui-processDialog-actions-primary' ); }
+
+	get progressTitle() { return $( '.mw-ge-recommendedLinkToolbarDialog-progress-title' ); }
 
 	async waitForLinkInspector() {
 		await this.waitForDisplayedAndClickable( this.linkInspector );
@@ -44,6 +49,12 @@ class AddLinkArticlePage extends Page {
 		return this.clickButton( this.publishButton );
 	}
 
+	async waitForProgressToNextSuggestion( oldProgress ) {
+		await browser.waitUntil( async () => {
+			return await this.progressTitle.getText() !== oldProgress;
+		} );
+	}
+
 	async saveChangesToArticle() {
 		await this.waitForDisplayedAndClickable( this.saveDialog );
 		return this.clickButton( this.saveChangesButton );
@@ -57,6 +68,27 @@ class AddLinkArticlePage extends Page {
 	async waitForDisplayedAndClickable( element ) {
 		await element.waitForClickable( { timeout: 30000 } );
 		await element.waitForDisplayed( { timeout: 30000 } );
+	}
+
+	async insertLinkRecommendationsToDatabase() {
+		await childProcess.spawnSync(
+			'php',
+			[
+				'extensions/GrowthExperiments/maintenance/insertLinkRecommendation.php',
+				'--json-file=' + path.resolve( __dirname + '/../fixtures/Douglas_Adams.suggestions.json' ),
+				'--title=Douglas_Adams'
+			],
+			{ cwd: ip }
+		);
+		await childProcess.spawnSync(
+			'php',
+			[
+				'extensions/GrowthExperiments/maintenance/insertLinkRecommendation.php',
+				'--json-file=' + path.resolve( __dirname + '/../fixtures/The_Hitchhikers_Guide_to_the_Galaxy.suggestions.json' ),
+				'--title=The_Hitchhiker\'s_Guide_to_the_Galaxy'
+			],
+			{ cwd: ip }
+		);
 	}
 
 }

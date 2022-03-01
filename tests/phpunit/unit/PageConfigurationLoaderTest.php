@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
@@ -557,10 +558,11 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 */
 	private function getMockTaskTypeHandlerRegistry( ConfigurationValidator $configurationValidator ) {
 		$titleParser = $this->getMockTitleParser();
+		$handler = $this->createMock( TemplateBasedTaskSubmissionHandler::class );
 		$registry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$registry->method( 'has' )->willReturn( true );
 		$registry->method( 'get' )->with( TemplateBasedTaskTypeHandler::ID )
-			->willReturn( new TemplateBasedTaskTypeHandler( $configurationValidator, $titleParser ) );
+			->willReturn( new TemplateBasedTaskTypeHandler( $configurationValidator, $handler, $titleParser ) );
 		return $registry;
 	}
 
