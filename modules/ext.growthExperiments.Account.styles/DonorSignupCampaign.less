@@ -108,6 +108,12 @@
 
 			.mw-ge-donorsignup-title {
 				padding-top: @mobileLogoHeight;
+
+				p:last-child {
+					// HACK the title copy has two paragraphs, on mobile, the second paragraph should be in body font size
+					// This allows us to only maintain a single key for both desktop and mobile.
+					.rel-font-size-and-line-height( @parentFontSize: 24px, @targetFontSize: 16px, @targetLineHeight: 26.4px );
+				}
 			}
 		}
 	}
