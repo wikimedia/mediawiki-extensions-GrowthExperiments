@@ -12,5 +12,15 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Ny status",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Når fadderstatus endres til borte må man ha med varigheten på bortestatusen (i dager)",
 	"apihelp-query+growthmentorstatus-summary": "Avslutt den gjeldende brukerens fadderskap",
-	"apihelp-query+growthmenteestatus-summary": "Spør etter den gjeldende brukerens fadderbarnstatus; se dokumentasjonen for action=growthsetmentorweight for detaljert informasjon om individuelle statuser."
+	"apihelp-growthmentordashboardupdatedata-summary": "Planlegg en ekstraordinær oppdatering av modulen for fadderbarnoversikt i kontrollpanelet for faddere. Av ytelsesgrunner må det gå minst to timer mellom hver oppdatering.",
+	"apihelp-growthsetmentorweight-summary": "Sett vekting for den innloggede fadderen",
+	"apihelp-growthsetmentorweight-param-geweight": "Numerisk vekting for fadderen: Lavere verdi betyr færre tildelte fadderbarn",
+	"apihelp-growthsetmenteestatus-summary": "Sett fadderbarnets status (lar fadderbarn slå av og på faddermodulen eller velge å ikke bruke den i det hele tatt, hvilket sletter forholdet mellom fadder og fadderbarn)",
+	"apihelp-growthsetmenteestatus-param-state": "Ny status for fadderbarnet (advarsel: å sette denne til optout vil slette forholdet mellom fadder og fadderbarn permanent)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Faddermodulen er slått på",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Faddermodulen er slått helt av. Dette settes normalt av programvaren og brukes for A/B-testing.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Fadderbarnet har valgt å ikke delta å fadderprogrammet; forholdet mellom fadder og faderbarn slettes, og faddermodulen erstattes med muligheten til å velge å delta igjen.",
+	"apihelp-query+growthmenteestatus-summary": "Spør etter den gjeldende brukerens fadderbarnstatus; se dokumentasjonen for action=growthsetmentorweight for detaljert informasjon om individuelle statuser.",
+	"apihelp-query+growthmentormentee-summary": "Hent alle fadderbarn som er tildelt en gitt fadder",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Fadder det skal spørres om fadderbarn for"
 }

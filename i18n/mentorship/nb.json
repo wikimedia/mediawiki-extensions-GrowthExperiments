@@ -66,6 +66,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Statusen din ble endret til «Borte».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Melding til fadderbarna dine",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Gjør krav på fadderbarn",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Du kan endre fadderen for et fadderbarn til deg selv. Dette brukes ofte for skriveverksteder så instruktørene kan være fadderen for deltakerne både på wiki og i virkeligheten.",
 	"growthexperiments-rcfilters-mentorship-title": "Fadderskap",
 	"growthexperiments-rcfilters-mentorship-starred-label": "De stjernemerkede fadderbarna {{GENDER:|dine}}",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Fadderbarn tildelt {{GENDER:|deg}} som du har stjernemerket i kontrollpanelet for faddere",
@@ -87,5 +88,10 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Rundt halvparten av gjennomsnittet",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Gjennomsnittet (standard)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Rundt det dobbelte av gjennomsnittet",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Byrden {{GENDER:|din}} ble endret til «$1»."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Byrden {{GENDER:|din}} ble endret til «$1».",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Fadderbarn tildeles faddere tilfeldig når kontoen deres opprettes. Du kan velge hvor mange fadderbarn du blir tildelt, men noen fadderbarn kan stille spørsmål oftere enn andre.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Det anbefales at du begynner med gjennomsnittsinnstillingen for å vurdere hvor mye tid du ønsker å bruke på fadderbarn før du øker eller minker graden.",
+	"growthexperiments-mentor-list-missing-key": "Nøkkelen <code>$1</code> mangler",
+	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> forventes å være <code>$2</code>, men er <code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Fadderdefinisjonen inneholder en uventet nøkkel <code>$1</code>"
 }

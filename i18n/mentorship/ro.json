@@ -89,7 +89,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Mediu (implicit)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "În jur de două ori mai mult din medie",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Încărcarea {{GENDER:|dvs.}} a fost schimbată la „$1”.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Ucenicii sunt atribuiți aleatoriu mentorilor pe măsură ce le sunt create conturile. Poți administra cât de mulți ucenici sunt atribuiți dvs., dar unii ucenici pot pune întrebări mai frecvent decât alți",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Ucenicii sunt atribuiți aleatoriu mentorilor pe măsură ce le sunt create conturile. Poți administra cât de mulți ucenici sunt atribuiți dvs., dar unii ucenici pot pune întrebări mai frecvent decât alții.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Este recomandat să începeți cu setarea „Mediu” pentru a vă evalua capacitatea de asistență înainte de a o crește sau descrește.",
 	"growthexperiments-mentor-list-missing-key": "Cheia <code>$1</code> lipsește",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> este de așteptat să fie <code>$2</code>, dar este <code>$3</code>",
