@@ -159,7 +159,7 @@ class MenteesHandler extends SimpleHandler {
 				$menteeData['userpage_exists'] = $this->titleFactory->newFromText(
 					$menteeData['username'],
 					NS_USER
-				)->exists();
+				)->isKnown();
 			}
 		} );
 
