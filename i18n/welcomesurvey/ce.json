@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Марша догӀийла}}, $1!",
+	"welcomesurvey-save-btn": "Чекхдаккха",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Кхийерг"
+}

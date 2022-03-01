@@ -357,5 +357,11 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "తరువాతి పరిచయ దశ",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "మునుపటి పరిచయ దశ",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "మొదలు పెట్టండి",
-	"grant-managementorship": "శిష్యరికాన్ని నిర్వహించండి"
+	"grant-managementorship": "శిష్యరికాన్ని నిర్వహించండి",
+	"newcomertasksinfo": "కొత్త వాడుకరి పనులు",
+	"newcomertasksinfo-no-data": "డేటా ఏమీ అందుబాటులో లేదు.",
+	"newcomertasksinfo-table-header-task-type": "పని రకం",
+	"newcomertasksinfo-table-header-task-type-id": "ఐడీ",
+	"newcomertasksinfo-table-header-task-count": "గణన",
+	"newcomertasksinfo-table-header-topic-type": "టాపిక్ ఐడీ"
 }
