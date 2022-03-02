@@ -67,7 +67,6 @@ $wgUseInstantCommons = true;
 $wgGELinkRecommendationServiceUrl = 'https://api.wikimedia.org/service/linkrecommendation';
 
 // Conditionally load Parsoid in CI
-global $wgWikimediaJenkinsCI;
 if ( $wgWikimediaJenkinsCI && !is_dir( "$IP/services/parsoid" ) ) {
 	$PARSOID_INSTALL_DIR = "$IP/vendor/wikimedia/parsoid";
 	wfLoadExtension( 'Parsoid', "$PARSOID_INSTALL_DIR/extension.json" );
