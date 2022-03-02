@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -82,12 +83,12 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$excludePageIds = $params['excludepageids'] ?? [];
 
 		$taskSuggester = $this->taskSuggesterFactory->create();
+		$taskTypeFilter = new TaskSetFilters( $taskTypes, $topics );
 
 		/** @var TaskSet $tasks */
 		$tasks = $taskSuggester->suggest(
 			$user,
-			$taskTypes,
-			$topics,
+			$taskTypeFilter,
 			$limit,
 			$offset,
 			[

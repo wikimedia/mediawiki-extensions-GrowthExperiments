@@ -7,6 +7,7 @@ use ApiMain;
 use ApiUsageException;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
@@ -115,8 +116,10 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 		$user = $this->getUser();
 		$taskSet = $this->taskSuggesterFactory->create()->suggest(
 			$user,
-			$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-			$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+			new TaskSetFilters(
+				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+				$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+			)
 		);
 		return $taskSet->containsPage( $page );
 	}

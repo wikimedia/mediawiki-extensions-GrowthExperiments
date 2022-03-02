@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
@@ -42,7 +43,7 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );
-			$error = $taskSuggester->suggest( new UserIdentityValue( 1, 'Foo' ) );
+			$error = $taskSuggester->suggest( new UserIdentityValue( 1, 'Foo' ), new TaskSetFilters() );
 			$this->assertInstanceOf( StatusValue::class, $error );
 			$this->assertSame( $expectedError, $error );
 		} else {

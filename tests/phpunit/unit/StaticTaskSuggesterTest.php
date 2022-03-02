@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -20,7 +21,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideSuggest
 	 */
 	public function testSuggest(
-		$taskTypeFilter, $topicFilter, $limit, $offset,
+		$taskSetFilters, $limit, $offset,
 		$expectedTitles, $expectedTotalCount, $expectedOffset
 	) {
 		$user = new UserIdentityValue( 1, 'Foo' );
@@ -57,7 +58,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 		}
 		$suggester = new StaticTaskSuggester( $tasks );
 
-		$taskSet = $suggester->suggest( $user, $taskTypeFilter, $topicFilter, $limit, $offset );
+		$taskSet = $suggester->suggest( $user, $taskSetFilters, $limit, $offset );
 		$this->assertInstanceOf( TaskSet::class, $taskSet );
 		$this->assertTaskSetEqualsTitles( $expectedTitles, $taskSet );
 		$this->assertSame( $expectedTotalCount, $taskSet->getTotalCount() );
@@ -67,8 +68,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 	public function provideSuggest() {
 		return [
 			'empty filters' => [
-				'taskTypeFilter' => [],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters(),
 				'limit' => null,
 				'offset' => null,
 				'expectedTitles' => [ 'Copyedit-1', 'Link-1', 'Link-2', 'Copyedit-2',
@@ -77,8 +77,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 0,
 			],
 			'limit' => [
-				'taskTypeFilter' => [],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters(),
 				'limit' => 3,
 				'offset' => null,
 				'expectedTitles' => [ 'Copyedit-1', 'Link-1', 'Link-2' ],
@@ -86,8 +85,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 0,
 			],
 			'limit + offset' => [
-				'taskTypeFilter' => [],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters(),
 				'limit' => 2,
 				'offset' => 6,
 				'expectedTitles' => [ 'Copyedit-4', 'Copyedit-5' ],
@@ -95,8 +93,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 6,
 			],
 			'taskfilter' => [
-				'taskTypeFilter' => [ 'copyedit' ],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters( [ 'copyedit' ], [] ),
 				'limit' => null,
 				'offset' => null,
 				'expectedTitles' => [ 'Copyedit-1', 'Copyedit-2', 'Copyedit-3', 'Copyedit-4', 'Copyedit-5' ],
@@ -104,8 +101,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 0,
 			],
 			'taskfilter + limit' => [
-				'taskTypeFilter' => [ 'copyedit' ],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters( [ 'copyedit' ], [] ),
 				'limit' => 4,
 				'offset' => 0,
 				'expectedTitles' => [ 'Copyedit-1', 'Copyedit-2', 'Copyedit-3', 'Copyedit-4' ],
@@ -113,8 +109,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 0,
 			],
 			'taskfilter + limit + offset' => [
-				'taskTypeFilter' => [ 'copyedit' ],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters( [ 'copyedit' ], [] ),
 				'limit' => 2,
 				'offset' => 2,
 				'expectedTitles' => [ 'Copyedit-3', 'Copyedit-4' ],
@@ -122,8 +117,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 2,
 			],
 			'multiple taskfilters' => [
-				'taskTypeFilter' => [ 'copyedit', 'create' ],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters( [ 'copyedit', 'create' ], [] ),
 				'limit' => null,
 				'offset' => null,
 				'expectedTitles' => [ 'Copyedit-1', 'Copyedit-2', 'Copyedit-3', 'Copyedit-4',
@@ -132,8 +126,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 0,
 			],
 			'topicfilter' => [
-				'taskTypeFilter' => [],
-				'topicFilter' => [ 'topic1' ],
+				'taskSetFilters' => new TaskSetFilters( [], [ 'topic1' ] ),
 				'limit' => null,
 				'offset' => null,
 				'expectedTitles' => [ 'Link-2', 'Copyedit-2', 'Copyedit-4' ],
@@ -141,8 +134,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 0,
 			],
 			'multiple topicfilters' => [
-				'taskTypeFilter' => [],
-				'topicFilter' => [ 'topic1', 'topic2' ],
+				'taskSetFilters' => new TaskSetFilters( [], [ 'topic1', 'topic2' ] ),
 				'limit' => null,
 				'offset' => null,
 				'expectedTitles' => [ 'Link-2', 'Copyedit-2', 'Copyedit-3', 'Copyedit-4' ],
@@ -150,8 +142,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 0,
 			],
 			'taskfilter + topicfilter' => [
-				'taskTypeFilter' => [ 'copyedit' ],
-				'topicFilter' => [ 'topic1' ],
+				'taskSetFilters' => new TaskSetFilters( [ 'copyedit' ], [ 'topic1' ] ),
 				'limit' => null,
 				'offset' => null,
 				'expectedTitles' => [ 'Copyedit-2', 'Copyedit-4' ],
@@ -159,8 +150,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedOffset' => 0,
 			],
 			'taskfilter + topicfilter + limit/offset' => [
-				'taskTypeFilter' => [ 'copyedit' ],
-				'topicFilter' => [ 'topic1', 'topic2' ],
+				'taskSetFilters' => new TaskSetFilters( [ 'copyedit' ], [ 'topic1', 'topic2' ] ),
 				'limit' => 1,
 				'offset' => 1,
 				'expectedTitles' => [ 'Copyedit-3' ],

@@ -72,7 +72,7 @@ class TaskSetTest extends MediaWikiUnitTestCase {
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Baz' ) ),
-		], 3, 1, new TaskSetFilters( [], [] ) );
+		], 3, 1, new TaskSetFilters() );
 	}
 
 }

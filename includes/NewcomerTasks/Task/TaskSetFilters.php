@@ -17,11 +17,13 @@ class TaskSetFilters implements JsonUnserializable {
 	use JsonUnserializableTrait;
 
 	/**
-	 * @var string[]
+	 * @var string[] List of task type IDs to limit the suggestions to.
+	 *   An empty array means no filtering.
 	 */
 	private $taskTypeFilters;
 	/**
-	 * @var string[]
+	 * @var string[] List of topic IDs to limit the suggestions to.
+	 *   An empty array means no filtering.
 	 */
 	private $topicFilters;
 
@@ -32,6 +34,13 @@ class TaskSetFilters implements JsonUnserializable {
 	public function __construct( array $taskTypeFilters = [], array $topicFilters = [] ) {
 		$this->taskTypeFilters = $taskTypeFilters;
 		$this->topicFilters = $topicFilters;
+	}
+
+	/**
+	 * @param string[] $taskTypeFilters
+	 */
+	public function setTaskTypeFilters( array $taskTypeFilters ): void {
+		$this->taskTypeFilters = $taskTypeFilters;
 	}
 
 	/**

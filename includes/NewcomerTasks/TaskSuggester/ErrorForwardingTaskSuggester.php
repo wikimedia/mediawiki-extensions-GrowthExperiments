@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
 
@@ -34,8 +35,7 @@ class ErrorForwardingTaskSuggester implements TaskSuggester {
 	/** @inheritDoc */
 	public function suggest(
 		UserIdentity $user,
-		array $taskTypeFilter = [],
-		array $topicFilter = [],
+		TaskSetFilters $taskSetFilters,
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []

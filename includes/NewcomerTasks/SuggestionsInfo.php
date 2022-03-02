@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\User\UserIdentityValue;
@@ -66,8 +67,10 @@ class SuggestionsInfo {
 				->getSearchTerm( $taskType );
 			$result = $taskSuggester->suggest(
 				$user,
-				[ $taskType->getId() ],
-				[],
+				new TaskSetFilters(
+					[ $taskType->getId() ],
+					[]
+				),
 				1,
 				null,
 				[ 'useCache' => false ]
@@ -85,8 +88,10 @@ class SuggestionsInfo {
 			foreach ( $taskTypes as $taskType ) {
 				$result = $taskSuggester->suggest(
 					$user,
-					[ $taskType->getId() ],
-					[ $topic->getId() ],
+					new TaskSetFilters(
+						[ $taskType->getId() ],
+						[ $topic->getId() ]
+					),
 					1,
 					null,
 					[ 'useCache' => false ]

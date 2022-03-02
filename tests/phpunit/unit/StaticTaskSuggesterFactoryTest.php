@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
@@ -29,7 +30,7 @@ class StaticTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 		$factory = new StaticTaskSuggesterFactory( [ $task ] );
 		$suggester = $factory->create();
 		$this->assertInstanceOf( StaticTaskSuggester::class, $suggester );
-		$this->assertSame( [ $task ], iterator_to_array( $suggester->suggest( $user ) ) );
+		$this->assertSame( [ $task ], iterator_to_array( $suggester->suggest( $user, new TaskSetFilters() ) ) );
 
 		$error = $this->getMockBuilder( Status::class )
 			->setConstructorArgs( [] )
@@ -41,7 +42,7 @@ class StaticTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 		$factory = new StaticTaskSuggesterFactory( $error );
 		$suggester = $factory->create();
 		$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $suggester );
-		$this->assertSame( $error, $suggester->suggest( $user ) );
+		$this->assertSame( $error, $suggester->suggest( $user, new TaskSetFilters() ) );
 	}
 
 }
