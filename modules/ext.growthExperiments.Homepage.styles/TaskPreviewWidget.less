@@ -1,0 +1,52 @@
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+
+.growthexperiments-task-preview-widget {
+	.suggested-edits-preview-pager {
+		font-size: 0.8125em; // 16px -> 13 px
+		padding-bottom: 8px;
+
+		strong {
+			font-weight: normal;
+		}
+	}
+
+	.mw-ge-small-task-card {
+		&-image {
+			height: 80px;
+			width: 80px;
+			border-radius: 2px;
+		}
+
+		&-title {
+			line-height: 1.2;
+			color: @wmui-color-base10;
+		}
+
+		&-description {
+			line-height: 1.5;
+		}
+
+		&-metadata-container {
+			height: 20px;
+		}
+
+		&-tasktype .oo-ui-iconWidget {
+			margin-bottom: 4px;
+		}
+	}
+
+	.suggested-edits-preview-footer {
+		width: 100%;
+
+		.suggested-edits-preview-cta-button {
+			// OOUI button is created in a span
+			display: block;
+			margin: 12px auto 0 auto;
+			max-width: 28.75em;
+			// OOUI button created in a span, see SuggestedEdits.php::getMobileSummaryBody()
+			& > span {
+				width: 100%;
+			}
+		}
+	}
+}

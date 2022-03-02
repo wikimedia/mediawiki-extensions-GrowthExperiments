@@ -151,20 +151,27 @@ SuggestedEditsModule.prototype.restoreState = function () {
 	this.taskCount = this.backup.taskCount;
 	this.taskQueueLoading = false;
 	this.filters.updateMatchCount( this.taskCount );
-	if ( this.taskQueue.length && OO.ui.isMobile() ) {
-		this.updateMobileSummarySmallTaskCard();
+	if ( OO.ui.isMobile() ) {
+		this.updateMobileSummary();
 	}
 	this.showCard();
 };
 
 /**
- * Update the mobile summary small task card HTML on Special:Homepage
- * with the first card in the task queue.
+ * Update the mobile summary state on Special:Homepage
+ * with a small card with the first task in the queue. If there
+ * are no tasks show the number of edits in the last day
  */
-SuggestedEditsModule.prototype.updateMobileSummarySmallTaskCard = function () {
+SuggestedEditsModule.prototype.updateMobileSummary = function () {
 	mw.loader.using( 'ext.growthExperiments.Homepage.mobile' ).done( function () {
 		var homepageModules = mw.config.get( 'homepagemodules' );
-		homepageModules[ 'suggested-edits' ][ 'task-preview' ] = this.taskQueue[ this.queuePosition ];
+		homepageModules[ 'suggested-edits' ][ 'task-preview' ] = $.extend(
+			{},
+			this.taskQueue[ this.queuePosition ],
+			{
+				taskPosition: this.queuePosition + 1
+			}
+		);
 		mw.config.set( 'homepagemodules', homepageModules );
 		require( 'ext.growthExperiments.Homepage.mobile' )
 			.loadExtraDataForSuggestedEdits(
@@ -370,12 +377,12 @@ SuggestedEditsModule.prototype.onNextCard = function ( isSwipe ) {
 /**
  * Called from onNextCard / filterSelection.
  *
- * Used to update the mobile summary small task card, show the current card based
+ * Used to update the mobile summary state, show the current card based
  * on the queue position, and preload the next card.
  */
 SuggestedEditsModule.prototype.updateCardAndPreloadNext = function () {
-	if ( this.taskQueue.length && OO.ui.isMobile() ) {
-		this.updateMobileSummarySmallTaskCard();
+	if ( OO.ui.isMobile() ) {
+		this.updateMobileSummary();
 	}
 	this.showCard();
 	this.preloadNextCard();
@@ -428,7 +435,7 @@ SuggestedEditsModule.prototype.onPreviousCard = function ( isSwipe ) {
 	this.queuePosition = this.queuePosition - 1;
 	this.showCard();
 	if ( OO.ui.isMobile() ) {
-		this.updateMobileSummarySmallTaskCard();
+		this.updateMobileSummary();
 	}
 };
 

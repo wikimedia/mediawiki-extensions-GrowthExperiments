@@ -514,7 +514,7 @@ class SuggestedEdits extends BaseModule {
 				$this->getTasksPaginationText()
 			);
 
-			return Html::rawElement( 'div', [ 'class' => 'suggested-edits-main-with-preview' ],
+			return Html::rawElement( 'div', [ 'class' => [ 'growthexperiments-task-preview-widget' ] ],
 				$subheader . $this->getTaskCard() . $centeredButton );
 		} else {
 			// For some reason phan thinks $siteEditsPerDay and/or $metricNumber get double-escaped,
@@ -535,15 +535,18 @@ class SuggestedEdits extends BaseModule {
 			$footerText = $this->getContext()
 				->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-footer' )
 				->text();
-			return Html::rawElement( 'div', [ 'class' => 'suggested-edits-main' ],
-					Html::rawElement( 'div', [ 'class' => 'suggested-edits-icon' ] ) .
-					Html::rawElement( 'div', [ 'class' => 'suggested-edits-metric' ],
-						Html::element( 'div', [ 'class' => 'suggested-edits-metric-number' ], $metricNumber ) .
-						Html::element( 'div', [ 'class' => 'suggested-edits-metric-subtitle' ], $metricSubtitle )
-					)
-				) . Html::element( 'div', [
-					'class' => 'suggested-edits-footer'
-				], $footerText );
+			$noTaskPreviewContent = Html::rawElement( 'div', [ 'class' => 'suggested-edits-main' ],
+				Html::rawElement( 'div', [ 'class' => 'suggested-edits-icon' ] ) .
+				Html::rawElement( 'div', [ 'class' => 'suggested-edits-metric' ],
+					Html::element( 'div', [ 'class' => 'suggested-edits-metric-number' ], $metricNumber ) .
+					Html::element( 'div', [ 'class' => 'suggested-edits-metric-subtitle' ], $metricSubtitle )
+				)
+			) . Html::element( 'div', [
+				'class' => 'suggested-edits-footer'
+			], $footerText );
+			return Html::rawElement( 'div', [
+				'class' => [ 'growthexperiments-last-day-edits-widget' ]
+			], $noTaskPreviewContent );
 		}
 	}
 
@@ -836,6 +839,7 @@ class SuggestedEdits extends BaseModule {
 		$data = [
 			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
 			'taskCount' => ( $taskSet instanceof TaskSet ) ? $taskSet->getTotalCount() : 0,
+			'editCount' => $this->editInfoService->getEditsPerDay(),
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
 			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
