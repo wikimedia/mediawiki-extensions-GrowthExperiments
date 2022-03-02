@@ -5,6 +5,9 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentorstva",
+	"growthexperiments-mentor-dashboard-pt-link": "Mentorstva",
+	"growthexperiments-mentor-dashboard-disabled": "Na ovom projektu mentorsko sučelje nije omogućeno.",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Mentorsko sučelje omogućite [[$1|prijavom za mentora]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Vaši}} novaci i novakinje",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Prikazan je popis Vaših novakinja i novaka. Filtrom odredite koji će od njih biti prikazani.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Suradničko ime",
@@ -31,5 +34,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentorov status",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktivan",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Neaktivan",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Status Vam je promijenjen u »Aktivan«"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Status Vam je promijenjen u »Aktivan«",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Novaci koje ste označili zvjezdicom u mentorskom sučelju"
 }
