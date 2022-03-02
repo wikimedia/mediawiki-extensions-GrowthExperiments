@@ -36,7 +36,9 @@ function LastDayEditsWidget( config ) {
 						classes: [ 'suggested-edits-metric-subtitle' ],
 						text: mw.message(
 							'growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle'
-						).text()
+						).params( [
+							config.editCount
+						] ).text()
 					} )
 				]
 			} )

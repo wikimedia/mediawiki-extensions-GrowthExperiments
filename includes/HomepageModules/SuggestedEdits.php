@@ -531,6 +531,7 @@ class SuggestedEdits extends BaseModule {
 			$metricNumber = $this->getContext()->getLanguage()->formatNum( $siteEditsPerDay );
 			$metricSubtitle = $this->getContext()
 				->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle' )
+				->params( $siteEditsPerDay )
 				->text();
 			$footerText = $this->getContext()
 				->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-footer' )
