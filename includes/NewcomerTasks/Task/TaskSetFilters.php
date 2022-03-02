@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\Task;
 
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use MediaWiki\Json\JsonUnserializable;
 use MediaWiki\Json\JsonUnserializableTrait;
 use MediaWiki\Json\JsonUnserializer;
@@ -26,14 +27,32 @@ class TaskSetFilters implements JsonUnserializable {
 	 *   An empty array means no filtering.
 	 */
 	private $topicFilters;
+	/**
+	 * @var string|null Matching mode for topics. One of: 'AND', 'OR'.
+	 * @See SearchStrategy::TOPIC_MATCH_MODES
+	 */
+	private $topicFiltersMode;
 
 	/**
 	 * @param string[] $taskTypeFilters
 	 * @param string[] $topicFilters
+	 * @param string|null $topicFiltersMode
 	 */
-	public function __construct( array $taskTypeFilters = [], array $topicFilters = [] ) {
+	public function __construct(
+		array $taskTypeFilters = [],
+		array $topicFilters = [],
+		?string $topicFiltersMode = null
+	) {
 		$this->taskTypeFilters = $taskTypeFilters;
 		$this->topicFilters = $topicFilters;
+		$this->topicFiltersMode = $topicFiltersMode ?? SearchStrategy::TOPIC_MATCH_MODE_OR;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTopicFiltersMode(): string {
+		return $this->topicFiltersMode;
 	}
 
 	/**
@@ -61,13 +80,18 @@ class TaskSetFilters implements JsonUnserializable {
 	protected function toJsonArray(): array {
 		return [
 			'task' => $this->taskTypeFilters,
-			'topic' => $this->topicFilters
+			'topic' => $this->topicFilters,
+			'topicMode' => $this->topicFiltersMode
 		];
 	}
 
 	/** @inheritDoc */
 	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
-		return new self( $json['task'], $json['topic'] );
+		return new self(
+			$json['task'],
+			$json['topic'],
+			$json['topicMode'] ?? SearchStrategy::TOPIC_MATCH_MODE_OR
+		);
 	}
 
 }
