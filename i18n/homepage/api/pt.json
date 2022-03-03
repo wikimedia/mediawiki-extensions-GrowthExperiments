@@ -13,5 +13,7 @@
 	"apihelp-growthsetmentor-summary": "Definir o mentor do utilizador. A alteração terá um registo público.",
 	"apihelp-growthsetmentor-param-mentee": "Nome de utilizador do mentorado",
 	"apihelp-growthsetmentor-param-mentor": "Nome de utilizador do mentor",
-	"apihelp-growthsetmentor-param-reason": "Motivo da mudança"
+	"apihelp-growthsetmentor-param-reason": "Motivo da mudança",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar a tarefa de recomendação de imagem",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Título do artigo ao qual respeita a recomendação de imagem"
 }
