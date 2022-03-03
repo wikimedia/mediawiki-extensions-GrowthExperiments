@@ -74,7 +74,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		] );
 
 		$benefitsList = '';
-		if ( !$this->isRecurringDonorCampaign() ) {
+		if ( $this->shouldShowBenefitsList() ) {
 			foreach ( [ 'lightbulb', 'mentor', 'difficulty-easy-bw' ] as $i => $icon ) {
 				$index = $i + 1;
 				$benefitsList .= Html::rawElement( 'li', [],
@@ -92,6 +92,17 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		}
 
 		$campaignKey = $this->getCampaignMessageKey();
+		$isMobile = $this->getSkin() instanceof SkinMinerva;
+		$campaignBody = $this->isGlamCampaign() && $isMobile ?
+			'' :
+			Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
+				// The following message keys are used here:
+				// * growthexperiments-recurringcampaign-body
+				// * growthexperiments-signupcampaign-body
+				// * growthexperiments-josacampaign-body
+				// * growthexperiments-glamcampaign-body
+				$this->msg( "growthexperiments-$campaignKey-body" )->parse()
+			);
 		return Html::rawElement( 'div', [ 'class' => 'mw-createacct-benefits-container' ],
 			Html::rawElement( 'div', [ 'class' => "mw-ge-donorsignup-block mw-ge-donorsignup-block-$campaignKey" ],
 				Html::rawElement( 'h1', [ 'class' => 'mw-ge-donorsignup-title' ],
@@ -103,14 +114,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 					// * growthexperiments-glamcampaign-title
 					$this->msg( "growthexperiments-$campaignKey-title" )->parse()
 				)
-				. Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
-					// The following message keys are used here:
-					// * growthexperiments-recurringcampaign-body
-					// * growthexperiments-signupcampaign-body
-					// * growthexperiments-josacampaign-body
-					// * growthexperiments-glamcampaign-body
-					$this->msg( "growthexperiments-$campaignKey-body" )->parse()
-				)
+				. $campaignBody
 				. $benefitsList
 			)
 		);
@@ -133,17 +137,24 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	 * @return bool
 	 */
 	private function isRecurringDonorCampaign(): bool {
-		$campaign = $this->authForm->getField( 'campaign' )->getDefault();
-		return strpos( $campaign, 'recurring' ) !== false;
+		return strpos( $this->getCampaignValue(), 'recurring' ) !== false;
 	}
 
 	/**
-	 * Check if the campaign field contains "recurring".
+	 * Check if the campaign field contains "glam".
+	 * @return bool
+	 */
+	private function isGlamCampaign(): bool {
+		return strpos( $this->getCampaignValue(), 'glam' ) !== false;
+	}
+
+	/**
+	 * Return the message key prefix for the campaign
 	 *
 	 * @return string
 	 */
 	private function getCampaignMessageKey(): string {
-		$campaign = $this->authForm->getField( 'campaign' )->getDefault();
+		$campaign = $this->getCampaignValue();
 		if ( strpos( $campaign, 'recurring' ) !== false ) {
 			return 'recurringcampaign';
 		} elseif ( strpos( $campaign, 'JOSA' ) !== false ) {
@@ -153,6 +164,24 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		} else {
 			return 'signupcampaign';
 		}
+	}
+
+	/**
+	 * Get the campaign from the account creation form
+	 *
+	 * @return string
+	 */
+	private function getCampaignValue(): string {
+		return $this->authForm->getField( 'campaign' )->getDefault();
+	}
+
+	/**
+	 * Check whether the customized landing page content should include the benefits list
+	 *
+	 * @return bool
+	 */
+	private function shouldShowBenefitsList(): bool {
+		return !$this->isRecurringDonorCampaign() && !$this->isGlamCampaign();
 	}
 
 }
