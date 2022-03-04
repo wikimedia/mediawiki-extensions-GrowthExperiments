@@ -17,12 +17,23 @@ class Mentor {
 	private $introText;
 
 	/**
-	 * @param UserIdentity $mentorUser
-	 * @param string $introText
+	 * @var string
 	 */
-	public function __construct( UserIdentity $mentorUser, string $introText ) {
+	private $defaultIntroText;
+
+	/**
+	 * @param UserIdentity $mentorUser
+	 * @param string|null $introText if null, $defaultIntroText will be used instead
+	 * @param string $defaultIntroText
+	 */
+	public function __construct(
+		UserIdentity $mentorUser,
+		?string $introText,
+		string $defaultIntroText
+	) {
 		$this->mentorUser = $mentorUser;
 		$this->introText = $introText;
+		$this->defaultIntroText = $defaultIntroText;
 	}
 
 	/**
@@ -37,6 +48,6 @@ class Mentor {
 	 * @return string
 	 */
 	public function getIntroText() {
-		return $this->introText;
+		return $this->introText ?? $this->defaultIntroText;
 	}
 }

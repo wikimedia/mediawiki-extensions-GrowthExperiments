@@ -28,7 +28,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$mentorManager = $this->getMockMentorManager();
 		$mentorUser = $this->getTestSysop()->getUser();
-		$mentor = new Mentor( $mentorUser, '*' );
+		$mentor = new Mentor( $mentorUser, '*', '' );
 		$mentorManager->method( 'getMentorForUser' )->willReturn( $mentor );
 		$mentorManager->method( 'getMentorForUserSafe' )->willReturn( $mentor );
 		$mentorManager->method( 'getEffectiveMentorForUser' )->willReturn( $mentor );
