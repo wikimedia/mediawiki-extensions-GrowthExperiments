@@ -197,7 +197,7 @@
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1千",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1百万",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "最后一天的编辑",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "最后一天的{{PLURAL:$1|编辑}}",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "今天，像您这样的志愿者为改善{{SITENAME}}做出了贡献。请加入到我们的行列中来！",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "查看所有建议",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "改正错别字、语法和语调",

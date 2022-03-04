@@ -172,7 +172,7 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "{{GENDER:|בחר|בחרי}} תחומי עניין אחרים או רמות קושי אחרות כדי למצוא עריכות מוצעות.",
 	"growthexperiments-homepage-suggestededits-footer": "משתמשים אחרים שמו לב לכך שהערכים האלה זקוקים לעוד עבודה. {{GENDER:|עזור|עזרי}} לאתר '''{{SITENAME}}''' להיות טוב יותר עבור '''$1 הקוראים''' שיש לו מדי יום.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "משתמשים אחרים שמו לב לכך שהערכים האלה זקוקים לעוד עבודה. {{GENDER:|עזור|עזרי}} לשפר את '''{{SITENAME}}'''.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "עריכות ביום האחרון",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|עריכה|עריכות}} במהלך יום האחרון",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "מתנדבים כמוך תרמו לשיפור {{SITENAME}} היום. {{GENDER:|בוא תצטרף|בואי תצטרפי}}!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "הצגת כל ההצעות",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "תיקון איות, דקדוק, ונימה",
