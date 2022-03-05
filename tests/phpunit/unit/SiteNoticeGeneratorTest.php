@@ -6,6 +6,7 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
 use JobQueueGroup;
+use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
@@ -13,7 +14,6 @@ use OOUI\IconWidget;
 use OOUI\Theme;
 use PHPUnit\Framework\MockObject\MockObject;
 use Skin;
-use SkinMinerva;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Homepage\SiteNoticeGenerator
