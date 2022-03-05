@@ -10,7 +10,7 @@ use ExtensionRegistry;
 use GrowthExperiments\ExperimentUserManager;
 use Html;
 use IContextSource;
-use MediaWiki\Extensions\PageViewInfo\PageViewService;
+use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MWException;
 use MWTimestamp;
 use OOUI\ButtonWidget;

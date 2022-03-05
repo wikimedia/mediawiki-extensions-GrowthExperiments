@@ -22,7 +22,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use Html;
 use IContextSource;
-use MediaWiki\Extensions\PageViewInfo\PageViewService;
+use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserOptionsLookup;

@@ -9,7 +9,7 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
-use MediaWiki\Extensions\PageViewInfo\PageViewService;
+use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\User\UserOptionsLookup;
 use SpecialPage;
 use TitleFactory;
