@@ -26,15 +26,6 @@ class Mentor {
 	}
 
 	/**
-	 * @deprecated since 1.38, use Mentor::getUserIdentity() instead
-	 * @return UserIdentity
-	 */
-	public function getMentorUser() {
-		wfDeprecated( __METHOD__, '1.38' );
-		return $this->getUserIdentity();
-	}
-
-	/**
 	 * @return UserIdentity
 	 */
 	public function getUserIdentity(): UserIdentity {
