@@ -4,8 +4,8 @@ namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\HomepageHooks;
 use Html;
+use MediaWiki\Minerva\Skins\SkinMinerva;
 use OOUI\IconWidget;
-use SkinMinerva;
 use SpecialCreateAccount;
 
 /**
