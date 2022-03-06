@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\EventLogging;
 
-use EventLogging;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\StartEmail;
+use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\Logger\LoggerFactory;
 use User;
 use WebRequest;

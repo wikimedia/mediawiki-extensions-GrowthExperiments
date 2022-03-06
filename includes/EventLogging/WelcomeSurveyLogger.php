@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\EventLogging;
 
-use EventLogging;
 use ExtensionRegistry;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
+use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use WebRequest;

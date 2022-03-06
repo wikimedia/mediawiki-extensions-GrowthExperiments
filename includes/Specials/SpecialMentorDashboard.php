@@ -4,7 +4,6 @@ namespace GrowthExperiments\Specials;
 
 use DeferredUpdates;
 use ErrorPageError;
-use EventLogging;
 use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\MentorDashboard\MentorDashboardDiscoveryHooks;
@@ -12,6 +11,7 @@ use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Util;
 use Html;
+use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\User\UserOptionsLookup;
 use PermissionsError;
