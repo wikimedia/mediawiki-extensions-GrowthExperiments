@@ -61,7 +61,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
-	 * @covers \GrowthExperiments\Mentorship\Mentor::getMentorUser
+	 * @covers \GrowthExperiments\Mentorship\Mentor::getUserIdentity
 	 */
 	public function testGetMentorUserNew() {
 		$sysop = $this->getTestSysop()->getUser();
@@ -75,7 +75,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
-	 * @covers \GrowthExperiments\Mentorship\Mentor::getMentorUser
+	 * @covers \GrowthExperiments\Mentorship\Mentor::getUserIdentity
 	 */
 	public function testGetMentorUserExisting() {
 		$sysop = $this->getTestSysop()->getUser();
