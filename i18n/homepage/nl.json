@@ -173,7 +173,7 @@
 	"growthexperiments-homepage-suggestededits-footer": "Andere gebruikers hebben opgemerkt dat deze artikelen werk nodig hebben. Help mee '''{{SITENAME}}''' elke dag beter te maken voor zijn '''$1 lezers'''.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Andere gebruikers hebben opgemerkt dat deze artikelen werk nodig hebben. Help mee '''{{SITENAME}}''' beter te maken.",
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "Bewerkingen in de afgelopen dag",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "bewerking{{PLURAL:$1||en}} in de afgelopen dag",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Vrijwilligers zoals jij hebben vandaag bijgedragen aan het verbeteren van {{SITENAME}}. Kom er bij!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Bekijk alle suggesties",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Verbeter spelling, grammatica en stijl",

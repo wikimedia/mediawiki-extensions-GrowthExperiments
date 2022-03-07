@@ -38,7 +38,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Приказуј $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 од $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Подаци о новајлији нису доступни",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Можда још немате додељене новајлије. Подаци се ажурирају свакодневно.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Можда још немате додељене новајлије. Подаци се ажурирају на свака три сата.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Ниједна новајлија није пронађена",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Промените филтере да бисте нашли новајлије.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ресурси",
@@ -50,5 +50,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Информације о менторству",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Статус менторства",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "дана",
-	"growthexperiments-rcfilters-mentorship-title": "Менторство"
+	"growthexperiments-rcfilters-mentorship-title": "Менторство",
+	"echo-category-title-ge-mentorship": "Менторство",
+	"growthexperiments-notification-body-mentee-claimed": "Разлог: $1"
 }

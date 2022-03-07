@@ -31,9 +31,18 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "nepoznato",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Prikaži $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 / $2",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentorov status",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Postavke",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Status",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktivan",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Neaktivan",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Status Vam je promijenjen u »Aktivan«",
-	"growthexperiments-rcfilters-mentorship-starred-desc": "Novaci koje ste označili zvjezdicom u mentorskom sučelju"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Poruka novacima i novakinjama",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Preuzimanje mentorstva",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Ovdje možete preuzeti novaka ili novakinju od drugoga mentora. To se često radi za tečajeve i slična događanja tako da mentor možete biti i na wikiju i uživo.",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Novaci koje ste označili zvjezdicom u mentorskom sučelju",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Dodjeljivanje novaka",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Dodjeljuj polovicu prosječnog broja",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Dodjeljuj prosječan broj (početna postavka)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Dodjeljuj dvaput više od prosječnog broja",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Preporučujemo započeti s prosječnim brojem dodjeljivanja, a onda povećati ili smanjiti prema poželjnom opterećenju"
 }
