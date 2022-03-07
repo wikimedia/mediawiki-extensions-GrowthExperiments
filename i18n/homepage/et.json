@@ -39,6 +39,7 @@
 	"growthexperiments-homepage-impact-subheader-subtext": "Vaatamisi {{GENDER:$1|sinu}} muudatuste järel (viimased 60 päeva):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Oled}} teinud <strong>$1</strong> {{PLURAL:$1|muudatuse|muudatust}} (vaata kõiki)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Sa}} pole veel alustanud ega muutnud ühtegi artiklit.",
+	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Siin näed, mitu korda on inimesed vaadanud artikleid, mille {{GENDER:$1|oled}} alustanud või mida oled muutnud.",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Vaata lehekülje vaatamiste üksikasju",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Kuna tegid täna selles artiklis esimese muudatuse, siis pole lehekülje vaatamisi veel arvestatud. Vaata siia homme uuesti!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Lehekülje vaatamisi pole veel arvestatud. Vaata siia homme uuesti!",
@@ -62,7 +63,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|Vaata}} {{GENDER:$1|mentori}} teisi vestlusi",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$1|Mentorile}} küsimuse {{GENDER:$2|esitamine}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Kui esitad küsimuse, siis see <strong>postitatakse avalikult</strong> {{GENDER:$2|sinu}} kasutajanime \"$2\" all $3, kust {{GENDER:$1|ta}} küsimuse leiab ja kus ta sellele vastata saab.",
-	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|sinu}} {{GENDER:$1|mentori}} aruteluleheküljele",
+	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|sinu}} {{GENDER:$1|mentori}} aruteluleheküljel",
 	"growthexperiments-specialimpact-title": "Mõju",
 	"growthexperiments-homepage-enable-preference": "Selleks et lubada uue kasutaja koduleht, vaata üle \"Uue kasutaja kodulehe\" sätted [[Special:Preferences#mw-prefsection-personal-homepage|eelistustes]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Sa}} pole veel kaastööd teinud.",
@@ -164,5 +165,11 @@
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Eemalda kõik",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Vali mõned teemad, mille muutmisest {{GENDER:$1|oled}} huvitatud",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Proovime soovitada artikleid, mis vastavad {{GENDER:$1|sinu}} huvialadele.",
+	"growthexperiments-log-name": "GrowthExperimentsi logi",
+	"growthexperiments-log-header": "Siin logis on toimingud, mis on tehtud lisaga GrowthExperiments.",
+	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|võttis}} kasutaja {{GENDER:$6|$3}} juhendatavaks (eelmine {{GENDER:$4|mentor}} $5)",
+	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|võttis}} kasutaja {{GENDER:$6|$3}} juhendatavaks (ilma eelmise mentorita)",
+	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|määras}} kasutaja {{GENDER:$6|$3}} mentoriks kasutaja {{GENDER:$5|$7}} (eelmine {{GENDER:$4|mentor}} $8)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|määras}} kasutaja {{GENDER:$6|$3}} mentoriks kasutaja {{GENDER:$5|$7}} (ilma eelmise mentorita)",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Veel selle soovitatud muudatuse kohta"
 }
