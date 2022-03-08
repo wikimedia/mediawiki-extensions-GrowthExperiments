@@ -7,7 +7,7 @@
 	},
 	"apihelp-query+growthtasks-summary": "Obter recomendações de tarefas adequadas para principiantes.",
 	"apihelp-query+growthtasks-extended-description": "Sugere um conjunto de artigos com alguns problemas pendentes, fáceis o suficiente para serem resolvidos por um editor principiante.",
-	"apihelp-query+growthtasks-param-tasktypes": "Tipos de tarefas aos quais limitar os resultados. Deixe em branco para receber todas as sugestões.",
+	"apihelp-query+growthtasks-param-tasktypes": "Tipos de tarefas aos quais limitar os resultados. Deixar em branco para receber todas as sugestões.",
 	"apihelp-query+growthtasks-param-topics": "Tópicos de artigos a serem preferidos nas sugestões de tarefas.",
 	"apihelp-query+growthtasks-param-limit": "Número máximo de sugestões de tarefas a devolver.",
 	"apihelp-query+growthtasks-param-debug": "Adicionar dados de depuração à saída.",

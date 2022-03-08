@@ -5,7 +5,8 @@
 			"GoEThe",
 			"Hamilton Abreu",
 			"He7d3r",
-			"Mansil alfalb"
+			"Mansil alfalb",
+			"Emma Franzen"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Ativar o painel de ajuda do editor",
@@ -134,5 +135,12 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp; está a usar o editor de código-fonte. Estas dicas de edição são mais úteis com o editor visual.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Mudar para o editor visual",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp; Está a usar o editor visual. Estas dicas de edição são mais úteis com o editor de código-fonte.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Mudar para o editor de código"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Mudar para o editor de código",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Adicionar hiperligações ajuda as pessoas a aprenderem mais depressa.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "Você vai decidir se palavras de um artigo da wiki {{SITENAME}} devem conduzir a outros artigos da wiki {{SITENAME}}.{{GENDER:$1|}}",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "A lua é o único <mark class=\"positive\">satélite natural</mark> que <mark class=\"positive\">orbita</mark> a <mark class=\"positive\">Terra</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Não é necessário nenhum conhecimento especial sobre o artigo para realizar esta tarefa.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Diretrizes",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Ligue conceitos que um leitor pode ter interesse em conhecer.\n* Certifique-se de que a hiperligação conduz ao artigo correto.\n* Não crie ligações para palavras vulgares, anos ou datas.\n* Se tem dúvidas, salte esta sugestão.{{GENDER:$1|}}",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Frase de exemplo"
 }
