@@ -13,5 +13,7 @@
 	"apihelp-growthsetmentor-summary": "వాడుకరికి గురువును కుదర్చండి. ఈ మార్పు బహిరంగంగా చిట్టా లోకి చేరుతుంది.",
 	"apihelp-growthsetmentor-param-mentee": "శిష్యుని వాడుకరిపేరు",
 	"apihelp-growthsetmentor-param-mentor": "గురువు వాడుకరిపేరు",
-	"apihelp-growthsetmentor-param-reason": "మార్పుకు కారణం"
+	"apihelp-growthsetmentor-param-reason": "మార్పుకు కారణం",
+	"apihelp-growthinvalidateimagerecommendation-summary": "బొమ్మ పని సూచన చెల్లనిది",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "బొమ్మ పని సూచన చేసిన వ్యాసపు శీర్షిక"
 }
