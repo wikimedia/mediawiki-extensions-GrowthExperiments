@@ -203,7 +203,7 @@ class TipNodeRenderer {
 		return array_filter( array_map( function ( $nodeConfig ) use ( $skinName ) {
 			switch ( $nodeConfig['type'] ) {
 				case TipTree::TIP_DATA_TYPE_PLAIN_MESSAGE:
-					$parameterMessageKey = $nodeConfig['variant'][$skinName] ?? $nodeConfig['data'];
+					$parameterMessageKey = $nodeConfig['variant'][$skinName]['data'] ?? $nodeConfig['data'];
 					return $this->messageLocalizer->msg( $parameterMessageKey )->plain();
 				case TipTree::TIP_DATA_TYPE_OOUI_ICON:
 					$iconConfig = [
