@@ -126,22 +126,19 @@ class VariantHooks implements
 	public static function isDonorOrGlamCampaign(
 		IContextSource $context, CampaignConfig $campaignConfig
 	): bool {
-		if ( self::shouldCheckForCampaign( $context ) ) {
-			$campaign = self::getCampaign( $context );
+		$campaign = self::getCampaign( $context );
 
-			if ( !$campaign ) {
-				return false;
-			}
-
-			$geCampaignPattern = $context->getConfig()->get( 'GECampaignPattern' );
-			if ( $geCampaignPattern && preg_match( $geCampaignPattern, $campaign ) ) {
-				return true;
-			}
-			// FIXME remove when GLAM campaign is over
-			$glamCampaignPattern = $campaignConfig->getCampaignPattern( 'growth-glam-2022' );
-			return $glamCampaignPattern && preg_match( $glamCampaignPattern, $campaign );
+		if ( !$campaign ) {
+			return false;
 		}
-		return false;
+
+		$geCampaignPattern = $context->getConfig()->get( 'GECampaignPattern' );
+		if ( $geCampaignPattern && preg_match( $geCampaignPattern, $campaign ) ) {
+			return true;
+		}
+		// FIXME remove when GLAM campaign is over
+		$glamCampaignPattern = $campaignConfig->getCampaignPattern( 'growth-glam-2022' );
+		return $glamCampaignPattern && preg_match( $glamCampaignPattern, $campaign );
 	}
 
 	/**
@@ -194,14 +191,4 @@ class VariantHooks implements
 		}
 	}
 
-	/**
-	 * Check whether the campaign query parameter should be inspected
-	 *
-	 * @param IContextSource $context
-	 * @return bool
-	 */
-	private static function shouldCheckForCampaign( IContextSource $context ): bool {
-		// T285506: Don't assume the context has a title
-		return !$context->getTitle() || $context->getTitle()->isSpecial( 'CreateAccount' );
-	}
 }
