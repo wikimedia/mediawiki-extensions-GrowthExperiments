@@ -130,7 +130,7 @@ class HomepageModuleRegistry {
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getGrowthConfig()->get( 'GEHomepageImpactModuleEnabled' ),
-					$services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
+					$services->getDBLoadBalancer()->getConnectionRef( DB_REPLICA ),
 					$growthServices->getExperimentUserManager(),
 					[
 						'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context ),
