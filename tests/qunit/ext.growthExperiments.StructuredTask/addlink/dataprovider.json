@@ -7,18 +7,39 @@
 			},
 			{
 				"element": "p",
-				"content": "It is Time for this test to work."
+				"content": "It is Time for this test to work discarding matches under threshold."
 			}
 		],
-		"body": "<h2>Time</h2><p>It is Time for this test to work.</p>",
-		"annotatedBody": "<h2>Time</h2><p>It is <span typeof=\"mw:RecommendedLink\" data-target=\"Time\" data-text=\"Time\" data-wikitext-offset=\"123\" data-score=\"0.5\">Time</span> for this test to work.</p>",
+		"body": "<h2>Time</h2><p>It is Time for this test to work discarding matches under threshold</p>",
+		"annotatedBody": "<h2>Time</h2><p>It is <span typeof=\"mw:RecommendedLink\" data-target=\"Time\" data-text=\"Time\" data-wikitext-offset=\"123\" data-score=\"0.99\">Time</span> for this test to work discarding matches under <span typeof=\"mw:RecommendedLink\" data-target=\"threshold\" data-text=\"threshold\" data-wikitext-offset=\"123\" data-score=\"0.8\">threshold</span>.</p>",
 		"suggestions": [
+			{
+				"link_text": "cant-find-this",
+				"link_target": "cant-find-this",
+				"match_index": 0,
+				"wikitext_offset": 123,
+				"score": 0.9
+			},
+			{
+				"link_text": "threshold",
+				"link_target": "threshold",
+				"match_index": 0,
+				"wikitext_offset": 123,
+				"score": 0.8
+			},
+			{
+				"link_text": "work",
+				"link_target": "work",
+				"match_index": 0,
+				"wikitext_offset": 123,
+				"score": 0.5
+			},
 			{
 				"link_text": "Time",
 				"link_target": "Time",
 				"match_index": 0,
 				"wikitext_offset": 123,
-				"score": 0.5
+				"score": 0.99
 			}
 		]
 	}

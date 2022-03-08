@@ -1,4 +1,5 @@
-var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+	taskTypes = require( '../../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json' );
 
 /**
  * @typedef LinkRecommendationLink
@@ -24,6 +25,7 @@ var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  */
 function AddLinkArticleTarget( logger ) {
 	this.logger = logger;
+	this.maximumLinksToShow = taskTypes[ 'link-recommendation' ].maximumLinksToShowPerTask;
 }
 
 /**
@@ -169,8 +171,9 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		postText, linkWrapper,
 		phraseMap = {},
 		phraseMapKeys = [],
+		annotations = [],
+		numberOfLinksShown = 0,
 		treeWalker = this.getTreeWalker( doc );
-
 	/**
 	 * Build a regex that matches any of the given phrases.
 	 *
@@ -180,6 +183,28 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	 */
 	function buildRegex( phrases ) {
 		return new RegExp( phrases.map( mw.util.escapeRegExp ).join( '|' ), 'g' );
+	}
+
+	/**
+	 * Annotate a single suggestion in a DOM node
+	 *
+	 * @private
+	 * @param {Object} annotation
+	 * @param {Object} annotation.postText
+	 * @param {Object} annotation.linkText
+	 * @param {Object} annotation.suggestion
+	 */
+	function annotateSuggestion( annotation ) {
+		// Wrap linkText in a <span typeof="mw:RecommendedLink"> tag
+		linkWrapper = doc.createElement( 'span' );
+		linkWrapper.setAttribute( 'typeof', 'mw:RecommendedLink' );
+		linkWrapper.setAttribute( 'data-target', annotation.suggestion.link_target );
+		linkWrapper.setAttribute( 'data-text', annotation.suggestion.link_text );
+		// TODO probably use wikitext offset
+		linkWrapper.setAttribute( 'data-wikitext-offset', annotation.suggestion.wikitext_offset );
+		linkWrapper.setAttribute( 'data-score', annotation.suggestion.score );
+		linkWrapper.appendChild( annotation.linkText );
+		annotation.postText.parentNode.insertBefore( linkWrapper, annotation.postText );
 	}
 
 	// For each phrase, gather the link targets for that phrase and the occurrence number for each
@@ -221,16 +246,15 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 				// the matched phrase (linkText), and the text after the matched phrase (postText)
 				linkText = textNode.splitText( match.index );
 				postText = linkText.splitText( match[ 0 ].length );
-				// Wrap linkText in a <span typeof="mw:RecommendedLink"> tag
-				linkWrapper = doc.createElement( 'span' );
-				linkWrapper.setAttribute( 'typeof', 'mw:RecommendedLink' );
-				linkWrapper.setAttribute( 'data-target', suggestion.link_target );
-				linkWrapper.setAttribute( 'data-text', suggestion.link_text );
-				// TODO probably use wikitext offset
-				linkWrapper.setAttribute( 'data-wikitext-offset', suggestion.wikitext_offset );
-				linkWrapper.setAttribute( 'data-score', suggestion.score );
-				linkWrapper.appendChild( linkText );
-				postText.parentNode.insertBefore( linkWrapper, postText );
+
+				// Save the matched phrase and the text after and the suggestion
+				// instead of inserting the annotation so we can apply
+				// filters and sorting to all the annotations in the document
+				annotations.push( {
+					postText: postText,
+					linkText: linkText,
+					suggestion: suggestion
+				} );
 				// In the next iteration of the loop, search postText for any additional phrase
 				// matches, and reset regex.lastIndex accordingly
 				textNode = postText;
@@ -250,6 +274,19 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 
 		textNode = nextNode;
 	}
+
+	// Sort the annotations by highest accuracy (suggestion score) to show the
+	// most relevant links. We might review this decision in the future, see
+	// https://phabricator.wikimedia.org/T301095#7739231
+	annotations.sort( function ( a, b ) {
+		return b.suggestion.score - a.suggestion.score;
+	} );
+	// Annotate suggestions until the number of links to show is
+	// reached or the are not more annotations found left
+	while ( annotations.length > 0 && numberOfLinksShown < this.maximumLinksToShow ) {
+		annotateSuggestion( annotations.shift() );
+		numberOfLinksShown++;
+	}
 	phraseMapKeys = Object.keys( phraseMap );
 	if ( phraseMapKeys.length > 0 ) {
 		// If any items are remaining in the phrase map, that means we failed to locate them
@@ -262,10 +299,12 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 			'Unable to find ' + phraseMapKeys.length + ' link recommendation phrase item(s) in document.'
 		), 'error.growthexperiments' );
 	}
+
 	this.logger.log( 'impression', {
 		/* eslint-disable camelcase */
 		number_phrases_found: suggestions.length - phraseMapKeys.length,
-		number_phrases_expected: suggestions.length
+		number_phrases_expected: suggestions.length,
+		number_phrases_shown: numberOfLinksShown
 	}, {
 		active_interface: 'machinesuggestions_mode'
 		/* eslint-enable camelcase */

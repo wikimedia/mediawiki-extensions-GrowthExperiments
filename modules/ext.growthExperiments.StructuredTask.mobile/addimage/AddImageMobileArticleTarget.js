@@ -4,11 +4,11 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	ImageSuggestionInteractionLogger = StructuredTask.addImage().ImageSuggestionInteractionLogger;
 
 /**
- * Mobile version of AddLinkArticleTarget
+ * Mobile version of AddImageArticleTarget
  *
  * @class mw.libs.ge.AddLinkMobileArticleTarget
  * @extends mw.libs.ge.StructuredTaskMobileArticleTarget
- * @mixes mw.libs.ge.AddLinkArticleTarget
+ * @mixes mw.libs.ge.AddImageArticleTarget
  * @constructor
  */
 function AddImageMobileArticleTarget() {
