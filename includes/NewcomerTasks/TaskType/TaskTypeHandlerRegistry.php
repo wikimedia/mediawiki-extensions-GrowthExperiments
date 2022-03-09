@@ -4,7 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use InvalidArgumentException;
 use OutOfBoundsException;
-use Wikimedia\ObjectFactory;
+use Wikimedia\ObjectFactory\ObjectFactory;
 
 /**
  * Keeps track of TaskTypeHandlers.

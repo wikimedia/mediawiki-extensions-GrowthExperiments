@@ -12,7 +12,7 @@ use MediaWiki\Json\JsonCodec;
 use MediaWikiUnitTestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
-use Wikimedia\ObjectFactory;
+use Wikimedia\ObjectFactory\ObjectFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**

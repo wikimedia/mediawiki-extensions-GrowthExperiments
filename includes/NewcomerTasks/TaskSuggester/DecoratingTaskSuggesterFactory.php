@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
-use Wikimedia\ObjectFactory;
+use Wikimedia\ObjectFactory\ObjectFactory;
 
 /**
  * A TaskSuggesterFactory that wraps another factory and decorates the suggester created by it.
