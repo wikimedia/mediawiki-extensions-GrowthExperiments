@@ -41,7 +41,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "bilinmiyor",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 göster",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1/$2",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Henüz size bir danışman atanmamış olabilir. Veriler günlük olarak güncellenmektedir.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Henüz atanmış danışmanınız olmayabilir. Veriler her üç saatte bir güncellenir.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Danışman bulunamadı",
 	"growthexperiments-mentor-dashboard-resources-headline": "Kaynaklar",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Danışman listesi",

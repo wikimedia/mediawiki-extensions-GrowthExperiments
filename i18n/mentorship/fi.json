@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"MITO"
+			"MITO",
+			"Markus Mikkonen"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Selitys",
@@ -31,6 +32,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Tapahtui virhe. Yritä myöhemmin uudelleen.",
 	"growthexperiments-rcfilters-mentorship-title": "Mentorointi",
 	"growthexperiments-notification-body-mentee-claimed": "Syy: $1",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Puolet keskiarvosta",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Noin puolet keskiarvosta",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Keskiarvo (oletus)"
 }

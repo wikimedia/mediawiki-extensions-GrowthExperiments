@@ -6,5 +6,6 @@
 		]
 	},
 	"prefs-homepage": "ახალბედას მთავარი გვერდი",
-	"growthexperiments-homepage-enable": "ახალბედას მთავარი გვერდის გამოსახვა"
+	"growthexperiments-homepage-enable": "ახალბედას მთავარი გვერდის გამოსახვა",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|რედაქტირება}} ბოლო დღეს"
 }
