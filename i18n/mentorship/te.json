@@ -45,6 +45,13 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "శిష్యుణ్ణి పొందడం ఎలా",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "గ్రోత్ పరికరాలు",
 	"growthexperiments-rcfilters-mentorship-title": "గురూపదేశం",
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|మీ}} తార గుర్తు శిష్యులు",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "{{GENDER:|మీ}} గురువు డ్యాష్‌బోర్డులో {{GENDER:|మీరు}} తార గుర్తు పెట్టిన {{GENDER:|మీ}} శిష్యులు",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "తార గుర్తు లేని {{GENDER:|మీ}} శిష్యులు",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "{{GENDER:|మీకు}} నిర్దేశించిన ఇతర శిష్యులు",
-	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "ఔను, నా శిష్యులను వేరేవారికి జోడించు"
+	"growthexperiments-quit-mentorship-title": "గురూపదేశం నుండి తప్పుకోండి",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "మీరు వదలి పోవడం విచారకరం. గురూపదేశం నుండి వెళ్ళిపోయే ప్రక్రియ మొదలుపెట్టేందుకు, ముందు మీరు [[$1|గురువుల జాబితా]] నుండి మీ పేరు తీసెయ్యండి. అది చేసాక, తిరిగి ఈ పేజీకి రండి.",
+	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "మీ శిష్యులను ఇతర గురువులకు అనుసంధించడం తదుపరి పని. మీరు తొలగాలని నిశ్చయించుకుంటే, కింది బొత్తాన్ని నొక్కండి.",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "ఔను, నా శిష్యులను వేరేవారికి జోడించు",
+	"growthexperiments-quit-mentorship-success": "త్వరలోనే మీ శిష్యులను ఇతర గురువులకు మారుస్తాం."
 }

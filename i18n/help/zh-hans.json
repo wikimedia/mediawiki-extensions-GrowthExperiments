@@ -17,7 +17,8 @@
 			"Xiplus",
 			"魔琴",
 			"GuoPC",
-			"Stang"
+			"Stang",
+			"Winston Sung"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "启用编者帮助面板",
@@ -133,7 +134,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "您提问的通知：",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "一旦收到回复，您将在{{SITENAME}}接到通知。",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "您还会收到一封发送到$1 ($2)的电子邮件",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "修改",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "更改",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "如果 {{GENDER:$2|您}}希望收到邮件通知，请现在确认您的电子邮件地址：$1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "确认您的邮箱",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "如果{{GENDER:$1|您}}还想收到邮件通知，请立即添加一个电子邮件地址。",
