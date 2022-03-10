@@ -1636,6 +1636,15 @@
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 			"modules/ext.growthExperiments.Help/HelpPanelLogger.js",
 			"tests/qunit/ext.growthExperiments.StructuredTask/StructuredTaskLogger.test.js",
+			"modules/ext.growthExperiments.Homepage.mobile/index.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskPreviewWidget.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
+			"tests/qunit/ext.growthExperiments.Homepage.mobile/index.test.js",
+			{
+				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/config.json",
+				"file": "tests/qunit/__mocks__/config.json"
+			},
 			{
 				"name": "modules/ext.growthExperiments.Help/data.json",
 				"file": "tests/qunit/ext.growthExperiments.Help/configData.json"

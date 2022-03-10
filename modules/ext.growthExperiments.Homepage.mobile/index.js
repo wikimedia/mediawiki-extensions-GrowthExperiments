@@ -31,8 +31,6 @@
 			} ),
 			contentPreviewSelector = '.growthexperiments-task-preview-widget, .growthexperiments-last-day-edits-widget',
 			previewTask = {
-				// Hide the page views in the small card preview by default.
-				pageviews: null,
 				// Avoid rendering the loading skeleton for the description.
 				// See SmallTaskCard.buildCard()
 				description: null
@@ -53,7 +51,7 @@
 		}
 
 		if ( taskPreviewData && taskPreviewData.title ) {
-			api.getExtraDataFromPcs( taskPreviewData ).then( function ( task ) {
+			return api.getExtraDataFromPcs( taskPreviewData ).then( function ( task ) {
 				$.extend( previewTask, task );
 
 				if ( shouldLog ) {
@@ -61,6 +59,7 @@
 					homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-impression',
 						{ newcomerTaskToken: task.token } );
 				}
+				return previewTask;
 			}, function ( jqXHR, textStatus, errorThrown ) {
 				// If the PCS request fails display the task
 				// with the preview data instead
@@ -71,6 +70,8 @@
 						{ type: 'error', errorMessage: textStatus + ' ' + errorThrown } );
 				}
 			} ).always( function () {
+				// Always hide the page views in the small card preview by default.
+				previewTask.pageviews = null;
 				contentPreview = new TaskPreviewWidget( {
 					task: previewTask,
 					taskPosition: taskPreviewData.taskPosition,
