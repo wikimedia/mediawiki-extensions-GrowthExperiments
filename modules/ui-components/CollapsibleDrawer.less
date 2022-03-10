@@ -1,0 +1,87 @@
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import '../utils/mixins.less';
+
+@headerHeight: 48px;
+
+.mw-ge-collapsibleDrawer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	transition: transform 400ms, bottom 200ms;
+	transform: translateY( 0 );
+
+	&-content {
+		padding-top: 0;
+		background: @wmui-color-base100;
+		border-top: 1px solid @wmui-color-base70;
+	}
+
+	&--animate-in {
+		transform: translateY( 100% );
+	}
+
+	&--collapsed {
+		transform: translateY( ~'calc(100% - @{headerHeight})' );
+	}
+
+	&-introContent {
+		&--hidden {
+			opacity: 0;
+		}
+	}
+
+	&-header {
+		color: @wmui-color-base10;
+		height: @headerHeight;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16px;
+		cursor: pointer;
+	}
+
+	&-headerText {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 18.28px, @targetLineHeight: 26px );
+		font-weight: bold;
+	}
+
+	.mw-ge-collapsibleDrawer--padded {
+		.mw-ge-collapsibleDrawer-header {
+			padding: 0;
+		}
+	}
+
+	&-mobile {
+		.mw-ge-collapsibleDrawer-content {
+			box-shadow: 0 -1px 1px 0 fade( @wmui-color-base0, 10% );
+		}
+	}
+
+	&-desktop {
+		width: 480px;
+		margin: auto;
+
+		.mw-ge-collapsibleDrawer-content {
+			border: 1px solid @wmui-color-base70;
+			filter: drop-shadow( 0 4px 4px rgba( 0, 0, 0, 0.25 ) );
+		}
+
+		.mw-ge-collapsibleDrawer-headerText {
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 16px, @targetLineHeight: 22.8px );
+		}
+	}
+}
+
+.mw-ge-body--with-collapsibleDrawer-desktop {
+	#footer-places {
+		// Prevent the footer links from being covered when the toolbar dialog is collapsed on desktop
+		padding-bottom: @headerHeight;
+	}
+
+	.mw-ge-collapsibleDrawer-desktop,
+	.mw-ge-postEditDrawer-toastMessageArea {
+		font-size: calc( 1em * 0.875 );
+	}
+}

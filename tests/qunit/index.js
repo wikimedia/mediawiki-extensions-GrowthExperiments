@@ -20,3 +20,6 @@ require( './ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.te
 require( './ext.growthExperiments.StructuredTask/addimage/AddImageUtils.test.js' );
 require( './ext.growthExperiments.PostEdit/PostEditPanel.test.js' );
 require( './ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.test.js' );
+require( './ext.growthExperiments.PostEdit/PostEditToastMessage.test.js' );
+require( './ext.growthExperiments.PostEdit/PostEditDrawer.test.js' );
+require( './ui-components/CollapsibleDrawer.test.js' );

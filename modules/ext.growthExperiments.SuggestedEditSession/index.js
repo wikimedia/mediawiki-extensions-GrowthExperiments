@@ -368,6 +368,8 @@
 	 *   next request instead. This is less fragile when we know for sure the editor will reload.
 	 * @param {number|null} [config.newRevId] The revision ID associated with the suggested edit.
 	 *   Will only be set for edits done via mobile.
+	 * @param {boolean} [config.isDialogShownUponReload] Whether the post-edit dialog is being shown
+	 *  in the next request.
 	 * @return {jQuery.Promise} A promise that resolves when the dialog is displayed.
 	 */
 	SuggestedEditSession.prototype.showPostEditDialog = function ( config ) {
@@ -406,8 +408,10 @@
 			mw.hook( 'helpPanel.hideCta' ).fire();
 
 			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
-				return require( 'ext.growthExperiments.PostEdit' ).setupPanel().then( function ( result ) {
-					result.openPromise.then( function () {
+				return require( 'ext.growthExperiments.PostEdit' ).setupPanel(
+					config.isDialogShownUponReload
+				).then( function ( result ) {
+					result.openPromise.done( function () {
 						self.postEditDialogNeedsToBeShown = false;
 						self.save();
 					} ).then( function () {
@@ -473,12 +477,30 @@
 	};
 
 	/**
-	 * Display the post-edit dialog if we are in a suggested edit session, right after an edit.
+	 * Display the post-edit dialog if we are in a suggested edit session, right after an edit and
+	 * set up event handlers for displaying the post-edit dialog for unstructured tasks.
+	 *
+	 * This gets called at the beginning of every suggested edit session, which could be either the
+	 * beginning of the edit or after an edit is saved and the page is reloaded (for all mobile and
+	 * desktop structured task edits).
+	 *
+	 * Possible mechanisms for showing the dialog:
+	 * - Structured task with non-null edits (mobile): postEditMobile hook, but the post-edit dialog
+	 * is shown upon page reload
+	 * - Structured task with non-null edits (desktop): manually set postEditDialogNeedsToBeShown
+	 * flag in StructuredTaskDesktopArticleTarget.saveComplete (the page is reloaded upon save,
+	 * unlike regular desktop edits in order to change the article target)
+	 * - Add link with null edit: upon closing the save dialog
+	 * (via StructuredTaskSaveDialog.getTeardownProcess)
+	 * - Add image with null edit: the save dialog is not shown for rejection so the post-edit
+	 * dialog is invoked from the article target (AddImageArticleTarget.onSaveDone)
+	 * - Unstructured task: via postEdit or postEditMobile hooks
 	 */
 	SuggestedEditSession.prototype.maybeShowPostEditDialog = function () {
 		var self = this,
 			currentTitle = this.getCurrentTitle(),
-			hasSwitchedFromMachineSuggestions = new mw.Uri().query.hideMachineSuggestions;
+			uri = new mw.Uri(),
+			hasSwitchedFromMachineSuggestions = uri.query.hideMachineSuggestions;
 
 		// Only show the post-edit dialog on the task page, not e.g. on talk page edits.
 		// Skip the dialog if the user saved an edit w/VE after switching from suggestions mode.
@@ -490,15 +512,21 @@
 		}
 
 		if ( this.postEditDialogNeedsToBeShown ) {
-			this.showPostEditDialog( {} );
+			this.showPostEditDialog( { isDialogShownUponReload: true } );
+			// For structured tasks, the edit can only be made once so the postEdit event handlers
+			// should not be attached.
+			if ( SuggestedEditSession.static.isStructuredTask( this.taskType ) ) {
+				return;
+			}
 		}
 
-		// Do this even if we have just shown the dialog above. This is important when the user
-		// edits again right after dismissing the dialog.
+		// For unstructured tasks, do this even if we have just shown the dialog above.
+		// This is important when the user edits again right after dismissing the dialog.
 		mw.hook( 'postEdit' ).add( function () {
 			self.setTaskState( states.SAVED );
 			self.showPostEditDialog( { resetSession: true } );
 		} );
+
 		/**
 		 * @param {Object} data
 		 * @param {number|null} [data.newRevId] ID of the newly created revision, or null if it was
@@ -550,6 +578,20 @@
 	};
 
 	/**
+	 * Clear session-specific data and set the task state to SAVED,
+	 * used when making non-null edits with structured tasks
+	 */
+	SuggestedEditSession.prototype.onStructuredTaskSaved = function () {
+		// Since the page is reloaded, the postEdit hook won't be fired so the flag is used instead in
+		// SuggestedEditSession to show the post-edit dialog.
+		this.postEditDialogNeedsToBeShown = true;
+		// After saving, the clickId is used for the next task.
+		this.clickId = mw.user.generateRandomSessionId();
+		this.setTaskState( states.SAVED );
+		this.save();
+	};
+
+	/**
 	 * Get a suggested edit session. This is the entry point for other code using this class.
 	 *
 	 * @return {mw.libs.ge.SuggestedEditSession}
@@ -566,6 +608,16 @@
 		return session;
 	};
 
+	/**
+	 * Check whether the specified task type is a structured task
+	 *
+	 * @param {string} taskType Name of the task type
+	 * @return {boolean}
+	 */
+	SuggestedEditSession.static.isStructuredTask = function ( taskType ) {
+		return [ 'link-recommendation', 'image-recommendation' ].indexOf( taskType ) !== -1;
+	};
+
 	// Always initiate. We need to do this to be able to terminate the session when the user
 	// navigates away from the target page.
 	// To facilitate QA/debugging.
@@ -579,7 +631,7 @@
 	 * so we don't do anything for those.
 	 */
 	mw.hook( 've.activationComplete' ).add( function () {
-		if ( [ 'link-recommendation', 'image-recommendation' ].indexOf( ge.suggestedEditSession.taskType ) !== -1 ) {
+		if ( SuggestedEditSession.static.isStructuredTask( ge.suggestedEditSession.taskType ) ) {
 			return;
 		}
 		var pluginName = 'ge-task-' + ge.suggestedEditSession.taskType,

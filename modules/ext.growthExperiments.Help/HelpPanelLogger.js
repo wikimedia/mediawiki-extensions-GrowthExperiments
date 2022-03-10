@@ -36,7 +36,7 @@
 	 * Log a HelpPanel event.
 	 *
 	 * @param {string} action Value of the action field
-	 * @param {Object|Array<string>|string|number|boolean} data Value of the action_data field
+	 * @param {Object|Array<string>|string|number|boolean} [data] Value of the action_data field
 	 * @param {Object} [metadataOverride] An object with the values of any other fields. Those
 	 *   fields are set to some default value if omitted.
 	 */

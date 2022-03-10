@@ -413,7 +413,7 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"HelpPanel": "/analytics/legacy/helppanel/1.1.0",
+				"HelpPanel": "/analytics/legacy/helppanel/1.2.0",
 				"HomepageModule": "/analytics/legacy/homepagemodule/1.5.0",
 				"NewcomerTask": "/analytics/legacy/newcomertask/1.0.0",
 				"HomepageVisit": "/analytics/legacy/homepagevisit/1.4.0"
@@ -1335,21 +1335,27 @@
 		},
 		"ext.growthExperiments.PostEdit": {
 			"styles": [
-				"ext.growthExperiments.PostEdit/PostEdit.less",
-				"ext.growthExperiments.Homepage.styles/SmallTaskCard.less"
+				"ext.growthExperiments.PostEdit/PostEditDrawer.less",
+				"ext.growthExperiments.PostEdit/PostEditPanel.less",
+				"ext.growthExperiments.PostEdit/PostEditToastMessage.less",
+				"ext.growthExperiments.Homepage.styles/SmallTaskCard.less",
+				"ui-components/CollapsibleDrawer.less"
 			],
 			"packageFiles": [
 				"ext.growthExperiments.PostEdit/index.js",
+				"ext.growthExperiments.PostEdit/PostEditDrawer.js",
 				"ext.growthExperiments.PostEdit/PostEditPanel.js",
-				"ext.growthExperiments.PostEdit/PostEditDialog.js",
+				"ext.growthExperiments.PostEdit/PostEditToastMessage.js",
 				"ext.growthExperiments.Help/HelpPanelLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
+				"ui-components/CollapsibleDrawer.js",
 				{
 					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -1373,7 +1379,7 @@
 			],
 			"dependencies": [
 				"oojs-ui-windows",
-				"oojs-ui.styles.icons-media",
+				"oojs-ui.styles.icons-movement",
 				"ext.growthExperiments.icons",
 				"ext.growthExperiments.SuggestedEditSession"
 			],
@@ -1390,11 +1396,12 @@
 				"growthexperiments-help-panel-postedit-header",
 				"growthexperiments-help-panel-postedit-subheader",
 				"growthexperiments-help-panel-postedit-subheader-notsaved",
-				"growthexperiments-help-panel-postedit-subheader-refresh-label",
 				"growthexperiments-help-panel-postedit-footer",
-				"growthexperiments-help-panel-postedit-footer2",
-				"growthexperiments-help-panel-postedit-footer2-notsaved",
-				"growthexperiments-homepage-suggestededits-pageviews"
+				"growthexperiments-help-panel-postedit-suggestededits-info",
+				"growthexperiments-help-panel-suggestededits-title",
+				"growthexperiments-homepage-suggestededits-pageviews",
+				"growthexperiments-homepage-suggestededits-pager",
+				"growthexperiments-homepage-suggestededits-pager-end"
 			],
 			"targets": [
 				"desktop",
@@ -1656,6 +1663,10 @@
 			"modules/ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 			"tests/qunit/ext.growthExperiments.PostEdit/PostEditPanel.test.js",
 			"modules/ext.growthExperiments.PostEdit/PostEditPanel.js",
+			"tests/qunit/ext.growthExperiments.PostEdit/PostEditToastMessage.test.js",
+			"modules/ext.growthExperiments.PostEdit/PostEditToastMessage.js",
+			"tests/qunit/ext.growthExperiments.PostEdit/PostEditDrawer.test.js",
+			"modules/ext.growthExperiments.PostEdit/PostEditDrawer.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
 			"modules/utils/IconUtils.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
@@ -1686,6 +1697,8 @@
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js",
 			"modules/ui-components/SwipePane.js",
 			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.test.js",
+			"modules/ui-components/CollapsibleDrawer.js",
+			"tests/qunit/ui-components/CollapsibleDrawer.test.js",
 			{
 				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/config.json",
 				"file": "tests/qunit/__mocks__/config.json"
