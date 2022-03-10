@@ -74,7 +74,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "認領學員",
 	"growthexperiments-rcfilters-mentorship-title": "導師計畫",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|您}}標記星號的學員",
-	"growthexperiments-rcfilters-mentorship-starred-desc": "分配給{{GENDER:|您}}且{{GENDER:|you}}在{{GENDER:|您}}的導師控制面版上標記星號的學員",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "分配給{{GENDER:|您}}且{{GENDER:|您}}在{{GENDER:|您的}}導師控制面版上標記星號的學員",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|您}}未標記星號的學員",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "其他分配給{{GENDER:|您}}的學員",
 	"growthexperiments-quit-mentorship-title": "離開導師計畫",
