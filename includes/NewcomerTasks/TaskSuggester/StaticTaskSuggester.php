@@ -36,20 +36,21 @@ class StaticTaskSuggester implements TaskSuggester {
 	/** @inheritDoc */
 	public function suggest(
 		UserIdentity $user,
-		array $taskTypeFilter = [],
-		array $topicFilter = [],
+		TaskSetFilters $taskSetFilters,
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
 	) {
 		$filteredTasks = array_filter( $this->tasks,
-			function ( Task $task ) use ( $taskTypeFilter, $topicFilter, $options ) {
+			function ( Task $task ) use ( $taskSetFilters, $options ) {
 				if ( isset( $options['excludePageIds'] ) && $this->titleFactory instanceof TitleFactory ) {
 					$title = $this->titleFactory->castFromLinkTarget( $task->getTitle() );
 					if ( in_array( $title->getArticleID(), $options['excludePageIds'] ) ) {
 						return false;
 					}
 				}
+				$taskTypeFilter = $taskSetFilters->getTaskTypeFilters();
+				$topicFilter = $taskSetFilters->getTopicFilters();
 				if ( $taskTypeFilter && !in_array( $task->getTaskType()->getId(), $taskTypeFilter, true ) ) {
 					return false;
 				} elseif ( $topicFilter && !array_intersect( $this->getTopicIds( $task ), $topicFilter ) ) {

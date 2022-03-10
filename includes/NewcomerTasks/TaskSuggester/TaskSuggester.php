@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
 
@@ -14,10 +15,7 @@ interface TaskSuggester {
 
 	/**
 	 * @param UserIdentity $user
-	 * @param string[] $taskTypeFilter List of task type IDs to limit the suggestions to.
-	 *   An empty array means no filtering.
-	 * @param string[] $topicFilter List of topic IDs to limit the suggestions to.
-	 *   An empty array means no filtering.
+	 * @param TaskSetFilters $taskSetFilters Filters to apply to the suggestions
 	 * @param int|null $limit Number of suggestions to return.
 	 * @param int|null $offset Offset within full result set, for continuation.
 	 * @param array $options Associative array of options:
@@ -36,8 +34,7 @@ interface TaskSuggester {
 	 */
 	public function suggest(
 		UserIdentity $user,
-		array $taskTypeFilter = [],
-		array $topicFilter = [],
+		TaskSetFilters $taskSetFilters,
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []

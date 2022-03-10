@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -177,8 +178,10 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 		$warnings = [];
 		$taskSet = $this->taskSuggesterFactory->create()->suggest(
 			$user,
-			$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-			$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+			new TaskSetFilters(
+				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+				$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+			)
 		);
 		if ( $taskSet instanceof TaskSet ) {
 			$qualityGateConfig = $taskSet->getQualityGateConfig();

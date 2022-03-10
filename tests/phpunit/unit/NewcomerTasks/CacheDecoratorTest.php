@@ -64,8 +64,8 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 			}
 			$cacheDecorator = new CacheDecorator( $suggester, $mockJobQueueGroup, $cache,
 				$mockListener, new JsonCodec() );
-			$result = $cacheDecorator->suggest( $call['user'], $call['taskTypeFilter'],
-				$call['topicFilter'], $call['limit'], $call['offset'], $call['options'] );
+			$result = $cacheDecorator->suggest( $call['user'], $call['taskSetFilters'],
+				$call['limit'], $call['offset'], $call['options'] );
 		}
 		if ( !( $expectedResult instanceof Exception ) ) {
 			$this->assertEquals( $expectedResult, $result );
@@ -77,24 +77,27 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		// Use tasksets consisting of one task only, so we don't have to deal with randomization
 		// of the task order messing up assertions.
+		$taskSetFilters = new TaskSetFilters( [ 'copyedit' ], [] );
+		$taskSetFilterLinks = new TaskSetFilters( [ 'links' ], [] );
+		$taskSetFilterArt = new TaskSetFilters( [ 'copyedit' ], [ 'arts' ] );
 		$taskset = new TaskSet( [
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
-		], 5, 0, new TaskSetFilters( [ 'copyedit' ], [] ) );
+		], 5, 0, $taskSetFilters );
 		$taskset2 = new TaskSet( [
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
-		], 5, 0, new TaskSetFilters( [ 'copyedit' ], [] ) );
+		], 5, 0, $taskSetFilters );
+
 		return [
 			'taskset on cache miss' => [
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, [ 'copyedit' ], [], 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
-						'taskTypeFilter' => [ 'copyedit' ],
-						'topicFilter' => [],
+						'taskSetFilters' => $taskSetFilters,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],
@@ -106,13 +109,12 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, [ 'copyedit' ], [], 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => StatusValue::newFatal( 'error' ),
 						],
 						'filter' => null,
 						'user' => $user,
-						'taskTypeFilter' => [ 'copyedit' ],
-						'topicFilter' => [],
+						'taskSetFilters' => $taskSetFilters,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],
@@ -124,13 +126,12 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, [ 'copyedit' ], [], 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
-						'taskTypeFilter' => [ 'copyedit' ],
-						'topicFilter' => [],
+						'taskSetFilters' => $taskSetFilters,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],
@@ -142,8 +143,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 							'return' => new ReturnArgument( 1 ),
 						],
 						'user' => $user,
-						'taskTypeFilter' => [ 'copyedit' ],
-						'topicFilter' => [],
+						'taskSetFilters' => $taskSetFilters,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],
@@ -155,26 +155,24 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, [ 'copyedit' ], [], 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => StatusValue::newFatal( 'error' ),
 						],
 						'filter' => null,
 						'user' => $user,
-						'taskTypeFilter' => [ 'copyedit' ],
-						'topicFilter' => [],
+						'taskSetFilters' => $taskSetFilters,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],
 					],
 					[
 						'suggest' => [
-							'expect' => [ $user, [ 'copyedit' ], [], 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
-						'taskTypeFilter' => [ 'copyedit' ],
-						'topicFilter' => [],
+						'taskSetFilters' => $taskSetFilters,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],
@@ -186,26 +184,24 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, [ 'copyedit' ], [], 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
-						'taskTypeFilter' => [ 'copyedit' ],
-						'topicFilter' => [],
+						'taskSetFilters' => $taskSetFilters,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],
 					],
 					[
 						'suggest' => [
-							'expect' => [ $user, [ 'links' ], [], 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilterLinks, 20, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset2,
 						],
 						'filter' => null,
 						'user' => $user,
-						'taskTypeFilter' => [ 'links' ],
-						'topicFilter' => [],
+						'taskSetFilters' => $taskSetFilterLinks,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],
@@ -217,26 +213,24 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, [ 'copyedit' ], [], 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
-						'taskTypeFilter' => [ 'copyedit' ],
-						'topicFilter' => [],
+						'taskSetFilters' => $taskSetFilters,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],
 					],
 					[
 						'suggest' => [
-							'expect' => [ $user, [ 'copyedit' ], [ 'art' ], 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilterArt, 20, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset2,
 						],
 						'filter' => null,
 						'user' => $user,
-						'taskTypeFilter' => [ 'copyedit' ],
-						'topicFilter' => [ 'art' ],
+						'taskSetFilters' => $taskSetFilterArt,
 						'limit' => 20,
 						'offset' => 0,
 						'options' => [],

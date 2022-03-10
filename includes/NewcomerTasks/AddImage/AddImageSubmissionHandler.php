@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
@@ -125,8 +126,10 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 		$taskSuggester = $this->taskSuggesterFactory->create();
 		$taskSet = $taskSuggester->suggest(
 			$user,
-			$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-			$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+			new TaskSetFilters(
+				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+				$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+			)
 		);
 		if ( $taskSet instanceof TaskSet ) {
 			$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'] ?? null;
@@ -162,8 +165,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 			DeferredUpdates::addCallableUpdate( static function () use ( $taskSuggester, $user, $taskSet ) {
 				$taskSuggester->suggest(
 					$user,
-					$taskSet->getFilters()->getTaskTypeFilters(),
-					$taskSet->getFilters()->getTopicFilters(),
+					$taskSet->getFilters(),
 					null,
 					null,
 					[ 'resetCache' => true ]

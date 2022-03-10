@@ -85,13 +85,12 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	/** @inheritDoc */
 	public function suggest(
 		UserIdentity $user,
-		array $taskTypeFilter = [],
-		array $topicFilter = [],
+		TaskSetFilters $taskSetFilters,
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
 	) {
-		return $this->doSuggest( null, $user, $taskTypeFilter, $topicFilter, $limit, $offset,
+		return $this->doSuggest( null, $user, $taskSetFilters, $limit, $offset,
 			$options );
 	}
 
@@ -107,7 +106,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 
 		// Topic filtering is slow and topic changes don't really invalidate tasks, so just copy
 		// topic data from the old taskset instead.
-		$filteredTaskSet = $this->doSuggest( $pageIds, $user, $taskTypes, [], $taskSet->count() );
+		$taskSetFilters = new TaskSetFilters( $taskTypes, [] );
+		$filteredTaskSet = $this->doSuggest( $pageIds, $user, $taskSetFilters, $taskSet->count() );
 		if ( !$filteredTaskSet instanceof TaskSet ) {
 			return $filteredTaskSet;
 		}
@@ -126,8 +126,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * to a specific set of pages.
 	 * @param array|null $pageIds List of page IDs to limit suggestions to.
 	 * @param UserIdentity $user
-	 * @param array $taskTypeFilter
-	 * @param array $topicFilter
+	 * @param TaskSetFilters $taskSetFilters
 	 * @param int|null $limit
 	 * @param int|null $offset
 	 * @param array $options Same as in suggest().
@@ -136,8 +135,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	private function doSuggest(
 		?array $pageIds,
 		UserIdentity $user,
-		array $taskTypeFilter = [],
-		array $topicFilter = [],
+		TaskSetFilters $taskSetFilters,
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
@@ -147,13 +145,18 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		// We generally don't try to handle task type filtering for the A/B test (T278123) here
 		// as it is already handled in NewcomerTasksUserOptionsLookup, but we make an exception
 		// for the case when $taskTypeFilter === [] which would be difficult to handle elsewhere.
-		if ( !$taskTypeFilter ) {
-			$taskTypeFilter = $this->newcomerTasksUserOptionsLookup
-				->filterTaskTypes( array_keys( $this->taskTypes ), $user );
+		if ( !$taskSetFilters->getTaskTypeFilters() ) {
+			$taskSetFilters->setTaskTypeFilters(
+				$this->newcomerTasksUserOptionsLookup
+					->filterTaskTypes( array_keys( $this->taskTypes ), $user )
+			);
 		}
 
 		// FIXME these and task types should have similar validation rules
-		$topics = array_values( array_intersect_key( $this->topics, array_flip( $topicFilter ) ) );
+		$topics = array_values( array_intersect_key(
+			$this->topics,
+			array_flip( $taskSetFilters->getTopicFilters()
+		) ) );
 
 		$limit = $limit ?? self::DEFAULT_LIMIT;
 		// FIXME we are completely ignoring offset for now because 1) doing offsets when we are
@@ -165,6 +168,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			MultipleIterator::MIT_KEYS_ASSOC );
 
 		$taskTypes = $invalidTaskTypes = [];
+		$taskTypeFilter = $taskSetFilters->getTaskTypeFilters();
 		foreach ( $taskTypeFilter as $taskTypeId ) {
 			$taskType = $this->taskTypes[$taskTypeId] ?? null;
 			if ( $taskType instanceof TaskType ) {
@@ -230,7 +234,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			$suggestions,
 			$totalCount,
 			$offset,
-			new TaskSetFilters( $taskTypeFilter, $topicFilter )
+			$taskSetFilters
 		);
 
 		if ( $debug ) {

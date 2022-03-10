@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\OresTopicTrait;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -131,8 +132,10 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->output( "  processing topic $oresTopic...\n" );
 			$suggestions = $this->taskSuggester->suggest(
 				$this->searchUser,
-				[ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ],
-				[ $oresTopic ],
+				new TaskSetFilters(
+					[ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ],
+					[ $oresTopic ]
+				),
 				1,
 				0,
 				// Enabling the debug flag is relatively harmless, and disables all caching,
@@ -244,8 +247,10 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->output( "    fetching $batchSize tasks...\n" );
 			$candidates = $this->taskSuggester->suggest(
 				$this->searchUser,
-				[ '_nolinkrecommendations' ],
-				[ $oresTopic ],
+				new TaskSetFilters(
+					[ '_nolinkrecommendations' ],
+					[ $oresTopic ]
+				),
 				$batchSize,
 				null,
 				[ 'debug' => true ]

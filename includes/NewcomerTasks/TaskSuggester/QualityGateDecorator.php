@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFacto
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -66,13 +67,12 @@ class QualityGateDecorator implements TaskSuggester {
 	/** @inheritDoc */
 	public function suggest(
 		UserIdentity $user,
-		array $taskTypeFilter = [],
-		array $topicFilter = [],
+		TaskSetFilters $taskSetFilters,
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
 	) {
-		$tasks = $this->taskSuggester->suggest( $user, $taskTypeFilter, $topicFilter, $limit, $offset, $options );
+		$tasks = $this->taskSuggester->suggest( $user, $taskSetFilters, $limit, $offset, $options );
 		// TODO: Split out QualityGates methods into separate classes per task type.
 		if ( $tasks instanceof TaskSet ) {
 			$context = RequestContext::getMain();

@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GenericParameterJob;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use Job;
 use MediaWiki\MediaWikiServices;
 use User;
@@ -27,8 +28,10 @@ class NewcomerTasksCacheRefreshJob extends Job implements GenericParameterJob {
 		$user = User::newFromId( $this->params['userId'] );
 		$taskSuggester->suggest(
 			$user,
-			$newcomerTaskOptions->getTaskTypeFilter( $user ),
-			$newcomerTaskOptions->getTopicFilter( $user ),
+			new TaskSetFilters(
+				$newcomerTaskOptions->getTaskTypeFilter( $user ),
+				$newcomerTaskOptions->getTopicFilter( $user )
+			),
 			SearchTaskSuggester::DEFAULT_LIMIT,
 			null,
 			[ 'useCache' => false ]

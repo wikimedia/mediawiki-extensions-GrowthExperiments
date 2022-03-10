@@ -16,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -413,7 +414,8 @@ class SuggestedEdits extends BaseModule {
 		}
 		$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
 		$topics = $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
-		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, null, null,
+		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics );
+		$tasks = $this->taskSuggester->suggest( $user, $taskSetFilters, null, null,
 			$suggesterOptions );
 		if ( $tasks instanceof TaskSet ) {
 			// If there are link recommendation tasks without corresponding DB entries, these will be removed

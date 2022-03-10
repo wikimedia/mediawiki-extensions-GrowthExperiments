@@ -25,6 +25,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -422,8 +423,10 @@ class HomepageHooks implements
 
 					$taskSet = $this->taskSuggesterFactory->create()->suggest(
 						$context->getUser(),
-						$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $context->getUser() ),
-						$this->newcomerTasksUserOptionsLookup->getTopicFilter( $context->getUser() ),
+						new TaskSetFilters(
+							$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $context->getUser() ),
+							$this->newcomerTasksUserOptionsLookup->getTopicFilter( $context->getUser() )
+						),
 						1
 					);
 					$qualityGateConfig = $taskSet instanceof TaskSet ? $taskSet->getQualityGateConfig() : [];
@@ -849,8 +852,10 @@ class HomepageHooks implements
 					$taskSuggester = $this->taskSuggesterFactory->create();
 					$taskSuggester->suggest(
 						$user,
-						$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-						$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+						new TaskSetFilters(
+							$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+							$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+						)
 					);
 				} );
 			}

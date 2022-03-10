@@ -50,13 +50,12 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @param array $requests [ [ 'params' => [...], 'response' => ... ], ... ] where params is
 	 *   a list of asserted query parameters (null means asserted to be not present), response is
 	 *   JSON data (in PHP form) or a StatusValue with errors
-	 * @param string[] $taskFilter
-	 * @param string[] $topicFilter
+	 * @param TaskSetFilters $taskSetFilters
 	 * @param int|null $limit
 	 * @param TaskSet|StatusValue $expectedTaskSet
 	 */
 	public function testSuggest(
-		$taskTypeSpec, $topicSpec, $requests, $taskFilter, $topicFilter, $limit, $expectedTaskSet
+		$taskTypeSpec, $topicSpec, $requests, $taskSetFilters, $limit, $expectedTaskSet
 	) {
 		$user = new UserIdentityValue( 1, 'Foo' );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
@@ -73,7 +72,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $requestFactory, $titleFactory,
 			'https://example.com', $taskTypes, $topics );
 
-		$taskSet = $suggester->suggest( $user, $taskFilter, $topicFilter, $limit );
+		$taskSet = $suggester->suggest( $user, $taskSetFilters, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {
 			$this->assertInstanceOf( StatusValue::class, $taskSet );
 			$this->assertEquals( $expectedTaskSet->getErrors(), $taskSet->getErrors() );
@@ -131,8 +130,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					],
 				],
 				// parameters passed to the suggest() call
-				'taskFilter' => [],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters(),
 				'limit' => null,
 				// expected return value from suggest()
 				'expectedTaskSet' => new TaskSet( [
@@ -178,8 +176,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => [],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters(),
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					$makeTask( $copyedit, 'Foo' ),
@@ -228,8 +225,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => [],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters(),
 				'limit' => 2,
 				'expectedTaskSet' => new TaskSet( [
 					$makeTask( $copyedit, 'Foo' ),
@@ -256,8 +252,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => [ 'copyedit' ],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters( [ 'copyedit' ], [] ),
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					$makeTask( $copyedit, 'Foo' ),
@@ -327,8 +322,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => [],
-				'topicFilter' => [ 'art', 'science' ],
+				'taskSetFilters' => new TaskSetFilters( [], [ 'art', 'science' ] ),
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					// scores are faked for now, so they are just ( 100 / position in response )
@@ -410,8 +404,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => [],
-				'topicFilter' => [ 'art', 'science' ],
+				'taskSetFilters' => new TaskSetFilters( [], [ 'art', 'science' ] ),
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					$makeTask( $copyedit, 'T1', [ 'art' => 100, ] ),
@@ -431,8 +424,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						'response' => StatusValue::newFatal( 'foo' ),
 					],
 				],
-				'taskFilter' => [],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters(),
 				'limit' => null,
 				'expectedTaskSet' => StatusValue::newFatal( 'foo' ),
 			],
@@ -449,8 +441,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => [],
-				'topicFilter' => [],
+				'taskSetFilters' => new TaskSetFilters(),
 				'limit' => null,
 				'expectedTaskSet' => StatusValue::newFatal( new ApiRawMessage( 'foo', 'bar' ) ),
 			],

@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -59,14 +60,13 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	/** @inheritDoc */
 	public function suggest(
 		UserIdentity $user,
-		array $taskTypeFilter = [],
-		array $topicFilter = [],
+		TaskSetFilters $taskSetFilters,
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
 	) {
 		$start = microtime( true );
-		$suggest = parent::suggest( $user, $taskTypeFilter, $topicFilter, $limit, $offset, $options );
+		$suggest = parent::suggest( $user, $taskSetFilters, $limit, $offset, $options );
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.SearchTaskSuggester.suggest', microtime( true ) - $start
 		);

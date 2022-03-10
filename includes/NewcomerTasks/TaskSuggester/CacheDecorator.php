@@ -64,8 +64,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 	/** @inheritDoc */
 	public function suggest(
 		UserIdentity $user,
-		array $taskTypeFilter = [],
-		array $topicFilter = [],
+		TaskSetFilters $taskSetFilters,
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
@@ -75,11 +74,10 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 		$revalidateCache = $options['revalidateCache'] ?? true;
 		$excludePageIds = $options['excludePageIds'] ?? [];
 		$debug = $options['debug'] ?? false;
-		$taskSetFilters = new TaskSetFilters( $taskTypeFilter, $topicFilter );
 		$limit = $limit ?? SearchTaskSuggester::DEFAULT_LIMIT;
 
 		if ( $debug || $limit > SearchTaskSuggester::DEFAULT_LIMIT ) {
-			return $this->taskSuggester->suggest( $user, $taskTypeFilter, $topicFilter, $limit, $offset, $options );
+			return $this->taskSuggester->suggest( $user, $taskSetFilters, $limit, $offset, $options );
 		}
 
 		$json = $this->cache->getWithSetCallback(
@@ -146,8 +144,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 				// we are working with a TaskSet.
 				$result = $this->taskSuggester->suggest(
 					$user,
-					$taskSetFilters->getTaskTypeFilters(),
-					$taskSetFilters->getTopicFilters(),
+					$taskSetFilters,
 					SearchTaskSuggester::DEFAULT_LIMIT,
 					null,
 					[ 'excludePageIds' => $excludePageIds ]

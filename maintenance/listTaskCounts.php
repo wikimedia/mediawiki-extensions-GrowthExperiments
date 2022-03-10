@@ -5,6 +5,7 @@ namespace GrowthExperiments\Maintenance;
 use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\OresTopicTrait;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\NullTaskTypeHandler;
@@ -138,7 +139,8 @@ class ListTaskCounts extends Maintenance {
 			$services = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 			$this->taskSuggester = $services->getTaskSuggesterFactory()->create();
 		}
-		$tasks = $this->taskSuggester->suggest( new User, $taskTypes, $topics, 0, null, [ 'useCache' => false ] );
+		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics );
+		$tasks = $this->taskSuggester->suggest( new User, $taskSetFilters, 0, null, [ 'useCache' => false ] );
 		if ( $tasks instanceof StatusValue ) {
 			$this->fatalError( Status::wrap( $tasks )->getWikiText( false, false, 'en' ) );
 		}
