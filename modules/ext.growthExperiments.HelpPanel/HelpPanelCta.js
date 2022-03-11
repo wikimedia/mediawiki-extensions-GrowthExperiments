@@ -395,6 +395,11 @@
 		if ( !guidanceAvailable && logger.getContext() === 'reading' ) {
 			helpPanelProcessDialog.logger.log( 'impression', taskTypeLogData );
 		}
+
+		// Allow the CTA to be hidden when there's a completing overlay (ex: post-edit dialog)
+		mw.hook( 'helpPanel.hideCta' ).add( function () {
+			$buttonWrapper.removeClass( 'mw-ge-help-panel-ready' );
+		} );
 	} );
 
 }() );
