@@ -13,7 +13,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Δείτε τους καθοδηγούμενούς σας παρακάτω. Χρησιμοποιήστε τα φίλτρα για να αλλάξετε ποιοι καθοδηγούμενοι εμφανίζονται.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Ο πίνακας απαιτεί JavaScript. Παρακαλούμε ενεργοποιήστε την JavaScript για να μπορέσετε να χρησιμοποιήσετε αυτή την λειτουργία.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Ποιος είναι στο πίνακά σας;",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Ο πίνακας εμφανίζει μόνο τους καθοδηγούμενούς σας που δημιούργησαν λογαριασμό μέσα στις προηγούμενες δύο εβδομάδες ή που έχουν κάνει επεξεργασία τους τελευταίους έξι μήνες. Τα δεδομένα ενημερώνονται κάθε τρεις ώρες.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Αυτός ο πίνακας εμφανίζει μόνο τους καθοδηγούμενούς σας που ο λογαριασμός τους δημιουργήθηκε μέσα στις προηγούμενες δύο εβδομάδες ή που έχουν κάνει επεξεργασία τους τελευταίους έξι μήνες, και έχουν την [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|αρχική σελίδα νεοφερμένου ενεργοποιημένη]]. Τα δεδομένα ενημερώνονται κάθε τρεις ώρες.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Υπόμνημα",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Επισήμανση καθοδηγούμενων",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Όνομα χρήστη",
@@ -29,5 +29,11 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Μέγιστο",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Πιο πρόσφατη επεξεργασία",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Πρόσφατες ημέρες",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Πρόσφατοι μήνες"
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Πρόσφατοι μήνες",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Εμφάνιση μόνο καθοδηγούμενων με αστεράκι",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Αναζήτηση",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "ενεργός πριν $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "άγνωστο",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Εμφάνιση $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 από $2"
 }
