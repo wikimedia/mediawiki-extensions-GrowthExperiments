@@ -87,6 +87,41 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		] );
 	}
 
+	public function testGetQueriesAll() {
+		$taskType1 = new TaskType( 'link-recommendation', TaskType::DIFFICULTY_EASY );
+		$taskType2 = new TaskType( 'image-recommendation', TaskType::DIFFICULTY_MEDIUM );
+		$oresTopic1 = new OresBasedTopic( 'literature', 'culture', [ 'literature', 'books' ] );
+		$oresTopic2 = new OresBasedTopic( 'music', 'culture', [ 'music' ] );
+		$campaignTopic = new CampaignTopic( 'argentina', 'growtharticle:argentina' );
+
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
+		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
+		$taskTypeHandler->method( 'getSearchTerm' )
+			->willReturnOnConsecutiveCalls(
+		'hasrecommendation:link',
+				'hasrecommendation:image'
+			);
+
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
+
+		$queries = $searchStrategy->getQueries(
+			[ $taskType1, $taskType2 ],
+			[ $campaignTopic, $oresTopic1, $oresTopic2 ],
+			null,
+			null,
+			SearchStrategy::TOPIC_MATCH_MODE_AND
+		);
+
+		$this->assertCount( 2, $queries );
+		$this->assertTaskTypeInQueries( $queries, [ 'link-recommendation', 'image-recommendation' ] );
+		$this->assertIntersectionTopicsInQueries( $queries, [ 'literature', 'music', 'argentina' ] );
+		$this->assertQueryStrings( $queries, [
+			'hasrecommendation:image growtharticle:argentina articletopic:literature|books articletopic:music',
+			'hasrecommendation:link growtharticle:argentina articletopic:literature|books articletopic:music',
+		] );
+	}
+
 	public function testExclusion() {
 		$excludedTemplates = [
 			new TitleValue( NS_TEMPLATE, 'Foo' ),
@@ -119,6 +154,14 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$this->assertQueryStrings( $queries, [
 			'-hastemplate:"Foo|Bar" -incategory:"Baz|Boom" hastemplate:"Copyedit"',
 		] );
+	}
+
+	private function assertIntersectionTopicsInQueries( $queries, $topicIds ) {
+		list( $query1, $query2 ) = array_values( $queries );
+		foreach ( $topicIds as $id ) {
+			$this->assertStringContainsString( $id, $query1->getQueryString() );
+			$this->assertStringContainsString( $id, $query2->getQueryString() );
+		}
 	}
 
 	private function assertTopicsInQueries( $queries, $topicIds ) {

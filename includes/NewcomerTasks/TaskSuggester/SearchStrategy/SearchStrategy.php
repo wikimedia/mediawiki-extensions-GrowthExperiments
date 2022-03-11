@@ -17,6 +17,13 @@ use Wikimedia\Assert\Assert;
  */
 class SearchStrategy {
 
+	public const TOPIC_MATCH_MODE_OR = 'OR';
+	public const TOPIC_MATCH_MODE_AND = 'AND';
+	public const TOPIC_MATCH_MODES = [
+		self::TOPIC_MATCH_MODE_OR,
+		self::TOPIC_MATCH_MODE_AND
+	];
+
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
 
@@ -36,10 +43,15 @@ class SearchStrategy {
 	 * @param Topic[] $topics Topics to limit search results to
 	 * @param array|null $pageIds List of PageIds search results should be restricted to.
 	 * @param array|null $excludePageIds List of PageIds to exclude from search.
+	 * @param string|null $topicsFilterMode Join mode for the topics search. One of ('AND', 'OR').
 	 * @return SearchQuery[] Array of queries, indexed by query ID.
 	 */
 	public function getQueries(
-		array $taskTypes, array $topics, array $pageIds = null, array $excludePageIds = null
+		array $taskTypes,
+		array $topics,
+		?array $pageIds = null,
+		?array $excludePageIds = null,
+		?string $topicsFilterMode = null
 	) {
 		$this->validateParams( $taskTypes, $topics );
 		$queries = [];
@@ -48,24 +60,46 @@ class SearchStrategy {
 		// Empty topic array means doing a single search with no topic filter
 		$topics = $topics ?: [ null ];
 		foreach ( $taskTypes as $taskType ) {
-			foreach ( $topics as $topic ) {
-				$typeTerm = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )
-					->getSearchTerm( $taskType );
-				$topicTerm = $this->getTopicTerm( $topic );
-				$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
-				$excludedPageIdTerm = $excludePageIds ? $this->getExcludedPageIdTerm( $excludePageIds ) : null;
+			$typeTerm = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )
+				->getSearchTerm( $taskType );
+			$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
+			$excludedPageIdTerm = $excludePageIds ? $this->getExcludedPageIdTerm( $excludePageIds ) : null;
+			if ( $topicsFilterMode === self::TOPIC_MATCH_MODE_AND ) {
+				$allTopicsAreOres = true;
+				$topicTerms = [];
+				foreach ( $topics as $topic ) {
+					$topicTerms[] = $this->getTopicTerm( $topic );
+					$allTopicsAreOres = $allTopicsAreOres && $topic instanceof OresBasedTopic;
+				}
+				$topicTerm = implode( ' ', array_filter( $topicTerms ) );
 				$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
 					$pageIdTerm, $excludedPageIdTerm ] ) );
 
-				$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
-				$query = new SearchQuery( $queryId, $queryString, $taskType, $topic );
+				$queryId = $taskType->getId() . ':multiple-topics';
+				$query = new SearchQuery( $queryId, $queryString, $taskType, $topics[0] );
 				// don't randomize if we use topic matching with the morelike backend, which itself
 				// is a kind of sorting. Topic matching with the ORES backend already uses
 				// thresholds per topic so applying a random sort should be safe.
-				if ( !$topic || $topic instanceof OresBasedTopic ) {
+				if ( $allTopicsAreOres ) {
 					$query->setSort( 'random' );
 				}
 				$queries[$queryId] = $query;
+			} else {
+				foreach ( $topics as $topic ) {
+					$topicTerm = $this->getTopicTerm( $topic );
+					$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
+						$pageIdTerm, $excludedPageIdTerm ] ) );
+
+					$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
+					$query = new SearchQuery( $queryId, $queryString, $taskType, $topic );
+					// don't randomize if we use topic matching with the morelike backend, which itself
+					// is a kind of sorting. Topic matching with the ORES backend already uses
+					// thresholds per topic so applying a random sort should be safe.
+					if ( !$topic || $topic instanceof OresBasedTopic ) {
+						$query->setSort( 'random' );
+					}
+					$queries[$queryId] = $query;
+				}
 			}
 		}
 		return $this->shuffleQueryOrder( $queries );

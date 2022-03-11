@@ -155,8 +155,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		// FIXME these and task types should have similar validation rules
 		$topics = array_values( array_intersect_key(
 			$this->topics,
-			array_flip( $taskSetFilters->getTopicFilters()
-		) ) );
+			array_flip( $taskSetFilters->getTopicFilters() )
+		) );
 
 		$limit = $limit ?? self::DEFAULT_LIMIT;
 		// FIXME we are completely ignoring offset for now because 1) doing offsets when we are
@@ -190,7 +190,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			$taskTypes,
 			$topics,
 			$pageIds,
-			$options['excludePageIds'] ?? null
+			$options['excludePageIds'] ?? null,
+			$taskSetFilters->getTopicFiltersMode()
 		);
 		foreach ( $queries as $query ) {
 			$matches = $this->search( $query, $limit, $offset, $debug );

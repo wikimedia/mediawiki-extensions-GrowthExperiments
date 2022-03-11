@@ -11,6 +11,7 @@ use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -77,13 +78,14 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$params = $this->extractRequestParams();
 		$taskTypes = $params['tasktypes'];
 		$topics = $params['topics'];
+		$topicsMode = $params['topicsmode'];
 		$limit = $params['limit'];
 		$offset = $params['offset'];
 		$debug = $params['debug'];
 		$excludePageIds = $params['excludepageids'] ?? [];
 
 		$taskSuggester = $this->taskSuggesterFactory->create();
-		$taskTypeFilter = new TaskSetFilters( $taskTypes, $topics );
+		$taskTypeFilter = new TaskSetFilters( $taskTypes, $topics, $topicsMode );
 
 		/** @var TaskSet $tasks */
 		$tasks = $taskSuggester->suggest(
@@ -207,6 +209,9 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( Topic $topic ) {
 					return $topic->getName( $this->getContext() );
 				}, $topics ),
+			],
+			 'topicsmode' => [
+				ApiBase::PARAM_TYPE => SearchStrategy::TOPIC_MATCH_MODES,
 			],
 			'limit' => [
 				ApiBase::PARAM_TYPE => 'limit',
