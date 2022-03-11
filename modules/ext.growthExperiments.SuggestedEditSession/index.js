@@ -392,6 +392,7 @@
 			!( uri.query.veaction || uri.query.action === 'edit' )
 		) {
 			this.postEditDialogIsOpen = true;
+			mw.hook( 'helpPanel.hideCta' ).fire();
 			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
 				return require( 'ext.growthExperiments.PostEdit' ).setupPanel().then( function ( result ) {
 					result.openPromise.done( function () {
