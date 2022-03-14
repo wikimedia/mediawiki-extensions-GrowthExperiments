@@ -362,6 +362,7 @@
 										.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-userinfo-inner-container' )
 										.append(
 											$( '<span>' )
+												.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-table-username' )
 												.append(
 													$( '<a>' )
 														.addClass(

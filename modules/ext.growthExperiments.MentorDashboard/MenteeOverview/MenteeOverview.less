@@ -180,6 +180,18 @@
 								display: block;
 							}
 
+							.growthexperiments-mentor-dashboard-module-mentee-overview-table-username {
+								/**
+								 * Per T292224, the table's supposed to show max 20 chars of the username. According
+								 * to https://caniuse.com/ch-unit and [[mw:Compatibility#Browsers]], this should work fine
+								 * in the browsers we target.
+								 */
+								max-width: 20ch;
+								white-space: nowrap;
+								overflow: hidden;
+								text-overflow: ellipsis;
+							}
+
 							.growthexperiments-mentor-dashboard-module-mentee-overview-table-activity {
 								font-size: 12px;
 								color: #72777d;
