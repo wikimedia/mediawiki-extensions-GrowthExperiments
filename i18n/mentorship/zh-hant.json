@@ -45,7 +45,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "顯示$1個",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2之$1",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "學員資料不可用",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "您可能沒有被分配任何學員。資料每天更新。",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "您可能沒有被分配任何學員。資料是每三小時更新一次。",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "找不到學員",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "更改您的篩選來找出學員。",
 	"growthexperiments-mentor-dashboard-resources-headline": "資源",
@@ -88,5 +88,9 @@
 	"echo-pref-tooltip-ge-mentorship": "關於Growth團隊維護的導師計畫功能的通知，此通知讓您知道您已被認領為學員或您的學員被其他人認領。",
 	"growthexperiments-notification-header-mentee-claimed": "您的{{GENDER:$3|學員}}$3已被$1{{GENDER:$2|認領}}。",
 	"growthexperiments-notification-body-mentee-claimed": "原因：$1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "什麼是「認領學員」？"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "什麼是「認領學員」？",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "大約是平均的一半",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "平均（預設）",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "大約是平均的兩倍",
+	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code>應該是<code>$2</code>，但是<code>$3</code>"
 }

@@ -4,6 +4,7 @@
 			"Ailbeve",
 			"DDPAT",
 			"Ice bulldog",
+			"Iniquity",
 			"Kareyac",
 			"Okras"
 		]
@@ -17,7 +18,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "См. {{GENDER:|своих}} подопечных ниже. Используйте фильтры, чтобы изменить показанных подопечных.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Таблица требует JavaScript. Пожалуйста, включите JavaScript, чтобы быть пользоваться этим модулем.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Кто в вашей таблице?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "В таблице приведены только ваших подопечных, которые создали {{GENDER:свой}} аккаунт в течение последних двух недель или редактировали в течение последних шести месяцев. Данные обновляются каждые три часа.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "В таблице приведены только ваши подопечные, которые создали {{GENDER:свой}} аккаунт в течение последних двух недель или редактировали в течение последних шести месяцев, а также у кого включена [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|домашняя страница новичка]]. Данные обновляются каждые три часа.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Легенда",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Закладка подопечных",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Имя участника",
@@ -70,6 +71,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Ваш статус изменен на «Не на месте».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Сообщение своим подопечным",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Взять подопечного",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Вы можете сменить наставника у подопечного на себя. Часто используется для событий связанных с редактированием, чтобы инструкторы могли быть наставниками для новичков как в вики, так и за ее пределами.",
 	"growthexperiments-rcfilters-mentorship-title": "Наставничество",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Ваши}} подопечные со звездочкой",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "{{GENDER:|Ваши}} подопечные, которых {{GENDER:|вы}} обозначили звездочкой на своей панели наставника",
@@ -85,5 +87,9 @@
 	"echo-pref-tooltip-ge-mentorship": "Уведомления, связанные с функциями наставничества, разрабатываемыми командой Роста. Это уведомление о том, что вас взяли себе за подопечного или что одного из ваших подопечных взял себе кто-то другой.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Вашего подопечного|Вашу подопечную}} $3 {{GENDER:$2|взял|взяла}} себе $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Причина: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Что означает «Взять подопечного»?"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Что означает «Взять подопечного»?",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Количество подопечных, назначаемых мне",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Примерно половина от нормального",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Нормальное (по умолчанию)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Примерно в два раза выше нормального"
 }
