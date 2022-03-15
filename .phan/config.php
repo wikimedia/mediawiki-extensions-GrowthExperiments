@@ -12,7 +12,8 @@ $cfg['directory_list'] = array_merge(
 		'../../extensions/Flow',
 		'../../extensions/MobileFrontend',
 		'../../extensions/Echo',
-		'../../extensions/CirrusSearch'
+		'../../extensions/CirrusSearch',
+		'../../extensions/TimedMediaHandler',
 	]
 );
 
@@ -26,7 +27,8 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 		'../../extensions/Flow',
 		'../../extensions/MobileFrontend',
 		'../../extensions/Echo',
-		'../../extensions/CirrusSearch'
+		'../../extensions/CirrusSearch',
+		'../../extensions/TimedMediaHandler',
 	]
 );
 

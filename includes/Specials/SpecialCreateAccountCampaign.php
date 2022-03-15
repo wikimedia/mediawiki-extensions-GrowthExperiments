@@ -2,11 +2,17 @@
 
 namespace GrowthExperiments\Specials;
 
+use ExtensionRegistry;
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\Util;
 use Html;
+use Linker;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use OOUI\IconWidget;
 use SpecialCreateAccount;
+use TimedMediaHandlerHooks;
+use Title;
 
 /**
  * Customized version of SpecialCreateAccount with different landing text.
@@ -74,6 +80,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		] );
 
 		$benefitsList = '';
+		$videoHtml = '';
 		if ( $this->shouldShowBenefitsList() ) {
 			foreach ( [ 'lightbulb', 'mentor', 'difficulty-easy-bw' ] as $i => $icon ) {
 				$index = $i + 1;
@@ -89,6 +96,47 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 				);
 			}
 			$benefitsList = Html::rawElement( 'ul', [ 'class' => 'mw-ge-donorsignup-list' ], $benefitsList );
+		} elseif ( $this->isMarketingVideoCampaign() ) {
+			// FIXME: Delete this block of code when T302738 is over.
+			$title = Title::makeTitleSafe( NS_FILE, 'Lesson_1_-_What_is_Kannada_Wikipedia.webm' );
+			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
+				'Lesson_1_-_What_is_Kannada_Wikipedia.webm'
+			);
+			if ( $file && $title && ExtensionRegistry::getInstance()->isLoaded( 'TimedMediaHandler' ) ) {
+				$params = [];
+				if ( Util::isMobile( $this->getSkin() ) ) {
+					// For mobile, we don't know the width, so we pick a somewhat arbitrary height
+					// to keep the controls for the video close to the thumbnail.
+					$params['height'] = 200;
+
+				} else {
+					// Set same width as benefits container on desktop.
+					$params['width'] = 400;
+				}
+				$output = Linker::makeImageLink(
+					MediaWikiServices::getInstance()->getParser(),
+					$title,
+					$file,
+					[],
+					$params
+				);
+				$videoHtml = Html::rawElement( 'div', [ 'class' => 'mw-ge-video' ], $output );
+				$activePlayerMode = TimedMediaHandlerHooks::activePlayerMode();
+				$rlModules = $rlModuleStyles = [];
+				if ( $activePlayerMode === 'mwembed' ) {
+					$rlModuleStyles = [ 'ext.tmh.thumbnail.styles' ];
+					$rlModules = [
+						'mw.MediaWikiPlayer.loader',
+						'mw.PopUpMediaTransform',
+						'mw.TMHGalleryHook.js',
+					];
+				} elseif ( $activePlayerMode === 'videojs' ) {
+					$rlModuleStyles = [ 'ext.tmh.player.styles' ];
+					$rlModules = [ 'ext.tmh.player' ];
+				}
+				$this->getOutput()->addModules( $rlModules );
+				$this->getOutput()->addModuleStyles( $rlModuleStyles );
+			}
 		}
 
 		$campaignKey = $this->getCampaignMessageKey();
@@ -104,6 +152,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 				$this->msg( "growthexperiments-$campaignKey-body" )->parse()
 			);
 		return Html::rawElement( 'div', [ 'class' => 'mw-createacct-benefits-container' ],
+			$videoHtml .
 			Html::rawElement( 'div', [ 'class' => "mw-ge-donorsignup-block mw-ge-donorsignup-block-$campaignKey" ],
 				Html::rawElement( 'h1', [ 'class' => 'mw-ge-donorsignup-title' ],
 					// The following message keys are used here:
@@ -149,6 +198,15 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	}
 
 	/**
+	 * FIXME: Delete this code when T302738 is finished.
+	 *
+	 * @return bool
+	 */
+	private function isMarketingVideoCampaign(): bool {
+		return strpos( $this->getCampaignValue(), 'growth-marketing-video' ) !== false;
+	}
+
+	/**
 	 * Return the message key prefix for the campaign
 	 *
 	 * @return string
@@ -161,6 +219,8 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			return 'josacampaign';
 		} elseif ( strpos( $campaign, 'glam' ) !== false ) {
 			return 'glamcampaign';
+		} elseif ( strpos( $campaign, 'marketing-video' ) !== false ) {
+			return 'marketingvideocampaign';
 		} else {
 			return 'signupcampaign';
 		}
@@ -181,7 +241,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	 * @return bool
 	 */
 	private function shouldShowBenefitsList(): bool {
-		return !$this->isRecurringDonorCampaign() && !$this->isGlamCampaign();
+		return !$this->isRecurringDonorCampaign() && !$this->isGlamCampaign() && !$this->isMarketingVideoCampaign();
 	}
 
 }
