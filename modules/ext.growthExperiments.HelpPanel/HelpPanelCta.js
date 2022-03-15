@@ -65,9 +65,19 @@
 				taskTypeId: taskTypeId,
 				suggestedEditSession: suggestedEditSession
 			} ),
+			isCtaHidden = true,
 			helpCtaButton,
 			lifecycle,
 			onContextResizeDebounced;
+
+		/**
+		 * Show or hide the help button after it's been attached
+		 *
+		 * @param {boolean} isHelpButtonVisible Whether the help button should be shown
+		 */
+		function toggleHelpButtonVisiblity( isHelpButtonVisible ) {
+			$buttonWrapper.toggleClass( 'mw-ge-help-panel-ready', isHelpButtonVisible );
+		}
 
 		/**
 		 * Invoked from mobileFrontend.editorOpened, ve.activationComplete
@@ -96,6 +106,10 @@
 			// the animation happens twice
 			if ( $buttonWrapper.parent()[ 0 ] !== $overlay[ 0 ] ) {
 				$overlay.append( $buttonWrapper );
+				isCtaHidden = false;
+			} else if ( isCtaHidden ) {
+				toggleHelpButtonVisiblity( true );
+				isCtaHidden = false;
 			}
 			helpPanelProcessDialog.logger.log( 'impression', taskTypeLogData, metadataOverride );
 			if ( isFirstTime ) {
@@ -172,7 +186,7 @@
 				.append( helpCtaButton.$element );
 		}
 		// Make the button visible (with slide up animation) if it's already on the page
-		$buttonWrapper.addClass( 'mw-ge-help-panel-ready' );
+		toggleHelpButtonVisiblity( true );
 
 		function openHelpPanel( panel ) {
 			if ( OO.ui.isMobile() ) {
@@ -398,7 +412,8 @@
 
 		// Allow the CTA to be hidden when there's a completing overlay (ex: post-edit dialog)
 		mw.hook( 'helpPanel.hideCta' ).add( function () {
-			$buttonWrapper.removeClass( 'mw-ge-help-panel-ready' );
+			isCtaHidden = true;
+			toggleHelpButtonVisiblity( false );
 		} );
 	} );
 
