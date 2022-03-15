@@ -10,6 +10,7 @@ use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\HomepageModules\Banner;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use Html;
 use HTMLForm;
@@ -453,6 +454,27 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'required' => false,
 				'section' => 'newcomertasks'
 			];
+
+			if ( $taskType === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+
+				$descriptors["newcomertasks-link-recommendationMaximumLinksToShowPerTask"] = [
+					'type' => 'int',
+					'default' => LinkRecommendationTaskType::DEFAULT_SETTINGS[
+						LinkRecommendationTaskType::FIELD_MAX_LINKS_TO_SHOW_PER_TASK
+					],
+					'min' => LinkRecommendationTaskType::DEFAULT_SETTINGS[
+						LinkRecommendationTaskType::FIELD_MIN_LINKS_PER_TASK
+					],
+					'max' => LinkRecommendationTaskType::DEFAULT_SETTINGS[
+						LinkRecommendationTaskType::FIELD_MAX_LINKS_PER_TASK
+					],
+					'label-message' =>
+						"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show",
+					'required' => false,
+					'section' => 'newcomertasks'
+				];
+
+			}
 		}
 
 		$descriptors = array_merge( $descriptors, [
@@ -675,19 +697,30 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			$descriptors["newcomertasks-${taskType}Learnmore"]['default'] =
 				$newcomerTasksConfig[$taskType]['learnmore'] ?? '';
 
-			// Ugly special-casing: if link-recommendations is soft-disabled, show it so
-			// configuration can be changed (in the future, once the special page supports that)
-			// but warn about it being disabled.
-			if ( $taskType === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID
-				 && $this->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' ) === false
-			) {
-				$descriptors["newcomertasks-${taskType}Disabled"] = [
-					'type' => 'info',
-					'default' => new IconWidget( [ 'icon' => 'cancel' ] ) . ' '
-						. $this->msg( 'growthexperiments-edit-config-newcomer-tasks-disabledinconfig' )->parse(),
-					'raw' => true,
-					'section' => 'newcomertasks',
-				];
+			if ( $taskType === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+				$maxLinksDescriptorName = "newcomertasks-${taskType}" .
+					ucfirst( LinkRecommendationTaskType::FIELD_MAX_LINKS_TO_SHOW_PER_TASK );
+				$descriptors[$maxLinksDescriptorName]['default'] =
+					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MAX_LINKS_TO_SHOW_PER_TASK] ??
+					$descriptors[$maxLinksDescriptorName]['default'];
+				$descriptors[$maxLinksDescriptorName]['min'] =
+					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MIN_LINKS_PER_TASK] ??
+					$descriptors[$maxLinksDescriptorName]['min'];
+				$descriptors[$maxLinksDescriptorName]['max'] =
+					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MAX_LINKS_PER_TASK] ??
+					$descriptors[$maxLinksDescriptorName]['max'];
+				// Ugly special-casing: if link-recommendations is soft-disabled, show it so
+				// configuration can be changed (in the future, once the special page supports that)
+				// but warn about it being disabled.
+				if ( $this->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' ) === false ) {
+					$descriptors["newcomertasks-${taskType}Disabled"] = [
+						'type' => 'info',
+						'default' => new IconWidget( [ 'icon' => 'cancel' ] ) . ' '
+							. $this->msg( 'growthexperiments-edit-config-newcomer-tasks-disabledinconfig' )->parse(),
+						'raw' => true,
+						'section' => 'newcomertasks',
+					];
+				}
 			}
 		}
 
@@ -866,6 +899,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				$suggestedEditsConfig[$taskType]['learnmore'] = $data["${taskType}Learnmore"];
 			} else {
 				unset( $suggestedEditsConfig[$taskType]['learnmore'] );
+			}
+			if ( isset( $data['link-recommendationMaximumLinksToShowPerTask'] ) ) {
+				$suggestedEditsConfig['link-recommendation']['maximumLinksToShowPerTask'] =
+					(int)$data['link-recommendationMaximumLinksToShowPerTask'];
 			}
 		}
 
