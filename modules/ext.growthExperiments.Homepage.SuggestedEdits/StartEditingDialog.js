@@ -2,6 +2,7 @@ var TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
 	TaskTypeSelectionWidget = require( './TaskTypeSelectionWidget.js' ),
 	ArticleCountWidget = require( './ArticleCountWidget.js' ),
 	TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
+	TopicFilters = require( './TopicFilters.js' ),
 	SwipePane = require( '../ui-components/SwipePane.js' ),
 	router = require( 'mediawiki.router' );
 
@@ -31,6 +32,7 @@ function StartEditingDialog( config, logger, api ) {
 	this.trigger = config.trigger;
 	this.enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
 	this.useTopicSelector = this.enableTopics && !!config.useTopicSelector;
+	this.useTopicMatchMode = this.enableTopics && !!config.useTopicMatchMode;
 	this.useTaskTypeSelector = !!config.useTaskTypeSelector;
 	this.activateWhenDone = !!config.activateWhenDone;
 	this.updateMatchCountDebounced = OO.ui.debounce( this.updateMatchCount.bind( this ) );
@@ -135,6 +137,10 @@ StartEditingDialog.prototype.initialize = function () {
 
 	this.swipeCard.setToStartHandler( this.swapPanel.bind( this, 'difficulty' ) );
 	this.swipeCard.setToEndHandler( this.swapPanel.bind( this, 'intro' ) );
+
+	if ( this.useTopicMatchMode ) {
+		this.logger.log( 'suggested-edits', this.mode, 'se-topicmatchmode-impression' );
+	}
 };
 
 /**
@@ -221,7 +227,8 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 };
 
 StartEditingDialog.prototype.updateMatchCount = function () {
-	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [],
+	var enabledFilters = this.topicSelector ? this.topicSelector.getFilters() : {},
+		topicFilters = new TopicFilters( enabledFilters ),
 		taskTypes = this.taskTypeSelector ?
 			this.taskTypeSelector.getSelected() :
 			this.api.defaultTaskTypes;
@@ -236,10 +243,10 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 	 */
 	mw.hook( 'growthexperiments.StartEditingDialog.updateMatchCount' ).fire(
 		taskTypes,
-		topics
+		topicFilters
 	);
 
-	this.api.fetchTasks( taskTypes, topics ).then( function ( data ) {
+	this.api.fetchTasks( taskTypes, topicFilters ).then( function ( data ) {
 		var homepageModulesConfig = mw.config.get( 'homepagemodules' );
 		this.articleCounter.setCount( Number( data.count ) );
 		if ( data.count ) {
@@ -434,7 +441,9 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 
 	// Construct the topic selector even if this.useTopicSelector is false, because
 	// topicsAvailable() needs it
-	this.topicSelector = this.enableTopics ? new TopicSelectionWidget() : false;
+	this.topicSelector = this.enableTopics ? new TopicSelectionWidget( {
+		isMatchModeEnabled: this.useTopicMatchMode
+	} ) : false;
 
 	generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.svg';
 
@@ -489,7 +498,8 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				},
 				// The "select all" buttons fire many toggleSelection events at once, so
 				// debounce them.
-				toggleSelection: 'updateMatchCountDebounced'
+				toggleSelection: 'updateMatchCountDebounced',
+				toggleMatchMode: 'updateMatchCount'
 			} );
 			$topicSelectorWrapper = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )

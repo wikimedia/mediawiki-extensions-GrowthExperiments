@@ -211,6 +211,7 @@
 			"class": "GrowthExperiments\\HomepageHooks",
 			"services": [
 				"MainConfig",
+				"GrowthExperimentsCampaignConfig",
 				"DBLoadBalancer",
 				"UserOptionsManager",
 				"UserOptionsLookup",
@@ -410,7 +411,7 @@
 		"EventLogging": {
 			"Schemas": {
 				"HelpPanel": "/analytics/legacy/helppanel/1.1.0",
-				"HomepageModule": "/analytics/legacy/homepagemodule/1.3.0",
+				"HomepageModule": "/analytics/legacy/homepagemodule/1.4.0",
 				"NewcomerTask": "/analytics/legacy/newcomertask/1.0.0",
 				"HomepageVisit": "/analytics/legacy/homepagevisit/1.3.0"
 			}
@@ -492,6 +493,8 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/constants.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				{
@@ -576,6 +579,8 @@
 		"ext.growthExperiments.Homepage.SuggestedEdits": {
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.SuggestedEdits/index.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/constants.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SuggestedEditsModule.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/EditCardWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/EndOfQueueWidget.js",
@@ -589,6 +594,7 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/FiltersDialog.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/DifficultyFiltersDialog.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFiltersDialog.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/MatchModeSelectWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/ArticleCountWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
@@ -634,7 +640,9 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypeSelectionWidget.less",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SuggestionWidget.less",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SuggestionGroupWidget.less",
-				"ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.less"
+				"ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.less",
+				"ext.growthExperiments.Homepage.SuggestedEdits/MatchModeSelectWidget.less",
+				"ext.growthExperiments.Homepage.SuggestedEdits/TopicSelectionWidget.less"
 			],
 			"targets": [
 				"desktop",
@@ -692,6 +700,9 @@
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body",
+				"growthexperiments-homepage-suggestededits-topics-match-mode-description",
+				"growthexperiments-homepage-suggestededits-topics-match-mode-all",
+				"growthexperiments-homepage-suggestededits-topics-match-mode-any",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
 				"growthexperiments-homepage-suggestededits-difficulty-filters-article-count",
 				"growthexperiments-homepage-suggestededits-tasktype-label-create",
@@ -1325,6 +1336,7 @@
 				"ext.growthExperiments.PostEdit/PostEditDialog.js",
 				"ext.growthExperiments.Help/HelpPanelLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
+				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
@@ -1643,10 +1655,25 @@
 			"modules/ext.growthExperiments.Homepage.mobile/index.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskPreviewWidget.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js",
-			"modules/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 			"tests/qunit/ext.growthExperiments.Homepage.mobile/index.test.js",
 			"modules/ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.js",
 			"tests/qunit/ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.test.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/constants.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
+			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.test.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/Topics.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/FiltersDialog.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TopicFiltersDialog.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TopicSelectionWidget.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/SuggestionWidget.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/SuggestionGroupWidget.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/MatchModeSelectWidget.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypeSelectionWidget.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/ArticleCountWidget.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/DifficultyFiltersDialog.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/FiltersWidget.js",
+			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/FiltersWidget.test.js",
 			{
 				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/config.json",
 				"file": "tests/qunit/__mocks__/config.json"
@@ -1654,6 +1681,10 @@
 			{
 				"name": "modules/ext.growthExperiments.Help/data.json",
 				"file": "tests/qunit/ext.growthExperiments.Help/configData.json"
+			},
+			{
+				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/Topics.json",
+				"file": "tests/qunit/__mocks__/Topics.json"
 			},
 			{
 				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",

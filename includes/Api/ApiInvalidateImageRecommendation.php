@@ -118,7 +118,8 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 			$user,
 			new TaskSetFilters(
 				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-				$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+				$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
+				$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
 			)
 		);
 		return $taskSet->containsPage( $page );

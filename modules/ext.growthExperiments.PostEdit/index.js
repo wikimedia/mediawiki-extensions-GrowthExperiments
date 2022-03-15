@@ -88,7 +88,7 @@
 		// 10 tasks are hopefully enough to find one that's not protected.
 		return api.fetchTasks(
 			taskTypesToFetch,
-			preferences.topics,
+			preferences.topicFilters,
 			apiConfig
 		).then( function ( data ) {
 			data = data || {};
@@ -264,7 +264,7 @@
 			savedTaskType: suggestedEditSession.taskType,
 			errorMessage: errorMessage,
 			userTaskTypes: preferences.taskTypes,
-			userTopics: preferences.topics,
+			userTopics: preferences.topicFilters.getTopics(),
 			newcomerTaskToken: suggestedEditSession.newcomerTaskToken
 		} ) );
 

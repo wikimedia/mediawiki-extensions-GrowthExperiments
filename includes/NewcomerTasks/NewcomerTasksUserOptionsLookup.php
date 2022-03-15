@@ -6,6 +6,7 @@ use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\VariantHooks;
@@ -71,8 +72,20 @@ class NewcomerTasksUserOptionsLookup {
 	 *   which takes an empty array as "no filtering".)
 	 * @see \GrowthExperiments\NewcomerTasks\Topic\Topic::getId()
 	 */
-	public function getTopicFilter( UserIdentity $user ): array {
+	public function getTopics( UserIdentity $user ): array {
 		return $this->getTopicFilterWithoutFallback( $user ) ?? [];
+	}
+
+	/**
+	 * Get the given user's topic mode preference.
+	 * @param UserIdentity $user
+	 * @return string A string representing the topic match mode.
+	 * One of ( 'AND', 'OR').
+	 * @see SearchStrategy::TOPIC_MATCH_MODES
+	 */
+	public function getTopicsMatchMode( UserIdentity $user ): string {
+		return $this->getStringOption( $user, SuggestedEdits::TOPICS_MATCH_MODE_PREF ) ??
+			SearchStrategy::TOPIC_MATCH_MODE_OR;
 	}
 
 	/**
@@ -195,6 +208,21 @@ class NewcomerTasksUserOptionsLookup {
 		}
 		// sanity check
 		if ( !is_array( $stored ) || array_filter( $stored, 'is_string' ) !== $stored ) {
+			return null;
+		}
+		return $stored;
+	}
+
+	/**
+	 * Read a user preference that is a string.
+	 * @param UserIdentity $user
+	 * @param string $pref
+	 * @return string|null User preference as a string, or null if the preference is invalid
+	 */
+	private function getStringOption( UserIdentity $user, string $pref ) {
+		$stored = $this->userOptionsLookup->getOption( $user, $pref );
+
+		if ( !is_string( $stored ) ) {
 			return null;
 		}
 		return $stored;

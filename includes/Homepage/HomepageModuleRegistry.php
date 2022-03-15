@@ -105,6 +105,7 @@ class HomepageModuleRegistry {
 				return new SuggestedEdits(
 					$context,
 					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getGrowthExperimentsCampaignConfig(),
 					$growthServices->getEditInfoService(),
 					$growthServices->getExperimentUserManager(),
 					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null,

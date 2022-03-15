@@ -1,7 +1,9 @@
 'use strict';
 
 var FiltersDialog = require( './FiltersDialog.js' ),
-	TopicSelectionWidget = require( './TopicSelectionWidget.js' );
+	TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
+	TOPIC_MATCH_MODES = require( './constants.js' ).TOPIC_MATCH_MODES,
+	TopicFilters = require( './TopicFilters.js' );
 
 /**
  * Class for handling UI changes to topic filters.
@@ -59,13 +61,20 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	var $topicSelectorWrapper;
 	this.content.$element.empty();
 	this.content.$element.append( this.errorMessage.$element );
-	this.topicSelector = new TopicSelectionWidget( { selectedTopics: this.config.presets || [] } );
+	this.topicSelector = new TopicSelectionWidget( {
+		isMatchModeEnabled: this.config.useTopicMatchMode,
+		filters: this.config.presets || new TopicFilters( {
+			topicsMatchMode: TOPIC_MATCH_MODES.OR
+		} )
+	} );
 	this.topicSelector.connect( this, {
 		// selectAll and removeAll forward a single topic group ID argument
 		selectAll: [ 'emit', 'selectAll' ],
 		removeAll: [ 'emit', 'removeAll' ],
 		expand: [ 'emit', 'expand' ],
-		toggleSelection: 'onTopicSelectorToggleSelection'
+		toggleSelection: 'onTopicFilterChange',
+		toggleMatchMode: 'onTopicFilterChange',
+		onMatchModeClick: [ 'emit', 'onMatchModeClick' ]
 	} );
 	$topicSelectorWrapper = $( '<div>' )
 		.addClass( 'suggested-edits-topic-filters-topic-selector' )
@@ -93,25 +102,34 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
  */
 TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 	// this.config.presets could be null ((e.g. user just initiated the module, see T238611#5800350)
-	var presets = this.config.presets || [];
+	var presets = this.config.presets || new TopicFilters( {
+		topicsMatchMode: TOPIC_MATCH_MODES.OR
+	} );
 	// Prevent 'search' events from being fired by performSearchUpdateActions()
 	this.updating = true;
 	this.topicSelector.suggestions.forEach( function ( suggestion ) {
-		suggestion.toggleSuggestion( presets.indexOf( suggestion.suggestionData.id ) > -1 );
+		suggestion.toggleSuggestion(
+			presets.getTopics().indexOf( suggestion.suggestionData.id ) > -1
+		);
 	} );
+
+	if ( this.topicSelector.matchModeSelector ) {
+		this.topicSelector.matchModeSelector.setSelectedMode( presets.getTopicsMatchMode() );
+	}
 	this.updating = false;
 };
 
 /**
- * Return an array of enabled topic types to use for searching.
+ * Return an TopicFilter object with the state of the selector filters.
  *
+ * @see modules/ext.growthExperiments.Homepage.SuggestedEdits/constants.js
  * @override
- * @return {Object[]}
+ * @return {mw.libs.ge.TopicFilters|null}
  */
 TopicFiltersDialog.prototype.getEnabledFilters = function () {
 	// Topic selection widget may not yet be initialized (when the module
 	// is loading initially) in which case use the presets.
-	return this.topicSelector ? this.topicSelector.getSelectedTopics() : this.config.presets;
+	return this.topicSelector ? this.topicSelector.getFilters() : this.config.presets;
 };
 
 /**
@@ -134,18 +152,27 @@ TopicFiltersDialog.prototype.performSearchUpdateActions = function () {
 TopicFiltersDialog.prototype.savePreferences = function () {
 	// If existing preference is null, that means the user never saved a change
 	// to the topics, so we should continue to save null. Otherwise for empty filters
-	// save a JSON encoded empty array..
+	// save a JSON encoded empty array.
 	var prefName = require( './config.json' ).GENewcomerTasksTopicFiltersPref,
 		prefValueHasBeenSetBefore = mw.user.options.get( prefName ),
+		enabledFilters = this.getEnabledFilters(),
+		topics = enabledFilters.getTopics(),
+		topicsMatchMode = enabledFilters.getTopicsMatchMode(),
+		prefNameMode = 'growthexperiments-homepage-se-topic-filters-mode',
 		prefValue;
-	if ( !this.getEnabledFilters().length ) {
-		prefValue = prefValueHasBeenSetBefore ? JSON.stringify( [] ) : null;
+
+	if ( topics.length ) {
+		prefValue = JSON.stringify( topics );
 	} else {
-		prefValue = JSON.stringify( this.getEnabledFilters() );
+		prefValue = prefValueHasBeenSetBefore ? JSON.stringify( [] ) : null;
 	}
-	this.config.presets = prefValue;
+	this.config.presets = enabledFilters;
 	mw.user.options.set( prefName, prefValue );
-	return new mw.Api().saveOption( prefName, prefValue );
+	mw.user.options.set( prefNameMode, topicsMatchMode );
+	var options = {};
+	options[ prefName ] = prefValue;
+	options[ prefNameMode ] = topicsMatchMode;
+	return new mw.Api().saveOptions( options );
 };
 
 /** @inheritDoc **/
@@ -156,7 +183,7 @@ TopicFiltersDialog.prototype.getSetupProcess = function ( data ) {
 		}, this );
 };
 
-TopicFiltersDialog.prototype.onTopicSelectorToggleSelection = function () {
+TopicFiltersDialog.prototype.onTopicFilterChange = function () {
 	// Don't fire 'search' events for changes that we made ourselves in updateFiltersFromState()
 	if ( !this.updating ) {
 		// The "select all" buttons fire many toggleSelection events at once, so debounce them

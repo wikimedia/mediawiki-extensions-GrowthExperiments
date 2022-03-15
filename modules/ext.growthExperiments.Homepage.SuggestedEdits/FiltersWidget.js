@@ -1,6 +1,7 @@
 ( function () {
 	'use strict';
 	var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
+		TOPIC_MATCH_MODES = require( './constants.js' ).TOPIC_MATCH_MODES,
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		topicData = require( './Topics.js' );
 
@@ -11,6 +12,7 @@
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
 	 * @param {Array<string>|null} config.topicPresets List of IDs of enabled topic filters
 	 * @param {boolean} config.topicMatching If the topic filters should be enabled in the UI.
+	 * @param {boolean} config.useTopicMatchMode If topic match mode feature is enabled in the UI
 	 * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
 	 * @param {HomepageModuleLogger} logger
 	 * @constructor
@@ -35,13 +37,27 @@
 			} );
 			buttonWidgets.push( this.topicFilterButtonWidget );
 			this.topicFiltersDialog = new TopicFiltersDialog( {
-				presets: this.topicPresets
+				presets: this.topicPresets,
+				useTopicMatchMode: config.useTopicMatchMode
 			} ).connect( this, {
 				done: function ( promise ) {
 					this.emit( 'done', promise );
 				},
 				search: function () {
 					this.emit( 'search' );
+				},
+				onMatchModeClick: function ( matchMode ) {
+					logger.log(
+						'suggested-edits',
+						config.mode,
+						// Possible event names are:
+						// 'se-topicmatchmode-or'
+						// 'se-topicmatchmode-and'
+						'se-topicmatchmode-' + matchMode.toLowerCase(),
+						{
+							topicsMatchMode: matchMode
+						}
+					);
 				},
 				selectAll: function ( groupId ) {
 					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-select-all', {
@@ -109,17 +125,25 @@
 		if ( this.topicFilterButtonWidget ) {
 			this.topicFilterButtonWidget.on( 'click', function () {
 				var lifecycle = windowManager.openWindow( this.topicFiltersDialog );
-				logger.log( 'suggested-edits', config.mode, 'se-topicfilter-open',
-					{ topics: this.topicFiltersDialog.getEnabledFilters() } );
+				logger.log( 'suggested-edits', config.mode, 'se-topicfilter-open', {
+					topics: this.topicFiltersDialog.getEnabledFilters().getTopics()
+				} );
+				if ( config.useTopicMatchMode ) {
+					logger.log( 'suggested-edits', config.mode, 'se-topicmatchmode-impression' );
+				}
 				this.emit( 'open' );
 				lifecycle.closing.done( function ( data ) {
+					var closeExtraData = {
+						topics: this.topicFiltersDialog.getEnabledFilters().getTopics()
+					};
+					if ( config.useTopicMatchMode ) {
+						closeExtraData.topicsMatchMode = this.topicFiltersDialog.getEnabledFilters()
+							.getTopicsMatchMode();
+					}
 					if ( data && data.action === 'done' ) {
-						logger.log( 'suggested-edits', config.mode, 'se-topicfilter-done', {
-							topics: this.topicFiltersDialog.getEnabledFilters()
-						} );
+						logger.log( 'suggested-edits', config.mode, 'se-topicfilter-done', closeExtraData );
 					} else {
-						logger.log( 'suggested-edits', config.mode, 'se-topicfilter-cancel',
-							{ topics: this.topicFiltersDialog.getEnabledFilters() } );
+						logger.log( 'suggested-edits', config.mode, 'se-topicfilter-cancel', closeExtraData );
 					}
 				}.bind( this ) );
 			}.bind( this ) );
@@ -152,7 +176,8 @@
 	 * Keep this function in sync with HomepageModules\SuggestedEdits::getFiltersButtonGroupWidget()
 	 *
 	 * @param {string[]} taskTypeSearch List of task types to search for
-	 * @param {string[]} topicSearch List of topics to search for
+	 * @param {mw.libs.ge.TopicFilters} topicSearch TopicFilters object with list
+	 * of topics to search for and match mode
 	 */
 	SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon = function (
 		taskTypeSearch, topicSearch
@@ -160,18 +185,21 @@
 		var levels = {},
 			topicMessages = [],
 			topicLabel = '',
+			separator = '',
+			isMatchModeAND = topicSearch &&
+				topicSearch.getTopicsMatchMode() === TOPIC_MATCH_MODES.AND,
 			messages = [];
 
 		if ( this.topicFilterButtonWidget ) {
-			if ( !topicSearch.length ) {
+			if ( !topicSearch.hasFilters() ) {
 				this.topicFilterButtonWidget.setLabel(
 					mw.message( 'growthexperiments-homepage-suggestededits-topic-filter-select-interests' ).text()
 				);
-				// topicPresets will be an empty array if the user had saved topics
+				// topicPresets will be a TopicFilters object if the user had saved topics
 				// in the past, or null if they have never saved topics
 				this.topicFilterButtonWidget.setFlags( { progressive: !this.topicPresets } );
 			} else {
-				topicSearch.forEach( function ( topic ) {
+				topicSearch.getTopics().forEach( function ( topic ) {
 					if ( topicData[ topic ] && topicData[ topic ].name ) {
 						topicMessages.push( topicData[ topic ].name );
 					}
@@ -182,7 +210,8 @@
 			}
 			if ( topicMessages.length ) {
 				if ( topicMessages.length < 3 ) {
-					topicLabel = topicMessages.join( mw.msg( 'comma-separator' ) );
+					separator = isMatchModeAND ? ' + ' : mw.msg( 'comma-separator' );
+					topicLabel = topicMessages.join( separator );
 				} else {
 					topicLabel = mw.message(
 						'growthexperiments-homepage-suggestededits-topics-button-topic-count'

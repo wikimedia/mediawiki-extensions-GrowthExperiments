@@ -22,8 +22,9 @@ var EditCardWidget = require( './EditCardWidget.js' ),
  * @param {jQuery} config.$element SuggestedEdits widget container
  * @param {jQuery} config.$nav Navigation element (if navigation is separate from $element)
  * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
- * @param {Array<string>|null} config.topicPresets Lists of IDs of enabled topic filters.
+ * @param {Object|null} config.topicPresets Lists of IDs of enabled topic filters.
  * @param {boolean} config.topicMatching If topic matching feature is enabled in the UI
+ * @param {boolean} config.useTopicMatchMode If topic match mode feature is enabled in the UI
  * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
  * @param {Object} config.qualityGateConfig Quality gate configuration exported from TaskSet.php
  * @param {HomepageModuleLogger} logger
@@ -40,7 +41,7 @@ function SuggestedEditsModule( config, logger, api ) {
 	this.newcomerTaskToken = null;
 	this.apiFetchMoreTasksPromise = null;
 	this.taskTypesQuery = [];
-	this.topicsQuery = [];
+	this.topicsFilter = null;
 	this.api = api;
 	/** @property {mw.libs.ge.TaskData[]} taskQueue Fetched task data */
 	this.taskQueue = [];
@@ -64,6 +65,7 @@ function SuggestedEditsModule( config, logger, api ) {
 		taskTypePresets: config.taskTypePresets,
 		topicPresets: config.topicPresets,
 		topicMatching: config.topicMatching,
+		useTopicMatchMode: config.useTopicMatchMode,
 		mode: this.mode
 	}, logger )
 		.connect( this, {
@@ -191,7 +193,7 @@ SuggestedEditsModule.prototype.updateMobileSummary = function () {
 SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogProcess ) {
 	this.isFirstRender = true;
 	if ( !this.apiPromise ) {
-		this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery, {
+		this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsFilter, {
 			context: 'suggestedEditsModule.filterSelection'
 		} );
 	}
@@ -213,11 +215,10 @@ SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogProcess
  * Set the task types and topics query properties based on dialog state.
  */
 SuggestedEditsModule.prototype.setFilterQueriesFromDialogState = function () {
+	var topicsFilter = this.config.topicMatching &&
+		this.filters.topicFiltersDialog.getEnabledFilters();
 	this.taskTypesQuery = this.filters.taskTypeFiltersDialog.getEnabledFilters();
-	this.topicsQuery = this.config.topicMatching &&
-	this.filters.topicFiltersDialog.getEnabledFilters().length ?
-		this.filters.topicFiltersDialog.getEnabledFilters() :
-		[];
+	this.topicsFilter = topicsFilter;
 };
 
 /**
@@ -260,7 +261,7 @@ SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function ( options ) {
 		this.filters.updateMatchCount( this.taskCount );
 		return $.Deferred().resolve().promise();
 	}
-	this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery, {
+	this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsFilter, {
 		context: 'suggestedEditsModule.fetchTasksAndUpdateView'
 	} );
 	return this.apiPromise.then( function ( data ) {
@@ -292,7 +293,10 @@ SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function ( options ) {
 		//   to display. Unlikely to cause much discrepancy though.
 		extraData.taskTypes = this.taskTypesQuery;
 		if ( this.config.topicMatching ) {
-			extraData.topics = this.topicsQuery;
+			extraData.topics = this.topicsFilter.getTopics();
+			if ( this.config.useTopicMatchMode ) {
+				extraData.topicsMatchMode = this.topicsFilter.getTopicsMatchMode();
+			}
 		}
 
 		extraData.taskCount = data.count;
@@ -409,7 +413,7 @@ SuggestedEditsModule.prototype.fetchMoreTasks = function () {
 	}
 	this.apiFetchMoreTasksPromise = this.api.fetchTasks(
 		this.taskTypesQuery,
-		this.topicsQuery,
+		this.topicsFilter,
 		config
 	);
 	this.apiFetchMoreTasksPromise.done( function ( data ) {
@@ -699,7 +703,10 @@ SuggestedEditsModule.prototype.setupSwipeNavigation = function () {
  */
 SuggestedEditsModule.prototype.updateControls = function () {
 	this.setFilterQueriesFromDialogState();
-	this.filters.updateButtonLabelAndIcon( this.taskTypesQuery, this.topicsQuery );
+	this.filters.updateButtonLabelAndIcon(
+		this.taskTypesQuery,
+		this.topicsFilter
+	);
 	this.updatePager();
 	this.updatePreviousNextButtons();
 	this.updateTaskExplanationWidget();

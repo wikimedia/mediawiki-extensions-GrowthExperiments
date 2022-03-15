@@ -173,7 +173,8 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 			$user,
 			new TaskSetFilters(
 				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-				$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+				$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
+				$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
 			)
 		);
 		if ( $taskSet instanceof TaskSet ) {

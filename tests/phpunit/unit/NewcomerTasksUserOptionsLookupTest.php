@@ -7,6 +7,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\VariantHooks;
 use HashConfig;
@@ -21,7 +22,7 @@ use MediaWikiUnitTestCase;
 class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 
 	/**
-	 * @covers ::getTopicFilter
+	 * @covers ::getTopics
 	 * @covers ::getTaskTypeFilter
 	 * @covers ::getJsonListOption
 	 */
@@ -56,17 +57,20 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$lookup = new NewcomerTasksUserOptionsLookup( $experimentUserManager, $userOptionsLookup,
 			$config, $this->getConfigurationLoader( [ 'copyedit', 'links' ] ) );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ 'ores' ], $lookup->getTopicFilter( $user1 ) );
+		$this->assertSame( [ 'ores' ], $lookup->getTopics( $user1 ) );
+		$this->assertSame( SearchStrategy::TOPIC_MATCH_MODE_OR, $lookup->getTopicsMatchMode( $user1 ) );
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user2 ) );
-		$this->assertSame( [], $lookup->getTopicFilter( $user2 ) );
+		$this->assertSame( [], $lookup->getTopics( $user2 ) );
+		$this->assertSame( SearchStrategy::TOPIC_MATCH_MODE_OR, $lookup->getTopicsMatchMode( $user2 ) );
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user3 ) );
-		$this->assertSame( [], $lookup->getTopicFilter( $user3 ) );
+		$this->assertSame( [], $lookup->getTopics( $user3 ) );
+		$this->assertSame( SearchStrategy::TOPIC_MATCH_MODE_OR, $lookup->getTopicsMatchMode( $user3 ) );
 
 		$config->set( 'GENewcomerTasksTopicType', PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
-		$this->assertSame( [ 'topics' ], $lookup->getTopicFilter( $user1 ) );
+		$this->assertSame( [ 'topics' ], $lookup->getTopics( $user1 ) );
 
 		$config = new HashConfig( [
 			'GENewcomerTasksTopicType' => PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
