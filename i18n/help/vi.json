@@ -112,7 +112,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Nếu {{GENDER:$2}}bạn cũng muốn được thông báo qua thư điện tử, hãy xác nhận địa chỉ thư điện tử của bạn: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Xác nhận thư điện tử",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Nếu {{GENDER:$1}}bạn cũng muốn được thông báo qua thư điện tử, hãy thêm địa chỉ thư điện tử của bạn.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Thêm email",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Thêm địa chỉ thư điện tử",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Về bảng trợ giúp",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Bạn có biết với việc đăng câu hỏi này, bạn đã vừa thực hiện sửa đổi đầu tiên của mình không? Chúc mừng bạn!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Tắt bảng trợ giúp",
