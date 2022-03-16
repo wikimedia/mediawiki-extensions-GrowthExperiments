@@ -1,0 +1,297 @@
+<?php
+
+namespace GrowthExperiments\Tests;
+
+use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
+use GrowthExperiments\Config\WikiPageConfigLoader;
+use GrowthExperiments\Config\WikiPageConfigWriter;
+use GrowthExperiments\Config\WikiPageConfigWriterFactory;
+use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
+use MediaWiki\Linker\LinkTarget;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
+use MediaWikiUnitTestCase;
+use Status;
+
+/**
+ * @coversDefaultClass \GrowthExperiments\Mentorship\Provider\StructuredMentorWriter
+ */
+class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
+
+	private const MENTOR_LIST_CONTENT = [
+		123 => [
+			'message' => null,
+			'weight' => 2,
+			'automaticallyAssigned' => true,
+		],
+	];
+
+	private const DEFAULT_INTRO_TEXT = 'This is default intro';
+
+	/**
+	 * @param int $userId
+	 * @param string|null $introText
+	 * @param bool $autoAssigned
+	 * @param int $weight
+	 * @return Mentor
+	 */
+	private function getMentor(
+		int $userId,
+		?string $introText,
+		bool $autoAssigned,
+		int $weight
+	): Mentor {
+		return new Mentor(
+			new UserIdentityValue( $userId, 'Mentor' ),
+			$introText,
+			self::DEFAULT_INTRO_TEXT,
+			$autoAssigned,
+			$weight
+		);
+	}
+
+	/**
+	 * @return WikiPageConfigLoader|\PHPUnit\Framework\MockObject\MockObject
+	 */
+	private function getWikiConfigLoaderMock() {
+		$configLoader = $this->getMockBuilder( WikiPageConfigLoader::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$configLoader->expects( $this->once() )
+			->method( 'load' )
+			->willReturn( [
+				'Mentors' => self::MENTOR_LIST_CONTENT
+			] );
+		return $configLoader;
+	}
+
+	/**
+	 * @param array $expectedMentorList
+	 * @param string $expectedSummary
+	 * @return WikiPageConfigWriterFactory|\PHPUnit\Framework\MockObject\MockObject
+	 */
+	private function getWikiPageWriterFactoryMock(
+		array $expectedMentorList,
+		string $expectedSummary
+	) {
+		$status = $this->getMockBuilder( Status::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$status->method( 'isOK' )
+			->willReturn( true );
+
+		$writer = $this->getMockBuilder( WikiPageConfigWriter::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$writer->expects( $this->once() )
+			->method( 'setVariable' )
+			->with( StructuredMentorWriter::CONFIG_KEY, $expectedMentorList );
+		$writer->expects( $this->once() )
+			->method( 'save' )
+			->with( $expectedSummary )
+			->willReturn( $status );
+
+		$factory = $this->getMockBuilder( WikiPageConfigWriterFactory::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$factory->expects( $this->once() )
+			->method( 'newWikiPageConfigWriter' )
+			->willReturn( $writer );
+		return $factory;
+	}
+
+	/**
+	 * @covers ::__construct
+	 */
+	public function testConstruct() {
+		$this->assertInstanceOf(
+			StructuredMentorWriter::class,
+			new StructuredMentorWriter(
+				$this->createNoOpMock( WikiPageConfigLoader::class ),
+				$this->createNoOpMock( WikiPageConfigWriterFactory::class ),
+				new StructuredMentorListValidator(),
+				$this->createNoOpMock( LinkTarget::class )
+			)
+		);
+	}
+
+	/**
+	 * @param Mentor $mentor
+	 * @param array $expectedNewMentor
+	 * @param string|null $expectedError
+	 * @covers ::addMentor
+	 * @covers ::getMentorData
+	 * @covers ::saveMentorData
+	 * @covers ::serializeMentor
+	 * @dataProvider provideAddMentor
+	 */
+	public function testAddMentor(
+		Mentor $mentor,
+		array $expectedNewMentor,
+		?string $expectedError
+	) {
+		if ( $expectedError === null ) {
+			$expectedMentorList = self::MENTOR_LIST_CONTENT;
+			$expectedMentorList[$mentor->getUserIdentity()->getId()] = $expectedNewMentor;
+			$configWriterFactory = $this->getWikiPageWriterFactoryMock( $expectedMentorList, 'Add mentor' );
+		} else {
+			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
+		}
+		$mentorWriter = new StructuredMentorWriter(
+			$this->getWikiConfigLoaderMock(),
+			$configWriterFactory,
+			new StructuredMentorListValidator(),
+			$this->createNoOpMock( LinkTarget::class )
+		);
+
+		$status = $mentorWriter->addMentor(
+			$mentor,
+			$this->createNoOpMock( UserIdentity::class ),
+			'Add mentor'
+		);
+		if ( $expectedError === null ) {
+			$this->assertTrue( $status->isOK() );
+		} else {
+			$this->assertFalse( $status->isOK() );
+			$this->assertTrue( $status->hasMessage( $expectedError ) );
+		}
+	}
+
+	public function provideAddMentor() {
+		return [
+			[
+				'mentor' => $this->getMentor( 1, null, true, 2 ),
+				'expectedNewMentor' => [
+					'message' => null,
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+				],
+				'expectedError' => null,
+			],
+			[
+				'mentor' => $this->getMentor( 123, null, true, 2 ),
+				'expectedNewMentor' => [
+					'message' => null,
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+				],
+				'expectedError' => 'growthexperiments-mentor-writer-error-already-added',
+			],
+		];
+	}
+
+	/**
+	 * @param Mentor $mentor
+	 * @param string|null $expectedError
+	 * @covers ::removeMentor
+	 * @covers ::saveMentorData
+	 * @covers ::getMentorData
+	 * @dataProvider provideRemoveMentor
+	 */
+	public function testRemoveMentor( Mentor $mentor, ?string $expectedError ) {
+		if ( $expectedError === null ) {
+			$expectedMentorList = self::MENTOR_LIST_CONTENT;
+			unset( $expectedMentorList[$mentor->getUserIdentity()->getId()] );
+			$configWriterFactory = $this->getWikiPageWriterFactoryMock( $expectedMentorList, 'Remove mentor' );
+		} else {
+			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
+		}
+		$mentorWriter = new StructuredMentorWriter(
+			$this->getWikiConfigLoaderMock(),
+			$configWriterFactory,
+			new StructuredMentorListValidator(),
+			$this->createNoOpMock( LinkTarget::class )
+		);
+
+		$status = $mentorWriter->removeMentor(
+			$mentor,
+			$this->createNoOpMock( UserIdentity::class ),
+			'Remove mentor'
+		);
+		if ( $expectedError === null ) {
+			$this->assertTrue( $status->isOK() );
+		} else {
+			$this->assertFalse( $status->isOK() );
+			$this->assertTrue( $status->hasMessage( $expectedError ) );
+		}
+	}
+
+	public function provideRemoveMentor() {
+		return [
+			[
+				'mentor' => $this->getMentor( 123, null, true, 2 ),
+				'expectedError' => null,
+			],
+			[
+				'mentor' => $this->getMentor( 1, null, true, 2 ),
+				'expectedError' => 'growthexperiments-mentor-writer-error-not-in-the-list',
+			],
+		];
+	}
+
+	/**
+	 * @param Mentor $mentor
+	 * @param array $expectedNewMentor
+	 * @param string|null $expectedError
+	 * @covers ::changeMentor
+	 * @covers ::getMentorData
+	 * @covers ::saveMentorData
+	 * @covers ::serializeMentor
+	 * @dataProvider provideChangeMentor
+	 */
+	public function testChangeMentor(
+		Mentor $mentor,
+		array $expectedNewMentor,
+		?string $expectedError
+	) {
+		if ( $expectedError === null ) {
+			$expectedMentorList = self::MENTOR_LIST_CONTENT;
+			$expectedMentorList[$mentor->getUserIdentity()->getId()] = $expectedNewMentor;
+			$configWriterFactory = $this->getWikiPageWriterFactoryMock( $expectedMentorList, 'Change mentor' );
+		} else {
+			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
+		}
+		$mentorWriter = new StructuredMentorWriter(
+			$this->getWikiConfigLoaderMock(),
+			$configWriterFactory,
+			new StructuredMentorListValidator(),
+			$this->createNoOpMock( LinkTarget::class )
+		);
+
+		$status = $mentorWriter->changeMentor(
+			$mentor,
+			$this->createNoOpMock( UserIdentity::class ),
+			'Change mentor'
+		);
+		if ( $expectedError === null ) {
+			$this->assertTrue( $status->isOK() );
+		} else {
+			$this->assertFalse( $status->isOK() );
+			$this->assertTrue( $status->hasMessage( $expectedError ) );
+		}
+	}
+
+	public function provideChangeMentor() {
+		return [
+			[
+				'mentor' => $this->getMentor( 1, null, true, 2 ),
+				'expectedNewMentor' => [
+					'message' => null,
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+				],
+				'expectedError' => 'growthexperiments-mentor-writer-error-not-in-the-list',
+			],
+			[
+				'mentor' => $this->getMentor( 123, null, true, 4 ),
+				'expectedNewMentor' => [
+					'message' => null,
+					'weight' => 4,
+					'automaticallyAssigned' => true,
+				],
+				'expectedError' => null,
+			],
+		];
+	}
+}

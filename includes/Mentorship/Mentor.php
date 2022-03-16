@@ -12,7 +12,7 @@ class Mentor {
 	private $mentorUser;
 
 	/**
-	 * @var string
+	 * @var string|null
 	 */
 	private $introText;
 
@@ -60,6 +60,13 @@ class Mentor {
 	}
 
 	/**
+	 * @return bool Is a custom intro text used?
+	 */
+	public function hasCustomIntroText(): bool {
+		return $this->introText !== null;
+	}
+
+	/**
 	 * Returns the introduction text for a mentor.
 	 * @return string
 	 */
@@ -79,5 +86,26 @@ class Mentor {
 	 */
 	public function getWeight(): int {
 		return $this->weight;
+	}
+
+	/**
+	 * @param string|null $introText Null to use the default message
+	 */
+	public function setIntroText( ?string $introText ): void {
+		$this->introText = $introText;
+	}
+
+	/**
+	 * @param bool $autoAssigned
+	 */
+	public function setAutoAssigned( bool $autoAssigned ): void {
+		$this->autoAssigned = $autoAssigned;
+	}
+
+	/**
+	 * @param int $weight
+	 */
+	public function setWeight( int $weight ): void {
+		$this->weight = $weight;
 	}
 }

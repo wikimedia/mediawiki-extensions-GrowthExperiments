@@ -4,6 +4,7 @@ use CirrusSearch\CirrusSearch;
 use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
+use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
@@ -25,8 +26,10 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
+use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\WikitextMentorProvider;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
@@ -494,6 +497,21 @@ return [
 	): MentorWeightManager {
 		return new MentorWeightManager(
 			$services->getUserOptionsManager()
+		);
+	},
+
+	'GrowthExperimentsMentorWriter' => static function (
+		MediaWikiServices $services
+	): IMentorWriter {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		return new StructuredMentorWriter(
+			$geServices->getWikiPageConfigLoader(),
+			$geServices->getWikiPageConfigWriterFactory(),
+			new StructuredMentorListValidator(),
+			$services->getTitleFactory()->newFromText(
+				$services->getMainConfig()->get( 'GEStructuredMentorList' )
+			)
 		);
 	},
 
