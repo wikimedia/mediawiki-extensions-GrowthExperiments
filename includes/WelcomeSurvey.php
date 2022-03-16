@@ -176,6 +176,8 @@ class WelcomeSurvey {
 	 * Bank of questions that can be used on the Welcome survey.
 	 * Format is HTMLForm configuration, with two special keys 'placeholder-message'
 	 * and 'other-message' for type=select (see SpecialWelcomeSurvey::getFormFields()).
+	 *
+	 * @see \HTMLForm::$typeMappings for the values to use for "type"
 	 * @return array
 	 */
 	protected function getQuestionBank(): array {
@@ -227,6 +229,13 @@ class WelcomeSurvey {
 				"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
 				"group" => "edited",
 			],
+			"mailinglist" => [
+				"type" => "check",
+				"group" => "email",
+				"label-message" => "welcomesurvey-question-mailinglist-label",
+				"help-message" => "welcomesurvey-question-mailinglist-help",
+				"disabled" => true,
+			],
 			"languages" => [
 				"type" => "multiselect",
 				"options" => array_flip( $this->languageNameUtils->getLanguageNames() ),
@@ -264,6 +273,9 @@ class WelcomeSurvey {
 		];
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'UniversalLanguageSelector' ) ) {
 			$questions['languages']['disabled'] = true;
+		}
+		if ( $this->context->getConfig()->get( 'GEWelcomeSurveyShowMailingListQuestion' ) ) {
+			$questions['mailinglist']['disabled'] = false;
 		}
 		return $questions;
 	}

@@ -46,6 +46,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "One response option to the question \"Have you ever edited Wikipedia?\" in a welcome survey to new accounts.",
 	"welcomesurvey-question-edited-option-no-other-label": "A response option to the question \"Have you ever edited Wikipedia?\" in a welcome survey to new accounts. It is shown after the option \"{{int:Welcomesurvey-question-edited-option-no-dunno-label}}\"",
 	"welcomesurvey-question-edited-option-dont-remember-label": "One response option to the question \"Have you ever edited Wikipedia?\" in a welcome survey to new accounts.",
+	"welcomesurvey-question-mailinglist-label": "Checkbox label to opt-in to marketing emails. This is a one-off experiment, and only needs to be translated for eswiki.",
+	"welcomesurvey-question-mailinglist-help": "Checkbox help text for opt-in to marketing emails. This is a one-off experiment, and only needs to be translated for eswiki.",
 	"welcomesurvey-question-email-label": "Label for the email address field. It will be shown only if it was not completed by the user during account creation.",
 	"welcomesurvey-question-email-placeholder": "Placeholder text inside a field to enter an email address",
 	"welcomesurvey-question-email-help": "Assistive text shown after a text field asking the user to enter in an email address for their Wikipedia account. This field is shown in a form just after a new user created an account if they did not provide an email address during sign up.",
