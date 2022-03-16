@@ -193,7 +193,7 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 млн",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 млрд",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 трлн",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "правки за последний день",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|правка|правки|правок}} за последний день",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Сегодня такие же волонтёры как вы внесли вклад чтобы улучшить {{grammar:accusative|{{SITENAME}}}}. Присоединяйтесь!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Просмотреть все предложения",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Исправить орфографию и стиль статьи",

@@ -85,6 +85,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Actualizar: plantillas para buscar artículos que necesiten actualizarse con información actual.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Página de destino para obtener más información sobre como actualizar artículos.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Página de destino para aprender más sobre el tipo de tarea de recomendación de enlaces.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "El número máximo de sugerencias de enlace para mostrar en cada tarea sugerida.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Página de destino para aprender más sobre el tipo de tarea de recomendación de imágenes.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Este tipo de tarea está asociado con sugerencias de la máquina, y no usa plantillas para generar un conjunto de tareas.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Los artículos que contengan plantillas definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
