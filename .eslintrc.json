@@ -6,7 +6,8 @@
 		"wikimedia/mediawiki"
 	],
 	"globals": {
-		"ge": "writable"
+		"ge": "writable",
+		"ve": "writable"
 	},
 	"env": {
 		"commonjs": true

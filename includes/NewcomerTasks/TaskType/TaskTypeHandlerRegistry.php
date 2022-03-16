@@ -89,7 +89,7 @@ class TaskTypeHandlerRegistry {
 			$handler = $this->get( $handlerId );
 			$changeTags = array_merge( $changeTags, $handler->getChangeTags() );
 		}
-		return $changeTags;
+		return array_unique( $changeTags );
 	}
 
 	/**

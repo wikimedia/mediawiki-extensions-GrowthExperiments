@@ -1,23 +1,48 @@
 'use strict';
 
 const assert = require( 'assert' ),
-	Util = require( 'wdio-mediawiki/Util' ),
 	HomepagePage = require( '../pageobjects/homepage.page' );
 
 describe( 'Homepage', function () {
 
-	it( 'is enabled for new user', async function () {
-		await HomepagePage.open();
-		assert( HomepagePage.homepage.isExisting() );
-	} );
+	it( 'saves change tags for unstructured task edits made via VisualEditor', async function () {
+		const copyeditArticle = 'Classical kemençe';
+		await browser.execute( ( done ) =>
+			mw.loader.using( 'mediawiki.api' ).then( () =>
+				new mw.Api().saveOptions( {
+					'growthexperiments-homepage-se-filters': JSON.stringify( [ 'copyedit' ] )
+				} ).done( () => done() )
+			) );
 
-	it( 'Heading shows the logged-in user\'s name', async function () {
 		await HomepagePage.open();
-		Util.waitForModuleState( 'mediawiki.base', 'ready', 5000 );
-		const username = browser.execute( function () {
+		await browser.waitUntil( async () => {
+			return await HomepagePage.suggestedEditsCardTitle.getText() === copyeditArticle;
+		} );
+		await HomepagePage.suggestedEditsCard.click();
+
+		await browser.setupInterceptor();
+		await HomepagePage.editAndSaveArticle( '.' );
+		await HomepagePage.rebuildRecentChanges();
+
+		// Get the revision ID of the change that was just made.
+		const requests = await browser.getRequests();
+		let savedRevId;
+		requests.forEach( function ( request ) {
+			if ( request.method === 'POST' && request.body[ 'data-ge-task-copyedit' ] ) {
+				savedRevId = request.response.body.visualeditoredit.newrevid;
+				assert.deepEqual( request.response.body.visualeditoredit.gechangetags[ 0 ], [ 'newcomer task', 'newcomer task copyedit' ] );
+			}
+		} );
+
+		const username = await browser.execute( function () {
 			return mw.user.getName();
 		} );
-		assert( HomepagePage.firstheading.getText(), `Hello, ${username}!` );
+		let result;
+		result = await HomepagePage.waitUntilRecentChangesItemExists( 'newcomer task copyedit', copyeditArticle, username );
+		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
+
+		result = await HomepagePage.waitUntilRecentChangesItemExists( 'newcomer task copyedit', copyeditArticle, username );
+		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
 	} );
 
 	it.skip( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', async () => {

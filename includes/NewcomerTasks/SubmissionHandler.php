@@ -14,7 +14,7 @@ use StatusValue;
  * edits happen via the normal APIs used for editing (typically, visualeditoredit),
  * so turning the submission into an edit is not the handler's responsibility.
  */
-interface RecommendationSubmissionHandler {
+interface SubmissionHandler {
 
 	/**
 	 * Validate a recommendation submission. If validation fails, the submission won't
@@ -49,7 +49,8 @@ interface RecommendationSubmissionHandler {
 	 *   it holds an array with the following fields:
 	 *   - logId (int, optional): ID of the log entry that was created.
 	 */
-	public function handle( ProperPageIdentity $page, UserIdentity $user, int $baseRevId, ?int $editRevId,
-		array $data ): StatusValue;
+	public function handle(
+		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, ?int $editRevId, array $data
+	): StatusValue;
 
 }

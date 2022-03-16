@@ -429,6 +429,7 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	} );
 	// This data will be processed in HomepageHooks::onVisualEditorApiVisualEditorEditPostSaveHookj
 	options[ 'data-ge-task-link-recommendation' ] = JSON.stringify( {
+		taskType: 'link-recommendation',
 		acceptedTargets: acceptedTargets,
 		rejectedTargets: rejectedTargets,
 		skippedTargets: skippedTargets

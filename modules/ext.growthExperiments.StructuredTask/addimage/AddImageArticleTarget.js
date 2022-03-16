@@ -384,6 +384,7 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	options.plugins = 'ge-task-image-recommendation';
 	// This data will be processed in HomepageHooks::onVisualEditorApiVisualEditorEditPostSaveHook
 	options[ 'data-ge-task-image-recommendation' ] = JSON.stringify( {
+		taskType: 'image-recommendation',
 		filename: this.getSelectedSuggestion().image,
 		accepted: this.recommendationAccepted,
 		reasons: this.recommendationRejectionReasons,

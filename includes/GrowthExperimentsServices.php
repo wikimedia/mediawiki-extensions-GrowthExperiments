@@ -43,12 +43,13 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
+use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -210,10 +211,6 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsNewcomerTasksConfigurationValidator' );
 	}
 
-	public function getNewcomerTaskTrackerFactory(): TrackerFactory {
-		return $this->coreServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' );
-	}
-
 	public function getNewcomerTasksUserOptionsLookup(): NewcomerTasksUserOptionsLookup {
 		return $this->coreServices->get( 'GrowthExperimentsNewcomerTasksUserOptionsLookup' );
 	}
@@ -308,6 +305,14 @@ class GrowthExperimentsServices {
 
 	public function getGrowthExperimentsCampaignConfig(): CampaignConfig {
 		return $this->coreServices->get( 'GrowthExperimentsCampaignConfig' );
+	}
+
+	public function getTemplateBasedTaskSubmissionHandler(): TemplateBasedTaskSubmissionHandler {
+		return $this->coreServices->get( 'GrowthExperimentsTemplateBasedTaskSubmissionHandler' );
+	}
+
+	public function getNewcomerTasksChangeTagsManager(): NewcomerTasksChangeTagsManager {
+		return $this->coreServices->get( 'GrowthExperimentsNewcomerTasksChangeTagsManager' );
 	}
 
 }

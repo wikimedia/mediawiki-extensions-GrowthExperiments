@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
@@ -627,8 +628,10 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			[ 'getByTaskType' ] );
 		$configurationValidator = $this->createMock( ConfigurationValidator::class );
 		$titleParser = $this->createNoOpMock( TitleParser::class );
+		$handler = $this->createMock( TemplateBasedTaskSubmissionHandler::class );
 		$taskTypeHandler = new TemplateBasedTaskTypeHandler(
 			$configurationValidator,
+			$handler,
 			$titleParser
 		);
 		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );

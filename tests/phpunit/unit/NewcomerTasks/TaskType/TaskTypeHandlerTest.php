@@ -3,6 +3,8 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
+use GrowthExperiments\NewcomerTasks\SubmissionHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\NullSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use MediaWikiUnitTestCase;
 use StatusValue;
@@ -54,6 +56,10 @@ class TaskTypeHandlerTest extends MediaWikiUnitTestCase {
 		return new class( $configurationValidator, $titleParser ) extends TaskTypeHandler {
 			public function getId(): string {
 				return 'test';
+			}
+
+			public function getSubmissionHandler(): SubmissionHandler {
+				return new NullSubmissionHandler();
 			}
 		};
 	}

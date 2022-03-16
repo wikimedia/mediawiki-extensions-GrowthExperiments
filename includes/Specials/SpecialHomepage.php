@@ -14,7 +14,6 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
@@ -24,17 +23,14 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserOptionsManager;
 use PrefixingStatsdDataFactoryProxy;
 use SpecialPage;
-use StatusValue;
 use Throwable;
+use TitleFactory;
 use UserNotLoggedIn;
 
 class SpecialHomepage extends SpecialPage {
 
 	/** @var HomepageModuleRegistry */
 	private $moduleRegistry;
-
-	/** @var TrackerFactory */
-	private $trackerFactory;
 
 	/** @var IBufferingStatsdDataFactory */
 	private $statsdDataFactory;
@@ -57,33 +53,36 @@ class SpecialHomepage extends SpecialPage {
 	/** @var PrefixingStatsdDataFactoryProxy */
 	private $perDbNameStatsdDataFactory;
 
+	/** @var TitleFactory */
+	private $titleFactory;
+
 	/**
 	 * @param HomepageModuleRegistry $moduleRegistry
-	 * @param TrackerFactory $trackerFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param Config $wikiConfig
 	 * @param UserOptionsManager $userOptionsManager
+	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
 		HomepageModuleRegistry $moduleRegistry,
-		TrackerFactory $trackerFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		ExperimentUserManager $experimentUserManager,
 		Config $wikiConfig,
-		UserOptionsManager $userOptionsManager
+		UserOptionsManager $userOptionsManager,
+		TitleFactory $titleFactory
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->moduleRegistry = $moduleRegistry;
-		$this->trackerFactory = $trackerFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->pageviewToken = $this->generatePageviewToken();
 		$this->experimentUserManager = $experimentUserManager;
 		$this->wikiConfig = $wikiConfig;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->titleFactory = $titleFactory;
 	}
 
 	/**
@@ -378,6 +377,15 @@ class SpecialHomepage extends SpecialPage {
 		}
 		$request = $this->getRequest();
 		$titleId = (int)explode( '/', $par )[1];
+		if ( !$titleId ) {
+			return false;
+		}
+		$title = $this->titleFactory->newFromID( $titleId );
+		if ( !$title ) {
+			// Will bring the user back to Special:Homepage, since we couldn't load a title.
+			return false;
+		}
+
 		$clickId = $request->getVal( 'geclickid' );
 		$newcomerTaskToken = $request->getVal( 'genewcomertasktoken' );
 		$taskTypeId = $request->getVal( 'getasktype', '' );
@@ -390,9 +398,6 @@ class SpecialHomepage extends SpecialPage {
 		}
 		if ( !$taskTypeId ) {
 			$missing[] = 'getasktype';
-		}
-		if ( !$titleId ) {
-			$missing[] = 'titleId';
 		}
 		if ( count( $missing ) ) {
 			// Something is broken in our client-side code; these params should always be present.
@@ -409,24 +414,21 @@ class SpecialHomepage extends SpecialPage {
 			}
 		}
 
-		$tracker = $this->trackerFactory->getTracker( $this->getUser() );
-		if ( $tracker->track( $titleId, $taskTypeId, $clickId, $newcomerTaskToken ) instanceof StatusValue ) {
-			// If a StatusValue is returned from ->track(), it's because loading the task type or
-			//  title failed, so don't attempt to redirect the user. If track returns false
-			// (storing the value in cache failed) then we are not going to prevent redirection.
-			return false;
-		}
 		$suggestedEdits = $this->getModules( Util::isMobile( $this->getSkin() ) )[ 'suggested-edits' ];
 		$redirectParams = array_merge(
-			[ 'getasktype' => $request->getVal( 'getasktype' ),
+			[
+				'getasktype' => $request->getVal( 'getasktype' ),
 				// This query parameter allows us to load the help panel for the suggested edit session,
 				// even if the user has the preference (probably unknowingly) disabled.
-				'gesuggestededit' => 1 ],
+				'gesuggestededit' => 1,
+				'geclickid' => $clickId,
+				'genewcomertasktoken' => $newcomerTaskToken
+			],
 			$suggestedEdits instanceof SuggestedEdits ? $suggestedEdits->getRedirectParams( $taskTypeId ) : []
 		);
 		$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.NewcomerTask.' . $taskTypeId . '.Click' );
 		$this->getOutput()->redirect(
-			$tracker->getTitleUrl( $redirectParams )
+			$title->getFullUrlForRedirect( $redirectParams )
 		);
 		return true;
 	}

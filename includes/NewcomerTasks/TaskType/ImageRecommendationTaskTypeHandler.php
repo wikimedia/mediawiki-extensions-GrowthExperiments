@@ -6,7 +6,7 @@ use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
-use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
 use StatusValue;
 use TitleParser;
@@ -65,7 +65,7 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	 * @inheritDoc
 	 * @return AddImageSubmissionHandler
 	 */
-	public function getSubmissionHandler(): RecommendationSubmissionHandler {
+	public function getSubmissionHandler(): SubmissionHandler {
 		return $this->submissionHandler;
 	}
 
@@ -112,7 +112,7 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	}
 
 	/** @inheritDoc */
-	public function getChangeTags(): array {
+	public function getChangeTags( ?string $taskType = null ): array {
 		return [ TaskTypeHandler::NEWCOMER_TASK_TAG, self::CHANGE_TAG ];
 	}
 

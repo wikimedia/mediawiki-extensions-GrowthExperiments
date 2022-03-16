@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use MediaWiki\MediaWikiServices;
 
 # Enable under-development features still behind feature flag:
@@ -17,6 +18,12 @@ $wgGELinkRecommendationsFrontendEnabled = true;
 $wgGEDeveloperSetup = true;
 
 $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services ) {
+	$copyEditTaskType = new TemplateBasedTaskType(
+		'copyedit',
+		GrowthExperiments\NewcomerTasks\TaskType\TaskType::DIFFICULTY_EASY,
+		[],
+		[ new TitleValue( NS_MAIN, 'Awkward' ) ]
+	);
 	$imageRecommendationTaskType = new ImageRecommendationTaskType(
 		'image-recommendation', GrowthExperiments\NewcomerTasks\TaskType\TaskType::DIFFICULTY_MEDIUM, []
 	);
@@ -28,7 +35,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 	$services->redefineService(
 		'GrowthExperimentsTaskSuggesterFactory',
 		static function () use (
-			$imageRecommendationTaskType, $linkRecommendationTaskType, $services
+			$imageRecommendationTaskType, $linkRecommendationTaskType, $copyEditTaskType, $services
 		): TaskSuggesterFactory {
 			return new StaticTaskSuggesterFactory( [
 				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
@@ -36,7 +43,8 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				new Task( $linkRecommendationTaskType, new TitleValue( NS_MAIN, 'Douglas Adams' ) ),
 				new Task(
 					$linkRecommendationTaskType, new TitleValue( NS_MAIN, "The_Hitchhiker's_Guide_to_the_Galaxy" )
-				)
+				),
+				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Classical kemençe' ) )
 			], $services->getTitleFactory() );
 		}
 	);
