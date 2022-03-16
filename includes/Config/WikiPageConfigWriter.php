@@ -10,18 +10,19 @@ use JsonContent;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentity;
 use MWException;
 use Psr\Log\LoggerInterface;
 use RecentChange;
 use Status;
 use TitleFactory;
-use User;
 
 class WikiPageConfigWriter {
 	/** @var LinkTarget */
 	private $configPage;
 
-	/** @var User */
+	/** @var UserIdentity */
 	private $performer;
 
 	/** @var IConfigValidator */
@@ -35,6 +36,9 @@ class WikiPageConfigWriter {
 
 	/** @var TitleFactory */
 	private $titleFactory;
+
+	/** @var UserFactory */
+	private $userFactory;
 
 	/** @var LoggerInterface */
 	private $logger;
@@ -50,25 +54,28 @@ class WikiPageConfigWriter {
 	 * @param WikiPageConfigLoader $wikiPageConfigLoader
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
+	 * @param UserFactory $userFactory
 	 * @param LoggerInterface $logger
 	 * @param string[] $allowList
 	 * @param LinkTarget $configPage
-	 * @param User $performer
+	 * @param UserIdentity $performer
 	 */
 	public function __construct(
 		IConfigValidator $configValidator,
 		WikiPageConfigLoader $wikiPageConfigLoader,
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
+		UserFactory $userFactory,
 		LoggerInterface $logger,
 		array $allowList,
 		LinkTarget $configPage,
-		User $performer
+		UserIdentity $performer
 	) {
 		$this->configValidator = $configValidator;
 		$this->wikiPageConfigLoader = $wikiPageConfigLoader;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
+		$this->userFactory = $userFactory;
 		$this->logger = $logger;
 
 		$this->allowList = $allowList;
@@ -177,7 +184,10 @@ class WikiPageConfigWriter {
 				FormatJson::encode( $this->wikiConfig )
 			) );
 
-			if ( $this->performer->authorizeWrite( 'autopatrol', $page ) ) {
+			if ( $this->userFactory
+				->newFromUserIdentity( $this->performer )
+				->authorizeWrite( 'autopatrol', $page )
+			) {
 				$updater->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
 			}
 

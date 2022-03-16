@@ -751,6 +751,7 @@ return [
 			$growthExperimentsServices->getWikiPageConfigValidatorFactory(),
 			$services->getWikiPageFactory(),
 			$services->getTitleFactory(),
+			$services->getUserFactory(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
 	},

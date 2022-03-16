@@ -6,6 +6,8 @@ use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use InvalidArgumentException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use TitleFactory;
 use User;
@@ -23,6 +25,9 @@ class WikiPageConfigWriterFactory {
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var UserFactory */
+	private $userFactory;
+
 	/** @var LoggerInterface */
 	private $logger;
 
@@ -34,6 +39,7 @@ class WikiPageConfigWriterFactory {
 	 * @param ConfigValidatorFactory $configValidatorFactory
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
+	 * @param UserFactory $userFactory
 	 * @param LoggerInterface $logger
 	 * @param User|null $systemUser
 	 */
@@ -42,6 +48,7 @@ class WikiPageConfigWriterFactory {
 		ConfigValidatorFactory $configValidatorFactory,
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
+		UserFactory $userFactory,
 		LoggerInterface $logger,
 		?User $systemUser = null
 	) {
@@ -49,18 +56,19 @@ class WikiPageConfigWriterFactory {
 		$this->configValidatorFactory = $configValidatorFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
+		$this->userFactory = $userFactory;
 		$this->logger = $logger;
 		$this->systemUser = $systemUser;
 	}
 
 	/**
 	 * @param LinkTarget $configPage
-	 * @param User|null $performer
+	 * @param UserIdentity|null $performer
 	 * @return WikiPageConfigWriter
 	 */
 	public function newWikiPageConfigWriter(
 		LinkTarget $configPage,
-		?User $performer = null
+		?UserIdentity $performer = null
 	): WikiPageConfigWriter {
 		$performerTmp = $performer
 			?? $this->systemUser
@@ -73,6 +81,7 @@ class WikiPageConfigWriterFactory {
 			$this->wikiPageConfigLoader,
 			$this->wikiPageFactory,
 			$this->titleFactory,
+			$this->userFactory,
 			$this->logger,
 			GrowthExperimentsMultiConfig::ALLOW_LIST,
 			$configPage,
