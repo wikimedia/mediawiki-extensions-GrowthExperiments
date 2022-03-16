@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\MediaWikiServices;
@@ -28,7 +29,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$mentorManager = $this->getMockMentorManager();
 		$mentorUser = $this->getTestSysop()->getUser();
-		$mentor = new Mentor( $mentorUser, '*', '' );
+		$mentor = new Mentor( $mentorUser, '*', '', true, MentorWeightManager::WEIGHT_NORMAL );
 		$mentorManager->method( 'getMentorForUser' )->willReturn( $mentor );
 		$mentorManager->method( 'getMentorForUserSafe' )->willReturn( $mentor );
 		$mentorManager->method( 'getEffectiveMentorForUser' )->willReturn( $mentor );

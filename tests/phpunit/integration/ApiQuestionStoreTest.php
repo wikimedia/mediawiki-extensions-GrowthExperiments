@@ -10,6 +10,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\HomepageMentorQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -71,7 +72,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 			$services->getWikiPageFactory(),
 			$services->getTitleFactory(),
 			new StaticMentorManager( [
-				$user->getName() => new Mentor( $mentor, '', '' ),
+				$user->getName() => new Mentor( $mentor, '', '', true, MentorWeightManager::WEIGHT_NORMAL ),
 			] ),
 			$services->getPermissionManager(),
 			$services->getPerDbNameStatsdDataFactory(),
