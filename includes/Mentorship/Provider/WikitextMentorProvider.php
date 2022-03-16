@@ -109,7 +109,8 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 	): Mentor {
 		return new Mentor(
 			$mentorUser,
-			$this->getMentorIntroText( $mentorUser, $menteeUser ?? $mentorUser )
+			$this->getCustomMentorIntroText( $mentorUser ),
+			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ?? $mentorUser )
 		);
 	}
 
@@ -378,18 +379,6 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 	 */
 	public function getManuallyAssignedMentors(): array {
 		return $this->getMentorsForPage( $this->getManuallyAssignedMentorsPage() );
-	}
-
-	/**
-	 * Get the description used for presenting the mentor to the mentee.
-	 * @param UserIdentity $mentor
-	 * @param UserIdentity $mentee
-	 * @return string
-	 * @throws WikiConfigException If the mentor intro text cannot be fetched due to misconfiguration.
-	 */
-	private function getMentorIntroText( UserIdentity $mentor, UserIdentity $mentee ) {
-		return $this->getCustomMentorIntroText( $mentor )
-			?? $this->getDefaultMentorIntroText( $mentor, $mentee );
 	}
 
 	/**

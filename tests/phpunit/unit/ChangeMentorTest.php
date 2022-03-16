@@ -30,7 +30,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				$this->getUserMock( 'Mentee', 1 ),
 				$this->getUserMock( 'Performer', 2 ),
 				new NullLogger(),
-				new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
+				new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/', '' ),
 				$this->getLogPagerMock(),
 				$this->getMentorStoreMock(),
 				$this->getUserFactoryMock()
@@ -51,7 +51,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
+			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/', '' ),
 			$logPagerMock,
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()
@@ -67,7 +67,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 0 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
+			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/', '' ),
 			$this->getLogPagerMock(),
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()
@@ -91,7 +91,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
+			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/', '' ),
 			$this->getLogPagerMock(),
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()
@@ -111,7 +111,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/' ),
+			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/', '' ),
 			$this->getLogPagerMock(),
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()
@@ -132,7 +132,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
 			new NullLogger(),
-			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/' ),
+			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/', '' ),
 			$this->getLogPagerMock(),
 			$this->getMentorStoreMock(),
 			$this->getUserFactoryMock()
