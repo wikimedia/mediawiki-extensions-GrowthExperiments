@@ -1823,6 +1823,10 @@
 			"description": "Title of the wiki page that has the mentor list in JSON format (used by StructuredMentorProvider)",
 			"value": "MediaWiki:GrowthMentors.json"
 		},
+		"GEMentorProvider": {
+			"description": "Migration variable. Controls which MentorProvider is used. Valid values: wikitext, structured",
+			"value": "wikitext"
+		},
 		"GEMentorDashboardEnabled": {
 			"description": "Should users be allowed to access Special:MentorDashboard?",
 			"value": true
