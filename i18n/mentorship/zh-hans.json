@@ -54,7 +54,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth工具",
 	"growthexperiments-rcfilters-mentorship-title": "导师计划",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|您}}标记星号的学员",
-	"growthexperiments-rcfilters-mentorship-starred-desc": "分配给{{GENDER:|您}}且{{GENDER:|you}}在{{GENDER:|您}}的导师面板上标记星号的学员",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "分配给{{GENDER:|您}}且{{GENDER:|您}}在{{GENDER:|您的}}导师控制面版上标记星号的学员",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|您}}未标记星号的学员",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "其他分配给{{GENDER:|您}}的学员",
 	"growthexperiments-quit-mentorship-title": "离开导师项目",

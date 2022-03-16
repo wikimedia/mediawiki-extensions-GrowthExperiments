@@ -28,5 +28,11 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Μέγιστο",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Πιο πρόσφατη επεξεργασία",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Πρόσφατες ημέρες",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Πρόσφατοι μήνες"
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Πρόσφατοι μήνες",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Εμφάνιση μόνο καθοδηγούμενων με αστεράκι",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Αναζήτηση",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "ενεργός πριν $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "άγνωστο",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Εμφάνιση $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 από $2"
 }

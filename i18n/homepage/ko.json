@@ -12,7 +12,8 @@
 			"Tkwiki",
 			"Ykhwong",
 			"렌즈",
-			"밝은소년"
+			"밝은소년",
+			"Underbaaar"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -63,7 +64,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "완료",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "완료",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "<strong>쉬운</strong> 편집 먼저 해보기",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "{{SITENAME}} 개선을 돕는 여러 방법이 있습니다. 다른 사용자가 이런 문서들에 도움을 요청했습니다.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "{{SITENAME}} 개선을 돕는 여러 방법이 있습니다.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "쉬움",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "중간",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "어려움",
