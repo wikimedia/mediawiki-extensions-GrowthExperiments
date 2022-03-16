@@ -54,7 +54,7 @@ describe( 'add link', function () {
 		const requests = await browser.getRequests();
 		let savedRevId;
 		requests.forEach( function ( request ) {
-			if ( request.method === 'POST' && request.body[ 'data-ge-task-link-recommendation' ] ) {
+			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-link-recommendation' ] ) {
 				savedRevId = request.response.body.visualeditoredit.newrevid;
 				assert.deepEqual( request.response.body.visualeditoredit.gechangetags[ 0 ], [ 'newcomer task', 'newcomer task add link' ] );
 			}

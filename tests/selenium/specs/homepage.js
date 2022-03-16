@@ -28,7 +28,7 @@ describe( 'Homepage', function () {
 		const requests = await browser.getRequests();
 		let savedRevId;
 		requests.forEach( function ( request ) {
-			if ( request.method === 'POST' && request.body[ 'data-ge-task-copyedit' ] ) {
+			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-copyedit' ] ) {
 				savedRevId = request.response.body.visualeditoredit.newrevid;
 				assert.deepEqual( request.response.body.visualeditoredit.gechangetags[ 0 ], [ 'newcomer task', 'newcomer task copyedit' ] );
 			}
