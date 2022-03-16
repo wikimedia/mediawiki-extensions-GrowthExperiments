@@ -4,6 +4,13 @@ namespace GrowthExperiments\Mentorship;
 
 use MediaWiki\User\UserIdentity;
 
+/**
+ * A value object representing a Growth mentor
+ *
+ * This class should be aware of all aspects involved in being a Growth mentor (including the
+ * mentor's custom introduction message, if there is any, or whether they're automatically
+ * assigned to newcomers).
+ */
 class Mentor {
 
 	/**
