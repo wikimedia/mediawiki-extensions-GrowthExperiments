@@ -1649,6 +1649,8 @@
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 			"tests/qunit/ext.growthExperiments.Homepage.mobile/index.test.js",
+			"modules/ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.js",
+			"tests/qunit/ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.test.js",
 			{
 				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/config.json",
 				"file": "tests/qunit/__mocks__/config.json"

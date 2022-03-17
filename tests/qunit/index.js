@@ -16,3 +16,4 @@ require( './ext.growthExperiments.StructuredTask/StructuredTaskLogger.test.js' )
 require( './ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.test.js' );
 require( './ext.growthExperiments.StructuredTask/addimage/AddImageUtils.test.js' );
 require( './ext.growthExperiments.PostEdit/PostEditPanel.test.js' );
+require( './ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.test.js' );
