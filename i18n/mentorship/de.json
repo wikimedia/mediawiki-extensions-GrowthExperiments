@@ -98,5 +98,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Es wird empfohlen, mit der Einstellung \"Mittelwert\" zu beginnen, um die Last zu testen, bevor du sie erhöhst oder verringerst.",
 	"growthexperiments-mentor-list-missing-key": "Der Schlüssel <code>$1</code> fehlt",
 	"growthexperiments-mentor-list-datatype-mismatch": "Als <code>$1</code> wurde <code>$2</code> erwartet, es ist jedoch <code>$3</code>",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "Die Lotsen-Definition enthält einen unerwarteten Schlüssel <code>$1</code>."
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Die Lotsen-Definition enthält einen unerwarteten Schlüssel <code>$1</code>.",
+	"growthexperiments-mentor-writer-error-already-added": "Lotse $1 wurde bereits zur Lotsenliste hinzugefügt",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Lotse $1 steht nicht auf der Lotsenliste"
 }

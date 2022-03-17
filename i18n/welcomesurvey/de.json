@@ -44,6 +44,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Nein, ich wusste nicht, dass ich Wikipedia bearbeiten kann",
 	"welcomesurvey-question-edited-option-no-other-label": "Nein, aus anderen Gründen",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ich kann mich nicht erinnern",
+	"welcomesurvey-question-mailinglist-label": "Ich möchte per E-Mail Tipps erhalten, wie ich mit der Bearbeitung beginnen kann.",
+	"welcomesurvey-question-mailinglist-help": "Bitte beachte, dass diese Mailingliste von MailChimp betrieben wird, was bedeutet, dass die Verwendung deiner Daten durch MailChimp durch deren [https://www.intuit.com/privacy/statement/ Datenschutzrichtlinie] und [https://mailchimp.com/legal/terms/Terms Nutzungsbedingungen] geregelt wird.",
 	"welcomesurvey-question-email-label": "E-Mail-Adresse (optional)",
 	"welcomesurvey-question-email-placeholder": "Gib deine E-Mail-Adresse ein …",
 	"welcomesurvey-question-email-help": "Wir haben mitbekommen, dass du bei der Erstellung dieses Benutzerkontos keine E-Mail-Adresse angegeben hast. Dies wird <strong>dringend empfohlen</strong>, da eine E-Mail-Adresse zur Wiederherstellung deines Benutzerkontos benötigt wird, falls du jemals dein Passwort verlieren solltest. HINWEIS: Deine E-Mail-Adresse wird nicht veröffentlicht, wenn du mit anderen Benutzern in Kontakt trittst.",

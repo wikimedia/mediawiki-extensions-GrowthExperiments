@@ -65,8 +65,9 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Đã gặp lỗi không rõ. Xin vui lòng thử lại sau.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Trạng thái của bạn đã được chuyển thành \"Hoạt động\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Tình trạng của bạn đã được chuyển thành \"Đi vắng\".",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Nhắn tin tới người được cố vấn của bạn",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Thông điệp gửi tới người được cố vấn của bạn",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Nhận người được cố vấn",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Bạn có thể thay đổi cố vấn của một thành viên thành bản thân bạn. Thường được sử dụng cho các sự kiện sửa đổi để người hướng dẫn có thể trở thành cố vấn của người mới cả ở trong hay ngoài wiki.",
 	"growthexperiments-rcfilters-mentorship-title": "Cố vấn",
 	"growthexperiments-rcfilters-mentorship-starred-label": "Người được cố vấn có gắn sao {{GENDER:|của bạn}}",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Những người được cố vấn được phân cho {{GENDER:|bạn}} mà {{GENDER:|bạn}} đã gắn sao trên bảng điều khiển cố vấn",
@@ -78,5 +79,10 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Có, hãy phân lại những người được cố vấn của tôi",
 	"growthexperiments-quit-mentorship-success": "Những người được cố vấn của bạn sẽ nhanh chóng được phân lại cho các cố vấn khác.",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|}}Bạn hiện không là cố vấn của bất kỳ thành viên nào.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 đã {{GENDER:$1|nghỉ}} làm cố vấn."
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 đã {{GENDER:$1|nghỉ}} làm cố vấn.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Số người được cố vấn được phân cho tôi",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Khoảng một nửa trung bình",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Trung bình (mặc định)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Khoảng gấp đôi trung bình",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Bạn nên bắt đầu tại cài đặt \"Trung bình\" để đo khả năng trợ giúp của bạn trước khi tăng hay giảm."
 }

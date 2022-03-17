@@ -403,5 +403,12 @@
 	"growthexperiments-addimage-inspector-skip-button": "Bỏ qua",
 	"growthexperiments-addimage-inspector-show-button": "Hiển thị gợi ý hình ảnh",
 	"growthexperiments-addimage-inspector-help-button": "Yêu cầu trợ giúp sửa đổi",
-	"growthexperiments-addimage-skip-dialog-cancel": "Hủy bỏ"
+	"growthexperiments-addimage-skip-dialog-cancel": "Hủy bỏ",
+	"growthexperiments-addimage-caption-info-dialog-confirm": "Đã hiểu",
+	"growthexperiments-structuredtask-user-error-login-cta": "Đăng nhập",
+	"growthexperiments-addimage-summary-label": "Tóm lược",
+	"growthexperiments-addimage-summary-copyrightwarning": "Bằng việc ấn đăng, bạn đồng ý với [https://foundation.wikimedia.org/wiki/Terms_of_Use Điều khoản sử dụng] và đồng ý phát hành đóng góp của mình theo giấy phép [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] và [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
+	"growthexperiments-addimage-summary-summary": "Tính năng gợi ý hinfh anrh: $1 {{PLURAL:$1|hình ảnh}} được thêm.",
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Đã hiểu"
 }

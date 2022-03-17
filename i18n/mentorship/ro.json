@@ -93,5 +93,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Este recomandat să începeți cu setarea „Mediu” pentru a vă evalua capacitatea de asistență înainte de a o crește sau descrește.",
 	"growthexperiments-mentor-list-missing-key": "Cheia <code>$1</code> lipsește",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> este de așteptat să fie <code>$2</code>, dar este <code>$3</code>",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "Definirea de mentor conține o cheie <code>$1</code> neașteptată"
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Definirea de mentor conține o cheie <code>$1</code> neașteptată",
+	"growthexperiments-mentor-writer-error-already-added": "Mentorul $1 a fost deja adăugat listei mentorilor",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentorul $1 nu este pe lista mentorilor"
 }

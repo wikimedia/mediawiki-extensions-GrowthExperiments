@@ -94,5 +94,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "\"సగటు\"తో మొదలుపెట్టి మీరు వారికి ఎలా మద్దతు ఇవ్వగలుగుతున్నారో చూసుకుని, దాన్నిబట్టి ఈ సంఖ్యను పెంచడమో తగ్గించడమో చేసుకోవచ్చు.",
 	"growthexperiments-mentor-list-missing-key": "కీ <code>$1</code> కనబడ్డం లేదు",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> అనేది <code>$2</code> అయి ఉండాల్సింది, కానీ <code>$3</code> లాగా ఉంది",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "గురువు నిర్వచనంలో అనుకోని కీ <code>$1</code> ఉంది"
+	"growthexperiments-mentor-list-unexpected-key-mentor": "గురువు నిర్వచనంలో అనుకోని కీ <code>$1</code> ఉంది",
+	"growthexperiments-mentor-writer-error-already-added": "గురువు $1, ఈసరికే గురువుల జాబితాలో ఉన్నారు",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "గురువు $1 గురువుల జాబితాలో లేదు"
 }

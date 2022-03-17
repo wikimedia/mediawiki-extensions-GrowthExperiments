@@ -14,5 +14,7 @@
 	"apihelp-growthsetmentor-summary": "Призначити наставника для користувача. Зміну буде записано в публічному журналі.",
 	"apihelp-growthsetmentor-param-mentee": "Ім'я користувача підопічного",
 	"apihelp-growthsetmentor-param-mentor": "Ім'я користувача наставника",
-	"apihelp-growthsetmentor-param-reason": "Причина зміни"
+	"apihelp-growthsetmentor-param-reason": "Причина зміни",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Позначити завдання з рекомендації зображення як недійсне",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Назва статті, до якої це завдання з рекомендації зображення"
 }

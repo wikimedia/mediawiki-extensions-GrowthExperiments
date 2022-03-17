@@ -78,6 +78,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Оновлення: шаблони для пошуку статей, які потрібно оновити актуальною інформацією.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Цільова сторінка, де можна дізнатися більше про оновлення статей",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Сторінка призначення, де можна дізнатися більше про тип завдання щодо рекомендацій щодо посилань.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Максимальна кількість пропозицій посилань для показу на кожне пропоноване завдання.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Цільова сторінка, де можна дізнатися більше про тип завдання щодо рекомендації зображення.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Цей тип завдань пов’язаний із машинними пропозиціями та не використовує шаблони для створення пулу завдань.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Статті, що містять визначені тут шаблони, не показуватимуться користувачам як завдання для цього типу завдань.",

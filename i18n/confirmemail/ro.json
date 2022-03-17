@@ -14,6 +14,8 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Bună}}, $2,\n\nVă mulțumim pentru adăugarea unui e-mail la contul vostru {{SITENAME}}, înregistrat de pe adresa IP $1.\n\nVă rugăm să apăsați pe butonul de mai jos pentru a confirma că aceasta este adresa de e-mail pe care v-ar plăcea să o legați de contul dvs. „$2”:\n\n$3\n\nNotă: acest cod de confirmare expiră în $4.\n\nVă mulțumim,\n\n{{SITENAME}}\n\n----\n\nPentru a anula confirmarea adresei de e-mail (pentru că nu ați înregistrat contul pentru oricare alt motiv), apăsați pe această legătură de anulare:\n\n$5",
 	"growthexperiments-signupcampaign-title": "Vă mulțumim pentru că ați donat! Acum alăturați-vă astăzi comunității de editori care fac Wikipedia mai bună",
 	"growthexperiments-signupcampaign-body": "Editarea Wikipediei poate fi la fel de simplă ca adăugarea unei legături sau schimbarea unui cuvânt. Primiți sugestii pentru articole în subiectele {{GENDER:|dvs.}} de interes după ce v-ați creat contul!",
+	"growthexperiments-marketingvideocampaign-title": "Vă mulțumim pentru că ați donat! Acum alăturați-vă astăzi comunității de editori care fac Wikipedia mai bună",
+	"growthexperiments-marketingvideocampaign-body": "Editarea Wikipediei poate fi la fel de simplă ca adăugarea unei legături sau schimbarea unui cuvânt. Primiți sugestii pentru articole în subiectele {{GENDER:|dvs.}} de interes după ce v-ați creat contul!",
 	"growthexperiments-signupcampaign-bullet1": "Articole sugerate din interesele {{GENDER:|dvs.}}",
 	"growthexperiments-signupcampaign-bullet2": "Cereți ajutor de la un utilizator experimentat",
 	"growthexperiments-signupcampaign-bullet3": "Începeți cu editări mici, ușoare",

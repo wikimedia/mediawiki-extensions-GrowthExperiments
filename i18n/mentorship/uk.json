@@ -93,5 +93,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Приблизно удвічі більше середнього",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Ваше}} навантаження змінено на «$1».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Підопічні отримують наставників у випадковому порядку, коли створюються їхні облікові записи. Ви можете налаштувати, скільки підопічних випадатиме вам, але деякі підопічні можуть ставити запитання частіше, ніж інші",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Рекомендовано почати з «Середнього значення», щоб визначити вашу спроможність допомагати, перш ніж його збільшувати чи зменшувати."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Рекомендовано почати з «Середнього значення», щоб визначити вашу спроможність допомагати, перш ніж його збільшувати чи зменшувати.",
+	"growthexperiments-mentor-list-missing-key": "Бракує ключа <code>$1</code>",
+	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> має бути <code>$2</code>, а є <code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Визначення наставника містить неочікуваний ключ <code>$1</code>"
 }
