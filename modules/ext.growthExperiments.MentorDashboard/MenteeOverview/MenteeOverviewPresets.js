@@ -9,6 +9,21 @@
 	}
 
 	/**
+	 * @return {number}
+	 */
+	MenteeOverviewPresets.prototype.getUsersToShow = function () {
+		return this.getPresets( 'usersToShow' ) || 10;
+	};
+
+	/**
+	 * @param {number} value
+	 * @return {jQuery.Promise}
+	 */
+	MenteeOverviewPresets.prototype.setUsersToShow = function ( value ) {
+		return this.setPreset( 'usersToShow', value );
+	};
+
+	/**
 	 * Get presets blob.
 	 *
 	 * @return {Object}

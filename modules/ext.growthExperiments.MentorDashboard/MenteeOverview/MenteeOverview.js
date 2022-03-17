@@ -468,7 +468,7 @@
 		this.apiClient.setLimit( pageSize );
 
 		// Persist the new page size
-		this.presetsClient.setPreset( 'usersToShow', pageSize );
+		this.presetsClient.setUsersToShow( pageSize );
 
 		// Rerender the table, because the page size was changed
 		this.renderMenteeTable();

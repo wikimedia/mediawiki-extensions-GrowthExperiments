@@ -7,7 +7,7 @@
 		this.presetsClient = new MenteeOverviewPresets();
 
 		this.config = $.extend( {
-			pageSize: this.presetsClient.getPreset( 'usersToShow' ) || 10,
+			pageSize: this.presetsClient.getUsersToShow(),
 			currentPage: 1,
 			totalPages: 1
 		}, config );
