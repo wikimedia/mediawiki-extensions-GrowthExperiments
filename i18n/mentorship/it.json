@@ -80,5 +80,8 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Sì, riassegna i miei allievi",
 	"growthexperiments-quit-mentorship-success": "I tuoi allievi saranno riassegnati ad un altro mentore a breve.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 si è {{GENDER:$1|ritirato|ritirata|ritirato/a}} dal ruolo di mentore.",
-	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1"
+	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Numero di allievi assegnati",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Circa la metà della media",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Circa il doppio della media"
 }

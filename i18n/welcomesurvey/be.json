@@ -39,6 +39,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Не, мне не было вядома, што я магу правіць Вікіпедыю",
 	"welcomesurvey-question-edited-option-no-other-label": "Не, па іншым прычынам",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Я не памятаю",
+	"welcomesurvey-question-mailinglist-label": "Я хачу атрымліваць парады па электроннай пошце аб тым, як пачаць правіць.",
+	"welcomesurvey-question-mailinglist-help": "Звярніце ўвагу, што гэты спіс рассылкі працуе на базе MailChimp, што азначае, што выкарыстанне вашай інфармацыі ў сістэме MailChimp кіруецца іх [https://www.intuit.com/privacy/statement/ Палітыкай прыватнасці] і [https://mailchimp.com/legal/terms/Terms Ўмовамі абслугоўвання].",
 	"welcomesurvey-question-email-label": "Адрас электроннай пошты (неабавязкова)",
 	"welcomesurvey-question-email-placeholder": "Увядзіце ваш адрас электроннай пошты...",
 	"welcomesurvey-question-email-help": "Мы заўважылі, што вы не ўвялі адрас электроннай пошты пры стварэнні гэтага рахунку. Гэта <strong>настойліва рэкамендуецца</strong>, бо для аднаўлення ўліковага запісу патрабуецца электронная пошта, калі вы страціце пароль. УВАГА: Ваш адрас электроннай пошты не раскрываецца, калі іншыя карыстальнікі звязваюцца з вамі.",

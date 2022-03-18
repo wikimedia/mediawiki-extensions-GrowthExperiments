@@ -51,7 +51,7 @@
 	"welcomesurvey-question-email-label": "Adresse de courriel (facultatif)",
 	"welcomesurvey-question-email-placeholder": "Entrez votre adresse de courriel...",
 	"welcomesurvey-question-email-help": "Nous avons remarqué que vous n’avez pas entré d’adresse de courriel quand vous avez créé ce compte. Ceci est <strong>fortement recommandé</strong> parce qu’une adresse de courriel sera nécessaire pour récupérer l’accès à votre compte dans le cas où vous perdriez votre mot de passe. NOTE : votre adresse de courriel n’est pas révélée quand d’autres utilisateurs vous contactent.",
-	"welcomesurvey-question-languages-label": "{{SITENAME}} est disponible dans près de 300 langues. Y a-t-il d’autres langues que vous lisez ou écrivez ?",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} est disponible dans près de 300 langues. Y a-t-il d’autres langues que vous lisez ou écrivez ?",
 	"welcomesurvey-question-languages-placeholder": "Ajouter jusqu’à {{PLURAL:$1|une langue|$1 langues}}...",
 	"welcomesurvey-question-languages-maximum": "Vous avez ajouté le nombre maximum de langues."
 }

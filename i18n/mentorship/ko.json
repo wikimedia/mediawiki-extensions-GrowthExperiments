@@ -63,5 +63,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "이유: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "내게 할당된 멘티의 수",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "평균 (기본값)",
-	"growthexperiments-mentor-list-missing-key": "<code>$1</code> 키가 없습니다"
+	"growthexperiments-mentor-list-missing-key": "<code>$1</code> 키가 없습니다",
+	"growthexperiments-mentor-writer-error-already-added": "$1 멘토가 이미 멘토 목록에 추가되었습니다",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "$1 멘토가 멘토 목록에 없습니다"
 }

@@ -6,6 +6,7 @@
 			"Johny Weissmuller Jr",
 			"Josecurioso",
 			"KATRINE1993",
+			"Kostajh",
 			"Madamebiblio",
 			"ZebaX2010"
 		]
@@ -45,6 +46,7 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "No, no sabía que pudiese editar en Wikipedia",
 	"welcomesurvey-question-edited-option-no-other-label": "No, por otros motivos",
 	"welcomesurvey-question-edited-option-dont-remember-label": "No lo recuerdo",
+	"welcomesurvey-question-mailinglist-help": "Tenga presente que la lista de correo se lleva a cabo con la tecnología de MailChimp, lo que significa que el uso que hace MailChimp de su información se rige por su [https://www.intuit.com/privacy/statement/es/ Política de privacidad] y sus [https://mailchimp.com/legal/terms/Terms Condiciones de servicio].",
 	"welcomesurvey-question-email-label": "Dirección de correo electrónico (opcional)",
 	"welcomesurvey-question-email-placeholder": "Escribe tu dirección de correo electrónico...",
 	"welcomesurvey-question-email-help": "Notamos que no introdujiste un correo electrónico cuando creaste esta cuenta. Esto es <strong>altamente recomendado</strong>, ya que un correo electrónico es necesario para la recuperación de la cuenta si en algún momento pierdes tu contraseña. NOTA: Tu dirección de correo electrónico no es revelada cuándo otros usuarios te contactan.",

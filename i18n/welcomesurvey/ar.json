@@ -45,6 +45,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "لا، لأسباب أخرى",
 	"welcomesurvey-question-edited-option-dont-remember-label": "لا أتذكر",
 	"welcomesurvey-question-mailinglist-label": "أرغب في تلقي نصائح عبر البريد الإلكتروني حول كيفية بَدْء التحرير.",
+	"welcomesurvey-question-mailinglist-help": "يرجى ملاحظة أن هذه القائمة البريدية مدعومة من MailChimp، مما يعني أن استخدام MailChimp لمعلوماتك، يخضع إلى [https://www.intuit.com/privacy/statement/ سياسة الخصوصية] و[https://mailchimp.com/legal/terms/Terms شروط الاستخدام].",
 	"welcomesurvey-question-email-label": "عنوان البريد الإلكتروني (اختياري)",
 	"welcomesurvey-question-email-placeholder": "{{GENDER:|أدخل|أدخلي}} عنوان بريدك الإلكتروني...",
 	"welcomesurvey-question-email-help": "لاحظنا أنك لم {{GENDER:|تدخل|تدخلي}} بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون.",

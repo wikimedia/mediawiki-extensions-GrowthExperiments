@@ -78,6 +78,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Aktualizace: šablony používané k nalezení článků, které je třeba aktualizovat.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Stránka, na které se nováčci mohou dozvědět více o aktualizování článků",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Název stránky, na které se nováčci mohou dozvědět více informací o nástroji pro přidávání odkazů.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Maximální počet odkazů navržených pro každý článek",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Název stránky, na které se nováčci mohou dozvědět více informací o nástroji pro přidávání obrázků.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Editační tipy tohoto druhu jsou označené jako generované strojem, proto nepoužívají šablony pro vygenerování seznamu článků.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Články obsahující šablony definované zde nebudou navrženy uživatelům jako tipy tohoto druhu.",
