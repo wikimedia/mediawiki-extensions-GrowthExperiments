@@ -57,6 +57,7 @@ class AddLinkArticlePage extends Page {
 
 	async saveChangesToArticle() {
 		await this.waitForDisplayedAndClickable( this.saveDialog );
+		await this.waitForDisplayedAndClickable( this.saveChangesButton );
 		return this.clickButton( this.saveChangesButton );
 	}
 
