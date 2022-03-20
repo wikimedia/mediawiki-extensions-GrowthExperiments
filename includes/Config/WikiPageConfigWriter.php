@@ -179,7 +179,6 @@ class WikiPageConfigWriter {
 		if ( $this->wikiConfig !== $this->getCurrentWikiConfig() ) {
 			$page = $this->wikiPageFactory->newFromLinkTarget( $this->configPage );
 			$updater = $page->newPageUpdater( $this->performer );
-			// TODO: T275976: Maybe we should get rid of JsonContent?
 			$updater->setContent( SlotRecord::MAIN, new JsonContent(
 				FormatJson::encode( $this->wikiConfig )
 			) );
