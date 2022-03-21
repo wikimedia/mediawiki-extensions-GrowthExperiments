@@ -3,6 +3,7 @@
 		"authors": [
 			"Dvorapa",
 			"Martin Urbanec",
+			"Martin Urbanec (WMF)",
 			"Matěj Suchánek",
 			"Patriccck",
 			"Patrik L."
@@ -43,6 +44,7 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Ne, nevěděl(a) jsem, že mohu Wikipedii editovat",
 	"welcomesurvey-question-edited-option-no-other-label": "Ne, z jiných důvodů",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Nepamatuji si",
+	"welcomesurvey-question-mailinglist-help": "Tento mailing list je provozován s využitím platformy Mailchimp. Využití vašich osobních údajů Mailchimpem se řídí [https://www.intuit.com/privacy/statement/ jejich pravidly pro ochranu osobních údajů] a [https://mailchimp.com/legal/terms/Terms jejich podmínkami užití].",
 	"welcomesurvey-question-email-label": "E-mailová adresa (nepovinná)",
 	"welcomesurvey-question-email-placeholder": "Zadejte svou e-mailovou adresu...",
 	"welcomesurvey-question-email-help": "Všimli jsme si, že jste při vytváření uživatelského účtu nezadali svou e-mailovou adresu. Zadat e-mailovou adresu je <strong>silně doporučováno</strong>, jelikož e-mailová adresa je nezbytná pro obnovení přístupu k účtu, pokud zapomenete svoje heslo. POZNÁMKA: Vaše e-mailová adresa není prozrazena ostatním, pokud se vás pokusí kontaktovat.",

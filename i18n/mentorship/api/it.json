@@ -8,8 +8,8 @@
 	"apihelp-growthstarmentee-param-gesaction": "Azione da eseguire (<kbd>star</kbd> o <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Allievo da aggiungere/rimuovere dai preferiti",
 	"apihelp-query+growthstarredmentees-summary": "Ottieni una lista degli allievi preferiti per l'utenza attuale",
-	"apihelp-growthsetmentorstatus-summary": "Imposta lo stato di mentore dell'utenza attuale ad attivo/occupato",
+	"apihelp-growthsetmentorstatus-summary": "Imposta lo stato di tutor dell'utenza attuale ad attivo/occupato",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Nuovo stato",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Quando si imposta lo stato come occupato, questa deve essere la lunghezza della pausa che si prenderà (in giorni)",
-	"apihelp-query+growthmentorstatus-summary": "Richiedi lo stato di mentore dell'utenza attuale"
+	"apihelp-query+growthmentorstatus-summary": "Richiedi lo stato di tutor dell'utenza attuale"
 }

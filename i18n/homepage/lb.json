@@ -57,7 +57,7 @@
 	"growthexperiments-homepage-suggestededits-edit-card": "Änneren",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Keng aner Virschléi",
 	"growthexperiments-homepage-suggestededits-no-results": "Keng Virschléi fonnt",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "Ännerungen de leschten Dag",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|Ännerung|Ännerungen}} de leschten Dag",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "All Virschléi kucken",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Verbessert Orthographie, Grammaire an Toun",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Setzt Quellen derbäi fir Wikipedia-Artikelen z'iwwerpréiwen",

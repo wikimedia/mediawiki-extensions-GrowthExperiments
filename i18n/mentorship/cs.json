@@ -94,5 +94,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Doporučujeme začít na nastavení \"Průměr\" předtím, než budete své množství nováčků snižovat či zvyšovat. Díky tomu budete moci lépe odhadnout, kolik otázek zvládnete zodpovědět.",
 	"growthexperiments-mentor-list-missing-key": "Klíč <code>$1</code> chybí.",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> by mělo být <code>$2</code>, ale je <code>$3</code>",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "Definice mentora obsahuje neočekávaný klíč <code>$1</code>"
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Definice mentora obsahuje neočekávaný klíč <code>$1</code>",
+	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 již do seznamu mentorů byl přidán",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 není v seznamu mentorů"
 }
