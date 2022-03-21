@@ -11,7 +11,6 @@ use Config;
 use ConfigException;
 use DeferredUpdates;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
-use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -23,7 +22,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\GrowthArticleTopicFeature;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Recommendation;
-use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
@@ -39,7 +37,6 @@ use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use GrowthExperiments\Specials\SpecialNewcomerTasksInfo;
 use Html;
-use IBufferingStatsdDataFactory;
 use IContextSource;
 use IDBAccessObject;
 use JobQueueGroup;
@@ -130,8 +127,6 @@ class HomepageHooks implements
 
 	/** @var Config */
 	private $config;
-	/** @var Config */
-	private $wikiConfig;
 	/** @var ILoadBalancer */
 	private $lb;
 	/** @var UserOptionsManager */
@@ -142,14 +137,10 @@ class HomepageHooks implements
 	private $namespaceInfo;
 	/** @var TitleFactory */
 	private $titleFactory;
-	/** @var IBufferingStatsdDataFactory */
-	private $statsdDataFactory;
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
 	/** @var ExperimentUserManager */
 	private $experimentUserManager;
-	/** @var HomepageModuleRegistry */
-	private $moduleRegistry;
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
 	/** @var TaskSuggesterFactory */
@@ -160,8 +151,6 @@ class HomepageHooks implements
 	private $linkRecommendationStore;
 	/** @var LinkRecommendationHelper */
 	private $linkRecommendationHelper;
-	/** @var SuggestionsInfo */
-	private $suggestionsInfo;
 	/** @var PrefixingStatsdDataFactoryProxy */
 	private $perDbNameStatsdDataFactory;
 	/** @var JobQueueGroup */
@@ -174,68 +163,55 @@ class HomepageHooks implements
 
 	/**
 	 * @param Config $config Uses PHP globals
-	 * @param Config $wikiConfig Uses on-wiki config store, only for variables listed in
-	 *  GrowthExperimentsMultiConfig::ALLOW_LIST.
 	 * @param ILoadBalancer $lb
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param NamespaceInfo $namespaceInfo
 	 * @param TitleFactory $titleFactory
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param JobQueueGroup $jobQueueGroup
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param ExperimentUserManager $experimentUserManager
-	 * @param HomepageModuleRegistry $moduleRegistry
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
-	 * @param SuggestionsInfo $suggestionsInfo
 	 * @param SpecialPageFactory $specialPageFactory
 	 */
 	public function __construct(
 		Config $config,
-		Config $wikiConfig,
 		ILoadBalancer $lb,
 		UserOptionsManager $userOptionsManager,
 		UserOptionsLookup $userOptionsLookup,
 		NamespaceInfo $namespaceInfo,
 		TitleFactory $titleFactory,
-		IBufferingStatsdDataFactory $statsdDataFactory,
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		JobQueueGroup $jobQueueGroup,
 		ConfigurationLoader $configurationLoader,
 		ExperimentUserManager $experimentUserManager,
-		HomepageModuleRegistry $moduleRegistry,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkRecommendationStore $linkRecommendationStore,
 		LinkRecommendationHelper $linkRecommendationHelper,
-		SuggestionsInfo $suggestionsInfo,
 		SpecialPageFactory $specialPageFactory
 	) {
 		$this->config = $config;
-		$this->wikiConfig = $wikiConfig;
 		$this->lb = $lb;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->namespaceInfo = $namespaceInfo;
 		$this->titleFactory = $titleFactory;
-		$this->statsdDataFactory = $statsdDataFactory;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->configurationLoader = $configurationLoader;
 		$this->experimentUserManager = $experimentUserManager;
-		$this->moduleRegistry = $moduleRegistry;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
-		$this->suggestionsInfo = $suggestionsInfo;
 		$this->specialPageFactory = $specialPageFactory;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
@@ -252,32 +228,31 @@ class HomepageHooks implements
 	 */
 	public function onSpecialPage_initList( &$list ) {
 		if ( self::isHomepageEnabled() ) {
-			$mwServices = MediaWikiServices::getInstance();
 			$pageViewInfoEnabled = \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
-			$list['Homepage'] = function () {
-				return new SpecialHomepage(
-					$this->moduleRegistry,
-					$this->statsdDataFactory,
-					$this->perDbNameStatsdDataFactory,
-					$this->experimentUserManager,
-					$this->wikiConfig,
-					$this->userOptionsManager,
-					$this->titleFactory
-				);
-			};
+			$list['Homepage'] = [
+				'class' => SpecialHomepage::class,
+				'services' => [
+					'GrowthExperimentsHomepageModuleRegistry',
+					'StatsdDataFactory',
+					'PerDbNameStatsdDataFactory',
+					'GrowthExperimentsExperimentUserManager',
+					'GrowthExperimentsMultiConfig',
+					'UserOptionsManager',
+					'TitleFactory',
+				]
+			];
 			if ( $pageViewInfoEnabled && $this->config->get( 'GEHomepageImpactModuleEnabled' ) ) {
-				$list['Impact'] = function () use ( $mwServices ) {
-					return new SpecialImpact(
-						$this->lb->getConnectionRef( DB_REPLICA ),
-						$this->experimentUserManager,
-						$this->titleFactory,
-						GrowthExperimentsServices::wrap(
-							$mwServices
-						)->getGrowthWikiConfig(),
-						$this->userOptionsManager,
-						$mwServices->get( 'PageViewService' )
-					);
-				};
+				$list['Impact'] = [
+					'class' => SpecialImpact::class,
+					'services' => [
+						'DBLoadBalancer',
+						'GrowthExperimentsExperimentUserManager',
+						'TitleFactory',
+						'GrowthExperimentsMultiConfig',
+						'UserOptionsLookup',
+						'PageViewService',
+					]
+				];
 			}
 			$list[ 'ClaimMentee' ] = [
 				'class' => SpecialClaimMentee::class,
@@ -287,12 +262,13 @@ class HomepageHooks implements
 					'GrowthExperimentsMultiConfig'
 				]
 			];
-			$list['NewcomerTasksInfo'] = function () use ( $mwServices ) {
-				return new SpecialNewcomerTasksInfo(
-					$this->suggestionsInfo,
-					$mwServices->getMainWANObjectCache()
-				);
-			};
+			$list['NewcomerTasksInfo'] = [
+				'class' => SpecialNewcomerTasksInfo::class,
+				'services' => [
+					'GrowthExperimentsSuggestionsInfo',
+					'MainWANObjectCache',
+				]
+			];
 		}
 	}
 
