@@ -12,7 +12,7 @@
 	 * @return {number}
 	 */
 	MenteeOverviewPresets.prototype.getUsersToShow = function () {
-		return this.getPresets( 'usersToShow' ) || 10;
+		return this.getPreset( 'usersToShow' ) || 10;
 	};
 
 	/**
