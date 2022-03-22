@@ -94,5 +94,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "מומלץ להתחיל בהגדרת \"ממוצע\" כדי לכוונן את קיבולת התמיכה שלך לפני העלאה או הפחתה.",
 	"growthexperiments-mentor-list-missing-key": "המפתח <code>$1</code> חסר",
 	"growthexperiments-mentor-list-datatype-mismatch": "מצופה שהערך של <code>$1</code> יהיה <code>$2</code>, אבל הוא <code>$3</code>",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "הגדרת החונך מכילה את המפתח הבלתי־צפוי <code>$1</code>"
+	"growthexperiments-mentor-list-unexpected-key-mentor": "הגדרת החונך מכילה את המפתח הבלתי־צפוי <code>$1</code>",
+	"growthexperiments-mentor-writer-error-already-added": "החונך $1 כבר נוסף לרשימת החונכים",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "החונך $1 אינו ברשימת החונכים"
 }

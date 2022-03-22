@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Edith Nwobu"
+		]
+	},
+	"welcomesurvey-question-mailinglist-label": "Achọrọ m inweta ntụziaka na email etu m ga-esi bido mmezi.",
+	"welcomesurvey-question-mailinglist-help": "Biko mata na ndị mebere ndeba nziga ozi a bụ MailChimp, nke pụtara na ihe na achịkwa MailChimp iji ndebanye gị rụọ ọrụ bụ [https://www.intuit.com/privacy/statement/ Privacy Policy] and [https://mailchimp.com/legal/terms/Terms Terms of Service]."
+}

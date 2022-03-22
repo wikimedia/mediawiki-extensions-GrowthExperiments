@@ -42,6 +42,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "לא, מסיבות אחרות",
 	"welcomesurvey-question-edited-option-dont-remember-label": "אני לא זוכר/ת",
 	"welcomesurvey-question-mailinglist-label": "אני רוצה לקבל עצות על איך להתחיל לערוך בדואר אלקטרוני.",
+	"welcomesurvey-question-mailinglist-help": "נא לשים לב לכך שרשימת התפוצה הזאת מופעלת על־ידי MailChimp, וזה אומר שהשימוש של MailChimp במידע שלך נעשה לפי [https://www.intuit.com/privacy/statement/ מדיניות הפרטיות] ו[https://mailchimp.com/legal/terms/Terms תנאי השימוש] שלהם.",
 	"welcomesurvey-question-email-label": "כתובת דוא״ל (לא חובה)",
 	"welcomesurvey-question-email-placeholder": "נא להזין את כתובת הדוא\"ל שלך...",
 	"welcomesurvey-question-email-help": "שמנו לב שלא הזנת כתובת דוא\"ל בעת יצירת החשבון הזה. <strong>מומלץ מאוד</strong> לעשות את זה כי דואר אלקטרוני נחוץ לשם שחזור החשבון אם הסיסמה שלך אי־פעם תלך לאיבוד. לתשומת ליבך: כתובת הדוא\"ל שלך אף פעם לא מוצגת כשמשתמשים אחרים יוצרים איתך קשר.",

@@ -14,7 +14,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "아래에 {{GENDER:|당신의}} 멘티를 보십시오. 표시되는 멘티를 변경하려면 필터를 사용하십시오.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "테이블에 자바스크립트가 필요합니다. 이 모듈을 사용할 수 있으려면 자바스크립트를 활성화해 주십시오.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "누가 테이블에 있습니까?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "테이블은 지난 2주 안에 계정을 생성하였거나 6개월 안에 편집한 멘티만 표시합니다. 데이터는 날마다 업데이트됩니다.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "이 테이블에는 지난 2주 안에 계정을 생성하였거나 6개월 안에 편집했으며 [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|새 사용자 홈페이지가 활성화된]] {{GENDER:|당신의}} 멘티가 표시됩니다. 데이터는 3시간마다 업데이트됩니다.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "범례",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "사용자 이름",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "되돌려진 편집 수",

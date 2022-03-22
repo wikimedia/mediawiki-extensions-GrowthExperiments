@@ -1,9 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
+			"Edith Nwobu",
 			"Olugold"
 		]
 	},
+	"tag-newcomer_task": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Newcomer task]]",
+	"tag-newcomer_task_copyedit": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Newcomer task: copyedit]]",
+	"tag-newcomer_task_references": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Newcomer task: references]]",
+	"tag-newcomer_task_update": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Newcomer task: update]]",
+	"tag-newcomer_task_expand": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Newcomer task: expand]]",
+	"tag-newcomer_task_expand-description": "\"Dọsaa\" ọrụ mmezi okpukpu mmezi nke ihu nnabata onye ọhụrụ tụrụ aro",
+	"tag-newcomer_task_links": "[[mw:Mpụrụ iche:Asụsụ m/Uto/Ụbọchị mbụ nke onwe/Ọrụ_onye ọhụrụ|Ọrụ onye ọhụrụ: njikọ]]",
+	"tag-newcomer_task_links-description": "\"Njikọ\" aro ọrụ mmezi nke ntụnye aro okpukpu mmezi ihu nnabata onye ọhụrụ",
 	"growthexperiments-structuredtask-user-error-login-cta": "Ba nye",
 	"growthexperiments-addimage-summary-label": "Nchịkọta"
 }

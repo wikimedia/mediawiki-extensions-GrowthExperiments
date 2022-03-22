@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Edith Nwobu",
 			"Izuchi Onyeike",
 			"Olugold"
 		]
 	},
-	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Nke\n ọnụọgụ ntụnye njikọ kachasị elu iji gosi na ọrụ ọ bụla atụpụtara.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Ọnụọgụ ntụnye njikọ kachasị elu igosi n'elu ọrụ ọ bụla a tụpụtara.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Ndepụta igbe ozi"
 }
