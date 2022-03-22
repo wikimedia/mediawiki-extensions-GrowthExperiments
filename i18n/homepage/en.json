@@ -311,7 +311,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|claimed}} {{GENDER:$6|$3}} as their mentee (no previous mentor)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|set}} {{GENDER:$5|$7}} as the mentor of {{GENDER:$6|$3}} (previous {{GENDER:$4|mentor}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|set}} {{GENDER:$5|$7}} as the mentor of {{GENDER:$6|$3}} (no previous mentor)",
-	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|reviewed}} $4 link suggestions for $3: accepted $5, rejected $6 and skipped $7",
+	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|reviewed}} $4 {{PLURAL:$4|link suggestion|link suggestions}} for $3: {{PLURAL:$5|accepted}} $5, {{PLURAL:$6|rejected}} $6 and {{PLURAL:$7|skipped}} $7",
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|reviewed}} an image suggestion for $3: accepted",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|reviewed}} an image suggestion for $3: rejected",
 	"log-action-filter-growthexperiments": "Type of GrowthExperiments event:",
