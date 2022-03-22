@@ -26,6 +26,7 @@
 		this.awayForDays = new OO.ui.NumberInputWidget( {
 			showButtons: false,
 			min: 0,
+			max: 365,
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label' ),
 			step: 1,
 			required: true
@@ -81,10 +82,13 @@
 					var msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown';
 					if ( errorCode === 'badinteger' ) {
 						msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger';
+					} else if ( errorCode === 'toohigh' ) {
+						msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh';
 					}
 
 					// Messages that can be used here:
 					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger
+					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh
 					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown
 					mw.notify(
 						mw.msg( msgCode ),
