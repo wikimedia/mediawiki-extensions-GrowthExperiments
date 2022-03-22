@@ -15,6 +15,7 @@ use SpecialPage;
 use TitleFactory;
 use User;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class SpecialImpact extends SpecialPage {
 
@@ -44,7 +45,7 @@ class SpecialImpact extends SpecialPage {
 	private $userOptionsLookup;
 
 	/**
-	 * @param IDatabase $dbr
+	 * @param ILoadBalancer $loadBalancer
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param TitleFactory $titleFactory
 	 * @param Config $wikiConfig
@@ -52,7 +53,7 @@ class SpecialImpact extends SpecialPage {
 	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
-		IDatabase $dbr,
+		ILoadBalancer $loadBalancer,
 		ExperimentUserManager $experimentUserManager,
 		TitleFactory $titleFactory,
 		Config $wikiConfig,
@@ -60,7 +61,7 @@ class SpecialImpact extends SpecialPage {
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Impact' );
-		$this->dbr = $dbr;
+		$this->dbr = $loadBalancer->getConnectionRef( DB_REPLICA );
 		$this->pageViewService = $pageViewService;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->titleFactory = $titleFactory;
