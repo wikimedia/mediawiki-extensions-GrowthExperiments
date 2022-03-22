@@ -342,7 +342,7 @@
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Diretrizes",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Ligue conceitos que um leitor pode ter interesse em conhecer.</li><li>Certifique-se de que a hiperligação conduz ao artigo correto.</li><li>Não crie ligações para palavras vulgares, anos ou datas.</li><li>Se tem dúvidas, salte esta sugestão.</li>{{GENDER:$1|}}",
 	"grant-managementorship": "Gerir mentoria",
-	"newcomertasksinfo": "Tarefa para recém-chegados",
+	"newcomertasksinfo": "Tarefas para recém-chegados",
 	"newcomertasksinfo-no-data": "Não há dados disponíveis.",
 	"newcomertasksinfo-table-header-task-type": "Tipo de tarefa",
 	"newcomertasksinfo-table-header-task-type-id": "Identificador",

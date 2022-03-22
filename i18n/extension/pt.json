@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Emma Franzen"
 		]
 	},
-	"growthexperiments-desc": "Esta extensão contém experiências feita pela equipa Growth."
+	"growthexperiments-desc": "Esta extensão contém experiências feitas pela equipa de Crescimento (''Growth team'').",
+	"growthexperiments-config-validator-additional-fields": "A configuração nova tem chaves de configuração que não podem ser personalizadas aqui.",
+	"growthexperiments-config-validator-error": "A validação de $1 falhou com: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "É esperado que <code>$1</code> seja do tipo <code>$2</code>, mas é do tipo <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Discrepância do modelo de conteúdo: o ficheiro de configuração das experiências de crescimento GrowthExperiments tem de ter um modelo de conteúdo JSON, foi detetado $1"
 }
