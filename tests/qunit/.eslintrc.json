@@ -13,6 +13,7 @@
 		"browser": true
 	},
 	"rules": {
+		"max-len": "off",
 		"mediawiki/valid-package-file-require": "off",
 		"qunit/no-loose-assertions": "warn"
 	}

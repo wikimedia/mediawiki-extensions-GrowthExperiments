@@ -13,7 +13,7 @@
 		"commonjs": true
 	},
 	"rules": {
-		"max-len": "warn"
+		"max-len": "off"
 	},
 	"settings": {
 		"jsdoc": {
