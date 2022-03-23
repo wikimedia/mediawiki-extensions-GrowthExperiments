@@ -15,6 +15,7 @@
 	 * @param {boolean} shouldLog If event logging should be used. Set to false when this method
 	 *   is called from fetchTasksAndUpdateView, where the mobile summary HTML is updated when
 	 *   users interact with task / topic filters.
+	 * @return {jQuery.Promise|undefined} FIXME: ALways return a promise
 	 */
 	function loadExtraDataForSuggestedEdits( suggestedEditsModuleNode, shouldLog ) {
 		// FIXME doesn't belong here; not sure what the right place would be though.

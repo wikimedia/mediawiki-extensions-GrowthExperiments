@@ -39,7 +39,7 @@
 	0% {
 		// Start right below the bottom of the viewport, by moving down 100% of the height of
 		// the element, plus another 6em to account for the bottom: 6em; positioning rule
-		transform: translateY( calc( 100% ~'+' @help-panel-position-bottom ) );
+		transform: translateY( calc( ~'100% + @{help-panel-position-bottom}' ) );
 		opacity: 0;
 	}
 

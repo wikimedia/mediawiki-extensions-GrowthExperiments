@@ -7,7 +7,7 @@
 	],
 	"globals": {
 		"ge": "writable",
-		"ve": "writable"
+		"ve": "readonly"
 	},
 	"env": {
 		"commonjs": true

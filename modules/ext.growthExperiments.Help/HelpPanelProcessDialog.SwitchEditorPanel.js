@@ -105,7 +105,6 @@
 		} else if ( this.currentEditor === 'visualeditor' ) {
 			// FIXME: This does not preserve content modifications made in VE,
 			// unlike manually toggling in the UI or clicking "Edit Source"
-			// eslint-disable-next-line no-undef
 			ve.init.target.switchToWikitextEditor();
 		}
 	};

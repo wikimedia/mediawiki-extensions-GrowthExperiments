@@ -90,7 +90,7 @@ AddImageDetailsDialog.prototype.updateDialog = function ( recommendation ) {
 			.append(
 				new OO.ui.IconWidget( { icon: 'linkExternal', flags: 'progressive' } ).$element
 			)
-			.click( function () {
+			.on( 'click', function () {
 				this.logEvent( 'link_click' );
 			}.bind( this ) )
 	);
