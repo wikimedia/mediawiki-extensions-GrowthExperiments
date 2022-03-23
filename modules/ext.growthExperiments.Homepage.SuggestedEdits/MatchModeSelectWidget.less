@@ -1,0 +1,25 @@
+@import 'mediawiki.ui/variables.less';
+
+.mw-ge-MatchModeSelectWidget {
+	display: flex;
+	align-items: baseline;
+	justify-content: flex-end;
+
+	&--mobile {
+		align-items: flex-end;
+		flex-direction: column-reverse;
+	}
+
+	&__button-group {
+		&& {
+			display: inline-flex;
+			margin-left: 8px;
+		}
+	}
+
+	&__description-text {
+		color: @colorGray5;
+		padding-top: 8px;
+		text-align: right;
+	}
+}

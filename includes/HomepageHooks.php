@@ -18,12 +18,14 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\GrowthArticleTopicFeature;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -127,6 +129,10 @@ class HomepageHooks implements
 
 	/** @var Config */
 	private $config;
+	// FIXME remove when GLAM campaign is over
+	// The campaign config is only used to enable/disable the "topic match mode" feature (T301825).
+	/** @var CampaignConfig */
+	private $campaignConfig;
 	/** @var ILoadBalancer */
 	private $lb;
 	/** @var UserOptionsManager */
@@ -163,6 +169,7 @@ class HomepageHooks implements
 
 	/**
 	 * @param Config $config Uses PHP globals
+	 * @param CampaignConfig $campaignConfig Campaign configuration based on user stored preferences
 	 * @param ILoadBalancer $lb
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -181,6 +188,7 @@ class HomepageHooks implements
 	 */
 	public function __construct(
 		Config $config,
+		CampaignConfig $campaignConfig,
 		ILoadBalancer $lb,
 		UserOptionsManager $userOptionsManager,
 		UserOptionsLookup $userOptionsLookup,
@@ -198,6 +206,7 @@ class HomepageHooks implements
 		SpecialPageFactory $specialPageFactory
 	) {
 		$this->config = $config;
+		$this->campaignConfig = $campaignConfig;
 		$this->lb = $lb;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -392,7 +401,8 @@ class HomepageHooks implements
 						$context->getUser(),
 						new TaskSetFilters(
 							$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $context->getUser() ),
-							$this->newcomerTasksUserOptionsLookup->getTopicFilter( $context->getUser() )
+							$this->newcomerTasksUserOptionsLookup->getTopics( $context->getUser() ),
+							$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $context->getUser() )
 						),
 						1
 					);
@@ -417,11 +427,17 @@ class HomepageHooks implements
 		// (see ext.growthExperiments.Homepage.SuggestedEdits/Topics.js)
 		if ( ( !$skin->getTitle() || $skin->getTitle()->isSpecial( 'Homepage' ) ) &&
 			SuggestedEdits::isEnabled( $context ) ) {
-			$out->addJsConfigVars( 'wgGETopicsToExclude', SuggestedEdits::getTopicsToExclude(
-				$this->userOptionsLookup,
-				$context->getUser(),
-				self::getGrowthWikiConfig()
-			) );
+			$out->addJsConfigVars( [
+				'wgGETopicsToExclude' => SuggestedEdits::getTopicsToExclude(
+					$this->userOptionsLookup,
+					$context->getUser(),
+					self::getGrowthWikiConfig()
+				),
+				'wgGETopicsMatchModeEnabled' => $this->campaignConfig->isUserInCampaign(
+					$context->getUser(),
+					'growth-glam-2022'
+				)
+			] );
 		}
 	}
 
@@ -614,6 +630,10 @@ class HomepageHooks implements
 			'type' => 'api'
 		];
 
+		$preferences[ SuggestedEdits::TOPICS_MATCH_MODE_PREF ] = [
+			'type' => 'api'
+		];
+
 		$preferences[ SuggestedEdits::TASKTYPES_PREF ] = [
 			'type' => 'api'
 		];
@@ -662,6 +682,7 @@ class HomepageHooks implements
 					ImageRecommendationTaskTypeHandler::ID => true,
 				]
 			] ),
+			SuggestedEdits::TOPICS_MATCH_MODE_PREF => SearchStrategy::TOPIC_MATCH_MODE_OR,
 			self::HOMEPAGE_PREF_ENABLE => false,
 			self::HOMEPAGE_PREF_PT_LINK => false,
 		];
@@ -821,7 +842,8 @@ class HomepageHooks implements
 						$user,
 						new TaskSetFilters(
 							$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-							$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+							$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
+							$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
 						)
 					);
 				} );

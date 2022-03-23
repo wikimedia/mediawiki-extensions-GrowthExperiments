@@ -10,6 +10,7 @@
 ( function () {
 
 	var formatTitle = require( '../utils/Utils.js' ).formatTitle;
+	var TopicFilters = require( './TopicFilters.js' );
 
 	/**
 	 * @typedef {Object} mw.libs.ge.TaskData
@@ -97,7 +98,8 @@
 	 * Has no side effects.
 	 *
 	 * @param {string[]} taskTypes List of task IDs.
-	 * @param {string[]} [topics] List of topic IDs.
+	 * @param {mw.libs.ge.TopicFilters} [topicFilters] A TopicFilters object containing a list
+	 * of topic IDs and the match mode
 	 * @param {Object} [config] Additional configuration.
 	 * @param {boolean} [config.getDescription] Include Wikidata description into the data.
 	 *   This probably won't work well with a large size setting.
@@ -118,7 +120,7 @@
 	 *     FIXME protection status is ignored by the count.
 	 *   - tasks: a list of task data objects
 	 */
-	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, topics, config ) {
+	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, topicFilters, config ) {
 		var apiParams, actionApiPromise, finalPromise,
 			startTime = mw.now(),
 			self = this,
@@ -154,8 +156,11 @@
 			formatversion: 2,
 			uselang: mw.config.get( 'wgUserLanguage' )
 		};
-		if ( topics && topics.length ) {
-			apiParams.ggttopics = topics.join( '|' );
+		if ( topicFilters && topicFilters.hasFilters() ) {
+			apiParams.ggttopics = topicFilters.getTopics().join( '|' );
+			if ( topicFilters.getTopicsMatchMode() ) {
+				apiParams.ggttopicsmode = topicFilters.getTopicsMatchMode();
+			}
 		}
 		if ( config.excludePageIds && config.excludePageIds.length ) {
 			apiParams.ggtexcludepageids = config.excludePageIds.join( '|' );
@@ -365,27 +370,41 @@
 	/**
 	 * Get the task type and topic filter preferences of the current user.
 	 *
-	 * The topics value will be null if the user has never set topic filters, and an empty array if
-	 * they had previously set topic filters but currently don't have any.
+	 * The topicFilters value will be null if the user has never set topic filters,
+	 * and an empty TopicFilters object if they had previously set topic filters
+	 * but currently don't have any.
 	 *
-	 * @return {{taskTypes: Array<string>, topics: Array<string>|null}}
+	 * @return {{taskTypes: Array<string>, topicFilters: mw.libs.ge.TopicFilters|null}}
 	 */
 	GrowthTasksApi.prototype.getPreferences = function () {
+		function preferencesToFilters( topicsPreference, topicsMatchModePreference ) {
+			if ( topicsPreference === null ) {
+				return null;
+			}
+			return new TopicFilters( {
+				topics: topicsPreference,
+				topicsMatchMode: topicsMatchModePreference
+			} );
+		}
+
 		var topicFiltersPref = this.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref,
 			savedTaskTypes = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
 			savedTopics = mw.user.options.get( topicFiltersPref ),
 			taskTypes = savedTaskTypes ? JSON.parse( savedTaskTypes ) : this.defaultTaskTypes,
-			topics = savedTopics ? JSON.parse( savedTopics ) : null;
+			topics = savedTopics ? JSON.parse( savedTopics ) : null,
+			savedTopicsMatchMode = mw.user.options.get( 'growthexperiments-homepage-se-topic-filters-mode' ),
+			topicFilters = preferencesToFilters( topics, savedTopicsMatchMode );
 
 		// T278123: map the two versions of link tasks to each other - FIXME remove when done
 		taskTypes = require( './TaskTypesAbFilter.js' ).convertTaskTypes( taskTypes );
-
 		// The list of valid task types can change over time, discard invalid ones.
 		taskTypes = taskTypes.filter( function ( taskType ) {
 			return taskType in this.taskTypes;
 		}.bind( this ) );
-
-		return { taskTypes: taskTypes, topics: topics };
+		return {
+			taskTypes: taskTypes,
+			topicFilters: topicFilters
+		};
 	};
 
 	/**

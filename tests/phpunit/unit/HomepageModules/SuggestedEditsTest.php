@@ -8,12 +8,14 @@ use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use Language;
@@ -180,6 +182,11 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			NewcomerTasksUserOptionsLookup::class
 		)->disableOriginalConstructor()
 			->getMock();
+		$newcomerTasksUserOptionsLookupMock->method( 'getTopics' )
+			->willReturn( [] );
+		$newcomerTasksUserOptionsLookupMock->method( 'getTopicsMatchMode' )
+			->willReturn( SearchStrategy::TOPIC_MATCH_MODE_OR );
+
 		$taskSuggester = new StaticTaskSuggester(
 			[ new Task( $taskType, new \TitleValue( 0, 'foo' ) ) ]
 		);
@@ -204,9 +211,11 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 				->disableOriginalConstructor()
 				->getMock()
 		);
+		$campaignConfig = new CampaignConfig( [] );
 		return new SuggestedEdits(
 			$contextMock,
 			GlobalVarConfig::newInstance(),
+			$campaignConfig,
 			$editInfoServiceMock,
 			$experimentUserManagerMock,
 			$pageViewServiceMock,

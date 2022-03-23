@@ -17,6 +17,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -58,6 +59,8 @@ class SuggestedEdits extends BaseModule {
 	public const TOPICS_PREF = 'growthexperiments-homepage-se-topic-filters';
 	/** User preference used to remember the user's topic selection, when using ORES topics. */
 	public const TOPICS_ORES_PREF = 'growthexperiments-homepage-se-ores-topic-filters';
+	/** User preference used to remember the user's topic mode selection, when using any type of topics. */
+	public const TOPICS_MATCH_MODE_PREF = 'growthexperiments-homepage-se-topic-filters-mode';
 	/**
 	 * User preference for opting into topic filters for suggested edits, when
 	 * $wgGEHomepageSuggestedEditsTopicsRequiresOptIn is true.
@@ -149,10 +152,15 @@ class SuggestedEdits extends BaseModule {
 	 * @var ImageRecommendationFilter
 	 */
 	private $imageRecommendationFilter;
+	/**
+	 * @var CampaignConfig
+	 */
+	private $campaignConfig;
 
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
+	 * @param CampaignConfig $campaignConfig
 	 * @param EditInfoService $editInfoService
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
@@ -168,6 +176,7 @@ class SuggestedEdits extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
+		CampaignConfig $campaignConfig,
 		EditInfoService $editInfoService,
 		ExperimentUserManager $experimentUserManager,
 		?PageViewService $pageViewService,
@@ -192,6 +201,7 @@ class SuggestedEdits extends BaseModule {
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->linkRecommendationFilter = $linkRecommendationFilter;
 		$this->imageRecommendationFilter = $imageRecommendationFilter;
+		$this->campaignConfig = $campaignConfig;
 	}
 
 	/** @inheritDoc */
@@ -275,6 +285,25 @@ class SuggestedEdits extends BaseModule {
 					$context->getUser(),
 					self::TOPICS_ENABLED_PREF
 				)
+			);
+	}
+
+	/**
+	 * Check whether topic match mode has been enabled for the context user.
+	 * Note that even with topic match mode is disabled, all the relevant backend functionality
+	 * should still work (but logging and UI will be different).
+	 * @param IContextSource $context
+	 * @param UserOptionsLookup $userOptionsLookup
+	 * @return bool
+	 */
+	private function isTopicMatchModeEnabled(
+		IContextSource $context,
+		UserOptionsLookup $userOptionsLookup
+	) {
+		return self::isTopicMatchingEnabled( $context, $userOptionsLookup ) &&
+			$this->campaignConfig->isUserInCampaign(
+				$context->getUser(),
+				'growth-glam-2022'
 			);
 	}
 
@@ -413,8 +442,9 @@ class SuggestedEdits extends BaseModule {
 			$suggesterOptions = [ 'resetCache' => true ];
 		}
 		$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
-		$topics = $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
-		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics );
+		$topics = $this->newcomerTasksUserOptionsLookup->getTopics( $user );
+		$topicsMatchMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
+		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics, $topicsMatchMode );
 		$tasks = $this->taskSuggester->suggest( $user, $taskSetFilters, null, null,
 			$suggesterOptions );
 		if ( $tasks instanceof TaskSet ) {
@@ -601,9 +631,11 @@ class SuggestedEdits extends BaseModule {
 				$topicMessages = array_filter( $topicMessages );
 				if ( count( $topicMessages ) ) {
 					if ( count( $topicMessages ) < 3 ) {
-						$topicLabel =
-							implode( $this->getContext()->msg( 'comma-separator' )->text(),
-								$topicMessages );
+						$topicFilterMode = $this->newcomerTasksUserOptionsLookup
+							->getTopicsMatchMode( $user );
+						$separator = $topicFilterMode === SearchStrategy::TOPIC_MATCH_MODE_OR ?
+							$this->getContext()->msg( 'comma-separator' ) : ' + ';
+						$topicLabel = implode( $separator, $topicMessages );
 					} else {
 						$topicLabel =
 							$this->getContext()
@@ -836,6 +868,7 @@ class SuggestedEdits extends BaseModule {
 		if ( $taskSet instanceof TaskSet ) {
 			$taskTypes = $taskSet->getFilters()->getTaskTypeFilters();
 			$topics = $taskSet->getFilters()->getTopicFilters();
+			$topicsMatchMode = $taskSet->getFilters()->getTopicFiltersMode();
 		}
 
 		// these will be updated on the client side as needed
@@ -845,7 +878,12 @@ class SuggestedEdits extends BaseModule {
 			'editCount' => $this->editInfoService->getEditsPerDay(),
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
-			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
+			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopics( $user );
+			if ( $this->isTopicMatchModeEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
+				$data['topicsMatchMode'] = $topicsMatchMode ??
+					$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
+			}
+
 		}
 		return array_merge( parent::getActionData(), $data );
 	}

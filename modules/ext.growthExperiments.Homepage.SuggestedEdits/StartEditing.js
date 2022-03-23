@@ -116,8 +116,9 @@
 	 * Only used for unactivated suggested edits on desktop; this function is a no-op otherwise.
 	 *
 	 * @param {jQuery} $container DOM element that contains homepage modules
+	 * @param {boolean} useTopicMatchMode If topic match mode feature is enabled in the UI
 	 */
-	function setupEmbeddedDialog( $container ) {
+	function setupEmbeddedDialog( $container, useTopicMatchMode ) {
 		var mode, dialog, windowManager,
 			// Only do this for the start-startediting module on desktop
 			$startEditingModule = $container.find(
@@ -137,7 +138,8 @@
 			trigger: 'suggested-edits',
 			useTopicSelector: true,
 			useTaskTypeSelector: true,
-			activateWhenDone: true
+			activateWhenDone: true,
+			useTopicMatchMode: useTopicMatchMode
 		}, logger, api );
 
 		dialog.on( 'activation', function () {
@@ -157,13 +159,14 @@
 	 * and task types filters dialog
 	 *
 	 * @param {jQuery} $container Container in which the module is initialized
+	 * @param {boolean} useTopicMatchMode If topic match mode feature is enabled in the UI
 	 */
-	function initialize( $container ) {
+	function initialize( $container, useTopicMatchMode ) {
 		// Try setup for desktop mode and server-side-rendered mobile mode
 		// See also the comment in ext.growthExperiments.Homepage.Mentorship/index.js.
 		setupCtaButton( $container );
 		if ( !isSuggestedEditsActivated ) {
-			setupEmbeddedDialog( $container );
+			setupEmbeddedDialog( $container, useTopicMatchMode );
 		}
 	}
 

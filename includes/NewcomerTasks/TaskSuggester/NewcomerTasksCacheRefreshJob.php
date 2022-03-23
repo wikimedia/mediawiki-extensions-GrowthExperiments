@@ -30,7 +30,8 @@ class NewcomerTasksCacheRefreshJob extends Job implements GenericParameterJob {
 			$user,
 			new TaskSetFilters(
 				$newcomerTaskOptions->getTaskTypeFilter( $user ),
-				$newcomerTaskOptions->getTopicFilter( $user )
+				$newcomerTaskOptions->getTopics( $user ),
+				$newcomerTaskOptions->getTopicsMatchMode( $user )
 			),
 			SearchTaskSuggester::DEFAULT_LIMIT,
 			null,

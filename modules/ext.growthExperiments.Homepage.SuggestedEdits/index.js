@@ -33,7 +33,8 @@
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
 			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || {},
 			fetchTasksOptions = {},
-			topicMatching = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
+			topicMatching = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' ),
+			useTopicMatchMode = mw.config.get( 'wgGETopicsMatchModeEnabled' );
 
 		if ( !$wrapper.length ) {
 			return;
@@ -49,8 +50,9 @@
 				$element: $wrapper,
 				$nav: $container.find( '.suggested-edits-footer-navigation' ),
 				taskTypePresets: preferences.taskTypes,
-				topicPresets: preferences.topics,
+				topicPresets: preferences.topicFilters,
 				topicMatching: topicMatching,
+				useTopicMatchMode: useTopicMatchMode,
 				mode: mode,
 				qualityGateConfig: taskPreviewData.qualityGateConfig || {}
 			},
@@ -125,7 +127,7 @@
 	// eslint-disable-next-line no-jquery/no-global-selector
 	var $suggestedEditsContainer = $( '.growthexperiments-homepage-container' );
 	initSuggestedTasks( $suggestedEditsContainer );
-	StartEditing.initialize( $suggestedEditsContainer );
+	StartEditing.initialize( $suggestedEditsContainer, mw.config.get( 'wgGETopicsMatchModeEnabled' ) );
 
 	// Try setup for mobile overlay mode
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
@@ -141,7 +143,7 @@
 	 * and show an accurate state to the user.
 	 *
 	 * @param {string[]} taskTypeSelection List of active task type IDs in the task type selector
-	 * @param {string[]} topicSelection List of selected topic IDs in the topic selector
+	 * @param {mw.libs.ge.TopicFilters} topicSelection Active topic filters
 	 */
 	mw.hook( 'growthexperiments.StartEditingDialog.updateMatchCount' ).add( function ( taskTypeSelection, topicSelection ) {
 		if ( suggestedEditsModule ) {
@@ -149,7 +151,7 @@
 				.setSelected( taskTypeSelection );
 			suggestedEditsModule.filters.taskTypeFiltersDialog.savePreferences();
 			suggestedEditsModule.filters.topicFiltersDialog.topicSelector
-				.setSelectedTopics( topicSelection );
+				.setFilters( topicSelection );
 			suggestedEditsModule.filters.topicFiltersDialog.savePreferences();
 			suggestedEditsModule.fetchTasksAndUpdateView().then( function () {
 				suggestedEditsModule.updateControls();

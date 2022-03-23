@@ -1,6 +1,19 @@
 var SuggestionWidget = require( './SuggestionWidget.js' ),
 	SuggestionGroupWidget = require( './SuggestionGroupWidget.js' ),
+	MatchModeSelectWidget = require( './MatchModeSelectWidget.js' ),
 	topicData = require( './Topics.js' ),
+	TopicFilters = require( './TopicFilters.js' ),
+	TOPIC_MATCH_MODES = require( './constants.js' ).TOPIC_MATCH_MODES,
+	TOPIC_MATCH_MODE_OPTIONS = [
+		{
+			data: TOPIC_MATCH_MODES.OR,
+			label: mw.message( 'growthexperiments-homepage-suggestededits-topics-match-mode-any' ).text()
+		},
+		{
+			data: TOPIC_MATCH_MODES.AND,
+			label: mw.message( 'growthexperiments-homepage-suggestededits-topics-match-mode-all' ).text()
+		}
+	],
 	groupedTopics = ( function () {
 		var key, topic, grouped = {};
 		for ( key in topicData ) {
@@ -29,14 +42,14 @@ var SuggestionWidget = require( './SuggestionWidget.js' ),
  *
  * @param {Object} config
  * @cfg {number} [initialLimit=12] Number of topics to display initially; use Infinity to disable
- * @cfg {string[]} [selectedTopics=[]] IDs of initially selected topics
+ * @cfg {mw.libs.ge.TopicFilters} [filters=new TopicFilters()] Initially selected topic filters
  */
 function TopicSelectionWidget( config ) {
 	var key, group, groupWidget, suggestionWidgets, displayedSuggestionWidgets,
 		hiddenSuggestionWidgets, anyHiddenSelected;
 	config = $.extend( {
 		initialLimit: 12,
-		selectedTopics: []
+		filters: new TopicFilters()
 	}, config );
 
 	// Parent constructor
@@ -53,6 +66,19 @@ function TopicSelectionWidget( config ) {
 	}
 	/* eslint-enable no-underscore-dangle */
 
+	if ( config.isMatchModeEnabled ) {
+		this.matchModeSelector = new MatchModeSelectWidget( {
+			classes: [ 'mw-ge-TopicSelectionWidget__match-mode' ],
+			options: TOPIC_MATCH_MODE_OPTIONS,
+			initialValue: config.filters.getTopicsMatchMode() || TOPIC_MATCH_MODES.OR
+		} );
+		this.matchModeSelector.connect( this, {
+			toggleSelection: [ 'emit', 'toggleMatchMode' ],
+			onMatchModeClick: [ 'emit', 'onMatchModeClick' ]
+		} );
+		this.$element.append( this.matchModeSelector.$element );
+	}
+
 	this.suggestions = [];
 	this.suggestionGroupWidgets = [];
 	for ( key in groupedTopics ) {
@@ -61,7 +87,7 @@ function TopicSelectionWidget( config ) {
 			return new SuggestionWidget( { suggestionData: {
 				id: topic.id,
 				text: topic.name,
-				confirmed: config.selectedTopics.indexOf( topic.id ) !== -1
+				confirmed: config.filters.getTopics().indexOf( topic.id ) !== -1
 			} } );
 		} );
 		displayedSuggestionWidgets = suggestionWidgets;
@@ -141,6 +167,26 @@ TopicSelectionWidget.prototype.setSelectedTopics = function ( topics ) {
  */
 TopicSelectionWidget.prototype.getSuggestions = function () {
 	return this.suggestions;
+};
+
+/**
+ * @return {mw.libs.ge.TopicFilters}
+ */
+TopicSelectionWidget.prototype.getFilters = function () {
+	return new TopicFilters( {
+		topics: this.getSelectedTopics(),
+		topicsMatchMode: this.matchModeSelector ? this.matchModeSelector.getSelectedMode() : null
+	} );
+};
+
+/**
+ * @param {mw.libs.ge.TopicFilters} filters Filters to apply
+ */
+TopicSelectionWidget.prototype.setFilters = function ( filters ) {
+	this.setSelectedTopics( filters.getTopics() );
+	if ( this.matchModeSelector ) {
+		this.matchModeSelector.setSelectedMode( filters.getTopicsMatchMode() );
+	}
 };
 
 module.exports = TopicSelectionWidget;

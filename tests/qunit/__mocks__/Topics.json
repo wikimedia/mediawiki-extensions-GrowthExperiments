@@ -1,0 +1,254 @@
+{
+	"argentina": {
+		"id": "argentina",
+		"name": "⧼growth-campaign-topic-name-argentina⧽",
+		"groupId": "campaign",
+		"groupName": "Campaign event"
+	},
+	"chile": {
+		"id": "chile",
+		"name": "⧼growth-campaign-topic-name-chile⧽",
+		"groupId": "campaign",
+		"groupName": "Campaign event"
+	},
+	"mexico": {
+		"id": "mexico",
+		"name": "⧼growth-campaign-topic-name-mexico⧽",
+		"groupId": "campaign",
+		"groupName": "Campaign event"
+	},
+	"architecture": {
+		"id": "architecture",
+		"name": "Architecture",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"art": {
+		"id": "art",
+		"name": "Art",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"comics-and-anime": {
+		"id": "comics-and-anime",
+		"name": "Comics and anime",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"entertainment": {
+		"id": "entertainment",
+		"name": "Entertainment",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"fashion": {
+		"id": "fashion",
+		"name": "Fashion",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"literature": {
+		"id": "literature",
+		"name": "Literature",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"music": {
+		"id": "music",
+		"name": "Music",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"performing-arts": {
+		"id": "performing-arts",
+		"name": "Performing arts",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"sports": {
+		"id": "sports",
+		"name": "Sports",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"tv-and-film": {
+		"id": "tv-and-film",
+		"name": "TV and film",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"video-games": {
+		"id": "video-games",
+		"name": "Video games",
+		"groupId": "culture",
+		"groupName": "Culture"
+	},
+	"biography": {
+		"id": "biography",
+		"name": "Biography (all)",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"women": {
+		"id": "women",
+		"name": "Biography (women)",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"business-and-economics": {
+		"id": "business-and-economics",
+		"name": "Business and economics",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"education": {
+		"id": "education",
+		"name": "Education",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"food-and-drink": {
+		"id": "food-and-drink",
+		"name": "Food and drink",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"history": {
+		"id": "history",
+		"name": "History",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"military-and-warfare": {
+		"id": "military-and-warfare",
+		"name": "Military and warfare",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"philosophy-and-religion": {
+		"id": "philosophy-and-religion",
+		"name": "Philosophy and religion",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"politics-and-government": {
+		"id": "politics-and-government",
+		"name": "Politics and government",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"society": {
+		"id": "society",
+		"name": "Society",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"transportation": {
+		"id": "transportation",
+		"name": "Transportation",
+		"groupId": "history-and-society",
+		"groupName": "History and Society"
+	},
+	"biology": {
+		"id": "biology",
+		"name": "Biology",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"chemistry": {
+		"id": "chemistry",
+		"name": "Chemistry",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"computers-and-internet": {
+		"id": "computers-and-internet",
+		"name": "Computers and internet",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"earth-and-environment": {
+		"id": "earth-and-environment",
+		"name": "Earth and environment",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"engineering": {
+		"id": "engineering",
+		"name": "Engineering",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"general-science": {
+		"id": "general-science",
+		"name": "General science",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"mathematics": {
+		"id": "mathematics",
+		"name": "Mathematics",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"medicine-and-health": {
+		"id": "medicine-and-health",
+		"name": "Medicine and health",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"physics": {
+		"id": "physics",
+		"name": "Physics",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"technology": {
+		"id": "technology",
+		"name": "Technology",
+		"groupId": "science-technology-and-math",
+		"groupName": "Science, Technology, and Math"
+	},
+	"africa": {
+		"id": "africa",
+		"name": "Africa",
+		"groupId": "geography",
+		"groupName": "Regions"
+	},
+	"asia": {
+		"id": "asia",
+		"name": "Asia",
+		"groupId": "geography",
+		"groupName": "Regions"
+	},
+	"central-america": {
+		"id": "central-america",
+		"name": "Central America",
+		"groupId": "geography",
+		"groupName": "Regions"
+	},
+	"europe": {
+		"id": "europe",
+		"name": "Europe",
+		"groupId": "geography",
+		"groupName": "Regions"
+	},
+	"north-america": {
+		"id": "north-america",
+		"name": "North America",
+		"groupId": "geography",
+		"groupName": "Regions"
+	},
+	"oceania": {
+		"id": "oceania",
+		"name": "Oceania",
+		"groupId": "geography",
+		"groupName": "Regions"
+	},
+	"south-america": {
+		"id": "south-america",
+		"name": "South America",
+		"groupId": "geography",
+		"groupName": "Regions"
+	}
+}

@@ -119,7 +119,8 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 			$user,
 			new TaskSetFilters(
 				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-				$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+				$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
+				$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
 			)
 		);
 		if ( $taskSet instanceof TaskSet ) {
