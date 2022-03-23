@@ -234,7 +234,6 @@ class WelcomeSurvey {
 				"group" => "email",
 				"label-message" => "welcomesurvey-question-mailinglist-label",
 				"help-message" => "welcomesurvey-question-mailinglist-help",
-				"disabled" => true,
 			],
 			"languages" => [
 				"type" => "multiselect",
@@ -273,9 +272,6 @@ class WelcomeSurvey {
 		];
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'UniversalLanguageSelector' ) ) {
 			$questions['languages']['disabled'] = true;
-		}
-		if ( $this->context->getConfig()->get( 'GEWelcomeSurveyShowMailingListQuestion' ) ) {
-			$questions['mailinglist']['disabled'] = false;
 		}
 		return $questions;
 	}
