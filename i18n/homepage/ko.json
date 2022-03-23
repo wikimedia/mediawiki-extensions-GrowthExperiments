@@ -363,7 +363,7 @@
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "제안",
 	"growthexperiments-structuredtask-editmode-selection-visual": "시각 편집",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "제안 편집을 그만두시겠습니까?",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "모드를 전환하면 다른 유형의 편집을 할 수 있게 됩니다. 지금까지의 진행한 내용을 제출하려면 검토를 마치십시오.",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "모드를 전환하면 {{GENDER:$1|당신은}} 다른 유형의 편집을 할 수 있게 됩니다. 지금까지의 진행한 내용을 제출하려면 검토를 마치십시오.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "제출 없이 전환",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "취소",
 	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|당신}}이 검토하는 중에 다른 사용자가 이 문서를 편집하였으며 {{GENDER:|당신의}} 변경 내용은 저장되지 못했습니다."

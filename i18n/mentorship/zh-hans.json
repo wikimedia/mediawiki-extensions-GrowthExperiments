@@ -58,7 +58,7 @@
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|您}}未标记星号的学员",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "其他分配给{{GENDER:|您}}的学员",
 	"growthexperiments-quit-mentorship-title": "离开导师项目",
-	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "很遗憾看到您要离开了，要开始退出导师项目的流程，您首先需要[[$1|从导师列表]]移除您的名字，完成操作后，请回到本页。",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "很遗憾看到您要离开了，要开始退出导师项目的流程，您首先需要[[$1|从导师列表]]移除您的名字。完成操作后，请回到本页。",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "退出导师项目的下一步是重新分配您的学员，如果您确定要离开，请按下下面的按钮。",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "是的，重新分配我的学生",
 	"growthexperiments-quit-mentorship-success": "您的学员将很快地重新分配给其他导师。"

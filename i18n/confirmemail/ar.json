@@ -16,7 +16,7 @@
 	"growthexperiments-confirmemail-confirm-button": "{{GENDER:|أكّد|أكّدي}} عنوان البريد الإلكتروني",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|مرحبا}} $2،\n\nشكرا على إضافة بريد إلكتروني إلى حسابك في {{SITENAME}}، المسجل من عنوان الآيبي $1. \n\nيُرجَى النقر على الزر أدناه للتأكيد على أن هذا البريد الإلكتروني هو الذي {{GENDER:$2|ترغب|ترغبين}} في ربطه بحسابك \"$2\": \n\n$3 \n\nملاحظة: ينتهي رمز التأكيد هذا في $4.\n\nشكرا،\n\n{{SITENAME}} \n\n---- \n\nلإلغاء تأكيد عنوان البريد الإلكتروني (لأنك لم {{GENDER:$2|تسجل|تسجلي}} الحساب أو لأي سبب آخر)؛ {{GENDER:$2|انقر|انقري}} فوق رابط الإلغاء هذا: \n\n$5",
 	"growthexperiments-signupcampaign-title": "شكرا على دعمكم! التحقوا الآن بمجتمع المحررين الذين يساهمون في تحسين ويكيبيديا",
-	"growthexperiments-signupcampaign-body": "يمكن للتعديل في ويكيبيديا أن يكون سهلا بقدر سهولة إضافة رابط أو تغيير عبارة ما. احصلوا على اقتراحات لمقالات من {{GENDER:|اهتماماتك}} بعد إنشاء حساب خاص بكم!",
+	"growthexperiments-signupcampaign-body": "يمكن للتعديل في ويكيبيديا أن يكون سهلا بقدر سهولة إضافة رابط أو تغيير عبارة ما. {{GENDER:|احصل|احصلي}} على اقتراحات لمقالات ضمن اهتماماتك بعد إنشاء حساب خاص بك!",
 	"growthexperiments-signupcampaign-bullet1": "المقالات المقترحة من {{GENDER:|اهتماماتك}}",
 	"growthexperiments-signupcampaign-bullet2": "اطلبوا المساعدة من المساهمين الخبيرين",
 	"growthexperiments-signupcampaign-bullet3": "ابدؤوا بالتعديلات الصغيرة والسهلة"

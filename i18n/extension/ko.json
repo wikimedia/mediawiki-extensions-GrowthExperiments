@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Revi",
-			"Ykhwong"
+			"Ykhwong",
+			"MemphisA5"
 		]
 	},
 	"growthexperiments-desc": "이 확장 기능은 성장 팀의 실험적인 기능을 포함합니다.",
 	"growthexperiments-config-validator-additional-fields": "새 구성에는 여기서 사용자 지정을 할 수 없는 구성 키가 있습니다.",
+	"growthexperiments-config-validator-error": "$1에 대한 유효성 검사 실패: \"$2\"",
 	"growthexperiments-edit-config-disabled": "공동체 구성이 현재 비활성화되어 있습니다.",
 	"growthexperiments-edit-config-title": "성장 구성 편집",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: [[User:$1|$1]]에 의해 $2에 마지막으로 업데이트됨.",
