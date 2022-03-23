@@ -434,6 +434,6 @@
 	"growthexperiments-addimage-caption-info-dialog-confirm": "Capito",
 	"growthexperiments-structuredtask-user-error-login-cta": "Entra",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|altro|altri}}",
-	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Capito!",
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Capito",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Capito"
 }

@@ -44,6 +44,7 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Ne, nevěděl(a) jsem, že mohu Wikipedii editovat",
 	"welcomesurvey-question-edited-option-no-other-label": "Ne, z jiných důvodů",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Nepamatuji si",
+	"welcomesurvey-question-mailinglist-label": "Chci do e-mailu dostávat tipy, jak začít s editováním.",
 	"welcomesurvey-question-mailinglist-help": "Tento mailing list je provozován s využitím platformy Mailchimp. Využití vašich osobních údajů Mailchimpem se řídí [https://www.intuit.com/privacy/statement/ jejich pravidly pro ochranu osobních údajů] a [https://mailchimp.com/legal/terms/Terms jejich podmínkami užití].",
 	"welcomesurvey-question-email-label": "E-mailová adresa (nepovinná)",
 	"welcomesurvey-question-email-placeholder": "Zadejte svou e-mailovou adresu...",

@@ -86,7 +86,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Numero di allievi assegnati",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Circa la metà della media",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Media (default)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Media (predefinito)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Circa il doppio della media",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Gli allievi vengono assegnati casualmente ai tutor quando la loro utenza viene creata. Puoi cambiare la quantità di nuovi utenti che ti viene assegnata, ma alcuni potrebbero comunque porti domande più frequentemente di altri.",
 	"growthexperiments-mentor-writer-error-already-added": "Il tutor $1 è già stato aggiunto alla lista dei tutor"

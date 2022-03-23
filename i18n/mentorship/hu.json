@@ -38,7 +38,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Csak a megcsillagozott mentoráltak megjelenítése",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Keresés",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Nem érhetők el mentoráltadatok",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Lehet, hogy még nincsenek mentoráltak hozzád rendelve. Az adatok naponta frissülnek.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Lehet, hogy még nincsenek mentoráltak hozzád rendelve. Az adatok három óránként frissülnek.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nem találhatók mentoráltak",
 	"growthexperiments-mentor-dashboard-resources-headline": "Erőforrások",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "A mentorok listája",

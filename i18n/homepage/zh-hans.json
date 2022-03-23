@@ -331,7 +331,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|认领}} {{GENDER:$6|$3}} 作为其学员 (先前无导师)",
 	"logentry-growthexperiments-setmentor": "$1 将 {{GENDER:$5|$7}} {{GENDER:$2|指定为}} {{GENDER:$6|$3}} 的导师 (先前的{{GENDER:$4|导师}}为 $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 将 {{GENDER:$5|$7}} {{GENDER:$2|指定为}} {{GENDER:$6|$3}} 的导师 (先前无导师)",
-	"logentry-growthexperiments-addlink": "$1{{GENDER:$2|复核}}$3的$4链接建议：接受$5，拒绝$6，跳过$7",
+	"logentry-growthexperiments-addlink": "$1{{GENDER:$2|复核}}$3的{{PLURAL:$4|链接建议}}：{{PLURAL:$5|接受}}$5，{{PLURAL:$6|拒绝}}$6，{{PLURAL:$7|跳过}}$7",
 	"logentry-growthexperiments-addimage-accepted": "$1{{GENDER:$2|审核了}}$3的图片建议：接受",
 	"logentry-growthexperiments-addimage-rejected": "$1{{GENDER:$2|审核了}}$3的图片建议：拒绝",
 	"log-action-filter-growthexperiments": "GrowthExperiments事件的类型：",

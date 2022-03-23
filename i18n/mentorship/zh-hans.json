@@ -45,7 +45,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1之前活跃",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "未知",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "显示$1个",
-	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2之$1",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "第$1页，共$2页",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "无学员信息",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "您可能没有被分配任何学员。资料每三小时更新一次。",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "找不到学员",
