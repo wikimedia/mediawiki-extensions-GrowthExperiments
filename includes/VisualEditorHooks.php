@@ -63,6 +63,11 @@ class VisualEditorHooks implements
 		array $pluginData,
 		array &$apiResponse
 	) {
+		// This is going to run on every edit and not in a deferred update, so at least filter
+		// by authenticated users to make this slightly faster for anons.
+		if ( !$user->isRegistered() ) {
+			return;
+		}
 		/** @var ?TaskTypeHandler $taskTypeHandler */
 		list( $data, $taskTypeHandler, $taskTypeId ) = $this->getDataFromApiRequest( $pluginData );
 		if ( !$data || !$taskTypeId ) {
@@ -103,11 +108,15 @@ class VisualEditorHooks implements
 		if ( $apiResponse['result'] !== 'success' ) {
 			return;
 		}
+		// This is going to run on every edit and not in a deferred update, so at least filter
+		// by authenticated users to make this slightly faster for anons.
+		if ( !$user->isRegistered() ) {
+			return;
+		}
 		/** @var ?TaskTypeHandler $taskTypeHandler */
 		list( $data, $taskTypeHandler, $taskTypeId ) = $this->getDataFromApiRequest( $pluginData );
 		if ( !$data || !$taskTypeId ) {
-			// This is going to run on every edit and not in a deferred update, so at least filter
-			// by authenticated users to make this slightly faster for anons.
+
 			return;
 		}
 		$title = $this->titleFactory->castFromPageIdentity( $page );
