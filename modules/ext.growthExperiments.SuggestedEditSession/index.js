@@ -586,6 +586,8 @@
 			pluginDataKey = 'data-' + pluginName;
 		if ( !ve.init.target.saveFields[ pluginDataKey ] ) {
 			ve.init.target.saveFields[ pluginDataKey ] = function () {
+				// This is redundant data to set, but if pluginData is empty, our VisualEditor pre/post save
+				// hooks won't execute, and refactoring that to not check for plugin data is not so straightforward.
 				return JSON.stringify( { taskType: ge.suggestedEditSession.taskType } );
 			};
 			var plugins = ve.init.target.saveFields.plugins ? ve.init.target.saveFields.plugins() : [];

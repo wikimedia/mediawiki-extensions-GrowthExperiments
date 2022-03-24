@@ -64,8 +64,8 @@ class VisualEditorHooks implements
 		array &$apiResponse
 	) {
 		/** @var ?TaskTypeHandler $taskTypeHandler */
-		list( $data, $taskTypeHandler ) = $this->getDataFromApiRequest( $pluginData );
-		if ( !$data ) {
+		list( $data, $taskTypeHandler, $taskTypeId ) = $this->getDataFromApiRequest( $pluginData );
+		if ( !$data || !$taskTypeId ) {
 			// Not an edit we are interested in looking at.
 			return;
 		}
@@ -104,8 +104,8 @@ class VisualEditorHooks implements
 			return;
 		}
 		/** @var ?TaskTypeHandler $taskTypeHandler */
-		list( $data, $taskTypeHandler ) = $this->getDataFromApiRequest( $pluginData );
-		if ( !$data ) {
+		list( $data, $taskTypeHandler, $taskTypeId ) = $this->getDataFromApiRequest( $pluginData );
+		if ( !$data || !$taskTypeId ) {
 			// This is going to run on every edit and not in a deferred update, so at least filter
 			// by authenticated users to make this slightly faster for anons.
 			return;
@@ -137,7 +137,7 @@ class VisualEditorHooks implements
 
 		if ( $newRevId ) {
 			$result = $this->newcomerTasksChangeTagsManager->apply(
-				$data['taskType'], $saveResult['edit']['newrevid'], $user
+				$taskTypeId, $saveResult['edit']['newrevid'], $user
 			);
 			if ( $result->isGood() ) {
 				$apiResponse['gechangetags'] = $result->getValue();
@@ -150,13 +150,13 @@ class VisualEditorHooks implements
 	/**
 	 * Extract the data sent by the frontend structured task logic from the API request.
 	 * @param array $pluginData
-	 * @return array [ JSON data from frontend, TaskTypeHandler ] or [ null, null ]
-	 * @phan-return array{0:?array,1:?TaskTypeHandler}
+	 * @return array [ JSON data from frontend, TaskTypeHandler, task type ID ] or [ null, null, null ]
+	 * @phan-return array{0:?array,1:?TaskTypeHandler,2:?string}
 	 */
 	private function getDataFromApiRequest( array $pluginData ): array {
 		// Fast-track the common case of a non-Growth-related save - getTaskTypes() is not free.
 		if ( !$pluginData ) {
-			return [ null, null ];
+			return [ null, null, null ];
 		}
 
 		$taskTypes = $this->configurationLoader->getTaskTypes();
@@ -171,10 +171,10 @@ class VisualEditorHooks implements
 					continue;
 				}
 
-				return [ $data, $taskTypeHandler ];
+				return [ $data, $taskTypeHandler, $taskTypeId ];
 			}
 		}
-		return [ null, null ];
+		return [ null, null, null ];
 	}
 
 }
