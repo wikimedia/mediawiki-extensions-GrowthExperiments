@@ -79,7 +79,7 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 			if ( $template instanceof TitleValue ) {
 				$title = $this->titleFactory->newFromLinkTarget( $template );
 			} else {
-				$title = $this->titleFactory->newFromText( $template, NS_TEMPLATE );
+				$title = $this->titleFactory->newFromText( $template );
 			}
 			$templates[] = $title->getPrefixedText();
 		}
