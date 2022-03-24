@@ -64,7 +64,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Si vous ne pouvez pas être mentor pendant une période donnée (plus d’une semaine), vous pouvez vous mettre à l’écart. Pendant cette période, un autre mentor recevra les questions posées par vos apprentis.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Vous serez absent durant :",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "jours",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "L’entrée dans « Vous serez absent durant » n’est pas un nombre entier. Veuillez essayer à nouveau.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "L’entrée dans « {{GENDER:|}}Vous serez absent durant » n’est pas un nombre entier. Veuillez essayer à nouveau.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Une erreur inconnue s’est produite. Veuillez essayer à nouveau plus tard.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Votre statut a été changé en « Actif ».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Votre statut a été changé en « Absent ».",

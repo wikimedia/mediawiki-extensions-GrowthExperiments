@@ -341,7 +341,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1{{GENDER:$2|}} a défini $3 comme étant {{GENDER:$6|son tutoré|sa tutorée}} (pas de tuteur précédemment)",
 	"logentry-growthexperiments-setmentor": "$1{{GENDER:$2|}} a défini $7 comme étant {{GENDER:$5|le tuteur|la tutrice}} de {{GENDER:$6|$3}} ({{GENDER:$4|tuteur précédent|tutrice précédente}} : $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1{{GENDER:$2|}} a défini $7 comme étant {{GENDER:$5|le tuteur|la tutrice}} de {{GENDER:$6|$3}} (sans tuteur précédemment)",
-	"logentry-growthexperiments-addlink": "$1{{GENDER:$2|}} a relu $4 suggestions de lien pour $3 : acceptée{{PLURAL:$5||s}}, rejetée{{PLURAL:$6||s}} et omise{{PLURAL:$7||s}}",
+	"logentry-growthexperiments-addlink": "$1{{GENDER:$2|}} a relu $4 suggestion{{PLURAL:$4||s}} de lien pour $3  : $5 acceptée{{PLURAL:$5||s}}, $6 rejetée{{PLURAL:$6||s}} et $7 omise{{PLURAL:$7||s}}",
 	"logentry-growthexperiments-addimage-accepted": "$1{{GENDER:$2|}} a relu une suggestion d’image pour $3 : acceptée",
 	"logentry-growthexperiments-addimage-rejected": "$1{{GENDER:$2|}} a relu une suggestion d'image pour $3 : rejetée",
 	"log-action-filter-growthexperiments": "Type d’événement GrowthExpetiments :",

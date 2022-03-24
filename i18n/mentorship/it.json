@@ -63,7 +63,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Se non puoi seguire i tuoi allievi per uno specifico periodo di tempo (più di una settimana) puoi segnalarti come occupato. In quel periodo un altro tutor riceverà le domande dei tuoi allievi.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Sarai via per:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "giorni",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Il valore inserito in \"Sarai via per\" non è un numero. Prova di nuovo.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Il valore inserito in \"{{GENDER:|Sarai}} via per\" non è un numero. Prova di nuovo.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Si è verificato un errore sconosciuto.\nRiprova più tardi.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Il tuo stato è stato cambiato ad \"Attivo\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Il tuo stato è stato cambiato ad \"Occupato\".",

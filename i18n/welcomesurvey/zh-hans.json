@@ -3,6 +3,7 @@
 		"authors": [
 			"A Chinese Wikipedian",
 			"Josephine W.",
+			"NACHOgao3",
 			"Shizhao",
 			"Shuiwater",
 			"SomeyaMako",
@@ -50,6 +51,7 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "不，我不知道我可以编辑维基百科",
 	"welcomesurvey-question-edited-option-no-other-label": "不，因为其他原因",
 	"welcomesurvey-question-edited-option-dont-remember-label": "我不记得了",
+	"welcomesurvey-question-mailinglist-label": "我想通过电子邮件接收有关如何开始编辑的提示。",
 	"welcomesurvey-question-email-label": "电子邮箱地址 (可选)",
 	"welcomesurvey-question-email-placeholder": "输入您的电子邮箱地址…",
 	"welcomesurvey-question-email-help": "我们注意到您在创建该账户时没有输入电子邮件地址。我们<strong>强烈建议</strong>您输入电子邮件地址，因为如果您丢失了密码，您需要一个电子邮箱来恢复帐户。注意：当其他用户联系您时，您的电子邮件地址不会被泄露。",

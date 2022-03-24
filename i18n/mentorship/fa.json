@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Beginneruser",
 			"Jeeputer"
 		]
 	},
@@ -91,7 +92,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "حجم کارآموزهای {{GENDER:|شما}} به «$1» تغییر یافت.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "کارآموزها هنگام ایجاد حساب به‌طور تصادفی به مربی‌ها اختصاص می‌یابند. می‌توانید تعداد کارآموزهای اختصاص‌یافته به خود را مدیریت کنید، اما برخی کارآموزها ممکن است بیش از سایرین از شما سؤال بپرسند",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "توصیه می‌شود که پیش از کاهش یا افزایش حجم کارآموزهای اختصاص‌یافته، کار را با تنظیمات «متوسط» آغاز کنید تا ظرفیت ارائهٔ پشتیبانی از سوی خود را افزایش دهید.",
-	"growthexperiments-mentor-list-missing-key": "کلید <code>$1</code> موجود نیست",
+	"growthexperiments-mentor-list-missing-key": "کلید <code>$1</code> فراموش شده است",
 	"growthexperiments-mentor-list-datatype-mismatch": "انتظار می‌رود که <code>$1</code> برابر با <code>$2</code> باشد، اما اکنون <code>$3</code> است",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "توصیف مربی حاوی کلید دور از انتظار <code>$1</code> است",
 	"growthexperiments-mentor-writer-error-already-added": "مربی $1 از پیش به فهرست مربی‌ها افزوده شده‌است",
