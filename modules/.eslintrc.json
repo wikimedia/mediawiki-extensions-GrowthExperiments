@@ -1,0 +1,35 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/client-es5",
+		"wikimedia/jquery",
+		"wikimedia/mediawiki"
+	],
+	"globals": {
+		"ge": "writable",
+		"ve": "readonly"
+	},
+	"env": {
+		"commonjs": true
+	},
+	"rules": {
+		"max-len": "warn"
+	},
+	"settings": {
+		"jsdoc": {
+			"preferredTypes": {
+				"EndOfQueueWidget": "EndOfQueueWidget",
+				"ErrorCardWidget": "ErrorCardWidget",
+				"Help": "Help",
+				"HomepageModuleLogger": "HomepageModuleLogger",
+				"mw.libs.ge.GrowthTasksApi": "mw.libs.ge.GrowthTasksApi",
+				"NoResultsWidget": "NoResultsWidget",
+				"PostEditPanel": "PostEditPanel",
+				"QuestionPosterDialog": "QuestionPosterDialog",
+				"SuggestedEditCardWidget": "SuggestedEditCardWidget",
+				"SuggestedEditSession": "SuggestedEditSession",
+				"SuggestionWidget": "SuggestionWidget"
+			}
+		}
+	}
+}

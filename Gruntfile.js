@@ -1,9 +1,9 @@
+'use strict';
+
 module.exports = function ( grunt ) {
-	var conf = grunt.file.readJSON( 'extension.json' ),
+	const conf = grunt.file.readJSON( 'extension.json' ),
 		messageDirs = conf.MessagesDirs.GrowthExperiments,
-		messageDirsWithoutApi = messageDirs.filter( function ( dir ) {
-			return dir.indexOf( '/api' ) === -1;
-		} );
+		messageDirsWithoutApi = messageDirs.filter( ( dir ) => !dir.includes( '/api' ) );
 
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
