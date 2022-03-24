@@ -308,6 +308,7 @@ StructuredTaskArticleTarget.prototype.confirmLeavingSuggestionsMode = function (
 
 /**
  * Exit the editing mode without showing any prompts
+ *
  * @abstract
  *
  * @param {string} [trackMechanism] Abort mechanism (passed from tryTeardown)

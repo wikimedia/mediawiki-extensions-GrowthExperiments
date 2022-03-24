@@ -283,7 +283,7 @@
 				background-position-y: top;
 				padding: 0 @startEditingDialogSidePadding 24px;
 				// HACK: Work around a CSSJanus bug where padding: 0 24px 24px calc( ... ) isn't flipped
-				padding-left: calc( 128px ~'+' 1em );
+				padding-left: calc( ~'128px + 1em' );
 				// The padding-bottom: 24px; above doesn't quite work, because the height of the
 				// image isn't counted as part of the height of this div because it's a background
 				// image. Address this by using a min-height.
@@ -296,7 +296,7 @@
 				background-image: url( ../../images/difficulty-landscape-ltr.svg );
 				background-size: 216px 64px;
 				background-position-y: top;
-				padding: calc( 64px ~'+' 1em ) @startEditingDialogSidePadding 16px 0;
+				padding: calc( ~'64px + 1em' ) @startEditingDialogSidePadding 16px 0;
 			}
 		}
 
