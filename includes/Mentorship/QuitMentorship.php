@@ -139,14 +139,15 @@ class QuitMentorship {
 			}
 
 			if ( !$newMentor ) {
-				ScopedCallback::consume( $guard );
 				$this->logger->warning(
 					'QuitMentorship failed to reassign mentees for {mentor}; no mentor is available',
 					[
 						'mentor' => $this->mentor->getName()
 					]
 				);
-				return false;
+				// this is a continue, because a mentor can be available for other users (for
+				// instance, if they're a mentor themselves).
+				continue;
 			}
 
 			$changeMentor->execute(
