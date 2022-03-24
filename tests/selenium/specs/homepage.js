@@ -87,38 +87,24 @@ describe( 'Homepage', function () {
 		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
 	} );
 
-	it.skip( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', async () => {
+	it( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', async () => {
 		await HomepagePage.open();
-		assert( HomepagePage.suggestedEditsCard.isExisting() );
-		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'Douglas Adams' );
-		// The previous/next buttons start out as disabled, and then are switched to
-		// enabled/disabled depending on where in the task queue the user is.
-		await browser.waitUntil( async () => {
-			return await HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ) === 'false';
-		} );
-		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'true' );
-		await HomepagePage.suggestedEditsNextButton.waitForClickable();
-		assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'false' );
-		await HomepagePage.suggestedEditsNextButton.click();
-		await browser.waitUntil( async () => {
-			return await HomepagePage.suggestedEditsCardTitle.getText() === 'The Hitchhiker\'s Guide to the Galaxy';
-		} );
-		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'The Hitchhiker\'s Guide to the Galaxy' );
-		// Go back to first card and check that previous button is disabled.
-		await HomepagePage.suggestedEditsPreviousButton.click();
-		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'true' );
-		// Go forwards again.
-		await HomepagePage.suggestedEditsNextButton.click();
-		await browser.waitUntil( async () => {
-			return await HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ) === 'false';
-		} );
-		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'false' );
-		assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'false' );
+		await assert( HomepagePage.suggestedEditsCard.isExisting() );
+		await HomepagePage.assertCardTitleIs( 'Classical kemençe' );
+		await HomepagePage.waitForInteractiveTaskFeed();
+		// Previous button should be disabled when on first card.
+		await HomepagePage.assertPreviousButtonIsDisabled();
+		await HomepagePage.advanceToNextCard();
+		await HomepagePage.assertCardTitleIs( 'Cretan lyra' );
+		await HomepagePage.goBackToPreviousCard();
+		// Previous button should still be disabled on first card.
+		await HomepagePage.assertPreviousButtonIsDisabled();
+		await HomepagePage.advanceToNextCard();
 		// Go to the end of queue card.
-		await HomepagePage.suggestedEditsNextButton.click();
-		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'No more suggestions' );
-		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'false' );
-		assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'true' );
+		await HomepagePage.advanceToNextCard();
+		await HomepagePage.assertCardTitleIs( 'No more suggestions' );
+		// Users should not be able to navigate past the end of queue card.
+		await HomepagePage.assertNextButtonIsDisabled();
 	} );
 
 } );

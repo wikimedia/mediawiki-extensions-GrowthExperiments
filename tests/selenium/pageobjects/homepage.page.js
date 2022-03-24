@@ -2,10 +2,11 @@
 
 const Page = require( 'wdio-mediawiki/Page' ),
 	Api = require( 'wdio-mediawiki/Api' ),
+	Util = require( 'wdio-mediawiki/Util' ),
+	assert = require( 'assert' ),
 	childProcess = require( 'child_process' ),
 	path = require( 'path' ),
 	ip = path.resolve( __dirname + '/../../../../../' );
-const Util = require( 'wdio-mediawiki/Util' );
 
 class HomepagePage extends Page {
 	get homepage() { return $( '#ca-homepage' ); }
@@ -14,7 +15,7 @@ class HomepagePage extends Page {
 	get suggestedEditsCardTitle() { return $( '.se-card-title' ); }
 	get suggestedEditsCardUrl() { return $( '.suggested-edits-card a' ); }
 	get suggestedEditsPreviousButton() { return $( '.suggested-edits-previous .oo-ui-buttonElement-button' ); }
-	get suggestedEditsNextButton() { return $( '.suggested-edits-next' ); }
+	get suggestedEditsNextButton() { return $( '.suggested-edits-next .oo-ui-buttonElement-button' ); }
 	get newcomerTaskArticleEditButton() { return $( '#ca-ve-edit' ); }
 	get newcomerTaskArticleSaveButton() { return $( '.ve-ui-mwSaveDialog .oo-ui-processDialog-actions-primary' ); }
 	get helpPanelCloseButton() { return $( '.mw-ge-help-panel-processdialog .oo-ui-processDialog-actions-primary .oo-ui-buttonElement-button' ); }
@@ -27,6 +28,52 @@ class HomepagePage extends Page {
 		query = query || {};
 		fragment = fragment || '';
 		super.openTitle( 'Special:Homepage', query, fragment );
+	}
+
+	async assertCardTitleIs( titleText ) {
+		await browser.waitUntil( async () => {
+			return await this.suggestedEditsCardTitle.getText() === titleText;
+		} );
+		assert.strictEqual( await this.suggestedEditsCardTitle.getText(), titleText );
+	}
+
+	async waitForInteractiveTaskFeed() {
+		// The previous/next buttons start out as disabled, and then are switched to
+		// enabled/disabled depending on where in the task queue the user is.
+		await browser.waitUntil( async () => {
+			return await this.suggestedEditsNextButton.getAttribute( 'aria-disabled' ) !== 'true';
+		} );
+		await this.suggestedEditsNextButton.waitForClickable();
+		assert.strictEqual( await this.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'true' );
+		assert.notEqual( await this.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'true' );
+	}
+
+	async advanceToNextCard() {
+		const oldTitle = await this.suggestedEditsCardTitle.getText();
+		await browser.waitUntil( async () => {
+			return await this.suggestedEditsNextButton.isClickable();
+		} );
+		await this.suggestedEditsNextButton.click();
+		await browser.waitUntil( async () => {
+			return await this.suggestedEditsCardTitle.getText() !== oldTitle;
+		} );
+	}
+
+	async goBackToPreviousCard() {
+		const oldTitle = await this.suggestedEditsCardTitle.getText();
+		await this.suggestedEditsPreviousButton.click();
+		await browser.waitUntil( async () => {
+			return await this.suggestedEditsCardTitle.getText() !== oldTitle;
+		} );
+		await this.suggestedEditsNextButton.isClickable();
+	}
+
+	async assertPreviousButtonIsDisabled() {
+		assert.strictEqual( await this.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'true' );
+	}
+
+	async assertNextButtonIsDisabled() {
+		assert.strictEqual( await this.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'true' );
 	}
 
 	async waitUntilRecentChangesItemExists( tag, title, user ) {
