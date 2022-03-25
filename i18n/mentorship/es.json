@@ -6,6 +6,7 @@
 			"Danniel07",
 			"DiegoAmbrocio",
 			"Fewasser Traduce",
+			"Josuert",
 			"Warming Hearth",
 			"Zapipedia (WMF)"
 		]
@@ -67,6 +68,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Estarás ausente por:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "días",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "\"Estarás fuera durante\" debe ser un número entero. Por favor, inténtalo de nuevo.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "La entrada en \"{{GENDER:|You'll}} be gone for\" es demasiado alta. El número máximo de días que un mentor puede ausentarse es 365 (un año).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ha ocurrido un error desconocido. Por favor, inténtalo de nuevo.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Tu estado ha cambiado a \"Activo\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Tu estado ha cambiado a \"Inactivo\".",

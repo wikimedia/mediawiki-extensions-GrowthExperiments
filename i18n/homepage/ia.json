@@ -292,7 +292,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|ha adoptate}} {{GENDER:$6|$3}} como su apprentisse (nulle previe mentor)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|ha definite}} {{GENDER:$5|$7}} como le mentor de {{GENDER:$6|$3}} (previe {{GENDER:$4|mentor}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|ha definite}} {{GENDER:$5|$7}} como le mentor de {{GENDER:$6|$3}} (nulle previe mentor)",
-	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|ha revidite}} $4 suggestiones de ligamine pro $3: $5 acceptate, $6 rejectate e $7 saltate",
+	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|revideva}} $4 suggestion{{PLURAL:$4||es}} de ligamine pro $3: $5 acceptate, $6 rejectate e $7 saltate",
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|ha revidite}} un suggestion de imagine pro $3: acceptate",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|ha revidite}} un suggestion de imagine pro $3: rejectate",
 	"log-action-filter-growthexperiments": "Typo de evento GrowthExperiments:",

@@ -61,6 +61,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Veți fi {{GENDER:|plecat|plecată}} pentru:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "zile",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Intrarea la „Veți fi {{GENDER:|plecat|plecată}} pentru:” nu este un întreg. Vă rugăm să încercați din nou.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Data de intrare de la „Veți fi {{GENDER:|plecat|plecată}} pentru” are valoarea prea mare. Numărul maxim de zile pentru care un mentor poate fi plecat este de 365 (un an).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "A avut loc o eroare necunoscută. Vă rugăm să încercați din nou mai târziu.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Starea v-a fost schimbată la „{{GENDER:|Activ|Activă}}”.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Starea v-a fost schimbată la „{{GENDER:|Indisponibil|Indisponibilă}}”.",

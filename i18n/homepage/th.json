@@ -9,7 +9,8 @@
 			"MOphaswongse (WMF)",
 			"Patsagorn Y.",
 			"Prame Tan",
-			"Thas Tayapongsak"
+			"Thas Tayapongsak",
+			"Trisorn Triboon"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|สวัสดี}} {{bidi:$1}}!",
@@ -176,6 +177,8 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "ขยายความบทความสั้น",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "เพิ่มลิงก์ระหว่างบทความ",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "เพิ่มลิงก์ระหว่างบทความ",
+	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "ตรงกันทั้งหมด",
+	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "ตรงกับใด ๆ ก็ได้",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "ชีวประวัติ (ทั้งหมด)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "ชีวประวัติ (ผู้หญิง)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "อาหารและเครื่องดื่ม",

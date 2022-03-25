@@ -4,6 +4,7 @@
 			"Can",
 			"Hedda",
 			"Melissadilara",
+			"Oyuncu",
 			"SaldırganSincap",
 			"ToprakM"
 		]
@@ -54,6 +55,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "İptal",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Durdur",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "gün",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "{{GENDER:|You'll}}için\" girdisi çok yüksek. Bir mentorun uzak kalabileceği maksimum gün sayısı 365'tir (1 yıl).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Bilinmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Durumunuz \"Etkin\" olarak değiştirildi.",
 	"growthexperiments-rcfilters-mentorship-title": "Danışmanlık",
