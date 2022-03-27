@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks;
 use ChangeTags;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use IContextSource;
@@ -63,21 +64,27 @@ class NewcomerTasksChangeTagsManager {
 	}
 
 	/**
+	 * Apply change tags to a newcomer task.
+	 *
+	 * Note that this should only be used with non-VisualEditor based edits. VE edits are handled via
+	 * the onVisualEditorApiVisualEditorEditPreSave hook, which also allows for displaying the change
+	 * tags in the RecentChanges feed.
+	 *
+	 * Also note that using this method will set the tags for display in article history but it will
+	 * not appear in RecentChanges (T24509).
+	 *
 	 * @param string $taskTypeId
 	 * @param int $revisionId
 	 * @param UserIdentity $userIdentity
 	 * @return StatusValue
 	 */
 	public function apply( string $taskTypeId, int $revisionId, UserIdentity $userIdentity ): StatusValue {
-		$result = $this->checkUserAccess( $userIdentity );
+		$result = $this->getTags( $taskTypeId, $userIdentity );
+
 		if ( !$result->isGood() ) {
 			return $result;
 		}
-
-		$taskType = $this->configurationLoader->getTaskTypes()[$taskTypeId] ?? null;
-		if ( !$taskType ) {
-			return StatusValue::newFatal( 'Invalid task type ID: ' . $taskTypeId );
-		}
+		$tags = $result->getValue();
 
 		$revision = $this->revisionLookup->getRevisionById( $revisionId );
 		if ( !$revision ) {
@@ -98,11 +105,10 @@ class NewcomerTasksChangeTagsManager {
 			return $result;
 		}
 
-		$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
 		$rc_id = null;
 		$log_id = null;
 		$result = ChangeTags::updateTags(
-			$taskTypeHandler->getChangeTags( $taskType->getId() ),
+			$tags,
 			null,
 			$rc_id,
 			$revisionId,
@@ -114,8 +120,10 @@ class NewcomerTasksChangeTagsManager {
 		LoggerFactory::getInstance( 'GrowthExperiments' )->debug(
 			'ChangeTags::updateTags result in NewcomerTaskCompleteHandler: ' . json_encode( $result )
 		);
+		// This is needed for non-VE edits.
+		// VE edits are incremented in the post-save VisualEditor hook.
 		$this->perDbNameStatsdDataFactory->increment(
-			'GrowthExperiments.NewcomerTask.' . $taskType->getId() . '.Save'
+			'GrowthExperiments.NewcomerTask.' . $taskTypeId . '.Save'
 		);
 		return StatusValue::newGood( $result );
 	}
@@ -156,6 +164,25 @@ class NewcomerTasksChangeTagsManager {
 			return StatusValue::newFatal( 'Suggested edits are not enabled or activated for your user.' );
 		}
 		return StatusValue::newGood();
+	}
+
+	/**
+	 * @param string $taskTypeId
+	 * @param UserIdentity $userIdentity
+	 * @return StatusValue
+	 */
+	public function getTags( string $taskTypeId, UserIdentity $userIdentity ): StatusValue {
+		$result = $this->checkUserAccess( $userIdentity );
+		if ( !$result->isGood() ) {
+			return $result;
+		}
+		$taskType = $this->configurationLoader->getTaskTypes()[$taskTypeId] ?? null;
+		if ( !$taskType instanceof TaskType ) {
+			return StatusValue::newFatal( 'Invalid task type ID: ' . $taskTypeId );
+		}
+		$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
+		$tags = $taskTypeHandler->getChangeTags( $taskType->getId() );
+		return StatusValue::newGood( $tags );
 	}
 
 }

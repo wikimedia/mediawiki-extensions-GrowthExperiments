@@ -3,7 +3,6 @@
 namespace GrowthExperiments;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
@@ -11,6 +10,7 @@ use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPreSaveHook;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
 use OutOfBoundsException;
+use PrefixingStatsdDataFactoryProxy;
 use Status;
 use TitleFactory;
 use UnexpectedValueException;
@@ -33,25 +33,25 @@ class VisualEditorHooks implements
 	private $configurationLoader;
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
-	/** @var NewcomerTasksChangeTagsManager */
-	private $newcomerTasksChangeTagsManager;
+	/** @var PrefixingStatsdDataFactoryProxy */
+	private $perDbNameStatsdDataFactory;
 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
+	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		ConfigurationLoader $configurationLoader,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
+		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
-		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
+		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 	}
 
 	/** @inheritDoc */
@@ -136,23 +136,16 @@ class VisualEditorHooks implements
 		if ( $status->isGood() ) {
 			$apiResponse['gelogid'] = $status->getValue()['logId'] ?? null;
 			$apiResponse['gewarnings'][] = $status->getValue()['warnings'] ?? '';
-
+			if ( $newRevId ) {
+				$this->perDbNameStatsdDataFactory->increment(
+					'GrowthExperiments.NewcomerTask.' . $taskTypeId . '.Save'
+				);
+			}
 		} else {
 			// FIXME expose error formatter to hook so this can be handled better
 			$errorMessage = Status::wrap( $status )->getWikiText();
 			$apiResponse['errors'][] = $errorMessage;
 			Util::logStatus( $status );
-		}
-
-		if ( $newRevId ) {
-			$result = $this->newcomerTasksChangeTagsManager->apply(
-				$taskTypeId, $saveResult['edit']['newrevid'], $user
-			);
-			if ( $result->isGood() ) {
-				$apiResponse['gechangetags'] = $result->getValue();
-			} else {
-				$apiResponse['errors'][] = Status::wrap( $status )->getWikiText();
-			}
 		}
 	}
 

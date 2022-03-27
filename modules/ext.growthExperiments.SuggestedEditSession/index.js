@@ -596,6 +596,10 @@
 				return plugins;
 			};
 		}
+
+		// HACK: Some VE edits end up with editorInterface set to null;
+		// set it here to avoid this.
+		ge.suggestedEditSession.editorInterface = ge.suggestedEditSession.editorInterface || 'visualeditor';
 	} );
 
 	module.exports = SuggestedEditSession;

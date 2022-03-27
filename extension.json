@@ -231,7 +231,8 @@
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 				"GrowthExperimentsLinkRecommendationStore",
 				"GrowthExperimentsLinkRecommendationHelper",
-				"SpecialPageFactory"
+				"SpecialPageFactory",
+				"GrowthExperimentsNewcomerTasksChangeTagsManager"
 			]
 		},
 		"parserfunctions": {
@@ -300,7 +301,7 @@
 				"TitleFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
-				"GrowthExperimentsNewcomerTasksChangeTagsManager"
+				"PerDbNameStatsdDataFactory"
 			]
 		}
 	},
@@ -320,6 +321,7 @@
 			"mentordashboard",
 			"mentoruseroptions"
 		],
+		"RecentChange_save": "homepage",
 		"LocalUserCreated": [
 			"helppanel",
 			"homepage",

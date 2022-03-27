@@ -56,7 +56,6 @@ describe( 'add link', function () {
 		requests.forEach( function ( request ) {
 			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-link-recommendation' ] ) {
 				savedRevId = request.response.body.visualeditoredit.newrevid;
-				assert.deepEqual( request.response.body.visualeditoredit.gechangetags[ 0 ], [ 'newcomer task', 'newcomer task add link' ] );
 			}
 		} );
 

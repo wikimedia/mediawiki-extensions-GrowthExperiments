@@ -21,6 +21,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\GrowthArticleTopicFeature;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -50,6 +51,7 @@ use MediaWiki\Content\Hook\SearchDataForIndexHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Hook\PersonalUrlsHook;
+use MediaWiki\Hook\RecentChange_saveHook;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Hook\SiteNoticeAfterHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
@@ -87,6 +89,11 @@ use User;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\ILoadBalancer;
 
+/**
+ * Hook implementations that related directly or indirectly to Special:Homepage.
+ *
+ * Most suggested edits related hooks are defined here.
+ */
 class HomepageHooks implements
 	SpecialPage_initListHook,
 	BeforePageDisplayHook,
@@ -106,7 +113,8 @@ class HomepageHooks implements
 	SiteNoticeAfterHook,
 	SearchDataForIndexHook,
 	FormatAutocommentsHook,
-	PageSaveCompleteHook
+	PageSaveCompleteHook,
+	RecentChange_saveHook
 {
 	use GrowthConfigLoaderStaticTrait;
 
@@ -163,6 +171,8 @@ class HomepageHooks implements
 	private $jobQueueGroup;
 	/** @var SpecialPageFactory */
 	private $specialPageFactory;
+	/** @var NewcomerTasksChangeTagsManager */
+	private $newcomerTasksChangeTagsManager;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
@@ -185,6 +195,7 @@ class HomepageHooks implements
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 * @param SpecialPageFactory $specialPageFactory
+	 * @param NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
 	 */
 	public function __construct(
 		Config $config,
@@ -203,7 +214,8 @@ class HomepageHooks implements
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkRecommendationStore $linkRecommendationStore,
 		LinkRecommendationHelper $linkRecommendationHelper,
-		SpecialPageFactory $specialPageFactory
+		SpecialPageFactory $specialPageFactory,
+		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
 	) {
 		$this->config = $config;
 		$this->campaignConfig = $campaignConfig;
@@ -222,6 +234,7 @@ class HomepageHooks implements
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->specialPageFactory = $specialPageFactory;
+		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -1401,6 +1414,38 @@ class HomepageHooks implements
 		if ( $context->getRequest()->getBool( 'gesuggestededit' ) ) {
 			$startTimeInMilliseconds = round( microtime( true ) * 1000 );
 			$out->addJsConfigVars( 'suggestedEditSessionStartTime', $startTimeInMilliseconds );
+		}
+	}
+
+	/** @inheritDoc */
+	public function onRecentChange_save( $recentChange ) {
+		$context = RequestContext::getMain();
+		$request = $context->getRequest();
+		$user = $recentChange->getPerformerIdentity();
+		if ( !$user->isRegistered() ) {
+			return;
+		}
+		$plugins = $request->getVal( 'plugins', '' );
+		if ( !$plugins ) {
+			return;
+		}
+		$pluginData = json_decode( $request->getVal( 'data-' . $plugins, '' ), true );
+
+		if ( !$pluginData || !isset( $pluginData['taskType'] ) ) {
+			return;
+		}
+		if ( !SuggestedEdits::isEnabledForAnyone( $context->getConfig() ) ) {
+			return;
+		}
+		if ( SuggestedEdits::isActivated( $context, $this->userOptionsLookup ) ) {
+			$taskTypeId = $pluginData['taskType'];
+			$tags = $this->newcomerTasksChangeTagsManager->getTags(
+				$taskTypeId,
+				$recentChange->getPerformerIdentity()
+			);
+			if ( $tags->isGood() ) {
+				$recentChange->addTags( $tags->getValue() );
+			}
 		}
 	}
 }

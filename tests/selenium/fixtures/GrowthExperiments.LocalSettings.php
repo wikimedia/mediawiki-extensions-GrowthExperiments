@@ -44,7 +44,8 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				new Task(
 					$linkRecommendationTaskType, new TitleValue( NS_MAIN, "The_Hitchhiker's_Guide_to_the_Galaxy" )
 				),
-				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Classical kemençe' ) )
+				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Classical kemençe' ) ),
+				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Cretan lyra' ) )
 			], $services->getTitleFactory() );
 		}
 	);

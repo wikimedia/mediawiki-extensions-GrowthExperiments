@@ -37,7 +37,7 @@ TopicFilters.prototype.getTopics = function () {
 };
 
 /**
- * Return the the current set topic match mode
+ * Return the current set topic match mode
  *
  * @return {string} One of ( 'OR', 'AND' )
  * @see TOPIC_MATCH_MODES

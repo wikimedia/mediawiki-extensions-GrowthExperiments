@@ -21,28 +21,44 @@ describe( 'Homepage', function () {
 		await HomepagePage.suggestedEditsCard.click();
 
 		await browser.setupInterceptor();
-		await HomepagePage.editAndSaveArticle( '.' );
+		await HomepagePage.editAndSaveArticle( 'first edit' );
 		await HomepagePage.rebuildRecentChanges();
 
 		// Get the revision ID of the change that was just made.
-		const requests = await browser.getRequests();
+		let requests = await browser.getRequests();
 		let savedRevId;
 		requests.forEach( function ( request ) {
 			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-copyedit' ] ) {
 				savedRevId = request.response.body.visualeditoredit.newrevid;
-				assert.deepEqual( request.response.body.visualeditoredit.gechangetags[ 0 ], [ 'newcomer task', 'newcomer task copyedit' ] );
 			}
 		} );
 
 		const username = await browser.execute( function () {
 			return mw.user.getName();
 		} );
-		let result;
-		result = await HomepagePage.waitUntilRecentChangesItemExists( 'newcomer task copyedit', copyeditArticle, username );
+		let result = await HomepagePage.waitUntilRecentChangesItemExists( 'newcomer task copyedit', copyeditArticle, username );
 		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
 
+		// Follow-up edit.
+		await HomepagePage.postEditDialogCloseButton.click();
+
+		await HomepagePage.editAndSaveArticle( 'second edit' );
+		await HomepagePage.rebuildRecentChanges();
+		requests = await browser.getRequests();
+		requests.forEach( function ( request ) {
+			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-copyedit' ] ) {
+				savedRevId = request.response.body.visualeditoredit.newrevid;
+			}
+		} );
+
 		result = await HomepagePage.waitUntilRecentChangesItemExists( 'newcomer task copyedit', copyeditArticle, username );
-		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
+		let found = false;
+		result.query.recentchanges.forEach( function ( rc ) {
+			if ( rc.revid === savedRevId ) {
+				found = true;
+			}
+		} );
+		assert.ok( found );
 	} );
 
 	it.skip( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', async () => {

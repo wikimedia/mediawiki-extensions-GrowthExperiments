@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Rest\Handler;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\Rest\Handler\NewcomerTaskCompleteHandler;
 use HashConfig;
@@ -157,7 +158,8 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 		$context->method( 'getUser' )->willReturn( $user );
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
 		$configurationLoader->method( 'getTaskTypes' )->willReturn(
-			[ 'copyedit' => 'copyedit', 'link-recommendation' => 'link-recommendation' ]
+			[ 'copyedit' => new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
+				'link-recommendation' => new TaskType( 'link-recommendation', TaskType::DIFFICULTY_EASY ) ]
 		);
 		$handler = $this->getNewcomerTaskCompleteHandler(
 			$context,
@@ -190,7 +192,7 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 		);
 		$newcomerTasksChangeTagsHandler = new NewcomerTasksChangeTagsManager(
 			$userOptionsLookup,
-			$this->createNoOpMock( TaskTypeHandlerRegistry::class ),
+			$this->createMock( TaskTypeHandlerRegistry::class ),
 			$configurationLoader,
 			$this->createNoOpMock( \PrefixingStatsdDataFactoryProxy::class ),
 			$revisionLookup,

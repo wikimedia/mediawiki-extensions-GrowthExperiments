@@ -19,6 +19,8 @@ class HomepagePage extends Page {
 	get savePageDots() { return $( '.ve-ui-toolbar-saveButton' ); }
 	get articleBodyContent() { return $( '.mw-body-content.ve-ui-surface' ); }
 	get postEditDialog() { return $( '.mw-ge-help-panel-postedit-dialog' ); }
+	get postEditDialogCloseButton() { return $( '.mw-ge-help-panel-postedit-dialog .oo-ui-processDialog-actions-safe' ); }
+	get postEditDialogNextSuggestionCard() { return $( '.mw-ge-help-panel-postedit-dialog .mw-ge-small-task-card' ); }
 
 	open() {
 		super.openTitle( 'Special:Homepage' );
@@ -35,12 +37,13 @@ class HomepagePage extends Page {
 				rctitle: title,
 				rcuser: user
 			} );
-			return result.query.recentchanges.length === 1;
+			return result.query.recentchanges.length >= 1;
 		} );
 		return result;
 	}
 
 	async editAndSaveArticle( textToAppend ) {
+		await this.newcomerTaskArticleEditButton.waitForClickable();
 		await this.newcomerTaskArticleEditButton.click();
 		await this.articleBodyContent.waitForClickable( { timeout: 20000 } );
 		await this.articleBodyContent.click();
@@ -71,8 +74,8 @@ class HomepagePage extends Page {
 	}
 
 	async waitForDisplayedAndClickable( element ) {
-		await element.waitForClickable( { timeout: 30000 } );
 		await element.waitForDisplayed( { timeout: 30000 } );
+		await element.waitForClickable( { timeout: 30000 } );
 	}
 }
 

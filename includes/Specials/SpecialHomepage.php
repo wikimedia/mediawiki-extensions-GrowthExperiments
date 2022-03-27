@@ -370,7 +370,11 @@ class SpecialHomepage extends SpecialPage {
 		}
 	}
 
-	private function handleNewcomerTask( string $par = null ) {
+	/**
+	 * @param string|null $par The URL path arguments after Special:Homepage
+	 * @return bool
+	 */
+	private function handleNewcomerTask( string $par = null ): bool {
 		if ( !$par || strpos( $par, 'newcomertask/' ) !== 0 ||
 			 !SuggestedEdits::isEnabled( $this->getContext() ) ) {
 			return false;
@@ -427,6 +431,7 @@ class SpecialHomepage extends SpecialPage {
 			$suggestedEdits instanceof SuggestedEdits ? $suggestedEdits->getRedirectParams( $taskTypeId ) : []
 		);
 		$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.NewcomerTask.' . $taskTypeId . '.Click' );
+
 		$this->getOutput()->redirect(
 			$title->getFullUrlForRedirect( $redirectParams )
 		);

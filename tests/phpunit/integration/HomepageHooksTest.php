@@ -3,7 +3,10 @@
 namespace GrowthExperiments\Tests;
 
 use ContentHandler;
+use FauxRequest;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -17,6 +20,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWikiIntegrationTestCase;
 use ParserOutput;
 use RawMessage;
+use RecentChange;
 use RequestContext;
 use ResourceLoaderContext;
 use SearchEngine;
@@ -86,12 +90,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		bool $expectPrimaryRead,
 		bool $expectDeleted
 	) {
-		// hack - phpunit refuses to proxy calls if the constructor is disabled, and the constructor
-		// has way too many parameters
-		$homepageHooks = new class extends HomepageHooks {
-			public function __construct() {
-			}
-		};
+		$homepageHooks = $this->getHomepageHooks();
 		$fields = [];
 		$page = $this->createNoOpMock( WikiPage::class, [ 'getRevisionRecord', 'getTitle' ] );
 		TestingAccessWrapper::newFromObject( $homepageHooks )->canAccessPrimary = true;
@@ -158,6 +157,60 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			'page has current recommendation + replag (purge after edit + generate)' => [ 100, 90, 100, true, false ],
 			'recommendation was deleted recently (purge after edit)' => [ 100, 90, null, true, false ],
 		];
+	}
+
+	/**
+	 * @return HomepageHooks
+	 */
+	private function getHomepageHooks(): HomepageHooks {
+		// hack - phpunit refuses to proxy calls if the constructor is disabled, and the constructor
+		// has way too many parameters
+		return new class extends HomepageHooks {
+			public function __construct() {
+			}
+		};
+	}
+
+	/**
+	 * @covers ::onRecentChange_save
+	 */
+	public function testOnRecentChange_save() {
+		// FIXME: These tests should cover a success case as well, and should
+		// use a data provider for the test cases.
+		$this->setMwGlobals( [ 'GEHomepageSuggestedEditsEnabled' => true ] );
+		$homepageHooks = $this->getHomepageHooks();
+		$services = MediaWikiServices::getInstance();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		TestingAccessWrapper::newFromObject( $homepageHooks )
+			->userOptionsLookup = $services->getUserOptionsLookup();
+		TestingAccessWrapper::newFromObject( $homepageHooks )
+			->taskTypeHandlerRegistry = $growthServices->getTaskTypeHandlerRegistry();
+
+		$request = new FauxRequest( [ 'taskType' => 'copyedit' ], true );
+		$this->setRequest( $request );
+		// 1. Anon users don't get to add newcomer task tags.
+		$recentChange = new RecentChange();
+		$recentChange->setAttribs( [
+			'tags' => [ 'foo' ],
+			'rc_user' => 0,
+			'rc_user_text' => 'Anonymous'
+		] );
+		$homepageHooks->onRecentChange_save( $recentChange );
+		$this->assertArrayEquals( [ 'foo' ], $recentChange->getAttribute( 'tags' ) );
+
+		// Auth user tests with users who have activated Suggested Edits.
+		$user = $this->getMutableTestUser()->getUser();
+		$services->getUserOptionsManager()->setOption( $user, SuggestedEdits::ACTIVATED_PREF, 1 );
+		$services->getUserOptionsManager()->saveOptions( $user );
+
+		// 2. No tags added without plugins.
+		$recentChange = new RecentChange();
+		$recentChange->setAttribs( [
+			'tags' => [ 'foo' ],
+			'rc_user' => $user->getId()
+		] );
+		$homepageHooks->onRecentChange_save( $recentChange );
+		$this->assertArrayEquals( [ 'foo' ], $recentChange->getAttribute( 'tags' ) );
 	}
 
 }
