@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Lemure Saltante",
-			"ValeJappo"
+			"ValeJappo",
+			"Elitre (WMF)"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Ricevi domande formattate inviate tramite il modulo della pagina iniziale",
@@ -10,8 +11,8 @@
 	"apihelp-homepagequestionstore-param-storage": "Posizione di archiviazione della domanda.",
 	"apihelp-homepagequestionstore-param-userid": "L'ID utente per ricevere domande.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Nessuna richiesta trovata",
-	"apihelp-growthsetmentor-summary": "Imposta mentore dell'utente. Le modifiche verranno registrate pubblicamente.",
+	"apihelp-growthsetmentor-summary": "Imposta tutor dell'utente. Le modifiche verranno registrate pubblicamente.",
 	"apihelp-growthsetmentor-param-mentee": "Nome utente dell'allievo",
-	"apihelp-growthsetmentor-param-mentor": "Nome del mentore",
+	"apihelp-growthsetmentor-param-mentor": "Nome del tutor",
 	"apihelp-growthsetmentor-param-reason": "Motivo della modifica"
 }
