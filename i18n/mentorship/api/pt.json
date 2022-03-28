@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Marcar ou desmarcar um mentorado como tendo sido destacado pelo utilizador corrente (informação armazenada de forma confidencial e não incluída nos registos)",
+	"apihelp-growthstarmentee-param-gesaction": "Ação a tomar (<kbd>star</kbd> para destacar ou <kbd>unstar</kbd> para remover destaque)",
+	"apihelp-growthstarmentee-param-gesmentee": "Mentorado a destacar ou remover destaque",
+	"apihelp-query+growthstarredmentees-summary": "Obter lista de mentorados destacados pelo mentor que está autenticado neste momento",
+	"apihelp-growthsetmentorstatus-summary": "Definir o estado de mentor do utilizador atual como ativo/ausente",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Estado novo",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Ao declarar o mentor ausente, tem de ser definido aqui o período do estado de ausência (em dias)",
+	"apihelp-query+growthmentorstatus-summary": "Consultar o estado de mentor do utilizador corrente",
+	"apihelp-growthmentordashboardupdatedata-summary": "Agendar uma atualização extraordinária do módulo de visão geral do mentorado no painel de controlo do mentor. Por motivos de desempenho, só pode agendar uma atualização a cada duas horas.",
+	"apihelp-growthsetmentorweight-summary": "Definir peso do mentor que está autenticado neste momento",
+	"apihelp-growthsetmentorweight-param-geweight": "Peso numérico do mentor; quanto menor o valor, menos recém-chegados lhe serão atribuídos",
+	"apihelp-growthsetmenteestatus-summary": "Definir estado do mentor (permite que os mentorados ativem ou desativem o módulo de mentoria, ou que optem pela sua exclusão permanente, o que apaga a relação mentorado/mentor)",
+	"apihelp-growthsetmenteestatus-param-state": "Novo estado do mentorado (aviso: optar pela exclusão permanente apagará de forma permanente a relação mentorado/mentor)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "O módulo de mentoria está activado",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "O módulo de mentoria está completamente desativado. Isto é normalmente definido pelo software e usado para testes A/B.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "O mentorado optou pela sua exclusão da mentoria; a relação mentorado/mentor será apagada e o módulo de mentoria será substituído por uma opção de voltar a ser incluído",
+	"apihelp-query+growthmenteestatus-summary": "Consultar o estado de mentorado do utilizador atual; ver a documentação de action=growthsetmentorweight para obter informação detalhada sobre os estados individuais.",
+	"apihelp-query+growthmentormentee-summary": "Obter todos os mentorados atribuídos a um mentor específico",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor cujos mentorados serão obtidos"
+}

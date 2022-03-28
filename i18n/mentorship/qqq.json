@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Martin Urbanec (WMF)",
 			"Robby",
 			"Xiplus",
@@ -63,8 +64,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Label in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Label in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "Label in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}\n\n{{identical|Day}}",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Error message in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Error message in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Error message in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module.\n\n\"You'll be gone for\" is {{msg-mw|Growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for}}\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Error message in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module.\n\n\"You'll be gone for\" is {{msg-mw|Growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for}}\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Error message in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Success message displayed after changing mentor's status to active\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Success message displayed after changing mentor's status to away\n\n{{doc-growthexperiments-mentor-dashboard}}",

@@ -62,6 +62,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "{{GENDER:|תיעדר|תיעדרי}} למשך:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ימים",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "הקלט ב\"{{GENDER:|תיעדר|תיעדרי}} למשך\" אינו מספר שלם. {{GENDER:|נסה|נסי}} שוב.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "הקלט ב\"{{GENDER:|תיעדר|תיעדרי}} למשך\" גבוה מדי. המספר המרבי של ימים שחונך יכול להיעדר בהם הוא 365 (שנה אחת).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "אירעה שגיאה לא ידועה. נא לנסות שוב מאוחר יותר.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "המצב שלך השתנה ל\"{{GENDER:|פעיל|פעילה}}\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "המצב שלך השתנה ל\"לא בסביבה\".",

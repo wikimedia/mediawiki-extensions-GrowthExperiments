@@ -3,6 +3,7 @@
 		"authors": [
 			"Ajeje Brazorf",
 			"Beta16",
+			"Sakretsu",
 			"Stefano",
 			"ValeJappo"
 		]
@@ -56,8 +57,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Stato del tutor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Attivo",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Occupato",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Siccome sarai occupato fino al $1, i tuoi allievi saranno temporaneamente riassegnati ad un altro tutor.",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Segnalati come 'occupato'",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Siccome sarai impegnato/a fino al $1, i tuoi allievi saranno temporaneamente riassegnati a un altro tutor.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Segnala che sei 'impegnato/a'",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Annulla",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pausa",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Se non puoi seguire i tuoi allievi per uno specifico periodo di tempo (più di una settimana) puoi segnalarti come occupato. In quel periodo un altro tutor riceverà le domande dei tuoi allievi.",

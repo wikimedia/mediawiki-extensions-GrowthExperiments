@@ -74,7 +74,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "您的状态已变更为“离开”。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "给学员的信息",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "认领学员",
-	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "您可以将学员的导师改为自己。通常用于在线上线下的编辑活动中，以便讲师可以成为新手用户的导师。",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "您可以将学员的导师改为自己。通常用于线上线下的编辑活动，以便讲师可以成为新手用户的导师。",
 	"growthexperiments-rcfilters-mentorship-title": "导师计划",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|您}}标记星号的学员",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "分配给{{GENDER:|您}}且{{GENDER:|您}}在{{GENDER:|您的}}导师控制面版上标记星号的学员",

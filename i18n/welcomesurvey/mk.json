@@ -41,6 +41,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Не, од други причини",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Не се сеќавам",
 	"welcomesurvey-question-mailinglist-label": "Сакам да добивам совети по е-пошта за тоа како да почнам да уредувам.",
+	"welcomesurvey-question-mailinglist-help": "Имајте на ум дека овој поштенски список е овозможен од MailChimp, што значи дека употреба на вашите информации од страна на MailChimp е во склад со нивните [https://www.intuit.com/privacy/statement/ Правила за заштита на личните податоци] и [https://mailchimp.com/legal/terms/Terms Услови на употреба].",
 	"welcomesurvey-question-email-label": "Е-пошта (незадолжително)",
 	"welcomesurvey-question-email-placeholder": "Внесете е-пошта...",
 	"welcomesurvey-question-email-help": "Забележавме дека не внесовте е-пошта при создавањето на сметкава. <strong>Ви препорачуваме</strong> да внесете бидејќи ќе ви треба за повраток на сметката ако ви се случи да ја изумите лозинката. НАПОМЕНА: Вашата е-пошта не се прикажува при во преписките со другите корисници.",

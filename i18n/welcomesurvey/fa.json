@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Beginneruser",
 			"FarsiNevis",
 			"Huji",
 			"Jeeputer",
@@ -26,7 +27,7 @@
 	"welcomesurvey-sidebar-editing-link1-title": "ویکی‌پدیا:خودآموز",
 	"welcomesurvey-sidebar-editing-link2-text": "میز کمک",
 	"welcomesurvey-sidebar-editing-link2-title": "ویکی‌پدیا:میز کمک",
-	"welcomesurvey-question-reason-label": "چرا امروز حساب کاربری ساختید؟",
+	"welcomesurvey-question-reason-label": "چرا شما امروز حسابتان ایجاد کردید؟",
 	"welcomesurvey-dropdown-option-select-label": "لطفاً انتخاب کنید...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "برای اصلاح غلط املایی یا خطا در یک مقالهٔ ویکی‌پدیا",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "برای افزودن یا تغییر اطلاعات یک مقالهٔ ویکی‌پدیا",

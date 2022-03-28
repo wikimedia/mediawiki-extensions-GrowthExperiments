@@ -8,7 +8,7 @@
 	},
 	"growthexperiments-desc": "Ovaj dodatak sadrži projekte Tima za razvoj.",
 	"growthexperiments-edit-config-title": "Postavke dodataka Tima za razvoj",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: {{GENDER:$1|Posljednji izmijenio suradnik|Posljednja izmijenila suradnica}} [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: {{GENDER:$1|Posljednji izmijenio suradnik|Posljednja izmijenila suradnica}} [[User:$1|$1]] $2 ([$4 razlika]).",
 	"growthexperiments-edit-config-pretext-unprivileged": "Ovaj obrazac omogućava povlaštenim suradnicima uređivanje konfiguracije dodataka [[:mw:Special:MyLanguage/Growth|Tima za razvoj]].",
 	"growthexperiments-edit-config-feedback-headline": "Imate li ideje ili pitanja o ovom obrascu?",
 	"growthexperiments-edit-config-feedback-cta": "Javite svoje dojmove",

@@ -42,6 +42,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Não, eu não sabia que poderia editar a Wikipédia",
 	"welcomesurvey-question-edited-option-no-other-label": "Não, por outras razões",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Não me lembro",
+	"welcomesurvey-question-mailinglist-label": "Quero receber dicas por correio eletrónico sobre como começar a editar.",
+	"welcomesurvey-question-mailinglist-help": "Note, por favor, que esta lista de distribuição é disponibilizada pela MailChimp, o que significa que o uso da informação pela MailChimp se rege pelas suas  [https://www.intuit.com/privacy/statement/ Normas de privacidade] e [https://mailchimp.com/legal/terms/Terms Condições de serviço].",
 	"welcomesurvey-question-email-label": "Endereço de correio eletrónico (opcional)",
 	"welcomesurvey-question-email-placeholder": "Insira o seu endereço de correio eletrónico...",
 	"welcomesurvey-question-email-help": "Reparámos que não inseriu um correio eletrónico quando criou esta conta. É <strong>altamente recomendado</strong> que o forneça, porque ele é necessário para recuperação da conta se perder a palavra-passe. NOTA: O seu correio eletrónico não é revelado quando outros utilizadores o contactam.",
