@@ -78,8 +78,8 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "O número máximo de sugestões de hiperligações a mostrar em cada tarefa sugerida.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Página de destino para aprender mais sobre tarefas de recomendação de imagem.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Este tipo de tarefa está associado às sugestões automatizadas e não usa predefinições para gerar um conjunto de tarefas.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Os artigos que contenham as predefinições definidas aqui não serão mostradas aos utilizadores como tarefas para este tipo de tarefa.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Os artigos que contenham categorias definidas aqui não serão mostrados aos utilizadores como tarefas para este tipo de tarefa.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Os artigos que contenham as predefinições definidas aqui não serão mostrados aos utilizadores como tarefas para este tipo de tarefa.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Os artigos que contenham as categorias definidas aqui não serão mostrados aos utilizadores como tarefas para este tipo de tarefa.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Predefinições de caixas informativas",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas predefinições são necessárias para a funcionalidade das tarefas de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugestão de imagens]] para recém-chegados. Os artigos que contenham estas predefinições não serão listados como tarefas de sugestão de imagens."
 }

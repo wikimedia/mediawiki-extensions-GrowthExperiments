@@ -134,7 +134,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Guarda le altre {{GENDER:$2|conversazioni}} {{GENDER:$1|del tuo|della tua}} tutor",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Chiedi}} al{{GENDER:$1||la}} tu{{GENDER:$1|o|a|o/a}} tutor",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Quando fai una domanda, questa viene <strong>resa pubblica</strong> ed associata al {{GENDER:$2|tuo}} nome utente, \"$2\", nella $3, dove {{GENDER:$1|lui|lei}} potrà vedere e rispondere alla tua domanda.",
-	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Il tuo|La tua}} tutor principale, \"$1\", è impegnat{{GENDER:$2|o|a|o/a}} al momento. Risponderà alle tue domande un altro {{GENDER:$4|tutor}}: \"$3\".",
+	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Il tuo|La tua}} tutor principale, \"$1\", è impegnat{{GENDER:$2|o|a|o/a}} al momento. Risponderà alle tue domande {{GENDER:$4|un altro|un'altra}} tutor: \"$3\".",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|pagina}} di discussione {{GENDER:$1|del tuo|della tua}} tutor",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|La tua}} domanda è ora nella pagina di discussione del tuo tutor, dove {{GENDER:$1|lui|lei}} ti potrà rispondere il prima possibile.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Vedi {{GENDER:$2|le tue}} domande sulla pagina di discussione {{GENDER:$1|del tuo|della tua}} tutor.",
