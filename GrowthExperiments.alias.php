@@ -217,6 +217,10 @@ $specialPageAliases['ko'] = [
 	'Homepage' => [ '홈페이지' ],
 	'Impact' => [ '영향력', '임팩트' ],
 	'ClaimMentee' => [ '멘티데려오기' ],
+	'NewcomerTasksInfo' => [ '새사용자작업정보' ],
+	'EditGrowthConfig' => [ '성장구성편집', '성장설정편집' ],
+	'MentorDashboard' => [ '멘토대시보드' ],
+	'QuitMentorship' => [ '멘토링그만두기', '멘토링끝내기' ],
 ];
 
 /** Latvian (latviešu) */
