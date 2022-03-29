@@ -329,6 +329,8 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Folytatás",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Megértettem",
 	"growthexperiments-addlink-pagenotfound": "\"$1\" oldal nem létezik",
+	"growthexperiments-addlink-revdeleted": "A(z) „$2” $1 lapváltozata nem érhető el",
+	"growthexperiments-addlink-wrongmodel": "A(z) „$2” $1 lapváltozata nem wikiszöveg",
 	"growthexperiments-addlink-context-button-accept": "Igen",
 	"growthexperiments-addlink-context-button-reject": "Nem",
 	"growthexperiments-addlink-context-button-help": "Szerkesztési segítség",
