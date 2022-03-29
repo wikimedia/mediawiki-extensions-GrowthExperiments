@@ -59,7 +59,7 @@ class VisualEditorHooks implements
 		ProperPageIdentity $page,
 		UserIdentity $user,
 		string $wikitext,
-		array $params,
+		array &$params,
 		array $pluginData,
 		array &$apiResponse
 	) {
