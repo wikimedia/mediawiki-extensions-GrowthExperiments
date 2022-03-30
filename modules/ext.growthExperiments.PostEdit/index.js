@@ -186,6 +186,7 @@
 				// Used by GettingStarted extension.
 				mw.hook( 'postEdit.afterRemoval' ).fire();
 				postEditPanel.logClose();
+				return windowManager.clearWindows( [ dialog ] );
 			} );
 			lifecycle.opened.then( function () {
 				// Close dialog on outside click.
