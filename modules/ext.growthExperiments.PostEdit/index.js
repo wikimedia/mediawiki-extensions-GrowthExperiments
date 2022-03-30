@@ -264,7 +264,7 @@
 			savedTaskType: suggestedEditSession.taskType,
 			errorMessage: errorMessage,
 			userTaskTypes: preferences.taskTypes,
-			userTopics: preferences.topicFilters.getTopics(),
+			userTopics: preferences.topicFilters ? preferences.topicFilters.getTopics() : [],
 			newcomerTaskToken: suggestedEditSession.newcomerTaskToken
 		} ) );
 
