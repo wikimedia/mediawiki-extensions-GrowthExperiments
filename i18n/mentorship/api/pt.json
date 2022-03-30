@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Marcar ou desmarcar um mentorado como tendo sido destacado pelo utilizador corrente (informação armazenada de forma confidencial e não incluída nos registos)",
+	"apihelp-growthstarmentee-param-gesaction": "Ação a tomar (<kbd>star</kbd> para destacar ou <kbd>unstar</kbd> para remover destaque)",
+	"apihelp-growthstarmentee-param-gesmentee": "Mentorado a destacar ou remover destaque",
+	"apihelp-query+growthstarredmentees-summary": "Obter lista de mentorados destacados pelo mentor que está autenticado neste momento"
+}

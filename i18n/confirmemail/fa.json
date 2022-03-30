@@ -4,11 +4,12 @@
 			"AzorAhai",
 			"Jeeputer",
 			"Reza1615",
-			"Sunfyre"
+			"Sunfyre",
+			"Beginneruser"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|این چیست؟]])",
-	"growthexperiments-confirmemail-emailhelp": "ایمیل برای بازیابی حساب کاربری شما در صورت فراموشی رمز عبور ضروری است.",
+	"growthexperiments-confirmemail-emailhelp": "ایمیل برای بازیابی حساب شما در صورت فراموشی رمز عبور ضروری است.",
 	"growthexperiments-confirmemail-emailrecommended": "نشانی ایمیل (توصیه‌شده)",
 	"growthexperiments-confirmemail-emailwarning": "لطفاً برای بازبینی نشانی خود، ایمیلی که از سوی ما برای شما ارسال شده را بیابید.",
 	"growthexperiments-confirmemail-confirm-subject": "به {{SITENAME}} خوش آمدید: لطفاً آدرس ایمیل خود را تأیید کنید",
@@ -16,7 +17,7 @@
 	"growthexperiments-confirmemail-confirm-button": "تأیید نشانی ایمیل",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|سلام}} $2\nممنون بابت اضافه کردن ایمیل به حساب کاربری {{SITENAME}}، از آی‌پی آدرس $1 ثبت شد.\nلطفاً روی دکمه پایین کلیک کنید تا این را به عنوان نشانی پست الکترونیکی به حساب \"$2\" متصل کنید:\n$3\nتوجه: این کد تایید $4 منقضی می‌شود.\nمتشکرم.\n{{SITENAME}}\n----\nبرای لغو تایید آدرس ایمیل (چون شما حساب و یا دلیل دیگری را ثبت نکردید)، روی این پیوند لغو کلیک کنید:\n$5",
 	"growthexperiments-signupcampaign-title": "از کمک شما ممنونیم! به اجتماع ویرایشگران بپیوندید و امروز در بهبود ویکی‌پدیا سهیم باشید",
-	"growthexperiments-signupcampaign-body": "ویرایش در ویکی‌پدیا می‌تواند به سادگی افزودن یک پیوند یا تغییر دادن یک واژه باشد. پس از آن که حساب کاربری ساختید، پیشنهادهایی در موضوعات مورد علاقهٔ {{GENDER:|خود}} دریافت کنید!",
+	"growthexperiments-signupcampaign-body": "ویرایش در ویکی‌پدیا می‌تواند به سادگی افزودن یک پیوند یا تغییر دادن یک واژه باشد. پس از آن که حساب کاربری ایجاد کردید، پیشنهادهایی در موضوعات مورد علاقهٔ {{GENDER:|خود}} دریافت کنید!",
 	"growthexperiments-signupcampaign-bullet1": "مقاله‌های پیشنهاد منطبق با علایق {{GENDER:|شما}}",
 	"growthexperiments-signupcampaign-bullet2": "درخواست کمک از یک ویرایشگر باتجربه",
 	"growthexperiments-signupcampaign-bullet3": "از ویرایش‌های کوچک و آسان شروع کنید"

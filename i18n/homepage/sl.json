@@ -11,6 +11,7 @@
 	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Začnite s predlaganimi urejanji",
 	"growthexperiments-homepage-startediting-button": "Prikaži predlagana urejanja",
 	"growthexperiments-homepage-startediting-dialog-header": "O predlaganih urejanjih",
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Prekliči",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "Predlagana urejanja za začetek",
 	"growthexperiments-homepage-startediting-dialog-intro-subheader": "S svojimi urejanji pomagate izboljševati Wikipedijo in prispevate k našemu poslanstvu deljenja prostega znanja s svetom. Začnite z majhnimi predlaganimi urejanji.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Preizkusite se najprej z nekaj <strong>preprostimi</strong> urejanji",
@@ -41,5 +42,6 @@
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Neveljavna konfiguracija predlaganih urejanj: pri polju $2 manjka sporočilo $1",
 	"growthexperiments-homepage-suggestededits-error-title": "Trenutno ni na voljo nobeno predlagano urejanje.",
 	"growthexperiments-homepage-suggestededits-more-info": "Več o predlaganih urejanjih",
-	"growthexperiments-homepage-welcome-notice-body-variant-c": "Lahko se {{GENDER:$1|učite}} urejati, stopite v stik s svojim mentorjem in spremljate vpliv svojega dela. Na svoji domači strani se še naprej učite s <strong>predlaganimi urejanji</strong>."
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "Lahko se {{GENDER:$1|učite}} urejati, stopite v stik s svojim mentorjem in spremljate vpliv svojega dela. Na svoji domači strani se še naprej učite s <strong>predlaganimi urejanji</strong>.",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Prekliči"
 }
