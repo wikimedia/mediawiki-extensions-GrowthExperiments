@@ -48,7 +48,24 @@ function CollapsibleDrawer( config ) {
 			'mw-ge-body--with-collapsibleDrawer-mobile' :
 			'mw-ge-body--with-collapsibleDrawer-desktop'
 	);
+	$( document ).on( 'keyup', this.onEscapeKeyUp.bind( this ) );
 }
+
+/**
+ * Handle "Escape" keyup events to enable closing the drawer.
+ * First stroke will collapse it and second will close it.
+ *
+ * @param {jQuery.event} e
+ */
+CollapsibleDrawer.prototype.onEscapeKeyUp = function ( e ) {
+	if ( e.key === 'Escape' || e.keyCode === OO.ui.Keys.ESCAPE ) {
+		if ( this.isContentHidden ) {
+			this.close();
+		} else {
+			this.collapse();
+		}
+	}
+};
 
 /**
  * Expand the drawer
@@ -75,27 +92,42 @@ CollapsibleDrawer.prototype.toggleDisplayState = function () {
 	if ( this.isContentHidden ) {
 		this.expand();
 	} else {
-		this.hideIntroContent().then( this.collapse.bind( this ) );
+		this.hideIntroContent()
+			.then( this.collapse.bind( this ) );
 	}
 };
 
 /**
- * Set up the header text and chevron icon
+ * Set up the header text, close icon and chevron icon
  *
  * @param {string} [headerText]
  */
 CollapsibleDrawer.prototype.setupHeader = function ( headerText ) {
+	// this.closeIconBtn visiblity is toggled using CSS classes
+	// that modify the opacity for animation purposes. It is only
+	// shown when the drawer is open
+	this.closeIconBtn = new OO.ui.ButtonWidget( {
+		classes: [ 'mw-ge-collapsibleDrawer-close-icon' ],
+		framed: false,
+		icon: 'close'
+	} );
 	this.chevronIcon = new OO.ui.IconWidget( {
 		classes: [ 'mw-ge-collapsibleDrawer-chevron' ],
 		framed: false,
 		icon: 'expand'
 	} );
 	this.$head = $( '<div>' ).addClass( 'mw-ge-collapsibleDrawer-header' );
-	this.$headerText = $( '<div>' ).addClass( 'mw-ge-collapsibleDrawer-headerText' ).text(
-		headerText
-	);
-	this.$head.attr( 'role', 'button' ).append( [ this.$headerText, this.chevronIcon.$element ] );
+	this.$headerText = $( '<div>' ).addClass( 'mw-ge-collapsibleDrawer-headerText' )
+		.append( [
+			this.closeIconBtn.$element,
+			$( '<div>' ).addClass( 'mw-ge-collapsibleDrawer-headerText-text' ).text( headerText )
+		] );
+	this.$head.attr( 'role', 'button' ).append( [
+		this.$headerText,
+		this.chevronIcon.$element
+	] );
 	this.$head.on( 'click', this.toggleDisplayState.bind( this ) );
+	this.closeIconBtn.on( 'click', this.close.bind( this ) );
 };
 
 /**
