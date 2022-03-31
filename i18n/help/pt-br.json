@@ -7,7 +7,8 @@
 			"Gustavo.moraes",
 			"Luk3",
 			"TheEduGobi",
-			"Tks4Fish"
+			"Tks4Fish",
+			"YuriNikolai"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Ativar o painel de ajuda do editor",
@@ -119,6 +120,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "As imagens ajudam as pessoas a aprender, mas muitos artigos não têm uma.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-text-value": "As imagens vêm do Wikimedia Commons, uma coleção de imagens licenciadas livremente usadas pela Wikipédia.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "Veja a imagem sugerida",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step1": "{{GENDER:|Você}} também pode expandir a imagem para vê-la mais claramente.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "Olhe para o artigo",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-step2": "Leia o artigo e pense se a imagem sugerida ajudará os leitores a entender o conteúdo. É apropriado ser exibido no artigo?",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "Decida se a imagem pertence",
