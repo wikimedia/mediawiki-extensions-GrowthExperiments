@@ -6,7 +6,6 @@ use FormatJson;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use InvalidArgumentException;
 use JsonContent;
-use LogicException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
@@ -77,11 +76,6 @@ abstract class SubpageRecommendationProvider implements RecommendationProvider {
 		$subpageTitle = new TitleValue( $title->getNamespace(), $subpageTitleText );
 		try {
 			$subpage = $this->wikiPageFactory->newFromLinkTarget( $subpageTitle );
-			if ( !$subpage ) {
-				// This can only happen if some hook handler is seriously broken,
-				// but it's a documented return type so make static analyzers happy.
-				throw new LogicException( 'Could not create WikiPage' );
-			}
 		} catch ( InvalidArgumentException $e ) {
 			// happens for nonsensical namespaces, like Media:
 			return StatusValue::newFatal( 'rawmessage', $e->getMessage() );
