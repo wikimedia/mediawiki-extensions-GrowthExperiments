@@ -15,7 +15,7 @@ interface VisualEditorApiVisualEditorEditPreSaveHook {
 	 * @param ProperPageIdentity $page The page identity of the title used in the save attempt.
 	 * @param UserIdentity $user User associated with the save attempt.
 	 * @param string $wikitext The wikitext used in the save attempt.
-	 * @param array $params The params passed by the client in the API request. See
+	 * @param array &$params The params passed by the client in the API request. See
 	 *   ApiVisualEditorEdit::getAllowedParams()
 	 * @param array $pluginData Associative array containing additional data specified by plugins, where the keys of
 	 *   the array are plugin names and the value are arbitrary data.
@@ -32,7 +32,7 @@ interface VisualEditorApiVisualEditorEditPreSaveHook {
 		ProperPageIdentity $page,
 		UserIdentity $user,
 		string $wikitext,
-		array $params,
+		array &$params,
 		array $pluginData,
 		array &$apiResponse
 	);
