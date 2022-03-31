@@ -190,7 +190,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "הוספת קישורים היא הדרך הקלה ביותר לערוך. קישורים מאפשרים לקוראים ללחוץ על משהו שהם רוצים לדעת עליו עוד.<br />הקישורים מוצעים על־ידי מכונה, {{GENDER:$1|ואתה תחליט|ואת תחליטי}} האם להוסיף אותם לערך.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "הצעות מחוללות על־ידי מכונה. התמונות מגיעות מוויקישיתוף, אוסף התמונות ברישיון חופשי של ויקיפדיה.<br />{{GENDER:$1|אתה תחליט|את תחליטי}} האם להוסיף אותן לערך. {{GENDER:$1|אתה גם תרשום|את גם תרשמי}} את הכיתוב בשבילן.",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "הגהה (תיקון איות, דקדוק, ונימה)",
-	"growthexperiments-homepage-suggestededits-tasktype-label-references": "מציאת ציטוטים (אסמכתאות בשביל ערכים קיימים)",
+	"growthexperiments-homepage-suggestededits-tasktype-label-references": "מציאת מקורות (אסמכתאות בשביל ערכים קיימים)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "עדכון ערכים (הבאת ערכים קיימים למידע שמתאים לעכשיו)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "הרחבת ערכים קצרים",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "הוספת קישורים בין ערכים",

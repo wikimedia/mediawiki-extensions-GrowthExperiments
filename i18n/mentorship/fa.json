@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeeputer"
+			"Jeeputer",
+			"Beginneruser"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "داشبورد مربی",
@@ -66,6 +67,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "وضعیت شما به «دور از دسترس» تغییر یافت.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "پیامی برای کارآموزهای شما",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "معرفی کارآموز",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "می‌توانید مربی یک کارآموز را تغییر دهید و خود را به‌عنوان مربی جدید او معرفی کنید. این قابلیت به‌طور مکرر برای رویدادهای ویرایش به‌کار می‌رود تا آموزگاران بتوانند هم در ویکی، و هم در خارج از ویکی به‌عنوان مربی یک کاربر تازه‌وارد فعالیت کنند.",
 	"growthexperiments-rcfilters-mentorship-title": "مربی‌گری",
 	"growthexperiments-rcfilters-mentorship-starred-label": "کارآموزهای ستاره‌دار {{GENDER:|شما}}",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "کارآموزهای اختصاص‌یافته به {{GENDER:|شما}} که {{GENDER:|شما}} آن‌ها را در داشبورد مربی‌گری {{GENDER:|خود}} ستاره‌دار کرده‌اید",
@@ -82,5 +84,15 @@
 	"echo-pref-tooltip-ge-mentorship": "اعلان‌های مرتبط با ویژگی‌های مربی‌گری که توسط تیم رشد به پیش می‌روند. این اعلان‌ها به شما این امکان را می‌دهند تا از این که به‌عنوان کارآموز پذیرفته شده‌اید، یا این که یکی از کارآموزهای شما توسط شخص دیگری پذیرفته شده‌است، آگاه شوید.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|کارآموز}} شما، $3، توسط $1 {{GENDER:$2|پذیرفته‌شد}}.",
 	"growthexperiments-notification-body-mentee-claimed": "دلیل: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "«پذیرفتن کارآموز» به چه معناست؟"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "«پذیرفتن کارآموز» به چه معناست؟",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "شمار کارآموزهای اختصاص‌یافته به من",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "حدود نیمی از میانگین",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "میانگین (پیش‌فرض)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "حدود دو برابر میانگین",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "حجم کارآموزهای {{GENDER:|شما}} به «$1» تغییر یافت.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "کارآموزها هنگام ایجاد حساب به‌طور تصادفی به مربی‌ها اختصاص می‌یابند. می‌توانید تعداد کارآموزهای اختصاص‌یافته به خود را مدیریت کنید، اما برخی کارآموزها ممکن است بیش از سایرین از شما سؤال بپرسند",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "توصیه می‌شود که پیش از کاهش یا افزایش حجم کارآموزهای اختصاص‌یافته، کار را با تنظیمات «متوسط» آغاز کنید تا ظرفیت ارائهٔ پشتیبانی از سوی خود را افزایش دهید.",
+	"growthexperiments-mentor-list-missing-key": "کلید <code>$1</code> فراموش شده است",
+	"growthexperiments-mentor-list-datatype-mismatch": "انتظار می‌رود که <code>$1</code> برابر با <code>$2</code> باشد، اما اکنون <code>$3</code> است",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "توصیف مربی حاوی کلید دور از انتظار <code>$1</code> است"
 }

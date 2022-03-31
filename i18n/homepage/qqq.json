@@ -18,7 +18,8 @@
 			"Tgr",
 			"Umherirrender",
 			"Verdy p",
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"Tacsipacsi"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage, which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
@@ -184,7 +185,7 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "{{optional}}\nNumber formatting for numbers between 1,000,000 and 1,000,000,000 in the footer of the \"Suggested edits\" box on the homepage.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "{{optional}}\nNumber formatting for numbers between 1,000,000,000 and 1,000,000,000,000 in the footer of the \"Suggested edits\" box on the homepage.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "{{optional}}\nNumber formatting for numbers over 1,000,000,000,000 in the footer of the \"Suggested edits\" box on the homepage.\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "Text shown under the edit count (number of edits in the previous UTC calendar day) in the \"Suggested edits\" box on the mobile homepage. Can be used with PLURAL.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "Text shown under the edit count (number of edits in the previous UTC calendar day) in the \"Suggested edits\" box on the mobile homepage if there are no suggestions available. Can be used with PLURAL.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Text shown in the footer of the \"Suggested edits\" box on the mobile homepage.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Text shown on the call-to-action button in the footer\n\n{{doc-growthexperiments-homepage}}.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Text to use in the short description of the copyedit task type in suggested edits module.\n\n{{doc-growthexperiments-homepage}}",

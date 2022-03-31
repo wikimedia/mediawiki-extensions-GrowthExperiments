@@ -86,7 +86,7 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1Y",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1M",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "uahan di dina siduri",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|uahan|uahan}} ring dina siduri",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Ngaé kruna uli abesik suratan katautang nuju suratan lénan",
 	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "Turunuah pinaka pabecikan cenik antuk satunggil suratan, lan panguahan paindikan ané paling penting lan cara paling aluh antuk biasa nguahin di Wikipédia. Panguahan suratan ngaé suratan langkung profésional lan kapercaya.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Ngawewehin pranala mula cara paling aluh antuk nguahin. Pranala ngawantu ngawacén antuk makisid nuju makudang suratan antuk kapelajahin énggal.",

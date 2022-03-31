@@ -83,7 +83,7 @@
 	"echo-pref-tooltip-ge-mentorship": "Powiadomienia związane z funkcjami dla wikiprzewodników stworzonych przez zespół Growth. Te powiadomienia poinformują o tym, że zostałeś wybrany jako czyjś podopieczny lub jeden z twoich podopiecznych został podjęty przez kogoś innego.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Twój podopieczny|Twoja podopieczna}}, $3, {{GENDER:$2|}}{{GENDER:$3|został przejęty|została przejęta}} przez $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Powód: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Czy jest \"przejęcie nowicjusza\"?",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Czym jest \"przejęcie nowicjusza\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Liczba przypisanych do mnie nowicjuszy.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Połowa średniej",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Średnia (domyślne)",

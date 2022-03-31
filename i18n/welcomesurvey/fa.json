@@ -7,7 +7,8 @@
 			"Ladsgroup",
 			"Mardetanha",
 			"Physicsch",
-			"Reza1615"
+			"Reza1615",
+			"Beginneruser"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|خوش آمدید}}، $1!",
@@ -26,7 +27,7 @@
 	"welcomesurvey-sidebar-editing-link1-title": "ویکی‌پدیا:خودآموز",
 	"welcomesurvey-sidebar-editing-link2-text": "میز کمک",
 	"welcomesurvey-sidebar-editing-link2-title": "ویکی‌پدیا:میز کمک",
-	"welcomesurvey-question-reason-label": "چرا امروز حساب کاربری ساختید؟",
+	"welcomesurvey-question-reason-label": "چرا شما امروز حسابتان ایجاد کردید؟",
 	"welcomesurvey-dropdown-option-select-label": "لطفاً انتخاب کنید...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "برای اصلاح غلط املایی یا خطا در یک مقالهٔ ویکی‌پدیا",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "برای افزودن یا تغییر اطلاعات یک مقالهٔ ویکی‌پدیا",
@@ -47,7 +48,7 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "به یاد ندارم",
 	"welcomesurvey-question-email-label": "نشانی ایمیل (اختیاری)",
 	"welcomesurvey-question-email-placeholder": "نشانی ایمیل خود را وارد کنید...",
-	"welcomesurvey-question-email-help": "متوجه شدیم که شما در زمان ایجاد این حساب کاربری، نشانی ایمیل خود را وارد نکرده‌اید. از آنجا که در صورت فراموشی رمز عبور، برای بازیابی حساب کاربری نیاز به نشانی ایمیل خواهید داشت، وارد کردن آن <strong>قویاً توصیه می‌شود</strong>. نکته: اگر کاربران دیگر با شما تماس بگیرند، نشانی ایمیل شما برای آنان فاش نخواهد شد.",
+	"welcomesurvey-question-email-help": "متوجه شدیم که شما در زمان ایجاد این حساب، یک نشانی ایمیل وارد نکرده‌اید.این کار <strong>به‌شدت توصیه می‌شود</strong> زیرا اگر شما حتی گذرواژه خودتان را فراموش کنید، برای بازیابی حساب یک ایمیل نیاز دارید. نکته: نشانی ایمیل شما هنگامی که کاربران دیگر با شما تماس می‌گیرند فاش نخواهد شد.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} در نزدیک به ۳۰۰ زبان موجود است. آیا زبان‌های دیگری هستند که شما به آن‌ها می‌خوانید یا می‌نویسید؟",
 	"welcomesurvey-question-languages-placeholder": "می‌توانید تا {{PLURAL:$1|یک زبان|$1 زبان}} را بیافزایید...",
 	"welcomesurvey-question-languages-maximum": "حداکثر تعداد مجاز زبان‌ها را وارد کرده‌اید."
