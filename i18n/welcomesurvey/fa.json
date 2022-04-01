@@ -48,7 +48,7 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "به یاد ندارم",
 	"welcomesurvey-question-email-label": "نشانی ایمیل (اختیاری)",
 	"welcomesurvey-question-email-placeholder": "نشانی ایمیل خود را وارد کنید...",
-	"welcomesurvey-question-email-help": "متوجه شدیم که شما در زمان ایجاد این حساب، یک نشانی ایمیل وارد نکرده‌اید.این کار <strong>به‌شدت توصیه می‌شود</strong> زیرا اگر شما حتی گذرواژه خودتان را فراموش کنید، برای بازیابی حساب یک ایمیل نیاز دارید. نکته: نشانی ایمیل شما هنگامی که کاربران دیگر با شما تماس می‌گیرند فاش نخواهد شد.",
+	"welcomesurvey-question-email-help": "متوجه شدیم که شما در زمان ایجاد این حساب، یک نشانی ایمیل وارد نکرده‌اید.این کار <strong>به‌شدت توصیه می‌شود</strong> زیرا اگر شما حتی رمز عبور خودتان را فراموش کنید، برای بازیابی حساب یک ایمیل نیاز دارید. نکته: نشانی ایمیل شما هنگامی که کاربران دیگر با شما تماس می‌گیرند فاش نخواهد شد.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} در نزدیک به ۳۰۰ زبان موجود است. آیا زبان‌های دیگری هستند که شما به آن‌ها می‌خوانید یا می‌نویسید؟",
 	"welcomesurvey-question-languages-placeholder": "می‌توانید تا {{PLURAL:$1|یک زبان|$1 زبان}} را بیافزایید...",
 	"welcomesurvey-question-languages-maximum": "حداکثر تعداد مجاز زبان‌ها را وارد کرده‌اید."
