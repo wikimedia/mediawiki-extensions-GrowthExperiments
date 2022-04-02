@@ -481,11 +481,8 @@
 		// Rerender the table
 		this.renderMenteeTable();
 
-		// Persist filters for next view (parsed in FilterDropdown's constructor)
-		new mw.Api().saveOption(
-			'growthexperiments-mentee-overview-filters',
-			JSON.stringify( filters )
-		);
+		// Persist filters for next view (read in FilterDropdown's constructor)
+		this.presetsClient.setFilters( filters );
 	};
 
 	MenteeOverview.prototype.onSearchInputEnter = function () {

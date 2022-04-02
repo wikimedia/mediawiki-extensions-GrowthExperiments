@@ -11,17 +11,33 @@ QUnit.test( 'getPreset missing value', function ( assert ) {
 
 QUnit.test( 'getPresets uses defaults ', function ( assert ) {
 	const menteeOverviewPresets = new MenteeOverviewPresets();
-	assert.deepEqual( menteeOverviewPresets.getPresets(), { usersToShow: 10 } );
+	assert.deepEqual( menteeOverviewPresets.getPresets(), {
+		usersToShow: 10,
+		filters: {
+			minedits: 1,
+			maxedits: 500
+		}
+	} );
 } );
 
 QUnit.test( 'setPreset overrides defaults', function ( assert ) {
 	const menteeOverviewPresets = new MenteeOverviewPresets();
-	assert.deepEqual( menteeOverviewPresets.getPresets(), { usersToShow: 10 } );
+	assert.deepEqual( menteeOverviewPresets.getPresets(), {
+		usersToShow: 10,
+		filters: {
+			minedits: 1,
+			maxedits: 500
+		}
+	} );
 	menteeOverviewPresets.setPreset( 'usersToShow', 'foo' );
 	menteeOverviewPresets.setPreset( 'bar', { baz: 1 } );
 	assert.deepEqual( menteeOverviewPresets.getPresets(), {
 		bar: { baz: 1 },
-		usersToShow: 'foo'
+		usersToShow: 'foo',
+		filters: {
+			minedits: 1,
+			maxedits: 500
+		}
 	} );
 } );
 
