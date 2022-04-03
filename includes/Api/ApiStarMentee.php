@@ -7,6 +7,7 @@ use ApiMain;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiStarMentee extends ApiBase {
 	/** @var StarredMenteesStore */
@@ -87,15 +88,15 @@ class ApiStarMentee extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'gesaction' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => [
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => [
 					'star',
 					'unstar'
 				],
 			],
 			'gesmentee' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => 'user',
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'user',
 				UserDef::PARAM_ALLOWED_USER_TYPES => [ 'name', 'id' ],
 				UserDef::PARAM_RETURN_OBJECT => true,
 			],

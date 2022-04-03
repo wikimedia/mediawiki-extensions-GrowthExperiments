@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
-use ApiBase;
 use DerivativeContext;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
@@ -12,6 +11,7 @@ use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MWException;
 use RequestContext;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * Handle incoming requests to obtain tips for a skin, editor, task type id,
@@ -83,24 +83,24 @@ class TipsHandler extends SimpleHandler {
 		return [
 			'skin' => [
 				self::PARAM_SOURCE => 'path',
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 			'editor' => [
 				self::PARAM_SOURCE => 'path',
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 			'tasktypeid' => [
 				self::PARAM_SOURCE => 'path',
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => array_keys(
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => array_keys(
 					$this->configurationLoader->getTaskTypes()
 				)
 			],
 			'uselang' => [
 				self::PARAM_SOURCE => 'path',
-				ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_REQUIRED => true,
 			]
 		];
 	}

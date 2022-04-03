@@ -8,6 +8,7 @@ use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\RecentQuestionsFormatter;
 use JsonSerializable;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiQuestionStore extends ApiBase {
 
@@ -45,8 +46,8 @@ class ApiQuestionStore extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'storage' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => [ Mentorship::QUESTION_PREF, HelpdeskQuestionPoster::QUESTION_PREF ]
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => [ Mentorship::QUESTION_PREF, HelpdeskQuestionPoster::QUESTION_PREF ]
 			],
 		];
 	}

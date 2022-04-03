@@ -192,48 +192,48 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
 		return [
 			'tasktypes' => [
-				ApiBase::PARAM_TYPE => array_keys( $taskTypes ),
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_ISMULTI_LIMIT1 => $taskLimit,
-				ApiBase::PARAM_ISMULTI_LIMIT2 => $taskLimit,
+				ParamValidator::PARAM_TYPE => array_keys( $taskTypes ),
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_ISMULTI_LIMIT1 => $taskLimit,
+				ParamValidator::PARAM_ISMULTI_LIMIT2 => $taskLimit,
 				ParamValidator::PARAM_DEFAULT => [],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( TaskType $taskType ) {
 					return $taskType->getName( $this->getContext() );
 				}, $taskTypes ),
 			],
 			'topics' => [
-				ApiBase::PARAM_TYPE => array_keys( $topics ),
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_ISMULTI_LIMIT1 => $topicsLimit,
-				ApiBase::PARAM_ISMULTI_LIMIT2 => $topicsLimit,
+				ParamValidator::PARAM_TYPE => array_keys( $topics ),
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_ISMULTI_LIMIT1 => $topicsLimit,
+				ParamValidator::PARAM_ISMULTI_LIMIT2 => $topicsLimit,
 				ParamValidator::PARAM_DEFAULT => [],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( Topic $topic ) {
 					return $topic->getName( $this->getContext() );
 				}, $topics ),
 			],
 			 'topicsmode' => [
-				ApiBase::PARAM_TYPE => SearchStrategy::TOPIC_MATCH_MODES,
+				ParamValidator::PARAM_TYPE => SearchStrategy::TOPIC_MATCH_MODES,
 			],
 			'limit' => [
-				ApiBase::PARAM_TYPE => 'limit',
+				ParamValidator::PARAM_TYPE => 'limit',
 				IntegerDef::PARAM_MAX => 250,
 				IntegerDef::PARAM_MAX2 => 250,
 			],
 			'offset' => [
-				ApiBase::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_TYPE => 'integer',
 				IntegerDef::PARAM_MIN => 1,
 				ApiBase::PARAM_RANGE_ENFORCE => true,
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
 			],
 			'debug' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-				ApiBase::PARAM_DFLT => false,
+				ParamValidator::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_DEFAULT => false,
 			],
 			'excludepageids' => [
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_ISMULTI_LIMIT1 => 1000,
-				ApiBase::PARAM_ISMULTI_LIMIT2 => 1000,
+				ParamValidator::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_ISMULTI_LIMIT1 => 1000,
+				ParamValidator::PARAM_ISMULTI_LIMIT2 => 1000,
 			]
 		];
 	}

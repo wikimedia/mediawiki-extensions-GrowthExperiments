@@ -9,6 +9,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use MWException;
 use UserNotLoggedIn;
+use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\StringDef;
 
 class ApiHelpPanelPostQuestion extends ApiBase {
@@ -130,19 +131,19 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			self::API_PARAM_BODY => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
 				StringDef::PARAM_MAX_CHARS => 2000,
 			],
 			self::API_PARAM_SOURCE => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_TYPE => array_keys( self::QUESTION_POSTER_TYPES ),
-				ApiBase::PARAM_DFLT => 'helpdesk',
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => array_keys( self::QUESTION_POSTER_TYPES ),
+				ParamValidator::PARAM_DEFAULT => 'helpdesk',
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
 			self::API_PARAM_RELEVANT_TITLE => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 		];
 	}
