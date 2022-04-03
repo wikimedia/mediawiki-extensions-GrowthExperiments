@@ -9,6 +9,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use MWException;
 use UserNotLoggedIn;
+use Wikimedia\ParamValidator\TypeDef\StringDef;
 
 class ApiHelpPanelPostQuestion extends ApiBase {
 
@@ -131,7 +132,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 			self::API_PARAM_BODY => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_MAX_CHARS => 2000,
+				StringDef::PARAM_MAX_CHARS => 2000,
 			],
 			self::API_PARAM_SOURCE => [
 				ApiBase::PARAM_REQUIRED => false,
