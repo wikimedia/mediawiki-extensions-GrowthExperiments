@@ -18,6 +18,7 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use StatusValue;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 /**
  * API endpoint for Newcomer Tasks feature.
@@ -215,12 +216,12 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			],
 			'limit' => [
 				ApiBase::PARAM_TYPE => 'limit',
-				ApiBase::PARAM_MAX => 250,
-				ApiBase::PARAM_MAX2 => 250,
+				IntegerDef::PARAM_MAX => 250,
+				IntegerDef::PARAM_MAX2 => 250,
 			],
 			'offset' => [
 				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_MIN => 1,
+				IntegerDef::PARAM_MIN => 1,
 				ApiBase::PARAM_RANGE_ENFORCE => true,
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
 			],
