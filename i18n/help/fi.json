@@ -4,7 +4,8 @@
 			"Kyykaarme",
 			"MITO",
 			"Pyscowicz",
-			"Rönttönen"
+			"Rönttönen",
+			"Stryn"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Ota käyttöön muokkaajan apupaneeli",
@@ -53,8 +54,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Tässä lauseessa on mielipide, joka tulisi poistaa.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "Kun {{GENDER:|näet}} korjauksen, jonka haluat tehdä, klikkaa \"$1\" aloittaaksesi. Korjaa sitten ongelmat poistamalla tai muokkaamalla tekstiä tarvittaessa.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-step1": "Kun {{GENDER:|näet}} korjauksen, jonka haluat tehdä, klikkaa kyseisen osion kynäikonia aloittaaksesi. Korjaa sitten ongelmat poistamalla tai muokkaamalla tekstiä.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "Etsi lisää korjattavaa tai klikkaa \"$1\" tallentaaksesi {{GENDER:|muokkauksesi}}!",
-	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-publish": "Etsi lisää korjattavaa tai klikkaa sinistä nuolipainiketta tallentaaksesi {{GENDER:|muokkauksesi}}!",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "Etsi lisää korjattavaa tai klikkaa \"$1\" julkaistaksesi {{GENDER:|muokkauksesi}}!",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-publish": "Etsi lisää korjattavaa tai klikkaa sinistä nuolipainiketta julkaistaksesi {{GENDER:|muokkauksesi}}!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Lue lisää kielenhuollosta]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "Linkit {{SITENAME}}-artikkelien välillä antavat lukijalle mahdollisuuden klikata aiheita, joista he haluavat lukea lisää. Niiden avulla ihmiset pääsevät siirtymään helposti muihin {{SITENAME}}-artikkeleihin.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "Merkurius on <mark class=\"positive\">aurinkokunnan</mark> pienin <mark class=\"positive\">planeetta</mark>.",

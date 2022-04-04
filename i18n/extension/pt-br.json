@@ -3,7 +3,8 @@
 		"authors": [
 			"Albertoleoncio",
 			"Eduardo Addad de Oliveira",
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"YuriNikolai"
 		]
 	},
 	"growthexperiments-desc": "Esta extensão contém experimentos feita pela equipe de Crescimento.",
@@ -73,6 +74,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Atualize: predefinições para encontrar artigos que precisam ser atualizados com as informações atuais.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Página de destino para aprender mais sobre como atualizar artigos.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Página de destino para aprender mais sobre o tipo de tarefa de recomendação de link.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "O numero máximo de sugestões de ligações a mostrar em cada tarefa sugerida.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Página de destino para aprender mais sobre o tipo de tarefa de recomendação de imagem.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Este tipo de tarefa está associado a sugestões de máquina e não usa modelos para gerar um conjunto de tarefas.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Os artigos que contêm predefinições definidas aqui não serão mostradas aos usuários como tarefas para este tipo de tarefa.",

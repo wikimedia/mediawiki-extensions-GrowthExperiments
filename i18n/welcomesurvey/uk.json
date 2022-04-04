@@ -45,6 +45,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Ні, мені було невідомо, що я можу редагувати Вікіпедію",
 	"welcomesurvey-question-edited-option-no-other-label": "Ні, з інших причин",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Не пригадую",
+	"welcomesurvey-question-mailinglist-label": "Я хочу отримувати електронною поштою підказки про те, як почати редагувати.",
+	"welcomesurvey-question-mailinglist-help": "Зверніть, будь ласка, увагу, що цей список розсилки зроблено на MailChimp, тобто використання компанією MailChimp вашої інформації керується їхніми [https://www.intuit.com/privacy/statement/ політикою конфіденційності] та [https://mailchimp.com/legal/terms/Terms умовами користування].",
 	"welcomesurvey-question-email-label": "Адреса електронної пошти (необов'язково)",
 	"welcomesurvey-question-email-placeholder": "Введіть свою електронну адресу…",
 	"welcomesurvey-question-email-help": "Ми зауважили, що Ви не ввели свою адресу електронної пошти, коли створили цей обліковий запис. <strong>Наполегливо рекомендуємо</strong> її вказати, оскільки вона потрібна для відновлення доступу до облікового запису, якщо Ви коли-небудь втратите свій пароль. ЗВЕРНІТЬ УВАГУ: Ваша електронна адреса залишається прихованою, коли інші користувачі з Вами контактують.",

@@ -63,7 +63,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Якщо ви не можете бути наставником протягом певного періоду часу (більше 1 тижня), ви можете вказати, що недоступні. Упродовж цього періоду інший наставник буде отримувати запитання від ваших підопічних.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Ви будете недоступні стільки часу:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "днів",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Введене в полі «Ви будете недоступні» не є цілим числом. Будь ласка, спробуйте ще раз.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Введене в полі «{{GENDER:|Ви будете}} недоступні» не є цілим числом. Будь ласка, спробуйте ще раз.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Введене в полі «{{GENDER:|Ви будете}} недоступні» є завеликим числом. Максимальна кількість днів, на які наставник може бути недоступним — 365 (один рік).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Сталася невідома помилка. Будь ласка, спробуйте пізніше.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Ваш статус змінено на «Активний».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Ваш статус змінено на «Не на місці».",
@@ -96,5 +97,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Рекомендовано почати з «Середнього значення», щоб визначити вашу спроможність допомагати, перш ніж його збільшувати чи зменшувати.",
 	"growthexperiments-mentor-list-missing-key": "Бракує ключа <code>$1</code>",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> має бути <code>$2</code>, а є <code>$3</code>",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "Визначення наставника містить неочікуваний ключ <code>$1</code>"
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Визначення наставника містить неочікуваний ключ <code>$1</code>",
+	"growthexperiments-mentor-writer-error-already-added": "Наставника $1 уже додано до списку наставників",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Наставник $1 не в списку наставників"
 }

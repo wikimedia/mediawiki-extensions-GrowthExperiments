@@ -3,7 +3,8 @@
 		"authors": [
 			"Geraki",
 			"Giannaras99",
-			"Kostajh"
+			"Kostajh",
+			"Norhorn"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Γεια σας}}, {{bidi:$1}}!",
@@ -413,7 +414,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Δεν μπορώ να διαβάσω τη γλώσσα στις λεπτομέρειες της εικόνας",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Άλλο",
 	"growthexperiments-addimage-viewer-close-button": "Κλείσιμο",
-	"growthexperiments-addimage-onboarding-content-intro-title": "Οι εικόνες βοηθούν του ανθρώπους να μάθουν, αλλά πολλά λήμματα δεν έχουν.",
+	"growthexperiments-addimage-onboarding-content-intro-title": "Οι εικόνες βοηθούν τους ανθρώπους να μάθουν, αλλά πολλά λήμματα δεν έχουν.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "Θα {{GENDER:|αποφασίσετε}} για το αν η προτεινόμενη εικόνα θα πρέπει να τοποθετηθεί σε ένα λήμμα της Βικιπαίδειας.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Κατάλαβα",
 	"growthexperiments-addimage-caption-warning-tooshort": "Οι λεζάντες πρέπει να είναι $1 {{PLURAL:$1|χαρακτήρας|χαρακτήρες}} ή μεγαλύτερες.",
