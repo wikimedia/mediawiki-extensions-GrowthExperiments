@@ -21,7 +21,7 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 	public const NEWCOMER_TASK_REFERENCES_TAG = 'newcomer task references';
 	public const NEWCOMER_TASK_UPDATE_TAG = 'newcomer task update';
 	public const NEWCOMER_TASK_EXPAND_TAG = 'newcomer task expand';
-	public const NEWCOMER_TASK_LINKS_TAG = 'newcomer task expand';
+	public const NEWCOMER_TASK_LINKS_TAG = 'newcomer task links';
 
 	public const NEWCOMER_TASK_TEMPLATE_BASED_ALL_CHANGE_TAGS = [
 		self::NEWCOMER_TASK_COPYEDIT_TAG,
