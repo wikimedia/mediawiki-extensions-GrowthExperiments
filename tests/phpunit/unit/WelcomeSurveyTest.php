@@ -62,7 +62,6 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 
 	private function getWelcomeSurveyForFreetextTest( $allowFreetext ) {
 		$configMock = new HashConfig( [
-			'GEWelcomeSurveyShowMailingListQuestion' => true,
 			'WelcomeSurveyAllowFreetextResponses' => $allowFreetext,
 			'WelcomeSurveyExperimentalGroups' => [ 'exp2_target_specialpage' => [
 				"range" => "x",
