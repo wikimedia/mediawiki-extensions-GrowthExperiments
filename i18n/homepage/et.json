@@ -171,5 +171,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|võttis}} kasutaja {{GENDER:$6|$3}} juhendatavaks (ilma eelmise mentorita)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|määras}} kasutaja {{GENDER:$6|$3}} mentoriks kasutaja {{GENDER:$5|$7}} (eelmine {{GENDER:$4|mentor}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|määras}} kasutaja {{GENDER:$6|$3}} mentoriks kasutaja {{GENDER:$5|$7}} (ilma eelmise mentorita)",
+	"right-setmentor": "Määrata kasutajale mentor",
+	"action-setmentor": "kasutajale mentorit määrata",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Veel selle soovitatud muudatuse kohta"
 }

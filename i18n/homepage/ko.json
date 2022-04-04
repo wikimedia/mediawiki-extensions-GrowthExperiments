@@ -164,7 +164,7 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "편집 제안을 찾으려면 관심사를 변경하거나 난이도를 조절하세요.",
 	"growthexperiments-homepage-suggestededits-footer": "다른 사용자들이 이런 문서에 도움이 필요하다고 표시했습니다. 매일 '''$1명'''의 '''{{SITENAME}}''' 독자를 도와주세요.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "다른 사용자들이 이런 문서에 도움이 필요하다고 표시했습니다. '''{{SITENAME}}''' 독자를 도와주세요.",
-	"growthexperiments-homepage-suggestededits-footer-suffix": "-",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "어제의 편집 횟수",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "당신과 같은 사용자들이 오늘도 {{SITENAME}} 을(를) 발전시키고 있습니다. 같이 도와주세요!",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "오타, 문법, 어투를 교정합니다",

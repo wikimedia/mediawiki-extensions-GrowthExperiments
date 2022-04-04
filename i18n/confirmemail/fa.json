@@ -4,15 +4,16 @@
 			"AzorAhai",
 			"Jeeputer",
 			"Reza1615",
-			"Sunfyre"
+			"Sunfyre",
+			"Beginneruser"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|این چیست؟]])",
-	"growthexperiments-confirmemail-emailhelp": "ایمیل برای بازیابی حساب کاربری شما در صورت فراموشی رمز عبور ضروری است.",
+	"growthexperiments-confirmemail-emailhelp": "ایمیل برای بازیابی حساب شما در صورت فراموشی رمز عبور ضروری است.",
 	"growthexperiments-confirmemail-emailrecommended": "نشانی ایمیل (توصیه‌شده)",
 	"growthexperiments-confirmemail-emailwarning": "لطفاً برای بازبینی نشانی خود، ایمیلی که از سوی ما برای شما ارسال شده را بیابید.",
 	"growthexperiments-confirmemail-confirm-subject": "به {{SITENAME}} خوش آمدید: لطفاً آدرس ایمیل خود را تأیید کنید",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|سلام}} $2\nممنون بابت اضافه کردن ایمیل به حساب کاربری {{SITENAME}}، از آی‌پی آدرس $1 ثبت شد.\nلطفاً روی دکمه پایین کلیک کنید تا این را به عنوان نشانی پست الکترونیکی به حساب \"$2\" متصل کنید:\n$3\nتوجه: این کد تایید <strong>$4 منقضی می‌شود.</strong> \nمتشکرم.\n{{SITENAME}}\n----\nبرای لغو تایید آدرس ایمیل (چون شما حساب و یا دلیل دیگری را ثبت نکردید)، روی این پیوند لغو کلیک کنید:\n$5",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|سلام}} $2\n\nممنونیم بابت افزودن یک ایمیل به حسابتان در {{SITENAME}} که از نشانی آی‌پی $1 ثبت شده است.\n\nلطفاً روی دکمه زیر کلیک کنید تا تأیید کنید این نشانی ایمیل را شما به حسابتان \"$2\" متصل کرده‌اید:\n\n$3\n\nتوجه: این کد تایید <strong>در $4 منقضی خواهد شد</strong>.\n\nمتشکریم،\n\n{{SITENAME}}\n\n----\n\nبرای لغو تایید نشانی ایمیل (چون شما ثبت نام نکردید یا هر دلیل دیگری)، روی این پیوند لغو کلیک کنید:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "تأیید نشانی ایمیل",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|سلام}} $2\nممنون بابت اضافه کردن ایمیل به حساب کاربری {{SITENAME}}، از آی‌پی آدرس $1 ثبت شد.\nلطفاً روی دکمه پایین کلیک کنید تا این را به عنوان نشانی پست الکترونیکی به حساب \"$2\" متصل کنید:\n$3\nتوجه: این کد تایید $4 منقضی می‌شود.\nمتشکرم.\n{{SITENAME}}\n----\nبرای لغو تایید آدرس ایمیل (چون شما حساب و یا دلیل دیگری را ثبت نکردید)، روی این پیوند لغو کلیک کنید:\n$5"
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|سلام}} $2\n\nممنونیم بابت افزودن یک ایمیل به حسابتان در {{SITENAME}} که از نشانی آی‌پی $1 ثبت شده است.\n\nلطفاً روی دکمه زیر کلیک کنید تا تأیید کنید این نشانی ایمیل را شما به حسابتان \"$2\" متصل کرده‌اید:\n\n$3\n\nتوجه: این کد تایید <strong>در $4 منقضی خواهد شد</strong>.\n\nمتشکریم،\n\n{{SITENAME}}\n\n----\n\nبرای لغو تایید نشانی ایمیل (چون شما ثبت نام نکردید یا هر دلیل دیگری)، روی این پیوند لغو کلیک کنید:\n\n$5"
 }
