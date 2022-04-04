@@ -36,6 +36,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
@@ -1370,23 +1371,29 @@ class HomepageHooks implements
 				null,
 				$revId
 			);
-			// Increment the counters for:
-			// * Unstructured tasks
-			// * Structured tasks, distinguishing between the different task types using the change tag
-			// Then in Grafana we can sum Structured.Reverted.{Change Tag} and Unstructured.Reverted to get the total
+			$growthTasksChangeTags = array_merge(
+				TemplateBasedTaskTypeHandler::NEWCOMER_TASK_TEMPLATE_BASED_ALL_CHANGE_TAGS,
+				[ LinkRecommendationTaskTypeHandler::CHANGE_TAG ],
+				[ ImageRecommendationTaskTypeHandler::CHANGE_TAG ]
+			);
 			foreach ( $tags as $tag ) {
-				if ( in_array(
-					$tag,
-					[ LinkRecommendationTaskTypeHandler::CHANGE_TAG, ImageRecommendationTaskTypeHandler::CHANGE_TAG ]
-				) ) {
-					$this->perDbNameStatsdDataFactory->increment(
-						'GrowthExperiments.NewcomerTask.Structured.Reverted.' . str_replace( ' ', '_', $tag )
-					);
-				} elseif ( $tag === TaskTypeHandler::NEWCOMER_TASK_TAG ) {
-					$this->perDbNameStatsdDataFactory->increment(
-						'GrowthExperiments.NewcomerTask.Unstructured.Reverted'
-					);
+				// We can use more precise tags, skip this generic one applied to all suggested edits.
+				if ( $tag === TaskTypeHandler::NEWCOMER_TASK_TAG ||
+					// ...but make sure the tag is one we care about tracking.
+					!in_array( $tag, $growthTasksChangeTags ) ) {
+					continue;
 				}
+				// HACK: craft the task type ID from the change tag. We should probably add a method to
+				// TaskTypeHandlerRegistry to get a TaskType from a change tag.
+				$taskType = str_replace( 'newcomer task ', '', $tag );
+				if ( $taskType === 'add link' ) {
+					$taskType = 'link-recommendation';
+				} elseif ( $taskType === 'image suggestion' ) {
+					$taskType = 'image-recommendation';
+				}
+				$this->perDbNameStatsdDataFactory->increment(
+					sprintf( 'GrowthExperiments.NewcomerTask.Reverted.%s', $taskType )
+				);
 			}
 		}
 	}
