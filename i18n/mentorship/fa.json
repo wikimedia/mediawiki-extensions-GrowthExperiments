@@ -81,7 +81,7 @@
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|شما}} در حال حاضر هیچ کارآموزی ندارید.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 از مربی‌گری کناره‌گیری {{GENDER:$1|کرده‌است}}.",
 	"echo-category-title-ge-mentorship": "مربی‌گری",
-	"echo-pref-tooltip-ge-mentorship": "اعلان‌های مرتبط با ویژگی‌های مربی‌گری که توسط تیم رشد به پیش می‌روند. این اعلان‌ها به شما این امکان را می‌دهند تا از این که به‌عنوان کارآموز پذیرفته شده‌اید، یا این که یکی از کارآموزهای شما توسط شخص دیگری پذیرفته شده‌است، آگاه شوید.",
+	"echo-pref-tooltip-ge-mentorship": "آگاه‌سازی‌هایی مرتبط با ویژگی‌های مربی‌گری که توسط تیم رشد به پیش می‌روند. این آگاه‌سازی‌ها به شما این امکان را می‌دهند تا از این که به‌عنوان کارآموز پذیرفته شده‌اید، یا این که یکی از کارآموزهای شما توسط شخص دیگری پذیرفته شده‌است، آگاه شوید.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|کارآموز}} شما، $3، توسط $1 {{GENDER:$2|پذیرفته‌شد}}.",
 	"growthexperiments-notification-body-mentee-claimed": "دلیل: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "«پذیرفتن کارآموز» به چه معناست؟",
