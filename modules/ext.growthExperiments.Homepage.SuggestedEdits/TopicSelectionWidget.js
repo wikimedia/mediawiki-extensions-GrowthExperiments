@@ -73,8 +73,7 @@ function TopicSelectionWidget( config ) {
 			initialValue: config.filters.getTopicsMatchMode() || TOPIC_MATCH_MODES.OR
 		} );
 		this.matchModeSelector.connect( this, {
-			toggleSelection: [ 'emit', 'toggleMatchMode' ],
-			onMatchModeClick: [ 'emit', 'onMatchModeClick' ]
+			toggleMatchMode: [ 'emit', 'toggleMatchMode' ]
 		} );
 		this.$element.append( this.matchModeSelector.$element );
 	}

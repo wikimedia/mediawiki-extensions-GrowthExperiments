@@ -1678,6 +1678,9 @@
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/DifficultyFiltersDialog.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/FiltersWidget.js",
 			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/FiltersWidget.test.js",
+			"modules/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js",
+			"modules/ui-components/SwipePane.js",
+			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.test.js",
 			{
 				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/config.json",
 				"file": "tests/qunit/__mocks__/config.json"
@@ -1703,6 +1706,7 @@
 			"oojs-ui",
 			"mediawiki.qunit-testrunner",
 			"mediawiki.base",
+			"mediawiki.router",
 			"ext.growthExperiments.SuggestedEditSession",
 			"sinonjs"
 		]

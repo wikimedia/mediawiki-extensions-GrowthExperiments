@@ -46,7 +46,7 @@
 				search: function () {
 					this.emit( 'search' );
 				},
-				onMatchModeClick: function ( matchMode ) {
+				toggleMatchMode: function ( matchMode ) {
 					logger.log(
 						'suggested-edits',
 						config.mode,

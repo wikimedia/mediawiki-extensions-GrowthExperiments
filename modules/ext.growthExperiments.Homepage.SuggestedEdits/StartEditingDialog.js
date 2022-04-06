@@ -139,7 +139,7 @@ StartEditingDialog.prototype.initialize = function () {
 	this.swipeCard.setToEndHandler( this.swapPanel.bind( this, 'intro' ) );
 
 	if ( this.useTopicMatchMode ) {
-		this.logger.log( 'suggested-edits', this.mode, 'se-topicmatchmode-impression' );
+		this.logger.log( this.module, this.mode, 'se-topicmatchmode-impression' );
 	}
 };
 
@@ -499,7 +499,20 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				// The "select all" buttons fire many toggleSelection events at once, so
 				// debounce them.
 				toggleSelection: 'updateMatchCountDebounced',
-				toggleMatchMode: 'updateMatchCount'
+				toggleMatchMode: function ( matchMode ) {
+					this.updateMatchCount();
+					this.logger.log(
+						this.module,
+						this.mode,
+						// Possible event names are:
+						// 'se-topicmatchmode-or'
+						// 'se-topicmatchmode-and'
+						'se-topicmatchmode-' + matchMode.toLowerCase(),
+						{
+							topicsMatchMode: matchMode
+						}
+					);
+				}
 			} );
 			$topicSelectorWrapper = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )

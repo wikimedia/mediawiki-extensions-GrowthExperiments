@@ -14,6 +14,7 @@ require( './ext.growthExperiments.Homepage.SuggestedEdits/ErrorCardWidget.test.j
 require( './ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/FiltersWidget.test.js' );
+require( './ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.test.js' );
 require( './ext.growthExperiments.StructuredTask/StructuredTaskLogger.test.js' );
 require( './ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.test.js' );
 require( './ext.growthExperiments.StructuredTask/addimage/AddImageUtils.test.js' );

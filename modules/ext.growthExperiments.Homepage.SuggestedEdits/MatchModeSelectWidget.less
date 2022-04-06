@@ -2,26 +2,25 @@
 
 .mw-ge-MatchModeSelectWidget {
 	display: flex;
-	align-items: baseline;
 	justify-content: flex-end;
-	flex-wrap: wrap-reverse;
 
-	&--mobile {
-		flex-direction: column-reverse;
-	}
-
-	&__button-group {
-		&& {
-			display: inline-flex;
-			margin-left: 8px;
+	&__dropdown {
+		// Override width: 100% from OO.ui.DropdownWidget so
+		// container width adapts to text length
+		&.oo-ui-dropdownWidget {
+			width: auto;
 		}
 	}
 
-	&__description-text {
-		color: @colorGray5;
-		padding-top: 8px;
-		text-align: right;
-		font-size: 0.9em;
-		min-width: 60%;
+	&__popup {
+		// Minerva skin hides all popups if an overlay is open.
+		// Override display to allow to show the info popup inside of TopicFiltersDialog
+		.oo-ui-popupWidget {
+			display: block;
+		}
+	}
+
+	&__info-text {
+		padding: 8px 0;
 	}
 }

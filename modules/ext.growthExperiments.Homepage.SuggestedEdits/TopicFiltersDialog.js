@@ -73,8 +73,10 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 		removeAll: [ 'emit', 'removeAll' ],
 		expand: [ 'emit', 'expand' ],
 		toggleSelection: 'onTopicFilterChange',
-		toggleMatchMode: 'onTopicFilterChange',
-		onMatchModeClick: [ 'emit', 'onMatchModeClick' ]
+		toggleMatchMode: function ( mode ) {
+			this.onTopicFilterChange();
+			this.emit( 'toggleMatchMode', mode );
+		}
 	} );
 	$topicSelectorWrapper = $( '<div>' )
 		.addClass( 'suggested-edits-topic-filters-topic-selector' )

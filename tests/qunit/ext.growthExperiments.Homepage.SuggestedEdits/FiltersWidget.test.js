@@ -53,7 +53,7 @@ QUnit.test( 'should log topicmatchmode impression', function ( assert ) {
 		'some-mode',
 		'se-topicmatchmode-impression'
 	] );
-	widget.topicFiltersDialog.topicSelector.emit( 'onMatchModeClick', 'AND' );
+	widget.topicFiltersDialog.topicSelector.emit( 'toggleMatchMode', 'AND' );
 	assert.deepEqual( logger.log.getCall( 2 ).args, [
 		'suggested-edits',
 		'some-mode',
