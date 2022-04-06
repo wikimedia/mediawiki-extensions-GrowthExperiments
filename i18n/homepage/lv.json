@@ -357,7 +357,7 @@
 	"growthexperiments-addlink-summary-column-header-linked": "Saites izveidotas?",
 	"growthexperiments-addlink-summary-copyrightwarning": "Saglabājot izmaiņas, {{GENDER:|tu}} piekrīti [https://foundation.wikimedia.org/wiki/Terms_of_Use Lietošanas noteikumiem] un piekrīti licencēt savu devumu saskaņa ar [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] un [https://www.gnu.org/licenses/fdl-1.3.html GFDL] licenci.",
 	"growthexperiments-addlink-summary-submit": "Iesniegt",
-	"growthexperiments-addlink-summary-summary": "Saišu ieteikumu funkcionalitāte: $1 {{PLURAL:$1|saites|saite|saites}} pievienotas.",
+	"growthexperiments-addlink-summary-summary": "Saišu ieteikumu funkcionalitāte: $1 {{PLURAL:$1|saites pievienotas|saite pievienota|saites pievienotas}}.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Tu}} izlaidi visus ieteikumus šim rakstam.",
 	"growthexperiments-addlink-skip-body": "Vai tiešām {{GENDER:|nevēlies}} pieņemt vai noraidīt nevienu ieteikumu?",
 	"growthexperiments-addlink-skip-accept": "Izlaist visus",

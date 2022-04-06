@@ -3,13 +3,14 @@
 		"authors": [
 			"Tar Lócesilion",
 			"Woytecr",
-			"Nux"
+			"Nux",
+			"Matma Rex"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|co to jest?]])",
 	"growthexperiments-confirmemail-emailhelp": "Adres e-mail jest wymagany do odtworzenia hasła, jeśli zgubisz aktualne.",
 	"growthexperiments-confirmemail-emailrecommended": "Adres e-mail (zalecane)",
-	"growthexperiments-confirmemail-emailwarning": "Aby zweryfikować swój adres, odbierz wiadomość e-mail, którą wysłaliśmy.",
+	"growthexperiments-confirmemail-emailwarning": "Wyślemy Ci wiadomość e-mail, aby zweryfikować Twój adres.",
 	"growthexperiments-confirmemail-confirm-subject": "Witamy w {{GRAMMAR:D.lp|{{SITENAME}}}}: potwierdź swój adres e-mail",
 	"growthexperiments-confirmemail-confirm-body-html": "Cześć, $2!\n\nDziękujemy za dodanie e-maila do Twojego konta w {{SITENAME}}, zarejestrowanego z adresu IP $1.\n\nKliknij na poniższy link, aby potwierdzić, że chcesz połączyć ten adres e-mail do Twojego konta „$2”:\n\n$3\n\nKod potwierdzający <strong>wygaśnie $4</strong>.\n\nDziękujemy!\n\n{{SITENAME}}\n\n----\n\nAby anulować połączenie adresu e-mail (ponieważ nie jest związany z kontem $2 lub z jakiegokolwiek innego powodu) kliknij:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Potwierdź adres e-mail",
