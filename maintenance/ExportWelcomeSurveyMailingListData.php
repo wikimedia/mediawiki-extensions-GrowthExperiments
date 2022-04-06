@@ -18,9 +18,13 @@ require_once $path . '/maintenance/Maintenance.php';
 
 /**
  * One-off script to export data from the welcome survey for users who opt-in to mailing list.
- *
  */
 class ExportWelcomeSurveyMailingListData extends Maintenance {
+
+	/** @var string */
+	private $outputFormat = 'text';
+	/** @var resource */
+	private $handle;
 
 	public function __construct() {
 		parent::__construct();
@@ -45,8 +49,8 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			$this->fatalError( "--from and --to have to be provided and be valid timestamps" . PHP_EOL );
 		}
 
-		$outputFormat = $this->getOption( 'output-format', 'text' );
-		if ( !in_array( $outputFormat, [ 'text', 'csv' ] ) ) {
+		$this->outputFormat = $this->getOption( 'output-format', 'text' );
+		if ( !in_array( $this->outputFormat, [ 'text', 'csv' ] ) ) {
 			$this->fatalError( "--output-format must be one of 'text' or 'csv'" );
 		}
 		$queryBuilderTemplate = new SelectQueryBuilder( $dbr );
@@ -66,7 +70,9 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		// So we'll iterate over all welcome survey submissions and look for ones that 1) are submitted 2) have
 		// the mailinglist option set to something truthy.
 		$fromUserId = 0;
-		$handle = fopen( 'php://output', 'w' );
+		$this->handle = fopen( 'php://output', 'w' );
+		$headers = [ 'Email Address', 'Opt-in date', 'Group', 'User ID', 'Is email address confirmed' ];
+		$this->writeToHandle( $headers );
 		do {
 			$queryBuilder = clone $queryBuilderTemplate;
 			$queryBuilder->andWhere( "user_id > $fromUserId" );
@@ -74,7 +80,11 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			foreach ( $result as $row ) {
 				$fromUserId = (int)$row->user_id;
 				$welcomeSurveyResponse = FormatJson::decode( (string)$row->up_value, true );
-				if ( !$welcomeSurveyResponse || !isset( $welcomeSurveyResponse['_submit_date'] ) ) {
+				if ( !$welcomeSurveyResponse ||
+					!isset( $welcomeSurveyResponse['_submit_date'] ) ||
+					// We only want to export survey responses in the T303240_mailinglist group,
+					// see https://gerrit.wikimedia.org/r/c/operations/mediawiki-config/+/775951
+					$welcomeSurveyResponse['_group'] !== 'T303240_mailinglist' ) {
 					continue;
 				}
 				$welcomeSurveyResponseSubmitDate = wfTimestampOrNull( TS_MW, $welcomeSurveyResponse['_submit_date' ] );
@@ -84,17 +94,32 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 				if ( isset( $welcomeSurveyResponse['mailinglist'] ) && $welcomeSurveyResponse['mailinglist'] ) {
 					// user_email_authenticated is the timestamp of when the email was confirmed; we want a 1 or 0
 					// to indicate if the email is confirmed.
-					$outputData = [ $row->user_id, $row->user_email, $row->user_email_authenticated ? 1 : 0 ];
+					$outputData = [
+						$row->user_email,
+						$welcomeSurveyResponseSubmitDate,
+						$welcomeSurveyResponse['_group'],
+						$row->user_id,
+						$row->user_email_authenticated ? 1 : 0
+					];
 				} else {
 					continue;
 				}
-				if ( $outputFormat === 'text' ) {
-					fputs( $handle, implode( "\t", $outputData ) . PHP_EOL );
-				} else {
-					fputcsv( $handle, $outputData );
-				}
+				$this->writeToHandle( $outputData );
+
 			}
 		} while ( $result->numRows() );
+	}
+
+	/**
+	 * @param array $data
+	 * @return void
+	 */
+	private function writeToHandle( array $data ): void {
+		if ( $this->outputFormat === 'text' ) {
+			fputs( $this->handle, implode( "\t", $data ) . PHP_EOL );
+		} else {
+			fputcsv( $this->handle, $data );
+		}
 	}
 }
 
