@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Eduardoaddad",
-			"Stanglavine"
+			"Stanglavine",
+			"YuriNikolai"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Painel de mentor",
@@ -76,6 +77,7 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "O próximo passo para desistir da orientação é reatribuir seus aprendizes. Se você tem certeza de que deseja sair, pressione o botão abaixo.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Sim, reatribuir meus aprendizes",
 	"growthexperiments-quit-mentorship-success": "Seus aprendizes serão transferidos para outros mentores em breve.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 deixou de ser {{GENDER:$1|um|uma|um}} {{GENDER:$1|mentor|mentora|mentor}}.",
 	"echo-category-title-ge-mentorship": "Mentoria",
 	"echo-pref-tooltip-ge-mentorship": "Notificações relacionadas a recursos de mentoria mantidos pela equipe de crescimento. Esta notificação permite que você saiba que você foi reivindicado como um aprendiz, ou que um dos seus mentores foi reivindicado por outra pessoa.",
 	"growthexperiments-notification-header-mentee-claimed": "Seu mentor foi reivindicado por $1.",

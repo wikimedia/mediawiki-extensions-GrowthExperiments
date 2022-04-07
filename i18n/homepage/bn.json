@@ -274,7 +274,11 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "বিজ্ঞান, প্রযুক্তি, ও গণিত",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "সংস্কৃতি",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "অঞ্চল",
+	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "ক্যাম্পেইন কার্যক্রম",
+	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "অজানা বিষয় {{PLURAL:$2|নাম|নামসমূহ}} <kbd>growtharticletopic:</kbd> মূলশব্দ: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "পরামর্শকৃত সম্পাদনায় গাঠনিক ত্রুটি: কাঠামোজনিত সমস্যা",
+	"growthexperiments-homepage-suggestededits-config-notinteger": "কাজের ধরন \"$1\"-এর পরামর্শকৃত সম্পাদনার কনফিগারেশন ত্রুটিপূর্ণ : \"$2\" একটি সংখ্যা হবে",
+	"growthexperiments-homepage-suggestededits-config-toosmall": "কাজের ধরন \"$1\"-এর পরামর্শকৃত সম্পাদনার কনফিগারেশন ত্রুটিপূর্ণ : \"$2\"কে $3-এর চেয়ে বড় হতে হবে",
 	"growthexperiments-homepage-suggestededits-config-fieldarray": "কাজের ধরন \"$1\"-এর পরামর্শকৃত সম্পাদনার কনফিগারেশন ত্রুটিপূর্ণ : \"$2\" একটি অ্যারে",
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "কাজের ধরন \"$1\"-এর \"$2\" ক্ষেত্রের পরামর্শকৃত সম্পাদনার কনফিগারেশন ত্রুটিপূর্ণ : সর্বোচ্চ \"$3\" সংখ্যক উপাদান পর্যন্ত সীমা",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "পরামর্শকৃত সম্পাদনার গাঠনিক ত্রুটি: \"$1\" - অবশ্যই অ-য়, ০-৯, - (বিয়োগচিহ্ন) হতে হবে",
@@ -479,8 +483,9 @@
 	"growthexperiments-addimage-reason-wikipedia-project": "$1তে একই নিবন্ধে ব্যবহৃত হয়েছে।",
 	"growthexperiments-addimage-reason-wikidata": "এই নিবন্ধের জন্য উইকিউপাত্তের ভুক্তি পাওয়া গেছে (শক্তিশালী সাদৃশ্য)।",
 	"growthexperiments-addimage-reason-commons": "এই নিবন্ধের জন্য একাধিক ছবি উইকিউপাত্তের ভুক্তিতে যুক্ত করা হয়েছে।",
-	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|আপনি}} আজকের ছবির সকল পরামর্শের কাজ সম্পন্ন করেছেন। {{GENDER:|আপনার}} সম্পাদনার ধরন থেকে অন্যান্য ধরনের সম্পাদনা দেখুন অথবা আগামীকাল পুনরায় ছবির পরামর্শের কাজ করুন।",
+	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|আপনি}} আজকের ছবির সকল পরামর্শের কাজ সম্পন্ন করেছেন।\n\n{{GENDER:|আপনার}} সম্পাদনার ধরন থেকে অন্যান্য ধরনের সম্পাদনা দেখুন অথবা আগামীকাল পুনরায় ছবির পরামর্শের কাজ করুন।",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "বুঝেছি",
 	"growthexperiments-addimage-caption-warning-tooshort": "ক্যাপশনের দৈর্ঘ্য $1 {{PLURAL:$1|অক্ষর}} বা তার বেশি হতে হবে।",
+	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|আপনি}} আজকের লিঙ্কের সকল পরামর্শের কাজ সম্পন্ন করেছেন।\n\n{{GENDER:|আপনার}} সম্পাদনার ধরন থেকে অন্যান্য ধরনের সম্পাদনা দেখুন অথবা আগামীকাল পুনরায় লিঙ্কের পরামর্শের কাজ করুন।",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "বুঝেছি"
 }
