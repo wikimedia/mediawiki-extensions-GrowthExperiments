@@ -4,7 +4,8 @@
 			"Pols12",
 			"Revi",
 			"Robby",
-			"Umherirrender"
+			"Umherirrender",
+			"Verdy p"
 		]
 	},
 	"welcomesurvey": "Title which appears at the top of a welcome survey users are shown after account sign-up, and shown on all form steps. Should be friendly and welcoming but succinct. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.",
@@ -35,7 +36,7 @@
 	"welcomesurvey-question-reason-option-new-page-label": "One response option to the question \"Why did you create your account today?\" (will be shown in a short survey after sign-up).",
 	"welcomesurvey-question-reason-option-program-participant-label": "One response option to the question \"Why did you create your account today?\" (will be shown in a short survey after sign-up).",
 	"welcomesurvey-question-reason-option-read-label": "One response option to the question \"Why did you create your account today?\" (will be shown in a short survey after sign-up).",
-	"welcomesurvey-question-reason-option-other-no-freetext-label": "One response option to the question \"Why did you create your account today?\" (will be shown in a short survey after sign-up).",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "One response option to the question \"Why did you create your account today?\" (will be shown in a short survey after sign-up).\n{{Identical|Other}}",
 	"welcomesurvey-question-reason-option-other-label": "One response option to the question \"Why did you create your account today?\" If this option is selected, a text-field to enter the other reason will appear (will be shown in a short survey after sign-up).",
 	"welcomesurvey-question-reason-other-placeholder": "Placeholder of the text-field that is only shown if a proceeding option of \"Other reason\" is selected in answer to the question  \"Why did you create your account today?\"  (will be shown in a short survey after sign-up).\n\nParameters:\n* $1 - Name of the current user (for use with GENDER).",
 	"welcomesurvey-question-mentor-info": "Check box question asking if a user is interested in being contacted by an experience editor for help with editing. This question will be shown in a short welcome survey that is being shown to users after they sign up for a new Wikipedia account.\n\nParameters:\n* $1 - Name of the current user (for use with GENDER).",

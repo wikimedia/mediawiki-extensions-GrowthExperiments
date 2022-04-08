@@ -63,7 +63,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "আপনি যদি নির্দিষ্ট সময়ের জন্য (এক সপ্তাহের বেশি) মেন্টর হিসেবে থাকতে না পারেন, তবে নিজেকে নিষ্কৃয় হিসেবে নির্বাচন করতে পারেন। এই সময়ের জন্য আরেকজন আপনার পরামর্শগ্রহীতার প্রশ্নাবলী পাবেন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "আপনি নিষ্ক্রিয় থাকবেন:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "দিন",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "\"আপনি নিষ্ক্রিয় থাকবেন\"-এর ইনপুট পূর্ণসংখ্যা হতে হবে। আবার চেষ্টা করুন।",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "\"{{GENDER:|আপনি}} নিষ্ক্রিয় থাকবেন\"-এর ইনপুট পূর্ণসংখ্যা হতে হবে। আবার চেষ্টা করুন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "একটি ত্রুটি দেখা দিয়েছে। অনুগ্রহ করে পরবর্তীতে আবার চেষ্টা করুন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "আপনার অবস্থা \"সক্রিয়\" হিসেবে পরিবর্তিত হয়েছে।",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "আপনার অবস্থা \"নিষ্ক্রিয়\" হিসেবে পরিবর্তিত হয়েছে।",
