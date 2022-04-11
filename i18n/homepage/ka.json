@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"David1010",
-			"Otogi"
+			"Otogi",
+			"Გიო ოქრო"
 		]
 	},
 	"prefs-homepage": "ახალბედას მთავარი გვერდი",
 	"growthexperiments-homepage-enable": "ახალბედას მთავარი გვერდის გამოსახვა",
+	"growthexperiments-homepage-help-dialog-title": "იკითხეთ ფორუმზე",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|რედაქტირება}} ბოლო დღეს"
 }

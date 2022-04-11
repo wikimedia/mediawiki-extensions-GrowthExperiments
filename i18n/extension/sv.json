@@ -75,6 +75,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Uppdatering: mallar för att hitta artiklar som behöver uppdateras med aktuell information.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Destinationssida för att lära sig mer om att uppdatera artiklar.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Destinationssida för att lära sig mer om uppgiftstyp om länkrekommendation.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Det högsta antalet länkförslag som ska visas på varje föreslagen uppgift.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Destinationssida för att lära sig mer om uppgiftstypen bildrekommendation.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Den här uppgiftstypen är associerad med maskinförslag och använder inte mallar för att generera en uppsättning av uppgifter.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artiklar som innehåller mallar som definieras här visas inte för användare som uppgifter för den här uppgiftstypen.",

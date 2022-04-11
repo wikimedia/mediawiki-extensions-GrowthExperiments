@@ -61,5 +61,6 @@
 	"growthexperiments-rcfilters-mentorship-title": "Fadderskap",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Dina}} stjärnmärkta nybörjare",
 	"echo-category-title-ge-mentorship": "Fadderskap",
-	"growthexperiments-notification-body-mentee-claimed": "Orsak: $1"
+	"growthexperiments-notification-body-mentee-claimed": "Orsak: $1",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Fadder $1 finns inte i fadderlistan"
 }
