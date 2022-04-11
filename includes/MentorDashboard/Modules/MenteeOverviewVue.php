@@ -12,8 +12,7 @@ class MenteeOverviewVue extends MenteeOverview {
 		return Html::rawElement(
 			'div',
 			[
-				'id' => 'vue-root',
-				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-vue-content'
+				'id' => 'vue-root'
 			],
 			Html::element(
 				'p',

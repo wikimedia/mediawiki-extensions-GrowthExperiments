@@ -1564,6 +1564,107 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.MentorDashboard.Vue": {
+			"styles": [
+				"ext.growthExperiments.MentorDashboard.Vue/components/variables.less"
+			],
+			"packageFiles": [
+				"ext.growthExperiments.MentorDashboard.Vue/init.js",
+				"ext.growthExperiments.MentorDashboard.Vue/directives/click-outside.directive.js",
+				"ext.growthExperiments.MentorDashboard.Vue/validators/align-text.validator.js",
+				"ext.growthExperiments.MentorDashboard.Vue/components/CPopper/CPopper.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTable.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTableCellValue.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTableCellLink.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTablePagination.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTableLimit.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/HorizontalDivider/HorizontalDivider.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/MenteeOverview.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/MenteeSearch.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/MenteeFilters.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/MenteeFiltersForm.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/DataTableCellMentee.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/NoResults.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/InfoBox.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/LegendBox.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/store/index.js",
+				"ext.growthExperiments.MentorDashboard.Vue/store/modules/mentees.js",
+				"ext.growthExperiments.MentorDashboard.Vue/store/modules/mentees-search.js",
+				"ext.growthExperiments.MentorDashboard.Vue/store/modules/user-preferences.js",
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js",
+				{
+					"name": "ext.growthExperiments.MentorDashboard.Vue/components/icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconUserActive",
+						"cdxIconUpTriangle",
+						"cdxIconClock",
+						"cdxIconHelp",
+						"cdxIconInfo",
+						"cdxIconEdit",
+						"cdxIconEditUndo",
+						"cdxIconBlock",
+						"cdxIconStar",
+						"cdxIconUnStar",
+						"cdxIconNext",
+						"cdxIconPrevious",
+						"cdxIconExpand",
+						"cdxIconCollapse",
+						"cdxIconError",
+						"cdxIconSearch",
+						"cdxIconClose"
+					]
+				},
+				{
+					"name": "ext.growthExperiments.MentorDashboard.Vue/store/Tags.json",
+					"callback": [ "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks", "getTagsToFilterBy" ]
+				}
+			],
+			"messages": [
+				"growthexperiments-mentor-dashboard-mentee-overview-intro",
+				"growthexperiments-mentor-dashboard-mentee-overview-active-ago",
+				"growthexperiments-mentor-dashboard-mentee-overview-page-counter",
+				"growthexperiments-mentor-dashboard-mentee-overview-show-entries",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title",
+				"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder",
+				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-table-caption",
+				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-text",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.language.names",
+				"vue",
+				"vuex",
+				"@wikimedia/codex"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
 		"ext.growthExperiments.MentorDashboard.styles": {
 			"styles": [
 				"ext.growthExperiments.MentorDashboard/MentorDashboard.less",

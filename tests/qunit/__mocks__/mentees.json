@@ -1,0 +1,79 @@
+{
+    "mentees": [
+        {
+            "username": "UserBeta",
+            "reverted": 2,
+            "questions": 0,
+            "editcount": 25,
+            "registration": {
+                "raw": "20210415170317",
+                "human": "2021-04-15"
+            },
+            "last_edit": "20220517231638",
+            "blocks": 0,
+            "last_active": {
+                "raw": "20220517231638",
+                "human": "3 weeks"
+            },
+            "user_id": "1",
+            "userpage_exists": true
+        },
+        {
+            "username": "User-0.4312086866964966-Iñtërnâtiônàlizætiøn",
+            "reverted": 0,
+            "questions": 0,
+            "editcount": 1,
+            "registration": {
+                "raw": "20220421161354",
+                "human": "2022-04-21"
+            },
+            "last_edit": "20220421161359",
+            "blocks": 0,
+            "last_active": {
+                "raw": "20220421161359",
+                "human": "7 weeks"
+            },
+            "user_id": "2",
+            "userpage_exists": false
+        },
+        {
+            "username": "User-0.09497747569998083-Iñtërnâtiônàlizætiøn",
+            "reverted": 0,
+            "questions": 0,
+            "editcount": 1,
+            "registration": {
+                "raw": "20220207161942",
+                "human": "2022-02-07"
+            },
+            "last_edit": "20220207161946",
+            "blocks": 0,
+            "last_active": {
+                "raw": "20220207161946",
+                "human": "18 weeks"
+            },
+            "user_id": "3",
+            "userpage_exists": false
+        },
+        {
+            "username": "User-0.8618671850354198-Iñtërnâtiônàlizætiøn",
+            "reverted": 0,
+            "questions": 0,
+            "editcount": 1,
+            "registration": {
+                "raw": "20220116162825",
+                "human": "2022-01-16"
+            },
+            "last_edit": "20220116162829",
+            "blocks": 0,
+            "last_active": {
+                "raw": "20220116162829",
+                "human": "21 weeks"
+            },
+            "user_id": "4",
+            "userpage_exists": false
+        }
+    ],
+    "totalRows": 4,
+    "limit": 20,
+    "offset": 0
+}

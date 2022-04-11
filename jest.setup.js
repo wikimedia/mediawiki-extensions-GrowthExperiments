@@ -5,11 +5,18 @@ global.$ = require( 'jquery' );
 
 // Mock MW object
 global.mw = {
+	log: {
+		error: jest.fn(),
+		warn: jest.fn()
+	},
 	config: {
 		get: jest.fn()
 	},
 	user: {
-		isAnon: jest.fn().mockReturnValue( true )
+		isAnon: jest.fn().mockReturnValue( true ),
+		options: {
+			get: jest.fn()
+		}
 	},
 	language: {
 		convertNumber: jest.fn(),

@@ -1,0 +1,6 @@
+{
+	"extends": [
+		"stylelint-config-wikimedia",
+		"stylelint-config-recommended-vue"
+	]
+}

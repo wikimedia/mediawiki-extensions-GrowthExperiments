@@ -1,0 +1,39 @@
+// Mimic Codex design tokens if possible
+
+// Color
+
+@colorBase10: #202122;
+@colorBase100: #fff;
+
+@colorGray400: #a2a9b1;
+@colorGray500: #72777d;
+@colorGray600: #54595d;
+
+@color-accessory: @colorGray600;
+@background-color-base: @colorBase100;
+
+// Padding
+@padding-horizontal-base: 12px;
+@padding-vertical-base: 4px;
+
+@padding-base: @padding-vertical-base @padding-horizontal-base;
+
+// Box-shadow
+@box-shadow-drop-medium: 0 2px 2px 0 rgba( 0, 0, 0, 0.2 );
+
+// Border
+@border-radius-base: 2px;
+@border-width-base: 1px;
+@border-style-base: solid;
+@border-color-base: @colorGray400;
+
+@border-base: @border-width-base @border-style-base @border-color-base;
+
+// Mixins
+.popover-base() {
+	padding: @padding-base;
+	border: @border-base;
+	box-shadow: @box-shadow-drop-medium;
+	border-radius: @border-radius-base;
+	background-color: @background-color-base;
+}

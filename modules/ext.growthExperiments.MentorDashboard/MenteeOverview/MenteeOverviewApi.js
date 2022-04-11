@@ -131,7 +131,7 @@
 			gesmentee: '#' + userId
 		} ).then( function () {
 			// Do not use this.starredMentees directly, as that might not be inited yet
-			menteeOverviewApi.getStarredMentees().then( function () {
+			return menteeOverviewApi.getStarredMentees().then( function () {
 				// In case GetStarredMentees fallbacked to API, this is actually
 				// not neeeded. Since this is a set, it doesn't matter much.
 				menteeOverviewApi.starredMentees.push( Number( userId ) );
@@ -147,7 +147,7 @@
 			gesmentee: '#' + userId
 		} ).then( function () {
 			// Do not use this.starredMentees directly, as that might not be inited yet
-			menteeOverviewApi.getStarredMentees().then( function () {
+			return menteeOverviewApi.getStarredMentees().then( function () {
 				// Remove mentee ID from list of starred mentees; In case GetStarredMentees
 				// fallbacked to API, this is actually not necessary, but it shouldn't hurt.
 				menteeOverviewApi.starredMentees = menteeOverviewApi.starredMentees.filter(
