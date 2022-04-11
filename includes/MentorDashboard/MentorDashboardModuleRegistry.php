@@ -5,6 +5,7 @@ namespace GrowthExperiments\MentorDashboard;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\Modules\MenteeOverview;
+use GrowthExperiments\MentorDashboard\Modules\MenteeOverviewVue;
 use GrowthExperiments\MentorDashboard\Modules\MentorTools;
 use GrowthExperiments\MentorDashboard\Modules\Resources;
 use IContextSource;
@@ -59,6 +60,15 @@ class MentorDashboardModuleRegistry {
 	 */
 	private static function getWiring() {
 		return [
+			'mentee-overview-vue' => static function (
+				MediaWikiServices $services,
+				IContextSource $context
+			): IDashboardModule {
+				return new MenteeOverviewVue(
+					'mentee-overview-vue',
+					$context
+				);
+			},
 			'mentee-overview' => static function (
 				MediaWikiServices $services,
 				IContextSource $context
