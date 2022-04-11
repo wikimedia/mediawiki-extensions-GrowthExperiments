@@ -202,7 +202,12 @@
 	"HookHandlers": {
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
-			"services": [ "MainConfig", "GrowthExperimentsWelcomeSurveyFactory", "GrowthExperimentsCampaignConfig" ]
+			"services": [
+				"MainConfig",
+				"UserOptionsLookup",
+				"GrowthExperimentsWelcomeSurveyFactory",
+				"GrowthExperimentsCampaignConfig"
+			]
 		},
 		"helppanel": {
 			"class": "GrowthExperiments\\HelpPanelHooks"
