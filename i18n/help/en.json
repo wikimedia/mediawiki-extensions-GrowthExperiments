@@ -114,7 +114,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "The suggestions might be on words that don’t need them, or might link to the wrong article. Use {{GENDER:$1|your}} judgment to decide whether they are right or wrong.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Learn more about machine suggestions]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Guidelines",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "\n* Link concepts that a reader might want to learn more about.\n* Make sure the link is going to the right article.\n* Don't link common words, years, or dates.\n* If {{GENDER:$1|you're}} not sure, skip.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Link concepts that a reader might want to learn more about.\n* Make sure the link is going to the right article.\n* Don't link common words, years, or dates.\n* If {{GENDER:$1|you're}} not sure, skip.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Example sentence",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "Images help people learn, but many articles don't have one.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-value": "{{GENDER:|You}} will decide whether a suggested image should be put in a Wikipedia article.",
