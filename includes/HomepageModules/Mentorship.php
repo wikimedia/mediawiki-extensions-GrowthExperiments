@@ -113,6 +113,42 @@ class Mentorship extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function buildSection( $name, $content, $tag = 'div' ) {
+		if ( $name === 'header' && $this->getMode() === self::RENDER_DESKTOP ) {
+			return Html::rawElement(
+				'div',
+				[ 'class' => 'growthexperiments-homepage-mentorship-header-wrapper' ],
+				implode( "\n", [
+					parent::buildSection( $name, $content, $tag ),
+					$this->getEllipsisWidget()
+				] )
+			);
+		}
+		return parent::buildSection( $name, $content, $tag );
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getEllipsisWidget() {
+		// NOTE: This will be replaced with ButtonMenuSelectWidget in EllipsisMenu.js on the
+		// client side.
+		return Html::rawElement(
+			'div',
+			[ 'class' => 'growthexperiments-homepage-mentorship-ellipsis' ],
+			new ButtonWidget( [
+				'id' => 'mw-ge-homepage-mentorship-ellipsis',
+				'icon' => 'ellipsis',
+				'framed' => false,
+				'invisibleLabel' => true,
+				'infusable' => true,
+			] )
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getHeaderIconName() {
 		return 'userTalk';
 	}
