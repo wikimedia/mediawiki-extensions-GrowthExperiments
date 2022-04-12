@@ -6,7 +6,8 @@
 			"Trizek (WMF)",
 			"Tuanminh01",
 			"Vinhtantran",
-			"Minh Nguyen"
+			"Minh Nguyen",
+			"NguoiDungKhongDinhDanh"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Bật cửa sổ trợ giúp sửa đổi",
@@ -94,8 +95,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-value": "Nhiều bài viết {{SITENAME}} dù ngắn hay dài đều có thể được mở rộng thêm bằng nhiều thông tin hơn nữa. Điều này sẽ giúp mọi người học hỏi được nhiều hơn về một chủ đề.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-calm": "Để tạo nên thay đổi, {{GENDER:|bạn}} chỉ cần thêm một sự thật mới vào bài viết này. {{GENDER:|Bạn}} không cần phải thêm toàn bộ một đoạn hay một mục mới.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-rules1": "Hãy làm theo những hướng dẫn dưới đây khi mở rộng bài viết:\n* Xem những bài viết về chủ đề tương tự để nắm bắt được ý tưởng về nội dung còn thiếu.\n* Chỉ thêm những thông tin là sự thật có thể được kiểm chứng bởi người khác.\n* Viết bằng giọng văn trung lập, loại bỏ bất cứ ý kiến cá nhân nào.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step1": "Khi {{GENDER:|bạn}} tìm thấy một đoạn {{GENDER:|bạn}} muốn mở rộng, hãy click \"$1\" để bắt đầu. Nếu bạn muốn, bạn có thể thêm một tên đề mục mới để bắt đầu một mục.",
-	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-step1": "Khi bạn tìm thấy một mục bạn muốn mở rộng, hay chạm vào bút chì sửa đổi để bắt đầu. Nếu bạn muốn, bạn có thể thêm một tên đề mục mới để bắt đầu một mục.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step1": "Khi {{GENDER:|bạn}} tìm thấy một đoạn {{GENDER:|bạn}} muốn mở rộng, hãy nhấp \"$1\" để bắt đầu. Nếu muốn, bạn có thể thêm đề mục mới để bắt đầu một mục.",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-step1": "Khi bạn tìm thấy một mục bạn muốn mở rộng, hãy chạm vào nút sửa đổi có hình cây bút để bắt đầu. Nếu muốn, bạn có thể thêm đề mục mới để bắt đầu một mục.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2": "Khi bạn thêm thông tin mới, hãy nhớ [[$1|thêm tham khảo]] để người khác có thể nhìn thấy xem thông tin đó tới từ đâu.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2-no-link": "Khi bạn thêm thông tin mới, hãy nhớ thêm tham khảo để người khác có thể nhìn thấy xem thông tin đó tới từ đâu.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "Khi bạn đã hoàn thành việc mở rộng bài viết, hãy click \"$1\" để lưu sửa đổi của bạn!",
