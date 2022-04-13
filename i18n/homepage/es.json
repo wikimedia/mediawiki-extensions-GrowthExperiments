@@ -32,7 +32,8 @@
 			"DiegoAmbrocio",
 			"Ice bulldog",
 			"Josuert",
-			"Sergi0"
+			"Sergi0",
+			"Danniel07"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -314,6 +315,8 @@
 	"growthexperiments-log-header": "Esto es un registro de los cambios hechos en la extensión GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|reclamó}} a {{GENDER:$6|$3}} como su aprendiz (anterior {{GENDER:$4|mentor|mentora}}: $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|solicita a}} $3 como {{GENDER:$6|alumno|alumna}} (no asignado previamente)",
+	"logentry-growthexperiments-setmentor": "$1 estableció a {{GENDER:$5|$7}} como el mentor de {{GENDER:$6|$3}} (previamente {{GENDER:$4|tutor|tutora}} $8)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 estableció a {{GENDER:$5|$7}} como el mentor de {{GENDER:$6|$3}} (sin tutor previo)",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|revisó}} $4 recomendaciones de enlaces para $3: se aceptaron $5, se rechazaron $6 y se omitieron $7",
 	"log-action-filter-growthexperiments-claimmentee": "Cambios de aprendices",
 	"log-action-filter-growthexperiments-setmentor": "Cambios de mentor",
@@ -340,7 +343,10 @@
 	"growthexperiments-addlink-pagenotfound": "La página «$1» no existe",
 	"growthexperiments-addlink-revdeleted": "No se puede acceder a la revisión $1 de «$2»",
 	"growthexperiments-addlink-wrongmodel": "La revisión $1 de \"$2\" no es wikitexto",
+	"growthexperiments-addlink-invalidjson": "La respuesta del servicio de recomendación de enlaces para \"$1\" no es válida",
+	"growthexperiments-addlink-serviceerror": "El servicio de recomendación de enlaces respondió con un error para \"$1\": $2",
 	"growthexperiments-addlink-notinstore": "No se encuentran recomendaciones de enlaces para «$1»",
+	"growthexperiments-addlink-duplicatesubmission": "Se intentó enviar revisiones de sugerencias de enlaces para la revisión \"$1\", que ya ha sido revisada.",
 	"growthexperiments-addlink-context-text-label": "Texto",
 	"growthexperiments-addlink-context-intro": "¿Esto debería enlazar con el siguiente artículo?",
 	"growthexperiments-addlink-context-button-accept": "Sí",
@@ -386,6 +392,7 @@
 	"growthexperiments-addlink-skip-body": "¿Estás {{GENDER:|seguro|segura}} de que no quieres aceptar ni rechazar ninguna sugerencia?",
 	"growthexperiments-addlink-skip-accept": "Omitir todo",
 	"growthexperiments-addlink-skip-reject": "Revisar de nuevo",
+	"grant-managementorship": "Administrar tutoría",
 	"newcomertasksinfo": "Tareas de usuarios nuevos",
 	"newcomertasksinfo-no-data": "No hay información disponible.",
 	"newcomertasksinfo-table-header-task-type": "Tipo de tarea",

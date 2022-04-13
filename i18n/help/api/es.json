@@ -4,7 +4,8 @@
 			"Fitoschido",
 			"LORDZRAWN",
 			"ZebaX2010",
-			"Zapipedia (WMF)"
+			"Zapipedia (WMF)",
+			"Danniel07"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Manejar las preguntas publicadas a través del panel de ayuda para el usuario actual.",
@@ -13,5 +14,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panel \"Pregunta al servicio de ayuda\"",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "El panel \"Pregunta a tu mentor\" en la página de inicio de los nuevos usuarios",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "La pantalla \"Pregunte a tu mentor\" en el panel de ayuda",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "El panel \"Preguntar a la mesa de ayuda\" (nombre antiguo)",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Se necesita acceder para formular una pregunta."
 }
