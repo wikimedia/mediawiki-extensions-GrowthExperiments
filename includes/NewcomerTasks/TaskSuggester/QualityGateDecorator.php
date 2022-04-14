@@ -129,9 +129,7 @@ class QualityGateDecorator implements TaskSuggester {
 		IContextSource $contextSource,
 		ImageRecommendationTaskType $imageRecommendationTaskType
 	): ?bool {
-		// FIXME remove when GLAM campaign is over
-		// Daily limit for image recommendation does not apply to users in the GLAM campaign.
-		if ( $this->campaignConfig->isUserInCampaign( $user, 'growth-glam-2022' ) ) {
+		if ( $this->campaignConfig->shouldSkipImageRecommendationDailyTaskLimitForUser( $user ) ) {
 			return false;
 		}
 		return $this->getImageRecommendationTasksDoneByUserForCurrentDay(

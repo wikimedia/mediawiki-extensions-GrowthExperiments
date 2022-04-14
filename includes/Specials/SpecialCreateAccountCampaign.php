@@ -4,6 +4,7 @@ namespace GrowthExperiments\Specials;
 
 use ExtensionRegistry;
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Util;
 use Html;
 use Linker;
@@ -22,6 +23,15 @@ use Title;
  * FIXME this is a quick hack for T284740. A proper extension point should be added to core.
  */
 class SpecialCreateAccountCampaign extends SpecialCreateAccount {
+	/** @var CampaignConfig */
+	private $campaignConfig;
+
+	/**
+	 * @param CampaignConfig $campaignConfig
+	 */
+	public function setCampaignConfig( CampaignConfig $campaignConfig ): void {
+		$this->campaignConfig = $campaignConfig;
+	}
 
 	/**
 	 * Get footer content for the special page. Displayed via SkinAddFooterLinks hook.
@@ -196,25 +206,13 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	}
 
 	/**
-	 * Return the message key prefix for the campaign
+	 * Get the messageKey from the campaign  configuration
 	 *
 	 * @return string
 	 */
 	private function getCampaignMessageKey(): string {
-		if ( $this->isMarketingVideoCampaign() ) {
-			return 'marketingvideocampaign';
-		}
-
-		$campaign = $this->getCampaignValue();
-		if ( strpos( $campaign, 'recurring' ) !== false ) {
-			return 'recurringcampaign';
-		} elseif ( strpos( $campaign, 'JOSA' ) !== false ) {
-			return 'josacampaign';
-		} elseif ( strpos( $campaign, 'glam' ) !== false ) {
-			return 'glamcampaign';
-		} else {
-			return 'signupcampaign';
-		}
+		$campaignTerm = $this->getCampaignValue();
+		return $this->campaignConfig->getMessageKey( $campaignTerm );
 	}
 
 	/**

@@ -86,8 +86,7 @@ class WelcomeSurveyHooks implements
 	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
 		$context = RequestContext::getMain();
 		if ( !$this->isWelcomeSurveyEnabled() ||
-			VariantHooks::isDonorOrGlamCampaign( $context, $this->campaignConfig ) &&
-				!VariantHooks::isMarketingVideoCampaign( $context ) ||
+			VariantHooks::shouldCampaignSkipWelcomeSurvey( $context, $this->campaignConfig ) ||
 			HomepageHooks::getGrowthFeaturesOptInOptOutOverride() === HomepageHooks::GROWTH_FORCE_OPTOUT
 		) {
 			return;

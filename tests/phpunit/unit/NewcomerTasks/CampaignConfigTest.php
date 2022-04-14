@@ -38,13 +38,17 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 		$campaignConfig = new CampaignConfig( [
 			'growth-glam-2022' => [
 				'topics' => $topicIds,
-				'pattern' => '/^growth-glam-2022$/'
+				'pattern' => '/^growth-glam-mexico-2022$/'
 			]
 		], [
 			'argentina' => 'growtharticletopic:argentina',
 			'mexico' => 'growtharticletopic:mexico',
 			'chile' => 'growtharticletopic:chile'
 		] );
+		$this->assertEquals(
+			'growth-glam-2022',
+			$campaignConfig->getCampaignIndexFromCampaignTerm( 'growth-glam-mexico-2022' )
+		);
 		$this->assertArrayEquals( $campaignConfig->getCampaignTopics(), [
 			[ 'id' => 'argentina', 'searchExpression' => 'growtharticletopic:argentina' ],
 			[ 'id' => 'mexico', 'searchExpression' => 'growtharticletopic:mexico' ],
@@ -108,6 +112,44 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals(
 			$campaignConfig->getTopicsToExcludeForCampaign(),
 			[ 'argentina', 'mexico', 'chile', 'argentina-expanded' ]
+		);
+	}
+
+	public function testShouldSkipWelcomeSurvey() {
+		$campaignConfig = new CampaignConfig( [
+			'growth-glam-2022' => [
+				'pattern' => '/^growth-glam-mexico-2022$/'
+			]
+		] );
+		$this->assertFalse(
+			$campaignConfig->shouldSkipWelcomeSurvey( 'growth-glam-mexico-2022' )
+		);
+		$campaignConfig = new CampaignConfig( [
+			'growth-glam-2022' => [
+				'pattern' => '/^growth-glam-mexico-2022$/',
+				'skipWelcomeSurvey' => true
+			]
+		] );
+		$this->assertTrue(
+			$campaignConfig->shouldSkipWelcomeSurvey( 'growth-glam-mexico-2022' )
+		);
+	}
+
+	public function testGetMessageKey() {
+		$campaignConfig = new CampaignConfig( [] );
+		$this->assertEquals(
+			'signupcampaign',
+			$campaignConfig->getMessageKey( 'some-signup-campaign' )
+		);
+		$campaignConfig = new CampaignConfig( [
+			'growth-glam-2022' => [
+				'pattern' => '/^growth-glam-mexico-2022$/',
+				'messageKey' => 'growthglamcampaignkey'
+			]
+		] );
+		$this->assertEquals(
+			'growthglamcampaignkey',
+			$campaignConfig->getMessageKey( 'growth-glam-mexico-2022' )
 		);
 	}
 
