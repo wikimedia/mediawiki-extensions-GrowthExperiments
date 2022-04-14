@@ -309,7 +309,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1, {{GENDER:$6|$3}} ను తన శిష్యుడిగా {{GENDER:$2|స్వీకరించారు}} (గత గురువు ఎవరూ లేరు)",
 	"logentry-growthexperiments-setmentor": "$1, {{GENDER:$5|$7}} ను {{GENDER:$6|$3}} కు శిష్యుడిగా {{GENDER:$2|ఏర్పరచారు}} (గత {{GENDER:$4|గురువు}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1, {{GENDER:$5|$7}} ను {{GENDER:$6|$3}} కు శిష్యుడిగా {{GENDER:$2|ఏర్పరచారు}} (గత గురువు ఎవరూ లేరు)",
-	"logentry-growthexperiments-addlink": "$1, $3 కొరకు ఇచ్చిన $4 లింకు సూచనలను {{GENDER:$2|సమీక్షించారు}}: $5 ని స్వీకరించి, $6 ని తిరస్కరించి, $7 ని వదిలేసారు",
+	"logentry-growthexperiments-addlink": "$1, $3 కొరకు ఇచ్చిన $4 {{PLURAL:$4|లింకు సూచనను|లింకు సూచనలను}} {{GENDER:$2|సమీక్షించారు}}: $5 {{PLURAL:$5|ని స్వీకరించి}}, $6 {{PLURAL:$6|ని తిరస్కరించి}}, $7 {{PLURAL:$7|ని వదిలేసారు}}",
 	"logentry-growthexperiments-addimage-accepted": "$1, $3 కు వచ్చిన బొమ్మ సూచనను {{GENDER:$2|సమీక్షించారు}}: స్వీకరించారు",
 	"logentry-growthexperiments-addimage-rejected": "$1, $3 కు వచ్చిన బొమ్మ సూచనను {{GENDER:$2|సమీక్షించారు}}: తిరస్కరించారు",
 	"log-action-filter-growthexperiments": "GrowthExperiments ఘటన రకం:",
