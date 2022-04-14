@@ -9,9 +9,9 @@ use Html;
 use Linker;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
+use MediaWiki\TimedMediaHandler\Hooks;
 use OOUI\IconWidget;
 use SpecialCreateAccount;
-use TimedMediaHandlerHooks;
 use Title;
 
 /**
@@ -121,7 +121,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 					$params
 				);
 				$videoHtml = Html::rawElement( 'div', [ 'class' => 'mw-ge-video' ], $output );
-				$activePlayerMode = TimedMediaHandlerHooks::activePlayerMode();
+				$activePlayerMode = Hooks::activePlayerMode();
 				$rlModules = $rlModuleStyles = [];
 				if ( $activePlayerMode === 'mwembed' ) {
 					$rlModuleStyles = [ 'ext.tmh.thumbnail.styles' ];
