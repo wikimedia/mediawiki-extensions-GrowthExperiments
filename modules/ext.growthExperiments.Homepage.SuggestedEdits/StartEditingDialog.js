@@ -509,11 +509,6 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 						.text( mw.message(
 							'growthexperiments-homepage-startediting-dialog-intro-topic-selector-header'
 						).text() ),
-					$( '<p>' )
-						.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-subheader' )
-						.text( mw.message(
-							'growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader'
-						).text() ),
 					this.topicSelector.$element
 				);
 

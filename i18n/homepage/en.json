@@ -42,7 +42,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>When {{GENDER:|you}} created {{GENDER:|your}} account, {{GENDER:|you}} said {{GENDER:|you}} wanted to add or change information on an existing article.</strong> Here, {{GENDER:|you}} can find suggestions of small edits to get started. If {{GENDER:|you}} would rather go straight to changing a specific article, {{GENDER:|you}} can search for the article and click \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>When {{GENDER:|you}} created {{GENDER:|your}} account, {{GENDER:|you}} said {{GENDER:|you}} wanted to create a new article.</strong> That's an important but challenging type of editing, so we recommend {{GENDER:|you}} try some small edits to existing articles first. If {{GENDER:|you}} would rather go straight to creating a new article, {{GENDER:|you}} can [$1 learn how here].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Choose some topics {{GENDER:|you}} are interested in editing",
-	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "We'll try to suggest articles that match {{GENDER:|your}} interests.",
+
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filter by topic",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Use topics to get suggestions {{GENDER:|you}} find interesting. {{GENDER:|You}} can choose just one topic or select many.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Back",
@@ -300,7 +300,6 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Select all",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Remove all",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Choose some topics {{GENDER:$1|you}} are interested in editing",
-	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "We'll try to suggest articles that match {{GENDER:$1|your}} interests.",
 	"growthexperiments-homepage-claimmentee-title": "Claim mentee",
 	"growthexperiments-homepage-claimmentee-pretext": "This page allows {{GENDER:$1|you}} to change mentee's mentor to {{GENDER:$1|yourself}}. It's recommended to use this feature for users {{GENDER:$1|you}} know, or for users {{GENDER:$1|you}} mentor on a course.",
 	"growthexperiments-homepage-claimmentee-mentee": "Mentee's username",
