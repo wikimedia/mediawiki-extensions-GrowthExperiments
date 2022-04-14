@@ -589,7 +589,8 @@ return [
 	): ProtectionFilter {
 		return new ProtectionFilter(
 			$services->getTitleFactory(),
-			$services->getLinkBatchFactory()
+			$services->getLinkBatchFactory(),
+			$services->getRestrictionStore()
 		);
 	},
 

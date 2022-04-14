@@ -8,6 +8,8 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\PageIdentity;
+use MediaWiki\Permissions\RestrictionStore;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Title;
@@ -20,16 +22,18 @@ use TitleValue;
 class ProtectionFilterTest extends MediaWikiUnitTestCase {
 
 	public function testFilter() {
+		$pageMap = [
+			// ns:title => [ exists, is protected ]
+			'0:Page1' => [ false, false ],
+			'0:Page2' => [ false, true ],
+			'0:Page3' => [ true, false ],
+			'0:Page4' => [ true, true ],
+			'0:Page5' => [ true, false ],
+		];
 		$filter = new ProtectionFilter(
-			$this->getMockTitleFactory( [
-				// ns:title => [ exists, is protected ]
-				'0:Page1' => [ false, false ],
-				'0:Page2' => [ false, true ],
-				'0:Page3' => [ true, false ],
-				'0:Page4' => [ true, true ],
-				'0:Page5' => [ true, false ],
-			] ),
-			$this->getMockLinkBatchFactory()
+			$this->getMockTitleFactory( $pageMap ),
+			$this->getMockLinkBatchFactory(),
+			$this->getMockRestrictionStore( $pageMap )
 		);
 		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_EASY );
 		$taskSet = new TaskSet( [
@@ -78,10 +82,11 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 				$data = $map[$target->getNamespace() . ':' . $target->getDBkey()];
 				$title = $this->getMockBuilder( Title::class )
 					->disableOriginalConstructor()
-					->onlyMethods( [ 'exists', 'isProtected' ] )
+					->onlyMethods( [ 'exists', 'getNamespace', 'getDBkey' ] )
 					->getMock();
 				$title->method( 'exists' )->willReturn( $data[0] );
-				$title->method( 'isProtected' )->willReturn( $data[1] );
+				$title->method( 'getNamespace' )->willReturn( $target->getNamespace() );
+				$title->method( 'getDBkey' )->willReturn( $target->getDBkey() );
 				return $title;
 			} );
 		return $factory;
@@ -95,6 +100,24 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 			->disableOriginalConstructor()
 			->onlyMethods( [ 'newLinkBatch' ] )
 			->getMock();
+	}
+
+	/**
+	 * @param array[] $map "<ns>:<title>" => [ exists, is protected ]
+	 * @return RestrictionStore|MockObject
+	 */
+	protected function getMockRestrictionStore( array $map ) {
+		$restrictionStore = $this->getMockBuilder( RestrictionStore::class )
+			->disableOriginalConstructor()
+			->onlyMethods( [ 'isProtected' ] )
+			->getMock();
+		$restrictionStore->method( 'isProtected' )->willReturnCallback(
+			function ( PageIdentity $page ) use ( $map ) {
+				$this->assertArrayHasKey( $page->getNamespace() . ':' . $page->getDBkey(), $map );
+				$data = $map[$page->getNamespace() . ':' . $page->getDBkey()];
+				return $data[1];
+			} );
+		return $restrictionStore;
 	}
 
 }

@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Permissions\RestrictionStore;
 use TitleFactory;
 
 /**
@@ -17,16 +18,22 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
 
+	/** @var RestrictionStore */
+	private $restrictionStore;
+
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param RestrictionStore $restrictionStore
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
-		LinkBatchFactory $linkBatchFactory
+		LinkBatchFactory $linkBatchFactory,
+		RestrictionStore $restrictionStore
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->linkBatchFactory = $linkBatchFactory;
+		$this->restrictionStore = $restrictionStore;
 	}
 
 	/** @inheritDoc */
@@ -50,7 +57,7 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 			// for single-task lookups so constructing our own efficient SQL query is not
 			// worth the effort.
 			// Keep titles which do not exist. This is useful for local test setups.
-			if ( !$title->exists() || !$title->isProtected( 'edit' ) ) {
+			if ( !$title->exists() || !$this->restrictionStore->isProtected( $title, 'edit' ) ) {
 				$validTasks[] = $task;
 			} else {
 				$invalidTasks[] = $task;
