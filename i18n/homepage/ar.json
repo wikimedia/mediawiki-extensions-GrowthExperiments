@@ -386,7 +386,7 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "اقتراح",
 	"growthexperiments-addlink-summary-column-header-linked": "رابط؟",
 	"growthexperiments-addlink-summary-copyrightwarning": "عند نشرك لتعديلاتك، فإنّك {{GENDER:|توافق|توافقين}} على [https://foundation.wikimedia.org/wiki/Terms_of_Use شروط الاستخدام] و{{GENDER:|توافق|توافقين}} على نشر مساهماتك تحت رخص  [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] و[https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
-	"growthexperiments-addlink-summary-summary": "مِيزة اقتراح الروابط: أُضيف {{PLURAL:$1|0 روابط|رابط واحد|رابِطين|$1 روابط|$1 رابطًا}}.",
+	"growthexperiments-addlink-summary-summary": "مِيزة اقتراح الروابط: أُضيف {{PLURAL:$1|0 روابط|رابط واحد|رابطان|$1 روابط|$1 رابطًا}}.",
 	"growthexperiments-addlink-skip-title": "لقد {{GENDER:|تخطّيت}} كل الاقتراحات في هذه المقالة.",
 	"growthexperiments-addlink-skip-body": "هل أنت {{GENDER:|واثق|واثقة}} أنّك لا {{GENDER:|تريد|تريدين}} الموافقة أو الرفض لأيّ اقتراح؟",
 	"growthexperiments-addlink-skip-accept": "تخطي الكل",
