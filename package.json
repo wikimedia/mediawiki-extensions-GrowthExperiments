@@ -1,4 +1,5 @@
 {
+	"name": "GrowthExperiments",
 	"private": true,
 	"scripts": {
 		"api-testing": "mocha tests/api-testing",
