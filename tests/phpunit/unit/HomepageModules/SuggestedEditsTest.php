@@ -21,6 +21,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use Language;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\Permissions\RestrictionStore;
 use MediaWiki\User\UserOptionsLookup;
 use OOUI\BlankTheme;
 use OOUI\Theme;
@@ -196,10 +197,14 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 		$linkBatchFactoryMock = $this->getMockBuilder( LinkBatchFactory::class )
 			->disableOriginalConstructor()
 			->getMock();
+		$restrictionStoreMock = $this->getMockBuilder( RestrictionStore::class )
+			->disableOriginalConstructor()
+			->getMock();
 
 		$protectionFilter = new ProtectionFilter(
 			$titleFactoryMock,
-			$linkBatchFactoryMock
+			$linkBatchFactoryMock,
+			$restrictionStoreMock
 		);
 		$linkRecommendationFilter = new LinkRecommendationFilter(
 			$this->getMockBuilder( LinkRecommendationStore::class )
