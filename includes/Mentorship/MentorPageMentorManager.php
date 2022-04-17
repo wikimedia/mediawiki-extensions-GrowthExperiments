@@ -169,14 +169,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			return $this->getMentorForUser( $user, $role );
 		} catch ( WikiConfigException $e ) {
 			// WikiConfigException is thrown when no mentor is available
-			// Log as info level, as not-yet-developed wikis may have
+			// Do not log, as not-yet-developed wikis may have
 			// zero mentors for long period of time (T274035)
-			$this->logger->info( 'No {role} mentor available for {user}', [
-				'user' => $user->getName(),
-				'role' => $role,
-				'exception' => $e
-			] );
 		} catch ( DBReadOnlyError $e ) {
+			// @phan-suppress-previous-line PhanPluginDuplicateCatchStatementBody
 			// Just pretend the user doesn't have a mentor. It will be set later, and often
 			// this call is made in the context of something not specifically mentorship-
 			// related, such as the homepage, so it's better than erroring out.
