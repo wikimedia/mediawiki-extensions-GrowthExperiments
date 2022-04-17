@@ -142,6 +142,16 @@ class VariantHooks implements
 	}
 
 	/**
+	 * FIXME T303785 replace with proper campaign configuration
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	public static function isMarketingVideoCampaign( IContextSource $context ) {
+		$campaign = self::getCampaign( $context );
+		return $campaign === 'facebook-latam-2022-A';
+	}
+
+	/**
 	 * @param IContextSource $context
 	 * @return string
 	 * @codeCoverageIgnore
@@ -186,7 +196,9 @@ class VariantHooks implements
 	/** @inheritDoc */
 	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
 		$context = RequestContext::getMain();
-		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig ) ) {
+		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig )
+			&& !self::isMarketingVideoCampaign( $context )
+		) {
 			$context->getOutput()->redirect( SpecialPage::getSafeTitleFor( 'Homepage' )->getFullUrlForRedirect() );
 		}
 	}

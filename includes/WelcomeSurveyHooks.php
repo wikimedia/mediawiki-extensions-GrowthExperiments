@@ -97,7 +97,8 @@ class WelcomeSurveyHooks implements
 		$context = RequestContext::getMain();
 
 		if ( !$this->isWelcomeSurveyEnabled() ||
-			VariantHooks::isDonorOrGlamCampaign( RequestContext::getMain(), $this->campaignConfig ) ||
+			VariantHooks::isDonorOrGlamCampaign( $context, $this->campaignConfig ) &&
+				!VariantHooks::isMarketingVideoCampaign( $context ) ||
 			HomepageHooks::getGrowthFeaturesOptInOptOutOverride() === HomepageHooks::GROWTH_FORCE_OPTOUT
 		) {
 			return;
