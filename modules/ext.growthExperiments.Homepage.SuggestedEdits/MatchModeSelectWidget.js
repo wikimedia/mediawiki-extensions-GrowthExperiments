@@ -9,7 +9,8 @@
  * @param {Object} config
  * @param {string} config.initialValue value to pre-select an option
  * @param {Object[]} config.options available select options. Options
- * required properties: "data", "label". ie: { data: 'OR', label: 'Match ANY' }
+ *   required properties: "data", "label". ie: { data: 'OR', label: 'Match ANY' }
+ * @cfg {jQuery|true} [$overlay] Overlay to display the widget in, or true to use default OOUI window
  */
 function MatchModeSelectWidget( config ) {
 	var defaultClasses = [ 'mw-ge-MatchModeSelectWidget' ];
@@ -22,6 +23,7 @@ function MatchModeSelectWidget( config ) {
 		classes: [ 'mw-ge-MatchModeSelectWidget__popup' ],
 		framed: false,
 		invisibleLabel: true,
+		$overlay: config.$overlay,
 		popup: {
 			label: mw.message(
 				'growthexperiments-homepage-suggestededits-topics-match-mode-description'

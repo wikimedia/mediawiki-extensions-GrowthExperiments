@@ -442,7 +442,8 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 	// Construct the topic selector even if this.useTopicSelector is false, because
 	// topicsAvailable() needs it
 	this.topicSelector = this.enableTopics ? new TopicSelectionWidget( {
-		isMatchModeEnabled: this.useTopicMatchMode
+		isMatchModeEnabled: this.useTopicMatchMode,
+		$overlay: true
 	} ) : false;
 
 	generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.svg';
