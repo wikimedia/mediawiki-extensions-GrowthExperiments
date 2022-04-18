@@ -7,10 +7,12 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
 use Html;
 use Linker;
+use MalformedTitleException;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\TimedMediaHandler\Hooks;
 use OOUI\IconWidget;
+use OutputPage;
 use SpecialCreateAccount;
 use Title;
 
@@ -98,44 +100,9 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			$benefitsList = Html::rawElement( 'ul', [ 'class' => 'mw-ge-donorsignup-list' ], $benefitsList );
 		} elseif ( $this->isMarketingVideoCampaign() ) {
 			// FIXME: Delete this block of code when T302738 is over.
-			$title = Title::makeTitleSafe( NS_FILE,
-				'Wikimedia_Foundation_newcomer_experience_pilot_-_account_creation.webm' );
-			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
-			if ( $file && $title && ExtensionRegistry::getInstance()->isLoaded( 'TimedMediaHandler' ) ) {
-				$params = [];
-				if ( Util::isMobile( $this->getSkin() ) ) {
-					// For mobile, we don't know the width, so we pick a somewhat arbitrary height
-					// to keep the controls for the video close to the thumbnail.
-					$params['height'] = 200;
-				} else {
-					// Set same width as benefits container on desktop.
-					$params['width'] = 400;
-				}
-				$params['thumbtime'] = 38;
-				$output = Linker::makeImageLink(
-					MediaWikiServices::getInstance()->getParser(),
-					$title,
-					$file,
-					[ 'align' => 'center' ],
-					$params
-				);
-				$videoHtml = Html::rawElement( 'div', [ 'class' => 'mw-ge-video' ], $output );
-				$activePlayerMode = Hooks::activePlayerMode();
-				$rlModules = $rlModuleStyles = [];
-				if ( $activePlayerMode === 'mwembed' ) {
-					$rlModuleStyles = [ 'ext.tmh.thumbnail.styles' ];
-					$rlModules = [
-						'mw.MediaWikiPlayer.loader',
-						'mw.PopUpMediaTransform',
-						'mw.TMHGalleryHook.js',
-					];
-				} elseif ( $activePlayerMode === 'videojs' ) {
-					$rlModuleStyles = [ 'ext.tmh.player.styles' ];
-					$rlModules = [ 'ext.tmh.player' ];
-				}
-				$this->getOutput()->addModules( $rlModules );
-				$this->getOutput()->addModuleStyles( $rlModuleStyles );
-			}
+			$videoHtml = $this->getVideo( $this->getOutput(),
+				'Wikimedia_Foundation_newcomer_experience_pilot_-_account_creation.webm',
+				38 );
 		}
 
 		$campaignKey = $this->getCampaignMessageKey();
@@ -244,6 +211,70 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	 */
 	private function shouldShowBenefitsList(): bool {
 		return !$this->isRecurringDonorCampaign() && !$this->isGlamCampaign() && !$this->isMarketingVideoCampaign();
+	}
+
+	/**
+	 * Add a video player to the output.
+	 *
+	 * @param OutputPage $output Used te register required assets.
+	 * @param string $filename Video file name (without the 'File:' prefix).
+	 * @param int|null $thumbtime Optional time position for thumbnail generation, in seconds.
+	 *   Theoretically a float, but non-integer support is broken: T228467
+	 * @return string Video player HTML
+	 */
+	private function getVideo( OutputPage $output, string $filename, int $thumbtime = null ) {
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'TimedMediaHandler' ) ) {
+			Util::logText( 'TimedMediaHandler not loaded' );
+			return '';
+		}
+		try {
+			$title = Title::newFromTextThrow( 'File:' . $filename );
+		} catch ( MalformedTitleException $e ) {
+			Util::logText( $e->getMessage(), [ 'filename' => $filename ] );
+			return '';
+		}
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
+		if ( !$file ) {
+			Util::logText( "File not found: $filename" );
+			return '';
+		}
+
+		$activePlayerMode = Hooks::activePlayerMode();
+		$rlModules = $rlModuleStyles = [];
+		if ( $activePlayerMode === 'mwembed' ) {
+			$rlModuleStyles = [ 'ext.tmh.thumbnail.styles' ];
+			$rlModules = [
+				'mw.MediaWikiPlayer.loader',
+				'mw.PopUpMediaTransform',
+				'mw.TMHGalleryHook.js',
+			];
+		} elseif ( $activePlayerMode === 'videojs' ) {
+			$rlModuleStyles = [ 'ext.tmh.player.styles' ];
+			$rlModules = [ 'ext.tmh.player' ];
+		}
+		$output->addModules( $rlModules );
+		$output->addModuleStyles( $rlModuleStyles );
+
+		$params = [];
+		if ( Util::isMobile( $this->getSkin() ) ) {
+			// For mobile, we don't know the width, so we pick a somewhat arbitrary height
+			// to keep the controls for the video close to the thumbnail.
+			$params['height'] = 200;
+		} else {
+			// Set same width as benefits container on desktop.
+			$params['width'] = 400;
+		}
+		if ( $thumbtime !== null ) {
+			$params['thumbtime'] = $thumbtime;
+		}
+		$html = Linker::makeImageLink(
+			MediaWikiServices::getInstance()->getParser(),
+			$title,
+			$file,
+			[ 'align' => 'center' ],
+			$params
+		);
+		return Html::rawElement( 'div', [ 'class' => 'mw-ge-video' ], $html );
 	}
 
 }
