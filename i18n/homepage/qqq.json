@@ -18,7 +18,8 @@
 			"Pikne",
 			"Raymond",
 			"Umherirrender",
-			"Verdy p"
+			"Verdy p",
+			"Tacsipacsi"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage, which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
@@ -66,7 +67,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "Text shown at the bottom of the intro panel (first stage) of the suggested edits dialog, if the user said on Special:WelcomeSurvey that they created an account to fix a typo (the referenced option is {{msg-mw|welcomesurvey-question-reason-option-edit-typo-label}}).\n\nMessages used:\n* {{msg-mw|growthexperiments-homepage-startediting-dialog-intro-back}}\n* {{msg-mw|vector-view-edit}}\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "Text shown at the bottom of the intro panel (first stage) of the suggested edits dialog, if the user said on Special:WelcomeSurvey that they created an account to add or change information in an article (the referenced option is {{msg-mw|welcomesurvey-question-reason-option-edit-info-add-change-label}}).\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "Text shown at the bottom of the intro panel (first stage) of the suggested edits dialog, if the user said on Special:WelcomeSurvey that they created an account to create a new article. Parameters (the referenced option is {{msg-mw|welcomesurvey-question-reason-option-new-page-label}}):\n* $1 - URL with more information about creating new articles; used as a link target\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "First paragraph of the introductory text in the intro panel (first stage) of the suggested edits dialog, if topic matching is enabled. Together with {{msg-mw|growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader}}, this text explains why we're giving suggested edits. Replaces {{msg-mw|growthexperiments-homepage-startediting-dialog-intro-header}}.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "First paragraph of the introductory text in the intro panel (first stage) of the suggested edits dialog, if topic matching is enabled.",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Second paragraph of the introductory text in the intro panel (first stage) of the suggested edits dialog, if topic matching is enabled. Together with {{msg-mw|growthexperiments-homepage-startediting-dialog-intro-topic-selector-header}}, this text explains why we're giving suggested edits. Replaces {{msg-mw|growthexperiments-homepage-startediting-dialog-intro-subheader}}.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Text of the button in the difficulty panel (second stage) of the suggested edits dialog that navigates back to the intro panel (first stage).\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Text of the button in the difficulty panel (second stage) of the suggested edits dialog that closes the dialog and saves the user's choices. Only used on desktop; on mobile {{msg-mw|growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile}} is used instead.\n\n{{doc-growthexperiments-homepage}}",
