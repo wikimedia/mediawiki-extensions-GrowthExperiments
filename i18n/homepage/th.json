@@ -52,7 +52,6 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>เมื่อครั้งคุณสร้างบัญชี คุณกล่าวว่าคุณต้องการแก้คำที่เขียนผิดหรือข้อผิดพลาด</strong> ที่นี่คุณจะสามารถเริ่มต้นได้ด้วยการแก้ไขเล็ก ๆ น้อย ๆ หากคุณต้องการตรงไปแก้ไขบทความหนึ่งเลย อาจค้นหาบทความนั้นและกด \"{{int:vector-view-edit}}\"",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>เมื่อครั้งคุณสร้างบัญชี คุณกล่าวว่าคุณต้องการเพิ่มหรือเปลี่ยนแปลงสารนิเทศในบทความที่มีอยู่แล้ว</strong> ที่นี่คุณจะพบกับการแนะนำการแก้ไขเล็ก ๆ น้อย ๆ ที่พอจะทำได้อย่างง่ายสำหรับผู้เริ่มต้น หรือคุณอาจตรงไปแก้ไขที่บทความที่คุณต้องการได้เลยโดยใช้เครื่องมือค้นหา แล้วกดที่ \"{{int:vector-view-edit}}\"",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "เลือกบางหัวข้อที่คุณสนใจแก้ไข",
-	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "เราจะพยายามแนะนำบทความที่เกี่ยวข้องกับความสนใจของคุณ",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "กรองรายหัวข้อ",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "เลือกหัวข้อที่คุณรู้สึกสนใจ อาจเลือกเพียงหนึ่งหรือหลายหัวข้อ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "กลับ",

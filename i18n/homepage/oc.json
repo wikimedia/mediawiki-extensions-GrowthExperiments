@@ -56,7 +56,6 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Seleccionar tot",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Suprimir tot",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Causissètz d'unes subjèctes que {{GENDER:$1|vos}} interessan de modificar",
-	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Ensajarem de suggestir d'articles que corespondon a {{GENDER:$1|vòstres}} interèsses.",
 	"growthexperiments-homepage-claimmentee-title": "Demandar un tutorizat",
 	"growthexperiments-homepage-claimmentee-pretext": "Aquesta pagina {{GENDER:$1|te}} permet de cambiar tutor del tutorat en {{GENDER:$1|te-meme}}.Es recomendat d'utilizar aquesta foncionalitat per d'utilizaires que coneis o per d'utilizaires que tutoratz en cors.",
 	"growthexperiments-addlink-context-text-label": "Tèxte",
