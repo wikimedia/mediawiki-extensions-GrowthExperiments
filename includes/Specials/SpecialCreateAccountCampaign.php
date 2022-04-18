@@ -98,26 +98,25 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			$benefitsList = Html::rawElement( 'ul', [ 'class' => 'mw-ge-donorsignup-list' ], $benefitsList );
 		} elseif ( $this->isMarketingVideoCampaign() ) {
 			// FIXME: Delete this block of code when T302738 is over.
-			$title = Title::makeTitleSafe( NS_FILE, 'Lesson_1_-_What_is_Kannada_Wikipedia.webm' );
-			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
-				'Lesson_1_-_What_is_Kannada_Wikipedia.webm'
-			);
+			$title = Title::makeTitleSafe( NS_FILE,
+				'Wikimedia_Foundation_newcomer_experience_pilot_-_account_creation.webm' );
+			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 			if ( $file && $title && ExtensionRegistry::getInstance()->isLoaded( 'TimedMediaHandler' ) ) {
 				$params = [];
 				if ( Util::isMobile( $this->getSkin() ) ) {
 					// For mobile, we don't know the width, so we pick a somewhat arbitrary height
 					// to keep the controls for the video close to the thumbnail.
 					$params['height'] = 200;
-
 				} else {
 					// Set same width as benefits container on desktop.
 					$params['width'] = 400;
 				}
+				$params['thumbtime'] = 38;
 				$output = Linker::makeImageLink(
 					MediaWikiServices::getInstance()->getParser(),
 					$title,
 					$file,
-					[],
+					[ 'align' => 'center' ],
 					$params
 				);
 				$videoHtml = Html::rawElement( 'div', [ 'class' => 'mw-ge-video' ], $output );
@@ -149,23 +148,24 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 				// * growthexperiments-signupcampaign-body
 				// * growthexperiments-josacampaign-body
 				// * growthexperiments-glamcampaign-body
+				// * growthexperiments-marketingvideocampaign-body
 				$this->msg( "growthexperiments-$campaignKey-body" )->parse()
 			);
 		return Html::rawElement( 'div', [ 'class' => 'mw-createacct-benefits-container' ],
-			$videoHtml .
 			Html::rawElement( 'div', [ 'class' => "mw-ge-donorsignup-block mw-ge-donorsignup-block-$campaignKey" ],
 				Html::rawElement( 'h1', [ 'class' => 'mw-ge-donorsignup-title' ],
 					// The following message keys are used here:
 					// * growthexperiments-recurringcampaign-title
 					// * growthexperiments-signupcampaign-title
 					// * growthexperiments-josacampaign-title
-					// * growthexperiments-josacampaign-title
 					// * growthexperiments-glamcampaign-title
+					// * growthexperiments-marketingvideocampaign-title
 					$this->msg( "growthexperiments-$campaignKey-title" )->parse()
 				)
 				. $campaignBody
 				. $benefitsList
 			)
+			. $videoHtml
 		);
 	}
 
@@ -203,7 +203,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	 * @return bool
 	 */
 	private function isMarketingVideoCampaign(): bool {
-		return strpos( $this->getCampaignValue(), 'growth-marketing-video' ) !== false;
+		return $this->getCampaignValue() === 'facebook-latam-2022-A';
 	}
 
 	/**
@@ -212,6 +212,10 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	 * @return string
 	 */
 	private function getCampaignMessageKey(): string {
+		if ( $this->isMarketingVideoCampaign() ) {
+			return 'marketingvideocampaign';
+		}
+
 		$campaign = $this->getCampaignValue();
 		if ( strpos( $campaign, 'recurring' ) !== false ) {
 			return 'recurringcampaign';
@@ -219,8 +223,6 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			return 'josacampaign';
 		} elseif ( strpos( $campaign, 'glam' ) !== false ) {
 			return 'glamcampaign';
-		} elseif ( strpos( $campaign, 'marketing-video' ) !== false ) {
-			return 'marketingvideocampaign';
 		} else {
 			return 'signupcampaign';
 		}
