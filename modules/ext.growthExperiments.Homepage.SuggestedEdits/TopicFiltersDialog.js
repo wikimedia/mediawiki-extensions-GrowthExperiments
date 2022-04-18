@@ -65,7 +65,8 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 		isMatchModeEnabled: this.config.useTopicMatchMode,
 		filters: this.config.presets || new TopicFilters( {
 			topicsMatchMode: TOPIC_MATCH_MODES.OR
-		} )
+		} ),
+		$overlay: this.$overlay
 	} );
 	this.topicSelector.connect( this, {
 		// selectAll and removeAll forward a single topic group ID argument

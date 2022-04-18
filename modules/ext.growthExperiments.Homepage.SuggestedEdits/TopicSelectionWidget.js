@@ -40,9 +40,11 @@ var SuggestionWidget = require( './SuggestionWidget.js' ),
  * and "select/unselect all" buttons for each group. No "show more" buttons are displayed in this
  * case, and config.initialLimit is ignored.
  *
+ * @class mw.libs.ge.TopicSelectionWidget
  * @param {Object} config
  * @cfg {number} [initialLimit=12] Number of topics to display initially; use Infinity to disable
  * @cfg {mw.libs.ge.TopicFilters} [filters=new TopicFilters()] Initially selected topic filters
+ * @cfg {jQuery|true} [$overlay] Overlay to display the widget in, or true to use default OOUI window
  */
 function TopicSelectionWidget( config ) {
 	var key, group, groupWidget, suggestionWidgets, displayedSuggestionWidgets,
@@ -70,7 +72,8 @@ function TopicSelectionWidget( config ) {
 		this.matchModeSelector = new MatchModeSelectWidget( {
 			classes: [ 'mw-ge-TopicSelectionWidget__match-mode' ],
 			options: TOPIC_MATCH_MODE_OPTIONS,
-			initialValue: config.filters.getTopicsMatchMode() || TOPIC_MATCH_MODES.OR
+			initialValue: config.filters.getTopicsMatchMode() || TOPIC_MATCH_MODES.OR,
+			$overlay: config.$overlay
 		} );
 		this.matchModeSelector.connect( this, {
 			toggleMatchMode: [ 'emit', 'toggleMatchMode' ]

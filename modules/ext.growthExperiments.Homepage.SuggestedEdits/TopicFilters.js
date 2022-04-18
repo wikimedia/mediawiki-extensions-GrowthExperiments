@@ -3,7 +3,7 @@
  * Entity representing the possible topic filters to apply
  * to the growth tasks API search
  *
- * @class
+ * @class mw.libs.ge.TopicFilters
  * @constructor
  * @param {Object} [config]
  * @param {string[]} [config.topics] A list of topic ID's
