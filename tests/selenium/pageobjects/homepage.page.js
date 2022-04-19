@@ -19,6 +19,7 @@ class HomepagePage extends Page {
 	get savePageDots() { return $( '.ve-ui-toolbar-saveButton' ); }
 	get articleBodyContent() { return $( '.mw-body-content.ve-ui-surface' ); }
 	get postEditDialog() { return $( '.mw-ge-postEditDrawer' ); }
+	get postEditDialogSmallTaskCard() { return $( '.mw-ge-postEditDrawer .mw-ge-small-task-card' ); }
 
 	open() {
 		super.openTitle( 'Special:Homepage' );
@@ -40,9 +41,15 @@ class HomepagePage extends Page {
 		return result;
 	}
 
-	async editAndSaveArticle( textToAppend ) {
+	async editAndSaveArticle( textToAppend, reloadPage ) {
+		if ( reloadPage ) {
+			await browser.refresh();
+			await browser.setupInterceptor();
+		}
+		await Util.waitForModuleState( 'ext.visualEditor.desktopArticleTarget', 'registered' );
 		await this.newcomerTaskArticleEditButton.waitForClickable();
 		await this.newcomerTaskArticleEditButton.click();
+		await Util.waitForModuleState( 'ext.visualEditor.desktopArticleTarget', 'ready' );
 		await this.articleBodyContent.waitForClickable( { timeout: 20000 } );
 		await this.articleBodyContent.click();
 		await browser.keys( textToAppend );
@@ -55,8 +62,12 @@ class HomepagePage extends Page {
 		await this.waitForPostEditDialog();
 	}
 
-	async rebuildRecentChanges() {
-		console.log( 'Rebuilding recent changes...' );
+	async rebuildRecentChanges( message ) {
+		if ( message ) {
+			console.log( message );
+		} else {
+			console.log( 'Rebuilding recent changes...' );
+		}
 		// TODO: In CI, this is fast but in a local wiki this can take a long time;
 		// we should pass a timestamp so that we just rebuild edits made in the last
 		// couple of minutes.
