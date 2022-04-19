@@ -7,13 +7,11 @@ use Config;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
-use IDBAccessObject;
 use MediaWiki\Hook\BeforeWelcomeCreationHook;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
-use MediaWiki\User\UserOptionsLookup;
 use RequestContext;
 use SpecialUserLogin;
 use User;
@@ -28,9 +26,6 @@ class WelcomeSurveyHooks implements
 	/** @var Config */
 	private $config;
 
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
 	/** @var WelcomeSurveyFactory */
 	private $welcomeSurveyFactory;
 
@@ -39,18 +34,13 @@ class WelcomeSurveyHooks implements
 
 	/**
 	 * @param Config $config
-	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param WelcomeSurveyFactory $welcomeSurveyFactory
 	 * @param CampaignConfig $campaignConfig
 	 */
 	public function __construct(
-		Config $config,
-		UserOptionsLookup $userOptionsLookup,
-		WelcomeSurveyFactory $welcomeSurveyFactory,
-		CampaignConfig $campaignConfig
+		Config $config, WelcomeSurveyFactory $welcomeSurveyFactory, CampaignConfig $campaignConfig
 	) {
 		$this->config = $config;
-		$this->userOptionsLookup = $userOptionsLookup;
 		$this->welcomeSurveyFactory = $welcomeSurveyFactory;
 		$this->campaignConfig = $campaignConfig;
 	}
@@ -95,22 +85,11 @@ class WelcomeSurveyHooks implements
 	 */
 	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
 		$context = RequestContext::getMain();
-
 		if ( !$this->isWelcomeSurveyEnabled() ||
 			VariantHooks::isDonorOrGlamCampaign( $context, $this->campaignConfig ) &&
 				!VariantHooks::isMarketingVideoCampaign( $context ) ||
 			HomepageHooks::getGrowthFeaturesOptInOptOutOverride() === HomepageHooks::GROWTH_FORCE_OPTOUT
 		) {
-			return;
-		}
-
-		$homepageEnabled = $this->userOptionsLookup->getBoolOption(
-			$context->getUser(),
-			HomepageHooks::HOMEPAGE_PREF_ENABLE,
-			// was probably written in the same request
-			IDBAccessObject::READ_LATEST
-		);
-		if ( !$homepageEnabled ) {
 			return;
 		}
 
