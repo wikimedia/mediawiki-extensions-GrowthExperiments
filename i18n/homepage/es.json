@@ -428,6 +428,7 @@
 	"growthexperiments-structuredtask-editmode-selection-label": "Cambiar editor",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Sugerencias",
 	"growthexperiments-structuredtask-editmode-selection-visual": "Editor visual",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "¿Dejar sugerencias?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Cambiar sin enviar",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Cancelar",
 	"growthexperiments-structuredtask-summary-submit": "Enviar",

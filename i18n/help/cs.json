@@ -120,7 +120,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "Návrhy se mohou vztahovat na slova, která odkaz ve skutečnosti nepotřebují, anebo mohou odkazovat na nesprávný článek. Použijte {{GENDER:$1|svůj}} úsudek k tomu, abyste {{GENDER:$1|rozhodl|rozhodla|rozhodli}}, zda je odkaz správný či špatný.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Zjistit více o strojových návrzích]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Pravidla",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "\n* Odkazujte na věci, které by čtenáře mohly zajímat\n* Ujistěte se, že odkazujete na správný článek.\n* Netvořte odkazy z běžných slov, let či dat.\n* Pokud si něčím nejste {{GENDER:$1|jist|jista|jisti}}, odkaz přeskočte.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Odkazujte na věci, které by čtenáře mohly zajímat\n* Ujistěte se, že odkazujete na správný článek.\n* Netvořte odkazy z běžných slov, let či dat.\n* Pokud si něčím nejste {{GENDER:$1|jist|jista|jisti}}, odkaz přeskočte.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Příklad",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "Obrázky pomáhají čtenářům v učení-se, ale v mnoha článcích obrázek chybí.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-value": "{{GENDER:|Budete rozhodovat}}, zda navržený obrázek patří či nepatří do článku na Wikipedii",

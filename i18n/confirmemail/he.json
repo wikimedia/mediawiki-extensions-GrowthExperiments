@@ -4,6 +4,7 @@
 			"Amire80",
 			"BaRaN6161 TURK",
 			"Erelon",
+			"Ex-Diktator",
 			"Leononon",
 			"דגש",
 			"דגש חזק"
@@ -19,6 +20,8 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "שלום $2,\n\nתודה על הוספת כתובת הדוא\"ל שלך לחשבון באתר {{SITENAME}}, שנרשמה מכתובת ה־IP $1.\n\nנא ללחוץ על הקישור להלן כדי לאשר שזאת כתובת הדוא\"ל שברצונך לקשר לחשבון שלך \"$2\":\n\n$3\n\n{{GENDER:$2|שום לב|שימי לב}}: קוד האישור הזה יפוג ב־$4.\n\nתודה,\n\n{{SITENAME}}\n\n----\n\nכדי לבטל את אישור כתובת הדוא\"ל (כי לא רשמת את החשבון או מכל סיבה אחרת), {{GENDER:$2|לחץ|לחצי}} על קישור הביטול הזה:\n\n$5",
 	"growthexperiments-signupcampaign-title": "תודה על התרומה! עכשיו הצטרפו לקהילת העורכים שמשפרים את ויקיפדיה היום",
 	"growthexperiments-signupcampaign-body": "עריכת ויקיפדיה יכולה להיות פשוטה כמו הוספת קישור או שינוי של מילה. {{GENDER:|קבל|קבלי}} נושאים שמעניינים אותך אחרי {{GENDER:|שתיצור|שתיצרי}} חשבון.",
+	"growthexperiments-marketingvideocampaign-title": "תודה על התרומה! עכשיו הצטרפו לקהילת העורכים שמשפרים את ויקיפדיה היום",
+	"growthexperiments-marketingvideocampaign-body": "עריכת ויקיפדיה יכולה להיות פשוטה כמו הוספת קישור או שינוי של מילה. {{GENDER:|קבל|קבלי}} נושאים שמעניינים אותך אחרי {{GENDER:|שתיצור|שתיצרי}} חשבון.",
 	"growthexperiments-signupcampaign-bullet1": "ערכים מוצעים שמתאימים לתחומי העניין {{GENDER:|שלך}}",
 	"growthexperiments-signupcampaign-bullet2": "לבקש עזרה מעורך מומחה",
 	"growthexperiments-signupcampaign-bullet3": "התחילו עם עריכות קטנות וקלות"
