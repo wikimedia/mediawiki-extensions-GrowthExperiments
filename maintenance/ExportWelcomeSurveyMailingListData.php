@@ -7,6 +7,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\WelcomeSurvey;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 $path = dirname( dirname( dirname( __DIR__ ) ) );
@@ -30,32 +31,52 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( 'from',
-			'Export data starting from this date, e.g. 20220301000000', false, true );
+			'Export data starting from this registration timestamp, e.g. 20220301000000', false, true );
 		$this->addOption( 'to',
-			'Export date up to this date, e.g. 20220316000000', false, true );
+			'Export date up to this registration timestamp, e.g. 20220316000000', false, true );
 		$this->addOption(
 			'output-format',
 			'Output format for the results, "text" or "csv"',
 			false
 		);
+		$this->addOption( 'debug', 'Show debug output' );
 	}
 
 	public function execute() {
 		$services = MediaWikiServices::getInstance();
 		$dbr = $services->getDBLoadBalancer()->getConnection( DB_REPLICA );
+
 		$from = wfTimestampOrNull( TS_MW, $this->getOption( 'from' ) );
 		$to = wfTimestampOrNull( TS_MW, $this->getOption( 'to' ) );
-		$homepageEnabledDefaultValue = $services->getUserOptionsLookup()
-			->getDefaultOption( HomepageHooks::HOMEPAGE_PREF_ENABLE );
-
-		if ( $from === null || $to === null ) {
+		if ( !$from || !$to ) {
 			$this->fatalError( "--from and --to have to be provided and be valid timestamps" . PHP_EOL );
 		}
-
 		$this->outputFormat = $this->getOption( 'output-format', 'text' );
 		if ( !in_array( $this->outputFormat, [ 'text', 'csv' ] ) ) {
 			$this->fatalError( "--output-format must be one of 'text' or 'csv'" );
 		}
+
+		$fromId = $this->getLastUserIdBeforeRegistrationDate( $dbr, $from );
+		$toId = $this->getLastUserIdBeforeRegistrationDate( $dbr, $to );
+		if ( $this->hasOption( 'debug' ) ) {
+			$this->output( "Converting registration timestamps:\n" );
+			foreach ( [
+				[ 'From (exclusive)', $from, $fromId ],
+				[ 'To (inclusive)', $to, $toId ]
+			] as [ $dir, $ts, $id ] ) {
+				$text = 'any';
+				if ( $id ) {
+					$registered = $services->getUserFactory()->newFromId( $id )->getRegistration();
+					$text = "UID $id (registered: $registered)";
+				}
+				$this->output( "\t$dir: $ts -> $text\n" );
+			}
+		}
+		if ( $fromId === $toId ) {
+			// There weren't any users between those two timestamps.
+			return;
+		}
+
 		$queryBuilderTemplate = new SelectQueryBuilder( $dbr );
 		$queryBuilderTemplate
 			->table( 'user' )
@@ -69,6 +90,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			] )
 			->fields( [
 				'user_id',
+				'user_registration',
 				'user_email',
 				'user_email_authenticated',
 				'survey_data' => 'survey_prop.up_value',
@@ -78,20 +100,21 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			->orderBy( 'user_id', SelectQueryBuilder::SORT_ASC )
 			->limit( $this->getBatchSize() )
 			->caller( __METHOD__ );
+		if ( $toId ) {
+			$queryBuilderTemplate->where( 'user_id <= ' . $toId );
+		}
 
-		// We don't have timestamps associated with welcome survey responses in a way that's easy to query.
-		// So we'll iterate over all welcome survey submissions and look for ones that 1) are submitted 2) have
-		// the mailinglist option set to something truthy.
-		$fromUserId = 0;
+		$homepageEnabledDefaultValue = $services->getUserOptionsLookup()
+			->getDefaultOption( HomepageHooks::HOMEPAGE_PREF_ENABLE );
 		$this->handle = fopen( 'php://output', 'w' );
 		$headers = [ 'Email Address', 'Opt-in date', 'Group', 'User ID', 'Is email address confirmed' ];
 		$this->writeToHandle( $headers );
 		do {
 			$queryBuilder = clone $queryBuilderTemplate;
-			$queryBuilder->andWhere( "user_id > $fromUserId" );
+			$queryBuilder->andWhere( 'user_id > ' . ( $fromId ?? 0 ) );
 			$result = $queryBuilder->fetchResultSet();
 			foreach ( $result as $row ) {
-				$fromUserId = (int)$row->user_id;
+				$fromId = $row->user_id;
 				$homepageEnabled = (bool)( $row->homepage_enabled ?? $homepageEnabledDefaultValue );
 				$welcomeSurveyResponse = FormatJson::decode( (string)$row->survey_data, true );
 				// We only want to export survey responses in the T303240_mailinglist group,
@@ -99,13 +122,8 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 				// and only when the user gets the Growth features
 				if ( !$homepageEnabled
 					|| !$welcomeSurveyResponse
-					|| !isset( $welcomeSurveyResponse['_submit_date'] )
 					|| $welcomeSurveyResponse['_group'] !== 'T303240_mailinglist'
 				) {
-					continue;
-				}
-				$welcomeSurveyResponseSubmitDate = wfTimestampOrNull( TS_MW, $welcomeSurveyResponse['_submit_date' ] );
-				if ( $welcomeSurveyResponseSubmitDate > $to || $welcomeSurveyResponseSubmitDate < $from ) {
 					continue;
 				}
 				if ( isset( $welcomeSurveyResponse['mailinglist'] ) && $welcomeSurveyResponse['mailinglist'] ) {
@@ -113,7 +131,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 					// to indicate if the email is confirmed.
 					$outputData = [
 						$row->user_email,
-						$welcomeSurveyResponseSubmitDate,
+						wfTimestamp( TS_MW, $row->user_registration ),
 						$welcomeSurveyResponse['_group'],
 						$row->user_id,
 						$row->user_email_authenticated ? 1 : 0
@@ -122,9 +140,25 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 					continue;
 				}
 				$this->writeToHandle( $outputData );
-
 			}
 		} while ( $result->numRows() );
+	}
+
+	/**
+	 * Given a registration date, return the ID of the user who last registered before that date.
+	 * @param IDatabase $dbr
+	 * @param string $registrationDate
+	 * @return int|null
+	 */
+	private function getLastUserIdBeforeRegistrationDate( IDatabase $dbr, string $registrationDate ) {
+		$queryBuilder = new SelectQueryBuilder( $dbr );
+		$queryBuilder
+			->fields( [ 'user_id' => 'max(user_id)' ] )
+			->table( 'user' )
+			// Old user records have no registration date. We won't use 'from' dates old enough
+			// to encounter those so we can ignore them here.
+			->where( 'user_registration <= ' . $dbr->timestamp( $registrationDate ) );
+		return $queryBuilder->fetchField();
 	}
 
 	/**
