@@ -9,12 +9,13 @@
 			"Robby",
 			"Tgr",
 			"Trizek (WMF)",
-			"Emmanuel Fernandess"
+			"Emmanuel Fernandess",
+			"Verdy p"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "[[Special:Preferences]], tab 'Edit'. Allows user to enable and disable experimental Help Panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-cta-button-text": "Text to display in a button which loads the help panel.\n\n{{doc-growthexperiments-help-panel}}",
-	"growthexperiments-help-panel-question-button-text": "Text to display in the button for asking a question in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-question-button-text": "Text to display in the button for asking a question in the help panel.\n\n{{doc-growthexperiments-help-panel}}\n{{Identical/Continue}}",
 	"growthexperiments-help-panel-submit-question-button-text": "Text to display in the button for submitting a question via the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-return-home-button-text": "Text to display in the button for returning to the home screen of the help panel (shown after posting a question).\n\n{{doc-growthexperiments-help-panel}}\n\n{{identical|Done}}",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Header for a list of help links in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
