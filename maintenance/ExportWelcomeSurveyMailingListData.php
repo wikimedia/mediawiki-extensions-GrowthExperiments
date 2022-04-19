@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Maintenance;
 
 use FormatJson;
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\WelcomeSurvey;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
@@ -44,6 +45,8 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		$dbr = $services->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$from = wfTimestampOrNull( TS_MW, $this->getOption( 'from' ) );
 		$to = wfTimestampOrNull( TS_MW, $this->getOption( 'to' ) );
+		$homepageEnabledDefaultValue = $services->getUserOptionsLookup()
+			->getDefaultOption( HomepageHooks::HOMEPAGE_PREF_ENABLE );
 
 		if ( $from === null || $to === null ) {
 			$this->fatalError( "--from and --to have to be provided and be valid timestamps" . PHP_EOL );
@@ -55,12 +58,22 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		}
 		$queryBuilderTemplate = new SelectQueryBuilder( $dbr );
 		$queryBuilderTemplate
-			->table( 'user_properties' )
-			->join( 'user', null, [
-				'user_id = up_user',
+			->table( 'user' )
+			->join( 'user_properties', 'survey_prop', [
+				'user_id = survey_prop.up_user',
+				'survey_prop.up_property' => WelcomeSurvey::SURVEY_PROP,
 			] )
-			->fields( [ 'user_id', 'user_email', 'user_email_authenticated', 'up_property', 'up_value' ] )
-			->where( [ 'up_property' => WelcomeSurvey::SURVEY_PROP ] )
+			->leftJoin( 'user_properties', 'homepage_prop', [
+				'user_id = homepage_prop.up_user',
+				'homepage_prop.up_property' => HomepageHooks::HOMEPAGE_PREF_ENABLE,
+			] )
+			->fields( [
+				'user_id',
+				'user_email',
+				'user_email_authenticated',
+				'survey_data' => 'survey_prop.up_value',
+				'homepage_enabled' => 'homepage_prop.up_value',
+			] )
 			// need to order by ID so we can use ID ranges for query continuation
 			->orderBy( 'user_id', SelectQueryBuilder::SORT_ASC )
 			->limit( $this->getBatchSize() )
@@ -79,12 +92,16 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			$result = $queryBuilder->fetchResultSet();
 			foreach ( $result as $row ) {
 				$fromUserId = (int)$row->user_id;
-				$welcomeSurveyResponse = FormatJson::decode( (string)$row->up_value, true );
-				if ( !$welcomeSurveyResponse ||
-					!isset( $welcomeSurveyResponse['_submit_date'] ) ||
-					// We only want to export survey responses in the T303240_mailinglist group,
-					// see https://gerrit.wikimedia.org/r/c/operations/mediawiki-config/+/775951
-					$welcomeSurveyResponse['_group'] !== 'T303240_mailinglist' ) {
+				$homepageEnabled = (bool)( $row->homepage_enabled ?? $homepageEnabledDefaultValue );
+				$welcomeSurveyResponse = FormatJson::decode( (string)$row->survey_data, true );
+				// We only want to export survey responses in the T303240_mailinglist group,
+				// see https://gerrit.wikimedia.org/r/c/operations/mediawiki-config/+/775951
+				// and only when the user gets the Growth features
+				if ( !$homepageEnabled
+					|| !$welcomeSurveyResponse
+					|| !isset( $welcomeSurveyResponse['_submit_date'] )
+					|| $welcomeSurveyResponse['_group'] !== 'T303240_mailinglist'
+				) {
 					continue;
 				}
 				$welcomeSurveyResponseSubmitDate = wfTimestampOrNull( TS_MW, $welcomeSurveyResponse['_submit_date' ] );
