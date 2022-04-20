@@ -26,7 +26,10 @@
 			"Sunpriat",
 			"Urfiner",
 			"Wileyfoxyx",
-			"DDPAT"
+			"DDPAT",
+			"Ice bulldog",
+			"Kaganer",
+			"Tanzun"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здравствуйте}}, {{bidi:$1}}!",
@@ -338,7 +341,7 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Понятно",
 	"growthexperiments-addlink-pagenotfound": "Страница «$1» не существует.",
 	"growthexperiments-addlink-revdeleted": "Версия $1 статьи «$2» недоступна",
-	"growthexperiments-addlink-wrongmodel": "Версия $1 статьи «$2» не является викитекстом",
+	"growthexperiments-addlink-wrongmodel": "Версия $1 статьи «$2» не является вики-текстом",
 	"growthexperiments-addlink-invalidjson": "Ответ сервиса рекомендаций ссылок для «$1» недействителен",
 	"growthexperiments-addlink-serviceerror": "Сервис рекомендаций ссылок возвратил ошибку для статьи «$1»: $2",
 	"growthexperiments-addlink-notinstore": "Для статьи «$1» не найдено рекомендованных ссылок",
