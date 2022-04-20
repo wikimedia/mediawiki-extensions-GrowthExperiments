@@ -64,6 +64,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "আপনি নিষ্ক্রিয় থাকবেন:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "দিন",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "\"{{GENDER:|আপনি}} নিষ্ক্রিয় থাকবেন\"-এর ইনপুট পূর্ণসংখ্যা হতে হবে। আবার চেষ্টা করুন।",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "\"{{GENDER:|আপনি}} নিষ্ক্রিয় থাকবেন\"-এ আপনার প্রদত্ত সংখ্যাটির মান অতি উচ্চ। একজন মেন্টর সর্বোচ্চ ৩৬৫ দিন (এক বছর) নিষ্ক্রিয় থাকতে পারেন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "একটি ত্রুটি দেখা দিয়েছে। অনুগ্রহ করে পরবর্তীতে আবার চেষ্টা করুন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "আপনার অবস্থা \"সক্রিয়\" হিসেবে পরিবর্তিত হয়েছে।",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "আপনার অবস্থা \"নিষ্ক্রিয়\" হিসেবে পরিবর্তিত হয়েছে।",
@@ -96,5 +97,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "\"সাধারণ গড়\" দ্বারা শুরু করাটা সুপারিশ করা হয়। ধীরে ধীরে আপনার সহযোগিতার ক্ষমতা বাড়াতে বা কমাতে পারবেন।",
 	"growthexperiments-mentor-list-missing-key": "<code>$1</code> চাবিটি পাওয়া যাচ্ছে না",
 	"growthexperiments-mentor-list-datatype-mismatch": "ধারণা করা হচ্ছে <code>$1</code> এর বদলে <code>$2</code> হবে, তবে হয়েছে <code>$3</code>",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "মেন্টরের সংজ্ঞায় একটি অপ্রত্যাশিত চাবি <code>$1</code> রয়েছে।"
+	"growthexperiments-mentor-list-unexpected-key-mentor": "মেন্টরের সংজ্ঞায় একটি অপ্রত্যাশিত চাবি <code>$1</code> রয়েছে।",
+	"growthexperiments-mentor-writer-error-already-added": "$1 মেন্টর ইতিপূর্বেই মেন্টরের তালিকায় যুক্ত হয়েছেন।",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "$1 মেন্টর মেন্টরের তালিকায় নেই।"
 }

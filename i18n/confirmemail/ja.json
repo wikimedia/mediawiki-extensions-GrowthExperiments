@@ -16,6 +16,7 @@
 	"growthexperiments-confirmemail-confirm-button": "メールアドレスの確認",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|こんにちは}}、$2さん\n\nこの度は{{SITENAME}}のアカウントにつき、IPアドレス$1からメールアドレスを登録いただきありがとうございます。\n\nアカウント「$2」にこの受信アドレスを紐付けしてよろしければ、以下のリンクを開いて確認をお願いします。\n\n$3\n\nご注意：この確認コードの有効期限は$4です。\n\nよろしくお願いします。\n\n{{SITENAME}}\n\n----\n\nメールアドレスの確認をキャンセルするには（アカウント登録した覚えがないなどの場合）次の取り消しリンクを開いてください。\n\n$5",
 	"growthexperiments-signupcampaign-title": "寄付をありがとうございます！今すぐウィキペディアをより良くする編集者のコミュニティに参加してください",
+	"growthexperiments-marketingvideocampaign-title": "ウィキペディアはあなたのような人々によって作られています。",
 	"growthexperiments-signupcampaign-bullet2": "経験豊富な編集者に助けを求める",
 	"growthexperiments-signupcampaign-bullet3": "小さくて簡単な編集から始める"
 }

@@ -42,6 +42,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "না, আমি জানিনা কীভাবে উইকিপিডিয়ায় অবদান রাখতে হয়",
 	"welcomesurvey-question-edited-option-no-other-label": "না, অন্য কারণে",
 	"welcomesurvey-question-edited-option-dont-remember-label": "আমি মনে করতে পারছি না",
+	"welcomesurvey-question-mailinglist-label": "কীভাবে সম্পাদনা শুরু করতে হয় সে বিষয়ে ইমেইলের মাধ্যমে আমি পরামর্শ পেতে আগ্রহী।",
+	"welcomesurvey-question-mailinglist-help": "লক্ষ্য করুন, এই মেইলিং লিস্ট মেইলচিম্প দ্বারা পরিচালিত, এর অর্থ মেইলচিম্প আপনার তথ্য তাদের [https://www.intuit.com/privacy/statement/ গোপনীয়তার নীতি] এবং [https://mailchimp.com/legal/terms/Terms পরিষেবার শর্ত] মোতাবেক ব্যবহার করবে।",
 	"welcomesurvey-question-email-label": "ইমেইল ঠিকানা (ঐচ্ছিক)",
 	"welcomesurvey-question-email-placeholder": "আপনার ইমেইল ঠিকানা লিখুন...",
 	"welcomesurvey-question-email-help": "আমরা লক্ষ্য করেছি যে এই অ্যাকাউন্টটি তৈরি করার সময় আপনি কোনও ইমেইল প্রদান করেননি। এটি যোগের জন্য আমরা <strong>উচ্চভাবে সুপারিশ করছি</strong>, কারণ আপনি যদি কখনো নিজের পাসওয়ার্ড হারিয়ে ফেলেন তবে অ্যাকাউন্ট পুনরুদ্ধারের জন্য ইমেইলের প্রয়োজন হবে। দ্রষ্টব্য: অন্য ব্যবহারকারীরা আপনার সাথে যোগাযোগ করলেও আপনার ইমেইল ঠিকানা তাদের কাছে দৃশ্যমান হবে না।",
