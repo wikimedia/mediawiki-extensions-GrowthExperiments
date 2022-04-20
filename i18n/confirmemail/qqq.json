@@ -28,5 +28,6 @@
 	"growthexperiments-josacampaign-title": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nTitle of the Special:CreateAccount block that is shown during the JOSA signup event.",
 	"growthexperiments-josacampaign-body": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nBody of the Special:CreateAccount block that is shown during the JOSA signup event.",
 	"growthexperiments-glamcampaign-title": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nTitle of the Special:CreateAccount block that is shown during the GLAM events in Latin America.",
-	"growthexperiments-glamcampaign-body": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nBody of the Special:CreateAccount block that is shown during the GLAM events in Latin America."
+	"growthexperiments-glamcampaign-body": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nBody of the Special:CreateAccount block that is shown during the GLAM events in Latin America.",
+	"growthexperiments-campaigns-footer": "Legal notice shown for custom campaign signup pages."
 }
