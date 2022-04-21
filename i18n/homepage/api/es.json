@@ -3,9 +3,14 @@
 		"authors": [
 			"LORDZRAWN",
 			"Zapipedia (WMF)",
-			"ZebaX2010"
+			"ZebaX2010",
+			"DiegoAmbrocio"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "Obtener preguntas con formato publicadas a través de los módulos de la página de inicio",
+	"apihelp-homepagequestionstore-param-questionformat": "El formato para devolver las preguntas, por ejemplo, HTML.",
+	"apihelp-homepagequestionstore-param-storage": "El lugar de almacenamiento de las preguntas.",
+	"apihelp-homepagequestionstore-param-userid": "El ID de usuario para el que se obtienen las preguntas.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "No se encontraron preguntas.",
 	"apihelp-growthsetmentor-param-mentee": "Nombre de usuario del aprendiz",
 	"apihelp-growthsetmentor-param-mentor": "Nombre de usuario del mentor",
