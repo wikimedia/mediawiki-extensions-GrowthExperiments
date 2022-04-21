@@ -3,14 +3,14 @@
 ( function () {
 	var PostEditDrawer = require( './PostEditDrawer.js' ),
 		PostEditPanel = require( './PostEditPanel.js' ),
-		GrowthTasksApi = require( '../ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js' ),
+		GrowthTasksApi = require( '../ext.growthExperiments.DataStore/GrowthTasksApi.js' ),
 		HelpPanelLogger = require( '../ext.growthExperiments.Help/HelpPanelLogger.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
-		TaskTypesAbFilter = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' ),
+		TaskTypesAbFilter = require( '../ext.growthExperiments.DataStore/TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		defaultTaskTypes = TaskTypesAbFilter.getDefaultTaskTypes(),
-		suggestedEditsConfig = require( '../ext.growthExperiments.Homepage.SuggestedEdits/config.json' ),
-		aqsConfig = require( '../ext.growthExperiments.Homepage.SuggestedEdits/AQSConfig.json' ),
+		suggestedEditsConfig = require( '../ext.growthExperiments.DataStore/config.json' ),
+		aqsConfig = require( '../ext.growthExperiments.DataStore/AQSConfig.json' ),
 		helpConfig = require( '../ext.growthExperiments.Help/data.json' ),
 		api = new GrowthTasksApi( {
 			taskTypes: taskTypes,

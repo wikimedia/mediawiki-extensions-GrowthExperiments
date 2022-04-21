@@ -1,5 +1,5 @@
 var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	taskTypes = require( '../../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json' );
+	taskTypes = require( '../../ext.growthExperiments.DataStore/TaskTypes.json' );
 
 /**
  * @typedef LinkRecommendationLink

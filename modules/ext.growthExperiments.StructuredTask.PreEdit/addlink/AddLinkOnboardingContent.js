@@ -3,7 +3,7 @@ module.exports = ( function () {
 
 	var hasHeroImage = false,
 		userName = mw.user.getName(),
-		TaskTypesAbFilter = require( '../../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' ),
+		TaskTypesAbFilter = require( '../../ext.growthExperiments.DataStore/TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		taskTypeData = taskTypes[ 'link-recommendation' ] || {},
 		StructurtedTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),

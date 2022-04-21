@@ -1,7 +1,7 @@
 'use strict';
 const StartEditingDialog = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js' );
-const GrowthTasksApi = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js' );
 const HomepageModuleLogger = require( '../../../modules/ext.growthExperiments.Homepage.Logger/index.js' );
+const rootStore = require( '../__mocks__/store.js' );
 
 QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js', QUnit.newMwEnvironment( {
 	config: {
@@ -10,13 +10,6 @@ QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.
 } ) );
 
 QUnit.test( 'should log topicmatchmode impressions', function ( assert ) {
-	const api = new GrowthTasksApi( {
-		taskTypes: {
-			copyedit: {
-				id: 'copyedit'
-			}
-		}
-	} );
 	const logger = new HomepageModuleLogger( true, 'some-token' );
 	this.sandbox.stub( logger, 'log' );
 
@@ -26,7 +19,7 @@ QUnit.test( 'should log topicmatchmode impressions', function ( assert ) {
 		useTopicMatchMode: true,
 		mode: 'some-mode',
 		module: 'some-module'
-	}, logger, api );
+	}, logger, rootStore );
 	this.sandbox.spy( dialog, 'updateMatchCount' );
 
 	const windowManager = new OO.ui.WindowManager( { modal: false } );

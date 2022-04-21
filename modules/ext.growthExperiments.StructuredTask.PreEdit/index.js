@@ -5,7 +5,7 @@ module.exports = ( function () {
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-		taskTypes = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json' ),
+		taskTypes = require( '../ext.growthExperiments.DataStore/TaskTypes.json' ),
 		taskType = suggestedEditSession.taskType,
 		isAddLink = taskType === 'link-recommendation' && taskType in taskTypes,
 		isAddImage = taskType === 'image-recommendation' && taskType in taskTypes,

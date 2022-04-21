@@ -10,7 +10,9 @@ var EditCardWidget = require( './EditCardWidget.js' ),
 	SwipePane = require( '../ui-components/SwipePane.js' ),
 	QualityGate = require( './QualityGate.js' ),
 	ImageSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js' ),
-	LinkSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js' );
+	LinkSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js' ),
+	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES;
 
 /**
  * @class
@@ -21,65 +23,40 @@ var EditCardWidget = require( './EditCardWidget.js' ),
  * @param {jQuery} config.$container Module container
  * @param {jQuery} config.$element SuggestedEdits widget container
  * @param {jQuery} config.$nav Navigation element (if navigation is separate from $element)
- * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
- * @param {Object|null} config.topicPresets Lists of IDs of enabled topic filters.
- * @param {boolean} config.topicMatching If topic matching feature is enabled in the UI
- * @param {boolean} config.useTopicMatchMode If topic match mode feature is enabled in the UI
  * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
  * @param {Object} config.qualityGateConfig Quality gate configuration exported from TaskSet.php
  * @param {HomepageModuleLogger} logger
- * @param {mw.libs.ge.GrowthTasksApi} api
+ * @param {mw.libs.ge.DataStore} rootStore
  */
-function SuggestedEditsModule( config, logger, api ) {
+function SuggestedEditsModule( config, logger, rootStore ) {
 	var $previous, $next, $filters, $filtersContainer, $navContainer;
 	SuggestedEditsModule.super.call( this, config );
 	this.config = config;
 	this.logger = logger;
 	this.mode = config.mode;
 	this.currentCard = null;
-	this.apiPromise = null;
-	this.newcomerTaskToken = null;
-	this.apiFetchMoreTasksPromise = null;
-	this.taskTypesQuery = [];
-	this.topicsFilter = null;
-	this.api = api;
-	/** @property {mw.libs.ge.TaskData[]} taskQueue Fetched task data */
-	this.taskQueue = [];
-	this.taskQueueLoading = false;
-	/**
-	 * @property {number} taskCount Total number of tasks that match the selected filters.
-	 * This can be greater than this.taskQueue.length since the task data is lazy loaded. *
-	 */
-	this.taskCount = 0;
 	this.editWidget = null;
 	this.isFirstRender = true;
 	this.isShowingPseudoCard = true;
-	this.qualityGateConfig = config.qualityGateConfig;
-	// Allow restoring on cancel.
-	this.backup = {};
-	this.backup.taskQueue = [];
-	this.backup.queuePosition = 0;
-	this.backup.taskCount = 0;
-
+	this.filtersStore = rootStore.newcomerTasks.filters;
+	this.tasksStore = rootStore.newcomerTasks;
 	this.filters = new FiltersButtonGroupWidget( {
-		taskTypePresets: config.taskTypePresets,
-		topicPresets: config.topicPresets,
-		topicMatching: config.topicMatching,
-		useTopicMatchMode: config.useTopicMatchMode,
+		topicMatching: this.filtersStore.topicsEnabled,
+		useTopicMatchMode: this.filtersStore.shouldUseTopicMatchMode,
 		mode: this.mode
-	}, logger )
+	}, logger, rootStore )
 		.connect( this, {
 			search: 'fetchTasksAndUpdateView',
 			done: 'filterSelection',
 			cancel: 'restoreState',
-			open: 'backupState'
+			open: 'onFilterOpen'
 		} );
 	this.newcomerTaskLogger = new NewcomerTaskLogger();
 
-	// Topic presets will be null if the user never set them.
-	// It's possible that config.topicPresets is an empty array if the user set,
+	// Topic filters will be null if the user never set them.
+	// It's possible that topic filters is an empty array if the user set,
 	// saved, then unset the topics.
-	if ( !config.topicPresets ) {
+	if ( !this.filtersStore.preferences.topicFilters ) {
 		this.filters.$element.find( '.topic-filter-button' )
 			.append( $( '<div>' ).addClass( 'mw-pulsating-dot' ) );
 	}
@@ -128,6 +105,21 @@ function SuggestedEditsModule( config, logger, api ) {
 	if ( OO.ui.isMobile() ) {
 		this.setupSwipeNavigation();
 	}
+
+	// React to changes to the task data in the store (the changes could be triggered by another
+	// component such as StartEditingDialog)
+	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, this.onNewcomerTasksDataChanged.bind( this ) );
+	this.tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, function ( isFetchingTasks ) {
+		if ( isFetchingTasks ) {
+			// Ellipsis is the stand-in for a loading indicator.
+			this.nextWidget.setIcon( 'ellipsis' );
+			this.nextWidget.setDisabled( true );
+		} else {
+			this.nextWidget.setDisabled( this.tasksStore.isTaskQueueEmpty() );
+			this.nextWidget.setIcon( 'arrowNext' );
+		}
+	}.bind( this ) );
+
 }
 
 OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );
@@ -136,10 +128,18 @@ OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );
  * Store the latest states of the task queue, called when the dialog is opened and when the task
  * queue is updated when the dialog is first shown
  */
-SuggestedEditsModule.prototype.backupState = function () {
-	this.backup.taskQueue = this.taskQueue;
-	this.backup.queuePosition = this.queuePosition;
-	this.backup.taskCount = this.taskCount;
+SuggestedEditsModule.prototype.onFilterOpen = function () {
+	this.tasksStore.backupState();
+	this.isFilterOpen = true;
+	this.filters.updateMatchCount( this.tasksStore.getTaskCount() );
+};
+
+/**
+ * Set isFilterOpen to false when the filter closes; used in onNewcomerTasksDataChanged to
+ * determine whether the UI should be updated immediately or deferred
+ */
+SuggestedEditsModule.prototype.onFilterClose = function () {
+	this.isFilterOpen = false;
 };
 
 /**
@@ -147,31 +147,26 @@ SuggestedEditsModule.prototype.backupState = function () {
  * filter selection
  */
 SuggestedEditsModule.prototype.restoreState = function () {
-	this.isFirstRender = true;
-	this.taskQueue = this.backup.taskQueue;
-	this.queuePosition = this.backup.queuePosition;
-	this.taskCount = this.backup.taskCount;
-	this.taskQueueLoading = false;
-	this.filters.updateMatchCount( this.taskCount );
-	if ( OO.ui.isMobile() ) {
-		this.updateMobileSummary();
-	}
-	this.showCard();
+	this.onFilterClose();
+	this.tasksStore.restoreState();
 };
 
 /**
  * Update the mobile summary state on Special:Homepage
  * with a small card with the first task in the queue. If there
  * are no tasks show the number of edits in the last day
+ *
+ * FIXME: Update mobile module to read from the same data store so that it can update itself when
+ * the data changes
  */
 SuggestedEditsModule.prototype.updateMobileSummary = function () {
 	mw.loader.using( 'ext.growthExperiments.Homepage.mobile' ).done( function () {
 		var homepageModules = mw.config.get( 'homepagemodules' );
 		homepageModules[ 'suggested-edits' ][ 'task-preview' ] = $.extend(
 			{},
-			this.taskQueue[ this.queuePosition ],
+			this.tasksStore.getCurrentTask(),
 			{
-				taskPosition: this.queuePosition + 1
+				taskPosition: this.tasksStore.getQueuePosition() + 1
 			}
 		);
 		mw.config.set( 'homepagemodules', homepageModules );
@@ -189,117 +184,37 @@ SuggestedEditsModule.prototype.updateMobileSummary = function () {
  * @param {jQuery.Deferred} [filtersDialogProcess] Promise from the filters ProcessDialog to
  * resolve when the tasks are fetched or reject if the request failed. This is used to show the
  * loading state in the filters dialog.
+ *
+ * FIXME: At this point, we may already have the updated task queue since an API request is made to
+ * show the task count when the filter dialog is open. When that's the case, we should use the task
+ * queue from the store to avoid making two API calls for the same filters.
  */
 SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogProcess ) {
 	this.isFirstRender = true;
-	if ( !this.apiPromise ) {
-		this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsFilter, {
-			context: 'suggestedEditsModule.filterSelection'
-		} );
-	}
-	this.apiPromise.then( function () {
-		this.updateCardAndPreloadNext();
+	this.onFilterClose();
+	var apiPromise = this.tasksStore.fetchTasks( 'suggestedEditsModule.filterSelection' );
+	apiPromise.then( function () {
 		if ( filtersDialogProcess ) {
 			filtersDialogProcess.resolve();
 		}
-	}.bind( this ) );
+	} );
 
 	if ( filtersDialogProcess ) {
-		this.apiPromise.fail( function () {
+		apiPromise.fail( function () {
 			filtersDialogProcess.reject();
 		} );
 	}
 };
 
 /**
- * Set the task types and topics query properties based on dialog state.
- */
-SuggestedEditsModule.prototype.setFilterQueriesFromDialogState = function () {
-	var topicsFilter = this.config.topicMatching &&
-		this.filters.topicFiltersDialog.getEnabledFilters();
-	this.taskTypesQuery = this.filters.taskTypeFiltersDialog.getEnabledFilters();
-	this.topicsFilter = topicsFilter;
-};
-
-/**
- * Fetch suggested edits from ApiQueryGrowthTasks and update the view and internal state.
+ * Fetch tasks with the current filter selection and update the UI
  *
- * @param {Object} [options]
- * @param {mw.libs.ge.TaskData} [options.firstTask] Override for the first task, which might
- *   have been preloaded earlier. If the task is already in the real result set, it will be
- *   hoisted to the front; if not, it will be prepended.
  * @return {jQuery.Promise} Status promise. It never fails; errors are handled internally
- *   by rendering an error card.
+ * by rendering an error card.
  */
-SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function ( options ) {
-	options = options || {};
-	this.currentCard = null;
-	this.taskQueue = [];
-	this.queuePosition = 0;
-	this.taskQueueLoading = true;
-
-	if ( options.firstTask ) {
-		// The first card is already available (preloaded on the server side), display it
-		// to reduce wait time.
-		this.taskQueue = [ options.firstTask ];
-		this.showCard();
-	}
-
-	if ( !this.filters.taskTypeFiltersDialog ) {
-		// Module hasn't finished initializing, return.
-		return $.Deferred().resolve().promise();
-	}
-
-	if ( this.apiPromise ) {
-		this.apiPromise.abort();
-	}
-
-	this.setFilterQueriesFromDialogState();
-
-	if ( !this.taskTypesQuery.length ) {
-		// User has deselected all checkboxes; update the count.
-		this.filters.updateMatchCount( this.taskCount );
-		return $.Deferred().resolve().promise();
-	}
-	this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsFilter, {
-		context: 'suggestedEditsModule.fetchTasksAndUpdateView'
-	} );
-	return this.apiPromise.then( function ( data ) {
-		// HomepageModuleLogger adds this to the log data automatically
-		var extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' );
-		if ( !extraData ) {
-			// when initializing the module on the client side, this is not set
-			extraData = {};
-			mw.config.set( 'wgGEHomepageModuleActionData-suggested-edits', extraData );
-		}
-
-		this.taskQueueLoading = false;
-		this.taskQueue = data.tasks;
-		this.taskCount = data.count;
-		if ( options.firstTask ) {
-			this.taskQueue = this.taskQueue.filter( function ( task ) {
-				return task.title !== options.firstTask.title;
-			} );
-			this.taskQueue.unshift( options.firstTask );
-			// For the first task, if the dialog is shown before tasks are fetched, the backed up
-			// state will be incorrect since the backup is done when the dialog is opened.
-			this.backupState();
-		}
-		this.filters.updateMatchCount( this.taskCount );
-		if ( data.tasks && data.tasks.length ) {
-			this.maybeUpdateQualityGateConfig( data.tasks[ 0 ] );
-		}
-		// FIXME these are the current values of the filters, not the ones we are just about
-		//   to display. Unlikely to cause much discrepancy though.
-		extraData.taskTypes = this.taskTypesQuery;
-		if ( this.config.topicMatching ) {
-			extraData.topics = this.topicsFilter.getTopics();
-			if ( this.config.useTopicMatchMode ) {
-				extraData.topicsMatchMode = this.topicsFilter.getTopicsMatchMode();
-			}
-		}
-
-		extraData.taskCount = data.count;
+SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function () {
+	this.updateFilterSelection();
+	return this.tasksStore.fetchTasks( 'suggestedEditsModule.fetchTasksAndUpdateView' ).then( function () {
 		this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
 		return $.Deferred().resolve().promise();
 	}.bind( this ) ).catch( function ( message ) {
@@ -313,42 +228,38 @@ SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function ( options ) {
 	}.bind( this ) );
 };
 
-SuggestedEditsModule.prototype.updatePager = function () {
-	var seModuleActionData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ) || {},
-		homepageModulesConfig = mw.config.get( 'homepagemodules' );
-	if ( this.taskQueue.length ) {
-		var totalCount = this.taskCount ||
-			seModuleActionData.taskCount ||
-			homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ];
-		this.pager.setMessage( this.queuePosition + 1, totalCount );
-		this.pager.toggle( true );
-	} else {
-		this.pager.toggle( this.currentCard instanceof EditCardWidget );
-	}
-};
-
-SuggestedEditsModule.prototype.updatePreviousNextButtons = function () {
-	var hasPrevious = !this.taskQueueLoading && this.queuePosition > 0,
-		hasNext = !this.taskQueueLoading && this.queuePosition < this.taskQueue.length;
-	this.previousWidget.setDisabled( !hasPrevious );
-	this.nextWidget.setDisabled( !hasNext );
-	this.previousWidget.toggle( this.currentCard instanceof EditCardWidget ||
-		this.taskQueue.length );
-	this.nextWidget.toggle( this.currentCard instanceof EditCardWidget ||
-		this.taskQueue.length );
+/**
+ * Set the task types and topics query properties based on dialog state.
+ */
+SuggestedEditsModule.prototype.updateFilterSelection = function () {
+	this.filtersStore.updateStatesFromTopicsFilters( this.filters.topicFiltersDialog.getEnabledFilters() );
+	this.filtersStore.setSelectedTaskTypes( this.filters.taskTypeFiltersDialog.getEnabledFilters() );
 };
 
 /**
- * Preload extra (non-action-API) data for the next card. Does not change the view.
- *
- * @return {jQuery.Promise} Loading status.
+ * Update the pager when the task queue changes or when the user navigates through the queue
  */
-SuggestedEditsModule.prototype.preloadNextCard = function () {
-	if ( this.taskQueue[ this.queuePosition + 1 ] &&
-		!this.taskQueue[ this.queuePosition + 1 ].extract
-	) {
-		return this.getExtraDataAndUpdateQueue( this.queuePosition + 1 );
+SuggestedEditsModule.prototype.updatePager = function () {
+	if ( this.tasksStore.isTaskQueueEmpty() ) {
+		this.pager.toggle( this.currentCard instanceof EditCardWidget );
+	} else {
+		this.pager.setMessage( this.tasksStore.getQueuePosition() + 1, this.tasksStore.getTaskCount() );
+		this.pager.toggle( true );
 	}
+};
+
+/**
+ * Enable/disable the previous and next buttons based on the current position and the task queue;
+ * hide them if task card isn't shown
+ */
+SuggestedEditsModule.prototype.updatePreviousNextButtons = function () {
+	var shouldShowNavigation = this.currentCard instanceof EditCardWidget || !this.tasksStore.isTaskQueueEmpty(),
+		// next is enabled when the end of the queue is reached to show EndOfQueueWidget
+		shouldEnableNext = this.tasksStore.hasNextTask() || this.tasksStore.isEndOfTaskQueue();
+	this.previousWidget.setDisabled( !this.tasksStore.hasPreviousTask() );
+	this.nextWidget.setDisabled( !shouldEnableNext );
+	this.previousWidget.toggle( shouldShowNavigation );
+	this.nextWidget.toggle( shouldShowNavigation );
 };
 
 /**
@@ -358,70 +269,12 @@ SuggestedEditsModule.prototype.preloadNextCard = function () {
  */
 SuggestedEditsModule.prototype.onNextCard = function ( isSwipe ) {
 	var action = isSwipe ? 'se-task-navigation-swipe' : 'se-task-navigation';
-	if ( this.queuePosition === this.taskQueue.length ) {
-		// EndOfQueueWidget is already shown.
+	if ( this.currentCard instanceof EndOfQueueWidget ) {
 		return;
 	}
 	this.isGoingBack = false;
 	this.logger.log( 'suggested-edits', this.mode, action, { dir: 'next' } );
-	var fetchMoreTasksPromise = $.Deferred().resolve();
-	this.queuePosition = this.queuePosition + 1;
-	// Reload the queue.
-	if ( this.queuePosition === this.taskQueue.length - 1 ) {
-		fetchMoreTasksPromise = this.fetchMoreTasks();
-		// Ellipsis is the stand-in for a loading indicator.
-		this.nextWidget.setIcon( 'ellipsis' );
-		this.nextWidget.setDisabled( true );
-	}
-	fetchMoreTasksPromise.done( function () {
-		this.updateCardAndPreloadNext();
-	}.bind( this ) );
-};
-
-/**
- * Called from onNextCard / filterSelection.
- *
- * Used to update the mobile summary state, show the current card based
- * on the queue position, and preload the next card.
- */
-SuggestedEditsModule.prototype.updateCardAndPreloadNext = function () {
-	if ( OO.ui.isMobile() ) {
-		this.updateMobileSummary();
-	}
-	this.showCard();
-	this.preloadNextCard();
-};
-
-/**
- * Fetch tasks and append to existing task queue, deduplicating as needed.
- *
- * @return {jQuery.Promise} fetchTasks promise from the GrowthTasksApi.
- */
-SuggestedEditsModule.prototype.fetchMoreTasks = function () {
-	if ( this.apiFetchMoreTasksPromise ) {
-		this.apiFetchMoreTasksPromise.abort();
-	}
-	var i, existingPageIds = [];
-	for ( i = 0; i < this.taskQueue.length; i++ ) {
-		existingPageIds.push( this.taskQueue[ i ].pageId );
-	}
-	var config = {
-		context: 'suggestedEditsModule.fetchMoreTasksOnNextCard'
-	};
-	if ( existingPageIds.length ) {
-		config.excludePageIds = existingPageIds;
-	}
-	this.apiFetchMoreTasksPromise = this.api.fetchTasks(
-		this.taskTypesQuery,
-		this.topicsFilter,
-		config
-	);
-	this.apiFetchMoreTasksPromise.done( function ( data ) {
-		this.taskQueue = this.taskQueue.concat( data.tasks || [] );
-		this.nextWidget.setDisabled( !!data.tasks.length );
-		this.nextWidget.setIcon( 'arrowNext' );
-	}.bind( this ) );
-	return this.apiFetchMoreTasksPromise;
+	this.tasksStore.showNextTask();
 };
 
 /**
@@ -431,31 +284,73 @@ SuggestedEditsModule.prototype.fetchMoreTasks = function () {
  */
 SuggestedEditsModule.prototype.onPreviousCard = function ( isSwipe ) {
 	var action = isSwipe ? 'se-task-navigation-swipe' : 'se-task-navigation';
-	if ( this.queuePosition === 0 ) {
+	if ( this.tasksStore.getQueuePosition() === 0 ) {
 		return;
 	}
 	this.isGoingBack = true;
 	this.logger.log( 'suggested-edits', this.mode, action, { dir: 'prev' } );
-	this.queuePosition = this.queuePosition - 1;
-	this.showCard();
+	this.tasksStore.showPreviousTask();
+};
+
+/**
+ * Called from onNextCard / filterSelection.
+ *
+ * Used to update the mobile summary state, show the current card based
+ * on the queue position.
+ */
+SuggestedEditsModule.prototype.updateCurrentCard = function () {
 	if ( OO.ui.isMobile() ) {
 		this.updateMobileSummary();
 	}
+	this.showCard();
 };
 
+/**
+ * Update data from PCS and AQS services for the current card
+ */
+SuggestedEditsModule.prototype.updateExtraDataForCurrentCard = function () {
+	this.currentCard = new EditCardWidget(
+		$.extend(
+			{ extraDataLoaded: true, qualityGateConfig: this.tasksStore.getQualityGateConfig() },
+			this.tasksStore.getCurrentTask()
+		)
+	);
+	this.updateCardElement();
+};
+
+/**
+ * Update TaskExplanationWidget for the current task
+ */
 SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
 	var explanationSelector = '.suggested-edits-task-explanation',
-		$explanationElement = $( explanationSelector );
-	if ( this.queuePosition < this.taskQueue.length ) {
+		$explanationElement = $( explanationSelector ),
+		currentTask = this.tasksStore.getCurrentTask();
+	if ( currentTask ) {
 		$explanationElement.html(
 			new TaskExplanationWidget( {
-				taskType: this.taskQueue[ this.queuePosition ].tasktype,
+				taskType: currentTask.tasktype,
 				mode: this.mode
-			}, this.logger ).$element
+			}, this.logger, ALL_TASK_TYPES ).$element
 		);
 		$explanationElement.toggle( true );
 	} else {
 		$explanationElement.toggle( false );
+	}
+};
+
+/**
+ * Update the UI when the task queue changes
+ */
+SuggestedEditsModule.prototype.onNewcomerTasksDataChanged = function () {
+	// Only update task count in the filter dialog if it's open
+	this.filters.updateMatchCount( this.tasksStore.getTaskCount() );
+	if ( this.isFilterOpen ) {
+		return;
+	}
+	this.showCard();
+	this.updateControls();
+	if ( OO.ui.isMobile() ) {
+		this.updateMobileSummary();
 	}
 };
 
@@ -466,8 +361,7 @@ SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
  *   already been loaded for this position.
  */
 SuggestedEditsModule.prototype.logCardData = function ( cardPosition ) {
-	var task = this.taskQueue[ cardPosition ];
-	this.newcomerTaskLogger.log( task, cardPosition );
+	this.newcomerTaskLogger.log( this.tasksStore.getCurrentTask(), cardPosition );
 };
 
 /**
@@ -483,34 +377,32 @@ SuggestedEditsModule.prototype.logCardData = function ( cardPosition ) {
  *   on external data and fetching that fails.
  */
 SuggestedEditsModule.prototype.showCard = function ( card ) {
-	var queuePosition = this.queuePosition;
+	var queuePosition = this.tasksStore.getQueuePosition();
 	this.currentCard = null;
 
 	// TODO should we log something on non-card impressions?
 	if ( card ) {
 		this.currentCard = card;
-	} else if ( !this.taskQueue.length ) {
+	} else if ( this.tasksStore.isTaskQueueEmpty() ) {
 		this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 			{ type: 'empty' } );
-		this.currentCard = new NoResultsWidget( { topicMatching: this.config.topicMatching } );
-	} else if ( !this.taskQueue[ queuePosition ] ) {
+		this.currentCard = new NoResultsWidget( { topicMatching: this.filtersStore.topicsEnabled } );
+	} else if ( !this.tasksStore.getCurrentTask() ) {
 		this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 			{ type: 'end' } );
-		this.currentCard = new EndOfQueueWidget( { topicMatching: this.config.topicMatching } );
+		this.currentCard = new EndOfQueueWidget( { topicMatching: this.filtersStore.topicsEnabled } );
 	} else {
 		this.currentCard = new EditCardWidget(
-			$.extend( { qualityGateConfig: this.qualityGateConfig }, this.taskQueue[ queuePosition ] )
+			$.extend( { qualityGateConfig: this.tasksStore.getQualityGateConfig() }, this.tasksStore.getCurrentTask() )
 		);
 	}
 	if ( this.currentCard instanceof EditCardWidget ) {
-		var task = this.taskQueue[ queuePosition ];
-		this.newcomerTaskToken = task.token;
 		this.logCardData( queuePosition );
 		this.logger.log(
 			'suggested-edits',
 			this.mode,
 			'se-task-impression',
-			{ newcomerTaskToken: task.token }
+			{ newcomerTaskToken: this.tasksStore.getNewcomerTaskToken() }
 		);
 	}
 	this.updateCardElement( OO.ui.isMobile() ).then( this.updateControls.bind( this ) );
@@ -521,70 +413,9 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 	}
 	this.setEditWidgetDisabled( false );
 
-	return this.getExtraDataAndUpdateQueue( queuePosition ).then( function () {
-		if ( queuePosition !== this.queuePosition ) {
-			return;
-		}
-		this.currentCard = new EditCardWidget(
-			$.extend( { extraDataLoaded: true, qualityGateConfig: this.qualityGateConfig }, this.taskQueue[ queuePosition ] )
-		);
-		this.updateCardElement();
-	}.bind( this ) );
-};
-
-/**
- * Gets extra data which is not reliably available via the action API (we use a nondeterministic
- * generator so we cannot do query continuation, plus we reorder the results so performance
- * would be unpredictable) from the PCS and AQS services.
- *
- * @param {number} taskQueuePosition
- * @return {jQuery.Promise} Promise reflecting the status of the PCS request
- *   (AQS errors are ignored). Does not return any value; instead,
- *   SuggestedEditsModule.taskQueue will be updated.
- */
-SuggestedEditsModule.prototype.getExtraDataAndUpdateQueue = function ( taskQueuePosition ) {
-	var pcsPromise, aqsPromise, preloaded,
-		apiConfig = {
-			context: 'suggestedEditsModule.getExtraDataAndUpdateQueue'
-		},
-		suggestedEditData = this.taskQueue[ taskQueuePosition ];
-	if ( !suggestedEditData ) {
-		return $.Deferred().resolve().promise();
-	}
-
-	pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig );
-	aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData, apiConfig );
-	// We might have the thumbnail URL already, or we might receive it later from PCS.
-	// Start preloading as soon as possible.
-	preloaded = this.preloadCardImage( suggestedEditData );
-	if ( !preloaded ) {
-		pcsPromise.done( function () {
-			this.preloadCardImage( suggestedEditData );
-		}.bind( this ) );
-	}
-	return $.when( pcsPromise, aqsPromise ).then( function () {
-		// Data is updated in-place so this is probably not necessary, but just in case
-		// something replaced the object, re-replace it for good measure.
-		this.taskQueue[ taskQueuePosition ] = suggestedEditData;
-	}.bind( this ) ).catch( function () {
-		// We don't need to do anything here since the page views and RESTBase
-		// calls are for supplemental data; we just need to catch any exception
-		// so that the card can render with the data we have from ApiQueryGrowthTasks.
-	} );
-};
-
-/**
- * Preload the task card image.
- *
- * @param {Object} task Task data, as returned by GrowthTasksApi.
- * @return {boolean} Whether preloading has been started.
- */
-SuggestedEditsModule.prototype.preloadCardImage = function ( task ) {
-	if ( task.thumbnailSource ) {
-		$( '<img>' ).attr( 'src', task.thumbnailSource );
-		return true;
-	}
-	return false;
+	return this.tasksStore.fetchExtraDataForCurrentTask().then(
+		this.updateExtraDataForCurrentCard.bind( this )
+	);
 };
 
 /**
@@ -702,11 +533,7 @@ SuggestedEditsModule.prototype.setupSwipeNavigation = function () {
  * Update the control chrome around the card depending on the state of the queue and query.
  */
 SuggestedEditsModule.prototype.updateControls = function () {
-	this.setFilterQueriesFromDialogState();
-	this.filters.updateButtonLabelAndIcon(
-		this.taskTypesQuery,
-		this.topicsFilter
-	);
+	this.filters.updateButtonLabelAndIcon( this.filtersStore.getTaskTypesQuery(), this.filtersStore.getTopicsQuery() );
 	this.updatePager();
 	this.updatePreviousNextButtons();
 	this.updateTaskExplanationWidget();
@@ -718,8 +545,8 @@ SuggestedEditsModule.prototype.updateControls = function () {
  * @param {string} action Either 'se-task-click' or 'se-edit-button-click'
  */
 SuggestedEditsModule.prototype.logEditTaskClick = function ( action ) {
-	var task = this.taskQueue[ this.queuePosition ];
-	this.logCardData( this.queuePosition );
+	var task = this.tasksStore.getCurrentTask();
+	this.logCardData( this.tasksStore.getQueuePosition() );
 	this.logger.log( 'suggested-edits', this.mode, action, { newcomerTaskToken: task.token } );
 };
 
@@ -734,7 +561,7 @@ SuggestedEditsModule.prototype.setupClickLogging = function () {
 		newUrl = $link.attr( 'href' ) ?
 			new mw.Uri( $link.attr( 'href' ) ).extend( {
 				geclickid: clickId,
-				genewcomertasktoken: this.newcomerTaskToken,
+				genewcomertasktoken: this.tasksStore.getNewcomerTaskToken(),
 				gesuggestededit: 1
 			} ).toString() :
 			'';
@@ -773,7 +600,7 @@ SuggestedEditsModule.prototype.setupQualityGateClickHandling = function ( $eleme
 		if ( this.currentCard instanceof EditCardWidget ) {
 			var qualityGate = new QualityGate( {
 				gates: this.currentCard.data.qualityGateIds || [],
-				gateConfig: this.qualityGateConfig,
+				gateConfig: this.tasksStore.getQualityGateConfig(),
 				/* eslint-disable camelcase */
 				loggers: {
 					'image-recommendation': new ImageSuggestionInteractionLogger( {
@@ -834,21 +661,6 @@ SuggestedEditsModule.prototype.setupEditWidget = function ( $container ) {
 SuggestedEditsModule.prototype.setEditWidgetDisabled = function ( isDisabled ) {
 	if ( this.editWidget ) {
 		this.editWidget.setDisabled( isDisabled );
-	}
-};
-
-/**
- * Update the quality config if it's included in the task data.
- *
- * The quality gate config is initially set to the value from the task preview data. When the
- * task preview data is not available, the tasks are still fetched on the client side (the no
- * suggestions found card is shown first) so the quality config should be updated accordingly.
- *
- * @param {mw.libs.ge.TaskData} taskData
- */
-SuggestedEditsModule.prototype.maybeUpdateQualityGateConfig = function ( taskData ) {
-	if ( taskData.qualityGateConfig ) {
-		this.qualityGateConfig = taskData.qualityGateConfig;
 	}
 };
 

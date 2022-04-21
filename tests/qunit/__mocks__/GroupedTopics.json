@@ -1,0 +1,284 @@
+{
+	"campaign": {
+		"id": "campaign",
+		"name": "Campaign event",
+		"topics": [
+			{
+				"id": "argentina",
+				"name": "⧼growth-campaign-topic-name-argentina⧽",
+				"groupId": "campaign",
+				"groupName": "Campaign event"
+			},
+			{
+				"id": "chile",
+				"name": "⧼growth-campaign-topic-name-chile⧽",
+				"groupId": "campaign",
+				"groupName": "Campaign event"
+			},
+			{
+				"id": "mexico",
+				"name": "⧼growth-campaign-topic-name-mexico⧽",
+				"groupId": "campaign",
+				"groupName": "Campaign event"
+			}
+		]
+	},
+	"culture": {
+		"id": "culture",
+		"name": "Culture",
+		"topics": [
+			{
+				"id": "architecture",
+				"name": "Architecture",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "art",
+				"name": "Art",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "comics-and-anime",
+				"name": "Comics and anime",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "entertainment",
+				"name": "Entertainment",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "fashion",
+				"name": "Fashion",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "literature",
+				"name": "Literature",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "music",
+				"name": "Music",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "performing-arts",
+				"name": "Performing arts",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "sports",
+				"name": "Sports",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "tv-and-film",
+				"name": "TV and film",
+				"groupId": "culture",
+				"groupName": "Culture"
+			},
+			{
+				"id": "video-games",
+				"name": "Video games",
+				"groupId": "culture",
+				"groupName": "Culture"
+			}
+		]
+	},
+	"history-and-society": {
+		"id": "history-and-society",
+		"name": "History and Society",
+		"topics": [
+			{
+				"id": "biography",
+				"name": "Biography (all)",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "women",
+				"name": "Biography (women)",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "business-and-economics",
+				"name": "Business and economics",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "education",
+				"name": "Education",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "food-and-drink",
+				"name": "Food and drink",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "history",
+				"name": "History",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "military-and-warfare",
+				"name": "Military and warfare",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "philosophy-and-religion",
+				"name": "Philosophy and religion",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "politics-and-government",
+				"name": "Politics and government",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "society",
+				"name": "Society",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			},
+			{
+				"id": "transportation",
+				"name": "Transportation",
+				"groupId": "history-and-society",
+				"groupName": "History and Society"
+			}
+		]
+	},
+	"science-technology-and-math": {
+		"id": "science-technology-and-math",
+		"name": "Science, Technology, and Math",
+		"topics": [
+			{
+				"id": "biology",
+				"name": "Biology",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			},
+			{
+				"id": "chemistry",
+				"name": "Chemistry",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			},
+			{
+				"id": "computers-and-internet",
+				"name": "Computers and internet",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			},
+			{
+				"id": "earth-and-environment",
+				"name": "Earth and environment",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			},
+			{
+				"id": "engineering",
+				"name": "Engineering",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			},
+			{
+				"id": "general-science",
+				"name": "General science",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			},
+			{
+				"id": "mathematics",
+				"name": "Mathematics",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			},
+			{
+				"id": "medicine-and-health",
+				"name": "Medicine and health",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			},
+			{
+				"id": "physics",
+				"name": "Physics",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			},
+			{
+				"id": "technology",
+				"name": "Technology",
+				"groupId": "science-technology-and-math",
+				"groupName": "Science, Technology, and Math"
+			}
+		]
+	},
+	"geography": {
+		"id": "geography",
+		"name": "Regions",
+		"topics": [
+			{
+				"id": "africa",
+				"name": "Africa",
+				"groupId": "geography",
+				"groupName": "Regions"
+			},
+			{
+				"id": "asia",
+				"name": "Asia",
+				"groupId": "geography",
+				"groupName": "Regions"
+			},
+			{
+				"id": "central-america",
+				"name": "Central America",
+				"groupId": "geography",
+				"groupName": "Regions"
+			},
+			{
+				"id": "europe",
+				"name": "Europe",
+				"groupId": "geography",
+				"groupName": "Regions"
+			},
+			{
+				"id": "north-america",
+				"name": "North America",
+				"groupId": "geography",
+				"groupName": "Regions"
+			},
+			{
+				"id": "oceania",
+				"name": "Oceania",
+				"groupId": "geography",
+				"groupName": "Regions"
+			},
+			{
+				"id": "south-america",
+				"name": "South America",
+				"groupId": "geography",
+				"groupName": "Regions"
+			}
+		]
+	}
+}

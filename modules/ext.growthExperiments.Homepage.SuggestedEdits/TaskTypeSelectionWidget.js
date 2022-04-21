@@ -6,13 +6,15 @@
  * @param {Object} config
  * @param {string[]} config.selectedTaskTypes Pre-selected task types
  * @param {Object} config.introLinks Link targets for fake task types; must contain a 'create' key
+ * @param {Object} TASK_TYPES Data about each task type
  */
-function TaskTypeSelectionWidget( config ) {
+function TaskTypeSelectionWidget( config, TASK_TYPES ) {
 	// Parent constructor
 	TaskTypeSelectionWidget.super.call( this, config );
 
 	this.preselectedTaskTypes = config.selectedTaskTypes || [];
 	this.introLinks = config.introLinks;
+	this.TASK_TYPES = TASK_TYPES;
 
 	this.buildCheckboxFilters();
 	this.errorMessage = new OO.ui.MessageWidget( {
@@ -154,15 +156,12 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
 	difficulty,
 	selectedTaskTypes
 ) {
-	var taskType,
-		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
-		taskTypes = TaskTypesAbFilter.getTaskTypes(),
-		checkboxes = [];
-	for ( taskType in taskTypes ) {
-		if ( taskTypes[ taskType ].difficulty === difficulty ) {
+	var taskType, checkboxes = [];
+	for ( taskType in this.TASK_TYPES ) {
+		if ( this.TASK_TYPES[ taskType ].difficulty === difficulty ) {
 			checkboxes.push( this.makeCheckbox(
-				taskTypes[ taskType ],
-				selectedTaskTypes.indexOf( taskTypes[ taskType ].id ) !== -1
+				this.TASK_TYPES[ taskType ],
+				selectedTaskTypes.indexOf( this.TASK_TYPES[ taskType ].id ) !== -1
 			) );
 		}
 	}

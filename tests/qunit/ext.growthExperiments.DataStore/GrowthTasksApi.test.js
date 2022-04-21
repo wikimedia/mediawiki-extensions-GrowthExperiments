@@ -1,9 +1,9 @@
 'use strict';
-const GrowthTasksApi = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js' );
-const { TOPIC_MATCH_MODES } = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/constants.js' );
-const TopicFilters = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js' );
+const GrowthTasksApi = require( '../../../modules/ext.growthExperiments.DataStore/GrowthTasksApi.js' );
+const { TOPIC_MATCH_MODES } = require( '../../../modules/ext.growthExperiments.DataStore/constants.js' );
+const TopicFilters = require( '../../../modules/ext.growthExperiments.DataStore/TopicFilters.js' );
 
-QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js', QUnit.newMwEnvironment( {} ) );
+QUnit.module( 'ext.growthExperiments.DataStore/GrowthTasksApi.js', QUnit.newMwEnvironment( {} ) );
 
 QUnit.test( 'should fetch tasks', function ( assert ) {
 	const done = assert.async();

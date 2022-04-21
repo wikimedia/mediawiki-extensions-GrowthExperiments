@@ -1,32 +1,29 @@
-'use strict';
-
-var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
-	TOPIC_MATCH_MODES = require( './constants.js' ).TOPIC_MATCH_MODES,
-	taskTypes = TaskTypesAbFilter.getTaskTypes(),
-	topicData = require( './Topics.js' );
+var CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+	TOPIC_MATCH_MODES = CONSTANTS.TOPIC_MATCH_MODES,
+	TOPIC_DATA = CONSTANTS.TOPIC_DATA,
+	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES;
 
 /**
  * @extends OO.ui.ButtonGroupWidget
  *
  * @param {Object} config Configuration options
- * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
- * @param {mw.libs.ge.TopicFilters|null} config.topicPresets Object containing selected topic filters
  * @param {boolean} config.topicMatching If the topic filters should be enabled in the UI.
  * @param {boolean} config.useTopicMatchMode If topic match mode feature is enabled in the UI
  * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
  * @param {HomepageModuleLogger} logger
+ * @param {mw.libs.ge.DataStore} rootStore
  * @constructor
  */
-function FiltersButtonGroupWidget( config, logger ) {
-	var DifficultyFiltersDialog =
-			require( './DifficultyFiltersDialog.js' ),
+function FiltersButtonGroupWidget( config, logger, rootStore ) {
+	var DifficultyFiltersDialog = require( './DifficultyFiltersDialog.js' ),
 		TopicFiltersDialog = require( './TopicFiltersDialog.js' ),
 		windowManager = new OO.ui.WindowManager( { modal: true } ),
 		windows = [],
 		buttonWidgets = [];
+
 	this.mode = config.mode;
 	this.topicMatching = config.topicMatching;
-	this.topicPresets = config.topicPresets;
+	this.filtersStore = rootStore.newcomerTasks.filters;
 
 	if ( this.topicMatching ) {
 		this.topicFilterButtonWidget = new OO.ui.ButtonWidget( {
@@ -35,10 +32,7 @@ function FiltersButtonGroupWidget( config, logger ) {
 			indicator: config.mode === 'desktop' ? null : 'down'
 		} );
 		buttonWidgets.push( this.topicFilterButtonWidget );
-		this.topicFiltersDialog = new TopicFiltersDialog( {
-			presets: this.topicPresets,
-			useTopicMatchMode: config.useTopicMatchMode
-		} ).connect( this, {
+		this.topicFiltersDialog = new TopicFiltersDialog( rootStore ).connect( this, {
 			done: function ( promise ) {
 				this.emit( 'done', promise );
 			},
@@ -83,9 +77,7 @@ function FiltersButtonGroupWidget( config, logger ) {
 	} );
 	buttonWidgets.push( this.difficultyFilterButtonWidget );
 
-	this.taskTypeFiltersDialog = new DifficultyFiltersDialog( {
-		presets: config.taskTypePresets
-	} ).connect( this, {
+	this.taskTypeFiltersDialog = new DifficultyFiltersDialog( rootStore ).connect( this, {
 		done: function ( promise ) {
 			this.emit( 'done', promise );
 		},
@@ -152,6 +144,10 @@ function FiltersButtonGroupWidget( config, logger ) {
 		items: buttonWidgets
 	} ) );
 
+	this.filtersStore.on( CONSTANTS.EVENTS.FILTER_SELECTION_CHANGED, function () {
+		this.taskTypeFiltersDialog.taskTypeSelector.setSelected( this.filtersStore.getSelectedTaskTypes() );
+		this.topicFiltersDialog.topicSelector.setFilters( this.filtersStore.getTopicsQuery() );
+	}.bind( this ) );
 }
 
 OO.inheritClass( FiltersButtonGroupWidget, OO.ui.ButtonGroupWidget );
@@ -196,11 +192,13 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 			);
 			// topicPresets will be a TopicFilters object if the user had saved topics
 			// in the past, or null if they have never saved topics
-			this.topicFilterButtonWidget.setFlags( { progressive: !this.topicPresets } );
+			this.topicFilterButtonWidget.setFlags( {
+				progressive: !this.filtersStore.preferences.topicFilters
+			} );
 		} else {
 			topicSearch.getTopics().forEach( function ( topic ) {
-				if ( topicData[ topic ] && topicData[ topic ].name ) {
-					topicMessages.push( topicData[ topic ].name );
+				if ( TOPIC_DATA[ topic ] && TOPIC_DATA[ topic ].name ) {
+					topicMessages.push( TOPIC_DATA[ topic ].name );
 				}
 			} );
 			// Unset the pulsating blue dot if it exists.
@@ -231,7 +229,7 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 	}
 
 	taskTypeSearch.forEach( function ( taskType ) {
-		levels[ taskTypes[ taskType ].difficulty ] = true;
+		levels[ ALL_TASK_TYPES[ taskType ].difficulty ] = true;
 	} );
 	[ 'easy', 'medium', 'hard' ].forEach( function ( level ) {
 		var label;

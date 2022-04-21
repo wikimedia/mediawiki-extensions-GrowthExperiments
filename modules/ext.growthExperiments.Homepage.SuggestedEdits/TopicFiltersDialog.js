@@ -2,8 +2,9 @@
 
 var FiltersDialog = require( './FiltersDialog.js' ),
 	TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
-	TOPIC_MATCH_MODES = require( './constants.js' ).TOPIC_MATCH_MODES,
-	TopicFilters = require( './TopicFilters.js' );
+	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+	TOPIC_MATCH_MODES = CONSTANTS.TOPIC_MATCH_MODES,
+	TopicFilters = require( '../ext.growthExperiments.DataStore/TopicFilters.js' );
 
 /**
  * Class for handling UI changes to topic filters.
@@ -12,13 +13,15 @@ var FiltersDialog = require( './FiltersDialog.js' ),
  *
  * @class mw.libs.ge.TopicFiltersDialog
  * @extends mw.libs.ge.FiltersDialog
+ *
+ * @param {mw.libs.ge.DataStore} rootStore
  */
-function TopicFiltersDialog( config ) {
-	TopicFiltersDialog.super.call( this, config );
-	this.config = config;
+function TopicFiltersDialog( rootStore ) {
+	TopicFiltersDialog.super.call( this );
 	this.updating = false;
 	this.performSearchUpdateActionsDebounced =
 		OO.ui.debounce( this.performSearchUpdateActions.bind( this ) );
+	this.filtersStore = rootStore.newcomerTasks.filters;
 }
 
 OO.inheritClass( TopicFiltersDialog, FiltersDialog );
@@ -62,12 +65,12 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	this.content.$element.empty();
 	this.content.$element.append( this.errorMessage.$element );
 	this.topicSelector = new TopicSelectionWidget( {
-		isMatchModeEnabled: this.config.useTopicMatchMode,
-		filters: this.config.presets || new TopicFilters( {
+		isMatchModeEnabled: this.filtersStore.shouldUseTopicMatchMode,
+		filters: this.filtersStore.preferences.topicFilters || new TopicFilters( {
 			topicsMatchMode: TOPIC_MATCH_MODES.OR
 		} ),
 		$overlay: this.$overlay
-	} );
+	}, this.filtersStore.getGroupedTopics() );
 	this.topicSelector.connect( this, {
 		// selectAll and removeAll forward a single topic group ID argument
 		selectAll: [ 'emit', 'selectAll' ],
@@ -99,8 +102,8 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
  * @override
  */
 TopicFiltersDialog.prototype.updateFiltersFromState = function () {
-	// this.config.presets could be null ((e.g. user just initiated the module, see T238611#5800350)
-	var presets = this.config.presets || new TopicFilters( {
+	// filtersStore.preferences.topicFilters could be null ((e.g. user just initiated the module, see T238611#5800350)
+	var presets = this.filtersStore.preferences.topicFilters || new TopicFilters( {
 		topicsMatchMode: TOPIC_MATCH_MODES.OR
 	} );
 	// Prevent 'search' events from being fired by performSearchUpdateActions()
@@ -120,14 +123,14 @@ TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 /**
  * Return an TopicFilter object with the state of the selector filters.
  *
- * @see modules/ext.growthExperiments.Homepage.SuggestedEdits/constants.js
+ * @see modules/ext.growthExperiments.DataStore/constants.js
  * @override
  * @return {mw.libs.ge.TopicFilters|null}
  */
 TopicFiltersDialog.prototype.getEnabledFilters = function () {
 	// Topic selection widget may not yet be initialized (when the module
 	// is loading initially) in which case use the presets.
-	return this.topicSelector ? this.topicSelector.getFilters() : this.config.presets;
+	return this.topicSelector ? this.topicSelector.getFilters() : this.filtersStore.preferences.topicFilters;
 };
 
 /**
@@ -141,36 +144,10 @@ TopicFiltersDialog.prototype.performSearchUpdateActions = function () {
 	}
 };
 
-/**
- * Set and save topic filter preferences for the user.
- *
- * @override
- * @return {jQuery.Promise}
- */
+/** @override **/
 TopicFiltersDialog.prototype.savePreferences = function () {
-	// If existing preference is null, that means the user never saved a change
-	// to the topics, so we should continue to save null. Otherwise for empty filters
-	// save a JSON encoded empty array.
-	var prefName = require( './config.json' ).GENewcomerTasksTopicFiltersPref,
-		prefValueHasBeenSetBefore = mw.user.options.get( prefName ),
-		enabledFilters = this.getEnabledFilters(),
-		topics = enabledFilters.getTopics(),
-		topicsMatchMode = enabledFilters.getTopicsMatchMode(),
-		prefNameMode = 'growthexperiments-homepage-se-topic-filters-mode',
-		prefValue;
-
-	if ( topics.length ) {
-		prefValue = JSON.stringify( topics );
-	} else {
-		prefValue = prefValueHasBeenSetBefore ? JSON.stringify( [] ) : null;
-	}
-	this.config.presets = enabledFilters;
-	mw.user.options.set( prefName, prefValue );
-	mw.user.options.set( prefNameMode, topicsMatchMode );
-	var options = {};
-	options[ prefName ] = prefValue;
-	options[ prefNameMode ] = topicsMatchMode;
-	return new mw.Api().saveOptions( options );
+	this.filtersStore.updateStatesFromTopicsFilters( this.getEnabledFilters() );
+	this.filtersStore.savePreferences();
 };
 
 /** @inheritDoc **/

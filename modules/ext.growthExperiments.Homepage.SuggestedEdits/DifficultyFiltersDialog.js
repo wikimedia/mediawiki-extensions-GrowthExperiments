@@ -1,7 +1,10 @@
 'use strict';
 
 var FiltersDialog = require( './FiltersDialog.js' ),
-	TaskTypeSelectionWidget = require( './TaskTypeSelectionWidget.js' );
+	TaskTypeSelectionWidget = require( './TaskTypeSelectionWidget.js' ),
+	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+	SUGGESTED_EDITS_CONFIG = CONSTANTS.SUGGESTED_EDITS_CONFIG,
+	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES;
 
 /**
  * Class for handling UI changes to difficulty filters.
@@ -10,10 +13,12 @@ var FiltersDialog = require( './FiltersDialog.js' ),
  *
  * @class mw.libs.ge.DifficultyFiltersDialog
  * @extends mw.libs.ge.FiltersDialog
+ *
+ * @param {mw.libs.ge.DataStore} rootStore
  */
-function DifficultyFiltersDialog( config ) {
-	DifficultyFiltersDialog.super.call( this, config );
-	this.config = config;
+function DifficultyFiltersDialog( rootStore ) {
+	DifficultyFiltersDialog.super.call( this );
+	this.filtersStore = rootStore.newcomerTasks.filters;
 }
 
 OO.inheritClass( DifficultyFiltersDialog, FiltersDialog );
@@ -41,9 +46,9 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 	DifficultyFiltersDialog.super.prototype.initialize.call( this );
 
 	this.taskTypeSelector = new TaskTypeSelectionWidget( {
-		selectedTaskTypes: this.config.presets,
-		introLinks: require( './config.json' ).GEHomepageSuggestedEditsIntroLinks
-	} ).connect( this, { select: 'onTaskTypeSelect' } );
+		selectedTaskTypes: this.filtersStore.preferences.taskTypes,
+		introLinks: SUGGESTED_EDITS_CONFIG.GEHomepageSuggestedEditsIntroLinks
+	}, ALL_TASK_TYPES ).connect( this, { select: 'onTaskTypeSelect' } );
 	this.content.$element.append( this.taskTypeSelector.$element );
 	this.$body.append( this.content.$element );
 	this.$foot.append( this.footerPanelLayout.$element );
@@ -75,17 +80,13 @@ DifficultyFiltersDialog.prototype.onTaskTypeSelect = function ( selected ) {
 
 /** @override **/
 DifficultyFiltersDialog.prototype.savePreferences = function () {
-	var enabledFilters = this.getEnabledFilters();
-	this.config.presets = enabledFilters;
-	return new mw.Api().saveOption(
-		'growthexperiments-homepage-se-filters',
-		JSON.stringify( enabledFilters )
-	);
+	this.filtersStore.setSelectedTaskTypes( this.getEnabledFilters() );
+	this.filtersStore.savePreferences();
 };
 
 /** @override **/
 DifficultyFiltersDialog.prototype.updateFiltersFromState = function () {
-	this.taskTypeSelector.setSelected( this.config.presets );
+	this.taskTypeSelector.setSelected( this.filtersStore.preferences.taskTypes );
 };
 
 /** @inheritDoc **/

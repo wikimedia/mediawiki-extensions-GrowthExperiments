@@ -1,6 +1,7 @@
 'use strict';
 const FiltersWidget = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/FiltersButtonGroupWidget.js' );
 const HomepageModuleLogger = require( '../../../modules/ext.growthExperiments.Homepage.Logger/index.js' );
+const rootStore = require( '../__mocks__/store.js' );
 
 QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/FiltersButtonGroupWidget.js', QUnit.newMwEnvironment( {} ) );
 
@@ -12,7 +13,7 @@ QUnit.test( 'should log only topicfilter impressions', function ( assert ) {
 		topicMatching: true,
 		useTopicMatchMode: false,
 		mode: 'some-mode'
-	}, logger );
+	}, logger, rootStore );
 
 	widget.topicFilterButtonWidget.emit( 'click' );
 
@@ -36,7 +37,7 @@ QUnit.test( 'should log topicmatchmode impression', function ( assert ) {
 		topicMatching: true,
 		useTopicMatchMode: true,
 		mode: 'some-mode'
-	}, logger );
+	}, logger, rootStore );
 
 	widget.topicFilterButtonWidget.emit( 'click' );
 

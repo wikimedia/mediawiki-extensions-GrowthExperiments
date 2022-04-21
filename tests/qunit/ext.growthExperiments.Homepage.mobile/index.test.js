@@ -23,7 +23,7 @@ QUnit.module( 'ext.growthExperiments.Homepage.mobile/index.js', QUnit.newMwEnvir
 
 QUnit.test( 'should hide page views in small preview card', function ( assert ) {
 	const done = assert.async();
-	const GrowthTasksApi = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js' );
+	const GrowthTasksApi = require( '../../../modules/ext.growthExperiments.DataStore/GrowthTasksApi.js' );
 	const task = {
 		title: 'Article title',
 		difficulty: 'easy',

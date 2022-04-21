@@ -1,9 +1,9 @@
 var SuggestionWidget = require( './SuggestionWidget.js' ),
 	SuggestionGroupWidget = require( './SuggestionGroupWidget.js' ),
 	MatchModeSelectWidget = require( './MatchModeSelectWidget.js' ),
-	topicData = require( './Topics.js' ),
-	TopicFilters = require( './TopicFilters.js' ),
-	TOPIC_MATCH_MODES = require( './constants.js' ).TOPIC_MATCH_MODES,
+	TopicFilters = require( '../ext.growthExperiments.DataStore/TopicFilters.js' ),
+	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+	TOPIC_MATCH_MODES = CONSTANTS.TOPIC_MATCH_MODES,
 	TOPIC_MATCH_MODE_OPTIONS = [
 		{
 			data: TOPIC_MATCH_MODES.OR,
@@ -13,22 +13,7 @@ var SuggestionWidget = require( './SuggestionWidget.js' ),
 			data: TOPIC_MATCH_MODES.AND,
 			label: mw.message( 'growthexperiments-homepage-suggestededits-topics-match-mode-all' ).text()
 		}
-	],
-	groupedTopics = ( function () {
-		var key, topic, grouped = {};
-		for ( key in topicData ) {
-			topic = topicData[ key ];
-			if ( grouped[ topic.groupId ] === undefined ) {
-				grouped[ topic.groupId ] = {
-					id: topic.groupId,
-					name: topic.groupName,
-					topics: []
-				};
-			}
-			grouped[ topic.groupId ].topics.push( topic );
-		}
-		return grouped;
-	}() );
+	];
 
 /**
  * Widget that lets the user select topics using SuggestionWidgets.
@@ -45,8 +30,9 @@ var SuggestionWidget = require( './SuggestionWidget.js' ),
  * @cfg {number} [initialLimit=12] Number of topics to display initially; use Infinity to disable
  * @cfg {mw.libs.ge.TopicFilters} [filters=new TopicFilters()] Initially selected topic filters
  * @cfg {jQuery|true} [$overlay] Overlay to display the widget in, or true to use default OOUI window
+ * @param {Object} GROUPED_TOPICS Topics to show, organized by group
  */
-function TopicSelectionWidget( config ) {
+function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 	var key, group, groupWidget, suggestionWidgets, displayedSuggestionWidgets,
 		hiddenSuggestionWidgets, anyHiddenSelected;
 	config = $.extend( {
@@ -57,16 +43,10 @@ function TopicSelectionWidget( config ) {
 	// Parent constructor
 	TopicSelectionWidget.parent.call( this, config );
 
-	/* eslint-disable no-underscore-dangle */
-	if ( topicData._error ) {
-		// Handle errors from configuration loader early and return.
-		mw.log.error( 'Unable to load topic data for suggested edits: ' + topicData._error );
-		mw.errorLogger.logError( new Error( 'Unable to load topic data for suggested edits: ' +
-			topicData._error ), 'error.growthexperiments' );
+	if ( !GROUPED_TOPICS ) {
 		this.suggestions = [];
 		return;
 	}
-	/* eslint-enable no-underscore-dangle */
 
 	if ( config.isMatchModeEnabled ) {
 		this.matchModeSelector = new MatchModeSelectWidget( {
@@ -83,8 +63,8 @@ function TopicSelectionWidget( config ) {
 
 	this.suggestions = [];
 	this.suggestionGroupWidgets = [];
-	for ( key in groupedTopics ) {
-		group = groupedTopics[ key ];
+	for ( key in GROUPED_TOPICS ) {
+		group = GROUPED_TOPICS[ key ];
 		suggestionWidgets = group.topics.map( function ( topic ) {
 			return new SuggestionWidget( { suggestionData: {
 				id: topic.id,

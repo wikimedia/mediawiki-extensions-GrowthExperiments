@@ -2,14 +2,12 @@
 	var EditCardWidget = require( './EditCardWidget.js' ),
 		ErrorCardWidget = require( './ErrorCardWidget.js' ),
 		NoResultsWidget = require( './NoResultsWidget.js' ),
-		GrowthTasksApi = require( './GrowthTasksApi.js' ),
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		SuggestedEditsModule = require( './SuggestedEditsModule.js' ),
-		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
-		aqsConfig = require( './AQSConfig.json' ),
 		StartEditing = require( './StartEditing.js' ),
-		taskTypes = TaskTypesAbFilter.getTaskTypes(),
-		defaultTaskTypes = TaskTypesAbFilter.getDefaultTaskTypes(),
+		rootStore = require( 'ext.growthExperiments.DataStore' ),
+		tasksStore = rootStore.newcomerTasks,
+		filtersStore = rootStore.newcomerTasks.filters,
 		suggestedEditsModule;
 
 	/**
@@ -21,20 +19,9 @@
 	 */
 	function initSuggestedTasks( $container ) {
 		var initTime = mw.now(),
-			api = new GrowthTasksApi( {
-				taskTypes: taskTypes,
-				defaultTaskTypes: defaultTaskTypes,
-				suggestedEditsConfig: require( './config.json' ),
-				aqsConfig: aqsConfig,
-				isMobile: OO.ui.isMobile()
-			} ),
-			preferences = api.getPreferences(),
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
-			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || {},
-			fetchTasksOptions = {},
-			topicMatching = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' ),
-			useTopicMatchMode = mw.config.get( 'wgGETopicsMatchModeEnabled' );
+			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || {};
 
 		if ( !$wrapper.length ) {
 			return;
@@ -49,10 +36,6 @@
 				$container: $container,
 				$element: $wrapper,
 				$nav: $container.find( '.suggested-edits-footer-navigation' ),
-				taskTypePresets: preferences.taskTypes,
-				topicPresets: preferences.topicFilters,
-				topicMatching: topicMatching,
-				useTopicMatchMode: useTopicMatchMode,
 				mode: mode,
 				qualityGateConfig: taskPreviewData.qualityGateConfig || {}
 			},
@@ -60,15 +43,15 @@
 				mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			),
-			api );
+			rootStore
+		);
 
 		if ( taskPreviewData.title ) {
-			fetchTasksOptions = { firstTask: taskPreviewData };
-			suggestedEditsModule.taskQueue.push( taskPreviewData );
-			suggestedEditsModule.queuePosition = 0;
+			tasksStore.setPreloadedFirstTask( taskPreviewData );
+
 		} else if ( taskPreviewData.noresults ) {
 			suggestedEditsModule.showCard(
-				new NoResultsWidget( { topicMatching: topicMatching } )
+				new NoResultsWidget( { topicMatching: filtersStore.topicsEnabled } )
 			);
 		} else if ( taskPreviewData.error ) {
 			suggestedEditsModule.showCard( new ErrorCardWidget() );
@@ -96,27 +79,12 @@
 			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
 			mw.now() - mw.config.get( 'GEHomepageStartTime' )
 		);
-		return suggestedEditsModule.fetchTasksAndUpdateView( fetchTasksOptions ).then( function () {
-			if ( suggestedEditsModule.currentCard ) {
-				// currentCard was set by fetchTasksAndUpdateView, do not overwrite it
-				if ( fetchTasksOptions.firstTask ) {
-					// update task count
-					suggestedEditsModule.updateControls();
-				}
-				return $.Deferred().resolve();
-			}
-			return suggestedEditsModule.showCard();
-		} ).done( function () {
+		return suggestedEditsModule.fetchTasksAndUpdateView().done( function () {
 			mw.track(
 				'timing.growthExperiments.specialHomepage.modules.suggestedEditsLoadingComplete.' +
 					( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
 				mw.now() - initTime
 			);
-			// Use done instead of then because 1) we don't want to make the caller
-			// wait for the preload; 2) failed preloads should not result in an
-			// error card, as they don't affect the current card. The load will be
-			// retried when the user navigates.
-			suggestedEditsModule.preloadNextCard();
 		} );
 	}
 
@@ -127,7 +95,7 @@
 	// eslint-disable-next-line no-jquery/no-global-selector
 	var $suggestedEditsContainer = $( '.growthexperiments-homepage-container' );
 	initSuggestedTasks( $suggestedEditsContainer );
-	StartEditing.initialize( $suggestedEditsContainer, mw.config.get( 'wgGETopicsMatchModeEnabled' ) );
+	StartEditing.initialize( $suggestedEditsContainer, filtersStore.shouldUseTopicMatchMode );
 
 	// Try setup for mobile overlay mode
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
@@ -135,29 +103,4 @@
 			initSuggestedTasks( $content );
 		}
 	} );
-
-	/**
-	 * Subscribe to updateMatchCount events in the StartEditing dialog to update the hidden
-	 * Suggested Edits module state with topic/task type selection and result counts. That way,
-	 * when the StartEditing dialog is closed, we can unhide the Suggested Edits module
-	 * and show an accurate state to the user.
-	 *
-	 * @param {string[]} taskTypeSelection List of active task type IDs in the task type selector
-	 * @param {mw.libs.ge.TopicFilters} topicSelection Active topic filters
-	 */
-	mw.hook( 'growthexperiments.StartEditingDialog.updateMatchCount' ).add( function ( taskTypeSelection, topicSelection ) {
-		if ( suggestedEditsModule ) {
-			suggestedEditsModule.filters.taskTypeFiltersDialog.taskTypeSelector
-				.setSelected( taskTypeSelection );
-			suggestedEditsModule.filters.taskTypeFiltersDialog.savePreferences();
-			suggestedEditsModule.filters.topicFiltersDialog.topicSelector
-				.setFilters( topicSelection );
-			suggestedEditsModule.filters.topicFiltersDialog.savePreferences();
-			suggestedEditsModule.fetchTasksAndUpdateView().then( function () {
-				suggestedEditsModule.updateControls();
-				suggestedEditsModule.showCard();
-			} );
-		}
-	} );
-
 }() );

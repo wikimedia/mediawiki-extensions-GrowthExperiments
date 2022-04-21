@@ -1,5 +1,5 @@
 var SmallTaskCard = require( './SmallTaskCard.js' ),
-	TaskTypesAbFilter = require( './TaskTypesAbFilter.js' );
+	TaskTypesAbFilter = require( '../ext.growthExperiments.DataStore/TaskTypesAbFilter.js' );
 /**
  * Widget that displays a pagination text in the form "1 of 2 suggestions"
  * and a preview of the first suggestion (SmallTaskCard).

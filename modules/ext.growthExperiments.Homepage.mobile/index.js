@@ -19,14 +19,14 @@
 	 */
 	function loadExtraDataForSuggestedEdits( suggestedEditsModuleNode, shouldLog ) {
 		// FIXME doesn't belong here; not sure what the right place would be though.
-		var GrowthTasksApi = require( '../ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js' ),
+		var GrowthTasksApi = require( '../ext.growthExperiments.DataStore/GrowthTasksApi.js' ),
 			TaskPreviewWidget = require( '../ext.growthExperiments.Homepage.SuggestedEdits/TaskPreviewWidget.js' ),
 			LastDayEditsWidget = require( '../ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js' ),
 			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || null,
 			extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ),
 			activationSettings = { 'growthexperiments-homepage-suggestededits-activated': 1 },
 			api = new GrowthTasksApi( {
-				suggestedEditsConfig: require( '../ext.growthExperiments.Homepage.SuggestedEdits/config.json' ),
+				suggestedEditsConfig: require( '../ext.growthExperiments.DataStore/config.json' ),
 				isMobile: isMobile,
 				logContext: 'mobilesummary'
 			} ),

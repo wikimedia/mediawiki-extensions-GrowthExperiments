@@ -1,7 +1,7 @@
 /**
  * This is a temporary hack for filtering task types for an A/B test, per T278123.
  * This file is shared between multiple modules that handle task types. Dependencies:
- * - ext.growthExperiments.Util.js
+ * - utils/Util.js
  * - HomepageHooks::getSuggestedEditsConfigJson() as ./config.json
  * - HomepageHooks::getTaskTypesJson() as ./TaskTypes.json
  * - HomepageHooks::getDefaultTaskTypesJson() as ./DefaultTaskTypes.json

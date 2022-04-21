@@ -85,7 +85,6 @@ FiltersDialog.prototype.getActionProcess = function ( action ) {
 				// Show the loading state of the ProcessDialog while tasks are fetched
 				var promise = $.Deferred();
 				this.savePreferences();
-				this.config.presets = this.getEnabledFilters();
 				this.emit( 'done', promise );
 				promise.always( function () {
 					this.close( { action: 'done' } );
@@ -93,7 +92,6 @@ FiltersDialog.prototype.getActionProcess = function ( action ) {
 				return promise;
 			}
 			if ( action === 'cancel' ) {
-				this.updateFiltersFromState();
 				this.emit( 'cancel' );
 				this.close( { action: 'cancel' } );
 			}

@@ -1,23 +1,16 @@
 ( function () {
 	var StartEditingDialog = require( './StartEditingDialog.js' ),
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
-		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
-		defaultTaskTypes = TaskTypesAbFilter.getDefaultTaskTypes(),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
-		GrowthTasksApi = require( './GrowthTasksApi.js' ),
 		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ),
 		// We pretend the module is activated on mobile for the purposes of the start editing
 		// dialog interactions
 		shouldSuggestedEditsAppearActivated = OO.ui.isMobile() ? true : isSuggestedEditsActivated,
-		api = new GrowthTasksApi( {
-			defaultTaskTypes: defaultTaskTypes,
-			isMobile: OO.ui.isMobile(),
-			context: 'startEditingDialog'
-		} ),
-		modalWindowManager;
+		modalWindowManager,
+		rootStore = require( 'ext.growthExperiments.DataStore' );
 
 	/**
 	 * Launch the suggested edits initiation dialog.
@@ -41,7 +34,7 @@
 			useTopicSelector: !shouldSuggestedEditsAppearActivated,
 			useTaskTypeSelector: !shouldSuggestedEditsAppearActivated,
 			activateWhenDone: !isSuggestedEditsActivated
-		}, logger, api );
+		}, logger, rootStore );
 		if ( !modalWindowManager ) {
 			modalWindowManager = new OO.ui.WindowManager( {
 				modal: true
@@ -140,7 +133,7 @@
 			useTaskTypeSelector: true,
 			activateWhenDone: true,
 			useTopicMatchMode: useTopicMatchMode
-		}, logger, api );
+		}, logger, rootStore );
 
 		dialog.on( 'activation', function () {
 			isSuggestedEditsActivated = true;

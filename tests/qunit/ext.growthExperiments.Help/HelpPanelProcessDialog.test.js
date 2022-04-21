@@ -1,5 +1,5 @@
 'use strict';
-const TaskTypesAbFilter = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js' );
+const TaskTypesAbFilter = require( '../../../modules/ext.growthExperiments.DataStore/TaskTypesAbFilter.js' );
 
 const linkRecommendationSuggestedEditSession = {
 	taskType: 'link-recommendation',

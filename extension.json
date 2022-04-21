@@ -489,31 +489,31 @@
 				"ext.growthExperiments.Homepage.mobile/index.js",
 				"ext.growthExperiments.Homepage.mobile/MobileOverlay.js",
 				"ext.growthExperiments.Homepage.Logger/index.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskPreviewWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/constants.js",
 				"ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutDialog.js",
 				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js",
+				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
+				"ext.growthExperiments.DataStore/TopicFilters.js",
+				"ext.growthExperiments.DataStore/constants.js",
+				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/DefaultTaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
+					"name": "ext.growthExperiments.DataStore/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				}
 			],
@@ -611,8 +611,7 @@
 		"ext.growthExperiments.Homepage.SuggestedEdits": {
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.SuggestedEdits/index.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/constants.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
+				"ext.growthExperiments.DataStore/TopicFilters.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SuggestedEditsModule.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/EditCardWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/EndOfQueueWidget.js",
@@ -627,14 +626,11 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/DifficultyFiltersDialog.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFiltersDialog.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/MatchModeSelectWidget.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/ArticleCountWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/StartEditing.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/Topics.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TopicSelectionWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SuggestionWidget.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SuggestionGroupWidget.js",
@@ -645,27 +641,7 @@
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				"ui-components/SuggestedEditsPeek.js",
-				"ui-components/SwipePane.js",
-				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/DefaultTaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/AQSConfig.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/Topics.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTopicsJson" ]
-				}
+				"ui-components/SwipePane.js"
 			],
 			"styles": [
 				"ext.growthExperiments.Homepage.SuggestedEdits/ArticleCountWidget.less",
@@ -696,7 +672,8 @@
 				"oojs-ui.styles.icons-editing-core",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"ext.growthExperiments.SuggestedEditSession"
+				"ext.growthExperiments.SuggestedEditSession",
+				"ext.growthExperiments.DataStore"
 			],
 			"messages": [
 				"comma-separator",
@@ -873,11 +850,11 @@
 				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
+					"name": "ext.growthExperiments.DataStore/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				}
 			],
@@ -1085,20 +1062,20 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
+				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 				"ui-components/MultiPaneDialog.js",
 				"ui-components/SwipePane.js",
 				"utils/Utils.js",
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
+					"name": "ext.growthExperiments.DataStore/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/DefaultTaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
@@ -1168,7 +1145,7 @@
 				"ext.growthExperiments.Help/index.js",
 				"ext.growthExperiments.Help/HelpPanelLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
+				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				"ext.growthExperiments.Help/HelpPanelSearchWidget.js",
@@ -1185,15 +1162,15 @@
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
+					"name": "ext.growthExperiments.DataStore/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/DefaultTaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
@@ -1305,20 +1282,20 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
+				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				"ui-components/HelpPanelButton.js",
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
+					"name": "ext.growthExperiments.DataStore/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/DefaultTaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
@@ -1371,28 +1348,28 @@
 				"ext.growthExperiments.PostEdit/PostEditToastMessage.js",
 				"ext.growthExperiments.Help/HelpPanelLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
+				"ext.growthExperiments.DataStore/TopicFilters.js",
+				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js",
+				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				"ui-components/CollapsibleDrawer.js",
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/DefaultTaskTypes.json",
+					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/AQSConfig.json",
+					"name": "ext.growthExperiments.DataStore/AQSConfig.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.Homepage.SuggestedEdits/config.json",
+					"name": "ext.growthExperiments.DataStore/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
@@ -1644,6 +1621,48 @@
 			"dependencies": [
 				"mediawiki.pulsatingdot"
 			]
+		},
+		"ext.growthExperiments.DataStore": {
+			"packageFiles": [
+				"ext.growthExperiments.DataStore/index.js",
+				"ext.growthExperiments.DataStore/FiltersStore.js",
+				"ext.growthExperiments.DataStore/NewcomerTasksStore.js",
+				"ext.growthExperiments.DataStore/store.js",
+				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
+				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
+				"ext.growthExperiments.DataStore/Topics.js",
+				"ext.growthExperiments.DataStore/TopicFilters.js",
+				"ext.growthExperiments.DataStore/constants.js",
+				"utils/Utils.js",
+				{
+					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				},
+				{
+					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
+				},
+				{
+					"name": "ext.growthExperiments.DataStore/AQSConfig.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
+				},
+				{
+					"name": "ext.growthExperiments.DataStore/config.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				},
+				{
+					"name": "ext.growthExperiments.DataStore/Topics.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTopicsJson" ]
+				}
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"dependencies": [
+				"mediawiki.util",
+				"oojs-ui-core"
+			]
 		}
 	},
 	"QUnitTestModule": {
@@ -1666,7 +1685,7 @@
 			"modules/ext.growthExperiments.Help/QuickStartTips.js",
 			"modules/ext.growthExperiments.Help/QuickStartTipsTabPanelLayout.js",
 			"modules/ext.growthExperiments.Help/HelpPanelHomeButtonWidget.js",
-			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
+			"modules/ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 			"tests/qunit/ext.growthExperiments.Help/HelpPanelProcessDialog.test.js",
 			"modules/ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.js",
 			"tests/qunit/ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.test.js",
@@ -1701,11 +1720,11 @@
 			"tests/qunit/ext.growthExperiments.Homepage.mobile/index.test.js",
 			"modules/ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.js",
 			"tests/qunit/ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.test.js",
-			"modules/ext.growthExperiments.Homepage.SuggestedEdits/constants.js",
-			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
-			"modules/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js",
-			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.test.js",
-			"modules/ext.growthExperiments.Homepage.SuggestedEdits/Topics.js",
+			"modules/ext.growthExperiments.DataStore/constants.js",
+			"modules/ext.growthExperiments.DataStore/TopicFilters.js",
+			"modules/ext.growthExperiments.DataStore/GrowthTasksApi.js",
+			"tests/qunit/ext.growthExperiments.DataStore/GrowthTasksApi.test.js",
+			"modules/ext.growthExperiments.DataStore/Topics.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/FiltersDialog.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TopicFiltersDialog.js",
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TopicSelectionWidget.js",
@@ -1722,8 +1741,16 @@
 			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.test.js",
 			"modules/ui-components/CollapsibleDrawer.js",
 			"tests/qunit/ui-components/CollapsibleDrawer.test.js",
+			"modules/ext.growthExperiments.DataStore/FiltersStore.js",
+			"tests/qunit/ext.growthExperiments.DataStore/FiltersStore.test.js",
+			"modules/ext.growthExperiments.DataStore/NewcomerTasksStore.js",
+			"tests/qunit/ext.growthExperiments.DataStore/NewcomerTasksStore.test.js",
+			"tests/qunit/__mocks__/config.json",
+			"tests/qunit/__mocks__/GroupedTopics.json",
+			"tests/qunit/__mocks__/Topics.json",
+			"tests/qunit/__mocks__/store.js",
 			{
-				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/config.json",
+				"name": "modules/ext.growthExperiments.DataStore/config.json",
 				"file": "tests/qunit/__mocks__/config.json"
 			},
 			{
@@ -1731,16 +1758,20 @@
 				"file": "tests/qunit/ext.growthExperiments.Help/configData.json"
 			},
 			{
-				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/Topics.json",
+				"name": "modules/ext.growthExperiments.DataStore/Topics.json",
 				"file": "tests/qunit/__mocks__/Topics.json"
 			},
 			{
-				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskTypes.json",
+				"name": "modules/ext.growthExperiments.DataStore/TaskTypes.json",
 				"file": "tests/qunit/__mocks__/TaskTypes.json"
 			},
 			{
-				"name": "modules/ext.growthExperiments.Homepage.SuggestedEdits/DefaultTaskTypes.json",
+				"name": "modules/ext.growthExperiments.DataStore/DefaultTaskTypes.json",
 				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
+			},
+			{
+				"name": "modules/ext.growthExperiments.DataStore/AQSConfig.json",
+				"file": "tests/qunit/__mocks__/AQSConfig.json"
 			}
 		],
 		"dependencies": [
@@ -1749,6 +1780,7 @@
 			"mediawiki.base",
 			"mediawiki.router",
 			"ext.growthExperiments.SuggestedEditSession",
+			"ext.growthExperiments.DataStore",
 			"sinonjs"
 		]
 	},

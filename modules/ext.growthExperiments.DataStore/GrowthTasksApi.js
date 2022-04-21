@@ -80,8 +80,8 @@
 	 *   different from the wiki's domain in local development setups).
 	 * @param {boolean} config.isMobile Whether the client is on a mobile device,
 	 *   used for performance instrumentation.
-	 * @param {string} config.logContext The context in which this GrowthTasksApi is used,
-	 *   used for performance instrumentation.
+	 * @param {string} [config.logContext] The context in which this GrowthTasksApi is used,
+	 *   used for performance instrumentation. Can be overridden by "context" passed when calling methods in this class.
 	 */
 	function GrowthTasksApi( config ) {
 		this.taskTypes = config.taskTypes;

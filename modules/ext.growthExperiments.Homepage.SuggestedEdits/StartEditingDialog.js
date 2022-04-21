@@ -1,10 +1,13 @@
 var TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
 	TaskTypeSelectionWidget = require( './TaskTypeSelectionWidget.js' ),
 	ArticleCountWidget = require( './ArticleCountWidget.js' ),
-	TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
-	TopicFilters = require( './TopicFilters.js' ),
+	TopicFilters = require( '../ext.growthExperiments.DataStore/TopicFilters.js' ),
 	SwipePane = require( '../ui-components/SwipePane.js' ),
-	router = require( 'mediawiki.router' );
+	router = require( 'mediawiki.router' ),
+	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+	SUGGESTED_EDITS_CONFIG = CONSTANTS.SUGGESTED_EDITS_CONFIG,
+	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES,
+	DEFAULT_TASK_TYPES = CONSTANTS.DEFAULT_TASK_TYPES;
 
 /**
  * @param {Object} config
@@ -20,13 +23,12 @@ var TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
  * @param {boolean} config.activateWhenDone Whether to activate suggested edits when the user
  *   finishes the dialog
  * @param {HomepageModuleLogger} logger
- * @param {mw.libs.ge.GrowthTasksApi} api
+ * @param {mw.libs.ge.DataStore} rootStore
  * @constructor
  */
-function StartEditingDialog( config, logger, api ) {
+function StartEditingDialog( config, logger, rootStore ) {
 	StartEditingDialog.super.call( this, config );
 	this.logger = logger;
-	this.api = api;
 	this.module = config.module;
 	this.mode = config.mode;
 	this.trigger = config.trigger;
@@ -36,6 +38,8 @@ function StartEditingDialog( config, logger, api ) {
 	this.useTaskTypeSelector = !!config.useTaskTypeSelector;
 	this.activateWhenDone = !!config.activateWhenDone;
 	this.updateMatchCountDebounced = OO.ui.debounce( this.updateMatchCount.bind( this ) );
+	this.filtersStore = rootStore.newcomerTasks.filters;
+	this.tasksStore = rootStore.newcomerTasks;
 }
 
 OO.inheritClass( StartEditingDialog, OO.ui.ProcessDialog );
@@ -231,35 +235,27 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 		topicFilters = new TopicFilters( enabledFilters ),
 		taskTypes = this.taskTypeSelector ?
 			this.taskTypeSelector.getSelected() :
-			this.api.defaultTaskTypes;
+			this.tasksStore.getDefaultTaskTypes();
 	this.articleCounter.setSearching();
 
-	/**
-	 * Broadcast events so that in SuggestedEdits.js we can keep the unactivated/hidden
-	 * Suggested Edits module updated with the latest task type / topic state.
-	 *
-	 * @param {string[]} taskTypes List of active task type IDs in the task type selector
-	 * @param {string[]} topics List of selected topic IDs in the topic selector
-	 */
-	mw.hook( 'growthexperiments.StartEditingDialog.updateMatchCount' ).fire(
-		taskTypes,
-		topicFilters
-	);
+	this.filtersStore.updateStatesFromTopicsFilters( topicFilters );
+	this.filtersStore.setSelectedTaskTypes( taskTypes );
+	this.filtersStore.savePreferences();
 
-	this.api.fetchTasks( taskTypes, topicFilters ).then( function ( data ) {
-		var homepageModulesConfig = mw.config.get( 'homepagemodules' );
-		this.articleCounter.setCount( Number( data.count ) );
-		if ( data.count ) {
-			homepageModulesConfig[ 'suggested-edits' ][ 'task-preview' ] = data.tasks[ 0 ];
-			homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ] = data.count;
+	this.tasksStore.fetchTasks( 'startEditingDialog' ).then( function () {
+		var homepageModulesConfig = mw.config.get( 'homepagemodules' ),
+			taskCount = this.tasksStore.getTaskCount();
+		this.articleCounter.setCount( Number( taskCount ) );
+		if ( taskCount ) {
+			homepageModulesConfig[ 'suggested-edits' ][ 'task-preview' ] = this.tasksStore.getCurrentTask();
+			homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ] = taskCount;
 		}
 	}.bind( this ) );
 };
 
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
 	var settings, logData,
-		dialog = this,
-		config = require( './config.json' );
+		dialog = this;
 
 	// Don't allow the dialog to be closed by the user in non-modal mode
 	if ( !this.getManager().modal && ( !action || action === 'close' || action === 'done' ) ) {
@@ -305,7 +301,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				};
 				logData = { trigger: this.trigger };
 				if ( this.topicSelector ) {
-					settings[ config.GENewcomerTasksTopicFiltersPref ] =
+					settings[ SUGGESTED_EDITS_CONFIG.GENewcomerTasksTopicFiltersPref ] =
 						this.topicSelector.getSelectedTopics().length > 0 ?
 							JSON.stringify( this.topicSelector.getSelectedTopics() ) :
 							null;
@@ -371,8 +367,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		imageUrl, generalImageUrl, $topicIntro, $topicMessage, $topicSelectorWrapper,
 		$topicDescription, descriptionImage,
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
-		config = require( './config.json' ),
-		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
+		introLinks = SUGGESTED_EDITS_CONFIG.GEHomepageSuggestedEditsIntroLinks,
 		responseMap = {
 			'add-image': {
 				image: {
@@ -444,7 +439,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 	this.topicSelector = this.enableTopics ? new TopicSelectionWidget( {
 		isMatchModeEnabled: this.useTopicMatchMode,
 		$overlay: true
-	} ) : false;
+	}, this.filtersStore.getGroupedTopics() ) : false;
 
 	generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.svg';
 
@@ -631,11 +626,10 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 
 	if ( this.useTaskTypeSelector ) {
 		this.taskTypeSelector = new TaskTypeSelectionWidget( {
-			selectedTaskTypes: TaskTypesAbFilter.getDefaultTaskTypes(),
-			introLinks: require( './config.json' )
-				.GEHomepageSuggestedEditsIntroLinks,
+			selectedTaskTypes: DEFAULT_TASK_TYPES,
+			introLinks: SUGGESTED_EDITS_CONFIG.GEHomepageSuggestedEditsIntroLinks,
 			classes: [ 'mw-ge-startediting-dialog-difficulty-taskTypeSelector' ]
-		} )
+		}, ALL_TASK_TYPES )
 			.connect( this, {
 				select: function ( topics ) {
 					this.actions.get( { actions: 'activate' } ).forEach( function ( button ) {

@@ -1,9 +1,7 @@
 ( function () {
 	'use strict';
 
-	var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
-		taskTypes = TaskTypesAbFilter.getTaskTypes(),
-		mobileFrontend = mw.mobileFrontend,
+	var mobileFrontend = mw.mobileFrontend,
 		suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
 		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,
 		IconUtils = require( '../utils/IconUtils.js' );
@@ -13,13 +11,15 @@
 	 * @param {string} [config.taskType] The task type (e.g. "copyedit").
 	 * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
 	 * @param {HomepageModuleLogger} logger
+	 * @param {Object} TASK_TYPES Data about each task type
+	 *
 	 * @constructor
 	 */
-	function TaskExplanationWidget( config, logger ) {
+	function TaskExplanationWidget( config, logger, TASK_TYPES ) {
 		TaskExplanationWidget.super.call( this, config );
 
 		this.taskType = config.taskType;
-		this.taskTypeData = taskTypes[ this.taskType ];
+		this.taskTypeData = TASK_TYPES[ this.taskType ];
 		if ( !this.taskTypeData ) {
 			throw new Error( 'Unknown task type ' + this.taskType );
 		}

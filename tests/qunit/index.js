@@ -12,7 +12,6 @@ require( './ext.growthExperiments.Help/AskHelpPanel.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/ErrorCardWidget.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.test.js' );
-require( './ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/FiltersButtonGroupWidget.test.js' );
 require( './ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.test.js' );
 require( './ext.growthExperiments.StructuredTask/StructuredTaskLogger.test.js' );
@@ -23,3 +22,6 @@ require( './ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewP
 require( './ext.growthExperiments.PostEdit/PostEditToastMessage.test.js' );
 require( './ext.growthExperiments.PostEdit/PostEditDrawer.test.js' );
 require( './ui-components/CollapsibleDrawer.test.js' );
+require( './ext.growthExperiments.DataStore/GrowthTasksApi.test.js' );
+require( './ext.growthExperiments.DataStore/FiltersStore.test.js' );
+require( './ext.growthExperiments.DataStore/NewcomerTasksStore.test.js' );
