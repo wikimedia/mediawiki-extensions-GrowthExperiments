@@ -11,13 +11,18 @@ use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\Specials\SpecialManageMentors;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Psr\Log\LogLevel;
 use Throwable;
 
-class MentorHooks implements LocalUserCreatedHook, PageSaveCompleteHook {
+class MentorHooks implements SpecialPage_initListHook, LocalUserCreatedHook, PageSaveCompleteHook {
+
+	/** @var Config */
+	private $config;
 
 	/** @var Config */
 	private $wikiConfig;
@@ -29,15 +34,18 @@ class MentorHooks implements LocalUserCreatedHook, PageSaveCompleteHook {
 	private $mentorProvider;
 
 	/**
+	 * @param Config $config
 	 * @param Config $wikiConfig
 	 * @param MentorManager $mentorManager
 	 * @param MentorProvider $mentorProvider
 	 */
 	public function __construct(
+		Config $config,
 		Config $wikiConfig,
 		MentorManager $mentorManager,
 		MentorProvider $mentorProvider
 	) {
+		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
 		$this->mentorManager = $mentorManager;
 		$this->mentorProvider = $mentorProvider;
@@ -129,5 +137,23 @@ class MentorHooks implements LocalUserCreatedHook, PageSaveCompleteHook {
 				}
 			}
 		} );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onSpecialPage_initList( &$list ) {
+		if ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_STRUCTURED ) {
+			// TODO: Once structured provider is the default, move to extension.json
+			$list['ManageMentors'] = [
+				'class' => SpecialManageMentors::class,
+				'services' => [
+					'UserIdentityLookup',
+					'UserEditTracker',
+					'GrowthExperimentsMentorProvider',
+					'GrowthExperimentsMentorWriter'
+				]
+			];
+		}
 	}
 }

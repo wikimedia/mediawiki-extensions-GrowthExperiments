@@ -94,5 +94,16 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> is expected to be <code>$2</code>, but is <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Mentor definition contains an unexpected key <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 was already added to the mentor list",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 is not in the mentor list"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 is not in the mentor list",
+	"growthexperiments-manage-mentors-title": "Manage mentors",
+	"growthexperiments-manage-mentors-error-no-such-user": "Error: No such user with ID of $1 exists. This is probably an internal error.",
+	"growthexperiments-manage-mentors-auto-assigned": "Automatically assigned mentors",
+	"growthexperiments-manage-mentors-manually-assigned": "Manually assigned mentors",
+	"growthexperiments-manage-mentors-username": "Username",
+	"growthexperiments-manage-mentors-last-active": "Last active",
+	"growthexperiments-manage-mentors-intro-msg": "Message for newcomers",
+	"growthexperiments-manage-mentors-remove-mentor": "Remove",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|You}} are about to remove [[User:$1]] as a {{GENDER:$1|mentor}}.",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "Reason for removing the mentor",
+	"growthexperiments-manage-mentors-remove-mentor-success": "User [[User:$1|$1]] is no longer a {{GENDER:$1|mentor}}."
 }

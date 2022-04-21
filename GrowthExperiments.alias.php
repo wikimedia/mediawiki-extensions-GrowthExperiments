@@ -22,6 +22,7 @@ $specialPageAliases['en'] = [
 	'EditGrowthConfig' => [ 'EditGrowthConfig' ],
 	'MentorDashboard' => [ 'MentorDashboard' ],
 	'QuitMentorship' => [ 'QuitMentorship' ],
+	'ManageMentors' => [ 'ManageMentors' ],
 ];
 
 /** Arabic */

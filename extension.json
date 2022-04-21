@@ -235,6 +235,7 @@
 		"mentor": {
 			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorHooks",
 			"services": [
+				"MainConfig",
 				"GrowthExperimentsMultiConfig",
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorProvider"
@@ -303,7 +304,8 @@
 		"SpecialPage_initList": [
 			"welcomeSurvey",
 			"homepage",
-			"variant"
+			"variant",
+			"mentor"
 		],
 		"SpecialPageBeforeExecute": [
 			"welcomeSurvey"
@@ -2147,11 +2149,13 @@
 		}
 	},
 	"AvailableRights": [
-		"setmentor"
+		"setmentor",
+		"managementors"
 	],
 	"GroupPermissions": {
 		"sysop": {
-			"setmentor": true
+			"setmentor": true,
+			"managementors": true
 		}
 	},
 	"GrantPermissions": {
