@@ -170,7 +170,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	 * @return bool
 	 */
 	private function isMarketingVideoCampaign(): bool {
-		return $this->getCampaignValue() === 'facebook-latam-2022-A';
+		return $this->getCampaignValue() === 'social-latam-2022-A';
 	}
 
 	/**
