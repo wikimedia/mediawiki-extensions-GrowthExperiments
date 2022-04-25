@@ -148,7 +148,7 @@ class VariantHooks implements
 	 */
 	public static function isMarketingVideoCampaign( IContextSource $context ) {
 		$campaign = self::getCampaign( $context );
-		return $campaign === 'facebook-latam-2022-A';
+		return $campaign === 'social-latam-2022-A';
 	}
 
 	/**
