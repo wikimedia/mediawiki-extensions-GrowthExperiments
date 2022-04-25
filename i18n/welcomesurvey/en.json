@@ -42,7 +42,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "No, for other reasons",
 	"welcomesurvey-question-edited-option-dont-remember-label": "I don’t remember",
 	"welcomesurvey-question-mailinglist-label": "I want to receive tips via email on how to start editing.",
-	"welcomesurvey-question-mailinglist-help": "Please note that this mailing list is powered by MailChimp, which means MailChimp’s use of your information is governed by their [https://www.intuit.com/privacy/statement/ Privacy Policy] and [https://mailchimp.com/legal/terms/Terms Terms of Service].",
+	"welcomesurvey-question-mailinglist-help": "Please note that this mailing list is powered by MailChimp, which means MailChimp’s use of your information is governed by their [https://www.intuit.com/privacy/statement/ Privacy Policy] and [https://mailchimp.com/legal/terms/ Terms of Service].",
 	"welcomesurvey-question-email-label": "Email address (optional)",
 	"welcomesurvey-question-email-placeholder": "Enter your email address...",
 	"welcomesurvey-question-email-help": "We noticed you didn’t enter an email when creating this account. It’s <strong>highly recommended</strong>, since an email is needed for account recovery if you ever lose your password. NOTE: Your email address is not revealed when other users contact you.",
