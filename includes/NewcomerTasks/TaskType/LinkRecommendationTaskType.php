@@ -26,6 +26,8 @@ class LinkRecommendationTaskType extends TaskType {
 	public const FIELD_MAX_WORD_COUNT = 'maximumWordCount';
 	/** @see :getMaxTasksPerDay */
 	public const FIELD_MAX_TASKS_PER_DAY = 'maxTasksPerDay';
+	/** @see :getExcludedSections */
+	public const FIELD_EXCLUDED_SECTIONS = 'excludedSections';
 
 	/** Exclude a (task page, target page) pair from future tasks after this many rejections. */
 	public const REJECTION_EXCLUSION_LIMIT = 2;
@@ -40,6 +42,7 @@ class LinkRecommendationTaskType extends TaskType {
 		self::FIELD_MIN_WORD_COUNT => 0,
 		self::FIELD_MAX_WORD_COUNT => PHP_INT_MAX,
 		self::FIELD_MAX_TASKS_PER_DAY => 25,
+		self::FIELD_EXCLUDED_SECTIONS => [],
 	];
 
 	/** @inheritDoc */
@@ -63,6 +66,8 @@ class LinkRecommendationTaskType extends TaskType {
 	protected $maximumWordCount;
 	/** @var int */
 	protected $maxTasksPerDay;
+	/** @var string[] */
+	protected $excludedSections;
 
 	/**
 	 * @inheritDoc
@@ -87,6 +92,7 @@ class LinkRecommendationTaskType extends TaskType {
 		$this->minimumWordCount = $settings[self::FIELD_MIN_WORD_COUNT];
 		$this->maximumWordCount = $settings[self::FIELD_MAX_WORD_COUNT];
 		$this->maxTasksPerDay = $settings[self::FIELD_MAX_TASKS_PER_DAY];
+		$this->excludedSections = $settings[self::FIELD_EXCLUDED_SECTIONS];
 	}
 
 	/**
@@ -169,6 +175,15 @@ class LinkRecommendationTaskType extends TaskType {
 	 */
 	public function getMaxTasksPerDay(): int {
 		return $this->maxTasksPerDay;
+	}
+
+	/**
+	 * The list of sections which should be excluded when recommending links.
+	 *
+	 * @return string[]
+	 */
+	public function getExcludedSections(): array {
+		return $this->excludedSections;
 	}
 
 	/** @inheritDoc */
