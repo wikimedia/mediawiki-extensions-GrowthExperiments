@@ -2,17 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
+			"Draftmission",
 			"JRyan",
 			"Sabelöga",
 			"WikiPhoenix"
 		]
 	},
-	"growthexperiments-desc": "Detta tillägg innehåller experiment som göres av Growth-teamet.",
-	"growthexperiments-config-validator-additional-fields": "Den nya konfigurationen har konfigurationnycklar som inte kan anpassas här.",
+	"growthexperiments-desc": "Detta tillägg innehåller experiment som utförs av Growth-teamet.",
+	"growthexperiments-config-validator-additional-fields": "Den nya konfigurationen har konfigurationsnycklar som inte kan anpassas här.",
 	"growthexperiments-config-validator-error": "Validering av $1 misslyckades med: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> förväntas vara <code>$2</code>, men är <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Innehållsmodell matchar inte: GrowthExperiments konfigureringsfil måste ha en JSON innehållsmodell, $1 upptäckt",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Ogiltig uppdragtyp-ID:<code>$1</code> är inte ett gillt värde",
+	"growthexperiments-config-validator-array-toobig": "$1 har för många element (högst $2 tillåtna)",
 	"growthexperiments-edit-config-disabled": "Konfigurering av gemenskapen är för tillfället avstängt.",
 	"growthexperiments-edit-config-title": "Redigera Growth-konfiguration",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Senast uppdaterad av [[User:$1|$1]] $2 ([$4 diff]).",
@@ -64,6 +66,7 @@
 	"growthexperiments-edit-config-newcomertasks": "Förslag på redigeringar",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Vissa typer av föreslagna ändringar visas via underhållsmallar. Artiklar som innehåller dessa mallar läggs till i flödet. För att se hur många artiklar som är tillgängliga för varje typ av uppgift, se [[Special:NewcomerTasksInfo|this page]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Avaktiverad",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Inaktiverat i webbplatskonfigurationen",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Kopieringsredigering: mallar för att hitta artiklar som behöver kopiera redigering, till exempel stavning, grammatik och skiljeteckenförbättringar.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Destinationssida för att lära sig mer om kopiera redigering",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Expandera: mallar för att hitta artiklar som behöver expanderas.",
@@ -80,5 +83,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Den här uppgiftstypen är associerad med maskinförslag och använder inte mallar för att generera en uppsättning av uppgifter.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artiklar som innehåller mallar som definieras här visas inte för användare som uppgifter för den här uppgiftstypen.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artiklar som innehåller kategorier som definieras här visas inte för användare som uppgifter för den här uppgiftstypen.",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infoboxmallar"
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infoboxmallar",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Dessa mallar behövs för nybörjarfunktionen för [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|image suggestions]]. Artiklar som innehåller dessa mallar kommer inte att listas som bildförslagsuppgifter."
 }

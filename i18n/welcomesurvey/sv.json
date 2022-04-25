@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
+			"Draftmission",
 			"Mjälten",
 			"Sabelöga",
 			"Technic2",
@@ -43,6 +44,7 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Nej, jag visste inte att jag kunde redigera Wikipedia",
 	"welcomesurvey-question-edited-option-no-other-label": "Nej, av en annan anledning",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Jag kommer inte ihåg",
+	"welcomesurvey-question-mailinglist-label": "Jag vill ta emot e-post med tips om hur man börjar redigera.",
 	"welcomesurvey-question-email-label": "E-postadress (valfritt)",
 	"welcomesurvey-question-email-placeholder": "Ange din e-postadress...",
 	"welcomesurvey-question-email-help": "Vi upptäckte att du inte angav en e-postadress när du skapade detta konto. Det <strong>rekommenderas starkt</strong>, eftersom en e-postadress behövs för att återställa kontot om du någonsin förlorar ditt lösenord. OBS: Din e-postadress avslöjas inte när andra användare kontaktar dig.",

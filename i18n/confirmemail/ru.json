@@ -7,7 +7,8 @@
 			"Ice bulldog",
 			"Kareyac",
 			"Kylaix",
-			"Mike like0708"
+			"Mike like0708",
+			"Pacha Tchernof"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|что это?]])",
@@ -20,6 +21,7 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Здравствуйте}} $2,\n\nСпасибо, что добавили свой адрес электронной почты к вашей учётной записи в {{GRAMMAR:prepositional|{{SITENAME}}}}, зарегистрированной с IP-адреса $1.\n\nПожалуйста, нажмите на кнопку ниже для подтверждения адреса электронной почты, который вы хотите привязать к вашей учётной записи «$2»:\n\n$3\n\nПримечание: код подтверждения действителен до $4.\n\nСпасибо,\n\n{{SITENAME}}\n\n----\n\nНажмите на ссылку ниже, чтобы отменить подтверждение адреса электронной почты (например, если вы не создавали аккаунт или по любой другой причине):\n\n$5",
 	"growthexperiments-signupcampaign-title": "Спасибо за пожертвование! Присоединяйтесь к сообществу редакторов, которые делают Википедию лучше сегодня",
 	"growthexperiments-signupcampaign-body": "Редактировать Википедию так же просто, как добавить ссылку или изменить слово. Получайте предложения по статьям на интересующие {{GENDER:|вас}} темы после создания учетной записи!",
+	"growthexperiments-marketingvideocampaign-title": "Википедия создаётся такими же людьми, как и вы",
 	"growthexperiments-signupcampaign-bullet1": "Предлагаемые статьи по {{GENDER:|вашим}} интересам",
 	"growthexperiments-signupcampaign-bullet2": "Обратитесь за помощью к опытному редактору",
 	"growthexperiments-signupcampaign-bullet3": "Начните с небольших и простых правок"
