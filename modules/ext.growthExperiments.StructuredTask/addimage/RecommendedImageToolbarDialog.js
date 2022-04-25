@@ -423,8 +423,10 @@ RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 		imageRenderData = AddImageUtils.getImageRenderData( metadata, window, thumbWidth );
 	this.$reason.text( metadata.reason );
 	this.$imageThumbnail.css( 'background-image', 'url("' + imageRenderData.src + '")' );
+	// The description can be in a different language than the UI or content language, so the
+	// text directionality should be set to auto instead of following the UI or the content.
 	this.$imageInfo.append( [
-		$( '<div>' ).append( [
+		$( '<div>' ).attr( 'dir', 'auto' ).append( [
 			this.getFilenameElement( imageData.displayFilename ),
 			this.getDescriptionElement( metadata.description )
 		] ),
