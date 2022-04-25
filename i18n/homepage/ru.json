@@ -26,7 +26,11 @@
 			"Radmir Far",
 			"Rivka Silinsky",
 			"Stjn",
-			"Wileyfoxyx"
+			"Wileyfoxyx",
+			"Chadyka",
+			"Ice bulldog",
+			"Kaganer",
+			"Tanzun"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здравствуйте}}, {{bidi:$1}}!",
@@ -124,7 +128,7 @@
 	"growthexperiments-homepage-help-subheader": "Популярные справочные страницы о редактировании",
 	"growthexperiments-homepage-help-mobilebody": "Спросите на форуме помощи или прочтите страницы справки.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Ваши}} последние вопросы",
-	"growthexperiments-homepage-recent-questions-posted-on": "Опуликовано $1 назад",
+	"growthexperiments-homepage-recent-questions-posted-on": "Опубликовано $1 назад",
 	"growthexperiments-homepage-recent-questions-archived": "архивировано",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Вопрос был заархивирован, скорее всего, потому, что был задан давно.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|}}{{GENDER:$2|Ваш наставник|Ваша наставница}}",

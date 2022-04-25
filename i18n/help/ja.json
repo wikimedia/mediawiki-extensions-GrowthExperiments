@@ -6,7 +6,8 @@
 			"Afaz",
 			"Bonfire12",
 			"MathXplore",
-			"Tmv"
+			"Tmv",
+			"Yamagata Yusuke"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "編集者ヘルプパネルを有効にする",
@@ -34,7 +35,7 @@
 	"growthexperiments-help-panel-question-subject-template": "ヘルプパネルからの質問",
 	"growthexperiments-help-panel-question-subject-template-with-title": "[[$1]]についてヘルプパネルで質問",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "利用者ホームページからのヘルプモジュールの質問",
-	"growthexperiments-help-panel-question-post-error": "質問を投稿する過程でエラーが発生しました。もう一度やり直すか、ご利用のブラウザの$1を開き、手動で質問を投稿してください。",
+	"growthexperiments-help-panel-question-post-error": "質問を投稿する過程でエラーが発生しました。もう一度やり直すか、ご利用のブラウザーの$1を開き、手動で質問を投稿してください。",
 	"growthexperiments-help-panel-suggestededits-title": "お勧めの編集",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "すぐ始めるコツ",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>準備はOK?</strong> 「{{int:vector-view-edit}}」をクリックしてスタート。",

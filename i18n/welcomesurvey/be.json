@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chadyka"
+			"Chadyka",
+			"Tomato Cream"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Вітаем}}, $1!",
@@ -14,8 +15,8 @@
 	"welcomesurvey-sidebar-privacy-title": "Мы цэнім вашу канфідэнцыяльнасць",
 	"welcomesurvey-sidebar-privacy-text": "Фонд Вікімедыя будзе выкарыстоўваць {{GENDER:$2|вашыя}} адказы, каб дапамагчы вам пачаць рэдагаваць пляцоўку {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Даведайцеся больш пра дадзеныя аб новых рэдактарах",
-	"welcomesurvey-sidebar-editing-title": "Пачатак праўку",
-	"welcomesurvey-sidebar-editing-text": "Амаль кожную старонку можа рэдагаваць кожны, і кожную гадзіну ўносяцца сотні змяненняў, каб дадаць кантэнт, выправіць памылкі і палепшыць чытальнасць. Наступныя старонкі могуць дапамагчы, калі {{GENDER:$1|вы зацікаўлены}} ўнесці свой уклад.",
+	"welcomesurvey-sidebar-editing-title": "Як пачаць правіць",
+	"welcomesurvey-sidebar-editing-text": "Амаль кожную старонку можа рэдагаваць кожны, і кожную гадзіну ўносяцца сотні змяненняў, каб дадаць змест, выправіць памылкі і палепшыць чытальнасць. Наступныя старонкі могуць вам дапамагчы, калі {{GENDER:$1|вы зацікаўлены}} ўнесці свой уклад.",
 	"welcomesurvey-sidebar-editing-link1-text": "Падручнік",
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Падручнік",
 	"welcomesurvey-sidebar-editing-link2-text": "Служба падтрымкі",
