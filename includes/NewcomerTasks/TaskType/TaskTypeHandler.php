@@ -102,6 +102,14 @@ abstract class TaskTypeHandler {
 			}
 		}
 
+		// Link recommendation specific.
+		// FIXME: would be nice to define this and other type definitions in the task type.
+		if ( $status->isOK() && isset( $config['excludedSections'] ) ) {
+			$status->merge(
+				$this->configurationValidator->validateFieldIsArray( 'excludedSections', $config, $taskTypeId )
+			);
+		}
+
 		return $status;
 	}
 
