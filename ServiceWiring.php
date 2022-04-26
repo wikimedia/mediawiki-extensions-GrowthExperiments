@@ -166,9 +166,12 @@ return [
 
 	'GrowthExperimentsEditInfoService' => static function ( MediaWikiServices $services ): EditInfoService {
 		$project = $services->get( '_GrowthExperimentsAQSConfig' )->project;
-		$editInfoService = new AqsEditInfoService( $services->getHttpRequestFactory(), $project );
-		$editInfoService->setCache( ObjectCache::getLocalClusterInstance() );
-		return $editInfoService;
+
+		return new AqsEditInfoService(
+			$services->getHttpRequestFactory(),
+			$services->getMainWANObjectCache(),
+			$project
+		);
 	},
 
 	'GrowthExperimentsExperimentUserManager' => static function (

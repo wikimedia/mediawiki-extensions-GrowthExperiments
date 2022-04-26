@@ -9,6 +9,7 @@ use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use Status;
 use StatusValue;
+use WANObjectCache;
 use Wikimedia\TestingAccessWrapper;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -24,12 +25,17 @@ class AqsEditInfoServiceTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetEditsPerDay( $expected, $httpResponse ) {
 		$cache = new HashBagOStuff();
+		$wanObjectCache = new WANObjectCache( [ 'cache' => $cache ] );
+
 		ConvertibleTimestamp::setFakeTime( '2000-02-10 12:00:00' );
 		$httpRequestFactory = $this->getMockRequestFactory( 'https://wikimedia.org/api/rest_v1/'
 			. 'metrics/edits/aggregate/en.wikipedia/user/content/daily/19991210/19991211',
 			$httpResponse instanceof Status ? $httpResponse : json_encode( $httpResponse ) );
-		$editInfoService = new AqsEditInfoService( $httpRequestFactory, 'en.wikipedia' );
-		$editInfoService->setCache( $cache );
+		$editInfoService = new AqsEditInfoService(
+			$httpRequestFactory,
+			$wanObjectCache,
+			'en.wikipedia'
+		);
 		$actual = $editInfoService->getEditsPerDay();
 		if ( is_int( $expected ) ) {
 			$this->assertIsInt( $actual );
