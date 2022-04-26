@@ -366,6 +366,7 @@
 			"homepage",
 			"mentor"
 		],
+		"SkinAddFooterLinks": "variant",
 		"SidebarBeforeOutput": "homepage",
 		"SkinTemplateNavigation::Universal": "homepage",
 		"PersonalUrls": [
