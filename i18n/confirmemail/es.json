@@ -21,9 +21,10 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hola}} $2,\n\nGracias por añadir un correo electrónico a tu cuenta de {{SITENAME}}, registrada desde la dirección IP $1.\n\nPor favor, haz clic en el botón de abajo para confirmar esta dirección de correo electrónico que te gustaría vincular a tu cuenta \"$2\":\n\n$3\n\nNota: este código de confirmación <strong>expira el $4</strong>.\n\nGracias,\n\n{{SITENAME}}\n\n----\n\nPara cancelar la confirmación de la dirección de correo electrónico (porque no registraste la cuenta o por cualquier otro motivo), haz clic en este enlace de cancelación:\n\n$5",
 	"growthexperiments-signupcampaign-title": "Gracias por ser donante. Crea una cuenta para empezar a mejorar Wikipedia.",
 	"growthexperiments-signupcampaign-body": "Wikipedia está construida por personas como tú que trabajan juntas. Editar un artículo puede ser tan simple como agregar un enlace o cambiar una palabra.",
-	"growthexperiments-marketingvideocampaign-title": "Personas como tú son las que construyen Wikipedia.",
+	"growthexperiments-marketingvideocampaign-title": "Personas como tú son las que construyen Wikipedia",
 	"growthexperiments-marketingvideocampaign-body": "280.000 editores se presentan cada mes como voluntarios — ¿Te unes a ellos?\n\nSabemos que hacer tu primera edición suele ser intimidante, pero puede resultar bastante fácil. Solo tienes que preguntar a nuestros dedicados editores, a los que puedes escuchar en este vídeo:",
 	"growthexperiments-signupcampaign-bullet1": "Artículos sugeridos según {{GENDER:|tus}} intereses",
 	"growthexperiments-signupcampaign-bullet2": "Obtén ayuda y orientación mientras editas",
-	"growthexperiments-signupcampaign-bullet3": "Empieza con ediciones pequeñas y sencillas"
+	"growthexperiments-signupcampaign-bullet3": "Empieza con ediciones pequeñas y sencillas",
+	"growthexperiments-campaigns-footer": "Al crear tu cuenta en esta página, será asociada a esta campaña con fines relacionados con la experiencia y el análisis."
 }
