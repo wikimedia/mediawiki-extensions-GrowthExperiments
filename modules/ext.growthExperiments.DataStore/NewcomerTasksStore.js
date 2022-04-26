@@ -231,20 +231,28 @@ NewcomerTasksStore.prototype.onCurrentTaskExtraDataChanged = function () {
  * Fetch tasks based on the current filter selection
  *
  * @param {string} context Context that triggers the action
+ * @param {Object} [config]
+ * @param {number} [config.excludePageId] Article ID to exclude, used when showing the task feed after completing a task
  * @return {jQuery.Promise}
  */
-NewcomerTasksStore.prototype.fetchTasks = function ( context ) {
+NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 	if ( this.apiPromise ) {
 		this.apiPromise.abort();
 		this.abortedPromise = true;
 	}
 
-	var promise = $.Deferred();
+	var promise = $.Deferred(),
+		apiConfig = { context: context };
+
+	if ( config && config.excludePageId ) {
+		apiConfig.excludePageIds = [ config.excludePageId ];
+	}
 	this.setTaskQueueLoading( true );
 	this.apiPromise = this.api.fetchTasks(
 		this.filters.getTaskTypesQuery(),
 		this.filters.getTopicsQuery(),
-		{ context: context } );
+		apiConfig );
+
 	this.apiPromise.then( function ( data ) {
 		var updatedTaskQueue = data.tasks;
 		this.taskCount = data.count;
@@ -262,6 +270,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context ) {
 
 		if ( this.taskQueue.length ) {
 			this.maybeUpdateQualityGateConfig( this.taskQueue[ 0 ] );
+			this.fetchExtraDataForCurrentTask();
 			this.preloadExtraDataForUpcomingTask();
 		}
 
@@ -286,6 +295,9 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context ) {
  * Select the next task in the queue and preload extra data for the upcoming task in the queue
  */
 NewcomerTasksStore.prototype.showNextTask = function () {
+	if ( this.currentTaskIndex > this.getTaskCount() ) {
+		return;
+	}
 	this.currentTaskIndex += 1;
 	if ( this.isEndOfTaskQueue() ) {
 		this.onFetchedMoreTasks( true );
@@ -322,9 +334,14 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 
 	var existingPageIds = this.taskQueue.map( function ( task ) {
 			return task.pageId;
-		} ),
+		} ) || [],
 		config = { context: context },
+		currentPageId = mw.config.get( 'wgArticleId' ),
 		promise = $.Deferred();
+
+	if ( currentPageId ) {
+		existingPageIds.push( currentPageId );
+	}
 
 	if ( existingPageIds.length ) {
 		config.excludePageIds = existingPageIds;
@@ -338,6 +355,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 
 	this.apiFetchMoreTasksPromise.done( function ( data ) {
 		this.addToTaskQueue( data.tasks || [] );
+		this.preloadExtraDataForUpcomingTask();
 		promise.resolve();
 	}.bind( this ) );
 

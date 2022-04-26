@@ -9,10 +9,11 @@ const store = require( '../__mocks__/store.js' );
  *
  * @param {string} title
  * @param {string} tasktype
+ * @param {number} [pageId]
  *
  * @return {mw.libs.ge.TaskData}
  */
-const getTaskData = ( title, tasktype ) => {
+const getTaskData = ( title, tasktype, pageId ) => {
 	return {
 		title,
 		tasktype,
@@ -20,13 +21,15 @@ const getTaskData = ( title, tasktype ) => {
 		qualityGateIds: [],
 		qualityGateConfig: {},
 		url: null,
-		token: 'token-' + title
+		token: 'token-' + title,
+		pageId: pageId || Math.floor( Math.random() * 100 )
 	};
 };
 
 const stubApiRequests = ( sandbox, tasksStore ) => {
 	sandbox.stub( tasksStore, 'fetchMoreTasks' ).returns( $.Deferred().resolve() );
 	sandbox.stub( tasksStore, 'preloadExtraDataForUpcomingTask' ).returns( $.Deferred().resolve() );
+	sandbox.stub( tasksStore, 'fetchExtraDataForCurrentTask' ).returns( $.Deferred().resolve() );
 };
 
 QUnit.module( 'ext.growthExperiments.DataStore/NewcomerTasksStore.js', QUnit.newMwEnvironment( {
@@ -213,4 +216,27 @@ QUnit.test( 'should restore backed up states with restoreState', function ( asse
 	tasksStore.restoreState();
 	assert.deepEqual( tasksStore.getCurrentTask(), taskQueue[ 1 ] );
 	assert.deepEqual( tasksStore.getTaskQueue(), taskQueue );
+} );
+
+QUnit.test( 'should pass the page ID to exclude in the API config if one is passed to fetchTasks', function ( assert ) {
+	const done = assert.async();
+	const tasksStore = new NewcomerTasksStore( store );
+	stubApiRequests( this.sandbox, tasksStore );
+	const fetchTasksStub = this.sandbox.stub( tasksStore.api, 'fetchTasks' );
+	const excludePageId = 123;
+	const tasks = [
+		getTaskData( 'exclude', 'copyedit', excludePageId ),
+		getTaskData( '1', 'copyedit' ),
+		getTaskData( '2', 'copyedit' )
+	];
+	fetchTasksStub.returns( $.Deferred().resolve( { tasks: tasks.slice( 1 ), count: 2 } ) );
+	tasksStore.fetchTasks( 'test', { excludePageId } ).then( () => {
+		assert.deepEqual( fetchTasksStub.firstCall.args[ 2 ], {
+			context: 'test',
+			excludePageIds: [ excludePageId ]
+		} );
+		assert.deepEqual( tasksStore.getTaskQueue(), tasks.slice( 1 ) );
+		assert.strictEqual( tasksStore.getTaskCount(), 2 );
+		done();
+	} );
 } );
