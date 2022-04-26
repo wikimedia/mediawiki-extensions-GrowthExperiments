@@ -71,6 +71,7 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** @inheritDoc */
 	public function createTaskType( string $taskTypeId, array $config ): TaskType {
 		$extraData = [ 'learnMoreLink' => $config['learnmore'] ?? null ];
+		// FIXME add settings validation
 		$settings = array_intersect_key( $config, LinkRecommendationTaskType::DEFAULT_SETTINGS );
 
 		$taskType = new LinkRecommendationTaskType(
