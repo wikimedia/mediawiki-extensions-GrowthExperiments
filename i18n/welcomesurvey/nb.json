@@ -39,6 +39,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Nei, jeg visste ikke at jeg kunne redigere Wikipedia",
 	"welcomesurvey-question-edited-option-no-other-label": "Nei, av andre grunner",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Jeg husker ikke",
+	"welcomesurvey-question-mailinglist-label": "Jeg ønsker å få tips på e-post om hvordan man kommer i gang med redigering.",
+	"welcomesurvey-question-mailinglist-help": "Merk at denne e-postlista drives av MailChimp, hvilket betyr at MailChimps bruk av din informasjon styres av deres [https://www.intuit.com/privacy/statement/ personvernsregler] og [https://mailchimp.com/legal/terms/ bruksvilkår].",
 	"welcomesurvey-question-email-label": "Epostadresse (valgfritt)",
 	"welcomesurvey-question-email-placeholder": "Skriv inn epostadressa di …",
 	"welcomesurvey-question-email-help": "Vi la merke til at du ikke skrev inn en epostadresse da du opprettet kontoen. Det <strong>anbefales sterkt</strong>, fordi en epost trengs om du skulle glemme passordet ditt. MERK: Epostadressa di vises ikke når andre brukere kontakter deg.",

@@ -82,6 +82,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Zielseite, auf der man mehr über das Aktualisieren von Artikeln erfahren kann.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Zielseite, um mehr über den Aufgabentyp Linkempfehlung zu erfahren.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Die maximale Anzahl der Linkvorschläge, die für jede vorgeschlagene Aufgabe angezeigt werden sollen.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Die Liste der Abschnittsnamen, in denen keine Links empfohlen werden sollten.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Zielseite, um mehr über den Aufgaabentyp Bildempfehlung zu erfahren.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Dieser Aufgabentyp ist mit maschinellen Vorschlägen verbunden und verwendet keine Vorlagen, um einen Pool von Aufgaben zu erstellen.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artikel, die hier definierte Vorlagen enthalten, werden den Benutzern nicht als Aufgaben für diesen Aufgabentyp angezeigt.",

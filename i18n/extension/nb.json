@@ -74,6 +74,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Oppdater: maler som finner artikler som trenger oppdatert informasjon.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Målside for å lære mer om oppdatering av artikler.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Målside for å lære mer om oppgavetypen foreslåtte lenker.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Maksimalt antall lenkeforslag som skal vises på hver foreslåtte oppgave.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Målside for å lære mer om oppgavetypen legg til bilde.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Denne oppgavetypen assosieres med maskinforslag, og bruker ikke maler for å generere mulige oppgaver.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artikler som inneholder disse malene vises ikke til brukerne som oppgaver for denne oppgavetypen.",

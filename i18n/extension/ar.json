@@ -79,6 +79,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "صفحة الوصول لتعلّم المزيد حول تحيين المقالات.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "صفحة الوصول لمعرفة المزيد حول نوع مهمّة اقتراح الروابط.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "الحد الأقصى لعدد اقتراحات الروابط المراد إظهارها في كل مهمة مقترحة.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "قائمة أسماء الأقسام التي لا ينبغي التوصية بها.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "صفحة الوصول لمعرفة المزيد حول نوع مهمّة اقتراح الصور.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "هذا النوع من المهام مقترن باقتراحات الآلة، ولا يستخدم القوالب لتوليد مجموعة من المهام.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "المقالات التي تحتوي على قوالب محدّدة هنا، لن تظهر لدى المستخدمين كمهام لهذا النوع من المهام.",
