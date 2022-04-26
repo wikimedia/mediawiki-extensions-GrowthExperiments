@@ -8,7 +8,6 @@ use GrowthExperiments\Specials\SpecialCreateAccountCampaign;
 use IContextSource;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Hook\BeforeWelcomeCreationHook;
-use MediaWiki\Hook\SkinAddFooterLinksHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
@@ -17,7 +16,6 @@ use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\User\UserOptionsManager;
 use RequestContext;
 use ResourceLoaderContext;
-use Skin;
 use SpecialPage;
 
 /**
@@ -25,14 +23,13 @@ use SpecialPage;
  * At present only a single feature flag is handled.
  */
 class VariantHooks implements
-	AuthChangeFormFieldsHook,
-	BeforeWelcomeCreationHook,
 	GetPreferencesHook,
-	LocalUserCreatedHook,
-	SpecialPage_initListHook,
-	ResourceLoaderGetConfigVarsHook,
 	ResourceLoaderExcludeUserOptionsHook,
-	SkinAddFooterLinksHook
+	ResourceLoaderGetConfigVarsHook,
+	SpecialPage_initListHook,
+	LocalUserCreatedHook,
+	AuthChangeFormFieldsHook,
+	BeforeWelcomeCreationHook
 {
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
@@ -151,7 +148,7 @@ class VariantHooks implements
 	 */
 	public static function isMarketingVideoCampaign( IContextSource $context ) {
 		$campaign = self::getCampaign( $context );
-		return $campaign === 'social-latam-2022-A';
+		return $campaign === 'facebook-latam-2022-A';
 	}
 
 	/**
@@ -206,12 +203,4 @@ class VariantHooks implements
 		}
 	}
 
-	/** @inheritDoc */
-	public function onSkinAddFooterLinks( Skin $skin, string $key, array &$footerItems ) {
-		$context = $skin->getContext();
-		if ( $key !== 'info' || !self::isDonorOrGlamCampaign( $context, $this->campaignConfig ) ) {
-			return;
-		}
-		$footerItems['signupcampaign-legal'] = SpecialCreateAccountCampaign::getLegalFooter( $context );
-	}
 }
