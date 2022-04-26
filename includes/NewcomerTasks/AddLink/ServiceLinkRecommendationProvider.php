@@ -95,11 +95,8 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		$pathArgs = [ 'wikipedia', str_replace( 'wiki', '', $this->wikiId ), $titleText ];
 		$queryArgs = [
 			'threshold' => $taskType->getMinimumLinkScore(),
-			'max_recommendations' => $taskType->getMaximumLinksPerTask(),
+			'max_recommendations' => $taskType->getMaximumLinksPerTask()
 		];
-		if ( $taskType->getExcludedSections() ) {
-			$queryArgs['sections_to_exclude'] = $taskType->getExcludedSections();
-		}
 		$postBodyArgs = [
 			'pageid' => $pageId,
 			'revid' => $revId,
