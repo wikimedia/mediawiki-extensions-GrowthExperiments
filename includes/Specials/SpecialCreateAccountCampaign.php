@@ -11,7 +11,6 @@ use MalformedTitleException;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\TimedMediaHandler\Hooks;
-use MessageLocalizer;
 use OOUI\IconWidget;
 use OutputPage;
 use SpecialCreateAccount;
@@ -22,15 +21,6 @@ use Title;
  * FIXME this is a quick hack for T284740. A proper extension point should be added to core.
  */
 class SpecialCreateAccountCampaign extends SpecialCreateAccount {
-
-	/**
-	 * Get footer content for the special page. Displayed via SkinAddFooterLinks hook.
-	 * @param MessageLocalizer $ctx
-	 * @return string|void
-	 */
-	public static function getLegalFooter( MessageLocalizer $ctx ) {
-		return $ctx->msg( 'growthexperiments-campaigns-footer' )->parse();
-	}
 
 	/** @inheritDoc */
 	protected function getPageHtml( $formHtml ) {
@@ -180,7 +170,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	 * @return bool
 	 */
 	private function isMarketingVideoCampaign(): bool {
-		return $this->getCampaignValue() === 'social-latam-2022-A';
+		return $this->getCampaignValue() === 'facebook-latam-2022-A';
 	}
 
 	/**
