@@ -456,7 +456,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			];
 
 			if ( $taskType === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
-
 				$descriptors["newcomertasks-link-recommendationMaximumLinksToShowPerTask"] = [
 					'type' => 'int',
 					'default' => LinkRecommendationTaskType::DEFAULT_SETTINGS[
@@ -474,6 +473,18 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'section' => 'newcomertasks'
 				];
 
+				$descriptors["newcomertasks-link-recommendationExcludedSections"] = [
+					'type' => 'tagmultiselect',
+					'allowArbitrary' => true,
+					// will be converted to string later
+					'default' => LinkRecommendationTaskType::DEFAULT_SETTINGS[
+						LinkRecommendationTaskType::FIELD_EXCLUDED_SECTIONS
+					],
+					'label-message' =>
+						"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections",
+					'required' => false,
+					'section' => 'newcomertasks'
+				];
 			}
 		}
 
@@ -709,6 +720,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				$descriptors[$maxLinksDescriptorName]['max'] =
 					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MAX_LINKS_PER_TASK] ??
 					$descriptors[$maxLinksDescriptorName]['max'];
+
+				$excludeSectionsDescriptorName = "newcomertasks-${taskType}" .
+					ucfirst( LinkRecommendationTaskType::FIELD_EXCLUDED_SECTIONS );
+				$descriptors[$excludeSectionsDescriptorName]['default'] = implode( "\n",
+					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_EXCLUDED_SECTIONS] ??
+					$descriptors[$excludeSectionsDescriptorName]['default']
+				);
+
 				// Ugly special-casing: if link-recommendations is soft-disabled, show it so
 				// configuration can be changed (in the future, once the special page supports that)
 				// but warn about it being disabled.
@@ -900,9 +919,17 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			} else {
 				unset( $suggestedEditsConfig[$taskType]['learnmore'] );
 			}
+
+			// link-recommendation specific
 			if ( isset( $data['link-recommendationMaximumLinksToShowPerTask'] ) ) {
 				$suggestedEditsConfig['link-recommendation']['maximumLinksToShowPerTask'] =
 					(int)$data['link-recommendationMaximumLinksToShowPerTask'];
+			}
+			if ( isset( $data['link-recommendationExcludedSections'] ) ) {
+				$suggestedEditsConfig['link-recommendation']['excludedSections'] =
+					( $data['link-recommendationExcludedSections'] === '' )
+						? []
+						: explode( "\n", $data['link-recommendationExcludedSections'] );
 			}
 		}
 
