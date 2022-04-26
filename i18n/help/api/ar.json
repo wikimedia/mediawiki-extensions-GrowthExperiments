@@ -9,11 +9,11 @@
 	"apihelp-helppanelquestionposter-summary": "تعامل مع الأسئلة المنشورة عبر لوحة المساعدة للمستخدم الحالي.",
 	"apihelp-helppanelquestionposter-param-body": "نص السؤال مقدم من قبل المستخدم.",
 	"apihelp-helppanelquestionposter-param-source": "الطريقة التي طُرح من خلالها السؤال.",
-	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "لوحة \"اسأل ميدان المساعدة\"",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "لوحة \"اسأل مرشدك\" من لوحة المستخدم للوافدين الجدد",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "شاشة \"اسأل مرشدك\" من لوحة المساعدة",
-	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "لوحة \"اسأل ميدان المساعدة\" (تسمية قديمة)",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "لوحة \"اسأل مرشدك\" من لوحة المستخدم للوافدين الجدد (تسمية قديمة)",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "لوحة «اسأل ميدان المساعدة»",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "لوحة «اسأل مرشدك» من لوحة المستخدم للوافدين الجدد",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "شاشة «اسأل مرشدك» من لوحة المساعدة",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "لوحة «اسأل ميدان المساعدة» (تسمية قديمة)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "لوحة «اسأل مرشدك» من لوحة المستخدم للوافدين الجدد (تسمية قديمة)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "العنوان ذو الصلة، إذا تم تحديده؛ للتضمين مع السؤال.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "يجب تسجيل الدخول لطرح سؤال."
 }

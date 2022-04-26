@@ -3,11 +3,13 @@
 		"authors": [
 			"Ainali",
 			"WikiPhoenix",
-			"JRyan"
+			"JRyan",
+			"Draftmission",
+			"Sabelöga"
 		]
 	},
-	"growthexperiments-desc": "Detta tillägg innehåller experiment som göres av Growth-teamet.",
-	"growthexperiments-config-validator-additional-fields": "Den nya konfigurationen har konfigurationnycklar som inte kan anpassas här.",
+	"growthexperiments-desc": "Detta tillägg innehåller experiment som utförs av Growth-teamet.",
+	"growthexperiments-config-validator-additional-fields": "Den nya konfigurationen har konfigurationsnycklar som inte kan anpassas här.",
 	"growthexperiments-config-validator-error": "Validering av $1 misslyckades med: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> förväntas vara <code>$2</code>, men är <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Innehållsmodell matchar inte: GrowthExperiments konfigureringsfil måste ha en JSON innehållsmodell, $1 upptäckt"
