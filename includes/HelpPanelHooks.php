@@ -122,11 +122,15 @@ class HelpPanelHooks implements
 
 	/** @inheritDoc */
 	public function onBeforePageDisplay( $out, $skin ): void {
+		$maybeShow = HelpPanel::shouldShowHelpPanel( $out, false );
+		if ( !$maybeShow ) {
+			return;
+		}
+
 		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$wikiConfig = $geServices->getGrowthWikiConfig();
 
 		$definitelyShow = HelpPanel::shouldShowHelpPanel( $out );
-		$maybeShow = HelpPanel::shouldShowHelpPanel( $out, false );
 
 		if ( $definitelyShow ) {
 			$out->enableOOUI();
@@ -152,13 +156,12 @@ class HelpPanelHooks implements
 		// If the help panel would be shown but for the value of the 'action' parameter,
 		// add the email config var anyway. We'll need it if the user loads an editor via JS.
 		// Also set wgGEHelpPanelEnabled to let our JS modules know it's safe to display the help panel.
-		if ( $maybeShow ) {
-			$mentorManager = $geServices->getMentorManager();
-			$out->addJsConfigVars( [
+		$mentorManager = $geServices->getMentorManager();
+		$out->addJsConfigVars( [
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
 				'wgGEHelpPanelMentorData'
-					=> $this->getMentorData( $wikiConfig, $out->getUser(), $out->getContext() ),
+				=> $this->getMentorData( $wikiConfig, $out->getUser(), $out->getContext() ),
 				// wgGEHelpPanelAskMentor needs to be here and not in getModuleData,
 				// because getting current user is not possible within ResourceLoader context
 				'wgGEHelpPanelAskMentor' =>
@@ -170,11 +173,10 @@ class HelpPanelHooks implements
 					$mentorManager->getEffectiveMentorForUserSafe( $out->getUser() ) !== null,
 			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 
-			if ( !$definitelyShow ) {
-				// Add the init module to make sure that the main HelpPanel module is loaded
-				// if and when VisualEditor is loaded
-				$out->addModules( 'ext.growthExperiments.HelpPanel.init' );
-			}
+		if ( !$definitelyShow ) {
+			// Add the init module to make sure that the main HelpPanel module is loaded
+			// if and when VisualEditor is loaded
+			$out->addModules( 'ext.growthExperiments.HelpPanel.init' );
 		}
 	}
 
