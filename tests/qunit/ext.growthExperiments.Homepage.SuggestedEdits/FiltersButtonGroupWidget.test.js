@@ -1,8 +1,8 @@
 'use strict';
-const FiltersWidget = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/FiltersWidget.js' );
+const FiltersWidget = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/FiltersButtonGroupWidget.js' );
 const HomepageModuleLogger = require( '../../../modules/ext.growthExperiments.Homepage.Logger/index.js' );
 
-QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/FiltersWidget.js', QUnit.newMwEnvironment( {} ) );
+QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/FiltersButtonGroupWidget.js', QUnit.newMwEnvironment( {} ) );
 
 QUnit.test( 'should log only topicfilter impressions', function ( assert ) {
 	const logger = new HomepageModuleLogger( true, 'some-token' );
