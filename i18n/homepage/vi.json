@@ -375,7 +375,7 @@
 	"growthexperiments-addlink-skip-reject": "Xem lại",
 	"grant-managementorship": "Quản lý việc cố vấn",
 	"newcomertasksinfo": "Nhiệm vụ người mới",
-	"newcomertasksinfo-no-data": "Không có sẵn dữ liệu.",
+	"newcomertasksinfo-no-data": "Không có dữ liệu.",
 	"newcomertasksinfo-config-form-info": "Có thể xem và thay đổi cấu hình của nhiệm vụ người mới đến tại [[Special:EditGrowthConfig]].",
 	"newcomertasksinfo-table-header-task-type": "Loại nhiệm vụ",
 	"newcomertasksinfo-table-header-task-type-id": "ID",

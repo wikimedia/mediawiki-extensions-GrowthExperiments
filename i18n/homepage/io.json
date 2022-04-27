@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joao Xavier"
+			"Joao Xavier",
+			"JSantos"
 		]
 	},
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Nuligez",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Facita",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Me komprenas",
 	"growthexperiments-homepage-enable-preference": "To enable the newcomer homepage, visit your \"Newcomer homepage\" settings in [[Special:Preferences#mw-prefsection-personal-homepage|Preferences]].",
@@ -15,5 +17,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-image-recommendation": "3 til 5 minuti",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Facila",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Referi",
-	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aktualigar"
+	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aktualigar",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Nuligar"
 }
