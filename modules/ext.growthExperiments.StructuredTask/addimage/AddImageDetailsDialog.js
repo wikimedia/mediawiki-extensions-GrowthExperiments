@@ -143,8 +143,8 @@ AddImageDetailsDialog.prototype.makeField = function ( field, recommendation ) {
 	} ).join( '' );
 
 	return $( '<li>' ).append(
-		$( '<span>' ).text( fieldLabel ),
-		document.createTextNode( fieldValue )
+		$( '<span>' ).addClass( 'mw-ge-addImageDetailsDialog-label' ).text( fieldLabel ),
+		$( '<span>' ).attr( 'dir', 'auto' ).text( fieldValue )
 	);
 };
 
