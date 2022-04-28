@@ -117,9 +117,9 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 
 		$campaignKey = $this->getCampaignMessageKey();
 		$isMobile = $this->getSkin() instanceof SkinMinerva;
-		$campaignBody = $this->isGlamCampaign() && $isMobile ?
-			'' :
-			Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
+		$campaignBody = '';
+		if ( !$isMobile || !$this->isGlamCampaign() && !$this->isMarketingVideoCampaign() ) {
+			$campaignBody = Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
 				// The following message keys are used here:
 				// * growthexperiments-recurringcampaign-body
 				// * growthexperiments-signupcampaign-body
@@ -128,6 +128,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 				// * growthexperiments-marketingvideocampaign-body
 				$this->msg( "growthexperiments-$campaignKey-body" )->parse()
 			);
+		}
 		return Html::rawElement( 'div', [ 'class' => 'mw-createacct-benefits-container' ],
 			Html::rawElement( 'div', [ 'class' => "mw-ge-donorsignup-block mw-ge-donorsignup-block-$campaignKey" ],
 				Html::rawElement( 'h1', [ 'class' => 'mw-ge-donorsignup-title' ],
