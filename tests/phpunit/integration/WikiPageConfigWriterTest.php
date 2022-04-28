@@ -2,13 +2,20 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\Config\Validation\IConfigValidator;
+use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\GrowthExperimentsServices;
 use HashBagOStuff;
+use InvalidArgumentException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWikiIntegrationTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\NullLogger;
+use Throwable;
 use Title;
 use User;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Config\WikiPageConfigWriter
@@ -96,5 +103,66 @@ class WikiPageConfigWriterTest extends MediaWikiIntegrationTestCase {
 			'GEMentorshipEnabled' => true,
 			'GEHelpPanelAskMentor' => false
 		], $this->getLoader()->load( $this->defaultConfigTitle ) );
+	}
+
+	/**
+	 * @dataProvider provideSetVariable
+	 * @covers ::setVariable
+	 * @param string $variable Variable name
+	 * @param mixed $wikiConfig Initial value of variable
+	 * @param string $setVariable $variable parameter passed to setVariable()
+	 * @param mixed $setValue $value parameter passed to setVariable()
+	 * @param mixed $expectedValue Expected final value of variable, or an exception that's expected
+	 *   to be thrown.
+	 * @return void
+	 */
+	public function testSetVariable( string $variable, $wikiConfig, $setVariable, $setValue, $expectedValue ) {
+		/** @var IConfigValidator|MockObject $validator */
+		$validator = $this->createNoOpAbstractMock( IConfigValidator::class, [ 'validateVariable' ] );
+		/** @var WikiPageConfigLoader|MockObject $loader */
+		$loader = $this->createNoOpMock( WikiPageConfigLoader::class, [ 'load' ] );
+		$loader->method( 'load' )->willReturn( $wikiConfig );
+		$writer = new WikiPageConfigWriter(
+			$validator,
+			$loader,
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getUserFactory(),
+			new NullLogger(),
+			[ $variable ],
+			$this->getExistingTestPage()->getTitle(),
+			$this->getTestUser()->getUserIdentity()
+		);
+		if ( $expectedValue instanceof Throwable ) {
+			$this->expectException( get_class( $expectedValue ) );
+		}
+		$writer->setVariable( $setVariable, $setValue );
+		if ( !( $expectedValue instanceof Throwable ) ) {
+			$this->assertSame( [ $variable => $expectedValue ],
+				TestingAccessWrapper::newFromObject( $writer )->wikiConfig );
+		}
+	}
+
+	public function provideSetVariable() {
+		return [
+			// variable name, initial config, $variable, $value, expected value
+			'basic' => [ 'var', [ 'var' => 'foo' ], 'var', 'bar', 'bar' ],
+			'unset' => [ 'var', [], 'var', 'bar', 'bar' ],
+			'subfield of string' => [ 'var', [ 'var' => 'foo' ], [ 'var', 'sub' ], 'bar',
+				new InvalidArgumentException() ],
+			'subfield of unset' => [ 'var', [], [ 'var', 'sub' ], 'bar', [ 'sub' => 'bar' ] ],
+			'subfield of null' => [ 'var', [ 'var' => null ], [ 'var', 'sub' ], 'bar', [ 'sub' => 'bar' ] ],
+			'subfield of empty' => [ 'var', [ 'var' => [] ], [ 'var', 'sub' ], 'bar', [ 'sub' => 'bar' ] ],
+			'add subfield' => [ 'var', [ 'var' => [ 'other' => 'boom' ] ], [ 'var', 'sub' ], 'bar',
+				[ 'other' => 'boom', 'sub' => 'bar' ] ],
+			'override subfield' => [ 'var', [ 'var' => [ 'sub' => 'baz' ] ], [ 'var', 'sub' ], 'bar',
+				[ 'sub' => 'bar' ] ],
+			'second-level subfield of string' => [ 'var', [ 'var' => [ 'sub' => 'baz' ] ], [ 'var', 'sub', 'sub2' ],
+				'bar', new InvalidArgumentException() ],
+			'add second-level subfield' => [ 'var', [ 'var' => [ 'sub' => [] ] ], [ 'var', 'sub', 'sub2' ], 'bar',
+				[ 'sub' => [ 'sub2' => 'bar' ] ] ],
+			'override second-level subfield' => [ 'var', [ 'var' => [ 'sub' => [ 'sub2' => 'baz' ] ] ],
+				[ 'var', 'sub', 'sub2' ], 'bar', [ 'sub' => [ 'sub2' => 'bar' ] ] ],
+		];
 	}
 }

@@ -48,7 +48,7 @@ class ChangeWikiConfig extends Maintenance {
 
 		$this->addArg(
 			'key',
-			'Config key that is updated'
+			'Config key that is updated (use . to separate keys in a multidimensional array)'
 		);
 		$this->addArg(
 			'value',
@@ -92,6 +92,9 @@ class ChangeWikiConfig extends Maintenance {
 		$configWriter = $this->initConfigWriter();
 
 		$key = $this->getArg( 0 );
+		if ( strpos( $key, '.' ) !== false ) {
+			$key = explode( '.', $key );
+		}
 		$value = $this->getArg( 1 );
 		if ( $this->hasOption( 'json' ) ) {
 			$value = FormatJson::decode( $value, true );
