@@ -131,16 +131,35 @@ class WikiPageConfigWriter {
 	}
 
 	/**
-	 * @param string $variable
+	 * @param string|array $variable Variable name, or a list where the first item is the
+	 *   variable name and subsequent items are array keys, e.g. [ 'foo', 'bar', 'baz' ]
+	 *   means changing $foo['bar']['baz'] (where $foo stands for the 'foo' variable).
 	 * @param mixed $value
+	 * @throws InvalidArgumentException when $variable is an array but the variable it refers to isn't.
 	 */
-	public function setVariable( string $variable, $value ): void {
+	public function setVariable( $variable, $value ): void {
 		if ( $this->wikiConfig === null ) {
 			$this->loadConfig();
 		}
 
-		$this->configValidator->validateVariable( $variable, $value );
-		$this->wikiConfig[$variable] = $value;
+		if ( is_string( $variable ) ) {
+			$baseVariable = $variable;
+			$fullValue = $value;
+		} else {
+			$baseVariable = array_shift( $variable );
+			$fullValue = $this->wikiConfig[$baseVariable] ?? [];
+			$field = &$fullValue;
+			foreach ( $variable as $key ) {
+				if ( !is_array( $field ) ) {
+					throw new InvalidArgumentException( 'Trying to set a sub-field of a non-array' );
+				}
+				$field = &$field[$key];
+			}
+			$field = $value;
+		}
+
+		$this->configValidator->validateVariable( $baseVariable, $fullValue );
+		$this->wikiConfig[$baseVariable] = $fullValue;
 	}
 
 	/**
