@@ -145,6 +145,17 @@ class VariantHooks implements
 	}
 
 	/**
+	 * FIXME ugly one-off hack to get the instrumentation logic in LocalUserCreated to work
+	 *   for control users.
+	 * @param RequestContext $context
+	 * @return bool
+	 */
+	public static function isControlCampaign( RequestContext $context ) {
+		$campaign = self::getCampaign( $context );
+		return $campaign === 'social-latam-2022-B';
+	}
+
+	/**
 	 * FIXME T303785 replace with proper campaign configuration
 	 * @param IContextSource $context
 	 * @return bool
@@ -191,7 +202,9 @@ class VariantHooks implements
 			return;
 		}
 		$context = RequestContext::getMain();
-		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig ) ) {
+		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig )
+			|| self::isControlCampaign( $context )
+		) {
 			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $this->getCampaign( $context ) );
 		}
 	}
