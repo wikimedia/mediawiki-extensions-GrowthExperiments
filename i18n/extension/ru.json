@@ -69,6 +69,8 @@
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Страница со списком наставников, которых могут быть назначены только вручную",
 	"growthexperiments-edit-config-newcomertasks": "Предложенные правки",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Некоторые типы предлагаемых правок отображаются с помощью шаблонов обслуживания. Статьи, содержащие эти шаблоны, добавляются в ленту. Чтобы узнать, сколько статей доступно для каждого типа задач, см. [[Special:NewcomerTasksInfo|эту страницу]].",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Отключено",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Отключено в настройках сайта",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Исправления текста: шаблоны для поиска статей, требующих исправления текста, например улучшения орфографии, грамматики и пунктуации.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Целевая страница для получения дополнительных сведений об исправления текста.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Развернуть: шаблоны для поиска статей, нуждающихся в дописывании.",
