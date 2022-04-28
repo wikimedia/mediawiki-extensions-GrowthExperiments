@@ -118,7 +118,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "De suggesties kunnen betrekking hebben op woorden die ze niet nodig hebben, of kunnen verwijzen naar het verkeerde artikel. Gebruik {{GENDER:$1|je}} oordeel om te beslissen of ze goed of fout zijn.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Meer informatie over machine-suggesties]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Richtlijnen",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Link concepten waar een lezer misschien meer over wil weten.\n* Zorg ervoor dat de link naar het juiste artikel gaat.\n* Link geen veelgebruikte woorden, jaren of datums.\n* Als {{GENDER:$1|je het}} niet zeker weet, sla dan over.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Maak koppelingen naar dingen waar een lezer misschien meer over wil weten.\n* Zorg ervoor dat de koppeling naar het juiste artikel verwijst.\n* Koppel geen veelgebruikte woorden, jaren of datums.\n* Als {{GENDER:$1|je}} het niet zeker weet, sla het dan over.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Voorbeeld zin",
 	"growthexperiments-help-panel-questioncomplete-title": "Stel een vraag",
 	"growthexperiments-help-panel-questioncomplete-header": "Uw vraag is gepubliceerd!",

@@ -47,7 +47,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Non, pour d’autres raisons",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Je ne m’en souviens plus",
 	"welcomesurvey-question-mailinglist-label": "Je veux recevoir par courriel des conseils sur comment commencer à modifier.",
-	"welcomesurvey-question-mailinglist-help": "Veuillez noter que cette liste de diffusion est propulsée par MailChimp, ce qui signifie que l’utilisation par MailChimp de vos informations est régie selon leur [https://www.intuit.com/privacy/statement/ Politique de confidentialité] et leurs [https://mailchimp.com/legal/terms/Terms Conditions de service].",
+	"welcomesurvey-question-mailinglist-help": "Veuillez noter que cette liste de diffusion est propulsée par MailChimp, ce qui signifie que l’utilisation par MailChimp de vos informations est régie selon leur [https://www.intuit.com/privacy/statement/ Politique de confidentialité] et leurs [https://mailchimp.com/legal/terms/ Conditions de service].",
 	"welcomesurvey-question-email-label": "Adresse de courriel (facultatif)",
 	"welcomesurvey-question-email-placeholder": "Entrez votre adresse de courriel...",
 	"welcomesurvey-question-email-help": "Nous avons remarqué que vous n’avez pas entré d’adresse de courriel quand vous avez créé ce compte. Ceci est <strong>fortement recommandé</strong> parce qu’une adresse de courriel sera nécessaire pour récupérer l’accès à votre compte dans le cas où vous perdriez votre mot de passe. NOTE : votre adresse de courriel n’est pas révélée quand d’autres utilisateurs vous contactent.",
