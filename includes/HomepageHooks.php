@@ -19,6 +19,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\GrowthArticleTopicFeature;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
@@ -133,8 +134,6 @@ class HomepageHooks implements
 
 	/** @var string Query string used on Special:CreateAccount to force enable/disable Growth features */
 	public const REGISTRATION_GROWTHEXPERIMENTS_ENABLED = 'geEnabled';
-	/** @var string Query string used on Special:CreateAccount to force show/hide new landing page HTML */
-	public const REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML = 'geNewLandingHtml';
 
 	/** @var Config */
 	private $config;
@@ -150,6 +149,8 @@ class HomepageHooks implements
 	private $titleFactory;
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
+	/** @var CampaignConfig */
+	private $campaignConfig;
 	/** @var ExperimentUserManager */
 	private $experimentUserManager;
 	/** @var TaskTypeHandlerRegistry */
@@ -184,6 +185,7 @@ class HomepageHooks implements
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param JobQueueGroup $jobQueueGroup
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param CampaignConfig $campaignConfig
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
@@ -203,6 +205,7 @@ class HomepageHooks implements
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		JobQueueGroup $jobQueueGroup,
 		ConfigurationLoader $configurationLoader,
+		CampaignConfig $campaignConfig,
 		ExperimentUserManager $experimentUserManager,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		TaskSuggesterFactory $taskSuggesterFactory,
@@ -221,6 +224,7 @@ class HomepageHooks implements
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->configurationLoader = $configurationLoader;
+		$this->campaignConfig = $campaignConfig;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
@@ -448,10 +452,8 @@ class HomepageHooks implements
 		if ( ( !$skin->getTitle() || $skin->getTitle()->isSpecial( 'Homepage' ) ) &&
 			SuggestedEdits::isEnabled( $context ) ) {
 			$out->addJsConfigVars( [
-				'wgGETopicsToExclude' => SuggestedEdits::getTopicsToExclude(
-					$this->userOptionsLookup,
-					$context->getUser(),
-					self::getGrowthWikiConfig()
+				'wgGETopicsToExclude' => $this->campaignConfig->getTopicsToExcludeForUser(
+					$context->getUser()
 				),
 				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' )
 			] );
@@ -735,14 +737,6 @@ class HomepageHooks implements
 				'type' => 'hidden',
 				'name' => self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED,
 				'default' => $geEnabled
-			];
-		}
-		$newLandingHtml = $request->getInt( self::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML, -1 );
-		if ( $newLandingHtml !== null ) {
-			$formDescriptor[self::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML] = [
-				'type' => 'hidden',
-				'name' => self::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML,
-				'default' => $newLandingHtml
 			];
 		}
 	}

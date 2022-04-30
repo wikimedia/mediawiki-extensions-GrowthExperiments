@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
+use GrowthExperiments\Specials\SpecialCreateAccountCampaign;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
@@ -123,17 +124,20 @@ class CampaignConfig {
 	}
 
 	/**
-	 * Get the campaign name/index for the specified stored campaign term.
+	 * Get the name/index of the campaign matching the "campaign" query parameter value.
+	 * In case of multiple matches the first one in the config array takes precedence.
 	 * @see VariantHooks::onLocalUserCreated()
 	 *
-	 * @param string $campaignTerm
-	 * @return ?string
+	 * @param string|null $campaignTerm The 'campaign' request parameter used at registration.
+	 * @return string|null The campaign name, which is the array key used in $wgGECampaigns.
 	 */
-	public function getCampaignIndexFromCampaignTerm( string $campaignTerm ): ?string {
+	public function getCampaignIndexFromCampaignTerm( ?string $campaignTerm ): ?string {
+		if ( $campaignTerm === null ) {
+			return null;
+		}
 		$campaigns = array_filter( $this->config, static function ( $campaignConfig ) use ( $campaignTerm ) {
 			return $campaignConfig[ 'pattern' ] && preg_match( $campaignConfig[ 'pattern' ], $campaignTerm );
 		} );
-
 		return array_key_first( $campaigns );
 	}
 
@@ -233,4 +237,25 @@ class CampaignConfig {
 		}
 		return $this->config[ $campaign ][ $campaignConfigurationIndex ] ?? null;
 	}
+
+	/**
+	 * Get the ID of a custom template to use for the signup page.
+	 * @param string $campaign
+	 * @return string|null
+	 * @see SpecialCreateAccountCampaign::getCampaignTemplateHtml()
+	 */
+	public function getSignupPageTemplate( string $campaign ): ?string {
+		return $this->getConfigValue( $campaign, 'signupPageTemplate' );
+	}
+
+	/**
+	 * Get the parameters to pass to the template from getSignupPageTemplate()
+	 * @param string $campaign
+	 * @return array
+	 */
+	public function getSignupPageTemplateParameters( string $campaign ): array {
+		return $this->getConfigValue( $campaign,
+			'signupPageTemplateParameters' ) ?? [];
+	}
+
 }
