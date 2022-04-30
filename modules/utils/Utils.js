@@ -1,5 +1,39 @@
 ( function () {
 
+	// internal methods
+
+	/**
+	 * Update the user preferences
+	 *
+	 * @private
+	 * @param {Object} prefData Updated preferences
+	 * @return {jQuery.Promise}
+	 */
+	function saveOptions( prefData ) {
+		return mw.loader.using( 'mediawiki.api' ).then( function () {
+			return new mw.Api().saveOptions( prefData );
+		} );
+	}
+
+	/**
+	 * Update the user preferences, reset the task cache and reload the page.
+	 *
+	 * @private
+	 * @param {Object} prefData Updated preferences
+	 * @return {jQuery.Promise}
+	 */
+	function updateTaskPreference( prefData ) {
+		return $.when( saveOptions( prefData ), mw.loader.using( 'mediawiki.util' ) ).then( function () {
+			// Do a cache reset as a variant switch will mess up caching.
+			// FIXME T278123 remove when done.
+			return $.get( mw.util.getUrl( 'Special:Homepage', { resetTaskCache: 1 } ) );
+		} ).then( function () {
+			window.location.reload();
+		} );
+	}
+
+	// module exports used in other modules
+
 	/**
 	 * Serialize data for use with action_data event logging property.
 	 *
@@ -101,38 +135,6 @@
 	}
 
 	/**
-	 * Update the user preferences and reset the task cache
-	 *
-	 * @private For debug/QA purposes only.
-	 * @param {Object} prefData Updated preferences
-	 * @return {jQuery.Promise}
-	 */
-	function updateTaskPreference( prefData ) {
-		return mw.loader.using( [ 'mediawiki.util', 'mediawiki.api' ] ).then( function () {
-			return new mw.Api().saveOptions( prefData );
-		} ).then( function () {
-			// Do a cache reset as a variant switch will mess up caching.
-			// FIXME T278123 remove when done.
-			return $.get( mw.util.getUrl( 'Special:Homepage', { resetTaskCache: 1 } ) );
-		} ).then( function () {
-			window.location.reload();
-		} );
-	}
-
-	/**
-	 * Set the variant the user is assigned to, for A/B testing and gradual rollouts.
-	 *
-	 * @private For debug/QA purposes only.
-	 * @param {string|null} variant The new variant, or null to unset.
-	 * @return {jQuery.Promise}
-	 */
-	function setUserVariant( variant ) {
-		return updateTaskPreference( {
-			'growthexperiments-homepage-variant': variant
-		} );
-	}
-
-	/**
 	 * @param {string|string[]} variants
 	 * @return {boolean}
 	 */
@@ -176,16 +178,60 @@
 		).getUrl( queryParams );
 	}
 
+	// debug / QA helpers exposed via ge.utils
+
+	/**
+	 * Set the variant the user is assigned to, for A/B testing and gradual rollouts.
+	 *
+	 * @private For debug/QA purposes only.
+	 * @param {string|null} variant The new variant, or null to unset.
+	 * @return {jQuery.Promise}
+	 */
+	function setUserVariant( variant ) {
+		return updateTaskPreference( {
+			'growthexperiments-homepage-variant': variant
+		} );
+	}
+
+	/**
+	 * Enable the image recommendation user variant
+	 *
+	 * @private For debug/QA purposes only.
+	 * @return {jQuery.Promise}
+	 */
+	function enableImageRecommendations() {
+		return updateTaskPreference( {
+			'growthexperiments-homepage-variant': 'imagerecommendation',
+			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] )
+		} );
+	}
+
+	/**
+	 * Disable the image recommendation user variant (return to the control group)
+	 *
+	 * @private For debug/QA purposes only.
+	 * @return {jQuery.Promise}
+	 */
+	function disableImageRecommendations() {
+		return updateTaskPreference( {
+			'growthexperiments-homepage-variant': null,
+			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'copyedit', 'links' ] )
+		} );
+	}
+
 	/**
 	 * Opt the user into growth-glam-2022 campaign
 	 *
+	 * @private For debug/QA purposes only.
+	 * @param {string} id
 	 * @return {jQuery.Promise|undefined}
 	 */
-	function enableCampaign() {
-		return updateTaskPreference( {
-			'growthexperiments-homepage-variant': 'imagerecommendation',
-			'growthexperiments-campaign': 'growth-glam-2022',
-			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] )
+	function enableCampaign( id ) {
+		return saveOptions( {
+			'growthexperiments-campaign': id
+		} ).then( function () {
+			// campaigns usually force users into the experiment group
+			return enableImageRecommendations();
 		} );
 	}
 
@@ -194,6 +240,8 @@
 	ge.utils = {
 		getUserVariant: getUserVariant,
 		setUserVariant: setUserVariant,
+		enableImageRecommendations: enableImageRecommendations,
+		disableImageRecommendations: disableImageRecommendations,
 		enableCampaign: enableCampaign
 	};
 
