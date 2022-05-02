@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joao Xavier"
+			"Joao Xavier",
+			"JSantos"
 		]
 	},
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Nuligez",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Me komprenas",
 	"growthexperiments-homepage-enable-preference": "To enable the newcomer homepage, visit your \"Newcomer homepage\" settings in [[Special:Preferences#mw-prefsection-personal-homepage|Preferences]].",
 	"growthexperiments-homepage-discovery-banner-header": "Bonveno a {{GENDER:$1|vua}} personala pagino!",

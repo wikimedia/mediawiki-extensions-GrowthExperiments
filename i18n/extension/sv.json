@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ainali"
+			"Ainali",
+			"Draftmission",
+			"JRyan",
+			"Sabelöga",
+			"WikiPhoenix"
 		]
 	},
-	"growthexperiments-desc": "Detta tillägg innehåller experiment som göres av Growth-teamet."
+	"growthexperiments-desc": "Detta tillägg innehåller experiment som utförs av Growth-teamet."
 }
