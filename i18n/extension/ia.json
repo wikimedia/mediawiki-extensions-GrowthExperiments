@@ -74,6 +74,8 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Actualisar: patronos pro trovar articulos que debe esser actualisate con information actual.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Pagina de destination pro apprender plus sur como actualisar articulos.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Pagina de destination pro apprender plus sur typo de processo de recommendation de ligamine.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Le numero maxime de suggestiones de ligamine a monstrar sur cata carga suggerite.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Le lista de nomines del sectiones in le quales nulle ligamine debe esser recommendate.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Pagina de destination pro apprender plus sur typo de processo de recommendation de imagine.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Iste typo de processo es associate a suggestiones de machina e non usa patronos pro generar un reserva de processos.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Articulos que contine patronos definite hic non essera monstrate a usatores como processos pro iste typo de processo.",

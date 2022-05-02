@@ -364,7 +364,7 @@
 	"growthexperiments-addlink-notinstore": "Для статьи «$1» не найдено рекомендованных ссылок",
 	"growthexperiments-addlink-duplicatesubmission": "Пытался отправить отзывы о предложенных ссылках для ревизии «$1», которая уже была проверена.",
 	"growthexperiments-addlink-context-text-label": "Текст",
-	"growthexperiments-addlink-context-intro": "Следует ли ссылаться на следующую статью?",
+	"growthexperiments-addlink-context-intro": "Необходима ли ссылка на следующую статью?",
 	"growthexperiments-addlink-context-button-accept": "Да",
 	"growthexperiments-addlink-context-button-reject": "Нет",
 	"growthexperiments-addlink-context-button-help": "Помощь по редактированию",

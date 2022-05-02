@@ -39,6 +39,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "No, io non sapeva que io pote modificar Wikipedia",
 	"welcomesurvey-question-edited-option-no-other-label": "No, pro altere rationes",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Io non me lo rememora",
+	"welcomesurvey-question-mailinglist-label": "Io vole reciper consilios per e-mail sur como comenciar a modificar.",
+	"welcomesurvey-question-mailinglist-help": "Nota ben que iste lista de diffusion es actionate per MailChimp, lo que significa que le uso de tu information per MailChimp es governate per lor [https://www.intuit.com/privacy/statement/ politica de confidentialitate] e lor [https://mailchimp.com/legal/terms/ conditiones de servicio].",
 	"welcomesurvey-question-email-label": "Adresse de e-mail (optional)",
 	"welcomesurvey-question-email-placeholder": "Insere tu adresse de e-mail…",
 	"welcomesurvey-question-email-help": "Nos ha observate que tu non ha inserite un adresse de e-mail durante le creation de iste conto. Isto es <strong>altemente recommendate</strong> perque un adresse de e-mail es necessari pro recuperar tu conto si tu jammais perde tu contrasigno. NOTA: Tu adresse de e-mail non es revelate quando altere usatores te contacta.",
