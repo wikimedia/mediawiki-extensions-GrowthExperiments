@@ -320,7 +320,7 @@ AddImageArticleTarget.prototype.rollback = function () {
 		surfaceModel.getLinearFragment( node.getOuterRange() ).delete();
 	} );
 	surfaceModel.setReadOnly( true );
-	this.updateSuggestionState( this.selectedImageIndex, undefined, [] );
+	this.updateSuggestionState( this.selectedImageIndex, null, [] );
 };
 
 /**
@@ -386,7 +386,7 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	options[ 'data-ge-task-image-recommendation' ] = JSON.stringify( {
 		taskType: 'image-recommendation',
 		filename: this.getSelectedSuggestion().image,
-		accepted: this.recommendationAccepted,
+		accepted: !!this.recommendationAccepted,
 		reasons: this.recommendationRejectionReasons,
 		caption: this.recommendationAccepted ? this.getCaptionText() : ''
 	} );
@@ -583,8 +583,8 @@ AddImageArticleTarget.prototype.logSuggestionInteraction = function (
  * Update the state of the image suggestion at the specified index
  *
  * @param {number} index Zero-based index of the image suggestion being updated
- * @param {boolean|undefined} accepted Whether the image suggestion is accepted;
- *  Undefined indicates that the user hasn't decided.
+ * @param {boolean|null} accepted Whether the image suggestion is accepted;
+ *  null indicates that the user hasn't decided.
  * @param {string[]} reasons List of rejection reason IDs (when accepted is false)
  */
 AddImageArticleTarget.prototype.updateSuggestionState = function ( index, accepted, reasons ) {

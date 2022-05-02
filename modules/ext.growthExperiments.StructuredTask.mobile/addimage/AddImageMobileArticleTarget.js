@@ -13,6 +13,7 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
  */
 function AddImageMobileArticleTarget() {
 	AddImageMobileArticleTarget.super.apply( this, arguments );
+	AddImageArticleTarget.call( this );
 	this.$element.addClass( 've-init-mw-addImageArticleTarget' );
 	// eslint-disable-next-line camelcase
 	this.logger = new ImageSuggestionInteractionLogger( { is_mobile: true } );

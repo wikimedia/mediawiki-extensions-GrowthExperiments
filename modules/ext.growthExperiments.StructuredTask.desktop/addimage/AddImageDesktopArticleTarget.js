@@ -15,6 +15,7 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
  */
 function AddImageDesktopArticleTarget() {
 	AddImageDesktopArticleTarget.super.apply( this, arguments );
+	AddImageArticleTarget.call( this );
 	this.$element.addClass( 've-init-mw-addImageArticleTarget' );
 	// eslint-disable-next-line camelcase
 	this.logger = new ImageSuggestionInteractionLogger( { is_mobile: false } );
