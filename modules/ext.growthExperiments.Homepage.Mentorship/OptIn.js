@@ -1,4 +1,10 @@
 ( function () {
+	var HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
+		homepageModuleLogger = new HomepageModuleLogger(
+			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
+			mw.config.get( 'wgGEHomepagePageviewToken' )
+		);
+
 	/**
 	 * @param {Object} config Configuration object
 	 * @param {Object} $container jQuery object representing the newcomer homepage container
@@ -9,6 +15,8 @@
 		if ( !$container.find( config.buttonSelector ).length ) {
 			return;
 		}
+
+		var mode = $container.find( '.growthexperiments-homepage-module-mentorship-optin' ).data( 'mode' );
 
 		var ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
 		ctaButton.on( 'click', function () {
@@ -35,6 +43,7 @@
 						action: 'growthsetmenteestatus',
 						state: 'enabled'
 					} ).then( function () {
+						homepageModuleLogger.log( 'mentorship', mode, 'mentorship-optin' );
 						window.location.reload();
 					} );
 				}

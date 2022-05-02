@@ -563,7 +563,9 @@
 				"ext.growthExperiments.Homepage.Mentorship/index.js",
 				"ext.growthExperiments.Homepage.Mentorship/QuestionPoster.js",
 				"ext.growthExperiments.Homepage.Mentorship/RecentQuestions.js",
-				"ext.growthExperiments.Homepage.Mentorship/OptIn.js"
+				"ext.growthExperiments.Homepage.Mentorship/OptIn.js",
+				"ext.growthExperiments.Homepage.Logger/index.js",
+				"utils/Utils.js"
 			],
 			"targets": [
 				"desktop",
