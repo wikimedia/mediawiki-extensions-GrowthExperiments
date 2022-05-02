@@ -14,6 +14,7 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
@@ -38,6 +39,9 @@ class SpecialHomepage extends SpecialPage {
 	/** @var ExperimentUserManager */
 	private $experimentUserManager;
 
+	/** @var MentorManager */
+	private $mentorManager;
+
 	/** @var Config */
 	private $wikiConfig;
 
@@ -61,6 +65,7 @@ class SpecialHomepage extends SpecialPage {
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param ExperimentUserManager $experimentUserManager
+	 * @param MentorManager $mentorManager
 	 * @param Config $wikiConfig
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param TitleFactory $titleFactory
@@ -70,6 +75,7 @@ class SpecialHomepage extends SpecialPage {
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		ExperimentUserManager $experimentUserManager,
+		MentorManager $mentorManager,
 		Config $wikiConfig,
 		UserOptionsManager $userOptionsManager,
 		TitleFactory $titleFactory
@@ -79,6 +85,7 @@ class SpecialHomepage extends SpecialPage {
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->pageviewToken = $this->generatePageviewToken();
 		$this->experimentUserManager = $experimentUserManager;
+		$this->mentorManager = $mentorManager;
 		$this->wikiConfig = $wikiConfig;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
@@ -202,6 +209,7 @@ class SpecialHomepage extends SpecialPage {
 	 * @return BaseModule[]
 	 */
 	private function getModules( bool $isMobile, $par = '' ) {
+		$mentorshipState = $this->mentorManager->getMentorshipStateForUser( $this->getUser() );
 		$moduleConfig = array_filter( [
 			'banner' => true,
 			'startemail' => true,
@@ -214,7 +222,10 @@ class SpecialHomepage extends SpecialPage {
 			),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
 			'impact' => true,
-			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ),
+			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
+				$mentorshipState === MentorManager::MENTORSHIP_ENABLED,
+			'mentorship-optin' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
+				$mentorshipState === MentorManager::MENTORSHIP_OPTED_OUT,
 			'help' => true,
 		] );
 		$modules = [];
@@ -240,7 +251,7 @@ class SpecialHomepage extends SpecialPage {
 			],
 			'sidebar' => [
 				'primary' => $isSuggestedEditsEnabled ? [ 'impact' ] : [],
-				'secondary' => [ 'mentorship', 'help' ]
+				'secondary' => [ 'mentorship', 'mentorship-optin', 'help' ]
 			]
 		];
 	}

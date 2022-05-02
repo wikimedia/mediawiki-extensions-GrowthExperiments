@@ -258,6 +258,7 @@ class HomepageHooks implements
 					'StatsdDataFactory',
 					'PerDbNameStatsdDataFactory',
 					'GrowthExperimentsExperimentUserManager',
+					'GrowthExperimentsMentorManager',
 					'GrowthExperimentsMultiConfig',
 					'UserOptionsManager',
 					'TitleFactory',

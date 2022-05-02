@@ -470,7 +470,7 @@ return [
 			$services->getUserOptionsManager(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getDBLoadBalancer()->getConnectionRef( DB_REPLICA ),
 			$services->getDBLoadBalancer()->getConnectionRef( DB_PRIMARY )
 		);
 	},

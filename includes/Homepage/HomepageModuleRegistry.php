@@ -9,6 +9,7 @@ use GrowthExperiments\HomepageModules\Banner;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
+use GrowthExperiments\HomepageModules\MentorshipOptIn;
 use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\StartEmail;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -148,6 +149,19 @@ class HomepageModuleRegistry {
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				return new Mentorship(
+					$context,
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getExperimentUserManager(),
+					$growthServices->getMentorManager()
+				);
+			},
+
+			'mentorship-optin' => static function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				return new MentorshipOptIn(
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getExperimentUserManager(),

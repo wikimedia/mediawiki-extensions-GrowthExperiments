@@ -562,10 +562,8 @@
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.Mentorship/index.js",
 				"ext.growthExperiments.Homepage.Mentorship/QuestionPoster.js",
-				"ext.growthExperiments.Homepage.Mentorship/RecentQuestions.js"
-			],
-			"messages": [
-				"growthexperiments-homepage-recent-questions-header"
+				"ext.growthExperiments.Homepage.Mentorship/RecentQuestions.js",
+				"ext.growthExperiments.Homepage.Mentorship/OptIn.js"
 			],
 			"targets": [
 				"desktop",
@@ -577,6 +575,13 @@
 				"mediawiki.api",
 				"mediawiki.jqueryMsg",
 				"mediawiki.router"
+			],
+			"messages": [
+				"growthexperiments-homepage-recent-questions-header",
+				"growthexperiments-homepage-mentorship-confirm-dialog-header",
+				"growthexperiments-homepage-mentorship-confirm-dialog-text",
+				"growthexperiments-homepage-mentorship-confirm-dialog-cancel",
+				"growthexperiments-homepage-mentorship-confirm-dialog-continue"
 			]
 		},
 		"ext.growthExperiments.Homepage.SuggestedEdits": {

@@ -49,7 +49,7 @@
 
 		// no-op if the CTA button isn't found. This happens if the RL module is loaded
 		// before the corresponding HTML is set in the DOM, as currently occurs with
-		// the mobile homepage modules.
+		// the mobile homepage modules and when user opted out from mentorship.
 		if ( !$container.find( config.buttonSelector ).length ) {
 			return;
 		}

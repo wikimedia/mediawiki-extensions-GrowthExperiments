@@ -507,5 +507,13 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Text to use in the button in the dialog that appears if the user has exceeded maximum number of tasks for a given day.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-caption-warning-tooshort": "Warning text shown when the entered caption for the accepted image suggestion is shorter than the required length. Parameters:\n* $1 - Number of characters required for the caption. Can be used with PLURAL.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "Text shown in alert dialog when user has exceeded maximum daily limit of add link tasks.\n\n{{doc-growthexperiments-addlink}}",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Text to use in the button in the dialog that appears if the user has exceeded maximum number of tasks for a given day. Same as {{msg-mw|growthexperiments-addimage-daily-task-limit-exceeded-dialog-button}} \n\n{{doc-growthexperiments-addlink}}\n\n{{Identical|Got it}}"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Text to use in the button in the dialog that appears if the user has exceeded maximum number of tasks for a given day. Same as {{msg-mw|growthexperiments-addimage-daily-task-limit-exceeded-dialog-button}} \n\n{{doc-growthexperiments-addlink}}\n\n{{Identical|Got it}}",
+	"growthexperiments-homepage-mentorship-optin-header": "Header of a homepage module shown if the user has opted out of mentorship.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-mentorship-optin-text": "Text displayed in a homepage module shown if the user has opted out of mentorship.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-mentorship-optin-button": "A button the user can press if they wish to opt back into mentorship.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Header of a confirmation dialog shown when user is opting back into mentorship.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Text of a confirmation dialog shown when user is opting back into mentorship.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Label of a button in the confirmation dialog shown when user is opting back into mentorship.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Label of a button in the confirmation dialog shown when user is opting back into mentorship.\n\n{{doc-growthexperiments-homepage}}"
+
 }
