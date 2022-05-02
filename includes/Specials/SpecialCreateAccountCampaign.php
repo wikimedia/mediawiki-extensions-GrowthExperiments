@@ -117,29 +117,40 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 
 		$campaignKey = $this->getCampaignMessageKey();
 		$isMobile = $this->getSkin() instanceof SkinMinerva;
-		$campaignBody = '';
-		if ( !$isMobile || !$this->isGlamCampaign() && !$this->isMarketingVideoCampaign() ) {
-			$campaignBody = Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
+		if ( $this->isMarketingVideoCampaign() && $isMobile ) {
+			$campaignTitle = '';
+		} else {
+			$campaignTitle = Html::rawElement( 'h2', [ 'class' => 'mw-ge-donorsignup-title' ],
 				// The following message keys are used here:
-				// * growthexperiments-recurringcampaign-body
-				// * growthexperiments-signupcampaign-body
-				// * growthexperiments-josacampaign-body
-				// * growthexperiments-glamcampaign-body
-				// * growthexperiments-marketingvideocampaign-body
-				$this->msg( "growthexperiments-$campaignKey-body" )->parse()
+				// * growthexperiments-recurringcampaign-title
+				// * growthexperiments-signupcampaign-title
+				// * growthexperiments-josacampaign-title
+				// * growthexperiments-glamcampaign-title
+				// * growthexperiments-marketingvideocampaign-title
+				$this->msg( "growthexperiments-$campaignKey-title" )->parse()
 			);
+		}
+		if ( $this->isGlamCampaign() && $isMobile ) {
+			// title only
+			$campaignBody = '';
+		} elseif ( $this->isMarketingVideoCampaign() && $isMobile ) {
+			// short body
+			$campaignBody = $this->msg( 'growthexperiments-marketingvideocampaign-body-mobile' )->parse();
+		} else {
+			// The following message keys are used here:
+			// * growthexperiments-recurringcampaign-body
+			// * growthexperiments-signupcampaign-body
+			// * growthexperiments-josacampaign-body
+			// * growthexperiments-glamcampaign-body
+			// * growthexperiments-marketingvideocampaign-body
+			$campaignBody = $this->msg( "growthexperiments-$campaignKey-body" )->parse();
+		}
+		if ( $campaignBody !== '' ) {
+			$campaignBody = Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ], $campaignBody );
 		}
 		return Html::rawElement( 'div', [ 'class' => 'mw-createacct-benefits-container' ],
 			Html::rawElement( 'div', [ 'class' => "mw-ge-donorsignup-block mw-ge-donorsignup-block-$campaignKey" ],
-				Html::rawElement( 'h1', [ 'class' => 'mw-ge-donorsignup-title' ],
-					// The following message keys are used here:
-					// * growthexperiments-recurringcampaign-title
-					// * growthexperiments-signupcampaign-title
-					// * growthexperiments-josacampaign-title
-					// * growthexperiments-glamcampaign-title
-					// * growthexperiments-marketingvideocampaign-title
-					$this->msg( "growthexperiments-$campaignKey-title" )->parse()
-				)
+				$campaignTitle
 				. $campaignBody
 				. $benefitsList
 			)
