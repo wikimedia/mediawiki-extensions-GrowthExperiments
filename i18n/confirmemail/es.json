@@ -28,5 +28,10 @@
 	"growthexperiments-signupcampaign-bullet1": "Artículos sugeridos según {{GENDER:|tus}} intereses",
 	"growthexperiments-signupcampaign-bullet2": "Obtén ayuda y orientación mientras editas",
 	"growthexperiments-signupcampaign-bullet3": "Empieza con ediciones pequeñas y sencillas",
-	"growthexperiments-campaigns-footer": "Al crear tu cuenta en esta página, será asociada a esta campaña con fines relacionados con la experiencia y el análisis."
+	"growthexperiments-thankyoupage-title": "Crea una cuenta para comenzar a editar y mejorar Wikipedia",
+	"growthexperiments-thankyoupage-body": "Wikipedia se desarrolla a partir de personas como {{GENDER:|tú}} que trabajan juntas. ¡Editar un artículo es más fácil de lo que crees!",
+	"growthexperiments-thankyoupage-bullet1": "Tareas simples que coincidan con {{GENDER:|tus}} intereses",
+	"growthexperiments-thankyoupage-bullet2": "Ayuda y orientación a medida que editas",
+	"growthexperiments-thankyoupage-bullet3": "Información sobre cuántas personas ven {{GENDER:|tu}} trabajo",
+	"growthexperiments-campaigns-footer": "Al crear {{GENDER:|tu}} cuenta en esta página, será asociada a esta campaña con fines relacionados con la experiencia y el análisis."
 }
