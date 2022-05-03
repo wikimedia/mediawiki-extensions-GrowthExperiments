@@ -18,9 +18,7 @@ class HomepagePage extends Page {
 	get newcomerTaskArticleSaveButton() { return $( '.ve-ui-mwSaveDialog .oo-ui-processDialog-actions-primary' ); }
 	get savePageDots() { return $( '.ve-ui-toolbar-saveButton' ); }
 	get articleBodyContent() { return $( '.mw-body-content.ve-ui-surface' ); }
-	get postEditDialog() { return $( '.mw-ge-help-panel-postedit-dialog' ); }
-	get postEditDialogCloseButton() { return $( '.mw-ge-help-panel-postedit-dialog .oo-ui-processDialog-actions-safe' ); }
-	get postEditDialogNextSuggestionCard() { return $( '.mw-ge-help-panel-postedit-dialog .mw-ge-small-task-card' ); }
+	get postEditDialog() { return $( '.mw-ge-postEditDrawer' ); }
 
 	open() {
 		super.openTitle( 'Special:Homepage' );

@@ -1,331 +1,373 @@
-'use strict';
+var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/' +
+	'SmallTaskCard.js' ),
+	SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
+	PagerWidget = require( '../ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js' ),
+	PostEditToastMessage = require( './PostEditToastMessage.js' ),
+	Utils = require( '../utils/Utils.js' );
 
-( function () {
-	var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/' +
-		'SmallTaskCard.js' );
-	var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
-		Utils = require( '../utils/Utils.js' );
+/**
+ * @class
+ * @mixes OO.EventEmitter
+ *
+ * @constructor
+ * @param {Object} config
+ * @param {string} config.taskType Task type of the current task.
+ * @param {string} config.taskState State of the current task, as in
+ *   SuggestedEditSession.taskState.
+ * @param {mw.libs.ge.TaskData|null} config.nextTask Data for the next suggested edit,
+ *   as returned by GrowthTasksApi, or null if there are no available tasks or fetching
+ *   tasks failed.
+ * @param {Object} config.taskTypes Task type data, as returned by
+ *   HomepageHooks::getTaskTypesJson.
+ * @param {boolean} config.imageRecommendationDailyTasksExceeded If the
+ *   user has exceeded their daily limit for image recommendation tasks.
+ * @param {boolean} config.linkRecommendationDailyTasksExceeded If the
+ *   user has exceeded their daily limit for link recommendation tasks.
+ * @param {mw.libs.ge.NewcomerTaskLogger} config.newcomerTaskLogger
+ * @param {mw.libs.ge.HelpPanelLogger} config.helpPanelLogger
+ */
+function PostEditPanel( config ) {
+	OO.EventEmitter.call( this );
+	this.taskType = config.taskType;
+	this.taskState = config.taskState;
+	this.nextTask = config.nextTask;
+	this.taskTypes = config.taskTypes;
+	this.newcomerTaskLogger = config.newcomerTaskLogger;
+	this.helpPanelLogger = config.helpPanelLogger;
+	this.$taskCard = null;
+	this.imageRecommendationDailyTasksExceeded = config.imageRecommendationDailyTasksExceeded;
+	this.linkRecommendationDailyTasksExceeded = config.linkRecommendationDailyTasksExceeded;
+	this.prevButton = new OO.ui.ButtonWidget( {
+		icon: 'previous',
+		classes: [ 'mw-ge-help-panel-postedit-navigation-prev' ]
+	} );
+	this.nextButton = new OO.ui.ButtonWidget( {
+		icon: 'next',
+		classes: [ 'mw-ge-help-panel-postedit-navigation-next' ]
+	} );
+	this.prevButton.connect( this, { click: [ 'onPrevButtonClicked' ] } );
+	this.nextButton.connect( this, { click: [ 'onNextButtonClicked' ] } );
+	this.pager = new PagerWidget();
+}
 
-	/**
-	 * @class
-	 * @mixes OO.EventEmitter
-	 *
-	 * @constructor
-	 * @param {Object} config
-	 * @param {string} config.taskType Task type of the current task.
-	 * @param {string} config.taskState State of the current task, as in
-	 *   SuggestedEditSession.taskState.
-	 * @param {mw.libs.ge.TaskData|null} config.nextTask Data for the next suggested edit,
-	 *   as returned by GrowthTasksApi, or null if there are no available tasks or fetching
-	 *   tasks failed.
-	 * @param {Object} config.taskTypes Task type data, as returned by
-	 *   HomepageHooks::getTaskTypesJson.
-	 * @param {boolean} config.imageRecommendationDailyTasksExceeded If the
-	 *   user has exceeded their daily limit for image recommendation tasks.
-	 * @param {boolean} config.linkRecommendationDailyTasksExceeded If the
-	 *   user has exceeded their daily limit for link recommendation tasks.
-	 * @param {mw.libs.ge.NewcomerTaskLogger} config.newcomerTaskLogger
-	 * @param {mw.libs.ge.HelpPanelLogger} config.helpPanelLogger
-	 */
-	function PostEditPanel( config ) {
-		OO.EventEmitter.call( this );
-		this.taskType = config.taskType;
-		this.taskState = config.taskState;
-		this.nextTask = config.nextTask;
-		this.taskTypes = config.taskTypes;
-		this.newcomerTaskLogger = config.newcomerTaskLogger;
-		this.helpPanelLogger = config.helpPanelLogger;
-		this.$taskCard = null;
-		this.imageRecommendationDailyTasksExceeded = config.imageRecommendationDailyTasksExceeded;
-		this.linkRecommendationDailyTasksExceeded = config.linkRecommendationDailyTasksExceeded;
+OO.initClass( PostEditPanel );
+OO.mixinClass( PostEditPanel, OO.EventEmitter );
+
+/**
+ * Get the toast message widget to be displayed on top of the panel.
+ *
+ * @return {OO.ui.MessageWidget}
+ */
+PostEditPanel.prototype.getPostEditToastMessage = function () {
+	var hasSavedTask = this.taskState === SuggestedEditSession.static.STATES.SAVED,
+		type, messageKey;
+
+	if ( hasSavedTask ) {
+		type = mw.config.get( 'wgEditSubmitButtonLabelPublish' ) ? 'published' : 'saved';
+		if ( mw.config.get( 'wgStableRevisionId' ) &&
+			mw.config.get( 'wgStableRevisionId' ) !== mw.config.get( 'wgRevisionId' )
+		) {
+			// FlaggedRevs wiki, the current revision needs review
+			type = 'saved';
+		}
+	} else {
+		type = 'notsaved';
 	}
-	OO.initClass( PostEditPanel );
-	OO.mixinClass( PostEditPanel, OO.EventEmitter );
 
-	/**
-	 * Get the success message to be displayed on top of the panel.
-	 *
-	 * @return {OO.ui.MessageWidget}
-	 */
-	PostEditPanel.prototype.getSuccessMessage = function () {
-		var type,
-			messageKey,
-			$label,
-			hasMadeEdits = this.taskState === SuggestedEditSession.static.STATES.SAVED;
+	// The following messages are used here:
+	// * growthexperiments-help-panel-postedit-success-message-published
+	// * growthexperiments-help-panel-postedit-success-message-saved
+	// * growthexperiments-help-panel-postedit-success-message-notsaved
+	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation
+	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation
+	messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
+	if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
+		messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation';
+	} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
+		messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation';
+	}
 
-		if ( hasMadeEdits ) {
-			type = mw.config.get( 'wgEditSubmitButtonLabelPublish' ) ? 'published' : 'saved';
-			if ( mw.config.get( 'wgStableRevisionId' ) &&
-				mw.config.get( 'wgStableRevisionId' ) !== mw.config.get( 'wgRevisionId' )
-			) {
-				// FlaggedRevs wiki, the current revision needs review
-				type = 'saved';
-			}
-		} else {
-			type = 'notsaved';
-		}
+	return new PostEditToastMessage( {
+		icon: 'check',
+		type: hasSavedTask ? 'success' : 'notice',
+		label: $( '<span>' ).append( mw.message( messageKey ).parse() ),
+		autoHideDuration: 5000
+	} );
+};
 
-		messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
-		if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
-			messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation';
-		} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
-			messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation';
-		}
-		// The following messages are used here:
-		// * growthexperiments-help-panel-postedit-success-message-published
-		// * growthexperiments-help-panel-postedit-success-message-saved
-		// * growthexperiments-help-panel-postedit-success-message-notsaved
-		// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation
-		$label = $( '<span>' ).append( mw.message( messageKey ).parse() );
-		return new OO.ui.MessageWidget( {
-			icon: 'check',
-			type: hasMadeEdits ? 'success' : 'notice',
-			classes: [ 'mw-ge-help-panel-postedit-message' ],
-			label: $label
-		} );
+/**
+ * Get the link(s) to display in the footer.
+ *
+ * @return {Array<jQuery>} A list of footer elements.
+ */
+PostEditPanel.prototype.getFooterButtons = function () {
+	var footer = new OO.ui.ButtonWidget( {
+		href: Utils.getSuggestedEditsFeedUrl( 'postedit-panel' ),
+		label: mw.message( 'growthexperiments-help-panel-postedit-footer' ).text(),
+		framed: false,
+		classes: [ 'mw-ge-help-panel-postedit-footer' ]
+	} );
+	footer.$element.on( 'click', this.logLinkClick.bind( this, 'homepage' ) );
+	return [ footer.$element ];
+};
+
+/**
+ * Get the header text for the post-edit panel content
+ *
+ * @return {string}
+ */
+PostEditPanel.prototype.getHeaderText = function () {
+	if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
+		return mw.message( 'growthexperiments-help-panel-postedit-subheader-image-recommendation' ).text();
+	} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
+		return mw.message( 'growthexperiments-help-panel-postedit-subheader-link-recommendation' ).text();
+	}
+	return this.taskState === SuggestedEditSession.static.STATES.SAVED ?
+		mw.message( 'growthexperiments-help-panel-postedit-subheader' ).text() :
+		mw.message( 'growthexperiments-help-panel-postedit-subheader-notsaved' ).text();
+};
+
+/**
+ * Get the main area of the panel (the card with a subheader).
+ *
+ * @return {jQuery|null} The main area, a jQuery object wrapping the card element.
+ *   Null if the panel should not have a main area (as no task should be displayed).
+ */
+PostEditPanel.prototype.getMainArea = function () {
+	var $subHeader = null,
+		$mainArea = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-main' );
+
+	if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
+		$subHeader = $( '<div>' )
+			.addClass( 'mw-ge-help-panel-postedit-subheader2' )
+			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-image-recommendation' ).text() );
+	} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
+		$subHeader = $( '<div>' )
+			.addClass( 'mw-ge-help-panel-postedit-subheader2' )
+			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-link-recommendation' ).text() );
+	}
+
+	if ( !this.nextTask ) {
+		var $fallbackCard = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard' );
+		$fallbackCard.append(
+			$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-icon' ),
+			$( '<div>' ).append(
+				$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-header' ).text(
+					mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text()
+				),
+				$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-text' ).text(
+					mw.message( 'growthexperiments-help-panel-postedit-suggestededits-info' ).text()
+				)
+			)
+		);
+		return $mainArea.append( $fallbackCard );
+	}
+
+	this.$taskCard = this.getCard( this.nextTask );
+
+	return $mainArea.append( $subHeader, this.$taskCard, this.getTaskNavigation() );
+};
+
+/**
+ * Create the card element.
+ *
+ * @param {mw.libs.ge.TaskData} task A task object, as returned by GrowthTasksApi
+ * @return {jQuery} A jQuery object wrapping the card element.
+ */
+PostEditPanel.prototype.getCard = function ( task ) {
+	var params, url, taskCard;
+
+	this.newcomerTaskLogger.log( task );
+	params = {
+		geclickid: this.helpPanelLogger.helpPanelSessionId,
+		getasktype: task.tasktype,
+		genewcomertasktoken: task.token,
+		gesuggestededit: 1
 	};
+	if ( task.url ) {
+		// Override for developer setups
+		url = task.url;
+	} else if ( task.pageId ) {
+		url = new mw.Title( 'Special:Homepage/newcomertask/' + task.pageId ).getUrl( params );
+	} else {
+		url = new mw.Title( task.title ).getUrl( params );
+	}
+	// Pageviews should never been shown in the post edit dialog.
+	if ( task.pageviews ) {
+		task.pageviews = null;
+	}
+	taskCard = new SmallTaskCard( {
+		task: task,
+		taskTypes: this.taskTypes,
+		taskUrl: url
+	} );
+	taskCard.connect( this, { click: 'logTaskClick' } );
+	return taskCard.$element;
+};
 
-	/**
-	 * Get the links to display in the footer.
-	 *
-	 * @return {Array<jQuery>} A list of footer elements.
-	 */
-	PostEditPanel.prototype.getFooterButtons = function () {
-		var footer, footer2,
-			isSaved = ( this.taskState === SuggestedEditSession.static.STATES.SAVED ),
-			self = this;
+/**
+ * Update the task card after some task fields have been lazy-loaded.
+ *
+ * @param {mw.libs.ge.TaskData} task
+ */
+PostEditPanel.prototype.updateTask = function ( task ) {
+	var $newTaskCard = this.getCard( task );
+	this.$taskCard.replaceWith( $newTaskCard );
+	// Reference to the DOM node has to be updated since the old one has been replaced.
+	this.$taskCard = $newTaskCard;
+};
 
-		footer = new OO.ui.ButtonWidget( {
-			href: Utils.getSuggestedEditsFeedUrl( 'postedit-panel' ),
-			label: mw.message( 'growthexperiments-help-panel-postedit-footer' ).text(),
-			framed: false,
-			classes: [ 'mw-ge-help-panel-postedit-footer' ]
-		} );
-		footer.$element.on( 'click', this.logLinkClick.bind( this, 'homepage' ) );
+/**
+ * Log that the panel was displayed to the user.
+ * Needs to be called by the code displaying the panel.
+ *
+ * @param {Object} extraData
+ * @param {string} extraData.savedTaskType Type of the task for which the edit was just saved.
+ * @param {string} [extraData.errorMessage] Error message, only if there was a task loading
+ *   error.
+ * @param {Array<string>} [extraData.userTaskTypes] User's task type filter settings,
+ *   only if the impression involved showing a task
+ * @param {Array<string>} [extraData.userTopics] User's topic filter settings,
+ *   only if the impression involved showing a task
+ */
+PostEditPanel.prototype.logImpression = function ( extraData ) {
+	var data;
 
-		footer2 = new OO.ui.ButtonWidget( {
-			href: '#',
-			label: isSaved ?
-				mw.message( 'growthexperiments-help-panel-postedit-footer2' ).text() :
-				mw.message( 'growthexperiments-help-panel-postedit-footer2-notsaved' ).text(),
-			framed: false,
-			classes: [ 'mw-ge-help-panel-postedit-footer' ]
-		} );
-		footer2.$element.on( 'click', function () {
-			self.logLinkClick( 'edit' );
-			// When the user clicks the edit link, close the panel. (Actually opening
-			// the editor would not be a great user experience as we can't predict whether
-			// the user wants to edit a section or the whole article.) Since it could be a
-			// dialog or a drawer, closing is handled by the caller.
-			self.emit( 'edit-link-clicked' );
-			return false;
-		} );
-
-		return [ footer.$element, footer2.$element ];
-	};
-
-	/**
-	 * Get the main area of the panel (the card with a subheader).
-	 *
-	 * @return {jQuery|null} The main area, a jQuery object wrapping the card element.
-	 *   Null if the panel should not have a main area (as no task should be displayed).
-	 */
-	PostEditPanel.prototype.getMainArea = function () {
-		var subheaderMessage = ( this.taskState === SuggestedEditSession.static.STATES.SAVED ) ?
-				mw.message( 'growthexperiments-help-panel-postedit-subheader' ).text() :
-				mw.message( 'growthexperiments-help-panel-postedit-subheader-notsaved' ).text(),
-			$subHeader2 = null;
-
-		if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
-			subheaderMessage = mw.message( 'growthexperiments-help-panel-postedit-subheader-image-recommendation' ).text();
-			$subHeader2 = $( '<div>' )
-				.addClass( 'mw-ge-help-panel-postedit-subheader2' )
-				.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-image-recommendation' ).text() );
-		} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
-			subheaderMessage = mw.message( 'growthexperiments-help-panel-postedit-subheader-link-recommendation' ).text();
-			$subHeader2 = $( '<div>' )
-				.addClass( 'mw-ge-help-panel-postedit-subheader2' )
-				.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-link-recommendation' ).text() );
-		}
-
-		if ( !this.nextTask ) {
-			return null;
-		}
-		this.$taskCard = this.getCard( this.nextTask );
-
-		return $( '<div>' )
-			.addClass( 'mw-ge-help-panel-postedit-main' )
-			.append(
-				$( '<div>' )
-					.addClass( 'mw-ge-help-panel-postedit-subheader' )
-					.text( subheaderMessage )
-					.append( this.getRefreshButton() ),
-				$subHeader2,
-				this.$taskCard
-			);
-	};
-
-	/**
-	 * Get the refresh button
-	 *
-	 * @return {jQuery}
-	 */
-	PostEditPanel.prototype.getRefreshButton = function () {
-		var button = new OO.ui.ButtonWidget( {
-			label: mw.message(
-				'growthexperiments-help-panel-postedit-subheader-refresh-button-label'
-			).text(),
-			invisibleLabel: true,
-			icon: 'reload',
-			framed: false,
-			flags: [ 'progressive' ],
-			classes: [ 'mw-ge-help-panel-postedit-subheader-refresh-button' ]
-		} );
-		button.on( 'click', function () {
-			this.logRefreshClick();
-			this.emit( 'refresh-button-clicked' );
-		}.bind( this ) );
-		return button.$element;
-	};
-
-	/**
-	 * Create the card element.
-	 *
-	 * @param {mw.libs.ge.TaskData} task A task object, as returned by GrowthTasksApi
-	 * @return {jQuery} A jQuery object wrapping the card element.
-	 */
-	PostEditPanel.prototype.getCard = function ( task ) {
-		var params, url, taskCard;
-
-		this.newcomerTaskLogger.log( task );
-		params = {
-			geclickid: this.helpPanelLogger.helpPanelSessionId,
-			getasktype: task.tasktype,
-			genewcomertasktoken: task.token,
-			gesuggestededit: 1
+	if ( this.nextTask ) {
+		data = {
+			type: 'full',
+			savedTaskType: extraData.savedTaskType,
+			userTaskTypes: extraData.userTaskTypes,
+			newcomerTaskToken: extraData.newcomerTaskToken
 		};
-		if ( task.url ) {
-			// Override for developer setups
-			url = task.url;
-		} else if ( task.pageId ) {
-			url = new mw.Title( 'Special:Homepage/newcomertask/' + task.pageId ).getUrl( params );
-		} else {
-			url = new mw.Title( task.title ).getUrl( params );
+		if ( extraData.userTopics && extraData.userTopics.length ) {
+			data.userTopics = extraData.userTopics;
 		}
-		// Pageviews should never been shown in the post edit dialog.
-		if ( task.pageviews ) {
-			task.pageviews = null;
-		}
-		taskCard = new SmallTaskCard( {
-			task: task,
-			taskTypes: this.taskTypes,
-			taskUrl: url
-		} );
-		taskCard.connect( this, { click: 'logTaskClick' } );
-		return taskCard.$element;
-	};
-
-	/**
-	 * Update the task card after some task fields have been lazy-loaded.
-	 *
-	 * @param {mw.libs.ge.TaskData} task
-	 */
-	PostEditPanel.prototype.updateTask = function ( task ) {
-		var $newTaskCard = this.getCard( task );
-		this.$taskCard.replaceWith( $newTaskCard );
-		// Reference to the DOM node has to be updated since the old one has been replaced.
-		this.$taskCard = $newTaskCard;
-	};
-
-	/**
-	 * Log that the panel was displayed to the user.
-	 * Needs to be called by the code displaying the panel.
-	 *
-	 * @param {Object} extraData
-	 * @param {string} extraData.savedTaskType Type of the task for which the edit was just saved.
-	 * @param {string} [extraData.errorMessage] Error message, only if there was a task loading
-	 *   error.
-	 * @param {Array<string>} [extraData.userTaskTypes] User's task type filter settings,
-	 *   only if the impression involved showing a task
-	 * @param {Array<string>} [extraData.userTopics] User's topic filter settings,
-	 *   only if the impression involved showing a task
-	 */
-	PostEditPanel.prototype.logImpression = function ( extraData ) {
-		var data;
-
-		if ( this.nextTask ) {
-			data = {
-				type: 'full',
-				savedTaskType: extraData.savedTaskType,
-				userTaskTypes: extraData.userTaskTypes,
-				newcomerTaskToken: extraData.newcomerTaskToken
-			};
-			if ( extraData.userTopics && extraData.userTopics.length ) {
-				data.userTopics = extraData.userTopics;
-			}
-			this.helpPanelLogger.log( 'postedit-impression', data );
-		} else if ( extraData.errorMessage ) {
-			this.helpPanelLogger.log( 'postedit-impression', {
-				type: 'error',
-				savedTaskType: extraData.savedTaskType,
-				error: extraData.errorMessage
-			} );
-		} else {
-			this.helpPanelLogger.log( 'postedit-impression', {
-				type: 'small',
-				savedTaskType: extraData.savedTaskType
-			} );
-		}
-	};
-
-	/**
-	 * Log that the panel was closed.
-	 * Needs to be set up by the (device-dependent) wrapper code that handles displaying the panel.
-	 */
-	PostEditPanel.prototype.logClose = function () {
-		this.helpPanelLogger.log( 'postedit-close', '' );
-	};
-
-	/**
-	 * Log that one of the footer buttons was clicked.
-	 * This is handled automatically by the class.
-	 *
-	 * @param {string} linkName Symbolic link name ('homepage' or 'edit').
-	 */
-	PostEditPanel.prototype.logLinkClick = function ( linkName ) {
-		this.helpPanelLogger.log( 'postedit-link-click', linkName );
-	};
-
-	/**
-	 * Log that the task card was clicked.
-	 * This is handled automatically by the class.
-	 */
-	PostEditPanel.prototype.logTaskClick = function () {
-		this.newcomerTaskLogger.log( this.nextTask );
-		this.helpPanelLogger.log( 'postedit-task-click', { newcomerTaskToken: this.nextTask.token } );
-	};
-
-	/**
-	 * Log that the refresh button was clicked.
-	 * This is handled automatically by the class.
-	 */
-	PostEditPanel.prototype.logRefreshClick = function () {
-		this.helpPanelLogger.log( 'postedit-task-refresh', '' );
-	};
-
-	/**
-	 * Update the task for the next suggested edit and log an impression.
-	 *
-	 * @param {mw.libs.ge.TaskData} task
-	 */
-	PostEditPanel.prototype.updateNextTask = function ( task ) {
-		this.nextTask = task;
-		this.updateTask( task );
+		this.helpPanelLogger.log( 'postedit-impression', data );
+	} else if ( extraData.errorMessage ) {
 		this.helpPanelLogger.log( 'postedit-impression', {
-			type: this.nextTask ? 'full' : 'small',
-			newcomerTaskToken: task.token
+			type: 'error',
+			savedTaskType: extraData.savedTaskType,
+			error: extraData.errorMessage
 		} );
-	};
+	} else {
+		this.helpPanelLogger.log( 'postedit-impression', {
+			type: 'small',
+			savedTaskType: extraData.savedTaskType
+		} );
+	}
+};
 
-	module.exports = PostEditPanel;
-}() );
+/**
+ * Log that the panel was closed.
+ * Needs to be set up by the (device-dependent) wrapper code that handles displaying the panel.
+ */
+PostEditPanel.prototype.logClose = function () {
+	this.helpPanelLogger.log( 'postedit-close', '' );
+};
+
+/**
+ * Log that one of the footer buttons was clicked.
+ * This is handled automatically by the class.
+ *
+ * @param {string} linkName Symbolic link name ('homepage' or 'edit').
+ */
+PostEditPanel.prototype.logLinkClick = function ( linkName ) {
+	this.helpPanelLogger.log( 'postedit-link-click', linkName );
+};
+
+/**
+ * Log that the task card was clicked.
+ * This is handled automatically by the class.
+ */
+PostEditPanel.prototype.logTaskClick = function () {
+	this.newcomerTaskLogger.log( this.nextTask );
+	this.helpPanelLogger.log( 'postedit-task-click', { newcomerTaskToken: this.nextTask.token } );
+};
+
+/**
+ * Update the task for the next suggested edit and log an impression.
+ *
+ * @param {mw.libs.ge.TaskData} task
+ */
+PostEditPanel.prototype.updateNextTask = function ( task ) {
+	this.nextTask = task;
+	this.updateTask( task );
+	this.helpPanelLogger.log( 'postedit-impression', {
+		type: this.nextTask ? 'full' : 'small',
+		newcomerTaskToken: task.token
+	} );
+};
+
+/**
+ * Emit and log events when the next button is clicked
+ *
+ * @fires PostEditPanel#postedit-next-task
+ */
+PostEditPanel.prototype.onNextButtonClicked = function () {
+	this.emit( 'postedit-next-task' );
+	this.helpPanelLogger.log( 'postedit-task-navigation', {
+		dir: 'next',
+		/* eslint-disable-next-line camelcase */
+		navigation_type: 'click'
+	} );
+};
+
+/**
+ * Emit and log events when the prev button is clicked
+ *
+ * @fires PostEditPanel#postedit-prev-task
+ */
+PostEditPanel.prototype.onPrevButtonClicked = function () {
+	this.emit( 'postedit-prev-task' );
+	this.helpPanelLogger.log( 'postedit-task-navigation', {
+		dir: 'prev',
+		/* eslint-disable-next-line camelcase */
+		navigation_type: 'click'
+	} );
+};
+
+/**
+ * Get the navigation element
+ *
+ * @return {jQuery}
+ */
+PostEditPanel.prototype.getTaskNavigation = function () {
+	var $navigation = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigation' ),
+		$indicator = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigationIndicator' ),
+		$buttons = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigationButtons' );
+	$indicator.append( this.pager.$element );
+	$buttons.append( [ this.prevButton.$element, this.nextButton.$element ] );
+	$navigation.append( [ $indicator, $buttons ] );
+	return $navigation;
+};
+
+/**
+ * Enable or disable the prev button
+ *
+ * @param {boolean} isPrevNavigationEnabled
+ */
+PostEditPanel.prototype.togglePrevNavigation = function ( isPrevNavigationEnabled ) {
+	this.prevButton.setDisabled( !isPrevNavigationEnabled );
+};
+
+/**
+ * Enable or disable the next button
+ *
+ * @param {boolean} isNextNavigationEnabled
+ */
+PostEditPanel.prototype.toggleNextNavigation = function ( isNextNavigationEnabled ) {
+	this.nextButton.setDisabled( !isNextNavigationEnabled );
+};
+
+/**
+ * Update the pager with the latest task position
+ *
+ * @param {number} currentTaskPosition Current position of the task shown; 1-based index
+ * @param {number} totalTasks Number of tasks in the queue
+ */
+PostEditPanel.prototype.updatePager = function ( currentTaskPosition, totalTasks ) {
+	this.pager.setMessage( currentTaskPosition, totalTasks );
+};
+
+module.exports = PostEditPanel;

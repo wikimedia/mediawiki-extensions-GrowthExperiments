@@ -1,0 +1,51 @@
+@import '../utils/variables.less';
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+
+.mw-ge-postEditDrawer {
+	.mw-ge-collapsibleDrawer-header {
+		background-color: @suggestedEditsBackgroundColor;
+	}
+
+	&-mobile {
+		// win over OOUI-s four-class selector in specificity
+		.mw-ge-help-panel-postedit-footer .oo-ui-buttonElement-button.oo-ui-buttonElement-button {
+			border: 0;
+			padding: 16px 20px 16px;
+
+			.oo-ui-labelElement-label {
+				line-height: 1em;
+			}
+		}
+	}
+
+	&-desktop {
+		.mw-ge-help-panel-postedit-footer {
+			.oo-ui-buttonElement-button {
+				padding: 11px 20px 13px;
+
+				.oo-ui-labelElement-label {
+					line-height: 16/14 * 1em;
+					font-size: 14/14 * 1em;
+				}
+			}
+		}
+	}
+}
+
+// Show a notification at the top of the page, similar to using mw.notify
+.mw-ge-postEditDrawer-toastMessageOverlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	pointer-events: none;
+
+	.mw-ge-postEditDrawer-toastMessageArea {
+		width: 100%;
+		font-size: 0.8em;
+		top: 7em;
+		position: absolute;
+	}
+}

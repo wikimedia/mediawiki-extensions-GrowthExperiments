@@ -23,6 +23,7 @@ describe( 'Homepage', function () {
 		await browser.setupInterceptor();
 		await HomepagePage.editAndSaveArticle( 'first edit' );
 		await HomepagePage.rebuildRecentChanges();
+		assert.ok( HomepagePage.postEditDialog.isDisplayed() );
 
 		// Get the revision ID of the change that was just made.
 		let requests = await browser.getRequests();
@@ -40,10 +41,10 @@ describe( 'Homepage', function () {
 		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
 
 		// Follow-up edit.
-		await HomepagePage.postEditDialogCloseButton.click();
-
 		await HomepagePage.editAndSaveArticle( 'second edit' );
 		await HomepagePage.rebuildRecentChanges();
+		assert.ok( HomepagePage.postEditDialog.isDisplayed() );
+
 		requests = await browser.getRequests();
 		requests.forEach( function ( request ) {
 			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-copyedit' ] ) {

@@ -1,9 +1,8 @@
 'use strict';
 
 ( function () {
-	var Drawer = mw.mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : null,
+	var PostEditDrawer = require( './PostEditDrawer.js' ),
 		PostEditPanel = require( './PostEditPanel.js' ),
-		PostEditDialog = require( './PostEditDialog.js' ),
 		GrowthTasksApi = require( '../ext.growthExperiments.Homepage.SuggestedEdits/GrowthTasksApi.js' ),
 		HelpPanelLogger = require( '../ext.growthExperiments.Help/HelpPanelLogger.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
@@ -23,13 +22,13 @@
 		} ),
 		apiConfig = {
 			getDescription: true,
+			// 10 tasks are hopefully enough to find one that's not protected.
 			size: 10
 		},
 		preferences = api.getPreferences(),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		isLinkRecommendationTask = ( suggestedEditSession.taskType === 'link-recommendation' ),
 		isImageRecommendationTask = ( suggestedEditSession.taskType === 'image-recommendation' ),
-		isStructuredTask = isLinkRecommendationTask || isImageRecommendationTask,
 		newcomerTaskLogger = new NewcomerTaskLogger(),
 		helpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
 			context: 'postedit',
@@ -38,7 +37,8 @@
 			isSuggestedTask: suggestedEditSession.active
 		} ),
 		otherTasks = [],
-		nextTaskIndex = 0;
+		nextTaskIndex = 0,
+		hasEditorOpenedSincePageLoad = true;
 
 	/**
 	 * Fetch potential tasks for the next suggested edit.
@@ -85,7 +85,6 @@
 				return taskType !== 'link-recommendation';
 			} );
 		}
-		// 10 tasks are hopefully enough to find one that's not protected.
 		return api.fetchTasks(
 			taskTypesToFetch,
 			preferences.topicFilters,
@@ -136,6 +135,32 @@
 	}
 
 	/**
+	 * Attach a handler to be called when the editor is re-opened
+	 *
+	 * @param {Function} handler
+	 */
+	function addEditorReopenedHandler( handler ) {
+		var shouldExecuteHandler = !hasEditorOpenedSincePageLoad,
+			onEditorOpened = function () {
+				// The handler can be called when it's first attached if the editor has been opened
+				// since the initial page load (the handler gets called if an event was previously
+				// fired before the handler is attached) but in this case we only care
+				// about the editor being opened after the post-edit drawer is shown.
+				if ( shouldExecuteHandler ) {
+					handler();
+				} else {
+					shouldExecuteHandler = true;
+				}
+			};
+		if ( OO.ui.isMobile() ) {
+			mw.hook( 'mobileFrontend.editorOpened' ).add( onEditorOpened );
+		} else {
+			mw.hook( 've.activationComplete' ).add( onEditorOpened );
+			mw.hook( 'wikipage.editform' ).add( onEditorOpened );
+		}
+	}
+
+	/**
 	 * Display the given panel, using a mobile or desktop format as appropriate.
 	 * Also handles some of the logging.
 	 *
@@ -145,78 +170,65 @@
 	 *   - closePromise {jQuery.Promise} A promise that resolves when the dialog has been closed.
 	 */
 	function displayPanel( postEditPanel ) {
-		var drawer, dialog, lifecycle, windowManager, openPromise, closePromise;
-
-		if ( OO.ui.isMobile() && Drawer ) {
-			closePromise = $.Deferred().resolve();
-			drawer = new Drawer( {
-				children: [
-					postEditPanel.getMainArea()
-				].concat(
-					postEditPanel.getFooterButtons()
-				),
-				className: 'mw-ge-help-panel-postedit-drawer',
-				onBeforeHide: function () {
-					postEditPanel.logClose();
-					// There's no onAfterHide hook in Drawer; allow a short delay for
-					// the drawer to close before resolving the promise.
-					setTimeout( function () {
-						closePromise.resolve();
-					}, 250 );
-				}
-			} );
-			postEditPanel.on( 'edit-link-clicked', function () {
-				drawer.hide();
-			} );
-			drawer.$el.find( '.drawer' ).prepend(
-				$( '<div>' )
-					.addClass( 'mw-ge-help-panel-postedit-message-anchor' )
-					.append( postEditPanel.getSuccessMessage().$element )
-			);
-
-			document.body.appendChild( drawer.$el[ 0 ] );
-			openPromise = drawer.show();
-		} else {
-			dialog = new PostEditDialog( { panel: postEditPanel } );
-			windowManager = new OO.ui.WindowManager();
-			$( document.body ).append( windowManager.$element );
-			windowManager.addWindows( [ dialog ] );
-			lifecycle = windowManager.openWindow( dialog );
-			closePromise = lifecycle.closed.done( function () {
-				// Used by GettingStarted extension.
-				mw.hook( 'postEdit.afterRemoval' ).fire();
-				postEditPanel.logClose();
-				return windowManager.clearWindows( [ dialog ] );
-			} );
-			lifecycle.opened.then( function () {
-				// Close dialog on outside click.
-				dialog.$element.on( 'click', function ( e ) {
-					if ( e.target === dialog.$element[ 0 ] ) {
-						windowManager.closeWindow( dialog );
-					}
-				} );
-			} );
-			postEditPanel.on( 'edit-link-clicked', function () {
-				dialog.close();
-			} );
-			openPromise = lifecycle.opened;
-		}
-
-		postEditPanel.on( 'refresh-button-clicked', function () {
-			if ( nextTaskIndex === otherTasks.length - 1 ) {
-				nextTaskIndex = 0;
-			} else {
-				nextTaskIndex += 1;
-			}
-			fetchExtraDataForTask( otherTasks[ nextTaskIndex ] ).then( function ( updatedTask ) {
-				postEditPanel.updateNextTask( updatedTask );
-			} );
+		var drawer = new PostEditDrawer( postEditPanel, helpPanelLogger ),
+			lifecycle,
+			closePromise;
+		$( document.body ).append( drawer.$element );
+		lifecycle = drawer.showWithToastMessage();
+		closePromise = lifecycle.closed.done( function () {
+			// FIXME is this event needed?
+			mw.hook( 'postEdit.afterRemoval' ).fire();
+			postEditPanel.logClose();
 		} );
-
+		addEditorReopenedHandler( function () {
+			drawer.close();
+		} );
 		return {
-			openPromise: openPromise,
+			openPromise: lifecycle.opened,
 			closePromise: closePromise
 		};
+	}
+
+	/**
+	 * Update the navigation states for the specified post-edit panel
+	 *
+	 * @param {PostEditPanel} postEditPanel
+	 * @param {number} currentTaskPosition Zero-based index of the current task shown
+	 * @param {number} totalTasks Total number of tasks in the queue
+	 */
+	function updateNavigationStates( postEditPanel, currentTaskPosition, totalTasks ) {
+		postEditPanel.togglePrevNavigation( currentTaskPosition !== 0 );
+		postEditPanel.toggleNextNavigation( currentTaskPosition < totalTasks - 1 );
+		postEditPanel.updatePager( currentTaskPosition + 1, totalTasks );
+	}
+
+	/**
+	 * Show the previous or next task in the queue in the specified post-edit panel
+	 *
+	 * @param {PostEditPanel} postEditPanel
+	 * @param {boolean} [isPrev] Whether the previous task should be shown
+	 */
+	function navigateTask( postEditPanel, isPrev ) {
+		if ( ( isPrev && nextTaskIndex === 0 ) ||
+			( nextTaskIndex === otherTasks.length - 1 && !isPrev ) ) {
+			updateNavigationStates( postEditPanel, nextTaskIndex, otherTasks.length );
+			return;
+		}
+
+		if ( isPrev ) {
+			nextTaskIndex -= 1;
+		} else {
+			nextTaskIndex += 1;
+		}
+
+		// show the next task before the metadata is loaded
+		postEditPanel.updateNextTask( otherTasks[ nextTaskIndex ] );
+		updateNavigationStates( postEditPanel, nextTaskIndex, otherTasks.length );
+
+		fetchExtraDataForTask( otherTasks[ nextTaskIndex ] ).then( function ( updatedTask ) {
+			// show metadata for the current task
+			postEditPanel.updateTask( updatedTask );
+		} );
 	}
 
 	/**
@@ -225,6 +237,7 @@
 	 * @param {mw.libs.ge.TaskData|null} task Task data, or null when the task card should not be
 	 *   shown.
 	 * @param {string|null} errorMessage Error message, or null when there was no error.
+	 * @param {boolean} isDialogShownUponReload Whether the dialog is shown upon page reload.
 	 * @return {Object} An object with:
 	 *   - task: task data as a plain Object (as returned by GrowthTasksApi), omitted
 	 *     when loading the task failed and when the task parameter is null;
@@ -233,8 +246,8 @@
 	 *   - openPromise: a promise that resolves when the panel has been displayed.
 	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
-	function setup( task, errorMessage ) {
-		var postEditPanel, displayPanelPromises, openPromise, closePromise, extraDataPromise, result,
+	function setup( task, errorMessage, isDialogShownUponReload ) {
+		var postEditPanel, displayPanelPromises, openPromise, extraDataPromise, result,
 			imageRecommendationQualityGates =
 				suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
 			imageRecommendationDailyTasksExceeded =
@@ -243,6 +256,8 @@
 				suggestedEditSession.qualityGateConfig[ 'link-recommendation' ] || {},
 			linkRecommendationDailyTasksExceeded =
 				linkRecommendationQualityGates.dailyLimit || false;
+
+		hasEditorOpenedSincePageLoad = !isDialogShownUponReload;
 
 		if ( errorMessage ) {
 			mw.log.error( errorMessage );
@@ -259,6 +274,15 @@
 			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded,
 			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded
 		} );
+		postEditPanel.on( 'postedit-prev-task', function () {
+			navigateTask( postEditPanel, true );
+		} );
+		postEditPanel.on( 'postedit-next-task', function () {
+			navigateTask( postEditPanel );
+		} );
+		postEditPanel.updatePager( nextTaskIndex + 1, otherTasks.length );
+		updateNavigationStates( postEditPanel, nextTaskIndex, otherTasks.length );
+
 		displayPanelPromises = displayPanel( postEditPanel );
 		openPromise = displayPanelPromises.openPromise;
 		openPromise.done( postEditPanel.logImpression.bind( postEditPanel, {
@@ -269,29 +293,6 @@
 			newcomerTaskToken: suggestedEditSession.newcomerTaskToken
 		} ) );
 
-		closePromise = displayPanelPromises.closePromise;
-		closePromise.done( function () {
-			if ( isStructuredTask && suggestedEditSession.taskState !== 'cancelled' ) {
-				// Structured tasks are different from the unstructured tasks in that they
-				// cannot be repeated immediately after edit. So, after post edit dialog is closed,
-				// clear out the task type ID and task data. Currently not used elsewhere,
-				// but in case some code is relying on it, better to have removed here.
-				suggestedEditSession.taskType = null;
-				suggestedEditSession.taskData = null;
-				suggestedEditSession.save();
-				if ( !OO.ui.isMobile() ) {
-					// On mobile, the page is reloaded automatically after making an edit.
-					// On desktop, a reload is needed to unload StructuredTaskArticleTarget.
-					// Reloading the window is kind of extreme but on the other hand
-					// canceling out of the post edit dialog isn't a path we are trying to
-					// optimize for.
-					var uri = new mw.Uri();
-					delete uri.query.gesuggestededit;
-					window.location.href = uri.toString();
-				}
-			}
-		} );
-
 		extraDataPromise = fetchExtraDataForTask( task );
 		extraDataPromise.then( function ( updateTask ) {
 			postEditPanel.updateTask( updateTask );
@@ -300,7 +301,7 @@
 		result = {
 			panel: postEditPanel,
 			openPromise: openPromise,
-			closePromise: closePromise
+			closePromise: displayPanelPromises.closePromise
 		};
 		if ( task ) {
 			result.task = task;
@@ -311,11 +312,14 @@
 	}
 
 	module.exports = {
-		PostEditDialog: PostEditDialog,
 		GrowthTasksApi: GrowthTasksApi,
 
 		/**
-		 * Create and show the panel (a dialog or a drawer, depending on the current device).
+		 * Create and show the panel
+		 *
+		 * @param {boolean} [isDialogShownUponReload] Whether the post-edit panel is being shown
+		 *  after a page reload. This is used to determine whether the editor has been opened
+		 *  since the page loads.
 		 *
 		 * @return {jQuery.Promise<Object>} A promise resolving to an object with:
 		 *   - task: task data as a plain Object (as returned by GrowthTasksApi), might be omitted
@@ -325,9 +329,9 @@
 		 *   - openPromise: a promise that resolves when the panel has been displayed.
 		 *   - closePromise: A promise that resolves when the dialog has been closed.
 		 */
-		setupPanel: function () {
+		setupPanel: function ( isDialogShownUponReload ) {
 			return getNextTask().then( function ( task ) {
-				return setup( task, null );
+				return setup( task, null, isDialogShownUponReload );
 			}, function ( errorMessage ) {
 				return setup( null, errorMessage );
 			} );

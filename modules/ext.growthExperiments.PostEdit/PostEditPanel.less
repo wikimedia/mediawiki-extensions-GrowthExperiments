@@ -1,0 +1,77 @@
+@import 'mediawiki.mixins';
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import '../utils/variables.less';
+@import '../utils/mixins.less';
+
+.mw-ge-help-panel-postedit-main {
+	padding: 16px;
+	background-color: fade( @wmui-color-accent90, 50% );
+
+	.mw-ge-help-panel-postedit-subheader2 {
+		color: @wmui-color-base10;
+		margin-bottom: 1em;
+	}
+}
+
+.mw-ge-help-panel-postedit-footer {
+	width: 100%;
+	box-sizing: border-box;
+	// override OOUI button widget's right margin
+	margin: 0;
+	text-align: center;
+	font-weight: bold;
+	border-top: 1px solid @wmui-color-base70;
+
+	.oo-ui-buttonElement-button {
+		width: 100%;
+		white-space: normal;
+		overflow-wrap: break-word;
+	}
+}
+
+.mw-ge-help-panel-postedit-navigation {
+	display: flex;
+	margin-top: 16px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.mw-ge-help-panel-postedit-fallbackCard {
+	display: flex;
+	color: @wmui-color-base20;
+	background-color: @wmui-color-base100;
+	padding: 8px;
+	box-shadow: 0 1px 0 @wmui-color-base80;
+	border-radius: 2px;
+
+	&-icon {
+		min-width: 72px;
+		height: 72px;
+		background-image: url( ../../images/suggestededits/Topic-general-64w.svg );
+		background-repeat: no-repeat;
+		margin-right: 16px;
+	}
+
+	&-header {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 15.4px, @targetLineHeight: 22px );
+		color: @wmui-color-base10;
+		margin-bottom: 4px;
+		font-weight: bold;
+	}
+
+	&-text {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+	}
+}
+
+.mw-ge-postEditDrawer-desktop {
+	@desktopFontSize: 14px;
+
+	.mw-ge-help-panel-postedit-fallbackCard-header {
+		.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 14px, @targetLineHeight: 20px );
+	}
+
+	.mw-ge-help-panel-postedit-fallbackCard-text {
+		.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 12.4px, @targetLineHeight: 17.3px );
+	}
+}
