@@ -631,6 +631,10 @@
 	 * so we don't do anything for those.
 	 */
 	mw.hook( 've.activationComplete' ).add( function () {
+		// HACK: Some VE edits end up with editorInterface set to null;
+		// set it here to avoid this.
+		ge.suggestedEditSession.editorInterface = ge.suggestedEditSession.editorInterface || 'visualeditor';
+
 		if ( SuggestedEditSession.static.isStructuredTask( ge.suggestedEditSession.taskType ) ) {
 			return;
 		}
@@ -648,10 +652,6 @@
 				return plugins;
 			};
 		}
-
-		// HACK: Some VE edits end up with editorInterface set to null;
-		// set it here to avoid this.
-		ge.suggestedEditSession.editorInterface = ge.suggestedEditSession.editorInterface || 'visualeditor';
 	} );
 
 	module.exports = SuggestedEditSession;
