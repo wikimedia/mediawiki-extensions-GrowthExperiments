@@ -18,7 +18,6 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
-use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\GrowthArticleTopicFeature;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
@@ -137,10 +136,6 @@ class HomepageHooks implements
 
 	/** @var Config */
 	private $config;
-	// FIXME remove when GLAM campaign is over
-	// The campaign config is only used to enable/disable the "topic match mode" feature (T301825).
-	/** @var CampaignConfig */
-	private $campaignConfig;
 	/** @var ILoadBalancer */
 	private $lb;
 	/** @var UserOptionsManager */
@@ -179,7 +174,6 @@ class HomepageHooks implements
 
 	/**
 	 * @param Config $config Uses PHP globals
-	 * @param CampaignConfig $campaignConfig Campaign configuration based on user stored preferences
 	 * @param ILoadBalancer $lb
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -199,7 +193,6 @@ class HomepageHooks implements
 	 */
 	public function __construct(
 		Config $config,
-		CampaignConfig $campaignConfig,
 		ILoadBalancer $lb,
 		UserOptionsManager $userOptionsManager,
 		UserOptionsLookup $userOptionsLookup,
@@ -218,7 +211,6 @@ class HomepageHooks implements
 		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
 	) {
 		$this->config = $config;
-		$this->campaignConfig = $campaignConfig;
 		$this->lb = $lb;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -447,10 +439,7 @@ class HomepageHooks implements
 					$context->getUser(),
 					self::getGrowthWikiConfig()
 				),
-				'wgGETopicsMatchModeEnabled' => $this->campaignConfig->isUserInCampaign(
-					$context->getUser(),
-					'growth-glam-2022'
-				)
+				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' )
 			] );
 		}
 	}

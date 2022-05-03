@@ -211,7 +211,6 @@
 			"class": "GrowthExperiments\\HomepageHooks",
 			"services": [
 				"MainConfig",
-				"GrowthExperimentsCampaignConfig",
 				"DBLoadBalancer",
 				"UserOptionsManager",
 				"UserOptionsLookup",
@@ -2018,6 +2017,10 @@
 		"GELinkRecommendationsFrontendEnabled": {
 			"description": "Global ON/OFF switch for the link recommendations feature. Depending on the state, either the 'links' or the 'link-recommendation' task type is hidden. Can be overridden by SuggestedEdits::LINK_RECOMMENDATIONS_ENABLED_PREF.",
 			"value": true
+		},
+		"GETopicsMatchModeEnabled": {
+			"description": "Global ON/OFF switch for the topics match mode UI feature.",
+			"value": false
 		},
 		"GENewcomerTasksImageRecommendationsEnabled": {
 			"description": "Global ON/OFF switch for image recommendations.",
