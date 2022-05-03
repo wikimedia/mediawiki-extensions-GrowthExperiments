@@ -57,7 +57,7 @@
 	"growthexperiments-homepage-email-text-noemail": "Рекомендуется для восстановления учетной записи",
 	"growthexperiments-homepage-email-text-unconfirmed": "На {{GENDER:$1|ваш}} адрес электронной почты отправлено письмо с подтверждением. Если письма нет, запросите его ещё раз.",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|Ваша}} почта подтверждена. Вы можете изменить её параметры в настройках.",
-	"growthexperiments-homepage-email-button-noemail": "Добавить адрес электронной почты",
+	"growthexperiments-homepage-email-button-noemail": "Добавить адрес эл. почты",
 	"growthexperiments-homepage-email-button-unconfirmed": "Получить новую ссылку",
 	"growthexperiments-homepage-email-button-confirmed": "Настройки",
 	"growthexperiments-homepage-email-changelink": "изменить",
