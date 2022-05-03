@@ -2,6 +2,8 @@
 @import '../utils/mixins.less';
 
 @headerHeight: 48px;
+@revealCloseIconTransitionDuration: 250ms;
+@slideInTitleTransitionDuration: 300ms;
 
 .mw-ge-collapsibleDrawer {
 	position: fixed;
@@ -24,6 +26,18 @@
 
 	&--collapsed {
 		transform: translateY( ~'calc(100% - @{headerHeight})' );
+
+		.mw-ge-collapsibleDrawer-headerText-text {
+			transition-timing-function: ease-in;
+			// 22px icon width + 8px right margin from close-icon ButtonWidget
+			transform: translateX( 30px );
+		}
+
+		.mw-ge-collapsibleDrawer-close-icon {
+			transition-timing-function: ease-in;
+			transition-delay: 100ms;
+			opacity: 1;
+		}
 	}
 
 	&-introContent {
@@ -45,6 +59,19 @@
 	&-headerText {
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 18.28px, @targetLineHeight: 26px );
 		font-weight: bold;
+		display: flex;
+		align-items: center;
+
+		&-text {
+			transition: transform @slideInTitleTransitionDuration ease-out;
+			transform: translateX( 0 );
+		}
+	}
+
+	&-close-icon {
+		position: absolute;
+		transition: opacity @revealCloseIconTransitionDuration ease-out;
+		opacity: 0;
 	}
 
 	.mw-ge-collapsibleDrawer--padded {
