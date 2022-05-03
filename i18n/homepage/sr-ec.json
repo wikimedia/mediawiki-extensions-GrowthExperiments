@@ -3,6 +3,7 @@
 		"authors": [
 			"BadDog",
 			"Kizule",
+			"Milicevic01",
 			"Zoranzoki21",
 			"Вукан Ц"
 		]
@@ -271,8 +272,8 @@
 	"growthexperiments-claimmentee-confirm": "Да, заиста желим да променим ментора",
 	"growthexperiments-log-name": "Дневник менторства",
 	"growthexperiments-log-header": "У овом дневнику налазе се радње извршене у додатку GrowthExperiments.",
-	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|преузео|преузела|преузео/-ла}} је новајлију {{GENDER:$6|$3}} ({{GENDER:$4|претходни ментор|претходна менторка}}: $5)",
-	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|преузео|преузела|преузео/-ла}} је новајлију {{GENDER:$6|$3}} (без претходног ментора)",
+	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|преузео|преузела}} је новајлију {{GENDER:$6|$3}} ({{GENDER:$4|претходни ментор|претходна менторка}}: $5)",
+	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|преузео|преузела}} је новајлију {{GENDER:$6|$3}} (без претходног ментора)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|поставио|поставила}} је {{GENDER:$5|корисника|корисницу}} $7 за {{GENDER:$5|ментора|менторку}} новајлије {{GENDER:$6|$3}} ({{GENDER:$4|претходни ментор|претходна менторка}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|поставио|поставила}} је {{GENDER:$5|корисника|корисницу}} $7 за {{GENDER:$5|ментора|менторку}} новајлије {{GENDER:$6|$3}} (без претходног ментора)",
 	"log-action-filter-growthexperiments-setmentor": "Промена ментора",
@@ -321,5 +322,7 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Откажи",
 	"growthexperiments-addimage-inspector-yes-button": "Да",
 	"growthexperiments-addimage-inspector-no-button": "Не",
-	"growthexperiments-addimage-inspector-skip-button": "Прескочи"
+	"growthexperiments-addimage-inspector-skip-button": "Прескочи",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Откажи",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Настави"
 }

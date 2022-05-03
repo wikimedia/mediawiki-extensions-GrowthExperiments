@@ -380,5 +380,7 @@
 	"growthexperiments-addimage-inspector-help-button": "編集についてヘルプしてもらう",
 	"growthexperiments-addimage-submitting-title": "送信中...",
 	"growthexperiments-structuredtask-user-error-login-cta": "ログイン",
-	"growthexperiments-addimage-summary-label": "概要"
+	"growthexperiments-addimage-summary-label": "概要",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "キャンセル",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "続行"
 }

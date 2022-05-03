@@ -3,11 +3,12 @@
 		"authors": [
 			"Atej2*",
 			"Gadarawamo",
-			"Joshateji"
+			"Joshateji",
+			"Misteld"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Odá nubiọtomẹsi tọn",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Yì dònu awè nubiọtomẹsi lọ tọn",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|towe}} agban yin didiọ do\"$1\".",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Didè ayinamẹtọ lẹ pò kavi yiyí dogọ na zọn bọ kanbiọ he {{GENDER:|a}} na na gblọndo etọn na su kavi whè. Etomọṣo, ayinamẹtọ he yin dide na we lẹ wẹ na yọn sọha kanbiọ he e na kanbiọ we tọn."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Nuplọntọ lẹ nọ yin azọndena to whenuena yẹ hùn adà yetọn lẹ tlolo. A sọgan basi nudide gando mẹplọntọ he ko yin dide na we lẹ go, ṣìgba mẹplọntọ delẹ sọgan kan kanbiọ se we hugan devo lẹ."
 }
