@@ -75,7 +75,7 @@
 		 *
 		 * @param {boolean} isHelpButtonVisible Whether the help button should be shown
 		 */
-		function toggleHelpButtonVisiblity( isHelpButtonVisible ) {
+		function toggleHelpButtonVisibility( isHelpButtonVisible ) {
 			$buttonWrapper.toggleClass( 'mw-ge-help-panel-ready', isHelpButtonVisible );
 		}
 
@@ -108,7 +108,7 @@
 				$overlay.append( $buttonWrapper );
 				isCtaHidden = false;
 			} else if ( isCtaHidden ) {
-				toggleHelpButtonVisiblity( true );
+				toggleHelpButtonVisibility( true );
 				isCtaHidden = false;
 			}
 			helpPanelProcessDialog.logger.log( 'impression', taskTypeLogData, metadataOverride );
@@ -186,7 +186,7 @@
 				.append( helpCtaButton.$element );
 		}
 		// Make the button visible (with slide up animation) if it's already on the page
-		toggleHelpButtonVisiblity( true );
+		toggleHelpButtonVisibility( true );
 
 		function openHelpPanel( panel ) {
 			if ( OO.ui.isMobile() ) {
@@ -413,7 +413,7 @@
 		// Allow the CTA to be hidden when there's a completing overlay (ex: post-edit dialog)
 		mw.hook( 'helpPanel.hideCta' ).add( function () {
 			isCtaHidden = true;
-			toggleHelpButtonVisiblity( false );
+			toggleHelpButtonVisibility( false );
 		} );
 	} );
 

@@ -103,7 +103,7 @@ CollapsibleDrawer.prototype.toggleDisplayState = function () {
  * @param {string} [headerText]
  */
 CollapsibleDrawer.prototype.setupHeader = function ( headerText ) {
-	// this.closeIconBtn visiblity is toggled using CSS classes
+	// this.closeIconBtn visibility is toggled using CSS classes
 	// that modify the opacity for animation purposes. It is only
 	// shown when the drawer is open
 	this.closeIconBtn = new OO.ui.ButtonWidget( {
