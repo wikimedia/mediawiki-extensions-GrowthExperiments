@@ -69,6 +69,8 @@
 			.text( this.task.title );
 
 		if ( this.task.description ) {
+			$title.addClass( 'mw-ge-small-task-card-title--with-description' );
+
 			$description = $( '<div>' )
 				.addClass( 'mw-ge-small-task-card-description' )
 				.text( this.task.description );
