@@ -498,5 +498,12 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "عُلم",
 	"growthexperiments-addimage-caption-warning-tooshort": "يجب أن يكون الشرح متكوّنا من {{PLURAL:$1||حرف واحد|حرفين|$1 أحرف|$1 حرفا|$1 حرف}} فأكثر.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "لقد انتهيت من كلّ اقتراحات الصور لهذا اليوم.\n\n{{GENDER:|عدّل|عدّلي}} من مستوى الصعوبة للحصول على أنواع أخرى من التعديلات أو {{GENDER:|ارجع|ارجعي}} غداً للمزيد من اقتراحات الصّور.",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "عُلم"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "عُلم",
+	"growthexperiments-homepage-mentorship-optin-header": "مُرشِد للتعديل",
+	"growthexperiments-homepage-mentorship-optin-text": "لو كانت {{GENDER:|لديكَ|لديكِ}} أسئلة حول التعديل، يمكن تعيين مستخدم(ـة) خبير(ة) كـ«مرشد(ة)» لمساعدتك.",
+	"growthexperiments-homepage-mentorship-optin-button": "الحصول على مُرشد(ة)",
+	"growthexperiments-homepage-mentorship-confirm-dialog-header": "الحصول على مُرشد(ة)؟",
+	"growthexperiments-homepage-mentorship-confirm-dialog-text": "{{GENDER:|تابع|تابعي}} للحصول على مستخدم(ـة) خبير(ة) كـ«مرشد(ة)» لك في التعديل.",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "إلغاء",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "{{GENDER:|تابع|تابعي}}"
 }

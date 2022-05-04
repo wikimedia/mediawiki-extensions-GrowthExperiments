@@ -482,5 +482,12 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Am înțeles",
 	"growthexperiments-addimage-caption-warning-tooshort": "Descrierile scurte trebuie să aibă $1 {{PLURAL:$1|caracter|caractere}} sau mai mult.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Ați}} finalizat toate sugestiile de legare pentru astăzi. \n\n{{GENDER:|Ajustați-vă}} nivelurile de dificultate pentru a vedea alte tipuri de editări sau reveniți mâine pentru mai multe sugestii de legare.",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Am înțeles"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Am înțeles",
+	"growthexperiments-homepage-mentorship-optin-header": "Mentor pentru editare",
+	"growthexperiments-homepage-mentorship-optin-text": "Dacă {{GENDER:|aveți}} întrebări despre editare, atunci un utilizator experimentat poate fi atribuit ca „mentorul” dvs. pentru a vă ajuta.",
+	"growthexperiments-homepage-mentorship-optin-button": "Primiți un mentor",
+	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Primiți un mentor?",
+	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Continuați pentru a primi un utilizator experimentat drept mentorul {{GENDER:|dvs.}} pentru editare.",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Anulare",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continuă"
 }
