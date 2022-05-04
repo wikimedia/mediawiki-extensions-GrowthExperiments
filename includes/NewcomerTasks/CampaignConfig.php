@@ -85,16 +85,20 @@ class CampaignConfig {
 		$userCampaign = $this->userOptionsLookup->getOption(
 			$user, VariantHooks::GROWTH_CAMPAIGN
 		);
-		return $this->getTopicsToExcludeForCampaign( $userCampaign );
+		if ( !$userCampaign ) {
+			return $this->topics;
+		}
+		$campaign = $this->getCampaignIndexFromCampaignTerm( $userCampaign );
+		return $this->getTopicsToExcludeForCampaign( $campaign );
 	}
 
 	/**
 	 * Get the topic IDs to exclude for the specified campaign
 	 *
-	 * @param ?string $campaign
+	 * @param string|null $campaign
 	 * @return array
 	 */
-	public function getTopicsToExcludeForCampaign( ?string $campaign = null ): array {
+	public function getTopicsToExcludeForCampaign( string $campaign = null ): array {
 		if ( $campaign && array_key_exists( $campaign, $this->config ) ) {
 			// Make sure topics shared between multiple campaigns aren't excluded
 			return array_diff( $this->topics, $this->getTopicsForCampaign( $campaign ) );
@@ -113,6 +117,21 @@ class CampaignConfig {
 			return $this->config[ $campaign ][ 'pattern' ];
 		}
 		return null;
+	}
+
+	/**
+	 * Get the campaign name/index for the specified stored campaign term.
+	 * @see VariantHooks::onLocalUserCreated()
+	 *
+	 * @param string $campaignTerm
+	 * @return ?string
+	 */
+	public function getCampaignIndexFromCampaignTerm( string $campaignTerm ): ?string {
+		$campaigns = array_filter( $this->config, static function ( $campaignConfig ) use ( $campaignTerm ) {
+			return $campaignConfig[ 'pattern' ] && preg_match( $campaignConfig[ 'pattern' ], $campaignTerm );
+		} );
+
+		return array_key_first( $campaigns );
 	}
 
 	/**

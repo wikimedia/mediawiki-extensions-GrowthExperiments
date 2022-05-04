@@ -75,9 +75,9 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 				$userGlamCampaign, $userArgentinaCampaign, $userCampaignWithoutTopics
 			) {
 				if ( $user === $userGlamCampaign ) {
-					return 'growth-glam-2022';
+					return 'growth-glam-es-2022';
 				} elseif ( $user === $userArgentinaCampaign ) {
-					return 'growth-argentina-2022';
+					return 'growth-argentina-es-2022';
 				} elseif ( $user === $userCampaignWithoutTopics ) {
 					return 'growth-donor-campaign';
 				}
@@ -93,10 +93,12 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 		$config = $this->createMock( Config::class );
 		$config->method( 'get' )->willReturn( [
 			'growth-glam-2022' => [
-				'topics' => [ 'argentina', 'mexico', 'chile' ]
+				'topics' => [ 'argentina', 'mexico', 'chile' ],
+				'pattern' => '/^growth-glam-es-2022$|^growth-glam-en-2022$/'
 			],
 			'growth-argentina-2022' => [
 				'topics' => [ 'argentina', 'argentina-expanded' ],
+				'pattern' => '/^growth-argentina-es-2022$/'
 			],
 		] );
 		$this->assertArrayEquals(

@@ -3,6 +3,8 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
+use MediaWiki\User\UserIdentityValue;
+use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 
 /**
@@ -106,6 +108,58 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals(
 			$campaignConfig->getTopicsToExcludeForCampaign(),
 			[ 'argentina', 'mexico', 'chile', 'argentina-expanded' ]
+		);
+	}
+
+	public function testGetTopicsToExcludeForUser() {
+		$mockUserOptionsLookup = $this->createNoOpMock( UserOptionsLookup::class, [ 'getOption' ] );
+		$campaignConfig = new CampaignConfig( [
+			'some-campaign' => [
+				'topics' => [ 'topic-1' ],
+				'pattern' => '/^growth-glam-2022$/'
+			],
+			'another-campaign' => [
+				'topics' => [ 'topic-2' ],
+				'pattern' => '/^growth-thankyou-2022$/'
+			]
+		], [
+			'topic-1' => 'growtharticletopic:topic-1',
+			'topic-2' => 'growtharticletopic:topic-2'
+		], $mockUserOptionsLookup );
+
+		$user = new UserIdentityValue( 1, 'User1' );
+		$getOptionMock = $mockUserOptionsLookup->method( 'getOption' );
+
+		// The user is in the campaign
+		$getOptionMock->willReturn( 'growth-glam-2022' );
+		// Should return topic-2 to exclude because the user is in the campaign with topic-1
+		$this->assertArrayEquals(
+			[ 'topic-2' ],
+			$campaignConfig->getTopicsToExcludeForUser( $user )
+		);
+
+		// The user is in the campaign
+		$getOptionMock->willReturn( 'growth-thankyou-2022' );
+		// Should return topic-1 to exclude because the user is in the campaign with topic-2
+		$this->assertArrayEquals(
+			[ 'topic-1' ],
+			$campaignConfig->getTopicsToExcludeForUser( $user )
+		);
+
+		// The user is NOT in any known campaign
+		$getOptionMock->willReturn( 'not-in-any-informed-campaign' );
+		// Should return topics to exclude because the user is NOT any of the campaigns
+		$this->assertArrayEquals(
+			[ 'topic-1', 'topic-2' ],
+			$campaignConfig->getTopicsToExcludeForUser( $user )
+		);
+
+		// The user is NOT in any known campaign
+		$getOptionMock->willReturn( null );
+		// Should return topics to exclude because the user is NOT any of the campaigns
+		$this->assertArrayEquals(
+			[ 'topic-1', 'topic-2' ],
+			$campaignConfig->getTopicsToExcludeForUser( $user )
 		);
 	}
 }
