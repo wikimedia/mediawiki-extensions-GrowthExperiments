@@ -65,7 +65,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Your status was changed to \"Away\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Message to your mentees",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Claim mentee",
-	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "You can change a mentee’s mentor to yourself. Frequently used for editing events so that instructors can be a newcomer’s mentor both on and off wiki.",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "You can change a mentee’s mentor to yourself. This is frequently used for editing events so that instructors can be a newcomer’s mentor both on and off wiki.",
 	"growthexperiments-rcfilters-mentorship-title": "Mentorship",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Your}} starred mentees",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Mentees assigned to {{GENDER:|you}} whom {{GENDER:|you}} have starred on {{GENDER:|your}} mentor dashboard",
