@@ -497,5 +497,11 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Rozumím",
 	"growthexperiments-addimage-caption-warning-tooshort": "Popisek musí mít nejméně $1 {{PLURAL:$1|znak|znaky|znaků}}.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "Již jste {{GENDER:|dokončil|dokončila|dokončili}} všechny dnešní návrhy.\n\nZměňte zvolené typy editací, abyste {{GENDER:|viděl|viděla|viděli}} i další návrhy, anebo se vraťte zpět zítra, kdy se zde objeví další návrhy.",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Rozumím"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Rozumím",
+	"growthexperiments-homepage-mentorship-optin-text": "Pokud máte nějaké otázky o editování Wikipedie, můžeme vám přiřadit zkušeného wikipedistu jako vašeho mentora, aby vám pomohl.",
+	"growthexperiments-homepage-mentorship-optin-button": "Získat mentora",
+	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Získat mentora?",
+	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Pokračujte, abyste {{GENDER:|získal|získala|získali}} zkušeného mentora.",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Storno",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Pokračovat"
 }
