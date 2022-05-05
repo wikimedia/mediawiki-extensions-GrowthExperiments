@@ -365,7 +365,7 @@ AddLinkArticleTarget.prototype.getTreeWalker = function ( doc ) {
 };
 
 /**
- * Check whether any of the the annotation states meet the specified condition
+ * Check whether any of the annotation states meet the specified condition
  *
  * @param {Function} checkFn
  * @return {boolean}
