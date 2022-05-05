@@ -24,12 +24,32 @@
 	};
 
 	/**
+	 * @return {Object}
+	 */
+	MenteeOverviewPresets.prototype.getFilters = function () {
+		return this.getPreset( 'filters' ) || {};
+	};
+
+	/**
+	 * @param {Object} value
+	 * @return {jQuery.Promise}
+	 */
+	MenteeOverviewPresets.prototype.setFilters = function ( value ) {
+		return this.setPreset( 'filters', value );
+	};
+
+	/**
 	 * Get presets blob.
 	 *
 	 * @return {Object}
 	 */
 	MenteeOverviewPresets.prototype.getPresets = function () {
-		return JSON.parse( mw.user.options.get( this.optionName ) ) || {};
+		var presets = JSON.parse( mw.user.options.get( this.optionName ) ) || {};
+		if ( presets.filters === undefined ) {
+			// temporary: migrating -filters to -presets (T304057)
+			presets.filters = JSON.parse( mw.user.options.get( 'growthexperiments-mentee-overview-filters' ) ) || {};
+		}
+		return presets;
 	};
 
 	/**

@@ -1,16 +1,15 @@
 ( function () {
 	'use strict';
 
+	var MenteeOverviewPresets = require( './MenteeOverviewPresets.js' );
+
 	function FilterDropdown( config ) {
 		FilterDropdown.super.call( this, config );
 
+		this.presetsClient = new MenteeOverviewPresets();
+
 		// stored in MenteeOverview's onFilterDropdownSubmit; default value provided in PHP from MentorDashboardHooks
-		var savedFilters;
-		try {
-			savedFilters = JSON.parse( mw.user.options.get( 'growthexperiments-mentee-overview-filters' ) ) || {};
-		} catch ( e ) {
-			savedFilters = {};
-		}
+		var savedFilters = this.presetsClient.getFilters();
 
 		// prepare widgets that contain information we filter by
 		this.filterDropdownEditsFrom = new OO.ui.NumberInputWidget( {
