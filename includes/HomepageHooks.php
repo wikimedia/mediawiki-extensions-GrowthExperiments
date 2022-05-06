@@ -505,10 +505,10 @@ class HomepageHooks implements
 				$talkpage = $this->namespaceInfo->getTalkPage( $title );
 
 				if ( $subjectpage instanceof \TitleValue ) {
-					$subjectpage = Title::newFromTitleValue( $subjectpage );
+					$subjectpage = Title::newFromLinkTarget( $subjectpage );
 				}
 				if ( $talkpage instanceof \TitleValue ) {
-					$talkpage = Title::newFromTitleValue( $talkpage );
+					$talkpage = Title::newFromLinkTarget( $talkpage );
 				}
 			} else {
 				$subjectpage = $userpage;
