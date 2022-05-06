@@ -35,6 +35,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Přejít na další tip:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Další návrh:",
 	"growthexperiments-help-panel-postedit-footer": "Zobrazit více editačních tipů",
+	"growthexperiments-help-panel-postedit-suggestededits-info": "Další uživatelé {{GRAMMAR:2sg|{{SITENAME}}}} našli články, které je potřeba vylepšit. Pokračujte v editaci za pomoci editačních tipů.",
 	"growthexperiments-help-panel-questionreview-title": "Položit dotaz komunitě",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Zeptejte se svého mentora",
 	"growthexperiments-help-panel-questionreview-header": "Pokud zde vložíte svou otázku, bude <strong>veřejně dostupná</strong> pod vaším uživatelským jménem, „$2“, na stránce $1, což je stránka, kde vám mohou ostatní wikipedisté zodpovědět vaše otázky. Odpověď obvykle dostanete během jednoho dne.",

@@ -433,5 +433,7 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "알겠습니다",
 	"growthexperiments-addimage-caption-warning-tooshort": "설명은 $1{{PLURAL:$1|자}} 이상이어야 합니다.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "오늘의 링크 제안을 모두 마치셨습니다.\n\n다른 유형의 편집을 보려면 난이도를 조절하시고, 더 많은 링크 제안을 보려면 내일 다시 오십시오.",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "알겠습니다"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "알겠습니다",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "취소",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "계속"
 }
