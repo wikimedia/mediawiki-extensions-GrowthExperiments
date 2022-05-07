@@ -564,7 +564,12 @@
 				"ext.growthExperiments.Homepage.Mentorship/RecentQuestions.js",
 				"ext.growthExperiments.Homepage.Mentorship/OptIn.js",
 				"ext.growthExperiments.Homepage.Logger/index.js",
-				"utils/Utils.js"
+				"utils/Utils.js",
+				"ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js",
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutDialog.js",
+				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js"
 			],
 			"targets": [
 				"desktop",
@@ -575,14 +580,26 @@
 				"ext.growthExperiments.SuggestedEditSession",
 				"mediawiki.api",
 				"mediawiki.jqueryMsg",
-				"mediawiki.router"
+				"mediawiki.router",
+				"oojs-ui-widgets"
 			],
 			"messages": [
 				"growthexperiments-homepage-recent-questions-header",
 				"growthexperiments-homepage-mentorship-confirm-dialog-header",
 				"growthexperiments-homepage-mentorship-confirm-dialog-text",
 				"growthexperiments-homepage-mentorship-confirm-dialog-cancel",
-				"growthexperiments-homepage-mentorship-confirm-dialog-continue"
+				"growthexperiments-homepage-mentorship-confirm-dialog-continue",
+				"growthexperiments-homepage-mentorship-ellipsis-menu-optout",
+				"growthexperiments-homepage-mentorship-optout-header",
+				"growthexperiments-homepage-mentorship-optout-text",
+				"growthexperiments-homepage-mentorship-optout-cancel",
+				"growthexperiments-homepage-mentorship-optout-optout",
+				"growthexperiments-homepage-mentorship-optout-confirmation-header",
+				"growthexperiments-homepage-mentorship-optout-confirmation-pretext",
+				"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor",
+				"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor",
+				"growthexperiments-homepage-mentorship-optout-confirmation-reason-other",
+				"growthexperiments-homepage-mentorship-optout-confirmation-done"
 			]
 		},
 		"ext.growthExperiments.Homepage.SuggestedEdits": {
@@ -794,7 +811,8 @@
 				"ext.growthExperiments.Homepage.styles/StartEmailModule.less",
 				"ext.growthExperiments.Homepage.styles/Homepage.less",
 				"ext.growthExperiments.Homepage.styles/StartEditingModule.less",
-				"ext.growthExperiments.Homepage.styles/ConfirmEmailNotice.less"
+				"ext.growthExperiments.Homepage.styles/ConfirmEmailNotice.less",
+				"ext.growthExperiments.Homepage.styles/EllipsisMenu.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [

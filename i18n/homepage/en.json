@@ -494,5 +494,16 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Get a mentor?",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Continue to get an experienced editor as {{GENDER:|your}} editing mentor.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Cancel",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continue"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continue",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Opt out of mentorship",
+	"growthexperiments-homepage-mentorship-optout-header": "Opt out of mentoring?",
+	"growthexperiments-homepage-mentorship-optout-text": "You can always opt back into mentorship again. However, you may not receive the same mentor as before.",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Cancel",
+	"growthexperiments-homepage-mentorship-optout-optout": "Opt out",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|You're}} no longer being mentored.",
+	"growthexperiments-homepage-mentorship-optout-confirmation-pretext": "Take a moment to let us know why {{GENDER:|you}} decided to opt-out (optional):",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "I want a different mentor",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "I don’t want a mentor at all ",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Other / I’d prefer not to say",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Done"
 }
