@@ -7,7 +7,8 @@
 		promisedView = mobile.promisedView,
 		Overlay = mobile.Overlay,
 		util = mobile.util,
-		mfExtend = mobile.mfExtend;
+		mfExtend = mobile.mfExtend,
+		EllipsisMenu = require( '../ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js' );
 
 	/**
 	 * Displays homepage module in an overlay.
@@ -34,10 +35,15 @@
 		preRender: function () {
 			var options = this.options,
 				infoButton,
+				ellipsisMenu,
 				headerActions = [];
 
 			function shouldShowInfoButton( moduleName ) {
 				return moduleName === 'suggested-edits';
+			}
+
+			function shouldShowEllipsisMenu( moduleName ) {
+				return moduleName === 'mentorship';
 			}
 
 			if ( shouldShowInfoButton( options.moduleName ) ) {
@@ -62,6 +68,20 @@
 						{ class: 'homepage-module-overlay-info' },
 						[ infoButton.$element ]
 					);
+				} );
+				headerActions = [ promisedView( this.headerPromise ) ];
+			} else if ( shouldShowEllipsisMenu( options.moduleName ) ) {
+				this.headerPromise = mw.loader.using( 'oojs-ui' ).then( function () {
+					ellipsisMenu = new EllipsisMenu( {
+						mode: 'mobile-overlay'
+					} );
+					ellipsisMenu.$element.data( 'module-name', options.moduleName );
+					ellipsisMenu.$element.data( 'mode', 'mobile-overlay' );
+					return View.make(
+						{ class: 'homepage-module-overlay-ellipsis-menu' },
+						[ ellipsisMenu.$element ]
+					);
+
 				} );
 				headerActions = [ promisedView( this.headerPromise ) ];
 			} else {
