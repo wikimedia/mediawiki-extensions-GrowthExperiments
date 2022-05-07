@@ -44,6 +44,7 @@
 						state: 'enabled'
 					} ).then( function () {
 						homepageModuleLogger.log( 'mentorship', mode, 'mentorship-optin' );
+						history.replaceState( null, '', mw.util.getUrl( 'Special:Homepage' ) );
 						window.location.reload();
 					} );
 				}

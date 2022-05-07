@@ -42,7 +42,7 @@
 					action: 'growthsetmenteestatus',
 					state: 'optout'
 				} ).then( function () {
-					history.pushState( null, '', mw.util.getUrl( 'Special:Homepage' ) );
+					history.replaceState( null, '', mw.util.getUrl( 'Special:Homepage' ) );
 					window.location.reload();
 				} );
 			} );
