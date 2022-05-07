@@ -497,6 +497,11 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/TaskTypesAbFilter.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TopicFilters.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/constants.js",
+				"ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js",
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutDialog.js",
+				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				{
@@ -529,6 +534,7 @@
 			],
 			"dependencies": [
 				"ext.growthExperiments.icons",
+				"ext.growthExperiments.Homepage.Mentorship",
 				"mediawiki.language",
 				"oojs-ui-widgets"
 			]
