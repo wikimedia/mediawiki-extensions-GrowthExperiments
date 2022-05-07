@@ -44,12 +44,16 @@
 	 * @return {Object}
 	 */
 	MenteeOverviewPresets.prototype.getPresets = function () {
-		var presets = JSON.parse( mw.user.options.get( this.optionName ) ) || {};
-		if ( presets.filters === undefined ) {
-			// temporary: migrating -filters to -presets (T304057)
-			presets.filters = JSON.parse( mw.user.options.get( 'growthexperiments-mentee-overview-filters' ) ) || {};
+		try {
+			var presets = JSON.parse( mw.user.options.get( this.optionName ) ) || {};
+			if ( presets.filters === undefined ) {
+				// temporary: migrating -filters to -presets (T304057)
+				presets.filters = JSON.parse( mw.user.options.get( 'growthexperiments-mentee-overview-filters' ) ) || {};
+			}
+			return presets;
+		} catch ( e ) {
+			return {};
 		}
-		return presets;
 	};
 
 	/**
