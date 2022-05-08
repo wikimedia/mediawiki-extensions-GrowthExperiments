@@ -85,6 +85,9 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$contextMock->expects( $this->atLeastOnce() )
 			->method( 'getUser' )
 			->willReturn( $userMock );
+		$contextMock->expects( $this->atLeastOnce() )
+			->method( 'msg' )
+			->willReturn( $this->getMockMessage( 'welcomesurvey-question-mailinglist-help' ) );
 		return new WelcomeSurvey(
 			$contextMock,
 			$this->getLanguageNameUtilsMockObject(),

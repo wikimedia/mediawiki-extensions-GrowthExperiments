@@ -6,11 +6,14 @@ use ExtensionRegistry;
 use FormatJson;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use IContextSource;
+use MediaWiki\HtmlHelper;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserOptionsManager;
 use MWTimestamp;
 use SpecialPage;
+use Wikimedia\RemexHtml\HTMLData;
+use Wikimedia\RemexHtml\Serializer\SerializerNode;
 
 class WelcomeSurvey {
 
@@ -233,7 +236,9 @@ class WelcomeSurvey {
 				"type" => "check",
 				"group" => "email",
 				"label-message" => "welcomesurvey-question-mailinglist-label",
-				"help-message" => "welcomesurvey-question-mailinglist-help",
+				"help" => $this->addLinkTarget(
+					$this->context->msg( 'welcomesurvey-question-mailinglist-help' )->parse()
+				),
 			],
 			"languages" => [
 				"type" => "multiselect",
@@ -387,6 +392,23 @@ class WelcomeSurvey {
 			'_welcomesurveytoken' => $welcomeSurveyToken
 		] );
 		return $welcomeSurvey->getFullUrlForRedirect( $query );
+	}
+
+	/**
+	 * Add target=_blank to links in a HTML snippet.
+	 * @param string $html
+	 * @return string
+	 */
+	private function addLinkTarget( string $html ) {
+		return HtmlHelper::modifyElements( $html, static function ( SerializerNode $node ) {
+			return $node->namespace === HTMLData::NS_HTML
+				&& $node->name === 'a'
+				&& isset( $node->attrs['href'] )
+				&& !isset( $node->attrs['target'] );
+		}, static function ( SerializerNode $node ) {
+			$node->attrs['target'] = '_blank';
+			return $node;
+		} );
 	}
 
 }
