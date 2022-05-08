@@ -37,7 +37,10 @@ class CampaignConfig {
 		$this->config = $config;
 		$this->topicConfig = $topicConfig;
 		$this->topics = array_unique( array_reduce( $config, static function ( $topics, $campaign ) {
-			array_push( $topics, ...$campaign[ 'topics' ] ?? [] );
+			$campaignTopics = $campaign[ 'topics' ] ?? [];
+			if ( $campaignTopics ) {
+				array_push( $topics, ...$campaignTopics );
+			}
 			return $topics;
 		}, [] ) );
 		$this->userOptionsLookup = $userOptionsLookup;
