@@ -499,5 +499,6 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "বুঝেছি",
 	"growthexperiments-addimage-caption-warning-tooshort": "ক্যাপশনের দৈর্ঘ্য $1 {{PLURAL:$1|অক্ষর}} বা তার বেশি হতে হবে।",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|আপনি}} আজকের লিঙ্কের সকল পরামর্শের কাজ সম্পন্ন করেছেন।\n\n{{GENDER:|আপনার}} সম্পাদনার ধরন থেকে অন্যান্য ধরনের সম্পাদনা দেখুন অথবা আগামীকাল পুনরায় লিঙ্কের পরামর্শের কাজ করুন।",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "বুঝেছি"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "বুঝেছি",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "বাতিল"
 }

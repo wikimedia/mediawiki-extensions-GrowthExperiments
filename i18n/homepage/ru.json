@@ -494,5 +494,9 @@
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|другой|других}}",
 	"growthexperiments-addimage-reason-wikipedia-project": "Используется в такой же статье в $1.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Понятно",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Понятно"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Понятно",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Отмена",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Я хочу другого(-ую) наставника(-ницу)",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Я вовсе не хочу наставника(-ницу)",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Готово"
 }

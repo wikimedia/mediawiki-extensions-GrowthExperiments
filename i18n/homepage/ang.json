@@ -11,5 +11,11 @@
 	"growthexperiments-addlink-invalidjson": "For \"$1\" andswarode seo befæsthlenc þegnung þe swylc nis genge",
 	"growthexperiments-addlink-serviceerror": "Befæsthlenca þegnung andswarode mid dolscipes tacne for \"$1\": $2",
 	"growthexperiments-addlink-rejectiondialog-title": "Hwy nis þes til hlenc?",
-	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Ceos for hwy þes nis til hlenc"
+	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Ceos for hwy þes nis til hlenc",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Undo",
+	"growthexperiments-homepage-mentorship-optout-optout": "Forhatan",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "Ðu næfð nu lareow.",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Ic beneah lareow se þweoraþ",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Ic ne beneah lareow",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Gedon"
 }

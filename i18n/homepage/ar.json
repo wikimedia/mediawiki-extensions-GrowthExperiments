@@ -505,5 +505,9 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "الحصول على مُرشد(ة)؟",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "{{GENDER:|تابع|تابعي}} للحصول على مستخدم(ـة) خبير(ة) كـ«مرشد(ة)» لك في التعديل.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "إلغاء",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "{{GENDER:|تابع|تابعي}}"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "{{GENDER:|تابع|تابعي}}",
+	"growthexperiments-homepage-mentorship-optout-cancel": "إلغاء",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "أريد مرشدًا آخر",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "لا أريد مرشدًا على الإطلاق",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "تم"
 }

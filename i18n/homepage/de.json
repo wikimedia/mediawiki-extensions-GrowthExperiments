@@ -511,5 +511,11 @@
 	"growthexperiments-homepage-mentorship-optin-button": "Einen Lotsen finden",
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Einen Lotsen finden?",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Abbrechen",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Fortfahren"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Fortfahren",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Abbrechen",
+	"growthexperiments-homepage-mentorship-optout-optout": "Abmelden",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Ich möchte einen anderen Lotsen",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Ich möchte überhaupt keinen Lotsen haben",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Sonstiges / Ich möchte lieber nichts sagen",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Fertig"
 }

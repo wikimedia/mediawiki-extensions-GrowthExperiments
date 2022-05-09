@@ -489,5 +489,16 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Primiți un mentor?",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Continuați pentru a primi un utilizator experimentat drept mentorul {{GENDER:|dvs.}} pentru editare.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Anulare",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continuă"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continuă",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Renunțați la mentor",
+	"growthexperiments-homepage-mentorship-optout-header": "Renunțați la mentor?",
+	"growthexperiments-homepage-mentorship-optout-text": "Puteți să alegeți oricând să aveți din nou un mentor. Totuși, s-ar putea să nu primiți același mentor ca înainte.",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Anulare",
+	"growthexperiments-homepage-mentorship-optout-optout": "Renunțare",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|Nu}} mai aveți mentor.",
+	"growthexperiments-homepage-mentorship-optout-confirmation-pretext": "Luați-vă câteva clipe pentru a ne înștiința de ce ați {{GENDER:|decis}} să renunțați (opțional):",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Vreau un mentor diferit",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Nici nu vreau un mentor",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Altceva / Prefer să nu spun",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Realizat"
 }

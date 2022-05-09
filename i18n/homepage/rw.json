@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Germain92"
+		]
+	},
+	"growthexperiments-homepage-mentorship-optin-header": "Umujyanama wo guhindura",
+	"growthexperiments-homepage-mentorship-optin-text": "Niba {{GENDER:|you}} ufite ibibazo mu gukosora,wahabwa umwanditsi umenyereye ngo agufashe",
+	"growthexperiments-homepage-mentorship-optin-button": "Shaka umujyanama",
+	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Shaka umujyanama",
+	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Komeza ubone umwanditsi winararibonye {{GENDER:|your}} nk’umujyanama wawe",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Guhagarika",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Komeza",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Hitamo amahugurwa",
+	"growthexperiments-homepage-mentorship-optout-header": "Hitamo inama?",
+	"growthexperiments-homepage-mentorship-optout-text": "Ushobora kongera guhitamo umujyanama.ariko ntushobora kubona nkuwo wari wabonye mbere.",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Siba",
+	"growthexperiments-homepage-mentorship-optout-optout": "Kuramo",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:}} ntabwo ukiri gutozwa.",
+	"growthexperiments-homepage-mentorship-optout-confirmation-pretext": "Fata akanya utumenyeshe impamvu {{GENDER:|wowe}} wahisemo  (ibidashoboka):",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Ndashaka undi Mujyanama",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Sinshaka umujyanama nagato",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "ibindi / nahitamo kutabivuga",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Byakozwe"
+}

@@ -11,18 +11,20 @@
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|מה זה?]])",
-	"growthexperiments-confirmemail-emailhelp": "כתובת דואר אלקטרוני נדרשת אם הסיסמה שלך תאבד.",
+	"growthexperiments-confirmemail-emailhelp": "כתובת דואר אלקטרוני נדרשת אם הסיסמה שלך תלך לאיבוד.",
 	"growthexperiments-confirmemail-emailrecommended": "כתובת דוא\"ל (מומלץ)",
 	"growthexperiments-confirmemail-emailwarning": "נא לחפש דואר אלקטרוני מאיתנו כדי לאשר את הכתובת שלך.",
 	"growthexperiments-confirmemail-confirm-subject": "{{GENDER:|ברוך הבא|הברוכה הבאה|ברוך בואך}} לאתר {{SITENAME}}: נא לאשר את כתובת הדוא\"ל שלך",
-	"growthexperiments-confirmemail-confirm-body-html": "שלום $2,\n\nתודה על הוספת כתובת הדוא\"ל שלך לחשבון באתר {{SITENAME}}, שנרשמה מכתובת ה־IP $1.\n\nנא ללחוץ על הקישור להלן כדי לאשר שזאת כתובת הדוא\"ל שברצונך לקשר לחשבון שלך \"$2\":\n\n$3\n\n{{GENDER:$2|שום לב|שימי לב}}: קוד האישור הזה <strong>יפוג ב־$4</strong>.\n\nתודה,\n\n{{SITENAME}}\n\n----\n\nכדי לבטל את אישור כתובת הדוא\"ל (כי לא רשמת את החשבון או מכל סיבה אחרת), {{GENDER:$2|לחץ|לחצי}} על קישור הביטול הזה:\n\n$5",
+	"growthexperiments-confirmemail-confirm-body-html": "שלום $2,\n\nתודה על הוספת כתובת הדוא\"ל שלך לחשבון באתר {{SITENAME}}, שנרשמה מכתובת ה־IP שמספרה $1.\n\nנא ללחוץ על הקישור להלן כדי לאשר שזאת כתובת הדוא\"ל שברצונך לקשר לחשבון שלך \"$2\":\n\n$3\n\n{{GENDER:$2|שים|שימי}} לב: קוד האישור הזה <strong>יפוג ב־$4</strong>.\n\nתודה,\n\n{{SITENAME}}\n\n----\n\nכדי לבטל את אישור כתובת הדוא\"ל (כי לא רשמת את החשבון או מכל סיבה אחרת), {{GENDER:$2|לחץ|לחצי}} על קישור הביטול הזה:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "אימות כתובת דוא\"ל",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "שלום $2,\n\nתודה על הוספת כתובת הדוא\"ל שלך לחשבון באתר {{SITENAME}}, שנרשמה מכתובת ה־IP $1.\n\nנא ללחוץ על הקישור להלן כדי לאשר שזאת כתובת הדוא\"ל שברצונך לקשר לחשבון שלך \"$2\":\n\n$3\n\n{{GENDER:$2|שום לב|שימי לב}}: קוד האישור הזה יפוג ב־$4.\n\nתודה,\n\n{{SITENAME}}\n\n----\n\nכדי לבטל את אישור כתובת הדוא\"ל (כי לא רשמת את החשבון או מכל סיבה אחרת), {{GENDER:$2|לחץ|לחצי}} על קישור הביטול הזה:\n\n$5",
-	"growthexperiments-signupcampaign-title": "תודה על התרומה! עכשיו הצטרפו לקהילת העורכים שמשפרים את ויקיפדיה היום",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "שלום $2,\n\nתודה על הוספת כתובת הדוא\"ל שלך לחשבון באתר {{SITENAME}}, שנרשמה מכתובת ה־IP שמספרה $1.\n\nנא ללחוץ על הקישור להלן כדי לאשר שזאת כתובת הדוא\"ל שברצונך לקשר לחשבון שלך \"$2\":\n\n$3\n\n{{GENDER:$2|שים|שימי}} לב: קוד האישור הזה יפוג ב־$4.\n\nתודה,\n\n{{SITENAME}}\n\n----\n\nכדי לבטל את אישור כתובת הדוא\"ל (כי לא רשמת את החשבון או מכל סיבה אחרת), {{GENDER:$2|לחץ|לחצי}} על קישור הביטול הזה:\n\n$5",
+	"growthexperiments-signupcampaign-title": "תודה על התרומה! עכשיו אנחנו מזמינים אותך להצטרף לקהילת העורכים שמשפרים את ויקיפדיה היום",
 	"growthexperiments-signupcampaign-body": "עריכת ויקיפדיה יכולה להיות פשוטה כמו הוספת קישור או שינוי של מילה. {{GENDER:|קבל|קבלי}} נושאים שמעניינים אותך אחרי {{GENDER:|שתיצור|שתיצרי}} חשבון.",
 	"growthexperiments-marketingvideocampaign-title": "ויקיפדיה נבנית על־ידי אנשים כמוך",
-	"growthexperiments-marketingvideocampaign-body": "280,000 עורכים מתנדבים מדי חודש – רוצה להצטרף אליהם?\n\nאנחנו יודעים שאנשים נרתעים מהעריכה הראשונה, אבל זה יכול להיות די קל. פשוט תשאלו את העורכים הנאמנים שלנו, שאתם יכולים לשמוע בסרט הזה:",
+	"growthexperiments-marketingvideocampaign-body": "280,000 עורכים מתנדבים מדי חודש – רוצה להצטרף אליהם?\n\nאנחנו יודעים שאנשים נרתעים מהעריכה הראשונה, אבל האמת היא שזה די קל. אפשר לשאול את העורכים המסורים שלנו, שיספרו לך על זה הכול בסרטון הזה:",
+	"growthexperiments-marketingvideocampaign-body-mobile": "אלפי אנשים כמוך הם שבונים את ויקיפדיה. רוצה להצטרף אליהם?\n\nהנה מסר בשבילך מהעורכים שלנו:",
 	"growthexperiments-signupcampaign-bullet1": "ערכים מוצעים שמתאימים לתחומי העניין {{GENDER:|שלך}}",
 	"growthexperiments-signupcampaign-bullet2": "לבקש עזרה מעורך מומחה",
-	"growthexperiments-signupcampaign-bullet3": "התחילו עם עריכות קטנות וקלות"
+	"growthexperiments-signupcampaign-bullet3": "התחילו עם עריכות קטנות וקלות",
+	"growthexperiments-campaigns-footer": "יצירת החשבון בדף הזה תשייך אותו לקמפיין הזה למטרות חוויית משתמש וניתוח."
 }

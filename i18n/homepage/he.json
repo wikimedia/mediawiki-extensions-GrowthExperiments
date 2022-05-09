@@ -498,5 +498,16 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "לקבל חונך?",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "להמשיך לקבלת עורך מנוסה בתור החונך {{GENDER:|שלך}}.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "ביטול",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "המשך"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "המשך",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "לצאת מחונכות",
+	"growthexperiments-homepage-mentorship-optout-header": "לצאת מחונכות?",
+	"growthexperiments-homepage-mentorship-optout-text": "{{GENDER:|אתה תמיד יכול|את תמיד יכולה}} לחזור לחונכות. עם זאת, ייתכן שלא {{GENDER:|תקבל|תקבלי}} את אותו החונך שהיה לך.",
+	"growthexperiments-homepage-mentorship-optout-cancel": "ביטול",
+	"growthexperiments-homepage-mentorship-optout-optout": "לצאת",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|אתה|את}} כבר לא בחונכות.",
+	"growthexperiments-homepage-mentorship-optout-confirmation-pretext": "{{GENDER:|קח|קחי}} רגע כדי לספר לנו למה החלטת לצאת (לא חובה):",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "אני רוצה חונך אחר",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "אני לא רצה חונך בכלל",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "אחר / {{GENDER:|מעדיף|מעדיפה}} לא להגיד",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "בוצע"
 }

@@ -382,5 +382,9 @@
 	"growthexperiments-structuredtask-user-error-login-cta": "ログイン",
 	"growthexperiments-addimage-summary-label": "概要",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "キャンセル",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "続行"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "続行",
+	"growthexperiments-homepage-mentorship-optout-cancel": "キャンセル",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "違うメンターが欲しいです",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "メンターは不要です",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "完了"
 }

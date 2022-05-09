@@ -324,5 +324,7 @@
 	"growthexperiments-addimage-inspector-no-button": "Не",
 	"growthexperiments-addimage-inspector-skip-button": "Прескочи",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Откажи",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Настави"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Настави",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Откажи",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Готово"
 }

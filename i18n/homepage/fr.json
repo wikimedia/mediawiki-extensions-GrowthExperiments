@@ -523,5 +523,16 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Obtenir un mentor ?",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Continuer pour obtenir un contributeur expérimenté en tant que {{GENDER:|}}votre mentor de modification.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Annuler",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continuer"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continuer",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Se désister du mentorat",
+	"growthexperiments-homepage-mentorship-optout-header": "Se désister du mentorat ?",
+	"growthexperiments-homepage-mentorship-optout-text": "Vous pouvez toujours revenir à nouveau au mentorat. Cependant, vous pourriez ne pas recevoir le même mentor qu’auparavant.",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Annuler",
+	"growthexperiments-homepage-mentorship-optout-optout": "Se désister",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "Vous n’êtes plus mentoré{{GENDER:||e}}.",
+	"growthexperiments-homepage-mentorship-optout-confirmation-pretext": "Prenez un moment pour nous faire savoir pourquoi {{GENDER:|}}vous avez décidé de vous désister (facultatif) :",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Je souhaite un mentor différent",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Je ne souhaite aucun mentor du tout",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Autre / Je préfère ne pas répondre",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Terminé"
 }
