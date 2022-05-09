@@ -137,8 +137,6 @@ class HomepageHooks implements
 
 	/** @var Config */
 	private $config;
-	// FIXME remove when GLAM campaign is over
-	// The campaign config is only used to enable/disable the "topic match mode" feature (T301825).
 	/** @var CampaignConfig */
 	private $campaignConfig;
 	/** @var ILoadBalancer */
@@ -447,10 +445,7 @@ class HomepageHooks implements
 					$context->getUser(),
 					self::getGrowthWikiConfig()
 				),
-				'wgGETopicsMatchModeEnabled' => $this->campaignConfig->isUserInCampaign(
-					$context->getUser(),
-					'growth-glam-2022'
-				)
+				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' )
 			] );
 		}
 	}
