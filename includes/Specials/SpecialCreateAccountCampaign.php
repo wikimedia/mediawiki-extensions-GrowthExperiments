@@ -146,7 +146,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			$campaignBody = $this->msg( "growthexperiments-$campaignKey-body" )->parse();
 		}
 		if ( $campaignBody !== '' ) {
-			$campaignBody = Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ], $campaignBody );
+			$campaignBody = Html::rawElement( 'div', [ 'class' => 'mw-ge-donorsignup-body' ], $campaignBody );
 		}
 		return Html::rawElement( 'div', [ 'class' => 'mw-createacct-benefits-container' ],
 			Html::rawElement( 'div', [ 'class' => "mw-ge-donorsignup-block mw-ge-donorsignup-block-$campaignKey" ],
