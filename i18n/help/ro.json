@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Carcassonne93",
-			"NGC 54"
+			"NGC 54",
+			"Cezar"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activați panoul de ajutor al editorului",
@@ -108,7 +109,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Dacă {{GENDER:$1|v-ar}} plăcea de asemenea să fiți {{GENDER:$1|notificat|notificată|notificat}} prin e-mail, adăugați o adresă de e-mail acum.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Adăugați e-mail",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Despre panoul de ajutor",
-	"growthexperiments-help-panel-questioncomplete-first-edit": "Apropo, publicând această întrebare, numai ce ați făcut prima dvs. editare la o pagină. Felicitări!",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Apropo, publicând această întrebare, tocmai ați făcut prima dvs. editare la o pagină. Felicitări!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Dezactivați panoul de ajutor",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Titlu invalid.",
 	"growthexperiments-help-panel-community-help-desk-text": "Biroul de ajutor al comunității",
