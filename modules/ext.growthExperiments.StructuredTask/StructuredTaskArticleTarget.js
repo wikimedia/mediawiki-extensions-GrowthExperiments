@@ -333,4 +333,27 @@ StructuredTaskArticleTarget.prototype.tryTeardown = function ( noPrompt, trackMe
 	}.bind( this ) );
 };
 
+/**
+ * Reload the page when saving structured task edits since structured task edits can't be made again
+ * The enhancement to update the page dynamically is tracked via T308046.
+ *
+ * @override
+ */
+StructuredTaskArticleTarget.prototype.saveComplete = function ( data ) {
+	this.emit( 'save', data );
+	this.hasSaved = true;
+	suggestedEditSession.onStructuredTaskSaved();
+
+	var uri = new mw.Uri();
+	delete uri.query.gesuggestededit;
+	delete uri.query.veaction;
+	if ( this.saveDialog && this.saveDialog.isOpened() ) {
+		this.saveDialog.close();
+	}
+	// Skip default warnings when leaving the page
+	$( window ).off( 'beforeunload' );
+	window.onbeforeunload = null;
+	window.location.href = uri.toString();
+};
+
 module.exports = StructuredTaskArticleTarget;

@@ -59,8 +59,7 @@
 		this.editorInterface = null;
 		/**
 		 * @member {boolean} Show the post-edit dialog at the next opportunity. This is used to
-		 *   work around page reloads after saving the page, when the dialog cannot be displayed
-		 *   immediately when we detect the save.
+		 *   show the post-edit dialog after the next page reload.
 		 */
 		this.postEditDialogNeedsToBeShown = false;
 		/**
@@ -390,11 +389,6 @@
 			self.updateEditLinkUrls();
 		}
 
-		// The mobile editor and in some configurations the visual editor immediately reloads
-		// after saving and firing the post-edit event, so displaying the dialog would fail.
-		// Preventing that reload would be fragile, given that the post-edit dialog offers
-		// users an "edit again" option. Instead, use the session to display the dialog again
-		// after the reload if needed.
 		this.postEditDialogNeedsToBeShown = true;
 		this.newRevId = self.newRevId || config.newRevId;
 		this.save();
@@ -485,15 +479,9 @@
 	 * desktop structured task edits).
 	 *
 	 * Possible mechanisms for showing the dialog:
-	 * - Structured task with non-null edits (mobile): postEditMobile hook, but the post-edit dialog
-	 * is shown upon page reload
-	 * - Structured task with non-null edits (desktop): manually set postEditDialogNeedsToBeShown
-	 * flag in StructuredTaskDesktopArticleTarget.saveComplete (the page is reloaded upon save,
-	 * unlike regular desktop edits in order to change the article target)
-	 * - Add link with null edit: upon closing the save dialog
-	 * (via StructuredTaskSaveDialog.getTeardownProcess)
-	 * - Add image with null edit: the save dialog is not shown for rejection so the post-edit
-	 * dialog is invoked from the article target (AddImageArticleTarget.onSaveDone)
+	 * - Structured task with non-null edits: manually set postEditDialogNeedsToBeShown
+	 * flag via StructuredTaskArticleTarget.saveComplete (the page is reloaded upon save,
+	 * unlike regular edits in order to change the article target, see T308046)
 	 * - Unstructured task: via postEdit or postEditMobile hooks
 	 */
 	SuggestedEditSession.prototype.maybeShowPostEditDialog = function () {
@@ -536,8 +524,9 @@
 			self.setTaskState( data.newRevId ? states.SAVED : states.SUBMITTED );
 			self.showPostEditDialog( {
 				resetSession: true,
-				nextRequest: true,
-				newRevId: data.newRevId
+				newRevId: data.newRevId,
+				// VE updates the page dynamically so the post-edit dialog can be shown immediately
+				nextRequest: self.editorInterface !== 'visualeditor'
 			} );
 		} );
 	};

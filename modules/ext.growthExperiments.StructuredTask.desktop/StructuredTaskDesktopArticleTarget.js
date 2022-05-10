@@ -1,8 +1,6 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskArticleTarget = StructuredTask.StructuredTaskArticleTarget,
 	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
-	SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
-	suggestedEditSession = SuggestedEditSession.getInstance(),
 	Utils = require( '../utils/Utils.js' );
 
 /**
@@ -83,26 +81,6 @@ StructuredTaskDesktopArticleTarget.prototype.updateHistory = function () {
 /** @override **/
 StructuredTaskDesktopArticleTarget.prototype.teardownWithoutPrompt = function () {
 	return this.teardown();
-};
-
-/**
- * Reload the page when saving structured task edits (similar to all mobile edits) since
- * structured task edits can't be made again
- *
- * @override
- */
-StructuredTaskDesktopArticleTarget.prototype.saveComplete = function ( data ) {
-	this.emit( 'save', data );
-	this.hasSaved = true;
-	suggestedEditSession.onStructuredTaskSaved();
-
-	var uri = new mw.Uri();
-	delete uri.query.gesuggestededit;
-	delete uri.query.veaction;
-	if ( this.saveDialog && this.saveDialog.isOpened() ) {
-		this.saveDialog.close();
-	}
-	window.location.href = uri.toString();
 };
 
 module.exports = StructuredTaskDesktopArticleTarget;
