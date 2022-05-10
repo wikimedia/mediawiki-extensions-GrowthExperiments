@@ -68,10 +68,12 @@
 	&-title {
 		font-weight: bold;
 		margin-bottom: 4px;
-		color: @colorProgressive;
+		color: @wmui-color-base10;
 
 		&:active {
-			color: @colorProgressiveActive;
+			// FIXME per https://phabricator.wikimedia.org/T307637#7909619 this color
+			// is not defined yet
+			color: @wmui-color-base10;
 		}
 	}
 
@@ -155,20 +157,17 @@
 
 	.mw-ge-small-task-card-desktop & {
 		&-title {
-			// limit to a single line
-			white-space: nowrap;
+			.paragraph-ellipsis( @lines: 2, @parentFontSize: 14px, @targetFontSize: 14px, @targetLineHeight: 20px );
+
+			&--with-description {
+				display: block;
+				.text-ellipsis();
+			}
 		}
 
 		&-description {
-			// Show two lines of text, with an ellipsis.
-			// line-clamp has not been standardized, but most modern browsers understand the Webkit syntax.
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: 2;
+			.text-ellipsis();
 			line-height: 1.4;
-			// For IE 11 and various old browsers, limit height for the same effect, except
-			// for the ellipsis. Height is <# of lines> * <line height> * <font size>.
-			max-height: 2 * 1.4 * 13/14 * 1em;
 			font-size: 13/14 * 1em;
 		}
 
@@ -195,11 +194,15 @@
 	.mw-ge-small-task-card-mobile & {
 		&-title {
 			.paragraph-ellipsis( @lines: 2, @parentFontSize: 16px, @targetFontSize: 16px, @targetLineHeight: 22px );
+
+			&--with-description {
+				display: block;
+				.text-ellipsis();
+			}
 		}
 
 		&-description {
-			// mobile does not have space for two lines
-			white-space: nowrap;
+			.text-ellipsis();
 			font-size: 13/16 * 1em;
 		}
 
