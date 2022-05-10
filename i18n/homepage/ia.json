@@ -289,5 +289,7 @@
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Tu}} debe esser listate como mentor sur [[$2]] pro poter usar Special:ClaimMentee",
 	"growthexperiments-homepage-claimmentee-must-be-mentor-two-lists": "{{GENDER:$1|Tu}} debe esser listate como mentor sur [[$2]] o [[$3]] pro poter usar Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Le lista de mentores es mal configurate.",
-	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Le lista de mentores ([[$1]]) non existe o es mal configurate."
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Le lista de mentores ([[$1]]) non existe o es mal configurate.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continuar",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Comprendite"
 }
