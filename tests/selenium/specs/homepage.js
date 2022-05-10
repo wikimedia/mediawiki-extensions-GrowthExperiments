@@ -22,7 +22,7 @@ describe( 'Homepage', function () {
 
 		await browser.setupInterceptor();
 		await HomepagePage.editAndSaveArticle( 'first edit' );
-		await HomepagePage.rebuildRecentChanges();
+		await HomepagePage.rebuildRecentChanges( 'Rebuilding recent changes for first edit' );
 		assert.ok( HomepagePage.postEditDialog.isDisplayed() );
 
 		// Get the revision ID of the change that was just made.
@@ -42,7 +42,7 @@ describe( 'Homepage', function () {
 
 		// Follow-up edit.
 		await HomepagePage.editAndSaveArticle( 'second edit' );
-		await HomepagePage.rebuildRecentChanges();
+		await HomepagePage.rebuildRecentChanges( 'Rebuilding recent changes for second edit' );
 		assert.ok( HomepagePage.postEditDialog.isDisplayed() );
 
 		requests = await browser.getRequests();
@@ -60,6 +60,25 @@ describe( 'Homepage', function () {
 			}
 		} );
 		assert.ok( found );
+
+		// click the suggestion in the post-edit dialog, edit once more.
+		await HomepagePage.waitForPostEditDialog();
+
+		await HomepagePage.postEditDialogSmallTaskCard.click();
+		// Reload the page to see if we can work around the issue where the Edit button
+		// is sometimes not clickable when arriving here from another article.
+		await HomepagePage.editAndSaveArticle( 'third edit', true );
+		await HomepagePage.rebuildRecentChanges( 'Rebuilding recent changes for third edit' );
+
+		requests = await browser.getRequests();
+		requests.forEach( function ( request ) {
+			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-copyedit' ] ) {
+				savedRevId = request.response.body.visualeditoredit.newrevid;
+			}
+		} );
+
+		result = await HomepagePage.waitUntilRecentChangesItemExists( 'newcomer task copyedit', 'Cretan lyra', username );
+		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
 	} );
 
 	it.skip( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', async () => {
