@@ -16,6 +16,7 @@
 			"Si109",
 			"SomeyaMako",
 			"Stang",
+			"StarrySky",
 			"SunAfterRain",
 			"Sunny00217",
 			"Tranve",
@@ -512,5 +513,12 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "明白了",
 	"growthexperiments-addimage-caption-warning-tooshort": "说明应该至少要$1{{PLURAL:$1|个字}}。",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|您}}已经完成今天所有的链接建议。\n\n调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或是在明天回来以获得更多链接建议。",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "明白了"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "明白了",
+	"growthexperiments-homepage-mentorship-optin-button": "寻找一个导师",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "继续",
+	"growthexperiments-homepage-mentorship-optout-cancel": "取消",
+	"growthexperiments-homepage-mentorship-optout-optout": "选择退出",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "我想要换个导师",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "我根本不想要导师",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "完成"
 }

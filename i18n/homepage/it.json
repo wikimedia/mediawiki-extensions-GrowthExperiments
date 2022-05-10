@@ -435,5 +435,7 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Capito",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Capito",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Annulla",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continua"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continua",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Annulla",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Fatto"
 }

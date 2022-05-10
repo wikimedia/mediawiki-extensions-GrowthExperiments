@@ -123,7 +123,7 @@
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Питање корисника [[User:$1|$1]] са странице [[$2]]",
 	"growthexperiments-specialimpact-title": "Утицај",
 	"growthexperiments-specialimpact-showing-for-other-user": "Приказују се подаци о утицају ($1)",
-	"growthexperiments-specialimpact-invalid-username": "Кориснички име недостаје или није важеће.",
+	"growthexperiments-specialimpact-invalid-username": "Корисничко име недостаје или није важеће.",
 	"growthexperiments-homepage-claimmentee-no-user": "Не постоји новајлија с тим корисничким именом",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Већ сте {{GENDER:$2|ментор|менторка}} {{GENDER:$1|корисника|кориснице}} $1",
 	"growthexperiments-homepage-enable-preference": "Да бисте омогућили почетну страницу новајлија, погледајте одељак „Почетна страница новајлија” у [[Special:Preferences#mw-prefsection-personal-homepage|подешавањима]].",
