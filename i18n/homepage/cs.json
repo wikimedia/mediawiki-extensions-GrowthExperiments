@@ -11,7 +11,9 @@
 			"MrJaroslavik",
 			"Patriccck",
 			"Patrik L.",
-			"Fraxinus.cs"
+			"Fraxinus.cs",
+			"Chadyka",
+			"Kendo13"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",
@@ -200,7 +202,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "Přidejte do článků obrázky",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Vytvoření nového článku",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Zjistit více",
-	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3-5 minut",
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3–5 minut",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 minut",
 	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 - 20 minut",
 	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 - 30 minut",
