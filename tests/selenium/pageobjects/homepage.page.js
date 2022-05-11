@@ -12,6 +12,7 @@ class HomepagePage extends Page {
 	get firstheading() { return $( '#firstHeading' ); }
 	get suggestedEditsCard() { return $( '.suggested-edits-card' ); }
 	get suggestedEditsCardTitle() { return $( '.se-card-title' ); }
+	get suggestedEditsCardUrl() { return $( '.suggested-edits-card a' ); }
 	get suggestedEditsPreviousButton() { return $( '.suggested-edits-previous .oo-ui-buttonElement-button' ); }
 	get suggestedEditsNextButton() { return $( '.suggested-edits-next' ); }
 	get newcomerTaskArticleEditButton() { return $( '#ca-ve-edit' ); }
@@ -41,17 +42,28 @@ class HomepagePage extends Page {
 		return result;
 	}
 
-	async editAndSaveArticle( textToAppend, reloadPage ) {
-		if ( reloadPage ) {
-			await browser.refresh();
-			await browser.setupInterceptor();
-		}
+	async editAndSaveArticle( textToAppend ) {
 		await Util.waitForModuleState( 'ext.visualEditor.desktopArticleTarget', 'registered' );
+		await this.newcomerTaskArticleEditButton.waitForExist();
 		await this.newcomerTaskArticleEditButton.waitForClickable();
 		await this.newcomerTaskArticleEditButton.click();
 		await Util.waitForModuleState( 'ext.visualEditor.desktopArticleTarget', 'ready' );
-		await this.articleBodyContent.waitForClickable( { timeout: 20000 } );
-		await this.articleBodyContent.click();
+		try {
+			await this.articleBodyContent.waitForClickable( { timeout: 20000 } );
+			await this.articleBodyContent.click();
+		} catch ( e ) {
+			// There seems to be some race condition where the edit button is clickable, but
+			// clicking doesn't load the VE surface. When that happens, reload the page but
+			// with veaction=edit so we're in editing mode.
+			// eslint-disable-next-line node/no-unsupported-features/node-builtins
+			const url = new URL( await browser.getUrl() );
+			url.searchParams.append( 'veaction', 'edit' );
+			await browser.url( url.toString() );
+			// Set up the interceptor again as we've reloaded the page.
+			await browser.setupInterceptor();
+			await this.articleBodyContent.waitForClickable( { timeout: 20000 } );
+			await this.articleBodyContent.click();
+		}
 		await browser.keys( textToAppend );
 		await this.savePageDots.click();
 		await this.newcomerTaskArticleSaveButton.waitForClickable();

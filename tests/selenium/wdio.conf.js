@@ -16,7 +16,6 @@ exports.config = { ...config,
 	// Learn more at https://webdriver.io/docs/configurationfile/
 	specFileRetries: 2,
 	specFileRetriesDelay: 3,
-	addConsoleLogs: true,
 	beforeSuite: async function () {
 		const username = Util.getTestString( 'NewUser-' );
 		const password = Util.getTestString();
@@ -46,7 +45,7 @@ exports.config = { ...config,
 			// Load the service overrides
 			localSettings + `
 if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php" ) ) {
-    require_once "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php";
+	require_once "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php";
 }
 ` );
 		// This is needed in Quibble + Apache (T225218) because we use supervisord to control

@@ -18,6 +18,11 @@ describe( 'Homepage', function () {
 		await browser.waitUntil( async () => {
 			return await HomepagePage.suggestedEditsCardTitle.getText() === copyeditArticle;
 		} );
+		await browser.waitUntil( async () => {
+			return await HomepagePage.suggestedEditsCardUrl.waitForExist() &&
+				await HomepagePage.suggestedEditsCardUrl.getAttribute( 'href' ) !== '#';
+		} );
+		await HomepagePage.suggestedEditsCard.waitForClickable();
 		await HomepagePage.suggestedEditsCard.click();
 
 		await browser.setupInterceptor();
@@ -65,9 +70,10 @@ describe( 'Homepage', function () {
 		await HomepagePage.waitForPostEditDialog();
 
 		await HomepagePage.postEditDialogSmallTaskCard.click();
-		// Reload the page to see if we can work around the issue where the Edit button
-		// is sometimes not clickable when arriving here from another article.
-		await HomepagePage.editAndSaveArticle( 'third edit', true );
+
+		// Set up the interceptor again, as we're on a new page.
+		await browser.setupInterceptor();
+		await HomepagePage.editAndSaveArticle( 'third edit' );
 		await HomepagePage.rebuildRecentChanges( 'Rebuilding recent changes for third edit' );
 
 		requests = await browser.getRequests();
