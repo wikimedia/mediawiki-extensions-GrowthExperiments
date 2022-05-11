@@ -339,6 +339,7 @@ class HomepageHooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$context = $out->getContext();
+		$isSuggestedEditsEnabled = SuggestedEdits::isEnabled( $context );
 		if (
 			Util::isMobile( $skin ) &&
 			// Optimisation: isHomepageEnabled() is non-trivial, check it last
@@ -347,10 +348,22 @@ class HomepageHooks implements
 			$out->addModuleStyles( 'ext.growthExperiments.mobileMenu.icons' );
 		}
 		if ( $context->getTitle()->inNamespaces( NS_MAIN, NS_TALK ) &&
-			SuggestedEdits::isEnabled( $context )
+			$isSuggestedEditsEnabled
 		) {
 			// Manage the suggested edit session.
 			$out->addModules( 'ext.growthExperiments.SuggestedEditSession' );
+		}
+
+		if ( $isSuggestedEditsEnabled ) {
+			// Always output these config vars since they are used by ext.growthExperiments.DataStore
+			// which can be included in any module
+			$out->addJsConfigVars( [
+				'GEHomepageSuggestedEditsEnableTopics' => SuggestedEdits::isTopicMatchingEnabled(
+					$context,
+					$this->userOptionsLookup
+				),
+				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' )
+			] );
 		}
 
 		$clickId = self::getClickId( $context );
