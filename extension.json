@@ -1348,30 +1348,11 @@
 				"ext.growthExperiments.PostEdit/PostEditToastMessage.js",
 				"ext.growthExperiments.Help/HelpPanelLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
-				"ext.growthExperiments.DataStore/TopicFilters.js",
-				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js",
-				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				"ui-components/CollapsibleDrawer.js",
-				{
-					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/AQSConfig.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/config.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
-				},
 				{
 					"name": "ext.growthExperiments.Help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
@@ -1381,7 +1362,8 @@
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-movement",
 				"ext.growthExperiments.icons",
-				"ext.growthExperiments.SuggestedEditSession"
+				"ext.growthExperiments.SuggestedEditSession",
+				"ext.growthExperiments.DataStore"
 			],
 			"messages": [
 				"growthexperiments-help-panel-postedit-success-message-published",

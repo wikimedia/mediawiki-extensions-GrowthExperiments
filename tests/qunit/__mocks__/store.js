@@ -22,7 +22,11 @@ const getFiltersStore = () => {
 		},
 		on() {},
 		restoreState() {},
-		backupState() {}
+		backupState() {},
+		getTaskTypesQuery() {},
+		getTopicsQuery() {},
+		getSelectedTaskTypes() {},
+		getSelectedTopics() {}
 	};
 };
 
