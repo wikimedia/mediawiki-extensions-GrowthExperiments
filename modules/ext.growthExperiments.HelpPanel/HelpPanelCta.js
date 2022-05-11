@@ -2,8 +2,7 @@
 	var Help = require( 'ext.growthExperiments.Help' ),
 		HelpPanelButton = require( '../ui-components/HelpPanelButton.js' ),
 		Utils = require( '../utils/Utils.js' ),
-		TaskTypesAbFilter = require( '../ext.growthExperiments.DataStore/TaskTypesAbFilter.js' ),
-		taskTypes = TaskTypesAbFilter.getTaskTypes(),
+		TASK_TYPES = require( 'ext.growthExperiments.DataStore' ).CONSTANTS.ALL_TASK_TYPES,
 		HelpPanelLogger = Help.HelpPanelLogger,
 		HelpPanelProcessDialog = Help.HelpPanelProcessDialog,
 		mobileFrontend = mw.mobileFrontend,
@@ -24,7 +23,7 @@
 	}
 	taskTypeId = suggestedEditSession.taskType;
 	taskTypeLogData = taskTypeId ? { taskType: taskTypeId } : null;
-	guidanceAvailable = guidanceEnabled && taskTypeId && taskTypes[ taskTypeId ];
+	guidanceAvailable = guidanceEnabled && taskTypeId && TASK_TYPES[ taskTypeId ];
 
 	// This shouldn't happen, but just to be sure
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
@@ -321,7 +320,7 @@
 		if ( guidanceAvailable ) {
 			if ( OO.ui.isMobile() ) {
 				defaultToVisualEditorIfPossible();
-				maybeAddMobilePeek( taskTypes[ taskTypeId ] );
+				maybeAddMobilePeek( TASK_TYPES[ taskTypeId ] );
 			} else {
 				// If guidance is available we want to attach the help button
 				// so the user can get back to it; this can happen if for example

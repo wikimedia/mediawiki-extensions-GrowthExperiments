@@ -18,8 +18,7 @@
 	 */
 	var configData = require( './data.json' ),
 		SuggestedEditsPanel = require( './HelpPanelProcessDialog.SuggestedEditsPanel.js' ),
-		TaskTypesAbFilter = require( '../ext.growthExperiments.DataStore/TaskTypesAbFilter.js' ),
-		taskTypeData = TaskTypesAbFilter.getTaskTypes(),
+		TASK_TYPES = require( 'ext.growthExperiments.DataStore' ).CONSTANTS.ALL_TASK_TYPES,
 		linksConfig = configData.GEHelpPanelLinks,
 		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
@@ -367,7 +366,7 @@
 			// Unlike the other panels, we have no padding on this one
 			// because of the design that has the navigation and header
 			// content of the panel with a solid constant background color.
-			taskTypeData: taskTypeData[ this.taskTypeId ],
+			taskTypeData: TASK_TYPES[ this.taskTypeId ],
 			guidanceEnabled: this.guidanceEnabled,
 			editorInterface: this.logger.getEditor(),
 			currentTip: this.suggestedEditSession.helpPanelCurrentTip,

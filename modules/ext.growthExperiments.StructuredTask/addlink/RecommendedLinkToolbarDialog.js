@@ -2,7 +2,8 @@ var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' )
 	DmRecommendedLinkAnnotation = require( './dmRecommendedLinkAnnotation.js' ),
 	CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
 	AnnotationAnimation = require( '../AnnotationAnimation.js' ),
-	suggestedEditsConfig = require( '../../ext.growthExperiments.DataStore/config.json' ),
+	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+	SUGGESTED_EDITS_CONFIG = CONSTANTS.SUGGESTED_EDITS_CONFIG,
 	formatTitle = require( '../../utils/Utils.js' ).formatTitle,
 	StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' );
 
@@ -931,7 +932,7 @@ RecommendedLinkToolbarDialog.prototype.getSuggestionLogActionData = function () 
  */
 RecommendedLinkToolbarDialog.prototype.fetchArticleExtract = function () {
 	var promise = $.Deferred(),
-		apiUrlBase = suggestedEditsConfig.GERestbaseUrl,
+		apiUrlBase = SUGGESTED_EDITS_CONFIG.GERestbaseUrl,
 		title = this.currentDataModel.getAttribute( 'lookupTitle' );
 
 	if ( this.extracts[ title ] ) {
