@@ -97,14 +97,14 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 			'threshold' => $taskType->getMinimumLinkScore(),
 			'max_recommendations' => $taskType->getMaximumLinksPerTask(),
 		];
-		if ( $taskType->getExcludedSections() ) {
-			$queryArgs['sections_to_exclude'] = $taskType->getExcludedSections();
-		}
 		$postBodyArgs = [
 			'pageid' => $pageId,
 			'revid' => $revId,
 			'wikitext' => $wikitext,
 		];
+		if ( $taskType->getExcludedSections() ) {
+			$postBodyArgs['sections_to_exclude'] = $taskType->getExcludedSections();
+		}
 		$request = $this->httpRequestFactory->create(
 			wfAppendQuery(
 				$this->url . '/v1/linkrecommendations/' . implode( '/', array_map( 'rawurlencode', $pathArgs ) ),
