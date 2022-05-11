@@ -219,4 +219,36 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 		);
 		$this->assertFalse( $config->has( 'GEMentorshipEnabled' ) );
 	}
+
+	/**
+	 * @dataProvider provideMergeStrategy
+	 * @covers ::getWithFlags
+	 */
+	public function testMergeStrategy( string $name, $globalValue, $wikiValue, $expectedValue ) {
+		$globalConfig = new HashConfig( [ 'GEWikiConfigEnabled' => true ] );
+		if ( $globalValue !== null ) {
+			$globalConfig->set( $name, $globalValue );
+		}
+		$wikiConfig = $this->getMockWikiPageConfig();
+		$wikiConfig->expects( $this->once() )->method( 'hasWithFlags' )
+			->with( $name )
+			->willReturn( $wikiValue !== null );
+		$wikiConfig->expects( ( $wikiValue === null ) ? $this->never() : $this->once() )
+			->method( 'getWithFlags' )
+			->with( $name )
+			->willReturn( $wikiValue );
+		$config = new GrowthExperimentsMultiConfig( $wikiConfig, $globalConfig );
+		$this->assertSame( $expectedValue, $config->get( $name ) );
+	}
+
+	public function provideMergeStrategy() {
+		return [
+			// variable, PHP value, on-wiki value, expected
+			'replace' => [ 'GEHelpPanelViewMoreTitle', 'Foo', 'Bar', 'Bar' ],
+			'wiki only' => [ 'GECampaigns', null, [ 'foo' => 1 ], [ 'foo' => 1 ] ],
+			'global only' => [ 'GECampaigns', [ 'foo' => 1 ], null, [ 'foo' => 1 ] ],
+			'aray_merge' => [ 'GECampaigns', [ 'foo' => 1, 'bar' => 2 ], [ 'foo' => 2, 'baz' => 3 ],
+				[ 'foo' => 2, 'bar' => 2, 'baz' => 3 ] ],
+		];
+	}
 }
