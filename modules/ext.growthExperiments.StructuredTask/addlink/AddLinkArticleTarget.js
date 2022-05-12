@@ -1,5 +1,5 @@
 var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	taskTypes = require( '../../ext.growthExperiments.DataStore/TaskTypes.json' );
+	TASK_TYPES = require( 'ext.growthExperiments.DataStore' ).CONSTANTS.ALL_TASK_TYPES;
 
 /**
  * @typedef LinkRecommendationLink
@@ -25,7 +25,7 @@ var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  */
 function AddLinkArticleTarget( logger ) {
 	this.logger = logger;
-	this.maximumLinksToShow = taskTypes[ 'link-recommendation' ].maximumLinksToShowPerTask;
+	this.maximumLinksToShow = ( TASK_TYPES[ 'link-recommendation' ] || {} ).maximumLinksToShowPerTask;
 }
 
 /**

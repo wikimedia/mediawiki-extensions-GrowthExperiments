@@ -3,9 +3,8 @@ module.exports = ( function () {
 
 	var hasHeroImage = false,
 		userName = mw.user.getName(),
-		TaskTypesAbFilter = require( '../../ext.growthExperiments.DataStore/TaskTypesAbFilter.js' ),
-		taskTypes = TaskTypesAbFilter.getTaskTypes(),
-		taskTypeData = taskTypes[ 'link-recommendation' ] || {},
+		CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+		taskTypeData = CONSTANTS.ALL_TASK_TYPES[ 'link-recommendation' ] || {},
 		StructurtedTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),
 		content = new StructurtedTaskOnboardingContent( 'addlink-onboarding-content' );
 

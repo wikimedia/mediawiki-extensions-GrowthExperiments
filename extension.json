@@ -848,15 +848,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js",
 				"utils/Utils.js",
-				"ui-components/HelpPanelButton.js",
-				{
-					"name": "ext.growthExperiments.DataStore/config.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
-				}
+				"ui-components/HelpPanelButton.js"
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask/MachineSuggestionsMode.less",
@@ -986,7 +978,8 @@
 				"ext.visualEditor.mwlink",
 				"ext.growthExperiments.icons",
 				"ext.growthExperiments.SuggestedEditSession",
-				"ext.growthExperiments.StructuredTask.PreEdit"
+				"ext.growthExperiments.StructuredTask.PreEdit",
+				"ext.growthExperiments.DataStore"
 			],
 			"targets": [
 				"desktop",
@@ -1062,22 +1055,9 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
-				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 				"ui-components/MultiPaneDialog.js",
 				"ui-components/SwipePane.js",
-				"utils/Utils.js",
-				{
-					"name": "ext.growthExperiments.DataStore/config.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
-				}
+				"utils/Utils.js"
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask.PreEdit/StructuredTaskOnboardingDialog.less",
@@ -1127,7 +1107,8 @@
 				"mediawiki.util",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"ext.growthExperiments.SuggestedEditSession"
+				"ext.growthExperiments.SuggestedEditSession",
+				"ext.growthExperiments.DataStore"
 			],
 			"targets": [
 				"desktop",
@@ -1145,7 +1126,6 @@
 				"ext.growthExperiments.Help/index.js",
 				"ext.growthExperiments.Help/HelpPanelLogger.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
-				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
 				"ext.growthExperiments.Help/HelpPanelSearchWidget.js",
@@ -1160,18 +1140,6 @@
 				{
 					"name": "ext.growthExperiments.Help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/config.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
 			"dependencies": [
@@ -1282,22 +1250,9 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
-				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
-				"ui-components/HelpPanelButton.js",
-				{
-					"name": "ext.growthExperiments.DataStore/config.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
-				}
+				"ui-components/HelpPanelButton.js"
 			],
 			"dependencies": [
 				"mediawiki.language",
@@ -1308,7 +1263,8 @@
 				"ext.growthExperiments.icons",
 				"ext.growthExperiments.HelpPanelCta.styles",
 				"ext.growthExperiments.SuggestedEditSession",
-				"ext.growthExperiments.StructuredTask.PreEdit"
+				"ext.growthExperiments.StructuredTask.PreEdit",
+				"ext.growthExperiments.DataStore"
 			],
 			"messages": [
 				"growthexperiments-help-panel-cta-button-text",

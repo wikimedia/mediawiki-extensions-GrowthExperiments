@@ -9,6 +9,7 @@ QUnit.test( 'annotateSuggestions', function ( assert ) {
 	const AddLinkArticleTarget = require( pathToWidget );
 	const LinkSuggestionInteractionLogger = require( pathToLogger );
 	const data = require( './dataprovider.json' );
+	const MAX_LINKS_TO_SHOW = 2;
 
 	this.sandbox.stub( LinkSuggestionInteractionLogger.prototype, 'log' ).returns( true );
 
@@ -16,6 +17,7 @@ QUnit.test( 'annotateSuggestions', function ( assert ) {
 		const articleTarget = new AddLinkArticleTarget(
 			new LinkSuggestionInteractionLogger()
 		);
+		articleTarget.maximumLinksToShow = MAX_LINKS_TO_SHOW;
 		const doc = document.implementation.createHTMLDocument();
 		const body = document.createElement( 'body' );
 		fixture.articleContent.forEach( function ( item ) {
