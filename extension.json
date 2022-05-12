@@ -91,6 +91,13 @@
 				"GrowthExperimentsMentorWeightManager"
 			]
 		},
+		"growthmanagementorlist": {
+			"class": "GrowthExperiments\\Api\\ApiManageMentorList",
+			"services": [
+				"GrowthExperimentsMentorProvider",
+				"GrowthExperimentsMentorWriter"
+			]
+		},
 		"growthmentordashboardupdatedata": {
 			"class": "GrowthExperiments\\Api\\ApiMentorDashboardUpdateData",
 			"services": [
@@ -2171,7 +2178,8 @@
 	},
 	"AvailableRights": [
 		"setmentor",
-		"managementors"
+		"managementors",
+		"enrollasmentor"
 	],
 	"GroupPermissions": {
 		"sysop": {
@@ -2182,7 +2190,8 @@
 	"GrantPermissions": {
 		"managementorship": {
 			"setmentor": true,
-			"managementors": true
+			"managementors": true,
+			"enrollasmentor": true
 		}
 	},
 	"GrantPermissionGroups": {
