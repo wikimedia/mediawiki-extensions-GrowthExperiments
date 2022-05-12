@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chadyka"
+			"Chadyka",
+			"Tomato Cream"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Уключыць акенца дапамогі рэдактарам",
@@ -29,6 +30,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Правіць іншую прапанову:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Наступная прапанова:",
 	"growthexperiments-help-panel-postedit-footer": "Паглядзець больш прапанаваных правак",
+	"growthexperiments-help-panel-postedit-suggestededits-info": "Іншыя карыстальнікі пляцоўкі {{SITENAME}} знайшлі артыкулы, якія патрабуюць працы. Працягвайце {{GENDER:|вашу}} праўку, праглядаючы гэтыя прапанаваныя змены.",
 	"growthexperiments-help-panel-questionreview-title": "Запытаць у Службе падтрымкі",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Задайце пытанне свайму настаўніку",
 	"growthexperiments-help-panel-questionreview-header": "Калі вы адпраўляеце пытанне, яно <strong>публікуецца</strong> пад вашым імем карыстальніка, «$2», на старонку $1, дзе іншы рэдактар-добраахвотнік паспрабуе даць адказ на працягу наступнага дня або каля таго.",

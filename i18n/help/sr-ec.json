@@ -4,6 +4,7 @@
 			"BadDog",
 			"Kizule",
 			"MarinaSimic",
+			"Milicevic01",
 			"Zoranzoki21"
 		]
 	},
@@ -24,7 +25,7 @@
 	"growthexperiments-help-panel-postedit-header": "Следећи кораци",
 	"growthexperiments-help-panel-postedit-subheader": "Уредите још један предлог:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Следећи предлог:",
-	"growthexperiments-help-panel-postedit-footer": "Прикажи још предложених измена",
+	"growthexperiments-help-panel-postedit-footer": "Прикажи све предложених измена",
 	"growthexperiments-help-panel-questionreview-title": "Постављање питања",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Питање ментору",
 	"growthexperiments-help-panel-questionreview-header": "Када поставите питање, оно се <strong>јавно објављује</strong> под вашим корисничком именом ($2) на страници $1. Ту ће други уредници моћи да одговоре на њега, а одговор ћете добити најкасније сутрадан.",

@@ -3,6 +3,7 @@
 		"authors": [
 			"Agusbou2015",
 			"Kizule",
+			"Milicevic01",
 			"Zoranzoki21"
 		]
 	},
@@ -268,5 +269,6 @@
 	"growthexperiments-notification-learn-more": "Saznajte više {{GENDER:$1|o}} {{GENDER:$2|novom mentoru|novoj mentorki}}",
 	"right-setmentor": "postavljanje mentora korisnicima",
 	"action-setmentor": "postavljate mentora korisnicima",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Saznajte više o predloženoj izmeni"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Saznajte više o predloženoj izmeni",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Otkaži"
 }

@@ -22,5 +22,7 @@
 	"growthexperiments-structuredtask-user-error-login-cta": "लॉग इन",
 	"growthexperiments-addimage-summary-label": "सारांश",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "रद्द करें",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "जारी रखें"
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "जारी रखें",
+	"growthexperiments-homepage-mentorship-optout-cancel": "रद्द करें",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "पूर्ण हुआ"
 }
