@@ -654,12 +654,6 @@ class HomepageHooks implements
 			'type' => 'api'
 		];
 
-		if ( $this->config->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ) {
-			$preferences[ SuggestedEdits::TOPICS_ENABLED_PREF ] = [
-				'type' => 'api'
-			];
-		}
-
 		$preferences[ SuggestedEdits::GUIDANCE_BLUE_DOT_PREF ] = [
 			'type' => 'api'
 		];
@@ -715,7 +709,6 @@ class HomepageHooks implements
 			self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN,
 			Mentorship::QUESTION_PREF,
 			SuggestedEdits::PREACTIVATED_PREF,
-			SuggestedEdits::TOPICS_ENABLED_PREF,
 		] );
 	}
 
