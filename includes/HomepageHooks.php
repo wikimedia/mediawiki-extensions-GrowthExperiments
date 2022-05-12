@@ -10,6 +10,7 @@ use CirrusSearch\Wikimedia\WeightedTagsHooks;
 use Config;
 use ConfigException;
 use DeferredUpdates;
+use ExtensionRegistry;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
@@ -68,6 +69,7 @@ use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
+use MWException;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
 use OutputPage;
@@ -242,7 +244,7 @@ class HomepageHooks implements
 	 */
 	public function onSpecialPage_initList( &$list ) {
 		if ( self::isHomepageEnabled() ) {
-			$pageViewInfoEnabled = \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
+			$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 			$list['Homepage'] = [
 				'class' => SpecialHomepage::class,
 				'services' => [
@@ -483,7 +485,7 @@ class HomepageHooks implements
 	 *
 	 * @param SkinTemplate $skin
 	 * @param array &$links
-	 * @throws \MWException
+	 * @throws MWException
 	 * @throws ConfigException
 	 */
 	public function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
@@ -517,10 +519,10 @@ class HomepageHooks implements
 				$subjectpage = $this->namespaceInfo->getSubjectPage( $title );
 				$talkpage = $this->namespaceInfo->getTalkPage( $title );
 
-				if ( $subjectpage instanceof \TitleValue ) {
+				if ( $subjectpage instanceof TitleValue ) {
 					$subjectpage = Title::newFromLinkTarget( $subjectpage );
 				}
-				if ( $talkpage instanceof \TitleValue ) {
+				if ( $talkpage instanceof TitleValue ) {
 					$talkpage = Title::newFromLinkTarget( $talkpage );
 				}
 			} else {
@@ -907,7 +909,7 @@ class HomepageHooks implements
 	/**
 	 * Helper method to update the "Profile" menu entry in menus
 	 * @param array &$links
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	private function updateProfileMenuEntry( array &$links ) {
 		$userItem = $links['user-menu']['userpage'] ?? [];
@@ -1002,7 +1004,7 @@ class HomepageHooks implements
 	/**
 	 * @param User $user
 	 * @throws ConfigException
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	public function onConfirmEmailComplete( $user ) {
 		// context user is used for cases when someone else than $user confirms the email,
