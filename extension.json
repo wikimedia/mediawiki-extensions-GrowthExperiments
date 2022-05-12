@@ -2102,13 +2102,6 @@
 				"JobQueueGroupFactory"
 			]
 		},
-		"QuitMentorship": {
-			"class": "GrowthExperiments\\Specials\\SpecialQuitMentorship",
-			"services": [
-				"GrowthExperimentsQuitMentorshipFactory",
-				"GrowthExperimentsMentorProvider"
-			]
-		},
 		"EditGrowthConfig": {
 			"class": "GrowthExperiments\\Specials\\SpecialEditGrowthConfig",
 			"services": [

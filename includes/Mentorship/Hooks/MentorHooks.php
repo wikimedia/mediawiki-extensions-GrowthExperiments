@@ -12,6 +12,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialManageMentors;
+use GrowthExperiments\Specials\SpecialQuitMentorship;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
@@ -144,7 +145,7 @@ class MentorHooks implements SpecialPage_initListHook, LocalUserCreatedHook, Pag
 	 */
 	public function onSpecialPage_initList( &$list ) {
 		if ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_STRUCTURED ) {
-			// TODO: Once structured provider is the default, move to extension.json
+			// TODO: Move to extension.json once wikitext provider is removed
 			$list['ManageMentors'] = [
 				'class' => SpecialManageMentors::class,
 				'services' => [
@@ -152,6 +153,15 @@ class MentorHooks implements SpecialPage_initListHook, LocalUserCreatedHook, Pag
 					'UserEditTracker',
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsMentorWriter'
+				]
+			];
+		} elseif ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_WIKITEXT ) {
+			// TODO: Remove once wikitext provider is removed
+			$list['QuitMentorship'] = [
+				'class' => SpecialQuitMentorship::class,
+				'services' => [
+					'GrowthExperimentsQuitMentorshipFactory',
+					'GrowthExperimentsMentorProvider'
 				]
 			];
 		}
