@@ -7,7 +7,8 @@
 			"Nuevo Paso",
 			"Revi",
 			"Ykhwong",
-			"밝은소년"
+			"밝은소년",
+			"Bluehill"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "편집 도움말 패널 활성화하기",
@@ -121,6 +122,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "예시 문장",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "이미지는 사람들이 주제에 관해 알아볼 수 있도록 도와주지만, 수많은 문서에는 이미지가 없습니다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-value": "제안은 기계적으로 생성되며 {{GENDER:|당신은}} 이 제안들을 받아들일지, 아니면 거절할지를 결정하게 됩니다.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-text-value": "이미지는 위키백과가 사용하는 자유로이 라이선스되는 이미지의 모음집인 위키미디어 공용으로부터 가져옵니다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "제안된 이미지 확인",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "문서 확인",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "이미지가 관련이 있는지 결정하기",
