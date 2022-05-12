@@ -5,6 +5,7 @@ namespace GrowthExperiments\Config;
 use Config;
 use ConfigException;
 use IDBAccessObject;
+use MediaWiki\Settings\Config\MergeStrategy;
 
 /**
  * Config loader for wiki page config
@@ -43,6 +44,14 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomRe
 		'GEInfoboxTemplatesTest',
 		'GECampaigns',
 		'GECampaignTopics'
+	];
+
+	/**
+	 * Map of variable name => merge strategy. Defaults to replace.
+	 * @see MergeStrategy
+	 */
+	public const MERGE_STRATEGIES = [
+		'GECampaigns' => 'array_merge',
 	];
 
 	/**
@@ -99,7 +108,13 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomRe
 		}
 
 		if ( $this->wikiPageConfig->hasWithFlags( $name, $flags ) ) {
-			return $this->wikiPageConfig->getWithFlags( $name, $flags );
+			$wikiValue = $this->wikiPageConfig->getWithFlags( $name, $flags );
+			$mergeStrategy = self::MERGE_STRATEGIES[$name] ?? null;
+			if ( !$mergeStrategy || !$this->globalVarConfig->has( $name ) ) {
+				return $wikiValue;
+			}
+			$globalValue = $this->globalVarConfig->get( $name );
+			return MergeStrategy::newFromName( $mergeStrategy )->merge( $globalValue, $wikiValue );
 		} elseif ( $this->globalVarConfig->has( $name ) ) {
 			return $this->globalVarConfig->get( $name );
 		} else {
