@@ -1966,10 +1966,6 @@
 			"description": "Enable topic filters for suggested edits",
 			"value": true
 		},
-		"GEHomepageSuggestedEditsTopicsRequiresOptIn": {
-			"description": "If true, the topic filters for suggested edits will only be displayed to users who have the (hidden) preference for it enabled. If false (default), they will be displayed to everyone.",
-			"value": false
-		},
 		"GEConfirmEmailEnabled": {
 			"description": "Global ON/OFF switch for the email confirmation changes.",
 			"value": true

@@ -61,11 +61,6 @@ class SuggestedEdits extends BaseModule {
 	public const TOPICS_ORES_PREF = 'growthexperiments-homepage-se-ores-topic-filters';
 	/** User preference used to remember the user's topic mode selection, when using any type of topics. */
 	public const TOPICS_MATCH_MODE_PREF = 'growthexperiments-homepage-se-topic-filters-mode';
-	/**
-	 * User preference for opting into topic filters for suggested edits, when
-	 * $wgGEHomepageSuggestedEditsTopicsRequiresOptIn is true.
-	 */
-	public const TOPICS_ENABLED_PREF = 'growthexperiments-homepage-suggestededits-topics-enabled';
 	/** User preference used to remember the user's task type selection. */
 	public const TASKTYPES_PREF = 'growthexperiments-homepage-se-filters';
 	/** User preference for opting into guidance, when $wgGENewcomerTasksGuidanceRequiresOptIn is true. */
@@ -279,13 +274,7 @@ class SuggestedEdits extends BaseModule {
 		UserOptionsLookup $userOptionsLookup
 	) {
 		return self::isEnabled( $context ) &&
-			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' ) && (
-				!$context->getConfig()->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ||
-				$userOptionsLookup->getBoolOption(
-					$context->getUser(),
-					self::TOPICS_ENABLED_PREF
-				)
-			);
+			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' );
 	}
 
 	/**
