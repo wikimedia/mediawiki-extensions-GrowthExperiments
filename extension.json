@@ -1951,10 +1951,6 @@
 			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",
 			"value": true
 		},
-		"GEHomepageSuggestedEditsRequiresOptIn": {
-			"description": "If true, the suggested edits feature will only be displayed to users who have the (hidden) preference for it enabled. If false (default), it will be displayed to everyone.",
-			"value": false
-		},
 		"GEHomepageSuggestedEditsIntroLinks": {
 			"description": "Titles of local help pages linked from the suggested edits intro dialog.",
 			"value": {
