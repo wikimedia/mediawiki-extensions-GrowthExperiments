@@ -18,14 +18,20 @@ use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use HashConfig;
+use IContextSource;
 use Language;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Permissions\RestrictionStore;
 use MediaWiki\User\UserOptionsLookup;
+use MediaWikiTestCaseTrait;
+use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
 use OOUI\Theme;
 use OutputPage;
+use TitleFactory;
+use TitleValue;
 use User;
 use WANObjectCache;
 use WebRequest;
@@ -34,9 +40,9 @@ use Wikimedia\TestingAccessWrapper;
 /**
  * @coversDefaultClass \GrowthExperiments\HomepageModules\SuggestedEdits
  */
-class SuggestedEditsTest extends \MediaWikiUnitTestCase {
+class SuggestedEditsTest extends MediaWikiUnitTestCase {
 
-	use \MediaWikiTestCaseTrait;
+	use MediaWikiTestCaseTrait;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -120,9 +126,8 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 	}
 
 	private function getSuggestedEdits(): SuggestedEdits {
-		$config = new \HashConfig( [
+		$config = new HashConfig( [
 			'GEHomepageSuggestedEditsEnabled' => true,
-			'GEHomepageSuggestedEditsRequiresOptIn' => false,
 			'GEHomepageSuggestedEditsEnableTopics' => false
 		] );
 		$outputMock = $this->getMockBuilder( OutputPage::class )
@@ -136,7 +141,7 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			->willReturn( 'el' );
 		$languageMock->method( 'getDir' )
 			->willReturn( 'ltr' );
-		$userMock = $this->getMockBuilder( \User::class )
+		$userMock = $this->getMockBuilder( User::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
@@ -153,7 +158,7 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			->with( 'resetTaskCache' )
 			->willReturn( false );
 
-		$contextMock = $this->getMockBuilder( \IContextSource::class )
+		$contextMock = $this->getMockBuilder( IContextSource::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$contextMock->method( 'getConfig' )
@@ -191,9 +196,9 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			->willReturn( SearchStrategy::TOPIC_MATCH_MODE_OR );
 
 		$taskSuggester = new StaticTaskSuggester(
-			[ new Task( $taskType, new \TitleValue( 0, 'foo' ) ) ]
+			[ new Task( $taskType, new TitleValue( 0, 'foo' ) ) ]
 		);
-		$titleFactoryMock = $this->getMockBuilder( \TitleFactory::class )
+		$titleFactoryMock = $this->getMockBuilder( TitleFactory::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$linkBatchFactoryMock = $this->getMockBuilder( LinkBatchFactory::class )
