@@ -412,9 +412,9 @@ return [
 
 		$mentorProviderName = $services->getMainConfig()->get( 'GEMentorProvider' );
 		switch ( $mentorProviderName ) {
-			case 'wikitext':
+			case MentorProvider::PROVIDER_WIKITEXT:
 				return $geServices->getMentorProviderWikitext();
-			case 'structured':
+			case MentorProvider::PROVIDER_STRUCTURED:
 				return $geServices->getMentorProviderStructured();
 			default:
 				throw new InvalidArgumentException(

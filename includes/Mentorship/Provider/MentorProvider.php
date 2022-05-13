@@ -12,6 +12,11 @@ use Title;
 abstract class MentorProvider {
 	use LoggerAwareTrait;
 
+	/** @var string Identifier for MentorProvider */
+	public const PROVIDER_WIKITEXT = 'wikitext';
+	/** @var string */
+	public const PROVIDER_STRUCTURED = 'structured';
+
 	public function __construct() {
 		$this->setLogger( new NullLogger() );
 	}

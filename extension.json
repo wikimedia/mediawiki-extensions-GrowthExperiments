@@ -1880,7 +1880,7 @@
 			"value": "MediaWiki:GrowthMentors.json"
 		},
 		"GEMentorProvider": {
-			"description": "Migration variable. Controls which MentorProvider is used. Valid values: wikitext, structured",
+			"description": "Migration variable. Controls which MentorProvider is used. One of MentorProvider::PROVIDER_* constants",
 			"value": "wikitext"
 		},
 		"GEMentorDashboardEnabled": {
