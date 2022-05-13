@@ -1,5 +1,5 @@
-var SmallTaskCard = require( './SmallTaskCard.js' ),
-	TaskTypesAbFilter = require( '../ext.growthExperiments.DataStore/TaskTypesAbFilter.js' );
+var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js' );
+
 /**
  * Widget that displays a pagination text in the form "1 of 2 suggestions"
  * and a preview of the first suggestion (SmallTaskCard).
@@ -7,7 +7,9 @@ var SmallTaskCard = require( './SmallTaskCard.js' ),
  * @class
  * @extends OO.ui.Widget
  * @constructor
- * @param {Object} [config]
+ * @param {Object} config
+ * @param {Object} config.taskTypes Task type data, as returned by
+ *   HomepageHooks::getTaskTypesJson.
  * @param {Object} [config.task] The task preview data merged with the extra PCS
  * @param {number} [config.taskCount] The number of available tasks for preview data,
  * default is 1
@@ -35,7 +37,7 @@ function TaskPreviewWidget( config ) {
 
 	this.taskCard = new SmallTaskCard( {
 		task: config.task,
-		taskTypes: TaskTypesAbFilter.getTaskTypes(),
+		taskTypes: config.taskTypes,
 		taskUrl: null
 	} );
 

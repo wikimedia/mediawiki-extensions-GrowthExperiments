@@ -4,7 +4,7 @@ QUnit.dump.maxDepth = 999;
 
 require( './utils/Utils.test.js' );
 require( './ext.growthExperiments.Homepage.Logger/index.test.js' );
-require( './ext.growthExperiments.Homepage.mobile/index.test.js' );
+require( './ext.growthExperiments.Homepage.mobile/SuggestedEditsMobileSummary.test.js' );
 require( './ext.growthExperiments.Help/HelpPanelLogger.test.js' );
 require( './ext.growthExperiments.Help/HelpPanelProcessDialog.test.js' );
 require( './ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.test.js' );

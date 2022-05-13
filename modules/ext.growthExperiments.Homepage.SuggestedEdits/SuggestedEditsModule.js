@@ -152,33 +152,6 @@ SuggestedEditsModule.prototype.restoreState = function () {
 };
 
 /**
- * Update the mobile summary state on Special:Homepage
- * with a small card with the first task in the queue. If there
- * are no tasks show the number of edits in the last day
- *
- * FIXME: Update mobile module to read from the same data store so that it can update itself when
- * the data changes
- */
-SuggestedEditsModule.prototype.updateMobileSummary = function () {
-	mw.loader.using( 'ext.growthExperiments.Homepage.mobile' ).done( function () {
-		var homepageModules = mw.config.get( 'homepagemodules' );
-		homepageModules[ 'suggested-edits' ][ 'task-preview' ] = $.extend(
-			{},
-			this.tasksStore.getCurrentTask(),
-			{
-				taskPosition: this.tasksStore.getQueuePosition() + 1
-			}
-		);
-		mw.config.set( 'homepagemodules', homepageModules );
-		require( 'ext.growthExperiments.Homepage.mobile' )
-			.loadExtraDataForSuggestedEdits(
-				'.growthexperiments-homepage-module-suggested-edits',
-				false
-			);
-	}.bind( this ) );
-};
-
-/**
  * User has clicked "Done" in the dialog after selecting filters.
  *
  * @param {jQuery.Deferred} [filtersDialogProcess] Promise from the filters ProcessDialog to
@@ -294,14 +267,8 @@ SuggestedEditsModule.prototype.onPreviousCard = function ( isSwipe ) {
 
 /**
  * Called from onNextCard / filterSelection.
- *
- * Used to update the mobile summary state, show the current card based
- * on the queue position.
  */
 SuggestedEditsModule.prototype.updateCurrentCard = function () {
-	if ( OO.ui.isMobile() ) {
-		this.updateMobileSummary();
-	}
 	this.showCard();
 };
 
@@ -349,9 +316,6 @@ SuggestedEditsModule.prototype.onNewcomerTasksDataChanged = function () {
 	}
 	this.showCard();
 	this.updateControls();
-	if ( OO.ui.isMobile() ) {
-		this.updateMobileSummary();
-	}
 };
 
 /**

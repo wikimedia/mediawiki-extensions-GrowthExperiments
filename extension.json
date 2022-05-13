@@ -490,32 +490,17 @@
 				"ext.growthExperiments.Homepage.mobile/MobileOverlay.js",
 				"ext.growthExperiments.Homepage.Logger/index.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/TaskPreviewWidget.js",
-				"ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js",
+				"ext.growthExperiments.Homepage.mobile/TaskPreviewWidget.js",
+				"ext.growthExperiments.Homepage.mobile/LastDayEditsWidget.js",
+				"ext.growthExperiments.Homepage.mobile/SuggestedEditsMobileSummary.js",
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
 				"ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutDialog.js",
 				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js",
-				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
-				"ext.growthExperiments.DataStore/TopicFilters.js",
-				"ext.growthExperiments.DataStore/constants.js",
-				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
 				"utils/Utils.js",
-				"utils/IconUtils.js",
-				{
-					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
-				},
-				{
-					"name": "ext.growthExperiments.DataStore/config.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
-				}
+				"utils/IconUtils.js"
 			],
 			"messages": [
 				"growthexperiments-homepage-suggestededits-more-info",
@@ -535,6 +520,7 @@
 			"dependencies": [
 				"ext.growthExperiments.icons",
 				"ext.growthExperiments.Homepage.Mentorship",
+				"ext.growthExperiments.DataStore",
 				"mediawiki.language",
 				"oojs-ui-widgets"
 			]
@@ -1653,9 +1639,10 @@
 			"modules/ext.growthExperiments.Help/HelpPanelLogger.js",
 			"tests/qunit/ext.growthExperiments.StructuredTask/StructuredTaskLogger.test.js",
 			"modules/ext.growthExperiments.Homepage.mobile/index.js",
-			"modules/ext.growthExperiments.Homepage.SuggestedEdits/TaskPreviewWidget.js",
-			"modules/ext.growthExperiments.Homepage.SuggestedEdits/LastDayEditsWidget.js",
-			"tests/qunit/ext.growthExperiments.Homepage.mobile/index.test.js",
+			"modules/ext.growthExperiments.Homepage.mobile/TaskPreviewWidget.js",
+			"modules/ext.growthExperiments.Homepage.mobile/LastDayEditsWidget.js",
+			"modules/ext.growthExperiments.Homepage.mobile/SuggestedEditsMobileSummary.js",
+			"tests/qunit/ext.growthExperiments.Homepage.mobile/SuggestedEditsMobileSummary.test.js",
 			"modules/ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.js",
 			"tests/qunit/ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewPresets.test.js",
 			"modules/ext.growthExperiments.DataStore/constants.js",

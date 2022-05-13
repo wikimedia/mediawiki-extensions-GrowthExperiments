@@ -761,12 +761,8 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		// Dialog invoked via the info button in the suggested edits module
 		this.markSuggestedEditsModuleAsActivated( $suggestedEditsModule );
 	} else if ( this.mode === 'mobile-summary' ) {
-		this.markSuggestedEditsModuleAsActivated( $suggestedEditsModule );
 		// Dialog invoked outside of the suggested edits module
-		$suggestedEditsModule.each( function ( i, module ) {
-			require( 'ext.growthExperiments.Homepage.mobile' )
-				.loadExtraDataForSuggestedEdits( module, true );
-		} );
+		this.markSuggestedEditsModuleAsActivated( $suggestedEditsModule );
 	}
 
 	return mw.loader.using( moduleDependencies ).then( function () {

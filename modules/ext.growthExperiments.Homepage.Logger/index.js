@@ -12,6 +12,7 @@
 	/**
 	 * @param {boolean} enabled
 	 * @param {string} homepagePageviewToken
+	 * @class mw.libs.ge.HomepageModuleLogger
 	 * @constructor
 	 */
 	function HomepageModuleLogger( enabled, homepagePageviewToken ) {

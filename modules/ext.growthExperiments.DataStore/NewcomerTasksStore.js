@@ -25,6 +25,10 @@ function NewcomerTasksStore( root ) {
 	 * This can be greater than this.taskQueue.length since the task data is lazy loaded.
 	 */
 	this.taskCount = initialState.taskCount;
+	/**
+	 * @property {number} editCount Number of edits the user has made
+	 */
+	this.editCount = initialState.editCount;
 	/** @property {mw.libs.ge.TaskData|null} preloadedFirstTask Task data outputted from server */
 	this.preloadedFirstTask = null;
 	/** @property {number} currentTaskIndex Zero-based index of the task shown */
@@ -368,16 +372,17 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
  * would be unpredictable) from the PCS and AQS services.
  *
  * @param {number} taskIndex
+ * @param {string} [context] Context that triggers the action
  * @return {jQuery.Promise} Promise reflecting the status of the PCS request
  *   (AQS errors are ignored). Does not return any value; instead,
  *   this.taskQueue will be updated.
  */
-NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex ) {
+NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, context ) {
 	var pcsPromise,
 		aqsPromise,
 		preloaded,
 		apiConfig = {
-			context: 'suggestedEditsModule.getExtraDataAndUpdateQueue'
+			context: context || 'suggestedEditsModule.getExtraDataAndUpdateQueue'
 		},
 		suggestedEditData = this.taskQueue[ taskIndex ],
 		promise = $.Deferred();
@@ -422,14 +427,15 @@ NewcomerTasksStore.prototype.preloadExtraDataForUpcomingTask = function () {
 /**
  * Fetch extra data for the current task
  *
+ * @param {string} [context] Context that triggers the action
  * @return {jQuery.Promise}
  */
-NewcomerTasksStore.prototype.fetchExtraDataForCurrentTask = function () {
+NewcomerTasksStore.prototype.fetchExtraDataForCurrentTask = function ( context ) {
 	var currentTask = this.getCurrentTask();
 	if ( currentTask && currentTask.extract ) {
 		return $.Deferred().resolve();
 	}
-	return this.fetchExtraDataForTaskIndex( this.currentTaskIndex );
+	return this.fetchExtraDataForTaskIndex( this.currentTaskIndex, context );
 };
 
 /**
