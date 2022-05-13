@@ -495,8 +495,15 @@
 	"growthexperiments-addimage-reason-wikipedia-project": "Используется в такой же статье в $1.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Понятно",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Понятно",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Отказаться от наставничества",
+	"growthexperiments-homepage-mentorship-optout-header": "Отказаться от наставничества?",
+	"growthexperiments-homepage-mentorship-optout-text": "Вы всегда можете снова принять удел в наставничестве. Однако вы можете получить не того же учителя, как ранее.",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Отмена",
+	"growthexperiments-homepage-mentorship-optout-optout": "Отказаться",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|Вас}} более не наставляют.",
+	"growthexperiments-homepage-mentorship-optout-confirmation-pretext": "Найдите момент дла сказа до чего вы отказэ (необязо):",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Я хочу другого(-ую) наставника(-ницу)",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Я вовсе не хочу наставника(-ницу)",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Другой / Не хочу говорить",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Готово"
 }

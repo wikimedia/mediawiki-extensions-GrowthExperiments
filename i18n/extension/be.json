@@ -4,6 +4,13 @@
 			"Chadyka"
 		]
 	},
+	"growthexperiments-edit-config-feedback-cta": "Пакіньце водгук",
+	"growthexperiments-edit-config-edit-summary": "Тлумачэнне праўкі",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Служба падтрымкі",
+	"growthexperiments-edit-config-homepage": "Хатняя старонка для пачаткоўца",
+	"growthexperiments-edit-config-mentorship": "Настаўніцтва",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Так",
-	"growthexperiments-edit-config-mentorship-enabled-false": "Не"
+	"growthexperiments-edit-config-mentorship-enabled-false": "Не",
+	"growthexperiments-edit-config-newcomertasks": "Прапанаваныя праўкі",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Выключана"
 }

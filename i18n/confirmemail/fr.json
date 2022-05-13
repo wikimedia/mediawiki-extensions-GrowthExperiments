@@ -26,5 +26,11 @@
 	"growthexperiments-signupcampaign-bullet1": "Articles suggérés dans {{GENDER:|}}vos centres d’intérêt",
 	"growthexperiments-signupcampaign-bullet2": "Demander de l’aide d’un éditeur expérimenté",
 	"growthexperiments-signupcampaign-bullet3": "Commencer avec des modifications petites et faciles",
-	"growthexperiments-campaigns-footer": "En créant votre compte sur cette page, il sera associé à cette campagne dans des fins liées à l’expérience et l’analyse."
+	"growthexperiments-thankyoupage-title": "Créer un compte pour commencer à modifier et améliorer Wikipédia.",
+	"growthexperiments-thankyoupage-body": "Wikipédia est construit par des personnes comme {{GENDER:|}}vous qui travaillent ensemble. Modifier un article est plus facile que ce que vous pourriez penser !",
+	"growthexperiments-thankyoupage-body-mobile": "Wikipédia est construit par des personnes comme {{GENDER:|}}vous qui travaillent ensemble. Modifier un article est plus facile que ce que vous pourriez penser !",
+	"growthexperiments-thankyoupage-bullet1": "Tâches simples qui correspondent à {{GENDER:|}}vos intérêts",
+	"growthexperiments-thankyoupage-bullet2": "Aide et orientation pendant que {{GENDER:|}}vous modifiez",
+	"growthexperiments-thankyoupage-bullet3": "Informations sur combien de personnes voient {{GENDER:|}}votre travail",
+	"growthexperiments-campaigns-footer": "En créant {{GENDER:|}}votre compte sur cette page, il sera associé à cette campagne dans des fins liées à l’expérience et l’analyse."
 }
