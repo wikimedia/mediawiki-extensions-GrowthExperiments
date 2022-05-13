@@ -1143,7 +1143,8 @@
 				"oojs-ui.styles.icons-editing-advanced",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"ext.growthExperiments.icons"
+				"ext.growthExperiments.icons",
+				"ext.growthExperiments.DataStore"
 			],
 			"messages": [
 				"growthexperiments-help-panel-question-button-text",
