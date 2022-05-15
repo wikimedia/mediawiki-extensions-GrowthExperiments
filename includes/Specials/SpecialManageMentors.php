@@ -7,6 +7,7 @@ use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use Html;
 use HTMLForm;
+use Linker;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -77,6 +78,13 @@ class SpecialManageMentors extends SpecialPage {
 		);
 	}
 
+	private function makeUserLink( UserIdentity $user ) {
+		return Linker::userLink(
+			$user->getId(),
+			$user->getName()
+		) . Linker::userToolLinks( $user->getId(), $user->getName() );
+	}
+
 	/**
 	 * @param Mentor $mentor
 	 * @param int $i
@@ -85,7 +93,7 @@ class SpecialManageMentors extends SpecialPage {
 	private function getMentorAsHtmlRow( Mentor $mentor, int $i ): string {
 		$items = [
 			Html::element( 'td', [], (string)$i ),
-			Html::element( 'td', [], $mentor->getUserIdentity()->getName() ),
+			Html::rawElement( 'td', [], $this->makeUserLink( $mentor->getUserIdentity() ) ),
 			Html::element( 'td', [], $this->getLastActiveTimestamp( $mentor->getUserIdentity() ) ),
 			Html::element( 'td', [], $mentor->getIntroText() ),
 		];
