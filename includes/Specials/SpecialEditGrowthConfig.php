@@ -502,6 +502,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					],
 					'label-message' =>
 						"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections",
+					'help-message' => 'growthexperiments-edit-config-delayed',
 					'required' => false,
 					'section' => 'newcomertasks'
 				];
