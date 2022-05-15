@@ -163,6 +163,32 @@ class WikiPageConfigWriter {
 	}
 
 	/**
+	 * Check if a given variable or a subfield exists.
+	 * @param string|array $variable Variable name, or a list where the first item is the
+	 *   variable name and subsequent items are array keys, e.g. [ 'foo', 'bar', 'baz' ]
+	 *   means checking $foo['bar']['baz'] (where $foo stands for the 'foo' variable).
+	 * @return bool Whether the variable exists. The semantics are like array_key_exists().
+	 * @throws InvalidArgumentException when $variable is an array but the variable it refers to isn't.
+	 */
+	public function variableExists( $variable ): bool {
+		if ( $this->wikiConfig === null ) {
+			$this->loadConfig();
+		}
+		$variablePath = (array)$variable;
+		$config = $this->wikiConfig;
+		foreach ( $variablePath as $pathSegment ) {
+			if ( !is_array( $config ) ) {
+				throw new InvalidArgumentException( 'Trying to check a sub-field of a non-array' );
+			}
+			if ( !array_key_exists( $pathSegment, $config ) ) {
+				return false;
+			}
+			$config = $config[$pathSegment] ?? [];
+		}
+		return true;
+	}
+
+	/**
 	 * @param array $variables
 	 */
 	public function setVariables( array $variables ): void {
