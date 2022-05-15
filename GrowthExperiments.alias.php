@@ -80,6 +80,7 @@ $specialPageAliases['cs'] = [
 	'EditGrowthConfig' => [ 'Editovat_konfiguraci_Growth_funkcí' ],
 	'MentorDashboard' => [ 'Nástěnka_mentora' ],
 	'QuitMentorship' => [ 'Skončit_s_mentorstvím' ],
+	'ManageMentors' => [ 'Spravovat_mentory', 'Správa_mentorů' ],
 ];
 
 /** Dansk (Danish) */
