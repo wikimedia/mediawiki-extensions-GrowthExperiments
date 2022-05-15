@@ -54,6 +54,10 @@ class ChangeWikiConfig extends Maintenance {
 			'value',
 			'New value of the config key'
 		);
+		$this->addOption(
+			'create-only',
+			'Create the field if it doesn\'t exist but do not overwrite it if it does'
+		);
 	}
 
 	private function initServices() {
@@ -100,6 +104,11 @@ class ChangeWikiConfig extends Maintenance {
 			$value = FormatJson::decode( $value, true );
 		}
 		try {
+			if ( $this->hasOption( 'create-only' )
+				&& $configWriter->variableExists( $key )
+			) {
+				return;
+			}
 			$configWriter->setVariable( $key, $value );
 		} catch ( InvalidArgumentException $e ) {
 			$this->fatalError( $e->getMessage() );

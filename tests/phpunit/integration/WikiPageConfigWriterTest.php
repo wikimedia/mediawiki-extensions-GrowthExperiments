@@ -109,7 +109,7 @@ class WikiPageConfigWriterTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideSetVariable
 	 * @covers ::setVariable
 	 * @param string $variable Variable name
-	 * @param mixed $wikiConfig Initial value of variable
+	 * @param mixed $wikiConfig Initial config state
 	 * @param string $setVariable $variable parameter passed to setVariable()
 	 * @param mixed $setValue $value parameter passed to setVariable()
 	 * @param mixed $expectedValue Expected final value of variable, or an exception that's expected
@@ -163,6 +163,55 @@ class WikiPageConfigWriterTest extends MediaWikiIntegrationTestCase {
 				[ 'sub' => [ 'sub2' => 'bar' ] ] ],
 			'override second-level subfield' => [ 'var', [ 'var' => [ 'sub' => [ 'sub2' => 'baz' ] ] ],
 				[ 'var', 'sub', 'sub2' ], 'bar', [ 'sub' => [ 'sub2' => 'bar' ] ] ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideVariableExists
+	 * @covers ::variableExists
+	 * @param mixed $wikiConfig Initial config state
+	 * @param string $variable $variable parameter passed to setVariable()
+	 * @param mixed $expectedValue Expected return value, or an exception that's expected
+	 *   to be thrown.
+	 * @return void
+	 */
+	public function testVariableExists( array $wikiConfig, $variable, $expectedValue ) {
+		/** @var IConfigValidator|MockObject $validator */
+		$validator = $this->createNoOpAbstractMock( IConfigValidator::class, [ 'validateVariable' ] );
+		/** @var WikiPageConfigLoader|MockObject $loader */
+		$loader = $this->createNoOpMock( WikiPageConfigLoader::class, [ 'load' ] );
+		$loader->method( 'load' )->willReturn( $wikiConfig );
+		$writer = new WikiPageConfigWriter(
+			$validator,
+			$loader,
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getUserFactory(),
+			new NullLogger(),
+			[ $variable ],
+			$this->getExistingTestPage()->getTitle(),
+			$this->getTestUser()->getUserIdentity()
+		);
+		if ( $expectedValue instanceof Throwable ) {
+			$this->expectException( get_class( $expectedValue ) );
+		}
+		$value = $writer->variableExists( $variable );
+		if ( !( $expectedValue instanceof Throwable ) ) {
+			$this->assertSame( $expectedValue, $value );
+		}
+	}
+
+	public function provideVariableExists() {
+		return [
+			// initial config, $variable, expected value
+			'set' => [ [ 'var' => 'foo' ], 'var', true ],
+			'unset' => [ [ 'var' => 'foo' ], 'var2', false ],
+			'null is set' => [ [ 'var' => null ], 'var', true ],
+			'unset subfield' => [ [ 'var' => 'foo' ], [ 'var', 'sub' ], new InvalidArgumentException() ],
+			'subfield of null is not error' => [ [ 'var' => null ], [ 'var', 'sub' ], false ],
+			'unset parent' => [ [], [ 'var', 'sub' ], false ],
+			'unset child' => [ [ 'var' => [] ], [ 'var', 'sub' ], false ],
+			'set child' => [ [ 'var' => [ 'sub' => [] ] ], [ 'var', 'sub' ], true ],
 		];
 	}
 }
