@@ -289,6 +289,9 @@ class SpecialManageMentors extends SpecialPage {
 				'growthexperiments-manage-mentors-remove-mentor-success',
 				$mentorUser->getName()
 			);
+			$out->addWikiMsg(
+				'growthexperiments-manage-mentors-return-back'
+			);
 		}
 
 		return true;
