@@ -139,13 +139,20 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			'ext.growthExperiments.Account.styles',
 		] );
 
+		$isMobile = $this->getSkin() instanceof SkinMinerva;
 		$messageKey = $parameters['messageKey'];
 		$shouldShowBenefitsList = $parameters['showBenefitsList'] ?? false;
+		$shouldShowBenefitListInPlatform = $shouldShowBenefitsList === true ||
+			( $shouldShowBenefitsList === 'desktop' && !$isMobile );
 		$benefitsList = '';
 		$videoHtml = '';
-		if ( $shouldShowBenefitsList ) {
+		if ( $shouldShowBenefitListInPlatform ) {
 			foreach ( [ 'lightbulb', 'mentor', 'difficulty-easy-bw' ] as $i => $icon ) {
 				$index = $i + 1;
+				$benefitMessage = $this->msg( "growthexperiments-$messageKey-bullet$index" );
+				if ( !$benefitMessage->exists() ) {
+					$benefitMessage = $this->msg( "growthexperiments-signupcampaign-bullet$index" );
+				}
 				$benefitsList .= Html::rawElement( 'li', [],
 					new IconWidget( [ 'icon' => $icon ] )
 					. Html::element( 'span', [],
@@ -153,7 +160,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 						// * growthexperiments-signupcampaign-bullet1
 						// * growthexperiments-signupcampaign-bullet2
 						// * growthexperiments-signupcampaign-bullet3
-						$this->msg( "growthexperiments-signupcampaign-bullet$index" )->text()
+						$benefitMessage->text()
 					)
 				);
 			}
@@ -165,7 +172,6 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			$videoHtml = $this->getVideo( $this->getOutput(), $filename, $thumbtime );
 		}
 
-		$isMobile = $this->getSkin() instanceof SkinMinerva;
 		// The following message keys are used here:
 		// * growthexperiments-recurringcampaign-title
 		// * growthexperiments-signupcampaign-title
