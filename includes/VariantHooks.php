@@ -114,20 +114,21 @@ class VariantHooks implements
 	public function onSpecialPage_initList( &$list ) {
 		// FIXME: Temporary hack for T284740, should be removed after the end of the campaign.
 		$context = RequestContext::getMain();
-		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig ) ) {
+		if ( self::isGrowthCampaign( $context ) ) {
 			$list['CreateAccount']['class'] = SpecialCreateAccountCampaign::class;
+			$list['CreateAccount']['calls']['setCampaignConfig'] = [ $this->campaignConfig ];
 		}
 	}
 
 	/**
-	 * Check whether this is donor or GLAM campaign by inspecting the campaign query parameter.
+	 * Check if this is a Growth campaign by inspecting the campaign query parameter
+	 * and matching against GECampaignPattern.
 	 *
 	 * @param IContextSource $context
-	 * @param CampaignConfig $campaignConfig
 	 * @return bool
 	 */
-	public static function isDonorOrGlamCampaign(
-		IContextSource $context, CampaignConfig $campaignConfig
+	public static function isGrowthCampaign(
+		IContextSource $context
 	): bool {
 		$campaign = self::getCampaign( $context );
 
@@ -136,12 +137,27 @@ class VariantHooks implements
 		}
 
 		$geCampaignPattern = $context->getConfig()->get( 'GECampaignPattern' );
-		if ( $geCampaignPattern && preg_match( $geCampaignPattern, $campaign ) ) {
-			return true;
+		return $geCampaignPattern && preg_match( $geCampaignPattern, $campaign );
+	}
+
+	/**
+	 * Check whether the welcome survey should be skipped by asking the $campaignConfig
+	 * for the value given in the "campaign" query parameter
+	 *
+	 * @param IContextSource $context
+	 * @param CampaignConfig $campaignConfig
+	 * @return bool
+	 */
+	public static function shouldCampaignSkipWelcomeSurvey(
+		IContextSource $context, CampaignConfig $campaignConfig
+	): bool {
+		$campaign = self::getCampaign( $context );
+
+		if ( !$campaign ) {
+			return false;
 		}
-		// FIXME remove when GLAM campaign is over
-		$glamCampaignPattern = $campaignConfig->getCampaignPattern( 'growth-glam-2022' );
-		return $glamCampaignPattern && preg_match( $glamCampaignPattern, $campaign );
+
+		return $campaignConfig->shouldSkipWelcomeSurvey( $campaign );
 	}
 
 	/**
@@ -150,19 +166,9 @@ class VariantHooks implements
 	 * @param RequestContext $context
 	 * @return bool
 	 */
-	public static function isControlCampaign( RequestContext $context ) {
+	public static function isControlCampaign( RequestContext $context ): bool {
 		$campaign = self::getCampaign( $context );
 		return $campaign === 'social-latam-2022-B';
-	}
-
-	/**
-	 * FIXME T303785 replace with proper campaign configuration
-	 * @param IContextSource $context
-	 * @return bool
-	 */
-	public static function isMarketingVideoCampaign( IContextSource $context ) {
-		$campaign = self::getCampaign( $context );
-		return $campaign === 'social-latam-2022-A';
 	}
 
 	/**
@@ -202,7 +208,7 @@ class VariantHooks implements
 			return;
 		}
 		$context = RequestContext::getMain();
-		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig )
+		if ( self::isGrowthCampaign( $context )
 			|| self::isControlCampaign( $context )
 		) {
 			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $this->getCampaign( $context ) );
@@ -212,9 +218,8 @@ class VariantHooks implements
 	/** @inheritDoc */
 	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
 		$context = RequestContext::getMain();
-		if ( self::isDonorOrGlamCampaign( $context, $this->campaignConfig )
-			&& !self::isMarketingVideoCampaign( $context )
-		) {
+		if ( self::isGrowthCampaign( $context )
+			&& self::shouldCampaignSkipWelcomeSurvey( $context, $this->campaignConfig ) ) {
 			$context->getOutput()->redirect( SpecialPage::getSafeTitleFor( 'Homepage' )->getFullUrlForRedirect() );
 		}
 	}
@@ -222,7 +227,7 @@ class VariantHooks implements
 	/** @inheritDoc */
 	public function onSkinAddFooterLinks( Skin $skin, string $key, array &$footerItems ) {
 		$context = $skin->getContext();
-		if ( $key !== 'info' || !self::isDonorOrGlamCampaign( $context, $this->campaignConfig ) ) {
+		if ( $key !== 'info' || !self::isGrowthCampaign( $context ) ) {
 			return;
 		}
 		$footerItems['signupcampaign-legal'] = SpecialCreateAccountCampaign::getLegalFooter( $context );

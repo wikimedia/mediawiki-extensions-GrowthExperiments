@@ -7,10 +7,8 @@ use GrowthExperiments\VariantHooks;
 use HashConfig;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
-use RequestContext;
 use ResourceLoaderContext;
 use Skin;
-use Title;
 use User;
 
 /**
@@ -71,89 +69,6 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::isDonorOrGlamCampaign
-	 * @dataProvider isGrowthDonorCampaignDataProvider
-	 */
-	public function testIsGrowthDonorCampaign(
-		string $campaignPattern,
-		string $campaignFromRequestVal,
-		bool $isSpecial,
-		bool $expected
-	) {
-		$variantHooks = $this->getVariantHooksMock();
-		$contextMock = $this->getContextMock( $campaignPattern, $campaignFromRequestVal, $isSpecial );
-		$campaignConfigMock = $this->getCampaignConfigMock();
-		$result = $variantHooks::isDonorOrGlamCampaign( $contextMock, $campaignConfigMock );
-		$this->assertEquals( $expected, $result );
-	}
-
-	/**
-	 * Data provider for testIsGrowthDonorCampaign
-	 */
-	public function isGrowthDonorCampaignDataProvider(): array {
-		return [
-			[
-				'',
-				'',
-				false,
-				false
-			],
-			[
-				'/^foo$/',
-				'foo',
-				true,
-				true
-			],
-			[
-				'/^foo$/',
-				'bar',
-				true,
-				false
-			]
-		];
-	}
-
-	/**
-	 * @covers ::isDonorOrGlamCampaign
-	 * @dataProvider isGrowthGlamCampaignDataProvider
-	 */
-	public function testIsGrowthGlamCampaign(
-		string $campaignFromRequestVal,
-		bool $isSpecial,
-		bool $expected
-	) {
-		$variantHooks = $this->getVariantHooksMock();
-		$contextMock = $this->getContextMock( '', $campaignFromRequestVal, $isSpecial );
-		$campaignConfigMock = $this->getCampaignConfigMock();
-		$result = $variantHooks::isDonorOrGlamCampaign( $contextMock, $campaignConfigMock );
-		$this->assertEquals( $expected, $result );
-	}
-
-	/**
-	 * Data provider for testIsGrowthGlamCampaign
-	 * @return array[]
-	 */
-	public function isGrowthGlamCampaignDataProvider(): array {
-		return [
-			[
-				'',
-				false,
-				false
-			],
-			[
-				'growth-glam-2022',
-				true,
-				true
-			],
-			[
-				'growth-glam-2021',
-				true,
-				false
-			]
-		];
-	}
-
-	/**
 	 * @covers ::onLocalUserCreated
 	 */
 	public function testOnLocalUserCreated() {
@@ -166,35 +81,8 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 	private function getVariantHooksMock(): VariantHooks {
 		return new VariantHooks(
 			$this->createNoOpMock( UserOptionsManager::class ),
-			$this->getCampaignConfigMock()
+			$this->createNoOpMock( CampaignConfig::class )
 		);
-	}
-
-	private function getCampaignConfigMock(): CampaignConfig {
-		$campaignConfig = $this->createMock( CampaignConfig::class );
-		$campaignConfig->method( 'getCampaignPattern' )
-			->with( 'growth-glam-2022' )
-			->willReturn( '/^growth-glam-2022$/' );
-		return $campaignConfig;
-	}
-
-	private function getContextMock(
-		string $geCampaignPatternConfigVal,
-		string $campaignFromRequestVal,
-		bool $isSpecial
-	): RequestContext {
-		$contextMock = $this->createMock( RequestContext::class );
-		$contextMock->method( 'getConfig' )->willReturn(
-			new HashConfig( [ 'GECampaignPattern' => $geCampaignPatternConfigVal ] )
-		);
-		$requestContext = new \FauxRequest( [ 'campaign' => $campaignFromRequestVal ] );
-		$contextMock->method( 'getRequest' )->willReturn( $requestContext );
-		$contextMock->method( 'getRequest' )->willReturn( $requestContext );
-		$title = $this->createMock( Title::class );
-		$title->method( 'isSpecial' )->with( 'CreateAccount' )
-			->willReturn( $isSpecial );
-		$contextMock->method( 'getTitle' )->willReturn( $title );
-		return $contextMock;
 	}
 
 }

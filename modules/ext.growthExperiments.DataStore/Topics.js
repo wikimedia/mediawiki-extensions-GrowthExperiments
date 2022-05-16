@@ -1,10 +1,9 @@
 ( function () {
 
 	/**
-	 * Filter out GLAM topics for non-GLAM users since GLAM topics are included as a regular topic
+	 * Filter out campaign topics for non-campaign users since campaign topics are included as a regular topic
 	 * but should only be shown for users in the campaign
 	 *
-	 * FIXME remove when GLAM campaign is over
 	 *
 	 * @return {Object} Suggested edits topics, used in FiltersWidget and TopicSelectionWidget
 	 */

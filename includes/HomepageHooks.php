@@ -443,7 +443,6 @@ class HomepageHooks implements
 		}
 		$this->maybeTrackSuggestedEditStartTime( $context, $out );
 
-		// FIXME remove when GLAM campaign is over
 		// Config vars used to modify the suggested edits topics based on campaign
 		// (see ext.growthExperiments.Homepage.SuggestedEdits/Topics.js)
 		if ( ( !$skin->getTitle() || $skin->getTitle()->isSpecial( 'Homepage' ) ) &&
