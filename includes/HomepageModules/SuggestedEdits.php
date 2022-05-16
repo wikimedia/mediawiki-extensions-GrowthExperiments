@@ -39,7 +39,6 @@ use RuntimeException;
 use Status;
 use StatusValue;
 use TitleFactory;
-use User;
 
 /**
  * Homepage module that displays a list of recommended tasks.
@@ -587,11 +586,7 @@ class SuggestedEdits extends BaseModule {
 			// in the past, or null if they have never saved topics
 			$topicPreferences = $this->newcomerTasksUserOptionsLookup
 				->getTopicFilterWithoutFallback( $user );
-			$excludedTopics = self::getTopicsToExclude(
-				$this->userOptionsLookup,
-				$user,
-				$this->getGrowthWikiConfig()
-			);
+			$excludedTopics = $this->campaignConfig->getTopicsToExcludeForUser( $user );
 			// Filter out campaign-specific topics that are no longer available
 			if ( $topicPreferences && count( $excludedTopics ) ) {
 				$topicPreferences = array_diff( $topicPreferences, $excludedTopics );
@@ -940,27 +935,5 @@ class SuggestedEdits extends BaseModule {
 			);
 		}
 		return $this->navigationWidgetFactory;
-	}
-
-	/**
-	 * Get the topic IDs to hide for the current user based on whether the user is in a campaign.
-	 * By default, all possible topics are included, so the topics that are campaign-specific
-	 * should be hidden for users who are not in the campaign.
-	 *
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param User $user
-	 * @param Config $wikiConfig
-	 *
-	 * @return array
-	 */
-	public static function getTopicsToExclude(
-		UserOptionsLookup $userOptionsLookup, User $user, Config $wikiConfig
-	): array {
-		$campaignConfig = new CampaignConfig(
-			$wikiConfig->get( 'GECampaigns' ) ?? [],
-			[],
-			$userOptionsLookup
-		);
-		return $campaignConfig->getTopicsToExcludeForUser( $user );
 	}
 }

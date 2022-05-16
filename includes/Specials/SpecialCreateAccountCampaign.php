@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Specials;
 
 use ExtensionRegistry;
-use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Util;
 use Html;
@@ -17,6 +16,7 @@ use OOUI\IconWidget;
 use OutputPage;
 use SpecialCreateAccount;
 use Title;
+use Wikimedia\Assert\Assert;
 
 /**
  * Customized version of SpecialCreateAccount with different landing text.
@@ -70,7 +70,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 
 	/** @inheritDoc */
 	protected function getBenefitsContainerHtml(): string {
-		return $this->shouldShowNewLandingPageHtml() ? $this->getDonorHtml() : parent::getBenefitsContainerHtml();
+		return $this->shouldShowNewLandingPageHtml() ? $this->getCampaignHtml() : parent::getBenefitsContainerHtml();
 	}
 
 	/** @inheritDoc */
@@ -89,11 +89,49 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	/**
 	 * @return string HTML to render in the CreateAccount form.
 	 */
-	private function getDonorHtml(): string {
+	private function getCampaignHtml(): string {
 		if ( !$this->showExtraInformation() ) {
 			return '';
 		}
 
+		$campaignName = $this->campaignConfig->getCampaignIndexFromCampaignTerm( $this->getCampaignValue() );
+		// If we got here, shouldShowNewLandingPageHtml() is true so there is a campaign with a
+		// template. Make phan happy.
+		Assert::invariant( $campaignName !== null, '$campaignName is not null' );
+		$template = $this->campaignConfig->getSignupPageTemplate( $campaignName );
+		Assert::invariant( $template !== null, '$template is not null' );
+		$parameters = $this->campaignConfig->getSignupPageTemplateParameters( $campaignName );
+
+		// We only really have one template at this pont, with small variations.
+		return $this->getCampaignTemplateHtml( $template, $parameters );
+	}
+
+	/**
+	 * Known templates/parameters:
+	 * - hero: welcome text with hero image
+	 *   FIXME: the image should be parametrized (currently it's CSS+SVG)
+	 *   - messageKey: used in th name of various messages:
+	 *     - growthexperiments-{messageKey}-title: title text (h2)
+	 *     - growthexperiments-{messageKey}-body: main welcome text
+	 *     - growthexperiments-{messageKey}-title-mobile and
+	 *       growthexperiments-{messageKey}-body-mobile: alternative text for mobile (to allow for
+	 *       shorter text and avoid pushing the registration form below the fold). Disable (set to
+	 *       '-') to not show anything; omit or blank to show the same text as on desktop.
+	 *     - growthexperiments-{messageKey}-bullet1/2/3: three bullet items after the main text,
+	 *       with the lightbulb, mentor and difficulty-easy-bw icons, meant to highlight Growth
+	 *       features. Only used if showBenefitsList is true (but then all three are required).
+	 *     Also used as a CSS class (.mw-ge-{messageKey}-block) for selecting a specific campaign.
+	 *   - showBenefitsList: whether to show the benefit list (three bullet items highlighting
+	 *     various Growth features), default false
+	 * - video: welcome text with video on top
+	 *   - messageKey, showBenefitsList: as above
+	 *   - file: video filename from Commons (without namespace)
+	 *   - thumbtime: timestamp to use for still image for the video (default: leave it to MediaWiki)
+	 * @param string $template
+	 * @param array $parameters
+	 * @return string
+	 */
+	private function getCampaignTemplateHtml( $template, $parameters ) {
 		$this->getOutput()->enableOOUI();
 		$this->getOutput()->addModuleStyles( [
 			'oojs-ui.styles.icons-interactions',
@@ -101,9 +139,11 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			'ext.growthExperiments.Account.styles',
 		] );
 
+		$messageKey = $parameters['messageKey'];
+		$shouldShowBenefitsList = $parameters['showBenefitsList'] ?? false;
 		$benefitsList = '';
 		$videoHtml = '';
-		if ( $this->shouldShowBenefitsList() ) {
+		if ( $shouldShowBenefitsList ) {
 			foreach ( [ 'lightbulb', 'mentor', 'difficulty-easy-bw' ] as $i => $icon ) {
 				$index = $i + 1;
 				$benefitsList .= Html::rawElement( 'li', [],
@@ -118,48 +158,55 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 				);
 			}
 			$benefitsList = Html::rawElement( 'ul', [ 'class' => 'mw-ge-donorsignup-list' ], $benefitsList );
-		} elseif ( $this->isMarketingVideoCampaign() ) {
-			// FIXME: Delete this block of code when T302738 is over.
-			$videoHtml = $this->getVideo( $this->getOutput(),
-				'Wikimedia_Foundation_newcomer_experience_pilot_-_account_creation.webm',
-				38 );
+		}
+		if ( $template === 'video' ) {
+			$filename = $parameters['file'];
+			$thumbtime = $parameters['thumbtime'] ?? null;
+			$videoHtml = $this->getVideo( $this->getOutput(), $filename, $thumbtime );
 		}
 
-		$campaignKey = $this->getCampaignMessageKey();
 		$isMobile = $this->getSkin() instanceof SkinMinerva;
-		if ( $this->isMarketingVideoCampaign() && $isMobile ) {
-			$campaignTitle = '';
-		} else {
-			$campaignTitle = Html::rawElement( 'h2', [ 'class' => 'mw-ge-donorsignup-title' ],
+		// The following message keys are used here:
+		// * growthexperiments-recurringcampaign-title
+		// * growthexperiments-signupcampaign-title
+		// * growthexperiments-josacampaign-title
+		// * growthexperiments-glamcampaign-title
+		// * growthexperiments-marketingvideocampaign-title
+		$titleMessage = $this->msg( "growthexperiments-$messageKey-title" );
+		// The following message keys are used here:
+		// * growthexperiments-recurringcampaign-body
+		// * growthexperiments-signupcampaign-body
+		// * growthexperiments-josacampaign-body
+		// * growthexperiments-glamcampaign-body
+		// * growthexperiments-marketingvideocampaign-body
+		$bodyMessage = $this->msg( "growthexperiments-$messageKey-body" );
+		if ( $isMobile ) {
+			// use mobile-specific title/body if they exist and aren't empty
+			if ( !$this->msg( "growthexperiments-$messageKey-title-mobile" )->isBlank() ) {
 				// The following message keys are used here:
-				// * growthexperiments-recurringcampaign-title
-				// * growthexperiments-signupcampaign-title
-				// * growthexperiments-josacampaign-title
-				// * growthexperiments-glamcampaign-title
-				// * growthexperiments-marketingvideocampaign-title
-				$this->msg( "growthexperiments-$campaignKey-title" )->parse()
-			);
+				// none as of now
+				$titleMessage = $this->msg( "growthexperiments-$messageKey-title-mobile" );
+			}
+			if ( !$this->msg( "growthexperiments-$messageKey-body-mobile" )->isBlank() ) {
+				// The following message keys are used here:
+				// * growthexperiments-marketingvideocampaign-body-mobile
+				$bodyMessage = $this->msg( "growthexperiments-$messageKey-body-mobile" );
+			}
 		}
-		if ( $this->isGlamCampaign() && $isMobile ) {
-			// title only
-			$campaignBody = '';
-		} elseif ( $this->isMarketingVideoCampaign() && $isMobile ) {
-			// short body
-			$campaignBody = $this->msg( 'growthexperiments-marketingvideocampaign-body-mobile' )->parse();
-		} else {
-			// The following message keys are used here:
-			// * growthexperiments-recurringcampaign-body
-			// * growthexperiments-signupcampaign-body
-			// * growthexperiments-josacampaign-body
-			// * growthexperiments-glamcampaign-body
-			// * growthexperiments-marketingvideocampaign-body
-			$campaignBody = $this->msg( "growthexperiments-$campaignKey-body" )->parse();
+
+		$campaignTitle = '';
+		$campaignBody = '';
+		// note that a message consisting of a single dash is disabled but not blank
+		if ( !$titleMessage->isDisabled() ) {
+			$campaignTitle = Html::rawElement( 'h2', [ 'class' => 'mw-ge-donorsignup-title' ],
+				$titleMessage->parse() );
 		}
-		if ( $campaignBody !== '' ) {
-			$campaignBody = Html::rawElement( 'div', [ 'class' => 'mw-ge-donorsignup-body' ], $campaignBody );
+		if ( !$bodyMessage->isDisabled() ) {
+			$campaignBody = Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
+				$bodyMessage->parse() );
 		}
 		return Html::rawElement( 'div', [ 'class' => 'mw-createacct-benefits-container' ],
-			Html::rawElement( 'div', [ 'class' => "mw-ge-donorsignup-block mw-ge-donorsignup-block-$campaignKey" ],
+			Html::rawElement( 'div', [ 'class' => "mw-ge-donorsignup-block mw-ge-donorsignup-block-$messageKey" ],
 				$campaignTitle
 				. $campaignBody
 				. $benefitsList
@@ -174,45 +221,20 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	 * @return bool
 	 */
 	private function shouldShowNewLandingPageHtml(): bool {
-		$request = $this->getRequest();
-		return $request->getCheck( 'campaign' )
-			   && $request->getInt( HomepageHooks::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML ) > 0;
-	}
-
-	/**
-	 * Check if the campaign field contains "recurring".
-	 *
-	 * @return bool
-	 */
-	private function isRecurringDonorCampaign(): bool {
-		return strpos( $this->getCampaignValue(), 'recurring' ) !== false;
-	}
-
-	/**
-	 * Check if the campaign field contains "glam".
-	 * @return bool
-	 */
-	private function isGlamCampaign(): bool {
-		return strpos( $this->getCampaignValue(), 'glam' ) !== false;
-	}
-
-	/**
-	 * FIXME: Delete this code when T302738 is finished.
-	 *
-	 * @return bool
-	 */
-	private function isMarketingVideoCampaign(): bool {
-		return $this->getCampaignValue() === 'social-latam-2022-A';
-	}
-
-	/**
-	 * Get the messageKey from the campaign  configuration
-	 *
-	 * @return string
-	 */
-	private function getCampaignMessageKey(): string {
-		$campaignTerm = $this->getCampaignValue();
-		return $this->campaignConfig->getMessageKey( $campaignTerm );
+		// can't use getCampaignValue() here as it might be called from load() where
+		// self::$authForm is not set up yet.
+		$campaignValue = $this->getRequest()->getRawVal( 'campaign' );
+		$campaignName = $this->campaignConfig->getCampaignIndexFromCampaignTerm( $campaignValue );
+		if ( $campaignName ) {
+			$signupPageTemplate = $this->campaignConfig->getSignupPageTemplate( $campaignName );
+			if ( in_array( $signupPageTemplate, [ 'hero', 'video' ], true ) ) {
+				return true;
+			} elseif ( $signupPageTemplate !== null ) {
+				Util::logText( 'Unknown signup page template',
+					[ 'campaign' => $campaignName, 'template' => $signupPageTemplate ] );
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -222,15 +244,6 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	 */
 	private function getCampaignValue(): string {
 		return $this->authForm->getField( 'campaign' )->getDefault();
-	}
-
-	/**
-	 * Check whether the customized landing page content should include the benefits list
-	 *
-	 * @return bool
-	 */
-	private function shouldShowBenefitsList(): bool {
-		return !$this->isRecurringDonorCampaign() && !$this->isGlamCampaign() && !$this->isMarketingVideoCampaign();
 	}
 
 	/**

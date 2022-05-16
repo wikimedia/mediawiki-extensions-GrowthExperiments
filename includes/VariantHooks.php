@@ -114,30 +114,28 @@ class VariantHooks implements
 	public function onSpecialPage_initList( &$list ) {
 		// FIXME: Temporary hack for T284740, should be removed after the end of the campaign.
 		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( $context ) ) {
+		if ( self::isGrowthCampaign( $context, $this->campaignConfig ) ) {
 			$list['CreateAccount']['class'] = SpecialCreateAccountCampaign::class;
 			$list['CreateAccount']['calls']['setCampaignConfig'] = [ $this->campaignConfig ];
 		}
 	}
 
 	/**
-	 * Check if this is a Growth campaign by inspecting the campaign query parameter
-	 * and matching against GECampaignPattern.
+	 * Check if this is a Growth campaign by inspecting the campaign query parameter.
 	 *
 	 * @param IContextSource $context
+	 * @param CampaignConfig $campaignConfig
 	 * @return bool
 	 */
 	public static function isGrowthCampaign(
-		IContextSource $context
+		IContextSource $context, CampaignConfig $campaignConfig
 	): bool {
-		$campaign = self::getCampaign( $context );
-
-		if ( !$campaign ) {
+		$campaignParameter = self::getCampaign( $context );
+		if ( !$campaignParameter ) {
 			return false;
 		}
 
-		$geCampaignPattern = $context->getConfig()->get( 'GECampaignPattern' );
-		return $geCampaignPattern && preg_match( $geCampaignPattern, $campaign );
+		return $campaignConfig->getCampaignIndexFromCampaignTerm( $campaignParameter ) !== null;
 	}
 
 	/**
@@ -158,17 +156,6 @@ class VariantHooks implements
 		}
 
 		return $campaignConfig->shouldSkipWelcomeSurvey( $campaign );
-	}
-
-	/**
-	 * FIXME ugly one-off hack to get the instrumentation logic in LocalUserCreated to work
-	 *   for control users.
-	 * @param RequestContext $context
-	 * @return bool
-	 */
-	public static function isControlCampaign( RequestContext $context ): bool {
-		$campaign = self::getCampaign( $context );
-		return $campaign === 'social-latam-2022-B';
 	}
 
 	/**
@@ -208,9 +195,7 @@ class VariantHooks implements
 			return;
 		}
 		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( $context )
-			|| self::isControlCampaign( $context )
-		) {
+		if ( self::isGrowthCampaign( $context, $this->campaignConfig ) ) {
 			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $this->getCampaign( $context ) );
 		}
 	}
@@ -218,7 +203,7 @@ class VariantHooks implements
 	/** @inheritDoc */
 	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
 		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( $context )
+		if ( self::isGrowthCampaign( $context, $this->campaignConfig )
 			&& self::shouldCampaignSkipWelcomeSurvey( $context, $this->campaignConfig ) ) {
 			$context->getOutput()->redirect( SpecialPage::getSafeTitleFor( 'Homepage' )->getFullUrlForRedirect() );
 		}
@@ -227,7 +212,7 @@ class VariantHooks implements
 	/** @inheritDoc */
 	public function onSkinAddFooterLinks( Skin $skin, string $key, array &$footerItems ) {
 		$context = $skin->getContext();
-		if ( $key !== 'info' || !self::isGrowthCampaign( $context ) ) {
+		if ( $key !== 'info' || !self::isGrowthCampaign( $context, $this->campaignConfig ) ) {
 			return;
 		}
 		$footerItems['signupcampaign-legal'] = SpecialCreateAccountCampaign::getLegalFooter( $context );

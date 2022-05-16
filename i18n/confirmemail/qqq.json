@@ -20,6 +20,7 @@
 	"growthexperiments-signupcampaign-title": "Title of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
 	"growthexperiments-signupcampaign-body": "Body of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
 	"growthexperiments-marketingvideocampaign-title": "Title of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es.) Same as {{msg-mw|growthexperiments-signupcampaign-title}}",
+	"growthexperiments-marketingvideocampaign-title-mobile": "{{Notranslate}}",
 	"growthexperiments-marketingvideocampaign-body": "Body of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es.)",
 	"growthexperiments-marketingvideocampaign-body-mobile": "Body of the Special:CreateAccount block that's shown to Wikimedia donors on mobile. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es.)",
 	"growthexperiments-signupcampaign-bullet1": "First highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
