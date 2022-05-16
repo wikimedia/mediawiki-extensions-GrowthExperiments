@@ -342,6 +342,8 @@
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|تعرف|تعرفي}} على المزيد حول {{GENDER:$2|مرشدك الجديد|مرشدتك الجديدة}}",
 	"right-setmentor": "إضافة مرشد للمستخدمين",
 	"action-setmentor": "تعيين مرشدي المستخدمين",
+	"right-managementors": "إدارة قائمة المرشدين",
+	"action-managementors": "إدارة قائمة المرشدين",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "المزيد حول هذا التعديل المقترح",
 	"growthexperiments-homepage-suggestededits-more-info": "المزيد من المعلومات حول التعديلات المقترحة",
 	"growthexperiments-homepage-welcome-notice-header": "مرحبا بـ{{GENDER:$1|كَ|كِ}} في لوحة {{GENDER:$1|المستخدم|المستخدمة}} خاصتك!",

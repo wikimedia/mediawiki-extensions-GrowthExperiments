@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gwendal"
+			"Gwendal",
+			"Y-M D"
 		]
 	},
-	"growthexperiments-addimage-submitting-title": "O kas..."
+	"growthexperiments-addimage-submitting-title": "O kas...",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Nullañ",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Kenderc'hel",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Nullañ",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Graet"
 }

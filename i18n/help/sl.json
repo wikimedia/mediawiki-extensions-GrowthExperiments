@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dbc334",
 			"Eleassar"
 		]
 	},
-	"growthexperiments-help-panel-postedit-footer": "Prikaži več predlaganih urejanj",
+	"growthexperiments-help-panel-postedit-footer": "Prikaži vsa predlagana urejanja",
 	"growthexperiments-help-panel-suggestededits-title": "Predlagana urejanja",
 	"growthexperiments-help-panel-questioncomplete-title": "Postavite vprašanje",
 	"tag-help_panel_question": "vprašanje s podokna za pomoč",

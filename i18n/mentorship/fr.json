@@ -100,5 +100,16 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "Le type de <code>$1</code> attendu doit être <code>$2</code>, mais il est <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "La définition du mentor contient une clé <code>$1</code> inattendue.",
 	"growthexperiments-mentor-writer-error-already-added": "Le tuteur $1 a déjà été ajouté à la liste des tuteurs",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "Le tuteur $1 n’est pas dans la liste des tuteurs"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Le tuteur $1 n’est pas dans la liste des tuteurs",
+	"growthexperiments-manage-mentors-title": "Gérer les mentors",
+	"growthexperiments-manage-mentors-error-no-such-user": "Erreur : aucun utilisateur n’existe avec l’identifiant $1. Ceci est probablement une erreur interne.",
+	"growthexperiments-manage-mentors-auto-assigned": "Mentors affectés automatiquement",
+	"growthexperiments-manage-mentors-manually-assigned": "Mentors affectés manuellement",
+	"growthexperiments-manage-mentors-username": "Nom d’utilisateur",
+	"growthexperiments-manage-mentors-last-active": "Dernière activité",
+	"growthexperiments-manage-mentors-intro-msg": "Message pour les nouveaux venus",
+	"growthexperiments-manage-mentors-remove-mentor": "Enlever",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|}}Vous allez enlever [[User:$1]] en tant que mentor{{GENDER:$1|}}.",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "Motif du retrait du mentor",
+	"growthexperiments-manage-mentors-remove-mentor-success": "L’utilisat{{GENDER:$1|eur|rice}} [[User:$1|$1]] n’est plus un mentor."
 }

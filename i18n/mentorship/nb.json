@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"Mn00ch"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Kontrollpanel for faddere",
@@ -96,5 +97,7 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> forventes å være <code>$2</code>, men er <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Fadderdefinisjonen inneholder en uventet nøkkel <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Fadderen $1 sto allerede på fadderlista.",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "Fadderen $1 står ikke på fadderlista"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Fadderen $1 står ikke på fadderlista",
+	"growthexperiments-manage-mentors-intro-msg": "Melding til nykommere",
+	"growthexperiments-manage-mentors-remove-mentor": "Fjern"
 }

@@ -360,6 +360,8 @@
 	"growthexperiments-notification-learn-more": "En savoir plus sur {{GENDER:$1|}}votre {{GENDER:$2|nouveau tuteur|nouvelle tutrice}}",
 	"right-setmentor": "Définir le tuteur de l’utilisateur",
 	"action-setmentor": "définir le tuteur de l’utilisateur",
+	"right-managementors": "Gérer la liste des mentors",
+	"action-managementors": "gérer la liste des mentors",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "En savoir plus sur cette modification suggérée",
 	"growthexperiments-homepage-suggestededits-more-info": "Plus d’informations sur les modifications suggérées",
 	"growthexperiments-homepage-welcome-notice-header": "Bienvenue sur {{GENDER:$1|}}votre page d'accueil !",

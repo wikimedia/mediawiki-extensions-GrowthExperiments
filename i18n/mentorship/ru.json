@@ -93,5 +93,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Количество подопечных, назначаемых мне",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Примерно половина от нормального",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Нормальное (по умолчанию)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Примерно в два раза выше нормального"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Примерно в два раза выше нормального",
+	"growthexperiments-manage-mentors-username": "Имя участника",
+	"growthexperiments-manage-mentors-remove-mentor": "Удалить"
 }

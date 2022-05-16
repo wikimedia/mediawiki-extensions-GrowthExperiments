@@ -101,5 +101,16 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "Als <code>$1</code> wurde <code>$2</code> erwartet, es ist jedoch <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Die Lotsen-Definition enthält einen unerwarteten Schlüssel <code>$1</code>.",
 	"growthexperiments-mentor-writer-error-already-added": "Lotse $1 wurde bereits zur Lotsenliste hinzugefügt",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "Lotse $1 steht nicht auf der Lotsenliste"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Lotse $1 steht nicht auf der Lotsenliste",
+	"growthexperiments-manage-mentors-title": "Verwalten von Lotsen",
+	"growthexperiments-manage-mentors-error-no-such-user": "Fehler: Es existiert kein solcher Benutzer mit der ID $1. Dies ist wahrscheinlich ein interner Fehler.",
+	"growthexperiments-manage-mentors-auto-assigned": "Automatisch zugewiesene Lotsen",
+	"growthexperiments-manage-mentors-manually-assigned": "Manuell zugewiesene Lotsen",
+	"growthexperiments-manage-mentors-username": "Benutzername",
+	"growthexperiments-manage-mentors-last-active": "Zuletzt aktiv",
+	"growthexperiments-manage-mentors-intro-msg": "Nachricht für Neueinsteiger",
+	"growthexperiments-manage-mentors-remove-mentor": "Entfernen",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Du}} bist dabei, [[User:$1]] als {{GENDER:$1|Lotsen|Lotsin}} zu entfernen.",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "Grund für die Entfernung des Lotsen",
+	"growthexperiments-manage-mentors-remove-mentor-success": "[[User:$1|$1]] ist nicht länger {{GENDER:$1|ein Lotsen|eine Lotsin}}."
 }

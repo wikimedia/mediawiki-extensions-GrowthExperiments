@@ -100,5 +100,16 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "من المتوقّع لـ<code>$1</code> أن يكون <code>$2</code>، لكنّه <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "تعريف المرشد يحتوي على مفتاح غير متوقع <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "تمت إضافة المرشد $1 سابقًا إلى قائمة المرشدين",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "لا وجود للمرشد $1 على قائمة المرشدين"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "لا وجود للمرشد $1 على قائمة المرشدين",
+	"growthexperiments-manage-mentors-title": "إدارة المرشدين",
+	"growthexperiments-manage-mentors-error-no-such-user": "خطأ: لا وجود لمستخدم مع معرّف $1. ربما يكون هذا خطأ داخلي.",
+	"growthexperiments-manage-mentors-auto-assigned": "المرشدون المعيّنون تلقائيًا",
+	"growthexperiments-manage-mentors-manually-assigned": "المرشدون المعيّنون يدويّا",
+	"growthexperiments-manage-mentors-username": "اسم المستخدم",
+	"growthexperiments-manage-mentors-last-active": "آخر نشاط",
+	"growthexperiments-manage-mentors-intro-msg": "رسالة إلى الوافدين الجدد",
+	"growthexperiments-manage-mentors-remove-mentor": "إزالة",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|ستُقدم|ستُقدمين}} على إزالة [[User:$1]] كـ{{GENDER:$1|مرشد|مرشدة}}.",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "سبب إزالة المرشد",
+	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|المستخدم|المستخدمة}} [[User:$1|$1]] لم {{GENDER:$1|يعد متاحاً كمرشد|تعد متاحة كمرشدة}}."
 }
