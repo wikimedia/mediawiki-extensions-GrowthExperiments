@@ -84,17 +84,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		if ( $userErrorMessage ) {
 			return StatusValue::newGood()->error( $userErrorMessage );
 		}
-		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
-		$recommendationAccepted = $data[ 'accepted' ] ?? false;
-		if ( $recommendationAccepted && $imageRecommendation instanceof ImageRecommendationTaskType ) {
-			$minCaptionLength = $imageRecommendation->getMinimumCaptionCharacterLength();
-			if ( strlen( trim( $data['caption'] ) ) < $minCaptionLength ) {
-				return StatusValue::newGood()->error(
-					'growthexperiments-addimage-caption-warning-tooshort',
-					$minCaptionLength
-				);
-			}
-		}
+
 		return $this->parseData( $data );
 	}
 
@@ -207,6 +197,17 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 					'apierror-growthexperiments-addimage-handler-reason-invaliditem',
 					$reason,
 					Message::listParam( self::REJECTION_REASONS, 'comma' )
+				);
+			}
+		}
+		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
+		$recommendationAccepted = $data[ 'accepted' ] ?? false;
+		if ( $recommendationAccepted && $imageRecommendation instanceof ImageRecommendationTaskType ) {
+			$minCaptionLength = $imageRecommendation->getMinimumCaptionCharacterLength();
+			if ( strlen( trim( $data['caption'] ) ) < $minCaptionLength ) {
+				return StatusValue::newGood()->error(
+					'growthexperiments-addimage-caption-warning-tooshort',
+					$minCaptionLength
 				);
 			}
 		}
