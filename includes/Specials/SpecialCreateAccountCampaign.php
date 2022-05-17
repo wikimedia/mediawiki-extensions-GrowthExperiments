@@ -139,6 +139,10 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			'ext.growthExperiments.Account.styles',
 		] );
 
+		if ( $this->shouldShowNewLandingPageHtml() ) {
+			$this->getOutput()->addBodyClasses( 'mw-ge-customlandingpage' );
+		}
+
 		$isMobile = $this->getSkin() instanceof SkinMinerva;
 		$messageKey = $parameters['messageKey'];
 		$shouldShowBenefitsList = $parameters['showBenefitsList'] ?? false;
