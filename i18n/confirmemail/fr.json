@@ -26,5 +26,15 @@
 	"growthexperiments-signupcampaign-bullet1": "Articles suggérés dans {{GENDER:|}}vos centres d’intérêt",
 	"growthexperiments-signupcampaign-bullet2": "Demander de l’aide d’un éditeur expérimenté",
 	"growthexperiments-signupcampaign-bullet3": "Commencer avec des modifications petites et faciles",
+	"growthexperiments-recurringcampaign-title": "Merci d’être un soutien loyal. Ce sont des contributions de lecteurs comme {{GENDER:|vous}} qui gardent Wikipédia prospère.",
+	"growthexperiments-recurringcampaign-body": "Créer votre compte maintenant pour vous connecter et éviter des voir des bannières d’appels de fonds. Une fois que {{GENDER:|vous}} avez un compte, {{GENDER:|vous}} pouvez aussi apprendre à modifier Wikipédia avec de petites modifications qui auront un grand impact pour le reste du monde. Nous serons là pour {{GENDER:|vous}} guider quand {{GENDER:|vous}} commencerez !",
+	"growthexperiments-josacampaign-title": "Bienvenue à la célébration de l’anniversaire de Wikipédia !\n\nUne fois votre compte créé, vous pouvez commencer à contribuer à l’encyclopédie.",
+	"growthexperiments-josacampaign-body": "Ceci est un événement organisé par l’Association jordanienne du logiciel libre et Wikimédia au Levant, pour vous aider à apprendre à utiliser Wikipédia et comment y contribuer.\n\nPour commencer à contribuer, tout ce que vous avez à faire est de remplir ce formulaire puis de choisir une tâche sur laquelle travailler.\n\nSi vous avez besoin d’aide, veuillez demander aux organisateurs de l’événement.",
+	"growthexperiments-thankyoupage-title": "Créer un compte pour commencer à modifier et améliorer Wikipédia.",
+	"growthexperiments-thankyoupage-body": "Wikipédia est construit par des personnes comme {{GENDER:|}}vous qui travaillent ensemble. Modifier un article est plus facile que ce que vous pourriez penser !",
+	"growthexperiments-thankyoupage-body-mobile": "Wikipédia est construit par des personnes comme {{GENDER:|}}vous qui travaillent ensemble. Modifier un article est plus facile que ce que vous pourriez penser !",
+	"growthexperiments-thankyoupage-bullet1": "Tâches simples qui correspondent à {{GENDER:|}}vos intérêts",
+	"growthexperiments-thankyoupage-bullet2": "Aide et orientation pendant que {{GENDER:|}}vous modifiez",
+	"growthexperiments-thankyoupage-bullet3": "Informations sur combien de personnes voient {{GENDER:|}}votre travail",
 	"growthexperiments-campaigns-footer": "En créant {{GENDER:|}}votre compte sur cette page, il sera associé à cette campagne dans des fins liées à l’expérience et l’analyse."
 }

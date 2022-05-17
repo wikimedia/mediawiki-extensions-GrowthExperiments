@@ -327,6 +327,7 @@
 	"growthexperiments-notification-learn-more": "Aflați mai multe despre noul {{GENDER:$1|vostru}} {{GENDER:$2|mentor}}",
 	"right-setmentor": "Setează mentorul utilizatorului",
 	"action-setmentor": "setează mentorul utilizatorului",
+	"right-managementors": "Administrează lista mentorilor",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mai mult despre această editare sugerată",
 	"growthexperiments-homepage-suggestededits-more-info": "Mai multă informație despre editările sugerate",
 	"growthexperiments-homepage-welcome-notice-header": "Bun venit la pagina acasă a {{GENDER:$1|dvs.}}!",
