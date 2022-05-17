@@ -97,5 +97,14 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> by mělo být <code>$2</code>, ale je <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Definice mentora obsahuje neočekávaný klíč <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 již do seznamu mentorů byl přidán",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 není v seznamu mentorů"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 není v seznamu mentorů",
+	"growthexperiments-manage-mentors-title": "Spravovat mentory",
+	"growthexperiments-manage-mentors-manually-assigned": "Manuálně přiřazovaní mentoři",
+	"growthexperiments-manage-mentors-username": "Uživatelské jméno",
+	"growthexperiments-manage-mentors-last-active": "Naposledy aktivní",
+	"growthexperiments-manage-mentors-intro-msg": "Zpráva pro nováčky",
+	"growthexperiments-manage-mentors-remove-mentor": "Odebrat",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "Právě chcete odebrat uživatele {{GENDER:$1|uživatele|uživatelku}} [[User:$1|$1]] jako {{GENDER:$1|mentora|mentorku}}.",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "Důvod pro odebrání mentora",
+	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Uživatel|Uživatelka}} [[User:$1|$1]] již není {{GENDER:$1|mentorem|mentorkou}}."
 }

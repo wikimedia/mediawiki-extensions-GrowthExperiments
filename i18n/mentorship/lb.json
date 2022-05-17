@@ -34,5 +34,9 @@
 	"growthexperiments-notification-body-mentee-claimed": "Grond: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "ongeféier d'Hallschent vum Duerchschnëtt",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Duerchschnëtt (de Standard)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Ongeféier dat Duebelt vum Duerchschnëtt"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Ongeféier dat Duebelt vum Duerchschnëtt",
+	"growthexperiments-manage-mentors-username": "Benotzernumm",
+	"growthexperiments-manage-mentors-last-active": "Fir d'lescht aktiv",
+	"growthexperiments-manage-mentors-intro-msg": "Message fir nei Mataarbechter",
+	"growthexperiments-manage-mentors-remove-mentor": "Ewechhuelen"
 }

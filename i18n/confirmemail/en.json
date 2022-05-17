@@ -27,11 +27,17 @@
 	"growthexperiments-josacampaign-body": "This is an event organized by the Jordanian Open Source Association and Wikimedia in the Levant to help you learn about Wikipedia and how to contribute to it.\n\nTo start contributing, all you have to do is fill out this form and then choose a task to work on.\n\nIf you need any help, please ask the event organizers.",
 	"growthexperiments-glamcampaign-title": "¡Te damos la bienvenida al evento #1Picture1Article!\n\nPodrás comenzar a sumar conocimientos en la enciclopedia una vez que hayas creado tu cuenta de usuario.",
 	"growthexperiments-glamcampaign-body": "Este es un evento organizado por Wikimedia Argentina, Wikimedia Chile, Wikimedia México y la Fundación Wikimedia para ayudarte a aprender sobre Wikipedia y cómo colocar imágenes en diferentes artículos empleando la función \"Añadir una imagen\" (Add an image, en inglés)\n\nPara comenzar a utilizar esta herramienta, todo lo que debes hacer es completar este formulario y luego elegir un tema de interés.\n\nSi necesitas ayuda, consulta a los organizadores y organizadoras del evento.",
-	"growthexperiments-thankyoupage-title": "Create an account to start editing and improving Wikipedia.",
+	"growthexperiments-thankyoupage-title": "Thank you for being a donor. Create an account to start editing and improving Wikipedia.",
 	"growthexperiments-thankyoupage-body": "Wikipedia is built by people like {{GENDER:|you}} working together. Editing an article is easier than {{GENDER:|you}} might think!\n\nWith your account, you will have access to:",
 	"growthexperiments-thankyoupage-body-mobile": "Wikipedia is built by people like {{GENDER:|you}} working together. Editing an article is easier than {{GENDER:|you}} might think!",
 	"growthexperiments-thankyoupage-bullet1": "Simple tasks that match {{GENDER:|your}} interests",
 	"growthexperiments-thankyoupage-bullet2": "Help and guidance as {{GENDER:|you}} edit",
 	"growthexperiments-thankyoupage-bullet3": "Insights about how many people view {{GENDER:|your}} work",
+	"growthexperiments-thankyoubanner-title": "Create an account to start editing and improving Wikipedia.",
+	"growthexperiments-thankyoubanner-body": "Wikipedia is built by people like {{GENDER:|you}} working together. Editing an article is easier than {{GENDER:|you}} might think!\n\nWith your account, you will have access to:",
+	"growthexperiments-thankyoubanner-body-mobile": "Wikipedia is built by people like {{GENDER:|you}} working together. Editing an article is easier than {{GENDER:|you}} might think!",
+	"growthexperiments-thankyoubanner-bullet1": "Simple tasks that match {{GENDER:|your}} interests",
+	"growthexperiments-thankyoubanner-bullet2": "Help and guidance as {{GENDER:|you}} edit",
+	"growthexperiments-thankyoubanner-bullet3": "Insights about how many people view {{GENDER:|your}} work",
 	"growthexperiments-campaigns-footer": "By creating {{GENDER:|your}} account on this page, it will be associated with this campaign for experience and analysis purposes."
 }

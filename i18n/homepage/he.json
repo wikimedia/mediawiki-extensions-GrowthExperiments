@@ -336,6 +336,8 @@
 	"growthexperiments-notification-learn-more": "מידע נוסף על {{GENDER:$2|החונך|החונכת}} {{GENDER:$1|שלך}}",
 	"right-setmentor": "הגדרת החונך של משתמש",
 	"action-setmentor": "להגדיר את החונך של משתמש",
+	"right-managementors": "ניהול רשימת החונכים",
+	"action-managementors": "לנהל את רשימת החונכים",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "עוד על העריכה המוצעת הזאת",
 	"growthexperiments-homepage-suggestededits-more-info": "מידע נוסף על עריכות מוצעות",
 	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|ברוך הבא|ברוכה הבאה|ברוך בואך}} לדף הבית שלך!",

@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Germain92"
+			"Germain92",
+			"RebecaRwanda"
 		]
 	},
+	"action-managementors": "Tunganganya urutonde rwabahugura",
 	"growthexperiments-homepage-mentorship-optin-header": "Umujyanama wo guhindura",
 	"growthexperiments-homepage-mentorship-optin-text": "Niba {{GENDER:|you}} ufite ibibazo mu gukosora,wahabwa umwanditsi umenyereye ngo agufashe",
 	"growthexperiments-homepage-mentorship-optin-button": "Shaka umujyanama",

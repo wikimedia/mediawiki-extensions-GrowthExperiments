@@ -97,5 +97,16 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "מצופה שהערך של <code>$1</code> יהיה <code>$2</code>, אבל הוא <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "הגדרת החונך מכילה את המפתח הבלתי־צפוי <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "החונך $1 כבר נוסף לרשימת החונכים",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "החונך $1 אינו ברשימת החונכים"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "החונך $1 אינו ברשימת החונכים",
+	"growthexperiments-manage-mentors-title": "ניהול חונכים",
+	"growthexperiments-manage-mentors-error-no-such-user": "שגיאה: לא קיים משתמש עם המזהה $1. זאת כנראה שגיאה פנימית.",
+	"growthexperiments-manage-mentors-auto-assigned": "ונכים שהוקצו אוטומטית",
+	"growthexperiments-manage-mentors-manually-assigned": "חונכים שהוקצו ידנית",
+	"growthexperiments-manage-mentors-username": "שם משתמש",
+	"growthexperiments-manage-mentors-last-active": "פעילות לאחרונה",
+	"growthexperiments-manage-mentors-intro-msg": "הודעה למשתמשים חדשים",
+	"growthexperiments-manage-mentors-remove-mentor": "הסרה",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|אתה עומד|את עומדת}} להסיר את [[User:$1|משתמש:$1]] מתפקיד {{GENDER:$1|חונך|חונכת}}.",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "סיבה להסרת החונך",
+	"growthexperiments-manage-mentors-remove-mentor-success": "משתמש [[User:$1|$1]] כבר {{GENDER:$1|אינו חונך|אינה חונכת}}."
 }
