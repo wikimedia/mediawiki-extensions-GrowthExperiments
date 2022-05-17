@@ -290,6 +290,17 @@
 	"growthexperiments-homepage-claimmentee-must-be-mentor-two-lists": "{{GENDER:$1|Tu}} debe esser listate como mentor sur [[$2]] o [[$3]] pro poter usar Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Le lista de mentores es mal configurate.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Le lista de mentores ([[$1]]) non existe o es mal configurate.",
+	"growthexperiments-notification-learn-more": "Leger plus sur {{GENDER:$1|tu}} nove {{GENDER:$2|mentor}}",
+	"right-setmentor": "Definir le mentor del usator",
+	"action-setmentor": "definir le mentor del usator",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Plus sur iste modification suggerite",
+	"growthexperiments-homepage-suggestededits-more-info": "Plus information sur modificationes suggerite",
+	"growthexperiments-homepage-welcome-notice-header": "Benvenite a {{GENDER:$1|tu}} pagina de initio!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "Apprende a modificar, contacta tu mentor, e vide le impacto de tu travalio. Ora, lege plus sur le <strong>modificationes suggerite</strong> sur tu pagina de initio.{{GENDER:$1|}}",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "Apprende a modificar, contacta tu mentor, e vide le impacto de tu travalio.{{GENDER:$1|}}",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continuar",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Comprendite"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Comprendite",
+	"growthexperiments-addlink-pagenotfound": "Le pagina \"$1\" non existe",
+	"growthexperiments-addlink-revdeleted": "Le version $1 de \"$2\" non es accessibile",
+	"growthexperiments-addlink-wrongmodel": "Le version $1 de \"$2\" non es wikitexto"
 }
