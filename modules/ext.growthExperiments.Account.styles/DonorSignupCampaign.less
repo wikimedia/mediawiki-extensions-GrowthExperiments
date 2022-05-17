@@ -6,13 +6,17 @@
 @import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
 @import '../utils/mixins.less';
 
-.watermark {
-	display: none;
-}
+.mw-ge-customlandingpage {
+	.watermark {
+		display: none;
+	}
 
-// Unhide the benefit block on mobile.
-.skin-minerva .mw-ui-container .mw-createacct-benefits-container {
-	display: block;
+	// Unhide the benefit block on mobile.
+	&.skin-minerva {
+		.mw-ui-container .mw-createacct-benefits-container {
+			display: block;
+		}
+	}
 }
 
 .mw-ge-donorsignup-block {
