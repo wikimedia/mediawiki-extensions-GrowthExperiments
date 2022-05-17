@@ -158,9 +158,9 @@
 		};
 		if ( topicFilters && topicFilters.hasFilters() ) {
 			apiParams.ggttopics = topicFilters.getTopics().join( '|' );
-			if ( topicFilters.getTopicsMatchMode() ) {
-				apiParams.ggttopicsmode = topicFilters.getTopicsMatchMode();
-			}
+		}
+		if ( topicFilters && topicFilters.getTopicsMatchMode() ) {
+			apiParams.ggttopicsmode = topicFilters.getTopicsMatchMode();
 		}
 		if ( config.excludePageIds && config.excludePageIds.length ) {
 			apiParams.ggtexcludepageids = config.excludePageIds.join( '|' );
