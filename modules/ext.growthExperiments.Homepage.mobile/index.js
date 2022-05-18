@@ -85,6 +85,7 @@
 			// We can't do this in a show/hide event handler on the overlay itself, because it
 			// gets hidden then shown again when opening and closing the question dialog
 			// (due to navigation from #/homepage/moduleName to #homepage/moduleName/question)
+			// The allowed module names are defined in /analytics/legacy/homepagemodule/.
 			if ( newModule !== currentModule ) {
 				// Log null -> module as opening (impression) and module -> null as closing.
 				// Log module -> another module as opening but not closing, since there is

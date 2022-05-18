@@ -416,7 +416,7 @@
 		"EventLogging": {
 			"Schemas": {
 				"HelpPanel": "/analytics/legacy/helppanel/1.2.0",
-				"HomepageModule": "/analytics/legacy/homepagemodule/1.5.0",
+				"HomepageModule": "/analytics/legacy/homepagemodule/1.5.1",
 				"NewcomerTask": "/analytics/legacy/newcomertask/1.0.0",
 				"HomepageVisit": "/analytics/legacy/homepagevisit/1.4.0"
 			}
