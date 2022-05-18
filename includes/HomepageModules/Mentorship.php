@@ -280,6 +280,7 @@ class Mentorship extends BaseModule {
 				[
 					'href' => User::newFromIdentity( $this->getMentor() )->getUserPage()->getLinkURL(),
 					'data-link-id' => 'mentor-userpage',
+					'class' => 'growthexperiments-homepage-mentorship-userlink-link'
 				],
 				$iconElement . $usernameElement
 			);
