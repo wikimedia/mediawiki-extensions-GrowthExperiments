@@ -216,5 +216,6 @@ class VariantHooks implements
 			return;
 		}
 		$footerItems['signupcampaign-legal'] = SpecialCreateAccountCampaign::getLegalFooter( $context );
+		$context->getOutput()->addModuleStyles( [ 'ext.growthExperiments.Account.styles' ] );
 	}
 }
