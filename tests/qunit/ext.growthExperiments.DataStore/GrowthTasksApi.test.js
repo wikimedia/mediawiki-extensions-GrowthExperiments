@@ -14,7 +14,8 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 			}
 		},
 		suggestedEditsConfig: {
-			GENewcomerTasksTopicFiltersPref: 'preference-name'
+			GENewcomerTasksTopicFiltersPref: 'preference-name',
+			GESearchTaskSuggesterDefaultLimit: 20
 		}
 	} );
 	const topicFilters = new TopicFilters( {
@@ -68,7 +69,8 @@ QUnit.test( 'should send topic match mode even if topics are empty', function ( 
 			}
 		},
 		suggestedEditsConfig: {
-			GENewcomerTasksTopicFiltersPref: 'preference-name'
+			GENewcomerTasksTopicFiltersPref: 'preference-name',
+			GESearchTaskSuggesterDefaultLimit: 20
 		}
 	} );
 	const topicFilters = new TopicFilters( {
