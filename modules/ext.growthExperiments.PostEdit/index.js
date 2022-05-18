@@ -63,8 +63,6 @@
 		$( document.body ).append( drawer.$element );
 		lifecycle = drawer.showWithToastMessage();
 		closePromise = lifecycle.closed.done( function () {
-			// FIXME is this event needed?
-			mw.hook( 'postEdit.afterRemoval' ).fire();
 			postEditPanel.logClose();
 		} );
 		addEditorReopenedHandler( function () {
