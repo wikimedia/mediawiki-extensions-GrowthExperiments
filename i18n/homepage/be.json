@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chadyka",
-			"Kareyac"
+			"Kareyac",
+			"No Sleep till Krupki"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
@@ -327,6 +328,8 @@
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|Даведайцеся}} больш пра {{GENDER:$2|вашага новага настаўніка|вашу новую настаўніцу}}",
 	"right-setmentor": "Вызначэнне настаўніка ўдзельніка",
 	"action-setmentor": "вызначыць настаўніка ўдзельніка",
+	"right-managementors": "Кіраванне спісам настаўнікаў",
+	"action-managementors": "кіраваць спісам настаўнікаў",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Больш падрабязна аб гэтай прапанаванай праўцы",
 	"growthexperiments-homepage-suggestededits-more-info": "Больш падрабязна аб прапанаваных праўках",
 	"growthexperiments-homepage-welcome-notice-header": "Сардэчна запрашаем на {{GENDER:$1|вашу}} хатнюю старонку!",

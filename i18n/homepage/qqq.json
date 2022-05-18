@@ -516,7 +516,7 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Header of a confirmation dialog shown when user is opting back into mentorship.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Text of a confirmation dialog shown when user is opting back into mentorship.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Label of a button in the confirmation dialog shown when user is opting back into mentorship.\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Label of a button in the confirmation dialog shown when user is opting back into mentorship.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Label of a button in the confirmation dialog shown when user is opting back into mentorship.\n\n{{doc-growthexperiments-homepage}}\n\n{{identical|Continue}}",
 	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Item in mentorship module's ellipsis menu\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-optout-header": "Header of a confirmation dialog shown when an user is opting out from mentorship.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-optout-text": "Text of a confirmation shown when user opts out from mentorship.\n\n{{doc-growthexperiments-homepage}}",

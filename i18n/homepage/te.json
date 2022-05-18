@@ -326,6 +326,7 @@
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|మీ}} కొత్త {{GENDER:$2|గురువు గారి}} గురించి మరింత తెలుసుకోండి.",
 	"right-setmentor": "వాడుకరికి గురువును ఏర్పరచడం",
 	"action-setmentor": "వాడుకరికి గురువును ఏర్పరచే",
+	"action-managementors": "గురువుల జాబితాను నిర్వహించు",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "ఈ సూచిత దిద్దుబాటు గురించి మరింత",
 	"growthexperiments-homepage-suggestededits-more-info": "సూచిత దిద్దుబాట్ల గురించి మరింత",
 	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|మీ}} హోంపేజీకి స్వాగతం!",

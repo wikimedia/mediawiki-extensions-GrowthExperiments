@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Marcar o dismarcar un apprentisse como favorite per le usator actual (immagazinate privatemente e non registrate)",
+	"apihelp-growthstarmentee-param-gesaction": "Action a prender (<kbd>star</kbd> o <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Le apprentisse a (dis)marcar como favorite",
+	"apihelp-query+growthstarredmentees-summary": "Obtener lista de apprentisses marcate como favorite per le mentor actualmente in session",
+	"apihelp-growthsetmentorstatus-summary": "Definir le stato de mentor del usator actual como active/absente",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Stato nove",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Quando se marca un mentor como absente, isto debe haber le duration del stato de absentia (in dies)",
+	"apihelp-query+growthmentorstatus-summary": "Consultar le stato de mentor del usator actual",
+	"apihelp-growthmentordashboardupdatedata-summary": "Programmar un actualisation extraordinari del modulo de vision general de apprentisses in le tabuliero de instrumentos del mentor. Tu pote programmar solo un actualisation cata duo horas pro evitar de supercargar le systema.",
+	"apihelp-growthsetmentorweight-summary": "Definir le peso del mentor actualmente in session",
+	"apihelp-growthsetmentorweight-param-geweight": "Le peso numeric del mentor: quanto plus basse le valor, tanto minus novicios es assignate",
+	"apihelp-growthsetmenteestatus-summary": "Definir le stato del apprentisse (permitte que apprentisses activa/disactiva le modulo de mentorato, o se desiste totalmente, lo que elimina le relation apprentisse/mentor)",
+	"apihelp-growthsetmenteestatus-param-state": "Nove stato del apprentisse (attention: mitter isto a 'optout' eliminara permanentemente le relation apprentisse/mentor)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Le modulo de mentorato es activate",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Le modulo de mentorato es completemente disactivate. Isto es normalmente definite per le software e usate pro le tests A/B.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Le apprentisse se ha desistite del mentorato; le relation apprentisse/mentor essera eliminate, le modulo de mentorato essera reimplaciate per un possibilitate de reinscriber se",
+	"apihelp-query+growthmenteestatus-summary": "Consultar le stato de apprentisse del usator actual; vide le documentation de action=growthsetmentorweight pro information detaliate sur le statos individual.",
+	"apihelp-query+growthmentormentee-summary": "Causar que tote le apprentisses se assigna a un mentor date",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor pro le qual consultar le apprentisses"
+}
