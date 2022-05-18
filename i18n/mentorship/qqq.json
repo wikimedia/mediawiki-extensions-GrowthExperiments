@@ -111,5 +111,6 @@
 	"growthexperiments-manage-mentors-remove-mentor": "Button label in Special:ManageMentors",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "Header of mentor removal form in Special:ManageMentors",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Label in mentor removal form in Special:ManageMentors",
-	"growthexperiments-manage-mentors-remove-mentor-success": "Success message shown after a mentor is successfully removed via Special:ManageMentors."
+	"growthexperiments-manage-mentors-remove-mentor-success": "Success message shown after a mentor is successfully removed via Special:ManageMentors.",
+	"growthexperiments-manage-mentors-return-back": "Link back to Special:ManageMentors. Shown after a write action (eg. removal of a mentor) is successfully submitted via Special:ManageMentors."
 }
