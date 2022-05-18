@@ -16,7 +16,10 @@
 			"ToprakM",
 			"Vito Genovese",
 			"Erdemkose",
-			"Melissadilara"
+			"Melissadilara",
+			"Can",
+			"Cobija",
+			"Oyuncu"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Merhaba}}, {{bidi:$1}}!",
@@ -24,7 +27,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Sizin}} ana sayfanız",
 	"prefs-homepage": "Yeni kullanıcı anasayfası",
 	"growthexperiments-homepage-enable": "Yeni gelen anasayfayı görüntüle",
-	"growthexperiments-homepage-pt-link": "Kişisel araçlardaki kullanıcı adı bağlantısından yeni gelen ana sayfa varsayılanı",
+	"growthexperiments-homepage-pt-link": "Kişisel araçlardaki kullanıcı adı bağlantısından yeni gelen anasayfa varsayılanı",
 	"growthexperiments-homepage-email-header-noemail": "E-posta adresinizi ekleyin{{GENDER:$1|}}",
 	"growthexperiments-homepage-email-header-unconfirmed": "E-posta adresinizi onaylayın{{GENDER:$1|}}",
 	"growthexperiments-homepage-email-header-confirmed": "E-posta eklendi",
@@ -106,7 +109,7 @@
 	"growthexperiments-tour-mentor-response-tip-personal-text": "{{GENDER:$2|Danışmanınız}} yanıt {{GENDER:$1|verdiğinde}}, burada yeni bir uyarı alacaksınız.",
 	"growthexperiments-tour-response-button-okay": "Anladım",
 	"tag-help_module_question": "Yardım modülü sorusu",
-	"tag-help_module_question-description": "Ana sayfa yardım modülünün \"Bir soru sor\" özelliğinden yapılan düzenleme",
+	"tag-help_module_question-description": "Anasayfa yardım modülünün \"Bir soru sor\" özelliğinden yapılan düzenleme",
 	"tag-mentorship_module_question": "Danışmanlık modülü sorusu",
 	"tag-mentorship_module_question-description": "Anasayfa danışmanlık modülünün \"Danışmanınıza sorun\" özelliğinden yapılan düzenleme",
 	"tag-mentorship_panel_question": "Danışmanlık paneli sorusu",

@@ -32,7 +32,7 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Іншая прычына",
 	"welcomesurvey-question-reason-option-other-label": "Іншае (калі ласка, апішыце)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Увядзіце}} іншую прычыну...",
-	"welcomesurvey-question-mentor-info": "Мы разглядаем магчымасць запуску праграмы, у якой больш вопытныя рэдактары дапамогуць новым удзельнікам рабіць праўкі. Ці {{GENDER:$1|зацікаўлены}} вы ў тым, каб з вамі звязаліся, каб даць вам дапамогу з рэдагаваннем?",
+	"welcomesurvey-question-mentor-info": "Мы разглядаем магчымасць запуску праграмы, у якой больш дасведчаныя рэдактары дапамогуць новым удзельнікам рабіць праўкі. Ці {{GENDER:$1|зацікаўлены}} вы ў тым, каб з вамі звязаліся, каб даць вам дапамогу з праўкай?",
 	"welcomesurvey-question-mentor-label": "Так, я {{GENDER:$1|зацікаўлены|зацікаўленая}}",
 	"welcomesurvey-question-edited-label": "Вы калісьці правілі Вікіпедыю?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Так, шмат разоў",

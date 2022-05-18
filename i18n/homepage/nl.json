@@ -13,7 +13,8 @@
 			"Rots61",
 			"Robin van der Vliet",
 			"Romaine",
-			"Akoopal"
+			"Akoopal",
+			"Nickthijssen1994"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -371,7 +372,7 @@
 	"growthexperiments-addlink-skip-accept": "Alles overslaan",
 	"growthexperiments-addlink-skip-reject": "Opnieuw beoordelen",
 	"grant-managementorship": "Beheer mentorschap",
-	"newcomertasksinfo": "Nieuwkomer taken",
+	"newcomertasksinfo": "Taken voor nieuwkomers",
 	"newcomertasksinfo-no-data": "Geen gegevens beschikbaar",
 	"newcomertasksinfo-table-header-task-type": "Taaktype",
 	"newcomertasksinfo-table-header-task-type-id": "ID",

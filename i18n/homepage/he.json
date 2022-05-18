@@ -325,7 +325,7 @@
 	"growthexperiments-addlink-revdeleted": "הגרסה $1 של \"$2\" אינה נגישה",
 	"growthexperiments-addlink-wrongmodel": "הגרסה $1 של \"$2\" אינה קוד ויקי",
 	"growthexperiments-addlink-invalidjson": "התשובה משירות הצעת הקישורים עבור הדף \"$1\" אינה תקינה",
-	"growthexperiments-addlink-serviceerror": "שירות הצעת הקישורים החזיר עבור \"$1\" שגיאה: $2",
+	"growthexperiments-addlink-serviceerror": "שירות הצעת הקישורים השיב עבור \"$1\" עם שגיאה: $2",
 	"growthexperiments-addlink-notinstore": "לא נמצאו הצעות קישור עבור \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "ניסיון לשלוח סקירות הצעות קישור עבור הגרסה \"$1\", שכבר נסקרה",
 	"growthexperiments-addlink-context-text-label": "טקסט",
