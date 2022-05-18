@@ -74,6 +74,7 @@
 	 * @param {string} config.suggestedEditsConfig.GERestbaseUrl
 	 * @param {Object} config.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref
 	 * @param {string} [config.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin]
+	 * @param {number} config.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit
 	 * @param {Object} config.aqsConfig Configuration for the AQS service, as returned by
 	 *   HomepageHooks::getAQSConfigJson. Used by the getExtraDataFromAqs method.
 	 * @param {string} config.aqsConfig.project Project domain name to get views for (might be
@@ -128,7 +129,7 @@
 
 		config = $.extend( {
 			getDescription: false,
-			size: 20,
+			size: this.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit,
 			thumbnailWidth: this.thumbnailWidth
 		}, config || {} );
 

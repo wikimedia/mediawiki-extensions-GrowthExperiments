@@ -28,6 +28,7 @@ use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -1200,6 +1201,7 @@ class HomepageHooks implements
 		// Checking whether these task types have been disabled in community configuration is the
 		// frontend code's responsibility (handled in TaskTypeAbFilter).
 		return [
+			'GESearchTaskSuggesterDefaultLimit' => SearchTaskSuggester::DEFAULT_LIMIT,
 			'GERestbaseUrl' => Util::getRestbaseUrl( $config ),
 			'GENewcomerTasksRemoteArticleOrigin' => $config->get( 'GENewcomerTasksRemoteArticleOrigin' ),
 			'GEHomepageSuggestedEditsIntroLinks' => self::getGrowthWikiConfig()
