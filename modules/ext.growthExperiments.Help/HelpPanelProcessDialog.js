@@ -265,7 +265,7 @@
 		if ( mw.user.options.get( 'growthexperiments-help-panel-tog-help-panel' ) ) {
 			links.push(
 				new OO.ui.ButtonWidget( {
-					href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
+					href: new mw.Title( 'Special:Preferences#mw-prefsection-personal-homepage' ).getUrl(),
 					label: mw.message(
 						'growthexperiments-help-panel-settings-cog-preferences-link'
 					).text(),

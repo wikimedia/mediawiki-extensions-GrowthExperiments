@@ -631,6 +631,14 @@ class HomepageHooks implements
 			'hide-if' => [ '!==', self::HOMEPAGE_PREF_ENABLE, '1' ],
 		];
 
+		if ( HelpPanel::isHelpPanelEnabled() ) {
+			$preferences[ HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE ] = [
+				'type' => 'toggle',
+				'section' => 'personal/homepage',
+				'label-message' => HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE
+			];
+		}
+
 		$preferences[ self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ] = [
 			'type' => 'api',
 		];
