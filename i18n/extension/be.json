@@ -8,6 +8,8 @@
 	"growthexperiments-config-validator-error": "Праверка для $1 не ўдалася: «$2»",
 	"growthexperiments-config-validator-datatype-mismatch": "Чакаецца, што <code>$1</code> будзе <code>$2</code>, але зараз гэта <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Неадпаведнасць мадэлі зместу: файл канфігурацыі GrowthExperiments павінен мець мадэль зместу JSON, выяўлены $1",
+	"growthexperiments-config-validator-array-toobig": "У зменнай $1 занадта шмат элементаў (дазволена максімум $2)",
+	"growthexperiments-edit-config-disabled": "Канфігурацыя супольнасці зараз адключана.",
 	"growthexperiments-edit-config-feedback-cta": "Пакіньце водгук",
 	"growthexperiments-edit-config-edit-summary": "Тлумачэнне праўкі",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Служба падтрымкі",
