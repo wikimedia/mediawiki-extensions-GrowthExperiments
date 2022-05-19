@@ -178,7 +178,7 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 mln",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 mld",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 {{PLURAL:$1|bilion|biliony|bilionów}}",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edycje dnia poprzedniego",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|edycja|edycje|edycji}} w ciągu ostatniego dnia",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Wolontariusze tacy jak ty pomogli dziś w rozwoju {{SITENAME}}. Przyłącz się!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Zobacz wszystkie sugestie",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Popraw literówki, gramatykę i styl",

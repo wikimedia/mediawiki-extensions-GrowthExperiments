@@ -33,7 +33,8 @@
 			"DiegoAmbrocio",
 			"Josuert",
 			"Sergi0",
-			"Danniel07"
+			"Danniel07",
+			"McDutchie"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -353,7 +354,7 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1||}}Puedes aprender a editar, ponerte en contacto con tu mentor y ver el impacto de tu trabajo.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continuar",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Entendido",
-	"growthexperiments-templatecollectionfeature-invalid-collection": "Invalidar la colección de plantillas \"$1\"",
+	"growthexperiments-templatecollectionfeature-invalid-collection": "La colección de plantillas \"$1\" no es válida.",
 	"growthexperiments-addlink-pagenotfound": "La página «$1» no existe",
 	"growthexperiments-addlink-revdeleted": "No se puede acceder a la revisión $1 de «$2»",
 	"growthexperiments-addlink-wrongmodel": "La revisión $1 de \"$2\" no es wikitexto",

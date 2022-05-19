@@ -412,7 +412,7 @@
 	"growthexperiments-addimage-inspector-cta": "Додати це зображення до початку статті?",
 	"growthexperiments-addimage-inspector-yes-button": "Так",
 	"growthexperiments-addimage-inspector-no-button": "Ні",
-	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|Не впевнений}}",
+	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|Не впевнений|Не впевнена}}",
 	"growthexperiments-addimage-inspector-show-button": "Показати пропозицію зображення",
 	"growthexperiments-addimage-inspector-help-button": "Отримайте допомогу з редагуванням",
 	"growthexperiments-addimage-inspector-details-button": "Показати деталі зображення",

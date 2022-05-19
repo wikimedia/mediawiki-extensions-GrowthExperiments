@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"MITO",
-			"Markus Mikkonen"
+			"Markus Mikkonen",
+			"Kyykaarme"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Selitys",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Käyttäjänimi",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Palautettujen muokkausten määrä",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Kumottujen muokkausten määrä",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Estojen lukumäärä",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Muokkausmäärä",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Rekisteröintipäivämäärä",

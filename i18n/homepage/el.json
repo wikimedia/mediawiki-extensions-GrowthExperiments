@@ -123,7 +123,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|Δείτε}} άλλες συνομιλίες {{GENDER:$1|του καθοδηγητή|της καθοδηγήτριάς}} σας",
 	"growthexperiments-homepage-mentorship-dialog-title": "Ρωτήστε {{GENDER:$1|τον καθοδηγητή|την καθοδηγήτριά}} {{GENDER:$2|σας}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Όταν κάνετε μια ερώτηση, <strong>δημοσιεύεται δημόσια</strong> κάτω από το όνομα {{GENDER:$2|χρήστη|χρήστρίας}} σας, «$2», στην $3, όπου {{GENDER:$1|μπορεί}} να δει και να απαντήσει στην ερώτησή σας.",
-	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:|Ο κύριος καθοδηγητής σας|Η κύρια καθοδηγήτριάς σας}}, «$1», είναι προς το παρόν μακριά. {{GENDER:$4|Άλλος καθοδηγητής, ο|Άλλη καθοδηγήτρια, η}} «$3», θα απαντά στις ερωτήσεις σας προς το παρόν.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Ο κύριος καθοδηγητής σας|Η κύρια καθοδηγήτριά σας}}, «$1», είναι προς το παρόν μακριά. {{GENDER:$4|Άλλος καθοδηγητής, ο|Άλλη καθοδηγήτρια, η}} «$3», θα απαντά στις ερωτήσεις σας προς το παρόν.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "σελίδα συζήτησης {{GENDER:$1|του καθοδηγητή|της καθοδηγήτριάς}} {{GENDER:$2|σας}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "Η ερώτηση είναι τώρα στη σελίδα συζήτησης {{GENDER:$1|του καθοδηγητή|της καθοδηγήτριάς}} {{GENDER:$2|σας}}, όπου μπορεί να απαντήσει μόλις μπορέσει.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Δείτε την ερώτησή {{GENDER:$2|σας}} στη σελίδα συζήτησης {{GENDER:$1|του καθοδηγητή|της καθοδηγήτριάς}} σας.",

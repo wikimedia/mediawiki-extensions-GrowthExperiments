@@ -5,7 +5,8 @@
 			"Dyolf77 (WMF)",
 			"Michel Bakni",
 			"ديفيد",
-			"FiberAhmed"
+			"FiberAhmed",
+			"أَحمد"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ما هذا؟]])",
@@ -21,6 +22,8 @@
 	"growthexperiments-signupcampaign-bullet1": "المقالات المقترحة من {{GENDER:|اهتماماتك}}",
 	"growthexperiments-signupcampaign-bullet2": "اطلبوا المساعدة من المساهمين الخبيرين",
 	"growthexperiments-signupcampaign-bullet3": "ابدؤوا بالتعديلات الصغيرة والسهلة",
+	"growthexperiments-recurringcampaign-title": "شكرا على دعمك المتواصل. مساهمات من قبل {{GENDER:|قارئ|قارئة}} مثلك هي التي تحافظ على تقدّم ويكيبيديا.",
+	"growthexperiments-recurringcampaign-body": "قم بإنشاء حسابك الآن لتسجيل الدخول وحجب لافتات جمع التبرعات. بمجرد أن يكون لديك حساب،  {{GENDER:|ستتمكّن|ستتمكّنين}} أيضًا من تعلم كيفية تحرير ويكيبيديا عبر القيام بتغييرات صغيرة سيكون لها تأثير كبير على بقية العالم. عندما {{GENDER:|تبدأ|تبدئين}}، سنكون بجانبك لإرشادك!",
 	"growthexperiments-josacampaign-title": "مرحبًا بكم في احتفال \"عيد ميلاد ويكيبيديا\"\n\nيمكنكم بمجرّد إنشاء حسابكم البدء بالمساهمة في الموسوعة",
 	"growthexperiments-josacampaign-body": "هذه فعالية تُنظِّمها \"الجمعية الأردنية للمصدر المفتوح\" و\"ويكيميديا بلاد الشام\" لمساعدتكم في التعرف إلى ويكيبيديا وكيفية المساهمة فيها.\n\nللبدء بالمساهمة، كل ما عليك هو تعبئة هذا النموذج ثم اختيار مهمة للعمل عليها.\n\nلو احتجت لأي مساعدة، لطفًا سؤال منظمي الفعالية."
 }

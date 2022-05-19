@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Obtener recommendationes de cargas apte pro novicios.",
+	"apihelp-query+growthtasks-extended-description": "Suggere un insimul de articulos que ha certe problemas pendente que es assatis facile a resolver pro un nove redactor.",
+	"apihelp-query+growthtasks-param-tasktypes": "Le typos de carga al quales limitar le resultatos. Lassa vacue pro reciper tote le suggestiones.",
+	"apihelp-query+growthtasks-param-topics": "Topicos de articulo a preferer in suggestiones de carga.",
+	"apihelp-query+growthtasks-param-limit": "Numero maxime de suggestiones de cargas a retornar.",
+	"apihelp-query+growthtasks-param-excludepageids": "IDs de pagina a excluder del consulta.",
+	"apihelp-query+growthtasks-param-debug": "Adder datos de depuration al sortita.",
+	"apihelp-query+growthtasks-example-1": "Obtener recommendationes de cargas del typo correction de probas pro le usator actual.",
+	"apihelp-query+growthtasks-example-2": "Obtener recommendationes de cargas pro le usator actual, con information extense sur le paginas.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "le parametro 'accepted' manca in le datos del plus-in Add Image",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "le parametro 'accepted' debe esser un valor boolean in le datos del plug-in Add Image, ma es $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "le parametro 'reason' manca in le datos del plug-in Add Image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "le parametro 'reason' debe esser un array in le datos del plug-in Add Image, ma es $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Elemento '$1' non valide pro le parametro 'reason', debe esser un de: $2",
+	"apierror-growthexperiments-addlink-handler-notfound": "Le registro del recommendation de ligamine non ha essite trovate",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinationes de recommendation de ligamine non expectate: $1"
+}

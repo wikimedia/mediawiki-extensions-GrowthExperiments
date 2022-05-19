@@ -19,7 +19,8 @@
 			"Teretalexev",
 			"Urfiner",
 			"Vlad5250",
-			"NBS"
+			"NBS",
+			"NR Deblocked"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Включить панель помощи редактору",
@@ -128,6 +129,9 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Руководства",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Ставьте ссылки на понятия, о которых захочет узнать читатель.\n* Убедитесь, что ссылка ведёт на правильную статью.\n* Не ставьте ссылки на тривиальные понятия, года или даты.\n* Если {{GENDER:$1|вы}} не уверены, пропустите.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Пример предложения",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "Посмотрите на предлагаемое изображение",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "Посмотрите на статью",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "Решите, подходит ли изображение",
 	"growthexperiments-help-panel-questioncomplete-title": "Задать вопрос",
 	"growthexperiments-help-panel-questioncomplete-header": "Ваш вопрос опубликован!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Ваш вопрос сейчас на Форуме помощи сообщества, на него ответит другой редактор-волонтёр.",

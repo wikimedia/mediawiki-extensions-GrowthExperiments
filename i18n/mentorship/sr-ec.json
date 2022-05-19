@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
-			"Kizule"
+			"Kizule",
+			"Milicevic01"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Менторска табла",
@@ -29,7 +30,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Минимум",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Максимум",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Најновија измена",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Недавни дани",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Дана:",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Недавни месеци",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Прикажи само новајлије са звездицом",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Претражи новајлије",

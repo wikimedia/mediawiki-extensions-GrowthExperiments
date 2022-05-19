@@ -19,7 +19,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "在下方檢視{{GENDER:|您的}}學員。您可以篩選要顯示的學員。",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "此表格需要JavaScript。請啟用JavaScript以使用此模組。",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "誰在您的表格內？",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "此表格僅顯示{{GENDER:|您}}的學員，且帳號在兩週內建立或在過去6個月內編輯過。資料每3個小時更新。",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "此表格顯示了{{GENDER:|您}}的學員，其帳號在兩週內建立或在過去6個月內編輯過，並[[:mw:Special:MyLanguage/Growth/Feature_summary#NH|啟用了新手首頁]]。資料每3個小時更新一次。",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "圖例",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "標記學員",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "使用者名稱",
@@ -89,8 +89,12 @@
 	"growthexperiments-notification-header-mentee-claimed": "您的{{GENDER:$3|學員}}$3已被$1{{GENDER:$2|認領}}。",
 	"growthexperiments-notification-body-mentee-claimed": "原因：$1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "什麼是「認領學員」？",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "分配給我的學員數量",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "大約是平均的一半",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "平均（預設）",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "大約是平均的兩倍",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|您的}}負擔已變更為「$1」。",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "建立帳戶時，學員會被隨機分配給導師。您可以控制分配給您的學員的數量，不過某些學員相比其他人會更為活躍地發問。",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "推薦您先選擇「平均」，以便評估您指導學員的能力，然後再增加或減少分配給您的學員。",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code>應該是<code>$2</code>，但是<code>$3</code>"
 }

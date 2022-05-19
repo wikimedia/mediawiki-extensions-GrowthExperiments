@@ -5,7 +5,8 @@
 			"Pikne",
 			"Roan Kattouw",
 			"Umherirrender",
-			"Xiplus"
+			"Xiplus",
+			"Amire80"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "Help link in the CAPTCHA label. Shown next to {{msg-mw|fancycaptcha-captcha}}. Replaces part of {{msg-mw|fancycaptcha-accountcreate}}.",
@@ -21,10 +22,10 @@
 	"growthexperiments-signupcampaign-bullet1": "First highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
 	"growthexperiments-signupcampaign-bullet2": "Second highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
 	"growthexperiments-signupcampaign-bullet3": "Third highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
-	"growthexperiments-recurringcampaign-title": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nTitle of the Special:CreateAccount block that is shown to recurring Wikimedia donors.",
-	"growthexperiments-recurringcampaign-body": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nBody of the Special:CreateAccount block that is shown to recurring Wikimedia donors.",
-	"growthexperiments-josacampaign-title": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nTitle of the Special:CreateAccount block that is shown during the JOSA signup event.",
-	"growthexperiments-josacampaign-body": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nBody of the Special:CreateAccount block that is shown during the JOSA signup event.",
-	"growthexperiments-glamcampaign-title": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nTitle of the Special:CreateAccount block that is shown during the GLAM events in Latin America.",
-	"growthexperiments-glamcampaign-body": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nBody of the Special:CreateAccount block that is shown during the GLAM events in Latin America."
+	"growthexperiments-recurringcampaign-title": "{{Optional}}\n'''This is for an experiment, and is needed only in some languages. Please don't translate it unless you have a specific reason to do it.'''\n\nTitle of the Special:CreateAccount block that is shown to recurring Wikimedia donors.",
+	"growthexperiments-recurringcampaign-body": "{{Optional}}\n'''This is for an experiment, and is needed only in some languages. Please don't translate it unless you have a specific reason to do it.'''\n\nBody of the Special:CreateAccount block that is shown to recurring Wikimedia donors.",
+	"growthexperiments-josacampaign-title": "{{Optional}}\n'''This is for an experiment, and is needed only in some languages. Please don't translate it unless you have a specific reason to do it.'''\n\nTitle of the Special:CreateAccount block that is shown during the JOSA signup event.",
+	"growthexperiments-josacampaign-body": "{{Optional}}\n'''This is for an experiment, and is needed only in some languages. Please don't translate it unless you have a specific reason to do it.'''\n\nBody of the Special:CreateAccount block that is shown during the JOSA signup event.",
+	"growthexperiments-glamcampaign-title": "{{Optional}}\n'''This is for an experiment, and is needed only in some languages. Please don't translate it unless you have a specific reason to do it.'''\n\nTitle of the Special:CreateAccount block that is shown during the GLAM events in Latin America.",
+	"growthexperiments-glamcampaign-body": "{{Optional}}\n'''This is for an experiment, and is needed only in some languages. Please don't translate it unless you have a specific reason to do it.'''\n\nBody of the Special:CreateAccount block that is shown during the GLAM events in Latin America."
 }
