@@ -321,7 +321,7 @@ class HomepageHooks implements
 	 * @return string|null
 	 */
 	public static function getClickId( IContextSource $context ) {
-		if ( SuggestedEdits::isEnabled( $context ) ) {
+		if ( SuggestedEdits::isEnabled( $context->getConfig() ) ) {
 			return $context->getRequest()->getVal( 'geclickid' ) ?: null;
 		}
 		return null;
@@ -347,7 +347,7 @@ class HomepageHooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$context = $out->getContext();
-		$isSuggestedEditsEnabled = SuggestedEdits::isEnabled( $context );
+		$isSuggestedEditsEnabled = SuggestedEdits::isEnabled( $context->getConfig() );
 		if (
 			Util::isMobile( $skin ) &&
 			// Optimisation: isHomepageEnabled() is non-trivial, check it last
@@ -452,7 +452,7 @@ class HomepageHooks implements
 		// Config vars used to modify the suggested edits topics based on campaign
 		// (see ext.growthExperiments.Homepage.SuggestedEdits/Topics.js)
 		if ( ( !$skin->getTitle() || $skin->getTitle()->isSpecial( 'Homepage' ) ) &&
-			SuggestedEdits::isEnabled( $context ) ) {
+			SuggestedEdits::isEnabled( $context->getConfig() ) ) {
 			$out->addJsConfigVars( [
 				'wgGETopicsToExclude' => $this->campaignConfig->getTopicsToExcludeForUser(
 					$context->getUser()
@@ -1437,7 +1437,7 @@ class HomepageHooks implements
 		if ( !SuggestedEdits::isEnabledForAnyone( $context->getConfig() ) ) {
 			return;
 		}
-		if ( SuggestedEdits::isActivated( $context, $this->userOptionsLookup ) ) {
+		if ( SuggestedEdits::isActivated( $context->getUser(), $this->userOptionsLookup ) ) {
 			$taskTypeId = $pluginData['taskType'];
 			$tags = $this->newcomerTasksChangeTagsManager->getTags(
 				$taskTypeId,

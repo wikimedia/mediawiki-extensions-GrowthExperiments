@@ -85,7 +85,7 @@ class StartEditing extends BaseModule {
 
 	/** @inheritDoc */
 	public function getState(): string {
-		return SuggestedEdits::isActivated( $this->getContext(), $this->userOptionsLookup ) ?
+		return SuggestedEdits::isActivated( $this->getContext()->getUser(), $this->userOptionsLookup ) ?
 			self::MODULE_STATE_COMPLETE :
 			self::MODULE_STATE_INCOMPLETE;
 	}
