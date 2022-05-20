@@ -14,11 +14,11 @@ use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MessageLocalizer;
 use RequestContext;
-use ResourceLoaderContext;
 use User;
 
 class HelpPanelHooks implements
@@ -79,7 +79,7 @@ class HelpPanelHooks implements
 	/** @inheritDoc */
 	public function onResourceLoaderExcludeUserOptions(
 		array &$keysToExclude,
-		ResourceLoaderContext $context
+		RL\Context $context
 	): void {
 		$keysToExclude = array_merge( $keysToExclude, [
 			HelpdeskQuestionPoster::QUESTION_PREF,
@@ -182,11 +182,11 @@ class HelpPanelHooks implements
 
 	/**
 	 * Build the contents of the data.json file in the ext.growthExperiments.Help module.
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @param Config $config
 	 * @return array
 	 */
-	public static function getModuleData( ResourceLoaderContext $context, Config $config ) {
+	public static function getModuleData( RL\Context $context, Config $config ) {
 		$helpdeskTitle = HelpPanel::getHelpDeskTitle( self::getGrowthWikiConfig() );
 		// The copyright warning can contain markup and has to be parsed via PHP messages API.
 		$copyrightWarningMessage = $context->msg( 'wikimedia-copyrightwarning' );
@@ -263,14 +263,14 @@ class HelpPanelHooks implements
 	/**
 	 * Return preferred editor for each task type based on task type handler
 	 *
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @param Config $config
 	 * @return array
 	 */
-	private static function getPreferredEditor( ResourceLoaderContext $context, Config $config ): array {
+	private static function getPreferredEditor( RL\Context $context, Config $config ): array {
 		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 
-		// Hack - ResourceLoaderContext is not exposed to services initialization
+		// Hack - RL\Context is not exposed to services initialization
 		$validator = $geServices->getNewcomerTasksConfigurationValidator();
 		$validator->setMessageLocalizer( $context );
 

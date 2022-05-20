@@ -5,9 +5,9 @@ namespace GrowthExperiments;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
+use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\UserOptionsLookup;
-use ResourceLoader;
 
 class TourHooks implements
 	BeforePageDisplayHook,

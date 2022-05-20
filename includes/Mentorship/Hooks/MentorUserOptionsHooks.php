@@ -6,9 +6,9 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Context;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
-use ResourceLoaderContext;
 
 /**
  * Mentorship-related hooks that touch user-preferences
@@ -48,7 +48,7 @@ class MentorUserOptionsHooks implements
 	/** @inheritDoc */
 	public function onResourceLoaderExcludeUserOptions(
 		array &$keysToExclude,
-		ResourceLoaderContext $context
+		Context $context
 	): void {
 		$keysToExclude = array_merge( $keysToExclude, [
 			MentorWeightManager::MENTORSHIP_WEIGHT_PREF,
