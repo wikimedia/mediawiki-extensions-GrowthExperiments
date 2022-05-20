@@ -111,5 +111,6 @@
 	"growthexperiments-manage-mentors-remove-mentor": "Enlever",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|}}Vous allez enlever [[User:$1]] en tant que mentor{{GENDER:$1|}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Motif du retrait du mentor",
-	"growthexperiments-manage-mentors-remove-mentor-success": "L’utilisat{{GENDER:$1|eur|rice}} [[User:$1|$1]] n’est plus un mentor."
+	"growthexperiments-manage-mentors-remove-mentor-success": "L’utilisat{{GENDER:$1|eur|rice}} [[User:$1|$1]] n’est plus un mentor.",
+	"growthexperiments-manage-mentors-return-back": "Vous pouvez [[Special:ManageMentors|revenir]] à la liste des tuteurs."
 }

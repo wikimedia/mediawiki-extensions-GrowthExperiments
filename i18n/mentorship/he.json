@@ -108,5 +108,6 @@
 	"growthexperiments-manage-mentors-remove-mentor": "הסרה",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|אתה עומד|את עומדת}} להסיר את [[User:$1|משתמש:$1]] מתפקיד {{GENDER:$1|חונך|חונכת}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "סיבה להסרת החונך",
-	"growthexperiments-manage-mentors-remove-mentor-success": "משתמש [[User:$1|$1]] כבר {{GENDER:$1|אינו חונך|אינה חונכת}}."
+	"growthexperiments-manage-mentors-remove-mentor-success": "משתמש [[User:$1|$1]] כבר {{GENDER:$1|אינו חונך|אינה חונכת}}.",
+	"growthexperiments-manage-mentors-return-back": "אפשר [[Special:ManageMentors|לחזור]] לרשימת החונכים."
 }

@@ -109,5 +109,6 @@
 	"growthexperiments-manage-mentors-remove-mentor": "Выдаліць",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Вы}} збіраецеся зняць {{GENDER:$1|удзельніка|удзельніцу}} [[User:$1]] з ролі {{GENDER:$1|настаўніка|настаўніцы}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Прычына выдалення настаўніка",
-	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Удзельнік|Удзельніца}} [[User:$1|$1]] больш не {{GENDER:$1|настаўнік|настаўніца}}."
+	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Удзельнік|Удзельніца}} [[User:$1|$1]] больш не {{GENDER:$1|настаўнік|настаўніца}}.",
+	"growthexperiments-manage-mentors-return-back": "Вы можаце [[Special:ManageMentors|вярнуцца]] да спісу настаўнікаў."
 }

@@ -107,5 +107,6 @@
 	"growthexperiments-manage-mentors-remove-mentor": "Remover",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "Tu es sur le puncto de remover [[User:$1]] como {{GENDER:$1|mentor}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Motivo pro remover le mentor",
-	"growthexperiments-manage-mentors-remove-mentor-success": "Le usator [[User:$1|$1]] non es plus un {{GENDER:$1|mentor}}."
+	"growthexperiments-manage-mentors-remove-mentor-success": "Le usator [[User:$1|$1]] non es plus un {{GENDER:$1|mentor}}.",
+	"growthexperiments-manage-mentors-return-back": "Tu pote [[Special:ManageMentors|retornar]] al lista de mentores."
 }
