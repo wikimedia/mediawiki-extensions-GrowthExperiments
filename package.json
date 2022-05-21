@@ -32,7 +32,7 @@
 		"vue": "3.2.27",
 		"wdio-intercept-service": "4.2.2",
 		"wdio-mediawiki": "2.0.0",
-		"webdriverio": "7.16.10"
+		"webdriverio": "7.19.7"
 	},
 	"engines": {
 		"npm": ">=7.21.0",
