@@ -465,7 +465,12 @@
 	};
 
 	MenteeOverview.prototype.onPageSizeChanged = function ( pageSize ) {
+		var previousPageSize = this.apiClient.getLimit(),
+			currentOffset = ( this.paginationWidget.getCurrentPage() - 1 ) * previousPageSize,
+			newPage = Math.floor( currentOffset / pageSize ) + 1;
+
 		this.apiClient.setLimit( pageSize );
+		this.paginationWidget.setCurrentPage( newPage );
 
 		// Persist the new page size
 		this.presetsClient.setUsersToShow( pageSize );

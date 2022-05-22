@@ -71,6 +71,10 @@
 		this.apiParams.limit = value;
 	};
 
+	MenteeOverviewApi.prototype.getLimit = function () {
+		return this.apiParams.limit;
+	};
+
 	MenteeOverviewApi.prototype.setPage = function ( value ) {
 		this.page = value;
 		this.apiParams.offset = this.page * this.apiParams.limit;
