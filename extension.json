@@ -502,6 +502,11 @@
 				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js",
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipDetailsModal.js",
+				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
+				"ext.growthExperiments.DataStore/TopicFilters.js",
+				"ext.growthExperiments.DataStore/constants.js",
+				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js"
 			],
@@ -564,7 +569,8 @@
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutDialog.js",
 				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
-				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js"
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js",
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipDetailsModal.js"
 			],
 			"targets": [
 				"desktop",
@@ -584,6 +590,7 @@
 				"growthexperiments-homepage-mentorship-confirm-dialog-text",
 				"growthexperiments-homepage-mentorship-confirm-dialog-cancel",
 				"growthexperiments-homepage-mentorship-confirm-dialog-continue",
+				"growthexperiments-homepage-mentorship-ellipsis-menu-about",
 				"growthexperiments-homepage-mentorship-ellipsis-menu-optout",
 				"growthexperiments-homepage-mentorship-optout-header",
 				"growthexperiments-homepage-mentorship-optout-text",
@@ -594,7 +601,14 @@
 				"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor",
 				"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor",
 				"growthexperiments-homepage-mentorship-optout-confirmation-reason-other",
-				"growthexperiments-homepage-mentorship-optout-confirmation-done"
+				"growthexperiments-homepage-mentorship-optout-confirmation-done",
+				"growthexperiments-homepage-mentorship-about-header",
+				"growthexperiments-homepage-mentorship-about-subheader-mentor",
+				"growthexperiments-homepage-mentorship-about-mentor-par1",
+				"growthexperiments-homepage-mentorship-about-mentor-par2",
+				"growthexperiments-homepage-mentorship-about-subheader-optout",
+				"growthexperiments-homepage-mentorship-about-optout-par1",
+				"growthexperiments-homepage-mentorship-about-done"
 			]
 		},
 		"ext.growthExperiments.Homepage.SuggestedEdits": {

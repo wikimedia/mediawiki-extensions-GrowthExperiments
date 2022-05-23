@@ -1,7 +1,8 @@
 ( function () {
 	'use strict';
 
-	var MentorshipOptoutProcess = require( './MentorshipOptoutProcess.js' );
+	var MentorshipOptoutProcess = require( './MentorshipOptoutProcess.js' ),
+		MentorshipDetailsModal = require( './MentorshipDetailsModal.js' );
 
 	/**
 	 * @class
@@ -20,6 +21,10 @@
 				horizontalPosition: 'end',
 				items: [
 					new OO.ui.MenuOptionWidget( {
+						data: 'about',
+						label: mw.msg( 'growthexperiments-homepage-mentorship-ellipsis-menu-about' )
+					} ),
+					new OO.ui.MenuOptionWidget( {
 						data: 'optout',
 						label: mw.msg( 'growthexperiments-homepage-mentorship-ellipsis-menu-optout' )
 					} )
@@ -37,6 +42,14 @@
 			this.windowManager,
 			config.mode
 		);
+
+		this.mentorshipDetailsModal = new MentorshipDetailsModal();
+		this.mentorshipDetailsModal.connect( this, {
+			optout: [ 'showOptOutDialog' ]
+		} );
+		this.windowManager.addWindows( [
+			this.mentorshipDetailsModal
+		] );
 	}
 
 	OO.inheritClass( EllipsisMenu, OO.ui.Widget );
@@ -48,10 +61,26 @@
 	 */
 	EllipsisMenu.prototype.onMenuItemSelected = function ( option ) {
 		switch ( option.data ) {
+			case 'about':
+				this.showAboutMentorshipModal();
+				break;
 			case 'optout':
-				this.optoutProcess.showOptoutDialog();
+				this.showOptOutDialog();
 				break;
 		}
+	};
+
+	EllipsisMenu.prototype.showAboutMentorshipModal = function () {
+		this.windowManager.openWindow( this.mentorshipDetailsModal );
+	};
+
+	/**
+	 * Open the mentorship opt out dialog.
+	 *
+	 * Exists as a separate method to be available as an event handler.
+	 */
+	EllipsisMenu.prototype.showOptOutDialog = function () {
+		this.optoutProcess.showOptoutDialog();
 	};
 
 	module.exports = EllipsisMenu;
