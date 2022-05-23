@@ -24,7 +24,7 @@
 		// This will be updated via the setEditor method in response to
 		// MobileFrontend's editorOpened/editorClosed hooks.
 		this.editor = null;
-		this.userEditCount = mw.config.get( 'wgUserEditCount' );
+		this.userEditCount = mw.config.get( 'wgUserEditCount' ) || 0;
 		this.isMobile = OO.ui.isMobile();
 		this.previousEditorInterface = config.previousEditorInterface || null;
 		this.context = config.context || null;

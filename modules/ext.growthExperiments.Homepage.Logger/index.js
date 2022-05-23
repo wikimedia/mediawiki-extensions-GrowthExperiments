@@ -18,7 +18,7 @@
 	function HomepageModuleLogger( enabled, homepagePageviewToken ) {
 		this.enabled = enabled;
 		this.userId = mw.user.getId();
-		this.userEditCount = mw.config.get( 'wgUserEditCount' );
+		this.userEditCount = mw.config.get( 'wgUserEditCount' ) || 0;
 		this.isMobile = OO.ui.isMobile();
 		this.homepagePageviewToken = homepagePageviewToken;
 		this.exclusions = {
