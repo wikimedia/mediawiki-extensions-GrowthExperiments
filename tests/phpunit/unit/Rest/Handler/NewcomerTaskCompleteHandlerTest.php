@@ -8,16 +8,13 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\Rest\Handler\NewcomerTaskCompleteHandler;
 use HashConfig;
-use IContextSource;
-use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Rest\HttpException;
-use MediaWiki\Rest\RequestInterface;
-use MediaWiki\Rest\ResponseFactory;
-use MediaWiki\Rest\Router;
-use MediaWiki\Rest\Validator\Validator;
+use MediaWiki\Rest\RequestData;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use Wikimedia\Rdbms\DBConnRef;
@@ -27,24 +24,32 @@ use Wikimedia\Rdbms\ILoadBalancer;
  * @coversDefaultClass \GrowthExperiments\Rest\Handler\NewcomerTaskCompleteHandler
  */
 class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
+	use HandlerTestTrait;
 
 	/**
 	 * @covers ::__construct
 	 * @covers ::run
 	 */
 	public function testRunWithSuggestedEditsDisabledGlobally() {
-		$handler = $this->getInitializedNewcomerTaskCompleteHandlerWithConfigAndUser(
+		$user = new UserIdentityValue( 1, 'Foo' );
+		$handler = $this->getNewcomerTaskCompleteHandler(
 			[ 'GEHomepageSuggestedEditsEnabled' => false ],
-			new UserIdentityValue( 1, 'Foo' ),
-			$this->createMock( UserOptionsLookup::class ),
-			$this->createMock( RevisionLookup::class )
+			$user,
+			$this->createMock( UserOptionsLookup::class )
 		);
-		$validator = $this->createMock( Validator::class );
-		$validator->method( 'validateParams' )->willReturn( [ 'taskTypeId' => 'foo', 'revId' => 123 ] );
-		$handler->validate( $validator );
+		$authorityMock = $this->createMock( Authority::class );
+		$authorityMock->method( 'getUser' )->willReturn( $user );
 		$this->expectExceptionMessage( 'Suggested edits are not enabled or activated for your user.' );
 		$this->expectException( HttpException::class );
-		$handler->run();
+		$this->executeHandler(
+			$handler,
+			new RequestData(),
+			[ 'GEHomepageSuggestedEditsEnabled' => false ],
+			[],
+			[ 'taskTypeId' => 'foo', 'revId' => 123 ],
+			[],
+			$authorityMock
+		);
 	}
 
 	/**
@@ -55,18 +60,24 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 		$user = new UserIdentityValue( 1, 'Foo' );
 		$userOptionsLookup = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookup->method( 'getBoolOption' )->willReturn( false );
-		$handler = $this->getInitializedNewcomerTaskCompleteHandlerWithConfigAndUser(
+		$handler = $this->getNewcomerTaskCompleteHandler(
 			[ 'GEHomepageSuggestedEditsEnabled' => true ],
 			$user,
-			$userOptionsLookup,
-			$this->createMock( RevisionLookup::class )
+			$userOptionsLookup
 		);
-		$validator = $this->createMock( Validator::class );
-		$validator->method( 'validateParams' )->willReturn( [ 'taskTypeId' => 'foo', 'revId' => 123 ] );
-		$handler->validate( $validator );
+		$authorityMock = $this->createMock( Authority::class );
+		$authorityMock->method( 'getUser' )->willReturn( $user );
 		$this->expectExceptionMessage( 'Suggested edits are not enabled or activated for your user.' );
 		$this->expectException( HttpException::class );
-		$handler->run();
+		$this->executeHandler(
+			$handler,
+			new RequestData(),
+			[ 'GEHomepageSuggestedEditsEnabled' => true ],
+			[],
+			[ 'taskTypeId' => 'foo', 'revId' => 123 ],
+			[],
+			$authorityMock
+		);
 	}
 
 	/**
@@ -77,18 +88,24 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 		$user = new UserIdentityValue( 1, 'Foo' );
 		$userOptionsLookup = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookup->method( 'getBoolOption' )->willReturn( true );
-		$handler = $this->getInitializedNewcomerTaskCompleteHandlerWithConfigAndUser(
+		$handler = $this->getNewcomerTaskCompleteHandler(
 			[ 'GEHomepageSuggestedEditsEnabled' => true ],
 			$user,
-			$userOptionsLookup,
-			$this->createMock( RevisionLookup::class )
+			$userOptionsLookup
 		);
-		$validator = $this->createMock( Validator::class );
-		$validator->method( 'validateParams' )->willReturn( [ 'taskTypeId' => 'foo', 'revId' => 123 ] );
+		$authorityMock = $this->createMock( Authority::class );
+		$authorityMock->method( 'getUser' )->willReturn( $user );
 		$this->expectException( HttpException::class );
 		$this->expectExceptionMessage( 'Invalid task type ID: foo' );
-		$handler->validate( $validator );
-		$handler->run();
+		$this->executeHandler(
+			$handler,
+			new RequestData(),
+			[ 'GEHomepageSuggestedEditsEnabled' => true ],
+			[],
+			[ 'taskTypeId' => 'foo', 'revId' => 123 ],
+			[],
+			$authorityMock
+		);
 	}
 
 	/**
@@ -101,20 +118,25 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 		$userOptionsLookup->method( 'getBoolOption' )->willReturn( true );
 		$revisionLookup = $this->createMock( RevisionLookup::class );
 		$revisionLookup->method( 'getRevisionById' )->willReturn( null );
-		$handler = $this->getInitializedNewcomerTaskCompleteHandlerWithConfigAndUser(
+		$handler = $this->getNewcomerTaskCompleteHandler(
 			[ 'GEHomepageSuggestedEditsEnabled' => true ],
 			$user,
 			$userOptionsLookup,
 			$revisionLookup
 		);
-		$validator = $this->createMock( Validator::class );
-		$validator->method( 'validateParams' )->willReturn(
-			[ 'taskTypeId' => 'copyedit', 'revId' => 123 ]
-		);
+		$authorityMock = $this->createMock( Authority::class );
+		$authorityMock->method( 'getUser' )->willReturn( $user );
 		$this->expectException( HttpException::class );
 		$this->expectExceptionMessage( '123 is not a valid revision ID.' );
-		$handler->validate( $validator );
-		$handler->run();
+		$this->executeHandler(
+			$handler,
+			new RequestData(),
+			[ 'GEHomepageSuggestedEditsEnabled' => true ],
+			[],
+			[ 'taskTypeId' => 'copyedit', 'revId' => 123 ],
+			[],
+			$authorityMock
+		);
 	}
 
 	/**
@@ -131,74 +153,52 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 			new UserIdentityValue( 2, 'Bar' )
 		);
 		$revisionLookup->method( 'getRevisionById' )->willReturn( $revisionRecord );
-		$handler = $this->getInitializedNewcomerTaskCompleteHandlerWithConfigAndUser(
+		$handler = $this->getNewcomerTaskCompleteHandler(
 			[ 'GEHomepageSuggestedEditsEnabled' => true ],
 			$user,
 			$userOptionsLookup,
 			$revisionLookup
 		);
-		$validator = $this->createMock( Validator::class );
-		$validator->method( 'validateParams' )->willReturn(
-			[ 'taskTypeId' => 'copyedit', 'revId' => 123 ]
-		);
+		$authorityMock = $this->createMock( Authority::class );
+		$authorityMock->method( 'getUser' )->willReturn( $user );
 		$this->expectException( HttpException::class );
 		$this->expectExceptionMessage( 'User ID 2 on revision does not match logged-in user ID 1.' );
-		$handler->validate( $validator );
-		$handler->run();
+		$this->executeHandler(
+			$handler,
+			new RequestData(),
+			[ 'GEHomepageSuggestedEditsEnabled' => true ],
+			[],
+			[ 'taskTypeId' => 'copyedit', 'revId' => 123 ],
+			[],
+			$authorityMock
+		);
 	}
 
-	private function getInitializedNewcomerTaskCompleteHandlerWithConfigAndUser(
+	private function getNewcomerTaskCompleteHandler(
 		array $config,
-		UserIdentityValue $user,
+		UserIdentity $user,
 		UserOptionsLookup $userOptionsLookup,
-		RevisionLookup $revisionLookup
-	) {
-		$context = $this->createMock( IContextSource::class );
-		$context->method( 'getConfig' )->willReturn( new HashConfig( $config ) );
-		$context->method( 'getUser' )->willReturn( $user );
+		RevisionLookup $revisionLookup = null
+	): NewcomerTaskCompleteHandler {
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
 		$configurationLoader->method( 'getTaskTypes' )->willReturn(
 			[ 'copyedit' => new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 				'link-recommendation' => new TaskType( 'link-recommendation', TaskType::DIFFICULTY_EASY ) ]
 		);
-		$handler = $this->getNewcomerTaskCompleteHandler(
-			$context,
-			$userOptionsLookup,
-			$configurationLoader,
-			$revisionLookup
-		);
-		$authorityMock = $this->createMock( Authority::class );
-		$authorityMock->method( 'getUser' )->willReturn( $user );
-		$handler->init(
-			$this->createMock( Router::class ),
-			$this->createMock( RequestInterface::class ),
-			[],
-			$authorityMock,
-			$this->createMock( ResponseFactory::class ),
-			$this->createMock( HookContainer::class )
-		);
-		return $handler;
-	}
-
-	private function getNewcomerTaskCompleteHandler(
-		IContextSource $context,
-		UserOptionsLookup $userOptionsLookup,
-		ConfigurationLoader $configurationLoader,
-		RevisionLookup $revisionLookup
-	): NewcomerTaskCompleteHandler {
 		$loadBalancer = $this->createMock( ILoadBalancer::class );
 		$loadBalancer->method( 'getLazyConnectionRef' )->willReturn(
 			$this->createMock( DBConnRef::class )
 		);
-		$newcomerTasksChangeTagsHandler = new NewcomerTasksChangeTagsManager(
+		$newcomerTasksChangeTagsManager = new NewcomerTasksChangeTagsManager(
 			$userOptionsLookup,
 			$this->createMock( TaskTypeHandlerRegistry::class ),
 			$configurationLoader,
 			$this->createNoOpMock( \PrefixingStatsdDataFactoryProxy::class ),
-			$revisionLookup,
+			$revisionLookup ?? $this->createMock( RevisionLookup::class ),
 			$loadBalancer,
-			$context
+			new HashConfig( $config ),
+			$user
 		);
-		return new NewcomerTaskCompleteHandler( $newcomerTasksChangeTagsHandler );
+		return new NewcomerTaskCompleteHandler( $newcomerTasksChangeTagsManager );
 	}
 }

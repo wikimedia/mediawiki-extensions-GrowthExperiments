@@ -218,9 +218,9 @@ class SpecialHomepage extends SpecialPage {
 			'start-startediting' => SuggestedEdits::isEnabledForAnyone(
 				$this->getContext()->getConfig()
 			) && ( !$par && !$isMobile &&
-				!SuggestedEdits::isActivated( $this->getContext(), $this->userOptionsManager )
+				!SuggestedEdits::isActivated( $this->getUser(), $this->userOptionsManager )
 			),
-			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
+			'suggested-edits' => SuggestedEdits::isEnabled( $this->getConfig() ),
 			'impact' => true,
 			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
 				$mentorshipState === MentorManager::MENTORSHIP_ENABLED,
@@ -387,7 +387,7 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function handleNewcomerTask( string $par = null ): bool {
 		if ( !$par || strpos( $par, 'newcomertask/' ) !== 0 ||
-			 !SuggestedEdits::isEnabled( $this->getContext() ) ) {
+			 !SuggestedEdits::isEnabled( $this->getConfig() ) ) {
 			return false;
 		}
 		$request = $this->getRequest();

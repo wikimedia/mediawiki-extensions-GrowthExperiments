@@ -135,8 +135,11 @@ class HomepageModuleRegistry {
 					$services->getDBLoadBalancer()->getConnectionRef( DB_REPLICA ),
 					$growthServices->getExperimentUserManager(),
 					[
-						'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context ),
-						'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $context, $userOptionsLookup ),
+						'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context->getConfig() ),
+						'isSuggestedEditsActivated' => SuggestedEdits::isActivated(
+							$context->getUser(),
+							$userOptionsLookup
+						),
 					],
 					$services->getTitleFactory(),
 					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null

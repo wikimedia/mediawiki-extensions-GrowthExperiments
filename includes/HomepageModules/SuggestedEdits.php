@@ -27,6 +27,7 @@ use IContextSource;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use Message;
 use OOUI\ButtonGroupWidget;
@@ -243,12 +244,12 @@ class SuggestedEdits extends BaseModule {
 	}
 
 	/**
-	 * Check whether the suggested edits feature is enabled for the context user.
-	 * @param IContextSource $context
+	 * Check whether the suggested edits feature is enabled according to the configuration.
+	 * @param Config $config
 	 * @return bool
 	 */
-	public static function isEnabled( IContextSource $context ): bool {
-		return self::isEnabledForAnyone( $context->getConfig() );
+	public static function isEnabled( Config $config ): bool {
+		return self::isEnabledForAnyone( $config );
 	}
 
 	/** @inheritDoc */
@@ -272,7 +273,7 @@ class SuggestedEdits extends BaseModule {
 		IContextSource $context,
 		UserOptionsLookup $userOptionsLookup
 	) {
-		return self::isEnabled( $context ) &&
+		return self::isEnabled( $context->getConfig() ) &&
 			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' );
 	}
 
@@ -382,7 +383,7 @@ class SuggestedEdits extends BaseModule {
 		// When the module is not activated yet, but can be, include module HTML in the
 		// data, for dynamic loading on activation.
 		if ( $this->canRender() &&
-			!self::isActivated( $this->getContext(), $this->userOptionsLookup ) &&
+			!self::isActivated( $this->getContext()->getUser(), $this->userOptionsLookup ) &&
 			$this->getMode() !== self::RENDER_MOBILE_DETAILS
 		) {
 			$data += [
@@ -395,23 +396,23 @@ class SuggestedEdits extends BaseModule {
 	}
 
 	/**
-	 * Check whether suggested edits have been activated for the context user.
+	 * Check whether suggested edits have been activated for the given user.
 	 * Before activation, suggested edits are exposed via the StartEditing module;
 	 * after activation (which happens by interacting with that module) via this one.
-	 * @param IContextSource $context
+	 * @param UserIdentity $user
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @return bool
 	 */
 	public static function isActivated(
-		IContextSource $context,
+		UserIdentity $user,
 		UserOptionsLookup $userOptionsLookup
 	) {
-		return $userOptionsLookup->getBoolOption( $context->getUser(), self::ACTIVATED_PREF );
+		return $userOptionsLookup->getBoolOption( $user, self::ACTIVATED_PREF );
 	}
 
 	/** @inheritDoc */
 	public function getState() {
-		return self::isActivated( $this->getContext(), $this->userOptionsLookup ) ?
+		return self::isActivated( $this->getContext()->getUser(), $this->userOptionsLookup ) ?
 			self::MODULE_STATE_ACTIVATED :
 			self::MODULE_STATE_UNACTIVATED;
 	}
@@ -448,7 +449,7 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function canRender() {
-		return self::isEnabled( $this->getContext() )
+		return self::isEnabled( $this->getContext()->getConfig() )
 			&& !$this->configurationLoader->loadTaskTypes() instanceof StatusValue;
 	}
 

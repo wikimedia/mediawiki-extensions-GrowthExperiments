@@ -3,12 +3,12 @@
 namespace GrowthExperiments\NewcomerTasks;
 
 use ChangeTags;
+use Config;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use IContextSource;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\User\UserIdentity;
@@ -33,8 +33,10 @@ class NewcomerTasksChangeTagsManager {
 	private $perDbNameStatsdDataFactory;
 	/** @var IDatabase */
 	private $dbr;
-	/** @var IContextSource|null */
-	private $requestContext;
+	/** @var Config|null */
+	private $config;
+	/** @var UserIdentity|null */
+	private $user;
 
 	/**
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -43,7 +45,9 @@ class NewcomerTasksChangeTagsManager {
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param ILoadBalancer $loadBalancer
-	 * @param IContextSource|null $requestContext
+	 * @param Config|null $config
+	 * @param UserIdentity|null $user
+	 * FIXME $config and $user should be mandatory and injected by a factory
 	 */
 	public function __construct(
 		UserOptionsLookup $userOptionsLookup,
@@ -52,7 +56,8 @@ class NewcomerTasksChangeTagsManager {
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		RevisionLookup $revisionLookup,
 		ILoadBalancer $loadBalancer,
-		?IContextSource $requestContext = null
+		Config $config = null,
+		UserIdentity $user = null
 	) {
 		$this->configurationLoader = $configurationLoader;
 		$this->revisionLookup = $revisionLookup;
@@ -60,7 +65,8 @@ class NewcomerTasksChangeTagsManager {
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->dbr = $loadBalancer->getConnectionRef( DB_REPLICA );
-		$this->requestContext = $requestContext;
+		$this->config = $config;
+		$this->user = $user;
 	}
 
 	/**
@@ -157,9 +163,13 @@ class NewcomerTasksChangeTagsManager {
 		if ( !$userIdentity->isRegistered() ) {
 			return StatusValue::newFatal( 'You must be logged-in' );
 		}
-		$context = $this->requestContext ?? RequestContext::getMain();
-		if ( !SuggestedEdits::isEnabled( $context ) ||
-			!SuggestedEdits::isActivated( $context, $this->userOptionsLookup )
+		if ( !$this->config || !$this->user ) {
+			$ctx = RequestContext::getMain();
+			$this->config = $ctx->getConfig();
+			$this->user = $ctx->getUser();
+		}
+		if ( !SuggestedEdits::isEnabled( $this->config ) ||
+			!SuggestedEdits::isActivated( $this->user, $this->userOptionsLookup )
 		) {
 			return StatusValue::newFatal( 'Suggested edits are not enabled or activated for your user.' );
 		}

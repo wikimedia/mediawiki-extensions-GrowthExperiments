@@ -128,8 +128,8 @@ class SpecialImpact extends SpecialPage {
 			$this->dbr,
 			$this->experimentUserManager,
 			[
-				'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context ),
-				'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $context, $this->userOptionsLookup ),
+				'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context->getConfig() ),
+				'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $impactUser, $this->userOptionsLookup ),
 			],
 			$this->titleFactory,
 			$this->pageViewService
