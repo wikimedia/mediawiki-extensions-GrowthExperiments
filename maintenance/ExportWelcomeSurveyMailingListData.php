@@ -59,7 +59,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		$fromId = $this->getLastUserIdBeforeRegistrationDate( $dbr, $from );
 		$toId = $this->getLastUserIdBeforeRegistrationDate( $dbr, $to );
 		if ( $this->hasOption( 'debug' ) ) {
-			$this->output( "Converting registration timestamps:\n" );
+			$this->error( "Converting registration timestamps:" );
 			foreach ( [
 				[ 'From (exclusive)', $from, $fromId ],
 				[ 'To (inclusive)', $to, $toId ]
@@ -69,7 +69,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 					$registered = $services->getUserFactory()->newFromId( $id )->getRegistration();
 					$text = "UID $id (registered: $registered)";
 				}
-				$this->output( "\t$dir: $ts -> $text\n" );
+				$this->error( "\t$dir: $ts -> $text" );
 			}
 		}
 		if ( $fromId === $toId ) {
