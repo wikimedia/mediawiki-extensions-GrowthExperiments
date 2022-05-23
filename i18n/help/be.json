@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chadyka"
+			"Chadyka",
+			"Tomato Cream"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Уключыць акенца дапамогі рэдактарам",
@@ -41,7 +42,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "У гэтым сказе ёсць меркаванне, якое варта выдаліць.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "Як толькі вы ўбачыце патрэбнае выпраўленне, націсніце «$1», каб пачаць. Затым працягвайце і выпраўляйце праблемы, выдаляючы і ўводзячы змест па меры неабходнасці.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-step1": "Калі {{GENDER:|вы}} ўбачыце патрэбнае выпраўленне, націсніце аловак праўкі ў гэтым раздзеле, каб пачаць. Затым працягвайце і выпраўляйце праблемы, выдаляючы і ўводзячы змест па меры неабходнасці.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Даведацца больш пра карэктуру]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Даведацца больш пра вычытку]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "Спасылкі паміж артыкуламі на пляцоўцы {{SITENAME}} дазваляюць чытачам націснуць на тое, пра што яны хочуць даведацца больш. Яны дапамагаюць людзям лёгка пераходзіць да іншых артыкулаў пляцоўцы {{SITENAME}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "Меркурый — самая маленькая <mark class=\"positive\">планета</mark> ў <mark class=\"positive\">Сонечнай сістэме</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-calm": "Каб зрабіць карыснае змяненне, {{GENDER:|вам}} трэба толькі дадаць адну-дзве спасылкі. Вам не трэба працаваць над усім артыкулам. Вам таксама не трэба мець асаблівых ведаў па тэме.",

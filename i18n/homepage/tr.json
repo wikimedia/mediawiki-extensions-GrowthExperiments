@@ -16,7 +16,10 @@
 			"Sayginer",
 			"Stonecy",
 			"ToprakM",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Can",
+			"Cobija",
+			"Oyuncu"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Merhaba}}, {{bidi:$1}}!",
@@ -24,7 +27,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Sizin}} ana sayfanız",
 	"prefs-homepage": "Yeni kullanıcı anasayfası",
 	"growthexperiments-homepage-enable": "Yeni gelen anasayfayı görüntüle",
-	"growthexperiments-homepage-pt-link": "Kişisel araçlardaki kullanıcı adı bağlantısından yeni gelen ana sayfa varsayılanı",
+	"growthexperiments-homepage-pt-link": "Kişisel araçlardaki kullanıcı adı bağlantısından yeni gelen anasayfa varsayılanı",
 	"growthexperiments-homepage-start-header": "Buraya {{GENDER:$1|başlat}}",
 	"growthexperiments-homepage-account-header": "Hesap oluşturuldu",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|düzenleme|düzenleme}}",

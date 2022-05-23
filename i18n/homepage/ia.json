@@ -249,5 +249,9 @@
 	"growthexperiments-notification-body-mentor-change": "Motivo: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Dice}} salute a {{GENDER:$3|tu}} nove {{GENDER:$2|mentor|mentrice}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Tu}} debe esser listate como mentor sur [[$2]] pro poter usar Special:ClaimMentee",
-	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Le lista de mentores ([[$1]]) non existe o es mal configurate."
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Le lista de mentores ([[$1]]) non existe o es mal configurate.",
+	"growthexperiments-notification-learn-more": "Leger plus sur {{GENDER:$1|tu}} nove {{GENDER:$2|mentor}}",
+	"right-setmentor": "Definir le mentor del usator",
+	"action-setmentor": "definir le mentor del usator",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Plus sur iste modification suggerite"
 }
