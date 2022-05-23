@@ -358,6 +358,7 @@
 	"growthexperiments-notification-learn-more": "了解更多关于{{GENDER:$1|您}}的新{{GENDER:$2|导师}}的信息",
 	"right-setmentor": "设置用户的导师",
 	"action-setmentor": "设置用户的导师",
+	"right-managementors": "管理导师列表",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "更多关于此编辑建议",
 	"growthexperiments-homepage-suggestededits-more-info": "有关修改建议的更多信息",
 	"growthexperiments-homepage-welcome-notice-header": "欢迎来到{{GENDER:$1|你的}}主页！",

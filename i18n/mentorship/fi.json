@@ -34,5 +34,8 @@
 	"growthexperiments-rcfilters-mentorship-title": "Mentorointi",
 	"growthexperiments-notification-body-mentee-claimed": "Syy: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Noin puolet keskiarvosta",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Keskiarvo (oletus)"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Keskiarvo (oletus)",
+	"growthexperiments-manage-mentors-username": "Käyttäjänimi",
+	"growthexperiments-manage-mentors-last-active": "Viimeisin toiminta",
+	"growthexperiments-manage-mentors-remove-mentor": "Poista"
 }

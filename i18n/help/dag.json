@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alhassan Mohammed Awal",
 			"Alhassan Peter",
+			"Amire80",
 			"Karimbaasani",
 			"Munkaila Sulemana",
 			"Ruky Wunpini",
@@ -14,8 +16,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Di baŋsim gahindili zaŋ chaŋ lahabali ŋɔ  bi kpa ni a mali ka naanyi tooi tum tuuni ŋɔ.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "So shɛŋa din pun buɣisi doya maa nyɛla maʒini nama , di ni tooi pa nyelimaŋli.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "Ti zaa ni tooi nti bachinim sooya din bɛ boori ba,bɛ nti sooya din be tuhi lahabaya. Zaŋmi{{GENDER:$1|a}}zambu n baŋ di niŋ ka di yɛ deede bɛ di Pa deede",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Bohimma sagsigu kam]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Bohimma viɛnyɛla zaŋ chaŋ maʒini ni tiri buɣisiri shɛŋa polo]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Zalisi",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "*Tim sooya din hankali ni chɛ ka ŋun karim di ni boori ni baham pam zaŋ chaŋ di pallo.\n\n*Tihi tabli ni sooli maa nyɛla din ni ʒiya lahabali maa shee.\n*Di ti bachi yɛri,yuuma,ni dabsa kalbu sooya\n*Di{{GENDER:$1|a yɛn}}n bi dihi tabli, yaɣama.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "*Tim sooya din hankali ni chɛ ka ŋun karim di ni boori ni baham pam zaŋ chaŋ di pallo.\n*Tihi tabli ni sooli maa nyɛla din ni ʒiya lahabali maa shee.\n*Di ti bachi yɛri,yuuma,ni dabsa kalbu sooya\n*Di yi niŋ {{GENDER:$1|ka a}} bi dihi tabli, kpahi yaɣi.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Shɛhira yɛltɔɣili"
 }

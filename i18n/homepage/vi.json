@@ -406,7 +406,7 @@
 	"growthexperiments-structuredtask-user-error-login-cta": "Đăng nhập",
 	"growthexperiments-addimage-summary-label": "Tóm lược",
 	"growthexperiments-addimage-summary-copyrightwarning": "Bằng việc ấn đăng, bạn đồng ý với [https://foundation.wikimedia.org/wiki/Terms_of_Use Điều khoản sử dụng] và đồng ý phát hành đóng góp của mình theo giấy phép [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] và [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
-	"growthexperiments-addimage-summary-summary": "Tính năng gợi ý hinfh anrh: $1 {{PLURAL:$1|hình ảnh}} được thêm.",
+	"growthexperiments-addimage-summary-summary": "Tính năng gợi ý hình ảnh: Đã thêm $1 {{PLURAL:$1|hình ảnh}}.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Đã hiểu"
 }

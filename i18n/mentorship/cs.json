@@ -99,12 +99,15 @@
 	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 již do seznamu mentorů byl přidán",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 není v seznamu mentorů",
 	"growthexperiments-manage-mentors-title": "Spravovat mentory",
+	"growthexperiments-manage-mentors-error-no-such-user": "Chyba: Uživatel s ID $1 neexistuje. Toto je pravděpodobně interní chyba.",
+	"growthexperiments-manage-mentors-auto-assigned": "Mentoři automaticky přiřazování nováčkům",
 	"growthexperiments-manage-mentors-manually-assigned": "Manuálně přiřazovaní mentoři",
 	"growthexperiments-manage-mentors-username": "Uživatelské jméno",
 	"growthexperiments-manage-mentors-last-active": "Naposledy aktivní",
 	"growthexperiments-manage-mentors-intro-msg": "Zpráva pro nováčky",
 	"growthexperiments-manage-mentors-remove-mentor": "Odebrat",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "Právě chcete odebrat uživatele {{GENDER:$1|uživatele|uživatelku}} [[User:$1|$1]] jako {{GENDER:$1|mentora|mentorku}}.",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "Právě chcete odebrat {{GENDER:$1|uživatele|uživatelku}} [[User:$1|$1]] jako {{GENDER:$1|mentora|mentorku}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Důvod pro odebrání mentora",
-	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Uživatel|Uživatelka}} [[User:$1|$1]] již není {{GENDER:$1|mentorem|mentorkou}}."
+	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Uživatel|Uživatelka}} [[User:$1|$1]] již není {{GENDER:$1|mentorem|mentorkou}}.",
+	"growthexperiments-manage-mentors-return-back": "Můžete se [[Special:ManageMentors|vrátit]] k seznamu mentorů."
 }
