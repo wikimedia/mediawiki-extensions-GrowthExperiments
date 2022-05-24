@@ -31,9 +31,6 @@ class MentorDashboardHooks implements
 		$preferences[ MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE ] = [
 			'type' => 'api',
 		];
-		$preferences[ MenteeOverview::FILTERS_PREF ] = [
-			'type' => 'api',
-		];
 		$preferences[ MenteeOverview::PRESETS_PREF ] = [
 			'type' => 'api',
 		];
@@ -48,12 +45,12 @@ class MentorDashboardHooks implements
 			StarredMenteesStore::STARRED_MENTEES_PREFERENCE => '',
 			MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 0,
 			MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE => null,
-			MenteeOverview::FILTERS_PREF => FormatJson::encode( [
-				'minedits' => 1,
-				'maxedits' => 500,
-			] ),
 			MenteeOverview::PRESETS_PREF => FormatJson::encode( [
 				'usersToShow' => 10,
+				'filters' => [
+					'minedits' => 1,
+					'maxedits' => 500,
+				]
 			] ),
 		];
 	}

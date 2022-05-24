@@ -45,12 +45,7 @@
 	 */
 	MenteeOverviewPresets.prototype.getPresets = function () {
 		try {
-			var presets = JSON.parse( mw.user.options.get( this.optionName ) ) || {};
-			if ( presets.filters === undefined ) {
-				// temporary: migrating -filters to -presets (T304057)
-				presets.filters = JSON.parse( mw.user.options.get( 'growthexperiments-mentee-overview-filters' ) ) || {};
-			}
-			return presets;
+			return JSON.parse( mw.user.options.get( this.optionName ) ) || {};
 		} catch ( e ) {
 			return {};
 		}
