@@ -10,13 +10,13 @@ use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Hook\BeforeWelcomeCreationHook;
 use MediaWiki\Hook\SkinAddFooterLinksHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\User\UserOptionsManager;
 use RequestContext;
-use ResourceLoaderContext;
 use Skin;
 use SpecialPage;
 
@@ -92,7 +92,7 @@ class VariantHooks implements
 	/** @inheritDoc */
 	public function onResourceLoaderExcludeUserOptions(
 		array &$keysToExclude,
-		ResourceLoaderContext $context
+		RL\Context $context
 	): void {
 		$keysToExclude = array_merge( $keysToExclude, [
 			self::GROWTH_CAMPAIGN,

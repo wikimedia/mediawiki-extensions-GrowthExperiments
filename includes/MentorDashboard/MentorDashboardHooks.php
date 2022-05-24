@@ -9,9 +9,9 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\Modules\MenteeOverview;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Context;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
-use ResourceLoaderContext;
 
 class MentorDashboardHooks implements
 	GetPreferencesHook,
@@ -58,7 +58,7 @@ class MentorDashboardHooks implements
 	/** @inheritDoc */
 	public function onResourceLoaderExcludeUserOptions(
 		array &$keysToExclude,
-		ResourceLoaderContext $context
+		Context $context
 	): void {
 		$keysToExclude = array_merge( $keysToExclude, [
 			StarredMenteesStore::STARRED_MENTEES_PREFERENCE,
@@ -70,10 +70,10 @@ class MentorDashboardHooks implements
 	/**
 	 * Tags mentee overview module uses to filter edits made by mentees
 	 *
-	 * @param ResourceLoaderContext $context
+	 * @param Context $context
 	 * @return array[]
 	 */
-	public static function getTagsToFilterBy( ResourceLoaderContext $context ) {
+	public static function getTagsToFilterBy( Context $context ) {
 		return [
 			'reverted' => [ ChangeTags::TAG_REVERTED ],
 			'questions' => [

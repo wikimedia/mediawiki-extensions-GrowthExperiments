@@ -5,9 +5,9 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\VariantHooks;
 use HashConfig;
+use MediaWiki\ResourceLoader as RL;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
-use ResourceLoaderContext;
 use Skin;
 use User;
 
@@ -47,7 +47,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 		$variantHooks = $this->getVariantHooksMock();
 		$variantHooks->onResourceLoaderExcludeUserOptions(
 			$keysToExclude,
-			$this->createNoOpMock( ResourceLoaderContext::class )
+			$this->createNoOpMock( RL\Context::class )
 		);
 		$this->assertArrayEquals( [ 'growthexperiments-campaign' ], $keysToExclude );
 	}

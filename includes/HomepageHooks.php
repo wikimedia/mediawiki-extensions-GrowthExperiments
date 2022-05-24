@@ -62,6 +62,7 @@ use MediaWiki\Hook\SpecialContributionsBeforeMainOutputHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\SkinOptions;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
@@ -78,7 +79,6 @@ use OOUI\ButtonWidget;
 use OutputPage;
 use PrefixingStatsdDataFactoryProxy;
 use RequestContext;
-use ResourceLoaderContext;
 use Skin;
 use SkinTemplate;
 use SpecialContributions;
@@ -714,7 +714,7 @@ class HomepageHooks implements
 	/** @inheritDoc */
 	public function onResourceLoaderExcludeUserOptions(
 		array &$keysToExclude,
-		ResourceLoaderContext $context
+		RL\Context $context
 	): void {
 		$keysToExclude = array_merge( $keysToExclude, [
 			self::HOMEPAGE_PREF_ENABLE,
@@ -1098,10 +1098,10 @@ class HomepageHooks implements
 
 	/**
 	 * ResourceLoader callback used by our custom ResourceLoaderFileModuleWithLessVars class.
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @return array An array of LESS variables
 	 */
-	public static function lessCallback( ResourceLoaderContext $context ) {
+	public static function lessCallback( RL\Context $context ) {
 		$isMobile = $context->getSkin() === 'minerva';
 		return [
 			// used in Homepage.SuggestedEdits.less
@@ -1120,14 +1120,14 @@ class HomepageHooks implements
 
 	/**
 	 * ResourceLoader JSON package callback for getting the task types defined on the wiki.
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @return array
 	 *   - on success: [ task type id => task data, ... ]; see TaskType::toArray for data format.
 	 *     Note that the messages in the task data are plaintext and it is the caller's
 	 *     responsibility to escape them.
 	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
-	public static function getTaskTypesJson( ResourceLoaderContext $context ) {
+	public static function getTaskTypesJson( RL\Context $context ) {
 		// Based on user variant settings, some task types might need to be hidden for the user,
 		// but we can't access user identity here, so we return all tasks. User-specific filtering
 		// will be done on the client side in TaskTypeAbFilter.
@@ -1151,10 +1151,10 @@ class HomepageHooks implements
 	/**
 	 * ResourceLoader JSON package callback for getting the default task types when the user
 	 * does not have SuggestedEdits::TASKTYPES_PREF set.
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @return string[]
 	 */
-	public static function getDefaultTaskTypesJson( ResourceLoaderContext $context ) {
+	public static function getDefaultTaskTypesJson( RL\Context $context ) {
 		// Like with getTaskTypesJson, we ignore user-specific filtering here.
 		return SuggestedEdits::DEFAULT_TASK_TYPES;
 	}
@@ -1162,14 +1162,14 @@ class HomepageHooks implements
 	/**
 	 * ResourceLoader JSON package callback for getting the topics defined on the wiki.
 	 * Some UI elements will be disabled if this returns an empty array.
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @return array
 	 *   - on success: [ topic id => topic data, ... ]; see Topic::toArray for data format.
 	 *     Note that the messages in the task data are plaintext and it is the caller's
 	 *     responsibility to escape them.
 	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
-	public static function getTopicsJson( ResourceLoaderContext $context ) {
+	public static function getTopicsJson( RL\Context $context ) {
 		$configurationLoader = self::getConfigurationLoaderForResourceLoader( $context );
 		$topics = $configurationLoader->loadTopics();
 		if ( $topics instanceof StatusValue ) {
@@ -1199,12 +1199,12 @@ class HomepageHooks implements
 	 * ResourceLoader JSON package callback for getting config variables that are shared between
 	 * SuggestedEdits and StartEditingDialog
 	 *
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @param Config $config
 	 * @return array
 	 */
 	public static function getSuggestedEditsConfigJson(
-		ResourceLoaderContext $context, Config $config
+		RL\Context $context, Config $config
 	) {
 		// Note: GELinkRecommendationsEnabled / GEImageRecommendationsEnabled reflect PHP configuration.
 		// Checking whether these task types have been disabled in community configuration is the
@@ -1225,14 +1225,14 @@ class HomepageHooks implements
 	/**
 	 * Helper method for ResourceLoader callbacks.
 	 *
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @return ConfigurationLoader
 	 */
 	private static function getConfigurationLoaderForResourceLoader(
-		ResourceLoaderContext $context
+		RL\Context $context
 	): ConfigurationLoader {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		// Hack - ResourceLoaderContext is not exposed to services initialization
+		// Hack - RL\Context is not exposed to services initialization
 		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
 		$configurationValidator->setMessageLocalizer( $context );
 		return $growthServices->getNewcomerTasksConfigurationLoader();

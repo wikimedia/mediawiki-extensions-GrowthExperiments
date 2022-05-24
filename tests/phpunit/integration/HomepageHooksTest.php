@@ -16,13 +16,13 @@ use HashConfig;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\ResourceLoader as RL;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWikiIntegrationTestCase;
 use ParserOutput;
 use RawMessage;
 use RecentChange;
 use RequestContext;
-use ResourceLoaderContext;
 use SearchEngine;
 use StatusValue;
 use stdClass;
@@ -48,7 +48,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 				new TaskType( 'tt2', TaskType::DIFFICULTY_EASY ),
 			] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
-		$context = new ResourceLoaderContext( MediaWikiServices::getInstance()->getResourceLoader(),
+		$context = new RL\Context( MediaWikiServices::getInstance()->getResourceLoader(),
 			RequestContext::getMain()->getRequest() );
 		$configData = HomepageHooks::getTaskTypesJson( $context );
 		$this->assertSame( [ 'tt1', 'tt2' ], array_keys( $configData ) );
@@ -64,7 +64,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$configurationLoader->method( 'loadTaskTypes' )
 			->willReturn( StatusValue::newFatal( new RawMessage( 'foo' ) ) );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
-		$context = new ResourceLoaderContext( MediaWikiServices::getInstance()->getResourceLoader(),
+		$context = new RL\Context( MediaWikiServices::getInstance()->getResourceLoader(),
 			RequestContext::getMain()->getRequest() );
 		$configData = HomepageHooks::getTaskTypesJson( $context );
 		$this->assertSame( [ '_error' => 'foo' ], $configData );
