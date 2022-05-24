@@ -488,7 +488,7 @@
 	"growthexperiments-addimage-caption-warning-tooshort": "說明應該至少要$1{{PLURAL:$1|個字}}。",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|您}}已經完成今天所有的連結建議。\n\n調整{{GENDER:|您的}}難度等級以看到其他類型的編輯或是在明天回來以獲得更多連結建議。",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "了解",
-	"growthexperiments-homepage-mentorship-optin-header": "要編輯的導師",
+	"growthexperiments-homepage-mentorship-optin-header": "編輯導師",
 	"growthexperiments-homepage-mentorship-optin-button": "尋找一位導師",
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "要尋找一位導師？",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "繼續尋找一位有經驗的編輯者作為{{GENDER:|您的}}編輯導師。",
