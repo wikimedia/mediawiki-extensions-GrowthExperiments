@@ -42,11 +42,6 @@ class HelpPanelHooks implements
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
 		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$preferences[self::HELP_PANEL_PREFERENCES_TOGGLE] = [
-				'type' => 'toggle',
-				'section' => 'editing/editor',
-				'label-message' => self::HELP_PANEL_PREFERENCES_TOGGLE
-			];
 			$preferences[HelpdeskQuestionPoster::QUESTION_PREF] = [
 				'type' => 'api',
 			];
