@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chadyka"
+			"Chadyka",
+			"Tomato Cream"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Уключыць акенца дапамогі рэдактарам",
@@ -42,7 +43,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "У гэтым сказе ёсць меркаванне, якое варта выдаліць.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "Як толькі вы ўбачыце патрэбнае выпраўленне, націсніце «$1», каб пачаць. Затым працягвайце і выпраўляйце праблемы, выдаляючы і ўводзячы змест па меры неабходнасці.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-step1": "Калі {{GENDER:|вы}} ўбачыце патрэбнае выпраўленне, націсніце аловак праўкі ў гэтым раздзеле, каб пачаць. Затым працягвайце і выпраўляйце праблемы, выдаляючы і ўводзячы змест па меры неабходнасці.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Даведацца больш пра карэктуру]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Даведацца больш пра вычытку]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "Спасылкі паміж артыкуламі на пляцоўцы {{SITENAME}} дазваляюць чытачам націснуць на тое, пра што яны хочуць даведацца больш. Яны дапамагаюць людзям лёгка пераходзіць да іншых артыкулаў пляцоўцы {{SITENAME}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "Меркурый — самая маленькая <mark class=\"positive\">планета</mark> ў <mark class=\"positive\">Сонечнай сістэме</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-calm": "Каб зрабіць карыснае змяненне, {{GENDER:|вам}} трэба толькі дадаць адну-дзве спасылкі. Вам не трэба працаваць над усім артыкулам. Вам таксама не трэба мець асаблівых ведаў па тэме.",
@@ -120,7 +121,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Дадаванне спасылак дапаможа людзям вучыцца хутчэй.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Вы}} будзеце вырашаць, ці павінны словы ў адным артыкуле пляцоўкі {{SITENAME}} спасылацца на іншыя артыкулы.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Месяц — адзіны <mark class=\"positive\">прыродны спадарожнік</mark>, які круціцца вакол <mark class=\"positive\">Зямлі</mark>.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Адмысловыя веды аб артыкуле не патрэбныя для выканання гэтай задачы.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Адмысловыя веды аб артыкуле не патрэбныя для выканання гэтага задання.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Інструкцыі",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Дадавайце спасылкі на паняцці, пра якія чытач можа захацець даведацца больш.\n* Пераканайцеся, што спасылка ідзе на правільны артыкул.\n* Не звязвайце агульныя словы, гады або даты.\n* Калі вы не {{GENDER:$1|ўпэўненыя}}, прапусціце.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Прыклад сказу"

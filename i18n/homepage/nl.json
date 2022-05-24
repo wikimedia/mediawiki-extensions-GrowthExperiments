@@ -13,7 +13,8 @@
 			"McDutchie",
 			"Robin van der Vliet",
 			"Romaine",
-			"Akoopal"
+			"Akoopal",
+			"Nickthijssen1994"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -342,7 +343,7 @@
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Richtlijnen",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Link concepten waar een lezer misschien meer over wil weten.</li><li>Zorg ervoor dat de link naar het juiste artikel gaat.</li><li>Link geen veelgebruikte woorden, jaren of datums.</li><li>Als {{GENDER:$1|je}} het niet zeker weet, sla dan over.</li>",
 	"grant-managementorship": "Beheer mentorschap",
-	"newcomertasksinfo": "Nieuwkomer taken",
+	"newcomertasksinfo": "Taken voor nieuwkomers",
 	"newcomertasksinfo-no-data": "Geen gegevens beschikbaar",
 	"newcomertasksinfo-table-header-task-type": "Taaktype",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
