@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use Config;
+use DeferredUpdates;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
@@ -348,7 +349,7 @@ class SuggestedEdits extends BaseModule {
 		$data = parent::getJsData( $mode );
 		$data['task-preview'] = [ 'noresults' => true ];
 
-		// Preload one task card for users who have the module activated
+		// Preload task card and queue for users who have the module activated
 		if ( $this->canRender() ) {
 			$tasks = $this->getTaskSet();
 			if ( $tasks instanceof StatusValue ) {
@@ -358,23 +359,27 @@ class SuggestedEdits extends BaseModule {
 			} elseif ( $tasks->count() === 0 ) {
 				$data['task-preview'] = [ 'noresults' => true ];
 			} else {
-				$task = $tasks[0];
-				$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
-				$data['task-preview'] = [
-					'tasktype' => $task->getTaskType()->getId(),
-					'difficulty' => $task->getTaskType()->getDifficulty(),
-					'qualityGateIds' => $task->getTaskType()->getQualityGateIds(),
-					'qualityGateConfig' => $tasks->getQualityGateConfig(),
-					'title' => $title->getPrefixedText(),
-					'topics' => $task->getTopicScores(),
-					// The front-end code for constructing SuggestedEditCardWidget checks
-					// to see if pageId is set in order to construct a tracking URL.
-					'pageId' => $title->getArticleID(),
-					'token' => $task->getToken()
-				];
+				$formattedTasks = [];
+				foreach ( $tasks as $task ) {
+					$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
+					$formattedTasks[] = [
+						'tasktype' => $task->getTaskType()->getId(),
+						'difficulty' => $task->getTaskType()->getDifficulty(),
+						'qualityGateIds' => $task->getTaskType()->getQualityGateIds(),
+						'qualityGateConfig' => $tasks->getQualityGateConfig(),
+						'title' => $title->getPrefixedText(),
+						'topics' => $task->getTopicScores(),
+						// The front-end code for constructing SuggestedEditCardWidget checks
+						// to see if pageId is set in order to construct a tracking URL.
+						'pageId' => $title->getArticleID(),
+						'token' => $task->getToken(),
+					];
+				}
+				$data['task-queue'] = $formattedTasks;
+				$data['task-preview'] = current( $formattedTasks );
 				// Prevent loading of thumbnail for image recommendation tasks.
 				// FIXME find a better place for this
-				if ( $task->getTaskType()->getId() === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+				if ( $data['task-preview']['tasktype'] === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
 					$data['task-preview']['thumbnailSource'] = null;
 				}
 			}
@@ -441,10 +446,26 @@ class SuggestedEdits extends BaseModule {
 			// from the TaskSet.
 			$tasks = $this->linkRecommendationFilter->filter( $tasks );
 			$tasks = $this->imageRecommendationFilter->filter( $tasks );
-			$tasks = $this->protectionFilter->filter( $tasks, 1 );
+			$tasks = $this->protectionFilter->filter( $tasks );
 		}
 		$this->tasks = $tasks;
+		$this->resetTaskCache( $user, $taskSetFilters, $suggesterOptions );
 		return $this->tasks;
+	}
+
+	/**
+	 * Refresh the user's task cache in a deferred update.
+	 *
+	 * @param UserIdentity $user
+	 * @param TaskSetFilters $taskSetFilters
+	 * @param array $suggesterOptions
+	 * @return void
+	 */
+	public function resetTaskCache( UserIdentity $user, TaskSetFilters $taskSetFilters, array $suggesterOptions ) {
+		DeferredUpdates::addCallableUpdate( function () use ( $user, $taskSetFilters, $suggesterOptions ) {
+			$suggesterOptions['resetCache'] = true;
+			$this->taskSuggester->suggest( $user, $taskSetFilters, null, null, $suggesterOptions );
+		} );
 	}
 
 	/** @inheritDoc */

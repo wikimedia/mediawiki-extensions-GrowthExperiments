@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -23,6 +24,7 @@ use Language;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Permissions\RestrictionStore;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiTestCaseTrait;
 use MediaWikiUnitTestCase;
@@ -164,7 +166,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 				->getMock()
 		);
 		$campaignConfig = new CampaignConfig( [] );
-		return new SuggestedEdits(
+		return new class(
 			$contextMock,
 			GlobalVarConfig::newInstance(),
 			$campaignConfig,
@@ -179,6 +181,13 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$userOptionsLookupMock,
 			$linkRecommendationFilter,
 			$imageRecommendationFilter
-		);
+		) extends SuggestedEdits {
+
+			public function resetTaskCache(
+				UserIdentity $user, TaskSetFilters $taskSetFilters, array $suggesterOptions
+			) {
+				// no-op to avoid triggering DeferredUpdates which are not allowed in unit tests.
+			}
+		};
 	}
 }

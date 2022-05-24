@@ -1,6 +1,5 @@
 ( function () {
-	var EditCardWidget = require( './EditCardWidget.js' ),
-		ErrorCardWidget = require( './ErrorCardWidget.js' ),
+	var ErrorCardWidget = require( './ErrorCardWidget.js' ),
 		NoResultsWidget = require( './NoResultsWidget.js' ),
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		SuggestedEditsModule = require( './SuggestedEditsModule.js' ),
@@ -11,8 +10,7 @@
 		suggestedEditsModule;
 
 	/**
-	 * Set up the suggested edits module within the given container, fetch the tasks
-	 * and display the first.
+	 * Set up the suggested edits module within the given container.
 	 *
 	 * @param {jQuery} $container
 	 * @return {jQuery.Promise} Status promise.
@@ -21,7 +19,9 @@
 		var initTime = mw.now(),
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
-			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || {};
+			suggestedEditsData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ] || {},
+			taskPreviewData = suggestedEditsData[ 'task-preview' ] || {},
+			taskQueue = suggestedEditsData[ 'task-queue' ] || {};
 
 		if ( !$wrapper.length ) {
 			return;
@@ -46,9 +46,8 @@
 			rootStore
 		);
 
-		if ( taskPreviewData.title ) {
-			tasksStore.setPreloadedFirstTask( taskPreviewData );
-
+		if ( taskQueue.length && !taskPreviewData.error ) {
+			tasksStore.setTaskQueue( taskQueue );
 		} else if ( taskPreviewData.noresults ) {
 			suggestedEditsModule.showCard(
 				new NoResultsWidget( { topicMatching: filtersStore.topicsEnabled } )
@@ -58,13 +57,8 @@
 			mw.log.error( 'task preview data unavailable: ' + taskPreviewData.error );
 			mw.errorLogger.logError( new Error( 'task preview data unavailable: ' +
 				taskPreviewData.error ), 'error.growthexperiments' );
-		} else {
-			// This code path shouldn't be possible with our current setup, where tasks
-			// are fetched server side and exported from SuggestedEdits.php. But keep it
-			// for now, in case that setup changes.
-			// Show an empty skeleton card, which will be overwritten once tasks are fetched.
-			suggestedEditsModule.showCard( new EditCardWidget( {} ) );
 		}
+
 		suggestedEditsModule.updateControls();
 		// Track the TTI on client-side.
 		mw.track(
@@ -79,13 +73,15 @@
 			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
 			mw.now() - mw.config.get( 'GEHomepageStartTime' )
 		);
-		return suggestedEditsModule.fetchTasksAndUpdateView().done( function () {
-			mw.track(
-				'timing.growthExperiments.specialHomepage.modules.suggestedEditsLoadingComplete.' +
-					( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
-				mw.now() - initTime
-			);
-		} );
+		// FIXME: suggestedEditsLoadingComplete could probably be removed as it is now a duplicate of
+		// suggestedEditsTimeToInteractive. We can leave it for now in case we decide to rollback this change
+		// or make other adjustments in loading behavior.
+		mw.track(
+			'timing.growthExperiments.specialHomepage.modules.suggestedEditsLoadingComplete.' +
+			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
+			mw.now() - initTime
+		);
+		return $.Deferred().resolve();
 	}
 
 	// Try setup for desktop mode and server-side-rendered mobile mode.
