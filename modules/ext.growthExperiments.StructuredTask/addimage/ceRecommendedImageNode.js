@@ -44,6 +44,7 @@ function CERecommendedImageNode() {
 			this.shouldShowImageAfterLoad = true;
 		}
 	}.bind( this ), this.loadingDelay );
+	this.$a.addClass( 'mw-ge-recommendedImage-imageWrapper' );
 }
 
 OO.inheritClass( CERecommendedImageNode, ve.ce.MWBlockImageNode );
@@ -110,7 +111,7 @@ CERecommendedImageNode.prototype.showImage = function () {
 	mw.hook( 'growthExperiments.imageSuggestions.onImageCaptionReady' ).fire();
 	this.$loadingOverlay.addClass( 'mw-ge-recommendedImage-loading-overlay--image-shown' );
 	this.isImageShown = true;
-	this.setupDetailsButton( this.$element.find( '.image' ) );
+	this.setupDetailsButton( this.$a );
 	// Scroll relative to the details button
 	setTimeout( function () {
 		this.articleTarget.surface.$scrollContainer.animate( {
