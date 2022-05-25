@@ -10,7 +10,6 @@ use Linker;
 use MalformedTitleException;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
-use MediaWiki\TimedMediaHandler\Hooks;
 use MessageLocalizer;
 use OOUI\IconWidget;
 use OutputPage;
@@ -282,21 +281,8 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			return '';
 		}
 
-		$activePlayerMode = Hooks::activePlayerMode();
-		$rlModules = $rlModuleStyles = [];
-		if ( $activePlayerMode === 'mwembed' ) {
-			$rlModuleStyles = [ 'ext.tmh.thumbnail.styles' ];
-			$rlModules = [
-				'mw.MediaWikiPlayer.loader',
-				'mw.PopUpMediaTransform',
-				'mw.TMHGalleryHook.js',
-			];
-		} elseif ( $activePlayerMode === 'videojs' ) {
-			$rlModuleStyles = [ 'ext.tmh.player.styles' ];
-			$rlModules = [ 'ext.tmh.player' ];
-		}
-		$output->addModules( $rlModules );
-		$output->addModuleStyles( $rlModuleStyles );
+		$output->addModules( [ 'ext.tmh.player' ] );
+		$output->addModuleStyles( [ 'ext.tmh.player.styles' ] );
 
 		$params = [];
 		if ( Util::isMobile( $this->getSkin() ) ) {
