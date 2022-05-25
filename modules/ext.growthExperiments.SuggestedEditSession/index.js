@@ -105,10 +105,14 @@
 		/** @member {boolean} Flag to prevent double-opening of the post-edit dialog (T283120) */
 		this.postEditDialogIsOpen = false;
 		/**
-		 * @member {number|undefined} Timestamp when the suggested edit session starts.
-		 * Used for tracking load times for newcomer tasks. See HomepageHooks::onBeforePageDisplay.
+		 * @member {boolean} Whether the Navigation Timing API is available
 		 */
-		this.startTime = mw.config.get( 'suggestedEditSessionStartTime' );
+		this.shouldTrackPerformance = typeof window.performance !== 'undefined';
+		/**
+		 * @member {number} Timestamp when the suggested edit session starts.
+		 * Used for tracking load times for newcomer tasks.
+		 */
+		this.startTime = this.shouldTrackPerformance ? window.performance.now() : 0;
 	}
 	OO.mixinClass( SuggestedEditSession, OO.EventEmitter );
 
@@ -537,13 +541,13 @@
 	 * This is for structured tasks only (since the editor is opened automatically).
 	 */
 	SuggestedEditSession.prototype.trackEditorReady = function () {
-		if ( !this.startTime ) {
+		if ( !this.startTime || !this.shouldTrackPerformance ) {
 			return;
 		}
 		mw.track(
 			'timing.growthExperiments.suggestedEdits.taskEditorReady.' + this.taskType +
 			( OO.ui.isMobile() ? '.mobile' : '.desktop' ),
-			mw.now() - this.startTime
+			window.performance.now() - this.startTime
 		);
 	};
 
@@ -556,13 +560,13 @@
 	 */
 	SuggestedEditSession.prototype.trackGuidanceShown = function () {
 		// If the editor is opened automatically, taskEditorReady should be used instead.
-		if ( this.shouldOpenArticleInEditMode || !this.startTime ) {
+		if ( this.shouldOpenArticleInEditMode || !this.startTime || !this.shouldTrackPerformance ) {
 			return;
 		}
 		mw.track(
 			'timing.growthExperiments.suggestedEdits.guidanceShown.' + this.taskType +
 			( OO.ui.isMobile() ? '.mobile' : '.desktop' ),
-			mw.now() - this.startTime
+			window.performance.now() - this.startTime
 		);
 	};
 
