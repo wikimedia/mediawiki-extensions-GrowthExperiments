@@ -491,6 +491,7 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Continua pro obtener le adjuta de un redactor experte como tu mentor in modificar.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Cancellar",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Continuar",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "A proposito de mentores",
 	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Desister se del mentorato",
 	"growthexperiments-homepage-mentorship-optout-header": "Desister se del mentorato?",
 	"growthexperiments-homepage-mentorship-optout-text": "Tu potera sempre reinscriber te pro le mentorato. Nonobstante, es possibile que tu reciperea un mentor differente que antea.",
@@ -501,5 +502,12 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Io vole un altere mentor",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Io non vole un mentor del toto",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Altere / Io prefere non dicer",
-	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Facite"
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Facite",
+	"growthexperiments-homepage-mentorship-about-header": "A proposito de mentores",
+	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Qui es tu mentor?",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "Tu mentor es un altere persona con multe experientia de redaction sur {{SITENAME}}. Es voluntario pro guidar arrivantes como tu sur le maniera de modificar, e pote responder a questiones que tu poterea haber concernente le uso del sito.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "Quando tu invia un message a tu mentor, illa lo videra sur su pagina de discussion de usator e tu deberea reciper un notification quando illa responde.",
+	"growthexperiments-homepage-mentorship-about-subheader-optout": "Desister se del mentorato",
+	"growthexperiments-homepage-mentorship-about-optout-par1": "Selige le button infra pro excluder te si tu prefere que non te es assignate un mentor specific justo ora. Tu pote optar pro haber un mentor nove a omne momento si tu cambia de idea.",
+	"growthexperiments-homepage-mentorship-about-done": "Facite"
 }

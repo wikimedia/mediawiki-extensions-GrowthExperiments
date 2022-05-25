@@ -8,6 +8,7 @@
 			"Huji",
 			"Jeeputer",
 			"Ladsgroup",
+			"LordProfo",
 			"Mardetanha",
 			"Mohammad ebz",
 			"Reza1615"
@@ -491,5 +492,14 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "گرفتم",
 	"growthexperiments-addimage-caption-warning-tooshort": "توضیح باید دارای $1 {{PLURAL:$1|نویسه}} یا بیشتر باشد.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|شما}} تمام پیوندهای پیشنهادی امروز را انجام داده‌اید.\n\nبرای مشاهدهٔ سایر انواع ویرایش، سطح سختی {{GENDER:|خود}} را تغییر دهید، یا برای پیوندهای پیشنهادی بیشتر، فردا دوباره بازگردید.",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "متوجه شدم"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "متوجه شدم",
+	"growthexperiments-homepage-mentorship-optin-header": "مربی برای ویرایش",
+	"growthexperiments-homepage-mentorship-optin-text": "اگر {{GENDER:|شما}} سوالی در مورد ویرایش دارید، یک ویرایشگر با تجربه می‌تواند به‌عنوان «مربی» برای شما اختصاص داده شود تا به شما کمک کند.",
+	"growthexperiments-homepage-mentorship-optin-button": "یک مربی بگیرید",
+	"growthexperiments-homepage-mentorship-confirm-dialog-header": "می‌خواهید مربی بگیرید؟",
+	"growthexperiments-homepage-mentorship-confirm-dialog-text": "برای دریافت یک ویرایشگر با تجربه به‌عنوان مربی ویرایش {{GENDER:|خود}}، برروی ادامه کلیک کنید.",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "انصراف از داشتن مربی",
+	"growthexperiments-homepage-mentorship-optout-header": "از داشتن مربی انصراف می‌دهید؟",
+	"growthexperiments-homepage-mentorship-optout-text": "شما همیشه می‌توانید دوباره مربی دریافت کنید. با این حال، ممکن است مربی پیشین را دریافت نکنید.",
+	"growthexperiments-homepage-mentorship-about-subheader-optout": "انصراف از داشتن مربی"
 }

@@ -501,6 +501,7 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "להמשיך לקבלת עורך מנוסה בתור החונך {{GENDER:|שלך}}.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "ביטול",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "המשך",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "אודות החונכים",
 	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "לצאת מחונכות",
 	"growthexperiments-homepage-mentorship-optout-header": "לצאת מחונכות?",
 	"growthexperiments-homepage-mentorship-optout-text": "{{GENDER:|אתה תמיד יכול|את תמיד יכולה}} לחזור לחונכות. עם זאת, ייתכן שלא {{GENDER:|תקבל|תקבלי}} את אותו החונך שהיה לך.",
@@ -511,5 +512,12 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "אני רוצה חונך אחר",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "אני לא רצה חונך בכלל",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "אחר / {{GENDER:|מעדיף|מעדיפה}} לא להגיד",
-	"growthexperiments-homepage-mentorship-optout-confirmation-done": "בוצע"
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "בוצע",
+	"growthexperiments-homepage-mentorship-about-header": "אודות החונכים",
+	"growthexperiments-homepage-mentorship-about-subheader-mentor": "מי החונך {{GENDER:|שלך}}?",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "החונך {{GENDER:|שלך}} הוא אדם אחר עם ניסיון רב בעריכה באתר {{SITENAME}}. בהתנדבות, החונך מנחה אנשים חדשים כמוך איך לערוך, ועונה לשאלות שיש לך על שימוש באתר.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "{{GENDER:|כשאתה שולח|כשאת שולחת}} הודעה לחונך שלך, הוא יראה אותה בדף השיחה שלו {{GENDER:|ואתה אמור|ואת אמורה}} לקבל הודעה כשהוא יענה.",
+	"growthexperiments-homepage-mentorship-about-subheader-optout": "לצאת מחונכות",
+	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|בחר|בחרי}} את הכפתור למטה אם {{GENDER:|אתה מעדיף|את מעדיפה}} שלא יוקצה לך חונך מסוים עכשיו. {{GENDER:|אתה יכול|את יכולה}} לקבל חונך חדש בכל זמן שתרצה לשנות את דעתך.",
+	"growthexperiments-homepage-mentorship-about-done": "סיום"
 }

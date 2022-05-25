@@ -508,6 +508,7 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "{{GENDER:|تابع|تابعي}} للحصول على مستخدم(ـة) خبير(ة) كـ«مرشد(ة)» لك في التعديل.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "إلغاء",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "{{GENDER:|تابع|تابعي}}",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "معلومات حول المرشدين",
 	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "الانسحاب من الإرشاد",
 	"growthexperiments-homepage-mentorship-optout-header": "الانسحاب من الإرشاد؟",
 	"growthexperiments-homepage-mentorship-optout-text": "يمكنك في أيّ وقت إعادة الاشتراك في الإرشاد مرّة أخرى. إلا أنّه، قد لا {{GENDER:|تتحصل|تتحصلي}} على نفس المرشد السابق.",
@@ -518,5 +519,9 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "أريد مرشدًا آخر",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "لا أريد مرشدًا على الإطلاق",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "أخر / لا أريد الإفصاح",
-	"growthexperiments-homepage-mentorship-optout-confirmation-done": "تم"
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "تم",
+	"growthexperiments-homepage-mentorship-about-header": "معلومات حول المرشدين",
+	"growthexperiments-homepage-mentorship-about-subheader-mentor": "من هو {{GENDER:|مرشدُكَ|مرشدُكِ}}؟",
+	"growthexperiments-homepage-mentorship-about-subheader-optout": "الانسحاب من الإرشاد",
+	"growthexperiments-homepage-mentorship-about-done": "تمّ"
 }

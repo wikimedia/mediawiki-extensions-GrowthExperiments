@@ -357,6 +357,7 @@
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "편집 제안으로 돌아가기",
 	"growthexperiments-addlink-summary-title": "요약",
 	"growthexperiments-addlink-summary-column-header-suggestion": "제안",
+	"growthexperiments-addlink-summary-summary": "링크 제안 기능: $1개 {{PLURAL:$1|링크}}가 추가됨.",
 	"growthexperiments-addlink-skip-body": "제안을 받아들이거나 거절하는 것을 중단하시겠습니까?",
 	"growthexperiments-addlink-skip-accept": "모두 건너뛰기",
 	"growthexperiments-addlink-skip-reject": "재검토",

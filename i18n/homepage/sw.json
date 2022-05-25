@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Edwingudfriend"
+			"Edwingudfriend",
+			"Wangombe"
 		]
 	},
 	"growthexperiments-homepage-startediting-dialog-header": "Kuhusu mabadiliko yaliyopendekezwa",
-	"growthexperiments-homepage-suggestededits-more-info": "Habari zaidi kuhusu mabadiliko yaliyopendekezwa"
+	"growthexperiments-homepage-suggestededits-more-info": "Habari zaidi kuhusu mabadiliko yaliyopendekezwa",
+	"growthexperiments-homepage-mentorship-about-done": "Maliza"
 }
