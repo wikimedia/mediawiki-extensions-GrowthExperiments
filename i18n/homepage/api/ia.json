@@ -8,5 +8,9 @@
 	"apihelp-homepagequestionstore-param-questionformat": "Le formato in le qual retornar le questiones, p.ex. HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Le loco de immagazinage del questiones.",
 	"apihelp-homepagequestionstore-param-userid": "Le ID del usator pro le qual obtener questiones.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Nulle question trovate."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nulle question trovate.",
+	"apihelp-growthsetmentor-summary": "Definir le mentor de un usator. Le cambiamento essera publicamente registrate.",
+	"apihelp-growthsetmentor-param-mentee": "Nomine de usator del apprentisse",
+	"apihelp-growthsetmentor-param-mentor": "Nomine de usator del mentor",
+	"apihelp-growthsetmentor-param-reason": "Motivo del cambiamento"
 }

@@ -6,12 +6,13 @@
 			"Amire80",
 			"Chirifo",
 			"Karimbaasani",
-			"Sir Amugi"
+			"Sir Amugi",
+			"Naporo"
 		]
 	},
 	"growthexperiments-config-validator-additional-fields": "Taɣimi yaɣali",
 	"growthexperiments-config-validator-error": "Dihitabli n zaŋ ti ni $1 zaɣsi zaŋ tabli $2",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> di tu ni di ti <code>$2</code>, amaa di <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Din be di puuni bi ŋman ta$1ba",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Din be di puuni bi ŋmani taba$1",
 	"growthexperiments-edit-config-config-changed": "Taɣibu niŋya maliŋ maa ni"
 }

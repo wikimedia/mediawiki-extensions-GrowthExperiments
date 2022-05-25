@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Marcar o dismarcar un apprentisse como favorite per le usator actual (immagazinate privatemente e non registrate)",
+	"apihelp-growthstarmentee-param-gesaction": "Action a prender (<kbd>star</kbd> o <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Le apprentisse a (dis)marcar como favorite",
+	"apihelp-query+growthstarredmentees-summary": "Obtener lista de apprentisses marcate como favorite per le mentor actualmente in session"
+}
