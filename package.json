@@ -24,6 +24,6 @@
 		"stylelint-config-wikimedia": "0.11.1",
 		"svgo": "2.8.0",
 		"wdio-mediawiki": "2.0.0",
-		"webdriverio": "7.16.10"
+		"webdriverio": "7.19.7"
 	}
 }
