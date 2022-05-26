@@ -18,7 +18,7 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "لوحة {{GENDER:|المستخدم|المستخدمة}}",
 	"tooltip-pt-homepage": "لوحة {{GENDER:|المستخدم|المستخدمة}} الخاصة بك",
-	"prefs-homepage": "لوحة المستخدمين للوافدين الجدد",
+	"prefs-homepage": "مزايا التحرير للوافدين الجدد",
 	"growthexperiments-homepage-enable": "عرض لوحة {{GENDER:|المستخدم|المستخدمة}} {{GENDER:|للوافد الجديد|للوافدة الجديدة}}",
 	"growthexperiments-homepage-pt-link": "اختيار تلقائي للوحة المستخدم للوافد الجديد من وصلة اسم حساب المستخدم في الأدوات الشخصية",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|أضف|أضيفي}} بريدك الإلكتروني",
@@ -151,7 +151,7 @@
 	"growthexperiments-specialimpact-invalid-username": "اسم المستخدم مفقود أو غير صالح.",
 	"growthexperiments-homepage-claimmentee-no-user": "مرشد(ة) غير موجود(ة)",
 	"growthexperiments-homepage-claimmentee-already-mentor": "أنت {{GENDER:$2|ترشد|ترشدين}} {{GENDER:$1|المستخدم $1|المستخدمة $1}} سلفا.",
-	"growthexperiments-homepage-enable-preference": "لتفعيل لوحة المستخدم للوافد الجديد؛ {{GENDER:|قم|قومي}} بزيارة إعدادات \"لوحة المستخدم للوافد الجديد\" في [[Special:Preferences#mw-prefsection-personal-homepage|التفضيلات]].",
+	"growthexperiments-homepage-enable-preference": "لتفعيل لوحة المستخدم للوافد الجديد، {{GENDER:|قم|قومي}} بزيارة إعدادات «مزايا التحرير للوافدين الجدد» في [[Special:Preferences#mw-prefsection-personal-homepage|التفضيلات]].",
 	"growthexperiments-homepage-contributions-zero-title": "لم {{GENDER:$1|تساهم|تساهمي}} بعد.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "{{GENDER:$1|زر|زوري}} لوحة {{GENDER:$1|المستخدم|المستخدمة}} خاصتك للبدء في التعديل!",
 	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|انتقل|انتقلي}} إلى لوحة المستخدم الخاصة بك",
@@ -522,6 +522,9 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "تم",
 	"growthexperiments-homepage-mentorship-about-header": "معلومات حول المرشدين",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "من هو {{GENDER:|مرشدُكَ|مرشدُكِ}}؟",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "مرشدك هو شخص يتمتع بخبرة كبيرة في التحرير على {{SITENAME}}. وقد تطوع لإرشاد الأشخاص الجدد، مثلك، حول كيفية التعديل، ويمكنه الإجابة عن الأسئلة التي قد {{GENDER:|تطرحها|تطرحينها}} حول استخدام الموقع.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "عندما {{GENDER:|ترسل|ترسلين}} رسالة إلى مرشدك، سيُشاهدونها على صفحة النقاش الخاصة بهم ويجب أن {{GENDER:|تتلقى|تتلقّي}} إشعارًا عند الرد.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "الانسحاب من الإرشاد",
+	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|اختر|اختاري}} الزرّ أدناه للخروج إذا كنت لا {{GENDER:|تريد|تريدين}} تعيين مرشد خاصّ بك في الوقت الحالي. يمكنك في أيّ وقت الحصول مرّة أخرى على مرشد جديد إذا ما غيّرت رأيك.",
 	"growthexperiments-homepage-mentorship-about-done": "تمّ"
 }

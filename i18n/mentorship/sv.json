@@ -21,6 +21,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Bokmärk nybörjare",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Användarnamn",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Antal tillbakarullade redigeringar",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Antal blockeringar",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Ställda fadderfrågor",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Redigeringsräknare",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Registreringsdatum",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filter",

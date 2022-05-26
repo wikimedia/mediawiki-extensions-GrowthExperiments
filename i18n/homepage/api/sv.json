@@ -13,5 +13,7 @@
 	"apihelp-growthsetmentor-summary": "Sätt användares fadder. Ändringen loggas offentligt.",
 	"apihelp-growthsetmentor-param-mentee": "Nybörjarens användarnamn",
 	"apihelp-growthsetmentor-param-mentor": "Fadderns användarnamn",
-	"apihelp-growthsetmentor-param-reason": "Orsak till förändringen"
+	"apihelp-growthsetmentor-param-reason": "Orsak till förändringen",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Ogiltigt bildrekommendationsuppgift",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Titel på artikeln som bildrekommendationen är tänkt för"
 }
