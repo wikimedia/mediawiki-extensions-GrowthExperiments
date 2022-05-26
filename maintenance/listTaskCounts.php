@@ -4,7 +4,8 @@ namespace GrowthExperiments\Maintenance;
 
 use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\NewcomerTasks\OresTopicTrait;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -29,13 +30,14 @@ require_once dirname( __DIR__ ) . '/includes/NewcomerTasks/OresTopicTrait.php';
  */
 class ListTaskCounts extends Maintenance {
 
-	use OresTopicTrait;
-
 	/** @var string 'growth' or 'ores' */
 	private $topicType;
 
 	/** @var TaskSuggester */
 	private $taskSuggester;
+
+	/** @var ConfigurationLoader */
+	private $configurationLoader;
 
 	public function __construct() {
 		parent::__construct();
@@ -63,6 +65,14 @@ class ListTaskCounts extends Maintenance {
 			$this->fatalError( 'topictype must be one of: growth, ores' );
 		}
 
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+		$this->configurationLoader = new TopicDecorator(
+			$newcomerTaskConfigurationLoader,
+			$this->topicType == 'ores',
+			[ NullTaskTypeHandler::getNullTaskType( '_null' ) ]
+		);
+
 		[ $taskTypes, $topics ] = $this->getTaskTypesAndTopics();
 		[ $taskCounts, $taskTypeCounts, $topicCounts ] = $this->getStats( $taskTypes, $topics );
 		if ( $this->hasOption( 'statsd' ) ) {
@@ -76,19 +86,14 @@ class ListTaskCounts extends Maintenance {
 	 * @return array{0:string[],1:string[]} [ task type ID list, topic ID list ]
 	 */
 	private function getTaskTypesAndTopics(): array {
-		$nullTaskType = NullTaskTypeHandler::getNullTaskType( '_null' );
-		$this->replaceConfigurationLoader( $this->topicType === 'ores', [ $nullTaskType ] );
-
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-
-		$allTaskTypes = array_keys( $growthServices->getNewcomerTasksConfigurationLoader()->getTaskTypes() );
+		$allTaskTypes = array_keys( $this->configurationLoader->getTaskTypes() );
 		$taskTypes = $this->getOption( 'tasktype', $allTaskTypes );
 		if ( array_diff( $taskTypes, $allTaskTypes ) ) {
 			$this->fatalError( 'Invalid task types: ' . implode( ', ', array_diff( $taskTypes, $allTaskTypes ) ) );
 		}
 		$taskTypes = array_diff( $taskTypes, [ '_null' ] );
 
-		$allTopics = array_keys( $growthServices->getNewcomerTasksConfigurationLoader()->getTopics() );
+		$allTopics = array_keys( $this->configurationLoader->getTopics() );
 		$topics = $this->getOption( 'topic', $allTopics );
 		if ( array_diff( $topics, $allTopics ) ) {
 			$this->fatalError( 'Invalid topics: ' . implode( ', ', array_diff( $topics, $allTopics ) ) );
@@ -130,14 +135,14 @@ class ListTaskCounts extends Maintenance {
 	}
 
 	/**
-	 * @param string[] $taskTypes
-	 * @param string[] $topics
+	 * @param string[] $taskTypes List of task types to limit suggestions to
+	 * @param string[] $topics List of topic IDs to limit suggestions to
 	 * @return int
 	 */
 	private function getTaskCount( $taskTypes, $topics ): int {
 		if ( !$this->taskSuggester ) {
-			$services = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-			$this->taskSuggester = $services->getTaskSuggesterFactory()->create();
+			$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+			$this->taskSuggester = $growthServices->getTaskSuggesterFactory()->create( $this->configurationLoader );
 		}
 		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics );
 		$tasks = $this->taskSuggester->suggest( new User, $taskSetFilters, 0, null, [ 'useCache' => false ] );
