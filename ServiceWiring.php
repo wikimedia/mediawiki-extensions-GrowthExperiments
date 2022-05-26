@@ -509,7 +509,7 @@ return [
 	): IMentorWriter {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		return new StructuredMentorWriter(
+		$writer = new StructuredMentorWriter(
 			$geServices->getWikiPageConfigLoader(),
 			$geServices->getWikiPageConfigWriterFactory(),
 			new StructuredMentorListValidator(),
@@ -517,6 +517,8 @@ return [
 				$services->getMainConfig()->get( 'GEStructuredMentorList' )
 			)
 		);
+		$writer->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $writer;
 	},
 
 	'GrowthExperimentsNewcomerTasksConfigurationLoader' => static function (
