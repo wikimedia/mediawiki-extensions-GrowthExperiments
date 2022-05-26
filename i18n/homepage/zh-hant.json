@@ -177,7 +177,7 @@
 	"growthexperiments-homepage-suggestededits-footer": "其他使用者已註明這些條目需要動手改進。請協助讓每天有'''$1位讀者'''的'''{{SITENAME}}'''可以更好。",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "其他使用者已註明這些條目需要動手改進。請協助讓'''{{SITENAME}}'''可以更好。",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1百萬",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "編輯於前一天",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "前一天的{{PLURAL:$1|編輯}}",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "今天，像您這樣的志工為了改善{{SITENAME}}做出了貢獻。歡迎加入！",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "查看所有建議",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "修正拼寫、文法和語氣",

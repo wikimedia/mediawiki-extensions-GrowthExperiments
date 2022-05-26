@@ -19,7 +19,8 @@
 			"ToprakM",
 			"Vito Genovese",
 			"Cobija",
-			"Oyuncu"
+			"Oyuncu",
+			"LisafBia"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Merhaba}}, {{bidi:$1}}!",
@@ -292,7 +293,7 @@
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "İlgi {{GENDER:$1|alanlarınıza}} uygun maddeler önermeye çalışacağız.",
 	"growthexperiments-homepage-claimmentee-title": "Danışmanlık sahibi",
 	"growthexperiments-homepage-claimmentee-pretext": "Bu sayfa danışmanlık edinen kullanıcının danışmanını değiştirmesine olanak tanır. Bu özelliği tanıdığınız kullanıcılar veya bir kursa rehberlik ettiğiniz kullanıcılar için {{GENDER:$1|kullanmanız}} önerilir.",
-	"growthexperiments-homepage-claimmentee-mentee": "Danışmanlık edinen kullanıcının kullanıcısının adı",
+	"growthexperiments-homepage-claimmentee-mentee": "Danışanın adı",
 	"growthexperiments-homepage-claimmentee-reason": "Bu danışmanlık edinen kullanıcıyı talep etme nedeni",
 	"growthexperiments-homepage-claimmentee-success": "{{PLURAL:$2|Kullanıcıyı|Kullanıcıları}} $1 ile danışmanı {{GENDER:$4|$5}} olarak {{GENDER:$3|değiştirdiniz}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "$1 kullanıcısının danışmanı zaten değiştirildi. Tekrar değiştirmek istediğinizden emin {{GENDER:$2|misiniz}}?",

@@ -7,5 +7,6 @@
 	"apihelp-growthstarmentee-summary": "Markera eller avmarkera en nybörjare som stjärnmärkt av nuvarande användare (lagras privat och loggas inte)",
 	"apihelp-growthstarmentee-param-gesaction": "Åtgärd av vidta (<kbd>star</kbd> eller <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Nybörjare att (av)stjärnmarkera",
-	"apihelp-query+growthstarredmentees-summary": "Hämta lista över nybörjare som stjärnmarkerats av den nuvarande inloggade faddern"
+	"apihelp-query+growthstarredmentees-summary": "Hämta lista över nybörjare som stjärnmarkerats av den nuvarande inloggade faddern",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Ny status"
 }
