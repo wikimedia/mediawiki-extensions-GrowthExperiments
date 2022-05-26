@@ -66,7 +66,7 @@
 	}
 }
 
-// Desktop styles are nested for additional specificity to win over styles set via "figure[typeof~='mw:Image/Thumb'] >"
+// Desktop styles are nested for additional specificity to win over styles set via "figure[typeof~='mw:File/Thumb'] >"
 .mw-ge-structuredTaskDesktopArticleTarget {
 	.mw-ge-recommendedImage {
 		display: flex;
@@ -100,7 +100,7 @@
 			margin-bottom: 8px;
 			justify-content: space-between;
 
-			// Override width from figure[typeof~='mw:Image/Thumb'] > *:first-child > span:first-child
+			// Override width from figure[typeof~='mw:File/Thumb'] > *:first-child > span:first-child
 			.mw-ge-recommendedImage-deleteButton:first-child {
 				width: auto;
 			}
@@ -115,7 +115,7 @@
 		padding: 0;
 		border-radius: 2px;
 
-		// Same as mobile but needs to win over figure[typeof~='mw:Image/Thumb'] > figcaption
+		// Same as mobile but needs to win over figure[typeof~='mw:File/Thumb'] > figcaption
 		&--with-placeholder {
 			border-color: @wmui-color-accent50;
 			background-color: @wmui-color-accent90;
