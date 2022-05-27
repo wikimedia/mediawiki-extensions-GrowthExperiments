@@ -473,6 +473,17 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'section' => 'newcomertasks'
 				];
 
+				$descriptors['newcomertasks-link-recommendationMaxTasksPerDay'] = [
+					'type' => 'int',
+					'default' => LinkRecommendationTaskType::DEFAULT_SETTINGS[
+						LinkRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
+					],
+					'label-message' =>
+						'growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day',
+					'required' => false,
+					'section' => 'newcomertasks'
+				];
+
 				$descriptors["newcomertasks-link-recommendationExcludedSections"] = [
 					'type' => 'tagmultiselect',
 					'allowArbitrary' => true,
@@ -714,6 +725,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				$descriptors[$maxLinksDescriptorName]['default'] =
 					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MAX_LINKS_TO_SHOW_PER_TASK] ??
 					$descriptors[$maxLinksDescriptorName]['default'];
+				$maxTasksDescriptorName = "newcomertasks-${taskType}" .
+					ucfirst( LinkRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY );
+				$descriptors[$maxTasksDescriptorName]['default'] =
+					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY] ??
+					$descriptors[$maxTasksDescriptorName]['default'];
 				$descriptors[$maxLinksDescriptorName]['min'] =
 					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MIN_LINKS_PER_TASK] ??
 					$descriptors[$maxLinksDescriptorName]['min'];
@@ -924,6 +940,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			if ( isset( $data['link-recommendationMaximumLinksToShowPerTask'] ) ) {
 				$suggestedEditsConfig['link-recommendation']['maximumLinksToShowPerTask'] =
 					(int)$data['link-recommendationMaximumLinksToShowPerTask'];
+			}
+			if ( isset( $data['link-recommendationMaxTasksPerDay'] ) ) {
+				$suggestedEditsConfig['link-recommendation'][
+					LinkRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
+				] = (int)$data['link-recommendationMaxTasksPerDay'];
 			}
 			if ( isset( $data['link-recommendationExcludedSections'] ) ) {
 				$suggestedEditsConfig['link-recommendation']['excludedSections'] =

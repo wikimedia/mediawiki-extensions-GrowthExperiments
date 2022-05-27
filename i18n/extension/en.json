@@ -73,6 +73,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Destination page for learning more about updating articles.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Destination page for learning more about link recommendation task type.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "The maximum number of link suggestions to show on each suggested task.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "The maximum number of \"Add a link\" suggested tasks a newcomer can complete daily.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "The list of section names in which no links should be recommended.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Destination page for learning more about image recommendation task type.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "This task type is associated with machine suggestions, and does not use templates to generate a pool of tasks.",
