@@ -43,7 +43,8 @@ class GrowthExperimentsBench {
 		$linkRecommendationStore = $growthServices->getLinkRecommendationStore();
 		$user = User::newSystemUser( 'phpbench' );
 		for ( $i = 0; $i < SearchTaskSuggester::DEFAULT_LIMIT; $i++ ) {
-			$linkTarget = new TitleValue( NS_MAIN, "$i phpbench" );
+			$title = 'PHPBenchPage-' . rand( 0, 100000 );
+			$linkTarget = new TitleValue( NS_MAIN, $title );
 			$page = $wikiPageFactory->newFromLinkTarget( $linkTarget );
 			$pageUpdater = $page->newPageUpdater( $user );
 			$pageUpdater->setContent( SlotRecord::MAIN, new TextContent( 'phpbench' ) );
