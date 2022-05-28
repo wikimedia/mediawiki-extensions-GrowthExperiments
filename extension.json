@@ -2164,7 +2164,8 @@
 	},
 	"GrantPermissions": {
 		"managementorship": {
-			"setmentor": true
+			"setmentor": true,
+			"managementors": true
 		}
 	},
 	"GrantPermissionGroups": {
