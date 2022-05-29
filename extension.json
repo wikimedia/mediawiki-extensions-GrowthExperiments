@@ -1474,6 +1474,7 @@
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeSearchInputWidget.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/AwaySettingsDialog.js",
+				"ext.growthExperiments.MentorDashboard/MentorTools/MentorMessageChangeDialog.js",
 				{
 					"name": "ext.growthExperiments.MentorDashboard/MenteeOverview/Tags.json",
 					"callback": [ "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks", "getTagsToFilterBy" ]
@@ -1531,11 +1532,17 @@
 				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high",
 				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed",
 				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1",
-				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2"
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2",
+				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title",
+				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save",
+				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel",
+				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label",
+				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success"
 			],
 			"dependencies": [
 				"ext.growthExperiments.icons",
 				"mediawiki.language",
+				"mediawiki.api",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-movement",

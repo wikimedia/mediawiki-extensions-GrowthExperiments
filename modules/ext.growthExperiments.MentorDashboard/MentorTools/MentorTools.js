@@ -2,7 +2,8 @@
 ( function () {
 	'use strict';
 
-	var AwaySettingsDialog = require( './AwaySettingsDialog.js' );
+	var AwaySettingsDialog = require( './AwaySettingsDialog.js' ),
+		MentorMessageChangeDialog = require( './MentorMessageChangeDialog.js' );
 
 	/**
 	 * @class
@@ -117,6 +118,22 @@
 			cancel: [ 'onAwaySettingsDialogCancelled' ]
 		} );
 		this.windowManager.addWindows( [ this.awaySettingsDialog ] );
+
+		if ( mw.config.get( 'GEMentorProvider' ) === 'structured' ) {
+			// MentorMessageChangeDialog will call action=growthmanagementorlist, which only works
+			// when the structured provider is in use
+
+			this.mentorMessageChangeDialog = new MentorMessageChangeDialog();
+			this.mentorMessageChangeDialog.connect( this, {
+				messageset: [ 'onMentorMessageChanged' ]
+			} );
+
+			this.mentorMessageEditBtn = OO.ui.infuse( this.$body.find( '#growthexperiments-mentor-dashboard-mentor-tools-signup-button' ) );
+			this.mentorMessageEditBtn.connect( this, {
+				click: [ 'onMentorMessageEditButtonClicked' ]
+			} );
+			this.windowManager.addWindows( [ this.mentorMessageChangeDialog ] );
+		}
 	}
 
 	MentorTools.prototype.onMentorStatusDropdownChanged = function () {
@@ -184,6 +201,16 @@
 				backtimestamp.human
 			) );
 		}
+	};
+
+	MentorTools.prototype.onMentorMessageEditButtonClicked = function () {
+		this.windowManager.openWindow( this.mentorMessageChangeDialog );
+	};
+
+	MentorTools.prototype.onMentorMessageChanged = function ( message ) {
+		this.$body.find( '#growthexperiments-mentor-dashboard-module-mentor-tools-message-content' ).text(
+			message
+		);
 	};
 
 	function initMentorTools( $body ) {

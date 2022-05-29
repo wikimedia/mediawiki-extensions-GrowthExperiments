@@ -159,6 +159,8 @@ class MentorTools extends BaseModule {
 							new ButtonWidget( [
 								'icon' => 'edit',
 								'framed' => false,
+								'id' => 'growthexperiments-mentor-dashboard-mentor-tools-signup-button',
+								'infusable' => true,
 								'href' => $this->mentorProvider->getSignupTitle()->getLocalURL()
 							] ),
 						] )
@@ -244,5 +246,17 @@ class MentorTools extends BaseModule {
 	 */
 	protected function getMobileSummaryBody() {
 		return '';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getJsConfigVars() {
+		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->getUser() );
+
+		return [
+			'GEMentorDashboardMentorIntroMessage' => $mentor->getIntroText(),
+			'GEMentorDashboardMentorAutoAssigned' => $mentor->getAutoAssigned(),
+		];
 	}
 }

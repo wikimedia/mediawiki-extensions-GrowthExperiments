@@ -166,6 +166,10 @@ class SpecialMentorDashboard extends SpecialPage {
 		$out->addModules( $dashboardModules );
 		$out->addModuleStyles( 'ext.growthExperiments.MentorDashboard.styles' );
 
+		$out->addJsConfigVars( [
+			'GEMentorProvider' => $this->getConfig()->get( 'GEMentorProvider' ),
+		] );
+
 		$out->addHTML( Html::openElement( 'div', [
 			'class' => 'growthexperiments-mentor-dashboard-container'
 		] ) );
