@@ -9,6 +9,7 @@ use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\HomepageModules\Banner;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -496,6 +497,17 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'required' => false,
 					'section' => 'newcomertasks'
 				];
+			} elseif ( $taskType === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+				$descriptors['newcomertasks-image-recommendationMaxTasksPerDay'] = [
+					'type' => 'int',
+					'default' => ImageRecommendationTaskType::DEFAULT_SETTINGS[
+						ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
+					],
+					'label-message' =>
+						'growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day',
+					'required' => false,
+					'section' => 'newcomertasks'
+				];
 			}
 		}
 
@@ -756,6 +768,12 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 						'section' => 'newcomertasks',
 					];
 				}
+			} elseif ( $taskType === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+				$maxTasksDescriptorName = "newcomertasks-${taskType}" .
+					ucfirst( ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY );
+				$descriptors[$maxTasksDescriptorName]['default'] =
+					$newcomerTasksConfig[$taskType][ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY] ??
+					$descriptors[$maxTasksDescriptorName]['default'];
 			}
 		}
 
@@ -951,6 +969,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					( $data['link-recommendationExcludedSections'] === '' )
 						? []
 						: explode( "\n", $data['link-recommendationExcludedSections'] );
+			}
+
+			// image-recommendation specific
+			if ( isset( $data['image-recommendationMaxTasksPerDay'] ) ) {
+				$suggestedEditsConfig['image-recommendation'][
+					ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
+				] = (int)$data['image-recommendationMaxTasksPerDay'];
 			}
 		}
 
