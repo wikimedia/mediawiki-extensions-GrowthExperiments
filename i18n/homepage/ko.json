@@ -13,14 +13,15 @@
 			"Ellif",
 			"Gustmd7410",
 			"Underbaaar",
-			"밝은소년"
+			"밝은소년",
+			"Bluehill"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
 	"growthexperiments-homepage-tab": "홈페이지",
 	"tooltip-pt-homepage": "{{GENDER:|홈페이지}}",
 	"prefs-homepage": "새 사용자를 위한 홈페이지",
-	"growthexperiments-homepage-enable": "새 사용자를 위한 홈페이지 표시",
+	"growthexperiments-homepage-enable": "새 사용자 홈페이지 표시",
 	"growthexperiments-homepage-pt-link": "개인 도구의 사용자 이름 링크를 새 사용자를 위한 홈페이지로 고정",
 	"growthexperiments-homepage-start-header": "여기부터 {{GENDER:$1|시작하세요}}",
 	"growthexperiments-homepage-account-header": "계정이 만들어짐",
