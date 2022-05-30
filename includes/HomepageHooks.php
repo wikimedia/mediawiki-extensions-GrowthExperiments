@@ -447,7 +447,6 @@ class HomepageHooks implements
 				$this->maybeOverridePreferredEditorWithVE( $taskType, $skin->getUser() );
 			}
 		}
-		$this->maybeTrackSuggestedEditStartTime( $context, $out );
 
 		// Config vars used to modify the suggested edits topics based on campaign
 		// (see ext.growthExperiments.Homepage.SuggestedEdits/Topics.js)
@@ -1405,23 +1404,6 @@ class HomepageHooks implements
 					sprintf( 'GrowthExperiments.NewcomerTask.Reverted.%s', $taskType )
 				);
 			}
-		}
-	}
-
-	/**
-	 * Add the suggested edit session start time in milliseconds as a JS config variable to track
-	 * the load time from when the user clicks on the task (or reload the article) to when the
-	 * editing flow is ready. See trackEditorReady in ext.growthExperiments.SuggestedEditSession.
-	 *
-	 * @param IContextSource $context
-	 * @param OutputPage $out
-	 */
-	private function maybeTrackSuggestedEditStartTime(
-		IContextSource $context, OutputPage $out
-	): void {
-		if ( $context->getRequest()->getBool( 'gesuggestededit' ) ) {
-			$startTimeInMilliseconds = round( microtime( true ) * 1000 );
-			$out->addJsConfigVars( 'suggestedEditSessionStartTime', $startTimeInMilliseconds );
 		}
 	}
 
