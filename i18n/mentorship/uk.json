@@ -99,5 +99,17 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> має бути <code>$2</code>, а є <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Визначення наставника містить неочікуваний ключ <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Наставника $1 уже додано до списку наставників",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "Наставник $1 не в списку наставників"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "Наставник $1 не в списку наставників",
+	"growthexperiments-manage-mentors-title": "Керувати наставниками",
+	"growthexperiments-manage-mentors-error-no-such-user": "Помилка: Немає користувача з ID $1. Схоже, це внутрішня помилка.",
+	"growthexperiments-manage-mentors-auto-assigned": "Автоматично призначені наставники",
+	"growthexperiments-manage-mentors-manually-assigned": "Вручну призначені наставники",
+	"growthexperiments-manage-mentors-username": "Ім'я користувача",
+	"growthexperiments-manage-mentors-last-active": "Остання активність",
+	"growthexperiments-manage-mentors-intro-msg": "Повідомлення для новачків",
+	"growthexperiments-manage-mentors-remove-mentor": "Вилучити",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Ви}} збираєтесь вилучити [[User:$1|Користувач:$1]] з переліку {{GENDER:$1|наставників}}.",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "Причина вилучення наставника",
+	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Користувач|Користувачка}} [[User:$1|$1]] більше не {{GENDER:$1|наставник|наставниця}}.",
+	"growthexperiments-manage-mentors-return-back": "Ви можете [[Special:ManageMentors|повернутися назад]] до списку наставників."
 }

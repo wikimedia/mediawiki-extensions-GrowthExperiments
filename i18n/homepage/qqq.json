@@ -535,5 +535,5 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Text displayed in the \"About mentorship\" dialog\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Subheader of the \"About mentorship\" dialog\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Text displayed in the \"About mentorship\" dialog\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-homepage-mentorship-about-done": "Done button displayed in the \"About mentorship\" dialog\n\n{{doc-growthexperiments-homepage}}"
+	"growthexperiments-homepage-mentorship-about-done": "Done button displayed in the \"About mentorship\" dialog\n\n{{doc-growthexperiments-homepage}}\n\n{{identical|Done}}"
 }

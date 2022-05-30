@@ -10,6 +10,7 @@
 			"MemphisA5",
 			"Nuevo Paso",
 			"Revi",
+			"Theshinster123",
 			"Tkwiki",
 			"Underbaaar",
 			"Ykhwong",
@@ -461,5 +462,6 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "완료",
 	"growthexperiments-homepage-mentorship-about-header": "멘토 정보",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "누가 {{GENDER:|제}} 멘토입니까?",
+	"growthexperiments-homepage-mentorship-about-subheader-optout": "멘토링에 참여하지 않기",
 	"growthexperiments-homepage-mentorship-about-done": "완료"
 }

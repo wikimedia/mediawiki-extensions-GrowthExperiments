@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ailbeve",
-			"Alexander Yukal"
+			"Alexander Yukal",
+			"Jack Jackie Pomi"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Получить отформатированные вопросы, размещенные через модули домашней страницы.",
@@ -13,5 +14,6 @@
 	"apihelp-growthsetmentor-summary": "Установить наставника пользователя. Изменения будут зафиксированы публично.",
 	"apihelp-growthsetmentor-param-mentee": "Имя пользователя подопечного",
 	"apihelp-growthsetmentor-param-mentor": "Имя наставника",
-	"apihelp-growthsetmentor-param-reason": "Причина изменения"
+	"apihelp-growthsetmentor-param-reason": "Причина изменения",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Название статьи, для которой предлагается изображение"
 }

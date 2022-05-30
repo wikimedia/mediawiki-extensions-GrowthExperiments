@@ -76,6 +76,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "דף היעד שבו אפשר ללמוד עוד על עדכון ערכים.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "דף יעד למידע נוסף על סוג המשימה הצעת קישור.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "המספר המרבי של הצעות קישורים שיוצגו בכל משימה מוצעת.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "המספר המרבי של משימות \"הוספת קישור\" שמשתמש חדש יכול להשלים ביום.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "רשימת שמות פרקים שלא צריך להמליץ על קישורים בשבילם.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "דף יעד למידע נוסף על סוג המשימה הצעת תמונה.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "סוג המשימה הזה מזוהה עם הצעות ממכונה, ואינו משתמש בתבניות כדי לייצר מאגר של משימות.",

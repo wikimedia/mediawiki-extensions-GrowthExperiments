@@ -142,7 +142,7 @@
 	"growthexperiments-homepage-claimmentee-no-user": "Ucenicul nu există",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Sunteți}} deja mentorul lui {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-enable-preference": "Pentru a activa pagina acasă pentru nou-veniți, vizitați-vă setările pentru „Funcții pentru editori nou-veniți” în [[Special:Preferences#mw-prefsection-personal-homepage|Preferințe]].",
-	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Nu}} aveți încă vreo contribuție.",
+	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Nu}} ați efectuat încă nicio contribuție.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Vizitați-vă pagina acasă a {{GENDER:$1|dvs.}} pentru a începe să editați!",
 	"growthexperiments-homepage-contributions-zero-button": "Mergeți la pagina acasă a {{GENDER:$1|dvs.}}",
 	"growthexperiments-tour-welcome-title": "Bun venit la pagina acasă a {{GENDER:$1|dvs.}}!",

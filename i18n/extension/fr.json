@@ -84,6 +84,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Page de destination pour en apprendre davantage sur la mise à jour d’articles",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Page de destination pour en savoir plus sur le type de tâche de recommandation de liens.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Le nombre maximum de suggestions de liens à afficher sur chaque tâche suggérée.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "Le nombre maximum de tâche suggérées pour « Ajouter un lien » qu‘un novice peut compléter chaque jour.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "La liste des noms des sections dans lesquelles aucun lien ne devrait être recommandé.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Page de destination pour en savoir plus sur le type de tâche de recommandation d'image.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Ce type de tâche est associé à des suggestions de la machine et n’utilise aucun modèle pour générer une réserve de tâches.",

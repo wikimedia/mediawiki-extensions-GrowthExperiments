@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dr Lotus Black",
+			"Ninjastrikers",
 			"Phosai",
 			"Teitei Para"
 		]
@@ -9,7 +10,7 @@
 	"growthexperiments-help-panel-tog-help-panel": "တည်းဖြတ်သူအကူအညီစားပွဲခုံအား အသုံးပြုခွင့်ပေးမည်",
 	"growthexperiments-help-panel-cta-button-text": "တည်းဖြတ်ခြင်းနှင့်ပတ်သက်၍ အကူညီရယူမည်",
 	"growthexperiments-help-panel-question-button-text": "ဆက်လက်",
-	"growthexperiments-help-panel-submit-question-button-text": "တင်ရန်",
+	"growthexperiments-help-panel-submit-question-button-text": "လွှင့်တင်ရန်",
 	"growthexperiments-help-panel-return-home-button-text": "ပြီးပါပြီ",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "တည်းဖြတ်ခြင်းအကြောင်း ထိပ်ဆုံးအကူညီစာမျက်နှာများ",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "အကူညီဆောင်းပါးများ ပိုမိုကြည့်ရှုရန်",
@@ -82,7 +83,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "ရုပ်ပုံများသည် လေ့လာရန်အတွက် အထောက်အကူပြုသည်၊ သို့သော် ဆောင်းပါးများစွာတွင် ရုပ်ပုံတခု မရှိကြပါ။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "ဆောင်းပါးကို ကြည့်ရှုရန်။",
 	"growthexperiments-help-panel-questioncomplete-title": "မေးခွန်းတစ်ခု မေးရန်",
-	"growthexperiments-help-panel-questioncomplete-header": "သင်၏မေးခွန်းကို တင်လိုက်ပါပြီ",
+	"growthexperiments-help-panel-questioncomplete-header": "သင်၏မေးခွန်းကို လွှင့်တင်လိုက်ပါပြီ။",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "အကူညီစားပွဲတွင် သင်၏မေးခွန်းကိုကြည့်ရန်",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "သင်၏မေးခွန်းအတွက် အသိပေးချက်များ-",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "သင်၏အီးမေးလ်ကို အတည်ပြုပါ",

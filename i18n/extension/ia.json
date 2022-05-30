@@ -75,6 +75,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Pagina de destination pro apprender plus sur como actualisar articulos.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Pagina de destination pro apprender plus sur typo de processo de recommendation de ligamine.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Le numero maxime de suggestiones de ligamine a monstrar sur cata carga suggerite.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "Le numero maxime de cargas \"Adder un ligamine\" que un novicio pote facer cata die.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Le lista de nomines del sectiones in le quales nulle ligamine debe esser recommendate.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Pagina de destination pro apprender plus sur typo de processo de recommendation de imagine.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Iste typo de processo es associate a suggestiones de machina e non usa patronos pro generar un reserva de processos.",
