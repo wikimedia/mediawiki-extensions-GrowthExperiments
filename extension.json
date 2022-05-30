@@ -480,7 +480,8 @@
 		"VisualEditorApiVisualEditorEditPostSave": "visualeditor",
 		"ChangesListSpecialPageStructuredFilters": "mentorfilters",
 		"CirrusSearchAddQueryFeatures": "GrowthExperiments\\HomepageHooks::onCirrusSearchAddQueryFeatures",
-		"UserGetRights": "mentor"
+		"UserGetRights": "mentor",
+		"CirrusSearchScoreBuilder": "homepage"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
@@ -493,6 +494,35 @@
 				"HomepageModule": "/analytics/legacy/homepagemodule/1.6.0",
 				"NewcomerTask": "/analytics/legacy/newcomertask/1.0.0",
 				"HomepageVisit": "/analytics/legacy/homepagevisit/1.4.0"
+			}
+		},
+		"CirrusSearch": {
+			"RescoreProfiles": {
+				"growth_underlinked": {
+					"i18n_msg": "growthexperiments-underlinked-rescore-profile",
+					"supported_namespaces": "content",
+					"fallback_profile": "classic_noboostlinks",
+					"rescore": [
+						{
+							"window": 8192,
+							"window_size_override": "CirrusSearchFunctionRescoreWindowSize",
+							"query_weight": "1.0",
+							"rescore_query_weight": "1.0",
+							"score_mode": "multiply",
+							"type": "function_score",
+							"function_chain": "growth_underlinked_chain"
+						}
+					]
+				}
+			},
+			"RescoreFunctionScoreChains": {
+				"growth_underlinked_chain": {
+					"functions": [
+						{
+							"type": "growth_underlinked"
+						}
+					]
+				}
 			}
 		}
 	},

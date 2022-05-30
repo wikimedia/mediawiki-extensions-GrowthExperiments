@@ -28,6 +28,10 @@ class LinkRecommendationTaskType extends TaskType {
 	public const FIELD_MAX_TASKS_PER_DAY = 'maxTasksPerDay';
 	/** @see :getExcludedSections */
 	public const FIELD_EXCLUDED_SECTIONS = 'excludedSections';
+	/** @see :getUnderlinkedWeight */
+	public const FIELD_UNDERLINKED_WEIGHT = 'underlinkedWeight';
+	/** @see :getUnderlinkedMinLength */
+	public const FIELD_UNDERLINKED_MIN_LENGTH = 'underlinkedMinLength';
 
 	/** Exclude a (task page, target page) pair from future tasks after this many rejections. */
 	public const REJECTION_EXCLUSION_LIMIT = 2;
@@ -43,6 +47,8 @@ class LinkRecommendationTaskType extends TaskType {
 		self::FIELD_MAX_WORD_COUNT => PHP_INT_MAX,
 		self::FIELD_MAX_TASKS_PER_DAY => 25,
 		self::FIELD_EXCLUDED_SECTIONS => [],
+		self::FIELD_UNDERLINKED_WEIGHT => 0,
+		self::FIELD_UNDERLINKED_MIN_LENGTH => 300,
 	];
 
 	/** @inheritDoc */
@@ -68,6 +74,10 @@ class LinkRecommendationTaskType extends TaskType {
 	protected $maxTasksPerDay;
 	/** @var string[] */
 	protected $excludedSections;
+	/** @var float */
+	protected $underlinkedWeight;
+	/** @var int */
+	protected $underlinkedMinLength;
 
 	/**
 	 * @inheritDoc
@@ -93,6 +103,8 @@ class LinkRecommendationTaskType extends TaskType {
 		$this->maximumWordCount = $settings[self::FIELD_MAX_WORD_COUNT];
 		$this->maxTasksPerDay = $settings[self::FIELD_MAX_TASKS_PER_DAY];
 		$this->excludedSections = $settings[self::FIELD_EXCLUDED_SECTIONS];
+		$this->underlinkedWeight = $settings[self::FIELD_UNDERLINKED_WEIGHT];
+		$this->underlinkedMinLength = $settings[self::FIELD_UNDERLINKED_MIN_LENGTH];
 	}
 
 	/**
@@ -186,6 +198,26 @@ class LinkRecommendationTaskType extends TaskType {
 		return $this->excludedSections;
 	}
 
+	/**
+	 * Weight of the underlinkedness metric (vs. a random factor) in sorting.
+	 * Higher is less random. E.g. a weight of 0.25 means the scoring function will be
+	 * 0.25 * <underlinkedness> + 0.75 * random(0,1).
+	 * @return float
+	 */
+	public function getUnderlinkedWeight(): float {
+		return $this->underlinkedWeight;
+	}
+
+	/**
+	 * Minimum length above which an article can be considered underlinked.
+	 * If the article size is smaller than this, its underlinkedness score will be 0.
+	 * FIXME is this useful given that we already have a min words limit?
+	 * @return int
+	 */
+	public function getUnderlinkedMinLength(): int {
+		return $this->underlinkedMinLength;
+	}
+
 	/** @inheritDoc */
 	public function shouldOpenInEditMode(): bool {
 		return true;
@@ -221,6 +253,8 @@ class LinkRecommendationTaskType extends TaskType {
 					'minimumWordCount' => $this->minimumWordCount,
 					'maximumWordCount' => $this->maximumWordCount,
 					'maxTasksPerDay' => $this->maxTasksPerDay,
+					'underlinkedWeight' => $this->underlinkedWeight,
+					'underlinkedMinLength' => $this->underlinkedMinLength,
 				],
 			];
 	}

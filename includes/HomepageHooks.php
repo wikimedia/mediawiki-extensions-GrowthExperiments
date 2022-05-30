@@ -5,6 +5,8 @@ namespace GrowthExperiments;
 
 use ChangeTags;
 use CirrusSearch\Search\CirrusIndexField;
+use CirrusSearch\Search\Rescore\BoostFunctionBuilder;
+use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\Wikimedia\WeightedTagsHooks;
 use Config;
@@ -32,7 +34,9 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilder;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -1471,6 +1475,34 @@ class HomepageHooks implements
 			if ( $tags->isGood() ) {
 				$recentChange->addTags( $tags->getValue() );
 			}
+		}
+	}
+
+	/**
+	 * @param array $function Function definition. The 'type' field holds the function name.
+	 * @param SearchContext $context
+	 * @param BoostFunctionBuilder|null &$builder Score builder output variable.
+	 * @return bool|void
+	 * @see https://www.mediawiki.org/wiki/Extension:CirrusSearch/Hooks/CirrusSearchScoreBuilder
+	 */
+	public function onCirrusSearchScoreBuilder(
+		array $function,
+		SearchContext $context,
+		?BoostFunctionBuilder &$builder
+	) {
+		if ( $function['type'] === UnderlinkedFunctionScoreBuilder::TYPE ) {
+			$taskTypes = $this->configurationLoader->getTaskTypes();
+			$linkRecommendationTaskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
+			if ( $linkRecommendationTaskType instanceof LinkRecommendationTaskType ) {
+				$builder = new UnderlinkedFunctionScoreBuilder(
+					$linkRecommendationTaskType->getUnderlinkedWeight(),
+					$linkRecommendationTaskType->getUnderlinkedMinLength()
+				);
+				return false;
+			}
+			// Not doing anything will result in a Cirrus error about a non-existent function type,
+			// which seems like a reasonable way to handle the case of using underlinked weighting
+			// on a wiki with no link recommendation task type.
 		}
 	}
 }

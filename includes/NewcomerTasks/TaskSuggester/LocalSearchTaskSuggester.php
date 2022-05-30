@@ -99,7 +99,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		$searchEngine->setShowSuggestion( false );
 		$searchEngine->setFeatureData(
 			SearchEngine::FT_QUERY_INDEP_PROFILE_TYPE,
-			'classic_noboostlinks'
+			$query->getRescoreProfile() ?? 'classic_noboostlinks'
 		);
 		$sort = $query->getSort();
 		if ( $sort ) {
@@ -128,7 +128,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 				'ns0' => 1,
 				'limit' => $limit,
 				'offset' => $offset,
-				'cirrusRescoreProfile' => 'classic_noboostlinks',
+				'cirrusRescoreProfile' => $query->getRescoreProfile() ?? 'classic_noboostlinks',
 				'cirrusDumpResult' => 1,
 				'cirrusExplain' => 'pretty',
 			];

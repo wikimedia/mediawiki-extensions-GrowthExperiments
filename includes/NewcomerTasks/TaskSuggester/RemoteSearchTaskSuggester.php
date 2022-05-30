@@ -77,7 +77,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 			'srlimit' => $limit,
 			'srinfo' => 'totalhits',
 			'srprop' => '',
-			'srqiprofile' => 'classic_noboostlinks',
+			'srqiprofile' => $query->getRescoreProfile() ?? 'classic_noboostlinks',
 			// Convenient for debugging. Production setups should use LocalSearchTaskSuggester anyway.
 			'errorlang' => 'en',
 		];
