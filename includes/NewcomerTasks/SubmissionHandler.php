@@ -22,14 +22,15 @@ interface SubmissionHandler {
 	 *
 	 * @param ProperPageIdentity $page The article the recommendation was about.
 	 * @param UserIdentity $user The user who acted on the recommendation.
-	 * @param int $baseRevId Revision that the recommendation was for.
+	 * @param int|null $baseRevId Revision that the recommendation was for, or null if no
+	 *   revision ID is set in the 'oldid' parameter from VisualEditor.
 	 * @param array $data Tasktype-specific data. Typically, this is the data returned via
 	 *   the visualeditoredit API's plugin mechanism.
 	 * @return StatusValue Success status. A good status is required to pass. When there are
 	 *   errors, the OK flag determines whether those should be logged as production errors.
 	 *   The StatusValue should always contain a single error.
 	 */
-	public function validate( ProperPageIdentity $page, UserIdentity $user, int $baseRevId,
+	public function validate( ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId,
 		array $data ): StatusValue;
 
 	/**
@@ -39,7 +40,8 @@ interface SubmissionHandler {
 	 *
 	 * @param ProperPageIdentity $page The article the recommendation was about.
 	 * @param UserIdentity $user The user who acted on the recommendation.
-	 * @param int $baseRevId Revision that the recommendation was for.
+	 * @param int|null $baseRevId Revision that the recommendation was for, or null if no
+	 *   revision ID is set in the 'oldid' parameter from VisualEditor.
 	 * @param int|null $editRevId New revision created (when the recommendation was accepted
 	 *   or partially accepted).
 	 * @param array $data Tasktype-specific data. Typically, this is the data returned via
@@ -50,7 +52,7 @@ interface SubmissionHandler {
 	 *   - logId (int, optional): ID of the log entry that was created.
 	 */
 	public function handle(
-		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, ?int $editRevId, array $data
+		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
 	): StatusValue;
 
 }

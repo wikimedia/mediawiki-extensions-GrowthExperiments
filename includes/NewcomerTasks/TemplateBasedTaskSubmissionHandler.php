@@ -10,14 +10,14 @@ class TemplateBasedTaskSubmissionHandler extends AbstractSubmissionHandler imple
 
 	/** @inheritDoc */
 	public function handle(
-		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, ?int $editRevId, array $data
+		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
 	): StatusValue {
 		return StatusValue::newGood();
 	}
 
 	/** @inheritDoc */
 	public function validate(
-		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, array $data
+		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
 	): StatusValue {
 		return StatusValue::newGood();
 	}

@@ -84,7 +84,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 
 	/** @inheritDoc */
 	public function validate(
-		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, array $data
+		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
 	): StatusValue {
 		$title = $this->titleFactory->castFromPageIdentity( $page );
 		if ( !$title ) {
@@ -111,14 +111,14 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 	 * @throws MalformedTitleException
 	 */
 	public function handle(
-		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, ?int $editRevId, array $data
+		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
 	): StatusValue {
 		// The latest revision is the saved edit, so we need to find the link recommendation based on the base
 		// revision ID.
-		$linkRecommendation = $this->linkRecommendationStore->getByRevId(
+		$linkRecommendation = $baseRevId ? $this->linkRecommendationStore->getByRevId(
 			$baseRevId,
 			RevisionLookup::READ_LATEST
-		);
+		) : null;
 		/* @var Title $title */
 		$title = $this->titleFactory->castFromPageIdentity( $page );
 		if ( !$title ) {
