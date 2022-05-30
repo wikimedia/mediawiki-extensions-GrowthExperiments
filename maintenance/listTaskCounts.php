@@ -23,7 +23,6 @@ if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 }
 
 require_once $path . '/maintenance/Maintenance.php';
-require_once dirname( __DIR__ ) . '/includes/NewcomerTasks/OresTopicTrait.php';
 
 /**
  * List the number of tasks available for each topic
@@ -115,8 +114,7 @@ class ListTaskCounts extends Maintenance {
 	 *   might not even have topics.
 	 */
 	private function getStats( $taskTypes, $topics ): array {
-		// FIXME: Integrate with GrowthExperimentsSuggestionsInfo service, need a more robust
-		//   implementation of OresTopicTrait functionality first.
+		// FIXME: Integrate with GrowthExperimentsSuggestionsInfo service (T286183)
 		$taskCounts = $taskTypeCounts = $topicCounts = [];
 		foreach ( $taskTypes as $taskType ) {
 			if ( $taskType === '_null' ) {
