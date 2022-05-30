@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use StatusValue;
 use TitleFactory;
 
@@ -43,7 +44,7 @@ class StaticTaskSuggesterFactory extends TaskSuggesterFactory {
 	}
 
 	/** @inheritDoc */
-	public function create() {
+	public function create( ConfigurationLoader $customConfigurationLoader = null ) {
 		return $this->taskSuggester;
 	}
 

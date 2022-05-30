@@ -52,14 +52,16 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	}
 
 	/**
+	 * @param ConfigurationLoader|null $customConfigurationLoader
 	 * @return LocalSearchTaskSuggester|ErrorForwardingTaskSuggester
 	 */
-	public function create() {
-		$taskTypes = $this->configurationLoader->loadTaskTypes();
+	public function create( ConfigurationLoader $customConfigurationLoader = null ) {
+		$configurationLoader = $customConfigurationLoader ?? $this->configurationLoader;
+		$taskTypes = $configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}
-		$topics = $this->configurationLoader->loadTopics();
+		$topics = $configurationLoader->loadTopics();
 		if ( $topics instanceof StatusValue ) {
 			return $this->createError( $topics );
 		}
