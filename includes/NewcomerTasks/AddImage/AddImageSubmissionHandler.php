@@ -78,7 +78,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 
 	/** @inheritDoc */
 	public function validate(
-		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, array $data
+		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
 	): StatusValue {
 		$userErrorMessage = $this->getUserErrorMessage( $user );
 		if ( $userErrorMessage ) {
@@ -90,7 +90,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 
 	/** @inheritDoc */
 	public function handle(
-		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, ?int $editRevId, array $data
+		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
 	): StatusValue {
 		$status = $this->parseData( $data );
 		if ( !$status->isGood() ) {
