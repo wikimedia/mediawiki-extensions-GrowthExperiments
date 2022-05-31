@@ -7,7 +7,8 @@
 			"Sabelöga",
 			"Technic2",
 			"WikiPhoenix",
-			"JRyan"
+			"JRyan",
+			"Draftmission"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
@@ -228,7 +229,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Uppdatera artiklar",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Utöka korta artiklar",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Lägg till länkar mellan artiklar",
-	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Lägg till länkar mallen artiklar",
+	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Lägg till länkar mellan artiklar",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografi (alla)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografi (kvinnor)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Mat och dryck",

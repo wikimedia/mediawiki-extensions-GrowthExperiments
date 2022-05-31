@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lancine.kounfantoh.fofana"
+		]
+	},
+	"growthexperiments-help-panel-tog-help-panel": "ߛߓߍߦߟߊ ߘߍ߬ߡߍ߲߬ ߝߟߊ ߟߊߞߎߣߎ߲߫",
+	"growthexperiments-help-panel-cta-button-text": "ߘߍ߬ߡߍ߲߬ߠߌ߲ ߞߍ߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߠߊ߫",
+	"growthexperiments-help-panel-question-button-text": "ߊ߬ ߘߊߓߊ߲߫",
+	"growthexperiments-help-panel-return-home-button-text": "ߊ߬ ߓߘߊ߫ ߓߊ߲߫",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߍ߬ߡߍ߲߬ߠߌ߲ ߞߐߜߍ ߢߣߊ",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "ߘߍ߬ߡߍ߲߬ߠߌ߲ ߞߎߡߘߊ߫ ߜߘߍ߫ ߟߎ߫ ߦߋ߫",
+	"growthexperiments-help-panel-question-widget-header": "ߌ ߟߊ߫ ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߗߋ߫ ߘߍ߬ߘߊ ߘߍ߬ߡߍ߲߬ߠߌ߲߫ ߢߊߓߐ߫ ߞߣߍ ߞߊ߲߬",
+	"growthexperiments-help-panel-question-placeholder": "ߊ߬ ߝߐ߫ ߞߏ߫ ߌ ߣߌ߫ ߕߎ߬ߡߊ߫߸ ߞߊ߬ $1 ߡߊߢߌ߬ߣߌ߲߬ߞߊ߫ {{GENDER:|ߌ ߟߊ߫}} ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߡߊ߬",
+	"growthexperiments-help-panel-back-home": "ߌ ߞߐߛߊ߬ߦߌ߬",
+	"growthexperiments-help-panel-close": "ߊ߬ ߓߘߊ߫ ߞߍ߫",
+	"growthexperiments-help-panel-home-title": "ߘߍ߬ߡߍ߲߬ߠߌ߲ ߞߍ߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߠߊ߫",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|ߌ ߓߘߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߏ߫ ߟߊߥߊ߲߬ߞߊ߫. ߌ ߣߌ߫ ߗߋ߫߸ ߌ ߘߐߖߊ߬ ߏ߬ ߞߊ߲߬߹",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|ߌ ߓߘߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߏ߫ ߟߊߞߎ߲߬ߘߎ߬. ߌ ߣߌ߫ ߗߋ߫߸ ߌ ߘߐߖߊ߬ ߏ߬ ߞߊ߲߬߹",
+	"growthexperiments-help-panel-postedit-header": "ߘߊߞߎ߲ ߟߊ߬ߕߎ߲߰ߠߊ",
+	"growthexperiments-help-panel-postedit-subheader": "ߞߎ߲߬ߦߌ߬ߘߊ߬ߟߌ߫ ߜߘߍ߫ ߡߊߦߟߍ߬ߡߊ߲߫:",
+	"growthexperiments-help-panel-questionreview-title": "ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߞߍ߫ ߘߍ߬ߡߍ߲߬ߠߌ߲߫ ߢߊߓߐ߫ ߞߣߍ ߞߊ߲߬",
+	"growthexperiments-help-panel-questionreview-title-mentor": "ߌ ߟߊߟߌ߯ߓߊ߮ ߡߊߦߟߍ߬ߡߊ߲߫",
+	"growthexperiments-help-panel-questioncomplete-title": "ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߘߏ߫ ߞߍ߫",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "ߌ ߟߊ߫ ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߦߋ߫ ߘߍ߬ߘߊ ߘߍ߬ߡߍ߲߬ߠߌ߲߫ ߢߊߓߐ߫ ߞߣߍ ߞߊ߲߬ ߛߌߣߍ߲߬߸ ߊ߬ ߖߋ߬ߓߌ߬ ߞߊ߲ ߡߊ߬ ߓߐߒߖߘߍߘߐ߫ ߛߓߍߦߟߊ ߘߏ߫ ߓߟߏ߫.",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "ߌ ߟߊ߫ ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߦߋ߫ ߘߍ߬ߘߊ ߘߍ߬ߡߍ߲߬ߠߌ߲߫ ߢߊߓߐ߫ ߞߣߍ ߞߊ߲߬",
+	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "ߌ ߟߊ߫ ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߖߊ߲߬ߓߌ߬ߟߊ߬ߟߌ:"
+}

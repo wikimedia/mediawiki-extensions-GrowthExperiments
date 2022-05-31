@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"TayfunEt."
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Hoş keldiñiz}}, $1!"
+}
