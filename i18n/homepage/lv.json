@@ -304,6 +304,8 @@
 	"growthexperiments-notification-learn-more": "Uzzini vairāk par {{GENDER:$1|savu}} jauno {{GENDER:$2|mentoru|mentori}}",
 	"right-setmentor": "Iestatīt dalībnieka mentoru",
 	"action-setmentor": "iestatīt dalībnieka mentoru",
+	"right-managementors": "Pārvaldīt mentoru sarakstu",
+	"action-managementors": "pārvaldīt mentoru sarakstu",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Plašāk par šo ieteikto labojumu",
 	"growthexperiments-homepage-suggestededits-more-info": "Vairāk informācijas par ieteiktajiem labojumiem",
 	"growthexperiments-homepage-welcome-notice-header": "Laipni {{GENDER:$1|lūgts|lūgta}} savā sākumlapā!",
@@ -447,9 +449,17 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Turpini, lai iegūtu pieredzējušu dalībnieku kā {{GENDER:|savu}} mentoru.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Atcelt",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Turpināt",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "Par mentoriem",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Atteikties no mentoriem",
+	"growthexperiments-homepage-mentorship-optout-header": "Atteikties no mentoriem?",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Atcelt",
+	"growthexperiments-homepage-mentorship-optout-optout": "Atteikties",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Es vēlos citu mentoru",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Es nevēlos mentoru",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Cits / Es nevēlos teikt",
-	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Gatavs"
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Gatavs",
+	"growthexperiments-homepage-mentorship-about-header": "Par mentoriem",
+	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Kas ir {{GENDER:|tavs}} mentors?",
+	"growthexperiments-homepage-mentorship-about-subheader-optout": "Atteikties no mentoriem",
+	"growthexperiments-homepage-mentorship-about-done": "Gatavs"
 }

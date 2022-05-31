@@ -3,6 +3,7 @@
 		"authors": [
 			"Ailbeve",
 			"Alexander Yukal",
+			"Iniquity",
 			"Jack Jackie Pomi"
 		]
 	},
@@ -11,9 +12,10 @@
 	"apihelp-homepagequestionstore-param-storage": "Хранилище вопросов.",
 	"apihelp-homepagequestionstore-param-userid": "Идентификатор пользователя для получения вопросов.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Вопросы не найдены.",
-	"apihelp-growthsetmentor-summary": "Установить наставника пользователя. Изменения будут зафиксированы публично.",
+	"apihelp-growthsetmentor-summary": "Установить наставника участнику. Изменения будут зафиксированы публично.",
 	"apihelp-growthsetmentor-param-mentee": "Имя пользователя подопечного",
 	"apihelp-growthsetmentor-param-mentor": "Имя наставника",
 	"apihelp-growthsetmentor-param-reason": "Причина изменения",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Недействительная задача рекомендации изображения",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Название статьи, для которой предлагается изображение"
 }

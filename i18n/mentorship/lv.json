@@ -65,5 +65,15 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Vidējais (pēc noklusējuma)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Aptuveni divreiz vairāk par vidējo",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Tava}} noslodze tika nomainīta uz \"$1\".",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Audzēkņu skaita palielināšana vai samazināšana palīdzēs {{GENDER:|tev}} ietekmēt atbildamo jautājumu skaitu. Tomēr atbildamo jautājumu skaits ir atkarīgs tikai no tev piešķirto audzēkņu motivācijas."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Audzēkņu skaita palielināšana vai samazināšana palīdzēs {{GENDER:|tev}} ietekmēt atbildamo jautājumu skaitu. Tomēr atbildamo jautājumu skaits ir atkarīgs tikai no tev piešķirto audzēkņu motivācijas.",
+	"growthexperiments-manage-mentors-title": "Pārvaldīt mentorus",
+	"growthexperiments-manage-mentors-auto-assigned": "Automātiski piešķirtie mentori",
+	"growthexperiments-manage-mentors-manually-assigned": "Manuāli piešķirtie mentori",
+	"growthexperiments-manage-mentors-username": "Lietotājvārds",
+	"growthexperiments-manage-mentors-last-active": "Pēdējā darbība",
+	"growthexperiments-manage-mentors-intro-msg": "Ziņojums jaunpienācējiem",
+	"growthexperiments-manage-mentors-remove-mentor": "Noņemt",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "Mentora noņemšanas iemesls",
+	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Dalībnieks|Dalībniece}} [[User:$1|$1]] vairs nav {{GENDER:$1|mentors|mentore}}.",
+	"growthexperiments-manage-mentors-return-back": "Tu vari [[Special:ManageMentors|atgriezties atpakaļ]] uz mentoru sarakstu."
 }

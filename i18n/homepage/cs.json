@@ -522,7 +522,7 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Hotovo",
 	"growthexperiments-homepage-mentorship-about-header": "O mentorství",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Kdo je {{GENDER:|váš}} mentor?",
-	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Vaším}} mentorem je člověk, který má zkušenosti s editováním {{GRAMMAR:4sig|{{SITENAME}}}}. Váš mentor vám bude pomáhat s editováním, a zodpoví vám otázky, které by vás při editování {{GRAMMAR:4sig|{{SITENAME}}}} mohly napadnout.",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Vaším}} mentorem je člověk, který má zkušenosti s editováním {{GRAMMAR:2sg|{{SITENAME}}}}. Váš mentor vám bude pomáhat s editováním a zodpoví vám otázky, které by vás při editování {{GRAMMAR:2sg|{{SITENAME}}}} mohly napadnout.",
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Když {{GENDER:|pošlete}} zprávu svému mentorovi, uvidí ji na své diskusní stránce. Jakmile vám odpoví, měla by vám přijít notifikace.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Deaktivovat mentorský modul",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Jestliže již nechcete mít přiřazeného žádného mentora, klikněte na tlačítko níže. Pokud si to kdykoli v budoucnu rozmyslíte, rádi vám mentora přiřadíme znovu.",
