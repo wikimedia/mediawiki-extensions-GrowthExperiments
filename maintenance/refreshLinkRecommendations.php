@@ -9,7 +9,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\OresTopicTrait;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -35,15 +35,12 @@ if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 }
 
 require_once $path . '/maintenance/Maintenance.php';
-require_once dirname( __DIR__ ) . '/includes/NewcomerTasks/OresTopicTrait.php';
 
 /**
  * Update the growthexperiments_link_recommendations table to ensure there are enough
  * recommendations for all topics
  */
 class RefreshLinkRecommendations extends Maintenance {
-
-	use OresTopicTrait;
 
 	/** @var Config */
 	private $growthConfig;
@@ -198,14 +195,18 @@ class RefreshLinkRecommendations extends Maintenance {
 		// finds articles which do not have link recommendations.
 		$linkRecommendationCandidateTaskType = NullTaskTypeHandler::getNullTaskType(
 			'_nolinkrecommendations', '-hasrecommendation:link' );
-		$this->replaceConfigurationLoader( true, [ $linkRecommendationCandidateTaskType ] );
 
 		$services = MediaWikiServices::getInstance();
-		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+		$this->configurationLoader = new TopicDecorator(
+			$newcomerTaskConfigurationLoader,
+			true,
+			[ $linkRecommendationCandidateTaskType ]
+		);
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
-		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
-		$this->taskSuggester = $growthServices->getTaskSuggesterFactory()->create();
+		$this->taskSuggester = $growthServices->getTaskSuggesterFactory()->create( $this->configurationLoader );
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
 		$this->linkRecommendationUpdater = $growthServices->getLinkRecommendationUpdater();
 	}
