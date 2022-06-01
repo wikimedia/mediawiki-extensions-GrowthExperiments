@@ -14,14 +14,15 @@
 			"렌즈",
 			"밝은소년",
 			"Underbaaar",
-			"Bluehill"
+			"Bluehill",
+			"Theshinster123"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
 	"growthexperiments-homepage-tab": "홈페이지",
 	"tooltip-pt-homepage": "{{GENDER:|홈페이지}}",
 	"prefs-homepage": "새 사용자를 위한 홈페이지",
-	"growthexperiments-homepage-enable": "새 사용자를 위한 홈페이지 표시",
+	"growthexperiments-homepage-enable": "새 사용자 홈페이지 표시",
 	"growthexperiments-homepage-pt-link": "개인 도구의 사용자 이름 링크를 새 사용자를 위한 홈페이지로 고정",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|내}} 이메일 추가",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|내}} 이메일 확인",
@@ -349,6 +350,7 @@
 	"growthexperiments-addlink-summary-title": "요약",
 	"growthexperiments-addlink-summary-column-header-suggestion": "제안",
 	"growthexperiments-addlink-summary-submit": "제출",
+	"growthexperiments-addlink-summary-summary": "링크 제안 기능: $1개 {{PLURAL:$1|링크}}가 추가됨.",
 	"growthexperiments-addlink-skip-body": "제안을 받아들이거나 거절하는 것을 중단하시겠습니까?",
 	"growthexperiments-addlink-skip-accept": "모두 건너뛰기",
 	"growthexperiments-addlink-skip-reject": "재검토",

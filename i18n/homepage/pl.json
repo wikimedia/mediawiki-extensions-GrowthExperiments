@@ -330,6 +330,7 @@
 	"growthexperiments-addlink-serviceerror": "Usługa rekomendowania linków zwróćiła błąd dla strony „$1”: $2",
 	"growthexperiments-addlink-notinstore": "Nie odnaleziono sugerowanych linków dla \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Próbowano zapisać wyniki oceny propozycji linków dla wersji „$1”, które zostały już ocenione.",
+	"growthexperiments-addlink-context-title": "$1 / $2",
 	"growthexperiments-addlink-context-text-label": "Tekst",
 	"growthexperiments-addlink-context-intro": "Czy ten tekst powinien być linkiem do poniższej strony?",
 	"growthexperiments-addlink-context-button-accept": "Tak",

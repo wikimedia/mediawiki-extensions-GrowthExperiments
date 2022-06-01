@@ -19,7 +19,9 @@
 			"Urfiner",
 			"Vlad5250",
 			"NBS",
-			"Tanzun"
+			"Tanzun",
+			"Jack Jackie Pomi",
+			"NR Deblocked"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Включить панель помощи редактору",
@@ -144,7 +146,7 @@
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Кстати, разместив этот вопрос, вы только что сделали вашу первую правку на странице. Поздравляем!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Отключить панель помощи",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ошибочное название.",
-	"growthexperiments-help-panel-community-help-desk-text": "Форум помощи сообщества",
+	"growthexperiments-help-panel-community-help-desk-text": "Форум помощи начинающим",
 	"growthexperiments-help-panel-search-label": "Поиск помощи",
 	"growthexperiments-help-panel-search-no-results": "Результатов не найдено.",
 	"tag-help_panel_question": "Вопрос из панели помощи",
