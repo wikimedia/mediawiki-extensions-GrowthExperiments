@@ -81,5 +81,4 @@
 		updateRecentQuestions();
 	} );
 
-	updateRecentQuestions();
 }() );
