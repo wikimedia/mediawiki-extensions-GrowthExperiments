@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Gwendal",
+			"Huñvreüs",
 			"Y-M D"
 		]
 	},
+	"prefs-homepage": "Dibarzhioù evit an implijerien nevez-deuet",
+	"growthexperiments-homepage-enable": "Diskwel pajenn degemer neveziad",
 	"growthexperiments-addimage-submitting-title": "O kas...",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Nullañ",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Kenderc'hel",

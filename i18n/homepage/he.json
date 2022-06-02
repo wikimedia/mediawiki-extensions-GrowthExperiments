@@ -515,8 +515,8 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "בוצע",
 	"growthexperiments-homepage-mentorship-about-header": "אודות החונכים",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "מי החונך {{GENDER:|שלך}}?",
-	"growthexperiments-homepage-mentorship-about-mentor-par1": "החונך {{GENDER:|שלך}} הוא אדם אחר עם ניסיון רב בעריכה באתר {{SITENAME}}. בהתנדבות, החונך מנחה אנשים חדשים כמוך איך לערוך, ועונה לשאלות שיש לך על שימוש באתר.",
-	"growthexperiments-homepage-mentorship-about-mentor-par2": "{{GENDER:|כשאתה שולח|כשאת שולחת}} הודעה לחונך שלך, הוא יראה אותה בדף השיחה שלו {{GENDER:|ואתה אמור|ואת אמורה}} לקבל הודעה כשהוא יענה.",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:$1|החונך שלך הוא מישהו אחר|החונכת שלך היא מישהי אחרת}} עם ניסיון רב בעריכה באתר {{SITENAME}}. {{GENDER:$1|הוא התנדב|היא התנדבה}} להנחות אנשים חדשים כמוך איך לערוך, {{GENDER:$1|ויכול|ויכולה}} לענות לשאלות שיש לך על השימוש באתר.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "{{GENDER:|כשאתה שולח|כשאת שולחת}} הודעה {{GENDER:$1|לחונך שלך, הוא יראה אותה בדף השיחה שלו {{GENDER:|ואתה אמור|ואת אמורה}} לקבל הודעה כשהוא יענה|לחונכת שלך, היא תראה אותה בדף השיחה שלה {{GENDER:|ואתה אמור|ואת אמורה}} לקבל הודעה כשהיא תענה}}.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "לצאת מחונכות",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|בחר|בחרי}} את הכפתור למטה אם {{GENDER:|אתה מעדיף|את מעדיפה}} שלא יוקצה לך חונך מסוים עכשיו. {{GENDER:|אתה יכול|את יכולה}} לקבל חונך חדש בכל זמן שתרצה לשנות את דעתך.",
 	"growthexperiments-homepage-mentorship-about-done": "סיום"
