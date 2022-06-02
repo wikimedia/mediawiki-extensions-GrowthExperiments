@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ponor"
+			"Ponor",
+			"MaGa"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentorstva",
@@ -39,7 +40,9 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Poruka novacima i novakinjama",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Preuzimanje mentorstva",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Ovdje možete preuzeti novaka ili novakinju od drugoga mentora. To se često radi za tečajeve i slična događanja tako da mentor možete biti i na wikiju i uživo.",
+	"growthexperiments-rcfilters-mentorship-title": "Mentorstvo",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Novaci koje ste označili zvjezdicom u mentorskom sučelju",
+	"echo-pref-tooltip-ge-mentorship": "Obavijesti vezane za mentorstvo koje održava Growth team. Ova Vas obavijest obavještava kada ste pozvani za podučavanje ili je nekoga koga podučavate angažirao netko drugi.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Dodjeljivanje novaka",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Dodjeljuj polovicu prosječnog broja",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Dodjeljuj prosječan broj (početna postavka)",

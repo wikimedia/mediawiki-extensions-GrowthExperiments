@@ -10,7 +10,8 @@
 			"Nastua Buldakova",
 			"Pacha Tchernof",
 			"Vlad5250",
-			"Умар"
+			"Умар",
+			"Jack Jackie Pomi"
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
@@ -19,6 +20,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "Ожидается, что <code>$1</code> это <code>$2</code>, а это <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Несоответствие модели содержимого: файл конфигурации GrowthExperiments должен иметь модель содержимого JSON, обнаружено $1",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Недействителен идентификатор обработчика типа задачи: <code>$1</code> недопустимое значение",
+	"growthexperiments-config-validator-array-toobig": "$1 имеет слишком много элементов (максимальное число - $2)",
 	"growthexperiments-edit-config-disabled": "Конфигурация в настоящее время отключена.",
 	"growthexperiments-edit-config-title": "Изменить конфигурацию «Роста»",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Последнее обновление [[User:$1|$1]] $2 ([$4 разн.]).",
