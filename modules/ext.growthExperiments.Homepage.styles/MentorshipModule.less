@@ -1,6 +1,7 @@
 @import 'mediawiki.ui/variables';
 
-.growthexperiments-homepage-mentorship {
+.growthexperiments-homepage-mentorship,
+.growthexperiments-homepage-module-mentorship-optin {
 	&-userlink {
 		font-size: 1.2em;
 
@@ -10,7 +11,10 @@
 			opacity: 0.65;
 			margin-right: 1em;
 		}
+	}
 
+	&-userlink,
+	#mw-ge-homepage-mentorship-optin {
 		.oo-ui-icon-mentor {
 			html:lang( he ) & {
 				// Use LTR asset for Hebrew since it contains a question mark
