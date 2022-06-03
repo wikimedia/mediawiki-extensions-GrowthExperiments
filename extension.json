@@ -212,7 +212,7 @@
 	"HookHandlers": {
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
-			"services": [ "MainConfig", "GrowthExperimentsWelcomeSurveyFactory", "GrowthExperimentsCampaignConfig" ]
+			"services": [ "MainConfig", "SpecialPageFactory", "GrowthExperimentsWelcomeSurveyFactory", "GrowthExperimentsCampaignConfig" ]
 		},
 		"helppanel": {
 			"class": "GrowthExperiments\\HelpPanelHooks",
@@ -308,7 +308,8 @@
 			"class": "GrowthExperiments\\VariantHooks",
 			"services": [
 				"UserOptionsManager",
-				"GrowthExperimentsCampaignConfig"
+				"GrowthExperimentsCampaignConfig",
+				"SpecialPageFactory"
 			]
 		},
 		"visualeditor": {
@@ -367,7 +368,11 @@
 			"mentoruseroptions",
 			"variant"
 		],
-		"BeforeWelcomeCreation": [
+		"PostLoginRedirect": [
+			"welcomeSurvey",
+			"variant"
+		],
+		"CentralAuthPostLoginRedirect": [
 			"welcomeSurvey",
 			"variant"
 		],

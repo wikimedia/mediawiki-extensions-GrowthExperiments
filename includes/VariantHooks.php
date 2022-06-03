@@ -3,22 +3,24 @@
 namespace GrowthExperiments;
 
 use Config;
+use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialCreateAccountCampaign;
 use IContextSource;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
-use MediaWiki\Hook\BeforeWelcomeCreationHook;
+use MediaWiki\Hook\PostLoginRedirectHook;
 use MediaWiki\Hook\SkinAddFooterLinksHook;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsManager;
 use RequestContext;
 use Skin;
-use SpecialPage;
 
 /**
  * Hooks related to feature flags used for A/B testing and opt-in.
@@ -26,7 +28,7 @@ use SpecialPage;
  */
 class VariantHooks implements
 	AuthChangeFormFieldsHook,
-	BeforeWelcomeCreationHook,
+	PostLoginRedirectHook,
 	GetPreferencesHook,
 	LocalUserCreatedHook,
 	SpecialPage_initListHook,
@@ -67,16 +69,22 @@ class VariantHooks implements
 	private $userOptionsManager;
 	/** @var CampaignConfig */
 	private $campaignConfig;
+	/** @var SpecialPageFactory */
+	private $specialPageFactory;
 
 	/**
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param CampaignConfig $campaignConfig
+	 * @param SpecialPageFactory $specialPageFactory
 	 */
 	public function __construct(
-		UserOptionsManager $userOptionsManager, CampaignConfig $campaignConfig
+		UserOptionsManager $userOptionsManager,
+		CampaignConfig $campaignConfig,
+		SpecialPageFactory $specialPageFactory
 	) {
 		$this->userOptionsManager = $userOptionsManager;
 		$this->campaignConfig = $campaignConfig;
+		$this->specialPageFactory = $specialPageFactory;
 	}
 
 	/** @inheritDoc */
@@ -114,7 +122,7 @@ class VariantHooks implements
 	public function onSpecialPage_initList( &$list ) {
 		// FIXME: Temporary hack for T284740, should be removed after the end of the campaign.
 		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( $context, $this->campaignConfig ) ) {
+		if ( self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig ) ) {
 			$list['CreateAccount']['class'] = SpecialCreateAccountCampaign::class;
 			$list['CreateAccount']['calls']['setCampaignConfig'] = [ $this->campaignConfig ];
 		}
@@ -123,14 +131,13 @@ class VariantHooks implements
 	/**
 	 * Check if this is a Growth campaign by inspecting the campaign query parameter.
 	 *
-	 * @param IContextSource $context
+	 * @param string $campaignParameter
 	 * @param CampaignConfig $campaignConfig
 	 * @return bool
 	 */
 	public static function isGrowthCampaign(
-		IContextSource $context, CampaignConfig $campaignConfig
+		string $campaignParameter, CampaignConfig $campaignConfig
 	): bool {
-		$campaignParameter = self::getCampaign( $context );
 		if ( !$campaignParameter ) {
 			return false;
 		}
@@ -142,15 +149,13 @@ class VariantHooks implements
 	 * Check whether the welcome survey should be skipped by asking the $campaignConfig
 	 * for the value given in the "campaign" query parameter
 	 *
-	 * @param IContextSource $context
+	 * @param string $campaign
 	 * @param CampaignConfig $campaignConfig
 	 * @return bool
 	 */
 	public static function shouldCampaignSkipWelcomeSurvey(
-		IContextSource $context, CampaignConfig $campaignConfig
+		string $campaign, CampaignConfig $campaignConfig
 	): bool {
-		$campaign = self::getCampaign( $context );
-
 		if ( !$campaign ) {
 			return false;
 		}
@@ -159,12 +164,25 @@ class VariantHooks implements
 	}
 
 	/**
+	 * Get the campaign from the user's saved options, falling back to the request parameter if
+	 * the user's option isn't set. This is needed because the query parameter can get lost
+	 * during CentralAuth redirection.
+	 *
 	 * @param IContextSource $context
 	 * @return string
 	 * @codeCoverageIgnore
 	 */
-	private static function getCampaign( IContextSource $context ): string {
-		return $context->getRequest()->getVal( 'campaign', '' );
+	public static function getCampaign( IContextSource $context ): string {
+		$campaignFromRequestQueryParameter = $context->getRequest()->getVal( 'campaign', '' );
+		if ( defined( 'MW_NO_SESSION' ) ) {
+			// If we're in a ResourceLoader context, don't attempt to get the campaign string
+			// from the user's preferences, as it's not allowed.
+			return $campaignFromRequestQueryParameter;
+		}
+		return MediaWikiServices::getInstance()->getUserOptionsLookup()->getOption(
+			$context->getUser(), self::GROWTH_CAMPAIGN,
+			$campaignFromRequestQueryParameter
+		);
 	}
 
 	/**
@@ -195,24 +213,63 @@ class VariantHooks implements
 			return;
 		}
 		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( $context, $this->campaignConfig ) ) {
+		if ( self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig ) ) {
 			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $this->getCampaign( $context ) );
 		}
 	}
 
-	/** @inheritDoc */
-	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
+	/**
+	 * Go directly to the homepage after signup if the user is in a campaign which has the
+	 * "skip welcome survey" flag set.
+	 * @inheritDoc
+	 */
+	public function onPostLoginRedirect( &$returnTo, &$returnToQuery, &$type ) {
+		if ( $type !== 'signup' ) {
+			return;
+		}
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'CentralAuth' ) ) {
+			// Handled by onCentralAuthPostLoginRedirect
+			return;
+		}
 		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( $context, $this->campaignConfig )
-			&& self::shouldCampaignSkipWelcomeSurvey( $context, $this->campaignConfig ) ) {
-			$context->getOutput()->redirect( SpecialPage::getSafeTitleFor( 'Homepage' )->getFullUrlForRedirect() );
+		if ( self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig )
+			&& self::shouldCampaignSkipWelcomeSurvey( self::getCampaign( $context ), $this->campaignConfig )
+		) {
+			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
+			$type = 'successredirect';
+			return false;
+		}
+	}
+
+	/**
+	 * CentralAuth-compatible version of onPostLoginRedirect().
+	 * @param string &$returnTo
+	 * @param string &$returnToQuery
+	 * @param bool $stickHTTPS
+	 * @param string $type
+	 * @param string &$injectedHtml
+	 * @return bool|void
+	 */
+	public function onCentralAuthPostLoginRedirect(
+		string &$returnTo, string &$returnToQuery, bool $stickHTTPS, string $type, string &$injectedHtml
+	) {
+		if ( $type !== 'signup' ) {
+			return;
+		}
+		$context = RequestContext::getMain();
+		if ( self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig )
+			&& self::shouldCampaignSkipWelcomeSurvey( self::getCampaign( $context ), $this->campaignConfig )
+		) {
+			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
+			$injectedHtml = '';
+			return false;
 		}
 	}
 
 	/** @inheritDoc */
 	public function onSkinAddFooterLinks( Skin $skin, string $key, array &$footerItems ) {
 		$context = $skin->getContext();
-		if ( $key !== 'info' || !self::isGrowthCampaign( $context, $this->campaignConfig ) ) {
+		if ( $key !== 'info' || !self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig ) ) {
 			return;
 		}
 		$footerItems['signupcampaign-legal'] = SpecialCreateAccountCampaign::getLegalFooter( $context );

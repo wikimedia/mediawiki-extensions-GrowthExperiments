@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\VariantHooks;
 use HashConfig;
 use MediaWiki\ResourceLoader as RL;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
 use Skin;
@@ -81,7 +82,8 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 	private function getVariantHooksMock(): VariantHooks {
 		return new VariantHooks(
 			$this->createNoOpMock( UserOptionsManager::class ),
-			$this->createNoOpMock( CampaignConfig::class )
+			$this->createNoOpMock( CampaignConfig::class ),
+			$this->createNoOpMock( SpecialPageFactory::class )
 		);
 	}
 
