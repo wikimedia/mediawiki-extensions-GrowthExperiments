@@ -522,8 +522,8 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "تم",
 	"growthexperiments-homepage-mentorship-about-header": "معلومات حول المرشدين",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "من هو {{GENDER:|مرشدُكَ|مرشدُكِ}}؟",
-	"growthexperiments-homepage-mentorship-about-mentor-par1": "مرشدك هو شخص يتمتع بخبرة كبيرة في التحرير على {{SITENAME}}. وقد تطوع لإرشاد الأشخاص الجدد، مثلك، حول كيفية التعديل، ويمكنه الإجابة عن الأسئلة التي قد {{GENDER:|تطرحها|تطرحينها}} حول استخدام الموقع.",
-	"growthexperiments-homepage-mentorship-about-mentor-par2": "عندما {{GENDER:|ترسل|ترسلين}} رسالة إلى مرشدك، سيُشاهدونها على صفحة النقاش الخاصة بهم ويجب أن {{GENDER:|تتلقى|تتلقّي}} إشعارًا عند الرد.",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:$1|مرشدك هو|مرشدتك هي}} شخص آخر يتمتع بخبرة كبيرة في التحرير على {{SITENAME}}. وقد {{GENDER:$1|تطوع|تطوعت}} لإرشاد الأشخاص الجدد، مثلك، حول كيفية التعديل، و{{GENDER:$1|يمكنه|يمكنها}} الإجابة عن الأسئلة التي قد {{GENDER:|تطرحها|تطرحينها}} حول استخدام الموقع.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "عندما {{GENDER:|ترسل|ترسلين}} رسالة إلى {{GENDER:$1|مرشدك، سيشاهدها|مرشدتك، ستشاهدها}} على صفحة النقاش الخاصة {{GENDER:$1|به|بها}} ويجب أن {{GENDER:|تتلقى|تتلقّي}} إشعارًا عندما {{GENDER:$1|يردّ|تردّ}}.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "الانسحاب من الإرشاد",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|اختر|اختاري}} الزرّ أدناه للخروج إذا كنت لا {{GENDER:|تريد|تريدين}} تعيين مرشد خاصّ بك في الوقت الحالي. يمكنك في أيّ وقت الحصول مرّة أخرى على مرشد جديد إذا ما غيّرت رأيك.",
 	"growthexperiments-homepage-mentorship-about-done": "تمّ"

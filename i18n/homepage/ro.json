@@ -506,8 +506,8 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Realizat",
 	"growthexperiments-homepage-mentorship-about-header": "Despre mentori",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Cine este mentorul {{GENDER:|dvs.}}?",
-	"growthexperiments-homepage-mentorship-about-mentor-par1": "Mentorul {{GENDER:|dvs.}} este altă persoană ce are foarte multă experiență în a edita {{SITENAME}}. S-a voluntariat pentru a îndruma persoane noi precum dvs. să editeze și poate răspunde întrebărilor pe care s-ar putea să {{GENDER:|le}} aveți despre utilizarea site-ului.",
-	"growthexperiments-homepage-mentorship-about-mentor-par2": "Atunci {{GENDER:|când}} trimiteți un mesaj mentorului dvs., acesta îl va vedea pe pagina sa de discuție, iar {{GENDER:|dvs.}} ar trebui să primiți o notificare atunci când răspunde.",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:$1|Mentorul}} {{GENDER:|dvs.}} este altă persoană ce are foarte multă experiență în a edita {{SITENAME}}. {{GENDER:$1|S-a}} voluntariat pentru a îndruma persoane noi precum dvs. să editeze și poate răspunde întrebărilor pe care s-ar putea să {{GENDER:|le}} aveți despre utilizarea site-ului.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "Atunci {{GENDER:|când}} trimiteți un mesaj mentorului dvs., {{GENDER:$1|el|ea|acesta}} îl va vedea pe pagina {{GENDER:$1|lui|ei|sa}} de discuție, iar {{GENDER:|dvs.}} ar trebui să primiți o notificare atunci când {{GENDER:$1|răspunde}}.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Renunțați la mentor",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Selectați butonul de mai jos pentru a renunța dacă momentan {{GENDER:|preferați}} să nu aveți un anumit mentor atribuit {{GENDER:|vouă}}. {{GENDER:|Puteți}} obține un nou mentor oricând {{GENDER:|dacă}} vă {{GENDER:|răzgândiți}}.",
 	"growthexperiments-homepage-mentorship-about-done": "Realizat"
