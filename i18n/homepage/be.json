@@ -507,8 +507,8 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Гатова",
 	"growthexperiments-homepage-mentorship-about-header": "Пра настаўнікаў",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Хто {{GENDER:|ваш}} настаўнік?",
-	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Ваш}} настаўнік — іншы чалавек з вялікім досведам праўкі пляцоўкі {{SITENAME}}. Яны падахвоціліся вучыць новых людзей, такіх як вы, як правіць, і могуць адказаць на пытанні, якія ў вас могуць узнікнуць аб выкарыстанні пляцоўкай.",
-	"growthexperiments-homepage-mentorship-about-mentor-par2": "Калі {{GENDER:|вы}} адпраўляеце паведамленне свайму настаўніку, ён убачыць яго на сваёй старонцы размоў, і вы атрымаеце апавяшчэнне, калі ён адкажа.",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:$1|Ваш настаўнік — іншы чалавек|Ваша настаўніца — іншая жанчына}} з вялікім досведам праўкі {{GRAMMAR:родны|{{SITENAME}}}}. {{GENDER:$1|Ён падахвоціўся|Яна падахвоцілася}} вучыць новых людзей, такіх як {{GENDER:|вы}}, як правіць, і можа адказаць на пытанні, якія ў вас могуць узнікнуць аб выкарыстанні пляцоўкай.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "Калі {{GENDER:|вы}} адпраўляеце паведамленне {{GENDER:$1|свайму настаўніку, ён убачыць яго на сваёй старонцы размоў, і вы атрымаеце апавяшчэнне, калі ён адкажа|сваёй настаўніцы, яна ўбачыць яго на сваёй старонцы размоў, і вы атрымаеце апавяшчэнне, калі яна адкажа}}.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Адмовіцца ад настаўніцтва",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Выберыце ніжэй кнопку, каб адмовіцца, калі {{GENDER:|вы}} не хочаце, каб вам зараз быў прызначаны пэўны настаўнік. Вы можаце зноў атрымаць новага настаўніка ў любы час, калі перадумаеце.",
 	"growthexperiments-homepage-mentorship-about-done": "Гатова"

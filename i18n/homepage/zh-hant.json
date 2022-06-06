@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Diskdance",
 			"Go1002opn",
 			"HTan (WMF)",
 			"Kly",
@@ -307,7 +308,7 @@
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1的}}導師已更換過。{{GENDER:$2|您}}確定{{GENDER:$2|您}}要再次更換嗎？",
 	"growthexperiments-claimmentee-confirm": "是的，我想要更換導師",
 	"growthexperiments-log-name": "GrowthExperiments日誌",
-	"growthexperiments-log-header": "這是在 GrowthExperiments 擴充所做出操作的日誌。",
+	"growthexperiments-log-header": "這是在 GrowthExperiments 擴充功能所做出操作的日誌。",
 	"logentry-growthexperiments-claimmentee": "$1{{GENDER:$2|已認領}}{{GENDER:$6|$3}}為他的學員（先前的{{GENDER:$4|導師}}為$5）",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1{{GENDER:$2|已認領}}{{GENDER:$6|$3}}為他的學員（先前沒有導師）",
 	"logentry-growthexperiments-setmentor": "$1{{GENDER:$2|已設定}}{{GENDER:$5|$7}}作為{{GENDER:$6|$3}}的導師（先前的{{GENDER:$4|導師}}為$8）",

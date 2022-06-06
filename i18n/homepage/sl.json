@@ -27,7 +27,7 @@
 	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add a link|Predlagano: dodaj povezave]]",
 	"tag-newcomer_task_add_link-description": "Opravilo urejanja »Dodaj povezavo«, ki ga je predlagal modul za urejanja na domači strani za začetnike",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Vprašajte}} {{GENDER:$1|svojega mentorja|svojo mentorico|svojega mentorja/svojo mentorico}}",
-	"growthexperiments-homepage-enable-preference": "Da omogočite glavno stran za začetnike, pojdite na nastavitve »Glavna stran za začetnike« v [[Special:Preferences#mw-prefsection-personal-homepage|nastavitvah]].",
+	"growthexperiments-homepage-enable-preference": "Da omogočite glavno stran za začetnike, pojdite na nastavitve »Funkcionalnosti urejevalnika – za začetnike« v [[Special:Preferences#mw-prefsection-personal-homepage|nastavitvah]].",
 	"growthexperiments-tour-welcome-description-c": "Sem se lahko kadar koli {{GENDER:$1|vrnete}} s klikom svojega uporabniškega imena. Na svoji domači strani se še naprej učite s <b>predlaganimi urejanji</b>.",
 	"growthexperiments-tour-welcome-description-d": "Sem se lahko kadar koli {{GENDER:$1|vrnete}} s klikom svojega uporabniškega imena. Na svoji domači strani lahko poiščete predlagana urejanja, postavite vprašanja mentorju in spremljate svoj vpliv.",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Poskusite predlagana urejanja poiskati na drugih ravneh zahtevnosti",
