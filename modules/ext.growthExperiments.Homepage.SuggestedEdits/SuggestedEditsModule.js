@@ -228,7 +228,7 @@ SuggestedEditsModule.prototype.updatePager = function () {
 SuggestedEditsModule.prototype.updatePreviousNextButtons = function () {
 	var shouldShowNavigation = this.currentCard instanceof EditCardWidget || !this.tasksStore.isTaskQueueEmpty(),
 		// next is enabled when the end of the queue is reached to show EndOfQueueWidget
-		shouldEnableNext = this.tasksStore.hasNextTask() || this.tasksStore.isEndOfTaskQueue();
+		shouldEnableNext = this.tasksStore.taskQueueLoading ? false : this.tasksStore.hasNextTask() || this.tasksStore.isEndOfTaskQueue();
 	this.previousWidget.setDisabled( !this.tasksStore.hasPreviousTask() );
 	this.nextWidget.setDisabled( !shouldEnableNext );
 	this.previousWidget.toggle( shouldShowNavigation );
@@ -263,13 +263,6 @@ SuggestedEditsModule.prototype.onPreviousCard = function ( isSwipe ) {
 	this.isGoingBack = true;
 	this.logger.log( 'suggested-edits', this.mode, action, { dir: 'prev' } );
 	this.tasksStore.showPreviousTask();
-};
-
-/**
- * Called from onNextCard / filterSelection.
- */
-SuggestedEditsModule.prototype.updateCurrentCard = function () {
-	this.showCard();
 };
 
 /**
