@@ -40,16 +40,20 @@
 		var mentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
 		this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
 		this.content.$element.append(
-			$( '<h4>' ).text( mw.msg( 'growthexperiments-homepage-mentorship-about-subheader-mentor' ) ),
-			$( '<p>' ).text(
-				mw.message( 'growthexperiments-homepage-mentorship-about-mentor-par1', mentorGender ).text()
-			),
-			$( '<p>' ).text(
-				mw.message( 'growthexperiments-homepage-mentorship-about-mentor-par2', mentorGender ).text()
-			),
-			$( '<h4>' ).text( mw.msg( 'growthexperiments-homepage-mentorship-about-subheader-optout' ) ),
-			$( '<p>' ).text( mw.msg( 'growthexperiments-homepage-mentorship-about-optout-par1' ) ),
-			optoutBtn.$element
+			$( '<div>' )
+				.addClass( 'growthexperiments-homepage-mentorship-about-mentorship' )
+				.append(
+					$( '<h4>' ).text( mw.msg( 'growthexperiments-homepage-mentorship-about-subheader-mentor' ) ),
+					$( '<p>' ).text(
+						mw.message( 'growthexperiments-homepage-mentorship-about-mentor-par1', mentorGender ).text()
+					),
+					$( '<p>' ).text(
+						mw.message( 'growthexperiments-homepage-mentorship-about-mentor-par2', mentorGender ).text()
+					),
+					$( '<h4>' ).text( mw.msg( 'growthexperiments-homepage-mentorship-about-subheader-optout' ) ),
+					$( '<p>' ).text( mw.msg( 'growthexperiments-homepage-mentorship-about-optout-par1' ) ),
+					optoutBtn.$element
+				)
 		);
 		this.$body.append( this.content.$element );
 	};
