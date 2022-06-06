@@ -18,7 +18,8 @@
 			"羊羊32521",
 			"魔琴",
 			"Stang",
-			"Winston Sung"
+			"Winston Sung",
+			"StarrySky"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "启用编者帮助面板",
@@ -85,7 +86,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-rules1": "句子在提及特定事实（如数字、日期或历史事件）时需要参考文献。\n\n如果一个句子包含人们可能不同意的信息，或者大多数人不知道的信息，则它可能需要参考文献。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step1": "当{{GENDER:|您}}找到需要参考文献的句子时，点击“$1”开始。\n\n有些句子甚至有标签，准确显示需要参考文献的位置。",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-step1": "当{{GENDER:|您}}找到需要参考文献的句子时，点按编辑铅笔即可开始。\n\n有些句子甚至有标签，准确显示需要参考文献的位置。",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step2": "接下来，{{GENDER:|您}}可以通过搜索引擎、新闻网站或{{GENDER:|您的}}图书馆查找来源。<br />$1&nbsp;&nbsp;$2&nbsp;&nbsp;$3&nbsp; ;$4<br />在添加引用时遵循以下准则：\n* 可靠来源包括书籍、新闻机构和杂志文章。\n* 社交媒体或博客通常不是可靠的来源。\n* 由主题发布的信息，例如公司自己的网站，通常是不可靠的。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step2": "接下来，{{GENDER:|您}}可以通过搜索引擎、新闻网站或{{GENDER:|您的}}图书馆查找来源。<br />$1&nbsp;&nbsp;$2&nbsp;&nbsp;$3&nbsp; ;$4<br />在添加引用时遵循以下准则：\n* 可靠来源包括书籍、新闻网站和杂志文章。\n* 社交媒体或博客通常不是可靠的来源。\n* 由主题发布的信息，例如公司自己的网站，通常是不可靠的。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step3": "当{{GENDER:|您}}找到来源时，点击句子末尾，然后点击“$1”按钮$2。添加与{{GENDER:|您}}知道的有关来源的尽可能多的信息，并插入引文。",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-step3": "当{{GENDER:|您}}找到来源时，点击句子末尾，然后点击“$1”按钮$2。添加与{{GENDER:|您}}知道的有关来源的尽可能多的信息，并插入引文。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-publish": "添加更多参考文献，或者继续点击“$1”以保存{{GENDER:|您的}}编辑！",
