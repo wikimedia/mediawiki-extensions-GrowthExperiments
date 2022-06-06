@@ -162,11 +162,11 @@ QUnit.test( 'should preload extra data for the next task in the queue when showi
 	assert.strictEqual( stub.callCount, 1 );
 } );
 
-QUnit.test( 'should not emit an event when additional tasks are added to the task queue', function ( assert ) {
+QUnit.test( 'should emit an event when additional tasks are added to the task queue', function ( assert ) {
 	const tasksStore = new NewcomerTasksStore( store );
 	const spy = this.sandbox.spy( tasksStore, 'emit' );
 	tasksStore.addToTaskQueue( [ getTaskData( '1', 'copyedit' ) ] );
-	assert.true( spy.notCalled );
+	assert.true( spy.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
 } );
 
 QUnit.test( 'should set the preloaded task in the task queue', function ( assert ) {
