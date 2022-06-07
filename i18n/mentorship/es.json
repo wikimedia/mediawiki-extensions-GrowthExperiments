@@ -7,6 +7,7 @@
 			"DiegoAmbrocio",
 			"Fewasser Traduce",
 			"Josuert",
+			"OriginReboot",
 			"Warming Hearth",
 			"Zapipedia (WMF)"
 		]
@@ -103,5 +104,6 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> se espera que sea <code>$2</code>, pero es <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "La definición de mentoría contiene una clave inesperada <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "El mentor $1 ya fue agregado a la lista de mentores",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "El mentor $1 no está en la lista de mentores"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "El mentor $1 no está en la lista de mentores",
+	"growthexperiments-manage-mentors-username": "Nombre de usuario"
 }

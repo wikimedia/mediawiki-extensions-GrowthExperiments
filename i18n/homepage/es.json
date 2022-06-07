@@ -27,6 +27,7 @@
 			"MarcoAurelio",
 			"MarleneR329",
 			"McDutchie",
+			"OriginReboot",
 			"Rho2017",
 			"Rodney Araujo",
 			"Sergi0",
@@ -511,5 +512,6 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Entendido",
 	"growthexperiments-addimage-caption-warning-tooshort": "Las descripciones deben ser de $1 {{PLURAL:$1|caracter|caracteres}} o más.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Tú}} has completado todas las sugerencias de enlaces por hoy.\n\nAjusta {{GENDER:|tu}} nivel de dificultad para ver otro tipo de ediciones o vuelve mañana para obtener más sugerencias de enlaces.",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Entendido"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Entendido",
+	"growthexperiments-homepage-mentorship-about-done": "Hecho"
 }
