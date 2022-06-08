@@ -171,6 +171,7 @@ NewcomerTasksStore.prototype.getDefaultTaskTypes = function () {
  */
 NewcomerTasksStore.prototype.setTaskQueue = function ( taskQueue ) {
 	this.taskQueue = taskQueue;
+	this.maybeUpdateQualityGateConfig( this.getCurrentTask() );
 	this.onTaskQueueChanged();
 };
 
