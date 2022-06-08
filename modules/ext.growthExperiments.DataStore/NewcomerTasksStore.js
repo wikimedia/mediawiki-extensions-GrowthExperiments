@@ -181,6 +181,7 @@ NewcomerTasksStore.prototype.setTaskQueue = function ( taskQueue ) {
  */
 NewcomerTasksStore.prototype.addToTaskQueue = function ( additionalTasks ) {
 	this.taskQueue = this.taskQueue.concat( additionalTasks );
+	this.onTaskQueueChanged();
 };
 
 /**
@@ -335,7 +336,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 	if ( this.apiFetchMoreTasksPromise ) {
 		this.apiFetchMoreTasksPromise.abort();
 	}
-
+	this.setTaskQueueLoading( true );
 	var existingPageIds = this.taskQueue.map( function ( task ) {
 			return task.pageId;
 		} ) || [],
@@ -358,6 +359,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 	);
 
 	this.apiFetchMoreTasksPromise.done( function ( data ) {
+		this.setTaskQueueLoading( false );
 		this.addToTaskQueue( data.tasks || [] );
 		this.preloadExtraDataForUpcomingTask();
 		promise.resolve();

@@ -21,7 +21,7 @@
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
 			suggestedEditsData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ] || {},
 			taskPreviewData = suggestedEditsData[ 'task-preview' ] || {},
-			taskQueue = suggestedEditsData[ 'task-queue' ] || {};
+			taskQueue = suggestedEditsData[ 'task-queue' ] || [];
 
 		if ( !$wrapper.length ) {
 			return;
