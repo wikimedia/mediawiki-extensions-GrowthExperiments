@@ -2,49 +2,28 @@
 
 namespace GrowthExperiments\Specials;
 
-use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use OOUI\Tag;
 use SpecialPage;
-use WANObjectCache;
 
 class SpecialNewcomerTasksInfo extends SpecialPage {
 
-	/** @var SuggestionsInfo */
-	private $suggestionsInfo;
-	/** @var WANObjectCache */
-	private $cache;
+	/** @var NewcomerTasksInfo */
+	private $cachedSuggestionsInfo;
 
 	/**
-	 * @param SuggestionsInfo $suggestionsInfo
-	 * @param WANObjectCache $cache
+	 * @param NewcomerTasksInfo $cachedSuggestionsInfo
 	 */
-	public function __construct( SuggestionsInfo $suggestionsInfo, WANObjectCache $cache ) {
+	public function __construct( NewcomerTasksInfo $cachedSuggestionsInfo ) {
 		parent::__construct( 'NewcomerTasksInfo' );
-		$this->suggestionsInfo = $suggestionsInfo;
-		$this->cache = $cache;
+		$this->cachedSuggestionsInfo = $cachedSuggestionsInfo;
 	}
 
 	/** @inheritDoc */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 		$this->addHelpLink( 'mw:Growth/Personalized_first_day/Newcomer_tasks' );
-
-		$info = $this->cache->getWithSetCallback(
-			$this->cache->makeKey( 'GrowthExperiments', 'SuggestionsInfo' ),
-			$this->cache::TTL_HOUR,
-			function ( $oldValue, &$ttl, &$setOpts ) {
-				$data = $this->suggestionsInfo->getInfo();
-				if ( !$data || isset( $data['error'] ) ) {
-					$ttl = $this->cache::TTL_UNCACHEABLE;
-				} else {
-					// WANObjectCache::fetchOrRegenerate would set this to the start of callback
-					// execution if unset. If at the end of the callback more than a few seconds
-					// have passed since the given time, it will refuse to cache.
-					$setOpts['since'] = INF;
-				}
-				return $data;
-			}
-		);
+		$info = $this->cachedSuggestionsInfo->getInfo();
 		$out = $this->getOutput();
 		$out->addWikiMsg( 'newcomertasksinfo-config-form-info' );
 		if ( !isset( $info['tasks'] ) || !isset( $info[ 'topics' ] ) ) {

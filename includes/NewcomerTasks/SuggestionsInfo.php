@@ -10,7 +10,7 @@ use MediaWiki\User\UserIdentityValue;
 use Status;
 use StatusValue;
 
-class SuggestionsInfo {
+class SuggestionsInfo implements NewcomerTasksInfo {
 	/**
 	 * @var ConfigurationLoader
 	 */
@@ -39,14 +39,10 @@ class SuggestionsInfo {
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 	}
 
-	/**
-	 * Get information about available newcomer tasks segmented by task and topic.
-	 *
-	 * @return array
-	 */
-	public function getInfo(): array {
+	/** @inheritDoc */
+	public function getInfo( array $options = [] ): array {
 		$user = new UserIdentityValue( 0, 'SuggestionsInfo' );
-		$taskSuggester = $this->taskSuggesterFactory->create();
+		$taskSuggester = $this->taskSuggesterFactory->create( $this->configurationLoader );
 		$taskTypes = $this->configurationLoader->loadTaskTypes();
 		$topics = $this->configurationLoader->loadTopics();
 		$data = [];
