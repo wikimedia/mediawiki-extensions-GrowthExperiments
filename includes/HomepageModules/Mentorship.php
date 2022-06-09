@@ -158,6 +158,7 @@ class Mentorship extends BaseModule {
 	 */
 	protected function getBody() {
 		return implode( "\n", [
+			$this->getAboutMentorshipElement(),
 			$this->getMentorUsernameElement( true ),
 			$this->getMentorInfo(),
 			$this->getIntroText(),
@@ -385,6 +386,28 @@ class Mentorship extends BaseModule {
 			self::QUESTION_PREF
 		)->loadQuestions();
 		return $this->recentQuestions;
+	}
+
+	private function getAboutMentorshipElement() {
+		return Html::rawElement(
+			'p',
+			[],
+			implode( "\n", [
+				Html::element(
+					'span',
+					[],
+					$this->msg( 'growthexperiments-homepage-mentorship-preintro' )->text()
+				),
+				Html::element(
+					'a',
+					[
+						'id' => 'growthexperiments-homepage-mentorship-learn-more',
+						'href' => '#',
+					],
+					$this->msg( 'growthexperiments-homepage-mentorship-learn-more' )->text()
+				)
+			] )
+		);
 	}
 
 }
