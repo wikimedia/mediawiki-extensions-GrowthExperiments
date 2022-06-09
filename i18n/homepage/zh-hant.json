@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Diskdance",
+			"Ericliu1912",
 			"Go1002opn",
 			"HTan (WMF)",
 			"Kly",
@@ -22,7 +23,7 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
 	"growthexperiments-homepage-tab": "首頁",
 	"tooltip-pt-homepage": "{{GENDER:|您的}}首頁",
-	"prefs-homepage": "新手首頁",
+	"prefs-homepage": "新手編輯者功能",
 	"growthexperiments-homepage-enable": "顯示新手首頁",
 	"growthexperiments-homepage-pt-link": "個人工具中的使用者名稱連結預設為新手首頁",
 	"growthexperiments-homepage-email-header-noemail": "添加{{GENDER:$1|您的}}電子郵件",
@@ -495,6 +496,7 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "繼續尋找一位有經驗的編輯者作為{{GENDER:|您的}}編輯導師。",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "取消",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "繼續",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "關於導師",
 	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "選擇退出導師計畫",
 	"growthexperiments-homepage-mentorship-optout-header": "選擇退出導師計畫？",
 	"growthexperiments-homepage-mentorship-optout-text": "您可以隨時選擇再次加入導師計畫，但您可能不會被分配給與之前相同的導師。",
@@ -505,5 +507,7 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "我想要換個導師",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "我根本不想要導師",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "其他 / 我不想說明",
-	"growthexperiments-homepage-mentorship-optout-confirmation-done": "完成"
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "完成",
+	"growthexperiments-homepage-mentorship-about-header": "關於導師",
+	"growthexperiments-homepage-mentorship-about-done": "完成"
 }

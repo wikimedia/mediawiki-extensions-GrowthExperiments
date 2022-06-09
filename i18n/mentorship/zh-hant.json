@@ -102,6 +102,7 @@
 	"growthexperiments-manage-mentors-auto-assigned": "自動分配的導師",
 	"growthexperiments-manage-mentors-manually-assigned": "手動分配的導師",
 	"growthexperiments-manage-mentors-username": "使用者名稱",
+	"growthexperiments-manage-mentors-last-active": "最近活動",
 	"growthexperiments-manage-mentors-intro-msg": "給新手的訊息",
 	"growthexperiments-manage-mentors-remove-mentor": "移除",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "移除該導師的原因"
