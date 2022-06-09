@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gwendal"
+			"Gwendal",
+			"Huñvreüs",
+			"Y-M D"
 		]
 	},
+	"growthexperiments-homepage-enable": "Diskwel pajenn degemer neveziad",
 	"growthexperiments-addimage-submitting-title": "O kas..."
 }
