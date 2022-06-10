@@ -154,7 +154,7 @@ class QuitMentorship {
 
 			$changeMentor->execute(
 				$newMentor,
-				wfMessage( $reassignMessageKey, $this->mentor->getName() )->text()
+				$this->context->msg( $reassignMessageKey, $this->mentor->getName() )->text()
 			);
 		}
 
