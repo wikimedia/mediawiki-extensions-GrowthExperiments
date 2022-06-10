@@ -67,6 +67,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Twój status został zmieniony na „Niedostępny(-a)”.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Wiadomość do twoich podopiecznych",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Wybierz nowicjusza(-kę)",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Możesz ustawić się jako przewodnik(-czka) dla konkretnych nowicjuszy. Typowo używane to jest przy organizacji edytonów i innych szkoleń. Czyli np. aby osoba prowadząca szkolenie mogła wspierać szkolonych nowicjuszy zarówno na wiki, jak i poza nią.",
 	"growthexperiments-rcfilters-mentorship-title": "Przewodniczenie",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Twoi}} ulubieni podopieczni",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Podopieczni, których dodał{{GENDER:|eś|aś|eś(-aś)}} do ulubionych w panelu przewodników",
