@@ -1,7 +1,7 @@
 ( function () {
 	var questionPosterAttachButton = require( './QuestionPoster.js' ),
 		optInAttachButton = require( './OptIn.js' ),
-		EllipsisMenu = require( './EllipsisMenu.js' ),
+		initEllipsisMenu = require( './EllipsisMenu.js' ),
 		questionPosterConfig = {
 			buttonSelector: '#mw-ge-homepage-mentorship-cta',
 			context: 'homepage_mentorship',
@@ -32,13 +32,6 @@
 		}
 	} );
 
-	var $ellipsis = $homepageContainer.find( '#mw-ge-homepage-mentorship-ellipsis' );
-	if ( $ellipsis.length ) {
-		var ellipsisMenu = new EllipsisMenu( {
-			mode: $homepageContainer.find( '.growthexperiments-homepage-module-mentorship' ).data( 'mode' )
-		} );
-		$ellipsis.replaceWith( ellipsisMenu.$element );
-	}
-
 	require( './RecentQuestions.js' );
+	initEllipsisMenu( $homepageContainer );
 }() );
