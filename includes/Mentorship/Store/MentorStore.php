@@ -134,10 +134,8 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 	/**
 	 * Return mentees who are mentored by given mentor
 	 *
-	 * Optionally allows to filter by role
-	 *
 	 * @param UserIdentity $mentor
-	 * @param string|null $mentorRole
+	 * @param string|null $mentorRole Passing null is deprecated since 1.39.
 	 * @param bool $includeHiddenUsers
 	 * @param int $flags
 	 * @return UserIdentity[]

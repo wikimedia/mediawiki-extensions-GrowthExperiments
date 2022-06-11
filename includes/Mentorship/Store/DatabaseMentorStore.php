@@ -108,7 +108,9 @@ class DatabaseMentorStore extends MentorStore {
 			'gemm_mentor_id' => $mentor->getId()
 		];
 
-		if ( $mentorRole !== null ) {
+		if ( $mentorRole === null ) {
+			wfDeprecated( __METHOD__ . ' with no role parameter', '1.39' );
+		} else {
 			$conds['gemm_mentor_role'] = $mentorRole;
 		}
 

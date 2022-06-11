@@ -88,24 +88,40 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 		// Save mentor/mentee relationship
 		$store->setMentorForUser( $menteeOne, $mentor, MentorStore::ROLE_PRIMARY );
 		$store->setMentorForUser( $menteeTwo, $mentor, MentorStore::ROLE_PRIMARY );
+		$store->setMentorForUser( $menteeOne, $otherMentor, MentorStore::ROLE_BACKUP );
+		$store->setMentorForUser( $menteeTwo, $otherMentor, MentorStore::ROLE_BACKUP );
+
 		$store->setMentorForUser( $menteeThree, $otherMentor, MentorStore::ROLE_PRIMARY );
+		$store->setMentorForUser( $menteeThree, $mentor, MentorStore::ROLE_BACKUP );
 
 		// Test mentees mentored by $mentor
 		$this->assertArrayEquals(
 			[ $menteeOne->getId(), $menteeTwo->getId() ],
-			$this->getIds( $store->getMenteesByMentor( $mentor ) )
+			$this->getIds( $store->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY ) )
+		);
+		$this->assertArrayEquals(
+			[ $menteeThree->getId() ],
+			$this->getIds( $store->getMenteesByMentor( $mentor, MentorStore::ROLE_BACKUP ) )
 		);
 
 		// Test mentees mentored by $otherMentor
 		$this->assertArrayEquals(
 			[ $menteeThree->getId() ],
-			$this->getIds( $store->getMenteesByMentor( $otherMentor ) )
+			$this->getIds( $store->getMenteesByMentor( $otherMentor, MentorStore::ROLE_PRIMARY ) )
+		);
+		$this->assertArrayEquals(
+			[ $menteeOne->getId(), $menteeTwo->getId() ],
+			$this->getIds( $store->getMenteesByMentor( $otherMentor, MentorStore::ROLE_BACKUP ) )
 		);
 
 		// Test mentees mentored by $mentorNoMentees (none expected)
 		$this->assertArrayEquals(
 			[],
-			$this->getIds( $store->getMenteesByMentor( $mentorNoMentees ) )
+			$this->getIds( $store->getMenteesByMentor( $mentorNoMentees, MentorStore::ROLE_PRIMARY ) )
+		);
+		$this->assertArrayEquals(
+			[],
+			$this->getIds( $store->getMenteesByMentor( $mentorNoMentees, MentorStore::ROLE_BACKUP ) )
 		);
 	}
 
