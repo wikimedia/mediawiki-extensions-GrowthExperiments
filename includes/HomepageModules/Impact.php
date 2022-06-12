@@ -761,7 +761,7 @@ class Impact extends BaseModule {
 	 * @throws Exception
 	 */
 	private function getPageViewToolsUrl( $title, $start ) {
-		$baseUrl = 'https://tools.wmflabs.org/pageviews/';
+		$baseUrl = 'https://pageviews.wmcloud.org/';
 		$format = 'Y-m-d';
 		return wfAppendQuery( $baseUrl, [
 			'project' => $this->getContext()->getConfig()->get( 'ServerName' ),
