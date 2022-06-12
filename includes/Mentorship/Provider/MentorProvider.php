@@ -22,7 +22,7 @@ abstract class MentorProvider {
 	}
 
 	/** @var int Maximum mentor intro length. */
-	protected const INTRO_TEXT_LENGTH = 240;
+	public const INTRO_TEXT_LENGTH = 240;
 
 	/**
 	 * Returns a Title to the signup page, if it exists

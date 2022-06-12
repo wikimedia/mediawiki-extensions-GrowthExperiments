@@ -168,9 +168,9 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	public function provideCustomMentorText() {
 		$fallback = 'This experienced user knows you\'re new and can help you with editing.';
 		return [
-			[ '[[User:$1]] | This is a sample text.', '"This is a sample text."' ],
-			[ '[[User:$1]]|This is a sample text.', '"This is a sample text."' ],
-			[ "[[User:$1]]|This is a sample text.\n[[User:Foobar]]|More text", '"This is a sample text."' ],
+			[ '[[User:$1]] | This is a sample text.', 'This is a sample text.' ],
+			[ '[[User:$1]]|This is a sample text.', 'This is a sample text.' ],
+			[ "[[User:$1]]|This is a sample text.\n[[User:Foobar]]|More text", 'This is a sample text.' ],
 			[ '[[User:$1]] This is a sample text', $fallback ],
 			[ '[[User:$1]]', $fallback ],
 			[ "[[User:\$1]]|\n[[User:Foobar]]|This is a sample text.", $fallback ]

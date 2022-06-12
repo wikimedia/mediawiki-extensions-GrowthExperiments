@@ -26,7 +26,6 @@ class WikitextMentorProviderTest extends MediaWikiIntegrationTestCase {
 			$coreServices->getWikiPageFactory(),
 			$coreServices->getUserNameUtils(),
 			$coreServices->getUserIdentityLookup(),
-			$coreServices->getContentLanguage(),
 			$growthServices->getGrowthConfig()->get( 'GEHomepageMentorsList' ) ?: null,
 			$growthServices->getGrowthConfig()->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null
 		);
@@ -58,7 +57,7 @@ class WikitextMentorProviderTest extends MediaWikiIntegrationTestCase {
 
 		$mentorProvider = $this->getMentorProvider();
 		$this->assertEquals(
-			'"Description"',
+			'Description',
 			$mentorProvider->newMentorFromUserIdentity( $mentorUser )->getIntroText()
 		);
 	}

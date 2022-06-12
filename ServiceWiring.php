@@ -439,7 +439,6 @@ return [
 			$services->getWikiPageFactory(),
 			$services->getUserNameUtils(),
 			$services->getUserIdentityLookup(),
-			$services->getContentLanguage(),
 			$wikiConfig->get( 'GEHomepageMentorsList' ) ?: null,
 			$wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null
 		);
