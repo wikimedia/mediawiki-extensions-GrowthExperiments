@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\DashboardModule;
 
+use Config;
 use Html;
 use IContextSource;
 use InvalidArgumentException;
@@ -66,6 +67,17 @@ abstract class DashboardModule implements IDashboardModule {
 	 */
 	final protected function getUser(): User {
 		return $this->getContext()->getUser();
+	}
+
+	/**
+	 * Shortcut to get main config object
+	 *
+	 * Short for $this->getContext()->getConfig().
+	 *
+	 * @return Config
+	 */
+	final protected function getConfig(): Config {
+		return $this->getContext()->getConfig();
 	}
 
 	/**

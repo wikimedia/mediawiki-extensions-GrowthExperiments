@@ -7,6 +7,7 @@ use Html;
 use IContextSource;
 use MalformedTitleException;
 use MediaWiki\Linker\LinkRenderer;
+use SpecialPage;
 use TitleParser;
 
 class Resources extends BaseModule {
@@ -83,12 +84,21 @@ class Resources extends BaseModule {
 			)
 		];
 
-		// add link to the list of mentors, if it is used
-		$signupTitle = $this->mentorProvider->getSignupTitle();
-		if ( $signupTitle ) {
+		// add link to the list of mentors / Special:ManageMentors
+		if ( $this->getConfig()->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_WIKITEXT ) {
+			$signupTitle = $this->mentorProvider->getSignupTitle();
+			if ( $signupTitle ) {
+				array_unshift( $links, $this->formatLink(
+					$signupTitle->getPrefixedText(),
+					$this->msg( 'growthexperiments-mentor-dashboard-resources-link-mentors-list' )->text()
+				) );
+			}
+		} elseif ( $this->getConfig()->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_STRUCTURED ) {
 			array_unshift( $links, $this->formatLink(
-				$signupTitle->getPrefixedText(),
-				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-mentors-list' )->text()
+				SpecialPage::getTitleFor( 'ManageMentors' )->getPrefixedText(),
+				$this->getUser()->isAllowed( 'managementors' ) ?
+					$this->msg( 'growthexperiments-mentor-dashboard-resources-link-manage-mentors' )->text()
+					: $this->msg( 'growthexperiments-mentor-dashboard-resources-link-view-mentor-list' )->text()
 			) );
 		}
 

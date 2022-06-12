@@ -48,6 +48,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Text shown in screen that's displayed to mentors with zero mentees\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-headline": "Headline for the \"Resources\" mentor dashboard module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Description for a link in the \"Resources\" mentor dashboard module.\nhttps://www.mediawiki.org/wiki/Help:Growth/Tools/How_to_claim_a_mentee\nSee also: {{int:MediaWiki:Growthexperiments-homepage-claimmentee-title}}\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",

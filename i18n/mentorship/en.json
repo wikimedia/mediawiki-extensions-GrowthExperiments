@@ -42,6 +42,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Change your filters to find mentees.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Resources",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "The mentor list",
+	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Manage mentors",
+	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "View the list of mentors",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "How to introduce {{GENDER:|yourself}} as a {{GENDER:|mentor}}",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "How to claim a mentee",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth tools",
