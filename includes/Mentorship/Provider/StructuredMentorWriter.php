@@ -54,7 +54,7 @@ class StructuredMentorWriter implements IMentorWriter {
 	 * @param Mentor $mentor
 	 * @return array
 	 */
-	private function serializeMentor( Mentor $mentor ): array {
+	public static function serializeMentor( Mentor $mentor ): array {
 		return [
 			'message' => $mentor->hasCustomIntroText() ? $mentor->getIntroText() : null,
 			'weight' => $mentor->getWeight(),
