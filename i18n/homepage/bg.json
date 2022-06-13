@@ -11,7 +11,7 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Добре дошъл|Добре дошла}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Начална страница",
 	"tooltip-pt-homepage": "{{GENDER:|Вашата}} начална страница",
-	"prefs-homepage": "Начална страница за новодошли",
+	"prefs-homepage": "Възможности за начинаещи редактори",
 	"growthexperiments-homepage-enable": "Показване на началната страница за новодошли",
 	"growthexperiments-homepage-pt-link": "По подразбиране към началната страница за новодошли от връзката за потребителско име в личните инструменти",
 	"growthexperiments-homepage-email-header-noemail": "Добавете {{GENDER:$1|Вашият}} имейл",

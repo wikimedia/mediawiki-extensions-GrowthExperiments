@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Msz2001",
 			"Nux",
 			"Woytecr"
 		]
@@ -14,12 +15,12 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Poniżej {{GENDER:|znajdziesz}} swoich podopiecznych. Użyj filtrów do ograniczenia wyświetlanych danych.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Do obsługi tabeli wymagany jest JavaScript. Prosimy włączyć JavaScript by móc skorzystać z tego modułu.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Kto jest w twojej tabeli?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Ta tabela pokazuje tych podopiecznych, których konto zostało zarejestrowane w ciągu ostatnich dwóch tygodni lub wykonali edycję w ciągu ostatniego pół roku, a także mieć [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|włączoną stronę domową nowicjusza]]. Dane aktualizowane są co trzy godziny.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Ta tabela pokazuje tych podopiecznych, których konto zostało zarejestrowane w ciągu ostatnich dwóch tygodni lub wykonali edycję w ciągu ostatniego pół roku, a także mają [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|włączoną stronę domową nowicjusza]]. Dane aktualizowane są co trzy godziny.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Dodaj do ulubionych",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nazwa użytkownika",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Liczba wycofanych zmian",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Liczba bloków",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Liczba blokad",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Odpowiedzi na pytania przewodnika",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Liczba edycji",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data rejestracji",
@@ -67,7 +68,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Twój status został zmieniony na „Niedostępny(-a)”.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Wiadomość do twoich podopiecznych",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Wybierz nowicjusza(-kę)",
-	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Możesz ustawić się jako przewodnik(-czka) dla konkretnych nowicjuszy. Typowo używane to jest przy organizacji edytonów i innych szkoleń. Czyli np. aby osoba prowadząca szkolenie mogła wspierać szkolonych nowicjuszy zarówno na wiki, jak i poza nią.",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Możesz ustawić się jako {{GENDER:|przewodnik|przewodniczka|przewodnik(-czka)}} dla konkretnych nowicjuszy. Typowo używane to jest przy organizacji edytonów i innych szkoleń. Czyli np. aby osoba prowadząca szkolenie mogła wspierać szkolonych nowicjuszy zarówno na wiki, jak i poza nią.",
 	"growthexperiments-rcfilters-mentorship-title": "Przewodniczenie",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Twoi}} ulubieni podopieczni",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Podopieczni, których dodał{{GENDER:|eś|aś|eś(-aś)}} do ulubionych w panelu przewodników",

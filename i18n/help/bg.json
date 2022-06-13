@@ -31,7 +31,7 @@
 	"growthexperiments-help-panel-questionreview-header": "Когато публикувате въпрос, той става <strong>публично видим</strong>, като се отбелязва потребителско Ви име „$2“ в $1, където друг доброволец, в рамките на ден или два, ще се опита да отговори на въпроса Ви.",
 	"growthexperiments-help-panel-questionreview-label": "Вашият въпрос",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Включване на заглавието на страницата към моя въпрос",
-	"growthexperiments-help-panel-question-post-error": "Възникна грешка при опита да бъде публикуван въпросът Ви. Можете да опитате отново или можете да посетите $1 посредством Вашия браузър, за да добавите ръчно своя въпрос.",
+	"growthexperiments-help-panel-question-post-error": "Възникна грешка при опита да бъде публикуван въпросът Ви. Можете да опитате отново или да посетите $1 посредством Вашия браузър, за да добавите ръчно своя въпрос.",
 	"growthexperiments-help-panel-suggestededits-title": "Предложения за редактиране",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Готови?</strong> Кликнете върху „{{int:vector-view-edit}}“, за да започнете.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Готови?</strong> Отворете раздела, който желаете да редактирате, след което цъкнете върху символа с моливчето.",
