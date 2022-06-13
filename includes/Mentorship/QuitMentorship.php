@@ -81,7 +81,7 @@ class QuitMentorship {
 	public function getStage(): int {
 		if ( $this->mentorProvider->isMentor( $this->mentor ) ) {
 			return self::STAGE_LISTED_AS_MENTOR;
-		} elseif ( $this->mentorStore->getMenteesByMentor( $this->mentor ) !== [] ) {
+		} elseif ( $this->mentorStore->getMenteesByMentor( $this->mentor, MentorStore::ROLE_PRIMARY ) !== [] ) {
 			return self::STAGE_NOT_LISTED_HAS_MENTEES;
 		} else {
 			return self::STAGE_NOT_LISTED_NO_MENTEES;
@@ -117,7 +117,9 @@ class QuitMentorship {
 	): bool {
 		$guard = $this->permissionManager->addTemporaryUserRights( $this->mentor, 'bot' );
 
-		$mentees = $this->mentorStore->getMenteesByMentor( $this->mentor );
+		// only process primary mentors (T309984). Backup mentors will be automatically ignored by
+		// MentorPageMentorManager::getMentorForUser and replaced with a valid mentor if needed
+		$mentees = $this->mentorStore->getMenteesByMentor( $this->mentor, MentorStore::ROLE_PRIMARY );
 		foreach ( $mentees as $mentee ) {
 			$changeMentor = $this->changeMentorFactory->newChangeMentor(
 				$mentee,
