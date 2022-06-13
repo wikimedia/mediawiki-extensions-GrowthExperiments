@@ -63,7 +63,7 @@ class WikiPageConfigWriterFactory {
 
 	/**
 	 * @param LinkTarget $configPage
-	 * @param UserIdentity|null $performer
+	 * @param UserIdentity|null $performer If null is passed, a system account will be used.
 	 * @return WikiPageConfigWriter
 	 */
 	public function newWikiPageConfigWriter(
