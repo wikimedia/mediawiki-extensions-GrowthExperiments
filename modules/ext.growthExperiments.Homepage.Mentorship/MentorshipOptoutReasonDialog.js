@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 
-	var RejectionReasonSelect = require( '../ext.growthExperiments.StructuredTask/RejectionReasonSelect.js' ),
+	var SelectWithTextInputWidget = require( '../ui-components/SelectWithTextInputWidget.js' ),
 		HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
@@ -57,7 +57,7 @@
 				label: mw.msg( 'growthexperiments-homepage-mentorship-optout-confirmation-reason-' + reason )
 			};
 		} );
-		this.reasonSelect = new RejectionReasonSelect( {
+		this.reasonSelect = new SelectWithTextInputWidget( {
 			options: selectOptions,
 			isMultiSelect: false
 		} );

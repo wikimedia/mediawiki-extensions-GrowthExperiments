@@ -1,4 +1,4 @@
-var RejectionReasonSelect = require( '../RejectionReasonSelect.js' );
+var SelectWithTextInputWidget = require( '../../ui-components/SelectWithTextInputWidget.js' );
 
 /**
  * Dialog with a list of reasons for rejecting a suggestions
@@ -53,7 +53,7 @@ RecommendedLinkRejectionDialog.prototype.initialize = function () {
 		data: 'other',
 		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-other' )
 	} ];
-	this.reasonSelect = new RejectionReasonSelect( {
+	this.reasonSelect = new SelectWithTextInputWidget( {
 		options: selectOptions,
 		isMultiSelect: true
 	} );
