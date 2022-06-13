@@ -10,6 +10,7 @@ use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use Html;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
@@ -327,9 +328,23 @@ class Mentorship extends BaseModule {
 
 	private function getIntroText() {
 		$mentor = $this->mentorManager->getMentorForUser( $this->getContext()->getUser() );
-		return Html::element( 'div',
+
+		$introText = $this->getContext()->getLanguage()->truncateForVisual(
+			$mentor->getIntroText(),
+			MentorProvider::INTRO_TEXT_LENGTH
+		);
+		if ( $mentor->hasCustomIntroText() ) {
+			$introText = $this->msg( 'quotation-marks' )
+				->inContentLanguage()
+				->params( $introText )
+				->text();
+		}
+
+		return Html::element(
+			'div',
 			[ 'class' => 'growthexperiments-homepage-mentorship-intro' ],
-			$mentor->getIntroText() );
+			$introText
+		);
 	}
 
 	private function getQuestionButton() {

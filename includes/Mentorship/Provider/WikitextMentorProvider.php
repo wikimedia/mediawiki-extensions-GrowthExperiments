@@ -6,7 +6,6 @@ use BagOStuff;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\WikiConfigException;
-use Language;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -42,9 +41,6 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
 
-	/** @var Language */
-	private $language;
-
 	/** @var string|null */
 	private $mentorsPageName;
 
@@ -59,7 +55,6 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param UserNameUtils $userNameUtils
 	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param Language $language
 	 * @param string|null $mentorsPageName Title of the page which contains the list of available mentors.
 	 *   See the documentation of the GEHomepageMentorsList config variable for format. May be null if no
 	 *   such page exists.
@@ -75,7 +70,6 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 		WikiPageFactory $wikiPageFactory,
 		UserNameUtils $userNameUtils,
 		UserIdentityLookup $userIdentityLookup,
-		Language $language,
 		?string $mentorsPageName,
 		?string $manuallyAssignedMentorsPageName
 	) {
@@ -88,7 +82,6 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->userNameUtils = $userNameUtils;
 		$this->userIdentityLookup = $userIdentityLookup;
-		$this->language = $language;
 		$this->mentorsPageName = $mentorsPageName;
 		$this->manuallyAssignedMentorsPageName = $manuallyAssignedMentorsPageName;
 	}
@@ -414,10 +407,7 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 			return null;
 		}
 
-		return wfMessage( 'quotation-marks' )
-			->inContentLanguage()
-			->params( $this->language->truncateForVisual( $introText, self::INTRO_TEXT_LENGTH ) )
-			->plain();
+		return $introText;
 	}
 
 	/**
