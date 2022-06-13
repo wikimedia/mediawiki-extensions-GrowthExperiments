@@ -21,7 +21,9 @@
 			"NBS",
 			"Tanzun",
 			"Jack Jackie Pomi",
-			"NR Deblocked"
+			"NR Deblocked",
+			"Etonkovidova",
+			"Iluvatar"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Включить панель помощи редактору",
@@ -54,7 +56,7 @@
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Советы по быстрому старту",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Готовы?</strong> Нажмите «{{int:vector-view-edit}}» чтобы начать.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Готовы?</strong> Откройте раздел, который вы хотите отредактировать, и нажмите на иконку карандаша.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Под корректурой подразумеваются небольшие исправления для улучшения читабельности текста. Например, проверка орфографии, грамматики или ясности текста. Корректура помогает статьям быть более качественными и надежной.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Под корректурой подразумеваются небольшие исправления для улучшения читабельности текста. Например, проверка орфографии, грамматики или ясности текста. Корректура помогает статьям быть более качественными и надёжными.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Полёт на Меркурий с <mark class=\"negative\">Землии</mark> осложнён значительными техническими трудностями.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "Чтобы изменить ситуацию, {{GENDER:|вам}} потребуется сделать всего одну-две небольшие изменения. То есть {{GENDER:|Вам}} не нужно работать над всей статьёй в целом и обладать какими-либо специальными знаниями по теме.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|Вы}} можете исправить орфографию и грамматические ошибки. Это может быть слишком длинное предложение, повторяющиеся слова или некорректная пунктуация.",
