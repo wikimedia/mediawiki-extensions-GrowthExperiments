@@ -509,7 +509,7 @@
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Du}} hast alle Linkvorschläge von heute erledigt.\n\nPasse {{GENDER:|deinen}} Schwierigkeitsgrad an, um andere Arten von Bearbeitungen zu sehen, oder komme morgen für weitere Linkvorschläge wieder.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Verstanden",
 	"growthexperiments-homepage-mentorship-optin-header": "Lotse für die Bearbeitung",
-	"growthexperiments-homepage-mentorship-optin-text": "Wenn {{GENDER:|du}} Fragen zur Bearbeitung hast, kann dir ein erfahrener Benutzer als „Lotse“ zur Seite gestellt werden.",
+	"growthexperiments-homepage-mentorship-optin-text": "Wenn {{GENDER:|du}} Fragen zur Bearbeitung hast, kann dir ein erfahrener Benutzer als Lotse zur Seite gestellt werden.",
 	"growthexperiments-homepage-mentorship-optin-button": "Einen Lotsen finden",
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Einen Lotsen finden?",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Fahre fort, um mit einem erfahrenen Benutzer als {{GENDER:|deinen}} Lotsen in Kontakt zu kommen.",

@@ -495,7 +495,7 @@
 	"growthexperiments-addlink-daily-task-limit-exceeded": "השלמת את כל הוספות הצעות הקישורים להיום.\n\n{{GENDER:|כוונן|כוונני}} את רמות הקושי שלך כדי לראות סוגים אחרים של עריכה או {{GENDER:|חזור|חזרי}} מחר בשביל עוד הצעות קישורים.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "הבנתי",
 	"growthexperiments-homepage-mentorship-optin-header": "חונך לעריכה",
-	"growthexperiments-homepage-mentorship-optin-text": "אם יש {{GENDER:|לך}} שאלות על עריכה, עורך מנוסה יכול להיות מוקצה לך בתור \"חונך\" שיעזור לך.",
+	"growthexperiments-homepage-mentorship-optin-text": "אם יש {{GENDER:|לך}} שאלות על עריכה, עורך מנוסה יכול להיות מוקצה לך בתור חונך שיעזור לך.",
 	"growthexperiments-homepage-mentorship-optin-button": "קבלת חונך",
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "לקבל חונך?",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "להמשיך לקבלת עורך מנוסה בתור החונך {{GENDER:|שלך}}.",

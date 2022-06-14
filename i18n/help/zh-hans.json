@@ -47,6 +47,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "下一个编辑提议：",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "下一个编辑提议：",
 	"growthexperiments-help-panel-postedit-footer": "查看全部编辑提议",
+	"growthexperiments-help-panel-postedit-suggestededits-info": "{{SITENAME}}上的其他用户发现了需要改进的文章。浏览这些编辑建议，继续{{GENDER:|您}}的编辑。",
 	"growthexperiments-help-panel-questionreview-title": "询问咨询台",
 	"growthexperiments-help-panel-questionreview-title-mentor": "咨询你的导师",
 	"growthexperiments-help-panel-questionreview-header": "您的提问将以您的用户名“$2”<strong>公开发布</strong>至$1。接下来一天左右的时间里，其他的志愿编辑会尝试回答您的问题。",

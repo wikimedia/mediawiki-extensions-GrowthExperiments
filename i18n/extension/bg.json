@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"StanProg",
 			"Ted Masters",
 			"Vodnokon4e"
 		]
@@ -12,8 +13,8 @@
 	"growthexperiments-config-validator-contentmodel-mismatch": "Неправилен модел на съдържание: конфигурационният файл на GrowthExperiments трябва да бъде с модел на съдържание JSON, установено е $1",
 	"growthexperiments-edit-config-disabled": "Конфигурацията за общността е деактивирана.",
 	"growthexperiments-edit-config-title": "Редактиране конфигурацията на Растеж",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Последно обновено от [[User:$1|$1]] $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последно обновено от неизвестен потребител $1.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Последно обновено от [[User:$1|$1]] $2 ([$4 разл])",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последно обновено от неизвестен потребител $1([$3 разл]).",
 	"growthexperiments-edit-config-pretext": "Тази страница Ви позволява да редактирате настройките за екипна работа в конфигурацията на [[:mw:Special:MyLanguage/Growth|Растеж]]. Редакции в $1 ще бъдат извършени само с Ваше съгласие. Можете да видите направените от Вас промени в историята на страницата.",
 	"growthexperiments-edit-config-error-invalid-title": "Конфигурационната страница не е правилно конфигурирана",
 	"growthexperiments-edit-config-edit-summary": "Резюме на редакцията",

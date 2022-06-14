@@ -101,6 +101,7 @@
 	"growthexperiments-homepage-mentorship-question-button": "پرسیارێک لە {{GENDER:$1|مامۆستاکە}}{{GENDER:$2|ت}} بکە",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "وتووێژەکانی تری {{GENDER:$2|{{GENDER:$1|مامۆستاکە}}ت}} ببینە",
 	"growthexperiments-homepage-mentorship-dialog-title": "پرسیار لە {{GENDER:$1|مامۆستا}}کەی {{GENDER:$2|خۆت}} بکە",
+	"growthexperiments-homepage-mentorship-questionreview-header": "کاتێک پرسیار دەکەیت، لەژێر {{GENDER:$2|ناوی بەکارھێنەریت}} ($2)، بۆ $3، <strong>بەئاشکرا بڵاو دەکرێتەوە</strong> کە ئەوێ ئەو شوێنەیە کە {{GENDER:$1|دەتوانن}} پرسیارەکەتی تێدا بدۆزنەوە و وەڵامت بدەنەوە.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "پەڕەی لێدوانی {{GENDER:$1|مامۆستا}}کەی {{GENDER:$2|تۆ}}",
 	"growthexperiments-homepage-mentorship-view-question-text": "سەیری پرسیارەکەی {{GENDER:$2|خۆت}} بکە لە پەڕەی لێدوانی {{GENDER:$1|مامۆستاکەت}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "پرسیار لە [[User:$1|$1]]ەوە",

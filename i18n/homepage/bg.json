@@ -69,7 +69,7 @@
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 редакции към момента",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Вижте предложените редакции",
 	"growthexperiments-tour-response-button-okay": "Разбрах",
-	"tag-newcomer_task": "Задача за новодошъл",
+	"tag-newcomer_task": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Задача за новодошъл]]",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Ваши}} скорошни въпроси",
 	"growthexperiments-homepage-recent-questions-posted-on": "Публикувано преди $1",
 	"growthexperiments-homepage-recent-questions-archived": "архивирано",
@@ -98,7 +98,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Не са открити предложения",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Изберете други нива на трудност, за да откриете предложения за редакции.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Изберете други интереси или нива на трудност, за да откриете предложения за редакции.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "редакции през последния ден",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|редакция|редакции}} през последния ден",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Доброволци като Вас са допринесли за подобряването днес на {{SITENAME}}. Включете се!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Вижте всички предложения",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Коригирайте правописа, граматиката и изказа",
@@ -122,7 +122,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Средно трудно",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Трудно",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Изберете видовете редакции",
-	"growthexperiments-homepage-suggestededits-topic-filters-title": "Изберете интереси",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "Изберете теми",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Готово",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Готово",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|открита статия|открити статии}}",
@@ -176,7 +176,7 @@
 	"growthexperiments-homepage-suggestededits-error-title": "Няма налични предложения за редактиране към момента.",
 	"growthexperiments-homepage-suggestededits-error-description": "Моля, опитайте по-късно.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Изберете поне един вид на редакцията",
-	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Изберете интереси",
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Изберете теми",
 	"growthexperiments-homepage-suggestededits-topics-more": "показване на още",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|тема|теми}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Избиране на всички",
@@ -223,5 +223,5 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Отказ",
 	"growthexperiments-addimage-inspector-yes-button": "Да",
 	"growthexperiments-addimage-inspector-no-button": "Не",
-	"growthexperiments-addimage-inspector-skip-button": "Пропускане"
+	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|Не съм сигурен|Не съм сигурна}}"
 }

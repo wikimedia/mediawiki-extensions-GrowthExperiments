@@ -55,5 +55,6 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "新規に記事を書く方法のリンク先にある解説ページ",
 	"growthexperiments-edit-config-mentorship": "指導役",
 	"growthexperiments-edit-config-mentorship-description": "それぞれのウィキごとに指導役の名簿は2種類置けます。 片方の名簿では担当する新人編集者がランダムに決まる名簿、もう片方は割り当てを受ける代わりに、自分で相手を選べるようにします。後者の名簿は、指導の対象をイベント参加者や担当するクラスなど、特定の人たちに限定したい場合に使います。",
-	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "新人編集者を自動的に割り当てる指導役名簿のページ"
+	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "新人編集者を自動的に割り当てる指導役名簿のページ",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "無効"
 }

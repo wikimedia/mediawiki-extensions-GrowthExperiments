@@ -3,6 +3,7 @@
 		"authors": [
 			"GuoPC",
 			"Stang",
+			"Stevenliuyi",
 			"Tiger",
 			"TsuyaMarisa",
 			"Xiplus",
@@ -98,5 +99,11 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "约平均水平的两倍",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|您的}}负担已变更为“$1”。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "建立账户时，学员会被随机分配给导师。您可以控制分配给您的学员的数量，不过某些学员相比其他人会更为活跃地发问。",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "推荐您先选择“平均水平”，以便评估您指导学员的能力，然后再增加或减少分配给您的学员。"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "推荐您先选择“平均水平”，以便评估您指导学员的能力，然后再增加或减少分配给您的学员。",
+	"growthexperiments-manage-mentors-title": "管理导师",
+	"growthexperiments-manage-mentors-username": "用户名",
+	"growthexperiments-manage-mentors-last-active": "最近活跃",
+	"growthexperiments-manage-mentors-intro-msg": "给新手的信息",
+	"growthexperiments-manage-mentors-remove-mentor": "移除",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "移除该导师的原因"
 }

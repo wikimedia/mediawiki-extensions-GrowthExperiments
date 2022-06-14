@@ -4,6 +4,7 @@
 			"Akoopal",
 			"Bdijkstra",
 			"Dedalus",
+			"Dnlweijers",
 			"Elroy",
 			"Encycloon",
 			"Klaas van Buiten",
@@ -416,5 +417,6 @@
 	"growthexperiments-addimage-summary-label": "Samenvatting",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|andere}}",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Begrepen",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Begrepen"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Begrepen",
+	"growthexperiments-homepage-mentorship-optin-text": "Als {{GENDER:|je}} vragen hebt over bewerken, kan een ervaren bewerker je worden toegewezen als je mentor om je te helpen."
 }

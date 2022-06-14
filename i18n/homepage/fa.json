@@ -505,6 +505,7 @@
 	"growthexperiments-homepage-mentorship-optout-text": "شما همیشه می‌توانید دوباره مربی دریافت کنید. با این حال، ممکن است مربی پیشین را دریافت نکنید.",
 	"growthexperiments-homepage-mentorship-optout-cancel": "لغو",
 	"growthexperiments-homepage-mentorship-optout-optout": "انصراف دادن",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|شما}} دیگر مربی نخواهید داشت.",
 	"growthexperiments-homepage-mentorship-optout-confirmation-pretext": "چند لحظه زمان بگذارید و به ما اجازه دهید تا بدانیم چرا شما تصمیم به انصراف از داشتن مربی گرفتید (اختیاری):",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "مربی دیگری می‌خواهم",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "مربی نمی‌خواهم",
