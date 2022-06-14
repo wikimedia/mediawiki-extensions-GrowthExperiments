@@ -286,6 +286,14 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 			recommendationAccepted: accepted,
 			rejectionReason: undefined
 		},
+		getRejectionDialogLogActionData = function ( rejectionReason, otherReason ) {
+			return $.extend( this.getSuggestionLogActionData(), {
+				/* eslint-disable camelcase */
+				rejection_reason: rejectionReason,
+				other_reason: otherReason ? encodeURIComponent( otherReason ) : undefined
+				/* eslint-enable camelcase */
+			} );
+		}.bind( this ),
 		openRejectionDialogWindowPromise;
 
 	// Temporarily disable read-only mode
@@ -297,16 +305,19 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		this.updateAnnotation( fragment, annotation, attributes );
 
 		openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
-			'recommendedLinkRejection', this.currentDataModel.getRejectionReason()
+			'recommendedLinkRejection', {
+				selection: this.currentDataModel.getRejectionReason(),
+				otherRejectionReason: this.currentDataModel.getOtherRejectionReason()
+			}
 		);
 
 		openRejectionDialogWindowPromise.opening.then( function () {
 			this.logger.log(
 				'impression',
-				$.extend( this.getSuggestionLogActionData(), {
-					// eslint-disable-next-line camelcase
-					rejection_reason: this.currentDataModel.getRejectionReason()
-				} ),
+				getRejectionDialogLogActionData(
+					this.currentDataModel.getRejectionReason(),
+					this.currentDataModel.getOtherRejectionReason()
+				),
 				// eslint-disable-next-line camelcase
 				{ active_interface: 'rejection_dialog' }
 			);
@@ -317,21 +328,27 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 				this.currentDataModel.getRejectionReason();
 			this.logger.log(
 				'close',
-				$.extend( this.getSuggestionLogActionData(), {
-					// eslint-disable-next-line camelcase
-					rejection_reason: rejectionReason
-				} ),
+				getRejectionDialogLogActionData( rejectionReason, closedData.otherRejectionReason ),
 				// eslint-disable-next-line camelcase
 				{ active_interface: 'rejection_dialog' }
 			);
-			return closedData && rejectionReason;
+			return closedData;
 		}.bind( this ) );
 	}
 
-	acceptancePromise.then( function ( rejectionReason ) {
+	acceptancePromise.then( function ( closedData ) {
+		closedData = closedData || {};
+
+		var rejectionReason = closedData.reason,
+			otherRejectionReason = closedData.otherRejectionReason;
 		if ( rejectionReason ) {
 			attributes.rejectionReason = rejectionReason;
 		}
+
+		if ( otherRejectionReason ) {
+			attributes.otherRejectionReason = otherRejectionReason;
+		}
+
 		return this.updateAnnotation( fragment, annotation, attributes );
 	}.bind( this ) ).then( function () {
 		// Re-enable read-only mode (if it was previously enabled)

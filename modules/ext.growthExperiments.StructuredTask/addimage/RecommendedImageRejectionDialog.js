@@ -49,7 +49,7 @@ RecommendedImageRejectionDialog.prototype.initialize = function () {
 	RecommendedImageRejectionDialog.super.prototype.initialize.call( this );
 	this.message.$element.addClass( 'oo-ui-inline-help' );
 	var selectOptions = this.constructor.static.rejectionReasons.map( function ( reason ) {
-		return {
+		var optionData = {
 			data: reason,
 			// Messages used:
 			// * growthexperiments-addimage-rejectiondialog-reason-notrelevant
@@ -61,6 +61,13 @@ RecommendedImageRejectionDialog.prototype.initialize = function () {
 			// * growthexperiments-addimage-rejectiondialog-reason-other
 			label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-' + reason ).text()
 		};
+
+		if ( reason === 'other' ) {
+			optionData.hasTextInput = mw.config.get( 'wgGEStructuredTaskRejectionReasonTextInputEnabled' );
+			optionData.textInputPlaceholder = mw.message( 'growthexperiments-structuredtask-other-rejectionreason-placeholder' ).text();
+			optionData.textInputMaxLength = 100;
+		}
+		return optionData;
 	} );
 	this.reasonSelect = new SelectWithTextInputWidget( {
 		options: selectOptions,
@@ -86,7 +93,11 @@ RecommendedImageRejectionDialog.prototype.getActionProcess = function ( action )
 
 	return new OO.ui.Process( function () {
 		var selectedItems = ( action === 'cancel' ) ? [] : this.reasonSelect.findSelection();
-		this.close( { action: action, reasons: selectedItems } );
+		this.close( {
+			action: action,
+			reasons: selectedItems,
+			otherRejectionReason: this.reasonSelect.getTextInputValueForData( 'other' )
+		} );
 	}, this );
 };
 

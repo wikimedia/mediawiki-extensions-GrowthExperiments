@@ -51,7 +51,10 @@ RecommendedLinkRejectionDialog.prototype.initialize = function () {
 		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-more-fewer-words' )
 	}, {
 		data: 'other',
-		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-other' )
+		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-other' ),
+		hasTextInput: mw.config.get( 'wgGEStructuredTaskRejectionReasonTextInputEnabled' ),
+		textInputPlaceholder: mw.message( 'growthexperiments-structuredtask-other-rejectionreason-placeholder' ).text(),
+		textInputMaxLength: 100
 	} ];
 	this.reasonSelect = new SelectWithTextInputWidget( {
 		options: selectOptions,
@@ -64,7 +67,8 @@ RecommendedLinkRejectionDialog.prototype.initialize = function () {
 RecommendedLinkRejectionDialog.prototype.getSetupProcess = function ( data ) {
 	return RecommendedLinkRejectionDialog.super.prototype.getSetupProcess.call( this, data )
 		.next( function () {
-			this.reasonSelect.updateSelection( data );
+			this.reasonSelect.updateSelection( data.selection );
+			this.reasonSelect.updateTextInputValueForData( 'other', data.otherRejectionReason );
 		}, this );
 };
 
@@ -77,7 +81,11 @@ RecommendedLinkRejectionDialog.prototype.getActionProcess = function ( action ) 
 
 	return new OO.ui.Process( function () {
 		var selectedItems = this.reasonSelect.findSelection();
-		this.close( { action: action, reason: selectedItems } );
+		this.close( {
+			action: action,
+			reason: selectedItems,
+			otherRejectionReason: this.reasonSelect.getTextInputValueForData( 'other' )
+		} );
 	}, this );
 };
 
