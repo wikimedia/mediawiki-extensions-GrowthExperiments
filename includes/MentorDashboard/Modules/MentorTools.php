@@ -257,6 +257,7 @@ class MentorTools extends BaseModule {
 		return [
 			'GEMentorDashboardMentorIntroMessage' => $mentor->getIntroText(),
 			'GEMentorDashboardMentorAutoAssigned' => $mentor->getAutoAssigned(),
+			'GEMentorDashboardMentorIntroMessageMaxLength' => MentorProvider::INTRO_TEXT_LENGTH
 		];
 	}
 }

@@ -30,7 +30,11 @@ MentorMessageChangeDialog.prototype.initialize = function () {
 	MentorMessageChangeDialog.super.prototype.initialize.apply( this, arguments );
 
 	this.mentorMessageInput = new OO.ui.TextInputWidget( {
-		value: mw.config.get( 'GEMentorDashboardMentorIntroMessage' )
+		value: mw.config.get( 'GEMentorDashboardMentorIntroMessage' ),
+		maxLength: mw.config.get( 'GEMentorDashboardMentorIntroMessageMaxLength' )
+	} );
+	this.mentorMessageInput.connect( this, {
+		change: [ 'updateRemainingMessageLength' ]
 	} );
 
 	this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
@@ -41,6 +45,13 @@ MentorMessageChangeDialog.prototype.initialize = function () {
 		} ).$element
 	);
 	this.$body.append( this.content.$element );
+};
+
+/** @inheritDoc **/
+MentorMessageChangeDialog.prototype.getSetupProcess = function () {
+	return MentorMessageChangeDialog.super.prototype.getSetupProcess.apply( this, arguments )
+		// has to be in getSetupProcess(); when executed inside initialize, label is covered by the field content
+		.next( this.updateRemainingMessageLength.bind( this ) );
 };
 
 /** @inheritDoc **/
@@ -72,6 +83,15 @@ MentorMessageChangeDialog.prototype.getActionProcess = function ( action ) {
 	}
 
 	return MentorMessageChangeDialog.super.prototype.getActionProcess.call( this, action );
+};
+
+/**
+ * Update remaining message length in the mentor message input field
+ */
+MentorMessageChangeDialog.prototype.updateRemainingMessageLength = function () {
+	this.mentorMessageInput.setLabel( String(
+		mw.config.get( 'GEMentorDashboardMentorIntroMessageMaxLength' ) - this.mentorMessageInput.getInputLength()
+	) );
 };
 
 module.exports = MentorMessageChangeDialog;
