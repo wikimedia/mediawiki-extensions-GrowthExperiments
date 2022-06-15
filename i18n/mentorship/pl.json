@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nux"
+			"Nux",
+			"Msz2001",
+			"Woytecr"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Panel przewodników",
@@ -17,7 +19,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Dodaj do ulubionych",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nazwa użytkownika",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Liczba wycofanych zmian",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Liczba bloków",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Liczba blokad",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Odpowiedzi na pytania przewodnika",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Liczba edycji",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data rejestracji",

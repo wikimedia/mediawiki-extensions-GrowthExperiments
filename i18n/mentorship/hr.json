@@ -32,5 +32,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Prikaži $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 / $2",
 	"growthexperiments-rcfilters-mentorship-title": "Mentorstvo",
-	"growthexperiments-rcfilters-mentorship-starred-desc": "Novaci koje ste označili zvjezdicom u mentorskom sučelju"
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Novaci koje ste označili zvjezdicom u mentorskom sučelju",
+	"growthexperiments-quit-mentorship-title": "Završi mentorstvo",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Žao nam je što napuštate. Da biste započeli proces završetka mentorstva, najprije morate ukloniti Vaše ime s [[$1|popisa mentora]]. Kad to učinite, molimo vratite se na ovu stranicu.",
+	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Sljedeći korak u odustajanju od mentorstva je preraspoređivanje vaših novaka. Ako ste sigurni da želite odustati, pritisnite gumb ispod."
 }
