@@ -491,10 +491,10 @@ NewcomerTasksStore.prototype.restoreState = function () {
  * task preview data is not available, the tasks are still fetched on the client side (the no
  * suggestions found card is shown first) so the quality config should be updated accordingly.
  *
- * @param {mw.libs.ge.TaskData} taskData
+ * @param {mw.libs.ge.TaskData|undefined} taskData
  */
 NewcomerTasksStore.prototype.maybeUpdateQualityGateConfig = function ( taskData ) {
-	if ( taskData.qualityGateConfig ) {
+	if ( taskData && taskData.qualityGateConfig ) {
 		this.qualityGateConfig = taskData.qualityGateConfig;
 	}
 };
