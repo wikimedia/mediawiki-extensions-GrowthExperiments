@@ -500,7 +500,6 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js",
 				"ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutDialog.js",
-				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipDetailsModal.js",
@@ -509,7 +508,9 @@
 				"ext.growthExperiments.DataStore/constants.js",
 				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
 				"utils/Utils.js",
-				"utils/IconUtils.js"
+				"utils/IconUtils.js",
+				"ui-components/SelectWithTextInputWidget.js",
+				"ui-components/OptionWithTextInputWidget.js"
 			],
 			"messages": [
 				"growthexperiments-homepage-suggestededits-more-info",
@@ -568,10 +569,11 @@
 				"utils/Utils.js",
 				"ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutDialog.js",
-				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js",
-				"ext.growthExperiments.Homepage.Mentorship/MentorshipDetailsModal.js"
+				"ext.growthExperiments.Homepage.Mentorship/MentorshipDetailsModal.js",
+				"ui-components/SelectWithTextInputWidget.js",
+				"ui-components/OptionWithTextInputWidget.js"
 			],
 			"targets": [
 				"desktop",
@@ -822,7 +824,6 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialog.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.js",
-				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskMessageDialog.js",
 				"ext.growthExperiments.StructuredTask/MachineSuggestionsBack.js",
@@ -852,11 +853,14 @@
 				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js",
 				"utils/Utils.js",
-				"ui-components/HelpPanelButton.js"
+				"ui-components/HelpPanelButton.js",
+				"ui-components/SelectWithTextInputWidget.js",
+				"ui-components/OptionWithTextInputWidget.js"
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask/MachineSuggestionsMode.less",
 				"ext.growthExperiments.StructuredTask/EditModeConfirmationDialog.less",
+				"ui-components/OptionWithTextInputWidget.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialog.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskMessageDialog.less",
@@ -1683,12 +1687,15 @@
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js",
 			"modules/ui-components/SwipePane.js",
 			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.test.js",
-			"modules/ui-components/CollapsibleDrawer.js",
-			"tests/qunit/ui-components/CollapsibleDrawer.test.js",
 			"modules/ext.growthExperiments.DataStore/FiltersStore.js",
 			"tests/qunit/ext.growthExperiments.DataStore/FiltersStore.test.js",
 			"modules/ext.growthExperiments.DataStore/NewcomerTasksStore.js",
 			"tests/qunit/ext.growthExperiments.DataStore/NewcomerTasksStore.test.js",
+			"modules/ui-components/CollapsibleDrawer.js",
+			"tests/qunit/ui-components/CollapsibleDrawer.test.js",
+			"modules/ui-components/SelectWithTextInputWidget.js",
+			"modules/ui-components/OptionWithTextInputWidget.js",
+			"tests/qunit/ui-components/SelectWithTextInputWidget.test.js",
 			"tests/qunit/__mocks__/config.json",
 			"tests/qunit/__mocks__/GroupedTopics.json",
 			"tests/qunit/__mocks__/Topics.json",

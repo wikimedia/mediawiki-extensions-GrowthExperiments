@@ -1,4 +1,4 @@
-var RejectionReasonSelect = require( '../RejectionReasonSelect.js' );
+var SelectWithTextInputWidget = require( '../../ui-components/SelectWithTextInputWidget.js' );
 
 /**
  * Dialog with a list of reasons for rejecting a suggestions
@@ -62,7 +62,7 @@ RecommendedImageRejectionDialog.prototype.initialize = function () {
 			label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-' + reason ).text()
 		};
 	} );
-	this.reasonSelect = new RejectionReasonSelect( {
+	this.reasonSelect = new SelectWithTextInputWidget( {
 		options: selectOptions,
 		isMultiSelect: true
 	} );
