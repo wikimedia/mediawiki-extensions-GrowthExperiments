@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BlackShadowG",
 			"GuoPC",
 			"Stang",
 			"Stevenliuyi",
@@ -100,10 +101,18 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|您的}}负担已变更为“$1”。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "建立账户时，学员会被随机分配给导师。您可以控制分配给您的学员的数量，不过某些学员相比其他人会更为活跃地发问。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "推荐您先选择“平均水平”，以便评估您指导学员的能力，然后再增加或减少分配给您的学员。",
+	"growthexperiments-mentor-writer-error-already-added": "导师$1已被添加到导师列表中",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "导师$1不在导师列表上",
 	"growthexperiments-manage-mentors-title": "管理导师",
+	"growthexperiments-manage-mentors-error-no-such-user": "错误：不存在ID为$1的用户。这可能是一个内部错误。",
+	"growthexperiments-manage-mentors-auto-assigned": "自动分配的导师",
+	"growthexperiments-manage-mentors-manually-assigned": "手动分配的导师",
 	"growthexperiments-manage-mentors-username": "用户名",
 	"growthexperiments-manage-mentors-last-active": "最近活跃",
 	"growthexperiments-manage-mentors-intro-msg": "给新手的信息",
 	"growthexperiments-manage-mentors-remove-mentor": "移除",
-	"growthexperiments-manage-mentors-remove-mentor-reason": "移除该导师的原因"
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|您}}即将移除[[User:$1]]的导师身份。",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "移除该导师的原因",
+	"growthexperiments-manage-mentors-remove-mentor-success": "用户[[User:$1|$1]]不再是一名{{GENDER:$1|导师}}。",
+	"growthexperiments-manage-mentors-return-back": "您可[[Special:ManageMentors|返回]]导师列表。"
 }

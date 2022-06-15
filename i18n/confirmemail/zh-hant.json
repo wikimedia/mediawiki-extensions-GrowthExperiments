@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BlackShadowG",
 			"Kly"
 		]
 	},
@@ -14,7 +15,11 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|嗨}}$2：\n\n感謝添加電子郵件到您註冊自 IP 地址 $1 的{{SITENAME}}帳號。\n\n請點擊下方按鈕來確認您要將電子郵件連結至您的帳號「$2」：\n\n$3\n\n請注意：確認碼會在$4後失效。\n\n謝謝您\n\n{{SITENAME}}\n\n----\n\n要取消電子郵件地址確認（因為您尚未註冊帳號或是出於其它因素），點擊此取消連結：\n$5",
 	"growthexperiments-signupcampaign-title": "感謝您的捐款！現在加就入編輯社群，來讓維基百科變得更好",
 	"growthexperiments-signupcampaign-body": "編輯維基百科可以像添加連結或是更改字詞一樣簡單。在建立帳號後，來取得有關{{GENDER:|您}}感興趣主題條目的建議！",
+	"growthexperiments-marketingvideocampaign-title": "維基百科正是由您這樣的人建立的",
+	"growthexperiments-marketingvideocampaign-body": "每個月有28萬名編者志願編輯——您會加入嗎？\n\n我們知道，進行第一次編輯常常令人生畏，但實際上很容易。只需詢問我們的專業編輯，他們會在此視頻中告訴您：",
+	"growthexperiments-marketingvideocampaign-body-mobile": "成千上萬像您這樣的人正在構建維基百科。你會加入他們嗎？\n\n這是我們的編輯給您的消息：",
 	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|您}}感興趣裡的推薦條目",
 	"growthexperiments-signupcampaign-bullet2": "向有經驗的編者尋求幫助",
-	"growthexperiments-signupcampaign-bullet3": "從簡短、簡單的編輯開始"
+	"growthexperiments-signupcampaign-bullet3": "從簡短、簡單的編輯開始",
+	"growthexperiments-campaigns-footer": "在此頁創建{{GENDER:|您}}的賬號後，它將與此活動相關聯，以用於體驗和分析目的。"
 }

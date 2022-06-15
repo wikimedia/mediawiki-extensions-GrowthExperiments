@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"A2093064",
+			"BlackShadowG",
 			"Ericliu1912",
 			"Kly",
 			"LNDDYL",
@@ -41,6 +42,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "下一個編輯提議：",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "下一個建議：",
 	"growthexperiments-help-panel-postedit-footer": "查看全部編輯建議",
+	"growthexperiments-help-panel-postedit-suggestededits-info": "{{SITENAME}}上的其他用戶發現了需要改進的條目。瀏覽這些編輯建議，繼續{{GENDER:|您}}的編輯。",
 	"growthexperiments-help-panel-questionreview-title": "詢問諮詢臺",
 	"growthexperiments-help-panel-questionreview-title-mentor": "諮詢您的導師",
 	"growthexperiments-help-panel-questionreview-header": "您的提問將以您的使用者名稱「$2」<strong>公開發佈</strong>至 $1。接下來一天左右的時間裡，其他的志願編輯會嘗試回答您的問題。",

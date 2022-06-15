@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BlackShadowG",
 			"Jonathan5566",
 			"Kly",
 			"LNDDYL",
@@ -59,7 +60,7 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "五、第五個幫助面板連結的目標頁面（推薦：條目精靈）",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "五、第五個幫助面板連結的標籤（推薦：「如何建立文章」）",
 	"growthexperiments-edit-config-homepage": "新手首頁",
-	"growthexperiments-edit-config-homepage-intro-links-create": "有關如何建立新條目的連結的目標頁面",
+	"growthexperiments-edit-config-homepage-intro-links-create": "有關建立新條目的連結的目標頁面",
 	"growthexperiments-edit-config-homepage-intro-links-image": "有關如何在視覺化編輯器中添加圖像的連結的目標頁面",
 	"growthexperiments-edit-config-mentorship": "導師計畫",
 	"growthexperiments-edit-config-mentorship-description": "每個維基媒體項目都能有兩個獨立的導師列表：一個是用於隨機分配給所有新手的導師，一個則是用於非隨機分配，但是能指定受指導者的導師。後者專門給只想成為活動或課程的導師使用。",
@@ -83,7 +84,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "更新：用於尋找需要使用當前資訊更新的文章的模板。",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "用於了解有關更新文章的更多訊息的目標頁面。",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "了解連結建議任務類型更多資訊的目標頁面。",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "在每個建議的任務上顯示的連結建議的最大數量。",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "新手每天可以完成「添加連結」 建議任務的最大數量。",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "不推荐連結的章节名称列表。",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "了解圖片建議任務類型更多資訊的目標頁面。",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "新手每天可以完成的「添加圖片」建议任务的最大数量。",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "此任務類型與機器建議關聯，並且不使用模板來產生任務池。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "包含此處定義模板的條目將不會以此任務類型向使用者顯示為任務。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "包含此處定義分類的條目將不會以此任務類型向使用者顯示為任務。",

@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bada Kaji",
 			"पर्वत सुबेदी",
 			"हिमाल सुबेदी"
 		]
 	},
+	"growthexperiments-homepage-enable": "नयाँ आगमन गृहपृष्ठ प्रदर्शन गर्नुहोस्",
 	"growthexperiments-homepage-email-button-confirmed": "प्राथमिकताहरू",
 	"growthexperiments-homepage-startediting-header": "सम्पादन सुरु गर्नुहोस्",
 	"growthexperiments-homepage-startediting-dialog-header": "सुझाइएका सम्पादनहरू",

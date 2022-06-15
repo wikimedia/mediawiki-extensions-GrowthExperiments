@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BlackShadowG",
 			"Ericliu1912",
 			"Kly",
 			"LNDDYL",
@@ -67,6 +68,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "您將離開：",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "日",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "在「{{GENDER:|您將}}離開：」的輸入內容不是整數。請再重試。",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "「{{GENDER:|您}}將離開：」中輸入的值太高。導師可以離開的最大天數為365天（一年）。",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "發生錯誤。請稍後重試。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "您的狀態已變更為「活躍」。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "您的狀態已變更為「離開」。",
@@ -98,12 +100,18 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "建立帳戶時，學員會被隨機分配給導師。您可以控制分配給您的學員的數量，不過某些學員相比其他人會更為活躍地發問。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "推薦您先選擇「平均」，以便評估您指導學員的能力，然後再增加或減少分配給您的學員。",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code>應該是<code>$2</code>，但是<code>$3</code>",
+	"growthexperiments-mentor-writer-error-already-added": "導師$1已被添加到導師列表中",
+	"growthexperiments-mentor-writer-error-not-in-the-list": "導師$1不在導師列表上",
 	"growthexperiments-manage-mentors-title": "管理導師",
+	"growthexperiments-manage-mentors-error-no-such-user": "錯誤：不存在ID為$1的使用者。這可能是一個內部錯誤。",
 	"growthexperiments-manage-mentors-auto-assigned": "自動分配的導師",
 	"growthexperiments-manage-mentors-manually-assigned": "手動分配的導師",
 	"growthexperiments-manage-mentors-username": "使用者名稱",
 	"growthexperiments-manage-mentors-last-active": "最近活動",
 	"growthexperiments-manage-mentors-intro-msg": "給新手的訊息",
 	"growthexperiments-manage-mentors-remove-mentor": "移除",
-	"growthexperiments-manage-mentors-remove-mentor-reason": "移除該導師的原因"
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|您}}即將移除[[User:$1]]的導師身份。",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "移除該導師的原因",
+	"growthexperiments-manage-mentors-remove-mentor-success": "使用者[[User:$1|$1]]不再是一名{{GENDER:$1|導師}}。",
+	"growthexperiments-manage-mentors-return-back": "您可[[Special:ManageMentors|返回]]導師列表。"
 }

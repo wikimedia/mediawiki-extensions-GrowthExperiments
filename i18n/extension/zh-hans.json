@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
+			"BlackShadowG",
 			"Cosine02",
 			"Grace03",
 			"GuoPC",
@@ -65,7 +66,7 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) 第五个帮助面板链接的目标页面（推荐：条目向导）",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5）第五个帮助面板链接的标签（推荐：“如何创建文章”）",
 	"growthexperiments-edit-config-homepage": "新手主页",
-	"growthexperiments-edit-config-homepage-intro-links-create": "有关如何创建新条目的链接的目标页面",
+	"growthexperiments-edit-config-homepage-intro-links-create": "有关创建新条目的链接的目标页面",
 	"growthexperiments-edit-config-homepage-intro-links-image": "有关如何在可视化编辑器中添加图像的链接的目标页面",
 	"growthexperiments-edit-config-mentorship": "导师",
 	"growthexperiments-edit-config-mentorship-description": "Wiki可以有两个单独的导师列表：一个用于随机分配给所有新成员的导师，另一个用于未随机分配但可以声明受指导者的导师。第二个列表用于那些只想成为活动或课程中的人的导师的导师。",
