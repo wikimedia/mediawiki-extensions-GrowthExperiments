@@ -506,7 +506,7 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|You're}} no longer being mentored.",
 	"growthexperiments-homepage-mentorship-optout-confirmation-pretext": "Take a moment to let us know why {{GENDER:|you}} decided to opt-out (optional):",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "I want a different mentor",
-	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "I don’t want a mentor at all ",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "I don’t want a mentor at all",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Other / I’d prefer not to say",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Done",
 	"growthexperiments-homepage-mentorship-about-header": "About mentors",
