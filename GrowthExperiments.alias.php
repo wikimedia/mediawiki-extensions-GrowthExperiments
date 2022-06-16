@@ -279,6 +279,11 @@ $specialPageAliases['pl'] = [
 	'Homepage' => [ 'Strona_domowa' ],
 	'Impact' => [ 'Wpływ' ],
 	'ClaimMentee' => [ 'Wybierz_nowicjusza' ],
+	'NewcomerTasksInfo' => [ 'Zadania_dla_nowicjuszy' ],
+	'EditGrowthConfig' => [ 'Skonfiguruj_funkcje_dla_nowicjuszy', 'Skonfiguruj_Growth' ],
+	'MentorDashboard' => [ 'Panel_przewodników' ],
+	'QuitMentorship' => [ 'Rezygnacja_z_przewodnictwa' ],
+	'ManageMentors' => [ 'Zarządzaj_przewodnikami' ],
 ];
 
 /** Portuguese (português) */
