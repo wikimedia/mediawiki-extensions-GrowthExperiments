@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xiplus"
+			"Xiplus",
+			"BlackShadowG"
 		]
 	},
 	"apihelp-growthstarmentee-summary": "由目前用户将学员标记或取消标记星号（私密存储且不记录）",
@@ -12,5 +13,6 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "新状态",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "当导师设置成离开时，必须要有以日为单位的离开状态长度",
 	"apihelp-query+growthmentorstatus-summary": "查询目前用户的导师状态",
-	"apihelp-growthmentordashboardupdatedata-summary": "安排导师面板中学员总览的特别更新。由于性能原因您每两个小时只能安排一次更新。"
+	"apihelp-growthmentordashboardupdatedata-summary": "安排导师面板中学员总览的特别更新。由于性能原因您每两个小时只能安排一次更新。",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "导师模块已启用"
 }

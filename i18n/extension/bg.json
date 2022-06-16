@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ted Masters",
-			"Vodnokon4e"
+			"Vodnokon4e",
+			"StanProg"
 		]
 	},
 	"growthexperiments-desc": "Това разширение съдържа експерименти, направени от екипа на Растеж.",
@@ -12,8 +13,8 @@
 	"growthexperiments-config-validator-contentmodel-mismatch": "Неправилен модел на съдържание: конфигурационният файл на GrowthExperiments трябва да бъде с модел на съдържание JSON, установено е $1",
 	"growthexperiments-edit-config-disabled": "Конфигурацията за общността е деактивирана.",
 	"growthexperiments-edit-config-title": "Редактиране конфигурацията на Растеж",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Последно обновено от [[User:$1|$1]] $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последно обновено от неизвестен потребител $1.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Последно обновено от [[User:$1|$1]] $2 ([$4 разл])",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последно обновено от неизвестен потребител $1([$3 разл]).",
 	"growthexperiments-edit-config-pretext": "Тази страница Ви позволява да редактирате настройките за екипна работа в конфигурацията на [[:mw:Special:MyLanguage/Growth|Растеж]]. Редакции в $1 ще бъдат извършени само с Ваше съгласие. Можете да видите направените от Вас промени в историята на страницата.",
 	"growthexperiments-edit-config-error-invalid-title": "Конфигурационната страница не е правилно конфигурирана",
 	"growthexperiments-edit-config-edit-summary": "Резюме на редакцията",
@@ -22,12 +23,12 @@
 	"growthexperiments-edit-config-help-panel": "Настройки на помощния панел",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Именни пространства, в които помощният панел е достъпен в режим на четене",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Именни пространства, в които помощният панел е деактивиран както в режим на четене, така и в режим на редактиране",
-	"growthexperiments-edit-config-help-panel-helpdesk-title": "Заглавие на страница за бюрото за помощ (ако има)",
-	"growthexperiments-edit-config-help-panel-post-on-top": "Къде да публикувате въпроси в бюрото за помощ?",
+	"growthexperiments-edit-config-help-panel-helpdesk-title": "Страница от бюрото за помощ, където въпросите от помощния панел трябва да се поместят.",
+	"growthexperiments-edit-config-help-panel-post-on-top": "Къде на страницата на бюрото за помощ трябва да се поместят новите въпроси?",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Началото на страницата",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Краят на страницата",
-	"growthexperiments-edit-config-help-panel-view-more": "Вижте още препратки, показани в панела за помощ",
-	"growthexperiments-edit-config-help-panel-searched-namespaces": "Търсене в следните именни пространства",
+	"growthexperiments-edit-config-help-panel-view-more": "Целева страница за „Още помощни статии“",
+	"growthexperiments-edit-config-help-panel-searched-namespaces": "Именни пространства, които да се включват в текстовото търсене на помощния панел.",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Къде трябва да бъдат отправяни въпросите от панела за помощ?",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Беседи на менторите",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Бюро за помощ",

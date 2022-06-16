@@ -33,7 +33,11 @@
 			"科劳",
 			"羊羊32521",
 			"落花有意12138",
-			"魔琴"
+			"魔琴",
+			"BlackShadowG",
+			"StarrySky",
+			"Stevenliuyi",
+			"SunAfterRain"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -293,6 +297,8 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "科学、技术与数学",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "文化",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "地区",
+	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "活动",
+	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "<kbd>articletopic:</kbd>关键字无法识别的主题{{PLURAL:$2|名}}：$1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "无效的建议编辑配置：错误结构",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "对任务类型“$1”的建议编辑配置无效：“$2”需为整数",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "对任务类型“$1”的建议编辑配置无效：“$2”需大于“$3”",

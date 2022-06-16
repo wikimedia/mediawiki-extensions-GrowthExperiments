@@ -5,7 +5,8 @@
 			"Mardetanha",
 			"Mohammad ebz",
 			"Reza1615",
-			"Beginneruser"
+			"Beginneruser",
+			"Mojtabakd"
 		]
 	},
 	"growthexperiments-desc": "این افزونه شامل تجربیاتی است که توسط تیم رشد انجام شده.",
@@ -13,6 +14,7 @@
 	"growthexperiments-config-validator-error": "اعتبارسنجی $1 ناموفق بود: $2",
 	"growthexperiments-config-validator-datatype-mismatch": "انتظار می‌رفت که <code>$1</code> برابر <code>$2</code> باشد، اما <code>$3</code> بود",
 	"growthexperiments-config-validator-contentmodel-mismatch": "عدم تطابق مدل محتوا: فایل پیکربندی GrowthExperiments باید دارای مدل محتوای جی‌سان باشد، اما $1 شناسایی شد",
+	"growthexperiments-config-validator-array-toobig": "تعداد آیتم‌های $1 بیش از اندازه است (حداکثر $2 آیتم مجاز است)",
 	"growthexperiments-edit-config-disabled": "تنظیمات اجتماع اکنون غیرفعال شده‌است.",
 	"growthexperiments-edit-config-title": "ویرایش پیکربندی رشد",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: آخرین بار در $2 توسط [[User:$1|$1]] به‌روز شده‌است ([$4 تفاوت]).",

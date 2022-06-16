@@ -70,6 +70,10 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Välj nybörjare",
 	"growthexperiments-rcfilters-mentorship-title": "Fadderskap",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Dina}} stjärnmärkta nybörjare",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Dina tilldelade nybörjare som du har stjärnmarkerat i din fadderpanel",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "Dina icke-stjärnmarkerade nybörjare",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Andra nybörjare som är tilldelade dig",
+	"growthexperiments-quit-mentorship-title": "Avsluta fadderskap",
 	"echo-category-title-ge-mentorship": "Fadderskap",
 	"growthexperiments-notification-body-mentee-claimed": "Orsak: $1"
 }

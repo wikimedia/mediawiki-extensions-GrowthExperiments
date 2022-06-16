@@ -98,7 +98,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Не са открити предложения",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Изберете други нива на трудност, за да откриете предложения за редакции.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Изберете други интереси или нива на трудност, за да откриете предложения за редакции.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "редакции през последния ден",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|редакция|редакции}} през последния ден",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Доброволци като Вас са допринесли за подобряването днес на {{SITENAME}}. Включете се!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Вижте всички предложения",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Коригирайте правописа, граматиката и изказа",
@@ -223,5 +223,5 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Отказ",
 	"growthexperiments-addimage-inspector-yes-button": "Да",
 	"growthexperiments-addimage-inspector-no-button": "Не",
-	"growthexperiments-addimage-inspector-skip-button": "Пропускане"
+	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|Не съм сигурен|Не съм сигурна}}"
 }
