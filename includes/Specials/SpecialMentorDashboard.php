@@ -8,6 +8,7 @@ use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\MentorDashboard\MentorDashboardDiscoveryHooks;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
+use GrowthExperiments\MentorDashboard\Modules\MenteeOverviewVue;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Util;
 use Html;
@@ -27,6 +28,8 @@ class SpecialMentorDashboard extends SpecialPage {
 		'beta' => [ 'beta', 'alpha' ],
 		'alpha' => [ 'alpha' ]
 	];
+
+	private const VUE_MODULES = [ 'mentee-overview' ];
 
 	/** @var string Versioned schema URL for $schema field */
 	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/visit/1.0.0';
@@ -79,15 +82,18 @@ class SpecialMentorDashboard extends SpecialPage {
 	 */
 	private function getModules( bool $isMobile = false ): array {
 		$deploymentMode = $this->getConfig()->get( 'GEMentorDashboardDeploymentMode' );
-
-		$moduleConfig = array_filter( [
+		$rawConfig = [
 			'mentee-overview' => 'stable',
 			'mentor-tools' => 'stable',
 			'resources' => 'stable',
-		], static function ( $el ) use ( $deploymentMode ) {
+		];
+		foreach ( self::VUE_MODULES as $moduleName ) {
+			$rawConfig[$moduleName . '-vue'] = $rawConfig[$moduleName];
+		}
+
+		$moduleConfig = array_filter( $rawConfig, static function ( $el ) use ( $deploymentMode ) {
 			return in_array( $deploymentMode, self::REQUIRED_DEPLOYMENT_MODE[$el] );
 		} );
-
 		$modules = [];
 		foreach ( $moduleConfig as $moduleId => $_ ) {
 			$modules[$moduleId] = $this->mentorDashboardModuleRegistry->get(
@@ -153,7 +159,11 @@ class SpecialMentorDashboard extends SpecialPage {
 
 		$out = $this->getContext()->getOutput();
 		$out->enableOOUI();
-		$out->addModules( 'ext.growthExperiments.MentorDashboard' );
+		$dashboardModules = [ 'ext.growthExperiments.MentorDashboard' ];
+		if ( $this->shouldUseVueModule() ) {
+			array_push( $dashboardModules, 'ext.growthExperiments.MentorDashboard.Vue' );
+		}
+		$out->addModules( $dashboardModules );
 		$out->addModuleStyles( 'ext.growthExperiments.MentorDashboard.styles' );
 
 		$out->addHTML( Html::openElement( 'div', [
@@ -161,6 +171,7 @@ class SpecialMentorDashboard extends SpecialPage {
 		] ) );
 
 		$modules = $this->getModules( false );
+
 		foreach ( $this->getModuleGroups() as $group => $moduleNames ) {
 			$out->addHTML( Html::openElement(
 				'div',
@@ -170,6 +181,9 @@ class SpecialMentorDashboard extends SpecialPage {
 			) );
 
 			foreach ( $moduleNames as $moduleName ) {
+				if ( $this->shouldUseVueModule() && in_array( $moduleName, self::VUE_MODULES ) ) {
+					$moduleName .= '-vue';
+				}
 				$module = $modules[$moduleName] ?? null;
 				if ( !$module ) {
 					continue;
@@ -241,6 +255,18 @@ class SpecialMentorDashboard extends SpecialPage {
 	 */
 	private function isEnabled(): bool {
 		return $this->getConfig()->get( 'GEMentorDashboardEnabled' );
+	}
+
+	/**
+	 * Check via wgGEMentorDashboardUseVue if mentor dashboard should use
+	 * the Vue module ( ext.growthExperiments.MentorDashboard.Vue )
+	 * or the "standard" ResourceLoader module ( ext.growthExperiments.MentorDashboard )
+	 *
+	 * @see MenteeOverviewVue
+	 * @return bool
+	 */
+	private function shouldUseVueModule(): bool {
+		return $this->getConfig()->get( 'GEMentorDashboardUseVue' );
 	}
 
 	/**
