@@ -30,21 +30,27 @@ class SubpageImageRecommendationProvider
 	/** @var AddImageSubmissionHandler */
 	private $imageSubmissionHandler;
 
+	/** @var ImageRecommendationApiHandler */
+	private $apiHandler;
+
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param RecommendationProvider $fallbackRecommendationProvider
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
 	 * @param AddImageSubmissionHandler $imageSubmissionHandler
+	 * @param ImageRecommendationApiHandler $imageRecommendationApiHandler
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		RecommendationProvider $fallbackRecommendationProvider,
 		ImageRecommendationMetadataProvider $metadataProvider,
-		AddImageSubmissionHandler $imageSubmissionHandler
+		AddImageSubmissionHandler $imageSubmissionHandler,
+		ImageRecommendationApiHandler $imageRecommendationApiHandler
 	) {
 		parent::__construct( $wikiPageFactory, $fallbackRecommendationProvider );
 		$this->metadataProvider = $metadataProvider;
 		$this->imageSubmissionHandler = $imageSubmissionHandler;
+		$this->apiHandler = $imageRecommendationApiHandler;
 	}
 
 	/** @inheritDoc */
@@ -68,7 +74,7 @@ class SubpageImageRecommendationProvider
 			return ServiceImageRecommendationProvider::processApiResponseData(
 				$title,
 				$title->getPrefixedText(),
-				$data,
+				$this->apiHandler->getSuggestionDataFromApiResponse( $data ),
 				$this->metadataProvider,
 				$this->imageSubmissionHandler,
 				$suggestionFilters
@@ -90,7 +96,8 @@ class SubpageImageRecommendationProvider
 					$services->getWikiPageFactory(),
 					$recommendationProvider,
 					$growthServices->getImageRecommendationMetadataProvider(),
-					$growthServices->getAddImageSubmissionHandler()
+					$growthServices->getAddImageSubmissionHandler(),
+					$growthServices->getImageRecommendationApiHandler()
 				);
 			}
 		);

@@ -6,9 +6,7 @@ use File;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IBufferingStatsdDataFactory;
-use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
-use RequestContext;
 use StatusValue;
 use Title;
 use TitleFactory;
@@ -25,23 +23,11 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/** @var TitleFactory */
 	private $titleFactory;
 
-	/** @var HttpRequestFactory */
-	private $httpRequestFactory;
-
 	/** @var IBufferingStatsdDataFactory */
 	private $statsdDataFactory;
 
-	/** @var string */
-	private $url;
-
-	/** @var string|null */
-	private $proxyUrl;
-
-	/** @var string */
-	private $wikiProject;
-
-	/** @var string */
-	private $wikiLanguage;
+	/** @var ImageRecommendationApiHandler */
+	private $apiHandler;
 
 	/** @var ImageRecommendationMetadataProvider */
 	private $metadataProvider;
@@ -49,50 +35,25 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/** @var AddImageSubmissionHandler */
 	private $imageSubmissionHandler;
 
-	/** @var int|null */
-	private $requestTimeout;
-
-	/** @var bool */
-	private $useTitles;
-
 	/**
 	 * @param TitleFactory $titleFactory
-	 * @param HttpRequestFactory $httpRequestFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 * @param string $url Image recommendation service root URL
-	 * @param string|null $proxyUrl HTTP proxy to use for $url
-	 * @param string $wikiProject Wiki project (e.g. 'wikipedia')
-	 * @param string $wikiLanguage Wiki language code
+	 * @param ImageRecommendationApiHandler $apiHandler
 	 * @param ImageRecommendationMetadataProvider $metadataProvider Image metadata provider
 	 * @param AddImageSubmissionHandler $imageSubmissionHandler
-	 * @param int|null $requestTimeout Service request timeout in seconds.
-	 * @param bool $useTitles Use titles (the /:wiki/:lang/pages/:title API endpoint)
-	 *   instead of IDs (the /:wiki/:lang/pages endpoint)?
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
-		HttpRequestFactory $httpRequestFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
-		string $url,
-		?string $proxyUrl,
-		string $wikiProject,
-		string $wikiLanguage,
+		ImageRecommendationApiHandler $apiHandler,
 		ImageRecommendationMetadataProvider $metadataProvider,
-		AddImageSubmissionHandler $imageSubmissionHandler,
-		?int $requestTimeout,
-		bool $useTitles = false
+		AddImageSubmissionHandler $imageSubmissionHandler
 	) {
 		$this->titleFactory = $titleFactory;
-		$this->httpRequestFactory = $httpRequestFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
-		$this->url = $url;
-		$this->proxyUrl = $proxyUrl;
-		$this->wikiProject = $wikiProject;
-		$this->wikiLanguage = $wikiLanguage;
+		$this->apiHandler = $apiHandler;
 		$this->metadataProvider = $metadataProvider;
 		$this->imageSubmissionHandler = $imageSubmissionHandler;
-		$this->requestTimeout = $requestTimeout;
-		$this->useTitles = $useTitles;
 	}
 
 	/** @inheritDoc */
@@ -109,42 +70,12 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			return StatusValue::newFatal( 'rawmessage',
 				'Recommendation could not be loaded for non-existing page: ' . $titleTextSafe );
 		}
-		if ( !$this->url ) {
-			return StatusValue::newFatal( 'rawmessage',
-				'Image Suggestions API is not configured' );
+
+		$request = $this->apiHandler->getApiRequest( $title, $taskType );
+
+		if ( $request instanceof StatusValue ) {
+			return $request;
 		}
-
-		$pathArgs = [
-			'image-suggestions',
-			'v0',
-			$this->wikiProject,
-			$this->wikiLanguage,
-			'pages',
-		];
-		$queryArgs = [
-			'source' => 'ima',
-		];
-
-		if ( $this->useTitles ) {
-			$pathArgs[] = $titleText;
-		} else {
-			$queryArgs['id'] = $title->getArticleID();
-		}
-
-		$request = $this->httpRequestFactory->create(
-			wfAppendQuery(
-				$this->url . '/' . implode( '/', array_map( 'rawurlencode', $pathArgs ) ),
-				$queryArgs
-			),
-			[
-				'method' => 'GET',
-				'proxy' => $this->proxyUrl,
-				'originalRequest' => RequestContext::getMain()->getRequest(),
-				'timeout' => $this->requestTimeout,
-			],
-			__METHOD__
-		);
-		$request->setHeader( 'Accept', 'application/json' );
 
 		$startTime = microtime( true );
 		$status = $request->execute();
@@ -173,7 +104,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$responseData = self::processApiResponseData(
 			$title,
 			$titleText,
-			$data,
+			$this->apiHandler->getSuggestionDataFromApiResponse( $data ),
 			$this->metadataProvider,
 			$this->imageSubmissionHandler,
 			$taskType->getSuggestionFilters()
@@ -193,7 +124,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param LinkTarget $title Title for which to generate the image recommendation for.
 	 *   The title in the API response will be ignored.
 	 * @param string $titleText Title text, for logging.
-	 * @param array $data API response body
+	 * @param ImageRecommendationData[] $suggestionData
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
 	 * @param AddImageSubmissionHandler $imageSubmissionHandler
 	 * @param array $suggestionFilters
@@ -203,54 +134,31 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	public static function processApiResponseData(
 		LinkTarget $title,
 		string $titleText,
-		array $data,
+		array $suggestionData,
 		ImageRecommendationMetadataProvider $metadataProvider,
 		AddImageSubmissionHandler $imageSubmissionHandler,
 		array $suggestionFilters = []
 	) {
 		$titleTextSafe = strip_tags( $titleText );
-		if ( !$data['pages'] ) {
+		if ( count( $suggestionData ) === 0 ) {
 			return StatusValue::newFatal( 'rawmessage',
 				'No recommendation found for page: ' . $titleTextSafe );
 		}
 		$images = [];
 		$datasetId = '';
 		$status = StatusValue::newGood();
-		foreach ( $data['pages'][0]['suggestions'] as $suggestion ) {
-			$filename = $suggestion['filename'];
-			$source = $suggestion['source']['details']['from'];
-			$projects = $suggestion['source']['details']['found_on'];
-			$datasetId = $suggestion['source']['details']['dataset_id'];
-			if ( !is_string( $filename ) || !File::normalizeTitle( $filename ) ) {
-				return StatusValue::newFatal( 'rawmessage',
-					'Invalid filename format for ' . $titleTextSafe . ': ' . strip_tags( $source ) );
-			} else {
-				$filename = File::normalizeTitle( $filename )->getDBkey();
-			}
-			if ( !in_array( $source, [
-				ImageRecommendationImage::SOURCE_WIKIDATA,
-				ImageRecommendationImage::SOURCE_WIKIPEDIA,
-				ImageRecommendationImage::SOURCE_COMMONS,
-			], true ) ) {
-				return StatusValue::newFatal( 'rawmessage',
-					'Invalid source type for ' . $titleTextSafe . ': ' . strip_tags( $source ) );
-			}
-			if ( !is_string( $projects ) ) {
-				return StatusValue::newFatal( 'rawmessage',
-					'Invalid projects format for ' . $titleTextSafe );
-			} elseif ( $projects ) {
-				$projects = array_map( static function ( $project ) {
-					return preg_replace( '/[^a-zA-Z0-9_-]/', '', $project );
-				}, explode( ',', $projects ) );
-			} else {
-				$projects = [];
-			}
-			if ( !is_string( $datasetId ) ) {
-				return StatusValue::newFatal( 'rawmessage',
-					'Invalid datasetId format for ' . $titleTextSafe );
+		foreach ( $suggestionData as $suggestion ) {
+			$validationError = ImageRecommendationDataValidator::validate( $titleTextSafe, $suggestion );
+			if ( !$validationError->isGood() ) {
+				return $validationError;
 			}
 
+			$filename = File::normalizeTitle( $suggestion->getFilename() )->getDBkey();
+			$source = $suggestion->getSource();
+			$projects = $suggestion->getFormattedProjects();
+			$datasetId = $suggestion->getDatasetId();
 			$fileMetadata = $metadataProvider->getFileMetadata( $filename );
+
 			if ( is_array( $fileMetadata ) ) {
 				$imageWidth = $fileMetadata['originalWidth'] ?: 0;
 				$minWidth = $suggestionFilters['minimumSize']['width'];
@@ -262,7 +170,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 					)
 				) {
 					$imageMetadata = $metadataProvider->getMetadata( [
-						'filename' => $suggestion['filename'],
+						'filename' => $suggestion->getFilename(),
 						'projects' => $projects,
 						'source' => $source,
 					] );
@@ -281,17 +189,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				$status->merge( $fileMetadata );
 			}
 		}
-
 		if ( !$images ) {
-			if ( $status->isGood() ) {
-				if ( !$data['pages'][0]['suggestions'] ) {
-					// $data['pages'][0]['suggestions'] was empty. This shouldn't happen.
-					$status->fatal(
-						'rawmessage',
-						'No recommendation found for page: ' . $titleTextSafe
-					);
-				}
-			}
 			$imageSubmissionHandler->invalidateRecommendation(
 				Title::newFromLinkTarget( $title )->toPageIdentity()
 			);
