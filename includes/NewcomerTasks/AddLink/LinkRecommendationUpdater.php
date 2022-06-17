@@ -193,20 +193,24 @@ class LinkRecommendationUpdater {
 		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
 			return $this->failure( 'last edit is a link recommendation' );
 		}
-		$revertTags = array_intersect( ChangeTags::REVERT_TAGS, array_keys( $tags ) );
-		if ( $revertTags ) {
+		$revertTagData = null;
+		foreach ( ChangeTags::REVERT_TAGS as $revertTagName ) {
+			if ( !empty( $tags[$revertTagName] ) ) {
+				$revertTagData = json_decode( $tags[$revertTagName], true );
+				break;
+			}
+		}
+		if ( is_array( $revertTagData ) ) {
 			$linkRecommendationChangeTagId = $this->changeDefNameTableStore
 				->acquireId( LinkRecommendationTaskTypeHandler::CHANGE_TAG );
-			$tagData = json_decode( $tags[reset( $revertTags )], true );
-			/** @var array $tagData */'@phan-var array $tagData';
 			$revertedAddLinkEditCount = $this->dbr->selectRowCount(
 				[ 'revision', 'change_tag' ],
 				'1',
 				[
 					'rev_id = ct_rev_id',
 					'rev_page' => $title->getArticleID(),
-					'rev_id <=' . (int)$tagData['newestRevertedRevId'],
-					'rev_id >=' . (int)$tagData['oldestRevertedRevId'],
+					'rev_id <=' . (int)$revertTagData['newestRevertedRevId'],
+					'rev_id >=' . (int)$revertTagData['oldestRevertedRevId'],
 					'ct_tag_id' => $linkRecommendationChangeTagId,
 				],
 				__METHOD__
