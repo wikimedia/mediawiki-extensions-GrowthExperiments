@@ -370,11 +370,13 @@
 		],
 		"ListDefinedTags": [
 			"helppanel",
-			"homepage"
+			"homepage",
+			"mentor"
 		],
 		"ChangeTagsListActive": [
 			"helppanel",
-			"homepage"
+			"homepage",
+			"mentor"
 		],
 		"PageSaveComplete": [
 			"config",

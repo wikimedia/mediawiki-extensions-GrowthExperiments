@@ -121,5 +121,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Introduction message introduces {{GENDER:|you}} as a mentor. Please keep this shorter than 240 characters. No wikitext is allowed.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Reason",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Enroll",
-	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|You}} are now enrolled as a mentor. {{GENDER:|You}} can continue to [[Special:MentorDashboard|the mentor dashboard]] now."
+	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|You}} are now enrolled as a mentor. {{GENDER:|You}} can continue to [[Special:MentorDashboard|the mentor dashboard]] now.",
+	"tag-mentor list change": "Change of the mentor list",
+	"tag-mentor list change-description": "Tag applied to edits made to the structured mentor list via GrowthExperiments"
 }
