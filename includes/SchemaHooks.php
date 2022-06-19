@@ -20,19 +20,19 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 				. 'default cluster' );
 		}
 
-		$extensionRoot = __DIR__ . '/..';
+		$sqlDir = __DIR__ . '/../sql';
 		$engine = $updater->getDB()->getType();
 		$updater->addExtensionTable( 'growthexperiments_link_recommendations',
-			"$extensionRoot/maintenance/schemas/$engine/growthexperiments_link_recommendations.sql" );
+			"$sqlDir/$engine/growthexperiments_link_recommendations.sql" );
 		$updater->addExtensionTable( 'growthexperiments_link_submissions',
-			"$extensionRoot/maintenance/schemas/$engine/growthexperiments_link_submissions.sql" );
+			"$sqlDir/$engine/growthexperiments_link_submissions.sql" );
 		$updater->addExtensionTable( 'growthexperiments_mentee_data',
-			"$extensionRoot/maintenance/schemas/$engine/growthexperiments_mentee_data.sql" );
+			"$sqlDir/$engine/growthexperiments_mentee_data.sql" );
 		$updater->addExtensionTable( 'growthexperiments_mentor_mentee',
-			"$extensionRoot/maintenance/schemas/$engine/growthexperiments_mentor_mentee.sql" );
+			"$sqlDir/$engine/growthexperiments_mentor_mentee.sql" );
 		$updater->addExtensionField( 'growthexperiments_link_submissions',
 			'gels_anchor_offset',
-			"$extensionRoot/maintenance/schemaChanges/$engine/patch-add_gels_anchor.sql" );
+			"$sqlDir/$engine/patch-add_gels_anchor.sql" );
 	}
 
 	/** @inheritDoc */
