@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use CommentStoreComment;
 use FormatJson;
 use GrowthExperiments\Config\Validation\IConfigValidator;
 use GrowthExperiments\Config\Validation\NoValidationValidator;
@@ -304,8 +305,16 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 	 * @covers ::save
 	 * @dataProvider provideSave
 	 * @param bool $isAutopatrol
+	 * @param string $summary
+	 * @param bool $minor
+	 * @param array|string $tags
 	 */
-	public function testSave( bool $isAutopatrol ) {
+	public function testSave(
+		bool $isAutopatrol,
+		string $summary,
+		bool $minor,
+		$tags
+	) {
 		$newConfig = [
 			'Test' => 123,
 			'TestBaz' => 321
@@ -319,6 +328,15 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 			->with( $configPage );
 
 		$updater = $this->createMock( PageUpdater::class );
+		if ( is_string( $tags ) ) {
+			$updater->expects( $this->once() )
+				->method( 'addTag' )
+				->with( $tags );
+		} else {
+			$updater->expects( $this->once() )
+				->method( 'addTags' )
+				->with( $tags );
+		}
 		$updater->expects( $this->once() )
 			->method( 'setContent' )
 			->with( SlotRecord::MAIN, new JsonContent( FormatJson::encode( $newConfig ) ) );
@@ -326,7 +344,11 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 			->method( 'setRcPatrolStatus' )
 			->with( RecentChange::PRC_AUTOPATROLLED );
 		$updater->expects( $this->once() )
-			->method( 'saveRevision' );
+			->method( 'saveRevision' )
+			->with(
+				CommentStoreComment::newUnsavedComment( $summary ),
+				$minor ? EDIT_MINOR : 0
+			);
 
 		$validator = $this->createMock( IConfigValidator::class );
 		$validator->expects( $this->once() )
@@ -348,13 +370,15 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( [], TestingAccessWrapper::newFromObject( $writer )->getCurrentWikiConfig() );
 		TestingAccessWrapper::newFromObject( $writer )->wikiConfig = $newConfig;
 
-		$this->assertTrue( $writer->save()->isOK() );
+		$this->assertTrue( $writer->save( $summary, $minor, $tags )->isOK() );
 	}
 
 	public function provideSave() {
 		return [
-			'autopatrolled' => [ true ],
-			'non-autopatrolled' => [ false ],
+			'autopatrolled major' => [ true, 'summary', false, [] ],
+			'non-autopatrolled major' => [ false, 'summary', false, [] ],
+			'autopatrolled major with tags' => [ true, 'summary', false, [ 'foo', 'bar' ] ],
+			'non-autopatrolled major with tag' => [ false, 'summary', false, 'foo' ],
 		];
 	}
 }

@@ -200,10 +200,11 @@ class WikiPageConfigWriter {
 	/**
 	 * @param string $summary
 	 * @param bool $minor
+	 * @param array|string $tags Tag(s) to apply (defaults to none)
 	 * @return Status
 	 * @throws MWException
 	 */
-	public function save( string $summary = '', bool $minor = false ): Status {
+	public function save( string $summary = '', bool $minor = false, $tags = [] ): Status {
 		// Load config if not done already, to support null-edits
 		if ( $this->wikiConfig === null ) {
 			$this->loadConfig();
@@ -224,6 +225,11 @@ class WikiPageConfigWriter {
 		if ( $this->wikiConfig !== $this->getCurrentWikiConfig() ) {
 			$page = $this->wikiPageFactory->newFromLinkTarget( $this->configPage );
 			$updater = $page->newPageUpdater( $this->performer );
+			if ( is_string( $tags ) ) {
+				$updater->addTag( $tags );
+			} elseif ( is_array( $tags ) ) {
+				$updater->addTags( $tags );
+			}
 			$updater->setContent( SlotRecord::MAIN, new JsonContent(
 				FormatJson::encode( $this->wikiConfig )
 			) );
