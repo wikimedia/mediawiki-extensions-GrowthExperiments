@@ -62,6 +62,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "شما برای این مدت در دسترس نخواهید بود:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "روز",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "ورودی «{{GENDER:|شما}} برای این مدت در دسترس نخواهید بود» رقم نیست. لطفاً دوباره تلاش کنید.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "ورودی «شما برای این مدت در دسترس نخواهید بود» بسیار زیاد است. حداکثر تعداد روزهایی که یک مربی می‌تواند دور از دسترس باشد ۳۶۵ روز (یک سال) است.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "خطای نامعلومی رخ داد. لطفاً بعداً دوباره تلاش کنید.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "وضعیت شما به «فعال» تغییر یافت.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "وضعیت شما به «دور از دسترس» تغییر یافت.",
@@ -96,5 +97,17 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "انتظار می‌رود که <code>$1</code> برابر با <code>$2</code> باشد، اما اکنون <code>$3</code> است",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "توصیف مربی حاوی کلید دور از انتظار <code>$1</code> است",
 	"growthexperiments-mentor-writer-error-already-added": "مربی $1 از پیش به فهرست مربی‌ها افزوده شده‌است",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "مربی $1 در فهرست مربی‌ها موجود نیست"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "مربی $1 در فهرست مربی‌ها موجود نیست",
+	"growthexperiments-manage-mentors-title": "مدیریت مربی‌ها",
+	"growthexperiments-manage-mentors-error-no-such-user": "خطا: چنین کاربر با شناسهٔ $1 وجود ندارد. این احتمالاً به دلیل یک خطای داخلی است.",
+	"growthexperiments-manage-mentors-auto-assigned": "مربی‌های اختصاص‌یافته به‌طور خودکار",
+	"growthexperiments-manage-mentors-manually-assigned": "مربی‌های اختصاص‌یافته به‌طور دستی",
+	"growthexperiments-manage-mentors-username": "نام کاربری",
+	"growthexperiments-manage-mentors-last-active": "آخرین فعالیت",
+	"growthexperiments-manage-mentors-intro-msg": "پیام برای تازه‌واردان",
+	"growthexperiments-manage-mentors-remove-mentor": "حذف",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|شما}} در حال حذف [[User:$1|کاربر:$1]] به‌عنوان {{GENDER:$1|مربی}} هستید.",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "دلیل حذف مربی",
+	"growthexperiments-manage-mentors-remove-mentor-success": "کاربر [[User:$1|$1]] دیگر {{GENDER:$1|مربی}} نیست.",
+	"growthexperiments-manage-mentors-return-back": "می‌توانید به فهرست مربی‌ها [[Special:ManageMentors|بازگردید]]."
 }

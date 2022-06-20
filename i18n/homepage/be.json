@@ -3,7 +3,8 @@
 		"authors": [
 			"Chadyka",
 			"Kareyac",
-			"No Sleep till Krupki"
+			"No Sleep till Krupki",
+			"Tomato Cream"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
@@ -289,7 +290,7 @@
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Няслушная канфігурацыя прапанаваных правак: адсутнічае паведамленне $1 для поля $2",
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Каб паспяхова стварыць новы артыкул, {{GENDER:$1|вам}} трэба выкарыстоўваць многія навыкі, якім можна навучыцца, выконваючы некаторыя простыя заданні. Каб даведацца больш пра тое, як стварыць новы артыкул, [$2 пстрыкніце тут].",
 	"growthexperiments-homepage-suggestededits-error-title": "Зараз няма прапанаваных правак.",
-	"growthexperiments-homepage-suggestededits-error-description": "Калі ласка, паспрабуйце яшчэ раз пазней.",
+	"growthexperiments-homepage-suggestededits-error-description": "Калі ласка, паспрабуйце пазней.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Выберыце хаця б адзін тып праўкі",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Выберыце тэмы",
 	"growthexperiments-homepage-suggestededits-topics-more": "паказаць больш",

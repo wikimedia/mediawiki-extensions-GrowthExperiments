@@ -520,7 +520,7 @@
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Вы}} выполнили все сегодняшние предложения по добавлению ссылок.\n\nНастройте уровни сложности, чтобы увидеть другие типы правок, или вернитесь завтра, чтобы получить дополнительные предложения с ссылками.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Понятно",
 	"growthexperiments-homepage-mentorship-optin-header": "Наставник по редактированию",
-	"growthexperiments-homepage-mentorship-optin-text": "Если у {{GENDER:|вас}} есть вопросы по редактированию, опытный редактор может быть назначен вашим «наставником», который сможет вам помочь.",
+	"growthexperiments-homepage-mentorship-optin-text": "Если у {{GENDER:|вас}} есть вопросы по редактированию, опытный редактор может быть назначен вашим наставником, который сможет вам помочь.",
 	"growthexperiments-homepage-mentorship-optin-button": "Найти наставника",
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Найти наставника?",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Продолжить и получить опытного редактора в качестве {{GENDER:|вашего}} наставника по редактированию.",
