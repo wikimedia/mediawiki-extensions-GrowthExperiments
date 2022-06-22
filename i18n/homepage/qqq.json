@@ -138,6 +138,8 @@
 	"growthexperiments-homepage-recent-questions-archived": "Text to show alongside a link to the archived question that the user posted.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Text to show in the title attribute of a link to an archived question.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-header": "Header of the mentorship module, which assigns an experienced editor to all new users so that they can ask for help.\n* $1 - Name of the current user. Can be used with GENDER.\n* $2 - Name of the mentor. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-mentorship-preintro": "Explanatory text displayed in the mentorship module, explaining what mentorship is about.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-mentorship-learn-more": "Description of a link that opens a modal, explaining what mentorship is about in more details. Displays at the top of the mentorship module.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-mentor-edits": "Text in the mentorship module showing how many edits a user's mentor has.\n* $1 - Mentor's edit count.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "Text in the mentorship module for when the user's mentor's latest edit is today.\n* $1 - Name of the mentor. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "Text in the mentorship module for when the user's mentor's latest edit was yesterday.\n* $1 - Name of the mentor. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",

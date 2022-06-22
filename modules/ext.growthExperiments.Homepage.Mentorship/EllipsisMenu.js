@@ -95,6 +95,14 @@
 			} );
 		}
 
+		// connect to the #growthexperiments-homepage-mentorship-learn-more link, if available
+		$homepageContainer.find( '#growthexperiments-homepage-mentorship-learn-more' ).on( 'click', function ( e ) {
+			e.preventDefault();
+
+			ellipsisMenu.showAboutMentorshipModal();
+		} );
+
+		// add the ellipsis menu to the page, if applicable
 		var $ellipsis = $homepageContainer.find( '#mw-ge-homepage-mentorship-ellipsis' );
 		if ( $ellipsis.length ) {
 			$ellipsis.replaceWith( ellipsisMenu.$element );

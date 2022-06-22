@@ -118,6 +118,8 @@
 	"growthexperiments-homepage-recent-questions-archived": "archived",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "This question has been archived, likely because it was asked a long time ago.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Your}} {{GENDER:$2|mentor}}",
+	"growthexperiments-homepage-mentorship-preintro": "We’ve assigned {{GENDER:|you}} an experienced editor to answer your questions about editing.",
+	"growthexperiments-homepage-mentorship-learn-more": "Learn more about mentors.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|edit|edits}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Active}} today",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Active}} yesterday",
