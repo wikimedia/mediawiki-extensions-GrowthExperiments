@@ -36,6 +36,9 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 	/** @var string */
 	private $wikiId;
 
+	/** @var string */
+	private $languageCode;
+
 	/** @var string|null */
 	private $accessToken;
 
@@ -47,7 +50,9 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 	 * @param RevisionLookup $revisionLookup
 	 * @param HttpRequestFactory $httpRequestFactory
 	 * @param string $url Link recommendation service root URL
-	 * @param string $wikiId Wiki language
+	 * @param string $wikiId Wiki ID (e.g. "simple", "en")
+	 * @param string $languageCode the ISO-639 language code (e.g. "az" for Azeri, "en" for English) to use in
+	 *   processing the wikitext
 	 * @param string|null $accessToken Jwt for authorization with external traffic release of link
 	 *   recommendation service
 	 * @param int|null $requestTimeout Service request timeout in seconds.
@@ -58,6 +63,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		HttpRequestFactory $httpRequestFactory,
 		string $url,
 		string $wikiId,
+		string $languageCode,
 		?string $accessToken,
 		?int $requestTimeout
 	) {
@@ -66,6 +72,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		$this->httpRequestFactory = $httpRequestFactory;
 		$this->url = $url;
 		$this->wikiId = $wikiId;
+		$this->languageCode = $languageCode;
 		$this->accessToken = $accessToken;
 		$this->requestTimeout = $requestTimeout;
 	}
@@ -96,6 +103,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		$queryArgs = [
 			'threshold' => $taskType->getMinimumLinkScore(),
 			'max_recommendations' => $taskType->getMaximumLinksPerTask(),
+			'language_code' => $this->languageCode,
 		];
 		$postBodyArgs = [
 			'pageid' => $pageId,
