@@ -160,7 +160,7 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 მლნ.",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 მლრდ.",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 ტრლნ.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "დღეს თქვენნაირმა მოხალისეებმა {{Grammar-ka|ნათესაობითი|{{SITENAME}}}} გაუმჯობესებაში შეიტანეს წვლილი. შემოგვიერთდით!",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "დღეს თქვენნაირმა მოხალისეებმა {{GRAMMAR:ნათესაობითი|{{SITENAME}}}} გაუმჯობესებაში შეიტანეს წვლილი. შემოგვიერთდით!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "ყველა შემოთავაზების ნახვა",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "ორთოგრაფიის, გრამატიკისა და სტილის შესწორება",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "ვიკიპედიის სტატიების დასამოწმებლად წყაროების დამატება",

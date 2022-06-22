@@ -8,7 +8,8 @@
 			"Nike",
 			"Pyscowicz",
 			"Rönttönen",
-			"Veikk0.ma"
+			"Veikk0.ma",
+			"Markus Mikkonen"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
@@ -321,6 +322,7 @@
 	"growthexperiments-structuredtask-editmode-selection-label": "Vaihda muokkainta",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Ehdotukset",
 	"growthexperiments-structuredtask-editmode-selection-visual": "Visuaalinen muokkaaminen",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Poistu ehdotuksista?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Sulje lähettämättä",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Peruuta",
 	"growthexperiments-addlink-suggestions-outdated": "Sillä aikaa, kun {{GENDER:|sinä}} kävit tätä artikkelia läpi, toinen käyttäjä muokkasi sitä, eikä {{GENDER:|sinun}} tekemiäsi muutoksia siksi voitu tallentaa."

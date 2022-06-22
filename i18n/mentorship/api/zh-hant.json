@@ -3,11 +3,13 @@
 		"authors": [
 			"Sunny00217",
 			"Kly",
-			"Xiplus"
+			"Xiplus",
+			"SunAfterRain",
+			"Winston Sung"
 		]
 	},
 	"apihelp-growthstarmentee-summary": "由目前使用者將學員標記或取消標記星號（私密存儲且不記錄）",
 	"apihelp-growthstarmentee-param-gesaction": "要採取的行動（<kbd>加上標記</kbd>或<kbd>移除標記</kbd>）",
 	"apihelp-growthstarmentee-param-gesmentee": "（取消）標記學員",
-	"apihelp-query+growthstarredmentees-summary": "獲取當前登入導師標記星號的學員名單"
+	"apihelp-query+growthstarredmentees-summary": "取得當前登入導師標記星號的學員名單"
 }
