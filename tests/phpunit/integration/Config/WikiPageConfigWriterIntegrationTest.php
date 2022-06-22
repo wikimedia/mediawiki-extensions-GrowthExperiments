@@ -21,7 +21,7 @@ use Wikimedia\TestingAccessWrapper;
  * @coversDefaultClass \GrowthExperiments\Config\WikiPageConfigWriter
  * @group Database
  */
-class WikiPageConfigWriterTest extends MediaWikiIntegrationTestCase {
+class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 	/** @var GrowthExperimentsServices */
 	private $geServices;
 
