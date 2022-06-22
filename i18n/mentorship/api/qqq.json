@@ -20,5 +20,12 @@
 	"apihelp-growthsetmenteestatus-param-state-optout": "{{doc-apihelp-paramvalue|growthsetmenteestatus|state|optout}}",
 	"apihelp-query+growthmenteestatus-summary": "{{doc-apihelp-summary|query+growthmenteestatus}}",
 	"apihelp-query+growthmentormentee-summary": "{{doc-apihelp-summary|query+growthmentormentee}}",
-	"apihelp-query+growthmentormentee-param-gemmmentor": "{{doc-apihelp-param|query+growthmentormentee|gemmmentor}}"
+	"apihelp-query+growthmentormentee-param-gemmmentor": "{{doc-apihelp-param|query+growthmentormentee|gemmmentor}}",
+	"apihelp-growthmanagementorlist-summary": "{{doc-apihelp-summary|growthmanagementorlist}}",
+	"apihelp-growthmanagementorlist-param-geaction": "{{doc-apihelp-param|growthmanagementorlist|geaction}}",
+	"apihelp-growthmanagementorlist-param-message": "{{doc-apihelp-param|growthmanagementorlist|message}}",
+	"apihelp-growthmanagementorlist-param-weight": "{{doc-apihelp-param|growthmanagementorlist|weight}}",
+	"apihelp-growthmanagementorlist-param-autoassigned": "{{doc-apihelp-param|growthmanagementorlist|autoassigned}}",
+	"apihelp-growthmanagementorlist-param-summary": "{{doc-apihelp-param|growthmanagementorlist|summary}}",
+	"apihelp-growthmanagementorlist-param-username": "{{doc-apihelp-param|growthmanagementorlist|username}}"
 }

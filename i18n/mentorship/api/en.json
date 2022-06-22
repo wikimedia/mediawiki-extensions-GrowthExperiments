@@ -20,5 +20,12 @@
 	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee opted out from mentorship; mentee/mentor relationship will be deleted, mentorship module will be replaced with a possibility to opt back in",
 	"apihelp-query+growthmenteestatus-summary": "Query current user's mentee status; see documentation of action=growthsetmentorweight for detailed information about individual statuses.",
 	"apihelp-query+growthmentormentee-summary": "Get all mentees assigned to a given mentor",
-	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor to query mentees for"
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor to query mentees for",
+	"apihelp-growthmanagementorlist-summary": "Manage information in the structured mentor list (usually stored in [[MediaWiki:GrowthMentors.json]]). This module can be used by both current and future mentors (to add themselves or change their details) and administrators (for all users).",
+	"apihelp-growthmanagementorlist-param-geaction": "Action",
+	"apihelp-growthmanagementorlist-param-message": "Introduction message",
+	"apihelp-growthmanagementorlist-param-weight": "Weight",
+	"apihelp-growthmanagementorlist-param-autoassigned": "Is the mentor automatically assigned to newcomers?",
+	"apihelp-growthmanagementorlist-param-summary": "Reason for the change",
+	"apihelp-growthmanagementorlist-param-username": "Username of the mentor affected by the change. If not provided, currently logged in user will be used. Can be only used by privileged users."
 }

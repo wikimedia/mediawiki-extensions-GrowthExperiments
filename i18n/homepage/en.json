@@ -334,6 +334,8 @@
 	"action-setmentor": "set user's mentor",
 	"right-managementors": "Manage the list of mentors",
 	"action-managementors": "manage the list of mentors",
+	"right-enrollasmentor": "Enroll as a mentor",
+	"action-enrollasmentor": "enroll as a mentor",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "More about this suggested edit",
 	"growthexperiments-homepage-suggestededits-more-info": "More information about suggested edits",
 	"growthexperiments-homepage-welcome-notice-header": "Welcome to {{GENDER:$1|your}} homepage!",
