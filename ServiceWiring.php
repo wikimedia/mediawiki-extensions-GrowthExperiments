@@ -258,6 +258,7 @@ return [
 				$config->get( 'GELinkRecommendationServiceUrl' ),
 				$config->get( 'GELinkRecommendationServiceWikiIdMasquerade' ) ??
 					WikiMap::getCurrentWikiId(),
+				$services->getContentLanguage()->getCode(),
 				$config->get( 'GELinkRecommendationServiceAccessToken' ),
 				$config->get( 'GELinkRecommendationServiceTimeout' )
 			);
