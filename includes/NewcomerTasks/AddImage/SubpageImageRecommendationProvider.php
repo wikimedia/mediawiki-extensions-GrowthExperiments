@@ -67,7 +67,7 @@ class SubpageImageRecommendationProvider
 	 * @return ImageRecommendation|StatusValue
 	 */
 	public function createRecommendation( Title $title, array $data, array $suggestionFilters = [] ) {
-		if ( isset( $data['pages'] ) ) {
+		if ( isset( $data['pages'] ) || isset( $data['rows'] ) ) {
 			// This is the format used by the Image Suggestions API. It is not really useful
 			// as a serialization format but easy to obtain for actual wiki pages so allow it
 			// as a convenience.

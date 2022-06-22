@@ -7,7 +7,7 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendation;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationImage;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
-use GrowthExperiments\NewcomerTasks\AddImage\OldImageRecommendationApiHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\MvpImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -48,7 +48,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = true;
-		$apiHandler = new OldImageRecommendationApiHandler(
+		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 400, [] ],
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/11?source=ima' => [ 200, '{{{' ],
@@ -130,7 +130,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = true;
-		$apiHandler = new OldImageRecommendationApiHandler(
+		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/15?source=ima' => [ 200,
 					[ 'pages' => [ [ 'suggestions' => [
@@ -183,7 +183,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = false;
-		$apiHandler = new OldImageRecommendationApiHandler(
+		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages?source=ima&id=10' => [ 200,
 					[ 'pages' => [] ] ],
@@ -221,7 +221,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			StatusValue::newFatal( 'rawmessage', 'No metadata' )
 		);
 		$useTitle = true;
-		$apiHandler = new OldImageRecommendationApiHandler(
+		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
 					[ 'pages' => [ [ 'suggestions' => [
@@ -271,7 +271,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			}
 		} );
 		$useTitle = true;
-		$apiHandler = new OldImageRecommendationApiHandler(
+		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
 					[ 'pages' => [ [ 'suggestions' => [
@@ -671,7 +671,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	}
 
 	private function formatOldApiResponse( array $data ) {
-		$apiHandler = new OldImageRecommendationApiHandler(
+		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->createNoOpMock( HttpRequestFactory::class ),
 			'https://example.com',
 			'wikipedia',

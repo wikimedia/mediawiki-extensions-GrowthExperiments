@@ -2058,6 +2058,14 @@
 			"description": "Use titles instead of page IDs when calling the service. Less ideal but allows setting up test environments to use the production service.",
 			"value": true
 		},
+		"GEImageRecommendationApiHandler": {
+			"description": "Corresponding API handler to use for the image recommendation service (set via GEImageRecommendationServiceUrl); either 'mvp' or 'production'",
+			"value": "mvp"
+		},
+		"GEImageRecommendationServiceWikiIdMasquerade": {
+			"description": "The wiki ID to use in requests to the image recommendation service. Used for developer setups.",
+			"value": null
+		},
 		"GELinkRecommendationServiceUrl": {
 			"description": "Root URL of the link recommendation service.",
 			"value": false

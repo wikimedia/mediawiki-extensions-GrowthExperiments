@@ -8,7 +8,12 @@ use RequestContext;
 use StatusValue;
 use Title;
 
-class OldImageRecommendationApiHandler implements ImageRecommendationApiHandler {
+/**
+ * Handler for MVP image suggestion API
+ * Documentation: https://image-suggestion-api.wmcloud.org/?doc#/Image%20Suggestions
+ * This API should not be further used in production.
+ */
+class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler {
 
 	/** @var HttpRequestFactory */
 	private $httpRequestFactory;
@@ -63,7 +68,7 @@ class OldImageRecommendationApiHandler implements ImageRecommendationApiHandler 
 	public function getApiRequest( Title $title, TaskType $taskType ) {
 		if ( !$this->url ) {
 			return StatusValue::newFatal( 'rawmessage',
-				'Image Suggestions API is not configured' );
+				'Image Suggestions API URL is not configured' );
 		}
 
 		$pathArgs = [
