@@ -9,7 +9,7 @@ use FormatJson;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use IContextSource;
 use MediaWiki\Hook\EditFilterMergedContentHook;
-use MediaWiki\Hook\SkinTemplateNavigationHook;
+use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use SpecialPage;
 use Status;
@@ -20,7 +20,7 @@ use User;
 class ConfigHooks implements
 	EditFilterMergedContentHook,
 	PageSaveCompleteHook,
-	SkinTemplateNavigationHook
+	SkinTemplateNavigation__UniversalHook
 {
 	/** @var ConfigValidatorFactory */
 	private $configValidatorFactory;
@@ -118,9 +118,8 @@ class ConfigHooks implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onSkinTemplateNavigation( $sktemplate, &$links ): void {
+	public function onSkinTemplateNavigation__Universal( $sktemplate, &$links ): void {
 		// Code inspired by MassMessageHooks::onSkinTemplateNavigation
-
 		$title = $sktemplate->getTitle();
 		$geConfigTitle = $this->titleFactory
 			->newFromText(

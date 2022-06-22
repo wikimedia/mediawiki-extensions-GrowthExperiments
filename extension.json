@@ -380,7 +380,6 @@
 		],
 		"SkinAddFooterLinks": "variant",
 		"SidebarBeforeOutput": "homepage",
-		"SkinTemplateNavigation::Universal": "homepage",
 		"PersonalUrls": [
 			"homepage",
 			"mentordashboarddiscovery"
@@ -409,7 +408,10 @@
 		"LoadExtensionSchemaUpdates": "schema",
 		"UnitTestsAfterDatabaseSetup": "schema",
 		"EditFilterMergedContent": "config",
-		"SkinTemplateNavigation": "config",
+		"SkinTemplateNavigation::Universal": [
+			"config",
+			"homepage"
+		],
 		"ResourceLoaderGetConfigVars": "variant",
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
 		"VisualEditorApiVisualEditorEditPostSave": "visualeditor",
