@@ -27,6 +27,7 @@ use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
@@ -313,6 +314,10 @@ class GrowthExperimentsServices {
 
 	public function getNewcomerTasksChangeTagsManager(): NewcomerTasksChangeTagsManager {
 		return $this->coreServices->get( 'GrowthExperimentsNewcomerTasksChangeTagsManager' );
+	}
+
+	public function getImageRecommendationApiHandler(): ImageRecommendationApiHandler {
+		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationApiHandler' );
 	}
 
 }

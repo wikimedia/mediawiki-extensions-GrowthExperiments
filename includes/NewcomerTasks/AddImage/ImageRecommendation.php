@@ -7,7 +7,7 @@ use MediaWiki\Linker\LinkTarget;
 use TitleValue;
 
 /**
- * Value object for machine-generated image recommendations. A link recommendation consists
+ * Value object for machine-generated image recommendations. An image recommendation consists
  * of a set of suggested ImageRecommendationImages for a given wiki page.
  */
 class ImageRecommendation implements Recommendation {

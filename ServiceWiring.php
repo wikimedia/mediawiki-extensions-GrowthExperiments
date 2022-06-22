@@ -36,10 +36,12 @@ use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\CacheBackedImageRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
+use GrowthExperiments\NewcomerTasks\AddImage\OldImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
@@ -209,17 +211,26 @@ return [
 		MediaWikiServices $services
 	): ImageRecommendationProvider {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$config = $growthServices->getGrowthConfig();
 		return new ServiceImageRecommendationProvider(
 			$services->getTitleFactory(),
-			$services->getHttpRequestFactory(),
 			$services->getStatsdDataFactory(),
+			$growthServices->getImageRecommendationApiHandler(),
+			$growthServices->getImageRecommendationMetadataProvider(),
+			$growthServices->getAddImageSubmissionHandler()
+		);
+	},
+
+	'GrowthExperimentsImageRecommendationApiHandler' => static function (
+		MediaWikiServices $services
+	): ImageRecommendationApiHandler {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$config = $growthServices->getGrowthConfig();
+		return new OldImageRecommendationApiHandler(
+			$services->getHttpRequestFactory(),
 			$config->get( 'GEImageRecommendationServiceUrl' ),
-			$config->get( 'GEImageRecommendationServiceHttpProxy' ),
 			'wikipedia',
 			$services->getContentLanguage()->getCode(),
-			$growthServices->getImageRecommendationMetadataProvider(),
-			$growthServices->getAddImageSubmissionHandler(),
+			$config->get( 'GEImageRecommendationServiceHttpProxy' ),
 			null,
 			$config->get( 'GEImageRecommendationServiceUseTitles' )
 		);

@@ -4,8 +4,10 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendation;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationImage;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\OldImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -46,8 +48,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = true;
-		$provider = new ServiceImageRecommendationProvider(
-			$titleFactory,
+		$apiHandler = new OldImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 400, [] ],
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/11?source=ima' => [ 200, '{{{' ],
@@ -71,15 +72,19 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 						] ] ],
 					] ] ] ] ],
 			] ),
-			$this->createMock( IBufferingStatsdDataFactory::class ),
 			$url,
-			null,
 			$wikiProject,
 			$wikiLanguage,
-			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
+			null,
 			null,
 			$useTitle
+		);
+		$provider = new ServiceImageRecommendationProvider(
+			$titleFactory,
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$apiHandler,
+			$metadataProvider,
+			$this->createMock( AddImageSubmissionHandler::class )
 		);
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
@@ -125,8 +130,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = true;
-		$provider = new ServiceImageRecommendationProvider(
-			$titleFactory,
+		$apiHandler = new OldImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/15?source=ima' => [ 200,
 					[ 'pages' => [ [ 'suggestions' => [
@@ -135,15 +139,19 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 						] ] ],
 					] ] ] ] ],
 			] ),
-			$statsDataFactory,
 			$url,
-			null,
 			$wikiProject,
 			$wikiLanguage,
-			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
+			null,
 			null,
 			$useTitle
+		);
+		$provider = new ServiceImageRecommendationProvider(
+			$titleFactory,
+			$statsDataFactory,
+			$apiHandler,
+			$metadataProvider,
+			$this->createMock( AddImageSubmissionHandler::class )
 		);
 
 		$statsDataFactory->expects( $this->exactly( 2 ) )
@@ -175,21 +183,24 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = false;
-		$provider = new ServiceImageRecommendationProvider(
-			$titleFactory,
+		$apiHandler = new OldImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages?source=ima&id=10' => [ 200,
-				   [ 'pages' => [] ] ],
+					[ 'pages' => [] ] ],
 			] ),
-			$this->createMock( IBufferingStatsdDataFactory::class ),
 			$url,
-			null,
 			$wikiProject,
 			$wikiLanguage,
-			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
+			null,
 			null,
 			$useTitle
+		);
+		$provider = new ServiceImageRecommendationProvider(
+			$titleFactory,
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$apiHandler,
+			$metadataProvider,
+			$this->createMock( AddImageSubmissionHandler::class )
 		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
@@ -210,8 +221,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			StatusValue::newFatal( 'rawmessage', 'No metadata' )
 		);
 		$useTitle = true;
-		$provider = new ServiceImageRecommendationProvider(
-			$this->getTitleFactory(),
+		$apiHandler = new OldImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
 					[ 'pages' => [ [ 'suggestions' => [
@@ -223,15 +233,19 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 						] ] ],
 					] ] ] ] ],
 			] ),
-			$this->createMock( IBufferingStatsdDataFactory::class ),
 			$url,
-			null,
 			$wikiProject,
 			$wikiLanguage,
-			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
+			null,
 			null,
 			$useTitle
+		);
+		$provider = new ServiceImageRecommendationProvider(
+			$this->getTitleFactory(),
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$apiHandler,
+			$metadataProvider,
+			$this->createMock( AddImageSubmissionHandler::class )
 		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof StatusValue );
@@ -257,8 +271,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			}
 		} );
 		$useTitle = true;
-		$provider = new ServiceImageRecommendationProvider(
-			$this->getTitleFactory(),
+		$apiHandler = new OldImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
 				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
 					[ 'pages' => [ [ 'suggestions' => [
@@ -270,15 +283,19 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 						] ] ],
 					] ] ] ] ],
 			] ),
-			$this->createMock( IBufferingStatsdDataFactory::class ),
 			$url,
-			null,
 			$wikiProject,
 			$wikiLanguage,
-			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
+			null,
 			null,
 			$useTitle
+		);
+		$provider = new ServiceImageRecommendationProvider(
+			$this->getTitleFactory(),
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$apiHandler,
+			$metadataProvider,
+			$this->createMock( AddImageSubmissionHandler::class )
 		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof ImageRecommendation );
@@ -300,11 +317,9 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
-			[ 'pages' => [ [ 'suggestions' => [
-				[ 'filename' => 'Bad.png', 'source' => [ 'name' => 'ima', 'details' => [
-					'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
-				] ] ],
-			] ] ] ],
+			[
+				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' )
+			],
 			$mockMetadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class ),
 			$taskType->getSuggestionFilters()
@@ -326,11 +341,9 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
-			[ 'pages' => [ [ 'suggestions' => [
-				[ 'filename' => 'Bad.png', 'source' => [ 'name' => 'ima', 'details' => [
-					'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
-				] ] ],
-			] ] ] ],
+			[
+				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' )
+			],
 			$mockMetadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class ),
 			$taskType->getSuggestionFilters()
@@ -360,7 +373,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
-			$data,
+			$this->formatOldApiResponse( $data ),
 			$mockMetadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class ),
 			$taskType->getSuggestionFilters()
@@ -411,7 +424,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
-			$data,
+			$this->formatOldApiResponse( $data ),
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class ),
 			$taskType->getSuggestionFilters()
@@ -447,7 +460,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			new TitleValue( 0, $titleText ),
 			$titleText,
-			$data,
+			$this->formatOldApiResponse( $data ),
 			$metadataProvider,
 			$submissionHandler,
 			$taskType->getSuggestionFilters()
@@ -655,6 +668,19 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 				return $request;
 			} );
 		return $factory;
+	}
+
+	private function formatOldApiResponse( array $data ) {
+		$apiHandler = new OldImageRecommendationApiHandler(
+			$this->createNoOpMock( HttpRequestFactory::class ),
+			'https://example.com',
+			'wikipedia',
+			'en',
+			null,
+			null,
+			false
+		);
+		return $apiHandler->getSuggestionDataFromApiResponse( $data );
 	}
 
 }
