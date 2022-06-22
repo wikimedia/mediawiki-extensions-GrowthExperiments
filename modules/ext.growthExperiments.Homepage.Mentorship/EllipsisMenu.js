@@ -2,7 +2,8 @@
 	'use strict';
 
 	var MentorshipOptoutProcess = require( './MentorshipOptoutProcess.js' ),
-		MentorshipDetailsModal = require( './MentorshipDetailsModal.js' );
+		MentorshipDetailsModal = require( './MentorshipDetailsModal.js' ),
+		ellipsisMenu;
 
 	/**
 	 * @class
@@ -83,5 +84,22 @@
 		this.optoutProcess.showOptoutDialog();
 	};
 
-	module.exports = EllipsisMenu;
+	/**
+	 * @param {jQuery} $homepageContainer
+	 * @returns {EllipsisMenu}
+	 */
+	module.exports = function ( $homepageContainer ) {
+		if ( ellipsisMenu === undefined ) {
+			ellipsisMenu = new EllipsisMenu( {
+				mode: $homepageContainer.find( '.growthexperiments-homepage-module-mentorship' ).data( 'mode' )
+			} );
+		}
+
+		var $ellipsis = $homepageContainer.find( '#mw-ge-homepage-mentorship-ellipsis' );
+		if ( $ellipsis.length ) {
+			$ellipsis.replaceWith( ellipsisMenu.$element );
+		}
+
+		return ellipsisMenu;
+	};
 }() );

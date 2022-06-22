@@ -8,7 +8,7 @@
 		Overlay = mobile.Overlay,
 		util = mobile.util,
 		mfExtend = mobile.mfExtend,
-		EllipsisMenu = require( '../ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js' );
+		initEllipsisMenu = require( '../ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js' );
 
 	/**
 	 * Displays homepage module in an overlay.
@@ -72,11 +72,8 @@
 				headerActions = [ promisedView( this.headerPromise ) ];
 			} else if ( shouldShowEllipsisMenu( options.moduleName ) ) {
 				this.headerPromise = mw.loader.using( 'oojs-ui' ).then( function () {
-					ellipsisMenu = new EllipsisMenu( {
-						mode: 'mobile-overlay'
-					} );
-					ellipsisMenu.$element.data( 'module-name', options.moduleName );
-					ellipsisMenu.$element.data( 'mode', 'mobile-overlay' );
+					// eslint-disable-next-line no-jquery/no-global-selector
+					ellipsisMenu = initEllipsisMenu( $( '.growthexperiments-homepage-container' ) );
 					return View.make(
 						{ class: 'homepage-module-overlay-ellipsis-menu' },
 						[ ellipsisMenu.$element ]
