@@ -376,7 +376,9 @@ class HomepageHooks implements
 					$context,
 					$this->userOptionsLookup
 				),
-				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' )
+				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' ),
+				'wgGEStructuredTaskRejectionReasonTextInputEnabled' =>
+					$this->config->get( 'GEStructuredTaskRejectionReasonTextInputEnabled' )
 			] );
 		}
 
