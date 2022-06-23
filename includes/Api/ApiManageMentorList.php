@@ -65,7 +65,7 @@ class ApiManageMentorList extends ApiBase {
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $mentorUser );
 
 		if ( $params['message'] !== null ) {
-			$mentor->setIntroText( $params['message'] );
+			$mentor->setIntroText( $params['message'] !== '' ? $params['message'] : null );
 		}
 		if ( $params['weight'] !== null ) {
 			$mentor->setWeight( (int)$params['weight'] );
