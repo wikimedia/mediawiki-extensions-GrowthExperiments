@@ -1,6 +1,7 @@
 ( function ( gt ) {
 	var mentorTour,
-		tourUtils = require( './tourUtils.js' );
+		tourUtils = require( './tourUtils.js' ),
+		mentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
 
 	mentorTour = new gt.TourBuilder( {
 		name: 'homepage_mentor',
@@ -9,9 +10,9 @@
 	} );
 	mentorTour.firstStep( tourUtils.adjustPersonalToolbarTourStep( {
 		name: 'incomingmessage',
-		titlemsg: 'growthexperiments-tour-mentor-response-tip-personal-title',
+		title: mw.message( 'growthexperiments-tour-mentor-response-tip-personal-title', mentorGender ).text(),
 		description: mw.message( 'growthexperiments-tour-mentor-response-tip-personal-text' )
-			.params( [ mw.user, mw.config.get( 'GEHomepageMentorshipMentorGender' ) ] )
+			.params( [ mw.user, mentorGender ] )
 			.parse(),
 		attachTo: '#pt-notifications-alert',
 		position: 'bottom',

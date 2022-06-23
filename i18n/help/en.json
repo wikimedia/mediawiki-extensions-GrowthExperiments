@@ -149,7 +149,7 @@
 	"tag-help_panel_question-description": "Edit made from the help panel's post a question feature",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Suggested edits",
 	"growthexperiments-help-panel-button-header-ask-help": "Ask the help desk",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Ask your mentor for help",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Ask {{GENDER:|your}} {{GENDER:$1|mentor}} for help",
 	"growthexperiments-help-panel-button-header-general-help": "General editing help",
 	"growthexperiments-help-panel-button-subheader-general-help": "Search for answers and read top articles",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Get answers from other volunteers",

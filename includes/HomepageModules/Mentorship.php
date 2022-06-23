@@ -5,6 +5,7 @@ namespace GrowthExperiments\HomepageModules;
 use Config;
 use ConfigException;
 use DateInterval;
+use GenderCache;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
@@ -42,20 +43,26 @@ class Mentorship extends BaseModule {
 	/** @var MentorManager */
 	private $mentorManager;
 
+	/** @var GenderCache */
+	private $genderCache;
+
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param MentorManager $mentorManager
+	 * @param GenderCache $genderCache
 	 */
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
-		MentorManager $mentorManager
+		MentorManager $mentorManager,
+		GenderCache $genderCache
 	) {
 		parent::__construct( 'mentorship', $context, $wikiConfig, $experimentUserManager );
 		$this->mentorManager = $mentorManager;
+		$this->genderCache = $genderCache;
 	}
 
 	/**
@@ -222,12 +229,11 @@ class Mentorship extends BaseModule {
 		$effectiveMentor = $this->mentorManager->getEffectiveMentorForUserSafe(
 			$this->getUser()
 		)->getUserIdentity();
-		$genderCache = MediaWikiServices::getInstance()->getGenderCache();
 		return [
 			'GEHomepageMentorshipMentorName' => $mentor->getName(),
-			'GEHomepageMentorshipMentorGender' => $genderCache->getGenderOf( $mentor, __METHOD__ ),
+			'GEHomepageMentorshipMentorGender' => $this->getMentorGender(),
 			'GEHomepageMentorshipEffectiveMentorName' => $effectiveMentor->getName(),
-			'GEHomepageMentorshipEffectiveMentorGender' => $genderCache->getGenderOf( $effectiveMentor, __METHOD__ ),
+			'GEHomepageMentorshipEffectiveMentorGender' => $this->getUserGender( $effectiveMentor ),
 		] + HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
 	}
 
@@ -411,7 +417,10 @@ class Mentorship extends BaseModule {
 				Html::element(
 					'span',
 					[],
-					$this->msg( 'growthexperiments-homepage-mentorship-preintro' )->text()
+					$this->msg(
+						'growthexperiments-homepage-mentorship-preintro',
+						$this->getMentor()->getName()
+					)->text()
 				),
 				Html::element(
 					'a',
@@ -423,6 +432,25 @@ class Mentorship extends BaseModule {
 				)
 			] )
 		);
+	}
+
+	/**
+	 * Get the gender of the specified user
+	 *
+	 * @param UserIdentity $user
+	 * @return string
+	 */
+	private function getUserGender( UserIdentity $user ): string {
+		return $this->genderCache->getGenderOf( $user, __METHOD__ );
+	}
+
+	/**
+	 * Get the gender of the mentor
+	 *
+	 * @return string
+	 */
+	private function getMentorGender(): string {
+		return $this->getUserGender( $this->getMentor() );
 	}
 
 }

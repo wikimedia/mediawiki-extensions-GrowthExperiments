@@ -25,12 +25,14 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 		$this->insertPage( 'MentorsList', 'no user links here' );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$context = new DerivativeContext( RequestContext::getMain() );
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$services = MediaWikiServices::getInstance();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$mentorshipModule = new Mentorship(
 			$context,
 			GlobalVarConfig::newInstance(),
 			$growthServices->getExperimentUserManager(),
-			$growthServices->getMentorManager()
+			$growthServices->getMentorManager(),
+			$services->getGenderCache()
 		);
 
 		$this->assertEmpty( $mentorshipModule->render( IDashboardModule::RENDER_DESKTOP ) );
@@ -46,12 +48,14 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$services = MediaWikiServices::getInstance();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$mentorshipModule = new Mentorship(
 			$context,
 			GlobalVarConfig::newInstance(),
 			$growthServices->getExperimentUserManager(),
-			$growthServices->getMentorManager()
+			$growthServices->getMentorManager(),
+			$services->getGenderCache()
 		);
 		$context->getOutput()->enableOOUI();
 		$this->assertNotEmpty( $mentorshipModule->render( IDashboardModule::RENDER_DESKTOP ) );
@@ -68,12 +72,14 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$services = MediaWikiServices::getInstance();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$mentorshipModule = new Mentorship(
 			$context,
 			GlobalVarConfig::newInstance(),
 			$growthServices->getExperimentUserManager(),
-			$growthServices->getMentorManager()
+			$growthServices->getMentorManager(),
+			$services->getGenderCache()
 		);
 		$context->getOutput()->enableOOUI();
 
