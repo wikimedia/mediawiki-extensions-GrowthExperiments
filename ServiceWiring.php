@@ -608,7 +608,7 @@ return [
 		return new ProtectionFilter(
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory(),
-			$services->getRestrictionStore()
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
 		);
 	},
 
