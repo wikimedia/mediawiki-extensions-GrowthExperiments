@@ -23,7 +23,7 @@
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor to query mentees for",
 	"apihelp-growthmanagementorlist-summary": "Manage information in the structured mentor list (usually stored in [[MediaWiki:GrowthMentors.json]]). This module can be used by both current and future mentors (to add themselves or change their details) and administrators (for all users).",
 	"apihelp-growthmanagementorlist-param-geaction": "Action",
-	"apihelp-growthmanagementorlist-param-message": "Introduction message",
+	"apihelp-growthmanagementorlist-param-message": "Introduction message (use an empty string for the default mentor message)",
 	"apihelp-growthmanagementorlist-param-weight": "Weight",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Is the mentor automatically assigned to newcomers?",
 	"apihelp-growthmanagementorlist-param-summary": "Reason for the change",
