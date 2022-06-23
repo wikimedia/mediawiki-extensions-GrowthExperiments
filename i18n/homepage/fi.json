@@ -328,6 +328,7 @@
 	"growthexperiments-structuredtask-editmode-selection-label": "Vaihda muokkainta",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Ehdotukset",
 	"growthexperiments-structuredtask-editmode-selection-visual": "Visuaalinen muokkaaminen",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Poistu ehdotuksista?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Sulje lähettämättä",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Peruuta",
 	"growthexperiments-structuredtask-summary-submit": "Lähetä",

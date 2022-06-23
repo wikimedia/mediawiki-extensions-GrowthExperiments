@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Kareyac",
-			"Chadyka"
+			"Chadyka",
+			"No Sleep till Krupki",
+			"Tomato Cream"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панэль настаўніка",
@@ -61,7 +63,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Калі вы не можаце настаўляць на пэўны час (больш за 1 тыдзень), вы можаце паставіць сябе ў адпачынак («адсутнічае», «away»). На працягу гэтага перыяду іншы настаўнік атрымае пытанні ад вашых падапечных.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Вы сыдзеце на:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "дні",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Адбылася невядомая памылка. Калі ласка, паспрабуйце зноў пазней.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Адбылася невядомая памылка. Калі ласка, паспрабуйце пазней.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Ваш статус быў зменены на «Актыўны».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Ваш статус быў зменены на «Адсутнічае».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Паведамленне сваім падапечным",
