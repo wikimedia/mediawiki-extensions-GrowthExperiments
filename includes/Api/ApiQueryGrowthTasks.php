@@ -9,6 +9,7 @@ use ApiQueryGeneratorBase;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
+use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -37,6 +38,10 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
 	/** @var ImageRecommendationFilter */
 	private $imageRecommendationFilter;
+	/**
+	 * @var ProtectionFilter
+	 */
+	private $protectionFilter;
 
 	/**
 	 * @param ApiQuery $queryModule
@@ -45,6 +50,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param LinkRecommendationFilter $linkRecommendationFilter
 	 * @param ImageRecommendationFilter $imageRecommendationFilter
+	 * @param ProtectionFilter $protectionFilter
 	 */
 	public function __construct(
 		ApiQuery $queryModule,
@@ -52,13 +58,15 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		TaskSuggesterFactory $taskSuggesterFactory,
 		ConfigurationLoader $configurationLoader,
 		LinkRecommendationFilter $linkRecommendationFilter,
-		ImageRecommendationFilter $imageRecommendationFilter
+		ImageRecommendationFilter $imageRecommendationFilter,
+		ProtectionFilter $protectionFilter
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationFilter = $linkRecommendationFilter;
 		$this->imageRecommendationFilter = $imageRecommendationFilter;
+		$this->protectionFilter = $protectionFilter;
 	}
 
 	/** @inheritDoc */
@@ -106,10 +114,10 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		if ( $tasks instanceof StatusValue ) {
 			$this->dieStatus( $tasks );
 		}
-		// If there are link recommendation tasks without corresponding DB entries, these will be removed
-		// from the TaskSet.
+
 		$tasks = $this->linkRecommendationFilter->filter( $tasks );
 		$tasks = $this->imageRecommendationFilter->filter( $tasks );
+		$tasks = $this->protectionFilter->filter( $tasks );
 
 		$result = $this->getResult();
 		$basePath = [ 'query', $this->getModuleName() ];

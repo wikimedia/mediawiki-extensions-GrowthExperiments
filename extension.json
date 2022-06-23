@@ -121,7 +121,8 @@
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsLinkRecommendationFilter",
-				"GrowthExperimentsImageRecommendationFilter"
+				"GrowthExperimentsImageRecommendationFilter",
+				"GrowthExperimentsProtectionFilter"
 			]
 		},
 		"growthstarredmentees": {
