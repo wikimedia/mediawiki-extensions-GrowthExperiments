@@ -313,12 +313,17 @@ SuggestedEditsModule.prototype.onNewcomerTasksDataChanged = function () {
 
 /**
  * Log task data for a card impression or click event to the NewcomerTask EventLogging schema.
- *
- * @param {number} cardPosition Card position in the task queue. Assumes summary data has
- *   already been loaded for this position.
  */
-SuggestedEditsModule.prototype.logCardData = function ( cardPosition ) {
-	this.newcomerTaskLogger.log( this.tasksStore.getCurrentTask(), cardPosition );
+SuggestedEditsModule.prototype.logCardData = function () {
+	var currentTask = this.tasksStore.getCurrentTask(),
+		queuePosition = this.tasksStore.getQueuePosition();
+	if ( !currentTask ) {
+		var errorMessage = 'No task at queue position: ' + queuePosition;
+		mw.log.error( errorMessage );
+		mw.errorLogger.logError( new Error( errorMessage ), 'error.growthexperiments' );
+		return;
+	}
+	this.newcomerTaskLogger.log( currentTask, queuePosition );
 };
 
 /**
@@ -334,7 +339,6 @@ SuggestedEditsModule.prototype.logCardData = function ( cardPosition ) {
  *   on external data and fetching that fails.
  */
 SuggestedEditsModule.prototype.showCard = function ( card ) {
-	var queuePosition = this.tasksStore.getQueuePosition();
 	this.currentCard = null;
 
 	// TODO should we log something on non-card impressions?
@@ -354,7 +358,7 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 		);
 	}
 	if ( this.currentCard instanceof EditCardWidget ) {
-		this.logCardData( queuePosition );
+		this.logCardData();
 		this.logger.log(
 			'suggested-edits',
 			this.mode,
@@ -503,7 +507,7 @@ SuggestedEditsModule.prototype.updateControls = function () {
  */
 SuggestedEditsModule.prototype.logEditTaskClick = function ( action ) {
 	var task = this.tasksStore.getCurrentTask();
-	this.logCardData( this.tasksStore.getQueuePosition() );
+	this.logCardData();
 	this.logger.log( 'suggested-edits', this.mode, action, { newcomerTaskToken: task.token } );
 };
 
