@@ -42,5 +42,7 @@
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Ձեր}} մենթիներ աստղով",
 	"growthexperiments-quit-mentorship-title": "Դուրս գալ մենթորությունից",
 	"echo-category-title-ge-mentorship": "Մենթոություն",
-	"growthexperiments-notification-body-mentee-claimed": "Պատճառ՝ $1"
+	"growthexperiments-notification-body-mentee-claimed": "Պատճառ՝ $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Հիշել",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Չեղարկել"
 }

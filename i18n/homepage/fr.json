@@ -364,6 +364,8 @@
 	"action-setmentor": "définir le tuteur de l’utilisateur",
 	"right-managementors": "Gérer la liste des mentors",
 	"action-managementors": "gérer la liste des mentors",
+	"right-enrollasmentor": "S’engager en tant que tuteur",
+	"action-enrollasmentor": "s’engager en tant que tuteur",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "En savoir plus sur cette modification suggérée",
 	"growthexperiments-homepage-suggestededits-more-info": "Plus d’informations sur les modifications suggérées",
 	"growthexperiments-homepage-welcome-notice-header": "Bienvenue sur {{GENDER:$1|}}votre page d'accueil !",

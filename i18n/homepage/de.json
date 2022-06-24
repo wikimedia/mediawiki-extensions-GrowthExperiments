@@ -354,6 +354,8 @@
 	"action-setmentor": "Lotsin/Lotse des Benutzers festlegen",
 	"right-managementors": "Verwalten der Liste der Lotsen",
 	"action-managementors": "verwalten der Liste der Mentoren",
+	"right-enrollasmentor": "Anmelden als Lotsen",
+	"action-enrollasmentor": "Anmelden als Lotsen",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Erfahre mehr zu dieser vorgeschlagenen Bearbeitung",
 	"growthexperiments-homepage-suggestededits-more-info": "Mehr Informationen über vorgeschlagene Bearbeitungen",
 	"growthexperiments-homepage-welcome-notice-header": "Willkommen auf {{GENDER:$1|deiner}} Startseite!",

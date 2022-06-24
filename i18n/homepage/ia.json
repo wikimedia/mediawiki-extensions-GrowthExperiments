@@ -330,6 +330,8 @@
 	"action-setmentor": "definir le mentor del usator",
 	"right-managementors": "Gerer le lista de mentores",
 	"action-managementors": "gerer le lista de mentores",
+	"right-enrollasmentor": "Inscriber se como mentor",
+	"action-enrollasmentor": "inscriber se como mentor",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Plus sur iste modification suggerite",
 	"growthexperiments-homepage-suggestededits-more-info": "Plus information sur modificationes suggerite",
 	"growthexperiments-homepage-welcome-notice-header": "Benvenite a {{GENDER:$1|tu}} pagina de initio!",

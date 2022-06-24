@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bluetpp",
+			"Minh Nguyen",
 			"Nghiemtrongdai VN",
 			"NguoiDungKhongDinhDanh"
 		]
@@ -15,7 +16,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Xem những người được cố vấn {{GENDER:|của bạn}} ở dưới đây. Sử dụng bộ lọc để thay đổi hiển thị danh sách người được cố vấn.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Bảng yêu cầu JavaScript. Hãy bật JavaScript để có thể sử dụng mô-đun này.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Ai đang có trong bảng của bạn?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Bảng chỉ hiển thị những người được cố vấn của bạn mà đã tạo tài khoản trong vòng hai tuần qua hoặc đã sửa đổi trong sáu tháng qua. Dữ liệu được cập nhật hàng ngày.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Bản này hiển thị những người được cố vấn của bạn mà đã tạo tài khoản trong vòng hai tuần qua hoặc đã sửa đổi trong sáu tháng qua, và đã [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|kích hoạt trang nhà người mới]]. Dữ liệu được cập nhật mỗi ba giờ một lần.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Chú thích",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Đánh dấu người được cố vấn",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Tên người dùng",
@@ -41,7 +42,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Hiện $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 trong số $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Dữ liệu người được cố vấn không có sẵn",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Bạn có thể chưa được phân người được cố vấn nào. Dữ liệu được cập nhật hàng ngày.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Bạn có thể chưa được phân người được cố vấn nào. Dữ liệu được cập nhật mỗi ba giờ một lần.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Không tìm thấy người được cố vấn nào",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Thay đổi bộ lọc để tìm người được cố vấn.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Tài nguyên",
@@ -61,10 +62,10 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Nếu bạn không thể làm cố vấn trong một khoảng thời gian cụ thể (hơn 1 tuần), bạn có thể đặt chế độ đi vắng. Trong khoảng thời gian đó, cố vấn khác sẽ nhận được các câu hỏi từ người được cố vấn của bạn.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Bạn sẽ đi vắng trong:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ngày",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Đầu vào của mục \"Bạn sẽ đi vắng trong\" không phải là số nguyên. Xin hãy thử lại.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Đầu vào của mục “Bạn sẽ đi vắng trong” không phải là số nguyên. Xin hãy thử lại.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Đã gặp lỗi không rõ. Xin vui lòng thử lại sau.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Trạng thái của bạn đã được chuyển thành \"Hoạt động\".",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Tình trạng của bạn đã được chuyển thành \"Đi vắng\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Trạng thái của bạn đã được chuyển thành “Hoạt động”.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Tình trạng của bạn đã được chuyển thành “Đi vắng”.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Thông điệp gửi tới người được cố vấn của bạn",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Nhận người được cố vấn",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Bạn có thể thay đổi cố vấn của một thành viên thành bản thân bạn. Thường được sử dụng cho các sự kiện sửa đổi để người hướng dẫn có thể trở thành cố vấn của người mới cả ở trong hay ngoài wiki.",
@@ -84,5 +85,5 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Khoảng một nửa trung bình",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Trung bình (mặc định)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Khoảng gấp đôi trung bình",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Bạn nên bắt đầu tại cài đặt \"Trung bình\" để đo khả năng trợ giúp của bạn trước khi tăng hay giảm."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Bạn nên bắt đầu tại cài đặt “Trung bình” để đo khả năng trợ giúp của bạn trước khi tăng hay giảm."
 }

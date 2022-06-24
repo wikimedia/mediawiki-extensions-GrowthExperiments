@@ -4,5 +4,6 @@
 			"MITO"
 		]
 	},
-	"apihelp-growthsetmentorstatus-param-gesstatus": "Uusi tila"
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Uusi tila",
+	"apihelp-growthmanagementorlist-param-geaction": "Toiminto"
 }

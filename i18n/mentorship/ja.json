@@ -16,6 +16,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "このモジュールには指導役の皆さんの指導役としての役割設定があります。ただしもし今後、指導役としての活動から引退を希望される場合は、次のページをご参照ください。[[Special:QuitMentorship|指導役を引退するには？]]",
 	"growthexperiments-rcfilters-mentorship-title": "指導役",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|担当の}}スター付き生徒",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "保存",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "キャンセル",
 	"growthexperiments-manage-mentors-title": "指導役の管理",
 	"growthexperiments-manage-mentors-username": "利用者名",
 	"growthexperiments-manage-mentors-last-active": "前回の操作",

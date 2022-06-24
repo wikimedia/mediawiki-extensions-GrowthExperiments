@@ -2,26 +2,34 @@
 	"@metadata": {
 		"authors": [
 			"DreZhsh",
-			"Gomoko"
+			"Gomoko",
+			"Verdy p"
 		]
 	},
-	"apihelp-growthstarmentee-summary": "Marquer ou supprimer le marquage d’un tutoré tel que signalé par l’utilisateur courant (stocké de façon confidentielle et non tracé)",
-	"apihelp-growthstarmentee-param-gesaction": "Action à entreprendre (<kbd>star</kbd> ou <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-summary": "Marquer ou supprimer le marquage d’un tutoré tel que signalé d’une étoile par l’utilisateur courant (stocké de façon confidentielle et non journalisé)",
+	"apihelp-growthstarmentee-param-gesaction": "Action à entreprendre (<kbd>star</kbd> pour ajouter la marque ou <kbd>unstar</kbd> pour la retirer)",
 	"apihelp-growthstarmentee-param-gesmentee": "Tutoré à (ne plus) marquer",
 	"apihelp-query+growthstarredmentees-summary": "Obtenir une liste des tutorés marqués par le tuteur actuellement connecté",
-	"apihelp-growthsetmentorstatus-summary": "Définir le statut de mentor de l'utilisateur actuel comme actif/absent.",
+	"apihelp-growthsetmentorstatus-summary": "Définir l’état de tuteur de l’utilisateur actuel comme actif / absent.",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Nouvel état",
-	"apihelp-growthsetmentorstatus-param-gesbackindays": "En déclarant un tuteur comme absent, il faut avoir la durée de son état d’absence (en jours)",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Pour déclarer un tuteur comme absent, il faut indiquer la durée de son état d’absence (en jours).",
 	"apihelp-query+growthmentorstatus-summary": "Demander l’état du tuteur de l’utilisateur actuel",
-	"apihelp-growthmentordashboardupdatedata-summary": "Programmer une mise à jour extraordinaire du tableau de bord du module de supervision des tutorés. Vous pouvez programmer seulement une mise à jour toutes les deux heures, pour des raisons de performance.",
+	"apihelp-growthmentordashboardupdatedata-summary": "Programmer une mise à jour extraordinaire du module de supervision des tutorés dans le tableau de bord du tuteur. Vous ne pouvez programmer qu’une seule mise à jour toutes les deux heures, pour des raisons de performance.",
 	"apihelp-growthsetmentorweight-summary": "Définir le poids du tuteur actuellement connecté",
-	"apihelp-growthsetmentorweight-param-geweight": "Poids numérique du tuteur : la valeur la plus basse affectera moins de nouveaux venuss",
-	"apihelp-growthsetmenteestatus-summary": "Définir l’état du tutoré (permet aux tutorés d’activer/désactiver le module de tutorat, ou d’en sortir complètement, ce qui supprime la relation tutoré/tuteur)",
-	"apihelp-growthsetmenteestatus-param-state": "Nouvel état du tutoré (attention : mettre cela à se retirer supprimera de façon permanente la relation tutoré/tuteur)",
+	"apihelp-growthsetmentorweight-param-geweight": "Poids numérique du tuteur : plus la valeur est basse, moins de novices lui seront affectés.",
+	"apihelp-growthsetmenteestatus-summary": "Définir l’état du tutoré (permet aux tutorés d’activer / désactiver le module de tutorat, ou de se désinscrire complètement, ce qui supprime la relation tutoré – tuteur).",
+	"apihelp-growthsetmenteestatus-param-state": "Nouvel état du tutoré (attention : définir cela pour se désinscrire supprimera de façon permanente la relation tutoré – tuteur).",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Le module de tutorat est activé",
-	"apihelp-growthsetmenteestatus-param-state-disabled": "Le module de tutorat est complètement désactivé. Cela est normalement définir par le logiciel et utilisé pour les tests A/B.",
-	"apihelp-growthsetmenteestatus-param-state-optout": "Le tutoré est sorti du tutorat ; la relation tutoré/tuteur sera supprimée, le module de tutorat sera remplacé par une possibilité de revenir",
-	"apihelp-query+growthmenteestatus-summary": "Requêter l’état de tutoré de l’utilisateur courant ; voir la documentation de action=growthsetmentorweight pour des informations détaillées sur les états individuels.",
-	"apihelp-query+growthmentormentee-summary": "Obtenir tous les tutorés affectés à un tuteur donné",
-	"apihelp-query+growthmentormentee-param-gemmmentor": "Tuteur pour lequel rechercher les tutorés"
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Le module de tutorat est complètement désactivé. Cela est normalement défini par le logiciel et utilisé pour les tests A / B.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Le tutoré est sorti du tutorat ; la relation tutoré – tuteur sera supprimée, le module de tutorat sera remplacé par la possibilité de se réinscrire.",
+	"apihelp-query+growthmenteestatus-summary": "Interroge l’état de tutoré de l’utilisateur actuel ; voir la documentation de « action=growthsetmentorweight » pour des informations détaillées sur les états individuels.",
+	"apihelp-query+growthmentormentee-summary": "Obtenir tous les tutorés affectés à un tuteur donné.",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Tuteur pour lequel rechercher les tutorés",
+	"apihelp-growthmanagementorlist-summary": "Gérer les informations dans la liste structurée des tuteurs (habituellement enregistrée dans [[MediaWiki:GrowthMentors.json]]). Ce module peut être utilisé à la fois par les tuteurs actuels et futurs (pour qu’ils s’y inscrivent eux-mêmes ou modifient leurs détails) et par les administrateurs (pour gérer les inscriptions de tous les utilisateurs).",
+	"apihelp-growthmanagementorlist-param-geaction": "Action",
+	"apihelp-growthmanagementorlist-param-message": "Message d’introduction (utilisez une chaîne vide pour le message par défaut du tuteur)",
+	"apihelp-growthmanagementorlist-param-weight": "Poids",
+	"apihelp-growthmanagementorlist-param-autoassigned": "Le tuteur est-il automatiquement affecté aux novices ?",
+	"apihelp-growthmanagementorlist-param-summary": "Motif du changement",
+	"apihelp-growthmanagementorlist-param-username": "Nom du tuteur affecté par le changement. S’il n’est pas fourni, l’utilisateur actuellement connecté sera utilisé. Ceci ne peut être utilisé que par des utilisateurs privilégiés."
 }

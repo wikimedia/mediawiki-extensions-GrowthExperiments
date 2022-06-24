@@ -22,5 +22,12 @@
 	"apihelp-growthsetmenteestatus-param-state-optout": "Le apprentisse se ha desistite del mentorato; le relation apprentisse/mentor essera eliminate, le modulo de mentorato essera reimplaciate per un possibilitate de reinscriber se",
 	"apihelp-query+growthmenteestatus-summary": "Consultar le stato de apprentisse del usator actual; vide le documentation de action=growthsetmentorweight pro information detaliate sur le statos individual.",
 	"apihelp-query+growthmentormentee-summary": "Causar que tote le apprentisses se assigna a un mentor date",
-	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor pro le qual consultar le apprentisses"
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor pro le qual consultar le apprentisses",
+	"apihelp-growthmanagementorlist-summary": "Gerer informationes in le lista structurate de mentores (normalmente immagazinate in [[MediaWiki:GrowthMentors.json]]). Iste modulo pote esser usate per mentores actual e futur (pro inscriber se o pro cambiar le proprie detalios) e per administratores (pro tote le usatores).",
+	"apihelp-growthmanagementorlist-param-geaction": "Action",
+	"apihelp-growthmanagementorlist-param-message": "Message de introduction (lassa vacue pro usar le message predefinite de mentor)",
+	"apihelp-growthmanagementorlist-param-weight": "Peso",
+	"apihelp-growthmanagementorlist-param-autoassigned": "Es le mentor assignate automaticamente al novicios?",
+	"apihelp-growthmanagementorlist-param-summary": "Motivo del cambiamento",
+	"apihelp-growthmanagementorlist-param-username": "Le nomine del usator del mentor affectate per le cambiamento. Si non fornite, le usator actualmente in session essera usate. Pote solo esser usate per usatores privilegiate."
 }

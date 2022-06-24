@@ -2,17 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Bluetpp",
+			"Minh Nguyen",
 			"Tuanminh01"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Xử lý các câu hỏi được đăng qua cửa sổ trợ giúp cho người dùng hiện tại.",
 	"apihelp-helppanelquestionposter-param-body": "Nội dung của câu hỏi được người dùng cung cấp.",
 	"apihelp-helppanelquestionposter-param-source": "Phương pháp mà câu hỏi này được đăng.",
-	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Bảng \"Hỏi tại bàn trợ giúp\"",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Bảng \"Hỏi cố vấn của bạn\" tại trang nhà người mới",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Màn hình \"Hỏi cố vấn của bạn\" trên bảng trợ giúp",
-	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Bảng \"Hỏi tại bàn trợ giúp\" (tên cũ)",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Bảng \"Hỏi cố vấn của bạn\" tại trang nhà người mới (tên cũ)",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Bảng “Hỏi tại bàn trợ giúp”",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Bảng “Hỏi cố vấn của bạn” tại trang nhà người mới",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Màn hình “Hỏi cố vấn của bạn” trên bảng trợ giúp",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Bảng “Hỏi tại bàn trợ giúp” (tên cũ)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Bảng “Hỏi cố vấn của bạn” tại trang nhà người mới (tên cũ)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Tiêu đề có liên quan, nếu được chọn, để đi kèm với câu hỏi.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Bạn phải đăng nhập để đặt câu hỏi."
 }

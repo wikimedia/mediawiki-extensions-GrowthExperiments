@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"MathXplore",
 			"Omotecho"
 		]
 	},
@@ -11,5 +12,8 @@
 	"apihelp-growthsetmentorstatus-summary": "表示してある利用者の指導役の状況を活動中／不在に切り替える",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "状況の更新",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "指導役を不在に指定した場合、その期間も示す必要があります (単位は日数)",
-	"apihelp-query+growthmentorstatus-summary": "現在の指導役の状況をクエリで問い合わせる"
+	"apihelp-query+growthmentorstatus-summary": "現在の指導役の状況をクエリで問い合わせる",
+	"apihelp-growthmanagementorlist-param-geaction": "操作",
+	"apihelp-growthmanagementorlist-param-weight": "重み",
+	"apihelp-growthmanagementorlist-param-summary": "変更の理由"
 }
