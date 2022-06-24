@@ -43,7 +43,9 @@
 			$( '<div>' )
 				.addClass( 'growthexperiments-homepage-mentorship-about-mentorship' )
 				.append(
-					$( '<h4>' ).text( mw.msg( 'growthexperiments-homepage-mentorship-about-subheader-mentor' ) ),
+					$( '<h4>' ).text(
+						mw.message( 'growthexperiments-homepage-mentorship-about-subheader-mentor', mentorGender ).text()
+					),
 					$( '<p>' ).text(
 						mw.message( 'growthexperiments-homepage-mentorship-about-mentor-par1', mentorGender ).text()
 					),

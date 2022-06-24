@@ -155,7 +155,8 @@ class HomepageModuleRegistry {
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getExperimentUserManager(),
-					$growthServices->getMentorManager()
+					$growthServices->getMentorManager(),
+					$services->getGenderCache()
 				);
 			},
 
