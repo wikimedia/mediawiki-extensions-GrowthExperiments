@@ -57,6 +57,19 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 				],
 				'origin_wiki' => 'commonswiki',
 				'page_rev' => 17463093
+			],
+			[
+				'wiki' => 'enwiki',
+				'page_id' => 344465,
+				'id' => '1.23',
+				'image' => 'Image3.png',
+				'confidence' => 50,
+				'found_on' => [],
+				'kind' => [
+					'istype-commons-category'
+				],
+				'origin_wiki' => 'commonswiki',
+				'page_rev' => 17463093
 			]
 		];
 		return [
@@ -65,8 +78,12 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 				[ 'rows' => $suggestions ], [
 					new ImageRecommendationData(
 						'Image1.png', 'wikipedia', 'enwiki,dewiki', '1.23'
-					), new ImageRecommendationData(
+					),
+					new ImageRecommendationData(
 						'Image2.png', 'commons', 'enwiki', '1.23'
+					),
+					new ImageRecommendationData(
+						'Image3.png', 'commons', '', '1.23'
 					)
 				]
 			],
