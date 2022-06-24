@@ -26,7 +26,6 @@ use Status;
 use Title;
 use TitleFactory;
 use UserNotLoggedIn;
-use WikiPage;
 use WikitextContent;
 
 /**
@@ -154,7 +153,7 @@ abstract class QuestionPoster {
 		$this->config = $this->getContext()->getConfig();
 		$this->isFirstEdit = ( $this->getContext()->getUser()->getEditCount() === 0 );
 		$this->targetTitle = $this->getTargetTitle();
-		$page = new WikiPage( $this->targetTitle );
+		$page = $wikiPageFactory->newFromTitle( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->body = trim( $body );
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;

@@ -10,7 +10,6 @@ use RequestContext;
 use Status;
 use Title;
 use User;
-use WikiPage;
 
 /**
  * @group medium
@@ -63,7 +62,8 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
-		$page = new WikiPage( Title::newFromText( 'HelpDeskTest' ) );
+		$page = $this->getServiceContainer()->getWikiPageFactory()
+			->newFromTitle( Title::newFromText( 'HelpDeskTest' ) );
 		$this->assertRegExp(
 			'/a great question/',
 			$page->getContent()->getSection( 1 )->serialize()
@@ -89,7 +89,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
-		$page = new WikiPage( $title );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$this->assertRegExp(
 			'/a great question/',
 			$page->getContent()->getSection( 1 )->serialize()
