@@ -3,14 +3,14 @@
 namespace GrowthExperiments\Tests\NewcomerTasks\AddImage;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
-use GrowthExperiments\NewcomerTasks\AddImage\OldImageRecommendationApiHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\MvpImageRecommendationApiHandler;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWikiUnitTestCase;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\AddImage\OldImageRecommendationApiHandler
+ * @covers \GrowthExperiments\NewcomerTasks\AddImage\MvpImageRecommendationApiHandler
  */
-class OldImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
+class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideApiResponseData
@@ -18,7 +18,7 @@ class OldImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 	 * @param array $expectedResult
 	 */
 	public function testGetSuggestionDataFromApiResponse( array $apiResponse, array $expectedResult ) {
-		$apiHandler = new OldImageRecommendationApiHandler(
+		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->createMock( HttpRequestFactory::class ),
 			'https://example.com',
 			'wikipedia',

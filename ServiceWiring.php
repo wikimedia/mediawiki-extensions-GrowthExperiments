@@ -41,7 +41,8 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
-use GrowthExperiments\NewcomerTasks\AddImage\OldImageRecommendationApiHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\MvpImageRecommendationApiHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\ProductionImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
@@ -225,7 +226,16 @@ return [
 	): ImageRecommendationApiHandler {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$config = $growthServices->getGrowthConfig();
-		return new OldImageRecommendationApiHandler(
+		if ( $config->get( 'GEImageRecommendationApiHandler' ) === 'production' ) {
+			return new ProductionImageRecommendationApiHandler(
+				$services->getHttpRequestFactory(),
+				$config->get( 'GEImageRecommendationServiceUrl' ),
+				$config->get( 'GEImageRecommendationServiceWikiIdMasquerade' ) ??
+				WikiMap::getCurrentWikiId(),
+				null
+			);
+		}
+		return new MvpImageRecommendationApiHandler(
 			$services->getHttpRequestFactory(),
 			$config->get( 'GEImageRecommendationServiceUrl' ),
 			'wikipedia',
