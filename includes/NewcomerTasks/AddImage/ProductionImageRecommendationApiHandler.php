@@ -103,7 +103,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 			$imageData[] = new ImageRecommendationData(
 				$suggestion['image'],
 				$this->getSourceFromKind( $suggestion['kind'] ),
-				implode( ',', $suggestion['found_on'] ),
+				implode( ',', $suggestion['found_on'] ?? [] ),
 				$suggestion['id']
 			);
 		}
