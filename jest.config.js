@@ -24,7 +24,6 @@ module.exports = {
 	testEnvironment: 'jsdom',
 	// Indicates whether the coverage information should be collected while executing the test
 	collectCoverage: true,
-	// An array of glob patterns indicating a set of files for which coverage information should be collected
 	collectCoverageFrom: [
 		'modules/ext.growthExperiments.MentorDashboard.Vue/**/*.(js|vue)'
 	],
@@ -34,7 +33,6 @@ module.exports = {
 	roots: [
 		'./modules/ext.growthExperiments.MentorDashboard.Vue'
 	],
-	// The paths to modules that run some code to configure or set up the testing environment before each test
 	setupFiles: [
 		'./jest.setup.js'
 	]

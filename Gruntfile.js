@@ -16,14 +16,12 @@ module.exports = function ( grunt ) {
 				fix: grunt.option( 'fix' )
 			},
 			all: [
-				'**/*.{js,json}',
-				'!node_modules/**',
-				'!vendor/**'
+				'.'
 			]
 		},
 		stylelint: {
 			all: [
-				'modules/**/*.less'
+				'modules/**/*.{less,vue}'
 			]
 		},
 		banana: {

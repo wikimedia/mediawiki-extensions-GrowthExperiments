@@ -6,7 +6,7 @@
 		ellipsisMenu;
 
 	/**
-	 * @class
+	 * @class EllipsisMenu
 	 * @extends OO.ui.Widget
 	 *
 	 * @constructor
@@ -86,7 +86,7 @@
 
 	/**
 	 * @param {jQuery} $homepageContainer
-	 * @returns {EllipsisMenu}
+	 * @return {EllipsisMenu}
 	 */
 	module.exports = function ( $homepageContainer ) {
 		if ( ellipsisMenu === undefined ) {

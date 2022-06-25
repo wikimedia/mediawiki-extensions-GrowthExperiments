@@ -55,7 +55,6 @@ class HomepagePage extends Page {
 			// There seems to be some race condition where the edit button is clickable, but
 			// clicking doesn't load the VE surface. When that happens, reload the page but
 			// with veaction=edit so we're in editing mode.
-			// eslint-disable-next-line node/no-unsupported-features/node-builtins
 			const url = new URL( await browser.getUrl() );
 			url.searchParams.append( 'veaction', 'edit' );
 			await browser.url( url.toString() );
