@@ -617,7 +617,6 @@ abstract class QuestionPoster {
 		$services = MediaWikiServices::getInstance();
 		$derivativeContext->setConfig( $services->getMainConfig() );
 		$derivativeContext->setTitle( $this->targetTitle );
-		$derivativeContext->setWikiPage( $services->getWikiPageFactory()->newFromTitle( $this->targetTitle ) );
 		$status = new Status();
 		if ( !Hooks::run( 'EditFilterMergedContent', [
 			$derivativeContext,
