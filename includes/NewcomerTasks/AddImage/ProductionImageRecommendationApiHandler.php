@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
+use MWHttpRequest;
 use RequestContext;
 use StatusValue;
 use Title;
@@ -27,6 +28,12 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 	/** @var int|null */
 	private $requestTimeout;
 
+	/** @var bool */
+	private $useTitles;
+
+	/** @var bool */
+	private $shouldVerifySsl;
+
 	private const KIND_TO_SOURCE = [
 		'istype-lead-image' => ImageRecommendationImage::SOURCE_WIKIPEDIA,
 		'istype-wikidata-image' => ImageRecommendationImage::SOURCE_WIKIDATA,
@@ -38,17 +45,24 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 	 * @param string $url Image recommendation service root URL
 	 * @param string $wikiId Project ID (for example, 'enwiki')
 	 * @param int|null $requestTimeout Service request timeout in seconds
+	 * @param bool $useTitles Query image suggestions by title instead of by article ID;
+	 * 	used in non-production environments
+	 * @param bool $shouldVerifySsl Whether the HTTP requests should verify SSL certificate and host
 	 */
 	public function __construct(
 		HttpRequestFactory $httpRequestFactory,
 		string $url,
 		string $wikiId,
-		?int $requestTimeout
+		?int $requestTimeout,
+		bool $useTitles = false,
+		bool $shouldVerifySsl = true
 	) {
 		$this->httpRequestFactory = $httpRequestFactory;
 		$this->url = $url;
 		$this->wikiId = $wikiId;
 		$this->requestTimeout = $requestTimeout;
+		$this->useTitles = $useTitles;
+		$this->shouldVerifySsl = $shouldVerifySsl;
 	}
 
 	/** @inheritDoc */
@@ -58,24 +72,21 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 				'Image Suggestions API URL is not configured' );
 		}
 
-		$pathArgs = [
+		$articleId = $this->useTitles ?
+			$this->getArticleIdFromTitle( $title ) :
+			$title->getArticleID();
+
+		if ( $articleId instanceof StatusValue ) {
+			return $articleId;
+		}
+
+		return $this->getRequest( [
 			'public',
 			'image_suggestions',
 			'suggestions',
 			$this->wikiId,
-			$title->getArticleID()
-		];
-		$request = $this->httpRequestFactory->create(
-			$this->url . '/' . implode( '/', array_map( 'rawurlencode', $pathArgs ) ),
-			[
-				'method' => 'GET',
-				'originalRequest' => RequestContext::getMain()->getRequest(),
-				'timeout' => $this->requestTimeout,
-			],
-			__METHOD__
-		);
-		$request->setHeader( 'Accept', 'application/json' );
-		return $request;
+			$articleId
+		] );
 	}
 
 	/**
@@ -108,5 +119,52 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 			);
 		}
 		return $imageData;
+	}
+
+	/**
+	 * Get the production article ID for the given title.
+	 * The API retrieves image suggestions for a given production article ID, so for non-production
+	 * environments, the title needs to be mapped to the corresponding production ID.
+	 *
+	 * @param Title $title
+	 * @return StatusValue|int
+	 */
+	private function getArticleIdFromTitle( Title $title ) {
+		$titleText = $title->getDBkey();
+		$request = $this->getRequest( [
+			'private',
+			'image_suggestions',
+			'title_cache',
+			$this->wikiId,
+			$titleText
+		] );
+		$status = $request->execute();
+		if ( !$status->isOK() ) {
+			return StatusValue::newFatal( 'rawmessage',
+				'Failed to fetch production article ID for ' . $titleText );
+		}
+		$responseData = json_decode( $request->getContent(), true );
+		$articleData = $responseData['rows'][0] ?? [];
+		if ( array_key_exists( 'page_id', $articleData ) ) {
+			return $articleData['page_id'];
+		}
+		return StatusValue::newFatal( 'rawmessage',
+			'Invalid response from title_cache for ' . $titleText );
+	}
+
+	private function getRequest( array $pathArgs = [] ): MWHttpRequest {
+		$request = $this->httpRequestFactory->create(
+			$this->url . '/' . implode( '/', array_map( 'rawurlencode', $pathArgs ) ),
+			[
+				'method' => 'GET',
+				'originalRequest' => RequestContext::getMain()->getRequest(),
+				'timeout' => $this->requestTimeout,
+				'sslVerifyCert' => $this->shouldVerifySsl,
+				'sslVerifyHost' => $this->shouldVerifySsl,
+			],
+			__METHOD__
+		);
+		$request->setHeader( 'Accept', 'application/json' );
+		return $request;
 	}
 }

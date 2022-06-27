@@ -232,7 +232,9 @@ return [
 				$config->get( 'GEImageRecommendationServiceUrl' ),
 				$config->get( 'GEImageRecommendationServiceWikiIdMasquerade' ) ??
 				WikiMap::getCurrentWikiId(),
-				null
+				null,
+				$config->get( 'GEImageRecommendationServiceUseTitles' ),
+				!$config->get( 'GEDeveloperSetup' )
 			);
 		}
 		return new MvpImageRecommendationApiHandler(
