@@ -5,7 +5,8 @@
 			"ئارام بکر",
 			"Kushared",
 			"Muhammed taha",
-			"Sarchia"
+			"Sarchia",
+			"Aram"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|سڵاو}}، {{bidi:$1}}!",
@@ -69,6 +70,7 @@
 	"growthexperiments-tour-helpdesk-response-tip-title": "ئاگادارییەکانی پرسگا",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "ئاگادارییەکانی مامۆستا",
 	"growthexperiments-tour-response-button-okay": "تێگەیشتم",
+	"tag-help_module_question": "پرسیاری یەکەی یارمەتی",
 	"tag-newcomer_task": "ئەرکی تازەکار",
 	"growthexperiments-homepage-help-dialog-title": "لە پرسگا بپرسە",
 	"growthexperiments-homepage-help-header": "یارمەتی وەربگرە بۆ دەستکاریکردن",
