@@ -11,6 +11,7 @@ use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\Specials\SpecialEnrollAsMentor;
 use GrowthExperiments\Specials\SpecialManageMentors;
 use GrowthExperiments\Specials\SpecialQuitMentorship;
 use GrowthExperiments\Util;
@@ -153,6 +154,13 @@ class MentorHooks implements SpecialPage_initListHook, LocalUserCreatedHook, Pag
 					'UserEditTracker',
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsMentorWriter'
+				]
+			];
+			$list['EnrollAsMentor'] = [
+				'class' => SpecialEnrollAsMentor::class,
+				'services' => [
+					'GrowthExperimentsMentorProvider',
+					'GrowthExperimentsMentorWriter',
 				]
 			];
 		} elseif ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_WIKITEXT ) {
