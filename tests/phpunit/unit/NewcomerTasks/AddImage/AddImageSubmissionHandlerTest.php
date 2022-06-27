@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use CirrusSearch\CirrusSearch;
+use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
@@ -33,7 +34,8 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
 			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
 			$configurationLoaderMock,
-			$this->createMock( WANObjectCache::class )
+			$this->createMock( WANObjectCache::class ),
+			$this->createMock( EventGateImageSuggestionFeedbackUpdater::class )
 		);
 		$page = new PageIdentityValue( 1, 2, 3, '4' );
 		$user = new UserIdentityValue( 1, 'Alice' );
@@ -73,16 +75,18 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 		$status = $handler->validate( $page, $user, 1, [
 			'accepted' => false,
 			'reasons' => [ 'noinfo' ],
+			'filename' => 'SomeFile.jpg',
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertArrayEquals( [ false, [ 'noinfo' ] ], $status->getValue() );
+		$this->assertArrayEquals( [ false, [ 'noinfo' ], 'SomeFile.jpg' ], $status->getValue() );
 
 		$status = $handler->validate( $page, $user, 1, [
 			'accepted' => true,
 			'reasons' => [],
-			'caption' => 'succeed'
+			'caption' => 'succeed',
+			'filename' => ''
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertArrayEquals( [ true, [] ], $status->getValue() );
+		$this->assertArrayEquals( [ true, [], '' ], $status->getValue() );
 	}
 }

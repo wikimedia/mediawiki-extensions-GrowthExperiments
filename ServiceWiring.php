@@ -34,6 +34,7 @@ use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\CacheBackedImageRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
@@ -111,7 +112,8 @@ return [
 			$geServices->getTaskSuggesterFactory(),
 			$geServices->getNewcomerTasksUserOptionsLookup(),
 			$geServices->getNewcomerTasksConfigurationLoader(),
-			$services->getMainWANObjectCache()
+			$services->getMainWANObjectCache(),
+			$geServices->getEventGateImageSuggestionFeedbackUpdater()
 		);
 	},
 
@@ -984,5 +986,14 @@ return [
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
 		);
 	},
+
+	'GrowthExperimentsEventGateImageSuggestionFeedbackUpdater' => static function (
+		MediaWikiServices $services
+	): EventGateImageSuggestionFeedbackUpdater {
+		return new EventGateImageSuggestionFeedbackUpdater(
+			$services->get( 'EventBus.EventBusFactory' ),
+			$services->getWikiPageFactory()
+		);
+	}
 
 ];

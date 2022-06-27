@@ -25,6 +25,7 @@ use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
@@ -327,6 +328,10 @@ class GrowthExperimentsServices {
 
 	public function getUserDatabaseHelper(): UserDatabaseHelper {
 		return $this->coreServices->get( 'GrowthExperimentsUserDatabaseHelper' );
+	}
+
+	public function getEventGateImageSuggestionFeedbackUpdater(): EventGateImageSuggestionFeedbackUpdater {
+		return $this->coreServices->get( 'GrowthExperimentsEventGateImageSuggestionFeedbackUpdater' );
 	}
 
 }

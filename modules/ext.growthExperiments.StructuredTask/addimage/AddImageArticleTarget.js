@@ -667,7 +667,9 @@ AddImageArticleTarget.prototype.formatSaveOptions = function ( saveOptions ) {
 AddImageArticleTarget.prototype.invalidateRecommendation = function () {
 	new mw.Api().postWithToken( 'csrf', {
 		action: 'growthinvalidateimagerecommendation',
-		title: suggestedEditSession.getCurrentTitle().getNameText()
+		title: suggestedEditSession.getCurrentTitle().getNameText(),
+		// "image" is the unprefixed filename, e.g. Example.jpg
+		filename: this.getSelectedSuggestion().image
 	} );
 };
 

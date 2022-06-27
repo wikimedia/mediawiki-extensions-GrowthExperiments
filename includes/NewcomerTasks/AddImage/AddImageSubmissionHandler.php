@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use CirrusSearch\CirrusSearch;
 use DeferredUpdates;
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -43,17 +44,12 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	/** @var callable */
 	private $cirrusSearchFactory;
 
-	/** @var TaskSuggesterFactory */
-	private $taskSuggesterFactory;
+	private TaskSuggesterFactory $taskSuggesterFactory;
+	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private ConfigurationLoader $configurationLoader;
+	private WANObjectCache $cache;
 
-	/** @var NewcomerTasksUserOptionsLookup */
-	private $newcomerTasksUserOptionsLookup;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
-	/** @var WANObjectCache */
-	private $cache;
+	private EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater;
 
 	/**
 	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
@@ -61,19 +57,22 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param WANObjectCache $cache
+	 * @param EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
 	 */
 	public function __construct(
 		callable $cirrusSearchFactory,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		ConfigurationLoader $configurationLoader,
-		WANObjectCache $cache
+		WANObjectCache $cache,
+		EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
 	) {
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->configurationLoader = $configurationLoader;
 		$this->cache = $cache;
+		$this->eventGateImageFeedbackUpdater = $eventGateImageFeedbackUpdater;
 	}
 
 	/** @inheritDoc */
@@ -96,12 +95,18 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		if ( !$status->isGood() ) {
 			return $status;
 		}
-		[ $accepted, $reasons ] = $status->getValue();
+		[ $accepted, $reasons, $filename ] = $status->getValue();
 
 		// Remove this image from being recommended in the future, unless it was rejected with
 		// one of the "not sure" options.
-		if ( $accepted || array_diff( $reasons, self::REJECTION_REASONS_UNDECIDED ) ) {
-			$this->invalidateRecommendation( $page );
+		if ( array_diff( $reasons, self::REJECTION_REASONS_UNDECIDED ) ) {
+			$this->invalidateRecommendation(
+				$page,
+				$user->getId(),
+				$accepted,
+				$filename,
+				$reasons
+			);
 		}
 
 		$warnings = [];
@@ -164,6 +169,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * @return StatusValue A status with [ $accepted, $reasons ] on success:
 	 *   - $accepted (bool): true if the image was accepted, false if it was rejected
 	 *   - $reasons (string[]): list of rejection reasons.
+	 *   - $filename (string) The filename of the image suggestion
 	 */
 	private function parseData( array $data ): StatusValue {
 		if ( !array_key_exists( 'accepted', $data ) ) {
@@ -212,26 +218,41 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 			}
 		}
 
-		return StatusValue::newGood( [ $data['accepted'], array_values( $data['reasons'] ) ] );
+		return StatusValue::newGood( [ $data['accepted'], array_values( $data['reasons'] ), $data['filename'] ] );
 	}
 
 	/**
 	 * Invalidate the recommendation for the specified page.
 	 *
-	 * This is used when the recommendation is accepted or rejected for decided reasons and when
-	 * the recommendation is invalid (for example: no images remain after filtering,
-	 * the article already has an image).
+	 * This method will:
+	 * - Reset the "hasrecommendation:image" weighted tag for the article, so the article is no longer returned in
+	 *   search results for image suggestions.
+	 * - Add the article to a short-lived cache, which ImageRecommendationFilter consults to decide if the article
+	 *   should appear in the user's suggested edits queue on Special:Homepage or via the growthtasks API.
+	 * - Generate and send an event to EventGate to the image-suggestion-feedback stream.
 	 *
 	 * @param ProperPageIdentity $page
-	 *
+	 * @param int $userId
+	 * @param null|bool $accepted True if accepted, false if rejected, null if invalidating for
+	 * other reasons (e.g. image exists on page when user visits it)
+	 * @param string $filename Unprefixed filename.
+	 * @param string[] $rejectionReasons Reasons for rejecting the image.
+	 * @throws \Exception
 	 * @see ApiInvalidateImageRecommendation::execute
 	 */
-	public function invalidateRecommendation( ProperPageIdentity $page ) {
+	public function invalidateRecommendation(
+		ProperPageIdentity $page,
+		int $userId,
+		?bool $accepted,
+		string $filename,
+		array $rejectionReasons = []
+	) {
 		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
 		/** @var CirrusSearch $cirrusSearch */
 		$cirrusSearch = ( $this->cirrusSearchFactory )();
 		$cirrusSearch->resetWeightedTags( $page,
 			ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
+
 		// Mark the task as "invalid" in a temporary cache, until the weighted tags in the search
 		// index are updated.
 		$this->cache->set(
@@ -242,6 +263,14 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 			),
 			true,
 			$this->cache::TTL_MINUTE * 10
+		);
+
+		$this->eventGateImageFeedbackUpdater->update(
+			$page->getId(),
+			$userId,
+			$accepted,
+			$filename,
+			$rejectionReasons
 		);
 	}
 

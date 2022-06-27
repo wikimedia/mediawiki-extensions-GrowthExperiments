@@ -13,7 +13,9 @@
 	"apihelp-growthsetmentor-param-mentee": "{{doc-apihelp-param|growthsetmentor|mentee}}",
 	"apihelp-growthsetmentor-param-mentor": "{{doc-apihelp-param|growthsetmentor|mentor}}",
 	"apihelp-growthsetmentor-param-reason": "{{doc-apihelp-param|growthsetmentor|reason}}",
+	"apihelp-query+growthimagesuggestiondata-summary": "{{doc-apihelp-param|growthimagesuggestiondata}}",
 	"apihelp-growthinvalidateimagerecommendation-summary": "{{doc-apihelp-summary|growthinvalidateimagerecommendation}}",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "{{doc-apihelp-extended-description|growthimagesuggestiondata}}",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "{{doc-apihelp-param|growthinvalidateimagerecommendation|title}}",
-	"apihelp-query+growthimagesuggestiondata-summary": "{{doc-apihelp-param|growthimagesuggestiondata}}"
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "{{doc-apihelp-param|growthinvalidateimagerecommendation|filename}}"
 }

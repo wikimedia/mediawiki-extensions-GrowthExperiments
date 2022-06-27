@@ -218,7 +218,12 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		}
 		if ( !$images ) {
 			$imageSubmissionHandler->invalidateRecommendation(
-				Title::newFromLinkTarget( $title )->toPageIdentity()
+				Title::newFromLinkTarget( $title )->toPageIdentity(),
+				// We need to pass a user ID for event logging purposes. We can't easily
+				// access a user ID here; passing 0 for an anonymous user seems OK.
+				0,
+				null,
+				''
 			);
 			return $status;
 		}
