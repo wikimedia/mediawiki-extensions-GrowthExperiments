@@ -571,6 +571,22 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.Homepage.NewImpact": {
+			"es6": true,
+			"packageFiles": [
+				"ext.growthExperiments.Homepage.NewImpact/index.js",
+				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.vue"
+			],
+			"dependencies": [
+				"vue",
+				"vuex",
+				"@wikimedia/codex"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
 		"ext.growthExperiments.Homepage.Mentorship": {
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.Mentorship/index.js",

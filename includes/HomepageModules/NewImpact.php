@@ -4,6 +4,7 @@ namespace GrowthExperiments\HomepageModules;
 
 use Config;
 use GrowthExperiments\ExperimentUserManager;
+use Html;
 use IContextSource;
 
 /**
@@ -30,7 +31,13 @@ class NewImpact extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getBody() {
-		return '<div></div>';
+		return Html::rawElement( 'div',
+				[ 'id' => 'new-impact-vue-root' ]
+			) .
+			Html::element( 'p',
+				[ 'class' => 'growthexperiments-homepage-new-impact-no-js-fallback' ],
+				$this->msg( 'growthexperiments-homepage-new-impact-no-js-fallback' )->text()
+			);
 	}
 
 	/** @inheritDoc */
@@ -41,5 +48,10 @@ class NewImpact extends BaseModule {
 	/** @inheritDoc */
 	protected function getHeaderIconName() {
 		return 'chart';
+	}
+
+	/** @inheritDoc */
+	protected function getModules() {
+		return [ 'ext.growthExperiments.Homepage.NewImpact' ];
 	}
 }

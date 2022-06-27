@@ -1,0 +1,42 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/jquery",
+		"wikimedia/mediawiki"
+	],
+	"globals": {
+		"ge": "writable",
+		"ve": "readonly"
+	},
+	"env": {
+		"commonjs": true
+	},
+	"rules": {
+		"max-len": "warn",
+		"compat/compat": "warn"
+	},
+	"overrides": [
+		{
+			"files": "**/*.vue",
+			"extends": [
+				"wikimedia/client-common",
+				"wikimedia/vue3-es6"
+			],
+			"rules": {
+				"vue/component-name-in-template-casing": [ "error", "kebab-case" ]
+			}
+		},
+		{
+			"files": [ "**/*.js" ],
+			"extends": [
+				"wikimedia/client-es6"
+			]
+		},
+		{
+			"files": [ "**/*.test.js" ],
+			"env": {
+				"jest": true
+			}
+		}
+	]
+}
