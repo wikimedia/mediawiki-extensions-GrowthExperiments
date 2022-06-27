@@ -4,8 +4,8 @@ namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use MediaWiki\Cache\LinkBatchFactory;
-use MediaWiki\Permissions\RestrictionStore;
 use TitleFactory;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * Filter out protected items from a small resultset.
@@ -18,22 +18,22 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
 
-	/** @var RestrictionStore */
-	private $restrictionStore;
+	/** @var IDatabase */
+	private $dbr;
 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param RestrictionStore $restrictionStore
+	 * @param IDatabase $dbr
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
-		RestrictionStore $restrictionStore
+		IDatabase $dbr
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->linkBatchFactory = $linkBatchFactory;
-		$this->restrictionStore = $restrictionStore;
+		$this->dbr = $dbr;
 	}
 
 	/** @inheritDoc */
@@ -48,21 +48,31 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 
 		$invalidTasks = [];
 		$validTasks = [];
+
 		foreach ( $taskSet as $task ) {
-			if ( count( $validTasks ) >= $maxLength ) {
-				break;
-			}
 			$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
-			// isProtected is not covered by the LinkBatch. For now we only need filtering
-			// for single-task lookups so constructing our own efficient SQL query is not
-			// worth the effort.
-			// Keep titles which do not exist. This is useful for local test setups.
-			if ( !$title->exists() || !$this->restrictionStore->isProtected( $title, 'edit' ) ) {
-				$validTasks[] = $task;
-			} else {
-				$invalidTasks[] = $task;
-			}
+			$validTasks[ $title->getArticleID() ] = $task;
 		}
+		// Do a single batch query instead of several individual queries with RestrictionStore.
+		// In the longer run, adding batch querying to RestrictionStore itself would be nice.
+		$results = $this->dbr->select(
+			'page_restrictions',
+			[ 'pr_page' ],
+			[
+				'pr_page' => array_keys( $validTasks ),
+				'pr_type' => 'edit'
+			],
+			__METHOD__
+		);
+
+		foreach ( $results as $item ) {
+			// We found restrictions, so add the task to the invalid task list, and
+			// unset it from the valid task list.
+			$invalidTasks[$item->pr_page] = $validTasks[$item->pr_page];
+			unset( $validTasks[$item->pr_page] );
+		}
+
+		$validTasks = array_slice( $validTasks, 0, $maxLength, true );
 
 		return $this->copyValidAndInvalidTasksToNewTaskSet( $taskSet, $validTasks, $invalidTasks );
 	}

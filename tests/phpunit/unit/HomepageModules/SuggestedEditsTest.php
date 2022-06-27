@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\HomepageModules;
 
+use ArrayIterator;
 use GlobalVarConfig;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
@@ -23,7 +24,6 @@ use IContextSource;
 use Language;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
-use MediaWiki\Permissions\RestrictionStore;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiTestCaseTrait;
@@ -36,6 +36,7 @@ use TitleValue;
 use User;
 use WANObjectCache;
 use WebRequest;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -146,14 +147,17 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$linkBatchFactoryMock = $this->getMockBuilder( LinkBatchFactory::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$restrictionStoreMock = $this->getMockBuilder( RestrictionStore::class )
+		$databaseMock = $this->getMockBuilder( IDatabase::class )
 			->disableOriginalConstructor()
 			->getMock();
+		$databaseMock->expects( $this->once() )
+			->method( 'select' )
+			->willReturn( new ArrayIterator( [] ) );
 
 		$protectionFilter = new ProtectionFilter(
 			$titleFactoryMock,
 			$linkBatchFactoryMock,
-			$restrictionStoreMock
+			$databaseMock
 		);
 		$linkRecommendationFilter = new LinkRecommendationFilter(
 			$this->getMockBuilder( LinkRecommendationStore::class )
