@@ -12,11 +12,11 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use StatusValue;
-use TitleValue;
 
 /**
  * @group API
  * @group medium
+ * @group Database
  * @covers \GrowthExperiments\Api\ApiQueryGrowthTasks
  */
 class ApiQueryGrowthTasksTest extends ApiTestCase {
@@ -25,13 +25,20 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$taskType1 = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		$taskType2 = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
 		$taskType3 = new TaskType( 'update', TaskType::DIFFICULTY_MEDIUM );
+		$titleFactory = $this->getServiceContainer()->getTitleFactory();
+		$copyEdit1 = $this->insertPage( 'Copyedit-1' );
+		$link1 = $this->insertPage( 'Link-1' );
+		$update1 = $this->insertPage( 'Update-1 ' );
+		$copyedit2 = $this->insertPage( 'Copyedit-2' );
+		$update2 = $this->insertPage( 'Update-2' );
+		$copyedit3 = $this->insertPage( 'Copyedit-3 ' );
 		$suggesterFactory = new StaticTaskSuggesterFactory( [
-			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-1' ) ),
-			new Task( $taskType2, new TitleValue( NS_MAIN, 'Link-1' ) ),
-			new Task( $taskType3, new TitleValue( NS_MAIN, 'Update-1' ) ),
-			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-2' ) ),
-			new Task( $taskType3, new TitleValue( NS_MAIN, 'Update-2' ) ),
-			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-3' ) ),
+			new Task( $taskType1, $titleFactory->newFromID( $copyEdit1['id'] ) ),
+			new Task( $taskType2, $titleFactory->newFromID( $link1['id'] ) ),
+			new Task( $taskType3, $titleFactory->newFromID( $update1['id'] ) ),
+			new Task( $taskType1, $titleFactory->newFromID( $copyedit2['id'] ) ),
+			new Task( $taskType3, $titleFactory->newFromID( $update2['id'] ) ),
+			new Task( $taskType1, $titleFactory->newFromID( $copyedit3['id'] ) ),
 		] );
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2, $taskType3 ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
@@ -72,9 +79,12 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 	public function testExecuteGenerator() {
 		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$titleFactory = $this->getServiceContainer()->getTitleFactory();
+		$task1 = $this->insertPage( 'Task-1' );
+		$task2 = $this->insertPage( 'Task-2' );
 		$suggesterFactory = new StaticTaskSuggesterFactory( [
-			new Task( $taskType, new TitleValue( NS_MAIN, 'Task-1' ) ),
-			new Task( $taskType, new TitleValue( NS_MAIN, 'Task-2' ) ),
+			new Task( $taskType, $titleFactory->newFromID( $task1['id'] ) ),
+			new Task( $taskType, $titleFactory->newFromID( $task2['id'] ) ),
 		] );
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
@@ -85,7 +95,6 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->assertSame( 2, $data['growthtasks']['totalCount'] );
 		$this->assertSame( 0, $pages['ns'] );
 		$this->assertSame( 'Task-1', $pages['title'] );
-		$this->assertSame( true, $pages['missing'] );
 		$this->assertSame( 'copyedit', $pages['tasktype'] );
 		$this->assertSame( TaskType::DIFFICULTY_EASY, $pages['difficulty'] );
 		$this->assertSame( 0, $pages['order'] );

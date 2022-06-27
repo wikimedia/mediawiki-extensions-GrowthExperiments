@@ -118,7 +118,6 @@
 	 *   promise with two fields:
 	 *   - count: the number of tasks available. Note this is the full count, not the
 	 *     task list length.
-	 *     FIXME protection status is ignored by the count.
 	 *   - tasks: a list of task data objects
 	 */
 	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, topicFilters, config ) {
@@ -146,12 +145,10 @@
 		apiParams = {
 			action: 'query',
 			prop: 'info|revisions|pageimages' + ( config.getDescription ? '|description' : '' ),
-			inprop: 'protection',
 			rvprop: 'ids',
 			piprop: 'name|original|thumbnail',
 			pithumbsize: config.thumbnailWidth,
 			generator: 'growthtasks',
-			// TODO: Filter out protected articles on the server side.
 			ggtlimit: config.size,
 			ggttasktypes: taskTypes.join( '|' ),
 			formatversion: 2,
@@ -207,12 +204,8 @@
 				self.setUrlOverride( task );
 				return task;
 			}
-			function filterOutProtectedArticles( result ) {
-				return result.protection.length === 0;
-			}
 			if ( data.query && data.query.pages ) {
 				tasks = data.query.pages
-					.filter( filterOutProtectedArticles )
 					.sort( function ( l, r ) {
 						return l.order - r.order;
 					} )
