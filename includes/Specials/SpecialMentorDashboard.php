@@ -120,6 +120,30 @@ class SpecialMentorDashboard extends SpecialPage {
 	}
 
 	/**
+	 * @return bool
+	 */
+	private function isStructuredListEnabled(): bool {
+		return $this->getConfig()->get( 'GEMentorProvider' ) ===
+			MentorProvider::PROVIDER_STRUCTURED;
+	}
+
+	/**
+	 * Check whether the user is a mentor and redirect to
+	 * Special:EnrollAsMentor if they're not AND structured mentor
+	 * list is used.
+	 */
+	private function maybeRedirectToEnrollAsMentor(): void {
+		if (
+			$this->isStructuredListEnabled() &&
+			!$this->mentorProvider->isMentor( $this->getUser() )
+		) {
+			$this->getOutput()->redirect(
+				SpecialPage::getTitleFor( 'EnrollAsMentor' )->getLocalURL()
+			);
+		}
+	}
+
+	/**
 	 * Ensure mentor dashboard is enabled
 	 *
 	 * @throws ErrorPageError
@@ -153,8 +177,10 @@ class SpecialMentorDashboard extends SpecialPage {
 	 */
 	public function execute( $par ) {
 		$this->requireLogin();
+		$this->maybeRedirectToEnrollAsMentor();
 		$this->requireMentorDashboardEnabled();
 		$this->requireMentorList();
+
 		parent::execute( $par );
 
 		$out = $this->getContext()->getOutput();
@@ -277,10 +303,10 @@ class SpecialMentorDashboard extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function userCanExecute( User $user ) {
-		// Require both enabled wiki config and user-specific access level to
-		// be able to use the special page.
-		return $this->mentorProvider->isMentor( $this->getUser() ) &&
-			parent::userCanExecute( $user );
+		return parent::userCanExecute( $user ) && (
+			$this->isStructuredListEnabled() ||
+			$this->mentorProvider->isMentor( $this->getUser() )
+		);
 	}
 
 	/**
