@@ -160,7 +160,7 @@
 	"tag-help_panel_question-description": "Bearbeitung durchgeführt vom Help-Panel-Beitrag, einer Fragefunktion.",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Vorgeschlagene Bearbeitung",
 	"growthexperiments-help-panel-button-header-ask-help": "frage auf der Seite „Fragen von Neulingen“",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Bitte deinen Lotsen um Hilfe",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Bitte {{GENDER:$1|deinen Lotsen|deine Lotsin}} um Hilfe",
 	"growthexperiments-help-panel-button-header-general-help": "Allgemeine Bearbeitungshilfe",
 	"growthexperiments-help-panel-button-subheader-general-help": "Nach Antworten suchen und Top-Artikel lesen",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Antworten von anderen Freiwilligen bekommen",

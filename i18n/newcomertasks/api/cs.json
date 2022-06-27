@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martin Urbanec (WMF)"
+		]
+	},
+	"apierror-growthexperiments-addlink-handler-notfound": "Záznam o navržení odkazu nebyl nalezen",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Neočekávaný cíl navrženého odkazu: $1"
+}

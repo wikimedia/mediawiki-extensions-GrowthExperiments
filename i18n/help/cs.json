@@ -155,7 +155,7 @@
 	"tag-help_panel_question-description": "Otázka vložená prostřednictvím panelu Potřebuji pomoc",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Editační tipy",
 	"growthexperiments-help-panel-button-header-ask-help": "Zeptejte se komunity",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Požádejte svého mentora o pomoc",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Požádejte {{GENDER:$1|svého mentora|svou mentorku}} o pomoc",
 	"growthexperiments-help-panel-button-header-general-help": "Nápověda k editaci",
 	"growthexperiments-help-panel-button-subheader-general-help": "Prohledávání nápovědy",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Získejte radu od dalších dobrovolníků",

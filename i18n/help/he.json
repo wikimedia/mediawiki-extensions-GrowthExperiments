@@ -154,7 +154,7 @@
 	"tag-help_panel_question-description": "עריכה שנעשתה באמצעות האפשרות לשלוח שאלות מחלונית העזרה",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "עריכות מוצעות",
 	"growthexperiments-help-panel-button-header-ask-help": "לשאול בחממה",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "לבקש עזרה מהחונך שלך",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "{{GENDER:|בקש|בקשי}} עזרה {{GENDER:$1|מהחונך|מהחונכת}} שלך",
 	"growthexperiments-help-panel-button-header-general-help": "עזרה כללית בעריכה",
 	"growthexperiments-help-panel-button-subheader-general-help": "חיפוש תשובות וקריאת ערכים מובילים",
 	"growthexperiments-help-panel-button-subheader-ask-help": "קבלת תשובות ממתנדבים אחרים",

@@ -157,7 +157,7 @@
 	"tag-help_panel_question-description": "تم التعديل بواسطة خاصية نشر سؤال عن طريق لوحة المساعدة",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "التعديلات المقترحة",
 	"growthexperiments-help-panel-button-header-ask-help": "{{GENDER:|اسأل|اسألي}} ميدان المساعدة",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "{{GENDER:|اطلب|اطلبي}} المساعدة من مرشدك",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "{{GENDER:|اطلب|اطلبي}} المساعدة من {{GENDER:$1|مرشدك|مرشدتك}}",
 	"growthexperiments-help-panel-button-header-general-help": "مساعدة عامة في التحرير",
 	"growthexperiments-help-panel-button-subheader-general-help": "{{GENDER:|اِبحث|اِبحثي}} في الإجابات و{{GENDER:|اقرأ|ااقرئي}} أهمّ صفحات المساعدة",
 	"growthexperiments-help-panel-button-subheader-ask-help": "{{GENDER:|احصل|احصلي}} على إجابات من مستخدمين آخرين",

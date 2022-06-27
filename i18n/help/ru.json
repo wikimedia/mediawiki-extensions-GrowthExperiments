@@ -171,7 +171,7 @@
 	"tag-help_panel_question-description": "Правка через панель на домашней странице",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Предложенные правки",
 	"growthexperiments-help-panel-button-header-ask-help": "Задайте вопрос в справочной",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Попросить своего наставника о помощи",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Попросить {{GENDER:$1|своего наставника|свою наставницу}} о помощи",
 	"growthexperiments-help-panel-button-header-general-help": "Общая помощь по редактированию",
 	"growthexperiments-help-panel-button-subheader-general-help": "Ищите ответы, читая наши лучшие руководства",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Получите ответы от других волонтёров",

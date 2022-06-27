@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Martin Urbanec (WMF)"
 		]
 	},
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panel \"Potřebuji pomoc\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panel \"Zeptejte se svého mentora\" na Domovské stránce nováčka",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Dialog \"Zeptejte se svého mentora\" na panelu Potřebuji pomoc",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panel \"Potřebuji pomoc\" (původní jméno)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel \"Zeptejte se svého mentora\" na Domovské stránce nováčka (původní název)",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Pro položení otázky musíte být přihlášen."
 }

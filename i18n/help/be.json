@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Chadyka",
+			"No Sleep till Krupki",
 			"Tomato Cream"
 		]
 	},
@@ -150,7 +151,7 @@
 	"tag-help_panel_question-description": "Праўка, зробленая з функцыі публікацыі пытання на акенцы дапамогі",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Прапанаваныя праўкі",
 	"growthexperiments-help-panel-button-header-ask-help": "Запытаць у Службе падтрымкі",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Папрасіць свайго настаўніка аб дапамозе",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Папрасіць {{GENDER:$1|свайго настаўніка|сваю настаўніцу}} дапамагчы",
 	"growthexperiments-help-panel-button-header-general-help": "Агульная дапамога па праўцы",
 	"growthexperiments-help-panel-button-subheader-general-help": "Шукайце адказы і чытайце лепшыя артыкулы",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Атрымайце адказы ад іншых добраахвотнікаў",

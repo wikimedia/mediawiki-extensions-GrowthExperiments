@@ -4,6 +4,7 @@
 			"Ailbeve",
 			"DDPAT",
 			"Ice bulldog",
+			"Iniquity",
 			"Jack Jackie Pomi",
 			"Kareyac",
 			"Kylaix",
@@ -25,7 +26,7 @@
 	"growthexperiments-edit-config-title": "Изменить конфигурацию «Роста»",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Последнее обновление [[User:$1|$1]] $2 ([$4 разн.]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последнее обновление неизвестным участником $1 ([$3 разн.]).",
-	"growthexperiments-edit-config-pretext": "Эта страница позволяет редактировать конфигурацию для инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]]. Оно будет редактировать $1 от вашего имени. Изменения можно просмотреть в истории страницы.",
+	"growthexperiments-edit-config-pretext": "Эта страница позволяет редактировать конфигурацию функций от команды [[:mw:Special:MyLanguage/Growth|«Роста»]]. Она будет редактировать $1 от вашего имени. Изменения можно просмотреть в истории страницы.",
 	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Вы}} также можете разместить баннер на главной странице новичка, чтобы включить объявления о событиях, важных для новичков. Чтобы сделать это, нужно добавить его в [[$1]] вручную. Любой добавлен там содержание будет отображаться желтым баннером в верхней части [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Эта форма позволяет доверенным редакторам редактировать конфигурацию инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]].",
 	"growthexperiments-edit-config-feedback-headline": "У вас есть идеи или вопросы по этой форме?",
@@ -60,7 +61,7 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) Целевая страница для пятой ссылки на панель помощи (рекомендуется: мастер статей)",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Ярлык пятой ссылки на справочную панель (рекомендуется: «Как создать статью»)",
 	"growthexperiments-edit-config-homepage": "Домашняя страница новичка",
-	"growthexperiments-edit-config-homepage-intro-links-create": "Целевая страница для ссылки о том, как создать новую статью",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Целевая страница для ссылки о создании новой статьи",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Целевая страница для ссылки о том, как добавлять изображения в визуальном редакторе",
 	"growthexperiments-edit-config-mentorship": "Наставничество",
 	"growthexperiments-edit-config-mentorship-description": "Вики могут иметь два отдельных списка наставников: один для наставников, которые назначаются случайным образом всем новичкам, а другой для наставников, которые не назначаются случайным образом, но могут претендовать на статус наставника. Этот второй список используется для наставников, которые хотят быть наставниками только для людей, участвующих в мероприятиях или классах.",
@@ -92,5 +93,5 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Статьи, содержащие определенные здесь шаблоны, а не показываться пользователям как задача для этого типа задач.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Статьи, содержащие определенные здесь категории, а не показываться участникам как задача для этого типа задач.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблоны-карточки",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Эти шаблоны нужны для функции задания для новичков из [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|предложений изображений]]. Статьи, содержащие эти шаблоны, не будут перечислены в задании с предложением изображений."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Эти шаблоны нужны для функции задач для новичков [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|«предложения изображений»]]. Статьи, содержащие эти шаблоны, не будут выбираться для задач с предложением изображений."
 }

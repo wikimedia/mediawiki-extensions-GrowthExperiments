@@ -168,7 +168,7 @@
 	"tag-help_panel_question-description": "通过帮助面板发帖提问功能的编辑",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "编辑建议",
 	"growthexperiments-help-panel-button-header-ask-help": "询问咨询台",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "向你的导师寻求帮助",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "向{{GENDER:|您的}}{{GENDER:$1|导师}}寻求帮助",
 	"growthexperiments-help-panel-button-header-general-help": "常用编辑帮助",
 	"growthexperiments-help-panel-button-subheader-general-help": "搜索答案并阅读热门文章",
 	"growthexperiments-help-panel-button-subheader-ask-help": "从其他志愿者那里得到答案",

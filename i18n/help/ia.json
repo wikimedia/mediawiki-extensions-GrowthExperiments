@@ -149,7 +149,7 @@
 	"tag-help_panel_question-description": "Modificationes facite con le function \"publicar un question\" del pannello de adjuta",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modificationes suggerite",
 	"growthexperiments-help-panel-button-header-ask-help": "Poner question al servicio de adjuta",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Demandar adjuta a tu mentor",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Demandar adjuta a tu {{GENDER:$1|mentor}}",
 	"growthexperiments-help-panel-button-header-general-help": "Adjuta general de modification",
 	"growthexperiments-help-panel-button-subheader-general-help": "Cercar responsas e leger articulos popular",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Obtener responsas de altere voluntarios",

@@ -146,7 +146,7 @@
 	"tag-help_panel_question-description": "도움말 패널의 질문 게시하기 기능을 이용한 편집",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "편집 제안",
 	"growthexperiments-help-panel-button-header-ask-help": "질문방에 도움 요청하기",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "내 맨토에게 도움을 요청하기",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "{{GENDER:|내}} {{GENDER:$1|멘토}}에게 도움을 요청하기",
 	"growthexperiments-help-panel-button-header-general-help": "일반적인 편집 도움",
 	"growthexperiments-help-panel-button-subheader-general-help": "좋은 문서를 검색해 보고 좋은 문서도 읽어 보세요",
 	"growthexperiments-help-panel-button-subheader-ask-help": "다른 자원봉사자로부터 도움을 받으세요",
