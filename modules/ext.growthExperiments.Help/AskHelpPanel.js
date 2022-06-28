@@ -155,10 +155,10 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 		// effective mentor name is not same as primary => mentor must be away
 		this.$askhelpHeader.append(
 			$( '<p>' ).append(
-				$( '<strong>' ).text(
+				$( '<strong>' ).append(
 					mw.message(
 						'growthexperiments-homepage-mentorship-questionreview-header-away',
-						primaryMentorName, primaryMentorGender, mentorName, mentorGender ).text()
+						primaryMentorName, primaryMentorGender, mentorName, mentorGender ).parse()
 				)
 			)
 		);
