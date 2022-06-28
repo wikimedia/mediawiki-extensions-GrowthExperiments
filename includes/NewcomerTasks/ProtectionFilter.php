@@ -55,15 +55,18 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 		}
 		// Do a single batch query instead of several individual queries with RestrictionStore.
 		// In the longer run, adding batch querying to RestrictionStore itself would be nice.
-		$results = $this->dbr->select(
-			'page_restrictions',
-			[ 'pr_page' ],
-			[
-				'pr_page' => array_keys( $validTasks ),
-				'pr_type' => 'edit'
-			],
-			__METHOD__
-		);
+		$results = [];
+		if ( $validTasks ) {
+			$results = $this->dbr->select(
+				'page_restrictions',
+				[ 'pr_page' ],
+				[
+					'pr_page' => array_keys( $validTasks ),
+					'pr_type' => 'edit'
+				],
+				__METHOD__
+			);
+		}
 
 		foreach ( $results as $item ) {
 			// We found restrictions, so add the task to the invalid task list, and
