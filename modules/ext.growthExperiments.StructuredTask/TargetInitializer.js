@@ -11,7 +11,7 @@ var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
 		'editMode',
 		'back'
 	],
-	allowedCommands = [ 'showSave', 'showChanges', 'back' ];
+	allowedCommands = [ 'showSave', 'showChanges', 'back', 'cancel' ];
 
 /**
  * Handle registrations and de-registrations of VE classes for structured tasks
