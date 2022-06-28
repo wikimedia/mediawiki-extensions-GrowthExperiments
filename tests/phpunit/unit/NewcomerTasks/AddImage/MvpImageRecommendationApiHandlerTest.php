@@ -68,6 +68,37 @@ class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 					)
 				]
 			],
+			'sort by confidence rating' => [
+				[ 'pages' => [ [
+					'suggestions' => [
+						[
+							'filename' => 'high_confidence.png',
+							'confidence_rating' => 'medium',
+							'source' => []
+						],
+						[
+							'filename' => 'low_confidence.png',
+							'confidence_rating' => 'low',
+							'source' => []
+						],
+						[
+							'filename' => 'medium_confidence.png',
+							'confidence_rating' => 'high',
+							'source' => []
+						],
+					]
+				] ] ], [
+					new ImageRecommendationData(
+						'high_confidence.png', null, null, null
+					),
+					new ImageRecommendationData(
+						'medium_confidence.png', null, null, null
+					),
+					new ImageRecommendationData(
+						'low_confidence.png', null, null, null
+					)
+				]
+			],
 			'empty details' => [
 				[ 'pages' => [ [
 					'suggestions' => [
