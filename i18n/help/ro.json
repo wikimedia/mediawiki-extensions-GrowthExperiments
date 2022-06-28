@@ -151,7 +151,7 @@
 	"tag-help_panel_question-description": "Editare făcută de la funcția de publicare a unei întrebări a panoului de ajutor",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Editări sugerate",
 	"growthexperiments-help-panel-button-header-ask-help": "Întrebați la biroul de ajutor",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Cereți ajutor mentorului dvs.",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "{{GENDER:|Cereți}} ajutor mentorului {{GENDER:$1|dvs.}}",
 	"growthexperiments-help-panel-button-header-general-help": "Ajutor de editare general",
 	"growthexperiments-help-panel-button-subheader-general-help": "Căutați răspunsuri și citiți articole de top",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Primiți răspunsuri de la alți voluntari",

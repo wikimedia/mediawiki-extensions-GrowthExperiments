@@ -140,7 +140,7 @@
 	"tag-help_panel_question-description": "Modifica effettuata dalla funzionalità \"Fai una domanda\" del Pannello introduttivo",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modifiche suggerite",
 	"growthexperiments-help-panel-button-header-ask-help": "Chiedi allo sportello informazioni",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Chiedi aiuto al tuo tutor",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Chiedi aiuto al{{GENDER:$1||la}} tu{{GENDER:$1|o|a|o/a}} tutor",
 	"growthexperiments-help-panel-button-header-general-help": "Aiuto generale nel contribuire",
 	"growthexperiments-help-panel-button-subheader-general-help": "Cerca risposte e leggi le migliori pagine di aiuto",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Ottieni risposte da altri volontari",

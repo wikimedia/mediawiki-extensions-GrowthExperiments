@@ -165,7 +165,7 @@
 	"tag-help_panel_question-description": "Modification faite par la fonctionnalité d’envoi de question dans le panneau d’aide",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modifications suggérées",
 	"growthexperiments-help-panel-button-header-ask-help": "Demander au centre d’assistance",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Demander de l’aide à votre tuteur",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Demander de l’aide à votre tut{{GENDER:$1|eur|rice}}",
 	"growthexperiments-help-panel-button-header-general-help": "Aide générale d’édition",
 	"growthexperiments-help-panel-button-subheader-general-help": "Rechercher des réponses et lire les articles en tête",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Obtenir des réponses d’autres bénévoles",
