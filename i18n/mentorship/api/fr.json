@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"DreZhsh",
+			"Verdy p"
 		]
 	},
-	"apihelp-growthstarmentee-summary": "Marquer ou supprimer le marquage d’un tutoré tel que signalé par l’utilisateur courant (stocké de façon confidentielle et non tracé)",
-	"apihelp-growthstarmentee-param-gesaction": "Action à entreprendre (<kbd>star</kbd> ou <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-summary": "Marquer ou supprimer le marquage d’un tutoré tel que signalé d’une étoile par l’utilisateur courant (stocké de façon confidentielle et non journalisé)",
+	"apihelp-growthstarmentee-param-gesaction": "Action à entreprendre (<kbd>star</kbd> pour ajouter la marque ou <kbd>unstar</kbd> pour la retirer)",
 	"apihelp-growthstarmentee-param-gesmentee": "Tutoré à (ne plus) marquer",
 	"apihelp-query+growthstarredmentees-summary": "Obtenir une liste des tutorés marqués par le tuteur actuellement connecté"
 }

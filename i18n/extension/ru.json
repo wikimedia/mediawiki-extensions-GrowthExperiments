@@ -9,7 +9,10 @@
 			"DDPAT",
 			"Умар",
 			"NBS",
-			"Pacha Tchernof"
+			"Pacha Tchernof",
+			"Ice bulldog",
+			"Iniquity",
+			"Jack Jackie Pomi"
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
@@ -22,7 +25,7 @@
 	"growthexperiments-edit-config-title": "Изменить конфигурацию «Роста»",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Последнее обновление [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последнее обновление неизвестным участником $1.",
-	"growthexperiments-edit-config-pretext": "Эта страница позволяет редактировать конфигурацию для инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]]. Оно будет редактировать $1 от вашего имени. Изменения можно просмотреть в истории страницы.",
+	"growthexperiments-edit-config-pretext": "Эта страница позволяет редактировать конфигурацию функций от команды [[:mw:Special:MyLanguage/Growth|«Роста»]]. Она будет редактировать $1 от вашего имени. Изменения можно просмотреть в истории страницы.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Эта форма позволяет доверенным редакторам редактировать конфигурацию инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]].",
 	"growthexperiments-edit-config-feedback-headline": "У вас есть идеи или вопросы по этой форме?",
 	"growthexperiments-edit-config-feedback-cta": "Оставить отзыв!",
