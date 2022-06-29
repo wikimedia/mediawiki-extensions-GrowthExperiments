@@ -305,7 +305,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "This page allows {{GENDER:$1|you}} to change mentee's mentor to {{GENDER:$1|yourself}}. It's recommended to use this feature for users {{GENDER:$1|you}} know, or for users {{GENDER:$1|you}} mentor on a course.",
 	"growthexperiments-homepage-claimmentee-mentee": "Mentee's username",
 	"growthexperiments-homepage-claimmentee-reason": "Reason for claiming this mentee",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|You changed}} mentor of {{PLURAL:$2|user|users}} $1 to {{GENDER:$4|$5}}",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|You changed}} mentor of {{PLURAL:$2|user|users}} $1 to {{GENDER:$4|$5}}. Return to the [[Special:MentorDashboard|mentor dashboard]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} mentor was already changed. Are {{GENDER:$2|you}} sure {{GENDER:$2|you}} want to change it again?",
 	"growthexperiments-claimmentee-confirm": "Yes, I really want to change the {{GENDER:|mentor}}",
 	"growthexperiments-log-name": "GrowthExperiments log",
