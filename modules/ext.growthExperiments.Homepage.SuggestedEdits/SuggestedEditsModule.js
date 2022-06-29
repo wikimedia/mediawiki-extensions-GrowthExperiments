@@ -111,12 +111,9 @@ function SuggestedEditsModule( config, logger, rootStore ) {
 	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, this.onNewcomerTasksDataChanged.bind( this ) );
 	this.tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, function ( isFetchingTasks ) {
 		if ( isFetchingTasks ) {
-			// Ellipsis is the stand-in for a loading indicator.
-			this.nextWidget.setIcon( 'ellipsis' );
 			this.nextWidget.setDisabled( true );
 		} else {
 			this.nextWidget.setDisabled( this.tasksStore.isTaskQueueEmpty() );
-			this.nextWidget.setIcon( 'arrowNext' );
 		}
 	}.bind( this ) );
 
