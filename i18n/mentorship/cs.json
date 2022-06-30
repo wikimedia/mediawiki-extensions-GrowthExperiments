@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Martin Urbanec (WMF)",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Patrik L."
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Nástěnka mentora",
@@ -84,7 +85,7 @@
 	"echo-pref-tooltip-ge-mentorship": "Notifikace týkající se mentorství vytvořeného týmem Growth. Po zaškrtnutí této možnosti vám dáme vědět, že jste jako nováček byl převzat někým jiným, anebo že některý z vašich nováčků byl převzat jiným mentorem.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Váš nováček}}, $3, {{GENDER:$3|byl převzat|byla převzata}} {{GENDER:$2|mentorem|mentorkou}} $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Důvod: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Co je to \"Převzetí nováčka\"?",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Co je to „Převzetí nováčka“?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Počet nováčků, kteří mi budou přiřazeni",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Přibližně polovina průměru",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Průměr (výchozí)",

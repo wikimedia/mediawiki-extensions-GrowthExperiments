@@ -71,5 +71,20 @@
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Þetta svæði sýnir þér hversu oft fólk hefur skoðað greinarnar sem  {{GENDER:$1|þú}} hefur breytt eða búið til.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> breytingar á greinum",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|breyting|breytingar}} á öðrum síðum (sjá allar)",
-	"growthexperiments-homepage-impact-article-link-tooltip": "Skoða síðu"
+	"growthexperiments-homepage-impact-article-link-tooltip": "Skoða síðu",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Sýna nákvæmar síðuflettingar",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Síðan þú breyttir þessari síðu í dag hafa síðuflettingar ekki verið útreiknaðar. Athugaðu aftur á morgun!",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Síðuflettingar hafa ekki verið útreiknaðar. Athugaðu aftur á morgun!",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Náði því",
+	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|breyting|breytingar}} á greinum",
+	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|breyting|breytingar}}",
+	"growthexperiments-homepage-impact-mobilebody-pageviews": "Skoðanir frá síðustu breytingum (síðustu 60 dagar):",
+	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Fylgjast með skoðunum á greinum sem þú hefur breytt",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 breytingar hingað til",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Hjálpaðu við að bæta við frjálsa þekkingu heimsins með því að breyta viðfangsefnum sem skipta {{GENDER:$1|þig}} mestu máli.",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Sýna tillögur að breytingum",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Byrjaðu með nokkrum <strong>tillögum að breytingar</strong>, síðan getur þú séð hversu margir eru að skoða {{GENDER:$1|þínar}} breytingar hérna.",
+	"growthexperiments-homepage-impact-unactivated-description": "Þegar {{GENDER:$1|þú}} byrjar að breyta, sérðu hversu margir eru að skoða greinarnar sem {{GENDER:$1|þú}} hefur breytt.",
+	"growthexperiments-tour-helpdesk-response-tip-title": "Tilkynningar frá Pottinum",
+	"growthexperiments-tour-response-tip-text": "Þegar spurningunni {{GENDER:$1|þinni}} hefur verið svarað munt {{GENDER:$1|þú}} fá nýja tilkynningu hingað."
 }

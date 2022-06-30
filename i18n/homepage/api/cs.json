@@ -1,13 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Martin Urbanec (WMF)"
 		]
 	},
+	"apihelp-homepagequestionstore-param-questionformat": "Formát, ve kterém mají být otázky vráceny (např. HTML).",
 	"apihelp-homepagequestionstore-param-storage": "Úložiště otázek",
+	"apihelp-homepagequestionstore-param-userid": "Uživatelské ID uživatele, pro kterého se má získat seznam otázek",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Žádné otázky nebyly nalezeny.",
 	"apihelp-growthsetmentor-summary": "Nastavit mentora uživatele. Změna bude veřejně zaznamenána.",
 	"apihelp-growthsetmentor-param-mentee": "Uživatelské jméno mentorovaného",
 	"apihelp-growthsetmentor-param-mentor": "Uživatelské jméno mentora",
-	"apihelp-growthsetmentor-param-reason": "Důvod pro změnu"
+	"apihelp-growthsetmentor-param-reason": "Důvod pro změnu",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Zneplatnit navržený obrázek",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Název článku, pro který byl obrázek navržen"
 }
