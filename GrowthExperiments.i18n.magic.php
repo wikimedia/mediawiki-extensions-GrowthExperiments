@@ -30,6 +30,11 @@ $magicWords['cs'] = [
 	'mentor' => [ 0, 'mentor' ],
 ];
 
+/** Korean (한국어)) */
+$magicWords['ko'] = [
+	'mentor' => [ 0, '멘토' ],
+];
+
 /** Russian (русский) */
 $magicWords['ru'] = [
 	'mentor' => [ 0, 'наставник' ],

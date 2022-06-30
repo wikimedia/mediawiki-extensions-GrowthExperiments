@@ -223,6 +223,7 @@ $specialPageAliases['ko'] = [
 	'EditGrowthConfig' => [ '성장구성편집', '성장설정편집' ],
 	'MentorDashboard' => [ '멘토대시보드' ],
 	'QuitMentorship' => [ '멘토링그만두기', '멘토링끝내기' ],
+	'ManageMentors' => [ '멘토관리' ],
 ];
 
 /** Latvian (latviešu) */
