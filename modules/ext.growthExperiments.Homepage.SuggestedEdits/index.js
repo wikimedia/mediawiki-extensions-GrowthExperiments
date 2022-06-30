@@ -47,7 +47,7 @@
 		);
 
 		if ( taskQueue.length && !taskPreviewData.error ) {
-			tasksStore.setTaskQueue( taskQueue );
+			tasksStore.setPreloadedTaskQueue( taskQueue );
 		} else if ( taskPreviewData.noresults ) {
 			suggestedEditsModule.showCard(
 				new NoResultsWidget( { topicMatching: filtersStore.topicsEnabled } )

@@ -15,6 +15,7 @@
 	"rules": {
 		"max-len": "off",
 		"mediawiki/valid-package-file-require": "off",
+		"compat/compat": "off",
 		"qunit/no-loose-assertions": "warn"
 	}
 }

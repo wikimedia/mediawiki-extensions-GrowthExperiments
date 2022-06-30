@@ -26,6 +26,15 @@ function NewcomerTasksStore( root ) {
 	 */
 	this.taskCount = initialState.taskCount;
 	/**
+	 * @property {number} tasksFetched Number of tasks fetched including the pre-loaded ones
+	 * @see NewcomerTasksStore.setPreloadedTaskQueue()
+	 */
+	this.tasksFetchedCount = 0;
+	/**
+	 * @property {boolean} allTasksFetched Whether all tasks available in the filter set have been fetched
+	 */
+	this.allTasksFetched = false;
+	/**
 	 * @property {number} editCount Number of edits the user has made
 	 */
 	this.editCount = initialState.editCount;
@@ -198,6 +207,25 @@ NewcomerTasksStore.prototype.setPreloadedFirstTask = function ( firstTask ) {
 };
 
 /**
+ * Add the preloaded tasks to the beginning of the task queue
+ *
+ * @param {mw.libs.ge.TaskData[]} taskQueue
+ */
+NewcomerTasksStore.prototype.setPreloadedTaskQueue = function ( taskQueue ) {
+	this.setPreloadedFirstTask( taskQueue[ 0 ] );
+	this.taskQueue = taskQueue.slice();
+	this.tasksFetchedCount = this.taskQueue.length;
+	// Assume we preloaded all available tasks in the taskset when the number
+	// of tasks informed by the taskCount initial value is lesser than the api
+	// pageSize
+	if ( this.lessResultsThanRequested( this.taskCount ) ) {
+		this.allTasksFetched = true;
+		this.taskCount = this.taskQueue.length;
+	}
+	this.onTaskQueueChanged();
+};
+
+/**
  * Set the flag indicating whether tasks are being fetched
  *
  * @param {boolean} isLoading
@@ -262,6 +290,8 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 	this.apiPromise.then( function ( data ) {
 		var updatedTaskQueue = data.tasks;
 		this.taskCount = data.count;
+		this.allTasksFetched = false;
+		this.tasksFetchedCount = this.taskQueue.length;
 		this.currentTaskIndex = 0;
 		if ( this.preloadedFirstTask ) {
 			var preloadedTask = this.preloadedFirstTask;
@@ -272,6 +302,13 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 			this.preloadedFirstTask = null;
 		} else {
 			this.setTaskQueue( updatedTaskQueue );
+		}
+
+		// When the API response returns less results than requested,
+		// update the taskCount to match the real number of tasks fetched
+		if ( this.lessResultsThanRequested( data.count ) ) {
+			this.allTasksFetched = true;
+			this.taskCount = this.taskQueue.length;
 		}
 
 		if ( this.taskQueue.length ) {
@@ -337,6 +374,11 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 	if ( this.apiFetchMoreTasksPromise ) {
 		this.apiFetchMoreTasksPromise.abort();
 	}
+
+	if ( this.allTasksFetched ) {
+		return $.Deferred().resolve().promise();
+	}
+
 	this.setTaskQueueLoading( true );
 	var existingPageIds = this.taskQueue.map( function ( task ) {
 			return task.pageId;
@@ -360,10 +402,20 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 	);
 
 	this.apiFetchMoreTasksPromise.done( function ( data ) {
-		this.setTaskQueueLoading( false );
-		this.addToTaskQueue( data.tasks || [] );
+		var newTasks = data.tasks || [];
+		// accumulate the number of tasks fetched
+		this.tasksFetchedCount += newTasks.length;
+		// When the API response informs the last batch of tasks has been served,
+		// update the taskCount to match the real number of tasks fetched
+		if ( !data.hasNext ) {
+			this.allTasksFetched = true;
+			this.taskCount = this.tasksFetchedCount;
+		}
+		this.addToTaskQueue( newTasks );
 		this.preloadExtraDataForUpcomingTask();
 		promise.resolve();
+	}.bind( this ) ).always( function () {
+		this.setTaskQueueLoading( false );
 	}.bind( this ) );
 
 	return promise;
@@ -497,6 +549,17 @@ NewcomerTasksStore.prototype.maybeUpdateQualityGateConfig = function ( taskData 
 	if ( taskData && taskData.qualityGateConfig ) {
 		this.qualityGateConfig = taskData.qualityGateConfig;
 	}
+};
+
+/**
+ * Check whether the given number is lesser or equal than the GrowthTasksApi page size
+ *
+ * @param {number} count the number of results received
+ * @return {boolean} whether the given number of results is less than the expected
+ * @see GrowthTasksApi.js
+ */
+NewcomerTasksStore.prototype.lessResultsThanRequested = function ( count ) {
+	return count <= this.api.pageSize;
 };
 
 /**

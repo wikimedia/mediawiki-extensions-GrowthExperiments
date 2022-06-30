@@ -62,6 +62,10 @@
 	 * This is a stateless class, like mw.Api.
 	 *
 	 * @class mw.libs.ge.GrowthTasksApi
+	 * @property {number|null|undefined} pageSize the number of task items to fetch on each request
+	 *   to the growth tasks api. This will be set to the value defined by
+	 *   config.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit + 1 to anticipate if the next page
+	 *   will contain items
 	 * @constructor
 	 * @param {Object} config
 	 * @param {Object} [config.taskTypes] The list of task types, as returned by
@@ -92,6 +96,7 @@
 		this.isMobile = config.isMobile;
 		this.logContext = config.logContext;
 		this.thumbnailWidth = this.isMobile ? 260 : 332;
+		this.pageSize = this.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit + 1;
 	}
 
 	/**
@@ -115,7 +120,9 @@
 	 *   in ElasticSearch.
 	 *
 	 * @return {jQuery.Promise<{count: number, tasks: Array<mw.libs.ge.TaskData>}>} An abortable
-	 *   promise with two fields:
+	 *   promise with three fields:
+	 *   - hasNext: whether the API has served the last batch of tasks available within
+	 *     the current taskset.
 	 *   - count: the number of tasks available. Note this is the full count, not the
 	 *     task list length.
 	 *   - tasks: a list of task data objects
@@ -125,10 +132,9 @@
 			startTime = mw.now(),
 			self = this,
 			url = new mw.Uri( window.location.href );
-
 		config = $.extend( {
 			getDescription: false,
-			size: this.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit,
+			size: this.pageSize,
 			thumbnailWidth: this.thumbnailWidth
 		}, config || {} );
 
@@ -222,6 +228,7 @@
 			}
 			self.logTiming( 'fetchTasks', startTime, config.context );
 			return {
+				hasNext: !!data.continue,
 				count: data.growthtasks.totalCount,
 				tasks: tasks
 			};
