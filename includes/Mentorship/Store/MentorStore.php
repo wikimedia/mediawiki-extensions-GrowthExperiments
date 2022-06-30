@@ -148,6 +148,26 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 	): array;
 
 	/**
+	 * Checks whether a mentor has any mentees assigned
+	 *
+	 * @param UserIdentity $mentor
+	 * @param string $mentorRole
+	 * @param bool $includeHiddenUsers
+	 * @param int $flags
+	 * @return bool
+	 */
+	public function hasAnyMentees(
+		UserIdentity $mentor,
+		string $mentorRole,
+		bool $includeHiddenUsers = false,
+		int $flags = 0
+	): bool {
+		return $this->getMenteesByMentor(
+			$mentor, $mentorRole, $includeHiddenUsers, $flags
+		) !== [];
+	}
+
+	/**
 	 * Assign a mentor to this user, overriding any previous assignments.
 	 *
 	 * This method can be safely called on GET requests.
