@@ -83,7 +83,7 @@ class MentorshipOptIn extends BaseModule {
 			'div',
 			[ 'class' => 'growthexperiments-homepage-module-text-light' ],
 			$this->msg( 'growthexperiments-homepage-mentorship-optin-text' )->text()
-		);
+		) . $this->getOptInButton();
 	}
 
 	/**
@@ -96,6 +96,11 @@ class MentorshipOptIn extends BaseModule {
 			$this->msg( 'growthexperiments-homepage-mentorship-optin-text' )
 				->text()
 		);
+	}
+
+	/** @inheritDoc */
+	public function shouldWrapModuleWithLink(): bool {
+		return false;
 	}
 
 	/**
