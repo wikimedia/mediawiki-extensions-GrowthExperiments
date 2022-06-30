@@ -10,7 +10,7 @@ use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use HTMLForm;
 use Status;
 
-class SpecialQuitMentorship extends FormSpecialPage {
+class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 
 	/** @var QuitMentorshipFactory */
 	private $quitMentorshipFactory;

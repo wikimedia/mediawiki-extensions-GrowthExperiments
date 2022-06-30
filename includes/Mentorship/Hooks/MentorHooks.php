@@ -13,7 +13,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
 use GrowthExperiments\Specials\SpecialManageMentors;
-use GrowthExperiments\Specials\SpecialQuitMentorship;
+use GrowthExperiments\Specials\SpecialQuitMentorshipWikitext;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
@@ -166,7 +166,7 @@ class MentorHooks implements SpecialPage_initListHook, LocalUserCreatedHook, Pag
 		} elseif ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_WIKITEXT ) {
 			// TODO: Remove once wikitext provider is removed
 			$list['QuitMentorship'] = [
-				'class' => SpecialQuitMentorship::class,
+				'class' => SpecialQuitMentorshipWikitext::class,
 				'services' => [
 					'GrowthExperimentsQuitMentorshipFactory',
 					'GrowthExperimentsMentorProvider'
