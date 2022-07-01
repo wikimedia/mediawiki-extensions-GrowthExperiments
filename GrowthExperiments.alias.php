@@ -23,6 +23,7 @@ $specialPageAliases['en'] = [
 	'MentorDashboard' => [ 'MentorDashboard' ],
 	'QuitMentorship' => [ 'QuitMentorship' ],
 	'ManageMentors' => [ 'ManageMentors' ],
+	'EnrollAsMentor' => [ 'EnrollAsMentor' ],
 ];
 
 /** Arabic */
