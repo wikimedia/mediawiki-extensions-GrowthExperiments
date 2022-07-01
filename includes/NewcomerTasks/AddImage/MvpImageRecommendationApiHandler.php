@@ -36,6 +36,12 @@ class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler 
 	/** @var bool */
 	private $useTitles;
 
+	private const CONFIDENCE_RATING_TO_NUMBER = [
+		'high' => 3,
+		'medium' => 2,
+		'low' => 1
+	];
+
 	/**
 	 * @param HttpRequestFactory $httpRequestFactory
 	 * @param string $url Image recommendation service root URL
@@ -109,7 +115,8 @@ class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler 
 			return [];
 		}
 		$imageData = [];
-		foreach ( $apiResponse['pages'][0]['suggestions'] as $suggestion ) {
+		$sortedSuggestions = $this->sortSuggestions( $apiResponse['pages'][0]['suggestions'] );
+		foreach ( $sortedSuggestions as $suggestion ) {
 			$filename = $suggestion['filename'] ?? null;
 			$source = $suggestion['source']['details']['from'] ?? null;
 			$projects = $suggestion['source']['details']['found_on'] ?? null;
@@ -122,5 +129,32 @@ class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler 
 			);
 		}
 		return $imageData;
+	}
+
+	/**
+	 * Get numeric value of the suggestion's confidence rating
+	 *
+	 * @param array $suggestion
+	 * @return int
+	 */
+	private function getConfidence( array $suggestion ): int {
+		if ( array_key_exists( 'confidence_rating', $suggestion ) ) {
+			return self::CONFIDENCE_RATING_TO_NUMBER[$suggestion['confidence_rating']] ?? 0;
+		}
+		return 0;
+	}
+
+	/**
+	 * Sort the suggestions in decreasing order based on confidence rating
+	 *
+	 * @param array $suggestions
+	 * @return array
+	 */
+	private function sortSuggestions( array $suggestions ): array {
+		$compare = function ( array $a, array $b ) {
+			return $this->getConfidence( $a ) < $this->getConfidence( $b ) ? 1 : -1;
+		};
+		usort( $suggestions, $compare );
+		return $suggestions;
 	}
 }

@@ -8,6 +8,7 @@ use MWHttpRequest;
 use RequestContext;
 use StatusValue;
 use Title;
+use Wikimedia\UUID\GlobalIdGenerator;
 
 /**
  * Handler for production image suggestion API
@@ -24,6 +25,9 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 
 	/** @var string */
 	private $wikiId;
+
+	/** @var GlobalIdGenerator */
+	private $globalIdGenerator;
 
 	/** @var int|null */
 	private $requestTimeout;
@@ -44,6 +48,8 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 	 * @param HttpRequestFactory $httpRequestFactory
 	 * @param string $url Image recommendation service root URL
 	 * @param string $wikiId Project ID (for example, 'enwiki')
+	 * @param GlobalIdGenerator $globalIdGenerator GlobalIdGenerator, used to convert UUID to timestamp
+	 * 	when sorting the suggestions
 	 * @param int|null $requestTimeout Service request timeout in seconds
 	 * @param bool $useTitles Query image suggestions by title instead of by article ID;
 	 * 	used in non-production environments
@@ -53,6 +59,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		HttpRequestFactory $httpRequestFactory,
 		string $url,
 		string $wikiId,
+		GlobalIdGenerator $globalIdGenerator,
 		?int $requestTimeout,
 		bool $useTitles = false,
 		bool $shouldVerifySsl = true
@@ -60,6 +67,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		$this->httpRequestFactory = $httpRequestFactory;
 		$this->url = $url;
 		$this->wikiId = $wikiId;
+		$this->globalIdGenerator = $globalIdGenerator;
 		$this->requestTimeout = $requestTimeout;
 		$this->useTitles = $useTitles;
 		$this->shouldVerifySsl = $shouldVerifySsl;
@@ -110,7 +118,17 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 			return [];
 		}
 		$imageData = [];
-		foreach ( $apiResponse['rows'] as $suggestion ) {
+		$sortedSuggestions = $this->sortSuggestions( $apiResponse['rows'] );
+		// Since the suggestions are sorted based on the dataset ID, the id of the first suggestion
+		// is that of the most recent dataset.
+		$validDatasetId = $sortedSuggestions[0]['id'] ?? '';
+
+		foreach ( $sortedSuggestions as $suggestion ) {
+			// Discard suggestions from other datasets
+			if ( $suggestion['id'] !== $validDatasetId ) {
+				break;
+			}
+
 			$imageData[] = new ImageRecommendationData(
 				$suggestion['image'],
 				$this->getSourceFromKind( $suggestion['kind'] ),
@@ -166,5 +184,30 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		);
 		$request->setHeader( 'Accept', 'application/json' );
 		return $request;
+	}
+
+	/**
+	 * Sort the suggestions in decreasing order based on confidence and timestamp
+	 *
+	 * @param array $suggestions
+	 * @return array
+	 */
+	private function sortSuggestions( array $suggestions ): array {
+		// Sort by newer dataset with the highest confidence
+		$compare = function ( array $a, array $b ) {
+			$confidenceA = $a['confidence'] ?? 0;
+			$confidenceB = $b['confidence'] ?? 0;
+			$timestampA = $this->globalIdGenerator->getTimestampFromUUIDv1( $a['id'] ?? '' );
+			$timestampB = $this->globalIdGenerator->getTimestampFromUUIDv1( $b['id'] ?? '' );
+
+			if ( $timestampA > $timestampB ) {
+				return -1;
+			} elseif ( $timestampA === $timestampB ) {
+				return $confidenceA < $confidenceB ? 1 : -1;
+			}
+			return 1;
+		};
+		usort( $suggestions, $compare );
+		return $suggestions;
 	}
 }
