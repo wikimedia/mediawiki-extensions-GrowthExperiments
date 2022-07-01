@@ -49,6 +49,10 @@
 .growthexperiments-homepage-module-mobile-summary,
 .growthexperiments-homepage-module-mobile-overlay {
 	.growthexperiments-homepage-mentorship {
+		&-about {
+			padding-bottom: 16px;
+		}
+
 		&-intro {
 			font-size: 1.1em;
 			line-height: 1.65;
@@ -56,7 +60,7 @@
 			margin: 8px;
 			padding: 8px 16px;
 			background-color: @colorBaseInverted;
-			box-shadow: 0 -1em 0 88px @colorBaseInverted;
+			box-shadow: 0 -4em 0 128px @colorBaseInverted;
 		}
 
 		&-username {
@@ -80,6 +84,15 @@ body.mw-special-Homepage {
 
 	.growthexperiments-homepage-mentorship-about-mentorship {
 		line-height: 1.6;
+
+		h4:not( :first-child ) {
+			padding-top: 16px;
+		}
+
+		h4,
+		p {
+			padding-bottom: 8px;
+		}
 	}
 }
 

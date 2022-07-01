@@ -180,6 +180,10 @@ class Mentorship extends BaseModule {
 	 */
 	protected function getMobileSummaryBody() {
 		return implode( "\n", [
+			Html::element( 'p', [], $this->msg(
+				'growthexperiments-homepage-mentorship-preintro',
+				$this->getMentor()->getName()
+			)->text() ),
 			$this->getMentorUsernameElement( false ),
 			$this->getLastActive(),
 		] );
@@ -412,7 +416,7 @@ class Mentorship extends BaseModule {
 	private function getAboutMentorshipElement() {
 		return Html::rawElement(
 			'p',
-			[],
+			[ 'class' => 'growthexperiments-homepage-mentorship-about' ],
 			implode( "\n", [
 				Html::element(
 					'span',
