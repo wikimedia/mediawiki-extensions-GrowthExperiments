@@ -141,7 +141,7 @@
 	"tag-help_panel_question-description": "Bewerking gemaakt vanuit de functie voor het plaatsen van een vraag in het hulppaneel",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Voorgestelde bewerkingen",
 	"growthexperiments-help-panel-button-header-ask-help": "Stel een vraag aan de helpdesk",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Vraag je mentor om hulp",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Uw {{GENDER:$1|mentor}} om hulp vragen",
 	"growthexperiments-help-panel-button-header-general-help": "Algemene hulp bij bewerken",
 	"growthexperiments-help-panel-button-subheader-general-help": "Zoek naar antwoorden, en lees top artikelen",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Krijg antwoorden van andere vrijwilligers",

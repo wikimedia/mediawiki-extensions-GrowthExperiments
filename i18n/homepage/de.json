@@ -325,7 +325,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Diese Seite erlaubt es, {{GENDER:$1|dir}} einen neuen Benutzer zur Betreuung zuzuordnen. Es wird empfohlen, diese Funktion für Benutzer zu verwenden, die {{GENDER:$1|du}} kennst, oder für Benutzer, die {{GENDER:$1|du}} in einem Kurs betreust.",
 	"growthexperiments-homepage-claimmentee-mentee": "Benutzername des Betreuten",
 	"growthexperiments-homepage-claimmentee-reason": "Begründung für die Zuordnung des Betreuten",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Du}} hast {{Gender:$4|den Lotsen|die Lotsin}} von {{PLURAL:$2|dem Benutzer|den Benutzern}} $1 zu {{GENDER:$4|$5}} geändert",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Du}} hast {{Gender:$4|den Lotsen|die Lotsin}} von {{PLURAL:$2|dem Benutzer|den Benutzern}} $1 zu {{GENDER:$4|$5}} geändert. Zurück zum [[Special:MentorDashboard|Lotsen-Dashboard]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} Lotse/Lotsin wurde bereits geändert.Bist {{GENDER:$2|du}} sicher, dass {{GENDER:$2|du}} die Lotsin/den Lotsen erneut ändern willst?",
 	"growthexperiments-claimmentee-confirm": "Ja, ich will {{GENDER:|den Lotsen|die Lotsin}} wirklich ändern",
 	"growthexperiments-log-name": "GrowthExperiments Log",

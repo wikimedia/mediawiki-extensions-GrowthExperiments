@@ -8,5 +8,8 @@
 	"apihelp-growthstarmentee-param-gesaction": "Åtgärd av vidta (<kbd>star</kbd> eller <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Nybörjare att (av)stjärnmarkera",
 	"apihelp-query+growthstarredmentees-summary": "Hämta lista över nybörjare som stjärnmarkerats av den nuvarande inloggade faddern",
-	"apihelp-growthsetmentorstatus-param-gesstatus": "Ny status"
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Ny status",
+	"apihelp-growthmanagementorlist-param-geaction": "Åtgärd",
+	"apihelp-growthmanagementorlist-param-weight": "Vikt",
+	"apihelp-growthmanagementorlist-param-summary": "Orsak till förändringen"
 }
