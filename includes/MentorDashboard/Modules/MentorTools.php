@@ -17,6 +17,9 @@ class MentorTools extends BaseModule {
 	/** @var string Base CSS class for this module */
 	private const BASE_MODULE_CSS_CLASS = 'growthexperiments-mentor-dashboard-module-mentor-tools';
 
+	/** @var int Pseudo weight, only recognized within MentorTools */
+	public const WEIGHT_NONE = 'none';
+
 	/** @var MentorProvider */
 	private $mentorProvider;
 
@@ -55,9 +58,64 @@ class MentorTools extends BaseModule {
 	}
 
 	/**
+	 * @return bool
+	 */
+	private function isMentorListStructured(): bool {
+		return $this->getContext()->getConfig()->get( 'GEMentorProvider' ) ===
+			MentorProvider::PROVIDER_STRUCTURED;
+	}
+
+	/**
+	 * @return int|string
+	 */
+	private function getMentorWeight() {
+		if (
+			$this->isMentorListStructured() &&
+			!$this->mentorProvider
+				->newMentorFromUserIdentity( $this->getUser() )
+				->getAutoAssigned()
+		) {
+			return self::WEIGHT_NONE;
+		}
+
+		return $this->mentorWeightManager->getWeightForMentor(
+			$this->getUser()
+		);
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	protected function getBody() {
+		$weightOptions = [
+			[
+				'data' => MentorWeightManager::WEIGHT_LOW,
+				'label' => $this->msg(
+					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low'
+				)->text(),
+			],
+			[
+				'data' => MentorWeightManager::WEIGHT_NORMAL,
+				'label' => $this->msg(
+					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium'
+				)->text(),
+			],
+			[
+				'data' => MentorWeightManager::WEIGHT_HIGH,
+				'label' => $this->msg(
+					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high'
+				)->text(),
+			],
+		];
+		if ( $this->isMentorListStructured() ) {
+			array_unshift( $weightOptions, [
+				'data' => self::WEIGHT_NONE,
+				'label' => $this->msg(
+					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none'
+				)->text()
+			] );
+		}
+
 		return implode( "\n", [
 			Html::rawElement(
 				'div',
@@ -114,29 +172,8 @@ class MentorTools extends BaseModule {
 					new DropdownInputWidget( [
 						'id' => 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown',
 						'infusable' => true,
-						'value' => $this->mentorWeightManager->getWeightForMentor(
-							$this->getUser()
-						),
-						'options' => [
-							[
-								'data' => MentorWeightManager::WEIGHT_LOW,
-								'label' => $this->msg(
-									'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low'
-								)->text(),
-							],
-							[
-								'data' => MentorWeightManager::WEIGHT_NORMAL,
-								'label' => $this->msg(
-									'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium'
-								)->text(),
-							],
-							[
-								'data' => MentorWeightManager::WEIGHT_HIGH,
-								'label' => $this->msg(
-									'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high'
-								)->text(),
-							],
-						]
+						'value' => $this->getMentorWeight(),
+						'options' => $weightOptions
 					] )
 				] )
 			),

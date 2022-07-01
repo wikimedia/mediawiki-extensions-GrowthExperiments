@@ -86,6 +86,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Reason: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "What is \"Claim mentee\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Number of mentees assigned to me",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "None",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "About half the average",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Average (the default)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "About twice the average",

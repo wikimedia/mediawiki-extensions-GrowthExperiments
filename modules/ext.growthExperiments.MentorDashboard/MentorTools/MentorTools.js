@@ -79,28 +79,35 @@
 				}
 			} ).$element
 		);
+		var weightOptions = [
+			new OO.ui.MenuOptionWidget( {
+				data: 1,
+				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low' )
+			} ),
+			new OO.ui.MenuOptionWidget( {
+				data: 2,
+				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium' )
+			} ),
+			new OO.ui.MenuOptionWidget( {
+				data: 4,
+				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high' )
+			} )
+		];
+		if ( mw.config.get( 'GEMentorProvider' ) === 'structured' ) {
+			weightOptions.unshift( new OO.ui.MenuOptionWidget( {
+				data: 'none',
+				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none' )
+			} ) );
+		}
 		this.mentorWeightDropdown = new OO.ui.DropdownWidget( {
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium' ),
 			id: 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown',
 			menu: {
-				items: [
-					new OO.ui.MenuOptionWidget( {
-						data: 1,
-						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low' )
-					} ),
-					new OO.ui.MenuOptionWidget( {
-						data: 2,
-						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium' )
-					} ),
-					new OO.ui.MenuOptionWidget( {
-						data: 4,
-						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high' )
-					} )
-				]
+				items: weightOptions
 			}
 		} );
 		this.mentorWeightDropdown.getMenu().selectItem( this.mentorWeightDropdown.getMenu().findItemFromData(
-			Number( $( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown select' ).val() )
+			$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown select' ).val()
 		) );
 		this.mentorWeightDropdown.getMenu().connect( this, {
 			choose: [ 'onMentorWeightDropdownChanged' ]
@@ -163,14 +170,37 @@
 		}
 	};
 
+	/**
+	 * @param {OO.ui.MenuOptionWidget} selectedItem
+	 * @returns {Promise<void>|Promise<any>|*}
+	 */
+	MentorTools.prototype.setMentorWeight = function ( selectedItem ) {
+		if ( mw.config.get( 'GEMentorProvider' ) === 'structured' ) {
+			var apiOptions = {
+				action: 'growthmanagementorlist',
+				geaction: 'change',
+				autoassigned: selectedItem.getData() !== 'none'
+			};
+			if ( selectedItem.getData() !== 'none' ) {
+				apiOptions.weight = Number( selectedItem.getData() );
+			}
+			return new mw.Api().postWithToken( 'csrf', apiOptions );
+		} else if ( mw.config.get( 'GEMentorProvider' ) === 'wikitext' ) {
+			return new mw.Api().postWithToken( 'csrf', {
+				action: 'options',
+				optionname: 'growthexperiments-mentorship-weight',
+				optionvalue: selectedItem.getData()
+			} );
+		} else {
+			// unexpected value, don't do anything
+			return $.Deferred().resolve();
+		}
+	};
+
 	MentorTools.prototype.onMentorWeightDropdownChanged = function () {
 		var selectedItem = this.mentorWeightDropdown.getMenu().findSelectedItem();
 
-		new mw.Api().postWithToken( 'csrf', {
-			action: 'options',
-			optionname: 'growthexperiments-mentorship-weight',
-			optionvalue: selectedItem.getData()
-		} ).then( function () {
+		this.setMentorWeight( selectedItem ).then( function () {
 			mw.notify(
 				mw.msg(
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed',
