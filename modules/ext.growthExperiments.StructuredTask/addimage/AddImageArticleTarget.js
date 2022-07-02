@@ -181,7 +181,8 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 		{
 			type: 'mwGeRecommendedImage',
 			attributes: {
-				mediaClass: 'Image',
+				mediaClass: 'File',
+				mediaTag: 'img',
 				// This is a Commons image so the link needs to use the English namespace name
 				// but Title uses the localized one. That's OK, Parsoid will figure it out.
 				// Native VE images also use localized titles.
