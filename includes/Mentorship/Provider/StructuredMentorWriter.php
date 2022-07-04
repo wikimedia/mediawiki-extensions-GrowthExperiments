@@ -90,6 +90,12 @@ class StructuredMentorWriter implements IMentorWriter {
 		string $summary
 	): StatusValue {
 		$mentorUserIdentity = $mentor->getUserIdentity();
+		if ( !$mentorUserIdentity->isRegistered() ) {
+			return StatusValue::newFatal(
+				'growthexperiments-mentor-writer-error-anonymous-user',
+				$mentorUserIdentity->getName()
+			);
+		}
 
 		$mentorData = $this->getMentorData();
 		if ( array_key_exists( $mentorUserIdentity->getId(), $mentorData ) ) {

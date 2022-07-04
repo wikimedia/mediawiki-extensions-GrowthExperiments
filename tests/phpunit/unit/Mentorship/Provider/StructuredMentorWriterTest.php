@@ -52,13 +52,14 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @param bool $loadExpected Is a call to load() expected?
 	 * @return WikiPageConfigLoader|\PHPUnit\Framework\MockObject\MockObject
 	 */
-	private function getWikiConfigLoaderMock() {
+	private function getWikiConfigLoaderMock( bool $loadExpected = true ) {
 		$configLoader = $this->getMockBuilder( WikiPageConfigLoader::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$configLoader->expects( $this->once() )
+		$configLoader->expects( $loadExpected ? $this->once() : $this->never() )
 			->method( 'load' )
 			->willReturn( [
 				'Mentors' => self::MENTOR_LIST_CONTENT
@@ -120,6 +121,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	 * @param Mentor $mentor
 	 * @param array $expectedNewMentor
 	 * @param string|null $expectedError
+	 * @param bool $expectLoad
 	 * @covers ::addMentor
 	 * @covers ::getMentorData
 	 * @covers ::saveMentorData
@@ -129,7 +131,8 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	public function testAddMentor(
 		Mentor $mentor,
 		array $expectedNewMentor,
-		?string $expectedError
+		?string $expectedError,
+		bool $expectLoad
 	) {
 		if ( $expectedError === null ) {
 			$expectedMentorList = self::MENTOR_LIST_CONTENT;
@@ -139,7 +142,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
 		}
 		$mentorWriter = new StructuredMentorWriter(
-			$this->getWikiConfigLoaderMock(),
+			$this->getWikiConfigLoaderMock( $expectLoad ),
 			$configWriterFactory,
 			new StructuredMentorListValidator(),
 			$this->createNoOpMock( LinkTarget::class )
@@ -168,6 +171,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 					'automaticallyAssigned' => true,
 				],
 				'expectedError' => null,
+				'expectLoad' => true,
 			],
 			[
 				'mentor' => $this->getMentor( 123, null, true, 2 ),
@@ -177,6 +181,17 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 					'automaticallyAssigned' => true,
 				],
 				'expectedError' => 'growthexperiments-mentor-writer-error-already-added',
+				'expectLoad' => true,
+			],
+			[
+				'mentor' => $this->getMentor( 0, null, true, 2 ),
+				'expectedNewMentor' => [
+					'message' => null,
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+				],
+				'expectedError' => 'growthexperiments-mentor-writer-error-anonymous-user',
+				'expectLoad' => false,
 			],
 		];
 	}

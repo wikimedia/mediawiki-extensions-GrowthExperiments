@@ -104,6 +104,7 @@
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Mentor definition contains an unexpected key <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 was already added to the mentor list",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 is not in the mentor list",
+	"growthexperiments-mentor-writer-error-anonymous-user": "Mentor $1 is not a registered user",
 	"growthexperiments-manage-mentors-title": "Manage mentors",
 	"growthexperiments-manage-mentors-error-no-such-user": "Error: No such user with ID of $1 exists. This is probably an internal error.",
 	"growthexperiments-manage-mentors-auto-assigned": "Automatically assigned mentors",
