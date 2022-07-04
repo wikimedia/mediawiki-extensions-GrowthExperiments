@@ -7,6 +7,7 @@ use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use HTMLForm;
 use SpecialPage;
+use Status;
 
 class SpecialEnrollAsMentor extends FormSpecialPage {
 
@@ -115,11 +116,11 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 		$mentor->setWeight( (int)$data['weight'] );
 		$mentor->setAutoAssigned( (bool)$data['automaticallyAssigned'] );
 
-		return $this->mentorWriter->addMentor(
+		return Status::wrap( $this->mentorWriter->addMentor(
 			$mentor,
 			$this->getUser(),
 			$data['reason']
-		);
+		) );
 	}
 
 	/**
