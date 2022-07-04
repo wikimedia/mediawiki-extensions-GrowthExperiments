@@ -89,6 +89,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "Максимальное число заданий \"Добавить ссылку\", которое новичок сможет выполнять ежедневно.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Список названий разделов, в которых ссылки не должны быть рекомендованы.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Целевая страница, где можно узнать больше о типе задачи по рекомендации изображения.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "Максимальное количество рекомендуемых задач «Добавить изображение», которые новичок может выполнять ежедневно.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Этот тип задач связан с машинными предложениями и не использует шаблоны для создания пула задач.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Статьи, содержащие определенные здесь шаблоны, а не показываться пользователям как задача для этого типа задач.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Статьи, содержащие определенные здесь категории, а не показываться участникам как задача для этого типа задач.",

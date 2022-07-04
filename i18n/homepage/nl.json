@@ -122,6 +122,8 @@
 	"growthexperiments-homepage-recent-questions-archived": "gearchiveerd",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Deze vraag is gearchiveerd, waarschijnlijk omdat deze lang geleden is gesteld.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Uw}} {{GENDER:$2|mentor}}",
+	"growthexperiments-homepage-mentorship-preintro": "Je hebt een mentor gekregen, hier kun je jouw vragen aan stellen over het bewerken.",
+	"growthexperiments-homepage-mentorship-learn-more": "Leer meer over mentors.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|bewerking|bewerkingen}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Actief}} vandaag",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Actief}} gisteren",
@@ -418,5 +420,13 @@
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|andere}}",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Begrepen",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Begrepen",
-	"growthexperiments-homepage-mentorship-optin-text": "Als {{GENDER:|je}} vragen hebt over bewerken, kan een ervaren bewerker je worden toegewezen als je mentor om je te helpen."
+	"growthexperiments-homepage-mentorship-optin-text": "Als {{GENDER:|je}} vragen hebt over bewerken, kan een ervaren bewerker je worden toegewezen als je mentor om je te helpen.",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "Over mentors",
+	"growthexperiments-homepage-mentorship-optout-header": "Stoppen met een mentor?",
+	"growthexperiments-homepage-mentorship-optout-text": "Je kunt altijd weer een mentor krijgen als je je bedenkt. Maar het is mogelijk dat je dan niet dezelfde {{GENDER:$1|mentor}} krijgt als hiervoor.",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Annuleren",
+	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Wie is {{GENDER:|jouw}} {{GENDER:$1|mentor}}?",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Jouw}} {{GENDER:$1|mentor}} is een gebruiker met veel ervaring met het bewerken van {{SITENAME}}. {{GENDER:$1|Hij|Zij}} heeft ervoor gekozen om nieuwe gebruikers te helpen met het bewerken. Ze beantwoorden vragen die {{GENDER:|je}} hebt over deze site.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "Als {{GENDER:|je}} een vraag stelt aan je mentor, ziet {{GENDER:$1|hij|zij}} het op {{GENDER:$1|zijn|haar}} overlegpagina en {{GENDER:|jij}} krijgt een notificatie zodra {{GENDER:$1|hij|zij}} heeft gereageerd.",
+	"growthexperiments-homepage-mentorship-about-optout-par1": "Druk op de knop hieronder om te stoppen met een mentor. {{GENDER:|Je}} kunt een nieuwe mentor krijgen als {{GENDER:|je}} je later bedenkt."
 }

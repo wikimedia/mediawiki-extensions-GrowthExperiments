@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tiven2240"
+		]
+	},
+	"growthexperiments-help-panel-tog-help-panel": "संपादक मदत पॅनेल सक्षम करा",
+	"growthexperiments-help-panel-cta-button-text": "संपादनासाठी मदत मिळवा",
+	"growthexperiments-help-panel-question-button-text": "चालू ठेवा",
+	"growthexperiments-help-panel-submit-question-button-text": "प्रकाशित करा",
+	"growthexperiments-help-panel-return-home-button-text": "झाले",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "संपादनाबद्दल शीर्ष मदत पृष्ठे",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "अधिक मदत लेख पहा",
+	"growthexperiments-help-panel-question-widget-header": "तुमचा प्रश्न समुदाय मदत चावडीवर पोस्ट करा",
+	"growthexperiments-help-panel-question-placeholder": "नमस्कार म्हणा आणि {{GENDER:$1|तुमचा}} प्रश्न विचारा.",
+	"growthexperiments-help-panel-back-home": "परत जा",
+	"growthexperiments-help-panel-close": "झाले"
+}

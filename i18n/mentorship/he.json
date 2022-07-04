@@ -89,6 +89,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "סיבה: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "מה זה \"לקלוט חניך\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "מספר החניכים שמשויכים אליי",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "אין",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "בערך חצי מהממוצע",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "ממוצע (ברירת המחדל)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "בערך כפול מהממוצע",
@@ -116,5 +117,12 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|אתה עומד|את עומדת}} להסיר את [[User:$1|משתמש:$1]] מתפקיד {{GENDER:$1|חונך|חונכת}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "סיבה להסרת החונך",
 	"growthexperiments-manage-mentors-remove-mentor-success": "משתמש [[User:$1|$1]] כבר {{GENDER:$1|אינו חונך|אינה חונכת}}.",
-	"growthexperiments-manage-mentors-return-back": "אפשר [[Special:ManageMentors|לחזור]] לרשימת החונכים."
+	"growthexperiments-manage-mentors-return-back": "אפשר [[Special:ManageMentors|לחזור]] לרשימת החונכים.",
+	"growthexperiments-mentorship-enrollasmentor-title": "רישום בתור {{GENDER:|חונך}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "תודה {{GENDER:|לך}} על התנדבות בתור {{GENDER:|חונך}} {{SITENAME}}. {{GENDER:|אתה יכול|את יכולה}} להירשם לחונכות על־ידי מילוי הטופס הזה.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "הודעת היכרות",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "הודעת ההיכרות מציגה אותך {{GENDER:|כחונך|כחונכת}}. נא שמור על כך שזה יהיה קצר מ־240 תווים. אסור להשתמש בקוד ויקי.",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "סיבה",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "הרשמה",
+	"growthexperiments-mentorship-enrollasmentor-success": "עכשיו {{GENDER:|אתה רשום כחונך|את רשומה כחונכת}}. זה הזמן אפשר להמשיך אל [[Special:MentorDashboard|לוח המחוונים של החומכים]]."
 }

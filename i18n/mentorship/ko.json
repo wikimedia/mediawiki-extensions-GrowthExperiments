@@ -85,6 +85,7 @@
 	"echo-category-title-ge-mentorship": "멘토",
 	"growthexperiments-notification-body-mentee-claimed": "이유: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "내게 할당된 멘티의 수",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "없음",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "평균의 약 절반",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "평균 (기본값)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "평균의 약 2배",
@@ -104,5 +105,7 @@
 	"growthexperiments-manage-mentors-last-active": "마지막 활동",
 	"growthexperiments-manage-mentors-intro-msg": "새로 온 사용자를 위한 메시지",
 	"growthexperiments-manage-mentors-remove-mentor": "제거",
-	"growthexperiments-manage-mentors-remove-mentor-reason": "멘토 제거 이유"
+	"growthexperiments-manage-mentors-remove-mentor-reason": "멘토 제거 이유",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "소개 메시지",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "이유"
 }

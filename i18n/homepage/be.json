@@ -4,7 +4,8 @@
 			"Chadyka",
 			"Kareyac",
 			"No Sleep till Krupki",
-			"Tomato Cream"
+			"Tomato Cream",
+			"Tīgelika"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
@@ -134,7 +135,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|Глядзіце}} іншыя размовы {{GENDER:$1|вашага настаўніка|вашай настаўніцы}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Задайце}} пытанне {{GENDER:$1|свайму настаўніку|сваёй настаўніцы}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Калі вы задаяце пытанне, яно <strong>агульнадаступна публікуецца</strong> пад {{GENDER:$2|вашым}} імем удзельніка «$2» са зваротам да $3, дзе {{GENDER:$1|ён|яна}} можа знайсці і адказаць.",
-	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Ваш асноўны настаўнік|Ваша асноўная настаўніца}}, $1, зараз адсутнічае. На вашы пытанні пакуль адкажа {{GENDER:$4|іншы настаўнік|іншая настаўніца}}, $3.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Ваш асноўны настаўнік|Ваша асноўная настаўніца}}, «[[User:$1|$1]]», зараз адсутнічае. На вашы пытанні пакуль адкажа {{GENDER:$4|іншы настаўнік|іншая настаўніца}}, «[[User:$3|$3]]».",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "Старонка размоў {{GENDER:$1|{{GENDER:$2|вашага}} настаўніка|вашай настаўніцы}}.",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Ваша}} пытанне цяпер на старонцы абмеркавання {{GENDER:$1|вашага настаўніка, дзе ён|вашай настаўніцы, дзе яна}} адкажа на яго, як толькі зможа.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Праглядзіце {{GENDER:$2|ваша}} пытанне на старонцы размоў {{GENDER:$1|вашага настаўніка|вашай настаўніцы}}.",
@@ -304,7 +305,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Гэтая старонка дазваляе {{GENDER:$1|вам}} змяніць настаўніка падапечнага на сябе. Рэкамендуецца выкарыстоўваць гэтую функцыю для ўдзельнікаў, якіх вы ведаеце, або для ўдзельнікаў, якіх вы настаўляеце на курсе.",
 	"growthexperiments-homepage-claimmentee-mentee": "Імя ўдзельніка падапечнага",
 	"growthexperiments-homepage-claimmentee-reason": "Прычына ўзяцця гэтага падапечнага",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Вы}} змянілі {{GENDER:$4|настаўніка|настаўніцу}} {{PLURAL:$2|ўдзельніка|ўдзельнікаў}} $1 на $5",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Вы}} змянілі {{GENDER:$4|настаўніка|настаўніцу}} {{PLURAL:$2|ўдзельніка|ўдзельнікаў}} $1 на $5. Вярнуцца да [[Special:MentorDashboard|панэлі настаўніка]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Настаўнік {{GENDER:$1|удзельніка|удзельніцы}} $1 ужо быў зменены. Вы ўпэўнены, што {{GENDER:$2|хочаце}} змяніць яго зноў?",
 	"growthexperiments-claimmentee-confirm": "Так, я сапраўды хачу змяніць {{GENDER:|настаўніка|настаўніцу}}",
 	"growthexperiments-log-name": "Журнал GrowthExperiments",

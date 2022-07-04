@@ -4,7 +4,8 @@
 			"Bluetpp",
 			"Minh Nguyen",
 			"Nghiemtrongdai VN",
-			"NguoiDungKhongDinhDanh"
+			"NguoiDungKhongDinhDanh",
+			"RiceCracker12"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Bảng điều khiển cố vấn",
@@ -82,8 +83,16 @@
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|}}Bạn hiện không là cố vấn của bất kỳ thành viên nào.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 đã {{GENDER:$1|nghỉ}} làm cố vấn.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Số người được cố vấn được phân cho tôi",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Không",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Khoảng một nửa trung bình",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Trung bình (mặc định)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Khoảng gấp đôi trung bình",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Bạn nên bắt đầu tại cài đặt “Trung bình” để đo khả năng trợ giúp của bạn trước khi tăng hay giảm."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Bạn nên bắt đầu tại cài đặt “Trung bình” để đo khả năng trợ giúp của bạn trước khi tăng hay giảm.",
+	"growthexperiments-mentorship-enrollasmentor-title": "Đăng ký làm {{GENDER:|cố vấn}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Cảm ơn {{GENDER:|bạn}} đã tình nguyện làm {{GENDER:|cố vấn}} của {{SITENAME}}. {{GENDER:|Bạn}} có thể đăng ký bằng cách điền vào biểu mẫu này.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Thông điệp giới thiệu",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Thông điệp giới thiệu sẽ giới thiệu bản thân {{GENDER:|bạn}} với tư cách là cố vấn. Vui lòng viết không quá 240 ký tự. Không được sử dụng wikitext.",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "Lý do",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Đăng ký",
+	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Bạn}} đã đăng ký làm cố vấn thành công. {{GENDER:|Bạn}} giờ có thể tới [[Special:MentorDashboard|bảng điều khiển cho cố vấn]]."
 }

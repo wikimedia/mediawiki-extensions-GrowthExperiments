@@ -92,6 +92,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "السبب: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "ما معنى «المُطالبة بمرشَد»؟",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "نسبة عدد المُرشَدين المعيّنين لديَّ",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "لا أحد",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "حوالي نصف المعدّل",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "المعدّل (افتراضي)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "حوالي ضعف المعدّل",
@@ -119,5 +120,12 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|ستُقدم|ستُقدمين}} على إزالة [[User:$1]] كـ{{GENDER:$1|مرشد|مرشدة}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "سبب إزالة المرشد",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|المستخدم|المستخدمة}} [[User:$1|$1]] لم {{GENDER:$1|يعد متاحاً كمرشد|تعد متاحة كمرشدة}}.",
-	"growthexperiments-manage-mentors-return-back": "بالإمكان [[Special:ManageMentors|العودة]] إلى قائمة المرشدين"
+	"growthexperiments-manage-mentors-return-back": "بالإمكان [[Special:ManageMentors|العودة]] إلى قائمة المرشدين",
+	"growthexperiments-mentorship-enrollasmentor-title": "{{GENDER:|سجّل|سجّلي}} نفسك {{GENDER:|كمرشد|كمرشدة}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "شكرًا على التطوّع بصفتك {{GENDER:|مرشد|مرشدة}} في {{SITENAME}}. يمكنك التسجيل في الإرشاد عن طريق ملء هذه الاستمارة.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "رسالة التقديم",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "تقدّمك رسالة التقديم {{GENDER:|كمرشد|كمرشدة}}. يرجى الاقتصار على 240 حرفًا فقط. لا يسمح بنص الويكي.",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "السبب",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "التسجيل",
+	"growthexperiments-mentorship-enrollasmentor-success": "تم تسجيلك الآن {{GENDER:|كمرشد|كمرشدة}}. يمكنك المرور إلى [[Special:MentorDashboard|لوحة المرشدين]]."
 }

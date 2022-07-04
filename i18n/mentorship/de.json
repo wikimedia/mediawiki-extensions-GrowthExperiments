@@ -93,6 +93,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Grund: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Was heißt \"Mentee übernehmen\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Zahl der mir zugewiesenen Mentees",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Keine",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Etwa die Hälfte des Mittelwerts",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Mittelwert (default)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Etwa doppelter Mittelwert",
@@ -120,5 +121,12 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Du}} bist dabei, [[User:$1]] als {{GENDER:$1|Lotsen|Lotsin}} zu entfernen.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Grund für die Entfernung des Lotsen",
 	"growthexperiments-manage-mentors-remove-mentor-success": "[[User:$1|$1]] ist nicht länger {{GENDER:$1|ein Lotsen|eine Lotsin}}.",
-	"growthexperiments-manage-mentors-return-back": "Du kannst zur Liste der Mentoren [[Special:ManageMentors|zurückkehren]]."
+	"growthexperiments-manage-mentors-return-back": "Du kannst zur Liste der Mentoren [[Special:ManageMentors|zurückkehren]].",
+	"growthexperiments-mentorship-enrollasmentor-title": "Als {{GENDER:|Lotse|Lotsin}} anmelden",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Vielen Dank, dass {{GENDER:|du}} dich freiwillig als {{GENDER:|Lotse|Lotsin}} für {{SITENAME}} gemeldet hast. {{GENDER:|Du}} kannst dich für die Lotsenschaft anmelden, indem du dieses Formular ausfüllst.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Einleitende Nachricht",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Die Einführungsnachricht stellt {{GENDER:|dich}} als Lotse vor. Bitte halte diese Nachricht kürzer als 240 Zeichen. Wikitext ist nicht erlaubt.",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "Grund",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Anmelden",
+	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Du}} bist nun als Lotse angemeldet. {{GENDER:|Du}} kannst jetzt zum [[Special:MentorDashboard|Lotsen-Dashboard]] gehen."
 }

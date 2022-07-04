@@ -88,6 +88,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Motiv: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Ce este „Revendicare ucenic”?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Numărul de ucenici atribuiți mie",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Fără",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "În jur de jumătate din medie",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Mediu (implicit)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "În jur de două ori mai mult din medie",
@@ -115,5 +116,12 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Sunteți}} pe cale să îl/o eliminați pe [[User:$1]] din funcția de {{GENDER:$1|mentor}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Motivul pentru eliminarea mentorului",
 	"growthexperiments-manage-mentors-remove-mentor-success": "Utilizatorul [[User:$1|$1]] nu mai este {{GENDER:$1|mentor}}.",
-	"growthexperiments-manage-mentors-return-back": "Vă puteți [[Special:ManageMentors|întoarce]] la lista mentorilor."
+	"growthexperiments-manage-mentors-return-back": "Vă puteți [[Special:ManageMentors|întoarce]] la lista mentorilor.",
+	"growthexperiments-mentorship-enrollasmentor-title": "Înscrieți-vă ca {{GENDER:|mentor}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Vă {{GENDER:|mulțumim}} pentru că vă voluntariați ca {{GENDER:|mentor}} la {{SITENAME}}. {{GENDER:|Vă}} puteți înscrie ca mentor prin completarea acestui formular.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Mesaj de introducere",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Mesajul de introducere {{GENDER:|vă}} introduce ca mentor. Vă rugăm să îl mențineți mai scurt de 240 de caractere. Nu este permis wikitextul.",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motiv",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Înscrie-te",
+	"growthexperiments-mentorship-enrollasmentor-success": "Sunteți acum {{GENDER:|înscris|înscrisă}} ca mentor. Acum {{GENDER:|puteți}} merge la [[Special:MentorDashboard|pagina mentorului]]."
 }

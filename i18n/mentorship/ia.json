@@ -88,6 +88,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Que significa \"adoptar un apprentisse\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Numero de apprentisses assignate a me",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Nulle",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Circa le medietate del media",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Le media (option predefinite)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Circa duo vices le media",
@@ -115,5 +116,12 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "Tu es sur le puncto de remover [[User:$1]] como {{GENDER:$1|mentor}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Motivo pro remover le mentor",
 	"growthexperiments-manage-mentors-remove-mentor-success": "Le usator [[User:$1|$1]] non es plus un {{GENDER:$1|mentor}}.",
-	"growthexperiments-manage-mentors-return-back": "Tu pote [[Special:ManageMentors|retornar]] al lista de mentores."
+	"growthexperiments-manage-mentors-return-back": "Tu pote [[Special:ManageMentors|retornar]] al lista de mentores.",
+	"growthexperiments-mentorship-enrollasmentor-title": "Inscriber se como mentor",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Gratias pro voler devenir un mentor de {{SITENAME}}. Tu pote inscriber te pro le mentorato completante le formulario sequente.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Message de introduction",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Le message de introduction te introduce como mentor. Per favor mantene isto plus curte que 240 characteres. Wikitexto non es permittite.",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motivo",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscribe me",
+	"growthexperiments-mentorship-enrollasmentor-success": "Tu es ora inscribite como mentor. Continua al [[Special:MentorDashboard|tabuliero de instrumentos pro mentores]]."
 }

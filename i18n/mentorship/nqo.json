@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lancine.kounfantoh.fofana",
+			"ߒߓߋ߫ ߝߏߝߣߊ߫"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ߫ ߡߊߢߌ߬ߣߌ߲߬ߞߊ߬ߣߍ߲",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "ߓߟߏߓߌߟߊߢߐ߲߯ߞߊ߲ ߞߙߎߞߍ߬ߙߍ ߟߎ߫",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "{{SITENAME}} ߕߐ߮ ߛߓߍ߫ ߕߎߡߘߊ",
+	"growthexperiments-mentorship-enrollasmentor-title": "ߌ ߕߐ߮ ߟߊߘߏ߲߬ {{GENDER:|ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ}} ߘߌ߫.",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "{{GENDER:|ߌ}} ߣߌ߫ ߗߋ߫ ߌ ߟߊ߫ ߓߐߒߖߘߍߘߐ ߟߊ߫ ߞߊ߬ ߞߍ߫ {{SITENAME}} {{GENDER:|ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ}} ߘߌ߫. {{GENDER:|ߌ}} ߘߌ߫ ߛߋ߫ ߌ ߟߊ߫ ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ߬ߦߊ ߡߊ߬ߡߌ߬ߘߊ߬ߟߌ߬ߟߊ߬ߦߊ ߟߊߘߏ߲߬ ߠߊ߫ ߖߙߎߡߎ߲ ߣߌ߲߬ ߟߝߊߟߌ ߟߊ߫.",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "ߌ ߕߐ߮ ߛߓߍ߫"
+}

@@ -4,7 +4,8 @@
 			"Chadyka",
 			"Kareyac",
 			"No Sleep till Krupki",
-			"Tomato Cream"
+			"Tomato Cream",
+			"Tīgelika"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панэль настаўніка",
@@ -91,6 +92,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Прычына: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Што такое «Узяць падапечнага»?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Колькасць прызначаных мне падапечных",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Нічога",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Прыкладна на палову сярэдняга",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Сярэдняя (па змаўчанні)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Прыкладна ў два разы вышэй за сярэдняе",
@@ -118,5 +120,12 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Вы}} збіраецеся зняць {{GENDER:$1|удзельніка|удзельніцу}} [[User:$1]] з ролі {{GENDER:$1|настаўніка|настаўніцы}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Прычына выдалення настаўніка",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Удзельнік|Удзельніца}} [[User:$1|$1]] больш не {{GENDER:$1|настаўнік|настаўніца}}.",
-	"growthexperiments-manage-mentors-return-back": "Вы можаце [[Special:ManageMentors|вярнуцца]] да спісу настаўнікаў."
+	"growthexperiments-manage-mentors-return-back": "Вы можаце [[Special:ManageMentors|вярнуцца]] да спісу настаўнікаў.",
+	"growthexperiments-mentorship-enrollasmentor-title": "Запісацца ў якасці {{GENDER:|настаўніка|настаўніцы}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Дзякуй {{GENDER:|вам}} за добраахвотнасць быць {{GENDER:|настаўнікам|настаўніцай}} у {{GRAMMAR:месны|{{SITENAME}}}}. {{GENDER:|Вы}} можаце запісацца на настаўніцтва, запоўніўшы гэту форму.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Уступнае паведамленне",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Уступнае паведамленне прадстаўляе вас як {{GENDER:|настаўніка|настаўніцу}}. Калі ласка, не перавышайце 240 сімвалаў. Вікі-тэкст не дазваляецца.",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "Прычына",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Запісацца",
+	"growthexperiments-mentorship-enrollasmentor-success": "Зараз вы зарэгістраваны ў якасці {{GENDER:|настаўніка|настаўніцы}}. Цяпер вы можаце перайсці да [[Special:MentorDashboard|панэлі настаўніка]]."
 }

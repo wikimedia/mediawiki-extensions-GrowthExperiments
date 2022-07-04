@@ -302,7 +302,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Această pagină vă {{GENDER:$1|permite}} să schimbați mentorul ucenicului pentru {{GENDER:$1|dvs înșivă.|dvs. însevă.|dvs.}} Este recomandat să utilizați această funcție pentru utilizatori pe care îi {{GENDER:$1|știți}} sau pentru utilizatori cărora le {{GENDER:$1|sunteți}} mentor la un curs.",
 	"growthexperiments-homepage-claimmentee-mentee": "Numele de utilizator al ucenicului",
 	"growthexperiments-homepage-claimmentee-reason": "Motivul pentru revendicarea acestui ucenic",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Ați}} schimbat mentorul {{PLURAL:$2|lui|utilizatorilor}} $1 în {{GENDER:$4|$5}}",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Ați}} schimbat mentorul {{PLURAL:$2|lui|utilizatorilor}} $1 în {{GENDER:$4|$5}}. Întoarceți-vă la [[Special:MentorDashboard|Pagina mentorului]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Mentorul {{GENDER:$1|lui $1}} a fost deja schimbat. Sunteți {{GENDER:$2|sigur|sigură|sigur}} că {{GENDER:$2|doriți}} doriți să îl schimbați din nou?",
 	"growthexperiments-claimmentee-confirm": "Da, chiar doresc să schimb mentorul",
 	"growthexperiments-log-name": "Jurnal GrowthExperiments",
