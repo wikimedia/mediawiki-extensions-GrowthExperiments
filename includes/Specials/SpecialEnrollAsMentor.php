@@ -55,6 +55,8 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function execute( $par ) {
+		$this->requireLogin();
+
 		if ( $this->mentorProvider->isMentor( $this->getUser() ) ) {
 			$this->getOutput()->redirect(
 				SpecialPage::getTitleFor( 'MentorDashboard' )->getLocalURL()
