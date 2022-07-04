@@ -120,7 +120,7 @@ AddImageDetailsDialog.prototype.makeField = function ( field, recommendation ) {
 		fieldValue = recommendation.displayFilename;
 	} else if ( field === 'categories' ) {
 		categories = recommendation.metadata.categories;
-		fieldValue = categories.length ?
+		fieldValue = ( categories && categories.length ) ?
 			categories.join( mw.message( 'comma-separator' ).text() ) :
 			null;
 	} else {
