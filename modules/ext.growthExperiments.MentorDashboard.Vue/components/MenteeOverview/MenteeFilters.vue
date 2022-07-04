@@ -1,0 +1,103 @@
+<template>
+	<div class="mentee-filters">
+		<cdx-button @click="toggleFiltersForm">
+			<span>
+				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter' ) }}
+			</span>
+			<cdx-icon
+				class="expand-icon"
+				:icon="showFiltersForm ? cdxIconCollapse : cdxIconExpand"
+				:icon-label="$i18n( 'tbd-expand' )"
+			></cdx-icon>
+		</cdx-button>
+		<div v-if="showFiltersForm" class="mentee-filters__container">
+			<mentee-filters-form
+				class="mentee-filters__form"
+				v-bind="data"
+				@update:filters="onFiltersUpdate"
+				@close="hide"
+			></mentee-filters-form>
+		</div>
+	</div>
+</template>
+
+<script>
+const { CdxButton, CdxIcon } = require( '@wikimedia/codex' );
+const { cdxIconExpand, cdxIconCollapse } = require( '../icons.json' );
+const MenteeFiltersForm = require( './MenteeFiltersForm.vue' );
+// @vue/component
+module.exports = exports = {
+	compatConfig: { MODE: 3 },
+	components: {
+		CdxButton,
+		CdxIcon,
+		MenteeFiltersForm
+	},
+	props: {
+		data: { type: Object, required: true }
+	},
+	emits: [ 'update:filters' ],
+	setup() {
+		return {
+			cdxIconExpand,
+			cdxIconCollapse
+		};
+	},
+	data() {
+		return {
+			showFiltersForm: false
+		};
+	},
+	methods: {
+		onClickOutside( e ) {
+			if ( !this.$el.contains( e.target ) ) {
+				this.hide();
+			}
+		},
+		hide() {
+			this.showFiltersForm = false;
+		},
+		toggleFiltersForm() {
+			this.showFiltersForm = !this.showFiltersForm;
+		},
+		onFiltersUpdate( $event ) {
+			this.$emit( 'update:filters', $event );
+			this.hide();
+		}
+	},
+	mounted() {
+		window.addEventListener( 'click', this.onClickOutside );
+	},
+	unmounted() {
+		window.removeEventListener( 'click', this.onClickOutside );
+	}
+};
+</script>
+
+<style lang="less">
+@import '../variables.less';
+
+.mentee-filters {
+	.expand-icon {
+		> svg {
+			// REVIEW styles copied "by eye", how to affect icon stroke-width,
+			// correct API for adding an inline icon inside a CdxButton
+			width: 12px;
+			height: 16px;
+			padding-left: 8px;
+		}
+	}
+
+	&__container {
+		position: relative;
+	}
+
+	&__form {
+		width: 320px;
+		position: absolute;
+		z-index: 1;
+		top: 2px;
+		.popover-base();
+	}
+}
+</style>
