@@ -45,6 +45,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Données des apprentis non disponibles",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Vous n’avez peut-être encore aucun apprenti affecté. Les données sont mises à jour toutes les trois heures.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Aucun apprenti trouvé",
+	"growthexperiments-mentor-dashboard-mentee-overview-table-caption": "{{GENDER:|}}Vos apprenti(e)s (données mises à jour toutes les 3 heures)",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifier vos filtres pour trouver des apprentis.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressources",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "La liste des tuteurs",

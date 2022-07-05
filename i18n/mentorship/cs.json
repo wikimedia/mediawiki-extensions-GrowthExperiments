@@ -84,7 +84,7 @@
 	"growthexperiments-quit-mentorship-success": "Vaši nováčci budou během chvíle převedeni na ostatní mentory.",
 	"growthexperiments-quit-mentorship-no-mentees": "V tuto chvíli {{GENDER:|nemáte}} žádné mentorované.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 již není {{GENDER:$1|mentorem|mentorkou}}.",
-	"echo-category-title-ge-mentorship": "Mentorství",
+	"echo-category-title-ge-mentorship": "mentorství",
 	"echo-pref-tooltip-ge-mentorship": "Notifikace týkající se mentorství vytvořeného týmem Growth. Po zaškrtnutí této možnosti vám dáme vědět, že jste jako nováček byl převzat někým jiným, anebo že některý z vašich nováčků byl převzat jiným mentorem.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Váš nováček}}, $3, {{GENDER:$3|byl převzat|byla převzata}} {{GENDER:$2|mentorem|mentorkou}} $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Důvod: $1",

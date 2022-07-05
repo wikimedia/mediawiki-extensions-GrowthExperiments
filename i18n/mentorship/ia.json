@@ -41,6 +41,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Datos de apprentisse non disponibile",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Es possibile que tu non ha ancora alcun apprentisse assignate. Le datos se actualisa cata tres horas.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nulle apprentisse trovate",
+	"growthexperiments-mentor-dashboard-mentee-overview-table-caption": "Tu apprentisses (le datos se actualisa cata 3 horas)",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Cambia tu filtros pro trovar apprentisses.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressources",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Le lista de mentores",
