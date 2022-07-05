@@ -20,7 +20,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use Html;
@@ -362,7 +362,7 @@ class SuggestedEdits extends BaseModule {
 				$formattedTasks = [];
 				foreach ( $tasks as $task ) {
 					$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
-					$formattedTasks[] = [
+					$taskData = [
 						'tasktype' => $task->getTaskType()->getId(),
 						'difficulty' => $task->getTaskType()->getDifficulty(),
 						'qualityGateIds' => $task->getTaskType()->getQualityGateIds(),
@@ -374,14 +374,16 @@ class SuggestedEdits extends BaseModule {
 						'pageId' => $title->getArticleID(),
 						'token' => $task->getToken(),
 					];
+					if ( $task->getTaskType() instanceof ImageRecommendationTaskType ) {
+						// Prevent loading of thumbnail for image recommendation tasks.
+						// TODO: Maybe there should be a property on the task type to check
+						// rather than special casing image recommendation here
+						$taskData['thumbnailSource'] = null;
+					}
+					$formattedTasks[] = $taskData;
 				}
 				$data['task-queue'] = $formattedTasks;
 				$data['task-preview'] = current( $formattedTasks );
-				// Prevent loading of thumbnail for image recommendation tasks.
-				// FIXME find a better place for this
-				if ( $data['task-preview']['tasktype'] === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
-					$data['task-preview']['thumbnailSource'] = null;
-				}
 			}
 		}
 
