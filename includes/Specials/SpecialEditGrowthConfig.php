@@ -8,6 +8,7 @@ use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
+use GrowthExperiments\EventLogging\SpecialEditGrowthConfigLogger;
 use GrowthExperiments\HomepageModules\Banner;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
@@ -32,7 +33,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var string Right required to write */
-	private const REQUIRED_RIGHT_TO_WRITE = 'editinterface';
+	public const REQUIRED_RIGHT_TO_WRITE = 'editinterface';
 
 	/** @var string[] */
 	private const SUGGESTED_EDITS_INTRO_LINKS = [ 'create', 'image' ];
@@ -63,6 +64,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 	/** @var GrowthExperimentsMultiConfig */
 	private $growthWikiConfig;
+
+	/** @var SpecialEditGrowthConfigLogger */
+	private $eventLogger;
 
 	/** @var string|null */
 	private $errorMsgKey;
@@ -112,6 +116,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$this->configLoader = $configLoader;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->growthWikiConfig = $growthWikiConfig;
+
+		$this->eventLogger = new SpecialEditGrowthConfigLogger();
 	}
 
 	/**
@@ -132,6 +138,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$this->userCanWrite = $this->getAuthority()->isAllowed( self::REQUIRED_RIGHT_TO_WRITE );
 
 		parent::execute( $par );
+
+		$this->eventLogger->logAction( SpecialEditGrowthConfigLogger::ACTION_VIEW, $this->getAuthority() );
 	}
 
 	/**
@@ -1065,6 +1073,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			$dbw->cancelAtomic( __METHOD__ );
 		}
 
+		$this->eventLogger->logAction( SpecialEditGrowthConfigLogger::ACTION_SAVE, $this->getAuthority() );
 		return $status;
 	}
 
