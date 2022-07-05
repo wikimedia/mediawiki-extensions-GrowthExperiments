@@ -90,7 +90,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			->with( StructuredMentorWriter::CONFIG_KEY, $expectedMentorList );
 		$writer->expects( $this->once() )
 			->method( 'save' )
-			->with( $expectedSummary )
+			->with( $expectedSummary, false, StructuredMentorWriter::CHANGE_TAG )
 			->willReturn( $status );
 
 		$factory = $this->getMockBuilder( WikiPageConfigWriterFactory::class )

@@ -21,6 +21,9 @@ use StatusValue;
 class StructuredMentorWriter implements IMentorWriter {
 	use GetMentorDataTrait;
 
+	/** @var string Change tag to tag structured mentor list edits with */
+	public const CHANGE_TAG = 'mentor list change';
+
 	/** @var string */
 	public const CONFIG_KEY = 'Mentors';
 
@@ -78,7 +81,7 @@ class StructuredMentorWriter implements IMentorWriter {
 		$configWriter = $this->configWriterFactory
 			->newWikiPageConfigWriter( $this->mentorList, $performer );
 		$configWriter->setVariable( self::CONFIG_KEY, $mentorData );
-		return $configWriter->save( $summary );
+		return $configWriter->save( $summary, false, self::CHANGE_TAG );
 	}
 
 	/**

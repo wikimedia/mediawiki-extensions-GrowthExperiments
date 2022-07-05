@@ -10,6 +10,7 @@ use GrowthExperiments\Mentorship\EchoMenteeClaimPresentationModel;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
 use GrowthExperiments\Specials\SpecialManageMentors;
@@ -17,12 +18,20 @@ use GrowthExperiments\Specials\SpecialQuitMentorshipStructured;
 use GrowthExperiments\Specials\SpecialQuitMentorshipWikitext;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
+use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Psr\Log\LogLevel;
 use Throwable;
 
-class MentorHooks implements SpecialPage_initListHook, LocalUserCreatedHook, PageSaveCompleteHook {
+class MentorHooks implements
+	SpecialPage_initListHook,
+	LocalUserCreatedHook,
+	PageSaveCompleteHook,
+	ListDefinedTagsHook,
+	ChangeTagsListActiveHook
+{
 
 	/** @var Config */
 	private $config;
@@ -182,6 +191,23 @@ class MentorHooks implements SpecialPage_initListHook, LocalUserCreatedHook, Pag
 					'GrowthExperimentsMentorProvider'
 				]
 			];
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onListDefinedTags( &$tags ) {
+		// define the change tag unconditionally, in case a wiki switches back to PROVIDER_WIKITEXT
+		$tags[] = StructuredMentorWriter::CHANGE_TAG;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onChangeTagsListActive( &$tags ) {
+		if ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_STRUCTURED ) {
+			$tags[] = StructuredMentorWriter::CHANGE_TAG;
 		}
 	}
 }
