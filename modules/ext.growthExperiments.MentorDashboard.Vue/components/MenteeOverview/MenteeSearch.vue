@@ -9,11 +9,6 @@
 			@input="onInput"
 			@update:selected="$emit( 'update:selected', $event )"
 		>
-			<template #menu-item="{ menuItem }">
-				<span>
-					<strong>{{ searchTerm }}</strong>{{ menuItem.label.split( searchTerm )[ 1 ] }}
-				</span>
-			</template>
 		</cdx-lookup>
 	</div>
 </template>
