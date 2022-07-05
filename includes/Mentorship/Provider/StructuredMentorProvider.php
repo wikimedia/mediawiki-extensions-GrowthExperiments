@@ -52,7 +52,7 @@ class StructuredMentorProvider extends MentorProvider {
 	 * @inheritDoc
 	 */
 	public function getSignupTitle(): ?Title {
-		return SpecialPage::getTitleFor( 'MentorDashboard' );
+		return SpecialPage::getTitleFor( 'EnrollAsMentor' );
 	}
 
 	/**
