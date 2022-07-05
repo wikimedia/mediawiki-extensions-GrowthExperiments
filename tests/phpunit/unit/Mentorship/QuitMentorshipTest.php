@@ -69,11 +69,9 @@ class QuitMentorshipTest extends MediaWikiUnitTestCase {
 			->disableOriginalConstructor()
 			->getMock();
 		$mentorStore->expects( $isMentor ? $this->never() : $this->once() )
-			->method( 'getMenteesByMentor' )
+			->method( 'hasAnyMentees' )
 			->with( $mentor, MentorStore::ROLE_PRIMARY )
-			->willReturn( $hasMentees ? [
-				new UserIdentityValue( 1, 'Mentee' )
-			] : [] );
+			->willReturn( $hasMentees );
 
 		$quitMentorship = $this->newQuitMentorship(
 			$mentor,

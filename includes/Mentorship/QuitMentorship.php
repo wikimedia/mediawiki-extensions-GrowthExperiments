@@ -81,7 +81,7 @@ class QuitMentorship {
 	public function getStage(): int {
 		if ( $this->mentorProvider->isMentor( $this->mentor ) ) {
 			return self::STAGE_LISTED_AS_MENTOR;
-		} elseif ( $this->mentorStore->getMenteesByMentor( $this->mentor, MentorStore::ROLE_PRIMARY ) !== [] ) {
+		} elseif ( $this->mentorStore->hasAnyMentees( $this->mentor, MentorStore::ROLE_PRIMARY ) ) {
 			return self::STAGE_NOT_LISTED_HAS_MENTEES;
 		} else {
 			return self::STAGE_NOT_LISTED_NO_MENTEES;

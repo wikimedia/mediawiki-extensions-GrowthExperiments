@@ -20,6 +20,16 @@ abstract class MentorStoreTestCase extends MediaWikiIntegrationTestCase {
 		$this->wanCache = new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
 	}
 
+	abstract protected function getStore( bool $wasPosted ): MentorStore;
+
+	abstract protected function getJobType(): string;
+
+	protected function assertSameUser( UserIdentity $expectedUser, $actualUser ) {
+		$this->assertInstanceOf( UserIdentity::class, $actualUser );
+		$this->assertSame( $expectedUser->getId(), $actualUser->getId() );
+		$this->assertSame( $expectedUser->getName(), $actualUser->getName() );
+	}
+
 	public function testGetSet() {
 		$mentee = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();
@@ -41,14 +51,25 @@ abstract class MentorStoreTestCase extends MediaWikiIntegrationTestCase {
 		$this->assertSameUser( $mentor, $actualMentor );
 	}
 
-	abstract protected function getStore( bool $wasPosted ): MentorStore;
+	/**
+	 * @covers \GrowthExperiments\Mentorship\Store\MentorStore::hasAnyMentees
+	 */
+	public function testHasAnyMentees() {
+		$menteePrimary = $this->getMutableTestUser()->getUser();
+		$menteeBackup = $this->getMutableTestUser()->getUser();
+		$mentor = $this->getMutableTestUser()->getUser();
+		$store = $this->getStore( true );
 
-	abstract protected function getJobType(): string;
+		$this->assertFalse( $store->hasAnyMentees( $mentor, MentorStore::ROLE_PRIMARY ) );
+		$this->assertFalse( $store->hasAnyMentees( $mentor, MentorStore::ROLE_BACKUP ) );
 
-	protected function assertSameUser( UserIdentity $expectedUser, $actualUser ) {
-		$this->assertInstanceOf( UserIdentity::class, $actualUser );
-		$this->assertSame( $expectedUser->getId(), $actualUser->getId() );
-		$this->assertSame( $expectedUser->getName(), $actualUser->getName() );
+		$store->setMentorForUser( $menteePrimary, $mentor, MentorStore::ROLE_PRIMARY );
+		$this->assertTrue( $store->hasAnyMentees( $mentor, MentorStore::ROLE_PRIMARY ) );
+		$this->assertFalse( $store->hasAnyMentees( $mentor, MentorStore::ROLE_BACKUP ) );
+
+		$store->setMentorForUser( $menteeBackup, $mentor, MentorStore::ROLE_BACKUP );
+		$this->assertTrue( $store->hasAnyMentees( $mentor, MentorStore::ROLE_PRIMARY ) );
+		$this->assertTrue( $store->hasAnyMentees( $mentor, MentorStore::ROLE_BACKUP ) );
 	}
 
 }

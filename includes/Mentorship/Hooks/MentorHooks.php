@@ -13,6 +13,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
 use GrowthExperiments\Specials\SpecialManageMentors;
+use GrowthExperiments\Specials\SpecialQuitMentorshipStructured;
 use GrowthExperiments\Specials\SpecialQuitMentorshipWikitext;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
@@ -159,6 +160,15 @@ class MentorHooks implements SpecialPage_initListHook, LocalUserCreatedHook, Pag
 			$list['EnrollAsMentor'] = [
 				'class' => SpecialEnrollAsMentor::class,
 				'services' => [
+					'GrowthExperimentsMentorProvider',
+					'GrowthExperimentsMentorWriter',
+				]
+			];
+			$list['QuitMentorship'] = [
+				'class' => SpecialQuitMentorshipStructured::class,
+				'services' => [
+					'GrowthExperimentsQuitMentorshipFactory',
+					'GrowthExperimentsMentorStore',
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsMentorWriter',
 				]
