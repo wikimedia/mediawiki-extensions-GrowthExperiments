@@ -1,5 +1,8 @@
 <template>
 	<section class="mentee-overview">
+		<div class="mentee-overview__info-box-wrapper">
+			<info-box class="mentee-overview__info-box" :legend-items="legendItems"></info-box>
+		</div>
 		<div class="mentee-overview__actions">
 			<mentee-filters
 				:data="filters"
@@ -7,7 +10,6 @@
 			></mentee-filters>
 			<div class="mentee-overview__actions__search">
 				<mentee-search @update:selected="onMenteeSearchSelection"></mentee-search>
-				<info-box :legend-items="legendItems"></info-box>
 			</div>
 		</div>
 		<data-table
@@ -242,6 +244,20 @@ module.exports = exports = {
 
 <style lang="less">
 .mentee-overview {
+	&__info-box {
+		position: absolute;
+		top: -64px;
+		right: -16px;
+
+		.skin-minerva & {
+			top: -114px;
+		}
+
+		&-wrapper {
+			position: relative;
+		}
+	}
+
 	&__actions {
 		display: flex;
 		justify-content: space-between;
