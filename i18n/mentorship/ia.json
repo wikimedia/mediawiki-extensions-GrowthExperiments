@@ -106,6 +106,7 @@
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Le definition del mentor contine un clave non expectate <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Le mentor $1 ha ja essite addite al lista de mentores",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Le mentor $1 non es in le lista de mentores",
+	"growthexperiments-mentor-writer-error-anonymous-user": "Le mentor $1 non es un usator registrate",
 	"growthexperiments-manage-mentors-title": "Gerer mentores",
 	"growthexperiments-manage-mentors-error-no-such-user": "Error: Non existe un usator con ID de $1. Isto es probabilemente un error interne.",
 	"growthexperiments-manage-mentors-auto-assigned": "Mentores automaticamente assignate",

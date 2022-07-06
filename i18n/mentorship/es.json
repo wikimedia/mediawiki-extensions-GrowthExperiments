@@ -7,6 +7,7 @@
 			"DiegoAmbrocio",
 			"Fewasser Traduce",
 			"Josuert",
+			"MarcoAurelio",
 			"OriginReboot",
 			"Warming Hearth",
 			"Zapipedia (WMF)"
@@ -100,10 +101,12 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Tu}} carga fue cambiada a \"$1\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Los aprendices se asignan de manera aleatoria a los mentores a medida que se van creando sus cuentas. Puedes gestionar el número de aprendices que te son asignados, pero ten en cuenta que algunos de ellos pueden hacer preguntas con más frecuencia que otros.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Se recomienda comenzar con el ajuste \"Promedio\" para que puedas medir tu capacidad antes de aumentar o disminuir.",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Cancelar",
 	"growthexperiments-mentor-list-missing-key": "Falta la clave <code>$1</code>",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> se espera que sea <code>$2</code>, pero es <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "La definición de mentoría contiene una clave inesperada <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "El mentor $1 ya fue agregado a la lista de mentores",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "El mentor $1 no está en la lista de mentores",
-	"growthexperiments-manage-mentors-username": "Nombre de usuario"
+	"growthexperiments-manage-mentors-username": "Nombre de usuario",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motivo"
 }

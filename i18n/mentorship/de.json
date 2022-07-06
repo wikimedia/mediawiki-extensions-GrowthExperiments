@@ -84,6 +84,8 @@
 	"growthexperiments-quit-mentorship-title": "Lotsen-Tätigkeit beenden",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Es ist traurig, dich gehen zu sehen. Um den Prozess der Beendigung der Lotsenschaft einzuleiten, musst du zunächst deinen Namen aus der [[$1|Liste der Mentoren]] entfernen. Sobald du das getan hast, kehre bitte zu dieser Seite zurück.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Der nächste Schritt bei der Beendigung der Lotsenschaft ist die Neuzuweisung deiner Mentees. Wenn du sicher bist, dass du kündigen möchtest, klicke bitte auf die Schaltfläche unten.",
+	"growthexperiments-quit-mentorship-has-mentees-pretext": "Schade, dass du gehst. Um kein Lotse mehr zu sein, musst {{GENDER:|du}} das untenstehende Formular ausfüllen. Sobald du es abschickst, werden alle deine Mentees einem anderen Lotsen zugewiesen. Dies kann nicht rückgängig gemacht werden. Das [[Special:MentorDashboard|Mentor-Dashboard]] ermöglicht es {{GENDER:|dir}} auch, die Anzahl der Mentees, denen du zugewiesen bist, zu reduzieren (oder vorübergehend keine neuen Mentees mehr anzunehmen), ohne dass du deine bestehenden Mentees verlierst.",
+	"growthexperiments-quit-mentorship-reason": "Grund",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Ja, bitte weise meine Mentees neu zu",
 	"growthexperiments-quit-mentorship-success": "Deine Mentees werden in Kürze anderen Lotsen zugewiesen.",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|Du}} hast derzeit keine Mentees.",
@@ -130,5 +132,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Die Einführungsnachricht stellt {{GENDER:|dich}} als Lotse vor. Bitte halte diese Nachricht kürzer als 240 Zeichen. Wikitext ist nicht erlaubt.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Grund",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Anmelden",
-	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Du}} bist nun als Lotse angemeldet. {{GENDER:|Du}} kannst jetzt zum [[Special:MentorDashboard|Lotsen-Dashboard]] gehen."
+	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Du}} bist nun als Lotse angemeldet. {{GENDER:|Du}} kannst jetzt zum [[Special:MentorDashboard|Lotsen-Dashboard]] gehen.",
+	"tag-mentor list change": "Änderung der Mentorenliste",
+	"tag-mentor list change-description": "Tag angewendet auf Änderungen, die über GrowthExperiments an der strukturierten Mentorenliste vorgenommen wurden"
 }
