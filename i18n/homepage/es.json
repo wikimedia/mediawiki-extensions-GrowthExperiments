@@ -34,7 +34,8 @@
 			"Josuert",
 			"Sergi0",
 			"Danniel07",
-			"McDutchie"
+			"McDutchie",
+			"OriginReboot"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -328,7 +329,7 @@
 	"growthexperiments-log-header": "Esto es un registro de los cambios hechos en la extensión GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|reclamó}} a {{GENDER:$6|$3}} como su aprendiz (anterior {{GENDER:$4|mentor|mentora}}: $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|solicita a}} $3 como {{GENDER:$6|alumno|alumna}} (no asignado previamente)",
-	"logentry-growthexperiments-setmentor": "$1 estableció a {{GENDER:$5|$7}} como el mentor de {{GENDER:$6|$3}} (previamente {{GENDER:$4|tutor|tutora}} $8)",
+	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|estableció}} a {{GENDER:$5|$7}} para la mentoría de {{GENDER:$6|$3}} (previamente {{GENDER:$4}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 estableció a {{GENDER:$5|$7}} como el mentor de {{GENDER:$6|$3}} (sin tutor previo)",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|revisó}} $4 recomendaciones de enlaces para $3: se aceptaron $5, se rechazaron $6 y se omitieron $7",
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|revisó}} una sugerencia de imagen por $3: aceptado",
