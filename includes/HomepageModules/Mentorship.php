@@ -10,6 +10,7 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use Html;
@@ -43,6 +44,9 @@ class Mentorship extends BaseModule {
 	/** @var MentorManager */
 	private $mentorManager;
 
+	/** @var MentorStatusManager */
+	private $mentorStatusManager;
+
 	/** @var GenderCache */
 	private $genderCache;
 
@@ -51,6 +55,7 @@ class Mentorship extends BaseModule {
 	 * @param Config $wikiConfig
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param MentorManager $mentorManager
+	 * @param MentorStatusManager $mentorStatusManager
 	 * @param GenderCache $genderCache
 	 */
 	public function __construct(
@@ -58,10 +63,12 @@ class Mentorship extends BaseModule {
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
 		MentorManager $mentorManager,
+		MentorStatusManager $mentorStatusManager,
 		GenderCache $genderCache
 	) {
 		parent::__construct( 'mentorship', $context, $wikiConfig, $experimentUserManager );
 		$this->mentorManager = $mentorManager;
+		$this->mentorStatusManager = $mentorStatusManager;
 		$this->genderCache = $genderCache;
 	}
 
@@ -238,6 +245,9 @@ class Mentorship extends BaseModule {
 			'GEHomepageMentorshipMentorGender' => $this->getMentorGender(),
 			'GEHomepageMentorshipEffectiveMentorName' => $effectiveMentor->getName(),
 			'GEHomepageMentorshipEffectiveMentorGender' => $this->getUserGender( $effectiveMentor ),
+			'GEHomepageMentorshipBackAt' => $this->getContext()->getLanguage()->date(
+				$this->mentorStatusManager->getMentorBackTimestamp( $mentor ) ?? ''
+			)
 		] + HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
 	}
 

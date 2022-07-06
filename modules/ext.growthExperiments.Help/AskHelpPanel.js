@@ -116,7 +116,7 @@ AskHelpPanel.prototype.initializeHelpDeskProperties = function () {
  */
 AskHelpPanel.prototype.initializeMentorProperties = function () {
 	var userName = mw.user.getName(),
-		mentorName, mentorGender, primaryMentorName, primaryMentorGender,
+		mentorName, mentorGender, primaryMentorName, primaryMentorGender, backAt,
 		mentorTalkLinkText, $mentorTalkLink;
 
 	if ( this.askSource === 'mentor-homepage' ) {
@@ -124,6 +124,7 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 		mentorGender = mw.config.get( 'GEHomepageMentorshipEffectiveMentorGender' );
 		primaryMentorName = mw.config.get( 'GEHomepageMentorshipMentorName' );
 		primaryMentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
+		backAt = mw.config.get( 'GEHomepageMentorshipBackAt' );
 	} else {
 		// mentor-helppanel
 		var mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
@@ -131,6 +132,7 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 		mentorGender = mentorData.effectiveGender;
 		primaryMentorName = mentorData.name;
 		primaryMentorGender = mentorData.gender;
+		backAt = mentorData.backAt;
 	}
 
 	this.panelTitleMessages[ 'ask-help' ] =
@@ -158,8 +160,15 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 				$( '<strong>' ).append(
 					mw.message(
 						'growthexperiments-homepage-mentorship-questionreview-header-away',
-						primaryMentorName, primaryMentorGender, mentorName, mentorGender ).parse()
+						primaryMentorName, primaryMentorGender, backAt
+					).parse()
 				)
+			),
+			$( '<p>' ).append(
+				mw.message(
+					'growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor',
+					mentorName, mentorGender
+				).parse()
 			)
 		);
 	}

@@ -8,7 +8,9 @@ use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\MentorManager;
+use Language;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
@@ -55,6 +57,9 @@ class HelpPanelHooks implements
 	/** @var MentorManager */
 	private $mentorManager;
 
+	/** @var MentorStatusManager */
+	private $mentorStatusManager;
+
 	/**
 	 * @param Config $config
 	 * @param Config $wikiConfig
@@ -62,6 +67,7 @@ class HelpPanelHooks implements
 	 * @param UserEditTracker $userEditTracker
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param MentorManager $mentorManager
+	 * @param MentorStatusManager $mentorStatusManager
 	 */
 	public function __construct(
 		Config $config,
@@ -69,7 +75,8 @@ class HelpPanelHooks implements
 		GenderCache $genderCache,
 		UserEditTracker $userEditTracker,
 		UserOptionsManager $userOptionsManager,
-		MentorManager $mentorManager
+		MentorManager $mentorManager,
+		MentorStatusManager $mentorStatusManager
 	) {
 		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
@@ -77,6 +84,7 @@ class HelpPanelHooks implements
 		$this->userEditTracker = $userEditTracker;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->mentorManager = $mentorManager;
+		$this->mentorStatusManager = $mentorStatusManager;
 	}
 
 	/**
@@ -192,8 +200,12 @@ class HelpPanelHooks implements
 		$out->addJsConfigVars( [
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
-				'wgGEHelpPanelMentorData'
-				=> $this->getMentorData( $this->wikiConfig, $out->getUser(), $out->getContext() ),
+				'wgGEHelpPanelMentorData' => $this->getMentorData(
+					$this->wikiConfig,
+					$out->getUser(),
+					$out->getContext(),
+					$out->getContext()->getLanguage()
+				),
 				// wgGEHelpPanelAskMentor needs to be here and not in getModuleData,
 				// because getting current user is not possible within ResourceLoader context
 				'wgGEHelpPanelAskMentor' =>
@@ -257,18 +269,21 @@ class HelpPanelHooks implements
 	 * @param Config $wikiConfig
 	 * @param User $user
 	 * @param MessageLocalizer $localizer
+	 * @param Language $language
 	 * @return array
 	 */
 	private function getMentorData(
 		Config $wikiConfig,
 		User $user,
-		MessageLocalizer $localizer
+		MessageLocalizer $localizer,
+		Language $language
 	): array {
 		if ( !$wikiConfig->get( 'GEHelpPanelAskMentor' ) || !$wikiConfig->get( 'GEMentorshipEnabled' ) ) {
 			return [];
 		}
 		$mentor = $this->mentorManager->getMentorForUserSafe( $user );
 		$effectiveMentor = $this->mentorManager->getEffectiveMentorForUserSafe( $user );
+
 		if ( !$mentor || !$effectiveMentor ) {
 			return [];
 		}
@@ -285,6 +300,9 @@ class HelpPanelHooks implements
 			),
 			'editCount' => $this->userEditTracker->getUserEditCount( $mentor->getUserIdentity() ),
 			'lastActive' => Mentorship::getMentorLastActive( $mentor->getUserIdentity(), $user, $localizer ),
+			'backAt' => $language->date(
+				$this->mentorStatusManager->getMentorBackTimestamp( $mentor->getUserIdentity() ) ?? ''
+			)
 		];
 	}
 
