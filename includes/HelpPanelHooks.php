@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use Config;
+use GenderCache;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -17,6 +18,8 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
+use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserOptionsManager;
 use MessageLocalizer;
 use RequestContext;
 use User;
@@ -34,6 +37,48 @@ class HelpPanelHooks implements
 
 	public const HELP_PANEL_PREFERENCES_TOGGLE = 'growthexperiments-help-panel-tog-help-panel';
 
+	/** @var Config */
+	private $config;
+
+	/** @var Config */
+	private $wikiConfig;
+
+	/** @var GenderCache */
+	private $genderCache;
+
+	/** @var UserEditTracker */
+	private $userEditTracker;
+
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
+
+	/** @var MentorManager */
+	private $mentorManager;
+
+	/**
+	 * @param Config $config
+	 * @param Config $wikiConfig
+	 * @param GenderCache $genderCache
+	 * @param UserEditTracker $userEditTracker
+	 * @param UserOptionsManager $userOptionsManager
+	 * @param MentorManager $mentorManager
+	 */
+	public function __construct(
+		Config $config,
+		Config $wikiConfig,
+		GenderCache $genderCache,
+		UserEditTracker $userEditTracker,
+		UserOptionsManager $userOptionsManager,
+		MentorManager $mentorManager
+	) {
+		$this->config = $config;
+		$this->wikiConfig = $wikiConfig;
+		$this->genderCache = $genderCache;
+		$this->userEditTracker = $userEditTracker;
+		$this->userOptionsManager = $userOptionsManager;
+		$this->mentorManager = $mentorManager;
+	}
+
 	/**
 	 * Register preference to toggle help panel.
 	 *
@@ -47,10 +92,9 @@ class HelpPanelHooks implements
 			];
 		}
 
-		$context = RequestContext::getMain();
 		// FIXME: Guidance doesn't need an opt-in anymore, let's remove this.
-		if ( SuggestedEdits::isGuidanceEnabledForAnyone( $context )
-			&& $context->getConfig()->get( 'GENewcomerTasksGuidanceRequiresOptIn' )
+		if ( SuggestedEdits::isGuidanceEnabledForAnyone( RequestContext::getMain() )
+			&& $this->config->get( 'GENewcomerTasksGuidanceRequiresOptIn' )
 		) {
 			$preferences[SuggestedEdits::GUIDANCE_ENABLED_PREF] = [
 				'type' => 'api',
@@ -95,23 +139,20 @@ class HelpPanelHooks implements
 		}
 
 		// Enable the help panel for a percentage of non-autocreated users.
-		$config = RequestContext::getMain()->getConfig();
 		if (
-			$config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&
+			$this->config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&
 			HomepageHooks::isHomepageEnabled()
 		) {
 			// HomepageHooks::onLocalUserCreated() will enable the help panel if needed
 			return;
 		}
 
-		$enablePercentage = $config->get( 'GEHelpPanelNewAccountEnablePercentage' );
+		$enablePercentage = $this->config->get( 'GEHelpPanelNewAccountEnablePercentage' );
 		if (
 			$growthOptInOptOutOverride === HomepageHooks::GROWTH_FORCE_OPTIN ||
 			( $user->isRegistered() && !$autocreated && rand( 0, 99 ) < $enablePercentage )
 		) {
-			MediaWikiServices::getInstance()
-				->getUserOptionsManager()
-				->setOption( $user, self::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
+			$this->userOptionsManager->setOption( $user, self::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 		}
 	}
 
@@ -121,9 +162,6 @@ class HelpPanelHooks implements
 		if ( !$maybeShow ) {
 			return;
 		}
-
-		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		$wikiConfig = $geServices->getGrowthWikiConfig();
 
 		$definitelyShow = HelpPanel::shouldShowHelpPanel( $out );
 
@@ -142,7 +180,7 @@ class HelpPanelHooks implements
 			// frontend code's responsibility.
 			$out->addJsConfigVars( [
 				'wgGENewcomerTasksGuidanceEnabled' => true,
-				'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle( $wikiConfig ) !== null,
+				'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle( $this->wikiConfig ) !== null,
 				'wgGELinkRecommendationsFrontendEnabled' =>
 					$out->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' )
 			] );
@@ -151,21 +189,20 @@ class HelpPanelHooks implements
 		// If the help panel would be shown but for the value of the 'action' parameter,
 		// add the email config var anyway. We'll need it if the user loads an editor via JS.
 		// Also set wgGEHelpPanelEnabled to let our JS modules know it's safe to display the help panel.
-		$mentorManager = $geServices->getMentorManager();
 		$out->addJsConfigVars( [
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
 				'wgGEHelpPanelMentorData'
-				=> $this->getMentorData( $wikiConfig, $out->getUser(), $out->getContext() ),
+				=> $this->getMentorData( $this->wikiConfig, $out->getUser(), $out->getContext() ),
 				// wgGEHelpPanelAskMentor needs to be here and not in getModuleData,
 				// because getting current user is not possible within ResourceLoader context
 				'wgGEHelpPanelAskMentor' =>
-					$wikiConfig->get( 'GEMentorshipEnabled' ) &&
-					$wikiConfig->get( 'GEHelpPanelAskMentor' ) &&
-					$mentorManager->getMentorshipStateForUser(
+					$this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
+					$this->wikiConfig->get( 'GEHelpPanelAskMentor' ) &&
+					$this->mentorManager->getMentorshipStateForUser(
 						$out->getUser()
 					) === MentorManager::MENTORSHIP_ENABLED &&
-					$mentorManager->getEffectiveMentorForUserSafe( $out->getUser() ) !== null,
+					$this->mentorManager->getEffectiveMentorForUserSafe( $out->getUser() ) !== null,
 			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 
 		if ( !$definitelyShow ) {
@@ -230,27 +267,23 @@ class HelpPanelHooks implements
 		if ( !$wikiConfig->get( 'GEHelpPanelAskMentor' ) || !$wikiConfig->get( 'GEMentorshipEnabled' ) ) {
 			return [];
 		}
-		$genderCache = MediaWikiServices::getInstance()->getGenderCache();
-		$mentorManager = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-			->getMentorManager();
-		$mentor = $mentorManager->getMentorForUserSafe( $user );
-		$effectiveMentor = $mentorManager->getEffectiveMentorForUserSafe( $user );
+		$mentor = $this->mentorManager->getMentorForUserSafe( $user );
+		$effectiveMentor = $this->mentorManager->getEffectiveMentorForUserSafe( $user );
 		if ( !$mentor || !$effectiveMentor ) {
 			return [];
 		}
 		return [
 			'name' => $mentor->getUserIdentity()->getName(),
-			'gender' => $genderCache->getGenderOf(
+			'gender' => $this->genderCache->getGenderOf(
 				$mentor->getUserIdentity(),
 				__METHOD__
 			),
 			'effectiveName' => $effectiveMentor->getUserIdentity()->getName(),
-			'effectiveGender' => $genderCache->getGenderOf(
+			'effectiveGender' => $this->genderCache->getGenderOf(
 				$effectiveMentor->getUserIdentity(),
 				__METHOD__
 			),
-			'editCount' => MediaWikiServices::getInstance()->getUserEditTracker()
-				->getUserEditCount( $mentor->getUserIdentity() ),
+			'editCount' => $this->userEditTracker->getUserEditCount( $mentor->getUserIdentity() ),
 			'lastActive' => Mentorship::getMentorLastActive( $mentor->getUserIdentity(), $user, $localizer ),
 		];
 	}

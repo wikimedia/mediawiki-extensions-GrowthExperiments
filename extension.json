@@ -215,7 +215,15 @@
 			"services": [ "MainConfig", "GrowthExperimentsWelcomeSurveyFactory", "GrowthExperimentsCampaignConfig" ]
 		},
 		"helppanel": {
-			"class": "GrowthExperiments\\HelpPanelHooks"
+			"class": "GrowthExperiments\\HelpPanelHooks",
+			"services": [
+				"MainConfig",
+				"GrowthExperimentsMultiConfig",
+				"GenderCache",
+				"UserEditTracker",
+				"UserOptionsManager",
+				"GrowthExperimentsMentorManager"
+			]
 		},
 		"homepage": {
 			"class": "GrowthExperiments\\HomepageHooks",
