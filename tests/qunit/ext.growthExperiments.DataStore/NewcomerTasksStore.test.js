@@ -26,6 +26,28 @@ const getTaskData = ( title, tasktype, pageId ) => {
 	};
 };
 
+/**
+ * Generate random task set data
+ *
+ * @param {number} n The number of tasks to generate
+ * @param {Object|undefined|null} qualityConfig the quality gate config object associated with all tasks
+ *
+ * @return {mw.libs.ge.TaskData[]}
+ */
+const randomTaskSet = ( n, qualityConfig = {} ) => {
+	const taskTypes = [
+		'copyedit',
+		'links',
+		'references',
+		'link-recommendation',
+		'image-recommendation'
+	];
+	return Array( n ).fill( 0 ).map( ( _, i ) => {
+		const taskType = taskTypes[ Math.floor( Math.random() * 100 ) % taskTypes.length ];
+		return { ...getTaskData( `task-${i}`, taskType ), ...qualityConfig };
+	} );
+};
+
 const stubApiRequests = ( sandbox, tasksStore ) => {
 	sandbox.stub( tasksStore, 'fetchMoreTasks' ).returns( $.Deferred().resolve() );
 	sandbox.stub( tasksStore, 'preloadExtraDataForUpcomingTask' ).returns( $.Deferred().resolve() );
@@ -184,6 +206,47 @@ QUnit.test( 'should set the preloaded task in the task queue', function ( assert
 	assert.deepEqual( tasksStore.getQualityGateConfig(), qualityGateConfig );
 } );
 
+QUnit.test( 'should set the task queue and update the taskCount when preloaded tasks are lesser than the api page size', function ( assert ) {
+	this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
+		taskCount: 6
+	} );
+	const tasksStore = new NewcomerTasksStore( store );
+	const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
+	const spy = this.sandbox.spy( tasksStore, 'emit' );
+	const preloadedTaskQueue = randomTaskSet( 5, qualityConfig );
+
+	assert.deepEqual( tasksStore.getTaskCount(), 6 );
+	assert.deepEqual( tasksStore.getTaskQueue(), [] );
+	assert.deepEqual( tasksStore.getQualityGateConfig(), {} );
+	assert.true( tasksStore.getCurrentTask() === undefined );
+	tasksStore.setPreloadedTaskQueue( preloadedTaskQueue );
+	assert.deepEqual( tasksStore.getTaskQueue(), preloadedTaskQueue );
+	assert.deepEqual( tasksStore.getCurrentTask(), preloadedTaskQueue[ 0 ] );
+	assert.deepEqual( tasksStore.getQualityGateConfig(), qualityConfig.qualityGateConfig );
+	assert.deepEqual( tasksStore.getTaskCount(), 5 );
+	assert.true( spy.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
+} );
+QUnit.test( 'should set the task queue and not update the taskCount when preloaded tasks are more than the api page size', function ( assert ) {
+	this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
+		taskCount: 31
+	} );
+	const tasksStore = new NewcomerTasksStore( store );
+	const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
+	const spy = this.sandbox.spy( tasksStore, 'emit' );
+	const preloadedTaskQueue = randomTaskSet( 20, qualityConfig );
+
+	assert.deepEqual( tasksStore.getTaskCount(), 31 );
+	assert.deepEqual( tasksStore.getTaskQueue(), [] );
+	assert.deepEqual( tasksStore.getQualityGateConfig(), {} );
+	assert.true( tasksStore.getCurrentTask() === undefined );
+	tasksStore.setPreloadedTaskQueue( preloadedTaskQueue );
+	assert.deepEqual( tasksStore.getTaskQueue(), preloadedTaskQueue );
+	assert.deepEqual( tasksStore.getCurrentTask(), preloadedTaskQueue[ 0 ] );
+	assert.deepEqual( tasksStore.getQualityGateConfig(), qualityConfig.qualityGateConfig );
+	assert.deepEqual( tasksStore.getTaskCount(), 31 );
+	assert.true( spy.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
+} );
+
 QUnit.test( 'should store the current states in backup with backupState', function ( assert ) {
 	const tasksStore = new NewcomerTasksStore( store );
 	stubApiRequests( this.sandbox, tasksStore );
@@ -218,25 +281,114 @@ QUnit.test( 'should restore backed up states with restoreState', function ( asse
 	assert.deepEqual( tasksStore.getTaskQueue(), taskQueue );
 } );
 
-QUnit.test( 'should pass the page ID to exclude in the API config if one is passed to fetchTasks', function ( assert ) {
-	const done = assert.async();
-	const tasksStore = new NewcomerTasksStore( store );
-	stubApiRequests( this.sandbox, tasksStore );
-	const fetchTasksStub = this.sandbox.stub( tasksStore.api, 'fetchTasks' );
-	const excludePageId = 123;
-	const tasks = [
-		getTaskData( 'exclude', 'copyedit', excludePageId ),
-		getTaskData( '1', 'copyedit' ),
-		getTaskData( '2', 'copyedit' )
-	];
-	fetchTasksStub.returns( $.Deferred().resolve( { tasks: tasks.slice( 1 ), count: 2 } ) );
-	tasksStore.fetchTasks( 'test', { excludePageId } ).then( () => {
-		assert.deepEqual( fetchTasksStub.firstCall.args[ 2 ], {
-			context: 'test',
-			excludePageIds: [ excludePageId ]
+QUnit.module( 'Actions', function () {
+	QUnit.module( 'Fetch tasks', function () {
+		QUnit.test( 'should fetch tasks and update state using API response values', function ( assert ) {
+			const done = assert.async();
+			this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
+				taskCount: 52
+			} );
+			const tasksStore = new NewcomerTasksStore( store );
+			const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
+			stubApiRequests( this.sandbox, tasksStore );
+			tasksStore.setPreloadedTaskQueue( randomTaskSet( 20, qualityConfig ) );
+			assert.deepEqual( tasksStore.getTaskCount(), 52 );
+
+			this.sandbox.stub( tasksStore.api, 'fetchTasks' ).returns( $.Deferred().resolve( {
+				hasNext: true,
+				tasks: randomTaskSet( 20, qualityConfig ),
+				count: 51
+			} ) );
+			this.sandbox.spy( tasksStore, 'emit' );
+			tasksStore.fetchTasks( 'test' ).then( () => {
+				assert.deepEqual( tasksStore.getTaskCount(), 51 );
+				assert.true( tasksStore.emit.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
+				done();
+			} );
 		} );
-		assert.deepEqual( tasksStore.getTaskQueue(), tasks.slice( 1 ) );
-		assert.strictEqual( tasksStore.getTaskCount(), 2 );
-		done();
+		QUnit.test( 'should fetch tasks and update the taskCount to the number of fetched tasks when the API returns less results than requested', function ( assert ) {
+			const done = assert.async();
+			this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
+				taskCount: 52
+			} );
+			const tasksStore = new NewcomerTasksStore( store );
+			const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
+			stubApiRequests( this.sandbox, tasksStore );
+			tasksStore.setPreloadedTaskQueue( randomTaskSet( 20, qualityConfig ) );
+			assert.deepEqual( tasksStore.getTaskCount(), 52 );
+
+			this.sandbox.stub( tasksStore.api, 'fetchTasks' ).returns( $.Deferred().resolve( {
+				hasNext: false,
+				tasks: randomTaskSet( 2, qualityConfig ),
+				count: 3
+			} ) );
+			this.sandbox.spy( tasksStore, 'emit' );
+			tasksStore.fetchTasks( 'test' ).then( () => {
+				assert.deepEqual( tasksStore.getTaskCount(), 2 );
+				assert.true( tasksStore.emit.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
+				done();
+			} );
+		} );
+
+		QUnit.test( 'should pass the page ID to exclude in the API config if one is passed to fetchTasks', function ( assert ) {
+			const done = assert.async();
+			const tasksStore = new NewcomerTasksStore( store );
+			stubApiRequests( this.sandbox, tasksStore );
+			const fetchTasksStub = this.sandbox.stub( tasksStore.api, 'fetchTasks' );
+			const excludePageId = 123;
+			const tasks = [
+				getTaskData( 'exclude', 'copyedit', excludePageId ),
+				getTaskData( '1', 'copyedit' ),
+				getTaskData( '2', 'copyedit' )
+			];
+			fetchTasksStub.returns( $.Deferred().resolve( { tasks: tasks.slice( 1 ), count: 2 } ) );
+			tasksStore.fetchTasks( 'test', { excludePageId } ).then( () => {
+				assert.deepEqual( fetchTasksStub.firstCall.args[ 2 ], {
+					context: 'test',
+					excludePageIds: [ excludePageId ]
+				} );
+				assert.deepEqual( tasksStore.getTaskQueue(), tasks.slice( 1 ) );
+				assert.strictEqual( tasksStore.getTaskCount(), 2 );
+				done();
+			} );
+		} );
+	} );
+
+	QUnit.module( 'Fetch more tasks', function () {
+		QUnit.test( 'should fetch tasks and update the taskCount to the number of fetched tasks when the API response informs there are no more results', function ( assert ) {
+			const done = assert.async();
+			this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
+				taskCount: 52
+			} );
+			const tasksStore = new NewcomerTasksStore( store );
+			const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
+			tasksStore.setPreloadedTaskQueue( randomTaskSet( 20, qualityConfig ) );
+			assert.deepEqual( tasksStore.getTaskCount(), 52 );
+
+			this.sandbox.stub( tasksStore, 'preloadExtraDataForUpcomingTask' ).returns( $.Deferred().resolve() );
+			this.sandbox.stub( tasksStore, 'fetchExtraDataForCurrentTask' ).returns( $.Deferred().resolve() );
+			this.sandbox.stub( tasksStore.api, 'fetchTasks' ).onCall( 0 ).returns( $.Deferred().resolve( {
+				hasNext: true,
+				tasks: randomTaskSet( 20, qualityConfig ),
+				count: 32
+			} ) ).onCall( 1 ).returns( $.Deferred().resolve( {
+				hasNext: false,
+				tasks: randomTaskSet( 9, qualityConfig ),
+				count: 12
+			} ) );
+
+			this.sandbox.spy( tasksStore, 'emit' );
+			tasksStore.fetchTasks( 'test' )
+				.then( () => {
+					assert.deepEqual( tasksStore.getTaskCount(), 32 );
+					assert.true( tasksStore.emit.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
+				} )
+				.then( () => tasksStore.fetchMoreTasks( 'test' ) )
+				.then( () => {
+					assert.deepEqual( tasksStore.getTaskCount(), 29 );
+					assert.true( tasksStore.emit.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
+					done();
+				} );
+		} );
 	} );
 } );

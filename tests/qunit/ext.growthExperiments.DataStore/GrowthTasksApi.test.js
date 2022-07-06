@@ -23,7 +23,7 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 		topicsMatchMode: TOPIC_MATCH_MODES.AND
 	} );
 
-	const response = {
+	const responseMock = {
 		bacthcomplete: true,
 		query: {
 			pages: []
@@ -33,7 +33,7 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 		}
 	};
 	this.sandbox.stub( mw.Api.prototype, 'get' ).returns(
-		$.Deferred().resolve( response ).promise( {
+		$.Deferred().resolve( responseMock ).promise( {
 			abort: function () {}
 		} )
 	);
@@ -41,7 +41,7 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 		action: 'query',
 		formatversion: 2,
 		generator: 'growthtasks',
-		ggtlimit: 20,
+		ggtlimit: 21,
 		ggttasktypes: 'copyedit',
 		piprop: 'name|original|thumbnail',
 		pithumbsize: 332,
@@ -51,10 +51,12 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 		ggttopics: 'art|music',
 		ggttopicsmode: 'AND'
 	};
-	api.fetchTasks( [ 'copyedit' ], topicFilters ).then( () => {
+	api.fetchTasks( [ 'copyedit' ], topicFilters ).then( ( response ) => {
 		assert.strictEqual( mw.Api.prototype.get.calledOnce, true );
 		assert.deepEqual( mw.Api.prototype.get.getCall( 0 ).args[ 0 ], expectedParams );
-		// TODO add assertions for response post processing
+		// TODO add assertions for response post processing instead of length
+		assert.strictEqual( response.count, 3 );
+		assert.strictEqual( response.hasNext, false );
 		done();
 	} );
 } );
@@ -95,7 +97,7 @@ QUnit.test( 'should send topic match mode even if topics are empty', function ( 
 		action: 'query',
 		formatversion: 2,
 		generator: 'growthtasks',
-		ggtlimit: 20,
+		ggtlimit: 21,
 		ggttasktypes: 'copyedit',
 		piprop: 'name|original|thumbnail',
 		pithumbsize: 332,

@@ -6,5 +6,6 @@
 		"create": "Help:Creating pages",
 		"image": "Help:Images"
 	},
-	"GENewcomerTasksTopicFiltersPref": "growthexperiments-homepage-se-topic-filters"
+	"GENewcomerTasksTopicFiltersPref": "growthexperiments-homepage-se-topic-filters",
+	"GESearchTaskSuggesterDefaultLimit": 20
 }
