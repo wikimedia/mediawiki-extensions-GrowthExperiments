@@ -9,7 +9,9 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use HTMLForm;
+use PermissionsError;
 use Status;
+use User;
 
 class SpecialQuitMentorshipStructured extends FormSpecialPage {
 
@@ -24,9 +26,6 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 
 	/** @var IMentorWriter */
 	private $mentorWriter;
-
-	/** @var bool Are there any mentees to reassign? */
-	private $hasMentees;
 
 	/**
 	 * @param QuitMentorshipFactory $quitMentorshipFactory
@@ -107,10 +106,6 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 		$this->requireMentorDashboardEnabled();
 		$this->requireLogin();
 
-		$this->hasMentees = $this->mentorStore->hasAnyMentees(
-			$this->getUser(),
-			MentorStore::ROLE_PRIMARY
-		);
 		parent::execute( $par );
 	}
 
@@ -118,10 +113,6 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	protected function getFormFields() {
-		if ( !$this->hasMentees ) {
-			return [];
-		}
-
 		return [
 			'reason' => [
 				'type' => 'text',
@@ -134,10 +125,6 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	protected function alterForm( HTMLForm $form ) {
-		if ( !$this->hasMentees ) {
-			$form->suppressDefaultSubmit();
-		}
-
 		$form->setSubmitText( $this->msg(
 			'growthexperiments-quit-mentorship-reassign-mentees-confirm'
 		)->text() );
@@ -147,15 +134,9 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	protected function preHtml() {
-		if ( !$this->hasMentees ) {
-			return $this->msg(
-				'growthexperiments-quit-mentorship-no-mentees'
-			)->parseAsBlock();
-		} else {
-			return $this->msg(
-				'growthexperiments-quit-mentorship-has-mentees-pretext'
-			)->parseAsBlock();
-		}
+		return $this->msg(
+			'growthexperiments-quit-mentorship-has-mentees-pretext'
+		)->parseAsBlock();
 	}
 
 	/**
@@ -177,7 +158,27 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 		return Status::newGood();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function onSuccess() {
 		$this->getOutput()->addWikiMsg( 'growthexperiments-quit-mentorship-success' );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function userCanExecute( User $user ) {
+		return $this->mentorProvider->isMentor( $this->getUser() );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function displayRestrictionError() {
+		throw new PermissionsError(
+			null,
+			[ 'growthexperiments-quit-mentorship-error-not-a-mentor' ]
+		);
 	}
 }

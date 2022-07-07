@@ -74,35 +74,21 @@ class SpecialQuitMentorshipStructuredTest extends SpecialPageTestBase {
 	/**
 	 * @covers ::preHtml
 	 * @covers ::alterForm
+	 * @dataProvider provideHasMentees
+	 * @param bool $hasMentees
 	 */
-	public function testNoMentees() {
-		$mentorUser = $this->makeUserMentor( $this->getMutableTestUser()->getUser() );
-
-		/** @var string $html */
-		list( $html, ) = $this->executeSpecialPage( '', null, null, $mentorUser );
-		$this->assertStringContainsString(
-			'growthexperiments-quit-mentorship-no-mentees',
-			$html
-		);
-		$this->assertStringNotContainsString(
-			'growthexperiments-quit-mentorship-reassign-mentees-confirm',
-			$html
-		);
-	}
-
-	/**
-	 * @covers ::preHtml
-	 * @covers ::alterForm
-	 */
-	public function testHasMenteesGet() {
+	public function testGet( bool $hasMentees ) {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$mentorStore = $geServices->getMentorStore();
 		$mentorProvider = $geServices->getMentorProvider();
 
 		$mentorUser = $this->makeUserMentor( $this->getMutableTestUser()->getUser() );
-		$mentee = $this->getMutableTestUser()->getUser();
-		$mentorStore->setMentorForUser( $mentee, $mentorUser, MentorStore::ROLE_PRIMARY );
-		$this->assertTrue( $mentorProvider->isMentor( $mentorUser ) );
+
+		if ( $hasMentees ) {
+			$mentee = $this->getMutableTestUser()->getUser();
+			$mentorStore->setMentorForUser( $mentee, $mentorUser, MentorStore::ROLE_PRIMARY );
+			$this->assertTrue( $mentorProvider->isMentor( $mentorUser ) );
+		}
 
 		/** @var string $html */
 		list( $html, ) = $this->executeSpecialPage( '', null, null, $mentorUser );
@@ -118,8 +104,10 @@ class SpecialQuitMentorshipStructuredTest extends SpecialPageTestBase {
 
 	/**
 	 * @covers ::onSubmit
+	 * @dataProvider provideHasMentees
+	 * @param bool $hasMentees
 	 */
-	public function testHasMenteesPost() {
+	public function testPost( bool $hasMentees ) {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$mentorStore = $geServices->getMentorStore();
 		$mentorProvider = $geServices->getMentorProvider();
@@ -127,7 +115,12 @@ class SpecialQuitMentorshipStructuredTest extends SpecialPageTestBase {
 		$mentorUser = $this->makeUserMentor( $this->getMutableTestUser()->getUser() );
 		$otherMentor = $this->makeUserMentor( $this->getMutableTestUser()->getUser() );
 		$mentee = $this->getMutableTestUser()->getUser();
-		$mentorStore->setMentorForUser( $mentee, $mentorUser, MentorStore::ROLE_PRIMARY );
+
+		if ( $hasMentees ) {
+			$mentorStore->setMentorForUser( $mentee, $mentorUser, MentorStore::ROLE_PRIMARY );
+		} else {
+			$mentorStore->setMentorForUser( $mentee, $otherMentor, MentorStore::ROLE_PRIMARY );
+		}
 
 		$this->assertTrue( $mentorProvider->isMentor( $mentorUser ) );
 		$this->assertTrue( $mentorProvider->isMentor( $otherMentor ) );
@@ -145,7 +138,13 @@ class SpecialQuitMentorshipStructuredTest extends SpecialPageTestBase {
 			'maxJobs' => 1,
 			'maxTime' => 3,
 		] );
-		$this->assertSame( 'job-limit', $queueResponse['reached'] );
+
+		// job is only submitted when there are any mentees assigned
+		if ( $hasMentees ) {
+			$this->assertSame( 'job-limit', $queueResponse['reached'] );
+		} else {
+			$this->assertSame( 'none-ready', $queueResponse['reached'] );
+		}
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertStringContainsString(
@@ -158,5 +157,12 @@ class SpecialQuitMentorshipStructuredTest extends SpecialPageTestBase {
 			$mentorUser->getId(),
 			$mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY )->getId()
 		);
+	}
+
+	public function provideHasMentees() {
+		return [
+			'has mentees' => [ true ],
+			'no mentees' => [ false ],
+		];
 	}
 }

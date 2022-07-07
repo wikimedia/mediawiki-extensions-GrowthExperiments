@@ -91,18 +91,21 @@ class QuitMentorship {
 	/**
 	 * Reassign mentees currently assigned to the mentor via a job
 	 *
-	 * If reassigning can happen without a job, you can use
-	 * doReassignMentees directly.
+	 * If no job is needed, use doReassignMentees directly.
 	 *
 	 * @param string $reassignMessageKey
 	 */
 	public function reassignMentees( string $reassignMessageKey ): void {
-		$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
-			new ReassignMenteesJob( [
-				'mentorId' => $this->mentor->getId(),
-				'reassignMessageKey' => $reassignMessageKey
-			] )
-		);
+		// checking if any mentees exist is a cheap operation; do not submit a job if it is going
+		// to be a no-op.
+		if ( $this->mentorStore->hasAnyMentees( $this->mentor, MentorStore::ROLE_PRIMARY ) ) {
+			$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
+				new ReassignMenteesJob( [
+					'mentorId' => $this->mentor->getId(),
+					'reassignMessageKey' => $reassignMessageKey
+				] )
+			);
+		}
 	}
 
 	/**
