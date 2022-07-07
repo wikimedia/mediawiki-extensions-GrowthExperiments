@@ -128,7 +128,7 @@ class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 	/**
 	 * @inheritDoc
 	 */
-	protected function preText() {
+	protected function preHtml() {
 		if ( $this->quitMentorshipStage === QuitMentorship::STAGE_LISTED_AS_MENTOR ) {
 			return $this->msg(
 				'growthexperiments-quit-mentorship-listed-as-mentor-pretext',

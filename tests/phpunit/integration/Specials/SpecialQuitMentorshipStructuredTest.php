@@ -91,7 +91,7 @@ class SpecialQuitMentorshipStructuredTest extends SpecialPageTestBase {
 	}
 
 	/**
-	 * @covers ::preText
+	 * @covers ::preHtml
 	 * @covers ::alterForm
 	 */
 	public function testHasMenteesGet() {

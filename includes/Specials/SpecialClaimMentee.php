@@ -63,7 +63,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 		return $this->msg( 'growthexperiments-homepage-claimmentee-title' )->text();
 	}
 
-	protected function preText() {
+	protected function preHtml() {
 		return Html::element(
 			'p',
 			[],
