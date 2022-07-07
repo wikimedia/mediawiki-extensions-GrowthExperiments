@@ -22,8 +22,10 @@ class HomepagePage extends Page {
 	get postEditDialog() { return $( '.mw-ge-postEditDrawer' ); }
 	get postEditDialogSmallTaskCard() { return $( '.mw-ge-postEditDrawer .mw-ge-small-task-card' ); }
 
-	open() {
-		super.openTitle( 'Special:Homepage' );
+	open( query, fragment ) {
+		query = query || {};
+		fragment = fragment || '';
+		super.openTitle( 'Special:Homepage', query, fragment );
 	}
 
 	async waitUntilRecentChangesItemExists( tag, title, user ) {
