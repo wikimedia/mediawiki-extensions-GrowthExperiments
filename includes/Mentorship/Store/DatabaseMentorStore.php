@@ -64,19 +64,17 @@ class DatabaseMentorStore extends MentorStore {
 	): ?UserIdentity {
 		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
 		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
-		$id = $db->selectField(
-			'growthexperiments_mentor_mentee',
-			'gemm_mentor_id',
-			[
+		$id = $db->newSelectQueryBuilder()
+			->select( 'gemm_mentor_id' )
+			->from( 'growthexperiments_mentor_mentee' )
+			->where( [
 				'gemm_mentee_id' => $mentee->getId(),
-
-				// As of now, there is no but primary mentor, but the field is in the database
-				// The role field will be useful as part of T227876.
 				'gemm_mentor_role' => $mentorRole,
-			],
-			__METHOD__,
-			$options
-		);
+			] )
+			->options( $options )
+			->caller( __METHOD__ )
+			->fetchField();
+
 		if ( $id === false ) {
 			// No mentor in the database, return null
 			return null;
@@ -114,12 +112,13 @@ class DatabaseMentorStore extends MentorStore {
 			$conds['gemm_mentor_role'] = $mentorRole;
 		}
 
-		$ids = $db->selectFieldValues(
-			'growthexperiments_mentor_mentee',
-			'gemm_mentee_id',
-			$conds,
-			__METHOD__
-		);
+		$ids = $db->newSelectQueryBuilder()
+			->select( 'gemm_mentee_id' )
+			->from( 'growthexperiments_mentor_mentee' )
+			->where( $conds )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+
 		if ( $ids === [] ) {
 			return [];
 		}
