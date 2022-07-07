@@ -8,7 +8,7 @@
 				<cdx-icon
 					class="info-icon"
 					:icon="cdxIconInfo"
-					:icon-label="$i18n( 'tbd-info' )"
+					:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' )"
 				></cdx-icon>
 			</cdx-button>
 			<div class="mentee-overview-info-box__popover-container">
