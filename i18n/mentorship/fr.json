@@ -83,6 +83,8 @@
 	"growthexperiments-quit-mentorship-title": "Quitter le tutorat",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "C'est triste de vous voir partir. Pour commencer le processus d’abandon du tutorat, vous devez d’abord retirer votre nom [[$1|de la liste des tuteurs]]. Une fois que vous l’avez fait, veuillez retourner sur cette page.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "L’étape suivante pour arrêter le tutorat est de réaffecter vos apprentis. Si vous êtes sûr de vouloir arrêter, veuillez appuyer sur le bouton ci-dessous.",
+	"growthexperiments-quit-mentorship-has-mentees-pretext": "C’est triste de {{GENDER:|}}vous voir partir. Pour quitter le tutorat, vous devez remplir le formulaire ci-dessous. Une fois que vous l’aurez soumis, tous vos apprentis seront réaffectés à un tuteur différent. Cela ne pourra pas être inversé. Autrement, le [[Special:MentorDashboard|Tableau de bord du tuteur]] vous permet également de réduire le nombre d’apprentis qui vous sont affectés (ou d’arrêter temporairement d’accepter de nouveaux apprentis), sans perdre aucun de vos apprentis existants.",
+	"growthexperiments-quit-mentorship-reason": "Motif",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Oui, réaffecter mes apprentis",
 	"growthexperiments-quit-mentorship-success": "Vos apprentis seront réaffectés à d’autres tuteurs sous peu.",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|Vous}} n’avez actuellement aucun apprenti affecté.",
@@ -129,5 +131,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Le message d’introduction vous présente en tant que tut{{GENDER:|eur|rice}}. Veuillez faire en sorte qu’il ne dépasse pas 240 caractères. Aucun wikicode n’est autorisé.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motif",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "S’inscrire",
-	"growthexperiments-mentorship-enrollasmentor-success": "Vous êtes maintenant inscrit{{GENDER:||e}} en tant que tut{{GENDER:|eur|rice}}. Vous pouvez maintenant continuer sur le [[Special:MentorDashboard|tableau de bord du tutorat]]."
+	"growthexperiments-mentorship-enrollasmentor-success": "Vous êtes maintenant inscrit{{GENDER:||e}} en tant que tut{{GENDER:|eur|rice}}. Vous pouvez maintenant continuer sur le [[Special:MentorDashboard|tableau de bord du tutorat]].",
+	"tag-mentor list change": "Modification de la liste des tuteurs",
+	"tag-mentor list change-description": "Balise appliquée aux modifications apportées à la liste structurée des tuteurs via GrowthExperiments"
 }

@@ -165,7 +165,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "查看{{GENDER:$2|您}}{{GENDER:$1|导师的}}其他对话",
 	"growthexperiments-homepage-mentorship-dialog-title": "请教{{GENDER:$2|您的}}{{GENDER:$1|导师}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "当您提出问题时，它会<strong>公开</strong>以{{GENDER:$2|您的}}用户名“$2”发布到$3，也就是{{GENDER:$1|他|她|TA}}可以找到并回答您的问题。",
-	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:|您}}主要的{{GENDER:$2|导师}}“[[User:$1|$1]]”目前不在，另一位{{GENDER:$4|导师}}“[[User:$3|$3]]”将暂时回答您的问题。",
+	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:|您}}主要的{{GENDER:$2|导师}}“[[User:$1|$1]]”目前不在，直到$3。",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|您}}{{GENDER:$1|导师的}}讨论页",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|您的}}问题现在已在您导师的讨论页上，{{GENDER:$1|您的导师}}会尽快回答您的问题。",
 	"growthexperiments-homepage-mentorship-view-question-text": "在{{GENDER:$1|导师的}}讨论页查看{{GENDER:$2|您的}}问题",

@@ -106,6 +106,7 @@
 	"growthexperiments-manage-mentors-intro-msg": "새로 온 사용자를 위한 메시지",
 	"growthexperiments-manage-mentors-remove-mentor": "제거",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "멘토 제거 이유",
+	"growthexperiments-mentorship-enrollasmentor-title": "{{GENDER:|멘토}}로 등록",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "소개 메시지",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "이유"
 }

@@ -45,6 +45,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Дадзеныя падапечных недаступныя",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Магчыма, вам яшчэ не прызначаныя падапечныя. Дадзеныя абнаўляюцца кожныя тры гадзіны.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Падапечныя не знойдзеныя",
+	"growthexperiments-mentor-dashboard-mentee-overview-table-caption": "{{GENDER:|Вашы}} падапечныя (дадзеныя абнаўляюцца кожныя 3 гадзіны)",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Змяніце фільтры, каб знайсці падапечных.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Рэсурсы",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Спіс настаўнікаў",
@@ -82,6 +83,8 @@
 	"growthexperiments-quit-mentorship-title": "Кінуць настаўніцтва",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Сумна, што вы сыходзіце. Каб пачаць працэс выхаду з настаўніцтва, спачатку трэба выдаліць сваё імя [[$1|са спісу настаўнікаў]]. Калі вы гэта зробіце, вярніцеся на гэтую старонку.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Наступны крок у выхадзе з настаўніцтва — пераназначэнне сваіх падпечных. Калі вы ўпэўненыя, што хочаце выйсці, націсніце кнопку ніжэй.",
+	"growthexperiments-quit-mentorship-has-mentees-pretext": "Сумна бачыць, што {{GENDER:|вы}} сыходзіце. Каб адмовіцца ад настаўніцтва, вам трэба запоўніць форму ніжэй. Пасля таго, як вы адправіце яе, усе вашы падапечныя будуць перададзены іншаму настаўніку. Гэта нельга адмяніць. [[Special:MentorDashboard|Панэль настаўніка]] таксама дазваляе вам замест гэтага паменшыць колькасць падапечных, да якіх вы прызначаны (або часова спыніць прыём новых падапечных), не губляючы ніводнага з вашых існуючых падапечных.",
+	"growthexperiments-quit-mentorship-reason": "Прычына",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Так, пераназначце маіх падапечных",
 	"growthexperiments-quit-mentorship-success": "Вашы падапечныя неўзабаве будуць перададзены іншым настаўнікам.",
 	"growthexperiments-quit-mentorship-no-mentees": "Зараз у {{GENDER:|вас}} няма падапечных.",
@@ -109,6 +112,7 @@
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Вызначэнне настаўніка змяшчае нечаканы ключ <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Настаўнік $1 ужо быў дададзены ў спіс настаўнікаў",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Настаўнік $1 не ў спісе настаўнікаў",
+	"growthexperiments-mentor-writer-error-anonymous-user": "Настаўнік $1 — не зарэгістраваны ўдзельнік",
 	"growthexperiments-manage-mentors-title": "Кіраванне настаўнікамі",
 	"growthexperiments-manage-mentors-error-no-such-user": "Памылка: такога ўдзельніка з ідэнтыфікатарам $1 не існуе. Магчыма, гэта ўнутраная памылка.",
 	"growthexperiments-manage-mentors-auto-assigned": "Настаўнікі, прызначаныя аўтаматычна",
@@ -127,5 +131,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Уступнае паведамленне прадстаўляе вас як {{GENDER:|настаўніка|настаўніцу}}. Калі ласка, не перавышайце 240 сімвалаў. Вікі-тэкст не дазваляецца.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Прычына",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Запісацца",
-	"growthexperiments-mentorship-enrollasmentor-success": "Зараз вы зарэгістраваны ў якасці {{GENDER:|настаўніка|настаўніцы}}. Цяпер вы можаце перайсці да [[Special:MentorDashboard|панэлі настаўніка]]."
+	"growthexperiments-mentorship-enrollasmentor-success": "Зараз вы зарэгістраваны ў якасці {{GENDER:|настаўніка|настаўніцы}}. Цяпер вы можаце перайсці да [[Special:MentorDashboard|панэлі настаўніка]].",
+	"tag-mentor list change": "Змена спісу настаўнікаў",
+	"tag-mentor list change-description": "Тэг, які прымяняецца да правак, унесеных у структураваны спіс настаўнікаў праз GrowthExperiments"
 }

@@ -79,6 +79,7 @@
 	"growthexperiments-quit-mentorship-title": "Smetti di essere un tutor",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "È triste vederti andare. Per iniziare il processo di uscita, devi rimuovere il tuo nome dalla [[$1|lista dei tutor]]. Dopodiché, torna a questa pagina.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Il prossimo passaggio per smettere di essere un tutor è quello di riassegnare i tuoi allievi. Se sei sicuro di voler uscire, premi il pulsante qui sotto.",
+	"growthexperiments-quit-mentorship-reason": "Motivo",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Sì, riassegna i miei allievi",
 	"growthexperiments-quit-mentorship-success": "I tuoi allievi saranno riassegnati ad un altro tutor a breve.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 si è {{GENDER:$1|ritirato|ritirata|ritirato/a}} dal ruolo di tutor.",
