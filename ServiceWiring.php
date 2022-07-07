@@ -217,7 +217,8 @@ return [
 			$services->getStatsdDataFactory(),
 			$growthServices->getImageRecommendationApiHandler(),
 			$growthServices->getImageRecommendationMetadataProvider(),
-			$growthServices->getAddImageSubmissionHandler()
+			$growthServices->getAddImageSubmissionHandler(),
+			$services->getMainConfig()->get( 'GEDeveloperSetup' )
 		);
 	},
 

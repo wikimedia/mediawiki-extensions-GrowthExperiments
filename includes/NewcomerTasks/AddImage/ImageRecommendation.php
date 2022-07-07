@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use GrowthExperiments\NewcomerTasks\Recommendation;
+use JsonSerializable;
 use MediaWiki\Linker\LinkTarget;
 use TitleValue;
 
@@ -10,7 +11,7 @@ use TitleValue;
  * Value object for machine-generated image recommendations. An image recommendation consists
  * of a set of suggested ImageRecommendationImages for a given wiki page.
  */
-class ImageRecommendation implements Recommendation {
+class ImageRecommendation implements Recommendation, JsonSerializable {
 
 	/** @var LinkTarget */
 	private $title;
@@ -86,4 +87,8 @@ class ImageRecommendation implements Recommendation {
 		];
 	}
 
+	/** @inheritDoc */
+	public function jsonSerialize() {
+		return $this->toArray();
+	}
 }

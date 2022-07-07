@@ -96,14 +96,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '13' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
 
-		$provider = new ServiceImageRecommendationProvider(
-			$titleFactory,
-			$this->createMock( IBufferingStatsdDataFactory::class ),
-			$apiHandler,
-			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
-			2
-		);
+		$provider->setMaxSuggestionsToProcess( 2 );
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '14' ), $taskType );
 		$this->assertInstanceOf( ImageRecommendation::class, $recommendation );
 		$this->assertSame( '14', $recommendation->getTitle()->getText() );
@@ -114,6 +107,10 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertSame( ImageRecommendationImage::SOURCE_COMMONS, $recommendation->getImages()[1]->getSource() );
 		$this->assertSame( [], $recommendation->getImages()[0]->getProjects() );
 		$this->assertSame( 'x', $recommendation->getDatasetId() );
+
+		$provider->setMaxSuggestionsToProcess( 1 );
+		$recommendation = $provider->get( new TitleValue( NS_MAIN, '14' ), $taskType );
+		$this->assertCount( 1, $recommendation->getImages() );
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '15' ), $taskType );
 		$this->assertInstanceOf( ImageRecommendation::class, $recommendation );

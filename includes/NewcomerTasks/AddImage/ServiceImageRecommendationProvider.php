@@ -15,7 +15,8 @@ use Wikimedia\Assert\Assert;
 
 /**
  * Provides image recommendations via the Image Suggestion API.
- * @see https://image-suggestion-api.wmcloud.org/?doc
+ * @see mvp API: https://image-suggestion-api.wmcloud.org/?doc
+ * @see production API: https://wikitech.wikimedia.org/wiki/Image-suggestion
  * @see https://phabricator.wikimedia.org/project/profile/5253/
  */
 class ServiceImageRecommendationProvider implements ImageRecommendationProvider {
@@ -35,6 +36,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/** @var AddImageSubmissionHandler */
 	private $imageSubmissionHandler;
 
+	/** @var bool */
+	private $geDeveloperSetup;
+
 	/** @var int */
 	private $maxSuggestionsToProcess;
 
@@ -44,6 +48,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param ImageRecommendationApiHandler $apiHandler
 	 * @param ImageRecommendationMetadataProvider $metadataProvider Image metadata provider
 	 * @param AddImageSubmissionHandler $imageSubmissionHandler
+	 * @param bool $geDeveloperSetup
 	 * @param int $maxSuggestionsToProcess Maximum number of valid suggestions to process and return with
 	 * an ImageRecommendation object.
 	 */
@@ -53,6 +58,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		ImageRecommendationApiHandler $apiHandler,
 		ImageRecommendationMetadataProvider $metadataProvider,
 		AddImageSubmissionHandler $imageSubmissionHandler,
+		bool $geDeveloperSetup = false,
 		int $maxSuggestionsToProcess = 1
 	) {
 		$this->titleFactory = $titleFactory;
@@ -60,6 +66,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$this->apiHandler = $apiHandler;
 		$this->metadataProvider = $metadataProvider;
 		$this->imageSubmissionHandler = $imageSubmissionHandler;
+		$this->geDeveloperSetup = $geDeveloperSetup;
 		$this->maxSuggestionsToProcess = $maxSuggestionsToProcess;
 	}
 
@@ -70,7 +77,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$titleText = $title->getPrefixedDBkey();
 		$titleTextSafe = strip_tags( $titleText );
-		if ( !$title->exists() ) {
+		if ( !$title->exists() && !$this->geDeveloperSetup ) {
 			// These errors might show up to the end user, but provide no useful information;
 			// they are merely there to support debugging. So we keep them English-only to
 			// to reduce the translator burden.
@@ -213,6 +220,14 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		// If $status is bad but $images is not empty (fetching some but not all images failed),
 		// we can just ignore the errors, they won't be a problem for the recommendation workflow.
 		return new ImageRecommendation( $title, $images, $datasetId );
+	}
+
+	/**
+	 * @param int $maxSuggestionsToProcess
+	 * @return void
+	 */
+	public function setMaxSuggestionsToProcess( int $maxSuggestionsToProcess ) {
+		$this->maxSuggestionsToProcess = $maxSuggestionsToProcess;
 	}
 
 	/**

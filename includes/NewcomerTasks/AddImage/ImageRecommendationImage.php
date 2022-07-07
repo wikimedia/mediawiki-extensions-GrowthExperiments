@@ -2,13 +2,14 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
+use JsonSerializable;
 use MediaWiki\Linker\LinkTarget;
 use TitleValue;
 
 /**
  * Represents an individual suggested image within an ImageRecommendation.
  */
-class ImageRecommendationImage {
+class ImageRecommendationImage implements JsonSerializable {
 
 	/**
 	 * The recommendation is based on the image property (P18 or similar) of the
@@ -110,4 +111,8 @@ class ImageRecommendationImage {
 		];
 	}
 
+	/** @inheritDoc */
+	public function jsonSerialize() {
+		return $this->toArray();
+	}
 }
