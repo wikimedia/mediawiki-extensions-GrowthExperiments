@@ -150,7 +150,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		foreach ( $suggestionData as $suggestion ) {
 			$validationError = ImageRecommendationDataValidator::validate( $titleTextSafe, $suggestion );
 			if ( !$validationError->isGood() ) {
-				return $validationError;
+				$status->merge( $validationError );
+				continue;
 			}
 
 			$filename = File::normalizeTitle( $suggestion->getFilename() )->getDBkey();
