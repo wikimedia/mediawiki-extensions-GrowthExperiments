@@ -35,25 +35,32 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/** @var AddImageSubmissionHandler */
 	private $imageSubmissionHandler;
 
+	/** @var int */
+	private $maxSuggestionsToProcess;
+
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ImageRecommendationApiHandler $apiHandler
 	 * @param ImageRecommendationMetadataProvider $metadataProvider Image metadata provider
 	 * @param AddImageSubmissionHandler $imageSubmissionHandler
+	 * @param int $maxSuggestionsToProcess Maximum number of valid suggestions to process and return with
+	 * an ImageRecommendation object.
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		ImageRecommendationApiHandler $apiHandler,
 		ImageRecommendationMetadataProvider $metadataProvider,
-		AddImageSubmissionHandler $imageSubmissionHandler
+		AddImageSubmissionHandler $imageSubmissionHandler,
+		int $maxSuggestionsToProcess = 1
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->apiHandler = $apiHandler;
 		$this->metadataProvider = $metadataProvider;
 		$this->imageSubmissionHandler = $imageSubmissionHandler;
+		$this->maxSuggestionsToProcess = $maxSuggestionsToProcess;
 	}
 
 	/** @inheritDoc */
@@ -107,7 +114,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			$this->apiHandler->getSuggestionDataFromApiResponse( $data ),
 			$this->metadataProvider,
 			$this->imageSubmissionHandler,
-			$taskType->getSuggestionFilters()
+			$taskType->getSuggestionFilters(),
+			$this->maxSuggestionsToProcess
 		);
 
 		$this->statsdDataFactory->timing(
@@ -128,6 +136,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
 	 * @param AddImageSubmissionHandler $imageSubmissionHandler
 	 * @param array $suggestionFilters
+	 * @param int $maxSuggestionsToProcess Maximum number of valid suggestions to process and return
+	 * with an ImageRecommendation object.
 	 * @return ImageRecommendation|StatusValue
 	 * @throws \MWException
 	 */
@@ -137,7 +147,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		array $suggestionData,
 		ImageRecommendationMetadataProvider $metadataProvider,
 		AddImageSubmissionHandler $imageSubmissionHandler,
-		array $suggestionFilters = []
+		array $suggestionFilters = [],
+		int $maxSuggestionsToProcess = 1
 	) {
 		$titleTextSafe = strip_tags( $titleText );
 		if ( count( $suggestionData ) === 0 ) {
@@ -148,6 +159,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$datasetId = '';
 		$status = StatusValue::newGood();
 		foreach ( $suggestionData as $suggestion ) {
+			if ( count( $images ) >= $maxSuggestionsToProcess ) {
+				break;
+			}
 			$validationError = ImageRecommendationDataValidator::validate( $titleTextSafe, $suggestion );
 			if ( !$validationError->isGood() ) {
 				$status->merge( $validationError );
