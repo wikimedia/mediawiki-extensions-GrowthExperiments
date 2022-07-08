@@ -132,6 +132,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "Demandar a {{GENDER:$2|tu}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Quando tu pone un question, illo es <strong>placiate publicamente</strong> sub {{GENDER:$2|tu}} nomine de usator \"$2\", sur $3, le pagina ubi {{GENDER:$1|ille|illa|$1}} pote trovar tu question e responder.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "Tu {{GENDER:$2|mentor}} primari, \"[[User:$1|$1]]\", es absente usque al $3.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "Un altere {{GENDER:$2|mentor}}, \"[[User:$1|$1]]\", respondera intertanto a tu questiones.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "le pagina de discussion de {{GENDER:$2|tu}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Tu}} question es ora presente sur le pagina de discussion de tu mentor, ubi {{GENDER:$1|ille|illa|le mentor}} te respondera le plus tosto possibile.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Vider {{GENDER:$2|tu}} question sur le pagina de discussion de tu {{GENDER:$1|mentor}}.",
