@@ -11,7 +11,7 @@
 			<cdx-icon
 				class="arrow-icon"
 				:icon="cdxIconPrevious"
-				:icon-label="$i18n( 'tbd-prev' )"
+				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label' )"
 			></cdx-icon>
 		</cdx-button>
 		<cdx-button
@@ -22,7 +22,7 @@
 			<cdx-icon
 				class="arrow-icon"
 				:icon="cdxIconNext"
-				:icon-label="$i18n( 'tbd-next' )"
+				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label' )"
 			></cdx-icon>
 		</cdx-button>
 	</div>

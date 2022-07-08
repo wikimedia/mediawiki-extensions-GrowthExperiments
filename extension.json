@@ -1665,7 +1665,15 @@
 				"growthexperiments-mentor-dashboard-mentee-overview-info-headline",
 				"growthexperiments-mentor-dashboard-mentee-overview-info-text",
 				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline",
-				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star"
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label",
+				"growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label",
+				"growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label",
+				"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label",
+				"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label",
+				"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label",
+				"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label"
 			],
 			"dependencies": [
 				"mediawiki.api",

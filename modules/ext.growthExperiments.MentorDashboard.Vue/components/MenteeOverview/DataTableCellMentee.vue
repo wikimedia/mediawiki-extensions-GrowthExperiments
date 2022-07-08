@@ -1,13 +1,21 @@
 <template>
 	<div class="data-table-cell-mentee">
-		<cdx-icon
-			class="star-icon"
-			:icon="value.isStarred ? cdxIconUnStar : cdxIconStar"
-			:icon-label="$i18n( 'tbd-favorite' )"
+		<cdx-button
+			type="quiet"
 			@click="toggleStarred"
-		></cdx-icon>
+		>
+			<cdx-icon
+				class="star-icon"
+				:icon="value.isStarred ? cdxIconUnStar : cdxIconStar"
+				:icon-label="value.isStarred ?
+					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label' ) :
+					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label' )
+				"
+			></cdx-icon>
+		</cdx-button>
 		<div class="user-info">
 			<a
+				class="username"
 				:class="{ new: !value.userPageExists }"
 				:href="usernameHref"
 			>
@@ -21,13 +29,14 @@
 </template>
 
 <script>
-const { CdxIcon } = require( '@wikimedia/codex' );
+const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const { cdxIconStar, cdxIconUnStar } = require( '../icons.json' );
 
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
+		CdxButton,
 		CdxIcon
 	},
 	props: {
@@ -55,6 +64,7 @@ module.exports = exports = {
 
 <style lang="less">
 @import '../variables.less';
+@import '../../../utils/mixins.less';
 
 @mentee-table-last-seen-font-size: 12px;
 
@@ -62,8 +72,6 @@ module.exports = exports = {
 	display: flex;
 
 	.star-icon {
-		min-width: 32px;
-		min-height: 32px;
 		opacity: 0.66;
 
 		> svg {
@@ -72,8 +80,9 @@ module.exports = exports = {
 	}
 
 	.user-info {
-		padding: 0 8px;
 		flex: 2;
+		padding-right: 8px;
+		.text-ellipsis();
 
 		.last-seen {
 			font-size: @mentee-table-last-seen-font-size;

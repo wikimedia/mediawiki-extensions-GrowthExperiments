@@ -7,7 +7,10 @@
 			<cdx-icon
 				class="expand-icon"
 				:icon="showFiltersForm ? cdxIconCollapse : cdxIconExpand"
-				:icon-label="$i18n( 'tbd-expand' )"
+				:icon-label="showFiltersForm ?
+					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label' ) :
+					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label' )
+				"
 			></cdx-icon>
 		</cdx-button>
 		<div v-if="showFiltersForm" class="mentee-filters__container">
