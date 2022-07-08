@@ -96,6 +96,14 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '13' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
 
+		$provider = new ServiceImageRecommendationProvider(
+			$titleFactory,
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$apiHandler,
+			$metadataProvider,
+			$this->createMock( AddImageSubmissionHandler::class ),
+			2
+		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '14' ), $taskType );
 		$this->assertInstanceOf( ImageRecommendation::class, $recommendation );
 		$this->assertSame( '14', $recommendation->getTitle()->getText() );
@@ -541,6 +549,10 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			'filename' => 'Foo.png',
 			'source' => [ 'details' => $validSource ],
 		];
+		$secondValidSuggestion = [
+			'filename' => 'bar.png',
+			'source' => [ 'details' => $validSource ]
+		];
 
 		return [
 			'no page' => [ [ 'pages' => [] ], null ],
@@ -577,7 +589,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 					[ 'source' => [ 'details' => [ 'dataset_id' => true ] + $validSource ] ] + $validSuggestion,
 				] ],
 			] ], null ],
-			'valid' => [ [ 'pages' => [ [ 'suggestions' => [ $validSuggestion ] ] ] ], [
+			'valid' => [ [ 'pages' => [ [ 'suggestions' => [ $validSuggestion, $secondValidSuggestion ] ] ] ], [
 				'titleNamespace' => 0,
 				'titleText' => 'Foo',
 				'images' => [
