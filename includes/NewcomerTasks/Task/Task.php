@@ -107,6 +107,8 @@ class Task implements JsonUnserializable {
 
 	/** @inheritDoc */
 	protected function toJsonArray(): array {
+		# T312589 explicitly calling jsonSerialize() will be unnecessary
+		# in the future.
 		return [
 			'taskType' => $this->getTaskType()->jsonSerialize(),
 			'title' => [ $this->getTitle()->getNamespace(), $this->getTitle()->getDBkey() ],
@@ -120,10 +122,15 @@ class Task implements JsonUnserializable {
 
 	/** @inheritDoc */
 	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
-		$taskType = $unserializer->unserialize( $json['taskType'], TaskType::class );
+		# T312589: In the future JsonCodec will take care of unserializing
+		# the values in the $json array itself.
+		$taskType = $json['taskType'] instanceof TaskType ?
+			$json['taskType'] :
+			$unserializer->unserialize( $json['taskType'], TaskType::class );
 		$title = new TitleValue( $json['title'][0], $json['title'][1] );
-		$topics = array_map( static function ( array $topic ) use ( $unserializer ) {
-			return $unserializer->unserialize( $topic, Topic::class );
+		$topics = array_map( static function ( $topic ) use ( $unserializer ) {
+			return $topic instanceof Topic ? $topic :
+				$unserializer->unserialize( $topic, Topic::class );
 		}, $json['topics'] );
 
 		$task = new static( $taskType, $title, $json['token'] ?? null );
