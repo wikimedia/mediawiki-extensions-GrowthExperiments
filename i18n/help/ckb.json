@@ -91,7 +91,7 @@
 	"tag-help_panel_question": "پرسیاری تەختەی یارمەتی",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "دەستکارییە پێشنیارکراوەکان",
 	"growthexperiments-help-panel-button-header-ask-help": "لە پرسگا بپرسە",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "داوا لە مامۆستاکەت بکە یارمەتیت بدات",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "داوا لە {{GENDER:$1|مامۆستاکەت}} بکە {{GENDER:|یارمەتیت}} بدات",
 	"growthexperiments-help-panel-button-header-general-help": "یارمەتیی دەستکاریکردنی گشتی",
 	"growthexperiments-help-panel-button-subheader-general-help": "بەدوای وەڵامەکان و پڕخوێنەرترین وتارەکان بگەڕێ",
 	"growthexperiments-help-panel-button-subheader-ask-help": "وەڵام لە خۆبەخشانی دیکە وەربگرە",

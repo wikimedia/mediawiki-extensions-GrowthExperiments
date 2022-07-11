@@ -10,7 +10,8 @@
 			"Movses",
 			"Piramidion",
 			"Vlad5250",
-			"Ата"
+			"Ата",
+			"Пан Хаунд"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Привіт}}, {{bidi:$1}}!",
@@ -342,6 +343,8 @@
 	"action-setmentor": "Встановити наставника користувача",
 	"right-managementors": "Керування списком наставників",
 	"action-managementors": "керування списком наставників",
+	"right-enrollasmentor": "Запишіться як наставник",
+	"action-enrollasmentor": "запишіться як наставник",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Дізнайтесь більше про це пропоноване редагування",
 	"growthexperiments-homepage-suggestededits-more-info": "Детальніше про пропоновані редагування",
 	"growthexperiments-homepage-welcome-notice-header": "Вітаємо на {{GENDER:$1|вашій}} домашній сторінці!",

@@ -20,6 +20,7 @@
 	"growthexperiments-edit-config-pretext-unprivileged": "이 양식을 사용하면 권한이 있는 사용자가 [[:mw:Special:MyLanguage/Growth|성장]] 팀 기능의 구성을 편집할 수 있습니다.",
 	"growthexperiments-edit-config-feedback-headline": "이 폼에 관한 아이디어나 질문이 있으십니까?",
 	"growthexperiments-edit-config-feedback-cta": "의견 남기기",
+	"growthexperiments-edit-config-error-invalid-title": "구성 페이지가 제대로 구성되지 않았습니다",
 	"growthexperiments-edit-config-edit-summary": "편집 요약",
 	"growthexperiments-edit-config-config-changed": "구성이 변경되었습니다. 변경 사항이 적용되려면 몇 분 정도 기다려야 할 수 있습니다.",
 	"growthexperiments-edit-config-return-to-form": "편집 양식으로 [[Special:EditGrowthConfig|다시 돌아갈]] 수 있습니다.",

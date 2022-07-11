@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Aram",
 			"GoRaN",
 			"ئارام بکر"
@@ -13,7 +14,7 @@
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "پێش ئەوەی داشبۆردی مامۆستا بەکاربھێندرێت، سەرەتا پێویستە پێڕستی مامۆستا ڕێک بخرێت. بۆ ئەو مەبەستە بەڕێوەبەرێک دەتوانێت [[Special:EditGrowthConfig]] بەکاربێنێت.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|قوتابییەکانت}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "لەخوارەوە {{GENDER:|قوتابییەکانت}} ببینە. بۆ گۆڕینی ئەو قوتابییانەی کە پیشان دراون پاڵێوەرەکان بەکاربێنە.",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "کێ لە خشتەکەتدایە؟",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "کێ لە {{GENDER:|خشتەکەتدایە}}؟",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "ئەم خشتەیە ئەو قوتابییانەت پیشان دەدات کە ھەژمارەکانیان لەم دوو ھەفتەیەی ڕابردوو دروست کراون یان ئەو ئەوانەی کە لە شەش مانگی ڕابردوو دەستکارییان کردووە، و [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|پەڕەی سەرەکیی تازەکاریان چالاک کردووە]]. زانیارییەکان ھەر سێ سەعات جارێک نوێ دەکرێنەوە.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "ھێماکان",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "قوتابییە دیاریکراوەکان",
@@ -42,7 +43,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "ھیچ قوتابییەک نەدۆزرایەوە",
 	"growthexperiments-mentor-dashboard-resources-headline": "سەرچاوەکان",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "پێڕستی مامۆستاکان",
-	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "چۆنیەتیی خۆناساندن وەک مامۆستا",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "چۆنیەتیی {{GENDER:|خۆناساندنت}} وەک {{GENDER:|مامۆستا}}",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "چۆنیەتیی داواکردنی قوتابییەک",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "ئامرازەکانی گەشە",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "ڕێکخستنەکان",
