@@ -16,7 +16,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "I {{GENDER:|tuoi}} allievi",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Vedi i {{GENDER:|tuoi}} allievi sotto. Usa i filtri per impostare quali allievi visualizzare.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "La tabella richiede JavaScript. Abilita JavaScript per poter utilizzare questo modulo.",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Chi è nella tua tabella?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Chi è nella {{GENDER:|tua}} tabella?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Questa tabella mostra soltanto gli allievi la cui utenza è stata creata nelle ultime due settimane o hanno effettuato delle modifiche negli ultimi sei mesi, e hanno la [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|pagina principale di nuovo arrivato attivata]]. I dati sono aggiornati ogni tre ore.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Allievi preferiti",

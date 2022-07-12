@@ -317,6 +317,7 @@
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|あなたの}}新しい{{GENDER:$2|指導役}}についてもっと詳しく知る",
 	"right-setmentor": "利用者の指導役を任命",
 	"action-setmentor": "利用者の指導役の任命",
+	"right-managementors": "メンターのリストを管理する",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "このお勧めの編集の詳細",
 	"growthexperiments-homepage-suggestededits-more-info": "お勧めの編集に関する詳細",
 	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|あなた}}のホームページへようこそ！",

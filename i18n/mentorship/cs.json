@@ -39,7 +39,11 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktivní před $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "neznámé",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Ukázat $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label": "Ohvězdičkovat nováčka",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 z $2",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label": "Další stránka výsledků",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "Předchozí stránka výsledků",
+	"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label": "Odhvězdičkovat nováčka",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Data o nováčcích jsou nedostupná",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Možná ještě nemáte žádné nováčky přiřazené. Data se aktualizují každé tři hodiny.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Žádní nováčci nebyli nalezeni",
@@ -120,7 +124,11 @@
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Uživatel|Uživatelka}} [[User:$1|$1]] již není {{GENDER:$1|mentorem|mentorkou}}.",
 	"growthexperiments-manage-mentors-return-back": "Můžete se [[Special:ManageMentors|vrátit]] k seznamu mentorů.",
 	"growthexperiments-mentorship-enrollasmentor-title": "Zapsat se jako {{GENDER:|mentor|mentorka}}",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Úvodní zpráva",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Pomocí úvodní zprávy se {{GENDER:|můžete}} představit jako {{GENDER:|mentor|mentorka}}. Prosím, udržujte text kratší, než 240 znaků. Ve zprávě není povolen žádný wikitext.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Důvod",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Zapsat se",
-	"tag-mentor list change": "Změna seznamu mentorů"
+	"growthexperiments-mentorship-enrollasmentor-success": "Úspěšně jste se {{GENDER:|zapsal|zapsala}} jako {{GENDER:|mentor|mentorka}}. Nyní {{GENDER:|můžete}} pokračovat na [[Special:MentorDashboard|nástěnku mentora]].",
+	"tag-mentor list change": "Změna seznamu mentorů",
+	"tag-mentor list change-description": "Značka aplikovaná na změny strukturovaného seznamu mentorů, které byly uloženy prostřednictvím rozšíření GrowthExperiments."
 }
