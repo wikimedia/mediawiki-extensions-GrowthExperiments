@@ -294,6 +294,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 님이 {{GENDER:$6|$3}} 님을 자신의 멘티로 {{GENDER:$2|설정했습니다}} (이전 멘토 없음)",
 	"logentry-growthexperiments-setmentor": "$1 님이 {{GENDER:$5|$7}} 님을 {{GENDER:$6|$3}} 님의 멘토로 {{GENDER:$2|설정했습니다}} (이전 {{GENDER:$4|멘토}}는 $8 님)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 님이 {{GENDER:$5|$7}} 님을 {{GENDER:$6|$3}} 님의 멘토로 {{GENDER:$2|설정했습니다}} (이전 멘토 없음)",
+	"log-action-filter-growthexperiments": "GrowthExperiments 이벤트 유형:",
 	"log-action-filter-growthexperiments-claimmentee": "멘티 변경",
 	"log-action-filter-growthexperiments-setmentor": "멘토 변경",
 	"log-action-filter-growthexperiments-addlink": "링크 제안",
