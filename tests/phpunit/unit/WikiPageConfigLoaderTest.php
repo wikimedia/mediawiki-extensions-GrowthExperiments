@@ -35,7 +35,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 	/** @var array */
 	private $oldWgUrlProtocols;
 
-	public function setUp(): void {
+	protected function setUp(): void {
 		// work around wfParseUrl using a global
 		global $wgUrlProtocols;
 		parent::setUp();
@@ -43,7 +43,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 		$wgUrlProtocols = [ 'http://', 'https://' ];
 	}
 
-	public function tearDown(): void {
+	protected function tearDown(): void {
 		global $wgUrlProtocols;
 		parent::tearDown();
 		$wgUrlProtocols = $this->oldWgUrlProtocols;
