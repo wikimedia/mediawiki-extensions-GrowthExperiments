@@ -522,7 +522,7 @@
 	"growthexperiments-addimage-reason-commons": "Une des images liées à l’élément Wikidata pour cet article.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|}}Vous avez complété toutes les suggestions d’images d’aujourd'hui.\n\nAjustez {{GENDER:|}}vos niveaux de difficulté pour voir d’autres types de modification ou revenez demain pour plus de suggestions d’image.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "C’est bon",
-	"growthexperiments-addimage-caption-warning-tooshort": "Les légendes doivent être de $1 caractère{{PLURAL:$1||s}} ou plus.",
+	"growthexperiments-addimage-caption-warning-tooshort": "Les légendes doivent comporter au moins $1 caractère{{PLURAL:$1||s}}.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|}}Vous avez terminé toutes les suggestions de lien d’aujourd’hui.\n\nAjustez {{GENDER:|}}vos niveaux de difficulté pour voir d’autres types de modification ou revenez demain pour plus de suggestions de lien.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "C’est bon",
 	"growthexperiments-homepage-mentorship-optin-header": "Mentor pour la modification",
