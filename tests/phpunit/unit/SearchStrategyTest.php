@@ -175,7 +175,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 			} elseif ( $query2->getTopic()->getId() === $id ) {
 				$this->assertSame( $query2->getTopic()->getId(), $id );
 			} else {
-				$this->assertTrue( false, "$id not found in query." );
+				$this->fail( "$id not found in query." );
 			}
 		}
 	}
@@ -188,7 +188,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 			} elseif ( $query2->getTaskType()->getId() === $id ) {
 				$this->assertSame( $query2->getTaskType()->getId(), $id );
 			} else {
-				$this->assertTrue( false, "$id not found in query." );
+				$this->fail( "$id not found in query." );
 			}
 		}
 	}
@@ -205,7 +205,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		}, array_values( $queries ) );
 		foreach ( $expectedQueryStrings as $expectedQueryString ) {
 			if ( !in_array( $expectedQueryString, $queryStrings, true ) ) {
-				$this->assertTrue( false, "$expectedQueryString not found in queries:\n"
+				$this->fail( "$expectedQueryString not found in queries:\n"
 					. var_export( $queryStrings, true ) );
 			}
 		}
