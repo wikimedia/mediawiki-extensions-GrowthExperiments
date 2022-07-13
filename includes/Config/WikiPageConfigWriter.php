@@ -99,13 +99,13 @@ class WikiPageConfigWriter {
 					// In case config loader returned a status object, log details that could
 					// be useful for debugging.
 					$this->logger->error(
-						__METHOD__ . ' failed to load config, Status object returned',
+						__METHOD__ . ' failed to load config from ' . $this->configPage . ', Status object returned',
 						[
 							'errorArray' => $config->getErrors()
 						]
 					);
 				}
-				throw new InvalidArgumentException( __METHOD__ . ' failed to load config' );
+				throw new InvalidArgumentException( __METHOD__ . ' failed to load config from ' . $this->configPage );
 			}
 			return $config;
 		} else {
