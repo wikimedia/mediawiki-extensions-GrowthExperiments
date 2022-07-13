@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Revi",
-			"Ykhwong"
+			"Ykhwong",
+			"Bluehill",
+			"Ellif"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|이것은 무엇인가요?]])",
@@ -13,6 +15,9 @@
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|안녕하세요}} $2님,\n\n$1 IP에서 등록된 {{SITENAME}} 계정에 이메일을 추가해 주셔서 감사합니다.\n\n아래 버튼을 클릭하면 이 이메일을 귀하의 계정 \"$2\"와(과) 연결한다는 것을 확인하게 됩니다:\n\n$3\n\n참고: 이 확인 코드는 <strong>$4 에 만료됩니다.</strong>\n\n감사합니다,\n\n{{SITENAME}}\n\n----\n\n당신이 이 계정을 등록하지 않았거나 다른 이유로 이메일 주소 확인을 취소하려면 다음 취소 링크를 클릭하십시오:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "이메일 주소 확인",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|안녕하세요}} $2님,\n\n$1 IP에서 등록된 {{SITENAME}} 계정에 이메일을 추가해 주셔서 감사합니다.\n\n아래 버튼을 클릭하면 이 이메일을 귀하의 계정 \"$2\"와(과) 연결한다는 것을 확인하게 됩니다:\n\n$3\n\n참고: 이 확인 코드는 $4 에 만료됩니다.\n\n감사합니다,\n\n{{SITENAME}}\n\n----\n\n당신이 이 계정을 등록하지 않았거나 다른 이유로 이메일 주소 확인을 취소하려면 다음 취소 링크를 클릭하십시오:\n\n$5",
+	"growthexperiments-signupcampaign-title": "기부해 주셔서 감사합니다! 지금 위키백과를 개선하는 편집자 공동체에 참여하세요",
+	"growthexperiments-signupcampaign-body": "위키백과 편집은 링크 추가나 단어 변경처럼 간단할 수 있습니다. 계정을 만든 후 관심있는 {{GENDER:|내}} 주제의 문서에 대한 제안을 받으세요!",
+	"growthexperiments-signupcampaign-bullet1": "관심있는 제안 문서",
 	"growthexperiments-signupcampaign-bullet2": "숙력된 편집자에게 도움 요청하기",
 	"growthexperiments-signupcampaign-bullet3": "작고 쉬운 편집으로 시작"
 }

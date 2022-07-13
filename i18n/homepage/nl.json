@@ -14,7 +14,8 @@
 			"Nickthijssen1994",
 			"Robin van der Vliet",
 			"Romaine",
-			"Rots61"
+			"Rots61",
+			"Dnlweijers"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -418,5 +419,6 @@
 	"growthexperiments-addimage-summary-label": "Samenvatting",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|andere}}",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Begrepen",
+	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|U}} heeft alle linksuggesties van vandaag voltooid.\n\nVerander {{GENDER:|uw}} moeilijkheidsgraden om andere soorten bewerkingen te zien of kom morgen terug voor meer linksuggesties.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Begrepen"
 }

@@ -12,7 +12,8 @@
 			"McDutchie",
 			"Nickthijssen1994",
 			"RadioAzureus",
-			"Siebrand"
+			"Siebrand",
+			"Effeietsanders"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Schakel het hulppaneel voor bewerkers in",
@@ -30,7 +31,10 @@
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|U hebt}} een bewerking gepubliceerd. Bedankt en ga zo door!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|U hebt}} een bewerking bewaard. Bedankt en ga zo door!",
 	"growthexperiments-help-panel-postedit-success-message-notsaved": "Bedankt voor het bekijken van suggesties. Ga door!",
+	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "Alle beschikbare artikelen waar afbeeldingen aan kunnen worden toegevoegd zijn voor vandaag voltooid. Goed gedaan!",
 	"growthexperiments-help-panel-postedit-header": "Volgende stappen",
+	"growthexperiments-help-panel-postedit-subheader-image-recommendation": "Meer manieren om te bewerken",
+	"growthexperiments-help-panel-postedit-subheader-link-recommendation": "Meer manieren om te bewerken",
 	"growthexperiments-help-panel-postedit-subheader": "Bewerk een andere suggestie:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Volgende suggestie:",
 	"growthexperiments-help-panel-postedit-footer": "Bekijk meer voorgestelde bewerkingen",
