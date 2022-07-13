@@ -47,7 +47,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 		$mockListener = $this->createNoOpMock( TaskSetListener::class, [ 'run' ] );
 		foreach ( $calls as $i => $call ) {
 			$mockedMethods = [ 'suggest', 'filter' ];
-			$suggester = $this->createNoOpAbstractMock( TaskSuggester::class, $mockedMethods );
+			$suggester = $this->createNoOpMock( TaskSuggester::class, $mockedMethods );
 			foreach ( $mockedMethods as $method ) {
 				if ( $call[$method] ) {
 					$suggester->expects( $this->once() )

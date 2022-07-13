@@ -14,9 +14,7 @@ use MediaWikiUnitTestCase;
  */
 class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 	private function getMockWikiPageConfig() {
-		return $this->getMockBuilder( WikiPageConfig::class )
-			->disableOriginalConstructor()
-			->getMock();
+		return $this->createMock( WikiPageConfig::class );
 	}
 
 	/**
@@ -47,7 +45,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 		$wikiConfig = $this->getMockWikiPageConfig();
 		$wikiConfig->expects( $this->never() )->method( 'getWithFlags' );
 
-		$globalVarConfig = $this->getMockBuilder( GlobalVarConfig::class )->getMock();
+		$globalVarConfig = $this->createMock( GlobalVarConfig::class );
 		$globalVarConfig->expects( $this->exactly( 2 ) )->method( 'get' )
 			->withConsecutive(
 				[ 'GEWikiConfigEnabled' ],

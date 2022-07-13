@@ -73,18 +73,13 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 	 * @return TitleFactory|MockObject
 	 */
 	private function getMockTitleFactory( array $map ) {
-		$factory = $this->getMockBuilder( TitleFactory::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'newFromLinkTarget' ] )
-			->getMock();
+		$factory = $this->createNoOpMock( TitleFactory::class, [ 'newFromLinkTarget' ] );
 		$factory->method( 'newFromLinkTarget' )->willReturnCallback(
 			function ( LinkTarget $target ) use ( $map ) {
 				$this->assertArrayHasKey( $target->getNamespace() . ':' . $target->getDBkey(), $map );
 				$data = $map[$target->getNamespace() . ':' . $target->getDBkey()];
-				$title = $this->getMockBuilder( Title::class )
-					->disableOriginalConstructor()
-					->onlyMethods( [ 'exists', 'getNamespace', 'getDBkey', 'getArticleID' ] )
-					->getMock();
+				$title = $this->createNoOpMock( Title::class,
+					[ 'exists', 'getNamespace', 'getDBkey', 'getArticleID' ] );
 				$title->method( 'exists' )->willReturn( $data[0] );
 				$title->method( 'getNamespace' )->willReturn( $target->getNamespace() );
 				$title->method( 'getDBkey' )->willReturn( $target->getDBkey() );
@@ -98,10 +93,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 	 * @return LinkBatchFactory|MockObject
 	 */
 	protected function getMockLinkBatchFactory() {
-		return $this->getMockBuilder( LinkBatchFactory::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'newLinkBatch' ] )
-			->getMock();
+		return $this->createNoOpMock( LinkBatchFactory::class, [ 'newLinkBatch' ] );
 	}
 
 	/**
@@ -109,9 +101,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 	 * @return IDatabase|MockObject
 	 */
 	protected function getMockDatabase( array $map ) {
-		$dbr = $this->getMockBuilder( IDatabase::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$dbr = $this->createMock( IDatabase::class );
 		$dbr->expects( $this->exactly( 4 ) )
 			->method( 'select' )
 			->with( 'page_restrictions' )

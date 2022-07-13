@@ -24,7 +24,7 @@ class LinkRecommendationFilterTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf(
 			LinkRecommendationFilter::class,
 			new LinkRecommendationFilter(
-				$this->getMockBuilder( LinkRecommendationStore::class )->disableOriginalConstructor()->getMock() )
+				$this->createMock( LinkRecommendationStore::class ) )
 		);
 	}
 
@@ -33,13 +33,9 @@ class LinkRecommendationFilterTest extends MediaWikiUnitTestCase {
 	 */
 	public function testFilter() {
 		$taskSet = $this->getTaskSet();
-		$linkRecommendationStore = $this->getMockBuilder( LinkRecommendationStore::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$linkRecommendationStore = $this->createMock( LinkRecommendationStore::class );
 		$linkRecommendationStore->method( 'getByLinkTarget' )->willReturn(
-			$this->getMockBuilder( LinkRecommendation::class )
-			->disableOriginalConstructor()
-			->getMock()
+			$this->createMock( LinkRecommendation::class )
 		);
 		$linkRecommendationFilter = new LinkRecommendationFilter( $linkRecommendationStore );
 		$filteredTaskSet = $linkRecommendationFilter->filter( $taskSet );
@@ -52,9 +48,7 @@ class LinkRecommendationFilterTest extends MediaWikiUnitTestCase {
 	 */
 	public function testFilterMarkInvalid() {
 		$taskSet = $this->getTaskSet();
-		$linkRecommendationStore = $this->getMockBuilder( LinkRecommendationStore::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$linkRecommendationStore = $this->createMock( LinkRecommendationStore::class );
 		$linkRecommendationStore->method( 'getByLinkTarget' )->willReturn( null );
 		$linkRecommendationFilter = new LinkRecommendationFilter( $linkRecommendationStore );
 		$filteredTaskSet = $linkRecommendationFilter->filter( $taskSet );

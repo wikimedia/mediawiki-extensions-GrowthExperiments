@@ -11,7 +11,6 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
 use Status;
 use Wikimedia\Rdbms\IResultWrapper;
@@ -38,9 +37,9 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 					true,
 					MentorWeightManager::WEIGHT_NORMAL
 				),
-				$this->getLogPagerMock(),
-				$this->getMentorStoreMock(),
-				$this->getUserFactoryMock()
+				$this->createMock( LogPager::class ),
+				$this->createMock( MentorStore::class ),
+				$this->createMock( UserFactory::class )
 			)
 		);
 	}
@@ -49,9 +48,8 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 * @covers ::wasMentorChanged
 	 */
 	public function testWasMentorChangedSuccess() {
-		$logPagerMock = $this->getLogPagerMock();
-		$resultMock = $this->getMockBuilder( IResultWrapper::class )
-			->getMock();
+		$logPagerMock = $this->createMock( LogPager::class );
+		$resultMock = $this->createMock( IResultWrapper::class );
 		$resultMock->method( 'fetchRow' )->willReturn( [ 'foo' ] );
 		$logPagerMock->method( 'getResult' )->willReturn( $resultMock );
 		$changeMentor = new ChangeMentor(
@@ -66,8 +64,8 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				MentorWeightManager::WEIGHT_NORMAL
 			),
 			$logPagerMock,
-			$this->getMentorStoreMock(),
-			$this->getUserFactoryMock()
+			$this->createMock( MentorStore::class ),
+			$this->createMock( UserFactory::class )
 		);
 		$this->assertNotFalse( $changeMentor->wasMentorChanged() );
 	}
@@ -87,9 +85,9 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'',
 				MentorWeightManager::WEIGHT_NORMAL
 			),
-			$this->getLogPagerMock(),
-			$this->getMentorStoreMock(),
-			$this->getUserFactoryMock()
+			$this->createMock( LogPager::class ),
+			$this->createMock( MentorStore::class ),
+			$this->createMock( UserFactory::class )
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
@@ -117,9 +115,9 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				true,
 				MentorWeightManager::WEIGHT_NORMAL
 			),
-			$this->getLogPagerMock(),
-			$this->getMentorStoreMock(),
-			$this->getUserFactoryMock()
+			$this->createMock( LogPager::class ),
+			$this->createMock( MentorStore::class ),
+			$this->createMock( UserFactory::class )
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
@@ -143,9 +141,9 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				true,
 				MentorWeightManager::WEIGHT_NORMAL
 			),
-			$this->getLogPagerMock(),
-			$this->getMentorStoreMock(),
-			$this->getUserFactoryMock()
+			$this->createMock( LogPager::class ),
+			$this->createMock( MentorStore::class ),
+			$this->createMock( UserFactory::class )
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'SameMentor', 3 );
@@ -170,9 +168,9 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				true,
 				MentorWeightManager::WEIGHT_NORMAL
 			),
-			$this->getLogPagerMock(),
-			$this->getMentorStoreMock(),
-			$this->getUserFactoryMock()
+			$this->createMock( LogPager::class ),
+			$this->createMock( MentorStore::class ),
+			$this->createMock( UserFactory::class )
 		);
 		$status = $changeMentor->execute( $this->getUserMock( 'SameMentor', 3 ), 'test' );
 		$this->assertFalse( $status->isOK() );
@@ -187,33 +185,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 */
 	private function getUserMock( string $name, int $id ) {
 		return new UserIdentityValue( $id, $name );
-	}
-
-	/**
-	 * @return MockObject|LogPager
-	 */
-	private function getLogPagerMock() {
-		return $this->getMockBuilder( LogPager::class )
-			->disableOriginalConstructor()
-			->getMock();
-	}
-
-	/**
-	 * @return MockObject|MentorStore
-	 */
-	private function getMentorStoreMock() {
-		return $this->getMockBuilder( MentorStore::class )
-			->disableOriginalConstructor()
-			->getMockForAbstractClass();
-	}
-
-	/**
-	 * @return MockObject|UserFactory
-	 */
-	private function getUserFactoryMock() {
-		return $this->getMockBuilder( UserFactory::class )
-			->disableOriginalConstructor()
-			->getMock();
 	}
 
 }

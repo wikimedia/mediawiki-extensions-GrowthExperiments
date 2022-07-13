@@ -2,17 +2,18 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\User\UserIdentityValue;
-use PHPUnit\Framework\MockObject\MockObject;
 use SearchEngineFactory;
 use StatusValue;
 
@@ -31,15 +32,15 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 	 * @param StatusValue|null $expectedError
 	 */
 	public function testCreate( $taskTypes, $topics, $expectedError ) {
-		$taskTypeHandlerRegistry = $this->getTaskTypeHandlerRegistry();
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskTypes, $topics );
-		$searchStrategy = $this->getSearchStrategy();
-		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
-		$searchEngineFactory = $this->getSearchEngineFactory();
-		$linkBatchFactory = $this->getLinkBatchFactory();
-		$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory( $taskTypeHandlerRegistry,
-			$configurationLoader, $searchStrategy, $newcomerTasksUserOptionsLookup,
-			$searchEngineFactory, $linkBatchFactory, $this->getStatsdFactory() );
+		$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory(
+			$this->createMock( TaskTypeHandlerRegistry::class ),
+			$this->getNewcomerTasksConfigurationLoader( $taskTypes, $topics ),
+			$this->createNoOpMock( SearchStrategy::class ),
+			$this->createNoOpMock( NewcomerTasksUserOptionsLookup::class ),
+			$this->createNoOpMock( SearchEngineFactory::class ),
+			$this->createNoOpMock( LinkBatchFactory::class ),
+			$this->createMock( IBufferingStatsdDataFactory::class )
+		);
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );
@@ -49,34 +50,6 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 		} else {
 			$this->assertInstanceOf( LocalSearchTaskSuggester::class, $taskSuggester );
 		}
-	}
-
-	/**
-	 * @return TaskTypeHandlerRegistry|MockObject
-	 */
-	private function getTaskTypeHandlerRegistry() {
-		return $this->createMock( TaskTypeHandlerRegistry::class );
-	}
-
-	/**
-	 * @return SearchEngineFactory|MockObject
-	 */
-	private function getSearchEngineFactory() {
-		return $this->createNoOpMock( SearchEngineFactory::class );
-	}
-
-	/**
-	 * @return LinkBatchFactory|MockObject
-	 */
-	private function getLinkBatchFactory() {
-		return $this->createNoOpMock( LinkBatchFactory::class );
-	}
-
-	/**
-	 * @return IBufferingStatsdDataFactory|MockObject
-	 */
-	private function getStatsdFactory() {
-		return $this->createMock( IBufferingStatsdDataFactory::class );
 	}
 
 }

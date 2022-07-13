@@ -56,9 +56,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	 * @return WikiPageConfigLoader|\PHPUnit\Framework\MockObject\MockObject
 	 */
 	private function getWikiConfigLoaderMock( bool $loadExpected = true ) {
-		$configLoader = $this->getMockBuilder( WikiPageConfigLoader::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$configLoader = $this->createMock( WikiPageConfigLoader::class );
 		$configLoader->expects( $loadExpected ? $this->once() : $this->never() )
 			->method( 'load' )
 			->willReturn( [
@@ -76,15 +74,11 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		array $expectedMentorList,
 		string $expectedSummary
 	) {
-		$status = $this->getMockBuilder( Status::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$status = $this->createMock( Status::class );
 		$status->method( 'isOK' )
 			->willReturn( true );
 
-		$writer = $this->getMockBuilder( WikiPageConfigWriter::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$writer = $this->createMock( WikiPageConfigWriter::class );
 		$writer->expects( $this->once() )
 			->method( 'setVariable' )
 			->with( StructuredMentorWriter::CONFIG_KEY, $expectedMentorList );
@@ -93,9 +87,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			->with( $expectedSummary, false, StructuredMentorWriter::CHANGE_TAG )
 			->willReturn( $status );
 
-		$factory = $this->getMockBuilder( WikiPageConfigWriterFactory::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$factory = $this->createMock( WikiPageConfigWriterFactory::class );
 		$factory->expects( $this->once() )
 			->method( 'newWikiPageConfigWriter' )
 			->willReturn( $writer );

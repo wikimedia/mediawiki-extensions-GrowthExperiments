@@ -58,16 +58,12 @@ class QuitMentorshipTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetStage( int $expectedStage, bool $isMentor, bool $hasMentees ) {
 		$mentor = new UserIdentityValue( 123, 'Mentor' );
-		$mentorProvider = $this->getMockBuilder( MentorProvider::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$mentorProvider = $this->createMock( MentorProvider::class );
 		$mentorProvider->expects( $this->once() )
 			->method( 'isMentor' )
 			->with( $mentor )
 			->willReturn( $isMentor );
-		$mentorStore = $this->getMockBuilder( MentorStore::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$mentorStore = $this->createMock( MentorStore::class );
 		$mentorStore->expects( $isMentor ? $this->never() : $this->once() )
 			->method( 'hasAnyMentees' )
 			->with( $mentor, MentorStore::ROLE_PRIMARY )
@@ -106,22 +102,16 @@ class QuitMentorshipTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 2, 'Mentee 2' ),
 		];
 
-		$msg = $this->getMockBuilder( \Message::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$msg = $this->createMock( \Message::class );
 		$msg->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'text' )
 			->willReturn( 'foo' );
-		$context = $this->getMockBuilder( IContextSource::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$context = $this->createMock( IContextSource::class );
 		$context->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'msg' )
 			->with( 'foo', $mentor->getName() )
 			->willReturn( $msg );
-		$mentorManager = $this->getMockBuilder( MentorManager::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$mentorManager = $this->createMock( MentorManager::class );
 		$mentorManager->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'getRandomAutoAssignedMentor' )
 			->withConsecutive( ...array_map(
@@ -131,22 +121,16 @@ class QuitMentorshipTest extends MediaWikiUnitTestCase {
 				$mentees
 			) )
 			->willReturn( $newMentor );
-		$mentorStore = $this->getMockBuilder( MentorStore::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$mentorStore = $this->createMock( MentorStore::class );
 		$mentorStore->expects( $this->once() )
 			->method( 'getMenteesByMentor' )
 			->with( $mentor, MentorStore::ROLE_PRIMARY )
 			->willReturn( $mentees );
-		$changeMentor = $this->getMockBuilder( ChangeMentor::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$changeMentor = $this->createMock( ChangeMentor::class );
 		$changeMentor->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'execute' )
 			->with( $newMentor, 'foo' );
-		$changeMentorFactory = $this->getMockBuilder( ChangeMentorFactory::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$changeMentorFactory = $this->createMock( ChangeMentorFactory::class );
 		$changeMentorFactory->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'newChangeMentor' )
 			->withConsecutive( ...array_map(

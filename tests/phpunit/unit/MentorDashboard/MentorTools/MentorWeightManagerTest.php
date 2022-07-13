@@ -14,12 +14,6 @@ use MediaWikiUnitTestCase;
  */
 class MentorWeightManagerTest extends MediaWikiUnitTestCase {
 
-	private function getMockUserOptionsManager() {
-		return $this->getMockBuilder( UserOptionsManager::class )
-			->disableOriginalConstructor()
-			->getMock();
-	}
-
 	private function getTestMentor(): UserIdentity {
 		return new UserIdentityValue(
 			123,
@@ -31,10 +25,10 @@ class MentorWeightManagerTest extends MediaWikiUnitTestCase {
 	 * @covers ::getWeightForMentor
 	 * @dataProvider dataProviderGet
 	 */
-	public function testGet( $weight ) {
+	public function testGet( int $weight ) {
 		$mentor = $this->getTestMentor();
 
-		$userOptionsManager = $this->getMockUserOptionsManager();
+		$userOptionsManager = $this->createMock( UserOptionsManager::class );
 		$userOptionsManager->expects( $this->once() )
 			->method( 'getIntOption' )
 			->with( $mentor, MentorWeightManager::MENTORSHIP_WEIGHT_PREF )
@@ -61,7 +55,7 @@ class MentorWeightManagerTest extends MediaWikiUnitTestCase {
 	public function testInvalidGet() {
 		$mentor = $this->getTestMentor();
 
-		$userOptionsManager = $this->getMockUserOptionsManager();
+		$userOptionsManager = $this->createMock( UserOptionsManager::class );
 		$userOptionsManager->expects( $this->once() )
 			->method( 'getIntOption' )
 			->with( $mentor, MentorWeightManager::MENTORSHIP_WEIGHT_PREF )
@@ -80,7 +74,7 @@ class MentorWeightManagerTest extends MediaWikiUnitTestCase {
 	public function testSet() {
 		$mentor = $this->getTestMentor();
 
-		$userOptionsManager = $this->getMockUserOptionsManager();
+		$userOptionsManager = $this->createMock( UserOptionsManager::class );
 		$userOptionsManager->expects( $this->once() )
 			->method( 'setOption' )
 			->with( $mentor, MentorWeightManager::MENTORSHIP_WEIGHT_PREF, 4 );
@@ -97,7 +91,7 @@ class MentorWeightManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testInvalidSet() {
 		$this->expectException( InvalidArgumentException::class );
-		$manager = new MentorWeightManager( $this->getMockUserOptionsManager() );
+		$manager = new MentorWeightManager( $this->createMock( UserOptionsManager::class ) );
 		$manager->setWeightForMentor( $this->getTestMentor(), 123 );
 	}
 }

@@ -46,14 +46,10 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 		bool $expected,
 		string $message
 	) {
-		$out = $this->getMockBuilder( \OutputPage::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$out = $this->createMock( \OutputPage::class );
 		$out->method( 'getTitle' )
 			->willReturn( $title );
-		$request = $this->getMockBuilder( \WebRequest::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$request = $this->createMock( \WebRequest::class );
 		$request->method( 'getVal' )
 			->with( 'action' )
 			->willReturn( $action );
@@ -63,9 +59,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 		$user = $this->createPartialMock( \User::class, [ 'getId' ] );
 		$user->method( 'getId' )
 			->willReturn( $userId );
-		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->method( 'getOption' )
 			->with( $this->anything(), HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE )
 			->willReturn( $userHelpPanelPref );

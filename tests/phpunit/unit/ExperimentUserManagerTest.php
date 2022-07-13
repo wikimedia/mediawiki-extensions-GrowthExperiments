@@ -21,9 +21,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetVariantFallbackToDefault() {
 		$user = new UserIdentityValue( 0, __CLASS__ );
-		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->method( 'getOption' )
 			->willReturn( '' );
 		$this->assertEquals( 'Foo', $this->getExperimentUserManager(
@@ -45,9 +43,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	public function testGetVariantWithUserAssigned() {
 		$user1 = new UserIdentityValue( 1, __CLASS__ );
 		$user2 = new UserIdentityValue( 2, __CLASS__ );
-		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->method( 'getOption' )
 			->with( $this->anything(), VariantHooks::USER_PREFERENCE )
 			->willReturnCallback( static function ( UserIdentity $user, string $optionName ) {
@@ -81,9 +77,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	public function testVariantAssignmentByPlatform(
 		string $message, string $expectedVariant, array $serviceOptions, ?string $platform = null
 	) {
-		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->method( 'getOption' )
 			->willReturn( '' );
 		$this->assertEquals(
@@ -172,9 +166,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	): ExperimentUserManager {
 		return new ExperimentUserManager(
 			$options,
-			$this->getMockBuilder( UserOptionsManager::class )
-				->disableOriginalConstructor()
-				->getMock(),
+			$this->createMock( UserOptionsManager::class ),
 			$lookup,
 			$platform
 		);

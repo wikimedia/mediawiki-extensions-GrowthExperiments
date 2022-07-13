@@ -447,10 +447,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @return TitleFactory|MockObject
 	 */
 	protected function getMockTitleFactory( array $map, bool $allowOther = true ) {
-		$titleFactory = $this->getMockBuilder( TitleFactory::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'newFromText' ] )
-			->getMock();
+		$titleFactory = $this->createNoOpMock( TitleFactory::class, [ 'newFromText' ] );
 		$titleFactory->method( 'newFromText' )->willReturnCallback(
 			function ( string $titleText, int $defaultNamespace = 0 ) use ( $map, $allowOther ) {
 				if ( array_key_exists( $titleText, $map ) ) {
@@ -472,10 +469,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @return Title|MockObject
 	 */
 	protected function getMockTitle( string $titleText, int $namespace = 0 ) {
-		$title = $this->getMockBuilder( Title::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'getNamespace', 'inNamespace', 'getDBkey' ] )
-			->getMock();
+		$title = $this->createMock( Title::class );
 		$title->method( 'getNamespace' )->willReturn( $namespace );
 		$title->method( 'inNamespace' )->willReturnCallback(
 			static function ( $inNamespace ) use ( $namespace ) {
@@ -509,10 +503,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @return WikiPageConfigLoader|MockObject
 	 */
 	protected function getMockWikiPageConfigLoader( $map ) {
-		$loader = $this->getMockBuilder( WikiPageConfigLoader::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'load' ] )
-			->getMock();
+		$loader = $this->createNoOpMock( WikiPageConfigLoader::class, [ 'load' ] );
 		$loader->expects( $this->atMost( 1 ) )
 			->method( 'load' )
 			->willReturnCallback( function ( LinkTarget $configPage ) use ( $map ) {
@@ -544,10 +535,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @return Collation|MockObject
 	 */
 	protected function getMockCollation() {
-		$collation = $this->getMockBuilder( Collation::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'getSortKey' ] )
-			->getMockForAbstractClass();
+		$collation = $this->createNoOpMock( Collation::class, [ 'getSortKey' ] );
 		$collation->method( 'getSortKey' )->willReturnArgument( 0 );
 		return $collation;
 	}

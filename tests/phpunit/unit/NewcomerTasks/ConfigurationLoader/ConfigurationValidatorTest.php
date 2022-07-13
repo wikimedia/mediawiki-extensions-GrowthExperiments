@@ -64,11 +64,11 @@ class ConfigurationValidatorTest extends MediaWikiUnitTestCase {
 	 * @return ConfigurationValidator
 	 */
 	private function getValidator() {
-		$messageLocalizer = $this->createNoOpAbstractMock( MessageLocalizer::class, [ 'msg' ] );
-		$collation = $this->createNoOpMock( Collation::class );
-		$titleParser = $this->createNoOpAbstractMock( TitleParser::class );
-
-		return new ConfigurationValidator( $messageLocalizer, $collation, $titleParser );
+		return new ConfigurationValidator(
+			$this->createNoOpMock( MessageLocalizer::class, [ 'msg' ] ),
+			$this->createNoOpMock( Collation::class ),
+			$this->createNoOpMock( TitleParser::class )
+		);
 	}
 
 	private function assertGood( StatusValue $statusValue ) {

@@ -624,18 +624,15 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @return TaskTypeHandlerRegistry|MockObject
 	 */
 	private function getMockTaskTypeHandlerRegistry() {
-		$taskTypeHandlerRegistry = $this->createNoOpMock( TaskTypeHandlerRegistry::class,
-			[ 'getByTaskType' ] );
-		$configurationValidator = $this->createMock( ConfigurationValidator::class );
-		$titleParser = $this->createNoOpMock( TitleParser::class );
-		$handler = $this->createMock( TemplateBasedTaskSubmissionHandler::class );
-		$taskTypeHandler = new TemplateBasedTaskTypeHandler(
-			$configurationValidator,
-			$handler,
-			$titleParser
+		$registry = $this->createNoOpMock( TaskTypeHandlerRegistry::class, [ 'getByTaskType' ] );
+		$registry->method( 'getByTaskType' )->willReturn(
+			new TemplateBasedTaskTypeHandler(
+				$this->createMock( ConfigurationValidator::class ),
+				$this->createMock( TemplateBasedTaskSubmissionHandler::class ),
+				$this->createNoOpMock( TitleParser::class )
+			)
 		);
-		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
-		return $taskTypeHandlerRegistry;
+		return $registry;
 	}
 
 	/**
@@ -645,10 +642,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @return HttpRequestFactory|MockObject
 	 */
 	protected function getMockRequestFactory( array $requests ) {
-		$requestFactory = $this->getMockBuilder( HttpRequestFactory::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'create', 'getUserAgent' ] )
-			->getMock();
+		$requestFactory = $this->createNoOpMock( HttpRequestFactory::class,
+			[ 'create', 'getUserAgent' ] );
 		$requestFactory->method( 'getUserAgent' )->willReturn( 'Foo' );
 
 		$numRequests = count( $requests );
@@ -683,10 +678,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					$response = json_encode( $request['response'] );
 				}
 
-				$request = $this->getMockBuilder( MWHttpRequest::class )
-					->disableOriginalConstructor()
-					->onlyMethods( [ 'execute', 'getContent' ] )
-					->getMock();
+				$request = $this->createNoOpMock( MWHttpRequest::class, [ 'execute', 'getContent' ] );
 				$request->method( 'execute' )->willReturn( $status );
 				$request->method( 'getContent' )->willReturn( $response );
 				return $request;
@@ -698,15 +690,9 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @return TitleFactory|MockObject
 	 */
 	protected function getMockTitleFactory() {
-		$titleFactory = $this->getMockBuilder( TitleFactory::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'newFromText' ] )
-			->getMock();
+		$titleFactory = $this->createNoOpMock( TitleFactory::class, [ 'newFromText' ] );
 		$titleFactory->method( 'newFromText' )->willReturnCallback( function ( $dbKey, $ns ) {
-			$title = $this->getMockBuilder( Title::class )
-				->disableOriginalConstructor()
-				->onlyMethods( [ 'getNamespace', 'getDBkey' ] )
-				->getMock();
+			$title = $this->createNoOpMock( Title::class, [ 'getNamespace', 'getDBkey' ] );
 			$title->method( 'getNamespace' )->willReturn( $ns );
 			$title->method( 'getDBkey' )->willReturn( $dbKey );
 			return $title;
@@ -744,11 +730,12 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @return LinkBatchFactory|MockObject
 	 */
 	private function getMockLinkBatchFactory( array $pageIds = [] ) {
-		$linkBatchFactory = $this->createNoOpMock( LinkBatchFactory::class, [ 'newLinkBatch' ] );
 		$linkBatch = $this->createNoOpMock( LinkBatch::class, [ 'execute' ] );
-		$linkBatchFactory->method( 'newLinkBatch' )->willReturn( $linkBatch );
 		$linkBatch->method( 'execute' )->willReturn( array_combine( $pageIds, $pageIds ) );
-		return $linkBatchFactory;
+
+		$factory = $this->createNoOpMock( LinkBatchFactory::class, [ 'newLinkBatch' ] );
+		$factory->method( 'newLinkBatch' )->willReturn( $linkBatch );
+		return $factory;
 	}
 
 	/**

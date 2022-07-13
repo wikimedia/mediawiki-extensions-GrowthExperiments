@@ -9,7 +9,6 @@ use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use RequestContext;
 use Wikimedia\TestingAccessWrapper;
 
@@ -27,7 +26,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
 		$titleFactory = MediaWikiServices::getInstance()->getTitleFactory();
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
-		$mentorManager = $this->getMockMentorManager();
+		$mentorManager = $this->createMock( MentorManager::class );
 		$mentorUser = $this->getTestSysop()->getUser();
 		$mentor = new Mentor( $mentorUser, '*', '', true, MentorWeightManager::WEIGHT_NORMAL );
 		$mentorManager->method( 'getMentorForUser' )->willReturn( $mentor );
@@ -50,14 +49,6 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			->getMockForAbstractClass();
 		$spy = TestingAccessWrapper::newFromObject( $module );
 		$this->assertTrue( $mentorUser->getTalkPage()->equals( $spy->targetTitle ) );
-	}
-
-	/**
-	 * @return MockObject|MentorManager
-	 */
-	private function getMockMentorManager(): MentorManager {
-		return $this->getMockBuilder( MentorManager::class )
-			->getMockForAbstractClass();
 	}
 
 }

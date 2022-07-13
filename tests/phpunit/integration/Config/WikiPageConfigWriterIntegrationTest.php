@@ -118,7 +118,7 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testSetVariable( string $variable, $wikiConfig, $setVariable, $setValue, $expectedValue ) {
 		/** @var IConfigValidator|MockObject $validator */
-		$validator = $this->createNoOpAbstractMock( IConfigValidator::class, [ 'validateVariable' ] );
+		$validator = $this->createNoOpMock( IConfigValidator::class, [ 'validateVariable' ] );
 		/** @var WikiPageConfigLoader|MockObject $loader */
 		$loader = $this->createNoOpMock( WikiPageConfigLoader::class, [ 'load' ] );
 		$loader->method( 'load' )->willReturn( $wikiConfig );
@@ -177,7 +177,7 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testVariableExists( array $wikiConfig, $variable, $expectedValue ) {
 		/** @var IConfigValidator|MockObject $validator */
-		$validator = $this->createNoOpAbstractMock( IConfigValidator::class, [ 'validateVariable' ] );
+		$validator = $this->createNoOpMock( IConfigValidator::class, [ 'validateVariable' ] );
 		/** @var WikiPageConfigLoader|MockObject $loader */
 		$loader = $this->createNoOpMock( WikiPageConfigLoader::class, [ 'load' ] );
 		$loader->method( 'load' )->willReturn( $wikiConfig );

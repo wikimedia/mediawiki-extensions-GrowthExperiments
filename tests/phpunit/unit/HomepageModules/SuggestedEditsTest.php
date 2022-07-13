@@ -73,66 +73,42 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			'GEHomepageSuggestedEditsEnabled' => true,
 			'GEHomepageSuggestedEditsEnableTopics' => false
 		] );
-		$outputMock = $this->getMockBuilder( OutputPage::class )
-			->disableOriginalConstructor()
-			->setMethodsExcept()
-			->getMock();
-		$languageMock = $this->getMockBuilder( Language::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$languageMock = $this->createMock( Language::class );
 		$languageMock->method( 'getCode' )
 			->willReturn( 'el' );
 		$languageMock->method( 'getDir' )
 			->willReturn( 'ltr' );
-		$userMock = $this->getMockBuilder( User::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$userMock = $this->createMock( User::class );
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->method( 'getBoolOption' )
 			->with( $userMock, SuggestedEdits::ACTIVATED_PREF )
 			->willReturn( true );
-		$requestMock = $this->getMockBuilder( WebRequest::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'getCheck' ] )
-			->getMock();
+		$requestMock = $this->createNoOpMock( WebRequest::class, [ 'getCheck' ] );
 		$requestMock->method( 'getCheck' )
 			->with( 'resetTaskCache' )
 			->willReturn( false );
 
-		$contextMock = $this->getMockBuilder( IContextSource::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$contextMock = $this->createMock( IContextSource::class );
 		$contextMock->method( 'getConfig' )
 			->willReturn( $config );
 		$contextMock->method( 'getUser' )
 			->willReturn( $userMock );
 		$contextMock->method( 'getOutput' )
-			->willReturn( $outputMock );
+			->willReturn( $this->createMock( OutputPage::class ) );
 		$contextMock->method( 'getLanguage' )
 			->willReturn( $languageMock );
 		$contextMock->method( 'getRequest' )
 			->willReturn( $requestMock );
 		$contextMock->method( 'msg' )
 			->willReturn( $this->getMockMessage() );
-		$editInfoServiceMock = $this->getMockBuilder( EditInfoService::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$experimentUserManagerMock = $this->getMockBuilder( ExperimentUserManager::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$editInfoServiceMock = $this->createMock( EditInfoService::class );
+		$experimentUserManagerMock = $this->createMock( ExperimentUserManager::class );
 		$experimentUserManagerMock->method( 'getVariant' )
 			->willReturn( 'X' );
-		$pageViewServiceMock = $this->getMockBuilder( PageViewService::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$pageViewServiceMock = $this->createMock( PageViewService::class );
 		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_HARD );
 		$staticConfigLoader = new StaticConfigurationLoader( [ $taskType ] );
-		$newcomerTasksUserOptionsLookupMock = $this->getMockBuilder(
-			NewcomerTasksUserOptionsLookup::class
-		)->disableOriginalConstructor()
-			->getMock();
+		$newcomerTasksUserOptionsLookupMock = $this->createMock( NewcomerTasksUserOptionsLookup::class );
 		$newcomerTasksUserOptionsLookupMock->method( 'getTopics' )
 			->willReturn( [] );
 		$newcomerTasksUserOptionsLookupMock->method( 'getTopicsMatchMode' )
@@ -141,15 +117,9 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$taskSuggester = new StaticTaskSuggester(
 			[ new Task( $taskType, new TitleValue( 0, 'foo' ) ) ]
 		);
-		$titleFactoryMock = $this->getMockBuilder( TitleFactory::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$linkBatchFactoryMock = $this->getMockBuilder( LinkBatchFactory::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$databaseMock = $this->getMockBuilder( IDatabase::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$titleFactoryMock = $this->createMock( TitleFactory::class );
+		$linkBatchFactoryMock = $this->createMock( LinkBatchFactory::class );
+		$databaseMock = $this->createMock( IDatabase::class );
 		$databaseMock->expects( $this->once() )
 			->method( 'select' )
 			->willReturn( new ArrayIterator( [] ) );
@@ -160,14 +130,10 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$databaseMock
 		);
 		$linkRecommendationFilter = new LinkRecommendationFilter(
-			$this->getMockBuilder( LinkRecommendationStore::class )
-				->disableOriginalConstructor()
-				->getMock()
+			$this->createMock( LinkRecommendationStore::class )
 		);
 		$imageRecommendationFilter = new ImageRecommendationFilter(
-			$this->getMockBuilder( WANObjectCache::class )
-				->disableOriginalConstructor()
-				->getMock()
+			$this->createMock( WANObjectCache::class )
 		);
 		$campaignConfig = new CampaignConfig( [] );
 		return new class(

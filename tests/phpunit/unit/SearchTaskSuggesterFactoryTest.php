@@ -3,8 +3,6 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -16,10 +14,7 @@ use StatusValue;
 abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 
 	public function provideCreate() {
-		$error = $this->getMockBuilder( Status::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'getWikiText' ] )
-			->getMock();
+		$error = $this->createNoOpMock( Status::class, [ 'getWikiText' ] );
 		$error->method( 'getWikiText' )->willReturn( 'foo' );
 		return [
 			'success' => [
@@ -50,27 +45,10 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	 * @return ConfigurationLoader|MockObject
 	 */
 	protected function getNewcomerTasksConfigurationLoader( $taskTypes, $topics ) {
-		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'loadTaskTypes', 'loadTopics' ] )
-			->getMockForAbstractClass();
-		$configurationLoader->method( 'loadTaskTypes' )->willReturn( $taskTypes );
-		$configurationLoader->method( 'loadTopics' )->willReturn( $topics );
-		return $configurationLoader;
-	}
-
-	/**
-	 * @return SearchStrategy|MockObject
-	 */
-	protected function getSearchStrategy() {
-		return $this->createNoOpMock( SearchStrategy::class );
-	}
-
-	/**
-	 * @return NewcomerTasksUserOptionsLookup|MockObject
-	 */
-	protected function getNewcomerTasksUserOptionsLookup() {
-		return $this->createNoOpMock( NewcomerTasksUserOptionsLookup::class );
+		$loader = $this->createNoOpMock( ConfigurationLoader::class, [ 'loadTaskTypes', 'loadTopics' ] );
+		$loader->method( 'loadTaskTypes' )->willReturn( $taskTypes );
+		$loader->method( 'loadTopics' )->willReturn( $topics );
+		return $loader;
 	}
 
 }

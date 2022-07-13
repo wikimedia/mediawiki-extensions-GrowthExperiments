@@ -228,9 +228,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturn( $request );
 		$skinMock->getUser()->method( 'getName' )
 			->willReturn( 'Bar' );
-		$languageMock = $this->getMockBuilder( \Language::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$languageMock = $this->createMock( \Language::class );
 		$languageMock->method( 'getSpecialPageAliases' )
 			->willReturn( [
 				'WelcomeSurvey' => [ 'WelcomeSurvey' ]
@@ -282,9 +280,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturn( $request );
 		$skinMock->getUser()->method( 'getName' )
 			->willReturn( 'Bar' );
-		$languageMock = $this->getMockBuilder( \Language::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$languageMock = $this->createMock( \Language::class );
 		$languageMock->method( 'getSpecialPageAliases' )
 			->willReturn( [
 				'WelcomeSurvey' => [ 'WelcomeSurvey' ]
@@ -316,9 +312,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @return MockObject|\Message
 	 */
 	private function getDefaultMessageMock() {
-		$messageMock = $this->getMockBuilder( \Message::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$messageMock = $this->createMock( \Message::class );
 		$messageMock->method( 'params' )
 			->willReturn( $messageMock );
 		$messageMock->method( 'rawParams' )
@@ -331,9 +325,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @return MockObject|Skin
 	 */
 	private function getSkinMock( $class = Skin::class ) {
-		$outputMock = $this->getMockBuilder( \OutputPage::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$outputMock = $this->createMock( \OutputPage::class );
 		$outputMock->method( 'msg' )
 			->willReturnCallback( function ( $key ) {
 				$messageMock = $this->getDefaultMessageMock();
@@ -344,27 +336,18 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 				return $messageMock;
 			} );
 
-		$userMock = $this->getMockBuilder( \User::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'getId', 'getName' ] )
-			->getMock();
+		$userMock = $this->createNoOpMock( \User::class, [ 'getId', 'getName' ] );
 		// This will make user settings update job fail, but we don't care about that.
 		$userMock->method( 'getId' )
 			->willReturn( -1 );
-		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->method( 'getOption' )
 			->with( $this->anything(), HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN )
 			->willReturn( true );
 
-		$titleMock = $this->getMockBuilder( \Title::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$titleMock = $this->createMock( \Title::class );
 
-		$skinMock = $this->getMockBuilder( $class )
-			->disableOriginalConstructor()
-			->getMock();
+		$skinMock = $this->createMock( $class );
 		$skinMock->method( 'getOutput' )
 			->willReturn( $outputMock );
 		$skinMock->method( 'getUser' )
@@ -379,9 +362,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @return ExperimentUserManager|MockObject
 	 */
 	private function getExperimentUserManagerMock( $variant = 'C' ) {
-		$mock = $this->getMockBuilder( ExperimentUserManager::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$mock = $this->createMock( ExperimentUserManager::class );
 		$mock->method( 'getVariant' )
 			->willReturn( $variant );
 		return $mock;
@@ -391,9 +372,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @return UserOptionsLookup|MockObject
 	 */
 	private function getUserOptionsLookupMock() {
-		$mock = $this->getMockBuilder( UserOptionsLookup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$mock = $this->createMock( UserOptionsLookup::class );
 		$mock->method( 'getOption' )
 			->willReturn( true );
 		return $mock;
@@ -403,9 +382,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @return JobQueueGroup|MockObject
 	 */
 	private function getJobQueueGroupMock() {
-		$mock = $this->getMockBuilder( JobQueueGroup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$mock = $this->createMock( JobQueueGroup::class );
 		return $mock;
 	}
 }

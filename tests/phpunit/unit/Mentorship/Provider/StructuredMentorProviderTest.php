@@ -61,9 +61,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	 * @return WikiPageConfigLoader|\PHPUnit\Framework\MockObject\MockObject
 	 */
 	private function getWikiConfigLoaderMock( $mentorList = null ) {
-		$configLoader = $this->getMockBuilder( WikiPageConfigLoader::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$configLoader = $this->createMock( WikiPageConfigLoader::class );
 		$configLoader->expects( $this->atLeastOnce() )
 			->method( 'load' )
 			->willReturn( $mentorList ?? [
@@ -110,9 +108,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	 * @covers ::getMentorData
 	 */
 	public function testGetMentorDataFailure() {
-		$statusMock = $this->getMockBuilder( Status::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$statusMock = $this->createMock( Status::class );
 		$statusMock->expects( $this->once() )
 			->method( 'getWikiText' )
 			->willReturn( '' );
@@ -272,15 +268,11 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideGetMentors
 	 */
 	public function testGetMentors( array $expectedIds, string $methodToCall ) {
-		$queryBuilder = $this->getMockBuilder( UserSelectQueryBuilder::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$queryBuilder = $this->createMock( UserSelectQueryBuilder::class );
 		$queryBuilder->expects( $this->once() )->method( 'whereUserIds' )
 			->with( $expectedIds );
 
-		$userIdentityLookup = $this->getMockBuilder( UserIdentityLookup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
 		$userIdentityLookup->expects( $this->once() )->method( 'newSelectQueryBuilder' )
 			->willReturn( $queryBuilder );
 
@@ -307,9 +299,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	 * @covers ::getWeightedAutoAssignedMentors
 	 */
 	public function testGetWeightedAutoAssignedMentors() {
-		$userIdentityLookup = $this->getMockBuilder( UserIdentityLookup::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
 		$userIdentityLookup->expects( $this->atLeastOnce() )
 			->method( 'getUserIdentityByUserId' )
 			->willReturnCallback( static function ( $userId ) {

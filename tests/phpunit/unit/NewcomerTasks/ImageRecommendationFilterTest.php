@@ -25,7 +25,7 @@ class ImageRecommendationFilterTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf(
 			ImageRecommendationFilter::class,
 			new ImageRecommendationFilter(
-				$this->getMockBuilder( WANObjectCache::class )->disableOriginalConstructor()->getMock()
+				$this->createMock( WANObjectCache::class )
 			)
 		);
 	}

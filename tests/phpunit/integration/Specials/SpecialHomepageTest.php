@@ -34,9 +34,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$this->setService( 'GrowthExperimentsMentorManager', new StaticMentorManager( [] ) );
 
 		// Needed to avoid errors in DeferredUpdates from the SpecialHomepageLogger
-		$mwHttpRequest = $this->getMockBuilder( \MWHttpRequest::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$mwHttpRequest = $this->createMock( \MWHttpRequest::class );
 		$mwHttpRequest->method( 'execute' )
 			->willReturn( new \StatusValue() );
 		$this->installMockHttp( $mwHttpRequest );

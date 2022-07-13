@@ -12,7 +12,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 
-	/** @var int Seconds in a day */
+	/** Seconds in a day */
 	private const SECONDS_DAY = 86400;
 
 	/** @var array|null */

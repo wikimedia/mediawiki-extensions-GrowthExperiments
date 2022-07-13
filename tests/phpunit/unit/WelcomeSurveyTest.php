@@ -20,22 +20,16 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 	 * @covers ::__construct
 	 */
 	public function testConstruct() {
-		$configMock = $this->getMockBuilder( Config::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'get', 'has' ] )
-			->getMock();
-		$contextMock = $this->getMockBuilder( RequestContext::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$contextMock = $this->createMock( RequestContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'getConfig' )
-			->willReturn( $configMock );
+			->willReturn( $this->createMock( Config::class ) );
 		$this->assertInstanceOf(
 			WelcomeSurvey::class,
 			new WelcomeSurvey(
 				$contextMock,
 				$this->getLanguageNameUtilsMockObject(),
-				$this->getUserOptionsManagerMockObject()
+				$this->createNoOpMock( UserOptionsManager::class )
 			)
 		);
 	}
@@ -74,14 +68,10 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 					"mentor"
 				] ] ]
 		] );
-		$contextMock = $this->getMockBuilder( RequestContext::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$contextMock = $this->createMock( RequestContext::class );
 		$contextMock->method( 'getConfig' )
 			->willReturn( $configMock );
-		$userMock = $this->getMockBuilder( User::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$userMock = $this->createMock( User::class );
 		$contextMock->expects( $this->atLeastOnce() )
 			->method( 'getUser' )
 			->willReturn( $userMock );
@@ -91,7 +81,7 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		return new WelcomeSurvey(
 			$contextMock,
 			$this->getLanguageNameUtilsMockObject(),
-			$this->getUserOptionsManagerMockObject()
+			$this->createNoOpMock( UserOptionsManager::class )
 		);
 	}
 
@@ -99,19 +89,10 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 	 * @return \PHPUnit\Framework\MockObject\MockObject|LanguageNameUtils
 	 */
 	private function getLanguageNameUtilsMockObject() {
-		$mock = $this->getMockBuilder( LanguageNameUtils::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$mock = $this->createMock( LanguageNameUtils::class );
 		$mock->method( 'getLanguageNames' )
 			->willReturn( [ 'es', 'el', 'en', 'ar' ] );
 		return $mock;
-	}
-
-	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|UserOptionsManager
-	 */
-	private function getUserOptionsManagerMockObject() {
-		return $this->createNoOpMock( UserOptionsManager::class );
 	}
 
 }

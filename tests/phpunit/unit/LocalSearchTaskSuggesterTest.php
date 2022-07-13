@@ -41,14 +41,19 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	public function testSearch(
 		$searchTerm, $topic, $limit, $offset, $searchResults, $expectedResult
 	) {
-		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
 		$searchEngineFactory = $this->getMockSearchEngineFactory( $searchResults, $searchTerm,
 			$limit, $offset );
-		$searchStrategy = $this->getMockSearchStrategy();
-		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
-		$linkBatchFactory = $this->getLinkBatchFactory();
-		$suggester = new LocalSearchTaskSuggester( $taskTypeHandlerRegistry, $searchEngineFactory,
-			$searchStrategy, $newcomerTasksUserOptionsLookup, $linkBatchFactory, [], [], $this->getStatsdFactory() );
+
+		$suggester = new LocalSearchTaskSuggester(
+			$this->createMock( TaskTypeHandlerRegistry::class ),
+			$searchEngineFactory,
+			$this->createNoOpMock( SearchStrategy::class ),
+			$this->getNewcomerTasksUserOptionsLookup(),
+			$this->createNoOpMock( LinkBatchFactory::class ),
+			[],
+			[],
+			$this->createMock( IBufferingStatsdDataFactory::class )
+		);
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 
 		$taskType = new TaskType( 'fake; wont be used', TaskType::DIFFICULTY_EASY );
@@ -70,7 +75,7 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	public function provideSearch() {
-		$searchResult = $this->getMockSearchResultSet();
+		$searchResult = $this->createMock( ISearchResultSet::class );
 		$error = Status::newFatal( 'foo' );
 		return [
 			'success' => [
@@ -117,22 +122,6 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @return TaskTypeHandlerRegistry|MockObject
-	 */
-	private function getMockTaskTypeHandlerRegistry() {
-		return $this->createMock( TaskTypeHandlerRegistry::class );
-	}
-
-	/**
-	 * @return ISearchResultSet|MockObject
-	 */
-	private function getMockSearchResultSet() {
-		return $this->getMockBuilder( ISearchResultSet::class )
-			->onlyMethods( [] )
-			->getMockForAbstractClass();
-	}
-
-	/**
 	 * @param ISearchResultSet|null|StatusValue $searchResults
 	 * @param string $expectedSearchText
 	 * @param int $expectedLimit
@@ -142,16 +131,9 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	private function getMockSearchEngineFactory(
 		$searchResults, $expectedSearchText, $expectedLimit, $expectedOffset
 	) {
-		$factory = $this->getMockBuilder( SearchEngineFactory::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'create' ] )
-			->getMockForAbstractClass();
+		$factory = $this->createNoOpMock( SearchEngineFactory::class, [ 'create' ] );
 
-		$searchEngine = $this->getMockBuilder( SearchEngine::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'setLimitOffset', 'setNamespaces', 'setShowSuggestion', 'getValidSorts',
-				'setSort', 'searchText' ] )
-			->getMockForAbstractClass();
+		$searchEngine = $this->createMock( SearchEngine::class );
 		$factory->expects( $this->once() )
 			->method( 'create' )
 			->willReturn( $searchEngine );
@@ -169,33 +151,12 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @return SearchStrategy|MockObject
-	 */
-	private function getMockSearchStrategy() {
-		return $this->createNoOpMock( SearchStrategy::class );
-	}
-
-	/**
 	 * @return NewcomerTasksUserOptionsLookup|MockObject
 	 */
 	private function getNewcomerTasksUserOptionsLookup() {
 		$lookup = $this->createNoOpMock( NewcomerTasksUserOptionsLookup::class, [ 'filterTaskTypes' ] );
 		$lookup->method( 'filterTaskTypes' )->willReturnArgument( 0 );
 		return $lookup;
-	}
-
-	/**
-	 * @return LinkBatchFactory|MockObject
-	 */
-	private function getLinkBatchFactory() {
-		return $this->createNoOpMock( LinkBatchFactory::class );
-	}
-
-	/**
-	 * @return IBufferingStatsdDataFactory|MockObject
-	 */
-	private function getStatsdFactory() {
-		return $this->createMock( IBufferingStatsdDataFactory::class );
 	}
 
 }

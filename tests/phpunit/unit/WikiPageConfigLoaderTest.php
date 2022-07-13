@@ -60,9 +60,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 		$revisionLookup = $this->getMockRevisionLookup( $titleValue, $lookupResult,
 			$revisionLookupExpectedInvokeCount );
 		$titleFactory = $this->getMockTitleFactory( $fullUrl, $localUrl, $isExternal );
-		$configValidator = $this->getMockBuilder( GrowthConfigValidation::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$configValidator = $this->createMock( GrowthConfigValidation::class );
 		$configValidator
 			->expects(
 				(
@@ -71,9 +69,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 				) ? $this->never() : $this->once() )
 			->method( 'validate' )
 			->willReturn( StatusValue::newGood() );
-		$configValidatorFactory = $this->getMockBuilder( ConfigValidatorFactory::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$configValidatorFactory = $this->createMock( ConfigValidatorFactory::class );
 		$configValidatorFactory
 			->method( 'newConfigValidator' )
 			->willReturn( $configValidator );
@@ -157,19 +153,13 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testSetCache() {
-		$cache = $this->getMockBuilder( BagOStuff::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'get' ] )
-			->getMockForAbstractClass();
+		$cache = $this->createMock( BagOStuff::class );
 		$cache->expects( $this->once() )
 			->method( 'get' )
 			->willReturn( [] );
-		/** @var BagOStuff $cache */
 
 		$title = new TitleValue( NS_MAIN, 'X' );
-		$configValidatorFactory = $this->getMockBuilder( ConfigValidatorFactory::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$configValidatorFactory = $this->createMock( ConfigValidatorFactory::class );
 		$configValidatorFactory
 			->method( 'newConfigValidator' )
 			->willReturn( new NoValidationValidator() );
@@ -190,10 +180,8 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 	 * @return Title|MockObject
 	 */
 	protected function getMockTitle( $url, $titleText, $isExternal = true ) {
-		$title = $this->getMockBuilder( Title::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'getFullURL', 'getNamespace', 'getDBKey', 'isExternal' ] )
-			->getMock();
+		$title = $this->createNoOpMock( Title::class,
+			[ 'getFullURL', 'getNamespace', 'getDBKey', 'isExternal' ] );
 		$title->method( 'isExternal' )->willReturn( $isExternal );
 		$title->method( 'getFullURL' )->willReturn( $url );
 		$title->method( 'getNamespace' )->willReturn( 0 );
@@ -214,17 +202,12 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 			$result = Status::newGood();
 		}
 
-		$request = $this->getMockBuilder( MWHttpRequest::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'execute', 'getContent' ] )
-			->getMock();
+		$request = $this->createNoOpMock( MWHttpRequest::class, [ 'execute', 'getContent' ] );
 		$request->method( 'execute' )->willReturn( $result );
 		$request->method( 'getContent' )->willReturn( $content );
 
-		$requestFactory = $this->getMockBuilder( HttpRequestFactory::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'create', 'getUserAgent' ] )
-			->getMock();
+		$requestFactory = $this->createNoOpMock( HttpRequestFactory::class,
+			[ 'create', 'getUserAgent' ] );
 		$requestFactory->method( 'getUserAgent' )->willReturn( 'Foo' );
 		$requestFactory->expects( $this->exactly( $invokeCount ) )
 			->method( 'create' )
@@ -241,10 +224,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 	 * @return RevisionLookup|MockObject
 	 */
 	protected function getMockRevisionLookup( LinkTarget $expectedTitle, $content, $invokeCount = 1 ) {
-		$revisionLookup = $this->getMockBuilder( RevisionLookup::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'getRevisionByTitle' ] )
-			->getMockForAbstractClass();
+		$revisionLookup = $this->createMock( RevisionLookup::class );
 		$revisionLookup->expects( $this->exactly( $invokeCount ) )
 			->method( 'getRevisionByTitle' )
 			->willReturnCallback( function ( LinkTarget $title ) use ( $expectedTitle, $content ) {
@@ -254,10 +234,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 				if ( $content === false ) {
 					return null;
 				}
-				$revision = $this->getMockBuilder( RevisionRecord::class )
-					->disableOriginalConstructor()
-					->onlyMethods( [ 'getContent' ] )
-					->getMockForAbstractClass();
+				$revision = $this->createMock( RevisionRecord::class );
 				$revision->expects( $this->once() )
 					->method( 'getContent' )
 					->willReturn( $content );
@@ -274,14 +251,9 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 	 * @return TitleFactory|MockObject
 	 */
 	protected function getMockTitleFactory( $fullUrl, $localUrl, $isExternal ) {
-		$titleFactory = $this->getMockBuilder( TitleFactory::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'newFromLinkTarget', 'makeTitle' ] )
-			->getMock();
-		$title = $this->getMockBuilder( Title::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'getFullURL', 'getLocalURL', 'isExternal' ] )
-			->getMock();
+		$titleFactory = $this->createNoOpMock( TitleFactory::class,
+			[ 'newFromLinkTarget', 'makeTitle' ] );
+		$title = $this->createNoOpMock( Title::class, [ 'getFullURL', 'getLocalURL', 'isExternal' ] );
 		$titleFactory->method( 'newFromLinkTarget' )
 			->willReturn( $title );
 		$titleFactory->method( 'makeTitle' )

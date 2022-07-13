@@ -105,7 +105,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		TestingAccessWrapper::newFromObject( $homepageHooks )->linkRecommendationHelper = $linkRecommendationHelper;
 		$page->method( 'getTitle' )->willReturn(
 			$this->createConfiguredMock( Title::class, [
-				'toPageIdentity' => $this->createNoOpAbstractMock( ProperPageIdentity::class ),
+				'toPageIdentity' => $this->createNoOpMock( ProperPageIdentity::class ),
 			] )
 		);
 

@@ -20,7 +20,7 @@ use WikitextContent;
  */
 class QuestionPosterTest extends MediaWikiUnitTestCase {
 
-	private function getQuestionPoster( $methods ) {
+	private function getQuestionPoster( array $methods ) {
 		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
 			->disableOriginalConstructor()
 			->onlyMethods( $methods )
@@ -91,14 +91,8 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
 		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
-		$pageUpdaterMock = $this->getMockBuilder( PageUpdater::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'grabParentRevision' ] )
-			->getMock();
-		$revisionRecordMock = $this->getMockBuilder( RevisionRecord::class )
-			->disableOriginalConstructor()
-			->onlyMethods( [ 'getId' ] )
-			->getMockForAbstractClass();
+		$pageUpdaterMock = $this->createNoOpMock( PageUpdater::class, [ 'grabParentRevision' ] );
+		$revisionRecordMock = $this->createMock( RevisionRecord::class );
 		$revisionRecordMock->method( 'getId' )
 			->willReturn( 0 );
 		$pageUpdaterMock->method( 'grabParentRevision' )
@@ -175,9 +169,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$questionPoster->method( 'checkContent' )->willReturn(
 			StatusValue::newGood( '' )
 		);
-		$contentMock = $this->getMockBuilder( WikitextContent::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$contentMock = $this->createMock( WikitextContent::class );
 		$questionPoster->method( 'makeWikitextContent' )
 			->willReturn( $contentMock );
 		$questionPoster->expects( $this->once() )
@@ -197,9 +189,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetNumberedSectionHeaderIfDuplicateExists() {
 		$questionRecord = QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo' ] );
-		$questionPosterMock = $this->getMockBuilder( QuestionPoster::class )
-			->disableOriginalConstructor()
-			->getMockForAbstractClass();
+		$questionPosterMock = $this->createMock( QuestionPoster::class );
 		$questionPoster = TestingAccessWrapper::newFromObject( $questionPosterMock );
 		$questionPoster->existingQuestionsByUser = [ $questionRecord ];
 		$this->assertSame(
@@ -214,9 +204,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 	 * @covers ::getNumberedSectionHeaderIfDuplicatesExist
 	 */
 	public function testGetNumberedSectionHeaderWithMoreThanOne() {
-		$questionPosterMock = $this->getMockBuilder( QuestionPoster::class )
-			->disableOriginalConstructor()
-			->getMockForAbstractClass();
+		$questionPosterMock = $this->createMock( QuestionPoster::class );
 		$questionPoster = TestingAccessWrapper::newFromObject( $questionPosterMock );
 		$questionRecords = [
 			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo' ] ),
@@ -235,9 +223,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 	 * @covers ::getNumberedSectionHeaderIfDuplicatesExist
 	 */
 	public function testGetNumberedSectionHeaderWithUnordered() {
-		$questionPosterMock = $this->getMockBuilder( QuestionPoster::class )
-			->disableOriginalConstructor()
-			->getMockForAbstractClass();
+		$questionPosterMock = $this->createMock( QuestionPoster::class );
 		$questionPoster = TestingAccessWrapper::newFromObject( $questionPosterMock );
 		$questionRecords = [
 			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo' ] ),

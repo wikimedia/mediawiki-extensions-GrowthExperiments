@@ -73,12 +73,8 @@ class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 	 */
 	private function getUser( string $name ) {
 		$userFactory = new UserFactory(
-			$this->getMockBuilder( ILoadBalancer::class )
-				->disableOriginalConstructor()
-				->getMock(),
-			$this->getMockBuilder( UserNameUtils::class )
-				->disableOriginalConstructor()
-				->getMock()
+			$this->createMock( ILoadBalancer::class ),
+			$this->createMock( UserNameUtils::class )
 		);
 		return $userFactory->newFromAnyId( null, $name, null );
 	}

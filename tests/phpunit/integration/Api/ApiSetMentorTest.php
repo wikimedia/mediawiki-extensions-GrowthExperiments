@@ -148,15 +148,9 @@ class ApiSetMentorTest extends ApiTestCase {
 		$mock = $this->getMockBuilder( DatabaseMentorStore::class )
 			->setConstructorArgs( [
 				new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
-				$this->getMockBuilder( UserFactory::class )
-					->disableOriginalConstructor()
-					->getMock(),
-				$this->getMockBuilder( UserIdentityLookup::class )
-					->disableOriginalConstructor()
-					->getMock(),
-				$this->getMockBuilder( JobQueueGroup::class )
-					->disableOriginalConstructor()
-					->getMock(),
+				$this->createMock( UserFactory::class ),
+				$this->createMock( UserIdentityLookup::class ),
+				$this->createMock( JobQueueGroup::class ),
 				$this->createNoOpMock( IDatabase::class ),
 				$this->createNoOpMock( IDatabase::class ),
 				true
