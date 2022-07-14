@@ -90,7 +90,7 @@ class StarredMenteesStore implements IDBAccessObject {
 		$starredMentees = $this->getStarredMenteeIds( $mentor, self::READ_LOCKING );
 		$menteeId = $mentee->getId();
 
-		if ( array_search( $menteeId, $starredMentees ) !== false ) {
+		if ( in_array( $menteeId, $starredMentees ) ) {
 			// $mentee is already starred
 			return;
 		}
