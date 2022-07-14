@@ -18,7 +18,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Siehe {{GENDER:|deine}} Mentees unten. Verwende die Filter, um zu ändern, welche Mentees angezeigt werden.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Die Tabelle erfordert JavaScript. Bitte aktiviere JavaScript, um dieses Modul nutzen zu können.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Wer ist in deiner Tabelle?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Weitere Informationen darüber, wer sich in {{GENDER:|deiner}} Tabelle  befindet",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Weitere Informationen darüber, wer sich in {{GENDER:|deiner}} Tabelle befindet",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Diese Tabelle zeigt {{GENDER:|deine}} Mentees, die sich innerhalb der letzten zwei Wochen angemeldet haben oder die in den letzten sechs Monaten Bearbeitungen gemacht haben und bei denen die [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|Neulings-Startseite aktiviert ist]]. Die Daten werden alle drei Stunden aktualisiert.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legende",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Mentees markieren",

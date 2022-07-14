@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lancine.kounfantoh.fofana"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|ߌ ߣߌ߫ ߛߣߍ߫}}߸ $1",
+	"welcomesurvey-save-confirmation-title": "ߌ ߣߌ߫ ߗߋ߫߹ ߌ ߟߊ߫ ߖߋ߬ߓߌ߬ߟߌ ߓߘߊ߫ ߟߊߡߙߊ߬.",
+	"welcomesurvey-save-confirmation-text": "ߌ ߟߊ߫ ߖߋ߬ߓߌ߬ߟߌ ߟߎ߬ ߘߌߣߊ߬ ߊ߲ ߡߊߘߍ߬ߡߍ߲߫ ߞߊ߬ ߛߌߟߊ߫ ߢߣߊߡߊ ߘߴߌ ߡߊ߬ ߞߊ߬ ߥߞߌߔߋߘߌߦߊ ߘߊߡߌ߬ߣߊ߬."
+}
