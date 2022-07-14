@@ -116,7 +116,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 				$this->createNoOpMock( UserFactory::class ),
 				new NullLogger(),
 				[],
-				$this->createNoOpMock( LinkTarget::class ),
+				$this->createMock( LinkTarget::class ),
 				new UserIdentityValue( 1, 'Performer' )
 			)
 		);
@@ -134,7 +134,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 		bool $configPageExists,
 		?array $currentConfig
 	) {
-		$configPage = $this->createNoOpMock( LinkTarget::class );
+		$configPage = $this->createMock( LinkTarget::class );
 		$writer = new WikiPageConfigWriter(
 			new NoValidationValidator(),
 			$this->getWikiPageConfigLoaderMock( $configPage, $currentConfig, $configPageExists ),
@@ -173,7 +173,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 	 * @covers ::pruneConfig
 	 */
 	public function testLoadPruneConfig() {
-		$configPage = $this->createNoOpMock( LinkTarget::class );
+		$configPage = $this->createMock( LinkTarget::class );
 		$writer = new WikiPageConfigWriter(
 			new NoValidationValidator(),
 			$this->getWikiPageConfigLoaderMock( $configPage, [ 'foo' => 123 ], true ),
@@ -223,7 +223,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 			->method( 'validateVariable' )
 			->with( $expectedBaseVariable, $expectedFullValue );
 
-		$configPage = $this->createNoOpMock( LinkTarget::class );
+		$configPage = $this->createMock( LinkTarget::class );
 		$writer = new WikiPageConfigWriter(
 			$validator,
 			$this->getWikiPageConfigLoaderMock( $configPage, $currentConfig, true ),
@@ -272,7 +272,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 	 * @covers ::setVariable
 	 */
 	public function testSetVariableMultiple() {
-		$configPage = $this->createNoOpMock( LinkTarget::class );
+		$configPage = $this->createMock( LinkTarget::class );
 		$writer = new WikiPageConfigWriter(
 			new NoValidationValidator(),
 			$this->getWikiPageConfigLoaderMock( $configPage, [ 'preexisting' => 123 ], true ),
@@ -320,7 +320,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 			'TestBaz' => 321
 		];
 
-		$configPage = $this->createNoOpMock( LinkTarget::class );
+		$configPage = $this->createMock( LinkTarget::class );
 
 		$wikiPageConfigLoader = $this->getWikiPageConfigLoaderMock( $configPage, [], true );
 		$wikiPageConfigLoader->expects( $this->once() )
