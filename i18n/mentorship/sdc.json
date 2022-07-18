@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"F Samaritani"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Innòmu utenti",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Cuntéggiu di li mudìfigghi",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data di registhrazioni",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filthri",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Attuarizà",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Cuntéggiu di li mudìfigghi",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Zercha",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "Ischunisciddu",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 pai $2",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Prifirènzi",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Canzillà",
+	"growthexperiments-quit-mentorship-reason": "Mutibu",
+	"growthexperiments-notification-body-mentee-claimed": "Rajoni: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Nisciunu",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Saivva",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Canzillà",
+	"growthexperiments-manage-mentors-username": "Innòmu utenti",
+	"growthexperiments-manage-mentors-remove-mentor": "Buggà",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "Mutibu"
+}

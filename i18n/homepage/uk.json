@@ -96,7 +96,7 @@
 	"growthexperiments-homepage-impact-unactivated-description": "Коли {{GENDER:$1|ви}} почнете редагування, то побачите, як багато людей переглядають статті, які {{GENDER:$1|ви}} редагували.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Сповіщення із запитів на допомогу",
 	"growthexperiments-tour-response-tip-text": "Коли з'явиться відповідь на {{GENDER:$1|ваше}} запитання, {{GENDER:$1|ви}} отримаєте тут нове сповіщення.",
-	"growthexperiments-tour-mentor-response-tip-personal-title": "Сповіщення від наставника",
+	"growthexperiments-tour-mentor-response-tip-personal-title": "Сповіщення від {{GENDER:$1|наставника|наставниці}}",
 	"growthexperiments-tour-mentor-response-tip-personal-text": "Коли {{GENDER:$2|ваш|ваша}} {{GENDER:$2|наставник|наставниця}} відповість, {{GENDER:$1|ви}} отримаєте тут нове сповіщення.",
 	"growthexperiments-tour-response-button-okay": "Зрозуміло",
 	"tag-help_module_question": "Запитання модуля допомоги",

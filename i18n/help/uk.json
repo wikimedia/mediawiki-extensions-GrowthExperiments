@@ -154,7 +154,7 @@
 	"tag-help_panel_question-description": "Редагування здійснене з функції для надсилання запитань з довідкової панелі редактора",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Пропоновані редагування",
 	"growthexperiments-help-panel-button-header-ask-help": "Запитати на сторінці підтримки",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Попросити наставника про допомогу",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Попросити {{GENDER:$1|свого наставника|свою наставницю}} про допомогу",
 	"growthexperiments-help-panel-button-header-general-help": "Загальна довідка щодо редагування",
 	"growthexperiments-help-panel-button-subheader-general-help": "Пошукайте відповідей та почитайте найпопулярніші статті",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Отримайте відповіді від інших волонтерів",

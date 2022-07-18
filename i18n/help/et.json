@@ -102,7 +102,7 @@
 	"tag-help_panel_question": "Abipaneeli küsimus",
 	"tag-help_panel_question-description": "Muudatus, mis tehti abipaneelis küsimuse postitamise funktsiooniga",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Soovitatud muudatused",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Küsi mentorilt abi",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Küsi {{GENDER:$1|mentorilt}} abi",
 	"growthexperiments-help-panel-button-header-general-help": "Üldine muutmisabi",
 	"growthexperiments-help-panel-button-subheader-general-help": "Otsi vastuseid ja loe tähtsamaid abilehti.",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Kiired näpunäited alustamiseks",

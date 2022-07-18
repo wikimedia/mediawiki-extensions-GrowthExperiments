@@ -10,5 +10,6 @@
 	"growthexperiments-help-panel-back-home": "Indareddu",
 	"growthexperiments-help-panel-close": "Fattu",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "ciamba",
-	"growthexperiments-help-panel-questionposter-invalid-title": "Tìturu nò vàriddu."
+	"growthexperiments-help-panel-questionposter-invalid-title": "Tìturu nò vàriddu.",
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|Mudìfiggu|Mudìfigghi}}"
 }

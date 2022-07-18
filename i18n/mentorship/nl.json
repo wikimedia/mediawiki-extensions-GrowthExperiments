@@ -15,7 +15,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Uw}} leerlingen",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Hieronder staan {{GENDER:|uw}} leerlingen. Met de filters kunt u bepalen welke leerlingen worden weergegeven.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "De tabel vereist JavaScript. Schakel JavaScript in om deze module te kunnen gebruiken.",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Wie zit er in {{GENDER:|uw}} tabel?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Wie staat er in {{GENDER:|uw}} tabel?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Meer informatie over wie er in {{GENDER:|uw}} tabel staat",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Deze tabel toont alleen uw leerlingen van wie het account in de afgelopen twee weken is aangemaakt of die in de afgelopen zes maanden iets hebben bewerkt, en voor wie [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|de thuispagina voor nieuwkomers]] is geactiveerd. De gegevens worden elke drie uur bijgewerkt.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",

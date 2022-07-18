@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jeeputer"
+		]
+	},
+	"apihelp-growthmanagementorlist-param-geaction": "عمل",
+	"apihelp-growthmanagementorlist-param-weight": "وزن",
+	"apihelp-growthmanagementorlist-param-summary": "دلیل تغییر"
+}

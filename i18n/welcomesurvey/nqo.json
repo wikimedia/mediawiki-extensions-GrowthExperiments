@@ -41,5 +41,8 @@
 	"welcomesurvey-question-mailinglist-label": "ߒ ߧߴߊ߬ ߝߍ߬ ߞߊ߬ ߟߊ߬ߟߌ߰ߟߌ ߟߎ߬ ߟߊߛߐ߬ߘߐ߲߬ ߢߎߡߍߙߋ߲ߞߏ߲ߘߏ ߟߋ߬ ߟߊ߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߊߡߌ߬ߣߊ߬ ߢߊ ߞߊ߲߫.",
 	"welcomesurvey-question-mailinglist-help": "ߌ ߞߙߐ߬ߛߌ߬ ߕߏ߫ ߞߏ߫ ߢߎߡߍߙߋ߲ߦߊߟߌ߫ ߛߙߍߘߍ ߣߌ߲߬ ߛߍ߲ߓߍߘߏ߲߬ߣߍ߲߫ ߦߋ߫ ߡߍ߯ߟߑߗߌߔ ߟߋ߬ ߓߟߏ߫߸ ߏ߬ ߞߘߐ ߟߋ߬ ߦߋ߫ ߞߏ߫ ߡߍ߯ߟߑߗߌߔ ߟߊߓߊ߯ߙߊ ߌ ߟߊ߫ ߞߎ߲߬ߠߊ߬ߝߏߣߌ߲ ߠߎ߬ ߘߐ߫ ߏ߬ ߞߎ߲߬ߠߊߛߌ߰ߣߍ߲߫ ߦߴߊ߬ߟߎ߫ ߟߊ߫ [https://www.intuit.com/privacy/statement/ Privacy Policy] ߣߌ߫ [https://mailchimp.com/legal/terms/ Terms of Service] ߟߋ߬ ߓߟߏ߫.",
 	"welcomesurvey-question-email-label": "ߢߎߡߍߙߋ߲ߞߏ߲ߘߏ (ߞߊ߬ߘߌߦߊߢߍ)",
-	"welcomesurvey-question-email-placeholder": "ߌ ߟߊ߫ ߢߎߡߍߙߋ߲߫ ߞߏ߲ߘߏ ߟߊߘߏ߲߬..."
+	"welcomesurvey-question-email-placeholder": "ߌ ߟߊ߫ ߢߎߡߍߙߋ߲߫ ߞߏ߲ߘߏ ߟߊߘߏ߲߬...",
+	"welcomesurvey-question-languages-label": "ߞߊ߲߫ ߃߀߀ ߡߊߜߍ߲ ߠߋ߬ ߦߋ߫ {{SITENAME}} ߘߐ߫. ߞߊ߲߫ ߜߘߍ ߘߏ߫ ߦߋ߫ ߦߋ߲߬ ߓߊ߬ ߌ ߦߋ߫ ߡߍ߲ ߞߊ߬ߙߊ߲߬ ߠߊ߫ ߊ߬ ߣߌ߫ ߞߊ߬ ߛߓߍߟߌ ߞߴߊ߬ ߘߐ߫؟",
+	"welcomesurvey-question-languages-placeholder": "ߞߊ߲ ߠߎ߬ ߝߊ߬ߙߊ߫ ߤߊ߲߯ ߞߊ߬ ߛߋ߫ {{PLURAL:|ߞߊ߲ ߞߋߟߋ߲߫ $1|ߞߊ߲ $1 ߠߎ߬}} ߘߐ߫...",
+	"welcomesurvey-question-languages-maximum": "ߌ ߓߘߊ߫ ߞߊ߲ ߦߙߌߞߊ ߞߐߘߊ߲ ߝߊ߬ߙߊ߫"
 }

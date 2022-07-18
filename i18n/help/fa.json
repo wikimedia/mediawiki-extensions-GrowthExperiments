@@ -157,7 +157,7 @@
 	"tag-help_panel_question-description": "ویرایش توسط پانل کمک سوال ارسال شد",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "ویرایش‌های پیشنهادی",
 	"growthexperiments-help-panel-button-header-ask-help": "پرسش از میز کمک",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "از مربی خود درخواست کمک کنید",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "از {{GENDER:$1|مربی}} {{GENDER:|خود}} درخواست کمک کنید",
 	"growthexperiments-help-panel-button-header-general-help": "کمک برای ویرایش عمومی",
 	"growthexperiments-help-panel-button-subheader-general-help": "جستجو برای سوال و خواندن برترین مقالات",
 	"growthexperiments-help-panel-button-subheader-ask-help": "گرفتن پاسخ از دیگر داوطلبان",
