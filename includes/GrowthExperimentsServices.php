@@ -82,15 +82,6 @@ class GrowthExperimentsServices {
 	// Service aliases
 	// phpcs:disable MediaWiki.Commenting.FunctionComment
 
-	/**
-	 * @deprecated since 1.36, use getGrowthConfig or getGrowthWikiConfig instead
-	 * @return Config
-	 */
-	public function getConfig(): Config {
-		wfDeprecated( __METHOD__, '1.36' );
-		return $this->coreServices->getConfigFactory()->makeConfig( 'GrowthExperiments' );
-	}
-
 	public function getChangeMentorFactory(): ChangeMentorFactory {
 		return $this->coreServices->get( 'GrowthExperimentsChangeMentorFactory' );
 	}
