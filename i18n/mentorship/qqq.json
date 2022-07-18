@@ -138,6 +138,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Field label in Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Submit text in Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentorship-enrollasmentor-success": "Success message shown after enrolling as a mentor via Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Edit summary used after an user enrolls via Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"tag-mentor list change": "Short change tag name for edits made to the structured mentor list via GrowthExperiments",
 	"tag-mentor list change-description": "Description of a change tag name used for edits made to the structured mentor list via GrowthExperiments"
 }

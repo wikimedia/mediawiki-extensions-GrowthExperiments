@@ -99,10 +99,6 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 			'automaticallyAssigned' => [
 				'type' => 'hidden',
 				'default' => true,
-			],
-			'reason' => [
-				'type' => 'text',
-				'label-message' => 'growthexperiments-mentorship-enrollasmentor-form-reason',
 			]
 		];
 	}
@@ -119,7 +115,7 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 		return Status::wrap( $this->mentorWriter->addMentor(
 			$mentor,
 			$this->getUser(),
-			$data['reason']
+			'/* growthexperiments-mentorship-enrollasmentor-summary */'
 		) );
 	}
 
