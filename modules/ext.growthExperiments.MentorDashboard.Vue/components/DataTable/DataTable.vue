@@ -176,7 +176,7 @@ module.exports = exports = {
 		caption {
 			text-align: left;
 			color: @color-accessory;
-			padding-bottom: 8px;
+			padding: @spacing-small 0;
 		}
 
 		thead {
