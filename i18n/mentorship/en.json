@@ -127,7 +127,7 @@
 	"growthexperiments-manage-mentors-remove-mentor-success": "User [[User:$1|$1]] is no longer a {{GENDER:$1|mentor}}.",
 	"growthexperiments-manage-mentors-return-back": "You can [[Special:ManageMentors|return back]] to the list of mentors.",
 	"growthexperiments-mentorship-enrollasmentor-title": "Enroll as a {{GENDER:|mentor}}",
-	"growthexperiments-mentorship-enrollasmentor-pretext": "Thank {{GENDER:|you}} for volunteering as a {{SITENAME}} {{GENDER:|mentor}}. {{GENDER:|You}} can enroll mentorship by filling out this form.",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Thank {{GENDER:|you}} for volunteering as a {{SITENAME}} {{GENDER:|mentor}}. {{GENDER:|You}} can enroll as a mentor by filling out this form.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Introduction message",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Introduction message introduces {{GENDER:|you}} as a mentor. Please keep this shorter than 240 characters. No wikitext is allowed.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Reason",
