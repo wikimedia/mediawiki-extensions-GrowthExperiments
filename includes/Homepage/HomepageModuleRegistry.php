@@ -10,6 +10,7 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\MentorshipOptIn;
+use GrowthExperiments\HomepageModules\NewImpact;
 use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\StartEmail;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -125,7 +126,18 @@ class HomepageModuleRegistry {
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
+				$useNewImpactModule = $context->getRequest()->getBool(
+					'new-impact',
+					$context->getConfig()->get( 'GEUseNewImpactModule' )
+				);
 				$growthServices = GrowthExperimentsServices::wrap( $services );
+				if ( $useNewImpactModule ) {
+					return new NewImpact(
+						$context,
+						$growthServices->getGrowthWikiConfig(),
+						$growthServices->getExperimentUserManager()
+					);
+				}
 				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 				$userOptionsLookup = $services->getUserOptionsLookup();
 				return new Impact(
