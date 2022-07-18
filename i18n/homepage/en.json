@@ -61,6 +61,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Create new articles and expand short articles.",
 	"growthexperiments-homepage-suggested-edits-header": "Suggested edits",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Your}} impact",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "Please enable JavaScript to view this component.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Your}} impact",
 	"growthexperiments-homepage-impact-subheader-text": "People are viewing the articles {{GENDER:$1|you}} edited!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Views since {{GENDER:$1|you}} edited (last 60 days):",
