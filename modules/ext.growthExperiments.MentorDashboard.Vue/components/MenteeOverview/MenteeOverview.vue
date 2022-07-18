@@ -15,7 +15,6 @@
 		<data-table
 			v-if="hasData"
 			class="mentee-overview__table"
-			:caption-text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-table-caption' )"
 			:limit="limit"
 			:columns="columns"
 			:data="{ rows, totalPages, currentPage }"
