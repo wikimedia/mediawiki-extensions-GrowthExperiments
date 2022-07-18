@@ -14,7 +14,8 @@
 			"Gustmd7410",
 			"Underbaaar",
 			"밝은소년",
-			"Bluehill"
+			"Bluehill",
+			"Theshinster123"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -72,7 +73,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "쉬움",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "중간",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "어려움",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "{{GENDER:$1|처음}} 편집을 배우는 수준에 권장됨",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "처음 편집을 배우는 수준에 권장됨.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "{{GENDER:$1|쉬운}} 편집 여러 개를 해 본 사람을 위한 편집.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "{{GENDER:$1|위키백과}} 편집에 익숙한 사람을 위한 편집.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "교열 (문서를 읽고 검토하기)과 다른 문서로 가는 링크 넣기.",

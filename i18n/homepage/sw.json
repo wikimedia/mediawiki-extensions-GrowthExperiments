@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Edwingudfriend",
+			"Wangombe"
+		]
+	},
+	"growthexperiments-homepage-tab": "Ukurasa wa nyumbani",
+	"tooltip-pt-homepage": "{{GENDER:|Ukurasa wako}} wa nyumbani",
+	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Inatumika}} $2 {{PLURAL:$2|siku}} zilizopita",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> kati ya <strong>$2</strong> {{PLURAL:$2|pendekezo|mapendekezo}}"
+}

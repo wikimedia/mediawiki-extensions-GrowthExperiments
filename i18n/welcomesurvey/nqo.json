@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lancine.kounfantoh.fofana"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|ߌ ߣߌ߫ ߛߣߍ߫}}߸ $1",
+	"welcomesurvey-save-confirmation-title": "ߌ ߣߌ߫ ߗߋ߫߹ ߌ ߟߊ߫ ߖߋ߬ߓߌ߬ߟߌ ߓߘߊ߫ ߟߊߡߙߊ߬.",
+	"welcomesurvey-save-confirmation-text": "ߌ ߟߊ߫ ߖߋ߬ߓߌ߬ߟߌ ߟߎ߬ ߘߌߣߊ߬ ߊ߲ ߡߊߘߍ߬ߡߍ߲߫ ߞߊ߬ ߛߌߟߊ߫ ߢߣߊߡߊ ߘߴߌ ߡߊ߬ ߞߊ߬ ߥߞߌߔߋߘߌߦߊ ߘߊߡߌ߬ߣߊ߬.",
+	"welcomesurvey-save-btn": "ߊ߬ ߓߊ߲߫ ߘߊ߫",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|}}ߢߊߢߌߣߌ߲ߠߌ߲ ߣߌ߲߬ ߞߎ߲߬ߠߊ߫ ߠߊߝߘߏ߬",
+	"welcomesurvey-close-btn": "ߊ߬ ߘߊߕߎ߲߯ ߞߵߌ ߞߐߛߊ߬ߦߌ߫ $1 ߞߊ߲߬",
+	"welcomesurvey-sidebar-privacy-title": "ߊ߲ ߧߴߌ ߟߊ߫ ߘߎ߲߬ߘߎ߬ߡߊ ߟߎ߫ ߟߊߞߊ߲ߘߊ߫ ߟߊ߫",
+	"welcomesurvey-sidebar-privacy-text": "ߥߞߌߔߋߘߌߦߊ ߖߎ߬ߓߌߟߊ ߘߴ{{GENDER:$2|ߌ ߟߊ߫}} ߟߊ߫ ߖߋ߬ߓߌ߬ߟߌ ߟߊߓߊ߯ߙߊ߫ ߞߵߌ ߡߊߘߍ߬ߡߍ߲߫ {{SITENAME}} ߡߊߦߟߍ߬ߡߊ߲ ߘߊߡߌ߬ߣߊ߬ ߟߊ߫. $1.",
+	"welcomesurvey-privacy-policy-link-text": "ߘߏ߫ ߜߘߍ߫ ߟߎ߫ ߘߐߞߊ߬ߙߊ߲߫ ߞߊ߬ ߟߐ߬ ߓߟߏߡߊߜߍ߲ߠߊ߫ ߞߎߘߊ ߟߎ߬ ߟߊ߫ ߟߐ߲ߕߊ ߡߊ߬",
+	"welcomesurvey-sidebar-editing-title": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߊߡߌ߬ߣߊ߬ ߌߞߘߐ߫",
+	"welcomesurvey-sidebar-editing-text": "ߝߊߦߌߘߊ߫ ߘߐ߫ ߞߐߜߍ ߓߍ߯ ߘߌ߫ ߛߋ߫ ߡߊߦߟߍ߬ߡߊ߲߫ ߠߊ߫ ߡߐ߱ ߓߍ߯ ߓߟߏ߫߸ ߞߵߊ߬ ߟߴߊ߬ ߞߊ߲߬ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲߫ ߗߍ߬ߡߍ߫ ߘߌ߫ ߛߋ߫ ߞߍ߫ ߟߊ߫ ߕߎ߬ߡߊ߬ߙߋ߲ ߓߍ߯ ߞߘߐ߫ ߞߊ߬ ߞߣߐߘߐ ߟߎ߫ ߝߊ߬ߙߊ߫߸ ߞߊ߬ ߢߌ߬ߣߊ ߟߎ߬ ߛߊߞߍ߫߸ ߊ߬ ߣߌ߫ ߞߊ߬ ߘߐ߬ߞߊ߬ߙߊ߲߬ߠߌ߲ ߞߊߓߋ ߟߊߢߊ߬. ߞߐߜߍ ߢߌ߲߬ ߠߎ߬ ߘߌ߫ ߛߋ߫ ߘߍ߬ߡߍ߲߬ߠߌ߲߫ ߞߍ߫ ߟߊ߫ ߣߴ{{GENDER:$1|ߌ ߡߊ߬ߞߏ߬ ߞߍ߫ ߘߊ߫}} ߓߟߏߡߊߜߍ߲ ߞߏ ߟߊ߫.",
+	"welcomesurvey-sidebar-editing-link1-text": "ߡߞߊ߬ߙߊ߲߬ߠߌ߲",
+	"welcomesurvey-sidebar-editing-link1-title": "ߥߞߌߔߋߘߌߦߊ:ߡߞߊ߬ߙߊ߲߬ߘߊ߮",
+	"welcomesurvey-sidebar-editing-link2-text": "ߘߍ߬ߡߍ߲߬ߠߌ߲ ߗߋߘߊ",
+	"welcomesurvey-sidebar-editing-link2-title": "ߥߞߌߔߋߘߌߦߊ:ߘߍ߬ߡߍ߲߬ߠߌ߲ ߟߐ߯ߓߊߟߐ",
+	"welcomesurvey-question-reason-label": "ߡߎ߲߬ߠߊ߫ ߌߟߋ ߞߵߌ ߟߊ߫ ߖߊ߬ߕߋ߬ߘߊ ߛߌ߲ߘߌ߫ ߓߌ߬؟",
+	"welcomesurvey-dropdown-option-select-label": "ߛߎߥߊ߲ߘߟߌ ߞߍ߫ ߖߊ߰ߣߌ߲߫...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "ߞߊ߬ ߛߓߍߛߋ߲ ߝߌ߬ߟߌ ߘߐߓߍ߲߬ ߥߟߊ߫ ߥߞߌߔߋߘߌߦߊ ߞߎߡߘߊ ߕߊ ߘߏ߫",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "ߞߊ߬ ߞߎ߲߬ߠߊ߬ߝߏߣߌ߲ ߘߏ߫ ߝߙߊ߬ ߥߟߊ߫ ߞߊ߬ ߥߞߌߡߋߘߌߦߊ ߞߎߡߘߊ ߕߊ ߘߏ߫ ߡߊߝߊ߬ߟߋ߲߫",
+	"welcomesurvey-question-reason-option-add-image-label": "ߞߊ߬ ߖߌ߬ߦߊ߬ߓߍ ߘߏ߫ ߝߊ߬ߙߊ߫ ߥߟߊ߫ ߖߌ߬ߦߊ ߘߏ߫ ߥߞߌߔߋߘߌߦߊ߫ ߞߎߡߘߊ ߟߊ߫",
+	"welcomesurvey-question-reason-option-new-page-label": "ߞߊ߬ ߥߞߌߔߋߘߌߦߊ ߞߎߡߘߊ߫ ߞߎߘߊ ߘߏ߫ ߛߌ߲ߘߌ߫",
+	"welcomesurvey-question-reason-option-program-participant-label": "ߒ ߧߋ߫ ߕߘߍ߬ ߞߏ ߘߐ߫ ߢߍߥߟߊ ߘߏ߫ ߟߋ߬ ߘߐ߫߸ ߛߊ߯ߘߊ߸ ߤߊߡߊ߲߫ ߖߊ߲߬ߖߏ߲ ߘߏ߫",
+	"welcomesurvey-question-reason-option-read-label": "ߞߊ߬ ߥߞߌߔߋߘߌߦߊ ߘߐߞߊ߬ߙߊ߲߫",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "ߞߏ߫ ߜߘߍ߫",
+	"welcomesurvey-question-reason-option-other-label": "ߞߏ߫ ߜߘߍ (ߏ߬ ߛߓߍ߫ ߖߊ߰ߣߌ߲߫)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|}} ߞߎ߲߬ ߜߘߍ߫ ߟߊߘߏ߲߬...",
+	"welcomesurvey-question-mentor-info": "ߊ߲ ߠߎ߬ ߦߋ߫ ߢߍߥߟߊ ߟߊߝߟߐߟߌ ߘߊ߲ߞߎ߲߫ ߠߊ߫ ߓߟߏߓߌߟߊߢߐ߲߯ߞߊ߲ߠߊ߫ ߝߊ߰ߡߎ߲߬ߣߍ߲߬ߓߊ ߟߎ߬ ߟߋ߬ ߢߍ߫ ߞߊ߬ ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ߫ ߞߎߘߟߊߡߊ ߟߎ߬ ߘߍ߬ߡߍ߲߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߡߊ߬. {{GENDER:$1|ߊ߬ ߝߴߊ߬ ߘߊ߲ߞߎ߲ߣߍ߲߫ ߦߴߌߟߋ ߓߟߏ߫}} ߞߊ߬ ߞߏߟߊ߲ߞߘߐߢߐ߲߯ߦߊ ߞߍ߫ ߛߴߌ ߘߌ߫ ߘߍ߬ߡߍ߲߬ߠߌ߲ ߛߐ߬ߘߐ߲߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߡߊ߬؟",
+	"welcomesurvey-question-mentor-label": "ߞߏߛߓߍ߫߸ {{GENDER:$1|ߊ߬ ߡߊ߬ߞߏ ߦߴߊ߬ ߟߊ߫}}",
+	"welcomesurvey-question-edited-label": "ߊ߬ ߝߐ߫ ߌߟߋ ߓߘߊ߫ ߥߞߌߔߋߘߌߦߊ ߡߊߦߟߍ߬ߡߊ߲߫ ߞߘߐ߬ߡߊ߲߫ ߓߊ߬؟",
+	"welcomesurvey-question-edited-option-yes-many-label": "ߞߏߛߓߍ߫߸ ߛߋ߲߬ߧߊ߬ ߦߙߌߞߊ߫",
+	"welcomesurvey-question-edited-option-yes-few-label": "ߊ߰ߥߐ߫߸ ߛߋ߲߬ߧߊ߬ ߞߋߟߋ߲߫ ߥߟߊ߫ ߝߌ߬ߟߊ߫",
+	"welcomesurvey-question-edited-option-no-dunno-label": "ߊ߬ߦߌ߫߸ ߒ ߡߊ߫ ߥߞߌߔߋߘߌߦߊ ߡߊߦߟߍ߬ߡߊ߲߫ ߢߊ ߡߎ߰ߡߍ ߟߋ߬ ߟߐ߲߫",
+	"welcomesurvey-question-edited-option-no-other-label": "ߒ߬ߒ߫߸ ߞߎ߲߬ ߜߘߍ߫ ߟߊ߫",
+	"welcomesurvey-question-edited-option-dont-remember-label": "ߊ߬ ߕߍ߫ ߒ ߞߣߐ߫ ߤߊ߲߫߹",
+	"welcomesurvey-question-email-label": "ߢߎߡߍߙߋ߲ߞߏ߲ߘߏ (ߞߊ߬ߘߌߦߊߢߍ)",
+	"welcomesurvey-question-email-placeholder": "ߌ ߟߊ߫ ߢߎߡߍߙߋ߲߫ ߞߏ߲ߘߏ ߟߊߘߏ߲߬..."
+}
