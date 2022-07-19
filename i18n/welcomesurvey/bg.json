@@ -13,7 +13,7 @@
 	"welcomesurvey-save-confirmation-text": "Вашите отговори ще ни помогнат да ви дадем полезна информация за това как да започнете работа с Уикипедия.",
 	"welcomesurvey-subtitle": "Помогнете ни да подобрим опита Ви с Уикипедия, като отговорите на няколко въпроса.",
 	"welcomesurvey-save-btn": "Приключване",
-	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескачане}} на анкетата",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескачане}} на проучването",
 	"welcomesurvey-close-btn": "Затваряне и връщане обратно към $1",
 	"welcomesurvey-sidebar-privacy-title": "Ние ценим вашата лична информация",
 	"welcomesurvey-sidebar-privacy-text": "Фондация Уикимедия ще използва {{GENDER:$2|Вашите}} отговори, за да Ви помогне да започнете да редактирате {{SITENAME}}. $1.",

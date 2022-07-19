@@ -5,7 +5,8 @@
 			"Sonic Speedy",
 			"WillsonEP09",
 			"Daud I.F. Argana",
-			"ANukuma"
+			"ANukuma",
+			"Kandar"
 		]
 	},
 	"growthexperiments-desc": "Ekstensi ini berisi uji coba yang dilakukan oleh tim Pertumbuhan.",
@@ -13,7 +14,7 @@
 	"growthexperiments-config-validator-error": "Validasi untuk $1 gagal dengan: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> harusnya merupakan <code>$2</code>, bukan <code>$3</code>",
 	"growthexperiments-edit-config-disabled": "Konfigurasi komunitas saat ini dimatikan.",
-	"growthexperiments-edit-config-title": "Ubah konfigurasi Pertumbuhan",
+	"growthexperiments-edit-config-title": "Konfigurasi Pertumbuhan Edit",
 	"growthexperiments-edit-config-pretext": "Halaman ini memungkinkan Anda mengubah konfiguarsi fitur tim [[:mw:Special:MyLanguage/Growth|Pertumbuhan]]. Halaman ini akan mengubah $1 sesuai keinginan Anda. Anda bisa melihat pengubahan Anda di riwayat halaman tersebut.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Formulir ini membolehkan pengguna yang punya izin untuk mengubah konfigurasi fitur tim [[:mw:Special:MyLanguage/Growth|Pertumbuhan]].",
 	"growthexperiments-edit-config-feedback-headline": "Apakah Anda punya ide atau pertanyaan mengenai formulir ini?",

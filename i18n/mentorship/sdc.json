@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"F Samaritani"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Innòmu utenti",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Cuntéggiu di li mudìfigghi",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data di registhrazioni",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filthri",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Attuarizà",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Cuntéggiu di li mudìfigghi",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Zercha",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "Ischunisciddu",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 pai $2"
+}

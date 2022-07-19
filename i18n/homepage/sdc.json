@@ -1,9 +1,41 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jun Misugi"
+			"Jun Misugi",
+			"F Samaritani"
 		]
 	},
+	"growthexperiments-homepage-email-header-startemail": "Indirizzu di postha erettrònica: $1",
+	"growthexperiments-homepage-email-button-confirmed": "Prifirenzi",
+	"growthexperiments-homepage-email-changelink": "ciamba",
+	"growthexperiments-homepage-email-confirmlink": "cunfèimma",
+	"growthexperiments-homepage-startediting-dialog-progress": "$1 pai $2",
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Annullà",
+	"growthexperiments-homepage-startediting-dialog-intro-forward": "Continuà",
+	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Indareddu",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Fattu",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Fattu",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Cumpresu",
+	"growthexperiments-tour-response-button-okay": "Cumpresu",
+	"growthexperiments-homepage-suggestededits-edit-card": "Mudificà",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fattu",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fattu",
+	"growthexperiments-homepage-suggestededits-topic-name-computers-and-internet": "Computer e internet",
+	"growthexperiments-homepage-suggestededits-topic-name-tv-and-film": "TV e film",
+	"growthexperiments-homepage-suggestededits-topic-name-africa": "Àfrica",
+	"growthexperiments-homepage-suggestededits-topic-name-asia": "Àsia",
+	"growthexperiments-homepage-suggestededits-topic-name-europe": "Europa",
+	"growthexperiments-homepage-suggestededits-topic-name-history": "Isthòria",
+	"growthexperiments-notification-body-mentor-change": "Rajoni: $1",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continuà",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Cumpresu",
+	"growthexperiments-addlink-context-text-label": "Testhu",
 	"growthexperiments-addlink-context-button-accept": "Éia",
-	"growthexperiments-addlink-context-button-reject": "Nò"
+	"growthexperiments-addlink-context-button-reject": "Nò",
+	"growthexperiments-addlink-context-button-next": "Sighenti",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Althru",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Fattu",
+	"growthexperiments-addlink-summary-title": "Dettàgliu",
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Annullà"
 }

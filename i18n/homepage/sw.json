@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Edwingudfriend"
+			"Edwingudfriend",
+			"Amire80",
+			"Wangombe"
 		]
 	},
+	"growthexperiments-homepage-tab": "Ukurasa wa nyumbani",
+	"tooltip-pt-homepage": "{{GENDER:|Ukurasa wako}} wa nyumbani",
 	"growthexperiments-homepage-startediting-dialog-header": "Kuhusu mabadiliko yaliyopendekezwa",
+	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Inatumika}} $2 {{PLURAL:$2|siku}} zilizopita",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> kati ya <strong>$2</strong> {{PLURAL:$2|pendekezo|mapendekezo}}",
 	"growthexperiments-homepage-suggestededits-more-info": "Habari zaidi kuhusu mabadiliko yaliyopendekezwa"
 }

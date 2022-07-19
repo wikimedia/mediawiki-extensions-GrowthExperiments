@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kandar"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bagéa}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "Tepas",
+	"tooltip-pt-homepage": "Tepas {{GENDER:|anjeun}}",
+	"growthexperiments-homepage-enable": "Témbongkeun tepas pamaké anyar",
+	"growthexperiments-homepage-pt-link": "Baku pikeun tepas pamaké anyar ti tutumbu sandiasma dina parabot pribadi",
+	"growthexperiments-homepage-email-header-noemail": "Tambahkeun surélék {{GENDER:$1|anjeun}}",
+	"growthexperiments-homepage-email-header-unconfirmed": "Kompirmasi surélék {{GENDER:$1|anjeun}}",
+	"growthexperiments-homepage-email-header-confirmed": "Surélék ditambahkeun",
+	"growthexperiments-homepage-email-header-startemail": "Surélék: $1",
+	"growthexperiments-homepage-email-text-noemail": "Disarankeun pikeun mulihkeun akun",
+	"growthexperiments-homepage-email-text-unconfirmed": "Pariksa surélék {{GENDER:$1|anjeun}} pikeun tutumbu kompirmasi, atawa ngirim tutumbu anyar.",
+	"growthexperiments-homepage-email-text-confirmed": "Surélék {{GENDER:$1|anjeun}} geus dikompirmasi. Anjeun bisa ngarobah setélan surélék anjeun dina Préperénsi.",
+	"growthexperiments-homepage-email-button-noemail": "Tambahkeun surélék",
+	"growthexperiments-homepage-email-button-unconfirmed": "Pénta tutumbu anyar",
+	"growthexperiments-homepage-email-button-confirmed": "Préperénsi",
+	"growthexperiments-homepage-email-changelink": "robah",
+	"growthexperiments-homepage-email-confirmlink": "kompirmasi",
+	"growthexperiments-homepage-startediting-header": "Mitembeyan ngédit",
+	"growthexperiments-homepage-startediting-subheader-edit-typo": "Mimitian ngaropéa saeutik-saeutik nuturkeun tungtunan di handap ieu!",
+	"growthexperiments-homepage-startediting-subheader-add-image": "Saméméh nambahkeun gambar, cobaan diajar ngédit nu leuwih babari!",
+	"growthexperiments-homepage-startediting-subheader-new-page": "Saméméh nyieun artikel anyar, cobaan diajar ngédit nu leuwih babari!",
+	"growthexperiments-homepage-startediting-subheader-other": "Bantuan nambahkeun ka pangaweruh dunya ku ngaropéa nu arénténg heula kana artikel Wikipédia.",
+	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Tingali éditan anu disarankeun",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Mimitian ku éditan anu disarankeun",
+	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Bantuan nambahkeun ka pangaweruh dunya ku ngaropéa nu arénténg heula kana artikel Wikipédia.",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Pénta saran",
+	"growthexperiments-homepage-startediting-button": "Tingali éditan anu disarankeun",
+	"growthexperiments-homepage-startediting-dialog-header": "Ngeunaan éditan anu disarankeun",
+	"growthexperiments-homepage-startediting-dialog-progress": "$1 ti $2",
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Bolay",
+	"growthexperiments-homepage-startediting-dialog-intro-forward": "Tuluykeun",
+	"growthexperiments-homepage-startediting-dialog-intro-header": "Wikipédia téh diwangun ku jalma-jalma kawas {{GENDER:|anjeun}} anu réréongan.",
+	"growthexperiments-homepage-startediting-dialog-intro-subheader": "Éditan {{GENDER:|anjeun}} mantuan ngaronjatkeun Wikipédia sarta ngamajukeun misi pikeun ngabagi pangaweruh bébas ka dunya. Teruskeun mitembeyan ku éditan énténg anu disarankeun.",
+	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>Nalika {{GENDER:|anjeun}} nyieun akun, {{GENDER:|anjeun}} nyarita yén {{GENDER:|anjeun}} hayang nambahan poto atawa gambar.</strong> Éta téh penting, ngan teu babari, ku kituna mending {{GENDER:|anjeun}} nyobaan éditan nu arénténg heula. Upama {{GENDER:|anjeun}} hayang langsung nambahan poto atawa gambar, {{GENDER:|anjeun}} bisa [$1 diajar di dieu]."
+}
