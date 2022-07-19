@@ -18,7 +18,7 @@ class NewImpact extends BaseModule {
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager
 	) {
-		parent::__construct( 'new-impact', $ctx, $wikiConfig, $experimentUserManager );
+		parent::__construct( 'impact', $ctx, $wikiConfig, $experimentUserManager );
 	}
 
 	/** @inheritDoc */
