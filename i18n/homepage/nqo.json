@@ -5,7 +5,7 @@
 			"Lancine.kounfantoh.fofana"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|ߌ ߣߌ߫ ߕߎ߬ߡߊ߫}}߸ {{$1:ߓߌ߬ߘߌ}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|ߌ ߣߌ߫ ߕߎ߬ߡߊ߫}}߸ <bdi>$1</bdi>",
 	"growthexperiments-homepage-tab": "ߓߏ߬ߟߏ߲߬ߘߊ ߞߐߜߍ",
 	"tooltip-pt-homepage": "{{GENDER:|ߌ ߟߊ߫}} ߓߏ߬ߟߏ߲߬ߘߊ ߞߐߜߍ",
 	"prefs-homepage": "ߣߊ߬ߓߊ߰ߕߐ߫ ߞߎߘߊ ߟߎ߬ ߟߊ߫ ߟߊ߬ߓߊ߰ߙߊ߬ߟߌ",

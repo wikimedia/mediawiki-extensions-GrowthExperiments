@@ -63,6 +63,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Adăugare de surse de încredere și actualizare de articole care sunt inactuale.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Creare de articole noi și extindere de articole scurte.",
 	"growthexperiments-homepage-suggested-edits-header": "Editări sugerate",
+	"growthexperiments-homepage-new-impact-header": "Impactul {{GENDER:$1|dvs.}}",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "Vă rugăm să activați JavaScript pentru a vizualiza această componentă.",
 	"growthexperiments-homepage-impact-header": "Impactul {{GENDER:$1|dvs.}}",
 	"growthexperiments-homepage-impact-subheader-text": "Oamenii văd articolele pe care le-ați {{GENDER:$1|editat}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Vizualizări de când ați {{GENDER:$1|editat}} (ultimele 60 de zile):",

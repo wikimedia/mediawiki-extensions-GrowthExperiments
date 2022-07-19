@@ -24,5 +24,12 @@
 	"apihelp-growthsetmenteestatus-param-state-optout": "Підопічний відмовився від наставництва; зв'язок між підопічним і наставником буде вилучено, модуль наставництва буде замінено на можливість увімкнути його знову",
 	"apihelp-query+growthmenteestatus-summary": "Зробити запит на статус поточного користувача як підопічного; детальну інформацію про окремі статуси див у документації action=growthsetmentorweight.",
 	"apihelp-query+growthmentormentee-summary": "Отримати усіх підопічних даного наставники",
-	"apihelp-query+growthmentormentee-param-gemmmentor": "Наставник, для якого вивести підопічних"
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Наставник, для якого вивести підопічних",
+	"apihelp-growthmanagementorlist-summary": "Керуйте інформацією в структурованому списку наставників (зазвичай зберігається в [[MediaWiki:GrowthMentors.json]]). Цим модулем можуть користуватися як поточні, так і майбутні наставники (щоб додати себе чи змінити свої дані), а також адміністратори (для всіх користувачів).",
+	"apihelp-growthmanagementorlist-param-geaction": "Дія",
+	"apihelp-growthmanagementorlist-param-message": "Вітальне повідомлення (використовуйте порожній рядок для повідомлення наставника за замовчуванням)",
+	"apihelp-growthmanagementorlist-param-weight": "Вага",
+	"apihelp-growthmanagementorlist-param-autoassigned": "Чи призначається наставник новачкам автоматично?",
+	"apihelp-growthmanagementorlist-param-summary": "Причина зміни",
+	"apihelp-growthmanagementorlist-param-username": "Ім’я користувача наставника, якого торкнуться зміни. Якщо не вказано, використовуватиметься поточний користувач. Може використовуватися лише привілейованими користувачами."
 }

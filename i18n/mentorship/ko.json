@@ -47,7 +47,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "멘티 데이터를 사용할 수 없음",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "아직 할당된 멘티가 없습니다. 데이터는 3시간마다 업데이트됩니다.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "멘티가 없습니다",
-	"growthexperiments-mentor-dashboard-mentee-overview-table-caption": "{{GENDER:|내}} 멘티 (3시간마다 데이터가 업데이트됨)",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "멘티를 찾으려면 필터를 변경하십시오.",
 	"growthexperiments-mentor-dashboard-resources-headline": "자료",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "멘토 목록",

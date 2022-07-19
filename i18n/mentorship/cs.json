@@ -50,7 +50,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Data o nováčcích jsou nedostupná",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Možná ještě nemáte žádné nováčky přiřazené. Data se aktualizují každé tři hodiny.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Žádní nováčci nebyli nalezeni",
-	"growthexperiments-mentor-dashboard-mentee-overview-table-caption": "{{GENDER:|Vaši}} nováčci (zobrazená data se aktualizují každé tři hodiny)",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Změňte své filtry, abyste nějaké nováčky viděli.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Zdroje",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Seznam mentorů",

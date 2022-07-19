@@ -52,7 +52,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "بيانات المرشَدين غير متوفرة",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "ربما لا يوجد لديك مرشَدون معيّنون، بعد. يتمّ تحيين البيانات كل ثلاث أيّام.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "لم يتمّ العثور على مرشَدين",
-	"growthexperiments-mentor-dashboard-mentee-overview-table-caption": "المُرشَدون والمرشَدات الخاصون {{GENDER:|بكَ|بكِ}} ( يتم تحديث البيانات كل 3 ساعات )",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "استبدال مرشّحاتك للحصول على مرشَدين.",
 	"growthexperiments-mentor-dashboard-resources-headline": "المراجع",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "قائمة المرشِدين",

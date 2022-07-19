@@ -72,6 +72,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "הוספת מקורות מהימנים ועדכון ערכים שהתיישנו",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "יצירת ערכים חדשים והרחבת ערכים קצרים.",
 	"growthexperiments-homepage-suggested-edits-header": "עריכות מוצעות",
+	"growthexperiments-homepage-new-impact-header": "ההשפעה {{GENDER:$1|שלך}}",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "נא להפעיל JavaScript כדי להציג את הרכיב הזה.",
 	"growthexperiments-homepage-impact-header": "ההשפעה {{GENDER:$1|שלך}}",
 	"growthexperiments-homepage-impact-subheader-text": "אנשים צופים בערכים {{GENDER:$1|שערכת}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "צפיות מאז {{GENDER:$1|שערכת}} (60 הימים האחרונים):",

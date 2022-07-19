@@ -48,7 +48,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Datele despre ucenici sunt indisponibile",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "S-ar putea să nu aveți niciun ucenic încă. Datele sunt actualizate odată la trei ore.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Niciun ucenic găsit",
-	"growthexperiments-mentor-dashboard-mentee-overview-table-caption": "Ucenicii {{GENDER:|dvs.}} (datele sunt actualizate odată la fiecare câte 3 ore)",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Schimbați-vă filtrele pentru a găsi ucenici.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Resurse",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Lista mentorilor",
