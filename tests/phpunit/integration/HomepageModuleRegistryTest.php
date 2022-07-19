@@ -39,6 +39,7 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::getWiring
 	 */
 	public function testGetImpactModule() {
+		$this->overrideConfigValue( 'GEUseNewImpactModule', false );
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
 		$context = RequestContext::getMain();
