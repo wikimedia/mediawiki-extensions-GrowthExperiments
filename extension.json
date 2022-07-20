@@ -319,6 +319,12 @@
 				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"PerDbNameStatsdDataFactory"
 			]
+		},
+		"earlylifecycle": {
+			"class": "GrowthExperiments\\EarlyLifeCycleHooks",
+			"services": [
+				"UserOptionsLookup"
+			]
 		}
 	},
 	"Hooks": {
@@ -398,7 +404,7 @@
 			"homepage",
 			"mentordashboarddiscovery"
 		],
-		"MessageCache::get": "homepage",
+		"MessageCache::get": "earlylifecycle",
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
 			"homepage",

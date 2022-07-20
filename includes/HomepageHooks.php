@@ -307,6 +307,7 @@ class HomepageHooks implements
 	 * @throws ConfigException
 	 */
 	public static function isHomepageEnabled( UserIdentity $user = null ): bool {
+		// keep the dependencies minimal, this is used from other hooks as well
 		$services = MediaWikiServices::getInstance();
 		return (
 			$services->getMainConfig()->get( 'GEHomepageEnabled' ) &&
