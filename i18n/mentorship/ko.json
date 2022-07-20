@@ -71,6 +71,7 @@
 	"growthexperiments-rcfilters-mentorship-title": "멘토",
 	"growthexperiments-rcfilters-mentorship-starred-label": "북마크한 멘티",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "북마크하지 않은 멘티",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "{{GENDER:|당신}}에게 할당된 다른 멘티",
 	"growthexperiments-quit-mentorship-title": "멘토십 끝내기",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "그만두신다니 안타깝습니다. 멘토링을 그만두는 과정을 시작하려면 먼저 [[$1|멘토 목록에서]] 당신의 이름을 제거해야 합니다. 그런 다음 이 문서로 돌아오십시오.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "멘토링을 그만두는 다음 단계는 멘티를 재배정하는 것입니다. 그만두는 것이 확실하다면 아래 버튼을 눌러 주십시오.",

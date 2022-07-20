@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"F Samaritani"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Binvinuddu}}, $1!",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Althru",
+	"welcomesurvey-question-email-label": "Indirizzu di postha erettrònica (opzionari)",
+	"welcomesurvey-question-email-placeholder": "Ischribi lu tóiu indirizzu di postha erettrònica..."
+}

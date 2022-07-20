@@ -8,7 +8,7 @@
 	},
 	"growthexperiments-desc": "Това разширение съдържа експерименти, направени от екипа на Растеж.",
 	"growthexperiments-config-validator-additional-fields": "Новата конфигурация има конфигурационни ключове, които не могат да бъдат персонализирани тук.",
-	"growthexperiments-config-validator-error": "Удостоверяването за $1 е неуспешно поради: „$2“",
+	"growthexperiments-config-validator-error": "Валидацията на $1 е неуспешна поради: „$2“",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> се очаква да бъде <code>$2</code>, но е <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Неправилен модел на съдържание: конфигурационният файл на GrowthExperiments трябва да бъде с модел на съдържание JSON, установено е $1",
 	"growthexperiments-edit-config-disabled": "Конфигурацията за общността е деактивирана.",
