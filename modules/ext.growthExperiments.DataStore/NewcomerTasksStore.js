@@ -267,6 +267,7 @@ NewcomerTasksStore.prototype.onCurrentTaskExtraDataChanged = function () {
  * @param {string} context Context that triggers the action
  * @param {Object} [config]
  * @param {number} [config.excludePageId] Article ID to exclude, used when showing the task feed after completing a task
+ * @param {boolean} [config.excludeExceededQuotaTaskTypes] Whether to filter out the tasks which its type has exceed the daily limit
  * @return {jQuery.Promise}
  */
 NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
@@ -288,7 +289,18 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		apiConfig );
 
 	this.apiPromise.then( function ( data ) {
+		var filterByDailyTaskLimitNotExceeded = function ( task ) {
+			var qualityGate = task.qualityGateConfig[ task.tasktype ];
+			if ( !qualityGate ) {
+				return true;
+			}
+			return qualityGate.dailyLimit === false;
+		};
+
 		var updatedTaskQueue = data.tasks;
+		if ( config && config.excludeExceededQuotaTaskTypes === true ) {
+			updatedTaskQueue = updatedTaskQueue.filter( filterByDailyTaskLimitNotExceeded );
+		}
 		this.taskCount = data.count;
 		this.allTasksFetched = false;
 		this.tasksFetchedCount = this.taskQueue.length;

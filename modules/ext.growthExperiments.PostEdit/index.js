@@ -198,7 +198,8 @@
 		 */
 		setupPanel: function ( isDialogShownUponReload ) {
 			return tasksStore.fetchTasks( 'postEditDialog', {
-				excludePageId: mw.config.get( 'wgArticleId' )
+				excludePageId: mw.config.get( 'wgArticleId' ),
+				excludeExceededQuotaTaskTypes: true
 			} ).then( function () {
 				return setup( tasksStore.getCurrentTask(), null, isDialogShownUponReload );
 			}, function ( errorMessage ) {
