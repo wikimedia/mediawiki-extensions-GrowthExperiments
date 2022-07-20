@@ -82,6 +82,7 @@ const getters = {
 // Utils
 const isBoolean = ( val ) => typeof val === 'boolean';
 const isString = ( val ) => typeof val === 'string';
+const isEmptyString = ( val ) => val === '';
 const removeEmpty = ( obj ) => {
 	const newObj = {};
 	Object.keys( obj ).forEach( ( key ) => {
@@ -135,11 +136,11 @@ const validateAndApplyFilters = ( context, filters = {} ) => {
 	if ( filters.prefix === null || isString( filters.prefix ) ) {
 		validFilters.prefix = filters.prefix;
 	}
-	if ( Number.isInteger( filters.editCountMin ) ) {
-		validFilters.editCountMin = filters.editCountMin;
+	if ( isEmptyString( filters.editCountMin ) || Number.isInteger( filters.editCountMin ) ) {
+		validFilters.editCountMin = filters.editCountMin || undefined;
 	}
-	if ( Number.isInteger( filters.editCountMax ) ) {
-		validFilters.editCountMax = filters.editCountMax;
+	if ( isEmptyString( filters.editCountMax ) || Number.isInteger( filters.editCountMax ) ) {
+		validFilters.editCountMax = filters.editCountMax || undefined;
 	}
 	if ( isNaN( filters.activeDaysAgo ) || Number.isInteger( filters.activeDaysAgo ) ) {
 		validFilters.activeDaysAgo = filters.activeDaysAgo || undefined;

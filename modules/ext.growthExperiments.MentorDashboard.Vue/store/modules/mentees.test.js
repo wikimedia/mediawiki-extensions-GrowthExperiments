@@ -232,8 +232,59 @@ describe( 'actions', () => {
 				onlyStarred: false,
 				activeDaysAgo: undefined
 			} },
-			// { type: 'SET_FILTERS', payload: { editCountMin: 1 } },
-			// { type: 'SET_API_FILTERS', payload: { editCountMin: 1 } },
+			{ type: 'SET_PAGES', payload: 0 },
+			{ type: 'SET_MENTEES', payload: [] },
+			{ type: 'SET_READY', payload: true }
+		], done );
+	} );
+	it( 'should get mentees data and starred mentees with removed filters', ( done ) => {
+		const mockPresets = { usersToShow: 15, maxedits: 15, minedits: 15, onlystarred: true };
+		global.mw.user.options.get = jest.fn( () => jsonStoredPresets( mockPresets ) );
+		const { api, actions } = require( './mentees.js' );
+
+		api.getTotalPages = jest.fn( () => 0 );
+		api.getMenteeData = jest.fn( () => $.Deferred().resolve( [] ).promise() );
+		api.getStarredMentees = jest.fn( () => $.Deferred().resolve( [] ).promise() );
+
+		const state = {
+			all: [],
+			isReady: false,
+			totalPages: 0,
+			page: 0,
+			prefix: null,
+			limit: 5,
+			editCountMin: 0,
+			editCountMax: 100,
+			onlyStarred: false,
+			activeDaysAgo: undefined
+		};
+
+		const getters = {
+			filters: {
+				limit: state.limit,
+				editCountMin: state.editCountMin,
+				editCountMax: state.editCountMax,
+				onlyStarred: state.onlyStarred,
+				activeDaysAgo: state.activeDaysAgo
+			}
+		};
+
+		testAction( actions.getAllMentees, { editCountMin: '' }, { state, getters }, [
+			{ type: 'SET_READY', payload: false },
+			{ type: 'SET_FILTERS', payload: {
+				limit: 5,
+				editCountMin: undefined,
+				editCountMax: 100,
+				onlyStarred: false,
+				activeDaysAgo: undefined
+			} },
+			{ type: 'SET_API_FILTERS', payload: {
+				limit: 5,
+				editCountMin: undefined,
+				editCountMax: 100,
+				onlyStarred: false,
+				activeDaysAgo: undefined
+			} },
 			{ type: 'SET_PAGES', payload: 0 },
 			{ type: 'SET_MENTEES', payload: [] },
 			{ type: 'SET_READY', payload: true }

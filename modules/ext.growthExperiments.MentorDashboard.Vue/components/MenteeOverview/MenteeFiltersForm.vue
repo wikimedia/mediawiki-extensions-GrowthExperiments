@@ -103,8 +103,8 @@ module.exports = exports = {
 	},
 	props: {
 		activeDaysAgo: { type: Number, default: undefined },
-		editCountMin: { type: Number, default: 1 },
-		editCountMax: { type: Number, default: 500 },
+		editCountMin: { type: [ Number, String ], default: undefined },
+		editCountMax: { type: [ Number, String ], default: undefined },
 		onlyStarred: { type: Boolean, default: false }
 	},
 	emits: [ 'close', 'update:filters' ],
@@ -150,13 +150,13 @@ module.exports = exports = {
 	},
 	methods: {
 		onFiltersUpdate() {
-			// TODO use a number-input when possible
-			// Convert string values from text-input to numbers
 			const filters = {
 				onlyStarred: this.formData.onlyStarred,
+				// Falsy values in activeDaysAgo (null), editCountMin (''), editCountMin ('')
+				// are used to remove the filter
 				activeDaysAgo: this.formData.activeDaysAgo && Number( this.formData.activeDaysAgo ),
-				editCountMin: Number( this.formData.editCountMin ),
-				editCountMax: Number( this.formData.editCountMax )
+				editCountMin: this.formData.editCountMin && Number( this.formData.editCountMin ),
+				editCountMax: this.formData.editCountMax && Number( this.formData.editCountMax )
 			};
 			this.$emit( 'update:filters', filters );
 		},

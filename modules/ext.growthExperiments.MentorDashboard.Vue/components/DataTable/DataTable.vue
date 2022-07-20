@@ -82,7 +82,7 @@ module.exports = exports = {
 		DataTableCellMentee
 	},
 	props: {
-		captionText: { type: String, required: true },
+		captionText: { type: String, default: undefined },
 		columns: { type: Array, required: true },
 		data: { type: Object, default: () => ( { rows: [], totalPages: 0 } ) },
 		limit: { type: Number, default: LIMIT_OPTIONS[ 1 ] }
