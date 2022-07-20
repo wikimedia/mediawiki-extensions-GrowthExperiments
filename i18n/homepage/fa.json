@@ -72,6 +72,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "افزودن منابع معتبر و بروزرسانی مقاله‌هایی که اطلاعات آن‌ها قدیمی شده‌است",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "مقاله‌های جدید ایجاد کنید و مقاله‌های کوتاه را گسترش دهید.",
 	"growthexperiments-homepage-suggested-edits-header": "ویرایش‌های پیشنهادی",
+	"growthexperiments-homepage-new-impact-header": "اثرگذاری {{GENDER:$1|شما}}",
 	"growthexperiments-homepage-impact-header": "اثرگذاری {{GENDER:$1|شما}}",
 	"growthexperiments-homepage-impact-subheader-text": "افراد در حال دیدن مقاله‌هایی هستند که {{GENDER:$1|شما}} ویرایششان کرده‌اید!",
 	"growthexperiments-homepage-impact-subheader-subtext": "بازدید‌ها از زمان ویرایش کردن {{GENDER:$1|شما}} (۶۰ روز گذشته):",

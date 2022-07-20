@@ -73,6 +73,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "إضافة مصادر موثوقة وتحديث المقالات القديمة.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "{{GENDER:|أنشئ|أنشئي}} مقالات جديدة و{{GENDER:|وسع|وسعي}} مقالات قصيرة.",
 	"growthexperiments-homepage-suggested-edits-header": "التعديلات المقترحة",
+	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|تأثيرك}}",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "الرجاء تفعيل الجافاسكريبت لعرض هذا المكون.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|تأثيرك}}",
 	"growthexperiments-homepage-impact-subheader-text": "يطّلع الناس على المقالات التي {{GENDER:$1|عدّلتها}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "المشاهدات منذ {{GENDER:$1|قيامك}} بالتحرير (آخر 60 يوما):",

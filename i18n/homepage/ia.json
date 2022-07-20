@@ -63,6 +63,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Creation de nove articulos e ampliamento de curte articulos.",
 	"growthexperiments-homepage-suggested-edits-header": "Modificationes suggerite",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Tu}} impacto",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "Per favor activa JavaScript pro vider iste componente.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Tu}} impacto",
 	"growthexperiments-homepage-impact-subheader-text": "Le gente lege le articulos que {{GENDER:$1|tu}} ha modificate!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas post {{GENDER:$1|tu}} modification (ultime 60 dies):",
