@@ -123,19 +123,19 @@ class MentorStatusManager implements IDBAccessObject {
 
 		// This should be okay, as up_property is an index, and we won't
 		// get a lot of rows to process.
-		$awayMentorIds = $db->selectFieldValues(
-			'user_properties',
-			'up_user',
-			[
+		$awayMentorIds = $db->newSelectQueryBuilder()
+			->select( 'up_user' )
+			->from( 'user_properties' )
+			->where( [
 				'up_property' => self::MENTOR_AWAY_TIMESTAMP_PREF,
 				'up_value IS NOT NULL',
-				'up_value > ' . $this->dbr->addQuotes(
-					$this->dbr->timestamp()
+				'up_value > ' . $db->addQuotes(
+					$db->timestamp()
 				)
-			],
-			__METHOD__,
-			$options
-		);
+			] )
+			->options( $options )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
 
 		if ( $awayMentorIds === [] ) {
 			return [];
