@@ -416,7 +416,10 @@
 		"BeforeCreateEchoEvent": [
 			"GrowthExperiments\\Mentorship\\Hooks\\MentorHooks::onBeforeCreateEchoEvent"
 		],
-		"FormatAutocomments": "homepage",
+		"FormatAutocomments": [
+			"homepage",
+			"mentor"
+		],
 		"ParserFirstCallInit": "parserfunctions",
 		"SearchDataForIndex": "homepage",
 		"LoadExtensionSchemaUpdates": "schema",

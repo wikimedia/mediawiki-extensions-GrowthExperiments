@@ -20,6 +20,7 @@ use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
+use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Psr\Log\LogLevel;
@@ -30,7 +31,8 @@ class MentorHooks implements
 	LocalUserCreatedHook,
 	PageSaveCompleteHook,
 	ListDefinedTagsHook,
-	ChangeTagsListActiveHook
+	ChangeTagsListActiveHook,
+	FormatAutocommentsHook
 {
 
 	/** @var Config */
@@ -208,6 +210,18 @@ class MentorHooks implements
 	public function onChangeTagsListActive( &$tags ) {
 		if ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_STRUCTURED ) {
 			$tags[] = StructuredMentorWriter::CHANGE_TAG;
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onFormatAutocomments( &$comment, $pre, $auto, $post, $title, $local, $wikiId ) {
+		$allowedMessageKeys = [
+			'growthexperiments-mentorship-enrollasmentor-summary'
+		];
+		if ( in_array( $auto, $allowedMessageKeys ) ) {
+			$comment = wfMessage( $auto )->text();
 		}
 	}
 }
