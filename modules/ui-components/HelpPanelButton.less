@@ -1,5 +1,4 @@
 @import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
-@import 'mediawiki.mixins';
 @import '../utils/variables.less';
 
 .mw-ge-help-panel-button {
@@ -27,12 +26,11 @@
 			right: unset;
 			width: 20/14em;
 			opacity: 1;
-
-			.transition-transform( @help-panel-transition-duration ~',' opacity @help-panel-transition-duration );
+			transition: transform @help-panel-transition-duration, opacity @help-panel-transition-duration;
 		}
 
 		.oo-ui-indicatorElement-indicator {
-			.transform( rotate( 90deg ) );
+			transform: rotate( 90deg );
 			opacity: 0;
 		}
 
@@ -54,12 +52,12 @@
 			}
 
 			.oo-ui-iconElement-icon {
-				.transform( rotate( -90deg ) );
+				transform: rotate( -90deg );
 				opacity: 0;
 			}
 
 			.oo-ui-indicatorElement-indicator {
-				.transform( rotate( 0 ) );
+				transform: rotate( 0 );
 				opacity: 1;
 			}
 		}
