@@ -42,7 +42,10 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 önce aktifti",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "bilinmiyor",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 göster",
+	"growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label": "Danışanı yıldızla",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1/$2",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "Önceki sonuç sayfası",
+	"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label": "Danışanın yıldızını kaldır",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Henüz atanmış danışmanınız olmayabilir. Veriler her üç saatte bir güncellenir.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Danışman bulunamadı",
 	"growthexperiments-mentor-dashboard-resources-headline": "Kaynaklar",
@@ -64,6 +67,7 @@
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Danışman kontrol panelinizde yıldızladığınız size atanan danışanlar",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "Yıldızlanmayan danışanlarınız",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Size atanan diğer danışanlar",
+	"growthexperiments-quit-mentorship-reason": "Sebep",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 danışmanlıktan emekli oldu.",
 	"growthexperiments-notification-body-mentee-claimed": "Sebep: $1"
 }
