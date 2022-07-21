@@ -11,6 +11,7 @@
 
 	var formatTitle = require( '../utils/Utils.js' ).formatTitle;
 	var TopicFilters = require( './TopicFilters.js' );
+	var DEFAULT_LOOKAHEAD_SIZE = 5;
 
 	/**
 	 * @typedef {Object} mw.libs.ge.TaskData
@@ -64,8 +65,9 @@
 	 * @class mw.libs.ge.GrowthTasksApi
 	 * @property {number|null|undefined} pageSize the number of task items to fetch on each request
 	 *   to the growth tasks api. This will be set to the value defined by
-	 *   config.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit + 1 to anticipate if the next page
-	 *   will contain items
+	 *   config.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit
+	 * @property {number} lookAheadSize the number of extra tasks to fetch to anticipate if the next
+	 *   page will contain items
 	 * @constructor
 	 * @param {Object} config
 	 * @param {Object} [config.taskTypes] The list of task types, as returned by
@@ -96,7 +98,8 @@
 		this.isMobile = config.isMobile;
 		this.logContext = config.logContext;
 		this.thumbnailWidth = this.isMobile ? 260 : 332;
-		this.pageSize = this.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit + 1;
+		this.pageSize = this.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit;
+		this.lookAheadSize = config.lookAheadSize || DEFAULT_LOOKAHEAD_SIZE;
 	}
 
 	/**
@@ -155,7 +158,7 @@
 			piprop: 'name|original|thumbnail',
 			pithumbsize: config.thumbnailWidth,
 			generator: 'growthtasks',
-			ggtlimit: config.size,
+			ggtlimit: config.size + this.lookAheadSize,
 			ggttasktypes: taskTypes.join( '|' ),
 			formatversion: 2,
 			uselang: mw.config.get( 'wgUserLanguage' )
@@ -228,9 +231,9 @@
 			}
 			self.logTiming( 'fetchTasks', startTime, config.context );
 			return {
-				hasNext: !!data.continue,
+				hasNext: tasks.length > config.size,
 				count: data.growthtasks.totalCount,
-				tasks: tasks
+				tasks: tasks.slice( 0, config.size )
 			};
 		} );
 

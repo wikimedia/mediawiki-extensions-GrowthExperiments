@@ -26,10 +26,10 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 	const responseMock = {
 		bacthcomplete: true,
 		query: {
-			pages: []
+			pages: Array( 23 ).fill( 1 ).map( ( _, i ) => ( { pageid: i + 1 } ) )
 		},
 		growthtasks: {
-			totalCount: 3
+			totalCount: 24
 		}
 	};
 	this.sandbox.stub( mw.Api.prototype, 'get' ).returns(
@@ -41,7 +41,7 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 		action: 'query',
 		formatversion: 2,
 		generator: 'growthtasks',
-		ggtlimit: 21,
+		ggtlimit: 25,
 		ggttasktypes: 'copyedit',
 		piprop: 'name|original|thumbnail',
 		pithumbsize: 332,
@@ -55,8 +55,9 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 		assert.strictEqual( mw.Api.prototype.get.calledOnce, true );
 		assert.deepEqual( mw.Api.prototype.get.getCall( 0 ).args[ 0 ], expectedParams );
 		// TODO add assertions for response post processing instead of length
-		assert.strictEqual( response.count, 3 );
-		assert.strictEqual( response.hasNext, false );
+		assert.strictEqual( response.tasks.length, 20 );
+		assert.strictEqual( response.count, 24 );
+		assert.strictEqual( response.hasNext, true );
 		done();
 	} );
 } );
@@ -97,7 +98,7 @@ QUnit.test( 'should send topic match mode even if topics are empty', function ( 
 		action: 'query',
 		formatversion: 2,
 		generator: 'growthtasks',
-		ggtlimit: 21,
+		ggtlimit: 25,
 		ggttasktypes: 'copyedit',
 		piprop: 'name|original|thumbnail',
 		pithumbsize: 332,

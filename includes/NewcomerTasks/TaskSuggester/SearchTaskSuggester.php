@@ -32,7 +32,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	use LoggerAwareTrait;
 
 	// Keep this in sync with GrowthTasksApi.js#fetchTasks
-	public const DEFAULT_LIMIT = 20;
+	public const DEFAULT_LIMIT = 15;
 
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
