@@ -291,7 +291,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		var updatedTaskQueue = data.tasks;
 		this.taskCount = data.count;
 		this.allTasksFetched = false;
-		this.tasksFetchedCount = this.taskQueue.length;
+		this.tasksFetchedCount = data.tasks.length;
 		this.currentTaskIndex = 0;
 		if ( this.preloadedFirstTask ) {
 			var preloadedTask = this.preloadedFirstTask;

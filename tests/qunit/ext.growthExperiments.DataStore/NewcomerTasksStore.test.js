@@ -291,7 +291,6 @@ QUnit.module( 'Actions', function () {
 			const tasksStore = new NewcomerTasksStore( store );
 			const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
 			stubApiRequests( this.sandbox, tasksStore );
-			tasksStore.setPreloadedTaskQueue( randomTaskSet( 20, qualityConfig ) );
 			assert.deepEqual( tasksStore.getTaskCount(), 52 );
 
 			this.sandbox.stub( tasksStore.api, 'fetchTasks' ).returns( $.Deferred().resolve( {
@@ -314,7 +313,6 @@ QUnit.module( 'Actions', function () {
 			const tasksStore = new NewcomerTasksStore( store );
 			const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
 			stubApiRequests( this.sandbox, tasksStore );
-			tasksStore.setPreloadedTaskQueue( randomTaskSet( 20, qualityConfig ) );
 			assert.deepEqual( tasksStore.getTaskCount(), 52 );
 
 			this.sandbox.stub( tasksStore.api, 'fetchTasks' ).returns( $.Deferred().resolve( {
@@ -358,12 +356,11 @@ QUnit.module( 'Actions', function () {
 		QUnit.test( 'should fetch tasks and update the taskCount to the number of fetched tasks when the API response informs there are no more results', function ( assert ) {
 			const done = assert.async();
 			this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
-				taskCount: 52
+				taskCount: 32
 			} );
 			const tasksStore = new NewcomerTasksStore( store );
 			const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
-			tasksStore.setPreloadedTaskQueue( randomTaskSet( 20, qualityConfig ) );
-			assert.deepEqual( tasksStore.getTaskCount(), 52 );
+			assert.deepEqual( tasksStore.getTaskCount(), 32 );
 
 			this.sandbox.stub( tasksStore, 'preloadExtraDataForUpcomingTask' ).returns( $.Deferred().resolve() );
 			this.sandbox.stub( tasksStore, 'fetchExtraDataForCurrentTask' ).returns( $.Deferred().resolve() );
