@@ -125,6 +125,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 */
 	public function execute( $par ) {
 		$this->getOutput()->enableOOUI();
+		$this->addHelpLink( 'Extension:GrowthExperiments/Technical_documentation/Special:EditGrowthConfig' );
+
 		$config = $this->getConfig();
 		$this->setConfigPage(
 			'geconfig',
