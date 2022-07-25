@@ -76,6 +76,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "출처를 찾아서 문서의 신뢰성을 높여 주세요",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "짧은 글을 더 키우고 새 문서를 만들어 봅시다.",
 	"growthexperiments-homepage-suggested-edits-header": "편집 제안",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "이 구성 요소를 보려면 자바스크립트를 활성화해 주십시오.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|당신}}의 영향",
 	"growthexperiments-homepage-impact-subheader-text": "편집하신 문서를 {{GENDER:$1|사람들이}} 읽고 있습니다!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|당신의}} 편집 이후 최근 60일간의 문서 열람 횟수:",

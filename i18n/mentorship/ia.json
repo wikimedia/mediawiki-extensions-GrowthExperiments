@@ -85,6 +85,7 @@
 	"growthexperiments-quit-mentorship-title": "Quitar mentorato",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Es triste vider te partir. Pro comenciar le processo de quitar le mentorato, tu debe primo retirar tu nomine del [[$1|lista de mentores]]. Post que tu ha facite isto, per favor retorna a iste pagina.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Le proxime passo in quitar le mentorato es reassignar tu apprentisses. Si tu es secur de voler quitar, per favor preme le button hic infra.",
+	"growthexperiments-quit-mentorship-error-not-a-mentor": "Tu non es un mentor.",
 	"growthexperiments-quit-mentorship-has-mentees-pretext": "Es triste vider te partir. Pro quitar le mentorato, tu debe reimpler le formulario hic infra. Quando tu lo invia, tote tu apprentisses essera reassignate a un altere mentor. Isto es irreversibile. Como alternativa, tu pote usar le [[Special:MentorDashboard|tabuliero de instrumentos del mentor]] pro reducer le numero de apprentisses al quales tu es assignate (o pro cessar temporarimente de acceptar nove apprentisses) sin perder tu apprentisses existente.",
 	"growthexperiments-quit-mentorship-reason": "Motivo",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Si, reassignar mi apprentisses",
@@ -134,6 +135,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motivo",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscribe me",
 	"growthexperiments-mentorship-enrollasmentor-success": "Tu es ora inscribite como mentor. Continua al [[Special:MentorDashboard|tabuliero de instrumentos pro mentores]].",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Addition de me mesme como mentor",
 	"tag-mentor list change": "Cambio del lista de mentores",
 	"tag-mentor list change-description": "Etiquetta applicate al modificationes apportate al lista structurate de mentores per medio de GrowthExperiments"
 }

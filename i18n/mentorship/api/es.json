@@ -4,5 +4,21 @@
 			"Zapipedia (WMF)"
 		]
 	},
-	"apihelp-growthsetmentorstatus-param-gesstatus": "Nuevo estado"
+	"apihelp-growthstarmentee-summary": "Marcar o desmarcar a un aprendiz con estrella por el usuario actual (almacenado de forma privada y no logged)",
+	"apihelp-growthstarmentee-param-gesaction": "Acción a realizar (<kbd>dar estrella</kbd> o <kbd>quitar estrella</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Mentee to (un)star",
+	"apihelp-query+growthstarredmentees-summary": "Obtener la lista de aprendices asociados al mentor actualmente conectado",
+	"apihelp-growthsetmentorstatus-summary": "Establecer el estado de mentor del usuario actual como activo/ausente",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Nuevo estado",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Al establecer el mentor como ausente, debe indicarse la duración de la ausencia (en días)",
+	"apihelp-query+growthmentorstatus-summary": "Consultar el estado de mentor del usuario actual",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "El módulo de mentoría está activado",
+	"apihelp-query+growthmentormentee-summary": "Conseguir que todos los aprendices sean asignados a un mentor o mentora determinado",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "El mentor consultará a los aprendices para",
+	"apihelp-growthmanagementorlist-summary": "Gestiona la información de la lista estructurada de mentores (normalmente almacenada en [[MediaWiki:GrowthMentors.json]]). Este módulo puede ser utilizado tanto por los mentores actuales como por los futuros (para añadirse o cambiar su información) y por los administradores (para todos los usuarios).",
+	"apihelp-growthmanagementorlist-param-geaction": "Acción",
+	"apihelp-growthmanagementorlist-param-message": "Mensaje de presentación (utilice una cadena vacía para el mensaje por defecto del mentor)",
+	"apihelp-growthmanagementorlist-param-autoassigned": "¿El mentor o mentora es asignado automáticamente a los recién llegados?",
+	"apihelp-growthmanagementorlist-param-summary": "Razones para el cambio",
+	"apihelp-growthmanagementorlist-param-username": "Nombre de usuario del mentor afectado por el cambio. Si no se proporciona, se utilizará el usuario conectado actualmente. Sólo puede ser utilizado por usuarios con privilegios."
 }

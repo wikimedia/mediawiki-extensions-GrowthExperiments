@@ -88,6 +88,7 @@
 	"growthexperiments-quit-mentorship-title": "Покинути наставництво",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Шкода, що ви йдете. Щоб почати процес виходу з наставництва, спочатку вам треба прибрати своє ім'я [[$1|зі списку наставників]]. Коли зробите це, будь ласка, поверніться на цю сторінку.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Наступний крок — перепризначення ваших підопічних. Якщо ви впевнені, що хочете покинути наставництво, будь ласка, натисніть кнопку нижче.",
+	"growthexperiments-quit-mentorship-error-not-a-mentor": "Ви не {{GENDER:|наставник|наставниця}}.",
 	"growthexperiments-quit-mentorship-has-mentees-pretext": "Сумно бачити, що {{GENDER:|ви}} йдете. Щоб відмовитися від наставництва, {{GENDER:|вам}} необхідно заповнити форму нижче. Після того, як ви її подасте, усіх ваших підопічних буде передано іншим наставникам. Це неможливо скасувати. [[Special:MentorDashboard|Панель наставника]] також дозволяє {{GENDER:|вам}} зменшити кількість підопічних, яким ви випадаєте (або тимчасово припинити прийом нових підопічних), не втрачаючи нікого з ваших наявних підопічних.",
 	"growthexperiments-quit-mentorship-reason": "Причина",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Так, призначити моїм підопічним іншого наставника",

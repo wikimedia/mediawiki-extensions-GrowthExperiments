@@ -87,7 +87,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Neue Artikel erstellen und kurze Artikel ausbauen.",
 	"growthexperiments-homepage-suggested-edits-header": "Vorgeschlagene Bearbeitungen",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Dein}} Einfluss",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "Bitte aktiviere JavaScript, um diese Komponente anzuzeigen.",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "Bitte aktiviere JavaScript, um diese Komponente zu sehen.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Dein}} Einfluss",
 	"growthexperiments-homepage-impact-subheader-text": "Menschen sehen die Artikel, die {{GENDER:$1|du}} bearbeitet hast!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Aufrufe seit {{GENDER:$1|deiner}} Bearbeitung (letzte 60 Tage):",

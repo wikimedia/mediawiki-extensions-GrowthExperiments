@@ -125,7 +125,7 @@
 	"growthexperiments-manage-mentors-remove-mentor-success": "Пользователь [[User:$1|$1]] больше не является {{GENDER:$1|наставником}}.",
 	"growthexperiments-manage-mentors-return-back": "Вы можете [[Special:ManageMentors|вернуться]] к списку наставников.",
 	"growthexperiments-mentorship-enrollasmentor-title": "Запишитесь в качестве {{GENDER:|наставника|наставницы}}",
-	"growthexperiments-mentorship-enrollasmentor-pretext": "Благодарим {{GENDER:|вы}} за то, что вызвались стать {{GENDER:|наставником|наставницей}} {{grammar:genitive|{{SITENAME}}}}. {{GENDER:|Вы}} можете записаться в наставничество, заполнив эту форму.",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Благодарим {{GENDER:|вы}} за то, что вызвались стать {{GENDER:|наставником|наставницей}} {{grammar:genitive|{{SITENAME}}}}. {{GENDER:|Вы}} можете записаться в {{GENDER:|наставники|наставницы}}, заполнив эту форму.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Приветственное сообщение",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Приветственное сообщение представляет вас в качестве {{GENDER:|наставника|наставницы}}. Пожалуйста, не превышайте 240 символов. Викитекст запрещен.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Причина",

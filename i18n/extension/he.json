@@ -23,7 +23,7 @@
 	"growthexperiments-edit-config-feedback-cta": "שליחת משוב",
 	"growthexperiments-edit-config-error-invalid-title": "דף ההגדרות לא הוגדר כראוי",
 	"growthexperiments-edit-config-edit-summary": "תקציר העריכה",
-	"growthexperiments-edit-config-config-changed": "ההגדרות שונו. אולי {{GENDER:|תצטרך|תצטרכי}} להמתין מספר דקות עד שהשינויים ייכנסו לתוקף.",
+	"growthexperiments-edit-config-config-changed": "ההגדרות שונו. אולי {{GENDER:|תצטרך|תצטרכי}} להמתין כמה דקות עד שהשינויים ייכנסו לתוקף.",
 	"growthexperiments-edit-config-return-to-form": "באפשרותף [[Special:EditGrowthConfig|לחזור]] לטופס העריכה.",
 	"growthexperiments-edit-config-help-panel": "הגדרות חלונית עזרה",
 	"growthexperiments-edit-config-help-panel-description": "חלונית העזרה הזאת יכולה להיות זמינה בכל מרחב שם, במצב קריאה או עריכה, כפי שמוגדר להלן. היא מכילה את היכולת לחפש עזרה, ללחוץ על קישורי עזרה, ולהפנות שאלות לחונכים או לדלפק העזרה.",

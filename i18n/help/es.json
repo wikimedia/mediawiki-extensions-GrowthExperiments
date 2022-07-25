@@ -39,6 +39,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Edita otra sugerencia:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Próxima sugerencia:",
 	"growthexperiments-help-panel-postedit-footer": "Ver todas las ediciones sugeridas",
+	"growthexperiments-help-panel-postedit-suggestededits-info": "Otros usuarios de {{SITENAME}} han encontrado artículos que necesitan trabajo. Continúa editando con estas ediciones sugeridas.",
 	"growthexperiments-help-panel-questionreview-title": "Preguntar en el Café",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Pregunta a tu mentor",
 	"growthexperiments-help-panel-questionreview-header": "Cuando envías una pregunta, se <strong>comparte públicamente</strong> con tu nombre de usuario («$2») en $1, donde otro voluntario tratará de responderte en un plazo aproximado de un día.",
