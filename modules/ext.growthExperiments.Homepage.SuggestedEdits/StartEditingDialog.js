@@ -441,7 +441,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		$overlay: true
 	}, this.filtersStore.getGroupedTopics() ) : false;
 
-	generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.svg';
+	generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.png';
 
 	responseData = responseMap[ surveyData.reason ];
 	if ( responseData ) {
