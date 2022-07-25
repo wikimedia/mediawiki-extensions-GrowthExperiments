@@ -64,6 +64,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 		$this->addOption( 'exceptDatasetChecksums', 'Regenerate a task unless its '
 			. 'model checksum appears in the given file (one checksum per line)', false, true );
 		$this->addOption( 'limit', 'Limit the number of changes.', false, true );
+		$this->addOption( 'force', 'Store the new recommendation even if it fails quality criteria.' );
 		$this->addOption( 'dry-run', 'Do not actually make any changes.' );
 		$this->addOption( 'verbose', 'Show debug output.' );
 		$this->setBatchSize( 500 );
@@ -173,7 +174,8 @@ class RevalidateLinkRecommendations extends Maintenance {
 		// enough for that to be a problem.
 		$this->linkRecommendationHelper->deleteLinkRecommendation( $title->toPageIdentity(), true );
 		try {
-			return Status::wrap( $this->linkRecommendationUpdater->processCandidate( $title, false ) );
+			$force = $this->hasOption( 'force' );
+			return Status::wrap( $this->linkRecommendationUpdater->processCandidate( $title, $force ) );
 		} catch ( DBReadOnlyError $e ) {
 			$this->fatalError( 'DB is readonly, aborting' );
 		} catch ( WikiConfigException $e ) {
