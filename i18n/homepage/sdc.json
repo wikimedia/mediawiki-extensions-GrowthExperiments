@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"F Samaritani",
+			"Jun Misugi"
+		]
+	},
+	"growthexperiments-homepage-email-button-confirmed": "Prifirenzi",
+	"growthexperiments-homepage-startediting-dialog-progress": "$1 pai $2",
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Annullà",
+	"growthexperiments-homepage-startediting-dialog-intro-forward": "Continuà",
+	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Indareddu",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Fattu",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Cumpresu",
+	"growthexperiments-tour-response-button-okay": "Cumpresu",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fattu",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fattu",
+	"growthexperiments-homepage-suggestededits-topic-name-computers-and-internet": "Computer e internet",
+	"growthexperiments-homepage-suggestededits-topic-name-tv-and-film": "TV e film",
+	"growthexperiments-homepage-suggestededits-topic-name-africa": "Àfrica",
+	"growthexperiments-homepage-suggestededits-topic-name-asia": "Àsia",
+	"growthexperiments-homepage-suggestededits-topic-name-europe": "Europa",
+	"growthexperiments-homepage-suggestededits-topic-name-history": "Isthòria",
+	"growthexperiments-notification-body-mentor-change": "Rajoni: $1"
+}

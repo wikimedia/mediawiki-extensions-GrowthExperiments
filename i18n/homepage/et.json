@@ -171,6 +171,9 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|võttis}} kasutaja {{GENDER:$6|$3}} juhendatavaks (ilma eelmise mentorita)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|määras}} kasutaja {{GENDER:$6|$3}} mentoriks kasutaja {{GENDER:$5|$7}} (eelmine {{GENDER:$4|mentor}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|määras}} kasutaja {{GENDER:$6|$3}} mentoriks kasutaja {{GENDER:$5|$7}} (ilma eelmise mentorita)",
+	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|on}} {{GENDER:$3|sinu}} uus mentor.",
+	"growthexperiments-notification-body-mentor-change": "Põhjus: $1",
+	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Ütle}} tere enda uuele {{GENDER:$2|mentorile}}!",
 	"right-setmentor": "Määrata kasutajale mentor",
 	"action-setmentor": "kasutajale mentorit määrata",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Veel selle soovitatud muudatuse kohta"

@@ -3,7 +3,8 @@
 		"authors": [
 			"Dr Lotus Black",
 			"NayiMuu",
-			"Ninjastrikers"
+			"Ninjastrikers",
+			"Phosai"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|မင်္ဂလာပါ}}၊ {{bidi:$1}}။",
@@ -21,6 +22,7 @@
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|သင်၏}} အီးမေးလ်ကို ပေါင်းထည့်ရန်",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|သင်၏}} အီးမေးလ်ကို အတည်ပြုရန်",
 	"growthexperiments-homepage-email-header-confirmed": "အီးမေးလ် ပေါင်းထည့်ခဲ့သည်",
+	"growthexperiments-homepage-email-text-noemail": "အကောင့်ပြန်လည်ရယူရန်အတွက် အကြံပြုထားသည်",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|သင်၏}} အီးမေးလ်ကို အတည်ပြုပြီးပါပြီ။ အီးမေးလ်အပြင်အဆင်များကို ရွေးချယ်စရာများထဲတွင် ပြောင်းလဲနိုင်ပါသည်။",
 	"growthexperiments-homepage-email-button-noemail": "အီးမေးလ်ပေါင်းထည့်ရန်",
 	"growthexperiments-homepage-email-button-unconfirmed": "လင့်ခ်အသစ် ရယူရန်",
@@ -120,6 +122,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "အချက်အလက်များ ရှာဖွေပေါင်းထည့်ခြင်းဖြင့် ဆောင်းပါးများကို ပိုမိုရှည်လျားအောင် ပြုလုပ်ပေးပါ။",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "ဆောင်းပါးတခုမှ အခြားဆောင်းပါးသို့ လင့်ခ်ချိတ်၍ စကားလုံးများပြုလုပ်ပါ။",
 	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "အသေးစားပြင်ဆင်မှုဆိုသည်မှာ ဆောင်းပါးရေးသားဟန်အား အသေးစားပြင်ဆင်ခြင်းဖြစ်သည်၊ ယင်းသည် ဝီကီပီးဒီးယားတည်းဖြတ်ခြင်းတွင် ရင်းနှီးနေစေရန် တန်ဖိုးရှိလှသည်။ အသေးစားပြင်ဆင်မှုသည် ဆောင်းပါးများကို တန်ဖိုးရှိပြီး ပရော်ဖက်ရှင်နယ်ဆန်စေသည်။",
+	"growthexperiments-homepage-suggestededits-tasktype-description-references": "ဝီကီပီဒီးယားသည် တိကျသည်ဆိုသည်အား အတည်ပြုရန် စာအုပ်များ၊ ဝဘ်ဆိုဒ်များနှင့် သတင်းရင်းမြစ်များကို အသုံးပြုပါ။ စာဖတ်သူများ ဖတ်ရှုနေသည်မှာ မှန်ကန်သည်ဟု ယုံကြည်စေရန် ယင်းတို့အား ပေါင်းထည့်ပေးပါ။",
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "ဆောင်းပါးများသည် အချိန်ကြာလာသော် ခေတ်ဟောင်းသွားပြီး ဖြစ်ရပ်သစ်များပေါ်ပေါက်လာသည်။ မှန်ကန်သောအချက်အလက်များရှာဖွေထည့်ပါ၊ ထို့မှသာ ဝီကီပီးဒီးယားသည် အမြဲတမ်းမှန်ကန်နေမည်ဖြစ်ပါသည်။",
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "ဝီကီပီးဒီးယားဆောင်းပါးအတော်များများသည် ဝါကျတစ်ကြောင်း သို့မဟုတ် နှစ်ကြောင်းသာရှည်ကြသည်။ ဆောင်းပါးများပိုမိုပြည့်စုံစေရန် အချက်အလက်များရှာဖွေထည့်သွင်းပါ။",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "လင့်ခ်များပေါင်းထည့်ခြင်းသည် အလွယ်ကူဆုံးတည်းဖြတ်နည်းဖြစ်သည်။ လင့်ခ်များသည် စာဖတ်သူများအား ဆောင်းပါးများကို ပိုမိုလျင်မြန်စွာ တတ်မြောက်စေသည်။",
