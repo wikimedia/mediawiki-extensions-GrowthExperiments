@@ -13,7 +13,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "کارآموزهای {{GENDER:|شما}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "کارآموزهای {{GENDER:|خود}} را در زیر ببینید. از پالایه‌ها برای تغییر کارآموزهایی که نمایش می‌یابند، استفاده کنید.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "این جدول نیازمند جاوااسکریپت است. برای استفاده از این پودمان، لطفاً جاوااسکریپت را فعال کنید.",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "چه‌کسی در جدول شماست؟",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "چه‌کسی در جدول {{GENDER:|شما}} است؟",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "این جدول کارآموزهای {{GENDER:|شما}} را که حساب آن‌ها در دو هفتهٔ گذشته ایجاد شده است، یا آن‌هایی که در شش ماه گذشته ویرایشی انجام داده‌اند و [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|صفحهٔ اصلی تازه‌واردان را فعال کرده‌اند]]، نمایش می‌دهد. داده‌ها هر سه ساعت به‌روز می‌شوند.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "شرح علائم",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "نشان‌گذاری کارآموزها",
