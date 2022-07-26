@@ -5,7 +5,8 @@
 			"Kizule",
 			"Zoranzoki21",
 			"Вукан Ц",
-			"Milicevic01"
+			"Milicevic01",
+			"Vlad5250"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Почетна страница}}",
@@ -318,7 +319,9 @@
 	"newcomertasksinfo-no-data": "Нема доступних података.",
 	"newcomertasksinfo-table-header-task-type": "Врста задатка",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"newcomertasksinfo-table-header-task-count": "Број",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Предлози",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Пошаљи…",
 	"growthexperiments-structuredtask-editmode-selection-label": "Промени уређивач",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Предлози",
 	"growthexperiments-structuredtask-editmode-selection-visual": "Визуелно уређивање",
