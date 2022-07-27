@@ -4,7 +4,8 @@
 			"Base",
 			"DDPAT",
 			"Ice bulldog",
-			"Ата"
+			"Ата",
+			"Пан Хаунд"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
@@ -138,6 +139,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Причина",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Записатись",
 	"growthexperiments-mentorship-enrollasmentor-success": "Ви тепер зараховані як {{GENDER:|наставник|наставниця}}. {{GENDER:|Ви}} можете перейти [[Special:MentorDashboard|панелі наставника]].",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Додавання себе в якості наставника",
 	"tag-mentor list change": "Зміна списку наставників",
 	"tag-mentor list change-description": "Тег, який застосовується до змін, внесених до структурованого списку наставників за допомогою GrowthExperiments"
 }

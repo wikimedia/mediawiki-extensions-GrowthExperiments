@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fraxinus.cs",
 			"Martin Urbanec (WMF)",
 			"Matěj Suchánek",
 			"Patrik L."
@@ -87,6 +88,7 @@
 	"growthexperiments-quit-mentorship-title": "Skončit s mentorstvím",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Je smutné vidět vás odcházet. Ze všeho nejdříve musíte smazat své jméno ze [[$1|seznamu mentorů]]. Jakmile to uděláte, prosím, vraťte se na tuto stránku.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Dalším krokem je přeřadit vaše nováčky někomu jinému. Pokud jste si {{GENDER:|jist|jista|jisti}}, že již mentorem být nechcete, stiskněte tlačítko níže.",
+	"growthexperiments-quit-mentorship-error-not-a-mentor": "{{GENDER:|Vy}} nejste mentor.",
 	"growthexperiments-quit-mentorship-has-mentees-pretext": "Je smutné vidět {{GENDER:|vás}} odcházet. Chcete-li přestat s mentorováním, {{GENDER:|vyplňte}} prosím formulář níže. Jakmile jej odešlete, všichni vaši nováčci budou přeřazeni k jinému mentorovi. Tuto akci nejde vrátit zpět. Pomocí [[Special:MentorDashboard|Nástěnky mentora]] můžete místo toho snížit počet nováčků, kterým jste jako {{GENDER:|mentor přidělen|mentorka přidělena}} (anebo dočasně přestat přijímat nováčky úplně), aniž byste {{GENDER:|ztratil|ztratila}} některého ze svých stávajících nováčků.",
 	"growthexperiments-quit-mentorship-reason": "Důvod",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Ano, převést mé nováčky.",
