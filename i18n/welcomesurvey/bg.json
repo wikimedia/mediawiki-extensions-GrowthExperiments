@@ -27,7 +27,7 @@
 	"welcomesurvey-question-reason-label": "Защо създадохте сметката си днес?",
 	"welcomesurvey-dropdown-option-select-label": "Моля, изберете...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "За да коригирам правописна или друга грешка в статия на Уикипедия",
-	"welcomesurvey-question-reason-option-edit-info-add-change-label": "За да добавя или коригирам информация към статия на Уикипедия",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "За да добавя или коригирам информация в статия на Уикипедия",
 	"welcomesurvey-question-reason-option-add-image-label": "За да добавя снимка или изображение към статия на Уикипедия",
 	"welcomesurvey-question-reason-option-new-page-label": "За да създам нова статия в Уикипедия",
 	"welcomesurvey-question-reason-option-program-participant-label": "Участвам в програма, урок или събитие",
@@ -47,6 +47,6 @@
 	"welcomesurvey-question-email-placeholder": "Въведете Вашия адрес за електронна поща...",
 	"welcomesurvey-question-email-help": "Забелязахме, че не сте въвели електронна поща при създаването на този акаунт. Това е <strong>силно препоръчително</strong>, тъй като е необходима електронна поща за възстановяване на акаунта, ако загубите паролата си. ЗАБЕЛЕЖКА: Вашата електронна поща не се показва, когато други потребители се свързват с вас.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} е достъпен на близо 300 езика. Има ли други езици, на които четете и пишете?",
-	"welcomesurvey-question-languages-placeholder": "Добавяне към {{PLURAL:$1|един език|$1 езици}}...",
+	"welcomesurvey-question-languages-placeholder": "Добавяне към {{PLURAL:$1|един език|$1 езика}}...",
 	"welcomesurvey-question-languages-maximum": "Достигнали сте максималния брой на езиците."
 }

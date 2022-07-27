@@ -3,7 +3,8 @@
 		"authors": [
 			"BadDog",
 			"Kizule",
-			"Milicevic01"
+			"Milicevic01",
+			"Vlad5250"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Менторска табла",
@@ -55,6 +56,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Статус менторства",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Активан",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Одсутан",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Откажи",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Паузирај",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "дана",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Порука новајлијама",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Преузимање новајлије",
