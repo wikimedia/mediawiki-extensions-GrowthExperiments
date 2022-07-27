@@ -1,5 +1,5 @@
 <template>
-	<section class="ge-homepage-new-impact">
+	<section class="ext-growthExperiments-NewImpact">
 	</section>
 </template>
 
@@ -8,7 +8,7 @@
 </script>
 
 <style lang="less">
-.growthexperiments-homepage-module-new-impact {
+.ext-growthExperiments-NewImpact {
 	// FIXME: Remove this, it's just to demonstrate that styles work.
 	min-height: 200px;
 }

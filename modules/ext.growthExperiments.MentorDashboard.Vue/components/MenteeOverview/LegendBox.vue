@@ -3,19 +3,19 @@
 		<h3>
 			{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline' ) }}
 		</h3>
-		<div class="legend-box__list">
+		<div class="ext-growthExperiments-LegendBox__list">
 			<div
 				v-for="item in items"
 				:key="item.label"
-				class="legend-box__list-item"
+				class="ext-growthExperiments-LegendBox__list-item"
 			>
 				<cdx-icon
-					class="legend-icon"
+					class="ext-growthExperiments-LegendBox__list-item__legend-icon"
 					:icon="icons[item.icon]"
 					:icon-label="item.label"
 					@click="toggleStarred"
 				></cdx-icon>
-				<span class="legend-box__list-item__text">{{ item.label }}</span>
+				<span class="ext-growthExperiments-LegendBox__list-item__text">{{ item.label }}</span>
 			</div>
 		</div>
 	</div>
@@ -43,7 +43,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-.legend-box {
+.ext-growthExperiments-LegendBox {
 	&__list {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -52,7 +52,7 @@ module.exports = exports = {
 	&__list-item {
 		padding: 4px;
 
-		.legend-icon {
+		&__legend-icon {
 			opacity: 0.66;
 		}
 

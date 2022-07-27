@@ -1,11 +1,11 @@
 <template>
-	<div class="mentee-filters">
+	<div class="ext-growthExperiments-MenteeFilters">
 		<cdx-button @click="toggleFiltersForm">
 			<span>
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter' ) }}
 			</span>
 			<cdx-icon
-				class="expand-icon"
+				class="ext-growthExperiments-MenteeFilters__expand-icon"
 				:icon="showFiltersForm ? cdxIconCollapse : cdxIconExpand"
 				:icon-label="showFiltersForm ?
 					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label' ) :
@@ -13,9 +13,9 @@
 				"
 			></cdx-icon>
 		</cdx-button>
-		<div v-if="showFiltersForm" class="mentee-filters__container">
+		<div v-if="showFiltersForm" class="ext-growthExperiments-MenteeFilters__container">
 			<mentee-filters-form
-				class="mentee-filters__form"
+				class="ext-growthExperiments-MenteeFilters__form"
 				v-bind="data"
 				@update:filters="onFiltersUpdate"
 				@close="hide"
@@ -80,8 +80,8 @@ module.exports = exports = {
 <style lang="less">
 @import '../variables.less';
 
-.mentee-filters {
-	.expand-icon {
+.ext-growthExperiments-MenteeFilters {
+	&__expand-icon {
 		> svg {
 			// REVIEW styles copied "by eye", how to affect icon stroke-width,
 			// correct API for adding an inline icon inside a CdxButton

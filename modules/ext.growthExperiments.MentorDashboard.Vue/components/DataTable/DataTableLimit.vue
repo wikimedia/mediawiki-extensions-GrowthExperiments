@@ -1,8 +1,8 @@
 <template>
-	<div class="data-table-limit">
+	<div class="ext-growthExperiments-DataTableLimit">
 		<cdx-select
 			v-model:selected="selection"
-			class="select"
+			class="ext-growthExperiments-DataTableLimit__select"
 			:menu-items="menuItems"
 			@update:selected="$emit( 'update', $event )"
 		></cdx-select>
@@ -43,10 +43,10 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-.data-table-limit {
+.ext-growthExperiments-DataTableLimit {
 	padding: 0 8px;
 
-	.select {
+	&__select {
 		min-width: unset;
 	}
 }

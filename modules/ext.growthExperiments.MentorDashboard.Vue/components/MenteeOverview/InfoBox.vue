@@ -1,20 +1,20 @@
 <template>
-	<div class="mentee-overview-info-box">
+	<div class="ext-growthExperiments-InfoBox">
 		<div v-click-outside="close">
 			<cdx-button
 				type="quiet"
 				@click="togglePopover"
 			>
 				<cdx-icon
-					class="info-icon"
+					class="ext-growthExperiments-InfoBox__info-icon"
 					:icon="cdxIconInfo"
 					:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' )"
 				></cdx-icon>
 			</cdx-button>
-			<div class="mentee-overview-info-box__popover-container">
+			<div class="ext-growthExperiments-InfoBox__popover-container">
 				<c-popper
 					v-if="isOpen"
-					class="mentee-overview-info-box__popover"
+					class="ext-growthExperiments-InfoBox__popover"
 					@close="close"
 				>
 					<h3>
@@ -75,11 +75,11 @@ module.exports = exports = {
 <style lang="less">
 @import '../variables.less';
 
-.mentee-overview-info-box {
+.ext-growthExperiments-InfoBox {
 	display: flex;
 	align-items: center;
 
-	.info-icon {
+	&__info-icon {
 		// REVIEW how to affect stoke-width
 		opacity: 0.66;
 

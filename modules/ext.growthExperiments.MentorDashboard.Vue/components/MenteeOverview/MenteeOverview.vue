@@ -1,20 +1,20 @@
 <template>
-	<section class="mentee-overview">
-		<div class="mentee-overview__info-box-wrapper">
-			<info-box class="mentee-overview__info-box" :legend-items="legendItems"></info-box>
+	<section class="ext-growthExperiments-MenteeOverview">
+		<div class="ext-growthExperiments-MenteeOverview__info-box-wrapper">
+			<info-box class="ext-growthExperiments-MenteeOverview__info-box" :legend-items="legendItems"></info-box>
 		</div>
-		<div class="mentee-overview__actions">
+		<div class="ext-growthExperiments-MenteeOverview__actions">
 			<mentee-filters
 				:data="filters"
 				@update:filters="updateMenteeFilters"
 			></mentee-filters>
-			<div class="mentee-overview__actions__search">
+			<div class="ext-growthExperiments-MenteeOverview__actions__search">
 				<mentee-search @update:selected="onMenteeSearchSelection"></mentee-search>
 			</div>
 		</div>
 		<data-table
 			v-if="hasData"
-			class="mentee-overview__table"
+			class="ext-growthExperiments-MenteeOverview__table"
 			:limit="limit"
 			:columns="columns"
 			:data="{ rows, totalPages, currentPage }"
@@ -26,7 +26,7 @@
 		></data-table>
 		<no-results
 			v-else-if="menteesDataReady"
-			class="mentee-overview__no-results"
+			class="ext-growthExperiments-MenteeOverview__no-results"
 			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline' )"
 			:icon-label="$i18n( 'tbd-no-results' )"
 			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text' )"
@@ -242,12 +242,13 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-.mentee-overview {
+.ext-growthExperiments-MenteeOverview {
 	&__info-box {
 		position: absolute;
 		top: -64px;
 		right: -16px;
 
+		/* stylelint-disable-next-line selector-class-pattern */
 		.skin-minerva & {
 			top: -114px;
 		}

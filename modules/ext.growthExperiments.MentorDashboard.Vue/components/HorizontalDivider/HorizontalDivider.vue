@@ -1,5 +1,5 @@
 <template>
-	<div class="divider"></div>
+	<div class="ext-growthExperiments-HorizontalDivider"></div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ module.exports = exports = {
 <style lang="less">
 @import '../variables.less';
 
-.divider {
+.ext-growthExperiments-HorizontalDivider {
 	border-bottom: @border-base;
 	width: 100%;
 }

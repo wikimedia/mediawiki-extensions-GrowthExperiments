@@ -1,11 +1,11 @@
 <template>
-	<div class="mentee-overview-no-results">
+	<div class="ext-growthExperiments-NoResults">
 		<cdx-icon
-			class="block-icon"
+			class="ext-growthExperiments-NoResults__block-icon"
 			:icon="cdxIconError"
 			:icon-label="iconLabel"
 		></cdx-icon>
-		<div class="mentee-overview-no-results-info">
+		<div class="ext-growthExperiments-NoResults__info">
 			<h3>{{ text }}</h3>
 			<p v-if="description">
 				{{ description }}
@@ -38,12 +38,12 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-.mentee-overview-no-results {
+.ext-growthExperiments-NoResults {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
-	.block-icon {
+	&__block-icon {
 		opacity: 0.2;
 
 		> svg {
@@ -52,7 +52,7 @@ module.exports = exports = {
 		}
 	}
 
-	&-info {
+	&__info {
 		text-align: center;
 	}
 }
