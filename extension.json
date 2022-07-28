@@ -201,6 +201,14 @@
 			]
 		},
 		{
+			"path": "/growthexperiments/v0/welcomesurvey/skip",
+			"method": "POST",
+			"class": "GrowthExperiments\\Rest\\Handler\\WelcomeSurveySkipHandler",
+			"services": [
+				"GrowthExperimentsWelcomeSurveyFactory"
+			]
+		},
+		{
 			"path": "/growthexperiments/v0/user-impact/{user}",
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
@@ -213,7 +221,12 @@
 	"HookHandlers": {
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
-			"services": [ "MainConfig", "SpecialPageFactory", "GrowthExperimentsWelcomeSurveyFactory", "GrowthExperimentsCampaignConfig" ]
+			"services": [
+				"MainConfig",
+				"SpecialPageFactory",
+				"GrowthExperimentsWelcomeSurveyFactory",
+				"GrowthExperimentsCampaignConfig"
+			]
 		},
 		"helppanel": {
 			"class": "GrowthExperiments\\HelpPanelHooks",
@@ -579,6 +592,7 @@
 			"packageFiles": [
 				"homepage.init.js",
 				"ext.growthExperiments.Homepage.ConfirmEmailNotice/index.js",
+				"ext.growthExperiments.Homepage.WelcomeSurveyReminder/index.js",
 				"ext.growthExperiments.Homepage.Impact/index.js",
 				"ext.growthExperiments.Homepage.Logger/index.js",
 				"ext.growthExperiments.Homepage.Logging/index.js",
@@ -853,6 +867,7 @@
 				"ext.growthExperiments.Homepage.styles/TaskExplanationWidget.less",
 				"ext.growthExperiments.Homepage.styles/SmallTaskCard.less",
 				"ext.growthExperiments.Homepage.styles/BannerModule.less",
+				"ext.growthExperiments.Homepage.styles/WelcomeSurveyReminderModule.less",
 				"ext.growthExperiments.Homepage.styles/StartEmailModule.less",
 				"ext.growthExperiments.Homepage.styles/Homepage.less",
 				"ext.growthExperiments.Homepage.styles/StartEditingModule.less",
@@ -2011,6 +2026,10 @@
 		"WelcomeSurveyPrivacyPolicyUrl": {
 			"description": "URL of the privacy policy to be used on the Welcome survey.",
 			"value": "https://meta.wikimedia.org/wiki/Data_retention_guidelines#Exceptions_to_these_guidelines"
+		},
+		"WelcomeSurveyReminderExpiry": {
+			"description": "Number of days a reminder on Special:Homepage should be shown for if the user has not filled out the welcome survey yet. Set to 0 to disable the reminder.",
+			"value": 30
 		},
 		"GEHomepageEnabled": {
 			"description": "Global ON/OFF switch for the Homepage feature.",

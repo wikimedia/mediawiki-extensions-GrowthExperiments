@@ -1,0 +1,47 @@
+// Dependencies:
+// - oojs-ui.styles.icons-interactions: loaded via ext.growthExperiments.Help (mentor/helpdesk module)
+
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+
+.growthexperiments-homepage-module-welcomesurveyreminder {
+	width: 100%;
+	background-color: @wmui-color-yellow90;
+	border-color: @wmui-color-yellow50;
+
+	&.fadeout {
+		visibility: hidden;
+		height: 0;
+		margin: 0;
+		border: 0;
+		padding: 0;
+		opacity: 0;
+		transition: visibility 0s 400ms, height 400ms, margin 400ms, border 400ms, padding 400ms, opacity 400ms;
+	}
+
+	.growthexperiments-homepage-module-body {
+		display: flex;
+
+		.welcomesurvey-reminder-feedback-icon {
+			// via https://codepen.io/sosuke/pen/Pjoqqp , target color @wmui-color-yellow50
+			filter: invert( 89% ) sepia( 28% ) saturate( 1249% ) hue-rotate( 335deg ) brightness( 99% ) contrast( 105% );
+		}
+
+		.welcomesurvey-reminder-message-block {
+			margin: 0 16px;
+
+			.welcomesurvey-reminder-link {
+				font-weight: bold;
+			}
+		}
+
+		.welcomesurvey-reminder-dismiss {
+			margin: -8px -8px 0 0;
+		}
+
+		// Override strong padding-top: 0 rule for mobile from Homepage.less
+		// FIXME this should probably be handled centrally for modules with no header
+		body.mw-special-Homepage.growthexperiments-homepage-mobile-summary .growthexperiments-homepage-container &.growthexperiments-homepage-module {
+			padding-top: 1em;
+		}
+	}
+}

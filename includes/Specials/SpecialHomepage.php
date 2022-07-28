@@ -212,6 +212,7 @@ class SpecialHomepage extends SpecialPage {
 		$mentorshipState = $this->mentorManager->getMentorshipStateForUser( $this->getUser() );
 		$moduleConfig = array_filter( [
 			'banner' => true,
+			'welcomesurveyreminder' => true,
 			'startemail' => true,
 			// Only load start-startediting code (the uninitiated view of suggested edits) for desktop users who
 			// haven't activated SE yet.
@@ -244,7 +245,7 @@ class SpecialHomepage extends SpecialPage {
 		);
 		return [
 			'main' => [
-				'primary' => [ 'banner', 'startemail' ],
+				'primary' => [ 'banner', 'welcomesurveyreminder', 'startemail' ],
 				'secondary' => $isSuggestedEditsEnabled ?
 					[ 'start-startediting', 'suggested-edits' ] :
 					[ 'impact' ]

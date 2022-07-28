@@ -9,6 +9,7 @@ use GrowthExperiments\Util;
 use GrowthExperiments\WelcomeSurveyFactory;
 use Html;
 use HTMLForm;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 use MWTimestamp;
 use Status;
 use Title;
@@ -25,6 +26,9 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	/** @var string */
 	private $groupName;
 
+	/** @var SpecialPageFactory */
+	private $specialPageFactory;
+
 	/** @var WelcomeSurveyFactory */
 	private $welcomeSurveyFactory;
 
@@ -32,13 +36,17 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	private $welcomeSurveyLogger;
 
 	/**
+	 * @param SpecialPageFactory $specialPageFactory
 	 * @param WelcomeSurveyFactory $welcomeSurveyFactory
 	 * @param WelcomeSurveyLogger $welcomeSurveyLogger
 	 */
 	public function __construct(
-		WelcomeSurveyFactory $welcomeSurveyFactory, WelcomeSurveyLogger $welcomeSurveyLogger
+		SpecialPageFactory $specialPageFactory,
+		WelcomeSurveyFactory $welcomeSurveyFactory,
+		WelcomeSurveyLogger $welcomeSurveyLogger
 	) {
 		parent::__construct( 'WelcomeSurvey', '', false );
+		$this->specialPageFactory = $specialPageFactory;
 		$this->welcomeSurveyFactory = $welcomeSurveyFactory;
 		$this->welcomeSurveyLogger = $welcomeSurveyLogger;
 	}
@@ -80,6 +88,10 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			$this->welcomeSurveyLogger->logInteraction( self::ACTION_SUBMIT_ATTEMPT );
 		}
 		$this->requireLogin();
+		if ( $par === 'skip' ) {
+			$this->processSkip();
+			return;
+		}
 		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.Account.styles' );
 		$this->getOutput()->addJsConfigVars( 'welcomesurvey', true );
 		parent::execute( $par );
@@ -101,6 +113,32 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 */
 	public function doesWrites() {
 		return true;
+	}
+
+	/**
+	 * Handle the /skip endpoint, used to dismiss reminder notices about the survey
+	 * as a no-JS fallback to the /growthexperiments/v0/welcomesurvey/skip API.
+	 */
+	protected function processSkip() {
+		$output = $this->getOutput();
+
+		// Don't do writes on GET. There is no legitimate way to get here with a GET query
+		// so we don't bother with error processing.
+		if ( $this->getRequest()->wasPosted() ) {
+			$csrfToken = $this->getRequest()->getRawVal( 'token' );
+			if ( !$this->getContext()->getCsrfTokenSet()->matchToken( $csrfToken, 'welcomesurvey' ) ) {
+				$output->showErrorPage( 'sessionfailure-title', 'sessionfailure', [],
+					$this->specialPageFactory->getTitleForAlias( 'Homepage' ) );
+				return;
+			}
+
+			$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $this->getContext() );
+			$welcomeSurvey->dismiss();
+		}
+
+		$output->redirect(
+			$this->specialPageFactory->getTitleForAlias( 'Homepage' )->getFullURL()
+		);
 	}
 
 	/**
@@ -237,9 +275,9 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	}
 
 	private function showHomepageAwareConfirmationPage( $to, $query ) {
-		$title = Title::newFromText( $to ) ?: \SpecialPage::getTitleFor( 'Homepage' );
+		$title = Title::newFromText( $to ) ?: $this->specialPageFactory->getTitleForAlias( 'Homepage' );
 		if ( $title->isMainPage() ) {
-			$title = \SpecialPage::getTitleFor( 'Homepage' );
+			$title = $this->specialPageFactory->getTitleForAlias( 'Homepage' );
 		}
 
 		$this->getOutput()->addHTML(
@@ -323,7 +361,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				$this->getUser()->getName()
 			)->text(),
 			[
-				'href' => \SpecialPage::getTitleFor( 'Homepage' )->getLinkURL(
+				'href' => $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getLinkURL(
 					[ 'source' => 'specialwelcomesurvey' ]
 				),
 				'class' => 'mw-ui-button mw-ui-progressive mw-ge-welcomesurvey-homepage-button'
