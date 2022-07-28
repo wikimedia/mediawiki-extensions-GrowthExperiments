@@ -8,9 +8,9 @@ use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use IContextSource;
 use MediaWiki\HtmlHelper;
 use MediaWiki\Languages\LanguageNameUtils;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserOptionsManager;
 use MWTimestamp;
+use stdClass;
 use Wikimedia\RemexHtml\HTMLData;
 use Wikimedia\RemexHtml\Serializer\SerializerNode;
 
@@ -83,13 +83,7 @@ class WelcomeSurvey {
 		}
 
 		// The user was already assigned a group
-		$groupFromProp = FormatJson::decode(
-			$this->userOptionsManager->getOption(
-				$this->context->getUser(),
-				self::SURVEY_PROP,
-				''
-			)
-		)->_group ?? false;
+		$groupFromProp = $this->loadSurveyData()->_group ?? false;
 		if ( isset( $groups[ $groupFromProp ] ) ) {
 			return $groupFromProp;
 		}
@@ -292,7 +286,6 @@ class WelcomeSurvey {
 	public function handleResponses( $data, $save, $group, $renderDate ) {
 		$user = $this->context->getUser()->getInstanceForUpdate();
 		$submitDate = MWTimestamp::now();
-		$userUpdated = false;
 
 		if ( $save ) {
 			// set email
@@ -301,7 +294,7 @@ class WelcomeSurvey {
 				$data[ 'email' ] = '[redacted]';
 				if ( Util::canSetEmail( $user, $newEmail ) ) {
 					$user->setEmailWithConfirmation( $newEmail );
-					$userUpdated = true;
+					$user->saveSettings();
 				}
 			}
 
@@ -310,13 +303,7 @@ class WelcomeSurvey {
 			$results = [ '_skip' => true ];
 		}
 
-		$counter = ( FormatJson::decode(
-			$this->userOptionsManager->getOption(
-				$this->context->getUser(),
-				self::SURVEY_PROP,
-				''
-			)
-		)->_counter ?? 0 ) + 1;
+		$counter = ( $this->loadSurveyData()->_counter ?? 0 ) + 1;
 
 		$results = array_merge(
 			$results,
@@ -327,19 +314,50 @@ class WelcomeSurvey {
 				'_counter' => $counter,
 			]
 		);
-		$encodedData = FormatJson::encode( $results );
-		if ( strlen( $encodedData ) <= self::BLOB_SIZE ) {
-			$this->userOptionsManager->setOption( $user, self::SURVEY_PROP, $encodedData );
-			$userUpdated = true;
-		} else {
-			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+		$this->saveSurveyData( $results );
+	}
+
+	/**
+	 * Store the given survey data for the context user.
+	 * @param array $data
+	 * @return void
+	 */
+	private function saveSurveyData( array $data ): void {
+		$user = $this->context->getUser();
+		$encodedData = FormatJson::encode( $data );
+		if ( strlen( $encodedData ) > self::BLOB_SIZE ) {
+			Util::logText(
 				'Unable to save Welcome survey responses for user {userId} because it is too big.',
 				[ 'userId' => $user->getId() ]
 			);
+			return;
 		}
-		if ( $userUpdated ) {
-			$user->saveSettings();
+		$this->userOptionsManager->setOption( $user, self::SURVEY_PROP, $encodedData );
+		$this->userOptionsManager->saveOptions( $user );
+	}
+
+	/**
+	 * Return the survey data stored for the context user.
+	 * @return stdClass|null A JSON object with survey data, or null if no data is stored.
+	 */
+	private function loadSurveyData(): ?stdClass {
+		$user = $this->context->getUser();
+		$data = FormatJson::decode(
+			$this->userOptionsManager->getOption(
+				$user,
+				self::SURVEY_PROP,
+				''
+			)
+		);
+		if ( $data !== null && !( $data instanceof stdClass ) ) {
+			// user options can always contain unsanitized user data
+			Util::logText(
+				'Invalid welcome survey data for {user}',
+				[ 'userId' => $user->getId() ]
+			);
+			$data = null;
 		}
+		return $data;
 	}
 
 	/**
@@ -351,17 +369,11 @@ class WelcomeSurvey {
 	 */
 	public function saveGroup( $group ) {
 		$group = $group ?: 'NONE';
-		$user = $this->context->getUser();
 		$data = [
 			'_group' => $group,
 			'_render_date' => MWTimestamp::now(),
 		];
-		$this->userOptionsManager->setOption(
-			$user,
-			self::SURVEY_PROP,
-			FormatJson::encode( $data )
-		);
-		$user->saveSettings();
+		$this->saveSurveyData( $data );
 	}
 
 	/**
