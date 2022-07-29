@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Logger\LoggerFactory;
 use StatusValue;
 use Title;
 use TitleFactory;
@@ -106,8 +107,11 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$data = json_decode( $response, true );
 
 		if ( $data === null ) {
-			return StatusValue::newFatal( 'rawmessage',
-				'Invalid JSON response for page: ' . $titleTextSafe );
+			$errorMessage = __METHOD__ . ': Unable to decode JSON response for page: ' . $titleTextSafe;
+			LoggerFactory::getInstance( 'GrowthExperiments' )->error(
+				$errorMessage . ' {response}', [ 'response' => $response ]
+			);
+			return StatusValue::newFatal( 'rawmessage', $errorMessage );
 		} elseif ( $request->getStatus() >= 400 ) {
 			return StatusValue::newFatal( 'rawmessage',
 				'API returned HTTP code ' . $request->getStatus() . ' for page '
