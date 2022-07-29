@@ -172,7 +172,7 @@
 
 	/**
 	 * @param {OO.ui.MenuOptionWidget} selectedItem
-	 * @returns {Promise<void>|Promise<any>|*}
+	 * @return {Promise<void>|Promise<any>|*}
 	 */
 	MentorTools.prototype.setMentorWeight = function ( selectedItem ) {
 		if ( mw.config.get( 'GEMentorProvider' ) === 'structured' ) {

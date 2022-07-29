@@ -10,16 +10,17 @@ const store = require( '../__mocks__/store.js' );
  * @param {string} title
  * @param {string} tasktype
  * @param {number} [pageId]
+ * @param {Object} qualityGateConfig
  *
  * @return {mw.libs.ge.TaskData}
  */
-const getTaskData = ( title, tasktype, pageId ) => {
+const getTaskData = ( title, tasktype, pageId, qualityGateConfig ) => {
 	return {
 		title,
 		tasktype,
 		difficulty: 'easy',
 		qualityGateIds: [],
-		qualityGateConfig: {},
+		qualityGateConfig: qualityGateConfig || {},
 		url: null,
 		token: 'token-' + title,
 		pageId: pageId || Math.floor( Math.random() * 100 )
@@ -350,6 +351,30 @@ QUnit.module( 'Actions', function () {
 				done();
 			} );
 		} );
+		QUnit.test( 'should filter out daily limit exceeded quota task types when excludeExceededQuotaTaskTypes is passed to fetchTasks',
+			function ( assert ) {
+				const done = assert.async();
+				const tasksStore = new NewcomerTasksStore( store );
+				stubApiRequests( this.sandbox, tasksStore );
+				const fetchTasksStub = this.sandbox.stub( tasksStore.api, 'fetchTasks' );
+				const qualityGateConfig = {
+					'link-recommendation': { dailyLimit: false },
+					'image-recommendation': { dailyLimit: true }
+				};
+				const tasks = [
+					getTaskData( '1', 'copyedit', null, qualityGateConfig ),
+					getTaskData( '2', 'copyedit', null, qualityGateConfig ),
+					getTaskData( '3', 'link-recommendation', null, qualityGateConfig ),
+					getTaskData( '4', 'link-recommendation', null, qualityGateConfig ),
+					getTaskData( '5', 'image-recommendation', null, qualityGateConfig )
+				];
+				fetchTasksStub.returns( $.Deferred().resolve( { tasks } ) );
+				tasksStore.fetchTasks( 'test', { excludeExceededQuotaTaskTypes: true } ).then( () => {
+					assert.deepEqual( tasksStore.getTaskQueue(), tasks.slice( 0, 4 ) );
+					assert.strictEqual( tasksStore.getTaskCount(), 4 );
+					done();
+				} );
+			} );
 	} );
 
 	QUnit.module( 'Fetch more tasks', function () {
