@@ -1,9 +1,17 @@
+/**
+ * Dependencies:
+ * - mediawiki.user
+ * - oojs-ui-core
+ */
 ( function () {
 
-	var Utils = require( '../utils/Utils.js' );
+	var Utils = require( './Utils.js' );
 
 	/**
-	 * Logging helper for the HelpPanel EventLogging schema.
+	 * Logging helper for the HelpPanel EventLogging schema (analytics/legacy/helppanel).
+	 * Originally written for the help panel, but now also used for a couple of unrelated
+	 * things that also happen in articles: the post-edit dialog and the post-signup
+	 * post-edit dialog.
 	 *
 	 * @class mw.libs.ge.HelpPanelLogger
 	 * @constructor

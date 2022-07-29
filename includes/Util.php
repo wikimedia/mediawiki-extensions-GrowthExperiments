@@ -126,9 +126,12 @@ class Util {
 		$modules,
 		UserOptionsLookup $userOptionsLookup
 	) {
-		if ( $out->getUser()->isRegistered() &&
-			!$userOptionsLookup->getBoolOption( $out->getUser(), $pref ) &&
-			TourHooks::growthTourDependenciesLoaded() ) {
+		if ( $out->getUser()->isRegistered()
+			&& !$userOptionsLookup->getBoolOption( $out->getUser(), $pref )
+			&& TourHooks::growthTourDependenciesLoaded()
+			// Do not show the tour if the user is in the middle of an edit.
+			&& !$out->getRequest()->getCookie( 'ge.midEditSignup' )
+		) {
 			$out->addModules( $modules );
 		}
 	}

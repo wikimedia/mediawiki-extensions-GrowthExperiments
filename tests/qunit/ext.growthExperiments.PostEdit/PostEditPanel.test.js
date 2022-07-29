@@ -2,7 +2,7 @@
 
 const PostEditPanel = require( '../../../modules/ext.growthExperiments.PostEdit/PostEditPanel.js' );
 const NewcomerTaskLogger = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' );
-const HelpPanelLogger = require( '../../../modules/ext.growthExperiments.Help/HelpPanelLogger.js' );
+const HelpPanelLogger = require( '../../../modules/utils/HelpPanelLogger.js' );
 
 QUnit.module( 'ext.growthExperiments.PostEdit/PostEditPanel.js', QUnit.newMwEnvironment() );
 

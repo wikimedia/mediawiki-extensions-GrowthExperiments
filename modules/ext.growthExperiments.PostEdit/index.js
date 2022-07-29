@@ -3,7 +3,7 @@
 ( function () {
 	var PostEditDrawer = require( './PostEditDrawer.js' ),
 		PostEditPanel = require( './PostEditPanel.js' ),
-		HelpPanelLogger = require( '../ext.growthExperiments.Help/HelpPanelLogger.js' ),
+		HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
 		helpConfig = require( '../ext.growthExperiments.Help/data.json' ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
