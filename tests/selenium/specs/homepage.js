@@ -26,7 +26,7 @@ describe( 'Homepage', function () {
 		await HomepagePage.suggestedEditsCard.click();
 
 		await browser.setupInterceptor();
-		await HomepagePage.editAndSaveArticle( 'first edit' );
+		await HomepagePage.editAndSaveArticle( 'first edit', true );
 		await HomepagePage.rebuildRecentChanges( 'Rebuilding recent changes for first edit' );
 		assert.ok( HomepagePage.postEditDialog.isDisplayed() );
 
@@ -73,7 +73,7 @@ describe( 'Homepage', function () {
 
 		// Set up the interceptor again, as we're on a new page.
 		await browser.setupInterceptor();
-		await HomepagePage.editAndSaveArticle( 'third edit' );
+		await HomepagePage.editAndSaveArticle( 'third edit', true );
 		await HomepagePage.rebuildRecentChanges( 'Rebuilding recent changes for third edit' );
 
 		requests = await browser.getRequests();
