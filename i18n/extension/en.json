@@ -81,5 +81,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Articles containing templates defined here will not be shown to users as tasks for this task type.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Articles containing categories defined here will not be shown to users as tasks for this task type.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infobox templates",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "These templates are needed for the [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|image suggestions]] newcomer task feature. Articles containing these templates will not be listed as image suggestion tasks."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "These templates are needed for the [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|image suggestions]] newcomer task feature. Articles containing these templates will not be listed as image suggestion tasks.",
+	"growthexperiments-edit-config-delayed": "Changes to this setting won't take effect immediately (see [[mw:Growth/FAQ#add-link-config|FAQ]])."
 }
