@@ -9,6 +9,7 @@
 	"growthexperiments-help-panel-cta-button-text": "Помош со уредување",
 	"growthexperiments-help-panel-question-button-text": "Продолжи",
 	"growthexperiments-help-panel-submit-question-button-text": "Објави",
+	"growthexperiments-help-panel-return-home-button-text": "Готово",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Најдобри страници за помош со уредувањето",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Повеќе помошни статии",
 	"growthexperiments-help-panel-question-widget-header": "Поставете го прашањето во Бирито за помош",
@@ -17,6 +18,8 @@
 	"growthexperiments-help-panel-close": "Готово",
 	"growthexperiments-help-panel-home-title": "Помош со уредување",
 	"growthexperiments-help-panel-questionreview-title": "Поставете прашање",
+	"growthexperiments-help-panel-question-subject-template": "Прашање на помошниот панел",
+	"growthexperiments-help-panel-suggestededits-title": "Предложени уредувања",
 	"growthexperiments-help-panel-questioncomplete-title": "Постави прашање",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Ќе добиете известување тука на {{SITENAME}} откако ќе се појави одговор.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "промени",
@@ -24,7 +27,14 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Потврдете ја вашата е-пошта",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Ако {{GENDER:$1|сакате}} исто така да добивате известувања по е-пошта, додајте е-поштенска адреса сега.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Додај е-пошта",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Повеќе за оваа функција",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "За помошниот панел",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Оневозможи го помошниот панел",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Неважечки наслов.",
-	"growthexperiments-help-panel-search-label": "Пребарајте помош"
+	"growthexperiments-help-panel-search-label": "Пребарајте помош",
+	"tag-help_panel_question": "Прашање на помошниот панел",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Предложени уредувања",
+	"growthexperiments-help-panel-general-help-title": "Општа помош за уредување",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "За предложените уредувања",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Префрли на нагледниот уредник",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Префрли на изворниот уредник"
 }
