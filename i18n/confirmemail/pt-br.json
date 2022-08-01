@@ -16,6 +16,7 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Olá}} $2,\n\nObrigado por ter adicionado um endereço à sua conta na wiki {{SITENAME}}, registada do endereço IP $1.\n\nClique a hiperligação abaixo, por favor, para confirmar este endereço de e-mail como aquele que gostaria de associar à sua conta \"$2\":\n\n$3\n\nNota: este código de confirmação expira em $4.\n\nObrigado,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmação do endereço de e mail (porque não registou a conta, ou por qualquer outra razão) clique esse link de cancelamento:\n\n$5",
 	"growthexperiments-signupcampaign-title": "Obrigado por doar! Agora junte-se à comunidade de editores que fazem a Wikipedia melhor hoje",
 	"growthexperiments-signupcampaign-body": "Editar a Wikipédia pode ser tão simples quanto adicionar um link ou alterar uma palavra. Obtenha sugestões para artigos em {{GENDER:|seus}} tópicos de interesse depois de criar sua conta!",
+	"growthexperiments-marketingvideocampaign-title": "A Wikipédia é construída por pessoas como você",
 	"growthexperiments-signupcampaign-bullet1": "Artigos sugeridos em {{GENDER:|seus interesses}}",
 	"growthexperiments-signupcampaign-bullet2": "Peça ajuda de um editor experiente",
 	"growthexperiments-signupcampaign-bullet3": "Comece com edições pequenas e fáceis",

@@ -80,6 +80,7 @@
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|ߌ ߟߊ߫}} ߡߞߊ߬ߙߊ߲߬ߘߋ߲߫ ߟߏ߬ߟߏ߬ߦߊ߬ߓߊߟߌ",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "ߡߞߊ߬ߙߊ߲߬ߘߋ߲߫ ߜߘߍ߫ ߡߍ߲ ߦߴ{{GENDER:|ߌ ߟߊ߫}} ߘߊߞߎ߲ ߘߐ߫",
 	"growthexperiments-quit-mentorship-title": "ߓߐ߫ ߡߞߊ߬ߙߊ߲߬ߘߊ߮ ߟߊ߫",
+	"growthexperiments-quit-mentorship-error-not-a-mentor": "{{GENDER:|ߌ}} ߕߍ߫ ߡߞߊ߬ߙߊ߲߬ߓߊ߰ ߘߌ߫.",
 	"growthexperiments-quit-mentorship-reason": "ߊ߬ ߛߊߓߎ",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "ߐ߲߬ߐ߲߬ߐ߲߫߸ ߒ ߠߊ߫ ߡߞߊ߬ߙߊ߲߬ߘߋ߲ ߠߎ߬ ߟߊߞߐߛߊ߬ߦߌ߫ ߕߎ߲߯",
 	"growthexperiments-quit-mentorship-success": "ߌ ߟߊ߫ ߡߞߊ߬ߙߊ߲߬ߘߋ߲ ߠߎ߬ ߟߎ߬ ߓߍߣߊ߬ ߓߌ߬ߟߊ߬ ߡߞߊ߬ߙߊ߲߬ߓߊ߰ ߜߘߍ߫ ߟߎ߫ ߣߐ߬ߟߊ߫ ߥߛߎ߬ߣߍ߲߫ ߞߘߐ߫.",
@@ -127,5 +128,6 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "ߊ߬ ߛߊߓߎ",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "ߌ ߕߐ߮ ߛߓߍ߫",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|ߌ}} ߕߐ߮ ߓߘߊ߫ ߛߓߍ߫ ߡߞߊ߬ߙߊ߲߬ߓߊ߰ߦߊ ߘߐ߫. {{GENDER:|ߌ}} ߘߌ߫ ߛߋ߫ ߞߵߊ߬ ߘߊߓߊ߲߫ [[Special:MentorDashboard|ߡߞߊ߬ߙߊ߲߬ߓߊ߮ ߟߊ߫ ߥߟߊ߬ߟߋ߲]] ߘߐ߫ ߛߌߣߍ߲߬.",
+	"growthexperiments-mentorship-enrollasmentor-summary": "ߒ ߖߛߍ߬ ߞߍߟߌ ߡߞߊ߬ߙߊ߲߬ߠߌ߲߬ߠߊ ߘߌ߫",
 	"tag-mentor list change": "ߡߞߊ߬ߙߊ߲߬ߓߊ߮ ߛߙߍߘߍ ߡߊߦߟߍ߬ߡߊ߲"
 }

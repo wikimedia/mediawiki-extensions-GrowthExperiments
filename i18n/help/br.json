@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fulup"
+			"Fulup",
+			"Huñvreüs"
 		]
 	},
 	"growthexperiments-help-panel-suggestededits-title": "Kemmoù kinniget",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Kuzulioù evit loc'hañ prim",
-	"growthexperiments-help-panel-button-preheader-suggested-edits": "Kemm kinniget",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Kemmoù kinniget",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Kuzulioù evit loc'hañ prim"
 }

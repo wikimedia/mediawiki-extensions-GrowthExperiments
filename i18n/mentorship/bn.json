@@ -4,6 +4,7 @@
 			"Ankan",
 			"Hirok Raja",
 			"ZI Jony",
+			"আজিজ",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -99,5 +100,6 @@
 	"growthexperiments-mentor-list-datatype-mismatch": "ধারণা করা হচ্ছে <code>$1</code> এর বদলে <code>$2</code> হবে, তবে হয়েছে <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "মেন্টরের সংজ্ঞায় একটি অপ্রত্যাশিত চাবি <code>$1</code> রয়েছে।",
 	"growthexperiments-mentor-writer-error-already-added": "$1 মেন্টর ইতিপূর্বেই মেন্টরের তালিকায় যুক্ত হয়েছেন।",
-	"growthexperiments-mentor-writer-error-not-in-the-list": "$1 মেন্টর মেন্টরের তালিকায় নেই।"
+	"growthexperiments-mentor-writer-error-not-in-the-list": "$1 মেন্টর মেন্টরের তালিকায় নেই।",
+	"growthexperiments-mentorship-enrollasmentor-summary": "একজন পরামর্শদাতা হিসেবে নিজেকে যুক্ত করছি"
 }

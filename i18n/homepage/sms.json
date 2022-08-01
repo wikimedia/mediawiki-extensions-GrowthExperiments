@@ -40,6 +40,7 @@
 	"growthexperiments-notification-body-mentor-change": "Mäinn: $1",
 	"growthexperiments-homepage-suggestededits-more-info": "Lââʹssteâđ eʹtǩǩuum muttsin",
 	"growthexperiments-addlink-context-text-label": "Teʹkstt",
+	"growthexperiments-addlink-summary-title": "Õʹhtteǩeässmõš",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Eʹtǩǩõõzz",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Vuõlttâd...",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Eʹtǩǩõõzz",
@@ -51,5 +52,6 @@
 	"growthexperiments-addimage-detailsdialog-categories": "Kategoria:",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Vuõlttâd",
 	"growthexperiments-addimage-caption-title": "Lââʹzzet kartt- leʹbe snimldõkteeʹkst",
-	"growthexperiments-structuredtask-user-error-login-cta": "Ǩeeʹrjtõõđ sizz"
+	"growthexperiments-structuredtask-user-error-login-cta": "Ǩeeʹrjtõõđ sizz",
+	"growthexperiments-addimage-summary-label": "Õʹhtteǩeässmõš"
 }

@@ -13,6 +13,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> espera-se que seja <code>$2</code>, mas é <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Incompatibilidade de modelo de conteúdo: O arquivo de configuração do GrowthExperiments deve ter um modelo de conteúdo JSON, $1 detectado",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de manipulador de tipo de tarefa inválida: <code>$1</code> não é um valor válido",
+	"growthexperiments-config-validator-array-toobig": "$1 tem muitos elementos (o máximo permitido é $2)",
 	"growthexperiments-edit-config-disabled": "A configuração da comunidade está desativada no momento.",
 	"growthexperiments-edit-config-title": "Editar configuração de Growth",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Última atualização por [[User:$1|$1]] $2. ([$4 diferenças]).",
@@ -63,6 +64,8 @@
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Página contendo lista de mentores que só podem ser atribuídos manualmente",
 	"growthexperiments-edit-config-newcomertasks": "Edições sugeridas",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Alguns tipos de edições sugeridos são surgiram através de modelos de manutenção. Artigos contendo esses predefinições são adicionados ao feed. Para ver quantos artigos estão disponíveis para cada tipo de tarefa, veja [[Special:NewcomerTasksInfo|essa página]].",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Desativado",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Desativado na configuração da wiki",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Copiar Edição: predefinições para encontrar artigos que precisam de edição de cópia, como aprimoramentos de ortografia, gramática e pontuação.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Página de destino para aprender mais sobre edição de cópia.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Expandir: predefinições para encontrar artigos que precisam de expansão.",
@@ -78,5 +81,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Página de destino para aprender mais sobre o tipo de tarefa de recomendação de imagem.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Este tipo de tarefa está associado a sugestões de máquina e não usa modelos para gerar um conjunto de tarefas.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Os artigos que contêm predefinições definidas aqui não serão mostradas aos usuários como tarefas para este tipo de tarefa.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Os artigos que contêm categorias definidas aqui não serão mostrados aos usuários como tarefas para este tipo de tarefa."
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Os artigos que contêm categorias definidas aqui não serão mostrados aos usuários como tarefas para este tipo de tarefa.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Predefinições de caixas informativas",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas predefinições são necessárias para a funcionalidade das tarefas de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugestão de imagens]] para recém-chegados. Os artigos que contenham estas predefinições não serão listados como tarefas de sugestão de imagens."
 }
