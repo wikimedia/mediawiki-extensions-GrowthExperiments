@@ -45,14 +45,12 @@ class StructuredMentorListValidator implements IConfigValidator {
 			);
 		}
 
+		$status = StatusValue::newGood();
 		foreach ( $mentors as $mentor ) {
-			$validationResult = $this->validateMentor( $mentor );
-			if ( !$validationResult->isOK() ) {
-				return $validationResult;
-			}
+			$status->merge( $this->validateMentor( $mentor ) );
 		}
 
-		return StatusValue::newGood();
+		return $status;
 	}
 
 	/**
