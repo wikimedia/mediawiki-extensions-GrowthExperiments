@@ -35,6 +35,8 @@ $specialPageAliases['ar'] = [
 	'EditGrowthConfig' => [ 'تعديل_إعداد_النمو' ],
 	'MentorDashboard' => [ 'لوحة_المرشدين' ],
 	'QuitMentorship' => [ 'مغادرة_الإرشاد' ],
+	'ManageMentors' => [ 'إدارة_الإرشاد' ],
+	'EnrollAsMentor' => [ 'انخراط_كمرشد' ],
 ];
 
 /** Azerbaijani (azərbaycanca) */
@@ -54,6 +56,8 @@ $specialPageAliases['bn'] = [
 	'EditGrowthConfig' => [ 'গ্রোথ_কনফিগারেশন_সম্পাদনা' ],
 	'MentorDashboard' => [ 'মেন্টর_ড্যাশবোর্ড' ],
 	'QuitMentorship' => [ 'মেন্টরশিপ_পরিত্যাগ' ],
+	'ManageMentors' => [ 'মেন্টর_পরিচালনা' ],
+	'EnrollAsMentor' => [ 'মেন্টর_হিসেবে_যোগদান' ],
 ];
 
 /** Bulgarian (български) */
@@ -122,6 +126,8 @@ $specialPageAliases['es'] = [
 	'Homepage' => [ 'Página_inicial' ],
 	'Impact' => [ 'Incidencia' ],
 	'ClaimMentee' => [ 'Reclamar_nuevo_usuario' ],
+	'ManageMentors' => [ 'Gestionar_mentores' ],
+	'EnrollAsMentor' => [ 'Inscribirse_como_mentor' ],
 ];
 
 /** Persian (فارسی) */
