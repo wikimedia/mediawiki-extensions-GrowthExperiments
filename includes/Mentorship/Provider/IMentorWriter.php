@@ -18,12 +18,15 @@ interface IMentorWriter {
 	 * @param Mentor $mentor
 	 * @param UserIdentity $performer User who performed the action
 	 * @param string $summary
+	 * @param bool $bypassWarnings Should warnings/non-fatals stop the operation? Defaults to
+	 * false.
 	 * @return StatusValue
 	 */
 	public function addMentor(
 		Mentor $mentor,
 		UserIdentity $performer,
-		string $summary
+		string $summary,
+		bool $bypassWarnings = false
 	): StatusValue;
 
 	/**
@@ -35,12 +38,15 @@ interface IMentorWriter {
 	 * @param Mentor $mentor
 	 * @param UserIdentity $performer User who performed the action
 	 * @param string $summary
+	 * @param bool $bypassWarnings Should warnings/non-fatals stop the operation? Defaults to
+	 * true.
 	 * @return StatusValue
 	 */
 	public function removeMentor(
 		Mentor $mentor,
 		UserIdentity $performer,
-		string $summary
+		string $summary,
+		bool $bypassWarnings = false
 	): StatusValue;
 
 	/**
@@ -54,6 +60,8 @@ interface IMentorWriter {
 	 * @param Mentor $mentor
 	 * @param UserIdentity $performer User who performed the action
 	 * @param string $summary
+	 * @param bool $bypassWarnings Should warnings/non-fatals stop the operation? Defaults to
+	 * true.
 	 * @return StatusValue
 	 * @throws InvalidArgumentException when changeMentor was called, but the mentor is not in
 	 * the list.
@@ -61,6 +69,7 @@ interface IMentorWriter {
 	public function changeMentor(
 		Mentor $mentor,
 		UserIdentity $performer,
-		string $summary
+		string $summary,
+		bool $bypassWarnings = false
 	): StatusValue;
 }

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Config\Validation;
 
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use InvalidArgumentException;
 use StatusValue;
 
@@ -91,7 +92,34 @@ class StructuredMentorListValidator implements IConfigValidator {
 			}
 		}
 
-		return StatusValue::newGood();
+		// Code below assumes mentor declarations are syntactically correct.
+		$status = StatusValue::newGood();
+		$status->merge( self::validateMentorMessage( $mentor ) );
+		return $status;
+	}
+
+	/**
+	 * Validate the mentor message
+	 *
+	 * Currently only checks MentorProvider::INTRO_TEXT_LENGTH.
+	 *
+	 * @param array $mentor
+	 * @return StatusValue Warning means "an issue, but not important enough to stop using the
+	 * mentor list".
+	 */
+	public static function validateMentorMessage( array $mentor ): StatusValue {
+		$status = StatusValue::newGood();
+
+		// Ensure message has correct length. This only warns, as we do not want to fail the
+		// validation (truncated message is better than broken mentorship).
+		if ( mb_strlen( $mentor['message'] ?? '', 'UTF-8' ) > MentorProvider::INTRO_TEXT_LENGTH ) {
+			$status->warning(
+				'growthexperiments-mentor-writer-error-message-too-long',
+				MentorProvider::INTRO_TEXT_LENGTH
+			);
+		}
+
+		return $status;
 	}
 
 	/**

@@ -71,17 +71,19 @@ class StructuredMentorWriter implements IMentorWriter {
 	 * @param array $mentorData
 	 * @param string $summary
 	 * @param UserIdentity $performer
+	 * @param bool $bypassWarnings Should warnings raised by the validator stop the operation?
 	 * @return StatusValue
 	 */
 	private function saveMentorData(
 		array $mentorData,
 		string $summary,
-		UserIdentity $performer
+		UserIdentity $performer,
+		bool $bypassWarnings
 	): StatusValue {
 		$configWriter = $this->configWriterFactory
 			->newWikiPageConfigWriter( $this->mentorList, $performer );
 		$configWriter->setVariable( self::CONFIG_KEY, $mentorData );
-		return $configWriter->save( $summary, false, self::CHANGE_TAG );
+		return $configWriter->save( $summary, false, self::CHANGE_TAG, $bypassWarnings );
 	}
 
 	/**
@@ -90,7 +92,8 @@ class StructuredMentorWriter implements IMentorWriter {
 	public function addMentor(
 		Mentor $mentor,
 		UserIdentity $performer,
-		string $summary
+		string $summary,
+		bool $bypassWarnings = false
 	): StatusValue {
 		$mentorUserIdentity = $mentor->getUserIdentity();
 		if ( !$mentorUserIdentity->isRegistered() ) {
@@ -110,7 +113,7 @@ class StructuredMentorWriter implements IMentorWriter {
 		}
 		$mentorData[$mentorUserIdentity->getId()] = $this->serializeMentor( $mentor );
 
-		return $this->saveMentorData( $mentorData, $summary, $performer );
+		return $this->saveMentorData( $mentorData, $summary, $performer, $bypassWarnings );
 	}
 
 	/**
@@ -119,7 +122,8 @@ class StructuredMentorWriter implements IMentorWriter {
 	public function removeMentor(
 		Mentor $mentor,
 		UserIdentity $performer,
-		string $summary
+		string $summary,
+		bool $bypassWarnings = false
 	): StatusValue {
 		$mentorUserIdentity = $mentor->getUserIdentity();
 
@@ -133,7 +137,7 @@ class StructuredMentorWriter implements IMentorWriter {
 		}
 		unset( $mentorData[$mentorUserIdentity->getId()] );
 
-		return $this->saveMentorData( $mentorData, $summary, $performer );
+		return $this->saveMentorData( $mentorData, $summary, $performer, $bypassWarnings );
 	}
 
 	/**
@@ -142,7 +146,8 @@ class StructuredMentorWriter implements IMentorWriter {
 	public function changeMentor(
 		Mentor $mentor,
 		UserIdentity $performer,
-		string $summary
+		string $summary,
+		bool $bypassWarnings = false
 	): StatusValue {
 		$mentorUserIdentity = $mentor->getUserIdentity();
 
@@ -156,6 +161,6 @@ class StructuredMentorWriter implements IMentorWriter {
 		}
 		$mentorData[$mentorUserIdentity->getId()] = $this->serializeMentor( $mentor );
 
-		return $this->saveMentorData( $mentorData, $summary, $performer );
+		return $this->saveMentorData( $mentorData, $summary, $performer, $bypassWarnings );
 	}
 }

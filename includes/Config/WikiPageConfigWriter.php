@@ -201,10 +201,17 @@ class WikiPageConfigWriter {
 	 * @param string $summary
 	 * @param bool $minor
 	 * @param array|string $tags Tag(s) to apply (defaults to none)
+	 * @param bool $bypassWarnings Should warnings/non-fatals stop the operation? Defaults to
+	 * true.
 	 * @return Status
 	 * @throws MWException
 	 */
-	public function save( string $summary = '', bool $minor = false, $tags = [] ): Status {
+	public function save(
+		string $summary = '',
+		bool $minor = false,
+		$tags = [],
+		bool $bypassWarnings = true
+	): Status {
 		// Load config if not done already, to support null-edits
 		if ( $this->wikiConfig === null ) {
 			$this->loadConfig();
@@ -216,7 +223,11 @@ class WikiPageConfigWriter {
 		$status = Status::newGood();
 		$status->merge( $this->configValidator->validate( $this->wikiConfig ) );
 
-		if ( !$status->isOK() ) {
+		if (
+			!$status->isOK() ||
+			( !$bypassWarnings && !$status->isGood() )
+		) {
+			$status->setOK( false );
 			return $status;
 		}
 

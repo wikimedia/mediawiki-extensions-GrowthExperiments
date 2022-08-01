@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Maintenance;
 
 use FormatJson;
+use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
@@ -10,6 +11,7 @@ use GrowthExperiments\Mentorship\Provider\WikitextMentorProvider;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityLookup;
+use Status;
 use TitleFactory;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -86,7 +88,20 @@ class MigrateWikitextMentorList extends Maintenance {
 			}
 			$mentor = $this->wikitextMentorProvider->newMentorFromUserIdentity( $mentorUser );
 
-			$mentorList[$mentor->getUserIdentity()->getId()] = StructuredMentorWriter::serializeMentor( $mentor );
+			$mentorArray = StructuredMentorWriter::serializeMentor( $mentor );
+
+			$messageValidationStatus = Status::wrap(
+				StructuredMentorListValidator::validateMentorMessage( $mentorArray )
+			);
+			if ( !$messageValidationStatus->isGood() ) {
+				$this->error(
+					'WARNING: Message for "' . $mentorName . '" did not validate (error: ' .
+					$messageValidationStatus->getWikiText() .
+					')'
+				);
+			}
+
+			$mentorList[$mentor->getUserIdentity()->getId()] = $mentorArray;
 		}
 
 		if ( !$this->hasOption( 'dry-run' ) ) {
