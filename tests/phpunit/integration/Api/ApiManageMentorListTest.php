@@ -70,7 +70,11 @@ class ApiManageMentorListTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testNoPermissions() {
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
+		$this->setMwGlobals( [
+			'wgGEMentorProvider' => MentorProvider::PROVIDER_STRUCTURED,
+			'wgRevokePermissions' => [ '*' => [ 'enrollasmentor' => true ] ],
+			'wgGEMentorshipAutomaticEligibility' => false,
+		] );
 		$user = $this->getMutableTestUser()->getUser();
 
 		$this->expectException( ApiUsageException::class );
@@ -82,6 +86,29 @@ class ApiManageMentorListTest extends ApiTestCase {
 				'message' => 'intro',
 				'autoassigned' => true,
 				'weight' => MentorWeightManager::WEIGHT_NORMAL
+			],
+			null,
+			$user
+		);
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testNoPermissionsChange() {
+		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
+		$user = $this->getMutableTestUser()->getUser();
+
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'You don\'t have permission to manage the list of mentors.' );
+		$this->doApiRequestWithToken(
+			[
+				'action' => 'growthmanagementorlist',
+				'geaction' => 'change',
+				'message' => 'intro',
+				'autoassigned' => true,
+				'weight' => MentorWeightManager::WEIGHT_NORMAL,
+				'username' => 'FooUser',
 			],
 			null,
 			$user

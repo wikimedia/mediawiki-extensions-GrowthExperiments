@@ -21,10 +21,12 @@ use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
+use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Psr\Log\LogLevel;
 use Throwable;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 class MentorHooks implements
 	SpecialPage_initListHook,
@@ -32,7 +34,8 @@ class MentorHooks implements
 	PageSaveCompleteHook,
 	ListDefinedTagsHook,
 	ChangeTagsListActiveHook,
-	FormatAutocommentsHook
+	FormatAutocommentsHook,
+	UserGetRightsHook
 {
 
 	/** @var Config */
@@ -222,6 +225,26 @@ class MentorHooks implements
 		];
 		if ( in_array( $auto, $allowedMessageKeys ) ) {
 			$comment = wfMessage( $auto )->text();
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onUserGetRights( $user, &$rights ) {
+		if (
+			$this->config->get( 'GEMentorProvider' ) !== MentorProvider::PROVIDER_STRUCTURED ||
+			!$this->wikiConfig->get( 'GEMentorshipAutomaticEligibility' )
+		) {
+			return;
+		}
+
+		$userAge = time() - (int)wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
+		if (
+			$userAge >= $this->wikiConfig->get( 'GEMentorshipMinimumAge' ) * ExpirationAwareness::TTL_DAY &&
+			$user->getEditCount() >= $this->wikiConfig->get( 'GEMentorshipMinimumEditcount' )
+		) {
+			$rights[] = 'enrollasmentor';
 		}
 	}
 }

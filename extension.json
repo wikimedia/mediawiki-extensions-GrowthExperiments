@@ -437,7 +437,8 @@
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
 		"VisualEditorApiVisualEditorEditPostSave": "visualeditor",
 		"ChangesListSpecialPageStructuredFilters": "mentorfilters",
-		"CirrusSearchAddQueryFeatures": "GrowthExperiments\\HomepageHooks::onCirrusSearchAddQueryFeatures"
+		"CirrusSearchAddQueryFeatures": "GrowthExperiments\\HomepageHooks::onCirrusSearchAddQueryFeatures",
+		"UserGetRights": "mentor"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
@@ -2045,6 +2046,18 @@
 		"GEMentorshipMigrationStage": {
 			"description": "Deprecated variable. Any other value than SCHEMA_COMPAT_NEW will cause a fatal. Was migration stage of mentorship. String is decoded in GrowthHooks.",
 			"value": "SCHEMA_COMPAT_NEW"
+		},
+		"GEMentorshipAutomaticEligibility": {
+			"description": "Automatically grant \"enrollasmentor\" to users who are eligible to enroll as mentors. See GEMentorshipMinimumAge and GEMentorshipMinimumEditcount to define eligibility rules (requirements set by both variables need to be met to make users eligible).",
+			"value": true
+		},
+		"GEMentorshipMinimumAge": {
+			"description": "Minimum tenure (in days) required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true and GEMentorProvider is structured. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
+			"value": 0
+		},
+		"GEMentorshipMinimumEditcount": {
+			"description": "Minimum number of edits required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true and GEMentorProvider is structured. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
+			"value": 0
 		},
 		"GEHomepageMentorsList": {
 			"description": "Title of the wiki page that contains the list of auto-assigned mentors (cf. GEHomepageManualAssignmentMentorsList). May be null if no such page exists.",
