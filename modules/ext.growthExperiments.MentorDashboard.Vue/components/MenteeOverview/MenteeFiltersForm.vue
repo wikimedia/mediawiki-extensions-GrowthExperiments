@@ -1,9 +1,11 @@
 <template>
-	<div
+	<form
+		id="mentee-filters-form"
 		ref="formRef"
 		class="ext-growthExperiments-MenteeFiltersForm"
 		tabindex="0"
 		@keyup.esc="$emit( 'close' )"
+		@submit="onFiltersUpdate"
 	>
 		<h3 class="no-gutter">
 			{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline' ) }}
@@ -12,13 +14,21 @@
 			<label>
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from' ) }}
 			</label>
-			<cdx-text-input v-model="formData.editCountMin"></cdx-text-input>
+			<c-number-input
+				v-model="formData.editCountMin"
+				min="0"
+				step="1"
+			></c-number-input>
 		</section>
 		<section class="ext-growthExperiments-MenteeFiltersForm__form-group">
 			<label>
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to' ) }}
 			</label>
-			<cdx-text-input v-model="formData.editCountMax"></cdx-text-input>
+			<c-number-input
+				v-model="formData.editCountMax"
+				min="0"
+				step="1"
+			></c-number-input>
 		</section>
 		<horizontal-divider class="ext-growthExperiments-MenteeFiltersForm-section-divider"></horizontal-divider>
 		<h3 class="no-gutter">
@@ -68,18 +78,19 @@
 			</cdx-checkbox>
 		</section>
 		<section class="ext-growthExperiments-MenteeFiltersForm__form-group ext-growthExperiments-MenteeFiltersForm__form-actions">
-			<cdx-button class="ext-growthExperiments-utils__pull-right" @click="onFiltersUpdate">
+			<cdx-button class="ext-growthExperiments-utils__pull-right" form="mentee-filters-form" type="submit">
 				{{
 					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit' )
 				}}
 			</cdx-button>
 		</section>
-	</div>
+	</form>
 </template>
 
 <script>
-const { CdxButton, CdxCheckbox, CdxTextInput } = require( '@wikimedia/codex' );
+const { CdxButton, CdxCheckbox } = require( '@wikimedia/codex' );
 const HorizontalDivider = require( '../HorizontalDivider/HorizontalDivider.vue' );
+const CNumberInput = require( '../CNumberInput/CNumberInput.vue' );
 
 const TIME_AGO_LABELS = {
 	DAYS: {
@@ -96,9 +107,9 @@ const TIME_AGO_LABELS = {
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
+		CNumberInput,
 		CdxButton,
 		CdxCheckbox,
-		CdxTextInput,
 		HorizontalDivider
 	},
 	props: {

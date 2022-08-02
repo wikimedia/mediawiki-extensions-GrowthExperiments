@@ -284,6 +284,7 @@ module.exports = exports = {
 	api,
 	createDefaultPresets,
 	getInitialPresetsWithFallback,
+	validateAndApplyFilters,
 	// prefixes actions with the module name, ie: mentees/getAllMentees
 	namespaced: true,
 	state: storeState,

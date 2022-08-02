@@ -1610,6 +1610,7 @@
 				"ext.growthExperiments.MentorDashboard.Vue/directives/click-outside.directive.js",
 				"ext.growthExperiments.MentorDashboard.Vue/validators/align-text.validator.js",
 				"ext.growthExperiments.MentorDashboard.Vue/components/CPopper/CPopper.vue",
+				"ext.growthExperiments.MentorDashboard.Vue/components/CNumberInput/CNumberInput.vue",
 				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTable.vue",
 				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTableCellValue.vue",
 				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTableCellLink.vue",
