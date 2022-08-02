@@ -890,6 +890,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 						explode( "\n", $data[$nameRaw] )
 					);
 				}
+			} elseif ( $descriptor['type'] === 'int' ) {
+				$data[$nameRaw] = (int)$data[$nameRaw];
 			}
 
 			// Ignore fields with dashes except for newcomertasks, where task types
@@ -968,12 +970,12 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			// link-recommendation specific
 			if ( isset( $data['link-recommendationMaximumLinksToShowPerTask'] ) ) {
 				$suggestedEditsConfig['link-recommendation']['maximumLinksToShowPerTask'] =
-					(int)$data['link-recommendationMaximumLinksToShowPerTask'];
+					$data['link-recommendationMaximumLinksToShowPerTask'];
 			}
 			if ( isset( $data['link-recommendationMaxTasksPerDay'] ) ) {
 				$suggestedEditsConfig['link-recommendation'][
 					LinkRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
-				] = (int)$data['link-recommendationMaxTasksPerDay'];
+				] = $data['link-recommendationMaxTasksPerDay'];
 			}
 			if ( isset( $data['link-recommendationExcludedSections'] ) ) {
 				$suggestedEditsConfig['link-recommendation']['excludedSections'] =
@@ -986,7 +988,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			if ( isset( $data['image-recommendationMaxTasksPerDay'] ) ) {
 				$suggestedEditsConfig['image-recommendation'][
 					ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
-				] = (int)$data['image-recommendationMaxTasksPerDay'];
+				] = $data['image-recommendationMaxTasksPerDay'];
 			}
 		}
 
