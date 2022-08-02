@@ -14,6 +14,14 @@ use Title;
  */
 class WikitextMentorProviderTest extends MediaWikiIntegrationTestCase {
 
+	/**
+	 * @inheritDoc
+	 */
+	protected function setUp(): void {
+		parent::setUp();
+		$this->setMwGlobals( 'wgGEMentorProvider', 'wikitext' );
+	}
+
 	private function getMentorProvider() {
 		$coreServices = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
