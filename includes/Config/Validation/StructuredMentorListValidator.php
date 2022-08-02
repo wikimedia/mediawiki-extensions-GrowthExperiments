@@ -39,6 +39,7 @@ class StructuredMentorListValidator implements IConfigValidator {
 		if ( !$this->validateFieldDatatype( 'array<int,array>', $mentors ) ) {
 			return StatusValue::newFatal(
 				'growthexperiments-mentor-list-datatype-mismatch',
+				self::TOP_LEVEL_KEY,
 				'array<int,array>',
 				gettype( $mentors )
 			);
