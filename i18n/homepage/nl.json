@@ -14,7 +14,8 @@
 			"Robin van der Vliet",
 			"Romaine",
 			"Akoopal",
-			"Nickthijssen1994"
+			"Nickthijssen1994",
+			"Dnlweijers"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -78,7 +79,7 @@
 	"growthexperiments-homepage-suggested-edits-header": "Voorgestelde bewerkingen",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Uw}} impact",
 	"growthexperiments-homepage-impact-subheader-text": "Mensen bekijken de artikelen die {{GENDER:$1|je}} hebt bewerkt!",
-	"growthexperiments-homepage-impact-subheader-subtext": "Weergaven sinds {{GENDER:$1|je}} bewerkte (afgelopen 60 dagen):",
+	"growthexperiments-homepage-impact-subheader-subtext": "Weergaven sinds {{GENDER:$1|uw}} bewerking (afgelopen 60 dagen):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Je hebt}} <strong>$1</strong> {{PLURAL:$1|bewerking|bewerkingen}} gedaan (alles bekijken)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Je}} hebt nog geen artikelen gemaakt of bewerkt.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Dit gedeelte laat zien hoe vaak mensen de artikelen hebben bekeken die {{GENDER:$1|je}} hebt gemaakt of bewerkt.",
