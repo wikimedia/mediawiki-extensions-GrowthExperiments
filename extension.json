@@ -86,13 +86,6 @@
 				"GrowthExperimentsMentorStatusManager"
 			]
 		},
-		"growthsetmentorweight": {
-			"class": "GrowthExperiments\\Api\\ApiSetMentorWeight",
-			"services": [
-				"GrowthExperimentsMentorProvider",
-				"GrowthExperimentsMentorWeightManager"
-			]
-		},
 		"growthmanagementorlist": {
 			"class": "GrowthExperiments\\Api\\ApiManageMentorList",
 			"services": [
