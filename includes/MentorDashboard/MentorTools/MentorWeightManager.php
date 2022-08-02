@@ -7,19 +7,7 @@ use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsManager;
 
-class MentorWeightManager implements IDBAccessObject {
-
-	/** @var int */
-	public const WEIGHT_LOW = 1;
-	public const WEIGHT_NORMAL = 2;
-	public const WEIGHT_HIGH = 4;
-
-	/** @var int[] */
-	public const WEIGHTS = [
-		self::WEIGHT_LOW,
-		self::WEIGHT_NORMAL,
-		self::WEIGHT_HIGH
-	];
+class MentorWeightManager implements IDBAccessObject, IMentorWeights {
 
 	public const MENTORSHIP_WEIGHT_PREF = 'growthexperiments-mentorship-weight';
 	/** @var int */
