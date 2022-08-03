@@ -1,35 +1,35 @@
 <template>
 	<div
 		ref="formRef"
-		class="mentee-filters-form"
+		class="ext-growthExperiments-MenteeFiltersForm"
 		tabindex="0"
 		@keyup.esc="$emit( 'close' )"
 	>
 		<h3 class="no-gutter">
 			{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline' ) }}
 		</h3>
-		<section class="form-group">
+		<section class="ext-growthExperiments-MenteeFiltersForm__form-group">
 			<label>
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from' ) }}
 			</label>
 			<cdx-text-input v-model="formData.editCountMin"></cdx-text-input>
 		</section>
-		<section class="form-group">
+		<section class="ext-growthExperiments-MenteeFiltersForm__form-group">
 			<label>
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to' ) }}
 			</label>
 			<cdx-text-input v-model="formData.editCountMax"></cdx-text-input>
 		</section>
-		<horizontal-divider class="mentee-filters-form-section-divider"></horizontal-divider>
+		<horizontal-divider class="ext-growthExperiments-MenteeFiltersForm-section-divider"></horizontal-divider>
 		<h3 class="no-gutter">
 			{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline' ) }}
 		</h3>
-		<section class="form-group-flex">
-			<div class="form-group-inline">
+		<section>
+			<div class="ext-growthExperiments-MenteeFiltersForm__form-group--inline">
 				<label>
 					{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days' ) }}
 				</label>
-				<div class="button-group">
+				<div class="ext-growthExperiments-MenteeFiltersForm__button-group">
 					<cdx-button
 						v-for="option in dayLabels"
 						:key="option.value"
@@ -43,11 +43,11 @@
 					</cdx-button>
 				</div>
 			</div>
-			<div class="form-group-inline">
+			<div class="ext-growthExperiments-MenteeFiltersForm__form-group--inline">
 				<label>
 					{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months' ) }}
 				</label>
-				<div class="button-group">
+				<div class="ext-growthExperiments-MenteeFiltersForm__button-group">
 					<cdx-button
 						v-for="option in monthLabels"
 						:key="option.value"
@@ -61,14 +61,14 @@
 				</div>
 			</div>
 		</section>
-		<horizontal-divider class="mentee-filters-form-section-divider"></horizontal-divider>
-		<section class="form-group">
+		<horizontal-divider class="ext-growthExperiments-MenteeFiltersForm-section-divider"></horizontal-divider>
+		<section class="ext-growthExperiments-MenteeFiltersForm__form-group">
 			<cdx-checkbox v-model="formData.onlyStarred" @update:model-value="onOnlyStarredUpdate">
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred' ) }}
 			</cdx-checkbox>
 		</section>
-		<section class="form-group form-actions">
-			<cdx-button class="pull-right" @click="onFiltersUpdate">
+		<section class="ext-growthExperiments-MenteeFiltersForm__form-group ext-growthExperiments-MenteeFiltersForm__form-actions">
+			<cdx-button class="ext-growthExperiments-utils__pull-right" @click="onFiltersUpdate">
 				{{
 					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit' )
 				}}
@@ -180,32 +180,31 @@ module.exports = exports = {
 <style lang="less">
 @import '../variables.less';
 
-.mentee-filters-form {
+.ext-growthExperiments-MenteeFiltersForm {
 	padding: @padding-horizontal-base;
 
-	.no-gutter {
-		margin: 0;
-		padding: 0;
+	> h3 {
+		.no-gutter();
 	}
 
 	&-section-divider {
 		margin: 16px 0;
 	}
 
-	.form-group {
+	&__form-group {
 		margin-top: 12px;
 
-		&-inline {
+		&--inline {
 			display: inline-block;
 			margin-right: 16px;
 		}
 	}
 
-	.form-actions {
+	&__form-actions {
 		padding: 8px 0;
 	}
 
-	.button-group {
+	&__button-group {
 		padding: 8px 0;
 		display: flex;
 
@@ -222,10 +221,6 @@ module.exports = exports = {
 			border-start-start-radius: 0;
 			border-end-start-radius: 0;
 		}
-	}
-
-	.pull-right {
-		float: right;
 	}
 }
 </style>

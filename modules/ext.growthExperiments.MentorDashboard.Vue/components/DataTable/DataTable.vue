@@ -1,6 +1,6 @@
 <template>
-	<div class="data-table">
-		<table class="data-table__table">
+	<div class="ext-growthExperiments-DataTable">
+		<table class="ext-growthExperiments-DataTable__table">
 			<caption v-if="captionText">
 				{{ captionText }}
 			</caption>
@@ -11,17 +11,17 @@
 						:key="i"
 						@click="onSortColumnClick( field )"
 					>
-						<div class="data-table__table__header">
+						<div class="ext-growthExperiments-DataTable__table__header">
 							<cdx-icon
 								v-if="field.icon"
-								class="data-table__table__icon"
+								class="ext-growthExperiments-DataTable__table__icon"
 								:icon="icons[ field.icon ]"
 								:icon-label="field.label"
 							></cdx-icon>
 							<span
-								class="sort-icon"
+								class="ext-growthExperiments-DataTable__table__sort-icon"
 								:class="{
-									[order]: sortBy === field.sortBy
+									[`ext-growthExperiments-DataTable__table__sort-icon--${order}`]: sortBy === field.sortBy
 								}"
 							></span>
 						</div>
@@ -43,7 +43,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<div class="data-table__footer-actions">
+		<div class="ext-growthExperiments-DataTable__footer-actions">
 			<data-table-limit
 				:limit-options="LIMIT_OPTIONS"
 				:limit="limit"
@@ -146,7 +146,7 @@ module.exports = exports = {
 <style lang="less">
 @import '../variables.less';
 
-.data-table {
+.ext-growthExperiments-DataTable {
 	&__footer-actions {
 		width: 100%;
 		display: flex;
@@ -179,25 +179,25 @@ module.exports = exports = {
 			padding: @spacing-small 0;
 		}
 
+		&__sort-icon {
+			background-repeat: no-repeat;
+			background-position: center right;
+			padding-right: 21px;
+			background-image: url( ../../../../../../resources/src/jquery.tablesorter.styles/images/sort_both.svg );
+
+			&--ascending {
+				background-image: url( ../../../../../../resources/src/jquery.tablesorter.styles/images/sort_up.svg );
+			}
+
+			&--descending {
+				background-image: url( ../../../../../../resources/src/jquery.tablesorter.styles/images/sort_down.svg );
+			}
+		}
+
 		thead {
 			th {
 				border-bottom: 1px solid #c8ccd1;
 				cursor: pointer;
-			}
-
-			.sort-icon {
-				background-repeat: no-repeat;
-				background-position: center right;
-				padding-right: 21px;
-				background-image: url( ../../../../../../resources/src/jquery.tablesorter.styles/images/sort_both.svg );
-
-				&.ascending {
-					background-image: url( ../../../../../../resources/src/jquery.tablesorter.styles/images/sort_up.svg );
-				}
-
-				&.descending {
-					background-image: url( ../../../../../../resources/src/jquery.tablesorter.styles/images/sort_down.svg );
-				}
 			}
 
 			th:first-child {

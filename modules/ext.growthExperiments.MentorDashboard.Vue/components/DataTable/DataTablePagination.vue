@@ -1,5 +1,5 @@
 <template>
-	<div class="data-table-pagination">
+	<div class="ext-growthExperiments-DataTablePagination">
 		<span>
 			{{ paginationText }}
 		</span>
@@ -9,7 +9,7 @@
 			@click="$emit( 'prev', $event )"
 		>
 			<cdx-icon
-				class="arrow-icon"
+				class="ext-growthExperiments-DataTablePagination__arrow-icon"
 				:icon="cdxIconPrevious"
 				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label' )"
 			></cdx-icon>
@@ -20,7 +20,7 @@
 			@click="$emit( 'next', $event )"
 		>
 			<cdx-icon
-				class="arrow-icon"
+				class="ext-growthExperiments-DataTablePagination__arrow-icon"
 				:icon="cdxIconNext"
 				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label' )"
 			></cdx-icon>
@@ -65,13 +65,13 @@ module.exports = exports = {
 <style lang="less">
 @import '../variables.less';
 
-.data-table-pagination {
+.ext-growthExperiments-DataTablePagination {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: @padding-base;
 
-	.arrow-icon {
+	&__arrow-icon {
 		min-width: 32px;
 		opacity: 0.66;
 	}

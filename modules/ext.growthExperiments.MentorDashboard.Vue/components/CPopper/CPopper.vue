@@ -1,21 +1,21 @@
 <template>
-	<div class="c-popper">
+	<div class="ext-growthExperiments-CPopper">
 		<div
 			ref="containerRef"
-			class="c-popper__popover"
+			class="ext-growthExperiments-CPopper__popover"
 			tabindex="0"
 			@keyup.esc="$emit( 'close' )"
 		>
-			<div class="close-button-container">
+			<div class="ext-growthExperiments-CPopper__popover__close-button-container">
 				<cdx-button
 					type="quiet"
-					class="close-button"
+					class="ext-growthExperiments-CPopper__popover__close-button"
 					@click="$emit( 'close', $event )"
 				>
 					<cdx-icon
 						:icon="cdxIconClose"
 						icon-label="close"
-						class="close-icon"
+						class="ext-growthExperiments-CPopper__popover__close-icon"
 					></cdx-icon>
 				</cdx-button>
 			</div>
@@ -54,7 +54,7 @@ module.exports = exports = {
 <style lang="less">
 @import '../variables.less';
 
-.c-popper {
+.ext-growthExperiments-CPopper {
 	position: relative;
 
 	&__popover {
@@ -67,11 +67,11 @@ module.exports = exports = {
 		// Standard expects a title which has its own margin/padding
 		padding-top: 0;
 
-		.close-icon {
+		&__close-icon {
 			opacity: 0.66;
 		}
 
-		.close-button-container {
+		&__close-button-container {
 			float: right;
 		}
 	}

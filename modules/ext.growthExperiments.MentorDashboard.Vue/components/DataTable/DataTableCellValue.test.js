@@ -13,7 +13,7 @@ describe( 'DataTableCellValue', () => {
 
 		expect( wrapper.text() ).toContain( '10' );
 		const div = wrapper.find( 'div' );
-		expect( div.classes() ).toContain( 'data-table-cell-value--align-center' );
+		expect( div.classes() ).toContain( 'ext-growthExperiments-DataTableCellValue--align-center' );
 	} );
 	it( 'renders the given slot', () => {
 		const wrapper = mount( DataTableCellValue, {

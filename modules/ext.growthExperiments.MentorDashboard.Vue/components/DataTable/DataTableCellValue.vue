@@ -1,5 +1,5 @@
 <template>
-	<div :class="'data-table-cell-value--align-' + align">
+	<div :class="'ext-growthExperiments-DataTableCellValue--align-' + align">
 		<slot>{{ value }}</slot>
 	</div>
 </template>
@@ -21,7 +21,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-.data-table-cell-value {
+.ext-growthExperiments-DataTableCellValue {
 	&--align {
 		&-left {
 			text-align: left;

@@ -1,11 +1,11 @@
 <template>
-	<div class="data-table-cell-mentee">
+	<div class="ext-growthExperiments-DataTableCellMentee">
 		<cdx-button
 			type="quiet"
 			@click="toggleStarred"
 		>
 			<cdx-icon
-				class="star-icon"
+				class="ext-growthExperiments-DataTableCellMentee__star-icon"
 				:icon="value.isStarred ? cdxIconUnStar : cdxIconStar"
 				:icon-label="value.isStarred ?
 					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label' ) :
@@ -13,15 +13,14 @@
 				"
 			></cdx-icon>
 		</cdx-button>
-		<div class="user-info">
+		<div class="ext-growthExperiments-DataTableCellMentee__user-info">
 			<a
-				class="username"
 				:class="{ new: !value.userPageExists }"
 				:href="usernameHref"
 			>
 				{{ value.username }}
 			</a>
-			<div class="last-seen">
+			<div class="ext-growthExperiments-DataTableCellMentee__user-info__last-seen">
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-active-ago', value.lastActive ) }}
 			</div>
 		</div>
@@ -68,10 +67,10 @@ module.exports = exports = {
 
 @mentee-table-last-seen-font-size: 12px;
 
-.data-table-cell-mentee {
+.ext-growthExperiments-DataTableCellMentee {
 	display: flex;
 
-	.star-icon {
+	&__star-icon {
 		opacity: 0.66;
 
 		> svg {
@@ -79,12 +78,12 @@ module.exports = exports = {
 		}
 	}
 
-	.user-info {
+	&__user-info {
 		flex: 2;
 		padding-right: 8px;
 		.text-ellipsis();
 
-		.last-seen {
+		&__last-seen {
 			font-size: @mentee-table-last-seen-font-size;
 			color: @colorGray500;
 		}
