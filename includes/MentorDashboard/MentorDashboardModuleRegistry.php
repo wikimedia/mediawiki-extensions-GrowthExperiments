@@ -100,8 +100,7 @@ class MentorDashboardModuleRegistry {
 					'mentor-tools',
 					$context,
 					$geServices->getMentorProvider(),
-					$geServices->getMentorStatusManager(),
-					$geServices->getMentorWeightManager()
+					$geServices->getMentorStatusManager()
 				);
 			}
 		];

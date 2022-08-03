@@ -26,28 +26,22 @@ class MentorTools extends BaseModule {
 	/** @var MentorStatusManager */
 	private $mentorStatusManager;
 
-	/** @var MentorWeightManager */
-	private $mentorWeightManager;
-
 	/**
 	 * @param string $name
 	 * @param IContextSource $ctx
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStatusManager $mentorStatusManager
-	 * @param MentorWeightManager $mentorWeightManager
 	 */
 	public function __construct(
 		$name,
 		IContextSource $ctx,
 		MentorProvider $mentorProvider,
-		MentorStatusManager $mentorStatusManager,
-		MentorWeightManager $mentorWeightManager
+		MentorStatusManager $mentorStatusManager
 	) {
 		parent::__construct( $name, $ctx );
 
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorStatusManager = $mentorStatusManager;
-		$this->mentorWeightManager = $mentorWeightManager;
 	}
 
 	/**
@@ -69,18 +63,17 @@ class MentorTools extends BaseModule {
 	 * @return int|string
 	 */
 	private function getMentorWeight() {
+		$mentor = $this->mentorProvider
+			->newMentorFromUserIdentity( $this->getUser() );
+
 		if (
 			$this->isMentorListStructured() &&
-			!$this->mentorProvider
-				->newMentorFromUserIdentity( $this->getUser() )
-				->getAutoAssigned()
+			!$mentor->getAutoAssigned()
 		) {
 			return self::WEIGHT_NONE;
 		}
 
-		return $this->mentorWeightManager->getWeightForMentor(
-			$this->getUser()
-		);
+		return $mentor->getWeight();
 	}
 
 	/**
