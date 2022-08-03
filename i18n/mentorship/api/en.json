@@ -11,8 +11,6 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "When setting mentor as away, this must have length of the away status (in days)",
 	"apihelp-query+growthmentorstatus-summary": "Query current user's mentor status",
 	"apihelp-growthmentordashboardupdatedata-summary": "Schedule an extraordinary update of the mentee overview module in the mentor dashboard. You can only schedule one update per two hours for performance reasons.",
-	"apihelp-growthsetmentorweight-summary": "Set weight of currently logged in mentor",
-	"apihelp-growthsetmentorweight-param-geweight": "Numeric weight of the mentor: the lower value, the less newcomers are assigned",
 	"apihelp-growthsetmenteestatus-summary": "Set mentee's status (allows mentees to enable/disable mentorship module, or to opt-out entirely, which deletes the mentee/mentor relationship)",
 	"apihelp-growthsetmenteestatus-param-state": "New status of the mentee (warning: setting this to optout will permanently deletes mentee/mentor relationship)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Mentorship module is enabled",
