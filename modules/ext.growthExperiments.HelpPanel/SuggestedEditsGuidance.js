@@ -21,6 +21,10 @@
 
 	if ( StructuredTaskPreEdit.shouldInitializeStructuredTask() ) {
 		StructuredTaskPreEdit.checkTaskData().then( function () {
+			if ( mw.config.get( 'wgRestrictionEdit' ).length ) {
+				// article is protected, show "no suggestions found" dialog
+				throw new Error( 'Page is protected, abandoning structured task' );
+			}
 			if ( OO.ui.isMobile() ) {
 				StructuredTaskPreEdit.showOnboardingIfEligible();
 				// If we're on mobile and can add link recommendations, then rewrite the main
