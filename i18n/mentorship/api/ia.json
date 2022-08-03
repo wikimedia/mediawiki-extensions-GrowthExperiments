@@ -13,8 +13,6 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Quando se marca un mentor como absente, isto debe haber le duration del stato de absentia (in dies)",
 	"apihelp-query+growthmentorstatus-summary": "Consultar le stato de mentor del usator actual",
 	"apihelp-growthmentordashboardupdatedata-summary": "Programmar un actualisation extraordinari del modulo de vision general de apprentisses in le tabuliero de instrumentos del mentor. Tu pote programmar solo un actualisation cata duo horas pro evitar de supercargar le systema.",
-	"apihelp-growthsetmentorweight-summary": "Definir le peso del mentor actualmente in session",
-	"apihelp-growthsetmentorweight-param-geweight": "Le peso numeric del mentor: quanto plus basse le valor, tanto minus novicios es assignate",
 	"apihelp-growthsetmenteestatus-summary": "Definir le stato del apprentisse (permitte que apprentisses activa/disactiva le modulo de mentorato, o se desiste totalmente, lo que elimina le relation apprentisse/mentor)",
 	"apihelp-growthsetmenteestatus-param-state": "Nove stato del apprentisse (attention: mitter isto a 'optout' eliminara permanentemente le relation apprentisse/mentor)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Le modulo de mentorato es activate",

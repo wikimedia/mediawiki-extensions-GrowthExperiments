@@ -13,8 +13,6 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "عند إعداد وضع المرشد على غير متوفّر، يجب تحديد فترة الغياب (باليوم)",
 	"apihelp-query+growthmentorstatus-summary": "الاستعلام عن وضع مرشد المستخدم الحالي",
 	"apihelp-growthmentordashboardupdatedata-summary": "تحديد موعد لتحديث استثنائي لوحدة قائمة المتدربين من لوحة المرشدين. يمكنكم جدولة تحديث واحد فقط كل ساعتين لأسباب تتعلق بالأداء.",
-	"apihelp-growthsetmentorweight-summary": "تحديد وزن المرشد الذي سجل دخوله حاليًا",
-	"apihelp-growthsetmentorweight-param-geweight": "الوزن الرقمي للمرشد: كلما قلّت القيمة، قلّ عدد الوافدين الجدد الموجّهين",
 	"apihelp-growthsetmenteestatus-summary": "إعداد حالة المرشَد (السماح للمرشَدين بتفعيل/تعطيل وحدة الإرشاد، أو تعطيلها تمامًا، مما يؤدي إلى حذف عَلاقة المرشَد/المرشِد)",
 	"apihelp-growthsetmenteestatus-param-state": "حالة المرشَد الجديدة (تنبيه: تغييرها إلى معطّلة سيحذف عَلاقة المرشَد/المرشِد نهائيا)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "وحدة الإرشاد مُفعّلة",

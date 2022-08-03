@@ -118,6 +118,8 @@
 	"growthexperiments-homepage-recent-questions-archived": "archiválva",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Ez a kérdés archiválva lett, valószínűleg azért, mert régen tetted fel.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1$2|Mentorod}}",
+	"growthexperiments-homepage-mentorship-preintro": "Kijelöltünk neked egy tapasztalt szerkesztőt, aki megválaszolhatja a szerkesztéssel kapcsolatos kérdéseidet.",
+	"growthexperiments-homepage-mentorship-learn-more": "Tudj meg többet a mentorálásról.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 szerkesztés",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Aktív}} ma",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Aktív}} tegnap",
@@ -401,5 +403,12 @@
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "A kép rossz minőségű",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Egyéb",
 	"growthexperiments-addimage-viewer-close-button": "Bezárás",
-	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Ön}} teljesítette a mai képjavaslatokat. Módosítsa a {{GENDER:|saját}} nehézségi szintet, ha más típusú szerkesztéseket szeretne látni, vagy térjen vissza holnap további képjavaslatokért."
+	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Ön}} teljesítette a mai képjavaslatokat. Módosítsa a {{GENDER:|saját}} nehézségi szintet, ha más típusú szerkesztéseket szeretne látni, vagy térjen vissza holnap további képjavaslatokért.",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Kijelentkezés a mentorálásból",
+	"growthexperiments-homepage-mentorship-about-header": "A mentorálásról",
+	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Kicsoda a mentorod?",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "A mentorod olyan személy, akinek sok tapasztalata van a {{SITENAME}} szerkesztésében. Önként jelentkezett, hogy olyan új szerkesztőknek segítsen, mint te is vagy. Tud válaszolni az oldal használatával kapcsolatos kérdéseidre.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "Amikor üzenetet küldesz a mentorodnak, látni fogja azt a szerkesztői vitalapján és értesítést kapsz majd, ha válaszol neked.",
+	"growthexperiments-homepage-mentorship-about-subheader-optout": "Kijelentkezés a mentorálásból",
+	"growthexperiments-homepage-mentorship-about-optout-par1": "Nyomj az alábbi gombra, ha nem szeretnéd, hogy a rendszer kijelöljön neked egy mentort. Ha meggondolod magad, bármikor kérhetsz új mentort."
 }

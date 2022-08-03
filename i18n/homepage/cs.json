@@ -74,6 +74,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Přidání chybějících zdrojů informací a aktualizace zastaralých článků",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Vytvoření nových článků nebo rozšíření těch stávajících.",
 	"growthexperiments-homepage-suggested-edits-header": "Editační tipy",
+	"growthexperiments-homepage-new-impact-header": "Dosah {{GENDER:$1|vašich}} příspěvků",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "Pro zobrazení této komponenty povolte JavaScript.",
 	"growthexperiments-homepage-impact-header": "Dosah {{GENDER:$1|vašich}} příspěvků",
 	"growthexperiments-homepage-impact-subheader-text": "Lidé navštěvují články, které jste {{GENDER:$1|editoval|editovala|editovali}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Počty zobrazení od {{GENDER:$1|vaší}} první editace (posledních 60 dní):",

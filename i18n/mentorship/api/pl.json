@@ -14,8 +14,6 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Podczas ustawiania statusu wikiprzewodnika na \"zaraz wracam\" należy tu podać czas trwania tej przerwy w dniach.",
 	"apihelp-query+growthmentorstatus-summary": "Pobierz informacje o statusie dostępności wikiprzewodnika",
 	"apihelp-growthmentordashboardupdatedata-summary": "Zakolejkuj dodatkowe zaktualizowanie informacji w module przeglądu podopiecznych w panelu wikiprzewodnika. Możesz zaplanować aktualizację tylko raz na dwie godziny aby nie zwiększać obciążenia.",
-	"apihelp-growthsetmentorweight-summary": "Ustaw obciążenie obecnie zalogowanego wikiprzewodnika.",
-	"apihelp-growthsetmentorweight-param-geweight": "Liczbowe określenie obciążenia przewodnika: im mniejsza wartość, tym mniej nowicjuszy będzie przydzielanych",
 	"apihelp-growthsetmenteestatus-summary": "Ustaw status podopiecznego (pozwala podopiecznym włączać/wyłączać moduł opieki albo zrezygnować całkowicie, co niszczy więź przewodnik-podopieczny)",
 	"apihelp-growthsetmenteestatus-param-state": "Nowy status podopiecznego (uwaga: ustawienie tego na optout nieodwracalnie zniszczy więź przewodnik-podopieczny)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Moduł opieki jest aktywny",

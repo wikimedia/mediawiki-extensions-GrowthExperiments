@@ -13,8 +13,6 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Al establecer el mentor como ausente, debe indicarse la duración de la ausencia (en días)",
 	"apihelp-query+growthmentorstatus-summary": "Consultar el estado de mentor del usuario actual",
 	"apihelp-growthmentordashboardupdatedata-summary": "Programar una actualización extraordinaria del módulo de visión general de los alumnos en el panel de control de los tutores. Sólo puede programar una actualización cada dos horas por razones de rendimiento.",
-	"apihelp-growthsetmentorweight-summary": "Fijar la ponderación del mentor actualmente conectado",
-	"apihelp-growthsetmentorweight-param-geweight": "Ponderación numérica del mentor: cuanto más bajo sea el valor, se asignará un menor número de novatos",
 	"apihelp-growthsetmenteestatus-summary": "Establecer el estado de los aprendices (permite a los alumnos activar/desactivar el módulo de mentoría, o excluirse por completo, lo que elimina la relación alumno/mentor)",
 	"apihelp-growthsetmenteestatus-param-state": "Nuevo estado del alumno (advertencia: si se selecciona la opción de no participar, se eliminará permanentemente la relación alumno/mentor)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "El módulo de mentoría está activado",

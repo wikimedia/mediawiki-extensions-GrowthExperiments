@@ -11,8 +11,6 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Ao declarar o mentor ausente, tem de ser definido aqui o período do estado de ausência (em dias)",
 	"apihelp-query+growthmentorstatus-summary": "Consultar o estado de mentor do usuário atual",
 	"apihelp-growthmentordashboardupdatedata-summary": "Agende uma atualização extraordinária do módulo visão geral do mentor no painel do mentor. Você só pode agendar uma atualização por duas horas por motivos de desempenho.",
-	"apihelp-growthsetmentorweight-summary": "Definir peso do mentor que está autenticado neste momento",
-	"apihelp-growthsetmentorweight-param-geweight": "Peso numérico do mentor; quanto menor o valor, menos recém-chegados lhe serão atribuídos",
 	"apihelp-growthsetmenteestatus-summary": "Definir estado do mentor (permite que os mentorados ativem ou desativem o módulo de mentoria, ou que optem pela sua exclusão permanente, o que apaga a relação mentorado/mentor)",
 	"apihelp-growthsetmenteestatus-param-state": "Novo estado do mentorado (aviso: optar pela exclusão permanente apagará de forma permanente a relação mentorado/mentor)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "O módulo de mentoria está ativado",

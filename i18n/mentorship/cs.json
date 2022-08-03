@@ -135,6 +135,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Důvod",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Zapsat se",
 	"growthexperiments-mentorship-enrollasmentor-success": "Úspěšně jste se {{GENDER:|zapsal|zapsala}} jako {{GENDER:|mentor|mentorka}}. Nyní {{GENDER:|můžete}} pokračovat na [[Special:MentorDashboard|nástěnku mentora]].",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Přidávám se jako mentor",
 	"tag-mentor list change": "Změna seznamu mentorů",
 	"tag-mentor list change-description": "Značka aplikovaná na změny strukturovaného seznamu mentorů, které byly uloženy prostřednictvím rozšíření GrowthExperiments."
 }

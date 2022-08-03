@@ -13,8 +13,6 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Când se setează mentorul ca indisponibil(ă), trebuie să aibă lungimea stării de indisponibilitate (în zile)",
 	"apihelp-query+growthmentorstatus-summary": "Interoghează starea curentă de mentor a utilizatorului",
 	"apihelp-growthmentordashboardupdatedata-summary": "Programați o actualizare extraordinară a modulului de prezentare generală a ucenicilor pe pagina mentorului. Puteți programa numai o actualizare odată la două ore din motive de performanță.",
-	"apihelp-growthsetmentorweight-summary": "Setează povara mentorului curent autentificat",
-	"apihelp-growthsetmentorweight-param-geweight": "Povara numerică a mentorului: cu cât mai mică este valoarea, cu atât mai puțin ucenici sunt atribuiți",
 	"apihelp-growthsetmenteestatus-summary": "Setează starea ucenicului (permite ucenicilor să activeze/dezactiveze modulul activității de mentor sau să renunțe cu totul, care șterge relația ucenic/mentor)",
 	"apihelp-growthsetmenteestatus-param-state": "Starea nouă a ucenicilor (avertizare: setând asta pentru a renunța va șterge permanent relația ucenic/mentor)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Modulul activității de mentor este activat",
