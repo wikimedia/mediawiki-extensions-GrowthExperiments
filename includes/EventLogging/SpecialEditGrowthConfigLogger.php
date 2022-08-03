@@ -13,7 +13,7 @@ use WikiMap;
 class SpecialEditGrowthConfigLogger {
 
 	/** @var string Versioned schema URL for $schema field */
-	private const SCHEMA_VERSIONED = '/analytics/mediawiki/editgrowthconfig/1.0.0';
+	private const SCHEMA_VERSIONED = '/analytics/mediawiki/editgrowthconfig/1.0.1';
 
 	/** @var string Stream name for EventLogging::submit */
 	private const STREAM = 'mediawiki.editgrowthconfig';
