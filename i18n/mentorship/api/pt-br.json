@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Duke of Wikipädia",
 			"Eduardoaddad"
 		]
 	},
@@ -16,7 +17,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "O módulo de mentoria está ativado",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "O módulo de mentoria está completamente desativado. Isto é normalmente definido pelo software e usado para testes A/B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Você sempre pode optar por voltar à mentoria novamente. No entanto, você pode não receber o mesmo mentor de antes.",
-	"apihelp-query+growthmenteestatus-summary": "Consultar o estado de mentorado do usuário atual; ver a documentação de action=growthsetmentorweight para obter informação detalhada sobre os estados individuais.",
+	"apihelp-query+growthmenteestatus-summary": "Consultar o estado de mentorado do usuário atual; ver a documentação de action=growthsetmenteestatus para obter informação detalhada sobre os estados individuais.",
 	"apihelp-query+growthmentormentee-summary": "Obter todos os mentorados atribuídos a um mentor específico",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor cujos mentorados serão obtidos",
 	"apihelp-growthmanagementorlist-param-geaction": "Ação",

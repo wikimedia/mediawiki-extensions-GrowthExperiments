@@ -18,7 +18,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "وحدة الإرشاد مُفعّلة",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "وحدة الإرشاد معطّلة بالكامل. يتم تعديل هذا عادةً بواسطة البرنامَج ويستخدم في اختبار ثنائي.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "عطّل المرشَد الإرشاد؛ سيتم حذف عَلاقة المرشَد/المرشِد، ستُستبدل وحدة الإرشاد بإمكانية الاسترجاع",
-	"apihelp-query+growthmenteestatus-summary": "الاستعلام عن حالة المرشَد الحالي للمستخدم؛ انظر توثيق action=Growthsetmentorweight للحصول على معلومات مفصلة حول الحالات الفردية.",
+	"apihelp-query+growthmenteestatus-summary": "الاستعلام عن حالة المرشَد الحالي للمستخدم؛ انظر توثيق action=growthsetmenteestatus للحصول على معلومات مفصلة حول الحالات الفردية.",
 	"apihelp-query+growthmentormentee-summary": "تعيين جميع المرشَدين لمرشِدٍ معيّن",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "استعلام مرشَدين لمرشِدٍ",
 	"apihelp-growthmanagementorlist-summary": "إدارة المعلومات في قائمة المرشدين المنظمة (المخزنة عادةً في ملف [[MediaWiki:GrowthMentors.json]]). يمكن استخدام هذه الوحدة من قبل المرشدين الحاليين والمستقبليين (لإضافة أنفسهم أو تغيير تفاصيلهم) والإداريين (لجميع المستخدمين).",

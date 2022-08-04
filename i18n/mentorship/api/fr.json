@@ -20,7 +20,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Le module de tutorat est activé",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Le module de tutorat est complètement désactivé. Cela est normalement défini par le logiciel et utilisé pour les tests A / B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Le tutoré est sorti du tutorat ; la relation tutoré – tuteur sera supprimée, le module de tutorat sera remplacé par la possibilité de se réinscrire.",
-	"apihelp-query+growthmenteestatus-summary": "Interroge l’état de tutoré de l’utilisateur actuel ; voir la documentation de « action=growthsetmentorweight » pour des informations détaillées sur les états individuels.",
+	"apihelp-query+growthmenteestatus-summary": "Interroge l’état de tutoré de l’utilisateur actuel ; voir la documentation de « action=growthsetmenteestatus » pour des informations détaillées sur les états individuels.",
 	"apihelp-query+growthmentormentee-summary": "Obtenir tous les tutorés affectés à un tuteur donné.",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Tuteur pour lequel rechercher les tutorés",
 	"apihelp-growthmanagementorlist-summary": "Gérer les informations dans la liste structurée des tuteurs (habituellement enregistrée dans [[MediaWiki:GrowthMentors.json]]). Ce module peut être utilisé à la fois par les tuteurs actuels et futurs (pour qu’ils s’y inscrivent eux-mêmes ou modifient leurs détails) et par les administrateurs (pour gérer les inscriptions de tous les utilisateurs).",

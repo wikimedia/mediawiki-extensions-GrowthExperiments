@@ -18,7 +18,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Le modulo de mentorato es activate",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Le modulo de mentorato es completemente disactivate. Isto es normalmente definite per le software e usate pro le tests A/B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Le apprentisse se ha desistite del mentorato; le relation apprentisse/mentor essera eliminate, le modulo de mentorato essera reimplaciate per un possibilitate de reinscriber se",
-	"apihelp-query+growthmenteestatus-summary": "Consultar le stato de apprentisse del usator actual; vide le documentation de action=growthsetmentorweight pro information detaliate sur le statos individual.",
+	"apihelp-query+growthmenteestatus-summary": "Consultar le stato de apprentisse del usator actual; vide le documentation de action=growthsetmenteestatus pro information detaliate sur le statos individual.",
 	"apihelp-query+growthmentormentee-summary": "Causar que tote le apprentisses se assigna a un mentor date",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor pro le qual consultar le apprentisses",
 	"apihelp-growthmanagementorlist-summary": "Gerer informationes in le lista structurate de mentores (normalmente immagazinate in [[MediaWiki:GrowthMentors.json]]). Iste modulo pote esser usate per mentores actual e futur (pro inscriber se o pro cambiar le proprie detalios) e per administratores (pro tote le usatores).",

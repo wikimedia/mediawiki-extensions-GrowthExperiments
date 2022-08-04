@@ -98,6 +98,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Annulla",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Messaggio introduttivo",
 	"growthexperiments-mentor-writer-error-already-added": "Il tutor $1 è già stato aggiunto alla lista dei tutor",
+	"growthexperiments-mentor-writer-error-message-too-long": "Il messaggio introduttivo è troppo lungo. La lunghezza massima è $1.",
 	"growthexperiments-manage-mentors-username": "Nome utente",
 	"growthexperiments-manage-mentors-remove-mentor": "Rimuovi",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Messaggio introduttivo",

@@ -524,7 +524,7 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Annat / Jag vill inte säga",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Klart",
 	"growthexperiments-homepage-mentorship-about-header": "Om faddrar",
-	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Vem är {{GENDER:|din}} {{GENDER:|$1fadder}}?",
+	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Vem är {{GENDER:|din}} {{GENDER:$1|fadder}}?",
 	"growthexperiments-homepage-mentorship-about-mentor-par1": "Din {{GENDER:$1|fadder}} är en annan person med en lång erfarenhet av att redigera på {{SITENAME}}. {{GENDER:$1|Han|Hon|De}} ställer upp på att vägleda nykomlingar som du med hur man redigerar och kan svara på dina frågor om hur man använder webbplatsen.",
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "När du skickar ett meddelande till din fadder kommer {{GENDER:$1|han|hon|de}} se det på sin diskussionssida och du borde få en avisering när {{GENDER:$1|han|hon|de}} svarat.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Välja bort fadderskap",

@@ -101,5 +101,6 @@
 	"growthexperiments-mentor-list-unexpected-key-mentor": "মেন্টরের সংজ্ঞায় একটি অপ্রত্যাশিত চাবি <code>$1</code> রয়েছে।",
 	"growthexperiments-mentor-writer-error-already-added": "$1 মেন্টর ইতিপূর্বেই মেন্টরের তালিকায় যুক্ত হয়েছেন।",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "$1 মেন্টর মেন্টরের তালিকায় নেই।",
+	"growthexperiments-mentor-writer-error-message-too-long": "বৃত্তান্ত বার্তাটি খুব দীর্ঘ৷ সর্বোচ্চ দৈর্ঘ্য $1 হওয়া উচিত।",
 	"growthexperiments-mentorship-enrollasmentor-summary": "একজন পরামর্শদাতা হিসেবে নিজেকে যুক্ত করছি"
 }

@@ -120,6 +120,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "تمت إضافة المرشد $1 سابقًا إلى قائمة المرشدين",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "لا وجود للمرشد $1 على قائمة المرشدين",
 	"growthexperiments-mentor-writer-error-anonymous-user": "المرشد $1 ليس مستخدمًا مسجلاً",
+	"growthexperiments-mentor-writer-error-message-too-long": "رسالة التقديم طويلة جدًا. الحدّ الأقصى للطول هو $1.",
 	"growthexperiments-manage-mentors-title": "إدارة المرشدين",
 	"growthexperiments-manage-mentors-error-no-such-user": "خطأ: لا وجود لمستخدم مع معرّف $1. ربما يكون هذا خطأ داخلي.",
 	"growthexperiments-manage-mentors-auto-assigned": "المرشدون المعيّنون تلقائيًا",

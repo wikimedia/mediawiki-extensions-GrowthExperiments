@@ -120,6 +120,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "$1 figurait déjà dans la liste des tuteurs",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Le tuteur ou la tutrice $1 ne figure pas dans la liste des tuteurs",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Le tuteur $1 n’est pas un utilisateur inscrit",
+	"growthexperiments-mentor-writer-error-message-too-long": "Le message d’introduction est trop long. La longueur maximale est $1.",
 	"growthexperiments-manage-mentors-title": "Gérer les tuteurs",
 	"growthexperiments-manage-mentors-error-no-such-user": "Erreur : aucun utilisateur n’existe avec l’identifiant $1. Ceci est probablement une erreur interne.",
 	"growthexperiments-manage-mentors-auto-assigned": "Tuteurs affectés automatiquement",

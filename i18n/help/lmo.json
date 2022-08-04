@@ -99,5 +99,18 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Linee guida",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Conliga i concet di quai i letor a podarissen volé savénn pussee.\n* Te gh'hee de vesser sicur che 'l conligament el mandi a la vos giusta.\n* Tira nò in pee di ligam a di parolle comune, di ann o di date.\n* Se te see minga {{GENDER:$1|sicur|sicura|sicur/a}}, lassa via e và inanz.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Esempi",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-value": "{{GENDER:|Te}} decidaree ti se l'è el cas che on'imagin sugerida la gh'ha de vesser metuda denter in d'ona vos de Wikipedia."
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-value": "{{GENDER:|Te}} decidaree ti se l'è el cas che on'imagin sugerida la gh'ha de vesser metuda denter in d'ona vos de Wikipedia.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "Varda l'imagin sugerida",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-step1": "Droeuva 'l nom del fail, la descrizzion e la reson per la qual l'è stad sugerid per ajutà{{GENDER:|t}} a decider se 'l gh'ha de vesser metud dent in de la vos.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step1": "Te podet anca slargà foeura l'imagin per vedélla in manera pussee ciara.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "Varda l'articol",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-step2": "Lesg l'articol e valuta se l'imagin sugerida la jutarà i letor a capì 'l contegnud. A l'è adeguada de stà dent in de l'articol?",
+	"growthexperiments-help-panel-questioncomplete-title": "Fà ona domanda",
+	"growthexperiments-help-panel-questioncomplete-header": "la toa domanda l'è stada publicadaǃ",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Adess la tua domanda l'è al Sportello informazzion per fà in manera  che on alter volontari el ghe poda risponder.",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "varda i to domande al Sportell Informazzion",
+	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Notifeghe per i to domandeː",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Te ricevareet ona notifega chichinscì in su {{SITENAME}} in del moment che a ghe sarà ona risposta.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Te ricevareet anca on messaggde posta eletronica a $1 ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "cambia"
 }
