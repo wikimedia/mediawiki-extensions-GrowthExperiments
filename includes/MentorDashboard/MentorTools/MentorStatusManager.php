@@ -4,7 +4,6 @@ namespace GrowthExperiments\MentorDashboard\MentorTools;
 
 use DBAccessObjectUtils;
 use IDBAccessObject;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserOptionsManager;
@@ -36,9 +35,6 @@ class MentorStatusManager implements IDBAccessObject {
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
 
-	/** @var UserFactory */
-	private $userFactory;
-
 	/** @var IDatabase */
 	private $dbr;
 
@@ -48,20 +44,17 @@ class MentorStatusManager implements IDBAccessObject {
 	/**
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param UserFactory $userFactory
 	 * @param IDatabase $dbr
 	 * @param IDatabase $dbw
 	 */
 	public function __construct(
 		UserOptionsManager $userOptionsManager,
 		UserIdentityLookup $userIdentityLookup,
-		UserFactory $userFactory,
 		IDatabase $dbr,
 		IDatabase $dbw
 	) {
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userIdentityLookup = $userIdentityLookup;
-		$this->userFactory = $userFactory;
 		$this->dbr = $dbr;
 		$this->dbw = $dbw;
 	}
@@ -164,7 +157,7 @@ class MentorStatusManager implements IDBAccessObject {
 				(int)wfTimestamp( TS_UNIX ) + self::SECONDS_DAY * $backInDays
 			)
 		);
-		$this->userFactory->newFromUserIdentity( $mentor )->saveSettings();
+		$this->userOptionsManager->saveOptions( $mentor );
 	}
 
 	/**
@@ -178,6 +171,6 @@ class MentorStatusManager implements IDBAccessObject {
 			self::MENTOR_AWAY_TIMESTAMP_PREF,
 			null
 		);
-		$this->userFactory->newFromUserIdentity( $mentor )->saveSettings();
+		$this->userOptionsManager->saveOptions( $mentor );
 	}
 }
