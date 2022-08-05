@@ -297,7 +297,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 			return qualityGate.dailyLimit === false;
 		};
 
-		var updatedTaskQueue = data.tasks;
+		var updatedTaskQueue = data.tasks.slice();
 		if ( config && config.excludeExceededQuotaTaskTypes === true ) {
 			updatedTaskQueue = updatedTaskQueue.filter( filterByDailyTaskLimitNotExceeded );
 		}
@@ -310,18 +310,17 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 			updatedTaskQueue = updatedTaskQueue.filter( function ( task ) {
 				return task.title !== preloadedTask.title;
 			} );
-			this.setTaskQueue( [ preloadedTask ].concat( updatedTaskQueue ) );
+			updatedTaskQueue = [ preloadedTask ].concat( updatedTaskQueue );
 			this.preloadedFirstTask = null;
-		} else {
-			this.setTaskQueue( updatedTaskQueue );
 		}
-
 		// When the API response returns less results than requested,
 		// update the taskCount to match the real number of tasks fetched
 		if ( this.lessResultsThanRequested( data.count ) ) {
 			this.allTasksFetched = true;
-			this.taskCount = this.taskQueue.length;
+			this.taskCount = updatedTaskQueue.length;
 		}
+
+		this.setTaskQueue( updatedTaskQueue );
 
 		if ( this.taskQueue.length ) {
 			this.maybeUpdateQualityGateConfig( this.taskQueue[ 0 ] );
