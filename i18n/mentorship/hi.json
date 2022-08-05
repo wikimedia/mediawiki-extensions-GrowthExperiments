@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Abijeet Patro"
+			"Abijeet Patro",
+			"Saurmandal"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "सदस्यनाम",
 	"growthexperiments-quit-mentorship-reason": "कारण",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "कोई नहीं",
+	"growthexperiments-mentor-writer-error-message-too-long": "परिचय संदेश कुछ ज़्यादा ही लंबा है। अधिकतम लंबाई है $1।",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "कारण"
 }
