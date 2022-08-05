@@ -13,7 +13,7 @@ use WikiMap;
 class SpecialEditGrowthConfigLogger {
 
 	/** @var string Versioned schema URL for $schema field */
-	private const SCHEMA_VERSIONED = '/analytics/mediawiki/editgrowthconfig/1.0.1';
+	private const SCHEMA_VERSIONED = '/analytics/mediawiki/editgrowthconfig/1.0.2';
 
 	/** @var string Stream name for EventLogging::submit */
 	private const STREAM = 'mediawiki.editgrowthconfig';
@@ -41,6 +41,7 @@ class SpecialEditGrowthConfigLogger {
 				'is_privileged_user' => $authority->isAllowed(
 					SpecialEditGrowthConfig::REQUIRED_RIGHT_TO_WRITE
 				),
+				'is_registered_user' => $authority->isRegistered(),
 			]
 		);
 	}
@@ -62,6 +63,7 @@ class SpecialEditGrowthConfigLogger {
 				'is_privileged_user' => $authority->isAllowed(
 					SpecialEditGrowthConfig::REQUIRED_RIGHT_TO_WRITE
 				),
+				'is_registered_user' => $authority->isRegistered(),
 				'performer' => [
 					'user_id' => $authority->getUser()->getId(),
 					'user_text' => $authority->getUser()->getName(),
