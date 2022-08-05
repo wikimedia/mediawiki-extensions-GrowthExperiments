@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
@@ -39,7 +38,6 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$manager = new MentorStatusManager(
 			$userOptionsManager,
 			$this->createMock( UserIdentityLookup::class ),
-			$this->createMock( UserFactory::class ),
 			$this->createMock( IDatabase::class ),
 			$this->createMock( IDatabase::class )
 		);
@@ -74,7 +72,6 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$manager = new MentorStatusManager(
 			$userOptionsManager,
 			$this->createMock( UserIdentityLookup::class ),
-			$this->createMock( UserFactory::class ),
 			$this->createMock( IDatabase::class ),
 			$this->createMock( IDatabase::class )
 		);
@@ -107,7 +104,6 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$manager = new MentorStatusManager(
 			$userOptionsManager,
 			$this->createMock( UserIdentityLookup::class ),
-			$this->createMock( UserFactory::class ),
 			$this->createMock( IDatabase::class ),
 			$this->createMock( IDatabase::class )
 		);

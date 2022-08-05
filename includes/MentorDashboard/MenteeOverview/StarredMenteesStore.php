@@ -3,7 +3,6 @@
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use IDBAccessObject;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserOptionsManager;
@@ -13,9 +12,6 @@ class StarredMenteesStore implements IDBAccessObject {
 
 	private const SEPARATOR = '|';
 
-	/** @var UserFactory */
-	private $userFactory;
-
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
 
@@ -23,16 +19,13 @@ class StarredMenteesStore implements IDBAccessObject {
 	private $userOptionsManager;
 
 	/**
-	 * @param UserFactory $userFactory
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserOptionsManager $userOptionsManager
 	 */
 	public function __construct(
-		UserFactory $userFactory,
 		UserIdentityLookup $userIdentityLookup,
 		UserOptionsManager $userOptionsManager
 	) {
-		$this->userFactory = $userFactory;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userOptionsManager = $userOptionsManager;
 	}
@@ -97,13 +90,12 @@ class StarredMenteesStore implements IDBAccessObject {
 
 		// Update the user option
 		$starredMentees[] = $mentee->getId();
-		$mentorUser = $this->userFactory->newFromUserIdentity( $mentor );
 		$this->userOptionsManager->setOption(
-			$mentorUser,
+			$mentor,
 			self::STARRED_MENTEES_PREFERENCE,
 			$this->encodeMenteeIds( $starredMentees )
 		);
-		$mentorUser->saveSettings();
+		$this->userOptionsManager->saveOptions( $mentor );
 	}
 
 	/**
@@ -121,13 +113,12 @@ class StarredMenteesStore implements IDBAccessObject {
 			$starredMentees = array_values( $starredMentees );
 
 			// $starredMentees was changed, update option
-			$mentorUser = $this->userFactory->newFromUserIdentity( $mentor );
 			$this->userOptionsManager->setOption(
-				$mentorUser,
+				$mentor,
 				self::STARRED_MENTEES_PREFERENCE,
 				$this->encodeMenteeIds( $starredMentees )
 			);
-			$mentorUser->saveSettings();
+			$this->userOptionsManager->saveOptions( $mentor );
 		}
 	}
 }

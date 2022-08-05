@@ -496,7 +496,6 @@ return [
 		return new MentorStatusManager(
 			$services->getUserOptionsManager(),
 			$services->getUserIdentityLookup(),
-			$services->getUserFactory(),
 			$services->getDBLoadBalancer()->getConnectionRef( DB_REPLICA ),
 			$services->getDBLoadBalancer()->getConnectionRef( DB_PRIMARY )
 		);
@@ -687,7 +686,6 @@ return [
 		MediaWikiServices $services
 	): StarredMenteesStore {
 		return new StarredMenteesStore(
-			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
 			$services->getUserOptionsManager()
 		);
