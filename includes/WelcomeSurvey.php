@@ -11,7 +11,6 @@ use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserOptionsManager;
 use MWTimestamp;
-use SpecialPage;
 use Wikimedia\RemexHtml\HTMLData;
 use Wikimedia\RemexHtml\Serializer\SerializerNode;
 
@@ -369,29 +368,27 @@ class WelcomeSurvey {
 	 * Build the redirect URL for a group and its display format
 	 *
 	 * @param string $group
-	 * @return bool|string
+	 * @param string $returnTo
+	 * @param string $returnToQuery
+	 * @return bool|array
 	 */
-	public function getRedirectUrl( $group ) {
+	public function getRedirectUrlQuery( string $group, string $returnTo, string $returnToQuery ) {
 		$questions = $this->getQuestions( $group );
 		if ( !$questions ) {
 			return false;
 		}
 
 		$request = $this->context->getRequest();
-		$returnTo = $request->getVal( 'returnto' );
-		$returnToQuery = $request->getVal( 'returntoquery' );
 
-		$welcomeSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
 		$welcomeSurveyToken = Util::generateRandomToken();
 		$request->response()->setCookie( WelcomeSurveyLogger::WELCOME_SURVEY_TOKEN,
 			$welcomeSurveyToken, time() + 3600 );
-		$query = wfArrayToCgi( [
+		return [
 			'returnto' => $returnTo,
 			'returntoquery' => $returnToQuery,
 			'group' => $group,
 			'_welcomesurveytoken' => $welcomeSurveyToken
-		] );
-		return $welcomeSurvey->getFullUrlForRedirect( $query );
+		];
 	}
 
 	/**
