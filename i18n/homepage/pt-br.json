@@ -10,7 +10,10 @@
 			"Gustavo.moraes",
 			"Luk3",
 			"Stanglavine",
-			"Teles"
+			"Teles",
+			"Duke of Wikipädia",
+			"TheEduGobi",
+			"YuriNikolai"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
@@ -161,6 +164,11 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Selecione outros interesses ou níveis de dificuldade para encontrar as edições sugeridas.",
 	"growthexperiments-homepage-suggestededits-footer": "Outros usuários notaram que esses artigos precisam de trabalho. Ajude a fazer '''{{SITENAME}}''' melhor para seus '''$1 leitores''' cada dia.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Outros usuários notaram que esses artigos precisam de trabalho. Ajude a fazer '''{{SITENAME}}''' melhor.",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
+	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1K",
+	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
+	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1B",
+	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edições no último dia",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntários como você contribuíram para melhorar {{SITENAME}} hoje. Junte-se!",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Corrigir ortografia, gramática e tom",
