@@ -68,7 +68,6 @@ const MENTEES_TABLE_COLUMNS = [
 		cellProps: { align: 'center' },
 		sortBy: 'registration',
 		data( mentee ) {
-			// TODO apply locale format?
 			return mentee.registration.human;
 		}
 	},
