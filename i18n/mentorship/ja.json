@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"MathXplore",
-			"Omotecho"
+			"Omotecho",
+			"Sou0012"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "指導役ダッシュボード",
@@ -21,6 +22,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "なし",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "保存",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "キャンセル",
+	"growthexperiments-mentor-writer-error-message-too-long": "紹介メッセージが長すぎます。最大長は$1です。",
 	"growthexperiments-manage-mentors-title": "指導役の管理",
 	"growthexperiments-manage-mentors-username": "利用者名",
 	"growthexperiments-manage-mentors-last-active": "前回の操作",

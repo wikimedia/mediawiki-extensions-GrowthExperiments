@@ -316,7 +316,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Denna sida låter {{GENDER:$1|dig}} ändra nybörjarens fadder till {{GENDER:$1|dig}} själv. Det rekommenderas att använda denna funktion för användare {{GENDER:$1|du}} känner, eller för användare {{GENDER:$1|du}} är fadder för på en kurs.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nybörjarens användarnamn",
 	"growthexperiments-homepage-claimmentee-reason": "Skäl för att välja denna nybörjare",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Du ändrade}} faddern för {{PLURAL:$2|användare|användare}} $1 till {{GENDER:$4|$5}}. Gå tillbaka till [[Special:MentorDashboard|fadderinstrumentpanelen]].",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Du ändrade}} faddern för {{PLURAL:$2|användare|användare}} $1 till {{GENDER:$4|$5}}. Gå tillbaka till [[Special:MentorDashboard|fadderinstrumentpanelen]]. Återgå till [[Special:MentorDashboard|fadderpanelen]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} fadder har redan ändrats. Är {{GENDER:$2|du}} säker på att {{GENDER:$2|du}} vill ändra den igen?",
 	"growthexperiments-claimmentee-confirm": "Ja, jag vill verkligen byta {{GENDER:|fadder}}",
 	"growthexperiments-log-name": "Logg för GrowthExperiments",

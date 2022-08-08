@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Martin Urbanec (WMF)"
+			"Martin Urbanec (WMF)",
+			"Matěj Suchánek"
 		]
 	},
 	"apihelp-growthstarmentee-summary": "Nastavit nováčka jako označeného hvězdičkou (uloženo soukromě a nelogováno)",
@@ -18,11 +19,12 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Modul mentorství je aktivní",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Modul mentorství je plně deaktivován. Toto je obyčejně nastaveno softwarem a používáno pro A/B testování.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Nováček si mentorství vypnul; vztah mentor/mentorovaný bude smazán, modul mentorství bude nahrazen tlačítkem pro novou aktivaci mentorského modulu.",
-	"apihelp-query+growthmenteestatus-summary": "Zjistit současný stav právě přihlášeného nováčka; viz dokumentaci pro action=growthsetmentorweight, která obsahuje podrobnější informace o jednotlivých stavech.",
+	"apihelp-query+growthmenteestatus-summary": "Zjistit současný stav právě přihlášeného nováčka; viz dokumentaci pro action=growthsetmenteestatus, která obsahuje podrobnější informace o jednotlivých stavech.",
 	"apihelp-query+growthmentormentee-summary": "Získat seznam všech nováčků přiřazených danému mentorovi",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Uživatelské jméno mentora, pro kterého vrátit seznam nováčků",
 	"apihelp-growthmanagementorlist-summary": "Spravovat informace ve strukturovaném seznamu mentorů (obvykle uložené na stránce [[MediaWiki:GrowthMentors.json]]). Tento modul mohou používat jak současní, tak budoucí mentoři (aby se přidali nebo změnili informace o sobě). Modul mohou použít také správci, kteří mohou změnit informace o všech uživatelích.",
 	"apihelp-growthmanagementorlist-param-geaction": "Akce",
+	"apihelp-growthmanagementorlist-param-message": "Předsavení-se jako mentora (pokud chcete použít výchozí zprávu, použijte prázdný řetězec)",
 	"apihelp-growthmanagementorlist-param-weight": "Váha",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Je mentor automaticky přiřazen nováčkům?",
 	"apihelp-growthmanagementorlist-param-summary": "Důvod změny",
