@@ -137,10 +137,10 @@ const validateAndApplyFilters = ( context, filters = {} ) => {
 		validFilters.prefix = filters.prefix;
 	}
 	if ( isEmptyString( filters.editCountMin ) || Number.isInteger( filters.editCountMin ) ) {
-		validFilters.editCountMin = filters.editCountMin || undefined;
+		validFilters.editCountMin = Number.isInteger( filters.editCountMin ) ? filters.editCountMin : undefined;
 	}
 	if ( isEmptyString( filters.editCountMax ) || Number.isInteger( filters.editCountMax ) ) {
-		validFilters.editCountMax = filters.editCountMax || undefined;
+		validFilters.editCountMax = Number.isInteger( filters.editCountMax ) ? filters.editCountMax : undefined;
 	}
 	if ( isNaN( filters.activeDaysAgo ) || Number.isInteger( filters.activeDaysAgo ) ) {
 		validFilters.activeDaysAgo = filters.activeDaysAgo || undefined;
