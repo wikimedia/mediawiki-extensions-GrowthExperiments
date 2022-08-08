@@ -68,6 +68,10 @@ const MENTEES_TABLE_COLUMNS = [
 		cellProps: { align: 'center' },
 		sortBy: 'registration',
 		data( mentee ) {
+			if ( !mentee.registration ) {
+				// NOTE: mentee.registration can be null for users who registered pre-2005 (T314807)
+				return mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-registered-unknown' );
+			}
 			return mentee.registration.human;
 		}
 	},
