@@ -112,7 +112,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Uložit",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Zrušit",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Představení-se jako mentora",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Vaše} představení-se bylo změněno na \"$1\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Vaše}} představení-se bylo změněno na „$1“.",
 	"growthexperiments-mentor-list-missing-key": "Klíč <code>$1</code> chybí.",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> by mělo být <code>$2</code>, ale je <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Definice mentora obsahuje neočekávaný klíč <code>$1</code>",

@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Nepričakovani cilji priporočila povezave: $1"
+}

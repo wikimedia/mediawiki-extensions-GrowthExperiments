@@ -24,7 +24,7 @@
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Uživatelské jméno mentora, pro kterého vrátit seznam nováčků",
 	"apihelp-growthmanagementorlist-summary": "Spravovat informace ve strukturovaném seznamu mentorů (obvykle uložené na stránce [[MediaWiki:GrowthMentors.json]]). Tento modul mohou používat jak současní, tak budoucí mentoři (aby se přidali nebo změnili informace o sobě). Modul mohou použít také správci, kteří mohou změnit informace o všech uživatelích.",
 	"apihelp-growthmanagementorlist-param-geaction": "Akce",
-	"apihelp-growthmanagementorlist-param-message": "Předsavení-se jako mentora (pokud chcete použít výchozí zprávu, použijte prázdný řetězec)",
+	"apihelp-growthmanagementorlist-param-message": "Představení se jako mentor (pokud chcete použít výchozí zprávu, použijte prázdný řetězec)",
 	"apihelp-growthmanagementorlist-param-weight": "Váha",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Je mentor automaticky přiřazen nováčkům?",
 	"apihelp-growthmanagementorlist-param-summary": "Důvod změny",
