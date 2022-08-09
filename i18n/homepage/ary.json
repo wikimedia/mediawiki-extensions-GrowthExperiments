@@ -5,5 +5,15 @@
 			"Ideophagous"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "صفحت {{GENDER:|لخدايمي|لخدايمية}}",
+	"tooltip-pt-homepage": "صفحت {{GENDER:|لخدايمي|لخدايمية}} ديالك",
+	"growthexperiments-homepage-enable": "وري صفحت {{GENDER:|لخدايمي|لخدايمية}} د {{GENDER:|لكتاتبي جّديد|لكتاتبية جّديدة}}",
+	"growthexperiments-homepage-pt-link": "لوصف د لمقال تجدّد",
+	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|زيد|زيدي}} لادريسة د ليميل ديالك",
+	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|كونفيرمي|كونفيرمي}} لادريسة د ليميل ديالك",
+	"growthexperiments-homepage-email-header-confirmed": "لادريسة د ليميل تزادت",
+	"growthexperiments-homepage-email-header-startemail": "لادريسة د ليميل: $1",
+	"growthexperiments-homepage-email-text-noemail": "لوصف د لمقال تجدد",
 	"tag-newcomer_task_add_link": "[[mw:Growth/Personalized first day/Structured tasks/Add a link|قتيراح: زيد ليانات]]"
 }
