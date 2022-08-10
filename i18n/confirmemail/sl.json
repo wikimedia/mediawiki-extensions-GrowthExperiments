@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|kaj je to?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-poštni naslov je potreben za ponovni dostop do računa, če izgubite geslo.",
+	"growthexperiments-confirmemail-emailrecommended": "E-poštni naslov (priporočeno)",
+	"growthexperiments-signupcampaign-bullet3": "Začnite z majhnimi, preprostimi urejanji",
+	"growthexperiments-thankyoupage-body": "Wikipedijo v sodelovanju ustvarjajo ljudje, kot {{GENDER:|ste vi}}. Urejanje članka je lažje, kot {{GENDER:|si morda mislite}}!\n\nS svojim računom boste imeli dostop do naslednjega:",
+	"growthexperiments-thankyoupage-body-mobile": "Wikipedijo v sodelovanju ustvarjajo ljudje, kot {{GENDER:|ste vi}}. Urejanje članka je lažje, kot {{GENDER:|si morda mislite}}!",
+	"growthexperiments-thankyoubanner-body": "Wikipedijo v sodelovanju ustvarjajo ljudje, kot {{GENDER:|ste vi}}. Urejanje članka je lažje, kot {{GENDER:|si morda mislite}}!\n\nS svojim računom boste imeli dostop do naslednjega:",
+	"growthexperiments-thankyoubanner-body-mobile": "Wikipedijo v sodelovanju ustvarjajo ljudje, kot {{GENDER:|ste vi}}. Urejanje članka je lažje, kot {{GENDER:|si morda mislite}}!"
+}
