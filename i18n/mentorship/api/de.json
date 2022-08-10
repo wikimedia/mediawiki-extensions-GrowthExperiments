@@ -9,5 +9,10 @@
 	"apihelp-growthstarmentee-param-gesaction": "Zu ergreifende Maßnahmen (<kbd>star</kbd> oder <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Mentee, bei dem die Sternchen-Markierung gesetzt oder entfernt werden soll.",
 	"apihelp-query+growthstarredmentees-summary": "Liste der Mentees mit Sternchen-Markierung für {{GENDER:|den aktuellen Lotsen|die aktuelle Lotsin}}.",
-	"apihelp-growthsetmentorstatus-param-gesstatus": "Neuer Status"
+	"apihelp-growthsetmentorstatus-summary": "Lotsenstatus des aktuellen Benutzers auf aktiv/abwesend setzen",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Neuer Status",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Wenn der Lotse als abwesend festgelegt wird, muss die Dauer der Abwesenheit angegeben werden (in Tagen).",
+	"apihelp-query+growthmentorstatus-summary": "Lotsenstatus des aktuellen Benutzers abfragen",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Das Lotsen-Modul ist aktiviert",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Das Lotsen-Modul ist vollständig deaktiviert. Dies wird normalerweise von der Software festgelegt und für A/B-Tests verwendet."
 }

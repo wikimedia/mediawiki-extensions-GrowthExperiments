@@ -1,15 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Dbc334"
 		]
 	},
+	"growthexperiments-help-panel-question-widget-header": "Postavite svoje vprašanje Centru za pomoč",
 	"growthexperiments-help-panel-postedit-footer": "Prikaži več predlaganih urejanj",
+	"growthexperiments-help-panel-questionreview-title": "Vprašajte Center za pomoč",
+	"growthexperiments-help-panel-questionreview-header": "Ko pošljete vprašanje, se to <strong>javno objavi</strong> pod vašim uporabniškim imenom, »$2«, na strani $1, kjer bo približno v enem dnevu nanj odgovoril drug prostovoljec.",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Pri mojem vprašanju vključi naslov strani",
+	"growthexperiments-help-panel-question-subject-template": "Vprašanje Centru za pomoč",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Vprašanje iz panela pomoči na strani [[:$1|$1]]",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "Vprašanje z modulom pomoči z uporabnikove domače strani",
+	"growthexperiments-help-panel-question-post-error": "Pri poskusu objave vašega vprašanja je prišlo do napake. Lahko poskusite znova ali v brskalniku obiščete stran $1 in vprašanje dodate ročno.",
 	"growthexperiments-help-panel-suggestededits-title": "Predlagana urejanja",
 	"growthexperiments-help-panel-questioncomplete-title": "Postavite vprašanje",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Vaše vprašanje je zdaj objavljeno v Centru za pomoč, kjer bo nanj odgovoril drug uporabnik",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "Ogled vprašanja v Centru za pomoč",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Mimogrede, s postavitvijo tega vprašanja ste pravkar opravili svoje prvo urejanje. Čestitamo!",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Onemogoči panel pomoči",
+	"growthexperiments-help-panel-community-help-desk-text": "Center za pomoč skupnosti",
 	"tag-help_panel_question": "vprašanje s podokna za pomoč",
 	"tag-help_panel_question-description": "Urejanje, opravljeno s postavitvijo vprašanja na podoknu za pomoč",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Predlagana urejanja",
+	"growthexperiments-help-panel-button-header-ask-help": "Vprašajte Center za pomoč",
+	"growthexperiments-help-panel-button-header-general-help": "Splošna pomoč za urejanje",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Namigi za hiter začetek",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "O predlaganih urejanjih",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;Uporabljate urejavalnik izvorne kode. Ti nasveti za urejanje so najbolj koristni za vizualni urejevalnik.",
