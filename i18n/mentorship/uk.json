@@ -120,6 +120,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "Наставника $1 уже додано до списку наставників",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Наставник $1 не в списку наставників",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Наставник $1 не є зареєстрованим користувачем",
+	"growthexperiments-mentor-writer-error-message-too-long": "Вступне повідомлення задовге. Максимальна довжина становить $1 .",
 	"growthexperiments-manage-mentors-title": "Керувати наставниками",
 	"growthexperiments-manage-mentors-error-no-such-user": "Помилка: Немає користувача з ID $1. Схоже, це внутрішня помилка.",
 	"growthexperiments-manage-mentors-auto-assigned": "Автоматично призначені наставники",
