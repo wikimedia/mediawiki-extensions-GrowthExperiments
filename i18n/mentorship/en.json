@@ -12,7 +12,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "The table requires JavaScript. Please enable JavaScript to be able to use this module.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Who is in {{GENDER:|your}} table?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "More information about who is in {{GENDER:|your}} table",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "This table shows {{GENDER:|your}} mentees whose account was created within the past two weeks or who have edited in the last six months, and have the [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|newcomer homepage enabled]]. Data is updated every three hours.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "This table shows {{GENDER:|your}} mentees whose account was created within the past two weeks or who have edited in the last six months, and have the [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH newcomer homepage enabled]. Data is updated every three hours.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legend",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Bookmark mentees",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Username",
