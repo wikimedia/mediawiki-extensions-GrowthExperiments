@@ -107,10 +107,11 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$data = json_decode( $response, true );
 
 		if ( $data === null ) {
-			$errorMessage = __METHOD__ . ': Unable to decode JSON response for page: ' . $titleTextSafe;
-			LoggerFactory::getInstance( 'GrowthExperiments' )->error(
-				$errorMessage . ' {response}', [ 'response' => $response ]
-			);
+			$errorMessage = __METHOD__ . ': Unable to decode JSON response for page {title}: {response}';
+			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorMessage, [
+				'title' => $titleTextSafe,
+				'response' => $response
+			] );
 			return StatusValue::newFatal( 'rawmessage', $errorMessage );
 		} elseif ( $request->getStatus() >= 400 ) {
 			return StatusValue::newFatal( 'rawmessage',
