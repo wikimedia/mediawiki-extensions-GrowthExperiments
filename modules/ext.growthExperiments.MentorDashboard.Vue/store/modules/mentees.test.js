@@ -90,6 +90,26 @@ describe( 'utils', () => {
 
 		expect( getters.filters( state ) ).toEqual( expectedPresets );
 	} );
+
+	it( 'should accept integers or empty string as min and max edit count filters', () => {
+		const { validateAndApplyFilters } = require( './mentees.js' );
+		const mockContext = {
+			getters: { filters: {} },
+			commit: jest.fn()
+		};
+		const res1 = validateAndApplyFilters( mockContext, {
+			editCountMin: 'a',
+			editCountMax: ''
+		} );
+
+		const expectedValidFilters = {
+			editCountMax: undefined,
+			activeDaysAgo: undefined
+		};
+		expect( res1 ).toBe( true );
+		expect( mockContext.commit ).toHaveBeenNthCalledWith( 1, 'SET_FILTERS', expectedValidFilters );
+		expect( mockContext.commit ).toHaveBeenNthCalledWith( 2, 'SET_API_FILTERS', expectedValidFilters );
+	} );
 } );
 
 // helper for testing action with expected mutations
