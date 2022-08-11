@@ -86,6 +86,7 @@ $specialPageAliases['cs'] = [
 	'MentorDashboard' => [ 'Nástěnka_mentora' ],
 	'QuitMentorship' => [ 'Skončit_s_mentorstvím' ],
 	'ManageMentors' => [ 'Spravovat_mentory', 'Správa_mentorů' ],
+	'EnrollAsMentor' => [ 'Zapsat_se_jako_mentor' ],
 ];
 
 /** Dansk (Danish) */
