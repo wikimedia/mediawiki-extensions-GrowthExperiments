@@ -307,7 +307,7 @@
 			$( '.growthexperiments-mentor-dashboard-module-mentee-overview-pagination' ).hide();
 		}
 
-		if ( !this.apiClient.hasFilters() ) {
+		if ( !this.apiClient.doesFilterOutMentees() ) {
 			this.$emptyScreen.find( '.growthexperiments-mentor-dashboard-mentee-overview-empty-icon' ).html(
 				new OO.ui.IconWidget( {
 					icon: 'clock'

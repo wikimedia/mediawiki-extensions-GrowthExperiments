@@ -23,6 +23,7 @@
 		this.nonFilterKeys = [ 'order', 'sortby', 'limit', 'offset' ];
 		this.page = 0;
 		this.totalRows = null;
+		this.assignedMentees = null;
 
 		this.starredMentees = null;
 	}
@@ -63,6 +64,18 @@
 		return res;
 	};
 
+	/**
+	 * Are there any mentees filtered out by currently applied filters?
+	 *
+	 * hasFilters tells whether there are any filters applied at all. In certain
+	 * cases, however, even though some filters are set, they do not filter out any mentee.
+	 *
+	 * @returns {boolean}
+	 */
+	MenteeOverviewApi.prototype.doesFilterOutMentees = function () {
+		return this.totalRows !== this.assignedMentees;
+	};
+
 	MenteeOverviewApi.prototype.setPrefix = function ( prefix ) {
 		this.apiParams.prefix = prefix;
 	};
@@ -84,6 +97,7 @@
 		var menteeOverviewApi = this;
 		return $.getJSON( this.apiUrl + '?' + $.param( this.apiParams ) ).then( function ( data ) {
 			menteeOverviewApi.totalRows = data.totalRows;
+			menteeOverviewApi.assignedMentees = data.assignedMentees;
 			return data.mentees;
 		} );
 	};
