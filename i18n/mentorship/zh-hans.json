@@ -23,7 +23,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "在下方查看{{GENDER:|您的}}学员。使用过滤器更改要显示的学员。",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "该列表需求JavaScript。请开启JavaScript来使用使用这个模组。",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "谁在{{GENDER:|您的}}表中？",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "此表格仅显示{{GENDER:|您}}的学员，其账号须在两周内创建或在过去6个月内编辑过，并[[:mw:Special:MyLanguage/Growth/Feature_summary#NH|启用了新人主页]]。数据每3个小时更新一次。",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "此表格仅显示{{GENDER:|您}}的学员，其账号须在两周内创建或在过去6个月内编辑过，并[https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH 启用了新人主页]。数据每3个小时更新一次。",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "图例",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "标记学员",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "用户名",

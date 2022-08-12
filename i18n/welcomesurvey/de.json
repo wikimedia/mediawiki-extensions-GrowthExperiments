@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ameisenigel",
+			"Brettchenweber",
 			"Bxalber",
 			"Metalhead64",
 			"Reinhard Kraasch",
@@ -38,7 +39,7 @@
 	"welcomesurvey-question-reason-other-placeholder": "Anderen Grund {{GENDER:$1|eingeben}}…",
 	"welcomesurvey-question-mentor-info": "Wir ziehen in Erwägung, ein Programm für fortgeschrittene Autoren zu starten, um neueren Benutzern beim Bearbeiten zu helfen. {{GENDER:$1|Bist du daran interessiert}}, kontaktiert zu werden, um Hilfe bei der Bearbeitung zu erhalten?",
 	"welcomesurvey-question-mentor-label": "Ja, {{GENDER:$1|ich bin interessiert}}",
-	"welcomesurvey-question-edited-label": "Hast du jemals Wikipedia bearbeitet?",
+	"welcomesurvey-question-edited-label": "Hast du vorher schon einmal Wikipedia bearbeitet?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Ja, sehr oft",
 	"welcomesurvey-question-edited-option-yes-few-label": "Ja, ein oder zwei Mal",
 	"welcomesurvey-question-edited-option-no-dunno-label": "Nein, ich wusste nicht, dass ich Wikipedia bearbeiten kann",
