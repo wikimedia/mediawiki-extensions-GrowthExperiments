@@ -525,6 +525,12 @@ return [
 	'GrowthExperimentsMentorWeightManager' => static function (
 		MediaWikiServices $services
 	): MentorWeightManager {
+		if ( $services->getMainConfig()->get( 'GEMentorProvider' ) !== MentorProvider::PROVIDER_WIKITEXT ) {
+			throw new LogicException(
+				'MentorWeightManager cannot be used when GEMentorProvider is not "wikitext"'
+			);
+		}
+
 		return new MentorWeightManager(
 			$services->getUserOptionsManager()
 		);
