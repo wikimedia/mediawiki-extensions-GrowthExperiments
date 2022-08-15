@@ -91,7 +91,7 @@ class ConfigHooks implements
 					);
 				}
 
-				return $status->isOK();
+				return $status->isGood();
 			}
 		}
 		return true;
