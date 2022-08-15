@@ -399,7 +399,9 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 		// Use \h (horizontal whitespace) instead of \s (whitespace) to avoid matching newlines (T227535)
 		preg_match(
 			sprintf( '/:%s]]\h*\|\h*(.*)/', preg_quote( $mentor->getName(), '/' ) ),
-			$this->getMentorsPageContent(),
+			$this->getWikiPageContent( $this->getMentorsPage() ) .
+				PHP_EOL .
+				$this->getWikiPageContent( $this->getManuallyAssignedMentorsPage() ),
 			$matches
 		);
 		$introText = $matches[1] ?? '';
@@ -411,12 +413,11 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 	}
 
 	/**
-	 * Get the text of the mentor page.
+	 * Get the text of a WikiPage instance.
+	 * @param WikiPage|null $page
 	 * @return string
-	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 */
-	private function getMentorsPageContent() {
-		$page = $this->getMentorsPage();
+	private function getWikiPageContent( ?WikiPage $page ): string {
 		if ( $page === null ) {
 			return "";
 		}
