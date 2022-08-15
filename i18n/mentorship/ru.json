@@ -85,7 +85,7 @@
 	"growthexperiments-quit-mentorship-title": "Покинуть наставничество",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Жаль, что вы уходите. Чтобы начать процесс выхода из наставничества, сначала вам надо убрать свое имя [[$1|из списка наставников]]. Когда сделаете это, пожалуйста, вернитесь на эту страницу.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Следующий шаг — переназначение ваших подопечных. Если вы уверены, что хотите покинуть наставничество, пожалуйста, нажмите кнопку ниже.",
-	"growthexperiments-quit-mentorship-error-not-a-mentor": "{{GENDER:|Вы}} не являетесь наставником.",
+	"growthexperiments-quit-mentorship-error-not-a-mentor": "{{GENDER:|Вы}} не являетесь {{GENDER:|наставником|наставницей}}.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Да, назначить моим подопечным другого наставника",
 	"growthexperiments-quit-mentorship-success": "Вскоре вашим подопечным будет назначен других наставников.",
 	"growthexperiments-quit-mentorship-no-mentees": "У {{GENDER:|Вас}} пока нет подопечных.",

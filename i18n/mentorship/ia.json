@@ -14,7 +14,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Le tabella require JavaScript. Per favor activa JavaScript pro poter usar iste modulo.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Qui es in tu tabella?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Plus information sur qui es in tu tabella",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Iste tabella monstra tu apprentisses cuje conto ha essite create in le ultime duo septimanas o qui ha modificate in le ultime sex menses, e qui ha le [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|pagina de initio pro novicios activate]]. Le datos se actualisa cata tres horas.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Iste tabella monstra tu apprentisses cuje conto ha essite create in le ultime duo septimanas o qui ha apportate alcun modificationes in le ultime sex menses, e qui ha le [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH pagina de initio pro novicios] activate. Le datos se actualisa cata tres horas.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Marcar apprentisses como favorite",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nomine de usator",

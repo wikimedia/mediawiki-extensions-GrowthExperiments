@@ -18,7 +18,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Le tableau nécessite JavaScript. Veuillez l’activer pour pouvoir utiliser ce module.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Qui figure dans {{GENDER:|}}votre tableau ?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Plus d’informations sur qui figure dans {{GENDER:|}}votre table",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Ce tableau montre seulement {{GENDER:|}}vos apprentis dont le compte a été créé lors les deux semaines passées ou qui ont édité dans les six derniers mois et qui ont gardé activée la [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|newcomer page de bienvenue des apprentis]]. Les données sont mises à jour toutes les trois heures.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Ce tableau montre seulement {{GENDER:|}}vos apprentis dont le compte a été créé lors les deux semaines passées ou qui ont édité dans les six derniers mois et qui ont gardé activée la [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH newcomer page de bienvenue des apprentis]. Les données sont mises à jour toutes les trois heures.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Légende",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Mettre en favori les apprentis",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nom d’utilisateur",

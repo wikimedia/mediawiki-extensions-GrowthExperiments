@@ -15,7 +15,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "הרבלה הזאת דורשת שימוש ב־JavaScript. נא להפעיל את JavaScript כדי להשתמש במודול הזה.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "מי בטבלה {{GENDER:|שלך}}?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "מידע נוסף על מי שנמצא בטבלה {{GENDER:|שלך}}",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "הטבלה הזאת מציגה רק את החניכים {{GENDER:|שלך}} שהחשבון שלהם נוצר בשבועיים האחרונים או שערכו בששת החודשים האחרונים וש[[:mw:Special:MyLanguage/Growth/Feature_summary#NH|הפעילו את דף הבית למתחילים]]. הנתונים מעודכנים מדי שלוש שעות.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "הטבלה הזאת מציגה רק את החניכים {{GENDER:|שלך}} שהחשבון שלהם נוצר בשבועיים האחרונים או שערכו בששת החודשים האחרונים וש[https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH הפעילו את דף הבית למתחילים]. הנתונים מעודכנים מדי שלוש שעות.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "מקרא",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "הוספת חניכים לסימניות",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "שם משתמש",
