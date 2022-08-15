@@ -101,6 +101,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Average (the default)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "About twice the average",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Your}} load was changed to \"$1\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Unknown error occurred. Please try again later.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Mentees are assigned randomly to mentors as their accounts are created.  You can manage how many mentees are assigned to you, but some mentees may ask questions more frequently than others",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "It’s recommended to start on the “Average” setting to gauge your support capacity before increasing or decreasing.",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Change {{GENDER:|your}} introduction message",
