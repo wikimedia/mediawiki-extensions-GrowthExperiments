@@ -223,6 +223,8 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 
 	/** @inheritDoc */
 	protected function toJsonArray(): array {
+		# T312589 explicitly calling jsonSerialize() will be unnecessary
+		# in the future.
 		return [
 			'tasks' => array_map( static function ( Task $task ) {
 				return $task->jsonSerialize();
@@ -240,13 +242,19 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 
 	/** @inheritDoc */
 	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
-		$tasks = array_map( static function ( array $task ) use ( $unserializer ) {
-			return $unserializer->unserialize( $task, Task::class );
+		# T312589: In the future JsonCodec will take care of unserializing
+		# the values in the $json array itself.
+		$tasks = array_map( static function ( $task ) use ( $unserializer ) {
+			return $task instanceof Task ? $task :
+				$unserializer->unserialize( $task, Task::class );
 		}, $json['tasks'] );
-		$invalidTasks = array_map( static function ( array $task ) use ( $unserializer ) {
-			return $unserializer->unserialize( $task, Task::class );
+		$invalidTasks = array_map( static function ( $task ) use ( $unserializer ) {
+			return $task instanceof Task ? $task :
+				$unserializer->unserialize( $task, Task::class );
 		}, $json['invalidTasks'] );
-		$filters = $unserializer->unserialize( $json['filters'], TaskSetFilters::class );
+		$filters = $json['filters'] instanceof TaskSetFilters ?
+				 $json['filters'] :
+				 $unserializer->unserialize( $json['filters'], TaskSetFilters::class );
 		$taskSet = new self( $tasks, $json['totalCount'], $json['offset'], $filters, $invalidTasks );
 		$taskSet->setQualityGateConfig( $json['qualityGateConfig'] );
 		return $taskSet;
