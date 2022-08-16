@@ -104,6 +104,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "ממוצע (ברירת המחדל)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "בערך כפול מהממוצע",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "העומס שלך שוּנה ל{{GRAMMAR:תחילית|$1}}.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "אירעה שגיאה לא ידועה. נא לנסות שוב מאוחר יותר.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "חניכים משויכים באופן אקראי לחונכים כשהחשבונות שלהם נוצרים. באפשרותך לנהל כמה חניכים משויכים אליך, אבל חניכים מסוימים יכולים לשאול יותר שאלות מאחרים",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "מומלץ להתחיל בהגדרת \"ממוצע\" כדי לכוונן את קיבולת התמיכה שלך לפני העלאה או הפחתה.",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "שינוי הודעת ההיכרות {{GENDER:|שלך}}",
