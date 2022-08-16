@@ -139,7 +139,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$1|Danışmanınızın}} diğer konuşmalarını {{GENDER:$2|görüntüleyin}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$1|Danışmanınıza}} soru {{GENDER:$2|sorun}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Bir soru sorduğunuzda, kullanıcı adınız \"$2\" altında <strong>herkese açık olarak yayımlanır</strong>, sorunuzu bulabilecekleri ve {{GENDER:$1|yanıtlayabilecekleri}} $3 olur.",
-	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{CİNSİYET:|Asıl}} {{GENDER:$2|danışmanınız}}, \"[[User:$1|$1]]\", şu anda $3 tarihine dek kadar uzakta.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:|Asıl}} {{GENDER:$2|danışmanınız}}, \"[[User:$1|$1]]\", şu anda $3 tarihine dek kadar uzakta.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "Şimdilik sorularınızı başka bir {{GENDER:$2|danışman}}, \"[[User:$1|$1]]\", yanıtlayacak.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|danışmanınızın}} {{GENDER:$1|mesaj sayfası}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Sorunuz}} artık danışmanınızın mesaj sayfasındadır. Bu soruya en kısa sürede cevap {{GENDER:$1|verecektir}}.",
