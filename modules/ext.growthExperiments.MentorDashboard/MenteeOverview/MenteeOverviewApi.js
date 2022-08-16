@@ -20,7 +20,7 @@
 			limit: 10,
 			offset: 0
 		};
-		this.nonFilterKeys = [ 'order', 'sortby', 'limit', 'offset' ];
+		this.nonFilterKeys = [ 'order', 'sortby', 'limit', 'offset', 'uselang' ];
 		this.page = 0;
 		this.totalRows = null;
 
@@ -82,6 +82,8 @@
 
 	MenteeOverviewApi.prototype.getMenteeData = function () {
 		var menteeOverviewApi = this;
+
+		this.apiParams.uselang = mw.config.get( 'wgUserLanguage' );
 		return $.getJSON( this.apiUrl + '?' + $.param( this.apiParams ) ).then( function ( data ) {
 			menteeOverviewApi.totalRows = data.totalRows;
 			return data.mentees;
