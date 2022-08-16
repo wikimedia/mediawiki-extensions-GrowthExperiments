@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ibrahima Malal Sarr"
+			"Ibrahima Malal Sarr",
+			"Amire80"
 		]
 	},
 	"growthexperiments-addlink-rejectiondialog-title": "Hol ko haɗi ɗum wonde jokkol moƴƴol?",
 	"growthexperiments-addlink-rejectiondialog-message": "Jaabawo {{GENDER:$1|maa}} ɓamtat basiye garooje.",
-	"growthexperiments-addlink-rejectiondialog-reason-more-fewer-words": "Binndol ena foti ɓurde walla famɗude kelme (yeru: dene buudi e nokku dene)",
+	"growthexperiments-addlink-rejectiondialog-reason-more-fewer-words": "Binndol ena foti ɓurde walla famɗude kelme (yeru: \"dene buudi\" e nokku \"dene\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Jokkol toɓɓaani winndannde haannde (yeru: \"lewru\" faade \"tagofeere\")",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Goɗɗe",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Suɓo daliilu ko haɗi jokkol moƴƴude"
