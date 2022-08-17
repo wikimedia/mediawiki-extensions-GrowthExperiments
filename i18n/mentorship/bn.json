@@ -4,14 +4,15 @@
 			"Ankan",
 			"Hirok Raja",
 			"ZI Jony",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"আজিজ"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "মেন্টর ড্যাশবোর্ড",
 	"growthexperiments-mentor-dashboard-pt-link": "মেন্টর ড্যাশবোর্ড",
-	"growthexperiments-mentor-dashboard-disabled": "এই উইকিতে মেন্টর ড্যাশবোর্ড চালু করা নেই।",
+	"growthexperiments-mentor-dashboard-disabled": "এই উইকিতে মেন্টর ড্যাশবোর্ড সক্রিয় করা নেই।",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "মেন্টর ড্যাশবোর্ড চালু করার জন্য {{GENDER:|আপনাকে}} প্রথমে [[$1|একজন মেন্টর হিসেবে নিজেকে নথিভুক্ত করতে হবে]]।",
-	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "মেন্টর ড্যাশবোর্ড ব্যবহারের পূর্বে মেন্টরের তালিকা তৈরি করতে হবে। একজন প্রশাসক [[Special:EditGrowthConfig]]-তে গিয়ে এই কাজ করতে পারবেন।",
+	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "মেন্টর ড্যাশবোর্ড ব্যবহারের পূর্বে মেন্টরের তালিকা তৈরি করতে হবে। একজন প্রশাসক [[Special:EditGrowthConfig]]-এ গিয়ে এই কাজ করতে পারবেন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|আপনার}} পরামর্শগ্রহীতা",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "নিচে {{GENDER:|আপনার}} পরামর্শগ্রহীতাদের দেখুন। ছাঁকনি ব্যবহার করে আপনি নির্দিষ্ট পরামর্শগ্রহীতাকে দেখতে পাবেন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "টেবিলের জন্য জাভাস্ক্রিপ্ট প্রয়োজন। অনুগ্রহ করে জাভাস্ক্রিপ্ট সক্রিয় করে এই মডিউল ব্যবহার করুন।",

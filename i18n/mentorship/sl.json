@@ -7,6 +7,7 @@
 	"growthexperiments-mentor-dashboard-title": "Mentorska pregledna plošča",
 	"growthexperiments-mentor-dashboard-disabled": "Mentorska pregledna plošča v tem vikiju ni omogočena.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Da lahko uporabljate mentorsko pregledno ploščo, je treba najprej konfigurirati mentorski seznam. Administrator lahko v ta namen uporabi [[Special:EditGrowthConfig]].",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 od $2",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Prekliči",
 	"growthexperiments-rcfilters-mentorship-title": "Mentorstvo",
 	"growthexperiments-rcfilters-mentorship-starred-label": "Vaši mentoriranci z zvezdico",

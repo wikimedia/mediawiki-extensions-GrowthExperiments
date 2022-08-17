@@ -84,7 +84,7 @@
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|Vous}} n’avez actuellement aucun apprenti affecté.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 s’est retiré{{GENDER:$1||e}} du tutorat.",
 	"echo-category-title-ge-mentorship": "Tutorat",
-	"echo-pref-tooltip-ge-mentorship": "Notifications relatives aux fonctionnalités de tutorat maintenues par l’équipe Croissance. Cette notification vous fait savoir que vous avez été demandé comme apprenti{{GENTER:||e}} ou qu’un de vos apprentis a été demandé par quelqu’un d’autre.",
+	"echo-pref-tooltip-ge-mentorship": "Notifications relatives aux fonctionnalités de tutorat maintenues par l’équipe Croissance. Cette notification vous fait savoir que vous avez été demandé comme apprenti{{GENDER:||e}} ou qu’un de vos apprentis a été demandé par quelqu’un d’autre.",
 	"growthexperiments-notification-header-mentee-claimed": "Votre apprenti{{GENDER:$3|e}}, $3, a été réclamé{{GENDER:$3|e}} par {{GENDER:$2|}}$1.",
 	"growthexperiments-notification-body-mentee-claimed": "Motif : $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Qu'est-ce que « Réclamer un apprenti » ?",

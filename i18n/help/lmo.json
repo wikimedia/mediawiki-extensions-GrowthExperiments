@@ -21,7 +21,9 @@
 	"growthexperiments-help-panel-postedit-success-message-notsaved": "Grazzie de havé revardad i sugeriment. Va inanzǃ",
 	"growthexperiments-help-panel-postedit-header": "I pass che i gh'hann de vegnì",
 	"growthexperiments-help-panel-postedit-subheader-image-recommendation": "Alter manere de modifegà",
+	"growthexperiments-help-panel-postedit-subheader2-image-recommendation": "Proeuva on alter tipo de modifega o torna doman per pussee de sugeriment a proposit de l'imagin",
 	"growthexperiments-help-panel-postedit-subheader-link-recommendation": "Alter manere de modifegà",
+	"growthexperiments-help-panel-postedit-subheader2-link-recommendation": "Proeuva on alter tipo de modifega o torna doman per pusse de sugeriment a proposit di ligam.",
 	"growthexperiments-help-panel-postedit-subheader": "Modifega on alter sugerimentː",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Sugeriment che 'l venː",
 	"growthexperiments-help-panel-questionreview-title": "Ciama al sportell informazzion",
@@ -115,5 +117,17 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Notifeghe per i to domandeː",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Te ricevareet ona notifega chichinscì in su {{SITENAME}} in del moment che a ghe sarà ona risposta.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Te ricevareet anca on messaggde posta eletronica a $1 ($2)",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "cambia"
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "cambia",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Comferma la toa posta eletronica",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Se te piasariss vesser che i te sia {{GENDER:$1|notifegad}} anca per posta eletronica, sgionta adess el to adress de posta eletronica.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Sgionta la posta eletronica",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "A proposit del panell de ajut",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "A proposit, cont el tacà foeura questa domanda chì, t'hee apena fad la to aprima modifega. Congratulazzion!",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Disativa el panel de ajut",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Titol minga bon.",
+	"growthexperiments-help-panel-community-help-desk-text": "Sportell Informazzion de la comunità",
+	"growthexperiments-help-panel-search-label": "Ciama ajut",
+	"growthexperiments-help-panel-search-no-results": "A l'è stad trovad nissun risultad.",
+	"tag-help_panel_question-description": "Modifega fada da la fonzionalità del panell de ajut per tacà foeura i domande",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modifeghe sugeride"
 }

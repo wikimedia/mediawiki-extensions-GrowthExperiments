@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"welcomesurvey-save-btn": "Končaj",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Preskoči}} to anketo",
+	"welcomesurvey-close-btn": "Zapri in se vrni na $1",
+	"welcomesurvey-sidebar-privacy-text": "Fundacija Wikimedia bo {{GENDER:$2|vaše}} odgovore uporabila, da vam pomaga pri začetku urejanja v projektu {{SITENAME}}. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Podrobneje o podatkih o novih urejevalcih",
+	"welcomesurvey-sidebar-editing-title": "Začetek urejanja",
+	"welcomesurvey-sidebar-editing-text": "Skoraj vsako stran lahko ureja vsakdo in vsak dan se opravi več sto urejanj – dodajanje vsebine, popravljanje napak in izboljševanje berljivosti. Če {{GENDER:$1|bi želeli}} prispevati, so vam na voljo naslednje strani s pomočjo.",
+	"welcomesurvey-sidebar-editing-link1-text": "Vadnica",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedija:Vadnica",
+	"welcomesurvey-sidebar-editing-link2-text": "Pod lipo",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedija:Pod_lipo",
+	"welcomesurvey-dropdown-option-select-label": "Prosimo, izberite ...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Da bi popravil/a tipkarsko ali drugo napako v članku Wikipedije",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Da bi v članku Wikipedije dodal/a ali spremenil/a podatke",
+	"welcomesurvey-question-reason-option-add-image-label": "Da bi v članek Wikipedije dodal/a fotografijo ali sliko",
+	"welcomesurvey-question-reason-option-new-page-label": "Da bi v Wikipediji ustvaril/a nov članek",
+	"welcomesurvey-question-reason-option-program-participant-label": "Sodelujem v programu, pouku ali dogodku",
+	"welcomesurvey-question-reason-option-read-label": "Za branje Wikipedije",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Drugo",
+	"welcomesurvey-question-reason-option-other-label": "Drugo (prosimo, opišite)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Vnesite}} drug razlog ...",
+	"welcomesurvey-question-edited-option-yes-many-label": "Da, mnogokrat",
+	"welcomesurvey-question-edited-option-yes-few-label": "Da, enkrat ali dvakrat",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Ne, nisem vedel/a, da lahko urejam Wikipedijo",
+	"welcomesurvey-question-edited-option-no-other-label": "Ne, iz drugih razlogov",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Ne spomnim se",
+	"welcomesurvey-question-languages-placeholder": "Dodajte do {{PLURAL:$1|en jezik|$1 jezika|$1 jezike|$1 jezikov}} ..."
+}
