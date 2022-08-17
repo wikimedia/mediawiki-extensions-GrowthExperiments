@@ -47,8 +47,11 @@ class StructuredMentorListValidator implements IConfigValidator {
 		}
 
 		$status = StatusValue::newGood();
-		foreach ( $mentors as $mentor ) {
-			$status->merge( $this->validateMentor( $mentor ) );
+		foreach ( $mentors as $userId => $mentor ) {
+			$status->merge( $this->validateMentor(
+				$mentor,
+				$userId
+			) );
 		}
 
 		return $status;
@@ -58,9 +61,10 @@ class StructuredMentorListValidator implements IConfigValidator {
 	 * Validate a mentor JSON representation
 	 *
 	 * @param array $mentor
+	 * @param int $userId User ID of the user represented by $mentor
 	 * @return StatusValue
 	 */
-	private function validateMentor( array $mentor ): StatusValue {
+	private function validateMentor( array $mentor, int $userId ): StatusValue {
 		$supportedKeys = array_keys( self::MENTOR_KEY_DATATYPES );
 
 		// Ensure all supported keys are present in the mentor object
@@ -94,7 +98,7 @@ class StructuredMentorListValidator implements IConfigValidator {
 
 		// Code below assumes mentor declarations are syntactically correct.
 		$status = StatusValue::newGood();
-		$status->merge( self::validateMentorMessage( $mentor ) );
+		$status->merge( self::validateMentorMessage( $mentor, $userId ) );
 		return $status;
 	}
 
@@ -104,10 +108,14 @@ class StructuredMentorListValidator implements IConfigValidator {
 	 * Currently only checks MentorProvider::INTRO_TEXT_LENGTH.
 	 *
 	 * @param array $mentor
+	 * @param int $userId User ID of the user represented by $mentor
 	 * @return StatusValue Warning means "an issue, but not important enough to stop using the
 	 * mentor list".
 	 */
-	public static function validateMentorMessage( array $mentor ): StatusValue {
+	public static function validateMentorMessage(
+		array $mentor,
+		int $userId
+	): StatusValue {
 		$status = StatusValue::newGood();
 
 		// Ensure message has correct length. This only warns, as we do not want to fail the
@@ -115,7 +123,8 @@ class StructuredMentorListValidator implements IConfigValidator {
 		if ( mb_strlen( $mentor['message'] ?? '', 'UTF-8' ) > MentorProvider::INTRO_TEXT_LENGTH ) {
 			$status->warning(
 				'growthexperiments-mentor-writer-error-message-too-long',
-				MentorProvider::INTRO_TEXT_LENGTH
+				MentorProvider::INTRO_TEXT_LENGTH,
+				$userId
 			);
 		}
 

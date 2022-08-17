@@ -116,7 +116,7 @@ class ConfigHooksTest extends MediaWikiIntegrationTestCase {
 				'content' => [ 'Mentors123' => [] ],
 			],
 			'warning' => [
-				'expectedError' => 'Introduction message is too long. Maximum length is 240.',
+				'expectedError' => 'Introduction message is too long (affected user ID: 123). Maximum length is 240.',
 				'content' => [ 'Mentors' => [
 					123 => [
 						'message' => str_repeat( 'a', MentorProvider::INTRO_TEXT_LENGTH + 1 ),

@@ -46,7 +46,6 @@ class ConfigValidatorFactory {
 
 		// Dependencies for validators
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-
 	) {
 		$this->config = $config;
 		$this->titleFactory = $titleFactory;

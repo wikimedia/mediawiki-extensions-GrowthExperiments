@@ -103,7 +103,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			new StructuredMentorWriter(
 				$this->createNoOpMock( WikiPageConfigLoader::class ),
 				$this->createNoOpMock( WikiPageConfigWriterFactory::class ),
-				new StructuredMentorListValidator(),
+				$this->createNoOpMock( StructuredMentorListValidator::class ),
 				$this->createNoOpMock( LinkTarget::class )
 			)
 		);
