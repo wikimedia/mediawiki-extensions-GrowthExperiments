@@ -86,6 +86,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Просечно (по основно)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Околу двојно повеќе од просекот",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Вашиот}} обем е изменет на „$1“.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Се појави непозната грешка. Обидете се подоцна.",
 	"growthexperiments-mentor-list-missing-key": "Недостасува клучот <code>$1</code>",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> се очекува да биде <code>$2</code>, но е <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Подучувачката определба содржи неочекуван клуч <code>$1</code>"

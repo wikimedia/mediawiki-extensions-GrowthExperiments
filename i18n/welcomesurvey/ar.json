@@ -10,7 +10,7 @@
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|مرحبا}}، $1!",
-	"welcomesurvey-save-confirmation-title": "شكر! حفظت ردودك.",
+	"welcomesurvey-save-confirmation-title": "شكرًا! تم حفظ ردودك.",
 	"welcomesurvey-save-confirmation-text": "ستساعدنا إجاباتك في إعطائك طرقًا مفيدة للبدء في ويكيبيديا.",
 	"welcomesurvey-subtitle": "{{GENDER:|ساعدنا|ساعدينا}} في تحسين تجربتك لويكيبيديا من خلال الإجابة على بعض الأسئلة الاختيارية.",
 	"welcomesurvey-save-btn": "{{GENDER:|أنهِ|أنهي}}",
@@ -38,7 +38,7 @@
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|أدخل|أدخلي}} سببا آخر...",
 	"welcomesurvey-question-mentor-info": "نفكّر في إطلاق برنامج خاص بالمحرّرين الأكثر خبرة لمساعدة المستخدمين الجدد في التحرير. هل {{GENDER:$1|مهتم|مهتمة}} بأن يتم الاتصال بك لمساعدتك في التحرير؟",
 	"welcomesurvey-question-mentor-label": "نعم، أنا {{GENDER:$1|مهتم|مهتمة}}",
-	"welcomesurvey-question-edited-label": "هل سبق لك تحرير ويكيبيديا؟",
+	"welcomesurvey-question-edited-label": "هل سبق لك وأن حرّرت ويكيبيديا؟",
 	"welcomesurvey-question-edited-option-yes-many-label": "نعم، عدة مرات",
 	"welcomesurvey-question-edited-option-yes-few-label": "نعم، مرة أو مرتين",
 	"welcomesurvey-question-edited-option-no-dunno-label": "لا، لم أكن أعرف أنني أستطيع تعديل ويكيبيديا",
@@ -49,7 +49,7 @@
 	"welcomesurvey-question-email-label": "عنوان البريد الإلكتروني (اختياري)",
 	"welcomesurvey-question-email-placeholder": "{{GENDER:|أدخل|أدخلي}} عنوان بريدك الإلكتروني...",
 	"welcomesurvey-question-email-help": "لاحظنا أنك لم {{GENDER:|تدخل|تدخلي}} بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون.",
-	"welcomesurvey-question-languages-label": "تتوفّر {{SITENAME}} في ما يقارب 300 لغة. هل يُمكنكم القراءة والكتابة بلغات أخرى؟",
+	"welcomesurvey-question-languages-label": "تتوفّر {{SITENAME}} في ما يقارب 300 لغة. هل {{GENDER:|تستطيع|تستطيعين}} القراءة والكتابة بلغات أخرى؟",
 	"welcomesurvey-question-languages-placeholder": "أضف ما يصل إلى {{PLURAL:$1|لا لغات|لغة واحدة أخرى|لغتين أخرتين|$1 لغات أخرى|$1 لغة أخرى}}...",
 	"welcomesurvey-question-languages-maximum": "أضفتم العدد الأقصى من اللغات."
 }
