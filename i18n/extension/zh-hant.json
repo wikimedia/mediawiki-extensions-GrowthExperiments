@@ -93,5 +93,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "包含此處定義模板的條目將不會以此任務類型向使用者顯示為任務。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "包含此處定義分類的條目將不會以此任務類型向使用者顯示為任務。",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "資訊框模板",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|圖片建議]]新手任務功能需要這些模板，包含這些模板的條目將不會列在圖片建議任務。"
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|圖片建議]]新手任務功能需要這些模板，包含這些模板的條目將不會列在圖片建議任務。",
+	"growthexperiments-edit-config-delayed": "對此設定的更改不會立刻生效（請參閱[[mw:Growth/FAQ#add-link-config|常見問題]]）。"
 }

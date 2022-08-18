@@ -24,5 +24,7 @@
 	"apihelp-growthsetmenteestatus-param-state-optout": "學員從導師計畫退出；學員和導師的關係將會被刪除，導師計畫模組將被替換成可以重新加入",
 	"apihelp-query+growthmenteestatus-summary": "查詢目前使用者的學員狀態；查看action=growthsetmentorweight的文件以了解個別狀態的詳細資訊。",
 	"apihelp-query+growthmentormentee-summary": "取得分配給指定導師的全部學員。",
-	"apihelp-query+growthmentormentee-param-gemmmentor": "要查詢學員的導師"
+	"apihelp-query+growthmentormentee-param-gemmmentor": "要查詢學員的導師",
+	"apihelp-growthmanagementorlist-param-weight": "權重",
+	"apihelp-growthmanagementorlist-param-summary": "更改的原因"
 }

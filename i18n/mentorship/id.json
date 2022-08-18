@@ -3,7 +3,8 @@
 		"authors": [
 			"ANukuma",
 			"Daud I.F. Argana",
-			"PutriAmalia1991"
+			"PutriAmalia1991",
+			"Veracious"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Dasbor pembimbing",
@@ -30,12 +31,13 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "tidak diketahui",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Lihat $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 dari $2",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Data bimbingan tidak tersedia",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Tidak ditemukan pembimbing yang aktif",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Bimbingan tidak ditemukan",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Ubah penyaring Anda untuk menemukan bimbingan",
 	"growthexperiments-mentor-dashboard-resources-headline": "Sumber daya",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Daftar pembimbing",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Cara mendapat seorang bimbingan",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktif",
-	"growthexperiments-notification-body-mentee-claimed": "Alasan: $1"
+	"growthexperiments-notification-body-mentee-claimed": "Alasan: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Terjadi galat yang tidak diketahui. Silakan coba lagi nanti."
 }

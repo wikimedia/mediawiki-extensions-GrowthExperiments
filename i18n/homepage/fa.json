@@ -327,7 +327,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1، {{GENDER:$6|$3}} را به عنوان مربیشان {{GENDER:$2|معرفی کرد}} (مربی پیشین ندارد)",
 	"logentry-growthexperiments-setmentor": "$1، {{GENDER:$5|$7}} را به عنوان مربی {{GENDER:$6|$3}} {{GENDER:$2|تنظیم کرد}} ({{GENDER:$4|مربی}} پیشین $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1، {{GENDER:$5|$7}} را به عنوان مربی {{GENDER:$6|$3}} {{GENDER:$2|تنظیم کرد}} (مربی پیشین ندارد)",
-	"logentry-growthexperiments-addlink": "$1 $4 {{PLURAL:$4|پیوند پیشنهادی}} برای $3 را {{GENDER:$2|بازبینی کرد}}: {{PLURAL:$5|}} پیوند تأیید شد، $6 پیوند {{PLURAL:$6|رد شد}} و از $7 پیوند {{PLURAL:$7|چشم‌پوشی شد}}",
+	"logentry-growthexperiments-addlink": "$1 $4 {{PLURAL:$4|پیوند پیشنهادی}} برای $3 را {{GENDER:$2|بازبینی کرد}}:  $5 پیوند {{PLURAL:$5|تأیید شد}}، $6 پیوند {{PLURAL:$6|رد شد}} و از $7 پیوند {{PLURAL:$7|چشم‌پوشی شد}}",
 	"logentry-growthexperiments-addimage-accepted": "$1 یک پیشنهاد تصویر برای $3 را {{GENDER:$2|بازبینی کرد}}: تأیید شد",
 	"logentry-growthexperiments-addimage-rejected": "$1 یک پیشنهاد تصویر برای $3 را {{GENDER:$2|بازبینی کرد}}: رد شد",
 	"log-action-filter-growthexperiments": "نوع رویداد آزمون‌های رشد:",

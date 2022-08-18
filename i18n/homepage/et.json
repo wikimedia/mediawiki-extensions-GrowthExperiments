@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kareyac",
 			"Pikne"
 		]
 	},
@@ -282,6 +283,7 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Vaheta ilma saatmata",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Loobu",
 	"growthexperiments-addlink-suggestions-outdated": "Teine kasutaja muutis lehekülge samal ajal, kui seda üle vaatasid ning sinu muudatusi ei õnnestunud avaldada.",
+	"growthexperiments-addimage-inspector-yes-button": "Jah",
 	"growthexperiments-homepage-mentorship-optin-header": "Redigeerimise mentor",
 	"growthexperiments-homepage-mentorship-optin-text": "Kui sul küsimusi redigeerimise kohta, siis saab määrata kogenud kasutaja sind mentorina abistama.",
 	"growthexperiments-homepage-mentorship-optin-button": "Leia mentor",
