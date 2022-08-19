@@ -28,6 +28,7 @@
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Sugeriment che 'l venː",
 	"growthexperiments-help-panel-postedit-footer": "Varda tute i modifeghe sugerite",
 	"growthexperiments-help-panel-questionreview-title": "Ciama al sportell informazzion",
+	"growthexperiments-help-panel-questionreview-title-mentor": "Ciameghel al to consijer",
 	"growthexperiments-help-panel-questionreview-header": "Ogni domanda che te mandet la sarà <strong>publicada</strong> col nom de la toa utenza, \"$2\", in del $1, indove di alter volontari i cercarann de dàt ona risposta pressapoch de lì al dì adre.",
 	"growthexperiments-help-panel-questionreview-label": "La toa domanda",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Tira denter el titol de la pagina con la mia domanca.",
@@ -54,9 +55,11 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Per savénn pussee sora la correzion di error]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "I ligam intra i vos de {{SITENAME}} i permeten ai letore de clicare in su ona quaicoss del qual i volarissen savénn pussee e juten i persone a navigà più fazzilment in tra i vos de {{SITENAME}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "Mercurio l'è el <mark class=\"positive\">pianeta</mark>pussee piscinin del <mark class=\"positive\">Sistema solar</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-calm": "Per fornì la toa contribuzzion, l'è assee che te sgionted vun o du ligam. A l'è minga necessari che te lavoreet adree a tuta. A l'è nanca necessari de havégh on conoscenza special sora l'argoment.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-rules1": "Vàgh adree a queste linee guida  chì in del sgiontà i ligam:\n* Conliga di concet che l'è facil che on letor el voeura savénn pussee.\n* Mett domà 'l ligam  a la prima volta che quella parolla o fras la compar in de la vos. \n* Conliga nò a parolle, ann o date comune.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-rules1": "Si pensa che la Luna la se sia fada su circa 4,5 miliard de <mark class=\"negative\">anni</mark> indree.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-rules1": "La parolla \"ann\" la gh'ha de minga vesser conligada, perché l'è ona parolla comuna",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step1": "Al veé in d'ona quai part a gh'è bisogn de sgiontà di ligam, schiscia \"$1\" per comenzà. Donca marca la parolla o la fras che te voeulet sgiontàgh el ligam.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "Venere el gh'ha ona <mark class=\"positive\">atmosfera</mark> ertiga",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step2": "Schiscia el boton $2 \"$1\" e cata foeura la vos de {{SITENAME}} de la lista a la qual la gh'havariss de conligàss.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "Schiscia el boton $2 \"$1\" e cata foeura la vos de {{SITENAME}} de la lista a la qual la gh'havariss de conligàss.",
@@ -131,5 +134,6 @@
 	"growthexperiments-help-panel-search-label": "Ciama ajut",
 	"growthexperiments-help-panel-search-no-results": "A l'è stad trovad nissun risultad.",
 	"tag-help_panel_question-description": "Modifega fada da la fonzionalità del panell de ajut per tacà foeura i domande",
-	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modifeghe sugeride"
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modifeghe sugeride",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Passa a l'editor de wiki-test"
 }
