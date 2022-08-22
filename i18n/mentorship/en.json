@@ -124,7 +124,7 @@
 	"growthexperiments-manage-mentors-last-active": "Last active",
 	"growthexperiments-manage-mentors-intro-msg": "Message for newcomers",
 	"growthexperiments-manage-mentors-remove-mentor": "Remove",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|You}} are about to remove [[User:$1]] as a {{GENDER:$1|mentor}}.",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|You}} are about to remove [[User:$1|$1]] as a {{GENDER:$1|mentor}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Reason for removing the mentor",
 	"growthexperiments-manage-mentors-remove-mentor-success": "User [[User:$1|$1]] is no longer a {{GENDER:$1|mentor}}.",
 	"growthexperiments-manage-mentors-return-back": "You can [[Special:ManageMentors|return back]] to the list of mentors.",
