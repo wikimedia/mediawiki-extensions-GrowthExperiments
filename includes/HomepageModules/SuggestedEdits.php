@@ -436,6 +436,7 @@ class SuggestedEdits extends BaseModule {
 		$suggesterOptions = [ 'revalidateCache' => false ];
 		if ( $this->getContext()->getRequest()->getCheck( 'resetTaskCache' ) ) {
 			$suggesterOptions = [ 'resetCache' => true ];
+			// TODO also reset cache in ImageRecommendationFilter
 		}
 		$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
 		$topics = $this->newcomerTasksUserOptionsLookup->getTopics( $user );
