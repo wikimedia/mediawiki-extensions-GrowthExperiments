@@ -64,7 +64,7 @@
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "صفحهٔ حاوی فهرستی از مربی‌هایی برای اختصاص خودکار به تازه‌واردان",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "صفحهٔ حاوی فهرستی از مربی‌هایی که تنها به‌صورت دستی اختصاص داده می‌شوند",
 	"growthexperiments-edit-config-newcomertasks": "ویرایش‌های پیشنهادی",
-	"growthexperiments-edit-config-newcomer-tasks-description": "برخی از اتواع ویرایش‌های پیشنهادی از طریق الگوهای نگهداری پیشنهاد می‌شوند. مقاله‌هایی که حاوی این الگوها باشند به خوراک افزوده می‌شوند. برای آگاهی از تعداد مقاله‌هایی که برای هر وظیفه در دسترس هستند، [[Special:NewcomerTasksInfo|این صفحه]] را ببینید.",
+	"growthexperiments-edit-config-newcomer-tasks-description": "برخی از انواع ویرایش‌های پیشنهادی از طریق الگوهای نگهداری پیشنهاد می‌شوند. مقاله‌هایی که حاوی این الگوها باشند به خوراک افزوده می‌شوند. برای آگاهی از تعداد مقاله‌هایی که برای هر وظیفه در دسترس هستند، [[Special:NewcomerTasksInfo|این صفحه]] را ببینید.",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "غیر فعال",
 	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "در پیکربندی وبگاه غیر فعال شده‌است",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "بازخوانی: الگوهای مورد استفاده برای یافتن مقاله‌هایی که نیازمند ویراستاری جزئی مانند اصلاح املاء، انشاء و بهبود سجاوندی هستند.",
@@ -87,5 +87,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "مقاله‌هایی که حاوی الگوهای مشخص‌شده در اینجا باشند، به‌عنوان وظیفه برای این نوع از وظایف به کاربران نمایش داده نخواهند شد.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "مقاله‌هایی که حاوی رده‌های مشخص‌شده در اینجا باشند، به‌عنوان وظیفه برای این نوع از وظیفه به کاربران نمایش داده نخواهند شد.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "الگوهای جعبه اطلاعات",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "این الگوها برای ویژگی وظیفهٔ تازه‌وارد برای [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|تصویرهای پیشنهاد]] لازم هستند. مقاله‌هایی که حاوی این الگوها باشند به‌عنوان وظایف تصویرهای پیشنهادی فهرست نخواهند شد."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "این الگوها برای ویژگی وظیفهٔ تازه‌وارد برای [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|تصویرهای پیشنهاد]] لازم هستند. مقاله‌هایی که حاوی این الگوها باشند به‌عنوان وظایف تصویرهای پیشنهادی فهرست نخواهند شد.",
+	"growthexperiments-edit-config-delayed": "تغییرات اعمال‌شده در این تنظیم بلافاصله اعمال نخواهند شد ([[mw:Growth/FAQ#add-link-config|پرسش‌های متداول]] را ببینید)."
 }

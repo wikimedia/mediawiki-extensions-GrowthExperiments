@@ -12,6 +12,7 @@
 	"growthexperiments-mentor-dashboard-disabled": "Dasbor pembimbing tidak diaktifkan di wiki ini.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Bimbingan {{GENDER:|Anda}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Siapakah yang ada di tabel Anda?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nama pengguna",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Jumlah suntingan yang dikembalikan",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Jumlah pemblokiran",
@@ -38,6 +39,18 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Daftar pembimbing",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Cara mendapat seorang bimbingan",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktif",
+	"growthexperiments-quit-mentorship-reason": "Alasan",
 	"growthexperiments-notification-body-mentee-claimed": "Alasan: $1",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Terjadi galat yang tidak diketahui. Silakan coba lagi nanti."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Tidak ada",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Terjadi galat yang tidak diketahui. Silakan coba lagi nanti.",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Simpan",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Batal",
+	"growthexperiments-manage-mentors-username": "Nama pengguna",
+	"growthexperiments-manage-mentors-last-active": "Terakhir aktif",
+	"growthexperiments-manage-mentors-intro-msg": "Pesan untuk pendatang baru",
+	"growthexperiments-mentorship-enrollasmentor-title": "Daftar sebagai seorang {{GENDER:|mentor}}",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Pesan perkenalan",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "Alasan",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Menambahkan diri saya sebagai mentor",
+	"tag-mentor list change": "Perubahan daftar mentor"
 }

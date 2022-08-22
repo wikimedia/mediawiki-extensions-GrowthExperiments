@@ -75,6 +75,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Menambahkan sumber tepercaya dan memperbarui artikel lama.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Membuat artikel baru dan mengembangkan artikel pendek.",
 	"growthexperiments-homepage-suggested-edits-header": "Penyuntingan yang disarankan",
+	"growthexperiments-homepage-new-impact-header": "Dampak {{GENDER:$1|Anda}}",
 	"growthexperiments-homepage-impact-header": "Dampak {{GENDER:$1|Anda}}",
 	"growthexperiments-homepage-impact-subheader-text": "Orang-orang melihat artikel yang {{GENDER:$1|Anda}} sunting!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Jumlah tayangan sejak {{GENDER:$1|Anda}} sunting (60 hari terakhir):",
@@ -99,7 +100,7 @@
 	"growthexperiments-homepage-impact-unactivated-description": "Setelah {{GENDER:$1|Anda}} mulai menyunting, {{GENDER:$1|Anda}} akan melihat di sini mengenai berapa banyak pemirsa artikel yang telah {{GENDER:$1|Anda}} sunting.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Pemberitahuan meja bantuan",
 	"growthexperiments-tour-response-tip-text": "Ketika pertanyaan {{GENDER:$1|Anda}} terjawab, {{GENDER:$1|Anda}} akan menerima pemberitahuan di sini.",
-	"growthexperiments-tour-mentor-response-tip-personal-title": "Pemberitahuan mentor",
+	"growthexperiments-tour-mentor-response-tip-personal-title": "Pemberitahuan {{GENDER:$1|Mentor}}",
 	"growthexperiments-tour-mentor-response-tip-personal-text": "Ketika {{GENDER:$2|mentor}} {{GENDER:$1|Anda}} merespons, {{GENDER:$1|Anda}} akan menerima pemberitahuan di sini.",
 	"growthexperiments-tour-response-button-okay": "Mengerti",
 	"tag-help_module_question": "Pertanyaan modul bantuan",
@@ -337,6 +338,8 @@
 	"growthexperiments-notification-learn-more": "Pelajari selengkapnya tentang {{GENDER:$2|mentor}} baru {{GENDER:$1|Anda}}",
 	"right-setmentor": "Atur mentor pengguna",
 	"action-setmentor": "atur mentor pengguna",
+	"right-enrollasmentor": "Daftar sebagai mentor",
+	"action-enrollasmentor": "mendaftar sebagai mentor",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Selengkapnya tentang penyuntingan yang disarankan ini",
 	"growthexperiments-homepage-suggestededits-more-info": "Informasi selengkapnya tentang penyuntingan yang disarankan",
 	"growthexperiments-homepage-welcome-notice-header": "Selamat datang di beranda {{GENDER:$1|Anda}}!",
@@ -493,5 +496,9 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Mengerti",
 	"growthexperiments-addimage-caption-warning-tooshort": "Takarir harus terdiri dari $1 {{PLURAL:$1|karakter}} atau lebih.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Anda}} telah menyelesaikan semua saranan pranala untuk hari ini.\n\nSesuaikan tingkat kesulitan {{GENDER:|Anda}} untuk melihat jenis suntingan lain atau kembali lagi besok untuk mendapat lebih banyak saranan pranala.",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Mengerti"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Mengerti",
+	"growthexperiments-homepage-mentorship-optin-button": "Dapatkan seorang mentor",
+	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Sudah dapat mentor?",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "Tentang mentor",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|Anda}} tidak lagi dibimbing."
 }
