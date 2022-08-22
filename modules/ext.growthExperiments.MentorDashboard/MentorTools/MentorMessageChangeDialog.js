@@ -78,6 +78,12 @@ MentorMessageChangeDialog.prototype.getActionProcess = function ( action ) {
 
 				dialog.emit( 'messageset', newMessage );
 				dialog.close( { action: action } );
+			} ).catch( function ( errorCode, data ) {
+				mw.notify(
+					data.error.info,
+					{ type: 'error' }
+				);
+				dialog.close( { action: action } );
 			} );
 		} );
 	}
