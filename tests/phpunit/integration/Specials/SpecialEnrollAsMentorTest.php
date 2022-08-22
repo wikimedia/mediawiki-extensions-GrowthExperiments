@@ -41,7 +41,10 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 		$this->expectException( PermissionsError::class );
 		$this->expectExceptionMessage( 'You are not allowed to execute the action you have requested' );
 
-		$this->setMwGlobals( 'wgRevokePermissions', [ '*' => [ 'enrollasmentor' => true ] ] );
+		$this->setMwGlobals( [
+			'wgRevokePermissions' => [ '*' => [ 'enrollasmentor' => true ] ],
+			'wgGEMentorshipAutomaticEligibility' => false,
+		] );
 		$user = $this->getTestUser()->getUser();
 		$this->executeSpecialPage( '', null, null, $user );
 	}

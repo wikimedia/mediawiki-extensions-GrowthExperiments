@@ -10,6 +10,7 @@ use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\EventLogging\SpecialEditGrowthConfigLogger;
 use GrowthExperiments\HomepageModules\Banner;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -358,20 +359,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				],
 				'section' => 'mentorship',
 			],
-			'geconfig-GEHomepageMentorsList' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors',
-				'required' => false,
-				'section' => 'mentorship',
-			],
-			'geconfig-GEHomepageManualAssignmentMentorsList' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors',
-				'required' => false,
-				'section' => 'mentorship',
-			],
 
 			// Description for suggested edits config
 			'newcomertasks-section-description' => [
@@ -395,6 +382,47 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'section' => 'newcomertasks',
 			]
 		] );
+
+		if ( $this->getConfig()->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_WIKITEXT ) {
+			$descriptors = array_merge( $descriptors, [
+				'geconfig-GEHomepageMentorsList' => [
+					'type' => 'title',
+					'exists' => true,
+					'label-message' => 'growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors',
+					'required' => false,
+					'section' => 'mentorship',
+				],
+				'geconfig-GEHomepageManualAssignmentMentorsList' => [
+					'type' => 'title',
+					'exists' => true,
+					'label-message' => 'growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors',
+					'required' => false,
+					'section' => 'mentorship',
+				],
+			] );
+		} elseif ( $this->getConfig()->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_STRUCTURED ) {
+			$descriptors = array_merge( $descriptors, [
+				'geconfig-GEMentorshipAutomaticEligibility' => [
+					'type' => 'radio',
+					'label-message' => 'growthexperiments-edit-config-mentorship-automatic-eligibility',
+					'options-messages' => [
+						'growthexperiments-edit-config-mentorship-automatic-eligibility-true' => 'true',
+						'growthexperiments-edit-config-mentorship-automatic-eligibility-false' => 'false',
+					],
+					'section' => 'mentorship',
+				],
+				'geconfig-GEMentorshipMinimumAge' => [
+					'type' => 'int',
+					'label-message' => 'growthexperiments-edit-config-mentorship-minimum-age',
+					'section' => 'mentorship',
+				],
+				'geconfig-GEMentorshipMinimumEditcount' => [
+					'type' => 'int',
+					'label-message' => 'growthexperiments-edit-config-mentorship-minimum-editcount',
+					'section' => 'mentorship',
+				],
+			] );
+		}
 
 		// Add fields for suggested edits config (stored in MediaWiki:NewcomerTasks.json)
 		foreach ( $this->getDefaultDataForEnabledTaskTypes() as $taskType => $taskTypeData ) {

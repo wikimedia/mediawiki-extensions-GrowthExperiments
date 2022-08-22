@@ -71,6 +71,15 @@ class GrowthConfigValidation implements IConfigValidator {
 			'GECampaignTopics' => [
 				'type' => 'array',
 			],
+			'GEMentorshipAutomaticEligibility' => [
+				'type' => 'bool',
+			],
+			'GEMentorshipMinimumAge' => [
+				'type' => 'int',
+			],
+			'GEMentorshipMinimumEditcount' => [
+				'type' => 'int',
+			]
 		];
 	}
 
