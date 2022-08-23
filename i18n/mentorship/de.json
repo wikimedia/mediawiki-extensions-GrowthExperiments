@@ -129,7 +129,7 @@
 	"growthexperiments-manage-mentors-last-active": "Zuletzt aktiv",
 	"growthexperiments-manage-mentors-intro-msg": "Nachricht für Neueinsteiger",
 	"growthexperiments-manage-mentors-remove-mentor": "Entfernen",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Du}} bist dabei, [[User:$1]] als {{GENDER:$1|Lotsen|Lotsin}} zu entfernen.",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Du}} bist dabei, [[User:$1|$1]] als {{GENDER:$1|Lotsen|Lotsin}} zu entfernen.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Grund für die Entfernung des Lotsen",
 	"growthexperiments-manage-mentors-remove-mentor-success": "[[User:$1|$1]] ist nicht länger {{GENDER:$1|ein Lotsen|eine Lotsin}}.",
 	"growthexperiments-manage-mentors-return-back": "Du kannst zur Liste der Mentoren [[Special:ManageMentors|zurückkehren]].",
