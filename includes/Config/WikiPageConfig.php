@@ -97,7 +97,7 @@ class WikiPageConfig implements Config, IDBAccessObject {
 			$this->logger->error(
 				__METHOD__ . ' failed to load config from wiki: {error}',
 				[
-					'error' => \Status::wrap( $res )->getWikiText( false, false, 'en' ),
+					'error' => (string)$res,
 					'impact' => 'Config stored in MediaWiki:GrowthExperimentsConfig.json ' .
 						'is ignored, using sane fallbacks instead'
 				]
