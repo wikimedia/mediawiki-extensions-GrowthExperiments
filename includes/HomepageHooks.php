@@ -48,7 +48,6 @@ use IContextSource;
 use IDBAccessObject;
 use JobQueueGroup;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
-use MediaWiki\Cache\Hook\MessageCache__getHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Content\Hook\SearchDataForIndexHook;
@@ -105,7 +104,6 @@ class HomepageHooks implements
 	SkinTemplateNavigation__UniversalHook,
 	SidebarBeforeOutputHook,
 	PersonalUrlsHook,
-	MessageCache__getHook,
 	GetPreferencesHook,
 	UserGetDefaultOptionsHook,
 	ResourceLoaderExcludeUserOptionsHook,
@@ -593,24 +591,6 @@ class HomepageHooks implements
 			unset( $personal_urls['userpage']['link-class'] );
 			// Remove the "this page doesn't exist" part of the tooltip
 			$personal_urls['userpage' ]['exists'] = true;
-		}
-	}
-
-	/**
-	 * Change the tooltip of the userpage link when it point to Special:Homepage
-	 *
-	 * @param string &$lcKey message key to check and possibly convert
-	 * @throws ConfigException
-	 */
-	public function onMessageCache__get( &$lcKey ) {
-		// Optimisation: There are 1000s of messages, limit cost for each one (T302623)
-		if ( $lcKey === 'tooltip-pt-userpage' ) {
-			$user = RequestContext::getMain()->getUser();
-			if ( self::isHomepageEnabled( $user ) &&
-				$this->userHasPersonalToolsPrefEnabled( $user )
-			) {
-				$lcKey = 'tooltip-pt-homepage';
-			}
 		}
 	}
 
