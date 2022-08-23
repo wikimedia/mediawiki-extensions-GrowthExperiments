@@ -12,7 +12,9 @@
 			"魔琴",
 			"SunAfterRain",
 			"Winston Sung",
-			"列维劳德"
+			"列维劳德",
+			"BlackShadowG",
+			"Ericliu1912"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "啟用編輯者協助面板",
@@ -112,9 +114,9 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "當{{GENDER:|您}}做完擴充條目後，請接著輕觸藍色箭頭按鈕來儲存{{GENDER:|您的}}編輯！",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|了解更多關於擴充條目]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "添加連結將幫助人們更快地學習。",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|您}}將決定一篇{{SITENAME}}文章中的詞是否應該連結到其他{{SITENAME}}文章。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|您}}將決定一篇{{SITENAME}}條目中的詞是否應該連結到其他{{SITENAME}}的條目。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "月亮是唯一一個<mark class=\"positive\">天然衛星</mark>，它的<mark class=\"positive\">軌道</mark>圍繞<mark class=\"positive\">地球</mark>。",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "完成此任務不需要關於文章的特殊知識。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "完成此任務不需要關於條目的特別知識。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "建議的連結是機器生成的，可能不正確。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "建議可能是關於不需要它們的詞，或者可能連結到錯誤的條目。用{{GENDER:$1|您}}的判斷來決定它們是對還是錯。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|了解有關機器建議的更多資訊]]",

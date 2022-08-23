@@ -5,7 +5,8 @@
 			"Mardetanha",
 			"Mohammad ebz",
 			"Reza1615",
-			"Beginneruser"
+			"Beginneruser",
+			"Mojtabakd"
 		]
 	},
 	"growthexperiments-desc": "این افزونه شامل تجربیاتی است که توسط تیم رشد انجام شده.",
@@ -61,7 +62,7 @@
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "صفحهٔ حاوی فهرستی از مربی‌هایی برای اختصاص خودکار به تازه‌واردان",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "صفحهٔ حاوی فهرستی از مربی‌هایی که تنها به‌صورت دستی اختصاص داده می‌شوند",
 	"growthexperiments-edit-config-newcomertasks": "ویرایش‌های پیشنهادی",
-	"growthexperiments-edit-config-newcomer-tasks-description": "برخی از اتواع ویرایش‌های پیشنهادی از طریق الگوهای نگهداری پیشنهاد می‌شوند. مقاله‌هایی که حاوی این الگوها باشند به خوراک افزوده می‌شوند. برای آگاهی از تعداد مقاله‌هایی که برای هر وظیفه در دسترس هستند، [[Special:NewcomerTasksInfo|این صفحه]] را ببینید.",
+	"growthexperiments-edit-config-newcomer-tasks-description": "برخی از انواع ویرایش‌های پیشنهادی از طریق الگوهای نگهداری پیشنهاد می‌شوند. مقاله‌هایی که حاوی این الگوها باشند به خوراک افزوده می‌شوند. برای آگاهی از تعداد مقاله‌هایی که برای هر وظیفه در دسترس هستند، [[Special:NewcomerTasksInfo|این صفحه]] را ببینید.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "بازخوانی: الگوهای مورد استفاده برای یافتن مقاله‌هایی که نیازمند ویراستاری جزئی مانند اصلاح املاء، انشاء و بهبود سجاوندی هستند.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "صفحهٔ هدف برای کسب اطلاعات بیشتر پیرامون ویراستاری.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "گسترش: الگوهای مورد استفاده برای یافتن مقاله‌هایی نیازمند گسترش.",

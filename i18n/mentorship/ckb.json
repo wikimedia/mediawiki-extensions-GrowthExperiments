@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"GoRaN",
-			"ئارام بکر"
+			"ئارام بکر",
+			"Amire80",
+			"Aram"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "داشبۆردی مامۆستا",
@@ -12,6 +14,7 @@
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "پێش ئەوەی داشبۆردی مامۆستا بەکاربھێندرێت، سەرەتا پێویستە پێڕستی مامۆستا ڕێک بخرێت. بۆ ئەو مەبەستە بەڕێوەبەرێک دەتوانێت [[Special:EditGrowthConfig]] بەکاربێنێت.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|قوتابییەکانت}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "لەخوارەوە {{GENDER:|قوتابییەکانت}} ببینە. بۆ گۆڕینی ئەو قوتابییانەی کە پیشان دراون پاڵێوەرەکان بەکاربێنە.",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "خشتەکە پێویستی بە جاڤاسکریپتە. تکایە جاڤاسکریپت چالاک بکە تا توانای بەکارھێنانی ئەم یەکەیەت ھەبێت.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "کێ لە خشتەکەتدایە؟",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "ھێماکان",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "قوتابییە دیاریکراوەکان",

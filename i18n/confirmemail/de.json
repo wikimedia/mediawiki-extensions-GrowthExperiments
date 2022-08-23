@@ -5,13 +5,14 @@
 			"Reinhard Kraasch",
 			"Umherirrender",
 			"Tkarcher",
-			"Brettchenweber"
+			"Brettchenweber",
+			"Wnme"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|Was ist das?]])",
 	"growthexperiments-confirmemail-emailhelp": "Es ist eine E-Mail-Adresse erforderlich, um dein Benutzerkonto wiederherzustellen, falls du dein Passwort verlieren solltest.",
 	"growthexperiments-confirmemail-emailrecommended": "E-Mail-Adresse (empfohlen)",
-	"growthexperiments-confirmemail-emailwarning": "Sieh bitte nach einer E-Mail von uns, um deine Adresse zu verifizieren.",
+	"growthexperiments-confirmemail-emailwarning": "Überprüfe bitte, ob du eine E-Mail von uns erhalten hast, um deine Adresse zu verifizieren.",
 	"growthexperiments-confirmemail-confirm-subject": "Willkommen bei {{SITENAME}}: Bestätige bitte deine E-Mail-Adresse",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hi}} $2,\n\ndanke, dass du eine E-Mail-Adresse zu deinem {{SITENAME}}-Benutzerkonto hinzugefügt hat, ausgelöst durch IP-Adresse $1.\n\nBitte klicke den unteren Link an, um zu bestätigen, dass du die E-Mail-Adresse mit dem Benutzerkonto „$2“ verknüpfen möchtest:\n\n$3\n\nHinweis: Dieser Bestätigungscode ist <strong>gültig bis $4</strong>\n\nDanke,\n{{SITENAME}}\n\n----\n\nUm die E-Mail-Bestätigung abzubrechen (weil du nicht dieses Benutzerkonto registriert hast oder aus anderen Gründen), klicke auf diesen Abbruch-Link:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "E-Mail-Adresse bestätigen",

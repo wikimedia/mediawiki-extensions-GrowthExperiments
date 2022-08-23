@@ -46,5 +46,9 @@
 	"growthexperiments-rcfilters-mentorship-starred-desc": "თქვენი მოწაფეები, რომლებიც თქვენს მენტორის დაფაზე ვარსკვლავებით მონიშნეთ",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "თქვენი უვარსკვლავო მოწაფეები",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "თქვენი სხვა მოწაფეები",
-	"growthexperiments-quit-mentorship-title": "მენტორობის შეწყვეტა"
+	"growthexperiments-quit-mentorship-title": "მენტორობის შეწყვეტა",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "სამწუხაროა, რომ მიდიხართ. მენტორობიდან გამოსვლის პროცესის დასაწყებად, ჯერ თქვენი სახელი უნდა ამოიღოთ [[$1|მენტორების სიიდან]]. როგორც კი ამას გააკეთებთ, გთხოვთ დაბრუნდეთ ამ გვერდზე.",
+	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "მენტორობიდან გამოსვლის შემდეგი ნაბიჯი არის თქვენი მოწაფეების გადანაწილება. თუ დარწმუნებული ხართ, რომ გსურთ გამოსვლა, გთხოვთ, დააჭიროთ ქვემოთ მოცემულ ღილაკს.",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "დიახ, გადაანაწილეთ ჩემი მოწაფეები",
+	"growthexperiments-quit-mentorship-success": "თქვენი მოწაფეები მალე გადანაწილდებიან სხვა მენტორებზე."
 }
