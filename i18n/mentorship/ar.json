@@ -130,7 +130,7 @@
 	"growthexperiments-manage-mentors-last-active": "آخر نشاط",
 	"growthexperiments-manage-mentors-intro-msg": "رسالة إلى الوافدين الجدد",
 	"growthexperiments-manage-mentors-remove-mentor": "إزالة",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|ستُقدم|ستُقدمين}} على إزالة [[User:$1]] كـ{{GENDER:$1|مرشد|مرشدة}}.",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|ستُقدم|ستُقدمين}} على إزالة [[User:$1|$1]] كـ{{GENDER:$1|مرشد|مرشدة}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "سبب إزالة المرشد",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|المستخدم|المستخدمة}} [[User:$1|$1]] لم {{GENDER:$1|يعد متاحاً كمرشد|تعد متاحة كمرشدة}}.",
 	"growthexperiments-manage-mentors-return-back": "بالإمكان [[Special:ManageMentors|العودة]] إلى قائمة المرشدين",

@@ -15,11 +15,13 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Olá}} $2,\n\nObrigado por ter adicionado um endereço à sua conta na wiki {{SITENAME}}, registada do endereço IP $1.\n\nClique a hiperligação abaixo, por favor, para confirmar este endereço de correio eletrónico como aquele que gostaria de associar à sua conta \"$2\":\n\n$3\n\nNota: este código de confirmação expira em $4.\n\nObrigado,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmação do endereço de correio eletrónico (porque não registou a conta, ou por qualquer outra razão) clique esta hiperligação de cancelamento:\n\n$5",
 	"growthexperiments-signupcampaign-title": "Obrigado pelo donativo. Agora junte-se à comunidade de editores que estão a melhorar a Wikipédia hoje.",
 	"growthexperiments-signupcampaign-body": "Editar a Wikipédia pode ser tão simples como adicionar uma hiperligação ou alterar uma palavra. Obtenha sugestões de artigos enquadrados nas {{GENDER:|suas}} áreas de interesse após criar uma conta!",
-	"growthexperiments-marketingvideocampaign-title": "Obrigado pelo donativo. Agora junte-se à comunidade de editores que estão a melhorar a Wikipédia hoje.",
-	"growthexperiments-marketingvideocampaign-body": "Editar a Wikipédia pode ser tão simples como adicionar uma hiperligação ou alterar uma palavra. Obtenha sugestões de artigos enquadrados nas suas áreas de interesse depois de criar a sua conta!",
+	"growthexperiments-marketingvideocampaign-title": "A Wikipédia é construída por pessoas como você",
+	"growthexperiments-marketingvideocampaign-body": "280 000 editores voluntariam-se todos os meses - quer juntar-se a eles?\n\nNós sabemos que fazer a sua primeira edição é muitas vezes intimidante, mas na verdade é bastante fácil. Basta perguntar aos nossos editores dedicados, que o descrevem neste vídeo:",
+	"growthexperiments-marketingvideocampaign-body-mobile": "Milhares de pessoas como você estão a construir a Wikipédia. Quer juntar-se a elas?",
 	"growthexperiments-signupcampaign-bullet1": "Artigos sugeridos que correspondem aos {{GENDER:|seus}} interesses",
 	"growthexperiments-signupcampaign-bullet2": "Pedir ajuda a um editor experiente",
 	"growthexperiments-signupcampaign-bullet3": "Comece com edições pequenas e fáceis",
 	"growthexperiments-josacampaign-title": "Bem-vindo à celebração do aniversário da Wikipédia!\n\nQuando tiver criado a sua conta pode começar a contribuir na enciclopédia.",
-	"growthexperiments-josacampaign-body": "Este evento é organizado pela Associação Jordana de Fonte Livre e pela Wikimedia no Levante para familiarizá-lo com a Wikipédia e como participar nela.\n\nPara começar a contribuir só precisa de preencher este formulário e escolher uma tarefa para executar.\n\nSe precisar de ajuda solicite-a aos organizadores do evento, por favor."
+	"growthexperiments-josacampaign-body": "Este evento é organizado pela Associação Jordana de Fonte Livre e pela Wikimedia no Levante para familiarizá-lo com a Wikipédia e como participar nela.\n\nPara começar a contribuir só precisa de preencher este formulário e escolher uma tarefa para executar.\n\nSe precisar de ajuda solicite-a aos organizadores do evento, por favor.",
+	"growthexperiments-campaigns-footer": "Ao criar a sua conta nesta página, a conta será associada a esta campanha para fins relacionados com experiência e análise.{{GENDER:|}}"
 }

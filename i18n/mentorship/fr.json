@@ -130,7 +130,7 @@
 	"growthexperiments-manage-mentors-last-active": "Dernière activité",
 	"growthexperiments-manage-mentors-intro-msg": "Message pour les apprentis",
 	"growthexperiments-manage-mentors-remove-mentor": "Enlever",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|}}Vous allez retirer [[User:$1]] en tant que tut{{GENDER:$1|eur|rice}}.",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|}}Vous allez retirer [[User:$1|$1]] en tant que tut{{GENDER:$1|eur|rice}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Motif du retrait du tuteur ou de la tutrice",
 	"growthexperiments-manage-mentors-remove-mentor-success": "L’utilisat{{GENDER:$1|eur|rice}} [[User:$1|$1]] n’est plus une tut{{GENDER:$1|eur|rice}}.",
 	"growthexperiments-manage-mentors-return-back": "Vous pouvez [[Special:ManageMentors|revenir]] à la liste des tuteurs.",

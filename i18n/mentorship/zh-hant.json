@@ -133,7 +133,7 @@
 	"growthexperiments-manage-mentors-last-active": "最近活動",
 	"growthexperiments-manage-mentors-intro-msg": "給新手的訊息",
 	"growthexperiments-manage-mentors-remove-mentor": "移除",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|您}}即將移除[[User:$1]]的導師身份。",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|您}}即將移除[[User:$1|$1]]的導師身份。",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "移除該導師的原因",
 	"growthexperiments-manage-mentors-remove-mentor-success": "使用者[[User:$1|$1]]不再是一名{{GENDER:$1|導師}}。",
 	"growthexperiments-manage-mentors-return-back": "您可[[Special:ManageMentors|返回]]導師列表。",
