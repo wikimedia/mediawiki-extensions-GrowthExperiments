@@ -258,6 +258,8 @@
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "لیستی مامۆستاکان بەخراپی ڕێکخراوە.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "لیستی مامۆستاکان ([[$1]]) بوونی نییە یانیش بە خراپی ڕێکخراوە.",
 	"growthexperiments-notification-learn-more": "زیاتر بزانە دەربارەی {{GENDER:$2|مامۆستایە}} نوێیەکەی {{GENDER:$1|تۆ}}.",
+	"right-setmentor": "مامۆستای بەکارھێنەر دانێ",
+	"action-setmentor": "مامۆستای بەکارھێنەر دانێ",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "زیاتر دەربارەی ئەم دەستکارییە پێشنیارکراوە",
 	"growthexperiments-homepage-suggestededits-more-info": "زانیاریی زیاتر دەربارەی دەستکارییە پێشنیارکراوەکان",
 	"growthexperiments-homepage-welcome-notice-header": "بەخێر بێیت بۆ {{GENDER:$1|پەڕەی سەرەکیت}}!",

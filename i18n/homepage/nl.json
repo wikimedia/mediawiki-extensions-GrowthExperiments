@@ -332,6 +332,7 @@
 	"growthexperiments-addlink-context-button-reject": "Nee",
 	"growthexperiments-addlink-context-button-help": "Krijg hulp bij bewerken",
 	"growthexperiments-addlink-context-button-next": "Volgende",
+	"growthexperiments-addlink-context-button-show-suggestion": "Toon afbeeldingssuggestie",
 	"growthexperiments-addlink-rejectiondialog-title": "Waarom is dit geen goede link?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Je}} antwoorden verbeteren toekomstige suggesties.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Bijna iedereen weet wat het is",
