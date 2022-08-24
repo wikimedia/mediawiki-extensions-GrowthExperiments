@@ -179,8 +179,13 @@ class VariantHooks implements
 			// from the user's preferences, as it's not allowed.
 			return $campaignFromRequestQueryParameter;
 		}
+
+		$user = $context->getUser();
+		if ( !$user->isSafeToLoad() ) {
+			return $campaignFromRequestQueryParameter;
+		}
 		return MediaWikiServices::getInstance()->getUserOptionsLookup()->getOption(
-			$context->getUser(), self::GROWTH_CAMPAIGN,
+			$user, self::GROWTH_CAMPAIGN,
 			$campaignFromRequestQueryParameter
 		);
 	}
