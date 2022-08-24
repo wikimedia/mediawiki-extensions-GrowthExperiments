@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"GoRaN",
-			"ئارام بکر"
+			"ئارام بکر",
+			"Amire80",
+			"Aram"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "داشبۆردی مامۆستا",
@@ -12,6 +14,7 @@
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "پێش ئەوەی داشبۆردی مامۆستا بەکاربھێندرێت، سەرەتا پێویستە پێڕستی مامۆستا ڕێک بخرێت. بۆ ئەو مەبەستە بەڕێوەبەرێک دەتوانێت [[Special:EditGrowthConfig]] بەکاربێنێت.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|قوتابییەکانت}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "لەخوارەوە {{GENDER:|قوتابییەکانت}} ببینە. بۆ گۆڕینی ئەو قوتابییانەی کە پیشان دراون پاڵێوەرەکان بەکاربێنە.",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "خشتەکە پێویستی بە جاڤاسکریپتە. تکایە جاڤاسکریپت چالاک بکە تا توانای بەکارھێنانی ئەم یەکەیەت ھەبێت.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "کێ لە خشتەکەتدایە؟",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "ئەم خشتەیە ئەو قوتابییانەت پیشان دەدات کە ھەژمارەکانیان لەم دوو ھەفتەیەی ڕابردوو دروست کراون یان ئەو ئەوانەی کە لە شەش مانگی ڕابردوو دەستکارییان کردووە، و [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|پەڕەی سەرەکیی تازەکاریان چالاک کردووە]]. زانیارییەکان ھەر سێ سەعات جارێک نوێ دەکرێنەوە.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "ھێماکان",
@@ -45,11 +48,17 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "چۆنیەتیی داواکردنی قوتابییەک",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "ئامرازەکانی گەشە",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "ڕێکخستنەکان",
+	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "زانیاریی مامۆستایەتی",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "حاڵەتی مامۆستا",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "چالاک",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "نائامادە",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "لەبەرئەوەی تا $1 لێرە دوور دەکەویتەوە، قوتابییەکانت بە شێوەیەکی کاتی دەسپێردرێنە مامۆستایەکی تر.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "خۆت وەک «نائامادە» دانێ",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "ھەڵوەشاندنەوە",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "ڕاگرتن",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "بۆ ماوەی چەندێک دەڕۆیت:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ڕۆژ",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "پەیام بۆ قوتابییەکانت",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "داوای قوتابی بکە",
 	"growthexperiments-rcfilters-mentorship-title": "مامۆستایی",
 	"growthexperiments-rcfilters-mentorship-starred-label": "ئەو قوتابییانەت کە بە ئەستێرە نەخشێندراون",
@@ -62,5 +71,11 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 لە مامۆستایی {{GENDER:$1|خانەنشین}} بوو.",
 	"echo-category-title-ge-mentorship": "مامۆستایی",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|قوتابییەکەت}}، $3، لەلایەن $1 {{GENDER:$2|داوا کرا}}.",
-	"growthexperiments-notification-body-mentee-claimed": "ھۆکار: $1"
+	"growthexperiments-notification-body-mentee-claimed": "ھۆکار: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "ژمارەی ئەو قوتابییانەی کە بە من سپێردراون",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "نزیکەی نیوەی تێکڕاکە",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "تێکڕا (بنچینەیی)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "نزیکەی دووئەوەندەی تێکڕاکە",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "کە ھەژماری قوتابییەکان دروست کران، بە شێوەیەکی ھەڕەمەکی دەدرێنە مامۆستاکان. دەتوانی ڕێژەی ئەو قوتابییانەی پێت دەدرێ بەڕێوە ببەیت، بەڵام لەوانەیە ھەندێ قوتابی زۆر زیاتر لە ھەندێکی تر پرسیار بکەن.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "پێشنیار کراوە کە بە ڕێکخستنی «تێکڕا» دەست پێ بکەیت بەر لە زیادکردن یان کەمکردن تا ئەندازەی توانای خۆت بزانیت."
 }

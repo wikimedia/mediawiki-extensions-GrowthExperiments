@@ -3,7 +3,8 @@
 		"authors": [
 			"ANukuma",
 			"Daud I.F. Argana",
-			"PutriAmalia1991"
+			"PutriAmalia1991",
+			"Veracious"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Dasbor pembimbing",
@@ -11,6 +12,7 @@
 	"growthexperiments-mentor-dashboard-disabled": "Dasbor pembimbing tidak diaktifkan di wiki ini.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Bimbingan {{GENDER:|Anda}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Siapakah yang ada di tabel Anda?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nama pengguna",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Jumlah suntingan yang dikembalikan",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Jumlah pemblokiran",

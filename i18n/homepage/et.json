@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pikne"
+			"Pikne",
+			"Kareyac"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Tere}}, {{bidi:$1}}!",
@@ -267,5 +268,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Režiimi vahetamine võimaldab {{GENDER:$1|teha}} teistsuguseid muudatusi. Selleks tuleb ülevaatus lõpetada ja seni üle vaadatud soovitused ära saata.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Vaheta ilma saatmata",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Loobu",
-	"growthexperiments-addlink-suggestions-outdated": "Teine kasutaja muutis lehekülge samal ajal, kui seda üle vaatasid ning sinu muudatusi ei õnnestunud avaldada."
+	"growthexperiments-addlink-suggestions-outdated": "Teine kasutaja muutis lehekülge samal ajal, kui seda üle vaatasid ning sinu muudatusi ei õnnestunud avaldada.",
+	"growthexperiments-addimage-inspector-yes-button": "Jah"
 }

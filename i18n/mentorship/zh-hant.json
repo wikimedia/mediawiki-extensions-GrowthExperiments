@@ -7,7 +7,8 @@
 			"Winston Sung",
 			"Xiplus",
 			"范",
-			"魔琴"
+			"魔琴",
+			"BlackShadowG"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "導師面板",
@@ -96,5 +97,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|您的}}負擔已變更為「$1」。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "建立帳戶時，學員會被隨機分配給導師。您可以控制分配給您的學員的數量，不過某些學員相比其他人會更為活躍地發問。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "推薦您先選擇「平均」，以便評估您指導學員的能力，然後再增加或減少分配給您的學員。",
-	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code>應該是<code>$2</code>，但是<code>$3</code>"
+	"growthexperiments-mentor-list-missing-key": "缺少屬性 <code>$1</code>",
+	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code>應該是<code>$2</code>，但是<code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "導師定義裡包含有非預期屬性 <code>$1</code>"
 }
