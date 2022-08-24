@@ -17,6 +17,7 @@ class HomepagePage extends Page {
 	get suggestedEditsNextButton() { return $( '.suggested-edits-next' ); }
 	get newcomerTaskArticleEditButton() { return $( '#ca-ve-edit' ); }
 	get newcomerTaskArticleSaveButton() { return $( '.ve-ui-mwSaveDialog .oo-ui-processDialog-actions-primary' ); }
+	get helpPanelCloseButton() { return $( '.mw-ge-help-panel-processdialog .oo-ui-processDialog-actions-primary .oo-ui-buttonElement-button' ); }
 	get savePageDots() { return $( '.ve-ui-toolbar-saveButton' ); }
 	get articleBodyContent() { return $( '.mw-body-content.ve-ui-surface' ); }
 	get postEditDialog() { return $( '.mw-ge-postEditDrawer' ); }
@@ -42,10 +43,19 @@ class HomepagePage extends Page {
 		return result;
 	}
 
-	async editAndSaveArticle( textToAppend ) {
+	/**
+	 * @param {string} textToAppend The contents to add to the body of the article being edited.
+	 * @param {boolean} closeHelpPanel Whether the help panel should be closed before attempting
+	 *   to click Edit.
+	 * @return {Promise<void>}
+	 */
+	async editAndSaveArticle( textToAppend, closeHelpPanel = false ) {
 		await Util.waitForModuleState( 'ext.visualEditor.desktopArticleTarget', 'registered' );
-		await this.newcomerTaskArticleEditButton.waitForExist();
-		await this.newcomerTaskArticleEditButton.waitForClickable();
+		if ( closeHelpPanel ) {
+			await this.waitForDisplayedAndClickable( this.helpPanelCloseButton );
+			await this.helpPanelCloseButton.click();
+		}
+		await this.waitForDisplayedAndClickable( this.newcomerTaskArticleEditButton );
 		await this.newcomerTaskArticleEditButton.click();
 		await Util.waitForModuleState( 'ext.visualEditor.desktopArticleTarget', 'ready' );
 		try {
@@ -94,6 +104,7 @@ class HomepagePage extends Page {
 	}
 
 	async waitForDisplayedAndClickable( element ) {
+		await element.waitForExist( { timeout: 30000 } );
 		await element.waitForDisplayed( { timeout: 30000 } );
 		await element.waitForClickable( { timeout: 30000 } );
 	}
