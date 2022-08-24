@@ -51,6 +51,7 @@ use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
+use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -309,6 +310,10 @@ class GrowthExperimentsServices {
 
 	public function getImageRecommendationApiHandler(): ImageRecommendationApiHandler {
 		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationApiHandler' );
+	}
+
+	public function getUserImpactLookup(): UserImpactLookup {
+		return $this->coreServices->get( 'GrowthExperimentsUserImpactLookup' );
 	}
 
 }

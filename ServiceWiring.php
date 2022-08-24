@@ -83,6 +83,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
+use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
+use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\EventBus\EventBusFactory;
@@ -928,6 +930,14 @@ return [
 			$services->getPerDbNameStatsdDataFactory(),
 			$services->getRevisionLookup(),
 			$services->getDBLoadBalancer()
+		);
+	},
+
+	'GrowthExperimentsUserImpactLookup' => static function (
+		MediaWikiServices $services
+	): UserImpactLookup {
+		return new SubpageUserImpactLookup(
+			$services->getWikiPageFactory()
 		);
 	},
 

@@ -199,6 +199,14 @@
 			"services": [
 				"GrowthExperimentsNewcomerTasksChangeTagsManager"
 			]
+		},
+		{
+			"path": "/growthexperiments/v0/user-impact/{user}",
+			"method": "GET",
+			"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
+			"services": [
+				"GrowthExperimentsUserImpactLookup"
+			]
 		}
 	],
 	"callback": "GrowthExperiments\\GrowthHooks::onRegistration",
