@@ -18,7 +18,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Таблиця вимагає JavaScript. Будь ласка, увімкніть JavaScript, щоб могти користуватися цим модулем.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Хто у {{GENDER:|вашій}} таблиці?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Більше інформації про те, хто в {{GENDER:|вашій}} таблиці",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "У цій таблиці наведено лише {{GENDER:|ваших}} підопічних, чий обліковий запис створено упродовж останніх двох тижнів або які редагували упродовж останніх шести місяців й [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|увімкнули домашню сторінку]]. Дані оновлюються кожні три години.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "У цій таблиці наведено {{GENDER:|ваших}} підопічних, чий обліковий запис створено упродовж останніх двох тижнів або які редагували упродовж останніх шести місяців й [[:mw:Special:MyLanguage/Growth/Feature_summary#NH увімкнули домашню сторінку]]. Дані оновлюються кожні три години.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Легенда",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Позначити підопічних",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Ім'я користувача",

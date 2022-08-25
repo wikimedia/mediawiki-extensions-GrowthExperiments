@@ -16,6 +16,9 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Neuvontapiste",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Kyllä",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Ei",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Kyllä, salli käyttäjien ilmoittautua mentoriksi, kun he täyttävät kaikki alla olevat kelpoisuusvaatimukset.",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Ei, älä salli kenenkään ilmoittautua mentoriksi.",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "Vähimmäismuokkasmäärä, joka muokkaajilla täytyy olla ennen mentorointia.",
 	"growthexperiments-edit-config-newcomertasks": "Ehdotetut muokkaukset",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Poistettu käytöstä",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Tietolaatikkomallineet"
