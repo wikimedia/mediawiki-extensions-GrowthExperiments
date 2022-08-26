@@ -343,7 +343,8 @@
 			"helppanel",
 			"homepage",
 			"mentor",
-			"variant"
+			"variant",
+			"welcomeSurvey"
 		],
 		"GetPreferences": [
 			"welcomeSurvey",

@@ -4,11 +4,13 @@
 namespace GrowthExperiments;
 
 use Config;
+use DerivativeContext;
 use ExtensionRegistry;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use IContextSource;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Hook\PostLoginRedirectHook;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
@@ -20,8 +22,9 @@ use SpecialUserLogin;
 use User;
 
 class WelcomeSurveyHooks implements
-	PostLoginRedirectHook,
 	GetPreferencesHook,
+	LocalUserCreatedHook,
+	PostLoginRedirectHook,
 	SpecialPage_initListHook,
 	SpecialPageBeforeExecuteHook
 {
@@ -107,6 +110,18 @@ class WelcomeSurveyHooks implements
 	}
 
 	/** @inheritDoc */
+	public function onLocalUserCreated( $user, $autocreated ) {
+		$context = new DerivativeContext( RequestContext::getMain() );
+		$context->setUser( $user );
+		if ( $autocreated || !$this->shouldShowWelcomeSurvey( $context ) ) {
+			return;
+		}
+		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $context );
+		$group = $welcomeSurvey->getGroup();
+		$welcomeSurvey->saveGroup( $group );
+	}
+
+	/** @inheritDoc */
 	public function onCentralAuthPostLoginRedirect(
 		string &$returnTo, string &$returnToQuery, bool $stickHTTPS, string $type, string &$injectedHtml
 	) {
@@ -120,10 +135,17 @@ class WelcomeSurveyHooks implements
 		$oldReturnTo = $returnTo;
 		$oldReturnToQuery = $returnToQuery;
 		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $context );
-		$group  = $welcomeSurvey->getGroup();
-		$welcomeSurvey->saveGroup( $group );
+		$group = $welcomeSurvey->getGroup();
+		if ( $group === false ) {
+			return;
+		}
+		$returnToQueryArray = $welcomeSurvey->getRedirectUrlQuery( $group, $oldReturnTo, $oldReturnToQuery );
+		if ( $returnToQueryArray === false ) {
+			return;
+		}
+
 		$returnTo = $this->specialPageFactory->getTitleForAlias( 'WelcomeSurvey' )->getPrefixedText();
-		$returnToQuery = wfArrayToCgi( $welcomeSurvey->getRedirectUrlQuery( $group, $oldReturnTo, $oldReturnToQuery ) );
+		$returnToQuery = wfArrayToCgi( $returnToQueryArray );
 		$injectedHtml = '';
 		return false;
 	}
