@@ -6,6 +6,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWikiIntegrationTestCase;
 use User;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @group Database
@@ -52,8 +53,11 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 			'wgGEMentorshipMinimumAge' => $minAge,
 			'wgGEMentorshipMinimumEditcount' => $minEditcount
 		] );
+		// Pin time to avoid failure when next second starts - T316154
+		$now = strtotime( '2011-04-01T12:00Z' );
+		ConvertibleTimestamp::setFakeTime( $now );
 
-		$minAcceptableRegistration = time() - $minAge * ExpirationAwareness::TTL_DAY;
+		$minAcceptableRegistration = $now - $minAge * ExpirationAwareness::TTL_DAY;
 		$notEligibleByAgeUser = $this->getUserByRegistrationAndEditcount(
 			$minAcceptableRegistration + 1,
 			$minEditcount

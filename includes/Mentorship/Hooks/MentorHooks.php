@@ -27,6 +27,7 @@ use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Psr\Log\LogLevel;
 use Throwable;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class MentorHooks implements
 	SpecialPage_initListHook,
@@ -239,7 +240,8 @@ class MentorHooks implements
 			return;
 		}
 
-		$userAge = time() - (int)wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
+		// ConvertibleTimestamp::time() used so we can fake the current time in tests
+		$userAge = ConvertibleTimestamp::time() - (int)wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
 		if (
 			$userAge >= $this->wikiConfig->get( 'GEMentorshipMinimumAge' ) * ExpirationAwareness::TTL_DAY &&
 			$user->getEditCount() >= $this->wikiConfig->get( 'GEMentorshipMinimumEditcount' )
