@@ -175,8 +175,8 @@ describe( 'MenteeOverview', () => {
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 1 );
 		const noResults = wrapper.findComponent( NoResults );
 		expect( noResults.attributes( 'text' ) )
-			.toContain( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline' );
+			.toContain( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline' );
 		expect( noResults.attributes( 'description' ) )
-			.toContain( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text' );
+			.toContain( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text' );
 	} );
 } );

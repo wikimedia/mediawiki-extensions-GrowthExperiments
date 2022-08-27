@@ -25,11 +25,20 @@
 			@update:sorting="updateSorting"
 		></data-table>
 		<no-results
-			v-else-if="menteesDataReady"
+			v-else-if="menteesDataReady && doesFilterOutMentees"
 			class="ext-growthExperiments-MenteeOverview__no-results"
+			:icon="cdxIconError"
 			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline' )"
 			:icon-label="$i18n( 'tbd-no-results' )"
 			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text' )"
+		></no-results>
+		<no-results
+			v-else-if="menteesDataReady && !doesFilterOutMentees"
+			class="ext-growthExperiments-MenteeOverview__no-results"
+			:icon="cdxIconClock"
+			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline' )"
+			:icon-label="$i18n( 'tbd-no-results' )"
+			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text' )"
 		></no-results>
 	</section>
 </template>
@@ -40,6 +49,7 @@ const MenteeSearch = require( './MenteeSearch.vue' );
 const MenteeFilters = require( './MenteeFilters.vue' );
 const NoResults = require( './NoResults.vue' );
 const InfoBox = require( './InfoBox.vue' );
+const { cdxIconError, cdxIconClock } = require( '../icons.json' );
 const MenteeOverviewApi = require( '../../../ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js' );
 const apiClient = new MenteeOverviewApi();
 
@@ -131,6 +141,12 @@ module.exports = exports = {
 		NoResults,
 		InfoBox
 	},
+	setup() {
+		return {
+			cdxIconError,
+			cdxIconClock
+		};
+	},
 	data() {
 		return {
 			currentPage: 1,
@@ -190,6 +206,9 @@ module.exports = exports = {
 		},
 		hasData() {
 			return this.rows && this.rows.length > 0;
+		},
+		doesFilterOutMentees() {
+			return this.$store.getters[ 'mentees/doesFilterOutMentees' ];
 		}
 	},
 	methods: {

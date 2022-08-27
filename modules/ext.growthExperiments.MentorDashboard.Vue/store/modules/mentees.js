@@ -76,7 +76,8 @@ const getters = {
 		activeDaysAgo
 	} ),
 	isReady: ( state ) => state.isReady,
-	totalPages: ( state ) => state.totalPages
+	totalPages: ( state ) => state.totalPages,
+	doesFilterOutMentees: () => api.doesFilterOutMentees()
 };
 
 // Utils
