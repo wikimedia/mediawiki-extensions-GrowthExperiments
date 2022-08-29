@@ -2,7 +2,7 @@
 	<div class="ext-growthExperiments-NoResults">
 		<cdx-icon
 			class="ext-growthExperiments-NoResults__block-icon"
-			:icon="cdxIconError"
+			:icon="icon"
 			:icon-label="iconLabel"
 		></cdx-icon>
 		<div class="ext-growthExperiments-NoResults__info">
@@ -16,7 +16,6 @@
 
 <script>
 const { CdxIcon } = require( '@wikimedia/codex' );
-const { cdxIconError } = require( '../icons.json' );
 
 // @vue/component
 module.exports = exports = {
@@ -27,12 +26,8 @@ module.exports = exports = {
 	props: {
 		description: { type: String, default: null },
 		iconLabel: { type: String, required: true },
-		text: { type: String, required: true }
-	},
-	setup() {
-		return {
-			cdxIconError
-		};
+		text: { type: String, required: true },
+		icon: { type: String, required: true }
 	}
 };
 </script>
