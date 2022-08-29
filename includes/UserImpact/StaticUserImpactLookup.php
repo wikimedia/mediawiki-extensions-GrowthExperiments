@@ -4,7 +4,7 @@ namespace GrowthExperiments\UserImpact;
 
 use MediaWiki\User\UserIdentity;
 
-class StaticUserImpactLookup implements UserImpactLookup {
+class StaticUserImpactLookup implements UserImpactLookup, UserImpactStore {
 
 	use ExpensiveUserImpactFallbackTrait;
 
@@ -23,4 +23,8 @@ class StaticUserImpactLookup implements UserImpactLookup {
 		return $this->userImpacts[$user->getId()] ?? null;
 	}
 
+	/** @inheritDoc */
+	public function setUserImpact( UserImpact $userImpact ): void {
+		$this->userImpacts[$userImpact->getUser()->getId()] = $userImpact;
+	}
 }
