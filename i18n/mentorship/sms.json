@@ -4,14 +4,17 @@
 			"Yupik"
 		]
 	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Čiʹlǧǧtõs",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Õõʹnninõmm",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Peiʹvved",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Ooʒʒ",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Čuäʹjet $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Asetõõzz",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Jõõsk",
 	"growthexperiments-quit-mentorship-reason": "Mäinn",
 	"growthexperiments-notification-body-mentee-claimed": "Mäinn: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Ruõkk",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Jõõsk",
 	"growthexperiments-manage-mentors-username": "Õõʹnninõmm",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Mäinn"
 }

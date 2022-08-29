@@ -15,7 +15,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "A mentoráltjaid",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Alább láthatók a mentoráltjaid. A szűrőkkel módosíthatod, hogy kik jelenjenek meg.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "A táblázat JavaScriptet igényel. Engedélyezd a JavaScriptet a modul használatához.",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Ki szerepel a táblázatban?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Ki szerepel a táblázatodban?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "A táblázat csak azokat a mentoráltjaidat mutatja, akik az elmúlt két hétben regisztráltak, vagy az elmúlt hat hónapban szerkesztettek. Az adatok naponta frissülnek.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Jelmagyarázat",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Mentoráltak könyvjelzőzése",
@@ -37,8 +37,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Szűrés az elmúlt {{PLURAL:$1|hónapban|$2 hónapban}} aktív mentoráltakra",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Csak a megcsillagozott mentoráltak megjelenítése",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Keresés",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Nem érhetők el mentoráltadatok",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Lehet, hogy még nincsenek mentoráltak hozzád rendelve. Az adatok három óránként frissülnek.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Nem találhatók a közelmúltban aktív mentoráltak",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "A mentorvezérlőpult csak a közelmúltban aktív mentoráltakat mutatja. További információkat az információ ikonra kattintva találhatsz. Amennyiben friss mentor vagy, lehet, hogy még nem nem kaptál mentoráltat.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nem találhatók mentoráltak",
 	"growthexperiments-mentor-dashboard-resources-headline": "Erőforrások",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "A mentorok listája",
@@ -68,5 +68,7 @@
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Azok a hozzád rendelt mentoráltak, akiket megcsillagoztál a mentorvezérlőpultodon",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "Meg nem csillagozott mentoráltjaid",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Egyéb hozzád rendelt mentoráltak",
-	"growthexperiments-quit-mentorship-title": "Mentorálás abbahagyása"
+	"growthexperiments-quit-mentorship-title": "Mentorálás abbahagyása",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Ismeretlen hiba történt. Próbáld újra később!",
+	"growthexperiments-mentor-writer-error-message-too-long": "Túl hosszú a bevezető. Maximális hossz: $1 ."
 }

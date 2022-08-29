@@ -4,5 +4,30 @@
 			"Bada Kaji"
 		]
 	},
-	"growthexperiments-quit-mentorship-error-not-a-mentor": "{{GENDER:|तपाईं}} सल्लाहकार हुनुहुन्न।"
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "प्रयोगकर्ता नाम",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "सम्पादन गणना",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "दर्ता मिति",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "सम्पादन गणना",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "खोज्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "अज्ञात",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 देखाउनुहोस्",
+	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "सल्लाहकारको सूची",
+	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "सल्लाहकारहरूको सूची हेर्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "मेरो अभिरुचिहरू",
+	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "सल्लाहकारको बारेमा जानकारी",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "रद्द गर्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "रोक्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "दिनहरू",
+	"growthexperiments-quit-mentorship-title": "सल्लाहकार छोड्नुहोस्",
+	"growthexperiments-quit-mentorship-error-not-a-mentor": "{{GENDER:|तपाईं}} सल्लाहकार हुनुहुन्न।",
+	"growthexperiments-quit-mentorship-reason": "कारण",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "कुनै पनि होइन",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "रद्द गर्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "परिचय सन्देश",
+	"growthexperiments-manage-mentors-title": "सल्लाहकारहरू प्रबन्ध गर्नुहोस्",
+	"growthexperiments-manage-mentors-auto-assigned": "स्वचालित रूपमा तोक्ने सल्लाहकारहरू",
+	"growthexperiments-manage-mentors-remove-mentor": "हटाउनुहोस्",
+	"growthexperiments-mentorship-enrollasmentor-form-reason": "कारण",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "समावेस गर्नुहोस्",
+	"tag-mentor list change": "सल्लाहकार सूची परिवर्तन"
 }

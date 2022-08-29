@@ -7,7 +7,8 @@
 			"Movses",
 			"Piramidion",
 			"Vlad5250",
-			"Ата"
+			"Ата",
+			"Пан Хаунд"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Ласкаво просимо}}, $1!",
@@ -39,7 +40,7 @@
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Опишіть}} іншу причину…",
 	"welcomesurvey-question-mentor-info": "Ми розглядаємо можливість запуску програми, метою якої було б залучення досвідчених редакторів до надання новачкам допомоги з редагуванням. {{GENDER:$1|Чи зацікавлені Ви}} в тому, щоб хтось із Вами зв'язався й надавав підтримку з редагуванням?",
 	"welcomesurvey-question-mentor-label": "Так, я {{GENDER:$1|зацікавлений|зацікавлена}}",
-	"welcomesurvey-question-edited-label": "Ви коли-небудь редагували Вікіпедію?",
+	"welcomesurvey-question-edited-label": "{{GENDER:|ви}} коли-небудь редагували Вікіпедію?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Так, чимало разів",
 	"welcomesurvey-question-edited-option-yes-few-label": "Так, раз чи двічі",
 	"welcomesurvey-question-edited-option-no-dunno-label": "Ні, мені було невідомо, що я можу редагувати Вікіпедію",

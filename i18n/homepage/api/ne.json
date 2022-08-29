@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bada Kaji",
 			"पर्वत सुबेदी"
 		]
 	},
-	"growthexperiments-homepage-questionstore-noquestionsfound": "कुनैपनि प्रश्न फेला परेन।"
+	"growthexperiments-homepage-questionstore-noquestionsfound": "कुनैपनि प्रश्न फेला परेन।",
+	"apihelp-growthsetmentor-param-mentor": "सल्लाहकारको प्रयोगकर्ता नाम"
 }
