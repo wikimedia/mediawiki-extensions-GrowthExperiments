@@ -11,7 +11,8 @@
 			"Worrida",
 			"Hanna Tardos",
 			"Llz78",
-			"Luckylukee81"
+			"Luckylukee81",
+			"Lois131"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Üdvözlünk, {{bidi:$1}}!",
@@ -31,7 +32,7 @@
 	"growthexperiments-homepage-userpage-button": "Szerkesztőlap készítése",
 	"growthexperiments-homepage-userpage-button-done": "Szerkesztőlap módosítása",
 	"growthexperiments-homepage-userpage-guidelines": "Útmutató szerkesztőlapokhoz",
-	"growthexperiments-homepage-email-header-noemail": "Add meg az {{GENDER:$1|e-mail-címed}}",
+	"growthexperiments-homepage-email-header-noemail": "$1, add meg az e-mail-címedet",
 	"growthexperiments-homepage-email-header-unconfirmed": "Erősítsd meg az {{GENDER:$1|e-mail-címed}}",
 	"growthexperiments-homepage-email-header-confirmed": "E-mail megadva",
 	"growthexperiments-homepage-email-text-noemail": "Ajánlott a fiók-helyreállításhoz",

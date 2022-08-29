@@ -7,7 +7,8 @@
 			"Teemeah",
 			"Tgr",
 			"Dj",
-			"Hanna Tardos"
+			"Hanna Tardos",
+			"Lois131"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Szerkesztési segítség panel engedélyezése",
@@ -22,7 +23,7 @@
 	"growthexperiments-help-panel-back-home": "Vissza",
 	"growthexperiments-help-panel-close": "Kész",
 	"growthexperiments-help-panel-home-title": "Szerkesztési segítség",
-	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Közzétettél}} egy módosítást. Köszönjük és csak így tovább!",
+	"growthexperiments-help-panel-postedit-success-message-published": "Közzétettél egy módosítást. Köszönjük és csak így tovább!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Elmentettél}} egy módosítást. Köszönjük és csak így tovább!",
 	"growthexperiments-help-panel-postedit-header": "A következő lépés",
 	"growthexperiments-help-panel-postedit-subheader": "Szerkessz egy másik javaslatot:",
@@ -109,9 +110,9 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Itt, a(z) {{SITENAME}} wikin fogsz értesítést kapni, amint érkezik válasz.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "A(z) $1 címre ($2) is kapsz majd egy levelet.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "módosítás",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Ha e-mailben is {{GENDER:$2|you'd}}szeretnél értesítést kapni, erősítsd meg az e-mail-címedet itt: $1.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "megerősíted az email-címedet",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Ha e-mailben is {{GENDER:$1|szeretnél}} értesítést kapni, add meg az e-mail-címedet!",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Ha e-mailben is szeretnél $2 értesítést kapni, erősítsd meg az e-mail-címedet itt: $1.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "e-mail címed megerősítése",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Ha e-mailben is szeretnél $1 értesítést kapni, add meg az e-mail-címedet!",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "E-mail hozzáadása",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "A súgópanelről",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Mellesleg ennek a kérdésnek a feltevésével először szerkesztettél egy oldalt. Gratulálunk!",
@@ -130,8 +131,8 @@
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Tippek kezdéshez",
 	"growthexperiments-help-panel-general-help-title": "Általános szerkesztési útmutató",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "A javasolt szerkesztésekről",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Te}} a forráskód-szerkesztőt használod épp, a szerkesztési tippek azonban a vizuális szerkesztőhöz nyújtanak inkább segítséget.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;a forráskód-szerkesztőt használod épp, a szerkesztési tippek azonban a vizuális szerkesztőhöz nyújtanak inkább segítséget.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Váltás vizuális szerkesztésre",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Te}} a vizuális szerkesztőt használod épp, a szerkesztési tippek azonban a forráskód-szerkesztéshez nyújtanak inkább segítséget.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;a vizuális szerkesztőt használod épp, a szerkesztési tippek azonban a forráskód-szerkesztéshez nyújtanak inkább segítséget.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Váltás forráskód szerkesztésére"
 }
