@@ -23,6 +23,7 @@ exports.config = { ...config,
 	},
 	services: [ 'devtools', 'intercept' ],
 	onPrepare: async function () {
+		console.log( 'Require GrowthExperiments.LocalSettings.php...' );
 		fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ),
 			// Load the service overrides
 			localSettings + `
@@ -56,6 +57,21 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 			console.log( String( newcomerTasksJsonResult.stderr ) );
 			throw new SevereServiceError( 'Unable to import ' + newcomerTasksJsonFilepath );
 		}
+
+		console.log( 'Running jobs...' );
+		const runJobsResult = await childProcess.spawnSync(
+			'php',
+			[ 'maintenance/runJobs.php' ],
+			{ cwd: ip }
+		);
+		console.log( runJobsResult.stdout.toString( 'utf8' ) );
+		console.log( 'Running update.php to clear caches' );
+		const updatePhpResult = await childProcess.spawnSync(
+			'php',
+			[ 'maintenance/update.php', '--quick' ],
+			{ cwd: ip }
+		);
+		console.log( updatePhpResult.stdout.toString( 'utf8' ) );
 	},
 	onComplete: async function () {
 		// Remove the LocalSettings.php additions from onPrepare()
