@@ -6,5 +6,6 @@
 			"Y-M D"
 		]
 	},
-	"growthexperiments-homepage-enable": "Diskwel pajenn degemer neveziad"
+	"growthexperiments-homepage-enable": "Diskwel pajenn degemer neveziad",
+	"growthexperiments-homepage-discovery-thanks-header": "Trugarez da vezañ krouet {{GENDER:$1|ho}} kont!"
 }

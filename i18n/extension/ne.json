@@ -1,8 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"पर्वत सुबेदी"
+			"पर्वत सुबेदी",
+			"Bada Kaji"
 		]
 	},
-	"growthexperiments-edit-config-edit-summary": "सम्पादन सारांश"
+	"growthexperiments-desc": "यस विस्तारमा ग्रोथ टोलीद्वारा गरिएका प्रयोगहरू समावेश छन्।",
+	"growthexperiments-edit-config-feedback-cta": "सुझाव दिनुहोस्",
+	"growthexperiments-edit-config-edit-summary": "सम्पादन सारांश",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "पृष्ठको शीर्ष",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "पृष्ठको तल",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "सहायता केन्द्र",
+	"growthexperiments-edit-config-homepage": "नयाँ आगमन गृहपृष्ठ",
+	"growthexperiments-edit-config-mentorship-enabled-true": "हो",
+	"growthexperiments-edit-config-mentorship-enabled-false": "होइन",
+	"growthexperiments-edit-config-newcomertasks": "सुझाइएका सम्पादनहरू"
 }

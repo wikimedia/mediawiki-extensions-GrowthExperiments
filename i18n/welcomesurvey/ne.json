@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bada Kaji"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|स्वागतम्}}, $1!",
+	"welcomesurvey-save-btn": "समाप्त गर्नुहोस्",
+	"welcomesurvey-skip-btn": "यस सर्वेक्षणलाई {{GENDER:$1|छोड्नुहोस्}}",
+	"welcomesurvey-close-btn": "बन्द गर्नुहोस् र $1मा फर्कनुहोस्",
+	"welcomesurvey-sidebar-privacy-text": "विकिमीडिया फाउन्डेसनले {{GENDER:$2|तपाईं}}लाई {{SITENAME}} सम्पादन सुरु गर्न मद्दत गर्नका लागि तपाईका जवाफहरू प्रयोग गर्नेछ। $1 ।",
+	"welcomesurvey-privacy-policy-link-text": "नयाँ सम्पादकहरूमा डेटा बारे थप जान्नुहोस्",
+	"welcomesurvey-sidebar-editing-title": "सम्पादन सुरु गर्नुहोस्",
+	"welcomesurvey-sidebar-editing-link1-title": "मद्दत:सहायता विषयसूचि",
+	"welcomesurvey-sidebar-editing-link2-text": "सहायता केन्द्र",
+	"welcomesurvey-sidebar-editing-link2-title": "विकिपिडिया:सहायता कक्ष",
+	"welcomesurvey-dropdown-option-select-label": "कृपया छान्नुहोस...",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "विकिपिडिया लेखमा जानकारी थप्न वा परिवर्तन गर्न",
+	"welcomesurvey-question-reason-option-add-image-label": "विकिपिडिया लेखमा फोटो वा छवि थप्नको लागि",
+	"welcomesurvey-question-reason-option-new-page-label": "नयाँ विकिपिडिया लेख सिर्जना गर्न",
+	"welcomesurvey-question-reason-option-program-participant-label": "म कुनै कार्यक्रम, कक्षा वा कार्यक्रममा भाग लिइरहेको छु",
+	"welcomesurvey-question-reason-option-read-label": "विकिपिडिया पढ्नको लागि",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "अन्य",
+	"welcomesurvey-question-reason-option-other-label": "अन्य (कृपया वर्णन गर्नुहोस्)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|}} अन्य कारण...",
+	"welcomesurvey-question-mentor-label": "हो, {{GENDER:$1|मलाई चासो छ}}",
+	"welcomesurvey-question-edited-option-yes-many-label": "हो, धेरै पटक",
+	"welcomesurvey-question-edited-option-yes-few-label": "हो, एक वा दुई पटक",
+	"welcomesurvey-question-edited-option-no-dunno-label": "होइन, मलाई थाहा थिएन म विकिपिडिया सम्पादन गर्न सक्छु",
+	"welcomesurvey-question-edited-option-no-other-label": "होइन, अन्य कारणहरूको लागि",
+	"welcomesurvey-question-edited-option-dont-remember-label": "मलाई याद छैन",
+	"welcomesurvey-question-email-label": "इमेल ठेगाना (वैकल्पिक)"
+}

@@ -347,7 +347,7 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "As sugestões podem estar a ser feitas em palavras que não precisam delas ou podem conduzir ao artigo errado. Use o seu bom senso para decidir se estão corretas ou incorretas.{{GENDER:$1|}}",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Saiba mais sobre as sugestões mecânicas",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Diretrizes",
-	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Ligue conceitos que um leitor pode ter interesse em conhecer.</li><li>Certifique-se de que a hiperligação conduz ao artigo correto.</li><li>Não crie ligações para palavras vulgares, anos ou datas.</li><li>Se tem dúvidas, salte esta sugestão.</li>{{GENDER:$1|}}",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Ligue conceitos que um leitor pode ter interesse em conhecer.</li><li>Certifique-se de que a hiperligação conduz ao artigo correto.</li><li>Não crie hiperligações para palavras vulgares, anos ou datas.</li><li>Se tem dúvidas, salte esta sugestão.</li>{{GENDER:$1|}}",
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-message": "Já não há sugestões disponíveis neste artigo.",
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "Voltar às edições sugeridas",
 	"growthexperiments-addlink-summary-title": "Resumo",

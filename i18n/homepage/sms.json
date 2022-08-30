@@ -13,13 +13,16 @@
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Čuäʹjet eʹtǩǩõõzzid",
 	"growthexperiments-homepage-startediting-button": "Čuäʹjet eʹtǩǩuum muttsid",
 	"growthexperiments-homepage-startediting-dialog-header": "Teâđ eʹtǩǩuum muttsin",
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Jõõsk",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "Eʹtǩǩuum muttâz",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Čuäʹjet eʹtǩǩõõzzid",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Vaalmâš",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Vaalmâš",
 	"growthexperiments-homepage-suggested-edits-header": "Eʹtǩǩuum muttâz",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Čuäʹjet eʹtǩǩuum muttsid",
+	"growthexperiments-homepage-recent-questions-archived": "arkiivõsttum",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|muuttâs|muttâz|muttsed}}",
+	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktiivlaž}} $2 {{PLURAL:$2|peiʹvv|peeiʹv|peiʹvved}} mââiårra",
 	"growthexperiments-homepage-suggestededits-no-results": "Eʹtǩǩõõzz jie käunnʼjam",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Čuäʹjet puk eʹtǩǩõõzzid",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Raaj ođđ artikkeeʹl",
@@ -44,5 +47,6 @@
 	"growthexperiments-addlink-summary-title": "Õʹhtteǩeässmõš",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Eʹtǩǩõõzz",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Vuõlttâd...",
-	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Eʹtǩǩõõzz"
+	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Eʹtǩǩõõzz",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Jõõsk"
 }
