@@ -1718,6 +1718,7 @@
 				"vuex",
 				"@wikimedia/codex"
 			],
+			"es6": true,
 			"targets": [
 				"desktop",
 				"mobile"
