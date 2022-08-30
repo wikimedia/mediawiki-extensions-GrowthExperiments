@@ -2,6 +2,8 @@
 const fs = require( 'fs' );
 const path = require( 'path' );
 const process = require( 'process' );
+const phpVersion = process.env.PHP_VERSION;
+const phpFpmService = 'php' + phpVersion + '-fpm';
 const childProcess = require( 'child_process' );
 const ip = path.resolve( __dirname + '/../../../../' );
 const localSettings = fs.readFileSync( path.resolve( ip + '/LocalSettings.php' ) );
@@ -21,12 +23,12 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 	if ( process.env.QUIBBLE_APACHE ) {
 		childProcess.spawnSync(
 			'service',
-			[ 'php7.2-fpm', 'restart' ]
+			[ phpFpmService, 'restart' ]
 		);
 		// Super ugly hack: Run this twice because sometimes the first invocation hangs.
 		childProcess.spawnSync(
 			'service',
-			[ 'php7.2-fpm', 'restart' ]
+			[ phpFpmService, 'restart' ]
 		);
 	}
 	// Import the test articles and their suggestions

@@ -5,6 +5,9 @@ const { config } = require( 'wdio-mediawiki/wdio-defaults.conf.js' ),
 	path = require( 'path' ),
 	fs = require( 'fs' ),
 	ip = path.resolve( __dirname + '/../../../../' ),
+	process = require( 'process' ),
+	phpVersion = process.env.PHP_VERSION,
+	phpFpmService = 'php' + phpVersion + '-fpm',
 	// Take a snapshot of the local settings contents
 	localSettings = fs.readFileSync( path.resolve( ip + '/LocalSettings.php' ) ),
 	UserLoginPage = require( 'wdio-mediawiki/LoginPage' ),
@@ -54,12 +57,12 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 		if ( process.env.QUIBBLE_APACHE ) {
 			await childProcess.spawnSync(
 				'service',
-				[ 'php7.2-fpm', 'restart' ]
+				[ phpFpmService, 'restart' ]
 			);
 			// Super ugly hack: Run this twice because sometimes the first invocation hangs.
 			await childProcess.spawnSync(
 				'service',
-				[ 'php7.2-fpm', 'restart' ]
+				[ phpFpmService, 'restart' ]
 			);
 		}
 		// Import the test articles and their suggestions
