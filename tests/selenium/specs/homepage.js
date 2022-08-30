@@ -27,7 +27,7 @@ describe( 'Homepage', function () {
 
 		await browser.setupInterceptor();
 		await HomepagePage.editAndSaveArticle( 'first edit', true );
-		await HomepagePage.rebuildRecentChanges( 'Rebuilding recent changes for first edit' );
+		await HomepagePage.runJobs( 'Calling runJobs.php for first edit' );
 		assert.ok( HomepagePage.postEditDialog.isDisplayed() );
 
 		// Get the revision ID of the change that was just made.
@@ -47,7 +47,7 @@ describe( 'Homepage', function () {
 
 		// Follow-up edit.
 		await HomepagePage.editAndSaveArticle( 'second edit' );
-		await HomepagePage.rebuildRecentChanges( 'Rebuilding recent changes for second edit' );
+		await HomepagePage.runJobs( 'Calling runJobs.php for second edit' );
 		assert.ok( HomepagePage.postEditDialog.isDisplayed() );
 
 		requests = await browser.getRequests();
@@ -74,7 +74,7 @@ describe( 'Homepage', function () {
 		// Set up the interceptor again, as we're on a new page.
 		await browser.setupInterceptor();
 		await HomepagePage.editAndSaveArticle( 'third edit', true );
-		await HomepagePage.rebuildRecentChanges( 'Rebuilding recent changes for third edit' );
+		await HomepagePage.runJobs( 'Calling runJobs.php for third edit' );
 
 		requests = await browser.getRequests();
 		requests.forEach( function ( request ) {

@@ -48,7 +48,7 @@ describe( 'add link', function () {
 
 		await HomepagePage.waitForPostEditDialog();
 
-		await HomepagePage.rebuildRecentChanges();
+		await HomepagePage.runJobs();
 
 		// Get the revision ID of the change that was just made.
 		const requests = await browser.getRequests();

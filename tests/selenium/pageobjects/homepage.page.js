@@ -132,18 +132,15 @@ class HomepagePage extends Page {
 		await this.waitForPostEditDialog();
 	}
 
-	async rebuildRecentChanges( message ) {
+	async runJobs( message ) {
 		if ( message ) {
 			console.log( message );
 		} else {
-			console.log( 'Rebuilding recent changes...' );
+			console.log( 'Running jobs' );
 		}
-		// TODO: In CI, this is fast but in a local wiki this can take a long time;
-		// we should pass a timestamp so that we just rebuild edits made in the last
-		// couple of minutes.
 		await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/rebuildrecentchanges.php' ],
+			[ 'maintenance/runJobs.php' ],
 			{ cwd: ip }
 		);
 	}
