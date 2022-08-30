@@ -10,13 +10,13 @@
 		]
 	},
 	"welcomesurvey": "Üdvözlünk, $1!",
-	"welcomesurvey-save-confirmation-title": "Köszönjük! A válaszokat elmentettük.",
+	"welcomesurvey-save-confirmation-title": "Köszönjük! Válaszaidat elmentettük.",
 	"welcomesurvey-save-confirmation-text": "A válaszaidat arra használjuk, hogy hasznos módokat ajánljunk számodra a Wikipédiával való ismerkedéshez.",
 	"welcomesurvey-subtitle": "Segítsd a Wikipédia fejlesztését néhány (opcionális) kérdés megválaszolásával!",
 	"welcomesurvey-save-btn": "Befejezés",
 	"welcomesurvey-skip-btn": "Kérdőív {{GENDER:$1|kihagyása}}",
 	"welcomesurvey-close-btn": "Bezárás és visszatérés ide: $1",
-	"welcomesurvey-sidebar-privacy-title": "Odafigyelünk az adataid védelmére",
+	"welcomesurvey-sidebar-privacy-title": "Odafigyelünk adataid védelmére",
 	"welcomesurvey-sidebar-privacy-text": "A Wikimédia Alapítvány arra fogja használni a {{GENDER:$2|válaszaidat}}, hogy segítsen a(z) {{SITENAME}} szerkesztésének elkezdésében. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Tudj meg többet az új szerkesztőkről gyűjtött adatokról",
 	"welcomesurvey-sidebar-editing-title": "Szerkesztés elkezdése",
@@ -45,9 +45,9 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Nem, egyéb okból",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Nem emlékszem",
 	"welcomesurvey-question-email-label": "E-mail-cím (opcionális)",
-	"welcomesurvey-question-email-placeholder": "Add meg az e-mail címed…",
-	"welcomesurvey-question-email-help": "Észrevettük, hogy nem adtál meg e-mail-címet a regisztrációkor. Ez <strong>erősen ajánlott</strong>, mivel az e-mail-cím szükséges a fiókot helyreállításához, ha valaha is elveszted a jelszavadat. Megjegyzés: Az e-mail-címedet nem tudják meg más szerkesztők, amikor kapcsolatba lépnek veled.",
-	"welcomesurvey-question-languages-label": "A(z) {{SITENAME}} majdnem 300 nyelven elérhető. Tudsz más nyelven is írni-olvasni?",
+	"welcomesurvey-question-email-placeholder": "Add meg az e-mail-címed…",
+	"welcomesurvey-question-email-help": "Feltűnt, hogy regisztráció során nem adtál meg e-mail címet, ami <strong>fontos</strong> volna, ugyanis ha elfelejtenéd a jelszavad, szükséged lesz egy e-mail címre, fiókod helyreállításához. Megjegyzés: más felhasználók nem látják, mikor kapcsolatba lépnek veled.",
+	"welcomesurvey-question-languages-label": "A(z) {{SITENAME}} közel 300 nyelven elérhető. Tudsz más nyelven is írni-olvasni?",
 	"welcomesurvey-question-languages-placeholder": "Adj meg legfeljebb $1 nyelvet…",
-	"welcomesurvey-question-languages-maximum": "Elérted a hozzáadható nyelvek maximumát."
+	"welcomesurvey-question-languages-maximum": "Elérted a maximálisan hozzáadható nyelvek számát."
 }

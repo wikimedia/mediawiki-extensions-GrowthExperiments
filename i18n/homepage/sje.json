@@ -4,9 +4,14 @@
 			"Olve Utne"
 		]
 	},
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Ållånam",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Ållånam",
 	"growthexperiments-homepage-suggestededits-topic-name-history": "Histurrja",
 	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Histurrja ja sebrudahka",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Ållånam",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Buŧŧki",
 	"growthexperiments-addimage-inspector-description-placeholder": "Ij gävdnu gåvådibme",
-	"growthexperiments-addimage-detailsdialog-description": "Gåvådibme:"
+	"growthexperiments-addimage-detailsdialog-description": "Gåvådibme:",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Ållånam",
+	"growthexperiments-homepage-mentorship-about-done": "Ållånam"
 }
