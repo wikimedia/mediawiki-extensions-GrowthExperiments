@@ -8,7 +8,8 @@
 			"Sabelöga",
 			"Technic2",
 			"WikiPhoenix",
-			"Draftmission"
+			"Draftmission",
+			"JohanahoJ"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
@@ -351,7 +352,7 @@
 	"growthexperiments-addlink-rejectiondialog-title": "Varför är detta inte en bra länk?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Dina}} svar förbättrar kvalitén på framtida förslag.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Nästan alla vet vad det är",
-	"growthexperiments-addlink-rejectiondialog-reason-more-fewer-words": "Texten borde innehålla fler eller färre ord (t.ex. \"palmträd\" istället för \"palm\")",
+	"growthexperiments-addlink-rejectiondialog-reason-more-fewer-words": "Texten borde innehålla fler eller färre ord (t.ex. \"Örebro län\" istället för \"Örebro\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Länkar till fel artikel (t.ex. länkar \"måne\" till \"planet\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Tryck på pennan $1 bredvid länken för att ändra länkmål",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Övrigt",

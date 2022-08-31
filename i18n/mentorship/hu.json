@@ -37,9 +37,13 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Szűrés az elmúlt {{PLURAL:$1|hónapban|$2 hónapban}} aktív mentoráltakra",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Csak a megcsillagozott mentoráltak megjelenítése",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Keresés",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "ismeretlen",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 mentorált/oldal",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1/$2. oldal",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Nem érhetők el mentoráltadatok",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Lehet, hogy még nincsenek mentoráltak hozzád rendelve. Az adatok három óránként frissülnek.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nem találhatók mentoráltak",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Módosítsd a szűrőket mentoráltak kereséséhez.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Erőforrások",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "A mentorok listája",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Hogyan mutatkozz be mentorként",
@@ -68,5 +72,12 @@
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Azok a hozzád rendelt mentoráltak, akiket megcsillagoztál a mentorvezérlőpultodon",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "Meg nem csillagozott mentoráltjaid",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Egyéb hozzád rendelt mentoráltak",
-	"growthexperiments-quit-mentorship-title": "Mentorálás abbahagyása"
+	"growthexperiments-quit-mentorship-title": "Mentorálás abbahagyása",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "A hozzám rendelt mentoráltak száma",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Az átlag kb. fele",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Átlagos (alapértelmezett)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Az átlag kb. duplája",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "A terhelésed „$1” értékre változott.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "A mentoráltak véletlenszerűen lesznek hozzárendelve mentorokhoz a regisztrációkor. Szabályozhatod, hogy mennyi mentorált lesz hozzád rendelve, de egyes mentoráltak többet kérdeznek, mint mások.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Ajánlott az „Átlagos” beállítással kezdeni, hogy felmérd a teherbírásodat a mentoráltak számának növelése vagy csökkentése előtt."
 }

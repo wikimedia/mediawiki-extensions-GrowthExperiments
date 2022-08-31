@@ -6,6 +6,8 @@
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Gweredekaat takad sikour an aozer",
+	"growthexperiments-help-panel-postedit-success-message-published": "Embannet {{GENDER:|ho peus}} ur c’hemm. Trugarez ha kendalc’hit da aozañ!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "Trugarez da adlenn kinnigoù. Kendalc’hit!",
 	"growthexperiments-help-panel-suggestededits-title": "Kemmoù kinniget",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Kuzulioù evit loc'hañ prim",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Kemmoù kinniget",

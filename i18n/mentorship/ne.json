@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bada Kaji"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "प्रयोगकर्ता नाम",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "सम्पादन गणना",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "दर्ता मिति",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "सम्पादन गणना",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "खोज्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "अज्ञात",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 देखाउनुहोस्",
+	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "सल्लाहकारको सूची",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "मेरो अभिरुचिहरू",
+	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "सल्लाहकारको बारेमा जानकारी",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "रद्द गर्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "रोक्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "दिनहरू",
+	"growthexperiments-quit-mentorship-title": "सल्लाहकार छोड्नुहोस्"
+}

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Seipinne"
+			"Seipinne",
+			"Yupik"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Kevtteenommâ",
@@ -10,5 +11,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Moonnâmpeeivih",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Uusâ",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Asâttâsah",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Jooskâ",
 	"growthexperiments-notification-body-mentee-claimed": "Suijâ: $1"
 }
