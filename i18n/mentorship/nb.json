@@ -127,7 +127,7 @@
 	"growthexperiments-manage-mentors-last-active": "Sist aktiv",
 	"growthexperiments-manage-mentors-intro-msg": "Melding til nykommere",
 	"growthexperiments-manage-mentors-remove-mentor": "Fjern",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Du}} er i ferd med å fjerne [[User:$1]] som {{GENDER:$1|fadder}}.",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Du}} er i ferd med å fjerne [[User:$1|$1]] som {{GENDER:$1|fadder}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Årsak for fjerning av fadder",
 	"growthexperiments-manage-mentors-remove-mentor-success": "Brukeren [[User:$1|$1]] er ikke lenger en {{GENDER:$1|fadder}}.",
 	"growthexperiments-manage-mentors-return-back": "Du kan [[Special:ManageMentors|gå tilbake]] til listen over faddere.",
