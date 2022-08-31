@@ -1,4 +1,8 @@
 .mw-ge-help-panel-cta {
+	// Don't show the help panel in printable versions of a page.
+	@media print {
+		display: none;
+	}
 	position: fixed;
 	bottom: 2em;
 	right: 1em;
