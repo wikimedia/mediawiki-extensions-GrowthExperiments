@@ -8,17 +8,23 @@ use DeferredUpdates;
 use FormatJson;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use IContextSource;
+use JsonContent;
+use MediaWiki\Content\Hook\JsonValidateSaveHook;
 use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use SpecialPage;
 use Status;
+use StatusValue;
 use TextContent;
 use TitleFactory;
+use TitleValue;
 use User;
 
 class ConfigHooks implements
 	EditFilterMergedContentHook,
+	JsonValidateSaveHook,
 	PageSaveCompleteHook,
 	SkinTemplateNavigation__UniversalHook
 {
@@ -78,23 +84,33 @@ class ConfigHooks implements
 					);
 					return false;
 				}
-
-				// Try to parse the config, and validate if parsing succeeded
-				$loadedConfigStatus = FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC );
-				if ( !$loadedConfigStatus->isOK() ) {
-					$status->merge( $loadedConfigStatus );
-				} else {
-					$status->merge(
-						$this->configValidatorFactory
-							->newConfigValidator( $title )
-							->validate( $loadedConfigStatus->getValue() )
-					);
-				}
-
-				return $status->isGood();
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onJsonValidateSave(
+		JsonContent $content, PageIdentity $pageIdentity, StatusValue $status
+	) {
+		foreach ( $this->configValidatorFactory->getSupportedConfigPages() as $configTitle ) {
+			if ( $pageIdentity->isSamePageAs( $configTitle ) ) {
+				$data = FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC )->getValue();
+				$status->merge(
+					$this->configValidatorFactory
+						// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+						->newConfigValidator( TitleValue::castPageToLinkTarget( $pageIdentity ) )
+						->validate( $data )
+				);
+				if ( !$status->isGood() ) {
+					// JsonValidateSave expects a fatal status on failure, but the validator uses isGood()
+					$status->setOK( false );
+				}
+				return $status->isOK();
+			}
+		}
 	}
 
 	/**
