@@ -47,7 +47,7 @@
 						:action="option.selected ? 'progressive' : null"
 						:class="{ 'button-group__button--selected': option.selected }"
 						:alt="option.altText"
-						@click="onDaysAgoUpdate( option.value )"
+						@click.prevent="onDaysAgoUpdate( option.value )"
 					>
 						{{ option.displayText }}
 					</cdx-button>
@@ -64,7 +64,7 @@
 						:type="option.selected ? 'primary' : null"
 						:action="option.selected ? 'progressive' : null"
 						:alt="option.altText"
-						@click="onDaysAgoUpdate( option.value )"
+						@click.prevent="onDaysAgoUpdate( option.value )"
 					>
 						{{ option.displayText }}
 					</cdx-button>
