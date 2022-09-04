@@ -812,21 +812,14 @@ return [
 	'GrowthExperimentsWikiPageConfigLoader' => static function (
 		MediaWikiServices $services
 	): WikiPageConfigLoader {
-		$wikiPageConfigLoader = new WikiPageConfigLoader(
+		return new WikiPageConfigLoader(
+			$services->getMainWANObjectCache(),
 			GrowthExperimentsServices::wrap( $services )
 				->getWikiPageConfigValidatorFactory(),
 			$services->getHttpRequestFactory(),
 			$services->getRevisionLookup(),
 			$services->getTitleFactory()
 		);
-
-		// Cache config for a day; cache is invalidated by ConfigHooks::onPageSaveComplete
-		// and WikiPageConfigWriter::save when config files are changed.
-		$wikiPageConfigLoader->setCache(
-			new CachedBagOStuff( ObjectCache::getLocalClusterInstance() ),
-			CachedBagOStuff::TTL_DAY
-		);
-		return $wikiPageConfigLoader;
 	},
 
 	'GrowthExperimentsWikiPageConfigWriterFactory' => static function (

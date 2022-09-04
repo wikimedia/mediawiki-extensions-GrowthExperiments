@@ -3,12 +3,12 @@
 namespace GrowthExperiments\Tests;
 
 use ApiRawMessage;
-use BagOStuff;
 use Content;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\Config\Validation\NoValidationValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
+use HashBagOStuff;
 use JsonContent;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -23,6 +23,7 @@ use StatusValue;
 use Title;
 use TitleFactory;
 use TitleValue;
+use WANObjectCache;
 use WikitextContent;
 
 /**
@@ -55,6 +56,8 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 		$lookupResult, $revisionLookupExpectedInvokeCount,
 		$expectedData
 	) {
+		$cacheBag = new HashBagOStuff();
+		$wanObjectCache = new WANObjectCache( [ 'cache' => $cacheBag ] );
 		$requestFactory = $this->getMockRequestFactory( $fullUrl, $httpResponse,
 			$requestFactoryExpectedInvokeCount );
 		$revisionLookup = $this->getMockRevisionLookup( $titleValue, $lookupResult,
@@ -74,6 +77,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 			->method( 'newConfigValidator' )
 			->willReturn( $configValidator );
 		$loader = new WikiPageConfigLoader(
+			$wanObjectCache,
 			$configValidatorFactory,
 			$requestFactory,
 			$revisionLookup,
@@ -153,24 +157,28 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testSetCache() {
-		$cache = $this->createMock( BagOStuff::class );
-		$cache->expects( $this->once() )
-			->method( 'get' )
-			->willReturn( [] );
-
 		$title = new TitleValue( NS_MAIN, 'X' );
+
+		$cache = new HashBagOStuff();
+		$wanCache = new WANObjectCache( [ 'cache' => $cache ] );
+		$wanCache->set(
+			$wanCache->makeKey( 'GrowthExperiments',
+				'config', $title->getNamespace(), $title->getDBkey() ),
+			[ 'abc' => 123 ]
+		);
+
 		$configValidatorFactory = $this->createMock( ConfigValidatorFactory::class );
 		$configValidatorFactory
 			->method( 'newConfigValidator' )
 			->willReturn( new NoValidationValidator() );
 		$loader = new WikiPageConfigLoader(
+			$wanCache,
 			$configValidatorFactory,
 			$this->getMockRequestFactory( '', '', 0 ),
 			$this->getMockRevisionLookup( $title, false, 0 ),
 			$this->getMockTitleFactory( '', '', false )
 		);
-		$loader->setCache( $cache, 0 );
-		$this->assertSame( [], $loader->load( $title ) );
+		$this->assertSame( [ 'abc' => 123 ], $loader->load( $title ) );
 	}
 
 	/**

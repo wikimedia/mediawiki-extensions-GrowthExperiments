@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Config;
 
 use ApiRawMessage;
-use BagOStuff;
 use DBAccessObjectUtils;
 use FormatJson;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
@@ -18,6 +17,8 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use StatusValue;
 use TitleFactory;
+use WANObjectCache;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 /**
  * This class allows callers to fetch various variables
@@ -49,40 +50,32 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	/** @var TitleFactory */
 	private $titleFactory;
 
-	/** @var BagOStuff */
+	/** @var WANObjectCache */
 	private $cache;
 
-	/** @var int Cache expiry (0 for unlimited). */
-	private $cacheTtl = 0;
+	/** @var HashBagOStuff */
+	private $inProcessCache;
 
 	/**
+	 * @param WANObjectCache $cache
 	 * @param ConfigValidatorFactory $configValidatorFactory
 	 * @param HttpRequestFactory $requestFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
+		WANObjectCache $cache,
 		ConfigValidatorFactory $configValidatorFactory,
 		HttpRequestFactory $requestFactory,
 		RevisionLookup $revisionLookup,
 		TitleFactory $titleFactory
 	) {
+		$this->cache = $cache;
+		$this->inProcessCache = new HashBagOStuff();
 		$this->configValidatorFactory = $configValidatorFactory;
 		$this->requestFactory = $requestFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->titleFactory = $titleFactory;
-
-		$this->setCache( new HashBagOStuff(), 0 );
-	}
-
-	/**
-	 * Use a different cache. (Default is in-process caching only.)
-	 * @param BagOStuff $cache
-	 * @param int $ttl Cache expiry (0 for unlimited).
-	 */
-	public function setCache( BagOStuff $cache, $ttl ) {
-		$this->cache = $cache;
-		$this->cacheTtl = $ttl;
 	}
 
 	/**
@@ -100,6 +93,7 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	public function invalidate( LinkTarget $configPage ) {
 		$cacheKey = $this->makeCacheKey( $configPage );
 		$this->cache->delete( $cacheKey );
+		$this->inProcessCache->delete( $cacheKey );
 	}
 
 	/**
@@ -110,27 +104,49 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
 	public function load( LinkTarget $configPage, int $flags = 0 ) {
-		$cacheKey = $this->makeCacheKey( $configPage );
-
 		if (
-			!DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) &&
+			DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ||
 			// This is a custom flag, but bitfield logic should work regardless.
-			!DBAccessObjectUtils::hasFlags( $flags, self::READ_UNCACHED )
+			DBAccessObjectUtils::hasFlags( $flags, self::READ_UNCACHED )
 		) {
-			// Consult cache
-			$result = $this->cache->get( $cacheKey );
-		} else {
-			// Pretend there is no cache entry and invalidate cache
-			$result = false;
+			// User does not want to used cached data, invalidate the cache.
 			$this->invalidate( $configPage );
 		}
 
-		if ( $result === false ) {
-			// this also stores the value in cache
-			$result = $this->loadUncached( $configPage, $flags );
-		}
+		// WANObjectCache has an in-process cache (pcTTL), but it is not subject
+		// to invalidation, which breaks WikiPageConfigLoaderTest.
+		return $this->inProcessCache->getWithSetCallback(
+			$this->makeCacheKey( $configPage ),
+			ExpirationAwareness::TTL_INDEFINITE,
+			function () use ( $configPage, $flags ) {
+				return $this->loadFromWanCache( $configPage, $flags );
+			}
+		);
+	}
 
-		return $result;
+	/**
+	 * Load configuration from the WAN cache
+	 *
+	 * @param LinkTarget $configPage
+	 * @param int $flags bit field, see self::READ_XXX
+	 * @return array|StatusValue The content of the configuration page (as JSON
+	 *   data in PHP-native format), or a StatusValue on error.
+	 */
+	private function loadFromWanCache( LinkTarget $configPage, int $flags = 0 ) {
+		return $this->cache->getWithSetCallback(
+			$this->makeCacheKey( $configPage ),
+			// Cache config for a day; cache is invalidated by ConfigHooks::onPageSaveComplete
+			// and WikiPageConfigWriter::save when config files are changed.,
+			ExpirationAwareness::TTL_DAY,
+			function ( $oldValue, &$ttl ) use ( $configPage, $flags ) {
+				$result = $this->loadUncached( $configPage, $flags );
+				if ( $result instanceof StatusValue ) {
+					// error should not be cached
+					$ttl = ExpirationAwareness::TTL_UNCACHEABLE;
+				}
+				return $result;
+			}
+		);
 	}
 
 	/**
@@ -145,18 +161,15 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	/**
 	 * Load the configuration page, bypassing caching.
 	 *
-	 * This stores the loaded value to cache.
+	 * Caller is responsible for caching the result if desired.
 	 *
 	 * @param LinkTarget $configPage
 	 * @param int $flags
-	 * @return false|mixed|StatusValue
+	 * @return array|StatusValue
 	 */
 	private function loadUncached( LinkTarget $configPage, int $flags = 0 ) {
-		$cacheKey = $this->makeCacheKey( $configPage );
-
 		$result = false;
 		$status = $this->fetchConfig( $configPage, $this->removeCustomFlags( $flags ) );
-		$cacheFlags = 0;
 		if ( $status->isOK() ) {
 			$result = $status->getValue();
 			$status->merge(
@@ -167,15 +180,16 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 		}
 		if ( !$status->isOK() ) {
 			$result = $status;
-			$cacheFlags = BagOStuff::WRITE_CACHE_ONLY;
 		}
 
-		$this->cache->set( $cacheKey, $result, $this->cacheTtl, $cacheFlags );
 		return $result;
 	}
 
 	/**
 	 * Fetch the contents of the configuration page, without caching.
+	 *
+	 * Result is not validated with a config validator.
+	 *
 	 * @param LinkTarget $configPage
 	 * @param int $flags bit field, see IDBAccessObject::READ_XXX; do NOT pass READ_UNCACHED
 	 * @return StatusValue Status object, with the configuration (as JSON data) on success.
