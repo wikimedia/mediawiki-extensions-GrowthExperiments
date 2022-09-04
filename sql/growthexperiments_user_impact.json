@@ -1,0 +1,27 @@
+[
+	{
+		"name": "growthexperiments_user_impact",
+		"comment": "Cache table for storing information about a user's impact on the wiki (things like how many people have read the user's articles). All stored data is computed from other tables/services.",
+		"columns": [
+			{
+				"name": "geui_user_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "geui_timestamp",
+				"comment": "Time when the data was calculated",
+				"type": "mwtimestamp",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "geui_data",
+				"comment": "Impact data as an arbitrary JSON object.",
+				"type": "binary",
+				"options": { "length": 16777215, "notnull": true }
+			}
+		],
+		"indexes": [],
+		"pk": [ "geui_user_id" ]
+	}
+]

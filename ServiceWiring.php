@@ -83,6 +83,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
+use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\WelcomeSurveyFactory;
@@ -939,6 +940,14 @@ return [
 		return new SubpageUserImpactLookup(
 			$services->getWikiPageFactory()
 		);
+	},
+
+	'GrowthExperimentsUserImpactStore' => static function (
+		MediaWikiServices $services
+	): UserImpactLookup {
+		$dbr = $services->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbw = $services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+		return new DatabaseUserImpactStore( $dbr, $dbw );
 	},
 
 ];

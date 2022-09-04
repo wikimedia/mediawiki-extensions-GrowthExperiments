@@ -52,6 +52,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -314,6 +315,10 @@ class GrowthExperimentsServices {
 
 	public function getUserImpactLookup(): UserImpactLookup {
 		return $this->coreServices->get( 'GrowthExperimentsUserImpactLookup' );
+	}
+
+	public function getUserImpactStore(): UserImpactStore {
+		return $this->coreServices->get( 'GrowthExperimentsUserImpactStore' );
 	}
 
 }

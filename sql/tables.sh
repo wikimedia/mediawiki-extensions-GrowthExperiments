@@ -1,7 +1,7 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ENGINES='mysql sqlite postgres'
-TABLES='growthexperiments_link_recommendations growthexperiments_link_submissions growthexperiments_mentee_data growthexperiments_mentor_mentee'
+TABLES='growthexperiments_link_recommendations growthexperiments_link_submissions growthexperiments_mentee_data growthexperiments_mentor_mentee growthexperiments_user_impact'
 SCHEMA_CHANGES=`ls "$DIR"/abstractSchemaChanges/*.json | xargs -n1 basename`
 
 for engine in $ENGINES; do
