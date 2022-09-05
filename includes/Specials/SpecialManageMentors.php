@@ -51,11 +51,26 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function isIncludable() {
+		return true;
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function renderInReadOnlyMode(): bool {
+		return $this->including();
+	}
+
+	/**
 	 * Can manage mentors?
 	 * @return bool
 	 */
 	private function canManageMentors(): bool {
-		return $this->getUser()->isAllowed( 'managementors' );
+		return !$this->renderInReadOnlyMode() &&
+			$this->getUser()->isAllowed( 'managementors' );
 	}
 
 	/**
@@ -298,6 +313,18 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
+	 * @param string $text
+	 * @return string
+	 */
+	private function makeHeadlineElement( string $text ): string {
+		return Html::element(
+			$this->including() ? 'h3' : 'h2',
+			[],
+			$text
+		);
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function execute( $subPage ) {
@@ -309,9 +336,9 @@ class SpecialManageMentors extends SpecialPage {
 		$out = $this->getOutput();
 		$out->enableOOUI();
 		$out->addHTML( implode( "\n", [
-			Html::element( 'h2', [], $this->msg( 'growthexperiments-manage-mentors-auto-assigned' )->text() ),
+			$this->makeHeadlineElement( $this->msg( 'growthexperiments-manage-mentors-auto-assigned' )->text() ),
 			$this->getMentorsTable( $this->mentorProvider->getAutoAssignedMentors() ),
-			Html::element( 'h2', [], $this->msg( 'growthexperiments-manage-mentors-manually-assigned' )->text() ),
+			$this->makeHeadlineElement( $this->msg( 'growthexperiments-manage-mentors-manually-assigned' )->text() ),
 			$this->getMentorsTable( $this->mentorProvider->getManuallyAssignedMentors() ),
 		] ) );
 	}
