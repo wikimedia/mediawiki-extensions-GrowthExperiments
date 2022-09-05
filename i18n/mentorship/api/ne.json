@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"बडा काजी"
+		]
+	},
+	"apihelp-growthsetmentorstatus-param-gesstatus": "नयाँ स्थिति",
+	"apihelp-growthmanagementorlist-param-geaction": "कार्य",
+	"apihelp-growthmanagementorlist-param-message": "परिचय सन्देश (पूर्वनिर्धारित सल्लाहकार सन्देशको लागि खाली स्ट्रिङ प्रयोग गर्नुहोस्)",
+	"apihelp-growthmanagementorlist-param-weight": "वजन",
+	"apihelp-growthmanagementorlist-param-summary": "परिवर्तनको कारण"
+}

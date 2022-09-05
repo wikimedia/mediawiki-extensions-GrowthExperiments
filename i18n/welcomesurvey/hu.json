@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Hanna Tardos",
+			"Lois131",
 			"Misibacsi",
 			"Samat",
 			"Tacsipacsi",
@@ -44,6 +45,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Nem, nem tudtam, hogy én is szerkeszthetem a Wikipédiát",
 	"welcomesurvey-question-edited-option-no-other-label": "Nem, egyéb okból",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Nem emlékszem",
+	"welcomesurvey-question-mailinglist-label": "Szeretnék tippeket kapni e-mailben a szerkesztés megkezdéséhez.",
+	"welcomesurvey-question-mailinglist-help": "Kérjük, vedd figyelembe, hogy ezt a levelezőlistát a MailChimp működteti, ami azt jelenti, hogy a MailChimp az adataidat a [https://www.intuit.com/privacy/statement/ adatvédelmi nyilatkozat] és a [https://mailchimp.com/legal/terms/ felhasználási feltételek] szerint lesz felhasználva.",
 	"welcomesurvey-question-email-label": "E-mail-cím (opcionális)",
 	"welcomesurvey-question-email-placeholder": "Add meg az e-mail-címed…",
 	"welcomesurvey-question-email-help": "Feltűnt, hogy regisztráció során nem adtál meg e-mail címet, ami <strong>fontos</strong> volna, ugyanis ha elfelejtenéd a jelszavad, szükséged lesz egy e-mail címre, fiókod helyreállításához. Megjegyzés: más felhasználók nem látják, mikor kapcsolatba lépnek veled.",

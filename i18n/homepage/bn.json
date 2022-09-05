@@ -322,7 +322,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "এই পাতার মাধ্যমে {{GENDER:$1|আপনি}} পরামর্শগ্রহীতার মেন্টর পরিবর্তন করে নিজেকে নির্বাচন করতে পারবেন। এটি তখন প্রযোজ্য যখন {{GENDER:$1|আপনি}} ব্যবহারকারীকে চেনেন, অথবা {{GENDER:$1|আপনি}} কোনও কোর্সে বা কর্মশালায় উক্ত ব্যবহারকারীকে পরামর্শ দিয়েছিলেন।",
 	"growthexperiments-homepage-claimmentee-mentee": "পরামর্শগ্রহীতার ব্যবহারকারী নাম",
 	"growthexperiments-homepage-claimmentee-reason": "এই ব্যক্তির মেন্টর হতে চাওয়ার কারণ",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|আপনি}} {{PLURAL:$2|ব্যবহারকারী}} $1-এর মেন্টর পরিবর্তন করে {{GENDER:$4|$5}} কে যোগ করেছেন",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|আপনি}} {{PLURAL:$2|ব্যবহারকারী}} $1-এর মেন্টর পরিবর্তন করে {{GENDER:$4|$5}}-কে যোগ করেছেন। [[Special:MentorDashboard|মেন্টর ড্যাশবোর্ডে]] ফিরে যান।",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1-এর}} মেন্টরকে ইতিমধ্যে পরিবর্তন করা হয়েছে। {{GENDER:$2|আপনি}} কি এটি আবার পরিবর্তন করতে চান?",
 	"growthexperiments-claimmentee-confirm": "হ্যাঁ, আমি সত্যিই {{GENDER:|মেন্টর}} পরিবর্তন করতে চাই",
 	"growthexperiments-log-name": "গ্রোথপরীক্ষার লগ",

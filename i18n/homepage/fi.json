@@ -17,6 +17,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Oma}} aloitussivusi",
 	"prefs-homepage": "Aloittelevan muokkaajan toiminnot",
 	"growthexperiments-homepage-enable": "Näytä tulokkaan aloitussivu",
+	"growthexperiments-homepage-pt-link": "Mene tulokkaan aloitussivulle käyttäjänimi-linkistä henkilökohtaisissa työkaluissa",
 	"growthexperiments-homepage-email-header-noemail": "Lisää {{GENDER:$1|sähköpostiosoitteesi}}",
 	"growthexperiments-homepage-email-header-unconfirmed": "Vahvista {{GENDER:$1|sähköpostiosoitteesi}}",
 	"growthexperiments-homepage-email-header-confirmed": "Sähköpostiosoite lisätty",

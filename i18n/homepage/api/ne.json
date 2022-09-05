@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Bada Kaji",
-			"पर्वत सुबेदी"
+			"पर्वत सुबेदी",
+			"बडा काजी"
 		]
 	},
 	"growthexperiments-homepage-questionstore-noquestionsfound": "कुनैपनि प्रश्न फेला परेन।",
-	"apihelp-growthsetmentor-param-mentor": "सल्लाहकारको प्रयोगकर्ता नाम"
+	"apihelp-growthsetmentor-param-mentee": "विद्यार्थीको प्रयोगकर्ता नाम",
+	"apihelp-growthsetmentor-param-mentor": "सल्लाहकारको प्रयोगकर्ता नाम",
+	"apihelp-growthsetmentor-param-reason": "परिवर्तनको कारण"
 }

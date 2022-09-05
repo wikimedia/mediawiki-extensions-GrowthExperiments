@@ -121,7 +121,7 @@
 	"growthexperiments-manage-mentors-last-active": "Был в сети",
 	"growthexperiments-manage-mentors-intro-msg": "Сообщение для новичков",
 	"growthexperiments-manage-mentors-remove-mentor": "Удалить",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Вы}} собираетесь убрать [[User:$1]] в качестве своего {{GENDER:$1|наставника}}.",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Вы}} собираетесь убрать [[User:$1|$1]] в качестве своего {{GENDER:$1|наставника}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Причина удаления наставника",
 	"growthexperiments-manage-mentors-remove-mentor-success": "Пользователь [[User:$1|$1]] больше не является {{GENDER:$1|наставником}}.",
 	"growthexperiments-manage-mentors-return-back": "Вы можете [[Special:ManageMentors|вернуться]] к списку наставников.",

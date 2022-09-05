@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aishik Rehman",
 			"Ankan",
 			"Hirok Raja",
 			"ZI Jony",
@@ -43,13 +44,13 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "অজানা",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 জনকে দেখান",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 এর $1",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "পরামর্শগ্রহীতার উপাত্ত নেই",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "সম্প্রতি সক্রিয় কোন পরামর্শগ্রহীতা পাওয়া যায়নি",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "আপনাকে এখনো কোনো পরামর্শগ্রহীতা অর্পণ করা হয়নি। এই উপাত্ত প্রতি তিন ঘণ্টায় হালনাগাদ হয়।",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "কোনো পরামর্শগ্রহীতা খুঁজে পাওয়া যায়নি",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "পরামর্শগ্রহীতাকে খুঁজে পেতে ছাঁকনি পরিবর্তন করুন।",
 	"growthexperiments-mentor-dashboard-resources-headline": "সংস্থানসমূহ",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "মেন্টরের তালিকা",
-	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "কীভাবে নিজেকে একজন মেন্টর হিসেবে উপস্থাপন করবেন",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "কীভাবে {{GENDER:|নিজেকে}} একজন {{GENDER:|মেন্টর}} হিসেবে উপস্থাপন করবেন",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "কীভাবে পরামর্শগ্রহীতা দাবি করবেন",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "গ্রোথ সরঞ্জাম",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "সেটিংস",

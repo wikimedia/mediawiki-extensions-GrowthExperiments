@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bdijkstra",
 			"Mainframe98",
 			"McDutchie",
 			"Romaine",
@@ -10,7 +11,7 @@
 	"growthexperiments-mentor-dashboard-title": "Mentordashboard",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentordashboard",
 	"growthexperiments-mentor-dashboard-disabled": "Het mentordashboard is niet ingeschakeld op deze wiki.",
-	"growthexperiments-mentor-dashboard-must-be-mentor": "Om het mentordashboard in te schakelen, moet {{GENDER:|you}} eerst [[$1|inschrijven als mentor]].",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Om het mentordashboard in te schakelen, moet {{GENDER:|u}} eerst [[$1|inschrijven als mentor]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Voordat het mentordashboard kan worden gebruikt, moet eerst de mentorlijst worden ingesteld. Een beheerder kan daarvoor [[Special:EditGrowthConfig]] gebruiken.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Uw}} leerlingen",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Hieronder staan {{GENDER:|uw}} leerlingen. Met de filters kunt u bepalen welke leerlingen worden weergegeven.",
@@ -56,7 +57,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "De mentorlijst",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Mentoren beheren",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Lijst met mentoren bekijken",
-	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Hoe introduceeru u {{GENDER:|zichzelf}} als {{GENDER:|mentor}}",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Hoe introduceert u {{GENDER:|zichzelf}} als {{GENDER:|mentor}}",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Hoe een leerling claimen",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Groeihulpmiddelen",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Instellingen",

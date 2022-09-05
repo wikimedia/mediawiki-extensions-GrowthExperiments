@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"बडा काजी"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "हालको प्रयोगकर्ताको लागि मद्दत बाकस मार्फत लेखिएका प्रश्नहरू व्यवस्थापन गर्नुहोस्।",
+	"apihelp-helppanelquestionposter-param-body": "प्रयोगकर्ता द्वारा प्रदान गरिएको प्रश्नको शब्दहरू।",
+	"apihelp-helppanelquestionposter-param-source": "विधि जसद्वारा प्रश्न लेखिएको थियो।",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"सहायता कक्षलाई सोध्नुहोस्\" बाकस",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "नयाँ आगन्तुक गृहपृष्ठमा \"तपाईंको सल्लाहकारलाई सोध्नुहोस्\" बाकस",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "मद्दतमा \"तपाईंको सल्लाहकारलाई सोध्नुहोस्\" बाकस",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"सहायता कक्षलाई सोध्नुहोस्\" बाकस (पुरानो नाम)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "नयाँ आगमनको गृहपृष्ठमा रहेको \"आफ्नो सल्लाहकारलाई सोध्नुहोस्\" बाकस (पुरानो नाम)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "सान्दर्भिक शीर्षक, यदि चयन गरिएको छ भने, प्रश्न सहित समावेश गर्न।",
+	"apierror-mustbeloggedin-helppanelquestionposter": "प्रश्न सोध्नको लागि तपाईंले प्रवेश गर्नु पर्छ।"
+}
