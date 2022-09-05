@@ -15,6 +15,8 @@ use TitleValue;
  */
 class SubpageUserImpactLookup implements UserImpactLookup {
 
+	use ExpensiveUserImpactFallbackTrait;
+
 	private const SUBPAGE_NAME = 'userimpact.json';
 
 	/** @var WikiPageFactory */
@@ -36,7 +38,7 @@ class SubpageUserImpactLookup implements UserImpactLookup {
 	}
 
 	/** @inheritDoc */
-	public function getUserImpact( UserIdentity $user, bool $useLatest = false ): ?UserImpact {
+	public function getUserImpact( UserIdentity $user ): ?UserImpact {
 		$subpageTitle = new TitleValue( NS_USER, $user->getName() . '/' . self::SUBPAGE_NAME );
 		$subpage = $this->wikiPageFactory->newFromLinkTarget( $subpageTitle );
 

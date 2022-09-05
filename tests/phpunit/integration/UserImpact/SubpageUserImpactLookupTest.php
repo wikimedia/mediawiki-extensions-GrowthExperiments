@@ -65,6 +65,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			$userImpact1,
 			$lookup->getUserImpact( UserIdentityValue::newRegistered( 1, 'User1' ) )
 		);
+		$this->assertNull( $lookup->getExpensiveUserImpact( UserIdentityValue::newRegistered( 1, 'User1' ) ) );
 		$this->assertNull( $lookup->getUserImpact( UserIdentityValue::newRegistered( 2, 'User2' ) ) );
 
 		$lookup = new SubpageUserImpactLookup( $wikiPageFactory, new StaticUserImpactLookup( [

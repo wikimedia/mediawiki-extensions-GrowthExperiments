@@ -58,7 +58,9 @@ class ExpensiveUserImpact extends UserImpact {
 
 	/**
 	 * Day => number of total pageviews the articles edited by the user (on any day) got on that day.
-	 * Indexed with ISO 8601 dates, e.g. '2022-08-25'.
+	 * Indexed with ISO 8601 dates, e.g. '2022-08-25'. The list of days is contiguous, in ascending
+	 * order, and ends more or less at the current day (might be a few days off to account for data
+	 * collection lags).
 	 * Might exclude edits made many days or many edits ago.
 	 * @return int[]
 	 */
@@ -68,8 +70,10 @@ class ExpensiveUserImpact extends UserImpact {
 
 	/**
 	 * Title DBkey => day => number of pageviews the given article got on that day.
-	 * Days are indexed with ISO 8601 dates, e.g. '2022-08-25'.
-	 * Titles have no namespace and are always assumed to be in the article space.
+	 * Titles are in prefixed DBkey format.
+	 * Days are indexed with ISO 8601 dates, e.g. '2022-08-25'. The list of days is contiguous,
+	 * in ascending order, and ends more or less at the current day (might be a few days off to
+	 * account for data collection lags).
 	 * @return int[][]
 	 */
 	public function getDailyArticleViews(): array {

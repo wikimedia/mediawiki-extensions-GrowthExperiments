@@ -111,7 +111,7 @@ class UserImpact implements JsonSerializable {
 
 	/**
 	 * Map of day => number of edits the user made on that day.
-	 * Indexed with ISO 8601 dates, e.g. '2022-08-25'.
+	 * Indexed with ISO 8601 dates, e.g. '2022-08-25'. Dates aren't contiguous.
 	 * Might exclude edits made many edits ago.
 	 * @return int[]
 	 */

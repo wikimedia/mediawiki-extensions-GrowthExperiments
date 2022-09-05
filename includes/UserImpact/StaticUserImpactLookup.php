@@ -6,6 +6,8 @@ use MediaWiki\User\UserIdentity;
 
 class StaticUserImpactLookup implements UserImpactLookup {
 
+	use ExpensiveUserImpactFallbackTrait;
+
 	/** @var UserImpact[] User ID => user impact */
 	private $userImpacts;
 
@@ -17,7 +19,7 @@ class StaticUserImpactLookup implements UserImpactLookup {
 	}
 
 	/** @inheritDoc */
-	public function getUserImpact( UserIdentity $user, bool $useLatest = false ): ?UserImpact {
+	public function getUserImpact( UserIdentity $user ): ?UserImpact {
 		return $this->userImpacts[$user->getId()] ?? null;
 	}
 

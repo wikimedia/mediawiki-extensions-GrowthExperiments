@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWiki\User\UserIdentityValue;
@@ -24,19 +25,33 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 				80,
 				wfTimestamp( TS_UNIX, '20200101000000' )
 			),
-			2 => new UserImpact(
+			2 => new ExpensiveUserImpact(
 				UserIdentityValue::newRegistered( 2, 'User2' ),
 				20,
 				[ NS_MAIN => 200, NS_TALK => 20, NS_USER_TALK => 30 ],
 				[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 				new UserTimeCorrection( 'System|0' ),
 				90,
-				wfTimestamp( TS_UNIX, '20200909000000' )
+				wfTimestamp( TS_UNIX, '20200909000000' ),
+				[ '2022-08-24' => 100, '2022-08-25' => 150 ],
+				[
+					'Foo' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],
+					'Bar' => [ '2022-08-24' => 30, '2022-08-25' => 40 ],
+				]
 			),
 		];
 		$lookup = new StaticUserImpactLookup( $userImpacts );
-		$this->assertSame( $userImpacts[1], $lookup->getUserImpact( UserIdentityValue::newRegistered( 1, 'User1' ) ) );
-		$this->assertSame( $userImpacts[2], $lookup->getUserImpact( UserIdentityValue::newRegistered( 2, 'User2' ) ) );
+
+		$userImpact = $lookup->getUserImpact( UserIdentityValue::newRegistered( 1, 'User1' ) );
+		$this->assertSame( $userImpacts[1], $userImpact );
+		$userImpact = $lookup->getExpensiveUserImpact( UserIdentityValue::newRegistered( 1, 'User1' ) );
+		$this->assertNull( $userImpact );
+
+		$userImpact = $lookup->getUserImpact( UserIdentityValue::newRegistered( 2, 'User2' ) );
+		$this->assertSame( $userImpacts[2], $userImpact );
+		$userImpact = $lookup->getExpensiveUserImpact( UserIdentityValue::newRegistered( 2, 'User2' ) );
+		$this->assertSame( $userImpacts[2], $userImpact );
+
 		$this->assertNull( $lookup->getUserImpact( UserIdentityValue::newRegistered( 3, 'User3' ) ) );
 	}
 

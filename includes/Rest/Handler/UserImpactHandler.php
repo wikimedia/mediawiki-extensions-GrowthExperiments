@@ -34,7 +34,11 @@ class UserImpactHandler extends SimpleHandler {
 	 */
 	public function run( UserIdentity $user ) {
 		$useLatest = $this->getValidatedParams()['useLatest'] ?? false;
-		$userImpact = $this->userImpactLookup->getUserImpact( $user, $useLatest );
+		if ( $useLatest ) {
+			$userImpact = $this->userImpactLookup->getUserImpact( $user );
+		} else {
+			$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
+		}
 		if ( !$userImpact ) {
 			throw new HttpException( 'Impact data not found for user', 404 );
 		}
