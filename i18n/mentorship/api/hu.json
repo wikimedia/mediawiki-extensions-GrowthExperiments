@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lois131",
+			"Luckylukee81"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Mentorált megjelölése vagy jelölésének törlése az aktuális felhasználó által csillagozottként (privát tárolás és nem naplózott)",
+	"apihelp-growthstarmentee-param-gesaction": "(<kbd>Csillaggal</kbd> vagy <kbd>csillag nélkül</kbd>) végrehajtandó művelet",
+	"apihelp-growthstarmentee-param-gesmentee": "Mentorálttól a (nem) csillagig",
+	"apihelp-query+growthstarredmentees-summary": "A jelenleg bejelentkezett mentor által csillaggal megjelölt mentoráltak listája"
+}

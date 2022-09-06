@@ -4,7 +4,8 @@
 			"Dj",
 			"Llz78",
 			"Tacsipacsi",
-			"Tgr"
+			"Tgr",
+			"Lois131"
 		]
 	},
 	"growthexperiments-desc": "Ez a kiterjesztés a Növekedés (Growth) csapat kísérleteit tartalmazza.",
@@ -62,8 +63,14 @@
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "A csak kézzel hozzárendelt mentorok listáját tartalmazó lap",
 	"growthexperiments-edit-config-newcomertasks": "Javasolt szerkesztések",
 	"growthexperiments-edit-config-newcomer-tasks-description": "A javasolt szerkesztések bizonyos típusait karbantartó sablonok segítségével találja meg a rendszer, az ilyen sablonokat tartalmazó szócikkek kerülnek be a feladatfolyamba. Az egyes feladattípusokhoz elérhető feladatok száma az [[Special:NewcomerTasksInfo|új szerkesztő feladata]] lapon látható.",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Copy editing: sablonok, melyekkel megtalálhatóak a szerkesztésre szoruló szócikkek, például helyesírási, nyelvtani és írásjel-javítás.",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Céloldal, ahol többet lehet megtudni a copy editing szerkesztésről.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Bővítés: a bővítendő szócikkek megtalálásához használt sablonok.",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Céloldal, ahol többet tudhatsz meg a szócikkek bővítéséről.",
 	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Hivatkozás: a több hivatkozást igénylő szócikkek megtalálásához használt sablonok.",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Céloldal, ahol többet tudhatsz meg a linkek hozzáadásáról.",
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Források: a több forráshivatkozást igénylő szócikkek megtalálásához használt sablonok.",
-	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Frissítés: az aktuális információkkal frissítendő szócikkek megtalálásához használt sablonok."
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Céloldal, ahol többet tudhatsz meg a hivatkozások hozzáadásáról.",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Frissítés: az aktuális információkkal frissítendő szócikkek megtalálásához használt sablonok.",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Céloldal, ahol többet tudhatsz meg a szócikkek frissítéséről."
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Lois131"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Új szerkesztőknek megfelelő feladatjavaslatok lekérése.",
@@ -9,6 +10,7 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Szűrés ezekre a feladattípusokra. Hagyd üresen az összes javaslat lekéréséhez.",
 	"apihelp-query+growthtasks-param-topics": "A javaslatok között preferált szócikktémák.",
 	"apihelp-query+growthtasks-param-limit": "A lekérendő feladatjavaslatok maximális száma.",
+	"apihelp-query+growthtasks-param-excludepageids": "A lekérdezésből kizárandó oldalazonosítók.",
 	"apihelp-query+growthtasks-param-debug": "Hibakeresési adatok belefoglalása a válaszba.",
 	"apihelp-query+growthtasks-example-1": "Korrektúrázás típusú feladatjavaslatok lekérése az aktuális felhasználónak.",
 	"apihelp-query+growthtasks-example-2": "Feladatjavaslatok lekérése az aktuális felhasználónak részletes adatokkal a lapokról."

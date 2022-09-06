@@ -4,7 +4,8 @@
 			"Hanna Tardos",
 			"Misibacsi",
 			"Tacsipacsi",
-			"Tgr"
+			"Tgr",
+			"Lois131"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentorvezérlőpult",
@@ -34,9 +35,14 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Legutóbbi hónapok",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Csak a megcsillagozott mentoráltak megjelenítése",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Keresés",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktív $1 ezelőtt",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "ismeretlen",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 mentorált/oldal",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1/$2. oldal",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Nem érhetők el mentoráltadatok",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Lehet, hogy még nincsenek mentoráltak hozzád rendelve. Az adatok naponta frissülnek.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nem találhatók mentoráltak",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Módosítsd a szűrőket mentoráltak kereséséhez.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Erőforrások",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "A mentorok listája",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Hogyan mutatkozz be mentorként",
@@ -47,5 +53,9 @@
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Azok a hozzád rendelt mentoráltak, akiket megcsillagoztál a mentorvezérlőpultodon",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "Meg nem csillagozott mentoráltjaid",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Egyéb hozzád rendelt mentoráltak",
-	"growthexperiments-quit-mentorship-title": "Mentorálás abbahagyása"
+	"growthexperiments-quit-mentorship-title": "Mentorálás abbahagyása",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Sajnálattal látom, hogy elmész. A mentorálásból való kilépés folyamatának megkezdéséhez először is el kell távolítanod a nevedet [[$1|a mentorok listájáról]]. Ha ezt megtetted, kérlek, térj vissza erre az oldalra.",
+	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "A mentorálásból való kilépés következő lépése a mentoráltok átcsoportosítása. Ha biztos vagy benne, hogy ki akarsz lépni, nyomd meg az alábbi gombot.",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Igen, a mentoráltjaim átcsoportosítása",
+	"growthexperiments-quit-mentorship-success": "A mentoráltjaid hamarosan más mentorok mellé kerülnek."
 }
