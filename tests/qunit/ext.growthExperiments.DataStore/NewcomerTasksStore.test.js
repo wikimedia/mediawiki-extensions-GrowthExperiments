@@ -321,12 +321,13 @@ QUnit.module( 'Actions', function () {
 				tasks: randomTaskSet( 2, qualityConfig ),
 				count: 3
 			} ) );
-			this.sandbox.spy( tasksStore, 'emit' );
-			tasksStore.fetchTasks( 'test' ).then( () => {
+
+			tasksStore.on( EVENT_TASK_QUEUE_CHANGED, () => {
 				assert.deepEqual( tasksStore.getTaskCount(), 2 );
-				assert.true( tasksStore.emit.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
 				done();
 			} );
+
+			tasksStore.fetchTasks( 'test' );
 		} );
 
 		QUnit.test( 'should pass the page ID to exclude in the API config if one is passed to fetchTasks', function ( assert ) {
