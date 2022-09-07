@@ -2,18 +2,29 @@
 	"@metadata": {
 		"authors": [
 			"पर्वत सुबेदी",
-			"Bada Kaji"
+			"Bada Kaji",
+			"बडा काजी"
 		]
 	},
 	"growthexperiments-desc": "यस विस्तारमा ग्रोथ टोलीद्वारा गरिएका प्रयोगहरू समावेश छन्।",
+	"growthexperiments-config-validator-array-toobig": "$1मा धेरै वस्तुहरू छन् (अधिकतम $2 लाई अनुमति दिइएको छ)",
+	"growthexperiments-edit-config-disabled": "सामुदायिक कन्फिगरेसन हाल असक्षम गरिएको छ।",
+	"growthexperiments-edit-config-last-edit": "[[$3]]:पछिल्लो पटक [[User:$1|$1]] $2 ([$4 अन्तर]) द्वारा सम्पादन गरिएको थियो।",
+	"growthexperiments-edit-config-feedback-headline": "के तपाइँसँग यो फारमको बारेमा विचार वा प्रश्नहरू छन्?",
 	"growthexperiments-edit-config-feedback-cta": "सुझाव दिनुहोस्",
 	"growthexperiments-edit-config-edit-summary": "सम्पादन सारांश",
+	"growthexperiments-edit-config-help-panel": "मद्दत बाकसको अभिरुचिहरू",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "पृष्ठको शीर्ष",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "पृष्ठको तल",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "सल्लाहकार वार्ता पृष्ठहरू",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "सहायता केन्द्र",
+	"growthexperiments-edit-config-help-panel-links": "सहायता कक्ष बाकस कडीहरू",
 	"growthexperiments-edit-config-homepage": "नयाँ आगमन गृहपृष्ठ",
+	"growthexperiments-edit-config-mentorship": "सल्लाहकार",
+	"growthexperiments-edit-config-mentorship-enabled": "के सल्लाहकार सुविधाहरू सक्षम छन्?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "हो",
 	"growthexperiments-edit-config-mentorship-enabled-false": "होइन",
 	"growthexperiments-edit-config-newcomertasks": "सुझाइएका सम्पादनहरू",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "निरस्त",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "जानकारी बाकस ढाँचाहरू"
 }

@@ -74,9 +74,18 @@
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|თქვენ}} ამჟამად არ გყავთ მოწაფეები.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|გადადგა}} მენტორობიდან.",
 	"echo-category-title-ge-mentorship": "მენტორობა",
+	"echo-pref-tooltip-ge-mentorship": "შეტყობინებები, რომლებიც დაკავშირებულია მენტორობის ფუნქციებთან, შემუშავებულია Growth team-ის მიერ. ეს შეტყობინება გაცნობებთ, რომ თქვენ როგორც მოწაფეს მოგიჩინეს მენტორი, ან თქვენი ერთ-ერთი მოწაფე აიყვანა სხვა მენტორმა.",
+	"growthexperiments-notification-header-mentee-claimed": "თქვენი {{GENDER:$3|მოწაფე}}, $3, {{GENDER:$2|აიყვანა}} $1-მა.",
 	"growthexperiments-notification-body-mentee-claimed": "მიზეზი: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "რა არის „მოწაფის აყვანა“?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "თქვენთვის მიჩენილი მოწაფეების რაოდენობა",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "ჩვეულებრივი მაჩვენებლის დაახლ. ნახევარი",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "ჩვეულებრივი მაჩვენებელი (ნაგულისხმევად)"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "ჩვეულებრივი მაჩვენებელი (ნაგულისხმევად)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "ჩვეულებრივი მაჩვენებელზე დაახლ. ორჯერ მეტი",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|თქვენი}} ჩატვირთვა შეიცვალა „$1“-ით.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "მოწაფეები მათი ანგარიშების შექმნის დროს შემთხვევითობის გზით მიეჩინება მენტორებს. თქვენ შეგიძლიათ მართოთ რამდენი მოწაფე მიგიჩინონ, მაგრამ ზოგიერთმა მათგანმა შეიძლება უფრო ხშირად დასვას კითხვები, ვიდრე სხვებმა",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "რეკომენდებულია დაიწყოთ „საშუალო“ პარამეტრით, რათა გაზრდამდე ან შემცირებამდე შეაფასოთ თქვენი დახმარების შესაძლებლობები.",
+	"growthexperiments-mentor-list-missing-key": "გასაღები <code>$1</code> აკლია",
+	"growthexperiments-mentor-list-datatype-mismatch": "სავარაუდოდ <code>$1</code> უნდა იყოს <code>$2</code>, მაგრამ არის <code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "მენტორის განსაზღვრება შეიცავს მოულოდნელ გასაღებს <code>$1</code>"
 }

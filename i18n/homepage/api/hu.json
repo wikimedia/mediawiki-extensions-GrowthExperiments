@@ -3,7 +3,8 @@
 		"authors": [
 			"Samat",
 			"Tacsipacsi",
-			"Tgr"
+			"Tgr",
+			"Lois131"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "A kezdőlapi modulon keresztül közzétett formázott kérdések elérése.",
@@ -14,5 +15,7 @@
 	"apihelp-growthsetmentor-summary": "Egy felhasználó mentorának megváltoztatása. A változtatás nyilvánosan naplózva lesz.",
 	"apihelp-growthsetmentor-param-mentee": "Mentorált felhasználóneve",
 	"apihelp-growthsetmentor-param-mentor": "Mentor felhasználóneve",
-	"apihelp-growthsetmentor-param-reason": "Változtatás oka"
+	"apihelp-growthsetmentor-param-reason": "Változtatás oka",
+	"apihelp-growthinvalidateimagerecommendation-summary": "A képajánlási feladat érvénytelen",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "A szócikk címe a képajánló feladat"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Lois131"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Új szerkesztőknek megfelelő feladatjavaslatok lekérése.",
@@ -9,7 +10,15 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Szűrés ezekre a feladattípusokra. Hagyd üresen az összes javaslat lekéréséhez.",
 	"apihelp-query+growthtasks-param-topics": "A javaslatok között preferált szócikktémák.",
 	"apihelp-query+growthtasks-param-limit": "A lekérendő feladatjavaslatok maximális száma.",
+	"apihelp-query+growthtasks-param-excludepageids": "A lekérdezésből kizárandó oldalazonosítók.",
 	"apihelp-query+growthtasks-param-debug": "Hibakeresési adatok belefoglalása a válaszba.",
 	"apihelp-query+growthtasks-example-1": "Korrektúrázás típusú feladatjavaslatok lekérése az aktuális felhasználónak.",
-	"apihelp-query+growthtasks-example-2": "Feladatjavaslatok lekérése az aktuális felhasználónak részletes adatokkal a lapokról."
+	"apihelp-query+growthtasks-example-2": "Feladatjavaslatok lekérése az aktuális felhasználónak részletes adatokkal a lapokról.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Az 'accepted' paraméter hiányzik a Kép hozzáadása beépülő plugin adataiból",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Az 'accepted' paraméternek logikai értéknek kell lennie a Kép hozzáadása beépülő modulban, ez $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "A „reason” paraméter hiányzik a Kép hozzáadása beépülő modul adataiból",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "A „reason” paraméternek egy tömbnek kell lennie a Kép hozzáadása beépülő modulban, ez $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Érvénytelen „ $1 ” elem a „reason” paraméterben, a következők egyikének kell lennie: $2",
+	"apierror-growthexperiments-addlink-handler-notfound": "A hivatkozási ajánlás rekordja nem található",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Váratlan linkajánlási célok: $1"
 }

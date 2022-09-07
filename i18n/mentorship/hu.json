@@ -4,7 +4,8 @@
 			"Hanna Tardos",
 			"Misibacsi",
 			"Tacsipacsi",
-			"Tgr"
+			"Tgr",
+			"Lois131"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentorvezérlőpult",
@@ -37,6 +38,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Szűrés az elmúlt {{PLURAL:$1|hónapban|$2 hónapban}} aktív mentoráltakra",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Csak a megcsillagozott mentoráltak megjelenítése",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Keresés",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktív $1 ezelőtt",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "ismeretlen",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 mentorált/oldal",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1/$2. oldal",
@@ -55,6 +57,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentorstátusz",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktív",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Távol",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Mivel $1 ideig távol vagy, a tanítványaidat ideiglenesen más mentorhoz osztják be.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "„Távol” státusz beállítása",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Mégse",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Szünet",
@@ -73,11 +76,25 @@
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "Meg nem csillagozott mentoráltjaid",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Egyéb hozzád rendelt mentoráltak",
 	"growthexperiments-quit-mentorship-title": "Mentorálás abbahagyása",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Sajnálattal látom, hogy elmész. A mentorálásból való kilépés folyamatának megkezdéséhez először is el kell távolítanod a nevedet [[$1|a mentorok listájáról]]. Ha ezt megtetted, kérlek, térj vissza erre az oldalra.",
+	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "A mentorálásból való kilépés következő lépése a mentoráltok átcsoportosítása. Ha biztos vagy benne, hogy ki akarsz lépni, nyomd meg az alábbi gombot.",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Igen, a mentoráltjaim átcsoportosítása",
+	"growthexperiments-quit-mentorship-success": "A mentoráltjaid hamarosan más mentorok mellé kerülnek.",
+	"growthexperiments-quit-mentorship-no-mentees": "Jelenleg nincsenek mentoráltjaid.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 nyugdíjba ment a mentorálásból.",
+	"echo-category-title-ge-mentorship": "Mentorálás",
+	"echo-pref-tooltip-ge-mentorship": "A Növekedési csapat által karbantartott mentori funkciókkal kapcsolatos értesítések. Ez az értesítés tudatja, hogy mentoráltnak minősülsz, vagy az egyik mentorált valaki más igényt tartott rád.",
+	"growthexperiments-notification-header-mentee-claimed": "A $3 nevű mentoráltodat $2|igényelte $1.",
+	"growthexperiments-notification-body-mentee-claimed": "Indoklás: $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Mi az a „mentorált igénylés”?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "A hozzám rendelt mentoráltak száma",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Az átlag kb. fele",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Átlagos (alapértelmezett)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Az átlag kb. duplája",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "A terhelésed „$1” értékre változott.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "A mentoráltak véletlenszerűen lesznek hozzárendelve mentorokhoz a regisztrációkor. Szabályozhatod, hogy mennyi mentorált lesz hozzád rendelve, de egyes mentoráltak többet kérdeznek, mint mások.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Ajánlott az „Átlagos” beállítással kezdeni, hogy felmérd a teherbírásodat a mentoráltak számának növelése vagy csökkentése előtt."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Ajánlott az „Átlagos” beállítással kezdeni, hogy felmérd a teherbírásodat a mentoráltak számának növelése vagy csökkentése előtt.",
+	"growthexperiments-mentor-list-missing-key": "A <code>$1</code> kulcs hiányzik",
+	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> várt típusa <code>$2</code>, de a tényleges típus <code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "A mentordefiníció egy váratlan <code>$1</code> kulcsot tartalmaz"
 }
