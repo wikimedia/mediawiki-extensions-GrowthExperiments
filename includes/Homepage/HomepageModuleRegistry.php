@@ -14,6 +14,7 @@ use GrowthExperiments\HomepageModules\NewImpact;
 use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\StartEmail;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\HomepageModules\WelcomeSurveyReminder;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use OutOfBoundsException;
@@ -83,6 +84,20 @@ class HomepageModuleRegistry {
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getExperimentUserManager()
+				);
+			},
+
+			'welcomesurveyreminder' => static function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				return new WelcomeSurveyReminder(
+					$context,
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getExperimentUserManager(),
+					$services->getSpecialPageFactory(),
+					$growthServices->getWelcomeSurveyFactory()
 				);
 			},
 

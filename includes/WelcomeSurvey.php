@@ -11,6 +11,7 @@ use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\User\UserOptionsManager;
 use MWTimestamp;
 use stdClass;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\RemexHtml\HTMLData;
 use Wikimedia\RemexHtml\Serializer\SerializerNode;
 
@@ -124,6 +125,66 @@ class WelcomeSurvey {
 		}
 
 		return false;
+	}
+
+	/**
+	 * True if the context user has not filled out the welcome survey and should
+	 * be reminded to do so.
+	 * More precisely, true if none of the conditions below are true:
+	 * - The user has submitted the survey.
+	 * - At least $wgWelcomeSurveyReminderExpiry days have passed since the user has registered.
+	 * - The user is past the survey retention period; they might or might not have
+	 *   filled out the survey, but if they did, the data was already discarded.
+	 * - The user has pressed the "Skip" button on the survey.
+	 * - The user is in an A/B test group which is not supposed to get the survey.
+	 * @return bool
+	 */
+	public function isUnfinished(): bool {
+		$registrationDate = $this->context->getUser()->getRegistration() ?: null;
+		if ( !$registrationDate ) {
+			// User is anon or has registered a long, long time ago when MediaWiki had no logging for it.
+			return false;
+		}
+		$registrationTimestamp = (int)wfTimestamp( TS_UNIX, $registrationDate );
+		$expiryDays = $this->context->getConfig()->get( 'WelcomeSurveyReminderExpiry' );
+		$expirySeconds = $expiryDays * ExpirationAwareness::TTL_DAY;
+		if ( $registrationTimestamp + $expirySeconds < MWTimestamp::now( TS_UNIX ) ) {
+			// The configured reminder expiry has passed.
+			return false;
+		}
+
+		// Survey data can be written by the user via options API so don't assume any structure.
+		$data = $this->loadSurveyData();
+		$group = $data->_group ?? null;
+		$skipped = ( $data->_skip ?? null ) === true;
+		$submitted = ( $data->_submit_date ?? null ) !== null;
+
+		if ( !$data ) {
+			// Either the user is past the data retention period and all data was discarded
+			// (in which case we don't know if they ever filled out the survey but months
+			// have passed since they registered so it's fine to consider the survey as
+			// intentionally not filled out), or WelcomeSurveyHooks::onBeforeWelcomeCreation()
+			// did not run for some reason (maybe the feature wasn't enabled when they registered).
+			return false;
+		} elseif ( $skipped ) {
+			// User chose not to fill out the survey. Somewhat arbitrarily, we consider that
+			// as finishing it.
+			return false;
+		} elseif ( $submitted ) {
+			// User did fill out the survey.
+			return false;
+		}
+
+		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
+		$questions = $groups[ $group ][ 'questions' ] ?? null;
+		if ( !$questions ) {
+			// This is an A/B test control group, the user should never see the survey.
+			// Or maybe the configuration changed, and this group does not exist anymore,
+			// in which case we'll just ignore it.
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -315,6 +376,15 @@ class WelcomeSurvey {
 			]
 		);
 		$this->saveSurveyData( $results );
+	}
+
+	/**
+	 * Save the survey as skipped.
+	 * @return void
+	 */
+	public function dismiss() {
+		$group = $this->loadSurveyData()->_group ?? self::DEFAULT_SURVEY_GROUP;
+		$this->handleResponses( [], true, $group, wfTimestampNow() );
 	}
 
 	/**

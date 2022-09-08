@@ -23,8 +23,10 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		$growthExperimentsServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$services = MediaWikiServices::getInstance();
+		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
 		return new SpecialWelcomeSurvey(
+			$services->getSpecialPageFactory(),
 			$growthExperimentsServices->getWelcomeSurveyFactory(),
 			new WelcomeSurveyLogger( new NullLogger() )
 		);

@@ -68,6 +68,7 @@ class WelcomeSurveyHooks implements
 		if ( $this->isWelcomeSurveyEnabled() ) {
 			$list[ 'WelcomeSurvey' ] = function () {
 				return new SpecialWelcomeSurvey(
+					$this->specialPageFactory,
 					$this->welcomeSurveyFactory,
 					new WelcomeSurveyLogger(
 						LoggerFactory::getInstance( 'GrowthExperiments' )
