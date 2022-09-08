@@ -408,10 +408,6 @@
 		"JsonValidateSave": "config",
 		"SkinAddFooterLinks": "variant",
 		"SidebarBeforeOutput": "homepage",
-		"PersonalUrls": [
-			"homepage",
-			"mentordashboarddiscovery"
-		],
 		"MessageCache::get": "earlylifecycle",
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
@@ -441,7 +437,8 @@
 		"EditFilterMergedContent": "config",
 		"SkinTemplateNavigation::Universal": [
 			"config",
-			"homepage"
+			"homepage",
+			"mentordashboarddiscovery"
 		],
 		"ResourceLoaderGetConfigVars": "variant",
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",

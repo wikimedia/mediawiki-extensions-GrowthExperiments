@@ -53,7 +53,6 @@ use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Content\Hook\SearchDataForIndexHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
-use MediaWiki\Hook\PersonalUrlsHook;
 use MediaWiki\Hook\RecentChange_saveHook;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Hook\SiteNoticeAfterHook;
@@ -103,7 +102,6 @@ class HomepageHooks implements
 	BeforePageDisplayHook,
 	SkinTemplateNavigation__UniversalHook,
 	SidebarBeforeOutputHook,
-	PersonalUrlsHook,
 	GetPreferencesHook,
 	UserGetDefaultOptionsHook,
 	ResourceLoaderExcludeUserOptionsHook,
@@ -499,7 +497,7 @@ class HomepageHooks implements
 	 */
 	public function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
 		$user = $skin->getUser();
-
+		$this->personalUrlsBuilder( $skin, $links, $user );
 		if ( !self::isHomepageEnabled( $user ) ) {
 			return;
 		}
@@ -574,23 +572,27 @@ class HomepageHooks implements
 	/**
 	 * Conditionally make the userpage link go to the homepage.
 	 *
-	 * @param array &$personal_urls
-	 * @param Title &$title
-	 * @param SkinTemplate $sk
+	 * @param SkinTemplate $skin
+	 * @param array &$links
+	 * @param User $user
 	 * @throws ConfigException
 	 */
-	public function onPersonalUrls( &$personal_urls, &$title, $sk ): void {
-		$user = $sk->getUser();
-		if ( Util::isMobile( $sk ) || !self::isHomepageEnabled( $user ) ) {
+	public function personalUrlsBuilder( $skin, &$links, $user ): void {
+		if ( Util::isMobile( $skin ) || !self::isHomepageEnabled( $user ) ) {
 			return;
 		}
 
 		if ( $this->userHasPersonalToolsPrefEnabled( $user ) ) {
-			$personal_urls['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl( $title->getNamespace() );
+			$links['user-menu']['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl(
+				$skin->getTitle()->getNamespace()
+			);
+			$links['user-page']['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl(
+				$skin->getTitle()->getNamespace()
+			);
 			// Make the link blue
-			unset( $personal_urls['userpage']['link-class'] );
+			unset( $links['user-menu']['userpage']['link-class'] );
 			// Remove the "this page doesn't exist" part of the tooltip
-			$personal_urls['userpage' ]['exists'] = true;
+			$links['user-menu']['userpage' ]['exists'] = true;
 		}
 	}
 
@@ -910,9 +912,13 @@ class HomepageHooks implements
 				$context->getTitle()->getNamespace()
 			);
 			unset( $links['user-menu']['userpage'] );
+			unset( $links['user-page']['userpage'] );
 			$links['user-menu'] = [
 				'homepage' => $userItem,
 			] + $links['user-menu'];
+			$links['user-page'] = [
+					'homepage' => $userItem,
+			] + $links['user-page'];
 		}
 	}
 
