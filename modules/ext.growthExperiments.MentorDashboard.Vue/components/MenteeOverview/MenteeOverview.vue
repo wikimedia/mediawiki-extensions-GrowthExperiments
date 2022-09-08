@@ -50,8 +50,7 @@ const MenteeFilters = require( './MenteeFilters.vue' );
 const NoResults = require( './NoResults.vue' );
 const InfoBox = require( './InfoBox.vue' );
 const { cdxIconError, cdxIconClock } = require( '../icons.json' );
-const MenteeOverviewApi = require( '../../../ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js' );
-const apiClient = new MenteeOverviewApi();
+const apiClient = require( '../../../ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js' );
 
 const MENTEES_TABLE_COLUMNS = [
 	{

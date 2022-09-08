@@ -148,6 +148,7 @@
 		} ).then( function () {
 			// Do not use this.starredMentees directly, as that might not be inited yet
 			return menteeOverviewApi.getStarredMentees().then( function () {
+				// REVIEW consider rephrasing the comment.
 				// In case GetStarredMentees fallbacked to API, this is actually
 				// not neeeded. Since this is a set, it doesn't matter much.
 				menteeOverviewApi.starredMentees.push( Number( userId ) );
@@ -181,5 +182,5 @@
 		} );
 	};
 
-	module.exports = MenteeOverviewApi;
+	module.exports = new MenteeOverviewApi();
 }() );

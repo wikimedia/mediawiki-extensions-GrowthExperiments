@@ -2,7 +2,7 @@
 ( function () {
 	'use strict';
 
-	var MenteeOverviewApi = require( './MenteeOverviewApi.js' ),
+	var apiClient = require( './MenteeOverviewApi.js' ),
 		MenteeOverviewPresets = require( './MenteeOverviewPresets.js' ),
 		Pagination = require( './Pagination.js' ),
 		FilterDropdown = require( './FilterDropdown.js' ),
@@ -20,7 +20,7 @@
 		MenteeOverview.super.call( this, config );
 
 		// construct api client and presets client
-		this.apiClient = new MenteeOverviewApi();
+		this.apiClient = apiClient;
 		this.presetsClient = new MenteeOverviewPresets();
 
 		// construct filtering interface
