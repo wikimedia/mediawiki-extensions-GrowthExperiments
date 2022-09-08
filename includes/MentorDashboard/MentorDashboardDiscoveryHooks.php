@@ -5,12 +5,12 @@ namespace GrowthExperiments\MentorDashboard;
 use Config;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Hook\BeforePageDisplayHook;
-use MediaWiki\Hook\PersonalUrlsHook;
+use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use SpecialPage;
 
-class MentorDashboardDiscoveryHooks implements PersonalUrlsHook, BeforePageDisplayHook {
+class MentorDashboardDiscoveryHooks implements SkinTemplateNavigation__UniversalHook, BeforePageDisplayHook {
 
 	public const MENTOR_DASHBOARD_SEEN_PREF = 'growthexperiments-mentor-dashboard-seen';
 
@@ -54,10 +54,11 @@ class MentorDashboardDiscoveryHooks implements PersonalUrlsHook, BeforePageDispl
 	/**
 	 * @inheritDoc
 	 */
-	public function onPersonalUrls( &$personalUrls, &$title, $skin ): void {
+	public function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
 		if ( !$this->isDiscoveryEnabled( $skin->getUser() ) ) {
 			return;
 		}
+		$personalUrls = $links['user-menu'] ?? [];
 
 		$newPersonalUrls = [];
 		foreach ( $personalUrls as $key => $link ) {
@@ -72,7 +73,7 @@ class MentorDashboardDiscoveryHooks implements PersonalUrlsHook, BeforePageDispl
 			$newPersonalUrls[$key] = $link;
 		}
 
-		$personalUrls = $newPersonalUrls;
+		$links['user-menu'] = $newPersonalUrls;
 	}
 
 	/**
