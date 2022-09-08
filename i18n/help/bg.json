@@ -94,7 +94,7 @@
 	"growthexperiments-help-panel-search-no-results": "Не бяха открити резултати.",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Предложение за редактиране",
 	"growthexperiments-help-panel-button-header-ask-help": "Попитайте бюрото за помощ",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Попитайте за помощ Вашия ментор",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Помолете за помощ {{GENDER:$1|Вашия ментор}}",
 	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|редакция|редакции}} · $2",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Относно предложените редакции",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Вие}} използвате редактора на уикикод. Тези насоки за редактиране са най-полезни при визуалния редактор.",
