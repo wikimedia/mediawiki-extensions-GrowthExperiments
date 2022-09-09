@@ -7,8 +7,8 @@
 			"हिमाल सुबेदी"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|नमस्कार}}, {{bidi: $1}}!",
-	"growthexperiments-homepage-tab": "मुख्य पृष्ठ",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|नमस्कार}}, {{bidi: $1}}ज्यू!",
+	"growthexperiments-homepage-tab": "गृहपृष्ठ",
 	"tooltip-pt-homepage": "{{GENDER:|तपाईं}}को गृह पृष्ठ",
 	"prefs-homepage": "नयाँ आगमन सम्पादक सुविधाहरू",
 	"growthexperiments-homepage-enable": "नयाँ आगमन गृहपृष्ठ प्रदर्शन गर्नुहोस्",

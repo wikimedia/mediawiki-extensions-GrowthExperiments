@@ -52,5 +52,8 @@
 	"welcomesurvey-question-email-help": "Wir haben mitbekommen, dass du bei der Erstellung dieses Benutzerkontos keine E-Mail-Adresse angegeben hast. Dies wird <strong>dringend empfohlen</strong>, da eine E-Mail-Adresse zur Wiederherstellung deines Benutzerkontos benötigt wird, falls du jemals dein Passwort verlieren solltest. HINWEIS: Deine E-Mail-Adresse wird nicht veröffentlicht, wenn du mit anderen Benutzern in Kontakt trittst.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} ist verfügbar in nahezu 300 Sprachen. Kannst du in anderen Sprachen Lesen und Schreiben?",
 	"welcomesurvey-question-languages-placeholder": "Ergänze bis zu {{PLURAL:$1|eine Sprache|$1 Sprachen}} …",
-	"welcomesurvey-question-languages-maximum": "Du hast die maximale Anzahl an Sprachen hinzugefügt."
+	"welcomesurvey-question-languages-maximum": "Du hast die maximale Anzahl an Sprachen hinzugefügt.",
+	"welcomesurvey-reminder": "Hilf uns dabei, {{GENDER:|deine}} Erfahrungen mit Wikipedia zu verbessern, indem du einige optionale Fragen in unserer Willkommensumfrage beantwortest. $1",
+	"welcomesurvey-reminder-link": "Die Umfrage starten",
+	"welcomesurvey-reminder-dismiss": "Ausblenden"
 }
