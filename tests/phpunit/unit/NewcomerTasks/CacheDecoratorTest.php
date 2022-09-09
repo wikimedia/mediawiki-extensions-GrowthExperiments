@@ -92,13 +92,13 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilters,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
@@ -109,13 +109,13 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => StatusValue::newFatal( 'error' ),
 						],
 						'filter' => null,
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilters,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
@@ -126,13 +126,13 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilters,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
@@ -144,7 +144,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 						],
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilters,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
@@ -155,25 +155,25 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => StatusValue::newFatal( 'error' ),
 						],
 						'filter' => null,
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilters,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilters,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
@@ -184,25 +184,25 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilters,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilterLinks, 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilterLinks, 15, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset2,
 						],
 						'filter' => null,
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilterLinks,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
@@ -213,25 +213,25 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilters,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilterArt, 20, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilterArt, 15, 0 , [ 'excludePageIds' => [] ] ],
 							'return' => $taskset2,
 						],
 						'filter' => null,
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilterArt,
-						'limit' => 20,
+						'limit' => 15,
 						'offset' => 0,
 						'options' => [],
 					],
