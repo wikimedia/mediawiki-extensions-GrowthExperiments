@@ -53,4 +53,13 @@ class MenteeOverview extends BaseModule {
 	protected function getMobileSummaryBody() {
 		return $this->getBody();
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getJsConfigVars() {
+		return array_merge( parent::getJsConfigVars(), [
+			'wgGEMentorDashboardUseVue' => $this->getConfig()->get( 'GEMentorDashboardUseVue' )
+		] );
+	}
 }
