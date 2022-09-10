@@ -6,6 +6,7 @@ use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm;
+use GrowthExperiments\Specials\Forms\ManageMentorsEditMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
 use Html;
 use HTMLForm;
@@ -116,6 +117,14 @@ class SpecialManageMentors extends SpecialPage {
 		];
 		if ( $this->canManageMentors() ) {
 			$items[] = Html::rawElement( 'td', [], new ButtonWidget( [
+				'label' => $this->msg( 'growthexperiments-manage-mentors-edit' )->text(),
+				'href' => SpecialPage::getTitleFor(
+					'ManageMentors',
+					'edit-mentor/' . $mentor->getUserIdentity()->getId()
+				)->getLocalURL(),
+				'flags' => [ 'primary', 'progressive' ],
+			] ) );
+			$items[] = Html::rawElement( 'td', [], new ButtonWidget( [
 				'label' => $this->msg( 'growthexperiments-manage-mentors-remove-mentor' )->text(),
 				'href' => SpecialPage::getTitleFor(
 					'ManageMentors',
@@ -184,6 +193,11 @@ class SpecialManageMentors extends SpecialPage {
 			$headerItems[] = Html::element(
 				'th',
 				[],
+				$this->msg( 'growthexperiments-manage-mentors-edit' )->text()
+			);
+			$headerItems[] = Html::element(
+				'th',
+				[],
 				$this->msg( 'growthexperiments-manage-mentors-remove-mentor' )->text()
 			);
 		}
@@ -221,6 +235,13 @@ class SpecialManageMentors extends SpecialPage {
 		switch ( $action ) {
 			case 'remove-mentor':
 				return new ManageMentorsRemoveMentor(
+					$this->mentorProvider,
+					$this->mentorWriter,
+					$mentorUser,
+					$this->getContext()
+				);
+			case 'edit-mentor':
+				return new ManageMentorsEditMentor(
 					$this->mentorProvider,
 					$this->mentorWriter,
 					$mentorUser,
