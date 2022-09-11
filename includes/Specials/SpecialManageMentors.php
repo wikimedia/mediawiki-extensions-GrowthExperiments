@@ -15,6 +15,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MWTimestamp;
 use OOUI\ButtonWidget;
+use PermissionsError;
 use SpecialPage;
 
 class SpecialManageMentors extends SpecialPage {
@@ -250,9 +251,12 @@ class SpecialManageMentors extends SpecialPage {
 	private function handleAction( ?string $par ): bool {
 		[ $action, $mentorUser ] = $this->parseSubpage( $par );
 
-		if ( !$action || !$this->canManageMentors() ) {
-			// no action found or user does not have right to manage mentors
+		if ( !$action ) {
 			return false;
+		}
+
+		if ( !$this->canManageMentors() ) {
+			throw new PermissionsError( 'managementors' );
 		}
 
 		if ( !$mentorUser ) {
