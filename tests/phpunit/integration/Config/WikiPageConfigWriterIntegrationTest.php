@@ -6,7 +6,6 @@ use GrowthExperiments\Config\Validation\IConfigValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\GrowthExperimentsServices;
-use HashBagOStuff;
 use InvalidArgumentException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWikiIntegrationTestCase;
@@ -57,9 +56,7 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function getLoader() {
-		$loader = $this->geServices->getWikiPageConfigLoader();
-		$loader->setCache( new HashBagOStuff(), HashBagOStuff::TTL_UNCACHEABLE );
-		return $loader;
+		return $this->geServices->getWikiPageConfigLoader();
 	}
 
 	/**
