@@ -51,5 +51,8 @@
 	"welcomesurvey-question-email-help": "Všimli jsme si, že jste při vytváření uživatelského účtu {{GENDER:|nezadal|nezadala|nezadali}} svou e-mailovou adresu. Zadat e-mailovou adresu je <strong>silně doporučováno</strong>, jelikož e-mailová adresa je nezbytná pro obnovení přístupu k účtu, pokud zapomenete svoje heslo. POZNÁMKA: Vaše e-mailová adresa není prozrazena ostatním, pokud se vás pokusí kontaktovat.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} je dostupná ve skoro 300 jazycích. {{GENDER:|Ovládáte}} i některé další jazyky?",
 	"welcomesurvey-question-languages-placeholder": "Přidejte až {{PLURAL:$1|jeden jazyk|$1 jazyky|$1 jazyků}}...",
-	"welcomesurvey-question-languages-maximum": "Již jste {{GENDER:|přidal|přidala|přidali}} nejvyšší možné množství jazyků."
+	"welcomesurvey-question-languages-maximum": "Již jste {{GENDER:|přidal|přidala|přidali}} nejvyšší možné množství jazyků.",
+	"welcomesurvey-reminder": "Pomozte nám vylepšit {{GENDER:|váš}} zážitek z editování Wikipedie zodpovězením několika otázek v Uvítacím dotazníku. $1",
+	"welcomesurvey-reminder-link": "Vyplnit dotazník",
+	"welcomesurvey-reminder-dismiss": "Zavřít"
 }

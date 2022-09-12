@@ -51,5 +51,8 @@
 	"welcomesurvey-question-email-help": "لاحظنا أنك لم {{GENDER:|تدخل|تدخلي}} بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون.",
 	"welcomesurvey-question-languages-label": "تتوفّر {{SITENAME}} في ما يقارب 300 لغة. هل {{GENDER:|تستطيع|تستطيعين}} القراءة والكتابة بلغات أخرى؟",
 	"welcomesurvey-question-languages-placeholder": "أضف ما يصل إلى {{PLURAL:$1|لا لغات|لغة واحدة أخرى|لغتين أخرتين|$1 لغات أخرى|$1 لغة أخرى}}...",
-	"welcomesurvey-question-languages-maximum": "أضفتم العدد الأقصى من اللغات."
+	"welcomesurvey-question-languages-maximum": "أضفتم العدد الأقصى من اللغات.",
+	"welcomesurvey-reminder": "{{GENDER:|ساعدنا|ساعدينا}} في تحسين تجربتك لويكيبيديا من خلال الإجابة على بعض الأسئلة الاختيارية. $1",
+	"welcomesurvey-reminder-link": "بدء الاستبيان",
+	"welcomesurvey-reminder-dismiss": "رفض"
 }

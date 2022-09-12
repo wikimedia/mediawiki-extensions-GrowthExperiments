@@ -51,5 +51,6 @@
 	"welcomesurvey-question-email-help": "Abbiamo notato che non {{GENDER:|hai}} inserito un indirizzo email quando hai creato quest'utenza. È <strong>altamente raccomandato</strong> inserirne uno, dal momento che sarebbe necessario per recuperare il tuo account nel caso perdessi la password. NOTA: Il tuo indirizzo email non viene rivelato quando altri utenti ti contattano.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} è disponibile in circa 300 lingue. {{GENDER:|Sai}} leggere e scrivere anche in altre lingue?",
 	"welcomesurvey-question-languages-placeholder": "Aggiungi fino a {{PLURAL:$1|una lingua|$1 lingue}}...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|Hai}} raggiunto il numero massimo di lingue disponibili."
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Hai}} raggiunto il numero massimo di lingue disponibili.",
+	"welcomesurvey-reminder-dismiss": "Nascondi"
 }

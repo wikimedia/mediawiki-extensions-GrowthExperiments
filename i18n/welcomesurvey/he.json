@@ -48,5 +48,8 @@
 	"welcomesurvey-question-email-help": "שמנו לב שלא {{GENDER:|הזנת}} כתובת דוא\"ל בעת יצירת החשבון הזה. <strong>מומלץ מאוד</strong> לעשות את זה כי דואר אלקטרוני נחוץ לשם שחזור החשבון אם הסיסמה שלך אי־פעם תלך לאיבוד. לתשומת ליבך: כתובת הדוא\"ל שלך אף פעם לא מוצגת כשמשתמשים אחרים יוצרים איתך קשר.",
 	"welcomesurvey-question-languages-label": "אתר {{SITENAME}} זמין בכמעט 300 שפות. האם יש שפות אחרות שבהן {{GENDER:|אתה יודע|את יודעת}} לקרוא ולכתוב?",
 	"welcomesurvey-question-languages-placeholder": "נא להוסיף עד {{PLURAL:$1|שפה אחת|$1 שפות}}...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|הוספת}} את המספר המרבי של שפות."
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|הוספת}} את המספר המרבי של שפות.",
+	"welcomesurvey-reminder": "{{GENDER:|עזור|עזרי|אנו מבקשים ממך לעזור}} לנו לשפר את חוויית הוויקיפדיה שלך על־ידי תשובה על כמה שאלות רשות בסקר קבלת הפנים. $1",
+	"welcomesurvey-reminder-link": "מילוי הסקר",
+	"welcomesurvey-reminder-dismiss": "סגירה"
 }

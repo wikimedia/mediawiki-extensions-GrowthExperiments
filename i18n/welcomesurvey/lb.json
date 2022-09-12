@@ -32,5 +32,7 @@
 	"welcomesurvey-question-email-label": "E-Mail-Adress (fakultativ)",
 	"welcomesurvey-question-email-placeholder": "Gitt Är E-Mail-Adress an...",
 	"welcomesurvey-question-languages-placeholder": "Setzt bis zu {{PLURAL:$1|enger Sprooch|$1 Sproochen}} derbäi...",
-	"welcomesurvey-question-languages-maximum": "Dir hutt déi maximal Zuel vu Sproochen derbäigesat."
+	"welcomesurvey-question-languages-maximum": "Dir hutt déi maximal Zuel vu Sproochen derbäigesat.",
+	"welcomesurvey-reminder-link": "Un der Ëmfro deelhuelen",
+	"welcomesurvey-reminder-dismiss": "Verwerfen"
 }
