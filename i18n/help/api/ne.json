@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"बडा काजी"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "हालको प्रयोगकर्ताको लागि मद्दत बाकस मार्फत लेखिएका प्रश्नहरू व्यवस्थापन गर्नुहोस्।",
+	"apihelp-helppanelquestionposter-param-body": "प्रयोगकर्ता द्वारा प्रदान गरिएको प्रश्नको शब्दहरू।",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "सान्दर्भिक शीर्षक, यदि चयन गरिएको छ भने, प्रश्न सहित समावेश गर्न।"
+}

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"सरोज कुमार ढकाल",
-			"Bada Kaji"
+			"Bada Kaji",
+			"बडा काजी"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|स्वागतम्}}, $1!",
@@ -12,10 +13,13 @@
 	"welcomesurvey-sidebar-privacy-text": "विकिमीडिया फाउन्डेसनले {{GENDER:$2|तपाईं}}लाई {{SITENAME}} सम्पादन सुरु गर्न मद्दत गर्नका लागि तपाईका जवाफहरू प्रयोग गर्नेछ। $1 ।",
 	"welcomesurvey-privacy-policy-link-text": "नयाँ सम्पादकहरूमा डेटा बारे थप जान्नुहोस्",
 	"welcomesurvey-sidebar-editing-title": "सम्पादन सुरु गर्नुहोस्",
+	"welcomesurvey-sidebar-editing-text": "लगभग हरेक पृष्ठ जो कोहीद्वारा सम्पादन गर्न सकिन्छ, र सामग्री थप्न, गल्तीहरू सच्याउन, र पठनीयता सुधार गर्न प्रत्येक घण्टा सयौं परिवर्तनहरू गरिन्छ। यदि तपाईं योगदान गर्न {{GENDER:$1|इच्छुक हुनुहुन्छ}} भने निम्न पृष्ठहरूले मद्दत गर्न सक्नुहुन्छ।",
+	"welcomesurvey-sidebar-editing-link1-text": "प्रशिक्षण",
 	"welcomesurvey-sidebar-editing-link1-title": "मद्दत:सहायता विषयसूचि",
 	"welcomesurvey-sidebar-editing-link2-text": "सहायता केन्द्र",
 	"welcomesurvey-sidebar-editing-link2-title": "विकिपिडिया:सहायता कक्ष",
 	"welcomesurvey-dropdown-option-select-label": "कृपया छान्नुहोस...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "विकिपिडिया लेखमा हिज्जे वा त्रुटि सुधार गर्न",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "विकिपिडिया लेखमा जानकारी थप्न वा परिवर्तन गर्न",
 	"welcomesurvey-question-reason-option-add-image-label": "विकिपिडिया लेखमा फोटो वा छवि थप्नको लागि",
 	"welcomesurvey-question-reason-option-new-page-label": "नयाँ विकिपिडिया लेख सिर्जना गर्न",
@@ -24,6 +28,7 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "अन्य",
 	"welcomesurvey-question-reason-option-other-label": "अन्य (कृपया वर्णन गर्नुहोस्)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|}} अन्य कारण...",
+	"welcomesurvey-question-mentor-info": "हामी नयाँ प्रयोगकर्ताहरूलाई सम्पादन गर्न मद्दत गर्न थप अनुभवी सम्पादकहरूको लागि एउटा कार्यक्रम सुरु गर्ने विचार गरिरहेका छौं। के तपाई सम्पादन गर्न मद्दत प्राप्त गर्न {{GENDER:$1|सम्पर्क गर्न इच्छुक हुनुहुन्छ}}?",
 	"welcomesurvey-question-mentor-label": "हो, {{GENDER:$1|मलाई चासो छ}}",
 	"welcomesurvey-question-edited-option-yes-many-label": "हो, धेरै पटक",
 	"welcomesurvey-question-edited-option-yes-few-label": "हो, एक वा दुई पटक",

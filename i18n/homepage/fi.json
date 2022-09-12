@@ -8,7 +8,8 @@
 			"MITO",
 			"Mediawikitranslator",
 			"Rönttönen",
-			"Veikk0.ma"
+			"Veikk0.ma",
+			"Markus Mikkonen"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
@@ -16,6 +17,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Oma}} aloitussivusi",
 	"prefs-homepage": "Tulokkaan aloitussivu",
 	"growthexperiments-homepage-enable": "Näytä tulokkaan aloitussivu",
+	"growthexperiments-homepage-pt-link": "Mene tulokkaan aloitussivulle käyttäjänimi-linkistä henkilökohtaisissa työkaluissa",
 	"growthexperiments-homepage-account-header": "Käyttäjätunnus luotu",
 	"growthexperiments-homepage-userpage-button": "Luo käyttäjäsivu",
 	"growthexperiments-homepage-email-header-noemail": "Lisää {{GENDER:$1|sähköpostiosoitteesi}}",

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"बडा काजी"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "नयाँ आउनेहरूका लागि उपयुक्त कार्य सिफारिसहरू प्राप्त गर्नुहोस्।",
+	"apihelp-query+growthtasks-extended-description": "नयाँ सम्पादकलाई हल गर्नका लागि पर्याप्त समस्या भएका लेखहरूको सेटको सुझाव दिन्छ।",
+	"apihelp-query+growthtasks-param-tasktypes": "परिणामहरू सीमित गर्न कार्य प्रकारहरू। सबै सुझावहरू प्राप्त गर्न खाली छोड्नुहोस्।",
+	"apihelp-query+growthtasks-param-topics": "कार्य सुझावहरूमा प्राथमिकता दिनको लागि लेख विषयहरू।",
+	"apihelp-query+growthtasks-param-limit": "फर्काउनका लागि कार्य सुझावहरूको अधिकतम संख्या।",
+	"apihelp-query+growthtasks-param-debug": "आउटपुटमा डिबग डाटा थप्नुहोस्।",
+	"apihelp-query+growthtasks-example-1": "हालको प्रयोगकर्ताको लागि परिमार्जन-प्रकारका कार्यहरूका लागि कार्य सिफारिसहरू प्राप्त गर्नुहोस्।",
+	"apihelp-query+growthtasks-example-2": "पृष्ठहरूको बारेमा विस्तारित जानकारीको साथ, वर्तमान प्रयोगकर्ताका लागि कार्य सिफारिसहरू प्राप्त गर्नुहोस्।"
+}
