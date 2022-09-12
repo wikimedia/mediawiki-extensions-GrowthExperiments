@@ -18,6 +18,9 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 
+	/** @inheritDoc */
+	protected $tablesUsed = [ 'page', 'revision' ];
+
 	public function testGetUserImpact() {
 		ConvertibleTimestamp::setFakeTime( time() );
 

@@ -31,7 +31,7 @@ class ExpensiveUserImpact extends UserImpact {
 	 *   the timezone of the user.
 	 * @param int $newcomerTaskEditCount Number of edits the user made which have the
 	 *   newcomer task tag. Might exclude edits made a long time ago or many edits ago.
-	 * @param int $lastEditTimestamp Unix timestamp of the user's last edit.
+	 * @param int|null $lastEditTimestamp Unix timestamp of the user's last edit.
 	 * @param int[] $dailyTotalViews Day => number of total pageviews the articles edited by the user
 	 *   (on any day) got on that day. Indexed with ISO 8601 dates, e.g. '2022-08-25'.
 	 *   Might exclude edits made many days or many edits ago.
@@ -46,7 +46,7 @@ class ExpensiveUserImpact extends UserImpact {
 		array $editCountByDay,
 		UserTimeCorrection $timeZone,
 		int $newcomerTaskEditCount,
-		int $lastEditTimestamp,
+		?int $lastEditTimestamp,
 		array $dailyTotalViews,
 		array $dailyArticleViews
 	) {

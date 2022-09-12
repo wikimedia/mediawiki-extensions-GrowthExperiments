@@ -51,7 +51,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			80,
-			wfTimestamp( TS_MW, '20200101000000' ),
+			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews
 		);
