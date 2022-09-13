@@ -12,7 +12,8 @@
 			"Tgr",
 			"Worrida",
 			"Luckylukee81",
-			"Lois131"
+			"Lois131",
+			"Bencemac"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Üdvözlünk, {{bidi:$1}}!",
@@ -76,7 +77,7 @@
 	"growthexperiments-homepage-suggested-edits-header": "Javasolt szerkesztések",
 	"growthexperiments-homepage-impact-header": "Hatásod",
 	"growthexperiments-homepage-impact-subheader-text": "Az emberek olvassák az általad szerkesztett szócikkeket!",
-	"growthexperiments-homepage-impact-subheader-subtext": "Megtekintések a {{$1|szerkesztésed}} óta (utóbbi 60 nap):",
+	"growthexperiments-homepage-impact-subheader-subtext": "Megtekintések a szerkesztésed óta (utóbbi 60 nap):",
 	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> szerkesztést végeztél (összes megtekintése)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Még nem készítettél vagy szerkesztettél szócikkeket.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Itt fog megjelenni, hogy hányszor nézték meg az általad készített vagy szerkesztett szócikkeket.",

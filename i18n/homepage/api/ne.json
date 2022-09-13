@@ -6,7 +6,12 @@
 			"बडा काजी"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "गृहपृष्ठ मोड्युलहरू मार्फत पोस्ट गरिएका ढाँचाबद्ध प्रश्नहरू प्राप्त गर्नुहोस्",
+	"apihelp-homepagequestionstore-param-questionformat": "प्रश्नहरू फर्काउने ढाँचा, जस्तै HTML।",
+	"apihelp-homepagequestionstore-param-storage": "प्रश्नहरूको भण्डारण स्थान।",
+	"apihelp-homepagequestionstore-param-userid": "प्रयोगकर्ता ID को लागी प्रश्नहरू प्राप्त गर्न।",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "कुनैपनि प्रश्न फेला परेन।",
+	"apihelp-growthsetmentor-summary": "प्रयोगकर्ताको सल्लाहकार छान्नुहोस्। परिवर्तन सार्वजनिक रूपमा देखिनेछ।",
 	"apihelp-growthsetmentor-param-mentee": "विद्यार्थीको प्रयोगकर्ता नाम",
 	"apihelp-growthsetmentor-param-mentor": "सल्लाहकारको प्रयोगकर्ता नाम",
 	"apihelp-growthsetmentor-param-reason": "परिवर्तनको कारण"
