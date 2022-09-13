@@ -43,8 +43,10 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
+@import '../variables.less';
+
 .ext-growthExperiments-DataTableLimit {
-	padding: 0 8px;
+	padding: @padding-base;
 
 	&__select {
 		min-width: unset;
