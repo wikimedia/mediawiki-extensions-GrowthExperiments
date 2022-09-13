@@ -24,8 +24,10 @@ describe( 'MenteeOverview', () => {
 		};
 		menteeGetters = {
 			isReady: jest.fn( () => true ),
+			currentPage: jest.fn( () => 1 ),
 			allMentees: jest.fn( () => menteesJSON.mentees ),
 			filters: jest.fn( () => ( {
+				limit: 10,
 				editCountMin: 0,
 				editCountMax: 500,
 				onlyStarred: false
@@ -57,6 +59,7 @@ describe( 'MenteeOverview', () => {
 		} );
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 1 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 1, expect.any( Object ), {
+			limit: 10,
 			editCountMin: 0,
 			editCountMax: 500,
 			onlyStarred: false
@@ -82,7 +85,7 @@ describe( 'MenteeOverview', () => {
 			expect.any( Object ), { page: 2 }
 		);
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 3,
-			expect.any( Object ), { page: 1 }
+			expect.any( Object ), { page: 0 }
 		);
 	} );
 	it( 'it dispatches "mentees/getAllMentees" when "DataTable" updates the limit and saves it', () => {
@@ -100,7 +103,7 @@ describe( 'MenteeOverview', () => {
 		// 2nd time in MenteeOverview.updateLimit
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 2 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 2,
-			expect.any( Object ), { limit: 15 }
+			expect.any( Object ), { limit: 15, page: 1 }
 		);
 		expect( menteeActions.savePresets ).toHaveBeenCalledTimes( 1 );
 	} );
