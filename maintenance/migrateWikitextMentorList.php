@@ -91,7 +91,7 @@ class MigrateWikitextMentorList extends Maintenance {
 			$mentorArray = StructuredMentorWriter::serializeMentor( $mentor );
 
 			$messageValidationStatus = Status::wrap(
-				StructuredMentorListValidator::validateMentorMessage( $mentorArray )
+				StructuredMentorListValidator::validateMentorMessage( $mentorArray, $mentorUser->getId() )
 			);
 			if ( !$messageValidationStatus->isGood() ) {
 				$this->error(

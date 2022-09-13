@@ -3,13 +3,26 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use InvalidArgumentException;
+use MediaWiki\User\UserIdentityLookup;
+use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Config\Validation\StructuredMentorListValidator
  */
 class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
+
+	private function getValidator(): StructuredMentorListValidator {
+		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
+		$userIdentityLookup->method( 'getUserIdentityByUserId' )
+			->willReturn( new UserIdentityValue( 123, 'Mentor' ) );
+		return new StructuredMentorListValidator(
+			$userIdentityLookup
+		);
+	}
+
 	/**
 	 * @param string $variable
 	 * @param mixed $value
@@ -29,7 +42,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 			$this->expectNotToPerformAssertions();
 		}
 
-		$validator = new StructuredMentorListValidator();
+		$validator = $this->getValidator();
 		$validator->validateVariable( $variable, $value );
 	}
 
@@ -55,7 +68,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 	 * @dataProvider validateDataProvider
 	 */
 	public function testValidate( array $data, ?string $expectedError ) {
-		$validator = new StructuredMentorListValidator();
+		$validator = $this->getValidator();
 		$status = $validator->validate( $data );
 		if ( $expectedError === null ) {
 			$this->assertTrue( $status->isOK() );
@@ -115,19 +128,20 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 	 * @param array $mentorData
 	 * @param string|null $expectedError
 	 * @covers ::validateMentor
+	 * @covers ::validateMentorMessage
 	 * @dataProvider validateMentorDataProvider
 	 */
 	public function testValidateMentor( array $mentorData, ?string $expectedError ) {
-		$validator = new StructuredMentorListValidator();
+		$validator = $this->getValidator();
 		$status = $validator->validate( [
 			'Mentors' => [
 				123 => $mentorData
 			]
 		] );
 		if ( $expectedError === null ) {
-			$this->assertTrue( $status->isOK() );
+			$this->assertTrue( $status->isGood() );
 		} else {
-			$this->assertFalse( $status->isOK() );
+			$this->assertFalse( $status->isGood() );
 			$this->assertTrue( $status->hasMessage( $expectedError ) );
 		}
 	}
@@ -194,6 +208,14 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 					'automaticallyAssigned' => true,
 				],
 				'expectedError' => null,
+			],
+			'messageTooLong' => [
+				'mentorData' => [
+					'message' => str_repeat( 'a', MentorProvider::INTRO_TEXT_LENGTH + 1 ),
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+				],
+				'expectedError' => 'growthexperiments-mentor-writer-error-message-too-long',
 			],
 		];
 	}
