@@ -1,0 +1,24 @@
+{
+	"seed": "",
+	"pages": [
+		{
+			"project": "enwiki",
+			"page": "Foo",
+			"page_id": 47438319,
+			"suggestions": [
+				{
+					"filename": "File:Mamoul_biscotti_libanesi.jpg",
+					"confidence_rating": "medium",
+					"source": {
+						"name": "ima",
+						"details": {
+							"from": "wikipedia",
+							"found_on": "nlwiki",
+							"dataset_id": "0f256bbe-8100-4e7e-acef-a3a5f1407cc2"
+						}
+					}
+				}
+			]
+		}
+	]
+}

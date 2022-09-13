@@ -2,12 +2,14 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
+use DerivativeContext;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubpageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
+use RequestContext;
 use StatusValue;
 use Title;
 
@@ -95,7 +97,14 @@ class SubpageImageRecommendationProvider
 				return new static(
 					$services->getWikiPageFactory(),
 					$recommendationProvider,
-					$growthServices->getImageRecommendationMetadataProvider(),
+					new StaticImageRecommendationMetadataProvider(
+						$growthServices->getImageRecommendationMetadataService(),
+						$services->getContentLanguage()->getCode(),
+						$services->getContentLanguage()->getFallbackLanguages(),
+						$services->getLanguageNameUtils(),
+						new DerivativeContext( RequestContext::getMain() ),
+						$services->getSiteStore()
+					),
 					$growthServices->getAddImageSubmissionHandler(),
 					$growthServices->getImageRecommendationApiHandler()
 				);
