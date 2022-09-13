@@ -67,6 +67,8 @@ const storeState = {
 // getters
 const getters = {
 	allMentees: ( state ) => state.all,
+	// Pages are 0-index in MenteeOverviewApi, 1-index in the pagination UI
+	currentPage: ( state ) => state.page + 1,
 	filters: ( { limit, editCountMin, editCountMax, onlyStarred, activeDaysAgo } ) => ( {
 		limit,
 		editCountMin,

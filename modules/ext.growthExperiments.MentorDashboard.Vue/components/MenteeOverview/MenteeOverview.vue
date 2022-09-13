@@ -148,7 +148,6 @@ module.exports = exports = {
 	},
 	data() {
 		return {
-			currentPage: 1,
 			columns: MENTEES_TABLE_COLUMNS.map( ( {
 				cellComponent, cellProps, data, icon, key, label, sortBy, orderInLegend
 			} ) => {
@@ -168,6 +167,9 @@ module.exports = exports = {
 	},
 	computed: {
 		// TODO: use mapGetters ( with namespace ), cannot use spread operator?
+		currentPage() {
+			return this.$store.getters[ 'mentees/currentPage' ];
+		},
 		rows() {
 			return this.$store.getters[ 'mentees/allMentees' ];
 		},
@@ -234,15 +236,15 @@ module.exports = exports = {
 			this.$store.dispatch( 'mentees/getAllMentees', { prefix: value } );
 		},
 		navigateToPrevPage() {
-			this.currentPage -= 1;
-			this.$store.dispatch( 'mentees/getAllMentees', { page: this.currentPage } );
+			this.$store.dispatch( 'mentees/getAllMentees', { page: this.currentPage - 1 } );
 		},
 		navigateToNextPage() {
-			this.currentPage += 1;
-			this.$store.dispatch( 'mentees/getAllMentees', { page: this.currentPage } );
+			this.$store.dispatch( 'mentees/getAllMentees', { page: this.currentPage + 1 } );
 		},
 		updateLimit( value ) {
-			this.$store.dispatch( 'mentees/getAllMentees', { limit: value } );
+			const currentOffset = ( this.currentPage - 1 ) * this.limit;
+			const newPage = Math.floor( currentOffset / value ) + 1;
+			this.$store.dispatch( 'mentees/getAllMentees', { limit: value, page: newPage } );
 			this.$store.dispatch( 'mentees/savePresets' );
 		},
 		updateMenteeFilters( value ) {
@@ -250,7 +252,6 @@ module.exports = exports = {
 				page: 1
 			} ) );
 			this.$store.dispatch( 'mentees/savePresets' );
-			this.currentPage = 1;
 		},
 		updateSorting( value ) {
 			this.$store.dispatch( 'mentees/getAllMentees', value );
