@@ -55,5 +55,9 @@
 	"welcomesurvey-question-languages-maximum": "Du hast die maximale Anzahl an Sprachen hinzugefügt.",
 	"welcomesurvey-reminder": "Hilf uns dabei, {{GENDER:|deine}} Erfahrungen mit Wikipedia zu verbessern, indem du einige optionale Fragen in unserer Willkommensumfrage beantwortest. $1",
 	"welcomesurvey-reminder-link": "Die Umfrage starten",
-	"welcomesurvey-reminder-dismiss": "Ausblenden"
+	"welcomesurvey-reminder-dismiss": "Ausblenden",
+	"welcomesurvey-mideditsignup-title": "Willkommen, $1!",
+	"welcomesurvey-mideditsignup-body": "Danke für die Bearbeitung! {{GENDER:|Du}} kannst jetzt die Ergebnisse deiner Beiträge sehen und mehr Änderungsvorschläge für deine Startseite erhalten.",
+	"welcomesurvey-mideditsignup-button-homepage": "Zu meiner Homepage",
+	"welcomesurvey-mideditsignup-button-close": "Schließen"
 }
