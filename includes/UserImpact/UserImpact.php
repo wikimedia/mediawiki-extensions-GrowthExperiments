@@ -8,6 +8,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserTimeCorrection;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Assert\ParameterAssertionException;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -18,6 +19,9 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * registered user with a limited number of edits.
  */
 class UserImpact implements JsonSerializable {
+
+	/** Cache version, to be increased when breaking backwards compatibility. */
+	public const VERSION = 1;
 
 	/** @var UserIdentity */
 	private $user;
@@ -39,6 +43,9 @@ class UserImpact implements JsonSerializable {
 
 	/** @var int|null */
 	private $lastEditTimestamp;
+
+	/** @var int */
+	private $generatedAt;
 
 	/**
 	 * @param UserIdentity $user
@@ -71,6 +78,7 @@ class UserImpact implements JsonSerializable {
 		$this->timeZone = $timeZone;
 		$this->newcomerTaskEditCount = $newcomerTaskEditCount;
 		$this->lastEditTimestamp = $lastEditTimestamp;
+		$this->generatedAt = ConvertibleTimestamp::time();
 	}
 
 	/**
@@ -145,6 +153,14 @@ class UserImpact implements JsonSerializable {
 	}
 
 	/**
+	 * Unix timestamp of when the user impact data was generated.
+	 * @return int
+	 */
+	public function getGeneratedAt(): int {
+		return $this->generatedAt;
+	}
+
+	/**
 	 * Helper method for newFromJsonArray.
 	 * @return UserImpact
 	 */
@@ -163,6 +179,7 @@ class UserImpact implements JsonSerializable {
 	/**
 	 * @param array $json
 	 * @return UserImpact
+	 * @throws ParameterAssertionException when trying to load an incompatible old JSON format.
 	 */
 	public static function newFromJsonArray( array $json ): UserImpact {
 		if ( array_key_exists( 'dailyTotalViews', $json ) ) {
@@ -176,8 +193,13 @@ class UserImpact implements JsonSerializable {
 
 	/**
 	 * @param array $json
+	 * @throws ParameterAssertionException when trying to load an incompatible old JSON format.
 	 */
 	protected function loadFromJsonArray( array $json ): void {
+		if ( $json['@version'] !== self::VERSION ) {
+			throw new ParameterAssertionException( '@version', 'must be ' . self::VERSION );
+		}
+
 		Assert::parameterKeyType( 'integer', $json['editCountByNamespace'], '$json[\'editCountByNamespace\']' );
 		Assert::parameterElementType( 'integer', $json['editCountByNamespace'], '$json[\'editCountByNamespace\']' );
 		Assert::parameterKeyType( 'string', $json['editCountByDay'], '$json[\'editCountByDay\']' );
@@ -193,11 +215,13 @@ class UserImpact implements JsonSerializable {
 		$this->timeZone = new UserTimeCorrection( $json['timeZone'][0], $date, $json['timeZone'][1] );
 		$this->newcomerTaskEditCount = $json['newcomerTaskEditCount'];
 		$this->lastEditTimestamp = $json['lastEditTimestamp'];
+		$this->generatedAt = $json['generatedAt'];
 	}
 
 	/** @inheritDoc */
 	public function jsonSerialize(): array {
 		return [
+			'@version' => self::VERSION,
 			'userId' => $this->user->getId(),
 			'userName' => $this->user->getName(),
 			'receivedThanksCount' => $this->receivedThanksCount,
@@ -206,6 +230,7 @@ class UserImpact implements JsonSerializable {
 			'timeZone' => [ $this->timeZone->toString(), $this->timeZone->getTimeOffset() ],
 			'newcomerTaskEditCount' => $this->newcomerTaskEditCount,
 			'lastEditTimestamp' => $this->lastEditTimestamp,
+			'generatedAt' => $this->generatedAt,
 		];
 	}
 
