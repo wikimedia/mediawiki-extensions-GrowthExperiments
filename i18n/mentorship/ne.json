@@ -74,5 +74,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "औसतको करिब दोब्बर",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "औसत (पूर्वनिर्धारित)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "औसतको करिब दोब्बर",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|तपाईँको}} लोडलाई \"$1\"मा परिवर्तन गरियो।",
 	"growthexperiments-mentor-list-missing-key": "कुञ्जी <code>$1</code> हराइरहेको छ"
 }
