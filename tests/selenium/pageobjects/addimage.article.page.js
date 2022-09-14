@@ -40,7 +40,11 @@ class AddImageArticlePage extends Page {
 
 	get addImageDetailsDialog() { return $( '.mw-ge-addImageDetailsDialog-fields' ); }
 
-	async setup( articleTitle ) {
+	get readButton() { return $( '#ca-view' ); }
+
+	get discardEditsButton() { return $( '.ve-ui-overlay-global .oo-ui-flaggedElement-destructive' ); }
+
+	async setup( articleTitle, useMobile ) {
 		await this.setupSuggestions( articleTitle );
 		Util.waitForModuleState( 'mediawiki.api', 'ready', 5000 );
 		await browser.execute( function () {
@@ -52,7 +56,13 @@ class AddImageArticlePage extends Page {
 		await browser.execute( function () {
 			return ge.utils.enableImageRecommendations();
 		} );
-		await HomepagePage.open();
+		let query = {};
+		let fragment = '';
+		if ( useMobile ) {
+			query = { mobileaction: 'toggle_view_mobile' };
+			fragment = '/homepage/suggested-edits';
+		}
+		await HomepagePage.open( query, fragment );
 		expect( await HomepagePage.suggestedEditsCardTitle.getText() ).toEqual( articleTitle );
 
 		await HomepagePage.suggestedEditsCard.waitForDisplayed();
@@ -80,6 +90,14 @@ class AddImageArticlePage extends Page {
 
 	async closeImageDetails() {
 		await this.clickButton( this.messageDialogActionCloseButton );
+	}
+
+	async switchToReadMode() {
+		await this.clickButton( this.readButton );
+	}
+
+	async discardEdits() {
+		await this.clickButton( this.discardEditsButton );
 	}
 
 	async waitForImageInspector() {
@@ -131,6 +149,9 @@ class AddImageArticlePage extends Page {
 	}
 
 	async setupSuggestions( articleTitle ) {
+		if ( this.setupComplete ) {
+			return;
+		}
 		// FIXME: This should run in Quibble. Adding as a workaround, otherwise
 		// edit.php results in Wikimedia\Rdbms\DBQueryError:
 		// Error 1690: BIGINT UNSIGNED value is out of range in '`wikidb`.`site_stats`.`ss_good_articles` - 1'
@@ -150,8 +171,9 @@ class AddImageArticlePage extends Page {
 			[ 'maintenance/edit.php', '--user=Admin', articleTitle + '/addimage.json' ],
 			{ input: fs.readFileSync( path.resolve( __dirname + '/../fixtures/' + articleTitle + '.suggestions.json' ) ), cwd: ip }
 		);
+		this.setupComplete = true;
 	}
 
 }
 
-module.exports = new AddImageArticlePage();
+module.exports = AddImageArticlePage;

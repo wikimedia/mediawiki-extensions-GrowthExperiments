@@ -1,24 +1,39 @@
 'use strict';
 
 const isQuibbleUsingApache = process.env.QUIBBLE_APACHE || false,
-	AddImageArticlePage = require( '../pageobjects/addimage.article.page' );
+	AddImageArticlePage = require( '../pageobjects/addimage.article.page' ),
+	addImageArticlePage = new AddImageArticlePage(),
+	AddImageArticleMobilePage = require( '../pageobjects/addimage.article.mobile.page' ),
+	addImageArticleMobilePage = new AddImageArticleMobilePage();
 
 describe( 'add image', function () {
 
-	it( 'user can view image info and image details', async function () {
-		const addImageArticle = "Ma'amoul";
+	beforeEach( async function () {
 		if ( !isQuibbleUsingApache ) {
 			this.skip( 'This test depends on using PHP-FPM and Apache as the backend.' );
 		}
-		await AddImageArticlePage.setup( addImageArticle );
+	} );
 
-		await AddImageArticlePage.viewImageInfo();
-		await AddImageArticlePage.closeImageInfo();
+	it( 'desktop: user can view image info and image details', async function () {
+		const addImageArticle = "Ma'amoul";
+		await addImageArticlePage.setup( addImageArticle );
 
-		await AddImageArticlePage.acceptSuggestion();
+		await addImageArticlePage.viewImageInfo();
+		await addImageArticlePage.closeImageInfo();
 
-		await AddImageArticlePage.viewImageDetails();
-		await AddImageArticlePage.closeImageDetails();
+		await addImageArticlePage.acceptSuggestion();
+
+		await addImageArticlePage.viewImageDetails();
+		await addImageArticlePage.closeImageDetails();
+
+		await addImageArticlePage.switchToReadMode();
+		await addImageArticlePage.discardEdits();
+	} );
+
+	it( 'mobile: user can close the image suggestion UI', async function () {
+		const addImageArticle = "Ma'amoul";
+		await addImageArticlePage.setup( addImageArticle, 'mobile' );
+		await addImageArticleMobilePage.closeImageInspector();
 	} );
 
 } );
