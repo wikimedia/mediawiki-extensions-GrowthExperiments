@@ -9,7 +9,7 @@
 	"apihelp-query+growthtasks-param-limit": "Maximum number of task suggestions to return.",
 	"apihelp-query+growthtasks-param-excludepageids": "Page IDs to exclude from the query.",
 	"apihelp-query+growthtasks-param-debug": "Add debug data to the output.",
-	"apihelp-query+growthtasks-example-1": "Get task recommendations for copyediting-type tasks for the current user.",
+	"apihelp-query+growthtasks-example-1": "Get task recommendations for copy-editing-type tasks for the current user.",
 	"apihelp-query+growthtasks-example-2": "Get task recommendations for the current user, with extended information about the pages.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "'accepted' parameter missing from Add Image plugin data",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "'accepted' parameter must be a boolean in Add Image plugin data, is $1",
