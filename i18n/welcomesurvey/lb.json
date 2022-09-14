@@ -34,5 +34,7 @@
 	"welcomesurvey-question-languages-placeholder": "Setzt bis zu {{PLURAL:$1|enger Sprooch|$1 Sproochen}} derbäi...",
 	"welcomesurvey-question-languages-maximum": "Dir hutt déi maximal Zuel vu Sproochen derbäigesat.",
 	"welcomesurvey-reminder-link": "Un der Ëmfro deelhuelen",
-	"welcomesurvey-reminder-dismiss": "Verwerfen"
+	"welcomesurvey-reminder-dismiss": "Verwerfen",
+	"welcomesurvey-mideditsignup-title": "Wëllkomm $1!",
+	"welcomesurvey-mideditsignup-button-close": "Zoumaachen"
 }

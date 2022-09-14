@@ -49,5 +49,9 @@
 	"welcomesurvey-question-languages-maximum": "Ați adăugat numărul maxim de limbi.",
 	"welcomesurvey-reminder": "Ajută-ne să {{GENDER:|îți}} îmbunătățim experiența cu Wikipedia răspunzând la câteva întrebări opționale în sondajul nostru de bun venit. $1",
 	"welcomesurvey-reminder-link": "Ia sondajul",
-	"welcomesurvey-reminder-dismiss": "Respinge"
+	"welcomesurvey-reminder-dismiss": "Respinge",
+	"welcomesurvey-mideditsignup-title": "Bun venit, $1!",
+	"welcomesurvey-mideditsignup-body": "Vă mulțumim pentru editare! {{GENDER:|Acum}} puteți vizualiza impactul contribuțiilor voastre și să primiți mai multe editări sugerate la pagina acasă a dvs.",
+	"welcomesurvey-mideditsignup-button-homepage": "Mergi la pagina acasă a mea",
+	"welcomesurvey-mideditsignup-button-close": "Închide"
 }

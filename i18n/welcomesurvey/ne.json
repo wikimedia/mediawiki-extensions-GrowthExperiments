@@ -47,5 +47,10 @@
 	"welcomesurvey-question-email-help": "हामीले यो खाता सिर्जना गर्दा {{GENDER:|तपाईंले}} इमेल प्रविष्ट गर्नुभएन भनेर थाहा पायौं। यदि तपाईंले आफ्नो प्रवेश शब्द हराउनुभयो भने खाता रिकभरीका लागि एउटा इमेल आवश्यक भएको हुनाले <strong>यो अत्यधिक सिफारिस गरिएको छ</strong>। नोट: अन्य प्रयोगकर्ताहरूले तपाईंलाई सम्पर्क गर्दा तपाईंको इमेल ठेगाना प्रकट हुँदैन।",
 	"welcomesurvey-question-languages-label": "{{SITENAME}}मा करिब ३०० भाषाहरूमा उपलब्ध छ। के त्यहाँ अन्य भाषाहरू छन् जुन {{GENDER:|तपाईंले}} पढ्न र लेख्न सक्नुहुन्छ?",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|भाषा|भाषाहरू}} थप्नुहोस्...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|तपाईंले}} भाषाहरूको अधिकतम संख्या थप्नुभएको छ।"
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|तपाईंले}} भाषाहरूको अधिकतम संख्या थप्नुभएको छ।",
+	"welcomesurvey-reminder-link": "सर्वेक्षण सुरु गर्नुहोस",
+	"welcomesurvey-reminder-dismiss": "खारेज गर्नुहोस्",
+	"welcomesurvey-mideditsignup-title": "$1ज्यू स्वागत छ!",
+	"welcomesurvey-mideditsignup-button-homepage": "गृह पृष्ठमा जाने",
+	"welcomesurvey-mideditsignup-button-close": "बन्द गर्नुहोस्"
 }

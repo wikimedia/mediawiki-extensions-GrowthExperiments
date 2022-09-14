@@ -54,5 +54,9 @@
 	"welcomesurvey-question-languages-maximum": "أضفتم العدد الأقصى من اللغات.",
 	"welcomesurvey-reminder": "{{GENDER:|ساعدنا|ساعدينا}} في تحسين تجربتك لويكيبيديا من خلال الإجابة على بعض الأسئلة الاختيارية. $1",
 	"welcomesurvey-reminder-link": "بدء الاستبيان",
-	"welcomesurvey-reminder-dismiss": "رفض"
+	"welcomesurvey-reminder-dismiss": "رفض",
+	"welcomesurvey-mideditsignup-title": "مرحبًا $1!",
+	"welcomesurvey-mideditsignup-body": "شكرا على التحرير! يمكنكم الآن رؤية تأثير مساهماتكم والحصول على المزيد من التعديلات المقترحة على لوحة {{GENDER:|المستخدم|المستخدمة}} الخاصة بكم.",
+	"welcomesurvey-mideditsignup-button-homepage": "الذهاب إلى صفحتي الرئيسية",
+	"welcomesurvey-mideditsignup-button-close": "إغلاق"
 }

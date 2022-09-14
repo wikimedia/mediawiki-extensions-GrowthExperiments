@@ -61,5 +61,5 @@
 	"welcomesurvey-mideditsignup-title": "Title of dialog shown after finishing an edit if the user has created their account during that edit. \n\nParameters:\n* $1 - Username.",
 	"welcomesurvey-mideditsignup-body": "Body of dialog shown after finishing an edit if the user has created their account during that edit.",
 	"welcomesurvey-mideditsignup-button-homepage": "Button of dialog shown after finishing an edit if the user has created their account during that edit. The button links to Special:Homepage.",
-	"welcomesurvey-mideditsignup-button-close": "Button of dialog shown after finishing an edit if the user has created their account during that edit. The button closes the dialog."
+	"welcomesurvey-mideditsignup-button-close": "Button of dialog shown after finishing an edit if the user has created their account during that edit. The button closes the dialog.\n{{identical|Welcome}}"
 }

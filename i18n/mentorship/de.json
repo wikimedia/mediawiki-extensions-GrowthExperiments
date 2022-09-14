@@ -120,7 +120,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "Lotse $1 wurde bereits zur Lotsenliste hinzugefügt",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Lotse $1 steht nicht auf der Lotsenliste",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Lotse $1 ist kein registrierter Benutzer",
-	"growthexperiments-mentor-writer-error-message-too-long": "Die Einführungsnachricht ist zu lang. Die maximale Länge beträgt $1.",
+	"growthexperiments-mentor-writer-error-message-too-long": "Die Einführungsnachricht ist zu lang (betroffene Benutzer-ID: $2). Die maximale Länge beträgt $1.",
 	"growthexperiments-manage-mentors-title": "Verwalten von Lotsen",
 	"growthexperiments-manage-mentors-error-no-such-user": "Fehler: Es existiert kein solcher Benutzer mit der ID $1. Dies ist wahrscheinlich ein interner Fehler.",
 	"growthexperiments-manage-mentors-auto-assigned": "Automatisch zugewiesene Lotsen",

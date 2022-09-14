@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Afaz",
+			"MathXplore",
 			"Omotecho",
 			"Shirayuki",
 			"TAKAHASHI Shuuji"
@@ -49,5 +50,6 @@
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|言語|$1 言語}}を追加……",
 	"welcomesurvey-question-languages-maximum": "追加した言語数が上限に達しました。",
 	"welcomesurvey-reminder-link": "アンケートに答える",
-	"welcomesurvey-reminder-dismiss": "閉じる"
+	"welcomesurvey-reminder-dismiss": "閉じる",
+	"welcomesurvey-mideditsignup-button-close": "閉じる"
 }

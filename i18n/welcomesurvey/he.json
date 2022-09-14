@@ -51,5 +51,9 @@
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|הוספת}} את המספר המרבי של שפות.",
 	"welcomesurvey-reminder": "{{GENDER:|עזור|עזרי|אנו מבקשים ממך לעזור}} לנו לשפר את חוויית הוויקיפדיה שלך על־ידי תשובה על כמה שאלות רשות בסקר קבלת הפנים. $1",
 	"welcomesurvey-reminder-link": "מילוי הסקר",
-	"welcomesurvey-reminder-dismiss": "סגירה"
+	"welcomesurvey-reminder-dismiss": "סגירה",
+	"welcomesurvey-mideditsignup-title": "ברוך בואך, $1!",
+	"welcomesurvey-mideditsignup-body": "תודה על העריכה! {{GENDER:|אתה יכול|את יכולה}} לראות עכשיו את ההשפעה של התרומות שלך ולקבל הצעות עריכה נוספות בדף הבית שלך.",
+	"welcomesurvey-mideditsignup-button-homepage": "לעבור לדף הבית שלי",
+	"welcomesurvey-mideditsignup-button-close": "סגירה"
 }
