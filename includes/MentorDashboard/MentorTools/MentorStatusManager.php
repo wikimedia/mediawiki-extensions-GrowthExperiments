@@ -149,12 +149,28 @@ class MentorStatusManager implements IDBAccessObject {
 	 * @param int $backInDays Length of mentor's wiki-vacation in days
 	 */
 	public function markMentorAsAway( UserIdentity $mentor, int $backInDays ): void {
+		$this->markMentorAsAwayTimestamp(
+			$mentor,
+			ConvertibleTimestamp::convert(
+				TS_MW,
+				(int)wfTimestamp( TS_UNIX ) + self::SECONDS_DAY * $backInDays
+			)
+		);
+	}
+
+	/**
+	 * Mark a mentor as away
+	 *
+	 * @param UserIdentity $mentor
+	 * @param string $timestamp When will the mentor be back?
+	 */
+	public function markMentorAsAwayTimestamp( UserIdentity $mentor, string $timestamp ): void {
 		$this->userOptionsManager->setOption(
 			$mentor,
 			self::MENTOR_AWAY_TIMESTAMP_PREF,
 			ConvertibleTimestamp::convert(
 				TS_MW,
-				(int)wfTimestamp( TS_UNIX ) + self::SECONDS_DAY * $backInDays
+				$timestamp
 			)
 		);
 		$this->userOptionsManager->saveOptions( $mentor );

@@ -169,7 +169,8 @@ class MentorHooks implements
 					'UserIdentityLookup',
 					'UserEditTracker',
 					'GrowthExperimentsMentorProvider',
-					'GrowthExperimentsMentorWriter'
+					'GrowthExperimentsMentorWriter',
+					'GrowthExperimentsMentorStatusManager'
 				]
 			];
 			$list['EnrollAsMentor'] = [
