@@ -5,6 +5,8 @@ namespace GrowthExperiments\Specials;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm;
+use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
 use Html;
 use HTMLForm;
 use Linker;
@@ -14,7 +16,6 @@ use MediaWiki\User\UserIdentityLookup;
 use MWTimestamp;
 use OOUI\ButtonWidget;
 use SpecialPage;
-use Status;
 
 class SpecialManageMentors extends SpecialPage {
 
@@ -61,7 +62,7 @@ class SpecialManageMentors extends SpecialPage {
 	 * @return bool
 	 */
 	private function renderInReadOnlyMode(): bool {
-		return $this->including();
+		return $this->including() ?? false;
 	}
 
 	/**
@@ -70,7 +71,7 @@ class SpecialManageMentors extends SpecialPage {
 	 */
 	private function canManageMentors(): bool {
 		return !$this->renderInReadOnlyMode() &&
-			$this->getUser()->isAllowed( 'managementors' );
+			ManageMentorsAbstractForm::canManageMentors( $this->getAuthority() );
 	}
 
 	/**
@@ -211,104 +212,66 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
-	 * @param UserIdentity $mentorUser Mentor that is being removed
-	 * @return array
+	 * @param string $action
+	 * @param UserIdentity $mentorUser
+	 * @return HTMLForm|null
 	 */
-	private function getManageMentorsFormFields( UserIdentity $mentorUser ): array {
+	private function getFormByAction( string $action, UserIdentity $mentorUser ): ?HTMLForm {
+		switch ( $action ) {
+			case 'remove-mentor':
+				return new ManageMentorsRemoveMentor(
+					$this->mentorProvider,
+					$this->mentorWriter,
+					$mentorUser,
+					$this->getContext()
+				);
+			default:
+				return null;
+		}
+	}
+
+	private function parseSubpage( ?string $par ): ?array {
+		if ( !$par || strpos( $par, '/' ) === false ) {
+			return null;
+		}
+
+		[ $action, $data ] = explode( '/', $par, 2 );
+		$mentorUserId = (int)$data;
+		if ( !$mentorUserId ) {
+			return null;
+		}
+
 		return [
-			'reason' => [
-				'type' => 'text',
-				'label-message' => 'growthexperiments-manage-mentors-remove-mentor-reason',
-			],
-			'mentorid' => [
-				'type' => 'hidden',
-				'default' => $mentorUser->getId()
-			]
+			$action,
+			$this->userIdentityLookup->getUserIdentityByUserId( $mentorUserId )
 		];
 	}
 
-	/**
-	 * @param array $data
-	 * @return bool|Status
-	 */
-	public function onRemoveMentorSubmit( array $data ) {
-		// ensure the user has the necessary permissions to do this
-		if ( !$this->canManageMentors() ) {
+	private function handleAction( ?string $par ): bool {
+		[ $action, $mentorUser ] = $this->parseSubpage( $par );
+
+		if ( !$action || !$this->canManageMentors() ) {
+			// no action found or user does not have right to manage mentors
 			return false;
 		}
 
-		$mentorUser = $this->userIdentityLookup->getUserIdentityByUserId( (int)$data['mentorid'] );
 		if ( !$mentorUser ) {
-			return Status::newFatal( 'growthexperiments-manage-mentors-error-no-such-user' );
-		}
-
-		return Status::wrap(
-			$this->mentorWriter->removeMentor(
-				$this->mentorProvider->newMentorFromUserIdentity( $mentorUser ),
-				$this->getUser(),
-				$data['reason']
-			)
-		);
-	}
-
-	/**
-	 * Handle user clicking at Remove button
-	 *
-	 * @param string|null $par
-	 * @return bool
-	 */
-	private function handleRemoveMentor( ?string $par ) {
-		if ( !$par || strpos( $par, 'remove-mentor/' ) !== 0 ) {
-			return false;
-		}
-
-		if ( !$this->canManageMentors() ) {
-			return false;
-		}
-
-		$mentorId = (int)explode( '/', $par )[1];
-		if ( !$mentorId ) {
-			return false;
-		}
-
-		$out = $this->getOutput();
-		$mentorUser = $this->userIdentityLookup->getUserIdentityByUserId( $mentorId );
-		if ( !$mentorUser ) {
-			$out->addHTML( Html::element(
+			$this->getOutput()->addHTML( Html::element(
 				'p',
 				[ 'class' => 'error' ],
 				$this->msg(
-					'growthexperiments-manage-mentors-error-no-such-user',
-					$mentorId
+					'growthexperiments-manage-mentors-error-no-such-user'
 				)->text()
 			) );
 			return true;
 		}
 
-		$form = HTMLForm::factory(
-			'ooui',
-			$this->getManageMentorsFormFields( $mentorUser ),
-			$this->getContext(),
-			'growthexperiments-manage-mentors-'
-		);
-		if ( $this->getRequest()->getMethod() == 'GET' ) {
-			$out->addWikiMsg(
-				'growthexperiments-manage-mentors-remove-mentor-pretext',
-				$mentorUser->getName()
-			);
-		}
-		$form->setSubmitCallback( [ $this, 'onRemoveMentorSubmit' ] );
-
-		if ( $form->show() ) {
-			$out->addWikiMsg(
-				'growthexperiments-manage-mentors-remove-mentor-success',
-				$mentorUser->getName()
-			);
-			$out->addWikiMsg(
-				'growthexperiments-manage-mentors-return-back'
-			);
+		$form = $this->getFormByAction( $action, $mentorUser );
+		if ( !$form ) {
+			return false;
 		}
 
+		$form->show();
 		return true;
 	}
 
@@ -329,7 +292,7 @@ class SpecialManageMentors extends SpecialPage {
 	 */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
-		if ( $this->handleRemoveMentor( $subPage ) ) {
+		if ( $this->handleAction( $subPage ) ) {
 			return;
 		}
 
