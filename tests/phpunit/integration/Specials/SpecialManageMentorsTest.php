@@ -2,10 +2,12 @@
 
 namespace GrowthExperiments\Tests;
 
+use FauxRequest;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Specials\SpecialManageMentors;
 use MediaWiki\User\UserIdentity;
+use PermissionsError;
 use SpecialPageTestBase;
 
 /**
@@ -96,5 +98,52 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			'remove',
 			$html
 		);
+	}
+
+	/**
+	 * @covers ::execute
+	 * @covers ::handleAction
+	 * @covers ::getFormByAction
+	 * @covers ::parseSubpage
+	 */
+	public function testNotAuthorizedRemoveMentor() {
+		$this->expectException( PermissionsError::class );
+		$this->expectExceptionMessage( 'The action you have requested is limited to users in the group' );
+
+		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorProvider();
+
+		$this->assertTrue( $mentorProvider->isMentor( $this->mentorUser ) );
+		$this->executeSpecialPage(
+			'remove-mentor/' . $this->mentorUser->getId(),
+			new FauxRequest( [ 'wpreason' => 'foo' ], true )
+		);
+		$this->assertTrue( $mentorProvider->isMentor( $this->mentorUser ) );
+	}
+
+	/**
+	 * @covers ::execute
+	 * @covers ::handleAction
+	 * @covers ::getFormByAction
+	 * @covers ::parseSubpage
+	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor::onSubmit
+	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor::onSuccess
+	 */
+	public function testAuthorizedRemoveMentor() {
+		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorProvider();
+
+		$this->assertTrue( $mentorProvider->isMentor( $this->mentorUser ) );
+		list( $html, ) = $this->executeSpecialPage(
+			'remove-mentor/' . $this->mentorUser->getId(),
+			new FauxRequest( [ 'wpreason' => 'foo' ], true ),
+			null,
+			$this->getTestSysop()->getUser()
+		);
+		$this->assertStringContainsString(
+			'growthexperiments-manage-mentors-remove-mentor-success',
+			$html
+		);
+		$this->assertFalse( $mentorProvider->isMentor( $this->mentorUser ) );
 	}
 }
