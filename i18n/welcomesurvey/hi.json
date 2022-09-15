@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"1997kB"
+			"1997kB",
+			"Abijeet Patro"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|स्वागत}} $1 जी!",
@@ -18,5 +19,6 @@
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "किसी विकिपीडिया लेख में जानकारी जोड़े या बदलें",
 	"welcomesurvey-question-reason-option-add-image-label": "किसी विकिपीडिया लेख में चित्र जोड़े",
 	"welcomesurvey-question-reason-option-new-page-label": "एक नया विकिपीडिया लेख बनाएं",
-	"welcomesurvey-question-reason-option-other-no-freetext-label": "अन्य"
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "अन्य",
+	"welcomesurvey-mideditsignup-button-close": "बंद करें"
 }

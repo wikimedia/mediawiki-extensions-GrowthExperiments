@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"EdoAug",
 			"Jon Harald Søby",
 			"Mn00ch"
 		]
@@ -118,7 +119,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "Fadderen $1 sto allerede på fadderlista.",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Fadderen $1 står ikke på fadderlista",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Fadderen $1 er ikke en registrert bruker",
-	"growthexperiments-mentor-writer-error-message-too-long": "Introduksjonsmeldingen er for lang. Maksimal lengde er $1.",
+	"growthexperiments-mentor-writer-error-message-too-long": "Introduksjonsmeldingen er for lang (ID for påvirket bruker: $2). Maksimal lengde er $1.",
 	"growthexperiments-manage-mentors-title": "Behandle faddere",
 	"growthexperiments-manage-mentors-error-no-such-user": "Feil: Ingen bruker med ID-en $1 finnes. Dette er trolig en intern feil.",
 	"growthexperiments-manage-mentors-auto-assigned": "Automatisk tildelte faddere",

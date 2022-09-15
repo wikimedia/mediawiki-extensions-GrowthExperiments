@@ -118,7 +118,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "החונך $1 כבר נוסף לרשימת החונכים",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "החונך $1 אינו ברשימת החונכים",
 	"growthexperiments-mentor-writer-error-anonymous-user": "החונך $1 אינו משתמש רשום",
-	"growthexperiments-mentor-writer-error-message-too-long": "הודעת ההיכרות ארוכה מדי. האורך המרבי הוא $1.",
+	"growthexperiments-mentor-writer-error-message-too-long": "הודעת ההיכרות ארוכה מדי (מזהה המשתמש המושפע: $2). האורך המרבי הוא $1.",
 	"growthexperiments-manage-mentors-title": "ניהול חונכים",
 	"growthexperiments-manage-mentors-error-no-such-user": "שגיאה: לא קיים משתמש עם המזהה $1. זאת כנראה שגיאה פנימית.",
 	"growthexperiments-manage-mentors-auto-assigned": "ונכים שהוקצו אוטומטית",

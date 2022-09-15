@@ -3,6 +3,7 @@
 		"authors": [
 			"BadDog",
 			"Kizule",
+			"Vlad5250",
 			"Zoranzoki21"
 		]
 	},
@@ -46,5 +47,7 @@
 	"welcomesurvey-question-email-help": "Приметили смо да нисте унели имејл-адресу када сте отварали налог. <strong>Препоручујемо</strong> да то учините. Она је потребна за опоравак налога ако којим случајем заборавите лозинку. Ваша имејл-адреса неће бити приказана другим корисницима који контактирају с вама.",
 	"welcomesurvey-question-languages-label": "Пројекат {{SITENAME}} је доступан на више од 300 језика. Знате ли још неке језике?",
 	"welcomesurvey-question-languages-placeholder": "Додајте највише {{PLURAL:$1|један језик|$1 језика}}…",
-	"welcomesurvey-question-languages-maximum": "Додали сте највећи могући број језика."
+	"welcomesurvey-question-languages-maximum": "Додали сте највећи могући број језика.",
+	"welcomesurvey-mideditsignup-title": "Добро дошли, $1!",
+	"welcomesurvey-mideditsignup-button-close": "Затвори"
 }

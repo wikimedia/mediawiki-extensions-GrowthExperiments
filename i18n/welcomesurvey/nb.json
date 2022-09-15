@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"EdoAug",
 			"Jon Harald Søby"
 		]
 	},
@@ -46,5 +47,8 @@
 	"welcomesurvey-question-email-help": "Vi la merke til at {{GENDER:|du}} ikke skrev inn en epostadresse da du opprettet kontoen. Det <strong>anbefales sterkt</strong>, fordi en epost trengs om du skulle glemme passordet ditt. MERK: Epostadressa di vises ikke når andre brukere kontakter deg.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} er tilgjengelig på nesten 300 språk. Er det andre språk {{GENDER:|du}} kan lese og skrive på?",
 	"welcomesurvey-question-languages-placeholder": "Legg til opptil {{PLURAL:$1|ett|$1}} språk …",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|Du}} har lagt til maksimalt antall språk."
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Du}} har lagt til maksimalt antall språk.",
+	"welcomesurvey-mideditsignup-body": "Takk for redigeringen! {{GENDER:|Du}} kan nå se påvirkningen av dine bidrag og se flere redigeringforslag på hjemmesiden din.",
+	"welcomesurvey-mideditsignup-button-homepage": "Gå til min hjemmeside",
+	"welcomesurvey-mideditsignup-button-close": "Lukk"
 }
