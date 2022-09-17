@@ -1541,6 +1541,7 @@
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/AwaySettingsDialog.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorMessageChangeDialog.js",
+				"ext.growthExperiments.MentorDashboard/MentorTools/MentorToolsEllipsisMenu.js",
 				{
 					"name": "ext.growthExperiments.MentorDashboard/MenteeOverview/Tags.json",
 					"callback": [ "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks", "getTagsToFilterBy" ]
@@ -1577,8 +1578,9 @@
 				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text",
 				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline",
 				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text",
-				"growthexperiments-mentor-dashboard-mentor-tools-info-headline",
-				"growthexperiments-mentor-dashboard-mentor-tools-info-text",
+				"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit",
+				"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-headline",
+				"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-text",
 				"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active",
 				"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away",
 				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline",

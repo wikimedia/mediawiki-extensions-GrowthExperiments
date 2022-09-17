@@ -3,7 +3,8 @@
 	'use strict';
 
 	var AwaySettingsDialog = require( './AwaySettingsDialog.js' ),
-		MentorMessageChangeDialog = require( './MentorMessageChangeDialog.js' );
+		MentorMessageChangeDialog = require( './MentorMessageChangeDialog.js' ),
+		MentorToolsEllipsisMenu = require( './MentorToolsEllipsisMenu.js' );
 
 	/**
 	 * @class
@@ -13,24 +14,7 @@
 	 */
 	function MentorTools( $body ) {
 		this.$body = $body;
-		this.$body.prepend(
-			new OO.ui.PopupButtonWidget( {
-				icon: 'info-unpadded',
-				id: 'growthexperiments-mentor-dashboard-module-mentor-tools-info-icon',
-				framed: false,
-				invisibleLabel: true,
-				popup: {
-					icon: 'info-unpadded',
-					align: 'backwards',
-					head: true,
-					padded: true,
-					label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-info-headline' ),
-					$content: $( '<p>' ).append(
-						mw.message( 'growthexperiments-mentor-dashboard-mentor-tools-info-text' ).parse()
-					)
-				}
-			} ).$element
-		);
+		this.$body.prepend( new MentorToolsEllipsisMenu().$element );
 
 		this.mentorStatusDropdown = new OO.ui.DropdownWidget( {
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active' ),
