@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Pribavljanje formatiranih pitanja postavljenih putem modulâ za početnu stranicu",
+	"apihelp-homepagequestionstore-param-questionformat": "Format u kom će se vratiti pitanja, npr. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Skladišna lokacija pitanja.",
+	"apihelp-homepagequestionstore-param-userid": "Korisnička naznaka za koju će se pribaviti pitanja.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nije pronađeno nijedno pitanje.",
+	"apihelp-growthsetmentor-summary": "Dodjeljivanje mentora za korisnika. Izmjena će biti javna.",
+	"apihelp-growthsetmentor-param-reason": "Razlog promjene"
+}
