@@ -125,6 +125,7 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	protected function alterForm( HTMLForm $form ) {
+		$form->setSubmitDestructive();
 		$form->setSubmitText( $this->msg(
 			'growthexperiments-quit-mentorship-reassign-mentees-confirm'
 		)->text() );
