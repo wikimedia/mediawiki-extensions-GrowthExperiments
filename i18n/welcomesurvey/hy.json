@@ -43,5 +43,6 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "Չեմ հիշում",
 	"welcomesurvey-question-email-label": "Էլ–փոստի հասցե (ոչ պարտադիր)",
 	"welcomesurvey-question-email-placeholder": "Մուտքագրեք ձեր էլ–փոստի հասցեն",
-	"welcomesurvey-question-email-help": "Մենք նկատել ենք, որ մասնակցային հաշիվը ստեղծելիս Դուք չեք ավելացրել Ձեր էլ-փոստի հասցեն։ <strong>Խորհուրդ է տրվում</strong> ավելացնել էլ-փոստի հասցեն, քանի որ գաղտնաբառը մոռանալու դեպքում այն կարող է օգտագործվել հաշիվը վերականգնելու համար։"
+	"welcomesurvey-question-email-help": "Մենք նկատել ենք, որ մասնակցային հաշիվը ստեղծելիս Դուք չեք ավելացրել Ձեր էլ-փոստի հասցեն։ <strong>Խորհուրդ է տրվում</strong> ավելացնել էլ-փոստի հասցեն, քանի որ գաղտնաբառը մոռանալու դեպքում այն կարող է օգտագործվել հաշիվը վերականգնելու համար։",
+	"welcomesurvey-mideditsignup-button-close": "Փակել"
 }

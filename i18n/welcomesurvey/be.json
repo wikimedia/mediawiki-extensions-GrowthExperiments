@@ -51,5 +51,9 @@
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Вы}} дадалі максімальную колькасць моваў.",
 	"welcomesurvey-reminder": "Дапамажыце нам палепшыць {{GENDER:|ваш}} досвед у Вікіпедыі, адказаўшы на некалькі неабавязковых пытанняў у нашым Прывітальным апытанні: $1.",
 	"welcomesurvey-reminder-link": "Прайсці апытанне",
-	"welcomesurvey-reminder-dismiss": "Зачыніць"
+	"welcomesurvey-reminder-dismiss": "Зачыніць",
+	"welcomesurvey-mideditsignup-title": "Вітаем, $1!",
+	"welcomesurvey-mideditsignup-body": "Дзякуй за рэдагаванне! Цяпер {{GENDER:|вы}} можаце бачыць уплыў вашых унёскаў і атрымліваць больш прапанаваных правак на сваёй хатняй старонцы.",
+	"welcomesurvey-mideditsignup-button-homepage": "Перайсці на маю хатнюю старонку",
+	"welcomesurvey-mideditsignup-button-close": "Зачыніць"
 }

@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Balyozxane",
+			"Bikarhêner",
 			"Guherto"
 		]
 	},
@@ -100,7 +101,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Zanist, Teknolojî û Matematîk",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Çand",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Herêm",
-	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Mijarên xwe hilbijêre",
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Mijaran bibijêre",
 	"growthexperiments-homepage-suggestededits-topics-more": "zêdetir bibîne",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|mijar|mijar}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Hemûyan hilbijêre",

@@ -3,6 +3,7 @@
 		"authors": [
 			"Ailbeve",
 			"DDPAT",
+			"Deltaspace",
 			"Ice bulldog"
 		]
 	},
@@ -13,7 +14,7 @@
 	"apihelp-query+growthtasks-param-limit": "Максимальное количество предлагаемых задач для возврата.",
 	"apihelp-query+growthtasks-param-excludepageids": "Идентификаторы страниц, следует исключить из запроса.",
 	"apihelp-query+growthtasks-param-debug": "Добавьте отладочные данные в вывод.",
-	"apihelp-query+growthtasks-example-1": "Получите рекомендации по заданию типа базового оформления статей для текущего пользователя.",
+	"apihelp-query+growthtasks-example-1": "Получите рекомендуемые задания по корректуре для текущего пользователя.",
 	"apihelp-query+growthtasks-example-2": "Получить рекомендации по заданию для текущего пользователя с расширенной информацией о страницах.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Параметр «принято» отсутствует в данных плагина «Добавить изображение»",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Параметр «принято» должно быть логичным в данных плагина «Добавить изображение», это $1",

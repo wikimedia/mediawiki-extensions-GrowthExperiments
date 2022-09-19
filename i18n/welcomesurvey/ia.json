@@ -46,5 +46,12 @@
 	"welcomesurvey-question-email-help": "Nos ha observate que tu non ha inserite un adresse de e-mail durante le creation de iste conto. Isto es <strong>altemente recommendate</strong> perque un adresse de e-mail es necessari pro recuperar tu conto si tu jammais perde tu contrasigno. NOTA: Tu adresse de e-mail non es revelate quando altere usatores te contacta.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} es disponibile in quasi 300 linguas. Sape tu leger e scriber in altere linguas?",
 	"welcomesurvey-question-languages-placeholder": "Adder {{PLURAL:$1|un lingua|usque a $1 linguas}}…",
-	"welcomesurvey-question-languages-maximum": "Tu ha addite le numero maxime de linguas."
+	"welcomesurvey-question-languages-maximum": "Tu ha addite le numero maxime de linguas.",
+	"welcomesurvey-reminder": "Adjuta nos a meliorar tu experientia de Wikipedia respondente a alcun questiones facultative in nostre sondage de benvenita. $1",
+	"welcomesurvey-reminder-link": "Responder al sondage",
+	"welcomesurvey-reminder-dismiss": "Clauder",
+	"welcomesurvey-mideditsignup-title": "Benvenite, $1!",
+	"welcomesurvey-mideditsignup-body": "Gratias pro le modification! Tu pote ora vider le influentia de tu contributiones e reciper suggestiones de modificationes sur tu pagina initial.",
+	"welcomesurvey-mideditsignup-button-homepage": "Ir a mi pagina initial",
+	"welcomesurvey-mideditsignup-button-close": "Clauder"
 }

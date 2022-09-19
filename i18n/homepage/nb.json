@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gabriel Kielland",
 			"Jon Harald Søby",
 			"Kingu"
 		]
@@ -59,7 +60,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Anbefales når {{GENDER:$1|du}} er i ferd med å lære å redigere.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Etter at {{GENDER:$1|du}} har fullført noen enkle redigeringer.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Når {{GENDER:$1|du}} er blitt kjent med vanlig praksis på Wikipedia.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Korrekturlesing og å legge til lenker til andre artikler.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Korrekturlesing og å legge til lenker i andre artikler.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Å legge til pålitelige kilder og oppdatere artikler som er utdaterte",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Opprette nye artikler og utvide korte artikler.",
 	"growthexperiments-homepage-suggested-edits-header": "Foreslåtte redigeringer",
@@ -187,7 +188,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Gjør at ord i én artikkel lenker til en annen artikkel",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-link-recommendation": "Gjør at ord i en artikkel lenker til en annen artikkel.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-image-recommendation": "Avgjør hvorvidt et bilde fra Wikimedia Commons skal legges til i artikkelen.",
-	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "Korrekturlesing handler om å gjøre små endringer i hvordan en artikkel skrives, og er en enkel og verdifull måte å begynne å redigere Wikipedia. Korrekturlesing hjelper til med å gjøre artiklene mer profesjonelle og pålitelige.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "Korrekturlesing handler om å gjøre små endringer i hvordan en artikkel er skrevet, og er en enkel og verdifull måte å begynne å redigere Wikipedia. Korrekturlesing hjelper til med å gjøre artiklene mer profesjonelle og pålitelige.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-references": "Bruk bøker, nettsteder og nyheter for å bekrefte at Wikipedia er nøyaktig, og legg dem til i artiklene så leserne selv kan dobbeltsjekke at det de leser er sant.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "Artikler blir utdaterte med tidens løp etter som nye ting skjer. Finn og legg til korrekt informasjon så Wikipedia alltid har oppdatert informasjon.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "Mange Wikipedia-artikler er på bare noen få setninger. Finn mer informasjon og legg den til for å gjøre artikkelen mer fullstendig.",

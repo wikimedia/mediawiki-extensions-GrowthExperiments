@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gabriel Kielland",
 			"Jon Harald Søby",
 			"Orf3us"
 		]
@@ -44,7 +45,7 @@
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Raske starttips",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Klar?</strong> Klikk «{{int:vector-view-edit}}» for å komme i gang.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Klar?</strong> Åpne seksjonen du ønsker å redigere og trykk på blyantikonet.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Korrekturlesing handler om å fikse småting i måten en artikkel skrives, som stavefeil, grammatikkfeil eller å gjøre artikkelen tydeligere. Korrekturlesing gjør artiklene mer profesjonelle og troverdige.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Korrekturlesing handler om å fikse småting i måten en artikkel er skrevet, slik som stavefeil, grammatiske feil eller artikkelens tydelighet. Korrekturlesing hjelper til å gjøre artiklene mer profesjonelle og troverdige.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Å nå Merkur fra <mark class=\"negative\">jjorda</mark> innebærer betydelige tekniske utfordringer.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "{{GENDER:|Du}} trenger bare gjøre en eller to små redigeringer for å utgjøre en forskjell. Du trenger ikke å jobbe med hele artikkelen. Du trenger heller ikke å ha inngående kunnskap om emnet.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|Du}} kan fikse stave- og grammatikkfeil. Dette kan inkludere setninger som er for lange, gjentatte ord eller gal tegnsetting.",

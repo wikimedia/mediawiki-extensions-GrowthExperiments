@@ -3,6 +3,7 @@
 		"authors": [
 			"Ailbeve",
 			"DDPAT",
+			"Deltaspace",
 			"Ice bulldog",
 			"Iniquity",
 			"Jack Jackie Pomi",
@@ -113,6 +114,7 @@
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Определение наставника содержит неожидаемый ключ <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Наставник $1 уже добавлен в список наставников",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Наставник $1 не находится в списке наставников",
+	"growthexperiments-mentor-writer-error-message-too-long": "Вступительное сообщение слишком длинное (идентификатор затронутого пользователя: $2). Максимальная длина составляет $1.",
 	"growthexperiments-manage-mentors-title": "Управление наставниками",
 	"growthexperiments-manage-mentors-error-no-such-user": "Ошибка: участника с ID $1 не существует. Вероятно, это внутренняя ошибка.",
 	"growthexperiments-manage-mentors-auto-assigned": "Автоматически назначенные наставники",

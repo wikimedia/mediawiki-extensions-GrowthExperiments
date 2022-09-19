@@ -49,5 +49,9 @@
 	"welcomesurvey-question-email-help": "Percebemos que você não inseriu um e-mail ao criar esta conta. É <strong>altamente recomendável</strong>, já que um e-mail é necessário para a recuperação da conta se você perder sua senha. NOTA: Seu endereço de e-mail não é revelado quando outros usuários entrarem em contato com você.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} está disponível em quase 300 idiomas. Existem outros idiomas em que você lê e escreve?",
 	"welcomesurvey-question-languages-placeholder": "Adicionar até {{PLURAL:$1|um idioma|$1 idiomas}}...",
-	"welcomesurvey-question-languages-maximum": "Você adicionou o número máximo de idiomas."
+	"welcomesurvey-question-languages-maximum": "Você adicionou o número máximo de idiomas.",
+	"welcomesurvey-reminder": "Ajude-nos a melhorar o seu uso da Wikipédia respondendo a algumas perguntas opcionais da nossa pesquisa de boas-vindas. $1",
+	"welcomesurvey-reminder-link": "Começar a pesquisa",
+	"welcomesurvey-reminder-dismiss": "Ignorar",
+	"welcomesurvey-mideditsignup-title": "Bem-vindo(a), $1!"
 }

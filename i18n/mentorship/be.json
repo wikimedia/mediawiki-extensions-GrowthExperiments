@@ -121,7 +121,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "Настаўнік $1 ужо быў дададзены ў спіс настаўнікаў",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Настаўнік $1 не ў спісе настаўнікаў",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Настаўнік $1 — не зарэгістраваны ўдзельнік",
-	"growthexperiments-mentor-writer-error-message-too-long": "Уступнае паведамленне занадта доўгае. Максімальная даўжыня — $1.",
+	"growthexperiments-mentor-writer-error-message-too-long": "Уступнае паведамленне занадта доўгае (ідэнтыфікатар удзельніку: $2). Максімальная даўжыня — $1.",
 	"growthexperiments-manage-mentors-title": "Кіраванне настаўнікамі",
 	"growthexperiments-manage-mentors-error-no-such-user": "Памылка: такога ўдзельніка з ідэнтыфікатарам $1 не існуе. Магчыма, гэта ўнутраная памылка.",
 	"growthexperiments-manage-mentors-auto-assigned": "Настаўнікі, прызначаныя аўтаматычна",

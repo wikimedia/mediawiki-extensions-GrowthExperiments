@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ailbeve",
+			"Deltaspace",
 			"Iniquity",
 			"Jack Jackie Pomi",
 			"Katunchik",
@@ -56,5 +57,12 @@
 	"welcomesurvey-question-email-help": "Мы заметили, что {{GENDER:|вы}} не ввели электронный адрес при создании этой учётной записи. <strong>Рекомендуем</strong> его ввести, потому что он требуется для восстановления учётной записи, если вы забудете пароль. ПРИМЕЧАНИЕ: Ваш электронный адрес не показывается, если другие пользователи связываются с вами.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} доступна на более чем 300-х языках. Подскажите, на каких языках ещё {{GENDER:|вы}} можете писать и читать?",
 	"welcomesurvey-question-languages-placeholder": "Добавить до $1 {{PLURAL:$1|языка|языков}}...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|Вы}} добавили максимальное количество языков."
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Вы}} добавили максимальное количество языков.",
+	"welcomesurvey-reminder": "Помогите нам сделать Википедию лучше для {{GENDER:|вас}}, ответив на несколько необязательных вопросов в нашем приветственном опросе. $1",
+	"welcomesurvey-reminder-link": "Пройти опрос",
+	"welcomesurvey-reminder-dismiss": "Закрыть",
+	"welcomesurvey-mideditsignup-title": "Добро пожаловать, $1!",
+	"welcomesurvey-mideditsignup-body": "Спасибо за редактирование! {{GENDER:|Теперь вы}} можете видеть результаты своего вклада и получать больше рекомендуемых правок на вашей главной странице.",
+	"welcomesurvey-mideditsignup-button-homepage": "Перейти на мою домашнюю страницу",
+	"welcomesurvey-mideditsignup-button-close": "Закрыть"
 }

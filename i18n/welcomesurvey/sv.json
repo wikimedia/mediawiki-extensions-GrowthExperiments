@@ -50,5 +50,8 @@
 	"welcomesurvey-question-email-help": "Vi upptäckte att du inte angav en e-postadress när du skapade detta konto. Det <strong>rekommenderas starkt</strong>, eftersom en e-postadress behövs för att återställa kontot om du någonsin förlorar ditt lösenord. OBS: Din e-postadress avslöjas inte när andra användare kontaktar dig.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} finns på nästan 300 språk. Finns det andra språk du läser och skriver?",
 	"welcomesurvey-question-languages-placeholder": "Lägg till upp till {{PLURAL:$1|ett språk|$1 språk}}...",
-	"welcomesurvey-question-languages-maximum": "Du har lagt till så många språk man får."
+	"welcomesurvey-question-languages-maximum": "Du har lagt till så många språk man får.",
+	"welcomesurvey-mideditsignup-title": "Välkommen, $1!",
+	"welcomesurvey-mideditsignup-button-homepage": "Gå till min hemsida",
+	"welcomesurvey-mideditsignup-button-close": "Stäng"
 }

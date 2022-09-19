@@ -117,7 +117,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "Mentorul $1 a fost deja adăugat listei mentorilor",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentorul $1 nu este pe lista mentorilor",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Mentorul $1 nu este un utilizator înregistrat",
-	"growthexperiments-mentor-writer-error-message-too-long": "Mesajul de introducere este prea lung. Lungimea maximă este de $1.",
+	"growthexperiments-mentor-writer-error-message-too-long": "Mesajul de introducere este prea lung (ID-ul utilizatorului afectat: $2). Lungimea maximă este de $1.",
 	"growthexperiments-manage-mentors-title": "Administrare mentori",
 	"growthexperiments-manage-mentors-error-no-such-user": "Eroare: Nu există niciun utilizator cu ID-ul $1. Aceasta este probabil o eroare internă.",
 	"growthexperiments-manage-mentors-auto-assigned": "Mentori atribuiți automat",

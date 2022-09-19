@@ -119,5 +119,7 @@
 	"growthexperiments-manage-mentors-intro-msg": "নতুনদের জন্য বার্তা",
 	"growthexperiments-manage-mentors-remove-mentor": "অপসারণ করুন",
 	"growthexperiments-mentorship-enrollasmentor-pretext": "{{SITENAME}}'র {{GENDER:|পরামর্শদাতা}} হিসাবে স্বেচ্ছাসেবা প্রদান করার জন্য {{GENDER:|আপনাকে}} ধন্যবাদ৷ {{GENDER:|আপনি}} এই ফর্মটি পূরণ করে একজন পরামর্শদাতা হিসাবে নথিভুক্ত হতে পারেন৷",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "শুভেচ্ছাবার্তা",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "শুভেচ্ছাবার্তা হলো একজন মেন্টর হিসেবে {{GENDER:|আপনার}} ভূমিকা। অনুগ্রহপূর্বক এর দৈর্ঘ্য ২৪০টি অক্ষরের মধ্যে রাখবেন। উইকিটেক্সট গ্রহণযোগ্য নয়।",
 	"growthexperiments-mentorship-enrollasmentor-summary": "একজন পরামর্শদাতা হিসেবে নিজেকে যুক্ত করছি"
 }
