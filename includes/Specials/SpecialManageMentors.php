@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Specials;
 
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
@@ -33,17 +34,22 @@ class SpecialManageMentors extends SpecialPage {
 	/** @var IMentorWriter */
 	private $mentorWriter;
 
+	/** @var MentorStatusManager */
+	private $mentorStatusManager;
+
 	/**
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserEditTracker $userEditTracker
 	 * @param MentorProvider $mentorProvider
 	 * @param IMentorWriter $mentorWriter
+	 * @param MentorStatusManager $mentorStatusManager
 	 */
 	public function __construct(
 		UserIdentityLookup $userIdentityLookup,
 		UserEditTracker $userEditTracker,
 		MentorProvider $mentorProvider,
-		IMentorWriter $mentorWriter
+		IMentorWriter $mentorWriter,
+		MentorStatusManager $mentorStatusManager
 	) {
 		parent::__construct( 'ManageMentors' );
 
@@ -51,6 +57,7 @@ class SpecialManageMentors extends SpecialPage {
 		$this->userEditTracker = $userEditTracker;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorWriter = $mentorWriter;
+		$this->mentorStatusManager = $mentorStatusManager;
 	}
 
 	/**
@@ -244,6 +251,7 @@ class SpecialManageMentors extends SpecialPage {
 				return new ManageMentorsEditMentor(
 					$this->mentorProvider,
 					$this->mentorWriter,
+					$this->mentorStatusManager,
 					$mentorUser,
 					$this->getContext()
 				);

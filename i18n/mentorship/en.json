@@ -129,6 +129,8 @@
 	"growthexperiments-manage-mentors-edit-intro-msg": "Introduction message",
 	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Is automatically assigned to newcomers?",
 	"growthexperiments-manage-mentors-edit-weight": "Weight",
+	"growthexperiments-manage-mentors-edit-is-away": "Is away?",
+	"growthexperiments-manage-mentors-edit-away-until": "Away until",
 	"growthexperiments-manage-mentors-edit-reason": "Reason",
 	"growthexperiments-manage-mentors-edit-success": "Mentorship-related options for {{GENDER:$1|mentor}} [[User:$1|$1]] were changed.",
 	"growthexperiments-manage-mentors-remove-mentor": "Remove",

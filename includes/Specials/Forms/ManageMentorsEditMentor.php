@@ -3,26 +3,34 @@
 namespace GrowthExperiments\Specials\Forms;
 
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use IContextSource;
 use MediaWiki\User\UserIdentity;
+use MWTimestamp;
 use Status;
 
 class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 
+	/** @var MentorStatusManager */
+	private $mentorStatusManager;
+
 	/**
 	 * @param MentorProvider $mentorProvider
 	 * @param IMentorWriter $mentorWriter
+	 * @param MentorStatusManager $mentorStatusManager
 	 * @param UserIdentity $mentorUser
 	 * @param IContextSource $context
 	 */
 	public function __construct(
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter,
+		MentorStatusManager $mentorStatusManager,
 		UserIdentity $mentorUser,
 		IContextSource $context
 	) {
+		$this->mentorStatusManager = $mentorStatusManager;
 		parent::__construct(
 			$mentorProvider,
 			$mentorWriter,
@@ -42,6 +50,7 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 	 */
 	protected function getFormFields(): array {
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
+		$awayTimestamp = $this->mentorStatusManager->getMentorBackTimestamp( $this->mentorUser );
 
 		return [
 			'message' => [
@@ -67,6 +76,18 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 				],
 				'default' => $mentor->getWeight(),
 			],
+			'isAway' => [
+				'type' => 'check',
+				'label-message' => 'growthexperiments-manage-mentors-edit-is-away',
+				'default' => (bool)$awayTimestamp,
+			],
+			'awayTimestamp' => [
+				'type' => 'datetime',
+				'label-message' => 'growthexperiments-manage-mentors-edit-away-until',
+				'hide-if' => [ '!==', 'isAway', '1' ],
+				'default' => MWTimestamp::getInstance( (string)$awayTimestamp )
+					->format( 'Y-m-d\TH:m:s\Z' ),
+			],
 			'reason' => [
 				'type' => 'text',
 				'label-message' => 'growthexperiments-manage-mentors-edit-reason',
@@ -83,10 +104,23 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 		}
 
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
+		$awayTimestamp = $this->mentorStatusManager->getMentorBackTimestamp( $this->mentorUser );
 
 		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
 		$mentor->setAutoAssigned( $data['automaticallyAssigned'] );
 		$mentor->setWeight( (int)$data['weight'] );
+
+		if ( (bool)$awayTimestamp !== $data['isAway'] ) {
+			// isAway changed, implement the change
+			if ( $data['isAway'] ) {
+				$this->mentorStatusManager->markMentorAsAwayTimestamp(
+					$this->mentorUser,
+					$data['awayTimestamp']
+				);
+			} else {
+				$this->mentorStatusManager->markMentorAsActive( $this->mentorUser );
+			}
+		}
 
 		return Status::wrap( $this->mentorWriter->changeMentor(
 			$mentor,

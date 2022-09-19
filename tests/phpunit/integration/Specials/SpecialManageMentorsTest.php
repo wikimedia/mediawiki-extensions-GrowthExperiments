@@ -4,11 +4,13 @@ namespace GrowthExperiments\Tests;
 
 use FauxRequest;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Specials\SpecialManageMentors;
 use MediaWiki\User\UserIdentity;
 use PermissionsError;
 use SpecialPageTestBase;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialManageMentors
@@ -51,7 +53,8 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$this->getServiceContainer()->getUserIdentityLookup(),
 			$this->getServiceContainer()->getUserEditTracker(),
 			$geServices->getMentorProvider(),
-			$geServices->getMentorWriter()
+			$geServices->getMentorWriter(),
+			$geServices->getMentorStatusManager()
 		);
 	}
 
@@ -170,6 +173,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 				'wpautomaticallyAssigned' => 1,
 				'wpweight' => 2,
 				'wpreason' => 'foo',
+				'wpisAway' => 0,
 			], true ),
 			null,
 			$this->getTestSysop()->getUser()
@@ -181,6 +185,48 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		$this->assertStringContainsString(
 			'new intro',
 			$mentorProvider->newMentorFromUserIdentity( $this->mentorUser )->getIntroText()
+		);
+	}
+
+	/**
+	 * @covers ::execute
+	 * @covers ::handleAction
+	 * @covers ::getFormByAction
+	 * @covers ::parseSubpage
+	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor::onSubmit
+	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor::onSuccess
+	 */
+	public function testAuthorizedEditMentorMarkAway() {
+		$mentorStatusManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorStatusManager();
+
+		ConvertibleTimestamp::setFakeTime( strtotime( '2011-04-01T12:00Z' ) );
+
+		$this->assertEquals(
+			MentorStatusManager::STATUS_ACTIVE,
+			$mentorStatusManager->getMentorStatus( $this->mentorUser )
+		);
+		$this->assertNull( $mentorStatusManager->getMentorBackTimestamp( $this->mentorUser ) );
+		$this->executeSpecialPage(
+			'edit-mentor/' . $this->mentorUser->getId(),
+			new FauxRequest( [
+				'wpmessage' => 'new intro',
+				'wpautomaticallyAssigned' => 1,
+				'wpweight' => 2,
+				'wpreason' => 'foo',
+				'wpisAway' => 1,
+				'wpawayTimestamp' => '2011-05-01T12:00Z',
+			], true ),
+			null,
+			$this->getTestSysop()->getUser()
+		);
+		$this->assertSame(
+			MentorStatusManager::STATUS_AWAY,
+			$mentorStatusManager->getMentorStatus( $this->mentorUser )
+		);
+		$this->assertSame(
+			'20110501120000',
+			$mentorStatusManager->getMentorBackTimestamp( $this->mentorUser )
 		);
 	}
 }
