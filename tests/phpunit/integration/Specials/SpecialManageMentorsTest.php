@@ -146,4 +146,41 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		);
 		$this->assertFalse( $mentorProvider->isMentor( $this->mentorUser ) );
 	}
+
+	/**
+	 * @covers ::execute
+	 * @covers ::handleAction
+	 * @covers ::getFormByAction
+	 * @covers ::parseSubpage
+	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor::onSubmit
+	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor::onSuccess
+	 */
+	public function testAuthorizedEditMentor() {
+		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorProvider();
+
+		$this->assertStringContainsString(
+			'this is intro',
+			$mentorProvider->newMentorFromUserIdentity( $this->mentorUser )->getIntroText()
+		);
+		list( $html, ) = $this->executeSpecialPage(
+			'edit-mentor/' . $this->mentorUser->getId(),
+			new FauxRequest( [
+				'wpmessage' => 'new intro',
+				'wpautomaticallyAssigned' => 1,
+				'wpweight' => 2,
+				'wpreason' => 'foo',
+			], true ),
+			null,
+			$this->getTestSysop()->getUser()
+		);
+		$this->assertStringContainsString(
+			'growthexperiments-manage-mentors-edit-success',
+			$html
+		);
+		$this->assertStringContainsString(
+			'new intro',
+			$mentorProvider->newMentorFromUserIdentity( $this->mentorUser )->getIntroText()
+		);
+	}
 }
