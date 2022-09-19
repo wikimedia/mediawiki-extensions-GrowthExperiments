@@ -101,7 +101,14 @@ class ChangeWikiConfig extends Maintenance {
 		}
 		$value = $this->getArg( 1 );
 		if ( $this->hasOption( 'json' ) ) {
-			$value = FormatJson::decode( $value, true );
+			$status = FormatJson::parse( $value, FormatJson::FORCE_ASSOC );
+			if ( !$status->isGood() ) {
+				$this->fatalError(
+					"Unable to decode JSON to use with $key: $value. Error from FormatJson::parse: " .
+					$status->getWikiText( false, false, 'en' )
+				);
+			}
+			$value = $status->getValue();
 		}
 		try {
 			if ( $this->hasOption( 'create-only' )
