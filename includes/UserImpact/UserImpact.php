@@ -37,7 +37,7 @@ class UserImpact implements JsonSerializable {
 	/** @var int */
 	private $newcomerTaskEditCount;
 
-	/** @var int */
+	/** @var int|null */
 	private $lastEditTimestamp;
 
 	/**
@@ -52,7 +52,7 @@ class UserImpact implements JsonSerializable {
 	 *   the timezone of the user.
 	 * @param int $newcomerTaskEditCount Number of edits the user made which have the
 	 *   newcomer task tag. Might exclude edits made a long time ago or many edits ago.
-	 * @param int $lastEditTimestamp Unix timestamp of the user's last edit.
+	 * @param int|null $lastEditTimestamp Unix timestamp of the user's last edit.
 	 */
 	public function __construct(
 		UserIdentity $user,
@@ -61,7 +61,7 @@ class UserImpact implements JsonSerializable {
 		array $editCountByDay,
 		UserTimeCorrection $timeZone,
 		int $newcomerTaskEditCount,
-		int $lastEditTimestamp
+		?int $lastEditTimestamp
 		// TODO add edit streak data if that ends up in the final design
 	) {
 		$this->user = $user;
@@ -137,10 +137,10 @@ class UserImpact implements JsonSerializable {
 	}
 
 	/**
-	 * Unix timestamp of the user's last edit.
-	 * @return int
+	 * Unix timestamp of the user's last edit, or null if the user has zero edits.
+	 * @return int|null
 	 */
-	public function getLastEditTimestamp(): int {
+	public function getLastEditTimestamp(): ?int {
 		return $this->lastEditTimestamp;
 	}
 

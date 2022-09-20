@@ -83,6 +83,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
+use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactLookup;
@@ -932,8 +933,32 @@ return [
 	'GrowthExperimentsUserImpactLookup' => static function (
 		MediaWikiServices $services
 	): UserImpactLookup {
+		return $services->get( '_GrowthExperimentsUserImpactLookup_Subpage' );
+	},
+
+	'_GrowthExperimentsUserImpactLookup_Subpage' => static function (
+		MediaWikiServices $services
+	): UserImpactLookup {
 		return new SubpageUserImpactLookup(
 			$services->getWikiPageFactory()
+		);
+	},
+
+	'_GrowthExperimentsUserImpactLookup_Computed' => static function (
+		MediaWikiServices $services
+	): UserImpactLookup {
+		$pageViewInfoLoaded = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
+		return new ComputedUserImpactLookup(
+			new ServiceOptions( ComputedUserImpactLookup::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getActorMigration(),
+			$services->getChangeTagDefStore(),
+			$services->getUserFactory(),
+			$services->getUserOptionsLookup(),
+			$services->getTitleFormatter(),
+			$services->getTitleFactory(),
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$pageViewInfoLoaded ? $services->get( 'PageViewService' ) : null
 		);
 	},
 
