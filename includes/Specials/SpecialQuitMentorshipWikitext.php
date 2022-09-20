@@ -120,6 +120,7 @@ class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 			$form->suppressDefaultSubmit();
 		}
 
+		$form->setSubmitDestructive();
 		$form->setSubmitText( $this->msg(
 			'growthexperiments-quit-mentorship-reassign-mentees-confirm'
 		)->text() );
