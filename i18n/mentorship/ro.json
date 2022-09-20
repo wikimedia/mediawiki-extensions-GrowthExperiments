@@ -57,8 +57,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Cum să revendicați un ucenic",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Unelte Growth",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Setări",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Informații despre activitatea de mentor",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Acest modul conține setări pentru starea dvs. de mentor. Dacă doriți, totuși, să renunțați permanent din a fi mentor, instrucțiuni despre cum să faceți asta se află pe pagina următoare: [[Special:QuitMentorship|Cum să renunț să fiu mentor?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Starea de mentor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "{{GENDER:|Activ|Activă}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "{{GENDER:|Indisponibil|Indisponibilă}}",

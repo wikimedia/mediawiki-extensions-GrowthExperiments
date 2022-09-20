@@ -57,8 +57,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "როგორ ავიყვანო მოწაფე",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth-ის ინსტრუმენტები",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "პარამეტრები",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "მენტორობის ინფორმაცია",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "ეს მოდული შეიცავს თქვენი მენტორის სტატუსის პარამეტრებს. თუკი მენტორობის სამუდამოდ შეწყვეტა გნებავთ, ამის შესახებ ინსტრუქციები იხილეთ სპეციალურ გვერდზე — [[Special:QuitMentorship]].",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "მენტორის სტატუსი",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "აქტიური",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "არ არის ადგილზე",

@@ -52,8 +52,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Come seguire un allievo",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Funzionalità Growth",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Impostazioni",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Informazioni per i tutor",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Questo modulo contiene impostazioni sul tuo stato di tutor. Se desideri smettere di essere {{GENDER:|un|una}} tutor permanentemente, trovi le istruzioni nella pagina che segue: [[Special:QuitMentorship|Come smettere di essere {{GENDER:|un|una}} tutor?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Stato del tutor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Attivo",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Occupato",

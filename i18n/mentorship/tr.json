@@ -60,8 +60,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Bir danışan nasıl talep edilir",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Büyüme araçları",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Ayarlar",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Danışmanlık bilgileri",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Bu modül {{GENDER:|}} danışmanlık durumunuz için seçenekleri içerir. Danışmanlığı kalıcı olarak bırakmak istiyorsanız bunun nasıl yapılabileceğine dair talimatlar şu sayfadadır: [[Special:QuitMentorship|Danışmanlıktan nasıl çıkılır?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Danışman durumu",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Etkin",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Uzakta",

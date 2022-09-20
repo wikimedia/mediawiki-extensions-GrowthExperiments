@@ -1,17 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Balyozxane"
+			"Balyozxane",
+			"Bikarhêner"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Bi xêr hatî}}, $1!",
-	"welcomesurvey-save-confirmation-title": "Mala te ava! Bersivên te hatine tomarkirin.",
-	"welcomesurvey-save-confirmation-text": "Ji bo ku em bi destpêkirina te ya li ser Wîkîpediyayê alîkariya te bikin dê bersivên te gelek bi kêr werin.",
-	"welcomesurvey-subtitle": "Heke bixwazî em tecrûbeya te ya Wîkîpediyayê bi pêş bixin çend pirsan bibersivîne",
+	"welcomesurvey-save-confirmation-title": "Mala te ava! Cewabên {{GENDER:|te}} hatine qeydkirin.",
+	"welcomesurvey-save-confirmation-text": "Ji bo ku em bi destpêkirina te ya li ser Wîkîpediyayê alî te bikin dê cewabên {{GENDER:|te}} gelek bi kêr werin.",
+	"welcomesurvey-subtitle": "Heke bixwazî em tecrûbeya {{GENDER:|te}} ya Wîkîpediyayê bi pêş bixin çend pirsan bibersivîne.",
 	"welcomesurvey-save-btn": "Bi dawî bike",
 	"welcomesurvey-skip-btn": "Vê anketê {{GENDER:$1|derbas bibe}}",
 	"welcomesurvey-close-btn": "Bigire û vegere $1",
-	"welcomesurvey-sidebar-privacy-title": "Em qîmet li mahremiyeta we didin",
+	"welcomesurvey-sidebar-privacy-title": "Em qîmet didin mahremiyeta {{GENDER:|te}}",
 	"welcomesurvey-sidebar-privacy-text": "Weqfa Wîkîmedyayê dê bersivên {{GENDER:$2|te}} ji bo alîkarîkirina bi destpêkirina {{SITENAME}}yê bi kar bîne. $1",
 	"welcomesurvey-privacy-policy-link-text": "Li ser daneyên bikarhênerên nû zêdetir hîn bibe",
 	"welcomesurvey-sidebar-editing-title": "Bi guhartinê destpêkirin",
@@ -20,7 +21,7 @@
 	"welcomesurvey-sidebar-editing-link1-title": "Wîkîpediya:Gavên pêşî",
 	"welcomesurvey-sidebar-editing-link2-text": "Pirsiyar",
 	"welcomesurvey-sidebar-editing-link2-title": "Wîkîpediya:Pirsiyar",
-	"welcomesurvey-question-reason-label": "Te çima îro hesabê xwe çêkir?",
+	"welcomesurvey-question-reason-label": "{{GENDER:|Te}} çima îro hesabê xwe çêkir?",
 	"welcomesurvey-dropdown-option-select-label": "Ji kerema xwe re hilbijêre...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Ji bo sererastkirina xeletîyekê di gotarekê Wîkîpediyayê de",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Ji bo lêzêdekirin an guhartina agahiyekê di gotareke Wîkîpediyayê de",
@@ -33,16 +34,16 @@
 	"welcomesurvey-question-reason-other-placeholder": "Sedemeke din {{GENDER:$1|binivîse}}...",
 	"welcomesurvey-question-mentor-info": "Em ê bernameyekê çêdikin ku bi saya wê bikarhênerên bi tecrûbe dê alikariya bikarhênerên nû bike. Tu dixwazî em bi te re {{GENDER:$1|têkilî deynin}}?",
 	"welcomesurvey-question-mentor-label": "Erê, {{GENDER:$1|dixwazim}}",
-	"welcomesurvey-question-edited-label": "Te berê qet li ser Wîkîpediyayê tiştinan guhartin?",
+	"welcomesurvey-question-edited-label": "{{GENDER:|Te}} berê qet li ser Wîkîpediyayê tiştinan guhartin?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Erê, gelek caran",
 	"welcomesurvey-question-edited-option-yes-few-label": "Erê, yek-du caran",
 	"welcomesurvey-question-edited-option-no-dunno-label": "Na, Min nizanibû karibûm Wîkîpediyayê biguhêrim",
 	"welcomesurvey-question-edited-option-no-other-label": "Na, ji ber sedemên din",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Nayê bîra min",
 	"welcomesurvey-question-email-label": "Navnîşana e-nameyê (ne pêwîst e)",
-	"welcomesurvey-question-email-placeholder": "Navnîşana xwe ya e-nameyê binivîse...",
-	"welcomesurvey-question-email-help": "Xuya ye dema te hesabekî nû çêkir, te e-nameya xwe nenivîsî. Em <strong>pêşniyaz dikin</strong> ku binivîsî, ji ber ku heke şîfreya xwe ji bîr bikî, e-name hewce ye ku hesabê xwe bifilitînî.",
-	"welcomesurvey-question-languages-label": "{{SITENAME}} nêzîkî bi 300 zimanan heye. Zimanên din hene ku tu dixwînî û dinivîsî?",
+	"welcomesurvey-question-email-placeholder": "Navnîşana {{GENDER:|xwe}} ya e-nameyê binivîse...",
+	"welcomesurvey-question-email-help": "Xuya ye dema te hesabekî nû çêkir, {{GENDER:|te}} e-nameya xwe nenivîsî. Em <strong>pêşniyaz dikin</strong> ku binivîsî, ji ber ku heke şîfreya xwe ji bîr bikî, e-name hewce ye ku hesabê xwe bifilitînî.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} nêzîkî bi 300 zimanan heye. Zimanên din hene yên ku {{GENDER:|tu}} dixwînî û dinivîsî?",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|zimanekî|$1 zimanan}} lê zêde bike...",
-	"welcomesurvey-question-languages-maximum": "Te hejmara zimanan a herî zêde lê zêde kir."
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Te}} hejmara zimanan a herî zêde tevlî kir."
 }

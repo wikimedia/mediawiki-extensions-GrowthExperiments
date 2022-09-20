@@ -57,8 +57,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Como adotar um mentorado",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Ferramentas de crescimento",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Configurações",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Informações de mentoria",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Este módulo contém configurações do seu estatuto de {{GENDER:|mentor|mentora}}. Se, no entanto, pretende deixar a mentoria de forma permanente, encontra instruções para fazê-lo na seguinte página: [[Special:QuitMentorship|Como deixar a mentoria?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Estatuto de mentor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Ativo",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Ausente",

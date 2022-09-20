@@ -63,6 +63,11 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "Ні",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Сторінка зі списком наставників, які автоматично призначаються новачкам",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Сторінка зі списком наставників, яких можна призначити лише вручну",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Чи повинні користувачі автоматично мати право бути наставниками?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Так, дозволити користувачам, які відповідають усім наведеним нижче критеріям, записуватися в наставники.",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Ні, не дозволяти жодним користувачам записуватися у наставники.",
+	"growthexperiments-edit-config-mentorship-minimum-age": "Мінімальна кількість днів, яка має пройти з часу реєстрації, щоб користувач мав право бути наставником",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "Мінімальна кількість редагувань, які користувач має зробити, щоб мати право бути наставником",
 	"growthexperiments-edit-config-newcomertasks": "Пропоновані редагування",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Деякі типи пропонованих редагувань з'являються через шаблони впорядкування. Статті, що містять ці шаблони, додаються до стрічки. Щоб дізнатися, скільки статей доступно для кожного типу завдань, перегляньте [[Special:NewcomerTasksInfo|цю сторінку]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Вимкнено",
@@ -87,5 +92,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Статті, що містять визначені тут шаблони, не показуватимуться користувачам як завдання для цього типу завдань.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Статті, що містять визначені тут категорії, не показуватимуться користувачам як завдання для цього типу завдань.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблони-картки",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Ці шаблони потрібні для функції завдання для новачків із [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|пропозицій зображень]]. Статті, які містять ці шаблони, не будуть перелічені у завданні із пропонування зображень."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Ці шаблони потрібні для функції завдання для новачків із [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|пропозицій зображень]]. Статті, які містять ці шаблони, не будуть перелічені у завданні із пропонування зображень.",
+	"growthexperiments-edit-config-delayed": "Зміни цього налаштування не набудуть чинності негайно (див. [[mw:Growth/FAQ#add-link-config|FAQ]])."
 }

@@ -58,8 +58,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Как взять подопечного",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Инструменты Роста",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Настройки",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Информация о наставничестве",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Этот модуль содержит настройки для вашего статуса {{GENDER:|наставника|наставницы}}. Если же вы хотите навсегда прекратить наставничество, инструкции как это сделать размещены на следующей странице: [[Special:QuitMentorship|Как покинуть наставничество?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Статус наставника",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Активен",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Не на месте",

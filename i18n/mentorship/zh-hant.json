@@ -64,8 +64,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "如何認領學員",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth工具",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "設定",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "指導資訊",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "此模組包含{{GENDER:|您}}的導師狀態設定。如果{{GENDER:|您}}想要永久退出指導，如何操作的說明在此頁面：[[Special:QuitMentorship|如何退出指導？]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "導師狀態",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "活躍",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "離開",

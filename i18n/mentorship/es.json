@@ -66,8 +66,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Cómo solicitar aprendices",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Herramientas de Crecimiento",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Ajustes",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Información de mentoría",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Este módulo contiene la configuración tu estado como {{GENDER:|mentor|mentora}}. Sin embargo, si deseas dejar de serlo de forma permanente, las instrucciones sobre cómo hacerlo se encuentran en la siguiente página: [[Special:QuitMentorship|¿Cómo dejar de ser mentor o mentora?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Estatus del mentor o mentora",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Activo",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Fuera",

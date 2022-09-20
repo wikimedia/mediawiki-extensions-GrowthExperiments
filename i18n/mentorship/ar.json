@@ -61,8 +61,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "كيفيّة المطالبة بمرشَدين",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "أدوات النموّ",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "الإعدادات",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "معلومات عن الإرشاد",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "تحتوي هذه الوحدة على إعدادات وضعك {{GENDER:|كمرشد|كمرشدة}}. إذا كان لديك رغبة في مغادرة نهائية للإرشاد، فإن التعليمات حول كيفية القيام بذلك، موجودة في الصفحة التالية: [[Special:QuitMentorship|كيفية مغادرة الإرشاد؟]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "وضعيّة الإرشاد",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "نشط",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "غير متوفّر",

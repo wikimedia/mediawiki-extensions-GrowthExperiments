@@ -20,7 +20,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Модуль наставництва увімкнено",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Модуль наставництва повністю вимкнено. Зазвичай це задається програмним забезпеченням і використовується для A/B-тестування.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Підопічний відмовився від наставництва; зв'язок між підопічним і наставником буде вилучено, модуль наставництва буде замінено на можливість увімкнути його знову",
-	"apihelp-query+growthmenteestatus-summary": "Зробити запит на статус поточного користувача як підопічного; детальну інформацію про окремі статуси див у документації action=growthsetmentorweight.",
+	"apihelp-query+growthmenteestatus-summary": "Зробити запит на статус поточного користувача як підопічного; детальну інформацію про окремі статуси див. у документації action=growthsetmenteestatus.",
 	"apihelp-query+growthmentormentee-summary": "Отримати усіх підопічних даного наставники",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Наставник, для якого вивести підопічних",
 	"apihelp-growthmanagementorlist-summary": "Керуйте інформацією в структурованому списку наставників (зазвичай зберігається в [[MediaWiki:GrowthMentors.json]]). Цим модулем можуть користуватися як поточні, так і майбутні наставники (щоб додати себе чи змінити свої дані), а також адміністратори (для всіх користувачів).",

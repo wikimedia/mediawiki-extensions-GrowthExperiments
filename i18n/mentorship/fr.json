@@ -61,8 +61,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Comment demander un apprenti",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Outils de croissance",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Paramètres",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Informations sur le tutorat",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Ce module contient les paramètres de {{GENDER:|}}votre statut pour le tutorat. Si toutefois vous souhaitez quitter le tutorat de façon permanente, {{GENDER:|}}vous trouverez des instructions sur la façon de le faire à la page suivante : [[Special:QuitMentorship|Comment quitter le tutorat ?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Statut pour le tutorat",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Actif",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Absent",

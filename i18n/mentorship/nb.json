@@ -59,8 +59,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Hvordan man gjør krav på et fadderbarn",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth-verktøy",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Innstillinger",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Fadderinformasjon",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Denne modulen inneholder innstillinger for fadderstatusen {{GENDER:|din}}. Hvis du permanent ønsker å slutte å være fadder kan du finne instruksjoner for hvordan det gjøres på denne sida: [[Special:QuitMentorship|Hvordan man slutter å være fadder]].",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Fadderstatus",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktiv",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Borte",

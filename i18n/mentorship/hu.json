@@ -61,8 +61,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Hogyan vállalj el egy mentoráltat",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "A Növekedés csapat eszközei",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Beállítások",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Mentorálási információk",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Ez a modul a mentorstátuszodhoz kapcsolódó beállításokat tartalmazza. Ha véglegesen abba szeretnéd hagyni a mentorkodást, azt a [[Special:QuitMentorship|{{#special:QuitMentorship}}]] oldalon teheted meg.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentorstátusz",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktív",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Távol",

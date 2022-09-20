@@ -50,8 +50,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Necə istifadəçi götürmək olar",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "İnkişaf alətləri",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Parametrlər",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Mentor məlumatı",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Bu modul, mentor statusunuz üçün parametrləri ehtiva edir. Bununla birlikdə, mentorluq fəaliyyətinizi birdəfəlik dayandırmaq istəyirsinizsə, bunu necə edəcəyinizə dair təlimatlar aşağıdakı səhifədədir:\n[[Special:QuitMentorship|Mentorluqdan necə ayrılmaq olar?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentor statusu",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktiv",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Qeyri-aktiv",

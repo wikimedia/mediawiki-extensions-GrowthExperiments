@@ -61,8 +61,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Як узяць падапечнага",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Інструменты Росту",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Налады",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Інфармацыя аб настаўніцтве",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Гэты модуль змяшчае налады для вашага статусу {{GENDER:|настаўніка|настаўніцы}}. Аднак, калі вы жадаеце назаўсёды кінуць настаўніцтва, інструкцыі аб тым, як гэта зрабіць, знаходзяцца на наступнай старонцы: [[Special:QuitMentorship|Як кінуць настаўніцтва?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Статус настаўніка",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Актыўны",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Адсутнічае",

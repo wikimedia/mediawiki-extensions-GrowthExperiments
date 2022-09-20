@@ -50,8 +50,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Jak przejąć podopiecznego(-ą)",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Narzędzia Growth",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Ustawienia",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Informacje o przewodniczeniu",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Ten moduł zawiera ustawienia statusu przewodnika. Jeśli jednak chcesz z tego całkowicie zrezygnować, to możesz to zrobić na [[Special:QuitMentorship|stronie rezygnacji z przewodniczenia]].",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Status przewodnika",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktywny(-a)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Niedostępny(-a)",

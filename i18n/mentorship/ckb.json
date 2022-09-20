@@ -49,8 +49,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "چۆنیەتیی داواکردنی قوتابییەک",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "ئامرازەکانی گەشە",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "ڕێکخستنەکان",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "زانیاریی مامۆستایەتی",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "ئەم یەکەیە ڕێکخستنەکانی ڕەوشی {{GENDER:|مامۆستاییت}} دەگرێتە خۆ. بەڵام، گەر {{GENDER:|دەخوازیت}} کە بۆ ھەمیشە واز لە مامۆستاییکردن بھێنیت، ئەوا ڕێنمایییەکان لەسەر چۆنیەتیی کردنی ئەم کارە لەم پەڕەدان: [[Special:QuitMentorship|چۆن واز لە مامۆستاییکردن دەھێنیت؟]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "حاڵەتی مامۆستا",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "چالاک",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "نائامادە",

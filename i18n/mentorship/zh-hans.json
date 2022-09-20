@@ -58,8 +58,6 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "如何认领一个学员",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth工具",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "设置",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "指导信息",
-	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "此模块包含{{GENDER:|您的}}导师状态设置。如果{{GENDER:|您}}想要永久退出导师项目，操作说明请见：[[Special:QuitMentorship|如何退出导师项目？]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "导师状态",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "活跃",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "离开",
