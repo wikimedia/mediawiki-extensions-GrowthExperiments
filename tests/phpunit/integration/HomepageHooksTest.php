@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use ContentHandler;
 use FauxRequest;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
@@ -19,11 +18,9 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWikiIntegrationTestCase;
-use ParserOutput;
 use RawMessage;
 use RecentChange;
 use RequestContext;
-use SearchEngine;
 use StatusValue;
 use stdClass;
 use Title;
@@ -133,12 +130,10 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 				}
 			);
 
-		$homepageHooks->onSearchDataForIndex(
+		$homepageHooks->doSearchDataForIndex(
 			$fields,
-			$this->createNoOpMock( ContentHandler::class ),
 			$page,
-			$this->createNoOpMock( ParserOutput::class ),
-			$this->createNoOpMock( SearchEngine::class )
+			$page->getRevisionRecord()
 		);
 		if ( $expectDeleted ) {
 			$this->assertArrayHasKey( 'weighted_tags', $fields );

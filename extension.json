@@ -455,7 +455,11 @@
 			"mentor"
 		],
 		"ParserFirstCallInit": "parserfunctions",
-		"SearchDataForIndex": "homepage",
+		"SearchDataForIndex": {
+			"handler": "homepage",
+			"deprecated": true
+		},
+		"SearchDataForIndex2": "homepage",
 		"LoadExtensionSchemaUpdates": "schema",
 		"UnitTestsAfterDatabaseSetup": "schema",
 		"EditFilterMergedContent": "config",

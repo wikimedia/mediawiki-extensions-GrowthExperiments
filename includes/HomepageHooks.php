@@ -9,6 +9,7 @@ use CirrusSearch\SearchConfig;
 use CirrusSearch\Wikimedia\WeightedTagsHooks;
 use Config;
 use ConfigException;
+use ContentHandler;
 use DeferredUpdates;
 use ExtensionRegistry;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
@@ -63,6 +64,7 @@ use MediaWiki\Minerva\SkinOptions;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
@@ -76,8 +78,10 @@ use MWException;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
 use OutputPage;
+use ParserOutput;
 use PrefixingStatsdDataFactoryProxy;
 use RequestContext;
+use SearchEngine;
 use Skin;
 use SkinTemplate;
 use SpecialContributions;
@@ -91,6 +95,7 @@ use TitleValue;
 use User;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\ILoadBalancer;
+use WikiPage;
 
 /**
  * Hook implementations that related directly or indirectly to Special:Homepage.
@@ -1049,16 +1054,47 @@ class HomepageHooks implements
 	 * Update link recommendation data in the search index. Used to deindex pages after they
 	 * have been edited (and thus the recommendation does not apply anymore).
 	 */
+	public function onSearchDataForIndex2(
+		array &$fields,
+		ContentHandler $handler,
+		WikiPage $page,
+		ParserOutput $output,
+		SearchEngine $engine,
+		RevisionRecord $revision
+	) {
+		$this->doSearchDataForIndex( $fields, $page, $revision );
+	}
+
+	/**
+	 * @inheritDoc
+	 * Update link recommendation data in the search index. Used to deindex pages after they
+	 * have been edited (and thus the recommendation does not apply anymore).
+	 */
 	public function onSearchDataForIndex( &$fields, $handler, $page, $output, $engine ) {
 		if ( !$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			return;
 		}
 		$revision = $page->getRevisionRecord();
-		$revId = $revision ? $revision->getId() : null;
-		if ( !$revId ) {
+		if ( $revision === null ) {
 			// should not happen
 			return;
-		} elseif ( !$this->canAccessPrimary ) {
+		}
+		$this->doSearchDataForIndex( $fields, $page, $revision );
+	}
+
+	/**
+	 * Visible for testing
+	 *
+	 * @param array &$fields
+	 * @param WikiPage $page
+	 * @param RevisionRecord $revision
+	 */
+	public function doSearchDataForIndex( array &$fields, WikiPage $page, RevisionRecord $revision ): void {
+		if ( !$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
+			return;
+		}
+		$revId = $revision->getId();
+		if ( !$this->canAccessPrimary ) {
 			// A GET request; the hook might be called for diagnostic purposes, e.g. via
 			// CirrusSearch\Api\QueryBuildDocument, but not for anything important.
 			return;
