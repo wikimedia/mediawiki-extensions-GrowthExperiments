@@ -207,7 +207,8 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new CacheBackedImageRecommendationProvider(
 			$services->getMainWANObjectCache(),
-			$growthServices->getImageRecommendationProviderUncached()
+			$growthServices->getImageRecommendationProviderUncached(),
+			$services->getStatsdDataFactory()
 		);
 	},
 
@@ -741,7 +742,10 @@ return [
 						'args' => [
 							$services->getJobQueueGroupFactory()->makeJobQueueGroup(),
 							$services->getMainWANObjectCache(),
-							new TaskSetListener( $services->getMainWANObjectCache() ),
+							new TaskSetListener(
+								$services->getMainWANObjectCache(),
+								$services->getStatsdDataFactory()
+							),
 							$services->getJsonCodec()
 						],
 					],

@@ -7,6 +7,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddImage\CacheBackedImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use IBufferingStatsdDataFactory;
 use MediaWiki\MediaWikiServices;
 use WANObjectCache;
 
@@ -20,11 +21,16 @@ class TaskSetListener {
 	/** @var WANObjectCache */
 	private $cache;
 
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
+
 	/**
 	 * @param WANObjectCache $cache
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
-	public function __construct( WANObjectCache $cache ) {
+	public function __construct( WANObjectCache $cache, IBufferingStatsdDataFactory $statsdDataFactory ) {
 		$this->cache = $cache;
+		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**
@@ -36,7 +42,8 @@ class TaskSetListener {
 	 * @param TaskSet $taskSet
 	 */
 	public function run( TaskSet $taskSet ): void {
-		DeferredUpdates::addCallableUpdate( function () use ( $taskSet ) {
+		$fname = __METHOD__;
+		DeferredUpdates::addCallableUpdate( function () use ( $taskSet, $fname ) {
 			foreach ( $taskSet as $task ) {
 				if ( $task->getTaskType() instanceof ImageRecommendationTaskType ) {
 					$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
@@ -44,7 +51,9 @@ class TaskSetListener {
 						$this->cache,
 						$growthServices->getImageRecommendationProviderUncached(),
 						$task->getTaskType(),
-						$task->getTitle()
+						$task->getTitle(),
+						$fname,
+						$this->statsdDataFactory
 					);
 				}
 			}
