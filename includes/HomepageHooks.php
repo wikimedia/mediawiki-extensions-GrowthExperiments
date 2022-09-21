@@ -475,9 +475,11 @@ class HomepageHooks implements
 		SkinTemplate $skin,
 		SkinOptions $skinOptions
 	) {
-		if ( $skin->getTitle()->isSpecial( 'Homepage' ) ||
-			 self::titleIsUserPageOrUserTalk( $skin->getTitle(), $skin->getUser() )
-		) {
+		$title = $skin->getTitle();
+		if ( $title && (
+			$title->isSpecial( 'Homepage' ) ||
+			self::titleIsUserPageOrUserTalk( $title, $skin->getUser() )
+		) ) {
 			if ( self::isHomepageEnabled( $skin->getUser() ) ) {
 				$skinOptions->setMultiple( [
 					SkinOptions::TALK_AT_TOP => true,
