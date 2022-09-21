@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Balyozxane"
+			"Balyozxane",
+			"Bikarhêner"
 		]
 	},
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Rojanekirina dawî ji aliyê [[User:$1|$1]] ve $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Rojanekirina dawî ji aliyê bikarherenekî anomîn $1 ve.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Rojanekirina dawî ji aliyê [[User:$1|$1]] ve $2 ([$4 ferq]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Rojanekirina dawî ji aliyê bikarhêrenekî anonîm $1 ([$3 ferq]) ve.",
 	"growthexperiments-edit-config-pretext": "Dikarî taybetmendiyên koma [[:mw:Special:MyLanguage/Growth|Mezinbûnê]] li ser vê rûpelê biguhêrî. $1 dê bi otomatîkî biguhere. Dikarî guhartinên xwe di dîroka wê rûpelê de bibînî.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Bikarhênerên taybet dikarin taybetmendiyên koma [[:mw:Special:MyLanguage/Growth|Mezinbûnê]] li ser vê formê biguhêrin.",
 	"growthexperiments-edit-config-feedback-headline": "Raman û pirsên te yên li ser vê forma heye?",

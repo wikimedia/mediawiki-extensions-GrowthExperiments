@@ -50,8 +50,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Di vê hevokê de nêrînek heye ku divê jê were birin.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "Dema {{GENDER:|tu}} sererastkirineke ku {{GENDER:|dixwazî}} pêk bînî bibînî, pê li \"$1\" bike. Dûre çawa hewce be xeletiyên heyî sererast bike yan jî jê bibe.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-step1": "Dema {{GENDER:|tu}} sererastkirineke ku {{GENDER:|dixwazî}} pêk bînî bibînî, pê li îkona qelemê bike. Dûre çawa hewce be xeletiyên heyî sererast bike yan jî jê bibe.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "Yan zêdetir guhartinan pêk bîne, yan jî pê li \"$1\" bike da ku guhartina {{GENDER:|te}} were tomarkirin!",
-	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-publish": "Yan zêdetir guhartinan pêk bîne, yan jî pê li butona tîra şîn bike da ku guhartina {{GENDER:|te}} were tomarkirin!",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "An zêdetir guhartinan pêk bîne, an jî pê li \"$1\" bike da ku guhartina {{GENDER:|te}} were weşandin!",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-publish": "Yan zêdetir guhartinan pêk bîne, yan jî pê li butona tîra şîn bike da ku guhartina {{GENDER:|te}} were weşandin!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Li ser teshîhê zêdetir hîn bibe]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "Girêdanên di navbera gotarên {{SITENAME}}yê de destûr dide xwendevanan da ku li ser tiştên ku meraq dikin zêdetir agahî hîn bibin. Herwiha destûr dide ku gotarên {{SITENAME}}yê yên din bibînin.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "Merkûr di <mark class=\"positive\">Pergala Rojê</mark> de <mark class=\"positive\">gerestêra</mark> herî biçûk e.",
@@ -64,7 +64,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "Venus xwedî <mark class=\"positive\">atmosfereke</mark> kesîf e.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step2": "Li butona \"$1\" $2 bitikîne û ji lîsteya gotarên {{SITENAME}}yê peyvê ku dixwazî girê bidî hilbijêre.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "Pê li butona \"$1\" $2 bike û ji lîsteya gotarên {{SITENAME}}yê peyvê ku dixwazî girê bidî hilbijêre.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-publish": "Yan zêdetir girêdan zêde bike yan jî here, ji bo tomarkirina guhartina {{GENDER:|xwe}} li \"$1\" bitikîne!",
-	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "Yan zêdetir girêdan zêde bike yan jî here, ji bo tomarkirina guhartina {{GENDER:|xwe}} pê li butona tîra şîn bike!",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-publish": "An zêdetir lînkan tevlî bike an jî here, ji bo weşandina guhartina {{GENDER:|xwe}} li \"$1\" bitikîne!",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "An zêdetir lînk tevlî bike an jî here, ji bo weşandina guhartina {{GENDER:|xwe}} pê li butona tîra şîn bike!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Li ser lêzêdekirina girêdanan zêdetir agahî hîn bibe]]"
 }
