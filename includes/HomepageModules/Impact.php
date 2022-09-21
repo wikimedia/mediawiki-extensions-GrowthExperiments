@@ -677,9 +677,7 @@ class Impact extends BaseModule {
 	 * @param array[] &$contribs Recent contributions
 	 */
 	private function addPageViews( &$contribs ) {
-		$titles = array_map( static function ( $contrib ) {
-			return $contrib[ 'title' ];
-		}, $contribs );
+		$titles = array_column( $contribs, 'title' );
 		$days = min( 60, $this->daysSince( end( $contribs )[ 'ts' ] ) );
 		$data = $this->pageViewService->getPageData( $titles, $days );
 		if ( $data->isGood() ) {
