@@ -10,7 +10,7 @@
 	"scripts": {
 		"fix": [
 			"minus-x fix .",
-			"phpcbf"
+			"@phpcbf"
 		],
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
@@ -19,6 +19,7 @@
 		],
 		"phpbench": "phpbench run tests/Benchmark --revs=20",
 		"phan": "phan -d . --long-progress-bar",
-		"phpcs": "phpcs -s -p --cache"
+		"phpcs": "phpcs -s -p --cache",
+		"phpcbf": "phpcbf"
 	}
 }
