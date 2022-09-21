@@ -52,7 +52,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import '../variables.less';
+@import '../../../vue-components/variables.less';
 
 .ext-growthExperiments-CPopper {
 	position: relative;
