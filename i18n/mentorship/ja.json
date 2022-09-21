@@ -25,6 +25,8 @@
 	"growthexperiments-manage-mentors-title": "指導役の管理",
 	"growthexperiments-manage-mentors-username": "利用者名",
 	"growthexperiments-manage-mentors-last-active": "前回の操作",
+	"growthexperiments-manage-mentors-edit": "編集",
+	"growthexperiments-manage-mentors-edit-reason": "理由",
 	"growthexperiments-manage-mentors-remove-mentor": "除去",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "理由"
 }
