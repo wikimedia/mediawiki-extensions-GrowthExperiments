@@ -55,9 +55,7 @@ class MenteeOverviewPrefixSearchDataFilter {
 	 * @return string[]
 	 */
 	public function getUsernames(): array {
-		$usernames = array_map( static function ( $menteeData ) {
-			return $menteeData['username'];
-		}, $this->data );
+		$usernames = array_column( $this->data, 'username' );
 
 		$prefixLen = strlen( $this->prefix );
 		// filtering only makes sense with prefixes longer than 0 characters

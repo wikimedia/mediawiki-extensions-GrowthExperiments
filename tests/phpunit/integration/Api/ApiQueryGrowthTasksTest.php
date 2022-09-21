@@ -157,9 +157,10 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 	 * @param array $response
 	 */
 	protected function assertResponseContainsTitles( array $titles, array $response ) {
-		$this->assertSame( $titles, array_map( static function ( $item ) {
-			return $item['title'];
-		}, $response['query']['growthtasks']['suggestions'] ) );
+		$this->assertSame(
+			$titles,
+			array_column( $response['query']['growthtasks']['suggestions'], 'title' )
+		);
 	}
 
 }

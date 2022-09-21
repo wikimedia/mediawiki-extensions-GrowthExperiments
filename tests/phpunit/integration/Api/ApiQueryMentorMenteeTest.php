@@ -42,17 +42,13 @@ class ApiQueryMentorMenteeTest extends ApiTestCase {
 			array_map( static function ( UserIdentity $user ) {
 				return $user->getName();
 			}, $mentees ),
-			array_map( static function ( $el ) {
-				return $el['name'];
-			}, $response[0]['growthmentormentee']['mentees'] )
+			array_column( $response[0]['growthmentormentee']['mentees'], 'name' )
 		);
 		$this->assertArrayEquals(
 			array_map( static function ( UserIdentity $user ) {
 				return $user->getId();
 			}, $mentees ),
-			array_map( static function ( $el ) {
-				return $el['id'];
-			}, $response[0]['growthmentormentee']['mentees'] )
+			array_column( $response[0]['growthmentormentee']['mentees'], 'id' )
 		);
 	}
 
