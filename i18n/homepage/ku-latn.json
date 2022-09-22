@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Balyozxane",
-			"Guherto"
+			"Guherto",
+			"Bikarhêner"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Silav}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Malper",
 	"tooltip-pt-homepage": "{{GENDER:|Malpera}} te",
-	"prefs-homepage": "Malpera nûhatiyan",
+	"prefs-homepage": "Taybetmendiyên edîtorê ji bo yên nûhatî",
 	"growthexperiments-homepage-enable": "Malpera nûhatiyan nîşan bide",
 	"growthexperiments-homepage-pt-link": "Dema pê li navê xwe li jora rûpelê dikî, bila malpera nûhatiyan were vekirin",
 	"growthexperiments-homepage-email-header-noemail": "E-nameya {{GENDER:$1|xwe}} lê zêde bike",
@@ -100,9 +101,9 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Zanist, Teknolojî û Matematîk",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Çand",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Herêm",
-	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Mijarên xwe hilbijêre",
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Mijaran bibijêre",
 	"growthexperiments-homepage-suggestededits-topics-more": "zêdetir bibîne",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|mijar|mijar}}",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|mijar}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Hemûyan hilbijêre",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Hemûyan jê bibe",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Dewam bike",

@@ -9,13 +9,13 @@
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Bem-vindo|Bem-vinda|Bem-vindo(a)}}, $1!",
-	"welcomesurvey-save-confirmation-title": "Obrigado! Suas respostas foram salvas.",
-	"welcomesurvey-save-confirmation-text": "Suas respostas nos ajudarão a fornecer maneiras úteis de começar na Wikipédia.",
-	"welcomesurvey-subtitle": "Ajude-nos a melhorar sua experiência na Wikipédia, respondendo a algumas perguntas opcionais.",
+	"welcomesurvey-save-confirmation-title": "Obrigado! As suas respostas foram gravadas.{{GENDER:|}}",
+	"welcomesurvey-save-confirmation-text": "As suas respostas irão ajudar-nos a dar-lhe formas úteis de se iniciar na Wikipédia.",
+	"welcomesurvey-subtitle": "Ajude-nos a melhorar a sua experiência da Wikipédia respondendo a algumas perguntas facultativas.",
 	"welcomesurvey-save-btn": "Finalizar",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Pular}} esta pesquisa",
 	"welcomesurvey-close-btn": "Fechar e voltar para $1",
-	"welcomesurvey-sidebar-privacy-title": "Nós respeitamos sua privacidade",
+	"welcomesurvey-sidebar-privacy-title": "Respeitamos a sua privacidade",
 	"welcomesurvey-sidebar-privacy-text": "A Fundação Wikimedia irá usar {{GENDER:$2|as suas}} respostas para ajudar a editar {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Saiba mais sobre dados sobre novos editores",
 	"welcomesurvey-sidebar-editing-title": "Começando a editar",
@@ -24,7 +24,7 @@
 	"welcomesurvey-sidebar-editing-link1-title": "Ajuda:Tutorial",
 	"welcomesurvey-sidebar-editing-link2-text": "Tire suas dúvidas",
 	"welcomesurvey-sidebar-editing-link2-title": "Wikipédia:Tire_suas_dúvidas",
-	"welcomesurvey-question-reason-label": "Por que você criou sua conta hoje?",
+	"welcomesurvey-question-reason-label": "Porque criou a sua conta hoje?",
 	"welcomesurvey-dropdown-option-select-label": "Por favor selecione...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Para corrigir um erro de digitação ou erro em um artigo da Wikipédia",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Para adicionar ou alterar informações em um artigo da Wikipédia",
@@ -37,7 +37,7 @@
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Digite}} outro motivo...",
 	"welcomesurvey-question-mentor-info": "Estamos pensando em iniciar um programa para que editores mais experientes ajudem os usuários mais novos com edições. {{GENDER:$1|Você está interessado}} em ser contatado para obter ajuda com edições?",
 	"welcomesurvey-question-mentor-label": "Sim, {{GENDER:$1|tenho interesse}}",
-	"welcomesurvey-question-edited-label": "Você já editou a Wikipédia alguma vez?",
+	"welcomesurvey-question-edited-label": "Já alguma vez editou a Wikipédia?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Sim, muitas vezes",
 	"welcomesurvey-question-edited-option-yes-few-label": "Sim, uma ou duas vezes",
 	"welcomesurvey-question-edited-option-no-dunno-label": "Não, eu não sabia que poderia editar a Wikipédia",
@@ -49,5 +49,5 @@
 	"welcomesurvey-question-email-help": "Percebemos que você não inseriu um e-mail ao criar esta conta. É <strong>altamente recomendável</strong>, já que um e-mail é necessário para a recuperação da conta se você perder sua senha. NOTA: Seu endereço de e-mail não é revelado quando outros usuários entrarem em contato com você.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} está disponível em quase 300 idiomas. Existem outros idiomas em que você lê e escreve?",
 	"welcomesurvey-question-languages-placeholder": "Adicionar até {{PLURAL:$1|um idioma|$1 idiomas}}...",
-	"welcomesurvey-question-languages-maximum": "Você adicionou o número máximo de idiomas."
+	"welcomesurvey-question-languages-maximum": "Adicionou o número máximo de idiomas."
 }

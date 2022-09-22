@@ -18,7 +18,14 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "O módulo de mentoria está activado",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "O módulo de mentoria está completamente desativado. Isto é normalmente definido pelo software e usado para testes A/B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "O mentorado optou pela sua exclusão da mentoria; a relação mentorado/mentor será apagada e o módulo de mentoria será substituído por uma opção de voltar a ser incluído",
-	"apihelp-query+growthmenteestatus-summary": "Consultar o estado de mentorado do utilizador atual; ver a documentação de action=growthsetmentorweight para obter informação detalhada sobre os estados individuais.",
+	"apihelp-query+growthmenteestatus-summary": "Consultar o estado de mentorado do utilizador atual; ver a documentação de action=growthsetmenteestatus para obter informação detalhada sobre os estados individuais.",
 	"apihelp-query+growthmentormentee-summary": "Obter todos os mentorados atribuídos a um mentor específico",
-	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor cujos mentorados serão obtidos"
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor cujos mentorados serão obtidos",
+	"apihelp-growthmanagementorlist-summary": "Gerir a informação da lista estruturada de mentores (normalmente armazenada em [[MediaWiki:GrowthMentors.json]]). Este módulo pode ser utilizado tanto pelos mentores atuais como pelos futuros (para se adicionarem ou mudarem os seus detalhes) e pelos administradores (para todos os utilizadores).",
+	"apihelp-growthmanagementorlist-param-geaction": "Ação",
+	"apihelp-growthmanagementorlist-param-message": "Mensagem de apresentação (use um texto vazio para usar a mensagem de mentor padrão)",
+	"apihelp-growthmanagementorlist-param-weight": "Peso",
+	"apihelp-growthmanagementorlist-param-autoassigned": "O mentor é atribuído automaticamente a recém-chegados?",
+	"apihelp-growthmanagementorlist-param-summary": "Motivo da alteração",
+	"apihelp-growthmanagementorlist-param-username": "Nome de utilizador do mentor afetado pela alteração. Se não for fornecido, será usado o utilizador com sessão iniciada neste momento. Só pode ser usado por utilizadores privilegiados."
 }

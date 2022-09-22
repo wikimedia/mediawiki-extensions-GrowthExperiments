@@ -11,7 +11,8 @@
 			"Pacha Tchernof",
 			"Stjn",
 			"Sunpriat",
-			"Vlad5250"
+			"Vlad5250",
+			"Deltaspace"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добро пожаловать}}, $1!",
@@ -50,7 +51,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Нет, по другим причинам",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Я не помню",
 	"welcomesurvey-question-mailinglist-label": "Я хочу получать по электронной почте советы о том, как начать редактировать.",
-	"welcomesurvey-question-mailinglist-help": "Обратите внимание, что этот список рассылки работает с помощью MailChimp. Это означает, что использование этим сайтом Вашей информации регулируется их [https://www.intuit.com/privacy/statement/ Политикой конфиденциальности] и [https://mailchimp.com/legal/terms/ Условиями использования].",
+	"welcomesurvey-question-mailinglist-help": "Обратите внимание, что этот список рассылки работает с помощью MailChimp. Это означает, что использование этим сайтом {{GENDER:|вашей}} информации регулируется их [https://www.intuit.com/privacy/statement/ Политикой конфиденциальности] и [https://mailchimp.com/legal/terms/ Условиями использования].",
 	"welcomesurvey-question-email-label": "Адрес электронной почты (необязательно)",
 	"welcomesurvey-question-email-placeholder": "Введите {{GENDER:|свой}} адрес эл. почты…",
 	"welcomesurvey-question-email-help": "Мы заметили, что {{GENDER:|вы}} не ввели электронный адрес при создании этой учётной записи. <strong>Рекомендуем</strong> его ввести, потому что он требуется для восстановления учётной записи, если вы забудете пароль. ПРИМЕЧАНИЕ: Ваш электронный адрес не показывается, если другие пользователи связываются с вами.",

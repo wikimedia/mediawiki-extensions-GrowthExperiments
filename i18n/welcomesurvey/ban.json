@@ -8,14 +8,14 @@
 	"welcomesurvey-save-btn": "Puput",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Liwatin}} survéi niki",
 	"welcomesurvey-close-btn": "Sineb lan mawali nuju $1",
-	"welcomesurvey-sidebar-privacy-title": "Iraga mihargain pragaan ragané",
+	"welcomesurvey-sidebar-privacy-title": "Iraga mihargain pragaan {{GENDER:|ragané}}",
 	"welcomesurvey-privacy-policy-link-text": "Pelajahin buin data indik panguah mara",
 	"welcomesurvey-sidebar-editing-title": "Ngawitin antuk nguahanin",
 	"welcomesurvey-sidebar-editing-link1-text": "Panuntun",
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Panuntun",
 	"welcomesurvey-sidebar-editing-link2-text": "Méja wantuan",
 	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Méja_wantuan",
-	"welcomesurvey-question-reason-label": "Kenapa ragané ngaé akun dina mangkin?",
+	"welcomesurvey-question-reason-label": "Kenapa {{GENDER:|ragané}} ngaé akun dina mangkin?",
 	"welcomesurvey-dropdown-option-select-label": "Durus pilih...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Antuk menain pelih tik utawi galat di abesik suratan Wikipédia",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Antuk weweh utawi nguah pidarta nuju di suratan Wikipédia",
@@ -31,5 +31,5 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Ten, antuk alasan lén",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Tiang ten inget",
 	"welcomesurvey-question-email-label": "Alamat rerepél (dadi-dadi)",
-	"welcomesurvey-question-email-placeholder": "Dagingin alamat rerepél ragané..."
+	"welcomesurvey-question-email-placeholder": "Dagingin alamat rerepél {{GENDER:|ragané}}..."
 }

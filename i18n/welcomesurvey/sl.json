@@ -36,6 +36,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Ne, nisem vedel/a, da lahko urejam Wikipedijo",
 	"welcomesurvey-question-edited-option-no-other-label": "Ne, iz drugih razlogov",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ne spomnim se",
+	"welcomesurvey-question-email-label": "E-poštni naslov (izbirno)",
+	"welcomesurvey-question-email-placeholder": "Vnesite {{GENDER:|svoj}} e-poštni naslov ...",
 	"welcomesurvey-question-email-help": "Opazili smo, da pri ustvaritvi tega računa {{GENDER:|niste vnesli}} e-poštnega naslova. To se <strong>močno priporoča</strong>, saj je e-poštni naslov potreben za ponovni dostop do računa, če izgubite geslo. OPOMBA: Kadar z vami kontaktirajo drugi uporabniki, se vaš e-poštni naslov ne razkrije.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} je na voljo v skoraj 300 jezikih. Ali {{GENDER:|berete in pišete}} tudi v drugih jezikih?",
 	"welcomesurvey-question-languages-placeholder": "Dodajte do {{PLURAL:$1|en jezik|$1 jezika|$1 jezike|$1 jezikov}} ..."

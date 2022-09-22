@@ -5,6 +5,6 @@
 			"Teitei Para"
 		]
 	},
-	"welcomesurvey-question-languages-label": "{{SITENAME}} he reihchâ 300 tlu ta â hmô. Nâma roh chih ta, na reipa reihchâ hropazy a y via khaoa?",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} he reihchâ 300 daihmâ â hmô. Nâma roh chih ta, {{GENDER:|na}} reipa reihchâ hropazy a y via khao ma?",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|reihchâ sâkha|$1 reihchâzy}} lâta khôthlu teh..."
 }
