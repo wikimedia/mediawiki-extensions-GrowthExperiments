@@ -31,6 +31,7 @@
 		"grunt-stylelint": "0.17.0",
 		"jest": "27.4.7",
 		"jquery": "3.6.1",
+		"moment": "^2.29.4",
 		"postcss-html": "1.4.1",
 		"stylelint-config-recommended-vue": "1.4.0",
 		"stylelint-config-wikimedia": "0.13.0",
