@@ -531,6 +531,8 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "অন্য কারণ / আমি বলতে চাই না",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "সম্পন্ন",
 	"growthexperiments-homepage-mentorship-about-header": "পরামর্শদাতাদের সম্পর্কে",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|আপনার}} {{GENDER:$1|মেন্টর}} হলেন অন্য একজন ব্যক্তি যিনি {{SITENAME}}-তে অবদান রাখার ব্যাপারে অনেক অভিজ্ঞ। {{GENDER:$1|তিনি}} আপনার মত নতুনদের কীভাবে অবদান রাখতে হয় এবং এ সংক্রান্ত {{GENDER:|আপনার}} অন্যান্য প্রশ্নের উত্তর দিতে পারবেন।",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "যখন {{GENDER:|আপনি}} আপনার মেন্টরকে একটি বার্তা পাঠান, তখন {{GENDER:$1|তিনি}} এটি {{GENDER:$1|তার}} ব্যবহারকারীর আলাপ পাতায় দেখতে পাবেন এবং {{GENDER:$1|তিনি}} উত্তর দিলে {{GENDER:|আপনি}} একটি বিজ্ঞপ্তি পাবেন।",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "মেন্টরশিপ বাদ দিন",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|আপনি}} এই মুহূর্তে {{GENDER:|আপনার}} জন্য নির্দিষ্ট কোনো পরামর্শদাতা নিয়োগ না করতে চাইলে অপ্ট-আউট করতে নীচের বোতামটি নির্বাচন করুন৷ {{GENDER:|আপনি}} যে কোনো সময় আবার একজন নতুন পরামর্শদাতা পেতে পারেন যদি {{GENDER:|আপনার}} ইচ্ছা পরিবর্তন করেন।",
 	"growthexperiments-homepage-mentorship-about-done": "সম্পন্ন"

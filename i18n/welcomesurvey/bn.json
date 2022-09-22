@@ -50,5 +50,12 @@
 	"welcomesurvey-question-email-help": "আমরা লক্ষ্য করেছি যে এই অ্যাকাউন্টটি তৈরি করার সময় {{GENDER:|আপনি}} কোনও ইমেইল প্রদান করেননি। এটি যোগের জন্য আমরা <strong>উচ্চভাবে সুপারিশ করছি</strong>, কারণ আপনি যদি কখনও নিজের পাসওয়ার্ড হারিয়ে ফেলেন তবে অ্যাকাউন্ট পুনরুদ্ধারের জন্য ইমেইলের প্রয়োজন হবে। দ্রষ্টব্য: অন্য ব্যবহারকারীরা আপনার সাথে যোগাযোগ করলেও আপনার ইমেইল ঠিকানা তাদের কাছে দৃশ্যমান হবে না।",
 	"welcomesurvey-question-languages-label": "প্রায় ৩০০টি ভাষায় {{SITENAME}} উপলব্ধ রয়েছে। {{GENDER:|আপনি}} পড়তে ও লিখতে পারেন এমন আর কোন ভাষা রয়েছে?",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|একটি ভাষা|$1টি পর্যন্ত ভাষা}} যোগ করুন...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|আপনি}} সর্বোচ্চ সংখ্যক ভাষা যুক্ত করেছেন।"
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|আপনি}} সর্বোচ্চ সংখ্যক ভাষা যুক্ত করেছেন।",
+	"welcomesurvey-reminder": "কিছু ঐচ্ছিক প্রশ্নের উত্তর দিয়ে {{GENDER:|আপনার}} উইকিপিডিয়া অভিজ্ঞতা উন্নত করে তুলতে আমাদের সাহায্য করুন। $1",
+	"welcomesurvey-reminder-link": "জরিপ শুরু করুন",
+	"welcomesurvey-reminder-dismiss": "বাতিল",
+	"welcomesurvey-mideditsignup-title": "স্বাগতম, $1!",
+	"welcomesurvey-mideditsignup-body": "সম্পাদনার জন্য ধন্যবাদ! {{GENDER:|আপনি}} এখন আপনার অবদানের প্রভাব দেখতে পারেন এবং আপনার নীড়পাতায় আরো পরামর্শকৃত সম্পাদনা পেতে পাবেন৷",
+	"welcomesurvey-mideditsignup-button-homepage": "আমার নীড়পাতায় যান",
+	"welcomesurvey-mideditsignup-button-close": "বন্ধ করুন"
 }

@@ -88,7 +88,7 @@
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "חבל {{GENDER:|שאתה עוזב|שאת עוזבת}}. כדי להתחיל את תהליך הפרישה שלך מהחונכות, {{GENDER:|אתה צריך|את צריכה}} קודם כול להסיר את שמך מ[[$1|רשימת החונכים]]. אחרי {{GENDER:|שתעשה את זה, אנא חזור|שתעשי את זה, אנא חזרי}} לדף הזה.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "הצעד הבא בפרישה מהחונכות הוא לשייך את החניכים שלך למישהו אחר. אם {{GENDER:|אתה בטוח שאתה|את בטוחה שאת}} רוצה לפרוש, נא ללחוץ על הכפתור למטה.",
 	"growthexperiments-quit-mentorship-error-not-a-mentor": "אינך {{GENDER:|חונך|חונכת}}.",
-	"growthexperiments-quit-mentorship-has-mentees-pretext": "עצוב לראות אותך {{GENDER:|עוזב|עוזבת}}. כדי לצאת מחונכות, יש למלא את הטופס למטה. לאחר השליחה, כל החונכים שלך יוקצו מחדש לחונך אחר. אי־אפשר לבטל את זה. [[Special:MentorDashboard|לוח הבקרה לחונכים]] מאפשר לך לצמצם את מספר החניכים שמוקצים לך (או להפסיק לקבל חונכים חדשים באופן זמני), מבלי לאבד אף אחד מהחניכים הקיימים שלך.",
+	"growthexperiments-quit-mentorship-has-mentees-pretext": "עצוב לראות {{GENDER:|שאתה עוזב|שאת עוזבת}}. כדי לצאת מחונכות, יש למלא את הטופס למטה. לאחר השליחה, כל החונכים שלך יוקצו מחדש לחונך אחר. <strong>אי־אפשר לבטל את זה.</strong> [[Special:MentorDashboard|לוח הבקרה לחונכים]] מאפשר לך לצמצם את מספר החניכים שמוקצים לך (או להפסיק לקבל חונכים חדשים באופן זמני), מבלי לאבד אף אחד מהחניכים הקיימים שלך.",
 	"growthexperiments-quit-mentorship-reason": "סיבה",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "כן, לשייך את החניכים שלי למישהו אחר",
 	"growthexperiments-quit-mentorship-success": "החניכים שלך ישויכו לחונכים אחרים בעוד זמן קצר.",

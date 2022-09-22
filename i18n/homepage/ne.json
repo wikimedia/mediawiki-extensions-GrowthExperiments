@@ -148,7 +148,7 @@
 	"growthexperiments-specialimpact-invalid-username": "हराइरहेको वा अवैध प्रयोगकर्ता नाम।",
 	"growthexperiments-homepage-claimmentee-no-user": "विद्यार्थी अवस्थित छैन",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|तपाईं}} पहिले नै {{GENDER:$1|$1}}लाई सल्लाह दिनुहुन्छ",
-	"growthexperiments-homepage-enable-preference": "नयाँ आगन्तुक गृहपृष्ठ सक्षम गर्न प्राथमिकताहरूमा तपाईंको \"[[Special:Preferences#mw-prefsection-personal-homepage\n|नयाँ आगमन सम्पादक सुविधाहरू]]\"मा जानुहोस्।",
+	"growthexperiments-homepage-enable-preference": "नयाँ आगन्तुक गृहपृष्ठ सक्षम गर्न प्राथमिकताहरूमा तपाईंको \"[[Special:Preferences#mw-prefsection-personal-homepage|नयाँ आगमन सम्पादक सुविधाहरू]]\"मा जानुहोस्।",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|तपाईंले}} अहिलेसम्म कुनै पनि योगदान गर्नुभएको छैन।",
 	"growthexperiments-homepage-contributions-zero-subtitle": "सम्पादन सुरु गर्न {{GENDER:$1|आफ्नो}} गृहपृष्ठमा जानुहोस्!",
 	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|आफ्नो}} गृहपृष्ठमा जानुहोस्",
