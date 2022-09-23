@@ -67,7 +67,7 @@ class SuggestionsInfo implements NewcomerTasksInfo {
 					[ $taskType->getId() ],
 					[]
 				),
-				1,
+				0,
 				null,
 				[ 'useCache' => false ]
 			);
@@ -88,7 +88,7 @@ class SuggestionsInfo implements NewcomerTasksInfo {
 						[ $taskType->getId() ],
 						[ $topic->getId() ]
 					),
-					1,
+					0,
 					null,
 					[ 'useCache' => false ]
 				);
