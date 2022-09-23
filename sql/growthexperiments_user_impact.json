@@ -21,7 +21,9 @@
 				"options": { "length": 16777215, "notnull": true }
 			}
 		],
-		"indexes": [],
+		"indexes": [
+			{ "name": "geui_timestamp_user", "columns": [ "geui_timestamp" ], "unique": false }
+		],
 		"pk": [ "geui_user_id" ]
 	}
 ]

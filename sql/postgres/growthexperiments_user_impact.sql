@@ -8,3 +8,5 @@ CREATE TABLE growthexperiments_user_impact (
   geui_data TEXT NOT NULL,
   PRIMARY KEY(geui_user_id)
 );
+
+CREATE INDEX geui_timestamp_user ON growthexperiments_user_impact (geui_timestamp);

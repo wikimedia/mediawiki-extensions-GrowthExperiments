@@ -6,5 +6,6 @@ CREATE TABLE /*_*/growthexperiments_user_impact (
   geui_user_id INT UNSIGNED NOT NULL,
   geui_timestamp BINARY(14) NOT NULL,
   geui_data MEDIUMBLOB NOT NULL,
+  INDEX geui_timestamp_user (geui_timestamp),
   PRIMARY KEY(geui_user_id)
 ) /*$wgDBTableOptions*/;

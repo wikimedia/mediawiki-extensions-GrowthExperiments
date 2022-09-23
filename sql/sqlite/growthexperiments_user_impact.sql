@@ -8,3 +8,5 @@ CREATE TABLE /*_*/growthexperiments_user_impact (
   geui_data BLOB NOT NULL,
   PRIMARY KEY(geui_user_id)
 );
+
+CREATE INDEX geui_timestamp_user ON /*_*/growthexperiments_user_impact (geui_timestamp);
