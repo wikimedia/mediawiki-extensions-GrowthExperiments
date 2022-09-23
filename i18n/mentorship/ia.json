@@ -134,6 +134,7 @@
 	"growthexperiments-manage-mentors-edit-is-away": "Es absente?",
 	"growthexperiments-manage-mentors-edit-away-until": "Absente usque al",
 	"growthexperiments-manage-mentors-edit-reason": "Motivo",
+	"growthexperiments-manage-mentors-edit-success": "Le optiones de mentorato pro le {{GENDER:$1|mentor}} [[User:$1|$1]] ha essite modificate.",
 	"growthexperiments-manage-mentors-remove-mentor": "Remover",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "Tu es sur le puncto de remover [[User:$1|$1]] como {{GENDER:$1|mentor}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Motivo pro remover le mentor",
