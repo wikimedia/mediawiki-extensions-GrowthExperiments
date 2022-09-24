@@ -277,7 +277,8 @@
 				"MainConfig",
 				"GrowthExperimentsMultiConfig",
 				"GrowthExperimentsMentorManager",
-				"GrowthExperimentsMentorProvider"
+				"GrowthExperimentsMentorProvider",
+				"GrowthExperimentsMentorStore"
 			]
 		},
 		"mentorfilters": {
@@ -2174,6 +2175,10 @@
 		"GEMentorshipMinimumEditcount": {
 			"description": "Minimum number of edits required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true and GEMentorProvider is structured. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
 			"value": 500
+		},
+		"GEMentorshipUseIsActiveFlag": {
+			"description": "Temporary config variable. Controls whether code attempts to access gemm_mentee_is_active",
+			"value": true
 		},
 		"GEHomepageMentorsList": {
 			"description": "Title of the wiki page that contains the list of auto-assigned mentors (cf. GEHomepageManualAssignmentMentorsList). May be null if no such page exists.",

@@ -6,10 +6,15 @@ use DBAccessObjectUtils;
 use IDBAccessObject;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 use WANObjectCache;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
-abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
+abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, LoggerAwareInterface {
+	use LoggerAwareTrait;
+
 	/** @var string */
 	public const ROLE_PRIMARY = 'primary';
 
@@ -21,6 +26,9 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 		self::ROLE_PRIMARY,
 		self::ROLE_BACKUP
 	];
+
+	/** @var int Maximum allowed time since last edit for gemm_mentee_is_active to be true */
+	public const INACTIVITY_THRESHOLD = self::TTL_MONTH * 6;
 
 	/** @var WANObjectCache */
 	protected $wanCache;
@@ -41,6 +49,8 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 	) {
 		$this->wanCache = $wanCache;
 		$this->wasPosted = $wasPosted;
+
+		$this->setLogger( new NullLogger() );
 	}
 
 	/**
@@ -140,6 +150,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 	 * @param UserIdentity $mentor
 	 * @param string|null $mentorRole Passing null is deprecated since 1.39.
 	 * @param bool $includeHiddenUsers
+	 * @param bool $includeInactiveUsers
 	 * @param int $flags
 	 * @return UserIdentity[]
 	 */
@@ -147,6 +158,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 		UserIdentity $mentor,
 		?string $mentorRole = null,
 		bool $includeHiddenUsers = false,
+		bool $includeInactiveUsers = true,
 		int $flags = 0
 	): array;
 
@@ -166,7 +178,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 		int $flags = 0
 	): bool {
 		return $this->getMenteesByMentor(
-			$mentor, $mentorRole, $includeHiddenUsers, $flags
+			$mentor, $mentorRole, $includeHiddenUsers, true, $flags
 		) !== [];
 	}
 
@@ -194,6 +206,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 		$this->setMentorForUserInternal( $mentee, $mentor, $mentorRole );
 
 		$this->invalidateMentorCache( $mentee, $mentorRole );
+		$this->invalidateIsMenteeActive( $mentee );
 
 		// Set the mentor in the in-process cache
 		$this->inProcessCache[$this->makeLoadMentorCacheKey( $mentee, $mentorRole )] = $mentor;
@@ -221,4 +234,113 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 			$this->setMentorForUser( $mentee, null, $role );
 		}
 	}
+
+	/**
+	 * Is an user considered a mentee?
+	 *
+	 * Equivalent to "Do they have a primary mentor assigned?"
+	 *
+	 * @param UserIdentity $user
+	 * @param int $flags
+	 * @return bool
+	 */
+	public function isMentee(
+		UserIdentity $user,
+		int $flags = self::READ_NORMAL
+	): bool {
+		return $this->loadMentorUser(
+			$user,
+			self::ROLE_PRIMARY,
+			$flags
+		) !== null;
+	}
+
+	/**
+	 * Make cache key for isMenteeActive()
+	 *
+	 * @param UserIdentity $user
+	 * @return string
+	 */
+	private function makeIsMenteeActiveCacheKey( UserIdentity $user ): string {
+		return $this->wanCache->makeKey(
+			'GrowthExperiments',
+			'MentorStore', __CLASS__,
+			'Mentee', $user->getId(),
+			'IsActive'
+		);
+	}
+
+	/**
+	 * Invalidates cache for isMenteeActive()
+	 *
+	 * @param UserIdentity $user
+	 */
+	protected function invalidateIsMenteeActive( UserIdentity $user ): void {
+		$this->wanCache->delete( $this->makeIsMenteeActiveCacheKey( $user ) );
+	}
+
+	/**
+	 * Is the mentee active?
+	 *
+	 * This will be used by MentorFilterHooks to only include
+	 * recently active mentees, to avoid errors like T293182.
+	 *
+	 * A mentee should be marked as active if they edited less than
+	 * MentorStore::INACTIVITY_THRESHOLD seconds ago.
+	 *
+	 * @param UserIdentity $mentee
+	 * @return bool|null
+	 */
+	public function isMenteeActive( UserIdentity $mentee ): ?bool {
+		return $this->wanCache->getWithSetCallback(
+			$this->makeIsMenteeActiveCacheKey( $mentee ),
+			self::TTL_DAY,
+			function () use ( $mentee ) {
+				return $this->isMenteeActiveUncached( $mentee );
+			}
+		);
+	}
+
+	/**
+	 * Is the mentee active?
+	 *
+	 * Bypasses caching.
+	 *
+	 * @see MentorStore::isMenteeActive()
+	 * @param UserIdentity $mentee
+	 * @return bool|null
+	 */
+	abstract protected function isMenteeActiveUncached( UserIdentity $mentee ): ?bool;
+
+	/**
+	 * Mark the mentee as active
+	 *
+	 * This will be used by MentorFilterHooks to only include
+	 * recently active mentees, to avoid errors like T293182.
+	 *
+	 * A mentee should be marked as active if they edited less than
+	 * MentorStore::INACTIVITY_THRESHOLD seconds ago.
+	 *
+	 * Method should only make a write query if the mentee is not
+	 * already marked as active.
+	 *
+	 * @param UserIdentity $mentee
+	 */
+	abstract public function markMenteeAsActive( UserIdentity $mentee ): void;
+
+	/**
+	 * Mark a mentee as inactive
+	 *
+	 * This will be used by MentorFilterHooks to only include
+	 * recently active mentees, to avoid errors like T293182.
+	 *
+	 * A mentee should be marked as inactive if they edited more than
+	 * MentorStore::INACTIVITY_THRESHOLD seconds ago.
+	 *
+	 * Method should only make a write query if the mentee is not
+	 * already marked as inactive.
+	 *
+	 * @param UserIdentity $mentee
+	 */
+	abstract public function markMenteeAsInactive( UserIdentity $mentee ): void;
 }

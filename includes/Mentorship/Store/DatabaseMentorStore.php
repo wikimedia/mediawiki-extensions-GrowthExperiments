@@ -4,6 +4,7 @@ namespace GrowthExperiments\Mentorship\Store;
 
 use DBAccessObjectUtils;
 use JobQueueGroup;
+use LogicException;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -27,6 +28,9 @@ class DatabaseMentorStore extends MentorStore {
 	/** @var IDatabase */
 	private $dbw;
 
+	/** @var bool */
+	private $useIsActive;
+
 	/**
 	 * @param WANObjectCache $wanCache
 	 * @param UserFactory $userFactory
@@ -35,6 +39,7 @@ class DatabaseMentorStore extends MentorStore {
 	 * @param IDatabase $dbr
 	 * @param IDatabase $dbw
 	 * @param bool $wasPosted
+	 * @param bool $useIsActive Temporary flag, controls whether gemm_mentee_is_active is accessed
 	 */
 	public function __construct(
 		WANObjectCache $wanCache,
@@ -43,7 +48,8 @@ class DatabaseMentorStore extends MentorStore {
 		JobQueueGroup $jobQueueGroup,
 		IDatabase $dbr,
 		IDatabase $dbw,
-		bool $wasPosted
+		bool $wasPosted,
+		bool $useIsActive
 	) {
 		parent::__construct( $wanCache, $wasPosted );
 
@@ -52,6 +58,7 @@ class DatabaseMentorStore extends MentorStore {
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->dbr = $dbr;
 		$this->dbw = $dbw;
+		$this->useIsActive = $useIsActive;
 	}
 
 	/**
@@ -97,6 +104,7 @@ class DatabaseMentorStore extends MentorStore {
 		UserIdentity $mentor,
 		?string $mentorRole = null,
 		bool $includeHiddenUsers = false,
+		bool $includeInactiveUsers = true,
 		int $flags = 0
 	): array {
 		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
@@ -110,6 +118,20 @@ class DatabaseMentorStore extends MentorStore {
 			wfDeprecated( __METHOD__ . ' with no role parameter', '1.39' );
 		} else {
 			$conds['gemm_mentor_role'] = $mentorRole;
+		}
+
+		if ( !$includeInactiveUsers ) {
+			if ( !$this->useIsActive ) {
+				$this->logger->error(
+					__METHOD__ .
+					': $includeInactiveUsers=false, but GEMentorshipUseIsActiveFlag=false',
+					[
+						'impact' => '$includeInactiveUsers=false is ignored'
+					]
+				);
+			} else {
+				$conds['gemm_mentee_is_active'] = true;
+			}
 		}
 
 		$ids = $db->newSelectQueryBuilder()
@@ -194,6 +216,82 @@ class DatabaseMentorStore extends MentorStore {
 				'mentorId' => $mentor ? $mentor->getId() : null,
 				'roleId' => $mentorRole,
 			] ) );
+		}
+	}
+
+	/**
+	 * Set gemm_mentee_is_active to true/false
+	 *
+	 * @param UserIdentity $mentee
+	 * @param bool $isActive
+	 */
+	private function setMenteeActiveFlag(
+		UserIdentity $mentee,
+		bool $isActive
+	): void {
+		if ( !$this->useIsActive ) {
+			$this->logger->error(
+				__METHOD__ . ' was called with GEMentorshipUseIsActiveFlag=false',
+				[
+					'menteeName' => $mentee->getName(),
+					'newIsActive' => $isActive,
+					'impact' => 'Attempt to change the gemm_mentee_is_active flag was ignored'
+				]
+			);
+			return;
+		}
+
+		$this->dbw->update(
+			'growthexperiments_mentor_mentee',
+			[ 'gemm_mentee_is_active' => $isActive ],
+			[
+				'gemm_mentee_id' => $mentee->getId(),
+				'gemm_mentor_role' => self::ROLE_PRIMARY,
+			],
+			__METHOD__
+		);
+		$this->invalidateIsMenteeActive( $mentee );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function isMenteeActiveUncached( UserIdentity $mentee ): ?bool {
+		if ( !$this->useIsActive ) {
+			throw new LogicException(
+				'MentorStore::isMenteeActive was called, but GEMentorshipUseIsActiveFlag is false'
+			);
+		}
+		if ( !$this->isMentee( $mentee ) ) {
+			return null;
+		}
+
+		return (bool)$this->dbr->newSelectQueryBuilder()
+			->select( 'gemm_mentee_is_active' )
+			->from( 'growthexperiments_mentor_mentee' )
+			->where( [
+				'gemm_mentee_id' => $mentee->getId(),
+				'gemm_mentor_role' => self::ROLE_PRIMARY,
+			] )
+			->caller( __METHOD__ )
+			->fetchField();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function markMenteeAsActive( UserIdentity $mentee ): void {
+		if ( $this->isMentee( $mentee ) && !$this->isMenteeActive( $mentee ) ) {
+			$this->setMenteeActiveFlag( $mentee, true );
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function markMenteeAsInactive( UserIdentity $mentee ): void {
+		if ( $this->isMentee( $mentee ) && $this->isMenteeActive( $mentee ) ) {
+			$this->setMenteeActiveFlag( $mentee, false );
 		}
 	}
 }
