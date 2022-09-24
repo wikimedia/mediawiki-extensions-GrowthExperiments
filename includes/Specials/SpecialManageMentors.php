@@ -177,6 +177,14 @@ class SpecialManageMentors extends SpecialPage {
 	 * @return string
 	 */
 	private function getMentorsTable( array $mentorNames ): string {
+		if ( $mentorNames === [] ) {
+			return Html::element(
+				'p',
+				[],
+				$this->msg( 'growthexperiments-manage-mentors-none' )->text()
+			);
+		}
+
 		$headerItems = [
 			Html::element( 'th', [], '#' ),
 			Html::element(
