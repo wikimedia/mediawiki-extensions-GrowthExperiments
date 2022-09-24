@@ -153,6 +153,7 @@ class ApiSetMentorTest extends ApiTestCase {
 				$this->createMock( JobQueueGroup::class ),
 				$this->createNoOpMock( IDatabase::class ),
 				$this->createNoOpMock( IDatabase::class ),
+				true,
 				true
 			] )
 			->onlyMethods( [ 'setMentorForUser', 'loadMentorUser' ] )
