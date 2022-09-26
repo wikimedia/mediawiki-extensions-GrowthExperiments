@@ -3,6 +3,7 @@
 		"authors": [
 			"Afaz",
 			"MathXplore",
+			"Mugenpman",
 			"Omotecho",
 			"Shirayuki",
 			"TAKAHASHI Shuuji"
@@ -51,5 +52,8 @@
 	"welcomesurvey-question-languages-maximum": "追加した言語数が上限に達しました。",
 	"welcomesurvey-reminder-link": "アンケートに答える",
 	"welcomesurvey-reminder-dismiss": "閉じる",
+	"welcomesurvey-mideditsignup-title": "ようこそ、$1さん!",
+	"welcomesurvey-mideditsignup-body": "編集をありがとうございます！ {{GENDER:|あなた}} は、あなたの貢献による影響を確認し、あなたのホームページでより多くの編集を提案できるようになりました。",
+	"welcomesurvey-mideditsignup-button-homepage": "私のホームページに行く",
 	"welcomesurvey-mideditsignup-button-close": "閉じる"
 }

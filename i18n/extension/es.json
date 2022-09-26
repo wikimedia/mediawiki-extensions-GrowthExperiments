@@ -70,6 +70,11 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "No",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Página que contiene una lista de mentores que se asignarán automáticamente a los recién llegados",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Página que contiene una lista de mentores que solo se pueden asignar manualmente",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "¿Deben los usuarios y usuarias poder ser elegidos de forma automática para la mentoría?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Sí, permitir que los usuarios y usuarias que cumplen con los siguientes criterios se inscriban como mentores.",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "No, no permitir que ningún usuario se inscriba como mentor.",
+	"growthexperiments-edit-config-mentorship-minimum-age": "Número mínimo de días de antigüedad de un usuario para poder postularse a la mentoría",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "Número de ediciones mínimas de un usuario para poder postularse a la mentoría",
 	"growthexperiments-edit-config-newcomertasks": "Ediciones sugeridas",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Algunos tipos de ediciones sugeridas se muestran a través de plantillas de mantenimiento. Los artículos que contienen esas plantillas se agregan al feed. Para ver cuántos artículos están disponibles para cada tipo de tarea, consulte [[Special:NewcomerTasksInfo|esta página]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Desactivado",
@@ -94,5 +99,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Los artículos que contengan plantillas definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Plantillas de ficha",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas plantillas son necesarias para la función de tareas para recién llegados [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugerencias de imagen]]. Los artículos que contienen estas plantillas no se incluirán como tareas de sugerencia de imágenes."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas plantillas son necesarias para la función de tareas para recién llegados [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugerencias de imagen]]. Los artículos que contienen estas plantillas no se incluirán como tareas de sugerencia de imágenes.",
+	"growthexperiments-edit-config-delayed": "Los cambios en esta configuración no tendrán efecto inmediato (véase [[mw:Growth/FAQ#add-link-config|FAQ]])."
 }

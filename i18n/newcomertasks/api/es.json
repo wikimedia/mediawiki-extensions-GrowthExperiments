@@ -7,6 +7,19 @@
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Consigue recomendaciones de tareas adaptadas a recién llegados.",
+	"apihelp-query+growthtasks-extended-description": "Sugiere un conjunto de artículos que tienen algunos problemas pendientes lo suficientemente fáciles de abordar para un nuevo editor.",
+	"apihelp-query+growthtasks-param-tasktypes": "Tipos de tareas para limitar los resultados. Dejar en blanco para recibir todas las sugerencias.",
 	"apihelp-query+growthtasks-param-topics": "Temas de preferencia de artículos en las sugerencias de tareas.",
-	"apierror-growthexperiments-addlink-handler-notfound": "No se ha encontrado el registro de recomendación de enlaces"
+	"apihelp-query+growthtasks-param-limit": "Número máximo de sugerencias de tareas a ofrecer.",
+	"apihelp-query+growthtasks-param-excludepageids": "IDs de páginas a excluir de la consulta.",
+	"apihelp-query+growthtasks-param-debug": "Añadir la información necesaria para corregir los errores en la página de resultados.",
+	"apihelp-query+growthtasks-example-1": "Obtener recomendaciones de tareas de corrección de textos para el usuario actual.",
+	"apihelp-query+growthtasks-example-2": "Obtener recomendaciones de tareas para el usuario actual, con información ampliada sobre las páginas.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Falta el parámetro 'accepted' en los datos del plugin Add Image",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "El parámetro 'accepted' debe ser un booleano en los datos del plugin Add Image, es $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "Falta el parámetro 'reason' en los datos del plugin Add Image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "El parámetro 'reason' debe ser un array en los datos del plugin Add Image, es $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Elemento inválido '$1' para el parámetro 'reason', debe ser uno de: $2",
+	"apierror-growthexperiments-addlink-handler-notfound": "No se ha encontrado el registro de recomendación de enlaces",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Objetivos de recomendación de enlaces inesperados: $1"
 }

@@ -176,7 +176,7 @@
 	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1{{PLURAL:$1|次编辑}} · $2",
 	"growthexperiments-help-panel-general-help-title": "综合编辑帮助",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "关于编辑建议",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|You}} 使用源代码编辑器。这些编辑窍门对可视化编辑器非常有帮助。",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|您}}正在使用源代码编辑器。这些编辑窍门对可视化编辑器非常有帮助。",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "切换到可视化编辑器",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|You}} 使用可视化编辑器。这些编辑窍门对源代码编辑器非常有帮助。",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "切换到源代码编辑器"

@@ -62,7 +62,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Einstellungen",
 	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit": "Lotsen-Tätigkeit beenden",
 	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-headline": "Möchtest die Tätigkeit als {{GENDER:|Lotse|Lotsin}} beenden?",
-	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-text": "Wenn du die Tätigkeit als {{GENDER:|Lotse|Lotsin}} dauerhaft beenden möchtest, kannst du dies über Special:QuitMentorship tun. Wenn du auf „OK“ klicken, wirst du dorthin weitergeleitet.",
+	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-text": "Wenn du die Tätigkeit als {{GENDER:|Lotse|Lotsin}} dauerhaft beenden möchtest, kannst du dies über Special:QuitMentorship tun. Wenn du auf „OK“ klickst, wirst du dorthin weitergeleitet.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Lotsen-Status",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktiv",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Abwesend",
