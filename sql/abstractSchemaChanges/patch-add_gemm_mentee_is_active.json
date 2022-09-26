@@ -1,5 +1,36 @@
-[
-	{
+{
+	"comment": "Add gemm_mentee_is_active to growthexperiments_mentor_mentee",
+	"before": {
+		"name": "growthexperiments_mentor_mentee",
+		"comment": "Table having mentor/mentee relationship.",
+		"columns": [
+			{
+				"name": "gemm_mentee_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gemm_mentor_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gemm_mentor_role",
+				"type": "binary",
+				"options": { "notnull": true }
+			}
+		],
+		"indexes": [
+			{
+				"name": "gemm_mentor",
+				"comment": "This index is here to facilitate quick queries by mentor",
+				"columns": [ "gemm_mentor_id" ],
+				"unique": false
+			}
+		],
+		"pk": [ "gemm_mentee_id", "gemm_mentor_role" ]
+	},
+	"after": {
 		"name": "growthexperiments_mentor_mentee",
 		"comment": "Table having mentor/mentee relationship.",
 		"columns": [
@@ -34,4 +65,4 @@
 		],
 		"pk": [ "gemm_mentee_id", "gemm_mentor_role" ]
 	}
-]
+}

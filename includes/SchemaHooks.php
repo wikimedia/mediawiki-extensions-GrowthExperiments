@@ -35,6 +35,9 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 		$updater->addExtensionField( 'growthexperiments_link_submissions',
 			'gels_anchor_offset',
 			"$sqlDir/$engine/patch-add_gels_anchor.sql" );
+		$updater->addExtensionField( 'growthexperiments_mentor_mentee',
+			'gemm_mentee_is_active',
+			"$sqlDir/$engine/patch-add_gemm_mentee_is_active.sql" );
 	}
 
 	/** @inheritDoc */
