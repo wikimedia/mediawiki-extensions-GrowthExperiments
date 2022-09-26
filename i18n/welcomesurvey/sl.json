@@ -29,5 +29,6 @@
 	"welcomesurvey-question-edited-option-yes-few-label": "Da, enkrat ali dvakrat",
 	"welcomesurvey-question-edited-option-no-dunno-label": "Ne, nisem vedel/a, da lahko urejam Wikipedijo",
 	"welcomesurvey-question-edited-option-no-other-label": "Ne, iz drugih razlogov",
-	"welcomesurvey-question-edited-option-dont-remember-label": "Ne spomnim se"
+	"welcomesurvey-question-edited-option-dont-remember-label": "Ne spomnim se",
+	"welcomesurvey-question-email-label": "E-poštni naslov (izbirno)"
 }

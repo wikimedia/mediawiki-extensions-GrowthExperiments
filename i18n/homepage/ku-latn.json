@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Balyozxane",
-			"Guherto"
+			"Guherto",
+			"Bikarhêner"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Silav}}, {{bidi:$1}}!",
@@ -92,7 +93,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Herêm",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Mijarên xwe hilbijêre",
 	"growthexperiments-homepage-suggestededits-topics-more": "zêdetir bibîne",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|mijar|mijar}}",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|mijar}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Hemûyan hilbijêre",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Hemûyan jê bibe"
 }
