@@ -174,23 +174,23 @@ const aggregateMentees = ( mentees, starredMentees ) => mentees.map( ( mentee ) 
 	return Object.assign( {}, mentee, {
 		isStarred: starredMentees.indexOf( Number( mentee.user_id ) ) !== -1,
 		questions: {
-			value: mentee.questions,
+			value: mw.language.convertNumber( mentee.questions ),
 			link: mwLink( `Special:Contributions/${mentee.username}`, {
 				tagfilter: tagsToFilterBy.questions.join( '|' )
 			} )
 		},
 		editcount: {
-			value: mentee.editcount,
+			value: mw.language.convertNumber( mentee.editcount ),
 			link: mwLink( `Special:Contributions/${mentee.username}` )
 		},
 		reverted: {
-			value: mentee.reverted,
+			value: mw.language.convertNumber( mentee.reverted ),
 			link: mwLink( `Special:Contributions/${mentee.username}`, {
 				tagfilter: tagsToFilterBy.questions.join( '|' )
 			} )
 		},
 		blocks: {
-			value: mentee.blocks,
+			value: mw.language.convertNumber( mentee.blocks ),
 			link: mwLink( 'Special:Log/block', {
 				page: 'User:' + mentee.username
 			} )
