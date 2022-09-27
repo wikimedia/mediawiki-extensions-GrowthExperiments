@@ -132,6 +132,7 @@
 	"growthexperiments-manage-mentors-error-no-such-user": "Error message shown by Special:ManageMentors when a given mentor does not exist. This message only shows if user manually changes their URL address, or when links in the interface are incorrect.",
 	"growthexperiments-manage-mentors-auto-assigned": "Headline in Special:ManageMentors",
 	"growthexperiments-manage-mentors-manually-assigned": "Headline in Special:ManageMentors",
+	"growthexperiments-manage-mentors-none": "Displayed by Special:ManageMentors when there are no mentors.\n\n{{Identical|None}}",
 	"growthexperiments-manage-mentors-username": "Column header in Special:ManageMentors",
 	"growthexperiments-manage-mentors-last-active": "Column header in Special:ManageMentors",
 	"growthexperiments-manage-mentors-intro-msg": "Column header in Special:ManageMentors",

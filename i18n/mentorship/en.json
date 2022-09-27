@@ -126,6 +126,7 @@
 	"growthexperiments-manage-mentors-error-no-such-user": "Error: No such user with ID of $1 exists. This is probably an internal error.",
 	"growthexperiments-manage-mentors-auto-assigned": "Automatically assigned mentors",
 	"growthexperiments-manage-mentors-manually-assigned": "Manually assigned mentors",
+	"growthexperiments-manage-mentors-none": "None",
 	"growthexperiments-manage-mentors-username": "Username",
 	"growthexperiments-manage-mentors-last-active": "Last active",
 	"growthexperiments-manage-mentors-intro-msg": "Message for newcomers",
