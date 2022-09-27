@@ -309,6 +309,43 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
+	 * @return string
+	 */
+	private function makePreHTML(): string {
+		if ( !$this->including() ) {
+			// included version should only include the table
+			return '';
+		}
+
+		$howToChangeMessageKey = $this->canManageMentors()
+			? 'growthexperiments-manage-mentors-pretext-privileged'
+			: 'growthexperiments-manage-mentors-pretext-regular';
+
+		return Html::rawElement(
+			'div',
+			[],
+			implode( "\n", [
+				Html::rawElement(
+					'p',
+					[],
+					implode( "\n", [
+						$this->msg( 'growthexperiments-manage-mentors-pretext-purpose' )->parse(),
+						$this->msg( $howToChangeMessageKey )->parse(),
+						$this->msg( 'growthexperiments-manage-mentors-pretext-stored-at' )
+							->params( $this->getConfig()->get( 'GEStructuredMentorList' ) )
+							->parse(),
+					] )
+				),
+				Html::rawElement(
+					'p',
+					[],
+					$this->msg( 'growthexperiments-manage-mentors-pretext-to-enroll' )->parse()
+				)
+			] )
+		);
+	}
+
+	/**
 	 * @param string $text
 	 * @return string
 	 */
@@ -332,6 +369,7 @@ class SpecialManageMentors extends SpecialPage {
 		$out = $this->getOutput();
 		$out->enableOOUI();
 		$out->addHTML( implode( "\n", [
+			$this->makePreHTML(),
 			$this->makeHeadlineElement( $this->msg( 'growthexperiments-manage-mentors-auto-assigned' )->text() ),
 			$this->getMentorsTable( $this->mentorProvider->getAutoAssignedMentors() ),
 			$this->makeHeadlineElement( $this->msg( 'growthexperiments-manage-mentors-manually-assigned' )->text() ),
