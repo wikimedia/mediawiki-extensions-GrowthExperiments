@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use ActorMigration;
 use DateTime;
 use Exception;
 use Generator;
@@ -13,6 +12,7 @@ use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserSelectQueryBuilder;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -25,9 +25,6 @@ class RefreshUserImpactData extends Maintenance {
 
 	/** @var ActorStore */
 	private $actorStore;
-
-	/** @var ActorMigration */
-	private $actorMigration;
 
 	/** @var UserImpactLookup */
 	private $userImpactLookup;
@@ -77,7 +74,6 @@ class RefreshUserImpactData extends Maintenance {
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$this->actorStore = $services->getActorStore();
-		$this->actorMigration = $services->getActorMigration();
 		$this->userImpactLookup = $growthServices->getUncachedUserImpactLookup();
 		$this->userImpactStore = $growthServices->getUserImpactStore();
 	}
@@ -89,17 +85,15 @@ class RefreshUserImpactData extends Maintenance {
 		$ignoreIfUpdatedWithin = $this->getOption( 'ignoreIfUpdatedWithin' );
 
 		$queryBuilder = $this->getQueryBuilder();
-		$queryBuilder->fields( [ 'actor_id', 'actor_name', 'actor_user' ] );
-		$queryBuilder->orderBy( 'actor_user' );
 		$queryBuilder->limit( $this->getBatchSize() );
+		$queryBuilder->orderByUserId( SelectQueryBuilder::SORT_ASC );
 		$lastUserId = (int)$this->getOption( 'fromUser', 0 );
 		do {
 			$this->output( "processing {$this->getBatchSize()} users starting with $lastUserId\n" );
 			$batchQueryBuilder = clone $queryBuilder;
 			$batchQueryBuilder->where( 'actor_user > ' . $lastUserId );
 			$usersProcessedInThisBatch = 0;
-			foreach ( $batchQueryBuilder->fetchResultSet() as $row ) {
-				$user = $this->actorStore->newActorFromRow( $row );
+			foreach ( $batchQueryBuilder->fetchUserIdentities() as $user ) {
 				$lastUserId = $user->getId();
 				$usersProcessedInThisBatch++;
 				if ( $ignoreIfUpdatedWithin ) {
@@ -121,29 +115,21 @@ class RefreshUserImpactData extends Maintenance {
 		} while ( $usersProcessedInThisBatch === $this->getBatchSize() );
 	}
 
-	private function getQueryBuilder(): SelectQueryBuilder {
+	private function getQueryBuilder(): UserSelectQueryBuilder {
 		$editedWithin = $this->getOption( 'editedWithin' );
 		$registeredWithin = $this->getOption( 'registeredWithin' );
 
-		// Can't use UserSelectQueryBuilder because it doesn't work with ActorMigration
-		$queryBuilder = new SelectQueryBuilder( $this->getDB( DB_REPLICA ) );
+		$queryBuilder = $this->actorStore->newSelectQueryBuilder( $this->getDB( DB_REPLICA ) );
 		if ( $editedWithin ) {
 			$timestamp = $this->getDB( DB_REPLICA )->timestamp(
 				$this->getTimestampFromRelativeDate( $editedWithin ) );
-			$queryBuilder->table( 'revision' );
-			$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
-			$queryBuilder->tables( $queryInfo['tables'] );
-			$queryBuilder->fields( $queryInfo['fields'] );
-			$queryBuilder->joinConds( $queryInfo['joins'] );
+			$queryBuilder->join( 'revision', null, [ 'rev_actor = actor_id' ] );
 			$queryBuilder->where( "rev_timestamp >= $timestamp" );
-			$queryBuilder->groupBy( [ 'actor_id', 'actor_name', 'actor_user' ] );
+			$queryBuilder->groupBy( [ 'actor_user' ] );
 		}
 		if ( $registeredWithin ) {
 			$timestamp = $this->getDB( DB_REPLICA )->timestamp(
 				$this->getTimestampFromRelativeDate( $registeredWithin ) );
-			if ( !$editedWithin ) {
-				$queryBuilder->table( 'actor' );
-			}
 			$queryBuilder->join( 'user', null, [ 'actor_user = user_id' ] );
 			$queryBuilder->where( "user_registration >= $timestamp" );
 		}
@@ -152,7 +138,7 @@ class RefreshUserImpactData extends Maintenance {
 
 	/**
 	 * @param string $relativeDate A relative date string fragment that will be prefixed with a
-	 *   minus sign and passed to the DateTime constr
+	 *   minus sign and passed to the DateTime constructor.
 	 * @return int
 	 */
 	private function getTimestampFromRelativeDate( string $relativeDate ): int {
