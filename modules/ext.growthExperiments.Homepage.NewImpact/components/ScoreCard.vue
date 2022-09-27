@@ -9,7 +9,6 @@
 			<slot></slot>
 		</div>
 		<c-text
-			size="medium"
 			color="subtle"
 			class="ext-growthExperiments-ScoreCard__label"
 		>

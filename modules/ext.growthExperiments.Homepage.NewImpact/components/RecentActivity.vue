@@ -5,14 +5,13 @@
 				<c-text
 					as="span"
 					weight="bold"
-					size="x-large"
+					size="xxl"
 					class="ext-growthExperiments-RecentActivity__streak__highlight__number"
 				>
 					{{ $filters.convertNumber( contribs.count ) }}
 				</c-text>
 				<c-text
 					as="span"
-					size="medium"
 					class="ext-growthExperiments-RecentActivity__streak__highlight__text"
 				>
 					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-contribs-count-text', contribs.count ) }}
