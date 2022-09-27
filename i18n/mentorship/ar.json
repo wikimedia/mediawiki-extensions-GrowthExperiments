@@ -91,7 +91,7 @@
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "من المؤسف ملاحظة مغادرتكم. للبدء في عمليّة المغادرة من الإرشاد، يجب عليكم حذف اسمكم من [[$1|قائمة المرشدين]]. عند الانتهاء من ذلك، فضلا، عودوا إلى هذه الصفحة.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "المرحلة التالية من مغلدرة الإرشاد هي إعادة توزيع مُرشَديك. لو كنت {{GENDER:|متأكّدا|متأكّدة}} من المغادرة، فضلا، {{GENDER:|اضغط|اضغطي}} على الزرّ أدناه.",
 	"growthexperiments-quit-mentorship-error-not-a-mentor": "لست {{GENDER:|مرشدًا|مرشدةً}}.",
-	"growthexperiments-quit-mentorship-has-mentees-pretext": "إنّه لأمر مؤسف أن نراك {{GENDER:|تغادر|تغادرين}}. للخروج من الإرشاد، أنت بحاجة إلى ملء النموذج أدناه. بمجرد إرساله، سيتم إعادة تعيين جميع مرشَديك السابقين إلى مرشِدين آخرين. <strong>لا يمكن التراجع عن ذلك.</strong> بدلاً من ذلك، تسمح [[Special:MentorDashboard|لوحة المرشدين]] بتقليل عدد المرشَدين المعينين لديك (أو التوقف عن قَبُول المرشَدين الجدد مؤقتًا) دون أن {{GENDER:|تفقد|تفقدي}} أيًا من المرشَدين الحاليين.",
+	"growthexperiments-quit-mentorship-has-mentees-pretext": "إنّه لأمر مؤسف أن نراك {{GENDER:|تغادر|تغادرين}}. للخروج من الإرشاد، أنت بحاجة إلى ملء النموذج أدناه. بمجرد إرساله، سيتم إعادة تعيين جميع مرشَديك السابقين إلى مرشِدين آخرين. <strong>لا يمكن التراجع عن ذلك.</strong> \nإذا احتجت إلى استراحة من الإرشاد، {{GENDER:|ففكر|ففكري}} بدلاً من ذلك في تحديث حالتك إلى غير متوفر أو تقليل عدد من {{GENDER:|ترشدهم|ترشدينهم}}. يمكنك إجراء هذه التغييرات في [[Special:MentorDashboard|إعدادات لوحة المرشدين]].",
 	"growthexperiments-quit-mentorship-reason": "السبب",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "نعم، أعيدوا توزيع المرشَدين",
 	"growthexperiments-quit-mentorship-success": "ستتمّ إعادة توزيع المرشَدين إلى مُرشِدين آخرين قريبا.",

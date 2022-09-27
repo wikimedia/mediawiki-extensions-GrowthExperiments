@@ -150,7 +150,7 @@
 	"tag-help_panel_question-description": "რედაქტირება განხორციელდა დახმარების პანელის კითხვის დასმის ფუნქციით",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "შემოთავაზებული რედაქტირებები",
 	"growthexperiments-help-panel-button-header-ask-help": "იკითხეთ ფორუმზე",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "დახმარების თხოვნა თქვენი მენტორისათვის",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "დახმარების თხოვნა {{GENDER:|თქვენი}} {{GENDER:$1|მენტორისათვის}}",
 	"growthexperiments-help-panel-button-header-general-help": "ზოგადი დახმარება რედაქტირებაში",
 	"growthexperiments-help-panel-button-subheader-general-help": "მოძებნეთ პასუხები საუკეთესო სახელმძღვანელოების წაკითხვით",
 	"growthexperiments-help-panel-button-subheader-ask-help": "მიიღეთ პასუხები სხვა მოხალისეებისგან",

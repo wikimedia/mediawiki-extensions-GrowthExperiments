@@ -46,5 +46,12 @@
 	"welcomesurvey-question-email-help": "ჩვენ შევამჩნიეთ, რომ {{GENDER:|თქვენ}} არ შეგიყვანიათ ელფოსტა ამ ანგარიშის შექმნისას. ეს <strong>რეკომენდებულია</strong>, რადგან ელფოსტა საჭიროა ანგარიშის აღდგენისთვის, თუ ოდესმე დაკარგავთ თქვენს პაროლს. შენიშვნა: თქვენი ელფოსტის მისამართი არ გამოჩნდება, როდესაც სხვა მომხმარებლები დაგიკავშირდებიან.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} ხელმისაწვდომია თითქმის 300 ენაზე. არის სხვა ენებიც, რომელზეც {{GENDER:|თქვენ}} კითხულობთ და წერთ?",
 	"welcomesurvey-question-languages-placeholder": "დაამატეთ {{PLURAL:$1|$1}}-მდე ენა...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|თქვენ}} დაამატეთ ენების მაქსიმალური რაოდენობა."
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|თქვენ}} დაამატეთ ენების მაქსიმალური რაოდენობა.",
+	"welcomesurvey-reminder": "დაგვეხმარეთ ვიკიპედიაში {{GENDER:|თქვენი}} გამოცდილების გაუმჯობესებაში ჩვენ მისასალმებელ გამოკითხვაში რამდენიმე არასავალდებულო კითხვაზე პასუხის გაცემით. $1",
+	"welcomesurvey-reminder-link": "გამოკითხვის დაწყება",
+	"welcomesurvey-reminder-dismiss": "უარყოფა",
+	"welcomesurvey-mideditsignup-title": "მოგესალმებით, $1!",
+	"welcomesurvey-mideditsignup-body": "გმადლობთ რედაქტირებისთვის! {{GENDER:|თქვენ}} ახლა შეგიძლიათ ნახოთ თქვენი წვლილის ზეგავლენა და მიიღოთ მეტი შემოთავაზებული რედაქტირება თქვენ საწყის გვერდზე.",
+	"welcomesurvey-mideditsignup-button-homepage": "ჩემ საწყის გვერდზე გადასვლა",
+	"welcomesurvey-mideditsignup-button-close": "დახურვა"
 }
