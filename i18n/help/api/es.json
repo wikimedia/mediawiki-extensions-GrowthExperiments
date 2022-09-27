@@ -15,5 +15,7 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "El panel \"Pregunta a tu mentor\" en la página de inicio de los nuevos usuarios",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "La pantalla \"Pregunte a tu mentor\" en el panel de ayuda",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "El panel \"Preguntar a la mesa de ayuda\" (nombre antiguo)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "El panel \"Pregunta a tu mentor/a\" en la página de inicio de los recién llegados (nombre antiguo)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "El título correspondiente, si se selecciona, para incluirlo con la pregunta.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Se necesita acceder para formular una pregunta."
 }

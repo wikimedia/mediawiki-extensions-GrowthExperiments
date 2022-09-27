@@ -7,7 +7,8 @@
 			"Xiplus",
 			"范",
 			"LNDDYL",
-			"魔琴"
+			"魔琴",
+			"BlackShadowG"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "導師面板",
@@ -55,7 +56,7 @@
 	"growthexperiments-rcfilters-mentorship-starred-desc": "分配給{{GENDER:|您}}且{{GENDER:|您}}在{{GENDER:|您的}}導師控制面版上標記星號的學員",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|您}}未標記星號的學員",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "其他分配給{{GENDER:|您}}的學員",
-	"growthexperiments-quit-mentorship-title": "離開導師計畫",
+	"growthexperiments-quit-mentorship-title": "退出導師計畫",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "很遺憾看到您要離開了，要開始退出導師計畫的流程，您首先需要[[$1|從導師列表]]移除您的名字，完成操作後，請回到本頁。",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "退出導師計畫的下一步是重新分配您的學員，如果您確定要離開，請按下下面的按鈕。",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "是的，重新分配我的學員",

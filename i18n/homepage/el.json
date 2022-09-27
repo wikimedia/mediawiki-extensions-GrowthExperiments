@@ -3,7 +3,8 @@
 		"authors": [
 			"Geraki",
 			"Giannaras99",
-			"Kostajh"
+			"Kostajh",
+			"Norhorn"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Γεια σας}}, {{bidi:$1}}!",
@@ -290,6 +291,7 @@
 	"logentry-growthexperiments-setmentor": "{{GENDER:$2|Ο|Η}} $1 όρισε {{GENDER:$5|τον|την}} $7 ως {{GENDER:$5|καθοδηγητή|καθοδηγήτρια}} {{GENDER:$6|του|της}} $3 ({{GENDER:$4|προηγούμενος καθοδηγητής|προηγούμενη καθοδηγήτρια}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "{{GENDER:$2|Ο|Η}} $1 όρισε {{GENDER:$5|τον|την}} $7 ως {{GENDER:$5|καθοδηγητή|καθοδηγήτρια}} {{GENDER:$6|του|της}} $3 (χωρίς προηγούμενο καθοδηγητή)",
 	"logentry-growthexperiments-addlink": "{{GENDER:$2|Ο|Η}} $1 επιθεώρησε $4 προτάσεις συνδέσμων για την $3: αποδέχτηκε $5, απέρριψε $6 και παράληψε $7",
+	"log-action-filter-growthexperiments": "Τύπος συμβάντος GrowthExperiments:",
 	"log-action-filter-growthexperiments-claimmentee": "Αλλαγές καθοδηγούμενων",
 	"log-action-filter-growthexperiments-setmentor": "Αλλαγές καθοδηγητών",
 	"log-action-filter-growthexperiments-addlink": "Προτάσεις συνδέσμων",
@@ -313,12 +315,19 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Συνέχεια",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Κατάλαβα",
 	"growthexperiments-addlink-pagenotfound": "Η σελίδα \"$1\" δεν υπάρχει",
+	"growthexperiments-addlink-revdeleted": "Η αναθεώρηση $1 του «$2» δεν είναι προσβάσιμη",
+	"growthexperiments-addlink-wrongmodel": "Η αναθεώρηση $1 του «$2» δεν είναι wikitext",
+	"growthexperiments-addlink-invalidjson": "Η απάντηση της υπηρεσίας πρότασης συνδέσμου για «$1» δεν είναι έγκυρη",
+	"growthexperiments-addlink-serviceerror": "Η υπηρεσία προτάσεων συνδέσμου απάντησε με ένα σφάλμα για «$1»: $2",
+	"growthexperiments-addlink-notinstore": "Η πρόταση συνδέσμου δεν βρέθηκε για «$1»",
+	"growthexperiments-addlink-duplicatesubmission": "Προσπάθεια υποβολής επιθεωρήσεων προτάσεων συνδέσμου για την αναθεώρηση «$1» που έχει ήδη επιθεωρηθεί.",
 	"growthexperiments-addlink-context-text-label": "Κείμενο",
 	"growthexperiments-addlink-context-intro": "Θα πρέπει αυτό να συνδέει στο ακόλουθο λήμμα;",
 	"growthexperiments-addlink-context-button-accept": "Ναι",
 	"growthexperiments-addlink-context-button-reject": "Όχι",
 	"growthexperiments-addlink-context-button-help": "Πάρετε βοήθεια για την επεξεργασία",
 	"growthexperiments-addlink-context-button-next": "Επόμενο",
+	"growthexperiments-addlink-context-button-show-suggestion": "Εμφάνιση πρότασης συνδέσμου",
 	"growthexperiments-addlink-rejectiondialog-title": "Γιατί δεν είναι αυτός καλός σύνδεσμος;",
 	"growthexperiments-addlink-rejectiondialog-message": "Η απαντήσεις {{GENDER:$1|σας}} βοηθούν τις μελλοντικές προτάσεις.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Σχεδόν ο καθένας θέλει να μάθει τι είναι",

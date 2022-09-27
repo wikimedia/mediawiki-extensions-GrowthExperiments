@@ -6,6 +6,6 @@
 	},
 	"apihelp-growthstarmentee-summary": "Marcar o desmarcar a un aprendiz con estrella por el usuario actual (almacenado de forma privada y no logged)",
 	"apihelp-growthstarmentee-param-gesaction": "Acción a realizar (<kbd>dar estrella</kbd> o <kbd>quitar estrella</kbd>)",
-	"apihelp-growthstarmentee-param-gesmentee": "Mentee to (un)star",
+	"apihelp-growthstarmentee-param-gesmentee": "Aprendiz con estrella/sin estrella",
 	"apihelp-query+growthstarredmentees-summary": "Obtener la lista de aprendices asociados al mentor actualmente conectado"
 }
