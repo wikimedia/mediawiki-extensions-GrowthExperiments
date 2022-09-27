@@ -50,7 +50,10 @@ class NewImpact extends BaseModule {
 	/** @inheritDoc */
 	protected function getBody() {
 		return Html::rawElement( 'div',
-				[ 'id' => 'new-impact-vue-root' ]
+				[
+					'id' => 'new-impact-vue-root',
+					'class' => 'ext-growthExperiments-new-impact-app-root'
+				],
 			) .
 			Html::element( 'p',
 				[ 'class' => 'growthexperiments-homepage-new-impact-no-js-fallback' ],
@@ -60,7 +63,16 @@ class NewImpact extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getMobileSummaryBody() {
-		return '<div></div>';
+		return Html::rawElement( 'div',
+				[
+					'id' => 'new-impact-vue-root--mobile',
+					'class' => 'ext-growthExperiments-new-impact-app-root--mobile'
+				],
+			) .
+			Html::element( 'p',
+				[ 'class' => 'growthexperiments-homepage-new-impact-no-js-fallback' ],
+				$this->msg( 'growthexperiments-homepage-new-impact-no-js-fallback' )->text()
+			);
 	}
 
 	/** @inheritDoc */
