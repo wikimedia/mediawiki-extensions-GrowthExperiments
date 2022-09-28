@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"ANukuma",
+			"DARMAS BUDI SANTOSO",
 			"Daud I.F. Argana",
 			"PutriAmalia1991",
 			"Veracious"
@@ -39,6 +40,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Daftar pembimbing",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Cara mendapat seorang bimbingan",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktif",
+	"growthexperiments-quit-mentorship-has-mentees-pretext": "It's sad to see {{GENDER:|you}} go. To quit from mentorship, {{GENDER:|you}} need to fill out the form below. Once you submit it, all your mentees will be reassigned to a different mentor. <strong>This cannot be reversed.</strong> If {{GENDER:|you}} need a break from mentorship, instead consider updating your status to Away or reduce the number of mentees assigned to you. {{GENDER:|You}} can make these changes from {{GENDER:|your}} [[Special:MentorDashboard|Mentor dashboard settings]].",
 	"growthexperiments-quit-mentorship-reason": "Alasan",
 	"growthexperiments-notification-body-mentee-claimed": "Alasan: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Tidak ada",

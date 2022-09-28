@@ -47,5 +47,7 @@
 	"welcomesurvey-question-email-help": "Забележавме дека {{GENDER:|не внесовте}} е-пошта при создавањето на сметкава. <strong>Ви препорачуваме</strong> да внесете бидејќи ќе ви треба за повраток на сметката ако ви се случи да ја изумите лозинката. НАПОМЕНА: Вашата е-пошта не се прикажува при во преписките со другите корисници.",
 	"welcomesurvey-question-languages-label": "Проектот {{SITENAME}} е достапен на преку 300 јазици. Дали умеете да читате и пишувате на други јазици?",
 	"welcomesurvey-question-languages-placeholder": "Додајте највеќе {{PLURAL:$1|еден јазик|$1 јазици}}...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|Го достигнавте}} најголемиот допуштен број на јазици."
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Го достигнавте}} најголемиот допуштен број на јазици.",
+	"welcomesurvey-mideditsignup-title": "Добре дојдовте, $1!",
+	"welcomesurvey-mideditsignup-button-close": "Затвори"
 }

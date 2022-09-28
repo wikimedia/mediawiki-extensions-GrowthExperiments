@@ -48,9 +48,11 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}}मा करिब ३०० भाषाहरूमा उपलब्ध छ। के त्यहाँ अन्य भाषाहरू छन् जुन {{GENDER:|तपाईंले}} पढ्न र लेख्न सक्नुहुन्छ?",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|भाषा|भाषाहरू}} थप्नुहोस्...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|तपाईंले}} भाषाहरूको अधिकतम संख्या थप्नुभएको छ।",
+	"welcomesurvey-reminder": "हाम्रो स्वागत सर्वेक्षणमा केही वैकल्पिक प्रश्नहरूको जवाफ दिएर हामीलाई {{GENDER:|तपाईंको}} विकिपीडिया अनुभव सुधार गर्न मद्दत गर्नुहोस्। $1",
 	"welcomesurvey-reminder-link": "सर्वेक्षण सुरु गर्नुहोस",
 	"welcomesurvey-reminder-dismiss": "खारेज गर्नुहोस्",
 	"welcomesurvey-mideditsignup-title": "$1ज्यू स्वागत छ!",
+	"welcomesurvey-mideditsignup-body": "सम्पादन गर्नुभएकोमा धन्यवाद! {{GENDER:|तपाईं}} अब आफ्नो योगदानको प्रभाव देख्न सक्नुहुन्छ र आफ्नो गृहपृष्ठमा थप सुझाव गरिएका सम्पादनहरू प्राप्त गर्न सक्नुहुन्छ।",
 	"welcomesurvey-mideditsignup-button-homepage": "गृह पृष्ठमा जाने",
 	"welcomesurvey-mideditsignup-button-close": "बन्द गर्नुहोस्"
 }

@@ -39,5 +39,8 @@
 	"growthexperiments-manage-mentors-username": "Benotzernumm",
 	"growthexperiments-manage-mentors-last-active": "Fir d'lescht aktiv",
 	"growthexperiments-manage-mentors-intro-msg": "Message fir nei Mataarbechter",
+	"growthexperiments-manage-mentors-edit": "Änneren",
+	"growthexperiments-manage-mentors-edit-weight": "Gewiicht",
+	"growthexperiments-manage-mentors-edit-reason": "Grond",
 	"growthexperiments-manage-mentors-remove-mentor": "Ewechhuelen"
 }
