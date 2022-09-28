@@ -41,6 +41,10 @@ class DatabaseUserImpactStore implements UserImpactStore {
 		if ( $serializedUserImpact === false ) {
 			return null;
 		}
+		$userImpactArray = json_decode( $serializedUserImpact, true );
+		if ( ( $userImpactArray['@version'] ?? 0 ) !== UserImpact::VERSION ) {
+			return null;
+		}
 		return UserImpact::newFromJsonArray( json_decode( $serializedUserImpact, true ) );
 	}
 
@@ -52,7 +56,7 @@ class DatabaseUserImpactStore implements UserImpactStore {
 	public function setUserImpact( UserImpact $userImpact ): void {
 		$data = [
 			'geui_data' => json_encode( $userImpact, JSON_UNESCAPED_UNICODE ),
-			'geui_timestamp' => $this->dbw->timestamp(),
+			'geui_timestamp' => $this->dbw->timestamp( $userImpact->getGeneratedAt() ),
 		];
 		$this->dbw->upsert(
 			self::TABLE_NAME,

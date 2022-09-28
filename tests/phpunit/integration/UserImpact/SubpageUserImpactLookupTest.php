@@ -52,6 +52,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			wfTimestamp( TS_UNIX, '20220101000000' )
 		);
 		$this->makeJsonPage( 'User:User1/userimpact.json', [
+			'@version' => UserImpact::VERSION,
 			'userId' => 1,
 			'userName' => 'User1',
 			'receivedThanksCount' => 10,
@@ -60,6 +61,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			'timeZone' => [ 'System|0', 0 ],
 			'newcomerTaskEditCount' => 80,
 			'lastEditTimestamp' => (int)wfTimestamp( TS_UNIX, '20200101000000' ),
+			'generatedAt' => ConvertibleTimestamp::time(),
 		] );
 
 		$wikiPageFactory = $this->getServiceContainer()->getWikiPageFactory();

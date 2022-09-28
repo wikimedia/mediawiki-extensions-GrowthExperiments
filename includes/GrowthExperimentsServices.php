@@ -317,6 +317,10 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsUserImpactLookup' );
 	}
 
+	public function getUncachedUserImpactLookup(): UserImpactLookup {
+		return $this->coreServices->get( '_GrowthExperimentsUserImpactLookup_Computed' );
+	}
+
 	public function getUserImpactStore(): UserImpactStore {
 		return $this->coreServices->get( 'GrowthExperimentsUserImpactStore' );
 	}
