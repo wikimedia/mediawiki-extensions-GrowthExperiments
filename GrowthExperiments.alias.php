@@ -157,6 +157,8 @@ $specialPageAliases['he'] = [
 	'EditGrowthConfig' => [ 'עריכת_הגדרות_חונך' ],
 	'MentorDashboard' => [ 'לוח_בקרה_לחונכים' ],
 	'QuitMentorship' => [ 'פרישת_חונך' ],
+	'ManageMentors' => [ 'לוח_בקרה_של_חונכים' ],
+	'EnrollAsMentor' => [ 'רישום_לחונכות' ],
 ];
 
 /** Hindi (हिन्द) */
