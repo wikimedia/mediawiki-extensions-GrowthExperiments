@@ -21,11 +21,18 @@
 				</c-text>
 			</score-card>
 		</div>
+		<div v-if="data">
+			<c-text as="h5">
+				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-title', userName ) }}
+			</c-text>
+			<recent-activity :data="data"></recent-activity>
+		</div>
 	</section>
 </template>
 
 <script>
 const ScoreCard = require( './ScoreCard.vue' );
+const RecentActivity = require( './RecentActivity.vue' );
 const CText = require( '../../vue-components/CText.vue' );
 const CLink = require( '../../vue-components/CLink.vue' );
 const useMWRestApi = require( '../composables/useMWRestApi.js' );
@@ -36,6 +43,7 @@ const sum = ( arr ) => arr.reduce( ( x, y ) => x + y, 0 );
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
+		RecentActivity,
 		ScoreCard,
 		CText,
 		CLink

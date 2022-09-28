@@ -623,6 +623,8 @@
 				"ext.growthExperiments.Homepage.NewImpact/composables/useMWRestApi.js",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/StreakGraph.vue",
 				"vue-components/CLink.vue",
 				"vue-components/CText.vue",
 				{
@@ -636,9 +638,16 @@
 			],
 			"messages": [
 				"growthexperiments-homepage-impact-scores-edit-count",
-				"growthexperiments-homepage-impact-scores-thanks-count"
+				"growthexperiments-homepage-impact-scores-thanks-count",
+				"growthexperiments-homepage-impact-recent-activity-title",
+				"growthexperiments-homepage-impact-recent-activity-last-edit-text",
+				"growthexperiments-homepage-impact-recent-activity-best-streak-text",
+				"growthexperiments-homepage-impact-recent-activity-streak-count-text",
+				"growthexperiments-homepage-impact-recent-activity-contribs-count-text",
+				"growthexperiments-homepage-impact-recent-activity-streak-data-text"
 			],
 			"dependencies": [
+				"moment",
 				"vue",
 				"vuex",
 				"@wikimedia/codex"
