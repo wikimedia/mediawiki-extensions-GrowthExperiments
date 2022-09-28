@@ -42,7 +42,8 @@ module.exports = exports = {
 	},
 	props: {},
 	setup() {
-		const encodedUserId = encodeURIComponent( `#${mw.user.getId()}` );
+		const userId = mw.config.get( 'GENewImpactRelevantUserId' );
+		const encodedUserId = encodeURIComponent( `#${userId}` );
 		const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${encodedUserId}` );
 		return {
 			cdxIconEdit,
@@ -63,7 +64,7 @@ module.exports = exports = {
 			return sum( edits );
 		},
 		userName() {
-			return mw.user.getName();
+			return mw.config.get( 'GENewImpactRelevantUserName' );
 		}
 	}
 };

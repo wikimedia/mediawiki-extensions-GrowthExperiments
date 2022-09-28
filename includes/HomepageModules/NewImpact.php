@@ -6,19 +6,36 @@ use Config;
 use GrowthExperiments\ExperimentUserManager;
 use Html;
 use IContextSource;
+use MediaWiki\User\UserIdentity;
 
 /**
  * Class for the new Impact module.
  */
 class NewImpact extends BaseModule {
 
+	/** @var UserIdentity */
+	private $userIdentity;
+
 	/** @inheritDoc */
 	public function __construct(
 		IContextSource $ctx,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager
+		ExperimentUserManager $experimentUserManager,
+		UserIdentity $userIdentity
 	) {
 		parent::__construct( 'impact', $ctx, $wikiConfig, $experimentUserManager );
+		$this->userIdentity = $userIdentity;
+	}
+
+	/** @inheritDoc */
+	protected function getJsConfigVars() {
+		if ( !$this->userIdentity ) {
+			return [];
+		}
+		return [
+			'GENewImpactRelevantUserName' => $this->userIdentity->getName(),
+			'GENewImpactRelevantUserId' => $this->userIdentity->getId()
+		];
 	}
 
 	/** @inheritDoc */
