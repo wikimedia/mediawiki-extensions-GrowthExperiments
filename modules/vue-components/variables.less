@@ -8,19 +8,32 @@
 @size-full: 100%;
 
 // Color
-
 @colorBase10: #202122;
-@colorBase100: #fff;
+@colorWhite: #fff;
 
+@colorGray100: #f8f9fa;
+@colorGray200: #eaecf0;
 @colorGray400: #a2a9b1;
 @colorGray500: #72777d;
 @colorGray600: #54595d;
 
 @colorRed600: #d33;
 
+@colorBlue100: #eaf3ff;
+@colorBlue600: #36c;
+
+/// Text color
+@color-base: @colorBase10;
 @color-accessory: @colorGray600;
-@background-color-base: @colorBase100;
+@color-subtle: @colorGray600;
 @color-placeholder: @colorGray500;
+@color-progressive: @colorBlue600;
+
+/// Background color
+@background-color-base: @colorWhite;
+@background-color-base--disabled: @colorGray200;
+@background-color-framed: @colorGray100;
+@background-color-progressive-subtle: @colorBlue100;
 
 // Spacing
 @spacing-small: 0.5em;
@@ -50,6 +63,15 @@
 // Transition
 @transition-duration-medium: 250ms;
 @transition-property-base: background-color, color, border-color, box-shadow;
+
+// Fonts
+
+/// Font weight
+@font-weight-hairline: 100;
+@font-weight-light: 300;
+@font-weight-normal: 400;
+@font-weight-semi-bold: 600;
+@font-weight-bold: 700;
 
 // Mixins
 .popover-base() {

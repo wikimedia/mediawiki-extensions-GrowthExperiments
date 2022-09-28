@@ -615,9 +615,28 @@
 		},
 		"ext.growthExperiments.Homepage.NewImpact": {
 			"es6": true,
+			"styles": [
+				"vue-components/variables.less"
+			],
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.NewImpact/index.js",
-				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.vue"
+				"ext.growthExperiments.Homepage.NewImpact/composables/useMWRestApi.js",
+				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.vue",
+				"vue-components/CLink.vue",
+				"vue-components/CText.vue",
+				{
+					"name": "vue-components/icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconEdit",
+						"cdxIconHeart"
+					]
+				}
+			],
+			"messages": [
+				"growthexperiments-homepage-impact-scores-edit-count",
+				"growthexperiments-homepage-impact-scores-thanks-count"
 			],
 			"dependencies": [
 				"vue",
@@ -1631,7 +1650,7 @@
 		},
 		"ext.growthExperiments.MentorDashboard.Vue": {
 			"styles": [
-				"ext.growthExperiments.MentorDashboard.Vue/components/variables.less"
+				"vue-components/variables.less"
 			],
 			"packageFiles": [
 				"ext.growthExperiments.MentorDashboard.Vue/init.js",

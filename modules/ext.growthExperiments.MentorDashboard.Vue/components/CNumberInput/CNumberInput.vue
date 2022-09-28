@@ -150,7 +150,7 @@ module.exports = exports = {
 
 <style lang="less">
 @import '../../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
-@import '../variables.less';
+@import '../../../vue-components/variables.less';
 // TODO: these should be design tokens.
 @font-size-browser: 16;
 @font-size-base: 14 / @font-size-browser;

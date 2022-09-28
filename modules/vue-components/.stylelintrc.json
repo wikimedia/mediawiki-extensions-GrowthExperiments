@@ -1,0 +1,9 @@
+{
+	"extends": [
+		"stylelint-config-wikimedia",
+		"stylelint-config-recommended-vue"
+	],
+	"rules": {
+		"selector-class-pattern": "^ext-growthExperiments-"
+	}
+}
