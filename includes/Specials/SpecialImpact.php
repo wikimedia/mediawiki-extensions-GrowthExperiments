@@ -7,6 +7,7 @@ use DerivativeContext;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\Impact;
+use GrowthExperiments\HomepageModules\NewImpact;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
@@ -121,19 +122,30 @@ class SpecialImpact extends SpecialPage {
 				->text() ) );
 		}
 		$context->setUser( $impactUser );
-		$impact = new Impact(
-			$context,
-			$this->wikiConfig,
-			$context->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
-			$this->dbr,
-			$this->experimentUserManager,
-			[
-				'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context->getConfig() ),
-				'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $impactUser, $this->userOptionsLookup ),
-			],
-			$this->titleFactory,
-			$this->pageViewService
-		);
+		if ( $this->getContext()->getRequest()->getBool(
+			'new-impact',
+			$context->getConfig()->get( 'GEUseNewImpactModule' )
+		) ) {
+			$impact = new NewImpact(
+				$context,
+				$this->wikiConfig,
+				$this->experimentUserManager
+			);
+		} else {
+			$impact = new Impact(
+				$context,
+				$this->wikiConfig,
+				$context->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
+				$this->dbr,
+				$this->experimentUserManager,
+				[
+					'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context->getConfig() ),
+					'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $impactUser, $this->userOptionsLookup ),
+				],
+				$this->titleFactory,
+				$this->pageViewService
+			);
+		}
 		$out->addHTML( $impact->render( IDashboardModule::RENDER_DESKTOP ) );
 	}
 }
