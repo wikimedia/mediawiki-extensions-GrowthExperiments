@@ -12,8 +12,10 @@
 	"apihelp-homepagequestionstore-param-storage": "El lugar de almacenamiento de las preguntas.",
 	"apihelp-homepagequestionstore-param-userid": "El ID de usuario para el que se obtienen las preguntas.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "No se encontraron preguntas.",
+	"apihelp-growthsetmentor-summary": "Establecer el mentor o mentora del usuario. El cambio se registrará públicamente.",
 	"apihelp-growthsetmentor-param-mentee": "Nombre de usuario del aprendiz",
 	"apihelp-growthsetmentor-param-mentor": "Nombre de usuario del mentor",
 	"apihelp-growthsetmentor-param-reason": "Razones del cambio",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar la tarea de recomendación de imágenes",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Título del artículo de la tarea de recomendación de imágenes"
 }

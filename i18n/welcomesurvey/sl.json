@@ -30,5 +30,6 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Ne, nisem vedel/a, da lahko urejam Wikipedijo",
 	"welcomesurvey-question-edited-option-no-other-label": "Ne, iz drugih razlogov",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ne spomnim se",
+	"welcomesurvey-question-email-label": "E-poštni naslov (izbirno)",
 	"welcomesurvey-question-languages-placeholder": "Dodajte do {{PLURAL:$1|en jezik|$1 jezika|$1 jezike|$1 jezikov}} ..."
 }

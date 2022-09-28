@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ankan",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"মোঃ মারুফ হাসান24"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|এটা কী?]])",
@@ -17,5 +18,6 @@
 	"growthexperiments-signupcampaign-body": "উইকিপিডিয়া সম্পাদনা করার মধ্যে একটি লিঙ্ক যুক্ত করা অথবা একটি শব্দ বদলে দেয়া, ইত্যাদি সবই অন্তর্ভুক্ত। অ্যাকাউন্ট তৈরি করা পরে {{GENDER:|আপনার}} আগ্রহের বিষয় নিয়ে পরামর্শ নিন।",
 	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|আপনার}} আগ্রহের বিষয় নিয়ে নিবন্ধের পরামর্শ গ্রহণ করুন।",
 	"growthexperiments-signupcampaign-bullet2": "একজন অভিজ্ঞ অবদানকারীর থেকে সাহায্য নিন।",
-	"growthexperiments-signupcampaign-bullet3": "ছোট, সহজ সম্পাদনা দিয়ে শুরু করুন"
+	"growthexperiments-signupcampaign-bullet3": "ছোট, সহজ সম্পাদনা দিয়ে শুরু করুন",
+	"growthexperiments-recurringcampaign-title": "একটি অনুগত সমর্থক হওয়ার জন্য ধন্যবাদ। {{GENDER:|আপনার}} মত পাঠকদের অবদানই উইকিপিডিয়াকে সমৃদ্ধ করে।"
 }

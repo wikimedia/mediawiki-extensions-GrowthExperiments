@@ -5,7 +5,7 @@
 			"बडा काजी"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|स्वागतम्}}, $1!",
+	"welcomesurvey": "{{GENDER:$1|स्वागतम्}}, $1ज्यू!",
 	"welcomesurvey-save-btn": "समाप्त गर्नुहोस्",
 	"welcomesurvey-skip-btn": "यस सर्वेक्षणलाई {{GENDER:$1|छोड्नुहोस्}}",
 	"welcomesurvey-close-btn": "बन्द गर्नुहोस् र $1मा फर्कनुहोस्",
