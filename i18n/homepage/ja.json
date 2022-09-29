@@ -77,6 +77,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "新しい記事を書く、既存の短い記事を伸ばす。",
 	"growthexperiments-homepage-suggested-edits-header": "お勧めの編集",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|あなた}}の影響力",
+	"growthexperiments-homepage-impact-scores-edit-count": "総編集回数",
+	"growthexperiments-homepage-impact-scores-thanks-count": "受け取った感謝の回数",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:$1|あなた}}が編集した記事は、多くの人々に読まれています！",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|あなた}}の編集以降の閲覧回数（過去60日間）：",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|あなた}}の{{PLURAL:$1|総編集回数}}は<strong>$1</strong>回です（すべてを見る）",

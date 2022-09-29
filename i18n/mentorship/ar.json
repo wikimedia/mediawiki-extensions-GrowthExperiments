@@ -5,7 +5,8 @@
 			"Dyolf77 (WMF)",
 			"FiberAhmed",
 			"Michel Bakni",
-			"أَحمد"
+			"أَحمد",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "لوحة المرشدين",
@@ -124,6 +125,7 @@
 	"growthexperiments-mentor-writer-error-anonymous-user": "المرشد $1 ليس مستخدمًا مسجلاً",
 	"growthexperiments-mentor-writer-error-message-too-long": "رسالة التقديم طويلة جدًا (معرّف المستخدم المتأثّر: $2). الحدّ الأقصى للطول هو $1.",
 	"growthexperiments-manage-mentors-title": "إدارة المرشدين",
+	"growthexperiments-manage-mentors-pretext-purpose": "تعرض هذه الصفحة قائمة بالمرشدين.",
 	"growthexperiments-manage-mentors-error-no-such-user": "خطأ: لا وجود لمستخدم مع معرّف $1. ربما يكون هذا خطأ داخلي.",
 	"growthexperiments-manage-mentors-auto-assigned": "المرشدون المعيّنون تلقائيًا",
 	"growthexperiments-manage-mentors-manually-assigned": "المرشدون المعيّنون يدويّا",

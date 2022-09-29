@@ -94,6 +94,8 @@
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|}}Votre impact",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Veuillez activer JavaScript pour afficher ce composant.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|}}Votre impact",
+	"growthexperiments-homepage-impact-scores-edit-count": "Total des modifications",
+	"growthexperiments-homepage-impact-scores-thanks-count": "Remerciements reçus",
 	"growthexperiments-homepage-impact-subheader-text": "Des gens regardent les articles que {{GENDER:$1|}}vous avez modifiés !",
 	"growthexperiments-homepage-impact-subheader-subtext": "Nombre de vues depuis {{GENDER:$1|}}votre dernière modification (60 derniers jours) :",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|}}Vous avez fait <strong>$1</strong> modification{{PLURAL:$1||s}} (voir tout)",

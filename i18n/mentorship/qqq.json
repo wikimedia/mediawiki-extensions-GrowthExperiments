@@ -126,7 +126,7 @@
 	"growthexperiments-manage-mentors-title": "Headline of Special:ManageMentors",
 	"growthexperiments-manage-mentors-pretext-purpose": "Introductory text shown at Special:ManageMentors.",
 	"growthexperiments-manage-mentors-pretext-privileged": "Introductory text shown at Special:ManageMentors. Only shown to admin users.",
-	"growthexperiments-manage-mentors-pretext-regular": "Introductory text shown at Special:ManageMentors. Only shown to non-admin users.",
+	"growthexperiments-manage-mentors-pretext-regular": "Introductory text shown at Special:ManageMentors. Only shown to non-admin users. \"Introduction message\" should be similar to {{msg-mw|Growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label}}.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "Introductory text shown at Special:ManageMentors.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Introductory text shown at Special:ManageMentors.",
 	"growthexperiments-manage-mentors-error-no-such-user": "Error message shown by Special:ManageMentors when a given mentor does not exist. This message only shows if user manually changes their URL address, or when links in the interface are incorrect.",

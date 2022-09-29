@@ -66,6 +66,8 @@
 	"growthexperiments-homepage-new-impact-header": "Impactul {{GENDER:$1|dvs.}}",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Vă rugăm să activați JavaScript pentru a vizualiza această componentă.",
 	"growthexperiments-homepage-impact-header": "Impactul {{GENDER:$1|dvs.}}",
+	"growthexperiments-homepage-impact-scores-edit-count": "Editări totale",
+	"growthexperiments-homepage-impact-scores-thanks-count": "Mulțumiri primite",
 	"growthexperiments-homepage-impact-subheader-text": "Oamenii văd articolele pe care le-ați {{GENDER:$1|editat}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Vizualizări de când ați {{GENDER:$1|editat}} (ultimele 60 de zile):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Ați}} făcut <strong>$1</strong> {{PLURAL:$1|editare|editări}} (vezi toate)",

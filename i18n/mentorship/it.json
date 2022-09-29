@@ -97,6 +97,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Messaggio introduttivo",
 	"growthexperiments-mentor-writer-error-already-added": "Il tutor $1 è già stato aggiunto alla lista dei tutor",
 	"growthexperiments-mentor-writer-error-message-too-long": "Il messaggio introduttivo è troppo lungo (ID utente interessato: $2). La lunghezza massima è $1.",
+	"growthexperiments-manage-mentors-none": "Nessuno",
 	"growthexperiments-manage-mentors-username": "Nome utente",
 	"growthexperiments-manage-mentors-edit": "Modifica",
 	"growthexperiments-manage-mentors-edit-intro-msg": "Messaggio introduttivo",
