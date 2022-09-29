@@ -66,7 +66,7 @@
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Your}} recent activity",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Last edited: $1",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Best streak: $1",
-	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 days in a row",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|day|days}} in a row",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Edit|Edits}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|edit|edits}} on $2",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total edits",
