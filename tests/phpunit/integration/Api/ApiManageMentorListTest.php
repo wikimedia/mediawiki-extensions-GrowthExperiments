@@ -96,7 +96,11 @@ class ApiManageMentorListTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testNoPermissionsChange() {
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
+		$this->setMwGlobals( [
+			'wgGEMentorProvider' => MentorProvider::PROVIDER_STRUCTURED,
+			'wgGEMentorshipMinimumAge' => 0,
+			'wgGEMentorshipMinimumEditcount' => 0,
+		] );
 		$user = $this->getMutableTestUser()->getUser();
 
 		$this->expectException( ApiUsageException::class );
