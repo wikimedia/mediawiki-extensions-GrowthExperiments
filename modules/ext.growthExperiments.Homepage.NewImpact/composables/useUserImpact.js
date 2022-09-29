@@ -60,15 +60,25 @@ function useUserImpact( userId, timeFrame ) {
 				editCountByDay,
 				lastEditTimestamp,
 				longestEditingStreak,
-				totalEditsCount
+				totalEditsCount,
+				dailyTotalViews
 			} = data.value;
+
+			const views = Object.keys( dailyTotalViews ).map( ( key ) => ( {
+				date: new Date( key ),
+				views: dailyTotalViews[ key ]
+			} ) );
 
 			return {
 				lastEditTimestamp,
 				receivedThanksCount,
 				longestEditingStreak,
+				totalEditsCount,
 				contributions: getContribsFromToday( editCountByDay, timeFrame ),
-				totalEditsCount
+				dailyTotalViews: {
+					entries: views,
+					count: sum( views.map( ( view ) => view.views ) )
+				}
 			};
 		} ),
 		error

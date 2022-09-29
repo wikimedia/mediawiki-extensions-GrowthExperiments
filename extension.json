@@ -343,6 +343,12 @@
 			"services": [
 				"UserOptionsLookup"
 			]
+		},
+		"impact": {
+			"class": "GrowthExperiments\\ImpactHooks",
+			"services": [
+				"MainConfig"
+			]
 		}
 	},
 	"Hooks": {
@@ -435,7 +441,8 @@
 			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
 		],
 		"ResourceLoaderRegisterModules": [
-			"tour"
+			"tour",
+			"impact"
 		],
 		"WikimediaEventsShouldSchemaEditAttemptStepOversample": [
 			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"
@@ -621,10 +628,11 @@
 				"vue-components/variables.less"
 			],
 			"packageFiles": [
-				"ext.growthExperiments.Homepage.NewImpact/index.js",
+				"ext.growthExperiments.Homepage.NewImpact/init.js",
 				"ext.growthExperiments.Homepage.NewImpact/composables/useMWRestApi.js",
 				"ext.growthExperiments.Homepage.NewImpact/composables/useUserImpact.js",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/TrendChart.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/StreakGraph.vue",
@@ -632,6 +640,7 @@
 				"vue-components/directives/click-outside.directive.js",
 				"vue-components/CInfoBox.vue",
 				"vue-components/CPopper.vue",
+				"vue-components/CSparkline.vue",
 				"vue-components/CLink.vue",
 				"vue-components/CText.vue",
 				{
@@ -659,7 +668,8 @@
 				"growthexperiments-homepage-impact-recent-activity-best-streak-text",
 				"growthexperiments-homepage-impact-recent-activity-streak-count-text",
 				"growthexperiments-homepage-impact-recent-activity-contribs-count-text",
-				"growthexperiments-homepage-impact-recent-activity-streak-data-text"
+				"growthexperiments-homepage-impact-recent-activity-streak-data-text",
+				"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label"
 			],
 			"dependencies": [
 				"moment",
@@ -2307,6 +2317,10 @@
 		},
 		"GEUseNewImpactModule": {
 			"description": "Whether the new impact module should be used instead of the old impact module",
+			"value": false
+		},
+		"GENewImpactD3Enabled": {
+			"description": "Whether the new impact module should use the d3 graphic library in ext.growthExperiments.d3",
 			"value": false
 		},
 		"GETopicsMatchModeEnabled": {

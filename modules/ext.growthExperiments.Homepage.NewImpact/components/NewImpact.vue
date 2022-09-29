@@ -116,6 +116,14 @@
 				date-format="MMM D"
 			></recent-activity>
 		</div>
+		<div v-if="data">
+			<trend-chart
+				:count-text="$filters.convertNumber( data.dailyTotalViews.count )"
+				:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName )"
+				:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' )"
+				:data="data.dailyTotalViews.entries"
+			></trend-chart>
+		</div>
 	</section>
 </template>
 
@@ -124,6 +132,7 @@ const moment = require( 'moment' );
 const { CdxIcon } = require( '@wikimedia/codex' );
 const ScoreCard = require( './ScoreCard.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
+const TrendChart = require( './TrendChart.vue' );
 const CText = require( '../../vue-components/CText.vue' );
 const CLink = require( '../../vue-components/CLink.vue' );
 const CInfoBox = require( '../../vue-components/CInfoBox.vue' );
@@ -149,6 +158,7 @@ module.exports = exports = {
 		RecentActivity,
 		ScoreCard,
 		CInfoBox,
+		TrendChart,
 		CText,
 		CLink
 	},
