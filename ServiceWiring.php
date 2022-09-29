@@ -501,6 +501,7 @@ return [
 		return new MentorStatusManager(
 			$services->getUserOptionsManager(),
 			$services->getUserIdentityLookup(),
+			$services->getUserFactory(),
 			$services->getDBLoadBalancer()->getConnectionRef( DB_REPLICA ),
 			$services->getDBLoadBalancer()->getConnectionRef( DB_PRIMARY )
 		);

@@ -42,7 +42,10 @@
 		this.mentorStatusDropdown.getMenu().connect( this, {
 			choose: [ 'onMentorStatusDropdownChanged' ]
 		} );
-		$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown' ).replaceWith(
+
+		var $statusDropdownDiv = $( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown' );
+		this.mentorStatusDropdown.setDisabled( $statusDropdownDiv.find( 'select' ).prop( 'disabled' ) );
+		$statusDropdownDiv.replaceWith(
 			this.mentorStatusDropdown.$element
 		);
 
