@@ -4,6 +4,7 @@
 			"Eleassar"
 		]
 	},
+	"growthexperiments-desc": "Ta razširitev vsebuje poskuse, ki jih je pripravila skupina Growth.",
 	"growthexperiments-edit-config-disabled": "Skupnostna konfiguracija je trenutno onemogočena.",
 	"growthexperiments-edit-config-title": "Konfiguracija možnosti Edit Growth",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Zadnjič posodobil(a) [[User:$1|$1]] $2 ([$4 prim]).",

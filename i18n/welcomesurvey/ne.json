@@ -5,7 +5,7 @@
 			"बडा काजी"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|स्वागतम्}}, $1!",
+	"welcomesurvey": "{{GENDER:$1|स्वागतम्}}, $1ज्यू!",
 	"welcomesurvey-save-confirmation-title": "धन्यवाद! {{GENDER:|तपाईं}}को प्रतिक्रियाहरू सुरक्षित गरिएका छन्।",
 	"welcomesurvey-save-confirmation-text": "{{GENDER:|तपाईं}}को जवाफहरूले हामीलाई विकिपिडियामा सुरू गर्न उपयोगी तरिकाहरू प्रदान गर्न मद्दत गर्नेछ।",
 	"welcomesurvey-subtitle": "केही ऐच्छिक प्रश्नहरूको जवाफ दिएर {{GENDER:|तपाईं}}को विकिपीडिया अनुभव सुधार गर्न मद्दत गर्नुहोस्।",
