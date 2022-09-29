@@ -11,7 +11,8 @@ use MediaWiki\MediaWikiServices;
 use WANObjectCache;
 
 /**
- * Called from CacheDecorator after a TaskSet is fetched.
+ * Called from CacheDecorator after a TaskSet is returned (either from cache or by calling the
+ * decorated suggester).
  *
  * Used currently for fetching and caching recommendation data for image recommendation tasks.
  */
@@ -28,7 +29,8 @@ class TaskSetListener {
 	}
 
 	/**
-	 * Execute code after task set is fetched in CacheDecorator.
+	 * Execute code after task set is returned from CacheDecorator (either from cache or by
+	 * calling the decorated suggester).
 	 *
 	 * FIXME Find a better way to structure the actions that different task types can require when a TaskSet is
 	 * constructed.

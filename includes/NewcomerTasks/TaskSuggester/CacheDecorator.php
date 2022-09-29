@@ -130,8 +130,6 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 						// Shuffle the contents again (they were shuffled when first placed into the
 						// cache) and return only the subset of tasks that the requester asked for.
 						$newValue->randomSort();
-						$newValue->truncate( $limit );
-						$this->runTaskSetListener( $newValue );
 					}
 					return $this->serialize( $newValue );
 				}
@@ -167,7 +165,6 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 							// Ignore jobqueue errors.
 						}
 					}
-					$this->runTaskSetListener( $result );
 				}
 				if ( !$useCache && !$resetCache ) {
 					$ttl = $this->cache::TTL_UNCACHEABLE;
@@ -188,7 +185,15 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 			// callback comment for more on why.
 			[ 'minAsOf' => INF, 'version' => self::CACHE_VERSION ]
 		);
-		return $this->unserialize( $json );
+		$result = $this->unserialize( $json );
+
+		// Discard extra items when the method was called with $limit < DEFAULT_LIMIT,
+		// and run listeners.
+		if ( $result instanceof TaskSet && $result->count() ) {
+			$result->truncate( $limit );
+			$this->runTaskSetListener( $result );
+		}
+		return $result;
 	}
 
 	/** @inheritDoc */
