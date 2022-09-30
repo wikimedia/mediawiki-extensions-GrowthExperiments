@@ -8,13 +8,11 @@ use MediaWiki\MediaWikiServices;
 use MWTimestamp;
 use User;
 
-$path = dirname( dirname( dirname( __DIR__ ) ) );
-
-if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
-	$path = getenv( 'MW_INSTALL_PATH' );
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = __DIR__ . '/../../..';
 }
-
-require_once $path . '/maintenance/Maintenance.php';
+require_once "$IP/maintenance/Maintenance.php";
 
 /**
  * Delete welcome surveys older than a cutoff date.

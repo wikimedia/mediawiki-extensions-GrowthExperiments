@@ -12,13 +12,11 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 
-$path = dirname( dirname( dirname( __DIR__ ) ) );
-
-if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
-	$path = getenv( 'MW_INSTALL_PATH' );
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = __DIR__ . '/../../..';
 }
-
-require_once $path . '/maintenance/Maintenance.php';
+require_once "$IP/maintenance/Maintenance.php";
 
 /**
  * List the number of tasks available for each topic

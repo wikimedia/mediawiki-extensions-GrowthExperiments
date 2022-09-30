@@ -10,13 +10,11 @@ use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
-$path = dirname( dirname( dirname( __DIR__ ) ) );
-
-if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
-	$path = getenv( 'MW_INSTALL_PATH' );
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = __DIR__ . '/../../..';
 }
-
-require_once $path . '/maintenance/Maintenance.php';
+require_once "$IP/maintenance/Maintenance.php";
 
 /**
  * One-off script to export data from the welcome survey for users who opt-in to mailing list.

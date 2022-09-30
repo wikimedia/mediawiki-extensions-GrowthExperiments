@@ -19,13 +19,11 @@ use TitleFactory;
 use WikiMap;
 use Wikimedia\Assert\PreconditionException;
 
-$path = dirname( dirname( dirname( __DIR__ ) ) );
-
-if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
-	$path = getenv( 'MW_INSTALL_PATH' );
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = __DIR__ . '/../../..';
 }
-
-require_once $path . '/maintenance/Maintenance.php';
+require_once "$IP/maintenance/Maintenance.php";
 
 /**
  * Maintenance script for importing ORES topics from production to a test instance.
