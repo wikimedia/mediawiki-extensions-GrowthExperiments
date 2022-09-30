@@ -41,8 +41,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 	}
 
 	public function execute() {
-		$services = MediaWikiServices::getInstance();
-		$dbr = $services->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbr = $this->getDB( DB_REPLICA );
 
 		$from = wfTimestampOrNull( TS_MW, $this->getOption( 'from' ) );
 		$to = wfTimestampOrNull( TS_MW, $this->getOption( 'to' ) );
@@ -54,6 +53,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			$this->fatalError( "--output-format must be one of 'text' or 'csv'" );
 		}
 
+		$services = MediaWikiServices::getInstance();
 		$fromId = $this->getLastUserIdBeforeRegistrationDate( $dbr, $from );
 		$toId = $this->getLastUserIdBeforeRegistrationDate( $dbr, $to );
 		if ( $this->hasOption( 'debug' ) ) {

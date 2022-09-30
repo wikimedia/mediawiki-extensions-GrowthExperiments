@@ -49,8 +49,8 @@ class DeleteOldSurveys extends Maintenance {
 		$this->output( "Deleting data before $cutoffDate (over $cutoffDays days old)" .
 			( $dryRun ? ' (dry run)' : '' ) . "\n" );
 
-		$dbr = wfGetDB( DB_REPLICA );
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbr = $this->getDB( DB_REPLICA );
+		$dbw = $this->getDB( DB_PRIMARY );
 		$fromUserId = 0;
 		$break = false;
 		$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
