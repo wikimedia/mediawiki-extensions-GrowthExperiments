@@ -23,9 +23,13 @@
 		</div>
 		<div v-if="data">
 			<c-text as="h5">
-				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-title', userName ) }}
+				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-title', userName, DEFAULT_STREAK_TIME_FRAME ) }}
 			</c-text>
-			<recent-activity :data="data"></recent-activity>
+			<recent-activity
+				:data="data"
+				:time-frame="DEFAULT_STREAK_TIME_FRAME"
+				:date-format="DEFAULT_STREAK_DISPLAY_DATE_FORMAT"
+			></recent-activity>
 		</div>
 	</section>
 </template>
@@ -37,6 +41,11 @@ const CText = require( '../../vue-components/CText.vue' );
 const CLink = require( '../../vue-components/CLink.vue' );
 const useMWRestApi = require( '../composables/useMWRestApi.js' );
 const { cdxIconEdit, cdxIconHeart } = require( '../../vue-components/icons.json' );
+// REVIEW: the proposed format in designs "Feb 3" is not localised across languages
+const DEFAULT_STREAK_DISPLAY_DATE_FORMAT = 'MMM D';
+// The number of columns to show in the streak graphic. Columns
+// will be represented as days.
+const DEFAULT_STREAK_TIME_FRAME = 60;
 const sum = ( arr ) => arr.reduce( ( x, y ) => x + y, 0 );
 
 // @vue/component
@@ -54,6 +63,8 @@ module.exports = exports = {
 		const encodedUserId = encodeURIComponent( `#${userId}` );
 		const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${encodedUserId}` );
 		return {
+			DEFAULT_STREAK_TIME_FRAME,
+			DEFAULT_STREAK_DISPLAY_DATE_FORMAT,
 			cdxIconEdit,
 			cdxIconHeart,
 			data,

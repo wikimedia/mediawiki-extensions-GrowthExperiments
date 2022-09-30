@@ -41,25 +41,29 @@ module.exports = exports = {
 			type: Number,
 			default: 30
 		},
-		data: {
-			type: Object,
-			default: () => ( {} )
-		},
 		getColumnTitleFn: {
 			type: Function,
 			default: ( x ) => x
+		},
+		getColumnValueFn: {
+			type: Function,
+			required: true
+		},
+		backgroundColor: {
+			type: String,
+			// @colorGray200
+			default: '#eaecf0'
+		},
+		fillColor: {
+			type: String,
+			// @colorBlue600
+			default: '#36c'
 		}
 	},
 	setup() {
 		return {};
 	},
 	computed: {
-		min() {
-			return Math.min( ...this.data.entries );
-		},
-		max() {
-			return Math.max( ...this.data.entries );
-		},
 		graphStyles() {
 			const minWidth = Math.floor( 160 / this.columns );
 			return {
@@ -69,13 +73,9 @@ module.exports = exports = {
 	},
 	methods: {
 		getColumnStyle( index ) {
-			const value = this.data.entries[ index ];
-			const range = this.max - this.min;
-			const scale = 100 / range;
-			const contribPercentage = value * scale;
-			// TODO create file for "styles in javascript"
+			const contribPercentage = this.getColumnValueFn( index );
 			return {
-				'background-image': `linear-gradient(0deg, #36c ${contribPercentage}%, #eaecf0 0)`
+				'background-image': `linear-gradient(0deg, ${this.fillColor} ${contribPercentage}%, ${this.backgroundColor} 0)`
 			};
 		}
 	}
