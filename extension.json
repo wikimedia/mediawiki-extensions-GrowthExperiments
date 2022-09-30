@@ -649,7 +649,6 @@
 			"dependencies": [
 				"moment",
 				"vue",
-				"vuex",
 				"@wikimedia/codex"
 			],
 			"targets": [
