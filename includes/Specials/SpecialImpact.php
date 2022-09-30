@@ -142,7 +142,6 @@ class SpecialImpact extends SpecialPage {
 			$impact = new Impact(
 				$context,
 				$this->wikiConfig,
-				$context->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
 				$this->dbr,
 				$this->experimentUserManager,
 				[

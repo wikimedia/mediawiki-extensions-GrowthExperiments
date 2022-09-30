@@ -266,7 +266,7 @@ class HomepageHooks implements
 					'TitleFactory',
 				]
 			];
-			if ( $pageViewInfoEnabled && $this->config->get( 'GEHomepageImpactModuleEnabled' ) ) {
+			if ( $pageViewInfoEnabled ) {
 				$list['Impact'] = [
 					'class' => SpecialImpact::class,
 					'services' => [

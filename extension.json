@@ -2344,10 +2344,6 @@
 			"description": "Whether free text input should be shown when prompting the user for reasons why a suggestion was rejected.",
 			"value": false
 		},
-		"GEHomepageImpactModuleEnabled": {
-			"description": "Is the impact module in newcomer homepage enabled?",
-			"value": true
-		},
 		"GECampaigns": {
 			"description": "A map of campaign ID to campaign configuration. Campaign configuration currently includes these fields:\n* pattern: a regexp matched against the \"campaign\" request parameter during signup to determine whether the user should be included in some campaign\n* signupPageTemplate: a template name to use for the \"benefits\" block of Special:CreateAccount\n* signupPageTemplateParameters: a map of parameters to pass to the template\n* topics: an array of topic IDs (which are defined in GECampaignTopics) to include on the top of the topic selector as custom topics\n\nExamples can be found at https://www.mediawiki.org/wiki/Extension:GrowthExperiments/Technical_documentation/Special:EditGrowthConfig.",
 			"value": {}
