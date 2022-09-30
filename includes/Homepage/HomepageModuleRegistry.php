@@ -150,7 +150,8 @@ class HomepageModuleRegistry {
 					return new NewImpact(
 						$context,
 						$growthServices->getGrowthWikiConfig(),
-						$growthServices->getExperimentUserManager()
+						$growthServices->getExperimentUserManager(),
+						$context->getUser()
 					);
 				}
 				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );

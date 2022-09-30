@@ -275,6 +275,7 @@ class HomepageHooks implements
 						'TitleFactory',
 						'GrowthExperimentsMultiConfig',
 						'UserOptionsLookup',
+						'UserFactory',
 						'PageViewService',
 					]
 				];

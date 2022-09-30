@@ -11,10 +11,10 @@ use GrowthExperiments\HomepageModules\NewImpact;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserOptionsLookup;
 use SpecialPage;
 use TitleFactory;
-use User;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -45,12 +45,16 @@ class SpecialImpact extends SpecialPage {
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
+	/** @var UserFactory */
+	private $userFactory;
+
 	/**
 	 * @param ILoadBalancer $loadBalancer
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param TitleFactory $titleFactory
 	 * @param Config $wikiConfig
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param UserFactory $userFactory
 	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
@@ -59,6 +63,7 @@ class SpecialImpact extends SpecialPage {
 		TitleFactory $titleFactory,
 		Config $wikiConfig,
 		UserOptionsLookup $userOptionsLookup,
+		UserFactory $userFactory,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Impact' );
@@ -68,6 +73,7 @@ class SpecialImpact extends SpecialPage {
 		$this->titleFactory = $titleFactory;
 		$this->wikiConfig = $wikiConfig;
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->userFactory = $userFactory;
 	}
 
 	/**
@@ -97,7 +103,7 @@ class SpecialImpact extends SpecialPage {
 		$impactUser = $this->getUser();
 		// If an argument was supplied, attempt to load a user.
 		if ( $par ) {
-			$impactUser = User::newFromName( $par );
+			$impactUser = $this->userFactory->newFromName( $par );
 		}
 		$out = $this->getContext()->getOutput();
 		// If we don't have a user (logged-in or from argument) then error out.
@@ -129,7 +135,8 @@ class SpecialImpact extends SpecialPage {
 			$impact = new NewImpact(
 				$context,
 				$this->wikiConfig,
-				$this->experimentUserManager
+				$this->experimentUserManager,
+				$impactUser
 			);
 		} else {
 			$impact = new Impact(
