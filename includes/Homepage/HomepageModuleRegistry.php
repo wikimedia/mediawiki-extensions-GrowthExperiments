@@ -158,7 +158,6 @@ class HomepageModuleRegistry {
 				return new Impact(
 					$context,
 					$growthServices->getGrowthWikiConfig(),
-					$growthServices->getGrowthConfig()->get( 'GEHomepageImpactModuleEnabled' ),
 					$services->getDBLoadBalancer()->getConnectionRef( DB_REPLICA ),
 					$growthServices->getExperimentUserManager(),
 					[

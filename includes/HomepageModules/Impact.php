@@ -76,15 +76,10 @@ class Impact extends BaseModule {
 	 * @var PageViewService|null
 	 */
 	private $pageViewService;
-	/**
-	 * @var bool
-	 */
-	private $isEnabled;
 
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
-	 * @param bool $isEnabled
 	 * @param IDatabase $dbr
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param array $suggestedEditsConfig
@@ -94,7 +89,6 @@ class Impact extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		bool $isEnabled,
 		IDatabase $dbr,
 		ExperimentUserManager $experimentUserManager,
 		array $suggestedEditsConfig,
@@ -107,12 +101,11 @@ class Impact extends BaseModule {
 		$this->isSuggestedEditsActivatedForUser = $suggestedEditsConfig['isSuggestedEditsActivated'];
 		$this->titleFactory = $titleFactory;
 		$this->pageViewService = $pageViewService;
-		$this->isEnabled = $isEnabled;
 	}
 
 	/** @inheritDoc */
 	public function canRender() {
-		return $this->isEnabled && $this->pageViewService !== null;
+		return $this->pageViewService !== null;
 	}
 
 	/**
