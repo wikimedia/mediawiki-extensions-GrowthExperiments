@@ -62,7 +62,7 @@
 	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Ar trebui ca utilizatorii să fie eligibili automat pentru a fi mentori?",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Da, permite utilizatorilor care întrunesc toate criteriile de eligibilitate să se înscrie ca mentori.",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Nu, permite niciunui utilizator să se înscrie ca mentor.",
-	"growthexperiments-edit-config-mentorship-minimum-age": "Numărul minim de zile pentru care utilizatorii ar trebui să fie înregistrați pentru a fi eligibili să fie mentori.",
+	"growthexperiments-edit-config-mentorship-minimum-age": "Numărul minim de zile pentru care un utilizator trebuie să fie înregistrat pentru a se putea înscrie ca mentor.",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Numărul minim de editări pe care un utilizator trebuie să îl aibă (în oricare spațiu de nume) pentru a se înscrie ca mentor",
 	"growthexperiments-edit-config-newcomertasks": "Editări sugerate",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Unele tipuri de editări sugerate ies la suprafață prin formate de mentenanță. Articolele ce conțin acele legături sunt adăugate depozitului. Pentru a vedea câte articole sunt disponibile pentru fiecare tip de sarcină, vedeți [[Special:NewcomerTasksInfo|această pagină]].",

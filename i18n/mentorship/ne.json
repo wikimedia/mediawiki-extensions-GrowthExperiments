@@ -73,6 +73,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "तपाईंको स्थिति \"बाहिर\" मा परिवर्तन गरियो।",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "आफ्ना विद्यार्थीहरूलाई सन्देश",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "विद्यार्थी छनोट गर्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "तपाईं आफ्नो लागि एक विद्यार्थीको सल्लाहकार परिवर्तन गर्न सक्नुहुन्छ। यो प्रायः घटनाहरू सम्पादन गर्नको लागि प्रयोग गरिन्छ ताकि प्रशिक्षकहरू विकिमा र बाहिर दुवै नयाँ आगमनको सल्लाहकार हुन सक्छन्।",
 	"growthexperiments-rcfilters-mentorship-title": "सल्लाहकार",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|तपाईंको}} ताराङ्कित विद्यार्थीहरू",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|तपाईंको}} अतारांकित विद्यार्थीहरू",

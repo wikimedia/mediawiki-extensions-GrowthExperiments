@@ -62,6 +62,8 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "Não",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Página contendo lista de mentores a serem atribuídas automaticamente aos novatos",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Página contendo lista de mentores que só podem ser atribuídos manualmente",
+	"growthexperiments-edit-config-mentorship-minimum-age": "Número mínimo de dias que um usuário deve estar registrado para se inscrever como mentor",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "Número mínimo de edições que um usuário deve ter feito (em qualquer namespace) para se inscrever como mentor",
 	"growthexperiments-edit-config-newcomertasks": "Edições sugeridas",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Alguns tipos de edições sugeridos são surgiram através de modelos de manutenção. Artigos contendo esses predefinições são adicionados ao feed. Para ver quantos artigos estão disponíveis para cada tipo de tarefa, veja [[Special:NewcomerTasksInfo|essa página]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Desativado",

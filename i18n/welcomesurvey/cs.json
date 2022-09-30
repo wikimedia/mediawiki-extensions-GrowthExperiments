@@ -54,5 +54,9 @@
 	"welcomesurvey-question-languages-maximum": "Již jste {{GENDER:|přidal|přidala|přidali}} nejvyšší možné množství jazyků.",
 	"welcomesurvey-reminder": "Pomozte nám vylepšit {{GENDER:|váš}} zážitek z editování Wikipedie zodpovězením několika otázek v Uvítacím dotazníku. $1",
 	"welcomesurvey-reminder-link": "Vyplnit dotazník",
-	"welcomesurvey-reminder-dismiss": "Zavřít"
+	"welcomesurvey-reminder-dismiss": "Zavřít",
+	"welcomesurvey-mideditsignup-title": "Vítejte $1!",
+	"welcomesurvey-mideditsignup-body": "Děkujeme za vaši editaci! Na své Domovské stránce nyní můžete vidět dopad svých příspěvků a získat tipy na další editace.",
+	"welcomesurvey-mideditsignup-button-homepage": "Jít na mou domovskou stránku",
+	"welcomesurvey-mideditsignup-button-close": "Zavřít"
 }

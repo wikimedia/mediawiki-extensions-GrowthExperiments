@@ -6,5 +6,8 @@
 	},
 	"growthexperiments-homepage-email-header-startemail": "Email: $1",
 	"growthexperiments-homepage-email-changelink": "pathlai",
-	"growthexperiments-homepage-email-confirmlink": "apyh"
+	"growthexperiments-homepage-email-confirmlink": "apyh",
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Nâmo|Nâma}} atleihlana thiehpazy",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Paraih pachiena: $1",
+	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Paraihpa|Paraihpazy}}"
 }
