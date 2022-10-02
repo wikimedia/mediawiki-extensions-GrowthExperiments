@@ -467,7 +467,9 @@ RecommendedLinkToolbarDialog.prototype.getAnnotationViewAtIndex = function ( ind
 	var annotationView = this.surface.getView().$documentNode
 		.find( '.mw-ge-recommendedLinkAnnotation' )[ index ];
 	if ( !annotationView ) {
-		StructuredTaskPreEdit.showErrorDialogOnFailure( 'Unable to find any expected phrase in document.' );
+		StructuredTaskPreEdit.showErrorDialogOnFailure(
+			new Error( 'Unable to find any expected phrase in document.' )
+		);
 	}
 	return annotationView;
 };
