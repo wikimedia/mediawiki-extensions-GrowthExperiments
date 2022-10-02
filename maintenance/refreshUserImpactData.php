@@ -85,6 +85,7 @@ class RefreshUserImpactData extends Maintenance {
 		$ignoreIfUpdatedWithin = $this->getOption( 'ignoreIfUpdatedWithin' );
 
 		$queryBuilder = $this->getQueryBuilder();
+		$queryBuilder->select( 'actor_user' );
 		$queryBuilder->limit( $this->getBatchSize() );
 		$queryBuilder->orderByUserId( SelectQueryBuilder::SORT_ASC );
 		$lastUserId = (int)$this->getOption( 'fromUser', 0 );
@@ -92,10 +93,16 @@ class RefreshUserImpactData extends Maintenance {
 			$this->output( "processing {$this->getBatchSize()} users starting with $lastUserId\n" );
 			$batchQueryBuilder = clone $queryBuilder;
 			$batchQueryBuilder->where( 'actor_user > ' . $lastUserId );
-			$usersProcessedInThisBatch = 0;
-			foreach ( $batchQueryBuilder->fetchUserIdentities() as $user ) {
+			$userIds = $batchQueryBuilder->fetchFieldValues();
+			if ( $userIds ) {
+				$users = $this->actorStore->newSelectQueryBuilder( $this->getDB( DB_REPLICA ) )
+					->whereUserIds( $userIds )
+					->fetchUserIdentities();
+			} else {
+				$users = [];
+			}
+			foreach ( $users as $user ) {
 				$lastUserId = $user->getId();
-				$usersProcessedInThisBatch++;
 				if ( $ignoreIfUpdatedWithin ) {
 					$timestamp = $this->getTimestampFromRelativeDate( $ignoreIfUpdatedWithin );
 					$cachedUserImpact = $this->userImpactStore->getExpensiveUserImpact( $user );
@@ -109,6 +116,7 @@ class RefreshUserImpactData extends Maintenance {
 				yield $user;
 			}
 			$this->waitForReplication();
+			$usersProcessedInThisBatch = count( $userIds );
 			if ( $usersProcessedInThisBatch > 0 ) {
 				$this->output( "  processed $usersProcessedInThisBatch users\n" );
 			}
