@@ -4,9 +4,11 @@
 			"Fitoschido",
 			"LORDZRAWN",
 			"ZebaX2010",
-			"Zapipedia (WMF)"
+			"Zapipedia (WMF)",
+			"Danniel07"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Manejar las preguntas publicadas a través del panel de ayuda para el usuario actual.",
-	"apihelp-helppanelquestionposter-param-body": "El texto de la pregunta proporcionado por el usuario."
+	"apihelp-helppanelquestionposter-param-body": "El texto de la pregunta proporcionado por el usuario.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "El título correspondiente, si se selecciona, para incluirlo con la pregunta."
 }

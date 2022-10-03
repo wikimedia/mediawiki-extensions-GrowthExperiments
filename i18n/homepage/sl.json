@@ -51,7 +51,7 @@
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Ogledov od zadnjih urejanj (zadnjih 60 dni):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Spremljajte oglede člankov, ki ste jih urejali",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Obvestila Centra za pomoč",
-	"tag-help_module_question": "vprašanje z modula za pomoč",
+	"tag-help_module_question": "vprašanje iz modula za pomoč",
 	"tag-mentorship_module_question": "vprašanje iz modula za mentoriranje",
 	"tag-newcomer_task": "naloga novinca",
 	"tag-newcomer_task-description": "Urejanje, ki ga je predlagal modul za urejanja na začetni strani za začetnike",
@@ -178,5 +178,7 @@
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Odizberi vse",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Izberite nekaj tem, ki jih {{GENDER:$1|želite}} urejati",
 	"growthexperiments-log-name": "Dnevnik GrowthExperiments",
-	"growthexperiments-notification-learn-more": "Izvedite več o {{GENDER:$1|}}{{GENDER:$2|svojem novem mentorju|svoji novi mentorici|svojem novem mentorju}}."
+	"growthexperiments-notification-learn-more": "Izvedite več o {{GENDER:$1|}}{{GENDER:$2|svojem novem mentorju|svoji novi mentorici|svojem novem mentorju}}.",
+	"right-setmentor": "Določitev uporabnikovega mentorja",
+	"action-setmentor": "določiti uporabnikovega mentorja"
 }
