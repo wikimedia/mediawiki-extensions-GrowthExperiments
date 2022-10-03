@@ -59,6 +59,7 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nei",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Side som inneholder lista over faddere som automatisk kan tildeles nybegynnere",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Side som inneholder lista over faddere som kun kan tildeles manuelt",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "Minimalt antall redigeringer en bruker må ha (i alle navnerom) for å kunne melde seg som fadder",
 	"growthexperiments-edit-config-newcomertasks": "Foreslåtte redigeringer",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Noen typer foreslåtte redigeringer kommer fram ved hjelp av maler. Artikler som inneholder disse malene legges til i matingen. For å se hvor mange artikler som er tilgjengelige for hver oppgavetype, se [[Special:NewcomerTasksInfo|denne sida]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Deaktivert",

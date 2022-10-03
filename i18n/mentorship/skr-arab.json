@@ -4,5 +4,8 @@
 			"Saraiki"
 		]
 	},
-	"growthexperiments-manage-mentors-edit-weight": "وزن"
+	"growthexperiments-manage-mentors-none": "کوئی وی کائنی",
+	"growthexperiments-manage-mentors-edit": "لکھو",
+	"growthexperiments-manage-mentors-edit-weight": "وزن",
+	"growthexperiments-manage-mentors-edit-reason": "سبب"
 }

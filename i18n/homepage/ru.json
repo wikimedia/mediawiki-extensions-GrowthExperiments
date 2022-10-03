@@ -94,6 +94,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Создавайте новые статьи и расширяйте короткие.",
 	"growthexperiments-homepage-suggested-edits-header": "Предложенные правки",
 	"growthexperiments-homepage-impact-header": "Влияние {{GENDER:$1|ваших}} правок",
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Ваша}} недавняя активность",
 	"growthexperiments-homepage-impact-subheader-text": "Люди читают статьи, которые {{GENDER:$1|вы}} отредактировали!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Просмотров после {{GENDER:$1|ваших}} правок (за 60 дней):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Вы}} сделали <strong>$1</strong> {{PLURAL:$1|правку|правки|правок}} (подробнее)",

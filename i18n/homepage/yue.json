@@ -9,6 +9,7 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|你好}}，{{bidi:$1}}！",
 	"growthexperiments-homepage-tab": "頭版",
 	"tooltip-pt-homepage": "{{GENDER:|你}}嘅頭版",
+	"prefs-homepage": "新手編者功能",
 	"growthexperiments-homepage-email-header-noemail": "加{{GENDER:$1|你嘅}}電郵地址",
 	"growthexperiments-homepage-email-header-unconfirmed": "確認{{GENDER:$1|你嘅}}電郵地址",
 	"growthexperiments-homepage-email-header-confirmed": "加咗電郵地址",
