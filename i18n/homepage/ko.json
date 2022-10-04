@@ -78,6 +78,10 @@
 	"growthexperiments-homepage-suggested-edits-header": "편집 제안",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "이 구성 요소를 보려면 자바스크립트를 활성화해 주십시오.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|당신}}의 영향",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "마지막 편집: $1",
+	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|편집}}",
+	"growthexperiments-homepage-impact-scores-edit-count": "총 편집",
+	"growthexperiments-homepage-impact-scores-thanks-count": "감사 표현을 받았습니다",
 	"growthexperiments-homepage-impact-subheader-text": "편집하신 문서를 {{GENDER:$1|사람들이}} 읽고 있습니다!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|당신의}} 편집 이후 최근 60일간의 문서 열람 횟수:",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|그동안}} <strong>$1</strong>회의 {{PLURAL:$1|기여}}를 하셨습니다 (모두 보기)",
@@ -481,6 +485,6 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|당신의}} {{GENDER:$1|멘토}}는 {{SITENAME}}의 편집 경험이 많은 사람입니다. 이 멘토는 편집 방법에 관해 당신과 같은 새로 온 사람들을 자발적으로 안내하며 사이트 이용 시 생길 수 있는 질문에 답변할 수 있습니다.",
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "{{GENDER:|당신이}} 멘토에 메시지를 보내면 멘토는 이 메시지를 자신의 사용자 토론 문서에서 보게 되며, 멘토가 여기에 답변을 달면 {{GENDER:|당신은}} 알림을 받게 됩니다.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "멘토링에 참여하지 않기",
-	"growthexperiments-homepage-mentorship-about-optout-par1": "지금 {{GENDER:|당신}}에게 할당된 특정 멘토를 선호하지 않으신다면 아래의 버튼을 누르십시오. 마음이 바뀌신다면 언제든지 새 멘토를 할당받을 수 있습니다.",
+	"growthexperiments-homepage-mentorship-about-optout-par1": "지금 {{GENDER:|당신}}에게 할당된 특정 멘토를 선호하지 않으시면 아래의 버튼을 누르십시오. 마음이 바뀌시면 언제든지 새 멘토를 할당받을 수 있습니다.",
 	"growthexperiments-homepage-mentorship-about-done": "완료"
 }
