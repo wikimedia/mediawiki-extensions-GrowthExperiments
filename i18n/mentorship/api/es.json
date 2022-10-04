@@ -4,8 +4,8 @@
 			"Zapipedia (WMF)"
 		]
 	},
-	"apihelp-growthstarmentee-summary": "Marcar o desmarcar a un aprendiz con estrella por el usuario actual (almacenado de forma privada y no logged)",
-	"apihelp-growthstarmentee-param-gesaction": "Acción a realizar (<kbd>dar estrella</kbd> o <kbd>quitar estrella</kbd>)",
-	"apihelp-growthstarmentee-param-gesmentee": "Aprendiz con estrella/sin estrella",
-	"apihelp-query+growthstarredmentees-summary": "Obtener la lista de aprendices asociados al mentor actualmente conectado"
+	"apihelp-growthstarmentee-summary": "Marcar o desmarcar a un aprendiz como destacado por el usuario actual (se almacena de forma privada y no se registra)",
+	"apihelp-growthstarmentee-param-gesaction": "Acción a realizar (<kbd>destacar</kbd> o <kbd>quitar la estrella</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "(No) destacar aprendiz con estrella",
+	"apihelp-query+growthstarredmentees-summary": "Obtener la lista de aprendices destacados por el mentor actualmente conectado"
 }

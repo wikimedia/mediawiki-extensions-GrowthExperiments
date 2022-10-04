@@ -2,20 +2,26 @@
 	"@metadata": {
 		"authors": [
 			"Mahadevaiah Siddaiah",
-			"ಮಲ್ನಾಡಾಚ್ ಕೊಂಕ್ಣೊ"
+			"ಮಲ್ನಾಡಾಚ್ ಕೊಂಕ್ಣೊ",
+			"~aanzx"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|ನಮಸ್ಕಾರ}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "ಮುಖಪುಟ",
 	"tooltip-pt-homepage": "{{GENDER:|ನಿಮ್ಮ}} ಮುಖಪುಟ",
+	"growthexperiments-homepage-enable": "ಹೊಸ ಮುಖಪುಟವನ್ನು ಪ್ರದರ್ಶಿಸಿ",
+	"growthexperiments-homepage-pt-link": "ವೈಯಕ್ತಿಕ ಪರಿಕರಗಳಲ್ಲಿ ಬಳಕೆದಾರಹೆಸರು ಲಿಂಕ್‌ನಿಂದ ಹೊಸಬರ ಮುಖಪುಟಕ್ಕೆ ಡಿಫಾಲ್ಟ್ ಮಾಡಿ",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|ನಿಮ್ಮ}} ಇ-ಅಂಚೆ ಸೇರಿಸಿ",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|ನಿಮ್ಮ}} ಇ-ಅಂಚೆ ದೃಢೀಕರಿಸಿ",
 	"growthexperiments-homepage-email-header-confirmed": "ಇ-ಅಂಚೆ ಸೇರಿಸಲಾಯಿತು",
 	"growthexperiments-homepage-email-header-startemail": "ಇ-ಅಂಚೆ: $1",
+	"growthexperiments-homepage-email-text-noemail": "ಖಾತೆ ಮರುಪಡೆಯುವಿಕೆಗೆ ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ",
 	"growthexperiments-homepage-email-button-noemail": "ಇ-ಅಂಚೆ ಸೇರಿಸಿ",
 	"growthexperiments-homepage-email-button-unconfirmed": "ಹೊಸ ಕೊಂಡಿ ಪಡೆಯಿರಿ",
 	"growthexperiments-homepage-email-button-confirmed": "ಪ್ರಾಶಸ್ತ್ಯಗಳು",
 	"growthexperiments-homepage-email-changelink": "ಬದಲಾಯಿಸಿ",
+	"growthexperiments-homepage-email-confirmlink": "ಧೃಡಪಡಿಸಿ",
+	"growthexperiments-homepage-startediting-header": "ಸಂಪಾದನೆಯನ್ನು ಪ್ರಾರಂಭಿಸಿ",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "ಸೂಚಿಸಲ್ಪಟ್ಟ ಸಂಪಾದನೆಗಳನ್ನು ನೋಡಿ",
 	"growthexperiments-homepage-startediting-button": "ಸೂಚಿಸಲ್ಪಟ್ಟ ಸಂಪಾದನೆಗಳನ್ನು ನೋಡಿ",
 	"growthexperiments-homepage-startediting-dialog-header": "ಸೂಚಿಸಲ್ಪಟ್ಟ ಸಂಪಾದನೆಗಳ ಕುರಿತು",
