@@ -4,7 +4,9 @@
 			"Kareyac",
 			"Chadyka",
 			"No Sleep till Krupki",
-			"Tomato Cream"
+			"Tomato Cream",
+			"Maksim L.",
+			"Tīgelika"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
@@ -128,7 +130,7 @@
 	"growthexperiments-specialimpact-title": "Уплыў",
 	"growthexperiments-specialimpact-showing-for-other-user": "Паказваюцца дадзеныя ўплыву ўдзельніка $1",
 	"growthexperiments-specialimpact-invalid-username": "Імя ўдзельніка адсутнічае ці з’яўляецца няслушным.",
-	"growthexperiments-homepage-claimmentee-no-user": "Падапечнага не існуе",
+	"growthexperiments-homepage-claimmentee-no-user": "Такога падапечнага няма",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Вы}} ўжо настаўнічаеце {{GENDER:$1|ўдзельніка|ўдзельніцу}} $1",
 	"growthexperiments-homepage-enable-preference": "Каб уключыць хатнюю старонку для пачаткоўца, перайдзіце ў раздзел «Хатняя старонка для пачаткоўца» у [[Special:Preferences#mw-prefsection-personal-homepage|Наладах]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Вы}} яшчэ не зрабілі ніякага ўкладу.",

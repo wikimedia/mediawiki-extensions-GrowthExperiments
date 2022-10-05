@@ -4,7 +4,8 @@
 			"ANukuma",
 			"Daud I.F. Argana",
 			"PutriAmalia1991",
-			"Veracious"
+			"Veracious",
+			"DARMAS BUDI SANTOSO"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Dasbor pembimbing",
@@ -38,6 +39,15 @@
 	"growthexperiments-mentor-dashboard-resources-headline": "Sumber daya",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Daftar pembimbing",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Cara mendapat seorang bimbingan",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Pengaturan",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Status mentor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktif",
-	"growthexperiments-notification-body-mentee-claimed": "Alasan: $1"
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Jeda",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Anda akan absen selama:",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "hari",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Status Anda telah diubah menjadi \"Aktif\".",
+	"growthexperiments-notification-body-mentee-claimed": "Alasan: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Sekitar setengah dari rata-rata",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Rata-rata (baku)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Sekitar dua kali dari rata-rata"
 }

@@ -4,6 +4,7 @@
 			"Eleassar"
 		]
 	},
+	"growthexperiments-desc": "Ta razširitev vsebuje poskuse, ki jih je pripravila skupina Growth.",
 	"growthexperiments-edit-config-disabled": "Skupnostna konfiguracija je trenutno onemogočena.",
 	"growthexperiments-edit-config-title": "Konfiguracija možnosti Edit Growth",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Zadnjič posodobil(a) [[User:$1|$1]] $2 ([$4 prim]).",
@@ -36,6 +37,7 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Označba pete povezave panela pomoči (priporočeno: »Kako ustvariti članek«)",
 	"growthexperiments-edit-config-homepage": "Glavna stran za začetnike",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Ciljna stran za povezavo na stran o dodajanju slik v vizualnem urejevalniku",
+	"growthexperiments-edit-config-mentorship": "Mentorstvo",
 	"growthexperiments-edit-config-mentorship-description": "Vikiji imajo lahko dva ločena seznama mentorjev: enega za mentorje, ki so naključno dodeljeni vsem novincem, in drugega za mentorje, ki si mentorirance izberejo sami. Ta drugi seznam je namenjen samo mentorjem, ki vodijo dogodke ali učne ure.",
 	"growthexperiments-edit-config-mentorship-enabled": "Ali so možnosti mentorstva omogočene?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Da",

@@ -36,7 +36,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Son $2 {{PLURAL:$1|aydır}} aktiv olan istifadəçiləri filtrlə",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Sadəcə ulduzlanmış istifadəçilər",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Axtar",
-	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 əvvəl aktiv idi",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 əvvəl {{GENDER:$1|aktiv olub}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "bilinmir",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 göstər",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 səhifədən $1",

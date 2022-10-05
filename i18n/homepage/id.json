@@ -276,6 +276,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Sains, Teknologi, dan Matematika",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Budaya",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Wilayah",
+	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Acara kampanye",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Konfigurasi saranan penyuntingan tidak sah: struktur jelek",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Konfigurasi suntingan yang disarankan tidak valid untuk jenis tugas \"$1\": \"$2\" harus berupa bilangan bulat",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Konfigurasi suntingan yang disarankan tidak valid untuk jenis tugas \"$1\": \"$2\" harus lebih besar dari $3",
