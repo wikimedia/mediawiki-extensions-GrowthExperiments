@@ -48,7 +48,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Показать $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 из $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Недавно активных подопечных не найдено",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Возможно, у вас еще не назначено ни одного подопечного. Данные обновляются каждые три часа.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "На приборной панели наставников отображаются только подопечные, которые недавно были активны. Дополнительная информация может быть отображена с помощью значка с информацией. Если {{GENDER:|вы}} недавно записались в наставники, у {{GENDER:|вас}} может пока что не быть доверенных подопечных.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Подопечных не найдены.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Изменить фильтры, чтобы найти подопечных.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ресурсы",

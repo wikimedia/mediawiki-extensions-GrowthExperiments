@@ -36,6 +36,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Mëttel",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Schwéier",
 	"growthexperiments-homepage-suggested-edits-header": "Proposéiert Ännerungen",
+	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Ännerung|Ännerungen}}",
+	"growthexperiments-homepage-impact-scores-edit-count": "Total vun den Ännerungen",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Dir}} hutt nach keng Artikelen ugeluecht oder geännert.",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Op den Artikel goen",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Verstan",
