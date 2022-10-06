@@ -16,7 +16,8 @@
                 "human": "3 weeks"
             },
             "user_id": "1",
-            "userpage_exists": true
+            "userpage_exists": true,
+            "user_is_hidden": false
         },
         {
             "username": "User-0.4312086866964966-Iñtërnâtiônàlizætiøn",
@@ -34,7 +35,8 @@
                 "human": "7 weeks"
             },
             "user_id": "2",
-            "userpage_exists": false
+            "userpage_exists": false,
+            "user_is_hidden": false
         },
         {
             "username": "User-0.09497747569998083-Iñtërnâtiônàlizætiøn",
@@ -52,7 +54,8 @@
                 "human": "18 weeks"
             },
             "user_id": "3",
-            "userpage_exists": false
+            "userpage_exists": false,
+            "user_is_hidden": false
         },
         {
             "username": "User-0.8618671850354198-Iñtërnâtiônàlizætiøn",
@@ -70,7 +73,8 @@
                 "human": "21 weeks"
             },
             "user_id": "4",
-            "userpage_exists": false
+            "userpage_exists": false,
+            "user_is_hidden": false
         }
     ],
     "totalRows": 4,
