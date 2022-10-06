@@ -65,7 +65,8 @@ const MENTEES_TABLE_COLUMNS = [
 				username: mentee.username,
 				lastActive: mentee.last_active.human,
 				isStarred: mentee.isStarred,
-				userPageExists: mentee.userpage_exists
+				userPageExists: mentee.userpage_exists,
+				userIsHidden: mentee.user_is_hidden
 			};
 		}
 	},

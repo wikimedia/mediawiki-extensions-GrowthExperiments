@@ -15,10 +15,12 @@
 		</cdx-button>
 		<div class="ext-growthExperiments-DataTableCellMentee__user-info">
 			<a
-				:class="{ new: !value.userPageExists }"
+				:class="{ new: !value.userPageExists, 'ext-growthExperiments-DataTableCellMentee__suppressed': value.userIsHidden }"
 				:href="usernameHref"
 			>
-				{{ value.username }}
+				<span class="ext-growthExperiments-DataTableCellMentee__username">
+					{{ value.username }}
+				</span>
 			</a>
 			<div class="ext-growthExperiments-DataTableCellMentee__user-info__last-seen">
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-active-ago', value.lastActive ) }}
@@ -87,6 +89,11 @@ module.exports = exports = {
 			font-size: @mentee-table-last-seen-font-size;
 			color: @colorGray500;
 		}
+	}
+
+	&__suppressed &__username {
+		text-decoration: line-through;
+		text-decoration-style: double;
 	}
 }
 </style>
