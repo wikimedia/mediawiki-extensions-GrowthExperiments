@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"NMW03",
-			"Serkanland"
+			"Serkanland",
+			"Toghrul Rahimli"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salam}} {{bidi:$1}}!",
@@ -110,9 +111,9 @@
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Bu sual arxivləşdirilib çünki uzun zaman öncə soruşulub.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Sənin}} {{GENDER:$2|mentorun}}",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|redaktə}}",
-	"growthexperiments-homepage-mentorship-mentor-active-today": "Bu gün {{GENDER:$1|aktiv idi}}",
-	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "Dünən {{GENDER:$1|aktiv idi}}",
-	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|gün}} əvvəl {{GENDER:$1|aktiv idi}}",
+	"growthexperiments-homepage-mentorship-mentor-active-today": "Bu gün {{GENDER:$1|aktiv olub}}",
+	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "Dünən {{GENDER:$1|aktiv olub}}",
+	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|gün}} əvvəl {{GENDER:$1|aktiv olub}}",
 	"growthexperiments-homepage-mentorship-intro": "Bu {{GENDER:$1|təcrübəli istifadəçi}} sizin yeni istifadəçi olduğunuzu bilir və {{GENDER:$2|sizə}} redaktə ilə bağlı kömək edə bilər.",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$1|Mentoruna}} {{GENDER:$2|sual}} ver",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$1|Mentorunun}} {{GENDER:$2|digər}} müzakirələrinə bax",

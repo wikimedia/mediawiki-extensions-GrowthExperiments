@@ -44,7 +44,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Tidak, dengan alasan lain",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Saya tidak ingat",
 	"welcomesurvey-question-mailinglist-label": "Saya ingin menerima tips melalui surel tentang cara memulai menyunting.",
-	"welcomesurvey-question-mailinglist-help": "Tolong perhatikan bahwa milis ini ditenagai oleh MailChimp, yang berarti penggunaan informasi Anda oleh MailChimp diatur oleh [https://www.intuit.com/privacy/statement/ Kebijakan Privasi] dan [https://mailchimp.com/legal/terms/Terms Ketentuan Layanan] mereka.",
+	"welcomesurvey-question-mailinglist-help": "Harap diingat bahwa milis ini ditenagai oleh MailChimp, yang berarti penggunaan informasi {{GENDER:|Anda}} oleh MailChimp diatur menurut [https://www.intuit.com/privacy/statement/ Kebijakan Privasi] dan [https://mailchimp.com/legal/terms/Terms Ketentuan Layanan] mereka.",
 	"welcomesurvey-question-email-label": "Alamat surel (opsional)",
 	"welcomesurvey-question-email-placeholder": "Masukkan alamat surel {{GENDER:|Anda}}...",
 	"welcomesurvey-question-email-help": "Kami melihat Anda tidak memasukkan surel ketika membuat akun ini. <strong>Sangat disarankan</strong> untuk memasukkannya, karena surel diperlukan untuk pemulihan akun apabila kehilangan kata sandi Anda. CATATAN: Alamat surel Anda tidak diungkapkan ketika pengguna lain menghubungi Anda.",

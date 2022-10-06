@@ -113,7 +113,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Змяніце паведамленне, якое {{GENDER:|вы}} выкарыстоўваеце, каб прадставіцца",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Запісаць",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Адмена",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Паведамленне, якое вы выкарыстоўваеце, каб прадставіцца",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Уступнае паведамленне",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "Паведамленне, якое {{GENDER:|вы}} выкарыстоўваеце, каб прадставіцца зменена на «$1».",
 	"growthexperiments-mentor-list-missing-key": "Ключ <code>$1</code> адсутнічае",
 	"growthexperiments-mentor-list-datatype-mismatch": "Чакаецца, што <code>$1</code> будзе <code>$2</code>, але зараз гэта <code>$3</code>",

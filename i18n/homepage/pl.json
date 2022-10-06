@@ -489,7 +489,7 @@
 	"growthexperiments-structuredtask-anonuser": "Użytkownik nie jest już zalogowany.",
 	"growthexperiments-addimage-summary-label": "Podsumowanie",
 	"growthexperiments-addimage-summary-copyrightwarning": "Zapisując zmiany, zgadzasz się z [https://foundation.wikimedia.org/wiki/Terms_of_Use/pl Warunkami użytkowania] i zgadzasz się na publikację swojego wkładu na licencjach [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] i [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
-	"growthexperiments-addimage-summary-summary": "Funkcja sugerowania linków: {{PLURAL:$1|dodany $1 link|dodane $1 linki|dodane $1 linków}}.",
+	"growthexperiments-addimage-summary-summary": "Funkcja sugerowania ilustracji: {{PLURAL:$1|dodana $1 ilustracja|dodane $1 ilustracje|dodane $1 ilustracji}}.",
 	"growthexperiments-addimage-reason-wikipedia": "Wykorzystany w tym samym artykule w $1 {{PLURAL:$1|innym języku|innych językach}}.",
 	"growthexperiments-addimage-reason-wikipedia-languages": "Wykorzystany w tym samym artykule w $1 {{PLURAL:$1|innym języku|innych językach}}: $2.",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|innym|innych}}",

@@ -38,6 +38,7 @@
 	"growthexperiments-edit-config-homepage": "Glavna stran za začetnike",
 	"growthexperiments-edit-config-homepage-intro-links-create": "Ciljna stran za povezavo o ustvaritvi novega članka",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Ciljna stran za povezavo na stran o dodajanju slik v vizualnem urejevalniku",
+	"growthexperiments-edit-config-mentorship": "Mentorstvo",
 	"growthexperiments-edit-config-mentorship-description": "Vikiji imajo lahko dva ločena seznama mentorjev: enega za mentorje, ki so naključno dodeljeni vsem novincem, in drugega za mentorje, ki si mentorirance izberejo sami. Ta drugi seznam je namenjen samo mentorjem, ki vodijo dogodke ali učne ure.",
 	"growthexperiments-edit-config-mentorship-enabled": "Ali so možnosti mentorstva omogočene?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Da",

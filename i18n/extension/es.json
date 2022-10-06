@@ -70,7 +70,7 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "No",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Página que contiene una lista de mentores que se asignarán automáticamente a los recién llegados",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Página que contiene una lista de mentores que solo se pueden asignar manualmente",
-	"growthexperiments-edit-config-mentorship-automatic-eligibility": "¿Deben los usuarios y usuarias poder ser elegidos de forma automática para la mentoría?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "¿Deben los usuarios y usuarias poder ser automáticamente elegibles para la mentoría?",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Sí, permitir que los usuarios y usuarias que cumplen con los siguientes criterios se inscriban como mentores.",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "No, no permitir que ningún usuario se inscriba como mentor.",
 	"growthexperiments-edit-config-newcomertasks": "Ediciones sugeridas",
