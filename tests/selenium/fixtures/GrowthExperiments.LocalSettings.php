@@ -65,6 +65,13 @@ $wgUseInstantCommons = true;
 // Set up service URL for links.
 $wgGELinkRecommendationServiceUrl = 'https://api.wikimedia.org/service/linkrecommendation';
 
+// Default to structured mentor provider for CI tests, make it easy to enroll, and use Vue
+$wgGEMentorProvider = "structured";
+$wgGEMentorshipAutomaticEligibility = true;
+$wgGEMentorshipMinimumAge = 0;
+$wgGEMentorshipMinimumEditcount = 0;
+$wgGEMentorDashboardUseVue = true;
+
 // Conditionally load Parsoid in CI
 if ( defined( 'MW_QUIBBLE_CI' ) && !is_dir( "$IP/services/parsoid" ) ) {
 	$PARSOID_INSTALL_DIR = "$IP/vendor/wikimedia/parsoid";
