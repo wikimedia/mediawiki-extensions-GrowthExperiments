@@ -57,7 +57,10 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->assertSame( 0, $data['query']['growthtasks']['suggestions'][0]['order'] );
 		$this->assertSame( [], $data['query']['growthtasks']['suggestions'][0]['qualityGateIds'] );
 		$this->assertSame( [], $data['query']['growthtasks']['suggestions'][0]['qualityGateConfig'] );
-		$this->assertRegExp( "/^[a-z0-9]{32}+$/", $data['query']['growthtasks']['suggestions'][0]['token'] );
+		$this->assertMatchesRegularExpression(
+			"/^[a-z0-9]{32}+$/",
+			$data['query']['growthtasks']['suggestions'][0]['token']
+		);
 
 		$this->assertResponseContainsTitles( [ 'Copyedit-1', 'Link-1', 'Update-1', 'Copyedit-2',
 			'Update-2', 'Copyedit-3' ], $data );
@@ -100,7 +103,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->assertSame( 0, $pages['order'] );
 		$this->assertSame( [], $pages['qualityGateIds'] );
 		$this->assertSame( [], $pages['qualityGateConfig'] );
-		$this->assertRegExp( "/^[a-z0-9]{32}+$/", $pages['token'] );
+		$this->assertMatchesRegularExpression( "/^[a-z0-9]{32}+$/", $pages['token'] );
 	}
 
 	public function testError() {
