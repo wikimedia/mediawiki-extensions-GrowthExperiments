@@ -95,7 +95,7 @@ const CNumberInput = require( '../CNumberInput/CNumberInput.vue' );
 const TIME_AGO_LABELS = {
 	DAYS: {
 		label: 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title',
-		values: [ 1, 3, 7 ]
+		values: [ 1, 7, 14 ]
 	},
 	MONTHS: {
 		label: 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title',
