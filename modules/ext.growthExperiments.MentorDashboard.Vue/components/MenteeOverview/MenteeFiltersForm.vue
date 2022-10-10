@@ -132,28 +132,31 @@ module.exports = exports = {
 	computed: {
 		dayLabels() {
 			return TIME_AGO_LABELS.DAYS.values.map( ( val ) => {
+				const localisedNumber = mw.language.convertNumber( val );
 				return {
 					selected: this.formData.activeDaysAgo === val,
 					altText: this.$i18n(
 						TIME_AGO_LABELS.DAYS.label,
 						val,
-						mw.language.convertNumber( val )
+						localisedNumber
 					),
-					displayText: val,
+					displayText: localisedNumber,
 					value: val
 				};
 			} );
 		},
 		monthLabels() {
 			return TIME_AGO_LABELS.MONTHS.values.map( ( val ) => {
+				const displayNumber = val / 30;
+				const localisedNumber = mw.language.convertNumber( displayNumber );
 				return {
 					selected: this.formData.activeDaysAgo === val,
 					altText: this.$i18n(
 						TIME_AGO_LABELS.MONTHS.label,
-						val,
-						mw.language.convertNumber( val )
+						displayNumber,
+						localisedNumber
 					),
-					displayText: val / 30,
+					displayText: localisedNumber,
 					value: val
 				};
 			} );
