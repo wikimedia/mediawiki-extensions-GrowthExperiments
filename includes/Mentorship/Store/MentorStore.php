@@ -49,7 +49,10 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 	 * @param string $mentorRole
 	 * @return string Cache key
 	 */
-	protected function makeCacheKey( UserIdentity $user, string $mentorRole ): string {
+	protected function makeLoadMentorCacheKey(
+		UserIdentity $user,
+		string $mentorRole
+	): string {
 		return $this->wanCache->makeKey(
 			'GrowthExperiments',
 			'MentorStore', __CLASS__,
@@ -64,7 +67,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 	 * @param string $mentorRole
 	 */
 	protected function invalidateMentorCache( UserIdentity $user, string $mentorRole ): void {
-		$key = $this->makeCacheKey( $user, $mentorRole );
+		$key = $this->makeLoadMentorCacheKey( $user, $mentorRole );
 		$this->wanCache->delete(
 			$key
 		);
@@ -101,7 +104,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 			$this->invalidateMentorCache( $mentee, $mentorRole );
 		}
 
-		$cacheKey = $this->makeCacheKey( $mentee, $mentorRole );
+		$cacheKey = $this->makeLoadMentorCacheKey( $mentee, $mentorRole );
 		if ( isset( $this->inProcessCache[$cacheKey] ) ) {
 			return $this->inProcessCache[$cacheKey];
 		}
@@ -193,7 +196,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 		$this->invalidateMentorCache( $mentee, $mentorRole );
 
 		// Set the mentor in the in-process cache
-		$this->inProcessCache[$this->makeCacheKey( $mentee, $mentorRole )] = $mentor;
+		$this->inProcessCache[$this->makeLoadMentorCacheKey( $mentee, $mentorRole )] = $mentor;
 	}
 
 	/**
