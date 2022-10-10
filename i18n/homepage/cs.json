@@ -80,7 +80,7 @@
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Vaše}} reálná aktivita",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Poslední editace: $1",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Nejlepší série: $1",
-	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 dní v řadě",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|den|dny|dní}} v řadě",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Editace|Editace|Editací}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|editace|editace|editací}} dne $2",
 	"growthexperiments-homepage-impact-scores-edit-count": "Celkem editací",
