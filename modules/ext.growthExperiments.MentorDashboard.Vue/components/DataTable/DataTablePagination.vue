@@ -54,8 +54,8 @@ module.exports = exports = {
 		paginationText() {
 			return this.$i18n(
 				'growthexperiments-mentor-dashboard-mentee-overview-page-counter',
-				mw.language.convertNumber( this.currentPage ),
-				mw.language.convertNumber( this.totalPages )
+				this.$filters.convertNumber( this.currentPage ),
+				this.$filters.convertNumber( this.totalPages )
 			);
 		}
 	}

@@ -132,7 +132,7 @@ module.exports = exports = {
 	computed: {
 		dayLabels() {
 			return TIME_AGO_LABELS.DAYS.values.map( ( val ) => {
-				const localisedNumber = mw.language.convertNumber( val );
+				const localisedNumber = this.$filters.convertNumber( val );
 				return {
 					selected: this.formData.activeDaysAgo === val,
 					altText: this.$i18n(
@@ -148,7 +148,7 @@ module.exports = exports = {
 		monthLabels() {
 			return TIME_AGO_LABELS.MONTHS.values.map( ( val ) => {
 				const displayNumber = val / 30;
-				const localisedNumber = mw.language.convertNumber( displayNumber );
+				const localisedNumber = this.$filters.convertNumber( displayNumber );
 				return {
 					selected: this.formData.activeDaysAgo === val,
 					altText: this.$i18n(

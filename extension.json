@@ -1685,6 +1685,7 @@
 				"ext.growthExperiments.MentorDashboard.Vue/store/modules/mentees-search.js",
 				"ext.growthExperiments.MentorDashboard.Vue/store/modules/user-preferences.js",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js",
+				"utils/filters.js",
 				{
 					"name": "ext.growthExperiments.MentorDashboard.Vue/components/icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",

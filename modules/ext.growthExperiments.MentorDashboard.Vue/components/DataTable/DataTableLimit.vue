@@ -27,7 +27,7 @@ module.exports = exports = {
 			return {
 				label: this.$i18n(
 					'growthexperiments-mentor-dashboard-mentee-overview-show-entries',
-					mw.language.convertNumber( optionValue )
+					this.$filters.convertNumber( optionValue )
 				),
 				value: optionValue
 			};

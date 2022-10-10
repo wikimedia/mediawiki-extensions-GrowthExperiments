@@ -8,6 +8,7 @@
 		"selenium-test": "wdio tests/selenium/wdio.conf.js",
 		"test": "grunt test && npm run test:jest",
 		"test:jest": "jest",
+		"test:jest:update": "jest -u",
 		"coverage": "npm run test:jest"
 	},
 	"devDependencies": {
