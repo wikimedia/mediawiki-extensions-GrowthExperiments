@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pikne"
+			"Pikne",
+			"Kareyac"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Tere}}, {{bidi:$1}}!",
@@ -81,7 +82,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "Leia ja lisa rohkem teavet, et teha artikkel pikemaks.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Tee nii, et sõnad artiklis lingivad teistele artiklitele.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "Keeletoimetamisel tehakse tekstis väike, aga kasulik parandus. See on ühtlasi lihtne moodus Vikipeedia muutmisvõimalustega tuttavaks saada. Keeletoimetamine aitab teha artikli asjalikumaks ja usaldusväärsemaks.",
-	"growthexperiments-homepage-suggestededits-tasktype-description-references": "Kasuta raamatuid, veebisaite ja uudiseid, et kontrollida, kas Vikipeedia sisu on täpne ning lisa viited neile allikatel. Lugejad saavad siis olla kindlamad, et loetu vastab tõele.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-references": "Kasuta raamatuid, veebisaite ja uudiseid, et kontrollida, kas Vikipeedia sisu on täpne ning lisa viited neile allikatele. Lugejad saavad siis olla kindlamad, et loetu vastab tõele.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "Aja möödudes ja uute sündmuste toimumisel artiklite sisu aegub. Leia ja lisa viimane teave, nii et Vikipeedia oleks alati ajakohane.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "Paljudes Vikipeedia artiklites on vaid üks-kaks lauset. Leia rohkem teavet ja lisa see, et teha artikkel täielikumaks.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Linkide lisamine on kõige lihtsam võimalus muudatuse tegemiseks. Linkide abil artiklite vahel liikudes saab lugeja kiiresti rohkem teada.",
