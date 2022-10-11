@@ -14,9 +14,11 @@ use GrowthExperiments\TourHooks;
 use MediaWiki\MediaWikiServices;
 
 // Raise limits from I2aead24cb7f47
-$wgMaxArticleSize = 100;
-$wgParsoidSettings['wt2htmlLimits']['wikitextSize'] = 100 * 1024;
-$wgParsoidSettings['html2wtLimits']['htmlSize'] = 500 * 1024;
+if ( defined( 'MW_QUIBBLE_CI' ) ) {
+	$wgMaxArticleSize = 100;
+	$wgParsoidSettings['wt2htmlLimits']['wikitextSize'] = 100 * 1024;
+	$wgParsoidSettings['html2wtLimits']['htmlSize'] = 500 * 1024;
+}
 
 # Enable under-development features still behind feature flag:
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
