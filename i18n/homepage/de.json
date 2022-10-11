@@ -89,7 +89,7 @@
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Dein}} Einfluss",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Bitte aktiviere JavaScript, um diese Komponente zu sehen.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Dein}} Einfluss",
-	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Deine}} letzten Aktivitäten",
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Deine}} letzten Aktivitäten ({{PLURAL:$2|letzter Tag|letzte $2 Tage}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Letzte Bearbeitung: $1",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Bester Lauf: $1",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|Tag|Tage}} hintereinander",

@@ -48,7 +48,7 @@
 	"growthexperiments-homepage-suggested-edits-header": "Predlagana urejanja",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Vaš}} vpliv",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Vaš}} vpliv",
-	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Vaša}} nedavna aktivnost",
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Vaša}} nedavna aktivnost ({{PLURAL:$2|zadnji dan|zadnja $2 dni|zadnji $2 dnevi|zadnjih $2 dni}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Zadnje urejanje: $1",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Najboljši niz: $1",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dan|dneva|dni}} zapored",
