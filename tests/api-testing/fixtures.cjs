@@ -1,11 +1,9 @@
 'use strict';
 const fs = require( 'fs' );
 const path = require( 'path' );
-const process = require( 'process' );
-const phpVersion = process.env.PHP_VERSION;
-const phpFpmService = 'php' + phpVersion + '-fpm';
 const childProcess = require( 'child_process' );
 const ip = path.resolve( __dirname + '/../../../../' );
+const LocalSettingsSetup = require( __dirname + '/../LocalSettingsSetup.cjs' );
 const localSettings = fs.readFileSync( path.resolve( ip + '/LocalSettings.php' ) );
 
 exports.mochaGlobalSetup = async function () {
@@ -17,7 +15,7 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
     require_once "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php";
 }
 ` );
-	await restartPhpFpmService();
+	await LocalSettingsSetup.restartPhpFpmService();
 	// Import the test articles and their suggestions
 	childProcess.spawnSync(
 		'php',
@@ -34,25 +32,5 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 exports.mochaGlobalTeardown = async function () {
 	console.log( 'Restoring LocalSettings.php' );
 	fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ), localSettings );
-	await restartPhpFpmService();
+	await LocalSettingsSetup.restartPhpFpmService();
 };
-
-/**
- * This is needed in Quibble + Apache (T225218) because we use supervisord to control
- * the php-fpm service, and with supervisord you need to restart the php-fpm service
- * in order to load updated php code.
- */
-async function restartPhpFpmService() {
-	if ( !process.env.QUIBBLE_APACHE ) {
-		return;
-	}
-	childProcess.spawnSync(
-		'service',
-		[ phpFpmService, 'restart' ]
-	);
-	// Ugly hack: Run this twice because sometimes the first invocation hangs.
-	childProcess.spawnSync(
-		'service',
-		[ phpFpmService, 'restart' ]
-	);
-}

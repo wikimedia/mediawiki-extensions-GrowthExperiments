@@ -5,13 +5,11 @@ const { config } = require( 'wdio-mediawiki/wdio-defaults.conf.js' ),
 	path = require( 'path' ),
 	fs = require( 'fs' ),
 	ip = path.resolve( __dirname + '/../../../../' ),
-	process = require( 'process' ),
-	phpVersion = process.env.PHP_VERSION,
-	phpFpmService = 'php' + phpVersion + '-fpm',
 	// Take a snapshot of the local settings contents
 	localSettings = fs.readFileSync( path.resolve( ip + '/LocalSettings.php' ) ),
 	CreateAccountPage = require( 'wdio-mediawiki/CreateAccountPage' ),
-	Util = require( 'wdio-mediawiki/Util' );
+	Util = require( 'wdio-mediawiki/Util' ),
+	LocalSettingsSetup = require( __dirname + '/../LocalSettingsSetup.cjs' );
 
 const { SevereServiceError } = require( 'webdriverio' );
 
@@ -32,20 +30,7 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 	require_once "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php";
 }
 ` );
-		// This is needed in Quibble + Apache (T225218) because we use supervisord to control
-		// the php-fpm service, and with supervisord you need to restart the php-fpm service
-		// in order to load updated php code.
-		if ( process.env.QUIBBLE_APACHE ) {
-			await childProcess.spawnSync(
-				'service',
-				[ phpFpmService, 'restart' ]
-			);
-			// Super ugly hack: Run this twice because sometimes the first invocation hangs.
-			await childProcess.spawnSync(
-				'service',
-				[ phpFpmService, 'restart' ]
-			);
-		}
+		await LocalSettingsSetup.restartPhpFpmService();
 		// Import the test articles and their suggestions
 		const suggestedEditsContentFilepath = path.resolve( __dirname + '/fixtures/SuggestedEditsContent.xml' );
 		console.log( 'Importing ' + suggestedEditsContentFilepath );
@@ -75,5 +60,6 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 	onComplete: async function () {
 		// Remove the LocalSettings.php additions from onPrepare()
 		await fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ), localSettings );
+		await LocalSettingsSetup.restartPhpFpmService();
 	}
 };
