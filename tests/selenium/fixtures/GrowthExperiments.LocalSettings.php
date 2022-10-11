@@ -1,5 +1,6 @@
 <?php
 
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddImage\SubpageImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\SubpageLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\Task\Task;
@@ -9,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\TourHooks;
 use MediaWiki\MediaWikiServices;
 
 # Enable under-development features still behind feature flag:
@@ -77,3 +79,12 @@ if ( defined( 'MW_QUIBBLE_CI' ) && !is_dir( "$IP/services/parsoid" ) ) {
 	$PARSOID_INSTALL_DIR = "$IP/vendor/wikimedia/parsoid";
 	wfLoadExtension( 'Parsoid', "$PARSOID_INSTALL_DIR/extension.json" );
 }
+
+// Activate suggested edits for new users, complete various tours.
+$wgHooks['UserGetDefaultOptions'][] = static function ( &$defaultOptions ) {
+	$defaultOptions[SuggestedEdits::ACTIVATED_PREF] = true;
+	$defaultOptions[TourHooks::TOUR_COMPLETED_HELP_PANEL] = true;
+	$defaultOptions[TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY] = true;
+	$defaultOptions[TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP] = true;
+	$defaultOptions[TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME] = true;
+};

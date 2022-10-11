@@ -10,9 +10,8 @@ const { config } = require( 'wdio-mediawiki/wdio-defaults.conf.js' ),
 	phpFpmService = 'php' + phpVersion + '-fpm',
 	// Take a snapshot of the local settings contents
 	localSettings = fs.readFileSync( path.resolve( ip + '/LocalSettings.php' ) ),
-	UserLoginPage = require( 'wdio-mediawiki/LoginPage' ),
-	Util = require( 'wdio-mediawiki/Util' ),
-	Api = require( 'wdio-mediawiki/Api' );
+	CreateAccountPage = require( 'wdio-mediawiki/CreateAccountPage' ),
+	Util = require( 'wdio-mediawiki/Util' );
 
 const { SevereServiceError } = require( 'webdriverio' );
 
@@ -22,27 +21,7 @@ exports.config = { ...config,
 	specFileRetries: 2,
 	specFileRetriesDelay: 3,
 	beforeSuite: async function () {
-		const username = Util.getTestString( 'NewUser-' );
-		const password = Util.getTestString();
-		await browser.call( async () => {
-			const bot = await Api.bot();
-			await Api.createAccount( bot, username, password );
-		} );
-		await UserLoginPage.login( username, password );
-		await browser.execute( ( done ) =>
-			mw.loader.using( 'mediawiki.api' ).then( () =>
-				new mw.Api().saveOptions( {
-					'growthexperiments-homepage-suggestededits-activated': 1,
-					'growthexperiments-tour-homepage-discovery': 1,
-					'growthexperiments-tour-homepage-welcome': 1
-				} ).done( () => done() )
-			)
-		);
-		await browser.execute( ( done ) =>
-			mw.loader.using( 'ext.growthExperiments.SuggestedEditSession' ).then( () =>
-				ge.utils.setUserVariant( 'control' )
-			).done( () => done() )
-		);
+		await CreateAccountPage.createAccount( Util.getTestString( 'NewUser-' ), Util.getTestString() );
 	},
 	services: [ 'devtools', 'intercept' ],
 	onPrepare: async function () {
