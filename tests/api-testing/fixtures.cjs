@@ -17,20 +17,7 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
     require_once "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php";
 }
 ` );
-	// This is needed in Quibble + Apache (T225218) because we use supervisord to control
-	// the php-fpm service, and with supervisord you need to restart the php-fpm service
-	// in order to load updated php code.
-	if ( process.env.QUIBBLE_APACHE ) {
-		childProcess.spawnSync(
-			'service',
-			[ phpFpmService, 'restart' ]
-		);
-		// Super ugly hack: Run this twice because sometimes the first invocation hangs.
-		childProcess.spawnSync(
-			'service',
-			[ phpFpmService, 'restart' ]
-		);
-	}
+	await restartPhpFpmService();
 	// Import the test articles and their suggestions
 	childProcess.spawnSync(
 		'php',
@@ -47,4 +34,25 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 exports.mochaGlobalTeardown = async function () {
 	console.log( 'Restoring LocalSettings.php' );
 	fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ), localSettings );
+	await restartPhpFpmService();
 };
+
+/**
+ * This is needed in Quibble + Apache (T225218) because we use supervisord to control
+ * the php-fpm service, and with supervisord you need to restart the php-fpm service
+ * in order to load updated php code.
+ */
+async function restartPhpFpmService() {
+	if ( !process.env.QUIBBLE_APACHE ) {
+		return;
+	}
+	childProcess.spawnSync(
+		'service',
+		[ phpFpmService, 'restart' ]
+	);
+	// Ugly hack: Run this twice because sometimes the first invocation hangs.
+	childProcess.spawnSync(
+		'service',
+		[ phpFpmService, 'restart' ]
+	);
+}
