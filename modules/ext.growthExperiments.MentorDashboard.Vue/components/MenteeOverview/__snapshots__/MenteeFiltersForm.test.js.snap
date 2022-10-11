@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = `
+<form
+  class="ext-growthExperiments-MenteeFiltersForm"
+  id="mentee-filters-form"
+  tabindex="0"
+>
+  <h3
+    class="no-gutter"
+  >
+    growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline
+  </h3>
+  <section
+    class="ext-growthExperiments-MenteeFiltersForm__form-group"
+  >
+    <label>
+      growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from
+    </label>
+    <div
+      class="ext-growthExperiments-NumberInput"
+    >
+      <input
+        class="ext-growthExperiments-NumberInput__input"
+        min="0"
+        step="1"
+        type="number"
+      />
+    </div>
+  </section>
+  <section
+    class="ext-growthExperiments-MenteeFiltersForm__form-group"
+  >
+    <label>
+      growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to
+    </label>
+    <div
+      class="ext-growthExperiments-NumberInput"
+    >
+      <input
+        class="ext-growthExperiments-NumberInput__input"
+        min="0"
+        step="1"
+        type="number"
+      />
+    </div>
+  </section>
+  <div
+    class="ext-growthExperiments-HorizontalDivider ext-growthExperiments-MenteeFiltersForm-section-divider"
+  />
+  <h3
+    class="no-gutter"
+  >
+    growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline
+  </h3>
+  <section>
+    <div
+      class="ext-growthExperiments-MenteeFiltersForm__form-group--inline"
+    >
+      <label>
+        growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days
+      </label>
+      <div
+        class="ext-growthExperiments-MenteeFiltersForm__button-group"
+      >
+        
+        <button
+          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title"
+          class="cdx-button cdx-button--action-null cdx-button--type-null cdx-button--framed"
+        >
+          
+          localised-1
+          
+        </button>
+        <button
+          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title"
+          class="cdx-button cdx-button--action-null cdx-button--type-null cdx-button--framed"
+        >
+          
+          localised-7
+          
+        </button>
+        <button
+          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title"
+          class="cdx-button cdx-button--action-null cdx-button--type-null cdx-button--framed"
+        >
+          
+          localised-14
+          
+        </button>
+        
+      </div>
+    </div>
+    <div
+      class="ext-growthExperiments-MenteeFiltersForm__form-group--inline"
+    >
+      <label>
+        growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months
+      </label>
+      <div
+        class="ext-growthExperiments-MenteeFiltersForm__button-group"
+      >
+        
+        <button
+          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title"
+          class="cdx-button cdx-button--action-null cdx-button--type-null cdx-button--framed"
+        >
+          
+          localised-1
+          
+        </button>
+        <button
+          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title"
+          class="cdx-button cdx-button--action-null cdx-button--type-null cdx-button--framed"
+        >
+          
+          localised-2
+          
+        </button>
+        <button
+          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title"
+          class="cdx-button cdx-button--action-null cdx-button--type-null cdx-button--framed"
+        >
+          
+          localised-6
+          
+        </button>
+        
+      </div>
+    </div>
+  </section>
+  <div
+    class="ext-growthExperiments-HorizontalDivider ext-growthExperiments-MenteeFiltersForm-section-divider"
+  />
+  <section
+    class="ext-growthExperiments-MenteeFiltersForm__form-group"
+  >
+    <span
+      class="cdx-checkbox"
+    >
+      <label
+        class="cdx-checkbox__label"
+      >
+        <input
+          class="cdx-checkbox__input"
+          type="checkbox"
+          value="false"
+        />
+        <span
+          class="cdx-checkbox__icon"
+        />
+        <span
+          class="cdx-checkbox__label-content"
+        >
+          
+          growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred
+          
+        </span>
+      </label>
+    </span>
+  </section>
+  <section
+    class="ext-growthExperiments-MenteeFiltersForm__form-group ext-growthExperiments-MenteeFiltersForm__form-actions"
+  >
+    <button
+      class="cdx-button cdx-button--action-default cdx-button--type-submit cdx-button--framed ext-growthExperiments-utils__pull-right"
+      form="mentee-filters-form"
+    >
+      
+      growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit
+      
+    </button>
+  </section>
+</form>
+`;

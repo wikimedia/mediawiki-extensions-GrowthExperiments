@@ -3,6 +3,7 @@
 	const Vue = require( 'vue' );
 	const Vuex = require( 'vuex' );
 	const store = require( './store/index.js' );
+	const { convertNumber } = require( '../utils/filters.js' );
 	const clickOutside = require( './directives/click-outside.directive.js' );
 
 	// TODO create an App.vue root component to wrap more Mentor modules as they appear
@@ -10,8 +11,14 @@
 
 	Vue.use( Vuex );
 
-	Vue.createMwApp( MenteeOverview )
+	const app = Vue.createMwApp( MenteeOverview );
+
+	app.use( store )
 		.directive( 'click-outside', clickOutside )
-		.use( store )
 		.mount( '#vue-root' );
+
+	app.config.globalProperties.$filters = {
+		convertNumber
+	};
+
 }() );

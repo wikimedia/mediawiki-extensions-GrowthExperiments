@@ -24,7 +24,6 @@ global.mw = {
 		}
 	},
 	language: {
-		convertNumber: jest.fn(),
 		getFallbackLanguageChain: function () {
 			return [ 'en' ];
 		}
