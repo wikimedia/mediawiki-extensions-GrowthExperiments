@@ -14,6 +14,8 @@ const { config } = require( 'wdio-mediawiki/wdio-defaults.conf.js' ),
 	Util = require( 'wdio-mediawiki/Util' ),
 	Api = require( 'wdio-mediawiki/Api' );
 
+const { SevereServiceError } = require( 'webdriverio' );
+
 exports.config = { ...config,
 	// Override, or add to, the setting from wdio-mediawiki.
 	// Learn more at https://webdriver.io/docs/configurationfile/
@@ -66,16 +68,30 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 			);
 		}
 		// Import the test articles and their suggestions
-		await childProcess.spawnSync(
+		const suggestedEditsContentFilepath = path.resolve( __dirname + '/fixtures/SuggestedEditsContent.xml' );
+		console.log( 'Importing ' + suggestedEditsContentFilepath );
+		const importDumpResult = await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/importDump.php', path.resolve( __dirname + '/fixtures/SuggestedEditsContent.xml' ) ],
+			[ 'maintenance/importDump.php', suggestedEditsContentFilepath ],
 			{ cwd: ip }
 		);
-		await childProcess.spawnSync(
+		if ( importDumpResult.status === 1 ) {
+			console.log( String( importDumpResult.stderr ) );
+			throw new SevereServiceError( 'Unable to import ' + suggestedEditsContentFilepath );
+		}
+
+		const newcomerTasksJsonFilepath = path.resolve( __dirname + '/fixtures/MediaWikiNewcomerTasks.json' );
+		const newcomerTasksJson = fs.readFileSync( newcomerTasksJsonFilepath );
+		console.log( 'Importing ' + newcomerTasksJsonFilepath + ' with content: ' + newcomerTasksJson );
+		const newcomerTasksJsonResult = await childProcess.spawnSync(
 			'php',
 			[ 'maintenance/edit.php', '--user=Admin', 'MediaWiki:NewcomerTasks.json' ],
-			{ input: fs.readFileSync( path.resolve( __dirname + '/fixtures/MediaWikiNewcomerTasks.json' ) ), cwd: ip }
+			{ input: newcomerTasksJson, cwd: ip }
 		);
+		if ( newcomerTasksJsonResult.status === 1 ) {
+			console.log( String( newcomerTasksJsonResult.stderr ) );
+			throw new SevereServiceError( 'Unable to import ' + newcomerTasksJsonFilepath );
+		}
 	},
 	onComplete: async function () {
 		// Remove the LocalSettings.php additions from onPrepare()
