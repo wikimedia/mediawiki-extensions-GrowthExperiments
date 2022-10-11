@@ -222,8 +222,8 @@
 	"growthexperiments-addlink-wrongmodel": "Redakcija $1 strani »$2« ni vikibesedilo",
 	"growthexperiments-addlink-context-button-help": "Pridobite pomoč pri urejanju",
 	"newcomertasksinfo": "Opravila za začetnike",
-	"newcomertasksinfo-config-form-info": "Konfiguracijo opravil za začetnike si lahko ogledate in jo spreminjate na [[Special:EditGrowthConfig]].",
-	"newcomertasksinfo-table-header-task-type": "Vrsta opravila",
+	"newcomertasksinfo-config-form-info": "Nastavitev nalog za začetnike si lahko ogledate in jo spreminjate na [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-table-header-task-type": "Vrsta nalog",
 	"newcomertasksinfo-table-header-task-count": "Število",
 	"newcomertasksinfo-table-header-topic-type": "ID teme",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Prekliči"
