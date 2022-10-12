@@ -8,6 +8,7 @@ use IContextSource;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\User\UserIdentity;
 use OOUIHTMLForm;
+use SpecialPage;
 use Status;
 
 abstract class ManageMentorsAbstractForm extends OOUIHTMLForm {
@@ -88,9 +89,22 @@ abstract class ManageMentorsAbstractForm extends OOUIHTMLForm {
 	abstract protected function onSuccess(): void;
 
 	/**
+	 * Alter the form
+	 *
+	 * Form is available as $this. Method is called from show()
+	 */
+	protected function alterForm(): void {
+		$this->getOutput()->addBacklinkSubtitle(
+			SpecialPage::getTitleFor( 'ManageMentors' )
+		);
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function show() {
+		$this->alterForm();
+
 		$res = parent::show();
 		if ( $res ) {
 			$this->onSuccess();
