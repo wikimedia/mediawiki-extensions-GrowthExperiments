@@ -76,7 +76,7 @@
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|تأثيرك}}",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "الرجاء تفعيل الجافاسكريبت لعرض هذا المكون.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|تأثيرك}}",
-	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|نشاطكَ|نشاطكِ}} الأخير",
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|نشاطكَ|نشاطكِ}} الأخير (آخر {{PLURAL:$2|لا يوم|يوم|يومين|$2 أيام|$2 يوما|$2 يوم}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "آخر تعديل: $1",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "أفضل أثر: $1",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "{{PLURAL:$1|لا يوم|يوم واحد|يومان|$1 أيام|$1 يومًا|$1 يوم}} على التوالي",

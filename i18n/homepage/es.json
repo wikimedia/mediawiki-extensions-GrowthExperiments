@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"-jem-",
 			"Agabi10",
 			"Andru1013",
 			"Avengium",
@@ -135,9 +136,9 @@
 	"growthexperiments-tour-response-button-okay": "Entendido",
 	"tag-help_module_question": "Pregunta del módulo de ayuda",
 	"tag-help_module_question-description": "Edición realizada desde la función \"Haz una pregunta\" del módulo de ayuda de la página de inicio para usuarios nuevos",
-	"tag-mentorship_module_question": "Pregunta del módulo de tutoría",
+	"tag-mentorship_module_question": "Pregunta del módulo de mentoría",
 	"tag-mentorship_module_question-description": "Edición realizada desde la función «Pregunta a tu mentor» del módulo de tutoría de la página de inicio",
-	"tag-mentorship_panel_question": "Pregunta del panel de mentores",
+	"tag-mentorship_panel_question": "Pregunta del panel de mentoría",
 	"tag-mentorship_panel_question-description": "Edición realizada desde la función \"Pregúntale a tu mentor\" del panel de ayuda",
 	"tag-newcomer_task": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Tarea para novatos]]",
 	"tag-newcomer_task-description": "Edición sugerida por el módulo de ediciones sugeridas de la página de inicio para usuarios nuevos",
@@ -544,7 +545,7 @@
 	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "Sobre los mentores",
 	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Abandonar la mentoría",
 	"growthexperiments-homepage-mentorship-optout-header": "¿Abandonar la mentoría?",
-	"growthexperiments-homepage-mentorship-optout-text": "Siempre puedes volver a la mentoría. Sin embargo, es posible que no te sea asignado {{GENDER:$1|el mismo mentor|la misma mentora}} que antes.",
+	"growthexperiments-homepage-mentorship-optout-text": "Siempre puedes volver a la mentoría. Sin embargo, es posible que no se te asigne {{GENDER:$1|el mismo mentor|la misma mentora}} que antes.",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Cancelar",
 	"growthexperiments-homepage-mentorship-optout-optout": "Abandonar",
 	"growthexperiments-homepage-mentorship-optout-confirmation-header": "Ya no estás siendo mentorizado.",

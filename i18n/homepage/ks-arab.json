@@ -4,7 +4,7 @@
 			"Tajamul9"
 		]
 	},
-	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|$1|تُہُنٛز}} ہالہالٕچ عملہٕ",
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|$1|تُہُنٛز}} ہالہالٕچ عملہٕ (أخری $2 {{PLURAL:$2|دۄہ|وَکھ}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "أخری اؠڑِٹ اوس: $1",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "بہتریٖن سِٹریٖک: $1",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|دۄہ|دۄہَن}} صفس منٛز",
