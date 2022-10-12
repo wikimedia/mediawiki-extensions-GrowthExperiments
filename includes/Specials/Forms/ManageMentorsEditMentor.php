@@ -51,6 +51,9 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 	protected function getFormFields(): array {
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
 		$awayTimestamp = $this->mentorStatusManager->getMentorBackTimestamp( $this->mentorUser );
+		$canChangeStatusBool = $this->mentorStatusManager->canChangeStatus(
+			$this->mentorUser
+		)->isOK();
 
 		return [
 			'message' => [
@@ -79,12 +82,28 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 			'isAway' => [
 				'type' => 'check',
 				'label-message' => 'growthexperiments-manage-mentors-edit-is-away',
-				'default' => (bool)$awayTimestamp,
+				'disabled' => !$canChangeStatusBool,
+				'help' => !$canChangeStatusBool ? $this->msg(
+					'growthexperiments-manage-mentors-edit-is-away-blocked'
+				)
+					->params( $this->mentorUser->getName() )
+					->text() : '',
+				'default' => $this->mentorStatusManager->getMentorStatus(
+					$this->mentorUser
+					) === MentorStatusManager::STATUS_AWAY,
+			],
+			'isAwayChangeable' => [
+				'type' => 'hidden',
+				'default' => $canChangeStatusBool,
 			],
 			'awayTimestamp' => [
 				'type' => 'datetime',
 				'label-message' => 'growthexperiments-manage-mentors-edit-away-until',
-				'hide-if' => [ '!==', 'isAway', '1' ],
+				'hide-if' => [
+					'OR',
+					[ '!==', 'isAway', '1' ],
+					[ '!==', 'isAwayChangeable', '1' ],
+				],
 				'default' => MWTimestamp::getInstance( (string)$awayTimestamp )
 					->format( 'Y-m-d\TH:m:s\Z' ),
 			],
@@ -104,6 +123,7 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 		}
 
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
+		$mentorStatus = $this->mentorStatusManager->getMentorStatus( $this->mentorUser );
 		$awayTimestamp = $this->mentorStatusManager->getMentorBackTimestamp( $this->mentorUser );
 
 		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
@@ -111,7 +131,7 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 		$mentor->setWeight( (int)$data['weight'] );
 
 		$status = Status::newGood();
-		if ( (bool)$awayTimestamp !== $data['isAway'] ) {
+		if ( ( $mentorStatus === MentorStatusManager::STATUS_AWAY ) !== $data['isAway'] ) {
 			// isAway changed, implement the change
 			if ( $data['isAway'] ) {
 				$status->merge( $this->mentorStatusManager->markMentorAsAwayTimestamp(
