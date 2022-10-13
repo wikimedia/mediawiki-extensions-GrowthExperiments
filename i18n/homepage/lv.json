@@ -456,6 +456,7 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Sapratu",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Sapratu",
 	"growthexperiments-homepage-mentorship-optin-header": "Labošanas mentors",
+	"growthexperiments-homepage-mentorship-optin-text": "Ja {{GENDER:|tev}} ir jautājumi par rakstu labošanu, tev var piesaistīt pieredzējušu dalībnieku kā mentoru, kas tev palīdzēs.",
 	"growthexperiments-homepage-mentorship-optin-button": "Iegūt mentoru",
 	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Iegūt mentoru?",
 	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Turpini, lai iegūtu pieredzējušu dalībnieku kā {{GENDER:|savu}} mentoru.",

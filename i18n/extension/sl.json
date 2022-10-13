@@ -25,6 +25,7 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Na pogovorne strani mentorjev",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Na Center za pomoč",
 	"growthexperiments-edit-config-help-panel-links": "Povezave panela pomoči",
+	"growthexperiments-edit-config-help-panel-links-description": "Panel pomoči prikazuje pet poovezav in eno povezavo »več o tem«. Določite lahko katere koli povezave v vikiju, priporočene pa so navedene spodaj.",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "1) Ciljna stran za prvo povezavo panela pomoči (priporočeno: slogovni priročnik)",
 	"growthexperiments-edit-config-help-panel-links-mos-label": "1) Označba prve povezave panela pomoči (priporočeno: »Slogovni priročnik«)",
 	"growthexperiments-edit-config-help-panel-links-editing-title": "2) Ciljna stran za drugo povezavo panela pomoči (priporočeno: vodnik za vizualni urejevalnik)",
