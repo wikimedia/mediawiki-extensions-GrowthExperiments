@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Boke"
+		]
+	},
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|မင်း၏}} လတ်တလော လုပ်ဆောင်ချက် (နောက်ဆုံး $2 {{PLURAL:$2|ရက်|ရက်တိ}})"
+}

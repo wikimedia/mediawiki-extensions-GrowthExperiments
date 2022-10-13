@@ -159,7 +159,7 @@
 	"tag-help_panel_question-description": "Edición realizada desde la función de publicación de una pregunta del panel de ayuda.",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Ediciones sugeridas",
 	"growthexperiments-help-panel-button-header-ask-help": "Preguntar en el Café",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Pide ayuda a tu {{GENDER:|your}} {{GENDER:$1|mentor|mentora}}",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Pide ayuda a tu {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-help-panel-button-header-general-help": "Ayuda general sobre la edición",
 	"growthexperiments-help-panel-button-subheader-general-help": "Busca respuestas y lee los artículos principales",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Obtén respuestas de otros voluntarios",
