@@ -1,4 +1,4 @@
-jest.mock( '../../../ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js' );
+jest.mock( '../../../ext.growthExperiments.MentorDashboard.Vue/store/MenteeOverviewApi.js' );
 jest.mock( '../Tags.json', () => {
 	return {
 		questions: []

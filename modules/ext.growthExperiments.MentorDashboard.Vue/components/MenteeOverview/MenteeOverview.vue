@@ -68,7 +68,7 @@ const NoResults = require( './NoResults.vue' );
 const CInfoBox = require( '../../../vue-components/CInfoBox.vue' );
 const LegendBox = require( './LegendBox.vue' );
 const { cdxIconError, cdxIconClock, cdxIconInfo, cdxIconClose } = require( '../icons.json' );
-const apiClient = require( '../../../ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js' );
+const apiClient = require( '../../store/MenteeOverviewApi.js' );
 
 const MENTEES_TABLE_COLUMNS = [
 	{

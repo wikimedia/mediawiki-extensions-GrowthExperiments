@@ -34,7 +34,7 @@
 
 	MenteeOverviewApi.prototype.setFilters = function ( filters ) {
 		// First, delete all filtering API params
-		var menteeOverviewApi = this;
+		const menteeOverviewApi = this;
 		Object.keys( this.apiParams ).forEach( function ( key ) {
 			if ( menteeOverviewApi.nonFilterKeys.indexOf( key ) === -1 ) {
 				delete menteeOverviewApi.apiParams[ key ];
@@ -46,8 +46,8 @@
 	};
 
 	MenteeOverviewApi.prototype.hasFilters = function () {
-		var menteeOverviewApi = this;
-		var res = false;
+		const menteeOverviewApi = this;
+		let res = false;
 		Object.keys( this.apiParams ).every( function ( key ) {
 			if ( res ) {
 				return false;
@@ -70,7 +70,7 @@
 	 * hasFilters tells whether there are any filters applied at all. In certain
 	 * cases, however, even though some filters are set, they do not filter out any mentee.
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	MenteeOverviewApi.prototype.doesFilterOutMentees = function () {
 		return this.totalRows !== this.assignedMentees;
@@ -94,7 +94,7 @@
 	};
 
 	MenteeOverviewApi.prototype.getMenteeData = function () {
-		var menteeOverviewApi = this;
+		const menteeOverviewApi = this;
 
 		this.apiParams.uselang = mw.config.get( 'wgUserLanguage' );
 		return $.getJSON( this.apiUrl + '?' + $.param( this.apiParams ) ).then( function ( data ) {
@@ -112,7 +112,7 @@
 	};
 
 	MenteeOverviewApi.prototype.getStarredMentees = function () {
-		var menteeOverviewApi = this;
+		const menteeOverviewApi = this;
 		if ( this.starredMentees !== null ) {
 			return $.Deferred().resolve( this.starredMentees ).promise();
 		} else {
@@ -128,9 +128,9 @@
 			action: 'query',
 			list: 'growthstarredmentees'
 		} ) ).then( function ( data ) {
-			var mentees = [];
-			for ( var i = 0; i < data.growthstarredmentees.mentees.length; i++ ) {
-				var menteeId = Number( data.growthstarredmentees.mentees[ i ].id );
+			const mentees = [];
+			for ( let i = 0; i < data.growthstarredmentees.mentees.length; i++ ) {
+				const menteeId = Number( data.growthstarredmentees.mentees[ i ].id );
 				if ( mentees.indexOf( menteeId ) === -1 ) {
 					mentees.push( menteeId );
 				}
@@ -140,7 +140,7 @@
 	};
 
 	MenteeOverviewApi.prototype.starMentee = function ( userId ) {
-		var menteeOverviewApi = this;
+		const menteeOverviewApi = this;
 		return new mw.Api().postWithToken( 'csrf', {
 			action: 'growthstarmentee',
 			gesaction: 'star',
@@ -157,7 +157,7 @@
 	};
 
 	MenteeOverviewApi.prototype.unstarMentee = function ( userId ) {
-		var menteeOverviewApi = this;
+		const menteeOverviewApi = this;
 		return new mw.Api().postWithToken( 'csrf', {
 			action: 'growthstarmentee',
 			gesaction: 'unstar',
