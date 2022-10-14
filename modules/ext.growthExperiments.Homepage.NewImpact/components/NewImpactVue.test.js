@@ -1,6 +1,8 @@
 jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconEdit: '',
-	cdxIconHeart: ''
+	cdxIconHeart: '',
+	cdxIconClock: '',
+	cdxIconChart: ''
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const NewImpact = require( './NewImpact.vue' );
@@ -24,7 +26,7 @@ describe( 'NewImpactVue', () => {
 			}
 		} );
 		wrapper.vm.$nextTick( () => {
-			expect( wrapper.findAllComponents( ScoreCard ) ).toHaveLength( 2 );
+			expect( wrapper.findAllComponents( ScoreCard ) ).toHaveLength( 4 );
 			expect( wrapper.findAllComponents( RecentActivity ) ).toHaveLength( 1 );
 			done();
 		} );

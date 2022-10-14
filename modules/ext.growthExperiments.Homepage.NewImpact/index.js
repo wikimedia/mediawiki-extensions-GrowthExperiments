@@ -2,6 +2,12 @@
 	'use strict';
 	const Vue = require( 'vue' );
 	const NewImpact = require( './components/NewImpact.vue' );
-	Vue.createMwApp( NewImpact )
-		.mount( '#new-impact-vue-root' );
+	const { convertNumber } = require( '../utils/filters.js' );
+	const app = Vue.createMwApp( NewImpact );
+
+	app.mount( '#new-impact-vue-root' );
+
+	app.config.globalProperties.$filters = {
+		convertNumber
+	};
 }() );

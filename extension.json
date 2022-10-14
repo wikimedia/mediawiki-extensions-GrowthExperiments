@@ -621,10 +621,12 @@
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.NewImpact/index.js",
 				"ext.growthExperiments.Homepage.NewImpact/composables/useMWRestApi.js",
+				"ext.growthExperiments.Homepage.NewImpact/composables/useUserImpact.js",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/StreakGraph.vue",
+				"utils/filters.js",
 				"vue-components/CLink.vue",
 				"vue-components/CText.vue",
 				{
@@ -632,7 +634,9 @@
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
 					"callbackParam": [
 						"cdxIconEdit",
-						"cdxIconHeart"
+						"cdxIconHeart",
+						"cdxIconClock",
+						"cdxIconChart"
 					]
 				}
 			],
