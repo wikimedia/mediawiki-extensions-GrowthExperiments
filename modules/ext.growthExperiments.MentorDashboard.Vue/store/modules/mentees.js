@@ -20,18 +20,11 @@ const getInitialPresetsWithFallback = () => {
 			MENTEE_OVERVIEW_PRESETS_PREF
 		);
 		initialPresets = {
-			limit: Number.isInteger( savedPresets.usersToShow ) ?
-				savedPresets.usersToShow : initialPresets.usersToShow,
-			editCountMin: savedPresets.filters &&
-				Number.isInteger( savedPresets.filters.minedits ) ?
-				savedPresets.filters.minedits : initialPresets.editCountMin,
-			editCountMax: savedPresets.filters &&
-				Number.isInteger( savedPresets.filters.maxedits ) ?
-				savedPresets.filters.maxedits : initialPresets.editCountMax,
-			onlyStarred: savedPresets.filters && savedPresets.filters.onlystarred ||
-				initialPresets.onlyStarred,
-			activeDaysAgo: savedPresets.filters && savedPresets.filters.activedaysago ||
-				initialPresets.activeDaysAgo
+			limit: savedPresets.usersToShow,
+			editCountMin: savedPresets.filters.minedits,
+			editCountMax: savedPresets.filters.maxedits,
+			onlyStarred: savedPresets.filters.onlystarred,
+			activeDaysAgo: savedPresets.filters.activedaysago
 		};
 	} catch ( err ) {
 		if ( err instanceof SyntaxError ) {

@@ -5,10 +5,15 @@ jest.mock( '../Tags.json', () => {
 	};
 }, { virtual: true } );
 
-const jsonStoredPresets = ( {
-	usersToShow = 5, maxedits = 500, minedits = 1, onlystarred = false
-} = {} ) => {
-	return `{"usersToShow":${usersToShow},"filters":{"maxedits": ${maxedits},"minedits": ${minedits},"onlystarred": ${onlystarred}}}`;
+const jsonStoredPresets = ( { usersToShow, maxedits, minedits, onlystarred } = {} ) => {
+	return JSON.stringify( {
+		usersToShow,
+		filters: {
+			minedits,
+			maxedits,
+			onlystarred
+		}
+	} );
 };
 
 describe( 'utils', () => {
@@ -53,11 +58,11 @@ describe( 'utils', () => {
 		);
 	} );
 
-	it( 'should return stored presets if they are JSON valid', () => {
-		const mockPresets = { usersToShow: 15, maxedits: 15, minedits: 15, onlystarred: true };
+	it( 'should return stored presets if they are JSON valid and non-stored as undefined', () => {
+		const mockPresets = { usersToShow: 15, minedits: 15, onlystarred: true };
 		const expectedPresets = {
 			limit: 15,
-			editCountMax: 15,
+			editCountMax: undefined,
 			editCountMin: 15,
 			onlyStarred: true,
 			activeDaysAgo: undefined
