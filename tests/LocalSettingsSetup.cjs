@@ -11,9 +11,6 @@ const childProcess = require( 'child_process' ),
  * in order to load updated php code.
  */
 async function restartPhpFpmService() {
-	if ( !process.env.QUIBBLE_APACHE ) {
-		return;
-	}
 	console.log( 'Restarting ' + phpFpmService );
 	childProcess.spawnSync(
 		'service',
