@@ -10,5 +10,7 @@
 	"apihelp-homepagequestionstore-param-userid": "Korisnička naznaka za koju će se pribaviti pitanja.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Nije pronađeno nijedno pitanje.",
 	"apihelp-growthsetmentor-summary": "Dodjeljivanje mentora za korisnika. Izmjena će biti javna.",
+	"apihelp-growthsetmentor-param-mentee": "Korisničko ime novajlije",
+	"apihelp-growthsetmentor-param-mentor": "Korisničko ime mentora",
 	"apihelp-growthsetmentor-param-reason": "Razlog promjene"
 }

@@ -35,7 +35,8 @@
 			"Sergi0",
 			"Danniel07",
 			"McDutchie",
-			"OriginReboot"
+			"OriginReboot",
+			"-jem-"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -115,7 +116,7 @@
 	"growthexperiments-tour-mentor-response-tip-personal-text": "Cuando {{GENDER:$1|tu}} {{GENDER:$2|mentor|mentora}} responda, recibirás una alerta aquí.",
 	"growthexperiments-tour-response-button-okay": "Entendido",
 	"tag-help_module_question": "Pregunta del módulo de ayuda",
-	"tag-mentorship_module_question": "Pregunta del módulo de tutoría",
+	"tag-mentorship_module_question": "Pregunta del módulo de mentoría",
 	"tag-newcomer_task": "Tarea para novatos",
 	"tag-newcomer_task-description": "Edición sugerida por el módulo de ediciones sugeridas de la página de inicio para usuarios nuevos",
 	"growthexperiments-homepage-help-dialog-title": "Preguntar en el café de ayuda",

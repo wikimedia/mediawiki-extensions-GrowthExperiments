@@ -16,7 +16,8 @@
 			"Sofia Stecchi",
 			"Stefano",
 			"Toa",
-			"McDutchie"
+			"McDutchie",
+			"GpieroMW"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
@@ -36,8 +37,8 @@
 	"growthexperiments-homepage-userpage-button": "Crea pagina utente",
 	"growthexperiments-homepage-userpage-button-done": "Modifica pagina utente",
 	"growthexperiments-homepage-userpage-guidelines": "Linee guida per le pagine utente",
-	"growthexperiments-homepage-email-header-noemail": "Inserisci la tua email",
-	"growthexperiments-homepage-email-header-unconfirmed": "Conferma la tua email",
+	"growthexperiments-homepage-email-header-noemail": "Inserisci {{GENDER:$1|la tua}} email",
+	"growthexperiments-homepage-email-header-unconfirmed": "Conferma {{GENDER:$1|la tua}} email",
 	"growthexperiments-homepage-email-header-confirmed": "Email aggiunta",
 	"growthexperiments-homepage-email-text-noemail": "Raccomandato per il ripristino dell'utenza",
 	"growthexperiments-homepage-email-text-unconfirmed": "Controlla il link di verifica inviato alla tua email o richiedi un nuovo link.",
