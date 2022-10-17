@@ -66,6 +66,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Stvorite nove članke ili proširite postojeće kratke.",
 	"growthexperiments-homepage-suggested-edits-header": "Predložena uređivanja",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|}}Vaši doprinosi",
+	"growthexperiments-homepage-impact-scores-thanks-count": "Primljeno zahvala",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:$1|}}Vaši su članci čitani!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|}}Broj čitanja otkad ste uređivali članak (do 60 dana):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|}}Napravili ste <strong>$1</strong> {{PLURAL:$1|uređivanje|uređivanja}} (pogledajte sve)",

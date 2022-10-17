@@ -4,5 +4,11 @@
 			"ReyLon Mrat"
 		]
 	},
-	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Your}} လောလောလတ်လတ်လုပ်ဆောင်မှု (last $2 {{PLURAL:$2|day|days}})"
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Your}} လောလောလတ်လတ်လုပ်ဆောင်မှု (last $2 {{PLURAL:$2|day|days}})",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "နောက်ဆုံးတီဖြတ်: $1",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "အကောင်းဆုံး စင်းကြား: $1",
+	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|တီးဖြတ်|တီးဖြတ်ခြင်းတိ}}",
+	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|တီးဖြတ်|တီဒုဖတ်ခြင်းတိ}} ပေါ်မှာ $2",
+	"growthexperiments-homepage-impact-scores-edit-count": "တီဖြတ်မှုအားလုံး",
+	"growthexperiments-homepage-impact-scores-thanks-count": "လက်ခံရပါရေ ကျေးဇူးပါ"
 }

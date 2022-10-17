@@ -4,5 +4,8 @@
 			"Ajiniyaz Nurniyazov"
 		]
 	},
-	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Siziń}} jaqın aradaǵı háreketlerińiz (aqırǵı $2 {{PLURAL:$2|kún|kúnler}})"
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Siziń}} jaqın aradaǵı háreketlerińiz (aqırǵı $2 {{PLURAL:$2|kún|kúnler}})",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|kún|kúnler}} izbe-iz",
+	"growthexperiments-homepage-impact-scores-edit-count": "Jámi ózgerisler",
+	"growthexperiments-homepage-impact-scores-thanks-count": "Raxmet qabıl etildi"
 }

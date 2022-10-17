@@ -77,7 +77,7 @@
 	"growthexperiments-homepage-new-impact-header": "Dosah {{GENDER:$1|vašich}} příspěvků",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Pro zobrazení této komponenty povolte JavaScript.",
 	"growthexperiments-homepage-impact-header": "Dosah {{GENDER:$1|vašich}} příspěvků",
-	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Vaše}} reálná aktivita",
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Vaše}} reálná aktivita ({{PLURAL:$2|poslední $2 den|poslední $2 dny|posledních $2 dní}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Poslední editace: $1",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Nejlepší série: $1",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|den|dny|dní}} v řadě",

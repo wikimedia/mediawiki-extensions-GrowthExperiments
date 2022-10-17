@@ -59,6 +59,10 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nei",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Side som inneholder lista over faddere som automatisk kan tildeles nybegynnere",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Side som inneholder lista over faddere som kun kan tildeles manuelt",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Bør brukere automatisk kvalifisere for fadderprogrammet?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Ja, la brukere som oppfyller alle kriteriene nedenfor melde seg opp som faddere.",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Nei, ikke la noen brukere melde seg som faddere.",
+	"growthexperiments-edit-config-mentorship-minimum-age": "Minimalt antall dager en bruker må være registrert for å kunne melde seg som fadder",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Minimalt antall redigeringer en bruker må ha (i alle navnerom) for å kunne melde seg som fadder",
 	"growthexperiments-edit-config-newcomertasks": "Foreslåtte redigeringer",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Noen typer foreslåtte redigeringer kommer fram ved hjelp av maler. Artikler som inneholder disse malene legges til i matingen. For å se hvor mange artikler som er tilgjengelige for hver oppgavetype, se [[Special:NewcomerTasksInfo|denne sida]].",
@@ -76,10 +80,14 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Målside for å lære mer om oppdatering av artikler.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Målside for å lære mer om oppgavetypen foreslåtte lenker.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Maksimalt antall lenkeforslag som skal vises på hver foreslåtte oppgave.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "Maksimalt antall «Legg til lenke»-oppgaver en nybegynner kan utføre daglig.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Liste over seksjonsnavn der det ikke bør anbefales å legge til lenker.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Målside for å lære mer om oppgavetypen legg til bilde.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "Maksimalt antall «Legg til bilde»-oppgaver en nybegynner kan utføre daglig.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Denne oppgavetypen assosieres med maskinforslag, og bruker ikke maler for å generere mulige oppgaver.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artikler som inneholder disse malene vises ikke til brukerne som oppgaver for denne oppgavetypen.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artikler som inneholder disse kategoriene blir ikke vist til brukerne som oppgaver for denne oppgavetypen.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infoboksmaler",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Disse malene trengs for nybegynnerfunksjonen for [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|bildeforslag]]. Artikler som inneholder disse malene blir ikke listet opp som bildeforslagsoppgaver."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Disse malene trengs for nybegynnerfunksjonen for [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|bildeforslag]]. Artikler som inneholder disse malene blir ikke listet opp som bildeforslagsoppgaver.",
+	"growthexperiments-edit-config-delayed": "Endringer i denne innstillingen vil ikke tre i kraft umiddelbart (se [[mw:Growth/FAQ#add-link-config|OSS]])."
 }
