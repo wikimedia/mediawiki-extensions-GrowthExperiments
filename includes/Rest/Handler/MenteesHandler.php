@@ -9,6 +9,7 @@ use GrowthExperiments\Util;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MWTimestamp;
 use RequestContext;
@@ -31,6 +32,9 @@ class MenteesHandler extends SimpleHandler {
 	/** @var StarredMenteesStore */
 	private $starredMenteesStore;
 
+	/** @var UserFactory */
+	private $userFactory;
+
 	/** @var TitleFactory */
 	private $titleFactory;
 
@@ -43,6 +47,7 @@ class MenteesHandler extends SimpleHandler {
 	/**
 	 * @param MenteeOverviewDataProvider $dataProvider
 	 * @param StarredMenteesStore $starredMenteesStore
+	 * @param UserFactory $userFactory
 	 * @param TitleFactory $titleFactory
 	 * @param TitleParser $titleParser
 	 * @param LinkBatchFactory $linkBatchFactory
@@ -50,12 +55,14 @@ class MenteesHandler extends SimpleHandler {
 	public function __construct(
 		MenteeOverviewDataProvider $dataProvider,
 		StarredMenteesStore $starredMenteesStore,
+		UserFactory $userFactory,
 		TitleFactory $titleFactory,
 		TitleParser $titleParser,
 		LinkBatchFactory $linkBatchFactory
 	) {
 		$this->dataProvider = $dataProvider;
 		$this->starredMenteesStore = $starredMenteesStore;
+		$this->userFactory = $userFactory;
 		$this->titleFactory = $titleFactory;
 		$this->titleParser = $titleParser;
 		$this->linkBatchFactory = $linkBatchFactory;
@@ -160,6 +167,9 @@ class MenteesHandler extends SimpleHandler {
 					$menteeData['username'],
 					NS_USER
 				)->isKnown();
+				$menteeData['user_is_hidden'] = $this->userFactory->newFromName(
+					$menteeData['username']
+				)->isHidden();
 			}
 		} );
 
