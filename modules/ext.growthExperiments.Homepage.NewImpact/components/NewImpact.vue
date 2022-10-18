@@ -7,7 +7,7 @@
 				:label="$i18n( 'growthexperiments-homepage-impact-scores-edit-count' )"
 			>
 				<c-link :href="contributionsUrl" :disable-visited="true">
-					<c-text weight="bold">
+					<c-text size="md" weight="bold">
 						{{ $filters.convertNumber( data.totalEditsCount ) }}
 					</c-text>
 				</c-link>
@@ -16,7 +16,7 @@
 				:icon="cdxIconHeart"
 				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' )"
 			>
-				<c-text as="span" weight="bold">
+				<c-text as="span" size="md" weight="bold">
 					{{ $filters.convertNumber( data.receivedThanksCount ) }}
 				</c-text>
 			</score-card>
@@ -24,7 +24,7 @@
 				:icon="cdxIconClock"
 				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' )"
 			>
-				<c-text as="span" weight="bold">
+				<c-text as="span" size="md" weight="bold">
 					{{ lastEditFormattedTimeAgo }}
 				</c-text>
 			</score-card>
@@ -32,13 +32,17 @@
 				:icon="cdxIconChart"
 				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' )"
 			>
-				<c-text as="span" weight="bold">
+				<c-text as="span" size="md" weight="bold">
 					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-streak-count-text', bestStreakDaysLocalisedCount ) }}
 				</c-text>
 			</score-card>
 		</div>
 		<div v-if="data">
-			<c-text as="h5">
+			<c-text
+				as="h5"
+				size="md"
+				weight="bold"
+			>
 				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-title', userName, DEFAULT_STREAK_TIME_FRAME ) }}
 			</c-text>
 			<recent-activity

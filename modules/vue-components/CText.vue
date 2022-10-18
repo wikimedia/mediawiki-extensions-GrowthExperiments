@@ -46,32 +46,42 @@ module.exports = exports = {
 
 <style lang="less">
 @import './variables.less';
-// TODO match font size tokens in Figma against standard WM tokens
+// TODO match WIP line height spec from Codex https://www.figma.com/file/X8pKlndyPaqZg4I3GubQs6/Typography
+
 .ext-growthExperiments-CText {
-	font-size: 1em;
+	font-size: @font-size-100;
+	font-weight: @font-weight-normal;
 
-	&--size-x-small {
-		font-size: 0.7em;
+	&--size-xs {
+		font-size: @font-size-80;
 	}
 
-	&--size-small {
-		font-size: 0.9em;
+	&--size-sm {
+		font-size: @font-size-90;
 	}
 
-	&--size-medium {
-		font-size: 0.94em;
+	&--size-md {
+		font-size: @font-size-110;
 	}
 
-	&--size-large {
-		font-size: 1.1em;
+	&--size-lg {
+		font-size: @font-size-125;
 	}
 
-	&--size-x-large {
-		font-size: 2em;
+	&--size-xl {
+		font-size: @font-size-150;
+	}
+
+	&--size-xxl {
+		font-size: @font-size-175;
 	}
 
 	&--color-subtle {
 		color: @color-subtle;
+	}
+
+	&--color-placeholder {
+		color: @color-placeholder;
 	}
 
 	&--weight-hairline {
@@ -80,10 +90,6 @@ module.exports = exports = {
 
 	&--weight-light {
 		font-weight: @font-weight-light;
-	}
-
-	&--weight-normal {
-		font-weight: @font-weight-normal;
 	}
 
 	&--weight-semi-bold {
