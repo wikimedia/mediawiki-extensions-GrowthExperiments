@@ -347,7 +347,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			],
 			'geconfig-mentorship-description' => [
 				'type' => 'info',
-				'label-message' => 'growthexperiments-edit-config-mentorship-description',
+				// used messages:
+				// * growthexperiments-edit-config-mentorship-description-wikitext
+				// * growthexperiments-edit-config-mentorship-description-structured
+				'label-message' => 'growthexperiments-edit-config-mentorship-description-' .
+					$this->getConfig()->get( 'GEMentorProvider' ),
 				'section' => 'mentorship',
 			],
 			'geconfig-GEMentorshipEnabled' => [
