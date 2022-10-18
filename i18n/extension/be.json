@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chadyka"
+			"Chadyka",
+			"Plaga med"
 		]
 	},
 	"growthexperiments-desc": "Гэта пашырэнне змяшчае эксперыменты, якія праводзіць каманда Росту.",
@@ -16,7 +17,7 @@
 	"growthexperiments-edit-config-pretext-unprivileged": "Гэтая форма дазваляе ўдзельнікам, якія маюць неабходныя правы, правіць канфігурацыю функцый каманды [[:mw:Special:MyLanguage/Growth|Росту]].",
 	"growthexperiments-edit-config-feedback-headline": "У вас ёсць ідэі або пытанні наконт гэтай формы?",
 	"growthexperiments-edit-config-feedback-cta": "Пакіньце водгук",
-	"growthexperiments-edit-config-error-invalid-title": "Старонка канфігурацыі не была настроена належным чынам",
+	"growthexperiments-edit-config-error-invalid-title": "Старонка канфігурацыі не была сканфігуравана належным чынам",
 	"growthexperiments-edit-config-edit-summary": "Тлумачэнне праўкі",
 	"growthexperiments-edit-config-config-changed": "Канфігурацыя была зменена. Магчыма, вам спатрэбіцца пачакаць некалькі хвілін, каб змены ўступілі ў сілу.",
 	"growthexperiments-edit-config-return-to-form": "Вы можаце [[Special:EditGrowthConfig|вярнуцца]] да формы праўкі.",
@@ -28,13 +29,13 @@
 	"growthexperiments-edit-config-help-panel-post-on-top": "Дзе на старонцы Службы падтрымкі трэба размяшчаць новыя пытанні?",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Уверсе старонкі",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Унізе старонкі",
-	"growthexperiments-edit-config-help-panel-view-more": "Мэтавая старонка для «Праглядзіце дадатковыя артыкулы дапамогі»",
+	"growthexperiments-edit-config-help-panel-view-more": "Мэтавая старонка для «Праглядзець больш дапаможных артыкулаў»",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Прасторы імёнаў для ўключэння ў пошук вольнага тэксту дапамогі ў акенцы даведкі",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Куды павінны быць накіраваны пытанні з акенца дапамогі?",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Старонкі размоў з настаўнікамі",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Служба падтрымкі",
 	"growthexperiments-edit-config-help-panel-links": "Спасылкі ў акенцы дапамогі",
-	"growthexperiments-edit-config-help-panel-links-description": "Акенца дапамогі адлюстроўвае пяць спасылак і адну спасылку «Праглядзіце дадатковыя». Яны могуць быць настроены на любыя спасылкі ў вікі, але ніжэй прыведзены рэкамендацыі.",
+	"growthexperiments-edit-config-help-panel-links-description": "Панэль дапамогі адлюстроўвае пяць спасылак і адну спасылку «Праглядзець больш». Яны могуць быць сканфігураваны на любыя спасылкі ў вікі, але рэкамендацыі прыведзены ніжэй.",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "1) Мэтавая старонка для першай спасылкі ў акенцы дапамогі (рэкамендуецца: Кіраўніцтва па афармленні)",
 	"growthexperiments-edit-config-help-panel-links-mos-label": "1) Назва для першай спасылкі ў акенцы дапамогі (рэкамендуецца: «Кіраўніцтва па афармленні»)",
 	"growthexperiments-edit-config-help-panel-links-editing-title": "2) Мэтавая старонка для другой спасылкі ў акенцы дапамогі (рэкамендуецца: Кіраўніцтва візуальнага рэдактара)",

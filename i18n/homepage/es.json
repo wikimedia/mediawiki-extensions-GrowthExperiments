@@ -35,7 +35,8 @@
 			"Sergi0",
 			"Danniel07",
 			"McDutchie",
-			"OriginReboot"
+			"OriginReboot",
+			"-jem-"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -126,9 +127,9 @@
 	"growthexperiments-tour-response-button-okay": "Entendido",
 	"tag-help_module_question": "Pregunta del módulo de ayuda",
 	"tag-help_module_question-description": "Edición realizada desde la función \"Haz una pregunta\" del módulo de ayuda de la página de inicio para usuarios nuevos",
-	"tag-mentorship_module_question": "Pregunta del módulo de tutoría",
+	"tag-mentorship_module_question": "Pregunta del módulo de mentoría",
 	"tag-mentorship_module_question-description": "Edición realizada desde la función «Pregunta a tu mentor» del módulo de tutoría de la página de inicio",
-	"tag-mentorship_panel_question": "Pregunta del panel de mentores",
+	"tag-mentorship_panel_question": "Pregunta del panel de mentoría",
 	"tag-mentorship_panel_question-description": "Edición realizada desde la función \"Pregúntale a tu mentor\" del panel de ayuda",
 	"tag-newcomer_task": "Tarea para novatos",
 	"tag-newcomer_task-description": "Edición sugerida por el módulo de ediciones sugeridas de la página de inicio para usuarios nuevos",
