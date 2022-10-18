@@ -937,7 +937,7 @@ return [
 	'GrowthExperimentsUserImpactLookup' => static function (
 		MediaWikiServices $services
 	): UserImpactLookup {
-		return $services->get( '_GrowthExperimentsUserImpactLookup_Subpage' );
+		return $services->get( '_GrowthExperimentsUserImpactLookup_Computed' );
 	},
 
 	'_GrowthExperimentsUserImpactLookup_Subpage' => static function (
