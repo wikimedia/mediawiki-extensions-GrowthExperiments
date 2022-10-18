@@ -5,8 +5,6 @@ const { config } = require( 'wdio-mediawiki/wdio-defaults.conf.js' ),
 	path = require( 'path' ),
 	fs = require( 'fs' ),
 	ip = path.resolve( __dirname + '/../../../../' ),
-	// Take a snapshot of the local settings contents
-	localSettings = fs.readFileSync( path.resolve( ip + '/LocalSettings.php' ) ),
 	CreateAccountPage = require( 'wdio-mediawiki/CreateAccountPage' ),
 	Util = require( 'wdio-mediawiki/Util' ),
 	LocalSettingsSetup = require( __dirname + '/../LocalSettingsSetup.cjs' );
@@ -23,14 +21,7 @@ exports.config = { ...config,
 	},
 	services: [ 'devtools', 'intercept' ],
 	onPrepare: async function () {
-		console.log( 'Require GrowthExperiments.LocalSettings.php...' );
-		fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ),
-			// Load the service overrides
-			localSettings + `
-if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php" ) ) {
-	require_once "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php";
-}
-` );
+		await LocalSettingsSetup.overrideLocalSettings();
 		await LocalSettingsSetup.restartPhpFpmService();
 		// Import the test articles and their suggestions
 		const suggestedEditsContentFilepath = path.resolve( __dirname + '/fixtures/SuggestedEditsContent.xml' );
@@ -74,8 +65,7 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 		console.log( updatePhpResult.stdout.toString( 'utf8' ) );
 	},
 	onComplete: async function () {
-		// Remove the LocalSettings.php additions from onPrepare()
-		await fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ), localSettings );
+		await LocalSettingsSetup.restoreLocalSettings();
 		await LocalSettingsSetup.restartPhpFpmService();
 	}
 };

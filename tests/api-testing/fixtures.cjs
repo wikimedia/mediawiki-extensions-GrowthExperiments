@@ -4,17 +4,9 @@ const path = require( 'path' );
 const childProcess = require( 'child_process' );
 const ip = path.resolve( __dirname + '/../../../../' );
 const LocalSettingsSetup = require( __dirname + '/../LocalSettingsSetup.cjs' );
-const localSettings = fs.readFileSync( path.resolve( ip + '/LocalSettings.php' ) );
 
 exports.mochaGlobalSetup = async function () {
-	console.log( 'Setting up modified LocalSettings.php' );
-	fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ),
-		// Load the service overrides
-		localSettings + `
-if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php" ) ) {
-    require_once "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php";
-}
-` );
+	await LocalSettingsSetup.overrideLocalSettings();
 	await LocalSettingsSetup.restartPhpFpmService();
 	// Import the test articles and their suggestions
 	childProcess.spawnSync(
@@ -30,7 +22,6 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 };
 
 exports.mochaGlobalTeardown = async function () {
-	console.log( 'Restoring LocalSettings.php' );
-	fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ), localSettings );
+	await LocalSettingsSetup.restoreLocalSettings();
 	await LocalSettingsSetup.restartPhpFpmService();
 };
