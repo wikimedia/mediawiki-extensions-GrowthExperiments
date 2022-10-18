@@ -2289,8 +2289,12 @@
 			"description": "Global ON/OFF switch for the link recommendations feature. Depending on the state, either the 'links' or the 'link-recommendation' task type is hidden. Can be overridden by SuggestedEdits::LINK_RECOMMENDATIONS_ENABLED_PREF.",
 			"value": true
 		},
+		"GEAllowAccessToNewImpactModule": {
+			"description": "Whether users can access the new impact module. When this is false, no one can access. When true, the new impact module is shown by default depending on GEUseNewImpactModule or if the ?new-impact query string is used on Special:Homepage",
+			"value": false
+		},
 		"GEUseNewImpactModule": {
-			"description": "Global ON/OFF switch for the new impact module.",
+			"description": "Whether the new impact module should be used instead of the old impact module",
 			"value": false
 		},
 		"GETopicsMatchModeEnabled": {

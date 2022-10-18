@@ -141,10 +141,11 @@ class HomepageModuleRegistry {
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
+				$config = $context->getConfig();
 				$useNewImpactModule = $context->getRequest()->getBool(
 					'new-impact',
-					$context->getConfig()->get( 'GEUseNewImpactModule' )
-				);
+					$config->get( 'GEUseNewImpactModule' )
+				) && $config->get( 'GEAllowAccessToNewImpactModule' ) === true;
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				if ( $useNewImpactModule ) {
 					return new NewImpact(
