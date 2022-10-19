@@ -1,5 +1,9 @@
 <template>
-	<section class="ext-growthExperiments-NewImpact">
+	<section
+		class="ext-growthExperiments-NewImpact"
+		:class="{
+			'ext-growthExperiments-NewImpact--mobile': isMobileHomepage === true
+		}">
 		<!-- TODO: add skeletons, maybe use suspense, load sections only if data available -->
 		<div v-if="data" class="ext-growthExperiments-NewImpact__scores">
 			<score-card
@@ -16,7 +20,10 @@
 				:icon="cdxIconHeart"
 				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' )"
 			>
-				<c-text as="span" size="md" weight="bold">
+				<c-text
+					as="span"
+					size="md"
+					weight="bold">
 					{{ $filters.convertNumber( data.receivedThanksCount ) }}
 				</c-text>
 			</score-card>
@@ -24,7 +31,10 @@
 				:icon="cdxIconClock"
 				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' )"
 			>
-				<c-text as="span" size="md" weight="bold">
+				<c-text
+					as="span"
+					size="md"
+					weight="bold">
 					{{ lastEditFormattedTimeAgo }}
 				</c-text>
 			</score-card>
@@ -32,13 +42,17 @@
 				:icon="cdxIconChart"
 				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' )"
 			>
-				<c-text as="span" size="md" weight="bold">
+				<c-text
+					as="span"
+					size="md"
+					weight="bold">
 					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-streak-count-text', bestStreakDaysLocalisedCount ) }}
 				</c-text>
 			</score-card>
 		</div>
 		<div v-if="data">
 			<c-text
+				class="ext-growthExperiments-NewImpact__recent-activity-title"
 				as="h5"
 				size="md"
 				weight="bold"
@@ -46,6 +60,7 @@
 				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-title', userName, DEFAULT_STREAK_TIME_FRAME ) }}
 			</c-text>
 			<recent-activity
+				:is-mobile="isMobileHomepage"
 				:contribs="data.contributions"
 				:time-frame="DEFAULT_STREAK_TIME_FRAME"
 				:date-format="DEFAULT_STREAK_DISPLAY_DATE_FORMAT"
@@ -79,6 +94,7 @@ module.exports = exports = {
 	},
 	props: {},
 	setup() {
+		const isMobileHomepage = mw.config.get( 'homepagemobile' );
 		const userId = mw.config.get( 'GENewImpactRelevantUserId' );
 		const { data, error } = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
 		return {
@@ -88,6 +104,7 @@ module.exports = exports = {
 			cdxIconHeart,
 			cdxIconClock,
 			cdxIconChart,
+			isMobileHomepage,
 			data,
 			// TODO: how to give user error feedback?
 			// eslint-disable-next-line vue/no-unused-properties
@@ -116,6 +133,16 @@ module.exports = exports = {
 
 <style lang="less">
 .ext-growthExperiments-NewImpact {
+	&--mobile {
+		// Expand all content over homepage modules padding
+		margin: -16px;
+	}
+
+	&__recent-activity-title {
+		// Use same margin from desktop vector
+		margin-top: 0.3em;
+	}
+
 	&__scores {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
