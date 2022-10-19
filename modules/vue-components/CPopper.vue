@@ -70,7 +70,6 @@ module.exports = exports = {
 	position: relative;
 
 	&__popover {
-		width: 430px;
 		position: absolute;
 		z-index: 1;
 		top: 0;

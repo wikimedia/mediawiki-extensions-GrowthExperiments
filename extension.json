@@ -628,6 +628,9 @@
 				"ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/StreakGraph.vue",
 				"utils/filters.js",
+				"vue-components/directives/click-outside.directive.js",
+				"vue-components/CInfoBox.vue",
+				"vue-components/CPopper.vue",
 				"vue-components/CLink.vue",
 				"vue-components/CText.vue",
 				{
@@ -637,13 +640,19 @@
 						"cdxIconEdit",
 						"cdxIconHeart",
 						"cdxIconClock",
-						"cdxIconChart"
+						"cdxIconChart",
+						"cdxIconClose",
+						"cdxIconInfo",
+						"cdxIconInfoFilled"
 					]
 				}
 			],
 			"messages": [
 				"growthexperiments-homepage-impact-scores-edit-count",
 				"growthexperiments-homepage-impact-scores-thanks-count",
+				"growthexperiments-homepage-impact-scores-best-streak-info-text",
+				"growthexperiments-homepage-impact-scores-best-streak-info-data-text",
+				"growthexperiments-homepage-impact-scores-thanks-info-text",
 				"growthexperiments-homepage-impact-recent-activity-title",
 				"growthexperiments-homepage-impact-recent-activity-last-edit-text",
 				"growthexperiments-homepage-impact-recent-activity-best-streak-text",
