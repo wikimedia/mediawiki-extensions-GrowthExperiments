@@ -8,7 +8,8 @@
 			"Lorelai87",
 			"Sakretsu",
 			"Sannita",
-			"ValeJappo"
+			"ValeJappo",
+			"GpieroMW"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Attiva il pannello introduttivo",
@@ -19,7 +20,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Migliori pagine di aiuto",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Vedi altre pagine di aiuto",
 	"growthexperiments-help-panel-question-widget-header": "Invia le tue domande allo Sportello Informazioni",
-	"growthexperiments-help-panel-question-placeholder": "Saluta e scrivi la tua domanda.",
+	"growthexperiments-help-panel-question-placeholder": "Saluta e scrivi {{GENDER:$1|la tua}} domanda.",
 	"growthexperiments-help-panel-back-home": "Indietro",
 	"growthexperiments-help-panel-close": "Fatto",
 	"growthexperiments-help-panel-home-title": "Ricevi aiuto nel contribuire",
@@ -111,7 +112,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "Quando hai finito di ampliare la voce, premi il pulsante con la freccia blu per pubblicare le tue modifiche!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Ulteriori informazioni sull'ampliare voci]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Aggiungere collegamenti aiuterà le persone ad apprendere più velocemente.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "Sarai tu a decidere se le parole in una voce di {{SITENAME}} debbano essere collegate ad altre voci di {{SITENAME}}.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "Sarai {{GENDER:$1|tu}} a decidere se le parole in un articolo di {{SITENAME}} debbano essere collegate ad altre voci di {{SITENAME}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "La luna è l'unico <mark class=\"positive\">satellite naturale</mark> che <mark class=\"positive\">orbita</mark> attorno alla <mark class=\"positive\">Terra</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Non devi possedere una particolare conoscenza sull'argomento trattato per completare questo compito.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "I collegamenti suggeriti sono generati da un'intelligenza artificiale e potrebbero non essere corretti.",

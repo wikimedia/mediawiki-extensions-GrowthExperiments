@@ -148,6 +148,7 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Tervetuloa {{GENDER:$1|aloitussivullesi}}!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Voit}} aina avata sivuvalikon ja klikata $2 palataksesi tänne.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Aloita täältä!",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> / <strong>$2</strong> {{PLURAL:$2|ehdotus|ehdotusta}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Loppu",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 lukukertaa (viimeiset 60 päivää)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Edellinen ehdotettu muokkaus",

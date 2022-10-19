@@ -6,7 +6,9 @@
 			"No Sleep till Krupki",
 			"Tomato Cream",
 			"Maksim L.",
-			"Tīgelika"
+			"Tīgelika",
+			"Artsiom91",
+			"Plaga med"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
@@ -21,7 +23,7 @@
 	"growthexperiments-homepage-email-header-startemail": "Эл. пошта: $1",
 	"growthexperiments-homepage-email-text-noemail": "Рэкамендуецца для аднаўлення рахунку",
 	"growthexperiments-homepage-email-text-unconfirmed": "Праверце {{GENDER:$1|сваю}} эл. пошту, каб знайсці спасылку для пацверджання або адпраўце новую спасылку.",
-	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|Ваш}} адрас эл. пошты быў пацверджаны. Вы можаце змяніць настройкі электроннай пошты ў Наладах.",
+	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|Ваш}} адрас эл. пошты быў пацверджаны. Вы можаце змяніць налады электроннай пошты ў Параметрах.",
 	"growthexperiments-homepage-email-button-noemail": "Дадаць адрас эл. пошты",
 	"growthexperiments-homepage-email-button-unconfirmed": "Атрымаць новую спасылку",
 	"growthexperiments-homepage-email-button-confirmed": "Налады",
@@ -308,7 +310,7 @@
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Прывітайце}} {{GENDER:$2|свайго новага настаўніка|сваю новую настаўніцу}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Вы павінны быць пазначаны ў якасці {{GENDER:$1|настаўніка|настаўніцы}} на старонцы [[$2]], каб выкарыстоўваць Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Налады спіса настаўнікаў няслушныя.",
-	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Спіс настаўнікаў ([[$1]]) не існуе або няправільна настроены.",
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Спіс настаўнікаў ([[$1]]) не існуе або няправільна сканфігураваны.",
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|Даведайцеся}} больш пра {{GENDER:$2|вашага новага настаўніка|вашу новую настаўніцу}}",
 	"right-setmentor": "Вызначэнне настаўніка ўдзельніка",
 	"action-setmentor": "вызначыць настаўніка ўдзельніка",
