@@ -57,7 +57,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "صفحهٔ مقصد پیوندی دربارهٔ ایجاد یک مقالهٔ تازه",
 	"growthexperiments-edit-config-homepage-intro-links-image": "صفحهٔ مقصد پیوندی دربارهٔ چگونگی افزودن تصاویر با استفاده از ویرایشگر دیداری",
 	"growthexperiments-edit-config-mentorship": "مربی‌گری",
-	"growthexperiments-edit-config-mentorship-description": "ویکی‌ها می‌توانند دو فهرست جداگانه از مربی‌ها داشته‌باشند: یکی برای مربی‌هایی که به‌طور تصادفی به تمامی تازه‌واردان اختصاص داده می‌شوند، و دیگری برای مربی‌هایی که به‌طور تصادفی اختصاص داده نمی‌شوند، اما می‌تواند مربی‌گری یک تازه‌وارد را برعهده بگیرند. فهرست دوم برای مربی‌هایی کاربرد دارد که تنها می‌خواهند مربی افراد جذب‌شده از رویدادها و کلاس‌های آموزشی باشند.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "ویکی‌ها می‌توانند دو فهرست جداگانه از مربی‌ها داشته‌باشند: یکی برای مربی‌هایی که به‌طور تصادفی به تمامی تازه‌واردان اختصاص داده می‌شوند، و دیگری برای مربی‌هایی که به‌طور تصادفی اختصاص داده نمی‌شوند، اما می‌تواند مربی‌گری یک تازه‌وارد را برعهده بگیرند. فهرست دوم برای مربی‌هایی کاربرد دارد که تنها می‌خواهند مربی افراد جذب‌شده از رویدادها و کلاس‌های آموزشی باشند.",
 	"growthexperiments-edit-config-mentorship-enabled": "آیا ویژگی‌های مربی‌گری فعال هستند؟",
 	"growthexperiments-edit-config-mentorship-enabled-true": "بله",
 	"growthexperiments-edit-config-mentorship-enabled-false": "خیر",

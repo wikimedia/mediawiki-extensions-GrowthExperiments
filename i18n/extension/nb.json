@@ -53,7 +53,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Målside for en lenke om hvordan man oppretter en ny artikkel",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Målside for en lenke om hvordan man legger til bilder i visuell redigering",
 	"growthexperiments-edit-config-mentorship": "Fadderprogram",
-	"growthexperiments-edit-config-mentorship-description": "Wikier kan ha to separate fadderlister: én for faddere som tilfeldig blir tildelt alle nybegynnere, og en annen for faddere som ikke ønsker å bli tildelt nybegynnere tilfeldig, men kan gjøre krav på fadderbarn. Den andre lista brukes for faddere som kun ønsker å være det for de som deltar på arrangementer eller kurs.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Wikier kan ha to separate fadderlister: én for faddere som tilfeldig blir tildelt alle nybegynnere, og en annen for faddere som ikke ønsker å bli tildelt nybegynnere tilfeldig, men kan gjøre krav på fadderbarn. Den andre lista brukes for faddere som kun ønsker å være det for de som deltar på arrangementer eller kurs.",
 	"growthexperiments-edit-config-mentorship-enabled": "Er fadderskapsfunksjonene slått på?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Ja",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nei",

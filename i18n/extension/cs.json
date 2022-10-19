@@ -57,7 +57,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Stránka popisující vytváření článků ve vizuálním editoru",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Stránka popisující přidávání obrázků ve vizuálním editoru",
 	"growthexperiments-edit-config-mentorship": "Mentorství",
-	"growthexperiments-edit-config-mentorship-description": "Projekty mohou mít dva seznamy mentorů: jeden pro mentory, kteří jsou automaticky přiřazováni nováčkům, a druhý seznam mentorů pro mentory, kteří nejsou automaticky přiřazováni nováčkům, ale mohou převzít nováčky. Druhý seznam mentorů je užitečný pro mentory, kteří chtějí mentorovat pouze nováčky, které znají z off-wiki událostí.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Projekty mohou mít dva seznamy mentorů: jeden pro mentory, kteří jsou automaticky přiřazováni nováčkům, a druhý seznam mentorů pro mentory, kteří nejsou automaticky přiřazováni nováčkům, ale mohou převzít nováčky. Druhý seznam mentorů je užitečný pro mentory, kteří chtějí mentorovat pouze nováčky, které znají z off-wiki událostí.",
 	"growthexperiments-edit-config-mentorship-enabled": "Jsou mentorské funkce aktivovány?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Ano",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Ne",

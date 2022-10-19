@@ -40,7 +40,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Saite uz lapu par rakstu veidošanu vizuālajā redaktorā",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Saite uz lapu par attēlu pievienošanu vizuālajā redaktorā",
 	"growthexperiments-edit-config-mentorship": "Mentorēšana",
-	"growthexperiments-edit-config-mentorship-description": "Vikivietnēs var būt divi atsevišķi mentoru saraksti: viens mentoriem, ko nejaušā kārtībā piešķir visiem jaunpienācējiem un otrs mentoriem, kurus nepiešķir nejauši, bet kuri paši var pieņemt audzēkņus. Otro sarakstu izmanto mentoriem, kas vēlas būt mentori tikai cilvēkiem no organizētiem pasākumiem vai studiju kursiem.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Vikivietnēs var būt divi atsevišķi mentoru saraksti: viens mentoriem, ko nejaušā kārtībā piešķir visiem jaunpienācējiem un otrs mentoriem, kurus nepiešķir nejauši, bet kuri paši var pieņemt audzēkņus. Otro sarakstu izmanto mentoriem, kas vēlas būt mentori tikai cilvēkiem no organizētiem pasākumiem vai studiju kursiem.",
 	"growthexperiments-edit-config-mentorship-enabled": "Vai mentoru funkcionalitāte ir ieslēgta?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Jā",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nē",

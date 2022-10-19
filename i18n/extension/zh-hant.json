@@ -63,7 +63,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "有關建立新條目的連結的目標頁面",
 	"growthexperiments-edit-config-homepage-intro-links-image": "有關如何在視覺化編輯器中添加圖像的連結的目標頁面",
 	"growthexperiments-edit-config-mentorship": "導師計畫",
-	"growthexperiments-edit-config-mentorship-description": "每個維基媒體項目都能有兩個獨立的導師列表：一個是用於隨機分配給所有新手的導師，一個則是用於非隨機分配，但是能指定受指導者的導師。後者專門給只想成為活動或課程的導師使用。",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "每個維基媒體項目都能有兩個獨立的導師列表：一個是用於隨機分配給所有新手的導師，一個則是用於非隨機分配，但是能指定受指導者的導師。後者專門給只想成為活動或課程的導師使用。",
 	"growthexperiments-edit-config-mentorship-enabled": "是否啟用導師計畫功能？",
 	"growthexperiments-edit-config-mentorship-enabled-true": "是",
 	"growthexperiments-edit-config-mentorship-enabled-false": "否",

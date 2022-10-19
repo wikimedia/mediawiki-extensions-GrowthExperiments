@@ -69,7 +69,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "有关创建新条目的链接的目标页面",
 	"growthexperiments-edit-config-homepage-intro-links-image": "有关如何在可视化编辑器中添加图像的链接的目标页面",
 	"growthexperiments-edit-config-mentorship": "导师",
-	"growthexperiments-edit-config-mentorship-description": "Wiki可以有两个单独的导师列表：一个用于随机分配给所有新成员的导师，另一个用于未随机分配但可以声明受指导者的导师。第二个列表用于那些只想成为活动或课程中的人的导师的导师。",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Wiki可以有两个单独的导师列表：一个用于随机分配给所有新成员的导师，另一个用于未随机分配但可以声明受指导者的导师。第二个列表用于那些只想成为活动或课程中的人的导师的导师。",
 	"growthexperiments-edit-config-mentorship-enabled": "是否启用导师功能？",
 	"growthexperiments-edit-config-mentorship-enabled-true": "是",
 	"growthexperiments-edit-config-mentorship-enabled-false": "否",

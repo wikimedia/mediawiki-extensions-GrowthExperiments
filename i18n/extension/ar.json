@@ -57,7 +57,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "صفحة الوصول لرابط إنشاء مقالة جديدة",
 	"growthexperiments-edit-config-homepage-intro-links-image": "صفحة الوصول إلى رابط حول إضافة صور باستخدام المحرر المرئي",
 	"growthexperiments-edit-config-mentorship": "الإرشاد",
-	"growthexperiments-edit-config-mentorship-description": "يمكن للويكييات أن تتضمّن على قائمتين مختلقتين للمرشدين: أولى تخصّ مرشدين يعيّنون عشوائيا إلى جميع الوافدين الجدد، وأخرى خاصة بمرشدين لا يحصلون على مُتعلّمين عشوائيا بل يطالبون بهم. هذه القائمة الثانية مستخدمة من قبل مرشدين يريدون فقط أن يكونوا مرشدين لأشخاص من تظاهرات أو من أقسام.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "يمكن للويكييات أن تتضمّن على قائمتين مختلقتين للمرشدين: أولى تخصّ مرشدين يعيّنون عشوائيا إلى جميع الوافدين الجدد، وأخرى خاصة بمرشدين لا يحصلون على مُتعلّمين عشوائيا بل يطالبون بهم. هذه القائمة الثانية مستخدمة من قبل مرشدين يريدون فقط أن يكونوا مرشدين لأشخاص من تظاهرات أو من أقسام.",
 	"growthexperiments-edit-config-mentorship-enabled": "هل مزايا الإرشاد مُفعّلة؟",
 	"growthexperiments-edit-config-mentorship-enabled-true": "نعم",
 	"growthexperiments-edit-config-mentorship-enabled-false": "لا",

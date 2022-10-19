@@ -54,7 +54,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Мэтавая старонка для спасылкі пра тое, як стварыць новы артыкул",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Мэтавая старонка для спасылкі пра тое, як дадаваць выявы ў візуальным рэдактары",
 	"growthexperiments-edit-config-mentorship": "Настаўніцтва",
-	"growthexperiments-edit-config-mentorship-description": "Вікі могуць мець два асобныя спісы настаўнікаў: адзін для настаўнікаў, якіх прызначаюць выпадковым чынам усім пачаткоўцам, і другі для настаўнікаў, якія не прызначаюцца выпадковым чынам, але могуць прымаць падапечных. Гэты другі спіс выкарыстоўваецца для настаўнікаў, якія хочуць быць настаўнікамі толькі для людзей з мерапрыемстваў або заняткаў.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Вікі могуць мець два асобныя спісы настаўнікаў: адзін для настаўнікаў, якіх прызначаюць выпадковым чынам усім пачаткоўцам, і другі для настаўнікаў, якія не прызначаюцца выпадковым чынам, але могуць прымаць падапечных. Гэты другі спіс выкарыстоўваецца для настаўнікаў, якія хочуць быць настаўнікамі толькі для людзей з мерапрыемстваў або заняткаў.",
 	"growthexperiments-edit-config-mentorship-enabled": "Ці ўключаны функцыі настаўніцтва?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Так",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Не",

@@ -8,7 +8,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Хатняя старонка",
-	"prefs-homepage": "Хатняя старонка навічка",
+	"prefs-homepage": "Функцыі рэдагаваньня навічка",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Мэнтар {{GENDER:$1|$1}} ужо зьмяняўся. Вы {{GENDER:$2|ўпеўненыя}}, што хочаце зьмяніць яго зноўку?",
 	"growthexperiments-addimage-viewer-close-button": "Закрыць"
 }

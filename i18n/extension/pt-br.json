@@ -56,7 +56,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Página de destino para uma hiperligação sobre como criar um artigo novo",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Página de destino para um link sobre como adicionar imagens no editor visual",
 	"growthexperiments-edit-config-mentorship": "Mentoria",
-	"growthexperiments-edit-config-mentorship-description": "As Wikis podem ter duas listas de mentores separadas: um para mentores que recebem aleatoriamente para todos os novatos, e outro para mentores que não são atribuídos aleatoriamente, mas podem reivindicar mentores. Esta segunda lista é usada para mentores que só querem ser mentores para pessoas de eventos ou classes.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "As Wikis podem ter duas listas de mentores separadas: um para mentores que recebem aleatoriamente para todos os novatos, e outro para mentores que não são atribuídos aleatoriamente, mas podem reivindicar mentores. Esta segunda lista é usada para mentores que só querem ser mentores para pessoas de eventos ou classes.",
 	"growthexperiments-edit-config-mentorship-enabled": "Os recursos de mentoria estão ativados?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Sim",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Não",

@@ -51,7 +51,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Necə məqalə yaradılır səhifəsi üçün hədəf səhifəsi",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Necə şəkil əlavə edilir səhifəsi üçün hədəf səhifəsi",
 	"growthexperiments-edit-config-mentorship": "Mentorluq",
-	"growthexperiments-edit-config-mentorship-description": "Vikilərin iki ayrı mentor siyahısı ola bilər: biri bütün yeni gələnlərə təsadüfi olaraq təyin olunan mentorlar üçün, digəri isə təsadüfi olaraq təyin edilməyən, lakin istifadəçiləri seçə bilən mentorlar üçün. İkinci siyahı, yalnız tədbirlərdən və ya siniflərdən insanlara mentor olmaq istəyən mentorlar üçün istifadə olunur.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Vikilərin iki ayrı mentor siyahısı ola bilər: biri bütün yeni gələnlərə təsadüfi olaraq təyin olunan mentorlar üçün, digəri isə təsadüfi olaraq təyin edilməyən, lakin istifadəçiləri seçə bilən mentorlar üçün. İkinci siyahı, yalnız tədbirlərdən və ya siniflərdən insanlara mentor olmaq istəyən mentorlar üçün istifadə olunur.",
 	"growthexperiments-edit-config-mentorship-enabled": "Mentorluq aktivdir?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Bəli",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Xeyr",

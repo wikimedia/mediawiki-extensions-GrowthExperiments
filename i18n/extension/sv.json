@@ -57,7 +57,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Destinationssida för en länk om att skapa en ny artikel",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Destinationssida för en länk om att skapa bilder i visual editor",
 	"growthexperiments-edit-config-mentorship": "Fadderskap",
-	"growthexperiments-edit-config-mentorship-description": "Wikier kan ha två separata mentorlistor: en för mentorer som slumpmässigt tilldelas alla nybörjare och en annan för mentorer som inte tilldelas slumpmässigt, men som kan välja mentorer. Denna andra listan används för mentorer som bara vill vara mentorer för personer från evenemang eller klasser.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Wikier kan ha två separata mentorlistor: en för mentorer som slumpmässigt tilldelas alla nybörjare och en annan för mentorer som inte tilldelas slumpmässigt, men som kan välja mentorer. Denna andra listan används för mentorer som bara vill vara mentorer för personer från evenemang eller klasser.",
 	"growthexperiments-edit-config-mentorship-enabled": "Är fadderskapsfunktioner aktiverad?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Ja",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nej",

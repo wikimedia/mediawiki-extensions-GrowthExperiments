@@ -57,7 +57,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Pàgina de destinació per un enllaç que fa referència a com crear un article nou",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Pàgina de destinació per l'enllaç referit a la pàgina d'ajuda per afegir imatges amb l'editor visual",
 	"growthexperiments-edit-config-mentorship": "Mentorització",
-	"growthexperiments-edit-config-mentorship-description": "Cada wiki pot tenir dues llistes de mentors separades. La primera és per a mentors que reben aleatòriament tots els nous novells. I la segona, per als mentors als quals no se'ls assignen arbitràriament noves incorporacions sinó que poden escollir mentoritzar a algú determinat. Això afavoreix que els de la segona llista puguin assignar-se alumnes de viquiprojectes docents o participants de qualsevol acte o viquimarató.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Cada wiki pot tenir dues llistes de mentors separades. La primera és per a mentors que reben aleatòriament tots els nous novells. I la segona, per als mentors als quals no se'ls assignen arbitràriament noves incorporacions sinó que poden escollir mentoritzar a algú determinat. Això afavoreix que els de la segona llista puguin assignar-se alumnes de viquiprojectes docents o participants de qualsevol acte o viquimarató.",
 	"growthexperiments-edit-config-mentorship-enabled": "Les eines de mentorització estan activades?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Sí",
 	"growthexperiments-edit-config-mentorship-enabled-false": "No",

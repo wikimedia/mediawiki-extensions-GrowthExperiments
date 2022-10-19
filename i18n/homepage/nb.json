@@ -3,7 +3,8 @@
 		"authors": [
 			"Gabriel Kielland",
 			"Jon Harald Søby",
-			"Kingu"
+			"Kingu",
+			"Telaneo"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -68,9 +69,9 @@
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Skru på JavaScript for å vise denne komponenten.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påvirkning",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Din}} nylige aktivitet (siste $2 {{PLURAL:$2|dag|dager}})",
-	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Sist redigert: $1",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Sist redigert",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Beste rekke: $1",
-	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dag|dager}} på rad",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dag|dager}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Redigering|Redigeringer}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|redigering|redigeringer}} $2",
 	"growthexperiments-homepage-impact-scores-edit-count": "Totalt antall redigeringer",

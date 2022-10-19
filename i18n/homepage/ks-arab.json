@@ -5,9 +5,9 @@
 		]
 	},
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|$1|تُہُنٛز}} ہالہالٕچ عملہٕ (أخری $2 {{PLURAL:$2|دۄہ|وَکھ}})",
-	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "أخری اؠڑِٹ اوس: $1",
-	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "بہتریٖن سِٹریٖک: $1",
-	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|دۄہ|دۄہَن}} صفس منٛز",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "أخری اؠڑِٹ اوس",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "بہتریٖن سِٹریٖک",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|دۄہ|دۄہَن}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|ایڑِٹ|تبدی}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1{{PLURAL:$1|ایڑِٹ|تبدیٖلیٖیٕہ}} $2 وَس پؠٹھ",
 	"growthexperiments-homepage-impact-scores-edit-count": "اَلہٕ پَلہٕ اؠڈِٹٕز:",

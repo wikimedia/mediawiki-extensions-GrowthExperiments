@@ -57,7 +57,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Céloldal az új szócikk létrehozására vonatkozó linkhez",
 	"growthexperiments-edit-config-homepage-intro-links-image": "A vizuális szerkesztővel való képbeillesztésről szóló segítség-link célpontja",
 	"growthexperiments-edit-config-mentorship": "Mentorálás",
-	"growthexperiments-edit-config-mentorship-description": "A wikiknek két mentorlistájuk lehet: egy azoknak a mentoroknak, akiket a szoftver véletlenszerűen hozzárendel a kezdő szerkesztőkhöz, és egy másik azoknak, akik csak kézzel tudnak bevállalni mentoráltakat. Ezt a második listát azok a mentorok használhatják, akik csak bizonyos események vagy tanórák résztvevőit akarják mentorálni.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "A wikiknek két mentorlistájuk lehet: egy azoknak a mentoroknak, akiket a szoftver véletlenszerűen hozzárendel a kezdő szerkesztőkhöz, és egy másik azoknak, akik csak kézzel tudnak bevállalni mentoráltakat. Ezt a második listát azok a mentorok használhatják, akik csak bizonyos események vagy tanórák résztvevőit akarják mentorálni.",
 	"growthexperiments-edit-config-mentorship-enabled": "Engedélyezve vannak a mentorfunkciók?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Igen",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nem",

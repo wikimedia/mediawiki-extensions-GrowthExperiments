@@ -43,7 +43,7 @@
 	"growthexperiments-edit-config-help-panel-links": "Pranala panel bantuan",
 	"growthexperiments-edit-config-homepage": "Beranda pengguna baru",
 	"growthexperiments-edit-config-mentorship": "Pembimbingan",
-	"growthexperiments-edit-config-mentorship-description": "Wiki bisa memiliki dua daftar pembimbing terpisah: satu untuk pembimbing yang ditugaskan secara acak kepada semua pendatang baru dan satu untuk pembimbing yang tidak ditugaskan secara acak, tetapi bisa memilih bimbingan. Daftar kedua digunakan untuk pembimbing yang hanya ingin membimbing orang-orang dari suatu acara atau kelas.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Wiki bisa memiliki dua daftar pembimbing terpisah: satu untuk pembimbing yang ditugaskan secara acak kepada semua pendatang baru dan satu untuk pembimbing yang tidak ditugaskan secara acak, tetapi bisa memilih bimbingan. Daftar kedua digunakan untuk pembimbing yang hanya ingin membimbing orang-orang dari suatu acara atau kelas.",
 	"growthexperiments-edit-config-mentorship-enabled": "Apakah fitur pembimbingan dinyalakan?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Ya",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Tidak",

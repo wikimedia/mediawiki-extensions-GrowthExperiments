@@ -59,7 +59,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Trang đích cho một liên kết về cách tạo một bài viết mới",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Trang đích cho một liên kết về cách thêm hình ảnh trong sửa đổi trực quan",
 	"growthexperiments-edit-config-mentorship": "Cố vấn",
-	"growthexperiments-edit-config-mentorship-description": "Wiki có thể có hai danh sách cố vấn tách biệt: một cho cố vấn được phân ngẫu nhiên cho toàn bộ người mới đến, và cái khác cho cố vấn không được phân ngẫu nhiên, nhưng có thể nhận người được cố vấn. Danh sách thứ hai này được sử dụng cho các cố vấn chỉ muốn làm cố vấn cho những người họ biết tại các sự kiện hoặc lớp học.",
+	"growthexperiments-edit-config-mentorship-description-wikitext": "Wiki có thể có hai danh sách cố vấn tách biệt: một cho cố vấn được phân ngẫu nhiên cho toàn bộ người mới đến, và cái khác cho cố vấn không được phân ngẫu nhiên, nhưng có thể nhận người được cố vấn. Danh sách thứ hai này được sử dụng cho các cố vấn chỉ muốn làm cố vấn cho những người họ biết tại các sự kiện hoặc lớp học.",
 	"growthexperiments-edit-config-mentorship-enabled": "Tính năng cố vấn có bật không?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Có",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Không",
