@@ -1,7 +1,24 @@
 <template>
 	<section class="ext-growthExperiments-MenteeOverview">
 		<div class="ext-growthExperiments-MenteeOverview__info-box-wrapper">
-			<info-box class="ext-growthExperiments-MenteeOverview__info-box" :legend-items="legendItems"></info-box>
+			<c-info-box
+				class="ext-growthExperiments-MenteeOverview__info-box"
+				:icon="cdxIconInfo"
+				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' )"
+				:close-icon="cdxIconClose"
+				:close-icon-label="$i18n( 'close-tbd' )"
+			>
+				<h3>
+					{{
+						$i18n(
+							'growthexperiments-mentor-dashboard-mentee-overview-info-headline'
+						)
+					}}
+				</h3>
+				<p v-i18n-html="'growthexperiments-mentor-dashboard-mentee-overview-info-text'">
+				</p>
+				<legend-box v-if="legendItems.length" :items="legendItems"></legend-box>
+			</c-info-box>
 		</div>
 		<div class="ext-growthExperiments-MenteeOverview__actions">
 			<mentee-filters
@@ -48,8 +65,9 @@ const DataTable = require( '../DataTable/DataTable.vue' );
 const MenteeSearch = require( './MenteeSearch.vue' );
 const MenteeFilters = require( './MenteeFilters.vue' );
 const NoResults = require( './NoResults.vue' );
-const InfoBox = require( './InfoBox.vue' );
-const { cdxIconError, cdxIconClock } = require( '../icons.json' );
+const CInfoBox = require( '../../../vue-components/CInfoBox.vue' );
+const LegendBox = require( './LegendBox.vue' );
+const { cdxIconError, cdxIconClock, cdxIconInfo, cdxIconClose } = require( '../icons.json' );
 const apiClient = require( '../../../ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js' );
 
 const MENTEES_TABLE_COLUMNS = [
@@ -139,12 +157,15 @@ module.exports = exports = {
 		MenteeFilters,
 		MenteeSearch,
 		NoResults,
-		InfoBox
+		CInfoBox,
+		LegendBox
 	},
 	setup() {
 		return {
 			cdxIconError,
-			cdxIconClock
+			cdxIconClock,
+			cdxIconInfo,
+			cdxIconClose
 		};
 	},
 	data() {
