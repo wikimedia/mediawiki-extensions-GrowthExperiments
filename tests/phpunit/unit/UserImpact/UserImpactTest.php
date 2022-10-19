@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use DateTime;
+use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserTimeCorrection;
@@ -22,7 +23,8 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			new UserTimeCorrection( 'System|0' ),
 			80,
-			wfTimestamp( TS_UNIX, '20200101000000' )
+			wfTimestamp( TS_UNIX, '20200101000000' ),
+			new EditingStreak()
 		);
 		$this->assertInstanceOf( UserImpact::class, $userImpact );
 		$this->assertSame( 10, $userImpact->getReceivedThanksCount() );
@@ -43,7 +45,8 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			80,
-			wfTimestamp( TS_UNIX, '20200101000000' )
+			wfTimestamp( TS_UNIX, '20200101000000' ),
+			new EditingStreak()
 		);
 
 		$data = $userImpact->jsonSerialize();

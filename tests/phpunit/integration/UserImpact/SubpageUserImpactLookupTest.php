@@ -3,6 +3,8 @@
 namespace GrowthExperiments\Tests;
 
 use DateTime;
+use GrowthExperiments\UserImpact\ComputeEditingStreaks;
+use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpact;
@@ -31,7 +33,11 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			80,
-			wfTimestamp( TS_UNIX, '20200101000000' )
+			wfTimestamp( TS_UNIX, '20200101000000' ),
+			new EditingStreak(
+				ComputeEditingStreaks::makeDatePeriod( '2022-08-24', '2022-08-25' ),
+				30
+			)
 		);
 		$fallbackUserImpact1 = new UserImpact(
 			UserIdentityValue::newRegistered( 1, 'User1' ),
@@ -40,7 +46,8 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			[ '2022-08-24' => 11, '2022-08-25' => 21 ],
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			100,
-			wfTimestamp( TS_UNIX, '20200909000000' )
+			wfTimestamp( TS_UNIX, '20200909000000' ),
+			new EditingStreak()
 		);
 		$userImpact2 = new UserImpact(
 			UserIdentityValue::newRegistered( 2, 'User2' ),
@@ -49,7 +56,8 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			[ '2022-08-24' => 12, '2022-08-25' => 22 ],
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			110,
-			wfTimestamp( TS_UNIX, '20220101000000' )
+			wfTimestamp( TS_UNIX, '20220101000000' ),
+			new EditingStreak()
 		);
 		$this->makeJsonPage( 'User:User1/userimpact.json', [
 			'@version' => UserImpact::VERSION,
@@ -62,6 +70,14 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			'newcomerTaskEditCount' => 80,
 			'lastEditTimestamp' => (int)wfTimestamp( TS_UNIX, '20200101000000' ),
 			'generatedAt' => ConvertibleTimestamp::time(),
+			'longestEditingStreak' => [
+				'datePeriod' => [
+					'start' => '2022-08-24',
+					'end' => '2022-08-25',
+					'days' => 2
+				],
+				'totalEditCountForPeriod' => 30
+			]
 		] );
 
 		$wikiPageFactory = $this->getServiceContainer()->getWikiPageFactory();

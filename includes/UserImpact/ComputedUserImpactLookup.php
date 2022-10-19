@@ -132,7 +132,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				$this->config->get( MainConfigNames::LocalTZoffset )
 			),
 			$editData['newcomerTaskEditCount'],
-			wfTimestampOrNull( TS_UNIX, $editData['lastEditTimestamp'] )
+			wfTimestampOrNull( TS_UNIX, $editData['lastEditTimestamp'] ),
+			ComputeEditingStreaks::getLongestEditingStreak( $editData['editCountByDay'] )
 		);
 	}
 
@@ -174,7 +175,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editData['newcomerTaskEditCount'],
 			wfTimestampOrNull( TS_UNIX, $editData['lastEditTimestamp'] ),
 			$pageViewData['dailyTotalViews'],
-			$pageViewData['dailyArticleViews']
+			$pageViewData['dailyArticleViews'],
+			ComputeEditingStreaks::getLongestEditingStreak( $editData['editCountByDay'] )
 		);
 	}
 

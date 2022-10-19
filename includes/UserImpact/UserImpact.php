@@ -21,7 +21,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UserImpact implements JsonSerializable {
 
 	/** Cache version, to be increased when breaking backwards compatibility. */
-	public const VERSION = 1;
+	public const VERSION = 3;
 
 	/** @var UserIdentity */
 	private $user;
@@ -47,6 +47,9 @@ class UserImpact implements JsonSerializable {
 	/** @var int */
 	private $generatedAt;
 
+	/** @var EditingStreak */
+	private EditingStreak $longestEditingStreak;
+
 	/**
 	 * @param UserIdentity $user
 	 * @param int $receivedThanksCount Number of thanks the user has received. Might exclude
@@ -60,6 +63,7 @@ class UserImpact implements JsonSerializable {
 	 * @param int $newcomerTaskEditCount Number of edits the user made which have the
 	 *   newcomer task tag. Might exclude edits made a long time ago or many edits ago.
 	 * @param int|null $lastEditTimestamp Unix timestamp of the user's last edit.
+	 * @param EditingStreak $longestEditingStreak
 	 */
 	public function __construct(
 		UserIdentity $user,
@@ -68,8 +72,8 @@ class UserImpact implements JsonSerializable {
 		array $editCountByDay,
 		UserTimeCorrection $timeZone,
 		int $newcomerTaskEditCount,
-		?int $lastEditTimestamp
-		// TODO add edit streak data if that ends up in the final design
+		?int $lastEditTimestamp,
+		EditingStreak $longestEditingStreak
 	) {
 		$this->user = $user;
 		$this->receivedThanksCount = $receivedThanksCount;
@@ -79,6 +83,7 @@ class UserImpact implements JsonSerializable {
 		$this->newcomerTaskEditCount = $newcomerTaskEditCount;
 		$this->lastEditTimestamp = $lastEditTimestamp;
 		$this->generatedAt = ConvertibleTimestamp::time();
+		$this->longestEditingStreak = $longestEditingStreak;
 	}
 
 	/**
@@ -172,7 +177,8 @@ class UserImpact implements JsonSerializable {
 			[],
 			new UserTimeCorrection( 'System|0' ),
 			0,
-			0
+			0,
+			new EditingStreak()
 		);
 	}
 
@@ -216,10 +222,25 @@ class UserImpact implements JsonSerializable {
 		$this->newcomerTaskEditCount = $json['newcomerTaskEditCount'];
 		$this->lastEditTimestamp = $json['lastEditTimestamp'];
 		$this->generatedAt = $json['generatedAt'];
+		$this->longestEditingStreak = $json['longestEditingStreak'] === '' ? new EditingStreak() :
+			new EditingStreak(
+				ComputeEditingStreaks::makeDatePeriod(
+					$json['longestEditingStreak']['datePeriod']['start'],
+					$json['longestEditingStreak']['datePeriod']['end']
+				),
+				$json['longestEditingStreak']['totalEditCountForPeriod']
+			);
 	}
 
 	/** @inheritDoc */
 	public function jsonSerialize(): array {
+		$longestEditingStreak = $this->longestEditingStreak->getDatePeriod() ?
+			[ 'datePeriod' => [
+				'start' => $this->longestEditingStreak->getDatePeriod()->getStartDate()->format( 'Y-m-d' ),
+				'end' => $this->longestEditingStreak->getDatePeriod()->getEndDate()->format( 'Y-m-d' ),
+				'days' => $this->longestEditingStreak->getStreakNumberOfDays()
+			], 'totalEditCountForPeriod' => $this->longestEditingStreak->getTotalEditCountForPeriod() ] :
+			'';
 		return [
 			'@version' => self::VERSION,
 			'userId' => $this->user->getId(),
@@ -231,6 +252,7 @@ class UserImpact implements JsonSerializable {
 			'newcomerTaskEditCount' => $this->newcomerTaskEditCount,
 			'lastEditTimestamp' => $this->lastEditTimestamp,
 			'generatedAt' => $this->generatedAt,
+			'longestEditingStreak' => $longestEditingStreak
 		];
 	}
 
