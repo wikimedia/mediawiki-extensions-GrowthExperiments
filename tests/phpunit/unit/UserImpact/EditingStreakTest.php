@@ -25,7 +25,7 @@ class EditingStreakTest extends MediaWikiUnitTestCase {
 	 */
 	public function testSerialization() {
 		$this->assertJsonStringEqualsJsonString(
-			'{"datePeriod":{"start":"2022-10-19","end":"2022-10-18","days":1},"totalEditCountForPeriod":2}',
+			'{"datePeriod":{"start":"2022-10-19","end":"2022-10-18","days":2},"totalEditCountForPeriod":2}',
 			json_encode( new EditingStreak(
 				new \DatePeriod(
 					new \DateTime( '2022-10-19' ),
