@@ -1,5 +1,10 @@
 <template>
-	<div class="ext-growthExperiments-RecentActivity">
+	<div
+		class="ext-growthExperiments-RecentActivity"
+		:class="{
+			'ext-growthExperiments-RecentActivity--mobile': isMobile
+		}"
+	>
 		<div class="ext-growthExperiments-RecentActivity__streak">
 			<div class="ext-growthExperiments-RecentActivity__streak__highlight">
 				<c-text
@@ -44,6 +49,10 @@ module.exports = exports = {
 		StreakGraph
 	},
 	props: {
+		isMobile: {
+			type: Boolean,
+			default: false
+		},
 		contribs: {
 			type: Object,
 			default: null
@@ -103,18 +112,34 @@ module.exports = exports = {
 
 	&__streak {
 		display: flex;
+		align-items: center;
+
+		&__highlight {
+			display: flex;
+			flex-direction: column;
+			margin-right: 0.8em;
+
+			&__number {
+				margin-right: 0.2em;
+			}
+		}
+
+		&__graphic {
+			padding-top: 0.5em;
+			flex: 5;
+		}
 	}
 
-	&__streak__highlight {
-		display: flex;
-		flex-direction: column;
-		margin-right: 1.2em;
-	}
+	&--mobile {
+		.ext-growthExperiments-RecentActivity__streak {
+			flex-direction: column;
+			align-items: stretch;
 
-	&__streak__graphic {
-		// Half of the x-large number of edits line-height
-		padding-top: 0.8em;
-		flex: 5;
+			&__highlight {
+				flex-direction: row;
+				align-items: baseline;
+			}
+		}
 	}
 }
 </style>
