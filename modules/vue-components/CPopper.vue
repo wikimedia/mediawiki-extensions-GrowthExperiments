@@ -13,8 +13,8 @@
 					@click="$emit( 'close', $event )"
 				>
 					<cdx-icon
-						:icon="cdxIconClose"
-						icon-label="close"
+						:icon="icon"
+						:icon-label="iconLabel"
 						class="ext-growthExperiments-CPopper__popover__close-icon"
 					></cdx-icon>
 				</cdx-button>
@@ -25,13 +25,14 @@
 </template>
 
 <script>
-// Consider wrapping library  https://popper.js.org/ in this
-// component to facilitate the calculus of viewport boundaries
-// and offsets for all components using absolute positioning,
-// ie: Dropdowns, Tooltips, Popovers
 const { CdxButton, CdxIcon } = require( '@wikimedia/codex' );
-const { cdxIconClose } = require( '../icons.json' );
-
+const { onMounted, ref } = require( 'vue' );
+/*
+ * GrowthExperiments common component
+ *
+ * Layout with absolute positioning to create overlays like
+ * Dropdowns, Tooltips, Popovers.
+ */
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
@@ -39,20 +40,31 @@ module.exports = exports = {
 		CdxButton,
 		CdxIcon
 	},
+	props: {
+		icon: {
+			type: Object,
+			required: true
+		},
+		iconLabel: {
+			type: String,
+			required: true
+		}
+	},
 	emits: [ 'close' ],
 	setup() {
+		const containerRef = ref( null );
+		onMounted( () => {
+			containerRef.value.focus();
+		} );
 		return {
-			cdxIconClose
+			containerRef
 		};
-	},
-	mounted() {
-		this.$refs.containerRef.focus();
 	}
 };
 </script>
 
 <style lang="less">
-@import '../../../vue-components/variables.less';
+@import './variables.less';
 
 .ext-growthExperiments-CPopper {
 	position: relative;
