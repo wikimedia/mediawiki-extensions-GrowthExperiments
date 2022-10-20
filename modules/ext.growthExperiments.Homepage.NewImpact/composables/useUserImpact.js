@@ -4,58 +4,6 @@ const sum = ( arr ) => arr.reduce( ( x, y ) => x + y, 0 );
 
 /**
  * Given a contributions object consisting of date strings
- * as keys and the number of edits per day as values, calculate
- * the best streak of edits. If there are not consecutive days with
- * edits the most recent day with edits will be considered the best
- * streak.
- *
- * @param {Object} contribDays
- * @return {{values:Array<string>,count:number}} Array values are ISO date strings. count
- * contains the number of edits for the best streak
- */
-const getBestStreak = ( contribDays ) => {
-	const streaks = {};
-	let streakOffset = 0;
-	let bestStreakCounter = 0;
-	let bestStreakStartDate = '';
-	const hasContribs = contribDays.length > 0;
-	const bestStreak = {
-		values: hasContribs ? [ contribDays[ contribDays.length - 1 ] ] : [],
-		count: hasContribs ? 1 : 0
-	};
-	for ( const i of contribDays.keys() ) {
-		if ( new Date( contribDays[ i + 1 ] ) - new Date( contribDays[ i ] ) === 86400000 ) {
-			if ( streaks[ contribDays[ i - streakOffset ] ] ) {
-				streaks[ contribDays[ i - streakOffset ] ].values.push( contribDays[ i + 1 ] );
-				streaks[ contribDays[ i - streakOffset ] ].count++;
-				if ( streaks[ contribDays[ i - streakOffset ] ].count > bestStreakCounter ) {
-					bestStreakStartDate = contribDays[ i - streakOffset ];
-					bestStreakCounter = streaks[ contribDays[ i - streakOffset ] ].count;
-				}
-				streakOffset++;
-			} else {
-				streaks[ contribDays[ i ] ] = {
-					values: [
-						contribDays[ i ],
-						contribDays[ i + 1 ]
-					],
-					count: 2
-				};
-				bestStreakCounter = Math.max( bestStreakCounter, 2 );
-				streakOffset = 1;
-			}
-		} else {
-			streakOffset = 0;
-		}
-	}
-
-	const streak = streaks[ bestStreakStartDate ] || bestStreak;
-	streak.range = [ streak.values[ 0 ], streak.values[ streak.values.length - 1 ] ];
-	return streak;
-};
-
-/**
- * Given a contributions object consisting of date strings
  * as keys and the number of edits per day as values, fill
  * two arrays (keys, entries) with empty contribution days.
  * The keys array will contain date strings starting from today - timeFrameInDays
@@ -111,7 +59,8 @@ function useUserImpact( userId, timeFrame ) {
 				editCountByNamespace,
 				receivedThanksCount,
 				editCountByDay,
-				lastEditTimestamp
+				lastEditTimestamp,
+				longestEditingStreak
 			} = data.value;
 			const edits = Object.keys( editCountByNamespace )
 				.map( ( k ) => editCountByNamespace[ k ] );
@@ -119,7 +68,7 @@ function useUserImpact( userId, timeFrame ) {
 			return {
 				lastEditTimestamp,
 				receivedThanksCount,
-				bestStreak: getBestStreak( Object.keys( editCountByDay ) ),
+				bestStreak: longestEditingStreak,
 				contributions: getContribsFromToday( editCountByDay, timeFrame ),
 				totalEditsCount: sum( edits )
 			};

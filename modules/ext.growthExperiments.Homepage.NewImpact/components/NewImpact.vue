@@ -16,7 +16,10 @@
 				:icon="cdxIconHeart"
 				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' )"
 			>
-				<c-text as="span" size="md" weight="bold">
+				<c-text
+					as="span"
+					size="md"
+					weight="bold">
 					{{ $filters.convertNumber( data.receivedThanksCount ) }}
 				</c-text>
 			</score-card>
@@ -24,7 +27,10 @@
 				:icon="cdxIconClock"
 				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' )"
 			>
-				<c-text as="span" size="md" weight="bold">
+				<c-text
+					as="span"
+					size="md"
+					weight="bold">
 					{{ lastEditFormattedTimeAgo }}
 				</c-text>
 			</score-card>
@@ -32,7 +38,10 @@
 				:icon="cdxIconChart"
 				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' )"
 			>
-				<c-text as="span" size="md" weight="bold">
+				<c-text
+					as="span"
+					size="md"
+					weight="bold">
 					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-streak-count-text', bestStreakDaysLocalisedCount ) }}
 				</c-text>
 			</score-card>
@@ -105,7 +114,7 @@ module.exports = exports = {
 			return this.lastEditMoment.fromNow();
 		},
 		bestStreakDaysLocalisedCount() {
-			return this.$filters.convertNumber( this.data.bestStreak.count );
+			return this.$filters.convertNumber( this.data.bestStreak.datePeriod.days );
 		},
 		userName() {
 			return mw.config.get( 'GENewImpactRelevantUserName' );
