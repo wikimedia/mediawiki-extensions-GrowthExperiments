@@ -179,7 +179,7 @@ const aggregateMentees = ( mentees, starredMentees ) => mentees.map( ( mentee ) 
 		reverted: {
 			value: mw.language.convertNumber( mentee.reverted ),
 			link: mwLink( `Special:Contributions/${mentee.username}`, {
-				tagfilter: tagsToFilterBy.questions.join( '|' )
+				tagfilter: tagsToFilterBy.reverted.join( '|' )
 			} )
 		},
 		blocks: {
