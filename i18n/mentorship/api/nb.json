@@ -20,5 +20,11 @@
 	"apihelp-growthsetmenteestatus-param-state-optout": "Fadderbarnet har valgt å ikke delta å fadderprogrammet; forholdet mellom fadder og faderbarn slettes, og faddermodulen erstattes med muligheten til å velge å delta igjen.",
 	"apihelp-query+growthmenteestatus-summary": "Spør etter den gjeldende brukerens fadderbarnstatus; se dokumentasjonen for action=growthsetmentorweight for detaljert informasjon om individuelle statuser.",
 	"apihelp-query+growthmentormentee-summary": "Hent alle fadderbarn som er tildelt en gitt fadder",
-	"apihelp-query+growthmentormentee-param-gemmmentor": "Fadder det skal spørres om fadderbarn for"
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Fadder det skal spørres om fadderbarn for",
+	"apihelp-growthmanagementorlist-param-geaction": "Handling",
+	"apihelp-growthmanagementorlist-param-message": "Introduksjonsmelding (bruk en tom streng for standard-faddermeldingen)",
+	"apihelp-growthmanagementorlist-param-weight": "Vekting",
+	"apihelp-growthmanagementorlist-param-autoassigned": "Blir fadderen automatisk tildelt nybegynnere?",
+	"apihelp-growthmanagementorlist-param-summary": "Årsak for endringen",
+	"apihelp-growthmanagementorlist-param-username": "Brukernavnet til fadderen som påvirkes av endringen. Hvis det ikke er angitt blir den nåværende innloggede brukeren brukt. Kan kun brukes av brukere som har rettigheten til det."
 }

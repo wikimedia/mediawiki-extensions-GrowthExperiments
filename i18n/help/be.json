@@ -3,7 +3,8 @@
 		"authors": [
 			"Chadyka",
 			"No Sleep till Krupki",
-			"Tomato Cream"
+			"Tomato Cream",
+			"Plaga med"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Уключыць акенца дапамогі рэдактарам",
@@ -12,7 +13,7 @@
 	"growthexperiments-help-panel-submit-question-button-text": "Апублікаваць",
 	"growthexperiments-help-panel-return-home-button-text": "Гатова",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Асноўныя старонкі даведкі пра ўнясенне правак",
-	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Праглядзіце дадатковыя артыкулы дапамогі",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Праглядзець больш дапаможных артыкулаў",
 	"growthexperiments-help-panel-question-widget-header": "Задайце сваё пытанне Службе падтрымкі супольнасці",
 	"growthexperiments-help-panel-question-placeholder": "Прывітайцеся і задайце {{GENDER:$1|сваё}} пытанне.",
 	"growthexperiments-help-panel-back-home": "Назад",

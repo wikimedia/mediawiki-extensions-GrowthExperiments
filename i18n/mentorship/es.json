@@ -29,7 +29,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nombre de usuario/a",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Número de ediciones revertidas",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Número de bloques",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Preguntas realizadas por {{GENDER:|el mentor|la mentora}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Preguntas realizadas",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Recuento de ediciones",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Fecha de registro",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtros",
