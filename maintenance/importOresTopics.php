@@ -125,8 +125,8 @@ class ImportOresTopics extends Maintenance {
 			$this->apiUrl = $this->getOption( 'apiUrl' );
 			$this->wikiId = $this->getOption( 'wikiId' );
 			if ( $this->isBeta ) {
-				$this->apiUrl = $this->apiUrl ?? $this->getApiUrl();
-				$this->wikiId = $this->wikiId ?? WikiMap::getCurrentWikiId();
+				$this->apiUrl ??= $this->getApiUrl();
+				$this->wikiId ??= WikiMap::getCurrentWikiId();
 			} elseif ( !$this->apiUrl ) {
 				$this->fatalError( '--apiUrl is required when --topicSource is prod, '
 					. 'unless running in the beta cluster' );
