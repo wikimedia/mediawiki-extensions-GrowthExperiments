@@ -100,8 +100,7 @@ class WelcomeSurveyLogger {
 		}
 
 		// Make sure that the token is a string value for event logging validation.
-		$event['token'] = $event['token'] ??
-			$this->webRequest->getCookie( self::WELCOME_SURVEY_TOKEN, null, '' );
+		$event['token'] ??= $this->webRequest->getCookie( self::WELCOME_SURVEY_TOKEN, null, '' );
 
 		EventLogging::submit( self::STREAM_NAME, $event, $this->logger );
 	}

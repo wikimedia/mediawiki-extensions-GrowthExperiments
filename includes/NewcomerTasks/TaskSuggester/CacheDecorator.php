@@ -74,7 +74,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 		$revalidateCache = $options['revalidateCache'] ?? true;
 		$excludePageIds = $options['excludePageIds'] ?? [];
 		$debug = $options['debug'] ?? false;
-		$limit = $limit ?? SearchTaskSuggester::DEFAULT_LIMIT;
+		$limit ??= SearchTaskSuggester::DEFAULT_LIMIT;
 
 		if ( $debug || $limit > SearchTaskSuggester::DEFAULT_LIMIT ) {
 			return $this->taskSuggester->suggest( $user, $taskSetFilters, $limit, $offset, $options );

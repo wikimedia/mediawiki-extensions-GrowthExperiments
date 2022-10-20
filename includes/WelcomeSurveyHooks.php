@@ -132,7 +132,7 @@ class WelcomeSurveyHooks implements
 	 */
 	private function userWasEditing( string $returnTo = null, $returnToQuery = null ): bool {
 		$context = RequestContext::getMain();
-		$returnTo = $returnTo ?? $context->getRequest()->getText( 'returnto' );
+		$returnTo ??= $context->getRequest()->getText( 'returnto' );
 		$returntoTitle = ( $returnTo !== '' ) ? $this->titleFactory->newFromText( $returnTo ) : null;
 		if ( $returnToQuery === null ) {
 			$returnToQuery = wfCgiToArray( $context->getRequest()->getText( 'returntoquery' ) );

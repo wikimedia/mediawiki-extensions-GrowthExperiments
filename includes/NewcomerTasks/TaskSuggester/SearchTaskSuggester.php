@@ -157,7 +157,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			array_flip( $taskSetFilters->getTopicFilters() )
 		) );
 
-		$limit = $limit ?? self::DEFAULT_LIMIT;
+		$limit ??= self::DEFAULT_LIMIT;
 		// FIXME we are completely ignoring offset for now because 1) doing offsets when we are
 		//   interleaving search results from multiple sources is hard, and 2) we are randomizing
 		//   search results so offsets would not really be meaningful anyway.
