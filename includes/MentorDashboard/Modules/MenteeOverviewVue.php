@@ -8,7 +8,7 @@ class MenteeOverviewVue extends MenteeOverview {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getBody() {
+	protected function getClientSideBody(): string {
 		return Html::rawElement(
 			'div',
 			[

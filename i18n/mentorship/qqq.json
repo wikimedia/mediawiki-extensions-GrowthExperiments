@@ -53,6 +53,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Text shown in screen that's displayed to mentors with zero mentees\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Headline for screen that's displayed to mentors with zero mentees\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Text shown in screen that's displayed to mentors with zero mentees\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Footer of the Mentee overview module. Informs the mentor they can filter Recent Changes to only edits made by their mentees.\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "Footer of the Mentee overview module. Informs the mentor they can filter Recent Changes to only edits made by their mentees.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-headline": "Headline for the \"Resources\" mentor dashboard module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",

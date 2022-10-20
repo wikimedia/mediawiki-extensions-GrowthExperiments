@@ -1,0 +1,21 @@
+@import '../../vue-components/variables.less';
+@import '../../ext.growthExperiments.MentorDashboard/variables.less';
+
+// stylelint-disable selector-class-pattern
+
+.growthexperiments-mentor-dashboard-module-mentee-overview-vue {
+	h4 {
+		color: @color-subtle;
+	}
+
+	.growthexperiments-mentor-dashboard-module-mentee-overview-recent-by-mentees {
+		// to get out of padding set to the module's container div and be able to apply background-color edge-to-edge
+		margin: 0 @mentorDashboardModulePadding * -1 @mentorDashboardModulePadding * -1;
+		padding: 0 @mentorDashboardModulePadding @mentorDashboardModulePadding;
+		background-color: @background-color-framed;
+
+		h4 {
+			padding-top: 16px;
+		}
+	}
+}
