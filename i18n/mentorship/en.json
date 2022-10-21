@@ -95,6 +95,7 @@
 	"growthexperiments-quit-mentorship-success": "Your mentees will be reassigned to other mentors shortly.",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|You}} currently don't have any mentees.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|retired}} from mentorship.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 {{GENDER:$2|removed}} $1 from mentorship",
 	"echo-category-title-ge-mentorship": "Mentorship",
 	"echo-pref-tooltip-ge-mentorship": "Notifications related to mentorship features maintained by the Growth team. This notification lets you know that you were claimed as a mentee, or that one of your mentees was claimed by someone else.",
 	"growthexperiments-notification-header-mentee-claimed": "Your {{GENDER:$3|mentee}}, $3, was {{GENDER:$2|claimed}} by $1.",

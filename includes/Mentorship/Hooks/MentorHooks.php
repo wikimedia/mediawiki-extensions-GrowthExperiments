@@ -181,6 +181,7 @@ class MentorHooks implements
 					'UserEditTracker',
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsMentorWriter',
+					'GrowthExperimentsReassignMenteesFactory',
 					'GrowthExperimentsMentorStatusManager'
 				]
 			];
