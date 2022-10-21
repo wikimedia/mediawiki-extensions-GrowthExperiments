@@ -295,6 +295,7 @@ $specialPageAliases['pl'] = [
 	'MentorDashboard' => [ 'Panel_przewodników' ],
 	'QuitMentorship' => [ 'Rezygnacja_z_przewodnictwa' ],
 	'ManageMentors' => [ 'Zarządzaj_przewodnikami' ],
+	'EnrollAsMentor' => [ 'Zostań_przewodnikiem' ],
 ];
 
 /** Portuguese (português) */
