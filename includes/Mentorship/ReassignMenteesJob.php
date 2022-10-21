@@ -60,7 +60,10 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 			$mentor,
 			RequestContext::getMain()
 		);
-		$reassignMentees->doReassignMentees( $this->params['reassignMessageKey'] );
+		$reassignMentees->doReassignMentees(
+			$this->params['reassignMessageKey'],
+			...$this->params['reassignMessageAdditionalParams']
+		);
 
 		return true;
 	}

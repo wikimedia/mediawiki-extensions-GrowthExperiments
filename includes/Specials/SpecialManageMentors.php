@@ -7,6 +7,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm;
 use GrowthExperiments\Specials\Forms\ManageMentorsEditMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
@@ -36,6 +37,9 @@ class SpecialManageMentors extends SpecialPage {
 	/** @var IMentorWriter */
 	private $mentorWriter;
 
+	/** @var ReassignMenteesFactory */
+	private $reassignMenteesFactory;
+
 	/** @var MentorStatusManager */
 	private $mentorStatusManager;
 
@@ -44,6 +48,7 @@ class SpecialManageMentors extends SpecialPage {
 	 * @param UserEditTracker $userEditTracker
 	 * @param MentorProvider $mentorProvider
 	 * @param IMentorWriter $mentorWriter
+	 * @param ReassignMenteesFactory $reassignMenteesFactory
 	 * @param MentorStatusManager $mentorStatusManager
 	 */
 	public function __construct(
@@ -51,6 +56,7 @@ class SpecialManageMentors extends SpecialPage {
 		UserEditTracker $userEditTracker,
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter,
+		ReassignMenteesFactory $reassignMenteesFactory,
 		MentorStatusManager $mentorStatusManager
 	) {
 		parent::__construct( 'ManageMentors' );
@@ -59,6 +65,7 @@ class SpecialManageMentors extends SpecialPage {
 		$this->userEditTracker = $userEditTracker;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorWriter = $mentorWriter;
+		$this->reassignMenteesFactory = $reassignMenteesFactory;
 		$this->mentorStatusManager = $mentorStatusManager;
 	}
 
@@ -315,6 +322,7 @@ class SpecialManageMentors extends SpecialPage {
 				return new ManageMentorsRemoveMentor(
 					$this->mentorProvider,
 					$this->mentorWriter,
+					$this->reassignMenteesFactory,
 					$mentorUser,
 					$this->getContext()
 				);
