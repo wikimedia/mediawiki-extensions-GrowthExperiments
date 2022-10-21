@@ -3,6 +3,17 @@ const useMWRestApi = require( './useMWRestApi.js' );
 const sum = ( arr ) => arr.reduce( ( x, y ) => x + y, 0 );
 
 /**
+ * Subtract the days from the given date. It mutates
+ * the original object.
+ *
+ * @param {Date} date
+ * @param {number} days
+ */
+const subtractDays = ( date, days ) => {
+	date.setDate( date.getDate() - days );
+};
+
+/**
  * Given a contributions object consisting of date strings
  * as keys and the number of edits per day as values, fill
  * two arrays (keys, entries) with empty contribution days.
@@ -19,9 +30,6 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
 	const withoutTime = ( date ) => {
 		const [ withoutT ] = date.toISOString().split( 'T' );
 		return withoutT;
-	};
-	const subtractDays = ( date, days ) => {
-		date.setDate( date.getDate() - days );
 	};
 	const entries = [];
 	const keys = [];
@@ -61,7 +69,8 @@ function useUserImpact( userId, timeFrame ) {
 				lastEditTimestamp,
 				longestEditingStreak,
 				totalEditsCount,
-				dailyTotalViews
+				dailyTotalViews,
+				dailyArticleViews
 			} = data.value;
 
 			const views = Object.keys( dailyTotalViews ).map( ( key ) => ( {
@@ -69,7 +78,31 @@ function useUserImpact( userId, timeFrame ) {
 				views: dailyTotalViews[ key ]
 			} ) );
 
+			const articles = Object.keys( dailyArticleViews ).map( ( articleTitle ) => {
+				const title = new mw.Title( articleTitle );
+				const articleData = dailyArticleViews[ articleTitle ];
+				const articleViewsByDay = Object.keys( articleData.views || [] );
+				const viewsCount = articleViewsByDay
+					.map( ( day ) => articleData.views[ day ] )
+					.reduce( ( x, y ) => x + y, 0 );
+
+				return {
+					title: title.getNameText(),
+					href: title.getUrl(),
+					views: {
+						href: articleData.pageviewsUrl,
+						count: articleViewsByDay.length > 0 ? viewsCount : null
+					},
+					image: {
+						href: articleData.imageUrl,
+						// TODO add captions as thumbnail alt text T322319
+						altText: title.getNameText()
+					}
+				};
+			} );
+
 			return {
+				articles,
 				lastEditTimestamp,
 				receivedThanksCount,
 				longestEditingStreak,

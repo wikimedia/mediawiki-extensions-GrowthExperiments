@@ -113,7 +113,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->setService( 'PageViewService', $pageViewService );
 		/** @var ComputedUserImpactLookup $userImpactLookup */
 		$userImpactLookup = $this->getServiceContainer()->get( '_GrowthExperimentsUserImpactLookup_Computed' );
-		ConvertibleTimestamp::setFakeTime( '2022-09-30 12:00:00' );
+		ConvertibleTimestamp::setFakeTime( '2022-10-30 12:00:00' );
 		$userImpact = $userImpactLookup->getExpensiveUserImpact( $userIdentity );
 
 		$this->assertTrue( $userIdentity->equals( $userImpact->getUser() ) );
@@ -125,9 +125,14 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertSame( [], $userImpact->getDailyArticleViews() );
 
 		$dailyTotalViews = $userImpact->getDailyTotalViews();
-		$expectedDays = array_map( static function ( $day ) {
+		$expectedDays = array_merge(
+			array_map( static function ( $day ) {
 			return '2022-09-' . str_pad( $day, 2, '0', STR_PAD_LEFT );
-		}, range( 1, 30 ) );
+			}, range( 1, 30 ) ),
+			array_map( static function ( $day ) {
+				return '2022-10-' . str_pad( $day, 2, '0', STR_PAD_LEFT );
+			}, range( 1, 30 ) )
+		);
 		$this->assertSame( $expectedDays, array_keys( $dailyTotalViews ) );
 		$this->assertSame( 0, $dailyTotalViews['2022-09-10'] );
 	}
@@ -147,7 +152,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 			$this->assertArrayEquals( $expectedTitles, array_map( static function ( Title $title ) {
 				return $title->getPrefixedText();
 			}, $titles ) );
-			$this->assertSame( 30, $days );
+			$this->assertSame( 60, $days );
 			$data = [];
 			foreach ( range( 1, 6 ) as $page ) {
 				foreach ( range( 1, 30 ) as $day ) {
@@ -196,9 +201,9 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		// article (defined in the current implementation as the most recently edited) being at
 		// top, so the most recently edited must come first.
 		$this->assertSame( [ 'Test_6', 'Test_5', 'Test_4', 'Test_3', 'Test_2' ], array_keys( $dailyArticleViews ) );
-		$this->assertSame( $expectedDays, array_keys( $dailyArticleViews['Test_2'] ) );
-		$this->assertSame( 201, $dailyArticleViews['Test_2']['2022-09-01'] );
-		$this->assertSame( 530, $dailyArticleViews['Test_5']['2022-09-30'] );
+		$this->assertSame( $expectedDays, array_keys( $dailyArticleViews['Test_2']['views'] ) );
+		$this->assertSame( 201, $dailyArticleViews['Test_2']['views']['2022-09-01'] );
+		$this->assertSame( 530, $dailyArticleViews['Test_5']['views']['2022-09-30'] );
 	}
 
 }

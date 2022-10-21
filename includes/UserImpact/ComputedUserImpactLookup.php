@@ -4,7 +4,9 @@ namespace GrowthExperiments\UserImpact;
 
 use ActorMigration;
 use DateTime;
+use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
+use MalformedTitleException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\MainConfigNames;
@@ -14,9 +16,11 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserTimeCorrection;
 use MWTimestamp;
+use PageImages\PageImages;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Status;
+use Title;
 use TitleFactory;
 use TitleFormatter;
 use TitleValue;
@@ -31,6 +35,13 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		MainConfigNames::LocalTZoffset
 	];
 
+	/**
+	 * Size in pixels of the thumb image to request to PageImages. Matches the Codex
+	 * thumbnail component size it is rendered in. Used in the articles list (ArticlesList.vue)
+	 * in the impact module.
+	 */
+	private const THUMBNAIL_SIZE = 40;
+
 	/** Cutoff for edit statistics. */
 	private const MAX_EDITS = 1000;
 
@@ -41,7 +52,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	private const TOP_ARTICLES = 5;
 
 	/** How many days of pageview data to get. PageViewInfo supports up to 60. */
-	private const PAGEVIEW_DAYS = 30;
+	public const PAGEVIEW_DAYS = 60;
 
 	/** @var ServiceOptions */
 	private $config;
@@ -291,6 +302,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 *     number of pageviews on each of the last $days days. Keyed by prefixed DBkey and then
 	 *     by ISO 8601 date.
 	 * @phan-return array{dailyTotalViews:array<string,int>,dailyArticleViews:array<string,array<string,int>>}|null
+	 * @throws MalformedTitleException
 	 */
 	private function getPageViewData( User $user, array $titles, array $topTitles, int $days ): ?array {
 		// Short-circuit if the user has no edits.
@@ -321,10 +333,16 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		foreach ( $pageViewData as $title => $days ) {
 			// Normalize titles as PageViewInfo does not define which title format it uses :(
 			$title = str_replace( ' ', '_', $title );
+			$mwTitle = $this->titleFactory->newFromTextThrow( $title );
+			$imageUrl = $this->getImage( $mwTitle );
+			if ( $imageUrl ) {
+				$dailyArticleViews[$title]['imageUrl'] = $imageUrl;
+			}
+
 			foreach ( $days as $day => $views ) {
 				$dailyTotalViews[$day] = ( $dailyTotalViews[$day] ?? 0 ) + $views;
 				if ( in_array( $title, $topTitles, true ) ) {
-					$dailyArticleViews[$title][$day] = ( $dailyArticleViews[$title][$day] ?? 0 ) + $views;
+					$dailyArticleViews[$title]['views'][$day] = ( $dailyArticleViews[$title][$day] ?? 0 ) + $views;
 				}
 			}
 		}
@@ -363,6 +381,37 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$dates[] = date( 'Y-m-d', strtotime( "-$i days", ConvertibleTimestamp::time() ) );
 		}
 		return array_reverse( $dates );
+	}
+
+	/**
+	 * Get image URL for a page
+	 * Depends on the PageImages extension.
+	 *
+	 * @param Title $title
+	 * @return ?string
+	 */
+	private function getImage( Title $title ): ?string {
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'PageImages' ) ) {
+			return null;
+		}
+
+		$imageFile = PageImages::getPageImage( $title );
+		if ( $imageFile ) {
+			$ratio = $imageFile->getWidth() / $imageFile->getHeight();
+			$options = [
+				'width' => $ratio > 1 ?
+					// Avoid decimals in the width because it makes the thumb url construction fail
+					floor( self::THUMBNAIL_SIZE / $imageFile->getHeight() * $imageFile->getWidth() ) :
+					self::THUMBNAIL_SIZE
+			];
+
+			$thumb = $imageFile->transform( $options );
+			if ( $thumb ) {
+				return $thumb->getUrl() ?: null;
+			}
+		}
+
+		return null;
 	}
 
 }

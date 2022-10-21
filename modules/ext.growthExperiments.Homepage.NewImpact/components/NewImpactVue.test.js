@@ -21,7 +21,8 @@ describe( 'NewImpactVue', () => {
 				4: 9
 			},
 			editCountByDay: {},
-			dailyTotalViews: {}
+			dailyTotalViews: {},
+			dailyArticleViews: {}
 		} ) );
 		const wrapper = mount( NewImpact, {
 			global: {
