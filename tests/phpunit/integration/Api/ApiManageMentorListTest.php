@@ -5,10 +5,12 @@ namespace GrowthExperiments\Tests;
 use ApiTestCase;
 use ApiUsageException;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use User;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @group API
@@ -199,5 +201,40 @@ class ApiManageMentorListTest extends ApiTestCase {
 			'only weight' => [ [ 'weight' => MentorWeightManager::WEIGHT_LOW ] ],
 			'only autoassigned' => [ [ 'autoassigned' => true ] ],
 		];
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testMentorStatus() {
+		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
+		ConvertibleTimestamp::setFakeTime( strtotime( '2011-04-01T00:00Z' ) );
+
+		$mentorStatusManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorStatusManager();
+
+		$mentorUser = $this->getMutableTestUser()->getUser();
+		$this->doApiRequestWithToken(
+			[
+				'action' => 'growthmanagementorlist',
+				'geaction' => 'add',
+				'message' => 'intro',
+				'autoassigned' => true,
+				'weight' => MentorWeightManager::WEIGHT_NORMAL,
+				'username' => $mentorUser->getName(),
+				'isaway' => true,
+				'awaytimestamp' => '2011-04-25T18:47:38.000Z',
+			],
+			null,
+			$this->getTestSysop()->getUser()
+		);
+		$this->assertSame(
+			MentorStatusManager::STATUS_AWAY,
+			$mentorStatusManager->getMentorStatus( $mentorUser )
+		);
+		$this->assertSame(
+			'20110425184738',
+			$mentorStatusManager->getMentorBackTimestamp( $mentorUser )
+		);
 	}
 }

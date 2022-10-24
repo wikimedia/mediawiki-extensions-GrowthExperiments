@@ -25,5 +25,6 @@
 	"apihelp-growthmanagementorlist-param-weight": "{{doc-apihelp-param|growthmanagementorlist|weight}}",
 	"apihelp-growthmanagementorlist-param-autoassigned": "{{doc-apihelp-param|growthmanagementorlist|autoassigned}}",
 	"apihelp-growthmanagementorlist-param-summary": "{{doc-apihelp-param|growthmanagementorlist|summary}}",
-	"apihelp-growthmanagementorlist-param-username": "{{doc-apihelp-param|growthmanagementorlist|username}}"
+	"apihelp-growthmanagementorlist-param-username": "{{doc-apihelp-param|growthmanagementorlist|username}}",
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Message to show in API (action=growthmanagementors) if isaway is true, but awaytimestamp is not provided."
 }

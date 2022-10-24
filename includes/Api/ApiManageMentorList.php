@@ -4,6 +4,7 @@ namespace GrowthExperiments\Api;
 
 use ApiBase;
 use ApiMain;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
@@ -19,22 +20,28 @@ class ApiManageMentorList extends ApiBase {
 	/** @var IMentorWriter */
 	private $mentorWriter;
 
+	/** @var MentorStatusManager */
+	private $mentorStatusManager;
+
 	/**
 	 * @param ApiMain $mainModule
 	 * @param string $moduleName
 	 * @param MentorProvider $mentorProvider
 	 * @param IMentorWriter $mentorWriter
+	 * @param MentorStatusManager $mentorStatusManager
 	 */
 	public function __construct(
 		ApiMain $mainModule,
 		$moduleName,
 		MentorProvider $mentorProvider,
-		IMentorWriter $mentorWriter
+		IMentorWriter $mentorWriter,
+		MentorStatusManager $mentorStatusManager
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorWriter = $mentorWriter;
+		$this->mentorStatusManager = $mentorStatusManager;
 	}
 
 	/**
@@ -72,6 +79,14 @@ class ApiManageMentorList extends ApiBase {
 		}
 		$mentor->setAutoAssigned( $params['autoassigned'] );
 
+		// ensure awaytimestamp is provided when isaway=true
+		if ( $params['isaway'] && $params['awaytimestamp'] === null ) {
+			$this->dieWithError(
+				'growthexperiments-api-managementors-error-no-away-timestamp',
+				'away-timestamp'
+			);
+		}
+
 		switch ( $params['geaction'] ) {
 			case 'add':
 				$statusValue = $this->mentorWriter->addMentor(
@@ -103,12 +118,24 @@ class ApiManageMentorList extends ApiBase {
 			$this->dieStatus( $statusValue );
 		}
 
+		if ( $params['geaction'] !== 'remove' ) {
+			if ( $params['isaway'] ) {
+				$this->mentorStatusManager->markMentorAsAwayTimestamp(
+					$mentorUser,
+					$params['awaytimestamp']
+				);
+			} else {
+				$this->mentorStatusManager->markMentorAsActive( $mentorUser );
+			}
+		}
+
 		$this->getResult()->addValue( null, $this->getModuleName(), [
 			'status' => 'ok',
 			'mentor' => [
 				'message' => $mentor->hasCustomIntroText() ? $mentor->getIntroText() : null,
 				'weight' => $mentor->getWeight(),
 				'automaticallyAssigned' => $mentor->getAutoAssigned(),
+				'awayTimestamp' => $this->mentorStatusManager->getMentorBackTimestamp( $mentorUser ),
 			]
 		] );
 	}
@@ -148,6 +175,12 @@ class ApiManageMentorList extends ApiBase {
 			],
 			'autoassigned' => [
 				ParamValidator::PARAM_TYPE => 'boolean',
+			],
+			'isaway' => [
+				ParamValidator::PARAM_TYPE => 'boolean',
+			],
+			'awaytimestamp' => [
+				ParamValidator::PARAM_TYPE => 'timestamp',
 			],
 			'summary' => [
 				ParamValidator::PARAM_TYPE => 'string',
