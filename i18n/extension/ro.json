@@ -54,6 +54,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-image": "Pagina destinație pentru o legătură despre adăugarea cum se adaugă imagini în editorul vizual",
 	"growthexperiments-edit-config-mentorship": "Activitate de mentor",
 	"growthexperiments-edit-config-mentorship-description-wikitext": "Wiki-urile pot avea două liste de mentori separate: una pentru mentori care ajung atribuiți aleatoriu tuturor nou-veniților, iar alta pentru mentori care nu ajung atribuiți aleatoriu, dar pot revendica ucenici. Această a doua listă este utilizată pentru mentori care vor să fie mentori persoanelor din evenimente sau clase.",
+	"growthexperiments-edit-config-mentorship-description-structured": "Mentorii pot avea două roluri. În mod implicit, aceștia sunt alocați aleatoriu nou-veniților. Există o opțiune pentru mentorii care doresc să fie doar mentori pentru oamenii din cadrul evenimentelor sau claselor: acestor mentori nu li se atribuie niciun nou-venit, dar îi pot revendica.\n\nNumărul ideal de mentori este: câte un mentor pentru fiecare grup de 500 de conturi noi, cu un minimum de 3 mentori.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|Aflați mai mult despre cu funcționează sistemul cu mentori]]",
 	"growthexperiments-edit-config-mentorship-enabled": "Funcțiile de activitate a mentorului sunt activate?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Da",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nu",

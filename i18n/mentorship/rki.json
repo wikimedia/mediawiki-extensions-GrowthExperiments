@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"ReyLon Mrat"
+			"ReyLon Mrat",
+			"YaThaWinTha"
 		]
 	},
-	"growthexperiments-manage-mentors-pretext-purpose": "ဆရာတိစာရင်းကို ဒေစာမျက်နှာမှာပြရေ။",
-	"growthexperiments-manage-mentors-none": "မရှိ"
+	"growthexperiments-manage-mentors-pretext-purpose": "Mentors တိစာရင်းကို ဒေစာမျက်နှာမှာပြရေ။",
+	"growthexperiments-manage-mentors-none": "တစ်ခုလေ့မဟိမ့်ပါ"
 }

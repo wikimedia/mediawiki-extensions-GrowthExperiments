@@ -6,6 +6,7 @@
 	},
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Siziń}} jaqın aradaǵı háreketlerińiz (aqırǵı $2 {{PLURAL:$2|kún|kúnler}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Aqırǵı dúzetiw:",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Eń jaqsı seriya",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|kún|kúnler}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Dúzetiw|Dúzetiwler}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "Jámi ózgerisler",
