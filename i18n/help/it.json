@@ -8,7 +8,8 @@
 			"ValeJappo",
 			"Ciampix",
 			"Elitre (WMF)",
-			"Sannita"
+			"Sannita",
+			"GpieroMW"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Attiva il pannello introduttivo",
@@ -19,7 +20,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Migliori pagine di aiuto",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Vedi altre pagine di aiuto",
 	"growthexperiments-help-panel-question-widget-header": "Invia le tue domande allo Sportello Informazioni",
-	"growthexperiments-help-panel-question-placeholder": "Saluta e scrivi la tua domanda.",
+	"growthexperiments-help-panel-question-placeholder": "Saluta e scrivi {{GENDER:$1|la tua}} domanda.",
 	"growthexperiments-help-panel-back-home": "Indietro",
 	"growthexperiments-help-panel-close": "Fatto",
 	"growthexperiments-help-panel-home-title": "Ricevi aiuto nel contribuire",
