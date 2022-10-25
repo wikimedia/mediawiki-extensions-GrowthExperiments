@@ -58,6 +58,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-image": "صفحة الوصول إلى رابط حول إضافة صور باستخدام المحرر المرئي",
 	"growthexperiments-edit-config-mentorship": "الإرشاد",
 	"growthexperiments-edit-config-mentorship-description-wikitext": "يمكن للويكييات أن تتضمّن على قائمتين مختلقتين للمرشدين: أولى تخصّ مرشدين يعيّنون عشوائيا إلى جميع الوافدين الجدد، وأخرى خاصة بمرشدين لا يحصلون على مُتعلّمين عشوائيا بل يطالبون بهم. هذه القائمة الثانية مستخدمة من قبل مرشدين يريدون فقط أن يكونوا مرشدين لأشخاص من تظاهرات أو من أقسام.",
+	"growthexperiments-edit-config-mentorship-description-structured": "يمكن أن يكون للمرشدين دوران. بشكل افتراضي، يتم تعيينهم بشكل عشوائي للوافدين الجدد. يوجد خِيار خاصّ للمرشدين بأن يهتمّوا فقط بأشخاص يشاركون في فعاليات أو دورات تدريبية: لا يتمّ تعيين وافدين جدد لهم، بل يمكنهم المطالبة بهم.\n\nالعدد المثالي للمرشدين هو: مرشد واحد لكلّ 500 حساب جديد مع عدد لا يقلّ عن 3.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|اعرفوا المزيد عن كيفية عمل الإرشاد]]",
 	"growthexperiments-edit-config-mentorship-enabled": "هل مزايا الإرشاد مُفعّلة؟",
 	"growthexperiments-edit-config-mentorship-enabled-true": "نعم",
 	"growthexperiments-edit-config-mentorship-enabled-false": "لا",
