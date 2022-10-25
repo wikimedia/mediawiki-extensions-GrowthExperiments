@@ -122,7 +122,7 @@ module.exports = exports = {
 			return this.lastEditMoment.fromNow();
 		},
 		bestStreakDaysLocalisedCount() {
-			return this.$filters.convertNumber( this.data.bestStreak.count );
+			return this.$filters.convertNumber( this.data.bestStreak.datePeriod.days );
 		},
 		userName() {
 			return mw.config.get( 'GENewImpactRelevantUserName' );
