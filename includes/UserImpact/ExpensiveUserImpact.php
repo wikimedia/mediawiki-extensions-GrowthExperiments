@@ -38,6 +38,7 @@ class ExpensiveUserImpact extends UserImpact {
 	 * @param int[][] $dailyArticleViews Title DBkey => day => number of pageviews the given article
 	 *   got on that day. Days are indexed with ISO 8601 dates, e.g. '2022-08-25'. Titles have
 	 *   no namespace and are always assumed to be in the article space.
+	 * @param EditingStreak $longestEditingStreak
 	 */
 	public function __construct(
 		UserIdentity $user,
@@ -48,10 +49,11 @@ class ExpensiveUserImpact extends UserImpact {
 		int $newcomerTaskEditCount,
 		?int $lastEditTimestamp,
 		array $dailyTotalViews,
-		array $dailyArticleViews
+		array $dailyArticleViews,
+		EditingStreak $longestEditingStreak
 	) {
 		parent::__construct( $user, $receivedThanksCount, $editCountByNamespace, $editCountByDay,
-			$timeZone, $newcomerTaskEditCount, $lastEditTimestamp );
+			$timeZone, $newcomerTaskEditCount, $lastEditTimestamp, $longestEditingStreak );
 		$this->dailyTotalViews = $dailyTotalViews;
 		$this->dailyArticleViews = $dailyArticleViews;
 	}
@@ -91,7 +93,8 @@ class ExpensiveUserImpact extends UserImpact {
 			0,
 			0,
 			[],
-			[]
+			[],
+			new EditingStreak()
 		);
 	}
 

@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use DateTime;
+use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserTimeCorrection;
@@ -29,7 +30,8 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
-			$dailyArticleViews
+			$dailyArticleViews,
+			 new EditingStreak()
 		);
 		$this->assertInstanceOf( ExpensiveUserImpact::class, $userImpact );
 		$this->assertSame( $dailyTotalViews, $userImpact->getDailyTotalViews() );
@@ -53,7 +55,8 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
-			$dailyArticleViews
+			$dailyArticleViews,
+			new EditingStreak()
 		);
 		$data = $userImpact->jsonSerialize();
 		$this->assertSame( $dailyTotalViews, $data['dailyTotalViews'] );

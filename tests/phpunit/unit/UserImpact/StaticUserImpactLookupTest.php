@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpact;
@@ -23,7 +24,8 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 				[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 				new UserTimeCorrection( 'System|0' ),
 				80,
-				wfTimestamp( TS_UNIX, '20200101000000' )
+				wfTimestamp( TS_UNIX, '20200101000000' ),
+				new EditingStreak()
 			),
 			2 => new ExpensiveUserImpact(
 				UserIdentityValue::newRegistered( 2, 'User2' ),
@@ -37,7 +39,8 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 				[
 					'Foo' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],
 					'Bar' => [ '2022-08-24' => 30, '2022-08-25' => 40 ],
-				]
+				],
+				new EditingStreak()
 			),
 		];
 		$lookup = new StaticUserImpactLookup( $userImpacts );
