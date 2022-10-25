@@ -6,7 +6,8 @@
 			"Kareyac",
 			"Mari Avetisyan",
 			"Xelgen",
-			"Աշոտ1997"
+			"Աշոտ1997",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ողջույն}}, $1:",
@@ -237,5 +238,6 @@
 	"growthexperiments-addlink-context-button-accept": "Այո",
 	"growthexperiments-addlink-context-button-reject": "Ոչ",
 	"growthexperiments-addlink-context-button-next": "Հաջորդ",
-	"growthexperiments-addlink-rejectiondialog-reason-other": "Այլ"
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Այլ",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Առաջարկություններ"
 }

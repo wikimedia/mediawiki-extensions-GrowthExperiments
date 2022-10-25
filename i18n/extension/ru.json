@@ -12,7 +12,8 @@
 			"Pacha Tchernof",
 			"Ice bulldog",
 			"Iniquity",
-			"Jack Jackie Pomi"
+			"Jack Jackie Pomi",
+			"Kaganer"
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
@@ -28,7 +29,7 @@
 	"growthexperiments-edit-config-pretext": "Эта страница позволяет редактировать конфигурацию функций от команды [[:mw:Special:MyLanguage/Growth|«Роста»]]. Она будет редактировать $1 от вашего имени. Изменения можно просмотреть в истории страницы.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Эта форма позволяет доверенным редакторам редактировать конфигурацию инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]].",
 	"growthexperiments-edit-config-feedback-headline": "У вас есть идеи или вопросы по этой форме?",
-	"growthexperiments-edit-config-feedback-cta": "Оставить отзыв!",
+	"growthexperiments-edit-config-feedback-cta": "Оставить отзыв",
 	"growthexperiments-edit-config-error-invalid-title": "Страница конфигурации не была настроена должным образом",
 	"growthexperiments-edit-config-edit-summary": "Описание изменений",
 	"growthexperiments-edit-config-config-changed": "Конфигурация была изменена. Возможно, вам придется подождать несколько минут, чтобы изменения вступили в силу.",
