@@ -45,8 +45,8 @@ class ComputeEditingStreaks {
 				// silently discard row if date is invalid.
 				continue;
 			}
-			if ( !is_int( $editCountForDate ) ) {
-				// silently discard row if edit count format is invalid.
+			if ( !is_int( $editCountForDate ) || $editCountForDate === 0 ) {
+				// silently discard row if edit count format is invalid or 0.
 				continue;
 			}
 
