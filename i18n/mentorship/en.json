@@ -47,6 +47,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "The mentor dashboard only shows recently active mentees. More information can be displayed via the info icon. If {{GENDER:|you}} recently enrolled into mentorship, {{GENDER:|you}} might have no mentees assigned yet.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "No mentees found",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Change your filters to find mentees.",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Recent changes by {{GENDER:|your}} mentees",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|You}} can view the edits made by all {{GENDER:|your}} mentees by visiting this [$1 filtered view of Recent Changes].",
 	"growthexperiments-mentor-dashboard-resources-headline": "Resources",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "The mentor list",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Manage mentors",

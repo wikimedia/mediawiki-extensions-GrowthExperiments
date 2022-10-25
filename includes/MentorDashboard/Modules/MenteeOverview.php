@@ -3,6 +3,7 @@
 namespace GrowthExperiments\MentorDashboard\Modules;
 
 use Html;
+use SpecialPage;
 
 class MenteeOverview extends BaseModule {
 
@@ -37,6 +38,29 @@ class MenteeOverview extends BaseModule {
 		return Html::rawElement(
 			'div',
 			[
+				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-container'
+			],
+			implode( "\n", [
+				$this->getClientSideBody(),
+				$this->getRecentEditsByMenteesBody()
+			] )
+		);
+	}
+
+	/**
+	 * Get skeleton body to be replaced on the client side
+	 *
+	 * Should only have a no-js-fallback in it, to display meaningful
+	 * information for no-JS clients.
+	 *
+	 * Protected, so MenteeOverviewVue can add its own ID to the div.
+	 *
+	 * @return string
+	 */
+	protected function getClientSideBody(): string {
+		return Html::rawElement(
+			'div',
+			[
 				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-content'
 			],
 			Html::element(
@@ -44,6 +68,39 @@ class MenteeOverview extends BaseModule {
 				[ 'class' => 'growthexperiments-mentor-dashboard-no-js-fallback' ],
 				$this->msg( 'growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback' )->text()
 			)
+		);
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getRecentEditsByMenteesBody(): string {
+		if ( !$this->getConfig()->get( 'GERecentChangesUnstarredMenteesFilterEnabled' ) ) {
+			return '';
+		}
+
+		return Html::rawElement(
+			'div',
+			[
+				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-recent-by-mentees'
+			],
+			implode( "\n", [
+				Html::element(
+					'h4',
+					[],
+					$this->msg( 'growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline' )
+						->text()
+				),
+				Html::rawElement(
+					'p',
+					[],
+					$this->msg( 'growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text' )
+						->params( SpecialPage::getTitleFor( 'Recentchanges' )->getFullURL( [
+							'mentorship' => 'all',
+						] ) )
+						->parse()
+				)
+			] )
 		);
 	}
 

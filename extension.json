@@ -1781,6 +1781,7 @@
 				"ext.growthExperiments.MentorDashboard/BaseModule.less",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverview.less",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverview.mobile.less",
+				"ext.growthExperiments.MentorDashboard.Vue/styles/MenteeOverview.less",
 				"ext.growthExperiments.MentorDashboard/Resources.less",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.less"
 			],
