@@ -95,11 +95,9 @@ class SpecialManageMentors extends SpecialPage {
 	 * @return string
 	 */
 	private function getLastActiveTimestamp( UserIdentity $user ): string {
-		$timestamp = new MWTimestamp( $this->userEditTracker->getLatestEditTimestamp( $user ) );
-		$timestamp->offsetForUser( $this->getUser() );
-
-		return $this->getContext()->getLanguage()->timeanddate(
-			$timestamp
+		return $this->getContext()->getLanguage()->userTimeAndDate(
+			new MWTimestamp( $this->userEditTracker->getLatestEditTimestamp( $user ) ),
+			$this->getUser()
 		);
 	}
 
