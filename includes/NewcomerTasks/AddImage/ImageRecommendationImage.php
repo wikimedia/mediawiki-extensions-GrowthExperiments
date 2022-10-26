@@ -112,7 +112,7 @@ class ImageRecommendationImage implements JsonSerializable {
 	}
 
 	/** @inheritDoc */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		return $this->toArray();
 	}
 }

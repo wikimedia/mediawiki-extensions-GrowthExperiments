@@ -75,12 +75,12 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 	}
 
 	/** @inheritDoc */
-	public function count() {
+	public function count(): int {
 		return count( $this->tasks );
 	}
 
 	/** @inheritDoc */
-	public function offsetExists( $offset ) {
+	public function offsetExists( $offset ): bool {
 		return array_key_exists( $offset, $this->tasks );
 	}
 
@@ -102,7 +102,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 	 * @param mixed $value
 	 * @suppress PhanPluginNeverReturnMethod LSP violation
 	 */
-	public function offsetSet( $offset, $value ) {
+	public function offsetSet( $offset, $value ): void {
 		throw new BadMethodCallException( 'TaskSet is read-only' );
 	}
 
@@ -111,7 +111,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 	 * @param mixed $offset
 	 * @suppress PhanPluginNeverReturnMethod LSP violation
 	 */
-	public function offsetUnset( $offset ) {
+	public function offsetUnset( $offset ): void {
 		throw new BadMethodCallException( 'TaskSet is read-only' );
 	}
 
