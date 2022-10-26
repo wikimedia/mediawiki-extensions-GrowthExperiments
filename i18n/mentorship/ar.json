@@ -54,6 +54,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "لا تعرض لوحة المرشِدين سوى المرشَدين النشطاء مؤخرًا. يمكن عرض المزيد من المعلومات عبر أيقونة المعلومات. إذا تم تسجيلك مؤخرًا في الإرشاد، فربما لم يتم بعد، تعيين مدرشَدين لحسابك.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "لم يتمّ العثور على مرشَدين",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "استبدال مرشّحاتك للحصول على مرشَدين.",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "التغييرات الأخيرة بواسطة المتعلّمين الخاصّين {{GENDER:|بكَ|بكِ}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "يمكنك عرض التعديلات التي تم إجراؤها بواسطة جميع المتعلّمين الخاصين {{GENDER:|بكَ|بكِ}} من خلال زيارة هذا [$1 العرض المرشّح للتغييرات الأخيرة].",
 	"growthexperiments-mentor-dashboard-resources-headline": "المراجع",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "قائمة المرشِدين",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "إدارة المرشدين",

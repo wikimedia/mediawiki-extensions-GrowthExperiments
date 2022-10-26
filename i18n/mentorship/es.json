@@ -58,6 +58,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "El panel de control solo muestra los aprendices que hayan estado activos recientemente. Puedes ver más información en el icono de información. Si te inscribiste recientemente como {{GENDER:|mentor|mentora}}, es posible que aún no se te haya asignado ningún aprendiz.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "No se encontraron aprendices.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Cambia tus filtros para encontrar aprendices.",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Cambios recientes de tus aprendices",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "Puedes ver las ediciones realizadas por tus aprendices con este [$1 filtro de Cambios Recientes].",
 	"growthexperiments-mentor-dashboard-resources-headline": "Recursos",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "La lista de mentores y mentoras",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gestionar mentores/as",

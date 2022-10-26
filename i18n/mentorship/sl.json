@@ -49,6 +49,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Nadzorna plošča mentorja prikazuje samo nedavno dejavne mentorirance. Več informacij lahko prikažete z ikono info. Če {{GENDER:|ste se}} v mentorstvo vključili pred kratkim, morda še {{GENDER:|nimate}} dodeljenih mentorirancev.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Ni najdenih mentorirancev",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Spremenite filtre za iskanje mentorirancev.",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Zadnje spremembe {{GENDER:|vaših}} mentorirancev",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|Ogledate}} si lahko urejanja vseh {{GENDER:|vaših}} mentorirancev tako, da obiščete ta [$1 filtrirani pogled zadnjih sprememb].",
 	"growthexperiments-mentor-dashboard-resources-headline": "Viri",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Seznam mentorjev",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Upravljanje mentorjev",

@@ -49,6 +49,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Le tabuliero de instrumentos del mentor monstra solmente le apprentisses recentemente active. Plus information es disponibile sub le icone Info. Si tu te ha recentemente inscribite pro le mentorato, es possibile que tu non ha ancora alcun apprentisse assignate.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nulle apprentisse trovate",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Cambia tu filtros pro trovar apprentisses.",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Modificationes recente de tu apprentisses",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "Tu pote vider le modificationes facite per tote tu apprentisses visitante iste [$1 vista filtrate del modificationes recente].",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressources",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Le lista de mentores",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gerer mentores",

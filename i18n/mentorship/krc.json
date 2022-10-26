@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "{{GENDER:|Сизни}} джакъланнганларыгъызны кёб болмай болгъан тюрлениулери",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|Сиз}}, {{GENDER:|сизни}} бютеу джакълагъанларыгъызны этген тюрлениулерине былайгъа кириб къараргъа боллукъсуз: [$1 багъасына сюзюлген ангыламына къараргъа боллукъсуз]."
+}

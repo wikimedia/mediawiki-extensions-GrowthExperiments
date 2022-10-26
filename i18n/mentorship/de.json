@@ -52,6 +52,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Das Mentoren-Dashboard zeigt nur kürzlich aktive Mentees. Über das Info-Icon können weitere Informationen angezeigt werden. Wenn {{GENDER:|du}} dich erst kürzlich für die Mentorschaft angemeldet hast, wurden {{GENDER:|dir}} möglicherweise noch keine Mentees zugewiesen.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Keine Mentees gefunden",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Ändere deine Filter, um Mentees zu finden.",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Letzte Änderungen {{GENDER:|deines}} Mentees",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|Du}} kannst die Änderungen anzeigen, die von allen {{GENDER:|deinen}} Mentees vorgenommen wurden, indem du diese [$1 gefilterte Ansicht der letzten Änderungen] aufrufst.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressourcen",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Liste der Lotsinnen/Lotsen",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Verwalten von Lotsen",

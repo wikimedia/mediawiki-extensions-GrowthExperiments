@@ -53,6 +53,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "La tableau de bord du tuteur affiche seulement les novices récemment actifs. Plus d’informations peuvent être affichées via l’icône d’information. Si vous vous êtes récemment inscrit{{GENDER:|e}} en tant que tut{{GENDER:|eur|rice}}, vous pouvez n’avoir encore aucun novice affecté.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Aucun apprenti trouvé",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifier vos filtres pour trouver des apprentis.",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Changements récents par {{GENDER:|}}vos tutorés",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|}}Vous pouvez afficher les modifications apportées par tous les {{GENDER:|}}vos tutorés en visitant cette [$1 vue filtrée des modifications récentes].",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressources",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "La liste des tuteurs",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gérer les tuteurs",

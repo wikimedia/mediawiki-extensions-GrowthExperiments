@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kokage si",
 			"Omotecho",
 			"Tmv"
 		]
@@ -9,10 +10,10 @@
 	"apihelp-helppanelquestionposter-param-body": "利用者が投降した質問の本文。",
 	"apihelp-helppanelquestionposter-param-source": "質問の投稿の際に使用した方法",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "「ヘルプデスクに質問する」パネル",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "初心者用ホームページ上の「先生に質問する」パネル",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "新規参加者ホームページ上の「先生に質問する」パネル",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "ヘルプパネル上の「先生に質問する」画面",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "「ヘルプデスクに質問する」パネル（古い呼び名）",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "初心者用ホームページ上の「先生に質問する」パネル（古い呼び名）",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "新規参加者ホームページ上の「先生に質問する」パネル（古い呼び名）",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "選択して、適した題名を質問文に含める。",
 	"apierror-mustbeloggedin-helppanelquestionposter": "質問をするには、まずログインしてください。"
 }
