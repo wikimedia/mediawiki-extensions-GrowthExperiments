@@ -122,7 +122,8 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 			[ 'getOption', 'setOption', 'saveOptions' ] );
 		$mockUserOptionsManager->method( 'getOption' )->willReturnCallback(
 			static function ( UserIdentity $user, string $option ) use ( &$userOptions ) {
-				return $userOptions[$user->getName()][$option] ?? null;
+				// WelcomeSurvey::loadSurveyData uses a default override of ''.
+				return $userOptions[$user->getName()][$option] ?? '';
 			}
 		);
 		$mockUserOptionsManager->method( 'setOption' )->willReturnCallback(

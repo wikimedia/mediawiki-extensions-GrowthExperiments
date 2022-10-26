@@ -29,7 +29,7 @@ class EditingStreak implements JsonSerializable {
 	}
 
 	/** @inheritDoc */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		return $this->datePeriod ?
 		[
 			'datePeriod' => [
@@ -38,7 +38,7 @@ class EditingStreak implements JsonSerializable {
 				'days' => $this->getStreakNumberOfDays()
 			],
 			'totalEditCountForPeriod' => $this->totalEditCountForPeriod
-		] : '';
+		] : [];
 	}
 
 	/**
