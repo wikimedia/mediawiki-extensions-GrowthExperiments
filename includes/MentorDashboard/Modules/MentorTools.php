@@ -124,6 +124,9 @@ class MentorTools extends BaseModule {
 					new DropdownInputWidget( [
 						'id' => 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown',
 						'infusable' => true,
+						'disabled' => !$this->mentorStatusManager->canChangeStatus(
+							$this->getUser()
+						)->isOK(),
 						'value' => $this->mentorStatusManager->getMentorStatus(
 							$this->getUser()
 						),
@@ -247,28 +250,30 @@ class MentorTools extends BaseModule {
 	 * @return string
 	 */
 	private function maybeGetAwayMessage(): string {
-		if (
-			$this->mentorStatusManager->getMentorStatus( $this->getUser() ) !== MentorStatusManager::STATUS_AWAY
-		) {
+		$awayReason = $this->mentorStatusManager->getAwayReason( $this->getUser() );
+		if ( $awayReason === null ) {
+			// user is not away
 			return '';
 		}
 
-		$rawTS = $this->mentorStatusManager->getMentorBackTimestamp( $this->getUser() );
-		if ( $rawTS === null ) {
-			// This should actually never happen
-			throw new LogicException(
-				'MentorStatusManager::getMentorBackTimestamp should not return null ' .
-				'if mentor status is away.'
-			);
+		switch ( $awayReason ) {
+			case MentorStatusManager::AWAY_BECAUSE_TIMESTAMP:
+				return $this->msg(
+					'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message',
+					$this->getContext()->getLanguage()->date(
+						(string)$this->mentorStatusManager->getMentorBackTimestamp( $this->getUser() ),
+						true
+					)
+				)->text();
+			case MentorStatusManager::AWAY_BECAUSE_BLOCK:
+				return $this->msg(
+					'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block'
+				)->text();
+			default:
+				throw new LogicException(
+					'MentorStatusManager::getAwayReason returned unknown reason'
+				);
 		}
-
-		return $this->msg(
-			'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message',
-			$this->getContext()->getLanguage()->date(
-				$rawTS,
-				true
-			)
-		)->text();
 	}
 
 	/**

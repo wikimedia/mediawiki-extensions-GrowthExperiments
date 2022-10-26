@@ -3,18 +3,25 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use MediaWiki\Block\AbstractBlock;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
+use User;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @coversDefaultClass \GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager
  */
 class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 
+	/**
+	 * @return UserIdentity
+	 */
 	private function getTestMentor(): UserIdentity {
 		return new UserIdentityValue(
 			123,
@@ -23,32 +30,73 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getMentorBackTimestamp
-	 * @dataProvider provideTimestamps
+	 * @param bool $userIsBlocked
+	 * @return UserFactory
 	 */
-	public function testGetMentorBackTimestamp( $expectedTS, $rawTS ) {
+	private function getMockUserFactory( bool $userIsBlocked = false ): UserFactory {
+		$userIdentity = $this->getTestMentor();
+		$user = $this->createMock( User::class );
+		$user->method( 'getName' )
+			->willReturn( $userIdentity->getName() );
+		$user->method( 'getId' )
+			->willReturn( $userIdentity->getId() );
+
+		if ( $userIsBlocked ) {
+			$block = $this->createMock( AbstractBlock::class );
+			$block->method( 'isSitewide' )
+				->willReturn( true );
+			$user->method( 'getBlock' )
+				->willReturn( $block );
+		}
+
+		$userFactory = $this->createMock( UserFactory::class );
+		$userFactory->method( 'newFromUserIdentity' )
+			->with( $userIdentity )
+			->willReturn( $user );
+		return $userFactory;
+	}
+
+	/**
+	 * @param string|null $rawTS
+	 * @param bool $isMentorBlocked
+	 * @return MentorStatusManager
+	 */
+	private function getMentorStatusManager(
+		?string $rawTS,
+		bool $isMentorBlocked
+	): MentorStatusManager {
 		$mentor = $this->getTestMentor();
 
 		$userOptionsManager = $this->createMock( UserOptionsManager::class );
-		$userOptionsManager->expects( $this->once() )
+		$userOptionsManager->expects( $isMentorBlocked ? $this->never() : $this->once() )
 			->method( 'getOption' )
 			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF )
 			->willReturn( $rawTS );
 
-		$manager = new MentorStatusManager(
+		return new MentorStatusManager(
 			$userOptionsManager,
 			$this->createMock( UserIdentityLookup::class ),
+			$this->getMockUserFactory( $isMentorBlocked ),
 			$this->createMock( IDatabase::class ),
 			$this->createMock( IDatabase::class )
 		);
+	}
 
+	/**
+	 * @covers ::getMentorBackTimestamp
+	 * @dataProvider provideTimestamps
+	 * @param string|null $expectedTS
+	 * @param string|null $rawTS
+	 */
+	public function testGetMentorBackTimestamp( ?string $expectedTS, ?string $rawTS ) {
 		$this->assertEquals(
 			$expectedTS,
-			$manager->getMentorBackTimestamp( $this->getTestMentor() )
+			$this->getMentorStatusManager( $rawTS, false )
+				->getMentorBackTimestamp( $this->getTestMentor() )
 		);
 	}
 
-	public function provideTimestamps() {
+	public function provideTimestamps(): array {
 		return [
 			[ null, null ],
 			[ null, '20080101000000' ],
@@ -57,56 +105,107 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getMentorStatus
-	 * @dataProvider provideTestStatuses
+	 * @param string|null $expectedReason
+	 * @param string|null $rawTS
+	 * @param bool $isMentorBlocked
+	 * @covers ::getAwayReason
+	 * @dataProvider provideGetAwayReason
 	 */
-	public function testGetMentorStatus( $expectedStatus, $rawTS ) {
-		$mentor = $this->getTestMentor();
-
-		$userOptionsManager = $this->createMock( UserOptionsManager::class );
-		$userOptionsManager->expects( $this->once() )
-			->method( 'getOption' )
-			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF )
-			->willReturn( $rawTS );
-
-		$manager = new MentorStatusManager(
-			$userOptionsManager,
-			$this->createMock( UserIdentityLookup::class ),
-			$this->createMock( IDatabase::class ),
-			$this->createMock( IDatabase::class )
-		);
-
+	public function testGetAwayReason(
+		?string $expectedReason,
+		?string $rawTS,
+		bool $isMentorBlocked
+	) {
 		$this->assertEquals(
-			$expectedStatus,
-			$manager->getMentorStatus( $mentor )
+			$expectedReason,
+			$this->getMentorStatusManager( $rawTS, $isMentorBlocked )
+				->getAwayReason( $this->getTestMentor() )
 		);
 	}
 
-	public function provideTestStatuses() {
+	public function provideGetAwayReason(): array {
 		return [
-			[ 'active', null ],
-			[ 'active', '20080203000000' ],
-			[ 'away', '22221231000000' ]
+			'no block no timestamp' => [ null, null, false ],
+			'expired timestamp no block' => [ null, '20080203000000', false ],
+			'future timestamp no block' => [ 'timestamp', '22221231000000', false ],
+			'no timestamp existing block' => [ 'block', null, true ],
+			'expired timestamp existing block' => [ 'block', '20080203000000', true ],
+			'future timestamp existing block' => [ 'block', '22221231000000', true ],
+		];
+	}
+
+	/**
+	 * @covers ::getMentorStatus
+	 * @dataProvider provideTestStatuses
+	 * @param string|null $expectedStatus
+	 * @param string|null $rawTS
+	 * @param bool $isMentorBlocked
+	 */
+	public function testGetMentorStatus(
+		?string $expectedStatus,
+		?string $rawTS,
+		bool $isMentorBlocked
+	) {
+		$this->assertEquals(
+			$expectedStatus,
+			$this->getMentorStatusManager( $rawTS, $isMentorBlocked )
+				->getMentorStatus( $this->getTestMentor() )
+		);
+	}
+
+	public function provideTestStatuses(): array {
+		return [
+			'no block no timestamp' => [ 'active', null, false ],
+			'expired timestamp no block' => [ 'active', '20080203000000', false ],
+			'future timestamp no block' => [ 'away', '22221231000000', false ],
+			'no timestamp existing block' => [ 'away', null, true ],
+			'expired timestamp existing block' => [ 'away', '20080203000000', true ],
+			'future timestamp existing block' => [ 'away', '22221231000000', true ],
 		];
 	}
 
 	/**
 	 * @covers ::markMentorAsActive
+	 * @param bool $isMentorBlocked
+	 * @dataProvider provideMarkMentorAsActive
 	 */
-	public function testMarkMentorAsActive() {
+	public function testMarkMentorAsActive( bool $isMentorBlocked ) {
+		ConvertibleTimestamp::setFakeTime( '20211001120005' );
+
 		$mentor = $this->getTestMentor();
 
 		$userOptionsManager = $this->createMock( UserOptionsManager::class );
-		$userOptionsManager->expects( $this->once() )
+		$userOptionsManager->expects( $isMentorBlocked ? $this->never() : $this->once() )
+			->method( 'getOption' )
+			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF )
+			->willReturn( '20221001120005' );
+		$userOptionsManager->expects( $isMentorBlocked ? $this->never() : $this->once() )
 			->method( 'setOption' )
 			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF, null );
 
 		$manager = new MentorStatusManager(
 			$userOptionsManager,
 			$this->createMock( UserIdentityLookup::class ),
+			$this->getMockUserFactory( $isMentorBlocked ),
 			$this->createMock( IDatabase::class ),
 			$this->createMock( IDatabase::class )
 		);
-		$manager->markMentorAsActive( $mentor );
+
+		$status = $manager->markMentorAsActive( $mentor );
+		if ( !$isMentorBlocked ) {
+			$this->assertStatusOK( $status );
+		} else {
+			$this->assertStatusError(
+				'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block',
+				$status
+			);
+		}
+	}
+
+	public function provideMarkMentorAsActive(): array {
+		return [
+			'not blocked' => [ false ],
+			'blocked' => [ true ],
+		];
 	}
 }

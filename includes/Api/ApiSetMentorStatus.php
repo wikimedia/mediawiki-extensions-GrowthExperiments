@@ -6,6 +6,7 @@ use ApiBase;
 use ApiMain;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use LogicException;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMentorStatus extends ApiBase {
@@ -53,7 +54,7 @@ class ApiSetMentorStatus extends ApiBase {
 
 		switch ( $params['gesstatus'] ) {
 			case MentorStatusManager::STATUS_ACTIVE:
-				$this->mentorStatusManager->markMentorAsActive( $mentor );
+				$status = $this->mentorStatusManager->markMentorAsActive( $mentor );
 				break;
 			case MentorStatusManager::STATUS_AWAY:
 				$this->requireAtLeastOneParameter( $params, 'gesbackindays' );
@@ -66,11 +67,19 @@ class ApiSetMentorStatus extends ApiBase {
 					);
 				}
 
-				$this->mentorStatusManager->markMentorAsAway(
+				$status = $this->mentorStatusManager->markMentorAsAway(
 					$mentor,
 					$backInDays
 				);
 				break;
+			default:
+				throw new LogicException(
+					__METHOD__ . ' got called with unexpected gesstatus'
+				);
+		}
+
+		if ( !$status->isOK() ) {
+			$this->dieStatus( $status );
 		}
 
 		$rawBackTs = $this->mentorStatusManager->getMentorBackTimestamp( $mentor, MentorStatusManager::READ_LATEST );
