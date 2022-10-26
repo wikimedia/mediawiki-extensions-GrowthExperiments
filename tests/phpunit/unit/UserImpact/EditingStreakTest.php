@@ -15,7 +15,7 @@ class EditingStreakTest extends MediaWikiUnitTestCase {
 	 */
 	public function testEmptySerialization() {
 		$this->assertJsonStringEqualsJsonString(
-		'""',
+		'[]',
 			json_encode( new EditingStreak() )
 		);
 	}
