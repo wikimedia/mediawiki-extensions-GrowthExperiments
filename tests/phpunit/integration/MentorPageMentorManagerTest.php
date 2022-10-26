@@ -4,9 +4,11 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use Exception;
+use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use IContextSource;
@@ -20,6 +22,20 @@ use RequestContext;
  */
 class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
+	/** @inheritDoc */
+	protected $tablesUsed = [ 'user', 'page', 'growthexperiments_mentor_mentee' ];
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function setUp(): void {
+		// for some reason, the content of MediaWiki:GrowthMentors.json survives between tests,
+		// causing failures. Reset the structured mentor list before every test.
+		$this->insertPage( 'MediaWiki:GrowthMentors.json', FormatJson::encode( [
+			'Mentors' => [],
+		] ) );
+	}
+
 	/**
 	 * @dataProvider provideInvalidMentorsList
 	 * @param string $mentorsListConfig
@@ -27,7 +43,10 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
 	 */
 	public function testGetMentorForUserInvalidMentorList( $mentorsListConfig, $exceptionMessage ) {
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', $mentorsListConfig );
+		$this->setMwGlobals( [
+			'wgGEHomepageMentorsList' => $mentorsListConfig,
+			'wgGEMentorProvider' => MentorProvider::PROVIDER_WIKITEXT,
+		] );
 		$mentorManager = $this->getMentorManager();
 
 		$this->expectException( WikiConfigException::class );
@@ -49,14 +68,20 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
 	 */
 	public function testRenderInvalidMentor() {
-		$this->insertPage( 'MentorsList', '[[User:InvalidUser]]' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$mentorManager = $this->getMentorManager();
+		$this->insertPage( 'MediaWiki:GrowthMentors.json', FormatJson::encode( [
+			'Mentors' => [
+				1234 => [
+					'message' => null,
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+				]
+			]
+		] ) );
 
 		$this->expectException( Exception::class );
 		$this->expectExceptionMessage( 'No mentor available' );
 
-		$mentorManager->getMentorForUser( $this->getTestUser()->getUser() );
+		$this->getMentorManager()->getMentorForUser( $this->getTestUser()->getUser() );
 	}
 
 	/**
@@ -64,11 +89,15 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\Mentorship\Mentor::getUserIdentity
 	 */
 	public function testGetMentorUserNew() {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$sysop = $this->getTestSysop()->getUser();
-		$this->insertPage( 'MentorsList', '[[User:' . $sysop->getName() . ']]' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$mentorManager = $this->getMentorManager();
+		$geServices->getMentorWriter()->addMentor(
+			$geServices->getMentorProvider()->newMentorFromUserIdentity( $sysop ),
+			$sysop,
+			''
+		);
 
+		$mentorManager = $this->getMentorManager();
 		$mentor = $mentorManager->getMentorForUser( $this->getTestUser()->getUser() );
 		$this->assertEquals( $sysop->getId(), $mentor->getUserIdentity()->getId() );
 	}
@@ -83,12 +112,8 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorStore()
 			->setMentorForUser( $user, $sysop, MentorStore::ROLE_PRIMARY );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$mentorManager = $this->getMentorManager( null, [
-			'MentorsList' => [ '* [[User:Mentor]]', [ 'Mentor' ] ],
-		] );
 
-		$mentor = $mentorManager->getMentorForUser( $user );
+		$mentor = $this->getMentorManager()->getMentorForUser( $user );
 		$this->assertEquals( $sysop->getName(), $mentor->getUserIdentity()->getName() );
 	}
 
@@ -97,13 +122,15 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testMentorCannotBeMentee() {
 		$user = $this->getMutableTestUser()->getUser();
-		$this->insertPage( 'MentorsList', '[[User:' . $user->getName() . ']]' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$mentorManager = $this->getMentorManager();
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$geServices->getMentorWriter()->addMentor(
+			$geServices->getMentorProvider()->newMentorFromUserIdentity( $user ),
+			$user,
+			''
+		);
 
 		$this->expectException( WikiConfigException::class );
-
-		$mentorManager->getMentorForUser( $user );
+		$this->assertNull( $this->getMentorManager()->getMentorForUser( $user ) );
 	}
 
 	/**
@@ -112,18 +139,21 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	public function testMentorCannotBeMenteeMoreMentors() {
 		$userMentee = $this->getMutableTestUser()->getUser();
 		$userMentor = $this->getTestSysop()->getUser();
-		$this->insertPage(
-			'MentorsList',
-			'[[User:' .
-			$userMentee->getName() .
-			']][[User:' .
-			$userMentor->getName() .
-			']]'
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$provider = $geServices->getMentorProvider();
+		$writer = $geServices->getMentorWriter();
+		$writer->addMentor(
+			$provider->newMentorFromUserIdentity( $userMentee ),
+			$userMentee,
+			''
 		);
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$mentorManager = $this->getMentorManager();
+		$writer->addMentor(
+			$provider->newMentorFromUserIdentity( $userMentor ),
+			$userMentor,
+			''
+		);
 
-		$mentor = $mentorManager->getMentorForUser( $userMentee );
+		$mentor = $this->getMentorManager()->getMentorForUser( $userMentee );
 		$this->assertEquals( $mentor->getUserIdentity()->getName(), $userMentor->getName() );
 	}
 
@@ -131,13 +161,8 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
 	 */
 	public function testNoMentorAvailable() {
-		$this->insertPage( 'MentorsList', 'Mentors' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$mentorManager = $this->getMentorManager();
-
 		$this->expectException( WikiConfigException::class );
-
-		$mentorManager->getMentorForUser( $this->getMutableTestUser()->getUser() );
+		$this->getMentorManager()->getMentorForUser( $this->getMutableTestUser()->getUser() );
 	}
 
 	/**
@@ -146,7 +171,10 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideCustomMentorText
 	 */
 	public function testRenderMentorText( $mentorsList, $expected ) {
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+		$this->setMwGlobals( [
+			'wgGEMentorProvider' => MentorProvider::PROVIDER_WIKITEXT,
+			'wgGEHomepageMentorsList' => 'MentorsList',
+		] );
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$mentee = $this->getMutableTestUser()->getUser();
 		$this->insertPage( 'MentorsList', str_replace( '$1', $mentorUser->getName(), $mentorsList ) );
@@ -182,10 +210,8 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\Mentorship\Mentor::getIntroText
 	 */
 	public function testRenderFallbackMentorText() {
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$mentee = $this->getMutableTestUser()->getUser();
-		$this->insertPage( 'MentorsList', '[[User:' . $mentorUser->getName() . ']]' );
 		GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorStore()
 			->setMentorForUser(
@@ -271,10 +297,9 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @param IContextSource|null $context
-	 * @param array[] $pages title as prefixed text => content
 	 * @return MentorPageMentorManager
 	 */
-	private function getMentorManager( IContextSource $context = null, array $pages = [] ) {
+	private function getMentorManager( IContextSource $context = null ) {
 		$coreServices = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
 		$context = $context ?? RequestContext::getMain();

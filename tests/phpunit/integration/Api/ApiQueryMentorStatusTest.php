@@ -6,6 +6,8 @@ use ApiTestCase;
 use ApiUsageException;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use MediaWiki\User\UserIdentity;
+use StatusValue;
 
 /**
  * @group API
@@ -15,10 +17,26 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
  */
 class ApiQueryMentorStatusTest extends ApiTestCase {
 
+	/** @inheritdoc */
+	protected $tablesUsed = [ 'page' ];
+
 	protected function setUp(): void {
 		parent::setUp();
 		$this->setMwGlobals( 'wgGEMentorDashboardEnabled', true );
 		$this->setMwGlobals( 'wgGEHomepageManualAssignmentMentorsList', null );
+	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @return StatusValue
+	 */
+	private function addMentor( UserIdentity $user ): StatusValue {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		return $geServices->getMentorWriter()->addMentor(
+			$geServices->getMentorProvider()->newMentorFromUserIdentity( $user ),
+			$user,
+			''
+		);
 	}
 
 	/**
@@ -40,9 +58,6 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testNotMentorCannotExecute() {
-		$this->insertPage( 'MentorsList', 'no user links here' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-
 		$this->expectException( ApiUsageException::class );
 		$this->doApiRequestWithToken(
 			[
@@ -59,9 +74,7 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 	 */
 	public function testDefaultExecute() {
 		$mentor = $this->getTestUser()->getUser();
-
-		$this->insertPage( 'MentorsList', '[[User:' . $mentor->getName() . ']]' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+		$this->addMentor( $mentor );
 
 		$response = $this->doApiRequestWithToken(
 			[
@@ -79,9 +92,7 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 	 */
 	public function testAway() {
 		$mentor = $this->getTestUser()->getUser();
-
-		$this->insertPage( 'MentorsList', '[[User:' . $mentor->getName() . ']]' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+		$this->addMentor( $mentor );
 
 		$mentorStatusManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorStatusManager();

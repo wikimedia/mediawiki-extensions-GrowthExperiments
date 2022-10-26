@@ -2225,7 +2225,7 @@
 		},
 		"GEMentorProvider": {
 			"description": "Migration variable. Controls which MentorProvider is used. One of MentorProvider::PROVIDER_* constants",
-			"value": "wikitext"
+			"value": "structured"
 		},
 		"GEMentorDashboardEnabled": {
 			"description": "Should users be allowed to access Special:MentorDashboard?",

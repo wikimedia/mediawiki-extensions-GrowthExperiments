@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
@@ -15,6 +16,9 @@ use RequestContext;
  * @group medium
  */
 class ReassignMenteesIntegrationTest extends MediaWikiIntegrationTestCase {
+
+	/** @inheritDoc */
+	protected $tablesUsed = [ 'user', 'growthexperiments_mentor_mentee' ];
 
 	private function getNMenteesForMentor(
 		int $numOfMentees,
@@ -39,23 +43,39 @@ class ReassignMenteesIntegrationTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::doReassignMentees
 	 */
 	public function testWithBackupMentors() {
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$this->setMwGlobals( 'wgGEHomepageManualAssignmentMentorsList', 'MentorsList/Manual' );
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 
-		$quittingMentor = $this->getMutableTestUser()->getUser();
-		$mentorAuto = $this->getMutableTestUser()->getUserIdentity();
-		$mentorManual = $this->getMutableTestUser()->getUserIdentity();
-		$this->insertPage( 'MentorsList', "[[User:{$mentorAuto->getName()}]]" );
-		$this->insertPage( 'MentorsList/Manual', "[[User:{$mentorManual->getName()}]]" );
+		$writer = $geServices->getMentorWriter();
+		$quittingMentorUser = $this->getMutableTestUser()->getUser();
+		$mentorAuto = new Mentor(
+			$this->getMutableTestUser()->getUserIdentity(),
+			null,
+			'foo',
+			true,
+			2
+		);
+		$mentorManual = new Mentor(
+			$this->getMutableTestUser()->getUserIdentity(),
+			null,
+			'foo',
+			false,
+			2
+		);
+		$writer->addMentor( $mentorAuto, $mentorAuto->getUserIdentity(), '' );
+		$writer->addMentor( $mentorManual, $mentorManual->getUserIdentity(), '' );
 
-		$quittingMentees = $this->getNMenteesForMentor( 3, $quittingMentor, $mentorAuto );
-		$manualMentees = $this->getNMenteesForMentor( 3, $mentorManual, $quittingMentor );
+		$quittingMentees = $this->getNMenteesForMentor(
+			3, $quittingMentorUser, $mentorAuto->getUserIdentity()
+		);
+		$manualMentees = $this->getNMenteesForMentor(
+			3, $mentorManual->getUserIdentity(), $quittingMentorUser
+		);
 
 		$context = new DerivativeContext( RequestContext::getMain() );
-		$context->setUser( $quittingMentor );
+		$context->setUser( $quittingMentorUser );
 		$reassignMentees = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getReassignMenteesFactory()
-			->newReassignMentees( $quittingMentor, $quittingMentor, $context );
+			->newReassignMentees( $quittingMentorUser, $quittingMentorUser, $context );
 
 		$this->assertTrue( $reassignMentees->doReassignMentees( 'foo' ) );
 
@@ -63,11 +83,15 @@ class ReassignMenteesIntegrationTest extends MediaWikiIntegrationTestCase {
 			->getMentorStore();
 		$this->assertArrayEquals(
 			$quittingMentees,
-			$mentorStore->getMenteesByMentor( $mentorAuto, MentorStore::ROLE_PRIMARY )
+			$mentorStore->getMenteesByMentor( $mentorAuto->getUserIdentity(), MentorStore::ROLE_PRIMARY )
 		);
 		$this->assertArrayEquals(
 			$manualMentees,
-			$mentorStore->getMenteesByMentor( $mentorManual, MentorStore::ROLE_PRIMARY )
+			$mentorStore->getMenteesByMentor( $mentorManual->getUserIdentity(), MentorStore::ROLE_PRIMARY )
+		);
+		$this->assertArrayEquals(
+			$manualMentees,
+			$mentorStore->getMenteesByMentor( $quittingMentorUser, MentorStore::ROLE_BACKUP )
 		);
 	}
 }

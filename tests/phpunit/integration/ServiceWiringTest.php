@@ -20,6 +20,12 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 
 	protected const DEPRECATED_SERVICES = [];
 
+	protected const IGNORED_SERVICES = [
+		// ignore those legacy services, as they fail to create with structured mentor provider
+		'GrowthExperimentsMentorProviderWikitext',
+		'GrowthExperimentsMentorWeightManager',
+	];
+
 	/**
 	 * @dataProvider provideService
 	 */
@@ -34,6 +40,9 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 	public function provideService() {
 		$wiring = require __DIR__ . '/../../../ServiceWiring.php';
 		foreach ( $wiring as $name => $_ ) {
+			if ( in_array( $name, self::IGNORED_SERVICES, true ) ) {
+				continue;
+			}
 			yield $name => [ $name ];
 		}
 	}
