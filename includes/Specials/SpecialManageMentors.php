@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Specials;
 
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
@@ -12,6 +13,7 @@ use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
 use Html;
 use HTMLForm;
 use Linker;
+use LogicException;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -110,6 +112,57 @@ class SpecialManageMentors extends SpecialPage {
 
 	/**
 	 * @param Mentor $mentor
+	 * @return string
+	 */
+	private function formatWeight( Mentor $mentor ): string {
+		$msgKey = null;
+		switch ( $mentor->getWeight() ) {
+			case IMentorWeights::WEIGHT_LOW:
+				$msgKey = 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low';
+				break;
+			case IMentorWeights::WEIGHT_NORMAL:
+				$msgKey = 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium';
+				break;
+			case IMentorWeights::WEIGHT_HIGH:
+				$msgKey = 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high';
+				break;
+			default:
+				throw new LogicException(
+					'Weight ' . $mentor->getWeight() . ' is not supported'
+				);
+		}
+		return $this->msg( $msgKey )->text();
+	}
+
+	/**
+	 * @param Mentor $mentor
+	 * @return string
+	 */
+	private function formatStatus( Mentor $mentor ): string {
+		switch ( $this->mentorStatusManager->getMentorStatus( $mentor->getUserIdentity() ) ) {
+			case MentorStatusManager::STATUS_ACTIVE:
+				return $this->msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active' )
+					->text();
+			case MentorStatusManager::STATUS_AWAY:
+				return $this->msg( 'growthexperiments-manage-mentors-status-away-until' )
+					->params( $this->getLanguage()->userDate(
+						$this->mentorStatusManager->getMentorBackTimestamp(
+							$mentor->getUserIdentity()
+						),
+						$this->getUser()
+					) )
+					->text();
+			default:
+				throw new LogicException(
+					'Status '
+					. $this->mentorStatusManager->getMentorStatus( $mentor->getUserIdentity() )
+					. ' is not supported'
+				);
+		}
+	}
+
+	/**
+	 * @param Mentor $mentor
 	 * @param int $i
 	 * @return string
 	 */
@@ -118,6 +171,8 @@ class SpecialManageMentors extends SpecialPage {
 			Html::element( 'td', [], (string)$i ),
 			Html::rawElement( 'td', [], $this->makeUserLink( $mentor->getUserIdentity() ) ),
 			Html::element( 'td', [], $this->getLastActiveTimestamp( $mentor->getUserIdentity() ) ),
+			Html::element( 'td', [], $this->formatWeight( $mentor ) ),
+			Html::element( 'td', [], $this->formatStatus( $mentor ) ),
 			Html::element( 'td', [], $mentor->getIntroText() ),
 		];
 		if ( $this->canManageMentors() ) {
@@ -198,8 +253,18 @@ class SpecialManageMentors extends SpecialPage {
 			Html::element(
 				'th',
 				[],
+				$this->msg( 'growthexperiments-manage-mentors-weight' )->text()
+			),
+			Html::element(
+				'th',
+				[],
+				$this->msg( 'growthexperiments-manage-mentors-status' )->text()
+			),
+			Html::element(
+				'th',
+				[],
 				$this->msg( 'growthexperiments-manage-mentors-intro-msg' )->text()
-			)
+			),
 		];
 
 		if ( $this->canManageMentors() ) {
