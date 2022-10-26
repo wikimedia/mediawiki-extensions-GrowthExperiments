@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="ext-growthExperiments-LegendBox">
 		<h3>
 			{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline' ) }}
 		</h3>
@@ -44,6 +44,8 @@ module.exports = exports = {
 
 <style lang="less">
 .ext-growthExperiments-LegendBox {
+	width: 410px;
+
 	&__list {
 		display: grid;
 		grid-template-columns: 1fr 1fr;

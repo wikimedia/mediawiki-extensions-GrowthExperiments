@@ -26,6 +26,26 @@
 					weight="bold">
 					{{ $filters.convertNumber( data.receivedThanksCount ) }}
 				</c-text>
+				<template #label-info>
+					<c-info-box
+						:icon="cdxIconInfo"
+						:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' )"
+						:close-icon="cdxIconClose"
+					>
+						<div class="ext-growthExperiments-NewImpact__scorecard__info">
+							<span>
+								<cdx-icon
+									class="ext-growthExperiments-NewImpact__scorecard__info__icon"
+									:icon="cdxIconInfoFilled"
+								></cdx-icon>
+								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ) }}
+							</span>
+							<p>
+								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', userName ) }}
+							</p>
+						</div>
+					</c-info-box>
+				</template>
 			</score-card>
 			<score-card
 				:icon="cdxIconClock"
@@ -48,6 +68,36 @@
 					weight="bold">
 					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-streak-count-text', bestStreakDaysLocalisedCount ) }}
 				</c-text>
+				<template #label-info>
+					<c-info-box
+						:icon="cdxIconInfo"
+						:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' )"
+						:close-icon="cdxIconClose"
+					>
+						<div class="ext-growthExperiments-NewImpact__scorecard__info">
+							<span>
+								<cdx-icon
+									class="ext-growthExperiments-NewImpact__scorecard__info__icon"
+									:icon="cdxIconInfoFilled"
+								></cdx-icon>
+								{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ) }}
+							</span>
+							<p>
+								{{ $i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', userName ) }}
+							</p>
+							<p>
+								{{
+									$i18n(
+										'growthexperiments-homepage-impact-scores-best-streak-info-data-text',
+										userName,
+										$filters.convertNumber( data.longestEditingStreak.datePeriod.days ),
+										bestStreakFormattedDates
+									)
+								}}
+							</p>
+						</div>
+					</c-info-box>
+				</template>
 			</score-card>
 		</div>
 		<div v-if="data">
@@ -63,7 +113,7 @@
 				:is-mobile="isMobileHomepage"
 				:contribs="data.contributions"
 				:time-frame="DEFAULT_STREAK_TIME_FRAME"
-				:date-format="DEFAULT_STREAK_DISPLAY_DATE_FORMAT"
+				date-format="MMM D"
 			></recent-activity>
 		</div>
 	</section>
@@ -71,14 +121,22 @@
 
 <script>
 const moment = require( 'moment' );
+const { CdxIcon } = require( '@wikimedia/codex' );
 const ScoreCard = require( './ScoreCard.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
 const CText = require( '../../vue-components/CText.vue' );
 const CLink = require( '../../vue-components/CLink.vue' );
+const CInfoBox = require( '../../vue-components/CInfoBox.vue' );
 const useUserImpact = require( '../composables/useUserImpact.js' );
-const { cdxIconEdit, cdxIconHeart, cdxIconClock, cdxIconChart } = require( '../../vue-components/icons.json' );
-// REVIEW: the proposed format in designs "Feb 3" is not localised across languages
-const DEFAULT_STREAK_DISPLAY_DATE_FORMAT = 'MMM D';
+const {
+	cdxIconEdit,
+	cdxIconHeart,
+	cdxIconClock,
+	cdxIconChart,
+	cdxIconClose,
+	cdxIconInfo,
+	cdxIconInfoFilled
+} = require( '../../vue-components/icons.json' );
 // The number of columns to show in the streak graphic. Columns
 // will be represented as days.
 const DEFAULT_STREAK_TIME_FRAME = 60;
@@ -87,8 +145,10 @@ const DEFAULT_STREAK_TIME_FRAME = 60;
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
+		CdxIcon,
 		RecentActivity,
 		ScoreCard,
+		CInfoBox,
 		CText,
 		CLink
 	},
@@ -99,12 +159,14 @@ module.exports = exports = {
 		const { data, error } = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
 		return {
 			DEFAULT_STREAK_TIME_FRAME,
-			DEFAULT_STREAK_DISPLAY_DATE_FORMAT,
 			cdxIconEdit,
 			cdxIconHeart,
 			cdxIconClock,
 			cdxIconChart,
 			isMobileHomepage,
+			cdxIconClose,
+			cdxIconInfo,
+			cdxIconInfoFilled,
 			data,
 			// TODO: how to give user error feedback?
 			// eslint-disable-next-line vue/no-unused-properties
@@ -122,7 +184,30 @@ module.exports = exports = {
 			return this.lastEditMoment.fromNow();
 		},
 		bestStreakDaysLocalisedCount() {
-			return this.$filters.convertNumber( this.data.bestStreak.datePeriod.days );
+			return this.$filters.convertNumber( this.data.longestEditingStreak.datePeriod.days );
+		},
+		bestStreakFormattedDates() {
+			// FIXME: date formats are not localised
+			const formatDate = ( date, format = 'MMM D YYYY' ) => {
+				return moment( date ).format( format );
+			};
+			const today = new Date();
+			let { start, end } = this.data.longestEditingStreak.datePeriod;
+			start = new Date( start );
+			end = new Date( end );
+
+			// The streak start and ends on the current year and same month,
+			if (
+				start.getYear() === today.getYear() &&
+				start.getYear() === end.getYear() &&
+				start.getMonth() === end.getMonth()
+			) {
+				return `${formatDate( start, 'MMM D' )} — ${formatDate( end, 'D' )}`;
+			}
+
+			// REVIEW: the streak start on prior year but ends on current year is
+			// not handled. ie: Aug 3 2002 - Sep 17 <current year>
+			return `${formatDate( start )} — ${formatDate( end )}`;
 		},
 		userName() {
 			return mw.config.get( 'GENewImpactRelevantUserName' );
@@ -149,6 +234,15 @@ module.exports = exports = {
 		grid-gap: 2px;
 		// Expand scores stripe over homepage modules padding
 		margin: 0 -16px;
+	}
+
+	&__scorecard__info {
+		width: 280px;
+		margin-top: 0.5em;
+
+		&__icon {
+			margin-right: 0.5em;
+		}
 	}
 }
 </style>

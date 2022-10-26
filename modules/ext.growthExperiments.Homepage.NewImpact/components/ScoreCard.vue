@@ -4,16 +4,21 @@
 			<cdx-icon
 				class="ext-growthExperiments-ScoreCard__data-display__icon"
 				:icon="icon"
-				:icon-label="$i18n( 'growthexperiments-tbd' )"
+				:icon-label="iconLabel"
 			></cdx-icon>
 			<slot></slot>
 		</div>
-		<c-text
-			color="subtle"
-			class="ext-growthExperiments-ScoreCard__label"
-		>
-			{{ label }}
-		</c-text>
+		<div class="ext-growthExperiments-ScoreCard__label">
+			<c-text
+				as="span"
+				color="subtle"
+			>
+				{{ label }}
+			</c-text>
+			<span class="ext-growthExperiments-ScoreCard__label__info-icon">
+				<slot name="label-info"></slot>
+			</span>
+		</div>
 	</div>
 </template>
 
@@ -34,6 +39,10 @@ module.exports = exports = {
 			default: () => ( {} )
 		},
 		label: {
+			type: String,
+			required: true
+		},
+		iconLabel: {
 			type: String,
 			required: true
 		}
@@ -66,8 +75,18 @@ module.exports = exports = {
 	}
 
 	&__label {
-		color: @color-subtle;
+		display: inline-flex;
+		width: 100%;
+		justify-content: space-between;
+		align-items: baseline;
 		margin-right: 0.5em;
+		margin-top: 0.5em;
+
+		&__info-icon {
+			// Subtract 10px to the vertical positioning of the label icon to align labels
+			// in scorecards with and without icon
+			margin-top: -10px; // quiet button height 32px - label line height 22.4px ~= 10px
+		}
 	}
 }
 </style>

@@ -2,7 +2,10 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconEdit: '',
 	cdxIconHeart: '',
 	cdxIconClock: '',
-	cdxIconChart: ''
+	cdxIconChart: '',
+	cdxIconClose: '',
+	cdxIconInfo: '',
+	cdxIconInfoFilled: ''
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const NewImpact = require( './NewImpact.vue' );
