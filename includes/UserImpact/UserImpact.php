@@ -21,7 +21,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UserImpact implements JsonSerializable {
 
 	/** Cache version, to be increased when breaking backwards compatibility. */
-	public const VERSION = 3;
+	public const VERSION = 4;
 
 	/** @var UserIdentity */
 	private $user;
@@ -166,6 +166,19 @@ class UserImpact implements JsonSerializable {
 	}
 
 	/**
+	 * Total number of edits across all namespaces.
+	 *
+	 * @return int
+	 */
+	public function getTotalEditsCount(): int {
+		$totalEditsCount = 0;
+		foreach ( $this->editCountByNamespace as $editCount ) {
+			$totalEditsCount += $editCount;
+		}
+		return $totalEditsCount;
+	}
+
+	/**
 	 * Helper method for newFromJsonArray.
 	 * @return UserImpact
 	 */
@@ -252,7 +265,8 @@ class UserImpact implements JsonSerializable {
 			'newcomerTaskEditCount' => $this->newcomerTaskEditCount,
 			'lastEditTimestamp' => $this->lastEditTimestamp,
 			'generatedAt' => $this->generatedAt,
-			'longestEditingStreak' => $longestEditingStreak
+			'longestEditingStreak' => $longestEditingStreak,
+			'totalEditsCount' => $this->getTotalEditsCount()
 		];
 	}
 

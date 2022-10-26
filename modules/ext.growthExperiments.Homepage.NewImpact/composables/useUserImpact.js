@@ -56,21 +56,19 @@ function useUserImpact( userId, timeFrame ) {
 				return;
 			}
 			const {
-				editCountByNamespace,
 				receivedThanksCount,
 				editCountByDay,
 				lastEditTimestamp,
-				longestEditingStreak
+				longestEditingStreak,
+				totalEditsCount
 			} = data.value;
-			const edits = Object.keys( editCountByNamespace )
-				.map( ( k ) => editCountByNamespace[ k ] );
 
 			return {
 				lastEditTimestamp,
 				receivedThanksCount,
 				bestStreak: longestEditingStreak,
 				contributions: getContribsFromToday( editCountByDay, timeFrame ),
-				totalEditsCount: sum( edits )
+				totalEditsCount
 			};
 		} ),
 		error
