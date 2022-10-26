@@ -90,7 +90,8 @@
 			"class": "GrowthExperiments\\Api\\ApiManageMentorList",
 			"services": [
 				"GrowthExperimentsMentorProvider",
-				"GrowthExperimentsMentorWriter"
+				"GrowthExperimentsMentorWriter",
+				"GrowthExperimentsMentorStatusManager"
 			]
 		},
 		"growthmentordashboardupdatedata": {
