@@ -125,7 +125,7 @@ class TaskExplanationWidget extends Widget {
 							)->text()
 						),
 						( new Tag( 'div' ) )->addClasses( [
-							'suggested-edits-difficulty-level suggested-edits-difficulty-level-' . $difficulty
+							'suggested-edits-difficulty-level'
 						] )->appendContent( $this->taskType->getTimeEstimate( $this->localizer )->text() )
 					)
 			);
