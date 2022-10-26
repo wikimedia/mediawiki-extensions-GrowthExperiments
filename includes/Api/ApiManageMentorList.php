@@ -10,6 +10,7 @@ use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use LogicException;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
+use User;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiManageMentorList extends ApiBase {
@@ -50,6 +51,11 @@ class ApiManageMentorList extends ApiBase {
 	public function execute() {
 		if ( $this->getConfig()->get( 'GEMentorProvider' ) !== MentorProvider::PROVIDER_STRUCTURED ) {
 			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
+		}
+
+		$block = $this->getUser()->getBlock( User::READ_LATEST );
+		if ( $block && $block->isSitewide() ) {
+			$this->dieBlocked( $block );
 		}
 
 		// if the user is not a mentor, require enrollasmentor or managementors; the if is here to
