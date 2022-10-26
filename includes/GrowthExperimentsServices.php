@@ -51,6 +51,7 @@ use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
+use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\MediaWikiServices;
@@ -195,6 +196,10 @@ class GrowthExperimentsServices {
 
 	public function getDatabaseMentorStore(): DatabaseMentorStore {
 		return $this->coreServices->get( 'GrowthExperimentsMentorStoreDatabase' );
+	}
+
+	public function getMetricsFactory(): MetricsFactory {
+		return $this->coreServices->get( 'GrowthExperimentsMetricsFactory' );
 	}
 
 	public function getNewcomerTasksConfigurationLoader(): ConfigurationLoader {
