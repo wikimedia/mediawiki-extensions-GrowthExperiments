@@ -149,6 +149,7 @@
 	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Label in mentor edit form in Special:ManageMentors",
 	"growthexperiments-manage-mentors-edit-weight": "Label in mentor edit form in Special:ManageMentors",
 	"growthexperiments-manage-mentors-edit-is-away": "Label in mentor edit form in Special:ManageMentors",
+	"growthexperiments-manage-mentors-edit-is-away-blocked": "Label in mentor edit form in Special:ManageMentors",
 	"growthexperiments-manage-mentors-edit-away-until": "Label in mentor edit form in Special:ManageMentors",
 	"growthexperiments-manage-mentors-edit-reason": "Label in mentor edit form in Special:ManageMentors\n{{identical|Reason}}",
 	"growthexperiments-manage-mentors-edit-success": "Success message shown after a mentor's options are successfully edited via Special:ManageMentors\n\nParameters:\n* $1 - username of the mentor",
