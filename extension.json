@@ -75,6 +75,7 @@
 		"growthsetmenteestatus": {
 			"class": "GrowthExperiments\\Api\\ApiSetMenteeStatus",
 			"services": [
+				"GrowthExperimentsMultiConfig",
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorStore"
 			]
