@@ -23,10 +23,7 @@
 						difficulty
 					).text() ),
 				$( '<div>' )
-					.addClass(
-						'suggested-edits-difficulty-level suggested-edits-difficulty-level-' +
-						difficulty
-					)
+					.addClass( 'suggested-edits-difficulty-level' )
 					.text( timeestimate )
 			) );
 	}

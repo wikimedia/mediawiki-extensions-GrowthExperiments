@@ -1,4 +1,4 @@
-@import 'mediawiki.ui/variables.less';
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
 @import 'mediawiki.mixins.less';
 @import '../utils/variables.less';
 
@@ -39,18 +39,7 @@
 			font-size: 12px;
 			margin-top: 2px;
 			padding-left: 4px;
-		}
-
-		.suggested-edits-difficulty-level-easy {
-			color: @easyColor;
-		}
-
-		.suggested-edits-difficulty-level-medium {
-			color: @mediumColor;
-		}
-
-		.suggested-edits-difficulty-level-hard {
-			color: @hardColor;
+			color: @wmui-color-base10;
 		}
 
 		.suggested-edits-task-explanation-icon {
@@ -64,43 +53,49 @@
 		}
 	}
 
-	.suggested-edits-difficulty-indicator-after-mixin( @color ) {
-		content: '';
-		position: absolute;
-		right: -4px;
-		bottom: 0;
-		width: 0;
-		height: 0;
-		border-right: 4px solid transparent;
-		border-top: 9px solid fade( @color, 20% );
-		border-bottom: 9px solid fade( @color, 20% );
+	.suggested-edits-difficulty-indicator-mixin( @baseColor, @darkenColor ) {
+		background-color: @baseColor;
+		color: @wmui-color-base10;
+		border: solid 1px @darkenColor;
+		height: 12px;
+		line-height: 12px;
+		border-radius: 2px 0 0 2px;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 0;
+		}
+
+		&:before {
+			right: -5px;
+			bottom: -1px;
+			border-right: 4px solid transparent;
+			border-top: 9px solid @darkenColor;
+			border-bottom: 9px solid @darkenColor;
+		}
+
+		&:after {
+			right: -4px;
+			bottom: 0;
+			border-right: 4px solid transparent;
+			border-top: 8px solid @baseColor;
+			border-bottom: 8px solid @baseColor;
+		}
 	}
 
 	.suggested-edits-difficulty-indicator-easy {
-		background-color: fade( @easyColor, 20% );
-		color: @easyColor;
-
-		&:after {
-			.suggested-edits-difficulty-indicator-after-mixin( @easyColor );
-		}
+		.suggested-edits-difficulty-indicator-mixin( @easyBackgroundColor, @easyColor );
 	}
 
 	.suggested-edits-difficulty-indicator-medium {
-		background-color: fade( @mediumColor, 20% );
-		color: @mediumColor;
-
-		&:after {
-			.suggested-edits-difficulty-indicator-after-mixin( @mediumColor );
-		}
+		.suggested-edits-difficulty-indicator-mixin( @mediumBackgroundColor, @mediumColor );
 	}
 
 	.suggested-edits-difficulty-indicator-hard {
-		background-color: fade( @hardColor, 20% );
-		color: @hardColor;
-
-		&:after {
-			.suggested-edits-difficulty-indicator-after-mixin( @hardColor );
-		}
+		.suggested-edits-difficulty-indicator-mixin( @hardBackgroundColor, @hardColor );
 	}
 }
 

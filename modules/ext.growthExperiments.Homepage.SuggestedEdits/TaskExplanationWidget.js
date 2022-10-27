@@ -121,14 +121,7 @@
 	TaskExplanationWidget.prototype.getTimeEstimate = function () {
 
 		return $( '<div>' )
-			.addClass(
-				// The following classes are used here:
-				// * suggested-edits-difficulty-level-easy
-				// * suggested-edits-difficulty-level-medium
-				// * suggested-edits-difficulty-level-hard
-				'suggested-edits-difficulty-level suggested-edits-difficulty-level-' +
-				this.taskTypeData.difficulty
-			)
+			.addClass( 'suggested-edits-difficulty-level' )
 			.text( this.taskTypeData.messages.timeestimate );
 	};
 
