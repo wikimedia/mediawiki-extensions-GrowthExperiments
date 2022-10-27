@@ -69,6 +69,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|day|days}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Edit|Edits}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|edit|edits}} on $2",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Views on articles {{GENDER:$1|you've}} edited",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total edits",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Thanks received",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} is created by a community of editors like {{GENDER:$1|you}}. {{GENDER:$1|You}} may be thanked by another contributor for an edit {{GENDER:$1|you’ve}} made, and {{GENDER:$1|you}} can thank others for their edits too.",

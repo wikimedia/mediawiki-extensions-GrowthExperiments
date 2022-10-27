@@ -6,3 +6,12 @@ wikimedia-ui-base:
     package/wikimedia-ui-base.less:
     package/README.md:
     package/History.md:
+
+d3:
+  type: tar
+  src: https://registry.npmjs.org/d3/-/d3-7.6.1.tgz
+  integrity: sha512-txMTdIHFbcpLx+8a0IFhZsbp+PfBBPt8yfbmukZTQFroKuFqIwqswF0qE5JXWefylaAVpSXFoKm3yP+jpNLFLw==
+  dest:
+    package/dist/d3.min.js:
+
+

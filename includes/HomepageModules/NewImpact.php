@@ -33,6 +33,7 @@ class NewImpact extends BaseModule {
 			return [];
 		}
 		return [
+			'GENewImpactD3Enabled' => $this->getConfig()->get( 'GENewImpactD3Enabled' ),
 			'GENewImpactRelevantUserName' => $this->userIdentity->getName(),
 			'GENewImpactRelevantUserId' => $this->userIdentity->getId()
 		];
