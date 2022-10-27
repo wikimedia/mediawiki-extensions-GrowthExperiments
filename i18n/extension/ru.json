@@ -12,7 +12,8 @@
 			"Nastua Buldakova",
 			"Pacha Tchernof",
 			"Vlad5250",
-			"Умар"
+			"Умар",
+			"Kaganer"
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
@@ -30,7 +31,7 @@
 	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Вы}} также можете разместить баннер на главной странице новичка, чтобы включить объявления о событиях, важных для новичков. Чтобы сделать это, нужно добавить его в [[$1]] вручную. Любой добавлен там содержание будет отображаться желтым баннером в верхней части [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Эта форма позволяет доверенным редакторам редактировать конфигурацию инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]].",
 	"growthexperiments-edit-config-feedback-headline": "У вас есть идеи или вопросы по этой форме?",
-	"growthexperiments-edit-config-feedback-cta": "Оставить отзыв!",
+	"growthexperiments-edit-config-feedback-cta": "Оставить отзыв",
 	"growthexperiments-edit-config-error-invalid-title": "Страница конфигурации не была настроена должным образом",
 	"growthexperiments-edit-config-edit-summary": "Описание изменений",
 	"growthexperiments-edit-config-config-changed": "Конфигурация была изменена. Возможно, вам придется подождать несколько минут, чтобы изменения вступили в силу.",
