@@ -29,7 +29,6 @@
 				<template #label-info>
 					<c-info-box
 						:icon="cdxIconInfo"
-						:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' )"
 						:close-icon="cdxIconClose"
 					>
 						<div class="ext-growthExperiments-NewImpact__scorecard__info">
@@ -71,7 +70,6 @@
 				<template #label-info>
 					<c-info-box
 						:icon="cdxIconInfo"
-						:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' )"
 						:close-icon="cdxIconClose"
 					>
 						<div class="ext-growthExperiments-NewImpact__scorecard__info">
