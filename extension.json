@@ -120,6 +120,7 @@
 		"growthtasks": {
 			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
 			"services": [
+				"JobQueueGroup",
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsLinkRecommendationFilter",

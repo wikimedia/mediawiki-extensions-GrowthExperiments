@@ -12,10 +12,12 @@ use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\NewcomerTasksCacheRefreshJob;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use JobQueueGroup;
 use StatusValue;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -27,25 +29,17 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  */
 class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
-	/** @var TaskSuggesterFactory */
-	private $taskSuggesterFactory;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
-	/** @var LinkRecommendationFilter */
-	private $linkRecommendationFilter;
-
-	/** @var ImageRecommendationFilter */
-	private $imageRecommendationFilter;
-	/**
-	 * @var ProtectionFilter
-	 */
-	private $protectionFilter;
+	private TaskSuggesterFactory $taskSuggesterFactory;
+	private ConfigurationLoader $configurationLoader;
+	private LinkRecommendationFilter $linkRecommendationFilter;
+	private ImageRecommendationFilter $imageRecommendationFilter;
+	private ProtectionFilter $protectionFilter;
+	private JobQueueGroup $jobQueueGroup;
 
 	/**
 	 * @param ApiQuery $queryModule
 	 * @param string $moduleName
+	 * @param JobQueueGroup $jobQueueGroup
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param LinkRecommendationFilter $linkRecommendationFilter
@@ -55,6 +49,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	public function __construct(
 		ApiQuery $queryModule,
 		$moduleName,
+		JobQueueGroup $jobQueueGroup,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		ConfigurationLoader $configurationLoader,
 		LinkRecommendationFilter $linkRecommendationFilter,
@@ -67,6 +62,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$this->linkRecommendationFilter = $linkRecommendationFilter;
 		$this->imageRecommendationFilter = $imageRecommendationFilter;
 		$this->protectionFilter = $protectionFilter;
+		$this->jobQueueGroup = $jobQueueGroup;
 	}
 
 	/** @inheritDoc */
@@ -84,6 +80,9 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	 */
 	protected function run( ApiPageSet $resultPageSet = null ) {
 		$user = $this->getUser();
+		if ( !$user->isRegistered() ) {
+			$this->dieWithError( 'apierror-mustbeloggedin-generic' );
+		}
 		$params = $this->extractRequestParams();
 		$taskTypes = $params['tasktypes'];
 		$topics = $params['topics'];
@@ -94,12 +93,12 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$excludePageIds = $params['excludepageids'] ?? [];
 
 		$taskSuggester = $this->taskSuggesterFactory->create();
-		$taskTypeFilter = new TaskSetFilters( $taskTypes, $topics, $topicsMode );
+		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics, $topicsMode );
 
 		/** @var TaskSet $tasks */
 		$tasks = $taskSuggester->suggest(
 			$user,
-			$taskTypeFilter,
+			$taskSetFilters,
 			$limit,
 			$offset,
 			[
@@ -108,7 +107,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				// Don't use the cache if exclude page IDs has been provided;
 				// the page IDs are supplied if we are attempting to load more
 				// tasks into the queue in the front end.
-				'useCache' => !(bool)$excludePageIds,
+				'useCache' => !$excludePageIds,
 			]
 		);
 		if ( $tasks instanceof StatusValue ) {
@@ -181,8 +180,17 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				$result->addValue( $basePath, 'debug', $tasks->getDebugData() );
 			}
 		}
-
-		// TODO: EventLogging?
+		if ( !$excludePageIds ) {
+			// Refresh the cached suggestions via the job queue when the user hasn't asked to exclude
+			// page IDs. This makes the API endpoint behave in the same way as SuggestedEdits.php on
+			// Special:Homepage. If we don't do this, then repeat queries to this API endpoint with the same user
+			// ID and without `pageids` set will result in returning the same cached task set.
+			$this->jobQueueGroup->lazyPush(
+				new NewcomerTasksCacheRefreshJob( [
+					'userId' => $user->getId()
+				] )
+			);
+		}
 	}
 
 	/** @inheritDoc */

@@ -21,6 +21,17 @@ use StatusValue;
  */
 class ApiQueryGrowthTasksTest extends ApiTestCase {
 
+	public function testNotLoggedIn() {
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'You must be logged in.' );
+		$this->doApiRequest(
+			[ 'action' => 'query', 'list' => 'growthtasks' ],
+			null,
+			null,
+			$this->getServiceContainer()->getUserFactory()->newAnonymous()
+		);
+	}
+
 	public function testExecute() {
 		$taskType1 = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		$taskType2 = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
