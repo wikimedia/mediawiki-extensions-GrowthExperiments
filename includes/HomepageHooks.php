@@ -72,12 +72,16 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Specials\Contribute\Card\ContributeCard;
+use MediaWiki\Specials\Contribute\Card\ContributeCardActionLink;
+use MediaWiki\Specials\Contribute\Hook\ContributeCardsHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\Hook\ConfirmEmailCompleteHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
+use MessageLocalizer;
 use MWException;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
@@ -124,7 +128,8 @@ class HomepageHooks implements
 	SearchDataForIndexHook,
 	FormatAutocommentsHook,
 	PageSaveCompleteHook,
-	RecentChange_saveHook
+	RecentChange_saveHook,
+	ContributeCardsHook
 {
 	use GrowthConfigLoaderStaticTrait;
 
@@ -181,6 +186,10 @@ class HomepageHooks implements
 	private $specialPageFactory;
 	/** @var NewcomerTasksChangeTagsManager */
 	private $newcomerTasksChangeTagsManager;
+
+	private ?MessageLocalizer $messageLocalizer;
+	private ?OutputPage $outputPage;
+	private ?UserIdentity $userIdentity;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
@@ -249,7 +258,7 @@ class HomepageHooks implements
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
-			|| MediaWikiServices::getInstance()->getMainConfig()->get( 'CommandLineMode' )
+			|| $config->get( 'CommandLineMode' )
 			|| RequestContext::getMain()->getRequest()->wasPosted();
 	}
 
@@ -325,6 +334,17 @@ class HomepageHooks implements
 				)
 			)
 		);
+	}
+
+	/**
+	 * Similar to ::isHomepageEnabled, but using dependency-injected services.
+	 *
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	private function isHomepageEnabledGloballyAndForUser( UserIdentity $user ): bool {
+		return $this->config->get( 'GEHomepageEnabled' ) &&
+			$this->userOptionsLookup->getBoolOption( $user, self::HOMEPAGE_PREF_ENABLE );
 	}
 
 	/**
@@ -1504,5 +1524,65 @@ class HomepageHooks implements
 			// which seems like a reasonable way to handle the case of using underlinked weighting
 			// on a wiki with no link recommendation task type.
 		}
+	}
+
+	/** @inheritDoc */
+	public function onContributeCards( array &$cards ): void {
+		$userIdentity = $this->userIdentity ?? RequestContext::getMain()->getUser();
+		if ( !$this->isHomepageEnabledGloballyAndForUser( $userIdentity ) ) {
+			return;
+		}
+		$messageLocalizer = $this->messageLocalizer ?? RequestContext::getMain();
+		$homepageTitle = $this->titleFactory->newFromLinkTarget(
+			new TitleValue( NS_SPECIAL, $this->specialPageFactory->getLocalNameFor( 'Homepage' ) )
+		);
+		$homepageTitle->setFragment( '#/homepage/suggested-edits' );
+		$cards[] = ( new ContributeCard(
+			$messageLocalizer->msg( 'growthexperiments-homepage-special-contribute-title' )->text(),
+			$messageLocalizer->msg( 'growthexperiments-homepage-special-contribute-description' )->text(),
+			'lightbulb',
+			new ContributeCardActionLink(
+				$homepageTitle->getLinkURL( wfArrayToCgi( [
+					'source' => 'specialcontribute',
+					'namespace' => NS_SPECIAL,
+					// on mobile, avoids the flash of Special:Homepage before routing to the
+					// Suggested Edits overlay. On desktop, has no effect.
+					'overlay' => 1
+				] ) ),
+				$messageLocalizer->msg( 'growthexperiments-homepage-special-contribute-cta' )->text(),
+			)
+		) )->toArray();
+		$out = $this->outputPage ?? RequestContext::getMain()->getOutput();
+		$out->addModuleStyles( 'oojs-ui.styles.icons-interactions' );
+	}
+
+	/**
+	 * Allow setting a MessageLocalizer for the class. For testing purposes.
+	 *
+	 * @param MessageLocalizer $messageLocalizer
+	 * @return void
+	 */
+	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {
+		$this->messageLocalizer = $messageLocalizer;
+	}
+
+	/**
+	 * Allow setting an OutputPage for the class. For testing purposes.
+	 *
+	 * @param OutputPage $outputPage
+	 * @return void
+	 */
+	public function setOutputPage( OutputPage $outputPage ): void {
+		$this->outputPage = $outputPage;
+	}
+
+	/**
+	 * Allow setting the active UserIdentity for the class. For testing purposes.
+	 *
+	 * @param UserIdentity $userIdentity
+	 * @return void
+	 */
+	public function setUserIdentity( UserIdentity $userIdentity ): void {
+		$this->userIdentity = $userIdentity;
 	}
 }
