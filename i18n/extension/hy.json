@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Aram1985",
-			"Kareyac"
+			"Kareyac",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"growthexperiments-desc": "Այս հավելվածը պարունակում է Growth թիմի կողմից կատարված փորձեր:",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Ֆորում/Օգնություն",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Այո",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Ոչ"
 }

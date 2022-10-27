@@ -129,6 +129,7 @@
 	"growthexperiments-manage-mentors-manually-assigned": "Вручну призначені наставники",
 	"growthexperiments-manage-mentors-username": "Ім'я користувача",
 	"growthexperiments-manage-mentors-last-active": "Остання активність",
+	"growthexperiments-manage-mentors-status": "Статус",
 	"growthexperiments-manage-mentors-intro-msg": "Повідомлення для новачків",
 	"growthexperiments-manage-mentors-edit": "Редагувати",
 	"growthexperiments-manage-mentors-edit-pretext": "{{GENDER:|Ви}} збираєтеся редагувати параметри наставництва для {{GENDER:$1| наставника|наставниці}} [[User:$1|$1]].",

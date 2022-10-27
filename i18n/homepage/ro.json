@@ -68,7 +68,7 @@
 	"growthexperiments-homepage-impact-header": "Impactul {{GENDER:$1|dvs.}}",
 	"growthexperiments-homepage-impact-recent-activity-title": "Activitatea {{GENDER:$1|voastră}} recentă (din {{PLURAL:$2|ultima zi|ultimele $2 zile}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Ultima editare",
-	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Cea mai bună repriză",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Cea mai lungă repriză",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|zi|zile}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Editare|Editări}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|editare|editări}} pe $2",

@@ -32,7 +32,7 @@
 	"growthexperiments-homepage-email-header-startemail": "Email: $1",
 	"growthexperiments-homepage-email-text-noemail": "Raccomandato per il ripristino dell'utenza",
 	"growthexperiments-homepage-email-text-unconfirmed": "Controlla il link di verifica inviato alla {{GENDER:$1|tua}} posta elettronica o richiedi un nuovo link.",
-	"growthexperiments-homepage-email-text-confirmed": "La tua email è stata confermata. Puoi cambiare le tue impostazioni email tramite le tue Preferenze.",
+	"growthexperiments-homepage-email-text-confirmed": "La {{GENDER:$1|tua}} e-mail è stata confermata. Puoi cambiare le tue impostazioni email tramite le tue Preferenze.",
 	"growthexperiments-homepage-email-button-noemail": "Aggiungi email",
 	"growthexperiments-homepage-email-button-unconfirmed": "Ottieni un nuovo link",
 	"growthexperiments-homepage-email-button-confirmed": "Preferenze",

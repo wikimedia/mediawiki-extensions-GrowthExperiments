@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Če je »isaway« (odsoten) »true« (resničen), je treba navesti »awaytimestamp« (časovni žig odsotnosti)."
+}

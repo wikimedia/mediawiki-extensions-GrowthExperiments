@@ -90,7 +90,7 @@
 	"growthexperiments-homepage-impact-unactivated-description": "{{GENDER:$1|}}Čim počnete uređivati članke, ovdje ćete vidjeti koliko ih ljudi čita.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Obavijesti stranica za podršku",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|}}Čim iskusni suradnik odgovori na Vaše pitanje ovdje ćete dobiti obavijest.",
-	"growthexperiments-tour-mentor-response-tip-personal-title": "Obavijesti od mentora",
+	"growthexperiments-tour-mentor-response-tip-personal-title": "Obavijesti od {{GENDER:$1|mentora|mentorice}}",
 	"growthexperiments-tour-mentor-response-tip-personal-text": "{{GENDER:$1|}}Kad {{GENDER:$2|Vaš mentor|Vaša mentorica}} odgovori, ovdje će Vam doći obavijest o odgovoru.",
 	"growthexperiments-tour-response-button-okay": "Shvaćam",
 	"tag-help_module_question": "pitanje iz Pomoćnika",

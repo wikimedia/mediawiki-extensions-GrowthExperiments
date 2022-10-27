@@ -29,5 +29,6 @@
 	"apihelp-growthmanagementorlist-param-weight": "Poids",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Le tuteur est-il automatiquement affecté aux novices ?",
 	"apihelp-growthmanagementorlist-param-summary": "Motif du changement",
-	"apihelp-growthmanagementorlist-param-username": "Nom du tuteur affecté par le changement. S’il n’est pas fourni, l’utilisateur actuellement connecté sera utilisé. Ceci ne peut être utilisé que par des utilisateurs privilégiés."
+	"apihelp-growthmanagementorlist-param-username": "Nom du tuteur affecté par le changement. S’il n’est pas fourni, l’utilisateur actuellement connecté sera utilisé. Ceci ne peut être utilisé que par des utilisateurs privilégiés.",
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Si « isaway » (absent) vaut « true » (vrai), alors le paramètre « awaytimestamp » (horodatage d’absence) doit être fourni."
 }

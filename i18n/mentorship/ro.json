@@ -130,7 +130,7 @@
 	"growthexperiments-manage-mentors-manually-assigned": "Mentori atribuiți manual",
 	"growthexperiments-manage-mentors-none": "Niciunul",
 	"growthexperiments-manage-mentors-username": "Nume de utilizator",
-	"growthexperiments-manage-mentors-last-active": "Ultimul activ",
+	"growthexperiments-manage-mentors-last-active": "Activ ultima oară",
 	"growthexperiments-manage-mentors-intro-msg": "Mesaj pentru nou-veniți",
 	"growthexperiments-manage-mentors-edit": "Editare",
 	"growthexperiments-manage-mentors-edit-pretext": "{{GENDER:|Sunteți}} pe cale să editați opțiunile legate de statutul de mentor pentru {{GENDER:$1|mentorul}} [[User:$1|$1]].",
