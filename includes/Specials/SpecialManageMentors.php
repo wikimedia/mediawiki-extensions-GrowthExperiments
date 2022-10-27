@@ -383,7 +383,7 @@ class SpecialManageMentors extends SpecialPage {
 	 * @return string
 	 */
 	private function makePreHTML(): string {
-		if ( !$this->including() ) {
+		if ( $this->including() ) {
 			// included version should only include the table
 			return '';
 		}
