@@ -95,6 +95,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|Tag|Tage}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Bearbeitung|Bearbeitungen}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} am $2",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Aufrufe von Artikeln, die {{GENDER:$1|du}} bearbeitet hast",
 	"growthexperiments-homepage-impact-scores-edit-count": "Bearbeitungen insgesamt",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Dank erhalten",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} wird von einer Community von Benutzern wie {{GENDER:$1|dir}} erstellt. {{GENDER:$1|Dir}} wird möglicherweise von einem anderen Benutzer für eine Änderung gedankt, die {{GENDER:$1|du}} gemacht hast, und {{GENDER:$1|du}} kannst dich auch bei anderen für deren Bearbeitungen bedanken.",

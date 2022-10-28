@@ -21,6 +21,7 @@
 	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee hat sich von der Lotsenschaft abgemeldet; Mentee/Lotsen-Beziehung wird gelöscht, das Lotsen-Modul wird durch eine Möglichkeit ersetzt, sich wieder anzumelden",
 	"apihelp-query+growthmenteestatus-summary": "Mentee-Status des aktuellen Benutzers abfragen; siehe Dokumentation von action=growthsetmenteestatus für detaillierte Informationen zu einzelnen Status.",
 	"apihelp-query+growthmentormentee-summary": "Abrufen aller Mentees, die einem bestimmten Lotsen zugeordnet sind.",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Lotse, dessen Mentees abgefragt werden sollen",
 	"apihelp-growthmanagementorlist-summary": "Verwalten der Informationen in der strukturierten Lotsenliste (normalerweise gespeichert in [[MediaWiki:GrowthMentors.json]]). Dieses Modul kann sowohl von aktuellen als auch zukünftigen Lotsen (um sich selbst hinzuzufügen oder ihre Daten zu ändern) und Administratoren (für alle Benutzer) verwendet werden.",
 	"apihelp-growthmanagementorlist-param-geaction": "Aktion",
 	"apihelp-growthmanagementorlist-param-message": "Einführungsnachricht (leere Zeichenfolge für die Standard-Lotsen-Nachricht verwenden)",
