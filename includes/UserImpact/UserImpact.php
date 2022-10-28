@@ -171,11 +171,7 @@ class UserImpact implements JsonSerializable {
 	 * @return int
 	 */
 	public function getTotalEditsCount(): int {
-		$totalEditsCount = 0;
-		foreach ( $this->editCountByNamespace as $editCount ) {
-			$totalEditsCount += $editCount;
-		}
-		return $totalEditsCount;
+		return array_sum( $this->editCountByNamespace );
 	}
 
 	/**
