@@ -116,6 +116,17 @@
 			]
 		}
 	},
+	"APIPropModules": {
+		"growthimagesuggestiondata": {
+			"class": "GrowthExperiments\\Api\\ApiQueryImageSuggestionData",
+			"services": [
+				"GrowthExperimentsImageRecommendationProvider",
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
+				"MainConfig",
+				"TitleFactory"
+			]
+		}
+	},
 	"APIListModules": {
 		"growthtasks": {
 			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
@@ -279,7 +290,8 @@
 				"GrowthExperimentsLinkRecommendationHelper",
 				"SpecialPageFactory",
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
-				"GrowthExperimentsSuggestionsInfo"
+				"GrowthExperimentsSuggestionsInfo",
+				"GrowthExperimentsImageRecommendationProvider"
 			]
 		},
 		"impact": {
@@ -2559,6 +2571,10 @@
 			"&can-bypass": true,
 			"anon": [ 1, 86400 ],
 			"user": [ 1, 86400 ]
+		},
+		"growthexperiments-apiqueryimagesuggestiondata": {
+			"&can-bypass": false,
+			"user": [ 500, 86400 ]
 		}
 	},
 	"manifest_version": 2

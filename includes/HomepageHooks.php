@@ -167,7 +167,6 @@ class HomepageHooks implements
 	private JobQueueGroup $jobQueueGroup;
 	private SpecialPageFactory $specialPageFactory;
 	private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager;
-
 	private ?MessageLocalizer $messageLocalizer;
 	private ?OutputPage $outputPage;
 	private ?UserIdentity $userIdentity;
