@@ -152,6 +152,7 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 		// reassignMentees() will submit a job
 		$this->reassignMenteesFactory->newReassignMentees(
 			$this->getUser(),
+			$this->getUser(),
 			$this->getContext()
 		)->reassignMentees(
 			'growthexperiments-quit-mentorship-reassign-mentees-log-message'

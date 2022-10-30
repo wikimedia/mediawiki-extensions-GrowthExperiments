@@ -39,6 +39,9 @@ class ReassignMentees {
 	private $jobQueueGroupFactory;
 
 	/** @var UserIdentity */
+	private UserIdentity $performer;
+
+	/** @var UserIdentity */
 	private $mentor;
 
 	/** @var IContextSource */
@@ -51,6 +54,7 @@ class ReassignMentees {
 	 * @param ChangeMentorFactory $changeMentorFactory
 	 * @param PermissionManager $permissionManager
 	 * @param JobQueueGroupFactory $jobQueueGroupFactory
+	 * @param UserIdentity $performer
 	 * @param UserIdentity $mentor
 	 * @param IContextSource $context
 	 */
@@ -61,6 +65,7 @@ class ReassignMentees {
 		ChangeMentorFactory $changeMentorFactory,
 		PermissionManager $permissionManager,
 		JobQueueGroupFactory $jobQueueGroupFactory,
+		UserIdentity $performer,
 		UserIdentity $mentor,
 		IContextSource $context
 	) {
@@ -70,6 +75,7 @@ class ReassignMentees {
 		$this->changeMentorFactory = $changeMentorFactory;
 		$this->permissionManager = $permissionManager;
 		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
+		$this->performer = $performer;
 		$this->mentor = $mentor;
 		$this->context = $context;
 		$this->logger = new NullLogger();
@@ -102,6 +108,7 @@ class ReassignMentees {
 			$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
 				new ReassignMenteesJob( [
 					'mentorId' => $this->mentor->getId(),
+					'performerId' => $this->performer->getId(),
 					'reassignMessageKey' => $reassignMessageKey
 				] )
 			);
@@ -126,7 +133,10 @@ class ReassignMentees {
 		foreach ( $mentees as $mentee ) {
 			$changeMentor = $this->changeMentorFactory->newChangeMentor(
 				$mentee,
-				$this->mentor,
+				// this intentionally does not use context, because the context is not preserved
+				// between reassignMentees() (which schedules a job) and this method, see
+				// ReassignMenteesJob::run.
+				$this->performer,
 				$this->context
 			);
 
