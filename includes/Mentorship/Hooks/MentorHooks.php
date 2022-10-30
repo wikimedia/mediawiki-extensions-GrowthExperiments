@@ -183,7 +183,7 @@ class MentorHooks implements
 			$list['QuitMentorship'] = [
 				'class' => SpecialQuitMentorshipStructured::class,
 				'services' => [
-					'GrowthExperimentsQuitMentorshipFactory',
+					'GrowthExperimentsReassignMenteesFactory',
 					'GrowthExperimentsMentorStore',
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsMentorWriter',
@@ -191,10 +191,10 @@ class MentorHooks implements
 			];
 		} elseif ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_WIKITEXT ) {
 			// TODO: Remove once wikitext provider is removed
-			$list['QuitMentorship'] = [
+			$list['ReassignMentees'] = [
 				'class' => SpecialQuitMentorshipWikitext::class,
 				'services' => [
-					'GrowthExperimentsQuitMentorshipFactory',
+					'GrowthExperimentsReassignMenteesFactory',
 					'GrowthExperimentsMentorProvider'
 				]
 			];
