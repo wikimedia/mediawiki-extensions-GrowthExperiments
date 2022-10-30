@@ -45,6 +45,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( PermissionManager::class, [ 'addTemporaryUserRights' ] ),
 			$this->createNoOpMock( JobQueueGroupFactory::class ),
 			$mentor,
+			$mentor,
 			$contextMock ?? $this->createNoOpMock( IContextSource::class )
 		);
 	}

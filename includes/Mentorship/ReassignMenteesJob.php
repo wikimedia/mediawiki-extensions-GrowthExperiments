@@ -5,6 +5,7 @@ namespace GrowthExperiments\Mentorship;
 use GenericParameterJob;
 use GrowthExperiments\GrowthExperimentsServices;
 use Job;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityLookup;
 use RequestContext;
@@ -42,11 +43,20 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 	 */
 	public function run() {
 		$mentor = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['mentorId'] );
-		if ( !$mentor ) {
+		$performer = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['performerId'] );
+		if ( !$mentor || !$performer ) {
+			LoggerFactory::getInstance( 'GrowthExperiments' )->error(
+				'ReassignMenteesJob trigerred with invalid parameters',
+				[
+					'performerId' => $this->params['performerId'],
+					'mentorId' => $this->params['mentorId'],
+				]
+			);
 			return false;
 		}
 
 		$reassignMentees = $this->reassignMenteesFactory->newReassignMentees(
+			$performer,
 			$mentor,
 			RequestContext::getMain()
 		);

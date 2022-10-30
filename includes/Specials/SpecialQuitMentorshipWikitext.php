@@ -106,6 +106,7 @@ class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 
 		$this->reassignMentees = $this->reassignMenteesFactory->newReassignMentees(
 			$this->getUser(),
+			$this->getUser(),
 			$this->getContext()
 		);
 		$this->reassignMenteesStage = $this->reassignMentees->getStage();
