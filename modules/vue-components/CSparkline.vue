@@ -1,6 +1,6 @@
 <template>
 	<svg
-		id="sparkline"
+		:id="`sparkline-${id}`"
 		xmlns="http://www.w3.org/2000/svg"
 		class="ext-growthExperiments-CSparkline"
 	>
@@ -21,6 +21,10 @@ module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	props: {
 		title: {
+			type: String,
+			required: true
+		},
+		id: {
 			type: String,
 			required: true
 		},
@@ -79,7 +83,7 @@ module.exports = exports = {
 		};
 
 		onMounted( () => {
-			chart = d3.select( '#sparkline' );
+			chart = d3.select( `#sparkline-${props.id}` );
 			sparkline = chart.append( 'path' ).attr( 'class', 'ext-growthExperiments-CSparkline__line' );
 			area = chart.append( 'path' ).attr( 'class', 'ext-growthExperiments-CSparkline__area' );
 			plot();
@@ -95,8 +99,6 @@ module.exports = exports = {
 @import './variables.less';
 
 .ext-growthExperiments-CSparkline {
-	width: 100%;
-
 	&__line {
 		stroke: @background-color-progressive--focus;
 	}
