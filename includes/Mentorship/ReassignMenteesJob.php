@@ -21,8 +21,8 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
 
-	/** @var QuitMentorshipFactory */
-	private $quitMentorshipFactory;
+	/** @var ReassignMenteesFactory */
+	private $reassignMenteesFactory;
 
 	/**
 	 * @inheritDoc
@@ -33,8 +33,8 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 		// init services
 		$services = MediaWikiServices::getInstance();
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
-		$this->quitMentorshipFactory = GrowthExperimentsServices::wrap( $services )
-			->getQuitMentorshipFactory();
+		$this->reassignMenteesFactory = GrowthExperimentsServices::wrap( $services )
+			->getReassignMenteesFactory();
 	}
 
 	/**
@@ -46,11 +46,11 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 			return false;
 		}
 
-		$quitMentorship = $this->quitMentorshipFactory->newQuitMentorship(
+		$reassignMentees = $this->reassignMenteesFactory->newReassignMentees(
 			$mentor,
 			RequestContext::getMain()
 		);
-		$quitMentorship->doReassignMentees( $this->params['reassignMessageKey'] );
+		$reassignMentees->doReassignMentees( $this->params['reassignMessageKey'] );
 
 		return true;
 	}
