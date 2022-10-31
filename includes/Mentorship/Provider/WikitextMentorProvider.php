@@ -103,7 +103,7 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 		return new Mentor(
 			$mentorUser,
 			$this->getCustomMentorIntroText( $mentorUser ),
-			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ?? $mentorUser ),
+			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ),
 			in_array( $mentorUser->getName(), $this->getAutoAssignedMentors() ),
 			$this->mentorWeightManager->getWeightForMentor( $mentorUser )
 		);
@@ -378,14 +378,14 @@ class WikitextMentorProvider extends MentorProvider implements ExpirationAwarene
 
 	/**
 	 * @param UserIdentity $mentor
-	 * @param UserIdentity $mentee
+	 * @param ?UserIdentity $mentee
 	 * @return string
 	 */
-	private function getDefaultMentorIntroText( UserIdentity $mentor, UserIdentity $mentee ) {
+	private function getDefaultMentorIntroText( UserIdentity $mentor, ?UserIdentity $mentee ) {
 		return wfMessage( 'growthexperiments-homepage-mentorship-intro' )
 			->inContentLanguage()
 			->params( $mentor->getName() )
-			->params( $mentee->getName() )
+			->params( $mentee ? $mentee->getName() : '' )
 			->text();
 	}
 
