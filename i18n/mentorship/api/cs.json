@@ -28,5 +28,6 @@
 	"apihelp-growthmanagementorlist-param-weight": "Váha",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Je mentor automaticky přiřazen nováčkům?",
 	"apihelp-growthmanagementorlist-param-summary": "Důvod změny",
-	"apihelp-growthmanagementorlist-param-username": "Uživatelské jméno mentora ovlivněného touto změnou. Pokud není vyplněno, použije se uživatelské jméno momentálně přihlášeného uživatele. Může být použito pouze oprávněnými uživateli."
+	"apihelp-growthmanagementorlist-param-username": "Uživatelské jméno mentora ovlivněného touto změnou. Pokud není vyplněno, použije se uživatelské jméno momentálně přihlášeného uživatele. Může být použito pouze oprávněnými uživateli.",
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Pokud je isaway zaškrtnuté, potom musí být parameter awaytimestamp vyplněný."
 }

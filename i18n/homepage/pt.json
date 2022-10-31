@@ -84,7 +84,7 @@
 	"growthexperiments-homepage-impact-scores-thanks-count": "Agradecimentos recebidos",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "A wiki {{SITENAME}} foi criada por uma comunidade de editores como você. Os outros editores podem agradecer-lhe uma edição que tenha feito e você também pode agradecer aos outros as edições deles.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Este é o maior número de dias consecutivos em que você fez pelo menos uma edição.{{GENDER:$1|}}",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "Neste momento, a sua sequência mais longa é de $2 {{PLURAL:$2|dia|dias consecutivos}} que alcançou entre $3.{{GENDER:$1|you}}",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "Neste momento, a sua sequência mais longa é de $2 {{PLURAL:$2|dia|dias consecutivos}} que alcançou no período $3.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-subheader-text": "As pessoas estão a ler os artigos que editou!{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas desde que você editou (últimos 60 dias):{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-contributions-link": "Fez <strong>$1</strong> {{PLURAL:$1|edição|edições}} (ver todas){{GENDER:$2|}}",

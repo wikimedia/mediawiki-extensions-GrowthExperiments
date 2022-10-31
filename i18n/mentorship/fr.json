@@ -71,7 +71,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Absent",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Puisque vous êtes absent{{GENDER:||e}} jusqu’au $1, vos apprentis seront temporairement réaffectés à un autre tuteur ou une autre tutrice.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "Vous êtes actuellement bloqué{{GENDER:||e}}. Votre statut est temporairement défini comme « absent{{GENDER:||e}} » et {{GENDER:|}}vos tutorés sont temporairement réaffectés à un autre tuteur. Si vous êtes débloqué{{GENDER:||e}} (ou si le blocage expire), alors le statut de {{GENDER:|}}votre sera défini comme « acti{{GENDER:|f|ve}} » et {{GENDER:|}}vos tutorés {{GENDER:|}}vous seront réaffectés.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "Vous êtes actuellement bloqué{{GENDER:||e}}. Vous ne pouvez pas modifier {{GENDER:|}}votre statut de tut{{GENDER:|eur|rice}} lorsque vous êtes bloqué{{GENDER:||e}}.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "Vous êtes actuellement bloqué{{GENDER:||e}}. Vous ne pouvez pas modifier votre statut de tut{{GENDER:|eur|rice}} lorsque vous êtes bloqué{{GENDER:||e}}.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Définissez-vous comme « absent ».",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Annuler",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Suspendre",
