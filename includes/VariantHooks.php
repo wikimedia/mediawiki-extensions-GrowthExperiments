@@ -211,7 +211,6 @@ class VariantHooks implements
 
 	/**
 	 * @inheritDoc
-	 * @suppress SecurityCheck-SQLInjection setOptions parameters are actually escaped (T290563?)
 	 */
 	public function onLocalUserCreated( $user, $autocreated ) {
 		if ( $autocreated ) {

@@ -921,6 +921,7 @@ class HomepageHooks implements
 			] + $links['user-menu'];
 			$links['user-page'] = [
 					'homepage' => $userItem,
+					// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset the user-page is always set
 			] + $links['user-page'];
 		}
 	}

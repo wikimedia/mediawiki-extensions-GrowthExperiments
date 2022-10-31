@@ -74,7 +74,6 @@ class DeleteOldSurveys extends Maintenance {
 			foreach ( $res as $row ) {
 				$fromUserId = $row->user_id;
 				$userRegistration = wfTimestampOrNull( TS_MW, $row->user_registration );
-				// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 				$welcomeSurveyData = json_decode( $row->up_value, true );
 				if ( $userRegistration > $cutoffDate ) {
 					// The submit date cannot be smaller than the registration date, and registration
