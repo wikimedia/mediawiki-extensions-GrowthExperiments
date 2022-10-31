@@ -14,14 +14,16 @@
 			"MathXplore",
 			"Sonicarts",
 			"Tmv",
-			"Yusuke1109"
+			"Yusuke1109",
+			"Kokage si",
+			"Yamagata Yusuke"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}さん！",
 	"growthexperiments-homepage-tab": "ホームページ",
 	"tooltip-pt-homepage": "{{GENDER:|自分の}}ホームページ",
 	"prefs-homepage": "新規利用者向けホームページ",
-	"growthexperiments-homepage-enable": "新規利用者向けホームページを表示する",
+	"growthexperiments-homepage-enable": "新規参加者ホームページを表示する",
 	"growthexperiments-homepage-pt-link": "既定で個人用ツールバーの利用者名リンクから、新規利用者向けホームページを表示する",
 	"growthexperiments-homepage-start-header": "ここから{{GENDER:$1|始める}}",
 	"growthexperiments-homepage-account-header": "アカウントを作成しました",
