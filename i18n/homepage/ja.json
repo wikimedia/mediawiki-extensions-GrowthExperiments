@@ -14,14 +14,16 @@
 			"Sonicarts",
 			"Tmv",
 			"Yusuke1109",
-			"Marine-Blue"
+			"Marine-Blue",
+			"Kokage si",
+			"Yamagata Yusuke"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}さん！",
 	"growthexperiments-homepage-tab": "ホームページ",
 	"tooltip-pt-homepage": "{{GENDER:|自分の}}ホームページ",
 	"prefs-homepage": "新規利用者向けホームページ",
-	"growthexperiments-homepage-enable": "新規利用者向けホームページを表示する",
+	"growthexperiments-homepage-enable": "新規参加者ホームページを表示する",
 	"growthexperiments-homepage-pt-link": "既定で個人用ツールバーの利用者名リンクから、新規利用者向けホームページを表示する",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|自分}}のメールアドレスを追加",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|自分}}のメールアドレスを確認",
@@ -365,7 +367,7 @@
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "提案された編集に戻す",
 	"growthexperiments-addlink-summary-submit": "送信する",
 	"grant-managementorship": "指導役の管理",
-	"newcomertasksinfo": "新しい参加者のタスク",
+	"newcomertasksinfo": "新規参加者タスク",
 	"newcomertasksinfo-no-data": "利用できるデータがありません。",
 	"newcomertasksinfo-table-header-task-type": "タスクの種別",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
