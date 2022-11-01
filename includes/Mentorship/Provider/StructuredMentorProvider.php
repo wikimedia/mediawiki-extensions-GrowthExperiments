@@ -74,7 +74,7 @@ class StructuredMentorProvider extends MentorProvider {
 		return new Mentor(
 			$mentorUser,
 			$this->getCustomMentorIntroText( $mentorUser ),
-			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ?? $mentorUser ),
+			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ),
 			$mentorData['automaticallyAssigned'] ?? true,
 			$mentorData['weight'] ?? MentorWeightManager::WEIGHT_NORMAL
 		);
@@ -82,18 +82,18 @@ class StructuredMentorProvider extends MentorProvider {
 
 	/**
 	 * @param UserIdentity $mentor
-	 * @param UserIdentity $mentee
+	 * @param ?UserIdentity $mentee
 	 * @return string
 	 */
 	private function getDefaultMentorIntroText(
 		UserIdentity $mentor,
-		UserIdentity $mentee
+		?UserIdentity $mentee
 	): string {
 		return $this->messageLocalizer
 			->msg( 'growthexperiments-homepage-mentorship-intro' )
 			->inContentLanguage()
 			->params( $mentor->getName() )
-			->params( $mentee->getName() )
+			->params( $mentee ? $mentee->getName() : '' )
 			->text();
 	}
 
