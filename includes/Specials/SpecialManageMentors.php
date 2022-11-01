@@ -206,6 +206,9 @@ class SpecialManageMentors extends SpecialPage {
 	 * @return string
 	 */
 	private function getMentorsTableBody( array $mentorNames ): string {
+		// sort mentors alphabetically
+		sort( $mentorNames );
+
 		$mentorsHtml = [];
 		$i = 1;
 		foreach ( $mentorNames as $mentorName ) {
@@ -283,7 +286,7 @@ class SpecialManageMentors extends SpecialPage {
 		return Html::rawElement(
 			'table',
 			[
-				'class' => 'wikitable'
+				'class' => 'wikitable sortable'
 			],
 			implode( "\n", [
 				Html::rawElement(
