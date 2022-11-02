@@ -124,7 +124,7 @@
 	"growthexperiments-manage-mentors-title": "Behandle faddere",
 	"growthexperiments-manage-mentors-pretext-purpose": "Denne siden viser en liste over faddere.",
 	"growthexperiments-manage-mentors-pretext-privileged": "{{GENDER:|Du}} kan fjerne faddere som bryter fellesskapets regler eller retningslinjer, eller redigere fadderinnstillingene deres.",
-	"growthexperiments-manage-mentors-pretext-regular": "Adminsitratorer kan fjerne faddere som bryter fellesskapets regler eller retningslinjer. De kan også redigere fadderinnstillingene til faddere, som f.eks. introduksjonsmeldingene deres.",
+	"growthexperiments-manage-mentors-pretext-regular": "Administratorer kan fjerne faddere som bryter fellesskapets regler eller retningslinjer. De kan også redigere fadderinnstillingene til faddere, som f.eks. introduksjonsmeldingene deres.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "Listen over faddere lagres i [[$1|MediaWiki-navnerommet]], inkludert historikk.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Gå til [[Special:EnrollAsMentor]] for å melde deg som fadder.",
 	"growthexperiments-manage-mentors-error-no-such-user": "Feil: Ingen bruker med ID-en $1 finnes. Dette er trolig en intern feil.",
