@@ -8,7 +8,10 @@
 			"Kareyac",
 			"Okras",
 			"Pacha Tchernof",
-			"Jack Jackie Pomi"
+			"Jack Jackie Pomi",
+			"Deltaspace",
+			"Radmir Far",
+			"UniCollab"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
@@ -59,8 +62,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Этот модуль содержит настройки для вашего статуса наставника. Если же вы хотите навсегда прекратить наставничество, инструкции по этому размещен на такой странице: [[Special:QuitMentorship|Как покинуть наставничество?]]",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Статус наставника",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Активен",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Не на месте",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Поскольку вы не на месте до $1, ваши подопечные временно получат другого наставника.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Отсутствует",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Поскольку вы отсутсвуете до $1, ваши подопечные временно получат другого наставника.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Установить себе статус «не на месте»",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Отмена",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Пауза",
@@ -70,7 +73,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Введено в поле «недоступным» не является целым числом. Пожалуйста, попробуйте еще раз.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Произошла неизвестная ошибка. Пожалуйста, повторите попытку позже.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Ваш статус изменен на «Активный».",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Ваш статус изменен на «Не на месте».",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Ваш статус изменен на «Отсутствует».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Сообщение своим подопечным",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Взять подопечного",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Вы можете сменить наставника у подопечного на себя. Часто используется для событий связанных с редактированием, чтобы инструкторы могли быть наставниками для новичков как в вики, так и за ее пределами.",

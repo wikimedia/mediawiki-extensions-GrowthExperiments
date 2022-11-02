@@ -9,10 +9,15 @@
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Mentori andmelaua kasutamiseks pead kõigepealt ennast [[$1|mentorina kirja panema]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Mentori andmelauda ei saa kasutada enne, kui mentorite loend on häälestatud. Administraator saab seda teha lehekülje [[Special:EditGrowthConfig]] kaudu.",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Kuidas juhendatavat võtta",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktiivne",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Eemal",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Võta juhendatav",
 	"echo-category-title-ge-mentorship": "Mentorlus",
 	"echo-pref-tooltip-ge-mentorship": "Teavitused, mis on seotud mentorluse funktsioonidega, mida haldab projekti Growth meeskond. Saad teavituse, kui keegi võttis sind enda juhendatavaks või kui keegi teine võttis sinu juhendatava enda juhendatavaks.",
 	"growthexperiments-notification-header-mentee-claimed": "$1 {{GENDER:$2|võttis}} sinu {{GENDER:$3|juhendatava}} $3 enda juhendatavaks.",
 	"growthexperiments-notification-body-mentee-claimed": "Põhjus: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Mis on juhendatava võtmine?"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Mis on juhendatava võtmine?",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Umbes pool keskmisest",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Keskmine (vaikimisi)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Umbes kaks keskmist"
 }

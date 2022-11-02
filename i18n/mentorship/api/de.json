@@ -13,6 +13,12 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Neuer Status",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Wenn der Lotse als abwesend festgelegt wird, muss die Dauer der Abwesenheit angegeben werden (in Tagen).",
 	"apihelp-query+growthmentorstatus-summary": "Lotsenstatus des aktuellen Benutzers abfragen",
+	"apihelp-growthmentordashboardupdatedata-summary": "Planen einer außerplanmäßigen Aktualisierung des Mentee-Übersichtsmoduls im Lotsen-Dashboard. Du kannst aus Leistungsgründen nur eine Aktualisierung alle zwei Stunden planen.",
+	"apihelp-growthsetmenteestatus-summary": "Mentee-Status festlegen (ermöglicht Mentees, das Lotsen-Modul zu aktivieren/deaktivieren oder sich vollständig abzumelden, wodurch die Mentee/Lotsen-Beziehung gelöscht wird)",
+	"apihelp-growthsetmenteestatus-param-state": "Neuer Status des Mentees (Warnung: Wenn du dies auf Optout setzt, wird die Mentee/Lotsen-Beziehung dauerhaft gelöscht)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Das Lotsen-Modul ist aktiviert",
-	"apihelp-growthsetmenteestatus-param-state-disabled": "Das Lotsen-Modul ist vollständig deaktiviert. Dies wird normalerweise von der Software festgelegt und für A/B-Tests verwendet."
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Das Lotsen-Modul ist vollständig deaktiviert. Dies wird normalerweise von der Software festgelegt und für A/B-Tests verwendet.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee hat sich von der Lotsenschaft abgemeldet; Mentee/Lotsen-Beziehung wird gelöscht, das Lotsen-Modul wird durch eine Möglichkeit ersetzt, sich wieder anzumelden",
+	"apihelp-query+growthmentormentee-summary": "Abrufen aller Mentees, die einem bestimmten Lotsen zugeordnet sind.",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Lotse, dessen Mentees abgefragt werden sollen"
 }
