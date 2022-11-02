@@ -10,7 +10,8 @@
 	"scripts": {
 		"fix": [
 			"minus-x fix .",
-			"@phpcbf"
+			"@phpcbf",
+			"phpcbf"
 		],
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
