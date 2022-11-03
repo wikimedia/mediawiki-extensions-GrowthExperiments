@@ -95,7 +95,7 @@
 	"growthexperiments-quit-mentorship-has-mentees-pretext": "Жаль, что {{GENDER:|вы}} уходите. Чтобы выйти из наставничества, {{GENDER:|вам}} необходимо заполнить форму ниже. Как только её отправите, все ваши подопечные будут переведены к другому наставнику. <strong>Это действие невозможно отменить.</strong> Если {{GENDER:|вам}} нужен перерыв в наставничестве, вместо выхода подумайте о том, чтобы изменить свой статус на «Отсутствует» или сократить количество назначенных вам подопечных. {{GENDER:|Вы}} можете внести эти изменения в настройках в {{GENDER:|вашей}} [[Special:MentorDashboard|«Панели наставника»]].",
 	"growthexperiments-quit-mentorship-reason": "Причина",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Да, назначить моим подопечным другого наставника",
-	"growthexperiments-quit-mentorship-success": "Вскоре вашим подопечным будет назначен других наставников.",
+	"growthexperiments-quit-mentorship-success": "Вскоре вашим подопечным будут назначены другие наставники.",
 	"growthexperiments-quit-mentorship-no-mentees": "У {{GENDER:|Вас}} пока нет подопечных.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|покинул|покинула}} наставничество.",
 	"echo-category-title-ge-mentorship": "Наставничество",
