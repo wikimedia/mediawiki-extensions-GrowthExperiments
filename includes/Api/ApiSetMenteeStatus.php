@@ -4,12 +4,16 @@ namespace GrowthExperiments\Api;
 
 use ApiBase;
 use ApiMain;
+use Config;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogicException;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMenteeStatus extends ApiBase {
+
+	/** @var Config */
+	private $wikiConfig;
 
 	/** @var MentorManager */
 	private $mentorManager;
@@ -20,17 +24,20 @@ class ApiSetMenteeStatus extends ApiBase {
 	/**
 	 * @param ApiMain $mainModule
 	 * @param string $moduleName
+	 * @param Config $wikiConfig
 	 * @param MentorManager $mentorManager
 	 * @param MentorStore $mentorStore
 	 */
 	public function __construct(
 		ApiMain $mainModule,
 		$moduleName,
+		Config $wikiConfig,
 		MentorManager $mentorManager,
 		MentorStore $mentorStore
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
+		$this->wikiConfig = $wikiConfig;
 		$this->mentorManager = $mentorManager;
 		$this->mentorStore = $mentorStore;
 	}
@@ -39,7 +46,7 @@ class ApiSetMenteeStatus extends ApiBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		if ( !$this->getConfig()->get( 'GEMentorshipEnabled' ) ) {
+		if ( !$this->wikiConfig->get( 'GEMentorshipEnabled' ) ) {
 			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
 		}
 
