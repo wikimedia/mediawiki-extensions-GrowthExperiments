@@ -29,6 +29,7 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 
 		return new SpecialEnrollAsMentor(
+			$geServices->getGrowthWikiConfig(),
 			$geServices->getMentorProvider(),
 			$geServices->getMentorWriter()
 		);

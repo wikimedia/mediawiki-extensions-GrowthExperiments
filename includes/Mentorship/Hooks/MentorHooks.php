@@ -188,6 +188,7 @@ class MentorHooks implements
 			$list['EnrollAsMentor'] = [
 				'class' => SpecialEnrollAsMentor::class,
 				'services' => [
+					'GrowthExperimentsMultiConfig',
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsMentorWriter',
 				]
