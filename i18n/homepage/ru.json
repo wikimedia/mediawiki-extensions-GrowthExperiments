@@ -32,7 +32,8 @@
 			"Sunpriat",
 			"Tanzun",
 			"Urfiner",
-			"Wileyfoxyx"
+			"Wileyfoxyx",
+			"UniCollab"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здравствуйте}}, {{bidi:$1}}!",
@@ -93,6 +94,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Добавьте авторитетные источники и обновите устаревшие статьи",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Создавайте новые статьи и расширяйте короткие.",
 	"growthexperiments-homepage-suggested-edits-header": "Предложенные правки",
+	"growthexperiments-homepage-new-impact-header": "Влияние {{GENDER:$1|ваших}} правок",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "Включите JavaScript для просмотра этого компонента.",
 	"growthexperiments-homepage-impact-header": "Влияние {{GENDER:$1|ваших}} правок",
 	"growthexperiments-homepage-impact-subheader-text": "Люди читают статьи, которые {{GENDER:$1|вы}} отредактировали!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Просмотров после {{GENDER:$1|ваших}} правок (за 60 дней):",
@@ -162,7 +165,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Посмотреть другие обсуждения {{GENDER:$2|}}{{GENDER:$1|вашего наставника|вашей наставницы}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Спросить у {{GENDER:$1|}}{{GENDER:$2|вашего наставника|вашей наставницы}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Когда вы задаёте вопрос, он <strong>размещается публично</strong> с вашим именем {{GENDER:$2|участника|участницы}} «$2» на $3, где {{GENDER:$1|он|она|наставник}} найдёт и ответит на ваш вопрос.",
-	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Ваш основной наставник|Ваша основная наставница}}, [[User:$1|$1]], сейчас {{GENDER:$2|недоступен, он|недоступна, она}} вернётся $3.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Ваш основной наставник|Ваша основная наставница}}, [[User:$1|$1]], сейчас {{GENDER:$2|отсутствует, он|отсутствует, она}} вернётся $3.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "странице обсуждения {{GENDER:$1|}}{{GENDER:$2|вашего наставника|вашей наставницы}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Ваш}} вопрос сейчас на странице обсуждения {{GENDER:$1|вашего наставника|вашей наставницы}}, где {{GENDER:$1|он|она}} ответит как только сможет.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Посмотреть {{GENDER:$2|ваш}} вопрос на странице обсуждения {{GENDER:$1|вашего наставника|вашей наставницы}}.",

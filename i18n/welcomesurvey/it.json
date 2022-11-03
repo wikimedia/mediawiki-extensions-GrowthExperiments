@@ -7,7 +7,8 @@
 			"Lemure Saltante",
 			"Sakretsu",
 			"Sannita",
-			"ValeJappo"
+			"ValeJappo",
+			"GpieroMW"
 		]
 	},
 	"welcomesurvey": "Ciao, $1!",
@@ -15,7 +16,7 @@
 	"welcomesurvey-save-confirmation-text": "Le {{GENDER:|tue}} risposte ci aiuteranno a rendere più semplice il tuo inizio su Wikipedia.",
 	"welcomesurvey-subtitle": "{{GENDER:|Aiutaci}} a migliorare la tua esperienza su Wikipedia rispondendo ad alcune domande facoltative.",
 	"welcomesurvey-save-btn": "Termina",
-	"welcomesurvey-skip-btn": "Ignora questo sondaggio",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Salta}} questo sondaggio",
 	"welcomesurvey-close-btn": "Chiudi e torna a $1",
 	"welcomesurvey-sidebar-privacy-title": "Abbiamo a cuore la {{GENDER:|tua}} privacy",
 	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation userà le tue risposte per aiutarti a contribuire a {{SITENAME}} più facilmente. $1.",

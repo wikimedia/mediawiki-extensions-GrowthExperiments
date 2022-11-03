@@ -13,5 +13,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Asâttâsah",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Jooskâ",
 	"growthexperiments-notification-body-mentee-claimed": "Suijâ: $1",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Jooskâ"
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Vuorkkii",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Jooskâ",
+	"growthexperiments-manage-mentors-remove-mentor": "Siho"
 }

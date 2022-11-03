@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Մենթորի վահանակ",
@@ -46,5 +47,6 @@
 	"growthexperiments-notification-body-mentee-claimed": "Պատճառ՝ $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Հիշել",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Չեղարկել",
+	"growthexperiments-manage-mentors-username": "Օգտանուն",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Պատճառ"
 }

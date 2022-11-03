@@ -133,7 +133,7 @@
 	"growthexperiments-mentorship-enrollasmentor-title": "ჩაეწერეთ როგორც {{GENDER:|მენტორი}}",
 	"growthexperiments-mentorship-enrollasmentor-pretext": "გმადლობთ {{GRAMMAR:ნათესაობითი|{{SITENAME}}}} {{GENDER:|მენტორად}} მოხალისეობრივი საქმიანობისათვის. ამ ფორმის შევსებით {{GENDER:|თქვენ}} შეგიძლიათ ჩაეწეროთ მენტორად.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "მისასალმებელი შეტყობინება",
-	"growthexperiments-mentorship-enrollasmentor-form-message-help": "შესავალი შეტყობინება წარმოგიდგენთ {{GENDER:|თქვენ}} როგორც მენტორს. გთხოვთ, არ გადააჭარბოთ 240 სიმბოლოს. ვიკიტექსტი არ არის დაშვებული.",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "მისასალმებელი შეტყობინება წარმოგიდგენთ {{GENDER:|თქვენ}} როგორც მენტორს. გთხოვთ, არ გადააჭარბოთ 240 სიმბოლოს. ვიკიტექსტი არ არის დაშვებული.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "მიზეზი",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "ჩაწერა",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|თქვენ}} ახლა ჩაწერილი ხართ მენტორად. {{GENDER:|შეგიძლიათ}} ახლავე გადახვიდეთ [[Special:MentorDashboard|მენტორის დაფაზე]].",

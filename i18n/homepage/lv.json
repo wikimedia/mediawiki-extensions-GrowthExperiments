@@ -7,7 +7,7 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Sveicināts|Sveicināta}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Sākumlapa",
 	"tooltip-pt-homepage": "{{GENDER:|Tava}} sākumlapa",
-	"prefs-homepage": "Jaunpienācēju sākumlapa",
+	"prefs-homepage": "Jaunpienācēju funkcijas",
 	"growthexperiments-homepage-enable": "Rādīt jaunpienācēju sākumlapu",
 	"growthexperiments-homepage-pt-link": "Atvērt jaunpienācēju sākumlapu no lietotājvārda saites personīgajos rīkos",
 	"growthexperiments-homepage-email-header-noemail": "Pievieno {{GENDER:$1|savu}} e-pastu",
