@@ -101,6 +101,7 @@
 	"growthexperiments-quit-mentorship-success": "Deine Mentees werden in Kürze anderen Lotsen zugewiesen.",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|Du}} hast derzeit keine Mentees.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 hat die Lotsen-Tätigkeit beendet.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 {{GENDER:$2|entfernte}} $1 als Lotse",
 	"echo-category-title-ge-mentorship": "Betreuung durch Lotsen",
 	"echo-pref-tooltip-ge-mentorship": "Benachrichtigungen im Zusammenhang mit den vom Growth-Team gepflegten Lotsen-Funktionen. Diese Benachrichtigung teilt dir mit, dass du als Mentee übernommen wurdest oder dass einer deiner Mentees von jemand anderem übernommen wurde.",
 	"growthexperiments-notification-header-mentee-claimed": "Dein {{GENDER:$3|Mentee}} $3, wurde von $1{{GENDER:$2|übernommen}}.",
