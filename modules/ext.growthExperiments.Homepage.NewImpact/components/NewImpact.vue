@@ -10,11 +10,11 @@
 				:icon="cdxIconEdit"
 				:label="$i18n( 'growthexperiments-homepage-impact-scores-edit-count' )"
 			>
-				<c-link :href="contributionsUrl" :disable-visited="true">
-					<c-text size="md" weight="bold">
+				<c-text size="md" weight="bold">
+					<a :href="contributionsUrl" class="ext-growthExperiments-NewImpact__scores__link">
 						{{ $filters.convertNumber( data.totalEditsCount ) }}
-					</c-text>
-				</c-link>
+					</a>
+				</c-text>
 			</score-card>
 			<score-card
 				:icon="cdxIconHeart"
@@ -122,19 +122,34 @@
 				:data="data.dailyTotalViews.entries"
 			></trend-chart>
 		</div>
+		<div v-if="data">
+			<c-text
+				as="h5"
+				size="md"
+				weight="bold"
+			>
+				{{ $i18n( 'growthexperiments-homepage-impact-subheader-text', userName ) }}
+			</c-text>
+			<articles-list class="ext-growthExperiments-NewImpact__articles-list" :items="data.articles"></articles-list>
+			<c-text weight="bold">
+				<a :href="contributionsUrl">
+					{{ $i18n( 'growthexperiments-homepage-impact-contributions-link', data.totalEditsCount, userName ) }}
+				</a>
+			</c-text>
+		</div>
 	</section>
 </template>
 
 <script>
 const moment = require( 'moment' );
 const { CdxIcon } = require( '@wikimedia/codex' );
+const CInfoBox = require( '../../vue-components/CInfoBox.vue' );
+const CText = require( '../../vue-components/CText.vue' );
+const useUserImpact = require( '../composables/useUserImpact.js' );
 const ScoreCard = require( './ScoreCard.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
 const TrendChart = require( './TrendChart.vue' );
-const CText = require( '../../vue-components/CText.vue' );
-const CLink = require( '../../vue-components/CLink.vue' );
-const CInfoBox = require( '../../vue-components/CInfoBox.vue' );
-const useUserImpact = require( '../composables/useUserImpact.js' );
+const ArticlesList = require( './ArticlesList.vue' );
 const {
 	cdxIconEdit,
 	cdxIconHeart,
@@ -153,12 +168,12 @@ module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
 		CdxIcon,
+		CInfoBox,
+		CText,
+		ArticlesList,
 		RecentActivity,
 		ScoreCard,
-		CInfoBox,
-		TrendChart,
-		CText,
-		CLink
+		TrendChart
 	},
 	props: {},
 	setup() {
@@ -225,6 +240,8 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
+@import '../../vue-components/variables.less';
+
 .ext-growthExperiments-NewImpact {
 	&--mobile {
 		// Expand all content over homepage modules padding
@@ -242,6 +259,14 @@ module.exports = exports = {
 		grid-gap: 2px;
 		// Expand scores stripe over homepage modules padding
 		margin: 0 -16px;
+
+		&__link {
+			.disabled-visited();
+		}
+	}
+
+	&__articles-list {
+		padding: @padding-horizontal-base 0;
 	}
 
 	&__scorecard__info {

@@ -216,7 +216,12 @@
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
 			"services": [
-				"GrowthExperimentsUserImpactLookup"
+				"MainConfig",
+				"_GrowthExperimentsAQSConfig",
+				"GrowthExperimentsUserImpactLookup",
+				"UserOptionsLookup",
+				"TitleFactory",
+				"ContentLanguage"
 			]
 		}
 	],
@@ -642,17 +647,20 @@
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/StreakGraph.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/ArticlesList.vue",
 				"utils/filters.js",
 				"vue-components/directives/click-outside.directive.js",
 				"vue-components/CInfoBox.vue",
 				"vue-components/CPopper.vue",
 				"vue-components/CSparkline.vue",
-				"vue-components/CLink.vue",
 				"vue-components/CText.vue",
+				"vue-components/CList.vue",
+				"vue-components/CListItem.vue",
 				{
 					"name": "vue-components/icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
 					"callbackParam": [
+						"cdxIconClock",
 						"cdxIconEdit",
 						"cdxIconHeart",
 						"cdxIconClock",
@@ -675,7 +683,9 @@
 				"growthexperiments-homepage-impact-recent-activity-streak-count-text",
 				"growthexperiments-homepage-impact-recent-activity-contribs-count-text",
 				"growthexperiments-homepage-impact-recent-activity-streak-data-text",
-				"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label"
+				"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label",
+				"growthexperiments-homepage-impact-subheader-text",
+				"growthexperiments-homepage-impact-contributions-link"
 			],
 			"dependencies": [
 				"moment",
