@@ -84,7 +84,11 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$html
 		);
 		$this->assertStringNotContainsStringIgnoringCase(
-			'Remove',
+			'growthexperiments-manage-mentors-remove',
+			$html
+		);
+		$this->assertStringNotContainsStringIgnoringCase(
+			'growthexperiments-manage-mentors-edit',
 			$html
 		);
 	}
@@ -107,7 +111,11 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$html
 		);
 		$this->assertStringContainsStringIgnoringCase(
-			'remove',
+			'growthexperiments-manage-mentors-remove',
+			$html
+		);
+		$this->assertStringContainsStringIgnoringCase(
+			'growthexperiments-manage-mentors-edit',
 			$html
 		);
 	}
@@ -157,6 +165,13 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			null,
 			$this->getTestSysop()->getUser()
 		);
+
+		$this->getServiceContainer()->getJobRunner()->run( [
+			'type' => 'reassignMenteesJob',
+			'maxJobs' => 1,
+			'maxTime' => 1,
+		] );
+
 		$this->assertStringContainsString(
 			'growthexperiments-manage-mentors-remove-mentor-success',
 			$html
@@ -173,6 +188,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$this->mentorUser,
 			MentorStore::ROLE_PRIMARY
 		) );
+		$this->assertFalse( $mentorStore->hasAnyMentees( $this->mentorUser, MentorStore::ROLE_PRIMARY ) );
 	}
 
 	/**
