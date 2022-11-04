@@ -83,6 +83,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
+use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
@@ -559,6 +560,17 @@ return [
 		);
 		$writer->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $writer;
+	},
+
+	'GrowthExperimentsMetricsFactory' => static function (
+		MediaWikiServices $services
+	): MetricsFactory {
+		return new MetricsFactory(
+			$services->getDBLoadBalancer(),
+			$services->getUserEditTracker(),
+			$services->getUserIdentityLookup(),
+			GrowthExperimentsServices::wrap( $services )->getMentorProvider(),
+		);
 	},
 
 	'GrowthExperimentsNewcomerTasksConfigurationLoader' => static function (
