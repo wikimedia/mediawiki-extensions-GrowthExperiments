@@ -51,22 +51,28 @@ class MentorHooks implements
 	/** @var MentorProvider */
 	private $mentorProvider;
 
+	/** @var MentorStore */
+	private $mentorStore;
+
 	/**
 	 * @param Config $config
 	 * @param Config $wikiConfig
 	 * @param MentorManager $mentorManager
 	 * @param MentorProvider $mentorProvider
+	 * @param MentorStore $mentorStore
 	 */
 	public function __construct(
 		Config $config,
 		Config $wikiConfig,
 		MentorManager $mentorManager,
-		MentorProvider $mentorProvider
+		MentorProvider $mentorProvider,
+		MentorStore $mentorStore
 	) {
 		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
 		$this->mentorManager = $mentorManager;
 		$this->mentorProvider = $mentorProvider;
+		$this->mentorStore = $mentorStore;
 	}
 
 	/**
@@ -153,6 +159,11 @@ class MentorHooks implements
 					$this->mentorProvider->invalidateCache();
 					break;
 				}
+			}
+		} );
+		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+			if ( $this->mentorStore->isMentee( $user ) ) {
+				$this->mentorStore->markMenteeAsActive( $user );
 			}
 		} );
 	}

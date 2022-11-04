@@ -72,4 +72,33 @@ abstract class MentorStoreTestCase extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $store->hasAnyMentees( $mentor, MentorStore::ROLE_BACKUP ) );
 	}
 
+	/**
+	 * @covers \GrowthExperiments\Mentorship\Store\MentorStore::isMentee
+	 */
+	public function testIsMentee() {
+		$mentee = $this->getMutableTestUser()->getUser();
+		$mentor = $this->getMutableTestUser()->getUser();
+		$store = $this->getStore( true );
+
+		$this->assertFalse( $store->isMentee( $mentee ) );
+		$store->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
+		$this->assertTrue( $store->isMentee( $mentee ) );
+	}
+
+	/**
+	 * @covers \GrowthExperiments\Mentorship\Store\MentorStore::isMenteeActive
+	 * @covers \GrowthExperiments\Mentorship\Store\MentorStore::isMenteeActiveUncached
+	 */
+	public function testIsMenteeActive() {
+		$mentee = $this->getMutableTestUser()->getUser();
+		$mentor = $this->getMutableTestUser()->getUser();
+		$store = $this->getStore( true );
+
+		// not a mentee yet
+		$this->assertNull( $store->isMenteeActive( $mentee ) );
+
+		// active by default
+		$store->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
+		$this->assertTrue( $store->isMenteeActive( $mentee ) );
+	}
 }
