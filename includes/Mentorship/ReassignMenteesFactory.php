@@ -54,11 +54,13 @@ class ReassignMenteesFactory {
 	}
 
 	/**
+	 * @param UserIdentity $performer
 	 * @param UserIdentity $mentor
 	 * @param IContextSource $context
 	 * @return ReassignMentees
 	 */
 	public function newReassignMentees(
+		UserIdentity $performer,
 		UserIdentity $mentor,
 		IContextSource $context
 	): ReassignMentees {
@@ -69,6 +71,7 @@ class ReassignMenteesFactory {
 			$this->changeMentorFactory,
 			$this->permissionManager,
 			$this->jobQueueGroupFactory,
+			$performer,
 			$mentor,
 			$context
 		);
