@@ -2,14 +2,19 @@
 
 namespace GrowthExperiments\Specials;
 
+use Config;
 use FormSpecialPage;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use HTMLForm;
+use PermissionsError;
 use SpecialPage;
 use Status;
 
 class SpecialEnrollAsMentor extends FormSpecialPage {
+
+	/** @var Config */
+	private $wikiConfig;
 
 	/** @var MentorProvider */
 	private $mentorProvider;
@@ -18,15 +23,18 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 	private $mentorWriter;
 
 	/**
+	 * @param Config $wikiConfig
 	 * @param MentorProvider $mentorProvider
 	 * @param IMentorWriter $mentorWriter
 	 */
 	public function __construct(
+		Config $wikiConfig,
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter
 	) {
 		parent::__construct( 'EnrollAsMentor', 'enrollasmentor', false );
 
+		$this->wikiConfig = $wikiConfig;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorWriter = $mentorWriter;
 	}
@@ -125,5 +133,17 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 	 */
 	public function onSuccess() {
 		$this->getOutput()->addWikiMsg( 'growthexperiments-mentorship-enrollasmentor-success' );
+	}
+
+	protected function displayRestrictionError() {
+		if ( !$this->wikiConfig->get( 'GEMentorshipAutomaticEligibility' ) ) {
+			parent::displayRestrictionError();
+		}
+
+		throw new PermissionsError( $this->mRestriction, [ [
+			'growthexperiments-mentorship-enrollasmentor-error-not-autoeligible',
+			$this->wikiConfig->get( 'GEMentorshipMinimumEditcount' ),
+			$this->wikiConfig->get( 'GEMentorshipMinimumAge' ),
+		] ] );
 	}
 }
