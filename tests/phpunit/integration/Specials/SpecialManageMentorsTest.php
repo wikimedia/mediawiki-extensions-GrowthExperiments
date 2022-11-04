@@ -6,6 +6,7 @@ use FauxRequest;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialManageMentors;
 use MediaWiki\User\UserIdentity;
 use PermissionsError;
@@ -41,6 +42,13 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 				$this->mentorUser,
 				'Test'
 			);
+
+		// assign a mentee to the mentor
+		$geServices->getMentorStore()->setMentorForUser(
+			$this->getMutableTestUser()->getUserIdentity(),
+			$this->mentorUser,
+			MentorStore::ROLE_PRIMARY
+		);
 	}
 
 	/**
@@ -54,6 +62,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$this->getServiceContainer()->getUserEditTracker(),
 			$geServices->getMentorProvider(),
 			$geServices->getMentorWriter(),
+			$geServices->getReassignMenteesFactory(),
 			$geServices->getMentorStatusManager()
 		);
 	}
@@ -133,10 +142,15 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor::onSuccess
 	 */
 	public function testAuthorizedRemoveMentor() {
-		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
-			->getMentorProvider();
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorProvider = $geServices->getMentorProvider();
+		$mentorStore = $geServices->getMentorStore();
 
 		$this->assertTrue( $mentorProvider->isMentor( $this->mentorUser ) );
+		$this->assertTrue( $mentorStore->hasAnyMentees(
+			$this->mentorUser,
+			MentorStore::ROLE_PRIMARY
+		) );
 		list( $html, ) = $this->executeSpecialPage(
 			'remove-mentor/' . $this->mentorUser->getId(),
 			new FauxRequest( [ 'wpreason' => 'foo' ], true ),
@@ -148,6 +162,17 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$html
 		);
 		$this->assertFalse( $mentorProvider->isMentor( $this->mentorUser ) );
+
+		// run any mentee reassignment jobs and ensure former mentor has no mentees left
+		$this->getServiceContainer()->getJobRunner()->run( [
+			'type' => 'reassignMenteesJob',
+			'maxJobs' => 1,
+			'maxTime' => 3,
+		] );
+		$this->assertFalse( $mentorStore->hasAnyMentees(
+			$this->mentorUser,
+			MentorStore::ROLE_PRIMARY
+		) );
 	}
 
 	/**
