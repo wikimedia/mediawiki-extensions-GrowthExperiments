@@ -6,7 +6,7 @@ use ErrorPageError;
 use FormSpecialPage;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\Mentorship\QuitMentorshipFactory;
+use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use HTMLForm;
 use PermissionsError;
@@ -15,8 +15,8 @@ use User;
 
 class SpecialQuitMentorshipStructured extends FormSpecialPage {
 
-	/** @var QuitMentorshipFactory */
-	private $quitMentorshipFactory;
+	/** @var ReassignMenteesFactory */
+	private $reassignMenteesFactory;
 
 	/** @var MentorStore */
 	private $mentorStore;
@@ -28,20 +28,20 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 	private $mentorWriter;
 
 	/**
-	 * @param QuitMentorshipFactory $quitMentorshipFactory
+	 * @param ReassignMenteesFactory $reassignMenteesFactory
 	 * @param MentorStore $mentorStore
 	 * @param MentorProvider $mentorProvider
 	 * @param IMentorWriter $mentorWriter
 	 */
 	public function __construct(
-		QuitMentorshipFactory $quitMentorshipFactory,
+		ReassignMenteesFactory $reassignMenteesFactory,
 		MentorStore $mentorStore,
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter
 	) {
 		parent::__construct( 'QuitMentorship', '', false );
 
-		$this->quitMentorshipFactory = $quitMentorshipFactory;
+		$this->reassignMenteesFactory = $reassignMenteesFactory;
 		$this->mentorStore = $mentorStore;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorWriter = $mentorWriter;
@@ -150,7 +150,7 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 			$data['reason']
 		);
 		// reassignMentees() will submit a job
-		$this->quitMentorshipFactory->newQuitMentorship(
+		$this->reassignMenteesFactory->newReassignMentees(
 			$this->getUser(),
 			$this->getContext()
 		)->reassignMentees(

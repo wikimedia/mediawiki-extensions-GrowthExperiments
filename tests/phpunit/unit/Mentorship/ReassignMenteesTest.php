@@ -6,7 +6,7 @@ use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\Mentorship\QuitMentorship;
+use GrowthExperiments\Mentorship\ReassignMentees;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
@@ -16,9 +16,9 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Mentorship\QuitMentorship
+ * @coversDefaultClass \GrowthExperiments\Mentorship\ReassignMentees
  */
-class QuitMentorshipTest extends MediaWikiUnitTestCase {
+class ReassignMenteesTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param UserIdentity $mentor
@@ -27,17 +27,17 @@ class QuitMentorshipTest extends MediaWikiUnitTestCase {
 	 * @param MentorStore|null $mentorStoreMock
 	 * @param ChangeMentorFactory|null $changeMentorFactoryMock
 	 * @param IContextSource|null $contextMock
-	 * @return QuitMentorship
+	 * @return ReassignMentees
 	 */
-	private function newQuitMentorship(
+	private function newReassignMentees(
 		UserIdentity $mentor,
 		?MentorManager $mentorManagerMock = null,
 		?MentorProvider $mentorProviderMock = null,
 		?MentorStore $mentorStoreMock = null,
 		?ChangeMentorFactory $changeMentorFactoryMock = null,
 		?IContextSource $contextMock = null
-	) {
-		return new QuitMentorship(
+	): ReassignMentees {
+		return new ReassignMentees(
 			$mentorManagerMock ?? $this->createNoOpMock( MentorManager::class ),
 			$mentorProviderMock ?? $this->createNoOpMock( MentorProvider::class ),
 			$mentorStoreMock ?? $this->createNoOpMock( MentorStore::class ),
@@ -69,7 +69,7 @@ class QuitMentorshipTest extends MediaWikiUnitTestCase {
 			->with( $mentor, MentorStore::ROLE_PRIMARY )
 			->willReturn( $hasMentees );
 
-		$quitMentorship = $this->newQuitMentorship(
+		$reassignMentees = $this->newReassignMentees(
 			$mentor,
 			null,
 			$mentorProvider,
@@ -78,16 +78,16 @@ class QuitMentorshipTest extends MediaWikiUnitTestCase {
 
 		$this->assertEquals(
 			$expectedStage,
-			$quitMentorship->getStage()
+			$reassignMentees->getStage()
 		);
 	}
 
 	public function provideGetStage() {
 		return [
-			'isMentorHasMentees' => [ QuitMentorship::STAGE_LISTED_AS_MENTOR, true, true ],
-			'isMentorNoMentees' => [ QuitMentorship::STAGE_LISTED_AS_MENTOR, true, false ],
-			'notMentorHasMentees' => [ QuitMentorship::STAGE_NOT_LISTED_HAS_MENTEES, false, true ],
-			'notMentorNoMentees' => [ QuitMentorship::STAGE_NOT_LISTED_NO_MENTEES, false, false ],
+			'isMentorHasMentees' => [ ReassignMentees::STAGE_LISTED_AS_MENTOR, true, true ],
+			'isMentorNoMentees' => [ ReassignMentees::STAGE_LISTED_AS_MENTOR, true, false ],
+			'notMentorHasMentees' => [ ReassignMentees::STAGE_NOT_LISTED_HAS_MENTEES, false, true ],
+			'notMentorNoMentees' => [ ReassignMentees::STAGE_NOT_LISTED_NO_MENTEES, false, false ],
 		];
 	}
 
@@ -140,7 +140,7 @@ class QuitMentorshipTest extends MediaWikiUnitTestCase {
 				$mentees
 			) )
 			->willReturn( $changeMentor );
-		$quitMentorship = $this->newQuitMentorship(
+		$reassignMentees = $this->newReassignMentees(
 			$mentor,
 			$mentorManager,
 			null,
@@ -149,6 +149,6 @@ class QuitMentorshipTest extends MediaWikiUnitTestCase {
 			$context
 		);
 
-		$this->assertTrue( $quitMentorship->doReassignMentees( 'foo' ) );
+		$this->assertTrue( $reassignMentees->doReassignMentees( 'foo' ) );
 	}
 }

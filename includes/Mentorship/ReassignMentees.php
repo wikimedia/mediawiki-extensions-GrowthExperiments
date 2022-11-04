@@ -13,7 +13,7 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Wikimedia\ScopedCallback;
 
-class QuitMentorship {
+class ReassignMentees {
 	use LoggerAwareTrait;
 
 	public const STAGE_LISTED_AS_MENTOR = 1;
@@ -76,7 +76,7 @@ class QuitMentorship {
 	}
 
 	/**
-	 * @return int One of QuitMentorship::STAGE_* constants
+	 * @return int One of ReassignMentees::STAGE_* constants
 	 */
 	public function getStage(): int {
 		if ( $this->mentorProvider->isMentor( $this->mentor ) ) {
@@ -135,7 +135,7 @@ class QuitMentorship {
 			} catch ( WikiConfigException $e ) {
 				ScopedCallback::consume( $guard );
 				$this->logger->warning(
-					'QuitMentorship failed to reassign mentees for {mentor}; mentor list is invalid',
+					'ReassignMentees failed to reassign mentees for {mentor}; mentor list is invalid',
 					[
 						'mentor' => $this->mentor->getName()
 					]
@@ -145,7 +145,7 @@ class QuitMentorship {
 
 			if ( !$newMentor ) {
 				$this->logger->warning(
-					'QuitMentorship failed to reassign mentees for {mentor}; no mentor is available',
+					'ReassignMentees failed to reassign mentees for {mentor}; no mentor is available',
 					[
 						'mentor' => $this->mentor->getName()
 					]

@@ -5,35 +5,35 @@ namespace GrowthExperiments\Specials;
 use ErrorPageError;
 use FormSpecialPage;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\Mentorship\QuitMentorship;
-use GrowthExperiments\Mentorship\QuitMentorshipFactory;
+use GrowthExperiments\Mentorship\ReassignMentees;
+use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use HTMLForm;
 use Status;
 
 class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 
-	/** @var QuitMentorshipFactory */
-	private $quitMentorshipFactory;
+	/** @var ReassignMenteesFactory */
+	private $reassignMenteesFactory;
 
-	/** @var QuitMentorship */
-	private $quitMentorship;
+	/** @var ReassignMentees */
+	private $reassignMentees;
 
-	/** @var int One of QuitMentorship::STAGE_* constants */
-	private $quitMentorshipStage;
+	/** @var int One of ReassignMentees::STAGE_* constants */
+	private $reassignMenteesStage;
 
 	/** @var MentorProvider */
 	private $mentorProvider;
 
 	/**
-	 * @param QuitMentorshipFactory $quitMentorshipFactory
+	 * @param ReassignMenteesFactory $reassignMenteesFactory
 	 * @param MentorProvider $mentorProvider
 	 */
 	public function __construct(
-		QuitMentorshipFactory $quitMentorshipFactory,
+		ReassignMenteesFactory $reassignMenteesFactory,
 		MentorProvider $mentorProvider
 	) {
 		parent::__construct( 'QuitMentorship', '', false );
-		$this->quitMentorshipFactory = $quitMentorshipFactory;
+		$this->reassignMenteesFactory = $reassignMenteesFactory;
 		$this->mentorProvider = $mentorProvider;
 	}
 
@@ -104,11 +104,11 @@ class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 		$this->requireMentorList();
 		$this->requireLogin();
 
-		$this->quitMentorship = $this->quitMentorshipFactory->newQuitMentorship(
+		$this->reassignMentees = $this->reassignMenteesFactory->newReassignMentees(
 			$this->getUser(),
 			$this->getContext()
 		);
-		$this->quitMentorshipStage = $this->quitMentorship->getStage();
+		$this->reassignMenteesStage = $this->reassignMentees->getStage();
 		parent::execute( $par );
 	}
 
@@ -116,7 +116,7 @@ class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	protected function alterForm( HTMLForm $form ) {
-		if ( $this->quitMentorshipStage !== QuitMentorship::STAGE_NOT_LISTED_HAS_MENTEES ) {
+		if ( $this->reassignMenteesStage !== ReassignMentees::STAGE_NOT_LISTED_HAS_MENTEES ) {
 			$form->suppressDefaultSubmit();
 		}
 
@@ -130,16 +130,16 @@ class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	protected function preHtml() {
-		if ( $this->quitMentorshipStage === QuitMentorship::STAGE_LISTED_AS_MENTOR ) {
+		if ( $this->reassignMenteesStage === ReassignMentees::STAGE_LISTED_AS_MENTOR ) {
 			return $this->msg(
 				'growthexperiments-quit-mentorship-listed-as-mentor-pretext',
 				$this->mentorProvider->getSignupTitle()->getPrefixedText()
 			)->parseAsBlock();
-		} elseif ( $this->quitMentorshipStage === QuitMentorship::STAGE_NOT_LISTED_HAS_MENTEES ) {
+		} elseif ( $this->reassignMenteesStage === ReassignMentees::STAGE_NOT_LISTED_HAS_MENTEES ) {
 			return $this->msg(
 				'growthexperiments-quit-mentorship-not-listed-has-mentees-pretext'
 			)->parseAsBlock();
-		} elseif ( $this->quitMentorshipStage === QuitMentorship::STAGE_NOT_LISTED_NO_MENTEES ) {
+		} elseif ( $this->reassignMenteesStage === ReassignMentees::STAGE_NOT_LISTED_NO_MENTEES ) {
 			return $this->msg(
 				'growthexperiments-quit-mentorship-no-mentees'
 			)->parseAsBlock();
@@ -159,7 +159,7 @@ class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
-		$this->quitMentorship->reassignMentees(
+		$this->reassignMentees->reassignMentees(
 			'growthexperiments-quit-mentorship-reassign-mentees-log-message'
 		);
 
