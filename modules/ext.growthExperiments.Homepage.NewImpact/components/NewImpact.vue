@@ -143,6 +143,7 @@
 <script>
 const moment = require( 'moment' );
 const { CdxIcon } = require( '@wikimedia/codex' );
+const { DEFAULT_STREAK_TIME_FRAME } = require( '../constants.js' );
 const CInfoBox = require( '../../vue-components/CInfoBox.vue' );
 const CText = require( '../../vue-components/CText.vue' );
 const useUserImpact = require( '../composables/useUserImpact.js' );
@@ -159,9 +160,6 @@ const {
 	cdxIconInfo,
 	cdxIconInfoFilled
 } = require( '../../vue-components/icons.json' );
-// The number of columns to show in the streak graphic. Columns
-// will be represented as days.
-const DEFAULT_STREAK_TIME_FRAME = 60;
 
 // @vue/component
 module.exports = exports = {

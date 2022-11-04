@@ -640,10 +640,12 @@
 			],
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.NewImpact/init.js",
+				"ext.growthExperiments.Homepage.NewImpact/constants.js",
 				"ext.growthExperiments.Homepage.NewImpact/composables/useMWRestApi.js",
 				"ext.growthExperiments.Homepage.NewImpact/composables/useUserImpact.js",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/TrendChart.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/NewImpactSummary.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/StreakGraph.vue",
