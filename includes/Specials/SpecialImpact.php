@@ -136,7 +136,9 @@ class SpecialImpact extends SpecialPage {
 				$context,
 				$this->wikiConfig,
 				$this->experimentUserManager,
-				$impactUser
+				$impactUser,
+				SuggestedEdits::isEnabled( $context->getConfig() ),
+				SuggestedEdits::isActivated( $impactUser, $this->userOptionsLookup )
 			);
 		} else {
 			$impact = new Impact(

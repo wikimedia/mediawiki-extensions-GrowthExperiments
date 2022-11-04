@@ -147,16 +147,18 @@ class HomepageModuleRegistry {
 					$config->get( 'GEUseNewImpactModule' )
 				) && $config->get( 'GEAllowAccessToNewImpactModule' ) === true;
 				$growthServices = GrowthExperimentsServices::wrap( $services );
+				$userOptionsLookup = $services->getUserOptionsLookup();
 				if ( $useNewImpactModule ) {
 					return new NewImpact(
 						$context,
 						$growthServices->getGrowthWikiConfig(),
 						$growthServices->getExperimentUserManager(),
-						$context->getUser()
+						$context->getUser(),
+						SuggestedEdits::isEnabled( $context->getConfig() ),
+						SuggestedEdits::isActivated( $context->getUser(), $userOptionsLookup )
 					);
 				}
 				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
-				$userOptionsLookup = $services->getUserOptionsLookup();
 				return new Impact(
 					$context,
 					$growthServices->getGrowthWikiConfig(),

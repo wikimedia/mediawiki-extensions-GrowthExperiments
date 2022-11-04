@@ -116,6 +116,7 @@
 		</div>
 		<div v-if="data">
 			<trend-chart
+				id="impact"
 				:count-text="$filters.convertNumber( data.dailyTotalViews.count )"
 				:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName )"
 				:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' )"
@@ -142,7 +143,6 @@
 
 <script>
 const moment = require( 'moment' );
-const { inject } = require( 'vue' );
 const { CdxIcon } = require( '@wikimedia/codex' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( '../constants.js' );
 const CInfoBox = require( '../../vue-components/CInfoBox.vue' );
@@ -175,6 +175,10 @@ module.exports = exports = {
 		TrendChart
 	},
 	props: {
+		userName: {
+			type: String,
+			required: true
+		},
 		data: {
 			type: Object,
 			required: true
@@ -185,7 +189,6 @@ module.exports = exports = {
 		// Clarify with design if the different flex display is subject to the
 		// platform or the viewport.
 		const isMobileHomepage = mw.config.get( 'homepagemobile' );
-		const userName = inject( 'USER_TO_SHOW_USERNAME' );
 
 		return {
 			DEFAULT_STREAK_TIME_FRAME,
@@ -196,8 +199,7 @@ module.exports = exports = {
 			isMobileHomepage,
 			cdxIconClose,
 			cdxIconInfo,
-			cdxIconInfoFilled,
-			userName
+			cdxIconInfoFilled
 		};
 	},
 	computed: {
