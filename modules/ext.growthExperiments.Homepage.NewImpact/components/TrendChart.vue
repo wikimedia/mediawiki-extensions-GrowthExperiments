@@ -13,6 +13,7 @@
 		</c-text>
 		<div class="ext-growthExperiments-TrendChart__graph">
 			<c-sparkline
+				id="main"
 				:title="chartTitle"
 				:data="data"
 				:dimensions="{ width: 448, height: 24 }"

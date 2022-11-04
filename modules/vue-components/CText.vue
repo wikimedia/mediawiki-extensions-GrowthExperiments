@@ -51,7 +51,6 @@ module.exports = exports = {
 .ext-growthExperiments-CText {
 	font-size: @font-size-100;
 	font-weight: @font-weight-normal;
-	color: @color-base;
 
 	&--size-xs {
 		font-size: @font-size-80;

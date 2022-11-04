@@ -73,14 +73,19 @@ function useUserImpact( userId, timeFrame ) {
 				dailyArticleViews
 			} = data.value;
 
-			const views = Object.keys( dailyTotalViews ).map( ( key ) => ( {
-				date: new Date( key ),
-				views: dailyTotalViews[ key ]
-			} ) );
+			const toPageviewsArray = ( viewsByDay ) => {
+				// Fall back to empty array if no page view data (clock icon scenario)
+				return Object.keys( viewsByDay || [] ).map( ( key ) => ( {
+					date: new Date( key ),
+					views: viewsByDay[ key ]
+				} ) );
+			};
 
+			const views = toPageviewsArray( dailyTotalViews );
 			const articles = Object.keys( dailyArticleViews ).map( ( articleTitle ) => {
 				const title = new mw.Title( articleTitle );
 				const articleData = dailyArticleViews[ articleTitle ];
+				// Fall back to empty array if no page view data (clock icon scenario)
 				const articleViewsByDay = Object.keys( articleData.views || [] );
 				const viewsCount = articleViewsByDay
 					.map( ( day ) => articleData.views[ day ] )
@@ -91,7 +96,8 @@ function useUserImpact( userId, timeFrame ) {
 					href: title.getUrl(),
 					views: {
 						href: articleData.pageviewsUrl,
-						count: articleViewsByDay.length > 0 ? viewsCount : null
+						count: articleViewsByDay.length > 0 ? viewsCount : null,
+						entries: toPageviewsArray( articleData.views )
 					},
 					image: {
 						href: articleData.imageUrl,
