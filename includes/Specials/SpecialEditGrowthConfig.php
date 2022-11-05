@@ -434,7 +434,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				$taskType,
 				NewcomerTasksValidator::SUGGESTED_EDITS_MACHINE_SUGGESTIONS_TASK_TYPES
 			);
-			$descriptors["newcomertasks-${taskType}Info"] = [
+			$descriptors["newcomertasks-{$taskType}Info"] = [
 				'type' => 'info',
 				// TODO: It looks nicer to have each task type in its own section, but that's a bigger
 				// reorganization.
@@ -444,12 +444,12 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'raw' => true,
 				'section' => 'newcomertasks',
 			];
-			$descriptors["newcomertasks-${taskType}Disabled"] = [
+			$descriptors["newcomertasks-{$taskType}Disabled"] = [
 				'type' => 'check',
 				'label-message' => 'growthexperiments-edit-config-newcomer-tasks-disabled',
 				'section' => 'newcomertasks',
 			];
-			$descriptors["newcomertasks-${taskType}Templates"] = [
+			$descriptors["newcomertasks-{$taskType}Templates"] = [
 				'type' => 'titlesmultiselect',
 				'disabled' => $isMachineSuggestionTaskType,
 				'exists' => $pagesMustExist,
@@ -463,7 +463,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'required' => false,
 				'section' => 'newcomertasks'
 			];
-			$descriptors["newcomertasks-${taskType}ExcludedTemplates"] = [
+			$descriptors["newcomertasks-{$taskType}ExcludedTemplates"] = [
 				'type' => 'titlesmultiselect',
 				'exists' => $pagesMustExist,
 				'namespace' => NS_TEMPLATE,
@@ -476,7 +476,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'required' => false,
 				'section' => 'newcomertasks'
 			];
-			$descriptors["newcomertasks-${taskType}ExcludedCategories"] = [
+			$descriptors["newcomertasks-{$taskType}ExcludedCategories"] = [
 				'type' => 'titlesmultiselect',
 				'exists' => $pagesMustExist,
 				'namespace' => NS_CATEGORY,
@@ -489,7 +489,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'required' => false,
 				'section' => 'newcomertasks'
 			];
-			$descriptors["newcomertasks-${taskType}Learnmore"] = [
+			$descriptors["newcomertasks-{$taskType}Learnmore"] = [
 				'type' => 'title',
 				'interwiki' => true,
 				'exists' => $pagesMustExist,
@@ -745,9 +745,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		// Add default values for newcomertasks variables
 		$newcomerTasksConfig = $this->getNewcomerTasksConfig();
 		foreach ( $this->getDefaultDataForEnabledTaskTypes() as $taskType => $group ) {
-			$descriptors["newcomertasks-${taskType}Disabled"]['default']
+			$descriptors["newcomertasks-{$taskType}Disabled"]['default']
 				= !empty( $newcomerTasksConfig[$taskType]['disabled'] );
-			$descriptors["newcomertasks-${taskType}Templates"]['default'] = implode(
+			$descriptors["newcomertasks-{$taskType}Templates"]['default'] = implode(
 				"\n",
 				array_map( function ( $rawTitle ) {
 					return $this->titleFactory
@@ -755,7 +755,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 						->getPrefixedText();
 				}, $newcomerTasksConfig[$taskType]['templates'] ?? [] )
 			);
-			$descriptors["newcomertasks-${taskType}ExcludedTemplates"]['default'] = implode(
+			$descriptors["newcomertasks-{$taskType}ExcludedTemplates"]['default'] = implode(
 				"\n",
 				array_map( function ( $rawTitle ) {
 					return $this->titleFactory
@@ -763,7 +763,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 						->getPrefixedText();
 				}, $newcomerTasksConfig[$taskType]['excludedTemplates'] ?? [] )
 			);
-			$descriptors["newcomertasks-${taskType}ExcludedCategories"]['default'] = implode(
+			$descriptors["newcomertasks-{$taskType}ExcludedCategories"]['default'] = implode(
 				"\n",
 				array_map( function ( $rawTitle ) {
 					return $this->titleFactory
@@ -771,16 +771,16 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 						->getPrefixedText();
 				}, $newcomerTasksConfig[$taskType]['excludedCategories'] ?? [] )
 			);
-			$descriptors["newcomertasks-${taskType}Learnmore"]['default'] =
+			$descriptors["newcomertasks-{$taskType}Learnmore"]['default'] =
 				$newcomerTasksConfig[$taskType]['learnmore'] ?? '';
 
 			if ( $taskType === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
-				$maxLinksDescriptorName = "newcomertasks-${taskType}" .
+				$maxLinksDescriptorName = "newcomertasks-{$taskType}" .
 					ucfirst( LinkRecommendationTaskType::FIELD_MAX_LINKS_TO_SHOW_PER_TASK );
 				$descriptors[$maxLinksDescriptorName]['default'] =
 					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MAX_LINKS_TO_SHOW_PER_TASK] ??
 					$descriptors[$maxLinksDescriptorName]['default'];
-				$maxTasksDescriptorName = "newcomertasks-${taskType}" .
+				$maxTasksDescriptorName = "newcomertasks-{$taskType}" .
 					ucfirst( LinkRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY );
 				$descriptors[$maxTasksDescriptorName]['default'] =
 					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY] ??
@@ -792,7 +792,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_MAX_LINKS_PER_TASK] ??
 					$descriptors[$maxLinksDescriptorName]['max'];
 
-				$excludeSectionsDescriptorName = "newcomertasks-${taskType}" .
+				$excludeSectionsDescriptorName = "newcomertasks-{$taskType}" .
 					ucfirst( LinkRecommendationTaskType::FIELD_EXCLUDED_SECTIONS );
 				$descriptors[$excludeSectionsDescriptorName]['default'] = implode( "\n",
 					$newcomerTasksConfig[$taskType][LinkRecommendationTaskType::FIELD_EXCLUDED_SECTIONS] ??
@@ -803,7 +803,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				// configuration can be changed (in the future, once the special page supports that)
 				// but warn about it being disabled.
 				if ( $this->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' ) === false ) {
-					$descriptors["newcomertasks-${taskType}Disabled"] = [
+					$descriptors["newcomertasks-{$taskType}Disabled"] = [
 						'type' => 'info',
 						'default' => new IconWidget( [ 'icon' => 'cancel' ] ) . ' '
 							. $this->msg( 'growthexperiments-edit-config-newcomer-tasks-disabledinconfig' )->parse(),
@@ -812,7 +812,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					];
 				}
 			} elseif ( $taskType === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
-				$maxTasksDescriptorName = "newcomertasks-${taskType}" .
+				$maxTasksDescriptorName = "newcomertasks-{$taskType}" .
 					ucfirst( ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY );
 				$descriptors[$maxTasksDescriptorName]['default'] =
 					$newcomerTasksConfig[$taskType][ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY] ??
@@ -969,7 +969,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		foreach ( $this->getDefaultDataForEnabledTaskTypes() as $taskType => $taskTypeData ) {
 			$templates = array_map( static function ( Title $title ) {
 				return $title->getText();
-			}, $this->normalizeTitleList( $data["${taskType}Templates"] ?? null ) );
+			}, $this->normalizeTitleList( $data["{$taskType}Templates"] ?? null ) );
 			if ( $templates === [] &&
 				!in_array( $taskType, NewcomerTasksValidator::SUGGESTED_EDITS_MACHINE_SUGGESTIONS_TASK_TYPES )
 			) {
@@ -978,14 +978,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 			$excludedTemplates = array_map( static function ( Title $title ) {
 				return $title->getText();
-			}, $this->normalizeTitleList( $data["${taskType}ExcludedTemplates"] ?? null ) );
+			}, $this->normalizeTitleList( $data["{$taskType}ExcludedTemplates"] ?? null ) );
 
 			$excludedCategories = array_map( static function ( Title $title ) {
 				return $title->getText();
-			}, $this->normalizeTitleList( $data["${taskType}ExcludedCategories"] ?? null ) );
+			}, $this->normalizeTitleList( $data["{$taskType}ExcludedCategories"] ?? null ) );
 
 			$suggestedEditsConfig[$taskType] = [
-				'disabled' => (bool)$data["${taskType}Disabled"],
+				'disabled' => (bool)$data["{$taskType}Disabled"],
 				'templates' => $templates,
 				'excludedTemplates' => $excludedTemplates,
 				'excludedCategories' => $excludedCategories,
@@ -993,8 +993,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			] + $suggestedEditsConfig[$taskType];
 
 			// Add learnmore link if specified
-			if ( isset( $data["${taskType}Learnmore"] ) ) {
-				$suggestedEditsConfig[$taskType]['learnmore'] = $data["${taskType}Learnmore"];
+			if ( isset( $data["{$taskType}Learnmore"] ) ) {
+				$suggestedEditsConfig[$taskType]['learnmore'] = $data["{$taskType}Learnmore"];
 			} else {
 				unset( $suggestedEditsConfig[$taskType]['learnmore'] );
 			}

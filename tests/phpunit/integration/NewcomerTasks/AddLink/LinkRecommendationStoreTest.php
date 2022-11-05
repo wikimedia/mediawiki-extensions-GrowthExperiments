@@ -57,13 +57,13 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 			$links = [];
 			foreach ( range( 1, 3 ) as $i ) {
 				$links[] = new LinkRecommendationLink(
-					"${titleText}_${revisionText}_${i}_text",
-					"${titleText}_${revisionText}_${i}_target",
+					"{$titleText}_{$revisionText}_{$i}_text",
+					"{$titleText}_{$revisionText}_{$i}_target",
 					2 * $i,
 					10 * $i,
 					1 / $i,
-					"${titleText}_${revisionText}_${i}_before",
-					"${titleText}_${revisionText}_${i}_after",
+					"{$titleText}_{$revisionText}_{$i}_before",
+					"{$titleText}_{$revisionText}_{$i}_after",
 					$i
 				);
 			}

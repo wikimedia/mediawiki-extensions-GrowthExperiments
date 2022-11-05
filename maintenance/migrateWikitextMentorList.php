@@ -83,7 +83,7 @@ class MigrateWikitextMentorList extends Maintenance {
 		foreach ( $this->wikitextMentorProvider->getMentorsSafe() as $mentorName ) {
 			$mentorUser = $this->userIdentityLookup->getUserIdentityByName( $mentorName );
 			if ( !$mentorUser ) {
-				$this->output( "Skipping ${mentorName}, invalid username.\n" );
+				$this->output( "Skipping {$mentorName}, invalid username.\n" );
 				continue;
 			}
 			$mentor = $this->wikitextMentorProvider->newMentorFromUserIdentity( $mentorUser );
