@@ -176,7 +176,9 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 
 		$mentees = $this->mentorStore->getMenteesByMentor(
 			$user,
-			MentorStore::ROLE_PRIMARY
+			MentorStore::ROLE_PRIMARY,
+			false,
+			!$this->config->get( 'GEMentorshipUseIsActiveFlag' )
 		);
 		$menteeIds = array_map( static function ( UserIdentity $user ) {
 			return $user->getId();
