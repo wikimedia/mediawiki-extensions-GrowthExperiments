@@ -37,6 +37,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
+		$this->setBatchSize( 200 );
 		$this->requireExtension( 'GrowthExperiments' );
 
 		$this->addDescription(
@@ -80,6 +81,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 			$this->fatalError( 'List of mentors cannot be fetched.' );
 		}
 
+		$thisBatch = 0;
 		foreach ( $mentors as $mentorName ) {
 			$mentorUser = $this->userIdentityLookup->getUserIdentityByName( $mentorName );
 			if ( !$mentorUser ) {
@@ -100,6 +102,12 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 				);
 				if ( $timeDelta > MentorStore::INACTIVITY_THRESHOLD ) {
 					$this->mentorStore->markMenteeAsInactive( $mentee );
+					$thisBatch++;
+
+					if ( $thisBatch >= $this->getBatchSize() ) {
+						$this->waitForReplication();
+						$thisBatch = 0;
+					}
 				}
 			}
 		}
