@@ -660,13 +660,12 @@ body.mw-special-Homepage {
 			position: relative;
 
 			.suggested-edits-task-card-wrapper {
-				@borderRadius: 2px;
 				width: @cardWrapperWidth;
-				border-radius: @borderRadius;
+				border-radius: @border-radius-base;
 
 				.se-card-image {
-					border-top-left-radius: @borderRadius;
-					border-top-right-radius: @borderRadius;
+					border-top-left-radius: @border-radius-base;
+					border-top-right-radius: @border-radius-base;
 
 					// Needs some extra specificity.
 					&.mw-ge-tasktype-image-recommendation.se-card-image.se-card-image {
