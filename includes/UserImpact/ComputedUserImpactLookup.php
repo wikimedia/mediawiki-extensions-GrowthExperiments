@@ -10,6 +10,7 @@ use MalformedTitleException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -208,17 +209,25 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	private function getEditData( User $user ): array {
 		$queryBuilder = new SelectQueryBuilder( $this->dbr );
 		$queryBuilder->table( 'revision' )
-			->join( 'page', null, 'rev_page = page_id' )
-			->leftJoin( 'change_tag', null, [
+			->join( 'page', null, 'rev_page = page_id' );
+		try {
+			$queryBuilder->leftJoin( 'change_tag', null, [
 				'rev_id = ct_rev_id',
 				'ct_tag_id' => $this->changeTagDefStore->getId( TaskTypeHandler::NEWCOMER_TASK_TAG ),
 			] );
+			$queryBuilder->field( 'ct_id' );
+		} catch ( NameTableAccessException $nameTableAccessException ) {
+			// The tag won't exist in test scenarios, and possibly in some small wikis where
+			// no suggested edits have been done yet. We can safely ignore the exception,
+			// it will mean that 'newcomerTaskEditCount' is 0 in the result.
+		}
+
 		// actor-migrated version of where( [ 'rev_user' => $user->getId() ] )
 		$actorQuery = $this->actorMigration->getWhere( $this->dbr, 'rev_user', $user );
 		$queryBuilder->tables( $actorQuery['tables'] )
 			->joinConds( $actorQuery['joins'] )
 			->conds( $actorQuery['conds'] );
-		$queryBuilder->fields( [ 'page_namespace', 'page_title', 'rev_timestamp', 'ct_id' ] );
+		$queryBuilder->fields( [ 'page_namespace', 'page_title', 'rev_timestamp' ] );
 		// hopefully able to use the rev_actor_timestamp index for an efficient query
 		$queryBuilder->orderBy( 'rev_timestamp', 'DESC' );
 		$queryBuilder->limit( self::MAX_EDITS );
@@ -247,7 +256,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editCountByNamespace[$row->page_namespace]
 				= ( $editCountByNamespace[$row->page_namespace] ?? 0 ) + 1;
 			$editCountByDay[$day] = ( $editCountByDay[$day] ?? 0 ) + 1;
-			if ( $row->ct_id ) {
+			if ( $row->ct_id ?? null ) {
 				$newcomerTaskEditCount++;
 			}
 			if ( $lastEditTimestamp === null ) {

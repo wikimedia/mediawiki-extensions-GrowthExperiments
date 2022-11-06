@@ -354,7 +354,10 @@
 		"impact": {
 			"class": "GrowthExperiments\\ImpactHooks",
 			"services": [
-				"MainConfig"
+				"MainConfig",
+				"GrowthExperimentsUserImpactLookup_Computed",
+				"GrowthExperimentsUserImpactStore",
+				"UserOptionsLookup"
 			]
 		}
 	},
@@ -433,7 +436,8 @@
 		"PageSaveComplete": [
 			"config",
 			"homepage",
-			"mentor"
+			"mentor",
+			"impact"
 		],
 		"JsonValidateSave": "config",
 		"SkinAddFooterLinks": "variant",

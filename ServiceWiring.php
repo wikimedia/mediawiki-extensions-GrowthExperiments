@@ -953,7 +953,7 @@ return [
 	'GrowthExperimentsUserImpactLookup' => static function (
 		MediaWikiServices $services
 	): UserImpactLookup {
-		return $services->get( '_GrowthExperimentsUserImpactLookup_Computed' );
+		return $services->get( 'GrowthExperimentsUserImpactLookup_Computed' );
 	},
 
 	'_GrowthExperimentsUserImpactLookup_Subpage' => static function (
@@ -964,7 +964,7 @@ return [
 		);
 	},
 
-	'_GrowthExperimentsUserImpactLookup_Computed' => static function (
+	'GrowthExperimentsUserImpactLookup_Computed' => static function (
 		MediaWikiServices $services
 	): UserImpactLookup {
 		$pageViewInfoLoaded = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
