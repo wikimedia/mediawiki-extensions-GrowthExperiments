@@ -40,8 +40,8 @@
 				sourceEditingLinkWrapper.remove();
 			}
 			StructuredTaskPreEdit.loadEditModule();
-		} ).catch( function ( error ) {
-			StructuredTaskPreEdit.showErrorDialogOnFailure( error );
+		} ).catch( function ( error, shouldBeLogged ) {
+			StructuredTaskPreEdit.showErrorDialogOnFailure( error, shouldBeLogged );
 		} );
 	}
 

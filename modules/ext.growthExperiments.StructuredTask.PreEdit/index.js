@@ -80,12 +80,17 @@ module.exports = ( function () {
 	/**
 	 * Show "no suggestions found" error dialog and go back to Special:Homepage
 	 *
-	 * @param {string|Error} error Error code.
+	 * @param {string|Error} [error] Error code.
+	 * @param {boolean} [shouldBeLogged] Whether the error should be logged via mw.errorLogger.
 	 */
-	function showErrorDialogOnFailure( error ) {
-		mw.log.error( error );
-		// Do not send to mw.errorLogger. The error message comes from the BeforePageDisplay
-		// hook and was already logged there.
+	function showErrorDialogOnFailure( error, shouldBeLogged ) {
+		if ( error ) {
+			mw.log.error( error );
+			if ( shouldBeLogged ) {
+				error = ( error instanceof Error ) ? error : new Error( error );
+				mw.errorLogger.logError( error, 'error.growthexperiments' );
+			}
+		}
 
 		// eslint-disable-next-line camelcase
 		logger.log( 'impression', '', { active_interface: 'nosuggestions_dialog' } );
@@ -153,14 +158,17 @@ module.exports = ( function () {
 	 * Check whether there is sufficient data to show structured task editing flow
 	 *
 	 * @return {jQuery.Promise} Promise that resolves if there is sufficient task data to
-	 * show the editing flow and rejects with an error message/object if there isn't
+	 *   show the editing flow and rejects with an error message/object and an optional
+	 *   "should be logged" flag if there isn't.
 	 */
 	function checkTaskData() {
 		var promise = $.Deferred();
 		if ( !suggestedEditSession.taskData ) {
-			promise.reject( 'Missing task data' );
+			promise.reject( 'Missing task data', true );
 		} else if ( suggestedEditSession.taskData.error ) {
-			promise.reject( suggestedEditSession.taskData.error );
+			// The error field was set in the BeforePageDisplay handler, which also
+			// logged the error; don't log it again.
+			promise.reject( suggestedEditSession.taskData.error, false );
 		} else {
 			promise.resolve();
 		}
