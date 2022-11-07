@@ -88,7 +88,7 @@
 	"growthexperiments-homepage-impact-subheader-subtext": "Visualizzazioni {{GENDER:$1|delle tue}} ultime modifiche (negli ultimi 60 giorni):",
 	"growthexperiments-homepage-impact-contributions-link": "Hai fatto <strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} (vedi tutte)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Non hai ancora creato o modificato alcuna voce.",
-	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Questa sezione ti mostrerà quante volte le persone hanno letto le voci da te create o modificate.",
+	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Questa sezione ti mostrerà quante volte le persone hanno visualizzato gli articoli che {{GENDER:$1|tu}} hai creato o modificato.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> modifiche alle voci",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} ad altri tipi di pagine (vedi tutte)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Vai alla voce",
