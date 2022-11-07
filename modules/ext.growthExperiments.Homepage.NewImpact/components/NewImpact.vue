@@ -142,11 +142,12 @@
 
 <script>
 const moment = require( 'moment' );
+const { inject } = require( 'vue' );
 const { CdxIcon } = require( '@wikimedia/codex' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( '../constants.js' );
 const CInfoBox = require( '../../vue-components/CInfoBox.vue' );
 const CText = require( '../../vue-components/CText.vue' );
-const useUserImpact = require( '../composables/useUserImpact.js' );
+
 const ScoreCard = require( './ScoreCard.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
 const TrendChart = require( './TrendChart.vue' );
@@ -173,11 +174,19 @@ module.exports = exports = {
 		ScoreCard,
 		TrendChart
 	},
-	props: {},
+	props: {
+		data: {
+			type: Object,
+			required: true
+		}
+	},
 	setup() {
+		// TODO The value is only used in the RecentActivity component.
+		// Clarify with design if the different flex display is subject to the
+		// platform or the viewport.
 		const isMobileHomepage = mw.config.get( 'homepagemobile' );
-		const userId = mw.config.get( 'GENewImpactRelevantUserId' );
-		const { data, error } = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
+		const userName = inject( 'USER_TO_SHOW_USERNAME' );
+
 		return {
 			DEFAULT_STREAK_TIME_FRAME,
 			cdxIconEdit,
@@ -188,10 +197,7 @@ module.exports = exports = {
 			cdxIconClose,
 			cdxIconInfo,
 			cdxIconInfoFilled,
-			data,
-			// TODO: how to give user error feedback?
-			// eslint-disable-next-line vue/no-unused-properties
-			error
+			userName
 		};
 	},
 	computed: {
@@ -229,9 +235,6 @@ module.exports = exports = {
 			// REVIEW: the streak start on prior year but ends on current year is
 			// not handled. ie: Aug 3 2002 - Sep 17 <current year>
 			return `${formatDate( start )} — ${formatDate( end )}`;
-		},
-		userName() {
-			return mw.config.get( 'GENewImpactRelevantUserName' );
 		}
 	}
 };
@@ -241,11 +244,6 @@ module.exports = exports = {
 @import '../../vue-components/variables.less';
 
 .ext-growthExperiments-NewImpact {
-	&--mobile {
-		// Expand all content over homepage modules padding
-		margin: -16px;
-	}
-
 	&__recent-activity-title {
 		// Use same margin from desktop vector
 		margin-top: 0.3em;

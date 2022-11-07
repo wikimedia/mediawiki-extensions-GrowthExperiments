@@ -15,16 +15,18 @@ const TrendChart = require( './TrendChart.vue' );
 
 describe( 'NewImpactVue', () => {
 	it( 'displays two scorecards', ( done ) => {
-		global.mw.Rest.prototype.get = jest.fn( () => Promise.resolve( {
-			editCountByNamespace: {
-				3: 12,
-				4: 9
-			},
-			editCountByDay: {},
-			dailyTotalViews: {},
-			dailyArticleViews: {}
-		} ) );
 		const wrapper = mount( NewImpact, {
+			props: {
+				data: {
+					editCountByNamespace: {
+						3: 12,
+						4: 9
+					},
+					editCountByDay: {},
+					dailyTotalViews: {},
+					dailyArticleViews: {}
+				}
+			},
 			global: {
 				mocks: {
 					$i18n: jest.fn( ( x ) => x ),
