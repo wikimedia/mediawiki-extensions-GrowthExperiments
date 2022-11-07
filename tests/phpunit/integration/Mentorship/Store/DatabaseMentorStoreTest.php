@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\User\UserIdentity;
+use Psr\Log\NullLogger;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -16,15 +17,18 @@ use Wikimedia\TestingAccessWrapper;
 class DatabaseMentorStoreTest extends MentorStoreTestCase {
 
 	protected function getStore( bool $wasPosted ): MentorStore {
-		return new DatabaseMentorStore(
+		$store = new DatabaseMentorStore(
 			$this->wanCache,
 			$this->getServiceContainer()->getUserFactory(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
 			$this->getServiceContainer()->getJobQueueGroup(),
 			$this->db,
 			$this->db,
-			$wasPosted
+			$wasPosted,
+			true
 		);
+		$store->setLogger( new NullLogger() );
+		return $store;
 	}
 
 	protected function getJobType(): string {

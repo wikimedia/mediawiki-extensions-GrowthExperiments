@@ -516,7 +516,7 @@ return [
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		$lb = $geServices->getLoadBalancer();
 
-		return new DatabaseMentorStore(
+		$store = new DatabaseMentorStore(
 			$services->getMainWANObjectCache(),
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
@@ -525,8 +525,11 @@ return [
 			$lb->getConnectionRef( DB_PRIMARY ),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
 				$geServices->getGrowthConfig()->get( 'CommandLineMode' ) ||
-				RequestContext::getMain()->getRequest()->wasPosted()
+				RequestContext::getMain()->getRequest()->wasPosted(),
+			$geServices->getGrowthConfig()->get( 'GEMentorshipUseIsActiveFlag' )
 		);
+		$store->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $store;
 	},
 
 	'GrowthExperimentsMentorWeightManager' => static function (
