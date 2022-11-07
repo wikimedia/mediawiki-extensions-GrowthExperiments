@@ -10,7 +10,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
 
-class QuitMentorshipFactory {
+class ReassignMenteesFactory {
 	/** @var MentorManager */
 	private $mentorManager;
 
@@ -56,13 +56,13 @@ class QuitMentorshipFactory {
 	/**
 	 * @param UserIdentity $mentor
 	 * @param IContextSource $context
-	 * @return QuitMentorship
+	 * @return ReassignMentees
 	 */
-	public function newQuitMentorship(
+	public function newReassignMentees(
 		UserIdentity $mentor,
 		IContextSource $context
-	): QuitMentorship {
-		$quitMentorship = new QuitMentorship(
+	): ReassignMentees {
+		$reassignMentees = new ReassignMentees(
 			$this->mentorManager,
 			$this->mentorProvider,
 			$this->mentorStore,
@@ -72,7 +72,7 @@ class QuitMentorshipFactory {
 			$mentor,
 			$context
 		);
-		$quitMentorship->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
-		return $quitMentorship;
+		$reassignMentees->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $reassignMentees;
 	}
 }

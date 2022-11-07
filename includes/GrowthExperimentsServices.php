@@ -23,7 +23,7 @@ use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\WikitextMentorProvider;
-use GrowthExperiments\Mentorship\QuitMentorshipFactory;
+use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
@@ -230,8 +230,8 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsQuestionPosterFactory' );
 	}
 
-	public function getQuitMentorshipFactory(): QuitMentorshipFactory {
-		return $this->coreServices->get( 'GrowthExperimentsQuitMentorshipFactory' );
+	public function getReassignMenteesFactory(): ReassignMenteesFactory {
+		return $this->coreServices->get( 'GrowthExperimentsReassignMenteesFactory' );
 	}
 
 	public function getSearchIndexUpdater(): SearchIndexUpdater {

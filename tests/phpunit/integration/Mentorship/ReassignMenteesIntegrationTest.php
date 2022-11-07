@@ -10,11 +10,11 @@ use MediaWikiIntegrationTestCase;
 use RequestContext;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Mentorship\QuitMentorship
+ * @coversDefaultClass \GrowthExperiments\Mentorship\ReassignMentees
  * @group Database
  * @group medium
  */
-class QuitMentorshipIntegrationTest extends MediaWikiIntegrationTestCase {
+class ReassignMenteesIntegrationTest extends MediaWikiIntegrationTestCase {
 
 	private function getNMenteesForMentor(
 		int $numOfMentees,
@@ -53,11 +53,11 @@ class QuitMentorshipIntegrationTest extends MediaWikiIntegrationTestCase {
 
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $quittingMentor );
-		$quitMentorship = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
-			->getQuitMentorshipFactory()
-			->newQuitMentorship( $quittingMentor, $context );
+		$reassignMentees = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getReassignMenteesFactory()
+			->newReassignMentees( $quittingMentor, $context );
 
-		$this->assertTrue( $quitMentorship->doReassignMentees( 'foo' ) );
+		$this->assertTrue( $reassignMentees->doReassignMentees( 'foo' ) );
 
 		$mentorStore = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorStore();

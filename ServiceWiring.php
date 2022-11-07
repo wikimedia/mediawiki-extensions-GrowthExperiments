@@ -31,7 +31,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\WikitextMentorProvider;
-use GrowthExperiments\Mentorship\QuitMentorshipFactory;
+use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
@@ -684,11 +684,11 @@ return [
 		);
 	},
 
-	'GrowthExperimentsQuitMentorshipFactory' => static function (
+	'GrowthExperimentsReassignMenteesFactory' => static function (
 		MediaWikiServices $services
-	): QuitMentorshipFactory {
+	): ReassignMenteesFactory {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		return new QuitMentorshipFactory(
+		return new ReassignMenteesFactory(
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorProvider(),
 			$growthServices->getMentorStore(),
