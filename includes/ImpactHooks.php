@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use Config;
+use DateTime;
 use DeferredUpdates;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
@@ -13,6 +14,7 @@ use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
+use Wikimedia\Rdbms\LoadBalancer;
 
 class ImpactHooks implements
 	ResourceLoaderRegisterModulesHook,
@@ -25,6 +27,7 @@ class ImpactHooks implements
 	private UserImpactStore $userImpactStore;
 	private UserOptionsLookup $userOptionsLookup;
 	private UserFactory $userFactory;
+	private LoadBalancer $loadBalancer;
 
 	/**
 	 * @param Config $config
@@ -32,19 +35,22 @@ class ImpactHooks implements
 	 * @param UserImpactStore $userImpactStore
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param UserFactory $userFactory
+	 * @param LoadBalancer $loadBalancer
 	 */
 	public function __construct(
 		Config $config,
 		UserImpactLookup $userImpactLookup,
 		UserImpactStore $userImpactStore,
 		UserOptionsLookup $userOptionsLookup,
-		UserFactory $userFactory
+		UserFactory $userFactory,
+		LoadBalancer $loadBalancer
 	) {
 		$this->config = $config;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->userImpactStore = $userImpactStore;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userFactory = $userFactory;
+		$this->loadBalancer = $loadBalancer;
 	}
 
 	/**
@@ -97,13 +103,22 @@ class ImpactHooks implements
 	}
 
 	/**
+	 * Account is considered to be in the Impact module data cohort if:
+	 * - registered
+	 * - created in the last year
+	 * - has homepage preference enabled
 	 * @param UserIdentity $userIdentity
 	 * @return bool
 	 */
 	private function userIsInImpactDataCohort( UserIdentity $userIdentity ): bool {
+		$dateTime = new DateTime( 'now - 1year' );
+		$firstUserId = UserRegistrationLookupHelper::findFirstUserIdForRegistrationTimestamp(
+			$this->loadBalancer->getConnection( DB_REPLICA ),
+			$dateTime->getTimestamp()
+		);
 		return $userIdentity->isRegistered() &&
-			// TODO: Also check if user has been active in last 6(?) months.
-			$this->userOptionsLookup->getBoolOption( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE );
+			$this->userOptionsLookup->getBoolOption( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE ) &&
+			$userIdentity->getId() >= $firstUserId;
 	}
 
 	/**

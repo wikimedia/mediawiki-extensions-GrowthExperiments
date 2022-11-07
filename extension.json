@@ -358,7 +358,8 @@
 				"GrowthExperimentsUserImpactLookup_Computed",
 				"GrowthExperimentsUserImpactStore",
 				"UserOptionsLookup",
-				"UserFactory"
+				"UserFactory",
+				"DBLoadBalancer"
 			]
 		}
 	},
