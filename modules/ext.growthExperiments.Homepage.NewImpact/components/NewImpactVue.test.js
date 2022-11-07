@@ -1,6 +1,6 @@
 jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconEdit: '',
-	cdxIconHeart: '',
+	cdxIconUserTalk: '',
 	cdxIconClock: '',
 	cdxIconChart: '',
 	cdxIconClose: '',
