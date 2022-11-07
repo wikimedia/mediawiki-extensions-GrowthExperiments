@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Germain92"
+			"Germain92",
+			"Karuranga250"
 		]
 	},
-	"growthexperiments-quit-mentorship-has-mentees-pretext": "Ntibishimishije kubona {{Uburinganire:|wowe}} kuba.wareka inama , {{Uburinganire:|wowe}} ukeneye kuzuza urupapuro rukurikira wamara kurutanga, abajanama bawe bose bazahindurwa bashya. <strong> ibi kandi ntago bishobora guhinduka.</strong> niba {{uburinganire:|wowe}} ukeneye akaruhuko k'ubujyanama, ahubwo tekereza kukuvugurura ibikuranga muburyo buhambaye cyangwa ugabanye umubare wabo uha inama. {{uburinganire:|wowe}} wakora izo minduka kuri  {{uburinganire:|yawe}} [[Special:MentorDashboard|Mentor dashboard settings]]."
+	"growthexperiments-quit-mentorship-has-mentees-pretext": "Ntibishimishije kubona {{Uburinganire:|wowe}} kuba.wareka inama , {{Uburinganire:|wowe}} ukeneye kuzuza urupapuro rukurikira wamara kurutanga, abajanama bawe bose bazahindurwa bashya. <strong> ibi kandi ntago bishobora guhinduka.</strong> niba {{uburinganire:|wowe}} ukeneye akaruhuko k'ubujyanama, ahubwo tekereza kukuvugurura ibikuranga muburyo buhambaye cyangwa ugabanye umubare wabo uha inama. {{uburinganire:|wowe}} wakora izo minduka kuri  {{uburinganire:|yawe}} [[Special:MentorDashboard|Mentor dashboard settings]].",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Gusa abakoresha byibuze $1 bahinduye hamwe niminsi $2 yo kuboneka barashobora kwiyandikisha nkabajyanama."
 }

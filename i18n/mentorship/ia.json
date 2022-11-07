@@ -97,6 +97,7 @@
 	"growthexperiments-quit-mentorship-success": "Tu apprentisses essera tosto reassignate a altere mentores.",
 	"growthexperiments-quit-mentorship-no-mentees": "Tu actualmente non ha apprentisses.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 se ha retirate del mentorato.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 {{GENDER:$2|ha retirate}} $1 del mentorato",
 	"echo-category-title-ge-mentorship": "Mentorato",
 	"echo-pref-tooltip-ge-mentorship": "Notificationes relative al functiones de mentorato mantenite per le equipa Growth. Iste notification te face saper que tu ha essite adoptate como apprentisse, o que un de tu apprentisses ha essite adoptate per qualcuno altere.",
 	"growthexperiments-notification-header-mentee-claimed": "Tu {{GENDER:$3|apprentisse}}, $3, ha essite {{GENDER:$2|adoptate}} per $1.",
@@ -162,6 +163,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscribe me",
 	"growthexperiments-mentorship-enrollasmentor-success": "Tu es ora inscribite como mentor. Continua al [[Special:MentorDashboard|tabuliero de instrumentos pro mentores]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Addition de me mesme como mentor",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Solmente usatores con al minus $1 modification{{PLURAL:$1||es}} e $2 die{{PLURAL:$2||s}} de presentia pote inscriber se como mentores.",
 	"tag-mentor list change": "Cambio del lista de mentores",
 	"tag-mentor list change-description": "Etiquetta applicate al modificationes apportate al lista structurate de mentores per medio de GrowthExperiments"
 }

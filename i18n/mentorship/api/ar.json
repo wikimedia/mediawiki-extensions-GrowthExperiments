@@ -29,5 +29,5 @@
 	"apihelp-growthmanagementorlist-param-autoassigned": "هل يتمّ تعيين المرشد تلقائيًا للوافدين الجدد؟",
 	"apihelp-growthmanagementorlist-param-summary": "سبب التغيير",
 	"apihelp-growthmanagementorlist-param-username": "اسم المستخدم للمرشد المتأثّر بالتغيير. إذا لم يتم توفيره، فسيتم استخدام المستخدم الذي قام بتسجيل الدخول حاليًا. يمكن استخدامها فقط من قبل المستخدمين من ذوي الصلاحيات.",
-	"growthexperiments-api-managementors-error-no-away-timestamp": "إذا كانت كلمة \"isaway\" صحيحة ، فيجب تقديم awaytimestamp."
+	"growthexperiments-api-managementors-error-no-away-timestamp": "إذا كانت isaway صحيحة، فيجب توفير awaytimestamp."
 }

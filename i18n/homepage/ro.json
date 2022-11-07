@@ -72,6 +72,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|zi|zile}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Editare|Editări}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|editare|editări}} pe $2",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Vizualizări asupra articolelor pe care le-ați {{GENDER:$1|editat}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "Editări totale",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Mulțumiri primite",
 	"growthexperiments-homepage-impact-subheader-text": "Oamenii văd articolele pe care le-ați {{GENDER:$1|editat}}!",

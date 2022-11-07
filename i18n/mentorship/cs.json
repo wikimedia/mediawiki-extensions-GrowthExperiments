@@ -100,6 +100,7 @@
 	"growthexperiments-quit-mentorship-success": "Vaši nováčci budou během chvíle převedeni na ostatní mentory.",
 	"growthexperiments-quit-mentorship-no-mentees": "V tuto chvíli {{GENDER:|nemáte}} žádné mentorované.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 již není {{GENDER:$1|mentorem|mentorkou}}.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 {{GENDER:$2|odebral|odebrala}} $1 ze seznamu mentorů",
 	"echo-category-title-ge-mentorship": "mentorství",
 	"echo-pref-tooltip-ge-mentorship": "Notifikace týkající se mentorství vytvořeného týmem Growth. Po zaškrtnutí této možnosti vám dáme vědět, že jste jako nováček byl převzat někým jiným, anebo že některý z vašich nováčků byl převzat jiným mentorem.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Váš nováček}}, $3, {{GENDER:$3|byl převzat|byla převzata}} {{GENDER:$2|mentorem|mentorkou}} $1.",
@@ -148,7 +149,7 @@
 	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Je automaticky přiřazován k nováčkům?",
 	"growthexperiments-manage-mentors-edit-weight": "Váha",
 	"growthexperiments-manage-mentors-edit-is-away": "Je pryč?",
-	"growthexperiments-manage-mentors-edit-is-away-blocked": "Mentor \"$1\" je momentálně blokován, a jeho stav proto momentálně nemůže být změněn.",
+	"growthexperiments-manage-mentors-edit-is-away-blocked": "Mentor „$1“ je momentálně blokován, a jeho stav proto momentálně nemůže být změněn.",
 	"growthexperiments-manage-mentors-edit-away-until": "Pryč do",
 	"growthexperiments-manage-mentors-edit-reason": "Důvod",
 	"growthexperiments-manage-mentors-edit-success": "Možnosti související s mentorstvím pro {{GENDER:$1|mentora|mentorku}} [[User:$1|$1]] byly změněny.",
@@ -165,6 +166,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Zapsat se",
 	"growthexperiments-mentorship-enrollasmentor-success": "Úspěšně jste se {{GENDER:|zapsal|zapsala}} jako {{GENDER:|mentor|mentorka}}. Nyní {{GENDER:|můžete}} pokračovat na [[Special:MentorDashboard|nástěnku mentora]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Přidávám se jako mentor",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Jako mentoři se mohou zapsat pouze uživatelé s alespoň {{PLURAL:$1|jednou editací|$1 editacemi}} a {{PLURAL:$2|jedním dnem|$2 dny}} od registrace.",
 	"tag-mentor list change": "Změna seznamu mentorů",
 	"tag-mentor list change-description": "Značka aplikovaná na změny strukturovaného seznamu mentorů, které byly uloženy prostřednictvím rozšíření GrowthExperiments."
 }
