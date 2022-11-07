@@ -167,6 +167,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Anmelden",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Du}} bist nun als Lotse angemeldet. {{GENDER:|Du}} kannst jetzt zum [[Special:MentorDashboard|Lotsen-Dashboard]] gehen.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Mich selbst als Lotsen hinzufügen",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Nur Benutzer mit mindestens $1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} und $2 {{PLURAL:$2|Anwesenheitstag|Anwesenheitstagen}} können sich als Lotsen anmelden.",
 	"tag-mentor list change": "Änderung der Mentorenliste",
 	"tag-mentor list change-description": "Tag angewendet auf Änderungen, die über GrowthExperiments an der strukturierten Mentorenliste vorgenommen wurden"
 }

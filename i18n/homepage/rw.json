@@ -3,9 +3,12 @@
 		"authors": [
 			"Amire80",
 			"Germain92",
+			"Karuranga250",
 			"RebecaRwanda"
 		]
 	},
+	"growthexperiments-homepage-impact-subheader-text": "Reba ku ngingo {{GENDER:$1| wahinduye}}",
+	"growthexperiments-homepage-impact-contributions-link": "Reba byose {{GENDER:$2| }} guhindura ( $1 )",
 	"action-managementors": "tunganganya urutonde rwabahugura",
 	"growthexperiments-homepage-mentorship-optin-header": "Umujyanama wo guhindura",
 	"growthexperiments-homepage-mentorship-optin-text": "Niba {{GENDER:|you}} ufite ibibazo mu gukosora,wahabwa umwanditsi umenyereye ngo agufashe",

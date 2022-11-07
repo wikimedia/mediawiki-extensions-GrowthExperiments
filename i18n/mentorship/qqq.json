@@ -140,7 +140,7 @@
 	"growthexperiments-manage-mentors-none": "Displayed by Special:ManageMentors when there are no mentors.\n\n{{Identical|None}}",
 	"growthexperiments-manage-mentors-username": "Column header in Special:ManageMentors",
 	"growthexperiments-manage-mentors-last-active": "Column header in Special:ManageMentors",
-	"growthexperiments-manage-mentors-weight": "Column header in Special:ManageMentors",
+	"growthexperiments-manage-mentors-weight": "Column header in Special:ManageMentors\n{{Identical|Weight}}",
 	"growthexperiments-manage-mentors-status": "Column header in Special:ManageMentors",
 	"growthexperiments-manage-mentors-status-away-until": "Message shown in \"Status\" column of Special:ManageMentors when the mentor is away.",
 	"growthexperiments-manage-mentors-intro-msg": "Column header in Special:ManageMentors",

@@ -97,6 +97,7 @@
 	"growthexperiments-quit-mentorship-success": "Vaši mentoriranci bodo v kratkem dodeljeni drugim mentorjem.",
 	"growthexperiments-quit-mentorship-no-mentees": "Trenutno nimate nobenega mentoriranca.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 je {{GENDER:$1|prenehal|prenehala|prenehal/a}} mentorirati.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 {{GENDER:$2|je odstranil|je odstranila|je odstranil/a}} $1 iz mentorstva",
 	"echo-category-title-ge-mentorship": "Mentorstvo",
 	"echo-pref-tooltip-ge-mentorship": "Obvestila, povezana z možnostmi mentorstva, ki jih vzdržuje ekipa Growth. To obvestilo vas seznani, da vas je nekdo prevzel kot mentoriranca ali da je enega od vaših mentorirancev prevzel nekdo drug.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Vašega mentoriranca|Vašo mentoriranko|Vašega/o mentoriranca/ko}} $3 je {{GENDER:$2|zahteval|zahtevala|zahteval/a}} $1 .",
@@ -162,6 +163,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Vpišite se",
 	"growthexperiments-mentorship-enrollasmentor-success": "Zdaj ste vpisani kot {{GENDER:|mentor|mentorica|mentor/ica}}. Zdaj lahko {{GENDER:|nadaljujete}} na [[Special:MentorDashboard|nadzorno ploščo mentorja]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Vpisujem se kot mentor",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Kot mentorji se lahko vpišejo samo uporabniki z najmanj {{PLURAL:$1|$1 urejanjem|$1 urejanjema|$1 urejanji}} in {{$2|$2 dnevom prisotnosti|$2 dnevoma|$2 dnevi prisotnosti}}.",
 	"tag-mentor list change": "Sprememba seznama mentorjev",
 	"tag-mentor list change-description": "Oznaka, uporabljena za urejanja strukturiranega seznama mentorjev z GrowthExperiments"
 }

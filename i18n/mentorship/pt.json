@@ -97,6 +97,7 @@
 	"growthexperiments-quit-mentorship-success": "Os seus mentorados serão reatribuídos a outros mentores em breve.",
 	"growthexperiments-quit-mentorship-no-mentees": "Neste momento não tem mentorados.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 desistiu de ser {{GENDER:$1|mentor|mentora}}.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 removeu $1 da mentoria{{GENDER:$2|}}",
 	"echo-category-title-ge-mentorship": "Mentoria",
 	"echo-pref-tooltip-ge-mentorship": "Notificações relacionadas com as funcionalidades de mentoría mantidas pela equipa de Crescimento. Esta notificação informa que foi adotado como mentorado ou que um dos seus mentorados foi adotado por outra pessoa.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|O seu mentorado, $3, foi adotado|A sua mentorada, $3, foi adotada}} por $1.{{GENDER:$2|}}",
@@ -162,6 +163,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscrever-se",
 	"growthexperiments-mentorship-enrollasmentor-success": "Agora está {{GENDER:|inscrito como mentor|inscrita como mentora}}. Pode prosseguir para o [[Special:MentorDashboard|painel de controlo do mentor]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Acrescentar-me como {{GENDER:|mentor|mentora}}",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Só utilizadores com pelo menos $1 edições e $2 dias de presença podem inscrever-se como mentores.",
 	"tag-mentor list change": "Alteração da lista de mentores",
 	"tag-mentor list change-description": "Etiqueta aplicada às edições realizadas na lista estruturada de mentores via GrowthExperiments"
 }

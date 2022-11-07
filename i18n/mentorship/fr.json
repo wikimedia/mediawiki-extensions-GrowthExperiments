@@ -167,6 +167,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "S’inscrire",
 	"growthexperiments-mentorship-enrollasmentor-success": "Vous êtes maintenant inscrit{{GENDER:||e}} en tant que tut{{GENDER:|eur|rice}}. Vous pouvez maintenant continuer sur le [[Special:MentorDashboard|tableau de bord du tutorat]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "M’ajoute moi-même en tant que tuteur ou tutrice",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Seuls les utilisateurs avec au moins $1 modification{{PLURAL:$1||s}} et $2 jour{{PLURAL:$2||s}} de présence peuvent s’inscrire en tant que tuteurs.",
 	"tag-mentor list change": "Modification de la liste des tuteurs",
 	"tag-mentor list change-description": "Balise appliquée aux modifications apportées à la liste structurée des tuteurs via GrowthExperiments"
 }
