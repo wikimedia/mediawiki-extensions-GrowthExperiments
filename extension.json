@@ -357,11 +357,15 @@
 				"MainConfig",
 				"GrowthExperimentsUserImpactLookup_Computed",
 				"GrowthExperimentsUserImpactStore",
-				"UserOptionsLookup"
+				"UserOptionsLookup",
+				"UserFactory"
 			]
 		}
 	},
 	"Hooks": {
+		"ManualLogEntryBeforePublish": [
+			"impact"
+		],
 		"SpecialPage_initList": [
 			"welcomeSurvey",
 			"homepage",
