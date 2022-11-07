@@ -99,9 +99,15 @@ class ReassignMentees {
 	 *
 	 * If no job is needed, use doReassignMentees directly.
 	 *
-	 * @param string $reassignMessageKey
+	 * @param string $reassignMessageKey Message key used in in ChangeMentor notification; needs
+	 * to accept one parameter (username of the previous mentor). Additional parameters can be
+	 * passed via $reassignMessageAdditionalParams.
+	 * @param mixed ...$reassignMessageAdditionalParams
 	 */
-	public function reassignMentees( string $reassignMessageKey ): void {
+	public function reassignMentees(
+		string $reassignMessageKey,
+		...$reassignMessageAdditionalParams
+	): void {
 		// checking if any mentees exist is a cheap operation; do not submit a job if it is going
 		// to be a no-op.
 		if ( $this->mentorStore->hasAnyMentees( $this->mentor, MentorStore::ROLE_PRIMARY ) ) {
@@ -109,7 +115,8 @@ class ReassignMentees {
 				new ReassignMenteesJob( [
 					'mentorId' => $this->mentor->getId(),
 					'performerId' => $this->performer->getId(),
-					'reassignMessageKey' => $reassignMessageKey
+					'reassignMessageKey' => $reassignMessageKey,
+					'reassignMessageAdditionalParams' => $reassignMessageAdditionalParams,
 				] )
 			);
 		}
@@ -119,11 +126,14 @@ class ReassignMentees {
 	 * Actually reassign all mentees currently assigned to the mentor
 	 *
 	 * @param string $reassignMessageKey Message key used in in ChangeMentor notification; needs
-	 * to accept one parameter (username of the previous mentor).
+	 * to accept one parameter (username of the previous mentor). Additional parameters can be
+	 * passed via $reassignMessageAdditionalParams.
+	 * @param mixed ...$reassignMessageAdditionalParams
 	 * @return bool True if successful, false otherwise.
 	 */
 	public function doReassignMentees(
-		string $reassignMessageKey
+		string $reassignMessageKey,
+		...$reassignMessageAdditionalParams
 	): bool {
 		$guard = $this->permissionManager->addTemporaryUserRights( $this->mentor, 'bot' );
 
@@ -167,7 +177,11 @@ class ReassignMentees {
 
 			$changeMentor->execute(
 				$newMentor,
-				$this->context->msg( $reassignMessageKey, $this->mentor->getName() )->text()
+				$this->context->msg(
+					$reassignMessageKey,
+					$this->mentor->getName(),
+					...$reassignMessageAdditionalParams
+				)->text()
 			);
 		}
 

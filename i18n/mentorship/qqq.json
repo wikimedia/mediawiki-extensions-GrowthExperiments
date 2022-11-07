@@ -101,6 +101,7 @@
 	"growthexperiments-quit-mentorship-success": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-quit-mentorship-no-mentees": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "Message sent to reassigned mentees when their mentor quits\n\nParameters:\n* $1 - username of the previous mentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "Message sent to reassigned mentees when their mentor is removed\n\nParameters:\n* $1 - username of the previous mentor\n* $2 - username of the admin who removed the mentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"echo-category-title-ge-mentorship": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-ge-mentorship}}",
 	"echo-pref-tooltip-ge-mentorship": "{{doc-echo-pref-tooltip|title=Echo-category-title-dt-subscription}}",
 	"growthexperiments-notification-header-mentee-claimed": "Header of the notification sent to old mentor after one of their mentees was claimed.\n\nParameters:\n* $1 - old mentor's username\n* $2 - old mentor's raw username, for use in GENDER\n* $3 - mentee's username",
