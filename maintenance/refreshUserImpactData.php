@@ -8,6 +8,7 @@ use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
+use GrowthExperiments\UserRegistrationLookupHelper;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\ActorStore;
@@ -127,19 +128,24 @@ class RefreshUserImpactData extends Maintenance {
 		$editedWithin = $this->getOption( 'editedWithin' );
 		$registeredWithin = $this->getOption( 'registeredWithin' );
 
-		$queryBuilder = $this->actorStore->newSelectQueryBuilder( $this->getDB( DB_REPLICA ) );
+		$dbr = $this->getDB( DB_REPLICA );
+		$queryBuilder = $this->actorStore->newSelectQueryBuilder( $dbr );
 		if ( $editedWithin ) {
-			$timestamp = $this->getDB( DB_REPLICA )->timestamp(
-				$this->getTimestampFromRelativeDate( $editedWithin ) );
+			$timestamp = $dbr->timestamp( $this->getTimestampFromRelativeDate( $editedWithin ) );
 			$queryBuilder->join( 'revision', null, [ 'rev_actor = actor_id' ] );
 			$queryBuilder->where( "rev_timestamp >= $timestamp" );
 			$queryBuilder->groupBy( [ 'actor_user' ] );
 		}
 		if ( $registeredWithin ) {
-			$timestamp = $this->getDB( DB_REPLICA )->timestamp(
-				$this->getTimestampFromRelativeDate( $registeredWithin ) );
-			$queryBuilder->join( 'user', null, [ 'actor_user = user_id' ] );
-			$queryBuilder->where( "user_registration >= $timestamp" );
+			$firstUserId = UserRegistrationLookupHelper::findFirstUserIdForRegistrationTimestamp(
+				$dbr,
+				$this->getTimestampFromRelativeDate( $registeredWithin )
+			);
+			if ( $firstUserId ) {
+				$queryBuilder->where( "actor_user >= $firstUserId" );
+			} else {
+				$queryBuilder->where( '0 = 1' );
+			}
 		}
 		return $queryBuilder;
 	}
