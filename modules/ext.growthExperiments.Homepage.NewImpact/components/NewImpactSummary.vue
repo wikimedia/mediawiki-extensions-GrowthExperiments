@@ -83,10 +83,6 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-.ext-growthExperiments-new-impact-app-root--mobile {
-	width: 100%;
-}
-
 .ext-growthExperiments-NewImpactSummary {
 	&__info {
 		display: flex;
