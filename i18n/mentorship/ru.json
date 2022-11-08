@@ -8,7 +8,10 @@
 			"Ice bulldog",
 			"Iniquity",
 			"Jack Jackie Pomi",
-			"Pacha Tchernof"
+			"Pacha Tchernof",
+			"Deltaspace",
+			"Radmir Far",
+			"UniCollab"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
@@ -60,5 +63,5 @@
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Жаль, что вы уходите. Чтобы начать процесс выхода из наставничества, сначала вам надо убрать свое имя [[$1|из списка наставников]]. Когда сделаете это, пожалуйста, вернитесь на эту страницу.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Следующий шаг — переназначение ваших подопечных. Если вы уверены, что хотите покинуть наставничество, пожалуйста, нажмите кнопку ниже.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Да, назначить моим подопечным другого наставника",
-	"growthexperiments-quit-mentorship-success": "Вскоре вашим подопечным будет назначен других наставников."
+	"growthexperiments-quit-mentorship-success": "Вскоре вашим подопечным будут назначены другие наставники."
 }

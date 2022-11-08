@@ -7,5 +7,6 @@
 		]
 	},
 	"growthexperiments-homepage-enable": "Diskwel pajenn degemer neveziad",
-	"growthexperiments-homepage-discovery-thanks-header": "Trugarez da vezañ krouet {{GENDER:$1|ho}} kont!"
+	"growthexperiments-homepage-discovery-thanks-header": "Trugarez da vezañ krouet {{GENDER:$1|ho}} kont!",
+	"growthexperiments-addlink-summary-summary": "Arc’hweladur aliañ liammoù: $1 {{PLURAL:$1|liamm}} ouzhpennet."
 }
