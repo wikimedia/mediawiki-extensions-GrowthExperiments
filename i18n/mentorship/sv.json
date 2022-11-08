@@ -4,7 +4,8 @@
 			"Ainali",
 			"LittleGun",
 			"Paracel63",
-			"Sabelöga"
+			"Sabelöga",
+			"Trizek (WMF)"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Fadderpanel",
@@ -76,12 +77,24 @@
 	"growthexperiments-quit-mentorship-title": "Avsluta fadderskap",
 	"echo-category-title-ge-mentorship": "Fadderskap",
 	"growthexperiments-notification-body-mentee-claimed": "Orsak: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Hälften av medelfrekvens",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Medel (standardinställning)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Dubbel frekvens",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Spara",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Avbryt",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Inledande meddelande",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Fadder $1 finns inte i fadderlistan",
+	"growthexperiments-manage-mentors-title": "Hantera faddrar",
+	"growthexperiments-manage-mentors-pretext-purpose": "På denna sida listas faddrar.",
+	"growthexperiments-manage-mentors-pretext-regular": "Administratörer har rättigheten att moderera bort faddrar som brutit mot regelverket. De kan även ändra faddrarnas introduktionsmeddelande vid behov.",
+	"growthexperiments-manage-mentors-pretext-stored-at": "Mentorslistan finns i [[$1|mediawikinamnrymden]], inklusive dess historik.",
+	"growthexperiments-manage-mentors-pretext-to-enroll": "För att bli fadder, besök [[Special:EnrollAsMentor|fadderpanelen]].",
+	"growthexperiments-manage-mentors-auto-assigned": "Automatiskt tilldelade faddrar",
+	"growthexperiments-manage-mentors-manually-assigned": "Manuellt tilldelade faddrar",
+	"growthexperiments-manage-mentors-none": "Ingen",
 	"growthexperiments-manage-mentors-username": "Användarnamn",
 	"growthexperiments-manage-mentors-last-active": "Senast aktiv",
+	"growthexperiments-manage-mentors-weight": "Faddersfrekvens",
 	"growthexperiments-manage-mentors-intro-msg": "Meddelande för nybörjare",
 	"growthexperiments-manage-mentors-remove-mentor": "Ta bort"
 }

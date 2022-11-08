@@ -169,7 +169,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "التسجيل",
 	"growthexperiments-mentorship-enrollasmentor-success": "تم تسجيلك الآن {{GENDER:|كمرشد|كمرشدة}}. يمكنك المرور إلى [[Special:MentorDashboard|لوحة المرشدين]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "إضافة نفسي {{GENDER:|كمرشد|كمرشدة}}",
-	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "لا يمكن التسجيل كمرشد إلا للمستخدمين الذين أنهوا على الأقل، عدد التعديلات: $1 وعدد أيام التواجد: $2.",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "لا يمكن التسجيل كمرشد إلا للمستخدمين الذين أنهوا على الأقل، {{PLURAL:$1|لا تعديل|تعديلا واحدا|تعديلين|$1 تعديلات|$1 تعديلا|$1 تعديل}} وعدد أيام التواجد: $2.",
 	"tag-mentor list change": "تغيير قائمة المرشِدين",
 	"tag-mentor list change-description": "وسم ينطبق على التعديلات التي تم إجراؤها على القائمة المهيكلة للمرشدين عبر GrowthExperiments"
 }

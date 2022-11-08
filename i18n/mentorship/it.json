@@ -110,5 +110,6 @@
 	"growthexperiments-manage-mentors-remove-mentor": "Rimuovi",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Messaggio introduttivo",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motivo",
-	"growthexperiments-mentorship-enrollasmentor-enroll": "Iscriversi"
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Iscriversi",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Solo utenti con almeno $1 {{PLURAL:$1|modifica|modifiche}} e $2 {{PLURAL:$2|giorno|giorni}} di presenza possono iscriversi come tutor."
 }
