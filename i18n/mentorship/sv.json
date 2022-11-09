@@ -4,7 +4,8 @@
 			"Ainali",
 			"LittleGun",
 			"Paracel63",
-			"Sabelöga"
+			"Sabelöga",
+			"Trizek (WMF)"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Fadderpanel",
@@ -75,5 +76,8 @@
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Andra nybörjare som är tilldelade dig",
 	"growthexperiments-quit-mentorship-title": "Avsluta fadderskap",
 	"echo-category-title-ge-mentorship": "Fadderskap",
-	"growthexperiments-notification-body-mentee-claimed": "Orsak: $1"
+	"growthexperiments-notification-body-mentee-claimed": "Orsak: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Hälften av medelfrekvens",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Medel (standardinställning)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Dubbel frekvens"
 }

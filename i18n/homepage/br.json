@@ -7,6 +7,8 @@
 		]
 	},
 	"growthexperiments-homepage-enable": "Diskwel pajenn degemer neveziad",
+	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add a link|Aliet: ouzhpennañ liammoù]]",
 	"growthexperiments-homepage-discovery-thanks-header": "Trugarez da vezañ krouet {{GENDER:$1|ho}} kont!",
+	"growthexperiments-addlink-summary-summary": "Arc’hweladur aliañ liammoù: $1 {{PLURAL:$1|liamm}} ouzhpennet.",
 	"growthexperiments-addimage-submitting-title": "O kas..."
 }

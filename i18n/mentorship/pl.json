@@ -86,10 +86,13 @@
 	"growthexperiments-notification-body-mentee-claimed": "Powód: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Czym jest \"przejęcie nowicjusza\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Liczba przypisanych do mnie nowicjuszy.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Połowa średniej",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Około połowa średniej",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Średnia (domyślne)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Dwukrotność średniej",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Około dwukrotność średniej",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Twój|Twoje}} obciążenie zostało zmienione na \"$1\".",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Zmiana na większą lub mniejsza liczbę podopiecznych pomoże {{GENDER:|Ci}} kontrolować liczbę zapytań, które {{GENDER:|jesteś}} w stanie obsłużyć. Rzeczywista liczba umieszczonych pytań zależy jednak od woli przypisanych Tobie nowicjuszy.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Zalecane jest zaczęcie od poziomu średniego aby móc ocenić swoją przepustowość by móc potem wybrać inna opcję."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Podopieczni w momencie utworzenia swojego konta są przypisywani do przewodników w sposób losowy. Możesz zarządzać liczbą podopiecznych, którzy trafią pod twoje skrzydła, ale pamiętaj że niektórzy będą zadawać pytania częściej niż inni.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Zalecane jest zaczęcie od poziomu średniego, aby móc ocenić swoją przepustowość przed wybraniem innej opcji.",
+	"growthexperiments-mentor-list-missing-key": "Brakuje klucza <code>$1</code>",
+	"growthexperiments-mentor-list-datatype-mismatch": "oczekiwany typ danych dla <code>$1</code> to <code>$2</code>, ale podano <code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Definicja przewodnika zawiera nieoczekiwany klucz <code>$1</code>"
 }

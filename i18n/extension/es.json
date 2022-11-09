@@ -12,7 +12,8 @@
 			"MarcoAurelio",
 			"Mnivar",
 			"Zapipedia (WMF)",
-			"ZebaX2010"
+			"ZebaX2010",
+			"SpikeShroom"
 		]
 	},
 	"growthexperiments-desc": "Esta extensión contiene experimentos llevados a cabo por el \"Growth team\" de la Fundación Wikimedia.",
@@ -84,10 +85,10 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Página de destino para obtener más información sobre cómo agregar referencias.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Actualizar: plantillas para buscar artículos que necesiten actualizarse con información actual.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Página de destino para obtener más información sobre como actualizar artículos.",
-	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Página de destino para aprender más sobre el tipo de tarea de recomendación de enlaces.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Página de destino para aprender más sobre la tarea de recomendación de enlaces.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Página de destino para aprender más sobre el tipo de tarea de recomendación de imágenes.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Este tipo de tarea está asociado con sugerencias de la máquina, y no usa plantillas para generar un conjunto de tareas.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Los artículos que contengan plantillas definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artículos que contengan plantillas definidas aquí no se van a mostrar a usarios como tareas de este tipo.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Plantillas de ficha",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas plantillas son necesarias para la función de tareas para recién llegados [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugerencias de imagen]]. Los artículos que contienen estas plantillas no se incluirán como tareas de sugerencia de imágenes."

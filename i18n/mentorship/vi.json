@@ -4,7 +4,9 @@
 			"Bluetpp",
 			"Nghiemtrongdai VN",
 			"NguoiDungKhongDinhDanh",
-			"Minh Nguyen"
+			"Minh Nguyen",
+			"RiceCracker12",
+			"Vanhdeeptryy"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Bảng điều khiển cố vấn",
@@ -56,6 +58,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Trạng thái cố vấn",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Hoạt động",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Đi vắng",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Vì bạn chọn vắng mặt cho đến $1, các thành viên được hệ thống chỉ định bạn làm cố vấn sẽ được chỉ định tạm thời cho một cố vấn khác.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Đặt chế độ 'đi vắng'",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Hủy bỏ",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Tạm ngừng",
@@ -81,9 +84,19 @@
 	"growthexperiments-quit-mentorship-success": "Những người được cố vấn của bạn sẽ nhanh chóng được phân lại cho các cố vấn khác.",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|}}Bạn hiện không là cố vấn của bất kỳ thành viên nào.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 đã {{GENDER:$1|nghỉ}} làm cố vấn.",
+	"echo-category-title-ge-mentorship": "Danh sách cố vấn",
+	"echo-pref-tooltip-ge-mentorship": "Thông báo liên quan đến tính năng cố vấn được cung cấp bởi Nhóm Tăng trưởng. Thông báo này cho bạn biết rằng bạn đã được xác nhận là một thành viên được cố vấn hoặc một thành viên được cố vấn khác đã được yêu cầu cho một cố vấn khác.",
+	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Thành viên được cố vấn của bạn}}, $3 đã được {{GENDER:$2|yêu cầu}} cho cố vấn $1.",
+	"growthexperiments-notification-body-mentee-claimed": "Lý do: $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"Yêu cầu người cố vấn\" là gì?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Số người được cố vấn được phân cho tôi",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Khoảng một nửa trung bình",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Trung bình (mặc định)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Khoảng gấp đôi trung bình",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Bạn nên bắt đầu tại cài đặt “Trung bình” để đo khả năng trợ giúp của bạn trước khi tăng hay giảm."
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Tải {{GENDER:|của bạn}} đã được thay đổi thành \"$1\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Thành viên mới được chỉ định cho một cố vấn bất kỳ khi tài khoản của họ được mở. Bạn có thể quản lý số thành viên được chỉ định cho bạn, nhưng một số thành viên có thể hỏi nhiều câu hỏi thường xuyên hơn nhiều người khác",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Bạn nên bắt đầu tại cài đặt “Trung bình” để đo khả năng trợ giúp của bạn trước khi tăng hay giảm.",
+	"growthexperiments-mentor-list-missing-key": "Khóa <code>$1</code> bị thiếu",
+	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> dự kiến sẽ được <code>$2</code>, nhưng <code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Định nghĩa cố vấn chứa một khóa <code>$1</code> không mong đợi"
 }

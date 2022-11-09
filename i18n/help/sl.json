@@ -55,7 +55,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Preberite več o dodajanju povezav]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-value": "Vse v projektu {{SITENAME}} izvira iz zanesljivih virov, kot so knjige in časopisi. Ko bralci v članku opazijo sklicevanja na te vire, so lahko prepričani o tem, kar berejo.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "Saturn je verjetno najbolj poznan po sistemu planetnih obročev, zaradi katerih je vizualno edinstven.<sup>[3]</sup>",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-value": "Ta poved ima na koncu sklic, ki se povezuje na njen vir.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-value": "Ta poved ima na koncu sklic, ki se povezuje z njenim virom.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-calm": "Da članek izboljšate, zadostuje, da dodate že en sam sklic. Ni vam treba obdelati celotnega članka.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-rules1": "Na mestih, kjer navajajo posamezna dejstva, npr. številke, datume ali zgodovinske dogodke, povedi potrebujejo sklice.\n\nČe poved vsebuje informacijo, o kateri se ljudje morda ne strinjajo, ali ki je večina ljudi ne pozna, je najverjetneje treba dodati sklic.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step1": "Ko {{GENDER:|opazite}} poved, ki potrebuje sklic, kliknite »$1«, da začnete.\n\nNekatere povedi imajo celo oznake, ki natančno označujejo mesto, kjer je potreben sklic.",
