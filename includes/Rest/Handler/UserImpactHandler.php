@@ -62,13 +62,7 @@ class UserImpactHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run( UserIdentity $user ) {
-		$useLatest = $this->getValidatedParams()['useLatest'] ?? false;
-
-		if ( $useLatest ) {
-			$userImpact = $this->userImpactLookup->getUserImpact( $user );
-		} else {
-			$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
-		}
+		$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
 		if ( !$userImpact ) {
 			throw new HttpException( 'Impact data not found for user', 404 );
 		}
@@ -114,10 +108,6 @@ class UserImpactHandler extends SimpleHandler {
 				ParamValidator::PARAM_REQUIRED => true,
 				UserDef::PARAM_ALLOWED_USER_TYPES => [ 'id' ],
 				UserDef::PARAM_RETURN_OBJECT => true,
-			],
-			'latest' => [
-				self::PARAM_SOURCE => 'query',
-				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 		];
 	}
