@@ -3,9 +3,7 @@
 namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\WikiConfigException;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserEditTracker;
@@ -32,9 +30,6 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 	/** @var MentorStore */
 	private $mentorStore;
 
-	/** @var MentorProvider */
-	private $mentorProvider;
-
 	public function __construct() {
 		parent::__construct();
 		$this->setBatchSize( 200 );
@@ -58,7 +53,6 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 		$this->userEditTracker = $services->getUserEditTracker();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
 		$this->mentorStore = $geServices->getMentorStore();
-		$this->mentorProvider = $geServices->getMentorProvider();
 	}
 
 	/**
@@ -75,39 +69,36 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 
 		$this->initServices();
 
-		try {
-			$mentors = $this->mentorProvider->getMentors();
-		} catch ( WikiConfigException $e ) {
-			$this->fatalError( 'List of mentors cannot be fetched.' );
-		}
+		$dbr = $this->growthLoadBalancer->getConnection( DB_REPLICA );
+		$menteeIds = $dbr->newSelectQueryBuilder()
+			->select( 'gemm_mentee_id' )
+			->from( 'growthexperiments_mentor_mentee' )
+			->where( [
+				'gemm_mentor_role' => MentorStore::ROLE_PRIMARY,
+				'gemm_mentee_is_active' => true,
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
 
 		$thisBatch = 0;
-		foreach ( $mentors as $mentorName ) {
-			$mentorUser = $this->userIdentityLookup->getUserIdentityByName( $mentorName );
-			if ( !$mentorUser ) {
-				$this->output( "Skipping $mentorName, user identity not found." );
+		foreach ( $menteeIds as $menteeId ) {
+			$menteeUser = $this->userIdentityLookup->getUserIdentityByUserId( $menteeId );
+			if ( !$menteeUser ) {
+				$this->output( "Skipping user ID $menteeId, user identity not found.\n" );
 				continue;
 			}
-			$mentees = $this->mentorStore->getMenteesByMentor(
-				$mentorUser,
-				MentorStore::ROLE_PRIMARY,
-				false,
-				false
+
+			$timeDelta = (int)wfTimestamp() - (int)wfTimestamp(
+				TS_UNIX,
+				$this->userEditTracker->getLatestEditTimestamp( $menteeUser )
 			);
+			if ( $timeDelta > MentorStore::INACTIVITY_THRESHOLD ) {
+				$this->mentorStore->markMenteeAsInactive( $menteeUser );
+				$thisBatch++;
 
-			foreach ( $mentees as $mentee ) {
-				$timeDelta = (int)wfTimestamp() - (int)wfTimestamp(
-					TS_UNIX,
-					$this->userEditTracker->getLatestEditTimestamp( $mentee )
-				);
-				if ( $timeDelta > MentorStore::INACTIVITY_THRESHOLD ) {
-					$this->mentorStore->markMenteeAsInactive( $mentee );
-					$thisBatch++;
-
-					if ( $thisBatch >= $this->getBatchSize() ) {
-						$this->waitForReplication();
-						$thisBatch = 0;
-					}
+				if ( $thisBatch >= $this->getBatchSize() ) {
+					$this->waitForReplication();
+					$thisBatch = 0;
 				}
 			}
 		}
