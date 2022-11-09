@@ -37,7 +37,7 @@
 								:id="`article-${index}`"
 								class="ext-growthExperiments-ArticlesList__ArticleListItem__sparkline"
 								:data="article.views.entries"
-								:dimensions="{ width: 16, height: 12 }"
+								:dimensions="{ width: 20, height: 20 }"
 								:x-accessor="xAccessor"
 								:y-accessor="yAccessor"
 							></c-sparkline>
@@ -148,8 +148,8 @@ module.exports = exports = {
 		}
 
 		&__sparkline {
-			width: 16px;
-			height: 12px;
+			width: 20px;
+			height: 20px;
 		}
 	}
 }
