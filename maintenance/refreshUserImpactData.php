@@ -6,10 +6,12 @@ use DateTime;
 use Exception;
 use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use GrowthExperiments\UserRegistrationLookupHelper;
 use Maintenance;
+use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\UserIdentity;
@@ -32,6 +34,7 @@ class RefreshUserImpactData extends Maintenance {
 
 	/** @var UserImpactStore */
 	private $userImpactStore;
+	private JobQueueGroupFactory $jobQueueGroupFactory;
 
 	public function __construct() {
 		parent::__construct();
@@ -45,6 +48,7 @@ class RefreshUserImpactData extends Maintenance {
 			. ' Time is a relative timestring fragment passed to DateTime, such as "30days".', false, true );
 		$this->addOption( 'fromUser', 'Continue from the given user ID (exclusive).', false, true );
 		$this->addOption( 'verbose', 'Verbose mode' );
+		$this->addOption( 'use-job-queue', 'If job queue should be used to refresh user impact data.' );
 		$this->setBatchSize( 100 );
 	}
 
@@ -53,14 +57,25 @@ class RefreshUserImpactData extends Maintenance {
 		$this->checkOptions();
 		$this->initServices();
 		foreach ( $this->getUsers() as $user ) {
-			$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
-			if ( $userImpact ) {
+			if ( $this->hasOption( 'use-job-queue' ) ) {
 				if ( $this->hasOption( 'verbose' ) ) {
-					$this->output( "  ...refreshing user impact for user {$user->getId()}\n" );
+					$this->output( " ... enqueueing refreshUserImpactJob for user {$user->getId()}\n" );
 				}
-				$this->userImpactStore->setUserImpact( $userImpact );
-			} elseif ( $this->hasOption( 'verbose' ) ) {
-				$this->output( "  ...could not generate user impact for user {$user->getId()}\n" );
+				$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
+					new RefreshUserImpactJob( [
+						'userId' => $user->getId()
+					] )
+				);
+			} else {
+				$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
+				if ( $userImpact ) {
+					if ( $this->hasOption( 'verbose' ) ) {
+						$this->output( "  ...refreshing user impact for user {$user->getId()}\n" );
+					}
+					$this->userImpactStore->setUserImpact( $userImpact );
+				} elseif ( $this->hasOption( 'verbose' ) ) {
+					$this->output( "  ...could not generate user impact for user {$user->getId()}\n" );
+				}
 			}
 		}
 	}
@@ -75,6 +90,7 @@ class RefreshUserImpactData extends Maintenance {
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$this->actorStore = $services->getActorStore();
+		$this->jobQueueGroupFactory = $services->getJobQueueGroupFactory();
 		$this->userImpactLookup = $growthServices->getUncachedUserImpactLookup();
 		$this->userImpactStore = $growthServices->getUserImpactStore();
 	}
