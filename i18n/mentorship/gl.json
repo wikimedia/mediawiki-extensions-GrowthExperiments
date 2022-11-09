@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Avelino"
+		]
+	},
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Só os usuarios con polo menos $1 {{PLURAL:$1| edicións}} e $2 {{PLURAL:$2| días}} de presenza poden inscribirse como mentores."
+}

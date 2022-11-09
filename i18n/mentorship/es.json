@@ -74,7 +74,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-text": "Si quieres abandonar la mentoría de manera permanente, puedes hacerlo a través de Special:QuitMentorship. Al hacer clic en \"Aceptar\" se te redirigirá allí.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Tu estatus",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Activo",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Fuera",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Ausente",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Dado que estarás ausente hasta el día $1, tus aprendices serán reasignados temporalmente a otro mentor o mentora.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "{{GENDER:|Tu cuenta}} está bloqueada. Tu estado como {{GENDER:|mentor|mentora}} será \"ausente\" de manera temporal  y {{GENDER:|tus}} personas mentorizadas serán reasignadas temporalmente a un mentor/a diferente. Si eres {{GENDER:|desbloqueado|desbloqueada}} (o el bloqueo expira), {{GENDER:|tu}} estado pasará a \"Activo\" y {{GENDER:|tus}} mentorizados volverán a {{GENDER:|serte}} reasignados.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "{{GENDER:|Te}} han bloqueado. Mientras tanto, no puedes modificar tu estatus de {{GENDER:|mentor|mentora}}.",
@@ -173,7 +173,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscribirse",
 	"growthexperiments-mentorship-enrollasmentor-success": "Estás inscrito como {{GENDER:|mentor|mentora}}. Puedes continuar al [[Special:MentorDashboard|panel de control de mentoría]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Añadirme como {{GENDER:|mentor|mentora}}",
-	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Sólo usarios con un mínimo de $1 {{PLURAL:$1|edición|ediciones}} y $2 {{PLURAL:$2|día|días}} de antigüedad pueden convertirse en mentores.",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Solo quienes tengan al menos $1 {{PLURAL:$1|edición|ediciones}} y $2 {{PLURAL:$2|día|días}} de antigüedad pueden convertirse en mentores/as.",
 	"tag-mentor list change": "Cambio de la lista de mentores y mentoras",
 	"tag-mentor list change-description": "Etiqueta aplicada a las ediciones realizadas en la lista estructurada de mentoría a través de GrowthExperiments"
 }

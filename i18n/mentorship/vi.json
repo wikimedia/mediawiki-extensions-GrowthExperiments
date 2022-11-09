@@ -40,7 +40,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Lọc những người được cố vấn hoạt động trong $2 {{PLURAL:$1|tháng}} qua",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Chỉ hiện người được cố vấn được gắn sao",
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label": "Mở rộng biểu mẫu bộ lọc người được hướng dẫn",
-	"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label": "Thu gọi biểu mẫu bộ lọc người được hướng dẫn",
+	"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label": "Thu gọn biểu mẫu bộ lọc người được hướng dẫn",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Tìm kiếm",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "hoạt động $1 trước",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "không rõ",
