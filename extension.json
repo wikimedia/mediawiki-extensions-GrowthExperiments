@@ -51,7 +51,8 @@
 		"newcomerTasksCacheRefreshJob": "GrowthExperiments\\NewcomerTasks\\TaskSuggester\\NewcomerTasksCacheRefreshJob",
 		"setUserMentorDatabaseJob": "GrowthExperiments\\Mentorship\\Store\\SetUserMentorDatabaseJob",
 		"reassignMenteesJob": "GrowthExperiments\\Mentorship\\ReassignMenteesJob",
-		"menteeOverviewUpdateDataForMentor": "GrowthExperiments\\MentorDashboard\\MenteeOverview\\MenteeOverviewUpdateDataForMentorJob"
+		"menteeOverviewUpdateDataForMentor": "GrowthExperiments\\MentorDashboard\\MenteeOverview\\MenteeOverviewUpdateDataForMentorJob",
+		"refreshUserImpactJob": "GrowthExperiments\\UserImpact\\RefreshUserImpactJob"
 	},
 	"APIModules": {
 		"helppanelquestionposter": {
