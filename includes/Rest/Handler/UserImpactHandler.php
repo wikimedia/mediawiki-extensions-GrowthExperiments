@@ -6,7 +6,7 @@ use Config;
 use DateTime;
 use Exception;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
-use GrowthExperiments\UserImpact\UserImpactLookup;
+use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use Language;
 use MediaWiki\MainConfigNames;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
@@ -27,15 +27,15 @@ class UserImpactHandler extends SimpleHandler {
 
 	private Config $config;
 	private stdClass $AQSConfig;
-	private UserImpactLookup $userImpactLookup;
 	private UserOptionsLookup $userOptionsLookup;
 	private TitleFactory $titleFactory;
 	private Language $contentLanguage;
+	private DatabaseUserImpactStore $databaseUserImpactStore;
 
 	/**
 	 * @param Config $config
 	 * @param stdClass $AQSConfig
-	 * @param UserImpactLookup $userImpactLookup
+	 * @param DatabaseUserImpactStore $databaseUserImpactStore
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param TitleFactory $titleFactory
 	 * @param Language $contentLanguage
@@ -43,14 +43,14 @@ class UserImpactHandler extends SimpleHandler {
 	public function __construct(
 		Config $config,
 		stdClass $AQSConfig,
-		UserImpactLookup $userImpactLookup,
+		DatabaseUserImpactStore $databaseUserImpactStore,
 		UserOptionsLookup $userOptionsLookup,
 		TitleFactory $titleFactory,
 		Language $contentLanguage
 	) {
 		$this->config = $config;
 		$this->AQSConfig = $AQSConfig;
-		$this->userImpactLookup = $userImpactLookup;
+		$this->databaseUserImpactStore = $databaseUserImpactStore;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->titleFactory = $titleFactory;
 		$this->contentLanguage = $contentLanguage;
@@ -62,7 +62,7 @@ class UserImpactHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run( UserIdentity $user ) {
-		$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
+		$userImpact = $this->databaseUserImpactStore->getExpensiveUserImpact( $user );
 		if ( !$userImpact ) {
 			throw new HttpException( 'Impact data not found for user', 404 );
 		}

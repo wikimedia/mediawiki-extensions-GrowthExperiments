@@ -108,7 +108,6 @@ class ExpensiveUserImpact extends UserImpact {
 		Assert::parameterElementType( 'array', $json['dailyArticleViews'], '$json[\'dailyArticleViews\']' );
 		foreach ( $json['dailyArticleViews'] as $title => $views ) {
 			Assert::parameterKeyType( 'string', $views, '$json[\'dailyArticleViews\'][\'' . $title . '\']' );
-			Assert::parameterElementType( 'integer', $views, '$json[\'dailyArticleViews\'][\'' . $title . '\']' );
 		}
 
 		$this->dailyTotalViews = $json['dailyTotalViews'];
