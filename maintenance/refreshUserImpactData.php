@@ -54,6 +54,13 @@ class RefreshUserImpactData extends Maintenance {
 
 	/** @inheritDoc */
 	public function execute() {
+		if ( !$this->getConfig()->get( 'GERefreshUserImpactDataMaintenanceScriptEnabled' ) ) {
+			$this->output(
+				'GERefreshUserImpactDataMaintenanceScriptEnabled is set to false on this wiki.' .
+				PHP_EOL
+			);
+			return;
+		}
 		$this->checkOptions();
 		$this->initServices();
 		foreach ( $this->getUsers() as $user ) {
