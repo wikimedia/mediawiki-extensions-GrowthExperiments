@@ -3,18 +3,37 @@
 namespace GrowthExperiments;
 
 use Config;
+use DeferredUpdates;
+use GrowthExperiments\UserImpact\UserImpactLookup;
+use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
+use MediaWiki\User\UserOptionsLookup;
 
-class ImpactHooks implements ResourceLoaderRegisterModulesHook {
-	/** @var Config */
-	private $config;
+class ImpactHooks implements ResourceLoaderRegisterModulesHook, PageSaveCompleteHook {
+
+	private Config $config;
+	private UserImpactLookup $userImpactLookup;
+	private UserImpactStore $userImpactStore;
+	private UserOptionsLookup $userOptionsLookup;
 
 	/**
 	 * @param Config $config
+	 * @param UserImpactLookup $userImpactLookup
+	 * @param UserImpactStore $userImpactStore
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
-	public function __construct( Config $config ) {
+	public function __construct(
+		Config $config,
+		UserImpactLookup $userImpactLookup,
+		UserImpactStore $userImpactStore,
+		UserOptionsLookup $userOptionsLookup
+	) {
 		$this->config = $config;
+		$this->userImpactLookup = $userImpactLookup;
+		$this->userImpactStore = $userImpactStore;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -42,5 +61,21 @@ class ImpactHooks implements ResourceLoaderRegisterModulesHook {
 			return;
 		}
 		$resourceLoader->register( $modules );
+	}
+
+	/** @inheritDoc */
+	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ) {
+		// Refresh the user's impact after they've made an edit.
+		if ( $user->isRegistered() &&
+			$user->equals( $revisionRecord->getUser() ) &&
+			$this->userOptionsLookup->getBoolOption( $user, HomepageHooks::HOMEPAGE_PREF_ENABLE )
+		) {
+			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+				$impact = $this->userImpactLookup->getExpensiveUserImpact( $user );
+				if ( $impact ) {
+					$this->userImpactStore->setUserImpact( $impact );
+				}
+			} );
+		}
 	}
 }

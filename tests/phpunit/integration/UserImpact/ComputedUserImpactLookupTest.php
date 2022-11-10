@@ -26,7 +26,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		ChangeTags::addTags( TaskTypeHandler::NEWCOMER_TASK_TAG, null, 1 );
 
 		$userIdentity = $this->getMutableTestUser()->getUserIdentity();
-		$userImpactLookup = $this->getServiceContainer()->get( '_GrowthExperimentsUserImpactLookup_Computed' );
+		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
 		$userImpact = $userImpactLookup->getUserImpact( $userIdentity );
 
 		$this->assertTrue( $userIdentity->equals( $userImpact->getUser() ) );
@@ -70,7 +70,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		ConvertibleTimestamp::setFakeTime( false );
 
 		/** @var ComputedUserImpactLookup $userImpactLookup */
-		$userImpactLookup = $this->getServiceContainer()->get( '_GrowthExperimentsUserImpactLookup_Computed' );
+		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
 		$userImpact = $userImpactLookup->getUserImpact( $userIdentity );
 
 		$this->assertTrue( $userIdentity->equals( $userImpact->getUser() ) );
@@ -99,7 +99,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$status->merge( $this->editPage( 'Test 4', 'test edit', '', NS_MAIN, $user ) );
 
 		/** @var ComputedUserImpactLookup $userImpactLookup */
-		$userImpactLookup = $this->getServiceContainer()->get( '_GrowthExperimentsUserImpactLookup_Computed' );
+		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
 		$userImpact = $userImpactLookup->getUserImpact( $userIdentity );
 
 		$this->assertSame( [ '2022-10-01' => 2, '2022-10-02' => 2 ], $userImpact->getEditCountByDay() );
@@ -112,7 +112,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$pageViewService = $this->createNoOpMock( PageViewService::class );
 		$this->setService( 'PageViewService', $pageViewService );
 		/** @var ComputedUserImpactLookup $userImpactLookup */
-		$userImpactLookup = $this->getServiceContainer()->get( '_GrowthExperimentsUserImpactLookup_Computed' );
+		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
 		ConvertibleTimestamp::setFakeTime( '2022-10-30 12:00:00' );
 		$userImpact = $userImpactLookup->getExpensiveUserImpact( $userIdentity );
 
@@ -179,7 +179,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertStatusGood( $status );
 
 		/** @var ComputedUserImpactLookup $userImpactLookup */
-		$userImpactLookup = $this->getServiceContainer()->get( '_GrowthExperimentsUserImpactLookup_Computed' );
+		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
 		$userImpact = $userImpactLookup->getExpensiveUserImpact( $userIdentity );
 		$this->assertTrue( $userIdentity->equals( $userImpact->getUser() ) );
 		$this->assertSame( [ NS_MAIN => 6 ], $userImpact->getEditCountByNamespace() );
