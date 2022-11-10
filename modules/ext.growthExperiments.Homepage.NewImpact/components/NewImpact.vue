@@ -17,7 +17,7 @@
 				</c-text>
 			</score-card>
 			<score-card
-				:icon="cdxIconHeart"
+				:icon="cdxIconUserTalk"
 				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' )"
 			>
 				<c-text
@@ -154,7 +154,7 @@ const TrendChart = require( './TrendChart.vue' );
 const ArticlesList = require( './ArticlesList.vue' );
 const {
 	cdxIconEdit,
-	cdxIconHeart,
+	cdxIconUserTalk,
 	cdxIconClock,
 	cdxIconChart,
 	cdxIconClose,
@@ -190,7 +190,7 @@ module.exports = exports = {
 		return {
 			DEFAULT_STREAK_TIME_FRAME,
 			cdxIconEdit,
-			cdxIconHeart,
+			cdxIconUserTalk,
 			cdxIconClock,
 			cdxIconChart,
 			isMobileHomepage,
