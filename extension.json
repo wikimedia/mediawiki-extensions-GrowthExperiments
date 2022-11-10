@@ -2017,6 +2017,10 @@
 		]
 	},
 	"config": {
+		"GERefreshUserImpactDataMaintenanceScriptEnabled": {
+			"description": "Feature flag to determine if the refreshUserImpactData.php maintenance script may run.",
+			"value": false
+		},
 		"GEInfoboxTemplates": {
 			"description": "List of templates that provide Infobox functionality.",
 			"value": []
