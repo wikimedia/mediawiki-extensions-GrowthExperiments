@@ -11,10 +11,13 @@ use MediaWiki\Hook\ManualLogEntryBeforePublishHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
+use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
+use MWTimestamp;
 use Wikimedia\Rdbms\LoadBalancer;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class ImpactHooks implements
 	ResourceLoaderRegisterModulesHook,
@@ -28,6 +31,7 @@ class ImpactHooks implements
 	private UserOptionsLookup $userOptionsLookup;
 	private UserFactory $userFactory;
 	private LoadBalancer $loadBalancer;
+	private UserEditTracker $userEditTracker;
 
 	/**
 	 * @param Config $config
@@ -36,6 +40,7 @@ class ImpactHooks implements
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param UserFactory $userFactory
 	 * @param LoadBalancer $loadBalancer
+	 * @param UserEditTracker $userEditTracker
 	 */
 	public function __construct(
 		Config $config,
@@ -43,7 +48,8 @@ class ImpactHooks implements
 		UserImpactStore $userImpactStore,
 		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory,
-		LoadBalancer $loadBalancer
+		LoadBalancer $loadBalancer,
+		UserEditTracker $userEditTracker
 	) {
 		$this->config = $config;
 		$this->userImpactLookup = $userImpactLookup;
@@ -51,6 +57,7 @@ class ImpactHooks implements
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userFactory = $userFactory;
 		$this->loadBalancer = $loadBalancer;
+		$this->userEditTracker = $userEditTracker;
 	}
 
 	/**
@@ -104,21 +111,38 @@ class ImpactHooks implements
 
 	/**
 	 * Account is considered to be in the Impact module data cohort if:
-	 * - registered
-	 * - created in the last year
-	 * - has homepage preference enabled
+	 * - is registered, AND
+	 * - has homepage preference enabled, AND
+	 * - has edited, AND
+	 * - created in the last year OR edited within the last 7 days
 	 * @param UserIdentity $userIdentity
 	 * @return bool
 	 */
 	private function userIsInImpactDataCohort( UserIdentity $userIdentity ): bool {
+		if ( !$userIdentity->isRegistered() ) {
+			return false;
+		}
+		if ( !$this->userOptionsLookup->getBoolOption( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE ) ) {
+			return false;
+		}
+		$lastEditTimestamp = $this->userEditTracker->getLatestEditTimestamp( $userIdentity );
+		if ( !$lastEditTimestamp ) {
+			return false;
+		}
+
 		$dateTime = new DateTime( 'now - 1year' );
-		$firstUserId = UserRegistrationLookupHelper::findFirstUserIdForRegistrationTimestamp(
+		$firstUserIdForRegistrationTimestamp = UserRegistrationLookupHelper::findFirstUserIdForRegistrationTimestamp(
 			$this->loadBalancer->getConnection( DB_REPLICA ),
 			$dateTime->getTimestamp()
 		);
-		return $userIdentity->isRegistered() &&
-			$this->userOptionsLookup->getBoolOption( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE ) &&
-			$userIdentity->getId() >= $firstUserId;
+
+		$lastEditTimestamp = MWTimestamp::getInstance( $lastEditTimestamp );
+		$diff = $lastEditTimestamp->diff( new ConvertibleTimestamp( new DateTime( 'now - 1week' ) ) );
+		if ( !$diff ) {
+			return false;
+		}
+
+		return $userIdentity->getId() >= $firstUserIdForRegistrationTimestamp || $diff <= 7;
 	}
 
 	/**

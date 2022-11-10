@@ -360,7 +360,8 @@
 				"GrowthExperimentsUserImpactStore",
 				"UserOptionsLookup",
 				"UserFactory",
-				"DBLoadBalancer"
+				"DBLoadBalancer",
+				"UserEditTracker"
 			]
 		}
 	},
