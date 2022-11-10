@@ -89,6 +89,9 @@ class ImpactHooks implements
 
 	/** @inheritDoc */
 	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ) {
+		if ( !$this->config->get( 'GEUseNewImpactModule' ) ) {
+			return;
+		}
 		// Refresh the user's impact after they've made an edit.
 		if ( $this->userIsInImpactDataCohort( $user ) &&
 			$user->equals( $revisionRecord->getUser() )
@@ -100,6 +103,9 @@ class ImpactHooks implements
 
 	/** @inheritDoc */
 	public function onManualLogEntryBeforePublish( $logEntry ): void {
+		if ( !$this->config->get( 'GEUseNewImpactModule' ) ) {
+			return;
+		}
 		if ( $logEntry->getType() === 'thanks' && $logEntry->getSubtype() === 'thank' ) {
 			$recipientUserPage = $logEntry->getTarget();
 			$user = $this->userFactory->newFromName( $recipientUserPage->getDBkey() );
