@@ -6,7 +6,7 @@ use Config;
 use DateTime;
 use Exception;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
-use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
+use GrowthExperiments\UserImpact\UserImpactStore;
 use IBufferingStatsdDataFactory;
 use Language;
 use MediaWiki\MainConfigNames;
@@ -31,13 +31,13 @@ class UserImpactHandler extends SimpleHandler {
 	private UserOptionsLookup $userOptionsLookup;
 	private TitleFactory $titleFactory;
 	private Language $contentLanguage;
-	private DatabaseUserImpactStore $databaseUserImpactStore;
 	private IBufferingStatsdDataFactory $statsdDataFactory;
+	private UserImpactStore $userImpactStore;
 
 	/**
 	 * @param Config $config
 	 * @param stdClass $AQSConfig
-	 * @param DatabaseUserImpactStore $databaseUserImpactStore
+	 * @param UserImpactStore $userImpactStore
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param TitleFactory $titleFactory
 	 * @param Language $contentLanguage
@@ -46,7 +46,7 @@ class UserImpactHandler extends SimpleHandler {
 	public function __construct(
 		Config $config,
 		stdClass $AQSConfig,
-		DatabaseUserImpactStore $databaseUserImpactStore,
+		UserImpactStore $userImpactStore,
 		UserOptionsLookup $userOptionsLookup,
 		TitleFactory $titleFactory,
 		Language $contentLanguage,
@@ -54,7 +54,7 @@ class UserImpactHandler extends SimpleHandler {
 	) {
 		$this->config = $config;
 		$this->AQSConfig = $AQSConfig;
-		$this->databaseUserImpactStore = $databaseUserImpactStore;
+		$this->userImpactStore = $userImpactStore;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->titleFactory = $titleFactory;
 		$this->contentLanguage = $contentLanguage;
@@ -68,7 +68,7 @@ class UserImpactHandler extends SimpleHandler {
 	 */
 	public function run( UserIdentity $user ) {
 		$start = microtime( true );
-		$userImpact = $this->databaseUserImpactStore->getExpensiveUserImpact( $user );
+		$userImpact = $this->userImpactStore->getExpensiveUserImpact( $user );
 		if ( !$userImpact ) {
 			throw new HttpException( 'Impact data not found for user', 404 );
 		}
