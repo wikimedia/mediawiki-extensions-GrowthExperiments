@@ -27,5 +27,6 @@
 	"apihelp-growthmanagementorlist-param-weight": "Vekting",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Blir fadderen automatisk tildelt nybegynnere?",
 	"apihelp-growthmanagementorlist-param-summary": "Årsak for endringen",
-	"apihelp-growthmanagementorlist-param-username": "Brukernavnet til fadderen som påvirkes av endringen. Hvis det ikke er angitt blir den nåværende innloggede brukeren brukt. Kan kun brukes av brukere som har rettigheten til det."
+	"apihelp-growthmanagementorlist-param-username": "Brukernavnet til fadderen som påvirkes av endringen. Hvis det ikke er angitt blir den nåværende innloggede brukeren brukt. Kan kun brukes av brukere som har rettigheten til det.",
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Hvis isaway er true må awaytimestamp også angis."
 }

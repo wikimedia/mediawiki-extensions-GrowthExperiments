@@ -52,6 +52,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "На приборной панели наставников отображаются только подопечные, которые недавно были активны. Дополнительная информация может быть отображена с помощью значка с информацией. Если {{GENDER:|вы}} недавно записались в наставники, у {{GENDER:|вас}} может пока что не быть доверенных подопечных.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Подопечных не найдены.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Изменить фильтры, чтобы найти подопечных.",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Недавние изменения сделанные вашими подопечными",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "Вы можете посмотреть недавние изменения сделанные всеми вашими подопечными, посетив этот [$1 отфильтрованный список в Свежих правках].",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ресурсы",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Список наставников",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Управление наставниками",

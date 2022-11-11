@@ -99,6 +99,7 @@
 	"growthexperiments-quit-mentorship-success": "Fadderbarna dine blir omfordelt til andre faddere snart.",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|Du}} har for tiden ingen fadderbarn.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|sluttet}} å være fadder",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 {{GENDER:$2|fjernet}} $1 fra fadderprogrammet",
 	"echo-category-title-ge-mentorship": "Fadderskap",
 	"echo-pref-tooltip-ge-mentorship": "Varsler som gjelder fadderfunksjoner som vedlikeholdes av Growth-teamet. Dette varselet gir deg beskjed om at du ble gjort krav på som fadderbarn, eller at ett av fadderbarna dine ble gjort krav på av noen andre.",
 	"growthexperiments-notification-header-mentee-claimed": "Ditt {{GENDER:$3|fadderbarn}}, $3, ble {{GENDER:$2|tatt opp}} av $1.",
@@ -164,6 +165,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Meld deg på",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Du}} er nå meldt på som fadder. Du kan fortsette til [[Special:MentorDashboard|kontrollpanelet for faddere]] nå.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Legger til meg selv som fadder",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Kun brukere med minst $1 {{PLURAL:$1|redigering|redigeringer}} og $2 {{PLURAL:$1|dags|dagers}} tilstedeværelse kan melde seg som faddere.",
 	"tag-mentor list change": "Endring av fadderlisten",
 	"tag-mentor list change-description": "Tagg som gjelder redigeringer til den strukturerte lista over faddere via GrowthExperiments"
 }
