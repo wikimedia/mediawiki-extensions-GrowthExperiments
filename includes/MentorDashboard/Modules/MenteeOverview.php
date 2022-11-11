@@ -53,7 +53,6 @@ class MenteeOverview extends BaseModule {
 	 * Should only have a no-js-fallback in it, to display meaningful
 	 * information for no-JS clients.
 	 *
-	 * Protected, so MenteeOverviewVue can add its own ID to the div.
 	 *
 	 * @return string
 	 */
@@ -61,6 +60,7 @@ class MenteeOverview extends BaseModule {
 		return Html::rawElement(
 			'div',
 			[
+				'id' => 'vue-root',
 				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-content'
 			],
 			Html::element(
@@ -109,14 +109,5 @@ class MenteeOverview extends BaseModule {
 	 */
 	protected function getMobileSummaryBody() {
 		return $this->getBody();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getJsConfigVars() {
-		return array_merge( parent::getJsConfigVars(), [
-			'wgGEMentorDashboardUseVue' => $this->getConfig()->get( 'GEMentorDashboardUseVue' )
-		] );
 	}
 }

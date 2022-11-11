@@ -1,7 +1,9 @@
 @import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
 @import '../../utils/mixins.less';
-@import '../variables.less';
+@import '../styles/variables.less';
 
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable selector-max-id */
 // .growthexperiments-mentor-dashboard-container is here only to make the resulting selector
 // specific enough for browsers to prefer rules that are here.
 .growthexperiments-mentor-dashboard-container .growthexperiments-mentor-dashboard-module-mentor-tools {
@@ -65,7 +67,7 @@
 		margin: 0 @mentorDashboardModulePadding * -1 @mentorDashboardModulePadding * -1;
 		padding: 0 @mentorDashboardModulePadding @mentorDashboardModulePadding;
 		background-color: @wmui-color-base90;
-
+		/* stylelint-disable-next-line no-descending-specificity */
 		h4 {
 			padding-top: 17px;
 		}
@@ -77,3 +79,4 @@
 		}
 	}
 }
+/* stylelint-enable */

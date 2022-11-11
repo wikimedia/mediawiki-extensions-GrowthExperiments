@@ -45,7 +45,7 @@
 	};
 
 	AwaySettingsDialog.prototype.getSetupProcess = function ( data ) {
-		var dialog = this;
+		const dialog = this;
 		return AwaySettingsDialog.super.prototype.getSetupProcess.call( this, data )
 			.next( function () {
 				dialog.getActions().setAbilities( {
@@ -55,14 +55,14 @@
 	};
 
 	AwaySettingsDialog.prototype.onAwayForDaysChanged = function () {
-		var awayDaysNum = parseInt( this.awayForDays.getValue() );
+		const awayDaysNum = parseInt( this.awayForDays.getValue() );
 		this.getActions().setAbilities( {
 			save: !isNaN( awayDaysNum )
 		} );
 	};
 
 	AwaySettingsDialog.prototype.getActionProcess = function ( action ) {
-		var dialog = this;
+		const dialog = this;
 		if ( action === '' ) {
 			this.emit( 'cancel' );
 		} else if ( action === 'save' ) {
@@ -79,7 +79,7 @@
 					dialog.emit( 'awayset', data.growthsetmentorstatus.backintimestamp );
 					dialog.close( { action: action } );
 				} ).catch( function ( errorCode ) {
-					var msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown';
+					let msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown';
 					if ( errorCode === 'badinteger' ) {
 						msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger';
 					} else if ( errorCode === 'toohigh' ) {

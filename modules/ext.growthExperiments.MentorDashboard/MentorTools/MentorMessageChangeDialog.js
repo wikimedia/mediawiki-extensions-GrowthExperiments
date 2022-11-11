@@ -56,11 +56,11 @@ MentorMessageChangeDialog.prototype.getSetupProcess = function () {
 
 /** @inheritDoc **/
 MentorMessageChangeDialog.prototype.getActionProcess = function ( action ) {
-	var dialog = this;
+	const dialog = this;
 
 	if ( action === 'save' ) {
 		return new OO.ui.Process( function () {
-			var newMessage = dialog.mentorMessageInput.getValue();
+			const newMessage = dialog.mentorMessageInput.getValue();
 
 			return new mw.Api().postWithToken( 'csrf', {
 				action: 'growthmanagementorlist',

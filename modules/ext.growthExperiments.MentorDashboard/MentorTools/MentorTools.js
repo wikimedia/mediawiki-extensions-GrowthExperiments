@@ -2,7 +2,7 @@
 ( function () {
 	'use strict';
 
-	var AwaySettingsDialog = require( './AwaySettingsDialog.js' ),
+	const AwaySettingsDialog = require( './AwaySettingsDialog.js' ),
 		MentorMessageChangeDialog = require( './MentorMessageChangeDialog.js' ),
 		MentorToolsEllipsisMenu = require( './MentorToolsEllipsisMenu.js' );
 
@@ -34,7 +34,7 @@
 				]
 			}
 		} );
-		var itemToSelect = this.mentorStatusDropdown.getMenu().findItemFromData(
+		const itemToSelect = this.mentorStatusDropdown.getMenu().findItemFromData(
 			$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown select' ).val()
 		);
 		this.mentorStatusDropdown.getMenu().selectItem( itemToSelect );
@@ -43,7 +43,7 @@
 			choose: [ 'onMentorStatusDropdownChanged' ]
 		} );
 
-		var $statusDropdownDiv = $( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown' );
+		const $statusDropdownDiv = $( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown' );
 		this.mentorStatusDropdown.setDisabled( $statusDropdownDiv.find( 'select' ).prop( 'disabled' ) );
 		$statusDropdownDiv.replaceWith(
 			this.mentorStatusDropdown.$element
@@ -66,7 +66,7 @@
 				}
 			} ).$element
 		);
-		var weightOptions = [
+		const weightOptions = [
 			new OO.ui.MenuOptionWidget( {
 				data: 1,
 				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low' )
@@ -95,7 +95,7 @@
 		} );
 
 		// Populated via PHP, see MentorTools::getBody (search for getMentorWeight)
-		var mentorWeight = $( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown select' ).val(),
+		const mentorWeight = $( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown select' ).val(),
 			mentorWeightInt = Number( mentorWeight );
 		this.mentorWeightDropdown.getMenu().selectItem( this.mentorWeightDropdown.getMenu().findItemFromData(
 			// findItemFromData uses datatype-sensitive comparator; parseInt() is required
@@ -138,13 +138,13 @@
 	}
 
 	MentorTools.prototype.onMentorStatusDropdownChanged = function () {
-		var selectedItem = this.mentorStatusDropdown.getMenu().findSelectedItem();
+		const selectedItem = this.mentorStatusDropdown.getMenu().findSelectedItem();
 		this.mentorStatusDropdown.setIcon( selectedItem.getIcon() );
 
 		if ( selectedItem.getData() === 'away' ) {
 			this.windowManager.openWindow( this.awaySettingsDialog );
 		} else if ( selectedItem.getData() === 'active' ) {
-			var mentorTools = this;
+			const mentorTools = this;
 
 			new mw.Api().postWithToken( 'csrf', {
 				action: 'growthsetmentorstatus',
@@ -170,7 +170,7 @@
 	 */
 	MentorTools.prototype.setMentorWeight = function ( selectedItem ) {
 		if ( mw.config.get( 'GEMentorProvider' ) === 'structured' ) {
-			var apiOptions = {
+			const apiOptions = {
 				action: 'growthmanagementorlist',
 				geaction: 'change',
 				autoassigned: selectedItem.getData() !== 'none'
@@ -192,7 +192,7 @@
 	};
 
 	MentorTools.prototype.onMentorWeightDropdownChanged = function () {
-		var selectedItem = this.mentorWeightDropdown.getMenu().findSelectedItem();
+		const selectedItem = this.mentorWeightDropdown.getMenu().findSelectedItem();
 
 		this.setMentorWeight( selectedItem ).then( function () {
 			mw.notify(
@@ -211,7 +211,7 @@
 	};
 
 	MentorTools.prototype.onAwaySettingsDialogCancelled = function () {
-		var itemToSelect = this.mentorStatusDropdown.getMenu().findItemFromData( 'active' );
+		const itemToSelect = this.mentorStatusDropdown.getMenu().findItemFromData( 'active' );
 		this.mentorStatusDropdown.getMenu().selectItem( itemToSelect );
 		this.mentorStatusDropdown.setIcon( itemToSelect.getIcon() );
 	};
