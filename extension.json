@@ -222,7 +222,8 @@
 				"GrowthExperimentsUserImpactStore",
 				"UserOptionsLookup",
 				"TitleFactory",
-				"ContentLanguage"
+				"ContentLanguage",
+				"StatsdDataFactory"
 			]
 		}
 	],

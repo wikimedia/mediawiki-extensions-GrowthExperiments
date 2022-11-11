@@ -7,6 +7,7 @@ use DateTime;
 use Exception;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
+use IBufferingStatsdDataFactory;
 use Language;
 use MediaWiki\MainConfigNames;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
@@ -31,6 +32,7 @@ class UserImpactHandler extends SimpleHandler {
 	private TitleFactory $titleFactory;
 	private Language $contentLanguage;
 	private DatabaseUserImpactStore $databaseUserImpactStore;
+	private IBufferingStatsdDataFactory $statsdDataFactory;
 
 	/**
 	 * @param Config $config
@@ -39,6 +41,7 @@ class UserImpactHandler extends SimpleHandler {
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param TitleFactory $titleFactory
 	 * @param Language $contentLanguage
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
 	public function __construct(
 		Config $config,
@@ -46,7 +49,8 @@ class UserImpactHandler extends SimpleHandler {
 		DatabaseUserImpactStore $databaseUserImpactStore,
 		UserOptionsLookup $userOptionsLookup,
 		TitleFactory $titleFactory,
-		Language $contentLanguage
+		Language $contentLanguage,
+		IBufferingStatsdDataFactory $statsdDataFactory
 	) {
 		$this->config = $config;
 		$this->AQSConfig = $AQSConfig;
@@ -54,6 +58,7 @@ class UserImpactHandler extends SimpleHandler {
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->titleFactory = $titleFactory;
 		$this->contentLanguage = $contentLanguage;
+		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**
@@ -62,6 +67,7 @@ class UserImpactHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run( UserIdentity $user ) {
+		$start = microtime( true );
 		$userImpact = $this->databaseUserImpactStore->getExpensiveUserImpact( $user );
 		if ( !$userImpact ) {
 			throw new HttpException( 'Impact data not found for user', 404 );
@@ -70,6 +76,9 @@ class UserImpactHandler extends SimpleHandler {
 		foreach ( $json['dailyArticleViews'] as $title => $articleData ) {
 			$json['dailyArticleViews'][$title]['pageviewsUrl'] = $this->getPageViewToolsUrl( $title, $user );
 		}
+		$this->statsdDataFactory->timing(
+			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
+		);
 		return $json;
 	}
 
