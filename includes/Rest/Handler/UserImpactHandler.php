@@ -6,16 +6,19 @@ use Config;
 use DateTime;
 use Exception;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
+use GrowthExperiments\UserImpact\ExpensiveUserImpact;
+use GrowthExperiments\UserImpact\RefreshUserImpactJob;
+use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use IBufferingStatsdDataFactory;
+use JobQueueGroup;
 use Language;
-use MediaWiki\MainConfigNames;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsLookup;
-use MediaWiki\User\UserTimeCorrection;
+use MWTimestamp;
 use stdClass;
 use TitleFactory;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -28,77 +31,132 @@ class UserImpactHandler extends SimpleHandler {
 
 	private Config $config;
 	private stdClass $AQSConfig;
-	private UserOptionsLookup $userOptionsLookup;
 	private TitleFactory $titleFactory;
 	private Language $contentLanguage;
 	private IBufferingStatsdDataFactory $statsdDataFactory;
 	private UserImpactStore $userImpactStore;
+	private UserImpactLookup $userImpactLookup;
+	private JobQueueGroup $jobQueueGroup;
+	private UserFactory $userFactory;
 
 	/**
 	 * @param Config $config
 	 * @param stdClass $AQSConfig
 	 * @param UserImpactStore $userImpactStore
-	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param UserImpactLookup $userImpactLookup
 	 * @param TitleFactory $titleFactory
 	 * @param Language $contentLanguage
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param JobQueueGroup $jobQueueGroup
+	 * @param UserFactory $userFactory
 	 */
 	public function __construct(
 		Config $config,
 		stdClass $AQSConfig,
 		UserImpactStore $userImpactStore,
-		UserOptionsLookup $userOptionsLookup,
+		UserImpactLookup $userImpactLookup,
 		TitleFactory $titleFactory,
 		Language $contentLanguage,
-		IBufferingStatsdDataFactory $statsdDataFactory
+		IBufferingStatsdDataFactory $statsdDataFactory,
+		JobQueueGroup $jobQueueGroup,
+		UserFactory $userFactory
 	) {
 		$this->config = $config;
 		$this->AQSConfig = $AQSConfig;
 		$this->userImpactStore = $userImpactStore;
-		$this->userOptionsLookup = $userOptionsLookup;
 		$this->titleFactory = $titleFactory;
 		$this->contentLanguage = $contentLanguage;
 		$this->statsdDataFactory = $statsdDataFactory;
+		$this->userImpactLookup = $userImpactLookup;
+		$this->jobQueueGroup = $jobQueueGroup;
+		$this->userFactory = $userFactory;
 	}
 
 	/**
 	 * @param UserIdentity $user
 	 * @return array
 	 * @throws HttpException
+	 * @throws Exception
 	 */
 	public function run( UserIdentity $user ) {
 		$start = microtime( true );
+		$performingUser = $this->userFactory->newFromUserIdentity( $this->getAuthority()->getUser() );
 		$userImpact = $this->userImpactStore->getExpensiveUserImpact( $user );
+		$staleUserImpact = $userImpact;
+
+		if ( $userImpact && $this->isPageViewDataStale( $userImpact ) ) {
+			// Page view data is stale; we will attempt to recalculate it.
+			$userImpact = null;
+		}
+
 		if ( !$userImpact ) {
-			throw new HttpException( 'Impact data not found for user', 404 );
+			// Rate limit check.
+			if ( $performingUser->pingLimiter( 'growthexperimentsuserimpacthandler' ) ) {
+				if ( $staleUserImpact ) {
+					// Performing user is over the rate limit for requesting data for other users, but we have stale
+					// data so just return that, rather than nothing.
+					$jsonData = $staleUserImpact->jsonSerialize();
+					$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
+					return $jsonData;
+				}
+				throw new HttpException( 'Too many requests to refresh user impact data', 429 );
+			}
+			$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
+			if ( !$userImpact ) {
+				throw new HttpException( 'Impact data not found for user', 404 );
+			}
+			$this->jobQueueGroup->lazyPush(
+				new RefreshUserImpactJob( [
+					'userId' => $user->getId(),
+					'impactData' => json_encode( $userImpact )
+				] )
+			);
 		}
-		$json = $userImpact->jsonSerialize();
-		foreach ( $json['dailyArticleViews'] as $title => $articleData ) {
-			$json['dailyArticleViews'][$title]['pageviewsUrl'] = $this->getPageViewToolsUrl( $title, $user );
-		}
+		$jsonData = $userImpact->jsonSerialize();
+		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
 		);
-		return $json;
+		return $jsonData;
+	}
+
+	/**
+	 * @param array &$jsonData
+	 * @return void
+	 * @throws Exception
+	 */
+	private function fillDailyArticleViewsWithPageViewToolsUrl(
+		array &$jsonData
+	): void {
+		foreach ( $jsonData['dailyArticleViews'] as $title => $articleData ) {
+			$jsonData['dailyArticleViews'][$title]['pageviewsUrl'] = $this->getPageViewToolsUrl( $title );
+		}
+	}
+
+	/**
+	 * @param ExpensiveUserImpact $userImpact
+	 * @return bool
+	 * @throws Exception
+	 */
+	private function isPageViewDataStale( ExpensiveUserImpact $userImpact ): bool {
+		$latestPageViewsDateTime = new DateTime( array_key_last( $userImpact->getDailyTotalViews() ) );
+			$now = MWTimestamp::getInstance();
+			$diff = $now->timestamp->diff( $latestPageViewsDateTime );
+		// Page view data generation can lag by 24-48 hours.
+		// Consider the data stale if it's older than 2 days.
+		return $diff->days > 2;
 	}
 
 	/**
 	 * @param string $title
-	 * @param UserIdentity $user
 	 * @throws Exception
 	 * @return string Full URL for the PageViews tool for the given title and start date
 	 */
-	private function getPageViewToolsUrl( string $title, UserIdentity $user ): string {
+	private function getPageViewToolsUrl( string $title ): string {
 		$baseUrl = 'https://pageviews.wmcloud.org/';
 		$mwTitle = $this->titleFactory->newFromText( $title );
 		$daysAgo = ComputedUserImpactLookup::PAGEVIEW_DAYS;
 		$dtiAgo = new DateTime( '@' . strtotime( "-$daysAgo days" ) );
-		$timeCorrection = new UserTimeCorrection(
-			$this->userOptionsLookup->getOption( $user, 'timecorrection' ),
-			$dtiAgo,
-			$this->config->get( MainConfigNames::LocalTZoffset )
-		);
-		// TODO: add $timeCorrection->getTimeOffset() to $dtiAgo before format?
 		return wfAppendQuery( $baseUrl, [
 			'project' => $this->AQSConfig->project,
 			'userlang' => $this->contentLanguage->getCode(),

@@ -220,10 +220,12 @@
 				"MainConfig",
 				"_GrowthExperimentsAQSConfig",
 				"GrowthExperimentsUserImpactStore",
-				"UserOptionsLookup",
+				"GrowthExperimentsUserImpactLookup",
 				"TitleFactory",
 				"ContentLanguage",
-				"StatsdDataFactory"
+				"StatsdDataFactory",
+				"JobQueueGroup",
+				"UserFactory"
 			]
 		}
 	],
@@ -2573,6 +2575,10 @@
 		"growthmentordashboardupdatedata": {
 			"&can-bypass": false,
 			"user": [ 1, 7200 ]
+		},
+		"growthexperimentsuserimpacthandler": {
+			"&can-bypass": true,
+			"user": [ 10, 86400 ]
 		}
 	},
 	"manifest_version": 2
