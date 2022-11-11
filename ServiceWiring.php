@@ -978,7 +978,8 @@ return [
 			$services->getTitleFormatter(),
 			$services->getTitleFactory(),
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
-			$pageViewInfoLoaded ? $services->get( 'PageViewService' ) : null
+			$pageViewInfoLoaded ? $services->get( 'PageViewService' ) : null,
+			$services->getStatsdDataFactory()
 		);
 	},
 
