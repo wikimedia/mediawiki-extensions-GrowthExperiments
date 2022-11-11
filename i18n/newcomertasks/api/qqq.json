@@ -19,5 +19,6 @@
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "{{doc-apierror}}\n\n$1 is the actual type.",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "{{doc-apierror}}\n\n$1 is the offending value, $2 is the comma-separated list of valid items.",
 	"apierror-growthexperiments-addlink-handler-notfound": "{{doc-apierror}}",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "API error message. $1 is a comma-separated list of page titles.\n{{doc-apierror}}"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "API error message. $1 is a comma-separated list of page titles.\n{{doc-apierror}}",
+	"growthexperiments-underlinked-rescore-profile": "Description of 'underlinked' rescore profile (which is for internal use)."
 }

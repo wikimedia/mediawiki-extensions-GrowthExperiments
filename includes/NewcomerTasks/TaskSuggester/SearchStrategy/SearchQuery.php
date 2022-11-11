@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy;
 
+use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilder;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 
@@ -11,6 +12,9 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
  * change in the future (see T238171#5870744).
  */
 class SearchQuery {
+
+	/** Sort option with custom handling for prioritizing underlinked articles. */
+	public const RESCORE_UNDERLINKED = 'growth_underlinked';
 
 	/** @var string */
 	private $id;
@@ -26,6 +30,9 @@ class SearchQuery {
 
 	/** @var string|null */
 	private $sort;
+
+	/** @var string|null */
+	private $rescoreProfile;
 
 	/** @var string|null */
 	private $debugUrl;
@@ -92,6 +99,23 @@ class SearchQuery {
 	 */
 	public function setSort( ?string $sort ): void {
 		$this->sort = $sort;
+	}
+
+	/**
+	 * Get the custom rescore profile to use.
+	 * @return string|null
+	 * @see UnderlinkedFunctionScoreBuilder
+	 */
+	public function getRescoreProfile(): ?string {
+		return $this->rescoreProfile;
+	}
+
+	/**
+	 * @param string $rescoreProfile
+	 * @see ::getRescoreProfile
+	 */
+	public function setRescoreProfile( string $rescoreProfile ) {
+		$this->rescoreProfile = $rescoreProfile;
 	}
 
 	/**

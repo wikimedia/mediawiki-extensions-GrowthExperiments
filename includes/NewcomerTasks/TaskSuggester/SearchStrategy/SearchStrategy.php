@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy;
 
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
@@ -100,6 +101,20 @@ class SearchStrategy {
 					}
 					$queries[$queryId] = $query;
 				}
+			}
+			if (
+				$taskType instanceof LinkRecommendationTaskType
+				&& $taskType->getUnderlinkedWeight() > 0
+				&& !$pageIdTerm
+			) {
+				// Sort link recommendation tasks by underlinkedness.
+				// Cirrus will only rescore when the sort mode is 'relevance' so we can't use
+				// random sorting. It probably doesn't matter much: we are typically aiming for
+				// 32K tasks per wiki, and the top <rescore window size> * <shard count> results
+				// will be rescored; in practice, that's $wmgCirrusSearchShardCount * 8K results,
+				// so a fairly large part of the total result set will be included anyway.
+				$query->setSort( 'relevance' );
+				$query->setRescoreProfile( SearchQuery::RESCORE_UNDERLINKED );
 			}
 		}
 		return $this->shuffleQueryOrder( $queries );
