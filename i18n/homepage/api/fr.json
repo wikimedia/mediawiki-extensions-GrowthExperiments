@@ -4,15 +4,16 @@
 			"Epok",
 			"Gomoko",
 			"Thibaut120094",
-			"Pols12"
+			"Pols12",
+			"Verdy p"
 		]
 	},
-	"apihelp-homepagequestionstore-summary": "Obtenir les questions formatées publiées via les modules de la page d’accueil",
+	"apihelp-homepagequestionstore-summary": "Obtenir des questions formatées publiées via les modules de la page d’accueil",
 	"apihelp-homepagequestionstore-param-questionformat": "Le format dans lequel les questions doivent être renvoyées, par exemple HTML.",
 	"apihelp-homepagequestionstore-param-storage": "L’emplacement de stockage des questions.",
-	"apihelp-homepagequestionstore-param-userid": "L’identifiant utilisateur pour lequel les questions doivent être renvoyées.",
+	"apihelp-homepagequestionstore-param-userid": "L’identifiant d’utilisateur pour lequel les questions doivent être renvoyées.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Aucune question trouvée.",
-	"apihelp-growthsetmentor-summary": "Définir le tuteur de l’utilisateur. La modification sera tracée publiquement.",
+	"apihelp-growthsetmentor-summary": "Définir le tuteur de l’utilisateur. La modification sera journalisée publiquement.",
 	"apihelp-growthsetmentor-param-mentee": "Nom d’utilisateur du tutoré",
 	"apihelp-growthsetmentor-param-mentor": "Nom d’utilisateur du tuteur",
 	"apihelp-growthsetmentor-param-reason": "Motif du changement"
