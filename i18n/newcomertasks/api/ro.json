@@ -19,5 +19,6 @@
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "parametrul 'reason' trebuie să fie o variabilă boolean în datele de plugin ale Adaugă imagine, este $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Element invalid '$1' pentru parametrul 'reason', trebuie să fie unul dintre: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Înregistrare de recomandare de legare negăsită",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Ținte de recomandare de legare neașteptate: $1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Ținte de recomandare de legare neașteptate: $1",
+	"growthexperiments-underlinked-rescore-profile": "Profilul intern de reevaluare a scorului utilizată în legătura recomandările de legare GrowthExperiments pentru prioritizarea articolelor care încă nu au suficiente legături."
 }

@@ -150,6 +150,7 @@
 	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Чи призначається наставник новачкам автоматично?",
 	"growthexperiments-manage-mentors-edit-weight": "Вага",
 	"growthexperiments-manage-mentors-edit-is-away": "Не при справах?",
+	"growthexperiments-manage-mentors-edit-is-away-blocked": "Наставника «$1» наразі заблоковано і їхній статус відсутності змінити не можна.",
 	"growthexperiments-manage-mentors-edit-away-until": "Не при справах до",
 	"growthexperiments-manage-mentors-edit-reason": "Причина",
 	"growthexperiments-manage-mentors-edit-success": "Параметри наставництва для {{GENDER:$1|наставника|наставниці}} [[User:$1|$1]] було змінено.",
@@ -166,6 +167,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Записатись",
 	"growthexperiments-mentorship-enrollasmentor-success": "Ви тепер зараховані як {{GENDER:|наставник|наставниця}}. {{GENDER:|Ви}} можете перейти [[Special:MentorDashboard|панелі наставника]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Додавання себе в якості наставника",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Лише користувачі, які мають принаймні $1 {{PLURAL:$1|редагування|редагування|редагувань}} та $2 {{PLURAL:$2|день|дні|днів}} активності, можуть записатися як наставники.",
 	"tag-mentor list change": "Зміна списку наставників",
 	"tag-mentor list change-description": "Тег, який застосовується до змін, внесених до структурованого списку наставників за допомогою GrowthExperiments"
 }

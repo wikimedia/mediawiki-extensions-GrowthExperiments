@@ -19,5 +19,6 @@
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "le parametro 'reason' debe esser un array in le datos del plug-in Add Image, ma es $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Elemento '$1' non valide pro le parametro 'reason', debe esser un de: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Le registro del recommendation de ligamine non ha essite trovate",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinationes de recommendation de ligamine non expectate: $1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinationes de recommendation de ligamine non expectate: $1",
+	"growthexperiments-underlinked-rescore-profile": "Profilo \"rescore\" interne usate in recommendationes de ligamines de GrowthExperiments pro priorisar articulos que non ha ancora satis ligamines."
 }

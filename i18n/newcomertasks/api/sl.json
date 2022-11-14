@@ -5,5 +5,6 @@
 		]
 	},
 	"apihelp-query+growthtasks-example-1": "Pridobi priporočila za naloge za kopiranje in urejanje za trenutnega uporabnika.",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Nepričakovani cilji priporočila povezave: $1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Nepričakovani cilji priporočila povezave: $1",
+	"growthexperiments-underlinked-rescore-profile": "Notranji profil ponovnega točkovanja, ki se uporablja v priporočilih povezav GrowthExperiments za prednostno razvrščanje člankov, ki še nimajo dovolj povezav."
 }
