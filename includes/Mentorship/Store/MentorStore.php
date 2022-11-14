@@ -27,9 +27,6 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, Logg
 		self::ROLE_BACKUP
 	];
 
-	/** @var int Maximum allowed time since last edit for gemm_mentee_is_active to be true */
-	public const INACTIVITY_THRESHOLD = self::TTL_MONTH * 6;
-
 	/** @var WANObjectCache */
 	protected $wanCache;
 
@@ -286,7 +283,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, Logg
 	 * recently active mentees, to avoid errors like T293182.
 	 *
 	 * A mentee should be marked as active if they edited less than
-	 * MentorStore::INACTIVITY_THRESHOLD seconds ago.
+	 * $wgRCMaxAge seconds ago.
 	 *
 	 * @param UserIdentity $mentee
 	 * @return bool|null
@@ -319,7 +316,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, Logg
 	 * recently active mentees, to avoid errors like T293182.
 	 *
 	 * A mentee should be marked as active if they edited less than
-	 * MentorStore::INACTIVITY_THRESHOLD seconds ago.
+	 * $wgRCMaxAge seconds ago.
 	 *
 	 * Method should only make a write query if the mentee is not
 	 * already marked as active.
@@ -335,7 +332,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, Logg
 	 * recently active mentees, to avoid errors like T293182.
 	 *
 	 * A mentee should be marked as inactive if they edited more than
-	 * MentorStore::INACTIVITY_THRESHOLD seconds ago.
+	 * $wgRCMaxAge seconds ago.
 	 *
 	 * Method should only make a write query if the mentee is not
 	 * already marked as inactive.

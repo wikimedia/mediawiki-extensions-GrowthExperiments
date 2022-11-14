@@ -37,7 +37,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 
 		$this->addDescription(
 			'Set gemm_mentee_is_active to false for users who are inactive for longer' .
-			'than MentorStore::INACTIVITY_THRESHOLD.'
+			'than $wgRCMaxAge.'
 		);
 		$this->addOption( 'force', 'Do the update even if GEMentorshipUseIsActiveFlag is false' );
 	}
@@ -92,7 +92,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 				TS_UNIX,
 				$this->userEditTracker->getLatestEditTimestamp( $menteeUser )
 			);
-			if ( $timeDelta > MentorStore::INACTIVITY_THRESHOLD ) {
+			if ( $timeDelta > (int)$this->getConfig()->get( 'RCMaxAge' ) ) {
 				$this->mentorStore->markMenteeAsInactive( $menteeUser );
 				$thisBatch++;
 
