@@ -1,4 +1,4 @@
-const api = require( '../../../ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js' );
+const api = require( '../MenteeOverviewApi.js' );
 const tagsToFilterBy = require( '../Tags.json' );
 const userPreferences = require( './user-preferences.js' );
 const MENTEE_OVERVIEW_PRESETS_PREF = 'growthexperiments-mentee-overview-presets';
