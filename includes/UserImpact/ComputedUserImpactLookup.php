@@ -6,6 +6,7 @@ use ActorMigration;
 use DateTime;
 use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
+use IBufferingStatsdDataFactory;
 use MalformedTitleException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
@@ -85,6 +86,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/** @var PageViewService|null */
 	private $pageViewService;
 
+	private IBufferingStatsdDataFactory $statsdDataFactory;
+
 	/**
 	 * @param ServiceOptions $config
 	 * @param IDatabase $dbr
@@ -96,6 +99,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @param TitleFactory $titleFactory
 	 * @param LoggerInterface|null $loggerFactory
 	 * @param PageViewService|null $pageViewService
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
 	public function __construct(
 		ServiceOptions $config,
@@ -107,7 +111,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		TitleFormatter $titleFormatter,
 		TitleFactory $titleFactory,
 		?LoggerInterface $loggerFactory,
-		?PageViewService $pageViewService
+		?PageViewService $pageViewService,
+		IBufferingStatsdDataFactory $statsdDataFactory
 	) {
 		$this->config = $config;
 		$this->dbr = $dbr;
@@ -119,6 +124,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$this->titleFactory = $titleFactory;
 		$this->logger = $loggerFactory ?? new NullLogger();
 		$this->pageViewService = $pageViewService;
+		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/** @inheritDoc */
@@ -151,6 +157,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 	/** @inheritDoc */
 	public function getExpensiveUserImpact( UserIdentity $user ): ?ExpensiveUserImpact {
+		$start = microtime( true );
 		if ( !$this->pageViewService ) {
 			return null;
 		}
@@ -172,7 +179,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			return null;
 		}
 
-		return new ExpensiveUserImpact(
+		$expensiveUserImpact = new ExpensiveUserImpact(
 			$user,
 			$thanksCount,
 			$editData['editCountByNamespace'],
@@ -190,6 +197,10 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$pageViewData['dailyArticleViews'],
 			ComputeEditingStreaks::getLongestEditingStreak( $editData['editCountByDay'] )
 		);
+		$this->statsdDataFactory->timing(
+			'timing.growthExperiments.ComputedUserImpactLookup.getExpensiveUserImpact', microtime( true ) - $start
+		);
+		return $expensiveUserImpact;
 	}
 
 	/**
