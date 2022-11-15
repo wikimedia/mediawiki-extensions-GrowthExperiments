@@ -19,34 +19,33 @@
 						</c-text>
 					</a>
 					<div class="ext-growthExperiments-ArticlesList__ArticleListItem__pageviews">
-						<c-text
-							weight="bold"
-							class="ext-growthExperiments-ArticlesList__ArticleListItem__pageviews__count"
-						>
-							<span v-if="Number.isInteger( article.views.count )">
-								{{ $filters.convertNumber( article.views.count ) }}
-							</span>
-							<a v-else>
-								<cdx-icon
-									class="ext-growthExperiments-ArticlesList__ArticleListItem__clock-icon"
-									:icon="cdxIconClock"
-								></cdx-icon>
-							</a>
-						</c-text>
 						<a
+							v-if="Number.isInteger( article.views.count )"
 							class="ext-growthExperiments-ArticlesList__ArticleListItem__pageviews__link"
 							:title="$i18n( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )"
 							:href="article.views.href"
 						>
+							<c-text
+								weight="bold"
+								class="ext-growthExperiments-ArticlesList__ArticleListItem__pageviews__count"
+							>
+								{{ $filters.convertNumber( article.views.count ) }}
+							</c-text>
 							<c-sparkline
 								:id="`article-${index}`"
-								class="ext-growthExperiments-ArticlesList__ArticleListItem__sparkline"
+								class="ext-growthExperiments-ArticlesList__ArticleListItem__pageviews__sparkline"
+								:title="$i18n( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )"
 								:data="article.views.entries"
 								:dimensions="{ width: 20, height: 20 }"
 								:x-accessor="xAccessor"
 								:y-accessor="yAccessor"
 							></c-sparkline>
 						</a>
+						<cdx-icon
+							v-else
+							class="ext-growthExperiments-ArticlesList__ArticleListItem__clock-icon"
+							:icon="cdxIconClock"
+						></cdx-icon>
 					</div>
 				</div>
 			</c-list-item>
@@ -136,25 +135,24 @@ module.exports = exports = {
 		}
 
 		&__pageviews {
-			display: inline-flex;
-			align-items: baseline;
-
 			&__count {
 				color: @color-progressive;
 			}
 
 			&__link {
+				display: inline-flex;
+				align-items: baseline;
+			}
+
+			&__sparkline {
 				margin-left: 6px;
+				width: 20px;
+				height: 20px;
 			}
 		}
 
 		&__clock-icon {
 			color: @color-progressive;
-		}
-
-		&__sparkline {
-			width: 20px;
-			height: 20px;
 		}
 	}
 }
