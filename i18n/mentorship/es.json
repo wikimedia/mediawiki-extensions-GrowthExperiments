@@ -10,11 +10,12 @@
 			"DiegoAmbrocio",
 			"Josuert",
 			"MarcoAurelio",
-			"OriginReboot"
+			"OriginReboot",
+			"SpikeShroom"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Panel de control de mentoría",
-	"growthexperiments-mentor-dashboard-pt-link": "Panel de control de mentoría",
+	"growthexperiments-mentor-dashboard-pt-link": "Panel de mentoría",
 	"growthexperiments-mentor-dashboard-disabled": "El panel de control de mentoría no está habilitado en esta wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Para habilitar el panel de mentoría, necesitas [[$1|inscribirte como mentor o mentora]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Antes de que se pueda utilizar el panel de control de mentoría, es necesario configurar antes la lista de mentores y mentoras. Un administrador/a puede usar [[Special:EditGrowthConfig]] para ese propósito.",
@@ -27,9 +28,9 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Marcar aprendices como favoritos",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nombre de usuario/a",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Número de ediciones revertidas",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Número de bloques",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Bloqueos",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Preguntas de los mentores",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Recuento de ediciones",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Contribuciones",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Fecha de registro",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtros",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Actualizar",
