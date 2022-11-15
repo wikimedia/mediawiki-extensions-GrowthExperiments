@@ -26,7 +26,7 @@ module.exports = exports = {
 		return h( 'ul', {
 			class: [
 				'ext-growthExperiments-CList',
-				this.unstyled ? 'ext-growthExperiments-CList--unstyled' : ''
+				this.unstyled ? 'ext-growthExperiments-CList--unstyled ext-growthExperiments-increaseSpecificity' : ''
 			]
 		}, clones );
 	}
@@ -37,8 +37,11 @@ module.exports = exports = {
 @import './variables.less';
 
 .ext-growthExperiments-CList {
-	&--unstyled {
+	&--unstyled.ext-growthExperiments-increaseSpecificity {
+		// Remove Minerva list-style-type on .content ul
 		list-style: none;
+		// Remove Minerva margin on .content ul
+		padding-left: 0;
 		// Remove vector margin applied on ul's
 		margin-left: 0;
 	}

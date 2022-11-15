@@ -13,7 +13,7 @@
 		</c-text>
 		<div class="ext-growthExperiments-TrendChart__graph">
 			<c-sparkline
-				id="main"
+				:id="`main-${id}`"
 				:title="chartTitle"
 				:data="data"
 				:dimensions="{ width: 448, height: 24 }"
@@ -46,6 +46,10 @@ module.exports = exports = {
 		CText
 	},
 	props: {
+		id: {
+			type: String,
+			required: true
+		},
 		chartTitle: {
 			type: String,
 			default: null

@@ -3,6 +3,7 @@
 		<!-- TODO: add skeletons, maybe use suspense, load sections only if data available -->
 		<trend-chart
 			v-if="data"
+			id="impact-summary"
 			:count-text="$filters.convertNumber( data.dailyTotalViews.count )"
 			:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName )"
 			:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' )"
@@ -43,8 +44,6 @@
 const moment = require( 'moment' );
 const TrendChart = require( './TrendChart.vue' );
 const CText = require( '../../vue-components/CText.vue' );
-const useUserImpact = require( '../composables/useUserImpact.js' );
-const { DEFAULT_STREAK_TIME_FRAME } = require( '../constants.js' );
 
 // @vue/component
 module.exports = exports = {
@@ -53,22 +52,17 @@ module.exports = exports = {
 		CText,
 		TrendChart
 	},
-	props: {},
-	setup() {
-		const userId = mw.config.get( 'GENewImpactRelevantUserId' );
-		const { data, error } = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
-
-		return {
-			data,
-			// TODO: how to give user error feedback?
-			// eslint-disable-next-line vue/no-unused-properties
-			error
-		};
+	props: {
+		userName: {
+			type: String,
+			required: true
+		},
+		data: {
+			type: Object,
+			required: true
+		}
 	},
 	computed: {
-		userName() {
-			return mw.config.get( 'GENewImpactRelevantUserName' );
-		},
 		lastEditMoment() {
 			return moment( this.data.lastEditTimestamp * 1000 );
 		},

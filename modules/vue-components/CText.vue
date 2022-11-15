@@ -3,7 +3,7 @@
 </template>
 
 <script>
-const { h } = require( 'vue' );
+const { h, inject } = require( 'vue' );
 
 // @vue/component
 module.exports = exports = {
@@ -14,7 +14,7 @@ module.exports = exports = {
 			default: 'div'
 		},
 		size: {
-			type: String,
+			type: [ String, Array ],
 			default: null
 		},
 		color: {
@@ -24,12 +24,39 @@ module.exports = exports = {
 		weight: {
 			type: String,
 			default: null
+		},
+		/**
+		 * An array of mode names. The index of each mode
+		 * will be used to match the given sizes in prop size.
+		 *
+		 * e.g: size: [,,'xxl'] will display base font for
+		 * desktop and overlay but xxl font in 'overlay-summary'
+		 */
+		breakpoints: {
+			type: Array,
+			default: () => ( [
+				'desktop',
+				'overlay',
+				'overlay-summary'
+			] )
 		}
 	},
 	render() {
 		const extraClasses = [];
-		if ( this.size ) {
+		// FIXME if we want to keep CText reusable across apps
+		// the mode should be passed as a prop.
+		const mode = inject( 'RENDER_MODE' );
+		if ( typeof this.size === 'string' ) {
 			extraClasses.push( `ext-growthExperiments-CText--size-${this.size}` );
+		}
+		if ( Array.isArray( this.size ) ) {
+			const breakpointIndex = this.breakpoints.indexOf( mode );
+			const relevantSize = this.size[ breakpointIndex ];
+			// If we can't find an specified size for the mode don't add any
+			// class so we use base font
+			if ( relevantSize ) {
+				extraClasses.push( `ext-growthExperiments-CText--size-${relevantSize}` );
+			}
 		}
 		if ( this.color ) {
 			extraClasses.push( `ext-growthExperiments-CText--color-${this.color}` );
@@ -37,9 +64,10 @@ module.exports = exports = {
 		if ( this.weight ) {
 			extraClasses.push( `ext-growthExperiments-CText--weight-${this.weight}` );
 		}
+
 		return h( this.as, {
 			class: [ 'ext-growthExperiments-CText' ].concat( extraClasses )
-		}, this.$slots.default() );
+		}, this.$slots.default ? this.$slots.default() : null );
 	}
 };
 </script>

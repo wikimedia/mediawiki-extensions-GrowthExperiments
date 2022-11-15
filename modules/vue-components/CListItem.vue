@@ -18,10 +18,6 @@ module.exports = exports = {
 			type: String,
 			default: 'base'
 		}
-	},
-	setup() {
-		return {
-		};
 	}
 };
 </script>

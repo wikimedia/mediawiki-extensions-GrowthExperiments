@@ -1,57 +1,103 @@
 <template>
 	<div class="ext-growthExperiments-App--UserImpact">
-		<component
-			:is="layoutComponent"
-			:data="data"
-			:error="error"
-		></component>
+		<layout :render-mode="renderMode">
+			<no-edits-display
+				v-if="isUnactiveOrDisabled && !isGloballyActivated"
+				:is-disabled="!isSuggestedEditsEnabled"
+				:is-activated="isSuggestedEditsActivated"
+				:user-name="userName"
+			></no-edits-display>
+			<component
+				v-else-if="data && !error"
+				:is="impactComponent"
+				:user-name="userName"
+				:data="data"
+			></component>
+		</layout>
 	</div>
 </template>
 
 <script>
-const { inject } = require( 'vue' );
+const { ref, inject } = require( 'vue' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( './constants.js' );
 const useUserImpact = require( './composables/useUserImpact.js' );
-// TODO wrap layout components in async components so we only
-// load one layout per app.
-const LayoutDesktop = require( './layouts/LayoutDesktop.vue' );
-const LayoutOverlay = require( './layouts/LayoutOverlay.vue' );
-const LayoutOverlaySummary = require( './layouts/LayoutOverlaySummary.vue' );
-const LAYOUT_COMPONENTS = {
-	desktop: 'Desktop',
-	overlay: 'Overlay',
-	'overlay-summary': 'OverlaySummary'
-};
+const Layout = require( './components/LayoutWrapper.vue' );
+// TODO wrap NewImpact and NoEdits components in async components so we only
+// load one at a time.
+const NewImpact = require( './components/NewImpact.vue' );
+const NewImpactSummary = require( './components/NewImpactSummary.vue' );
+const NoEditsDisplay = require( './components/NoEditsDisplay.vue' );
 
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
-		LayoutDesktop,
-		LayoutOverlay,
-		LayoutOverlaySummary
+		NewImpact,
+		NewImpactSummary,
+		NoEditsDisplay,
+		Layout
 	},
 	props: {
-		/**
-		 * The layout to use for displaying the app. Can be
-		 * one of 'desktop', 'overlay', 'overlay-summary'.
-		 */
-		layout: {
-			type: String,
-			default: 'desktop'
-		}
 	},
-	setup( props ) {
-		const userId = inject( 'USER_TO_SHOW_ID' );
-		const { data, error } = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
-		const layoutComponent = `Layout${LAYOUT_COMPONENTS[ props.layout ]}`;
+	setup() {
+		let result = ref( null );
+		const renderMode = inject( 'RENDER_MODE' );
+		const userId = inject( 'RELEVANT_USER_ID' );
+		const userName = inject( 'RELEVANT_USER_USERNAME' );
+		const editCount = inject( 'RELEVANT_USER_EDIT_COUNT' );
+		const isSuggestedEditsEnabled = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED' );
+		const isSuggestedEditsActivated = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED' );
+		const isUnactiveOrDisabled = editCount === 0 || isSuggestedEditsEnabled === false;
+		const impactComponent = renderMode === 'overlay-summary' ? 'NewImpactSummary' : 'NewImpact';
+
+		if ( editCount > 0 ) {
+			result = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
+		}
+
 		return {
-			data,
-			layoutComponent,
+			renderMode,
+			userName,
+			isSuggestedEditsEnabled,
+			isSuggestedEditsActivated,
+			isUnactiveOrDisabled,
+			impactComponent,
+			data: result.data,
 			// TODO: how to give user error feedback?
 			// eslint-disable-next-line vue/no-unused-properties
-			error
+			error: result.error
 		};
 	}
 };
 </script>
+
+<style lang="less">
+@import '../vue-components/variables.less';
+// REVIEW these styles could go on a less file and be
+// loaded earlier than if hosted inside a Vue component.
+
+// The class name needs to remain as it is to match
+// the unactivated class added in the old (Impact.php) and
+// new (NewImpact.php). Once the old module is removed the class
+// can be renamed to match the selector pattern.
+/* stylelint-disable-next-line selector-class-pattern */
+.growthexperiments-homepage-module-impact-unactivated {
+	&-desktop,
+	&-mobile-overlay,
+	&-mobile-summary {
+		background-color: @background-color-framed;
+	}
+
+	&-mobile-overlay {
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background-color: @background-color-framed;
+			z-index: -1;
+		}
+	}
+}
+</style>

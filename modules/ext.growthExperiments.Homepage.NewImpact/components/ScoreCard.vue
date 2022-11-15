@@ -46,13 +46,6 @@ module.exports = exports = {
 			type: String,
 			required: true
 		}
-	},
-	setup() {
-		return {
-
-		};
-	},
-	computed: {
 	}
 };
 </script>
