@@ -3,12 +3,12 @@
 		<div v-click-outside="close">
 			<cdx-button
 				type="quiet"
+				:aria-label="iconLabel"
 				@click="togglePopover"
 			>
 				<cdx-icon
 					class="ext-growthExperiments-CInfoBox__info-icon"
 					:icon="icon"
-					:icon-label="iconLabel"
 				></cdx-icon>
 			</cdx-button>
 			<div class="ext-growthExperiments-CInfoBox__popover-container">

@@ -29,6 +29,7 @@
 				<template #label-info>
 					<c-info-box
 						:icon="cdxIconInfo"
+						:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' )"
 						:close-icon="cdxIconClose"
 					>
 						<div class="ext-growthExperiments-NewImpact__scorecard__info">
@@ -70,6 +71,7 @@
 				<template #label-info>
 					<c-info-box
 						:icon="cdxIconInfo"
+						:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' )"
 						:close-icon="cdxIconClose"
 					>
 						<div class="ext-growthExperiments-NewImpact__scorecard__info">
@@ -100,8 +102,8 @@
 		</div>
 		<div v-if="data">
 			<c-text
-				class="ext-growthExperiments-NewImpact__recent-activity-title"
-				as="h5"
+				class="ext-growthExperiments-NewImpact__section-title ext-growthExperiments-increaseSpecificity"
+				as="h3"
 				size="md"
 				weight="bold"
 			>
@@ -125,7 +127,8 @@
 		</div>
 		<div v-if="data">
 			<c-text
-				as="h5"
+				class="ext-growthExperiments-NewImpact__section-title ext-growthExperiments-increaseSpecificity"
+				as="h3"
 				size="md"
 				weight="bold"
 			>
@@ -246,9 +249,10 @@ module.exports = exports = {
 @import '../../vue-components/variables.less';
 
 .ext-growthExperiments-NewImpact {
-	&__recent-activity-title {
+	&__section-title.ext-growthExperiments-increaseSpecificity {
 		// Use same margin from desktop vector
 		margin-top: 0.3em;
+		font-size: @font-size-100;
 	}
 
 	&__scores {

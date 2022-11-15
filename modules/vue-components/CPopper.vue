@@ -9,12 +9,12 @@
 			<div class="ext-growthExperiments-CPopper__popover__close-button-container">
 				<cdx-button
 					type="quiet"
+					:aria-label="iconLabel"
 					class="ext-growthExperiments-CPopper__popover__close-button"
 					@click="$emit( 'close', $event )"
 				>
 					<cdx-icon
 						:icon="icon"
-						:icon-label="iconLabel"
 						class="ext-growthExperiments-CPopper__popover__close-icon"
 					></cdx-icon>
 				</cdx-button>

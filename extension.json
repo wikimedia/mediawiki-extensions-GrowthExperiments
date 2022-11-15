@@ -742,7 +742,9 @@
 				"growthexperiments-homepage-impact-unactivated-description",
 				"growthexperiments-homepage-impact-unactivated-suggested-edits-link",
 				"growthexperiments-homepage-impact-subheader-text-no-pageviews",
-				"growthexperiments-homepage-impact-contributions-link-no-edit"
+				"growthexperiments-homepage-impact-contributions-link-no-edit",
+				"growthexperiments-homepage-impact-scores-streak-info-label",
+				"growthexperiments-homepage-impact-scores-thanks-info-label"
 			],
 			"dependencies": [
 				"moment",
