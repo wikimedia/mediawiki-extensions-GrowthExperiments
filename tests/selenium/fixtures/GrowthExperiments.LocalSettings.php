@@ -11,7 +11,12 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\TourHooks;
+use GrowthExperiments\UserImpact\EditingStreak;
+use GrowthExperiments\UserImpact\StaticUserImpactLookup;
+use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentityValue;
+use MediaWiki\User\UserTimeCorrection;
 
 // Raise limits from I2aead24cb7f47
 if ( defined( 'MW_QUIBBLE_CI' ) ) {
@@ -25,6 +30,9 @@ $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
 # Prevent pruning of red links (among other things) for subpage provider.
 $wgGEDeveloperSetup = true;
+
+// Set $wgPageViewInfoWikimediaDomain for page view info URL construction.
+$wgPageViewInfoWikimediaDomain = 'en.wikipedia.org';
 
 $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services ) {
 	$copyEditTaskType = new TemplateBasedTaskType(
@@ -58,6 +66,46 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 			], $services->getTitleFactory() );
 		}
 	);
+
+	// Set up a fake user impact lookup service for CI.
+	// Note: we might want to disable this in Patch Demo environment, let's see if we get feedback to that effect.
+	$staticUserImpactLookup = new StaticUserImpactLookup( [
+		1 => new GrowthExperiments\UserImpact\ExpensiveUserImpact(
+			new UserIdentityValue( 1, 'Admin' ),
+			10,
+			[ 0 => 2 ],
+			[
+				'2022-08-24' => 1,
+				'2022-08-25' => 1
+			],
+			new UserTimeCorrection( 'ZoneInfo|660|Australia/Sydney' ),
+			2,
+			wfTimestamp( TS_UNIX, '20220825000000' ),
+			[
+				'2022-08-24' => 1000,
+				'2022-08-25' => 2000
+			],
+			[
+				'Foo' => [
+					'2022-08-24' => 500,
+					'2022-08-25' => 500
+				],
+				'Bar' => [
+					'2022-08-24' => 1000,
+					'2022-08-25' => 1000
+				]
+			],
+			new EditingStreak()
+		)
+	] );
+	$services->redefineService( 'GrowthExperimentsUserImpactLookup',
+		static function () use ( $staticUserImpactLookup ): UserImpactLookup {
+			return $staticUserImpactLookup;
+		} );
+	$services->redefineService( 'GrowthExperimentsUserImpactStore',
+		static function () use ( $staticUserImpactLookup ): UserImpactLookup {
+			return $staticUserImpactLookup;
+		} );
 };
 
 # Set up SubpageLinkRecommendationProvider, which will take the recommendation from the article's /addlink.json subpage,
