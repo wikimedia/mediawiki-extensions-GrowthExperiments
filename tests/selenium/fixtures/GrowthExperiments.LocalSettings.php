@@ -127,7 +127,6 @@ $wgGEMentorProvider = "structured";
 $wgGEMentorshipAutomaticEligibility = true;
 $wgGEMentorshipMinimumAge = 0;
 $wgGEMentorshipMinimumEditcount = 0;
-$wgGEMentorDashboardUseVue = true;
 
 // Conditionally load Parsoid in CI
 if ( defined( 'MW_QUIBBLE_CI' ) && !is_dir( "$IP/services/parsoid" ) ) {

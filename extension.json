@@ -1655,12 +1655,67 @@
 			}
 		},
 		"ext.growthExperiments.MentorDashboard": {
+			"es6": true,
+			"styles": [
+				"vue-components/variables.less"
+			],
 			"packageFiles": [
-				"ext.growthExperiments.MentorDashboard/index.js",
+				"ext.growthExperiments.MentorDashboard/init.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/AwaySettingsDialog.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorMessageChangeDialog.js",
-				"ext.growthExperiments.MentorDashboard/MentorTools/MentorToolsEllipsisMenu.js"
+				"ext.growthExperiments.MentorDashboard/MentorTools/MentorToolsEllipsisMenu.js",
+				"ext.growthExperiments.MentorDashboard/validators/align-text.validator.js",
+				"ext.growthExperiments.MentorDashboard/components/CNumberInput/CNumberInput.vue",
+				"ext.growthExperiments.MentorDashboard/components/DataTable/DataTable.vue",
+				"ext.growthExperiments.MentorDashboard/components/DataTable/DataTableCellValue.vue",
+				"ext.growthExperiments.MentorDashboard/components/DataTable/DataTableCellLink.vue",
+				"ext.growthExperiments.MentorDashboard/components/DataTable/DataTablePagination.vue",
+				"ext.growthExperiments.MentorDashboard/components/DataTable/DataTableLimit.vue",
+				"ext.growthExperiments.MentorDashboard/components/HorizontalDivider/HorizontalDivider.vue",
+				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/MenteeOverview.vue",
+				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/MenteeSearch.vue",
+				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/MenteeFilters.vue",
+				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/MenteeFiltersForm.vue",
+				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/DataTableCellMentee.vue",
+				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/NoResults.vue",
+				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/LegendBox.vue",
+				"ext.growthExperiments.MentorDashboard/store/index.js",
+				"ext.growthExperiments.MentorDashboard/store/MenteeOverviewApi.js",
+				"ext.growthExperiments.MentorDashboard/store/modules/mentees.js",
+				"ext.growthExperiments.MentorDashboard/store/modules/mentees-search.js",
+				"ext.growthExperiments.MentorDashboard/store/modules/user-preferences.js",
+				"vue-components/CInfoBox.vue",
+				"vue-components/CPopper.vue",
+				"vue-components/directives/click-outside.directive.js",
+				"utils/filters.js",
+				{
+					"name": "ext.growthExperiments.MentorDashboard/components/icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconUserActive",
+						"cdxIconUpTriangle",
+						"cdxIconClock",
+						"cdxIconHelp",
+						"cdxIconInfo",
+						"cdxIconEdit",
+						"cdxIconEditUndo",
+						"cdxIconBlock",
+						"cdxIconStar",
+						"cdxIconUnStar",
+						"cdxIconNext",
+						"cdxIconPrevious",
+						"cdxIconExpand",
+						"cdxIconCollapse",
+						"cdxIconError",
+						"cdxIconSearch",
+						"cdxIconClose"
+					]
+				},
+				{
+					"name": "ext.growthExperiments.MentorDashboard/store/Tags.json",
+					"callback": [ "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks", "getTagsToFilterBy" ]
+				}
 			],
 			"messages": [
 				"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit",
@@ -1692,87 +1747,7 @@
 				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save",
 				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel",
 				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label",
-				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success"
-			],
-			"dependencies": [
-				"ext.growthExperiments.icons",
-				"mediawiki.language",
-				"mediawiki.api",
-				"oojs-ui-widgets",
-				"oojs-ui-windows",
-				"oojs-ui.styles.icons-movement",
-				"oojs-ui.styles.icons-editing-core",
-				"oojs-ui.styles.icons-editing-citation",
-				"oojs-ui.styles.icons-interactions",
-				"oojs-ui.styles.icons-user",
-				"oojs-ui.styles.icons-moderation",
-				"oojs-ui.styles.icons-media",
-				"mediawiki.widgets.UserInputWidget"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.MentorDashboard.Vue": {
-			"styles": [
-				"vue-components/variables.less"
-			],
-			"packageFiles": [
-				"ext.growthExperiments.MentorDashboard.Vue/init.js",
-				"ext.growthExperiments.MentorDashboard.Vue/validators/align-text.validator.js",
-				"ext.growthExperiments.MentorDashboard.Vue/components/CNumberInput/CNumberInput.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTable.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTableCellValue.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTableCellLink.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTablePagination.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/DataTable/DataTableLimit.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/HorizontalDivider/HorizontalDivider.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/MenteeOverview.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/MenteeSearch.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/MenteeFilters.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/MenteeFiltersForm.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/DataTableCellMentee.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/NoResults.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/components/MenteeOverview/LegendBox.vue",
-				"ext.growthExperiments.MentorDashboard.Vue/store/index.js",
-				"ext.growthExperiments.MentorDashboard.Vue/store/MenteeOverviewApi.js",
-				"ext.growthExperiments.MentorDashboard.Vue/store/modules/mentees.js",
-				"ext.growthExperiments.MentorDashboard.Vue/store/modules/mentees-search.js",
-				"ext.growthExperiments.MentorDashboard.Vue/store/modules/user-preferences.js",
-				"vue-components/CInfoBox.vue",
-				"vue-components/CPopper.vue",
-				"vue-components/directives/click-outside.directive.js",
-				"utils/filters.js",
-				{
-					"name": "ext.growthExperiments.MentorDashboard.Vue/components/icons.json",
-					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
-					"callbackParam": [
-						"cdxIconUserActive",
-						"cdxIconUpTriangle",
-						"cdxIconClock",
-						"cdxIconHelp",
-						"cdxIconInfo",
-						"cdxIconEdit",
-						"cdxIconEditUndo",
-						"cdxIconBlock",
-						"cdxIconStar",
-						"cdxIconUnStar",
-						"cdxIconNext",
-						"cdxIconPrevious",
-						"cdxIconExpand",
-						"cdxIconCollapse",
-						"cdxIconError",
-						"cdxIconSearch",
-						"cdxIconClose"
-					]
-				},
-				{
-					"name": "ext.growthExperiments.MentorDashboard.Vue/store/Tags.json",
-					"callback": [ "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks", "getTagsToFilterBy" ]
-				}
-			],
-			"messages": [
+				"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success",
 				"growthexperiments-mentor-dashboard-mentee-overview-intro",
 				"growthexperiments-mentor-dashboard-mentee-overview-active-ago",
 				"growthexperiments-mentor-dashboard-mentee-overview-page-counter",
@@ -1812,14 +1787,24 @@
 				"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label"
 			],
 			"dependencies": [
-				"mediawiki.api",
+				"ext.growthExperiments.icons",
 				"mediawiki.language",
 				"mediawiki.language.names",
+				"mediawiki.api",
+				"oojs-ui-widgets",
+				"oojs-ui-windows",
+				"oojs-ui.styles.icons-movement",
+				"oojs-ui.styles.icons-editing-core",
+				"oojs-ui.styles.icons-editing-citation",
+				"oojs-ui.styles.icons-interactions",
+				"oojs-ui.styles.icons-user",
+				"oojs-ui.styles.icons-moderation",
+				"oojs-ui.styles.icons-media",
+				"mediawiki.widgets.UserInputWidget",
 				"vue",
 				"vuex",
 				"@wikimedia/codex"
 			],
-			"es6": true,
 			"targets": [
 				"desktop",
 				"mobile"
@@ -1827,10 +1812,10 @@
 		},
 		"ext.growthExperiments.MentorDashboard.styles": {
 			"styles": [
-				"ext.growthExperiments.MentorDashboard/MentorDashboard.less",
-				"ext.growthExperiments.MentorDashboard/BaseModule.less",
-				"ext.growthExperiments.MentorDashboard.Vue/styles/MenteeOverview.less",
-				"ext.growthExperiments.MentorDashboard/Resources.less",
+				"ext.growthExperiments.MentorDashboard/styles/MentorDashboard.less",
+				"ext.growthExperiments.MentorDashboard/styles/BaseModule.less",
+				"ext.growthExperiments.MentorDashboard/styles/MenteeOverview.less",
+				"ext.growthExperiments.MentorDashboard/styles/Resources.less",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.less"
 			],
 			"targets": [
@@ -1840,7 +1825,7 @@
 		},
 		"ext.growthExperiments.MentorDashboard.Discovery": {
 			"styles": [
-				"ext.growthExperiments.MentorDashboard/Discovery.less"
+				"ext.growthExperiments.MentorDashboard/styles/Discovery.less"
 			],
 			"scripts": [
 				"ext.growthExperiments.MentorDashboard/Discovery.js"
@@ -2223,10 +2208,6 @@
 		"GEMentorDashboardEnabled": {
 			"description": "Should users be allowed to access Special:MentorDashboard?",
 			"value": true
-		},
-		"GEMentorDashboardUseVue": {
-			"description": "Should users using Special:MentorDashboard get the JS ext.growthExperiments.MentorDashboard.Vue or prior ext.growthExperiments.MentorDashboard",
-			"value": false
 		},
 		"GEMentorDashboardDeploymentMode": {
 			"description": "One of stable/beta/alpha. Used by the mentor dashboard to display only features intended on that wiki.",

@@ -25,14 +25,14 @@ module.exports = {
 	// Indicates whether the coverage information should be collected while executing the test
 	collectCoverage: true,
 	collectCoverageFrom: [
-		'modules/ext.growthExperiments.MentorDashboard.Vue/**/*.(js|vue)',
+		'modules/ext.growthExperiments.MentorDashboard/**/*.(js|vue)',
 		'modules/ext.growthExperiments.Homepage.NewImpact/**/*.(js|vue)'
 	],
 	// The directory where Jest should output its coverage files
 	coverageDirectory: 'coverage',
 	// A list of paths to directories that Jest should use to search for files in.
 	roots: [
-		'./modules/ext.growthExperiments.MentorDashboard.Vue',
+		'./modules/ext.growthExperiments.MentorDashboard',
 		'./modules/ext.growthExperiments.Homepage.NewImpact'
 	],
 	setupFiles: [

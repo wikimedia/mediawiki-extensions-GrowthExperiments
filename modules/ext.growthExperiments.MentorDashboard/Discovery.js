@@ -2,7 +2,7 @@
 ( function () {
 	'use strict';
 
-	var $body = $( 'body' );
+	const $body = $( 'body' );
 	if ( $body.hasClass( 'skin-vector' ) && !$body.hasClass( 'skin-vector-legacy' ) ) {
 		// exclude modern vector, because the dot is not visible there (and hidden in a menu)
 		// TODO: Make the dot appear in modern Vector (T290644).
