@@ -3,7 +3,11 @@
 		<c-list unstyled striped>
 			<c-list-item v-for="( article, index ) in items" :key="article.title">
 				<div class="ext-growthExperiments-ArticlesList__ArticleListItem">
-					<a class="ext-growthExperiments-ArticlesList__ArticleListItem__info" :href="article.href">
+					<a
+						class="ext-growthExperiments-ArticlesList__ArticleListItem__info"
+						:title="$i18n( 'growthexperiments-homepage-impact-article-link-tooltip' )"
+						:href="article.href"
+					>
 						<cdx-thumbnail :thumbnail="{ url: article.image.href }">
 						</cdx-thumbnail>
 						<c-text
@@ -30,8 +34,9 @@
 							</a>
 						</c-text>
 						<a
-							:href="article.views.href"
 							class="ext-growthExperiments-ArticlesList__ArticleListItem__pageviews__link"
+							:title="$i18n( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )"
+							:href="article.views.href"
 						>
 							<c-sparkline
 								:id="`article-${index}`"
