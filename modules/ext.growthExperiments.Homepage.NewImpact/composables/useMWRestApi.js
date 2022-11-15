@@ -15,8 +15,7 @@ function useMWRestApi( url ) {
 			// unref() unwraps potential refs
 			unref( url )
 		).then( ( json ) => ( data.value = json ) )
-			.catch( ( err ) => {
-				// TODO: parse/inspect error response
+			.catch( ( errorType, err ) => {
 				error.value = err;
 			} );
 	}

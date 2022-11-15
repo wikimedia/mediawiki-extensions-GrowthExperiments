@@ -137,7 +137,15 @@ function useUserImpact( userId, timeFrame ) {
 				}
 			};
 		} ),
-		error
+		error: computed( () => {
+			if ( !error.value ) {
+				return;
+			}
+			if ( error.value.xhr && error.value.xhr.responseJSON ) {
+				return error.value.xhr.responseJSON;
+			}
+			return error.value;
+		} )
 	};
 }
 
