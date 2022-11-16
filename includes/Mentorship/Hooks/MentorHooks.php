@@ -162,10 +162,7 @@ class MentorHooks implements
 			}
 		} );
 		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-			if (
-				$this->config->get( 'GEMentorshipUseIsActiveFlag' ) &&
-				$this->mentorStore->isMentee( $user )
-			) {
+			if ( $this->mentorStore->isMentee( $user ) ) {
 				$this->mentorStore->markMenteeAsActive( $user );
 			}
 		} );

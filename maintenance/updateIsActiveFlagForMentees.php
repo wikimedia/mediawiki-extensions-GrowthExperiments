@@ -44,7 +44,6 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 			'Set gemm_mentee_is_active to false for users who are inactive for longer' .
 			'than $wgRCMaxAge.'
 		);
-		$this->addOption( 'force', 'Do the update even if GEMentorshipUseIsActiveFlag is false' );
 	}
 
 	/**
@@ -65,14 +64,6 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		if (
-			!$this->getConfig()->get( 'GEMentorshipUseIsActiveFlag' ) &&
-			!$this->hasOption( 'force' )
-		) {
-			$this->output( "The mentee is active flag is disabled. Use --force to bypass.\n" );
-			return;
-		}
-
 		$this->initServices();
 
 		$dbr = $this->growthLoadBalancer->getConnection( DB_REPLICA );
