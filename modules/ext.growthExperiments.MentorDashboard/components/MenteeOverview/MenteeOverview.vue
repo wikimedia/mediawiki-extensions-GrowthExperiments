@@ -4,9 +4,8 @@
 			<c-info-box
 				class="ext-growthExperiments-MenteeOverview__info-box"
 				:icon="cdxIconInfo"
-				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' )"
+				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' ).text()"
 				:close-icon="cdxIconClose"
-				:close-icon-label="$i18n( 'close-tbd' )"
 			>
 				<h3>
 					{{
@@ -45,17 +44,17 @@
 			v-else-if="menteesDataReady && doesFilterOutMentees"
 			class="ext-growthExperiments-MenteeOverview__no-results"
 			:icon="cdxIconError"
-			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline' )"
-			:icon-label="$i18n( 'tbd-no-results' )"
-			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text' )"
+			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline' ).text()"
+			:icon-label="$i18n( 'tbd-no-results' ).text()"
+			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text' ).text()"
 		></no-results>
 		<no-results
 			v-else-if="menteesDataReady && !doesFilterOutMentees"
 			class="ext-growthExperiments-MenteeOverview__no-results"
 			:icon="cdxIconClock"
-			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline' )"
-			:icon-label="$i18n( 'tbd-no-results' )"
-			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text' )"
+			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline' ).text()"
+			:icon-label="$i18n( 'tbd-no-results' ).text()"
+			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text' ).text()"
 		></no-results>
 	</section>
 </template>
@@ -181,7 +180,7 @@ module.exports = exports = {
 					key,
 					icon,
 					sortBy,
-					label: this.$i18n( label ),
+					label: this.$i18n( label ).text(),
 					data: data || identity
 				};
 			} )
@@ -208,7 +207,7 @@ module.exports = exports = {
 			return this.columns.concat( {
 				icon: 'cdxIconStar',
 				orderInLegend: 0,
-				label: this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-star' )
+				label: this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-star' ).text()
 			} )
 				.sort( ( a, b ) => a.orderInLegend - b.orderInLegend )
 				.map( ( { icon, label } ) => ( {

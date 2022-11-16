@@ -23,21 +23,23 @@ module.exports = exports = {
 	},
 	emits: [ 'update' ],
 	data() {
-		const optionLabelText = ( optionValue ) => {
-			return {
-				label: this.$i18n(
-					'growthexperiments-mentor-dashboard-mentee-overview-show-entries',
-					this.$filters.convertNumber( optionValue )
-				),
-				value: optionValue
-			};
-		};
-		const menuItems = this.limitOptions.map( optionLabelText );
-		const selection = this.limit ? this.limit : menuItems[ 0 ].value;
+		const selection = this.limit ? this.limit : this.limitOptions[ 0 ].value;
 		return {
-			menuItems: menuItems,
 			selection: selection
 		};
+	},
+	computed: {
+		menuItems() {
+			return this.limitOptions.map( ( optionValue ) => {
+				return {
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-mentee-overview-show-entries',
+						this.$filters.convertNumber( optionValue )
+					).text(),
+					value: optionValue
+				};
+			} );
+		}
 	}
 };
 </script>

@@ -7,10 +7,7 @@
 			<cdx-icon
 				class="ext-growthExperiments-MenteeFilters__expand-icon"
 				:icon="showFiltersForm ? cdxIconCollapse : cdxIconExpand"
-				:icon-label="showFiltersForm ?
-					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label' ) :
-					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label' )
-				"
+				:icon-label="iconLabel"
 			></cdx-icon>
 		</cdx-button>
 		<div v-if="showFiltersForm" class="ext-growthExperiments-MenteeFilters__container">
@@ -50,6 +47,13 @@ module.exports = exports = {
 		return {
 			showFiltersForm: false
 		};
+	},
+	compouted: {
+		iconLabel() {
+			return this.showFiltersForm ?
+				this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label' ).text() :
+				this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label' ).text();
+		}
 	},
 	methods: {
 		onClickOutside( e ) {

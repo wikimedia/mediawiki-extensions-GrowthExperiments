@@ -2,15 +2,12 @@
 	<div class="ext-growthExperiments-DataTableCellMentee">
 		<cdx-button
 			type="quiet"
+			:aria-label="ariaLabel"
 			@click="toggleStarred"
 		>
 			<cdx-icon
 				class="ext-growthExperiments-DataTableCellMentee__star-icon"
 				:icon="value.isStarred ? cdxIconUnStar : cdxIconStar"
-				:icon-label="value.isStarred ?
-					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label' ) :
-					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label' )
-				"
 			></cdx-icon>
 		</cdx-button>
 		<div class="ext-growthExperiments-DataTableCellMentee__user-info">
@@ -51,12 +48,17 @@ module.exports = exports = {
 		};
 	},
 	computed: {
-		usernameHref: function () {
+		ariaLabel() {
+			return this.value.isStarred ?
+				this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label' ).text() :
+				this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label' ).text();
+		},
+		usernameHref() {
 			return ( new mw.Title( this.value.username, 2 ) ).getUrl();
 		}
 	},
 	methods: {
-		toggleStarred: function () {
+		toggleStarred() {
 			this.$emit( 'toggle-starred', { starred: this.value.isStarred, userId: this.value.userId } );
 		}
 	}

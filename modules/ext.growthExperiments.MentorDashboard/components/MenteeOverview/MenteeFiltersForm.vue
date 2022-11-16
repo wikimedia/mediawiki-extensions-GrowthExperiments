@@ -8,11 +8,11 @@
 		@submit="onFiltersUpdate"
 	>
 		<h3 class="no-gutter">
-			{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline' ) }}
+			{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline' ).text() }}
 		</h3>
 		<section class="ext-growthExperiments-MenteeFiltersForm__form-group">
 			<label>
-				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from' ) }}
+				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from' ).text() }}
 			</label>
 			<c-number-input
 				v-model="formData.editCountMin"
@@ -22,7 +22,7 @@
 		</section>
 		<section class="ext-growthExperiments-MenteeFiltersForm__form-group">
 			<label>
-				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to' ) }}
+				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to' ).text() }}
 			</label>
 			<c-number-input
 				v-model="formData.editCountMax"
@@ -32,12 +32,12 @@
 		</section>
 		<horizontal-divider class="ext-growthExperiments-MenteeFiltersForm-section-divider"></horizontal-divider>
 		<h3 class="no-gutter">
-			{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline' ) }}
+			{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline' ).text() }}
 		</h3>
 		<section>
 			<div class="ext-growthExperiments-MenteeFiltersForm__form-group--inline">
 				<label>
-					{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days' ) }}
+					{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days' ).text() }}
 				</label>
 				<div class="ext-growthExperiments-MenteeFiltersForm__button-group">
 					<cdx-button
@@ -55,7 +55,7 @@
 			</div>
 			<div class="ext-growthExperiments-MenteeFiltersForm__form-group--inline">
 				<label>
-					{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months' ) }}
+					{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months' ).text() }}
 				</label>
 				<div class="ext-growthExperiments-MenteeFiltersForm__button-group">
 					<cdx-button
@@ -74,7 +74,7 @@
 		<horizontal-divider class="ext-growthExperiments-MenteeFiltersForm-section-divider"></horizontal-divider>
 		<section class="ext-growthExperiments-MenteeFiltersForm__form-group">
 			<cdx-checkbox v-model="formData.onlyStarred" @update:model-value="onOnlyStarredUpdate">
-				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred' ) }}
+				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred' ).text() }}
 			</cdx-checkbox>
 		</section>
 		<section class="ext-growthExperiments-MenteeFiltersForm__form-group ext-growthExperiments-MenteeFiltersForm__form-actions">
@@ -83,7 +83,7 @@
 				form="mentee-filters-form"
 				type="submit">
 				{{
-					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit' )
+					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit' ).text()
 				}}
 			</cdx-button>
 		</section>
@@ -142,7 +142,7 @@ module.exports = exports = {
 						TIME_AGO_LABELS.DAYS.label,
 						val,
 						localisedNumber
-					),
+					).text(),
 					displayText: localisedNumber,
 					value: val
 				};
@@ -158,7 +158,7 @@ module.exports = exports = {
 						TIME_AGO_LABELS.MONTHS.label,
 						displayNumber,
 						localisedNumber
-					),
+					).text(),
 					displayText: localisedNumber,
 					value: val
 				};
