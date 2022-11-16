@@ -537,5 +537,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "When {{GENDER:|you}} send a message to your mentor, {{GENDER:$1|he|she|they}} will see it on {{GENDER:$1|his|her|their}} user talk page and {{GENDER:|you}} should receive a notification when {{GENDER:$1|he replies|she replies|they reply}}.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Opt out of mentorship",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Select the button below to opt out if {{GENDER:|you}} prefer not to have a specific mentor assigned to {{GENDER:|you}} right now. {{GENDER:|You}} can get a new mentor again at any time if {{GENDER:|you}} change {{GENDER:|your}} mind.",
-	"growthexperiments-homepage-mentorship-about-done": "Done"
+	"growthexperiments-homepage-mentorship-about-done": "Done",
+	"growthexperiments-homepage-special-contribute-title": "Suggested edits",
+	"growthexperiments-homepage-special-contribute-description": "Make small and easy changes (e.g., add a link or copyedit) to improve existing articles.",
+	"growthexperiments-homepage-special-contribute-cta": "View suggested edits"
 }

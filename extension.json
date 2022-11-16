@@ -370,6 +370,7 @@
 		"ManualLogEntryBeforePublish": [
 			"impact"
 		],
+		"ContributeCards": "homepage",
 		"SpecialPage_initList": [
 			"welcomeSurvey",
 			"homepage",
