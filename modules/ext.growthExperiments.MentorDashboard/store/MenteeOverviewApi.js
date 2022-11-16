@@ -90,12 +90,12 @@
 
 	MenteeOverviewApi.prototype.setPage = function ( value ) {
 		this.page = value;
-		this.apiParams.offset = this.page * this.apiParams.limit;
 	};
 
 	MenteeOverviewApi.prototype.getMenteeData = function () {
 		const menteeOverviewApi = this;
 
+		this.apiParams.offset = this.page * this.apiParams.limit;
 		this.apiParams.uselang = mw.config.get( 'wgUserLanguage' );
 		return $.getJSON( this.apiUrl + '?' + $.param( this.apiParams ) ).then( function ( data ) {
 			menteeOverviewApi.totalRows = data.totalRows;
