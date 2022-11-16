@@ -7,6 +7,7 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityLookup;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -23,6 +24,9 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 
 	/** @var UserEditTracker */
 	private $userEditTracker;
+
+	/** @var UserFactory */
+	private $userFactory;
 
 	/** @var ILoadBalancer */
 	private $growthLoadBalancer;
@@ -50,6 +54,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
+		$this->userFactory = $services->getUserFactory();
 		$this->userEditTracker = $services->getUserEditTracker();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
 		$this->mentorStore = $geServices->getMentorStore();
@@ -88,11 +93,21 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 				continue;
 			}
 
+			$lastActivityTimestamp = $this->userEditTracker->getLatestEditTimestamp( $menteeUser );
+			if ( $lastActivityTimestamp === false ) {
+				$lastActivityTimestamp = $this->userFactory->newFromUserIdentity( $menteeUser )
+					->getRegistration();
+			}
+
 			$timeDelta = (int)wfTimestamp() - (int)wfTimestamp(
 				TS_UNIX,
-				$this->userEditTracker->getLatestEditTimestamp( $menteeUser )
+				$lastActivityTimestamp
 			);
-			if ( $timeDelta > (int)$this->getConfig()->get( 'RCMaxAge' ) ) {
+
+			if (
+				$lastActivityTimestamp === null ||
+				$timeDelta > (int)$this->getConfig()->get( 'RCMaxAge' )
+			) {
 				$this->mentorStore->markMenteeAsInactive( $menteeUser );
 				$thisBatch++;
 
