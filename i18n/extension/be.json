@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chadyka",
-			"Plaga med"
+			"Plaga med",
+			"Maksim L."
 		]
 	},
 	"growthexperiments-desc": "Гэта пашырэнне змяшчае эксперыменты, якія праводзіць каманда Росту.",
@@ -75,7 +76,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Абнаўленне: шаблоны для знаходжання артыкулаў, якія неабходна абнавіць актуальнай інфармацыяй.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Мэтавая старонка, дзе можна даведацца больш аб абнаўленні старонак.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Мэтавая старонка, дзе можна даведацца больш аб тыпе задання па рэкамендацыі спасылак.",
-	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Максімальная колькасць прапановаў спасылак для кожнага прапанаванага задання.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Максімальная колькасць прапаноў спасылак для кожнага прапанаванага задання.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "Максімальная колькасць праранаваных заданняў «Дадаць спасылку», якія навічок зможа выполнять штодзённа.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Спіс назваў раздзелаў, у якіх не варта рэкамендаваць спасылкі.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Мэтавая старонка, дзе можна даведацца больш аб тыпе задачы па рэкамендацыі выяваў.",

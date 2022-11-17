@@ -4,7 +4,8 @@
 			"Chadyka",
 			"No Sleep till Krupki",
 			"Tomato Cream",
-			"Plaga med"
+			"Plaga med",
+			"Maksim L."
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Уключыць акенца дапамогі рэдактарам",
@@ -21,7 +22,7 @@
 	"growthexperiments-help-panel-home-title": "Атрымаць дапамогу з праўкай",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Вы}} апублікавалі праўку. Дзякуй і працягвайце!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Вы}} захавалі праўку. Дзякуй і працягвайце!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Дзякуй за разгляд прапановаў. Працягвайце!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "Дзякуй за разгляд прапаноў. Працягвайце!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "Усе артыкулы, да якіх можна дадаць прапанаваныя выявы, на сёння завершаны. Добра зроблена!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "Усе артыкулы, да якіх можна дадаць прапанаваныя спасылкі, на сёння завершаны. Добра зроблена!",
 	"growthexperiments-help-panel-postedit-header": "Наступныя крокі",
