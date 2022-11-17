@@ -5,7 +5,7 @@
 				<div class="ext-growthExperiments-ArticlesList__ArticleListItem">
 					<a
 						class="ext-growthExperiments-ArticlesList__ArticleListItem__info"
-						:title="$i18n( 'growthexperiments-homepage-impact-article-link-tooltip' )"
+						:title="$i18n( 'growthexperiments-homepage-impact-article-link-tooltip' ).text()"
 						:href="article.href"
 					>
 						<cdx-thumbnail :thumbnail="{ url: article.image.href }">
@@ -22,7 +22,7 @@
 						<a
 							v-if="Number.isInteger( article.views.count )"
 							class="ext-growthExperiments-ArticlesList__ArticleListItem__pageviews__link"
-							:title="$i18n( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )"
+							:title="$i18n( 'growthexperiments-homepage-impact-pageviews-link-tooltip' ).text()"
 							:href="article.views.href"
 						>
 							<c-text
@@ -34,7 +34,7 @@
 							<c-sparkline
 								:id="`article-${index}`"
 								class="ext-growthExperiments-ArticlesList__ArticleListItem__pageviews__sparkline"
-								:title="$i18n( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )"
+								:title="$i18n( 'growthexperiments-homepage-impact-pageviews-link-tooltip' ).text()"
 								:data="article.views.entries"
 								:dimensions="{ width: 20, height: 20 }"
 								:x-accessor="xAccessor"

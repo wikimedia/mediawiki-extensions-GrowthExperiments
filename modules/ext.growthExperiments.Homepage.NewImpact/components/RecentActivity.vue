@@ -19,7 +19,7 @@
 					as="span"
 					class="ext-growthExperiments-RecentActivity__streak__highlight__text"
 				>
-					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-contribs-count-text', contribs.count ) }}
+					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-contribs-count-text', contribs.count ).text() }}
 				</c-text>
 			</div>
 			<div class="ext-growthExperiments-RecentActivity__streak__graphic">
@@ -96,7 +96,7 @@ module.exports = exports = {
 					'growthexperiments-homepage-impact-recent-activity-streak-data-text',
 					mw.language.convertNumber( this.contribs.entries[ index ] ),
 					date
-				);
+				).text();
 			}
 
 			return date;

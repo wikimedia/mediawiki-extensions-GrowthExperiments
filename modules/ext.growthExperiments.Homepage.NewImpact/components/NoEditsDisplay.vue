@@ -13,7 +13,7 @@
 					:size="[ 'xxl', 'xl', 'lg' ]"
 					weight="bold"
 				>
-					{{ $i18n( 'growthexperiments-homepage-impact-unactivated-subheader-text' ) }}
+					{{ $i18n( 'growthexperiments-homepage-impact-unactivated-subheader-text' ).text() }}
 				</c-text>
 				<c-text
 					v-i18n-html:growthexperiments-homepage-impact-unactivated-subheader-subtext="[ userName ]"
@@ -25,7 +25,7 @@
 				<div v-if="!isDisabled && renderMode === 'overlay'">
 					<cdx-button @click="onSuggestedEditsClick"
 					>
-						{{ $i18n( 'growthexperiments-homepage-impact-unactivated-suggested-edits-link' ) }}
+						{{ $i18n( 'growthexperiments-homepage-impact-unactivated-suggested-edits-link' ).text() }}
 					</cdx-button>
 				</div>
 			</div>
@@ -39,7 +39,7 @@
 				:size="mode !== 'desktop' && 'sm'"
 				color="subtle"
 			>
-				{{ $i18n( 'growthexperiments-homepage-impact-unactivated-description', userName ) }}
+				{{ $i18n( 'growthexperiments-homepage-impact-unactivated-description', userName ).text() }}
 			</c-text>
 			<c-text
 				v-else

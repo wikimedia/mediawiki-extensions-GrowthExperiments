@@ -8,7 +8,7 @@
 		<div v-if="data" class="ext-growthExperiments-NewImpact__scores">
 			<score-card
 				:icon="cdxIconEdit"
-				:label="$i18n( 'growthexperiments-homepage-impact-scores-edit-count' )"
+				:label="$i18n( 'growthexperiments-homepage-impact-scores-edit-count' ).text()"
 			>
 				<c-text size="md" weight="bold">
 					<a :href="contributionsUrl" class="ext-growthExperiments-NewImpact__scores__link">
@@ -18,7 +18,7 @@
 			</score-card>
 			<score-card
 				:icon="cdxIconUserTalk"
-				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' )"
+				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 			>
 				<c-text
 					as="span"
@@ -29,7 +29,7 @@
 				<template #label-info>
 					<c-info-box
 						:icon="cdxIconInfo"
-						:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' )"
+						:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' ).text()"
 						:close-icon="cdxIconClose"
 					>
 						<div class="ext-growthExperiments-NewImpact__scorecard__info">
@@ -38,10 +38,10 @@
 									class="ext-growthExperiments-NewImpact__scorecard__info__icon"
 									:icon="cdxIconInfoFilled"
 								></cdx-icon>
-								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ) }}
+								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text() }}
 							</span>
 							<p>
-								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', userName ) }}
+								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', userName ).text() }}
 							</p>
 						</div>
 					</c-info-box>
@@ -49,7 +49,7 @@
 			</score-card>
 			<score-card
 				:icon="cdxIconClock"
-				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' )"
+				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' ).text()"
 			>
 				<c-text
 					as="span"
@@ -60,18 +60,18 @@
 			</score-card>
 			<score-card
 				:icon="cdxIconChart"
-				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' )"
+				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 			>
 				<c-text
 					as="span"
 					size="md"
 					weight="bold">
-					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-streak-count-text', bestStreakDaysLocalisedCount ) }}
+					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-streak-count-text', bestStreakDaysLocalisedCount ).text() }}
 				</c-text>
 				<template #label-info>
 					<c-info-box
 						:icon="cdxIconInfo"
-						:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' )"
+						:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' ).text()"
 						:close-icon="cdxIconClose"
 					>
 						<div class="ext-growthExperiments-NewImpact__scorecard__info">
@@ -80,10 +80,10 @@
 									class="ext-growthExperiments-NewImpact__scorecard__info__icon"
 									:icon="cdxIconInfoFilled"
 								></cdx-icon>
-								{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ) }}
+								{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text() }}
 							</span>
 							<p>
-								{{ $i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', userName ) }}
+								{{ $i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', userName ).text() }}
 							</p>
 							<p>
 								{{
@@ -92,7 +92,7 @@
 										userName,
 										$filters.convertNumber( data.longestEditingStreak.datePeriod.days ),
 										bestStreakFormattedDates
-									)
+									).text()
 								}}
 							</p>
 						</div>
@@ -107,7 +107,7 @@
 				size="md"
 				weight="bold"
 			>
-				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-title', userName, DEFAULT_STREAK_TIME_FRAME ) }}
+				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-title', userName, DEFAULT_STREAK_TIME_FRAME ).text() }}
 			</c-text>
 			<recent-activity
 				:is-mobile="isMobileHomepage"
@@ -120,8 +120,8 @@
 			<trend-chart
 				id="impact"
 				:count-text="$filters.convertNumber( data.dailyTotalViews.count )"
-				:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName )"
-				:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' )"
+				:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName ).text()"
+				:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' ).text()"
 				:data="data.dailyTotalViews.entries"
 			></trend-chart>
 		</div>
@@ -132,12 +132,12 @@
 				size="md"
 				weight="bold"
 			>
-				{{ $i18n( 'growthexperiments-homepage-impact-subheader-text', userName ) }}
+				{{ $i18n( 'growthexperiments-homepage-impact-subheader-text', userName ).text() }}
 			</c-text>
 			<articles-list class="ext-growthExperiments-NewImpact__articles-list" :items="data.articles"></articles-list>
 			<c-text weight="bold">
 				<a :href="contributionsUrl">
-					{{ $i18n( 'growthexperiments-homepage-impact-contributions-link', data.totalEditsCount, userName ) }}
+					{{ $i18n( 'growthexperiments-homepage-impact-contributions-link', data.totalEditsCount, userName ).text() }}
 				</a>
 			</c-text>
 		</div>

@@ -5,8 +5,8 @@
 			v-if="data"
 			id="impact-summary"
 			:count-text="$filters.convertNumber( data.dailyTotalViews.count )"
-			:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName )"
-			:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' )"
+			:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName ).text()"
+			:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' ).text()"
 			:data="data.dailyTotalViews.entries"
 		></trend-chart>
 		<div v-if="data" class="ext-growthExperiments-NewImpactSummary__info">
@@ -14,7 +14,7 @@
 				<c-text
 					size="medium"
 				>
-					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text', lastEditFormattedDate ) }}
+					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text', lastEditFormattedDate ).text() }}
 				</c-text>
 				<c-text
 					size="medium"
@@ -27,13 +27,13 @@
 				<c-text
 					size="medium"
 				>
-					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text', bestStreakFormattedDates ) }}
+					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text', bestStreakFormattedDates ).text() }}
 				</c-text>
 				<c-text
 					size="medium"
 					weight="bold"
 				>
-					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-streak-count-text', bestStreakDaysLocalisedCount ) }}
+					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-streak-count-text', bestStreakDaysLocalisedCount ).text() }}
 				</c-text>
 			</div>
 		</div>
