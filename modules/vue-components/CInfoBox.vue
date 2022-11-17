@@ -50,7 +50,7 @@ module.exports = exports = {
 	},
 	props: {
 		icon: {
-			type: Object,
+			type: [ String, Object ],
 			required: true
 		},
 		iconLabel: {
@@ -58,7 +58,7 @@ module.exports = exports = {
 			required: true
 		},
 		closeIcon: {
-			type: Object,
+			type: [ String, Object ],
 			default: null
 		},
 		closeIconLabel: {

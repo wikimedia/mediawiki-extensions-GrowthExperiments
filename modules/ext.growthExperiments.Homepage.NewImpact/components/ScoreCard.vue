@@ -35,8 +35,8 @@ module.exports = exports = {
 	},
 	props: {
 		icon: {
-			type: [ Function, Object ],
-			default: () => ( {} )
+			type: [ String, Object ],
+			default: null
 		},
 		label: {
 			type: String,
