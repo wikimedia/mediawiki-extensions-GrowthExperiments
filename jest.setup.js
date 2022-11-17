@@ -1,13 +1,22 @@
+/* global jest:false */
 'use strict';
-/* eslint-disable no-undef */
-// Assign things to "global" here if you want them to be globally available during tests
-global.$ = require( 'jquery' );
+const { config } = require( '@vue/test-utils' );
+// Mock Vue plugins in test suites
+config.global.mocks = {
+	$i18n: ( str ) => str
+};
+
+config.global.directives = {
+	'i18n-html': ( el, binding ) => {
+		el.innerHTML = `${binding.arg} (${binding.value})`;
+	}
+};
 
 function RestMock() {}
 RestMock.prototype.get = jest.fn();
 
 // Mock MW object
-global.mw = {
+const mw = {
 	log: {
 		error: jest.fn(),
 		warn: jest.fn()
@@ -15,6 +24,10 @@ global.mw = {
 	config: {
 		get: jest.fn()
 	},
+	message: jest.fn( ( key ) => ( {
+		text: jest.fn( () => key ),
+		parse: jest.fn()
+	} ) ),
 	user: {
 		getId: jest.fn(),
 		getName: jest.fn(),
@@ -34,3 +47,7 @@ global.mw = {
 	Rest: RestMock
 	// other mw properties as needed...
 };
+
+// Assign things to "global" here if you want them to be globally available during tests
+global.$ = require( 'jquery' );
+global.mw = mw;
