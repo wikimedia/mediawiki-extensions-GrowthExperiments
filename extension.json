@@ -2217,10 +2217,6 @@
 			"description": "One of stable/beta/alpha. Used by the mentor dashboard to display only features intended on that wiki.",
 			"value": "alpha"
 		},
-		"GEMentorDashboardBackendEnabled": {
-			"description": "Enable backend for mentor dashboard (currently controls whether updateMenteeData.php runs on that wiki)",
-			"value": true
-		},
 		"GERecentChangesUnstarredMenteesFilterEnabled": {
 			"description": "Enable filtering for unstarred mentees in Special:RecentChanges. This must not be enabled on wikis with more than 10k mentees per mentor.",
 			"value": true
