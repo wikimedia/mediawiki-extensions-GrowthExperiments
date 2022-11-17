@@ -9,6 +9,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityLookup;
+use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -89,7 +90,14 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 		foreach ( $menteeIds as $menteeId ) {
 			$menteeUser = $this->userIdentityLookup->getUserIdentityByUserId( $menteeId );
 			if ( !$menteeUser ) {
-				$this->output( "Skipping user ID $menteeId, user identity not found.\n" );
+				$this->output(
+					"Deleting mentor/mentee relationship for $menteeId, user identity not found.\n"
+				);
+				$this->mentorStore->dropMenteeRelationship(
+					// user does not exist; MentorStore only makes use of the user ID,
+					// so construct UserIdentity manually for easier deletion.
+					new UserIdentityValue( $menteeId, 'Mentee' )
+				);
 				continue;
 			}
 
