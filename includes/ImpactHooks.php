@@ -148,7 +148,7 @@ class ImpactHooks implements
 			return false;
 		}
 
-		return $userIdentity->getId() >= $firstUserIdForRegistrationTimestamp || $diff <= 7;
+		return $userIdentity->getId() >= $firstUserIdForRegistrationTimestamp || $diff->days <= 7;
 	}
 
 	/**
