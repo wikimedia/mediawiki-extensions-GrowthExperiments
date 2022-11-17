@@ -5,6 +5,7 @@
 			"Medic",
 			"Nico",
 			"Saederup92",
+			"SiGNOUT",
 			"Steenth"
 		]
 	},
@@ -67,6 +68,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Opret nye artikler og udvid korte artikler.",
 	"growthexperiments-homepage-suggested-edits-header": "Foreslåede redigeringer",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Dit}} indtryk",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Oplysninger om, hvordan tak fungerer",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "Oplysninger om, hvordan streaken udregnes",
 	"growthexperiments-homepage-impact-subheader-text": "Folk læser de artikler {{GENDER:$1|du}} har redigeret!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Antal visninger siden {{GENDER:$1|du}} redigerede (de sidste 60 dage):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Du har}} foretaget <strong>$1</strong> {{PLURAL:$1|redigering|redigeringer}} (se alle)",

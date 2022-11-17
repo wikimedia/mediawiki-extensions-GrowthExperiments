@@ -404,7 +404,7 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "Прапанова",
 	"growthexperiments-addlink-summary-column-header-linked": "Былі звязаныя?",
 	"growthexperiments-addlink-summary-copyrightwarning": "Захоўваючы змены, Вы згаджаецеся з [https://foundation.wikimedia.org/wiki/Terms_of_Use Умовамі выкарыстання], а таксама згаджаецеся на беззваротную публікацыю вашага ўкладу на ўмовах ліцэнзіяў [https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License CC BY-SA 3.0 License] і [https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License GFDL].",
-	"growthexperiments-addlink-summary-summary": "Функцыя прапаноў спасылак: {{PLURAL:$1|дададзена $1 спасылка|дададзена $1 спасылкі|дададзена $1 спасылак}}.",
+	"growthexperiments-addlink-summary-summary": "Функцыя прапаноў спасылак: {{PLURAL:$1|дададзена $1 спасылка|дададзены $1 спасылкі|дададзены $1 спасылак}}.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Вы}} прапусцілі ўсе прапановы для гэтага артыкула.",
 	"growthexperiments-addlink-skip-body": "Вы ўпэўнены, што не {{GENDER:|жадаеце}} прымаць або адхіляць якія-небудзь прапановы?",
 	"growthexperiments-addlink-skip-accept": "Прапусціць усе",

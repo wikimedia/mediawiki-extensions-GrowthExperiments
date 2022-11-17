@@ -26,7 +26,7 @@
 	"apihelp-growthmanagementorlist-param-geaction": "פעולה",
 	"apihelp-growthmanagementorlist-param-message": "הודעת היכרות (מחרוזת ריקה להודעת חונך לפי ברירת המחדל)",
 	"apihelp-growthmanagementorlist-param-weight": "משקל",
-	"apihelp-growthmanagementorlist-param-autoassigned": "האם חונך מוקצה אוטומטית למשתמשים חדשים?",
+	"apihelp-growthmanagementorlist-param-autoassigned": "האם חונך מוקצה אוטומטית למתחילים?",
 	"apihelp-growthmanagementorlist-param-summary": "סיבה לשינוי",
 	"apihelp-growthmanagementorlist-param-username": "שם המשתמש של החונך מושפע מהשינוי. אם זה לא מסופק, ישמש המשתמש שנמצא בחשבון עכשיו. יכול לשמש רק בידי משתמשים עם הרשאות.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "אם הערך של isaway הוא true, חובה לספק awaytimestamp."

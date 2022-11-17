@@ -74,8 +74,10 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Visitas de articulos que {{GENDER:$1|tu ha}} modificate",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total de modificationes",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Gratias recipite",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Information sur como functiona le regratiamentos",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} es create per un communitate de redactores como {{GENDER:$1|tu}}. Altere contributores pote regratiar te pro un modification que tu ha facite, e tu pote equalmente regratiar alteres pro lor modificationes.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Isto es le numero de dies consecutive le plus grande durante le quales {{GENDER:$1|tu}} ha facite al minus un modification.",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "Information sur como le sequentia se calcula",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Tu}} sequentia le plus longe actualmente es de $2 die{{PLURAL:$2||s}} que tu ha attingite inter $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Visitas de articulos que {{GENDER:$1|tu ha}} modificate",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas post {{GENDER:$1|tu}} modification (ultime 60 dies):",
@@ -529,5 +531,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Quando tu invia un message a tu mentor, {{GENDER:$1|ille|illa}} lo videra sur su pagina de discussion de usator e tu deberea reciper un notification quando {{GENDER:$1|ille|illa}} responde.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Desister se del mentorato",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Selige le button infra pro excluder te si tu prefere que non te es assignate un mentor specific justo ora. Tu pote optar pro haber un mentor nove a omne momento si tu cambia de idea.",
-	"growthexperiments-homepage-mentorship-about-done": "Facite"
+	"growthexperiments-homepage-mentorship-about-done": "Facite",
+	"growthexperiments-homepage-special-contribute-title": "Modificationes suggerite",
+	"growthexperiments-homepage-special-contribute-description": "Facer cambiamentos minor e facile (p.ex., un addition de ligamine o un correction) pro meliorar articulos existente.",
+	"growthexperiments-homepage-special-contribute-cta": "Vider modificationes suggerite"
 }

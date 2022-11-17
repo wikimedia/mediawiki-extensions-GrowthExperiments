@@ -57,8 +57,10 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Ogledi člankov, ki {{GENDER:$1|ste}} jih urejali",
 	"growthexperiments-homepage-impact-scores-edit-count": "Skupno urejanj",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Hvala, prejeto",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Informacije o tem, kako deluje zahvala",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} je ustvarila skupnost urejevalcev, kot {{GENDER:$1|ste}} vi. Morda se vam {{GENDER:$1|bo}} drug sodelavec zahvalil za urejanje, ki ste ga {{GENDER:$1|opravili}}, lahko pa se tudi vi {{GENDER:$1|zahvalite}} drugim za njihova urejanja.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "To je največje število zaporednih dni, ko ste {{GENDER:$1|opravili}} vsaj eno urejanje.",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "Informacije o tem, kako se izračuna niz",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Vaš}} trenutni najdaljši niz je $2 {{PLURAL:$2|dan|dni}} in {{GENDER:$1|ste}} ga dosegli v obdobju $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Ogledi člankov, ki {{GENDER:$1|ste}} jih urejali",
 	"growthexperiments-homepage-impact-subheader-subtext": "Ogledov, odkar {{GENDER:$1|ste}} urejali (zadnjih 60 dni):",
@@ -274,5 +276,8 @@
 	"growthexperiments-homepage-mentorship-optout-header": "Želite odkloniti mentorstvo?",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Prekliči",
 	"growthexperiments-homepage-mentorship-optout-optout": "Odkloni",
-	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Končano"
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Končano",
+	"growthexperiments-homepage-special-contribute-title": "Predlagana urejanja",
+	"growthexperiments-homepage-special-contribute-description": "Opravite majhne in preproste spremembe (npr. dodajte povezavo ali jezikovni popravek), da izboljšate obstoječe članke.",
+	"growthexperiments-homepage-special-contribute-cta": "Ogled predlaganih urejanj"
 }

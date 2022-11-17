@@ -82,6 +82,7 @@
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|편집}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "총 편집",
 	"growthexperiments-homepage-impact-scores-thanks-count": "감사 표현을 받았습니다",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "감사 표현이 어떻게 작동하는지에 관한 정보",
 	"growthexperiments-homepage-impact-subheader-text": "편집하신 문서를 {{GENDER:$1|사람들이}} 읽고 있습니다!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|당신의}} 편집 이후 최근 60일간의 문서 열람 횟수:",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|그동안}} <strong>$1</strong>회의 {{PLURAL:$1|기여}}를 하셨습니다 (모두 보기)",

@@ -7,5 +7,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "{{GENDER:|Сизни}} джакъланнганларыгъызны кёб болмай болгъан тюрлениулери",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|Сиз}}, {{GENDER:|сизни}} бютеу джакълагъанларыгъызны этген тюрлениулерине былайгъа кириб къараргъа боллукъсуз: [$1 багъасына сюзюлген ангыламына къараргъа боллукъсуз].",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "Юретиучюден $1, $2 {{GENDER:$2|кетерилгенди}}",
+	"growthexperiments-manage-mentors-weight": "Джангы келглени белгиленнген санлары",
+	"growthexperiments-manage-mentors-edit-weight": "Джангы келглени белгиленнген санлары",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Юретиучюге къуру $1 {{PLURAL:$1|аслам тюзетиуу}} болгъан эмда эм азы бла $2 {{PLURAL:$2|кюн}} актив болгъан къошулуучуланы джаздырыргъа болады"
 }

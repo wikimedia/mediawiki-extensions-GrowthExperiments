@@ -99,8 +99,10 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Aufrufe von Artikeln, die {{GENDER:$1|du}} bearbeitet hast",
 	"growthexperiments-homepage-impact-scores-edit-count": "Bearbeitungen insgesamt",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Dank erhalten",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Informationen über die Funktionsweise von Danken",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} wird von einer Community von Benutzern wie {{GENDER:$1|dir}} erstellt. {{GENDER:$1|Dir}} wird möglicherweise von einem anderen Benutzer für eine Änderung gedankt, die {{GENDER:$1|du}} gemacht hast, und {{GENDER:$1|du}} kannst dich auch bei anderen für deren Bearbeitungen bedanken.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Dies ist die höchste Anzahl von Tagen in Folge, in denen {{GENDER:$1|du}} mindestens eine Änderung vorgenommen hast.",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "Informationen über die Berechnung des Laud",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Dein}} derzeit längster Lauf  beträgt $2 {{PLURAL:$2| Tag|Tage}}, welchen {{GENDER:$1|du}} zwischen $3 erzielt hast.",
 	"growthexperiments-homepage-impact-subheader-text": "Aufrufe von Artikeln, die {{GENDER:$1|du}} bearbeitet hast",
 	"growthexperiments-homepage-impact-subheader-subtext": "Aufrufe seit {{GENDER:$1|deiner}} Bearbeitung (letzte 60 Tage):",
@@ -554,5 +556,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Wenn {{GENDER:|du}} eine Nachricht an {{GENDER:$1|deinen Lotsen sendest, sieht er|deine Lotsin sendest, sieht sie}} diese auf {{GENDER:$1|seiner|ihrer}} Benutzerdiskussionsseite und {{GENDER:|du}} solltest eine Benachrichtigung erhalten, wenn {{GENDER:$1|er|sie}} antwortet.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Abmeldung von der Betreuung durch einen Lotsen",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Wähle die Schaltfläche unten, um dich abzumelden, wenn {{GENDER:|du}} es vorziehst, dass {{GENDER:|du}} im Moment keinen bestimmten Lotsen hast. {{GENDER:|Du}} kannst jederzeit wieder einen neuen Lotsen bekommen, wenn {{GENDER:|du }} deine Meinung änderst.",
-	"growthexperiments-homepage-mentorship-about-done": "Fertig"
+	"growthexperiments-homepage-mentorship-about-done": "Fertig",
+	"growthexperiments-homepage-special-contribute-title": "Vorgeschlagene Bearbeitungen",
+	"growthexperiments-homepage-special-contribute-description": "Nehme kleine und einfache Änderungen vor (z. B. einen Link hinzufügen oder redigieren), um bestehende Artikel zu verbessern.",
+	"growthexperiments-homepage-special-contribute-cta": "Vorgeschlagene Bearbeitungen ansehen"
 }
