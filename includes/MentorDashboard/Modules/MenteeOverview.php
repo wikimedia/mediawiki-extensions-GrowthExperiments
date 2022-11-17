@@ -75,10 +75,6 @@ class MenteeOverview extends BaseModule {
 	 * @return string
 	 */
 	private function getRecentEditsByMenteesBody(): string {
-		if ( !$this->getConfig()->get( 'GERecentChangesUnstarredMenteesFilterEnabled' ) ) {
-			return '';
-		}
-
 		return Html::rawElement(
 			'div',
 			[
