@@ -87,12 +87,20 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 			],
 			[
 				'Foo' => [
-					'2022-08-24' => 500,
-					'2022-08-25' => 500
+					'firstEditDate' => '2022-08-24',
+					'newestEdit' => '20220825143817',
+					'views' => [
+						'2022-08-24' => 500,
+						'2022-08-25' => 500
+					]
 				],
 				'Bar' => [
-					'2022-08-24' => 1000,
-					'2022-08-25' => 1000
+					'firstEditDate' => '2022-08-24',
+					'newestEdit' => '20220825143818',
+					'views' => [
+						'2022-08-24' => 1000,
+						'2022-08-25' => 1000
+					]
 				]
 			],
 			new EditingStreak()

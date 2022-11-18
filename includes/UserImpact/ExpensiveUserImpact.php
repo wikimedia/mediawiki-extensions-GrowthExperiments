@@ -14,10 +14,10 @@ use Wikimedia\Assert\Assert;
 class ExpensiveUserImpact extends UserImpact {
 
 	/** @var int[] */
-	private $dailyTotalViews;
+	private array $dailyTotalViews;
 
-	/** @var int[][] */
-	private $dailyArticleViews;
+	/** @var array */
+	private array $dailyArticleViews;
 
 	/**
 	 * @param UserIdentity $user
@@ -35,9 +35,7 @@ class ExpensiveUserImpact extends UserImpact {
 	 * @param int[] $dailyTotalViews Day => number of total pageviews the articles edited by the user
 	 *   (on any day) got on that day. Indexed with ISO 8601 dates, e.g. '2022-08-25'.
 	 *   Might exclude edits made many days or many edits ago.
-	 * @param int[][] $dailyArticleViews Title DBkey => day => number of pageviews the given article
-	 *   got on that day. Days are indexed with ISO 8601 dates, e.g. '2022-08-25'. Titles have
-	 *   no namespace and are always assumed to be in the article space.
+	 * @param array $dailyArticleViews @see ::getDailyArticleViews
 	 * @param EditingStreak $longestEditingStreak
 	 */
 	public function __construct(
@@ -71,12 +69,15 @@ class ExpensiveUserImpact extends UserImpact {
 	}
 
 	/**
-	 * Title DBkey => day => number of pageviews the given article got on that day.
-	 * Titles are in prefixed DBkey format.
-	 * Days are indexed with ISO 8601 dates, e.g. '2022-08-25'. The list of days is contiguous,
-	 * in ascending order, and ends more or less at the current day (might be a few days off to
-	 * account for data collection lags).
-	 * @return int[][]
+	 * An array with the title's prefixed DBkey as the key. The values contain:
+	 * - firstEditDate: The date the user first edited the article, in Y-m-d format.
+	 * - newestEdit: The TS_MW timestamp of the newest edit by the user to the article.
+	 * - views: An array of page view counts. Each row in the array has a key with the date in Y-m-d format and
+	 *   the value is the page view count total for that day.
+	 *   Days are indexed with ISO 8601 dates, e.g. '2022-08-25'. The list of days is contiguous,
+	 *   in ascending order, and ends more or less at the current day (might be a few days off to
+	 *   account for data collection lags).
+	 * @return array
 	 */
 	public function getDailyArticleViews(): array {
 		return $this->dailyArticleViews;

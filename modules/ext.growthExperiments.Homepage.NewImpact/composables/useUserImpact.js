@@ -70,7 +70,8 @@ function useUserImpact( userId, timeFrame ) {
 				longestEditingStreak,
 				totalEditsCount,
 				dailyTotalViews,
-				dailyArticleViews
+				topViewedArticles,
+				recentEditsWithoutPageviews
 			} = data.value;
 
 			const toPageviewsArray = ( viewsByDay ) => {
@@ -81,31 +82,47 @@ function useUserImpact( userId, timeFrame ) {
 				} ) );
 			};
 
-			const views = toPageviewsArray( dailyTotalViews );
-			const articles = Object.keys( dailyArticleViews ).map( ( articleTitle ) => {
-				const title = new mw.Title( articleTitle );
-				const articleData = dailyArticleViews[ articleTitle ];
-				// Fall back to empty array if no page view data (clock icon scenario)
-				const articleViewsByDay = Object.keys( articleData.views || [] );
-				const viewsCount = articleViewsByDay
-					.map( ( day ) => articleData.views[ day ] )
-					.reduce( ( x, y ) => x + y, 0 );
+			/**
+			 * Build an array of articles for use in NewImpact/App.vue.
+			 *
+			 * @param {Object} articleDataObject
+			 * @return {
+			 * {image: {altText: *, href: *},
+			 * href: *,
+			 * title: *,
+			 * views: {entries: *|{date: *, views: *}[],count: *|null, href: *}}[]
+			 * }
+			 */
+			function buildArticlesList( articleDataObject ) {
+				return Object.keys( articleDataObject ).map( ( articleTitle ) => {
+					const title = new mw.Title( articleTitle );
+					const articleData = articleDataObject[ articleTitle ];
+					// Fall back to empty array if no page view data (clock icon scenario)
+					const articleViewsByDay = Object.keys( articleData.views || [] );
+					const viewsCount = articleViewsByDay
+						.map( ( day ) => articleData.views[ day ] )
+						.reduce( ( x, y ) => x + y, 0 );
 
-				return {
-					title: title.getNameText(),
-					href: title.getUrl(),
-					views: {
-						href: articleData.pageviewsUrl,
-						count: articleViewsByDay.length > 0 ? viewsCount : null,
-						entries: toPageviewsArray( articleData.views )
-					},
-					image: {
-						href: articleData.imageUrl,
-						// TODO add captions as thumbnail alt text T322319
-						altText: title.getNameText()
-					}
-				};
-			} );
+					return {
+						title: title.getNameText(),
+						href: title.getUrl(),
+						views: {
+							href: articleData.pageviewsUrl,
+							count: articleViewsByDay.length > 0 ? viewsCount : null,
+							entries: toPageviewsArray( articleData.views )
+						},
+						image: {
+							href: articleData.imageUrl,
+							// TODO add captions as thumbnail alt text T322319
+							altText: title.getNameText()
+						}
+					};
+				} );
+			}
+
+			const articles = buildArticlesList( topViewedArticles ).concat(
+				buildArticlesList( recentEditsWithoutPageviews ) );
+			const views = toPageviewsArray( dailyTotalViews );
 
 			return {
 				articles,
