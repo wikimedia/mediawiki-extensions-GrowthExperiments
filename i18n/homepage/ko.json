@@ -487,5 +487,7 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "{{GENDER:|당신이}} 멘토에 메시지를 보내면 멘토는 이 메시지를 자신의 사용자 토론 문서에서 보게 되며, 멘토가 여기에 답변을 달면 {{GENDER:|당신은}} 알림을 받게 됩니다.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "멘토링에 참여하지 않기",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "지금 {{GENDER:|당신}}에게 할당된 특정 멘토를 선호하지 않으시면 아래의 버튼을 누르십시오. 마음이 바뀌시면 언제든지 새 멘토를 할당받을 수 있습니다.",
-	"growthexperiments-homepage-mentorship-about-done": "완료"
+	"growthexperiments-homepage-mentorship-about-done": "완료",
+	"growthexperiments-homepage-special-contribute-title": "편집 제안",
+	"growthexperiments-homepage-special-contribute-cta": "편집 제안 보기"
 }

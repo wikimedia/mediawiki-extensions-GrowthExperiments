@@ -148,7 +148,7 @@
 	"growthexperiments-manage-mentors-edit-pretext": "{{GENDER:|Ви}} збираєтеся редагувати параметри наставництва для {{GENDER:$1| наставника|наставниці}} [[User:$1|$1]].",
 	"growthexperiments-manage-mentors-edit-intro-msg": "Текст представлення",
 	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Чи призначається наставник новачкам автоматично?",
-	"growthexperiments-manage-mentors-edit-weight": "Вага",
+	"growthexperiments-manage-mentors-edit-weight": "Кількість призначених новачків",
 	"growthexperiments-manage-mentors-edit-is-away": "Не при справах?",
 	"growthexperiments-manage-mentors-edit-is-away-blocked": "Наставника «$1» наразі заблоковано і їхній статус відсутності змінити не можна.",
 	"growthexperiments-manage-mentors-edit-away-until": "Не при справах до",

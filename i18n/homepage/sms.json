@@ -5,10 +5,12 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Tiõrv}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-email-header-unconfirmed": "Priim {{GENDER:$1|}} e-pååʹštaddrõõzz",
 	"growthexperiments-homepage-email-header-startemail": "E-pååʹštaddrõs: $1",
 	"growthexperiments-homepage-email-button-noemail": "Lââʹzzet e-pååʹštaddrõõzz",
 	"growthexperiments-homepage-email-button-confirmed": "Asetõõzz",
 	"growthexperiments-homepage-email-changelink": "muuʹtt",
+	"growthexperiments-homepage-email-confirmlink": "priim",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Čuäʹjet eʹtǩǩuum muttsid",
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Čuäʹjet eʹtǩǩõõzzid",
 	"growthexperiments-homepage-startediting-button": "Čuäʹjet eʹtǩǩuum muttsid",

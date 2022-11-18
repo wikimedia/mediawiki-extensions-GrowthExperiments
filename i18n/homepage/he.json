@@ -541,5 +541,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "{{GENDER:|כשאתה שולח|כשאת שולחת}} הודעה {{GENDER:$1|לחונך שלך, הוא יראה אותה בדף השיחה שלו {{GENDER:|ואתה אמור|ואת אמורה}} לקבל הודעה כשהוא יגיב|לחונכת שלך, היא תראה אותה בדף השיחה שלה {{GENDER:|ואתה אמור|ואת אמורה}} לקבל הודעה כשהיא תגיב}}.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "לצאת מחונכות",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|בחר|בחרי}} את הכפתור למטה אם {{GENDER:|אתה מעדיף|את מעדיפה}} שלא יוקצה לך חונך מסוים עכשיו. {{GENDER:|אתה יכול|את יכולה}} לקבל חונך חדש בכל זמן שתרצה לשנות את דעתך.",
-	"growthexperiments-homepage-mentorship-about-done": "סיום"
+	"growthexperiments-homepage-mentorship-about-done": "סיום",
+	"growthexperiments-homepage-special-contribute-title": "עריכות מוצעות",
+	"growthexperiments-homepage-special-contribute-description": "עשיית שינויים קטנים וקלים (למשל, הוספת קישור או העתקה) כדי לשפר ערכים קיימים.",
+	"growthexperiments-homepage-special-contribute-cta": "לראות את העריכות המוצעות"
 }

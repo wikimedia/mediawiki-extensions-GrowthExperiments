@@ -82,12 +82,14 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Visualizações de artigos que editou{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total de edições",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Agradecimentos recebidos",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Informações sobre como funcionam os agradecimentos",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "A wiki {{SITENAME}} foi criada por uma comunidade de editores como você. Os outros editores podem agradecer-lhe uma edição que tenha feito e você também pode agradecer aos outros as edições deles.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Este é o maior número de dias consecutivos em que você fez pelo menos uma edição.{{GENDER:$1|}}",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "Informações sobre como a sequência é calculada",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "Neste momento, a sua sequência mais longa é de $2 {{PLURAL:$2|dia|dias consecutivos}} que alcançou no período $3.{{GENDER:$1|}}",
-	"growthexperiments-homepage-impact-subheader-text": "As pessoas estão a ler os artigos que editou!{{GENDER:$1|}}",
+	"growthexperiments-homepage-impact-subheader-text": "Visitas a artigos que editou!{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas desde que você editou (últimos 60 dias):{{GENDER:$1|}}",
-	"growthexperiments-homepage-impact-contributions-link": "Fez <strong>$1</strong> {{PLURAL:$1|edição|edições}} (ver todas){{GENDER:$2|}}",
+	"growthexperiments-homepage-impact-contributions-link": "Ver as suas edições todas ($1){{GENDER:$2|}}",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Ainda não criou nem editou nenhum artigo.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Esta área mostrará quantas vezes os artigos que criou ou editou foram vistos.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edições de artigos",
@@ -537,5 +539,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Quando envia uma mensagem {{GENDER:$1|ao seu mentor, ele|à sua mentora, ela}} vê-a na respetiva página de discussão do utilizador e você deverá receber uma notificação quando {{GENDER:$1|ele|ela}} responder.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Excluir-se da mentoria",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Selecione o botão abaixo para se excluir, se prefere que não lhe seja atribuído agora um mentor específico. Pode obter um novo mentor a qualquer momento se entretanto mudar de ideias.",
-	"growthexperiments-homepage-mentorship-about-done": "OK"
+	"growthexperiments-homepage-mentorship-about-done": "OK",
+	"growthexperiments-homepage-special-contribute-title": "Edições sugeridas",
+	"growthexperiments-homepage-special-contribute-description": "Faça alterações pequenas e fáceis (por exemplo, adicione uma hiperligação ou faça uma correção) para melhorar artigos existentes.",
+	"growthexperiments-homepage-special-contribute-cta": "Ver edições sugeridas"
 }

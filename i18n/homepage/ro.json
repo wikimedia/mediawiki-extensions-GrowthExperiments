@@ -532,5 +532,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Atunci {{GENDER:|când}} trimiteți un mesaj mentorului dvs., {{GENDER:$1|el|ea|acesta}} îl va vedea pe pagina {{GENDER:$1|lui|ei|sa}} de discuție, iar {{GENDER:|dvs.}} ar trebui să primiți o notificare atunci când {{GENDER:$1|răspunde}}.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Renunțarea la mentor",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Selectați butonul de mai jos pentru a renunța dacă momentan {{GENDER:|preferați}} să nu aveți un anumit mentor atribuit {{GENDER:|vouă}}. {{GENDER:|Puteți}} obține un nou mentor oricând {{GENDER:|dacă}} vă {{GENDER:|răzgândiți}}.",
-	"growthexperiments-homepage-mentorship-about-done": "Realizat"
+	"growthexperiments-homepage-mentorship-about-done": "Realizat",
+	"growthexperiments-homepage-special-contribute-title": "Editări sugerate",
+	"growthexperiments-homepage-special-contribute-description": "Efectuați schimbări mici și ușoare (de exemplu, adăugați o legătură sau corectați) pentru a îmbunătăți articole existente.",
+	"growthexperiments-homepage-special-contribute-cta": "Vezi editări sugerate"
 }

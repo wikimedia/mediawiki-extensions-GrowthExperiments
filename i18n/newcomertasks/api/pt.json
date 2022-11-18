@@ -20,5 +20,6 @@
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "O parâmetro 'reason' nos dados do <i>plugin</i> Add Image tem de ser uma matriz, mas é do tipo $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "O elemento '$1' é inválido para o parâmetro 'reason'; tem de ser um dos seguintes: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Não foi encontrado registo da recomendação de hiperligação",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinos de recomendação de hiperligação inesperados: $1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinos de recomendação de hiperligação inesperados: $1",
+	"growthexperiments-underlinked-rescore-profile": "Perfil interno de reavaliação usado nas recomendações de hiperligações das experiências de crescimento GrowthExperiments para priorizar artigos que ainda não têm hiperligações suficientes."
 }
