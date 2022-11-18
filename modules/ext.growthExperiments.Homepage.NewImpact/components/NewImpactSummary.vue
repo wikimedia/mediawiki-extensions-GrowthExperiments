@@ -36,6 +36,9 @@ module.exports = exports = {
 			type: Object,
 			required: true
 		}
+	},
+	mounted() {
+		this.$emit( 'mounted' );
 	}
 };
 </script>
