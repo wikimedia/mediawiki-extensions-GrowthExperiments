@@ -241,6 +241,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$queryBuilder->fields( [ 'page_namespace', 'page_title', 'rev_timestamp' ] );
 		// hopefully able to use the rev_actor_timestamp index for an efficient query
 		$queryBuilder->orderBy( 'rev_timestamp', 'DESC' );
+		$queryBuilder->andWhere( [ 'page_namespace' => NS_MAIN ] );
 		$queryBuilder->limit( self::MAX_EDITS );
 
 		$userTimeCorrection = new UserTimeCorrection(
