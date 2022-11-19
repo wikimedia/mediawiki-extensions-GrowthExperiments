@@ -108,8 +108,7 @@ class UserImpactHandler extends SimpleHandler {
 			}
 			$this->jobQueueGroup->lazyPush(
 				new RefreshUserImpactJob( [
-					'userId' => $user->getId(),
-					'impactData' => json_encode( $userImpact )
+					'impactDataBatch' => [ $user->getId() => json_encode( $userImpact ) ],
 				] )
 			);
 		}

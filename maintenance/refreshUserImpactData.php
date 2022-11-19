@@ -63,16 +63,23 @@ class RefreshUserImpactData extends Maintenance {
 		}
 		$this->checkOptions();
 		$this->initServices();
+
+		$users = [];
 		foreach ( $this->getUsers() as $user ) {
 			if ( $this->hasOption( 'use-job-queue' ) ) {
-				if ( $this->hasOption( 'verbose' ) ) {
-					$this->output( " ... enqueueing refreshUserImpactJob for user {$user->getId()}\n" );
+				$users[$user->getId()] = null;
+				if ( count( $users ) >= $this->getBatchSize() ) {
+					if ( $this->hasOption( 'verbose' ) ) {
+						$usersText = implode( ', ', array_keys( $users ) );
+						$this->output( " ... enqueueing refreshUserImpactJob for users $usersText\n" );
+					}
+					$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
+						new RefreshUserImpactJob( [
+							'impactDataBatch' => $users,
+						] )
+					);
+					$users = [];
 				}
-				$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
-					new RefreshUserImpactJob( [
-						'userId' => $user->getId()
-					] )
-				);
 			} else {
 				$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
 				if ( $userImpact ) {
