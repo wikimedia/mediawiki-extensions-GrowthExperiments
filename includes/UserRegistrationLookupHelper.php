@@ -17,6 +17,7 @@ class UserRegistrationLookupHelper {
 
 	/**
 	 * Find the first user_id with a registration date >= $registrationDate.
+	 * On large wikis this is a slow operation.
 	 * @param IDatabase $dbr
 	 * @param int|string $registrationTimestamp Registration time in any format known by
 	 *   ConvertibleTimestamp.
