@@ -136,19 +136,17 @@ class ImpactHooks implements
 			return false;
 		}
 
-		$dateTime = new DateTime( 'now - 1year' );
-		$firstUserIdForRegistrationTimestamp = UserRegistrationLookupHelper::findFirstUserIdForRegistrationTimestamp(
-			$this->loadBalancer->getConnection( DB_REPLICA ),
-			$dateTime->getTimestamp()
-		);
+		$registrationCutoff = new DateTime( 'now - 1year' );
+		$user = $this->userFactory->newFromUserIdentity( $userIdentity );
+		$registrationTimestamp = wfTimestamp( TS_UNIX, $user->getRegistration() );
 
 		$lastEditTimestamp = MWTimestamp::getInstance( $lastEditTimestamp );
-		$diff = $lastEditTimestamp->diff( new ConvertibleTimestamp( new DateTime( 'now - 1week' ) ) );
-		if ( !$diff ) {
+		$lastEditAge = $lastEditTimestamp->diff( new ConvertibleTimestamp( new DateTime( 'now - 1week' ) ) );
+		if ( !$lastEditAge ) {
 			return false;
 		}
 
-		return $userIdentity->getId() >= $firstUserIdForRegistrationTimestamp || $diff->days <= 7;
+		return $registrationTimestamp >= $registrationCutoff->getTimestamp() || $lastEditAge->days <= 7;
 	}
 
 	/**
