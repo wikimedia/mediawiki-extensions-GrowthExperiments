@@ -73,14 +73,21 @@ class Banner extends BaseModule {
 	protected function getBody() {
 		return Html::rawElement(
 			'div',
-			[ 'data-link-group-id' => 'banner' ],
+			[
+				'class' => 'mw-parser-output',
+				'data-link-group-id' => 'banner',
+			],
 			$this->getContext()->msg( self::MESSAGE_KEY )->parse()
 		);
 	}
 
 	/** @inheritDoc */
 	protected function getMobileSummaryBody() {
-		return $this->getContext()->msg( self::MESSAGE_KEY )->parse();
+		return Html::rawElement(
+			'div',
+			[ 'class' => 'mw-parser-output' ],
+			$this->getContext()->msg( self::MESSAGE_KEY )->parse()
+		);
 	}
 
 	/** @inheritDoc */
