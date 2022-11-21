@@ -86,8 +86,10 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "المشاهدات على المقالات التي {{GENDER:$1|عدّلتها}}!",
 	"growthexperiments-homepage-impact-scores-edit-count": "إجمالي التعديلات",
 	"growthexperiments-homepage-impact-scores-thanks-count": "الشّكر المُتَلقّى",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "معلومات حول كيفية الشكر",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "تم إنشاء {{SITENAME}} بواسطة مجتمع من المحررين مثلك {{GENDER:$1|أنت}}. {{GENDER:$1|قد يتم شكرك}} من قِبل مساهمين آخرين لتعديل {{GENDER:$1|قمت بإنشائه}} و{{GENDER:$1|يمكنك}} أيضًا شكر الآخرين على تعديلاتهم.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "هذا هو أكبر عدد من الأيام المتتالية {{GENDER:$1|قمت}} خلالها بإجراء تعديل واحد على الأقل.",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "معلومات حول كيفية حساب الخط",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|مسارك}} الأطول حاليا هو {{PLURAL:$2|لا يوم|يوم واحد|يومان|$2 أيام|$2 يوما|$2 يوم}} {{GENDER:$1|أتممته}} في فترة $3.",
 	"growthexperiments-homepage-impact-subheader-text": "المشاهدات على المقالات التي {{GENDER:$1|عدّلتها}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "المشاهدات منذ {{GENDER:$1|قيامك}} بالتحرير (آخر 60 يوما):",
@@ -547,5 +549,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "عندما {{GENDER:|ترسل|ترسلين}} رسالة إلى {{GENDER:$1|مرشدك، سيشاهدها|مرشدتك، ستشاهدها}} على صفحة النقاش الخاصة {{GENDER:$1|به|بها}} ويجب أن {{GENDER:|تتلقى|تتلقّي}} إشعارًا عندما {{GENDER:$1|يردّ|تردّ}}.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "الانسحاب من الإرشاد",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|اختر|اختاري}} الزرّ أدناه للخروج إذا كنت لا {{GENDER:|تريد|تريدين}} تعيين مرشد خاصّ بك في الوقت الحالي. يمكنك في أيّ وقت الحصول مرّة أخرى على مرشد جديد إذا ما غيّرت رأيك.",
-	"growthexperiments-homepage-mentorship-about-done": "تمّ"
+	"growthexperiments-homepage-mentorship-about-done": "تمّ",
+	"growthexperiments-homepage-special-contribute-title": "التعديلات المقترحة",
+	"growthexperiments-homepage-special-contribute-description": "إجراء تغييرات صغيرة وسهلة (على سبيل المثال، إضافة رابط أو تحرير نسخ) لتحسين المقالات الموجودة.",
+	"growthexperiments-homepage-special-contribute-cta": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة"
 }

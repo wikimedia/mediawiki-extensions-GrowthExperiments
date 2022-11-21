@@ -15,5 +15,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Sızıq qalayınsha esaplanǵanlıǵı haqqında maǵlıwmat",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:$1|Siz ózgeris kirgizgen}} maqalalardı kóriwler sanı",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Siz}} kirgizgen barlıq ózgerislerdi kóriw ($1)",
-	"growthexperiments-homepage-special-contribute-title": "Usınıs etilgen ózgertiwler"
+	"growthexperiments-homepage-special-contribute-title": "Usınıs etilgen ózgertiwler",
+	"growthexperiments-homepage-special-contribute-description": "Bar maqalalardı rawajlandırıw ushın olarǵa ańsat hám kishi ózgerisler kirgiziń (mısalı, silteme qosıń yamasa tekstti ózgertiń).",
+	"growthexperiments-homepage-special-contribute-cta": "Usınılǵan dúzetiwlerdi kóriw"
 }

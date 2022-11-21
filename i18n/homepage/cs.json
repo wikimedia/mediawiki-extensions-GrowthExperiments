@@ -86,7 +86,11 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Počty zobrazení článků, které jste {{GENDER:$1|editoval|editovala|editovali}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "Celkem editací",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Počet obdržených poděkování",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Informace o tom, jak poděkování fungují",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} je tvořena komunitou wikipedistů, jako jste {{GENDER:$1|vy}}. Ostatní uživatelé vám za vaše příspěvky mohou poděkovat. Rovněž i vy můžete děkovat za příspěvky ostatním.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Největší počet dní v řadě, ve kterých jste {{GENDER:$1|uložil|uložila|uložili}} alespoň jednu editaci.",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "Informace o způsobu výpočtu nejdelší série.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Vaše}} současná nejdelší série je {{PLURAL:$2|jeden den|$2 dny|$2 dní}}, které jste {{GENDER:$1|dosáhl|dosáhla|dosáhli}} během $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Návštěvy článků, které jste {{GENDER:$1|editoval|editovala|editovali}}",
 	"growthexperiments-homepage-impact-subheader-subtext": "Počty zobrazení od {{GENDER:$1|vaší}} první editace (posledních 60 dní):",
 	"growthexperiments-homepage-impact-contributions-link": "Zobrazit všechny {{GENDER:$2|vaše}} editace ($1)",
@@ -544,5 +548,7 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Když {{GENDER:|pošlete}} zprávu {{GENDER:$1|svému mentorovi|své mentorce}}, uvidí ji na své diskusní stránce. Jakmile vám odpoví, měla by vám přijít notifikace.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Deaktivovat mentorský modul",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Jestliže již nechcete mít přiřazeného žádného mentora, klikněte na tlačítko níže. Pokud si to kdykoli v budoucnu rozmyslíte, rádi vám mentora přiřadíme znovu.",
-	"growthexperiments-homepage-mentorship-about-done": "Hotovo"
+	"growthexperiments-homepage-mentorship-about-done": "Hotovo",
+	"growthexperiments-homepage-special-contribute-title": "Editační tipy",
+	"growthexperiments-homepage-special-contribute-cta": "Zobrazit editační tipy"
 }

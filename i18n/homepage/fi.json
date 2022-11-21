@@ -383,5 +383,7 @@
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|muu|muuta}}",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Selvä",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Selvä",
-	"growthexperiments-homepage-mentorship-about-done": "Valmis"
+	"growthexperiments-homepage-mentorship-about-done": "Valmis",
+	"growthexperiments-homepage-special-contribute-title": "Ehdotetut muokkaukset",
+	"growthexperiments-homepage-special-contribute-cta": "Katso ehdotetut muokkaukset"
 }

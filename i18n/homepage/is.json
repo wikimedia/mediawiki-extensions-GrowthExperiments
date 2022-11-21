@@ -1,15 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Snævar"
+			"Snævar",
+			"Sveinn í Felli"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Halló}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Heimasíða",
 	"tooltip-pt-homepage": "Heimasíðan {{GENDER:|þín}}",
-	"prefs-homepage": "Möguleikar fyrir nýgræðings notanda",
-	"growthexperiments-homepage-enable": "Sýna heimasíðu nýgræðings",
-	"growthexperiments-homepage-pt-link": "Sjálfgefið sýna heimasíðu nýgræðings frá notendanafns tengli í persónulegum tólum",
+	"prefs-homepage": "Eiginleikar ritils fyrir nýskráða notendur",
+	"growthexperiments-homepage-enable": "Birta heimasíðu nýskráðs notanda",
+	"growthexperiments-homepage-pt-link": "Sjálfgefið birta heimasíðu nýskráðs notanda út frá notendanafnstengli í einkaverkfærum",
 	"growthexperiments-homepage-email-header-noemail": "Bæta við {{GENDER:$1|þínu}} tölvupóstfangi",
 	"growthexperiments-homepage-email-header-unconfirmed": "Staðfesta tölvupóstfangið {{GENDER:$1|þitt}}",
 	"growthexperiments-homepage-email-header-confirmed": "Tölvupóstfangi bætt við",

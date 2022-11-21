@@ -131,7 +131,7 @@
 	"growthexperiments-manage-mentors-edit-pretext": "U staat op het punt de mentorschap-gerelateerde opties te wijzigen voor de {{GENDER:$1|mentor}} [[User:$1|$1]].",
 	"growthexperiments-manage-mentors-edit-intro-msg": "Inleidend bericht",
 	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Wordt automatisch toegewezen aan nieuwkomers?",
-	"growthexperiments-manage-mentors-edit-weight": "Gewicht",
+	"growthexperiments-manage-mentors-edit-weight": "Aantal toegewezen nieuwkomers",
 	"growthexperiments-manage-mentors-edit-is-away": "Is weg?",
 	"growthexperiments-manage-mentors-edit-away-until": "Weg tot",
 	"growthexperiments-manage-mentors-edit-reason": "Reden",
