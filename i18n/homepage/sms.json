@@ -5,6 +5,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Tiõrv}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-email-header-unconfirmed": "Priim {{GENDER:$1|}} e-pååʹštaddrõõzz",
 	"growthexperiments-homepage-email-button-noemail": "Lââʹzzet e-pååʹštaddrõõzz",
 	"growthexperiments-homepage-email-button-confirmed": "Asetõõzz",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Čuäʹjet eʹtǩǩuum muttsid",

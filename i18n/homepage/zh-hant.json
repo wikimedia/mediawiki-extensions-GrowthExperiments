@@ -17,7 +17,8 @@
 			"SunAfterRain",
 			"Tranve",
 			"Diskdance",
-			"Ericliu1912"
+			"Ericliu1912",
+			"BlackShadowG"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -172,9 +173,9 @@
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "編輯於前一天",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "今天，像您這樣的志工為了改善{{SITENAME}}做出了貢獻。歡迎加入！",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "修正拼寫、文法和語氣",
-	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "增加來源以證實維基百科條目內容",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "添加來源以核實維基百科的條目",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "更新現有條目",
-	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "透過查找並添加更多資訊讓條目內容更多",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "透過尋找和添加更多的資訊，使條目更長",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "讓一篇條目中的文字連結到另一篇條目",
 	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "編修是對於條目編寫方式做出小修正，以及來習慣使用編輯維基百科的有用且簡單的方法。編修能幫助條目變得更專業與可信。",
 	"growthexperiments-homepage-suggestededits-tasktype-description-references": "使用書籍、網站、新的來源，來驗證維基百科的準確性，並將這些添加到條目裡，讓讀者可以確保他們所看的內容是符合實情的。",
