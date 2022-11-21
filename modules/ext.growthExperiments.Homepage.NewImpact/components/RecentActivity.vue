@@ -113,6 +113,7 @@ module.exports = exports = {
 	&__streak {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 
 		&__highlight {
 			display: flex;
