@@ -52,8 +52,7 @@ describe( 'MenteeOverview', () => {
 		shallowMount( MenteeOverview, {
 			global: {
 				mocks: {
-					$store: store,
-					$i18n: jest.fn( ( x ) => x )
+					$store: store
 				}
 			}
 		} );
@@ -70,8 +69,7 @@ describe( 'MenteeOverview', () => {
 		const wrapper = shallowMount( MenteeOverview, {
 			global: {
 				mocks: {
-					$store: store,
-					$i18n: jest.fn( ( x ) => x )
+					$store: store
 				}
 			}
 		} );
@@ -92,8 +90,7 @@ describe( 'MenteeOverview', () => {
 		const wrapper = shallowMount( MenteeOverview, {
 			global: {
 				mocks: {
-					$store: store,
-					$i18n: jest.fn( ( x ) => x )
+					$store: store
 				}
 			}
 		} );
@@ -111,8 +108,7 @@ describe( 'MenteeOverview', () => {
 		const wrapper = shallowMount( MenteeOverview, {
 			global: {
 				mocks: {
-					$store: store,
-					$i18n: jest.fn( ( x ) => x )
+					$store: store
 				}
 			}
 		} );
@@ -129,8 +125,7 @@ describe( 'MenteeOverview', () => {
 		const wrapper = shallowMount( MenteeOverview, {
 			global: {
 				mocks: {
-					$store: store,
-					$i18n: jest.fn( ( x ) => x )
+					$store: store
 				}
 			}
 		} );
@@ -169,14 +164,14 @@ describe( 'MenteeOverview', () => {
 		const wrapper = shallowMount( MenteeOverview, {
 			global: {
 				mocks: {
-					$store: storeWithoutMentees,
-					$i18n: jest.fn( ( x ) => x )
+					$store: storeWithoutMentees
 				}
 			}
 		} );
 
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 1 );
 		const noResults = wrapper.findComponent( NoResults );
+
 		expect( noResults.attributes( 'text' ) )
 			.toContain( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline' );
 		expect( noResults.attributes( 'description' ) )

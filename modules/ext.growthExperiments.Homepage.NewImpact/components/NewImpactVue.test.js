@@ -29,7 +29,6 @@ describe( 'NewImpactVue', () => {
 			},
 			global: {
 				mocks: {
-					$i18n: jest.fn( ( x ) => x ),
 					$filters: {
 						convertNumber: jest.fn( ( x ) => `${x}` )
 					}

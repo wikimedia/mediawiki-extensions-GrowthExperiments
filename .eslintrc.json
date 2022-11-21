@@ -2,5 +2,15 @@
 	"root": true,
 	"extends": [
 		"wikimedia/server"
+	],
+	"overrides": [
+		{
+			"files": [ "jest.setup.js" ],
+			"extends": [
+				"wikimedia/language/es6",
+				"wikimedia/mediawiki"
+			]
+		}
+
 	]
 }
