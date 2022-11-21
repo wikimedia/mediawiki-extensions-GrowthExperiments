@@ -31,10 +31,10 @@
 		<div v-if="data">
 			<trend-chart
 				id="impact"
-				:count-text="$filters.convertNumber( data.dailyTotalViews.count )"
+				:count-text="$filters.convertNumber( data.articlesViewsCount )"
 				:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName ).text()"
 				:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' ).text()"
-				:data="data.dailyTotalViews.entries"
+				:data="data.dailyTotalViews"
 			></trend-chart>
 		</div>
 		<div v-if="data">
@@ -48,7 +48,11 @@
 			</c-text>
 			<articles-list class="ext-growthExperiments-NewImpact__articles-list" :items="data.articles"></articles-list>
 			<c-text weight="bold">
-				<a :href="contributionsUrl" class="ext-growthExperiments-NewImpact__contributions-link">
+				<a
+					data-link-id="impact-contributions"
+					:href="contributionsUrl"
+					class="ext-growthExperiments-NewImpact__contributions-link"
+				>
 					{{ contributionsLinkText }}
 				</a>
 			</c-text>

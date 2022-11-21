@@ -33,10 +33,12 @@ describe( 'GET /growthexperiments/v0/user-impact/{user}', () => {
 				'2022-08-24': 1000,
 				'2022-08-25': 2000
 			},
+			topViewedArticlesCount: 3000,
 			topViewedArticles: {
 				Bar: {
 					firstEditDate: '2022-08-24',
 					newestEdit: '20220825143818',
+					viewsCount: 2000,
 					views: {
 						'2022-08-24': 1000,
 						'2022-08-25': 1000
@@ -45,6 +47,7 @@ describe( 'GET /growthexperiments/v0/user-impact/{user}', () => {
 				Foo: {
 					firstEditDate: '2022-08-24',
 					newestEdit: '20220825143817',
+					viewsCount: 1000,
 					views: {
 						'2022-08-24': 500,
 						'2022-08-25': 500

@@ -9,6 +9,7 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\NewImpact;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\UserImpact\UserImpactStore;
 use Html;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\User\UserFactory;
@@ -48,6 +49,8 @@ class SpecialImpact extends SpecialPage {
 	/** @var UserFactory */
 	private $userFactory;
 
+	private UserImpactStore $userImpactStore;
+
 	/**
 	 * @param ILoadBalancer $loadBalancer
 	 * @param ExperimentUserManager $experimentUserManager
@@ -55,6 +58,7 @@ class SpecialImpact extends SpecialPage {
 	 * @param Config $wikiConfig
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param UserFactory $userFactory
+	 * @param UserImpactStore $userImpactStore
 	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
@@ -64,6 +68,7 @@ class SpecialImpact extends SpecialPage {
 		Config $wikiConfig,
 		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory,
+		UserImpactStore $userImpactStore,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Impact' );
@@ -74,6 +79,7 @@ class SpecialImpact extends SpecialPage {
 		$this->wikiConfig = $wikiConfig;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userFactory = $userFactory;
+		$this->userImpactStore = $userImpactStore;
 	}
 
 	/**
@@ -137,6 +143,7 @@ class SpecialImpact extends SpecialPage {
 				$this->wikiConfig,
 				$this->experimentUserManager,
 				$impactUser,
+				$this->userImpactStore,
 				SuggestedEdits::isEnabled( $context->getConfig() ),
 				SuggestedEdits::isActivated( $impactUser, $this->userOptionsLookup )
 			);

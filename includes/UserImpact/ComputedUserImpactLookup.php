@@ -368,6 +368,13 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 					$dailyArticleViews[$title]['views'][$day] = 0;
 				} else {
 					$dailyArticleViews[$title]['views'][$day] = ( $dailyArticleViews[$title][$day] ?? 0 ) + $views;
+					$dailyArticleViews[$title]['viewsCount'] = array_reduce(
+						$dailyArticleViews[$title]['views'],
+						static function ( $carry, $current ) {
+							return $carry + $current;
+						},
+						0
+					);
 				}
 			}
 		}

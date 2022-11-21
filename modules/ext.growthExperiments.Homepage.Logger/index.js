@@ -19,7 +19,7 @@
 		this.enabled = enabled;
 		this.userId = mw.user.getId();
 		this.userEditCount = mw.config.get( 'wgUserEditCount' ) || 0;
-		this.isMobile = OO.ui.isMobile();
+		this.isMobile = mw.config.get( 'homepagemobile' ) || false;
 		this.homepagePageviewToken = homepagePageviewToken;
 		this.exclusions = {
 			start: [ 'impression' ]

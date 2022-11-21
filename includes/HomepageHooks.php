@@ -294,6 +294,7 @@ class HomepageHooks implements
 						'GrowthExperimentsMultiConfig',
 						'UserOptionsLookup',
 						'UserFactory',
+						'GrowthExperimentsUserImpactStore',
 						'PageViewService',
 					]
 				];

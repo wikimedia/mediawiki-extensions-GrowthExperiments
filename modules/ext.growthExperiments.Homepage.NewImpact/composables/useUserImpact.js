@@ -71,6 +71,7 @@ function useUserImpact( userId, timeFrame ) {
 				totalEditsCount,
 				dailyTotalViews,
 				topViewedArticles,
+				topViewedArticlesCount,
 				recentEditsWithoutPageviews
 			} = data.value;
 
@@ -97,18 +98,13 @@ function useUserImpact( userId, timeFrame ) {
 				return Object.keys( articleDataObject ).map( ( articleTitle ) => {
 					const title = new mw.Title( articleTitle );
 					const articleData = articleDataObject[ articleTitle ];
-					// Fall back to empty array if no page view data (clock icon scenario)
-					const articleViewsByDay = Object.keys( articleData.views || [] );
-					const viewsCount = articleViewsByDay
-						.map( ( day ) => articleData.views[ day ] )
-						.reduce( ( x, y ) => x + y, 0 );
 
 					return {
 						title: title.getNameText(),
 						href: title.getUrl(),
 						views: {
 							href: articleData.pageviewsUrl,
-							count: articleViewsByDay.length > 0 ? viewsCount : null,
+							count: articleData.viewsCount,
 							entries: toPageviewsArray( articleData.views )
 						},
 						image: {
@@ -122,7 +118,6 @@ function useUserImpact( userId, timeFrame ) {
 
 			const articles = buildArticlesList( topViewedArticles ).concat(
 				buildArticlesList( recentEditsWithoutPageviews ) );
-			const views = toPageviewsArray( dailyTotalViews );
 
 			return {
 				articles,
@@ -130,11 +125,9 @@ function useUserImpact( userId, timeFrame ) {
 				receivedThanksCount,
 				longestEditingStreak,
 				totalEditsCount,
+				articlesViewsCount: topViewedArticlesCount,
 				contributions: getContribsFromToday( editCountByDay, timeFrame ),
-				dailyTotalViews: {
-					entries: views,
-					count: sum( views.map( ( view ) => view.views ) )
-				}
+				dailyTotalViews: toPageviewsArray( dailyTotalViews )
 			};
 		} ),
 		error: computed( () => {

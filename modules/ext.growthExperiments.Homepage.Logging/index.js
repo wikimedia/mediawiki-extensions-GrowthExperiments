@@ -11,9 +11,14 @@
 				$module = $link.closest( '.growthexperiments-homepage-module' ),
 				linkId = $link.data( 'link-id' ) ||
 					$link.closest( '[data-link-group-id]' ).data( 'link-group-id' ),
+				linkData = $link.data( 'link-data' ),
 				moduleName = $module.data( 'module-name' ),
-				mode = $module.data( 'mode' );
-			logger.log( moduleName, mode, 'link-click', { linkId: linkId } );
+				mode = $module.data( 'mode' ),
+				extraData = { linkId: linkId };
+			if ( linkData !== undefined && linkData !== null ) {
+				extraData.linkData = linkData;
+			}
+			logger.log( moduleName, mode, 'link-click', extraData );
 
 			// This is needed so this handler doesn't fire twice for links
 			// that are inside a module that is inside another module.

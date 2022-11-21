@@ -18,6 +18,9 @@ class SortedFilteredUserImpact extends ExpensiveUserImpact {
 	/** @var array[]|null lazy-evaluated */
 	private ?array $recentEditsWithoutPageviews = null;
 
+	/** @var int|null lazy-evaluated */
+	private ?int $topViewedArticlesCount = null;
+
 	/** @inheritDoc */
 	protected static function newEmpty(): self {
 		return new SortedFilteredUserImpact(
@@ -44,7 +47,7 @@ class SortedFilteredUserImpact extends ExpensiveUserImpact {
 	 * @return array[]
 	 */
 	public function getTopViewedArticles(): array {
-		if ( !isset( $this->topViewedArticles ) ) {
+		if ( !is_array( $this->topViewedArticles ) ) {
 			$this->sortAndFilter();
 		}
 		return $this->topViewedArticles;
@@ -59,7 +62,7 @@ class SortedFilteredUserImpact extends ExpensiveUserImpact {
 	 * @return array
 	 */
 	public function getRecentEditsWithoutPageviews(): array {
-		if ( !isset( $this->recentEditsWithoutPageviews ) ) {
+		if ( !is_array( $this->recentEditsWithoutPageviews ) ) {
 			$this->sortAndFilter();
 		}
 		return $this->recentEditsWithoutPageviews;
@@ -80,9 +83,13 @@ class SortedFilteredUserImpact extends ExpensiveUserImpact {
 	public function jsonSerialize(): array {
 		$jsonData = parent::jsonSerialize();
 		unset( $jsonData['dailyArticleViews'] );
+		if ( !$this->recentEditsWithoutPageviews || $this->topViewedArticlesCount || $this->topViewedArticles ) {
+			$this->sortAndFilter();
+		}
 		return $jsonData + [
-			'recentEditsWithoutPageviews' => $this->getRecentEditsWithoutPageviews(),
-			'topViewedArticles' => $this->getTopViewedArticles(),
+				'recentEditsWithoutPageviews' => $this->recentEditsWithoutPageviews,
+				'topViewedArticles' => $this->topViewedArticles,
+				'topViewedArticlesCount' => $this->topViewedArticlesCount
 		];
 	}
 
@@ -102,6 +109,9 @@ class SortedFilteredUserImpact extends ExpensiveUserImpact {
 			return array_sum( $b['views'] ) <=> array_sum( $a['views'] );
 		} );
 		$topViewedArticles = array_slice( $dailyArticleViews, 0, 5, true );
+		$topViewedArticlesCount = array_reduce( $topViewedArticles, static function ( $carry, $articleViews ) {
+			return $carry + ( $articleViews['viewsCount'] ?? 0 );
+		}, 0 );
 
 		// Order the articles by date, most recent edit to oldest, and get the most recent 5.
 		$recentEditsWithoutPageviews = [];
@@ -129,6 +139,7 @@ class SortedFilteredUserImpact extends ExpensiveUserImpact {
 			}
 		}
 		$this->topViewedArticles = $topViewedArticles;
+		$this->topViewedArticlesCount = $topViewedArticlesCount;
 		$this->recentEditsWithoutPageviews = $recentEditsWithoutPageviews;
 	}
 

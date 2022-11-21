@@ -4,10 +4,10 @@
 		<trend-chart
 			v-if="data"
 			id="impact-summary"
-			:count-text="$filters.convertNumber( data.dailyTotalViews.count )"
+			:count-text="$filters.convertNumber( data.articlesViewsCount )"
 			:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName ).text()"
 			:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' ).text()"
-			:data="data.dailyTotalViews.entries"
+			:data="data.dailyTotalViews"
 		></trend-chart>
 		<info-boxes
 			v-if="data"

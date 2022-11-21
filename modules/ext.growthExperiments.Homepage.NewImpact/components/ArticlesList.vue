@@ -7,6 +7,7 @@
 						class="ext-growthExperiments-ArticlesList__ArticleListItem__info"
 						:title="$i18n( 'growthexperiments-homepage-impact-article-link-tooltip' ).text()"
 						:href="article.href"
+						data-link-id="impact-article-title"
 					>
 						<cdx-thumbnail :thumbnail="{ url: article.image.href }">
 						</cdx-thumbnail>
@@ -24,6 +25,8 @@
 							class="ext-growthExperiments-ArticlesList__ArticleListItem__pageviews__link"
 							:title="$i18n( 'growthexperiments-homepage-impact-pageviews-link-tooltip' ).text()"
 							:href="article.views.href"
+							:data-link-data="article.views.count"
+							data-link-id="impact-pageviews"
 						>
 							<c-text
 								weight="bold"

@@ -4,6 +4,9 @@ namespace GrowthExperiments\HomepageModules;
 
 use Config;
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
+use GrowthExperiments\UserImpact\SortedFilteredUserImpact;
+use GrowthExperiments\UserImpact\UserImpactStore;
 use Html;
 use IContextSource;
 use MediaWiki\User\UserIdentity;
@@ -15,6 +18,8 @@ class NewImpact extends BaseModule {
 
 	private UserIdentity $userIdentity;
 
+	private UserImpactStore $userImpactStore;
+
 	private bool $isSuggestedEditsEnabledForUser;
 
 	private bool $isSuggestedEditsActivatedForUser;
@@ -24,6 +29,7 @@ class NewImpact extends BaseModule {
 	 * @param Config $wikiConfig
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param UserIdentity $userIdentity
+	 * @param UserImpactStore $userImpactStore
 	 * @param bool $isSuggestedEditsEnabled
 	 * @param bool $isSuggestedEditsActivated
 	 */
@@ -32,11 +38,13 @@ class NewImpact extends BaseModule {
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
 		UserIdentity $userIdentity,
+		UserImpactStore $userImpactStore,
 		bool $isSuggestedEditsEnabled,
 		bool $isSuggestedEditsActivated
 	) {
 		parent::__construct( 'impact', $ctx, $wikiConfig, $experimentUserManager );
 		$this->userIdentity = $userIdentity;
+		$this->userImpactStore = $userImpactStore;
 		$this->isSuggestedEditsEnabledForUser = $isSuggestedEditsEnabled;
 		$this->isSuggestedEditsActivatedForUser = $isSuggestedEditsActivated;
 	}
@@ -145,5 +153,30 @@ class NewImpact extends BaseModule {
 	 */
 	private function isUnactivatedOrDisabled() {
 		return $this->getState() === self::MODULE_STATE_UNACTIVATED || !$this->isSuggestedEditsEnabledForUser;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getActionData(): array {
+		$userImpact = $this->userImpactStore->getExpensiveUserImpact( $this->getContext()->getUser() );
+		$data = [
+			'no_cached_user_impact' => !$userImpact
+		];
+		if ( $userImpact ) {
+			$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray(
+				$userImpact->jsonSerialize()
+			);
+			$jsonSortedUserImpact = $sortedFilteredUserImpact->jsonSerialize();
+			$data = [
+				'timeframe_in_days' => ComputedUserImpactLookup::PAGEVIEW_DAYS,
+				'timeframe_edits_count' => $userImpact->getTotalEditsCount(),
+				'thanks_count' => $userImpact->getReceivedThanksCount(),
+				'last_edit_timestamp' => $userImpact->getLastEditTimestamp(),
+				'longest_streak_days_count' => $userImpact->getLongestEditingStreakCount(),
+				'top_articles_views_count' => $jsonSortedUserImpact['topViewedArticlesCount']
+			];
+		}
+		return array_merge( parent::getActionData(), $data );
 	}
 }
