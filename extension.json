@@ -229,7 +229,6 @@
 			]
 		}
 	],
-	"callback": "GrowthExperiments\\GrowthHooks::onRegistration",
 	"HookHandlers": {
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
@@ -2175,10 +2174,6 @@
 		"GEMentorshipNewAccountEnablePercentage": {
 			"description": "Percentage of new homepage-enabled users who will receive the mentorship module. Note that user must fall into _both_ GEHomepageNewAccountEnablePercentage and this percentage to be considered for mentorship.",
 			"value": 100
-		},
-		"GEMentorshipMigrationStage": {
-			"description": "Deprecated variable. Any other value than SCHEMA_COMPAT_NEW will cause a fatal. Was migration stage of mentorship. String is decoded in GrowthHooks.",
-			"value": "SCHEMA_COMPAT_NEW"
 		},
 		"GEMentorshipAutomaticEligibility": {
 			"description": "Automatically grant \"enrollasmentor\" to users who are eligible to enroll as mentors. See GEMentorshipMinimumAge and GEMentorshipMinimumEditcount to define eligibility rules (requirements set by both variables need to be met to make users eligible).",
