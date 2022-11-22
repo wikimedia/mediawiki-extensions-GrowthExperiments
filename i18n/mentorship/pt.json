@@ -136,7 +136,7 @@
 	"growthexperiments-manage-mentors-none": "Nenhum",
 	"growthexperiments-manage-mentors-username": "Nome de utilizador",
 	"growthexperiments-manage-mentors-last-active": "Última atividade",
-	"growthexperiments-manage-mentors-weight": "Peso",
+	"growthexperiments-manage-mentors-weight": "Número de recém-chegados atribuídos",
 	"growthexperiments-manage-mentors-status": "Estado",
 	"growthexperiments-manage-mentors-status-away-until": "Ausente até $1",
 	"growthexperiments-manage-mentors-intro-msg": "Mensagem para recém-chegados",
@@ -144,7 +144,7 @@
 	"growthexperiments-manage-mentors-edit-pretext": "Está prestes a editar as opções relacionadas com mentoria {{GENDER:$1|do mentor|da mentora}} [[User:$1|$1]].",
 	"growthexperiments-manage-mentors-edit-intro-msg": "Mensagem de apresentação",
 	"growthexperiments-manage-mentors-edit-is-auto-assigned": "É atribuído automaticamente a recém-chegados?",
-	"growthexperiments-manage-mentors-edit-weight": "Peso",
+	"growthexperiments-manage-mentors-edit-weight": "Número de recém-chegados atribuídos",
 	"growthexperiments-manage-mentors-edit-is-away": "Está ausente?",
 	"growthexperiments-manage-mentors-edit-is-away-blocked": "Neste momento, o mentor \"$1\" está bloqueado e o seu estado de ausência não pode ser alterado.",
 	"growthexperiments-manage-mentors-edit-away-until": "Ausente até",
@@ -163,7 +163,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscrever-se",
 	"growthexperiments-mentorship-enrollasmentor-success": "Agora está {{GENDER:|inscrito como mentor|inscrita como mentora}}. Pode prosseguir para o [[Special:MentorDashboard|painel de controlo do mentor]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Acrescentar-me como {{GENDER:|mentor|mentora}}",
-	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Só utilizadores com pelo menos $1 edições e $2 dias de presença podem inscrever-se como mentores.",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Só utilizadores com pelo menos $1 {{PLURAL:$1|edição|edições}} e $2 {{PLURAL:$2|dia|dias}} de presença podem inscrever-se como mentores.",
 	"tag-mentor list change": "Alteração da lista de mentores",
 	"tag-mentor list change-description": "Etiqueta aplicada às edições realizadas na lista estruturada de mentores via GrowthExperiments"
 }
