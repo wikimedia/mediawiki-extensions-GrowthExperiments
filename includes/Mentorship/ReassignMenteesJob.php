@@ -41,6 +41,32 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 	/**
 	 * @inheritDoc
 	 */
+	public function ignoreDuplicates() {
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getDeduplicationInfo() {
+		$info = parent::getDeduplicationInfo();
+
+		// When deduplicating, ignore performerId, reassignMessageKey and
+		// reassignMessageAdditionalParams. The reason for deduplication
+		// is to avoid reassigning mentees assigned to the same mentor more
+		// than once (see T322374).
+		foreach ( [ 'performerId', 'reassignMessageKey', 'reassignMessageAdditionalParams' ] as $ignoredParam ) {
+			if ( isset( $info['params'][$ignoredParam] ) ) {
+				unset( $info['params'][$ignoredParam] );
+			}
+		}
+
+		return $info;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function run() {
 		$mentor = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['mentorId'] );
 		$performer = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['performerId'] );

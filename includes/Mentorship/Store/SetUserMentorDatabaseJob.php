@@ -40,6 +40,27 @@ class SetUserMentorDatabaseJob extends Job implements GenericParameterJob {
 	/**
 	 * @inheritDoc
 	 */
+	public function ignoreDuplicates() {
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getDeduplicationInfo() {
+		$info = parent::getDeduplicationInfo();
+
+		// avoid overriding the stored mentorId for the same menteeId multiple times
+		if ( isset( $info['params']['mentorId'] ) ) {
+			unset( $info['params']['mentorId'] );
+		}
+
+		return $info;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function run() {
 		$this->databaseMentorStore->setMentorForUser(
 			$this->userFactory->newFromId( $this->params['menteeId'] ),
