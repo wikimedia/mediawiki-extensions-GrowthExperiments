@@ -15,7 +15,9 @@
 			"魔琴",
 			"BlackShadowG",
 			"Diskdance",
-			"NACHOgao3"
+			"NACHOgao3",
+			"GuoPC",
+			"Stang"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|欢迎}}，$1！",
@@ -26,8 +28,8 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|跳过}}该调查",
 	"welcomesurvey-close-btn": "关闭并返回至 $1",
 	"welcomesurvey-sidebar-privacy-title": "我们重视您的隐私",
-	"welcomesurvey-sidebar-privacy-text": "维基媒体基金会将会使用{{GENDER:$2|您的}}回答帮助您开始编辑{{SITENAME}}。$1。",
-	"welcomesurvey-privacy-policy-link-text": "在新的编辑器里了解更多关于数据。",
+	"welcomesurvey-sidebar-privacy-text": "维基媒体基金会将使用{{GENDER:$2|您的}}回答协助您编辑{{SITENAME}}。$1。",
+	"welcomesurvey-privacy-policy-link-text": "了解更多关于新用户的数据",
 	"welcomesurvey-sidebar-editing-title": "开始编辑",
 	"welcomesurvey-sidebar-editing-text": "几乎每个页面都可以由任何人来编辑，每小时会有数百次修改，增加内容，纠正错误，提高可读性。如果{{GENDER:$1|您}}有兴趣作出贡献，下面的页面可以帮到{{GENDER:$1|您}}。",
 	"welcomesurvey-sidebar-editing-link1-text": "教程",
@@ -57,6 +59,6 @@
 	"welcomesurvey-question-email-placeholder": "输入您的电子邮箱地址…",
 	"welcomesurvey-question-email-help": "我们注意到您在创建该账户时没有输入电子邮件地址。我们<strong>强烈建议</strong>您输入电子邮件地址，因为如果您丢失了密码，您需要一个电子邮箱来恢复帐户。注意：当其他用户联系您时，您的电子邮件地址不会被泄露。",
 	"welcomesurvey-question-languages-label": "{{SITENAME}}提供近300种语言版本。你还用其他语言阅读和写作吗？",
-	"welcomesurvey-question-languages-placeholder": "加起来共{{PLURAL:$1|一种语言|$1种语言}}...",
+	"welcomesurvey-question-languages-placeholder": "合计共{{PLURAL:$1|一种语言|$1种语言}}……",
 	"welcomesurvey-question-languages-maximum": "您已添加了最大数量的语言。"
 }

@@ -340,7 +340,7 @@
 	"growthexperiments-addlink-summary-title": "Падсумаванне",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Прапанова",
 	"growthexperiments-addlink-summary-column-header-linked": "Былі звязаныя?",
-	"growthexperiments-addlink-summary-summary": "Функцыя прапаноў спасылак: {{PLURAL:$1|дададзена $1 спасылка|дададзена $1 спасылкі|дададзена $1 спасылак}}.",
+	"growthexperiments-addlink-summary-summary": "Функцыя прапаноў спасылак: {{PLURAL:$1|дададзена $1 спасылка|дададзены $1 спасылкі|дададзены $1 спасылак}}.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Вы}} прапусцілі ўсе прапановы для гэтага артыкула.",
 	"growthexperiments-addlink-skip-body": "Вы ўпэўнены, што не {{GENDER:|жадаеце}} прымаць або адхіляць якія-небудзь прапановы?",
 	"growthexperiments-addlink-skip-accept": "Прапусціць усе",
@@ -360,6 +360,6 @@
 	"growthexperiments-structuredtask-editmode-selection-visual": "Візуальная праўка",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Пакінуць прапановы?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Пераключэнне рэжыму дазволіць {{GENDER:$1|вам}} рабіць іншыя віды правак. Завяршыце разгляд, каб адправіць сваю працу.",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Пераключыцца без адпраўкі",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Пераключыць без адпраўкі",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Адмена"
 }

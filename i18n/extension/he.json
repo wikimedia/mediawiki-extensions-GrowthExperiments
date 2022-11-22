@@ -56,7 +56,7 @@
 	"growthexperiments-edit-config-mentorship-enabled": "האם אפשרויות החונכות מופעלות?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "כן",
 	"growthexperiments-edit-config-mentorship-enabled-false": "לא",
-	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "דף שמכיל רשימת חונכים שמוקצים אוטומטית",
+	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "דף שמכיל רשימת חונכים שמוקצים אוטומטית למתחילים",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "דף שמכיל רשימת חונכים שיכולים להיות מוקצים רק ידנית",
 	"growthexperiments-edit-config-newcomertasks": "עריכות מוצעות",
 	"growthexperiments-edit-config-newcomer-tasks-description": "חלק מסוגי העריכות המוצעות מוצפות דרך תבניות תחזוקה. ערכים שמכילים את התבניות האלו נוספות להזנה. כדי לראות כמה ערכים זמינים בכל סוג משימה, ר' את [[Special:NewcomerTasksInfo|הדף הזה]].",

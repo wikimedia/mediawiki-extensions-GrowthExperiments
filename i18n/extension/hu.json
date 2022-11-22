@@ -5,7 +5,8 @@
 			"Llz78",
 			"Tacsipacsi",
 			"Tgr",
-			"Lois131"
+			"Lois131",
+			"Bináris"
 		]
 	},
 	"growthexperiments-desc": "Ez a kiterjesztés a Növekedés (Growth) csapat kísérleteit tartalmazza.",
@@ -18,7 +19,7 @@
 	"growthexperiments-edit-config-title": "Growth konfiguráció szerkesztése",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: utoljára [[User:$1|$1]] módosította ekkor: $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: utoljára egy ismeretlen felhasználó módosította ekkor: $1.",
-	"growthexperiments-edit-config-pretext": "Ez az oldal lehetővé teszi a[[:mw:Special:MyLanguage/Growth|Growth]] (növekedés) csapat által fejlesztett funkciók konfigurációjának szerkesztését. A(z) $1 lapot fogja a nevedben szerkeszteni. A változtatásaid láthatóak lesznek a lap történetében.",
+	"growthexperiments-edit-config-pretext": "Ez az oldal lehetővé teszi a [[:mw:Special:MyLanguage/Growth|Growth]] (növekedés) csapat által fejlesztett funkciók konfigurációjának szerkesztését. A(z) $1 lapot fogja a nevedben szerkeszteni. A változtatásaid láthatóak lesznek a lap történetében.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Ez az űrlap lehetővé teszi a megfelelő jogosultsággal rendelkező felhasználók számára a [[:mw:Special:MyLanguage/Growth|Growth]] csapat által készített funkciók konfigurációjának szerkesztését.",
 	"growthexperiments-edit-config-feedback-headline": "Kérdésed vagy ötleted van ezzel az űrlappal kapcsolatban?",
 	"growthexperiments-edit-config-feedback-cta": "Visszajelzés küldése",
