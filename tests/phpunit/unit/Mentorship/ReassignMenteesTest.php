@@ -14,6 +14,7 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Mentorship\ReassignMentees
@@ -37,7 +38,14 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		?ChangeMentorFactory $changeMentorFactoryMock = null,
 		?IContextSource $contextMock = null
 	): ReassignMentees {
+		$dbw = $this->createMock( IDatabase::class );
+		$dbw->method( 'lock' )
+			->willReturn( true );
+		$dbw->method( 'unlock' )
+			->willReturn( true );
+
 		return new ReassignMentees(
+			$dbw,
 			$mentorManagerMock ?? $this->createNoOpMock( MentorManager::class ),
 			$mentorProviderMock ?? $this->createNoOpMock( MentorProvider::class ),
 			$mentorStoreMock ?? $this->createNoOpMock( MentorStore::class ),

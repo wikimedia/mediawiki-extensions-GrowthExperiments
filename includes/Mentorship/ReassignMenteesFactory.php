@@ -9,8 +9,11 @@ use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class ReassignMenteesFactory {
+	private ILoadBalancer $dbLoadBalancer;
+
 	/** @var MentorManager */
 	private $mentorManager;
 
@@ -30,6 +33,7 @@ class ReassignMenteesFactory {
 	private $jobQueueGroupFactory;
 
 	/**
+	 * @param ILoadBalancer $dbLoadBalancer
 	 * @param MentorManager $mentorManager
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
@@ -38,6 +42,7 @@ class ReassignMenteesFactory {
 	 * @param JobQueueGroupFactory $jobQueueGroupFactory
 	 */
 	public function __construct(
+		ILoadBalancer $dbLoadBalancer,
 		MentorManager $mentorManager,
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
@@ -45,6 +50,7 @@ class ReassignMenteesFactory {
 		PermissionManager $permissionManager,
 		JobQueueGroupFactory $jobQueueGroupFactory
 	) {
+		$this->dbLoadBalancer = $dbLoadBalancer;
 		$this->mentorManager = $mentorManager;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorStore = $mentorStore;
@@ -65,6 +71,7 @@ class ReassignMenteesFactory {
 		IContextSource $context
 	): ReassignMentees {
 		$reassignMentees = new ReassignMentees(
+			$this->dbLoadBalancer->getConnection( DB_PRIMARY ),
 			$this->mentorManager,
 			$this->mentorProvider,
 			$this->mentorStore,

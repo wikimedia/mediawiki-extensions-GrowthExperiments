@@ -11,6 +11,8 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
+use WikiMap;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\ScopedCallback;
 
 class ReassignMentees {
@@ -19,6 +21,8 @@ class ReassignMentees {
 	public const STAGE_LISTED_AS_MENTOR = 1;
 	public const STAGE_NOT_LISTED_HAS_MENTEES = 2;
 	public const STAGE_NOT_LISTED_NO_MENTEES = 3;
+
+	private IDatabase $dbw;
 
 	/** @var MentorManager */
 	private $mentorManager;
@@ -48,6 +52,7 @@ class ReassignMentees {
 	private $context;
 
 	/**
+	 * @param IDatabase $dbw
 	 * @param MentorManager $mentorManager
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
@@ -59,6 +64,7 @@ class ReassignMentees {
 	 * @param IContextSource $context
 	 */
 	public function __construct(
+		IDatabase $dbw,
 		MentorManager $mentorManager,
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
@@ -69,6 +75,7 @@ class ReassignMentees {
 		UserIdentity $mentor,
 		IContextSource $context
 	) {
+		$this->dbw = $dbw;
 		$this->mentorManager = $mentorManager;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorStore = $mentorStore;
@@ -136,6 +143,14 @@ class ReassignMentees {
 		...$reassignMessageAdditionalParams
 	): bool {
 		$guard = $this->permissionManager->addTemporaryUserRights( $this->mentor, 'bot' );
+		$lockName = 'GrowthExperiments-ReassignMentees-' . $this->mentor->getId() .
+			WikiMap::getCurrentWikiId();
+		if ( !$this->dbw->lock( $lockName, __METHOD__, 0 ) ) {
+			$this->logger->warning(
+				__METHOD__ . ' failed to acquire a lock'
+			);
+			return false;
+		}
 
 		// only process primary mentors (T309984). Backup mentors will be automatically ignored by
 		// MentorPageMentorManager::getMentorForUser and replaced with a valid mentor if needed
@@ -185,8 +200,10 @@ class ReassignMentees {
 			);
 		}
 
-		// Revoke temporary bot rights
+		// remove temporary bot rights
 		ScopedCallback::consume( $guard );
+
+		$this->dbw->unlock( $lockName, __METHOD__ );
 		return true;
 	}
 }

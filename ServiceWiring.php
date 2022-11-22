@@ -690,6 +690,7 @@ return [
 	): ReassignMenteesFactory {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new ReassignMenteesFactory(
+			$growthServices->getLoadBalancer(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorProvider(),
 			$growthServices->getMentorStore(),
