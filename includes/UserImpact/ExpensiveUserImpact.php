@@ -71,20 +71,23 @@ class ExpensiveUserImpact extends UserImpact {
 	/**
 	 * An array with the title's prefixed DBkey as the key. The values contain:
 	 * - firstEditDate: The date the user first edited the article, in Y-m-d format.
+	 *   If the user made a very high number of total edits, it might just be some edit the
+	 *   user made to the article, not necessarily the first.
 	 * - newestEdit: The TS_MW timestamp of the newest edit by the user to the article.
-	 * - views: An array of page view counts. Each row in the array has a key with the date in Y-m-d format and
-	 *   the value is the page view count total for that day.
-	 *   Days are indexed with ISO 8601 dates, e.g. '2022-08-25'. The list of days is contiguous,
-	 *   in ascending order, and ends more or less at the current day (might be a few days off to
-	 *   account for data collection lags).
-	 * @return array
+	 * - views: An array of page view counts. Each row in the array has a key with the date in
+	 *   Y-m-d format and the value is the page view count total for that day.
+	 *   The list of days is contiguous, in ascending order, and ends more or less at the current
+	 *   day (might be a few days off to account for data collection lags).
+	 * - imageUrl: URL of a thumbnail of the article's main image, or null if there's no main image.
+	 * @return array[]
+	 * @phan-return array<string,array{views:array<string,int>,firstEditDate:string,newestEdit:string,imageUrl:?string}>
 	 */
 	public function getDailyArticleViews(): array {
 		return $this->dailyArticleViews;
 	}
 
 	/** @inheritDoc */
-	protected static function newEmpty(): UserImpact {
+	protected static function newEmpty(): self {
 		return new ExpensiveUserImpact(
 			new UserIdentityValue( 0, '' ),
 			0,

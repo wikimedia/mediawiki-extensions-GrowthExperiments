@@ -114,7 +114,7 @@ class UserImpactHandler extends SimpleHandler {
 		}
 		$jsonData = $userImpact->jsonSerialize();
 		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
-		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromJsonArray( $jsonData );
+		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray( $jsonData );
 		$jsonData = $sortedFilteredUserImpact->jsonSerialize();
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
@@ -143,8 +143,8 @@ class UserImpactHandler extends SimpleHandler {
 	 */
 	private function isPageViewDataStale( ExpensiveUserImpact $userImpact ): bool {
 		$latestPageViewsDateTime = new DateTime( array_key_last( $userImpact->getDailyTotalViews() ) );
-			$now = MWTimestamp::getInstance();
-			$diff = $now->timestamp->diff( $latestPageViewsDateTime );
+		$now = MWTimestamp::getInstance();
+		$diff = $now->timestamp->diff( $latestPageViewsDateTime );
 		// Page view data generation can lag by 24-48 hours.
 		// Consider the data stale if it's older than 2 days.
 		return $diff->days > 2;
