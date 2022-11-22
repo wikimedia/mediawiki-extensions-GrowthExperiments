@@ -8,6 +8,7 @@ use Exception;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\RefreshUserImpactJob;
+use GrowthExperiments\UserImpact\SortedFilteredUserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use IBufferingStatsdDataFactory;
@@ -114,6 +115,8 @@ class UserImpactHandler extends SimpleHandler {
 		}
 		$jsonData = $userImpact->jsonSerialize();
 		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
+		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromJsonArray( $jsonData );
+		$jsonData = $sortedFilteredUserImpact->jsonSerialize();
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
 		);
@@ -129,7 +132,8 @@ class UserImpactHandler extends SimpleHandler {
 		array &$jsonData
 	): void {
 		foreach ( $jsonData['dailyArticleViews'] as $title => $articleData ) {
-			$jsonData['dailyArticleViews'][$title]['pageviewsUrl'] = $this->getPageViewToolsUrl( $title );
+			$jsonData['dailyArticleViews'][$title]['pageviewsUrl'] =
+				$this->getPageViewToolsUrl( $title, $articleData['firstEditDate'] );
 		}
 	}
 
@@ -149,18 +153,23 @@ class UserImpactHandler extends SimpleHandler {
 
 	/**
 	 * @param string $title
+	 * @param string $firstEditDate Date of the first edit to the article in Y-m-d format.
 	 * @throws Exception
 	 * @return string Full URL for the PageViews tool for the given title and start date
 	 */
-	private function getPageViewToolsUrl( string $title ): string {
+	private function getPageViewToolsUrl( string $title, string $firstEditDate ): string {
 		$baseUrl = 'https://pageviews.wmcloud.org/';
 		$mwTitle = $this->titleFactory->newFromText( $title );
 		$daysAgo = ComputedUserImpactLookup::PAGEVIEW_DAYS;
 		$dtiAgo = new DateTime( '@' . strtotime( "-$daysAgo days" ) );
+		$startDate = $dtiAgo->format( 'Y-m-d' );
+		if ( $firstEditDate > $startDate ) {
+			$startDate = $firstEditDate;
+		}
 		return wfAppendQuery( $baseUrl, [
 			'project' => $this->AQSConfig->project,
 			'userlang' => $this->contentLanguage->getCode(),
-			'start' => $dtiAgo->format( 'Y-m-d' ),
+			'start' => $startDate,
 			'end' => 'latest',
 			'pages' => $mwTitle->getPrefixedDBkey(),
 		] );

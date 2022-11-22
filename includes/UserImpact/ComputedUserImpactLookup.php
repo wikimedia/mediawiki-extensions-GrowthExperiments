@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use ActorMigration;
 use DateTime;
 use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
@@ -50,8 +49,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/** Cutoff for thanks count. */
 	private const MAX_THANKS = 1000;
 
-	/** How many articles to use for $topTitles in getPageViewData(). */
-	private const TOP_ARTICLES = 5;
+	/** How many articles to use for $priorityTitles in getPageViewData(). */
+	private const PRIORITY_ARTICLES_LIMIT = 5;
 
 	/** How many days of pageview data to get. PageViewInfo supports up to 60. */
 	public const PAGEVIEW_DAYS = 60;
@@ -61,9 +60,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 	/** @var IDatabase */
 	private $dbr;
-
-	/** @var ActorMigration */
-	private $actorMigration;
 
 	/** @var NameTableStore */
 	private $changeTagDefStore;
@@ -91,7 +87,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/**
 	 * @param ServiceOptions $config
 	 * @param IDatabase $dbr
-	 * @param ActorMigration $actorMigration
 	 * @param NameTableStore $changeTagDefStore
 	 * @param UserFactory $userFactory
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -104,7 +99,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	public function __construct(
 		ServiceOptions $config,
 		IDatabase $dbr,
-		ActorMigration $actorMigration,
 		NameTableStore $changeTagDefStore,
 		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup,
@@ -116,7 +110,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	) {
 		$this->config = $config;
 		$this->dbr = $dbr;
-		$this->actorMigration = $actorMigration;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -140,18 +133,12 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		return new UserImpact(
 			$user,
 			$thanksCount,
-			$editData['editCountByNamespace'],
-			$editData['editCountByDay'],
-			new UserTimeCorrection(
-				$this->userOptionsLookup->getOption( $user, 'timecorrection' ),
-				// Make the time correction object testing friendly - otherwise it would contain a
-				// current-time DateTime object.
-				new DateTime( '@' . ConvertibleTimestamp::time() ),
-				$this->config->get( MainConfigNames::LocalTZoffset )
-			),
-			$editData['newcomerTaskEditCount'],
-			wfTimestampOrNull( TS_UNIX, $editData['lastEditTimestamp'] ),
-			ComputeEditingStreaks::getLongestEditingStreak( $editData['editCountByDay'] )
+			$editData->getEditCountByNamespace(),
+			$editData->getEditCountByDay(),
+			$editData->getUserTimeCorrection(),
+			$editData->getNewcomerTaskEditCount(),
+			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
+			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() )
 		);
 	}
 
@@ -170,9 +157,11 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$thanksCount = $this->getThanksCount( $user );
 		$pageViewData = $this->getPageViewData(
 			$user,
-			$editData['editedArticles'],
-			// Just use the last edited articles as "top articles" for now.
-			array_slice( $editData['editedArticles'], 0, self::TOP_ARTICLES ),
+			$editData->getEditedArticles(),
+			// Just use the last edited articles as "top articles" for now. This won't
+			// exclude retrieving data for other articles, it just prioritizes the most
+			// recent ones.
+			array_slice( $editData->getEditedArticles(), 0, self::PRIORITY_ARTICLES_LIMIT ),
 			self::PAGEVIEW_DAYS
 		);
 		if ( $pageViewData === null ) {
@@ -182,20 +171,14 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$expensiveUserImpact = new ExpensiveUserImpact(
 			$user,
 			$thanksCount,
-			$editData['editCountByNamespace'],
-			$editData['editCountByDay'],
-			new UserTimeCorrection(
-				$this->userOptionsLookup->getOption( $user, 'timecorrection' ),
-				// Make the time correction object testing friendly - otherwise it would contain a
-				// current-time DateTime object.
-				new DateTime( '@' . ConvertibleTimestamp::time() ),
-				$this->config->get( MainConfigNames::LocalTZoffset )
-			),
-			$editData['newcomerTaskEditCount'],
-			wfTimestampOrNull( TS_UNIX, $editData['lastEditTimestamp'] ),
+			$editData->getEditCountByNamespace(),
+			$editData->getEditCountByDay(),
+			$editData->getUserTimeCorrection(),
+			$editData->getNewcomerTaskEditCount(),
+			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
 			$pageViewData['dailyTotalViews'],
 			$pageViewData['dailyArticleViews'],
-			ComputeEditingStreaks::getLongestEditingStreak( $editData['editCountByDay'] )
+			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() )
 		);
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.ComputedUserImpactLookup.getExpensiveUserImpact', microtime( true ) - $start
@@ -204,20 +187,12 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	}
 
 	/**
+	 * Run a SQL query to fetch edit data for the user.
+	 *
 	 * @param User $user
-	 * @return array
-	 *   - editCountByNamespace: (array<int, int>) number of edits made by the user pernamespace
-	 *   - editCountByDay: (array<string, int>) number of article-space edits made by the user
-	 *     by day. The format matches UserImpact::getEditCountByDay().
-	 *   - newcomerTaskEditCount: (int) number of edits with "newcomer task" tag (suggested edits)
-	 * 	 - lastEditTimestamp: (string|null) MW_TS date of last article-space edit
-	 *   - editedArticles: (string[]) list of article-space titles the user has edited, sorted from
-	 *     most recently edited to least recently edited.
-	 *   - userTimeCorrection: (UserTimeCorrection) the timezone used for defining what "day" means
-	 *     in editCountByDay, based on the user's timezone preference.
-	 * @phan-return array{editCountByNamespace:array<int,int>,editCountByDay:array<string,int>,newcomerTaskEditCount:int,lastEditTimestamp:string|null,editedArticles:string[],userTimeCorrection:UserTimeCorrection}
+	 * @return EditData
 	 */
-	private function getEditData( User $user ): array {
+	private function getEditData( User $user ): EditData {
 		$queryBuilder = new SelectQueryBuilder( $this->dbr );
 		$queryBuilder->table( 'revision' )
 			->join( 'page', null, 'rev_page = page_id' );
@@ -233,16 +208,13 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			// it will mean that 'newcomerTaskEditCount' is 0 in the result.
 		}
 
-		// actor-migrated version of where( [ 'rev_user' => $user->getId() ] )
-		$actorQuery = $this->actorMigration->getWhere( $this->dbr, 'rev_user', $user );
-		$queryBuilder->tables( $actorQuery['tables'] )
-			->joinConds( $actorQuery['joins'] )
-			->conds( $actorQuery['conds'] );
 		$queryBuilder->fields( [ 'page_namespace', 'page_title', 'rev_timestamp' ] );
+		$queryBuilder->where( [ 'rev_actor' => $user->getActorId() ] );
 		// hopefully able to use the rev_actor_timestamp index for an efficient query
 		$queryBuilder->orderBy( 'rev_timestamp', 'DESC' );
 		$queryBuilder->andWhere( [ 'page_namespace' => NS_MAIN ] );
 		$queryBuilder->limit( self::MAX_EDITS );
+		$queryBuilder->caller( __METHOD__ );
 
 		$userTimeCorrection = new UserTimeCorrection(
 			$this->userOptionsLookup->getOption( $user, 'timecorrection' ),
@@ -274,17 +246,24 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			if ( $lastEditTimestamp === null ) {
 				$lastEditTimestamp = $row->rev_timestamp;
 			}
-			$editedArticles[$titleDbKey] = true;
+			// We're iterating over the result set, newest edits to oldest edits in descending order. The same
+			// article can have been edited multiple times. We'll stash the revision timestamp of the oldest
+			// edit made by the user to the article; we will use that later to calculate the "start date"
+			// for the impact of the user for a particular article, e.g. when making a pageviews tool URL
+			// or choosing the date range for page view data to display for an article.
+			$editedArticles[$titleDbKey]['oldestEdit'] = $row->rev_timestamp;
+			$editedArticles[$titleDbKey]['newestEdit'] =
+				$editedArticles[$titleDbKey]['newestEdit'] ?? $row->rev_timestamp;
 		}
 
-		return [
-			'editCountByNamespace' => $editCountByNamespace,
-			'editCountByDay' => array_reverse( $this->updateToIso8601DateKeys( $editCountByDay ) ),
-			'newcomerTaskEditCount' => $newcomerTaskEditCount,
-			'lastEditTimestamp' => $lastEditTimestamp,
-			'editedArticles' => array_merge( array_keys( $editedArticles ) ),
-			'userTimeCorrection' => $userTimeCorrection,
-		];
+		return new EditData(
+			$editCountByNamespace,
+			array_reverse( $this->updateToIso8601DateKeys( $editCountByDay ) ),
+			$newcomerTaskEditCount,
+			$lastEditTimestamp,
+			$editedArticles,
+			$userTimeCorrection
+		);
 	}
 
 	/**
@@ -313,19 +292,19 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/**
 	 * Must not be called when $this->pageViewService is null.
 	 * @param User $user
-	 * @param string[] $titles List of pages in prefixed DBkey format.
-	 * @param string[] $topTitles List of pages in prefixed DBkey format.
+	 * @param array $titles List of pages in prefixed DBkey format.
+	 * @param array $priorityTitles List of pages in prefixed DBkey format.
 	 * @param int $days How many days to query. No more than 60.
 	 * @return array|null
 	 *   - dailyTotalViews: (array<string, int>) daily number of total views of articles in $titles,
 	 *     keyed by ISO 8601 date.
-	 *   - dailyArticleViews: (array<string, array<string, int>>) For each of $topTitles, daily
+	 *   - dailyArticleViews: (array<string, array<string, int>>) Daily
 	 *     number of pageviews on each of the last $days days. Keyed by prefixed DBkey and then
 	 *     by ISO 8601 date.
 	 * @phan-return array{dailyTotalViews:array<string,int>,dailyArticleViews:array<string,array<string,int>>}|null
 	 * @throws MalformedTitleException
 	 */
-	private function getPageViewData( User $user, array $titles, array $topTitles, int $days ): ?array {
+	private function getPageViewData( User $user, array $titles, array $priorityTitles, int $days ): ?array {
 		// Short-circuit if the user has no edits.
 		if ( !$titles ) {
 			return [
@@ -334,14 +313,23 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			];
 		}
 
-		// $topTitles is a subset of $titles but putting it to the front makes sure the data
+		// $priorityTitles is a subset of $titles but putting it to the front makes sure the data
 		// for those titles is fetched even if PageViewInfo cuts off the list of titles at some
 		// point, which it is allowed to do.
-		$allTitles = array_unique( array_merge( $topTitles, $titles ) );
-		$allTitleObjects = array_map( function ( string $title ) {
-			return $this->titleFactory->newFromTextThrow( $title );
-		}, $allTitles );
-		$status = $this->pageViewService->getPageData( $allTitleObjects, $days );
+		$allTitles = array_merge( $priorityTitles, $titles );
+		$allTitleObjects = [];
+
+		foreach ( $allTitles as $title => $data ) {
+			$allTitleObjects[$title] = [
+				'title' => $this->titleFactory->newFromTextThrow( $title ),
+				// rev_timestamp is in TS_MW format (e.g. 20210406200220), we only want
+				// the first 8 characters for comparison with Ymd format date strings.
+				'rev_timestamp' => substr( $data['oldestEdit'], 0, 8 ),
+				'newestEdit' => $data['newestEdit'],
+				'oldestEdit' => $data['oldestEdit']
+			];
+		}
+		$status = $this->pageViewService->getPageData( array_column( $allTitleObjects, 'title' ), $days );
 		if ( !$status->isOK() ) {
 			$this->logger->error( Status::wrap( $status )->getWikiText( false, false, 'en' ) );
 			return null;
@@ -349,8 +337,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$pageViewData = $status->getValue();
 
 		$dailyTotalViews = [];
-		// Pre-fill with empty arrays so the order is preserved.
-		$dailyArticleViews = array_fill_keys( $topTitles, [] );
+		$dailyArticleViews = [];
 		foreach ( $pageViewData as $title => $days ) {
 			// Normalize titles as PageViewInfo does not define which title format it uses :(
 			$title = str_replace( ' ', '_', $title );
@@ -359,10 +346,18 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			if ( $imageUrl ) {
 				$dailyArticleViews[$title]['imageUrl'] = $imageUrl;
 			}
+			$firstEditDate = new DateTime( $allTitleObjects[$title]['rev_timestamp'] );
+			$dailyArticleViews[$title]['firstEditDate'] = $firstEditDate->format( 'Y-m-d' );
+			$dailyArticleViews[$title]['newestEdit'] = $allTitleObjects[$title]['newestEdit'];
 
 			foreach ( $days as $day => $views ) {
 				$dailyTotalViews[$day] = ( $dailyTotalViews[$day] ?? 0 ) + $views;
-				if ( in_array( $title, $topTitles, true ) ) {
+				// For daily article view calculation, we want to only include page views
+				// for articles from the date of the user's first edit; the user's
+				// impact for that article starts from the date of their first edit.
+				if ( str_replace( '-', '', $day ) < $allTitleObjects[$title]['rev_timestamp'] ) {
+					$dailyArticleViews[$title]['views'][$day] = 0;
+				} else {
 					$dailyArticleViews[$title]['views'][$day] = ( $dailyArticleViews[$title][$day] ?? 0 ) + $views;
 				}
 			}

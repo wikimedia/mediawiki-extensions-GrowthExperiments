@@ -21,7 +21,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UserImpact implements JsonSerializable {
 
 	/** Cache version, to be increased when breaking backwards compatibility. */
-	public const VERSION = 4;
+	public const VERSION = 5;
 
 	/** @var UserIdentity */
 	private $user;
