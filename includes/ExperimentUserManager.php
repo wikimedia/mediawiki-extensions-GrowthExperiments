@@ -31,9 +31,6 @@ class ExperimentUserManager {
 	public const CONSTRUCTOR_OPTIONS = [
 		'GEHomepageDefaultVariant',
 		'GEHomepageNewAccountVariantsByPlatform',
-		// Deprecated; can be removed two trains after
-		// I41d96b4ea98d6bae5674440512ef371d33cce39c is in production
-		'GEHomepageNewAccountVariants',
 	];
 
 	/**
@@ -117,11 +114,6 @@ class ExperimentUserManager {
 	 */
 	public function getRandomVariant(): string {
 		$variantProbabilities = $this->options->get( 'GEHomepageNewAccountVariantsByPlatform' );
-		// B/C, can be removed two trains after I41d96b4ea98d6bae5674440512ef371d33cce39c is in
-		// production
-		if ( !$variantProbabilities ) {
-			$variantProbabilities = $this->options->get( 'GEHomepageNewAccountVariants' );
-		}
 		$random = rand( 0, 99 );
 
 		$variant = $this->options->get( 'GEHomepageDefaultVariant' );
@@ -129,23 +121,11 @@ class ExperimentUserManager {
 			if ( !$this->isValidVariant( $candidateVariant ) ) {
 				continue;
 			}
-			// B/C, remove when GEHomepageNewAccountVariants is gone from config.
-			if ( is_int( $percentageForVariant ) ) {
-				if ( $random < $percentageForVariant ) {
-					$variant = $candidateVariant;
-					break;
-				}
-			} else {
-				if ( $random < $percentageForVariant[$this->platform] ) {
-					$variant = $candidateVariant;
-					break;
-				}
+			if ( $random < $percentageForVariant[$this->platform] ) {
+				$variant = $candidateVariant;
+				break;
 			}
-
-			// B/C, simplify when GEHomepageNewAccountVariants is gone.
-			$random -= is_int( $percentageForVariant ) ?
-				$percentageForVariant :
-				$percentageForVariant[$this->platform];
+			$random -= $percentageForVariant[$this->platform];
 		}
 		return $variant;
 	}
