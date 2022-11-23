@@ -84,22 +84,31 @@ class UserImpactHandler extends SimpleHandler {
 		$performingUser = $this->userFactory->newFromUserIdentity( $this->getAuthority()->getUser() );
 		$userImpact = $this->userImpactStore->getExpensiveUserImpact( $user );
 		$staleUserImpact = $userImpact;
+		if ( $userImpact ) {
+			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.Hit' );
+		}
 
 		if ( $userImpact && $this->isPageViewDataStale( $userImpact ) ) {
 			// Page view data is stale; we will attempt to recalculate it.
 			$userImpact = null;
+			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.HitStalePageViewData' );
 		}
 
 		if ( !$userImpact ) {
+			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.Miss' );
 			// Rate limit check.
 			if ( $performingUser->pingLimiter( 'growthexperimentsuserimpacthandler' ) ) {
 				if ( $staleUserImpact ) {
+					$this->statsdDataFactory->increment(
+						'GrowthExperiments.UserImpactHandler.PingLimiterTripped.StaleImpactData'
+					);
 					// Performing user is over the rate limit for requesting data for other users, but we have stale
 					// data so just return that, rather than nothing.
 					$jsonData = $staleUserImpact->jsonSerialize();
 					$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
 					return $jsonData;
 				}
+				$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.PingLimiterTripped.NoData' );
 				throw new HttpException( 'Too many requests to refresh user impact data', 429 );
 			}
 			$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
