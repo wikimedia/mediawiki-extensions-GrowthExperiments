@@ -54,7 +54,9 @@ class AddImageArticlePage extends Page {
 			} );
 		} );
 		await browser.execute( function () {
-			return ge.utils.enableImageRecommendations();
+			return new mw.Api().saveOptions( {
+				'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] )
+			} );
 		} );
 		let query = {};
 		let fragment = '';

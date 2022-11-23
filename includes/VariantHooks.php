@@ -39,9 +39,6 @@ class VariantHooks implements
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
 
-	/** A/B testing variant with image recommendations enabled. */
-	public const VARIANT_IMAGE_RECOMMENDATION_ENABLED = 'imagerecommendation';
-
 	/**
 	 * This defines the allowed values for the variant preference. The default value is defined
 	 * via $wgGEHomepageDefaultVariant.
@@ -56,8 +53,9 @@ class VariantHooks implements
 		//     edits module, otherwise like C
 		// 'linkrecommendation' Doesn't exist anymore. Opted users into the link-recommendation task type
 		//     experiment; this is now default behavior for the control group.
+		// 'imagerecommendation' Doesn't exist anymore. Opted users into the image-recommendation task type
+		//     experiment; this is now default behavior for the control group.
 		self::VARIANT_CONTROL,
-		self::VARIANT_IMAGE_RECOMMENDATION_ENABLED,
 	];
 
 	/** User option name for storing variants. */

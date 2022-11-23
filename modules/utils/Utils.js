@@ -194,32 +194,6 @@
 	}
 
 	/**
-	 * Enable the image recommendation user variant
-	 *
-	 * @private For debug/QA purposes only.
-	 * @return {jQuery.Promise}
-	 */
-	function enableImageRecommendations() {
-		return updateTaskPreference( {
-			'growthexperiments-homepage-variant': 'imagerecommendation',
-			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] )
-		} );
-	}
-
-	/**
-	 * Disable the image recommendation user variant (return to the control group)
-	 *
-	 * @private For debug/QA purposes only.
-	 * @return {jQuery.Promise}
-	 */
-	function disableImageRecommendations() {
-		return updateTaskPreference( {
-			'growthexperiments-homepage-variant': null,
-			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'copyedit', 'links' ] )
-		} );
-	}
-
-	/**
 	 * Opt the user into growth-glam-2022 campaign
 	 *
 	 * @private For debug/QA purposes only.
@@ -229,9 +203,6 @@
 	function enableCampaign( id ) {
 		return saveOptions( {
 			'growthexperiments-campaign': id
-		} ).then( function () {
-			// campaigns usually force users into the experiment group
-			return enableImageRecommendations();
 		} );
 	}
 
@@ -240,8 +211,6 @@
 	ge.utils = {
 		getUserVariant: getUserVariant,
 		setUserVariant: setUserVariant,
-		enableImageRecommendations: enableImageRecommendations,
-		disableImageRecommendations: disableImageRecommendations,
 		enableCampaign: enableCampaign
 	};
 

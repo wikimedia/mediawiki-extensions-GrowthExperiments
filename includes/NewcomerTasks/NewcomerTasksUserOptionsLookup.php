@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
-use GrowthExperiments\VariantHooks;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 
@@ -59,9 +58,9 @@ class NewcomerTasksUserOptionsLookup {
 		$taskTypes = $this->getJsonListOption( $user, SuggestedEdits::TASKTYPES_PREF );
 		// Filter out invalid task types for the user and use defaults based on user options.
 		if ( !$taskTypes ) {
-			$taskTypes = $this->getDefaultTaskTypes( $user );
+			$taskTypes = $this->getDefaultTaskTypes();
 		}
-		return $this->filterNonExistentTaskTypes( $this->convertTaskTypes( $taskTypes, $user ) );
+		return $this->filterNonExistentTaskTypes( $this->convertTaskTypes( $taskTypes ) );
 	}
 
 	/**
@@ -113,31 +112,27 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Check if image recommendations are enabled. When true, the image-recommendation task type
 	 * should be made available to the user.
-	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function areImageRecommendationsEnabled( UserIdentity $user ): bool {
+	public function areImageRecommendationsEnabled(): bool {
 		return $this->config->get( 'GENewcomerTasksImageRecommendationsEnabled' )
 			&& array_key_exists( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-				$this->configurationLoader->getTaskTypes() )
-			&& $this->experimentUserManager->isUserInVariant( $user,
-				VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED );
+				$this->configurationLoader->getTaskTypes() );
 	}
 
 	/**
 	 * Remove task types which the user is not supposed to see, given the link recommendation
 	 * configuration and community configuration.
 	 * @param string[] $taskTypes Task types IDs.
-	 * @param UserIdentity $user
 	 * @return string[] Filtered task types IDs. Array keys are not preserved.
 	 */
-	public function filterTaskTypes( array $taskTypes, UserIdentity $user ): array {
+	public function filterTaskTypes( array $taskTypes ): array {
 		if ( $this->areLinkRecommendationsEnabled() ) {
 			$taskTypes = array_diff( $taskTypes, [ 'links' ] );
 		} else {
 			$taskTypes = array_diff( $taskTypes, [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ] );
 		}
-		if ( !$this->areImageRecommendationsEnabled( $user ) ) {
+		if ( !$this->areImageRecommendationsEnabled() ) {
 			$taskTypes = array_diff( $taskTypes, [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ] );
 		}
 		return $this->filterNonExistentTaskTypes( $taskTypes );
@@ -145,15 +140,10 @@ class NewcomerTasksUserOptionsLookup {
 
 	/**
 	 * Get default task types when the user has no stored preference.
-	 * @param UserIdentity $user
 	 * @return string[]
 	 */
-	private function getDefaultTaskTypes( UserIdentity $user ): array {
-		if ( $this->areImageRecommendationsEnabled( $user ) ) {
-			return [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
-		} else {
-			return SuggestedEdits::DEFAULT_TASK_TYPES;
-		}
+	private function getDefaultTaskTypes(): array {
+		return SuggestedEdits::DEFAULT_TASK_TYPES;
 	}
 
 	/**
@@ -161,16 +151,15 @@ class NewcomerTasksUserOptionsLookup {
 	 * configuration, to the closest task type available to them.
 	 * This is a hack that should be removed when A/B tests are over (T278123, T290403).
 	 * @param string[] $taskTypes Task types IDs.
-	 * @param UserIdentity $user
 	 * @return string[] Converted task types IDs. Array keys are not preserved.
 	 */
-	private function convertTaskTypes( array $taskTypes, UserIdentity $user ): array {
+	private function convertTaskTypes( array $taskTypes ): array {
 		if ( $this->areLinkRecommendationsEnabled() ) {
 			$map = [ 'links' => LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
 			$map = [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];
 		}
-		if ( !$this->areImageRecommendationsEnabled( $user ) ) {
+		if ( !$this->areImageRecommendationsEnabled() ) {
 			$map += [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => false ];
 		}
 

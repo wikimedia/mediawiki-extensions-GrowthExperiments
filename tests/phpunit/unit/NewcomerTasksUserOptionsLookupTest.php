@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\VariantHooks;
 use HashConfig;
 use MediaWiki\User\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentity;
@@ -51,7 +50,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
 			[ 'isUserInVariant' ] );
 		$experimentUserManager->method( 'isUserInVariant' )
-			->with( $this->anything(), VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED )
+			->with( $this->anything(), 'imagerecommendation' )
 			->willReturn( false );
 
 		$lookup = new NewcomerTasksUserOptionsLookup( $experimentUserManager, $userOptionsLookup,
@@ -115,7 +114,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
 			[ 'isUserInVariant' ] );
 		$experimentUserManager->method( 'isUserInVariant' )
-			->with( $this->anything(), VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED )
+			->with( $this->anything(), 'imagerecommendation' )
 			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
 				return [
 					'User1' => false,
@@ -141,7 +140,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		);
 		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'link-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
-		$this->assertSame( [ 'image-recommendation' ], $lookup->getTaskTypeFilter( $user3 ) );
+		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $lookup->getTaskTypeFilter( $user3 ) );
 		$this->assertSame( [ 'link-recommendation' ], $lookup->getTaskTypeFilter( $user4 ) );
 	}
 
@@ -174,7 +173,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
 			[ 'isUserInVariant' ] );
 		$experimentUserManager->method( 'isUserInVariant' )
-			->with( $this->anything(), VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED )
+			->with( $this->anything(), 'imagerecommendation' )
 			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
 				return [
 						   'User1' => false,
@@ -198,8 +197,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
-		$this->assertSame( [ 'image-recommendation' ], $lookup->getTaskTypeFilter( $user3 ) );
+		$this->assertSame( [ 'copyedit', 'image-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
+		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user3 ) );
 		$this->assertSame( [ 'copyedit', 'image-recommendation' ], $lookup->getTaskTypeFilter( $user4 ) );
 	}
 
