@@ -1,4 +1,6 @@
-jest.mock( '../icons.json', () => ( {} ), { virtual: true } );
+jest.mock( '../icons.json', () => ( {
+	cdxIconError: ''
+} ), { virtual: true } );
 const { shallowMount } = require( '@vue/test-utils' );
 const Vuex = require( 'vuex' );
 const MenteeOverview = require( './MenteeOverview.vue' );

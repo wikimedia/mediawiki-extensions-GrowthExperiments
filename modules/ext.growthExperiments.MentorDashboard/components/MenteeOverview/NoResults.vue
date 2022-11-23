@@ -16,6 +16,7 @@
 
 <script>
 const { CdxIcon } = require( '@wikimedia/codex' );
+const { cdxIconError } = require( '../icons.json' );
 
 // @vue/component
 module.exports = exports = {
@@ -27,7 +28,7 @@ module.exports = exports = {
 		description: { type: String, default: null },
 		iconLabel: { type: String, required: true },
 		text: { type: String, required: true },
-		icon: { type: String, required: true }
+		icon: { type: String, required: true, default: cdxIconError }
 	}
 };
 </script>

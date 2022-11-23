@@ -83,7 +83,8 @@
 			<cdx-button
 				class="ext-growthExperiments-utils__pull-right"
 				form="mentee-filters-form"
-				type="submit">
+				type="primary"
+			>
 				{{
 					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit' ).text()
 				}}

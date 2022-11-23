@@ -101,10 +101,10 @@ module.exports = exports = {
 	},
 	computed: {
 		subtextFontWeight() {
-			return this.renderMode !== 'overlay-summary' && 'bold';
+			return this.renderMode !== 'overlay-summary' ? 'bold' : null;
 		},
 		footerFontSize() {
-			return this.renderMode !== 'desktop' && 'sm';
+			return this.renderMode !== 'desktop' ? 'sm' : null;
 		}
 	}
 };

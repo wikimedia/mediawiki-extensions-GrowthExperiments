@@ -108,7 +108,8 @@ describe( 'NewImpactVue', () => {
 			global: {
 				provide: {
 					RENDER_MODE: 'desktop',
-					RELEVANT_USER_USERNAME: 'Alice'
+					RELEVANT_USER_USERNAME: 'Alice',
+					$log: jest.fn()
 				},
 				mocks: {
 					$filters: {

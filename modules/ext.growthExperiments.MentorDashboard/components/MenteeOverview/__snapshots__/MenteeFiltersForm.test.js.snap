@@ -163,7 +163,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
     class="ext-growthExperiments-MenteeFiltersForm__form-group ext-growthExperiments-MenteeFiltersForm__form-actions"
   >
     <button
-      class="cdx-button cdx-button--action-default cdx-button--type-submit cdx-button--framed ext-growthExperiments-utils__pull-right"
+      class="cdx-button cdx-button--action-default cdx-button--type-primary cdx-button--framed ext-growthExperiments-utils__pull-right"
       form="mentee-filters-form"
     >
       

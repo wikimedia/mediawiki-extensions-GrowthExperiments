@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NoEditsDisplay displays appropiate text when activated (desktop) 1`] = `
+exports[`NoEditsDisplay displays appropriate text when activated (desktop) 1`] = `
 <div
   class="ext-growthExperiments-NoEditsDisplay--desktop"
 >
@@ -40,7 +40,7 @@ exports[`NoEditsDisplay displays appropiate text when activated (desktop) 1`] = 
 </div>
 `;
 
-exports[`NoEditsDisplay displays appropiate text when activated (overlay) 1`] = `
+exports[`NoEditsDisplay displays appropriate text when activated (overlay) 1`] = `
 <div
   class="ext-growthExperiments-NoEditsDisplay--overlay"
 >
@@ -89,7 +89,7 @@ exports[`NoEditsDisplay displays appropiate text when activated (overlay) 1`] = 
 </div>
 `;
 
-exports[`NoEditsDisplay displays appropiate text when activated (overlay-summary) 1`] = `
+exports[`NoEditsDisplay displays appropriate text when activated (overlay-summary) 1`] = `
 <div
   class="ext-growthExperiments-NoEditsDisplay--overlay-summary"
 >
@@ -129,7 +129,7 @@ exports[`NoEditsDisplay displays appropiate text when activated (overlay-summary
 </div>
 `;
 
-exports[`NoEditsDisplay displays appropiate text when disabled (desktop) 1`] = `
+exports[`NoEditsDisplay displays appropriate text when disabled (desktop) 1`] = `
 <div
   class="ext-growthExperiments-NoEditsDisplay--desktop"
 >
@@ -171,7 +171,7 @@ exports[`NoEditsDisplay displays appropiate text when disabled (desktop) 1`] = `
 </div>
 `;
 
-exports[`NoEditsDisplay displays appropiate text when disabled (overlay) 1`] = `
+exports[`NoEditsDisplay displays appropriate text when disabled (overlay) 1`] = `
 <div
   class="ext-growthExperiments-NoEditsDisplay--overlay"
 >
@@ -213,7 +213,7 @@ exports[`NoEditsDisplay displays appropiate text when disabled (overlay) 1`] = `
 </div>
 `;
 
-exports[`NoEditsDisplay displays appropiate text when disabled (overlay-summary) 1`] = `
+exports[`NoEditsDisplay displays appropriate text when disabled (overlay-summary) 1`] = `
 <div
   class="ext-growthExperiments-NoEditsDisplay--overlay-summary"
 >

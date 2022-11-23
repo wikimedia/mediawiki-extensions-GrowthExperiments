@@ -33,7 +33,7 @@ describe( 'NoEditsDisplay', () => {
 		'overlay-summary'
 	];
 	for ( const mode of modes ) {
-		it( `displays appropiate text when disabled (${mode})`, () => {
+		it( `displays appropriate text when disabled (${mode})`, () => {
 			const wrapper = renderComponent( {
 				userName: 'Alice',
 				isDisabled: true
@@ -41,7 +41,7 @@ describe( 'NoEditsDisplay', () => {
 
 			expect( wrapper.element ).toMatchSnapshot();
 		} );
-		it( `displays appropiate text when activated (${mode})`, () => {
+		it( `displays appropriate text when activated (${mode})`, () => {
 			const wrapper = renderComponent( {
 				userName: 'Alice',
 				isActivated: true
