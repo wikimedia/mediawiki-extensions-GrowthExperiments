@@ -136,7 +136,7 @@
 			</c-text>
 			<articles-list class="ext-growthExperiments-NewImpact__articles-list" :items="data.articles"></articles-list>
 			<c-text weight="bold">
-				<a :href="contributionsUrl">
+				<a :href="contributionsUrl" class="ext-growthExperiments-NewImpact__contributions-link">
 					{{ $i18n( 'growthexperiments-homepage-impact-contributions-link', data.totalEditsCount, userName ).text() }}
 				</a>
 			</c-text>
@@ -265,6 +265,10 @@ module.exports = exports = {
 		&__link {
 			.disabled-visited();
 		}
+	}
+
+	&__contributions-link {
+		.disabled-visited();
 	}
 
 	&__articles-list {
