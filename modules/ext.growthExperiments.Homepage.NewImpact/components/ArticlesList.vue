@@ -121,12 +121,12 @@ module.exports = exports = {
 			display: flex;
 			align-items: center;
 
-			&:visited {
-				color: inherit;
-			}
+			a& {
+				.disabled-visited();
 
-			&:hover {
-				text-decoration: none;
+				&:hover {
+					text-decoration: none;
+				}
 			}
 
 			&__title {
