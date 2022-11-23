@@ -82,6 +82,7 @@
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|}}Şu anda danışanınız yok.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 danışmanlıktan emekli oldu.",
 	"echo-category-title-ge-mentorship": "Danışmanlık",
+	"echo-pref-tooltip-ge-mentorship": "Growth ekibi tarafından sürdürülen danışmanlık özelliği ile alakalı bildirimler. Bu bildirim danışan olarak atandığınızda veya danışmanlarınızdan birisi başkası tarafından alındığında gönderilidr.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$2|}}Danışanınız, $3, $1 tarafından alındı.",
 	"growthexperiments-notification-body-mentee-claimed": "Sebep: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"Danışan edin\" nedir?",

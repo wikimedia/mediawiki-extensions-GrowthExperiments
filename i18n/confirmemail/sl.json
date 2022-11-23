@@ -7,5 +7,20 @@
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|kaj je to?]])",
 	"growthexperiments-confirmemail-emailhelp": "E-poštni naslov je potreben za ponovni dostop do računa, če izgubite geslo.",
 	"growthexperiments-confirmemail-emailrecommended": "E-poštni naslov (priporočljivo)",
-	"growthexperiments-signupcampaign-bullet3": "Začnite z majhnimi, preprostimi urejanji"
+	"growthexperiments-confirmemail-emailwarning": "Poiščite naše e-poštno sporočilo, da potrdite svoj naslov.",
+	"growthexperiments-confirmemail-confirm-subject": "Pozdravljeni v projektu {{SITENAME}}: Prosimo, potrdite svoj e-poštni naslov",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Pozdravljeni}}, $2 ,\n\nhvala, ker ste v svojem računu v projektu {{SITENAME}}, registriranem z IP-naslova $1, dodali e-poštni naslov.\n\nKliknite spodnji gumb, da ga potrdite kot e-poštni naslov, ki ga želite povezati s svojim računom »$2«:\n\n$3 \n\nOpomba: Ta potrditvena koda <strong>poteče ob $4</strong>.\n\nHvala.\n\n{{SITENAME}}\n\n----\n\nZa preklic potrditve e-poštnega naslova (ker niste registrirali računa ali iz katerega koli drugega razloga) kliknite to povezavo za preklic:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Potrdi e-poštni naslov",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Pozdravljeni}}, $2,\n\nhvala, ker ste v svojem račun {{SITENAME}}, registriranem z IP-naslova $1, dodali e-poštni naslov.\n\nKliknite spodnjo povezavo, da ga potrdite kot e-poštni naslov, ki ga želite povezati s svojim računom »$2«:\n\n$3 \n\nOpomba: ta potrditvena koda poteče ob $4.\n\nHvala.\n\n{{SITENAME}}\n\n----\n\nZa preklic potrditve e-poštnega naslova (ker niste registrirali računa ali iz katerega koli drugega razloga) kliknite to povezavo za preklic:\n\n$5",
+	"growthexperiments-signupcampaign-title": "Hvala za donacijo! Zdaj se takoj pridružite skupnosti urejevalcev, ki izboljšujejo Wikipedijo.",
+	"growthexperiments-signupcampaign-body": "Urejanje Wikipedije je lahko preprosto dodana povezava ali spremenjena beseda. Ko si boste ustvarili račun, boste prejeli predloge za članke o {{GENDER:|vaših}} temah!",
+	"growthexperiments-signupcampaign-bullet1": "Predlagani članki za {{GENDER:|vaša}} zanimanja",
+	"growthexperiments-signupcampaign-bullet2": "Prosite za pomoč izkušenega urejevalca",
+	"growthexperiments-signupcampaign-bullet3": "Začnite z majhnimi, preprostimi urejanji",
+	"growthexperiments-recurringcampaign-title": "Hvala, ker ste zvesti podpornik. Prispevki bralcev, kot ste {{GENDER:|vi}}, zagotavljajo, da Wikipedija uspeva.",
+	"growthexperiments-recurringcampaign-body": "Ustvarite si svoj račun zdaj, da se prijavite in se izognete prikazovanju oglasnih pasic za zbiranje sredstev. Ko {{GENDER:|boste}} imeli račun, se {{GENDER:|boste}} lahko tudi naučili urejati Wikipedijo z majhnimi spremembami, ki bodo imele velik vpliv na preostali svet. Ko {{GENDER:|boste}} {{GENDER:začeli}} urejati Wikipedijo, vam bomo na voljo za pomoč!",
+	"growthexperiments-josacampaign-title": "Pozdravljeni na rojstnodnevnem praznovanju Wikipedije!\n\nKo si boste ustvarili račun, boste lahko začeli prispevati k enciklopediji.",
+	"growthexperiments-josacampaign-body": "To je dogodek, ki ga organizirata Jordansko združenje za odprto kodo in Wikimedia na Bližnjem Vzhodu, da bi vam pomagala spoznati Wikipedijo in prispevati k njej.\n\nČe želite začeti prispevati, morate le izpolniti ta obrazec in nato izbrati nalogo, ki jo boste opravljali.\n\nČe potrebujete pomoč, se obrnite na organizatorje dogodka.",
+	"growthexperiments-glamcampaign-title": "Pozdravljeni na dogodku #1Picture1Article !\n\nV enciklopedijo lahko začnete dodajati znanje takoj, ko si boste ustvarili uporabniški račun.",
+	"growthexperiments-glamcampaign-body": "To je dogodek, ki ga organizirajo Wikimedia Argentina, Wikimedia Čile, Wikimedia Mehika in Fundacija Wikimedia, da bi vam pomagali izvedeti več o Wikipediji in o tem, kako s funkcijo »Dodaj sliko« vstaviti slike za ilustracijo različnih člankov.\n\nČe želite začeti uporabljati to orodje, morate izpolniti ta obrazec in izbrati temo, ki vas zanima.\n\nČe potrebujete pomoč, se obrnite na organizatorje dogodka."
 }

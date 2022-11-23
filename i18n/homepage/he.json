@@ -387,7 +387,7 @@
 	"grant-managementorship": "ניהול חונכות",
 	"newcomertasksinfo": "משימות למתחילים",
 	"newcomertasksinfo-no-data": "אין נתונים זמינים.",
-	"newcomertasksinfo-config-form-info": "אפשר לצפות בהגדרות של משימות למשתמשים חדשים ולשנות אותן בדף [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "אפשר לצפות בהגדרות של משימות למתחילים ולשנות אותן בדף [[Special:EditGrowthConfig]].",
 	"newcomertasksinfo-table-header-task-type": "סוג המשימה",
 	"newcomertasksinfo-table-header-task-type-id": "מזהה",
 	"newcomertasksinfo-table-header-task-count": "מספר",

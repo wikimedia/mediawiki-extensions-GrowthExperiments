@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Označi ili odznači mentija zvjezdicom od strane trenutnog korisnika (pohranjuje se privatno i ne protokolira se)",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Novi status"
+}

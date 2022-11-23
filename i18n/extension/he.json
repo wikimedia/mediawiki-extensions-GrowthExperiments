@@ -58,7 +58,7 @@
 	"growthexperiments-edit-config-mentorship-enabled": "האם אפשרויות החונכות מופעלות?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "כן",
 	"growthexperiments-edit-config-mentorship-enabled-false": "לא",
-	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "דף שמכיל רשימת חונכים שמוקצים אוטומטית",
+	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "דף שמכיל רשימת חונכים שמוקצים אוטומטית למתחילים",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "דף שמכיל רשימת חונכים שיכולים להיות מוקצים רק ידנית",
 	"growthexperiments-edit-config-newcomertasks": "עריכות מוצעות",
 	"growthexperiments-edit-config-newcomer-tasks-description": "חלק מסוגי העריכות המוצעות מוצפות דרך תבניות תחזוקה. ערכים שמכילים את התבניות האלו נוספות להזנה. כדי לראות כמה ערכים זמינים בכל סוג משימה, ר' את [[Special:NewcomerTasksInfo|הדף הזה]].",
@@ -80,5 +80,5 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "ערכים שמכילים תבניות שמוגדרות כאן לא יוצגו למשתמשים בתור משימות לסוג המשימה הזה.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "ערכים שמכילים קטגוריות שמוגדרות כאן לא יוצגו למשתמשים בתור משימות לסוג המשימה הזה.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "תבניות מידע",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "התבניות האלה נחוצות בשביל משימת [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|הצעות תמונה]] לעורכים חדשים. ערכים שמכילים את התבניות האלו לא יירשמו בתור משימות הצעת תמונה."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "התבניות האלה נחוצות בשביל משימת [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|הצעות תמונה]] למתחיל. ערכים שמכילים את התבניות האלו לא יירשמו בתור משימות הצעת תמונה."
 }

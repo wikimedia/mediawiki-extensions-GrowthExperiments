@@ -385,7 +385,7 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "Пропозиція",
 	"growthexperiments-addlink-summary-column-header-linked": "Посилання є?",
 	"growthexperiments-addlink-summary-copyrightwarning": "Публікуючи зміни, {{GENDER:|ви}} погоджуєтеся із [https://foundation.wikimedia.org/wiki/Terms_of_Use/uk Умовами використання] і погоджуєтеся на передачу Вашого внеску під ліцензіями [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] та [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
-	"growthexperiments-addlink-summary-summary": "Функція пропозицій посилань: $1 {{PLURAL:$1|посилання|посилань}} додано.",
+	"growthexperiments-addlink-summary-summary": "Функція пропозицій посилань: додано $1 {{PLURAL:$1|посилання|посилання|посилань}}.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Ви}} пропустили усі пропозиції для цієї статті.",
 	"growthexperiments-addlink-skip-body": "{{GENDER:|Ви}} впевнені, що не хочете прийняти чи відкинути жодну з пропозицій?",
 	"growthexperiments-addlink-skip-accept": "Пропустити всі",
