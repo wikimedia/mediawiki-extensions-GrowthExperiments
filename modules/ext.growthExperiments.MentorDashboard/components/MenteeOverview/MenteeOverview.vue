@@ -284,6 +284,7 @@ module.exports = exports = {
 			this.$store.dispatch( 'mentees/savePresets' );
 		},
 		updateMenteeFilters( value ) {
+			// eslint-disable-next-line compat/compat
 			this.$store.dispatch( 'mentees/getAllMentees', Object.assign( {}, value, {
 				page: 1
 			} ) );

@@ -33,6 +33,7 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
 	};
 	const entries = [];
 	const keys = [];
+	// eslint-disable-next-line compat/compat
 	for ( const defaultValue of Array( timeFrameInDays ).fill( 0 ) ) {
 		const dateKey = withoutTime( today );
 		keys.push( dateKey );
