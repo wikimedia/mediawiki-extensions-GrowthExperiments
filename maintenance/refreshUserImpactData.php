@@ -36,6 +36,9 @@ class RefreshUserImpactData extends Maintenance {
 	private $userImpactStore;
 	private JobQueueGroupFactory $jobQueueGroupFactory;
 
+	/** @var int|null Ignore a user if they have data generated after this Unix timestamp. */
+	private ?int $ignoreAfter = null;
+
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'GrowthExperiments' );
@@ -61,7 +64,7 @@ class RefreshUserImpactData extends Maintenance {
 			);
 			return;
 		}
-		$this->checkOptions();
+		$this->initOptions();
 		$this->initServices();
 
 		$users = [];
@@ -76,6 +79,7 @@ class RefreshUserImpactData extends Maintenance {
 					$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
 						new RefreshUserImpactJob( [
 							'impactDataBatch' => $users,
+							'staleBefore' => $this->ignoreAfter,
 						] )
 					);
 					$users = [];
@@ -94,9 +98,14 @@ class RefreshUserImpactData extends Maintenance {
 		}
 	}
 
-	private function checkOptions(): void {
+	private function initOptions(): void {
 		if ( !$this->hasOption( 'editedWithin' ) && !$this->hasOption( 'registeredWithin' ) ) {
 			$this->fatalError( 'must use at least one of --editedWithin and --registeredWithin' );
+		}
+
+		$ignoreIfUpdatedWithin = $this->getOption( 'ignoreIfUpdatedWithin' );
+		if ( $ignoreIfUpdatedWithin ) {
+			$this->ignoreAfter = $this->getTimestampFromRelativeDate( $ignoreIfUpdatedWithin );
 		}
 	}
 
@@ -113,8 +122,6 @@ class RefreshUserImpactData extends Maintenance {
 	 * @return Generator<UserIdentity>
 	 */
 	private function getUsers(): Generator {
-		$ignoreIfUpdatedWithin = $this->getOption( 'ignoreIfUpdatedWithin' );
-
 		$queryBuilder = $this->getQueryBuilder();
 		$queryBuilder->select( 'actor_user' );
 		$queryBuilder->limit( $this->getBatchSize() );
@@ -134,10 +141,12 @@ class RefreshUserImpactData extends Maintenance {
 			}
 			foreach ( $users as $user ) {
 				$lastUserId = $user->getId();
-				if ( $ignoreIfUpdatedWithin ) {
-					$timestamp = $this->getTimestampFromRelativeDate( $ignoreIfUpdatedWithin );
+				// Do staleness check, if we are not using the job queue. Jobs can run after
+				// significant delays and multiple updates for the same user might get queued,
+				// so we do the check when the job runs.
+				if ( $this->ignoreAfter && !$this->hasOption( 'use-job-queue' ) ) {
 					$cachedUserImpact = $this->userImpactStore->getExpensiveUserImpact( $user );
-					if ( $cachedUserImpact && $cachedUserImpact->getGeneratedAt() >= $timestamp ) {
+					if ( $cachedUserImpact && $cachedUserImpact->getGeneratedAt() >= $this->ignoreAfter ) {
 						if ( $this->hasOption( 'verbose' ) ) {
 							$this->output( "  ...skipping user {$user->getId()}, has recent cached entry\n" );
 						}

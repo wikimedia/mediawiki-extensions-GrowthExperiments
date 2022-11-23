@@ -33,19 +33,33 @@ class DatabaseUserImpactStore implements UserImpactStore {
 
 	/** @inheritDoc */
 	public function getUserImpact( UserIdentity $user ): ?UserImpact {
+		$userId = $user->getId();
+		return $this->batchGetUserImpact( [ $userId ] )[$userId];
+	}
+
+	/**
+	 * @param int[] $userIds
+	 * @return (UserImpact|null)[] Map of user ID => UserImpact or null.
+	 * @todo make this part of the interface
+	 */
+	public function batchGetUserImpact( array $userIds ): array {
+		if ( !$userIds ) {
+			return [];
+		}
+
+		$userImpacts = array_fill_keys( $userIds, null );
 		$queryBuilder = new SelectQueryBuilder( $this->dbr );
 		$queryBuilder->table( self::TABLE_NAME );
-		$queryBuilder->field( 'geui_data' );
-		$queryBuilder->where( [ 'geui_user_id' => $user->getId() ] );
-		$serializedUserImpact = $queryBuilder->fetchField();
-		if ( $serializedUserImpact === false ) {
-			return null;
+		$queryBuilder->fields( [ 'geui_user_id', 'geui_data' ] );
+		$queryBuilder->where( [ 'geui_user_id' => $userIds ] );
+		foreach ( $queryBuilder->fetchResultSet() as $row ) {
+			$userImpactArray = json_decode( $row->geui_data, true );
+			if ( ( $userImpactArray['@version'] ?? 0 ) !== UserImpact::VERSION ) {
+				continue;
+			}
+			$userImpacts[$row->geui_user_id] = UserImpact::newFromJsonArray( $userImpactArray );
 		}
-		$userImpactArray = json_decode( $serializedUserImpact, true );
-		if ( ( $userImpactArray['@version'] ?? 0 ) !== UserImpact::VERSION ) {
-			return null;
-		}
-		return UserImpact::newFromJsonArray( json_decode( $serializedUserImpact, true ) );
+		return $userImpacts;
 	}
 
 	/**
