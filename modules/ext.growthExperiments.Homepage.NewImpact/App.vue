@@ -8,8 +8,8 @@
 				:user-name="userName"
 			></no-edits-display>
 			<component
-				v-else-if="data && !error"
 				:is="impactComponent"
+				v-else-if="data && !error"
 				:user-name="userName"
 				:data="data"
 			></component>
@@ -63,7 +63,7 @@ module.exports = exports = {
 			impactComponent,
 			data: result.data,
 			// TODO: how to give user error feedback?
-			// eslint-disable-next-line vue/no-unused-properties
+
 			error: result.error
 		};
 	}
