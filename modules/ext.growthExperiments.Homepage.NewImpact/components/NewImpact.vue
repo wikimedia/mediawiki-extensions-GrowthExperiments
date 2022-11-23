@@ -107,7 +107,7 @@
 				size="md"
 				weight="bold"
 			>
-				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-title', userName, DEFAULT_STREAK_TIME_FRAME ).text() }}
+				{{ recentActivityTitleText }}
 			</c-text>
 			<recent-activity
 				:is-mobile="isMobileHomepage"
@@ -137,7 +137,7 @@
 			<articles-list class="ext-growthExperiments-NewImpact__articles-list" :items="data.articles"></articles-list>
 			<c-text weight="bold">
 				<a :href="contributionsUrl" class="ext-growthExperiments-NewImpact__contributions-link">
-					{{ $i18n( 'growthexperiments-homepage-impact-contributions-link', data.totalEditsCount, userName ).text() }}
+					{{ contributionsLinkText }}
 				</a>
 			</c-text>
 		</div>
@@ -206,6 +206,20 @@ module.exports = exports = {
 		};
 	},
 	computed: {
+		recentActivityTitleText() {
+			return this.$i18n(
+				'growthexperiments-homepage-impact-recent-activity-title',
+				this.userName,
+				this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME )
+			).text();
+		},
+		contributionsLinkText() {
+			return this.$i18n(
+				'growthexperiments-homepage-impact-contributions-link',
+				this.$filters.convertNumber( this.data.totalEditsCount ),
+				this.userName
+			).text();
+		},
 		contributionsUrl() {
 			return mw.util.getUrl( `Special:Contributions/${this.userName}` );
 		},
