@@ -85,7 +85,11 @@ class NewImpact extends BaseModule {
 		if ( $this->isUnactivatedOrDisabled() ) {
 			$unactivatedClasses[] = $this->getUnactivatedModuleCssClass();
 		}
-		return array_merge( parent::getCssClasses(),  $unactivatedClasses );
+		return array_merge(
+			// TODO: When the old impact module is retired, we can remove this additional CSS class.
+			parent::getCssClasses() + [ 'growthexperiments-homepage-module-new-impact' ],
+			$unactivatedClasses
+		);
 	}
 
 	/** @inheritDoc */
