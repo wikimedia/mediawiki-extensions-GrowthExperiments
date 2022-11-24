@@ -2,9 +2,12 @@
 
 namespace GrowthExperiments\UserImpact;
 
+use DateTime;
+use Exception;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserTimeCorrection;
+use MWTimestamp;
 use Wikimedia\Assert\Assert;
 
 /**
@@ -124,6 +127,19 @@ class ExpensiveUserImpact extends UserImpact {
 			'dailyTotalViews' => $this->dailyTotalViews,
 			'dailyArticleViews' => $this->dailyArticleViews,
 		];
+	}
+
+	/**
+	 * @return bool
+	 * @throws Exception
+	 */
+	public function isPageViewDataStale(): bool {
+		$latestPageViewsDateTime = new DateTime( array_key_last( $this->getDailyTotalViews() ) );
+		$now = MWTimestamp::getInstance();
+		$diff = $now->timestamp->diff( $latestPageViewsDateTime );
+		// Page view data generation can lag by 24-48 hours.
+		// Consider the data stale if it's older than 2 days.
+		return $diff->days > 2;
 	}
 
 }

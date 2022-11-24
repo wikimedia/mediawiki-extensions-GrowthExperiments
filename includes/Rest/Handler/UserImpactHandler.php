@@ -7,7 +7,6 @@ use DateTime;
 use DeferredUpdates;
 use Exception;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
-use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use GrowthExperiments\UserImpact\SortedFilteredUserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
@@ -20,7 +19,6 @@ use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MWTimestamp;
 use stdClass;
 use TitleFactory;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -89,7 +87,7 @@ class UserImpactHandler extends SimpleHandler {
 			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.Hit' );
 		}
 
-		if ( $userImpact && $this->isPageViewDataStale( $userImpact ) ) {
+		if ( $userImpact && $userImpact->isPageViewDataStale() ) {
 			// Page view data is stale; we will attempt to recalculate it.
 			$userImpact = null;
 			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.HitStalePageViewData' );
@@ -154,20 +152,6 @@ class UserImpactHandler extends SimpleHandler {
 			$jsonData['dailyArticleViews'][$title]['pageviewsUrl'] =
 				$this->getPageViewToolsUrl( $title, $articleData['firstEditDate'] );
 		}
-	}
-
-	/**
-	 * @param ExpensiveUserImpact $userImpact
-	 * @return bool
-	 * @throws Exception
-	 */
-	private function isPageViewDataStale( ExpensiveUserImpact $userImpact ): bool {
-		$latestPageViewsDateTime = new DateTime( array_key_last( $userImpact->getDailyTotalViews() ) );
-		$now = MWTimestamp::getInstance();
-		$diff = $now->timestamp->diff( $latestPageViewsDateTime );
-		// Page view data generation can lag by 24-48 hours.
-		// Consider the data stale if it's older than 2 days.
-		return $diff->days > 2;
 	}
 
 	/**
