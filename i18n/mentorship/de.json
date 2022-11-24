@@ -110,7 +110,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Grund: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Was heißt \"Mentee übernehmen\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Zahl der dir zugewiesenen Neulinge",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Keine",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Keine (Ich fordere sie manuell an)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Etwa die Hälfte des Mittelwerts",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Mittelwert (default)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Etwa doppelter Mittelwert",

@@ -105,7 +105,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "סיבה: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "מה זה \"לקלוט חניך\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "מספר החניכים שמשויכים אליי",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "אין",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "אפס (אני {{GENDER:|לוקח|לוקחת}} אותם ידנית)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "בערך חצי מהממוצע",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "ממוצע (ברירת המחדל)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "בערך כפול מהממוצע",

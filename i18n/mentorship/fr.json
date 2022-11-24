@@ -108,7 +108,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Motif : $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Qu'est-ce que « Réclamer un apprenti » ?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Nombre d’apprentis qui me sont affectés",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Aucun",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Aucun (je les réclame manuellement)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Environ la moitié de la moyenne",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "La moyenne (par défaut)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Environ deux fois la moyenne",

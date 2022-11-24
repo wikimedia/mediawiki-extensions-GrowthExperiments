@@ -110,7 +110,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "السبب: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "ما معنى «المُطالبة بمرشَد»؟",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "نسبة عدد المُرشَدين المعيّنين لديَّ",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "لا أحد",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "لا أحد (أطالب بهم يدويًا)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "حوالي نصف المعدّل",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "المعدّل (افتراضي)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "حوالي ضعف المعدّل",

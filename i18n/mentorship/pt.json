@@ -104,7 +104,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "O que é \"Adotar mentorado\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Número de mentorados que me estão atribuídos",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Nenhum",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Nenhum (adoto-os manualmente)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Cerca de metade da média",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Média (por padrão)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Cerca do dobro da média",
