@@ -1,4 +1,4 @@
-const { computed } = require( 'vue' );
+const { computed, ref, watch } = require( 'vue' );
 const useMWRestApi = require( './useMWRestApi.js' );
 const sum = ( arr ) => arr.reduce( ( x, y ) => x + y, 0 );
 
@@ -56,11 +56,22 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
  */
 function useUserImpact( userId, timeFrame ) {
 	const encodedUserId = encodeURIComponent( `#${userId}` );
-	const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${encodedUserId}` );
+	const serverSideExportedData = mw.config.get( 'homepagemodules' ).impact;
+	const finalData = ref( null );
+	const finalError = ref( null );
+	if ( serverSideExportedData.impact ) {
+		finalData.value = serverSideExportedData.impact;
+	} else {
+		const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${encodedUserId}` );
+		watch( [ data, error ], ( [ dataValue, errorValue ] ) => {
+			finalData.value = dataValue;
+			finalError.value = errorValue;
+		} );
+	}
 
 	return {
 		data: computed( () => {
-			if ( !data.value ) {
+			if ( !finalData.value ) {
 				return;
 			}
 			const {
@@ -73,7 +84,7 @@ function useUserImpact( userId, timeFrame ) {
 				topViewedArticles,
 				topViewedArticlesCount,
 				recentEditsWithoutPageviews
-			} = data.value;
+			} = finalData.value;
 
 			const toPageviewsArray = ( viewsByDay ) => {
 				// Fall back to empty array if no page view data (clock icon scenario)
@@ -131,13 +142,13 @@ function useUserImpact( userId, timeFrame ) {
 			};
 		} ),
 		error: computed( () => {
-			if ( !error.value ) {
+			if ( !finalError.value ) {
 				return;
 			}
-			if ( error.value.xhr && error.value.xhr.responseJSON ) {
-				return error.value.xhr.responseJSON;
+			if ( finalError.value.xhr && finalError.value.xhr.responseJSON ) {
+				return finalError.value.xhr.responseJSON;
 			}
-			return error.value;
+			return finalError.value;
 		} )
 	};
 }
