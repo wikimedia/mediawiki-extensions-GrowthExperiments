@@ -83,9 +83,9 @@ class UserImpactHandler extends SimpleHandler {
 		$start = microtime( true );
 		$userImpact = $this->getUserImpact( $user );
 		$jsonData = $userImpact->jsonSerialize();
-		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
 		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray( $jsonData );
 		$jsonData = $sortedFilteredUserImpact->jsonSerialize();
+		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
 		);
@@ -161,8 +161,8 @@ class UserImpactHandler extends SimpleHandler {
 	private function fillDailyArticleViewsWithPageViewToolsUrl(
 		array &$jsonData
 	): void {
-		foreach ( $jsonData['dailyArticleViews'] as $title => $articleData ) {
-			$jsonData['dailyArticleViews'][$title]['pageviewsUrl'] =
+		foreach ( $jsonData['topViewedArticles'] as $title => $articleData ) {
+			$jsonData['topViewedArticles'][$title]['pageviewsUrl'] =
 				$this->getPageViewToolsUrl( $title, $articleData['firstEditDate'] );
 		}
 	}
