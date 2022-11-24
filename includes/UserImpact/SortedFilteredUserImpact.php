@@ -13,10 +13,10 @@ use MWTimestamp;
 class SortedFilteredUserImpact extends ExpensiveUserImpact {
 
 	/** @var array[]|null lazy-evaluated */
-	private ?array $topViewedArticles;
+	private ?array $topViewedArticles = null;
 
 	/** @var array[]|null lazy-evaluated */
-	private ?array $recentEditsWithoutPageviews;
+	private ?array $recentEditsWithoutPageviews = null;
 
 	/** @inheritDoc */
 	protected static function newEmpty(): self {
