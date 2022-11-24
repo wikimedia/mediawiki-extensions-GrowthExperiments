@@ -9,9 +9,12 @@ function useMWRestApi( url ) {
 		// reset state before fetching..
 		data.value = null;
 		error.value = null;
-		// unref() unwraps potential refs
-		rest.get( unref( url ) )
-			.then( ( json ) => ( data.value = json ) )
+		// We use a POST because while fetching data, we may need to write updated data
+		// back to the cache table in a deferred update, and that isn't allowed with GET.
+		rest.post(
+			// unref() unwraps potential refs
+			unref( url )
+		).then( ( json ) => ( data.value = json ) )
 			.catch( ( err ) => {
 				// TODO: parse/inspect error response
 				error.value = err;

@@ -4,6 +4,7 @@ namespace GrowthExperiments\Rest\Handler;
 
 use Config;
 use DateTime;
+use DeferredUpdates;
 use Exception;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
@@ -115,11 +116,21 @@ class UserImpactHandler extends SimpleHandler {
 			if ( !$userImpact ) {
 				throw new HttpException( 'Impact data not found for user', 404 );
 			}
-			$this->jobQueueGroup->lazyPush(
-				new RefreshUserImpactJob( [
-					'impactDataBatch' => [ $user->getId() => json_encode( $userImpact ) ],
-				] )
-			);
+			// We want to write the updated data back to the cache table; doing that in a deferred update
+			// is preferable as we don't depend on job queue functioning quickly, but that isn't allowed
+			// on GET. So if a client is using a GET request, use the job queue, but otherwise (e.g. on
+			// Special:Homepage) we'll use a POST request and save using a deferred update.
+			if ( $this->getRequest()->getMethod() === 'GET' ) {
+				$this->jobQueueGroup->lazyPush(
+					new RefreshUserImpactJob( [
+						'impactDataBatch' => [ $user->getId() => json_encode( $userImpact ) ],
+					] )
+				);
+			} else {
+				DeferredUpdates::addCallableUpdate( function () use ( $userImpact ) {
+					$this->userImpactStore->setUserImpact( $userImpact );
+				} );
+			}
 		}
 		$jsonData = $userImpact->jsonSerialize();
 		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
@@ -194,6 +205,11 @@ class UserImpactHandler extends SimpleHandler {
 				UserDef::PARAM_RETURN_OBJECT => true,
 			],
 		];
+	}
+
+	/** @inheritDoc */
+	public function needsWriteAccess() {
+		return true;
 	}
 
 }

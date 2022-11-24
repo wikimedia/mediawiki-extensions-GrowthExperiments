@@ -214,7 +214,7 @@
 		},
 		{
 			"path": "/growthexperiments/v0/user-impact/{user}",
-			"method": "GET",
+			"method": [ "GET", "POST" ],
 			"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
 			"services": [
 				"MainConfig",
