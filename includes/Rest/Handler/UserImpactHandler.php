@@ -7,6 +7,7 @@ use DateTime;
 use DeferredUpdates;
 use Exception;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
+use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use GrowthExperiments\UserImpact\SortedFilteredUserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
@@ -80,7 +81,23 @@ class UserImpactHandler extends SimpleHandler {
 	 */
 	public function run( UserIdentity $user ) {
 		$start = microtime( true );
-		$performingUser = $this->userFactory->newFromUserIdentity( $this->getAuthority()->getUser() );
+		$userImpact = $this->getUserImpact( $user );
+		$jsonData = $userImpact->jsonSerialize();
+		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
+		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray( $jsonData );
+		$jsonData = $sortedFilteredUserImpact->jsonSerialize();
+		$this->statsdDataFactory->timing(
+			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
+		);
+		return $jsonData;
+	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @return ExpensiveUserImpact
+	 * @throws HttpException
+	 */
+	private function getUserImpact( UserIdentity $user ): ExpensiveUserImpact {
 		$userImpact = $this->userImpactStore->getExpensiveUserImpact( $user );
 		$staleUserImpact = $userImpact;
 		if ( $userImpact ) {
@@ -96,6 +113,7 @@ class UserImpactHandler extends SimpleHandler {
 		if ( !$userImpact ) {
 			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.Miss' );
 			// Rate limit check.
+			$performingUser = $this->userFactory->newFromUserIdentity( $this->getAuthority()->getUser() );
 			if ( $performingUser->pingLimiter( 'growthexperimentsuserimpacthandler' ) ) {
 				if ( $staleUserImpact ) {
 					$this->statsdDataFactory->increment(
@@ -103,12 +121,13 @@ class UserImpactHandler extends SimpleHandler {
 					);
 					// Performing user is over the rate limit for requesting data for other users, but we have stale
 					// data so just return that, rather than nothing.
-					$jsonData = $staleUserImpact->jsonSerialize();
-					$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
-					return $jsonData;
+					return $staleUserImpact;
+				} else {
+					$this->statsdDataFactory->increment(
+						'GrowthExperiments.UserImpactHandler.PingLimiterTripped.NoData'
+					);
+					throw new HttpException( 'Too many requests to refresh user impact data', 429 );
 				}
-				$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.PingLimiterTripped.NoData' );
-				throw new HttpException( 'Too many requests to refresh user impact data', 429 );
 			}
 			$userImpact = $this->userImpactLookup->getExpensiveUserImpact( $user );
 			if ( !$userImpact ) {
@@ -130,14 +149,8 @@ class UserImpactHandler extends SimpleHandler {
 				} );
 			}
 		}
-		$jsonData = $userImpact->jsonSerialize();
-		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
-		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray( $jsonData );
-		$jsonData = $sortedFilteredUserImpact->jsonSerialize();
-		$this->statsdDataFactory->timing(
-			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
-		);
-		return $jsonData;
+
+		return $userImpact;
 	}
 
 	/**
