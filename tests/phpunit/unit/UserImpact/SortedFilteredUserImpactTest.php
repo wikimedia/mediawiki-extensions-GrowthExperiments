@@ -15,14 +15,13 @@ use MWTimestamp;
  */
 class SortedFilteredUserImpactTest extends MediaWikiUnitTestCase {
 
-	public function testTopViewedEdits() {
+	public function testTopViewedArticles() {
 		$dailyTotalViews = [ '2022-08-24' => 265, '2022-08-25' => 265 ];
 		$makeDailyArticleViewField = static function ( $views ) {
 			return [
 				'firstEditDate' => '2022-08-24',
 				'newestEdit' => '20220825100000',
 				'views' => $views,
-				'viewsCount' => array_sum( $views ),
 				'imageUrl' => null,
 			];
 		};
@@ -53,15 +52,17 @@ class SortedFilteredUserImpactTest extends MediaWikiUnitTestCase {
 		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray(
 			$userImpact->jsonSerialize() );
 		$expectedTopViewedArticles = [
-			'Article6' => $dailyArticleViews['Article6'],
-			'Article5' => $dailyArticleViews['Article5'],
-			'Article4' => $dailyArticleViews['Article4'],
-			'Article7' => $dailyArticleViews['Article7'],
-			'Article1' => $dailyArticleViews['Article1'],
+			'Article6' => $dailyArticleViews['Article6'] + [ 'viewsCount' => 160 ],
+			'Article5' => $dailyArticleViews['Article5'] + [ 'viewsCount' => 140 ],
+			'Article4' => $dailyArticleViews['Article4'] + [ 'viewsCount' => 120 ],
+			'Article7' => $dailyArticleViews['Article7'] + [ 'viewsCount' => 110 ],
+			'Article1' => $dailyArticleViews['Article1'] + [ 'viewsCount' => 100 ],
 		];
 		$json = $sortedFilteredUserImpact->jsonSerialize();
 		$this->assertSame( $expectedTopViewedArticles, $json['topViewedArticles'] );
+		$this->assertSame( 630, $json['topViewedArticlesCount'] );
 		$this->assertSame( $expectedTopViewedArticles, $sortedFilteredUserImpact->getTopViewedArticles() );
+		$this->assertSame( 630, $sortedFilteredUserImpact->getTopViewedArticlesCount() );
 	}
 
 	public function testRecentEditsWithoutPageviews() {
@@ -75,7 +76,7 @@ class SortedFilteredUserImpactTest extends MediaWikiUnitTestCase {
 			];
 		};
 		$unsetViews = static function ( $dataItem ) {
-			$dataItem['views'] = null;
+			unset( $dataItem['views'] );
 			return $dataItem;
 		};
 		$dailyArticleViews = [

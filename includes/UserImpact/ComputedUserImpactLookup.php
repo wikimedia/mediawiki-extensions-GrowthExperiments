@@ -361,21 +361,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 			foreach ( $days as $day => $views ) {
 				$dailyTotalViews[$day] = ( $dailyTotalViews[$day] ?? 0 ) + $views;
-				// For daily article view calculation, we want to only include page views
-				// for articles from the date of the user's first edit; the user's
-				// impact for that article starts from the date of their first edit.
-				if ( str_replace( '-', '', $day ) < $allTitleObjects[$title]['rev_timestamp'] ) {
-					$dailyArticleViews[$title]['views'][$day] = 0;
-				} else {
-					$dailyArticleViews[$title]['views'][$day] = ( $dailyArticleViews[$title][$day] ?? 0 ) + $views;
-					$dailyArticleViews[$title]['viewsCount'] = array_reduce(
-						$dailyArticleViews[$title]['views'],
-						static function ( $carry, $current ) {
-							return $carry + $current;
-						},
-						0
-					);
-				}
+				$dailyArticleViews[$title]['views'][$day] = ( $dailyArticleViews[$title][$day] ?? 0 ) + $views;
 			}
 		}
 
