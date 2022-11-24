@@ -201,6 +201,13 @@ body.mw-special-Homepage {
 				// module is rendering in "wide" mode.
 				min-height: 550px;
 			}
+
+			// TODO: Can remove the &-new-impact selector when the old impact module is retired.
+			.growthexperiments-homepage-module-new-impact.growthexperiments-homepage-module-impact-unactivated-desktop {
+				min-height: 370px;
+				// Less jarring to have the background match the background of the contents.
+				background-color: @colorGray15;
+			}
 		}
 	}
 
