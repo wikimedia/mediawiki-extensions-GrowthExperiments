@@ -290,18 +290,27 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	}
 
 	/**
+	 * Returns page views and other data, or null on error during data fetching.
 	 * Must not be called when $this->pageViewService is null.
 	 * @param User $user
-	 * @param array $titles List of pages in prefixed DBkey format.
-	 * @param array $priorityTitles List of pages in prefixed DBkey format.
+	 * @param array[] $titles Data about edited articles. See {@see EditData::getEditedArticles()}
+	 *   for format.
+	 * @param array[] $priorityTitles A subset of $titles that should get priority treatment
+	 *   (in case not all the pageview data can be retrieved due to resource limits).
 	 * @param int $days How many days to query. No more than 60.
 	 * @return array|null
 	 *   - dailyTotalViews: (array<string, int>) daily number of total views of articles in $titles,
 	 *     keyed by ISO 8601 date.
-	 *   - dailyArticleViews: (array<string, array<string, int>>) Daily
-	 *     number of pageviews on each of the last $days days. Keyed by prefixed DBkey and then
-	 *     by ISO 8601 date.
-	 * @phan-return array{dailyTotalViews:array<string,int>,dailyArticleViews:array<string,array<string,int>>}|null
+	 *   - dailyArticleViews: (array[]) Daily article views and other data. Keyed by
+	 *     prefixed DBkey; values are arrays with the following fields:
+	 *     - views: (int[]) daily article views, keyed by ISO 8601 date. 0 for days before the
+	 *       user's first edit to the article.
+	 *     - firstEditDate: (string) ISO 8601 date of the user's first edit to the article.
+	 *       If the user made a very high number of total edits, it might just be some edit the
+	 *       user made to the article, not necessarily the first.
+	 *     - newestEdit: (string) MW_TS timestamp of the user's most recent edit.
+	 *     - imageUrl: (string|null) URL of a thumbnail of the article's main image.
+	 * @phan-return array{dailyTotalViews:array<string,int>,dailyArticleViews:array<string,array{views:array<string,int>,firstEditDate:string,newestEdit:string,imageUrl:?string}>}|null
 	 * @throws MalformedTitleException
 	 */
 	private function getPageViewData( User $user, array $titles, array $priorityTitles, int $days ): ?array {

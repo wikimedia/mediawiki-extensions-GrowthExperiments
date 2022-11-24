@@ -18,8 +18,18 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 	public function testGetters() {
 		$dailyTotalViews = [ '2022-08-24' => 100, '2022-08-25' => 150 ];
 		$dailyArticleViews = [
-			'Foo' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],
-			'Bar' => [ '2022-08-24' => 30, '2022-08-25' => 40 ],
+			'Foo' => [
+				'firstEditDate' => '2022-08-24',
+				'newestEdit' => '20220825100000',
+				'views' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],
+				'imageUrl' => null,
+			],
+			'Bar' => [
+				'firstEditDate' => '2022-08-24',
+				'newestEdit' => '20220825110000',
+				'views' => [ '2022-08-24' => 30, '2022-08-25' => 40 ],
+				'imageUrl' => null,
+			],
 		];
 		$userImpact = new ExpensiveUserImpact(
 			UserIdentityValue::newRegistered( 1, 'User1' ),

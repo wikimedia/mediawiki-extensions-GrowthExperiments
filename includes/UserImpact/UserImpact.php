@@ -4,6 +4,7 @@ namespace GrowthExperiments\UserImpact;
 
 use DateTime;
 use JsonSerializable;
+use LogicException;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserTimeCorrection;
@@ -123,9 +124,9 @@ class UserImpact implements JsonSerializable {
 	}
 
 	/**
-	 * Map of day => number of edits the user made on that day.
-	 * Indexed with ISO 8601 dates, e.g. '2022-08-25'. Dates aren't contiguous.
-	 * Might exclude edits made many edits ago.
+	 * Map of day => number of article-space edits the user made on that day.
+	 * Indexed with ISO 8601 dates, e.g. '2022-08-25'; in ascending order by date.
+	 * Dates aren't contiguous. Might exclude edits made many edits ago.
 	 * @return int[]
 	 */
 	public function getEditCountByDay(): array {
@@ -178,7 +179,7 @@ class UserImpact implements JsonSerializable {
 	 * Helper method for newFromJsonArray.
 	 * @return UserImpact
 	 */
-	protected static function newEmpty(): UserImpact {
+	protected static function newEmpty(): self {
 		return new UserImpact(
 			new UserIdentityValue( 0, '' ),
 			0,
@@ -199,6 +200,10 @@ class UserImpact implements JsonSerializable {
 	public static function newFromJsonArray( array $json ): UserImpact {
 		if ( array_key_exists( 'dailyTotalViews', $json ) ) {
 			$userImpact = ExpensiveUserImpact::newEmpty();
+		} elseif ( array_key_exists( 'topViewedArticles', $json ) ) {
+			// SortedFilteredUserImpact::jsonSerialize() unsets the 'dailyArticleViews'
+			// field so unserializing it would be tricky, but it's not needed anyway.
+			throw new LogicException( 'SortedFilteredUserImpact is not unserializable.' );
 		} else {
 			$userImpact = self::newEmpty();
 		}
