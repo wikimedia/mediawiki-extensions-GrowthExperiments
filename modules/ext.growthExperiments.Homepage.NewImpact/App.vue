@@ -8,6 +8,10 @@
 				:user-name="userName"
 			></no-edits-display>
 			<component
+				:is="errorComponent"
+				v-else-if="error"
+			></component>
+			<component
 				:is="impactComponent"
 				v-else-if="data && !error"
 				:user-name="userName"
@@ -22,9 +26,11 @@ const { ref, inject } = require( 'vue' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( './constants.js' );
 const useUserImpact = require( './composables/useUserImpact.js' );
 const Layout = require( './components/LayoutWrapper.vue' );
-// TODO wrap NewImpact and NoEdits components in async components so we only
-// load one at a time.
+// TODO wrap NewImpact, NoEditsDisplay, ScoreCards...
+// components in async components so we only load one at a time.
 const NewImpact = require( './components/NewImpact.vue' );
+const ErrorDisplay = require( './components/ErrorDisplay.vue' );
+const ErrorDisplaySummary = require( './components/ErrorDisplaySummary.vue' );
 const NewImpactSummary = require( './components/NewImpactSummary.vue' );
 const NoEditsDisplay = require( './components/NoEditsDisplay.vue' );
 
@@ -35,6 +41,8 @@ module.exports = exports = {
 		NewImpact,
 		NewImpactSummary,
 		NoEditsDisplay,
+		ErrorDisplay,
+		ErrorDisplaySummary,
 		Layout
 	},
 	props: {
@@ -49,6 +57,7 @@ module.exports = exports = {
 		const isSuggestedEditsActivated = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED' );
 		const isUnactiveOrDisabled = editCount === 0 || isSuggestedEditsEnabled === false;
 		const impactComponent = renderMode === 'overlay-summary' ? 'NewImpactSummary' : 'NewImpact';
+		const errorComponent = renderMode === 'overlay-summary' ? 'ErrorDisplaySummary' : 'ErrorDisplay';
 
 		if ( editCount > 0 ) {
 			result = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
@@ -61,6 +70,7 @@ module.exports = exports = {
 			isSuggestedEditsActivated,
 			isUnactiveOrDisabled,
 			impactComponent,
+			errorComponent,
 			data: result.data,
 			// TODO: how to give user error feedback?
 
@@ -100,4 +110,5 @@ module.exports = exports = {
 		}
 	}
 }
+
 </style>

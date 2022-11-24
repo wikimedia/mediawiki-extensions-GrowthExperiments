@@ -9,48 +9,23 @@
 			:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' ).text()"
 			:data="data.dailyTotalViews.entries"
 		></trend-chart>
-		<div v-if="data" class="ext-growthExperiments-NewImpactSummary__info">
-			<div class="ext-growthExperiments-NewImpactSummary__info__box">
-				<c-text
-					size="medium"
-				>
-					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text', lastEditFormattedDate ).text() }}
-				</c-text>
-				<c-text
-					size="medium"
-					weight="bold"
-				>
-					{{ lastEditFormattedTimeAgo }}
-				</c-text>
-			</div>
-			<div class="ext-growthExperiments-NewImpactSummary__info__box">
-				<c-text
-					size="medium"
-				>
-					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text', bestStreakFormattedDates ).text() }}
-				</c-text>
-				<c-text
-					size="medium"
-					weight="bold"
-				>
-					{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-streak-count-text', bestStreakDaysLocalisedCount ).text() }}
-				</c-text>
-			</div>
-		</div>
+		<info-boxes
+			v-if="data"
+			:data="data"
+		></info-boxes>
 	</section>
 </template>
 
 <script>
-const moment = require( 'moment' );
 const TrendChart = require( './TrendChart.vue' );
-const CText = require( '../../vue-components/CText.vue' );
+const InfoBoxes = require( './InfoBoxes.vue' );
 
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
-		CText,
-		TrendChart
+		TrendChart,
+		InfoBoxes
 	},
 	props: {
 		userName: {
@@ -61,30 +36,6 @@ module.exports = exports = {
 			type: Object,
 			required: true
 		}
-	},
-	computed: {
-		lastEditMoment() {
-			return moment( this.data.lastEditTimestamp * 1000 );
-		},
-		lastEditFormattedTimeAgo() {
-			return this.lastEditMoment.fromNow();
-		},
-		bestStreakDaysLocalisedCount() {
-			return this.$filters.convertNumber( this.data.longestEditingStreak.datePeriod.days );
-		}
 	}
 };
 </script>
-
-<style lang="less">
-.ext-growthExperiments-NewImpactSummary {
-	&__info {
-		display: flex;
-	}
-
-	&__info__box {
-		flex: 1;
-	}
-}
-
-</style>

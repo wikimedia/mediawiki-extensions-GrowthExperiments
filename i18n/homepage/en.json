@@ -98,6 +98,8 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "See suggested edits",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Start with a few <strong>suggested edits</strong>, then see how many people are viewing {{GENDER:$1|your}} contributions here.",
 	"growthexperiments-homepage-impact-unactivated-description": "Once {{GENDER:$1|you}} start editing, {{GENDER:$1|you'll}} see here how many people are viewing the articles {{GENDER:$1|you've}} edited.",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "Temporary delay in getting {{GENDER:$1|your}} information",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Consider editing and learning more on {{SITENAME}}, then come back later to view {{GENDER:$1|your}} editing impact details.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Help desk alerts",
 	"growthexperiments-tour-response-tip-text": "When {{GENDER:$1|your}} question is answered, {{GENDER:$1|you}} will have a new alert here.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "{{GENDER:$1|Mentor}} alerts",

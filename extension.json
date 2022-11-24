@@ -691,9 +691,13 @@
 				"ext.growthExperiments.Homepage.NewImpact/components/LayoutWrapper.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/NoEditsDisplay.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/ErrorDisplay.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/ErrorDisplaySummary.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/InfoBoxes.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/TrendChart.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpactSummary.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.vue",
+				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/StreakGraph.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/ArticlesList.vue",
@@ -716,7 +720,8 @@
 						"cdxIconChart",
 						"cdxIconClose",
 						"cdxIconInfo",
-						"cdxIconInfoFilled"
+						"cdxIconInfoFilled",
+						"cdxIconAlert"
 					]
 				}
 			],
@@ -747,7 +752,9 @@
 				"growthexperiments-homepage-impact-subheader-text-no-pageviews",
 				"growthexperiments-homepage-impact-contributions-link-no-edit",
 				"growthexperiments-homepage-impact-scores-streak-info-label",
-				"growthexperiments-homepage-impact-scores-thanks-info-label"
+				"growthexperiments-homepage-impact-scores-thanks-info-label",
+				"growthexperiments-homepage-impact-error-data-not-found-text",
+				"growthexperiments-homepage-impact-error-data-not-found-subtext"
 			],
 			"dependencies": [
 				"moment",
