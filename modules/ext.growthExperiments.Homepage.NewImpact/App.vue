@@ -16,6 +16,7 @@
 				v-else-if="data && !error"
 				:user-name="userName"
 				:data="data"
+				@mounted="newImpactMounted"
 			></component>
 		</layout>
 	</div>
@@ -33,6 +34,7 @@ const ErrorDisplay = require( './components/ErrorDisplay.vue' );
 const ErrorDisplaySummary = require( './components/ErrorDisplaySummary.vue' );
 const NewImpactSummary = require( './components/NewImpactSummary.vue' );
 const NoEditsDisplay = require( './components/NoEditsDisplay.vue' );
+const startTime = mw.now();
 
 // @vue/component
 module.exports = exports = {
@@ -44,8 +46,6 @@ module.exports = exports = {
 		ErrorDisplay,
 		ErrorDisplaySummary,
 		Layout
-	},
-	props: {
 	},
 	setup() {
 		let result = ref( null );
@@ -76,6 +76,11 @@ module.exports = exports = {
 
 			error: result.error
 		};
+	},
+	methods: {
+		newImpactMounted: function () {
+			mw.track( 'timing.growthExperiments.newImpact.' + inject( 'RENDER_MODE' ) + '.mounted', mw.now() - startTime );
+		}
 	}
 };
 </script>

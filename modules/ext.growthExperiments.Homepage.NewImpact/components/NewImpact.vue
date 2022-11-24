@@ -118,6 +118,9 @@ module.exports = exports = {
 		contributionsUrl() {
 			return mw.util.getUrl( `Special:Contributions/${this.userName}` );
 		}
+	},
+	mounted() {
+		this.$emit( 'mounted' );
 	}
 };
 </script>
