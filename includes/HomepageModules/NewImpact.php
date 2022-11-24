@@ -17,12 +17,12 @@ use MediaWiki\User\UserIdentity;
 class NewImpact extends BaseModule {
 
 	private UserIdentity $userIdentity;
-
 	private UserImpactStore $userImpactStore;
-
 	private bool $isSuggestedEditsEnabledForUser;
-
 	private bool $isSuggestedEditsActivatedForUser;
+
+	/** @var SortedFilteredUserImpact|null|false */
+	private $userImpact;
 
 	/**
 	 * @param IContextSource $ctx
@@ -47,14 +47,11 @@ class NewImpact extends BaseModule {
 		$this->userImpactStore = $userImpactStore;
 		$this->isSuggestedEditsEnabledForUser = $isSuggestedEditsEnabled;
 		$this->isSuggestedEditsActivatedForUser = $isSuggestedEditsActivated;
+		$this->userImpact = null;
 	}
 
 	/** @inheritDoc */
 	protected function getJsConfigVars() {
-		if ( !$this->userIdentity ) {
-			return [];
-		}
-
 		return [
 			'GENewImpactD3Enabled' => $this->getConfig()->get( 'GENewImpactD3Enabled' ),
 			'GENewImpactRelevantUserName' => $this->userIdentity->getName(),
@@ -155,19 +152,32 @@ class NewImpact extends BaseModule {
 		return $this->getState() === self::MODULE_STATE_UNACTIVATED || !$this->isSuggestedEditsEnabledForUser;
 	}
 
+	/** @inheritDoc */
+	public function getJsData( $mode ) {
+		$data = parent::getJsData( $mode );
+		$impact = $this->getUserImpact();
+		// If the impact data's page view information is considered to be stale, then don't export
+		// it here. The client-side app's request will be able to get a fresh data generation, and
+		// it's ok for that to take longer. We wouldn't want to have the user wait here, though, as
+		// this blocks page render.
+		if ( !$impact || $impact->isPageViewDataStale() ) {
+			$data['impact'] = null;
+		} else {
+			$data['impact'] = $impact;
+		}
+		return $data;
+	}
+
 	/**
 	 * @inheritDoc
 	 */
 	public function getActionData(): array {
-		$userImpact = $this->userImpactStore->getExpensiveUserImpact( $this->getContext()->getUser() );
+		$userImpact = $this->getUserImpact();
 		$data = [
 			'no_cached_user_impact' => !$userImpact
 		];
 		if ( $userImpact ) {
-			$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray(
-				$userImpact->jsonSerialize()
-			);
-			$jsonSortedUserImpact = $sortedFilteredUserImpact->jsonSerialize();
+			$jsonSortedUserImpact = $userImpact->jsonSerialize();
 			$data = [
 				'timeframe_in_days' => ComputedUserImpactLookup::PAGEVIEW_DAYS,
 				'timeframe_edits_count' => $userImpact->getTotalEditsCount(),
@@ -178,5 +188,29 @@ class NewImpact extends BaseModule {
 			];
 		}
 		return array_merge( parent::getActionData(), $data );
+	}
+
+	/**
+	 * Get user impact, with an in-process cache.
+	 *
+	 * @return SortedFilteredUserImpact|null
+	 */
+	private function getUserImpact(): ?SortedFilteredUserImpact {
+		if ( $this->userImpact instanceof SortedFilteredUserImpact ) {
+			return $this->userImpact;
+		} elseif ( $this->userImpact === false ) {
+			return null;
+		}
+		$userImpact = $this->userImpactStore->getExpensiveUserImpact( $this->userIdentity );
+		if ( !$userImpact ) {
+			// Set to "false" as an indicator that we already tried accessing, so subsequent
+			// calls to getUserImpact can return early.
+			$this->userImpact = false;
+			return null;
+		}
+		$this->userImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray(
+			$userImpact->jsonSerialize()
+		);
+		return $this->userImpact;
 	}
 }
