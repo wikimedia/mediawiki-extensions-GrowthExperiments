@@ -77,16 +77,21 @@ class UserImpactHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	private function getUserImpact( UserIdentity $user ): ExpensiveUserImpact {
-		$userImpact = $this->userImpactStore->getExpensiveUserImpact( $user );
-		$staleUserImpact = $userImpact;
-		if ( $userImpact ) {
+		if ( $this->getRequest()->getQueryParams()['regenerate'] ?? false ) {
+			$cachedUserImpact = null;
+		} else {
+			$cachedUserImpact = $this->userImpactStore->getExpensiveUserImpact( $user );
+		}
+		if ( $cachedUserImpact ) {
 			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.Hit' );
 		}
 
-		if ( $userImpact && $userImpact->isPageViewDataStale() ) {
+		if ( $cachedUserImpact && $cachedUserImpact->isPageViewDataStale() ) {
 			// Page view data is stale; we will attempt to recalculate it.
 			$userImpact = null;
 			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.HitStalePageViewData' );
+		} else {
+			$userImpact = $cachedUserImpact;
 		}
 
 		if ( !$userImpact ) {
@@ -94,13 +99,13 @@ class UserImpactHandler extends SimpleHandler {
 			// Rate limit check.
 			$performingUser = $this->userFactory->newFromUserIdentity( $this->getAuthority()->getUser() );
 			if ( $performingUser->pingLimiter( 'growthexperimentsuserimpacthandler' ) ) {
-				if ( $staleUserImpact ) {
+				if ( $cachedUserImpact ) {
 					$this->statsdDataFactory->increment(
 						'GrowthExperiments.UserImpactHandler.PingLimiterTripped.StaleImpactData'
 					);
 					// Performing user is over the rate limit for requesting data for other users, but we have stale
 					// data so just return that, rather than nothing.
-					return $staleUserImpact;
+					return $cachedUserImpact;
 				} else {
 					$this->statsdDataFactory->increment(
 						'GrowthExperiments.UserImpactHandler.PingLimiterTripped.NoData'
@@ -141,6 +146,11 @@ class UserImpactHandler extends SimpleHandler {
 				ParamValidator::PARAM_REQUIRED => true,
 				UserDef::PARAM_ALLOWED_USER_TYPES => [ 'id' ],
 				UserDef::PARAM_RETURN_OBJECT => true,
+			],
+			'regenerate' => [
+				self::PARAM_SOURCE => 'query',
+				ParamValidator::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_REQUIRED => false,
 			],
 		];
 	}
