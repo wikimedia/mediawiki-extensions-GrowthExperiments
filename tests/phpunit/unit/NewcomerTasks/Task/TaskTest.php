@@ -20,7 +20,7 @@ class TaskTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $task->getTitle()->getNamespace() === NS_MAIN );
 		$this->assertTrue( $task->getTitle()->getText() === 'Foo' );
 		$this->assertSame( $taskType, $task->getTaskType() );
-		$this->assertEmpty( $task->getTopics() );
+		$this->assertSame( [], $task->getTopics() );
 
 		$topics = [ new Topic( 'a' ), new Topic( 'b' ) ];
 		$task->setTopics( $topics );

@@ -36,7 +36,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 			$services->getGenderCache()
 		);
 
-		$this->assertEmpty( $mentorshipModule->render( IDashboardModule::RENDER_DESKTOP ) );
+		$this->assertSame( '', $mentorshipModule->render( IDashboardModule::RENDER_DESKTOP ) );
 	}
 
 	/**

@@ -48,7 +48,7 @@ class StaticImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, 'Foo' ), $taskType );
 		$this->assertInstanceOf( ImageRecommendation::class, $recommendation );
 		$this->assertSame( 'Foo', $recommendation->getTitle()->getText() );
-		$this->assertEmpty( $recommendation->getImages() );
+		$this->assertSame( [], $recommendation->getImages() );
 		$this->assertSame( '1', $recommendation->getDatasetId() );
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, 'Bar' ), $taskType );
