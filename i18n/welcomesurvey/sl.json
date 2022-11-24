@@ -4,6 +4,7 @@
 			"Eleassar"
 		]
 	},
+	"welcomesurvey": "{{GENDER:$1|Pozdravljeni}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Hvala! {{GENDER:|Vaši}} odgovori so bili shranjeni.",
 	"welcomesurvey-save-confirmation-text": "{{GENDER:|Vaši}} odgovori nam bodo pomagali, da vam ponudimo koristne načine za začetek sodelovanja v Wikipediji.",
 	"welcomesurvey-subtitle": "Prosimo, {{GENDER:|odgovorite na nekaj vprašanj in nam pomagajte izboljšati vašo}} izkušnjo z Wikipedijo.",
@@ -30,15 +31,20 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Drugo",
 	"welcomesurvey-question-reason-option-other-label": "Drugo (prosimo, opišite)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Vnesite}} drug razlog ...",
+	"welcomesurvey-question-mentor-info": "Razmišljamo o začetku programa za bolj izkušene urejevalce, ki bi novejšim uporabnikom pomagal pri urejanju. {{GENDER:$1|Bi vas zanimalo}}, da vas kontaktirajo za pomoč pri urejanju?",
+	"welcomesurvey-question-mentor-label": "Da, {{GENDER:$1|sem zainteresiran|sem zainteresirana|sem zainteresiran_a}}",
 	"welcomesurvey-question-edited-label": "{{GENDER:|Ste že kdaj urejali}} Wikipedijo?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Da, mnogokrat",
 	"welcomesurvey-question-edited-option-yes-few-label": "Da, enkrat ali dvakrat",
 	"welcomesurvey-question-edited-option-no-dunno-label": "Ne, nisem vedel/a, da lahko urejam Wikipedijo",
 	"welcomesurvey-question-edited-option-no-other-label": "Ne, iz drugih razlogov",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ne spomnim se",
+	"welcomesurvey-question-mailinglist-label": "Po e-pošti želim prejemati nasvete o tem, kako začeti urejati.",
+	"welcomesurvey-question-mailinglist-help": "Upoštevajte, da ta dopisni seznam poganja MailChimp, kar pomeni, da MailChimp uporablja {{GENDER:|vaše}} podatke v skladu s svojimi [https://www.intuit.com/privacy/statement/ pravilnikom o zasebnosti] in [https ://mailchimp.com/legal/terms/ Pogoji storitve].",
 	"welcomesurvey-question-email-label": "E-poštni naslov (izbirno)",
 	"welcomesurvey-question-email-placeholder": "Vnesite {{GENDER:|svoj}} e-poštni naslov ...",
 	"welcomesurvey-question-email-help": "Opazili smo, da pri ustvaritvi tega računa {{GENDER:|niste vnesli}} e-poštnega naslova. To se <strong>močno priporoča</strong>, saj je e-poštni naslov potreben za ponovni dostop do računa, če izgubite geslo. OPOMBA: Kadar z vami kontaktirajo drugi uporabniki, se vaš e-poštni naslov ne razkrije.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} je na voljo v skoraj 300 jezikih. Ali {{GENDER:|berete in pišete}} tudi v drugih jezikih?",
-	"welcomesurvey-question-languages-placeholder": "Dodajte do {{PLURAL:$1|en jezik|$1 jezika|$1 jezike|$1 jezikov}} ..."
+	"welcomesurvey-question-languages-placeholder": "Dodajte do {{PLURAL:$1|en jezik|$1 jezika|$1 jezike|$1 jezikov}} ...",
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Dodali}} ste največje mogoče število jezikov."
 }

@@ -37,7 +37,8 @@
 			"科劳",
 			"羊羊32521",
 			"落花有意12138",
-			"魔琴"
+			"魔琴",
+			"Lakejason0"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -69,7 +70,7 @@
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "获取建议",
 	"growthexperiments-homepage-startediting-button": "查看编辑建议",
 	"growthexperiments-homepage-startediting-dialog-header": "关于编辑建议",
-	"growthexperiments-homepage-startediting-dialog-progress": "$2之$1",
+	"growthexperiments-homepage-startediting-dialog-progress": "第$1页，共$2页",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "取消",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "继续",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "开始使用编辑建议",
@@ -189,7 +190,7 @@
 	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|您}}可以随时点击{{GENDER:$1|您的}}用户名返回这里。在{{GENDER:$1|您的}}主页上，{{GENDER:$1|您}}可以找到编辑建议，向{{GENDER:$1|你的}}导师提问，看看  {{GENDER:$1|你的}}影响力。",
 	"growthexperiments-homepage-discovery-banner-header": "欢迎来到{{GENDER:$1|您的}}主页！",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|您}}可以随时点击页面顶部的 $2 返回到这里。",
-	"growthexperiments-homepage-discovery-thanks-header": "感谢您创建{{GENDER:$1|您的}}帐户！",
+	"growthexperiments-homepage-discovery-thanks-header": "感谢您创建{{GENDER:$1|您的}}账户！",
 	"growthexperiments-homepage-discovery-thanks-text": "点击页面顶部的 $2，访问{{GENDER:$1|您的}}主页并开始。",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "欢迎来到{{GENDER:$1|您的}}主页！",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|您}}可以随时打开侧边栏并点击$2返回到这里。",

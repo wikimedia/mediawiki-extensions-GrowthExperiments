@@ -125,7 +125,7 @@
 	"growthexperiments-manage-mentors-username": "Nume de utilizator",
 	"growthexperiments-manage-mentors-last-active": "Activ ultima oară",
 	"growthexperiments-manage-mentors-intro-msg": "Mesaj pentru nou-veniți",
-	"growthexperiments-manage-mentors-remove-mentor": "Elimină",
+	"growthexperiments-manage-mentors-remove-mentor": "Eliminare",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Sunteți}} pe cale să îl/o eliminați pe [[User:$1|$1]] din funcția de {{GENDER:$1|mentor}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Motivul pentru eliminarea mentorului",
 	"growthexperiments-manage-mentors-remove-mentor-success": "Utilizatorul [[User:$1|$1]] nu mai este {{GENDER:$1|mentor}}.",
