@@ -2501,7 +2501,8 @@
 		},
 		"growthexperimentsuserimpacthandler": {
 			"&can-bypass": true,
-			"user": [ 10, 86400 ]
+			"anon": [ 1, 86400 ],
+			"user": [ 1, 86400 ]
 		}
 	},
 	"manifest_version": 2
