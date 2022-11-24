@@ -145,6 +145,13 @@ body.mw-special-Homepage {
 					}
 				}
 			}
+
+			// NewImpact module is rendered on client-side only; set a minimum height based on what we
+			// think its rendered height will be.
+			// TODO: When the old impact module is retired, this selector can be changed to &-impact
+			.growthexperiments-homepage-module-new-impact {
+				min-height: 228px;
+			}
 		}
 	}
 
