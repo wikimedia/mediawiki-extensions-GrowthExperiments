@@ -104,11 +104,17 @@ class SortedFilteredUserImpact extends ExpensiveUserImpact {
 	 */
 	private function sortAndFilter(): void {
 		$dailyArticleViews = $this->getDailyArticleViews();
-		// Order the articles by most views to fewest and get the top 5.
+
+		// Order the articles by most views to fewest
 		uasort( $dailyArticleViews, static function ( $a, $b ) {
 			return array_sum( $b['views'] ) <=> array_sum( $a['views'] );
 		} );
-		$topViewedArticles = array_slice( $dailyArticleViews, 0, 5, true );
+
+		// Get the top five articles in the list that have page views
+		$topViewedArticles = array_slice( array_filter( $dailyArticleViews, static function ( $item ) {
+			return ( $item['viewsCount'] ?? 0 ) > 0;
+		} ), 0, 5, true );
+
 		$topViewedArticlesCount = array_reduce( $topViewedArticles, static function ( $carry, $articleViews ) {
 			return $carry + ( $articleViews['viewsCount'] ?? 0 );
 		}, 0 );
@@ -120,6 +126,8 @@ class SortedFilteredUserImpact extends ExpensiveUserImpact {
 			return $b['newestEdit'] <=> $a['newestEdit'];
 		} );
 		$dtiAgo = strtotime( "-2 days", MWTimestamp::time() );
+
+		// Build a list of recent edits without page views.
 		foreach ( $dailyArticleViews as $title => $data ) {
 			if ( count( $recentEditsWithoutPageviews ) >= 5 ) {
 				break;

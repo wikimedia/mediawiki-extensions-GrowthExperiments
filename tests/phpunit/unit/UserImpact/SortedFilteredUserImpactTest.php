@@ -22,6 +22,7 @@ class SortedFilteredUserImpactTest extends MediaWikiUnitTestCase {
 				'firstEditDate' => '2022-08-24',
 				'newestEdit' => '20220825100000',
 				'views' => $views,
+				'viewsCount' => array_sum( $views ),
 				'imageUrl' => null,
 			];
 		};
