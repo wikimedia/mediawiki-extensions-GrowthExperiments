@@ -29,7 +29,6 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
-					'GEHomepageNewAccountVariants' => [],
 					'GEHomepageNewAccountVariantsByPlatform' => []
 				]
 			),
@@ -57,7 +56,6 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
-					'GEHomepageNewAccountVariants' => [],
 					'GEHomepageNewAccountVariantsByPlatform' => []
 				]
 			),
@@ -101,31 +99,10 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	public function variantAssignmentByPlatformProvider(): array {
 		return [
 			[
-				'(Deprecated) GEHomepageNewAccountVariants with 100% assigns user to control, not default variant',
-				'control',
-				[
-					'GEHomepageDefaultVariant' => 'Foo',
-					'GEHomepageNewAccountVariants' => [ 'control' => 100 ],
-					'GEHomepageNewAccountVariantsByPlatform' => []
-				],
-				null
-			],
-			[
-				'(Deprecated) GEHomepageNewAccountVariants with 0% assigns user to default variant',
-				'Foo',
-				[
-					'GEHomepageDefaultVariant' => 'Foo',
-					'GEHomepageNewAccountVariants' => [ 'control' => 0 ],
-					'GEHomepageNewAccountVariantsByPlatform' => []
-				],
-				null
-			],
-			[
 				'mobile: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to imagerecommendation',
 				'imagerecommendation',
 				[
 					'GEHomepageDefaultVariant' => 'control',
-					'GEHomepageNewAccountVariants' => [ 'control' => 100 ],
 					'GEHomepageNewAccountVariantsByPlatform' => [
 						'imagerecommendation' => [
 							'desktop' => 0,
@@ -144,7 +121,6 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 				'control',
 				[
 					'GEHomepageDefaultVariant' => 'control',
-					'GEHomepageNewAccountVariants' => [ 'control' => 100 ],
 					'GEHomepageNewAccountVariantsByPlatform' => [
 						'imagerecommendation' => [
 							'desktop' => 0,
