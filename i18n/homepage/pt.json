@@ -108,6 +108,8 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Ver edições sugeridas",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Comece por fazer algumas das <strong>edições sugeridas</strong>, depois saiba quantas pessoas estão a ver as suas contribuições aqui.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-unactivated-description": "Quando começar a editar, verá aqui quantas pessoas estão a ler os artigos que editou.{{GENDER:$1|}}",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "Atraso temporário na obtenção da sua informação{{GENDER:$1|}}",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Talvez queira editar e aprender mais sobre a wiki {{SITENAME}}, e voltar mais tarde para ver os detalhes do impacto das suas edições.{{GENDER:$1|}}",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alertas da central de ajuda",
 	"growthexperiments-tour-response-tip-text": "Quando a sua pergunta for respondida, terá aqui um alerta novo.{{GENDER:$1|}}",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Alertas de mentores{{GENDER:$1|}}",

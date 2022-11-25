@@ -129,6 +129,8 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Voir les modifications suggérées",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Démarrez avec quelques <strong>modifications suggérées</strong>, puis voyez combien de personnes visualisent {{GENDER:$1|}}vos contributions ici.",
 	"growthexperiments-homepage-impact-unactivated-description": "Une fois que {{GENDER:$1|}}vous commencez à modifier, {{GENDER:$1|}}vous verrez combien de personnes regardent les articles que {{GENDER:$1|}}vous avez modifiés.",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "Retard temporaire pour obtenir {{GENDER:$1|}}vos informations",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Envisagez de modifier et d’en savoir plus sur {{SITENAME}}, puis revenez ultérieurement pour voir les détails sur l’impact de {{GENDER:$1|}}vos modifications.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alertes du centre d’assistance",
 	"growthexperiments-tour-response-tip-text": "Lorsqu’une réponse à {{GENDER:$1|}}votre question sera apportée, {{GENDER:$1|}}vous recevrez une nouvelle alerte ici.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Notifications {{GENDER:$1|du tuteur|de la tutrice}}",

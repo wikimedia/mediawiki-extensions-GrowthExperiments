@@ -21,5 +21,6 @@
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "El parámetro 'reason' debe ser un array en los datos del plugin Add Image, es $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Elemento inválido '$1' para el parámetro 'reason', debe ser uno de: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "No se ha encontrado el registro de recomendación de enlaces",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Objetivos de recomendación de enlaces inesperados: $1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Objetivos de recomendación de enlaces inesperados: $1",
+	"growthexperiments-underlinked-rescore-profile": "Perfil interno de recalificación utilizado en las recomendaciones de enlaces de GrowthExperiments para priorizar los artículos que aún no tienen suficientes enlaces."
 }

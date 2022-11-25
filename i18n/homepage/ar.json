@@ -112,6 +112,8 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "{{GENDER:$1|ابدأ|ابدئي}} ببعض <strong>التعديلات المقترحة</strong>، ثمّ {{GENDER:$1|اطّلع|اطّلعي}} على عدد مشاهدي مساهماتك هنا.",
 	"growthexperiments-homepage-impact-unactivated-description": "حين {{GENDER:$1|تبدأ|تبدئين}} في التعديل، {{GENDER:$1|ستتحصّل|ستتحصلين}} هنا على عدد الأشخاص الذين سيشاهدون المقالات التي قمت بتعديلها.",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "تأخير مؤقت في الحصول على {{GENDER:$1|معلوماتك}}",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "{{GENDER:$1|ضع|ضعي}} في اعتبارك التعديل ومعرفة المزيد حول {{SITENAME}}، ثم {{GENDER:$1|عد|عودي}} لاحقًا لعرض تفاصيل تأثيرك في التحرير.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "تنبيهات ميدان المساعدة",
 	"growthexperiments-tour-response-tip-text": "عندما يتم الردّ على {{GENDER:$1|سؤالك}}، {{GENDER:$1|ستحصل|ستحصلين}} على تنبيه جديد هنا.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "تنبيهات {{GENDER:$1|المرشد|المرشدة}}",

@@ -101,6 +101,8 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Vedeți editări sugerate",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Începeți cu câteva <strong>editări sugerate</strong>, apoi vedeți aici cât de multe persoane văd contribuțiile {{GENDER:$1|dvs}}.",
 	"growthexperiments-homepage-impact-unactivated-description": "Odată ce {{GENDER:$1|începeți}} să editați, {{GENDER:$1|veți}} vedea aici cât de multe persoane vizualizează articolele pe care {{GENDER:$1|le-ați}} editat.",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "Întârziere temporară la obținerea informațiilor {{GENDER:$1|dvs.}}",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Luați în considerare să editați și să aflați mai multe pe {{SITENAME}}, apoi veniți înapoi mai târziu pentru a {{GENDER:$1|vedea}} detaliile impactului editărilor dvs.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alerte pentru biroul de ajutor",
 	"growthexperiments-tour-response-tip-text": "Când s-a răspuns la întrebarea {{GENDER:$1|dvs.}}, {{GENDER:$1|veți}} avea aici o alertă nouă.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Alerte pentru {{GENDER:$1|mentori}}",

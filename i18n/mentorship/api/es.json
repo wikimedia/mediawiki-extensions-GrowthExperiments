@@ -27,5 +27,6 @@
 	"apihelp-growthmanagementorlist-param-weight": "Ponderación",
 	"apihelp-growthmanagementorlist-param-autoassigned": "¿Se asigna de manera automática el mentor o mentora a los recién llegados?",
 	"apihelp-growthmanagementorlist-param-summary": "Razones para el cambio",
-	"apihelp-growthmanagementorlist-param-username": "Nombre de usuario del mentor afectado por el cambio. Si no se proporciona, se utilizará el usuario conectado actualmente. Sólo puede ser utilizado por usuarios con privilegios."
+	"apihelp-growthmanagementorlist-param-username": "Nombre de usuario del mentor afectado por el cambio. Si no se proporciona, se utilizará el usuario conectado actualmente. Sólo puede ser utilizado por usuarios con privilegios.",
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Si isaway es cierto, entonces awaytimestamp debe ser proporcionado."
 }

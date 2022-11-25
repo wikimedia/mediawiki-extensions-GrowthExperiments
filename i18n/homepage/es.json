@@ -110,8 +110,10 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Visitas a los artículos {{GENDER:$1|que has}} editado",
 	"growthexperiments-homepage-impact-scores-edit-count": "Ediciones totales",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Agradecimiento recibido",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Información sobre cómo funciona Agradecer",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} está creado por una comunidad de editores/as como {{GENDER:$1|tú}}. {{GENDER:$1|Podrías}} recibir un agradecimiento por parte de otra persona por alguna de {{GENDER:$1|tus ediciones}}, al igual que {{GENDER:$1|tú}} puedes agradecer a los demás por las suyas.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Este es el mayor número de días seguidos en los {{GENDER:$1|que realizaste}} al menos una edición.",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "Información sobre la forma de calcular las rachas",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Tu}} mayor racha editando es de $2 {{PLURAL:$2|día|días}} que {{GENDER:$1|conseguiste}} entre $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Visitas a artículos que {{GENDER:$1|has}} editado",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas a los artículos que {{GENDER:$1|has}} editado (últimos 60 días)",
@@ -445,7 +447,7 @@
 	"grant-managementorship": "Administrar tutoría",
 	"newcomertasksinfo": "Tareas de usuarios nuevos",
 	"newcomertasksinfo-no-data": "No hay información disponible.",
-	"newcomertasksinfo-config-form-info": "La configuración de las tareas de nuevos/as usuarios/as puede visualizarse y cambiarse en [[Especial:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "La configuración de las tareas de nuevos/as usuarios/as puede visualizarse y cambiarse en [[Special:EditGrowthConfig]].",
 	"newcomertasksinfo-table-header-task-type": "Tipo de tarea",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Cantidad",
@@ -565,5 +567,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Cuando {{GENDER:|tú}} envíes un mensaje a tu {{GENDER:$1|mentor|mentora}}, lo verá en su página de discusión y {{GENDER:|tú}} deberías recibir una notificación cuando te responda.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Abandonar mentoría",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Selecciona el botón de abajo para renunciar si no quieres un mentor en este momento. Puedes volver a tener un nuevo mentor o mentora en cualquier momento si cambias de opinión.",
-	"growthexperiments-homepage-mentorship-about-done": "Hecho"
+	"growthexperiments-homepage-mentorship-about-done": "Hecho",
+	"growthexperiments-homepage-special-contribute-title": "Ediciones sugeridas",
+	"growthexperiments-homepage-special-contribute-description": "Realiza pequeños y sencillos cambios (por ejemplo, añadir un enlace o hacer una corrección de texto) para mejorar los artículos existentes.",
+	"growthexperiments-homepage-special-contribute-cta": "Ver ediciones sugeridas"
 }

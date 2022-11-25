@@ -101,6 +101,8 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Glejte predlagana urejanja",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Začnite z nekaj <strong>predlaganimi urejanji</strong>, nato pa poglejte, koliko ljudi si ogleduje {{GENDER:$1|vaše}} tukajšnje prispevke.",
 	"growthexperiments-homepage-impact-unactivated-description": "Ko {{GENDER:$1|boste}} začeli urejati, {{GENDER:$1|si boste}} tu lahko ogledali, koliko ljudi si ogleduje članke, ki {{GENDER:$1|ste}} jih urejali.",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "Začasna zakasnitev pri pridobivanju {{GENDER:$1|vaših}} podatkov",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Razmislite o urejanju in boljši seznanitvi s projektom {{SITENAME}}, nato pa se vrnite in si oglejte podatke o {{GENDER:$1|svojem}} urejevalskem vplivu.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Obvestila Centra za pomoč",
 	"growthexperiments-tour-response-tip-text": "Ko bo objavljen odgovor na {{GENDER:$1|vaše}} vprašanje, {{GENDER:$1|boste tu prejeli}} novo obvestilo.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Obvestila {{GENDER:$1|mentorja|mentorice|mentorja_ice}}",

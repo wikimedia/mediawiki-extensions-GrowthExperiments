@@ -87,7 +87,7 @@
 	"echo-pref-tooltip-ge-mentorship": "Notifiche collegate alla funzione di tutoraggio mantenute dal Growth team. Questa notifica ti fa sapere quando sei stato impostato come allievo da un tutor specifico o quando un tuo allievo ha iniziato ad essere seguito da qualcun altro.",
 	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Numero di allievi assegnati",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Nessuno",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Nessuno (li richiedo manualmente)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Circa la metà della media",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Media (predefinito)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Circa il doppio della media",

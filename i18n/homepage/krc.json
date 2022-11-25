@@ -6,6 +6,8 @@
 	},
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Разылыкъ къалай ишлегенини юсюнден",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Бу бойну юсюнден информация саналгъанды",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "{{GENDER:$1|Сизни}} информациягъызны алыуда заманлы тыйгъыч болду",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "{{SITENAME}} бетде тюзетиуге эмда къошакъ информация алыргъа мадарны эсигизге алыгъыз, андан сора кечирек къайтыб, сизни {{GENDER:$1|сизни}} тюрлениуюгюз къаллай ауурлукъэтгенине къарагъыз.",
 	"growthexperiments-homepage-special-contribute-title": "Теджелген тюзетиуле",
 	"growthexperiments-homepage-special-contribute-description": "Статьяланы маджаллашдырыр ючюн гитче, бош тюрлендириле этигиз (с.ю., джибериу къошугъуз неда текстни тюзетигиз).",
 	"growthexperiments-homepage-special-contribute-cta": "Теджелген тюзетиулеге къара"
