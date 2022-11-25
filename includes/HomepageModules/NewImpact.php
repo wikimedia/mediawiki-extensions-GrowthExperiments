@@ -59,7 +59,6 @@ class NewImpact extends BaseModule {
 	/** @inheritDoc */
 	protected function getJsConfigVars() {
 		return [
-			'GENewImpactD3Enabled' => $this->getConfig()->get( 'GENewImpactD3Enabled' ),
 			'GENewImpactRelevantUserName' => $this->userIdentity->getName(),
 			'GENewImpactRelevantUserId' => $this->userIdentity->getId(),
 			'GENewImpactRelevantUserEditCount' => $this->getContext()->getUser()->getEditCount(),

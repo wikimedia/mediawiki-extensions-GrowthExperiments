@@ -23,7 +23,7 @@ describe( 'NewImpactVue', () => {
 						4: 9
 					},
 					editCountByDay: {},
-					dailyTotalViews: {},
+					dailyTotalViews: [],
 					dailyArticleViews: {}
 				}
 			},
