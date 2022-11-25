@@ -170,27 +170,30 @@ module.exports = exports = {
 			).text();
 		},
 		bestStreakFormattedDates() {
-			// FIXME: date formats are not localised
-			const formatDate = ( date, format = 'MMM D YYYY' ) => {
-				return moment( date ).format( format );
-			};
-			const today = new Date();
+			const today = new Date(),
+				// Only specify user language and leave locale resolution to Intl instead of
+				// using the MediaWiki fallback chain. This might or might not be a good idea.
+				language = mw.config.get( 'wgUserLanguage' ),
+				yearOnlyFormat = new Intl.DateTimeFormat( language, { year: 'numeric' } ),
+				sameYearFormat = new Intl.DateTimeFormat( language, { month: 'short', day: 'numeric' } ),
+				standardFormat = new Intl.DateTimeFormat( language, { dateStyle: 'medium' } );
+
 			let { start, end } = this.data.longestEditingStreak.datePeriod;
 			start = new Date( start );
 			end = new Date( end );
 
-			// The streak start and ends on the current year and same month,
-			if (
-				start.getYear() === today.getYear() &&
-				start.getYear() === end.getYear() &&
-				start.getMonth() === end.getMonth()
-			) {
-				return `${formatDate( start, 'MMM D' )} — ${formatDate( end, 'D' )}`;
+			// Rely on DateTimeFormat.formatRange() for range formatting. It will handle pretty
+			// much everything it can be expected to handle: formatting the two dates, de-duplicating
+			// shared segments of the dates when reasonable for a given date format, selecting
+			// the separator, using a non-Gregorian calendar when appropriate.
+			//
+			// If the streak is in the current year, don't show the year. Note we can't use
+			// Date.getYear() as it is not necessarily the same as the local year.
+			if ( yearOnlyFormat.format( end ) === yearOnlyFormat.format( today ) ) {
+				return sameYearFormat.formatRange( start, end );
+			} else {
+				return standardFormat.formatRange( start, end );
 			}
-
-			// REVIEW: the streak start on prior year but ends on current year is
-			// not handled. ie: Aug 3 2002 - Sep 17 <current year>
-			return `${formatDate( start )} — ${formatDate( end )}`;
 		},
 		longestEditingStreakText() {
 			if ( !this.data ) {
