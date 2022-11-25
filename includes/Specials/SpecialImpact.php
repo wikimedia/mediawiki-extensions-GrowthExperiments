@@ -2,84 +2,29 @@
 
 namespace GrowthExperiments\Specials;
 
-use Config;
 use DerivativeContext;
 use GrowthExperiments\DashboardModule\IDashboardModule;
-use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\HomepageModules\Impact;
-use GrowthExperiments\HomepageModules\NewImpact;
-use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\UserImpact\UserImpactStore;
+use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use Html;
-use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\User\UserFactory;
-use MediaWiki\User\UserOptionsLookup;
 use SpecialPage;
-use TitleFactory;
-use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 class SpecialImpact extends SpecialPage {
 
-	/**
-	 * @var IDatabase
-	 */
-	private $dbr;
+	private UserFactory $userFactory;
+	private HomepageModuleRegistry $homepageModuleRegistry;
 
 	/**
-	 * @var PageViewService|null
-	 */
-	private $pageViewService;
-	/**
-	 * @var ExperimentUserManager
-	 */
-	private $experimentUserManager;
-
-	/**
-	 * @var TitleFactory
-	 */
-	private $titleFactory;
-
-	/** @var Config */
-	private $wikiConfig;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
-	/** @var UserFactory */
-	private $userFactory;
-
-	private UserImpactStore $userImpactStore;
-
-	/**
-	 * @param ILoadBalancer $loadBalancer
-	 * @param ExperimentUserManager $experimentUserManager
-	 * @param TitleFactory $titleFactory
-	 * @param Config $wikiConfig
-	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param UserFactory $userFactory
-	 * @param UserImpactStore $userImpactStore
-	 * @param PageViewService|null $pageViewService
+	 * @param HomepageModuleRegistry $homepageModuleRegistry
 	 */
 	public function __construct(
-		ILoadBalancer $loadBalancer,
-		ExperimentUserManager $experimentUserManager,
-		TitleFactory $titleFactory,
-		Config $wikiConfig,
-		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory,
-		UserImpactStore $userImpactStore,
-		PageViewService $pageViewService = null
+		HomepageModuleRegistry $homepageModuleRegistry
 	) {
 		parent::__construct( 'Impact' );
-		$this->dbr = $loadBalancer->getConnectionRef( DB_REPLICA );
-		$this->pageViewService = $pageViewService;
-		$this->experimentUserManager = $experimentUserManager;
-		$this->titleFactory = $titleFactory;
-		$this->wikiConfig = $wikiConfig;
-		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userFactory = $userFactory;
-		$this->userImpactStore = $userImpactStore;
+		$this->homepageModuleRegistry = $homepageModuleRegistry;
 	}
 
 	/**
@@ -134,33 +79,7 @@ class SpecialImpact extends SpecialPage {
 				->text() ) );
 		}
 		$context->setUser( $impactUser );
-		if ( $this->getContext()->getRequest()->getBool(
-			'new-impact',
-			$context->getConfig()->get( 'GEUseNewImpactModule' )
-		) ) {
-			$impact = new NewImpact(
-				$context,
-				$this->wikiConfig,
-				$this->experimentUserManager,
-				$impactUser,
-				$this->userImpactStore,
-				SuggestedEdits::isEnabled( $context->getConfig() ),
-				SuggestedEdits::isActivated( $impactUser, $this->userOptionsLookup )
-			);
-		} else {
-			$impact = new Impact(
-				$context,
-				$this->wikiConfig,
-				$this->dbr,
-				$this->experimentUserManager,
-				[
-					'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context->getConfig() ),
-					'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $impactUser, $this->userOptionsLookup ),
-				],
-				$this->titleFactory,
-				$this->pageViewService
-			);
-		}
+		$impact = $this->homepageModuleRegistry->get( 'impact', $context );
 		$out->addHTML( $impact->render( IDashboardModule::RENDER_DESKTOP ) );
 	}
 }
