@@ -56,10 +56,10 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
  */
 function useUserImpact( userId, timeFrame ) {
 	const encodedUserId = encodeURIComponent( `#${userId}` );
-	const serverSideExportedData = mw.config.get( 'homepagemodules' ).impact;
+	const serverSideExportedData = mw.config.get( 'homepagemodules', {} ).impact;
 	const finalData = ref( null );
 	const finalError = ref( null );
-	if ( serverSideExportedData.impact ) {
+	if ( serverSideExportedData && serverSideExportedData.impact ) {
 		finalData.value = serverSideExportedData.impact;
 	} else {
 		const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${encodedUserId}` );

@@ -288,14 +288,8 @@ class HomepageHooks implements
 				$list['Impact'] = [
 					'class' => SpecialImpact::class,
 					'services' => [
-						'DBLoadBalancer',
-						'GrowthExperimentsExperimentUserManager',
-						'TitleFactory',
-						'GrowthExperimentsMultiConfig',
-						'UserOptionsLookup',
 						'UserFactory',
-						'GrowthExperimentsUserImpactStore',
-						'PageViewService',
+						'GrowthExperimentsHomepageModuleRegistry',
 					]
 				];
 			}
