@@ -77,6 +77,7 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "This is the highest number of days in a row that {{GENDER:$1|you}} made at least one edit.",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Information about how the streak is calculated",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Your}} current longest streak is $2 {{PLURAL:$2|day|days}} which {{GENDER:$1|you}} achieved between $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Your}} current longest streak is one day which {{GENDER:$1|you}} achieved on $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Views on articles {{GENDER:$1|you've}} edited",
 	"growthexperiments-homepage-impact-subheader-subtext": "Views since {{GENDER:$1|you}} edited (last 60 days):",
 	"growthexperiments-homepage-impact-contributions-link": "View all {{GENDER:$2|your}} edits ($1) ",
