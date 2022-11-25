@@ -215,8 +215,6 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertSame( $expectedDays, array_keys( $dailyArticleViews['Test_2']['views'] ) );
 		$this->assertSame( 202, $dailyArticleViews['Test_2']['views']['2022-10-02'] );
 		$this->assertSame( 530, $dailyArticleViews['Test_5']['views']['2022-10-30'] );
-		$this->assertSame( 6495, $dailyArticleViews['Test_2']['viewsCount'] );
-		$this->assertSame( 13986, $dailyArticleViews['Test_5']['viewsCount'] );
 	}
 
 }
