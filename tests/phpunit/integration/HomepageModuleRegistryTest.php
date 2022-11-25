@@ -54,7 +54,6 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
 		$this->overrideConfigValue( 'GEUseNewImpactModule', true );
-		$this->overrideConfigValue( 'GEAllowAccessToNewImpactModule', true );
 		$context = RequestContext::getMain();
 		$this->assertInstanceOf( NewImpact::class, $moduleRegistry->get( 'impact', $context ) );
 	}
@@ -63,21 +62,8 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::get
 	 * @covers ::getWiring
 	 */
-	public function testGetNewImpactModuleWithQueryParameter() {
-		$this->overrideConfigValue( 'GEAllowAccessToNewImpactModule', true );
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
-		$context = RequestContext::getMain();
-		$this->setRequest( new FauxRequest( [ 'new-impact' => 1 ] ) );
-		$this->assertInstanceOf( NewImpact::class, $moduleRegistry->get( 'impact', $context ) );
-	}
-
-	/**
-	 * @covers ::get
-	 * @covers ::getWiring
-	 */
-	public function testGetNewImpactModuleWithQueryParameterAccessDisabled() {
-		$this->overrideConfigValue( 'GEAllowAccessToNewImpactModule', false );
+	public function testGetNewImpactModuleWithQueryParameterAndGlobalOffSwitch() {
+		$this->overrideConfigValue( 'GEUseNewImpactModule', false );
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
 		$context = RequestContext::getMain();

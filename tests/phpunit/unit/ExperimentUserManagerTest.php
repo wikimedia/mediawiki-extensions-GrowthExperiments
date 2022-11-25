@@ -99,14 +99,12 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	public function variantAssignmentByPlatformProvider(): array {
 		return [
 			[
-				'mobile: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to imagerecommendation. '
-				// TODO: Update this example to "newimpact" when that experiment group is added.
-				. 'Falls back to control as imagerecommendation is no longer a valid variant',
-				'control',
+				'mobile: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to oldimpact.',
+				'oldimpact',
 				[
 					'GEHomepageDefaultVariant' => 'control',
 					'GEHomepageNewAccountVariantsByPlatform' => [
-						'imagerecommendation' => [
+						'oldimpact' => [
 							'desktop' => 0,
 							'mobile' => 100
 						],
@@ -124,8 +122,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 				[
 					'GEHomepageDefaultVariant' => 'control',
 					'GEHomepageNewAccountVariantsByPlatform' => [
-						// TODO: Update this key to "newimpact" when that variant group exists.
-						'imagerecommendation' => [
+						'oldimpact' => [
 							'desktop' => 0,
 							'mobile' => 100
 						],
