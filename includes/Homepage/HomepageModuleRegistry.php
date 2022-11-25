@@ -155,6 +155,7 @@ class HomepageModuleRegistry {
 						$growthServices->getExperimentUserManager(),
 						$context->getUser(),
 						$growthServices->getUserImpactStore(),
+						$growthServices->getUserImpactFormatter(),
 						SuggestedEdits::isEnabled( $context->getConfig() ),
 						SuggestedEdits::isActivated( $context->getUser(), $userOptionsLookup )
 					);

@@ -2,26 +2,20 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
-use Config;
-use DateTime;
 use DeferredUpdates;
 use Exception;
-use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\RefreshUserImpactJob;
-use GrowthExperiments\UserImpact\SortedFilteredUserImpact;
+use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use IBufferingStatsdDataFactory;
 use JobQueueGroup;
-use Language;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use stdClass;
-use TitleFactory;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -30,45 +24,33 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class UserImpactHandler extends SimpleHandler {
 
-	private Config $config;
-	private stdClass $AQSConfig;
-	private TitleFactory $titleFactory;
-	private Language $contentLanguage;
-	private IBufferingStatsdDataFactory $statsdDataFactory;
 	private UserImpactStore $userImpactStore;
 	private UserImpactLookup $userImpactLookup;
+	private UserImpactFormatter $userImpactFormatter;
+	private IBufferingStatsdDataFactory $statsdDataFactory;
 	private JobQueueGroup $jobQueueGroup;
 	private UserFactory $userFactory;
 
 	/**
-	 * @param Config $config
-	 * @param stdClass $AQSConfig
 	 * @param UserImpactStore $userImpactStore
 	 * @param UserImpactLookup $userImpactLookup
-	 * @param TitleFactory $titleFactory
-	 * @param Language $contentLanguage
+	 * @param UserImpactFormatter $userImpactFormatter
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param JobQueueGroup $jobQueueGroup
 	 * @param UserFactory $userFactory
 	 */
 	public function __construct(
-		Config $config,
-		stdClass $AQSConfig,
 		UserImpactStore $userImpactStore,
 		UserImpactLookup $userImpactLookup,
-		TitleFactory $titleFactory,
-		Language $contentLanguage,
+		UserImpactFormatter $userImpactFormatter,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		JobQueueGroup $jobQueueGroup,
 		UserFactory $userFactory
 	) {
-		$this->config = $config;
-		$this->AQSConfig = $AQSConfig;
 		$this->userImpactStore = $userImpactStore;
-		$this->titleFactory = $titleFactory;
-		$this->contentLanguage = $contentLanguage;
-		$this->statsdDataFactory = $statsdDataFactory;
 		$this->userImpactLookup = $userImpactLookup;
+		$this->userImpactFormatter = $userImpactFormatter;
+		$this->statsdDataFactory = $statsdDataFactory;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->userFactory = $userFactory;
 	}
@@ -82,14 +64,11 @@ class UserImpactHandler extends SimpleHandler {
 	public function run( UserIdentity $user ) {
 		$start = microtime( true );
 		$userImpact = $this->getUserImpact( $user );
-		$jsonData = $userImpact->jsonSerialize();
-		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray( $jsonData );
-		$jsonData = $sortedFilteredUserImpact->jsonSerialize();
-		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
+		$formattedJsonData = $this->userImpactFormatter->format( $userImpact );
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
 		);
-		return $jsonData;
+		return $formattedJsonData;
 	}
 
 	/**
@@ -151,44 +130,6 @@ class UserImpactHandler extends SimpleHandler {
 		}
 
 		return $userImpact;
-	}
-
-	/**
-	 * @param array &$jsonData
-	 * @return void
-	 * @throws Exception
-	 */
-	private function fillDailyArticleViewsWithPageViewToolsUrl(
-		array &$jsonData
-	): void {
-		foreach ( $jsonData['topViewedArticles'] as $title => $articleData ) {
-			$jsonData['topViewedArticles'][$title]['pageviewsUrl'] =
-				$this->getPageViewToolsUrl( $title, $articleData['firstEditDate'] );
-		}
-	}
-
-	/**
-	 * @param string $title
-	 * @param string $firstEditDate Date of the first edit to the article in Y-m-d format.
-	 * @throws Exception
-	 * @return string Full URL for the PageViews tool for the given title and start date
-	 */
-	private function getPageViewToolsUrl( string $title, string $firstEditDate ): string {
-		$baseUrl = 'https://pageviews.wmcloud.org/';
-		$mwTitle = $this->titleFactory->newFromText( $title );
-		$daysAgo = ComputedUserImpactLookup::PAGEVIEW_DAYS;
-		$dtiAgo = new DateTime( '@' . strtotime( "-$daysAgo days" ) );
-		$startDate = $dtiAgo->format( 'Y-m-d' );
-		if ( $firstEditDate > $startDate ) {
-			$startDate = $firstEditDate;
-		}
-		return wfAppendQuery( $baseUrl, [
-			'project' => $this->AQSConfig->project,
-			'userlang' => $this->contentLanguage->getCode(),
-			'start' => $startDate,
-			'end' => 'latest',
-			'pages' => $mwTitle->getPrefixedDBkey(),
-		] );
 	}
 
 	/** @inheritDoc */
