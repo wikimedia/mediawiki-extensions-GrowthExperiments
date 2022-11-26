@@ -5,7 +5,8 @@ namespace GrowthExperiments\HomepageModules;
 use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
-use GrowthExperiments\UserImpact\SortedFilteredUserImpact;
+use GrowthExperiments\UserImpact\ExpensiveUserImpact;
+use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use Html;
 use IContextSource;
@@ -18,11 +19,14 @@ class NewImpact extends BaseModule {
 
 	private UserIdentity $userIdentity;
 	private UserImpactStore $userImpactStore;
+	private UserImpactFormatter $userImpactFormatter;
 	private bool $isSuggestedEditsEnabledForUser;
 	private bool $isSuggestedEditsActivatedForUser;
 
-	/** @var SortedFilteredUserImpact|null|false */
-	private $userImpact;
+	/** @var ExpensiveUserImpact|null|false Lazy-loaded if false */
+	private $userImpact = false;
+	/** @var array|null|false Lazy-loaded if false */
+	private $formattedUserImpact = false;
 
 	/**
 	 * @param IContextSource $ctx
@@ -30,6 +34,7 @@ class NewImpact extends BaseModule {
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param UserIdentity $userIdentity
 	 * @param UserImpactStore $userImpactStore
+	 * @param UserImpactFormatter $userImpactFormatter
 	 * @param bool $isSuggestedEditsEnabled
 	 * @param bool $isSuggestedEditsActivated
 	 */
@@ -39,15 +44,16 @@ class NewImpact extends BaseModule {
 		ExperimentUserManager $experimentUserManager,
 		UserIdentity $userIdentity,
 		UserImpactStore $userImpactStore,
+		UserImpactFormatter $userImpactFormatter,
 		bool $isSuggestedEditsEnabled,
 		bool $isSuggestedEditsActivated
 	) {
 		parent::__construct( 'impact', $ctx, $wikiConfig, $experimentUserManager );
 		$this->userIdentity = $userIdentity;
 		$this->userImpactStore = $userImpactStore;
+		$this->userImpactFormatter = $userImpactFormatter;
 		$this->isSuggestedEditsEnabledForUser = $isSuggestedEditsEnabled;
 		$this->isSuggestedEditsActivatedForUser = $isSuggestedEditsActivated;
-		$this->userImpact = null;
 	}
 
 	/** @inheritDoc */
@@ -159,15 +165,16 @@ class NewImpact extends BaseModule {
 	/** @inheritDoc */
 	public function getJsData( $mode ) {
 		$data = parent::getJsData( $mode );
-		$impact = $this->getUserImpact();
+		$userImpact = $this->getUserImpact();
+		$formattedUserImpact = $this->getFormattedUserImpact();
 		// If the impact data's page view information is considered to be stale, then don't export
 		// it here. The client-side app's request will be able to get a fresh data generation, and
 		// it's ok for that to take longer. We wouldn't want to have the user wait here, though, as
 		// this blocks page render.
-		if ( !$impact || $impact->isPageViewDataStale() ) {
+		if ( !$userImpact || $userImpact->isPageViewDataStale() ) {
 			$data['impact'] = null;
 		} else {
-			$data['impact'] = $impact;
+			$data['impact'] = $formattedUserImpact;
 		}
 		return $data;
 	}
@@ -181,14 +188,14 @@ class NewImpact extends BaseModule {
 			'no_cached_user_impact' => !$userImpact
 		];
 		if ( $userImpact ) {
-			$jsonSortedUserImpact = $userImpact->jsonSerialize();
+			$formattedUserImpact = $this->getFormattedUserImpact();
 			$data = [
 				'timeframe_in_days' => ComputedUserImpactLookup::PAGEVIEW_DAYS,
 				'timeframe_edits_count' => $userImpact->getTotalEditsCount(),
 				'thanks_count' => $userImpact->getReceivedThanksCount(),
 				'last_edit_timestamp' => $userImpact->getLastEditTimestamp(),
 				'longest_streak_days_count' => $userImpact->getLongestEditingStreakCount(),
-				'top_articles_views_count' => $jsonSortedUserImpact['topViewedArticlesCount']
+				'top_articles_views_count' => $formattedUserImpact['topViewedArticlesCount'],
 			];
 		}
 		return array_merge( parent::getActionData(), $data );
@@ -197,24 +204,27 @@ class NewImpact extends BaseModule {
 	/**
 	 * Get user impact, with an in-process cache.
 	 *
-	 * @return SortedFilteredUserImpact|null
+	 * @return ExpensiveUserImpact|null
 	 */
-	private function getUserImpact(): ?SortedFilteredUserImpact {
-		if ( $this->userImpact instanceof SortedFilteredUserImpact ) {
+	private function getUserImpact(): ?ExpensiveUserImpact {
+		if ( $this->userImpact !== false ) {
 			return $this->userImpact;
-		} elseif ( $this->userImpact === false ) {
-			return null;
 		}
-		$userImpact = $this->userImpactStore->getExpensiveUserImpact( $this->userIdentity );
-		if ( !$userImpact ) {
-			// Set to "false" as an indicator that we already tried accessing, so subsequent
-			// calls to getUserImpact can return early.
-			$this->userImpact = false;
-			return null;
-		}
-		$this->userImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray(
-			$userImpact->jsonSerialize()
-		);
+		$this->userImpact = $this->userImpactStore->getExpensiveUserImpact( $this->userIdentity );
 		return $this->userImpact;
 	}
+
+	/**
+	 * Get the output of UserImpactFormatter::format(), with an in-process cache.
+	 * @return array
+	 */
+	private function getFormattedUserImpact(): array {
+		if ( $this->formattedUserImpact !== false ) {
+			return $this->formattedUserImpact;
+		}
+		$userImpact = $this->getUserImpact();
+		$this->formattedUserImpact = $userImpact ? $this->userImpactFormatter->format( $userImpact ) : [];
+		return $this->formattedUserImpact;
+	}
+
 }

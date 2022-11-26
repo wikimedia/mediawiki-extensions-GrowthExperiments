@@ -4,18 +4,23 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
-use GrowthExperiments\UserImpact\SortedFilteredUserImpact;
+use GrowthExperiments\UserImpact\UserImpactFormatter;
+use Language;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserTimeCorrection;
 use MediaWikiUnitTestCase;
 use MWTimestamp;
 
 /**
- * @covers \GrowthExperiments\UserImpact\SortedFilteredUserImpact
+ * @covers \GrowthExperiments\UserImpact\UserImpactFormatter
  */
-class SortedFilteredUserImpactTest extends MediaWikiUnitTestCase {
+class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 
 	public function testTopViewedArticles() {
+		$mockLanguage = $this->createNoOpMock( Language::class, [ 'getCode' ] );
+		$mockLanguage->method( 'getCode' )->willReturn( 'en' );
+		$formatter = new UserImpactFormatter( (object)[ 'project' => 'enwiki' ], $mockLanguage );
+
 		$dailyTotalViews = [ '2022-08-24' => 265, '2022-08-25' => 265 ];
 		$makeDailyArticleViewField = static function ( $views ) {
 			return [
@@ -24,6 +29,10 @@ class SortedFilteredUserImpactTest extends MediaWikiUnitTestCase {
 				'views' => $views,
 				'imageUrl' => null,
 			];
+		};
+		$pageViewUrl = static function ( string $title ) {
+			$url = "https://pageviews.wmcloud.org/?project=enwiki&userlang=en&start=2022-08-24&end=latest&pages=$title";
+			return [ 'pageviewsUrl' => $url ];
 		};
 		$dailyArticleViews = [
 			'Article1' => $makeDailyArticleViewField( [ '2022-08-24' => 50, '2022-08-25' => 50 ] ),
@@ -49,23 +58,32 @@ class SortedFilteredUserImpactTest extends MediaWikiUnitTestCase {
 			new EditingStreak()
 		);
 
-		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray(
-			$userImpact->jsonSerialize() );
+		MWTimestamp::setFakeTime( '2022-08-25 12:00:00' );
+
+		$json = $formatter->format( $userImpact );
 		$expectedTopViewedArticles = [
-			'Article6' => $dailyArticleViews['Article6'] + [ 'viewsCount' => 160 ],
-			'Article5' => $dailyArticleViews['Article5'] + [ 'viewsCount' => 140 ],
-			'Article4' => $dailyArticleViews['Article4'] + [ 'viewsCount' => 120 ],
-			'Article7' => $dailyArticleViews['Article7'] + [ 'viewsCount' => 110 ],
-			'Article1' => $dailyArticleViews['Article1'] + [ 'viewsCount' => 100 ],
+			'Article6' => $dailyArticleViews['Article6'] + [ 'viewsCount' => 160 ] + $pageViewUrl( 'Article6' ),
+			'Article5' => $dailyArticleViews['Article5'] + [ 'viewsCount' => 140 ] + $pageViewUrl( 'Article5' ),
+			'Article4' => $dailyArticleViews['Article4'] + [ 'viewsCount' => 120 ] + $pageViewUrl( 'Article4' ),
+			'Article7' => $dailyArticleViews['Article7'] + [ 'viewsCount' => 110 ] + $pageViewUrl( 'Article7' ),
+			'Article1' => $dailyArticleViews['Article1'] + [ 'viewsCount' => 100 ] + $pageViewUrl( 'Article1' ),
 		];
-		$json = $sortedFilteredUserImpact->jsonSerialize();
 		$this->assertSame( $expectedTopViewedArticles, $json['topViewedArticles'] );
 		$this->assertSame( 630, $json['topViewedArticlesCount'] );
-		$this->assertSame( $expectedTopViewedArticles, $sortedFilteredUserImpact->getTopViewedArticles() );
-		$this->assertSame( 630, $sortedFilteredUserImpact->getTopViewedArticlesCount() );
+
+		MWTimestamp::setFakeTime( '2022-10-28 12:00:00' );
+		$json = $formatter->format( $userImpact );
+		$this->assertSame(
+			'https://pageviews.wmcloud.org/?project=enwiki&userlang=en&start=2022-08-29&end=latest&pages=Article1',
+			$json['topViewedArticles']['Article1']['pageviewsUrl']
+		);
 	}
 
 	public function testRecentEditsWithoutPageviews() {
+		$mockLanguage = $this->createNoOpMock( Language::class, [ 'getCode' ] );
+		$mockLanguage->method( 'getCode' )->willReturn( 'en' );
+		$formatter = new UserImpactFormatter( (object)[ 'project' => 'enwiki' ], $mockLanguage );
+
 		$dailyTotalViews = [ '2022-08-25' => 10 ];
 		$makeDailyArticleViewField = static function ( $firstEditDay, $newestEditDay, $hasViews ) {
 			return [
@@ -105,17 +123,13 @@ class SortedFilteredUserImpactTest extends MediaWikiUnitTestCase {
 
 		MWTimestamp::setFakeTime( '2022-08-25 12:00:00' );
 
-		$sortedFilteredUserImpact = SortedFilteredUserImpact::newFromUnsortedJsonArray(
-			$userImpact->jsonSerialize() );
+		$json = $formatter->format( $userImpact );
 		$expectedRecentEditsWithoutPageviews = [
 			'Article8' => $unsetViews( $dailyArticleViews['Article8'] ),
 			'Article2' => $unsetViews( $dailyArticleViews['Article2'] ),
 			'Article5' => $unsetViews( $dailyArticleViews['Article5'] ),
 		];
-		$json = $sortedFilteredUserImpact->jsonSerialize();
 		$this->assertSame( $expectedRecentEditsWithoutPageviews, $json['recentEditsWithoutPageviews'] );
-		$this->assertSame( $expectedRecentEditsWithoutPageviews,
-			$sortedFilteredUserImpact->getRecentEditsWithoutPageviews() );
 	}
 
 }

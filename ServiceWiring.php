@@ -87,6 +87,7 @@ use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
+use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\ServiceOptions;
@@ -988,6 +989,15 @@ return [
 		$dbr = $services->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$dbw = $services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		return new DatabaseUserImpactStore( $dbr, $dbw );
+	},
+
+	'GrowthExperimentsUserImpactFormatter' => static function (
+		MediaWikiServices $services
+	): UserImpactFormatter {
+		return new UserImpactFormatter(
+			$services->get( '_GrowthExperimentsAQSConfig' ),
+			$services->getContentLanguage()
+		);
 	},
 
 ];

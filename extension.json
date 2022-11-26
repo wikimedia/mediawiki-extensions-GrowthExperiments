@@ -217,12 +217,9 @@
 			"method": [ "GET", "POST" ],
 			"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
 			"services": [
-				"MainConfig",
-				"_GrowthExperimentsAQSConfig",
 				"GrowthExperimentsUserImpactStore",
 				"GrowthExperimentsUserImpactLookup",
-				"TitleFactory",
-				"ContentLanguage",
+				"GrowthExperimentsUserImpactFormatter",
 				"StatsdDataFactory",
 				"JobQueueGroup",
 				"UserFactory"
