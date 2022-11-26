@@ -31,9 +31,9 @@
 		<div v-if="data">
 			<trend-chart
 				id="impact"
-				:count-text="$filters.convertNumber( data.articlesViewsCount )"
 				:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName ).text()"
 				:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' ).text()"
+				:pageview-total="data.articlesViewsCount"
 				:data="data.dailyTotalViews"
 			></trend-chart>
 		</div>
