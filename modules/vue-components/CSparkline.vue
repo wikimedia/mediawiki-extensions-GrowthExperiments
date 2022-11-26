@@ -13,7 +13,6 @@
 <script>
 const { onMounted } = require( 'vue' );
 const d3 = require( 'ext.growthExperiments.d3' );
-const INSIDE_GRAPH_VERTICAL_PADDING = 8;
 let chart, sparkline, area = null;
 
 // @vue/component
@@ -56,12 +55,11 @@ module.exports = exports = {
 
 			const yScale = d3.scaleLinear()
 				.domain( yDomain )
-				// Flip svg Y-axis coordinate system and add some vertical
-				// gutter so that the sparkline does not appear cut on min/max values
-				.range( [
-					props.dimensions.height - INSIDE_GRAPH_VERTICAL_PADDING,
-					0 + INSIDE_GRAPH_VERTICAL_PADDING
-				] );
+				// Flip svg Y-axis coordinate system and add some a pixel on top to avoid cutting
+				// off anti-aliasing pixels. Do not add a pixel on the bottom, that would make the
+				// graph non-0-based, and it's rare for the pageviews to be 0.
+				.range( [ props.dimensions.height, 1 ] );
+
 			const lineGenerator = d3.line()
 				.x( ( d ) => xScale( props.xAccessor( d ) ) )
 				.y( ( d ) => yScale( props.yAccessor( d ) ) );
