@@ -200,8 +200,11 @@ module.exports = exports = {
 				// Don't show the second information paragraph if no datePeriod is available
 				return null;
 			}
+			const message = ( this.data.longestEditingStreak.datePeriod.days === 1 ) ?
+				'growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day' :
+				'growthexperiments-homepage-impact-scores-best-streak-info-data-text';
 			return this.$i18n(
-				'growthexperiments-homepage-impact-scores-best-streak-info-data-text',
+				message,
 				this.userName,
 				this.$filters.convertNumber( this.data.longestEditingStreak.datePeriod.days ),
 				this.bestStreakFormattedDates
