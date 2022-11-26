@@ -6,7 +6,7 @@
 			weight="bold"
 			class="ext-growthExperiments-TrendChart__number"
 		>
-			{{ countText }}
+			{{ formattedPageviewTotal }}
 		</c-text>
 		<c-text as="span">
 			{{ countLabel }}
@@ -54,12 +54,12 @@ module.exports = exports = {
 			type: String,
 			default: null
 		},
-		countText: {
+		countLabel: {
 			type: String,
 			default: null
 		},
-		countLabel: {
-			type: String,
+		pageviewTotal: {
+			type: Number,
 			default: null
 		},
 		data: {
@@ -72,6 +72,18 @@ module.exports = exports = {
 			xAccessor,
 			yAccessor
 		};
+	},
+	computed: {
+		formattedPageviewTotal() {
+			// Use abbreviated number format on mobile preview.
+			if ( mw.config.get( 'homepagemobile' ) ) {
+				const language = mw.config.get( 'wgUserLanguage' ),
+					numberFormatter = Intl.NumberFormat( language, { notation: 'compact', maximumFractionDigits: 1 } );
+				return numberFormatter.format( this.pageviewTotal );
+			} else {
+				return this.$filters.convertNumber( this.pageviewTotal );
+			}
+		}
 	}
 };
 </script>
