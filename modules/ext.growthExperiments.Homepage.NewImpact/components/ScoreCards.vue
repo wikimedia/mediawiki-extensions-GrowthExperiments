@@ -3,6 +3,7 @@
 		<score-card
 			:icon="cdxIconEdit"
 			:label="$i18n( 'growthexperiments-homepage-impact-scores-edit-count' ).text()"
+			:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-edit-count' ).text()"
 		>
 			<c-text size="md" weight="bold">
 				<a :href="contributionsUrl" class="ext-growthExperiments-ScoreCards__link">
@@ -13,6 +14,7 @@
 		<score-card
 			:icon="cdxIconUserTalk"
 			:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
+			:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 		>
 			<c-text
 				as="span"
@@ -44,6 +46,7 @@
 		<score-card
 			:icon="cdxIconClock"
 			:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' ).text()"
+			:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' ).text()"
 		>
 			<c-text
 				as="span"
@@ -55,6 +58,7 @@
 		<score-card
 			:icon="cdxIconChart"
 			:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
+			:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 		>
 			<c-text
 				as="span"

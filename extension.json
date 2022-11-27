@@ -754,7 +754,8 @@
 				"growthexperiments-homepage-impact-scores-streak-info-label",
 				"growthexperiments-homepage-impact-scores-thanks-info-label",
 				"growthexperiments-homepage-impact-error-data-not-found-text",
-				"growthexperiments-homepage-impact-error-data-not-found-subtext"
+				"growthexperiments-homepage-impact-error-data-not-found-subtext",
+				"growthexperiments-homepage-impact-edited-articles-trend-chart-title"
 			],
 			"dependencies": [
 				"moment",

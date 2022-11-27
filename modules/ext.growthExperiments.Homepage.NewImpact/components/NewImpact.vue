@@ -32,7 +32,7 @@
 			<trend-chart
 				id="impact"
 				:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName ).text()"
-				:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' ).text()"
+				:chart-title="chartTitle"
 				:pageview-total="data.articlesViewsCount"
 				:data="data.dailyTotalViews"
 			></trend-chart>
@@ -101,6 +101,12 @@ module.exports = exports = {
 		};
 	},
 	computed: {
+		chartTitle() {
+			return this.$i18n(
+				'growthexperiments-homepage-impact-edited-articles-trend-chart-title',
+				this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME )
+			).text();
+		},
 		recentActivityTitleText() {
 			return this.$i18n(
 				'growthexperiments-homepage-impact-recent-activity-title',

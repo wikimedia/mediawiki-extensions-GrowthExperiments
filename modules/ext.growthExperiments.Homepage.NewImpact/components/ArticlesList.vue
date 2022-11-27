@@ -47,8 +47,9 @@
 						<cdx-icon
 							v-else
 							class="ext-growthExperiments-ArticlesList__ArticleListItem__clock-icon"
-							:title="$i18n( 'growthexperiments-homepage-impact-empty-pageviews-tooltip-short' )"
+							:title="$i18n( 'growthexperiments-homepage-impact-empty-pageviews-tooltip-short' ).text()"
 							:icon="cdxIconClock"
+							:icon-label="$i18n( 'growthexperiments-homepage-impact-empty-pageviews-tooltip-short' ).text()"
 						></cdx-icon>
 					</div>
 				</div>
