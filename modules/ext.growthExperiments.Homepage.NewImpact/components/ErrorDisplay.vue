@@ -20,6 +20,7 @@
 </template>
 
 <script>
+const { inject } = require( 'vue' );
 const ScoreCards = require( './ScoreCards.vue' );
 const CText = require( '../../vue-components/CText.vue' );
 
@@ -29,6 +30,12 @@ module.exports = exports = {
 	components: {
 		CText,
 		ScoreCards
+	},
+	setup() {
+		const userName = inject( 'RELEVANT_USER_USERNAME' );
+		return {
+			userName
+		};
 	}
 };
 </script>
