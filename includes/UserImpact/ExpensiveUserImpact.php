@@ -138,8 +138,8 @@ class ExpensiveUserImpact extends UserImpact {
 		$now = MWTimestamp::getInstance();
 		$diff = $now->timestamp->diff( $latestPageViewsDateTime );
 		// Page view data generation can lag by 24-48 hours.
-		// Consider the data stale if it's older than 2 days.
-		return $diff->days > 2;
+		// Consider the data stale if it's from before (UTC) yesterday.
+		return $diff->days > 1;
 	}
 
 }
