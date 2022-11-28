@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ameisenigel",
+			"Brettchenweber",
 			"Metalhead64",
 			"Reinhard Kraasch",
 			"Tkarcher"
@@ -9,7 +10,7 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Bearbeitet Fragen, die über das Help-Panel des aktuellen Benutzers eingereicht wurden.",
 	"apihelp-helppanelquestionposter-param-body": "Der Text der Frage, die vom Benutzer angegeben wurde.",
-	"apihelp-helppanelquestionposter-param-source": "Die Methode, auf die die Frage gestellt wurde.",
+	"apihelp-helppanelquestionposter-param-source": "Die Methode, mit der die Frage gestellt wurde.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Das Feld „Frage auf der Seite 'Fragen von Neulingen'“",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Das Feld „Frage deinen Lotsen“ auf der Neulings-Startseite",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Das Feld „Frage deinen Lotsen“ auf der Hilfeseite",

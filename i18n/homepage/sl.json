@@ -80,6 +80,7 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "To je največje število zaporednih dni, ko ste {{GENDER:$1|opravili}} vsaj eno urejanje.",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Informacije o tem, kako se izračuna niz",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Vaš}} trenutni najdaljši niz je $2 {{PLURAL:$2|dan|dni}} in {{GENDER:$1|ste}} ga dosegli v obdobju $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Vaš}} trenutni najdaljši niz je en dan, kar {{GENDER:$1|ste}} dosegli dne $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Ogledi člankov, ki {{GENDER:$1|ste}} jih urejali",
 	"growthexperiments-homepage-impact-subheader-subtext": "Ogledov, odkar {{GENDER:$1|ste}} urejali (zadnjih 60 dni):",
 	"growthexperiments-homepage-impact-contributions-link": "Ogled vseh {{GENDER:$2|vaših}} urejanj ($1)",

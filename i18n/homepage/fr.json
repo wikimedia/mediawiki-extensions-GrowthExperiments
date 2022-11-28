@@ -108,6 +108,7 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Il s’agit du plus grand nombre de jours consécutifs durant lesquels {{GENDER:$1|}}vous avez effectué au moins une modification.",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Informations sur la façon dont la séquence est calculée",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|}}Votre plus longue séquence actuelle est de $2 jour{{PLURAL:$2||s}} que {{GENDER:$1|}}vous avez consacrés dans la période du $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|}}Votre plus longue séquence actuelle est de un jour que {{GENDER:$1|}}vous avez consacré le $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Visualisations des articles que {{GENDER:$1|}}vous avez modifiés",
 	"growthexperiments-homepage-impact-subheader-subtext": "Nombre de vues depuis {{GENDER:$1|}}votre dernière modification (60 derniers jours) :",
 	"growthexperiments-homepage-impact-contributions-link": "Voir toutes {{GENDER:$2|}}vos modification{{PLURAL:$1||s}} ($1)",

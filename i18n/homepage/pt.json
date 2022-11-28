@@ -87,6 +87,7 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Este é o maior número de dias consecutivos em que você fez pelo menos uma edição.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Informações sobre como a sequência é calculada",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "Neste momento, a sua sequência mais longa é de $2 {{PLURAL:$2|dia|dias consecutivos}} que alcançou no período $3.{{GENDER:$1|}}",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "Neste momento, a sua sequência mais longa é de um dia, que alcançou a $3.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-subheader-text": "Visitas a artigos que editou!{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas desde que você editou (últimos 60 dias):{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-contributions-link": "Ver as suas edições todas ($1){{GENDER:$2|}}",
