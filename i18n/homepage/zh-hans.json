@@ -33,7 +33,12 @@
 			"落花有意12138",
 			"魔琴",
 			"Stang",
-			"孟天皓"
+			"孟天皓",
+			"BlackShadowG",
+			"Lakejason0",
+			"StarrySky",
+			"Stevenliuyi",
+			"SunAfterRain"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -71,7 +76,7 @@
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "查看编辑建议",
 	"growthexperiments-homepage-startediting-button": "查看编辑建议",
 	"growthexperiments-homepage-startediting-dialog-header": "编辑建议",
-	"growthexperiments-homepage-startediting-dialog-progress": "$2之$1",
+	"growthexperiments-homepage-startediting-dialog-progress": "第$1页，共$2页",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "取消",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "继续",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "开始使用编辑建议",
@@ -165,7 +170,7 @@
 	"growthexperiments-homepage-welcomesurvey-default-close": "前往{{GENDER:$1|您的}}主页",
 	"growthexperiments-homepage-discovery-banner-header": "欢迎来到{{GENDER:$1|您的}}主页！",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|您}}可以随时点击页面顶部的 $2 返回到这里。",
-	"growthexperiments-homepage-discovery-thanks-header": "感谢您创建{{GENDER:$1|您的}}帐户！",
+	"growthexperiments-homepage-discovery-thanks-header": "感谢您创建{{GENDER:$1|您的}}账户！",
 	"growthexperiments-homepage-discovery-thanks-text": "点击页面顶部的 $2，访问{{GENDER:$1|您的}}主页并开始。",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "欢迎来到{{GENDER:$1|您的}}主页！",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|您}}可以随时打开侧边栏并点击$2返回到这里。",

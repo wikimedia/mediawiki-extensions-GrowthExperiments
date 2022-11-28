@@ -18,7 +18,8 @@
 			"Tranve",
 			"Diskdance",
 			"Ericliu1912",
-			"BlackShadowG"
+			"BlackShadowG",
+			"Lakejason0"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -56,7 +57,7 @@
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "查看建議編輯",
 	"growthexperiments-homepage-startediting-button": "查看建議編輯",
 	"growthexperiments-homepage-startediting-dialog-header": "建議編輯",
-	"growthexperiments-homepage-startediting-dialog-progress": "$2之$1",
+	"growthexperiments-homepage-startediting-dialog-progress": "第 $1 頁，共 $2 頁",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "取消",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "繼續",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "開始的建議編輯",

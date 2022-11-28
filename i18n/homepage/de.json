@@ -26,7 +26,8 @@
 			"Wikipeter-HH",
 			"Wolfdietmann",
 			"Brettchenweber",
-			"Wnme"
+			"Wnme",
+			"Thereoper"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -287,7 +288,7 @@
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|hat}} {{GENDER:$5|$7}} als {{GENDER:$5|Lotsen|Lotsin}} von {{GENDER:$6|$3}} festgelegt ({{GENDER:$4|bisheriger}} {{GENDER:$4|Lotse|Lotsin}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|hat}} {{GENDER:$5|$7}} als {{GENDER:$5|Lotsen|Lotsin}} von {{GENDER:$6|$3}} festgelegt ($3 hatte bisher keinen Lotsen)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Der angegebene Benutzername ist ungültig",
-	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|ist}} {{GENDER:$3|dein}} neuer {{GENDER:$2|Lotse|Lotsin}}",
+	"growthexperiments-notification-header-mentor-change": "$1 ist {{GENDER:$2|dein neuer Lotse|deine neue Lotsin}}.",
 	"growthexperiments-notification-body-mentor-change": "Grund: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Sag}} hallo zu {{GENDER:$2|deinem neuen Lotsen|deiner neuen Lotsin}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Du musst in der Liste [[$2]] als {{GENDER:$1|Lotse|Lotsin}} aufgeführt sein, um die Funktion Special:ClaimMentee nutzen zu können",
