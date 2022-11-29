@@ -359,7 +359,7 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "Пропозиції можуть бути на словах, які їх не потребують, або вести до хибної статті. Покладіться на {{GENDER:$1|своє}} судження, правильні вони чи ні.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Дізнатися більше про машинні пропозиції",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Настанови",
-	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Додавайте посилання на концепції, про які читач може хотіли дізнатися більше.</li><li>Переконайтеся, що посилання веде на правильну статтю.</li><li>Не додавайте посилань на частовживані слова, роки чи дати.</li><li>Якщо {{GENDER:$1|ви}} не впевнені, пропустіть.</li>",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Додавайте посилання на концепції, про які читач може хотіти дізнатися більше.</li><li>Переконайтеся, що посилання веде на правильну статтю.</li><li>Не додавайте посилань на частовживані слова, роки чи дати.</li><li>Якщо {{GENDER:$1|ви}} не впевнені, пропустіть.</li>",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Пропустити всі",
 	"growthexperiments-addlink-onboarding-dialog-title": "Вступ",
 	"growthexperiments-addlink-onboarding-dialog-progress": "$1 із $2",

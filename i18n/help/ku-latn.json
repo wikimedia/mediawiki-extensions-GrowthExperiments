@@ -16,7 +16,7 @@
 	"growthexperiments-help-panel-question-placeholder": "Silavek bide û pirsên {{GENDER:$1|xwe}} bişîne.",
 	"growthexperiments-help-panel-back-home": "Vegere",
 	"growthexperiments-help-panel-close": "Çêbû",
-	"growthexperiments-help-panel-home-title": "Li alîkariyê binêre",
+	"growthexperiments-help-panel-home-title": "Alîkariya guhartinê bistîne",
 	"growthexperiments-help-panel-postedit-success-message-published": "Guhartineke {{GENDER:|te}} hatiye weşandin. Mala te ava û dewam bike!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Guhartineke {{GENDER:|te}} hatiye weşandin. Mala te ava û dewam bike!",
 	"growthexperiments-help-panel-postedit-success-message-notsaved": "Mala te ava bo nirxandina pêşniyazan. Dewam bike!",
@@ -66,5 +66,12 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "Pê li butona \"$1\" $2 bike û ji lîsteya gotarên {{SITENAME}}yê peyvê ku dixwazî girê bidî hilbijêre.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-publish": "Yan zêdetir girêdan zêde bike yan jî here, ji bo tomarkirina guhartina {{GENDER:|xwe}} li \"$1\" bitikîne!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "Yan zêdetir girêdan zêde bike yan jî here, ji bo tomarkirina guhartina {{GENDER:|xwe}} pê li butona tîra şîn bike!",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Li ser lêzêdekirina girêdanan zêdetir agahî hîn bibe]]"
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Li ser lêzêdekirina girêdanan zêdetir agahî hîn bibe]]",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Derbarê panela alîkariyê",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Panela alîkariyê neçalak bike",
+	"growthexperiments-help-panel-search-label": "Li alîkariyê bigere",
+	"tag-help_panel_question": "Pirsa panela alîkariyê",
+	"growthexperiments-help-panel-button-header-general-help": "Alîkariya guhartinan ya gelemper",
+	"growthexperiments-help-panel-button-subheader-general-help": "Li bersivan bigerin û gotarên populer bixwînin",
+	"growthexperiments-help-panel-general-help-title": "Alîkariya guhartinan ya gelemper"
 }
