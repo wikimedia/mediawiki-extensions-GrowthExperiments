@@ -25,11 +25,19 @@
 </template>
 
 <script>
+const { defineAsyncComponent } = require( 'vue' );
 const CText = require( '../../vue-components/CText.vue' );
-const CSparkline = require( '../../vue-components/CSparkline.vue' );
+const CSparkline = defineAsyncComponent( () => {
+	if ( mw.config.get( 'GENewImpactD3Enabled' ) ) {
+		return mw.loader.using( 'ext.growthExperiments.d3' )
+			.then( () => require( '../../vue-components/CSparkline.vue' ) );
+	} else {
+		// Maybe fallback to a static image
+		return Promise.resolve( null );
+	}
+} );
 const xAccessor = ( d ) => d.date;
 const yAccessor = ( d ) => d.views;
-
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },

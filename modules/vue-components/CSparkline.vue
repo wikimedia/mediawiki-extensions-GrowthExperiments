@@ -12,7 +12,7 @@
 
 <script>
 const { onMounted } = require( 'vue' );
-const d3 = require( '../lib/d3/d3.min.js' );
+const d3 = require( 'ext.growthExperiments.d3' );
 let chart, sparkline, area = null;
 
 // @vue/component
