@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Adjoka",
 			"Ainali",
 			"Draftmission",
 			"JRyan",
@@ -8,6 +9,7 @@
 			"Josefine Hellroth Larsson (WMSE)",
 			"Mjälten",
 			"Sabelöga",
+			"Sebastian Berlin (WMSE)",
 			"Technic2",
 			"WikiPhoenix"
 		]
@@ -73,7 +75,8 @@
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Din}} påverkan",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Aktivera JavaScript för att se denna funktion.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påverkan",
-	"growthexperiments-homepage-impact-subheader-text": "Folk läser artiklar som {{GENDER:$1|du}} har redigerat!",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Mer information om hur \"tack\" fungerar",
+	"growthexperiments-homepage-impact-subheader-text": "Den mest visade redigeringen {{GENDER:$1|du}} har gjort",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visningar sedan {{GENDER:$1|du}} redigerade (senaste 60 dygnen):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Du har}} gjort <strong>$1</strong> {{PLURAL:$1|redigering|redigeringar}} (se alla)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Du}} har ännu inte skapat eller redigerat några artiklar.",
@@ -82,6 +85,7 @@
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|redigering|redigeringar}} på alla sorters sidor (visa alla)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Gå till artikeln",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Visa detaljerad sidvisningar",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-title": "Ett linjediagram som visar det totala antalet visningar för artiklar redigerade de senaste $1 dagarna.",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Eftersom du redigerade denna artikel först idag har sidvisningarna inte hunnit beräknats. Kom tillbaka imorgon!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Sidvisningar har inte beräknats än. Kolla igen imorgon!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Jag förstår",

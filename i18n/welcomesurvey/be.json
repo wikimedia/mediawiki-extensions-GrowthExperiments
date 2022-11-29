@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Chadyka",
+			"Maksim L.",
 			"No Sleep till Krupki",
 			"Tomato Cream"
 		]
@@ -47,8 +48,8 @@
 	"welcomesurvey-question-email-placeholder": "Увядзіце {{GENDER:|ваш}} адрас электроннай пошты...",
 	"welcomesurvey-question-email-help": "Мы заўважылі, што вы не ўвялі адрас электроннай пошты пры стварэнні гэтага рахунку. Гэта <strong>настойліва рэкамендуецца</strong>, бо для аднаўлення ўліковага запісу патрабуецца электронная пошта, калі вы страціце пароль. УВАГА: Ваш адрас электроннай пошты не раскрываецца, калі іншыя карыстальнікі звязваюцца з вамі.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} даступная амаль на 300 мовах. Ці ёсць іншыя мовы, на якіх {{GENDER:|вы}} чытаеце і пішаце?",
-	"welcomesurvey-question-languages-placeholder": "Дадайце да $1 {{PLURAL:$1|мовы|моваў}}...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|Вы}} дадалі максімальную колькасць моваў.",
+	"welcomesurvey-question-languages-placeholder": "Дадайце да $1 {{PLURAL:$1|мовы|моў}}...",
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Вы}} дадалі максімальную колькасць моў.",
 	"welcomesurvey-reminder": "Дапамажыце нам палепшыць {{GENDER:|ваш}} досвед у Вікіпедыі, адказаўшы на некалькі неабавязковых пытанняў у нашым Прывітальным апытанні: $1.",
 	"welcomesurvey-reminder-link": "Прайсці апытанне",
 	"welcomesurvey-reminder-dismiss": "Зачыніць",

@@ -115,7 +115,7 @@
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "{{PLURAL:$1|<strong>Eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}} an anderen Arten von Seiten (alle ansehen)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Zum Artikel gehen",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Detaillierte Seitenaufrufe ansehen",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-title": "Ein Liniendiagramm, das die täglichen Gesamtaufrufe für Artikel zeigt, die in den letzten $1 Tagen bearbeitet wurden.",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-title": "Ein Liniendiagramm, das die täglichen Gesamtaufrufe für Artikel zeigt, die {{PLURAL:$1|am letzten Tag|in den letzten $1 Tagen}} bearbeitet wurden.",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Da du diesen Artikel erst heute bearbeitet hast, wurden noch keine Seitenaufrufe berechnet. Schau morgen nochmal vorbei!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Es wurden noch keine Seitenaufrufe berechnet. Schau morgen nochmal vorbei!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Verstanden",

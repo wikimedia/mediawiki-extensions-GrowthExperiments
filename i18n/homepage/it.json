@@ -82,7 +82,7 @@
 	"growthexperiments-homepage-impact-header": "Il {{GENDER:$1|tuo}} impatto",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|La tua}} attività recente ({{PLURAL:$2|ultimo giorno|ultimi $2 giorni}})",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|giorno|giorni}}",
-	"growthexperiments-homepage-impact-subheader-text": "Ci sono persone che stanno visualizzando gli articoli {{GENDER:$1|che hai}} modificato!",
+	"growthexperiments-homepage-impact-subheader-text": "I più visti (dalla {{GENDER:$1|tua}} modifica)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visualizzazioni {{GENDER:$1|delle tue}} ultime modifiche (negli ultimi 60 giorni):",
 	"growthexperiments-homepage-impact-contributions-link": "Hai fatto <strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} (vedi tutte)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Non hai ancora creato o modificato alcuna voce.",

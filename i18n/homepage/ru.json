@@ -106,7 +106,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Просмотры статей, которые {{GENDER:$1|вы}} редактировали",
 	"growthexperiments-homepage-impact-scores-edit-count": "Всего правок",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Благодарностей получено",
-	"growthexperiments-homepage-impact-subheader-text": "Просмотры статей, которые {{GENDER:$1|вы}} отредактировали!",
+	"growthexperiments-homepage-impact-subheader-text": "Самые просматриваемые (после {{GENDER:$1| вашего}} редактирования)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Просмотров после {{GENDER:$1|ваших}} правок (за 60 дней):",
 	"growthexperiments-homepage-impact-contributions-link": "Посмотреть все {{GENDER:$2|ваши}} правки ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Вы}} ещё не создали и не отредактировали ни одну статью.",
