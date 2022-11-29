@@ -47,6 +47,7 @@ class RefreshUserImpactData extends Maintenance {
 			. ' Time is a relative timestring fragment passed to DateTime, such as "30days".', false, true );
 		$this->addOption( 'registeredWithin', 'Apply to users who have registered within the given time.'
 			. ' Time is a relative timestring fragment passed to DateTime, such as "30days".', false, true );
+		$this->addOption( 'hasEditsAtLeast', 'Apply to users who have at least this many edits.', false, true );
 		$this->addOption( 'ignoreIfUpdatedWithin', 'Skip cache records which were stored within the given time.'
 			. ' Time is a relative timestring fragment passed to DateTime, such as "30days".', false, true );
 		$this->addOption( 'fromUser', 'Continue from the given user ID (exclusive).', false, true );
@@ -166,6 +167,7 @@ class RefreshUserImpactData extends Maintenance {
 	private function getQueryBuilder(): UserSelectQueryBuilder {
 		$editedWithin = $this->getOption( 'editedWithin' );
 		$registeredWithin = $this->getOption( 'registeredWithin' );
+		$hasEditsAtLeast = $this->getOption( 'hasEditsAtLeast' );
 
 		$dbr = $this->getDB( DB_REPLICA );
 		$queryBuilder = $this->actorStore->newSelectQueryBuilder( $dbr );
@@ -185,6 +187,10 @@ class RefreshUserImpactData extends Maintenance {
 			} else {
 				$queryBuilder->where( '0 = 1' );
 			}
+		}
+		if ( $hasEditsAtLeast ) {
+			$queryBuilder->join( 'user', null, [ 'user_id = actor_user' ] );
+			$queryBuilder->where( 'user_editcount >= ' . (int)$hasEditsAtLeast );
 		}
 		return $queryBuilder;
 	}
