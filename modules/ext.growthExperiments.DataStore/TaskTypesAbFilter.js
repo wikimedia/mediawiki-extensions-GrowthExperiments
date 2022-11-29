@@ -9,8 +9,7 @@
 ( function () {
 	var OLD_LINK_TASK_TYPE = 'links',
 		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
-		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
-		IMAGE_RECOMMENDATION_VARIANT = 'imagerecommendation';
+		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation';
 
 	/**
 	 * Check whether the old (non-structured) link task type is available.
@@ -47,11 +46,9 @@
 	 */
 	function areImageRecommendationsEnabled() {
 		var config = require( './config.json' ),
-			taskTypes = require( './TaskTypes.json' ),
-			Utils = require( '../utils/Utils.js' );
+			taskTypes = require( './TaskTypes.json' );
 		return config.GEImageRecommendationsEnabled &&
-			IMAGE_RECOMMENDATION_TASK_TYPE in taskTypes &&
-			Utils.isUserInVariant( [ IMAGE_RECOMMENDATION_VARIANT ] );
+			IMAGE_RECOMMENDATION_TASK_TYPE in taskTypes;
 	}
 
 	/**
@@ -113,12 +110,7 @@
 	 * @return {string[]}
 	 */
 	function getDefaultTaskTypes() {
-		var defaultDefaultTaskTypes = require( './DefaultTaskTypes.json' );
-		if ( areImageRecommendationsEnabled() ) {
-			return [ IMAGE_RECOMMENDATION_TASK_TYPE ];
-		} else {
-			return defaultDefaultTaskTypes;
-		}
+		return require( './DefaultTaskTypes.json' );
 	}
 
 	module.exports = {

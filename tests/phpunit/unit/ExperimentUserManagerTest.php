@@ -48,7 +48,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 			->willReturnCallback( static function ( UserIdentity $user, string $optionName ) {
 				return [
 					1 => VariantHooks::VARIANT_CONTROL,
-					2 => VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED
+					2 => VariantHooks::VARIANT_CONTROL
 				][$user->getId()];
 			} );
 		$experimentUserManager = $this->getExperimentUserManager(
@@ -64,7 +64,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 
 		$this->assertEquals( VariantHooks::VARIANT_CONTROL,
 			$experimentUserManager->getVariant( $user1 ) );
-		$this->assertEquals( VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED,
+		$this->assertEquals( VariantHooks::VARIANT_CONTROL,
 			$experimentUserManager->getVariant( $user2 ) );
 	}
 
@@ -99,8 +99,10 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	public function variantAssignmentByPlatformProvider(): array {
 		return [
 			[
-				'mobile: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to imagerecommendation',
-				'imagerecommendation',
+				'mobile: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to imagerecommendation. '
+				// TODO: Update this example to "newimpact" when that experiment group is added.
+				. 'Falls back to control as imagerecommendation is no longer a valid variant',
+				'control',
 				[
 					'GEHomepageDefaultVariant' => 'control',
 					'GEHomepageNewAccountVariantsByPlatform' => [
@@ -122,6 +124,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 				[
 					'GEHomepageDefaultVariant' => 'control',
 					'GEHomepageNewAccountVariantsByPlatform' => [
+						// TODO: Update this key to "newimpact" when that variant group exists.
 						'imagerecommendation' => [
 							'desktop' => 0,
 							'mobile' => 100
