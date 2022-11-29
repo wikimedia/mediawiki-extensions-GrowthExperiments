@@ -15,6 +15,7 @@ use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\StartEmail;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\WelcomeSurveyReminder;
+use GrowthExperiments\VariantHooks;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use OutOfBoundsException;
@@ -141,11 +142,19 @@ class HomepageModuleRegistry {
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
+				$experimentUserManager = GrowthExperimentsServices::wrap( $services )
+					->getExperimentUserManager();
 				$config = $context->getConfig();
-				$useNewImpactModule = $context->getRequest()->getBool(
-					'new-impact',
-					$config->get( 'GEUseNewImpactModule' )
-				) && $config->get( 'GEAllowAccessToNewImpactModule' ) === true;
+				// Global default for using new impact module; default to false.
+				$useNewImpactModule = $config->get( 'GEUseNewImpactModule' );
+				if ( $useNewImpactModule ) {
+					// If the user is in the oldimpact variant, show them the old module,
+					// unless they've used the ?new-impact query string.
+					$useNewImpactModule = $context->getRequest()->getBool(
+						'new-impact',
+						!$experimentUserManager->isUserInVariant( $context->getUser(), VariantHooks::VARIANT_OLDIMPACT )
+					);
+				}
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				$userOptionsLookup = $services->getUserOptionsLookup();
 				if ( $useNewImpactModule ) {

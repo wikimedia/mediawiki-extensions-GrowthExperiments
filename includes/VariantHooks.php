@@ -40,6 +40,15 @@ class VariantHooks implements
 	public const VARIANT_CONTROL = 'control';
 
 	/**
+	 * A/B testing variant for the New Impact module (T323526)
+	 *
+	 * Unlike other testing variants, the default experience will be to show the
+	 * new feature to all users. 50% of new user registrations will be excluded from
+	 * the new impact module if they are in the oldimpact variant.
+	 */
+	public const VARIANT_OLDIMPACT = 'oldimpact';
+
+	/**
 	 * This defines the allowed values for the variant preference. The default value is defined
 	 * via $wgGEHomepageDefaultVariant.
 	 */
@@ -56,6 +65,7 @@ class VariantHooks implements
 		// 'imagerecommendation' Doesn't exist anymore. Opted users into the image-recommendation task type
 		//     experiment; this is now default behavior for the control group.
 		self::VARIANT_CONTROL,
+		self::VARIANT_OLDIMPACT,
 	];
 
 	/** User option name for storing variants. */
