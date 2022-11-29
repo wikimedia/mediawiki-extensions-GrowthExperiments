@@ -39,6 +39,8 @@ class RefreshUserImpactData extends Maintenance {
 	/** @var int|null Ignore a user if they have data generated after this Unix timestamp. */
 	private ?int $ignoreAfter = null;
 
+	private int $totalUsers = 0;
+
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'GrowthExperiments' );
@@ -50,14 +52,18 @@ class RefreshUserImpactData extends Maintenance {
 		$this->addOption( 'ignoreIfUpdatedWithin', 'Skip cache records which were stored within the given time.'
 			. ' Time is a relative timestring fragment passed to DateTime, such as "30days".', false, true );
 		$this->addOption( 'fromUser', 'Continue from the given user ID (exclusive).', false, true );
-		$this->addOption( 'verbose', 'Verbose mode' );
 		$this->addOption( 'use-job-queue', 'If job queue should be used to refresh user impact data.' );
+		$this->addOption( 'force', 'Run even if GERefreshUserImpactDataMaintenanceScriptEnabled is false' );
+		$this->addOption( 'dry-run', 'When used, the script will only count the number of users it would update.' );
+		$this->addOption( 'verbose', 'Verbose mode' );
 		$this->setBatchSize( 100 );
 	}
 
 	/** @inheritDoc */
 	public function execute() {
-		if ( !$this->getConfig()->get( 'GERefreshUserImpactDataMaintenanceScriptEnabled' ) ) {
+		if ( !$this->getConfig()->get( 'GERefreshUserImpactDataMaintenanceScriptEnabled' )
+			&& !$this->hasOption( 'force' )
+		) {
 			$this->output(
 				'GERefreshUserImpactDataMaintenanceScriptEnabled is set to false on this wiki.' .
 				PHP_EOL
@@ -69,7 +75,12 @@ class RefreshUserImpactData extends Maintenance {
 
 		$users = [];
 		foreach ( $this->getUsers() as $user ) {
-			if ( $this->hasOption( 'use-job-queue' ) ) {
+			if ( $this->hasOption( 'dry-run' ) ) {
+				if ( $this->hasOption( 'verbose' ) ) {
+					$this->output( "  ...would refresh user impact for user {$user->getId()}\n" );
+				}
+				continue;
+			} elseif ( $this->hasOption( 'use-job-queue' ) ) {
 				$users[$user->getId()] = null;
 				if ( count( $users ) >= $this->getBatchSize() ) {
 					if ( $this->hasOption( 'verbose' ) ) {
@@ -95,6 +106,10 @@ class RefreshUserImpactData extends Maintenance {
 					$this->output( "  ...could not generate user impact for user {$user->getId()}\n" );
 				}
 			}
+		}
+
+		if ( $this->totalUsers ) {
+			$this->output( "Done. Processed $this->totalUsers users.\n" );
 		}
 	}
 
@@ -157,6 +172,7 @@ class RefreshUserImpactData extends Maintenance {
 			}
 			$this->waitForReplication();
 			$usersProcessedInThisBatch = count( $userIds );
+			$this->totalUsers += $usersProcessedInThisBatch;
 			if ( $usersProcessedInThisBatch > 0 ) {
 				$this->output( "  processed $usersProcessedInThisBatch users\n" );
 			}
