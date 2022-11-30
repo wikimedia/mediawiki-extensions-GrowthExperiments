@@ -13,7 +13,6 @@
 					class="ext-growthExperiments-LegendBox__list-item__legend-icon"
 					:icon="icons[item.icon]"
 					:icon-label="item.label"
-					@click="toggleStarred"
 				></cdx-icon>
 				<span class="ext-growthExperiments-LegendBox__list-item__text">{{ item.label }}</span>
 			</div>
