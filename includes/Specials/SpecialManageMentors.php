@@ -453,8 +453,14 @@ class SpecialManageMentors extends SpecialPage {
 		$out->addHTML( implode( "\n", [
 			$this->makePreHTML(),
 			$this->makeHeadlineElement( $this->msg( 'growthexperiments-manage-mentors-auto-assigned' )->text() ),
+			Html::element( 'p', [],
+				$this->msg( 'growthexperiments-manage-mentors-auto-assigned-text' )->text()
+			),
 			$this->getMentorsTable( $this->mentorProvider->getAutoAssignedMentors() ),
 			$this->makeHeadlineElement( $this->msg( 'growthexperiments-manage-mentors-manually-assigned' )->text() ),
+			Html::element( 'p', [],
+				$this->msg( 'growthexperiments-manage-mentors-manually-assigned-text' )->text()
+			),
 			$this->getMentorsTable( $this->mentorProvider->getManuallyAssignedMentors() ),
 		] ) );
 	}
