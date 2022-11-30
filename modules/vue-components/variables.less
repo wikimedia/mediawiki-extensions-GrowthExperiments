@@ -99,6 +99,33 @@
 	padding: 0;
 }
 
+/*
+* Mixin to facilitate the color and size styling of Codex
+* icon-only buttons (type quiet + icon inside). eg:
+* <cdx-button type="quiet">
+*   <cdx-icon :icon"cdxIconClose">
+* </cdx-button>
+* Use the mixin in the button class instead of passing
+* specific class for the button AND the icon.
+*/
+/* stylelint-disable selector-class-pattern */
+.codex-icon-only-button( @color: @color-accessory, @size: 20px ) {
+	// Overwrite .cdx-button:enabled color
+	&.cdx-button {
+		color: @color;
+
+		.cdx-icon {
+			color: @color;
+
+			> svg {
+				width: @size;
+				height: @size;
+			}
+		}
+	}
+}
+/* stylelint-enable selector-class-pattern */
+
 // Helpers
 .ext-growthExperiments-utils__pull-right {
 	float: right;
