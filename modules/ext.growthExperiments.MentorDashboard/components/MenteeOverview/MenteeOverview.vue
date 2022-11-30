@@ -1,23 +1,35 @@
 <template>
 	<section class="ext-growthExperiments-MenteeOverview">
 		<div class="ext-growthExperiments-MenteeOverview__info-box-wrapper">
-			<c-info-box
+			<c-popover
 				class="ext-growthExperiments-MenteeOverview__info-box"
 				:icon="cdxIconInfo"
 				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' ).text()"
 				:close-icon="cdxIconClose"
 			>
-				<h3>
-					{{
-						$i18n(
-							'growthexperiments-mentor-dashboard-mentee-overview-info-headline'
-						)
-					}}
-				</h3>
-				<p v-i18n-html="'growthexperiments-mentor-dashboard-mentee-overview-info-text'">
-				</p>
-				<legend-box v-if="legendItems.length" :items="legendItems"></legend-box>
-			</c-info-box>
+				<template #trigger="{ onClick }">
+					<cdx-button
+						type="quiet"
+						class="ext-growthExperiments-MenteeOverview__info-button"
+						:aria-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' ).text()"
+						@click="onClick"
+					>
+						<cdx-icon :icon="cdxIconInfo"></cdx-icon>
+					</cdx-button>
+				</template>
+				<template #content>
+					<h3>
+						{{
+							$i18n(
+								'growthexperiments-mentor-dashboard-mentee-overview-info-headline'
+							)
+						}}
+					</h3>
+					<p v-i18n-html="'growthexperiments-mentor-dashboard-mentee-overview-info-text'">
+					</p>
+					<legend-box v-if="legendItems.length" :items="legendItems"></legend-box>
+				</template>
+			</c-popover>
 		</div>
 		<div class="ext-growthExperiments-MenteeOverview__actions">
 			<mentee-filters
@@ -60,11 +72,12 @@
 </template>
 
 <script>
+const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const DataTable = require( '../DataTable/DataTable.vue' );
 const MenteeSearch = require( './MenteeSearch.vue' );
 const MenteeFilters = require( './MenteeFilters.vue' );
 const NoResults = require( './NoResults.vue' );
-const CInfoBox = require( '../../../vue-components/CInfoBox.vue' );
+const CPopover = require( '../../../vue-components/CPopover.vue' );
 const LegendBox = require( './LegendBox.vue' );
 const { cdxIconError, cdxIconClock, cdxIconInfo, cdxIconClose } = require( '../icons.json' );
 const apiClient = require( '../../store/MenteeOverviewApi.js' );
@@ -152,11 +165,13 @@ const MENTEES_TABLE_COLUMNS = [
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
+		CdxIcon,
+		CdxButton,
 		DataTable,
 		MenteeFilters,
 		MenteeSearch,
 		NoResults,
-		CInfoBox,
+		CPopover,
 		LegendBox
 	},
 	setup() {
@@ -285,6 +300,8 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
+@import '../../../vue-components/variables.less';
+
 .ext-growthExperiments-MenteeOverview {
 	&__info-box {
 		position: absolute;
@@ -299,6 +316,10 @@ module.exports = exports = {
 		&-wrapper {
 			position: relative;
 		}
+	}
+
+	&__info-button {
+		.codex-icon-only-button( @color-subtle, 24px);
 	}
 
 	&__actions {
