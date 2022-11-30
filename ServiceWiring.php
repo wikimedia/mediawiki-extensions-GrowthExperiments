@@ -986,8 +986,9 @@ return [
 	'GrowthExperimentsUserImpactStore' => static function (
 		MediaWikiServices $services
 	): UserImpactLookup {
-		$dbr = $services->getDBLoadBalancer()->getConnection( DB_REPLICA );
-		$dbw = $services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$dbr = $growthServices->getLoadBalancer()->getConnection( DB_REPLICA );
+		$dbw = $growthServices->getLoadBalancer()->getConnection( DB_PRIMARY );
 		return new DatabaseUserImpactStore( $dbr, $dbw );
 	},
 
