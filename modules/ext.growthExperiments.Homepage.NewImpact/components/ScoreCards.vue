@@ -6,7 +6,11 @@
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-edit-count' ).text()"
 		>
 			<c-text size="md" weight="bold">
-				<a :href="contributionsUrl" class="ext-growthExperiments-ScoreCards__link">
+				<a
+					:href="contributionsUrl"
+					class="ext-growthExperiments-ScoreCards__link"
+					data-link-id="impact-total-edits"
+				>
 					{{ totalEditsCount }}
 				</a>
 			</c-text>
@@ -17,10 +21,16 @@
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 		>
 			<c-text
-				as="span"
 				size="md"
-				weight="bold">
-				{{ receivedThanksCount }}
+				weight="bold"
+			>
+				<a
+					:href="thanksUrl"
+					class="ext-growthExperiments-ScoreCards__link"
+					data-link-id="impact-thanks-log"
+				>
+					{{ receivedThanksCount }}
+				</a>
 			</c-text>
 			<template #label-info>
 				<c-info-box
@@ -123,6 +133,10 @@ module.exports = exports = {
 		CdxIcon
 	},
 	props: {
+		thanksUrl: {
+			type: String,
+			default: null
+		},
 		contributionsUrl: {
 			type: String,
 			default: null
