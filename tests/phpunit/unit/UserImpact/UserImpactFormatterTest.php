@@ -30,12 +30,22 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 				'imageUrl' => null,
 			];
 		};
-		$pageViewUrl = static function ( string $title ) {
-			$url = "https://pageviews.wmcloud.org/?project=enwiki&userlang=en&start=2022-08-24&end=latest&pages=$title";
+		$pageViewUrl = static function ( string $title, ?string $endDate = null ) {
+			$endDate = $endDate ?? '2022-08-25';
+			$url = "https://pageviews.wmcloud.org/?project=enwiki&userlang=en"
+				. "&start=2022-08-24&end=$endDate&pages=$title";
 			return [ 'pageviewsUrl' => $url ];
 		};
 		$dailyArticleViews = [
-			'Article1' => $makeDailyArticleViewField( [ '2022-08-24' => 50, '2022-08-25' => 50 ] ),
+			'Article1' => $makeDailyArticleViewField( [
+					'2022-08-24' => 50,
+					'2022-08-25' => 50,
+					'2022-08-26' => 50,
+					'2022-08-27' => 50,
+					'2022-08-28' => 50,
+					'2022-08-29' => 50,
+					'2022-08-30' => 50,
+			] ),
 			'Article2' => $makeDailyArticleViewField( [ '2022-08-24' => 40, '2022-08-25' => 40 ] ),
 			'Article3' => $makeDailyArticleViewField( [ '2022-08-24' => 30, '2022-08-25' => 30 ] ),
 			'Article4' => $makeDailyArticleViewField( [ '2022-08-24' => 60, '2022-08-25' => 60 ] ),
@@ -62,19 +72,21 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 
 		$json = $formatter->format( $userImpact );
 		$expectedTopViewedArticles = [
+			'Article1' => $dailyArticleViews['Article1'] + [ 'viewsCount' => 350 ] + $pageViewUrl(
+					'Article1', array_key_last( $dailyArticleViews['Article1' ]['views'] )
+				),
 			'Article6' => $dailyArticleViews['Article6'] + [ 'viewsCount' => 160 ] + $pageViewUrl( 'Article6' ),
 			'Article5' => $dailyArticleViews['Article5'] + [ 'viewsCount' => 140 ] + $pageViewUrl( 'Article5' ),
 			'Article4' => $dailyArticleViews['Article4'] + [ 'viewsCount' => 120 ] + $pageViewUrl( 'Article4' ),
 			'Article7' => $dailyArticleViews['Article7'] + [ 'viewsCount' => 110 ] + $pageViewUrl( 'Article7' ),
-			'Article1' => $dailyArticleViews['Article1'] + [ 'viewsCount' => 100 ] + $pageViewUrl( 'Article1' ),
 		];
 		$this->assertSame( $expectedTopViewedArticles, $json['topViewedArticles'] );
-		$this->assertSame( 630, $json['topViewedArticlesCount'] );
+		$this->assertSame( 880, $json['topViewedArticlesCount'] );
 
 		MWTimestamp::setFakeTime( '2022-10-28 12:00:00' );
 		$json = $formatter->format( $userImpact );
 		$this->assertSame(
-			'https://pageviews.wmcloud.org/?project=enwiki&userlang=en&start=2022-08-29&end=latest&pages=Article1',
+			'https://pageviews.wmcloud.org/?project=enwiki&userlang=en&start=2022-08-29&end=2022-08-30&pages=Article1',
 			$json['topViewedArticles']['Article1']['pageviewsUrl']
 		);
 	}

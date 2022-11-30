@@ -129,17 +129,21 @@ class UserImpactFormatter {
 		array &$jsonData
 	): void {
 		foreach ( $jsonData['topViewedArticles'] as $title => $articleData ) {
+			$latestPageViewDate = array_key_last( $articleData['views'] );
 			$jsonData['topViewedArticles'][$title]['pageviewsUrl'] =
-				$this->getPageViewToolsUrl( $title, $articleData['firstEditDate'] );
+				$this->getPageViewToolsUrl( $title, $articleData['firstEditDate'], $latestPageViewDate );
 		}
 	}
 
 	/**
 	 * @param string $title
 	 * @param string $firstEditDate Date of the first edit to the article in Y-m-d format.
+	 * @param string $latestPageViewDate Date of the most last page view data entry available for this article.
+	 *   Used for constructing the 'end' parameter for the URL, to avoid confusion with timezones and what "latest"
+	 *   means in the context of the pageviews application and Analytics Query Service.
 	 * @return string Full URL for the PageViews tool for the given title and start date
 	 */
-	private function getPageViewToolsUrl( string $title, string $firstEditDate ): string {
+	private function getPageViewToolsUrl( string $title, string $firstEditDate, string $latestPageViewDate ): string {
 		$daysAgo = ComputedUserImpactLookup::PAGEVIEW_DAYS;
 		$dtiAgo = new DateTime( '@' . strtotime( "-$daysAgo days", MWTimestamp::time() ) );
 		$startDate = $dtiAgo->format( 'Y-m-d' );
@@ -150,7 +154,7 @@ class UserImpactFormatter {
 			'project' => $this->AQSConfig->project,
 			'userlang' => $this->contentLanguage->getCode(),
 			'start' => $startDate,
-			'end' => 'latest',
+			'end' => $latestPageViewDate,
 			'pages' => $title,
 		] );
 	}
