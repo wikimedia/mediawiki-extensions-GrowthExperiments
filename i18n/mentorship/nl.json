@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bdijkstra",
+			"HanV",
 			"Mainframe98",
 			"McDutchie",
 			"Romaine",
@@ -102,7 +103,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Reden: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Wat is \"Leerling claimen\"?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Aantal leerlingen dat aan mij is toegewezen",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Geen",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Geen (Handmatige claim door mij)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Ongeveer de helft van het gemiddelde",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Gemiddeld (standaard)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Ongeveer tweemaal het gemiddelde",

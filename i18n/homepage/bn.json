@@ -87,10 +87,13 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "{{GENDER:$1|আপনার}} অবদান রাখা নিবন্ধগুলো পরিদর্শিত হয়েছে",
 	"growthexperiments-homepage-impact-scores-edit-count": "মোট সম্পাদনা",
 	"growthexperiments-homepage-impact-scores-thanks-count": "ধন্যবাদ পেয়েছেন",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "ধন্যবাদ কীভাবে কাজ করে সে সম্পর্কে আরও তথ্য",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} {{GENDER:$1|আপনার}} মত অবদানকারীদের একটি সম্প্রদায় তৈরি করেছেন৷ {{GENDER:$1|আপনার}} একটি সম্পাদনার জন্য অন্য অবদানকারী আপনাকে ধন্যবাদ দিতে পারেন। {{GENDER:$1|আপনিও}} অন্যদের তাদের অবদানের জন্য ধন্যবাদ জানাতে পারেন।",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "এটা {{GENDER:$1|আপনার}} বিরতিহীনভাবে প্রতিদিন অন্তত একটি সম্পাদনা করার রেকর্ড।",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "দীর্ঘতম বিরতিহীন অবদান সম্পর্কে আরো তথ্য",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|আপনার}} বর্তমান দীর্ঘতম বিরতিহীন অবদান রাখার রেকর্ড {{PLURAL:$2|দিন}} যা {{GENDER:$1|আপনি}} $3-এর মধ্যে অর্জন করেছেন।",
-	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:$1|আপনার}} অবদান রাখা নিবন্ধগুলোর পরিদর্শন সংখ্যা",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|আপনার}} বর্তমান দীর্ঘতম বিরতিহীন অবদান রাখার রেকর্ড এক দিন যা {{GENDER:$1|আপনি}} $3-এর মধ্যে অর্জন করেছেন।",
+	"growthexperiments-homepage-impact-subheader-text": "সর্বোচ্চ পরিদর্শন সংখ্যা ({{GENDER:$1|আপনার}} সম্পাদনার পর থেকে)",
 	"growthexperiments-homepage-impact-subheader-subtext": "শেষ ৬০ দিনে {{GENDER:$1|আপনার}} অবদান দেখা হয়েছে যতবার:",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|আপনার}} সব সম্পাদনা দেখুন ($1টি)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|আপনি}} এখনো কোনো নিবন্ধ তৈরি করেননি বা অবদান রাখেননি।",
@@ -99,6 +102,7 @@
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "অন্যান্য পাতায় <strong>$1</strong>টি {{PLURAL:$1|সম্পাদনা}} (সব দেখুন)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "নিবন্ধে চলুন",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "পাতা পরিদর্শন বিস্তারিত দেখুন",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-title": "শেষ $1 {{PLURAL:$1|দিনে}} অবদান রাখা নিবন্ধে মোট দৈনিক পরিদর্শন সংখ্যার লাইন চার্ট।",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "যেহেতু আজকে আপনি প্রথম কোনো নিবন্ধে কাজ করেছেন, পাতা পরিদর্শনসংখ্যা এখনো হিসাব করা হয়নি। আগামীকাল আবার দেখুন!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "নিবন্ধ পরিদর্শনসংখ্যা এখনো হিসাব করা হয়নি। আগামীকাল আবার দেখুন!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "বুঝেছি",
@@ -548,5 +552,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "যখন {{GENDER:|আপনি}} আপনার মেন্টরকে একটি বার্তা পাঠান, তখন {{GENDER:$1|তিনি}} এটি {{GENDER:$1|তার}} ব্যবহারকারীর আলাপ পাতায় দেখতে পাবেন এবং {{GENDER:$1|তিনি}} উত্তর দিলে {{GENDER:|আপনি}} একটি বিজ্ঞপ্তি পাবেন।",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "মেন্টরশিপ বাদ দিন",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|আপনি}} এই মুহূর্তে {{GENDER:|আপনার}} জন্য নির্দিষ্ট কোনো পরামর্শদাতা নিয়োগ না করতে চাইলে অপ্ট-আউট করতে নীচের বোতামটি নির্বাচন করুন৷ {{GENDER:|আপনি}} যে কোনো সময় আবার একজন নতুন পরামর্শদাতা পেতে পারেন যদি {{GENDER:|আপনার}} ইচ্ছা পরিবর্তন করেন।",
-	"growthexperiments-homepage-mentorship-about-done": "সম্পন্ন"
+	"growthexperiments-homepage-mentorship-about-done": "সম্পন্ন",
+	"growthexperiments-homepage-special-contribute-title": "পরামর্শকৃত সম্পাদনা",
+	"growthexperiments-homepage-special-contribute-description": "বিদ্যমান নিবন্ধ উন্নত করতে ছোট এবং সহজ পরিবর্তন করুন (যেমন, একটি লিঙ্ক যোগ করুন বা রচনা সংশোধন করুন)।",
+	"growthexperiments-homepage-special-contribute-cta": "পরামর্শকৃত সম্পাদনাগুলো দেখুন"
 }

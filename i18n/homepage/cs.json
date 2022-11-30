@@ -115,7 +115,7 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Začněte s několika <strong>editačními tipy</strong>, poté zde uvidíte, kolik lidí si {{GENDER:$1|vaše příspěvky}} zobrazilo.",
 	"growthexperiments-homepage-impact-unactivated-description": "Jakmile {{GENDER:$1|začnete editovat}}, {{GENDER:$1|uvidíte}}, kolik lidí si prohlíží články, které {{GENDER:$1|jste editoval|jste editovala|jste editovali}}.",
 	"growthexperiments-homepage-impact-error-data-not-found-text": "Zpoždění při získávání {{GENDER:$1|vašich}} informací",
-	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Uložte nějaké editace a zjistěte tak více o {{GRAMMAR:6sg|{{SITENAME}}}}. Poté se sem vraťte a zjistěte tak více o dopadu vašich příspěvků.",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Uložte nějaké editace a zjistěte tak více o {{GRAMMAR:6sg|{{SITENAME}}}}. Poté se sem vraťte a zjistěte tak více o dopadu {{GENDER:$1|vašich}} příspěvků.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Upozornění",
 	"growthexperiments-tour-response-tip-text": "Jakmile bude {{GENDER:$1|vaše}} otázka zodpovězena, objeví se {{GENDER:$1|vám}} tady nové upozornění.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Upozornění {{GENDER:$1|mentora|mentorky}}",
