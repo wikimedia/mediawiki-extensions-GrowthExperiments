@@ -10,6 +10,7 @@
 				:user-name="userName"
 				:data="data"
 				:contributions-url="contributionsUrl"
+				:thanks-url="thanksUrl"
 			></score-cards>
 		</div>
 		<div v-if="data">
@@ -123,6 +124,12 @@ module.exports = exports = {
 		},
 		contributionsUrl() {
 			return mw.util.getUrl( `Special:Contributions/${this.userName}` );
+		},
+		thanksUrl() {
+			return mw.util.getUrl( 'Special:Log', {
+				type: 'thanks',
+				page: this.userName
+			} );
 		}
 	},
 	mounted() {
