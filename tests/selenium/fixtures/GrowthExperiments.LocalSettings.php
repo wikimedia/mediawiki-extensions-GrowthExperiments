@@ -68,54 +68,55 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 	);
 
 	// Set up a fake user impact lookup service for CI.
-	// Note: we might want to disable this in Patch Demo environment, let's see if we get feedback to that effect.
-	$staticUserImpactLookup = new StaticUserImpactLookup( [
-		1 => new GrowthExperiments\UserImpact\ExpensiveUserImpact(
-			new UserIdentityValue( 1, 'Admin' ),
-			10,
-			[ 0 => 2 ],
-			[
-				'2022-08-24' => 1,
-				'2022-08-25' => 1
-			],
-			new UserTimeCorrection( 'ZoneInfo|660|Australia/Sydney' ),
-			2,
-			wfTimestamp( TS_UNIX, '20220825000000' ),
-			[
-				'2022-08-24' => 1000,
-				'2022-08-25' => 2000
-			],
-			[
-				'Foo' => [
-					'firstEditDate' => '2022-08-24',
-					'newestEdit' => '20220825143817',
-					'viewsCount' => 1000,
-					'views' => [
-						'2022-08-24' => 500,
-						'2022-08-25' => 500
+	if ( defined( 'MW_QUIBBLE_CI' ) ) {
+		$staticUserImpactLookup = new StaticUserImpactLookup( [
+			1 => new GrowthExperiments\UserImpact\ExpensiveUserImpact(
+				new UserIdentityValue( 1, 'Admin' ),
+				10,
+				[ 0 => 2 ],
+				[
+					'2022-08-24' => 1,
+					'2022-08-25' => 1
+				],
+				new UserTimeCorrection( 'ZoneInfo|660|Australia/Sydney' ),
+				2,
+				wfTimestamp( TS_UNIX, '20220825000000' ),
+				[
+					'2022-08-24' => 1000,
+					'2022-08-25' => 2000
+				],
+				[
+					'Foo' => [
+						'firstEditDate' => '2022-08-24',
+						'newestEdit' => '20220825143817',
+						'viewsCount' => 1000,
+						'views' => [
+							'2022-08-24' => 500,
+							'2022-08-25' => 500
+						]
+					],
+					'Bar' => [
+						'firstEditDate' => '2022-08-24',
+						'newestEdit' => '20220825143818',
+						'viewsCount' => 2000,
+						'views' => [
+							'2022-08-24' => 1000,
+							'2022-08-25' => 1000
+						]
 					]
 				],
-				'Bar' => [
-					'firstEditDate' => '2022-08-24',
-					'newestEdit' => '20220825143818',
-					'viewsCount' => 2000,
-					'views' => [
-						'2022-08-24' => 1000,
-						'2022-08-25' => 1000
-					]
-				]
-			],
-			new EditingStreak()
-		)
-	] );
-	$services->redefineService( 'GrowthExperimentsUserImpactLookup',
-		static function () use ( $staticUserImpactLookup ): UserImpactLookup {
-			return $staticUserImpactLookup;
-		} );
-	$services->redefineService( 'GrowthExperimentsUserImpactStore',
-		static function () use ( $staticUserImpactLookup ): UserImpactLookup {
-			return $staticUserImpactLookup;
-		} );
+				new EditingStreak()
+			)
+		] );
+		$services->redefineService( 'GrowthExperimentsUserImpactLookup',
+			static function () use ( $staticUserImpactLookup ): UserImpactLookup {
+				return $staticUserImpactLookup;
+			} );
+		$services->redefineService( 'GrowthExperimentsUserImpactStore',
+			static function () use ( $staticUserImpactLookup ): UserImpactLookup {
+				return $staticUserImpactLookup;
+			} );
+	}
 };
 
 # Set up SubpageLinkRecommendationProvider, which will take the recommendation from the article's /addlink.json subpage,
