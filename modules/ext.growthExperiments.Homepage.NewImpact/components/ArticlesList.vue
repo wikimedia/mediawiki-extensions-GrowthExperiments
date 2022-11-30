@@ -44,13 +44,29 @@
 								:y-accessor="yAccessor"
 							></c-sparkline>
 						</a>
-						<cdx-icon
+						<c-popover
 							v-else
-							class="ext-growthExperiments-ArticlesList__ArticleListItem__clock-icon"
-							:title="$i18n( 'growthexperiments-homepage-impact-empty-pageviews-tooltip-short' ).text()"
-							:icon="cdxIconClock"
-							:icon-label="$i18n( 'growthexperiments-homepage-impact-empty-pageviews-tooltip-short' ).text()"
-						></cdx-icon>
+							placement="above"
+							@toggle="onClockPopoverToggle"
+						>
+							<template #trigger="{ onClick }">
+								<cdx-button
+									class="ext-growthExperiments-ArticlesList__ArticleListItem__clock-button"
+									type="quiet"
+									:aria-label="$i18n( 'growthexperiments-homepage-impact-empty-pageviews-tooltip-short' ).text()"
+									@click="onClick"
+								>
+									<cdx-icon :icon="cdxIconClock"></cdx-icon>
+								</cdx-button>
+							</template>
+							<template #content>
+								<c-text
+									class="ext-growthExperiments-ArticlesList__ArticleListItem__tooltip-text"
+								>
+									{{ $i18n( 'growthexperiments-homepage-impact-empty-pageviews-tooltip-short' ).text() }}
+								</c-text>
+							</template>
+						</c-popover>
 					</div>
 				</div>
 			</c-list-item>
@@ -59,11 +75,18 @@
 </template>
 
 <script>
-const { defineAsyncComponent } = require( 'vue' );
+const { inject, defineAsyncComponent } = require( 'vue' );
+const Logger = require( '../../ext.growthExperiments.Homepage.Logger/index.js' );
+const logger = new Logger(
+	mw.config.get( 'wgGEHomepageLoggingEnabled' ),
+	mw.config.get( 'wgGEHomepagePageviewToken' )
+);
 const CList = require( '../../vue-components/CList.vue' );
 const CListItem = require( '../../vue-components/CListItem.vue' );
+const CPopover = require( '../../vue-components/CPopover.vue' );
+const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const CText = require( '../../vue-components/CText.vue' );
-const { CdxIcon, CdxThumbnail } = require( '@wikimedia/codex' );
+const { CdxThumbnail } = require( '@wikimedia/codex' );
 const { cdxIconClock } = require( '../../vue-components/icons.json' );
 const xAccessor = ( d ) => d.date;
 const yAccessor = ( d ) => d.views;
@@ -83,6 +106,8 @@ module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
 		CdxIcon,
+		CdxButton,
+		CPopover,
 		CdxThumbnail,
 		CList,
 		CListItem,
@@ -96,7 +121,16 @@ module.exports = exports = {
 		}
 	},
 	setup() {
+		const renderMode = inject( 'RENDER_MODE' );
+		const onClockPopoverToggle = ( isOpen ) => {
+			logger.log(
+				'impact',
+				renderMode,
+				isOpen ? 'open-nopageviews-tooltip' : 'close-nopageviews-tooltip'
+			);
+		};
 		return {
+			onClockPopoverToggle,
 			cdxIconClock,
 			xAccessor,
 			yAccessor
@@ -156,8 +190,13 @@ module.exports = exports = {
 			}
 		}
 
-		&__clock-icon {
-			color: @color-progressive;
+		&__clock-button {
+			.codex-icon-only-button( @color-progressive );
+		}
+
+		&__tooltip-text {
+			padding-top: @padding-vertical-base;
+			min-width: 220px;
 		}
 	}
 }

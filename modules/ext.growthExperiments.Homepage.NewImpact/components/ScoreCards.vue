@@ -33,24 +33,36 @@
 				</a>
 			</c-text>
 			<template #label-info>
-				<c-info-box
-					:icon="cdxIconInfo"
-					:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' ).text()"
+				<c-popover
 					:close-icon="cdxIconClose"
 				>
-					<div class="ext-growthExperiments-ScoreCards__scorecard__info">
-						<span>
+					<template #trigger="{ onClick }">
+						<cdx-button
+							type="quiet"
+							class="ext-growthExperiments-ScoreCards__info-button"
+							:aria-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' ).text()"
+							@click="onClick"
+						>
 							<cdx-icon
-								class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
-								:icon="cdxIconInfoFilled"
+								:icon="cdxIconInfo"
 							></cdx-icon>
-							{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text() }}
-						</span>
-						<p>
-							{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', userName ).text() }}
-						</p>
-					</div>
-				</c-info-box>
+						</cdx-button>
+					</template>
+					<template #content>
+						<div class="ext-growthExperiments-ScoreCards__scorecard__info">
+							<span>
+								<cdx-icon
+									class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
+									:icon="cdxIconInfoFilled"
+								></cdx-icon>
+								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text() }}
+							</span>
+							<p>
+								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', userName ).text() }}
+							</p>
+						</div>
+					</template>
+				</c-popover>
 			</template>
 		</score-card>
 		<score-card
@@ -77,29 +89,39 @@
 				{{ longestEditingStreakCount }}
 			</c-text>
 			<template #label-info>
-				<c-info-box
-					:icon="cdxIconInfo"
-					:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' ).text()"
+				<c-popover
 					:close-icon="cdxIconClose"
 				>
-					<div class="ext-growthExperiments-ScoreCards__scorecard__info">
-						<span>
-							<cdx-icon
-								class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
-								:icon="cdxIconInfoFilled"
-							></cdx-icon>
-							{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text() }}
-						</span>
-						<p>
-							{{ $i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', userName ).text() }}
-						</p>
-						<p>
-							{{
-								longestEditingStreakText
-							}}
-						</p>
-					</div>
-				</c-info-box>
+					<template #trigger="{ onClick }">
+						<cdx-button
+							type="quiet"
+							class="ext-growthExperiments-ScoreCards__info-button"
+							:aria-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' ).text()"
+							@click="onClick"
+						>
+							<cdx-icon :icon="cdxIconInfo"></cdx-icon>
+						</cdx-button>
+					</template>
+					<template #content>
+						<div class="ext-growthExperiments-ScoreCards__scorecard__info">
+							<span>
+								<cdx-icon
+									class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
+									:icon="cdxIconInfoFilled"
+								></cdx-icon>
+								{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text() }}
+							</span>
+							<p>
+								{{ $i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', userName ).text() }}
+							</p>
+							<p>
+								{{
+									longestEditingStreakText
+								}}
+							</p>
+						</div>
+					</template>
+				</c-popover>
 			</template>
 		</score-card>
 	</div>
@@ -108,10 +130,10 @@
 <script>
 const moment = require( 'moment' );
 const { inject } = require( 'vue' );
-const { CdxIcon } = require( '@wikimedia/codex' );
+const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const ScoreCard = require( './ScoreCard.vue' );
 const CText = require( '../../vue-components/CText.vue' );
-const CInfoBox = require( '../../vue-components/CInfoBox.vue' );
+const CPopover = require( '../../vue-components/CPopover.vue' );
 const {
 	cdxIconEdit,
 	cdxIconUserTalk,
@@ -128,9 +150,10 @@ module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
 		ScoreCard,
-		CInfoBox,
+		CPopover,
 		CText,
-		CdxIcon
+		CdxIcon,
+		CdxButton
 	},
 	props: {
 		thanksUrl: {
@@ -253,6 +276,10 @@ module.exports = exports = {
 		&__icon {
 			margin-right: 0.5em;
 		}
+	}
+
+	&__info-button {
+		.codex-icon-only-button( @color-subtle, 24px);
 	}
 }
 </style>

@@ -4,19 +4,19 @@
 			ref="containerRef"
 			class="ext-growthExperiments-CPopper__popover"
 			tabindex="0"
+			:style="popoverStyles"
 			@keyup.esc="$emit( 'close' )"
 		>
-			<div class="ext-growthExperiments-CPopper__popover__close-button-container">
+			<div
+				v-if="icon"
+				class="ext-growthExperiments-CPopper__popover__close-button-container">
 				<cdx-button
 					type="quiet"
 					:aria-label="iconLabel"
 					class="ext-growthExperiments-CPopper__popover__close-button"
 					@click="$emit( 'close', $event )"
 				>
-					<cdx-icon
-						:icon="icon"
-						class="ext-growthExperiments-CPopper__popover__close-icon"
-					></cdx-icon>
+					<cdx-icon :icon="icon"></cdx-icon>
 				</cdx-button>
 			</div>
 			<slot></slot>
@@ -43,10 +43,26 @@ module.exports = exports = {
 	props: {
 		icon: {
 			type: Object,
-			required: true
+			default: null
 		},
 		iconLabel: {
 			type: String,
+			default: null
+		},
+		/*
+		 * The clipping point for the tooltip.
+		 * One of null|'above'
+		 */
+		placement: {
+			type: String,
+			default: null
+		},
+		/*
+		 * A ref of the popover trigger element.
+		 * One of null|Proxy
+		 */
+		triggerRef: {
+			type: Object,
 			required: true
 		}
 	},
@@ -59,6 +75,19 @@ module.exports = exports = {
 		return {
 			containerRef
 		};
+	},
+	computed: {
+		popoverStyles() {
+			if ( this.placement === 'above' ) {
+				return {
+					top: 'unset',
+					bottom: `${this.triggerRef.clientHeight}px`
+				};
+			}
+			return {
+				top: 0
+			};
+		}
 	}
 };
 </script>
@@ -72,14 +101,13 @@ module.exports = exports = {
 	&__popover {
 		position: absolute;
 		z-index: 1;
-		top: 0;
 		right: 0;
 		.popover-base();
 		// Standard expects a title which has its own margin/padding
 		padding-top: 0;
 
-		&__close-icon {
-			opacity: 0.66;
+		&__close-button {
+			.codex-icon-only-button( @color-subtle );
 		}
 
 		&__close-button-container {
