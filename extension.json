@@ -702,7 +702,7 @@
 				"utils/Utils.js",
 				"utils/filters.js",
 				"vue-components/directives/click-outside.directive.js",
-				"vue-components/CInfoBox.vue",
+				"vue-components/CPopover.vue",
 				"vue-components/CPopper.vue",
 				"vue-components/CSparkline.vue",
 				"vue-components/CText.vue",
