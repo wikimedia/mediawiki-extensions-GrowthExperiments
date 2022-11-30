@@ -3,7 +3,8 @@
 		"authors": [
 			"Reinhard Kraasch",
 			"Umlaut",
-			"Wnme"
+			"Wnme",
+			"Brettchenweber"
 		]
 	},
 	"apihelp-growthstarmentee-summary": "Setzen oder Aufheben der Sternchen-Markierung eines Mentees durch den aktuellen Benutzer (privat gespeichert und nicht protokolliert)",
@@ -14,7 +15,7 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Neuer Status",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Wenn der Lotse als abwesend festgelegt wird, muss die Dauer der Abwesenheit angegeben werden (in Tagen).",
 	"apihelp-query+growthmentorstatus-summary": "Lotsenstatus des aktuellen Benutzers abfragen",
-	"apihelp-growthmentordashboardupdatedata-summary": "Planen einer außerplanmäßigen Aktualisierung des Mentee-Übersichtsmoduls in der Lotsen-Verwaltungsseite. Du kannst aus Leistungsgründen nur eine Aktualisierung alle zwei Stunden planen.",
+	"apihelp-growthmentordashboardupdatedata-summary": "Planen einer außerplanmäßigen Aktualisierung des Mentee-Übersichtsmoduls auf der Lotsen-Verwaltungsseite. Du kannst aus Leistungsgründen nur eine Aktualisierung alle zwei Stunden planen.",
 	"apihelp-growthsetmenteestatus-summary": "Mentee-Status festlegen (ermöglicht Mentees, das Lotsen-Modul zu aktivieren/deaktivieren oder sich vollständig abzumelden, wodurch die Mentee/Lotsen-Beziehung gelöscht wird)",
 	"apihelp-growthsetmenteestatus-param-state": "Neuer Status des Mentees (Warnung: Wenn du dies auf Optout setzt, wird die Mentee/Lotsen-Beziehung dauerhaft gelöscht)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Das Lotsen-Modul ist aktiviert",

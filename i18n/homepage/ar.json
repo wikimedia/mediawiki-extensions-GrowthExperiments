@@ -12,7 +12,8 @@
 			"Shbib Al-Subaie",
 			"Sonic N800",
 			"ديفيد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"FShbib"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
@@ -83,7 +84,7 @@
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> تعديلات للمقالات",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان اثنان|<strong>$1</strong>  تعديلات|<strong>$1</strong> تعديلا|<strong>$1</strong> تعديل}} لأنواع أخرى من الصفحات (شاهد الكل)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "{{GENDER:|اذهب|اذهبي}} إلى المقالة",
-	"growthexperiments-homepage-impact-pageviews-link-tooltip": "{{GENDER:|انظر|انظري}} مشاهدات الصفحة بالتفصيل",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "{{GENDER:|اطّلع|اطّلعي}} على مشاهدات الصفحة بالتفصيل",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "لأنك عدلت هذه المقالة لأول مرة اليوم؛ لم يتم حساب مشاهدات الصفحة بعد؛ {{GENDER:|تحقق|تحققي}} مرة أخرى غدا!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "لم يتم حساب عدد مرات مشاهدة الصفحة. {{GENDER:|تحقق|تحققي}} مرة أخرى غدا!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "عُلِم",

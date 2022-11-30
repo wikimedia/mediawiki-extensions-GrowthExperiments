@@ -26,7 +26,7 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Drugo",
 	"welcomesurvey-question-reason-option-other-label": "Drugo (prosimo, opišite)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Vnesite}} drug razlog ...",
-	"welcomesurvey-question-mentor-info": "Razmišljamo o začetku programa za bolj izkušene urejevalce, ki bi novejšim uporabnikom pomagal pri urejanju. {{GENDER:$1|Bi vas zanimalo}}, da vas kontaktirajo za pomoč pri urejanju?",
+	"welcomesurvey-question-mentor-info": "Razmišljamo o začetku programa za bolj izkušene urejevalce, ki bi novejšim uporabnikom pomagal pri urejanju. {{GENDER:$1|Bi bili pripravljeni}} biti na voljo za pomoč pri urejanju?",
 	"welcomesurvey-question-mentor-label": "Da, {{GENDER:$1|sem zainteresiran|sem zainteresirana|sem zainteresiran_a}}",
 	"welcomesurvey-question-edited-option-yes-many-label": "Da, mnogokrat",
 	"welcomesurvey-question-edited-option-yes-few-label": "Da, enkrat ali dvakrat",

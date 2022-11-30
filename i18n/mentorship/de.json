@@ -98,7 +98,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Etwa doppelter Mittelwert",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Deine}} Last wurde auf \"$1\" geändert.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Neulinge werden bei der Erstellung ihres Benutzerkontos einer zufälligen Lotsin oder Lotsen zugewiesen. Du kannst festlegen, wie viele Neulinge dir zugewiesen werden. Manche Neulinge haben mehr Fragen als andere.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Es wird empfohlen, mit der Einstellung „Mittelwert“ zu beginnen. So kannst du ausprobieren, ob dir die Menge an Neulingen genügt, oder ob du sie erhöhen oder verringern möchtest.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Es wird empfohlen, mit der Einstellung „Mittelwert“ zu beginnen. So kannst du ausprobieren, ob dir die Menge an Neulingen genügt oder ob du sie erhöhen oder verringern möchtest.",
 	"growthexperiments-mentor-list-missing-key": "Der Schlüssel <code>$1</code> fehlt",
 	"growthexperiments-mentor-list-datatype-mismatch": "Als <code>$1</code> wurde <code>$2</code> erwartet, es ist jedoch <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Die Lotsen-Definition enthält einen unerwarteten Schlüssel <code>$1</code>."
