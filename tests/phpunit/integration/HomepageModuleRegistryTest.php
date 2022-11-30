@@ -2,12 +2,13 @@
 
 namespace GrowthExperiments\Tests;
 
-use FauxRequest;
+use DerivativeRequest;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\NewImpact;
+use GrowthExperiments\VariantHooks;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use RequestContext;
@@ -37,38 +38,37 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::get
 	 * @covers ::getWiring
+	 * @dataProvider provideGetImpactModule
 	 */
-	public function testGetImpactModule() {
-		$this->overrideConfigValue( 'GEUseNewImpactModule', false );
+	public function testGetImpactModule(
+		bool $configFlag,
+		array $requestData,
+		string $userVariant,
+		string $expectedModuleClass
+	) {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
 		$context = RequestContext::getMain();
-		$this->assertInstanceOf( Impact::class, $moduleRegistry->get( 'impact', $context ) );
+
+		$this->overrideConfigValue( 'GEUseNewImpactModule', $configFlag );
+		$context->setRequest( new DerivativeRequest( $context->getRequest(), $requestData ) );
+		$user = $this->getMutableTestUser()->getUser();
+		$growthServices->getExperimentUserManager()->setVariant( $user, $userVariant );
+		$context->setUser( $user );
+
+		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
+		$this->assertInstanceOf( $expectedModuleClass, $moduleRegistry->get( 'impact', $context ) );
 	}
 
-	/**
-	 * @covers ::get
-	 * @covers ::getWiring
-	 */
-	public function testGetNewImpactModuleWithConfigOverride() {
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
-		$this->overrideConfigValue( 'GEUseNewImpactModule', true );
-		$context = RequestContext::getMain();
-		$this->assertInstanceOf( NewImpact::class, $moduleRegistry->get( 'impact', $context ) );
-	}
-
-	/**
-	 * @covers ::get
-	 * @covers ::getWiring
-	 */
-	public function testGetNewImpactModuleWithQueryParameterAndGlobalOffSwitch() {
-		$this->overrideConfigValue( 'GEUseNewImpactModule', false );
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
-		$context = RequestContext::getMain();
-		$this->setRequest( new FauxRequest( [ 'new-impact' => 1 ] ) );
-		$this->assertInstanceOf( Impact::class, $moduleRegistry->get( 'impact', $context ) );
+	public function provideGetImpactModule() {
+		// configFlag, $requestData, $userVariant, $expectedModuleClass
+		return [
+			[ false, [], VariantHooks::VARIANT_CONTROL, Impact::class ],
+			[ false, [ 'new-impact' => '1' ], VariantHooks::VARIANT_CONTROL, NewImpact::class ],
+			[ true, [], VariantHooks::VARIANT_CONTROL, NewImpact::class ],
+			[ true, [], VariantHooks::VARIANT_OLDIMPACT, Impact::class ],
+			[ true, [ 'new-impact' => '1' ], VariantHooks::VARIANT_OLDIMPACT, NewImpact::class ],
+			[ true, [ 'new-impact' => '0' ], VariantHooks::VARIANT_CONTROL, Impact::class ],
+		];
 	}
 
 }

@@ -142,21 +142,22 @@ class HomepageModuleRegistry {
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
-				$experimentUserManager = GrowthExperimentsServices::wrap( $services )
-					->getExperimentUserManager();
-				$config = $context->getConfig();
-				// Global default for using new impact module; default to false.
-				$useNewImpactModule = $config->get( 'GEUseNewImpactModule' );
-				if ( $useNewImpactModule ) {
-					// If the user is in the oldimpact variant, show them the old module,
-					// unless they've used the ?new-impact query string.
-					$useNewImpactModule = $context->getRequest()->getBool(
-						'new-impact',
-						!$experimentUserManager->isUserInVariant( $context->getUser(), VariantHooks::VARIANT_OLDIMPACT )
-					);
-				}
 				$growthServices = GrowthExperimentsServices::wrap( $services );
+				$experimentUserManager = $growthServices->getExperimentUserManager();
 				$userOptionsLookup = $services->getUserOptionsLookup();
+				$config = $context->getConfig();
+
+				// A/B test: use new impact module if explicitly requested,
+				// or the feature flag is on and user is in the test group.
+				if ( $context->getRequest()->getRawVal( 'new-impact' ) !== null ) {
+					$useNewImpactModule = $context->getRequest()->getBool( 'new-impact' );
+				} else {
+					$useNewImpactModule = $config->get( 'GEUseNewImpactModule' )
+						&& !$experimentUserManager->isUserInVariant(
+							$context->getUser(), VariantHooks::VARIANT_OLDIMPACT
+						);
+				}
+
 				if ( $useNewImpactModule ) {
 					return new NewImpact(
 						$context,
