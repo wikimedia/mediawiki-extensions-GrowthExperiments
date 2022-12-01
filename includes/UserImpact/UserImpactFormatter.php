@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use DateInterval;
 use DateTime;
 use Language;
 use MWTimestamp;
@@ -58,7 +57,24 @@ class UserImpactFormatter {
 	 * @return array
 	 */
 	private function sortAndFilter( array $jsonData ): array {
-		$topViewedArticles = $recentEditsWithoutPageviews = $this->getModifiedDailyArticleViews( $jsonData );
+		$topViewedArticles = $recentEditsWithoutPageviews = [];
+		foreach ( $this->getModifiedDailyArticleViews( $jsonData ) as $title => $data ) {
+			$lastDayWithPageViewData = array_key_last( $data['views'] );
+			// See if we have pageview data for the page.
+			$noPageviewDataYet = $data['firstEditDate'] > $lastDayWithPageViewData
+				// The last day actually might or might not have data (T217286) so allow equality
+				// if there's no data for that day. (We can't differentiate between no data and
+				// legitimately 0 views, but it's not really possible to edit a page and not
+				// generate any pageviews.)
+				|| $data['firstEditDate'] === $lastDayWithPageViewData
+					&& $data['views'][$lastDayWithPageViewData] === 0;
+
+			if ( $noPageviewDataYet ) {
+				$recentEditsWithoutPageviews[$title] = $data;
+			} else {
+				$topViewedArticles[$title] = $data;
+			}
+		}
 
 		// Order the articles by most views to fewest
 		uasort( $topViewedArticles, static function ( $a, $b ) {
@@ -75,17 +91,6 @@ class UserImpactFormatter {
 		uasort( $recentEditsWithoutPageviews, static function ( $a, $b ) {
 			return $b['newestEdit'] <=> $a['newestEdit'];
 		} );
-		$twoDaysAgo = MWTimestamp::getInstance()->timestamp
-			->sub( new DateInterval( 'P2D' ) )
-			->format( 'Y-m-d' );
-		// Ignore articles with page views. For articles with 0 in the count,
-		// use a proxy of "2 days ago" as an indicator that we don't have page view data yet,
-		// since that takes 24-48 hours to generate.
-		$recentEditsWithoutPageviews = array_filter( $recentEditsWithoutPageviews,
-			static function ( $a ) use ( $twoDaysAgo ) {
-				return $a['viewsCount'] === 0 && $a['firstEditDate'] > $twoDaysAgo;
-			}
-		);
 		$recentEditsWithoutPageviews = array_slice( $recentEditsWithoutPageviews, 0, 5, true );
 		// Remove the 'viewsCount' key - the frontend will show this as still waiting for pageview data.
 		// Also unset 'views' as a micro-optimization.
@@ -113,6 +118,8 @@ class UserImpactFormatter {
 		foreach ( $dailyArticleViews as $title => $data ) {
 			foreach ( $data['views'] as $date => $dailyViews ) {
 				if ( $date < $data['firstEditDate'] ) {
+					// Note this is unreliable for established users, as we look at the user's
+					// last 1000 edits to determine firstEditDate. We ignore that issue here.
 					$dailyArticleViews[$title]['views'][$date] = 0;
 				}
 			}

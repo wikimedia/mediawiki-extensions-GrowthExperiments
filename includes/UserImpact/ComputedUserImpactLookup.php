@@ -303,8 +303,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 *     keyed by ISO 8601 date.
 	 *   - dailyArticleViews: (array[]) Daily article views and other data. Keyed by
 	 *     prefixed DBkey; values are arrays with the following fields:
-	 *     - views: (int[]) daily article views, keyed by ISO 8601 date. 0 for days before the
-	 *       user's first edit to the article.
+	 *     - views: (int[]) daily article views, keyed by ISO 8601 date. Might be 0 for the last day
+	 *       if it's still being processed.
 	 *     - firstEditDate: (string) ISO 8601 date of the user's first edit to the article.
 	 *       If the user made a very high number of total edits, it might just be some edit the
 	 *       user made to the article, not necessarily the first.
@@ -361,7 +361,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 			foreach ( $days as $day => $views ) {
 				$dailyTotalViews[$day] = ( $dailyTotalViews[$day] ?? 0 ) + $views;
-				$dailyArticleViews[$title]['views'][$day] = ( $dailyArticleViews[$title][$day] ?? 0 ) + $views;
+				$dailyArticleViews[$title]['views'][$day] = $views ?? 0;
 			}
 		}
 
