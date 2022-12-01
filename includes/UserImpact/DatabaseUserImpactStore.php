@@ -77,7 +77,7 @@ class DatabaseUserImpactStore implements UserImpactStore {
 			[
 				'geui_user_id' => $userImpact->getUser()->getId(),
 			] + $data,
-			[ 'geui_user_id' ],
+			'geui_user_id',
 			$data,
 			__METHOD__
 		);
