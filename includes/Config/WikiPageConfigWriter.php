@@ -256,7 +256,7 @@ class WikiPageConfigWriter {
 				CommentStoreComment::newUnsavedComment( $summary ),
 				$minor ? EDIT_MINOR : 0
 			);
-			$status->merge( $updater->getStatus() ?? Status::newGood() );
+			$status->merge( $updater->getStatus() );
 		}
 
 		// Invalidate config cache regardless of whether any variable was changed
