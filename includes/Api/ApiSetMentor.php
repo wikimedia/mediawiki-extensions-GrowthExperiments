@@ -9,6 +9,7 @@ use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\User\UserIdentity;
+use User;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMentor extends ApiBase {
@@ -40,6 +41,11 @@ class ApiSetMentor extends ApiBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
+		$block = $this->getUser()->getBlock( User::READ_LATEST );
+		if ( $block && $block->isSitewide() ) {
+			$this->dieBlocked( $block );
+		}
+
 		$params = $this->extractRequestParams();
 		/** @var UserIdentity $mentee */
 		$mentee = $params['mentee'];
