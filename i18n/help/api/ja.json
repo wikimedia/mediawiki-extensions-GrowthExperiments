@@ -7,7 +7,7 @@
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "この利用者がヘルプパネル経由で投稿した質問を担当します。",
-	"apihelp-helppanelquestionposter-param-body": "利用者が投降した質問の本文。",
+	"apihelp-helppanelquestionposter-param-body": "利用者が投稿した質問の本文。",
 	"apihelp-helppanelquestionposter-param-source": "質問の投稿の際に使用した方法",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "「ヘルプデスクに質問する」パネル",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "新規参加者ホームページ上の「先生に質問する」パネル",
