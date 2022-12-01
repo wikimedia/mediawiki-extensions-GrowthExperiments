@@ -1698,7 +1698,7 @@
 				"ext.growthExperiments.MentorDashboard/store/modules/mentees.js",
 				"ext.growthExperiments.MentorDashboard/store/modules/mentees-search.js",
 				"ext.growthExperiments.MentorDashboard/store/modules/user-preferences.js",
-				"vue-components/CInfoBox.vue",
+				"vue-components/CPopover.vue",
 				"vue-components/CPopper.vue",
 				"vue-components/directives/click-outside.directive.js",
 				"utils/filters.js",
