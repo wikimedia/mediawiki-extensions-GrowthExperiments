@@ -116,7 +116,7 @@ class UserImpactFormatter {
 					$dailyArticleViews[$title]['views'][$date] = 0;
 				}
 			}
-			$dailyArticleViews[$title]['viewsCount'] = array_sum( $data['views'] );
+			$dailyArticleViews[$title]['viewsCount'] = array_sum( $dailyArticleViews[$title]['views'] );
 		}
 		return $dailyArticleViews;
 	}
