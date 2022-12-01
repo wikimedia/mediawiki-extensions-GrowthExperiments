@@ -165,7 +165,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "An introduction message shown in Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Field label in Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Field help text in Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Field label in Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Submit text in Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentorship-enrollasmentor-success": "Success message shown after enrolling as a mentor via Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Edit summary used after an user enrolls via Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
