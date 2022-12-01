@@ -17,5 +17,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Rampung",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Gampang",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Sedhengan",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Angèl"
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Angèl",
+	"growthexperiments-homepage-mentorship-question-subject": "Pitakoning [[User:$1|$1]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pitakoning [[User:$1|$1]] ing [[$2]]"
 }

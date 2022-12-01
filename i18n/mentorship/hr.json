@@ -28,7 +28,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title": "Prikaži novake aktivne u {{PLURAL:$1|posljednji $2 dan|posljednja $2 dana|posljednjih $2 dana}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Prikaži samo novake sa zvjezdicom",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Pretraga",
-	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "posljednja aktivnost prije $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktivnost prije $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "nepoznato",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Prikaži $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label": "Ozvjezdaj",
