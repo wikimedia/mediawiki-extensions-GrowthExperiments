@@ -526,8 +526,7 @@ return [
 			$lb->getConnectionRef( DB_PRIMARY ),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
 				$geServices->getGrowthConfig()->get( 'CommandLineMode' ) ||
-				RequestContext::getMain()->getRequest()->wasPosted(),
-			$geServices->getGrowthConfig()->get( 'GEMentorshipUseIsActiveFlag' )
+				RequestContext::getMain()->getRequest()->wasPosted()
 		);
 		$store->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $store;

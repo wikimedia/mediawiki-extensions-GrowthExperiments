@@ -24,8 +24,7 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 			$this->getServiceContainer()->getJobQueueGroup(),
 			$this->db,
 			$this->db,
-			$wasPosted,
-			true
+			$wasPosted
 		);
 		$store->setLogger( new NullLogger() );
 		return $store;
