@@ -119,6 +119,7 @@ class SpecialHomepage extends SpecialPage {
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
 			'wgGEHomepageLoggingEnabled' => $loggingEnabled,
+			'wgGEUseNewImpactModule' => $this->getConfig()->get( 'GEUseNewImpactModule' )
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();

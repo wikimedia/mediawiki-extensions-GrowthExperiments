@@ -636,7 +636,10 @@
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-mobilesummary-footer-button",
 				"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle",
-				"growthexperiments-homepage-suggestededits-mobilesummary-footer"
+				"growthexperiments-homepage-suggestededits-mobilesummary-footer",
+				"growthexperiments-tour-newimpact-discovery-title",
+				"growthexperiments-tour-newimpact-discovery-description",
+				"growthexperiments-tour-newimpact-discovery-response-button-okay"
 			],
 			"targets": [
 				"mobile"
