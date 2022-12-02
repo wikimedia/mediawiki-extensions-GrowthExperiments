@@ -4,6 +4,7 @@ namespace GrowthExperiments\HomepageModules;
 
 use Config;
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
@@ -20,6 +21,7 @@ class NewImpact extends BaseModule {
 	private UserIdentity $userIdentity;
 	private UserImpactStore $userImpactStore;
 	private UserImpactFormatter $userImpactFormatter;
+	private UserDatabaseHelper $userDatabaseHelper;
 	private bool $isSuggestedEditsEnabledForUser;
 	private bool $isSuggestedEditsActivatedForUser;
 
@@ -27,6 +29,7 @@ class NewImpact extends BaseModule {
 	private $userImpact = false;
 	/** @var array|null|false Lazy-loaded if false */
 	private $formattedUserImpact = false;
+	private ?array $hasMainspaceEditsCache = null;
 
 	/**
 	 * @param IContextSource $ctx
@@ -35,6 +38,7 @@ class NewImpact extends BaseModule {
 	 * @param UserIdentity $userIdentity
 	 * @param UserImpactStore $userImpactStore
 	 * @param UserImpactFormatter $userImpactFormatter
+	 * @param UserDatabaseHelper $userDatabaseHelper
 	 * @param bool $isSuggestedEditsEnabled
 	 * @param bool $isSuggestedEditsActivated
 	 */
@@ -45,6 +49,7 @@ class NewImpact extends BaseModule {
 		UserIdentity $userIdentity,
 		UserImpactStore $userImpactStore,
 		UserImpactFormatter $userImpactFormatter,
+		UserDatabaseHelper $userDatabaseHelper,
 		bool $isSuggestedEditsEnabled,
 		bool $isSuggestedEditsActivated
 	) {
@@ -52,6 +57,7 @@ class NewImpact extends BaseModule {
 		$this->userIdentity = $userIdentity;
 		$this->userImpactStore = $userImpactStore;
 		$this->userImpactFormatter = $userImpactFormatter;
+		$this->userDatabaseHelper = $userDatabaseHelper;
 		$this->isSuggestedEditsEnabledForUser = $isSuggestedEditsEnabled;
 		$this->isSuggestedEditsActivatedForUser = $isSuggestedEditsActivated;
 	}
@@ -62,7 +68,7 @@ class NewImpact extends BaseModule {
 			'GENewImpactD3Enabled' => $this->getConfig()->get( 'GENewImpactD3Enabled' ),
 			'GENewImpactRelevantUserName' => $this->userIdentity->getName(),
 			'GENewImpactRelevantUserId' => $this->userIdentity->getId(),
-			'GENewImpactRelevantUserEditCount' => $this->getContext()->getUser()->getEditCount(),
+			'GENewImpactRelevantUserUnactivated' => $this->isUnactivated(),
 			'GENewImpactIsSuggestedEditsEnabledForUser' => $this->isSuggestedEditsEnabledForUser,
 			'GENewImpactIsSuggestedEditsActivatedForUser' => $this->isSuggestedEditsActivatedForUser,
 		];
@@ -85,7 +91,7 @@ class NewImpact extends BaseModule {
 	 */
 	protected function getCssClasses() {
 		$unactivatedClasses = [];
-		if ( $this->isUnactivatedOrDisabled() ) {
+		if ( $this->isUnactivated() ) {
 			$unactivatedClasses[] = $this->getUnactivatedModuleCssClass();
 		}
 		return array_merge(
@@ -145,21 +151,22 @@ class NewImpact extends BaseModule {
 	 * @inheritDoc
 	 */
 	public function getState() {
-		if ( $this->canRender() ) {
-			return $this->getContext()->getUser()->getEditCount() ?
-				self::MODULE_STATE_ACTIVATED :
-				self::MODULE_STATE_UNACTIVATED;
+		if ( $this->canRender()
+			&& $this->isSuggestedEditsEnabledForUser
+			&& $this->hasMainspaceEdits()
+		) {
+			return self::MODULE_STATE_ACTIVATED;
 		}
-		return self::MODULE_STATE_NOTRENDERED;
+		return self::MODULE_STATE_UNACTIVATED;
 	}
 
 	/**
-	 * Check if impact module is unactivated and suggested edits' module is enabled.
+	 * Check if impact module is unactivated.
 	 *
 	 * @return bool
 	 */
-	private function isUnactivatedOrDisabled() {
-		return $this->getState() === self::MODULE_STATE_UNACTIVATED || !$this->isSuggestedEditsEnabledForUser;
+	private function isUnactivated(): bool {
+		return $this->getState() === self::MODULE_STATE_UNACTIVATED;
 	}
 
 	/** @inheritDoc */
@@ -225,6 +232,18 @@ class NewImpact extends BaseModule {
 		$userImpact = $this->getUserImpact();
 		$this->formattedUserImpact = $userImpact ? $this->userImpactFormatter->format( $userImpact ) : [];
 		return $this->formattedUserImpact;
+	}
+
+	/** @return bool|null */
+	private function hasMainspaceEdits(): ?bool {
+		// The cache has four states: true/false/null (valid hasMainspaceEdits() return values)
+		// and uninitialized. Use an array hack to differentiate.
+		if ( !$this->hasMainspaceEditsCache ) {
+			$this->hasMainspaceEditsCache = [
+				$this->userDatabaseHelper->hasMainspaceEdits( $this->userIdentity ),
+			];
+		}
+		return $this->hasMainspaceEditsCache[0];
 	}
 
 }
