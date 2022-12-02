@@ -63,6 +63,12 @@ module.exports = exports = {
 			result = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
 		}
 
+		// If the module isn't inactive, and the user hasn't already seen it, then show the
+		// new impact discovery tour.
+		if ( !isUnactiveOrDisabled && !mw.user.options.get( 'growthexperiments-tour-newimpact-discovery' ) && renderMode === 'desktop' ) {
+			mw.loader.load( 'ext.guidedTour.tour.newimpact_discovery' );
+		}
+
 		return {
 			renderMode,
 			userName,
