@@ -56,7 +56,13 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
  */
 function useUserImpact( userId, timeFrame ) {
 	const encodedUserId = encodeURIComponent( `#${userId}` );
-	const serverSideExportedData = mw.config.get( 'homepagemodules', {} ).impact;
+	const specialPageTitle = mw.config.get( 'wgCanonicalSpecialPageName' );
+	const exportedDataConfigKeys = {
+		Impact: 'specialimpact',
+		Homepage: 'homepagemodules'
+	};
+	const configKey = exportedDataConfigKeys[ specialPageTitle ];
+	const serverSideExportedData = mw.config.get( configKey, {} ).impact;
 	const finalData = ref( null );
 	const finalError = ref( null );
 	if ( serverSideExportedData && serverSideExportedData.impact ) {
