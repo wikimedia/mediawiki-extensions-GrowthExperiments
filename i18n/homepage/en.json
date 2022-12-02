@@ -544,5 +544,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "Done",
 	"growthexperiments-homepage-special-contribute-title": "Suggested edits",
 	"growthexperiments-homepage-special-contribute-description": "Make small and easy changes (e.g., add a link or copyedit) to improve existing articles.",
-	"growthexperiments-homepage-special-contribute-cta": "View suggested edits"
+	"growthexperiments-homepage-special-contribute-cta": "View suggested edits",
+	"growthexperiments-tour-newimpact-discovery-title": "Updated design",
+	"growthexperiments-tour-newimpact-discovery-description": "More of {{GENDER:|your}} editing activity has been added!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Got it"
 }

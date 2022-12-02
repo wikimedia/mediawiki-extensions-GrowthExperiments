@@ -20,12 +20,10 @@ class TourHooks implements
 	public const TOUR_COMPLETED_HOMEPAGE_MENTORSHIP = 'growthexperiments-tour-homepage-mentorship';
 	public const TOUR_COMPLETED_HOMEPAGE_WELCOME = 'growthexperiments-tour-homepage-welcome';
 	public const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
+	public const TOUR_COMPLETED_NEWIMPACT_DISCOVERY = 'growthexperiments-tour-newimpact-discovery';
 
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
-	/** @var ExperimentUserManager */
-	private $experimentUserManager;
+	private UserOptionsLookup $userOptionsLookup;
+	private ExperimentUserManager $experimentUserManager;
 
 	/**
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -120,6 +118,18 @@ class TourHooks implements
 					'growthexperiments-tour-response-button-okay'
 				]
 			],
+			'ext.guidedTour.tour.newimpact_discovery' => $moduleTemplate + [
+				'packageFiles' => [
+					'tours/newImpactDiscovery.js',
+					"ext.growthExperiments.Homepage.Logger/index.js",
+					"utils/Utils.js"
+				],
+				'messages' => [
+					'growthexperiments-tour-newimpact-discovery-title',
+					'growthexperiments-tour-newimpact-discovery-description',
+					'growthexperiments-tour-newimpact-discovery-response-button-okay'
+				]
+			]
 		];
 		$resourceLoader->register( $modules );
 	}
@@ -157,6 +167,9 @@ class TourHooks implements
 			$preferences[self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY] = [
 				'type' => 'api',
 			];
+			$preferences[self::TOUR_COMPLETED_NEWIMPACT_DISCOVERY] = [
+				'type' => 'api',
+			];
 		}
 	}
 
@@ -182,7 +195,12 @@ class TourHooks implements
 				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => true,
 				self::TOUR_COMPLETED_HOMEPAGE_WELCOME => true,
 				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY => true,
+				// New impact is different from the tours above; no one has
+				// seen it yet, and we want all existing users with activated impact modules
+				// to see it, so its default value should be false.
+				self::TOUR_COMPLETED_NEWIMPACT_DISCOVERY => false,
 			];
 		}
 	}
+
 }
