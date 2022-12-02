@@ -6,10 +6,10 @@ use DateTime;
 use Exception;
 use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
-use GrowthExperiments\UserRegistrationLookupHelper;
 use Maintenance;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\MediaWikiServices;
@@ -26,14 +26,11 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class RefreshUserImpactData extends Maintenance {
 
-	/** @var ActorStore */
-	private $actorStore;
+	private ActorStore $actorStore;
+	private UserImpactLookup $userImpactLookup;
+	private UserImpactStore $userImpactStore;
+	private UserDatabaseHelper $userDatabaseHelper;
 
-	/** @var UserImpactLookup */
-	private $userImpactLookup;
-
-	/** @var UserImpactStore */
-	private $userImpactStore;
 	private JobQueueGroupFactory $jobQueueGroupFactory;
 
 	/** @var int|null Ignore a user if they have data generated after this Unix timestamp. */
@@ -132,6 +129,7 @@ class RefreshUserImpactData extends Maintenance {
 		$this->jobQueueGroupFactory = $services->getJobQueueGroupFactory();
 		$this->userImpactLookup = $growthServices->getUncachedUserImpactLookup();
 		$this->userImpactStore = $growthServices->getUserImpactStore();
+		$this->userDatabaseHelper = $growthServices->getUserDatabaseHelper();
 	}
 
 	/**
@@ -194,8 +192,7 @@ class RefreshUserImpactData extends Maintenance {
 			$queryBuilder->groupBy( [ 'actor_user' ] );
 		}
 		if ( $registeredWithin ) {
-			$firstUserId = UserRegistrationLookupHelper::findFirstUserIdForRegistrationTimestamp(
-				$dbr,
+			$firstUserId = $this->userDatabaseHelper->findFirstUserIdForRegistrationTimestamp(
 				$this->getTimestampFromRelativeDate( $registeredWithin )
 			);
 			if ( $firstUserId ) {

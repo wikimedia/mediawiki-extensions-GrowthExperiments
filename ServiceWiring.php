@@ -84,6 +84,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
+use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
@@ -998,6 +999,15 @@ return [
 		return new UserImpactFormatter(
 			$services->get( '_GrowthExperimentsAQSConfig' ),
 			$services->getContentLanguage()
+		);
+	},
+
+	'GrowthExperimentsUserDatabaseHelper' => static function (
+		MediaWikiServices $services
+	): UserDatabaseHelper {
+		return new UserDatabaseHelper(
+			$services->getUserFactory(),
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
 		);
 	},
 
