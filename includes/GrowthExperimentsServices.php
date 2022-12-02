@@ -335,4 +335,8 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsUserImpactFormatter' );
 	}
 
+	public function getUserDatabaseHelper(): UserDatabaseHelper {
+		return $this->coreServices->get( 'GrowthExperimentsUserDatabaseHelper' );
+	}
+
 }
