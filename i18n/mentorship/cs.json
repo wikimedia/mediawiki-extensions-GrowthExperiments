@@ -135,6 +135,7 @@
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Chcete-li se zapsat jako {{GENDER:|mentor|mentorka}}, přejděte na [[Special:EnrollAsMentor]].",
 	"growthexperiments-manage-mentors-error-no-such-user": "Chyba: Uživatel s ID $1 neexistuje. Toto je pravděpodobně interní chyba.",
 	"growthexperiments-manage-mentors-auto-assigned": "Mentoři automaticky přiřazovaní nováčkům",
+	"growthexperiments-manage-mentors-auto-assigned-text": "Těmto mentorům jsou automaticky přiřazeni nováčci.",
 	"growthexperiments-manage-mentors-manually-assigned": "Manuálně přiřazovaní mentoři",
 	"growthexperiments-manage-mentors-none": "Žádní",
 	"growthexperiments-manage-mentors-username": "Uživatelské jméno",
