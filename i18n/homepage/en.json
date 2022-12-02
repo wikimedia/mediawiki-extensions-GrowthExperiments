@@ -80,7 +80,7 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Your}} current longest streak is one day which {{GENDER:$1|you}} achieved on $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Most viewed (since {{GENDER:$1|your}} edit)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Views since {{GENDER:$1|you}} edited (last 60 days):",
-	"growthexperiments-homepage-impact-contributions-link": "View all {{GENDER:$2|your}} edits ($1) ",
+	"growthexperiments-homepage-impact-contributions-link": "View all {{GENDER:$2|your}} edits ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|You}} have not yet created or edited any articles.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "This area will show how many times people have viewed the articles {{GENDER:$1|you}} have created or edited.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edits to articles",
