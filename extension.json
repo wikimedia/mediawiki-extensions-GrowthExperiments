@@ -2209,10 +2209,6 @@
 			"description": "One of stable/beta/alpha. Used by the mentor dashboard to display only features intended on that wiki.",
 			"value": "alpha"
 		},
-		"GERecentChangesUnstarredMenteesFilterEnabled": {
-			"description": "Enable filtering for unstarred mentees in Special:RecentChanges. This must not be enabled on wikis with more than 10k mentees per mentor.",
-			"value": true
-		},
 		"GEHomepageSuggestedEditsEnabled": {
 			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",
 			"value": true
