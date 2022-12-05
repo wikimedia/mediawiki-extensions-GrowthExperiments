@@ -88,10 +88,6 @@
 	}
 }
 
-.client-js .growthexperiments-homepage-new-impact-no-js-fallback {
-	display: none;
-}
-
 body.mw-special-Homepage {
 	&.growthexperiments-homepage-mobile-summary {
 		// Enforce a minimum width to avoid breaking the connecting lines of the start modules.
@@ -145,13 +141,6 @@ body.mw-special-Homepage {
 					}
 				}
 			}
-
-			// NewImpact module is rendered on client-side only; set a minimum height based on what we
-			// think its rendered height will be.
-			// TODO: When the old impact module is retired, this selector can be changed to &-impact
-			.growthexperiments-homepage-module-new-impact {
-				min-height: 228px;
-			}
 		}
 	}
 
@@ -193,20 +182,6 @@ body.mw-special-Homepage {
 					// card/controls/pager etc are loaded.
 					min-height: 631.533px;
 				}
-			}
-
-			// TODO: Can switch to -impact when old impact module is retired.
-			.growthexperiments-homepage-module-new-impact {
-				// This value approximates the height when a single article has been edited and the
-				// module is rendering in "wide" mode.
-				min-height: 550px;
-			}
-
-			// TODO: Can remove the &-new-impact selector when the old impact module is retired.
-			.growthexperiments-homepage-module-new-impact.growthexperiments-homepage-module-impact-unactivated-desktop {
-				min-height: 370px;
-				// Less jarring to have the background match the background of the contents.
-				background-color: @colorGray15;
 			}
 		}
 	}

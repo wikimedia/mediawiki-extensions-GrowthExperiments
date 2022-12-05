@@ -79,11 +79,11 @@ class NewImpact extends BaseModule {
 	 */
 	private function getUnactivatedModuleCssClass() {
 		// The following classes are used here:
-		// * growthexperiments-homepage-module-impact-unactivated-desktop
-		// * growthexperiments-homepage-module-impact-unactivated-mobile-details
-		// * growthexperiments-homepage-module-impact-unactivated-mobile-overlay
-		// * growthexperiments-homepage-module-impact-unactivated-mobile-summary
-		return 'growthexperiments-homepage-module-impact-unactivated-' . $this->getMode();
+		// * growthexperiments-homepage-module-new-impact-unactivated-desktop
+		// * growthexperiments-homepage-module-new-impact-unactivated-mobile-details
+		// * growthexperiments-homepage-module-new-impact-unactivated-mobile-overlay
+		// * growthexperiments-homepage-module-new-impact-unactivated-mobile-summary
+		return 'growthexperiments-homepage-module-new-impact-unactivated-' . $this->getMode();
 	}
 
 	/**
@@ -151,7 +151,10 @@ class NewImpact extends BaseModule {
 		return Html::rawElement( 'div',
 				[
 					'id' => 'new-impact-vue-root--mobile',
-					'class' => 'ext-growthExperiments-new-impact-app-root--mobile'
+					'class' => [
+						'ext-growthExperiments-new-impact-app-root',
+						'ext-growthExperiments-new-impact-app-root--mobile'
+					]
 				],
 				$this->getRecentActivityMarkup()
 			) .
