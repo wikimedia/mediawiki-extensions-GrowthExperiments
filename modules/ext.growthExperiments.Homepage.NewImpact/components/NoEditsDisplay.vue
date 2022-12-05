@@ -115,6 +115,22 @@ module.exports = exports = {
 @import '../../utils/mixins.less';
 
 .ext-growthExperiments-NoEditsDisplay {
+	&--desktop,
+	&--overlay-summary {
+		min-height: 320px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&--desktop {
+		min-height: 320px;
+	}
+
+	&--overlay-summary {
+		min-height: 160px;
+	}
+
 	&__content {
 		display: flex;
 		background-color: @background-color-framed;
