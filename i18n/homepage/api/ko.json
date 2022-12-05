@@ -13,5 +13,6 @@
 	"apihelp-growthsetmentor-summary": "사용자의 멘토를 설정합니다. 변경 기록은 공개됩니다.",
 	"apihelp-growthsetmentor-param-mentee": "멘티의 사용자 이름",
 	"apihelp-growthsetmentor-param-mentor": "멘토의 사용자 이름",
-	"apihelp-growthsetmentor-param-reason": "변경 이유"
+	"apihelp-growthsetmentor-param-reason": "변경 이유",
+	"apihelp-growthinvalidateimagerecommendation-summary": "이미지 권고 작업을 무효화합니다"
 }

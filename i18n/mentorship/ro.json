@@ -161,7 +161,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Vă {{GENDER:|mulțumim}} pentru că vă voluntariați ca {{GENDER:|mentor}} la {{SITENAME}}. {{GENDER:|Vă}} puteți înscrie ca mentor prin completarea acestui formular.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Mesaj de introducere",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Mesajul de introducere {{GENDER:|vă}} introduce ca mentor. Vă rugăm să îl mențineți mai scurt de 240 de caractere. Nu este permis wikitextul.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motiv",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Înscrie-te",
 	"growthexperiments-mentorship-enrollasmentor-success": "Sunteți acum {{GENDER:|înscris|înscrisă}} ca mentor. Acum {{GENDER:|puteți}} merge la [[Special:MentorDashboard|pagina mentorului]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Mă adaug ca mentor",

@@ -122,6 +122,5 @@
 	"growthexperiments-manage-mentors-edit-success": "As opções relacionadas com mentoria {{GENDER:$1|do mentor|da mentora}} [[User:$1|$1]] foram alteradas.",
 	"growthexperiments-manage-mentors-remove-mentor": "Remover",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Mensagem de introdução",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motivo",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscrever-se"
 }

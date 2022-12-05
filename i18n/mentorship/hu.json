@@ -159,7 +159,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Ezúton is köszönjük, hogy önkéntes mentornak jelentkeztél ide: {{SITENAME}}. Mentornak jelentkezhetsz, ha kitöltöd ezt az űrlapot.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Bemutatkozó üzenet",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "A bemutatkozó üzenetben mentorként mutatkozhatsz be. Ez az üzenet legyen rövidebb 240 karakternél. Nem megengedett a wikitext.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Indoklás",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Feliratkozás",
 	"growthexperiments-mentorship-enrollasmentor-success": "Mostantól mentorként szerepelsz. Most már folytathatod a [[Special:MentorDashboard|a mentor irányítópultján]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Hozzáadom magam mentornak",

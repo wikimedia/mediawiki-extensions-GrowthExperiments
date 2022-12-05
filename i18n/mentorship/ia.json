@@ -161,7 +161,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Gratias pro voler devenir un mentor de {{SITENAME}}. Tu pote inscriber te como mentor completante le formulario sequente.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Message de introduction",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Le message de introduction te introduce como mentor. Per favor mantene isto plus curte que 240 characteres. Wikitexto non es permittite.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motivo",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscribe me",
 	"growthexperiments-mentorship-enrollasmentor-success": "Tu es ora inscribite como mentor. Continua al [[Special:MentorDashboard|tabuliero de instrumentos pro mentores]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Addition de me mesme como mentor",

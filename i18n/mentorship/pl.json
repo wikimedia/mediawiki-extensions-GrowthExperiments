@@ -161,7 +161,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Dziękujemy za chęć zostania {{GENDER:|przewodnikiem|przewodniczką|przewodnikiem(-czką)}} na {{GRAMMAR:MS.lp|{{SITENAME}}}}. Aby {{GENDER:|nim|nią|nim/nią}} zostać, wypełnij poniższy formularz.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Wiadomość powitalna",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Wiadomość powitalan przedstawia cię jako {{GENDER:|przewodnika|przewodniczkę|przewodnika(-czkę)}}. Trzymaj się ograniczenia do 240 znaków. Składnia wikikodu nie jest dozwolona.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Powód",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Zapisz się",
 	"growthexperiments-mentorship-enrollasmentor-success": "Właśnie {{GENDER:|zostałeś przewodnikiem|zostałaś przewodniczką|zostałeś(-aś) przewodnikiem(-czką)}}. Możesz teraz przejść do [[Special:MentorDashboard|Panelu przewodników]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Dodanie siebie do listy przewodników",

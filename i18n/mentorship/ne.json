@@ -119,7 +119,6 @@
 	"growthexperiments-manage-mentors-remove-mentor-success": "प्रयोगकर्ता [[User:$1|$1]] अब {{GENDER:$1|सल्लाहकार}} छैनन्।",
 	"growthexperiments-mentorship-enrollasmentor-title": "{{GENDER:|सल्लाहकार}}को रूपमा भर्ना गर्नुहोस्।",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "परिचय सन्देश",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "कारण",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "समावेस गर्नुहोस्",
 	"growthexperiments-mentorship-enrollasmentor-summary": "आफूलाई सल्लाहकारको रूपमा थप्दै छु",
 	"tag-mentor list change": "सल्लाहकार सूची परिवर्तन"

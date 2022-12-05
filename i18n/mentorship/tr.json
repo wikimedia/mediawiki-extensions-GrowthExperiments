@@ -165,7 +165,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "{{SITENAME}} danışmanı olarak gönüllü olduğunuz için teşekkürler. {{GENDER:|Bu}} formu doldurarak danışman olarak kaydolabilirsiniz.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Karşılama mesajı",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Karşılama mesajı {{GENDER:|sizi}} bir danışman olarak tanıtır. Lütfen bunu 240 karakterden kısa tutun. Vikimetne izin verilmez.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Sebep",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Kaydol",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|}}Danışman olarak kaydoldunuz. [[Special:MentorDashboard|Danışman kontrol paneline]] devam edebilirsiniz.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Kendimi danışman olarak ekliyorum",

@@ -161,7 +161,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Takk for at {{GENDER:|du}} melder deg frivillig som fadder på {{SITENAME}}. Du melder deg på ved å fylle ut dette skjemaet.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Introduksjonsmelding",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Introduksjonsmeldingen introduserer {{GENDER:|deg}} som fadder. Den må være kortere enn 240 tegn. Wikitekst er ikke tillatt.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Årsak",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Meld deg på",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Du}} er nå meldt på som fadder. Du kan fortsette til [[Special:MentorDashboard|kontrollpanelet for faddere]] nå.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Legger til meg selv som fadder",

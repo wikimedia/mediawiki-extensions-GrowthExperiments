@@ -154,7 +154,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Дзякуй {{GENDER:|вам}} за добраахвотнасць быць {{GENDER:|настаўнікам|настаўніцай}} у {{GRAMMAR:месны|{{SITENAME}}}}. {{GENDER:|Вы}} можаце запісацца {{GENDER:|настаўнікам|настаўніцай}}, запоўніўшы гэту форму.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Уступнае паведамленне",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Уступнае паведамленне прадстаўляе вас як {{GENDER:|настаўніка|настаўніцу}}. Калі ласка, не перавышайце 240 сімвалаў. Вікі-тэкст не дазваляецца.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Прычына",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Запісацца",
 	"growthexperiments-mentorship-enrollasmentor-success": "Зараз вы запісаны ў якасці {{GENDER:|настаўніка|настаўніцы}}. Цяпер вы можаце перайсці да [[Special:MentorDashboard|панэлі настаўніка]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Дадаю сябе ў настаўнікі",

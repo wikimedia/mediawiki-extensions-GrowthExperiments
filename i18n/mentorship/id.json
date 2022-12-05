@@ -64,7 +64,9 @@
 	"growthexperiments-manage-mentors-title": "Kelola mentor",
 	"growthexperiments-manage-mentors-pretext-purpose": "Halaman ini menampilkan daftar mentor-mentor.",
 	"growthexperiments-manage-mentors-auto-assigned": "Mentor yang ditugaskan secara otomatis",
+	"growthexperiments-manage-mentors-auto-assigned-text": "New accounts are randomly assigned to these mentors.",
 	"growthexperiments-manage-mentors-manually-assigned": "Mentor yang ditugaskan secara manual",
+	"growthexperiments-manage-mentors-manually-assigned-text": "New accounts are not randomly assigned to these mentors. Like other mentors, these mentors can manually select the accounts they would like to mentor. This section is mainly for workshop hosts who just want to mentor people they met.",
 	"growthexperiments-manage-mentors-none": "Tidak ada",
 	"growthexperiments-manage-mentors-username": "Nama pengguna",
 	"growthexperiments-manage-mentors-last-active": "Terakhir aktif",
@@ -76,7 +78,6 @@
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Alasan kenapa menghapus mentor",
 	"growthexperiments-mentorship-enrollasmentor-title": "Daftar sebagai seorang {{GENDER:|mentor}}",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Pesan perkenalan",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Alasan",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Mendaftar",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Menambahkan diri saya sebagai mentor",
 	"tag-mentor list change": "Perubahan daftar mentor"

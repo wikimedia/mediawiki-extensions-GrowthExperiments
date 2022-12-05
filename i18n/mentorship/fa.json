@@ -146,7 +146,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "از این که به‌عنوان یک {{GENDER:|مربی}} در {{SITENAME}} داوطلب شده‌اید از {{GENDER:|شما}} ممنونیم.\nمی‌توانید با پر کردن فرم زیر، برای مربی شدن نام‌نویسی کنید.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "پیام معرفی",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "پیام معرفی، {{GENDER:|شما}} را به‌عنوان یک مربی معرفی می‌کند. لطفاً طول پیام معرفی را کمتر از ۲۴۰ نویسه نگه‌دارید. ویکی‌متن پذیرفته نیست.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "دلیل",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "نام‌نویسی",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|شما}} به‌عنوان یک مربی نام‌نویسی کردید. اکنون می‌توانید به [[Special:MentorDashboard|پیش‌خوان مربی]] بروید.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "افزودن خودم به‌عنوان مربی",

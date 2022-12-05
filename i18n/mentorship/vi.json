@@ -164,7 +164,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Cảm ơn {{GENDER:|bạn}} đã tình nguyện làm {{GENDER:|cố vấn}} của {{SITENAME}}. {{GENDER:|Bạn}} có thể đăng ký trở thành cố vấn bằng cách điền vào biểu mẫu này.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Thông điệp giới thiệu",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Thông điệp giới thiệu sẽ giới thiệu bản thân {{GENDER:|bạn}} với tư cách là cố vấn. Vui lòng viết không quá 240 ký tự. Không được sử dụng wikitext.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Lý do",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Đăng ký",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Bạn}} đã đăng ký làm cố vấn thành công. {{GENDER:|Bạn}} giờ có thể tới [[Special:MentorDashboard|bảng điều khiển cho cố vấn]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Thêm bản thân vào vị trí cố vấn.",

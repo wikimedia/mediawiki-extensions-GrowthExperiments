@@ -161,7 +161,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Obrigado por se voluntariar para {{GENDER:|mentor|mentora}} da wiki {{SITENAME}}. Pode inscrever-se como {{GENDER:|mentor|mentora}} preenchendo este formulário.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Mensagem de apresentação",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Esta mensagem {{GENDER:|apresenta-o como mentor|apresenta-a como mentora}}. Mantenha-a inferior a 240 caracteres. Não é permitido usar texto wiki.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motivo",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscrever-se",
 	"growthexperiments-mentorship-enrollasmentor-success": "Agora está {{GENDER:|inscrito como mentor|inscrita como mentora}}. Pode prosseguir para o [[Special:MentorDashboard|painel de controlo do mentor]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Acrescentar-me como {{GENDER:|mentor|mentora}}",

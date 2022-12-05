@@ -146,7 +146,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Wat fijn dat u op {{SITENAME}} mentor wilt worden. Met dit formulier kunt u zich aanmelden.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Introductiebericht",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Het introductiebericht introduceert {{GENDER:|u}} als mentor. Houd dit bericht korter dan 240 tekens. Wikitekst mag niet gebruikt worden.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Reden",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inschrijven",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|U}} staat nu ingeschreven als mentor. U kunt nu doorgaan naar het [[Special:MentorDashboard|mentordashboard]].",
 	"tag-mentor list change": "Wijziging van de mentorlijst",

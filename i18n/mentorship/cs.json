@@ -163,7 +163,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Děkujeme vám za ochotu působit jako {{GENDER:|mentor|mentorka}} {{GRAMMAR:2sg|{{SITENAME}}}}. Můžete se zapsat vyplněním tohoto formuláře.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Úvodní zpráva",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Pomocí úvodní zprávy se {{GENDER:|můžete}} představit jako {{GENDER:|mentor|mentorka}}. Prosím, udržujte text kratší než 240 znaků. Ve zprávě není povolen žádný wikitext.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Důvod",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Zapsat se",
 	"growthexperiments-mentorship-enrollasmentor-success": "Úspěšně jste se {{GENDER:|zapsal|zapsala}} jako {{GENDER:|mentor|mentorka}}. Nyní {{GENDER:|můžete}} pokračovat na [[Special:MentorDashboard|nástěnku mentora]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Přidávám se jako mentor",

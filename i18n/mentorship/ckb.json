@@ -92,7 +92,6 @@
 	"growthexperiments-manage-mentors-remove-mentor": "لابردن",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|تۆ}} خەریکیت [[User:$1]] لە {{GENDER:$1|مامۆستایەتی}} لادەبەیت.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "ھۆکاری لابردنی مامۆستاکە",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "ھۆکار",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "ناونووسین",
 	"growthexperiments-mentorship-enrollasmentor-summary": "زیادکردنی خۆم وەک مامۆستا"
 }
