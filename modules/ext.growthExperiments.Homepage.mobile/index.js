@@ -101,6 +101,9 @@
 					getSubmodules( newModule ).forEach( function ( submodule ) {
 						homepageModuleLogger.log( submodule, 'mobile-overlay', 'impression' );
 					} );
+					if ( newModule === 'impact' && mw.config.get( 'wgGEUseNewImpactModule' ) ) {
+						maybeShowNewImpactDiscovery();
+					}
 				}
 			}
 
@@ -172,17 +175,18 @@
 		}, 250 );
 	}
 
+	function setPreventScrolling( shouldPreventScrolling ) {
+		if ( shouldPreventScrolling ) {
+			document.body.classList.add( 'stop-scrolling' );
+		} else {
+			document.body.classList.remove( 'stop-scrolling' );
+		}
+	}
+
 	/**
 	 * Show welcome drawer for users who haven't already seen it.
 	 */
 	function maybeShowWelcomeDrawer() {
-		function setPreventScrolling( shouldPreventScrolling ) {
-			if ( shouldPreventScrolling ) {
-				document.body.classList.add( 'stop-scrolling' );
-			} else {
-				document.body.classList.remove( 'stop-scrolling' );
-			}
-		}
 		// Even though this drawer isn't really a tour, we reuse the preference
 		// set on desktop since if the user has seen the tour on desktop they
 		// should not see the drawer on mobile, and vice versa.
@@ -266,6 +270,79 @@
 		} );
 		welcomeDrawer.show().then( setPreventScrolling.bind( null, true ) );
 		homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-impression' );
+	}
+
+	/**
+	 * Show new impact module discovery tour for users who haven't seen it.
+	 */
+	function maybeShowNewImpactDiscovery() {
+		// Even though this drawer isn't really a tour, we reuse the preference
+		// set on desktop since if the user has seen the tour on desktop they
+		// should not see the drawer on mobile, and vice versa.
+		var newImpactDiscoverySeen = 'growthexperiments-tour-newimpact-discovery',
+			buttonClicked = false,
+			markAsSeen = function () {
+				new mw.Api().saveOption( newImpactDiscoverySeen, 1 );
+			},
+			newImpactDiscoveryDrawer;
+
+		if ( mw.user.options.get( newImpactDiscoverySeen ) ) {
+			return;
+		}
+
+		newImpactDiscoveryDrawer = new Drawer( {
+			className: 'homepage-newimpact-discovery',
+			showCollapseIcon: false,
+			children: [
+				$( '<main>' )
+					.append(
+						$( '<h4>' ).text( mw.message( 'growthexperiments-tour-newimpact-discovery-title' )
+							.text() ),
+						$( '<p>' ).text( mw.message(
+							'growthexperiments-tour-newimpact-discovery-description'
+						).text() ),
+						$( '<footer>' )
+							.addClass( 'growthexperiments-homepage-newimpact-discovery-footer' )
+							.append(
+								new Anchor( {
+									href: '#',
+									progressive: true,
+									label: mw.msg(
+										'growthexperiments-tour-newimpact-discovery-response-button-okay'
+									)
+								} ).$el
+							)
+					)
+			],
+			onBeforeHide: function () {
+				markAsSeen();
+				setPreventScrolling( false );
+				if ( !buttonClicked ) {
+					homepageModuleLogger.log( 'generic', 'mobile-overlay', 'newimpactdiscovery-close',
+						{ type: 'outside-click' } );
+				}
+				// FIXME: Seems wrong to do this, but otherwise we're sent back to Special:Homepage
+				// when the user closes the drawer.
+				var router = require( 'mediawiki.router' );
+				router.navigateTo( '#/homepage/impact', {
+					path: location.pathname + location.search + '#/homepage/impact',
+					useReplaceState: false
+				} );
+			}
+		} );
+
+		$overlayModules.find( '[data-module-name="impact"]' ).append( newImpactDiscoveryDrawer.$el[ 0 ] );
+		newImpactDiscoveryDrawer.$el.find( '.homepage-newimpact-discovery' ).on( 'click', function () {
+			buttonClicked = true;
+			markAsSeen();
+			homepageModuleLogger.log( 'generic', 'mobile-overlay', 'newimpactdiscovery-close', {
+				type: 'button'
+			} );
+			newImpactDiscoveryDrawer.hide();
+			setPreventScrolling( false );
+		} );
+		newImpactDiscoveryDrawer.show().then( setPreventScrolling.bind( null, true ) );
+		homepageModuleLogger.log( 'generic', 'mobile-overlay', 'newimpactdiscovery-impression' );
 	}
 
 	/**
