@@ -111,7 +111,6 @@ class ExpensiveUserImpact extends UserImpact {
 
 		Assert::parameterKeyType( 'string', $json['dailyTotalViews'], '$json[\'dailyTotalViews\']' );
 		Assert::parameterElementType( 'integer', $json['dailyTotalViews'], '$json[\'dailyTotalViews\']' );
-		Assert::parameterKeyType( 'string', $json['dailyArticleViews'], '$json[\'dailyArticleViews\']' );
 		Assert::parameterElementType( 'array', $json['dailyArticleViews'], '$json[\'dailyArticleViews\']' );
 		foreach ( $json['dailyArticleViews'] as $title => $views ) {
 			Assert::parameterKeyType( 'string', $views, '$json[\'dailyArticleViews\'][\'' . $title . '\']' );
