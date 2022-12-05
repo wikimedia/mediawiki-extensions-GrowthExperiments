@@ -154,7 +154,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "感謝{{GENDER:|您}}自願成為{{SITENAME}}上的{{GENDER:|導師}}。{{GENDER:|您}}可以透過填寫此份表單來登記為導師。",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "介紹訊息",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "介紹訊息會介紹出{{GENDER:|您}}作為導師的身分。請將內容保持在 240 個字元以內，並且不允許使用 wikitext。",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "原因",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "登記",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|您}}現在已登記為導師。{{GENDER:|您}}可以繼續前往到[[Special:MentorDashboard|導師面板]]。",
 	"growthexperiments-mentorship-enrollasmentor-summary": "將自己添加為導師",

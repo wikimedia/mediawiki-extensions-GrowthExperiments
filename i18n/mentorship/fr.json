@@ -165,7 +165,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Merci pour votre candidature en tant que tut{{GENDER:|eur|rice}} bénévole sur {{SITENAME}}. Vous pouvez vous engager en tant que tut{{GENDER:|eur|rice}} en remplissant ce formulaire.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Message d’introduction",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Le message d’introduction vous présente en tant que tut{{GENDER:|eur|rice}}. Veuillez faire en sorte qu’il ne dépasse pas 240 caractères. Aucun wikicode n’est autorisé.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motif",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "S’inscrire",
 	"growthexperiments-mentorship-enrollasmentor-success": "Vous êtes maintenant inscrit{{GENDER:||e}} en tant que tut{{GENDER:|eur|rice}}. Vous pouvez maintenant continuer sur le [[Special:MentorDashboard|tableau de bord du tutorat]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "M’ajoute moi-même en tant que tuteur ou tutrice",

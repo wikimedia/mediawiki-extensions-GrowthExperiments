@@ -89,6 +89,5 @@
 	"growthexperiments-manage-mentors-remove-mentor": "Noņemt",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Mentora noņemšanas iemesls",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Dalībnieks|Dalībniece}} [[User:$1|$1]] vairs nav {{GENDER:$1|mentors|mentore}}.",
-	"growthexperiments-manage-mentors-return-back": "Tu vari [[Special:ManageMentors|atgriezties atpakaļ]] uz mentoru sarakstu.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Iemesls"
+	"growthexperiments-manage-mentors-return-back": "Tu vari [[Special:ManageMentors|atgriezties atpakaļ]] uz mentoru sarakstu."
 }

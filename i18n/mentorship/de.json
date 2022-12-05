@@ -167,7 +167,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Vielen Dank, dass {{GENDER:|du}} dich freiwillig als {{GENDER:|Lotse|Lotsin}} für {{SITENAME}} gemeldet hast. {{GENDER:|Du}} kannst dich als Lotse anmelden, indem du dieses Formular ausfüllst.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Einleitende Nachricht",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Die Einführungsnachricht stellt {{GENDER:|dich}} als Lotse vor. Bitte halte diese Nachricht kürzer als 240 Zeichen. Wikitext ist nicht erlaubt.",
-	"growthexperiments-mentorship-enrollasmentor-form-reason": "Grund",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Anmelden",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Du}} bist nun als Lotse angemeldet. {{GENDER:|Du}} kannst jetzt zur [[Special:MentorDashboard|Lotsen-Verwaltungsseite]] gehen.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Mich selbst als Lotsen hinzufügen",
