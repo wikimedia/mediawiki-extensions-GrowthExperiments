@@ -36,7 +36,8 @@
 			"Danniel07",
 			"McDutchie",
 			"OriginReboot",
-			"-jem-"
+			"-jem-",
+			"SpikeShroom"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -134,7 +135,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Activo|Activa}} hace $2 {{PLURAL:$2|día|días}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Este usuario experto|Esta usuaria experta}} sabe que recién has llegado y puede {{GENDER:$2|ayudarte}} con la edición.",
 	"growthexperiments-homepage-mentorship-question-button": "Haz una pregunta a {{GENDER:$2|tu}} {{GENDER:$1|mentor|mentora}}",
-	"growthexperiments-homepage-mentorship-mentor-conversations": "Ver las demás conversaciones de {{GENDER:$2|tu}} {{GENDER:$1|mentor|mentora}}",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "Ver el resto de conversaciones de {{GENDER:$2|tu}} {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Pregúntale a {{GENDER:$2|tu}} {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Cuando haces una pregunta, se <strong>publica públicamente</strong> bajo {{GENDER:$2|tu}} nombre de usuario, «$2» a $3, que es donde {{GENDER:$1|él|ella|ellos}} puede encontrar y responder tu pregunta.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "Página de discusión de {{GENDER:$2|tu}} {{GENDER:$1|mentor|mentora}}",

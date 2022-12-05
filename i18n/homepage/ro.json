@@ -100,7 +100,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|Vedeți-vă}} întrebarea pe pagina de discuție a {{GENDER:$1|mentorului}} dvs.",
 	"growthexperiments-homepage-mentorship-question-subject": "Întrebare de la [[User:$1|$1]]",
 	"growthexperiments-specialimpact-title": "Impact",
-	"growthexperiments-specialimpact-showing-for-other-user": "Arătați datele impactului pentru $1",
+	"growthexperiments-specialimpact-showing-for-other-user": "Se afișează datele despre impact pentru $1",
 	"growthexperiments-specialimpact-invalid-username": "Nume de utilizator lipsă sau invalid.",
 	"growthexperiments-homepage-claimmentee-no-user": "Ucenicul nu există",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Sunteți}} deja mentorul lui {{GENDER:$1|$1}}",
