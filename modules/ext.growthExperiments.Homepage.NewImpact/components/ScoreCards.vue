@@ -144,6 +144,9 @@ const {
 	cdxIconInfoFilled
 } = require( '../../vue-components/icons.json' );
 const { NO_DATA_CHARACTER } = require( '../constants.js' );
+// References ComputedUserImpactLookup::MAX_EDITS / MAX_THANKS. If we get exactly this number
+// for edit count or thanks count, there are probably more.
+const DATA_ROWS_LIMIT = 1000;
 
 // @vue/component
 module.exports = exports = {
@@ -184,14 +187,20 @@ module.exports = exports = {
 	},
 	computed: {
 		totalEditsCount() {
-			return this.data ?
-				this.$filters.convertNumber( this.data.totalEditsCount ) :
-				NO_DATA_CHARACTER;
+			if ( !this.data ) {
+				return NO_DATA_CHARACTER;
+			} else if ( this.data.totalEditsCount >= DATA_ROWS_LIMIT ) {
+				return this.$i18n( 'growthexperiments-homepage-impact-scores-over-limit' );
+			}
+			return this.$filters.convertNumber( this.data.totalEditsCount );
 		},
 		receivedThanksCount() {
-			return this.data ?
-				this.$filters.convertNumber( this.data.receivedThanksCount ) :
-				NO_DATA_CHARACTER;
+			if ( !this.data ) {
+				return NO_DATA_CHARACTER;
+			} else if ( this.data.receivedThanksCount >= DATA_ROWS_LIMIT ) {
+				return this.$i18n( 'growthexperiments-homepage-impact-scores-over-limit' );
+			}
+			return this.$filters.convertNumber( this.data.receivedThanksCount );
 		},
 		lastEditFormattedTimeAgo() {
 			return this.data ?

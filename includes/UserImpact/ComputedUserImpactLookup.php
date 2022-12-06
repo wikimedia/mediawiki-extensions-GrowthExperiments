@@ -43,10 +43,10 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 */
 	private const THUMBNAIL_SIZE = 40;
 
-	/** Cutoff for edit statistics. */
+	/** Cutoff for edit statistics. See also DATA_ROWS_LIMIT in ScoreCards.vue. */
 	private const MAX_EDITS = 1000;
 
-	/** Cutoff for thanks count. */
+	/** Cutoff for thanks count. See also DATA_ROWS_LIMIT in ScoreCards.vue. */
 	private const MAX_THANKS = 1000;
 
 	/** How many articles to use for $priorityTitles in getPageViewData(). */
