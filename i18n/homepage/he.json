@@ -548,5 +548,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "סיום",
 	"growthexperiments-homepage-special-contribute-title": "עריכות מוצעות",
 	"growthexperiments-homepage-special-contribute-description": "עשיית שינויים קטנים וקלים (למשל, הוספת קישור או העתקה) כדי לשפר ערכים קיימים.",
-	"growthexperiments-homepage-special-contribute-cta": "לראות את העריכות המוצעות"
+	"growthexperiments-homepage-special-contribute-cta": "לראות את העריכות המוצעות",
+	"growthexperiments-tour-newimpact-discovery-title": "עיצוב מעודכן",
+	"growthexperiments-tour-newimpact-discovery-description": "נוסף עוד מפעילות העריכה של {{GENDER:|שלך}}!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "הבנתי"
 }

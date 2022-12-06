@@ -573,5 +573,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "Fait",
 	"growthexperiments-homepage-special-contribute-title": "Modifications suggérées",
 	"growthexperiments-homepage-special-contribute-description": "Effectuez de petites modifications faciles (par exemple, un ajout de lien ou une correction) pour améliorer les articles existants.",
-	"growthexperiments-homepage-special-contribute-cta": "Voir les modifications suggérées"
+	"growthexperiments-homepage-special-contribute-cta": "Voir les modifications suggérées",
+	"growthexperiments-tour-newimpact-discovery-title": "Conception mise à jour",
+	"growthexperiments-tour-newimpact-discovery-description": "Davantage de {{GENDER:}}vos activités de modification ont été ajoutées !",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "C’est bon"
 }
