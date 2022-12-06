@@ -243,7 +243,9 @@ class NewImpact extends BaseModule {
 				$this->userDatabaseHelper->hasMainspaceEdits( $this->userIdentity ),
 			];
 		}
-		return $this->hasMainspaceEditsCache[0];
+		// null indicates that the user has 1000 main namespace edits, so we
+		// only want to condition this on false.
+		return $this->hasMainspaceEditsCache[0] !== false;
 	}
 
 }
