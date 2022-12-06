@@ -72,6 +72,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Views on articles {{GENDER:$1|you've}} edited",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total edits",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Thanks received",
+	"growthexperiments-homepage-impact-scores-over-limit": "999+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "More information about how thanks works",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} is created by a community of editors like {{GENDER:$1|you}}. {{GENDER:$1|You}} may be thanked by another contributor for an edit {{GENDER:$1|you’ve}} made, and {{GENDER:$1|you}} can thank others for their edits too.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "This is the highest number of days in a row that {{GENDER:$1|you}} made at least one edit.",
