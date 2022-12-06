@@ -36,7 +36,7 @@
 		>
 			<c-text
 				v-if="isDisabled"
-				:size="mode !== 'desktop' && 'sm'"
+				:size="renderMode !== 'desktop' && 'sm'"
 				color="subtle"
 			>
 				{{ $i18n( 'growthexperiments-homepage-impact-unactivated-description', userName ).text() }}
@@ -44,7 +44,7 @@
 			<c-text
 				v-else
 				v-i18n-html:growthexperiments-homepage-impact-unactivated-suggested-edits-footer="[ userName ]"
-				:size="mode !== 'desktop' && 'sm'"
+				:size="renderMode !== 'desktop' && 'sm'"
 				color="subtle"
 			>
 			</c-text>
