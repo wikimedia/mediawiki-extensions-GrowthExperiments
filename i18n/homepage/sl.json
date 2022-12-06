@@ -544,5 +544,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "Končano",
 	"growthexperiments-homepage-special-contribute-title": "Predlagana urejanja",
 	"growthexperiments-homepage-special-contribute-description": "Opravite majhne in preproste spremembe (npr. dodajte povezavo ali jezikovni popravek), da izboljšate obstoječe članke.",
-	"growthexperiments-homepage-special-contribute-cta": "Ogled predlaganih urejanj"
+	"growthexperiments-homepage-special-contribute-cta": "Ogled predlaganih urejanj",
+	"growthexperiments-tour-newimpact-discovery-title": "Posodobljena podoba",
+	"growthexperiments-tour-newimpact-discovery-description": "Dodanih je še več {{GENDER:|vaših}} dejavnosti urejanja!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Razumem"
 }

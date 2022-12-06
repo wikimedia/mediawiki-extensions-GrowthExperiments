@@ -555,5 +555,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "تمّ",
 	"growthexperiments-homepage-special-contribute-title": "التعديلات المقترحة",
 	"growthexperiments-homepage-special-contribute-description": "إجراء تغييرات صغيرة وسهلة (على سبيل المثال، إضافة رابط أو تحرير نسخ) لتحسين المقالات الموجودة.",
-	"growthexperiments-homepage-special-contribute-cta": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة"
+	"growthexperiments-homepage-special-contribute-cta": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة",
+	"growthexperiments-tour-newimpact-discovery-title": "تصميم محيّن",
+	"growthexperiments-tour-newimpact-discovery-description": "تمت إضافة المزيد من {{GENDER:|أنشطتك}} التحريرية!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "عُلم"
 }

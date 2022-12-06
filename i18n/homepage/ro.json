@@ -538,5 +538,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "Realizat",
 	"growthexperiments-homepage-special-contribute-title": "Editări sugerate",
 	"growthexperiments-homepage-special-contribute-description": "Efectuați schimbări mici și ușoare (de exemplu, adăugați o legătură sau corectați) pentru a îmbunătăți articole existente.",
-	"growthexperiments-homepage-special-contribute-cta": "Vezi editări sugerate"
+	"growthexperiments-homepage-special-contribute-cta": "Vezi editări sugerate",
+	"growthexperiments-tour-newimpact-discovery-title": "Design actualizat",
+	"growthexperiments-tour-newimpact-discovery-description": "Au fost adăugate mai multe despre activitatea {{GENDER:|dvs.}} de editare!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Am înțeles"
 }

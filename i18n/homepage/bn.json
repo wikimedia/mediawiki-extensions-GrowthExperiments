@@ -111,6 +111,8 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "পরামর্শকৃত সম্পাদনাগুলি দেখুন",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "প্রথমে কিছু <strong>পরামর্শকৃত সম্পাদনা</strong> দিয়ে শুরু করুন, তারপর এখানে দেখুন কতজন মানুষ {{GENDER:$1|আপনার}} এই অবদান দেখছেন।",
 	"growthexperiments-homepage-impact-unactivated-description": "{{GENDER:$1|আপনি}} সম্পাদনা করা শুরু করলেই, আপনি এখানে দেখতে পাবেন কতজন মানুষ আপনার সম্পাদিত নিবন্ধগুলি দেখছেন।",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "{{GENDER:$1|আপনার}} তথ্য পেতে সাময়িক দেরি হচ্ছে",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "{{SITENAME}}-এ সম্পাদনা করুন এবং এ সম্পর্কে আরও শিখে নিন। এরপরে {{GENDER:$1|আপনার}} অবদানের প্রভাব দেখতে ফিরে আসুন।",
 	"growthexperiments-tour-helpdesk-response-tip-title": "সাহায্য কেন্দ্র বিজ্ঞপ্তি",
 	"growthexperiments-tour-response-tip-text": "যখন {{GENDER:$1|আপনার}} প্রশ্নের উত্তর দেওয়া হবে, তখন {{GENDER:$1|আপনি}} এখানে একটি বিজ্ঞপ্তি দেখতে পাবেন।",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "{{GENDER:$1|মেন্টর}} বিজ্ঞপ্তি",
@@ -548,5 +550,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "যখন {{GENDER:|আপনি}} আপনার মেন্টরকে একটি বার্তা পাঠান, তখন {{GENDER:$1|তিনি}} এটি {{GENDER:$1|তার}} ব্যবহারকারীর আলাপ পাতায় দেখতে পাবেন এবং {{GENDER:$1|তিনি}} উত্তর দিলে {{GENDER:|আপনি}} একটি বিজ্ঞপ্তি পাবেন।",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "মেন্টরশিপ বাদ দিন",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|আপনি}} এই মুহূর্তে {{GENDER:|আপনার}} জন্য নির্দিষ্ট কোনো পরামর্শদাতা নিয়োগ না করতে চাইলে অপ্ট-আউট করতে নীচের বোতামটি নির্বাচন করুন৷ {{GENDER:|আপনি}} যে কোনো সময় আবার একজন নতুন পরামর্শদাতা পেতে পারেন যদি {{GENDER:|আপনার}} ইচ্ছা পরিবর্তন করেন।",
-	"growthexperiments-homepage-mentorship-about-done": "সম্পন্ন"
+	"growthexperiments-homepage-mentorship-about-done": "সম্পন্ন",
+	"growthexperiments-tour-newimpact-discovery-title": "হালনাগাদকৃত ডিজাইন",
+	"growthexperiments-tour-newimpact-discovery-description": "{{GENDER:|আপনার}} জন্য আরো সম্পাদনার সক্রিয়তার তথ্য যোগ করা হয়েছে!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "বুঝেছি"
 }
