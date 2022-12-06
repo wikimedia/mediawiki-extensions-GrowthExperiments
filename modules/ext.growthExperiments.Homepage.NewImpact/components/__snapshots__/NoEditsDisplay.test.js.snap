@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoEditsDisplay displays appropiate text when activated (desktop) 1`] = `
+<div
+  class="ext-growthExperiments-NoEditsDisplay--desktop"
+>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__content ext-growthExperiments-NoEditsDisplay__content--desktop"
+  >
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__image ext-growthExperiments-NoEditsDisplay__content__image--desktop"
+    />
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__messages--desktop"
+    >
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-xxl ext-growthExperiments-CText--weight-bold"
+      >
+        
+        growthexperiments-homepage-impact-unactivated-subheader-text
+        
+      </div>
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--weight-bold ext-growthExperiments-NoEditsDisplay__content__messages__subtext"
+      >
+        growthexperiments-homepage-impact-unactivated-subheader-subtext (Alice)
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__footer ext-growthExperiments-NoEditsDisplay__footer--desktop"
+  >
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle"
+    >
+      growthexperiments-homepage-impact-unactivated-suggested-edits-footer (Alice)
+    </div>
+  </div>
+</div>
+`;
+
+exports[`NoEditsDisplay displays appropiate text when activated (overlay) 1`] = `
+<div
+  class="ext-growthExperiments-NoEditsDisplay--overlay"
+>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__content ext-growthExperiments-NoEditsDisplay__content--overlay"
+  >
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__image ext-growthExperiments-NoEditsDisplay__content__image--overlay"
+    />
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__messages--overlay"
+    >
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-xl ext-growthExperiments-CText--weight-bold"
+      >
+        
+        growthexperiments-homepage-impact-unactivated-subheader-text
+        
+      </div>
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--weight-bold ext-growthExperiments-NoEditsDisplay__content__messages__subtext"
+      >
+        growthexperiments-homepage-impact-unactivated-subheader-subtext (Alice)
+      </div>
+      <div>
+        <button
+          class="cdx-button cdx-button--action-default cdx-button--type-normal cdx-button--framed"
+          data-link-id="impact-see-suggested-edits"
+        >
+          
+          growthexperiments-homepage-impact-unactivated-suggested-edits-link
+          
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__footer ext-growthExperiments-NoEditsDisplay__footer--overlay"
+  >
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--size-sm ext-growthExperiments-CText--color-subtle"
+    >
+      growthexperiments-homepage-impact-unactivated-suggested-edits-footer (Alice)
+    </div>
+  </div>
+</div>
+`;
+
+exports[`NoEditsDisplay displays appropiate text when activated (overlay-summary) 1`] = `
+<div
+  class="ext-growthExperiments-NoEditsDisplay--overlay-summary"
+>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__content ext-growthExperiments-NoEditsDisplay__content--overlay-summary"
+  >
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__image ext-growthExperiments-NoEditsDisplay__content__image--overlay-summary"
+    />
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__messages--overlay-summary"
+    >
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-lg ext-growthExperiments-CText--weight-bold"
+      >
+        
+        growthexperiments-homepage-impact-unactivated-subheader-text
+        
+      </div>
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-sm ext-growthExperiments-NoEditsDisplay__content__messages__subtext"
+      >
+        growthexperiments-homepage-impact-unactivated-subheader-subtext (Alice)
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__footer ext-growthExperiments-NoEditsDisplay__footer--overlay-summary"
+  >
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--size-sm ext-growthExperiments-CText--color-subtle"
+    >
+      growthexperiments-homepage-impact-unactivated-suggested-edits-footer (Alice)
+    </div>
+  </div>
+</div>
+`;
+
+exports[`NoEditsDisplay displays appropiate text when disabled (desktop) 1`] = `
+<div
+  class="ext-growthExperiments-NoEditsDisplay--desktop"
+>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__content ext-growthExperiments-NoEditsDisplay__content--desktop"
+  >
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__image ext-growthExperiments-NoEditsDisplay__content__image--desktop"
+    />
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__messages--desktop"
+    >
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-xxl ext-growthExperiments-CText--weight-bold"
+      >
+        
+        growthexperiments-homepage-impact-unactivated-subheader-text
+        
+      </div>
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--weight-bold ext-growthExperiments-NoEditsDisplay__content__messages__subtext"
+      >
+        growthexperiments-homepage-impact-unactivated-subheader-subtext (Alice)
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__footer ext-growthExperiments-NoEditsDisplay__footer--desktop"
+  >
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle"
+    >
+      
+      growthexperiments-homepage-impact-unactivated-description
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`NoEditsDisplay displays appropiate text when disabled (overlay) 1`] = `
+<div
+  class="ext-growthExperiments-NoEditsDisplay--overlay"
+>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__content ext-growthExperiments-NoEditsDisplay__content--overlay"
+  >
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__image ext-growthExperiments-NoEditsDisplay__content__image--overlay"
+    />
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__messages--overlay"
+    >
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-xl ext-growthExperiments-CText--weight-bold"
+      >
+        
+        growthexperiments-homepage-impact-unactivated-subheader-text
+        
+      </div>
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--weight-bold ext-growthExperiments-NoEditsDisplay__content__messages__subtext"
+      >
+        growthexperiments-homepage-impact-unactivated-subheader-subtext (Alice)
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__footer ext-growthExperiments-NoEditsDisplay__footer--overlay"
+  >
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--size-sm ext-growthExperiments-CText--color-subtle"
+    >
+      
+      growthexperiments-homepage-impact-unactivated-description
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`NoEditsDisplay displays appropiate text when disabled (overlay-summary) 1`] = `
+<div
+  class="ext-growthExperiments-NoEditsDisplay--overlay-summary"
+>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__content ext-growthExperiments-NoEditsDisplay__content--overlay-summary"
+  >
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__image ext-growthExperiments-NoEditsDisplay__content__image--overlay-summary"
+    />
+    <div
+      class="ext-growthExperiments-NoEditsDisplay__content__messages--overlay-summary"
+    >
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-lg ext-growthExperiments-CText--weight-bold"
+      >
+        
+        growthexperiments-homepage-impact-unactivated-subheader-text
+        
+      </div>
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-sm ext-growthExperiments-NoEditsDisplay__content__messages__subtext"
+      >
+        growthexperiments-homepage-impact-unactivated-subheader-subtext (Alice)
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-NoEditsDisplay__footer ext-growthExperiments-NoEditsDisplay__footer--overlay-summary"
+  >
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--size-sm ext-growthExperiments-CText--color-subtle"
+    >
+      
+      growthexperiments-homepage-impact-unactivated-description
+      
+    </div>
+  </div>
+</div>
+`;
