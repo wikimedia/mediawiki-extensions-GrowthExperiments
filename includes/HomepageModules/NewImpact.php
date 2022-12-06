@@ -153,6 +153,8 @@ class NewImpact extends BaseModule {
 	public function getState() {
 		if ( $this->canRender()
 			&& $this->isSuggestedEditsEnabledForUser
+			// On null (first 1000 edits are non-mainspace) assume rest are non-mainspace as well
+			// (chances are it's some kind of bot or role account).
 			&& $this->hasMainspaceEdits()
 		) {
 			return self::MODULE_STATE_ACTIVATED;
@@ -243,9 +245,7 @@ class NewImpact extends BaseModule {
 				$this->userDatabaseHelper->hasMainspaceEdits( $this->userIdentity ),
 			];
 		}
-		// null indicates that the user has 1000 main namespace edits, so we
-		// only want to condition this on false.
-		return $this->hasMainspaceEditsCache[0] !== false;
+		return $this->hasMainspaceEditsCache[0];
 	}
 
 }
