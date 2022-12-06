@@ -574,5 +574,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "Hecho",
 	"growthexperiments-homepage-special-contribute-title": "Ediciones sugeridas",
 	"growthexperiments-homepage-special-contribute-description": "Realiza pequeños y sencillos cambios (por ejemplo, añadir un enlace o hacer una corrección de texto) para mejorar los artículos existentes.",
-	"growthexperiments-homepage-special-contribute-cta": "Ver ediciones sugeridas"
+	"growthexperiments-homepage-special-contribute-cta": "Ver ediciones sugeridas",
+	"growthexperiments-tour-newimpact-discovery-title": "Diseño actualizado",
+	"growthexperiments-tour-newimpact-discovery-description": "¡Se ha añadido más información sobre {{GENDER:|tus}} contribuciones!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Listo"
 }
