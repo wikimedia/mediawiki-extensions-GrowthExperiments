@@ -552,5 +552,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "Hotovo",
 	"growthexperiments-homepage-special-contribute-title": "Editační tipy",
 	"growthexperiments-homepage-special-contribute-description": "Proveďte malé a jednoduché změny (přidání odkazu či korektury), abyste vylepšili existující články.",
-	"growthexperiments-homepage-special-contribute-cta": "Zobrazit editační tipy"
+	"growthexperiments-homepage-special-contribute-cta": "Zobrazit editační tipy",
+	"growthexperiments-tour-newimpact-discovery-title": "Aktualizovaný modul",
+	"growthexperiments-tour-newimpact-discovery-description": "Přidali jsme více informací o {{GENDER:|vaší}} editační aktivitě!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Rozumím"
 }

@@ -564,5 +564,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "Fertig",
 	"growthexperiments-homepage-special-contribute-title": "Vorgeschlagene Bearbeitungen",
 	"growthexperiments-homepage-special-contribute-description": "Nimm kleine und einfache Änderungen vor (z. B. einen Link hinzufügen oder redigieren), um bestehende Artikel zu verbessern.",
-	"growthexperiments-homepage-special-contribute-cta": "Vorgeschlagene Bearbeitungen ansehen"
+	"growthexperiments-homepage-special-contribute-cta": "Vorgeschlagene Bearbeitungen ansehen",
+	"growthexperiments-tour-newimpact-discovery-title": "Aktualisiertes Design",
+	"growthexperiments-tour-newimpact-discovery-description": "Es wurde mehr von {{GENDER:|deiner}} Bearbeitungsaktivität hinzugefügt!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Verstanden"
 }
