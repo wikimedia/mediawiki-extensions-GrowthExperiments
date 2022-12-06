@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments;
 
+use LogicException;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\IDatabase;
@@ -61,23 +62,34 @@ class UserDatabaseHelper {
 	 */
 	public function hasMainspaceEdits( UserIdentity $userIdentity, int $limit = 1000 ): ?bool {
 		$user = $this->userFactory->newFromUserIdentity( $userIdentity );
-		$queryBuilder = new SelectQueryBuilder( $this->dbr );
-		$queryBuilder->table( 'revision' );
-		$queryBuilder->join( 'page', null, 'page_id = rev_page' );
-		$queryBuilder->field( '1' );
-		$queryBuilder->where( [
+		$query = new SelectQueryBuilder( $this->dbr );
+
+		// Do an inner query that selects the user's last $limit edits. Aligns with the
+		// rev_actor_timestamp index, so it will only need to scan up to $limit rows.
+		$innerQuery = $query->newSubquery();
+		$innerQuery->table( 'revision' );
+		$innerQuery->join( 'page', null, 'page_id = rev_page' );
+		$innerQuery->fields( [ 'rev_id', 'page_namespace' ] );
+		$innerQuery->where( [
 			'rev_actor' => $user->getActorId(),
-			'page_namespace' => NS_MAIN,
 		] );
-		// Look at the user's oldest edits - arbitrary choice, other than we want the method to be
-		// deterministic. Can be done efficiently via the rev_actor_timestamp index.
-		$queryBuilder->orderBy( 'rev_timestamp', SelectQueryBuilder::SORT_ASC );
-		$queryBuilder->limit( $limit );
-		$queryBuilder->caller( __METHOD__ );
-		// Opting for code readability over the slightly more performant approach of doing the
-		// same wrapping that Database::selectRowCount() does but with an outer LIMIT of 1.
-		$rowCount = $queryBuilder->fetchRowCount();
-		return $rowCount === $limit ? null : (bool)$rowCount;
+		// Look at the user's oldest edits - arbitrary, other than we want a deterministic result.
+		$innerQuery->orderBy( 'rev_timestamp', SelectQueryBuilder::SORT_ASC );
+		$innerQuery->limit( $limit );
+		$innerQuery->caller( __METHOD__ );
+
+		// Now count the rows and the mainspace rows.
+		$query->table( $innerQuery, 'first_1000_edits' );
+		$nsMain = NS_MAIN;
+		$query->fields( [ 'all_edits' => 'COUNT(*)', 'main_edits' => "SUM( page_namespace = $nsMain )" ] );
+		$query->caller( __METHOD__ );
+
+		$row = $query->fetchRow();
+		// For the benefit of static type checks - aggregate query, cannot return empty result set.
+		if ( $row === false ) {
+			throw new LogicException( 'Unexpected empty result' );
+		}
+		return $row->main_edits ? true : ( $row->all_edits === $limit ? null : false );
 	}
 
 }
