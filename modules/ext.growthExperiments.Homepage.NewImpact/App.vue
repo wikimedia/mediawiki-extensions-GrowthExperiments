@@ -2,7 +2,7 @@
 	<div class="ext-growthExperiments-App--UserImpact">
 		<layout :render-mode="renderMode">
 			<no-edits-display
-				v-if="isUnactiveOrDisabled && !isGloballyActivated"
+				v-if="isModuleUnactivated"
 				:is-disabled="!isSuggestedEditsEnabled"
 				:is-activated="isSuggestedEditsActivated"
 				:user-name="userName"
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-const { ref, inject } = require( 'vue' );
+const { inject } = require( 'vue' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( './constants.js' );
 const useUserImpact = require( './composables/useUserImpact.js' );
 const Layout = require( './components/LayoutWrapper.vue' );
@@ -48,24 +48,20 @@ module.exports = exports = {
 		Layout
 	},
 	setup() {
-		let result = ref( null );
 		const renderMode = inject( 'RENDER_MODE' );
 		const userId = inject( 'RELEVANT_USER_ID' );
 		const userName = inject( 'RELEVANT_USER_USERNAME' );
-		const editCount = inject( 'RELEVANT_USER_EDIT_COUNT' );
+		const isModuleUnactivated = inject( 'RELEVANT_USER_MODULE_UNACTIVATED' );
 		const isSuggestedEditsEnabled = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED' );
 		const isSuggestedEditsActivated = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED' );
-		const isUnactiveOrDisabled = editCount === 0 || isSuggestedEditsEnabled === false;
 		const impactComponent = renderMode === 'overlay-summary' ? 'NewImpactSummary' : 'NewImpact';
 		const errorComponent = renderMode === 'overlay-summary' ? 'ErrorDisplaySummary' : 'ErrorDisplay';
 
-		if ( editCount > 0 ) {
-			result = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
-		}
+		const result = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
 
-		// If the module isn't inactive, and the user hasn't already seen it, then show the
+		// If the module is activated, and the user hasn't already seen it, then show the
 		// new impact discovery tour.
-		if ( !isUnactiveOrDisabled && !mw.user.options.get( 'growthexperiments-tour-newimpact-discovery' ) && renderMode === 'desktop' ) {
+		if ( !isModuleUnactivated && !mw.user.options.get( 'growthexperiments-tour-newimpact-discovery' ) && renderMode === 'desktop' ) {
 			mw.loader.load( 'ext.guidedTour.tour.newimpact_discovery' );
 		}
 
@@ -74,7 +70,7 @@ module.exports = exports = {
 			userName,
 			isSuggestedEditsEnabled,
 			isSuggestedEditsActivated,
-			isUnactiveOrDisabled,
+			isModuleUnactivated,
 			impactComponent,
 			errorComponent,
 			data: result.data,

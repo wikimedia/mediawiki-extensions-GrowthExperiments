@@ -20,7 +20,7 @@
 		// provided values can be injected in any component using vue's inject.
 		app.provide( 'RELEVANT_USER_ID', mw.config.get( 'GENewImpactRelevantUserId' ) );
 		app.provide( 'RELEVANT_USER_USERNAME', mw.config.get( 'GENewImpactRelevantUserName' ) );
-		app.provide( 'RELEVANT_USER_EDIT_COUNT', mw.config.get( 'GENewImpactRelevantUserEditCount' ) );
+		app.provide( 'RELEVANT_USER_MODULE_UNACTIVATED', mw.config.get( 'GENewImpactRelevantUserUnactivated' ) );
 		app.provide( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED', mw.config.get( 'GENewImpactIsSuggestedEditsEnabledForUser' ) );
 		app.provide( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED', mw.config.get( 'GENewImpactIsSuggestedEditsActivatedForUser' ) );
 		app.provide( 'RENDER_MODE', mode );
