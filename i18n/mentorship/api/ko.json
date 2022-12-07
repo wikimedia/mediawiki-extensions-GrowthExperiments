@@ -6,8 +6,11 @@
 		]
 	},
 	"apihelp-growthstarmentee-summary": "현재 사용자가 지정한 멘티를 표시하거나 표시를 해제합니다 (비공개 상태로 저장되며 기록에 남지 않습니다)",
+	"apihelp-growthsetmentorstatus-summary": "현재 사용자의 멘토 상태를 활동 중/부재로 설정합니다",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "새 상태",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "멘토를 away로 설정할 때 이 값은 away 상태의 길이여야 합니다 (단위: 일)",
 	"apihelp-query+growthmentorstatus-summary": "현재 사용자의 멘토 상태를 조회합니다",
+	"apihelp-growthmentordashboardupdatedata-summary": "멘토 대시보드에서 멘티 개요 모듈의 상당한 업데이트를 스케줄링합니다. 성능을 이유로 2시간에 한 차례의 업데이트만 스케줄링할 수 있습니다.",
 	"apihelp-growthsetmenteestatus-summary": "멘티의 상태 보기 (멘티가 멘토십 모듈을 활성화/비활성화하거나 완전히 참여를 하지 않기로 할 수 있으며 이 경우 멘티/멘토 관계는 삭제됩니다)",
 	"apihelp-growthsetmenteestatus-param-state": "멘티의 새 상태 (경고: 이것을 optout으로 설정하면 멘티/멘토 관계를 영구적으로 삭제하게 됩니다)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "멘토십 모듈이 활성화되어 있습니다",

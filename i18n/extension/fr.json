@@ -18,7 +18,7 @@
 	"growthexperiments-config-validator-error": "La validation pour $1 a échoué avec : « $2 »",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> est attendu comme <code>$2</code>, mais est <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Modèle de contenu non correspondant : le fichier de configuration de GrowthExperiments  doit avoir un modèle de contenu JSON, $1 détecté.",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de gestion de type de tâche non valide : <code>$1</code> n’est pas une valeur valide",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Identifiant de gestion de type de tâche non valide : <code>$1</code> n’est pas une valeur valide",
 	"growthexperiments-config-validator-array-toobig": "$1 a trop d’éléments (maximum autorisé : $2)",
 	"growthexperiments-edit-config-disabled": "La configuration de la communauté est actuellement désactivée.",
 	"growthexperiments-edit-config-title": "Modifier la configuration de Growth",
