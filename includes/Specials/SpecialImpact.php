@@ -80,6 +80,9 @@ class SpecialImpact extends SpecialPage {
 		}
 		$context->setUser( $impactUser );
 		$impact = $this->homepageModuleRegistry->get( 'impact', $context );
+		$out->addJsConfigVars( 'specialimpact', [
+			'impact' => $impact->getJsData( IDashboardModule::RENDER_DESKTOP )
+		] );
 		$out->addHTML( $impact->render( IDashboardModule::RENDER_DESKTOP ) );
 	}
 }
