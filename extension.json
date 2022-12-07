@@ -298,6 +298,7 @@
 			"services": [
 				"MainConfig",
 				"GrowthExperimentsMultiConfig",
+				"UserIdentityLookup",
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorStore"
@@ -372,7 +373,8 @@
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
 			"homepage",
-			"variant"
+			"variant",
+			"mentor"
 		],
 		"BeforeCreateEchoEvent": [
 			"GrowthExperiments\\Mentorship\\Hooks\\MentorHooks::onBeforeCreateEchoEvent"
