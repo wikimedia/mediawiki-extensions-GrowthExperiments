@@ -74,7 +74,7 @@ class UserDatabaseHelper {
 			'rev_actor' => $user->getActorId(),
 		] );
 		// Look at the user's oldest edits - arbitrary, other than we want a deterministic result.
-		$innerQuery->orderBy( 'rev_timestamp', SelectQueryBuilder::SORT_ASC );
+		$innerQuery->orderBy( [ 'rev_timestamp ASC', 'rev_id ASC' ] );
 		$innerQuery->limit( $limit );
 		$innerQuery->caller( __METHOD__ );
 
@@ -89,7 +89,13 @@ class UserDatabaseHelper {
 		if ( $row === false ) {
 			throw new LogicException( 'Unexpected empty result' );
 		}
-		return $row->main_edits ? true : ( $row->all_edits === $limit ? null : false );
+		if ( (int)$row->main_edits > 0 ) {
+			return true;
+		} else {
+			// If all_edits < $limit, we see all edits of the user, so we know there are no main edits.
+			// Otherwise, there may be main edits we did not fetch.
+			return (int)$row->all_edits === $limit ? null : false;
+		}
 	}
 
 }
