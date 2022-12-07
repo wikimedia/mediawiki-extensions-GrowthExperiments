@@ -115,6 +115,8 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "পরামর্শকৃত সম্পাদনাগুলি দেখুন",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "প্রথমে কিছু <strong>পরামর্শকৃত সম্পাদনা</strong> দিয়ে শুরু করুন, তারপর এখানে দেখুন কতজন মানুষ {{GENDER:$1|আপনার}} এই অবদান দেখছেন।",
 	"growthexperiments-homepage-impact-unactivated-description": "{{GENDER:$1|আপনি}} সম্পাদনা করা শুরু করলেই, আপনি এখানে দেখতে পাবেন কতজন মানুষ আপনার সম্পাদিত নিবন্ধগুলি দেখছেন।",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "{{GENDER:$1|আপনার}} তথ্য পেতে সাময়িক দেরি হচ্ছে",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "{{SITENAME}}-এ সম্পাদনা করুন এবং এ সম্পর্কে আরও শিখে নিন। এরপরে {{GENDER:$1|আপনার}} অবদানের প্রভাব দেখতে ফিরে আসুন।",
 	"growthexperiments-tour-helpdesk-response-tip-title": "সাহায্য কেন্দ্র বিজ্ঞপ্তি",
 	"growthexperiments-tour-response-tip-text": "যখন {{GENDER:$1|আপনার}} প্রশ্নের উত্তর দেওয়া হবে, তখন {{GENDER:$1|আপনি}} এখানে একটি বিজ্ঞপ্তি দেখতে পাবেন।",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "{{GENDER:$1|মেন্টর}} বিজ্ঞপ্তি",
@@ -555,5 +557,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "সম্পন্ন",
 	"growthexperiments-homepage-special-contribute-title": "পরামর্শকৃত সম্পাদনা",
 	"growthexperiments-homepage-special-contribute-description": "বিদ্যমান নিবন্ধ উন্নত করতে ছোট এবং সহজ পরিবর্তন করুন (যেমন, একটি লিঙ্ক যোগ করুন বা রচনা সংশোধন করুন)।",
-	"growthexperiments-homepage-special-contribute-cta": "পরামর্শকৃত সম্পাদনাগুলো দেখুন"
+	"growthexperiments-homepage-special-contribute-cta": "পরামর্শকৃত সম্পাদনাগুলো দেখুন",
+	"growthexperiments-tour-newimpact-discovery-title": "হালনাগাদকৃত ডিজাইন",
+	"growthexperiments-tour-newimpact-discovery-description": "{{GENDER:|আপনার}} জন্য আরো সম্পাদনার সক্রিয়তার তথ্য যোগ করা হয়েছে!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "বুঝেছি"
 }
