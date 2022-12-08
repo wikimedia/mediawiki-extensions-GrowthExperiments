@@ -67,7 +67,9 @@
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Pēdējais labojums",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dienas|diena|dienas}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Labojumi|Labojums|Labojumi}}",
+	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}} $2",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Saņemtās pateicības",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Plašāka informācija par to, kā darbojas pateciības",
 	"growthexperiments-homepage-impact-subheader-text": "Cilvēki lasa rakstus, ko tu esi {{GENDER:$1|labojis|labojusi}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Skatījumi kopš {{GENDER:$1|tava}} labojuma (pēdējās 60 dienas):",
 	"growthexperiments-homepage-impact-contributions-link": "Tu esi {{GENDER:$2|veicis|veikusi}} <strong>$1</strong> {{PLURAL:$1|labojumus|labojumu|labojumus}} (skatīt visus)",
@@ -89,6 +91,7 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Skatīt ieteiktos labojumus",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Sāc ar dažiem <strong>ieteiktajiem labojumiem</strong>, pēc tam šeit apskati, cik cilvēku redz {{GENDER:$1|tavu}} ieguldījumu.",
 	"growthexperiments-homepage-impact-unactivated-description": "Tiklīdz {{GENDER:$1|sāksi}} labot, šeit {{GENDER:$1|redzēsi}}, cik cilvēku apskata {{GENDER:$1|tevis}} labotos rakstus.",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "Īslaicīga aizkavēšanās, iegūstot {{GENDER:$1|tavu}} informāciju",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Palīdzības dienesta paziņojumi",
 	"growthexperiments-tour-response-tip-text": "Kad {{GENDER:$1|tavs}} jautājums tiks atbildēts, {{GENDER:$1|tu}} šeit saņemsi jaunu paziņojumu.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "{{GENDER:$1|Mentora|Mentores}} paziņojumi",
@@ -480,5 +483,7 @@
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Kas ir {{GENDER:|tavs}} mentors?",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Atteikties no mentoriem",
 	"growthexperiments-homepage-mentorship-about-done": "Gatavs",
-	"growthexperiments-homepage-special-contribute-title": "Ieteiktie labojumi"
+	"growthexperiments-homepage-special-contribute-title": "Ieteiktie labojumi",
+	"growthexperiments-homepage-special-contribute-cta": "Skatīt ieteiktos labojumus",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Sapratu"
 }

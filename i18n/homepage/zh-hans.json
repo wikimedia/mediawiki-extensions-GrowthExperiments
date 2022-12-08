@@ -13,6 +13,7 @@
 			"Hmgrmb",
 			"Josephine W.",
 			"Lakejason0",
+			"Lantianjialiang",
 			"Looong",
 			"Shizhao",
 			"Si109",
@@ -549,5 +550,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "当{{GENDER:|您}}向您的导师发送信息时，{{GENDER:$1|他|她|您的导师}}会在{{GENDER:$1|他的|她的|其}}用户讨论页上看到{{GENDER:|您}}的消息。当{{GENDER:$1|他|她|您的导师}}回复时，{{GENDER:|您}}会收到通知。",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "选择退出导师计划",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "如果{{GENDER:|您}}不希望现在就有一个特定的导师分配给{{GENDER:|您}}，请选择下面的按钮退出。若{{GENDER:|您}}改变了主意，{{GENDER:|您}}可以在任何时候重新获得一个新的导师。",
-	"growthexperiments-homepage-mentorship-about-done": "完成"
+	"growthexperiments-homepage-mentorship-about-done": "完成",
+	"growthexperiments-tour-newimpact-discovery-title": "更新的设计",
+	"growthexperiments-tour-newimpact-discovery-description": "更多关于{{GENDER:|your}}的编辑活动已经添加！",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "明白了"
 }
