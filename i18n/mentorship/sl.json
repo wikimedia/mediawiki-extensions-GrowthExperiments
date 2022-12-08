@@ -131,7 +131,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Uvodno sporočilo",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Uvodno sporočilo predstavlja {{GENDER:|vas}} kot mentorja. Naj bo krajše od 240 znakov. Vikibesedilo ni dovoljeno.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Razlog",
-	"growthexperiments-mentorship-enrollasmentor-enroll": "Vpišite se",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Vpiši se",
 	"growthexperiments-mentorship-enrollasmentor-success": "Zdaj ste vpisani kot {{GENDER:|mentor|mentorica|mentor/ica}}. Zdaj lahko {{GENDER:|nadaljujete}} na [[Special:MentorDashboard|nadzorno ploščo mentorja]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Vpisujem se kot mentor",
 	"tag-mentor list change": "Sprememba seznama mentorjev",

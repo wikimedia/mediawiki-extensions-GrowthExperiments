@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"HitomiAkane"
+		]
+	},
+	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add a link|اقتراح: اضافة لينكات]]",
+	"growthexperiments-addlink-summary-summary": "ميزة اقتراح اللينكات: انضاف {{PLURAL:$1|0 لينكات|لينك واحد|لينكين|$1 روابط|$1 لينك}}."
+}
