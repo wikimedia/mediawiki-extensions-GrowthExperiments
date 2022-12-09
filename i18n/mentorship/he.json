@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"Xnet1234",
 			"חיים"
 		]
 	},
@@ -132,7 +133,7 @@
 	"growthexperiments-manage-mentors-pretext-stored-at": "רשימת החונכים מאוחסנת ב[[$1|מרחב מדיה ויקי]], כולל היסטוריה.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "כדי להירשם לחונכות, נא לעבור לדף [[Special:EnrollAsMentor|מיוחד:רישום לחונכות]].",
 	"growthexperiments-manage-mentors-error-no-such-user": "שגיאה: לא קיים משתמש עם המזהה $1. זאת כנראה שגיאה פנימית.",
-	"growthexperiments-manage-mentors-auto-assigned": "ונכים שהוקצו אוטומטית",
+	"growthexperiments-manage-mentors-auto-assigned": "חונכים שהוקצו אוטומטית",
 	"growthexperiments-manage-mentors-auto-assigned-text": "חשבונות חדשים מוקצים באופן אקראי לחונכים האלה.",
 	"growthexperiments-manage-mentors-manually-assigned": "חונכים שהוקצו ידנית",
 	"growthexperiments-manage-mentors-manually-assigned-text": "חשבונות חדשים אינם מוקצים באופן אקראי לחונכים האלה. כמו חונכים אחרים, החונכים האלה יכולים לבחור ידנית את החשבונות שהם רוצים להדריך. החלק הזה מיועד בעיקר למארחי סדנאות שרק רוצים להדריך אנשים שפגשו.",
