@@ -25,6 +25,7 @@
 </template>
 
 <script>
+const { getIntlLocale } = require( '../../utils/Utils.js' );
 const { defineAsyncComponent } = require( 'vue' );
 const CText = require( '../../vue-components/CText.vue' );
 const CSparkline = defineAsyncComponent( () => {
@@ -77,8 +78,8 @@ module.exports = exports = {
 		formattedPageviewTotal() {
 			// Use abbreviated number format on mobile preview.
 			if ( mw.config.get( 'homepagemobile' ) ) {
-				const language = mw.config.get( 'wgUserLanguage' ),
-					numberFormatter = Intl.NumberFormat( language, { notation: 'compact', maximumFractionDigits: 1 } );
+				const locale = getIntlLocale(),
+					numberFormatter = new Intl.NumberFormat( locale, { notation: 'compact', maximumFractionDigits: 1 } );
 				return numberFormatter.format( this.pageviewTotal );
 			} else {
 				return this.$filters.convertNumber( this.pageviewTotal );
