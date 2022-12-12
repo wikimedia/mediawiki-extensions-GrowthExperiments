@@ -117,7 +117,7 @@ function useUserImpact( userId, timeFrame ) {
 					const articleData = articleDataObject[ articleTitle ];
 
 					return {
-						title: title.getNameText(),
+						title: title.getMainText(),
 						href: title.getUrl(),
 						views: {
 							href: articleData.pageviewsUrl,
