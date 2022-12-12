@@ -75,6 +75,19 @@
 </template>
 
 <script>
+function convertRenderModeForLogging( renderMode ) {
+	switch ( renderMode ) {
+		case 'overlay':
+			return 'mobile-overlay';
+		case 'overlay-summary':
+			return 'mobile-summary';
+		case 'desktop':
+			return 'desktop';
+		default:
+			throw new Error( `Unknown NewImpact render mode: ${renderMode}` );
+	}
+}
+
 const { inject, defineAsyncComponent } = require( 'vue' );
 const Logger = require( '../../ext.growthExperiments.Homepage.Logger/index.js' );
 const logger = new Logger(
@@ -125,7 +138,7 @@ module.exports = exports = {
 		const onClockPopoverToggle = ( isOpen ) => {
 			logger.log(
 				'impact',
-				renderMode,
+				convertRenderModeForLogging( renderMode ),
 				isOpen ? 'open-nopageviews-tooltip' : 'close-nopageviews-tooltip'
 			);
 		};
