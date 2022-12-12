@@ -16,7 +16,8 @@
 			"Sonicarts",
 			"Tmv",
 			"Yamagata Yusuke",
-			"Yusuke1109"
+			"Yusuke1109",
+			"バレロン"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}さん！",
@@ -395,5 +396,7 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "メンターは不要です",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "完了",
 	"growthexperiments-homepage-mentorship-about-done": "完了",
+	"growthexperiments-tour-newimpact-discovery-title": "新しいデザイン",
+	"growthexperiments-tour-newimpact-discovery-description": "あなたの編集が追加されました！",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "わかりました"
 }

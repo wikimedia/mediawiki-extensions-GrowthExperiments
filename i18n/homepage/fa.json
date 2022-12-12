@@ -538,5 +538,7 @@
 	"growthexperiments-homepage-mentorship-about-optout-par1": "اگر ترجیح می‌دهید در حال حاضر مربی خاصی به {{GENDER:|شما}} اختصاص داده نشود، دکمهٔ زیر را انتخاب کنید. اگر {{GENDER:|شما}} نظر {{GENDER:|خود}} را تغییر دهید، می‌توانید هر زمان که بخواهید دوباره یک مربی جدید دریافت کنید.",
 	"growthexperiments-homepage-mentorship-about-done": "انجام شد",
 	"growthexperiments-homepage-special-contribute-title": "ویرایش‌های پیشنهادی",
-	"growthexperiments-homepage-special-contribute-cta": "نمایش ویرایش‌های پیشنهادی"
+	"growthexperiments-homepage-special-contribute-cta": "نمایش ویرایش‌های پیشنهادی",
+	"growthexperiments-tour-newimpact-discovery-title": "طراحی به‌روزشده",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "گرفتم"
 }

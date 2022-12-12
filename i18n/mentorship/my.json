@@ -25,9 +25,21 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 ကိုပြရန်",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 ၏ $1",
 	"growthexperiments-mentor-dashboard-resources-headline": "အရင်းအမြစ်များ",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "လက်ရှိအသုံးပြုနေသည်",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "အဝေးရောက်",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "မလုပ်တော့ပါ",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "ခေတ္တရပ်",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ရက်",
-	"growthexperiments-notification-body-mentee-claimed": "အကြောင်းပြချက်: $1"
+	"growthexperiments-quit-mentorship-reason": "အကြောင်းပြချက်",
+	"growthexperiments-notification-body-mentee-claimed": "အကြောင်းပြချက်: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "သိမ်းရန်",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "မလုပ်တော့ပါ",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "မိတ်ဆက်စာ",
+	"growthexperiments-manage-mentors-username": "အသုံးပြုသူအမည်",
+	"growthexperiments-manage-mentors-status": "အခြေအနေ",
+	"growthexperiments-manage-mentors-edit": "ပြင်ဆင်ရန်",
+	"growthexperiments-manage-mentors-edit-intro-msg": "မိတ်ဆက်စာ",
+	"growthexperiments-manage-mentors-edit-reason": "အကြောင်းပြချက်",
+	"growthexperiments-manage-mentors-remove-mentor": "ဖယ်ရှားရန်",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "မိတ်ဆက်စာ"
 }
