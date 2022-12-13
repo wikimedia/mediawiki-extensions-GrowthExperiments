@@ -92,6 +92,7 @@ module.exports = exports = {
 			required: true
 		}
 	},
+	emits: [ 'mounted' ],
 	setup() {
 		// TODO The value is only used in the RecentActivity component.
 		// Clarify with design if the different flex display is subject to the
