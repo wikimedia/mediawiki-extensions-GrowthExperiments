@@ -7,6 +7,7 @@ use DateTime;
 use DeferredUpdates;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
+use IDBAccessObject;
 use MediaWiki\Hook\ManualLogEntryBeforePublishHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
@@ -132,7 +133,10 @@ class ImpactHooks implements
 		if ( !$this->userOptionsLookup->getBoolOption( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE ) ) {
 			return false;
 		}
-		$lastEditTimestamp = $this->userEditTracker->getLatestEditTimestamp( $userIdentity );
+		$lastEditTimestamp = $this->userEditTracker->getLatestEditTimestamp(
+			$userIdentity,
+			IDBAccessObject::READ_LATEST
+		);
 		if ( !$lastEditTimestamp ) {
 			return false;
 		}
@@ -156,7 +160,7 @@ class ImpactHooks implements
 	 */
 	private function refreshUserImpactDataInDeferredUpdate( UserIdentity $userIdentity ): void {
 		DeferredUpdates::addCallableUpdate( function () use ( $userIdentity ) {
-			$impact = $this->userImpactLookup->getExpensiveUserImpact( $userIdentity );
+			$impact = $this->userImpactLookup->getExpensiveUserImpact( $userIdentity, IDBAccessObject::READ_LATEST );
 			if ( $impact ) {
 				$this->userImpactStore->setUserImpact( $impact );
 			}

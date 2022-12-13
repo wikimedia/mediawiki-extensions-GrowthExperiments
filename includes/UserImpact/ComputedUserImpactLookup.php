@@ -3,9 +3,11 @@
 namespace GrowthExperiments\UserImpact;
 
 use DateTime;
+use DBAccessObjectUtils;
 use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use IBufferingStatsdDataFactory;
+use IDBAccessObject;
 use MalformedTitleException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
@@ -61,6 +63,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/** @var IDatabase */
 	private $dbr;
 
+	private IDatabase $dbw;
+
 	/** @var NameTableStore */
 	private $changeTagDefStore;
 
@@ -87,6 +91,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/**
 	 * @param ServiceOptions $config
 	 * @param IDatabase $dbr
+	 * @param IDatabase $dbw
 	 * @param NameTableStore $changeTagDefStore
 	 * @param UserFactory $userFactory
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -99,6 +104,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	public function __construct(
 		ServiceOptions $config,
 		IDatabase $dbr,
+		IDatabase $dbw,
 		NameTableStore $changeTagDefStore,
 		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup,
@@ -110,6 +116,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	) {
 		$this->config = $config;
 		$this->dbr = $dbr;
+		$this->dbw = $dbw;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -121,14 +128,14 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	}
 
 	/** @inheritDoc */
-	public function getUserImpact( UserIdentity $user ): ?UserImpact {
+	public function getUserImpact( UserIdentity $user, int $flags = IDBAccessObject::READ_NORMAL ): ?UserImpact {
 		$user = $this->userFactory->newFromUserIdentity( $user );
 		if ( $user->isAnon() || $user->isHidden() ) {
 			return null;
 		}
 
-		$editData = $this->getEditData( $user );
-		$thanksCount = $this->getThanksCount( $user );
+		$editData = $this->getEditData( $user, $flags );
+		$thanksCount = $this->getThanksCount( $user, $flags );
 
 		return new UserImpact(
 			$user,
@@ -143,7 +150,10 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	}
 
 	/** @inheritDoc */
-	public function getExpensiveUserImpact( UserIdentity $user ): ?ExpensiveUserImpact {
+	public function getExpensiveUserImpact(
+		UserIdentity $user,
+		int $flags = IDBAccessObject::READ_NORMAL
+	): ?ExpensiveUserImpact {
 		$start = microtime( true );
 		if ( !$this->pageViewService ) {
 			return null;
@@ -153,8 +163,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			return null;
 		}
 
-		$editData = $this->getEditData( $user );
-		$thanksCount = $this->getThanksCount( $user );
+		$editData = $this->getEditData( $user, $flags );
+		$thanksCount = $this->getThanksCount( $user, $flags );
 		$pageViewData = $this->getPageViewData(
 			$user,
 			$editData->getEditedArticles(),
@@ -190,10 +200,14 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * Run a SQL query to fetch edit data for the user.
 	 *
 	 * @param User $user
+	 * @param int $flags
 	 * @return EditData
+	 * @throws \Exception
 	 */
-	private function getEditData( User $user ): EditData {
-		$queryBuilder = new SelectQueryBuilder( $this->dbr );
+	private function getEditData( User $user, int $flags ): EditData {
+		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
+		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
+		$queryBuilder = new SelectQueryBuilder( $db );
 		$queryBuilder->table( 'revision' )
 			->join( 'page', null, 'rev_page = page_id' );
 		try {
@@ -214,6 +228,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$queryBuilder->orderBy( 'rev_timestamp', 'DESC' );
 		$queryBuilder->andWhere( [ 'page_namespace' => NS_MAIN ] );
 		$queryBuilder->limit( self::MAX_EDITS );
+		$queryBuilder->options( $options );
 		$queryBuilder->caller( __METHOD__ );
 
 		$userTimeCorrection = new UserTimeCorrection(
@@ -268,11 +283,14 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 	/**
 	 * @param User $user
+	 * @param int $flags
 	 * @return int Number of thanks received for the user ID
 	 */
-	private function getThanksCount( User $user ): int {
+	private function getThanksCount( User $user, int $flags ): int {
+		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
+		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
 		$userPage = $user->getUserPage();
-		$queryBuilder = new SelectQueryBuilder( $this->dbr );
+		$queryBuilder = new SelectQueryBuilder( $db );
 		$queryBuilder->table( 'logging' );
 		$queryBuilder->field( '1' );
 		// There is no type + target index, but there's a target index (log_page_time)
@@ -286,6 +304,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		] );
 		$queryBuilder->orderBy( 'log_timestamp', 'DESC' );
 		$queryBuilder->limit( self::MAX_THANKS );
+		$queryBuilder->options( $options );
 		return $queryBuilder->fetchRowCount();
 	}
 
