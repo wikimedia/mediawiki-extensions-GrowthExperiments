@@ -973,6 +973,7 @@ return [
 		return new ComputedUserImpactLookup(
 			new ServiceOptions( ComputedUserImpactLookup::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getDBLoadBalancer()->getConnection( DB_PRIMARY ),
 			$services->getChangeTagDefStore(),
 			$services->getUserFactory(),
 			$services->getUserOptionsLookup(),
