@@ -8,7 +8,9 @@
 	"welcomesurvey-sidebar-editing-title": "တည်းဖြတ်မှုနှင့်ပတ်သက်၍ စတင်ခြင်း",
 	"welcomesurvey-sidebar-editing-link1-text": "သင်ခန်းစာ",
 	"welcomesurvey-sidebar-editing-link2-text": "အကူအညီပေးရာနေရာ",
+	"welcomesurvey-dropdown-option-select-label": "ကျေးဇူးပြု၍ ရွေးချယ်ပါ...",
 	"welcomesurvey-question-reason-option-read-label": "ဝီကီပီးဒီးယားကိုဖတ်ရန်",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "အခြား",
-	"welcomesurvey-question-reason-option-other-label": "အခြား (ကျေးဇူးပြု၍ ဖော်ပြပါ)"
+	"welcomesurvey-question-reason-option-other-label": "အခြား (ကျေးဇူးပြု၍ ဖော်ပြပါ)",
+	"welcomesurvey-question-edited-option-dont-remember-label": "မမှတ်မိပါ"
 }

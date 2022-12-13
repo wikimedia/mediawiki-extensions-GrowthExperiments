@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"חיים"
+			"חיים",
+			"Xnet1234"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "לוח בקרה לחונכים",
@@ -121,7 +122,7 @@
 	"growthexperiments-mentor-writer-error-message-too-long": "הודעת ההיכרות ארוכה מדי. האורך המרבי הוא $1.",
 	"growthexperiments-manage-mentors-title": "ניהול חונכים",
 	"growthexperiments-manage-mentors-error-no-such-user": "שגיאה: לא קיים משתמש עם המזהה $1. זאת כנראה שגיאה פנימית.",
-	"growthexperiments-manage-mentors-auto-assigned": "ונכים שהוקצו אוטומטית",
+	"growthexperiments-manage-mentors-auto-assigned": "חונכים שהוקצו אוטומטית",
 	"growthexperiments-manage-mentors-manually-assigned": "חונכים שהוקצו ידנית",
 	"growthexperiments-manage-mentors-username": "שם משתמש",
 	"growthexperiments-manage-mentors-last-active": "פעילות לאחרונה",
