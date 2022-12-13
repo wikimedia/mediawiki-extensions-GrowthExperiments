@@ -50,7 +50,8 @@ MentorMessageChangeDialog.prototype.initialize = function () {
 /** @inheritDoc **/
 MentorMessageChangeDialog.prototype.getSetupProcess = function () {
 	return MentorMessageChangeDialog.super.prototype.getSetupProcess.apply( this, arguments )
-		// has to be in getSetupProcess(); when executed inside initialize, label is covered by the field content
+		// has to be in getSetupProcess(); when executed inside initialize,
+		// label is covered by the field content
 		.next( this.updateRemainingMessageLength.bind( this ) );
 };
 

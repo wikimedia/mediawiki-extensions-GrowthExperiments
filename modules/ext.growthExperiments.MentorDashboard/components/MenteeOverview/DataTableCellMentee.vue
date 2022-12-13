@@ -12,7 +12,10 @@
 		</cdx-button>
 		<div class="ext-growthExperiments-DataTableCellMentee__user-info">
 			<a
-				:class="{ new: !value.userPageExists, 'ext-growthExperiments-DataTableCellMentee__suppressed': value.userIsHidden }"
+				:class="{
+					new: !value.userPageExists,
+					'ext-growthExperiments-DataTableCellMentee__suppressed': value.userIsHidden
+				}"
 				:href="usernameHref"
 			>
 				<span class="ext-growthExperiments-DataTableCellMentee__username">

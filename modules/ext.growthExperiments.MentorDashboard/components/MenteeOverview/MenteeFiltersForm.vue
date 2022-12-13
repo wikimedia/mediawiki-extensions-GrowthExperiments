@@ -77,7 +77,9 @@
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred' ).text() }}
 			</cdx-checkbox>
 		</section>
-		<section class="ext-growthExperiments-MenteeFiltersForm__form-group ext-growthExperiments-MenteeFiltersForm__form-actions">
+		<section
+			class="ext-growthExperiments-MenteeFiltersForm__form-group ext-growthExperiments-MenteeFiltersForm__form-actions"
+		>
 			<cdx-button
 				class="ext-growthExperiments-utils__pull-right"
 				form="mentee-filters-form"

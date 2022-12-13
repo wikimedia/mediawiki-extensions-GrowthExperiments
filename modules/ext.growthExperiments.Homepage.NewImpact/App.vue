@@ -61,7 +61,9 @@ module.exports = exports = {
 
 		// If the module is activated, and the user hasn't already seen it, then show the
 		// new impact discovery tour.
-		if ( !isModuleUnactivated && !mw.user.options.get( 'growthexperiments-tour-newimpact-discovery' ) && renderMode === 'desktop' ) {
+		if ( !isModuleUnactivated &&
+			!mw.user.options.get( 'growthexperiments-tour-newimpact-discovery' ) &&
+			renderMode === 'desktop' ) {
 			mw.loader.load( 'ext.guidedTour.tour.newimpact_discovery' );
 		}
 

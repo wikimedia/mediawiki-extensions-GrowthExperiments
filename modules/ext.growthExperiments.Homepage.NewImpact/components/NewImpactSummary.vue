@@ -4,7 +4,9 @@
 		<trend-chart
 			v-if="data"
 			id="impact-summary"
-			:count-label="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName ).text()"
+			:count-label="$i18n(
+				'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName
+			).text()"
 			:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' ).text()"
 			:pageview-total="data.articlesViewsCount"
 			:data="data.dailyTotalViews"

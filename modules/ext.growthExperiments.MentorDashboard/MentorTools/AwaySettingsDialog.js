@@ -87,6 +87,7 @@
 					}
 
 					// Messages that can be used here:
+					// eslint-disable-next-line max-len
 					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger
 					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh
 					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown

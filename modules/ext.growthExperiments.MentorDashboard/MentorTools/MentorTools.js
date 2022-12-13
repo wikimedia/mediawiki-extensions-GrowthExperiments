@@ -97,11 +97,13 @@
 		// Populated via PHP, see MentorTools::getBody (search for getMentorWeight)
 		const mentorWeight = $( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown select' ).val(),
 			mentorWeightInt = Number( mentorWeight );
-		this.mentorWeightDropdown.getMenu().selectItem( this.mentorWeightDropdown.getMenu().findItemFromData(
-			// findItemFromData uses datatype-sensitive comparator; parseInt() is required
-			// we use a ternary condition to avoid issues with the 'none' weight
-			!isNaN( mentorWeightInt ) ? mentorWeightInt : mentorWeight
-		) );
+		this.mentorWeightDropdown.getMenu().selectItem(
+			this.mentorWeightDropdown.getMenu().findItemFromData(
+				// findItemFromData uses datatype-sensitive comparator; parseInt() is required
+				// we use a ternary condition to avoid issues with the 'none' weight
+				!isNaN( mentorWeightInt ) ? mentorWeightInt : mentorWeight
+			)
+		);
 
 		this.mentorWeightDropdown.getMenu().connect( this, {
 			choose: [ 'onMentorWeightDropdownChanged' ]

@@ -53,7 +53,12 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
  *
  * @param {number} userId The user id to be used in the data request the data
  * @param {number} timeFrame The number of days from "now" that the contributions should be counted
- * @return {{lastEditTimestamp: number, receivedThanksCount: number, longestEditingStreak: Object, contributions:Object, totalEditsCount:number}}
+ * @return {{
+ * lastEditTimestamp: number,
+ * receivedThanksCount: number,
+ * longestEditingStreak: Object,
+ * contributions:Object, totalEditsCount:number
+ * }}
  */
 function useUserImpact( userId, timeFrame ) {
 	const encodedUserId = encodeURIComponent( `#${userId}` );
