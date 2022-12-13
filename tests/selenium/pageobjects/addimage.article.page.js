@@ -156,7 +156,8 @@ class AddImageArticlePage extends Page {
 		}
 		// FIXME: This should run in Quibble. Adding as a workaround, otherwise
 		// edit.php results in Wikimedia\Rdbms\DBQueryError:
-		// Error 1690: BIGINT UNSIGNED value is out of range in '`wikidb`.`site_stats`.`ss_good_articles` - 1'
+		// Error 1690: BIGINT UNSIGNED value is out of range in
+		// '`wikidb`.`site_stats`.`ss_good_articles` - 1'
 		await childProcess.spawnSync(
 			'php',
 			[ 'maintenance/initSiteStats.php', '--update' ],
