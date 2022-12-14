@@ -18,8 +18,8 @@
 				<c-text
 					v-i18n-html:growthexperiments-homepage-impact-unactivated-subheader-subtext="[ userName ]"
 					class="ext-growthExperiments-NoEditsDisplay__content__messages__subtext"
-					:size="[ , , 'sm' ]"
-					:weight="renderMode !== 'overlay-summary' && 'bold'"
+					:size="[ null, null, 'sm' ]"
+					:weight="subtextFontWeight"
 				>
 				</c-text>
 				<div v-if="!isDisabled && renderMode === 'overlay'">
@@ -36,7 +36,7 @@
 		>
 			<c-text
 				v-if="isDisabled"
-				:size="renderMode !== 'desktop' && 'sm'"
+				:size="footerFontSize"
 				color="subtle"
 			>
 				{{ $i18n( 'growthexperiments-homepage-impact-unactivated-description', userName ).text() }}
@@ -44,7 +44,7 @@
 			<c-text
 				v-else
 				v-i18n-html:growthexperiments-homepage-impact-unactivated-suggested-edits-footer="[ userName ]"
-				:size="renderMode !== 'desktop' && 'sm'"
+				:size="footerFontSize"
 				color="subtle"
 			>
 			</c-text>
@@ -96,6 +96,14 @@ module.exports = exports = {
 			renderMode,
 			onSuggestedEditsClick
 		};
+	},
+	computed: {
+		subtextFontWeight() {
+			return this.renderMode !== 'overlay-summary' && 'bold';
+		},
+		footerFontSize() {
+			return this.renderMode !== 'desktop' && 'sm';
+		}
 	}
 };
 </script>
