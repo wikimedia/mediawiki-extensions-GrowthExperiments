@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\UserImpact;
 
+use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
 
 class StaticUserImpactLookup implements UserImpactLookup, UserImpactStore {
@@ -19,7 +20,7 @@ class StaticUserImpactLookup implements UserImpactLookup, UserImpactStore {
 	}
 
 	/** @inheritDoc */
-	public function getUserImpact( UserIdentity $user ): ?UserImpact {
+	public function getUserImpact( UserIdentity $user, int $flags = IDBAccessObject::READ_NORMAL ): ?UserImpact {
 		return $this->userImpacts[$user->getId()] ?? null;
 	}
 

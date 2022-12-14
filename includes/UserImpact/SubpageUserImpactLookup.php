@@ -4,6 +4,7 @@ namespace GrowthExperiments\UserImpact;
 
 use FormatJson;
 use GrowthExperiments\Util;
+use IDBAccessObject;
 use JsonContent;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\User\UserIdentity;
@@ -38,7 +39,7 @@ class SubpageUserImpactLookup implements UserImpactLookup {
 	}
 
 	/** @inheritDoc */
-	public function getUserImpact( UserIdentity $user ): ?UserImpact {
+	public function getUserImpact( UserIdentity $user, int $flags = IDBAccessObject::READ_NORMAL ): ?UserImpact {
 		$subpageTitle = new TitleValue( NS_USER, $user->getName() . '/' . self::SUBPAGE_NAME );
 		$subpage = $this->wikiPageFactory->newFromLinkTarget( $subpageTitle );
 

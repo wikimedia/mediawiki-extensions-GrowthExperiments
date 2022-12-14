@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\UserImpact;
 
+use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
@@ -32,7 +33,7 @@ class DatabaseUserImpactStore implements UserImpactStore {
 	}
 
 	/** @inheritDoc */
-	public function getUserImpact( UserIdentity $user ): ?UserImpact {
+	public function getUserImpact( UserIdentity $user, int $flags = IDBAccessObject::READ_NORMAL ): ?UserImpact {
 		$userId = $user->getId();
 		return $this->batchGetUserImpact( [ $userId ] )[$userId];
 	}
