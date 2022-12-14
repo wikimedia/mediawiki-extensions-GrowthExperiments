@@ -2,6 +2,7 @@
 	'use strict';
 	const Vue = require( 'vue' );
 	const { convertNumber } = require( '../utils/filters.js' );
+	const logger = require( './plugins/logger.js' );
 
 	/**
 	 * Setup common configs and helpers for all UserImpact apps.
@@ -24,6 +25,11 @@
 		app.provide( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED', mw.config.get( 'GENewImpactIsSuggestedEditsEnabledForUser' ) );
 		app.provide( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED', mw.config.get( 'GENewImpactIsSuggestedEditsActivatedForUser' ) );
 		app.provide( 'RENDER_MODE', mode );
+		app.use( logger, {
+			mode,
+			enabled: mw.config.get( 'wgGEHomepageLoggingEnabled' ),
+			pageviewToken: mw.config.get( 'wgGEHomepagePageviewToken' )
+		} );
 		app.mount( mountPoint );
 		return app;
 	};

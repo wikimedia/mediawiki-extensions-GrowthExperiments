@@ -35,6 +35,8 @@
 			<template #label-info>
 				<c-popover
 					:close-icon="cdxIconClose"
+					@open="log( 'impact', 'open-thanks-info-tooltip' );"
+					@close="log( 'impact', 'close-thanks-info-tooltip' );"
 				>
 					<template #trigger="{ onClick }">
 						<cdx-button
@@ -91,6 +93,8 @@
 			<template #label-info>
 				<c-popover
 					:close-icon="cdxIconClose"
+					@open="log( 'impact', 'open-streak-info-tooltip' );"
+					@close="log( 'impact', 'close-streak-info-tooltip' );"
 				>
 					<template #trigger="{ onClick }">
 						<cdx-button
@@ -174,6 +178,8 @@ module.exports = exports = {
 	},
 	setup() {
 		const userName = inject( 'RELEVANT_USER_USERNAME' );
+		const log = inject( '$log' );
+
 		return {
 			userName,
 			cdxIconEdit,
@@ -182,7 +188,8 @@ module.exports = exports = {
 			cdxIconChart,
 			cdxIconClose,
 			cdxIconInfo,
-			cdxIconInfoFilled
+			cdxIconInfoFilled,
+			log
 		};
 	},
 	computed: {
