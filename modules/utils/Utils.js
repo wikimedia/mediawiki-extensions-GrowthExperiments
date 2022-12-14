@@ -180,7 +180,8 @@
 
 	/**
 	 * Get a local object for use with Intl. Should only be called when the browser supports Intl.
-	 * @returns {Intl.Locale}
+	 *
+	 * @return {Intl.Locale}
 	 */
 	function getIntlLocale() {
 		// Only specify user language and leave locale resolution to Intl instead of
