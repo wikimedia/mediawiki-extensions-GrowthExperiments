@@ -223,8 +223,11 @@ module.exports = exports = {
 		bestStreakFormattedDates() {
 			const today = new Date(),
 				locale = getIntlLocale(),
+				// eslint-disable-next-line compat/compat
 				yearOnlyFormat = new Intl.DateTimeFormat( locale, { year: 'numeric' } ),
+				// eslint-disable-next-line compat/compat
 				sameYearFormat = new Intl.DateTimeFormat( locale, { month: 'short', day: 'numeric' } ),
+				// eslint-disable-next-line compat/compat
 				standardFormat = new Intl.DateTimeFormat( locale, { dateStyle: 'medium' } );
 
 			let { start, end } = this.data.longestEditingStreak.datePeriod;
