@@ -117,9 +117,7 @@ module.exports = exports = {
 		},
 		contributionsLinkText() {
 			return this.$i18n(
-				'growthexperiments-homepage-impact-contributions-link',
-				this.$filters.convertNumber( this.data.totalEditsCount ),
-				this.userName
+				'growthexperiments-homepage-newimpact-contributions-link'
 			).text();
 		},
 		contributionsUrl() {

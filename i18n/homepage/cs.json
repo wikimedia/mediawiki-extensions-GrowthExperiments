@@ -558,5 +558,6 @@
 	"growthexperiments-homepage-special-contribute-cta": "Zobrazit editační tipy",
 	"growthexperiments-tour-newimpact-discovery-title": "Aktualizovaný modul",
 	"growthexperiments-tour-newimpact-discovery-description": "Přidali jsme více informací o {{GENDER:|vaší}} editační aktivitě!",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Rozumím"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Rozumím",
+	"growthexperiments-homepage-newimpact-contributions-link": "Zobrazit všechny editace"
 }
