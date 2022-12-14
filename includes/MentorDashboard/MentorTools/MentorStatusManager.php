@@ -29,6 +29,8 @@ class MentorStatusManager implements IDBAccessObject {
 	public const AWAY_BECAUSE_TIMESTAMP = 'timestamp';
 	/** @var string */
 	public const AWAY_BECAUSE_BLOCK = 'block';
+	/** @var string */
+	public const AWAY_BECAUSE_LOCK = 'lock';
 
 	/** @var string Preference key to store mentor's away timestamp */
 	public const MENTOR_AWAY_TIMESTAMP_PREF = 'growthexperiments-mentor-away-timestamp';
@@ -86,6 +88,11 @@ class MentorStatusManager implements IDBAccessObject {
 				return StatusValue::newFatal(
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block'
 				);
+			case self::AWAY_BECAUSE_LOCK:
+				return StatusValue::newFatal(
+					'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock',
+					$mentor->getName()
+				);
 			default:
 				return StatusValue::newGood();
 		}
@@ -97,12 +104,16 @@ class MentorStatusManager implements IDBAccessObject {
 	 * @return string|null Away reason or null if mentor is not away
 	 */
 	public function getAwayReason( UserIdentity $mentor, int $flags = 0 ): ?string {
-		// NOTE: block checking must be first. This is to make canChangeStatus() work for mentors
+		// NOTE: (b)lock checking must be first. This is to make canChangeStatus() work for mentors
 		// who are blocked _and_ (manually) away.
 		$block = $this->userFactory->newFromUserIdentity( $mentor )
 			->getBlock( $flags );
 		if ( $block !== null && $block->isSitewide() ) {
 			return self::AWAY_BECAUSE_BLOCK;
+		}
+
+		if ( $this->userFactory->newFromUserIdentity( $mentor )->isLocked() ) {
+			return self::AWAY_BECAUSE_LOCK;
 		}
 
 		if ( $this->getMentorBackTimestamp( $mentor, $flags ) !== null ) {
