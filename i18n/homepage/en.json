@@ -548,5 +548,6 @@
 	"growthexperiments-homepage-special-contribute-cta": "View suggested edits",
 	"growthexperiments-tour-newimpact-discovery-title": "Updated design",
 	"growthexperiments-tour-newimpact-discovery-description": "More of {{GENDER:|your}} editing activity has been added!",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Got it"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Got it",
+	"growthexperiments-homepage-newimpact-contributions-link": "View all edits"
 }

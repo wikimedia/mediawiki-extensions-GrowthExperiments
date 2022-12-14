@@ -569,5 +569,6 @@
 	"growthexperiments-homepage-special-contribute-cta": "Text to show in call-to-action button in card displayed on Special:Contribute.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-tour-newimpact-discovery-title": "Text to show in title of guided tour introducing new impact module.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-tour-newimpact-discovery-description": "Text to show in description of guided tour introducing new impact module.\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Text for button that closes guided tour.\n\n{{doc-growthexperiments-homepage}}"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Text for button that closes guided tour.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-newimpact-contributions-link": "Text for link to [Special:Contributions] in new impact module.\n\n{{doc-growthexperiments-homepage}}"
 }
