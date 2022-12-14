@@ -154,16 +154,31 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 		.text( mentorTalkLinkText );
 	this.$askhelpHeader = $( '<div>' );
 	if ( mentorName !== primaryMentorName ) {
-		// effective mentor name is not same as primary => mentor must be away
-		this.$askhelpHeader.append(
-			$( '<p>' ).append(
-				$( '<strong>' ).append(
-					mw.message(
-						'growthexperiments-homepage-mentorship-questionreview-header-away',
-						primaryMentorName, primaryMentorGender, backAt
-					).parse()
+		// effective mentor name is not same as primary => primary mentor must be away
+		if ( backAt ) {
+			this.$askhelpHeader.append(
+				$( '<p>' ).append(
+					$( '<strong>' ).append(
+						mw.message(
+							'growthexperiments-homepage-mentorship-questionreview-header-away',
+							primaryMentorName, primaryMentorGender, backAt
+						).parse()
+					)
 				)
-			),
+			);
+		} else {
+			this.$askhelpHeader.append(
+				$( '<p>' ).append(
+					$( '<strong>' ).append(
+						mw.message(
+							'growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp',
+							primaryMentorName, primaryMentorGender
+						).parse()
+					)
+				)
+			);
+		}
+		this.$askhelpHeader.append(
 			$( '<p>' ).append(
 				mw.message(
 					'growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor',

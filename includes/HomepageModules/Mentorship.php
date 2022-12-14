@@ -240,14 +240,15 @@ class Mentorship extends BaseModule {
 		$effectiveMentor = $this->mentorManager->getEffectiveMentorForUserSafe(
 			$this->getUser()
 		)->getUserIdentity();
+		$mentorBackTimestamp = $this->mentorStatusManager->getMentorBackTimestamp( $mentor );
 		return [
 			'GEHomepageMentorshipMentorName' => $mentor->getName(),
 			'GEHomepageMentorshipMentorGender' => $this->getMentorGender(),
 			'GEHomepageMentorshipEffectiveMentorName' => $effectiveMentor->getName(),
 			'GEHomepageMentorshipEffectiveMentorGender' => $this->getUserGender( $effectiveMentor ),
-			'GEHomepageMentorshipBackAt' => $this->getContext()->getLanguage()->date(
-				$this->mentorStatusManager->getMentorBackTimestamp( $mentor ) ?? ''
-			)
+			'GEHomepageMentorshipBackAt' => $mentorBackTimestamp ? $this->getContext()->getLanguage()->date(
+				$mentorBackTimestamp
+			) : null,
 		] + HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
 	}
 
