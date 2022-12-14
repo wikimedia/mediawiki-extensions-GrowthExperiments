@@ -47,7 +47,8 @@
 						<c-popover
 							v-else
 							placement="above"
-							@toggle="onClockPopoverToggle"
+							@open="log( 'impact', 'open-nopageviews-tooltip' )"
+							@close="log( 'impact', 'close-nopageviews-tooltip' )"
 						>
 							<template #trigger="{ onClick }">
 								<cdx-button
@@ -75,25 +76,7 @@
 </template>
 
 <script>
-function convertRenderModeForLogging( renderMode ) {
-	switch ( renderMode ) {
-		case 'overlay':
-			return 'mobile-overlay';
-		case 'overlay-summary':
-			return 'mobile-summary';
-		case 'desktop':
-			return 'desktop';
-		default:
-			throw new Error( `Unknown NewImpact render mode: ${renderMode}` );
-	}
-}
-
 const { inject, defineAsyncComponent } = require( 'vue' );
-const Logger = require( '../../ext.growthExperiments.Homepage.Logger/index.js' );
-const logger = new Logger(
-	mw.config.get( 'wgGEHomepageLoggingEnabled' ),
-	mw.config.get( 'wgGEHomepagePageviewToken' )
-);
 const CList = require( '../../vue-components/CList.vue' );
 const CListItem = require( '../../vue-components/CListItem.vue' );
 const CPopover = require( '../../vue-components/CPopover.vue' );
@@ -134,16 +117,9 @@ module.exports = exports = {
 		}
 	},
 	setup() {
-		const renderMode = inject( 'RENDER_MODE' );
-		const onClockPopoverToggle = ( isOpen ) => {
-			logger.log(
-				'impact',
-				convertRenderModeForLogging( renderMode ),
-				isOpen ? 'open-nopageviews-tooltip' : 'close-nopageviews-tooltip'
-			);
-		};
+		const log = inject( '$log' );
 		return {
-			onClockPopoverToggle,
+			log,
 			cdxIconClock,
 			xAccessor,
 			yAccessor
