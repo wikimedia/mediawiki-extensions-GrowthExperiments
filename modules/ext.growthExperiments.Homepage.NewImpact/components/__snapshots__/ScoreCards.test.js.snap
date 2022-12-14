@@ -1,0 +1,583 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreCards renders correctly with data 1`] = `
+<div
+  class="ext-growthExperiments-ScoreCards"
+>
+  <div
+    class="ext-growthExperiments-ScoreCard"
+  >
+    <div
+      class="ext-growthExperiments-ScoreCard__data-display"
+    >
+      <span
+        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      >
+        <svg
+          aria-hidden="false"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            growthexperiments-homepage-impact-scores-edit-count
+          </title>
+          <path
+            d=""
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
+      >
+        
+        <a
+          class="ext-growthExperiments-ScoreCards__link"
+          data-link-id="impact-total-edits"
+          href="http://contributions.url"
+        >
+          4
+        </a>
+        
+      </div>
+      
+    </div>
+    <div
+      class="ext-growthExperiments-ScoreCard__label"
+    >
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+      >
+        
+        growthexperiments-homepage-impact-scores-edit-count
+        
+      </span>
+      <!--v-if-->
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-ScoreCard"
+  >
+    <div
+      class="ext-growthExperiments-ScoreCard__data-display"
+    >
+      <span
+        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      >
+        <svg
+          aria-hidden="false"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            growthexperiments-homepage-impact-scores-thanks-count
+          </title>
+          <path
+            d=""
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
+      >
+        
+        <a
+          class="ext-growthExperiments-ScoreCards__link"
+          data-link-id="impact-thanks-log"
+          href="http://thanks.url"
+        >
+          0
+        </a>
+        
+      </div>
+      
+    </div>
+    <div
+      class="ext-growthExperiments-ScoreCard__label ext-growthExperiments-ScoreCard__label--with-info"
+    >
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+      >
+        
+        growthexperiments-homepage-impact-scores-thanks-count
+        
+      </span>
+      <span>
+        <div
+          class="ext-growthExperiments-Popover"
+        >
+          <div>
+            <div>
+              
+              <button
+                aria-label="growthexperiments-homepage-impact-scores-thanks-info-label"
+                class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+              >
+                
+                <span
+                  class="cdx-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <!---->
+                    <path
+                      d=""
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                
+              </button>
+              
+            </div>
+            <div
+              class="ext-growthExperiments-Popover__popover-container"
+            >
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-ScoreCard"
+  >
+    <div
+      class="ext-growthExperiments-ScoreCard__data-display"
+    >
+      <span
+        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      >
+        <svg
+          aria-hidden="false"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            growthexperiments-homepage-impact-recent-activity-last-edit-text
+          </title>
+          <path
+            d=""
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
+      >
+        
+        a month ago
+        
+      </span>
+      
+    </div>
+    <div
+      class="ext-growthExperiments-ScoreCard__label"
+    >
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+      >
+        
+        growthexperiments-homepage-impact-recent-activity-last-edit-text
+        
+      </span>
+      <!--v-if-->
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-ScoreCard"
+  >
+    <div
+      class="ext-growthExperiments-ScoreCard__data-display"
+    >
+      <span
+        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      >
+        <svg
+          aria-hidden="false"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            growthexperiments-homepage-impact-recent-activity-best-streak-text
+          </title>
+          <path
+            d=""
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
+      >
+        
+        growthexperiments-homepage-impact-recent-activity-streak-count-text
+        
+      </span>
+      
+    </div>
+    <div
+      class="ext-growthExperiments-ScoreCard__label ext-growthExperiments-ScoreCard__label--with-info"
+    >
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+      >
+        
+        growthexperiments-homepage-impact-recent-activity-best-streak-text
+        
+      </span>
+      <span>
+        <div
+          class="ext-growthExperiments-Popover"
+        >
+          <div>
+            <div>
+              
+              <button
+                aria-label="growthexperiments-homepage-impact-scores-streak-info-label"
+                class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+              >
+                
+                <span
+                  class="cdx-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <!---->
+                    <path
+                      d=""
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                
+              </button>
+              
+            </div>
+            <div
+              class="ext-growthExperiments-Popover__popover-container"
+            >
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ScoreCards renders correctly without data 1`] = `
+<div
+  class="ext-growthExperiments-ScoreCards"
+>
+  <div
+    class="ext-growthExperiments-ScoreCard"
+  >
+    <div
+      class="ext-growthExperiments-ScoreCard__data-display"
+    >
+      <span
+        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      >
+        <svg
+          aria-hidden="false"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            growthexperiments-homepage-impact-scores-edit-count
+          </title>
+          <path
+            d=""
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
+      >
+        
+        <a
+          class="ext-growthExperiments-ScoreCards__link"
+          data-link-id="impact-total-edits"
+          href="http://contributions.url"
+        >
+          ...
+        </a>
+        
+      </div>
+      
+    </div>
+    <div
+      class="ext-growthExperiments-ScoreCard__label"
+    >
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+      >
+        
+        growthexperiments-homepage-impact-scores-edit-count
+        
+      </span>
+      <!--v-if-->
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-ScoreCard"
+  >
+    <div
+      class="ext-growthExperiments-ScoreCard__data-display"
+    >
+      <span
+        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      >
+        <svg
+          aria-hidden="false"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            growthexperiments-homepage-impact-scores-thanks-count
+          </title>
+          <path
+            d=""
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      
+      <div
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
+      >
+        
+        <a
+          class="ext-growthExperiments-ScoreCards__link"
+          data-link-id="impact-thanks-log"
+          href="http://thanks.url"
+        >
+          ...
+        </a>
+        
+      </div>
+      
+    </div>
+    <div
+      class="ext-growthExperiments-ScoreCard__label ext-growthExperiments-ScoreCard__label--with-info"
+    >
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+      >
+        
+        growthexperiments-homepage-impact-scores-thanks-count
+        
+      </span>
+      <span>
+        <div
+          class="ext-growthExperiments-Popover"
+        >
+          <div>
+            <div>
+              
+              <button
+                aria-label="growthexperiments-homepage-impact-scores-thanks-info-label"
+                class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+              >
+                
+                <span
+                  class="cdx-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <!---->
+                    <path
+                      d=""
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                
+              </button>
+              
+            </div>
+            <div
+              class="ext-growthExperiments-Popover__popover-container"
+            >
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-ScoreCard"
+  >
+    <div
+      class="ext-growthExperiments-ScoreCard__data-display"
+    >
+      <span
+        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      >
+        <svg
+          aria-hidden="false"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            growthexperiments-homepage-impact-recent-activity-last-edit-text
+          </title>
+          <path
+            d=""
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
+      >
+        
+        ...
+        
+      </span>
+      
+    </div>
+    <div
+      class="ext-growthExperiments-ScoreCard__label"
+    >
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+      >
+        
+        growthexperiments-homepage-impact-recent-activity-last-edit-text
+        
+      </span>
+      <!--v-if-->
+    </div>
+  </div>
+  <div
+    class="ext-growthExperiments-ScoreCard"
+  >
+    <div
+      class="ext-growthExperiments-ScoreCard__data-display"
+    >
+      <span
+        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      >
+        <svg
+          aria-hidden="false"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            growthexperiments-homepage-impact-recent-activity-best-streak-text
+          </title>
+          <path
+            d=""
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
+      >
+        
+        ...
+        
+      </span>
+      
+    </div>
+    <div
+      class="ext-growthExperiments-ScoreCard__label ext-growthExperiments-ScoreCard__label--with-info"
+    >
+      <span
+        class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+      >
+        
+        growthexperiments-homepage-impact-recent-activity-best-streak-text
+        
+      </span>
+      <span>
+        <div
+          class="ext-growthExperiments-Popover"
+        >
+          <div>
+            <div>
+              
+              <button
+                aria-label="growthexperiments-homepage-impact-scores-streak-info-label"
+                class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+              >
+                
+                <span
+                  class="cdx-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <!---->
+                    <path
+                      d=""
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                
+              </button>
+              
+            </div>
+            <div
+              class="ext-growthExperiments-Popover__popover-container"
+            >
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+`;
