@@ -534,5 +534,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "När du skickar ett meddelande till din fadder kommer {{GENDER:$1|han|hon|de}} se det på sin diskussionssida och du borde få en avisering när {{GENDER:$1|han|hon|de}} svarat.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Välja bort fadderskap",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Tryck på knappen här nedanför för att välja bort fadderskapet om du föredrar att inte ha en tilldelad fadder för tillfället. Du kan närsomhelst få en ny fadder om du ändrar dig.",
-	"growthexperiments-homepage-mentorship-about-done": "Klart"
+	"growthexperiments-homepage-mentorship-about-done": "Klart",
+	"growthexperiments-tour-newimpact-discovery-title": "Uppdaterad design",
+	"growthexperiments-tour-newimpact-discovery-description": "Mer av {{GENDER:|din}} redigeringsaktivitet har lagts till!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Jag förstår"
 }
