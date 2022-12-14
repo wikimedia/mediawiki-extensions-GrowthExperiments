@@ -24,6 +24,7 @@
 				</c-text>
 				<div v-if="!isDisabled && renderMode === 'overlay'">
 					<cdx-button @click="onSuggestedEditsClick"
+						data-link-id="impact-see-suggested-edits"
 					>
 						{{ $i18n( 'growthexperiments-homepage-impact-unactivated-suggested-edits-link' ).text() }}
 					</cdx-button>
