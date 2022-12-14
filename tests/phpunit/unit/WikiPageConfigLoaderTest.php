@@ -140,8 +140,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 			],
 			'no such page' => [
 				'response' => false,
-				'expected data' => StatusValue::newFatal( new ApiRawMessage( 'x',
-					'newcomer-tasks-configuration-loader-title-not-found' ) ),
+				'expected data' => [],
 			],
 			'revdeleted' => [
 				'response' => null,
