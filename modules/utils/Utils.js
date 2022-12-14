@@ -178,6 +178,19 @@
 		).getUrl( queryParams );
 	}
 
+	/**
+	 * Get a local object for use with Intl. Should only be called when the browser supports Intl.
+	 * @returns {Intl.Locale}
+	 */
+	function getIntlLocale() {
+		// Only specify user language and leave locale resolution to Intl instead of
+		// using the MediaWiki fallback chain. This might or might not be a good idea.
+		var language = mw.config.get( 'wgUserLanguage' ),
+			languageOptions = mw.config.get( 'wgTranslateNumerals' ) ? {} : { numberingSystem: 'latn' };
+		// eslint-disable-next-line compat/compat
+		return new Intl.Locale( language, languageOptions );
+	}
+
 	// debug / QA helpers exposed via ge.utils
 
 	/**
@@ -221,7 +234,8 @@
 		isUserInVariant: isUserInVariant,
 		getUserVariant: getUserVariant,
 		formatTitle: formatTitle,
-		getSuggestedEditsFeedUrl: getSuggestedEditsFeedUrl
+		getSuggestedEditsFeedUrl: getSuggestedEditsFeedUrl,
+		getIntlLocale: getIntlLocale
 	};
 
 }() );

@@ -129,6 +129,7 @@
 
 <script>
 const moment = require( 'moment' );
+const { getIntlLocale } = require( '../../utils/Utils.js' );
 const { inject } = require( 'vue' );
 const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const ScoreCard = require( './ScoreCard.vue' );
@@ -221,12 +222,10 @@ module.exports = exports = {
 		},
 		bestStreakFormattedDates() {
 			const today = new Date(),
-				// Only specify user language and leave locale resolution to Intl instead of
-				// using the MediaWiki fallback chain. This might or might not be a good idea.
-				language = mw.config.get( 'wgUserLanguage' ),
-				yearOnlyFormat = new Intl.DateTimeFormat( language, { year: 'numeric' } ),
-				sameYearFormat = new Intl.DateTimeFormat( language, { month: 'short', day: 'numeric' } ),
-				standardFormat = new Intl.DateTimeFormat( language, { dateStyle: 'medium' } );
+				locale = getIntlLocale(),
+				yearOnlyFormat = new Intl.DateTimeFormat( locale, { year: 'numeric' } ),
+				sameYearFormat = new Intl.DateTimeFormat( locale, { month: 'short', day: 'numeric' } ),
+				standardFormat = new Intl.DateTimeFormat( locale, { dateStyle: 'medium' } );
 
 			let { start, end } = this.data.longestEditingStreak.datePeriod;
 			start = new Date( start );
