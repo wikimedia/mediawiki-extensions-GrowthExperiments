@@ -1,6 +1,6 @@
 <template>
 	<div class="ext-growthExperiments-Popover">
-		<div v-click-outside="close">
+		<div v-click-outside="closeIfOpen">
 			<div ref="triggerRef">
 				<slot
 					name="trigger"
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-const { ref } = require( 'vue' );
+const { ref, computed } = require( 'vue' );
 const CPopper = require( './CPopper.vue' );
 const clickOutside = require( './directives/click-outside.directive.js' );
 /*
@@ -62,6 +62,8 @@ module.exports = exports = {
 		}
 	},
 	emits: [
+		'close',
+		'open',
 		'toggle'
 	],
 	setup( _props, { emit } ) {
@@ -69,15 +71,23 @@ module.exports = exports = {
 		const isOpen = ref( false );
 		const close = () => {
 			isOpen.value = false;
+			emit( 'toggle', false );
+			emit( 'close' );
 		};
 		const togglePopover = () => {
 			isOpen.value = !isOpen.value;
 			emit( 'toggle', isOpen.value );
-
+			if ( isOpen.value ) {
+				emit( 'open' );
+			} else {
+				emit( 'close' );
+			}
 		};
+		const closeIfOpen = computed( () => isOpen.value ? close : () => {} );
 		return {
 			isOpen,
 			close,
+			closeIfOpen,
 			togglePopover,
 			triggerRef
 		};
