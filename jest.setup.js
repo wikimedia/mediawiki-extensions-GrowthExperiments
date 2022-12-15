@@ -19,6 +19,11 @@ config.global.directives = {
 function RestMock() {}
 RestMock.prototype.get = jest.fn();
 
+function TitleMock() {}
+TitleMock.prototype.getMainText = jest.fn();
+TitleMock.prototype.getNameText = jest.fn();
+TitleMock.prototype.getUrl = jest.fn();
+
 // Mock MW object
 const mw = {
 	log: {
@@ -41,10 +46,12 @@ const mw = {
 		}
 	},
 	language: {
+		convertNumber: jest.fn( ( x ) => x ),
 		getFallbackLanguageChain: function () {
 			return [ 'en' ];
 		}
 	},
+	Title: TitleMock,
 	util: {
 		getUrl: jest.fn()
 	},
