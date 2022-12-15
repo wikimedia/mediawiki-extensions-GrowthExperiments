@@ -68,6 +68,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Dado que estará ausente até $1, os seus mentorados serão reatribuídos temporariamente a um mentor diferente.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "Neste momento está {{GENDER:|bloqueado|bloqueada}}. O seu estado foi temporariamente definido como \"ausente\" e os seus mentorados foram temporariamente transferidos para outro mentor. Se for {{GENDER:|desbloqueado|desbloqueada}} (ou o bloqueio expirar), então o seu estado passará a \"Ativo\" e os seus mentorados ser-lhe-ão reatribuídos.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "Neste momento está {{GENDER:|bloqueado|bloqueada}}. Não pode alterar o seu estado de mentor enquanto estiver {{GENDER:|bloqueado|bloqueada}}.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "Neste momento, $1 está {{GENDER:$1|bloqueado|bloqueada}}. Enquanto estiver {{GENDER:$1|bloqueado|bloqueada}} o seu estado de {{GENDER:$1|mentor|mentora}} não pode ser modificado.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Configurar-se como \"ausente\"",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Cancelar",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pausar",

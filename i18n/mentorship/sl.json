@@ -68,6 +68,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Ker boste do $1 odsotni, bodo vaši mentoriranci začasno prerazporejeni k drugemu mentorju.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "Trenutno {{GENDER:|ste}} blokirani. Vaš status {{GENDER:|je}} začasno nastavljen na »{{GENDER:|odsoten|odsotna|odsoten_na}}«, vaši mentoriranci pa so začasno dodeljeni drugemu mentorju. Če {{GENDER:|boste}} odblokirani (ali se bo blokiranje izteklo), bo vaš status nastavljen na »{{PLURAL:|aktiven|aktivna|aktiven_na}}« in bodo {{GENDER:|vaši}} mentoriranci prerazporejeni k { {GENDER:|vam}}.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "Trenutno {{GENDER:|ste}} blokirani. Dokler ste blokirani, ne morete spremeniti {{GENDER:|svojega}} statusa mentorja.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1 je trenutno {{GENDER:$1|zaklenjen|zaklenjena|zaklenjen_a}}. Ko je {{GENDER:$1|zaklenjen|zaklenjena|zaklenjen_a}}, {{DEFAULTSORT:$1|njegovega|njenega|njegovega_njenega}} mentorskega statusa ni mogoče spreminjati.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Nastavite se kot »{{GENDER:|odsoten|odsotna|odsoten_na}}«",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Prekliči",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Premor",

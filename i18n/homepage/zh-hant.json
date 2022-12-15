@@ -47,7 +47,7 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "在開始創建新條目之前，請先嘗試一些較簡易的編輯！",
 	"growthexperiments-homepage-startediting-subheader-other": "透過在維基百科條目上做出一些簡單的修改，來協助添加全世界的知識。",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "查看建議編輯",
-	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "開始進行建議編輯",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "開始編輯建議項目",
 	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "透過在維基百科條目上做出一些簡單的修改，來協助添加全世界的知識。",
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "取得建議",
 	"growthexperiments-homepage-startediting-button": "查看建議編輯",
@@ -84,6 +84,10 @@
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|您的}}影響",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "請啟用 JavaScript 來檢視此組件。",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|您的}}影響",
+	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|次編輯}}",
+	"growthexperiments-homepage-impact-scores-edit-count": "總編輯數",
+	"growthexperiments-homepage-impact-scores-thanks-count": "收到的感謝",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "有關感謝內容如何運作的更多資訊",
 	"growthexperiments-homepage-impact-subheader-text": "人們正讀著{{GENDER:$1|您}}所編輯過的條目！",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|您}}做出編輯後的檢視數（過去 60 天）：",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|您}}做出了 <strong>$1</strong> {{PLURAL:$1|次編輯}}（查看全部）",
@@ -538,5 +542,6 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "退出導師計畫",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "如果{{GENDER:|您}}不希望現在就有一名特定的導師分配給{{GENDER:|您}}，請選擇下面的按鈕退出。若{{GENDER:|您}}改變了主意，{{GENDER:|您}}可隨時重新獲得一名新的導師。",
 	"growthexperiments-homepage-mentorship-about-done": "完成",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "了解"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "了解",
+	"growthexperiments-homepage-newimpact-contributions-link": "檢視全部編輯"
 }

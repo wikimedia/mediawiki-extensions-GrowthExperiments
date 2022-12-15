@@ -3,7 +3,8 @@
 		"authors": [
 			"Hello903hello",
 			"Matttest",
-			"Moon0319"
+			"Moon0319",
+			"捍粵者"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|你好}}，{{bidi:$1}}！",
@@ -73,5 +74,6 @@
 	"growthexperiments-homepage-suggestededits-error-description": "唔該等陣再試。",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "揀選主題",
 	"growthexperiments-addlink-context-text-label": "字",
-	"newcomertasksinfo-table-header-task-type-id": "ID"
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"growthexperiments-homepage-newimpact-contributions-link": "睇晒全部編輯"
 }

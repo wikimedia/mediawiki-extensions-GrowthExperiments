@@ -53,7 +53,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Вашето}} въздействие",
 	"growthexperiments-homepage-impact-scores-edit-count": "Общо редакции",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Получени благодарности",
-	"growthexperiments-homepage-impact-subheader-text": "Преглеждания на статии, които сте {{GENDER:$1|редактирал|редактирала}}!",
+	"growthexperiments-homepage-impact-subheader-text": "Най-преглеждани (след {{GENDER:$1|Вашето}} редактиране)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Преглеждания след направените от {{GENDER:$1|Вас}} редакции (за последните 60 дни):",
 	"growthexperiments-homepage-impact-contributions-link": "Преглед на всички {{GENDER:$2|ваши}} редакции ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Все още не сте {{GENDER:$1|създал или редактирал|създала или редактирала}} нито една статия.",

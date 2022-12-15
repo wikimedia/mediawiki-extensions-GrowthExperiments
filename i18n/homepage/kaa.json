@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ajiniyaz Nurniyazov"
+			"Ajiniyaz Nurniyazov",
+			"Nurlan"
 		]
 	},
+	"growthexperiments-homepage-email-changelink": "ózgertiw",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Siziń}} jaqın aradaǵı háreketlerińiz (aqırǵı $2 {{PLURAL:$2|kún|kúnler}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Aqırǵı dúzetiw:",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Eń uzın seriya",

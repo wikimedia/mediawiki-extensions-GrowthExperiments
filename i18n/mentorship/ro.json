@@ -68,6 +68,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Din moment ce sunteți {{GENDER:$1|plecat|plecată}} până în $1, ucenicii dvs. vor fi reatribuiți temporar unui mentor diferit.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "Sunteți momentan {{GENDER:|blocat|blocată}}. Starea dvs. este temporar setată la „{{GENDER:|plecat|plecată}}”, iar ucenicii {{GENDER:|dvs.}} sunt temporar realocați unui mentor diferit. Dacă sunteți {{GENDER:|deblocat|deblocată}} (sau expiră blocarea), atunci starea dvs. va fi setată la „{{GENDER:|Activ|Activă}}”, iar ucenicii {{GENDER:|dvs.}} vor fi realocați {{GENDER:|vouă}}.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "Sunteți momentan {{GENDER:|blocat|blocată}}. Nu vă puteți schimba statutul de mentor în timp ce sunteți {{GENDER:|blocat|blocată}}.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "Contul lui $1 {{GENDER:$1|este}} actualmente încuiat. Statutul {{GENDER:$1|său}} de mentor nu poate fi modificat atât timp cât contul său este încuiat.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Setați-vă ca „{{GENDER:|indisponibil|indisponibilă}}”",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Anulare",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pauză",

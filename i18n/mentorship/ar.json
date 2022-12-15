@@ -74,6 +74,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "خلال فترة غيابك حتّى $1، سيتمّ تعيين مرشِدين آخرين وقتيّين إلى مرشَديك.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "أنت {{GENDER:|محظور|محظورة}}  حاليًا. تم تحديد حالتك مؤقتًا على «غير متوفر» وتمت إعادة تعيين متعلّميك مؤقتًا إلى مرشد آخر. إذا تم إلغاء حظر (أو انتهت مدّة الحظر)، فسيتم تغيير حالتك إلى «نشط» وستتم إعادة تعيين المتعلّّمين إليك.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "أنت {{GENDER:|محظور|محظورة}} حاليًا. لا يمكنك تغيير حالة الإرشاد في أثناء مدّة حظرك.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1 {{GENDER:$1|هو ممنوع|هي ممنوعة}} حاليًا.  أثناء المنع، لا يمكن تغيير حالة الإرشاد.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "أعدّوا وضعيّتكم على 'غير متوفّر'",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "إلغاء",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "إيقاف مؤقت",

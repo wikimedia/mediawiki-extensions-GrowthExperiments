@@ -577,5 +577,6 @@
 	"growthexperiments-homepage-special-contribute-cta": "Voir les modifications suggérées",
 	"growthexperiments-tour-newimpact-discovery-title": "Conception mise à jour",
 	"growthexperiments-tour-newimpact-discovery-description": "Davantage de {{GENDER:}}vos activités de modification ont été ajoutées !",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "C’est bon"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "C’est bon",
+	"growthexperiments-homepage-newimpact-contributions-link": "Afficher toutes les modifications"
 }

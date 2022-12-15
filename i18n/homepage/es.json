@@ -40,7 +40,7 @@
 			"ZebaX2010"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Te damos la bienvenida}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Página de inicio",
 	"tooltip-pt-homepage": "{{GENDER:|Tu}} página de inicio",
 	"prefs-homepage": "Página de inicio para usuarios nuevos",
