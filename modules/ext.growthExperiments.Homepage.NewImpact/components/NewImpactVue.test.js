@@ -13,6 +13,7 @@ const ScoreCard = require( './ScoreCard.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
 const TrendChart = require( './TrendChart.vue' );
 const useUserImpact = require( '../composables/useUserImpact.js' );
+const { DEFAULT_STREAK_TIME_FRAME } = require( '../constants.js' );
 
 const impactServerData = () => {
 	return {
@@ -72,6 +73,10 @@ const impactData = ( userId, timeFrame ) => {
 	global.mw.config.get = jest.fn();
 	global.mw.config.get.mockImplementation( ( key ) => {
 		switch ( key ) {
+			case 'wgUserLanguage':
+				return 'en';
+			case 'wgTranslateNumerals':
+				return false;
 			case 'wgCanonicalSpecialPageName':
 				return 'Homepage';
 			case 'homepagemobile':
@@ -97,7 +102,7 @@ describe( 'NewImpactVue', () => {
 	it( 'displays four scorecards', ( done ) => {
 		const wrapper = mount( NewImpact, {
 			props: {
-				data: impactData( 1, 30 ),
+				data: impactData( 1, DEFAULT_STREAK_TIME_FRAME ),
 				userName: 'Alice'
 			},
 			global: {

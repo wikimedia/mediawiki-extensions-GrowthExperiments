@@ -26,7 +26,6 @@
 				:is-mobile="isMobileHomepage"
 				:contribs="data.contributions"
 				:time-frame="DEFAULT_STREAK_TIME_FRAME"
-				date-format="MMM D"
 			></recent-activity>
 		</div>
 		<div v-if="data">
