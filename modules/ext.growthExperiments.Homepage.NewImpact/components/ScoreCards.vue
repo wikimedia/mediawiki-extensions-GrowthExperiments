@@ -297,7 +297,7 @@ module.exports = exports = {
 	}
 
 	&__info-button {
-		.codex-icon-only-button( @color-subtle, 24px);
+		.codex-icon-only-button( @color-subtle, 20px );
 	}
 }
 </style>
