@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CText should render correctly 1`] = `
+<div
+  class="ext-growthExperiments-CText"
+>
+  
+  Some text
+  
+</div>
+`;
+
+exports[`CText should render correctly 2`] = `
+<div
+  class="ext-growthExperiments-CText ext-growthExperiments-CText--size-l ext-growthExperiments-CText--color-subtle ext-growthExperiments-CText--weight-bold"
+>
+  
+  Some text
+  
+</div>
+`;
+
+exports[`CText should render correctly 3`] = `
+<div
+  class="ext-growthExperiments-CText ext-growthExperiments-CText--size-xl"
+>
+  
+  Some text
+  
+</div>
+`;
+
+exports[`CText should render correctly 4`] = `
+<div
+  class="ext-growthExperiments-CText"
+>
+  
+  <a
+    href="#"
+  >
+    Some link
+  </a>
+  
+</div>
+`;

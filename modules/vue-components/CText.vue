@@ -1,9 +1,15 @@
 <template>
-	<div></div>
+	<component
+		:is="as"
+		class="ext-growthExperiments-CText"
+		:class="extraClasses"
+	>
+		<slot></slot>
+	</component>
 </template>
 
 <script>
-const { h, inject } = require( 'vue' );
+const { ref, inject } = require( 'vue' );
 
 // @vue/component
 module.exports = exports = {
@@ -41,33 +47,33 @@ module.exports = exports = {
 			] )
 		}
 	},
-	render() {
+	setup( props ) {
 		const extraClasses = [];
 		// FIXME if we want to keep CText reusable across apps
 		// the mode should be passed as a prop.
 		const mode = inject( 'RENDER_MODE' );
-		if ( typeof this.size === 'string' ) {
-			extraClasses.push( `ext-growthExperiments-CText--size-${this.size}` );
+		if ( typeof props.size === 'string' ) {
+			extraClasses.push( `ext-growthExperiments-CText--size-${props.size}` );
 		}
-		if ( Array.isArray( this.size ) ) {
-			const breakpointIndex = this.breakpoints.indexOf( mode );
-			const relevantSize = this.size[ breakpointIndex ];
+		if ( Array.isArray( props.size ) ) {
+			const breakpointIndex = props.breakpoints.indexOf( mode );
+			const relevantSize = ref( props.size[ breakpointIndex ] );
 			// If we can't find an specified size for the mode don't add any
 			// class so we use base font
-			if ( relevantSize ) {
-				extraClasses.push( `ext-growthExperiments-CText--size-${relevantSize}` );
+			if ( relevantSize.value ) {
+				extraClasses.push( `ext-growthExperiments-CText--size-${relevantSize.value}` );
 			}
 		}
-		if ( this.color ) {
-			extraClasses.push( `ext-growthExperiments-CText--color-${this.color}` );
+		if ( props.color ) {
+			extraClasses.push( `ext-growthExperiments-CText--color-${props.color}` );
 		}
-		if ( this.weight ) {
-			extraClasses.push( `ext-growthExperiments-CText--weight-${this.weight}` );
+		if ( props.weight ) {
+			extraClasses.push( `ext-growthExperiments-CText--weight-${props.weight}` );
 		}
 
-		return h( this.as, {
-			class: [ 'ext-growthExperiments-CText' ].concat( extraClasses )
-		}, this.$slots.default ? this.$slots.default() : null );
+		return {
+			extraClasses
+		};
 	}
 };
 </script>
