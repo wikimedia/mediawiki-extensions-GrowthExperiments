@@ -161,7 +161,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Nie odnaleziono sugestii",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Wybierz poziom trudności dla sugerowanych edycji",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Wybierz inne tematy lub poziomy trudności, aby znaleźć sugerowane edycje.",
-	"growthexperiments-homepage-suggestededits-footer": "Inne osoby zauważyły, że te artykuły wymagają poprawy. Pomóż uczynić projekt '''{{SITENAME}}''' lepszym dla '''$1 czytelników''', którzy odwiedzają go codziennie.",
+	"growthexperiments-homepage-suggestededits-footer": "Inne osoby zauważyły, że te artykuły wymagają poprawy. Pomóż ulepszyć '''{{GRAMMAR:B.lp|{{SITENAME}}}}''' dla '''$1 czytelników''', którzy odwiedzają ten projekt każdego dnia.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Inne osoby zauważyły, że te artykuły wymagają poprawy. Pomóż podnieść jakość '''{{GRAMMAR:D.lp|{{SITENAME}}}}'''.",
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1 tys.",
