@@ -33,6 +33,7 @@
 			"Rodney Araujo",
 			"Sergi0",
 			"SpikeShroom",
+			"Tgr",
 			"Whovian Biologist",
 			"Wizardeck",
 			"Zapipedia (WMF)",
@@ -577,5 +578,6 @@
 	"growthexperiments-homepage-special-contribute-cta": "Ver ediciones sugeridas",
 	"growthexperiments-tour-newimpact-discovery-title": "Diseño actualizado",
 	"growthexperiments-tour-newimpact-discovery-description": "¡Se ha añadido más información sobre {{GENDER:|tus}} contribuciones!",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Listo"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Listo",
+	"growthexperiments-homepage-newimpact-contributions-link": "Ver todas tus ediciones"
 }

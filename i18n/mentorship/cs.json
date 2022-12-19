@@ -71,7 +71,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Jelikož jste do $1 pryč, vaši mentorovaní budou dočasně přiřazeni jinému mentorovi.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "Momentálně jste {{GENDER:|zablokován|zablokována|zablokováni}}. Váš stav byl proto nastaven na „Pryč“, a vaši nováčci budou dočasně přiřazeni k jinému mentorovi. Jakmile budete {{GENDER:|odblokován|odblokována|odblokováni}} (nebo jakmile blok vyprší), váš stav bude znovu nastaven na „Aktivní“ a vaši nováčci vám budou vráceni.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "Momentálně jste {{GENDER:|zablokován|zablokována|zablokováni}}, a proto nemůžete změnit svůj stav.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1 je momentálně {{{{GENDER:$1|uzamčen|uzamčena}}. Stav mentora {{GENDER:$1|tohoto uživatele|této uživatelky}} nemůže být do odemčení změněn.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1 je momentálně {{GENDER:$1|uzamčen|uzamčena}}. Stav mentora {{GENDER:$1|tohoto uživatele|této uživatelky}} nemůže být do odemčení změněn.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Změnit svůj stav na „Pryč“",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Zrušit",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pozastavit",
