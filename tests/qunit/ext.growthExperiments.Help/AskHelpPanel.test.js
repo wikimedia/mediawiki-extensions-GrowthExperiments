@@ -80,7 +80,8 @@ QUnit.test( 'AskHelpPanel from mentor-helppanel with away mentor', function ( as
 		effectiveName: 'Effective Mentor Name',
 		effectiveGender: 'Effective Mentor Gender',
 		name: 'Mentor Name',
-		gender: 'Mentor Gender'
+		gender: 'Mentor Gender',
+		backAt: '14 December 2022'
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	// eslint-disable-next-line no-new
@@ -91,6 +92,26 @@ QUnit.test( 'AskHelpPanel from mentor-helppanel with away mentor', function ( as
 	} );
 	assert.strictEqual( spy.calledWith(
 		'growthexperiments-homepage-mentorship-questionreview-header-away'
+	), true );
+} );
+
+QUnit.test( 'AskHelpPanel from mentor-helppanel with indefinitely away mentor', function ( assert ) {
+	this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHelpPanelMentorData' ).returns( {
+		effectiveName: 'Effective Mentor Name',
+		effectiveGender: 'Effective Mentor Gender',
+		name: 'Mentor Name',
+		gender: 'Mentor Gender',
+		backAt: null
+	} );
+	const spy = this.sandbox.spy( mw, 'message' );
+	// eslint-disable-next-line no-new
+	new AskHelpPanel( {
+		askSource: 'mentor-helppanel',
+		relevantTitle: null,
+		logger: { log: function () {} }
+	} );
+	assert.strictEqual( spy.calledWith(
+		'growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp'
 	), true );
 } );
 
