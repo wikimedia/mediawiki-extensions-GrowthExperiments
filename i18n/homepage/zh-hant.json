@@ -19,7 +19,8 @@
 			"Xiplus",
 			"羊羊32521",
 			"魔琴",
-			"Lakejason0"
+			"Lakejason0",
+			"捍粵者"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -46,7 +47,7 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "在開始創建新條目之前，請先嘗試一些較簡易的編輯！",
 	"growthexperiments-homepage-startediting-subheader-other": "透過在維基百科條目上做出一些簡單的修改，來協助添加全世界的知識。",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "查看建議編輯",
-	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "開始進行建議編輯",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "開始編輯建議項目",
 	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "透過在維基百科條目上做出一些簡單的修改，來協助添加全世界的知識。",
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "取得建議",
 	"growthexperiments-homepage-startediting-button": "查看建議編輯",
@@ -385,7 +386,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "其他",
 	"growthexperiments-addlink-rejectiondialog-action-done": "完成",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "選擇這不是一個好連結的原因",
-	"growthexperiments-addlink-onboarding-content-intro-title": "添加連結將幫助人們更快地學習。",
+	"growthexperiments-addlink-onboarding-content-intro-title": "添加連結會幫人學得更快。",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|您}}將決定一篇{{SITENAME}}條目中的詞是否應該連結到其他{{SITENAME}}的條目。",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "例句",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "月亮是唯一一個<mark class=\"positive\">天然衛星</mark>，它的<mark class=\"positive\">軌道</mark>圍繞<mark class=\"positive\">地球</mark>。",
@@ -432,7 +433,7 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "取消",
 	"growthexperiments-structuredtask-summary-submit": "提交",
 	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "輸入原因（可選）",
-	"growthexperiments-addlink-suggestions-outdated": "在{{GENDER:|您}}審核此條目時有其他使用者進行了編輯，{{GENDER:|您}}作出的變更無法發布。",
+	"growthexperiments-addlink-suggestions-outdated": "有人在您審核時編輯了條目，您的變更無法發佈。",
 	"growthexperiments-addimage-inspector-title": "加入建議的圖片",
 	"growthexperiments-addimage-inspector-cta": "將此圖片加入到條目的開頭？",
 	"growthexperiments-addimage-inspector-yes-button": "是",

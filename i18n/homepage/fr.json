@@ -505,7 +505,7 @@
 	"growthexperiments-addimage-caption-info-dialog-message": "Les lecteurs de <strong>$1</strong> verront la légende affichée sous l’image.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-describe": "Décrivez l’image afin que le lien avec <strong>$1</strong> soit clair.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-review": "Examinez à nouveau les détails de l’image pour trouver les informations qu’il est pertinent d’inclure.",
-	"growthexperiments-addimage-caption-info-dialog-guidelines-neutral": "Restez neutre en évitant les jugements tels que « bonne », « laide » ou «jolie ».",
+	"growthexperiments-addimage-caption-info-dialog-guidelines-neutral": "Restez neutre en évitant les jugements tels que « bon(ne) », « laid(e) » ou « joli(e) ».",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "Écrivez dans la langue de cet article : $1.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language-generic": "Écrivez dans la langue de l’édition de Wikipédia dans laquelle {{GENDER:|}}vous vous trouvez.",
 	"growthexperiments-addimage-caption-info-dialog-confirm": "C’est bon",
