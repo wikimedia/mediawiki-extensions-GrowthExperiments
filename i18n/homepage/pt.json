@@ -160,6 +160,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "Perguntar {{GENDER:$1|ao seu mentor|à sua mentora}}{{GENDER:$2|}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Quando faz uma pergunta, ela é <strong>publicada para acesso público</strong> com o seu nome de utilizador, \"$2\", $3, que é onde {{GENDER:$1|ele|ela}} pode encontrar a sua pergunta e responder.{{GENDER:$2|}}",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|O seu mentor|A sua mentora}} principal, \"[[User:$1|$1]]\", está ausente até $3.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "{{GENDER:$2|O seu mentor|A sua mentora}} principal, \"[[User:$1|$1]]\", está ausente neste momento.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "Por agora {{GENDER:$2|um outro mentor|uma outra mentora}}, \"[[User:$1|$1]]\", responderá às suas perguntas.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "na página de discussão {{GENDER:$1|do seu mentor|da sua mentora}}{{GENDER:$2|}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "A sua pergunta está agora na página de discussão {{GENDER:$1|do seu mentor, onde ele|da sua mentora, onde ela}} irá responder-lhe logo que possa.{{GENDER:$2|}}",

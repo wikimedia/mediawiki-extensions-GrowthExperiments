@@ -153,6 +153,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Vprašajte}} {{GENDER:$1|svojega mentorja|svojo mentorico|svojega_jo mentorja_ico}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Ko postavite vprašanje, je <strong>javno objavljeno</strong> pod {{GENDER:$2|vašim}} uporabniškim imenom, »$2«, na strani $3, kjer ga lahko {{GENDER:$1|najde}} in nanj odgovori.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:|Vaš glavni|Vaša glavna|Vaš_a glavni_a}} {{GENDER:$2|mentor|mentorica|mentor_ica}} » [[User:$1|$1]]« bo do $3 {{GENDER:|odsoten|odsotna|odsoten_a}}.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "{{GENDER:|Vaš glavni|Vaša glavna|Vaš_a glavni_a}} {{GENDER:$2|mentor|mentorica|mentor_ica}}, »[[User:$1|$1]]«, je trenutno  {{GENDER:|odsoten|odsotna|odsoten_a}}.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "V tem času bo na vaša vprašanja {{GENDER:$2|odgovarjal drug mentor|odgovarjala druga mentorica|odgovarjal_a drug_a mentorica}}, »[[User:$1|$1]]«.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "pogovorna stran {{GENDER:$2|vašega|vaše|vašega_vaše}} {{GENDER:$1|mentorja|mentorice|mentorja_ice}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Vaše}} vprašanje je zdaj na pogovorni strani vašega mentorja, kjer bo nanj {{GENDER:$1|odgovoril|odgovorila|odgovoril_a}} takoj, ko {{GENDER:$1|bo lahko}}.",
