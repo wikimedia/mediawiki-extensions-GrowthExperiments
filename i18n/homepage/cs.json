@@ -164,6 +164,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Zeptejte}} se {{GENDER:$1|svého mentora|své mentorky}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Kdykoliv položíte otázku, bude <strong>zveřejněna</strong> pod {{GENDER:$2|vaším uživatelským jménem}}, „$2“, na $3, kde ji {{GENDER:$1|mentor|mentorka}} může najít a odpovědět na ni.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Váš mentor|Vaše mentorka}}, „[[User:$1|$1]]“, v současné době není na Wikipedii až do $3.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "{{GENDER:$2|Váš mentor|Vaše mentorka}}, „[[User:$1|$1]]“, v současné době není k dispozici.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "{{GENDER:$2|Jiný mentor|Jiná mentorka}}, „[[User:$1|$1]]“, prozatím zodpoví vaše otázky.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|diskusi}} {{GENDER:$1|vašeho mentora|vaší mentorky}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Vaše}} otázka je nyní na diskusi {{GENDER:$1|vašeho mentora|vaší mentorky}}, kde ji zodpoví, hned jak bude moct.",

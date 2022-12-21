@@ -3,6 +3,7 @@
 		"authors": [
 			"AJBot2",
 			"ANukuma",
+			"Agam Riyandana",
 			"Chinamoonroll",
 			"Daud I.F. Argana",
 			"Diki Ananta",
@@ -92,6 +93,7 @@
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|suntingan}} di halaman lain (lihat semua)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Tuju ke artikel",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Lihat rincian penayangan halaman",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-title": "Bagan garis yang menunjukkan total tayangan harian untuk artikel yang diedit dalam $1 terakhir {{PLURAL:$1| hari|hari}}.",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Karena Anda baru mulai menyunting artikel hari ini, jumlah tayangan halaman belum dihitung. Periksa kembali besok!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Jumlah tayangan halaman belum dihitung. Periksa kembali besok!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Mengerti",
@@ -104,6 +106,8 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Lihat saranan suntingan",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Mulai dengan sedikit <strong>saranan suntingan</strong>, kemudian lihat seberapa banyaknya orang yang melihat kontribusi {{GENDER:$1|Anda}} di sini.",
 	"growthexperiments-homepage-impact-unactivated-description": "Setelah {{GENDER:$1|Anda}} mulai menyunting, {{GENDER:$1|Anda}} akan melihat di sini mengenai berapa banyak pemirsa artikel yang telah {{GENDER:$1|Anda}} sunting.",
+	"growthexperiments-homepage-impact-error-data-not-found-text": "Penundaan sementara untuk mendapatkan {{GENDER:$1| informasi Anda",
+	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Pertimbangkan untuk mengedit dan mempelajari lebih lanjut di {{SITENAME}}, lalu kembali lagi nanti untuk melihat {{GENDER:$1| detail dampak pengeditan}} Anda.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Pemberitahuan meja bantuan",
 	"growthexperiments-tour-response-tip-text": "Ketika pertanyaan {{GENDER:$1|Anda}} terjawab, {{GENDER:$1|Anda}} akan menerima pemberitahuan di sini.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Pemberitahuan {{GENDER:$1|Mentor}}",
@@ -149,6 +153,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "Tanya kepada {{GENDER:$1|mentor}} {{GENDER:$2|Anda}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Saat Anda mengajukan pertanyaan, pertanyaan tersebut <strong>diterbitkan secara terbuka</strong> di bawah nama pengguna {{GENDER:$2|Anda}}, \"$2\", ke $3, tempat di mana {{GENDER:$1|ia}} dapat menemukan dan menanggapi pertanyaan Anda.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Pembimbing}} utama Anda, \"$1\", sedang tidak ada. {{GENDER:$4|Pembimbing}} lain, \"$3\", akan menjawab pertanyaan Anda untuk sementara waktu.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "{{GENDER:|}} {{GENDER:$2| mentor}}, \"[[User: $1 | $1 ]]\", saat ini tidak ada.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "Halaman pembicaraan {{GENDER:$1|mentor}} {{GENDER:$2|Anda}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "Pertanyaan {{GENDER:$2|Anda}} sudah berada di halaman pembicaraan mentor Anda. Pertanyaan akan dijawab oleh {{GENDER:$1|dia}} sesegera mungkin.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Lihat pertanyaan {{GENDER:$2|Anda}} di halaman pembicaraan {{GENDER:$1|mentor}} Anda.",
@@ -519,5 +524,8 @@
 	"growthexperiments-homepage-mentorship-optout-cancel": "Batalkan",
 	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|Anda}} tidak lagi dibimbing.",
 	"growthexperiments-homepage-mentorship-about-header": "Tentang mentor",
-	"growthexperiments-homepage-mentorship-about-done": "Selesai"
+	"growthexperiments-homepage-mentorship-about-done": "Selesai",
+	"growthexperiments-tour-newimpact-discovery-title": "Desain yang diperbarui",
+	"growthexperiments-tour-newimpact-discovery-description": "Aktivitas pengeditan {{GENDER:|your}} lainnya telah ditambahkan!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Mengerti"
 }

@@ -154,6 +154,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "Responder {{GENDER:$2|seu|sua}} {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Ao fazer uma pergunta, ela será <strong>publicada para acesso público</strong> com o seu nome de {{GENDER:$2|usuário|usuária}}, “$2”, na $3, que é onde {{GENDER:$1|ele|ela|ele}} poderá encontrar a sua pergunta e responder.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:|Seu|Sua}} principal {{GENDER:$2|mentor|mentora}}, \"[[User:$1|$1]]\", está ausente até às $3.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "{{GENDER:$2|O seu mentor|A sua mentora}} principal, \"[[User:$1|$1]]\", está ausente neste momento.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "{{GENDER:$2|Outro mentor|Outra mentora}}, \"[[User:$1|$1]]\", responderá suas perguntas por enquanto.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|sua}} página de discussão do(a) {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "A {{GENDER:$2|sua}} pergunta está agora na página de discussão {{GENDER:$1|do seu mentor, onde ele|da sua mentora, onde ela}} irá responder-lhe logo que possa.",
@@ -542,5 +543,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Seu}} {{GENDER:$1|mentor}} é outra pessoa com muita experiência em edição em {{SITENAME}}. {{GENDER:$1|Ele é|Ela|Eles}} se ofereceu para orientar pessoas mais novas como você sobre como editar e pode responder a perguntas que {{GENDER:|você}} possa ter sobre o uso do site.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Sair da mentoria",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Selecione o botão abaixo para desativar se {{GENDER:|você}} preferir não ter um mentor específico atribuído a {{GENDER:|você}} agora. {{GENDER:|Você}} pode obter um novo mentor a qualquer momento se {{GENDER:|você}} mudar de ideia.",
-	"growthexperiments-homepage-mentorship-about-done": "Feito"
+	"growthexperiments-homepage-mentorship-about-done": "Feito",
+	"growthexperiments-tour-newimpact-discovery-title": "Design atualizado",
+	"growthexperiments-tour-newimpact-discovery-description": "Foi adicionada mais informação da sua atividade de edição!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Entendi"
 }
