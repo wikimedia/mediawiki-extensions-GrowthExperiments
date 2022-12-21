@@ -358,9 +358,20 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			];
 		}
 		$status = $this->pageViewService->getPageData( array_column( $allTitleObjects, 'title' ), $days );
-		if ( !$status->isOK() ) {
+		if ( !$status->isGood() ) {
 			$this->logger->error( Status::wrap( $status )->getWikiText( false, false, 'en' ) );
-			return null;
+			if ( !$status->isOK() ) {
+				return null;
+			}
+		} elseif ( $status->successCount < count( $allTitles ) ) {
+			$failedTitles = array_keys( array_diff_key( $allTitles, $status->success ) );
+			$this->logger->info( "Failed to get page view data for {count} titles for user {user}",
+				[
+					'user' => $user->getName(),
+					'count' => count( $failedTitles ),
+					'failedTitles' => substr( implode( ',', $failedTitles ), 0, 250 ),
+				]
+			);
 		}
 		$pageViewData = $status->getValue();
 
