@@ -4,6 +4,8 @@
  * The following files must be included together:
  * - ext.growthExperiments.Homepage.Logger/index.js
  * - utils/Utils.js
+ * And the following modules:
+ * - mediawiki.user (To avoid possible RL order issues in debug mode, not needed after resolving T225842)
  */
 ( function () {
 
