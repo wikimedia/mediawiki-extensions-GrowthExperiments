@@ -296,7 +296,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "{{GENDER:|حدّد|حدّدي}} على الأقل مستوى واحدا من التعديلات",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "{{GENDER:|حدّد|حدّدي}} الاهتمامات",
 	"growthexperiments-homepage-suggestededits-topics-more": "{{GENDER:|أظهر|أظهري}} المزيد",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|لا مواضيع|موضوع واحد|موضوعان اثنان|$1 مواضيع|$1 موضوعا}}",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|لا مواضيع|موضوع واحد|موضوعان اثنان|$1 مواضيع|$1 موضوعًا}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "{{GENDER:|اِختر|اِختاري}} الكل",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "{{GENDER:|احذف|احذفي}} الكل",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|اِختر|اِختاري}} بعض المواضيع التي {{GENDER:$1|تهتم|تهتمين}} بالكتابة عنها",
