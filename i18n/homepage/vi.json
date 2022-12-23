@@ -6,6 +6,7 @@
 			"Minh Nguyen",
 			"NguoiDungKhongDinhDanh",
 			"NguyenHung",
+			"Nguyenphutrong2",
 			"Nguyễn Mạnh An",
 			"RiceCracker12",
 			"Trizek (WMF)",
@@ -127,6 +128,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "Hỏi {{GENDER:$1|cố vấn}} của {{GENDER:$2|bạn}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Khi bạn hỏi câu hỏi nào đó, nó được <strong>đăng công khai</strong> dưới tên bạn, “$2”, đến $3, là nơi {{GENDER:$1}}mọi người thấy và trả lời câu hỏi của bạn.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Cố vấn}} chính của {{GENDER:|bạn}}, \"[[User:$1|$1]]\", hiện đang vắng mặt. Một {{GENDER:$4|cố vấn}} khác, \"[[User:$3|$3]]\", sẽ trả lời câu hỏi của bạn trong thời gian này.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "{{GENDER:|Your}} chính {{GENDER:$2| cố vấn}}, \"[[Người dùng: $1 | $1 ]]\", hiện đang vắng mặt.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "Trang thảo luận của {{GENDER:$1|cố vấn}} {{GENDER:$2|của bạn}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "Câu hỏi {{GENDER:$2|của bạn}} giờ đã xuất hiện trên trang thảo luận {{GENDER:$1|của cố vấn}}, và họ sẽ cố gắng trả lời câu hỏi trên sớm nhất có thể.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Xem câu hỏi của {{GENDER:$2|bạn}} trên trang thảo luận của {{GENDER:$1|người cố vấn}}.",
@@ -410,5 +412,9 @@
 	"growthexperiments-addimage-summary-copyrightwarning": "Bằng việc ấn đăng, bạn đồng ý với [https://foundation.wikimedia.org/wiki/Terms_of_Use Điều khoản sử dụng] và đồng ý phát hành đóng góp của mình theo giấy phép [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] và [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
 	"growthexperiments-addimage-summary-summary": "Tính năng gợi ý hình ảnh: Đã thêm $1 {{PLURAL:$1|hình ảnh}}.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Đã hiểu"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
+	"growthexperiments-tour-newimpact-discovery-title": "cập nhật thiết kế",
+	"growthexperiments-tour-newimpact-discovery-description": "Nhiều hoạt động chỉnh sửa {{GENDER:|your}} đã được thêm vào!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Hiểu rồi",
+	"growthexperiments-homepage-newimpact-contributions-link": "Xem tất cả các chỉnh sửa"
 }
