@@ -92,7 +92,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Če {{GENDER:$2|želite}} biti obveščeni tudi po e-pošti, zdaj potrdite svoj e-poštni naslov: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Potrditev e-poštnega naslova",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Če {{GENDER:$1|želite}} biti obveščeni tudi po e-pošti, zdaj potrdite svoj e-poštni naslov.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Dodajte e-naslov",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Dodajte e-poštni naslov",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "O panelu pomoči",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Mimogrede, s postavitvijo tega vprašanja ste pravkar opravili svoje prvo urejanje. Čestitamo!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Izklopi panel pomoči",

@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Lois131"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|mi ez?]])",
-	"growthexperiments-confirmemail-emailhelp": "Az e-mail-cím szükséges a fiókot helyreállításához, ha elveszted a jelszavadat.",
+	"growthexperiments-confirmemail-emailhelp": "Az e-mail-cím szükséges a fiókod helyreállításához, ha elveszted a jelszavadat.",
 	"growthexperiments-confirmemail-emailrecommended": "E-mail-cím (ajánlott)",
 	"growthexperiments-confirmemail-emailwarning": "Keress egy tőlünk érkezett e-mailt az e-mail-címed megerősítéséhez.",
 	"growthexperiments-confirmemail-confirm-subject": "Üdvözlünk a Wikipédián: kérjük, erősítsd meg az e-mail-címed",
