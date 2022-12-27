@@ -186,7 +186,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$form->setId( 'welcome-survey-form' );
 
 		// subtitle
-		$form->addHeaderText(
+		$form->addHeaderHtml(
 			Html::rawElement(
 				'div',
 				[ 'class' => 'welcomesurvey-subtitle' ],
@@ -214,7 +214,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		] );
 
 		// sidebar
-		$form->setPostText( $this->buildSidebar() );
+		$form->setPostHtml( $this->buildSidebar() );
 	}
 
 	/**

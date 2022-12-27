@@ -269,13 +269,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		}
 
 		if ( $this->userCanWrite ) {
-			$form->addPreText( $this->msg(
+			$form->addPreHtml( $this->msg(
 				'growthexperiments-edit-config-pretext',
 				\Message::listParam( array_map( static function ( Title $title ) {
 					return '[[' . $title->getPrefixedText() . ']]';
 				}, array_values( $this->configPages ) ) )
 			)->parseAsBlock() );
-			$form->addPreText( $this->msg(
+			$form->addPreHtml( $this->msg(
 				'growthexperiments-edit-config-pretext-banner',
 				$this->titleFactory->newFromText(
 					Banner::MESSAGE_KEY,
@@ -283,7 +283,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				)->getPrefixedText()
 			)->parseAsBlock() );
 		} else {
-			$form->addPreText( $this->msg( 'growthexperiments-edit-config-pretext-unprivileged' ) );
+			$form->addPreHtml( $this->msg( 'growthexperiments-edit-config-pretext-unprivileged' ) );
 		}
 
 		// Add last updated data
@@ -293,7 +293,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				$lastRevisionUser = $revision->getUser();
 				$diffLink = $configTitle->getFullURL( [ 'oldid' => $revision->getId(), 'diff' => 'prev' ] );
 				if ( $lastRevisionUser !== null ) {
-					$form->addPreText( $this->msg(
+					$form->addPreHtml( $this->msg(
 						'growthexperiments-edit-config-last-edit',
 						$lastRevisionUser,
 						MWTimestamp::getInstance( $revision->getTimestamp() )
@@ -302,7 +302,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 						$diffLink
 					)->parseAsBlock() );
 				} else {
-					$form->addPreText( $this->msg(
+					$form->addPreHtml( $this->msg(
 						'growthexperiments-edit-config-last-edit-unknown-user',
 						MWTimestamp::getInstance( $revision->getTimestamp() )
 							->getRelativeTimestamp(),
@@ -313,13 +313,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 		}
 
-		$form->addPreText( $this->getFeedbackHtml() );
+		$form->addPreHtml( $this->getFeedbackHtml() );
 
 		if ( !$this->userCanWrite ) {
 			$form->suppressDefaultSubmit( true );
 		} elseif ( $this->readOnlyMode->isReadOnly() ) {
 			$form->suppressDefaultSubmit( true );
-			$form->addPostText( $this->msg( 'readonlytext', $this->readOnlyMode->getReason() ) );
+			$form->addPostHtml( $this->msg( 'readonlytext', $this->readOnlyMode->getReason() ) );
 		}
 	}
 
