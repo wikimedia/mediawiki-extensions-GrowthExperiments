@@ -2,5 +2,15 @@
 	"@metadata": {
 		"authors": []
 	},
-	"growthexperiments-desc": "Ovo proširenje sadrži projekte tima za razvoj."
+	"growthexperiments-desc": "Ovaj dodatak sadrži projekte Tima za razvoj.",
+	"growthexperiments-edit-config-edit-summary": "Opis izmene",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Vrh stranice",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Dno stranice",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Stranice za razgovor mentora",
+	"growthexperiments-edit-config-homepage": "Početna stranica za novajlije",
+	"growthexperiments-edit-config-mentorship": "Mentorstvo",
+	"growthexperiments-edit-config-mentorship-enabled": "Jesu li omogućene funkcije mentorstva?",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Da",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Ne",
+	"growthexperiments-edit-config-newcomertasks": "Predložene izmene"
 }

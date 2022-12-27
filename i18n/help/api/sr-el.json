@@ -10,5 +10,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Ekran „Pitanje mentoru” na tabli pomoći",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Tabla „Postavljanje pitanja” (staro ime)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Tabla „Pitanje mentoru” na početnoj stranici novajlije (staro ime)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Relevantan naslov, ako je izabrano, za uključivanje s pitanjem."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Relevantan naslov, ako je izabrano, za uključivanje s pitanjem.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Morate biti prijavljeni da biste postavili pitanje."
 }

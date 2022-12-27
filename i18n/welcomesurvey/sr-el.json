@@ -7,7 +7,7 @@
 	"welcomesurvey": "{{GENDER:$1|Dobro došli}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Hvala! Odgovori su sačuvani.",
 	"welcomesurvey-save-confirmation-text": "Koristićemo odgovore kako bismo vam pružili korisne načine za početak rada na Vikipediji.",
-	"welcomesurvey-subtitle": "Pomozite nam da poboljšamo iskustvo na Vikipediji tako što ćete odgovoriti na nekoliko opcionih pitanja.",
+	"welcomesurvey-subtitle": "Pomozite nam da poboljšamo iskustvo na Vikipediji tako što ćete odgovoriti na nekoliko izbornih pitanja.",
 	"welcomesurvey-save-btn": "Završi",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Preskoči}} anketu",
 	"welcomesurvey-close-btn": "Zatvori i vrati me na stranicu $1",
@@ -43,5 +43,6 @@
 	"welcomesurvey-question-email-placeholder": "Unesite imejl-adresu…",
 	"welcomesurvey-question-email-help": "Primetili smo da niste uneli imejl-adresu kada ste otvarali nalog. <strong>Preporučujemo</strong> da to učinite. Ona je potrebna za oporavak naloga ako kojim slučajem zaboravite lozinku. Vaša imejl-adresa neće biti prikazana drugim korisnicima koji kontaktiraju s vama.",
 	"welcomesurvey-question-languages-label": "Projekat {{SITENAME}} je dostupan na više od 300 jezika. Znate li još neke jezike?",
-	"welcomesurvey-question-languages-placeholder": "Dodajte još jezika..."
+	"welcomesurvey-question-languages-placeholder": "Dodajte najviše {{PLURAL:$1|jedan jezik|$1 jezika}}…",
+	"welcomesurvey-question-languages-maximum": "Dodali ste najveći mogući broj jezika."
 }
