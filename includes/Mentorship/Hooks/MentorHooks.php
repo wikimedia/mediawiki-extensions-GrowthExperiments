@@ -96,7 +96,7 @@ class MentorHooks implements
 			'presentation-model' => EchoMentorChangePresentationModel::class,
 			EchoAttributeManager::ATTR_LOCATORS => [
 				[
-					EchoUserLocator::class . '::locateFromEventExtra',
+					[ EchoUserLocator::class, 'locateFromEventExtra' ],
 					[ 'mentee' ]
 				],
 			],
@@ -108,7 +108,7 @@ class MentorHooks implements
 			'presentation-model' => EchoMenteeClaimPresentationModel::class,
 			EchoAttributeManager::ATTR_LOCATORS => [
 				[
-					EchoUserLocator::class . '::locateFromEventExtra',
+					[ EchoUserLocator::class, 'locateFromEventExtra' ],
 					[ 'mentor' ]
 				]
 			]
