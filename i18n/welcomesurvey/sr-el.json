@@ -43,5 +43,5 @@
 	"welcomesurvey-question-email-placeholder": "Unesite imejl-adresu…",
 	"welcomesurvey-question-email-help": "Primetili smo da niste uneli imejl-adresu kada ste otvarali nalog. <strong>Preporučujemo</strong> da to učinite. Ona je potrebna za oporavak naloga ako kojim slučajem zaboravite lozinku. Vaša imejl-adresa neće biti prikazana drugim korisnicima koji kontaktiraju s vama.",
 	"welcomesurvey-question-languages-label": "Projekat {{SITENAME}} je dostupan na više od 300 jezika. Znate li još neke jezike?",
-	"welcomesurvey-question-languages-placeholder": "Dodajte još jezika..."
+	"welcomesurvey-question-languages-placeholder": "Dodajte najviše {{PLURAL:$1|jedan jezik|$1 jezika}}…"
 }
