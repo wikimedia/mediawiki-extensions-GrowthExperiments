@@ -7,6 +7,7 @@
 			"MemphisA5",
 			"Nuevo Paso",
 			"Revi",
+			"Sadopaul",
 			"Ykhwong",
 			"밝은소년"
 		]
@@ -50,10 +51,10 @@
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>준비되었나요?</strong> \"{{int:vector-view-edit}}\"을 눌러 시작하세요.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>준비되었나요?</strong> 편집하고자 하는 문단을 여신 후 연필 아이콘을 눌러 주세요.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "교열은 문서의 철자, 문법 등을 검토하고 문서가 명확하게 쓰여 있는지 확인하는 절차입니다. 이러한 절차는 문서가 더 전문적이고 신뢰할 수 있게 쓰여지도록 도와줍니다.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "박종철 고문치사 사건은 6월 <mark class=\"negative\">황쟁</mark>의 직접적인 도화선이 되었다고 평가받는다.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "지구는 태양계의 세 번째 <mark class=\"negative\">횡성</mark>이다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "문서를 고치기 위해서 한 두개의 작은 편집만 해도 됩니다. 문서를 처음부터 끝까지 보지 않아도 됩니다. 주제에 대해 특별히 잘 알아야 하는 것도 아닙니다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "철자 실수나 문법적 실수를 고칠 수 있습니다. 문장이 너무 길거나, 단어가 반복되거나, 문장 부호가 잘못 표시된 것 등이 있습니다.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "당시 전두환 정권은 고문 사실을 숨기기 위해 \"탁하고 치니 억하고 죽었다\"는 변명을 내놓아 많은 사람들이 <mark class=\"negative\">분노하다</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "화성은 두 개의 위성을 가지고 <mark class=\"negative\">있는다</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules2": "문장을 재구성해서 개인의 의견이 들어 있지 않도록 변경할 수도 있습니다. {{SITENAME}}의 문서는 중립적이고 명확하며 사전처럼 쓰여져야 합니다. 하지만 사실을 다르게 쓰지 않도록 주의하세요.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "목성은 태양계에서 가장 크<mark class=\"negative\">고 가장 신비한</mark> 행성이다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "이 문장에는 의견이 들어가 있으므로 삭제해야 합니다.",
