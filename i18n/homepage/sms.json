@@ -25,6 +25,7 @@
 	"growthexperiments-homepage-recent-questions-archived": "arkiivõsttum",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|muuttâs|muttâz|muttsed}}",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktiivlaž}} $2 {{PLURAL:$2|peiʹvv|peeiʹv|peiʹvved}} mââiårra",
+	"growthexperiments-homepage-suggestededits-edit-card": "Muuʹtt",
 	"growthexperiments-homepage-suggestededits-no-results": "Eʹtǩǩõõzz jie käunnʼjam",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Čuäʹjet puk eʹtǩǩõõzzid",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Raaj ođđ artikkeeʹl",
