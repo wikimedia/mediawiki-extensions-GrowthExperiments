@@ -153,9 +153,7 @@ class NewImpact extends BaseModule {
 	public function getState() {
 		if ( $this->canRender()
 			&& $this->isSuggestedEditsEnabledForUser
-			// On null (first 1000 edits are non-mainspace) assume rest are non-mainspace as well
-			// (chances are it's some kind of bot or role account).
-			&& $this->hasMainspaceEdits()
+			&& $this->getContext()->getUser()->getEditCount()
 		) {
 			return self::MODULE_STATE_ACTIVATED;
 		}

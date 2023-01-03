@@ -232,7 +232,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$queryBuilder->where( [ 'rev_actor' => $user->getActorId() ] );
 		// hopefully able to use the rev_actor_timestamp index for an efficient query
 		$queryBuilder->orderBy( 'rev_timestamp', 'DESC' );
-		$queryBuilder->andWhere( [ 'page_namespace' => NS_MAIN ] );
 		$queryBuilder->limit( self::MAX_EDITS );
 		$queryBuilder->options( $options );
 		$queryBuilder->caller( __METHOD__ );
@@ -266,6 +265,12 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			}
 			if ( $lastEditTimestamp === null ) {
 				$lastEditTimestamp = $row->rev_timestamp;
+			}
+			// Computed values $editCountByNamespace, $editCountByDay, $newcomerTaskEditCount and $lastEditTimestamp
+			// use data from all namespaces. Filter out non-article pages from the collection of returned articles
+			// ($editedArticles) since they are not relevant for the user article list of recent edits.
+			if ( (int)$row->page_namespace !== NS_MAIN ) {
+				continue;
 			}
 			// We're iterating over the result set, newest edits to oldest edits in descending order. The same
 			// article can have been edited multiple times. We'll stash the revision timestamp of the oldest
