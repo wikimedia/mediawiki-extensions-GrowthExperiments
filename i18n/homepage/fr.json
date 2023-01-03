@@ -162,7 +162,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Afficher les autres conversations de {{GENDER:$2|}}votre tut{{GENDER:$1|eur|rice}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Demander à {{GENDER:$2|}}votre tut{{GENDER:$1|eur|rice}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Quand vous posez une question, elle est <strong>publiée publiquement</strong> sous {{GENDER:$2|}}votre nom d’utilisat{{GENDER:$2|eur|rice}} « $2 », sur la $3 qui est l’endroit où {{GENDER:$1|il|elle|l’on}} peut trouver et répondre à votre question.",
-	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:|}}Votre tut{{GENDER:$2|eur|rice}} principal{{GENDER:$2||e}}, « [[User:$1|$1]] », est actuellement absent{{GENDER:$2||e}}. jusqu’au $3.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:|}}Votre tut{{GENDER:$2|eur|rice}} principal{{GENDER:$2||e|(e)}}, « [[User:$1|$1]] », est actuellement absent{{GENDER:$2||e|(e)}} jusqu’au $3.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "Un{{GENDER:$2||e}} autre tut{{GENDER:$2|eur|rice}}, « [[User:$1|$1]] », répondra à vos questions pour le moment.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "page de discussion de {{GENDER:$2|}}votre tut{{GENDER:$1|eur|rice}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|}}Votre question est maintenant sur la page de discussion de votre tut{{GENDER:$1|eur|rice}}, qui est l’endroit où {{GENDER:$1|il|elle}} pourra y répondre aussi vite que possible.",
