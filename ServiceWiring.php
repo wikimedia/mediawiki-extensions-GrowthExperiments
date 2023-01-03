@@ -93,6 +93,7 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\EventBus\EventBusFactory;
+use MediaWiki\Extension\Thanks\ThanksServices;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
@@ -970,6 +971,11 @@ return [
 		MediaWikiServices $services
 	): UserImpactLookup {
 		$pageViewInfoLoaded = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
+		$thanksQueryHelper = null;
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Thanks' ) ) {
+			$thanksQueryHelper = ThanksServices::wrap( $services )->getQueryHelper();
+		}
+
 		return new ComputedUserImpactLookup(
 			new ServiceOptions( ComputedUserImpactLookup::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
@@ -979,9 +985,10 @@ return [
 			$services->getUserOptionsLookup(),
 			$services->getTitleFormatter(),
 			$services->getTitleFactory(),
+			$services->getStatsdDataFactory(),
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			$pageViewInfoLoaded ? $services->get( 'PageViewService' ) : null,
-			$services->getStatsdDataFactory()
+			$thanksQueryHelper
 		);
 	},
 

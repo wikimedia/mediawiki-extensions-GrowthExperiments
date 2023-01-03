@@ -11,6 +11,7 @@ use IDBAccessObject;
 use MalformedTitleException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\Extension\Thanks\ThanksQueryHelper;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
@@ -80,13 +81,15 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	private IBufferingStatsdDataFactory $statsdDataFactory;
+
 	/** @var LoggerInterface|null */
 	private $logger;
 
 	/** @var PageViewService|null */
 	private $pageViewService;
 
-	private IBufferingStatsdDataFactory $statsdDataFactory;
+	private ?ThanksQueryHelper $thanksQueryHelper;
 
 	/**
 	 * @param ServiceOptions $config
@@ -97,9 +100,10 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param TitleFormatter $titleFormatter
 	 * @param TitleFactory $titleFactory
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param LoggerInterface|null $loggerFactory
 	 * @param PageViewService|null $pageViewService
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param ThanksQueryHelper|null $thanksQueryHelper
 	 */
 	public function __construct(
 		ServiceOptions $config,
@@ -110,9 +114,10 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		UserOptionsLookup $userOptionsLookup,
 		TitleFormatter $titleFormatter,
 		TitleFactory $titleFactory,
+		IBufferingStatsdDataFactory $statsdDataFactory,
 		?LoggerInterface $loggerFactory,
 		?PageViewService $pageViewService,
-		IBufferingStatsdDataFactory $statsdDataFactory
+		?ThanksQueryHelper $thanksQueryHelper
 	) {
 		$this->config = $config;
 		$this->dbr = $dbr;
@@ -122,9 +127,10 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->titleFormatter = $titleFormatter;
 		$this->titleFactory = $titleFactory;
+		$this->statsdDataFactory = $statsdDataFactory;
 		$this->logger = $loggerFactory ?? new NullLogger();
 		$this->pageViewService = $pageViewService;
-		$this->statsdDataFactory = $statsdDataFactory;
+		$this->thanksQueryHelper = $thanksQueryHelper;
 	}
 
 	/** @inheritDoc */
@@ -205,7 +211,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @throws \Exception
 	 */
 	private function getEditData( User $user, int $flags ): EditData {
-		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
+		[ $index, $options ] = DBAccessObjectUtils::getDBOptions( $flags );
 		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
 		$queryBuilder = new SelectQueryBuilder( $db );
 		$queryBuilder->table( 'revision' )
@@ -287,25 +293,9 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @return int Number of thanks received for the user ID
 	 */
 	private function getThanksCount( User $user, int $flags ): int {
-		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
-		$userPage = $user->getUserPage();
-		$queryBuilder = new SelectQueryBuilder( $db );
-		$queryBuilder->table( 'logging' );
-		$queryBuilder->field( '1' );
-		// There is no type + target index, but there's a target index (log_page_time)
-		// and it's unlikely the user's page has many other log events than thanks,
-		// so the query should be okay.
-		$queryBuilder->conds( [
-			'log_type' => 'thanks',
-			'log_action' => 'thank',
-			'log_namespace' => $userPage->getNamespace(),
-			'log_title' => $userPage->getDBkey(),
-		] );
-		$queryBuilder->orderBy( 'log_timestamp', 'DESC' );
-		$queryBuilder->limit( self::MAX_THANKS );
-		$queryBuilder->options( $options );
-		return $queryBuilder->fetchRowCount();
+		return $this->thanksQueryHelper
+			? $this->thanksQueryHelper->getThanksReceivedCount( $user, self::MAX_THANKS, $flags )
+			: 0;
 	}
 
 	/**
