@@ -47,9 +47,12 @@ class UnderlinkedFunctionScoreBuilder implements BoostFunctionBuilder {
 <<<'SCRIPT'
 		doc['text_bytes'] >= minimumLength
 			? pow(
-				1 - (
-					doc['outgoing_link.token_count'].length
-					/ max( 1, doc['text.word_count'] )
+				max(
+					0,
+					1 - (
+						doc['outgoing_link.token_count'].length
+						/ max( 1, doc['text.word_count'] )
+					)
 				),
 				smoothingFactor
 			)
