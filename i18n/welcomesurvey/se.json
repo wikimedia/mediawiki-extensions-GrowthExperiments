@@ -4,5 +4,6 @@
 			"Yupik"
 		]
 	},
+	"welcomesurvey": "{{GENDER:$1|Bures boahtin}}, $1!",
 	"welcomesurvey-question-email-label": "E-poastačujuhus (eaktodáhtolaš)"
 }
