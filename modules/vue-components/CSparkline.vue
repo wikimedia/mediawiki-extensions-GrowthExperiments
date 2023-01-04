@@ -13,7 +13,7 @@
 <script>
 const { onMounted } = require( 'vue' );
 const d3 = require( 'ext.growthExperiments.d3' );
-let chart, sparkline, area = null;
+let chart, sparkline, area, circle = null;
 
 // @vue/component
 module.exports = exports = {
@@ -42,11 +42,17 @@ module.exports = exports = {
 		yAccessor: {
 			type: Function,
 			required: true
+		},
+		withCircle: {
+			type: Boolean,
+			default: false
 		}
 	},
 	setup( props ) {
 		const plot = () => {
-			chart.attr( 'viewBox', `0 0 ${props.dimensions.width} ${props.dimensions.height}` );
+			// Add 2px of right padding for the circle (r = 1px) rendered on top of the last point
+			const paddingRight = props.withCircle ? 2 : 0;
+			chart.attr( 'viewBox', `0 0 ${props.dimensions.width + paddingRight} ${props.dimensions.height}` );
 			const xDomain = d3.extent( props.data, props.xAccessor );
 			const xScale = d3.scaleTime()
 				.domain( xDomain )
@@ -72,18 +78,35 @@ module.exports = exports = {
 			sparkline
 				.data( [ props.data ] )
 				.attr( 'd', lineGenerator )
-				.attr( 'stroke-width', 2 )
+				.attr( 'stroke-width', 1 )
 				.attr( 'stroke-linejoin', 'round' )
 				.attr( 'fill', 'none' );
 			area
 				.data( [ props.data ] )
 				.attr( 'd', areaGenerator );
+
+			if ( props.withCircle ) {
+				const lastPoint = {
+					x: props.xAccessor( props.data[ props.data.length - 1 ] ),
+					y: props.yAccessor( props.data[ props.data.length - 1 ] )
+				};
+
+				circle
+					.attr( 'cx', xScale( lastPoint.x ) )
+					.attr( 'cy', yScale( lastPoint.y ) )
+					.attr( 'r', 1 );
+			}
+
 		};
 
 		onMounted( () => {
 			chart = d3.select( `#sparkline-${props.id}` );
-			sparkline = chart.append( 'path' ).attr( 'class', 'ext-growthExperiments-CSparkline__line' );
+			// Append order is relevant. Render the line over the area
 			area = chart.append( 'path' ).attr( 'class', 'ext-growthExperiments-CSparkline__area' );
+			sparkline = chart.append( 'path' ).attr( 'class', 'ext-growthExperiments-CSparkline__line' );
+			if ( props.withCircle ) {
+				circle = chart.append( 'circle' ).attr( 'class', 'ext-growthExperiments-CSparkline__circle' );
+			}
 			plot();
 		} );
 
@@ -99,6 +122,10 @@ module.exports = exports = {
 .ext-growthExperiments-CSparkline {
 	&__line {
 		stroke: @background-color-progressive--focus;
+	}
+
+	&__circle {
+		fill: @background-color-progressive--focus;
 	}
 
 	&__area {

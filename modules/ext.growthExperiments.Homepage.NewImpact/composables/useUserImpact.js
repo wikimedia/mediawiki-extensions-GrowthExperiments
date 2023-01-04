@@ -49,6 +49,33 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
 };
 
 /**
+ * Reduce the data points to n by splitting the
+ * data collection in equal chunks but the last one and
+ * summing each chunk views.
+ *
+ * @param {Array} items The data points to quantize
+ * @param {number} n The number of data points the result will have
+ * @return {Array}
+ */
+const quantizeViews = ( items, n = 6 ) => {
+	const chunkSize = Math.ceil( items.length / n );
+	if ( !chunkSize ) {
+		return items;
+	}
+	// eslint-disable-next-line compat/compat
+	const result = new Array( Math.min( n, items.length ) )
+		.fill()
+		.map( () => items.splice( 0, chunkSize ) )
+		.map( ( chunk ) => {
+			// eslint-disable-next-line compat/compat
+			return Object.assign( chunk[ 0 ], {
+				views: sum( chunk.map( ( item ) => item.views ) )
+			} );
+		} );
+	return result;
+};
+
+/**
  * Composable to make use of user impact data.
  *
  * @param {number} userId The user id to be used in the data request the data
@@ -121,14 +148,13 @@ function useUserImpact( userId, timeFrame ) {
 				return Object.keys( articleDataObject ).map( ( articleTitle ) => {
 					const title = new mw.Title( articleTitle );
 					const articleData = articleDataObject[ articleTitle ];
-
 					return {
 						title: title.getMainText(),
 						href: title.getUrl(),
 						views: {
 							href: articleData.pageviewsUrl,
 							count: articleData.viewsCount,
-							entries: toPageviewsArray( articleData.views )
+							entries: quantizeViews( toPageviewsArray( articleData.views ) )
 						},
 						image: {
 							href: articleData.imageUrl,

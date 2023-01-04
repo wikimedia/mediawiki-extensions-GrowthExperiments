@@ -42,6 +42,7 @@
 								:dimensions="{ width: 20, height: 20 }"
 								:x-accessor="xAccessor"
 								:y-accessor="yAccessor"
+								with-circle
 							></c-sparkline>
 						</a>
 						<c-popover
