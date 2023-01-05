@@ -3,12 +3,14 @@
 namespace GrowthExperiments\MentorDashboard\MentorTools;
 
 use DBAccessObjectUtils;
+use HashBagOStuff;
 use IDBAccessObject;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserOptionsManager;
 use StatusValue;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -53,6 +55,8 @@ class MentorStatusManager implements IDBAccessObject {
 	/** @var IDatabase */
 	private $dbw;
 
+	private HashBagOStuff $inprocessCache;
+
 	/**
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserIdentityLookup $userIdentityLookup
@@ -72,6 +76,7 @@ class MentorStatusManager implements IDBAccessObject {
 		$this->userFactory = $userFactory;
 		$this->dbr = $dbr;
 		$this->dbw = $dbw;
+		$this->inprocessCache = new HashBagOStuff();
 	}
 
 	/**
@@ -99,6 +104,24 @@ class MentorStatusManager implements IDBAccessObject {
 	}
 
 	/**
+	 * @param UserIdentity $mentor
+	 * @return string
+	 */
+	private function makeAwayReasonCacheKey( UserIdentity $mentor ): string {
+		return $this->inprocessCache->makeKey(
+			'GrowthExperiments', __CLASS__, 'awayReason',
+			$mentor->getId()
+		);
+	}
+
+	/**
+	 * @param UserIdentity $mentor
+	 */
+	private function invalidateAwayReasonCache( UserIdentity $mentor ): void {
+		$this->inprocessCache->delete( $this->makeAwayReasonCacheKey( $mentor ) );
+	}
+
+	/**
 	 * Why is the user away?
 	 *
 	 * @param UserIdentity $mentor
@@ -106,6 +129,29 @@ class MentorStatusManager implements IDBAccessObject {
 	 * @return string|null Away reason (AWAY_* constant) or null if mentor is not away
 	 */
 	public function getAwayReason( UserIdentity $mentor, int $flags = 0 ): ?string {
+		if ( DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
+			$this->invalidateAwayReasonCache( $mentor );
+		}
+
+		return $this->inprocessCache->getWithSetCallback(
+			$this->makeAwayReasonCacheKey( $mentor ),
+			ExpirationAwareness::TTL_INDEFINITE,
+			function () use ( $mentor, $flags ) {
+				return $this->getAwayReasonUncached( $mentor, $flags );
+			}
+		);
+	}
+
+	/**
+	 * Why is the user away?
+	 *
+	 * This bypasses caching.
+	 *
+	 * @param UserIdentity $mentor
+	 * @param int $flags bitfield consisting of MentorStatusManager::READ_* constants
+	 * @return string|null Away reason (AWAY_* constant) or null if mentor is not away
+	 */
+	private function getAwayReasonUncached( UserIdentity $mentor, int $flags = 0 ): ?string {
 		// NOTE: (b)lock checking must be first. This is to make canChangeStatus() work for mentors
 		// who are blocked _and_ (manually) away.
 		$block = $this->userFactory->newFromUserIdentity( $mentor )
@@ -267,6 +313,7 @@ class MentorStatusManager implements IDBAccessObject {
 			)
 		);
 		$this->userOptionsManager->saveOptions( $mentor );
+		$this->invalidateAwayReasonCache( $mentor );
 		return StatusValue::newGood();
 	}
 
@@ -288,6 +335,7 @@ class MentorStatusManager implements IDBAccessObject {
 			null
 		);
 		$this->userOptionsManager->saveOptions( $mentor );
+		$this->invalidateAwayReasonCache( $mentor );
 		return StatusValue::newGood();
 	}
 }
