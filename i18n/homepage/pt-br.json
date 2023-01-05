@@ -331,7 +331,7 @@
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Escolha alguns tópicos que {{GENDER:$1|você}} deseja editar",
 	"growthexperiments-homepage-claimmentee-title": "Reivindicar aprendiz",
 	"growthexperiments-homepage-claimmentee-pretext": "Esta página permite que {{GENDER:$1|você}} mude o tutor de um aprendiz para você mesmo. É recomendável utilizar esse recurso para usuários que já conhece ou para ser tutor de usuários de um curso.",
-	"growthexperiments-homepage-claimmentee-mentee": "Nome de usuário de mentor",
+	"growthexperiments-homepage-claimmentee-mentee": "Nome de usuário do(a) aprendiz",
 	"growthexperiments-homepage-claimmentee-reason": "Razão para reivindicar este aprendiz",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Mudou}} o mentor {{PLURAL:$2|do usuário|dos usuários}} $1 para {{GENDER:$4|$5}}. Retorne ao [[Special:MentorDashboard|painel do mentor]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Mentor {{GENDER:$1|}} já foi alterado. Estamos {{GENDER:$2|você}} tem certeza que {{GENDER:$2|você}} quer mudar isso de novo?",
