@@ -68,7 +68,7 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$mentor = $this->getTestMentor();
 
 		$userOptionsManager = $this->createMock( UserOptionsManager::class );
-		$userOptionsManager->expects( $isMentorBlocked ? $this->never() : $this->once() )
+		$userOptionsManager->expects( $isMentorBlocked ? $this->never() : $this->atLeastOnce() )
 			->method( 'getOption' )
 			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF )
 			->willReturn( $rawTS );
@@ -87,20 +87,28 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideTimestamps
 	 * @param string|null $expectedTS
 	 * @param string|null $rawTS
+	 * @param bool $isMentorBlocked
 	 */
-	public function testGetMentorBackTimestamp( ?string $expectedTS, ?string $rawTS ) {
+	public function testGetMentorBackTimestamp(
+		?string $expectedTS,
+		?string $rawTS,
+		bool $isMentorBlocked
+	) {
 		$this->assertEquals(
 			$expectedTS,
-			$this->getMentorStatusManager( $rawTS, false )
+			$this->getMentorStatusManager( $rawTS, $isMentorBlocked )
 				->getMentorBackTimestamp( $this->getTestMentor() )
 		);
 	}
 
 	public function provideTimestamps(): array {
 		return [
-			[ null, null ],
-			[ null, '20080101000000' ],
-			[ '22221231000000', '22221231000000' ]
+			[ null, null, false ],
+			[ null, null, true ],
+			[ null, '20080101000000', false ],
+			[ null, '20080101000000', true ],
+			[ '22221231000000', '22221231000000', false ],
+			[ null, '22221231000000', true ],
 		];
 	}
 
