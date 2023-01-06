@@ -46,6 +46,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Status mentor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktif",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1 {{GENDER:$1| is}} saat ini terkunci. {{GENDER:$1| Status mentor}} mereka tidak dapat diubah saat terkunci.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Batal",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Jeda",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Anda akan absen selama:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "hari",
