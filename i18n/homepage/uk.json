@@ -162,6 +162,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "Поставте запитання {{GENDER:$2|ваш}}{{GENDER:$1|ому наставнику|ій наставниці}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Коли ви ставите запитання, воно <strong>публікується публічно</strong> під {{GENDER:$2|вашим}} іменем користувача, «$2», на сторінці $3, де {{GENDER:$1|він|вона}} може його знайти і вам відповісти.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Ваш основний наставник|Ваша основна наставниця}}, [[User:$1|$1]], зараз не на місці до $3.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "{{GENDER:$2|Ваш основний наставник|Ваша основна наставниця}}, [[User:$1|$1]], зараз не на місці.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "{{GENDER:$2|Інший наставник|Інша наставниця}}, [[User:$1|$1]], тим часом відповідатиме на ваші запитання.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "Сторінка обговорення {{GENDER:$2|ваш}}{{GENDER:$1|ого наставника|ої наставниці}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Ваше}} запитання тепер на сторінці обговорення {{GENDER:$1|вашого наставника|вашої наставниці}}, де {{GENDER:$1|він|вона}} відповість, коли зможе.",

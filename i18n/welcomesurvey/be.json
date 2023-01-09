@@ -4,6 +4,7 @@
 			"Chadyka",
 			"Maksim L.",
 			"No Sleep till Krupki",
+			"Plaga med",
 			"Tomato Cream"
 		]
 	},
@@ -13,7 +14,7 @@
 	"welcomesurvey-subtitle": "Дапамажыце нам палепшыць {{GENDER:|ваш}} досвед у Вікіпедыі, адказаўшы на некалькі неабавязковых пытанняў.",
 	"welcomesurvey-save-btn": "Завяршыць",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Прапусціць}} гэтае апытанне",
-	"welcomesurvey-close-btn": "Зачыніць і вярнуцца да $1",
+	"welcomesurvey-close-btn": "Закрыць і вярнуцца да $1",
 	"welcomesurvey-sidebar-privacy-title": "Мы цэнім {{GENDER:|вашу}} канфідэнцыяльнасць",
 	"welcomesurvey-sidebar-privacy-text": "Фонд Вікімедыя будзе выкарыстоўваць {{GENDER:$2|вашыя}} адказы, каб дапамагчы вам пачаць рэдагаваць пляцоўку {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Даведайцеся больш пра дадзеныя аб новых рэдактарах",
@@ -52,9 +53,9 @@
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Вы}} дадалі максімальную колькасць моў.",
 	"welcomesurvey-reminder": "Дапамажыце нам палепшыць {{GENDER:|ваш}} досвед у Вікіпедыі, адказаўшы на некалькі неабавязковых пытанняў у нашым Прывітальным апытанні: $1.",
 	"welcomesurvey-reminder-link": "Прайсці апытанне",
-	"welcomesurvey-reminder-dismiss": "Зачыніць",
+	"welcomesurvey-reminder-dismiss": "Закрыць",
 	"welcomesurvey-mideditsignup-title": "Вітаем, $1!",
 	"welcomesurvey-mideditsignup-body": "Дзякуй за рэдагаванне! Цяпер {{GENDER:|вы}} можаце бачыць уплыў вашых унёскаў і атрымліваць больш прапанаваных правак на сваёй хатняй старонцы.",
 	"welcomesurvey-mideditsignup-button-homepage": "Перайсці на маю хатнюю старонку",
-	"welcomesurvey-mideditsignup-button-close": "Зачыніць"
+	"welcomesurvey-mideditsignup-button-close": "Закрыць"
 }

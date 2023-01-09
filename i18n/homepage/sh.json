@@ -4,6 +4,8 @@
 			"Vlad5250"
 		]
 	},
+	"growthexperiments-homepage-tab": "Početna strana",
+	"tooltip-pt-homepage": "{{GENDER:|Vaša}} početna stranica",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Posljednja izmjena",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dan|dana}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Izmjena|Izmjene}}",
