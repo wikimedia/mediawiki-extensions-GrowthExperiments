@@ -15,6 +15,7 @@ class MentorChangeLogFormatter extends LogFormatter {
 		switch ( $this->entry->getSubtype() ) {
 			case 'claimmentee':
 				// logentry-growthexperiments-claimmentee
+				// @phan-suppress-next-line SecurityCheck-XSS
 				$params[4] = $this->formatParameterValue( 'user-link', $params[3] );
 				// no break here
 			case 'claimmentee-no-previous-mentor':
@@ -23,11 +24,13 @@ class MentorChangeLogFormatter extends LogFormatter {
 				break;
 			case 'setmentor':
 				// logentry-growthexperiments-setmentor
+				// @phan-suppress-next-line SecurityCheck-XSS
 				$params[7] = $this->formatParameterValue( 'user-link', $params[3] );
 				// no break here
 			case 'setmentor-no-previous-mentor':
 				// logentry-growthexperiments-setmentor-no-previous-mentor
 				$params[5] = $this->formatParameterValue( 'user', $this->entry->getTarget()->getText() );
+				// @phan-suppress-next-line SecurityCheck-XSS
 				$params[6] = $this->formatParameterValue( 'user-link', $params[4] );
 				break;
 		}
