@@ -37,9 +37,10 @@
 </template>
 
 <script>
-const moment = require( 'moment' );
+const { getIntlLocale } = require( '../../utils/Utils.js' );
 const CText = require( '../../vue-components/CText.vue' );
 const StreakGraph = require( './StreakGraph.vue' );
+const DATE_FORMAT = { month: 'short', day: 'numeric' };
 
 // @vue/component
 module.exports = exports = {
@@ -60,10 +61,6 @@ module.exports = exports = {
 		timeFrame: {
 			type: Number,
 			required: true
-		},
-		dateFormat: {
-			type: String,
-			default: 'MMM D'
 		}
 	},
 	computed: {
@@ -74,12 +71,16 @@ module.exports = exports = {
 			return Math.max( ...this.contribs.entries );
 		},
 		endLabel() {
-			return moment().format( this.dateFormat );
+			const intlLocale = getIntlLocale();
+			// eslint-disable-next-line compat/compat
+			return new Intl.DateTimeFormat( intlLocale, DATE_FORMAT ).format( new Date() );
 		},
 		startLabel() {
-			return moment()
-				.subtract( this.timeFrame - 1, 'days' )
-				.format( this.dateFormat );
+			const date = new Date();
+			date.setDate( date.getDate() - ( this.timeFrame - 1 ) );
+			const intlLocale = getIntlLocale();
+			// eslint-disable-next-line compat/compat
+			return new Intl.DateTimeFormat( intlLocale, DATE_FORMAT ).format( date );
 		}
 	},
 	methods: {
@@ -90,7 +91,10 @@ module.exports = exports = {
 			return value * scale;
 		},
 		getStreakColumnTitle( index ) {
-			const date = moment( this.contribs.keys[ index ] ).format( this.dateFormat );
+			const intlLocale = getIntlLocale();
+			// eslint-disable-next-line compat/compat
+			const date = new Intl.DateTimeFormat( intlLocale, DATE_FORMAT )
+				.format( new Date( this.contribs.keys[ index ] ) );
 			if ( this.contribs.entries[ index ] > 0 ) {
 				return this.$i18n(
 					'growthexperiments-homepage-impact-recent-activity-streak-data-text',
