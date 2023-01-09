@@ -9,8 +9,6 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use IDBAccessObject;
 use MediaWiki\Hook\ManualLogEntryBeforePublishHook;
-use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
-use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
@@ -21,7 +19,6 @@ use Wikimedia\Rdbms\LoadBalancer;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class ImpactHooks implements
-	ResourceLoaderRegisterModulesHook,
 	PageSaveCompleteHook,
 	ManualLogEntryBeforePublishHook
 {
@@ -59,33 +56,6 @@ class ImpactHooks implements
 		$this->userFactory = $userFactory;
 		$this->loadBalancer = $loadBalancer;
 		$this->userEditTracker = $userEditTracker;
-	}
-
-	/**
-	 * Register ResourceLoader modules for the homepage that are feature flagged.
-	 * @inheritDoc
-	 */
-	public function onResourceLoaderRegisterModules( ResourceLoader $resourceLoader ): void {
-		$modules = [];
-		$moduleTemplate = [
-			'localBasePath' => dirname( __DIR__ ) . '/modules',
-			'remoteExtPath' => 'GrowthExperiments/modules'
-		];
-		if ( $this->config->get( 'GENewImpactD3Enabled' ) ) {
-			$modules[ 'ext.growthExperiments.d3' ] = $moduleTemplate + [
-					"packageFiles" => [
-						"lib/d3/d3.min.js"
-					],
-					"targets" => [
-						"desktop",
-						"mobile"
-					]
-				];
-		}
-		if ( !$modules ) {
-			return;
-		}
-		$resourceLoader->register( $modules );
 	}
 
 	/** @inheritDoc */

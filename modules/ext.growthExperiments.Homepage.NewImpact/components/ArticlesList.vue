@@ -77,7 +77,7 @@
 </template>
 
 <script>
-const { inject, defineAsyncComponent } = require( 'vue' );
+const { inject } = require( 'vue' );
 const CList = require( '../../vue-components/CList.vue' );
 const CListItem = require( '../../vue-components/CListItem.vue' );
 const CPopover = require( '../../vue-components/CPopover.vue' );
@@ -87,16 +87,7 @@ const { CdxThumbnail } = require( '@wikimedia/codex' );
 const { cdxIconClock } = require( '../../vue-components/icons.json' );
 const xAccessor = ( d ) => d.date;
 const yAccessor = ( d ) => d.views;
-
-const CSparkline = defineAsyncComponent( () => {
-	if ( mw.config.get( 'GENewImpactD3Enabled' ) ) {
-		return mw.loader.using( 'ext.growthExperiments.d3' )
-			.then( () => require( '../../vue-components/CSparkline.vue' ) );
-	} else {
-		// Maybe fallback to a static image
-		return Promise.resolve( null );
-	}
-} );
+const CSparkline = require( '../../vue-components/CSparkline.vue' );
 
 // @vue/component
 module.exports = exports = {
