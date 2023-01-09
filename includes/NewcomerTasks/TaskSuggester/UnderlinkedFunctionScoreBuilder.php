@@ -43,6 +43,7 @@ class UnderlinkedFunctionScoreBuilder implements BoostFunctionBuilder {
 		// Chosen arbitrarily because it gave nice values for a few sample articles.
 		$smoothingFactor = 4;
 
+		// Keep this in sync with tests/api-testing/underlinked-rescore.js
 		$script = /** @lang JavaScript */
 <<<'SCRIPT'
 		doc['text_bytes'] >= minimumLength
