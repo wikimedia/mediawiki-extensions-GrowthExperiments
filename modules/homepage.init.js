@@ -19,23 +19,29 @@
 	// - navigation transfer size
 	// - first paint
 	if ( window.performance && window.performance.getEntriesByType ) {
-		var navigationEntry = window.performance.getEntriesByType( 'navigation' )[ 0 ],
-			paintEntry = window.performance.getEntriesByType( 'paint' )[ 0 ];
-		mw.track(
-			'timing.growthExperiments.specialHomepage.navigationDuration',
-			navigationEntry.duration
-		);
-		mw.track(
-			// Using 'timing' for transfer size sounds conceptually wrong, but we want
-			// the various features that statsd timing gives us (see
-			// https://github.com/statsd/statsd/blob/master/docs/metric_types.md)
-			'timing.growthExperiments.specialHomepage.navigationTransferSize',
-			navigationEntry.transferSize
-		);
-		mw.track(
-			'timing.growthExperiments.specialHomepage.paintStartTime',
-			paintEntry.startTime
-		);
+		var navigationEntries = window.performance.getEntriesByType( 'navigation' ),
+			performanceEntries = window.performance.getEntries().filter( function ( entry ) {
+				return entry.name === 'first-contentful-paint';
+			} );
+		if ( navigationEntries.length ) {
+			mw.track(
+				'timing.growthExperiments.specialHomepage.navigationDuration',
+				navigationEntries[ 0 ].duration
+			);
+			mw.track(
+				// Using 'timing' for transfer size sounds conceptually wrong, but we want
+				// the various features that statsd timing gives us (see
+				// https://github.com/statsd/statsd/blob/master/docs/metric_types.md)
+				'timing.growthExperiments.specialHomepage.navigationTransferSize',
+				navigationEntries[ 0 ].transferSize
+			);
+		}
+		if ( performanceEntries.length ) {
+			mw.track(
+				'timing.growthExperiments.specialHomepage.paintStartTime',
+				performanceEntries[ 0 ].startTime
+			);
+		}
 	}
 
 }() );
