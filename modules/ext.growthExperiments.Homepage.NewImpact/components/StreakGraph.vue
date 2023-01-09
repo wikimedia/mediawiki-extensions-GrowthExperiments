@@ -88,6 +88,8 @@ module.exports = exports = {
 .ext-growthExperiments-StreakGraph {
 	display: flex;
 	flex-direction: column;
+	// Columns and labels will display LTR even in RTL languages (older date left, recent date right)
+	direction: ltr;
 
 	&__graph {
 		height: 24px;
