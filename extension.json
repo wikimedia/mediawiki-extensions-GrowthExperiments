@@ -1659,6 +1659,12 @@
 						"rtl": "../images/difficulty-easy-bw-rtl.svg"
 					}
 				},
+				"funnel-add": {
+					"file": {
+						"ltr": "../images/funnel-add-ltr.svg",
+						"rtl": "../images/funnel-add-rtl.svg"
+					}
+				},
 				"info-unpadded": "../images/info-unpadded.svg",
 				"live-broadcast": "../images/live-broadcast.svg",
 				"live-broadcast-anim": "../images/live-broadcast-anim.svg",
