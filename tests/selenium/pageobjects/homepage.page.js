@@ -140,7 +140,7 @@ class HomepagePage extends Page {
 		}
 		await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/runJobs.php' ],
+			[ 'maintenance/run.php', 'runJobs' ],
 			{ cwd: ip }
 		);
 	}

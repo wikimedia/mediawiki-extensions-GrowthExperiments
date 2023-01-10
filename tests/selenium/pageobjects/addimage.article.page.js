@@ -160,18 +160,18 @@ class AddImageArticlePage extends Page {
 		// '`wikidb`.`site_stats`.`ss_good_articles` - 1'
 		await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/initSiteStats.php', '--update' ],
+			[ 'maintenance/run.php', 'initSiteStats', '--update' ],
 			{ cwd: ip }
 		);
 
 		await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/edit.php', '--user=Admin', articleTitle ],
+			[ 'maintenance/run.php', 'edit', '--user=Admin', articleTitle ],
 			{ input: 'Blank page.', cwd: ip }
 		);
 		await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/edit.php', '--user=Admin', articleTitle + '/addimage.json' ],
+			[ 'maintenance/run.php', 'edit', '--user=Admin', articleTitle + '/addimage.json' ],
 			{ input: fs.readFileSync( path.resolve( __dirname + '/../fixtures/' + articleTitle + '.suggestions.json' ) ), cwd: ip }
 		);
 		this.setupComplete = true;

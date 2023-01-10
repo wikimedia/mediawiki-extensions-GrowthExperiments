@@ -75,6 +75,7 @@ class AddLinkArticlePage extends Page {
 		await childProcess.spawnSync(
 			'php',
 			[
+				'maintenance/run.php',
 				'extensions/GrowthExperiments/maintenance/insertLinkRecommendation.php',
 				'--json-file=' + path.resolve( __dirname + '/../fixtures/Douglas_Adams.suggestions.json' ),
 				'--title=Douglas_Adams'
@@ -84,6 +85,7 @@ class AddLinkArticlePage extends Page {
 		await childProcess.spawnSync(
 			'php',
 			[
+				'maintenance/run.php',
 				'extensions/GrowthExperiments/maintenance/insertLinkRecommendation.php',
 				'--json-file=' + path.resolve( __dirname + '/../fixtures/The_Hitchhikers_Guide_to_the_Galaxy.suggestions.json' ),
 				'--title=The_Hitchhiker\'s_Guide_to_the_Galaxy'
