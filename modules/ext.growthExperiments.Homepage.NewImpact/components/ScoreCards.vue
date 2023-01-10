@@ -60,7 +60,7 @@
 								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text() }}
 							</span>
 							<p>
-								{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', userName ).text() }}
+								{{ receivedThanksInfoText }}
 							</p>
 						</div>
 					</template>
@@ -115,14 +115,8 @@
 								></cdx-icon>
 								{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text() }}
 							</span>
-							<p>
-								{{ $i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', userName ).text() }}
-							</p>
-							<p>
-								{{
-									longestEditingStreakText
-								}}
-							</p>
+							<p>{{ longestEditingStreakFirstParagraph }}</p>
+							<p>{{ longestEditingStreakSecondParagraph }}</p>
 						</div>
 					</template>
 				</c-popover>
@@ -179,6 +173,7 @@ module.exports = exports = {
 	},
 	setup() {
 		const userName = inject( 'RELEVANT_USER_USERNAME' );
+		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
 		const log = inject( '$log' );
 
 		return {
@@ -190,6 +185,7 @@ module.exports = exports = {
 			cdxIconClose,
 			cdxIconInfo,
 			cdxIconInfoFilled,
+			renderThirdPerson,
 			log
 		};
 	},
@@ -210,22 +206,28 @@ module.exports = exports = {
 			}
 			return this.$filters.convertNumber( this.data.receivedThanksCount );
 		},
+		receivedThanksInfoText() {
+			return this.renderThirdPerson ?
+				this.$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text-third-person' ).text() :
+				this.$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', this.userName ).text();
+		},
 		lastEditFormattedTimeAgo() {
-			return this.data ?
-				moment( this.data.lastEditTimestamp * 1000 ).fromNow() :
-				NO_DATA_CHARACTER;
+			if ( this.data && this.data.lastEditTimestamp ) {
+				return moment( this.data.lastEditTimestamp * 1000 ).fromNow();
+			}
+			return NO_DATA_CHARACTER;
 		},
 		longestEditingStreakCount() {
-			if ( !this.data ) {
-				return NO_DATA_CHARACTER;
+			if ( this.data && this.data.longestEditingStreak ) {
+				const bestStreakDaysLocalisedCount = this.$filters.convertNumber(
+					this.data.longestEditingStreak.datePeriod.days
+				);
+				return this.$i18n(
+					'growthexperiments-homepage-impact-recent-activity-streak-count-text',
+					bestStreakDaysLocalisedCount
+				).text();
 			}
-			const bestStreakDaysLocalisedCount = this.$filters.convertNumber(
-				this.data.longestEditingStreak.datePeriod.days
-			);
-			return this.$i18n(
-				'growthexperiments-homepage-impact-recent-activity-streak-count-text',
-				bestStreakDaysLocalisedCount
-			).text();
+			return NO_DATA_CHARACTER;
 		},
 		bestStreakFormattedDates() {
 			const today = new Date(),
@@ -254,20 +256,36 @@ module.exports = exports = {
 				return standardFormat.formatRange( start, end );
 			}
 		},
-		longestEditingStreakText() {
-			if ( !this.data ) {
-				// Don't show the second information paragraph if no datePeriod is available
-				return null;
+		longestEditingStreakFirstParagraph() {
+			return this.renderThirdPerson ?
+				this.$i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text-third-person' ).text() :
+				this.$i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', this.userName ).text();
+		},
+		longestEditingStreakSecondParagraph() {
+			// Show the second information paragraph only if a longestEditingStreak is informed
+			if ( this.data && this.data.longestEditingStreak ) {
+				let args = [ this.bestStreakFormattedDates ];
+				let message = null;
+				if ( this.data.longestEditingStreak.datePeriod.days === 1 ) {
+					message = 'growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day';
+				} else {
+					message = 'growthexperiments-homepage-impact-scores-best-streak-info-data-text';
+					args = [ this.$filters.convertNumber( this.data.longestEditingStreak.datePeriod.days ), ...args ];
+				}
+
+				if ( this.renderThirdPerson ) {
+					message += '-third-person';
+				} else {
+					args = [ this.userName, ...args ];
+				}
+				// The following messages are used here:
+				// * growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day
+				// * growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person
+				// * growthexperiments-homepage-impact-scores-best-streak-info-data-text
+				// * growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person
+				return this.$i18n( message, ...args ).text();
 			}
-			const message = ( this.data.longestEditingStreak.datePeriod.days === 1 ) ?
-				'growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day' :
-				'growthexperiments-homepage-impact-scores-best-streak-info-data-text';
-			return this.$i18n(
-				message,
-				this.userName,
-				this.$filters.convertNumber( this.data.longestEditingStreak.datePeriod.days ),
-				this.bestStreakFormattedDates
-			).text();
+			return null;
 		}
 	}
 };
