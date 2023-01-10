@@ -4,5 +4,6 @@
 			"Eleassar"
 		]
 	},
+	"apihelp-growthmentordashboardupdatedata-summary": "Določite čas za izredno posodobitev modula za pregled mentorirancev na nadzorni plošči mentorja. Zaradi zmogljivosti lahko določite samo eno posodobitev na dve uri.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Če je »isaway« (odsoten) »true« (resničen), je treba navesti »awaytimestamp« (časovni žig odsotnosti)."
 }
