@@ -30,7 +30,7 @@
 	"welcomesurvey-question-reason-option-read-label": "Википеди йеша",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Кхийерг",
 	"welcomesurvey-question-reason-option-other-label": "Кхидерг (дийца)",
-	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Йазде}} кхин бахьна...",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Йазде}} кхин бахьана...",
 	"welcomesurvey-question-mentor-info": "Тхо хьоьжуш ду зеделлачу редакторшна программа лато, керлачу декъашхошна гӀо хилийтархьама. {{GENDER:$1|Хьуна}} лаьий хийцамаш беш хьайна гӀодан хьайца зӀене балийта?",
 	"welcomesurvey-question-mentor-label": "ХӀаъ, {{GENDER:$1|сан хьашто йу}},",
 	"welcomesurvey-question-edited-label": "{{GENDER:|Ахьа}} цхьаа Википедехь хийцамаш бинери?",

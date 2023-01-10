@@ -14,7 +14,8 @@
 			"Rachmat04",
 			"Sonic Speedy",
 			"Sumbukompor",
-			"Veracious"
+			"Veracious",
+			"Agam Riyandana"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Halo}}, {{bidi:$1}}!",
@@ -512,6 +513,7 @@
 	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "Tentang mentor",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Batalkan",
 	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|Anda}} tidak lagi dibimbing.",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Selesai",
 	"growthexperiments-homepage-mentorship-about-header": "Tentang mentor",
 	"growthexperiments-homepage-mentorship-about-done": "Selesai"
 }

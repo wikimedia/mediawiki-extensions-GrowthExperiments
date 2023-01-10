@@ -38,7 +38,8 @@
 			"ZebaX2010",
 			"-jem-",
 			"SpikeShroom",
-			"Tgr"
+			"Tgr",
+			"Jack30"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Te damos la bienvenida}}, {{bidi:$1}}!",
@@ -527,7 +528,7 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Tú}} has completado todas las sugerencias de imágenes por hoy.\n\nAjusta {{GENDER:|tu}} nivel de dificultad de para ver otro tipo de ediciones o vuelve mañana para obtener más sugerencias de imágenes.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Entendido",
 	"growthexperiments-addimage-caption-warning-tooshort": "Las descripciones deben ser de $1 {{PLURAL:$1|caracter|caracteres}} o más.",
-	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Tú}} has completado todas las sugerencias de enlaces por hoy.\n\nAjusta {{GENDER:|tu}} nivel de dificultad para ver otro tipo de ediciones o vuelve mañana para obtener más sugerencias de enlaces.",
+	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Has}} completado todas las sugerencias de enlaces por hoy.\n\nAjusta {{GENDER:|tu}} nivel de dificultad para ver otro tipo de ediciones o vuelve mañana para obtener más sugerencias de enlaces.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Entendido",
 	"growthexperiments-homepage-mentorship-optin-header": "Mentoría para la edición",
 	"growthexperiments-homepage-mentorship-optin-text": "Si tienes preguntas sobre la edición, un editor experimentado puede serte asignado como mentor para ayudarte.",
