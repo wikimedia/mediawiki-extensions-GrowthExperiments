@@ -99,9 +99,11 @@ class MentorStatusManager implements IDBAccessObject {
 	}
 
 	/**
+	 * Why is the user away?
+	 *
 	 * @param UserIdentity $mentor
-	 * @param int $flags bitfield ocnsisting of MentorStatusManager::READ_* constants
-	 * @return string|null Away reason or null if mentor is not away
+	 * @param int $flags bitfield consisting of MentorStatusManager::READ_* constants
+	 * @return string|null Away reason (AWAY_* constant) or null if mentor is not away
 	 */
 	public function getAwayReason( UserIdentity $mentor, int $flags = 0 ): ?string {
 		// NOTE: (b)lock checking must be first. This is to make canChangeStatus() work for mentors
@@ -116,7 +118,7 @@ class MentorStatusManager implements IDBAccessObject {
 			return self::AWAY_BECAUSE_LOCK;
 		}
 
-		if ( $this->getMentorBackTimestamp( $mentor, $flags ) !== null ) {
+		if ( $this->getMentorBackTimestampInternal( $mentor, $flags ) !== null ) {
 			return self::AWAY_BECAUSE_TIMESTAMP;
 		}
 
@@ -143,6 +145,24 @@ class MentorStatusManager implements IDBAccessObject {
 	 * @return string|null Null if expiry is not set (mentor's current status does not expire)
 	 */
 	public function getMentorBackTimestamp( UserIdentity $mentor, int $flags = 0 ): ?string {
+		if ( $this->getAwayReason( $mentor, $flags ) !== self::AWAY_BECAUSE_TIMESTAMP ) {
+			// mentor is either not away at all, or is away permanently
+			return null;
+		}
+		return $this->getMentorBackTimestampInternal( $mentor, $flags );
+	}
+
+	/**
+	 * Get mentor's back timestamp from their user preferences
+	 *
+	 * Back date returned by this method only applies if
+	 * getAwayReason() is AWAY_BECAUSE_TIMESTAMP.
+	 *
+	 * @param UserIdentity $mentor
+	 * @param int $flags
+	 * @return string|null
+	 */
+	private function getMentorBackTimestampInternal( UserIdentity $mentor, int $flags = 0 ): ?string {
 		return $this->parseBackTimestamp( $this->userOptionsManager->getOption(
 			$mentor,
 			self::MENTOR_AWAY_TIMESTAMP_PREF,
