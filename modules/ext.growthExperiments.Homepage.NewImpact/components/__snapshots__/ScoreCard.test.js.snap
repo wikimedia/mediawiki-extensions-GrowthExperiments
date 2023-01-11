@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreCard renders correctly 1`] = `
+<div
+  class="ext-growthExperiments-ScoreCard"
+>
+  <div
+    class="ext-growthExperiments-ScoreCard__data-display"
+  >
+    <span
+      class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+    >
+      <svg
+        aria-hidden="false"
+        height="20"
+        viewBox="0 0 20 20"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          some icon label
+        </title>
+        <g
+          fill="currentColor"
+        >
+          some icon
+        </g>
+      </svg>
+    </span>
+    
+    123
+    
+  </div>
+  <div
+    class="ext-growthExperiments-ScoreCard__label"
+  >
+    <span
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+    >
+      
+      some label
+      
+    </span>
+    
+    
+  </div>
+</div>
+`;
+
+exports[`ScoreCard renders correctly info slot 1`] = `
+<div
+  class="ext-growthExperiments-ScoreCard"
+>
+  <div
+    class="ext-growthExperiments-ScoreCard__data-display"
+  >
+    <span
+      class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+    >
+      <svg
+        aria-hidden="false"
+        height="20"
+        viewBox="0 0 20 20"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          some icon label
+        </title>
+        <g
+          fill="currentColor"
+        >
+          some icon
+        </g>
+      </svg>
+    </span>
+    
+    123
+    
+  </div>
+  <div
+    class="ext-growthExperiments-ScoreCard__label ext-growthExperiments-ScoreCard__label--with-info"
+  >
+    <span
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ScoreCard__label__text"
+    >
+      
+      some label
+      
+    </span>
+    
+    <p>
+      Some info text
+    </p>
+    
+  </div>
+</div>
+`;

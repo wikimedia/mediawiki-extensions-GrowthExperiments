@@ -8,16 +8,20 @@
 			></cdx-icon>
 			<slot></slot>
 		</div>
-		<div class="ext-growthExperiments-ScoreCard__label">
+		<div
+			class="ext-growthExperiments-ScoreCard__label"
+			:class="{
+				'ext-growthExperiments-ScoreCard__label--with-info': hasInfoSlot
+			}"
+		>
 			<c-text
 				as="span"
 				color="subtle"
+				class="ext-growthExperiments-ScoreCard__label__text"
 			>
 				{{ label }}
 			</c-text>
-			<span class="ext-growthExperiments-ScoreCard__label__info-icon">
-				<slot name="label-info"></slot>
-			</span>
+			<slot name="label-info"></slot>
 		</div>
 	</div>
 </template>
@@ -46,16 +50,25 @@ module.exports = exports = {
 			type: String,
 			required: true
 		}
+	},
+	setup( _props, { slots } ) {
+		return {
+			hasInfoSlot: Boolean( slots[ 'label-info' ] )
+		};
 	}
 };
 </script>
 
 <style lang="less">
 @import '../../vue-components/variables.less';
+@topPadding: ( ( 24 / 14 ) * 1em );
+@standardPadding: ( ( 16 / 14 ) * 1em );
+@defaultLineHeight: ( ( 20 / 14 ) * 1em );
 
 .ext-growthExperiments-ScoreCard {
 	background-color: @background-color-progressive-subtle;
-	padding: 1em;
+	padding: @topPadding @standardPadding @standardPadding @standardPadding;
+	line-height: @defaultLineHeight;
 
 	&__data-display {
 		display: flex;
@@ -71,14 +84,21 @@ module.exports = exports = {
 		display: inline-flex;
 		width: 100%;
 		justify-content: space-between;
-		align-items: baseline;
+		align-items: center;
+		margin-top: ( ( 8 / 14 ) * 1em );
 		margin-right: 0.5em;
-		margin-top: 0.5em;
 
-		&__info-icon {
-			// Subtract 10px to the vertical positioning of the label icon to align labels
-			// in scorecards with and without icon
-			margin-top: -10px; // quiet button height 32px - label line height 22.4px ~= 10px
+		&--with-info {
+			// Ensure vertical align of labels between cards with and without info button by
+			// unsetting 32 min-height from CdxButton
+			/* stylelint-disable-next-line selector-class-pattern */
+			.cdx-button {
+				min-height: unset;
+			}
+
+			.ext-growthExperiments-ScoreCard__label__text {
+				vertical-align: middle;
+			}
 		}
 	}
 }
