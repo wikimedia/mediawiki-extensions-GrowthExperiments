@@ -11,12 +11,12 @@ exports.mochaGlobalSetup = async function () {
 	// Import the test articles and their suggestions
 	childProcess.spawnSync(
 		'php',
-		[ 'maintenance/importDump.php', path.resolve( __dirname + '/../selenium/fixtures/SuggestedEditsContent.xml' ) ],
+		[ 'maintenance/run.php', 'importDump', path.resolve( __dirname + '/../selenium/fixtures/SuggestedEditsContent.xml' ) ],
 		{ cwd: ip }
 	);
 	childProcess.spawnSync(
 		'php',
-		[ 'maintenance/edit.php', '--user=Admin', 'MediaWiki:NewcomerTasks.json' ],
+		[ 'maintenance/run.php', 'edit', '--user=Admin', 'MediaWiki:NewcomerTasks.json' ],
 		{ input: fs.readFileSync( path.resolve( __dirname + '/../selenium/fixtures/MediaWikiNewcomerTasks.json' ) ), cwd: ip }
 	);
 };

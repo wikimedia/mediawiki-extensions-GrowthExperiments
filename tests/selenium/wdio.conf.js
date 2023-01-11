@@ -28,7 +28,7 @@ exports.config = { ...config,
 		console.log( 'Importing ' + suggestedEditsContentFilepath );
 		const importDumpResult = await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/importDump.php', suggestedEditsContentFilepath ],
+			[ 'maintenance/run.php', 'importDump', suggestedEditsContentFilepath ],
 			{ cwd: ip }
 		);
 		if ( importDumpResult.status === 1 ) {
@@ -41,7 +41,7 @@ exports.config = { ...config,
 		console.log( 'Importing ' + newcomerTasksJsonFilepath + ' with content: ' + newcomerTasksJson );
 		const newcomerTasksJsonResult = await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/edit.php', '--user=Admin', 'MediaWiki:NewcomerTasks.json' ],
+			[ 'maintenance/run.php', 'edit', '--user=Admin', 'MediaWiki:NewcomerTasks.json' ],
 			{ input: newcomerTasksJson, cwd: ip }
 		);
 		if ( newcomerTasksJsonResult.status === 1 ) {
@@ -52,14 +52,14 @@ exports.config = { ...config,
 		console.log( 'Running jobs...' );
 		const runJobsResult = await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/runJobs.php' ],
+			[ 'maintenance/run.php', 'runJobs' ],
 			{ cwd: ip }
 		);
 		console.log( runJobsResult.stdout.toString( 'utf8' ) );
 		console.log( 'Running update.php to clear caches' );
 		const updatePhpResult = await childProcess.spawnSync(
 			'php',
-			[ 'maintenance/update.php', '--quick' ],
+			[ 'maintenance/run.php', 'update', '--quick' ],
 			{ cwd: ip }
 		);
 		console.log( updatePhpResult.stdout.toString( 'utf8' ) );
