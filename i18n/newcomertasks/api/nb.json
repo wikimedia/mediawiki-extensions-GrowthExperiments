@@ -20,5 +20,6 @@
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Parameteren «reason» må være et array i dataene til bildeinnleggingsmodulen, men er $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Ugyldig element «$1» for parameteren «reason»; må være én av: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Lenkeforslagshistorikk ikke funnet",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Uventede lenkeforslagsmål: $1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Uventede lenkeforslagsmål: $1",
+	"growthexperiments-underlinked-rescore-profile": "Intern rescore-profil som brukes i GrowthExperiments' lenkeforslag for å prioritere artikler som ikke har nok internlenker ennå."
 }
