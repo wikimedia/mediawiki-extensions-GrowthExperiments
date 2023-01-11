@@ -5,7 +5,8 @@
 			"Daud I.F. Argana",
 			"PutriAmalia1991",
 			"Veracious",
-			"DARMAS BUDI SANTOSO"
+			"DARMAS BUDI SANTOSO",
+			"Agam Riyandana"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Dasbor pembimbing",
@@ -42,6 +43,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Pengaturan",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Status mentor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktif",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Batal",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Jeda",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Anda akan absen selama:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "hari",

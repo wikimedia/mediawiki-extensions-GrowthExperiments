@@ -4,5 +4,6 @@
 			"Eleassar"
 		]
 	},
+	"apihelp-homepagequestionstore-param-storage": "Lokacija shranjevanja vprašanj.",
 	"apihelp-growthsetmentor-summary": "Določi uporabnikovega mentorja. Sprememba se bo javno zabeležila."
 }

@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"apihelp-growthmentordashboardupdatedata-summary": "Določite čas za izredno posodobitev modula za pregled mentorirancev na nadzorni plošči mentorja. Zaradi zmogljivosti lahko določite samo eno posodobitev na dve uri."
+}
