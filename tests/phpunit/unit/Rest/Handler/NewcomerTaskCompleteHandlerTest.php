@@ -186,7 +186,7 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 				'link-recommendation' => new TaskType( 'link-recommendation', TaskType::DIFFICULTY_EASY ) ]
 		);
 		$loadBalancer = $this->createMock( ILoadBalancer::class );
-		$loadBalancer->method( 'getLazyConnectionRef' )->willReturn(
+		$loadBalancer->method( 'getConnection' )->willReturn(
 			$this->createMock( DBConnRef::class )
 		);
 		$newcomerTasksChangeTagsManager = new NewcomerTasksChangeTagsManager(

@@ -175,7 +175,7 @@ class HomepageModuleRegistry {
 				return new Impact(
 					$context,
 					$growthServices->getGrowthWikiConfig(),
-					$services->getDBLoadBalancer()->getConnectionRef( DB_REPLICA ),
+					$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
 					$growthServices->getExperimentUserManager(),
 					[
 						'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context->getConfig() ),

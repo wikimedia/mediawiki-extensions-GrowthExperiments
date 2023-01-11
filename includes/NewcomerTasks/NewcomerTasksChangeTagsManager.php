@@ -64,7 +64,7 @@ class NewcomerTasksChangeTagsManager {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
-		$this->dbr = $loadBalancer->getConnectionRef( DB_REPLICA );
+		$this->dbr = $loadBalancer->getConnection( DB_REPLICA );
 		$this->config = $config;
 		$this->user = $user;
 	}

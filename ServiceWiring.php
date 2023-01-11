@@ -343,8 +343,8 @@ return [
 	): LinkRecommendationStore {
 		$loadBalancer = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
 		return new LinkRecommendationStore(
-			$loadBalancer->getConnectionRef( DB_REPLICA ),
-			$loadBalancer->getConnectionRef( DB_PRIMARY ),
+			$loadBalancer->getConnection( DB_REPLICA ),
+			$loadBalancer->getConnection( DB_PRIMARY ),
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory(),
 			$services->getPageStore()
@@ -356,7 +356,7 @@ return [
 	): LinkRecommendationUpdater {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new LinkRecommendationUpdater(
-			$services->getDBLoadBalancer()->getConnectionRef( DB_REPLICA ),
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
 			$services->getRevisionStore(),
 			$services->getNameTableStoreFactory()->getChangeTagDef(),
 			$services->getPageProps(),
@@ -506,8 +506,8 @@ return [
 			$services->getUserOptionsManager(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
-			$services->getDBLoadBalancer()->getConnectionRef( DB_REPLICA ),
-			$services->getDBLoadBalancer()->getConnectionRef( DB_PRIMARY )
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getDBLoadBalancer()->getConnection( DB_PRIMARY )
 		);
 	},
 
@@ -524,8 +524,8 @@ return [
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
 			$services->getJobQueueGroup(),
-			$lb->getConnectionRef( DB_REPLICA ),
-			$lb->getConnectionRef( DB_PRIMARY ),
+			$lb->getConnection( DB_REPLICA ),
+			$lb->getConnection( DB_PRIMARY ),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
 				$geServices->getGrowthConfig()->get( 'CommandLineMode' ) ||
 				RequestContext::getMain()->getRequest()->wasPosted()
