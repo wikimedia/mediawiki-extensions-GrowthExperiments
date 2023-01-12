@@ -168,7 +168,7 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|}}サイドメニューを開いて$2をタップすると、いつでもここに戻ることができます。",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "今すぐ始めてみましょう！",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "サイドメニューを開いて$2をタップすると、{{GENDER:$1|あなた専用}}のホームページが開きます。",
-	"growthexperiments-homepage-suggestededits-pager": "<strong>$2件</strong>中<strong>$1件</strong>の{{PLURAL:$2|おすすめ}}",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$2件</strong>中<strong>$1件目</strong>の{{PLURAL:$2|お勧め}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "終了",
 	"growthexperiments-homepage-suggestededits-pageviews": "閲覧回数$1回（直近60日間）",
 	"growthexperiments-homepage-suggestededits-previous-card": "前のおすすめ編集",

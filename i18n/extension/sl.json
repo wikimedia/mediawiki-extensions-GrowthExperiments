@@ -9,7 +9,7 @@
 	"growthexperiments-config-validator-error": "Preverjanje za $1 ni uspelo z: »$2«",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> naj bi bilo <code>$2</code>, vendar je <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Naustrezen vsebinski model: konfiguracijska datoteka GrowthExperiments mora imeti vsebinski model JSON, zaznan je bil $1.",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Neveljaven ID uprapravljalnika vrste nalog: <code>$1</code> ni veljavna vrednost",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Neveljaven ID obravnavalnika vrste opravil: <code>$1</code> ni veljavna vrednost",
 	"growthexperiments-config-validator-array-toobig": "$1 ima preveč predmetov (dovoljenih je največ $2)",
 	"growthexperiments-edit-config-disabled": "Skupnostna konfiguracija je trenutno onemogočena.",
 	"growthexperiments-edit-config-title": "Konfiguracija možnosti Edit Growth",
