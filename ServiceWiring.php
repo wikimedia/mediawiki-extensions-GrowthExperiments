@@ -74,10 +74,12 @@ use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -727,12 +729,15 @@ return [
 		MediaWikiServices $services
 	): TaskSuggesterFactory {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$config = $growthServices->getGrowthConfig();
+		$growthConfig = $growthServices->getGrowthConfig();
 
 		$taskTypeHandlerRegistry = $growthServices->getTaskTypeHandlerRegistry();
 		$configLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
-		if ( $config->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
+		$isCirrusSearchLoadedAndConfigured = ExtensionRegistry::getInstance()->isLoaded( 'CirrusSearch' )
+			&& $services->getSearchEngineConfig()->getSearchType() === 'CirrusSearch';
+
+		if ( $growthConfig->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
 			$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory(
 				$taskTypeHandlerRegistry,
 				$configLoader,
@@ -741,9 +746,9 @@ return [
 				$services->getHttpRequestFactory(),
 				$services->getTitleFactory(),
 				$services->getLinkBatchFactory(),
-				$config->get( 'GENewcomerTasksRemoteApiUrl' )
+				$growthConfig->get( 'GENewcomerTasksRemoteApiUrl' )
 			);
-		} else {
+		} elseif ( $isCirrusSearchLoadedAndConfigured ) {
 			$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory(
 				$taskTypeHandlerRegistry,
 				$configLoader,
@@ -779,6 +784,16 @@ return [
 						]
 					],
 				]
+			);
+		} else {
+			$taskSuggesterFactory = new StaticTaskSuggesterFactory(
+				new ErrorForwardingTaskSuggester(
+					StatusValue::newFatal( new ApiRawMessage(
+						'TaskSuggesterFactory is not configured. ' .
+						'Either $wgGENewcomerTasksRemoteApiUrl needs to be set or CirrusSearch needs to be enabled.',
+						'tasksuggesterfactory-not-configured'
+					) )
+				)
 			);
 		}
 		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
