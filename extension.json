@@ -677,7 +677,12 @@
 		"ext.growthExperiments.Homepage.NewImpact": {
 			"es6": true,
 			"styles": [
-				"vue-components/variables.less"
+				"vue-components/variables.less",
+				"vue-components/Skeleton.less",
+				"ext.growthExperiments.Homepage.NewImpact/App.less",
+				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
+				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.less",
+				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.less"
 			],
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.NewImpact/init.js",
@@ -1014,7 +1019,12 @@
 				"ext.growthExperiments.Homepage.styles/Homepage.less",
 				"ext.growthExperiments.Homepage.styles/StartEditingModule.less",
 				"ext.growthExperiments.Homepage.styles/ConfirmEmailNotice.less",
-				"ext.growthExperiments.Homepage.styles/EllipsisMenu.less"
+				"ext.growthExperiments.Homepage.styles/EllipsisMenu.less",
+				"vue-components/Skeleton.less",
+				"ext.growthExperiments.Homepage.NewImpact/App.less",
+				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
+				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.less",
+				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [

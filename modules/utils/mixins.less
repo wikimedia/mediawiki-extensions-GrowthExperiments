@@ -1,5 +1,7 @@
+@import './variables.less';
 // displays a grey rectangle with a running gradient
-.loading-animation ( @delay ) {
+/* stylelint-disable-next-line selector-list-comma-newline-after */
+.loading-animation ( @delay, @color: @colorGray14 ) {
 	animation: loading 2s ease infinite;
 	animation-delay: @delay;
 
@@ -9,7 +11,7 @@
 		height: 100%;
 		float: left;
 		background-repeat: no-repeat;
-		background-image: linear-gradient( @colorGray14 100%, transparent 0 );
+		background-image: linear-gradient( @color 100%, transparent 0 );
 		background-size: 100% 100%;
 		background-position: 0 0;
 	}

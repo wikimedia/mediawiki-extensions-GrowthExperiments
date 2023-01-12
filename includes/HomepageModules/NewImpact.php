@@ -114,6 +114,7 @@ class NewImpact extends BaseModule {
 					'id' => 'new-impact-vue-root',
 					'class' => 'ext-growthExperiments-new-impact-app-root'
 				],
+				$this->getBaseMarkup()
 			) .
 			Html::element( 'p',
 				[ 'class' => 'growthexperiments-homepage-new-impact-no-js-fallback' ],
@@ -128,11 +129,148 @@ class NewImpact extends BaseModule {
 					'id' => 'new-impact-vue-root--mobile',
 					'class' => 'ext-growthExperiments-new-impact-app-root--mobile'
 				],
+				$this->getRecentActivityMarkup()
 			) .
 			Html::element( 'p',
 				[ 'class' => 'growthexperiments-homepage-new-impact-no-js-fallback' ],
 				$this->msg( 'growthexperiments-homepage-new-impact-no-js-fallback' )->text()
 			);
+	}
+
+	/**
+	 * ScoreCard server markup. A wrapper using only top-level styles from ScoreCard.less.
+	 *
+	 * @param int $index Card index, not relevant at the moment.
+	 * @return string HTML content of a scorecard
+	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.{less,vue}
+	 */
+	private function getScoreCardMarkup( int $index ): string {
+		return Html::rawElement( 'div', [
+			'class' => 'ext-growthExperiments-ScoreCard'
+		] );
+	}
+
+	/**
+	 * ScoreCards server markup. A wrapper using only top-level styles from ScoreCards.less.
+	 *
+	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.{less,vue}
+	 * @return string HTML content of the scorecards section
+	 */
+	private function getScoreCardsMarkup(): string {
+		return Html::rawElement( 'div',
+			[
+				'class' => 'ext-growthExperiments-ScoreCards'
+			],
+			implode( '', array_map( [ $this, 'getScoreCardMarkup' ], [ 1, 2, 3, 4 ] ) )
+		);
+	}
+
+	/**
+	 * RecentActivity server markup. Uses only styles from Skeleton.less, mimics
+	 * RecentActivity.vue content
+	 *
+	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue
+	 * @return string HTML content of the recent activity section
+	 */
+	private function getRecentActivityMarkup(): string {
+		return Html::rawElement( 'div', [],
+			Html::rawElement( 'div', [
+				'class' => [
+					'ext-growthExperiments-Skeleton',
+					'ext-growthExperiments-Skeleton--darken'
+				]
+			] ) .
+			Html::rawElement( 'div', [
+				'class' => [
+					'ext-growthExperiments-Skeleton',
+					'ext-growthExperiments-Skeleton--double'
+				]
+			] ) .
+			Html::rawElement( 'div', [
+				'class' => [
+					'ext-growthExperiments-Skeleton',
+					'ext-growthExperiments-Skeleton--triple'
+				]
+			] )
+		);
+	}
+
+	/**
+	 * ArticlesList server markup. Uses only styles from Skeleton.less, NewImpact.less and App.less.
+	 *
+	 * @param int $numberOfArticles The number of article skeletons to render
+	 * @return string HTML content of the articles list section
+	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/{App,NewImpact}.less
+	 */
+	private function getArticlesListMarkup( int $numberOfArticles = 5 ): string {
+		// Articles list
+		return Html::rawElement( 'div', [],
+			Html::rawElement( 'div', [
+				'class' => [
+					'ext-growthExperiments-ArticleListHeading',
+					'ext-growthExperiments-Skeleton',
+					'ext-growthExperiments-Skeleton--darken'
+				]
+			] ) .
+			implode( "\n", array_map(
+					static function ( $index ) {
+						// Article animation delay starting at 400ms and increased 200ms for each article
+						$delay = 400 + ( $index * 200 );
+						return Html::rawElement( 'div', [
+							'class' => [
+								'ext-growthExperiments-ArticleLoading'
+							]
+						],
+							Html::rawElement( 'div', [
+								'class' => [
+									'ext-growthExperiments-ArticleLoading__image',
+									'ext-growthExperiments-Skeleton',
+									'ext-growthExperiments-Skeleton--delay-' . $delay
+								]
+							] ) .
+							Html::rawElement( 'div', [
+								'class' => [
+									'ext-growthExperiments-ArticleLoading__text',
+									'ext-growthExperiments-Skeleton',
+									'ext-growthExperiments-Skeleton--darken',
+									'ext-growthExperiments-Skeleton--delay-' . $delay
+								]
+							] )
+						);
+					}, array_keys( array_fill( 0, $numberOfArticles, 1 ) ) )
+			)
+		);
+	}
+
+	/**
+	 * NewImpact application server markup. Does not use any styles from the CSS classes added.
+	 * Should be kept in sync with Vue application component tree (App.vue > Layout.vue > NewImpact.vue).
+	 *
+	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less
+	 * @return string HTML content of the recent activity section
+	 */
+	private function getBaseMarkup(): string {
+		return Html::rawElement( 'div',
+			[
+				'class' => 'ext-growthExperiments-App--UserImpact'
+			],
+			Html::rawElement( 'div',
+				[
+					'class' => 'ext-growthExperiments-Layout--' . $this->getMode()
+				],
+				Html::rawElement( 'div',
+					[
+						'class' => 'ext-growthExperiments-NewImpact'
+					],
+					Html::rawElement( 'div',
+						[],
+						$this->getScoreCardsMarkup() .
+						$this->getRecentActivityMarkup() .
+						$this->getArticlesListMarkup()
+					)
+				)
+			)
+		);
 	}
 
 	/** @inheritDoc */

@@ -137,23 +137,3 @@ module.exports = exports = {
 	}
 };
 </script>
-
-<style lang="less">
-@import '../../vue-components/variables.less';
-
-.ext-growthExperiments-NewImpact {
-	&__section-title.ext-growthExperiments-increaseSpecificity {
-		// Use same margin from desktop vector
-		margin-top: 0.3em;
-		font-size: @font-size-100;
-	}
-
-	&__contributions-link {
-		.disabled-visited();
-	}
-
-	&__articles-list {
-		padding: @padding-horizontal-base 0;
-	}
-}
-</style>

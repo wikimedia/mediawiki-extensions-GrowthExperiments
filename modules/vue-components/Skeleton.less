@@ -1,0 +1,35 @@
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import '../utils/mixins.less';
+
+.animation-delay-modifier(@value) {
+	&.ext-growthExperiments-Skeleton--delay-@{value} {
+		.loading-animation ( @value * 1ms );
+	}
+}
+
+.ext-growthExperiments-Skeleton {
+	height: 1em;
+	.loading-animation (400ms);
+	.animation-delay-modifier( 600 );
+	.animation-delay-modifier( 800 );
+	.animation-delay-modifier( 1000 );
+	.animation-delay-modifier( 1200 );
+
+	&:before {
+		background-image: linear-gradient( @background-color-base--disabled 100%, transparent 0 );
+	}
+
+	&--double {
+		height: ( 53 / 14 ) * 1em;
+	}
+
+	&--triple {
+		height: ( 72 / 14 ) * 1em;
+	}
+
+	&--darken {
+		&:before {
+			background-image: linear-gradient( @background-color-filled--disabled 100%, transparent 0 );
+		}
+	}
+}
