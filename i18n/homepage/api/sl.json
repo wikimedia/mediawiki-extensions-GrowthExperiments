@@ -4,6 +4,15 @@
 			"Eleassar"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "Prodibi oblikovana vprašanja, objavljena prek modulov domače strani",
+	"apihelp-homepagequestionstore-param-questionformat": "Format za vrnitev vprašanj, npr. HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Lokacija shranjevanja vprašanj.",
-	"apihelp-growthsetmentor-summary": "Določi uporabnikovega mentorja. Sprememba se bo javno zabeležila."
+	"apihelp-homepagequestionstore-param-userid": "Identifikator uporabbnika, čigar vprašanja naj se pridobijo.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Ni najdenih vprašanj.",
+	"apihelp-growthsetmentor-summary": "Določi uporabnikovega mentorja. Sprememba se bo javno zabeležila.",
+	"apihelp-growthsetmentor-param-mentee": "Uporabniško ime mentoriranca",
+	"apihelp-growthsetmentor-param-mentor": "Uporabniško ime mentoriranca",
+	"apihelp-growthsetmentor-param-reason": "Razlog za spremembo",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Razveljavi nalogo priporočila slike",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Naslov članka, na katerega se nanaša naloga priporočila slike"
 }
