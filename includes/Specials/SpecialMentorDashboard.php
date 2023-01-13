@@ -66,6 +66,11 @@ class SpecialMentorDashboard extends SpecialPage {
 		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
 	}
 
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
 	/**
 	 * @inheritDoc
 	 */

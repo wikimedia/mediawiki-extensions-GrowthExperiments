@@ -27,6 +27,11 @@ class SpecialImpact extends SpecialPage {
 		$this->homepageModuleRegistry = $homepageModuleRegistry;
 	}
 
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
 	/**
 	 * @inheritDoc
 	 */

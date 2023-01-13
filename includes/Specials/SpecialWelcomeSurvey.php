@@ -51,6 +51,11 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$this->welcomeSurveyLogger = $welcomeSurveyLogger;
 	}
 
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
 	/**
 	 * @inheritDoc
 	 */

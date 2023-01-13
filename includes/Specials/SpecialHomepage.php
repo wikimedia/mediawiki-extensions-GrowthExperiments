@@ -92,6 +92,11 @@ class SpecialHomepage extends SpecialPage {
 		$this->titleFactory = $titleFactory;
 	}
 
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
 	/**
 	 * @inheritDoc
 	 * @param string $par

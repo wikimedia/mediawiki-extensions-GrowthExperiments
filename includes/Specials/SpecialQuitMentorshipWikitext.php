@@ -37,6 +37,11 @@ class SpecialQuitMentorshipWikitext extends FormSpecialPage {
 		$this->mentorProvider = $mentorProvider;
 	}
 
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
 	/**
 	 * @inheritDoc
 	 */
