@@ -47,6 +47,11 @@ class SpecialQuitMentorshipStructured extends FormSpecialPage {
 		$this->mentorWriter = $mentorWriter;
 	}
 
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
 	/**
 	 * @inheritDoc
 	 */

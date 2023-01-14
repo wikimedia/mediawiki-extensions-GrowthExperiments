@@ -69,6 +69,11 @@ class SpecialManageMentors extends SpecialPage {
 		$this->mentorStatusManager = $mentorStatusManager;
 	}
 
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
 	/**
 	 * @inheritDoc
 	 */

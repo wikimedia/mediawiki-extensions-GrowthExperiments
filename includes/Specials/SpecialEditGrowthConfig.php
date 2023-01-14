@@ -121,6 +121,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$this->eventLogger = new SpecialEditGrowthConfigLogger();
 	}
 
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
 	/**
 	 * @param string|null $par
 	 */

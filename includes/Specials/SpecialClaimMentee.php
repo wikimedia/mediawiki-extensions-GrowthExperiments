@@ -52,6 +52,11 @@ class SpecialClaimMentee extends FormSpecialPage {
 		$this->wikiConfig = $wikiConfig;
 	}
 
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
 	public function doesWrites() {
 		return true;
 	}

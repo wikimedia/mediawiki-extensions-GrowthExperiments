@@ -20,6 +20,11 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 	}
 
 	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'growth-tools';
+	}
+
+	/** @inheritDoc */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 		$this->addHelpLink( 'mw:Growth/Personalized_first_day/Newcomer_tasks' );
