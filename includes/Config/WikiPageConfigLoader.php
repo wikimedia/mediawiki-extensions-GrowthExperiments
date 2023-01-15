@@ -203,10 +203,9 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 		} else {
 			$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, $flags );
 			if ( !$revision ) {
-				return StatusValue::newFatal( new ApiRawMessage(
-					'The configuration title does not exist.',
-					'newcomer-tasks-configuration-loader-title-not-found'
-				) );
+				// The configuration page does not exist. Pretend it does not configure anything
+				// specific (failure mode and empty-page behavior is equal, see T325236).
+				return StatusValue::newGood( [] );
 			}
 			$content = $revision->getContent( SlotRecord::MAIN, RevisionRecord::FOR_PUBLIC );
 			if ( !$content || !$content instanceof JsonContent ) {
