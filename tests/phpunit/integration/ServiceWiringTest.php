@@ -2,6 +2,14 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
@@ -28,6 +36,45 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 		foreach ( $wiring as $name => $_ ) {
 			yield $name => [ $name ];
 		}
+	}
+
+	public function testErrorForwardingTaskSuggester() {
+		$this->overrideConfigValues( [
+			'SearchType' => 'Foo',
+		] );
+		$this->resetServices();
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$taskSuggesterFactory = $growthServices->getTaskSuggesterFactory();
+		$this->assertInstanceOf( StaticTaskSuggesterFactory::class, $taskSuggesterFactory );
+		$taskSuggester = $taskSuggesterFactory->create();
+		$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );
+	}
+
+	public function testLocalSearchTaskSuggester() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+		$this->overrideConfigValues( [
+			'SearchType' => 'CirrusSearch',
+		] );
+		$this->resetServices();
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$taskSuggesterFactory = $growthServices->getTaskSuggesterFactory();
+		$this->assertInstanceOf( DecoratingTaskSuggesterFactory::class, $taskSuggesterFactory );
+		$taskSuggester = $taskSuggesterFactory->create();
+		$this->assertInstanceOf( QualityGateDecorator::class, $taskSuggester );
+	}
+
+	public function testRemoteSearchTaskSuggester() {
+		$this->overrideConfigValue( 'GENewcomerTasksRemoteApiUrl', 'https://en.wikipedia.org/w/api.php' );
+		$this->resetServices();
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$configurationLoader = $this->createMock( ConfigurationLoader::class );
+		$configurationLoader->method( 'loadTopics' )->willReturn( [] );
+		$configurationLoader->method( 'loadTaskTypes' )->willReturn( [] );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
+		$taskSuggesterFactory = $growthServices->getTaskSuggesterFactory();
+		$this->assertInstanceOf( RemoteSearchTaskSuggesterFactory::class, $taskSuggesterFactory );
+		$taskSuggester = $taskSuggesterFactory->create();
+		$this->assertInstanceOf( RemoteSearchTaskSuggester::class, $taskSuggester );
 	}
 
 }
