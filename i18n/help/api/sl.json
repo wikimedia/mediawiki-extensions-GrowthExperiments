@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Obdeluje vprašanja, objavljena na panelu pomoči aktualnega uporabnika.",
+	"apihelp-helppanelquestionposter-param-body": "Besedilo vprašanja, ki ga je postavil uporabnik.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Ustrezni naslov, če je izbran, za vključitev z vprašanjem."
+}
