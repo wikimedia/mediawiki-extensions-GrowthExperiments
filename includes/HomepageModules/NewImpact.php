@@ -29,7 +29,6 @@ class NewImpact extends BaseModule {
 	private $userImpact = false;
 	/** @var array|null|false Lazy-loaded if false */
 	private $formattedUserImpact = false;
-	private ?array $hasMainspaceEditsCache = null;
 
 	/**
 	 * @param IContextSource $ctx
@@ -232,18 +231,6 @@ class NewImpact extends BaseModule {
 		$userImpact = $this->getUserImpact();
 		$this->formattedUserImpact = $userImpact ? $this->userImpactFormatter->format( $userImpact ) : [];
 		return $this->formattedUserImpact;
-	}
-
-	/** @return bool|null */
-	private function hasMainspaceEdits(): ?bool {
-		// The cache has four states: true/false/null (valid hasMainspaceEdits() return values)
-		// and uninitialized. Use an array hack to differentiate.
-		if ( !$this->hasMainspaceEditsCache ) {
-			$this->hasMainspaceEditsCache = [
-				$this->userDatabaseHelper->hasMainspaceEdits( $this->userIdentity ),
-			];
-		}
-		return $this->hasMainspaceEditsCache[0];
 	}
 
 }
