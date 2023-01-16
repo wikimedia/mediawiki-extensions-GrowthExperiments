@@ -3,6 +3,7 @@
 		"authors": [
 			"Bináris",
 			"Dj",
+			"Eukarióta",
 			"Llz78",
 			"Lois131",
 			"Tacsipacsi",
@@ -94,5 +95,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "A következő kategóriákat tartalmazó szócikkek kihagyása ebből a feladattípusból:",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infoboxsablonok",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Ezek a sablonok a [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|képjavaslatok]] az új szerkesztői feladatok funkcióhoz szükségesek. Az ezeket a sablonokat tartalmazó szócikkek nem fognak képjavaslat-feladatként szerepelni.",
-	"growthexperiments-edit-config-delayed": "Ennek a beállításnak a módosítása nem lép azonnal hatályba (lásd [[mw:Growth/FAQ#add-link-config|GYIK]])."
+	"growthexperiments-edit-config-delayed": "Ennek a beállításnak a módosítása nem lép azonnal hatályba (lásd [[mw:Growth/FAQ#add-link-config|GYIK]]).",
+	"specialpages-group-growth-tools": "Segédeszközök új szerkesztőknek"
 }

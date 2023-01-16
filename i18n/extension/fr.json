@@ -99,5 +99,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Les articles contenant des catégories définies ici ne seront pas montrés aux utilisateurs comme des tâches pour ce type de tâche.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Modèles de boîte d’informations",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Ces modèles sont nécessaires pour la fonctionnalité de tâche de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggestions d’images]] pour les nouveaux arrivants. Les articles contenant ces modèles ne seront pas répertoriés comme des tâches de suggestion d’image.",
-	"growthexperiments-edit-config-delayed": "Les modifications apportées à ce paramètre ne prendront pas effet immédiatement (voir [[mw:Growth/FAQ#add-link-config|FAQ]])."
+	"growthexperiments-edit-config-delayed": "Les modifications apportées à ce paramètre ne prendront pas effet immédiatement (voir [[mw:Growth/FAQ#add-link-config|FAQ]]).",
+	"specialpages-group-growth-tools": "Outils de croissance"
 }

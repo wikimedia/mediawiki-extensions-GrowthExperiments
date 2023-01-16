@@ -90,5 +90,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Articolele conținând categorii definite aici nu vor fi afișate utilizatorilor ca sarcini pentru acest tip de sarcină.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Formate de infocasetă",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Aceste formate sunt necesare pentru funcția sarcinii de nou-venit de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugestii de imagine]]. Articolele ce conțin aceste formate nu vor fi listate ca sarcinii de sugestii de imagine.",
-	"growthexperiments-edit-config-delayed": "Schimbările asupra acestei setări nu vor avea imediat efect (vezi [[mw:Growth/FAQ#add-link-config|FAQ]])."
+	"growthexperiments-edit-config-delayed": "Schimbările asupra acestei setări nu vor avea imediat efect (vezi [[mw:Growth/FAQ#add-link-config|FAQ]]).",
+	"specialpages-group-growth-tools": "Unelte Growth"
 }
