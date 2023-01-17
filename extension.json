@@ -227,14 +227,19 @@
 		}
 	],
 	"HookHandlers": {
-		"welcomeSurvey": {
-			"class": "GrowthExperiments\\WelcomeSurveyHooks",
+		"config": {
+			"class": "GrowthExperiments\\Config\\ConfigHooks",
 			"services": [
-				"MainConfig",
+				"GrowthExperimentsConfigValidatorFactory",
+				"GrowthExperimentsWikiPageConfigLoader",
 				"TitleFactory",
-				"SpecialPageFactory",
-				"GrowthExperimentsWelcomeSurveyFactory",
-				"GrowthExperimentsCampaignConfig"
+				"MainConfig"
+			]
+		},
+		"earlylifecycle": {
+			"class": "GrowthExperiments\\EarlyLifeCycleHooks",
+			"services": [
+				"UserOptionsLookup"
 			]
 		},
 		"helppanel": {
@@ -273,8 +278,17 @@
 				"GrowthExperimentsSuggestionsInfo"
 			]
 		},
-		"parserfunctions": {
-			"class": "GrowthExperiments\\ParserFunctionsHooks"
+		"impact": {
+			"class": "GrowthExperiments\\ImpactHooks",
+			"services": [
+				"MainConfig",
+				"GrowthExperimentsUserImpactLookup_Computed",
+				"GrowthExperimentsUserImpactStore",
+				"UserOptionsLookup",
+				"UserFactory",
+				"DBLoadBalancer",
+				"UserEditTracker"
+			]
 		},
 		"mentor": {
 			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorHooks",
@@ -284,6 +298,17 @@
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorStore"
+			]
+		},
+		"mentordashboard": {
+			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks"
+		},
+		"mentordashboarddiscovery": {
+			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardDiscoveryHooks",
+			"services": [
+				"GrowthExperimentsConfig",
+				"GrowthExperimentsMentorProvider",
+				"UserOptionsLookup"
 			]
 		},
 		"mentorfilters": {
@@ -298,34 +323,17 @@
 		"mentoruseroptions": {
 			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorUserOptionsHooks"
 		},
-		"mentordashboard": {
-			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks"
+		"parserfunctions": {
+			"class": "GrowthExperiments\\ParserFunctionsHooks"
 		},
-		"mentordashboarddiscovery": {
-			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardDiscoveryHooks",
-			"services": [
-				"GrowthExperimentsConfig",
-				"GrowthExperimentsMentorProvider",
-				"UserOptionsLookup"
-			]
+		"schema": {
+			"class": "GrowthExperiments\\SchemaHooks"
 		},
 		"tour": {
 			"class": "GrowthExperiments\\TourHooks",
 			"services": [
 				"UserOptionsLookup",
 				"GrowthExperimentsExperimentUserManager"
-			]
-		},
-		"schema": {
-			"class": "GrowthExperiments\\SchemaHooks"
-		},
-		"config": {
-			"class": "GrowthExperiments\\Config\\ConfigHooks",
-			"services": [
-				"GrowthExperimentsConfigValidatorFactory",
-				"GrowthExperimentsWikiPageConfigLoader",
-				"TitleFactory",
-				"MainConfig"
 			]
 		},
 		"variant": {
@@ -345,47 +353,68 @@
 				"PerDbNameStatsdDataFactory"
 			]
 		},
-		"earlylifecycle": {
-			"class": "GrowthExperiments\\EarlyLifeCycleHooks",
-			"services": [
-				"UserOptionsLookup"
-			]
-		},
-		"impact": {
-			"class": "GrowthExperiments\\ImpactHooks",
+		"welcomeSurvey": {
+			"class": "GrowthExperiments\\WelcomeSurveyHooks",
 			"services": [
 				"MainConfig",
-				"GrowthExperimentsUserImpactLookup_Computed",
-				"GrowthExperimentsUserImpactStore",
-				"UserOptionsLookup",
-				"UserFactory",
-				"DBLoadBalancer",
-				"UserEditTracker"
+				"TitleFactory",
+				"SpecialPageFactory",
+				"GrowthExperimentsWelcomeSurveyFactory",
+				"GrowthExperimentsCampaignConfig"
 			]
 		}
 	},
 	"Hooks": {
-		"ManualLogEntryBeforePublish": [
-			"impact"
-		],
-		"ContributeCards": "homepage",
-		"SpecialPage_initList": [
-			"welcomeSurvey",
+		"AuthChangeFormFields": [
+			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
 			"homepage",
-			"variant",
-			"mentor"
+			"variant"
 		],
-		"SpecialPageBeforeExecute": [
-			"welcomeSurvey"
+		"BeforeCreateEchoEvent": [
+			"GrowthExperiments\\Mentorship\\Hooks\\MentorHooks::onBeforeCreateEchoEvent"
 		],
-		"UserGetDefaultOptions": [
+		"BeforePageDisplay": [
 			"helppanel",
 			"homepage",
+			"mentordashboarddiscovery",
 			"tour",
-			"mentordashboard",
-			"mentoruseroptions"
+			"welcomeSurvey"
 		],
-		"RecentChange_save": "homepage",
+		"CentralAuthPostLoginRedirect": [
+			"variant",
+			"welcomeSurvey"
+		],
+		"ChangesListSpecialPageStructuredFilters": "mentorfilters",
+		"ChangeTagsListActive": [
+			"helppanel",
+			"homepage",
+			"mentor"
+		],
+		"CirrusSearchAddQueryFeatures": "GrowthExperiments\\HomepageHooks::onCirrusSearchAddQueryFeatures",
+		"CirrusSearchScoreBuilder": "homepage",
+		"ConfirmEmailComplete": "homepage",
+		"ContributeCards": "homepage",
+		"EditFilterMergedContent": "config",
+		"FormatAutocomments": [
+			"homepage",
+			"mentor"
+		],
+		"GetPreferences": [
+			"helppanel",
+			"homepage",
+			"mentordashboard",
+			"mentoruseroptions",
+			"tour",
+			"variant",
+			"welcomeSurvey"
+		],
+		"JsonValidateSave": "config",
+		"ListDefinedTags": [
+			"helppanel",
+			"homepage",
+			"mentor"
+		],
+		"LoadExtensionSchemaUpdates": "schema",
 		"LocalUserCreated": [
 			"helppanel",
 			"homepage",
@@ -393,15 +422,22 @@
 			"variant",
 			"welcomeSurvey"
 		],
-		"GetPreferences": [
-			"welcomeSurvey",
-			"helppanel",
-			"homepage",
-			"tour",
-			"mentoruseroptions",
-			"mentordashboard",
-			"variant"
+		"ManualLogEntryBeforePublish": [
+			"impact"
 		],
+		"MessageCache::get": "earlylifecycle",
+		"PageSaveComplete": [
+			"config",
+			"homepage",
+			"mentor",
+			"impact"
+		],
+		"ParserFirstCallInit": "parserfunctions",
+		"PostLoginRedirect": [
+			"variant",
+			"welcomeSurvey"
+		],
+		"RecentChange_save": "homepage",
 		"ResourceLoaderExcludeUserOptions": [
 			"helppanel",
 			"homepage",
@@ -409,87 +445,51 @@
 			"mentoruseroptions",
 			"variant"
 		],
-		"PostLoginRedirect": [
-			"welcomeSurvey",
-			"variant"
-		],
-		"CentralAuthPostLoginRedirect": [
-			"welcomeSurvey",
-			"variant"
-		],
-		"SiteNoticeAfter": "homepage",
-		"SpecialContributionsBeforeMainOutput": "homepage",
-		"BeforePageDisplay": [
-			"helppanel",
-			"homepage",
-			"tour",
-			"mentordashboarddiscovery",
-			"welcomeSurvey"
-		],
-		"ConfirmEmailComplete": "homepage",
-		"SkinMinervaOptionsInit": [
-			"GrowthExperiments\\HomepageHooks::onSkinMinervaOptionsInit"
-		],
-		"ListDefinedTags": [
-			"helppanel",
-			"homepage",
-			"mentor"
-		],
-		"ChangeTagsListActive": [
-			"helppanel",
-			"homepage",
-			"mentor"
-		],
-		"PageSaveComplete": [
-			"config",
-			"homepage",
-			"mentor",
-			"impact"
-		],
-		"JsonValidateSave": "config",
-		"SkinAddFooterLinks": "variant",
-		"SidebarBeforeOutput": "homepage",
-		"MessageCache::get": "earlylifecycle",
-		"AuthChangeFormFields": [
-			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
-			"homepage",
-			"variant"
-		],
-		"UserSendConfirmationMail": [
-			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
-		],
+		"ResourceLoaderGetConfigVars": "variant",
 		"ResourceLoaderRegisterModules": "tour",
-		"WikimediaEventsShouldSchemaEditAttemptStepOversample": [
-			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"
-		],
-		"BeforeCreateEchoEvent": [
-			"GrowthExperiments\\Mentorship\\Hooks\\MentorHooks::onBeforeCreateEchoEvent"
-		],
-		"FormatAutocomments": [
-			"homepage",
-			"mentor"
-		],
-		"ParserFirstCallInit": "parserfunctions",
+		"SpecialContributionsBeforeMainOutput": "homepage",
 		"SearchDataForIndex": {
 			"handler": "homepage",
 			"deprecated": true
 		},
 		"SearchDataForIndex2": "homepage",
-		"LoadExtensionSchemaUpdates": "schema",
-		"UnitTestsAfterDatabaseSetup": "schema",
-		"EditFilterMergedContent": "config",
+		"SidebarBeforeOutput": "homepage",
+		"SiteNoticeAfter": "homepage",
+		"SkinAddFooterLinks": "variant",
+		"SkinMinervaOptionsInit": [
+			"GrowthExperiments\\HomepageHooks::onSkinMinervaOptionsInit"
+		],
 		"SkinTemplateNavigation::Universal": [
 			"config",
 			"homepage",
 			"mentordashboarddiscovery"
 		],
-		"ResourceLoaderGetConfigVars": "variant",
+		"SpecialPage_initList": [
+			"homepage",
+			"mentor",
+			"variant",
+			"welcomeSurvey"
+		],
+		"SpecialPageBeforeExecute": [
+			"welcomeSurvey"
+		],
+		"UserGetDefaultOptions": [
+			"helppanel",
+			"homepage",
+			"mentordashboard",
+			"mentoruseroptions",
+			"tour"
+		],
+		"UserGetRights": "mentor",
+		"UnitTestsAfterDatabaseSetup": "schema",
+		"UserSendConfirmationMail": [
+			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
+		],
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
 		"VisualEditorApiVisualEditorEditPostSave": "visualeditor",
-		"ChangesListSpecialPageStructuredFilters": "mentorfilters",
-		"CirrusSearchAddQueryFeatures": "GrowthExperiments\\HomepageHooks::onCirrusSearchAddQueryFeatures",
-		"UserGetRights": "mentor",
-		"CirrusSearchScoreBuilder": "homepage"
+		"WikimediaEventsShouldSchemaEditAttemptStepOversample": [
+			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"
+		]
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
