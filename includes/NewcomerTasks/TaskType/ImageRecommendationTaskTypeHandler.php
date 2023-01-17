@@ -8,6 +8,9 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
+use Message;
+use MessageLocalizer;
+use MessageSpecifier;
 use StatusValue;
 use TitleParser;
 use Wikimedia\Assert\Assert;
@@ -114,6 +117,25 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** @inheritDoc */
 	public function getChangeTags( ?string $taskType = null ): array {
 		return [ TaskTypeHandler::NEWCOMER_TASK_TAG, self::CHANGE_TAG ];
+	}
+
+	/** @inheritDoc */
+	public function getSubmitDataFormatMessage(
+		TaskType $taskType,
+		MessageLocalizer $localizer
+	): MessageSpecifier {
+		if ( !( $taskType instanceof ImageRecommendationTaskType ) ) {
+			throw new \LogicException( 'impossible' );
+		}
+		$wrappedReasons = array_map(
+			fn( $reason ) => "<kbd>$reason</kbd>",
+			AddImageSubmissionHandler::REJECTION_REASONS
+		);
+		return $localizer->msg(
+			'apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation',
+			Message::listParam( $wrappedReasons, 'comma' ),
+			Message::numParam( $taskType->getMinimumCaptionCharacterLength() )
+		);
 	}
 
 }

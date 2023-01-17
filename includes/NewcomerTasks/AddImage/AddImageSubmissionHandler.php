@@ -31,7 +31,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * List of valid reasons for rejecting an image. Keep in sync with
 	 * RecommendedImageRejectionDialog.rejectionReasons.
 	 */
-	private const REJECTION_REASONS = [
+	public const REJECTION_REASONS = [
 		'notrelevant', 'noinfo', 'offensive', 'lowquality', 'unfamiliar', 'foreignlanguage', 'other'
 	];
 	/**

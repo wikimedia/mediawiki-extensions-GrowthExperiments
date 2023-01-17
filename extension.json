@@ -365,6 +365,7 @@
 		}
 	},
 	"Hooks": {
+		"APIGetAllowedParams": "visualeditor",
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
 			"homepage",
