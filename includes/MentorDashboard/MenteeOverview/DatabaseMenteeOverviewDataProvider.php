@@ -69,19 +69,20 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 	 * @inheritDoc
 	 */
 	public function getFormattedDataForMentor( UserIdentity $mentor ): array {
-		$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
-		if ( $mentees === [] ) {
-			return [];
-		}
-
-		$menteeIds = array_map( static function ( $mentee ) {
-			return $mentee->getId();
-		}, $mentees );
-
 		return $this->wanCache->getWithSetCallback(
 			$this->makeCacheKey( $mentor ),
 			self::TTL_DAY,
-			function () use ( $menteeIds ) {
+			function ( $oldValue, &$ttl, &$setOpts ) use ( $mentor ) {
+				$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
+				if ( $mentees === [] ) {
+					$ttl = self::TTL_HOUR;
+					return [];
+				}
+
+				$menteeIds = array_map( static function ( $mentee ) {
+					return $mentee->getId();
+				}, $mentees );
+
 				$res = $this->growthDbr->select(
 					'growthexperiments_mentee_data',
 					[ 'mentee_id', 'mentee_data' ],
