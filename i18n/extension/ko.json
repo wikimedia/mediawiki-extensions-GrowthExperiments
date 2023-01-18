@@ -80,5 +80,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "여기에 정의된 틀이 포함된 문서는 이 작업 유형에 대한 작업으로 사용자에게 표시되지 않습니다.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "여기에 정의된 분류가 포함된 문서는 이 작업 유형에 대한 작업으로 사용자에게 표시되지 않습니다.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "정보상자 틀",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "이 틀은 [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|이미지 제안]] 신규 사용자 작업 기능에 필요합니다. 이러한 틀이 포함된 문서는 이미지 제안 작업으로 나열되지 않습니다."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "이 틀은 [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|이미지 제안]] 신규 사용자 작업 기능에 필요합니다. 이러한 틀이 포함된 문서는 이미지 제안 작업으로 나열되지 않습니다.",
+	"specialpages-group-growth-tools": "성장 도구"
 }

@@ -78,7 +78,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Stelle dich selbst auf „abwesend“",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Abbrechen",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pause",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Wenn du für einen bestimmten Zeitraum (mehr als 1 Woche) nicht als Lotse zur Verfügung stehst, kannst du dich als abwesend eintragen. Während dieser Zeit wird ein anderer Lotse die Fragen deiner Mentees entgegennehmen.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Wenn du für einen bestimmten Zeitraum (mehr als 1 Woche) nicht als Lotse zur Verfügung stehst, kannst du dich als abwesend eintragen. Während dieser Zeit wird ein anderer Lotse die Fragen deiner Neulinge entgegennehmen.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Du bist abwesend für:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "Tage",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Deine Eingabe bei „{{GENDER:|Du}} bist abwesend für:“ ist keine Ganzzahl. Bitte noch einmal eingeben.",
