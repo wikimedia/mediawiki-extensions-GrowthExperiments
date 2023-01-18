@@ -53,13 +53,18 @@ class UserImpactFormatter {
 	 * - Get up to 5 of the most recently edited articles with no page view
 	 *   data available yet, in descending order of recency
 	 *
+	 * Note that, in some situations, views/viewsCount information doesn't exist, because this
+	 * method removed those fields from data, and that data was used as the basis for constructing
+	 * a new ExpensiveUserImpact object. We can work around that with a few checks for the
+	 * existence of the properties, before using them.
+	 *
 	 * @param array $jsonData
 	 * @return array
 	 */
-	private function sortAndFilter( array $jsonData ): array {
+	public function sortAndFilter( array $jsonData ): array {
 		$topViewedArticles = $recentEditsWithoutPageviews = [];
 		foreach ( $this->getModifiedDailyArticleViews( $jsonData ) as $title => $data ) {
-			$lastDayWithPageViewData = array_key_last( $data['views'] );
+			$lastDayWithPageViewData = array_key_last( $data['views'] ?? [] );
 			// See if we have pageview data for the page.
 			$noPageviewDataYet = $data['firstEditDate'] > $lastDayWithPageViewData
 				// The last day actually might or might not have data (T217286) so allow equality
@@ -116,14 +121,14 @@ class UserImpactFormatter {
 	private function getModifiedDailyArticleViews( array $jsonData ): array {
 		$dailyArticleViews = $jsonData['dailyArticleViews'];
 		foreach ( $dailyArticleViews as $title => $data ) {
-			foreach ( $data['views'] as $date => $dailyViews ) {
+			foreach ( $data['views'] ?? [] as $date => $dailyViews ) {
 				if ( $date < $data['firstEditDate'] ) {
 					// Note this is unreliable for established users, as we look at the user's
 					// last 1000 edits to determine firstEditDate. We ignore that issue here.
 					$dailyArticleViews[$title]['views'][$date] = 0;
 				}
 			}
-			$dailyArticleViews[$title]['viewsCount'] = array_sum( $dailyArticleViews[$title]['views'] );
+			$dailyArticleViews[$title]['viewsCount'] = array_sum( $dailyArticleViews[$title]['views'] ?? [] );
 		}
 		return $dailyArticleViews;
 	}

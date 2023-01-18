@@ -36,7 +36,10 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class ComputedUserImpactLookup implements UserImpactLookup {
 
 	public const CONSTRUCTOR_OPTIONS = [
-		MainConfigNames::LocalTZoffset
+		MainConfigNames::LocalTZoffset,
+		'CommandLineMode',
+		'GEUserImpactMaxArticlesToProcessForPageviews',
+		'GEUserImpactMaximumProcessTimeSeconds',
 	];
 
 	/**
@@ -138,7 +141,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/** @inheritDoc */
 	public function getExpensiveUserImpact(
 		UserIdentity $user,
-		int $flags = IDBAccessObject::READ_NORMAL
+		int $flags = IDBAccessObject::READ_NORMAL,
+		array $priorityArticles = []
 	): ?ExpensiveUserImpact {
 		$start = microtime( true );
 		if ( !$this->pageViewService ) {
@@ -151,13 +155,19 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 		$editData = $this->getEditData( $user, $flags );
 		$thanksCount = $this->getThanksCount( $user, $flags );
+		// Use priority articles if known, otherwise make use of the last edited articles
+		// as "top articles" .
+		// This won't exclude retrieving data for other articles, but ensures that we fetch page
+		// view data for priority (as defined by the caller) articles first.
+		if ( $priorityArticles ) {
+			$priorityArticles = array_intersect_key( $editData->getEditedArticles(), $priorityArticles );
+		} else {
+			$priorityArticles = $editData->getEditedArticles();
+		}
 		$pageViewData = $this->getPageViewData(
 			$user,
 			$editData->getEditedArticles(),
-			// Just use the last edited articles as "top articles" for now. This won't
-			// exclude retrieving data for other articles, it just prioritizes the most
-			// recent ones.
-			array_slice( $editData->getEditedArticles(), 0, self::PRIORITY_ARTICLES_LIMIT, true ),
+			array_slice( $priorityArticles, 0, self::PRIORITY_ARTICLES_LIMIT, true ),
 			self::PAGEVIEW_DAYS
 		);
 		if ( $pageViewData === null ) {
@@ -332,23 +342,11 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				'oldestEdit' => $data['oldestEdit']
 			];
 		}
-		$status = $this->pageViewService->getPageData( array_column( $allTitleObjects, 'title' ), $days );
-		if ( !$status->isGood() ) {
-			$this->logger->error( Status::wrap( $status )->getWikiText( false, false, 'en' ) );
-			if ( !$status->isOK() ) {
-				return null;
-			}
-		} elseif ( $status->successCount < count( $allTitles ) ) {
-			$failedTitles = array_keys( array_diff_key( $allTitles, $status->success ) );
-			$this->logger->info( "Failed to get page view data for {count} titles for user {user}",
-				[
-					'user' => $user->getName(),
-					'count' => count( $failedTitles ),
-					'failedTitles' => substr( implode( ',', $failedTitles ), 0, 250 ),
-				]
-			);
+		if ( defined( 'MEDIAWIKI_JOB_RUNNER' ) || $this->config->get( 'CommandLineMode' ) ) {
+			$pageViewData = $this->getPageViewDataInJobContext( $allTitleObjects, $user, $days );
+		} else {
+			$pageViewData = $this->getPageViewDataInWebRequestContext( $allTitleObjects, $user, $days );
 		}
-		$pageViewData = $status->getValue();
 
 		$dailyTotalViews = [];
 		$dailyArticleViews = [];
@@ -374,6 +372,66 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			'dailyTotalViews' => $dailyTotalViews,
 			'dailyArticleViews' => $dailyArticleViews,
 		];
+	}
+
+	private function getPageViewDataInJobContext( array $allTitleObjects, UserIdentity $user, int $days ): ?array {
+		$pageViewData = [];
+		$loopStartTime = microtime( true );
+		while ( count( $pageViewData ) < count( $allTitleObjects ) ) {
+			if ( count( $pageViewData ) > $this->config->get( 'GEUserImpactMaxArticlesToProcessForPageviews' ) ) {
+				$this->logger->info(
+					'Reached article count limit while fetching page view data for {count} titles for user {user}.',
+					[ 'user' => $user->getName(), 'count' => count( $allTitleObjects ) ]
+				);
+				break;
+			}
+			if ( microtime( true ) - $loopStartTime > $this->config->get( 'GEUserImpactMaximumProcessTimeSeconds' ) ) {
+				$this->logger->info(
+					"Reached maximum process time while fetching page view data for {count} titles for user {user}",
+					[ 'user' => $user->getName(), 'count' => count( $allTitleObjects ) ]
+				);
+				break;
+			}
+			$pageDataStatus = $this->pageViewService->getPageData(
+				array_column( $allTitleObjects, 'title' ), $days
+			);
+			if ( !$pageDataStatus->isGood() ) {
+				$this->logger->error( Status::wrap( $pageDataStatus )->getWikiText( false, false, 'en' ) );
+				if ( !$pageDataStatus->isOK() ) {
+					if ( !count( $pageViewData ) ) {
+						// If nothing has accumulated in the page view data, set null so the caller
+						// to this method can proceed accordingly.
+						$pageViewData = null;
+					}
+					return $pageViewData;
+				}
+			} else {
+				$pageViewData = $pageViewData + $pageDataStatus->getValue();
+			}
+		}
+		return $pageViewData;
+	}
+
+	private function getPageViewDataInWebRequestContext(
+		array $allTitleObjects, UserIdentity $user, int $days
+	): ?array {
+		$status = $this->pageViewService->getPageData( array_column( $allTitleObjects, 'title' ), $days );
+		if ( !$status->isGood() ) {
+			$this->logger->error( Status::wrap( $status )->getWikiText( false, false, 'en' ) );
+			if ( !$status->isOK() ) {
+				return null;
+			}
+		} elseif ( $status->successCount < count( $allTitleObjects ) ) {
+			$failedTitles = array_keys( array_diff_key( $allTitleObjects, $status->success ) );
+			$this->logger->info( "Failed to get page view data for {count} titles for user {user}",
+				[
+					'user' => $user->getName(),
+					'count' => count( $failedTitles ),
+					'failedTitles' => substr( implode( ',', $failedTitles ), 0, 250 ),
+				]
+			);
+		}
+		return $status->getValue();
 	}
 
 	/**
