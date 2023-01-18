@@ -49,15 +49,16 @@ module.exports = exports = {
 	},
 	setup() {
 		const renderMode = inject( 'RENDER_MODE' );
-		const userId = inject( 'RELEVANT_USER_ID' );
 		const userName = inject( 'RELEVANT_USER_USERNAME' );
+		const initialUserImpactData = inject( 'RELEVANT_USER_DATA' );
+		const fetchError = inject( 'FETCH_ERROR' );
 		const isModuleUnactivated = inject( 'RELEVANT_USER_MODULE_UNACTIVATED' );
 		const isSuggestedEditsEnabled = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED' );
 		const isSuggestedEditsActivated = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED' );
 		const impactComponent = renderMode === 'overlay-summary' ? 'NewImpactSummary' : 'NewImpact';
 		const errorComponent = renderMode === 'overlay-summary' ? 'ErrorDisplaySummary' : 'ErrorDisplay';
 
-		const result = useUserImpact( userId, DEFAULT_STREAK_TIME_FRAME );
+		const impactData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, initialUserImpactData );
 
 		// If the module is activated, and the user hasn't already seen it, then show the
 		// new impact discovery tour.
@@ -75,10 +76,9 @@ module.exports = exports = {
 			isModuleUnactivated,
 			impactComponent,
 			errorComponent,
-			data: result.data,
+			data: impactData,
 			// TODO: how to give user error feedback?
-
-			error: result.error
+			error: fetchError
 		};
 	},
 	methods: {

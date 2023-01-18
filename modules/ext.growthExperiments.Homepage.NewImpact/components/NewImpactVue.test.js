@@ -70,34 +70,6 @@ const impactServerData = () => {
 	};
 };
 
-const impactData = ( userId, timeFrame ) => {
-	global.mw.config.get = jest.fn();
-	global.mw.config.get.mockImplementation( ( key ) => {
-		switch ( key ) {
-			case 'wgUserLanguage':
-				return 'en';
-			case 'wgTranslateNumerals':
-				return false;
-			case 'wgCanonicalSpecialPageName':
-				return 'Homepage';
-			case 'homepagemobile':
-				return false;
-			case 'homepagemodules':
-				return {
-					impact: {
-						impact: impactServerData()
-					}
-				};
-			case 'GENewImpactD3Enabled':
-				return false;
-			default:
-				throw new Error( 'Unkown key: ' + key );
-		}
-	} );
-
-	const { data } = useUserImpact( userId, timeFrame );
-	return data.value;
-};
 const NO_PERSON_KEYS = [
 	'growthexperiments-homepage-impact-edited-articles-trend-chart-title',
 	'growthexperiments-homepage-newimpact-contributions-link'
@@ -110,10 +82,26 @@ const THIRD_PERSON_KEYS = [
 const ALL_KEYS = [ ...NO_PERSON_KEYS, ...THIRD_PERSON_KEYS ];
 
 describe( 'NewImpactVue', () => {
+	beforeEach( () => {
+		global.mw.config.get = jest.fn();
+		global.mw.config.get.mockImplementation( ( key ) => {
+			switch ( key ) {
+				case 'wgUserLanguage':
+					return 'en';
+				case 'wgTranslateNumerals':
+					return false;
+				case 'homepagemobile':
+					return false;
+				default:
+					throw new Error( 'Unkown key: ' + key );
+			}
+		} );
+	} );
 	it( 'displays activated state layout', () => {
+		const mockData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, impactServerData() );
 		const wrapper = mount( NewImpact, {
 			props: {
-				data: impactData( 1, DEFAULT_STREAK_TIME_FRAME ),
+				data: mockData.value,
 				userName: 'Alice'
 			},
 			global: {
@@ -139,9 +127,10 @@ describe( 'NewImpactVue', () => {
 		}
 	} );
 	it( 'displays other person texts', () => {
+		const mockData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, impactServerData() );
 		const wrapper = mount( NewImpact, {
 			props: {
-				data: impactData( 1, DEFAULT_STREAK_TIME_FRAME ),
+				data: mockData.value,
 				userName: 'Alice'
 			},
 			global: {
