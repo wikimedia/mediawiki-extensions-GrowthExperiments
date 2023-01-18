@@ -4,6 +4,8 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
+use MessageLocalizer;
+use MessageSpecifier;
 
 /**
  * TaskTypeHandler subclass for structured tasks. Instead of freeform editing, structured tasks
@@ -25,5 +27,17 @@ abstract class StructuredTaskTypeHandler extends TaskTypeHandler {
 	 * @return SubmissionHandler
 	 */
 	abstract public function getSubmissionHandler(): SubmissionHandler;
+
+	/**
+	 * Returns a message describing the format of the acceptance/rejectance data that needs to
+	 * be provided in some APIs. Should use API documentation conventions.
+	 * @param TaskType $taskType
+	 * @param MessageLocalizer $localizer
+	 * @return MessageSpecifier
+	 */
+	abstract public function getSubmitDataFormatMessage(
+		TaskType $taskType,
+		MessageLocalizer $localizer
+	): MessageSpecifier;
 
 }

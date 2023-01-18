@@ -2,9 +2,14 @@
 
 namespace GrowthExperiments;
 
+use ApiBase;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use MediaWiki\Api\Hook\APIGetAllowedParamsHook;
+use MediaWiki\Extension\VisualEditor\ApiVisualEditorEdit;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPreSaveHook;
 use MediaWiki\Page\ProperPageIdentity;
@@ -20,6 +25,7 @@ use UnexpectedValueException;
  *  classes depending on interfaces defined in VisualEditor (which is an optional dependency).
  */
 class VisualEditorHooks implements
+	APIGetAllowedParamsHook,
 	VisualEditorApiVisualEditorEditPreSaveHook,
 	VisualEditorApiVisualEditorEditPostSaveHook
 {
@@ -69,7 +75,7 @@ class VisualEditorHooks implements
 			return;
 		}
 		/** @var ?TaskTypeHandler $taskTypeHandler */
-		list( $data, $taskTypeHandler, $taskTypeId ) = $this->getDataFromApiRequest( $pluginData );
+		[ $data, $taskTypeHandler, $taskTypeId ] = $this->getDataFromApiRequest( $pluginData );
 		if ( !$data || !$taskTypeId ) {
 			// Not an edit we are interested in looking at.
 			return;
@@ -114,7 +120,7 @@ class VisualEditorHooks implements
 			return;
 		}
 		/** @var ?TaskTypeHandler $taskTypeHandler */
-		list( $data, $taskTypeHandler, $taskTypeId ) = $this->getDataFromApiRequest( $pluginData );
+		[ $data, $taskTypeHandler, $taskTypeId ] = $this->getDataFromApiRequest( $pluginData );
 		if ( !$data || !$taskTypeId ) {
 
 			return;
@@ -146,6 +152,29 @@ class VisualEditorHooks implements
 			$errorMessage = Status::wrap( $status )->getWikiText();
 			$apiResponse['errors'][] = $errorMessage;
 			Util::logStatus( $status );
+		}
+	}
+
+	/** @inheritDoc */
+	public function onAPIGetAllowedParams( $module, &$params, $flags ) {
+		if ( $module instanceof ApiVisualEditorEdit
+			&& ( $flags & ApiBase::GET_VALUES_FOR_HELP )
+			&& SuggestedEdits::isEnabled( $module->getContext()->getConfig() )
+		) {
+			$taskTypes = $this->configurationLoader->getTaskTypes();
+			foreach ( $taskTypes as $taskTypeId => $taskType ) {
+				$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
+				if ( $taskTypeHandler instanceof StructuredTaskTypeHandler ) {
+					$paramValue = self::PLUGIN_PREFIX . $taskTypeId;
+					$params['plugins'][ApiBase::PARAM_HELP_MSG_PER_VALUE][$paramValue] = [
+							"apihelp-visualeditoredit-paramvalue-plugins-$paramValue",
+					];
+					$params['data-{plugin}'][ApiBase::PARAM_HELP_MSG_APPEND][$paramValue] = [
+						"apihelp-visualeditoredit-append-data-plugin-$paramValue",
+						$taskTypeHandler->getSubmitDataFormatMessage( $taskType, $module->getContext() ),
+					];
+				}
+			}
 		}
 	}
 

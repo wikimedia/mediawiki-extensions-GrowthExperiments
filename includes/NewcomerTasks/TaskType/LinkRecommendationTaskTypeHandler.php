@@ -8,6 +8,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
+use MessageLocalizer;
+use MessageSpecifier;
 use TitleParser;
 use Wikimedia\Assert\Assert;
 
@@ -97,6 +99,16 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** @inheritDoc */
 	public function getChangeTags( ?string $taskType = null ): array {
 		return [ TaskTypeHandler::NEWCOMER_TASK_TAG, self::CHANGE_TAG ];
+	}
+
+	/** @inheritDoc */
+	public function getSubmitDataFormatMessage(
+		TaskType $taskType,
+		MessageLocalizer $localizer
+	): MessageSpecifier {
+		return $localizer->msg(
+			'apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation'
+		);
 	}
 
 }
