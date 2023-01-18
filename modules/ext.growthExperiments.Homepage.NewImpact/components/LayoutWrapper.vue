@@ -29,13 +29,6 @@ module.exports = exports = {
 
 <style lang="less">
 @import '../../vue-components/variables.less';
-// ext-growthExperiments-new-impact-app-root--mobile class is
-// only added when mounting the app for the mobile overlay. Given all components
-// rendered inside are responsive, set width to stretch over available horizontal space
-/* stylelint-disable-next-line selector-class-pattern */
-.ext-growthExperiments-new-impact-app-root--mobile {
-	width: 100%;
-}
 
 .ext-growthExperiments-Layout {
 	&--overlay {

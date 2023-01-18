@@ -1,0 +1,26 @@
+@import '../../vue-components/variables.less';
+
+.ext-growthExperiments-ScoreCards {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 2px;
+	// Expand scores stripe over homepage modules padding
+	margin: 0 -16px;
+
+	&__link {
+		.disabled-visited();
+	}
+
+	&__scorecard__info {
+		width: 280px;
+		margin-top: 0.5em;
+
+		&__icon {
+			margin-right: 0.5em;
+		}
+	}
+
+	&__info-button {
+		.codex-icon-only-button( @color-subtle, 20px );
+	}
+}
