@@ -8,12 +8,12 @@
 				as="h3"
 				weight="bold"
 			>
-				{{ $i18n( 'growthexperiments-homepage-impact-error-data-not-found-text', userName ).text() }}
+				{{ notFoundText }}
 			</c-text>
 			<div class="ext-growthExperiments-ErrorDisplay__image">
 			</div>
 			<c-text color="subtle" class="ext-growthExperiments-ErrorDisplay__subtext">
-				{{ $i18n( 'growthexperiments-homepage-impact-error-data-not-found-subtext', userName ).text() }}
+				{{ notFoundSubtext }}
 			</c-text>
 		</div>
 	</div>
@@ -33,9 +33,23 @@ module.exports = exports = {
 	},
 	setup() {
 		const userName = inject( 'RELEVANT_USER_USERNAME' );
+		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
 		return {
-			userName
+			userName,
+			renderThirdPerson
 		};
+	},
+	computed: {
+		notFoundText() {
+			return this.renderThirdPerson ?
+				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-text-third-person' ).text() :
+				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-text', this.userName ).text();
+		},
+		notFoundSubtext() {
+			return this.renderThirdPerson ?
+				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-subtext-third-person' ).text() :
+				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-subtext', this.userName ).text();
+		}
 	}
 };
 </script>

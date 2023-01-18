@@ -29,6 +29,7 @@ class NewImpact extends BaseModule {
 	private $userImpact = false;
 	/** @var array|null|false Lazy-loaded if false */
 	private $formattedUserImpact = false;
+	private bool $forceShowingForOther = false;
 
 	/**
 	 * @param IContextSource $ctx
@@ -67,6 +68,7 @@ class NewImpact extends BaseModule {
 			'GENewImpactRelevantUserName' => $this->userIdentity->getName(),
 			'GENewImpactRelevantUserId' => $this->userIdentity->getId(),
 			'GENewImpactRelevantUserUnactivated' => $this->isUnactivated(),
+			'GENewImpactThirdPersonRender' => $this->shouldShowForOtherUser(),
 			'GENewImpactIsSuggestedEditsEnabledForUser' => $this->isSuggestedEditsEnabledForUser,
 			'GENewImpactIsSuggestedEditsActivatedForUser' => $this->isSuggestedEditsActivatedForUser,
 		];
@@ -99,11 +101,33 @@ class NewImpact extends BaseModule {
 		);
 	}
 
+	/**
+	 * Check if the user requesting the data matches the user data is requested
+	 *
+	 * @return bool
+	 */
+	private function isOwnData(): bool {
+		return $this->getContext()->getUser()->equals( $this->userIdentity );
+	}
+
+	/**
+	 * Check if texts should show first person or third person
+	 *
+	 * @return bool
+	 */
+	private function shouldShowForOtherUser(): bool {
+		return !$this->isOwnData() || $this->forceShowingForOther;
+	}
+
 	/** @inheritDoc */
 	protected function getHeaderText() {
+		$headerText = 'growthexperiments-homepage-new-impact-header';
+		if ( $this->shouldShowForOtherUser() ) {
+			$headerText = 'growthexperiments-specialimpact-showing-for-other-user';
+		}
 		return $this->getContext()
-			->msg( 'growthexperiments-homepage-new-impact-header' )
-			->params( $this->getContext()->getUser()->getName() )
+			->msg( $headerText )
+			->params( $this->userIdentity->getName() )
 			->text();
 	}
 
@@ -284,12 +308,25 @@ class NewImpact extends BaseModule {
 	}
 
 	/**
+	 * Set the relevant user to return data for. This will also force the module to display third person texts even if
+	 * the user requesting it is the same the data is requested
+	 *
+	 * @param UserIdentity $user
+	 */
+	public function setUserDataIsFor( UserIdentity $user ) {
+		$this->userIdentity = $user;
+		$this->forceShowingForOther = true;
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function getState() {
 		if ( $this->canRender()
 			&& $this->isSuggestedEditsEnabledForUser
 			&& $this->getContext()->getUser()->getEditCount()
+			// Always show the module activated when a user is looking to another user data
+			|| $this->shouldShowForOtherUser()
 		) {
 			return self::MODULE_STATE_ACTIVATED;
 		}

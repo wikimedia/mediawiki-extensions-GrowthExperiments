@@ -12,6 +12,7 @@ const NewImpact = require( './NewImpact.vue' );
 const ScoreCard = require( './ScoreCard.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
 const TrendChart = require( './TrendChart.vue' );
+const ArticlesList = require( './ArticlesList.vue' );
 const useUserImpact = require( '../composables/useUserImpact.js' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( '../constants.js' );
 
@@ -65,7 +66,7 @@ const impactServerData = () => {
 			}
 		},
 		topViewedArticles: [],
-		topViewedArticlesCount: 0
+		topViewedArticlesCount: 12
 	};
 };
 
@@ -97,9 +98,19 @@ const impactData = ( userId, timeFrame ) => {
 	const { data } = useUserImpact( userId, timeFrame );
 	return data.value;
 };
+const NO_PERSON_KEYS = [
+	'growthexperiments-homepage-impact-edited-articles-trend-chart-title',
+	'growthexperiments-homepage-newimpact-contributions-link'
+];
+const THIRD_PERSON_KEYS = [
+	'growthexperiments-homepage-impact-recent-activity-title',
+	'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label',
+	'growthexperiments-homepage-impact-subheader-text'
+];
+const ALL_KEYS = [ ...NO_PERSON_KEYS, ...THIRD_PERSON_KEYS ];
 
 describe( 'NewImpactVue', () => {
-	it( 'displays four scorecards', ( done ) => {
+	it( 'displays activated state layout', () => {
 		const wrapper = mount( NewImpact, {
 			props: {
 				data: impactData( 1, DEFAULT_STREAK_TIME_FRAME ),
@@ -109,6 +120,7 @@ describe( 'NewImpactVue', () => {
 				provide: {
 					RENDER_MODE: 'desktop',
 					RELEVANT_USER_USERNAME: 'Alice',
+					RENDER_IN_THIRD_PERSON: false,
 					$log: jest.fn()
 				},
 				mocks: {
@@ -118,11 +130,39 @@ describe( 'NewImpactVue', () => {
 				}
 			}
 		} );
-		wrapper.vm.$nextTick( () => {
-			expect( wrapper.findAllComponents( ScoreCard ) ).toHaveLength( 4 );
-			expect( wrapper.findAllComponents( RecentActivity ) ).toHaveLength( 1 );
-			expect( wrapper.findAllComponents( TrendChart ) ).toHaveLength( 1 );
-			done();
+		expect( wrapper.findAllComponents( ScoreCard ) ).toHaveLength( 4 );
+		expect( wrapper.findAllComponents( RecentActivity ) ).toHaveLength( 1 );
+		expect( wrapper.findAllComponents( TrendChart ) ).toHaveLength( 1 );
+		expect( wrapper.findAllComponents( ArticlesList ) ).toHaveLength( 1 );
+		for ( const key of ALL_KEYS ) {
+			expect( wrapper.text() ).toContain( key );
+		}
+	} );
+	it( 'displays other person texts', () => {
+		const wrapper = mount( NewImpact, {
+			props: {
+				data: impactData( 1, DEFAULT_STREAK_TIME_FRAME ),
+				userName: 'Alice'
+			},
+			global: {
+				provide: {
+					RENDER_MODE: 'desktop',
+					RELEVANT_USER_USERNAME: 'Alice',
+					RENDER_IN_THIRD_PERSON: true,
+					$log: jest.fn()
+				},
+				mocks: {
+					$filters: {
+						convertNumber: jest.fn( ( x ) => `${x}` )
+					}
+				}
+			}
 		} );
+		for ( const key of NO_PERSON_KEYS ) {
+			expect( wrapper.text() ).toContain( key );
+		}
+		for ( const key of THIRD_PERSON_KEYS ) {
+			expect( wrapper.text() ).toContain( `${key}-third-person` );
+		}
 	} );
 } );

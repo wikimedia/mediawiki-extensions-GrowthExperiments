@@ -24,6 +24,7 @@
 		app.provide( 'RELEVANT_USER_MODULE_UNACTIVATED', mw.config.get( 'GENewImpactRelevantUserUnactivated' ) );
 		app.provide( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED', mw.config.get( 'GENewImpactIsSuggestedEditsEnabledForUser' ) );
 		app.provide( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED', mw.config.get( 'GENewImpactIsSuggestedEditsActivatedForUser' ) );
+		app.provide( 'RENDER_IN_THIRD_PERSON', mw.config.get( 'GENewImpactThirdPersonRender' ) );
 		app.provide( 'RENDER_MODE', mode );
 		app.use( logger, {
 			mode,

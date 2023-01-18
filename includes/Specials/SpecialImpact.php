@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Specials;
 
-use DerivativeContext;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
+use GrowthExperiments\HomepageModules\NewImpact;
 use Html;
 use MediaWiki\User\UserFactory;
 use SpecialPage;
@@ -72,19 +72,11 @@ class SpecialImpact extends SpecialPage {
 			return;
 		}
 		$out->enableOOUI();
-		// Use a derivative context as we might be modifying the user.
-		$context = new DerivativeContext( $this->getContext() );
-		if ( !$impactUser->equals( $this->getUser() ) ) {
-			// Add warning if viewing someone else's impact data.
-			$out->addHTML(
-				Html::element( 'p', [ 'class' => 'warning' ],
-					$this->msg(
-					'growthexperiments-specialimpact-showing-for-other-user'
-					)->plaintextParams( $impactUser->getName() )
-				->text() ) );
+		$impact = $this->homepageModuleRegistry->get( 'impact', $this->getContext() );
+		// If an argument was supplied and passed user validation, set the relevant user to the informed by.
+		if ( $par && $impact instanceof NewImpact ) {
+			$impact->setUserDataIsFor( $impactUser );
 		}
-		$context->setUser( $impactUser );
-		$impact = $this->homepageModuleRegistry->get( 'impact', $context );
 		$out->addJsConfigVars( 'specialimpact', [
 			'impact' => $impact->getJsData( IDashboardModule::RENDER_DESKTOP )
 		] );

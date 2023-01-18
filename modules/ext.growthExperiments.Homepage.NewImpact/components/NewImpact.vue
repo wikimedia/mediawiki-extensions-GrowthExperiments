@@ -28,25 +28,23 @@
 				:time-frame="DEFAULT_STREAK_TIME_FRAME"
 			></recent-activity>
 		</div>
-		<div v-if="data">
+		<div v-if="data && data.articlesViewsCount > 0">
 			<trend-chart
 				id="impact"
-				:count-label="$i18n(
-					'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName
-				).text()"
+				:count-label="countLabelText"
 				:chart-title="chartTitle"
 				:pageview-total="data.articlesViewsCount"
 				:data="data.dailyTotalViews"
 			></trend-chart>
 		</div>
-		<div v-if="data">
+		<div v-if="data && data.articles.length > 0">
 			<c-text
 				class="ext-growthExperiments-NewImpact__section-title ext-growthExperiments-increaseSpecificity"
 				as="h3"
 				size="md"
 				weight="bold"
 			>
-				{{ $i18n( 'growthexperiments-homepage-impact-subheader-text', userName ).text() }}
+				{{ articlesListTitleText }}
 			</c-text>
 			<articles-list class="ext-growthExperiments-NewImpact__articles-list" :items="data.articles"></articles-list>
 			<c-text weight="bold">
@@ -63,6 +61,7 @@
 </template>
 
 <script>
+const { inject } = require( 'vue' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( '../constants.js' );
 const CText = require( '../../vue-components/CText.vue' );
 
@@ -97,10 +96,12 @@ module.exports = exports = {
 		// Clarify with design if the different flex display is subject to the
 		// platform or the viewport.
 		const isMobileHomepage = mw.config.get( 'homepagemobile' );
+		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
 
 		return {
 			DEFAULT_STREAK_TIME_FRAME,
-			isMobileHomepage
+			isMobileHomepage,
+			renderThirdPerson
 		};
 	},
 	computed: {
@@ -111,11 +112,16 @@ module.exports = exports = {
 			).text();
 		},
 		recentActivityTitleText() {
-			return this.$i18n(
-				'growthexperiments-homepage-impact-recent-activity-title',
-				this.userName,
-				this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME )
-			).text();
+			return this.renderThirdPerson ?
+				this.$i18n(
+					'growthexperiments-homepage-impact-recent-activity-title-third-person',
+					this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME )
+				).text() :
+				this.$i18n(
+					'growthexperiments-homepage-impact-recent-activity-title',
+					this.userName,
+					this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME )
+				).text();
 		},
 		contributionsLinkText() {
 			return this.$i18n(
@@ -130,6 +136,16 @@ module.exports = exports = {
 				type: 'thanks',
 				page: this.userName
 			} );
+		},
+		countLabelText() {
+			return this.renderThirdPerson ?
+				this.$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person' ).text() :
+				this.$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', this.userName ).text();
+		},
+		articlesListTitleText() {
+			return this.renderThirdPerson ?
+				this.$i18n( 'growthexperiments-homepage-impact-subheader-text-third-person' ).text() :
+				this.$i18n( 'growthexperiments-homepage-impact-subheader-text', this.userName ).text();
 		}
 	},
 	mounted() {

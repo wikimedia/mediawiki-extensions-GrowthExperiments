@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorDisplay displays appropriate text when disabled ( third person: false) 1`] = `
+<div
+  class="ext-growthExperiments-ErrorDisplay"
+>
+  ScoreCardsMock
+  <div
+    class="ext-growthExperiments-ErrorDisplay__display"
+  >
+    <h3
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--weight-bold"
+    >
+      
+      growthexperiments-homepage-impact-error-data-not-found-text
+      
+    </h3>
+    <div
+      class="ext-growthExperiments-ErrorDisplay__image"
+    />
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ErrorDisplay__subtext"
+    >
+      
+      growthexperiments-homepage-impact-error-data-not-found-subtext
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ErrorDisplay displays appropriate text when disabled ( third person: true) 1`] = `
+<div
+  class="ext-growthExperiments-ErrorDisplay"
+>
+  ScoreCardsMock
+  <div
+    class="ext-growthExperiments-ErrorDisplay__display"
+  >
+    <h3
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--weight-bold"
+    >
+      
+      growthexperiments-homepage-impact-error-data-not-found-text-third-person
+      
+    </h3>
+    <div
+      class="ext-growthExperiments-ErrorDisplay__image"
+    />
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ErrorDisplay__subtext"
+    >
+      
+      growthexperiments-homepage-impact-error-data-not-found-subtext-third-person
+      
+    </div>
+  </div>
+</div>
+`;
