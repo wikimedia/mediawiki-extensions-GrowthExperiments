@@ -177,7 +177,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			// Just use the last edited articles as "top articles" for now. This won't
 			// exclude retrieving data for other articles, it just prioritizes the most
 			// recent ones.
-			array_slice( $editData->getEditedArticles(), 0, self::PRIORITY_ARTICLES_LIMIT ),
+			array_slice( $editData->getEditedArticles(), 0, self::PRIORITY_ARTICLES_LIMIT, true ),
 			self::PAGEVIEW_DAYS
 		);
 		if ( $pageViewData === null ) {
@@ -339,7 +339,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		// $priorityTitles is a subset of $titles but putting it to the front makes sure the data
 		// for those titles is fetched even if PageViewInfo cuts off the list of titles at some
 		// point, which it is allowed to do.
-		$allTitles = array_merge( $priorityTitles, $titles );
+		$allTitles = $priorityTitles + $titles;
 		$allTitleObjects = [];
 
 		foreach ( $allTitles as $title => $data ) {
