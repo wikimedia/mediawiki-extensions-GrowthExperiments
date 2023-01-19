@@ -19,7 +19,6 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MWTimestamp;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
-use Wikimedia\Rdbms\LoadBalancer;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class ImpactHooks implements
@@ -32,7 +31,6 @@ class ImpactHooks implements
 	private UserImpactStore $userImpactStore;
 	private UserOptionsLookup $userOptionsLookup;
 	private UserFactory $userFactory;
-	private LoadBalancer $loadBalancer;
 	private UserEditTracker $userEditTracker;
 	private UserImpactFormatter $userImpactFormatter;
 	private JobQueueGroup $jobQueueGroup;
@@ -44,7 +42,6 @@ class ImpactHooks implements
 	 * @param UserImpactFormatter $userImpactFormatter
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param UserFactory $userFactory
-	 * @param LoadBalancer $loadBalancer
 	 * @param UserEditTracker $userEditTracker
 	 * @param JobQueueGroup $jobQueueGroup
 	 */
@@ -55,7 +52,6 @@ class ImpactHooks implements
 		UserImpactFormatter $userImpactFormatter,
 		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory,
-		LoadBalancer $loadBalancer,
 		UserEditTracker $userEditTracker,
 		JobQueueGroup $jobQueueGroup
 	) {
@@ -65,7 +61,6 @@ class ImpactHooks implements
 		$this->userImpactFormatter = $userImpactFormatter;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userFactory = $userFactory;
-		$this->loadBalancer = $loadBalancer;
 		$this->userEditTracker = $userEditTracker;
 		$this->jobQueueGroup = $jobQueueGroup;
 	}
