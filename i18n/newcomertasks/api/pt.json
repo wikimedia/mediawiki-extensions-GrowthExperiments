@@ -14,6 +14,12 @@
 	"apihelp-query+growthtasks-param-debug": "Adicionar dados de depuração à saída.",
 	"apihelp-query+growthtasks-example-1": "Obter recomendações para tarefas do tipo ''copyedit'' para o utilizador atual.",
 	"apihelp-query+growthtasks-example-2": "Obter recomendações de tarefas para o utilizador atual, com informações adicionais sobre as páginas.",
+	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "Um texto JSON de um objeto com estas chaves:\n* <var>acceptedTargets</var>: (opcional) Matriz com os títulos de páginas, cuja hiperligação recomendada para elas foi aceite pelo utilizador.\n* <var>rejectedTargets</var>: (opcional) Matriz com os títulos de páginas, cuja hiperligação recomendada para elas foi rejeitada pelo utilizador.\n* <var>skippedTargets</var>: (opcional) Matriz com os títulos de páginas, cuja hiperligação recomendada para elas foi saltada (ignorada) pelo utilizador.",
+	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "Um texto JSON de um objeto com estas chaves:\n* <var>accepted</var>: Valor booliano que indica se o utilizador aceitou a imagem recomendada.\n* <var>reasons</var>: Matriz de textos que identificam um valor booliano indicativo do motivo por que o utilizador rejeitou a imagem recomendada. Valores válidos: $1\n* <var>caption</var>: Legenda da imagem, fornecida pelo utilizador (tem de ter pelo menos $2 caracteres).",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Usar ao gravar uma edição estruturada \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|Adicionar uma hiperligação]]\" das experiências de crescimento GrowthExperiments.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "Usar ao gravar uma edição estruturada [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|Adicionar uma imagem]]\" das experiências de crescimento GrowthExperiments.",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Para o ''plugin'' <var>ge-task-link-recommendation</var</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Para o ''plugin'' <var>ge-task-image-recommendation</var> plugin</dt><dd>\n$1\n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Parâmetro 'accepted' em falta nos dados do <i>plugin</i> Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "O parâmetro 'accepted' nos dados do <i>plugin</i> Add Image tem de ser um booliano, mas é do tipo $1",
 	"apierror-growthexperiments-addimage-handler-reason-missing": "Parâmetro 'reason' em falta nos dados do <i>plugin</i> Add Image",
@@ -21,5 +27,5 @@
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "O elemento '$1' é inválido para o parâmetro 'reason'; tem de ser um dos seguintes: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Não foi encontrado registo da recomendação de hiperligação",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinos de recomendação de hiperligação inesperados: $1",
-	"growthexperiments-underlinked-rescore-profile": "Perfil interno de reavaliação usado nas recomendações de hiperligações das experiências de crescimento GrowthExperiments para priorizar artigos que ainda não têm hiperligações suficientes."
+	"growthexperiments-underlinked-rescore-profile": "Perfil interno de reavaliação usado nas recomendações de hiperligações das experiências de crescimento GrowthExperiments para dar prioridade a artigos que ainda não têm hiperligações suficientes."
 }
