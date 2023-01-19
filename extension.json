@@ -680,7 +680,8 @@
 			"styles": [
 				"vue-components/variables.less",
 				"vue-components/Skeleton.less",
-				"ext.growthExperiments.Homepage.NewImpact/App.less",
+				"ext.growthExperiments.Homepage.NewImpact/styles/mixins.less",
+				"ext.growthExperiments.Homepage.NewImpact/styles/NewImpact.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.less"
@@ -1031,7 +1032,7 @@
 				"ext.growthExperiments.Homepage.styles/ConfirmEmailNotice.less",
 				"ext.growthExperiments.Homepage.styles/EllipsisMenu.less",
 				"vue-components/Skeleton.less",
-				"ext.growthExperiments.Homepage.NewImpact/App.less",
+				"ext.growthExperiments.Homepage.NewImpact/styles/NewImpact.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.less"

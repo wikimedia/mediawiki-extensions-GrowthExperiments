@@ -1,6 +1,82 @@
 <template>
 	<div :class="`ext-growthExperiments-NoEditsDisplay--${renderMode}`">
 		<div
+			v-if="renderMode !== 'overlay-summary'"
+			class="ext-growthExperiments-NoEditsDisplay__scorecards"
+			:class="`ext-growthExperiments-NoEditsDisplay__scorecards--${renderMode}`"
+		>
+			<score-card
+				:icon="cdxIconUserTalk"
+				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
+				:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
+				:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' ).text()"
+				@open="log( 'impact', 'open-thanks-info-tooltip' );"
+				@close="log( 'impact', 'close-thanks-info-tooltip' );"
+			>
+				<c-text
+					size="md"
+					weight="bold"
+				>
+					<a
+						v-if="data && data.receivedThanksCount > 0"
+						:href="thanksUrl"
+						class="ext-growthExperiments-NoEditsDisplay__scorecards__link"
+						data-link-id="impact-thanks-log"
+					>
+						{{ receivedThanksCount }}
+					</a>
+					<span v-else>
+						{{ $filters.convertNumber( 0 ) }}
+					</span>
+				</c-text>
+				<template #info-content>
+					<div class="ext-growthExperiments-ScoreCards__scorecard__info">
+						<span>
+							<cdx-icon
+								class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
+								:icon="cdxIconInfoFilled"
+							></cdx-icon>
+							{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text() }}
+						</span>
+						<p>
+							{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', userName ).text() }}
+						</p>
+					</div>
+				</template>
+			</score-card>
+			<score-card
+				:icon="cdxIconChart"
+				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
+				:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
+				:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' ).text()"
+				@open="log( 'impact', 'open-streak-info-tooltip' );"
+				@close="log( 'impact', 'close-streak-info-tooltip' );"
+			>
+				<!-- &#8211; is the code for the en dash character: — -->
+				<c-text
+					as="span"
+					size="md"
+					weight="bold"
+				>
+					&#8211;
+				</c-text>
+				<template #info-content>
+					<div class="ext-growthExperiments-ScoreCards__scorecard__info">
+						<span>
+							<cdx-icon
+								class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
+								:icon="cdxIconInfoFilled"
+							></cdx-icon>
+							{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text() }}
+						</span>
+						<p>
+							{{ $i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', userName ).text() }}
+						</p>
+					</div>
+				</template>
+			</score-card>
+		</div>
+		<div
 			class="ext-growthExperiments-NoEditsDisplay__content"
 			:class="`ext-growthExperiments-NoEditsDisplay__content--${renderMode}`"
 		>
@@ -56,20 +132,33 @@
 
 <script>
 const { inject } = require( 'vue' );
-const { CdxButton } = require( '@wikimedia/codex' );
+const { CdxButton, CdxIcon } = require( '@wikimedia/codex' );
+const {
+	cdxIconUserTalk,
+	cdxIconChart,
+	cdxIconInfoFilled
+} = require( '../../vue-components/icons.json' );
+const ScoreCard = require( './ScoreCard.vue' );
 const CText = require( '../../vue-components/CText.vue' );
+const { NO_DATA_CHARACTER } = require( '../constants.js' );
 
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
 		CdxButton,
-		CText
+		CdxIcon,
+		CText,
+		ScoreCard
 	},
 	props: {
 		userName: {
 			type: String,
 			required: true
+		},
+		data: {
+			type: Object,
+			default: null
 		},
 		isDisabled: {
 			type: Boolean,
@@ -82,6 +171,7 @@ module.exports = exports = {
 	},
 	setup( props ) {
 		const renderMode = inject( 'RENDER_MODE' );
+		const log = inject( '$log' );
 		const onSuggestedEditsClick = () => {
 			if ( !props.isActivated ) {
 				mw.track( 'growthexperiments.startediting', {
@@ -95,8 +185,12 @@ module.exports = exports = {
 			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 		};
 		return {
+			log,
 			renderMode,
-			onSuggestedEditsClick
+			onSuggestedEditsClick,
+			cdxIconUserTalk,
+			cdxIconChart,
+			cdxIconInfoFilled
 		};
 	},
 	computed: {
@@ -105,6 +199,17 @@ module.exports = exports = {
 		},
 		footerFontSize() {
 			return this.renderMode !== 'desktop' ? 'sm' : null;
+		},
+		receivedThanksCount() {
+			return this.data ?
+				this.$filters.convertNumber( this.data.receivedThanksCount ) :
+				NO_DATA_CHARACTER;
+		},
+		thanksUrl() {
+			return mw.util.getUrl( 'Special:Log', {
+				type: 'thanks',
+				page: this.userName
+			} );
 		}
 	}
 };
@@ -113,6 +218,7 @@ module.exports = exports = {
 <style lang="less">
 @import '../../vue-components/variables.less';
 @import '../../utils/mixins.less';
+@import '../styles/mixins.less';
 
 .ext-growthExperiments-NoEditsDisplay {
 	&--desktop,
@@ -123,12 +229,26 @@ module.exports = exports = {
 		justify-content: space-between;
 	}
 
-	&--desktop {
-		min-height: 320px;
-	}
-
 	&--overlay-summary {
 		min-height: 160px;
+	}
+
+	&--overlay {
+		// negate the expanded margin-top in LayoutOverlay.vue
+		margin-top: 16px;
+	}
+
+	&__scorecards {
+		.scorecards-grid();
+
+		&__link {
+			.disabled-visited();
+		}
+
+		&--desktop {
+			// Expand scores stripe over homepage modules padding
+			margin: 0 -16px;
+		}
 	}
 
 	&__content {
@@ -136,17 +256,17 @@ module.exports = exports = {
 		background-color: @background-color-framed;
 		padding-bottom: 16px;
 
+		&--desktop {
+			// Expand gray background over module padding
+			margin: 0 -16px;
+		}
+
 		&--desktop,
 		&--overlay {
 			flex-direction: column;
 			align-items: center;
 			padding-right: 16px;
 			padding-left: 16px;
-		}
-
-		&--overlay {
-			// negate the expanded margin-top in LayoutOverlay.vue
-			margin-top: 16px;
 		}
 
 		&__image {

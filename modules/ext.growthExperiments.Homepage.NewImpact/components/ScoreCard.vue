@@ -11,7 +11,7 @@
 		<div
 			class="ext-growthExperiments-ScoreCard__label"
 			:class="{
-				'ext-growthExperiments-ScoreCard__label--with-info': hasInfoSlot
+				'ext-growthExperiments-ScoreCard__label--with-info': hasInfoContent
 			}"
 		>
 			<c-text
@@ -21,20 +21,52 @@
 			>
 				{{ label }}
 			</c-text>
-			<slot name="label-info"></slot>
+			<span
+				v-if="hasInfoContent"
+			>
+				<c-popover
+					:close-icon="cdxIconClose"
+					@open="$emit( 'open' )"
+					@close="$emit( 'close' );"
+				>
+					<template #trigger="{ onClick }">
+						<cdx-button
+							type="quiet"
+							class="ext-growthExperiments-ScoreCards__info-button"
+							:aria-label="infoIconLabel"
+							@click="onClick"
+						>
+							<cdx-icon
+								:icon="cdxIconInfo"
+							></cdx-icon>
+						</cdx-button>
+					</template>
+					<template #content>
+						<slot name="info-content"></slot>
+					</template>
+				</c-popover>
+			</span>
 		</div>
 	</div>
 </template>
 
 <script>
-const { CdxIcon } = require( '@wikimedia/codex' );
+const { useSlots } = require( 'vue' );
+const {
+	cdxIconClose,
+	cdxIconInfo
+} = require( '../../vue-components/icons.json' );
+const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const CText = require( '../../vue-components/CText.vue' );
+const CPopover = require( '../../vue-components/CPopover.vue' );
 
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
+		CdxButton,
 		CdxIcon,
+		CPopover,
 		CText
 	},
 	props: {
@@ -49,11 +81,22 @@ module.exports = exports = {
 		iconLabel: {
 			type: String,
 			required: true
+		},
+		infoIconLabel: {
+			type: String,
+			default: ''
 		}
 	},
-	setup( _props, { slots } ) {
+	emits: [
+		'close',
+		'open'
+	],
+	setup() {
+		const hasInfoContent = Boolean( useSlots()[ 'info-content' ] );
 		return {
-			hasInfoSlot: Boolean( slots[ 'label-info' ] )
+			hasInfoContent,
+			cdxIconClose,
+			cdxIconInfo
 		};
 	}
 };

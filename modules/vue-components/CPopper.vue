@@ -100,7 +100,9 @@ module.exports = exports = {
 
 	&__popover {
 		position: absolute;
-		z-index: 1;
+		// Avoid collision with the startediting dialog in the homepage
+		// on a 2 column layout
+		z-index: 2;
 		right: 0;
 		.popover-base();
 		// Standard expects a title which has its own margin/padding

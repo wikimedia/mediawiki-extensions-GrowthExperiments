@@ -1,0 +1,104 @@
+/*
+ * Top-level styles for the NewImpact module markup. All classes are added in the server.
+ *
+ * See includes/HomepageModules/NewImpact.php
+ * TODO: Can switch to -impact when old impact module is retired and comply to selector pattern rule.
+*/
+
+@import '../../vue-components/variables.less';
+// When the card is filled its height is ~90px and has a top margin of 24px and bottom 16px;
+@emptyCardMinHeight: ( 90 - 24 - 16 ) * 1px;
+
+/* height and background color homepage module tweaks */
+/* stylelint-disable-next-line selector-class-pattern */
+.client-js .growthexperiments-homepage-new-impact-no-js-fallback {
+	display: none;
+}
+/* stylelint-disable-next-line selector-class-pattern */
+.growthexperiments-homepage-module-new-impact {
+	// This value approximates the height when a single article has been edited and the
+	// module is rendering in "wide" mode.
+	min-height: 550px;
+
+	/* stylelint-disable-next-line selector-class-pattern */
+	&.growthexperiments-homepage-module-mobile-summary {
+		// NewImpact module is rendered on client-side only; set a minimum height based on what we
+		// think its rendered height will be.
+		min-height: 228px;
+	}
+
+	/* stylelint-disable-next-line selector-class-pattern */
+	&.growthexperiments-homepage-module-new-impact-unactivated {
+		&-desktop {
+			min-height: 370px;
+		}
+
+		&-mobile-overlay {
+			// Overwrite homepage module default padding
+			padding: 0;
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				background-color: @background-color-framed;
+				z-index: -1;
+			}
+		}
+	}
+}
+/* End of height and background color homepage module tweaks */
+
+/*
+ * Styles used under the Vue application root element while Javascript is loading.
+ * All HTML under "ext-growthExperiments-new-impact-app-root" will be replaced by the Vue application
+ * while it loads. CSS rules will still exist but should not be used from Vue components.
+ * See getBaseMarkup in includes/HomepageModules/NewImpact.php
+ * See modules/vue-components/Skeleton.less
+*/
+
+.ext-growthExperiments-new-impact-app-root--mobile {
+	width: 100%;
+}
+
+.ext-growthExperiments-new-impact-app-root {
+	// Add vertical gutter between each skeleton container
+	.ext-growthExperiments-Skeleton {
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.ext-growthExperiments-ArticleListHeading {
+		margin-bottom: 0.2em;
+	}
+
+	.ext-growthExperiments-ArticleLoading {
+		display: flex;
+		align-items: center;
+		margin-top: 0;
+		margin-bottom: 0;
+
+		// CdxThumbnail size is 42px x 42px
+		&__image {
+			height: 42px;
+			width: 42px;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		&__text {
+			height: 1.5em;
+			margin-left: 0.5em;
+			flex: 1;
+		}
+	}
+
+	.ext-growthExperiments-ScoreCards {
+		.ext-growthExperiments-ScoreCard {
+			min-height: @emptyCardMinHeight;
+		}
+	}
+}

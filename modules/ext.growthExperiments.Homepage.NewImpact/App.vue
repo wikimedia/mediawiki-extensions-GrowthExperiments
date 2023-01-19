@@ -6,6 +6,7 @@
 				:is-disabled="!isSuggestedEditsEnabled"
 				:is-activated="isSuggestedEditsActivated"
 				:user-name="userName"
+				:data="data"
 			></no-edits-display>
 			<component
 				:is="errorComponent"
@@ -91,33 +92,13 @@ module.exports = exports = {
 
 <style lang="less">
 @import '../vue-components/variables.less';
-// REVIEW these styles could go on a less file and be
-// loaded earlier than if hosted inside a Vue component.
-
-// The class name needs to remain as it is to match
-// the unactivated class added in the old (Impact.php) and
-// new (NewImpact.php). Once the old module is removed the class
-// can be renamed to match the selector pattern.
+// Hack to render the background in gray for the unactivated state after data is
+// fecthed and the skeleton disappears
 /* stylelint-disable-next-line selector-class-pattern */
-.growthexperiments-homepage-module-impact-unactivated {
-	&-desktop,
+.growthexperiments-homepage-module-new-impact-unactivated {
 	&-mobile-overlay,
 	&-mobile-summary {
 		background-color: @background-color-framed;
 	}
-
-	&-mobile-overlay {
-		&:before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			background-color: @background-color-framed;
-			z-index: -1;
-		}
-	}
 }
-
 </style>

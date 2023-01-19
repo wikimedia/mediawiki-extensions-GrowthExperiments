@@ -9,12 +9,14 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const NoEditsDisplay = require( './NoEditsDisplay.vue' );
+const ScoreCard = require( './ScoreCard.vue' );
 
 const renderComponent = ( props, renderMode = 'desktop' ) => {
 	return mount( NoEditsDisplay, {
 		props,
 		global: {
 			provide: {
+				$log: jest.fn(),
 				RENDER_MODE: renderMode
 			},
 			mocks: {
@@ -27,27 +29,75 @@ const renderComponent = ( props, renderMode = 'desktop' ) => {
 };
 
 describe( 'NoEditsDisplay', () => {
-	const modes = [
-		'desktop',
-		'overlay',
-		'overlay-summary'
-	];
-	for ( const mode of modes ) {
-		it( `displays appropriate text when disabled (${mode})`, () => {
-			const wrapper = renderComponent( {
-				userName: 'Alice',
-				isDisabled: true
-			}, mode );
+	it( 'displays scorecards with thanks count ( desktop & overlay )', () => {
+		const props = {
+			userName: 'Alice',
+			isDisabled: true,
+			data: {
+				receivedThanksCount: 123
+			}
+		};
+		const desktopWrapper = renderComponent( props, 'desktop' );
+		expect( desktopWrapper.findAllComponents( ScoreCard ) ).toHaveLength( 2 );
+		expect( desktopWrapper.text() ).toContain( '123' );
+		expect( desktopWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
+		expect( desktopWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
 
-			expect( wrapper.element ).toMatchSnapshot();
-		} );
-		it( `displays appropriate text when activated (${mode})`, () => {
-			const wrapper = renderComponent( {
-				userName: 'Alice',
-				isActivated: true
-			}, mode );
+		const overlayWrapper = renderComponent( props, 'overlay' );
+		expect( overlayWrapper.findAllComponents( ScoreCard ) ).toHaveLength( 2 );
+		expect( overlayWrapper.text() ).toContain( '123' );
+		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
+		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
 
-			expect( wrapper.element ).toMatchSnapshot();
-		} );
-	}
+		const summaryWrapper = renderComponent( props, 'overlay-summary' );
+		expect( summaryWrapper.findAllComponents( ScoreCard ) ).toHaveLength( 0 );
+		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
+		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
+	} );
+	it( 'displays button to suggested edits and different text ( overlay )', () => {
+		const overlayWrapper = renderComponent( {
+			userName: 'Alice',
+			isDisabled: false,
+			isActivated: false,
+			data: null
+		}, 'overlay' );
+		const button = overlayWrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
+		expect( button.text() ).toBe( 'growthexperiments-homepage-impact-unactivated-suggested-edits-link' );
+		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-suggested-edits-footer' );
+
+	} );
+	it( 'button triggers the startediting flow if not activated', () => {
+		const wrapper = renderComponent( {
+			userName: 'Alice',
+			isDisabled: false,
+			isActivated: false,
+			data: null
+		}, 'overlay' );
+		const button = wrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
+		global.mw.track = jest.fn();
+
+		button.trigger( 'click' );
+
+		expect( global.mw.track ).toHaveBeenNthCalledWith(
+			1,
+			'growthexperiments.startediting',
+			{ moduleName: 'impact', trigger: 'impact' }
+		);
+	} );
+	it( 'button navigates to suggested edits if activated', () => {
+		const wrapper = renderComponent( {
+			userName: 'Alice',
+			isDisabled: false,
+			isActivated: true,
+			data: null
+		}, 'overlay' );
+		const button = wrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
+		global.window.history.replaceState = jest.fn();
+		global.window.dispatchEvent = jest.fn();
+
+		button.trigger( 'click' );
+
+		expect( global.window.history.replaceState ).toHaveBeenNthCalledWith( 1, null, null, '#/homepage/suggested-edits' );
+		expect( global.window.dispatchEvent ).toHaveBeenNthCalledWith( 1, new HashChangeEvent( 'hashchange' ) );
+	} );
 } );

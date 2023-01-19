@@ -1,9 +1,8 @@
 @import '../../vue-components/variables.less';
+@import '../styles/mixins.less';
 
 .ext-growthExperiments-ScoreCards {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 2px;
+	.scorecards-grid();
 	// Expand scores stripe over homepage modules padding
 	margin: 0 -16px;
 
