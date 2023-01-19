@@ -176,9 +176,9 @@ class UserImpact implements JsonSerializable {
 	}
 
 	/**
-	 * Total number of days of the user's longest editing streak.
+	 * Total number of edits for the user's longest editing streak.
 	 *
-	 * @return int
+	 * @return int Number of edits the user had in their longest editing streak
 	 */
 	public function getLongestEditingStreakCount(): int {
 		return $this->longestEditingStreak->getTotalEditCountForPeriod();
