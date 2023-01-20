@@ -2,13 +2,12 @@
 
 const { assert, REST } = require( 'api-testing' );
 
-describe( 'GET /growthexperiments/v0/user-impact/{user}', () => {
+describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', () => {
 
 	const client = new REST( 'rest.php/growthexperiments/v0/user-impact/' );
 
-	it( 'Data loaded for mocked user 1 via static suggester (see GrowthExperiments.LocalSettings.php)', async () => {
-		const { body: sourceBody } = await client.get( encodeURIComponent( '#1' ) );
-		const expectedResponse = {
+	function getExpectedResponse() {
+		return {
 			'@version': 5,
 			userId: 1,
 			userName: 'Admin',
@@ -55,6 +54,21 @@ describe( 'GET /growthexperiments/v0/user-impact/{user}', () => {
 				}
 			}
 		};
+	}
+
+	it( 'GET: Data loaded for mocked user 1 via static user impact lookup (see GrowthExperiments.LocalSettings.php)', async () => {
+		const { body: sourceBody } = await client.get( encodeURIComponent( '#1' ) );
+		const expectedResponse = getExpectedResponse();
+		// These vary based on the current date, and probably not worth asserting anything about.
+		delete sourceBody.topViewedArticles.Foo.pageviewsUrl;
+		delete sourceBody.topViewedArticles.Bar.pageviewsUrl;
+		delete sourceBody.generatedAt;
+		assert.deepEqual( sourceBody, expectedResponse );
+	} );
+
+	it( 'POST: Data loaded for mocked user 1 via static user impact lookup (see GrowthExperiments.LocalSettings.php)', async () => {
+		const { body: sourceBody } = await client.post( encodeURIComponent( '#1' ) );
+		const expectedResponse = getExpectedResponse();
 		// These vary based on the current date, and probably not worth asserting anything about.
 		delete sourceBody.topViewedArticles.Foo.pageviewsUrl;
 		delete sourceBody.topViewedArticles.Bar.pageviewsUrl;
