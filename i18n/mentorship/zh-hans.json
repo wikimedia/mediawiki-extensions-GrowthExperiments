@@ -109,6 +109,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "导师$1已被添加到导师列表中",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "导师$1不在导师列表上",
 	"growthexperiments-manage-mentors-title": "管理导师",
+	"growthexperiments-manage-mentors-pretext-stored-at": "导师的列表及历史保存在[[$1|MediaWiki名字空间]]中。",
 	"growthexperiments-manage-mentors-error-no-such-user": "错误：不存在ID为$1的用户。这可能是一个内部错误。",
 	"growthexperiments-manage-mentors-auto-assigned": "自动分配的导师",
 	"growthexperiments-manage-mentors-auto-assigned-text": "新帐户被随机分配给这些导师。",

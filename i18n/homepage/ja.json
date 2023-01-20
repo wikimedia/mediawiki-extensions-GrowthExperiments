@@ -106,6 +106,7 @@
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "その他のページに対する編集<strong>$1</strong>{{PLURAL:$1|回|回}} (すべて見る)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "記事へ移動する",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "閲覧回数の詳細を表示",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-title": "編集した記事に対する過去$1{{PLURAL:$1|日}}の1日当たりの総閲覧数を示す折れ線グラフ。",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "この記事をあなたが編集するのは今日が初めてのため、閲覧回数はまだ計算されていません。明日、またチェックしてください！",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "閲覧回数はまだ計算されていません。明日、またチェックしてください！",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "わかりました",
