@@ -48,7 +48,7 @@ module.exports = exports = {
 			showFiltersForm: false
 		};
 	},
-	compouted: {
+	computed: {
 		iconLabel() {
 			return this.showFiltersForm ?
 				this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label' ).text() :
