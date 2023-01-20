@@ -19,8 +19,10 @@ use MediaWiki\User\UserIdentity;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
- * Handler for the GET /growthexperiments/v0/user-impact/{user} endpoint.
- * Returns data about the user's impact on the wiki.
+ * Handler for POST and GET requests /growthexperiments/v0/user-impact/{user} endpoint.
+ * Returns data about the user's impact on the wiki. POST is preferred for facilitating
+ * writes to the database cache. Requests made with GET will use the job queue for
+ * persisting impact data to the cache, which will take longer.
  */
 class UserImpactHandler extends SimpleHandler {
 
