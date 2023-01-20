@@ -304,6 +304,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		if ( $state === self::MENTORSHIP_OPTED_OUT ) {
 			// user opted out, drop mentor/mentee relationship
 			$this->mentorStore->dropMenteeRelationship( $user );
+		} elseif ( $state === self::MENTORSHIP_ENABLED ) {
+			// The user has opted-in to mentorship. Calling getMentorForUserSafe will
+			// persist the newly assigned mentor(s) in the MentorStore.
+			$this->getMentorForUserSafe( $user );
 		}
 	}
 }
