@@ -32,4 +32,14 @@ interface IConfigValidator {
 	 * @throws InvalidArgumentException In case of a validation error
 	 */
 	public function validateVariable( string $variable, $value ): void;
+
+	/**
+	 * If the configuration page assigned to this validator does not exist, return this
+	 *
+	 * Useful for ie. structured mentor list, which requires the Mentors key
+	 * to be present.
+	 *
+	 * @return array
+	 */
+	public function getDefaultContent(): array;
 }

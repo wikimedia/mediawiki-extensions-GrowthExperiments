@@ -148,4 +148,11 @@ class GrowthConfigValidation implements IConfigValidator {
 			);
 		}
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getDefaultContent(): array {
+		return [];
+	}
 }

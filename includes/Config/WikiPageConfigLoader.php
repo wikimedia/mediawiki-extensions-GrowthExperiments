@@ -205,7 +205,10 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 			if ( !$revision ) {
 				// The configuration page does not exist. Pretend it does not configure anything
 				// specific (failure mode and empty-page behavior is equal, see T325236).
-				return StatusValue::newGood( [] );
+				return StatusValue::newGood( $this->configValidatorFactory
+					->newConfigValidator( $configPage )
+					->getDefaultContent()
+				);
 			}
 			$content = $revision->getContent( SlotRecord::MAIN, RevisionRecord::FOR_PUBLIC );
 			if ( !$content || !$content instanceof JsonContent ) {
