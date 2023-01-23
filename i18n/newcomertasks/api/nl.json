@@ -1,12 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dedalus"
+			"Dedalus",
+			"McDutchie"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Ontvang taakaanbevelingen die geschikt zijn voor nieuwkomers.",
 	"apihelp-query+growthtasks-extended-description": "Stelt een reeks artikelen voor met een aantal openstaande problemen die gemakkelijk genoeg zijn voor een nieuwe redacteur om aan te pakken.",
 	"apihelp-query+growthtasks-param-tasktypes": "Taaktypen om de resultaten tot te beperken. Laat leeg om alle suggesties te ontvangen.",
 	"apihelp-query+growthtasks-param-topics": "Artikelonderwerpen die de voorkeur hebben in taaksuggesties.",
-	"apihelp-query+growthtasks-param-limit": "Maximaal aantal taaksuggesties om te retourneren."
+	"apihelp-query+growthtasks-param-limit": "Maximaal aantal taaksuggesties om te retourneren.",
+	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "Een JSON-string van een object met deze sleutels:\n* <var>acceptedTargets</var>: (optioneel) Array met de titels van pagina's waarvan de gebruiker de aanbevolen link heeft geaccepteerd.\n* <var>rejectedTargets</var>: (optioneel) Array met de titels van pagina's waarvan de gebruiker de aanbevolen link heeft geweigerd.\n* <var>skippedTargets</var>: (optioneel) Array met de titels van pagina's waarvan de gebruiker de aanbevolen link heeft overgeslagen (genegeerd).",
+	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "Een JSON-tekenreeks van een object met deze sleutels:\n* <var>accepted</var>: een Booleaanse waarde die aangeeft of de gebruiker de aanbevolen afbeelding heeft geaccepteerd.\n* <var>reasons</var>: een array van tekenreeksen die een Booleaanse waarde identificeren die aangeeft waarom de gebruiker de aanbevolen afbeelding heeft afgewezen. Geldige waarden: $1 \n* <var>caption</var>: Een door de gebruiker geleverd bijschrift voor de afbeelding. (Moet ten minste $2 tekens bevatten.)",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Gebruik bij het opslaan van een gestructureerde bewerking \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|Een koppeling toevoegen]]\" van GrowthExperiments.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "Gebruik bij het opslaan van een gestructureerde bewerking \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|Een afbeelding toevoegen]]\" van GrowthExperiments.",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Voor de plug-in <var>ge-task-link-recommendation</var></dt><dd> \n $1 \n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Voor de plug-in <var>ge-task-image-recommendation</var></dt><dd> \n $1 \n</dd></dl>"
 }

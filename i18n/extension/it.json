@@ -4,6 +4,7 @@
 			"Beta16",
 			"Fringio",
 			"Mannivu",
+			"Pierpao",
 			"Ruthven",
 			"Sannita",
 			"ValeJappo"
@@ -84,5 +85,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Le voci contenenti i template qui definiti non saranno mostrate agli utenti per questo tipo di attività.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Le voci contenenti le categorie qui definite non saranno mostrate agli utenti per questo tipo di attività.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Template sinottici",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Questi template sono utilizzati per il [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggerimento delle immagini]] ai nuovi utenti. Le pagine contenenti questi template non saranno indicate come elementi che necessitano di immagini."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Questi template sono utilizzati per il [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggerimento delle immagini]] ai nuovi utenti. Le pagine contenenti questi template non saranno indicate come elementi che necessitano di immagini.",
+	"specialpages-group-growth-tools": "Strumenti Growth"
 }
