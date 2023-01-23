@@ -7,6 +7,7 @@ use GlobalVarConfig;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\Mentorship;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use RequestContext;
@@ -18,12 +19,20 @@ use RequestContext;
  */
 class MentorshipTest extends MediaWikiIntegrationTestCase {
 
+	/** @inheritDoc */
+	protected $tablesUsed = [ 'user', 'page' ];
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function setUp(): void {
+		$this->insertPage( 'MediaWiki:GrowthMentors.json', '{"Mentors": []}' );
+	}
+
 	/**
 	 * @covers ::render
 	 */
 	public function testRenderNoMentorsAvailable() {
-		$this->insertPage( 'MentorsList', 'no user links here' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -43,14 +52,19 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::render
 	 */
 	public function testRenderSuccess() {
-		$mentor = $this->getTestUser( 'sysop' )->getUser();
-		$mentee = $this->getMutableTestUser()->getUser();
-		$this->insertPage( 'MentorsList', '[[User:' . $mentor->getName() . ']]' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
-		$context = new DerivativeContext( RequestContext::getMain() );
-		$context->setUser( $mentee );
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
+		$growthServices->getMentorWriter()->addMentor(
+			$growthServices->getMentorProvider()->newMentorFromUserIdentity( $mentorUser ),
+			$mentorUser,
+			''
+		);
+
+		$mentee = $this->getMutableTestUser()->getUser();
+		$context = new DerivativeContext( RequestContext::getMain() );
+		$context->setUser( $mentee );
+
 		$mentorshipModule = new Mentorship(
 			$context,
 			GlobalVarConfig::newInstance(),
@@ -68,10 +82,25 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::getIntroText
 	 */
 	public function testGetIntroText() {
-		$mentor = $this->getTestUser( 'sysop' )->getUser();
+		$services = MediaWikiServices::getInstance();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$mentor = $growthServices->getMentorProvider()->newMentorFromUserIdentity(
+			$this->getTestUser( 'sysop' )->getUser()
+		);
+		$mentor->setIntroText( 'description' );
+		$growthServices->getMentorWriter()->addMentor(
+			$mentor,
+			$mentor->getUserIdentity(),
+			''
+		);
+
 		$mentee = $this->getMutableTestUser()->getUser();
-		$this->insertPage( 'MentorsList', '[[User:' . $mentor->getName() . ']]|description' );
-		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+		$growthServices->getMentorStore()->setMentorForUser(
+			$mentee,
+			$mentor->getUserIdentity(),
+			MentorStore::ROLE_PRIMARY
+		);
+
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
 		$services = MediaWikiServices::getInstance();
@@ -88,6 +117,6 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 
 		$result = $mentorshipModule->render( IDashboardModule::RENDER_DESKTOP );
 		$this->assertNotEmpty( $result );
-		$this->assertStringContainsString( '"description"', $result );
+		$this->assertStringContainsString( 'description', $result );
 	}
 }
