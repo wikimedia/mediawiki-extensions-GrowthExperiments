@@ -21,4 +21,11 @@ class NoValidationValidator implements IConfigValidator {
 	 */
 	public function validateVariable( string $variable, $value ): void {
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getDefaultContent(): array {
+		return [];
+	}
 }

@@ -141,4 +141,11 @@ class StructuredMentorListValidator implements IConfigValidator {
 			);
 		}
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getDefaultContent(): array {
+		return [ 'Mentors' => [] ];
+	}
 }

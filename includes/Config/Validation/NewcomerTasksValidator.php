@@ -105,4 +105,11 @@ class NewcomerTasksValidator implements IConfigValidator {
 		// Implemented as no-op, because this method throws an exception
 		// which is not user friendly.
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getDefaultContent(): array {
+		return [];
+	}
 }
