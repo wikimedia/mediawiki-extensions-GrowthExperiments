@@ -37,7 +37,9 @@
 			"McDutchie",
 			"OriginReboot",
 			"-jem-",
-			"SpikeShroom"
+			"SpikeShroom",
+			"Jack30",
+			"Tgr"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Te damos la bienvenida}}, {{bidi:$1}}!",
@@ -149,7 +151,7 @@
 	"growthexperiments-specialimpact-showing-for-other-user": "Mostrando datos de impacto para $1",
 	"growthexperiments-specialimpact-invalid-username": "Nombre de usuario no válido o faltante.",
 	"growthexperiments-homepage-claimmentee-no-user": "El aprendiz no existe",
-	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Tú}} ya eres el mentor de {{GENDER:$1|$1}}",
+	"growthexperiments-homepage-claimmentee-already-mentor": "Ya eres {{GENDER:$2|el mentor|la mentora}} de {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-enable-preference": "Para habilitar la página de inicio para usuarios nuevos, visita la configuración de \"Página de inicio para usuarios nuevos\" en [[Special:Preferences#mw-prefsection-personal-homepage|Preferencias]].",
 	"growthexperiments-homepage-contributions-zero-title": "Aún no {{GENDER:$1|has}} realizado ninguna contribución.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "¡Visita {{GENDER:$1|tu}} página de inicio para comenzar a editar!",

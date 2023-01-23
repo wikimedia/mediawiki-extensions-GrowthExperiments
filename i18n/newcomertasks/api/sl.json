@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Pridobite priporočila za opravila, primerna za novince.",
+	"apihelp-query+growthtasks-extended-description": "Predlaga nabor člankov, ki imajo nekaj nerešenih težav, ki so dovolj preproste, da se jih loti nov urejevalec.",
+	"apihelp-query+growthtasks-param-tasktypes": "Vrste nalog, na katere želite omejiti zadetke. Če želite prejeti vse predloge, pustite prazno.",
+	"apihelp-query+growthtasks-param-topics": "Teme člankov, ki naj imajo prednost pri predlaganih nalogah.",
+	"apihelp-query+growthtasks-param-limit": "Največje število predlogov nalog za vrnitev.",
+	"apihelp-query+growthtasks-param-debug": "Izhodu dodajte podatke za odpravljanje napak.",
+	"apihelp-query+growthtasks-example-2": "Pridobite priporočila za opravila za trenutnega uporabnika z razširjenimi informacijami o straneh."
+}

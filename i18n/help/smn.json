@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Seipinne"
+			"Seipinne",
+			"Yupik"
 		]
 	},
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Lasseet šleđgâpostâčujottâs",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Molso visuaallâš editorân"
 }

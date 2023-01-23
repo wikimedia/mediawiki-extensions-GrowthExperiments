@@ -165,5 +165,6 @@
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|тема|теми}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Избиране на всички",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Премахване на всички",
-	"growthexperiments-notification-body-mentor-change": "Причина: $1"
+	"growthexperiments-notification-body-mentor-change": "Причина: $1",
+	"right-setmentor": "Установяване за ментор на потребител"
 }
