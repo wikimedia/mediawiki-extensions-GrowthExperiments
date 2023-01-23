@@ -13,6 +13,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Extension\Thanks\ThanksQueryHelper;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\UserFactory;
@@ -220,6 +221,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 		$queryBuilder->fields( [ 'page_namespace', 'page_title', 'rev_timestamp' ] );
 		$queryBuilder->where( [ 'rev_actor' => $user->getActorId() ] );
+		$queryBuilder->where( $db->bitAnd( 'rev_deleted', RevisionRecord::DELETED_USER ) . ' = 0' );
 		// hopefully able to use the rev_actor_timestamp index for an efficient query
 		$queryBuilder->orderBy( 'rev_timestamp', 'DESC' );
 		$queryBuilder->limit( self::MAX_EDITS );
