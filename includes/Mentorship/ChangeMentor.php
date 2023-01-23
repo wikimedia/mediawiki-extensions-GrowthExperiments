@@ -13,37 +13,14 @@ use Psr\Log\LoggerInterface;
 use Status;
 
 class ChangeMentor {
-	/**
-	 * @var UserIdentity
-	 */
-	private $mentee;
-	/**
-	 * @var UserIdentity|null
-	 */
-	private $mentor;
-	/**
-	 * @var UserIdentity|null
-	 */
-	private $newMentor;
-	/**
-	 * @var UserIdentity
-	 */
-	private $performer;
-	/**
-	 * @var LoggerInterface
-	 */
-	private $logger;
-
-	/**
-	 * @var LogPager
-	 */
-	private $logPager;
-
-	/** @var MentorStore */
-	private $mentorStore;
-
-	/** @var UserFactory */
-	private $userFactory;
+	private UserIdentity $mentee;
+	private ?UserIdentity $mentor;
+	private ?UserIdentity $newMentor;
+	private UserIdentity $performer;
+	private LoggerInterface $logger;
+	private LogPager $logPager;
+	private MentorStore $mentorStore;
+	private UserFactory $userFactory;
 
 	/**
 	 * @param UserIdentity $mentee Mentee's user object
@@ -78,9 +55,9 @@ class ChangeMentor {
 	 *
 	 * @return bool
 	 */
-	public function wasMentorChanged() {
+	public function wasMentorChanged(): bool {
 		$this->logPager->doQuery();
-		return $this->logPager->getResult()->fetchRow();
+		return (bool)$this->logPager->getResult()->fetchRow();
 	}
 
 	/**
@@ -88,7 +65,7 @@ class ChangeMentor {
 	 *
 	 * @param string $reason Reason for the change
 	 */
-	private function log( $reason ) {
+	private function log( string $reason ) {
 		$this->logger->debug(
 			'Logging mentor change for {mentee} from {oldMentor} to {newMentor} by {performer}', [
 				'mentee' => $this->mentee,
@@ -127,7 +104,12 @@ class ChangeMentor {
 		$logEntry->publish( $logid );
 	}
 
-	private function validate() {
+	/**
+	 * Verify the mentor change is possible
+	 *
+	 * @return Status
+	 */
+	private function validate(): Status {
 		$this->logger->debug(
 			'Validating mentor change for {mentee} from {oldMentor} to {newMentor}', [
 				'mentee' => $this->mentee,
@@ -170,7 +152,7 @@ class ChangeMentor {
 	 *
 	 * @param string $reason Reason for the change
 	 */
-	private function notify( $reason ) {
+	private function notify( string $reason ) {
 		if ( \ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
 			DeferredUpdates::addCallableUpdate( function () use ( $reason ) {
 				$this->logger->debug( 'Notify {mentee} about mentor change done by {performer}', [
@@ -215,7 +197,7 @@ class ChangeMentor {
 	 * @param string $reason Reason for the change
 	 * @return Status
 	 */
-	public function execute( UserIdentity $newMentor, $reason ) {
+	public function execute( UserIdentity $newMentor, string $reason ): Status {
 		$this->newMentor = $newMentor;
 		$status = $this->validate();
 		if ( !$status->isOK() ) {
