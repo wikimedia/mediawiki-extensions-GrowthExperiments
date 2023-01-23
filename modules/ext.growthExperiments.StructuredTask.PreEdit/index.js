@@ -94,6 +94,7 @@ module.exports = ( function () {
 
 		// eslint-disable-next-line camelcase
 		logger.log( 'impression', '', { active_interface: 'nosuggestions_dialog' } );
+		mw.track( 'counter.growthExperiments.StructuredTask.noSuggestionsDialog.' + taskType );
 
 		OO.ui.alert( mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-message' ).text(), {
 			actions: [ {
