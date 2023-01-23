@@ -19,6 +19,7 @@ class ChangeMentor {
 	private UserIdentity $performer;
 	private LoggerInterface $logger;
 	private LogPager $logPager;
+	private MentorManager $mentorManager;
 	private MentorStore $mentorStore;
 	private UserFactory $userFactory;
 
@@ -28,6 +29,7 @@ class ChangeMentor {
 	 * @param LoggerInterface $logger
 	 * @param Mentor|null $mentor Old mentor
 	 * @param LogPager $logPager
+	 * @param MentorManager $mentorManager
 	 * @param MentorStore $mentorStore
 	 * @param UserFactory $userFactory
 	 */
@@ -37,6 +39,7 @@ class ChangeMentor {
 		LoggerInterface $logger,
 		?Mentor $mentor,
 		LogPager $logPager,
+		MentorManager $mentorManager,
 		MentorStore $mentorStore,
 		UserFactory $userFactory
 	) {
@@ -45,6 +48,7 @@ class ChangeMentor {
 		$this->performer = $performer;
 		$this->mentee = $mentee;
 		$this->logPager = $logPager;
+		$this->mentorManager = $mentorManager;
 		$this->mentorStore = $mentorStore;
 		$this->userFactory = $userFactory;
 		$this->mentor = $mentor ? $mentor->getUserIdentity() : null;
@@ -65,7 +69,7 @@ class ChangeMentor {
 	 *
 	 * @param string $reason Reason for the change
 	 */
-	private function log( string $reason ) {
+	protected function log( string $reason ) {
 		$this->logger->debug(
 			'Logging mentor change for {mentee} from {oldMentor} to {newMentor} by {performer}', [
 				'mentee' => $this->mentee,
@@ -152,7 +156,7 @@ class ChangeMentor {
 	 *
 	 * @param string $reason Reason for the change
 	 */
-	private function notify( string $reason ) {
+	protected function notify( string $reason ) {
 		if ( \ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
 			DeferredUpdates::addCallableUpdate( function () use ( $reason ) {
 				$this->logger->debug( 'Notify {mentee} about mentor change done by {performer}', [
@@ -206,6 +210,20 @@ class ChangeMentor {
 
 		$this->mentorStore->setMentorForUser( $this->mentee, $this->newMentor, MentorStore::ROLE_PRIMARY );
 		$this->log( $reason );
+
+		// If mentee's status is MENTORSHIP_DISABLED (=GE decided not to display the mentorship
+		// module), enable the module, so the user can benefit from mentorship.
+		// NOTE: This intentionally does not change MENTORSHIP_OPTOUT (as in that case, the
+		// mentee explicitly said they're not interested in mentorship at all).
+		if (
+			$this->mentorManager->getMentorshipStateForUser( $this->mentee ) ===
+			MentorManager::MENTORSHIP_DISABLED
+		) {
+			$this->mentorManager->setMentorshipStateForUser(
+				$this->mentee,
+				MentorManager::MENTORSHIP_ENABLED
+			);
+		}
 
 		// Notify mentee about the change
 		$this->notify( $reason );
