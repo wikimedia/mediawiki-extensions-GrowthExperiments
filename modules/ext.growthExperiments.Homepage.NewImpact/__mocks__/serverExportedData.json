@@ -1,0 +1,51 @@
+{
+	"@version": 5,
+	"userId": 15,
+	"userName": "Newcomer12",
+	"receivedThanksCount": 0,
+	"editCountByNamespace": [
+		4
+	],
+	"editCountByDay": {
+		"2022-12-14": 4
+	},
+	"timeZone": [
+		"System|0",
+		0
+	],
+	"newcomerTaskEditCount": 1,
+	"lastEditTimestamp": 1671044060,
+	"generatedAt": 1671099466,
+	"longestEditingStreak": {
+		"datePeriod": {
+			"start": "2022-12-14",
+			"end": "2022-12-14",
+			"days": 1
+		},
+		"totalEditCountForPeriod": 4
+	},
+	"totalEditsCount": 4,
+	"dailyTotalViews": {
+		"2022-12-14": 0
+	},
+	"recentEditsWithoutPageviews": {
+		"article1": {
+			"firstEditDate": "2022-12-14",
+			"newestEdit": "20221214185420"
+		},
+		"article2": {
+			"firstEditDate": "2022-12-14",
+			"newestEdit": "20221214171252"
+		},
+		"article3": {
+			"firstEditDate": "2022-12-14",
+			"newestEdit": "20221214171038"
+		},
+		"article4": {
+			"firstEditDate": "2022-12-14",
+			"newestEdit": "20221214121242"
+		}
+	},
+	"topViewedArticles": [],
+	"topViewedArticlesCount": 0
+}
