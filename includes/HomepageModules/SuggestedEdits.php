@@ -619,6 +619,7 @@ class SuggestedEdits extends BaseModule {
 			$topicData = $this->configurationLoader->getTopics();
 			$topicLabel = '';
 			$addPulsatingDot = false;
+			$topicFilterMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
 			$flags = [];
 			if ( !$topicPreferences ) {
 				if ( $topicPreferences === null ) {
@@ -640,8 +641,6 @@ class SuggestedEdits extends BaseModule {
 				$topicMessages = array_filter( $topicMessages );
 				if ( count( $topicMessages ) ) {
 					if ( count( $topicMessages ) < 3 ) {
-						$topicFilterMode = $this->newcomerTasksUserOptionsLookup
-							->getTopicsMatchMode( $user );
 						$separator = $topicFilterMode === SearchStrategy::TOPIC_MATCH_MODE_OR ?
 							$this->getContext()->msg( 'comma-separator' ) : ' + ';
 						$topicLabel = implode( $separator, $topicMessages );
@@ -660,7 +659,7 @@ class SuggestedEdits extends BaseModule {
 				'flags' => $flags,
 				'classes' => [ 'topic-matching', 'topic-filter-button' ],
 				'indicator' => $this->getMode() === self::RENDER_DESKTOP ? null : 'down',
-				'icon' => 'funnel'
+				'icon' => $topicFilterMode === SearchStrategy::TOPIC_MATCH_MODE_OR ? 'funnel' : 'funnel-add'
 			] );
 			if ( $addPulsatingDot ) {
 				$topicFilterButtonWidget->appendContent(

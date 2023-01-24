@@ -26,8 +26,9 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 	this.filtersStore = rootStore.newcomerTasks.filters;
 
 	if ( this.topicMatching ) {
+		var shouldShowFunnelAddIcon = config.useTopicMatchMode && this.filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND;
 		this.topicFilterButtonWidget = new OO.ui.ButtonWidget( {
-			icon: 'funnel',
+			icon: shouldShowFunnelAddIcon ? 'funnel-add' : 'funnel',
 			classes: [ 'topic-matching', 'topic-filter-button' ],
 			indicator: config.mode === 'desktop' ? null : 'down'
 		} );
@@ -130,6 +131,7 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 				if ( config.useTopicMatchMode ) {
 					closeExtraData.topicsMatchMode = this.topicFiltersDialog.getEnabledFilters()
 						.getTopicsMatchMode();
+					this.topicFilterButtonWidget.setIcon( TOPIC_MATCH_MODES.AND === closeExtraData.topicsMatchMode ? 'funnel-add' : 'funnel' );
 				}
 				if ( data && data.action === 'done' ) {
 					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-done', closeExtraData );
