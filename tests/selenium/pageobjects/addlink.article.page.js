@@ -7,6 +7,8 @@ const Page = require( 'wdio-mediawiki/Page' ),
 
 class AddLinkArticlePage extends Page {
 
+	get onboardingDialog() { return $( '.structuredtask-onboarding-dialog' ); }
+
 	get linkInspector() { return $( '.mw-ge-recommendedLinkToolbarDialog' ); }
 
 	get yesButton() { return $( '.mw-ge-recommendedLinkToolbarDialog-buttons-yes' ); }
@@ -25,8 +27,14 @@ class AddLinkArticlePage extends Page {
 
 	get progressTitle() { return $( '.mw-ge-recommendedLinkToolbarDialog-progress-title' ); }
 
+	get skipOnboardingDialogButton() { return $( '.structuredtask-onboarding-dialog-skip-button' ); }
+
 	async waitForLinkInspector() {
 		await this.waitForDisplayedAndClickable( this.linkInspector );
+	}
+
+	async closeOnboardingDialog() {
+		return this.clickButton( this.skipOnboardingDialogButton );
 	}
 
 	acceptSuggestion() {

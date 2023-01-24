@@ -15,18 +15,15 @@ describe( 'add link', function () {
 		}
 		await AddLinkArticlePage.insertLinkRecommendationsToDatabase();
 
-		Util.waitForModuleState( 'mediawiki.api', 'ready', 5000 );
-		await browser.execute( function () {
-			return new mw.Api().saveOptions( {
-				'growthexperiments-addlink-onboarding': 1
-			} );
-		} );
 		await HomepagePage.open();
 		assert.strictEqual( await HomepagePage.suggestedEditsCardTitle.getText(), addlinkArticle );
 
 		await HomepagePage.suggestedEditsCard.waitForDisplayed();
 		await HomepagePage.suggestedEditsCard.waitForClickable( { timeout: 30000 } );
 		await HomepagePage.suggestedEditsCard.click();
+
+		await AddLinkArticlePage.onboardingDialog.waitForDisplayed( { timeout: 30000 } );
+		await AddLinkArticlePage.closeOnboardingDialog();
 
 		await AddLinkArticlePage.waitForLinkInspector();
 
