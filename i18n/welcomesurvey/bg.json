@@ -48,5 +48,10 @@
 	"welcomesurvey-question-email-help": "Забелязахме, че не {{GENDER:|сте въвели}} електронна поща при създаването на този акаунт. Това е <strong>силно препоръчително</strong>, тъй като е необходима електронна поща за възстановяване на акаунта, ако загубите паролата си. ЗАБЕЛЕЖКА: Вашата електронна поща не се показва, когато други потребители се свързват с вас.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} е достъпен на близо 300 езика. Има ли други езици, на които четете и пишете?",
 	"welcomesurvey-question-languages-placeholder": "Добавяне към {{PLURAL:$1|един език|$1 езика}}...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|Достигнали сте}} максималния брой на езиците."
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Достигнали сте}} максималния брой на езиците.",
+	"welcomesurvey-reminder-link": "Участвайте в анкетата",
+	"welcomesurvey-reminder-dismiss": "Затваряне",
+	"welcomesurvey-mideditsignup-title": "Здравейте, $1!",
+	"welcomesurvey-mideditsignup-button-homepage": "Към началната ми страница",
+	"welcomesurvey-mideditsignup-button-close": "Затваряне"
 }

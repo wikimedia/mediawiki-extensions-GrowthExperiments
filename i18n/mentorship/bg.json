@@ -4,7 +4,28 @@
 			"StanProg"
 		]
 	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Легенда",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Потребителско име",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Филтри",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Минимум",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Максимум",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Търсене",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Инструменти за растеж",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Настройки",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Отказ",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Паузиране",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "дни",
 	"growthexperiments-rcfilters-mentorship-title": "Менторство",
-	"echo-category-title-ge-mentorship": "Менторство"
+	"growthexperiments-quit-mentorship-reason": "Причина",
+	"echo-category-title-ge-mentorship": "Менторство",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Съхраняване",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Отказ",
+	"growthexperiments-manage-mentors-title": "Управляване на менторите",
+	"growthexperiments-manage-mentors-none": "Няма",
+	"growthexperiments-manage-mentors-username": "Потребителско име",
+	"growthexperiments-manage-mentors-last-active": "Последна активност",
+	"growthexperiments-manage-mentors-status": "Статус",
+	"growthexperiments-manage-mentors-edit": "Редактиране",
+	"growthexperiments-manage-mentors-edit-reason": "Причина",
+	"growthexperiments-manage-mentors-remove-mentor": "Премахване"
 }

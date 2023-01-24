@@ -359,7 +359,7 @@
 	"growthexperiments-homepage-claimmentee-mentee": "Benutzername des Betreuten",
 	"growthexperiments-homepage-claimmentee-reason": "Begründung für die Zuordnung des Betreuten",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Du}} hast {{Gender:$4|den Lotsen|die Lotsin}} {{PLURAL:$2|des Benutzers|der Benutzer}} $1 zu {{GENDER:$4|$5}} geändert. Zurück zur [[Special:MentorDashboard|Lotsen-Verwaltungsseite]].",
-	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} Lotse/Lotsin wurde bereits geändert.Bist {{GENDER:$2|du}} sicher, dass {{GENDER:$2|du}} die Lotsin/den Lotsen erneut ändern willst?",
+	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} Lotse/Lotsin wurde bereits geändert. Bist {{GENDER:$2|du}} sicher, dass {{GENDER:$2|du}} die Lotsin/den Lotsen erneut ändern willst?",
 	"growthexperiments-claimmentee-confirm": "Ja, ich will {{GENDER:|den Lotsen|die Lotsin}} wirklich wechseln",
 	"growthexperiments-log-name": "GrowthExperiments Log",
 	"growthexperiments-log-header": "Dies ist das Protokoll der Aktivitäten in der GrowthExperiments-Erweiterung.",
