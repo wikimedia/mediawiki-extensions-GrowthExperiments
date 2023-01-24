@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests;
 
 use FauxResponse;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
 use PermissionsError;
 use SpecialPage;
@@ -14,13 +13,6 @@ use SpecialPageTestBase;
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialEnrollAsMentor
  */
 class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
-
-	protected function setUp(): void {
-		parent::setUp();
-
-		// SpecialEnrollAsMentor only works with structured mentor list
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
-	}
 
 	/**
 	 * @inheritDoc

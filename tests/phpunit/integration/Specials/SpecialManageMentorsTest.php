@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests;
 use FauxRequest;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialManageMentors;
 use MediaWiki\User\UserIdentity;
@@ -26,9 +25,6 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	 */
 	protected function setUp(): void {
 		parent::setUp();
-
-		// SpecialManageMentors only works with structured mentor list
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
 
 		// add one mentor to the system
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );

@@ -178,13 +178,6 @@ class InitWikiConfig extends Maintenance {
 			) ?? 'mw:Special:MyLanguage/Help:VisualEditor/User_guide#Images',
 		] );
 
-		// Set homepage variables
-		// List of mentors, something like Wikipedia:Welcome/Signature
-		$variables['GEHomepageMentorsList'] = $this->getRawTitleFromWikidata( 'Q14339834' );
-		// List of mentors who can use Special:ClaimMentee (but aren't automatically assigned)
-		$variables['GEHomepageManualAssignmentMentorsList'] = $this->
-			getRawTitleFromWikidata( 'Q100973200' );
-
 		// Remove null variables (array_filter will remove all variables which are not on Wikidata
 		// as getRawTitleFromWikidata would return null in that case)
 		$variables = array_filter( $variables );

@@ -22,7 +22,6 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
@@ -30,7 +29,6 @@ use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
-use GrowthExperiments\Mentorship\Provider\WikitextMentorProvider;
 use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -447,40 +445,8 @@ return [
 	'GrowthExperimentsMentorProvider' => static function (
 		MediaWikiServices $services
 	): MentorProvider {
-		$geServices = GrowthExperimentsServices::wrap( $services );
-
-		$mentorProviderName = $services->getMainConfig()->get( 'GEMentorProvider' );
-		switch ( $mentorProviderName ) {
-			case MentorProvider::PROVIDER_WIKITEXT:
-				return $geServices->getMentorProviderWikitext();
-			case MentorProvider::PROVIDER_STRUCTURED:
-				return $geServices->getMentorProviderStructured();
-			default:
-				throw new InvalidArgumentException(
-					'Invalid value of wgGEMentorProvider: ' . $mentorProviderName
-				);
-		}
-	},
-
-	'GrowthExperimentsMentorProviderWikitext' => static function (
-		MediaWikiServices $services
-	): WikitextMentorProvider {
-		$geServices = GrowthExperimentsServices::wrap( $services );
-		$wikiConfig = $geServices->getGrowthWikiConfig();
-
-		$provider = new WikitextMentorProvider(
-			$services->getMainWANObjectCache(),
-			$services->getLocalServerObjectCache(),
-			$geServices->getMentorWeightManager(),
-			$services->getTitleFactory(),
-			$services->getWikiPageFactory(),
-			$services->getUserNameUtils(),
-			$services->getUserIdentityLookup(),
-			$wikiConfig->get( 'GEHomepageMentorsList' ) ?: null,
-			$wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null
-		);
-		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
-		return $provider;
+		return GrowthExperimentsServices::wrap( $services )
+			->getMentorProviderStructured();
 	},
 
 	'GrowthExperimentsMentorProviderStructured' => static function (
@@ -534,20 +500,6 @@ return [
 		);
 		$store->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $store;
-	},
-
-	'GrowthExperimentsMentorWeightManager' => static function (
-		MediaWikiServices $services
-	): MentorWeightManager {
-		if ( $services->getMainConfig()->get( 'GEMentorProvider' ) !== MentorProvider::PROVIDER_WIKITEXT ) {
-			throw new LogicException(
-				'MentorWeightManager cannot be used when GEMentorProvider is not "wikitext"'
-			);
-		}
-
-		return new MentorWeightManager(
-			$services->getUserOptionsManager()
-		);
 	},
 
 	'GrowthExperimentsMentorWriter' => static function (

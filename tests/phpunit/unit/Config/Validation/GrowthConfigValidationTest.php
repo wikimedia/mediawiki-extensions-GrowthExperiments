@@ -32,16 +32,12 @@ class GrowthConfigValidationTest extends MediaWikiUnitTestCase {
 				'data' => [
 					'GEHelpPanelReadingModeNamespaces' => [ 1, 2, 3 ],
 					'GEHelpPanelHelpDeskTitle' => null,
-					'GEHomepageMentorsList' => null,
-					'GEHomepageManualAssignmentMentorsList' => null,
 				],
 				'expectedError' => null,
 			],
 			'good2' => [
 				'data' => [
 					'GEHelpPanelHelpDeskTitle' => '',
-					'GEHomepageMentorsList' => '',
-					'GEHomepageManualAssignmentMentorsList' => '',
 				],
 				'expectedError' => null,
 			],

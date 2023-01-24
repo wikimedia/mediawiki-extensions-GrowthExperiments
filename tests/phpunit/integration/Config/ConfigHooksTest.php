@@ -88,7 +88,6 @@ class ConfigHooksTest extends MediaWikiIntegrationTestCase {
 	 * @param array $content
 	 */
 	public function testApiEdit( ?string $expectedError, array $content ) {
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
 		if ( $expectedError !== null ) {
 			$this->expectException( ApiUsageException::class );
 			$this->expectExceptionMessage( $expectedError );

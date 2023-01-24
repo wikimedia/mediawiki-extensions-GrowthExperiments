@@ -8,7 +8,6 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use User;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -33,8 +32,6 @@ class ApiManageMentorListTest extends ApiTestCase {
 		array $expectedMentorData,
 		User $user
 	) {
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
-
 		$response = $this->doApiRequestWithToken(
 			$apiParams,
 			null,
@@ -54,26 +51,8 @@ class ApiManageMentorListTest extends ApiTestCase {
 	/**
 	 * @covers ::execute
 	 */
-	public function testWrongProvider() {
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_WIKITEXT );
-
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'Permission denied' );
-		$this->doApiRequestWithToken( [
-			'action' => 'growthmanagementorlist',
-			'geaction' => 'add',
-			'message' => 'intro',
-			'autoassigned' => true,
-			'weight' => MentorWeightManager::WEIGHT_NORMAL
-		] );
-	}
-
-	/**
-	 * @covers ::execute
-	 */
 	public function testNoPermissions() {
 		$this->setMwGlobals( [
-			'wgGEMentorProvider' => MentorProvider::PROVIDER_STRUCTURED,
 			'wgRevokePermissions' => [ '*' => [ 'enrollasmentor' => true ] ],
 			'wgGEMentorshipAutomaticEligibility' => false,
 		] );
@@ -99,7 +78,6 @@ class ApiManageMentorListTest extends ApiTestCase {
 	 */
 	public function testNoPermissionsChange() {
 		$this->setMwGlobals( [
-			'wgGEMentorProvider' => MentorProvider::PROVIDER_STRUCTURED,
 			'wgGEMentorshipMinimumAge' => 0,
 			'wgGEMentorshipMinimumEditcount' => 0,
 		] );
@@ -125,8 +103,6 @@ class ApiManageMentorListTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testNonsenseGeAction() {
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
-
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'Unrecognized value for parameter "geaction": foobar.' );
 		$this->doApiRequestWithToken(
@@ -207,7 +183,6 @@ class ApiManageMentorListTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testMentorStatus() {
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
 		ConvertibleTimestamp::setFakeTime( strtotime( '2011-04-01T00:00Z' ) );
 
 		$mentorStatusManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )

@@ -6,7 +6,6 @@ use ErrorPageError;
 use FauxRequest;
 use FauxResponse;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialQuitMentorshipStructured;
 use SpecialPageTestBase;
@@ -16,16 +15,6 @@ use User;
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialQuitMentorshipStructured
  */
 class SpecialQuitMentorshipStructuredTest extends SpecialPageTestBase {
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function setUp(): void {
-		parent::setUp();
-
-		// Special:QuitMentorshipStructuredTest only works with structured mentor list
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
-	}
 
 	/**
 	 * @inheritDoc

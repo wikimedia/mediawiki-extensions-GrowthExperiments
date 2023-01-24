@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Specials\SpecialMentorDashboard;
 use SpecialPage;
 use SpecialPageTestBase;
@@ -12,15 +11,6 @@ use SpecialPageTestBase;
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialMentorDashboard
  */
 class SpecialMentorDashboardTest extends SpecialPageTestBase {
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function setUp(): void {
-		parent::setUp();
-
-		$this->setMwGlobals( 'wgGEMentorProvider', MentorProvider::PROVIDER_STRUCTURED );
-	}
 
 	/**
 	 * @inheritDoc

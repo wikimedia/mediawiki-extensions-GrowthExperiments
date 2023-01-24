@@ -68,6 +68,10 @@
 		);
 		const weightOptions = [
 			new OO.ui.MenuOptionWidget( {
+				data: 'none',
+				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none' )
+			} ),
+			new OO.ui.MenuOptionWidget( {
 				data: 1,
 				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low' )
 			} ),
@@ -80,12 +84,6 @@
 				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high' )
 			} )
 		];
-		if ( mw.config.get( 'GEMentorProvider' ) === 'structured' ) {
-			weightOptions.unshift( new OO.ui.MenuOptionWidget( {
-				data: 'none',
-				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none' )
-			} ) );
-		}
 		this.mentorWeightDropdown = new OO.ui.DropdownWidget( {
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium' ),
 			id: 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown',
@@ -122,21 +120,16 @@
 		} );
 		this.windowManager.addWindows( [ this.awaySettingsDialog ] );
 
-		if ( mw.config.get( 'GEMentorProvider' ) === 'structured' ) {
-			// MentorMessageChangeDialog will call action=growthmanagementorlist, which only works
-			// when the structured provider is in use
+		this.mentorMessageChangeDialog = new MentorMessageChangeDialog();
+		this.mentorMessageChangeDialog.connect( this, {
+			messageset: [ 'onMentorMessageChanged' ]
+		} );
 
-			this.mentorMessageChangeDialog = new MentorMessageChangeDialog();
-			this.mentorMessageChangeDialog.connect( this, {
-				messageset: [ 'onMentorMessageChanged' ]
-			} );
-
-			this.mentorMessageEditBtn = OO.ui.infuse( this.$body.find( '#growthexperiments-mentor-dashboard-mentor-tools-signup-button' ) );
-			this.mentorMessageEditBtn.connect( this, {
-				click: [ 'onMentorMessageEditButtonClicked' ]
-			} );
-			this.windowManager.addWindows( [ this.mentorMessageChangeDialog ] );
-		}
+		this.mentorMessageEditBtn = OO.ui.infuse( this.$body.find( '#growthexperiments-mentor-dashboard-mentor-tools-signup-button' ) );
+		this.mentorMessageEditBtn.connect( this, {
+			click: [ 'onMentorMessageEditButtonClicked' ]
+		} );
+		this.windowManager.addWindows( [ this.mentorMessageChangeDialog ] );
 	}
 
 	MentorTools.prototype.onMentorStatusDropdownChanged = function () {
@@ -171,26 +164,15 @@
 	 * @return {Promise<void>|Promise<any>|*}
 	 */
 	MentorTools.prototype.setMentorWeight = function ( selectedItem ) {
-		if ( mw.config.get( 'GEMentorProvider' ) === 'structured' ) {
-			const apiOptions = {
-				action: 'growthmanagementorlist',
-				geaction: 'change',
-				autoassigned: selectedItem.getData() !== 'none'
-			};
-			if ( selectedItem.getData() !== 'none' ) {
-				apiOptions.weight = Number( selectedItem.getData() );
-			}
-			return new mw.Api().postWithToken( 'csrf', apiOptions );
-		} else if ( mw.config.get( 'GEMentorProvider' ) === 'wikitext' ) {
-			return new mw.Api().postWithToken( 'csrf', {
-				action: 'options',
-				optionname: 'growthexperiments-mentorship-weight',
-				optionvalue: selectedItem.getData()
-			} );
-		} else {
-			// unexpected value, don't do anything
-			return $.Deferred().resolve();
+		const apiOptions = {
+			action: 'growthmanagementorlist',
+			geaction: 'change',
+			autoassigned: selectedItem.getData() !== 'none'
+		};
+		if ( selectedItem.getData() !== 'none' ) {
+			apiOptions.weight = Number( selectedItem.getData() );
 		}
+		return new mw.Api().postWithToken( 'csrf', apiOptions );
 	};
 
 	MentorTools.prototype.onMentorWeightDropdownChanged = function () {
