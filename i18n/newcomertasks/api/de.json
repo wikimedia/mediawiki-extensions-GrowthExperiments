@@ -13,6 +13,10 @@
 	"apihelp-query+growthtasks-param-debug": "Füge Debugging-Daten zur Ausgabe hinzu.",
 	"apihelp-query+growthtasks-example-1": "Erhalte Aufgabenempfehlungen vom Typ Kopieren und Einfügen für den aktuellen Benutzer.",
 	"apihelp-query+growthtasks-example-2": "Erhalte Aufgabenempfehlungen mit erweiterten Informationen über die Seiten für den aktuellen Benutzer.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "„accepted“-Parameter fehlt in den Daten des Add-Image-Plug-ins",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Der Parameter „accepted“ muss ein Boolean-Wert in den Daten des Add Image Plugins sein; er ist $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "„reason“-Parameter fehlt in den Daten des Add-Image-Plug-ins",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Der Parameter „reason“ muss ein Array in den Daten des Add Image Plugins sein; er ist $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Ungültiges Element „$1“ für „reason“-Parameter, muss einer der folgenden sein: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Linkempfehlungsdatensatz nicht gefunden",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Unerwartete Link-Empfehlungsziele: $1"

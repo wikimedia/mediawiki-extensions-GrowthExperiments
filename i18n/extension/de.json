@@ -72,7 +72,7 @@
 	"growthexperiments-edit-config-mentorship-minimum-age": "Mindestanzahl von Tagen, die Benutzer registriert sein müssen, um als Lotse in Frage zu kommen",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Mindestanzahl von Bearbeitungen, die Benutzer benötigen, um als Lotse in Frage zu kommen",
 	"growthexperiments-edit-config-newcomertasks": "Vorgeschlagene Bearbeitungen",
-	"growthexperiments-edit-config-newcomer-tasks-description": "Einige Arten von vorgeschlagenen Bearbeitungen werden durch Wartungsbausteine erbracht. Artikel, die diese Bausteine enthalten, werden zu dem Feed hinzugefügt. Um zu sehen, wie viele Artikel für jede Art von Aufgabe verfügbar sind, siehe [[Special:NewcomerTasksInfo|diese Seite]].",
+	"growthexperiments-edit-config-newcomer-tasks-description": "Einige Arten von vorgeschlagenen Bearbeitungen werden durch Wartungsbausteine angezeigt. Artikel, die diese Bausteine enthalten, werden zu dem Feed hinzugefügt. Um zu sehen, wie viele Artikel für jede Art von Aufgabe verfügbar sind, siehe [[Special:NewcomerTasksInfo|diese Seite]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Deaktiviert",
 	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Deaktiviert in der Website-Konfiguration",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Überarbeiten: Vorlagen zum Finden von Artikeln, die Überarbeitungen, beispielsweise Verbesserung von Rechtschreibung, Grammatik und Zeichensetzung, benötigen.",

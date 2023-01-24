@@ -4,5 +4,19 @@
 			"Eleassar"
 		]
 	},
+	"apihelp-query+growthtasks-summary": "Pridobite priporočila za opravila, primerna za novince.",
+	"apihelp-query+growthtasks-extended-description": "Predlaga nabor člankov, ki imajo nekaj nerešenih težav, ki so dovolj preproste, da se jih loti nov urejevalec.",
+	"apihelp-query+growthtasks-param-tasktypes": "Vrste nalog, na katere želite omejiti zadetke. Če želite prejeti vse predloge, pustite prazno.",
+	"apihelp-query+growthtasks-param-topics": "Teme člankov, ki naj imajo prednost pri predlaganih nalogah.",
+	"apihelp-query+growthtasks-param-limit": "Največje število predlogov nalog za vrnitev.",
+	"apihelp-query+growthtasks-param-excludepageids": "ID-ji strani, ki jih želite izključiti iz poizvedbe.",
+	"apihelp-query+growthtasks-param-debug": "Izhodu dodajte podatke za odpravljanje napak.",
+	"apihelp-query+growthtasks-example-2": "Pridobite priporočila za opravila za trenutnega uporabnika z razširjenimi informacijami o straneh.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "V podatkih vtičnika za dodajanje slike manjka parameter »accepted«",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Parameter »accepted« mora biti v podatkih vtičnika »Dodaj sliko« Boolova vrednost; je $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "V podatkih vtičnika »Dodaj sliko« manjka parameter »reason«",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Parameter »reason« v podatkih vtičnika »Dodaj sliko« mora biti polje; je $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Neveljaven predmet »$1« za parameter »reason«; biti mora eno od naslednjega: $2",
+	"apierror-growthexperiments-addlink-handler-notfound": "Zapis priporočila povezave ni bil najden",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Nepričakovani cilji priporočila povezave: $1"
 }

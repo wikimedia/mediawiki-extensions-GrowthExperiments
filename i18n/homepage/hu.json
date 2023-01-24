@@ -13,7 +13,8 @@
 			"Teemeah",
 			"Tgr",
 			"Worrida",
-			"Bencemac"
+			"Bencemac",
+			"Eukarióta"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Üdvözlünk, {{bidi:$1}}!",
@@ -324,7 +325,7 @@
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Megváltoztattad}} {{PLURAL:$2|felhasználó|felhasználók}} mentorát $1 listáról {{GENDER:$4|$5}} mentorra. Térj vissza a [[Special:MentorDashboard|mentor irányítópultra]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1}} mentora már korábban megváltozott. Biztos {{GENDER:$2|vagy}} abban, hogy újra {{GENDER:$2|meg akarod változtatni}}?",
 	"growthexperiments-claimmentee-confirm": "Igen, tényleg meg akarom változtatni a {{GENDER:|mentort}}",
-	"growthexperiments-log-name": "A növekedési kísérlet naplója",
+	"growthexperiments-log-name": "A kezdőmegtartási kísérlet \"Add a link\" eszközzel végzett szerkesztéseinek a naplója",
 	"growthexperiments-log-header": "Ez a GrowthExperiments kiterjesztéssel kapcsolatos események naplója.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|átvette}} {{GENDER:$6|$3}} mentoráltat (előző {{GENDER:$4|mentor}}: $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|elkérte}} {{GENDER:$6|$3}} mentoráltat (korábban nem volt mentora)",

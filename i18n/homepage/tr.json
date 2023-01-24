@@ -130,6 +130,7 @@
 	"growthexperiments-homepage-recent-questions-archived": "arşivlendi",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Bu soru büyük olasılıkla uzun zaman önce sorulduğu için arşivlendi.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$2|Danışman}}{{GENDER:$1|ınız}}",
+	"growthexperiments-homepage-mentorship-preintro": "Değişiklik yapmakla alakalı sorularınızı yanıtlayabilmesi adına {{GENDER:|size}} {{GENDER:$1|deneyimli bir kullanıcı atadık.}}",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|düzenleme|düzenleme}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "Bugün {{GENDER:$1|etkin}}",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "Dün {{GENDER:$1|etkin}}",
@@ -476,6 +477,6 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:$1|Danışmanınız}}, {{SITENAME}} üzerinde oldukça deneyimine sahip başka bir kişidir. Sizin gibi yeni kullanıcıları nasıl düzenleme yapacakları konusunda rehberlik etmek için gönüllü oldu ve siteyi kullanmakla ilgili sorularınızı yanıtlayabilir.",
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Danışmanınıza bir mesaj gönderdiğinizde, danışmanınız {{GENDER:$1|}}mesaj sayfanızı görecek ve bir yanıt aldığınızda bir bildirim alacaksınız.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Danışmanlıktan çıkmak",
-	"growthexperiments-homepage-mentorship-about-optout-par1": "Sizin için belirli bir danışmanın atanmasını istemiyorsanız, aşağıdaki düğmeyi seçin. Fikrinizi değiştirirseniz her zaman yeni bir danışman alabilirsiniz.",
+	"growthexperiments-homepage-mentorship-about-optout-par1": "Sizin için belirli bir danışmanın atanmasını istemiyorsanız, aşağıdaki düğmeye tıklayın. Fikrinizi değiştirirseniz her zaman yeni bir danışman alabilirsiniz.",
 	"growthexperiments-homepage-mentorship-about-done": "Yapıldı"
 }
