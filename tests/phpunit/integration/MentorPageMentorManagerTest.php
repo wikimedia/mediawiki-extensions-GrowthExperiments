@@ -8,7 +8,6 @@ use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use IContextSource;
@@ -34,34 +33,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$this->insertPage( 'MediaWiki:GrowthMentors.json', FormatJson::encode( [
 			'Mentors' => [],
 		] ) );
-	}
-
-	/**
-	 * @dataProvider provideInvalidMentorsList
-	 * @param string $mentorsListConfig
-	 * @param string $exceptionMessage
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
-	 */
-	public function testGetMentorForUserInvalidMentorList( $mentorsListConfig, $exceptionMessage ) {
-		$this->setMwGlobals( [
-			'wgGEHomepageMentorsList' => $mentorsListConfig,
-			'wgGEMentorProvider' => MentorProvider::PROVIDER_WIKITEXT,
-		] );
-		$mentorManager = $this->getMentorManager();
-
-		$this->expectException( WikiConfigException::class );
-		$this->expectExceptionMessage( $exceptionMessage );
-
-		$mentorManager->getMentorForUser( $this->getTestUser()->getUser() );
-	}
-
-	public static function provideInvalidMentorsList() {
-		return [
-			[ '  ', 'wgGEHomepageMentorsList is invalid' ],
-			[ ':::', 'wgGEHomepageMentorsList is invalid' ],
-			[ 'Mentor|list', 'wgGEHomepageMentorsList is invalid' ],
-			[ 'NonExistentPage', 'Page defined by wgGEHomepageMentorsList does not exist' ],
-		];
 	}
 
 	/**
@@ -168,18 +139,17 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
 	 * @covers \GrowthExperiments\Mentorship\Mentor::getIntroText
-	 * @dataProvider provideCustomMentorText
 	 */
-	public function testRenderMentorText( $mentorsList, $expected ) {
-		$this->setMwGlobals( [
-			'wgGEMentorProvider' => MentorProvider::PROVIDER_WIKITEXT,
-			'wgGEHomepageMentorsList' => 'MentorsList',
-		] );
+	public function testRenderMentorText() {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
+		$mentor = $geServices->getMentorProvider()->newMentorFromUserIdentity( $mentorUser );
+		$mentor->setIntroText( 'This is a sample text.' );
+		$geServices->getMentorWriter()->addMentor( $mentor, $mentorUser, '' );
+
 		$mentee = $this->getMutableTestUser()->getUser();
-		$this->insertPage( 'MentorsList', str_replace( '$1', $mentorUser->getName(), $mentorsList ) );
-		GrowthExperimentsServices::wrap( $this->getServiceContainer() )
-			->getMentorStore()
+		$geServices->getMentorStore()
 			->setMentorForUser(
 				$mentee,
 				$mentorUser,
@@ -190,19 +160,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$mentorManager = $this->getMentorManager( $context );
 
 		$mentor = $mentorManager->getMentorForUser( $mentee );
-		$this->assertEquals( $expected, $mentor->getIntroText() );
-	}
-
-	public function provideCustomMentorText() {
-		$fallback = 'This experienced user knows you\'re new and can help you with editing.';
-		return [
-			[ '[[User:$1]] | This is a sample text.', 'This is a sample text.' ],
-			[ '[[User:$1]]|This is a sample text.', 'This is a sample text.' ],
-			[ "[[User:$1]]|This is a sample text.\n[[User:Foobar]]|More text", 'This is a sample text.' ],
-			[ '[[User:$1]] This is a sample text', $fallback ],
-			[ '[[User:$1]]', $fallback ],
-			[ "[[User:\$1]]|\n[[User:Foobar]]|This is a sample text.", $fallback ]
-		];
+		$this->assertEquals( 'This is a sample text.', $mentor->getIntroText() );
 	}
 
 	/**
