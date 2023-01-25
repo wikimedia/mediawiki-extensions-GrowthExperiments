@@ -13,14 +13,9 @@ use Status;
 
 class SpecialEnrollAsMentor extends FormSpecialPage {
 
-	/** @var Config */
-	private $wikiConfig;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var IMentorWriter */
-	private $mentorWriter;
+	private Config $wikiConfig;
+	private MentorProvider $mentorProvider;
+	private IMentorWriter $mentorWriter;
 
 	/**
 	 * @param Config $wikiConfig

@@ -17,11 +17,8 @@ use StatusValue;
 trait GetMentorDataTrait {
 	use LoggerAwareTrait;
 
-	/** @var WikiPageConfigLoader */
-	private $configLoader;
-
-	/** @var LinkTarget */
-	private $mentorList;
+	private WikiPageConfigLoader $configLoader;
+	private LinkTarget $mentorList;
 
 	/**
 	 * Wrapper around WikiPageConfigLoader

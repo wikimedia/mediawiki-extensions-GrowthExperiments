@@ -12,14 +12,11 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class AqsEditInfoService extends EditInfoService {
 
-	/** @var HttpRequestFactory */
-	private $requestFactory;
-
-	/** @var WANObjectCache */
-	private $cache;
+	private HttpRequestFactory $requestFactory;
+	private WANObjectCache $cache;
 
 	/** @var string Wiki name, in AQS format (domain prefix, e.g. 'en.wikipedia') */
-	private $wiki;
+	private string $wiki;
 
 	/**
 	 * @param HttpRequestFactory $requestFactory

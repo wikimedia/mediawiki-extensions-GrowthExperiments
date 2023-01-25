@@ -12,25 +12,14 @@ use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class ReassignMenteesFactory {
+
 	private ILoadBalancer $dbLoadBalancer;
-
-	/** @var MentorManager */
-	private $mentorManager;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var MentorStore */
-	private $mentorStore;
-
-	/** @var ChangeMentorFactory */
-	private $changeMentorFactory;
-
-	/** @var PermissionManager */
-	private $permissionManager;
-
-	/** @var JobQueueGroupFactory */
-	private $jobQueueGroupFactory;
+	private MentorManager $mentorManager;
+	private MentorProvider $mentorProvider;
+	private MentorStore $mentorStore;
+	private ChangeMentorFactory $changeMentorFactory;
+	private PermissionManager $permissionManager;
+	private JobQueueGroupFactory $jobQueueGroupFactory;
 
 	/**
 	 * @param ILoadBalancer $dbLoadBalancer

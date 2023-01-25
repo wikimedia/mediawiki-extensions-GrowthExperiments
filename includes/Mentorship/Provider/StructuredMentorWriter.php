@@ -27,11 +27,8 @@ class StructuredMentorWriter implements IMentorWriter {
 	/** @var string */
 	public const CONFIG_KEY = 'Mentors';
 
-	/** @var WikiPageConfigWriterFactory */
-	private $configWriterFactory;
-
-	/** @var StructuredMentorListValidator */
-	private $mentorListValidator;
+	private WikiPageConfigWriterFactory $configWriterFactory;
+	private StructuredMentorListValidator $mentorListValidator;
 
 	/**
 	 * @param WikiPageConfigLoader $configLoader

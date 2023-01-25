@@ -58,37 +58,17 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/** How many days of pageview data to get. PageViewInfo supports up to 60. */
 	public const PAGEVIEW_DAYS = 60;
 
-	/** @var ServiceOptions */
-	private $config;
-
-	/** @var IDatabase */
-	private $dbr;
-
+	private ServiceOptions $config;
+	private IDatabase $dbr;
 	private IDatabase $dbw;
-
-	/** @var NameTableStore */
-	private $changeTagDefStore;
-
-	/** @var UserFactory */
-	private $userFactory;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
-	/** @var TitleFormatter */
-	private $titleFormatter;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
+	private NameTableStore $changeTagDefStore;
+	private UserFactory $userFactory;
+	private UserOptionsLookup $userOptionsLookup;
+	private TitleFormatter $titleFormatter;
+	private TitleFactory $titleFactory;
 	private IBufferingStatsdDataFactory $statsdDataFactory;
-
-	/** @var LoggerInterface|null */
-	private $logger;
-
-	/** @var PageViewService|null */
-	private $pageViewService;
-
+	private ?LoggerInterface $logger;
+	private ?PageViewService $pageViewService;
 	private ?ThanksQueryHelper $thanksQueryHelper;
 
 	/**

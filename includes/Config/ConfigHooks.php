@@ -28,17 +28,10 @@ class ConfigHooks implements
 	PageSaveCompleteHook,
 	SkinTemplateNavigation__UniversalHook
 {
-	/** @var ConfigValidatorFactory */
-	private $configValidatorFactory;
-
-	/** @var WikiPageConfigLoader */
-	private $configLoader;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var Config */
-	private $config;
+	private ConfigValidatorFactory $configValidatorFactory;
+	private WikiPageConfigLoader $configLoader;
+	private TitleFactory $titleFactory;
+	private Config $config;
 
 	/**
 	 * @param ConfigValidatorFactory $configValidatorFactory

@@ -30,23 +30,12 @@ use UserNotLoggedIn;
 
 class SpecialHomepage extends SpecialPage {
 
-	/** @var HomepageModuleRegistry */
-	private $moduleRegistry;
-
-	/** @var IBufferingStatsdDataFactory */
-	private $statsdDataFactory;
-
-	/** @var ExperimentUserManager */
-	private $experimentUserManager;
-
-	/** @var MentorManager */
-	private $mentorManager;
-
-	/** @var Config */
-	private $wikiConfig;
-
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
+	private HomepageModuleRegistry $moduleRegistry;
+	private IBufferingStatsdDataFactory $statsdDataFactory;
+	private ExperimentUserManager $experimentUserManager;
+	private MentorManager $mentorManager;
+	private Config $wikiConfig;
+	private UserOptionsManager $userOptionsManager;
 
 	/**
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.

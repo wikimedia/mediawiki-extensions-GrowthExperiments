@@ -25,23 +25,12 @@ use SpecialPage;
 
 class SpecialManageMentors extends SpecialPage {
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var UserEditTracker */
-	private $userEditTracker;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var IMentorWriter */
-	private $mentorWriter;
-
-	/** @var ReassignMenteesFactory */
-	private $reassignMenteesFactory;
-
-	/** @var MentorStatusManager */
-	private $mentorStatusManager;
+	private UserIdentityLookup $userIdentityLookup;
+	private UserEditTracker $userEditTracker;
+	private MentorProvider $mentorProvider;
+	private IMentorWriter $mentorWriter;
+	private ReassignMenteesFactory $reassignMenteesFactory;
+	private MentorStatusManager $mentorStatusManager;
 
 	/**
 	 * @param UserIdentityLookup $userIdentityLookup

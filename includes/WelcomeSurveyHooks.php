@@ -34,20 +34,11 @@ class WelcomeSurveyHooks implements
 	BeforePageDisplayHook
 {
 
-	/** @var Config */
-	private $config;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var SpecialPageFactory */
-	private $specialPageFactory;
-
-	/** @var WelcomeSurveyFactory */
-	private $welcomeSurveyFactory;
-
-	/** @var CampaignConfig */
-	private $campaignConfig;
+	private Config $config;
+	private TitleFactory $titleFactory;
+	private SpecialPageFactory $specialPageFactory;
+	private WelcomeSurveyFactory $welcomeSurveyFactory;
+	private CampaignConfig $campaignConfig;
 
 	/**
 	 * @param Config $config

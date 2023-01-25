@@ -39,20 +39,11 @@ class MentorHooks implements
 	UserGetRightsHook
 {
 
-	/** @var Config */
-	private $config;
-
-	/** @var Config */
-	private $wikiConfig;
-
-	/** @var MentorManager */
-	private $mentorManager;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var MentorStore */
-	private $mentorStore;
+	private Config $config;
+	private Config $wikiConfig;
+	private MentorManager $mentorManager;
+	private MentorProvider $mentorProvider;
+	private MentorStore $mentorStore;
 
 	/**
 	 * @param Config $config

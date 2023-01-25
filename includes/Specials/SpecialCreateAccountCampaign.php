@@ -22,8 +22,8 @@ use Wikimedia\Assert\Assert;
  * FIXME this is a quick hack for T284740. A proper extension point should be added to core.
  */
 class SpecialCreateAccountCampaign extends SpecialCreateAccount {
-	/** @var CampaignConfig */
-	private $campaignConfig;
+
+	private CampaignConfig $campaignConfig;
 
 	/**
 	 * @param CampaignConfig $campaignConfig

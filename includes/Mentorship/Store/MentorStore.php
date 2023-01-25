@@ -28,13 +28,11 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, Logg
 	];
 
 	/** @var WANObjectCache */
-	protected $wanCache;
-
+	protected WANObjectCache $wanCache;
 	/** @var array Cache key =>¨value; custom in-process cache */
-	protected $inProcessCache = [];
-
+	protected array $inProcessCache = [];
 	/** @var bool */
-	protected $wasPosted;
+	protected bool $wasPosted;
 
 	/**
 	 * @param WANObjectCache $wanCache

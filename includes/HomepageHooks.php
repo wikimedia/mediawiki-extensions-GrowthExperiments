@@ -148,44 +148,25 @@ class HomepageHooks implements
 	/** @var string Query string used on Special:CreateAccount to force enable/disable Growth features */
 	public const REGISTRATION_GROWTHEXPERIMENTS_ENABLED = 'geEnabled';
 
-	/** @var Config */
-	private $config;
-	/** @var ILoadBalancer */
-	private $lb;
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-	/** @var NamespaceInfo */
-	private $namespaceInfo;
-	/** @var TitleFactory */
-	private $titleFactory;
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-	/** @var CampaignConfig */
-	private $campaignConfig;
-	/** @var ExperimentUserManager */
-	private $experimentUserManager;
-	/** @var TaskTypeHandlerRegistry */
-	private $taskTypeHandlerRegistry;
-	/** @var TaskSuggesterFactory */
-	private $taskSuggesterFactory;
-	/** @var NewcomerTasksUserOptionsLookup */
-	private $newcomerTasksUserOptionsLookup;
-	/** @var LinkRecommendationStore */
-	private $linkRecommendationStore;
-	/** @var LinkRecommendationHelper */
-	private $linkRecommendationHelper;
-	/** @var NewcomerTasksInfo */
-	private $suggestionsInfo;
-	/** @var PrefixingStatsdDataFactoryProxy */
-	private $perDbNameStatsdDataFactory;
-	/** @var JobQueueGroup */
-	private $jobQueueGroup;
-	/** @var SpecialPageFactory */
-	private $specialPageFactory;
-	/** @var NewcomerTasksChangeTagsManager */
-	private $newcomerTasksChangeTagsManager;
+	private Config $config;
+	private ILoadBalancer $lb;
+	private UserOptionsManager $userOptionsManager;
+	private UserOptionsLookup $userOptionsLookup;
+	private NamespaceInfo $namespaceInfo;
+	private TitleFactory $titleFactory;
+	private ConfigurationLoader $configurationLoader;
+	private CampaignConfig $campaignConfig;
+	private ExperimentUserManager $experimentUserManager;
+	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
+	private TaskSuggesterFactory $taskSuggesterFactory;
+	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private LinkRecommendationStore $linkRecommendationStore;
+	private LinkRecommendationHelper $linkRecommendationHelper;
+	private NewcomerTasksInfo $suggestionsInfo;
+	private PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory;
+	private JobQueueGroup $jobQueueGroup;
+	private SpecialPageFactory $specialPageFactory;
+	private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager;
 
 	private ?MessageLocalizer $messageLocalizer;
 	private ?OutputPage $outputPage;

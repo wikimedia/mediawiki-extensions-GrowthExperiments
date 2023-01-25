@@ -13,10 +13,10 @@ use Title;
 class StaticMentorProvider extends MentorProvider {
 
 	/** @var Mentor[] */
-	private $autoMentors;
+	private array $autoMentors;
 
 	/** @var Mentor[] */
-	private $manualMentors;
+	private array $manualMentors;
 
 	/**
 	 * @param Mentor[] $autoMentors

@@ -73,12 +73,9 @@ class VariantHooks implements
 	/** @var string User option name for storing the campaign associated with account creation */
 	public const GROWTH_CAMPAIGN = 'growthexperiments-campaign';
 
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
-	/** @var CampaignConfig */
-	private $campaignConfig;
-	/** @var SpecialPageFactory */
-	private $specialPageFactory;
+	private UserOptionsManager $userOptionsManager;
+	private CampaignConfig $campaignConfig;
+	private SpecialPageFactory $specialPageFactory;
 
 	/**
 	 * @param UserOptionsManager $userOptionsManager

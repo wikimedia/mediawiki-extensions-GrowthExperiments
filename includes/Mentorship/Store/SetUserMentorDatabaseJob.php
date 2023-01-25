@@ -17,11 +17,9 @@ use MediaWiki\User\UserFactory;
  * 	- roleId: ROLE_* constant from MentorStore
  */
 class SetUserMentorDatabaseJob extends Job implements GenericParameterJob {
-	/** @var UserFactory */
-	private $userFactory;
 
-	/** @var DatabaseMentorStore */
-	private $databaseMentorStore;
+	private UserFactory $userFactory;
+	private DatabaseMentorStore $databaseMentorStore;
 
 	/**
 	 * @inheritDoc

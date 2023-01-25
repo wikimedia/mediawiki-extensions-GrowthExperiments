@@ -23,33 +23,15 @@ class ReassignMentees {
 	public const STAGE_NOT_LISTED_NO_MENTEES = 3;
 
 	private IDatabase $dbw;
-
-	/** @var MentorManager */
-	private $mentorManager;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var MentorStore */
-	private $mentorStore;
-
-	/** @var ChangeMentorFactory */
-	private $changeMentorFactory;
-
-	/** @var PermissionManager */
-	private $permissionManager;
-
-	/** @var JobQueueGroupFactory */
-	private $jobQueueGroupFactory;
-
-	/** @var UserIdentity */
+	private MentorManager $mentorManager;
+	private MentorProvider $mentorProvider;
+	private MentorStore $mentorStore;
+	private ChangeMentorFactory $changeMentorFactory;
+	private PermissionManager $permissionManager;
+	private JobQueueGroupFactory $jobQueueGroupFactory;
 	private UserIdentity $performer;
-
-	/** @var UserIdentity */
-	private $mentor;
-
-	/** @var IContextSource */
-	private $context;
+	private UserIdentity $mentor;
+	private IContextSource $context;
 
 	/**
 	 * @param IDatabase $dbw

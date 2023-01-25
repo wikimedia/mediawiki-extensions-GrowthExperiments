@@ -39,26 +39,13 @@ class HelpPanelHooks implements
 
 	public const HELP_PANEL_PREFERENCES_TOGGLE = 'growthexperiments-help-panel-tog-help-panel';
 
-	/** @var Config */
-	private $config;
-
-	/** @var Config */
-	private $wikiConfig;
-
-	/** @var GenderCache */
-	private $genderCache;
-
-	/** @var UserEditTracker */
-	private $userEditTracker;
-
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
-
-	/** @var MentorManager */
-	private $mentorManager;
-
-	/** @var MentorStatusManager */
-	private $mentorStatusManager;
+	private Config $config;
+	private Config $wikiConfig;
+	private GenderCache $genderCache;
+	private UserEditTracker $userEditTracker;
+	private UserOptionsManager $userOptionsManager;
+	private MentorManager $mentorManager;
+	private MentorStatusManager $mentorStatusManager;
 
 	/**
 	 * @param Config $config

@@ -42,34 +42,17 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var string[] Keys that will be present in $configPages */
 	private const CONFIG_PAGES_KEYS = [ 'geconfig', 'newcomertasks' ];
 
-	/** @var TitleFactory */
-	private $titleFactory;
+	private TitleFactory $titleFactory;
+	private RevisionLookup $revisionLookup;
+	private PageProps $pageProps;
+	private ILoadBalancer $loadBalancer;
+	private ReadOnlyMode $readOnlyMode;
+	private WikiPageConfigLoader $configLoader;
+	private WikiPageConfigWriterFactory $configWriterFactory;
+	private GrowthExperimentsMultiConfig $growthWikiConfig;
+	private SpecialEditGrowthConfigLogger $eventLogger;
 
-	/** @var RevisionLookup */
-	private $revisionLookup;
-
-	/** @var PageProps */
-	private $pageProps;
-
-	/** @var ILoadBalancer */
-	private $loadBalancer;
-
-	/** @var ReadOnlyMode */
-	private $readOnlyMode;
-
-	/** @var WikiPageConfigLoader */
-	private $configLoader;
-
-	/** @var WikiPageConfigWriterFactory */
-	private $configWriterFactory;
-
-	/** @var GrowthExperimentsMultiConfig */
-	private $growthWikiConfig;
-
-	/** @var SpecialEditGrowthConfigLogger */
-	private $eventLogger;
-
-	/** @var string|null */
+	/** @var string|null PHP typing fails with "must not be accessed before initialization" */
 	private $errorMsgKey;
 
 	/**
@@ -79,12 +62,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * unless $errorMsgKey is not null (in which case the special page
 	 * short-circuits anyway).
 	 */
-	private $configPages = [];
+	private array $configPages = [];
+	private bool $userCanWrite;
 
-	/** @var bool */
-	private $userCanWrite;
-
-	/** @var array|null */
+	/** @var array|null PHP typing fails with "must not be accessed before initialization" */
 	private $newcomerTasksConfig;
 
 	/**

@@ -15,8 +15,8 @@ use RequestContext;
  * less chance of causing dependency loops.
  */
 class EarlyLifeCycleHooks implements MessageCache__getHook {
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
+
+	private UserOptionsLookup $userOptionsLookup;
 
 	/**
 	 * @param UserOptionsLookup $userOptionsLookup
