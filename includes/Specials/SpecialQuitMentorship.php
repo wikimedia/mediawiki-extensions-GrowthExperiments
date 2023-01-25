@@ -13,7 +13,7 @@ use PermissionsError;
 use Status;
 use User;
 
-class SpecialQuitMentorshipStructured extends FormSpecialPage {
+class SpecialQuitMentorship extends FormSpecialPage {
 
 	private ReassignMenteesFactory $reassignMenteesFactory;
 	private MentorStore $mentorStore;
