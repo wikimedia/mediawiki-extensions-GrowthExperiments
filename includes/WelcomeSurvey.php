@@ -23,17 +23,10 @@ class WelcomeSurvey {
 
 	public const DEFAULT_SURVEY_GROUP = 'exp2_target_specialpage';
 
-	/** @var IContextSource */
-	private $context;
-
-	/** @var bool */
-	private $allowFreetext;
-
-	/** @var LanguageNameUtils */
-	private $languageNameUtils;
-
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
+	private IContextSource $context;
+	private bool $allowFreetext;
+	private LanguageNameUtils $languageNameUtils;
+	private UserOptionsManager $userOptionsManager;
 
 	/**
 	 * @param IContextSource $context
@@ -47,7 +40,7 @@ class WelcomeSurvey {
 	) {
 		$this->context = $context;
 		$this->allowFreetext =
-			$this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
+			(bool)$this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
 		$this->languageNameUtils = $languageNameUtils;
 		$this->userOptionsManager = $userOptionsManager;
 	}

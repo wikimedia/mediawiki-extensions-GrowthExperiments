@@ -13,11 +13,11 @@ use MediaWiki\User\UserIdentity;
  */
 class StaticMentorManager extends MentorManager {
 
-	/** @var array */
-	private $mentors;
+	/** @var Mentor[] */
+	private array $mentors;
 
 	/** @var Mentor[] */
-	private $backupMentors;
+	private array $backupMentors;
 
 	/**
 	 * @param Mentor[] $mentors username => (primary) mentor

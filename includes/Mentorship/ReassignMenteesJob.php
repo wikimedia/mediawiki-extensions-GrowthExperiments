@@ -19,11 +19,8 @@ use RequestContext;
  */
 class ReassignMenteesJob extends Job implements GenericParameterJob {
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var ReassignMenteesFactory */
-	private $reassignMenteesFactory;
+	private UserIdentityLookup $userIdentityLookup;
+	private ReassignMenteesFactory $reassignMenteesFactory;
 
 	/**
 	 * @inheritDoc

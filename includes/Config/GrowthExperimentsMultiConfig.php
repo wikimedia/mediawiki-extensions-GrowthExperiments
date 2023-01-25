@@ -20,11 +20,9 @@ use MediaWiki\Settings\Config\MergeStrategy;
  * GE setup by removing an arbitrary config variable.
  */
 class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomReadConstants {
-	/** @var WikiPageConfig */
-	private $wikiPageConfig;
 
-	/** @var Config */
-	private $globalVarConfig;
+	private WikiPageConfig $wikiPageConfig;
+	private Config $globalVarConfig;
 
 	// This should be in sync with SpecialEditGrowthConfig::getFormFields
 	public const ALLOW_LIST = [

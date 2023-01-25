@@ -16,8 +16,7 @@ use StatusValue;
  */
 class ErrorException extends Exception {
 
-	/** @var StatusValue */
-	private $status;
+	private StatusValue $status;
 
 	/**
 	 * @param StatusValue $error

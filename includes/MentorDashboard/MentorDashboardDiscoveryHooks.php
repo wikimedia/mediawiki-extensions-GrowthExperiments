@@ -14,14 +14,9 @@ class MentorDashboardDiscoveryHooks implements SkinTemplateNavigation__Universal
 
 	public const MENTOR_DASHBOARD_SEEN_PREF = 'growthexperiments-mentor-dashboard-seen';
 
-	/** @var Config */
-	private $config;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
+	private Config $config;
+	private MentorProvider $mentorProvider;
+	private UserOptionsLookup $userOptionsLookup;
 
 	/**
 	 * @param Config $config

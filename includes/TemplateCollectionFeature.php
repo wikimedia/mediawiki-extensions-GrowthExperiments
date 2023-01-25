@@ -31,10 +31,8 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	 */
 	public const MAX_TEMPLATES_IN_COLLECTION = GrowthConfigValidation::MAX_TEMPLATES_IN_COLLECTION;
 
-	/** @var array */
-	private $templates;
-	/** @var TitleFactory */
-	private $titleFactory;
+	private array $templates;
+	private TitleFactory $titleFactory;
 
 	/** @inheritDoc */
 	protected function getKeywords() {

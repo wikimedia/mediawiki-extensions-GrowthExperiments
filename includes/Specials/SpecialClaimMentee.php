@@ -16,24 +16,14 @@ use Status;
 use User;
 
 class SpecialClaimMentee extends FormSpecialPage {
-	/**
-	 * @var User[]
-	 */
-	private $mentees;
 
-	/**
-	 * @var User|null
-	 */
-	private $newMentor;
+	/** @var User[] */
+	private array $mentees;
 
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var ChangeMentorFactory */
-	private $changeMentorFactory;
-
-	/** @var Config */
-	private $wikiConfig;
+	private ?User $newMentor;
+	private MentorProvider $mentorProvider;
+	private ChangeMentorFactory $changeMentorFactory;
+	private Config $wikiConfig;
 
 	/**
 	 * @param MentorProvider $mentorProvider

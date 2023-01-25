@@ -23,17 +23,10 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	public const ACTION_SUBMIT_SUCCESS = 'submit_success';
 	public const ACTION_SHOW_CONFIRMATION_PAGE = 'show_confirmation_page';
 
-	/** @var string */
-	private $groupName;
-
-	/** @var SpecialPageFactory */
-	private $specialPageFactory;
-
-	/** @var WelcomeSurveyFactory */
-	private $welcomeSurveyFactory;
-
-	/** @var WelcomeSurveyLogger */
-	private $welcomeSurveyLogger;
+	private string $groupName;
+	private SpecialPageFactory $specialPageFactory;
+	private WelcomeSurveyFactory $welcomeSurveyFactory;
+	private WelcomeSurveyLogger $welcomeSurveyLogger;
 
 	/**
 	 * @param SpecialPageFactory $specialPageFactory

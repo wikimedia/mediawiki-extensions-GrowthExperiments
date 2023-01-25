@@ -10,14 +10,9 @@ use Title;
 use TitleFactory;
 
 class ConfigValidatorFactory {
-	/** @var Config */
-	private $config;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var TaskTypeHandlerRegistry */
-	private $taskTypeHandlerRegistry;
+	private Config $config;
+	private TitleFactory $titleFactory;
+	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
 
 	/**
 	 * @var string[]

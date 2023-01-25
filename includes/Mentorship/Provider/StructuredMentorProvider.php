@@ -16,14 +16,9 @@ use Title;
 class StructuredMentorProvider extends MentorProvider {
 	use GetMentorDataTrait;
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var UserNameUtils */
-	private $userNameUtils;
-
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
+	private UserIdentityLookup $userIdentityLookup;
+	private UserNameUtils $userNameUtils;
+	private MessageLocalizer $messageLocalizer;
 
 	/**
 	 * @param WikiPageConfigLoader $configLoader

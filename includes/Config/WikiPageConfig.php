@@ -11,20 +11,14 @@ use Title;
 use TitleFactory;
 
 class WikiPageConfig implements Config, IDBAccessObject {
-	/** @var LoggerInterface */
-	private $logger;
 
-	/** @var TitleFactory */
-	private $titleFactory;
+	private LoggerInterface $logger;
+	private TitleFactory $titleFactory;
+	private ?WikiPageConfigLoader $configLoader;
+	private ?string $rawConfigTitle;
 
-	/** @var WikiPageConfigLoader|null */
-	private $configLoader;
-
-	/** @var Title|null */
+	/** @var Title|null PHP typing fails with "must not be accessed before initialization" */
 	private $configTitle;
-
-	/** @var string|null */
-	private $rawConfigTitle;
 
 	/**
 	 * @param LoggerInterface $logger

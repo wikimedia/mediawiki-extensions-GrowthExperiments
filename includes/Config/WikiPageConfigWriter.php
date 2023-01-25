@@ -19,35 +19,21 @@ use Status;
 use TitleFactory;
 
 class WikiPageConfigWriter {
-	/** @var LinkTarget */
-	private $configPage;
 
-	/** @var UserIdentity */
-	private $performer;
+	private LinkTarget $configPage;
+	private UserIdentity $performer;
+	private IConfigValidator $configValidator;
+	private WikiPageConfigLoader $wikiPageConfigLoader;
+	private WikiPageFactory $wikiPageFactory;
+	private TitleFactory $titleFactory;
+	private UserFactory $userFactory;
+	private LoggerInterface $logger;
 
-	/** @var IConfigValidator */
-	private $configValidator;
-
-	/** @var WikiPageConfigLoader */
-	private $wikiPageConfigLoader;
-
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var UserFactory */
-	private $userFactory;
-
-	/** @var LoggerInterface */
-	private $logger;
-
-	/** @var array|null */
+	/** @var array|null PHP typing fails with "must not be accessed before initialization" */
 	private $wikiConfig;
 
 	/** @var string[] List of variables that can be overridden on wiki */
-	private $allowList;
+	private array $allowList;
 
 	/**
 	 * @param IConfigValidator $configValidator

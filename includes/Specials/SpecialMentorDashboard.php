@@ -34,17 +34,10 @@ class SpecialMentorDashboard extends SpecialPage {
 	/** @var string Stream name for EventLogging::submit */
 	private const STREAM = 'mediawiki.mentor_dashboard.visit';
 
-	/** @var MentorDashboardModuleRegistry */
-	private $mentorDashboardModuleRegistry;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
-	/** @var JobQueueGroupFactory */
-	private $jobQueueGroupFactory;
+	private MentorDashboardModuleRegistry $mentorDashboardModuleRegistry;
+	private MentorProvider $mentorProvider;
+	private UserOptionsLookup $userOptionsLookup;
+	private JobQueueGroupFactory $jobQueueGroupFactory;
 
 	/**
 	 * @param MentorDashboardModuleRegistry $mentorDashboardModuleRegistry

@@ -13,11 +13,8 @@ use MediaWiki\User\UserOptionsManager;
  * passed to WelcomeSurvey.
  */
 class WelcomeSurveyFactory {
-	/** @var LanguageNameUtils */
-	private $languageNameUtils;
-
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
+	private LanguageNameUtils $languageNameUtils;
+	private UserOptionsManager $userOptionsManager;
 
 	/**
 	 * @param LanguageNameUtils $languageNameUtils

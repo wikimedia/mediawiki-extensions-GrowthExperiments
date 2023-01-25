@@ -11,14 +11,18 @@ use IContextSource;
 use MediaWiki\MediaWikiServices;
 
 class MentorDashboardModuleRegistry {
-	/** @var MediaWikiServices */
-	private $services;
 
-	/** @var callable[] id => module factory function */
+	private MediaWikiServices $services;
+
+	/**
+	 * @var callable[] id => module factory function
+	 *
+	 * NOTE: PHP typing causes "must not be accessed before initialization" errors.
+	 */
 	private $wiring;
 
 	/** @var IDashboardModule[] */
-	private $modules;
+	private array $modules;
 
 	/**
 	 * @param MediaWikiServices $services

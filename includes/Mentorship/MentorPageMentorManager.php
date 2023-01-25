@@ -21,26 +21,13 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	public const MENTORSHIP_ENABLED_PREF = 'growthexperiments-homepage-mentorship-enabled';
 
-	/** @var MentorStore */
-	private $mentorStore;
-
-	/** @var MentorStatusManager */
-	private $mentorStatusManager;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
-
-	/** @var bool */
-	private $wasPosted;
+	private MentorStore $mentorStore;
+	private MentorStatusManager $mentorStatusManager;
+	private MentorProvider $mentorProvider;
+	private UserIdentityLookup $userIdentityLookup;
+	private UserOptionsLookup $userOptionsLookup;
+	private UserOptionsManager $userOptionsManager;
+	private bool $wasPosted;
 
 	/**
 	 * @param MentorStore $mentorStore

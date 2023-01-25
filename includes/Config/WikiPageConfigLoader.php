@@ -38,23 +38,12 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
  */
 class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 
-	/** @var ConfigValidatorFactory */
-	private $configValidatorFactory;
-
-	/** @var HttpRequestFactory */
-	private $requestFactory;
-
-	/** @var RevisionLookup */
-	private $revisionLookup;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var WANObjectCache */
-	private $cache;
-
-	/** @var HashBagOStuff */
-	private $inProcessCache;
+	private ConfigValidatorFactory $configValidatorFactory;
+	private HttpRequestFactory $requestFactory;
+	private RevisionLookup $revisionLookup;
+	private TitleFactory $titleFactory;
+	private WANObjectCache $cache;
+	private HashBagOStuff $inProcessCache;
 
 	/**
 	 * @param WANObjectCache $cache

@@ -15,17 +15,10 @@ use User;
 
 class SpecialQuitMentorshipStructured extends FormSpecialPage {
 
-	/** @var ReassignMenteesFactory */
-	private $reassignMenteesFactory;
-
-	/** @var MentorStore */
-	private $mentorStore;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var IMentorWriter */
-	private $mentorWriter;
+	private ReassignMenteesFactory $reassignMenteesFactory;
+	private MentorStore $mentorStore;
+	private MentorProvider $mentorProvider;
+	private IMentorWriter $mentorWriter;
 
 	/**
 	 * @param ReassignMenteesFactory $reassignMenteesFactory

@@ -12,20 +12,12 @@ use WANObjectCache;
 use Wikimedia\Rdbms\IDatabase;
 
 class DatabaseMentorStore extends MentorStore {
-	/** @var UserFactory */
-	private $userFactory;
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var JobQueueGroup */
-	private $jobQueueGroup;
-
-	/** @var IDatabase */
-	private $dbr;
-
-	/** @var IDatabase */
-	private $dbw;
+	private UserFactory $userFactory;
+	private UserIdentityLookup $userIdentityLookup;
+	private JobQueueGroup $jobQueueGroup;
+	private IDatabase $dbr;
+	private IDatabase $dbw;
 
 	/**
 	 * @param WANObjectCache $wanCache

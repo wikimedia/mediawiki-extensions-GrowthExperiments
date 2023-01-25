@@ -12,21 +12,12 @@ use MediaWiki\User\UserOptionsManager;
  */
 class ExperimentUserManager {
 
-	/**
-	 * @var ServiceOptions
-	 */
-	private $options;
-	/**
-	 * @var UserOptionsLookup
-	 */
-	private $userOptionsLookup;
-	/**
-	 * @var UserOptionsManager
-	 */
-	private $userOptionsManager;
+	private ServiceOptions $options;
+	private UserOptionsLookup $userOptionsLookup;
+	private UserOptionsManager $userOptionsManager;
 
-	/** @var string One of 'mobile' or 'desktop' */
-	private $platform;
+	/** @var string|null One of 'mobile' or 'desktop' */
+	private ?string $platform;
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'GEHomepageDefaultVariant',

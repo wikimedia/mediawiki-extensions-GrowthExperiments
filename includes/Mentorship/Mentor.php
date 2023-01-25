@@ -13,30 +13,11 @@ use MediaWiki\User\UserIdentity;
  */
 class Mentor {
 
-	/**
-	 * @var UserIdentity
-	 */
-	private $mentorUser;
-
-	/**
-	 * @var string|null
-	 */
-	private $introText;
-
-	/**
-	 * @var string
-	 */
-	private $defaultIntroText;
-
-	/**
-	 * @var bool Is the mentor automatically assigned to the mentees?
-	 */
-	private $autoAssigned;
-
-	/**
-	 * @var int
-	 */
-	private $weight;
+	private UserIdentity $mentorUser;
+	private ?string $introText;
+	private string $defaultIntroText;
+	private bool $autoAssigned;
+	private int $weight;
 
 	/**
 	 * @param UserIdentity $mentorUser

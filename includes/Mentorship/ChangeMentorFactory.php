@@ -12,17 +12,10 @@ use Psr\Log\LoggerInterface;
 
 class ChangeMentorFactory {
 
-	/** @var LoggerInterface */
-	private $logger;
-
-	/** @var MentorManager */
-	private $mentorManager;
-
-	/** @var MentorStore */
-	private $mentorStore;
-
-	/** @var UserFactory */
-	private $userFactory;
+	private LoggerInterface $logger;
+	private MentorManager $mentorManager;
+	private MentorStore $mentorStore;
+	private UserFactory $userFactory;
 
 	/**
 	 * @param LoggerInterface $logger
