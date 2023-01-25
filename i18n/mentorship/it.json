@@ -5,7 +5,8 @@
 			"Beta16",
 			"Stefano",
 			"ValeJappo",
-			"Sakretsu"
+			"Sakretsu",
+			"Pierpao"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Pannello di tutoraggio",
@@ -50,7 +51,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "La lista dei tutor",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Come introdurti come tutor",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Come seguire un allievo",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "Funzionalità Growth",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Strumenti Growth",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Impostazioni",
 	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Informazioni per i tutor",
 	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Questo modulo contiene impostazioni sul tuo stato di tutor. Se desideri smettere di essere un tutor permanentemente, trovi le istruzioni nella pagina che segue: [[Special:QuitMentorship|Come smettere di essere un tutor?]]",

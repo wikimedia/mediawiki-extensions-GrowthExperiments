@@ -9,7 +9,8 @@
 			"Zabe",
 			"Doc Taxon",
 			"Tacsipacsi",
-			"Wnme"
+			"Wnme",
+			"Justman10000"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Lotsen-Verwaltungsseite",
@@ -61,7 +62,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Dein Status als {{GENDER:|Lotse|Lotsin}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktiv",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Abwesend",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Da du bis zum $1 abwesend bist, werden deine Neulinge vorübergehend einer anderen Lotsin oder Lotsen zugewiesen.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Da du bis zum $1 abwesend bist, werden deine Neulinge vorübergehend einer anderen Lotsin oder einem anderen Lotsen zugewiesen.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Stelle dich selbst auf „abwesend“",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Abbrechen",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pause",
