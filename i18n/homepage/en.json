@@ -83,7 +83,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "More information about the longest streak",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Your}} current longest streak is $2 {{PLURAL:$2|day|days}} which {{GENDER:$1|you}} achieved between $3.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "The current longest streak is $1 {{PLURAL:$1|day|days}} which was achieved between $2.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Your}} current longest streak is one day which {{GENDER:$1|you}} achieved on $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Your}} current longest streak is one day which {{GENDER:$1|you}} achieved on $2.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "The current longest streak is one day which was achieved on $1.",
 	"growthexperiments-homepage-impact-subheader-text": "Most viewed (since {{GENDER:$1|your}} edit)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Most viewed (since edit was made)",
