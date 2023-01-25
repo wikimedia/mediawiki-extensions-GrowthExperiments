@@ -16,10 +16,8 @@ class MentorDashboardModuleRegistry {
 
 	/**
 	 * @var callable[] id => module factory function
-	 *
-	 * NOTE: PHP typing causes "must not be accessed before initialization" errors.
 	 */
-	private $wiring;
+	private ?array $wiring = null;
 
 	/** @var IDashboardModule[] */
 	private array $modules;

@@ -51,9 +51,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	private WikiPageConfigWriterFactory $configWriterFactory;
 	private GrowthExperimentsMultiConfig $growthWikiConfig;
 	private SpecialEditGrowthConfigLogger $eventLogger;
-
-	/** @var string|null PHP typing fails with "must not be accessed before initialization" */
-	private $errorMsgKey;
+	private ?string $errorMsgKey = null;
 
 	/**
 	 * @var Title[]
@@ -64,9 +62,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 */
 	private array $configPages = [];
 	private bool $userCanWrite;
-
-	/** @var array|null PHP typing fails with "must not be accessed before initialization" */
-	private $newcomerTasksConfig;
+	private ?array $newcomerTasksConfig = null;
 
 	/**
 	 * @param TitleFactory $titleFactory

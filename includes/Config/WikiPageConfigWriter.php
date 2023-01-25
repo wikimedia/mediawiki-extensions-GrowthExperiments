@@ -28,9 +28,7 @@ class WikiPageConfigWriter {
 	private TitleFactory $titleFactory;
 	private UserFactory $userFactory;
 	private LoggerInterface $logger;
-
-	/** @var array|null PHP typing fails with "must not be accessed before initialization" */
-	private $wikiConfig;
+	private ?array $wikiConfig = null;
 
 	/** @var string[] List of variables that can be overridden on wiki */
 	private array $allowList;
