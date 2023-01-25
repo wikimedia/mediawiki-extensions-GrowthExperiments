@@ -16,9 +16,7 @@ class WikiPageConfig implements Config, IDBAccessObject {
 	private TitleFactory $titleFactory;
 	private ?WikiPageConfigLoader $configLoader;
 	private ?string $rawConfigTitle;
-
-	/** @var Title|null PHP typing fails with "must not be accessed before initialization" */
-	private $configTitle;
+	private ?Title $configTitle = null;
 
 	/**
 	 * @param LoggerInterface $logger
