@@ -3,6 +3,7 @@
 const Page = require( 'wdio-mediawiki/Page' ),
 	childProcess = require( 'child_process' ),
 	path = require( 'path' ),
+	{ SevereServiceError } = require( 'webdriverio' ),
 	ip = path.resolve( __dirname + '/../../../../../' );
 
 class AddLinkArticlePage extends Page {
@@ -80,7 +81,7 @@ class AddLinkArticlePage extends Page {
 	}
 
 	async insertLinkRecommendationsToDatabase() {
-		await childProcess.spawnSync(
+		let insertLinkRecommendationsResult = await childProcess.spawnSync(
 			'php',
 			[
 				'maintenance/run.php',
@@ -90,7 +91,11 @@ class AddLinkArticlePage extends Page {
 			],
 			{ cwd: ip }
 		);
-		await childProcess.spawnSync(
+		if ( insertLinkRecommendationsResult.status === 1 ) {
+			console.log( String( insertLinkRecommendationsResult.stderr ) );
+			throw new SevereServiceError( 'Unable to import Douglas_Adams.suggestions.json' );
+		}
+		insertLinkRecommendationsResult = await childProcess.spawnSync(
 			'php',
 			[
 				'maintenance/run.php',
@@ -100,6 +105,10 @@ class AddLinkArticlePage extends Page {
 			],
 			{ cwd: ip }
 		);
+		if ( insertLinkRecommendationsResult.status === 1 ) {
+			console.log( String( insertLinkRecommendationsResult.stderr ) );
+			throw new SevereServiceError( 'Unable to import The_Hitchhikers_Guide_to_the_Galaxy.suggestions.json' );
+		}
 	}
 
 }
