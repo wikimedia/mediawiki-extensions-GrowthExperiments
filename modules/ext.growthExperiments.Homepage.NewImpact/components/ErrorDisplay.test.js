@@ -18,7 +18,6 @@ const renderComponent = ( props, provide ) => {
 			ScoreCards: jest.fn( () => 'ScoreCardsMock' )
 		},
 		global: {
-			// eslint-disable-next-line compat/compat
 			provide: Object.assign( {
 				$log: jest.fn(),
 				RENDER_MODE: 'desktop'

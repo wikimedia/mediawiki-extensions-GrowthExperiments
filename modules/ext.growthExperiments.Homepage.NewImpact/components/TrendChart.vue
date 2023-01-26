@@ -25,6 +25,7 @@
 </template>
 
 <script>
+const { inject } = require( 'vue' );
 const { getIntlLocale } = require( '../../utils/Utils.js' );
 const CText = require( '../../vue-components/CText.vue' );
 const CSparkline = require( '../../vue-components/CSparkline.vue' );
@@ -45,7 +46,7 @@ module.exports = exports = {
 		},
 		chartTitle: {
 			type: String,
-			default: null
+			required: true
 		},
 		countLabel: {
 			type: String,
@@ -56,12 +57,14 @@ module.exports = exports = {
 			default: null
 		},
 		data: {
-			type: Object,
-			default: () => ( {} )
+			type: Array,
+			default: () => ( [] )
 		}
 	},
 	setup() {
+		const hasIntl = inject( 'BROWSER_HAS_INTL' );
 		return {
+			hasIntl,
 			xAccessor,
 			yAccessor
 		};
@@ -69,7 +72,7 @@ module.exports = exports = {
 	computed: {
 		formattedPageviewTotal() {
 			// Use abbreviated number format on mobile preview.
-			if ( mw.config.get( 'homepagemobile' ) ) {
+			if ( mw.config.get( 'homepagemobile' ) && this.hasIntl ) {
 				const locale = getIntlLocale(),
 					numberFormatter = new Intl.NumberFormat( locale, { notation: 'compact', maximumFractionDigits: 1 } );
 				return numberFormatter.format( this.pageviewTotal );

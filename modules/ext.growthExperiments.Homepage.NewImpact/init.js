@@ -4,6 +4,7 @@
 	const { watch } = require( 'vue' );
 	const useMWRestApi = require( './composables/useMWRestApi.js' );
 	const { convertNumber } = require( '../utils/filters.js' );
+	const { hasIntl } = require( '../../utils/Utils.js' );
 	const logger = require( './plugins/logger.js' );
 	const relevantUserId = mw.config.get( 'GENewImpactRelevantUserId' );
 
@@ -83,6 +84,7 @@
 		app.provide( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED', mw.config.get( 'GENewImpactIsSuggestedEditsEnabledForUser' ) );
 		app.provide( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED', mw.config.get( 'GENewImpactIsSuggestedEditsActivatedForUser' ) );
 		app.provide( 'RENDER_IN_THIRD_PERSON', mw.config.get( 'GENewImpactThirdPersonRender' ) );
+		app.provide( 'BROWSER_HAS_INTL', hasIntl() );
 		app.provide( 'RENDER_MODE', mode );
 		app.use( logger, {
 			mode,

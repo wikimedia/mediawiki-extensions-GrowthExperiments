@@ -42,7 +42,8 @@ module.exports = exports = {
 	},
 	props: {
 		icon: {
-			type: Object,
+			// Icons are mocked as empty strings in tests
+			type: [ Object, String ],
 			default: null
 		},
 		iconLabel: {

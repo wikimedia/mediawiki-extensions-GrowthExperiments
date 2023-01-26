@@ -81,6 +81,27 @@ const THIRD_PERSON_KEYS = [
 ];
 const ALL_KEYS = [ ...NO_PERSON_KEYS, ...THIRD_PERSON_KEYS ];
 
+const renderComponent = ( { props = {}, provide = {} } = {} ) => {
+	const mockData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, impactServerData() );
+	return mount( NewImpact, {
+		props: Object.assign( { userName: 'Alice', data: mockData.value }, props ),
+		global: {
+			provide: Object.assign( {
+				RENDER_MODE: 'desktop',
+				RELEVANT_USER_USERNAME: 'Alice',
+				RENDER_IN_THIRD_PERSON: false,
+				BROWSER_HAS_INTL: true,
+				$log: jest.fn()
+			}, provide ),
+			mocks: {
+				$filters: {
+					convertNumber: jest.fn( ( x ) => `${x}` )
+				}
+			}
+		}
+	} );
+};
+
 describe( 'NewImpactVue', () => {
 	beforeEach( () => {
 		global.mw.config.get = jest.fn();
@@ -98,26 +119,7 @@ describe( 'NewImpactVue', () => {
 		} );
 	} );
 	it( 'displays activated state layout', () => {
-		const mockData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, impactServerData() );
-		const wrapper = mount( NewImpact, {
-			props: {
-				data: mockData.value,
-				userName: 'Alice'
-			},
-			global: {
-				provide: {
-					RENDER_MODE: 'desktop',
-					RELEVANT_USER_USERNAME: 'Alice',
-					RENDER_IN_THIRD_PERSON: false,
-					$log: jest.fn()
-				},
-				mocks: {
-					$filters: {
-						convertNumber: jest.fn( ( x ) => `${x}` )
-					}
-				}
-			}
-		} );
+		const wrapper = renderComponent();
 		expect( wrapper.findAllComponents( ScoreCard ) ).toHaveLength( 4 );
 		expect( wrapper.findAllComponents( RecentActivity ) ).toHaveLength( 1 );
 		expect( wrapper.findAllComponents( TrendChart ) ).toHaveLength( 1 );
@@ -127,25 +129,8 @@ describe( 'NewImpactVue', () => {
 		}
 	} );
 	it( 'displays other person texts', () => {
-		const mockData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, impactServerData() );
-		const wrapper = mount( NewImpact, {
-			props: {
-				data: mockData.value,
-				userName: 'Alice'
-			},
-			global: {
-				provide: {
-					RENDER_MODE: 'desktop',
-					RELEVANT_USER_USERNAME: 'Alice',
-					RENDER_IN_THIRD_PERSON: true,
-					$log: jest.fn()
-				},
-				mocks: {
-					$filters: {
-						convertNumber: jest.fn( ( x ) => `${x}` )
-					}
-				}
-			}
+		const wrapper = renderComponent( {
+			provide: { RENDER_IN_THIRD_PERSON: true }
 		} );
 		for ( const key of NO_PERSON_KEYS ) {
 			expect( wrapper.text() ).toContain( key );
@@ -153,5 +138,14 @@ describe( 'NewImpactVue', () => {
 		for ( const key of THIRD_PERSON_KEYS ) {
 			expect( wrapper.text() ).toContain( `${key}-third-person` );
 		}
+	} );
+	it( 'hides the recent activity section if Intl is not present', () => {
+		const wrapper = renderComponent( {
+			provide: {
+				BROWSER_HAS_INTL: false
+			}
+		} );
+		expect( wrapper.findAllComponents( RecentActivity ) ).toHaveLength( 0 );
+		expect( wrapper.text() ).not.toContain( 'growthexperiments-homepage-impact-recent-activity-title' );
 	} );
 } );
