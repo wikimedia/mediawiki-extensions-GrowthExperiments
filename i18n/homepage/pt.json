@@ -92,7 +92,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Mais informações sobre a sequência mais longa",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "Neste momento, a sua sequência mais longa é de $2 {{PLURAL:$2|dia|dias consecutivos}} que alcançou no período $3.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "A sequência mais longa atual é de $1 {{PLURAL:$1|dia|dias consecutivos}}, alcançada no período $2.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "Neste momento, a sua sequência mais longa é de um dia, que alcançou a $3.{{GENDER:$1|}}",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "Neste momento, a sua sequência mais longa é de um dia, que alcançou a $2.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "A sequência mais longa atual é de um dia, alcançada a $1.",
 	"growthexperiments-homepage-impact-subheader-text": "Mais visitas (desde a sua edição){{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Mais vistos (desde que a edição foi feita)",

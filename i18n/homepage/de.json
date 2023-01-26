@@ -110,7 +110,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Weitere Informationen zum längsten Lauf",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Dein}} derzeit längster Lauf  beträgt $2 {{PLURAL:$2| Tag|Tage}}, welchen {{GENDER:$1|du}} zwischen $3 erzielt hast.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "Die derzeit längste Serie beträgt $1 {{PLURAL:$1|Tag|Tage}}, die zwischen $2 erreicht wurde.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Dein}} derzeit längster Lauf, welchen {{GENDER:$1|du}} am $3 erzielt hast, beträgt einen Tag.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Dein}} derzeit längster Lauf, welchen {{GENDER:$1|du}} am $2 erzielt hast, beträgt einen Tag.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "Die derzeit längste Serie beträgt einen Tag und wurde $1 erreicht.",
 	"growthexperiments-homepage-impact-subheader-text": "Am häufigsten angesehen (seit {{GENDER:$1|deiner}} Bearbeitung)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Meistgesehen (seit Bearbeitung)",

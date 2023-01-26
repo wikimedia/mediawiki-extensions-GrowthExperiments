@@ -94,7 +94,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "מידע נוסף על אופן חישוב הרצף הארוך",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "הרצף הארוך ביותר הנוכחי {{GENDER:$1|שלך}} הוא {{PLURAL:$2|יום אחד|יומיים|$2 ימים}}, שהשגת בין $3.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "הרצף הארוך ביותר כרגע הוא {{PLURAL:$1|יום אחד|יומיים|$1 ימים}}, והוא הושג בין $2.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "הרצף הארוך ביותר הנוכחי {{GENDER:$1|שלך}} הוא יום אחד, שהשגת ב־$3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "הרצף הארוך ביותר הנוכחי {{GENDER:$1|שלך}} הוא יום אחד, שהשגת ב־$2.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "הרצף הנוכחי הארוך ביותר הוא יום אחד, שהושג ב־$1.",
 	"growthexperiments-homepage-impact-subheader-text": "הערכים הנצפים ביותר (מאז העריכה {{GENDER:$1|שלך}})",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "הנצפים ביותר (מאז שהעריכה בוצעה)",

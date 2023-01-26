@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kimberli Mäkäräinen (WMNO)",
 			"Yupik"
 		]
 	},
 	"growthexperiments-homepage-suggestededits-edit-card": "Rievdat",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Lassedieđut",
 	"growthexperiments-homepage-suggestededits-error-description": "Geahččal fas maŋŋelis.",
+	"growthexperiments-homepage-suggestededits-topics-more": "čájet lasi",
 	"growthexperiments-addimage-detailsdialog-image": "Fiilanamma:",
 	"growthexperiments-structuredtask-user-error-login-cta": "Čálit sisa"
 }

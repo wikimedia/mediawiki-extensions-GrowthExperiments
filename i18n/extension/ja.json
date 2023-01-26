@@ -60,6 +60,8 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "はい",
 	"growthexperiments-edit-config-mentorship-enabled-false": "いいえ",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "新人編集者を自動的に割り当てる指導役名簿のページ",
+	"growthexperiments-edit-config-newcomertasks": "お勧めの編集",
+	"growthexperiments-edit-config-newcomer-tasks-description": "いくつかの種別のお勧めの編集は、メンテナンステンプレートを通じて表面化されます。これらのテンプレートを含む記事がフィードに追加されます。各タスク種別に対して利用可能な記事の数を確認するには、[[Special:NewcomerTasksInfo|このページ]]をご覧ください。",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "無効",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "校正: スペル、文法、句読点の改善のような、校正を必要とする記事を見つけるためのテンプレート。",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "校正に関してもっと知るためのリンク先ページ。",
@@ -75,5 +77,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "ここで定義されたテンプレートを含む記事をこのタスク種別のタスクとして利用者に表示しない。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "ここで定義されたカテゴリを含む記事をこのタスク種別のタスクとして利用者に表示しない。",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "これらのテンプレートは[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|画像の提案]]新規参加者タスク機能のために必要となります。これらのテンプレートを含む記事は画像の提案タスクとして列挙されません。",
-	"growthexperiments-edit-config-delayed": "この設定への変更はすぐには反映されません ([[mw:Growth/FAQ#add-link-config|FAQ]]参照)。"
+	"growthexperiments-edit-config-delayed": "この設定への変更はすぐには反映されません ([[mw:Growth/FAQ#add-link-config|FAQ]]参照)。",
+	"specialpages-group-growth-tools": "Growthツール"
 }

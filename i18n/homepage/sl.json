@@ -86,7 +86,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Več informacij o nadaljšem nizu",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Vaš}} trenutni najdaljši niz je $2 {{PLURAL:$2|dan|dni}} in {{GENDER:$1|ste}} ga dosegli v obdobju $3.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "Trenutni najdaljši niz je $1 {{PLURAL:$1|dan|dneva|dni}}, kar je bilo doseženo med $2.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Vaš}} trenutni najdaljši niz je en dan, kar {{GENDER:$1|ste}} dosegli dne $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Vaš}} trenutni najdaljši niz je en dan, kar {{GENDER:$1|ste}} dosegli dne $2.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "Trenutni najdaljši niz je en dan, ki je bil dosežen $1.",
 	"growthexperiments-homepage-impact-subheader-text": "Največkrat ogledano (od {{GENDER:$1|vašega}} urejanja)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Najbolj ogledovano (od urejanja)",
