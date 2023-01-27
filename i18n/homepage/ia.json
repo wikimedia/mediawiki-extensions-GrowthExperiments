@@ -84,7 +84,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Plus information sur le sequentia le plus longe",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Tu}} sequentia le plus longe actualmente es de $2 die{{PLURAL:$2||s}} que tu ha attingite inter $3.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "Le sequentia actualmente le plus longe es $1 die{{PLURAL:$1||s}}, que ha essite attingite inter $2.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Tu}} sequentia le plus longe actualmente es de un die que tu ha attingite le $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Tu}} sequentia le plus longe actualmente es de un die que tu ha attingite le $2.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "Le sequentia actualmente le plus longe es de un sol die, que ha essite attingite le $1.",
 	"growthexperiments-homepage-impact-subheader-text": "Le plus visitate (desde {{GENDER:$1|tu}} modification)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Le plus visitate (post modification)",

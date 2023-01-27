@@ -85,7 +85,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Mai multe informații despre cum este calculată repriza",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Cea}} mai lungă repriză actuală a dvs. este de $2 {{PLURAL:$2|zi|zile}}, pe care ați {{GENDER:$1|atins-o}} în perioada $3.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "Cea mai lungă repriză actuală este de $1 {{PLURAL:$1|zi|zile}}, care a fost împlinită între $2.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "Cea mai lungă repriză a {{GENDER:$1|dvs.}} este o zi pe care ați {{GENDER:$1|atins-o}} pe $3",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "Cea mai lungă repriză a {{GENDER:$1|dvs.}} este o zi pe care ați {{GENDER:$1|atins-o}} pe $2.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "Cea mai lungă repriză actuală este de o zi, care a fost împlinită în $1.",
 	"growthexperiments-homepage-impact-subheader-text": "Cele mai vizualizate (de la {{GENDER:$1|editarea}} dvs.)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Cel mai vizualizat (de la efectuarea editării)",

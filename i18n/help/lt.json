@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Homo"
 		]
 	},
+	"growthexperiments-help-panel-question-placeholder": "Užduokite savo klausimą.",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Pranešimai jūsų klausimui:",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Jums bus atsiųstas pranešimas čia, {{SITENAME}}, kai gausite atsakymą.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Taip pat gausite el. laišką į $1 ($2)",
@@ -11,5 +13,6 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Jei {{GENDER:$2|norėtumėte}} taip pat gauti pranešimą el. paštu, prašome patvirtinti savo el. pašto adresą: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Patvirtinkite savo el. pašto adresą",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Jei {{GENDER:$1|norėtumėte}}, kad jums taip pat būtų atsiųstas pranešimas el. paštu, pridėkite el. pašto adresą dabar.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Pridėti el. paštą"
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Pridėti el. paštą",
+	"tag-help_panel_question": "Pagalbos skydelio klausimas"
 }
