@@ -22,9 +22,13 @@ use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
+use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LogLevel;
+use RequestContext;
 use Throwable;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -32,6 +36,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class MentorHooks implements
 	SpecialPage_initListHook,
 	LocalUserCreatedHook,
+	AuthChangeFormFieldsHook,
 	PageSaveCompleteHook,
 	ListDefinedTagsHook,
 	ChangeTagsListActiveHook,
@@ -41,6 +46,7 @@ class MentorHooks implements
 
 	private Config $config;
 	private Config $wikiConfig;
+	private UserIdentityLookup $userIdentityLookup;
 	private MentorManager $mentorManager;
 	private MentorProvider $mentorProvider;
 	private MentorStore $mentorStore;
@@ -48,6 +54,7 @@ class MentorHooks implements
 	/**
 	 * @param Config $config
 	 * @param Config $wikiConfig
+	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param MentorManager $mentorManager
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
@@ -55,12 +62,14 @@ class MentorHooks implements
 	public function __construct(
 		Config $config,
 		Config $wikiConfig,
+		UserIdentityLookup $userIdentityLookup,
 		MentorManager $mentorManager,
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore
 	) {
 		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
+		$this->userIdentityLookup = $userIdentityLookup;
 		$this->mentorManager = $mentorManager;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorStore = $mentorStore;
@@ -113,6 +122,60 @@ class MentorHooks implements
 		];
 	}
 
+	/**
+	 * Handles `forceMentor` parameter, if present
+	 *
+	 * This method checks forceMentor query parameter. If it is present, it:
+	 *
+	 *     1) gets one or more username from it (| is used as the delimiter)
+	 *     2) remove all non-mentors from the lists (determined via MentorProvider::isMentor)
+	 *     3) assigns a random mentor from the list to $user
+	 *     4) generates a random backup mentor (who may or may not be in the list)
+	 *
+	 * If no forceMentor parameter is provided (or if it does not contain mentors' usernames),
+	 * the method short-circuits and returns false.
+	 *
+	 * @param UserIdentity $user Newly created user
+	 * @return bool returns true if a mentor was assigned to the user (if false is returned,
+	 * the caller is responsible for assigning a mentor to the user)
+	 */
+	private function handleForceMentor( UserIdentity $user ): bool {
+		$forceMentorRaw = RequestContext::getMain()->getRequest()
+			->getVal( 'forceMentor', '' );
+		if ( $forceMentorRaw === '' ) {
+			return false;
+		}
+
+		$forceMentorNames = explode( '|', $forceMentorRaw );
+		$forceMentors = array_filter( array_map(
+			function ( $username ) {
+				$user = $this->userIdentityLookup->getUserIdentityByName( $username );
+				if ( !$user ) {
+					return null;
+				}
+				if ( !$this->mentorProvider->isMentor( $user ) ) {
+					return null;
+				}
+				return $user;
+			},
+			$forceMentorNames
+		) );
+
+		if ( $forceMentors ) {
+			$forcedPrimaryMentor = $forceMentors[ array_rand( $forceMentors ) ];
+
+			$this->mentorStore->setMentorForUser(
+				$user,
+				$forcedPrimaryMentor,
+				MentorStore::ROLE_PRIMARY
+			);
+			// Select a random backup mentor
+			$this->mentorManager->getMentorForUser( $user, MentorStore::ROLE_BACKUP );
+			return true;
+		}
+		return false;
+	}
+
 	/** @inheritDoc */
 	public function onLocalUserCreated( $user, $autocreated ) {
 		if ( $autocreated ) {
@@ -121,6 +184,10 @@ class MentorHooks implements
 		}
 		if ( $this->wikiConfig->get( 'GEMentorshipEnabled' ) ) {
 			try {
+				if ( $this->handleForceMentor( $user ) ) {
+					return;
+				}
+
 				// Select a primary & backup mentor. FIXME Not really necessary, but avoids a
 				// change in functionality after introducing MentorManager, making debugging easier.
 				$this->mentorManager->getMentorForUser( $user, MentorStore::ROLE_PRIMARY );
@@ -132,6 +199,22 @@ class MentorHooks implements
 					'origin' => __METHOD__,
 				], LogLevel::INFO );
 			}
+		}
+	}
+
+	/**
+	 * Pass through the query parameter used by LocalUserCreated.
+	 * @inheritDoc
+	 */
+	public function onAuthChangeFormFields( $requests, $fieldInfo, &$formDescriptor, $action ) {
+		$forceMentor = RequestContext::getMain()->getRequest()
+			->getVal( 'forceMentor', '' );
+		if ( $forceMentor !== null ) {
+			$formDescriptor['forceMentor'] = [
+				'type' => 'hidden',
+				'name' => 'forceMentor',
+				'default' => $forceMentor,
+			];
 		}
 	}
 
