@@ -7,14 +7,14 @@ use FauxRequest;
 use FauxResponse;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\Specials\SpecialQuitMentorshipStructured;
+use GrowthExperiments\Specials\SpecialQuitMentorship;
 use SpecialPageTestBase;
 use User;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Specials\SpecialQuitMentorshipStructured
+ * @coversDefaultClass \GrowthExperiments\Specials\SpecialQuitMentorship
  */
-class SpecialQuitMentorshipStructuredTest extends SpecialPageTestBase {
+class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 
 	/**
 	 * @inheritDoc
@@ -22,7 +22,7 @@ class SpecialQuitMentorshipStructuredTest extends SpecialPageTestBase {
 	protected function newSpecialPage() {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 
-		return new SpecialQuitMentorshipStructured(
+		return new SpecialQuitMentorship(
 			$geServices->getReassignMenteesFactory(),
 			$geServices->getMentorStore(),
 			$geServices->getMentorProvider(),

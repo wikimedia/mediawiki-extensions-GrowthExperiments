@@ -2493,7 +2493,7 @@
 			]
 		},
 		"QuitMentorship": {
-			"class": "GrowthExperiments\\Specials\\SpecialQuitMentorshipStructured",
+			"class": "GrowthExperiments\\Specials\\SpecialQuitMentorship",
 			"services": [
 				"GrowthExperimentsReassignMenteesFactory",
 				"GrowthExperimentsMentorStore",
