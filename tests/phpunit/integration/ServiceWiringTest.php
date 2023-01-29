@@ -20,11 +20,7 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 
 	protected const DEPRECATED_SERVICES = [];
 
-	protected const IGNORED_SERVICES = [
-		// ignore those legacy services, as they fail to create with structured mentor provider
-		'GrowthExperimentsMentorProviderWikitext',
-		'GrowthExperimentsMentorWeightManager',
-	];
+	protected const IGNORED_SERVICES = [];
 
 	/**
 	 * @dataProvider provideService

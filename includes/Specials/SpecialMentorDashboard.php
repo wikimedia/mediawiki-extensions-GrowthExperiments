@@ -16,7 +16,6 @@ use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\User\UserOptionsLookup;
 use PermissionsError;
 use SpecialPage;
-use User;
 use UserOptionsUpdateJob;
 
 class SpecialMentorDashboard extends SpecialPage {
@@ -112,23 +111,12 @@ class SpecialMentorDashboard extends SpecialPage {
 	}
 
 	/**
-	 * @return bool
-	 */
-	private function isStructuredListEnabled(): bool {
-		return $this->getConfig()->get( 'GEMentorProvider' ) ===
-			MentorProvider::PROVIDER_STRUCTURED;
-	}
-
-	/**
 	 * Check whether the user is a mentor and redirect to
 	 * Special:EnrollAsMentor if they're not AND structured mentor
 	 * list is used.
 	 */
 	private function maybeRedirectToEnrollAsMentor(): void {
-		if (
-			$this->isStructuredListEnabled() &&
-			!$this->mentorProvider->isMentor( $this->getUser() )
-		) {
+		if ( !$this->mentorProvider->isMentor( $this->getUser() ) ) {
 			$this->getOutput()->redirect(
 				SpecialPage::getTitleFor( 'EnrollAsMentor' )->getLocalURL()
 			);
@@ -181,10 +169,6 @@ class SpecialMentorDashboard extends SpecialPage {
 
 		$out->addModules( $dashboardModules );
 		$out->addModuleStyles( 'ext.growthExperiments.MentorDashboard.styles' );
-
-		$out->addJsConfigVars( [
-			'GEMentorProvider' => $this->getConfig()->get( 'GEMentorProvider' ),
-		] );
 
 		$out->addHTML( Html::openElement( 'div', [
 			'class' => 'growthexperiments-mentor-dashboard-container'
@@ -272,16 +256,6 @@ class SpecialMentorDashboard extends SpecialPage {
 	 */
 	private function isEnabled(): bool {
 		return $this->getConfig()->get( 'GEMentorDashboardEnabled' );
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function userCanExecute( User $user ) {
-		return parent::userCanExecute( $user ) && (
-			$this->isStructuredListEnabled() ||
-			$this->mentorProvider->isMentor( $this->getUser() )
-		);
 	}
 
 	/**

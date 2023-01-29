@@ -49,10 +49,6 @@ class ApiManageMentorList extends ApiBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		if ( $this->getConfig()->get( 'GEMentorProvider' ) !== MentorProvider::PROVIDER_STRUCTURED ) {
-			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
-		}
-
 		$block = $this->getUser()->getBlock( User::READ_LATEST );
 		if ( $block && $block->isSitewide() ) {
 			$this->dieBlocked( $block );

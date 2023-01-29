@@ -16,13 +16,11 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
-use GrowthExperiments\Mentorship\Provider\WikitextMentorProvider;
 use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -175,20 +173,12 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsMentorProviderStructured' );
 	}
 
-	public function getMentorProviderWikitext(): WikitextMentorProvider {
-		return $this->coreServices->get( 'GrowthExperimentsMentorProviderWikitext' );
-	}
-
 	public function getMentorStatusManager(): MentorStatusManager {
 		return $this->coreServices->get( 'GrowthExperimentsMentorStatusManager' );
 	}
 
 	public function getMentorStore(): MentorStore {
 		return $this->coreServices->get( 'GrowthExperimentsMentorStore' );
-	}
-
-	public function getMentorWeightManager(): MentorWeightManager {
-		return $this->coreServices->get( 'GrowthExperimentsMentorWeightManager' );
 	}
 
 	public function getMentorWriter(): IMentorWriter {

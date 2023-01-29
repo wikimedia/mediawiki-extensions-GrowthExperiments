@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests;
 
 use ChangeTags;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use MediaWikiIntegrationTestCase;
 use Title;
@@ -56,10 +55,6 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 	public function testEditTagged() {
 		$mentorListTitle = $this->getServiceContainer()->getTitleFactory()
 			->newFromText( 'MediaWiki:GrowthMentors.json' );
-		$this->setMwGlobals( [
-			'wgGEMentorProvider' => MentorProvider::PROVIDER_STRUCTURED,
-			'wgGEStructuredMentorList' => $mentorListTitle->getPrefixedText()
-		] );
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$mentorUser = $this->getTestUser()->getUser();
 		$mentor = $geServices->getMentorProvider()

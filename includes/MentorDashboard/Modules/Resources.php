@@ -71,6 +71,12 @@ class Resources extends BaseModule {
 			// resources module, they should be customizable by the wiki (via interface
 			// messages).
 			$this->formatLink(
+				SpecialPage::getTitleFor( 'ManageMentors' )->getPrefixedText(),
+				$this->getUser()->isAllowed( 'managementors' ) ?
+					$this->msg( 'growthexperiments-mentor-dashboard-resources-link-manage-mentors' )->text()
+					: $this->msg( 'growthexperiments-mentor-dashboard-resources-link-view-mentor-list' )->text()
+			),
+			$this->formatLink(
 				'mw:Special:MyLanguage/Growth/Communities/How to configure the mentors\' list',
 				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-how-to-introduce' )->text()
 			),
@@ -83,24 +89,6 @@ class Resources extends BaseModule {
 				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-tools' )->text()
 			)
 		];
-
-		// add link to the list of mentors / Special:ManageMentors
-		if ( $this->getConfig()->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_WIKITEXT ) {
-			$signupTitle = $this->mentorProvider->getSignupTitle();
-			if ( $signupTitle ) {
-				array_unshift( $links, $this->formatLink(
-					$signupTitle->getPrefixedText(),
-					$this->msg( 'growthexperiments-mentor-dashboard-resources-link-mentors-list' )->text()
-				) );
-			}
-		} elseif ( $this->getConfig()->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_STRUCTURED ) {
-			array_unshift( $links, $this->formatLink(
-				SpecialPage::getTitleFor( 'ManageMentors' )->getPrefixedText(),
-				$this->getUser()->isAllowed( 'managementors' ) ?
-					$this->msg( 'growthexperiments-mentor-dashboard-resources-link-manage-mentors' )->text()
-					: $this->msg( 'growthexperiments-mentor-dashboard-resources-link-view-mentor-list' )->text()
-			) );
-		}
 
 		return Html::rawElement(
 			'ul',

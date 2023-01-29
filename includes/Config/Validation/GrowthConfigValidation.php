@@ -45,12 +45,6 @@ class GrowthConfigValidation implements IConfigValidator {
 			'GEMentorshipEnabled' => [
 				'type' => 'bool',
 			],
-			'GEHomepageMentorsList' => [
-				'type' => '?string',
-			],
-			'GEHomepageManualAssignmentMentorsList' => [
-				'type' => '?string',
-			],
 			'GEHelpPanelLinks' => [
 				'type' => 'array<int,array<string,string>>',
 			],

@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWikiIntegrationTestCase;
 use User;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -48,7 +47,6 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 		int $minEditcount
 	) {
 		$this->setMwGlobals( [
-			'wgGEMentorProvider' => MentorProvider::PROVIDER_STRUCTURED,
 			'wgGEMentorshipAutomaticEligibility' => true,
 			'wgGEMentorshipMinimumAge' => $minAge,
 			'wgGEMentorshipMinimumEditcount' => $minEditcount

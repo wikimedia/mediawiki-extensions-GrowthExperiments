@@ -474,7 +474,6 @@
 		],
 		"SpecialPage_initList": [
 			"homepage",
-			"mentor",
 			"variant",
 			"welcomeSurvey"
 		],
@@ -2225,28 +2224,16 @@
 			"value": true
 		},
 		"GEMentorshipMinimumAge": {
-			"description": "Minimum tenure (in days) required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true and GEMentorProvider is structured. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
+			"description": "Minimum tenure (in days) required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
 			"value": 90
 		},
 		"GEMentorshipMinimumEditcount": {
-			"description": "Minimum number of edits required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true and GEMentorProvider is structured. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
+			"description": "Minimum number of edits required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
 			"value": 500
-		},
-		"GEHomepageMentorsList": {
-			"description": "Title of the wiki page that contains the list of auto-assigned mentors (cf. GEHomepageManualAssignmentMentorsList). May be null if no such page exists.",
-			"value": "Main_Page"
-		},
-		"GEHomepageManualAssignmentMentorsList": {
-			"description": "Title of the wiki page that contains the list of manually assigned mentors (cf. GEHomepageMentorsList). Null if no such page exists.",
-			"value": null
 		},
 		"GEStructuredMentorList": {
 			"description": "Title of the wiki page that has the mentor list in JSON format (used by StructuredMentorProvider)",
 			"value": "MediaWiki:GrowthMentors.json"
-		},
-		"GEMentorProvider": {
-			"description": "Migration variable. Controls which MentorProvider is used. One of MentorProvider::PROVIDER_* constants",
-			"value": "structured"
 		},
 		"GEMentorDashboardEnabled": {
 			"description": "Should users be allowed to access Special:MentorDashboard?",
@@ -2484,6 +2471,34 @@
 				"GrowthExperimentsWikiPageConfigLoader",
 				"GrowthExperimentsWikiPageConfigWriterFactory",
 				"GrowthExperimentsMultiConfig"
+			]
+		},
+		"ManageMentors": {
+			"class": "GrowthExperiments\\Specials\\SpecialManageMentors",
+			"services": [
+				"UserIdentityLookup",
+				"UserEditTracker",
+				"GrowthExperimentsMentorProvider",
+				"GrowthExperimentsMentorWriter",
+				"GrowthExperimentsReassignMenteesFactory",
+				"GrowthExperimentsMentorStatusManager"
+			]
+		},
+		"EnrollAsMentor": {
+			"class": "GrowthExperiments\\Specials\\SpecialEnrollAsMentor",
+			"services": [
+				"GrowthExperimentsMultiConfig",
+				"GrowthExperimentsMentorProvider",
+				"GrowthExperimentsMentorWriter"
+			]
+		},
+		"QuitMentorship": {
+			"class": "GrowthExperiments\\Specials\\SpecialQuitMentorshipStructured",
+			"services": [
+				"GrowthExperimentsReassignMenteesFactory",
+				"GrowthExperimentsMentorStore",
+				"GrowthExperimentsMentorProvider",
+				"GrowthExperimentsMentorWriter"
 			]
 		}
 	},

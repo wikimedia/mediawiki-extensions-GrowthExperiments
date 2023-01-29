@@ -52,24 +52,13 @@ class MentorTools extends BaseModule {
 	}
 
 	/**
-	 * @return bool
-	 */
-	private function isMentorListStructured(): bool {
-		return $this->getContext()->getConfig()->get( 'GEMentorProvider' ) ===
-			MentorProvider::PROVIDER_STRUCTURED;
-	}
-
-	/**
 	 * @return int|string
 	 */
 	private function getMentorWeight() {
 		$mentor = $this->mentorProvider
 			->newMentorFromUserIdentity( $this->getUser() );
 
-		if (
-			$this->isMentorListStructured() &&
-			!$mentor->getAutoAssigned()
-		) {
+		if ( !$mentor->getAutoAssigned() ) {
 			return self::WEIGHT_NONE;
 		}
 
@@ -81,6 +70,12 @@ class MentorTools extends BaseModule {
 	 */
 	protected function getBody() {
 		$weightOptions = [
+			[
+				'data' => self::WEIGHT_NONE,
+				'label' => $this->msg(
+					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none'
+				)->text()
+			],
 			[
 				'data' => MentorWeightManager::WEIGHT_LOW,
 				'label' => $this->msg(
@@ -100,14 +95,6 @@ class MentorTools extends BaseModule {
 				)->text(),
 			],
 		];
-		if ( $this->isMentorListStructured() ) {
-			array_unshift( $weightOptions, [
-				'data' => self::WEIGHT_NONE,
-				'label' => $this->msg(
-					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none'
-				)->text()
-			] );
-		}
 
 		return implode( "\n", [
 			Html::rawElement(

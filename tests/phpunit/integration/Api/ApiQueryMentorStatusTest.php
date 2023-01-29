@@ -23,7 +23,6 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->setMwGlobals( 'wgGEMentorDashboardEnabled', true );
-		$this->setMwGlobals( 'wgGEHomepageManualAssignmentMentorsList', null );
 	}
 
 	/**

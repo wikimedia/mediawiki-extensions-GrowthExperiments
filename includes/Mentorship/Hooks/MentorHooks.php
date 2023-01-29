@@ -12,10 +12,6 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\Specials\SpecialEnrollAsMentor;
-use GrowthExperiments\Specials\SpecialManageMentors;
-use GrowthExperiments\Specials\SpecialQuitMentorshipStructured;
-use GrowthExperiments\Specials\SpecialQuitMentorshipWikitext;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
@@ -23,7 +19,6 @@ use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
-use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -34,7 +29,6 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class MentorHooks implements
-	SpecialPage_initListHook,
 	LocalUserCreatedHook,
 	AuthChangeFormFieldsHook,
 	PageSaveCompleteHook,
@@ -245,54 +239,7 @@ class MentorHooks implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onSpecialPage_initList( &$list ) {
-		if ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_STRUCTURED ) {
-			// TODO: Move to extension.json once wikitext provider is removed
-			$list['ManageMentors'] = [
-				'class' => SpecialManageMentors::class,
-				'services' => [
-					'UserIdentityLookup',
-					'UserEditTracker',
-					'GrowthExperimentsMentorProvider',
-					'GrowthExperimentsMentorWriter',
-					'GrowthExperimentsReassignMenteesFactory',
-					'GrowthExperimentsMentorStatusManager'
-				]
-			];
-			$list['EnrollAsMentor'] = [
-				'class' => SpecialEnrollAsMentor::class,
-				'services' => [
-					'GrowthExperimentsMultiConfig',
-					'GrowthExperimentsMentorProvider',
-					'GrowthExperimentsMentorWriter',
-				]
-			];
-			$list['QuitMentorship'] = [
-				'class' => SpecialQuitMentorshipStructured::class,
-				'services' => [
-					'GrowthExperimentsReassignMenteesFactory',
-					'GrowthExperimentsMentorStore',
-					'GrowthExperimentsMentorProvider',
-					'GrowthExperimentsMentorWriter',
-				]
-			];
-		} elseif ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_WIKITEXT ) {
-			// TODO: Remove once wikitext provider is removed
-			$list['ReassignMentees'] = [
-				'class' => SpecialQuitMentorshipWikitext::class,
-				'services' => [
-					'GrowthExperimentsReassignMenteesFactory',
-					'GrowthExperimentsMentorProvider'
-				]
-			];
-		}
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function onListDefinedTags( &$tags ) {
-		// define the change tag unconditionally, in case a wiki switches back to PROVIDER_WIKITEXT
 		$tags[] = StructuredMentorWriter::CHANGE_TAG;
 	}
 
@@ -300,9 +247,7 @@ class MentorHooks implements
 	 * @inheritDoc
 	 */
 	public function onChangeTagsListActive( &$tags ) {
-		if ( $this->config->get( 'GEMentorProvider' ) === MentorProvider::PROVIDER_STRUCTURED ) {
-			$tags[] = StructuredMentorWriter::CHANGE_TAG;
-		}
+		$tags[] = StructuredMentorWriter::CHANGE_TAG;
 	}
 
 	/**
@@ -321,10 +266,7 @@ class MentorHooks implements
 	 * @inheritDoc
 	 */
 	public function onUserGetRights( $user, &$rights ) {
-		if (
-			$this->config->get( 'GEMentorProvider' ) !== MentorProvider::PROVIDER_STRUCTURED ||
-			!$this->wikiConfig->get( 'GEMentorshipAutomaticEligibility' )
-		) {
+		if ( !$this->wikiConfig->get( 'GEMentorshipAutomaticEligibility' ) ) {
 			return;
 		}
 

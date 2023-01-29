@@ -133,8 +133,7 @@ $wgUseInstantCommons = true;
 // Set up service URL for links.
 $wgGELinkRecommendationServiceUrl = 'https://api.wikimedia.org/service/linkrecommendation';
 
-// Default to structured mentor provider for CI tests, make it easy to enroll, and use Vue
-$wgGEMentorProvider = "structured";
+// Make it easy to enroll as a mentor in CI
 $wgGEMentorshipAutomaticEligibility = true;
 $wgGEMentorshipMinimumAge = 0;
 $wgGEMentorshipMinimumEditcount = 0;
