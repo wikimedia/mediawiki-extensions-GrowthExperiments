@@ -139,6 +139,10 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 
 	public function testGetUserImpactExpensive() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'PageViewInfo' );
+		// For convenience in this test, set a higher request limit. Needed so that
+		// the override of 'getPageData' can return the complete set of data for 6
+		// articles.
+		$this->overrideConfigValue( 'PageViewInfoWikimediaRequestLimit', 6 );
 
 		$status = StatusValue::newGood();
 		$testUser = $this->getMutableTestUser();

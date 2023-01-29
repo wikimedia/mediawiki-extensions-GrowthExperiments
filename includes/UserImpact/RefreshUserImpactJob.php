@@ -22,6 +22,7 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 
 	private UserImpactStore $userImpactStore;
 	private UserImpactLookup $userImpactLookup;
+	private UserImpactFormatter $userImpactFormatter;
 	private UserIdentityLookup $userIdentityLookup;
 	private LoggerInterface $logger;
 
@@ -53,6 +54,7 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$this->userImpactStore = $growthServices->getUserImpactStore();
 		$this->userImpactLookup = $growthServices->getUserImpactLookup();
+		$this->userImpactFormatter = $growthServices->getUserImpactFormatter();
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
 		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 
@@ -81,7 +83,7 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 			if ( $impactJson ) {
 				try {
 					$userImpact = UserImpact::newFromJsonArray( json_decode( $impactJson, true ) );
-					// Do not update the cache is it is already more recent.
+					// Do not update the cache if it is already more recent.
 					if ( $preloadedUserImpact
 						&& $preloadedUserImpact->getGeneratedAt() > $userImpact->getGeneratedAt()
 					) {
@@ -96,11 +98,24 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 				continue;
 			}
 
-			if ( !$userImpact ) {
+			if ( !$userImpact || !$this->isFresh( $userImpact ) ) {
 				$userImpact = $this->computeUserImpact( $userId );
 			}
 
 			if ( $userImpact ) {
+				// We don't want to cache all page view data captured by ::computeUserImpact; in a job queue
+				// context, this can contain up to 1000 articles of PageViewData (configured via
+				// GEUserImpactMaxArticlesToProcessForPageviews). Call
+				// the formatter to get just the data we need, and replace the dailyArticleViews with just the
+				// top entries.
+				$jsonData = $userImpact->jsonSerialize();
+				$sortedAndFiltered = $this->userImpactFormatter->sortAndFilter( $jsonData );
+				$jsonData['dailyArticleViews'] =
+					// Make sure dailyArticleViews includes both the top viewed articles and recently edited
+					// articles without page views. Those will both be used by UserImpactFormatter again when
+					// fetching the data to display.
+					$sortedAndFiltered['topViewedArticles'] + $sortedAndFiltered['recentEditsWithoutPageviews'];
+				$userImpact = UserImpact::newFromJsonArray( $jsonData );
 				$this->userImpactStore->setUserImpact( $userImpact );
 			}
 		}

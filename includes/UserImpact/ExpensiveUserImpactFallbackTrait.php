@@ -14,7 +14,9 @@ trait ExpensiveUserImpactFallbackTrait {
 
 	/** @inheritDoc */
 	public function getExpensiveUserImpact(
-		UserIdentity $user, int $flags = IDBAccessObject::READ_NORMAL
+		UserIdentity $user,
+		int $flags = IDBAccessObject::READ_NORMAL,
+		array $priorityArticles = []
 	): ?ExpensiveUserImpact {
 		$userImpact = $this->getUserImpact( $user, $flags );
 		if ( $userImpact instanceof ExpensiveUserImpact ) {

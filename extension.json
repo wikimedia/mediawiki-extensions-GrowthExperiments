@@ -288,10 +288,12 @@
 				"MainConfig",
 				"GrowthExperimentsUserImpactLookup_Computed",
 				"GrowthExperimentsUserImpactStore",
+				"GrowthExperimentsUserImpactFormatter",
 				"UserOptionsLookup",
 				"UserFactory",
 				"DBLoadBalancer",
-				"UserEditTracker"
+				"UserEditTracker",
+				"JobQueueGroup"
 			]
 		},
 		"mentor": {
@@ -2076,6 +2078,14 @@
 		"GERefreshUserImpactDataMaintenanceScriptEnabled": {
 			"description": "Feature flag to determine if the refreshUserImpactData.php maintenance script may run.",
 			"value": false
+		},
+		"GEUserImpactMaxArticlesToProcessForPageviews": {
+			"description": "The maximum number of articles to consider when fetching pageview data from the AQS service. Only relevant to the RefreshUserImpactJob. This doubles as a feature flag; set this value to 5 to have it use the same limit used in web requests where we refresh user impact data.",
+			"value": 1000
+		},
+		"GEUserImpactMaximumProcessTimeSeconds": {
+			"description": "The maximum amount of time, in seconds, that may be used to fetch page view data from AQS. Currently used in job queue context. Default is 5 minutes.",
+			"value": 300
 		},
 		"GEInfoboxTemplates": {
 			"description": "List of templates that provide Infobox functionality.",
