@@ -144,7 +144,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import '../../../vue-components/variables.less';
+@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-DataTable {
 	&__footer-actions {
@@ -176,7 +176,8 @@ module.exports = exports = {
 		caption {
 			text-align: left;
 			color: @color-accessory;
-			padding: @spacing-small 0;
+			// TODO review available tokens
+			padding: 0.5em 0;
 		}
 
 		&__sort-icon {

@@ -43,7 +43,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import '../../vue-components/variables.less';
+@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-ErrorDisplaySummary {
 	margin-bottom: 1em;
@@ -58,7 +58,7 @@ module.exports = exports = {
 	}
 
 	&__icon {
-		color: @colorYellow600;
+		color: @color-warning;
 		margin-right: 0.6em;
 	}
 }
