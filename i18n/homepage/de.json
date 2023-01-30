@@ -279,7 +279,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Diese Seite erlaubt es, {{GENDER:$1|dir}} einen neuen Benutzer zur Betreuung zuzuordnen. Es wird empfohlen, diese Funktion für Benutzer zu verwenden, die {{GENDER:$1|du}} kennst, oder für Benutzer, die {{GENDER:$1|du}} in einem Kurs betreust.",
 	"growthexperiments-homepage-claimmentee-mentee": "Benutzername des Betreuten",
 	"growthexperiments-homepage-claimmentee-reason": "Begründung für die Zuordnung des Betreuten",
-	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} Lotse/Lotsin wurde bereits geändert.Bist {{GENDER:$2|du}} sicher, dass {{GENDER:$2|du}} die Lotsin/den Lotsen erneut ändern willst?",
+	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} Lotse/Lotsin wurde bereits geändert. Bist {{GENDER:$2|du}} sicher, dass {{GENDER:$2|du}} die Lotsin/den Lotsen erneut ändern willst?",
 	"growthexperiments-claimmentee-confirm": "Ja, ich will die Lotsin/den Lotsen wirklich ändern",
 	"growthexperiments-log-name": "GrowthExperiments Log",
 	"growthexperiments-log-header": "Dies ist das Protokoll der Aktivitäten in der GrowthExperiments-Erweiterung.",

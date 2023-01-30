@@ -171,6 +171,7 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Önerilen düzenlemeleri bulmak için diğer ilgi alanlarını veya zorluk düzeylerini seçin.",
 	"growthexperiments-homepage-suggestededits-footer": "Diğer kullanıcılar bu maddeler üzerinde çalışılması gerektiğini belirtti. '''{{SITENAME}}''' sitesinin günlük '''$1 okuyucusu''' için daha iyi hâle getirmeye yardımcı olun.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Diğer kullanıcılar bu maddeler üzerinde çalışılması gerektiğini belirtti. '''{{SITENAME}}''' sitesinin okuyucuları için daha iyi hâle getirmeye yardımcı olun.",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "-",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1 bin",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1Mn",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1Mr",
