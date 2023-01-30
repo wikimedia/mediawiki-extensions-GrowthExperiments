@@ -19,7 +19,9 @@
 		// eslint-disable-next-line compat/compat
 		return new Promise( ( resolve, reject ) => {
 			const encodedUserId = encodeURIComponent( `#${userId}` );
-			const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${encodedUserId}` );
+			// eslint-disable-next-line compat/compat
+			const query = new URLSearchParams( { lang: mw.config.get( 'wgUserLanguage' ) } );
+			const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${encodedUserId}?${query.toString()}` );
 			watch( [ data, error ], ( [ dataValue, errorValue ] ) => {
 				if ( dataValue ) {
 					resolve( dataValue );

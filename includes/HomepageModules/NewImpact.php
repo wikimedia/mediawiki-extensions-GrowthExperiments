@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use Config;
+use Exception;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
@@ -401,13 +402,16 @@ class NewImpact extends BaseModule {
 	/**
 	 * Get the output of UserImpactFormatter::format(), with an in-process cache.
 	 * @return array
+	 * @throws Exception
 	 */
 	private function getFormattedUserImpact(): array {
 		if ( $this->formattedUserImpact !== false ) {
 			return $this->formattedUserImpact;
 		}
 		$userImpact = $this->getUserImpact();
-		$this->formattedUserImpact = $userImpact ? $this->userImpactFormatter->format( $userImpact ) : [];
+		$this->formattedUserImpact = $userImpact ?
+			$this->userImpactFormatter->format( $userImpact, $this->getContext()->getLanguage()->getCode() ) :
+			[];
 		return $this->formattedUserImpact;
 	}
 

@@ -3,7 +3,7 @@
 namespace GrowthExperiments\UserImpact;
 
 use DateTime;
-use Language;
+use Exception;
 use MWTimestamp;
 use stdClass;
 
@@ -15,26 +15,24 @@ class UserImpactFormatter {
 	private const PAGEVIEW_TOOL_BASE_URL = 'https://pageviews.wmcloud.org/';
 
 	private stdClass $AQSConfig;
-	private Language $contentLanguage;
 
 	/**
 	 * @param stdClass $AQSConfig
-	 * @param Language $contentLanguage
 	 */
 	public function __construct(
-		stdClass $AQSConfig,
-		Language $contentLanguage
+		stdClass $AQSConfig
 	) {
 		$this->AQSConfig = $AQSConfig;
-		$this->contentLanguage = $contentLanguage;
 	}
 
 	/**
 	 * Create a new UserImpactFormatter from a serialized ExpensiveUserImpact.
 	 * @param array|ExpensiveUserImpact $userImpact
+	 * @param string $languageCode The requesting user's language code to use in the pageviews url construction.
 	 * @return array
+	 * @throws Exception
 	 */
-	public function format( $userImpact ): array {
+	public function format( $userImpact, string $languageCode ): array {
 		if ( $userImpact instanceof ExpensiveUserImpact ) {
 			$jsonData = $userImpact->jsonSerialize();
 		} else {
@@ -42,10 +40,7 @@ class UserImpactFormatter {
 		}
 		$jsonData += $this->sortAndFilter( $jsonData );
 		unset( $jsonData['dailyArticleViews'] );
-		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
-		// Don't leak timezone preference data for arbitrary users (T328643)
-		// In a follow-up, we can remove the storage of the "timeZone" property entirely
-		unset( $jsonData['timeZone'] );
+		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData, $languageCode );
 		return $jsonData;
 	}
 
@@ -142,15 +137,19 @@ class UserImpactFormatter {
 
 	/**
 	 * @param array &$jsonData
+	 * @param string $languageCode The requesting user's language code to use in the pageviews url
 	 * @return void
+	 * @throws Exception
 	 */
 	private function fillDailyArticleViewsWithPageViewToolsUrl(
-		array &$jsonData
+		array &$jsonData,
+		string $languageCode
 	): void {
 		foreach ( $jsonData['topViewedArticles'] as $title => $articleData ) {
 			$latestPageViewDate = array_key_last( $articleData['views'] );
-			$jsonData['topViewedArticles'][$title]['pageviewsUrl'] =
-				$this->getPageViewToolsUrl( $title, $articleData['firstEditDate'], $latestPageViewDate );
+			$jsonData['topViewedArticles'][$title]['pageviewsUrl'] = $this->getPageViewToolsUrl(
+				$title, $articleData['firstEditDate'], $latestPageViewDate, $languageCode
+			);
 		}
 	}
 
@@ -160,9 +159,16 @@ class UserImpactFormatter {
 	 * @param string $latestPageViewDate Date of the most last page view data entry available for this article.
 	 *   Used for constructing the 'end' parameter for the URL, to avoid confusion with timezones and what "latest"
 	 *   means in the context of the pageviews application and Analytics Query Service.
+	 * @param string $languageCode The requesting user's language code to use in the pageviews url
 	 * @return string Full URL for the PageViews tool for the given title and start date
+	 * @throws Exception
 	 */
-	private function getPageViewToolsUrl( string $title, string $firstEditDate, string $latestPageViewDate ): string {
+	private function getPageViewToolsUrl(
+		string $title,
+		string $firstEditDate,
+		string $latestPageViewDate,
+		string $languageCode
+	): string {
 		$daysAgo = ComputedUserImpactLookup::PAGEVIEW_DAYS;
 		$dtiAgo = new DateTime( '@' . strtotime( "-$daysAgo days", MWTimestamp::time() ) );
 		$startDate = $dtiAgo->format( 'Y-m-d' );
@@ -171,7 +177,7 @@ class UserImpactFormatter {
 		}
 		return wfAppendQuery( self::PAGEVIEW_TOOL_BASE_URL, [
 			'project' => $this->AQSConfig->project,
-			'userlang' => $this->contentLanguage->getCode(),
+			'userlang' => $languageCode,
 			'start' => $startDate,
 			'end' => $latestPageViewDate,
 			'pages' => $title,

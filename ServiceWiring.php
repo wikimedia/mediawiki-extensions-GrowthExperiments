@@ -975,8 +975,7 @@ return [
 		MediaWikiServices $services
 	): UserImpactFormatter {
 		return new UserImpactFormatter(
-			$services->get( '_GrowthExperimentsAQSConfig' ),
-			$services->getContentLanguage()
+			$services->get( '_GrowthExperimentsAQSConfig' )
 		);
 	},
 

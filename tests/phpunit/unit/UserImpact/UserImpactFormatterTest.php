@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use Exception;
 use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
@@ -16,6 +17,9 @@ use MWTimestamp;
  */
 class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 
+	/**
+	 * @throws Exception
+	 */
 	public function testTopViewedArticles() {
 		$mockLanguage = $this->createNoOpMock( Language::class, [ 'getCode' ] );
 		$mockLanguage->method( 'getCode' )->willReturn( 'en' );
@@ -70,7 +74,7 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 
 		MWTimestamp::setFakeTime( '2022-08-25 12:00:00' );
 
-		$json = $formatter->format( $userImpact );
+		$json = $formatter->format( $userImpact, 'en' );
 		$expectedTopViewedArticles = [
 			'Article1' => $dailyArticleViews['Article1'] + [ 'viewsCount' => 350 ] + $pageViewUrl(
 					'Article1', array_key_last( $dailyArticleViews['Article1' ]['views'] )
@@ -84,7 +88,7 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 880, $json['topViewedArticlesCount'] );
 
 		MWTimestamp::setFakeTime( '2022-10-28 12:00:00' );
-		$json = $formatter->format( $userImpact );
+		$json = $formatter->format( $userImpact, 'en' );
 		$this->assertSame(
 			'https://pageviews.wmcloud.org/?project=enwiki&userlang=en&start=2022-08-29&end=2022-08-30&pages=Article1',
 			$json['topViewedArticles']['Article1']['pageviewsUrl']
@@ -140,7 +144,7 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 
 		MWTimestamp::setFakeTime( '2022-08-15 12:00:00' );
 
-		$json = $formatter->format( $userImpact );
+		$json = $formatter->format( $userImpact, 'en' );
 		$expectedRecentEditsWithoutPageviews = [
 			'Article8' => $unsetViews( $dailyArticleViews['Article8'] ),
 			'Article2' => $unsetViews( $dailyArticleViews['Article2'] ),

@@ -66,7 +66,12 @@ class UserImpactHandler extends SimpleHandler {
 	public function run( UserIdentity $user ) {
 		$start = microtime( true );
 		$userImpact = $this->getUserImpact( $user );
-		$formattedJsonData = $this->userImpactFormatter->format( $userImpact );
+		$validParams = $this->getValidatedParams();
+		$pageviewsUrlDisplayLanguageCode = 'en';
+		if ( $validParams[ 'lang' ] ) {
+			$pageviewsUrlDisplayLanguageCode = $validParams[ 'lang' ];
+		}
+		$formattedJsonData = $this->userImpactFormatter->format( $userImpact, $pageviewsUrlDisplayLanguageCode );
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
 		);
@@ -148,6 +153,11 @@ class UserImpactHandler extends SimpleHandler {
 				ParamValidator::PARAM_REQUIRED => true,
 				UserDef::PARAM_ALLOWED_USER_TYPES => [ 'id' ],
 				UserDef::PARAM_RETURN_OBJECT => true,
+			],
+			'lang' => [
+				self::PARAM_SOURCE => 'query',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
 			],
 			'regenerate' => [
 				self::PARAM_SOURCE => 'query',
