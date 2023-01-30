@@ -13,7 +13,7 @@
 				:thanks-url="thanksUrl"
 			></score-cards>
 		</div>
-		<div v-if="data">
+		<div v-if="data && hasIntl">
 			<c-text
 				class="ext-growthExperiments-NewImpact__section-title ext-growthExperiments-increaseSpecificity"
 				as="h3"
@@ -97,8 +97,10 @@ module.exports = exports = {
 		// platform or the viewport.
 		const isMobileHomepage = mw.config.get( 'homepagemobile' );
 		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
+		const hasIntl = inject( 'BROWSER_HAS_INTL' );
 
 		return {
+			hasIntl,
 			DEFAULT_STREAK_TIME_FRAME,
 			isMobileHomepage,
 			renderThirdPerson

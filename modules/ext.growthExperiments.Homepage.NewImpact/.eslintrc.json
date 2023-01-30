@@ -40,6 +40,9 @@
 		},
 		{
 			"files": [ "**/*.test.js" ],
+			"rules": {
+				"compat/compat": "off"
+			},
 			"env": {
 				"jest": true
 			}

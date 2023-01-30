@@ -141,9 +141,11 @@ module.exports = exports = {
 	setup() {
 		const userName = inject( 'RELEVANT_USER_USERNAME' );
 		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
+		const hasIntl = inject( 'BROWSER_HAS_INTL' );
 		const log = inject( '$log' );
 
 		return {
+			hasIntl,
 			userName,
 			cdxIconEdit,
 			cdxIconUserTalk,
@@ -195,31 +197,34 @@ module.exports = exports = {
 			return NO_DATA_CHARACTER;
 		},
 		bestStreakFormattedDates() {
-			const today = new Date(),
-				locale = getIntlLocale(),
-				// eslint-disable-next-line compat/compat
-				yearOnlyFormat = new Intl.DateTimeFormat( locale, { year: 'numeric' } ),
-				// eslint-disable-next-line compat/compat
-				sameYearFormat = new Intl.DateTimeFormat( locale, { month: 'short', day: 'numeric' } ),
-				// eslint-disable-next-line compat/compat
-				standardFormat = new Intl.DateTimeFormat( locale, { dateStyle: 'medium' } );
+			if ( this.hasIntl ) {
+				const today = new Date(),
+					locale = getIntlLocale(),
 
-			let { start, end } = this.data.longestEditingStreak.datePeriod;
-			start = new Date( start );
-			end = new Date( end );
+					yearOnlyFormat = new Intl.DateTimeFormat( locale, { year: 'numeric' } ),
 
-			// Rely on DateTimeFormat.formatRange() for range formatting. It will handle pretty
-			// much everything it can be expected to handle: formatting the two dates, de-duplicating
-			// shared segments of the dates when reasonable for a given date format, selecting
-			// the separator, using a non-Gregorian calendar when appropriate.
-			//
-			// If the streak is in the current year, don't show the year. Note we can't use
-			// Date.getYear() as it is not necessarily the same as the local year.
-			if ( yearOnlyFormat.format( end ) === yearOnlyFormat.format( today ) ) {
-				return sameYearFormat.formatRange( start, end );
-			} else {
-				return standardFormat.formatRange( start, end );
+					sameYearFormat = new Intl.DateTimeFormat( locale, { month: 'short', day: 'numeric' } ),
+
+					standardFormat = new Intl.DateTimeFormat( locale, { dateStyle: 'medium' } );
+
+				let { start, end } = this.data.longestEditingStreak.datePeriod;
+				start = new Date( start );
+				end = new Date( end );
+
+				// Rely on DateTimeFormat.formatRange() for range formatting. It will handle pretty
+				// much everything it can be expected to handle: formatting the two dates, de-duplicating
+				// shared segments of the dates when reasonable for a given date format, selecting
+				// the separator, using a non-Gregorian calendar when appropriate.
+				//
+				// If the streak is in the current year, don't show the year. Note we can't use
+				// Date.getYear() as it is not necessarily the same as the local year.
+				if ( yearOnlyFormat.format( end ) === yearOnlyFormat.format( today ) ) {
+					return sameYearFormat.formatRange( start, end );
+				} else {
+					return standardFormat.formatRange( start, end );
+				}
 			}
+			return null;
 		},
 		longestEditingStreakFirstParagraph() {
 			return this.renderThirdPerson ?
@@ -227,8 +232,8 @@ module.exports = exports = {
 				this.$i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', this.userName ).text();
 		},
 		longestEditingStreakSecondParagraph() {
-			// Show the second information paragraph only if a longestEditingStreak is informed
-			if ( this.data && this.data.longestEditingStreak ) {
+			// Show the second information paragraph only if bestStreakFormattedDates is computed.
+			if ( this.bestStreakFormattedDates ) {
 				let args = [ this.bestStreakFormattedDates ];
 				let message = null;
 				if ( this.data.longestEditingStreak.datePeriod.days === 1 ) {

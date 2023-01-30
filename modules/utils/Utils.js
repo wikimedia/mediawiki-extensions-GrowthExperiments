@@ -179,6 +179,19 @@
 	}
 
 	/**
+	 * Check wether Intl object and the APIs we use are present in the browser.
+	 *
+	 * @return {boolean}
+	 */
+	function hasIntl() {
+		return typeof Intl !== 'undefined' &&
+			Intl !== null &&
+			( 'DateTimeFormat' in Intl ) &&
+			( 'NumberFormat' in Intl ) &&
+			( 'Locale' in Intl );
+	}
+
+	/**
 	 * Get a local object for use with Intl. Should only be called when the browser supports Intl.
 	 *
 	 * @return {Intl.Locale}
@@ -236,7 +249,8 @@
 		getUserVariant: getUserVariant,
 		formatTitle: formatTitle,
 		getSuggestedEditsFeedUrl: getSuggestedEditsFeedUrl,
-		getIntlLocale: getIntlLocale
+		getIntlLocale: getIntlLocale,
+		hasIntl: hasIntl
 	};
 
 }() );

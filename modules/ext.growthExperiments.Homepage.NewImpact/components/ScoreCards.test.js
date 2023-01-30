@@ -12,16 +12,17 @@ const ScoreCards = require( './ScoreCards.vue' );
 const useUserImpact = require( '../composables/useUserImpact.js' );
 const jsonData = require( '../__mocks__/serverExportedData.json' );
 
-const renderComponent = ( props ) => {
+const renderComponent = ( { props = {}, provide = {} } = {} ) => {
 	return mount( ScoreCards, {
 		props,
 		global: {
-			provide: {
+			provide: Object.assign( {
 				RENDER_MODE: 'desktop',
 				RELEVANT_USER_USERNAME: 'Alice',
 				RENDER_IN_THIRD_PERSON: false,
+				BROWSER_HAS_INTL: true,
 				$log: jest.fn()
-			},
+			}, provide ),
 			mocks: {
 				$filters: {
 					convertNumber: jest.fn( ( x ) => `${x}` )
@@ -47,17 +48,21 @@ describe( 'ScoreCards', () => {
 	} );
 	it( 'renders correctly without data', () => {
 		const wrapper = renderComponent( {
-			thanksUrl: 'http://thanks.url',
-			contributionsUrl: 'http://contributions.url',
-			data: null
+			props: {
+				thanksUrl: 'http://thanks.url',
+				contributionsUrl: 'http://contributions.url',
+				data: null
+			}
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );
 	it( 'renders correctly with data', () => {
 		const wrapper = renderComponent( {
-			thanksUrl: 'http://thanks.url',
-			contributionsUrl: 'http://contributions.url',
-			data: useUserImpact( 60, jsonData ).value
+			props: {
+				thanksUrl: 'http://thanks.url',
+				contributionsUrl: 'http://contributions.url',
+				data: useUserImpact( 60, jsonData ).value
+			}
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );
