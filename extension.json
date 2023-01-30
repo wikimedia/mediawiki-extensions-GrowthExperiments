@@ -472,12 +472,13 @@
 			"homepage",
 			"mentordashboarddiscovery"
 		],
+		"SpecialCreateAccountBenefits": "variant",
 		"SpecialPage_initList": [
 			"homepage",
-			"variant",
 			"welcomeSurvey"
 		],
 		"SpecialPageBeforeExecute": [
+			"variant",
 			"welcomeSurvey"
 		],
 		"UserGetDefaultOptions": [

@@ -5,18 +5,19 @@ namespace GrowthExperiments;
 use Config;
 use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
-use GrowthExperiments\Specials\SpecialCreateAccountCampaign;
 use IContextSource;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Hook\PostLoginRedirectHook;
 use MediaWiki\Hook\SkinAddFooterLinksHook;
+use MediaWiki\Hook\SpecialCreateAccountBenefitsHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
-use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
+use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsManager;
 use RequestContext;
@@ -28,13 +29,14 @@ use Skin;
  */
 class VariantHooks implements
 	AuthChangeFormFieldsHook,
-	PostLoginRedirectHook,
 	GetPreferencesHook,
 	LocalUserCreatedHook,
-	SpecialPage_initListHook,
-	ResourceLoaderGetConfigVarsHook,
+	PostLoginRedirectHook,
 	ResourceLoaderExcludeUserOptionsHook,
-	SkinAddFooterLinksHook
+	ResourceLoaderGetConfigVarsHook,
+	SkinAddFooterLinksHook,
+	SpecialCreateAccountBenefitsHook,
+	SpecialPageBeforeExecuteHook
 {
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
@@ -121,16 +123,6 @@ class VariantHooks implements
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$vars['wgGEUserVariants'] = self::VARIANTS;
 		$vars['wgGEDefaultUserVariant'] = $config->get( 'GEHomepageDefaultVariant' );
-	}
-
-	/** @inheritDoc */
-	public function onSpecialPage_initList( &$list ) {
-		// FIXME: Temporary hack for T284740, should be removed after the end of the campaign.
-		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig ) ) {
-			$list['CreateAccount']['class'] = SpecialCreateAccountCampaign::class;
-			$list['CreateAccount']['calls']['setCampaignConfig'] = [ $this->campaignConfig ];
-		}
 	}
 
 	/**
@@ -281,7 +273,53 @@ class VariantHooks implements
 		if ( $key !== 'info' || !self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig ) ) {
 			return;
 		}
-		$footerItems['signupcampaign-legal'] = SpecialCreateAccountCampaign::getLegalFooter( $context );
+		$footerItems['signupcampaign-legal'] = CampaignBenefitsBlock::getLegalFooter( $context );
 		$context->getOutput()->addModuleStyles( [ 'ext.growthExperiments.Account.styles' ] );
+	}
+
+	/** @inheritDoc */
+	public function onSpecialCreateAccountBenefits( ?string &$html, array $info, array &$options ) {
+		if ( !$this->shouldShowNewLandingPageHtml( $info['context'] ) ) {
+			return true;
+		}
+		$options['beforeForm'] = $info['context']->getSkin() instanceof SkinMinerva;
+		$benefitsBlock = new CampaignBenefitsBlock( $info['context'], $info['form'], $this->campaignConfig );
+		$html = $benefitsBlock->getHtml();
+		return false;
+	}
+
+	/**
+	 * Check if the campaign field is set and if the geNewLandingHtml field is true.
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	private function shouldShowNewLandingPageHtml( IContextSource $context ): bool {
+		$campaignValue = $context->getRequest()->getRawVal( 'campaign' );
+		$campaignName = $this->campaignConfig->getCampaignIndexFromCampaignTerm( $campaignValue );
+		if ( $campaignName ) {
+			$signupPageTemplate = $this->campaignConfig->getSignupPageTemplate( $campaignName );
+			if ( in_array( $signupPageTemplate, [ 'hero', 'video' ], true ) ) {
+				return true;
+			} elseif ( $signupPageTemplate !== null ) {
+				Util::logText( 'Unknown signup page template',
+					[ 'campaign' => $campaignName, 'template' => $signupPageTemplate ] );
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Remove the default Minerva "warning" that only serves aesthetic purposes but
+	 * do not remove real warnings.
+	 * @inheritDoc
+	 */
+	public function onSpecialPageBeforeExecute( $special, $subPage ) {
+		if ( $special->getName() === 'CreateAccount'
+			&& $this->shouldShowNewLandingPageHtml( $special->getContext() )
+			&& $special->getSkin() instanceof SkinMinerva
+			&& $special->getRequest()->getVal( 'warning' ) === 'mobile-frontend-generic-login-new'
+		) {
+			$special->getRequest()->setVal( 'warning', null );
+		}
 	}
 }

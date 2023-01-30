@@ -2,13 +2,25 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use GrowthExperiments\Specials\SpecialCreateAccountCampaign;
+use GrowthExperiments\Specials\CampaignBenefitsBlock;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 
 /**
- * Wrapper for GECampaigns, used to retrieve campaign-specific information
+ * Wrapper for the GECampaigns PHP / community configuration variable, used to retrieve
+ * campaign-specific information.
+ * The variable should be an array with entries in the format
+ *
+ *   <campaign index> => [
+ *       'pattern' => <regex>,
+ *       // ...other campaign settings
+ *   ]
+ *
+ * The pattern is used to select the relevant entry based on the campaign name (which can be used
+ * in the 'campaign' URL query parameter during registration, and will be recorded in user
+ * preferences). The other settings can be used to select a landing page and modify the behavior
+ * of various signup-related features.
  */
 class CampaignConfig {
 
@@ -242,7 +254,7 @@ class CampaignConfig {
 	 * Get the ID of a custom template to use for the signup page.
 	 * @param string $campaign
 	 * @return string|null
-	 * @see SpecialCreateAccountCampaign::getCampaignTemplateHtml()
+	 * @see CampaignBenefitsBlock::getCampaignTemplateHtml()
 	 */
 	public function getSignupPageTemplate( string $campaign ): ?string {
 		return $this->getConfigValue( $campaign, 'signupPageTemplate' );
