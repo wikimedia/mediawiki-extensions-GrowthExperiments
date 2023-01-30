@@ -7,6 +7,7 @@
 			"Leduyquang753",
 			"Minh Nguyen",
 			"NguoiDungKhongDinhDanh",
+			"Phjtieudoc",
 			"Tuanminh01",
 			"Tuyenduong97",
 			"Vinhtantran"
@@ -17,7 +18,7 @@
 	"welcomesurvey-save-confirmation-text": "Câu trả lời của bạn sẽ giúp chúng tôi cung cấp cho bạn những cách hữu ích để bắt đầu trên Wikipedia.",
 	"welcomesurvey-subtitle": "{{GENDER:}}Hãy giúp chúng tôi cải thiện trải nghiệm của bạn bằng cách trả lời một vài câu hỏi. Bạn có thể bỏ qua khảo sát này.",
 	"welcomesurvey-save-btn": "Kết thúc",
-	"welcomesurvey-skip-btn": "{{GENDER:$1}}Bỏ qua khảo sát này",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Bỏ qua}} khảo sát này",
 	"welcomesurvey-close-btn": "Đóng và quay lại $1",
 	"welcomesurvey-sidebar-privacy-title": "Chúng tôi tôn trọng sự riêng tư của bạn",
 	"welcomesurvey-sidebar-privacy-text": "Tổ chức Wikimedia sẽ sử dụng các câu trả lời {{GENDER:$2|của bạn}} để giúp bạn bắt đầu sửa đổi {{SITENAME}}. $1.",
@@ -52,5 +53,6 @@
 	"welcomesurvey-question-email-help": "Chúng tôi nhận thấy bạn đã không nhập một địa chỉ thư điện tử khi tạo tài khoản này. Địa chỉ thư điện tử <strong>rất cần thiết</strong>, vì bạn sẽ cần nhập địa chỉ thư điện tử để khôi phục tài khoản nếu bạn mất mật khẩu. LƯU Ý: Địa chỉ thư điện tử của bạn sẽ không được tiết lộ khi người dùng khác liên lạc với bạn.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} khả dụng trong hơn 300 ngôn ngữ. Bạn có đọc và viết được ngôn ngữ nào khác không?",
 	"welcomesurvey-question-languages-placeholder": "Thêm tối đa {{PLURAL:$1|một ngôn ngữ|$1 ngôn ngữ}}…",
-	"welcomesurvey-question-languages-maximum": "Bạn đã thêm số lượng ngôn ngữ tối đa."
+	"welcomesurvey-question-languages-maximum": "Bạn đã thêm số lượng ngôn ngữ tối đa.",
+	"welcomesurvey-mideditsignup-button-close": "Đóng"
 }

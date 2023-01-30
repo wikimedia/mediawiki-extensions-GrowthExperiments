@@ -114,7 +114,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Plus d’informations sur la plus long séquence",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|}}Votre plus longue séquence actuelle est de $2 jour{{PLURAL:$2||s}} que {{GENDER:$1|}}vous avez consacré{{PLURAL:$2||s}} dans la période du $3.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "La plus longue séquence actuelle est $1 jour{{PLURAL:$1| |jours}}, qui a été atteinte dans la période du $2.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|}}Votre plus longue séquence actuelle est de un jour que {{GENDER:$1|}}vous avez consacré le $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|}}Votre plus longue séquence actuelle est de un jour que {{GENDER:$1|}}vous avez consacré le $2.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "La plus longue séquence actuelle est de un jour, qui a été atteinte dans le $1.",
 	"growthexperiments-homepage-impact-subheader-text": "Les plus vus (depuis {{GENDER:$1|}}vos modifications)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Les plus consultés (depuis la modification)",

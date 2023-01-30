@@ -93,7 +93,7 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "এটা {{GENDER:$1|আপনার}} বিরতিহীনভাবে প্রতিদিন অন্তত একটি সম্পাদনা করার রেকর্ড।",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "দীর্ঘতম বিরতিহীন অবদান সম্পর্কে আরো তথ্য",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|আপনার}} বর্তমান দীর্ঘতম বিরতিহীন অবদান রাখার রেকর্ড {{PLURAL:$2|দিন}} যা {{GENDER:$1|আপনি}} $3-এর মধ্যে অর্জন করেছেন।",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|আপনার}} বর্তমান দীর্ঘতম বিরতিহীন অবদান রাখার রেকর্ড এক দিন যা {{GENDER:$1|আপনি}} $3-এর মধ্যে অর্জন করেছেন।",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|আপনার}} বর্তমান দীর্ঘতম বিরতিহীন অবদান রাখার রেকর্ড এক দিন যা {{GENDER:$1|আপনি}} $2-এর মধ্যে অর্জন করেছেন।",
 	"growthexperiments-homepage-impact-subheader-text": "সর্বোচ্চ পরিদর্শন সংখ্যা ({{GENDER:$1|আপনার}} সম্পাদনার পর থেকে)",
 	"growthexperiments-homepage-impact-subheader-subtext": "শেষ ৬০ দিনে {{GENDER:$1|আপনার}} অবদান দেখা হয়েছে যতবার:",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|আপনার}} সব সম্পাদনা দেখুন ($1টি)",
