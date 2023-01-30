@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Mentorship\Hooks;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;
@@ -27,9 +26,6 @@ class MentorUserOptionsHooks implements
 		$preferences[ MentorPageMentorManager::MENTORSHIP_ENABLED_PREF ] = [
 			'type' => 'api'
 		];
-		$preferences[ MentorWeightManager::MENTORSHIP_WEIGHT_PREF ] = [
-			'type' => 'api',
-		];
 		$preferences[ MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF ] = [
 			'type' => 'api',
 		];
@@ -41,7 +37,6 @@ class MentorUserOptionsHooks implements
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		$defaultOptions += [
 			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF => 1,
-			MentorWeightManager::MENTORSHIP_WEIGHT_PREF => MentorWeightManager::MENTORSHIP_DEFAULT_WEIGHT,
 		];
 	}
 
@@ -51,7 +46,6 @@ class MentorUserOptionsHooks implements
 		Context $context
 	): void {
 		$keysToExclude = array_merge( $keysToExclude, [
-			MentorWeightManager::MENTORSHIP_WEIGHT_PREF,
 			MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF,
 		] );
 	}

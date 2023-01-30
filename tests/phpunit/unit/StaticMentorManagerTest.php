@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\WikiConfigException;
@@ -26,14 +26,14 @@ class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 			'text 1',
 			'',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 		$mentor2 = new Mentor(
 			$this->getUser( 'BarMentor' ),
 			'text 2',
 			'',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 		$mentorManager = new StaticMentorManager( [ 'Foo' => $mentor1, 'Bar' => $mentor2 ] );
 		$this->assertSame( $mentor1, $mentorManager->getMentorForUser( $this->getUser( 'Foo' ) ) );
@@ -51,14 +51,14 @@ class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 			'text 1',
 			'',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 		$mentor2 = new Mentor(
 			$this->getUser( 'BarMentor' ),
 			'text 2',
 			'',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 		$mentorManager = new StaticMentorManager( [ 'Foo' => $mentor1, 'Bar' => $mentor2 ] );
 		$this->assertSame( $mentor1, $mentorManager->getMentorForUserSafe( $this->getUser( 'Foo' ) ) );
