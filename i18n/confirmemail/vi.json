@@ -4,7 +4,8 @@
 			"Bluetpp",
 			"Minh Nguyen",
 			"NguoiDungKhongDinhDanh",
-			"Tuanminh01"
+			"Tuanminh01",
+			"Phjtieudoc"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|đây là gì?]])",
@@ -17,7 +18,11 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Chào}} $2,\n\nCảm ơn bạn đã thêm địa chỉ thư điện tử vào tài khoản {{SITENAME}}, được đăng ký từ địa chỉ IP $1.\n\nVui lòng nhấp vào nút bên dưới để xác nhận đây là địa chỉ thư điện tử bạn muốn liên kết với tài khoản của mình “$2”:\n\n$3\n\nLưu ý: mã xác nhận này <strong>hết hạn vào $4</strong>.\n\nXin cảm ơn,\n\n{{SITENAME}}\n\n----\n\nĐể hủy xác nhận địa chỉ thư điện tử (vì bạn không đăng ký tài khoản hoặc vì bất kỳ lý do nào khác), nhấp vào liên kết hủy này:\n\n$5",
 	"growthexperiments-signupcampaign-title": "Cảm ơn bạn vì đã quyên góp! Hãy gia nhập cộng đồng các biên tập viên giúp Wikipedia trở nên tuyệt vời hơn ngay hôm nay",
 	"growthexperiments-signupcampaign-body": "Sửa đổi Wikipedia có thể chỉ đơn giản là việc thêm một liên kết hoặc thay đổi một từ. Hãy nhận gợi ý bài viết theo chủ đề bạn quan tâm sau khi tạo tài khoản!",
+	"growthexperiments-marketingvideocampaign-title": "Wikipedia được xây dựng bởi những người như bạn",
+	"growthexperiments-marketingvideocampaign-body": "280.000 biên tập viên tình nguyện mỗi tháng - bạn sẽ tham gia cùng họ chứ?\n\nChúng tôi biết rằng trải nghiệm thực hiện sửa đổi đầu tiên của bạn thường rất đáng sợ, nhưng nó thực sự khá dễ dàng. Chỉ cần hỏi các biên tập viên tận tuỵ của chúng tôi, họ sẽ cho bạn biết về điều đó trong video này:",
+	"growthexperiments-marketingvideocampaign-body-mobile": "Hàng nghìn người như bạn là những người xây dựng Wikipedia. Bạn sẽ tham gia cùng họ chứ?\n\nĐây là tin nhắn từ các biên tập viên của chúng tôi gửi cho bạn:",
 	"growthexperiments-signupcampaign-bullet1": "Các bài viết gợi ý theo chủ đề bạn quan tâm",
 	"growthexperiments-signupcampaign-bullet2": "Yêu cầu trợ giúp từ một biên tập viên có kinh nghiệm",
-	"growthexperiments-signupcampaign-bullet3": "Bắt đầu với những sửa đổi nhỏ, dễ dàng"
+	"growthexperiments-signupcampaign-bullet3": "Bắt đầu với những sửa đổi nhỏ, dễ dàng",
+	"growthexperiments-campaigns-footer": "Bằng cách tạo tài khoản {{GENDER:|của bạn}} trên trang này, tài khoản này sẽ được liên kết với chiến dịch này cho mục đích trải nghiệm và phân tích."
 }

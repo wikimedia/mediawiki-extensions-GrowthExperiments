@@ -4,6 +4,7 @@
 			"Chinamoonroll"
 		]
 	},
+	"growthexperiments-desc": "Ekstensi niki misi uji coba ané kajalanang olih tim Growth.",
 	"growthexperiments-edit-config-title": "Uah konfigurasi Growth",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Sané ungkur kaanyarin olih [[User:$1|$1]] $2 ([$4 binayan])",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Sané ungkur kaanyarin olih anganggé tan kauningin $1 ([$3 binayan]).",
@@ -12,6 +13,7 @@
 	"growthexperiments-edit-config-help-panel": "Pangaturan panel wantuan",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Duur kaca",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Betén kaca",
+	"growthexperiments-edit-config-help-panel-view-more": "Kaca tatujon antuk \"Tingalin suratan wantuan liyanan\"",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Pabligbagan méntor",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Méja wantuan",
 	"growthexperiments-edit-config-help-panel-links": "Tautan panel wantuan",

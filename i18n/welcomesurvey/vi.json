@@ -9,7 +9,8 @@
 			"Tuanminh01",
 			"Tuyenduong97",
 			"Vinhtantran",
-			"NguoiDungKhongDinhDanh"
+			"NguoiDungKhongDinhDanh",
+			"Phjtieudoc"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1}}Chào mừng $1!",
@@ -17,7 +18,7 @@
 	"welcomesurvey-save-confirmation-text": "Câu trả lời của bạn sẽ giúp chúng tôi cung cấp cho bạn những cách hữu ích để bắt đầu trên Wikipedia.",
 	"welcomesurvey-subtitle": "{{GENDER:}}Hãy giúp chúng tôi cải thiện trải nghiệm của bạn bằng cách trả lời một vài câu hỏi. Bạn có thể bỏ qua khảo sát này.",
 	"welcomesurvey-save-btn": "Kết thúc",
-	"welcomesurvey-skip-btn": "{{GENDER:$1}}Bỏ qua khảo sát này",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Bỏ qua}} khảo sát này",
 	"welcomesurvey-close-btn": "Đóng và quay lại $1",
 	"welcomesurvey-sidebar-privacy-title": "Chúng tôi tôn trọng sự riêng tư của bạn",
 	"welcomesurvey-sidebar-privacy-text": "Tổ chức Wikimedia sẽ sử dụng các câu trả lời {{GENDER:$2|của bạn}} để giúp bạn bắt đầu sửa đổi {{SITENAME}}. $1.",

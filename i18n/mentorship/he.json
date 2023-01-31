@@ -93,7 +93,7 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "כן, לשייך את החניכים שלי למישהו אחר",
 	"growthexperiments-quit-mentorship-success": "החניכים שלך ישויכו לחונכים אחרים בעוד זמן קצר.",
 	"growthexperiments-quit-mentorship-no-mentees": "אין {{GENDER:|לך}} עכשיו חניכים.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "{{GENDER:$1|החונך הקודם שלך פרש|החונכת הקודמת שלך פרשה}} מאתר {{SITENAME}}.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "{{GENDER:$1|החונך הקודם שלך פרש|החונכת הקודמת שלך פרשה}} מחונכות.",
 	"echo-category-title-ge-mentorship": "חונכות",
 	"echo-pref-tooltip-ge-mentorship": "התראות ששייכות לאפשרויות החונכות שמתוחזקות על־ידי צוות הצמיחה. ההתראה הזאת מודיעה לך שנקלטת בתור חניך או שאחד מהחניכים שלך נקלט על־ידי מישהו אחר.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|החניך|החניכה}} שלך, $3, שויך {{GENDER:$2|למשתמש|למשתמשת}} $1.",
