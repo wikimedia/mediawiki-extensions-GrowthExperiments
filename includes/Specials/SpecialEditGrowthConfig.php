@@ -569,6 +569,17 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		] );
 
 		foreach ( [ 'mos', 'editing', 'images', 'references', 'articlewizard' ] as $position => $type ) {
+			// Messages used here (giving grep a chance to find usages):
+			// * growthexperiments-edit-config-help-panel-links-mos-title
+			// * growthexperiments-edit-config-help-panel-links-mos-label
+			// * growthexperiments-edit-config-help-panel-links-editing-title
+			// * growthexperiments-edit-config-help-panel-links-editing-label
+			// * growthexperiments-edit-config-help-panel-links-images-title
+			// * growthexperiments-edit-config-help-panel-links-images-label
+			// * growthexperiments-edit-config-help-panel-links-references-title
+			// * growthexperiments-edit-config-help-panel-links-references-label
+			// * growthexperiments-edit-config-help-panel-links-articlewizard-title
+			// * growthexperiments-edit-config-help-panel-links-articlewizard-label
 			$descriptors = array_merge( $descriptors, [
 				"geconfig-GEHelpPanelLinks-$position-title" => [
 					'type' => 'title',
