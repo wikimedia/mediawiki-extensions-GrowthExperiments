@@ -22,7 +22,8 @@ module.exports = function ( grunt ) {
 		},
 		stylelint: {
 			all: [
-				'modules/**/*.{less,vue}'
+				'modules/**/*.{less,vue}',
+				'docs/component-demos/**/*.{less,vue}'
 			]
 		},
 		banana: {

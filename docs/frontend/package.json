@@ -1,0 +1,23 @@
+{
+	"name": "growthexperiments-docs",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"components:build": "vite build --config vite.components.config.js --outDir dist",
+		"components:lint": "eslint component-demos/**",
+		"docs:build": "vitepress build docs",
+		"docs:dev": "vitepress dev docs",
+		"docs:preview": "vitepress preview docs"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "4.0.0",
+		"@wikimedia/codex": "^0.5.0",
+		"@wikimedia/codex-design-tokens": "^0.5.0",
+		"@wikimedia/codex-icons": "^0.5.0",
+		"eslint": "^8.33.0",
+		"less": "2.5.3",
+		"vite": "4.1.1",
+		"vitepress": "1.0.0-alpha.45",
+		"vue": "3.2.37"
+	}
+}
