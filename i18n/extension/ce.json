@@ -4,7 +4,6 @@
 			"Умар"
 		]
 	},
-	"growthexperiments-config-validator-error": "Таллам $1 гӀалатца чекхдели: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "Хьоьжу, <code>$1</code> хӀокхуьнга <code>$2</code>, иза ду <code>$3</code>",
 	"growthexperiments-edit-config-title": "\"Кхиаран\" конфигураци хийца",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: ТӀаьхьара карлайаккхар [[User:$1|$1]] $2.",
@@ -45,12 +44,9 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Керла агӀо кхолла Ӏамош йолу Ӏалашонан агӀонан тӀе хьажорг",
 	"growthexperiments-edit-config-homepage-intro-links-image": "БӀаьран редактор чохь сурт тӀетоха Ӏамош йолу Ӏалашонан агӀонан тӀе хьажорг",
 	"growthexperiments-edit-config-mentorship": "Ӏуналла",
-	"growthexperiments-edit-config-mentorship-description-wikitext": "Викин хила таро йу Ӏуналчийн шиъ ша йолу могӀам: массо а керлачаьрна цхьаъ цӀеххьарша нисбелла Ӏуналчийн могӀам, ткъа кхин а мероприятешкахь йа классашкахь дакъалоцучеран оцу статусе баха луучу Ӏуналчийн.",
 	"growthexperiments-edit-config-mentorship-enabled": "Латина йуьй хьехамаллин функцеш?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "ХӀаъ",
 	"growthexperiments-edit-config-mentorship-enabled-false": "ХӀан-хӀа",
-	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Керлачу декъашхошна авто-тӀехӀиттош болу хьехамхойн могӀам болу агӀо",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Куьйга тӀехӀиттош болу хьехамхойн могӀам болу агӀо",
 	"growthexperiments-edit-config-newcomertasks": "Кховдийна нисдарш",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Цхьацца тайпана кховдийна нисдарш гойту белхан кепашца. И кепаш чохь йолу йаззамаш тӀетуху асане. ХӀора тайпана Ӏалашонна мас йаззам кхочу хаа, хьажа [[Special:NewcomerTasksInfo|хӀокха агӀонга]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "ДӀайайина",

@@ -7,8 +7,6 @@
 		]
 	},
 	"growthexperiments-desc": "Toto rozšírenie obsahuje experimenty tímu Growth.",
-	"growthexperiments-config-validator-additional-fields": "Die neue Konfiguration hat Konfigurationsschlüssel, die hier nicht angepasst werden können.",
-	"growthexperiments-config-validator-error": "Validierung für $1 fehlgeschlagen mit: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> sollte <code>$2</code> sein, ist aber <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Unstimmigkeit des Inhaltsmodells: GrowthExperiments-Konfigurationsdatei muss JSON-Inhaltsmodell haben, es wurde aber $1 festgestellt",
 	"growthexperiments-edit-config-disabled": "Die Community-Konfiguration ist derzeit deaktiviert.",

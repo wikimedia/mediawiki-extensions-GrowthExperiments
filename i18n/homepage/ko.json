@@ -82,7 +82,7 @@
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|편집}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "총 편집",
 	"growthexperiments-homepage-impact-scores-thanks-count": "감사 표현을 받았습니다",
-	"growthexperiments-homepage-impact-scores-thanks-info-label": "감사 표현이 어떻게 작동하는지에 관한 정보",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "감사 표현의 동작 방식에 관한 추가 정보",
 	"growthexperiments-homepage-impact-subheader-text": "편집하신 문서를 {{GENDER:$1|사람들이}} 읽고 있습니다!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|당신의}} 편집 이후 최근 60일간의 문서 열람 횟수:",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|그동안}} <strong>$1</strong>회의 {{PLURAL:$1|기여}}를 하셨습니다 (모두 보기)",
@@ -387,6 +387,7 @@
 	"grant-managementorship": "멘토십 관리",
 	"newcomertasksinfo": "신입 사용자의 작업",
 	"newcomertasksinfo-no-data": "이용 가능한 데이터가 없습니다.",
+	"newcomertasksinfo-config-form-info": "신입 사용자의 작업 구성은 [[Special:EditGrowthConfig]]에서 보고 변경할 수 있습니다.",
 	"newcomertasksinfo-table-header-task-type": "작업 유형",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "건수",
@@ -497,5 +498,7 @@
 	"growthexperiments-homepage-mentorship-about-done": "완료",
 	"growthexperiments-homepage-special-contribute-title": "편집 제안",
 	"growthexperiments-homepage-special-contribute-description": "약간의 쉬운 수정(예: 링크 추가 또는 교열)으로 기존 문서를 개선하세요.",
-	"growthexperiments-homepage-special-contribute-cta": "편집 제안 보기"
+	"growthexperiments-homepage-special-contribute-cta": "편집 제안 보기",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "알겠습니다",
+	"growthexperiments-homepage-newimpact-contributions-link": "모든 편집 보기"
 }

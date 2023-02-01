@@ -8,8 +8,6 @@
 		]
 	},
 	"growthexperiments-desc": "Esta extensão contém experimentos feita pela equipe de Crescimento.",
-	"growthexperiments-config-validator-additional-fields": "A nova configuração possui chaves de configuração que não podem ser personalizadas aqui.",
-	"growthexperiments-config-validator-error": "A validação de $1 falhou com: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> espera-se que seja <code>$2</code>, mas é <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Incompatibilidade de modelo de conteúdo: O arquivo de configuração do GrowthExperiments deve ter um modelo de conteúdo JSON, $1 detectado",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de manipulador de tipo de tarefa inválida: <code>$1</code> não é um valor válido",
@@ -56,13 +54,10 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Página de destino para uma hiperligação sobre como criar um artigo novo",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Página de destino para um link sobre como adicionar imagens no editor visual",
 	"growthexperiments-edit-config-mentorship": "Mentoria",
-	"growthexperiments-edit-config-mentorship-description-wikitext": "As Wikis podem ter duas listas de mentores separadas: um para mentores que recebem aleatoriamente para todos os novatos, e outro para mentores que não são atribuídos aleatoriamente, mas podem reivindicar mentores. Esta segunda lista é usada para mentores que só querem ser mentores para pessoas de eventos ou classes.",
 	"growthexperiments-edit-config-mentorship-description-structured": "Os mentores podem ter dois papéis. Por padrão, são atribuídos à sorte aos novatos. Existe uma opção para mentores que só querem ser mentores de pessoas vindas de eventos ou de aulas: não são atribuídos a novatos, embora os possam reclamar.\n\nO número ideal de mentores é: um mentor para cada grupo de 500 contas novas, com um mínimo de 3 mentores na wiki.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|Saiba mais sobre como funciona a mentoria]]",
 	"growthexperiments-edit-config-mentorship-enabled": "Os recursos de mentoria estão ativados?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Sim",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Não",
-	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Página contendo lista de mentores a serem atribuídas automaticamente aos novatos",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Página contendo lista de mentores que só podem ser atribuídos manualmente",
 	"growthexperiments-edit-config-mentorship-minimum-age": "Número mínimo de dias que um usuário deve estar registrado para se inscrever como mentor",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Número mínimo de edições que um usuário deve ter feito (em qualquer namespace) para se inscrever como mentor",
 	"growthexperiments-edit-config-newcomertasks": "Edições sugeridas",
@@ -86,5 +81,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Os artigos que contêm predefinições definidas aqui não serão mostradas aos usuários como tarefas para este tipo de tarefa.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Os artigos que contêm categorias definidas aqui não serão mostrados aos usuários como tarefas para este tipo de tarefa.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Predefinições de caixas informativas",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas predefinições são necessárias para a funcionalidade das tarefas de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugestão de imagens]] para recém-chegados. Os artigos que contenham estas predefinições não serão listados como tarefas de sugestão de imagens."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas predefinições são necessárias para a funcionalidade das tarefas de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugestão de imagens]] para recém-chegados. Os artigos que contenham estas predefinições não serão listados como tarefas de sugestão de imagens.",
+	"specialpages-group-growth-tools": "Ferramentas de crescimento"
 }

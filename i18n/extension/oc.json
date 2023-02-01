@@ -6,8 +6,6 @@
 		]
 	},
 	"growthexperiments-desc": "Aquesta extension conten ensages faits per la còla de Growth",
-	"growthexperiments-config-validator-additional-fields": "Aquela configuracion novèla compren d'opcions que pòdon pas èsser personalizadas aicí.",
-	"growthexperiments-config-validator-error": "La validation de $1 a mancat amb: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> es esperat coma <code>$2</code>, mas es <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Lo contengut del modèl correspond pas:lo fichièr de configuracion GrowthExperiments dèu aver lo modèl de contengut JSON , $1 es detectat",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de gestion de tasca pas valid : <code>$1</code> es pas una valor valida",

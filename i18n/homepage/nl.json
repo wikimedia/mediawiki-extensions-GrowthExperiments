@@ -85,6 +85,7 @@
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} wordt door een gemeenschap van redacteuren gemaakt. Wie bijdraagt kan van een ander een bedankje krijgen voor een bewerking. Het aantal ontvangen bedankjes wordt hier weergegeven.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Dit is het hoogste aantal dagen op rij dat er ten minste één bewerking is uitgevoerd.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "De momenteel langste onafgebroken serie is $1 dag{{PLURAL:$1||en}} lang en werd tussen $2 behaald.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Uw}} huidige langste reeks is één dag, wat {{GENDER:$1|u}} op $2 behaald hebt.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "De momenteel langste onafgebroken serie is één dag lang en werd op $1 behaald.",
 	"growthexperiments-homepage-impact-subheader-text": "Meeste weergaven (sinds {{GENDER:$1|je}} bewerking)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Meest bekeken (sinds de bewerking)",

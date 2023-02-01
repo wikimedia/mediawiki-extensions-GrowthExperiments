@@ -79,7 +79,7 @@
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Por favor, ative o JavaScript para visualizar este componente.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Seu}} impacto",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|A}} sua atividade recente ({{PLURAL:$2|no último dia|nos últimos $2 dias}})",
-	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Atividade recente ({{PLURAL:$1|último dia|últimos $1 dias}}",
+	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Atividade recente ({{PLURAL:$1|último dia|últimos $1 dias}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Última edição",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Melhor sequência",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dia|dias}}",
@@ -94,6 +94,7 @@
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} é criado por uma comunidade de editores. Qualquer contribuidor pode ser agradecido por outro por uma edição. O número de agradecimentos recebidos é mostrado aqui.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Este é o maior número de dias consecutivos em que pelo menos uma edição foi feita.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "A sequência mais longa atual é de $1 {{PLURAL:$1|dia|dias}}, alcançada no período $2.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "Neste momento, a sua sequência mais longa é de um dia, que alcançou a $2.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "A sequência mais longa atual é de um dia, alcançada com $1.",
 	"growthexperiments-homepage-impact-subheader-text": "As pessoas estão vendo os artigos que {{GENDER:$1|você}} editou!",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Mais vistos (desde que a edição foi feita)",
@@ -557,7 +558,10 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Sair da mentoria",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Selecione o botão abaixo para desativar se {{GENDER:|você}} preferir não ter um mentor específico atribuído a {{GENDER:|você}} agora. {{GENDER:|Você}} pode obter um novo mentor a qualquer momento se {{GENDER:|você}} mudar de ideia.",
 	"growthexperiments-homepage-mentorship-about-done": "Feito",
+	"growthexperiments-homepage-special-contribute-title": "Edições sugeridas",
+	"growthexperiments-homepage-special-contribute-cta": "Ver edições sugeridas",
 	"growthexperiments-tour-newimpact-discovery-title": "Design atualizado",
 	"growthexperiments-tour-newimpact-discovery-description": "Foi adicionada mais informação da sua atividade de edição!",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Entendi"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Entendi",
+	"growthexperiments-homepage-newimpact-contributions-link": "Ver todas as edições"
 }

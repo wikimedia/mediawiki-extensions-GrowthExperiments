@@ -4,8 +4,6 @@
 			"RFScott"
 		]
 	},
-	"growthexperiments-config-validator-additional-fields": "Сикун конфигурацияду анакосал би, тэйвэ неду калаори ачаси.",
-	"growthexperiments-config-validator-error": "Проверка $1 оркин дуэнэхэйни \"$2\"ди",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> гэлэйни <code>$2</code>, тэй туй би <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "GrowthExperiments конфигурация файлани тамача бигилайни: JSON модель, тэй тамача би $1"
 }

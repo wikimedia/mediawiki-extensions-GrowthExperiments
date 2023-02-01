@@ -7,8 +7,6 @@
 		]
 	},
 	"growthexperiments-desc": "Това разширение съдържа експерименти, направени от екипа на Растеж.",
-	"growthexperiments-config-validator-additional-fields": "Новата конфигурация има конфигурационни ключове, които не могат да бъдат персонализирани тук.",
-	"growthexperiments-config-validator-error": "Валидацията на $1 е неуспешна поради: „$2“",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> се очаква да бъде <code>$2</code>, но е <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Неправилен модел на съдържание: конфигурационният файл на GrowthExperiments трябва да бъде с модел на съдържание JSON, установено е $1",
 	"growthexperiments-edit-config-disabled": "Конфигурацията за общността е деактивирана.",
@@ -50,8 +48,6 @@
 	"growthexperiments-edit-config-mentorship-enabled": "Активирани ли са функциите за менторство?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Да",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Не",
-	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Страница, съдържаща списъка с ментори, които ще бъдат автоматично отредени на новодошлите",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Страница, съдържаща списъка с ментори, които могат да бъдат ръчно отредени",
 	"growthexperiments-edit-config-newcomertasks": "Предложения за редактиране",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Правопис и граматика: шаблони за откриването на статии, които се нуждаят от редакции, свързани с подобряването на правописа, граматиката и пунктуацията.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Целева страница, от която новодошлите могат да научат повече за редактирането на правописа и граматиката.",

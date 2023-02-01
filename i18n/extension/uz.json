@@ -5,8 +5,6 @@
 		]
 	},
 	"growthexperiments-desc": "Bu kengaytma Growth jamoasi tomonidan bajarilgan tajribalarni oʻz ichiga oladi.",
-	"growthexperiments-config-validator-additional-fields": "Yangi konfiguratsiya bu yerda sozlanmaydigan konfiguratsiya kalitlarini oʻz ichiga oladi.",
-	"growthexperiments-config-validator-error": "$1 uchun tekshirish amalga oshmadi: $2",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> <code>$2</code> boʻlishi kutilgandi, ammo <code>$3</code> boʻldi",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Kontent-model nomuvofiqligi: GrowthExperiments konfiguratsiya faylida JSON kontent modeli boʻlishi kerak, $1 aniqlandi",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Yaroqsiz task type handler ID: <code>$1</code> yaroqsiz qiymat",
