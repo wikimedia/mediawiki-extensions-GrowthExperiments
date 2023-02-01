@@ -443,7 +443,7 @@
 	"growthexperiments-addimage-onboarding-content-article-title": "記事を見てください",
 	"growthexperiments-addimage-onboarding-content-article-body": "記事に目を通して、提案された画像が読者が内容を理解する役に立つかどうか考えてください。その画像を記事に表示するのは適切ですか？",
 	"growthexperiments-addimage-onboarding-content-decision-title": "画像が記事に相応しいかどうか決定してください",
-	"growthexperiments-addimage-onboarding-content-decision-body-paragraph1": "提案は記事と関連がなかったり、品質が低かったり、その他の理由によって相応しくないかもしれません。{{GENDER:|あなたの}}判断で提案が正しいか間違っているか判断してください。",
+	"growthexperiments-addimage-onboarding-content-decision-body-paragraph1": "提案は記事と関連がなかったり、品質が低かったり、その他の理由によって相応しくないかもしれません。{{GENDER:|あなたの}}判断で提案が正しいか間違っているか決定してください。",
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph2": "{{GENDER:|あなた}}が受け入れた画像に対して、{{GENDER:|あなた}}が短いキャプションを書くと、{{GENDER:|あなたの}}編集が公開されます。",
 	"growthexperiments-addimage-skip-dialog-title": "この画像についてよくわかりませんか？",
 	"growthexperiments-addimage-skip-dialog-body": "{{GENDER:|あなた}}はこの提案をスキップしたいのか確認してください。",

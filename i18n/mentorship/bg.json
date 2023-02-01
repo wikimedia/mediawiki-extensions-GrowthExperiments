@@ -16,5 +16,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Паузиране",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "дни",
 	"growthexperiments-rcfilters-mentorship-title": "Менторство",
-	"echo-category-title-ge-mentorship": "Менторство"
+	"echo-category-title-ge-mentorship": "Менторство",
+	"echo-pref-tooltip-ge-mentorship": "Известия, свързани с функциите за наставничество, поддържани от екипа за растеж. Това известие ви уведомява, че сте били потърсени като наставляван или че някой от вашите наставлявани е потърсен от някой друг."
 }

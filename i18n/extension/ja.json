@@ -60,6 +60,8 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "はい",
 	"growthexperiments-edit-config-mentorship-enabled-false": "いいえ",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "新人編集者を自動的に割り当てる指導役名簿のページ",
+	"growthexperiments-edit-config-newcomertasks": "お勧めの編集",
+	"growthexperiments-edit-config-newcomer-tasks-description": "いくつかの種別のお勧めの編集は、メンテナンステンプレートを通じて表面化されます。これらのテンプレートを含む記事がフィードに追加されます。各タスク種別に対して利用可能な記事の数を確認するには、[[Special:NewcomerTasksInfo|このページ]]をご覧ください。",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "無効",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "校正: スペル、文法、句読点の改善のような、校正を必要とする記事を見つけるためのテンプレート。",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "校正に関してもっと知るためのリンク先ページ。",
