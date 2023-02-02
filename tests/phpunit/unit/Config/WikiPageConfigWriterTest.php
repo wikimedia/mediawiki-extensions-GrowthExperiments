@@ -93,7 +93,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 	private function getUserFactoryMock( bool $isAutopatrol ) {
 		$user = $this->createMock( User::class );
 		$user->expects( $this->once() )
-			->method( 'authorizeWrite' )
+			->method( 'isAllowed' )
 			->willReturn( $isAutopatrol );
 		$userFactory = $this->createMock( UserFactory::class );
 		$userFactory->expects( $this->once() )

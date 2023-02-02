@@ -231,7 +231,7 @@ class WikiPageConfigWriter {
 
 			if ( $this->userFactory
 				->newFromUserIdentity( $this->performer )
-				->authorizeWrite( 'autopatrol', $page )
+				->isAllowed( 'autopatrol' )
 			) {
 				$updater->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
 			}
