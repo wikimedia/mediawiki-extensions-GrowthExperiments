@@ -163,6 +163,8 @@ module.exports = exports = {
 		table-layout: fixed;
 
 		&__icon {
+			grid-column: 2;
+			justify-self: center;
 			// FIXME the output color should be achieved by
 			// modifying the icon color not the opacity;
 			opacity: 0.66;
@@ -170,7 +172,7 @@ module.exports = exports = {
 
 		&__header {
 			display: grid;
-			grid-template-columns: 7fr 1fr;
+			grid-template-columns: 1fr 1fr 1fr;
 		}
 
 		caption {
