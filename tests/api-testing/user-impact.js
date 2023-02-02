@@ -20,10 +20,6 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 				'2022-08-24': 1,
 				'2022-08-25': 1
 			},
-			timeZone: [
-				'ZoneInfo|660|Australia/Sydney',
-				660
-			],
 			newcomerTaskEditCount: 2,
 			lastEditTimestamp: 1661385600,
 			longestEditingStreak: '',

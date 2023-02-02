@@ -43,6 +43,9 @@ class UserImpactFormatter {
 		$jsonData += $this->sortAndFilter( $jsonData );
 		unset( $jsonData['dailyArticleViews'] );
 		$this->fillDailyArticleViewsWithPageViewToolsUrl( $jsonData );
+		// Don't leak timezone preference data for arbitrary users (T328643)
+		// In a follow-up, we can remove the storage of the "timeZone" property entirely
+		unset( $jsonData['timeZone'] );
 		return $jsonData;
 	}
 
