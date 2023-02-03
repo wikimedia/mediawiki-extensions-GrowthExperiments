@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -21,7 +21,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 			null,
 			'foo',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 		$this->assertInstanceOf( Mentor::class, $mentor );
 	}
@@ -36,7 +36,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 			null,
 			'foo',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 
 		$this->assertTrue( $mentorUserIdentity->equals( $mentor->getUserIdentity() ) );
@@ -54,7 +54,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 			$introText,
 			'foo',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 
 		if ( $introText === null ) {
@@ -84,7 +84,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 			null,
 			'foo',
 			$autoAssigned,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 		$this->assertEquals( $autoAssigned, $mentor->getAutoAssigned() );
 	}
@@ -114,9 +114,9 @@ class MentorTest extends MediaWikiUnitTestCase {
 
 	public function provideGetWeight() {
 		return [
-			[ MentorWeightManager::WEIGHT_NORMAL ],
-			[ MentorWeightManager::WEIGHT_LOW ],
-			[ MentorWeightManager::WEIGHT_HIGH ],
+			[ IMentorWeights::WEIGHT_NORMAL ],
+			[ IMentorWeights::WEIGHT_LOW ],
+			[ IMentorWeights::WEIGHT_HIGH ],
 		];
 	}
 
@@ -131,7 +131,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 			null,
 			'foo',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 
 		$this->assertEquals( 'foo', $mentor->getIntroText() );
@@ -152,7 +152,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 			null,
 			'foo',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 
 		$this->assertTrue( $mentor->getAutoAssigned() );
@@ -171,12 +171,12 @@ class MentorTest extends MediaWikiUnitTestCase {
 			null,
 			'foo',
 			true,
-			MentorWeightManager::WEIGHT_NORMAL
+			IMentorWeights::WEIGHT_NORMAL
 		);
 
-		$this->assertEquals( MentorWeightManager::WEIGHT_NORMAL, $mentor->getWeight() );
+		$this->assertEquals( IMentorWeights::WEIGHT_NORMAL, $mentor->getWeight() );
 
-		$mentor->setWeight( MentorWeightManager::WEIGHT_LOW );
-		$this->assertEquals( MentorWeightManager::WEIGHT_LOW, $mentor->getWeight() );
+		$mentor->setWeight( IMentorWeights::WEIGHT_LOW );
+		$this->assertEquals( IMentorWeights::WEIGHT_LOW, $mentor->getWeight() );
 	}
 }

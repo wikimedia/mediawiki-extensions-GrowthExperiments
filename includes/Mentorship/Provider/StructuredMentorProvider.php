@@ -3,7 +3,7 @@
 namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Config\WikiPageConfigLoader;
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
@@ -71,7 +71,7 @@ class StructuredMentorProvider extends MentorProvider {
 			$this->getCustomMentorIntroText( $mentorUser ),
 			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ),
 			$mentorData['automaticallyAssigned'] ?? true,
-			$mentorData['weight'] ?? MentorWeightManager::WEIGHT_NORMAL
+			$mentorData['weight'] ?? IMentorWeights::WEIGHT_NORMAL
 		);
 	}
 

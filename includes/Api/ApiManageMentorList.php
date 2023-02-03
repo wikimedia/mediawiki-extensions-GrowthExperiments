@@ -4,8 +4,8 @@ namespace GrowthExperiments\Api;
 
 use ApiBase;
 use ApiMain;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use LogicException;
@@ -173,7 +173,7 @@ class ApiManageMentorList extends ApiBase {
 				ParamValidator::PARAM_TYPE => 'string'
 			],
 			'weight' => [
-				ParamValidator::PARAM_TYPE => array_map( 'strval', MentorWeightManager::WEIGHTS )
+				ParamValidator::PARAM_TYPE => array_map( 'strval', IMentorWeights::WEIGHTS )
 			],
 			'autoassigned' => [
 				ParamValidator::PARAM_TYPE => 'boolean',

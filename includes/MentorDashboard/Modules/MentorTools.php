@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\MentorDashboard\Modules;
 
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use Html;
 use IContextSource;
@@ -77,19 +77,19 @@ class MentorTools extends BaseModule {
 				)->text()
 			],
 			[
-				'data' => MentorWeightManager::WEIGHT_LOW,
+				'data' => IMentorWeights::WEIGHT_LOW,
 				'label' => $this->msg(
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low'
 				)->text(),
 			],
 			[
-				'data' => MentorWeightManager::WEIGHT_NORMAL,
+				'data' => IMentorWeights::WEIGHT_NORMAL,
 				'label' => $this->msg(
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium'
 				)->text(),
 			],
 			[
-				'data' => MentorWeightManager::WEIGHT_HIGH,
+				'data' => IMentorWeights::WEIGHT_HIGH,
 				'label' => $this->msg(
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high'
 				)->text(),

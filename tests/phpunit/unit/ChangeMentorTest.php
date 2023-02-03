@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments;
 
-use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
@@ -37,7 +37,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 					'o/',
 					'',
 					true,
-					MentorWeightManager::WEIGHT_NORMAL
+					IMentorWeights::WEIGHT_NORMAL
 				),
 				$this->createMock( LogPager::class ),
 				$this->createMock( MentorManager::class ),
@@ -64,7 +64,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'o/',
 				'',
 				true,
-				MentorWeightManager::WEIGHT_NORMAL
+				IMentorWeights::WEIGHT_NORMAL
 			),
 			$logPagerMock,
 			$this->createMock( MentorManager::class ),
@@ -87,7 +87,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'o/',
 				true,
 				'',
-				MentorWeightManager::WEIGHT_NORMAL
+				IMentorWeights::WEIGHT_NORMAL
 			),
 			$this->createMock( LogPager::class ),
 			$this->createMock( MentorManager::class ),
@@ -118,7 +118,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'o/',
 				'',
 				true,
-				MentorWeightManager::WEIGHT_NORMAL
+				IMentorWeights::WEIGHT_NORMAL
 			),
 			$this->createMock( LogPager::class ),
 			$this->createMock( MentorManager::class ),
@@ -145,7 +145,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'o/',
 				'',
 				true,
-				MentorWeightManager::WEIGHT_NORMAL
+				IMentorWeights::WEIGHT_NORMAL
 			),
 			$this->createMock( LogPager::class ),
 			$this->createMock( MentorManager::class ),
@@ -173,7 +173,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'o/',
 				'',
 				true,
-				MentorWeightManager::WEIGHT_NORMAL
+				IMentorWeights::WEIGHT_NORMAL
 			),
 			$this->createMock( LogPager::class ),
 			$this->createMock( MentorManager::class ),
@@ -219,7 +219,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'o/',
 				'',
 				true,
-				MentorWeightManager::WEIGHT_NORMAL
+				IMentorWeights::WEIGHT_NORMAL
 			),
 			$this->createMock( LogPager::class ),
 			$mentorManagerMock,
