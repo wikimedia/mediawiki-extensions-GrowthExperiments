@@ -13,7 +13,7 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:GrowthExperiments",
 	"requires": {
-		"MediaWiki": ">= 1.39.0",
+		"MediaWiki": ">= 1.40.0",
 		"extensions": {
 			"VisualEditor": "*"
 		}
