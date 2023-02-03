@@ -89,6 +89,11 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			'https://pageviews.wmcloud.org/?project=enwiki&userlang=en&start=2022-08-29&end=2022-08-30&pages=Article1',
 			$json['topViewedArticles']['Article1']['pageviewsUrl']
 		);
+		$expectedTotalViewsCount = 0;
+		foreach ( $dailyArticleViews as $dailyArticleView ) {
+			$expectedTotalViewsCount += array_sum( $dailyArticleView['views'] );
+		}
+		$this->assertSame( $expectedTotalViewsCount, $json['totalPageviewsCount'] );
 	}
 
 	public function testRecentEditsWithoutPageviews() {
@@ -144,6 +149,7 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			'Article5' => $unsetViews( $dailyArticleViews['Article5'] ),
 		];
 		$this->assertSame( $expectedRecentEditsWithoutPageviews, $json['recentEditsWithoutPageviews'] );
+		$this->assertSame( array_sum( $dailyTotalViews ), $json['totalPageviewsCount'] );
 	}
 
 }

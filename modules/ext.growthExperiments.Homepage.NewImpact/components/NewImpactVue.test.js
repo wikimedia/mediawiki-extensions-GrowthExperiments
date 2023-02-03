@@ -45,8 +45,9 @@ const impactServerData = () => {
 		},
 		totalEditsCount: 4,
 		dailyTotalViews: {
-			'2022-12-14': 0
+			'2022-12-14': 100
 		},
+		totalPageviewsCount: 100,
 		recentEditsWithoutPageviews: {
 			article1: {
 				firstEditDate: '2022-12-14',

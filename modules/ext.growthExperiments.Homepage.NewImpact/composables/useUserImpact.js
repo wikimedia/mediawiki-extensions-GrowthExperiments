@@ -102,8 +102,8 @@ function useUserImpact( timeFrame, initialData ) {
 			longestEditingStreak,
 			totalEditsCount,
 			dailyTotalViews,
+			totalPageviewsCount,
 			topViewedArticles,
-			topViewedArticlesCount,
 			recentEditsWithoutPageviews
 		} = initialData;
 
@@ -156,7 +156,7 @@ function useUserImpact( timeFrame, initialData ) {
 			receivedThanksCount,
 			longestEditingStreak,
 			totalEditsCount,
-			articlesViewsCount: topViewedArticlesCount,
+			articlesViewsCount: totalPageviewsCount,
 			contributions: getContribsFromToday( editCountByDay, timeFrame ),
 			dailyTotalViews: toPageviewsArray( dailyTotalViews )
 		};
