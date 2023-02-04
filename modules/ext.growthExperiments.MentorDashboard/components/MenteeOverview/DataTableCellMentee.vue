@@ -69,7 +69,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import '../../../vue-components/variables.less';
+@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 @import '../../../utils/mixins.less';
 
 @mentee-table-last-seen-font-size: 12px;
@@ -92,7 +92,7 @@ module.exports = exports = {
 
 		&__last-seen {
 			font-size: @mentee-table-last-seen-font-size;
-			color: @colorGray500;
+			color: @color-subtle;
 		}
 	}
 

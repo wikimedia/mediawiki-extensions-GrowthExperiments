@@ -96,7 +96,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import './variables.less';
+@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-Popover {
 	display: flex;
@@ -106,7 +106,7 @@ module.exports = exports = {
 		// REVIEW conflicts with .growthexperiments-mentor-dashboard-container
 		// .growthexperiments-mentor-dashboard-module h3 rules
 		&& h3 {
-			color: @colorBase10;
+			color: @color-base;
 		}
 	}
 }

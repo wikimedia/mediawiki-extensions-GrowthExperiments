@@ -23,7 +23,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import './variables.less';
+@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-CListItem {
 	// Overwrite MW default margin bottom for li
@@ -34,7 +34,7 @@ module.exports = exports = {
 	}
 
 	&--background-color-framed {
-		background-color: @background-color-framed;
+		background-color: @background-color-interactive-subtle;
 	}
 }
 </style>

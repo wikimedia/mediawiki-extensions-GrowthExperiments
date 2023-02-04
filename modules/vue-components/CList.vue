@@ -34,8 +34,6 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import './variables.less';
-
 .ext-growthExperiments-CList {
 	&--unstyled.ext-growthExperiments-increaseSpecificity {
 		// Remove Minerva list-style-type on .content ul

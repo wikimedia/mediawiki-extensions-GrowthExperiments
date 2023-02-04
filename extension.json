@@ -685,7 +685,7 @@
 		"ext.growthExperiments.Homepage.NewImpact": {
 			"es6": true,
 			"styles": [
-				"vue-components/variables.less",
+				"utils/mixins.less",
 				"vue-components/Skeleton.less",
 				"ext.growthExperiments.Homepage.NewImpact/styles/mixins.less",
 				"ext.growthExperiments.Homepage.NewImpact/styles/NewImpact.less",
@@ -1708,9 +1708,6 @@
 		},
 		"ext.growthExperiments.MentorDashboard": {
 			"es6": true,
-			"styles": [
-				"vue-components/variables.less"
-			],
 			"packageFiles": [
 				"ext.growthExperiments.MentorDashboard/init.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.js",

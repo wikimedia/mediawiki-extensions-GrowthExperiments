@@ -216,7 +216,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import '../../vue-components/variables.less';
+@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 @import '../../utils/mixins.less';
 @import '../styles/mixins.less';
 

@@ -28,8 +28,6 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import '../../vue-components/variables.less';
-
 .ext-growthExperiments-Layout {
 	&--overlay {
 		// Expand all content over homepage modules padding

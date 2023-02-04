@@ -117,7 +117,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import './variables.less';
+@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-CSparkline {
 	&__line {
