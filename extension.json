@@ -2074,6 +2074,10 @@
 		]
 	},
 	"config": {
+		"GELevelingUpFeaturesEnabled": {
+			"description": "Feature flag to enable \"leveling up\" (phab:#growthexperiments-levelingup) functionality.",
+			"value": true
+		},
 		"GERefreshUserImpactDataMaintenanceScriptEnabled": {
 			"description": "Feature flag to determine if the refreshUserImpactData.php maintenance script may run.",
 			"value": false
