@@ -171,6 +171,16 @@
 			]
 		},
 		{
+			"path": "/growthexperiments/v0/suggestions/addimage/feedback/{title}",
+			"method": "PUT",
+			"class": "GrowthExperiments\\Rest\\Handler\\AddImageFeedbackHandler",
+			"services": [
+				"TitleFactory",
+				"RevisionLookup",
+				"GrowthExperimentsAddImageSubmissionHandler"
+			]
+		},
+		{
 			"path": "/growthexperiments/v0/suggestions/info",
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\SuggestionsInfoHandler",
