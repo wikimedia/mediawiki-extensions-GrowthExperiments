@@ -398,7 +398,17 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				array_column( $allTitleObjects, 'title' ), $days
 			);
 			if ( !$pageDataStatus->isGood() ) {
-				$this->logger->error( Status::wrap( $pageDataStatus )->getWikiText( false, false, 'en' ) );
+				// Don't log pvi-cached-error-title messages (T328945) but track it in statsd,
+				// and do log any other message that occurs.
+				if ( $pageDataStatus->hasMessagesExcept( 'pvi-cached-error-title' ) ) {
+					$this->logger->error(
+						Status::wrap( $pageDataStatus )->getWikiText( false, false, 'en' )
+					);
+				} else {
+					$this->statsdDataFactory->increment(
+						'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle'
+					);
+				}
 				if ( !$pageDataStatus->isOK() ) {
 					if ( !count( $pageViewData ) ) {
 						// If nothing has accumulated in the page view data, set null so the caller
