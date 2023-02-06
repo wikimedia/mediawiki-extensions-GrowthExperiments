@@ -6,6 +6,7 @@
 			"LisafBia",
 			"Melissadilara",
 			"Oyuncu",
+			"Rapsar",
 			"SaldırganSincap",
 			"ToprakM"
 		]
@@ -142,7 +143,7 @@
 	"growthexperiments-manage-mentors-status": "Durum",
 	"growthexperiments-manage-mentors-status-away-until": "$1 tarihine dek uzakta.",
 	"growthexperiments-manage-mentors-intro-msg": "Yeni gelenler için mesaj",
-	"growthexperiments-manage-mentors-edit": "Düzenle",
+	"growthexperiments-manage-mentors-edit": "Değiştir",
 	"growthexperiments-manage-mentors-edit-pretext": "{{GENDER:|}}{{GENDER:$1|}}[[User:$1|$1]] için danışmanlıkla alakalı seçenekleri düzenlemek üzeresiniz.",
 	"growthexperiments-manage-mentors-edit-intro-msg": "Karşılama mesajı",
 	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Yeni gelenler bu danışmana otomatik olarak atansın mı?",

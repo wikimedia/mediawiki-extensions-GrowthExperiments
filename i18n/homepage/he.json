@@ -344,7 +344,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "סיבה לקליטת החניך הזה",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|שינית}} את החונך של {{PLURAL:$2|המשתמש|המשתמשים}} $1 ל{{GRAMMAR:תחילית|{{GENDER:$4|$5}}}}. חזרה ל[[Special:MentorDashboard|לוח הבקרה לחונכים]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "החונך של $1 כבר שוּנה. האם {{GENDER:$2|אתה בטוח שאתה|את בטוחה שאת}} רוצה לשנות אותו שוב?",
-	"growthexperiments-claimmentee-confirm": "כן, אני באמת רוצה לשנות את {{GENDER:|החונך|החונכת}}",
+	"growthexperiments-claimmentee-confirm": "כן, אני באמת רוצה להמשיך",
 	"growthexperiments-log-name": "יומן GrowthExperiments",
 	"growthexperiments-log-header": "זהו יומן של פעולות שנעשו בהרחבה GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|קלט|קלטה}} את $3 בתור {{GENDER:$6|החניך|החניכה}} {{GENDER:$2|שלו|שלה}} ({{GENDER:$4|החונך הקודם|החונכת הקודמת}}: $5)",

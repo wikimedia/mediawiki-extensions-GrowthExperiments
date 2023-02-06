@@ -334,7 +334,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "Motivo pro adoptar iste apprentisse",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Tu ha cambiate}} le mentor del usator{{PLURAL:$2||es}} $1 a {{GENDER:$4|$5}}. Retorna al [[Special:MentorDashboard|tabuliero de instrumentos pro mentores]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Le mentor de $1 ha ja essite cambiate. Es {{GENDER:$2|tu}} secur de voler cambiar lo de novo?",
-	"growthexperiments-claimmentee-confirm": "Si, io vole vermente cambiar le mentor",
+	"growthexperiments-claimmentee-confirm": "Si, io vermente vole continuar",
 	"growthexperiments-log-name": "Registro de GrowthExperiments",
 	"growthexperiments-log-header": "Isto es un registro de actiones facite in le extension GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|ha adoptate}} {{GENDER:$6|$3}} como su apprentisse (previe {{GENDER:$4|mentor}} $5)",

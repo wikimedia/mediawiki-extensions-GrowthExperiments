@@ -9,6 +9,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Orta",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Gaty",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Bu komponenti görmek üçin JavaScript-i açmagyňyzy haýyş edýäris.",
+	"growthexperiments-homepage-impact-subheader-text-third-person": "Iň köp görülen (redaktirleneninden bäri)",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Düşündim",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Kömek stolunyň duýduryşlary",
 	"growthexperiments-tour-response-button-okay": "Düşündim",
@@ -87,5 +88,6 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Ählisini seç",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Hemmesini aýyryň",
 	"growthexperiments-homepage-claimmentee-title": "Talap ediji",
+	"growthexperiments-claimmentee-confirm": "Hawa, hakykatdanam dowam etmek isleýärin",
 	"growthexperiments-structuredtask-editmode-selection-visual": "Wizual redaktirlemek"
 }

@@ -372,7 +372,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "Razón para reclamar a este aprendiz",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Has reasignado}} a {{PLURAL:$2|aprendiz|aprendices}} $1 a {{GENDER:$4|$5}}. Volver al [[Special:MentorDashboard|panel de mentoría]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "El mentor de {{GENDER:$1|$1}} ya fue cambiado. ¿Estás  {{GENDER:$2|seguro|segura}} de que quieres cambiarlo de nuevo?",
-	"growthexperiments-claimmentee-confirm": "Sí, quiero cambiar {{GENDER:|el mentor|la mentora}} de esta persona.",
+	"growthexperiments-claimmentee-confirm": "Sí, quiero proceder",
 	"growthexperiments-log-name": "Registro de la extensión GrowthExperiments",
 	"growthexperiments-log-header": "Esto es un registro de los cambios hechos en la extensión GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|reclamó}} a {{GENDER:$6|$3}} como su aprendiz (anterior {{GENDER:$4|mentor|mentora}}: $5)",

@@ -341,7 +341,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "Razlog za prevzem mentoriranca",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$4|Mentorja|Mentorico|Mentorja_ico}} {{PLURAL:$2|uporabnika_ce|uporabnikov}} $1 {{GENDER:$3|ste spremenili}} v {{GENDER:$4|$5}}. Vrnite se na [[Special:MentorDashboard|mentorsko nadzorno ploščo]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|Mentor osebe $1}} je bil že spremenjen. {{GENDER:$2|Ste}} prepričani, da ga  {{GENDER:$2|želite}} znova spremeniti?",
-	"growthexperiments-claimmentee-confirm": "Da, {{GENDER:|mentorja|mentorico|mentorja_ico}} res želim zamenjati",
+	"growthexperiments-claimmentee-confirm": "Da, res želim nadaljevati",
 	"growthexperiments-log-name": "Dnevnik GrowthExperiments",
 	"growthexperiments-log-header": "To je dnevnik dejanj, opravjenih v razširtvi GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 je kot {{GENDER:$6|svojega mentoriranca|svojo mentoriranko|svojega_jo mentoriranca_ko}} {{GENDER:$2|prevzel|prevzela|prevzel_a}} {{GENDER:$6|$3}} ({{GENDER:$4|prejšnji mentor|prejšnja mentorica|prejšnji_a mentor_ica}}: $5)",

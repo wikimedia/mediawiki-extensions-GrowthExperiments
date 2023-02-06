@@ -220,7 +220,7 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Նշել ամբողջը",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Հեռացնել բոլորը",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Ընտրեք թեմաներ, որոնցով {{GENDER:$1|դուք}} հետաքրքրված եք",
-	"growthexperiments-claimmentee-confirm": "Այո, ես իրոք ուզում եմ փոխել մենթորին",
+	"growthexperiments-claimmentee-confirm": "Այո, ես իրոք ուզում եմ շարունակել",
 	"growthexperiments-notification-header-mentor-change": "$1 մասնակիցը Ձեր նոր մենթորն է",
 	"growthexperiments-notification-body-mentor-change": "Պատճառ՝ $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Ողջունեք}} {{GENDER:$3|Ձեր}} նոր {{GENDER:$2|մենթորին}}:",

@@ -342,7 +342,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "Razão para adotar este mentorado",
 	"growthexperiments-homepage-claimmentee-success": "Mudou o mentor {{PLURAL:$2|do utilizador|dos utilizadores}} $1 para $5. Voltar ao [[Special:MentorDashboard|painel de controlo do mentor]].{{GENDER:$3|}}{{GENDER:$4|}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "O mentor de $1 já foi alterado. Tem a certeza de que quer alterá-lo de novo?{{GENDER:$1|}}{{GENDER:$2|}}",
-	"growthexperiments-claimmentee-confirm": "Sim, quero realmente mudar {{GENDER:|o mentor|a mentora}}",
+	"growthexperiments-claimmentee-confirm": "Sim, quero mesmo continuar",
 	"growthexperiments-log-name": "Registos de GrowthExperiments",
 	"growthexperiments-log-header": "Este é um registo de operações realizadas pela extensão GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|adotou}} {{GENDER:$6|$3}} como seu mentorado ({{GENDER:$4|mentor|mentora}} anterior $5)",

@@ -56,7 +56,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Vidējs",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Grūts",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Ieteicams, kad {{GENDER:$1|tu}} vēl mācies labot.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Pēc tam, kad tu esi {{GENDER:$1|veicies|veikusi}} dažus vienkāršus labojumus.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Pēc tam, kad tu esi {{GENDER:$1|veicis|veikusi}} dažus vienkāršus labojumus.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Kad tu esi {{GENDER:$1|apguvis|apguvusi}} Vikipēdijas labās prakses.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Teksta uzlabošana un saišu pievienošana uz citiem rakstiem.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Uzticamu atsauču pievienošana un novecojušu rakstu atjaunināšana",

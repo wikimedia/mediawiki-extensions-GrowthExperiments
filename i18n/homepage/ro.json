@@ -335,7 +335,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "Motivul pentru revendicarea acestui ucenic",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Ați}} schimbat mentorul {{PLURAL:$2|lui|utilizatorilor}} $1 în {{GENDER:$4|$5}}. Întoarceți-vă la [[Special:MentorDashboard|Pagina mentorului]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Mentorul {{GENDER:$1|lui $1}} a fost deja schimbat. Sunteți {{GENDER:$2|sigur|sigură|sigur}} că {{GENDER:$2|doriți}} doriți să îl schimbați din nou?",
-	"growthexperiments-claimmentee-confirm": "Da, chiar doresc să schimb mentorul",
+	"growthexperiments-claimmentee-confirm": "Da, chiar doresc să continui",
 	"growthexperiments-log-name": "Jurnal GrowthExperiments",
 	"growthexperiments-log-header": "Acesta este un jurnal de acțiuni făcute cu extensia GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 a {{GENDER:$2|revendicat}} {{GENDER:$6|utilizatorul $3|utilizatoarea $3|utilizatorul $3}} ca {{GENDER:$6|ucenic|ucenică|ucenic}} pentru sine (înainte ucenicul avea {{GENDER:$4|mentorul}} $5)",

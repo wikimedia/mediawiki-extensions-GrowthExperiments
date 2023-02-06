@@ -50,10 +50,11 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Скорашње измене {{GENDER:|Ваших}} новајлија",
 	"growthexperiments-mentor-dashboard-resources-headline": "Повезане странице",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Прикажи списак ментора",
-	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Како да се представите као ментор",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Како да се {{GENDER:|представите}} као ментор",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Како да преузмете новајлију",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Алатке Тима за развој",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Подешавања",
+	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit": "Откажи менторство",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Статус менторства",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Активан",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Одсутан",
@@ -92,5 +93,6 @@
 	"growthexperiments-manage-mentors-edit-reason": "Разлог",
 	"growthexperiments-manage-mentors-remove-mentor": "Уклони",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Корисник|Корисница}} [[User:$1|$1]] није више {{GENDER:$1|ментор|менторка}}.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Представите се",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Упиши ме"
 }

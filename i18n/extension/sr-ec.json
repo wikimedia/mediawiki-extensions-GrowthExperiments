@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
-			"Kizule"
+			"Kizule",
+			"Milicevic01"
 		]
 	},
 	"growthexperiments-desc": "Овај додатак садржи пројекте Тима за развој.",
@@ -10,6 +11,7 @@
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Врх странице",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Дно странице",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Странице за разговор ментора",
+	"growthexperiments-edit-config-help-panel-links": "Везе до помоћи",
 	"growthexperiments-edit-config-homepage": "Почетна страница за новајлије",
 	"growthexperiments-edit-config-mentorship": "Менторство",
 	"growthexperiments-edit-config-mentorship-enabled": "Јесу ли омогућене функције менторства?",
