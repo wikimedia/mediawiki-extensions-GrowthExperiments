@@ -351,7 +351,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "سبب المطالبة لهذا(ه) المرشَد(ة)",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|غيرتَ|غيرتِ}} مرشِد {{PLURAL:$2|المستخدم|المستخدمين}} $1 إلى {{GENDER:$4|المرشد $5|المرشدة $5}}. الرجوع إلى [[Special:MentorDashboard|لوحة المرشدين]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "تم مسبقا تغيير مرشِد {{GENDER:$1|المستخدم $1|المستخدمة $1}}. هل أنت {{GENDER:$2|متأكد|متأكدة}} من تغييره مرة أخرى؟",
-	"growthexperiments-claimmentee-confirm": "نعم، أرغب فعلًا بتغيير {{GENDER:|المُرشِد|المُرشِدة}}",
+	"growthexperiments-claimmentee-confirm": "نعم، أرغب فعلًا في ذلك",
 	"growthexperiments-log-name": "سجلّ GrowthExperiments",
 	"growthexperiments-log-header": "هذا سجل للأحداث التي حصلت بامتداد GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|طالب|طالبت}} بـ {{GENDER:$6|$3}} {{GENDER:$6|كمرشَد|كمرشدَة}} {{GENDER:$2|له|لها}} (سابقا {{GENDER:$4|المرشِد|المرشِدة}} $5)",

@@ -21,10 +21,15 @@
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Za <var>ge-task-image-recommendation</var> vtičnik</dt><dd> \n$1 \n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "V podatkih vtičnika za dodajanje slike manjka parameter »accepted«",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Parameter »accepted« mora biti v podatkih vtičnika »Dodaj sliko« Boolova vrednost; je $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "V podatkih vtičnika »Dodaj sliko« manjka parameter »reason«",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Parameter »reason« v podatkih vtičnika »Dodaj sliko« mora biti polje; je $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Neveljaven predmet »$1« za parameter »reason«; biti mora eno od naslednjega: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "V podatkih vtičnika »Dodaj sliko« manjka parameter »reasons«",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Parameter »reasons« v podatkih vtičnika »Dodaj sliko« mora biti polje; je $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Neveljaven predmet »$1« za parameter »reasons«; biti mora eno od naslednjega: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Zapis priporočila povezave ni bil najden",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Nepričakovani cilji priporočila povezave: $1",
-	"growthexperiments-underlinked-rescore-profile": "Notranji profil ponovnega točkovanja, ki se uporablja v priporočilih povezav GrowthExperiments za prednostno razvrščanje člankov, ki še nimajo dovolj povezav."
+	"growthexperiments-underlinked-rescore-profile": "Notranji profil ponovnega točkovanja, ki se uporablja v priporočilih povezav GrowthExperiments za prednostno razvrščanje člankov, ki še nimajo dovolj povezav.",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "Ko je parameter <var>accepted</var> nastavljen na <kbd>true</kbd>, je potreben parameter <var>editRevId</var>.",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "Parametra <var>editRevId</var> ni mogoče uporabiti, če je parameter <var>accepted</var> nastavljen na <kbd>false</kbd>.",
+	"growthexperiments-addimage-feedback-accepted-caption": "Ko je parameter <var>accepted</var> nastavljen na <kbd>true</kbd>, je potreben parameter <var>caption</var>.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "Redakcija, navedena v <var>editRevId</var>, ni bila najdena.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Redakcija, navedena v <var>editRevId</var>, pripada drugi strani."
 }

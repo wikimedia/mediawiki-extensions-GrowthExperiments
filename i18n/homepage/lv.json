@@ -68,6 +68,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dienas|diena|dienas}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Labojumi|Labojums|Labojumi}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}} $2",
+	"growthexperiments-homepage-impact-scores-edit-count": "Labojumi kopā",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Saņemtās pateicības",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Plašāka informācija par to, kā darbojas pateciības",
 	"growthexperiments-homepage-impact-subheader-text": "Cilvēki lasa rakstus, ko tu esi {{GENDER:$1|labojis|labojusi}}!",
@@ -485,5 +486,6 @@
 	"growthexperiments-homepage-mentorship-about-done": "Gatavs",
 	"growthexperiments-homepage-special-contribute-title": "Ieteiktie labojumi",
 	"growthexperiments-homepage-special-contribute-cta": "Skatīt ieteiktos labojumus",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Sapratu"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Sapratu",
+	"growthexperiments-homepage-newimpact-contributions-link": "Skatīt visus labojumus"
 }

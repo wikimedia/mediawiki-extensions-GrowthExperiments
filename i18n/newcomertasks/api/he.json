@@ -23,10 +23,15 @@
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>בשביל תוסף <var>-task-image-recommendation</var></dt><dd>\n$1\n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "הפרמטר \"accepted\" חסר מהנתונים של התוסף Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "הפרמטר \"accepted\" חייב להיות בוליאני בנתונים של התוסף Add Image, ועכשיו הוא $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "הפרמטר \"reason\" חסר בנתוני תוסף Add Image",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "הפרמטר \"reason\" חייב להיות מערך בנתוני תוסף Add Image, כעת הוא $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "פריט בלתי־תקין \"$1\" עבור הפרמטר \"סיבה\", חייב להיות אחד מתוך: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "הפרמטר \"reasons\" חסר בנתוני תוסף Add Image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "הפרמטר \"reasons\" חייב להיות מערך בנתוני תוסף Add Image, כעת הוא $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "פריט בלתי־תקין \"$1\" עבור הפרמטר \"reasons\", חייב להיות אחד מתוך: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "רישום המלצות קישורים לא נמצא",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "יעדי המלצות קישור בלתי־צפויים: $1",
-	"growthexperiments-underlinked-rescore-profile": "פרופיל ניקוד חוזר פנימי המשמש בהמלצות קישורים של GrowthExperiments לתעדוף ערכים שעדיין אין בהם מספיק קישורים."
+	"growthexperiments-underlinked-rescore-profile": "פרופיל ניקוד חוזר פנימי המשמש בהמלצות קישורים של GrowthExperiments לתעדוף ערכים שעדיין אין בהם מספיק קישורים.",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "הפרמטר <var>editRevId</var> נדרש כאשר הפרמטר <var>accepted</var> מוגדר כ־<kbd>true</kbd> .",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "לא ניתן להשתמש בפרמטר <var>editRevId</var> כאשר הפרמטר <var>accepted</var> מוגדר כ־<kbd>false</kbd>.",
+	"growthexperiments-addimage-feedback-accepted-caption": "הפרמטר <var>caption</var> נדרש כאשר הפרמטר <var>accepted</var> מוגדר כ־<kbd>true</kbd> .",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "הגרסה שצוינה ב־<var>editRevId</var> לא נמצאה.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "הגרסה המצוינת ב־<var>editRevId</var> שייכת לדף אחר."
 }

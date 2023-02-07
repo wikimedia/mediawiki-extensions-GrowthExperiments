@@ -22,10 +22,15 @@
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Para o ''plugin'' <var>ge-task-image-recommendation</var> plugin</dt><dd>\n$1\n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Parâmetro 'accepted' em falta nos dados do <i>plugin</i> Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "O parâmetro 'accepted' nos dados do <i>plugin</i> Add Image tem de ser um booliano, mas é do tipo $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "Parâmetro 'reason' em falta nos dados do <i>plugin</i> Add Image",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "O parâmetro 'reason' nos dados do <i>plugin</i> Add Image tem de ser uma matriz, mas é do tipo $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "O elemento '$1' é inválido para o parâmetro 'reason'; tem de ser um dos seguintes: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "Parâmetro 'reasons' em falta nos dados do <i>plugin</i> Add Image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "O parâmetro 'reasons' nos dados do <i>plugin</i> Add Image tem de ser uma matriz, mas é do tipo $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "O elemento '$1' é inválido para o parâmetro 'reasons'; tem de ser um dos seguintes: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Não foi encontrado registo da recomendação de hiperligação",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinos de recomendação de hiperligação inesperados: $1",
-	"growthexperiments-underlinked-rescore-profile": "Perfil interno de reavaliação usado nas recomendações de hiperligações das experiências de crescimento GrowthExperiments para dar prioridade a artigos que ainda não têm hiperligações suficientes."
+	"growthexperiments-underlinked-rescore-profile": "Perfil interno de reavaliação usado nas recomendações de hiperligações das experiências de crescimento GrowthExperiments para dar prioridade a artigos que ainda não têm hiperligações suficientes.",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "O parâmetro <var>editRevId</var> é obrigatório quando o parâmetro <var>accepted</var> está definido como <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "O parâmetro <var>editRevId</var> não pode ser usado quando o parâmetro <var>accepted</var> está definido como <kbd>false</kbd>.",
+	"growthexperiments-addimage-feedback-accepted-caption": "O parâmetro <var>caption</var> é obrigatório quando o parâmetro <var>accepted</var> está definido como <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "A revisão especificada em <var>editRevId</var> não foi encontrada.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "A revisão especificada em <var>editRevId</var> pertence a uma página diferente."
 }

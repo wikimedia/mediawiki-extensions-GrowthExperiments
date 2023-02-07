@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Eduardo Addad de Oliveira",
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"Re demz"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Obtenha recomendações de tarefas adequadas para os novatos.",
@@ -25,5 +26,10 @@
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "O parâmetro 'Motivo' deve ser uma matriz em Adicionar dados de plug-in de imagem, é de $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "O elemento '$1' é inválido para o parâmetro 'reason'; tem de ser um dos seguintes: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Registro de recomendação de link não encontrado",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinos de recomendação de link inesperados: $1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinos de recomendação de link inesperados: $1",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "O parâmetro <var>editRevId</var> é obrigatório quando o parâmetro <var>accepted</var> está definido como <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "O parâmetro <var>editRevId</var> não pode ser usado quanto o parâmetro <var>accepted</var> está definido como <kbd>false</kbd>.",
+	"growthexperiments-addimage-feedback-accepted-caption": "O parâmetro <var>caption</var> é obrigatório quando o parâmetro <var>accepted</var> está definido como <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "A revissão especificada em <var>editRevId</var> não foi encontrada.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "A revisão especificada em <var>editRevId</var> pertence a uma página diferente."
 }

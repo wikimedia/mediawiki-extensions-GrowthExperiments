@@ -21,9 +21,9 @@
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Pro le plug-in <var>ge-task-image-recommendation</var></dt><dd>\n$1\n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "le parametro 'accepted' manca in le datos del plus-in Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "le parametro 'accepted' debe esser un valor boolean in le datos del plug-in Add Image, ma es $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "le parametro 'reason' manca in le datos del plug-in Add Image",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "le parametro 'reason' debe esser un array in le datos del plug-in Add Image, ma es $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Elemento '$1' non valide pro le parametro 'reason', debe esser un de: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "le parametro 'reasons' manca in le datos del plug-in Add Image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "le parametro 'reasons' debe esser un array in le datos del plug-in Add Image, ma es $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Elemento '$1' non valide pro le parametro 'reasons', debe esser un de: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Le registro del recommendation de ligamine non ha essite trovate",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinationes de recommendation de ligamine non expectate: $1",
 	"growthexperiments-underlinked-rescore-profile": "Profilo \"rescore\" interne usate in recommendationes de ligamines de GrowthExperiments pro priorisar articulos que non ha ancora satis ligamines."

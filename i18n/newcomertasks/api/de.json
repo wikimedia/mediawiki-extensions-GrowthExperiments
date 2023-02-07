@@ -21,10 +21,12 @@
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Für das <var>ge-task-image-recommendation</var>-Plugin</dt><dd>\n$1\n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "„accepted“-Parameter fehlt in den Daten des Add-Image-Plug-ins",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Der Parameter „accepted“ muss ein Boolean-Wert in den Daten des Add Image Plugins sein; er ist $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "„reason“-Parameter fehlt in den Daten des Add-Image-Plug-ins",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Der Parameter „reason“ muss ein Array in den Daten des Add Image Plugins sein; er ist $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Ungültiges Element „$1“ für „reason“-Parameter, muss einer der folgenden sein: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "„reasons“-Parameter fehlt in den Daten des Add-Image-Plug-ins",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Der Parameter „reasons“ muss ein Array in den Daten des Add Image Plugins sein; er ist $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Ungültiges Element „$1“ für „reasons“-Parameter, muss einer der folgenden sein: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Linkempfehlungsdatensatz nicht gefunden",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Unerwartete Link-Empfehlungsziele: $1",
-	"growthexperiments-underlinked-rescore-profile": "Internes Rescore-Profil, das in den Linkempfehlungen von GrowthExperiments verwendet wird, um Artikel zu priorisieren, die noch nicht genügend Links haben."
+	"growthexperiments-underlinked-rescore-profile": "Internes Rescore-Profil, das in den Linkempfehlungen von GrowthExperiments verwendet wird, um Artikel zu priorisieren, die noch nicht genügend Links haben.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "Die in <var>editRevId</var> angegebene Version wurde nicht gefunden.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Die in <var>editRevId</var> angegebene Version gehört zu einer anderen Seite."
 }
