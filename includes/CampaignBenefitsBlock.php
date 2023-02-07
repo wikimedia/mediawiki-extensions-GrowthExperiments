@@ -4,7 +4,6 @@ namespace GrowthExperiments;
 
 use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
-use GrowthExperiments\Util;
 use Html;
 use HTMLForm;
 use IContextSource;
@@ -186,7 +185,6 @@ class CampaignBenefitsBlock {
 			. $videoHtml
 		);
 	}
-
 
 	/**
 	 * Get the campaign from the account creation form
