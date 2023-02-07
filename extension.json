@@ -2358,7 +2358,7 @@
 		},
 		"GEUseNewImpactModule": {
 			"description": "Whether the new impact module should be used instead of the old impact module",
-			"value": false
+			"value": true
 		},
 		"GETopicsMatchModeEnabled": {
 			"description": "Global ON/OFF switch for the topics match mode UI feature.",
