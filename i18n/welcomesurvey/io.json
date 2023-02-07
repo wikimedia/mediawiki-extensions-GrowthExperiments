@@ -4,5 +4,6 @@
 			"Joao Xavier"
 		]
 	},
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Informez}} altra motivo...",
 	"welcomesurvey-question-edited-option-no-other-label": "No, por altra motivi"
 }

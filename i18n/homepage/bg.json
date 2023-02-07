@@ -91,6 +91,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Активен|Активна}} преди $2 {{PLURAL:$2|ден|дни}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Въпрос от [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Въпрос от [[User:$1|$1]] относно [[$2]]",
+	"growthexperiments-specialimpact-title": "Въздействие",
 	"growthexperiments-specialimpact-invalid-username": "Липсващо или невалидно потребителско име",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Вече {{GENDER:$2|наставлявате}} {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-contributions-zero-title": "Нямате {{GENDER:$1|направен}} нито един принос.",

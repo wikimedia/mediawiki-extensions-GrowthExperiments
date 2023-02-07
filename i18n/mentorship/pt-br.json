@@ -3,7 +3,8 @@
 		"authors": [
 			"Eduardoaddad",
 			"Stanglavine",
-			"YuriNikolai"
+			"YuriNikolai",
+			"Zapipedia (WMF)"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Painel de mentor",
@@ -39,7 +40,11 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "ativo $1 atrás",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "desconhecido",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Mostrar $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label": "Atribuir estrela ao mentorado",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 de $2",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label": "Próxima página de resultados",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "Página anterior de resultados",
+	"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label": "Remover estrela do mentorado",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Não foram encontrados mentorados recentemente ativos",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "O painel de controlo do mentor só mostra mentorados recentemente ativos. Poderá ser apresentada mais informação através do ícone de informações. Se se inscreveu recentemente como {{GENDER:|mentor|mentora}} pode ainda não ter nenhum mentorado atribuído.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nenhum aprendiz encontrado",
@@ -47,6 +52,7 @@
 	"growthexperiments-mentor-dashboard-resources-headline": "Recursos",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "A lista de mentores",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gerenciar mentores",
+	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Ver a lista de mentores",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Como se apresentar como {{GENDER:|mentor|mentora}}",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Como reivindicar um aprendiz",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Ferramentas de crescimento",
@@ -76,6 +82,7 @@
 	"growthexperiments-quit-mentorship-title": "Sair da mentoria",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "É triste ver você ir. Para iniciar o processo de desistência do mentor, primeiro você precisa remover seu nome [[$1|da lista de mentores]]. Depois de fazer isso, retorne a esta página.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "O próximo passo para desistir da orientação é reatribuir seus aprendizes. Se você tem certeza de que deseja sair, pressione o botão abaixo.",
+	"growthexperiments-quit-mentorship-error-not-a-mentor": "Não é {{GENDER:|mentor|mentora}}.",
 	"growthexperiments-quit-mentorship-reason": "Motivo",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Sim, reatribuir meus aprendizes",
 	"growthexperiments-quit-mentorship-success": "Seus aprendizes serão transferidos para outros mentores em breve.",
@@ -103,8 +110,12 @@
 	"growthexperiments-mentor-writer-error-already-added": "O mentor $1 já tinha sido adicionado à lista de mentores",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "O mentor $1 não está na lista de mentores",
 	"growthexperiments-manage-mentors-title": "Gerenciar mentores",
+	"growthexperiments-manage-mentors-auto-assigned": "Mentores atribuídos automaticamente",
+	"growthexperiments-manage-mentors-manually-assigned": "Mentores atribuídos manualmente",
 	"growthexperiments-manage-mentors-username": "Nome de usuário",
+	"growthexperiments-manage-mentors-last-active": "Última atividade",
 	"growthexperiments-manage-mentors-remove-mentor": "Remover",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "Motivo para remover o mentor",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Mensagem de introdução",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motivo",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscrever-se"

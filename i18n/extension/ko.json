@@ -59,6 +59,9 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "아니오",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "새 사용자에 자동으로 할당될 멘토 목록을 포함하는 문서",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "수동 할당만 가능한 멘토 목록을 포함하는 문서",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "사용자들이 자동으로 멘토 자격을 가질 수 있게 해야 할까요?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "예, 아래의 모든 기준을 충족하는 사용자가 멘토로 등록할 수 있게 합니다.",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "아니요, 모든 사용자를 멘토로 등록할 수 없게 합니다.",
 	"growthexperiments-edit-config-newcomertasks": "편집 제안",
 	"growthexperiments-edit-config-newcomer-tasks-description": "일부 편집 제안 유형은 정비 틀을 통해 표면화됩니다. 해당 틀을 포함하는 문서들은 피드에 추가됩니다. 각 작업 유형에 따라 사용할 수 있는 문서 수를 보려면 [[Special:NewcomerTasksInfo|이 문서]]를 참고하십시오.",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "비활성화됨",
@@ -75,10 +78,13 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "문서 업데이트에 관해 더 알아보기 위한 도착 문서입니다.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "링크 추천 작업 유형에 대해 자세히 알아보기 위한 도착 문서입니다.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "제안된 각 작업에 표시할 링크 제안의 최대 수입니다.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "새 사용자가 하루에 마칠 수 있는 \"링크 추가\" 제안 작업의 최대 수입니다.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "어떠한 링크도 제안되지 않는 문단 이름 목록입니다.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "이미지 추천 작업 유형에 대해 자세히 알아보기 위한 도착 문서입니다.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "이 작업 유형은 기계 제안과 연결되며 템플릿을 사용하여 작업 풀을 생성하지 않습니다.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "여기에 정의된 틀이 포함된 문서는 이 작업 유형에 대한 작업으로 사용자에게 표시되지 않습니다.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "여기에 정의된 분류가 포함된 문서는 이 작업 유형에 대한 작업으로 사용자에게 표시되지 않습니다.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "정보상자 틀",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "이 틀은 [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|이미지 제안]] 신규 사용자 작업 기능에 필요합니다. 이러한 틀이 포함된 문서는 이미지 제안 작업으로 나열되지 않습니다."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "이 틀은 [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|이미지 제안]] 신규 사용자 작업 기능에 필요합니다. 이러한 틀이 포함된 문서는 이미지 제안 작업으로 나열되지 않습니다.",
+	"growthexperiments-edit-config-delayed": "이 설정의 변경은 즉시 효력이 발생하지 않습니다. ([[mw:Growth/FAQ#add-link-config|FAQ]] 참고)"
 }

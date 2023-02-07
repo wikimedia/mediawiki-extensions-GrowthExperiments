@@ -13,6 +13,7 @@
 	"growthexperiments-confirmemail-confirm-button": "Apstiprināt e-pasta adresi",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Sveiks|Sveika}}, $2!\n\nPaldies, ka pievienoji e-pastu savam Vikipēdijas kontam, kas izveidots no IP adreses $1.\n\nLūdzu, noklikšķini uz saites zemāk, lai apstiprinātu, ka šo e-pasta adresi vēlies sasaistīt ar savu kontu \"$2\":\n\n$3\n\nPiezīme: šim apstiprinājuma kodam derīguma termiņs beigsies $4.\n\nPaldies,\n\n{{SITENAME}}\n\n----\n\nLai atceltu e-pasta adeses apstiprināšanu (tāpēc, ka kontu neizveidoji tu vai cita iemesla dēļ), klikšķini uz šīs atcelšanas saites:\n\n$5",
 	"growthexperiments-signupcampaign-title": "Paldies par ziedojumu! Jau šodien pievienojies redaktoru kopienai, kas padara Vikipēdiju labāku",
+	"growthexperiments-marketingvideocampaign-title": "Vikipēdiju veido tādi cilvēki kā tu",
 	"growthexperiments-signupcampaign-bullet1": "Ieteiktie raksti no {{GENDER:|tavām}} interesēm",
 	"growthexperiments-signupcampaign-bullet2": "Jautā palīdzību pieredzējušam dalībniekam",
 	"growthexperiments-signupcampaign-bullet3": "Sāc ar nelieliem, vienkāršiem labojumiem"

@@ -73,7 +73,7 @@
 	"growthexperiments-quit-mentorship-title": "Откажи се од подучување",
 	"growthexperiments-quit-mentorship-reason": "Причина",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Да, додели ги моите подученици на други подучувачи",
-	"growthexperiments-quit-mentorship-success": "Вашите подученици набргу ќе бидат доделени на други наставници.",
+	"growthexperiments-quit-mentorship-success": "Вашите подученици набргу ќе бидат доделени на други подучувачи.",
 	"growthexperiments-quit-mentorship-no-mentees": "Во моментов {{GENDER:|немате}} ниеден подученик.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|се повлече}} од подучување.",
 	"echo-category-title-ge-mentorship": "Подучување",
@@ -89,5 +89,13 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Се појави непозната грешка. Обидете се подоцна.",
 	"growthexperiments-mentor-list-missing-key": "Недостасува клучот <code>$1</code>",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> се очекува да биде <code>$2</code>, но е <code>$3</code>",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "Подучувачката определба содржи неочекуван клуч <code>$1</code>"
+	"growthexperiments-mentor-list-unexpected-key-mentor": "Подучувачката определба содржи неочекуван клуч <code>$1</code>",
+	"growthexperiments-manage-mentors-title": "Управување со подучувачи",
+	"growthexperiments-manage-mentors-auto-assigned": "Автоматски доделени подучувачи",
+	"growthexperiments-manage-mentors-manually-assigned": "Рачно доделени подучувачи",
+	"growthexperiments-mentorship-enrollasmentor-title": "Пријавување за {{GENDER:|подучувач}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "{{GENDER:|Ви}} благодариме што решивте да станете {{GENDER:|подучувач}} на {{SITENAME}}. {{GENDER:|Можете}} да е пријавите за подучувач пополнувајќи го овој образец.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Воведна порака",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Воведната порака е {{GENDER:|вашето}} претставување како подучувач. Не надминувајте 240 знаци. Не се допушта викитекст.",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Запиши ме"
 }
