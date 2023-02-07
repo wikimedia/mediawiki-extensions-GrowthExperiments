@@ -131,7 +131,6 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 				if ( config.useTopicMatchMode ) {
 					closeExtraData.topicsMatchMode = this.topicFiltersDialog.getEnabledFilters()
 						.getTopicsMatchMode();
-					this.topicFilterButtonWidget.setIcon( TOPIC_MATCH_MODES.AND === closeExtraData.topicsMatchMode ? 'funnel-add' : 'funnel' );
 				}
 				if ( data && data.action === 'done' ) {
 					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-done', closeExtraData );
@@ -219,6 +218,7 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 			}
 			this.topicFilterButtonWidget.setLabel( topicLabel );
 		}
+		this.topicFilterButtonWidget.setIcon( isMatchModeAND ? 'funnel-add' : 'funnel' );
 	}
 
 	if ( !taskTypeSearch.length ) {
