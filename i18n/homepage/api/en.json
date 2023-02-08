@@ -12,5 +12,6 @@
 	"apihelp-growthsetmentor-param-mentor": "Mentor's username",
 	"apihelp-growthsetmentor-param-reason": "Reason for the change",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidate image recommendation task",
-	"apihelp-growthinvalidateimagerecommendation-param-title": "Title of the article the image recommendation task is for"
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Title of the article the image recommendation task is for",
+	"apihelp-query+growthimagesuggestiondata-summary": "Fetch associated [[mw:wikitech:Add_Image|image suggestion data]], if available"
 }
