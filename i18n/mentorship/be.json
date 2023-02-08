@@ -5,6 +5,7 @@
 			"Kareyac",
 			"Maksim L.",
 			"No Sleep till Krupki",
+			"Plaga med",
 			"Tomato Cream",
 			"Tīgelika"
 		]
@@ -19,7 +20,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Табліца патрабуе JavaScript. Калі ласка, уключыце JavaScript, каб выкарыстоўваць гэты модуль.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Хто ў {{GENDER:|вашай}} табліцы?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Дадатковыя звесткі аб тым, хто знаходзіцца ў {{GENDER:|вашай}} табліцы",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "У гэтай табліцы паказаныя {{GENDER:|вашы}} падапечныя, чый рахунак быў створаны на працягу апошніх двух тыдняў або якія рэдагавалі на працягу апошніх шасці месяцаў, і ў якіх [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH уключана хатняя старонка для пачаткоўцаў]. Дадзеныя абнаўляюцца кожныя тры гадзіны.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "У гэтай табліцы паказаны {{GENDER:|вашы}} падапечныя, чый уліковы запіс быў створаны на працягу апошніх двух тыдняў або якія рэдагавалі на працягу апошніх шасці месяцаў, і ў якіх [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH уключана дамашняя старонка для пачаткоўцаў]. Дадзеныя абнаўляюцца кожныя тры гадзіны.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Легенда",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Зрабіць закладкі падапечных",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Імя ўдзельніка",
@@ -112,7 +113,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Прыкладна ў два разы вышэй за сярэдняе",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Ваша}} нагрузка была зменена на \"$1\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Адбылася невядомая памылка. Калі ласка, паспрабуйце пазней.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Настаўнікі размяркоўваюцца выпадковым чынам да настаўнікаў па меры стварэння іх рахункаў. Вы можаце кіраваць колькасцю падапечных, прызначаных вам, але некаторыя падапечныя могуць задаваць пытанні часцей, чым іншыя",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Настаўнікі размяркоўваюцца выпадковым чынам да настаўнікаў па меры стварэння іх уліковых запісаў. Вы можаце кіраваць колькасцю падапечных, прызначаных вам, але некаторыя падапечныя могуць задаваць пытанні часцей, чым іншыя",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Рэкамендуецца пачаць з налады «Сярэдняя», каб ацаніць вашу здольнасць падтрымкі перад павелічэннем або памяншэннем.",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Змяніце паведамленне, якое {{GENDER:|вы}} выкарыстоўваеце, каб прадставіцца",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Запісаць",

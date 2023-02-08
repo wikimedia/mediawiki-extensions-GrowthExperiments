@@ -100,7 +100,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "最長連続記録に関する詳細情報",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|あなたの}}現在の最長連続記録は、$3の間に達成した$2{{PLURAL:$2|日}}です。",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "現在の最長連続記録は、$2の間に達成した$1{{PLURAL:$1|日}}です。",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|}}現在の最長連続記録は、{{GENDER:$1|you}}$2に達成した1日です。",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|あなたの}}現在の最長連続記録は、$2に達成した1日です。",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "現在の最長連続記録は、$1に達成した1日です。",
 	"growthexperiments-homepage-impact-subheader-text": "最も閲覧されたもの（{{GENDER:$1|あなた}}の編集以降）",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "最も閲覧されたもの（編集以降）",

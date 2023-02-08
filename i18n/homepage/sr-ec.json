@@ -92,7 +92,7 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Прикажи предложене измене",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Обавештења с Трга",
 	"growthexperiments-tour-response-tip-text": "Када неко одговори на {{GENDER:$1|ваше}} питање, добићете ново обавештење овде.",
-	"growthexperiments-tour-mentor-response-tip-personal-title": "Упозорења ментора",
+	"growthexperiments-tour-mentor-response-tip-personal-title": "Упозорења {{GENDER:$1|ментора|менторке|ментора}}",
 	"growthexperiments-tour-mentor-response-tip-personal-text": "{{GENDER:$1|Када}} {{GENDER:$2|ментор|менторка}} одговори, добићете овде ново обавештење.",
 	"growthexperiments-tour-response-button-okay": "Разумем",
 	"tag-help_module_question": "постављање питања",
