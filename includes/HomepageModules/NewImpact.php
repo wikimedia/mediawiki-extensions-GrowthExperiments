@@ -379,6 +379,7 @@ class NewImpact extends BaseModule {
 				'last_edit_timestamp' => $userImpact->getLastEditTimestamp(),
 				'longest_streak_days_count' => $userImpact->getLongestEditingStreakCount(),
 				'top_articles_views_count' => $formattedUserImpact['topViewedArticlesCount'],
+				'total_pageviews_count' => $formattedUserImpact['totalPageviewsCount'],
 			];
 		}
 		return array_merge( parent::getActionData(), $data );

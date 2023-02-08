@@ -32,6 +32,7 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 				'2022-08-24': 1000,
 				'2022-08-25': 2000
 			},
+			totalPageviewsCount: 3000,
 			topViewedArticlesCount: 3000,
 			topViewedArticles: {
 				Bar: {

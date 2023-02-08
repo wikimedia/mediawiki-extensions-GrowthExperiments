@@ -91,6 +91,9 @@ class UserImpactFormatter {
 		} ), 0, 5, true );
 
 		$topViewedArticlesCount = array_sum( array_column( $topViewedArticles, 'viewsCount' ) );
+		$totalPageviewsCount = array_sum(
+			array_column( $this->getModifiedDailyArticleViews( $jsonData ), 'viewsCount' )
+		);
 
 		// Order the articles by date, most recent edit to oldest, and get the most recent 5.
 		uasort( $recentEditsWithoutPageviews, static function ( $a, $b ) {
@@ -108,6 +111,7 @@ class UserImpactFormatter {
 			'recentEditsWithoutPageviews' => $recentEditsWithoutPageviews,
 			'topViewedArticles' => $topViewedArticles,
 			'topViewedArticlesCount' => $topViewedArticlesCount,
+			'totalPageviewsCount' => $totalPageviewsCount
 		];
 	}
 
