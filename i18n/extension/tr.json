@@ -9,7 +9,8 @@
 			"Mim.saitkilic",
 			"MuratTheTurkish",
 			"SaldırganSincap",
-			"ToprakM"
+			"ToprakM",
+			"Rapsar"
 		]
 	},
 	"growthexperiments-desc": "Bu eklenti, Growth ekibinin yaptığı deneyleri içeriyor.",
@@ -69,7 +70,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Devre dışı",
 	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Site yapılandırmasında devre dışı",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Kopya düzenleme: Yazım, dil bilgisi ve noktalama iyileştirmeleri gibi kopya düzenlemesi gereken maddeleri bulmak için şablonlar.",
-	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Kopya düzenleme hakkında daha fazla bilgi edinmek için hedef sayfa.",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Kopya değişiklik hakkında daha fazla bilgi edinmek için hedef sayfa.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Genişlet: Genişletilmesi gereken makaleleri bulmak için şablonlar.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Genişleyen makaleler hakkında daha fazla bilgi edinmek için hedef sayfa.",
 	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Bağlantılar: Daha fazla bağlantıya ihtiyaç duyan maddeleri bulmak için şablonlar.",

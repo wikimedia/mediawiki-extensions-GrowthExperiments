@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Управувачница на подучувачот",
@@ -71,7 +72,7 @@
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Други подученици доделени {{GENDER:|вам}}",
 	"growthexperiments-quit-mentorship-title": "Откажи се од подучување",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Да, додели ги моите подученици на други подучувачи",
-	"growthexperiments-quit-mentorship-success": "Вашите подученици набргу ќе бидат доделени на други наставници.",
+	"growthexperiments-quit-mentorship-success": "Вашите подученици набргу ќе бидат доделени на други подучувачи.",
 	"growthexperiments-quit-mentorship-no-mentees": "Во моментов {{GENDER:|немате}} ниеден подученик.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|се повлече}} од подучување.",
 	"echo-category-title-ge-mentorship": "Подучување",

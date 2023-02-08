@@ -65,7 +65,7 @@
 	"echo-category-title-ge-mentorship": "Менторство",
 	"growthexperiments-notification-body-mentee-claimed": "Разлог: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Додељивање новајлија",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Додељуј половину просечног броја",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Додељуј просечан број (подразумевано)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Додељуј два пута више од просечног броја"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Половина просека",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Просечно (подразумевано)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Дупло више од просека"
 }

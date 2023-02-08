@@ -5,6 +5,9 @@
 		]
 	},
 	"growthexperiments-confirmemail-emailhelp": "Por rekuperar vua pasovorto se vu perdos ol, bezonesos vua e-postal adreso.",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Saluto}} $2,\n\nDanko pro adjuntar vua e-postal adreso a vua konto che {{SITENAME}}, enrejistrita de IP- adreso $1.\n\nKliktez la butono adinfre por konfirmr ke to esas la e-postal adreso quan vu deziras ligar a vua konto \"$2\":\n\n$3\n\nNoto: ca kodexo por konfirmar <strong>expiros ye $4</strong>.\n\nDanko,\n\n{{SITENAME}}\n\n----\n\nPor nihiligar la konfirmo di ca e-postal adreso (sive pro ke vu ne enrejistris su, od altra motivo), kliktez ca ligilo, adinfre:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Konfirmar e-postal adreso",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Saluto}} $2,\n\nDanko pro adjuntar vua e-postal adreso a vua konto che translatewiki.net, enrejistrita de IP- adreso $1.\n\nVoluntez kliktar la ligilo adinfre por konfirmr ke to esas la e-postal adreso quan vu deziras ligar a vua konto \"$2\":\n\n$3\n\nNoto: ca kodexo por konfirmar expiros ye $4.\n\nDanko,\n\n{{SITENAME}}\n\n----\n\nPor nihiligar la konfirmo di ca e-postal adreso (sive pro ke vu ne enrejistris su, od altra motivo), kliktez la ligilo adinfre:\n\n$5",
 	"growthexperiments-signupcampaign-title": "Danko pro vua donaco! Nun, enirez la komunitato di redakteri, e plubonigez Wikipedio hodie",
 	"growthexperiments-signupcampaign-body": "Editing Wikipedia can be as simple as adding a link or changing a word. Get suggestions for articles in {{GENDER:|your}} topics of interest after you create your account!",
 	"growthexperiments-signupcampaign-bullet1": "Sugesti pri artikli qui {{GENDER:|vu}} povas prizar",
