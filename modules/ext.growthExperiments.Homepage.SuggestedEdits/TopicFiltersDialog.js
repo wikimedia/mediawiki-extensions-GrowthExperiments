@@ -140,6 +140,7 @@ TopicFiltersDialog.prototype.performSearchUpdateActions = function () {
 	// Don't fire 'search' events for changes that we made ourselves in updateFiltersFromState()
 	if ( !this.updating ) {
 		this.articleCounter.setSearching();
+		this.filtersStore.updateStatesFromTopicsFilters( this.getEnabledFilters() );
 		this.emit( 'search', null, this.getEnabledFilters() );
 	}
 };

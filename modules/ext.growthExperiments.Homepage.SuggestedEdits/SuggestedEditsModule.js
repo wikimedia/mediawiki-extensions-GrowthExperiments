@@ -183,7 +183,6 @@ SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogProcess
  * by rendering an error card.
  */
 SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function () {
-	this.updateFilterSelection();
 	return this.tasksStore.fetchTasks( 'suggestedEditsModule.fetchTasksAndUpdateView' ).then( function () {
 		this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
 		return $.Deferred().resolve().promise();
@@ -196,14 +195,6 @@ SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function () {
 			{ type: 'error', errorMessage: message } );
 		return this.showCard( new ErrorCardWidget() );
 	}.bind( this ) );
-};
-
-/**
- * Set the task types and topics query properties based on dialog state.
- */
-SuggestedEditsModule.prototype.updateFilterSelection = function () {
-	this.filtersStore.updateStatesFromTopicsFilters( this.filters.topicFiltersDialog.getEnabledFilters() );
-	this.filtersStore.setSelectedTaskTypes( this.filters.taskTypeFiltersDialog.getEnabledFilters() );
 };
 
 /**
