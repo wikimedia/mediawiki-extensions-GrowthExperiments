@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Beta16",
 			"Elitre (WMF)",
 			"Lemure Saltante",
 			"ValeJappo"
@@ -14,5 +15,6 @@
 	"apihelp-growthsetmentor-summary": "Imposta tutor dell'utente. Le modifiche verranno registrate pubblicamente.",
 	"apihelp-growthsetmentor-param-mentee": "Nome utente dell'allievo",
 	"apihelp-growthsetmentor-param-mentor": "Nome del tutor",
-	"apihelp-growthsetmentor-param-reason": "Motivo della modifica"
+	"apihelp-growthsetmentor-param-reason": "Motivo della modifica",
+	"apihelp-query+growthimagesuggestiondata-summary": "Recupera i [[mw:wikitech:Add_Image|dati suggeriti per le immagini]] associati, se disponibili"
 }

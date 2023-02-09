@@ -15,5 +15,6 @@
 	"apihelp-growthsetmentor-param-mentor": "Nome de utilizador do mentor",
 	"apihelp-growthsetmentor-param-reason": "Motivo da mudança",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar a tarefa de recomendação de imagem",
-	"apihelp-growthinvalidateimagerecommendation-param-title": "Título do artigo ao qual respeita a recomendação de imagem"
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Título do artigo ao qual respeita a recomendação de imagem",
+	"apihelp-query+growthimagesuggestiondata-summary": "Obter [[mw:wikitech:Add_Image|os dados de recomendação de imagem]] associados, se disponíveis"
 }

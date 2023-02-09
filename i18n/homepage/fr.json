@@ -102,7 +102,7 @@
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "Modification{{PLURAL:$1||s}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 modification{{PLURAL:$1||s}} le $2",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Visualisations des articles que {{GENDER:$1|}}vous avez modifiés",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Consultations des articles modifiés",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "consultations des articles modifiés",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total des modifications",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Remerciements reçus",
 	"growthexperiments-homepage-impact-scores-over-limit": ">999",
@@ -117,7 +117,7 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|}}Votre plus longue séquence actuelle est de un jour que {{GENDER:$1|}}vous avez consacré le $2.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "La plus longue séquence actuelle est de un jour, qui a été atteinte dans le $1.",
 	"growthexperiments-homepage-impact-subheader-text": "Les plus vus (depuis {{GENDER:$1|}}vos modifications)",
-	"growthexperiments-homepage-impact-subheader-text-third-person": "Les plus consultés (depuis la modification)",
+	"growthexperiments-homepage-impact-subheader-text-third-person": "Les plus consultés (depuis leur modification)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Nombre de vues depuis {{GENDER:$1|}}votre dernière modification (60 derniers jours) :",
 	"growthexperiments-homepage-impact-contributions-link": "Voir toutes {{GENDER:$2|}}vos modification{{PLURAL:$1||s}} ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|}}Vous n’avez encore créé ou modifié aucun article.",
@@ -585,8 +585,8 @@
 	"growthexperiments-homepage-special-contribute-title": "Modifications suggérées",
 	"growthexperiments-homepage-special-contribute-description": "Effectuez de petites modifications faciles (par exemple, un ajout de lien ou une correction) pour améliorer les articles existants.",
 	"growthexperiments-homepage-special-contribute-cta": "Voir les modifications suggérées",
-	"growthexperiments-tour-newimpact-discovery-title": "Conception mise à jour",
-	"growthexperiments-tour-newimpact-discovery-description": "Davantage de {{GENDER:}}vos activités de modification ont été ajoutées !",
+	"growthexperiments-tour-newimpact-discovery-title": "Présentation mise à jour",
+	"growthexperiments-tour-newimpact-discovery-description": "Davantage de {{GENDER:}}votre activité d'édition a été ajoutée !",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "C’est bon",
 	"growthexperiments-homepage-newimpact-contributions-link": "Afficher toutes les modifications"
 }
