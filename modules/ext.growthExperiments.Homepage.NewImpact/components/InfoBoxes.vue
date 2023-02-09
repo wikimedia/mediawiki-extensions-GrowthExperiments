@@ -4,7 +4,7 @@
 			<c-text
 				size="medium"
 			>
-				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text', lastEditFormattedDate ).text() }}
+				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' ).text() }}
 			</c-text>
 			<c-text
 				size="medium"
@@ -17,9 +17,7 @@
 			<c-text
 				size="medium"
 			>
-				{{ $i18n(
-					'growthexperiments-homepage-impact-recent-activity-best-streak-text', bestStreakFormattedDates
-				).text() }}
+				{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text() }}
 			</c-text>
 			<c-text
 				size="medium"
