@@ -6,6 +6,7 @@
 				:icon="cdxIconInfo"
 				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' ).text()"
 				:close-icon="cdxIconClose"
+				:close-icon-label="$i18n( 'growthexperiments-info-tooltip-close-label' ).text()"
 			>
 				<template #trigger="{ onClick }">
 					<cdx-button
@@ -161,6 +162,8 @@ const MENTEES_TABLE_COLUMNS = [
 	}
 ];
 
+// Uses the following message keys:
+// growthexperiments-info-tooltip-close-label
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },

@@ -1894,7 +1894,8 @@
 				"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label",
 				"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label",
 				"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label",
-				"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label"
+				"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label",
+				"growthexperiments-info-tooltip-close-label"
 			],
 			"dependencies": [
 				"ext.growthExperiments.icons",
