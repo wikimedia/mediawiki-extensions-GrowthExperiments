@@ -201,6 +201,8 @@
 	"growthexperiments-homepage-suggestededits-no-results": "No suggestions found",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Select other difficulty levels to find suggested edits.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Select other interests or difficulty levels to find suggested edits.",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Change {{GENDER:$1|your}} filter settings to \"Match at least one selected topic\" for more results",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Update filter",
 	"growthexperiments-homepage-suggestededits-footer": "Other users have noted these articles need work. Help make '''{{SITENAME}}''' better for its '''$1 readers''' each day.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Other users have noted these articles need work. Help make '''{{SITENAME}}''' better.",
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",

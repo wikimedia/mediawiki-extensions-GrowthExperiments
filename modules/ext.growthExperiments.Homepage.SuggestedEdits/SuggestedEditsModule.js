@@ -12,6 +12,7 @@ var EditCardWidget = require( './EditCardWidget.js' ),
 	ImageSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js' ),
 	LinkSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js' ),
 	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+	TOPIC_MATCH_MODES = CONSTANTS.TOPIC_MATCH_MODES,
 	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES;
 
 /**
@@ -324,6 +325,18 @@ SuggestedEditsModule.prototype.logCardData = function () {
 };
 
 /**
+ * Set a topic match mode and store it in the user preferences
+ *
+ * @param {string} mode the topic match mode to set
+ */
+SuggestedEditsModule.prototype.setMatchModeAndSave = function ( mode ) {
+	this.filters.topicFiltersDialog.topicSelector.matchModeSelector.setSelectedMode( mode );
+	this.fetchTasksAndUpdateView().then( function () {
+		this.filtersStore.savePreferences();
+	}.bind( this ) );
+};
+
+/**
  * Display the given card, or the current card.
  * Sets this.currentCard.
  *
@@ -344,7 +357,11 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 	} else if ( this.tasksStore.isTaskQueueEmpty() ) {
 		this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 			{ type: 'empty' } );
-		this.currentCard = new NoResultsWidget( { topicMatching: this.filtersStore.topicsEnabled } );
+		this.currentCard = new NoResultsWidget( {
+			topicMatching: this.filtersStore.topicsEnabled,
+			topicMatchModeIsAND: this.filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND,
+			setMatchModeOr: this.setMatchModeAndSave.bind( this, TOPIC_MATCH_MODES.OR )
+		} );
 	} else if ( !this.tasksStore.getCurrentTask() ) {
 		this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 			{ type: 'end' } );
