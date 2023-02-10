@@ -232,6 +232,7 @@ NewcomerTasksStore.prototype.setPreloadedTaskQueue = function ( taskQueue ) {
  */
 NewcomerTasksStore.prototype.setTaskQueueLoading = function ( isLoading ) {
 	this.taskQueueLoading = isLoading;
+	this.emit( CONSTANTS.EVENTS.TASK_QUEUE_LOADING, isLoading );
 };
 
 // Events emitted when state changes for reactivity
@@ -272,6 +273,7 @@ NewcomerTasksStore.prototype.onCurrentTaskExtraDataChanged = function () {
  */
 NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 	if ( this.apiPromise ) {
+		this.setTaskQueueLoading( false );
 		this.apiPromise.abort();
 		this.abortedPromise = true;
 	}

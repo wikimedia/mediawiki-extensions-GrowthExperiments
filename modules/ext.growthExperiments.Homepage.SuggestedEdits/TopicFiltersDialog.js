@@ -22,6 +22,7 @@ function TopicFiltersDialog( rootStore ) {
 	this.performSearchUpdateActionsDebounced =
 		OO.ui.debounce( this.performSearchUpdateActions.bind( this ) );
 	this.filtersStore = rootStore.newcomerTasks.filters;
+	this.getTaskCount = rootStore.newcomerTasks.getTaskCount.bind( rootStore.newcomerTasks );
 }
 
 OO.inheritClass( TopicFiltersDialog, FiltersDialog );
@@ -155,6 +156,7 @@ TopicFiltersDialog.prototype.getSetupProcess = function ( data ) {
 	return TopicFiltersDialog.super.prototype.getSetupProcess.call( this, data )
 		.next( function () {
 			this.updateFiltersFromState();
+			this.updateLoadingState( { isLoading: false, count: this.getTaskCount() } );
 		}, this );
 };
 
