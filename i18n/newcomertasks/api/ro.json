@@ -21,10 +21,15 @@
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Pentru <var>ge-task-image-recommendation</var> plugin-ul</dt><dd>\n$1\n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "parametrul 'accepted' lipsește din datele de plugin ale Adaugă imagine",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "parametrul 'accepted' trebuie să fie o variabilă boolean în datele de plugin ale Adaugă imagine, este $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "parametrul 'reason' lipsește din datele de plugin ale Adaugă imagine",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "parametrul 'reason' trebuie să fie o variabilă boolean în datele de plugin ale Adaugă imagine, este $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Element invalid '$1' pentru parametrul 'reason', trebuie să fie unul dintre: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "parametrul 'reasons' lipsește din datele de plugin ale Adaugă imagine",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "parametrul 'reasons' trebuie să fie o variabilă boolean în datele de plugin ale Adaugă imagine, este $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Element invalid '$1' pentru parametrul 'reasons', trebuie să fie unul dintre: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Înregistrare de recomandare de legare negăsită",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Ținte de recomandare de legare neașteptate: $1",
-	"growthexperiments-underlinked-rescore-profile": "Profilul intern de reevaluare a scorului utilizată în legătura recomandările de legare GrowthExperiments pentru prioritizarea articolelor care încă nu au suficiente legături."
+	"growthexperiments-underlinked-rescore-profile": "Profilul intern de reevaluare a scorului utilizată în legătura recomandările de legare GrowthExperiments pentru prioritizarea articolelor care încă nu au suficiente legături.",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "Parametrul <var>editRevId</var> este solicitat atunci când parametrul <var>accepted</var> este setat la <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "Parametrul <var>editRevId</var> este solicitat atunci când parametrul <var>accepted</var> este setat la <kbd>false</kbd>.",
+	"growthexperiments-addimage-feedback-accepted-caption": "Parametrul <var>caption</var> este solicitat atunci când parametrul <var>accepted</var> este setat la <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "Revizia specificată în <var>editRevId</var> nu a fost găsită.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Revizia specificată în <var>editRevId</var> aparține unei pagini diferite."
 }
