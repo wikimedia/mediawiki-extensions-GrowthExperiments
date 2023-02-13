@@ -15,5 +15,13 @@
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Gebruik bij het opslaan van een gestructureerde bewerking \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|Een koppeling toevoegen]]\" van GrowthExperiments.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "Gebruik bij het opslaan van een gestructureerde bewerking \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|Een afbeelding toevoegen]]\" van GrowthExperiments.",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Voor de plug-in <var>ge-task-link-recommendation</var></dt><dd> \n $1 \n</dd></dl>",
-	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Voor de plug-in <var>ge-task-image-recommendation</var></dt><dd> \n $1 \n</dd></dl>"
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Voor de plug-in <var>ge-task-image-recommendation</var></dt><dd> \n $1 \n</dd></dl>",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "parameter 'reasons' ontbreekt in plugin-gegevens van \"Add Image\"",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "De parameter 'reasons' moet een array zijn in de plugin-gegevens van \"Add Image\", maar is $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Ongeldig item '$1' voor parameter 'reasons', moet een van de volgende zijn: $2",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "De parameter <var>editRevId</var> is vereist wanneer de parameter <var>accepted</var> is ingesteld op <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "De parameter <var>editRevId</var> kan niet worden gebruikt als de parameter <var>accepted</var> is ingesteld op <kbd>false</kbd>.",
+	"growthexperiments-addimage-feedback-accepted-caption": "De parameter <var>caption</var> is vereist wanneer de parameter <var>accepted</var> is ingesteld op <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "De in <var>editRevId</var> opgegeven versie is niet gevonden.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "De in <var>editRevId</var> opgegeven versie behoort tot een andere pagina."
 }

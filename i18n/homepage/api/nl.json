@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dedalus"
+			"Dedalus",
+			"McDutchie"
 		]
 	},
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Geen vragen gevonden",
 	"apihelp-growthsetmentor-param-mentee": "Gebruikersnaam van de mentee",
 	"apihelp-growthsetmentor-param-mentor": "Gebruikersnaam van de mentor",
-	"apihelp-growthsetmentor-param-reason": "Reden voor de wijziging."
+	"apihelp-growthsetmentor-param-reason": "Reden voor de wijziging.",
+	"apihelp-query+growthimagesuggestiondata-summary": "Gekoppelde [[mw:wikitech:Add_Image|gegevens over afbeeldingssuggesties]] ophalen, indien beschikbaar"
 }

@@ -369,7 +369,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "Motif pour demander ce tutoré",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|}}Vous avez modifié l{{GENDER:$4|e|a}} tut{{GENDER:$4|eur|rice}} affecté{{GENDER:$4||e}} à {{PLURAL:$2|}}$1 et avez désigné {{GENDER:$4|}}$5. Retourner au [[Special:MentorDashboard|tableau de bord des tuteurs]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Le tuteur de {{GENDER:$1|}}$1 a déjà été modifié. Êtes-vous sûr{{GENDER:$2||e}} de vouloir le modifier de nouveau ?",
-	"growthexperiments-claimmentee-confirm": "Oui, je le veux",
+	"growthexperiments-claimmentee-confirm": "Oui, je veux vraiment continuer",
 	"growthexperiments-log-name": "Journal de GrowthExperiments",
 	"growthexperiments-log-header": "Ceci est un journal des actions effectuées dans l’extension GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "{{GENDER:$2|}}$1 a défini {{GENDER:$6|}}$3 comme étant s{{GENDER:$6|on|a}} tutoré{{GENDER:$6||e}} (tut{{GENDER:$4|eur|rice}} précédent{{GENDER:$4||e}} : $5)",
@@ -586,7 +586,7 @@
 	"growthexperiments-homepage-special-contribute-description": "Effectuez de petites modifications faciles (par exemple, un ajout de lien ou une correction) pour améliorer les articles existants.",
 	"growthexperiments-homepage-special-contribute-cta": "Voir les modifications suggérées",
 	"growthexperiments-tour-newimpact-discovery-title": "Présentation mise à jour",
-	"growthexperiments-tour-newimpact-discovery-description": "Davantage de {{GENDER:}}votre activité d'édition a été ajoutée !",
+	"growthexperiments-tour-newimpact-discovery-description": "Davantage de {{GENDER:}}vos activités de modification ont été ajoutées !",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "C’est bon",
 	"growthexperiments-homepage-newimpact-contributions-link": "Afficher toutes les modifications"
 }

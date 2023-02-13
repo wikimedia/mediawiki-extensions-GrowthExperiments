@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "De in <var>editRevId</var> opgegeven versie hoort bij een andere pagina."
+}
