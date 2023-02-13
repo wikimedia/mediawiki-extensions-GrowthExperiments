@@ -11,7 +11,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
-use Title;
+use TitleFactory;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -23,15 +23,10 @@ use Wikimedia\ParamValidator\ParamValidator;
 class ApiInvalidateImageRecommendation extends ApiBase {
 
 	private const API_PARAM_TITLE = 'title';
-
-	/** @var AddImageSubmissionHandler */
-	private $imageSubmissionHandler;
-
-	/** @var TaskSuggesterFactory */
-	private $taskSuggesterFactory;
-
-	/** @var NewcomerTasksUserOptionsLookup */
-	private $newcomerTasksUserOptionsLookup;
+	private AddImageSubmissionHandler $imageSubmissionHandler;
+	private TaskSuggesterFactory $taskSuggesterFactory;
+	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private TitleFactory $titleFactory;
 
 	/**
 	 * @param ApiMain $mainModule
@@ -39,18 +34,21 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	 * @param AddImageSubmissionHandler $imageSubmissionHandler
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
+	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
 		ApiMain $mainModule,
 		string $moduleName,
 		AddImageSubmissionHandler $imageSubmissionHandler,
 		TaskSuggesterFactory $taskSuggesterFactory,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		TitleFactory $titleFactory
 	) {
 		parent::__construct( $mainModule, $moduleName );
 		$this->imageSubmissionHandler = $imageSubmissionHandler;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->titleFactory = $titleFactory;
 	}
 
 	/**
@@ -60,9 +58,14 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$titleValue = $params[ self::API_PARAM_TITLE ];
-		$page = Title::newFromLinkTarget( $titleValue )->toPageIdentity();
+		$page = $this->titleFactory->newFromLinkTarget( $titleValue )->toPageIdentity();
 		if ( $this->shouldInvalidatePage( $page ) ) {
-			$this->imageSubmissionHandler->invalidateRecommendation( $page );
+			$this->imageSubmissionHandler->invalidateRecommendation(
+				$page,
+				$this->getAuthority()->getUser()->getId(),
+				null,
+				$params['filename']
+			);
 			$this->getResult()->addValue( null, $this->getModuleName(), [
 				'status' => 'ok'
 			] );
@@ -94,6 +97,10 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 				ParamValidator::PARAM_REQUIRED => true,
 				ParamValidator::PARAM_TYPE => 'title',
 				TitleDef::PARAM_RETURN_OBJECT => true,
+			],
+			'filename' => [
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
 			]
 		];
 	}

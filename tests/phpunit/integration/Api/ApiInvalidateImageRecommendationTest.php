@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use ApiTestCase;
 use ApiUsageException;
+use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
@@ -18,6 +19,13 @@ use MediaWiki\Page\ProperPageIdentity;
  */
 class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 
+	public function setUp(): void {
+		parent::setUp();
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'EventBus' ) ) {
+			$this->markTestSkipped( 'These tests require EventBus.' );
+		}
+	}
+
 	public function testExecute() {
 		$pageName = 'Title1';
 		$this->insertPage( $pageName );
@@ -25,7 +33,8 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 		$this->setupAddImageSubmissionHandler();
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation',
-			'title' => $pageName
+			'title' => $pageName,
+			'filename' => 'Foo.jpg'
 		] );
 		$this->assertArrayEquals( [ 'growthinvalidateimagerecommendation' => [
 				'status' => 'ok'
@@ -37,7 +46,8 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 		$this->expectException( ApiUsageException::class );
 		$this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation',
-			'title' => 'Title'
+			'title' => 'Title',
+			'filename' => 'Foo.jpg',
 		] );
 	}
 
@@ -48,14 +58,25 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 		$this->expectException( ApiUsageException::class );
 		$this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation',
-			'title' => $pageName
+			'title' => $pageName,
+			'filename' => 'Foo.jpg',
 		] );
 	}
 
 	public function testMissingTitleParam() {
 		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'The "title" parameter must be set.' );
 		$this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation'
+		] );
+	}
+
+	public function testMissingFilenameParam() {
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'The "filename" parameter must be set.' );
+		$this->doApiRequestWithToken( [
+			'action' => 'growthinvalidateimagerecommendation',
+			'title' => 'Blah'
 		] );
 	}
 
