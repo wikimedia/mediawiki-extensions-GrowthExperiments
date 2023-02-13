@@ -9,11 +9,12 @@
 			"MuratTheTurkish",
 			"SaldırganSincap",
 			"ToprakM",
-			"Can"
+			"Can",
+			"Rapsar"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Düzenleyici yardım panelini etkinleştir",
-	"growthexperiments-help-panel-cta-button-text": "Düzenleme ile ilgili yardım alın",
+	"growthexperiments-help-panel-cta-button-text": "Değişiklik yapmakla ilgili yardım alın",
 	"growthexperiments-help-panel-question-button-text": "Devam et",
 	"growthexperiments-help-panel-submit-question-button-text": "Gönder",
 	"growthexperiments-help-panel-return-home-button-text": "Yapıldı",
@@ -24,7 +25,7 @@
 	"growthexperiments-help-panel-back-home": "Geri",
 	"growthexperiments-help-panel-close": "Yapıldı",
 	"growthexperiments-help-panel-home-title": "Düzenleme ile ilgili yardım alın",
-	"growthexperiments-help-panel-postedit-success-message-published": "Bir düzenleme yayımladınız. Teşekkürler ve devam edin!",
+	"growthexperiments-help-panel-postedit-success-message-published": "Bir değişikliğiniz yayımlandı. Teşekkürler ve devam edin!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Bir düzenlemeyi kaydettiniz. Teşekkürler ve devam edin!",
 	"growthexperiments-help-panel-postedit-header": "Sonraki adımlar",
 	"growthexperiments-help-panel-postedit-subheader": "Başka bir öneriyi düzenle:",

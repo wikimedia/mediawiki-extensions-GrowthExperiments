@@ -20,7 +20,8 @@
 			"Can",
 			"Cobija",
 			"Oyuncu",
-			"LisafBia"
+			"LisafBia",
+			"Rapsar"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Merhaba}}, {{bidi:$1}}!",
@@ -67,7 +68,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>Hesabınızı oluştururken, fotoğraf veya resim eklemek istediğinizi söylediniz.</strong> Bu; düzenlemenin önemli ancak zor bir yoludur, bu yüzden önce bazı basit düzenlemeleri denemenizi öneririz. Doğrudan bir fotoğraf veya resim eklemeyi tercih ediyorsanız, [$1 nasıl yapılacağını buradan öğrenebilirsiniz].",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>Hesabınızı oluştururken, bir yazım hatası veya hatayı düzeltmek istediğinizi söylediniz.</strong> Burada, başlamak için küçük düzenlemelerin önerilerini bulabilirsiniz. Doğrudan belirli bir makaleyi düzeltmeyi tercih ediyorsanız, \"{{int:growthexperiments-homepage-beginiting-dialog-intro-back}}\" seçeneğini tıklayabilir, makaleyi arayabilir ve \"{{int:vector-view-edit}}\" seçeneğini tıklayabilirsiniz.",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>Hesabınızı oluştururken, mevcut bir makaleye bilgi eklemek veya değiştirmek istediğinizi söylediniz.</strong> Başlamak için küçük düzenlemelerin önerilerini bulabilirsiniz. Doğrudan belirli bir makaleyi değiştirmeyi tercih ediyorsanız, \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\" tıklayabilir, makaleyi arayabilir ve \"{{int:vector-view-edit}}\" tıklayabilirsiniz.",
-	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Hesabınızı oluştururken, yeni bir madde oluşturmak istediğinizi söylediniz.</strong> Bu önemli ancak zorlu bir düzenleme türüdür. Bu nedenle, önce mevcut maddelerdeki bazı küçük düzenlemeleri denemenizi öneririz. Doğrudan yeni bir madde oluşturmayı tercih ediyorsanız, [$1 nasıl olduğunu öğrenebilirsiniz].",
+	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Hesabınızı oluştururken, yeni bir madde oluşturmak istediğinizi söylediniz.</strong> Bu önemli ancak zorlu bir değişiklik türüdür. Bu nedenle, önce mevcut maddelerdeki bazı küçük değişiklikleri denemenizi öneririz. Doğrudan yeni bir madde oluşturmayı tercih ediyorsanız, [$1 nasıl olduğunu öğrenebilirsiniz].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Düzenlemek istediğiniz bazı konuları seçin",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "İlgi alanlarınıza uygun maddeler önermeye çalışacağız.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Geri",
@@ -112,7 +113,7 @@
 	"tag-mentorship_module_question": "Danışmanlık modülü sorusu",
 	"tag-mentorship_module_question-description": "Ana sayfa rehberlik modülünün soru gönderme özelliğinden yapılan düzenleme",
 	"tag-newcomer_task": "Yeni gelen görev",
-	"tag-newcomer_task-description": "Yeni gelen ana sayfanın önerilen düzenleme modülü tarafından önerilen düzenleme",
+	"tag-newcomer_task-description": "Yeni gelen ana sayfanın önerilen değiştirme modülü tarafından önerilen değişiklik",
 	"growthexperiments-homepage-help-dialog-title": "Danışma masasına sorun",
 	"growthexperiments-homepage-help-header": "Düzenleme ile ilgili yardım alın",
 	"growthexperiments-homepage-help-subheader": "Düzenleme ile ilgili en yararlı yardım sayfaları",
