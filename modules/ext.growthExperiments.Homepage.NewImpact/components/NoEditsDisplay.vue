@@ -101,6 +101,8 @@
 				<div v-if="!isDisabled && renderMode === 'overlay'">
 					<cdx-button
 						data-link-id="impact-see-suggested-edits"
+						type="primary"
+						action="progressive"
 						@click="onSuggestedEditsClick"
 					>
 						{{ $i18n( 'growthexperiments-homepage-impact-unactivated-suggested-edits-link' ).text() }}
