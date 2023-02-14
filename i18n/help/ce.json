@@ -11,7 +11,15 @@
 	"growthexperiments-help-panel-suggestededits-title": "Кховдийна нисдарш",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Чехка стартан хьехам",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Кийча?</strong> ДӀадоладан тӀетаӀайе «Нисйе».",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "{{SITENAME}} йаззамашна йукъара хьажоргаша йешархошна таро ло шайна алсама хаа луучунна тӀетеӀо. Цара гӀо до адамашна {{SITENAME}} кхечу йаззамашка кхача.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-calm": "Йаззам дикачу агӀора хийцархьама, дерриг {{GENDER:|Аша}} дан дезарг, цхьа-ши хьажорг тӀетохар ду. {{GENDER:|Шуна}} оьшуш дац берриг йаззаманна тӀехь болх бан. {{GENDER:|Шуна}} ца оьшу темица йогӀу лерина говзаллаш хила а.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-rules1": "Хьажоргаш тӀетухучу хенахь лахара куьйгаллица болх бе:\n* Йолуш йолчу темица алсама хаа гӀо дийр долу йаззамашка хьажоргаш хӀиттайе.\n* Йух-йуха цхьаьна дешна йа фразина хьажоргаш ма хӀиттайе текстехь.\n* Массарна а бевза кхетамашна а, шерашна а, кхин а шерашка а, девза терхьашка а ма хьежабе.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step1": "Хьажорг тӀетоха {{GENDER:|хьуна}} цхьанхьа гина меттиг хилахь, йолорхьама тӀетаӀаде «$1». Цул тӀаьхьа билгала даккха, хьажорг йан луъу дош йа фраза.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "Венерин буту <mark class=\"positive\">атмосфера</mark> йу.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step2": "ТӀетаӀайе «$1» $2 нуьйда, тӀехьажо деза {{GRAMMAR:genitive|{{SITENAME}}}} испискера йаззам харжа.",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "ТӀетаӀайе «$1» $2 нуьйда, тӀехьажо деза {{GRAMMAR:genitive|{{SITENAME}}}} испискера йаззам харжа.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-publish": "ТӀетоха кхин хьажоргаш йа \"$1\" тӀетаӀайе, {{GENDER:|хьайн}} нисдар дӀайаздина, болх дӀабахьа!",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Хьажоргаш тӀетохарех алсама хаар]]",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Кховдийна нисдарш",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Чехка стартан хьехам"
 }

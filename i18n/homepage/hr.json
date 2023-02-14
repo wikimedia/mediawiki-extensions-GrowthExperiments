@@ -117,6 +117,7 @@
 	"growthexperiments-homepage-recent-questions-archived": "arhivirano",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Pitanje je arhivirano, vjerojatno zbog toga što je davno bilo postavljeno.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|}}{{GENDER:$2|Vaš mentor|Vaša mentorica}}",
+	"growthexperiments-homepage-mentorship-preintro": "{{GENDER:$1|Dodijeljen Vam je iskusan suradnik koji|Dodijeljena Vam je iskusna suradnica koja}} može odgovoriti na sva Vaša pitanja o uređivanju.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|uređivanje|uređivanja}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Aktivan|Aktivna}} danas",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Aktivan|Aktivna}} jučer",
@@ -351,5 +352,7 @@
 	"newcomertasksinfo-table-header-task-count": "Broj",
 	"newcomertasksinfo-table-header-topic-type": "ID teme",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Potvrdi...",
-	"growthexperiments-addimage-rejectiondialog-header": "Zašto ne?"
+	"growthexperiments-addimage-rejectiondialog-header": "Zašto ne?",
+	"growthexperiments-homepage-mentorship-optin-text": "Ako imate pitanja o uređivanju, sustav Vam može dodijeliti mentora koji će Vam pomagati.",
+	"growthexperiments-homepage-mentorship-about-optout-par1": "Pritisnite donju tipku ako želite napustiti sustav mentorstva. Poslije mu se uvijek možete vratiti."
 }
