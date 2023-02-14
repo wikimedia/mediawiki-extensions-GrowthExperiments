@@ -13,7 +13,7 @@
 	"apihelp-growthsetmentor-param-mentee": "Numele de utilizator al ucenicului",
 	"apihelp-growthsetmentor-param-mentor": "Numele de utilizator al mentorului",
 	"apihelp-growthsetmentor-param-reason": "Motivul pentru schimbare",
+	"apihelp-query+growthimagesuggestiondata-summary": "Preia [[mw:wikitech:Add_Image|datele asociate legate de sugestiile de imagini]], dacă sunt disponibile",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidează sarcina de recomandare de imagine",
-	"apihelp-growthinvalidateimagerecommendation-param-title": "Titlul articolului pentru care este sarcina de recomandare de imagine",
-	"apihelp-query+growthimagesuggestiondata-summary": "Preia [[mw:wikitech:Add_Image|datele asociate legate de sugestiile de imagini]], dacă sunt disponibile"
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Titlul articolului pentru care este sarcina de recomandare de imagine"
 }

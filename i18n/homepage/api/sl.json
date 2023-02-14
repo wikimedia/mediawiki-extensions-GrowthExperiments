@@ -13,7 +13,7 @@
 	"apihelp-growthsetmentor-param-mentee": "Uporabniško ime mentoriranca",
 	"apihelp-growthsetmentor-param-mentor": "Uporabniško ime mentoriranca",
 	"apihelp-growthsetmentor-param-reason": "Razlog za spremembo",
+	"apihelp-query+growthimagesuggestiondata-summary": "Pridobi povezane [[mw:wikitech:Add_Image|podatke o predlogih slik]], če so na voljo",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Razveljavi nalogo priporočila slike",
-	"apihelp-growthinvalidateimagerecommendation-param-title": "Naslov članka, na katerega se nanaša naloga priporočila slike",
-	"apihelp-query+growthimagesuggestiondata-summary": "Pridobi povezane [[mw:wikitech:Add_Image|podatke o predlogih slik]], če so na voljo"
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Naslov članka, na katerega se nanaša naloga priporočila slike"
 }

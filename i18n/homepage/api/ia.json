@@ -13,7 +13,7 @@
 	"apihelp-growthsetmentor-param-mentee": "Nomine de usator del apprentisse",
 	"apihelp-growthsetmentor-param-mentor": "Nomine de usator del mentor",
 	"apihelp-growthsetmentor-param-reason": "Motivo del cambiamento",
+	"apihelp-query+growthimagesuggestiondata-summary": "Recupera le [[mw:wikitech:Add_Image|datos de suggestion de imagines]] associate, si disponibile",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar le carga de recommendation de imagine",
-	"apihelp-growthinvalidateimagerecommendation-param-title": "Titulo del articulo pro le qual es le carga de recommendation de imagine",
-	"apihelp-query+growthimagesuggestiondata-summary": "Recupera le [[mw:wikitech:Add_Image|datos de suggestion de imagines]] associate, si disponibile"
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Titulo del articulo pro le qual es le carga de recommendation de imagine"
 }

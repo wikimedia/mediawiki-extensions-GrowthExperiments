@@ -16,7 +16,8 @@
 	"apihelp-growthsetmentor-param-mentee": "Benutzername des Mentees",
 	"apihelp-growthsetmentor-param-mentor": "Benutzername des Lotsen",
 	"apihelp-growthsetmentor-param-reason": "Grund für die Änderung",
-	"apihelp-growthinvalidateimagerecommendation-summary": "Bildempfehlungsaufgabe ungültig machen",
+	"apihelp-query+growthimagesuggestiondata-summary": "Zugehörige [[mw:wikitech:Add_Image|Bildvorschlagsdaten]] abrufen, falls verfügbar",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Eine Bildempfehlung ungültig machen.",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Titel des Artikels, für den die Bildempfehlungsaufgabe bestimmt ist",
-	"apihelp-query+growthimagesuggestiondata-summary": "Zugehörige [[mw:wikitech:Add_Image|Bildvorschlagsdaten]] abrufen, falls verfügbar"
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "Der Dateiname ohne Präfix für die Bildempfehlung, zB <kbd>Foo.jpg</kbd>"
 }

@@ -14,7 +14,7 @@
 	"apihelp-growthsetmentor-param-mentee": "שם המשתמש של החניך",
 	"apihelp-growthsetmentor-param-mentor": "שם המשתמש של החונך",
 	"apihelp-growthsetmentor-param-reason": "סיבה לשינוי",
-	"apihelp-growthinvalidateimagerecommendation-summary": "ביטול תקינות משימת המלצת תמונה",
-	"apihelp-growthinvalidateimagerecommendation-param-title": "כותרת הערך שמשימת המלצת התמונה מיועדת אליו",
-	"apihelp-query+growthimagesuggestiondata-summary": "אחזור [[mw:wikitech:Add_Image|נתוני הצעות תמונה]] משויכים, אם הם זמינים"
+	"apihelp-query+growthimagesuggestiondata-summary": "אחזור [[mw:wikitech:Add_Image|נתוני הצעות תמונה]] משויכים, אם הם זמינים",
+	"apihelp-growthinvalidateimagerecommendation-summary": "ביטול תקינות המלצת תמונה",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "כותרת הערך שמשימת המלצת התמונה מיועדת אליו"
 }

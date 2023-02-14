@@ -17,7 +17,8 @@
 	"apihelp-growthsetmentor-param-mentee": "Nom d’utilisateur du tutoré",
 	"apihelp-growthsetmentor-param-mentor": "Nom d’utilisateur du tuteur",
 	"apihelp-growthsetmentor-param-reason": "Motif du changement",
-	"apihelp-growthinvalidateimagerecommendation-summary": "Invalider la tâche de recommandation d’image",
+	"apihelp-query+growthimagesuggestiondata-summary": "Récupérer les [[mw:wikitech:Add_Image|données de suggestion d’image]] associées, si elles sont disponibles",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Invalider une recommandation d’image",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Titre de l’article pour lequel la tâche de recommandation d’image est destinée",
-	"apihelp-query+growthimagesuggestiondata-summary": "Récupérer les [[mw:wikitech:Add_Image|données de suggestion d’image]] associées, si elles sont disponibles"
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "Le nom de fichier sans préfixe pour la recommandation d’image, par ex. <kbd>Foo.jpg</kbd>"
 }
