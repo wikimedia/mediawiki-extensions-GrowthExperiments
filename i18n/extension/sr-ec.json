@@ -7,6 +7,7 @@
 		]
 	},
 	"growthexperiments-desc": "Овај додатак садржи пројекте Тима за развој.",
+	"growthexperiments-edit-config-feedback-cta": "Повратне информације",
 	"growthexperiments-edit-config-edit-summary": "Опис измене",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Врх странице",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Дно странице",
@@ -17,5 +18,6 @@
 	"growthexperiments-edit-config-mentorship-enabled": "Јесу ли омогућене функције менторства?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Да",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Не",
-	"growthexperiments-edit-config-newcomertasks": "Предложене измене"
+	"growthexperiments-edit-config-newcomertasks": "Предложене измене",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Онемогућено"
 }

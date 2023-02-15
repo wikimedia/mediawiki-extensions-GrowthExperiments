@@ -5,7 +5,9 @@
 			"Chadyka",
 			"No Sleep till Krupki",
 			"Tomato Cream",
-			"Tīgelika"
+			"Tīgelika",
+			"Maksim L.",
+			"Plaga med"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панэль настаўніка",
@@ -91,7 +93,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Сярэдняя (па змаўчанні)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Прыкладна ў два разы вышэй за сярэдняе",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Ваша}} нагрузка была зменена на \"$1\".",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Настаўнікі размяркоўваюцца выпадковым чынам да настаўнікаў па меры стварэння іх рахункаў. Вы можаце кіраваць колькасцю падапечных, прызначаных вам, але некаторыя падапечныя могуць задаваць пытанні часцей, чым іншыя",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Настаўнікі размяркоўваюцца выпадковым чынам да настаўнікаў па меры стварэння іх уліковых запісаў. Вы можаце кіраваць колькасцю падапечных, прызначаных вам, але некаторыя падапечныя могуць задаваць пытанні часцей, чым іншыя",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Рэкамендуецца пачаць з налады «Сярэдняя», каб ацаніць вашу здольнасць падтрымкі перад павелічэннем або памяншэннем.",
 	"growthexperiments-mentor-list-missing-key": "Ключ <code>$1</code> адсутнічае",
 	"growthexperiments-mentor-list-datatype-mismatch": "Чакаецца, што <code>$1</code> будзе <code>$2</code>, але зараз гэта <code>$3</code>",
