@@ -471,14 +471,18 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 
 	$.when( pcsPromise, aqsPromise ).then( function () {
 		promise.resolve();
+	} ).catch( function () {
+		// Set the following props to null so the subscribed widgets stop showing
+		// the loading interfaces like skeletons for them.
+		this.taskQueue[ this.currentTaskIndex ].description = null;
+		this.taskQueue[ this.currentTaskIndex ].thumbnailSource = null;
+		this.taskQueue[ this.currentTaskIndex ].pageviews = null;
+	}.bind( this ) ).always( function () {
 		if ( taskIndex === this.currentTaskIndex ) {
 			this.onCurrentTaskExtraDataChanged();
 		}
-	}.bind( this ) ).catch( function () {
-		// We don't need to do anything here since the page views and RESTBase
-		// calls are for supplemental data; we just need to catch any exception
-		// so that the card can render with the data we have from ApiQueryGrowthTasks.
-	} );
+	}.bind( this ) );
+
 	return promise;
 };
 

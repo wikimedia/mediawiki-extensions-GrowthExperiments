@@ -205,7 +205,7 @@
 					difficulty: item.difficulty,
 					topics: item.topics || null,
 					token: item.token,
-					description: item.description || null,
+					description: item.description,
 					qualityGateIds: item.qualityGateIds || [],
 					qualityGateConfig: item.qualityGateConfig || {}
 				};
