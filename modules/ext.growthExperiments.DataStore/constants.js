@@ -20,6 +20,7 @@ module.exports = {
 	EVENTS: {
 		FILTER_SELECTION_CHANGED: 'filterSelectionChanged',
 		TASK_QUEUE_CHANGED: 'taskQueueChanged',
+		TASK_QUEUE_LOADING: 'taskQueueLoading',
 		FETCHED_MORE_TASKS: 'fetchedMoreTasks',
 		CURRENT_TASK_EXTRA_DATA_CHANGED: 'taskExtraDataChanged'
 	}

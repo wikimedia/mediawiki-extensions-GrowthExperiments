@@ -149,6 +149,13 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 		this.taskTypeFiltersDialog.taskTypeSelector.setSelected( this.filtersStore.getSelectedTaskTypes() );
 		this.topicFiltersDialog.topicSelector.setFilters( this.filtersStore.getTopicsQuery() );
 	}.bind( this ) );
+
+	rootStore.newcomerTasks.on( CONSTANTS.EVENTS.TASK_QUEUE_LOADING, function ( isLoading ) {
+		this.taskTypeFiltersDialog.updateLoadingState( { isLoading: isLoading, count: rootStore.newcomerTasks.getTaskCount() } );
+		if ( this.topicFiltersDialog ) {
+			this.topicFiltersDialog.updateLoadingState( { isLoading: isLoading, count: rootStore.newcomerTasks.getTaskCount() } );
+		}
+	}.bind( this ) );
 }
 
 OO.inheritClass( FiltersButtonGroupWidget, OO.ui.ButtonGroupWidget );
@@ -163,6 +170,21 @@ FiltersButtonGroupWidget.prototype.updateMatchCount = function ( count ) {
 	this.taskTypeFiltersDialog.updateMatchCount( count );
 	if ( this.topicFiltersDialog ) {
 		this.topicFiltersDialog.updateMatchCount( count );
+	}
+};
+
+/**
+ * Update the state of the dialog header to "in progress" while the
+ * NewcomerTaskStore is loading.
+ *
+ * @param {Object} state The relevant state properties
+ * @param {boolean} state.isLoading Whereas the NewcomerTaskStore is fetching results
+ * @param {number} state.count The number of tasks in the store queue
+ */
+FiltersButtonGroupWidget.prototype.updateLoadingState = function ( state ) {
+	this.taskTypeFiltersDialog.updateLoadingState( state );
+	if ( this.topicFiltersDialog ) {
+		this.topicFiltersDialog.updateLoadingState( state );
 	}
 };
 

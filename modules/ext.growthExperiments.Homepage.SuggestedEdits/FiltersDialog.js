@@ -77,6 +77,30 @@ FiltersDialog.prototype.updateMatchCount = function ( count ) {
 	this.articleCounter.setCount( count );
 };
 
+/**
+ * Update the state of the dialog header to "in progress" while the
+ * NewcomerTaskStore is loading.
+ *
+ * @param {Object} state The relevant state properties
+ * @param {boolean} state.isLoading Whereas the NewcomerTaskStore is fetching results
+ * @param {number} state.count The number of tasks in the store queue
+ */
+FiltersDialog.prototype.updateLoadingState = function ( state ) {
+	var actions = this.actions.get();
+	var primaryAction = actions.length && actions[ 0 ];
+	if ( state.isLoading ) {
+		this.pushPending();
+		if ( primaryAction ) {
+			primaryAction.setDisabled( true );
+		}
+	} else {
+		this.popPending();
+		if ( primaryAction ) {
+			primaryAction.setDisabled( state.count === 0 );
+		}
+	}
+};
+
 /** @inheritDoc **/
 FiltersDialog.prototype.getActionProcess = function ( action ) {
 	return FiltersDialog.super.prototype.getActionProcess.call( this, action )
