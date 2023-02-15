@@ -63,7 +63,8 @@
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|ߌ ߟߊ߫}} ߓߍ߲߬ߢߐ߲߰ߦߊ߬ߟߌ",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "ߖߝ߭ߊߛߌߞߙߌߔߕ ߓߌ߬ߟߴߊ߬ ߟߊ߫ ߖߊ߰ߣߌ߲߫ ߞߊ߬ ߞߣߐߘߐ ߣߌ߲߬ ߦߋ߫.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|ߌ ߟߊ߫}} ߓߍ߲߬ߢߐ߲߰ߦߊ߬ߟߌ",
-	"growthexperiments-homepage-impact-subheader-text": "ߡߐ߱ ߟߎ߬ ߦߋ߫ ߞߎߡߘߊ ߟߎ߬ ߡߊߝߟߍ ߞߊ߲߬ {{GENDER:$1|ߌ}} ߣߊ߬ ߡߍ߲ ߠߎ߬ ߡߊߦߟߍ߬ߡߊ߲߫ ߠߊ߫߹",
+	"growthexperiments-homepage-impact-subheader-text": "ߡߍ߲ ߠߎ߬ ߘߐߜߍߣߍ߲߫ ߦߋ߫ ߓߘߍߞߍ߬ (ߞߊ߬ߦߌ߯ {{GENDER:$1|ߌ ߟߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߞߐ߫)",
+	"growthexperiments-homepage-impact-subheader-text-third-person": "ߡߍ߲ ߠߎ߬ ߘߐߜߍߣߍ߲߫ ߦߋ߫ ߓߘߍߞߍ߬ (ߊ߬ߟߎ߬ ߟߊ߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߞߐ߫)",
 	"growthexperiments-homepage-impact-subheader-subtext": "ߦߋߟߌ ߟߎ߬ ߦߙߌߞߊ ߞߊ߬ߦߌ߯ {{GENDER:$1|ߌ ߟߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߠߎ߬ ߞߍ߫ ߘߊ߫ (ߕߟߋ߬ ߆߀ ߕߊ߬ߡߌ߲߬ߣߍ߲) ߠߎ߬ ߞߘߐ߫:",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|ߌ ߓߘߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ <strong>$1</strong> {{PLURAL:|ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲߫ $1}}ߞߍ߫ (ߊ߬ߟߎ߬ ߓߍ߯ ߦߋ߫)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|ߌ}} ߡߊ߫ ߞߎߡߘߊ߫ ߛߌ߫ ߛߌ߲ߘߌ߫ ߡߎߣߎ߲߬ ߥߟߊ߫ ߞߵߊ߬ߟߎ߫ ߡߊߦߟߍ߬ߡߊ߲߫.",
@@ -259,7 +260,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "ߞߐߜߍ ߣߌ߲߬ ߦߴ{{GENDER:$1|ߌ}} ߟߊߘߌ߬ߢߍ߬ ߟߊ߫ ߟߋ߬ ߞߊ߬ ߡߞߊ߬ߙߊ߲߬ߘߋ߲ ߠߎ߬ ߟߊ߫ ߡߞߊ߬ߙߊ߲߬ߓߊ߮ ߡߊߝߊ߬ߟߋ߲߫ ߌ ߖߘߍ߬ߞߊߣߌ߲ ߡߊ߬. ߊ߬ ߢߌߣߌ߲ߣߍ߲߫ ߦߋ߫ ߞߊ߬ ߗߋߘߊ ߣߌ߲߬ ߠߊߓߊ߯ߙߊ߫ ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ߫ ߟߎ߫ ߟߋ߬ ߢߍ߫ {{GENDER:$1|ߌ}} ߞߊ߬ ߡߍ߲ ߠߎ߬ ߟߐ߲߫߸ ߤߊߡߊ߲߫ ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ߫ ߟߎ߫ ߢߍ߫ {{GENDER:$1|ߌ}} ߓߘߊ߫ ߡߍ߲ ߠߎ߬ ߡߊߞߊ߬ߙߊ߲߫ ߞߘߐ߬ߡߊ߲߫.",
 	"growthexperiments-homepage-claimmentee-mentee": "ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ ߟߊ߫ ߟߊ߬ߓߊ߰ߙߊ߬ߕߐ߮",
 	"growthexperiments-homepage-claimmentee-reason": "ߡߞߊ߬ߙߊ߲߬ߘߋ߲ ߣߌ߲߬ ߡߞߊߣߌ߲ ߞߎ߲߭",
-	"growthexperiments-claimmentee-confirm": "ߞߏߛߓߍ߫߸ ߒ ߧߴߊ߬ ߝߍ߬ ߞߊ߬ {{GENDER:|ߡߊߞߊ߬ߙߊ߲߬ߓߊ߮}} ߡߊߝߊ߬ߟߋ߲߫",
+	"growthexperiments-claimmentee-confirm": "ߞߏߛߓߍ߫߸ ߒ ߧߴߊ߬ ߝߍ߬ ߞߵߊ߬ ߘߊߓߊ߲߫",
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|}}ߟߎ߫ ߓߘߊ߫ ߖߌ߬ߦߊ߬ߓߍ ߘߐ߬ߛߎ߬ߟߌ ߘߏ߫ ߘߐߛߊ߬ߦߌ߫ $3 ߢߍ߫: ߊ߬ ߟߊߘߊ߬ߤߊ߫.",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|ߟߎ߫}} ߓߘߊ߫ ߖߌ߬ߦߊ߬ߓߍ ߘߐ߬ߛߎ߬ߟߌ ߘߏ߫ ߡߊߛߊ߬ߦߌ߫ $3 ߢߍ߫: ߊ߬ ߟߊߕߊ߲߬ߞߌ߫",
 	"log-action-filter-growthexperiments-claimmentee": "ߡߞߊ߬ߙߊ߲߬ߘߋ߲ ߡߊߝߊ߬ߟߋ߲",
@@ -456,5 +457,9 @@
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "ߖߐ߲߫ ߦߴ{{GENDER:|ߌ}} \n{{GENDER:$1|ߟߊߟߌ߯ߓߊ߮}} ߘߌ߫؟",
 	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|ߌ ߟߊ߫}} {{GENDER:$1|ߟߊߟߌ߯ߓߊ߮}} ߦߋ߫ ߡߐ߰ ߜߘߍ߫ ߟߋ߬ ߘߌ߫ ߝߊ߰ߡߎ߲߬ߠߌ߲߫ ߘߍ߰ߜߍ ߦߋ߫ ߡߍ߲ ߠߊ߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߫ {{SITENAME}} ߞߊ߲߬. {{GENDER:$1|ߊ߬ ߦߋ߫}|ߊ߬ߟߎ߬} ߦߴߊ߬ ߓߐ߫ ߟߴߊ߬ ߖߘߍ߬ ߘߐ߫ ߟߋ߬ ߞߊ߬ ߣߊ߬ߓߊ߰ߕߐ߫ ߞߎߘߊ ߟߎ߬ ߟߊߛߌ߲߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߞߍߢߊ ߡߊ߬ ߦߴߌߟߋ߸ ߊ߬ ߣߴߊ߬ߟߎ߫ ߦߋ߫ ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߟߎ߬ ߖߋ߬ߓߌ߬ ߟߊ߫ ߡߍ߲ ߓߊ߯ ߞߴ{{GENDER:|ߌ}} ߝߍ߬ ߞߍߦߙߐ ߟߊߓߊ߯ߙߊ ߞߊ߲߬.",
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "ߣߴ{{GENDER:|ߌ}} ߞߊ߬ ߗߋߛߓߍ ߗߋ߫ ߌ ߟߊߟߌ߯ߓߊ߮ ߡߊ߬߸ {{GENDER:$1|ߊ߬|ߊ߬ߟߎ߫}} ߊ߬ߟߎ߬ ߘߴߊ߬ ߦߋ߫ {{GENDER:$1|ߊ߬|ߊ߬ߟߎ߫}} ߟߊ߫ ߞߎߡߊ߫ ߞߐߜߍ ߞߣߐ߫ {{GENDER:|ߌߟߋ}} ߝߣߊ߫ ߘߌ߫ ߖߊ߲߬ߓߌ߬ߟߊ߬ߟߌ ߘߏ߫ ߛߐ߬ߘߐ߲߬ ߣߌ߫ {{GENDER:$1|ߊ߬ ߞߵߌ ߖߋ߬ߓߌ߫|ߊ߬ߟߎ߫ ߞߵߌ ߖߋ߬ߓߌ߫}}.",
-	"growthexperiments-homepage-mentorship-about-done": "ߊ߬ ߞߍ߫"
+	"growthexperiments-homepage-mentorship-about-done": "ߊ߬ ߞߍ߫",
+	"growthexperiments-homepage-special-contribute-title": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߬ߛߎ߬ߟߌ ߟߎ߫",
+	"growthexperiments-homepage-special-contribute-cta": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߬ߛߎ߬ߟߌ ߦߋ߫",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "ߊ߬ ߟߊߛߐ߬ߘߐ߲߬",
+	"growthexperiments-homepage-newimpact-contributions-link": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߠߎ߬ ߓߍ߯ ߦߋ߫"
 }

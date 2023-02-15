@@ -14,6 +14,8 @@
 	"apihelp-growthsetmentor-param-mentor": "Nomine de usator del mentor",
 	"apihelp-growthsetmentor-param-reason": "Motivo del cambiamento",
 	"apihelp-query+growthimagesuggestiondata-summary": "Recupera le [[mw:wikitech:Add_Image|datos de suggestion de imagines]] associate, si disponibile",
-	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar le carga de recommendation de imagine",
-	"apihelp-growthinvalidateimagerecommendation-param-title": "Titulo del articulo pro le qual es le carga de recommendation de imagine"
+	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar un recommendation de imagine.",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "Appellar iste API:\n\n* reinitialisara le [[mw:wikitech:Add_Image|etiquetta ponderate \"hasrecommendation:image\"]] pro le articulo, de maniera que le articulo non apparera plus in le resultatos de recerca pro suggestiones de imagines;\n\n* addera le articulo a un cache de curte durata, consultate per le extension [[mw:Extension:GrowthExperiments|GrowthExperiments]] pro decider si le articulo debe esser excludite del cauda de modificationes suggerite del usator quando ille los accede sur [[Special:Homepage]] o a transverso le API [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]];\n\n* generara e inviara un evento a EventGate al [https://schema.wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback fluxo image-suggestion-feedback], permittente meliorar le tubo de suggestiones de imagines, perque le codice in le tubo pote tener conto del commentos de usatores durante le generation de recommendationes.\n\nUlterior lectura: [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image]]",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Titulo del articulo pro le qual es le carga de recommendation de imagine",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "Le nomine de file sin prefixo pro le recommendation de imagine, p.ex. <kbd>Foo.jpg</kbd>"
 }

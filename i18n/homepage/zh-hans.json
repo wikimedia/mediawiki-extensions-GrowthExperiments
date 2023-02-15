@@ -343,7 +343,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "认领该学员的原因",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|您已更改}}{{PLURAL:$2|用户}}$1的导师为{{GENDER:$4|$5}}。回到[[Special:MentorDashboard|导师面板]]。",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1的}}导师已经更换了。{{GENDER:$2|您}}确定{{GENDER:$2|您}}要再更换一次吗？",
-	"growthexperiments-claimmentee-confirm": "是的，我真的很想换一个{{GENDER:|导师}}",
+	"growthexperiments-claimmentee-confirm": "是的，我真的很想继续",
 	"growthexperiments-log-name": "GrowthExperiments日志",
 	"growthexperiments-log-header": "这是增长实验扩展执行的操作的日志。",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|认领}} {{GENDER:$6|$3}} 作为其学员 (前{{GENDER:$4|导师}}为 $5)",

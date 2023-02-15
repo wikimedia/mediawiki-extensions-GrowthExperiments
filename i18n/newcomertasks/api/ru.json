@@ -4,7 +4,8 @@
 			"Ailbeve",
 			"DDPAT",
 			"Deltaspace",
-			"Ice bulldog"
+			"Ice bulldog",
+			"Kareyac"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Получить подходящее заданию, которое рекомендовано для новичков.",
@@ -19,7 +20,7 @@
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Параметр «принято» отсутствует в данных плагина «Добавить изображение»",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Параметр «принято» должно быть логичным в данных плагина «Добавить изображение», это $1",
 	"apierror-growthexperiments-addimage-handler-reason-missing": "Параметр «reason» отсутствует в данных плагина «Добавить изображение»",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Параметр «reason» должен быть массивом в данных плагина «Добавить изображение», а есть $1",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Параметр «reasons» должен быть массивом в данных плагина «Добавить изображение», а есть $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Недействительный элемент «$1» для параметра «reason» должен быть одним из: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Историю рекомендаций ссылок с найдено",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Неожиданные цели рекомендаций ссылок: $1"

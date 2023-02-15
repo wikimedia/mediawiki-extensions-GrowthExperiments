@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"GuoPC",
 			"Xiplus"
 		]
 	},
@@ -15,9 +16,9 @@
 	"apihelp-query+growthtasks-example-2": "获取目前用户的任务推荐，以及有关页面的扩展信息。",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "在加入图片外挂资料中缺少'accepted'参数",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "在加入图片外挂资料中的'accepted'参数应该是布尔值，实际为$1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "在加入图片外挂资料中缺少'reason'参数",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "在加入图片外挂资料中的'reason'参数应该是数组，实际为$1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reason'参数中无效的项目'$1'，应该是$2之一。",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "添加图像插件数据中缺少'reasons'参数",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "添加图像插件数据中的'reasons'参数应该是一个数组，实际为$1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reasons'参数的项目'$1'无效，应该是以下项目之一：$2",
 	"apierror-growthexperiments-addlink-handler-notfound": "找不到链接建议纪录",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "未预期的链接建议目标：$1"
 }
