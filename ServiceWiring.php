@@ -113,7 +113,8 @@ return [
 			$geServices->getNewcomerTasksUserOptionsLookup(),
 			$geServices->getNewcomerTasksConfigurationLoader(),
 			$services->getMainWANObjectCache(),
-			$geServices->getEventGateImageSuggestionFeedbackUpdater()
+			ExtensionRegistry::getInstance()->isLoaded( 'EventBus' ) ?
+				$geServices->getEventGateImageSuggestionFeedbackUpdater() : null,
 		);
 	},
 
