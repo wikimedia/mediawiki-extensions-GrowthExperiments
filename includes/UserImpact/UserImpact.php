@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use DateTime;
 use JsonSerializable;
 use LogicException;
 use MediaWiki\User\UserIdentity;
@@ -22,7 +21,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UserImpact implements JsonSerializable {
 
 	/** Cache version, to be increased when breaking backwards compatibility. */
-	public const VERSION = 5;
+	public const VERSION = 6;
 
 	/** @var UserIdentity */
 	private $user;
@@ -35,9 +34,6 @@ class UserImpact implements JsonSerializable {
 
 	/** @var int[] */
 	private $editCountByDay;
-
-	/** @var UserTimeCorrection */
-	private $timeZone;
 
 	/** @var int */
 	private $newcomerTaskEditCount;
@@ -80,7 +76,6 @@ class UserImpact implements JsonSerializable {
 		$this->receivedThanksCount = $receivedThanksCount;
 		$this->editCountByNamespace = $editCountByNamespace;
 		$this->editCountByDay = $editCountByDay;
-		$this->timeZone = $timeZone;
 		$this->newcomerTaskEditCount = $newcomerTaskEditCount;
 		$this->lastEditTimestamp = $lastEditTimestamp;
 		$this->generatedAt = ConvertibleTimestamp::time();
@@ -131,14 +126,6 @@ class UserImpact implements JsonSerializable {
 	 */
 	public function getEditCountByDay(): array {
 		return $this->editCountByDay;
-	}
-
-	/**
-	 * The timezone used to define what a day means, typically the timezone of the user.
-	 * @return UserTimeCorrection
-	 */
-	public function getTimeZone(): UserTimeCorrection {
-		return $this->timeZone;
 	}
 
 	/**
@@ -238,10 +225,6 @@ class UserImpact implements JsonSerializable {
 		$this->receivedThanksCount = $json['receivedThanksCount'];
 		$this->editCountByNamespace = $json['editCountByNamespace'];
 		$this->editCountByDay = $json['editCountByDay'];
-		// Make the time correction object testing friendly - otherwise it would contain a
-		// current-time DateTime object.
-		$date = new DateTime( '@' . ConvertibleTimestamp::time() );
-		$this->timeZone = new UserTimeCorrection( $json['timeZone'][0], $date, $json['timeZone'][1] );
 		$this->newcomerTaskEditCount = $json['newcomerTaskEditCount'];
 		$this->lastEditTimestamp = $json['lastEditTimestamp'];
 		$this->generatedAt = $json['generatedAt'];
@@ -271,7 +254,6 @@ class UserImpact implements JsonSerializable {
 			'receivedThanksCount' => $this->receivedThanksCount,
 			'editCountByNamespace' => $this->editCountByNamespace,
 			'editCountByDay' => $this->editCountByDay,
-			'timeZone' => [ $this->timeZone->toString(), $this->timeZone->getTimeOffset() ],
 			'newcomerTaskEditCount' => $this->newcomerTaskEditCount,
 			'lastEditTimestamp' => $this->lastEditTimestamp,
 			'generatedAt' => $this->generatedAt,

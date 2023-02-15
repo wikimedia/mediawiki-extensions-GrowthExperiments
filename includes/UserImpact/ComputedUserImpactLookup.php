@@ -229,7 +229,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$queryBuilder->caller( __METHOD__ );
 
 		$userTimeCorrection = new UserTimeCorrection(
-			$this->userOptionsLookup->getOption( $user, 'timecorrection' ),
+			UserTimeCorrection::SYSTEM,
 			// Make the time correction object testing friendly - otherwise it would contain a
 			// current-time DateTime object.
 			new DateTime( '@' . ConvertibleTimestamp::time() ),
