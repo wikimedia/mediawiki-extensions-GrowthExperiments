@@ -383,7 +383,7 @@ AddImageArticleTarget.prototype.getCaptionText = function () {
 /** @inheritDoc **/
 AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	options.plugins = 'ge-task-image-recommendation';
-	// This data will be processed in HomepageHooks::onVisualEditorApiVisualEditorEditPostSaveHook
+	// This data will be processed in VisualEditorHooks::onVisualEditorApiVisualEditorEditPostSave
 	options[ 'data-ge-task-image-recommendation' ] = JSON.stringify( {
 		taskType: 'image-recommendation',
 		filename: this.getSelectedSuggestion().image,

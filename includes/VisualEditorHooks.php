@@ -21,8 +21,7 @@ use TitleFactory;
 use UnexpectedValueException;
 
 /**
- * Hook handlers for hooks defined in VisualEditor. Handled in a dedicated class to avoid other
- *  classes depending on interfaces defined in VisualEditor (which is an optional dependency).
+ * Hook handlers for hooks defined in VisualEditor.
  */
 class VisualEditorHooks implements
 	APIGetAllowedParamsHook,

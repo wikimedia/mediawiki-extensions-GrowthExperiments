@@ -427,7 +427,7 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 			skippedTargets.push( state.title );
 		}
 	} );
-	// This data will be processed in HomepageHooks::onVisualEditorApiVisualEditorEditPostSaveHook
+	// This data will be processed in VisualEditorHooks::onVisualEditorApiVisualEditorEditPostSave
 	options[ 'data-ge-task-link-recommendation' ] = JSON.stringify( {
 		taskType: 'link-recommendation',
 		acceptedTargets: acceptedTargets,
