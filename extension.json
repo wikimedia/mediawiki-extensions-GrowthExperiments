@@ -333,6 +333,7 @@
 			"services": [
 				"MainConfig",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
+				"GrowthExperimentsExperimentUserManager",
 				"GrowthExperimentsLevelingUpManager"
 			]
 		},
@@ -435,6 +436,7 @@
 		"BeforePageDisplay": [
 			"helppanel",
 			"homepage",
+			"levelingup",
 			"mentordashboarddiscovery",
 			"tour",
 			"welcomeSurvey"
@@ -628,6 +630,34 @@
 				"mediawiki.util",
 				"mediawiki.api",
 				"mediawiki.storage"
+			]
+		},
+		"ext.growthExperiments.LevelingUp.InviteToSuggestedEdits": {
+			"packageFiles": [
+				"ext.growthExperiments.LevelingUp.InviteToSuggestedEdits/index.js",
+				"ext.growthExperiments.LevelingUp.InviteToSuggestedEdits/InviteToSuggestedEditsDrawer.js",
+				"ext.growthExperiments.LevelingUp.InviteToSuggestedEdits/InviteToSuggestedEditsPanel.js",
+				"utils/Utils.js",
+				"ui-components/CollapsibleDrawer.js"
+			],
+			"styles": [
+				"ext.growthExperiments.LevelingUp.InviteToSuggestedEdits/InviteToSuggestedEdits.less",
+				"ui-components/CollapsibleDrawer.less"
+			],
+			"messages": [
+				"growthexperiments-help-panel-postedit-nonsuggested-header",
+				"growthexperiments-help-panel-postedit-nonsuggested-body",
+				"growthexperiments-help-panel-postedit-nonsuggested-try-button-text",
+				"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"dependencies": [
+				"oojs",
+				"oojs-ui-core",
+				"oojs-ui.styles.icons-movement"
 			]
 		},
 		"ext.growthExperiments.HelpPanelCta.styles": {

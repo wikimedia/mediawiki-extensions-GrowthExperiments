@@ -296,6 +296,9 @@
 		return this.active;
 	};
 
+	/**
+	 * Suppress the core post-edit notice and VE welcome/onboarding dialogs.
+	 */
 	SuggestedEditSession.prototype.suppressNotices = function () {
 		var veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' );
 
@@ -313,6 +316,9 @@
 		}
 	};
 
+	/**
+	 * @param {string} state One of the states.* constants.
+	 */
 	SuggestedEditSession.prototype.setTaskState = function ( state ) {
 		if ( allStates.indexOf( state ) !== -1 ) {
 			this.taskState = state;
@@ -323,6 +329,9 @@
 		}
 	};
 
+	/**
+	 * Make the self.editorInterface property keep track of editing mode switches.
+	 */
 	SuggestedEditSession.prototype.updateEditorInterface = function () {
 		var self = this,
 			saveEditorChanges = function ( suggestedEditSession, editorInterface ) {
@@ -396,8 +405,10 @@
 	};
 
 	/**
-	 * Display the post-edit dialog, and deal with some editors reloading the page immediately
-	 * after save.
+	 * Try to display the post-edit dialog, and deal with some editors reloading the page
+	 * immediately after save by setting an "intent to show" flag in sessionStorage, which
+	 * will trigger maybeShowPostEditDialog() on the next request if the dialog hasn't been
+	 * shown yet.
 	 *
 	 * @param {Object} config
 	 * @param {boolean} [config.resetSession] Reset the session ID. This should be done when the
@@ -513,18 +524,22 @@
 	};
 
 	/**
-	 * Display the post-edit dialog if we are in a suggested edit session, right after an edit and
-	 * set up event handlers for displaying the post-edit dialog for unstructured tasks.
+	 * Display the post-edit dialog if we are in a suggested edit session, right after a suggested
+	 * edit. Also, set up postEdit[Mobile] hook handlers for displaying the post-edit dialog
+	 * if an edit happens later.
 	 *
-	 * This gets called at the beginning of every suggested edit session, which could be either the
-	 * beginning of the edit or after an edit is saved and the page is reloaded (for all mobile and
-	 * desktop structured task edits).
+	 * This gets called at the beginning of every request in a suggested edit session, and needs
+	 * to handle both the situation where an edit happened via a mechanism that does not cause
+	 * a page reload, and when this request was caused by a page reload after an edit.
 	 *
 	 * Possible mechanisms for showing the dialog:
 	 * - Structured task with non-null edits: manually set postEditDialogNeedsToBeShown
-	 * flag via StructuredTaskArticleTarget.saveComplete (the page is reloaded upon save,
-	 * unlike regular edits in order to change the article target, see T308046)
+	 *   flag via StructuredTaskArticleTarget.saveComplete (the page is reloaded upon save,
+	 *   unlike regular edits in order to change the article target, see T308046)
 	 * - Unstructured task: via postEdit or postEditMobile hooks
+	 * - Unstructured task on mobile, or some VE edge cases, when maybeShowPostEditDialog was
+	 *   called during save, detected that the page is about to be reloaded, and set the
+	 *   postEditDialogNeedsToBeShown flag.
 	 */
 	SuggestedEditSession.prototype.maybeShowPostEditDialog = function () {
 		var self = this,

@@ -1,0 +1,68 @@
+@import '../utils/variables.less';
+@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+
+.mw-ge-inviteToSuggestedEditsDrawer {
+	.mw-ge-collapsibleDrawer-content {
+		background-color: tint( @wmui-color-accent90, 50% );
+	}
+
+	.oo-ui-panelLayout {
+		padding: 16px;
+	}
+
+	&-body {
+		margin-bottom: 16px;
+	}
+
+	&-image {
+		// Aspect ratio hack. Our grade A browser compatibility group includes ancient versions
+		// of iOS / Android so we can't use the aspect-ratio property.
+		height: 0;
+		padding-bottom: 128/360 * 100%;
+		margin-bottom: 16px;
+		background: url( ../../images/suggestededits/leveling-up-ltr.svg ) no-repeat top center;
+		background-size: contain;
+	}
+
+	&-footer {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.oo-ui-buttonElement-button {
+			// Just in case, handle very long words gracefully.
+			white-space: normal;
+		}
+	}
+
+	&-mobile &-footer {
+		.oo-ui-buttonElement {
+			margin: 0;
+		}
+
+		// win over OOUI-s four-class selector in specificity
+		.oo-ui-buttonElement-button.oo-ui-buttonElement-button {
+			border: 0;
+			padding: 16px 20px 16px;
+
+			.oo-ui-labelElement-label {
+				line-height: 1em;
+			}
+		}
+	}
+
+	&-desktop &-footer {
+		.oo-ui-buttonElement {
+			margin: 0;
+		}
+
+		.oo-ui-buttonElement-button {
+			padding: 11px 20px 13px;
+
+			.oo-ui-labelElement-label {
+				line-height: 16/14 * 1em;
+				font-size: 14/14 * 1em;
+			}
+		}
+	}
+}
