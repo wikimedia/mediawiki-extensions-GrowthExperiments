@@ -44,5 +44,5 @@
 	"welcomesurvey-question-email-placeholder": "{{GENDER:|ߌ ߟߊ߫}} ߢߎߡߍߙߋ߲߫ ߞߏ߲ߘߏ ߟߊߘߏ߲߬...",
 	"welcomesurvey-question-languages-label": "ߞߊ߲߫ ߃߀߀ ߡߊߜߍ߲ ߠߋ߬ ߦߋ߫ {{SITENAME}} ߘߐ߫. ߞߊ߲߫ ߜߘߍ ߘߏ߫ ߦߋ߫ ߦߋ߲߬ ߓߊ߬ {{GENDER:|ߌ}} ߦߋ߫ ߡߍ߲ ߞߊ߬ߙߊ߲߬ ߠߊ߫ ߊ߬ ߣߌ߫ ߞߊ߬ ߛߓߍߟߌ ߞߴߊ߬ ߘߐ߫؟",
 	"welcomesurvey-question-languages-placeholder": "ߞߊ߲ ߠߎ߬ ߝߊ߬ߙߊ߫ ߤߊ߲߯ ߞߊ߬ ߛߋ߫ {{PLURAL:|ߞߊ߲ ߞߋߟߋ߲߫ $1|ߞߊ߲ $1 ߠߎ߬}} ߘߐ߫...",
-	"welcomesurvey-question-languages-maximum": "ߌ ߓߘߊ߫ ߞߊ߲ ߦߙߌߞߊ ߞߐߘߊ߲ ߝߊ߬ߙߊ߫"
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|ߌ}} ߓߘߊ߫ ߞߊ߲ ߦߙߌߞߊ ߞߐߘߊ߲ ߝߊ߬ߙߊ߫"
 }

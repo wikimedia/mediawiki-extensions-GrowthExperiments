@@ -228,6 +228,8 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Keine Vorschläge gefunden",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Wähle einen anderen Schwierigkeitsgrad für weitere Bearbeitungsvorschläge.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Wähle weitere Themenbereiche oder Schwierigkeitsgrade, um zusätzliche Bearbeitungsvorschläge zu erhalten.",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Ändere {{GENDER:$1|deine}} Filtereinstellungen auf „Entspricht mindestens einem ausgewählten Thema“, um mehr Ergebnisse zu erhalten",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Filter aktualisieren",
 	"growthexperiments-homepage-suggestededits-footer": "Andere Benutzer haben festgestellt, dass diese Artikel einer Überarbeitung bedürfen. Hilf uns, '''{{SITENAME}}''' besser zu machen für die täglich '''$1 Leser'''.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Andere Nutzer haben diese Artikel als verbesserungswürdig gekennzeichnet. Hilf mit, '''{{SITENAME}}''' besser zu machen.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|Bearbeitung|Bearbeitungen}} seit gestern",

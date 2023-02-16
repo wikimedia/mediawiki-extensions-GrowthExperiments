@@ -13,7 +13,8 @@
 			"Matěj Suchánek",
 			"MrJaroslavik",
 			"Patriccck",
-			"Patrik L."
+			"Patrik L.",
+			"Zoji"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",
@@ -85,7 +86,7 @@
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Editace|Editace|Editací}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|editace|editace|editací}} dne $2",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Počty zobrazení článků, které jste {{GENDER:$1|editoval|editovala|editovali}}",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Návštěvnost editovaných hesel",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Návštěvnost upravených článků",
 	"growthexperiments-homepage-impact-scores-edit-count": "Celkem editací",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Počet obdržených poděkování",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Více informací o tom, jak poděkování fungují",
