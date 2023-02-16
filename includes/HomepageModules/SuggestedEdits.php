@@ -97,12 +97,6 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public const ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
 
-	/**
-	 * Change tag used to track edits made via the suggested edits interface. Some edits get a
-	 * more specific tag instead.
-	 */
-	public const SUGGESTED_EDIT_TAG = 'newcomer task';
-
 	/** @var EditInfoService */
 	private $editInfoService;
 
