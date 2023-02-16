@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
+use LogicException;
 use Message;
 use MessageLocalizer;
 use MessageSpecifier;
@@ -26,11 +27,8 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** The tag prefix used for CirrusSearch\Wikimedia\WeightedTags. */
 	public const WEIGHTED_TAG_PREFIX = 'recommendation.image';
 
-	/** @var ImageRecommendationProvider */
-	private $recommendationProvider;
-
-	/** @var AddImageSubmissionHandler */
-	private $submissionHandler;
+	private ImageRecommendationProvider $recommendationProvider;
+	private AddImageSubmissionHandler $submissionHandler;
 
 	/**
 	 * @param ConfigurationValidator $configurationValidator
@@ -117,6 +115,14 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** @inheritDoc */
 	public function getChangeTags( ?string $taskType = null ): array {
 		return [ TaskTypeHandler::NEWCOMER_TASK_TAG, self::CHANGE_TAG ];
+	}
+
+	/** @inheritDoc */
+	public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string {
+		if ( $changeTagName !== self::CHANGE_TAG ) {
+			throw new LogicException( "\"$changeTagName\" is not a valid change tag name for " . self::class );
+		}
+		return self::TASK_TYPE_ID;
 	}
 
 	/** @inheritDoc */

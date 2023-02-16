@@ -244,6 +244,16 @@ abstract class TaskTypeHandler {
 	}
 
 	/**
+	 * Get the task type ID based on the change tag associated with it.
+	 *
+	 * @param string $changeTagName
+	 * @return string|null
+	 */
+	public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string {
+		return null;
+	}
+
+	/**
 	 * @param array $config
 	 * @return LinkTarget[]
 	 * @throws MalformedTitleException
