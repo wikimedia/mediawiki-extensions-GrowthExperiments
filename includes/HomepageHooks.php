@@ -269,6 +269,8 @@ class HomepageHooks implements
 					'class' => SpecialImpact::class,
 					'services' => [
 						'UserFactory',
+						'UserNameUtils',
+						'UserNamePrefixSearch',
 						'GrowthExperimentsHomepageModuleRegistry',
 					]
 				];
