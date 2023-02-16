@@ -56,6 +56,7 @@ module.exports = exports = {
 		const isModuleUnactivated = inject( 'RELEVANT_USER_MODULE_UNACTIVATED' );
 		const isSuggestedEditsEnabled = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED' );
 		const isSuggestedEditsActivated = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED' );
+		const renderInThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
 		const impactComponent = renderMode === 'overlay-summary' ? 'NewImpactSummary' : 'NewImpact';
 		const errorComponent = renderMode === 'overlay-summary' ? 'ErrorDisplaySummary' : 'ErrorDisplay';
 
@@ -65,7 +66,9 @@ module.exports = exports = {
 		// new impact discovery tour.
 		if ( !isModuleUnactivated &&
 			!mw.user.options.get( 'growthexperiments-tour-newimpact-discovery' ) &&
-			renderMode === 'desktop' ) {
+			renderMode === 'desktop' &&
+			!renderInThirdPerson
+		) {
 			mw.loader.load( 'ext.guidedTour.tour.newimpact_discovery' );
 		}
 
