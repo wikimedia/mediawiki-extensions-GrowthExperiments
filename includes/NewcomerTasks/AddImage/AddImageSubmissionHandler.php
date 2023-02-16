@@ -49,7 +49,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	private ConfigurationLoader $configurationLoader;
 	private WANObjectCache $cache;
 
-	private EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater;
+	private ?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater;
 
 	/**
 	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
@@ -57,7 +57,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param WANObjectCache $cache
-	 * @param EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
+	 * @param EventGateImageSuggestionFeedbackUpdater|null $eventGateImageFeedbackUpdater
 	 */
 	public function __construct(
 		callable $cirrusSearchFactory,
@@ -65,7 +65,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		ConfigurationLoader $configurationLoader,
 		WANObjectCache $cache,
-		EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
+		?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
 	) {
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
@@ -265,13 +265,15 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 			$this->cache::TTL_MINUTE * 10
 		);
 
-		$this->eventGateImageFeedbackUpdater->update(
-			$page->getId(),
-			$userId,
-			$accepted,
-			$filename,
-			$rejectionReasons
-		);
+		if ( $this->eventGateImageFeedbackUpdater ) {
+			$this->eventGateImageFeedbackUpdater->update(
+				$page->getId(),
+				$userId,
+				$accepted,
+				$filename,
+				$rejectionReasons
+			);
+		}
 	}
 
 }
