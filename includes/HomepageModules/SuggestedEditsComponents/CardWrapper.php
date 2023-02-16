@@ -18,6 +18,7 @@ class CardWrapper {
 
 	/** @var bool */
 	private $topicMatching;
+	private bool $topicMatchModeIsAND;
 
 	/** @var NavigationWidgetFactory */
 	private $navigationWidgetFactory;
@@ -28,19 +29,21 @@ class CardWrapper {
 	/**
 	 * @param \MessageLocalizer $messageLocalizer
 	 * @param bool $topicMatching
+	 * @param bool $topicMatchModeIsAND
 	 * @param string $dir
 	 * @param TaskSet|\StatusValue $taskSet
 	 * @param NavigationWidgetFactory $navigationWidgetFactory
 	 * @param bool $isDesktop
 	 */
 	public function __construct(
-		\MessageLocalizer $messageLocalizer, bool $topicMatching, string $dir, $taskSet,
+		\MessageLocalizer $messageLocalizer, bool $topicMatching, bool $topicMatchModeIsAND, string $dir, $taskSet,
 		NavigationWidgetFactory $navigationWidgetFactory, bool $isDesktop
 	) {
 		$this->taskSet = $taskSet;
 		$this->messageLocalizer = $messageLocalizer;
 		$this->dir = $dir;
 		$this->topicMatching = $topicMatching;
+		$this->topicMatchModeIsAND = $topicMatchModeIsAND;
 		$this->navigationWidgetFactory = $navigationWidgetFactory;
 		$this->isDesktop = $isDesktop;
 	}
@@ -53,6 +56,7 @@ class CardWrapper {
 		$card = CardWidgetFactory::newFromTaskSet(
 			$this->messageLocalizer,
 			$this->topicMatching,
+			$this->topicMatchModeIsAND,
 			$this->dir,
 			$this->taskSet
 		);

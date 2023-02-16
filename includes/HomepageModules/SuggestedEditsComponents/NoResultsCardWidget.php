@@ -17,6 +17,13 @@ class NoResultsCardWidget extends Widget {
 		parent::__construct( $config );
 		/** @var \MessageLocalizer $localizer */
 		$localizer = $config['localizer'];
+		$noResultsDescriptionText = 'growthexperiments-homepage-suggestededits-select-other-difficulty';
+		if ( $config['topicMatching'] ) {
+			$noResultsDescriptionText = 'growthexperiments-homepage-suggestededits-select-other-topics-difficulty';
+			if ( $config['topicMatchModeIsAND'] ) {
+				$noResultsDescriptionText = 'growthexperiments-homepage-suggestededits-select-other-topic-mode';
+			}
+		}
 		$this->appendContent(
 			( new Tag( 'div' ) )->addClasses( [ 'se-card-no-results' ] )
 			->appendContent(
@@ -24,13 +31,7 @@ class NoResultsCardWidget extends Widget {
 				->appendContent( $localizer->msg( 'growthexperiments-homepage-suggestededits-no-results' )->text() ),
 				( new Tag( 'div' ) )->addClasses( [ 'se-card-image' ] ),
 				( new Tag( 'p' ) )->addClasses( [ 'se-card-text' ] )
-					->appendContent(
-						$localizer->msg(
-							$config['topicMatching'] ?
-								'growthexperiments-homepage-suggestededits-select-other-topics-difficulty' :
-								'growthexperiments-homepage-suggestededits-select-other-difficulty'
-						)->text()
-					)
+					->appendContent( $localizer->msg( $noResultsDescriptionText )->text() )
 			)
 		);
 	}

@@ -5,6 +5,7 @@
 		SuggestedEditsModule = require( './SuggestedEditsModule.js' ),
 		StartEditing = require( './StartEditing.js' ),
 		rootStore = require( 'ext.growthExperiments.DataStore' ),
+		TOPIC_MATCH_MODES = rootStore.CONSTANTS.TOPIC_MATCH_MODES,
 		tasksStore = rootStore.newcomerTasks,
 		filtersStore = rootStore.newcomerTasks.filters,
 		suggestedEditsModule;
@@ -50,7 +51,11 @@
 			tasksStore.setPreloadedTaskQueue( taskQueue );
 		} else if ( taskPreviewData.noresults ) {
 			suggestedEditsModule.showCard(
-				new NoResultsWidget( { topicMatching: filtersStore.topicsEnabled } )
+				new NoResultsWidget( {
+					topicMatching: filtersStore.topicsEnabled,
+					topicMatchModeIsAND: filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND,
+					setMatchModeOr: suggestedEditsModule.setMatchModeAndSave.bind( suggestedEditsModule, TOPIC_MATCH_MODES.OR )
+				} )
 			);
 		} else if ( taskPreviewData.error ) {
 			suggestedEditsModule.showCard( new ErrorCardWidget() );

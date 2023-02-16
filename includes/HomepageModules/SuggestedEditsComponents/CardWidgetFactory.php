@@ -10,12 +10,13 @@ class CardWidgetFactory {
 	/**
 	 * @param \MessageLocalizer $messageLocalizer
 	 * @param bool $topicMatching
+	 * @param bool $topicMatchModeIsAND
 	 * @param string $dir
 	 * @param TaskSet|\StatusValue $taskSet
 	 * @return Widget
 	 */
 	public static function newFromTaskSet(
-		\MessageLocalizer $messageLocalizer, bool $topicMatching, string $dir, $taskSet
+		\MessageLocalizer $messageLocalizer, bool $topicMatching, bool $topicMatchModeIsAND, string $dir, $taskSet
 	): Widget {
 		if ( $taskSet instanceof TaskSet ) {
 			if ( $taskSet->count() ) {
@@ -26,7 +27,8 @@ class CardWidgetFactory {
 			} else {
 				return new NoResultsCardWidget( [
 					'localizer' => $messageLocalizer,
-					'topicMatching' => $topicMatching
+					'topicMatching' => $topicMatching,
+					'topicMatchModeIsAND' => $topicMatchModeIsAND
 				] );
 			}
 		}

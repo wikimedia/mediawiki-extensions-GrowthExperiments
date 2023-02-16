@@ -492,6 +492,7 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	protected function getBody() {
 		$isDesktop = $this->getMode() === self::RENDER_DESKTOP;
+		$topicMatchMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $this->getUser() );
 		return Html::rawElement(
 			'div', [ 'class' => 'suggested-edits-module-wrapper' ],
 			( new Tag( 'div' ) )
@@ -503,6 +504,7 @@ class SuggestedEdits extends BaseModule {
 			( new CardWrapper(
 				$this->getContext(),
 				self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ),
+				$topicMatchMode === SearchStrategy::TOPIC_MATCH_MODE_AND,
 				$this->getContext()->getLanguage()->getDir(),
 				$this->getTaskSet(),
 				$this->getNavigationWidgetFactory(),
