@@ -8,7 +8,7 @@ built with [Vite](https://vitejs.dev/) as build tool and Vue 3.
 In the root of the repository, run:
 
 ```
-npm run doc:dev
+npm run docs:dev
 ```
 
 This will serve the VitePress GrowthExperiments docs site locally at http://localhost:5173.
