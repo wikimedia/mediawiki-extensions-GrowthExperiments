@@ -21,6 +21,11 @@ class TaskType implements JsonUnserializable {
 	public const DIFFICULTY_EASY = 'easy';
 	public const DIFFICULTY_MEDIUM = 'medium';
 	public const DIFFICULTY_HARD = 'hard';
+	public const DIFFICULTY_NUMERIC = [
+		1 => self::DIFFICULTY_EASY,
+		2 => self::DIFFICULTY_MEDIUM,
+		3 => self::DIFFICULTY_HARD
+	];
 
 	public const DIFFICULTY_CLASSES = [
 		self::DIFFICULTY_EASY,

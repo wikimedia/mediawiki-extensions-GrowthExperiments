@@ -15,6 +15,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
+use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
@@ -1032,6 +1033,21 @@ return [
 			$services->get( 'EventBus.EventBusFactory' ),
 			$services->getWikiPageFactory()
 		);
-	}
+	},
+
+	'GrowthExperimentsLevelingUpManager' => static function (
+		MediaWikiServices $services
+	): LevelingUpManager {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new LevelingUpManager(
+			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
+			$services->getUserOptionsLookup(),
+			$growthServices->getNewcomerTasksConfigurationLoader(),
+			$growthServices->getUserImpactLookup(),
+			$growthServices->getTaskSuggesterFactory(),
+			$growthServices->getNewcomerTasksUserOptionsLookup(),
+			LoggerFactory::getInstance( 'GrowthExperiments' )
+		);
+	},
 
 ];

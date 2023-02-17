@@ -303,7 +303,7 @@
 				"SpecialPageFactory",
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
 				"GrowthExperimentsSuggestionsInfo",
-				"GrowthExperimentsImageRecommendationProvider"
+				"GrowthExperimentsLevelingUpManager"
 			]
 		},
 		"impact": {
@@ -2111,6 +2111,10 @@
 		"GELevelingUpFeaturesEnabled": {
 			"description": "Feature flag to enable \"leveling up\" (phab:#growthexperiments-levelingup) functionality.",
 			"value": true
+		},
+		"GELevelingUpManagerTaskTypeCountThresholdMultiple": {
+			"description": "The task type count threshold to use when determining whether to prompt a user to try a new task type. If the user has completed more than this number of a particular task type, it will not be suggested as a next task type to try. If a user completes edits for a task type in a multiple of of this number (e.g. 5, 10, or 15 with the default value), then the user is prompted to try a new task type.",
+			"value": 5
 		},
 		"GERefreshUserImpactDataMaintenanceScriptEnabled": {
 			"description": "Feature flag to determine if the refreshUserImpactData.php maintenance script may run.",
