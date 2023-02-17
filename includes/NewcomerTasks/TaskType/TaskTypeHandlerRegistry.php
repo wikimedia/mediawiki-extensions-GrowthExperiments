@@ -93,6 +93,18 @@ class TaskTypeHandlerRegistry {
 	}
 
 	/**
+	 * Get all the change tag names for all possible task types, excluding the "newcomer task" tag which applies
+	 * to all the task types.
+	 *
+	 * @return string[]
+	 */
+	public function getUniqueChangeTags(): array {
+		return array_values( array_filter(
+			$this->getChangeTags(), fn ( $changeTagName ) => $changeTagName !== TaskTypeHandler::NEWCOMER_TASK_TAG
+		) );
+	}
+
+	/**
 	 * Return the task type handler ID associated with a change tag.
 	 *
 	 * @param string $changeTagName The change tag name, e.g. "newcomer task copyedit"

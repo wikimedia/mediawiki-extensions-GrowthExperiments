@@ -21,7 +21,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UserImpact implements JsonSerializable {
 
 	/** Cache version, to be increased when breaking backwards compatibility. */
-	public const VERSION = 6;
+	public const VERSION = 7;
 
 	/** @var UserIdentity */
 	private $user;
@@ -46,6 +46,7 @@ class UserImpact implements JsonSerializable {
 
 	/** @var EditingStreak */
 	private EditingStreak $longestEditingStreak;
+	private array $editCountByTaskType;
 
 	/**
 	 * @param UserIdentity $user
@@ -55,6 +56,7 @@ class UserImpact implements JsonSerializable {
 	 *   namespace. Might exclude edits made a long time ago or many edits ago.
 	 * @param int[] $editCountByDay Day => number of edits the user made on that day. Indexed with
 	 *   ISO 8601 dates, e.g. '2022-08-25'. Might exclude edits made many edits ago.
+	 * @param array $editCountByTaskType
 	 * @param UserTimeCorrection $timeZone The timezone used to define what a day means, typically
 	 *   the timezone of the user.
 	 * @param int $newcomerTaskEditCount Number of edits the user made which have the
@@ -67,6 +69,7 @@ class UserImpact implements JsonSerializable {
 		int $receivedThanksCount,
 		array $editCountByNamespace,
 		array $editCountByDay,
+		array $editCountByTaskType,
 		UserTimeCorrection $timeZone,
 		int $newcomerTaskEditCount,
 		?int $lastEditTimestamp,
@@ -76,6 +79,7 @@ class UserImpact implements JsonSerializable {
 		$this->receivedThanksCount = $receivedThanksCount;
 		$this->editCountByNamespace = $editCountByNamespace;
 		$this->editCountByDay = $editCountByDay;
+		$this->editCountByTaskType = $editCountByTaskType;
 		$this->newcomerTaskEditCount = $newcomerTaskEditCount;
 		$this->lastEditTimestamp = $lastEditTimestamp;
 		$this->generatedAt = ConvertibleTimestamp::time();
@@ -138,6 +142,15 @@ class UserImpact implements JsonSerializable {
 	}
 
 	/**
+	 * Number of newcomer task edits the user has made for each task type.
+	 *
+	 * @return array<string,int> (task type id => edit count for the task type)
+	 */
+	public function getEditCountByTaskType(): array {
+		return $this->editCountByTaskType;
+	}
+
+	/**
 	 * Unix timestamp of the user's last edit, or null if the user has zero edits.
 	 * @return int|null
 	 */
@@ -179,6 +192,7 @@ class UserImpact implements JsonSerializable {
 		return new UserImpact(
 			new UserIdentityValue( 0, '' ),
 			0,
+			[],
 			[],
 			[],
 			new UserTimeCorrection( 'System|0' ),
@@ -225,6 +239,7 @@ class UserImpact implements JsonSerializable {
 		$this->receivedThanksCount = $json['receivedThanksCount'];
 		$this->editCountByNamespace = $json['editCountByNamespace'];
 		$this->editCountByDay = $json['editCountByDay'];
+		$this->editCountByTaskType = $json['editCountByTaskType'];
 		$this->newcomerTaskEditCount = $json['newcomerTaskEditCount'];
 		$this->lastEditTimestamp = $json['lastEditTimestamp'];
 		$this->generatedAt = $json['generatedAt'];
@@ -254,6 +269,7 @@ class UserImpact implements JsonSerializable {
 			'receivedThanksCount' => $this->receivedThanksCount,
 			'editCountByNamespace' => $this->editCountByNamespace,
 			'editCountByDay' => $this->editCountByDay,
+			'editCountByTaskType' => $this->editCountByTaskType,
 			'newcomerTaskEditCount' => $this->newcomerTaskEditCount,
 			'lastEditTimestamp' => $this->lastEditTimestamp,
 			'generatedAt' => $this->generatedAt,

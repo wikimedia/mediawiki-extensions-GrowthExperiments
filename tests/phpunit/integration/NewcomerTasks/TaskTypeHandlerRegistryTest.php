@@ -105,4 +105,20 @@ class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
 		];
 	}
 
+	public function testGetUniqueChangeTags() {
+		$taskTypeHandlerRegistry = GrowthExperimentsServices::wrap(
+			$this->getServiceContainer()
+		)->getTaskTypeHandlerRegistry();
+		$changeTags = $taskTypeHandlerRegistry->getUniqueChangeTags();
+		$this->assertSame( [
+			'newcomer task image suggestion',
+			'newcomer task add link',
+			'newcomer task copyedit',
+			'newcomer task references',
+			'newcomer task update',
+			'newcomer task expand',
+			'newcomer task links',
+		], $changeTags );
+	}
+
 }

@@ -14,11 +14,14 @@ class EditData {
 	private ?string $lastEditTimestamp;
 	private array $editedArticles;
 	private UserTimeCorrection $userTimeCorrection;
+	private array $editCountByTaskType;
 
 	/**
 	 * @param int[] $editCountByNamespace Number of edits made by the user per namespace ID.
 	 * @param int[] $editCountByDay Number of article-space edits made by the user
 	 *   by day. The format matches {@see UserImpact::getEditCountByDay()}.
+	 * @param array<string,int> $editCountByTaskType Number of newcomer task edits per task type
+	 *  {@see UserImpact::getEditCountByTaskType()}.
 	 * @param int $newcomerTaskEditCount Number of edits with "newcomer task" tag (suggested edits).
 	 * @param string|null $lastEditTimestamp MW_TS date of last article-space edit.
 	 * @param array[] $editedArticles List of article-space titles the user has edited, sorted from
@@ -30,6 +33,7 @@ class EditData {
 	public function __construct(
 		array $editCountByNamespace,
 		array $editCountByDay,
+		array $editCountByTaskType,
 		int $newcomerTaskEditCount,
 		?string $lastEditTimestamp,
 		array $editedArticles,
@@ -41,6 +45,7 @@ class EditData {
 		$this->lastEditTimestamp = $lastEditTimestamp;
 		$this->editedArticles = $editedArticles;
 		$this->userTimeCorrection = $userTimeCorrection;
+		$this->editCountByTaskType = $editCountByTaskType;
 	}
 
 	/**
@@ -68,6 +73,15 @@ class EditData {
 	 */
 	public function getNewcomerTaskEditCount(): int {
 		return $this->newcomerTaskEditCount;
+	}
+
+	/**
+	 * Number of newcomer task edits, grouped by task type.
+	 *
+	 * @return array<string,int>
+	 */
+	public function getEditCountByTaskType(): array {
+		return $this->editCountByTaskType;
 	}
 
 	/**
