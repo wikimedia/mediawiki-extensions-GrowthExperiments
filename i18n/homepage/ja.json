@@ -218,6 +218,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "おすすめ編集は見つかりませんでした",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "難易度を変えて、おすすめ編集を見つけてください。",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "他のトピックや難易度を選択して、おすすめ編集を見つけてください。",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "フィルタを更新",
 	"growthexperiments-homepage-suggestededits-footer": "これらの記事には作業が必要だと指摘している利用者がいます。'''{{SITENAME}}'''が'''1日あたり$1人の読者'''にとってもっと良くなるよう手伝ってください。",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "これらの記事には作業が必要だと指摘している利用者がいます。'''{{SITENAME}}'''がもっと良くなるよう手伝ってください。",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1千",

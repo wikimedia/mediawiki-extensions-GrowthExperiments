@@ -15,6 +15,7 @@
 			"Stanglavine",
 			"Teles",
 			"TheEduGobi",
+			"Trooper57",
 			"YuriNikolai"
 		]
 	},
@@ -210,6 +211,8 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Nenhuma sugestão encontrada",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Selecione outros níveis de dificuldade para encontrar as edições sugeridas.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Selecione outros interesses ou níveis de dificuldade para encontrar as edições sugeridas.",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Mude as configurações do {{GENDER:$1|seu}} filtro para \"Coincidir com pelo menos um tópico selecionado\" para mais resultados",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Atualizar filtro",
 	"growthexperiments-homepage-suggestededits-footer": "Outros usuários notaram que esses artigos precisam de trabalho. Ajude a fazer '''{{SITENAME}}''' melhor para seus '''$1 leitores''' cada dia.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Outros usuários notaram que esses artigos precisam de trabalho. Ajude a fazer '''{{SITENAME}}''' melhor.",
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",

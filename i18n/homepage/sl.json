@@ -204,6 +204,8 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Ni najdenih predlogov",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Poskusite predlagana urejanja poiskati na drugih ravneh zahtevnosti",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Poskusite predlagana urejanja poiskati pri drugih zanimanjih ali na drugih ravneh zahtevnosti",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Za več zadetkoc spremenite {{GENDER:$1|svoje}} nastavitve filtra na »Ujemanje z vsaj eno izbrano temo«",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Posodobi filter",
 	"growthexperiments-homepage-suggestededits-footer": "Drugi uporabniki so ugotovili, da je treba te članke popraviti. Pomagajte projekt '''{{SITENAME}}''' izboljšati za '''$1 bralcev''' dnevno.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Drugi uporabniki so ugotovili, da je treba te članke popraviti. Pomagajte izboljšati projekt '''{{SITENAME}}'''.",
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
