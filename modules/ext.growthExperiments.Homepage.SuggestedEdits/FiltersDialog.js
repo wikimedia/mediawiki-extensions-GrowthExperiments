@@ -115,7 +115,7 @@ FiltersDialog.prototype.getActionProcess = function ( action ) {
 				}.bind( this ) );
 				return promise;
 			}
-			if ( action === 'cancel' ) {
+			if ( action === 'cancel' || !action ) {
 				this.emit( 'cancel' );
 				this.close( { action: 'cancel' } );
 			}
