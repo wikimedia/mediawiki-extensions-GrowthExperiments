@@ -11,6 +11,8 @@
 	"apihelp-query+growthtasks-param-debug": "Add debug data to the output.",
 	"apihelp-query+growthtasks-example-1": "Get task recommendations for copy-editing-type tasks for the current user.",
 	"apihelp-query+growthtasks-example-2": "Get task recommendations for the current user, with extended information about the pages.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Get a suggested task type for a user to try next.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "The task type that the user is currently working on.",
 	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "A JSON string of an object with these keys:\n* <var>acceptedTargets</var>: (optional) Array with the titles of pages, the recommended link to which was accepted by the user.\n* <var>rejectedTargets</var>: (optional) Array with the titles of pages, the recommended link to which was rejected by the user.\n* <var>skippedTargets</var>: (optional) Array with the titles of pages, the recommended link to which was skipped (ignored) by the user.",
 	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "A JSON string of an object with these keys:\n* <var>accepted</var>: A boolean indicating whether the user accepted the recommended image.\n* <var>reasons</var>: An array of strings identifying boolean indicating why the user rejected the recommended image. Valid values: $1\n* <var>caption</var>: Image caption provided by the user. (Must have at least $2 characters.)",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Use when saving a GrowthExperiments \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|Add a link]]\" structured edit.",

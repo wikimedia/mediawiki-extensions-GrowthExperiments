@@ -1,0 +1,88 @@
+<?php
+
+namespace GrowthExperiments\Tests\Integration\Api;
+
+use ApiTestCase;
+use ApiUsageException;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\UserImpact\UserImpact;
+use GrowthExperiments\UserImpact\UserImpactLookup;
+
+/**
+ * @covers \GrowthExperiments\Api\ApiQueryNextSuggestedTaskType
+ */
+class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
+
+	public function testNotLoggedIn() {
+		$configurationLoader = new StaticConfigurationLoader( [
+			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY )
+		] );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'You must be logged in.' );
+		$this->doApiRequest(
+			[ 'action' => 'query', 'meta' => 'growthnextsuggestedtasktype', 'gnsttactivetasktype' => 'copyedit' ],
+			null,
+			null,
+			$this->getServiceContainer()->getUserFactory()->newAnonymous()
+		);
+	}
+
+	public function testInvalidTaskTypeParameter() {
+		$configurationLoader = new StaticConfigurationLoader( [
+			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY )
+		] );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'Unrecognized value for parameter "gnsttactivetasktype": link-recommendation.' );
+		$this->doApiRequestWithToken( [
+			'action' => 'query', 'meta' => 'growthnextsuggestedtasktype', 'gnsttactivetasktype' => 'link-recommendation'
+		], null, $this->getServiceContainer()->getUserFactory()->newAnonymous() );
+	}
+
+	public function testRequiredTaskTypeParameter() {
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'The "gnsttactivetasktype" parameter must be set.' );
+		$this->doApiRequestWithToken(
+			[ 'action' => 'query', 'meta' => 'growthnextsuggestedtasktype' ],
+			null,
+			$this->getServiceContainer()->getUserFactory()->newAnonymous()
+		);
+	}
+
+	public function testGetNextSuggestedTaskType() {
+		$userImpact = $this->createMock( UserImpact::class );
+		$userImpact->expects( $this->once() )
+			->method( 'getEditCountByTaskType' )
+			->willReturn( [
+				'copyedit' => 4,
+				'link-recommendation' => 0,
+			] );
+		$userImpactLookup = $this->createMock( UserImpactLookup::class );
+		$userImpactLookup->expects( $this->once() )
+			->method( 'getUserImpact' )
+			->willReturn( $userImpact );
+		$taskSuggester = $this->createMock( TaskSuggester::class );
+		$taskSet = $this->createMock( TaskSet::class );
+		$taskSet->method( 'count' )
+			->willReturn( 1 );
+		$taskSuggester->method( 'suggest' )
+			->willReturn( $taskSet );
+		$taskSuggesterFactory = $this->createMock( TaskSuggesterFactory::class );
+		$taskSuggesterFactory->method( 'create' )->willReturn( $taskSuggester );
+		$taskType1 = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$taskType2 = new TaskType( 'link-recommendation', TaskType::DIFFICULTY_EASY );
+		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2 ] );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
+		$this->setService( 'GrowthExperimentsUserImpactLookup_Computed', $userImpactLookup );
+		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $taskSuggesterFactory );
+		$result = $this->doApiRequestWithToken( [
+			'action' => 'query', 'meta' => 'growthnextsuggestedtasktype', 'gnsttactivetasktype' => 'copyedit'
+		] );
+		$this->assertSame( 'link-recommendation', $result[0]['query']['growthnextsuggestedtasktype'] );
+	}
+}
