@@ -22,6 +22,8 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
@@ -384,6 +386,12 @@ return [
 	'GrowthExperimentsMenteeOverviewDataProvider' => static function (
 		MediaWikiServices $services
 	): MenteeOverviewDataProvider {
+		return $services->get( 'GrowthExperimentsMenteeOverviewDataProviderDatabase' );
+	},
+
+	'GrowthExperimentsMenteeOverviewDataProviderDatabase' => static function (
+		MediaWikiServices $services
+	): DatabaseMenteeOverviewDataProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new DatabaseMenteeOverviewDataProvider(
 			$services->getMainWANObjectCache(),
@@ -394,7 +402,7 @@ return [
 
 	'GrowthExperimentsMenteeOverviewDataProviderUncached' => static function (
 		MediaWikiServices $services
-	): MenteeOverviewDataProvider {
+	): UncachedMenteeOverviewDataProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		$provider = new UncachedMenteeOverviewDataProvider(
 			$geServices->getMentorStore(),
@@ -627,6 +635,33 @@ return [
 		return new ImageRecommendationFilter(
 			$services->getMainWANObjectCache()
 		);
+	},
+
+	'GrowthExperimentsPraiseworthyConditionsLookup' => static function (
+		MediaWikiServices $services
+	): PraiseworthyConditionsLookup {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		return new PraiseworthyConditionsLookup(
+			$geServices->getGrowthWikiConfig(),
+			$services->getUserOptionsLookup(),
+			$geServices->getMentorManager()
+		);
+	},
+
+	'GrowthExperimentsPraiseworthyMenteeSuggester' => static function (
+		MediaWikiServices $services
+	): PraiseworthyMenteeSuggester {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		$suggester = new PraiseworthyMenteeSuggester(
+			$services->getMainObjectStash(),
+			$geServices->getPraiseworthyConditionsLookup(),
+			$geServices->getMentorStore(),
+			$geServices->getUserImpactStore()
+		);
+		$suggester->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $suggester;
 	},
 
 	'GrowthExperimentsQuestionPosterFactory' => static function (

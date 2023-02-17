@@ -356,6 +356,16 @@
 		"parserfunctions": {
 			"class": "GrowthExperiments\\ParserFunctionsHooks"
 		},
+		"personalizedpraise": {
+			"class": "GrowthExperiments\\MentorDashboard\\PersonalizedPraise\\PersonalizedPraiseHooks",
+			"services": [
+				"GrowthExperimentsConfig",
+				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsUserImpactLookup",
+				"GrowthExperimentsPraiseworthyConditionsLookup",
+				"GrowthExperimentsPraiseworthyMenteeSuggester"
+			]
+		},
 		"schema": {
 			"class": "GrowthExperiments\\SchemaHooks"
 		},
@@ -462,7 +472,8 @@
 			"config",
 			"homepage",
 			"mentor",
-			"impact"
+			"impact",
+			"personalizedpraise"
 		],
 		"ParserFirstCallInit": "parserfunctions",
 		"PostLoginRedirect": [
@@ -2257,6 +2268,22 @@
 		},
 		"GEMentorshipMinimumEditcount": {
 			"description": "Minimum number of edits required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
+			"value": 500
+		},
+		"GEPersonalizedPraiseBackendEnabled": {
+			"description": "Feature flag controlling whether personalized praise's backend is enabled",
+			"value": false
+		},
+		"GEPersonalizedPraiseDays": {
+			"description": "Number of days to consider when checking whether a mentee is praiseworthy (used together with GEPersonalizedPraiseEdits). This must not be longer than wgRCMaxAge.",
+			"value": 7
+		},
+		"GEPersonalizedPraiseEdits": {
+			"description": "Number of article edits a mentee needs to have within GEPersonalizedPraiseDays to be considered praiseworthy",
+			"value": 8
+		},
+		"GEPersonalizedPraiseMaxEdits": {
+			"description": "Maximum number of total edits a mentee can have to be considered praiseworthy (used to avoid suggesting experienced users)",
 			"value": 500
 		},
 		"GEStructuredMentorList": {

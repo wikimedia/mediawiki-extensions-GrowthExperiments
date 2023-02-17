@@ -11,11 +11,15 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
+use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
+use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
@@ -147,15 +151,19 @@ class GrowthExperimentsServices {
 	}
 
 	public function getMenteeOverviewDataProvider(): MenteeOverviewDataProvider {
+		return $this->getDatabaseMenteeOverviewDataProvider();
+	}
+
+	public function getDatabaseMenteeOverviewDataProvider(): DatabaseMenteeOverviewDataProvider {
 		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProvider' );
+	}
+
+	public function getUncachedMenteeOverviewDataProvider(): UncachedMenteeOverviewDataProvider {
+		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProviderUncached' );
 	}
 
 	public function getMenteeOverviewDataUpdater(): MenteeOverviewDataUpdater {
 		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataUpdater' );
-	}
-
-	public function getUncachedMenteeOverviewDataProvider(): MenteeOverviewDataProvider {
-		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProviderUncached' );
 	}
 
 	public function getMentorDashboardModuleRegistry(): MentorDashboardModuleRegistry {
@@ -216,6 +224,14 @@ class GrowthExperimentsServices {
 
 	public function getImageRecommendationFilter(): ImageRecommendationFilter {
 		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationFilter' );
+	}
+
+	public function getPraiseworthyConditionsLookup(): PraiseworthyConditionsLookup {
+		return $this->coreServices->get( 'GrowthExperimentsPraiseworthyConditionsLookup' );
+	}
+
+	public function getPraiseworthyMenteeSuggester(): PraiseworthyMenteeSuggester {
+		return $this->coreServices->get( 'GrowthExperimentsPraiseworthyMenteeSuggester' );
 	}
 
 	public function getQuestionPosterFactory(): QuestionPosterFactory {
