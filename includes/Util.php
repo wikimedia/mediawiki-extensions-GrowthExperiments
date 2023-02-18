@@ -26,6 +26,7 @@ use Throwable;
 use TitleFactory;
 use Traversable;
 use User;
+use Wikimedia\NormalizedException\NormalizedException;
 
 class Util {
 
@@ -177,11 +178,11 @@ class Util {
 			}
 		}
 
-		$errorMessage = Status::wrap( $status )->getWikiText( false, false, 'en' );
+		[ $errorText, $context ] = Status::wrap( $status )->getPsr3MessageAndContext();
 		if ( $status->isOK() ) {
-			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorMessage );
+			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorText, $context );
 		} else {
-			MWExceptionHandler::logException( new Exception( $errorMessage ),
+			MWExceptionHandler::logException( new NormalizedException( $errorText, $context ),
 				MWExceptionHandler::CAUGHT_BY_OTHER );
 		}
 	}
@@ -221,7 +222,7 @@ class Util {
 			$status->merge( FormatJson::parse( $request->getContent(), FormatJson::FORCE_ASSOC ), true );
 		}
 		// Log warnings here. The caller is expected to handle errors so do not double-log them.
-		list( $errorStatus, $warningStatus ) = $status->splitByErrorType();
+		[ $errorStatus, $warningStatus ] = $status->splitByErrorType();
 		if ( !$warningStatus->isGood() ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
 				$warningStatus->getWikiText( false, false, 'en' ),
