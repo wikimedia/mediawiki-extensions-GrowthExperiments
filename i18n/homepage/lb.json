@@ -3,7 +3,8 @@
 		"authors": [
 			"Les Meloures",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salut}}, {{bidi:$1}}!",
@@ -61,6 +62,8 @@
 	"growthexperiments-homepage-suggestededits-edit-card": "Änneren",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Keng aner Virschléi",
 	"growthexperiments-homepage-suggestededits-no-results": "Keng Virschléi fonnt",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Ännert {{GENDER:$1|Är}} Filterastellungen op \"Entsprécht mindestens engem ausgewielten Theema\" fir méi Resultater ze kréien.",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Filter aktualiséieren",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|Ännerung|Ännerungen}} de leschten Dag",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "All Virschléi kucken",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Verbessert Orthographie, Grammaire an Toun",

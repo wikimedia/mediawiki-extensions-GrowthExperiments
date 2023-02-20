@@ -14,6 +14,6 @@
 	"apihelp-growthsetmentor-param-mentee": "Uživatelské jméno mentorovaného",
 	"apihelp-growthsetmentor-param-mentor": "Uživatelské jméno mentora",
 	"apihelp-growthsetmentor-param-reason": "Důvod pro změnu",
-	"apihelp-growthinvalidateimagerecommendation-summary": "Zneplatnit navržený obrázek",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Zneplatnit návrh obrázku.",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Název článku, pro který byl obrázek navržen"
 }

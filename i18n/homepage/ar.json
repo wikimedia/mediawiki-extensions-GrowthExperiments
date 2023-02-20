@@ -214,6 +214,8 @@
 	"growthexperiments-homepage-suggestededits-no-results": "لم يعُثر على اقتراحات",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "{{GENDER:|حدد|حددي}} مستويات صعوبة أخرى للعثور على التعديلات المقترحة.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "{{GENDER:|حدد|حددي}} اهتمامات أو مستويات صعوبة أخرى للعثور على التعديلات المقترحة.",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "{{GENDER:$1|غيّر|غيّري}} إعدادات المرشّح إلى «مُطابقة موضوع واحد على الأقلّ» كي {{GENDER:$1|تتحصّل|تتحصّلي}} على نتائج أكثر",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "تحديث المرشح",
 	"growthexperiments-homepage-suggestededits-footer": "لاحظ مستخدمون آخرون أن هذه المقالات تحتاج إلى تدخل، {{GENDER:|ساهم|ساهمي}} في تحسين '''{{SITENAME}}''' لـ '''$1''' قارئ كل يوم.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "لاحظ مستخدمون آخرون أن هذه المقالات تحتاج إلى تدخّل، {{GENDER:|ساهم|ساهمي}} في تحسين '''{{SITENAME}}'''.",
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",

@@ -202,6 +202,8 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Nulle suggestiones trovate",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Selige altere nivellos de difficultate pro trovar modificationes suggerite.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Selige altere interesses o nivellos de difficultate pro trovar modificationes suggerite.",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Cambia {{GENDER:$1|tu}} parametros de filtro pro \"Requirer al minus un topico seligite\" pro plus resultatos",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Actualisar filtro",
 	"growthexperiments-homepage-suggestededits-footer": "Altere usatores ha remarcate que iste articulos debe esser meliorate. Adjuta a meliorar '''{{SITENAME}}''' pro su '''$1 lectores''' cata die.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Altere usatores ha notate que iste articulos require labor. Adjuta a facer '''{{SITENAME}}''' melior.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "modification{{PLURAL:$1||es}} in le ultime die",
