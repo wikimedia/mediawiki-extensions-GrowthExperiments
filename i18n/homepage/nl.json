@@ -15,7 +15,8 @@
 			"Nickthijssen1994",
 			"Robin van der Vliet",
 			"Romaine",
-			"Rots61"
+			"Rots61",
+			"HanV"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -226,6 +227,8 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Voeg links toe tussen artikelen",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Links tussen artikelen aanbrengen",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Machinesuggesties",
+	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Moet overeenkomen met alle geselecteerde onderwerpen",
+	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Moet overeenkomen met tenminste één geselecteerd onderwerp",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografie (alle)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografie (vrouwen)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Eten en drinken",
