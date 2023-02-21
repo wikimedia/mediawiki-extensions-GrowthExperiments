@@ -538,7 +538,6 @@ class SuggestedEdits extends BaseModule {
 
 	/**
 	 * @inheritDoc
-	 * @suppress SecurityCheck-DoubleEscaped
 	 */
 	protected function getMobileSummaryBody() {
 		$tasks = $this->getTaskSet();

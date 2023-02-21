@@ -274,7 +274,6 @@ class QuestionStore {
 	}
 
 	/**
-	 * @suppress SecurityCheck-DoubleEscaped T291259
 	 * @param QuestionRecord $question
 	 * @return QuestionRecord
 	 */
