@@ -2,4 +2,3 @@
 # .gitignore can't be placed inside docs/frontend because VitePress build
 # empties the directory when building.
 frontend/*
-frontend/!.gitignore
