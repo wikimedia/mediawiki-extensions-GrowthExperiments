@@ -7,23 +7,33 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageModules\NewImpact;
 use Html;
 use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserNamePrefixSearch;
+use MediaWiki\User\UserNameUtils;
 use SpecialPage;
 
 class SpecialImpact extends SpecialPage {
 
 	private UserFactory $userFactory;
+	private UserNameUtils $userNameUtils;
+	private UserNamePrefixSearch $userNamePrefixSearch;
 	private HomepageModuleRegistry $homepageModuleRegistry;
 
 	/**
 	 * @param UserFactory $userFactory
+	 * @param UserNameUtils $userNameUtils
+	 * @param UserNamePrefixSearch $userNamePrefixSearch
 	 * @param HomepageModuleRegistry $homepageModuleRegistry
 	 */
 	public function __construct(
 		UserFactory $userFactory,
+		UserNameUtils $userNameUtils,
+		UserNamePrefixSearch $userNamePrefixSearch,
 		HomepageModuleRegistry $homepageModuleRegistry
 	) {
 		parent::__construct( 'Impact' );
 		$this->userFactory = $userFactory;
+		$this->userNameUtils = $userNameUtils;
+		$this->userNamePrefixSearch = $userNamePrefixSearch;
 		$this->homepageModuleRegistry = $homepageModuleRegistry;
 	}
 
@@ -81,5 +91,17 @@ class SpecialImpact extends SpecialPage {
 			'impact' => $impact->getJsData( IDashboardModule::RENDER_DESKTOP )
 		] );
 		$out->addHTML( $impact->render( IDashboardModule::RENDER_DESKTOP ) );
+	}
+
+	/** @inheritDoc */
+	public function prefixSearchSubpages( $search, $limit, $offset ) {
+		$search = $this->userNameUtils->getCanonical( $search );
+		if ( !$search ) {
+			// No prefix suggestion for invalid user
+			return [];
+		}
+		// Autocomplete subpage as user list - public to allow caching
+		return $this->userNamePrefixSearch
+			->search( UserNamePrefixSearch::AUDIENCE_PUBLIC, $search, $limit, $offset );
 	}
 }
