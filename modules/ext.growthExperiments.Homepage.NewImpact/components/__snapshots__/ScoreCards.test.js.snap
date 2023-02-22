@@ -11,10 +11,9 @@ exports[`ScoreCards renders correctly with data 1`] = `
       class="ext-growthExperiments-ScoreCard__data-display"
     >
       <span
-        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+        class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
       >
         <svg
-          aria-hidden="false"
           height="20"
           viewBox="0 0 20 20"
           width="20"
@@ -25,7 +24,6 @@ exports[`ScoreCards renders correctly with data 1`] = `
           </title>
           <path
             d=""
-            fill="currentColor"
           />
         </svg>
       </span>
@@ -65,10 +63,9 @@ exports[`ScoreCards renders correctly with data 1`] = `
       class="ext-growthExperiments-ScoreCard__data-display"
     >
       <span
-        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+        class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
       >
         <svg
-          aria-hidden="false"
           height="20"
           viewBox="0 0 20 20"
           width="20"
@@ -79,7 +76,6 @@ exports[`ScoreCards renders correctly with data 1`] = `
           </title>
           <path
             d=""
-            fill="currentColor"
           />
         </svg>
       </span>
@@ -122,7 +118,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
               >
                 
                 <span
-                  class="cdx-icon"
+                  class="cdx-icon cdx-icon--medium"
                 >
                   <svg
                     aria-hidden="true"
@@ -134,7 +130,6 @@ exports[`ScoreCards renders correctly with data 1`] = `
                     <!---->
                     <path
                       d=""
-                      fill="currentColor"
                     />
                   </svg>
                 </span>
@@ -159,10 +154,9 @@ exports[`ScoreCards renders correctly with data 1`] = `
       class="ext-growthExperiments-ScoreCard__data-display"
     >
       <span
-        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+        class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
       >
         <svg
-          aria-hidden="false"
           height="20"
           viewBox="0 0 20 20"
           width="20"
@@ -173,7 +167,6 @@ exports[`ScoreCards renders correctly with data 1`] = `
           </title>
           <path
             d=""
-            fill="currentColor"
           />
         </svg>
       </span>
@@ -207,10 +200,9 @@ exports[`ScoreCards renders correctly with data 1`] = `
       class="ext-growthExperiments-ScoreCard__data-display"
     >
       <span
-        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+        class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
       >
         <svg
-          aria-hidden="false"
           height="20"
           viewBox="0 0 20 20"
           width="20"
@@ -221,7 +213,6 @@ exports[`ScoreCards renders correctly with data 1`] = `
           </title>
           <path
             d=""
-            fill="currentColor"
           />
         </svg>
       </span>
@@ -258,7 +249,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
               >
                 
                 <span
-                  class="cdx-icon"
+                  class="cdx-icon cdx-icon--medium"
                 >
                   <svg
                     aria-hidden="true"
@@ -270,7 +261,6 @@ exports[`ScoreCards renders correctly with data 1`] = `
                     <!---->
                     <path
                       d=""
-                      fill="currentColor"
                     />
                   </svg>
                 </span>
@@ -302,10 +292,9 @@ exports[`ScoreCards renders correctly without data 1`] = `
       class="ext-growthExperiments-ScoreCard__data-display"
     >
       <span
-        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+        class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
       >
         <svg
-          aria-hidden="false"
           height="20"
           viewBox="0 0 20 20"
           width="20"
@@ -316,7 +305,6 @@ exports[`ScoreCards renders correctly without data 1`] = `
           </title>
           <path
             d=""
-            fill="currentColor"
           />
         </svg>
       </span>
@@ -356,10 +344,9 @@ exports[`ScoreCards renders correctly without data 1`] = `
       class="ext-growthExperiments-ScoreCard__data-display"
     >
       <span
-        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+        class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
       >
         <svg
-          aria-hidden="false"
           height="20"
           viewBox="0 0 20 20"
           width="20"
@@ -370,7 +357,6 @@ exports[`ScoreCards renders correctly without data 1`] = `
           </title>
           <path
             d=""
-            fill="currentColor"
           />
         </svg>
       </span>
@@ -413,7 +399,7 @@ exports[`ScoreCards renders correctly without data 1`] = `
               >
                 
                 <span
-                  class="cdx-icon"
+                  class="cdx-icon cdx-icon--medium"
                 >
                   <svg
                     aria-hidden="true"
@@ -425,7 +411,6 @@ exports[`ScoreCards renders correctly without data 1`] = `
                     <!---->
                     <path
                       d=""
-                      fill="currentColor"
                     />
                   </svg>
                 </span>
@@ -450,10 +435,9 @@ exports[`ScoreCards renders correctly without data 1`] = `
       class="ext-growthExperiments-ScoreCard__data-display"
     >
       <span
-        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+        class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
       >
         <svg
-          aria-hidden="false"
           height="20"
           viewBox="0 0 20 20"
           width="20"
@@ -464,7 +448,6 @@ exports[`ScoreCards renders correctly without data 1`] = `
           </title>
           <path
             d=""
-            fill="currentColor"
           />
         </svg>
       </span>
@@ -498,10 +481,9 @@ exports[`ScoreCards renders correctly without data 1`] = `
       class="ext-growthExperiments-ScoreCard__data-display"
     >
       <span
-        class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+        class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
       >
         <svg
-          aria-hidden="false"
           height="20"
           viewBox="0 0 20 20"
           width="20"
@@ -512,7 +494,6 @@ exports[`ScoreCards renders correctly without data 1`] = `
           </title>
           <path
             d=""
-            fill="currentColor"
           />
         </svg>
       </span>
@@ -549,7 +530,7 @@ exports[`ScoreCards renders correctly without data 1`] = `
               >
                 
                 <span
-                  class="cdx-icon"
+                  class="cdx-icon cdx-icon--medium"
                 >
                   <svg
                     aria-hidden="true"
@@ -561,7 +542,6 @@ exports[`ScoreCards renders correctly without data 1`] = `
                     <!---->
                     <path
                       d=""
-                      fill="currentColor"
                     />
                   </svg>
                 </span>
