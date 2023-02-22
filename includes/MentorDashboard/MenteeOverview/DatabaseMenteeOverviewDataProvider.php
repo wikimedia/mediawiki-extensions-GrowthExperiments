@@ -5,6 +5,7 @@ namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 use FormatJson;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\User\UserIdentity;
+use stdClass;
 use WANObjectCache;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IDatabase;
@@ -66,6 +67,22 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 	}
 
 	/**
+	 * Decode data for particular mentee
+	 *
+	 * @param stdClass $row
+	 * @return array
+	 */
+	private function formatDataForMentee( stdClass $row ): array {
+		$input = FormatJson::decode( $row->mentee_data, true );
+		$input['user_id'] = $row->mentee_id;
+		if ( !array_key_exists( 'last_active', $input ) ) {
+			$input['last_active'] = $input['last_edit'] ?? $input['registration'];
+		}
+
+		return $input;
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function getFormattedDataForMentor( UserIdentity $mentor ): array {
@@ -92,15 +109,38 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 				);
 				$data = [];
 				foreach ( $res as $row ) {
-					$tmp = FormatJson::decode( $row->mentee_data, true );
-					$tmp['user_id'] = $row->mentee_id;
-					if ( !array_key_exists( 'last_active', $tmp ) ) {
-						$tmp['last_active'] = $tmp['last_edit'] ?? $tmp['registration'];
-					}
-					$data[] = $tmp;
+					$data[] = $this->formatDataForMentee( $row );
 				}
 				return $data;
 			}
 		);
+	}
+
+	/**
+	 * Fetch MenteeOverview data for a given mentee
+	 *
+	 * This is useful in other parts of GrowthExperiments that wish
+	 * to reuse data MenteeOverview has available (Personalized praise, for
+	 * example).
+	 *
+	 * @param UserIdentity $mentee
+	 * @return array|null Formatted data if exists; null otherwise
+	 */
+	public function getFormattedDataForMentee( UserIdentity $mentee ): ?array {
+		$res = $this->growthDbr->newSelectQueryBuilder()
+			->select( [ 'mentee_id', 'mentee_data' ] )
+			->from( 'growthexperiments_mentee_data' )
+			->conds( [
+				'mentee_id' => $mentee->getId()
+			] )
+			->caller( __METHOD__ )
+			->fetchRow();
+
+		if ( !$res ) {
+			// mentee not found
+			return null;
+		}
+
+		return $this->formatDataForMentee( $res );
 	}
 }
