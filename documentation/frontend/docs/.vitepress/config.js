@@ -2,6 +2,12 @@ export default {
 	lang: 'en-US',
 	title: 'GrowthExperiments',
 	description: 'GrowthExperiments docs and prototypes',
+	// Use the same base URL as it will be used in "doc.wikimedia.org" for simplicity. The site
+	// will be served in the following URLs on each environment
+	// - development (npm run docs:dev) http://localhost:4173/GrowthExperiments/master/js/frontend/
+	// - preview (npm run docs:preview) http://localhost:5173/GrowthExperiments/master/js/frontend/
+	// - production (npm run doc from root repostory) https://doc.wikimedia.org/GrowthExperiments/master/js/frontend/
+	base: '/GrowthExperiments/master/js/frontend',
 	themeConfig: {
 		logo: {
 			src: '/logo-Wikimedia.svg', alt: 'Wikimedia'
