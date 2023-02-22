@@ -980,6 +980,7 @@ return [
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'Thanks' ) ) {
 			$thanksQueryHelper = ThanksServices::wrap( $services )->getQueryHelper();
 		}
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 
 		return new ComputedUserImpactLookup(
 			new ServiceOptions( ComputedUserImpactLookup::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
@@ -991,6 +992,8 @@ return [
 			$services->getTitleFormatter(),
 			$services->getTitleFactory(),
 			$services->getStatsdDataFactory(),
+			$growthServices->getTaskTypeHandlerRegistry(),
+			$growthServices->getNewcomerTasksConfigurationLoader(),
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			$pageViewInfoLoaded ? $services->get( 'PageViewService' ) : null,
 			$thanksQueryHelper
