@@ -1,7 +1,7 @@
 export default {
 	lang: 'en-US',
-	title: 'GrowthExperiments',
-	description: 'GrowthExperiments docs and prototypes',
+	title: 'GrowthExperiments Frontend Documentation',
+	description: 'Documentation and prototypes for GrowthExperiments',
 	// Use the same base URL as it will be used in "doc.wikimedia.org" for simplicity. The site
 	// will be served in the following URLs on each environment
 	// - development (npm run docs:dev) http://localhost:4173/GrowthExperiments/master/js/frontend/
