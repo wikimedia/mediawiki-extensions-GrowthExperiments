@@ -52,7 +52,7 @@
 	"echo-category-title-ge-mentorship": "Mentorstvo",
 	"growthexperiments-notification-body-mentee-claimed": "Razlog: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Dodeljivanje novajlija",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Dodeljuj polovinu prosečnog broja",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Dodeljuj prosečan broj (podrazumevano)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Dodeljuj dva puta više od prosečnog broja"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Polovina proseka",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Prosečno (podrazumevano)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Duplo više od proseka"
 }
