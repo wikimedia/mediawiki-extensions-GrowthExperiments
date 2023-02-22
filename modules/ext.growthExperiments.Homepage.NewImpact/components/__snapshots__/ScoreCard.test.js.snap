@@ -8,10 +8,9 @@ exports[`ScoreCard renders correctly 1`] = `
     class="ext-growthExperiments-ScoreCard__data-display"
   >
     <span
-      class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
     >
       <svg
-        aria-hidden="false"
         height="20"
         viewBox="0 0 20 20"
         width="20"
@@ -20,9 +19,7 @@ exports[`ScoreCard renders correctly 1`] = `
         <title>
           some icon label
         </title>
-        <g
-          fill="currentColor"
-        >
+        <g>
           some icon
         </g>
       </svg>
@@ -54,10 +51,9 @@ exports[`ScoreCard renders correctly info slot 1`] = `
     class="ext-growthExperiments-ScoreCard__data-display"
   >
     <span
-      class="cdx-icon ext-growthExperiments-ScoreCard__data-display__icon"
+      class="cdx-icon cdx-icon--medium ext-growthExperiments-ScoreCard__data-display__icon"
     >
       <svg
-        aria-hidden="false"
         height="20"
         viewBox="0 0 20 20"
         width="20"
@@ -66,9 +62,7 @@ exports[`ScoreCard renders correctly info slot 1`] = `
         <title>
           some icon label
         </title>
-        <g
-          fill="currentColor"
-        >
+        <g>
           some icon
         </g>
       </svg>
@@ -100,7 +94,7 @@ exports[`ScoreCard renders correctly info slot 1`] = `
             >
               
               <span
-                class="cdx-icon"
+                class="cdx-icon cdx-icon--medium"
               >
                 <svg
                   aria-hidden="true"
@@ -112,7 +106,6 @@ exports[`ScoreCard renders correctly info slot 1`] = `
                   <!---->
                   <path
                     d=""
-                    fill="currentColor"
                   />
                 </svg>
               </span>

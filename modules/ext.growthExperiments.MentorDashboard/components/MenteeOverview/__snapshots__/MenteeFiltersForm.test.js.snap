@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = `
 <form
@@ -138,24 +138,22 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
     <span
       class="cdx-checkbox"
     >
+      <input
+        class="cdx-checkbox__input"
+        id="cdx-checkbox-0"
+        type="checkbox"
+        value="false"
+      />
+      <span
+        class="cdx-checkbox__icon"
+      />
       <label
         class="cdx-checkbox__label"
+        for="cdx-checkbox-0"
       >
-        <input
-          class="cdx-checkbox__input"
-          type="checkbox"
-          value="false"
-        />
-        <span
-          class="cdx-checkbox__icon"
-        />
-        <span
-          class="cdx-checkbox__label-content"
-        >
-          
-          growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred
-          
-        </span>
+        
+        growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred
+        
       </label>
     </span>
   </section>
