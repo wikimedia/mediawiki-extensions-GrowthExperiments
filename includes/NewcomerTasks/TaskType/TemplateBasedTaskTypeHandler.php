@@ -137,4 +137,22 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 		return array_merge( parent::getChangeTags(), [ $taskTypeSpecificTag ] );
 	}
 
+	/** @inheritDoc */
+	public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string {
+		switch ( $changeTagName ) {
+			case self::NEWCOMER_TASK_COPYEDIT_TAG:
+				return 'copyedit';
+			case self::NEWCOMER_TASK_REFERENCES_TAG:
+				return 'references';
+			case self::NEWCOMER_TASK_UPDATE_TAG:
+				return 'update';
+			case self::NEWCOMER_TASK_EXPAND_TAG:
+				return 'expand';
+			case self::NEWCOMER_TASK_LINKS_TAG:
+				return 'links';
+			default:
+				throw new InvalidArgumentException( "$changeTagName is not valid" );
+		}
+	}
+
 }

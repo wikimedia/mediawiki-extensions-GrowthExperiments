@@ -93,6 +93,30 @@ class TaskTypeHandlerRegistry {
 	}
 
 	/**
+	 * Return the task type handler ID associated with a change tag.
+	 *
+	 * @param string $changeTagName The change tag name, e.g. "newcomer task copyedit"
+	 * @return string|null
+	 *  - The handler ID, e.g. "template-based" for unstructured tasks, or "link-recommendation" or
+	 *    "image-recommendation" for structured tasks.
+	 *  - null if the change tag could apply to multiple task types (e.g. "newcomer task") or if the change tag
+	 *    name is unknown.
+	 */
+	public function getTaskTypeHandlerIdByChangeTagName( string $changeTagName ): ?string {
+		if ( $changeTagName === TaskTypeHandler::NEWCOMER_TASK_TAG ) {
+			// Special-case the generic "newcomer task" tag because it applies to all task type handlers.
+			return null;
+		}
+		foreach ( $this->getKnownIds() as $handlerId ) {
+			$handler = $this->get( $handlerId );
+			if ( in_array( $changeTagName, $handler->getChangeTags() ) ) {
+				return $handler->getId();
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * @param string $handlerId
 	 * @return TaskTypeHandler
 	 * @throws OutOfBoundsException When there is no handler registered for the given ID.
