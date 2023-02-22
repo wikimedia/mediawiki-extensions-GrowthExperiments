@@ -199,9 +199,15 @@ class ChangeMentor {
 	 *
 	 * @param UserIdentity $newMentor New mentor to assign
 	 * @param string $reason Reason for the change
+	 * @param bool $bulkChange Is this a part of a bulk mentor reassignment (used by
+	 * ReassignMentees class)
 	 * @return Status
 	 */
-	public function execute( UserIdentity $newMentor, string $reason ): Status {
+	public function execute(
+		UserIdentity $newMentor,
+		string $reason,
+		bool $bulkChange = false
+	): Status {
 		$this->newMentor = $newMentor;
 		$status = $this->validate();
 		if ( !$status->isOK() ) {
@@ -219,6 +225,12 @@ class ChangeMentor {
 			$this->mentorManager->getMentorshipStateForUser( $this->mentee ) ===
 			MentorManager::MENTORSHIP_DISABLED
 		) {
+			if ( $bulkChange ) {
+				// mentor is changed for many mentee; do not enable mentorship for this user or
+				// notify them about the change, as that might confuse them (see T301981).
+				return $status;
+			}
+
 			$this->mentorManager->setMentorshipStateForUser(
 				$this->mentee,
 				MentorManager::MENTORSHIP_ENABLED

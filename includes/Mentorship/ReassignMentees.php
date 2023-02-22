@@ -178,7 +178,8 @@ class ReassignMentees {
 					$reassignMessageKey,
 					$this->mentor->getName(),
 					...$reassignMessageAdditionalParams
-				)->text()
+				)->text(),
+				true
 			);
 		}
 
