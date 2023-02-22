@@ -6,6 +6,7 @@
 		<exclude name="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName" />
 		<exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationPrivate" />
 	</rule>
+	<exclude-pattern type="relative-root">./documentation/frontend/node_modules/*</exclude-pattern>
 	<file>.</file>
 	<exclude-pattern>.phan/*</exclude-pattern>
 	<arg name="bootstrap" value="./vendor/mediawiki/mediawiki-codesniffer/utils/bootstrap-ci.php"/>
