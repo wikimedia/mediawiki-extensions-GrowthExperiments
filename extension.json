@@ -171,7 +171,8 @@
 			"class": "GrowthExperiments\\Api\\ApiQueryNextSuggestedTaskType",
 			"services": [
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
-				"GrowthExperimentsLevelingUpManager"
+				"GrowthExperimentsLevelingUpManager",
+				"GrowthExperimentsUserImpactLookup"
 			]
 		}
 	},

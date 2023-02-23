@@ -56,14 +56,14 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 
 	public function testGetNextSuggestedTaskType() {
 		$userImpact = $this->createMock( UserImpact::class );
-		$userImpact->expects( $this->once() )
+		$userImpact->expects( $this->exactly( 2 ) )
 			->method( 'getEditCountByTaskType' )
 			->willReturn( [
 				'copyedit' => 4,
 				'link-recommendation' => 0,
 			] );
 		$userImpactLookup = $this->createMock( UserImpactLookup::class );
-		$userImpactLookup->expects( $this->once() )
+		$userImpactLookup->expects( $this->exactly( 2 ) )
 			->method( 'getUserImpact' )
 			->willReturn( $userImpact );
 		$taskSuggester = $this->createMock( TaskSuggester::class );
