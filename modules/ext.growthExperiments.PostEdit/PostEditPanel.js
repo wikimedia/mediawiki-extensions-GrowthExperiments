@@ -192,10 +192,10 @@ PostEditPanel.prototype.getCard = function ( task ) {
 	} else {
 		url = new mw.Title( task.title ).getUrl( params );
 	}
-	// Pageviews should never been shown in the post edit dialog.
-	if ( task.pageviews ) {
-		task.pageviews = null;
-	}
+	// Prevents SmallTaskCard component to render the pageviews section or the loading skeleton
+	// when no pageviews are present
+	task.pageviews = null;
+
 	taskCard = new SmallTaskCard( {
 		task: task,
 		taskTypes: this.taskTypes,
