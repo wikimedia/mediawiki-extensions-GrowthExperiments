@@ -13,6 +13,8 @@
 	"apihelp-query+growthtasks-param-debug": "{{doc-apihelp-param|query+growthtasks|debug}}",
 	"apihelp-query+growthtasks-example-1": "{{doc-apihelp-example|query+growthtasks}}",
 	"apihelp-query+growthtasks-example-2": "{{doc-apihelp-example|query+growthtasks}}",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "{{doc-api-help-summary|query+growthnextsuggestedtasktype}}",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "{{doc-apihelp-param|query+growthnextsuggestedtasktype|activetasktype}}",
 	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "Documentation for the allowed format of certain API parameters.",
 	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "Documentation for the allowed format of certain API parameters. Parameters:\n* $1: A comma-separated list of keywords.\n* $2: A number.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "{{doc-apihelp-paramvalue|visualeditoredit|plugins|ge-task-link-recommendation}}",

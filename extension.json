@@ -166,6 +166,13 @@
 			"services": [
 				"GrowthExperimentsMentorManager"
 			]
+		},
+		"growthnextsuggestedtasktype": {
+			"class": "GrowthExperiments\\Api\\ApiQueryNextSuggestedTaskType",
+			"services": [
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
+				"GrowthExperimentsLevelingUpManager"
+			]
 		}
 	},
 	"RestRoutes": [
