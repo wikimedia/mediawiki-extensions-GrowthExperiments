@@ -23,7 +23,7 @@
 
 <script>
 const { CdxButton, CdxIcon } = require( '@wikimedia/codex' );
-const { cdxIconExpand, cdxIconCollapse } = require( '../icons.json' );
+const { cdxIconExpand, cdxIconCollapse } = require( '../../../vue-components/icons.json' );
 const MenteeFiltersForm = require( './MenteeFiltersForm.vue' );
 // @vue/component
 module.exports = exports = {

@@ -61,7 +61,7 @@
 
 <script>
 const { CdxIcon } = require( '@wikimedia/codex' );
-const icons = require( '../icons.json' );
+const icons = require( '../../../vue-components/icons.json' );
 const DataTableCellValue = require( './DataTableCellValue.vue' );
 const DataTableCellLink = require( './DataTableCellLink.vue' );
 const DataTableCellMentee = require( '../MenteeOverview/DataTableCellMentee.vue' );

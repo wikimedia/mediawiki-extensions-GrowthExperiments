@@ -22,7 +22,7 @@
 
 <script>
 const { CdxIcon } = require( '@wikimedia/codex' );
-const icons = require( '../icons.json' );
+const icons = require( '../../../vue-components/icons.json' );
 
 // @vue/component
 module.exports = exports = {

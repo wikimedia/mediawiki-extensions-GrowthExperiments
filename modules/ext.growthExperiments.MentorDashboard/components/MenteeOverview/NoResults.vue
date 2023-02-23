@@ -16,7 +16,7 @@
 
 <script>
 const { CdxIcon } = require( '@wikimedia/codex' );
-const { cdxIconError } = require( '../icons.json' );
+const { cdxIconError } = require( '../../../vue-components/icons.json' );
 
 // @vue/component
 module.exports = exports = {

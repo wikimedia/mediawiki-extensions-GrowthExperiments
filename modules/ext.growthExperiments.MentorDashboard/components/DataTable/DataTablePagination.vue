@@ -30,7 +30,7 @@
 
 <script>
 const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
-const { cdxIconNext, cdxIconPrevious } = require( '../icons.json' );
+const { cdxIconNext, cdxIconPrevious } = require( '../../../vue-components/icons.json' );
 
 // @vue/component
 module.exports = exports = {

@@ -79,7 +79,7 @@ const MenteeFilters = require( './MenteeFilters.vue' );
 const NoResults = require( './NoResults.vue' );
 const CPopover = require( '../../../vue-components/CPopover.vue' );
 const LegendBox = require( './LegendBox.vue' );
-const { cdxIconError, cdxIconClock, cdxIconInfo, cdxIconClose } = require( '../icons.json' );
+const { cdxIconError, cdxIconClock, cdxIconInfo, cdxIconClose } = require( '../../../vue-components/icons.json' );
 const apiClient = require( '../../store/MenteeOverviewApi.js' );
 
 const MENTEES_TABLE_COLUMNS = [
