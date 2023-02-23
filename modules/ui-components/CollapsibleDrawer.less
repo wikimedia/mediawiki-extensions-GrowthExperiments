@@ -27,7 +27,16 @@
 	&--collapsed {
 		transform: translateY( ~'calc(100% - @{headerHeight})' );
 
+		.mw-ge-collapsibleDrawer-headerText {
+			// Avoid hiding the chevron when collapsed with 2 lines of text.
+			max-width: 85%;
+		}
+
 		.mw-ge-collapsibleDrawer-headerText-text {
+			// Ensure we don't exceed one line.
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 			transition-timing-function: ease-in;
 			// 22px icon width + 8px right margin from close-icon ButtonWidget
 			transform: translateX( 30px );
@@ -48,11 +57,11 @@
 
 	&-header {
 		color: @wmui-color-base10;
-		height: @headerHeight;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 16px;
+		column-gap: 8px;
+		padding: 16px 16px 0 16px;
 		cursor: pointer;
 	}
 

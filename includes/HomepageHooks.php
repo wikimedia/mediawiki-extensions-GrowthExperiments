@@ -422,8 +422,16 @@ class HomepageHooks implements
 			}
 
 			if ( $taskType ) {
+				$levelingUpTryNewTaskOptOuts = $this->userOptionsLookup->getOption(
+					$context->getUser(),
+					LevelingUpManager::TASK_TYPE_PROMPT_OPT_OUTS_PREF,
+					json_encode( [] )
+				);
+				$levelingUpTryNewTaskOptOuts = json_decode( $levelingUpTryNewTaskOptOuts ) ?? [];
 				$out->addJsConfigVars( [
 					'wgGESuggestedEditTaskType' => $taskType->getId(),
+					'wgGELevelingUpFeaturesEnabled' => $this->config->get( 'GELevelingUpFeaturesEnabled' ),
+					'wgGELevelingUpTryNewTaskOptOuts' => $levelingUpTryNewTaskOptOuts,
 				] );
 
 				if ( $recommendationProvider ) {

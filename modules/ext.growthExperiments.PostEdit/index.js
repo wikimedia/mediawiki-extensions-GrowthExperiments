@@ -3,13 +3,21 @@
 ( function () {
 	var PostEditDrawer = require( './PostEditDrawer.js' ),
 		PostEditPanel = require( './PostEditPanel.js' ),
+		TryNewTaskPanel = require( './TryNewTaskPanel.js' ),
 		HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
+		Utils = require( '../utils/Utils.js' ),
 		helpConfig = require( '../ext.growthExperiments.Help/data.json' ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		newcomerTaskLogger = new NewcomerTaskLogger(),
-		helpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
+		postEditPanelHelpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
 			context: 'postedit',
+			previousEditorInterface: suggestedEditSession.editorInterface,
+			sessionId: suggestedEditSession.clickId,
+			isSuggestedTask: suggestedEditSession.active
+		} ),
+		tryNewTaskHelpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
+			context: 'trynewtask',
 			previousEditorInterface: suggestedEditSession.editorInterface,
 			sessionId: suggestedEditSession.clickId,
 			isSuggestedTask: suggestedEditSession.active
@@ -52,18 +60,20 @@
 	 * Also handles some of the logging.
 	 *
 	 * @param {PostEditPanel} postEditPanel
+	 * @param {mw.libs.ge.HelpPanelLogger} logger
 	 * @return {Object} An object with:
 	 *   - openPromise {jQuery.Promise} A promise that resolves when the dialog has been displayed.
 	 *   - closePromise {jQuery.Promise} A promise that resolves when the dialog has been closed.
 	 */
-	function displayPanel( postEditPanel ) {
-		var drawer = new PostEditDrawer( postEditPanel, helpPanelLogger ),
+	function displayPanel( postEditPanel, logger ) {
+		var drawer = new PostEditDrawer( postEditPanel, logger ),
 			lifecycle,
 			closePromise;
 		$( document.body ).append( drawer.$element );
 		lifecycle = drawer.showWithToastMessage();
-		closePromise = lifecycle.closed.done( function () {
+		closePromise = lifecycle.closed.done( function ( nextSuggestedTaskType ) {
 			postEditPanel.logClose();
+			return nextSuggestedTaskType;
 		} );
 		addEditorReopenedHandler( function () {
 			drawer.close();
@@ -124,7 +134,7 @@
 			nextTask: task,
 			taskTypes: task ? ALL_TASK_TYPES : {},
 			newcomerTaskLogger: newcomerTaskLogger,
-			helpPanelLogger: helpPanelLogger,
+			helpPanelLogger: postEditPanelHelpPanelLogger,
 			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded,
 			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded
 		} );
@@ -136,7 +146,7 @@
 		} );
 		updateUiBasedOnCurrentStates( postEditPanel );
 
-		displayPanelPromises = displayPanel( postEditPanel );
+		displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger );
 		openPromise = displayPanelPromises.openPromise;
 		openPromise.done( postEditPanel.logImpression.bind( postEditPanel, {
 			savedTaskType: suggestedEditSession.taskType,
@@ -181,13 +191,17 @@
 	}
 
 	module.exports = {
+
 		/**
-		 * Create and show the panel
+		 * Create and show the post-edit dialog panel.
 		 *
 		 * @param {boolean} [isDialogShownUponReload] Whether the post-edit panel is being shown
 		 *  after a page reload. This is used to determine whether the editor has been opened
 		 *  since the page loads.
 		 *
+		 * @param {string} nextSuggestedTaskType If provided, use only this task type for fetching
+		 *   tasks. Used when we are prompting the user to try a new task type after completing
+		 *   a certain number of tasks of the current task type. See the LevelingUpManager service.
 		 * @return {jQuery.Promise<Object>} A promise resolving to an object with:
 		 *   - task: task data as a plain Object (as returned by GrowthTasksApi), might be omitted
 		 *     when loading the task failed;
@@ -196,15 +210,50 @@
 		 *   - openPromise: a promise that resolves when the panel has been displayed.
 		 *   - closePromise: A promise that resolves when the dialog has been closed.
 		 */
-		setupPanel: function ( isDialogShownUponReload ) {
-			return tasksStore.fetchTasks( 'postEditDialog', {
+		setupPanel: function ( isDialogShownUponReload, nextSuggestedTaskType ) {
+			var fetchTasksConfig = {
 				excludePageId: mw.config.get( 'wgArticleId' ),
 				excludeExceededQuotaTaskTypes: true
-			} ).then( function () {
+			};
+			if ( nextSuggestedTaskType ) {
+				fetchTasksConfig.newTaskTypes = [ nextSuggestedTaskType ];
+			}
+			return tasksStore.fetchTasks( 'postEditDialog', fetchTasksConfig ).then( function () {
 				return setup( tasksStore.getCurrentTask(), null, isDialogShownUponReload );
 			}, function ( errorMessage ) {
 				return setup( null, errorMessage, isDialogShownUponReload );
 			} );
+		},
+		/**
+		 * Create and show the try-new-task dialog panel.
+		 *
+		 * @return {jQuery.Promise} If "nextSuggestedTasKType" is set in the suggested edit session,
+		 *   return a promise that resolves when the try new task panel is closed; otherwise return
+		 *   an immediately-resolved promise.
+		 */
+		setupTryNewTaskPanel: function () {
+			var tryNewTaskOptOuts = mw.config.get( 'wgGELevelingUpTryNewTaskOptOuts' );
+			if ( mw.config.get( 'wgGELevelingUpFeaturesEnabled' ) &&
+				// "control" is the group which has the new impact module, and the group that
+				// should see the leveling up features. ("oldimpact" is the experiment group
+				// that is not receiving the new features.)
+				Utils.getUserVariant() === 'control' &&
+				// A next suggested task type is available for the user
+				suggestedEditSession.nextSuggestedTaskType &&
+				// THe user hasn't opted out of seeing the prompt for this task type
+				tryNewTaskOptOuts.indexOf( suggestedEditSession.taskType ) === -1
+			) {
+				var tryNewTaskPanel = new TryNewTaskPanel( {
+					nextSuggestedTaskType: suggestedEditSession.nextSuggestedTaskType,
+					activeTaskType: suggestedEditSession.taskType,
+					helpPanelLogger: tryNewTaskHelpPanelLogger,
+					tryNewTaskOptOuts: tryNewTaskOptOuts
+				} );
+				var displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger );
+				displayPanelPromises.openPromise.done( tryNewTaskPanel.logImpression.bind( tryNewTaskPanel ) );
+				return displayPanelPromises.closePromise;
+			}
+			return $.Deferred().resolve();
 		}
 	};
 }() );
