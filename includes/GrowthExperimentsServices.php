@@ -11,6 +11,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
+use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
@@ -353,6 +354,10 @@ class GrowthExperimentsServices {
 
 	public function getAddLinkSubmissionHandler(): AddLinkSubmissionHandler {
 		return $this->coreServices->get( 'GrowthExperimentsAddLinkSubmissionHandler' );
+	}
+
+	public function getLevelingUpManager(): LevelingUpManager {
+		return $this->coreServices->get( 'GrowthExperimentsLevelingUpManager' );
 	}
 
 }

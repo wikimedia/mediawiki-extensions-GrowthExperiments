@@ -19,6 +19,7 @@ use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -681,6 +682,12 @@ class HomepageHooks implements
 		$preferences[ SuggestedEdits::ADD_IMAGE_CAPTION_ONBOARDING_PREF ] = [
 			'type' => 'api'
 		];
+
+		if ( $this->config->get( 'GELevelingUpFeaturesEnabled' ) ) {
+			$preferences[LevelingUpManager::TASK_TYPE_PROMPT_OPT_OUTS_PREF] = [
+				'type' => 'api'
+			];
+		}
 	}
 
 	/**
