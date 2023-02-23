@@ -327,7 +327,6 @@ class NewImpact extends BaseModule {
 	 */
 	public function getState() {
 		if ( $this->canRender()
-			&& $this->isSuggestedEditsEnabledForUser
 			&& $this->getContext()->getUser()->getEditCount()
 			// Always show the module activated when a user is looking to another user data
 			|| $this->shouldShowForOtherUser()
