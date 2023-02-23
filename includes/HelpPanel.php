@@ -63,7 +63,7 @@ class HelpPanel {
 				$helpPanelLinks .= Html::rawElement(
 					'li',
 					[],
-					$linkRenderer->makeLink( $title, $link['text'],
+					$linkRenderer->makePreloadedLink( $title, $link['text'], '',
 						[ 'target' => '_blank', 'data-link-id' => $link['id'] ?? '' ] )
 				);
 			}
@@ -71,17 +71,19 @@ class HelpPanel {
 		$helpPanelLinks .= Html::closeElement( 'ul' );
 
 		$helpDeskTitle = self::getHelpDeskTitle( $wikiConfig );
-		$helpDeskLink = $helpDeskTitle ? $linkRenderer->makeLink(
+		$helpDeskLink = $helpDeskTitle ? $linkRenderer->makePreloadedLink(
 			$helpDeskTitle,
 			$ml->msg( 'growthexperiments-help-panel-community-help-desk-text' )->text(),
+			'',
 			[ 'target' => '_blank', 'data-link-id' => 'help-desk' ]
 		) : null;
 
 		$viewMoreTitle = Title::newFromText( $wikiConfig->get( 'GEHelpPanelViewMoreTitle' ) );
-		$viewMoreLink = $viewMoreTitle ? $linkRenderer->makeLink(
+		$viewMoreLink = $viewMoreTitle ? $linkRenderer->makePreloadedLink(
 			$viewMoreTitle,
 			$ml->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )
 				->text(),
+			'',
 			[ 'target' => '_blank', 'data-link-id' => 'view-more' ]
 		) : null;
 
