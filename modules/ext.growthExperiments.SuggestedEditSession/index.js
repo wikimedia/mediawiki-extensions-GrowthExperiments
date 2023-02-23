@@ -48,6 +48,11 @@
 		/** @member {string|null} Task type ID of the suggested editing task. */
 		this.taskType = null;
 		/**
+		 * @member {string|null|undefined} Task type ID of the next suggested task type, if any.
+		 *  It is undefined if we have not yet attempted to fetch the data from the API.
+		 */
+		this.nextSuggestedTaskType = undefined;
+		/**
 		 * @member {Object|null} Tasktype-specific task data. Not all task types have this.
 		 *   An 'error' field being present means that loading the task data failed (the
 		 *   field will contain an error message); callers are expected to handle this gracefully.
@@ -137,6 +142,17 @@
 			this.updateEditorInterface();
 			this.updateEditLinkUrls();
 			this.maybeShowPostEditDialog();
+			// Only attempt to fetch next suggested task type a single time.
+			if ( this.nextSuggestedTaskType === undefined &&
+				mw.config.get( 'wgGELevelingUpFeaturesEnabled' ) &&
+				// "control" is the variant group that should be able to see the "try new task"
+				// workflow.
+				Utils.isUserInVariant( 'control' ) ) {
+				// We don't need to wait for the promise to resolve here. Presumably, we have enough
+				// time before the user gets to the point of making an edit for the API request
+				// to complete.
+				this.getNextSuggestedTaskType();
+			}
 		}
 	};
 
@@ -157,6 +173,7 @@
 			clickId: this.clickId,
 			title: this.title.getPrefixedText(),
 			taskType: this.taskType,
+			nextSuggestedTaskType: this.nextSuggestedTaskType,
 			taskData: this.taskData,
 			taskState: this.taskState,
 			editorInterface: this.editorInterface,
@@ -210,6 +227,7 @@
 				this.clickId = data.clickId;
 				this.title = savedTitle;
 				this.taskType = data.taskType;
+				this.nextSuggestedTaskType = data.nextSuggestedTaskType;
 				this.taskData = data.taskData;
 				this.taskState = data.taskState;
 				this.editorInterface = data.editorInterface;
@@ -357,6 +375,24 @@
 				$( this ).attr( 'href', linkUrl.toString() );
 			} );
 		} );
+	};
+
+	/**
+	 * Get the next suggested task type for the user, given the active task type in
+	 * this.taskType, and update the SuggestedEditSession state with the suggestion.
+	 *
+	 * @return {jQuery.Promise} A promise that resolves when the API request to the
+	 * growthnextsuggestedtasktype query module completes.
+	 */
+	SuggestedEditSession.prototype.getNextSuggestedTaskType = function () {
+		var apiParams = {
+			action: 'query',
+			meta: 'growthnextsuggestedtasktype',
+			gnsttactivetasktype: this.taskType
+		};
+		return new mw.Api().get( apiParams ).then( function ( result ) {
+			this.nextSuggestedTaskType = result.query.growthnextsuggestedtasktype;
+		}.bind( this ) );
 	};
 
 	/**
