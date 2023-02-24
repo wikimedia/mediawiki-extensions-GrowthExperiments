@@ -69,6 +69,10 @@
 			lifecycle,
 			onContextResizeDebounced;
 
+		// Export the help panel to mw.libs.ge, so that other components can close it if needed.
+		window.mw.libs.ge = window.mw.libs.ge || {};
+		window.mw.libs.ge.HelpPanel = helpPanelProcessDialog;
+
 		/**
 		 * Show or hide the help button after it's been attached
 		 *
