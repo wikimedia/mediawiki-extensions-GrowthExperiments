@@ -16,7 +16,7 @@
 <script>
 const { ref } = require( 'vue' );
 const { CdxLookup } = require( '@wikimedia/codex' );
-const { cdxIconSearch } = require( '../icons.json' );
+const { cdxIconSearch } = require( '../../../vue-components/icons.json' );
 
 // @vue/component
 module.exports = exports = {

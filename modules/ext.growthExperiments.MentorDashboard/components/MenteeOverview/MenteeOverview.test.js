@@ -1,4 +1,4 @@
-jest.mock( '../icons.json', () => ( {
+jest.mock( '../../../vue-components/icons.json', () => ( {
 	cdxIconError: ''
 } ), { virtual: true } );
 const { shallowMount } = require( '@vue/test-utils' );

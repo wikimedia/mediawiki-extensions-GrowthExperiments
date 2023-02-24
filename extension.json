@@ -1783,7 +1783,7 @@
 				"vue-components/directives/click-outside.directive.js",
 				"utils/filters.js",
 				{
-					"name": "ext.growthExperiments.MentorDashboard/components/icons.json",
+					"name": "vue-components/icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
 					"callbackParam": [
 						"cdxIconUserActive",
