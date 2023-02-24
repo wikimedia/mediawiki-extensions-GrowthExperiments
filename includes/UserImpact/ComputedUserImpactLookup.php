@@ -413,8 +413,10 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 	private function getPageViewDataInJobContext( array $allTitleObjects, UserIdentity $user, int $days ): ?array {
 		$pageViewData = [];
+		$titleObjects = $allTitleObjects;
 		$loopStartTime = microtime( true );
-		while ( count( $pageViewData ) < count( $allTitleObjects ) ) {
+		while ( count( $titleObjects ) ) {
+			$titleObjectsCount = count( $titleObjects );
 			if ( count( $pageViewData ) > $this->config->get( 'GEUserImpactMaxArticlesToProcessForPageviews' ) ) {
 				$this->logger->info(
 					'Reached article count limit while fetching page view data for {count} titles for user {user}.',
@@ -430,7 +432,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				break;
 			}
 			$pageDataStatus = $this->pageViewService->getPageData(
-				array_column( $allTitleObjects, 'title' ), $days
+				array_column( $titleObjects, 'title' ), $days
 			);
 			if ( !$pageDataStatus->isGood() ) {
 				// Don't log pvi-cached-error-title messages (T328945) but track it in statsd,
@@ -444,16 +446,16 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 						'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle'
 					);
 				}
-				if ( !$pageDataStatus->isOK() ) {
-					if ( !count( $pageViewData ) ) {
-						// If nothing has accumulated in the page view data, set null so the caller
-						// to this method can proceed accordingly.
-						$pageViewData = null;
-					}
-					return $pageViewData;
-				}
-			} else {
-				$pageViewData = $pageViewData + $pageDataStatus->getValue();
+			}
+			if ( $pageDataStatus->isOK() ) {
+				$successful = array_filter( $pageDataStatus->success );
+				$pageViewData = $pageViewData + array_intersect_key( $pageDataStatus->getValue(), $successful );
+			}
+			$titleObjects = array_diff_key( $titleObjects, $pageViewData );
+			if ( count( $titleObjects ) === $titleObjectsCount ) {
+				// Received no new data. Abort to avoid a loop - errors are cached for a short time
+				// so re-requesting them wouldn't help.
+				return $pageViewData;
 			}
 		}
 		return $pageViewData;

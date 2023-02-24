@@ -160,7 +160,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 
 		$pageViewService = $this->createNoOpMock( PageViewService::class, [ 'getPageData' ] );
 		$pageViewService->method( 'getPageData' )->willReturnCallback( function ( array $titles, int $days ) {
-			// last 5 edits in chronological order
+			// last 6 edits in chronological order
 			$expectedTitles = [ 'Test 1', 'Test 2', 'Test 3', 'Test 4', 'Test 5', 'Test 6' ];
 			$this->assertArrayEquals( $expectedTitles, array_map( static function ( Title $title ) {
 				return $title->getPrefixedText();
@@ -173,7 +173,10 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 					$data["Test $page"]["2022-10-$paddedDay"] = $page * 100 + $day;
 				}
 			}
-			return StatusValue::newGood( $data );
+			$status = StatusValue::newGood( $data );
+			$status->successCount = count( $data );
+			$status->success = array_fill_keys( array_keys( $data ), true );
+			return $status;
 		} );
 		$this->setService( 'PageViewService', $pageViewService );
 
