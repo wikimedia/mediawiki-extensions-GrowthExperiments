@@ -15,6 +15,6 @@
 	"apihelp-growthsetmentor-param-mentee": "Ім'я користувача підопічного",
 	"apihelp-growthsetmentor-param-mentor": "Ім'я користувача наставника",
 	"apihelp-growthsetmentor-param-reason": "Причина зміни",
-	"apihelp-growthinvalidateimagerecommendation-summary": "Позначити завдання з рекомендації зображення як недійсне",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Позначити рекомендацію зображення як недійсну.",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Назва статті, до якої це завдання з рекомендації зображення"
 }

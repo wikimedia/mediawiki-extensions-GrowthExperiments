@@ -15,6 +15,8 @@
 	"apihelp-query+growthtasks-param-debug": "הוספת נתוני ניפוי שגיאות לפלט.",
 	"apihelp-query+growthtasks-example-1": "קבלת המלצות משימות למשימות מסוג הגהה עבור המשתמש הנוכחי.",
 	"apihelp-query+growthtasks-example-2": "קבלת המלצות משימות עבור המשתמש הנוכחי, עם מידע מורחב על הדפים.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "קבלת סוג המשימה המוצעת שמשתמש אמור לנסות בשלב הבא.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "סוג המשימה שהמשתמש עובד עליה כעת.",
 	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "מחרוזת JSON של עצם עם המפתחות האלה:\n* <var>acceptedTargets</var>: (רשות) מערך עם כותרות הדפים שהמשתמש קיבל את הקישור המומלץ אליהם.\n* <var>rejectedTargets</var>: (רשות) מערך עם כותרות הדפים שהמשתמש דחה את הקישור המומלץ אליהם.\n* <var>skippedTargets</var>: (רשות) מערך עם כותרות הדפים שהמשתמש פסח על הקישור המומלץ אליהם.-",
 	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "מחרוזת JSON של עצם עם המפתחות האלה:\n* <var>accepted\n</var>: ערך בוליאני המציין אם המשתמש קיבל את התמונה המומלצת.\n* <var>reasons\n</var>: מערך של מחרוזות המזהות בוליאני המציין מדוע המשתמש דחה את התמונה המומלצת. ערכים תקינים: $1 \n* <var>caption\n</var>: כיתוב תמונה מסופק על־ידי המשתמש. (חייב להכיל לפחות $2 תווים.)",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "לשימוש בעת שמירת העריכה המבנית \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|הוספת קישור]]\" של GrowthExperiments.",

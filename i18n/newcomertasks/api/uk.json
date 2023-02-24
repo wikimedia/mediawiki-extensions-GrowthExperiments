@@ -17,9 +17,9 @@
 	"apihelp-query+growthtasks-example-2": "Отримати рекомендації для поточного користувача з розширеною інформацією про сторінки.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Параметр «прийнято» відсутній у даних плагіна «Додати зображення»",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Параметр «прийнято» має бути логічним у даних плагіна «Додати зображення», це $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "Параметр «reason» відсутній у даних плагіна «Додати зображення»",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Параметр «reason» має бути масивом у даних плагіна «Додати зображення», а є $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Недійсний елемент «$1» для параметра «reason», мусить бути один із: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "Параметр «reasons» відсутній у даних плагіна «Додати зображення»",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Параметр «reasons» має бути масивом у даних плагіна «Додати зображення», а є $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Недійсний елемент «$1» для параметра «reasons», мусить бути один із: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Історію рекомендацій посилань не знайдено",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Неочікувані цілі рекомендацій посилань: $1",
 	"growthexperiments-underlinked-rescore-profile": "Профіль внутрішньої оцінки, який використовується в рекомендаціях посилань експериментів Зростання для пріоритизування статей, які ще не мають достатньо посилань."
