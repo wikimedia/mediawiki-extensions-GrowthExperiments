@@ -470,7 +470,10 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 					.append(
 						$( '<img>' )
 							.addClass( 'mw-ge-startediting-dialog-intro-topic-image' )
-							.attr( { src: imagePath + '/' + ( imageUrl || generalImageUrl ) } ),
+							.attr( {
+								src: imagePath + '/' + ( imageUrl || generalImageUrl ),
+								role: 'presentation'
+							} ),
 						$( '<p>' )
 							.addClass( 'mw-ge-startediting-dialog-intro-topic-title' )
 							.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-title' ).text() )
