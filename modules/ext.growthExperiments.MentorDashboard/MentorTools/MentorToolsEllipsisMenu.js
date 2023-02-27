@@ -2,7 +2,7 @@
 	'use strict';
 
 	/**
-	 * @class MentorToolsEllipsisMenu
+	 * @class mw.libs.ge.MentorToolsEllipsisMenu
 	 * @extends OO.ui.Widget
 	 *
 	 * @constructor

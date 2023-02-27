@@ -7,7 +7,7 @@
 		MentorToolsEllipsisMenu = require( './MentorToolsEllipsisMenu.js' );
 
 	/**
-	 * @class
+	 * @class mw.libs.ge.MentorTools
 	 *
 	 * @constructor
 	 * @param {Object} $body

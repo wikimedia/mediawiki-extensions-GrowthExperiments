@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @class
+ * @class mw.libs.ge.MentorMessageChangeDialog
  *
  * @param {Object} config
  * @constructor

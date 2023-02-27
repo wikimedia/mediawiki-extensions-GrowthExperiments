@@ -6,7 +6,7 @@ var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/'
 	Utils = require( '../utils/Utils.js' );
 
 /**
- * @class
+ * @class mw.libs.ge.PostEditPanel
  * @mixes OO.EventEmitter
  *
  * @constructor

@@ -59,7 +59,7 @@
 	 * Display the given panel, using a mobile or desktop format as appropriate.
 	 * Also handles some of the logging.
 	 *
-	 * @param {PostEditPanel} postEditPanel
+	 * @param {mw.libs.ge.PostEditPanel} postEditPanel
 	 * @param {mw.libs.ge.HelpPanelLogger} logger
 	 * @return {Object} An object with:
 	 *   - openPromise {jQuery.Promise} A promise that resolves when the dialog has been displayed.
@@ -87,7 +87,7 @@
 	/**
 	 * Update the UI based on the current state of the task queue
 	 *
-	 * @param {PostEditPanel} postEditPanel
+	 * @param {mw.libs.ge.PostEditPanel} postEditPanel
 	 */
 	function updateUiBasedOnCurrentStates( postEditPanel ) {
 		postEditPanel.togglePrevNavigation( tasksStore.hasPreviousTask() );
@@ -106,7 +106,7 @@
 	 *   - task: task data as a plain Object (as returned by GrowthTasksApi), omitted
 	 *     when loading the task failed and when the task parameter is null;
 	 *   - errorMessage: error message (only when loading the task failed);
-	 *   - panel: the PostEditPanel object;
+	 *   - panel: the mw.libs.ge.PostEditPanel object;
 	 *   - openPromise: a promise that resolves when the panel has been displayed.
 	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
@@ -206,7 +206,7 @@
 		 *   - task: task data as a plain Object (as returned by GrowthTasksApi), might be omitted
 		 *     when loading the task failed;
 		 *   - errorMessage: error message (only when loading the task failed);
-		 *   - panel: the PostEditPanel object;
+		 *   - panel: the mw.libs.ge.PostEditPanel object;
 		 *   - openPromise: a promise that resolves when the panel has been displayed.
 		 *   - closePromise: A promise that resolves when the dialog has been closed.
 		 */

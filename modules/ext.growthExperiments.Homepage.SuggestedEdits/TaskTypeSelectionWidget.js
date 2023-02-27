@@ -1,5 +1,5 @@
 /**
- * @class
+ * @class mw.libs.ge.TaskTypeSelectionWidget
  * @extends OO.ui.Widget
  *
  * @constructor

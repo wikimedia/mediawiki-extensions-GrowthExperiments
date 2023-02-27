@@ -4,7 +4,7 @@
  * available
  *
  *
- * @class
+ * @class mw.libs.ge.LastDayEditsWidget
  * @extends OO.ui.Widget
  * @constructor
  * @param {Object} [config]

@@ -4,7 +4,7 @@ var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/S
  * Widget that displays a pagination text in the form "1 of 2 suggestions"
  * and a preview of the first suggestion (SmallTaskCard).
  *
- * @class
+ * @class mw.libs.ge.TaskPreviewWidget
  * @extends OO.ui.Widget
  * @constructor
  * @param {Object} config

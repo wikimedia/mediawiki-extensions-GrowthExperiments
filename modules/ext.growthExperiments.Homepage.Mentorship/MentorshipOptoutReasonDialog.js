@@ -9,7 +9,7 @@
 		);
 
 	/**
-	 * @class
+	 * @class mw.libs.ge.MentorshipOptoutReasonDialog
 	 *
 	 * @param {Object} config
 	 * @constructor

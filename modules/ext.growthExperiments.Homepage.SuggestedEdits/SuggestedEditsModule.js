@@ -16,7 +16,7 @@ var EditCardWidget = require( './EditCardWidget.js' ),
 	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES;
 
 /**
- * @class
+ * @class mw.libs.ge.SuggestedEditsModule
  * @extends OO.ui.Widget
  *
  * @constructor

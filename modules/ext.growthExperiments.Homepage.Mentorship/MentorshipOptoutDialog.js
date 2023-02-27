@@ -2,7 +2,7 @@
 	'use strict';
 
 	/**
-	 * @class
+	 * @class mw.libs.ge.MentorshipOptoutDialog
 	 * @extends OO.ui.MessageDialog
 	 *
 	 * @param {Object} config
