@@ -71,9 +71,8 @@
 			closePromise;
 		$( document.body ).append( drawer.$element );
 		lifecycle = drawer.showWithToastMessage();
-		closePromise = lifecycle.closed.done( function ( nextSuggestedTaskType ) {
+		closePromise = lifecycle.closed.done( function () {
 			postEditPanel.logClose();
-			return nextSuggestedTaskType;
 		} );
 		addEditorReopenedHandler( function () {
 			drawer.close();

@@ -269,7 +269,8 @@ NewcomerTasksStore.prototype.onCurrentTaskExtraDataChanged = function () {
  * @param {Object} [config]
  * @param {number} [config.excludePageId] Article ID to exclude, used when showing the task feed after completing a task
  * @param {boolean} [config.excludeExceededQuotaTaskTypes] Whether to filter out the tasks which its type has exceed the daily limit
- * @param {string[]} [config.newTaskTypes] If provided, override the users task type filters with these task type IDs.
+ * @param {string[]} [config.newTaskTypes] If provided, override the users task type filters with these task type IDs
+ *   and update the user's preferences to reflect the change.
  * @return {jQuery.Promise}
  */
 NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
