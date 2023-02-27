@@ -1,4 +1,5 @@
-var CollapsibleDrawer = require( '../ui-components/CollapsibleDrawer.js' );
+var CollapsibleDrawer = require( '../ui-components/CollapsibleDrawer.js' ),
+	TryNewTaskPanel = require( './TryNewTaskPanel.js' );
 
 /**
  * Post-edit drawer
@@ -6,14 +7,14 @@ var CollapsibleDrawer = require( '../ui-components/CollapsibleDrawer.js' );
  * @class mw.libs.ge.PostEditDrawer
  * @extends mw.libs.ge.CollapsibleDrawer
  *
- * @param {PostEditPanel} postEditPanel
+ * @param {PostEditPanel|TryNewTaskPanel} panel
  * @param {mw.libs.ge.HelpPanelLogger} helpPanelLogger
  * @constructor
  */
-function PostEditDrawer( postEditPanel, helpPanelLogger ) {
-	this.toastMessage = postEditPanel.getPostEditToastMessage();
+function PostEditDrawer( panel, helpPanelLogger ) {
+	this.toastMessage = panel.getPostEditToastMessage();
 	this.shouldShowToastMessageWithDrawer = OO.ui.isMobile();
-	this.panel = postEditPanel;
+	this.panel = panel;
 	this.logger = helpPanelLogger;
 	PostEditDrawer.super.call( this, {
 		headerText: this.panel.getHeaderText(),
@@ -23,11 +24,23 @@ function PostEditDrawer( postEditPanel, helpPanelLogger ) {
 	} );
 	this.$element.addClass( [
 		'mw-ge-postEditDrawer',
-		OO.ui.isMobile() ? 'mw-ge-postEditDrawer-mobile' : 'mw-ge-postEditDrawer-desktop'
+		OO.ui.isMobile() ? 'mw-ge-postEditDrawer-mobile' : 'mw-ge-postEditDrawer-desktop',
+		panel instanceof TryNewTaskPanel ? 'mw-ge-postEditDrawer-tryNewTask' : 'mw-ge-postEditDrawer-postEdit'
 	] );
+	// Allow close events emitted in the panel to close the drawer.
+	this.panel.connect( this, {
+		close: 'onClose'
+	} );
 }
 
 OO.inheritClass( PostEditDrawer, CollapsibleDrawer );
+
+/**
+ * @param {Mixed} [closeData] Data to pass to the close handler for CollapsibleDrawer.
+ */
+PostEditDrawer.prototype.onClose = function ( closeData ) {
+	this.close( closeData );
+};
 
 /**
  * Show the toast message at the top of the page (similar to mw.notify but the notification itself

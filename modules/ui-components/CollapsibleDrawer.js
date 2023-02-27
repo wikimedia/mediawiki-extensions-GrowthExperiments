@@ -43,6 +43,9 @@ function CollapsibleDrawer( config ) {
 	this.setupHeader( config.headerText );
 	this.$content.append( this.$head, panelLayout.$element );
 	this.$element.append( this.$introContent, this.$content );
+	if ( config.classes ) {
+		this.$element.addClasses( config.classes );
+	}
 	$( document.body ).addClass(
 		OO.ui.isMobile() ?
 			'mw-ge-body--with-collapsibleDrawer-mobile' :
@@ -152,11 +155,12 @@ CollapsibleDrawer.prototype.open = function ( delay ) {
 /**
  * Close the drawer and detach it from the document
  *
+ * @param {Mixed} [closeData] Data to return with the closed promise.
  * @return {CollapsibleDrawer}
  */
-CollapsibleDrawer.prototype.close = function () {
+CollapsibleDrawer.prototype.close = function ( closeData ) {
 	var onDialogHidden = function () {
-		this.closed.resolve();
+		this.closed.resolve( closeData );
 		this.$element.detach();
 	}.bind( this );
 	this.closing.resolve();

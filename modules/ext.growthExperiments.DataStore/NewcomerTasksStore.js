@@ -269,6 +269,7 @@ NewcomerTasksStore.prototype.onCurrentTaskExtraDataChanged = function () {
  * @param {Object} [config]
  * @param {number} [config.excludePageId] Article ID to exclude, used when showing the task feed after completing a task
  * @param {boolean} [config.excludeExceededQuotaTaskTypes] Whether to filter out the tasks which its type has exceed the daily limit
+ * @param {string[]} [config.newTaskTypes] If provided, override the users task type filters with these task type IDs.
  * @return {jQuery.Promise}
  */
 NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
@@ -285,6 +286,13 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		apiConfig.excludePageIds = [ config.excludePageId ];
 	}
 	this.setTaskQueueLoading( true );
+	if ( config && config.newTaskTypes ) {
+		this.filters.setSelectedTaskTypes( config.newTaskTypes );
+		// We don't need to wait for this promise to resolve before doing the main thing, which
+		// is fetching tasks. The mw.user.options object is modified immediately; the HTTP
+		// request to persist the updated preferences can take its time.
+		this.filters.savePreferences();
+	}
 	this.apiPromise = this.api.fetchTasks(
 		this.filters.getTaskTypesQuery(),
 		this.filters.getTopicsQuery(),

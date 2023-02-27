@@ -10,7 +10,21 @@
 	.mw-ge-help-panel-postedit-subheader2 {
 		color: @wmui-color-base10;
 		margin-bottom: 1em;
+		line-height: 1.5;
 	}
+}
+
+.mw-ge-help-panel-postedit-trynewtask-image {
+	background: url( ../../images/try-new-task-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
+	background-size: cover;
+	width: 100%;
+	height: 216px;
+}
+
+.mw-ge-help-panel-postedit-trynewtask-footer {
+	background-color: fade( @wmui-color-accent90, 50% );
+	text-align: right;
+	padding: 0 16px;
 }
 
 .mw-ge-help-panel-postedit-footer {
@@ -21,6 +35,12 @@
 	text-align: center;
 	font-weight: bold;
 	border-top: 1px solid @wmui-color-base70;
+
+	&-trynewtask,
+	&-nothanks {
+		width: unset;
+		border-top: unset;
+	}
 
 	.oo-ui-buttonElement-button {
 		width: 100%;
