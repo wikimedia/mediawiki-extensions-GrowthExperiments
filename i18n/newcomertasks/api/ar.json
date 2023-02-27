@@ -14,6 +14,8 @@
 	"apihelp-query+growthtasks-param-debug": "أضف تصدير بيانات التصحيح.",
 	"apihelp-query+growthtasks-example-1": "{{GENDER:|تحصّل|تحصّلي}} على اقتراحات لمهام لتحرير النسخ للمستدخدم(ـة) الحالي(ـة).",
 	"apihelp-query+growthtasks-example-2": "{{GENDER:|تحصّل|تحصّلي}} على اقتراحات للمستدخدم(ـة) الحالي(ـة)، مع معلومات إضافيّة حول الصفحات.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "الحصول على نوع مهمة مقترحة للمستخدم للتجربة لاحقا.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "نوع المهمة التي يعمل عليها المستخدم حاليًا.",
 	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "\nA JSON string of an object with these keys:\n* <var>acceptedTargets</var>: (optional) Array with the titles of pages, the recommended link to which was accepted by the user.\n* <var>rejectedTargets</var>: (optional) Array with the titles of pages, the recommended link to which was rejected by the user.\n* <var>skippedTargets</var>: (optional) Array with the titles of pages, the recommended link to which was skipped (ignored) by the user.",
 	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "A JSON string of an object with these keys:\n* <var>accepted</var>: A boolean indicating whether the user accepted the recommended image.\n* <var>reasons</var>: An array of strings identifying boolean indicating why the user rejected the recommended image. Valid values: $1\n* <var>caption</var>: Image caption provided by the user. (Must have at least $2 characters.)",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "استخدام عند حفظ  التعديل المهيكل من GrowthExperiments «[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|إضافة رابط]]».",

@@ -9,7 +9,8 @@
 			"Lorelai87",
 			"Sakretsu",
 			"Sannita",
-			"ValeJappo"
+			"ValeJappo",
+			"Vivbod"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Attiva il pannello introduttivo",
@@ -118,6 +119,18 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Linee guida",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Collega i concetti che i lettori potrebbero voler approfondire.\n* Assicurati che il collegamento punti alla giusta voce.\n* Non inserire collegamenti a parole comuni, anni o date.\n* Se non sei {{GENDER:$1|sicuro|sicura|sicuro/a}}, salta al collegamento successivo.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Esempio",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "Le immagini aiutano le persone a imparare, ma molte voci non ne hanno una.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-value": "{{GENDER:|Tu}} deciderai se un'immagine suggerita debba essere inserita in una voce di Wikipedia.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-value": "I suggerimenti sono generati automaticamente e {{GENDER:|tu}} userai {{GENDER:|il tuo}} giudizio per decidere se accettarli o rifiutarli.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-text-value": "Le immagini provengono da Wikimedia Commons, una raccolta di immagini con licenza gratuita utilizzate da Wikipedia.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "Guarda l'immagine suggerita",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-step1": "Usa il nome del file, la descrizione e il motivo per cui è stato suggerito per aiutarti a decidere se inserirla nella voce.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step1": "Puoi anche espandere l'immagine per visualizzarla più chiaramente.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "Guarda la voce",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-step2": "Rileggi la voce e pensa se l'immagine suggerita aiuterà i lettori a comprenderne il contenuto. È appropriata da mostrare nella voce?",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "Decide se l'immagine corrisponde",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-step3": "Il suggerimento potrebbe non essere correlato alla voce, di bassa qualità o potrebbe non appartenere per altri motivi. Usa il tuo giudizio per decidere se il suggerimento è giusto o sbagliato.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "Per le immagini che accetti, scriverai una breve didascalia, quindi la tua modifica verrà pubblicata.",
 	"growthexperiments-help-panel-questioncomplete-title": "Fai una domanda",
 	"growthexperiments-help-panel-questioncomplete-header": "La tua domanda è stata pubblicata!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "La tua domanda si trova attualmente allo Sportello informazioni ed è in attesa di risposta da parte di un volontario.",

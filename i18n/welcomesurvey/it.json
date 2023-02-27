@@ -9,7 +9,8 @@
 			"Sakretsu",
 			"Salvemm el lombard",
 			"Sannita",
-			"ValeJappo"
+			"ValeJappo",
+			"Vivbod"
 		]
 	},
 	"welcomesurvey": "Ciao, $1!",
@@ -54,7 +55,10 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} è disponibile in circa 300 lingue. {{GENDER:|Sai}} leggere e scrivere anche in altre lingue?",
 	"welcomesurvey-question-languages-placeholder": "Aggiungi fino a {{PLURAL:$1|una lingua|$1 lingue}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Hai}} raggiunto il numero massimo di lingue disponibili.",
+	"welcomesurvey-reminder-link": "Rispondi al sondaggio",
 	"welcomesurvey-reminder-dismiss": "Nascondi",
 	"welcomesurvey-mideditsignup-title": "Benvenuto $1!",
+	"welcomesurvey-mideditsignup-body": "Grazie per contribuire! Adesso puoi vedere l'impatto delle tue modifiche e ricevere più suggerimenti di modifiche nella tua pagina principale.",
+	"welcomesurvey-mideditsignup-button-homepage": "Vai alla mia pagina principale",
 	"welcomesurvey-mideditsignup-button-close": "Chiudi"
 }

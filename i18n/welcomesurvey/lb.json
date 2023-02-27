@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Wëllkomm}} $1!",
@@ -15,7 +16,7 @@
 	"welcomesurvey-sidebar-editing-link1-text": "Uleedung",
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Uleedung",
 	"welcomesurvey-question-reason-label": "Firwat hutt Dir Äre Benotzerkont haut ugeluecht?",
-	"welcomesurvey-dropdown-option-select-label": "Sicht wgl. eraus..",
+	"welcomesurvey-dropdown-option-select-label": "Sicht wgl. eraus...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Fir en Tippfeeler oder e Feeler an engem Wikipedia -Artikel ze verbesseren",
 	"welcomesurvey-question-reason-option-new-page-label": "Fir en neie Wikipedia Artikel unzeleeën",
 	"welcomesurvey-question-reason-option-read-label": "Fir Wikipedia ze liesen",
