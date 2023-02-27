@@ -5,7 +5,7 @@
 	/**
 	 * MessageDialog variant which displays its action buttons vertically.
 	 *
-	 * @class
+	 * @class mw.libs.ge.MessageDialogWithVerticalButtons
 	 * @extends OO.ui.MessageDialog
 	 *
 	 * @constructor

@@ -7,7 +7,7 @@ var CollapsibleDrawer = require( '../ui-components/CollapsibleDrawer.js' ),
  * @class mw.libs.ge.PostEditDrawer
  * @extends mw.libs.ge.CollapsibleDrawer
  *
- * @param {PostEditPanel|TryNewTaskPanel} panel
+ * @param {mw.libs.ge.PostEditPanel|mw.libs.ge.TryNewTaskPanel} panel
  * @param {mw.libs.ge.HelpPanelLogger} helpPanelLogger
  * @constructor
  */

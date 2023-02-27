@@ -13,7 +13,7 @@
 	/**
 	 * Displays homepage module in an overlay.
 	 *
-	 * @class MobileOverlay
+	 * @class mw.libs.ge.MobileOverlay
 	 * @extends Overlay
 	 * @param {Object} params Configuration options
 	 */
@@ -29,7 +29,7 @@
 
 		/**
 		 * @inheritdoc
-		 * @memberof MobileOverlay
+		 * @memberof mw.libs.ge.MobileOverlay
 		 * @instance
 		 */
 		preRender: function () {
@@ -97,7 +97,7 @@
 
 		/**
 		 * @inheritdoc
-		 * @memberof MobileOverlay
+		 * @memberof mw.libs.ge.MobileOverlay
 		 * @instance
 		 */
 		postRender: function () {

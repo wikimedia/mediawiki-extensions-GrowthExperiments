@@ -4,7 +4,7 @@
  *
  * The number must be set/updated using setCount().
  *
- * @class
+ * @class mw.libs.ge.ArticleCountWidget
  * @extends OO.ui.Widget
  * @constructor
  * @param {Object} [config]

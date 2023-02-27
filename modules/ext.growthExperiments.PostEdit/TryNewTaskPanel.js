@@ -1,7 +1,7 @@
 var PostEditToastMessage = require( './PostEditToastMessage.js' );
 
 /**
- * @class
+ * @class mw.libs.ge.TryNewTaskPanel
  * @mixes OO.EventEmitter
  *
  * @constructor
