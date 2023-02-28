@@ -26,6 +26,7 @@
 			>
 				<c-popover
 					:close-icon="cdxIconClose"
+					:close-icon-label="$i18n( 'growthexperiments-info-tooltip-close-label' ).text()"
 					@open="$emit( 'open' )"
 					@close="$emit( 'close' );"
 				>
@@ -60,6 +61,8 @@ const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const CText = require( '../../vue-components/CText.vue' );
 const CPopover = require( '../../vue-components/CPopover.vue' );
 
+// Uses the following message keys:
+// growthexperiments-info-tooltip-close-label
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },

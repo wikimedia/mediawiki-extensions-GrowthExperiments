@@ -824,7 +824,8 @@
 				"growthexperiments-homepage-impact-error-data-not-found-text-third-person",
 				"growthexperiments-homepage-impact-error-data-not-found-subtext",
 				"growthexperiments-homepage-impact-error-data-not-found-subtext-third-person",
-				"growthexperiments-homepage-impact-edited-articles-trend-chart-title"
+				"growthexperiments-homepage-impact-edited-articles-trend-chart-title",
+				"growthexperiments-info-tooltip-close-label"
 			],
 			"dependencies": [
 				"mediawiki.user",

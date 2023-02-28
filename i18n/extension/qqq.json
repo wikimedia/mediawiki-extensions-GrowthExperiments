@@ -95,5 +95,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Description of the infobox templates form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Help text for infobox templates form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-delayed": "Help text for Special:EditGrowthConfig fields for which changes have a delayed effect due to caching or similar.\n\n{{doc-growthexperiments-community-configuration}}",
+	"growthexperiments-info-tooltip-close-label": "Accessibility label text for the close button in informational tooltips of the GrowthExperiments extension.\n\n{{doc-growthexperiments-homepage}}",
 	"specialpages-group-growth-tools": "{{doc-special-group|that=Provide tools for newcomers|like=[[Special:ClaimMentee]], [[Special:Homepage]], [[Special:MentorDashboard]], etc}}"
 }
