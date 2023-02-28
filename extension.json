@@ -563,10 +563,10 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"HelpPanel": "/analytics/legacy/helppanel/1.3.0",
+				"HelpPanel": "/analytics/legacy/helppanel/1.3.2",
 				"HomepageModule": "/analytics/legacy/homepagemodule/1.6.5",
 				"NewcomerTask": "/analytics/legacy/newcomertask/1.0.0",
-				"HomepageVisit": "/analytics/legacy/homepagevisit/1.5.0"
+				"HomepageVisit": "/analytics/legacy/homepagevisit/1.5.1"
 			}
 		},
 		"CirrusSearch": {
@@ -637,6 +637,7 @@
 				"ext.growthExperiments.LevelingUp.InviteToSuggestedEdits/index.js",
 				"ext.growthExperiments.LevelingUp.InviteToSuggestedEdits/InviteToSuggestedEditsDrawer.js",
 				"ext.growthExperiments.LevelingUp.InviteToSuggestedEdits/InviteToSuggestedEditsPanel.js",
+				"utils/HelpPanelLogger.js",
 				"utils/Utils.js",
 				"ui-components/CollapsibleDrawer.js"
 			],
@@ -655,6 +656,7 @@
 				"mobile"
 			],
 			"dependencies": [
+				"mediawiki.user",
 				"oojs",
 				"oojs-ui-core",
 				"oojs-ui.styles.icons-movement"

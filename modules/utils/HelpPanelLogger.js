@@ -2,6 +2,7 @@
  * Dependencies:
  * - mediawiki.user
  * - oojs-ui-core
+ * - ./Utils.js
  */
 ( function () {
 
@@ -74,7 +75,8 @@
 	HelpPanelLogger.prototype.getMetaData = function () {
 		var defaultEditor = this.getEditor(),
 			defaultContext = this.getContext(),
-			readingMode = defaultContext !== 'editing';
+			editingModes = [ 'editing', 'postedit', 'postedit-nonsuggested' ],
+			readingMode = ( editingModes.indexOf( defaultContext ) === -1 );
 		/* eslint-disable camelcase */
 		return {
 			user_id: mw.user.getId(),
@@ -208,8 +210,7 @@
 	 */
 	HelpPanelLogger.prototype.getPredictedEditor = function () {
 		// If we know what was used for the previous edit, return that.
-		// Otherwise, we don't even try (for now) and just guess VE.
-		return this.previousEditorInterface || 'visualeditor';
+		return this.previousEditorInterface || 'not-known';
 	};
 
 	HelpPanelLogger.prototype.getPageRestrictions = function () {

@@ -8,9 +8,11 @@ var Utils = require( '../utils/Utils.js' );
  * @class mw.libs.ge.InviteToSuggestedEditsPanel
  * @mixes OO.EventEmitter
  * @constructor
+ * @param {mw.libs.ge.HelpPanelLogger} helpPanelLogger
  */
-function InviteToSuggestedEditsPanel() {
+function InviteToSuggestedEditsPanel( helpPanelLogger ) {
 	OO.EventEmitter.call( this );
+	this.helpPanelLogger = helpPanelLogger;
 }
 OO.initClass( InviteToSuggestedEditsPanel );
 OO.mixinClass( InviteToSuggestedEditsPanel, OO.EventEmitter );
@@ -55,7 +57,8 @@ InviteToSuggestedEditsPanel.prototype.getFooterButtons = function () {
 };
 
 InviteToSuggestedEditsPanel.prototype.trySuggestedEditsButtonClicked = function () {
-	window.location.href = Utils.getSuggestedEditsFeedUrl();
+	this.helpPanelLogger.log( 'postedit-link-click', 'suggested-edits' );
+	window.location.href = Utils.getSuggestedEditsFeedUrl( 'postedit-panel-nonsuggested' );
 };
 
 InviteToSuggestedEditsPanel.prototype.noThanksButtonClicked = function () {

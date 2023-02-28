@@ -1,6 +1,7 @@
 'use strict';
 
 var InviteToSuggestedEditsDrawer = require( './InviteToSuggestedEditsDrawer.js' ),
+	HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
 	drawerPromise;
 
 /**
@@ -9,9 +10,22 @@ var InviteToSuggestedEditsDrawer = require( './InviteToSuggestedEditsDrawer.js' 
  * @return {{openPromise:jQuery.Promise}}
  */
 function displayDrawer() {
-	var drawer = new InviteToSuggestedEditsDrawer();
+	var drawer = new InviteToSuggestedEditsDrawer(
+		new HelpPanelLogger( true, {
+			context: 'postedit-nonsuggested'
+		} )
+	);
 	$( document.body ).append( drawer.$element );
 	drawer.open();
+
+	drawer.opened.then( function () {
+		drawer.logImpression();
+	} );
+
+	drawer.closed.then( function () {
+		drawer.logClose();
+	} );
+
 	return {
 		openPromise: drawer.opened
 	};
