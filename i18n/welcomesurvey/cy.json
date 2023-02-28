@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Afalau"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Croeso}}, $1!",
+	"welcomesurvey-save-btn": "Gorffen",
+	"welcomesurvey-dropdown-option-select-label": "Dewiswch...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "I gywiro sillafu neu wall mewn erthygl Wicipedia",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "I ychwanegu neu newid gwybodaeth ar erthygl Wicipedia",
+	"welcomesurvey-question-reason-option-add-image-label": "I ychwanegu ddelwedd at erthygl Wicipedia",
+	"welcomesurvey-question-reason-option-new-page-label": "I greu erthygl Wicipedia newydd",
+	"welcomesurvey-question-reason-option-read-label": "I ddarllen Wicipedia",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Arall",
+	"welcomesurvey-question-reason-option-other-label": "Arall (rhowch manylion os gwelwch yn dda)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Rhowch}} rheswm arall...",
+	"welcomesurvey-question-email-label": "Cyfeiriad e-bost (dewisol)",
+	"welcomesurvey-question-email-placeholder": "Rhowch {{GENDER:|eich}} cyfeiriad e-bost..."
+}

@@ -4,7 +4,8 @@
 			"MathXplore",
 			"Omotecho",
 			"Shirayuki",
-			"UsagiNeko"
+			"UsagiNeko",
+			"Tgr"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|これはどうしたらよいですか？]])",
@@ -24,10 +25,10 @@
 	"growthexperiments-signupcampaign-bullet2": "経験豊富な編集者に助けを求める",
 	"growthexperiments-signupcampaign-bullet3": "小さくて簡単な編集から始める",
 	"growthexperiments-thankyoupage-title": "ご寄付をしていただきありがとうございます。ウィキペディアの編集と改善のためにアカウントを作成してください。",
-	"growthexperiments-thankyoupage-body": "ウィキペディアはあなたのような方々のご協力によって成り立っています。 記事の編集は想像以上にずっと簡単です！\n\nアカウントを作成すれば、以下のことにアクセスができます。",
+	"growthexperiments-thankyoupage-body": "ウィキペディアはあなたのような方々のご協力によって成り立っています。 記事の編集は想像以上にずっと簡単です！\n\nアカウントを作成すれば、以下のことにアクセスいただけます。",
 	"growthexperiments-thankyoupage-body-mobile": "ウィキペディアはあなたのような方々のご協力によって成り立っています。 記事の編集は想像以上にずっと簡単です！",
 	"growthexperiments-thankyoupage-bullet1": "あなたの興味に合う簡単な作業",
 	"growthexperiments-thankyoupage-bullet2": "編集に役に立つサポートとガイダンス",
 	"growthexperiments-thankyoupage-bullet3": "どれだけの人があなたの編集したコンテンツを見たかについての分析",
-	"growthexperiments-campaigns-footer": "このページでアカウントを作成することで、体験や分析のために本キャンペーンと関連付けられます。"
+	"growthexperiments-campaigns-footer": "このページでアカウントを作成することで、そのアカウントは体験や分析のために本キャンペーンと関連付けられます。"
 }

@@ -6,7 +6,9 @@
 			"Mannivu",
 			"Ruthven",
 			"Sannita",
-			"ValeJappo"
+			"ValeJappo",
+			"Pierpao",
+			"Vivbod"
 		]
 	},
 	"growthexperiments-desc": "Quest'estensione contiene esperimenti effettuati dal Growth team",
@@ -64,6 +66,9 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "No",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Pagina contenente la lista dei tutor che saranno automaticamente assegnati ai nuovi utenti",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Pagina contenente la lista dei tutor che possono essere assegnati solo manualmente",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Gli utenti dovrebbero essere automaticamente idonei per il tutoraggio?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Sì, consenti agli utenti che soddisfano tutti i criteri di idoneità riportati di seguito di iscriversi come tutor.",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "No, non consentire a nessun utente di iscriversi come tutor.",
 	"growthexperiments-edit-config-newcomertasks": "Modifiche suggerite",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Alcuni tipi di modifiche suggerite sono generate attraverso i template di avviso voci. Le voci che contengono questi template vengono aggiunte al feed. Per vedere quante voci sono disponibili per ogni tipo di compito, vedi [[Special:NewcomerTasksInfo|questa pagina]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Disabilitato",
@@ -79,6 +84,8 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Aggiornare: template per trovare voci che hanno bisogno di essere aggiornate.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Pagina di destinazione per approfondire come aggiornare una voce.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Pagina di destinazione per saperne di più sulle tipologie di attività sui collegamenti consigliati.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Il numero massimo di suggerimenti di link da mostrare su ciascuna attività suggerita.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "Il numero massimo di attività suggerite \"Aggiungi un collegamento\" che un nuovo arrivato può completare giornalmente.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Pagina di destinazione per saperne di più sulle tipologie di attività sulle immagini consigliate.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Questo tipo di attività prevede suggerimenti automatici e non usa template per generare le attività.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Le voci contenenti i template qui definiti non saranno mostrate agli utenti per questo tipo di attività.",
