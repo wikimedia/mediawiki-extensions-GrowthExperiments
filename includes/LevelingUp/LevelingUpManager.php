@@ -304,4 +304,15 @@ class LevelingUpManager {
 		return $suggestedEditCount >= $thresholds[0] && $suggestedEditCount <= $thresholds[1];
 	}
 
+	/**
+	 * Whether to send the get started notification to a user.
+	 *
+	 * @param UserIdentity $userIdentity
+	 * @return bool
+	 */
+	public function shouldSendGetStartedNotification( UserIdentity $userIdentity ): bool {
+		$suggestedEditCount = $this->getSuggestedEditsCount( $userIdentity );
+		return $suggestedEditCount == 0;
+	}
+
 }

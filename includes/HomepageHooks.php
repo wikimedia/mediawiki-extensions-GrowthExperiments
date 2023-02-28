@@ -20,6 +20,7 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
+use GrowthExperiments\LevelingUp\NotificationGetStartedJob;
 use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
@@ -888,6 +889,14 @@ class HomepageHooks implements
 							// Process the job X seconds after account creation (default: 48 hours)
 							'jobReleaseTimestamp' => (int)wfTimestamp() +
 								$this->config->get( 'GELevelingUpKeepGoingNotificationSendAfterSeconds' )
+						] )
+					);
+					$this->jobQueueGroup->lazyPush(
+						new JobSpecification( NotificationGetStartedJob::JOB_NAME, [
+							'userId' => $user->getId(),
+							// Process the job X seconds after account creation (configured in extension.json)
+							'jobReleaseTimestamp' => (int)wfTimestamp() +
+								$this->config->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' )
 						] )
 					);
 				}
