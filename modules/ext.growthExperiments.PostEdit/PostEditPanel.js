@@ -175,14 +175,35 @@ PostEditPanel.prototype.getMainArea = function () {
 
 	if ( !this.nextTask ) {
 		var $fallbackCard = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard' );
+
+		var postEditFallbackCardIconClass, postEditFallbackCardTitleMessage, postEditFallbackCardInfoMessage;
+		if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
+			postEditFallbackCardIconClass = 'mw-ge-help-panel-postedit-fallbackCard-icon-levelingup';
+			postEditFallbackCardTitleMessage = 'growthexperiments-help-panel-postedit-suggestededits-levelingup-title';
+			postEditFallbackCardInfoMessage = 'growthexperiments-help-panel-postedit-suggestededits-levelingup-info';
+		} else {
+			postEditFallbackCardIconClass = 'mw-ge-help-panel-postedit-fallbackCard-icon';
+			postEditFallbackCardTitleMessage = 'growthexperiments-help-panel-postedit-suggestededits-title';
+			postEditFallbackCardInfoMessage = 'growthexperiments-help-panel-postedit-suggestededits-info';
+		}
+
 		$fallbackCard.append(
-			$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-icon' ),
+			// The following classes are used here:
+			// * mw-ge-help-panel-postedit-fallbackCard-icon-levelingup
+			// * mw-ge-help-panel-postedit-fallbackCard-icon
+			$( '<div>' ).addClass( postEditFallbackCardIconClass ),
 			$( '<div>' ).append(
 				$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-header' ).text(
-					mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text()
+					// The following messages are used here:
+					// * growthexperiments-help-panel-postedit-suggestededits-title
+					// * growthexperiments-help-panel-postedit-suggestededits-levelingup-title
+					mw.message( postEditFallbackCardTitleMessage ).text()
 				),
 				$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-text' ).text(
-					mw.message( 'growthexperiments-help-panel-postedit-suggestededits-info' ).text()
+					// The following messages are used here:
+					// * growthexperiments-help-panel-postedit-suggestededits-info
+					// * growthexperiments-help-panel-postedit-suggestededits-levelingup-info
+					mw.message( postEditFallbackCardInfoMessage ).text()
 				)
 			)
 		);
