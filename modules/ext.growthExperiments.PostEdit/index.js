@@ -89,17 +89,6 @@
 	}
 
 	/**
-	 * Update the UI based on the current state of the task queue
-	 *
-	 * @param {mw.libs.ge.PostEditPanel} postEditPanel
-	 */
-	function updateUiBasedOnCurrentStates( postEditPanel ) {
-		postEditPanel.togglePrevNavigation( tasksStore.hasPreviousTask() );
-		postEditPanel.toggleNextNavigation( tasksStore.hasNextTask() );
-		postEditPanel.updatePager( tasksStore.getQueuePosition() + 1, tasksStore.getTaskCount() );
-	}
-
-	/**
 	 * Helper method to tie getNextTask() and displayPanel() together.
 	 *
 	 * @param {mw.libs.ge.TaskData|null} task Task data, or null when the task card should not be
@@ -142,13 +131,6 @@
 			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded,
 			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded
 		} );
-		postEditPanel.on( 'postedit-prev-task', function () {
-			tasksStore.showPreviousTask();
-		} );
-		postEditPanel.on( 'postedit-next-task', function () {
-			tasksStore.showNextTask();
-		} );
-		updateUiBasedOnCurrentStates( postEditPanel );
 
 		displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger );
 		openPromise = displayPanelPromises.openPromise;
@@ -159,27 +141,6 @@
 			userTopics: filtersStore.getSelectedTopics(),
 			newcomerTaskToken: suggestedEditSession.newcomerTaskToken
 		} ) );
-
-		tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, function () {
-			var currentTask = tasksStore.getCurrentTask();
-			if ( currentTask ) {
-				postEditPanel.updateNextTask( currentTask );
-			}
-			updateUiBasedOnCurrentStates( postEditPanel );
-		} );
-		tasksStore.on( CONSTANTS.EVENTS.CURRENT_TASK_EXTRA_DATA_CHANGED, function () {
-			var currentTask = tasksStore.getCurrentTask();
-			if ( currentTask ) {
-				postEditPanel.updateTask( currentTask );
-			}
-		} );
-
-		tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, function ( isLoading ) {
-			// Disable next navigation until more tasks are fetched or if there are no more tasks
-			var isNextEnabled = !isLoading && tasksStore.hasNextTask();
-			postEditPanel.toggleNextNavigation( isNextEnabled );
-			postEditPanel.nextButton.setIcon( isLoading ? 'ellipsis' : 'next' );
-		} );
 
 		result = {
 			panel: postEditPanel,

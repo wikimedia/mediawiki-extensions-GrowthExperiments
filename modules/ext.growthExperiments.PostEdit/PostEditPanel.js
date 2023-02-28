@@ -3,7 +3,10 @@ var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/'
 	SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
 	PagerWidget = require( '../ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js' ),
 	PostEditToastMessage = require( './PostEditToastMessage.js' ),
-	Utils = require( '../utils/Utils.js' );
+	Utils = require( '../utils/Utils.js' ),
+	rootStore = require( 'ext.growthExperiments.DataStore' ),
+	tasksStore = rootStore.newcomerTasks,
+	CONSTANTS = rootStore.CONSTANTS;
 
 /**
  * @class mw.libs.ge.PostEditPanel
@@ -48,6 +51,29 @@ function PostEditPanel( config ) {
 	this.prevButton.connect( this, { click: [ 'onPrevButtonClicked' ] } );
 	this.nextButton.connect( this, { click: [ 'onNextButtonClicked' ] } );
 	this.pager = new PagerWidget();
+
+	this.updateNavigation();
+
+	tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, function () {
+		var currentTask = tasksStore.getCurrentTask();
+		if ( currentTask ) {
+			this.updateNextTask( currentTask );
+		}
+		this.updateNavigation();
+	}.bind( this ) );
+	tasksStore.on( CONSTANTS.EVENTS.CURRENT_TASK_EXTRA_DATA_CHANGED, function () {
+		var currentTask = tasksStore.getCurrentTask();
+		if ( currentTask ) {
+			this.updateTask( currentTask );
+		}
+	}.bind( this ) );
+
+	tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, function ( isLoading ) {
+		// Disable next navigation until more tasks are fetched or if there are no more tasks
+		var isNextEnabled = !isLoading && tasksStore.hasNextTask();
+		this.toggleNextNavigation( isNextEnabled );
+		this.nextButton.setIcon( isLoading ? 'ellipsis' : 'next' );
+	}.bind( this ) );
 }
 
 OO.initClass( PostEditPanel );
@@ -218,6 +244,15 @@ PostEditPanel.prototype.updateTask = function ( task ) {
 };
 
 /**
+ * Update the pager text and navigation arrows state
+ */
+PostEditPanel.prototype.updateNavigation = function () {
+	this.togglePrevNavigation( tasksStore.hasPreviousTask() );
+	this.toggleNextNavigation( tasksStore.hasNextTask() );
+	this.updatePager( tasksStore.getQueuePosition() + 1, tasksStore.getTaskCount() );
+};
+
+/**
  * Log that the panel was displayed to the user.
  * Needs to be called by the code displaying the panel.
  *
@@ -300,12 +335,12 @@ PostEditPanel.prototype.updateNextTask = function ( task ) {
 };
 
 /**
- * Emit and log events when the next button is clicked
+ * Navigate to next card and log events when the next button is clicked
  *
  * @fires PostEditPanel#postedit-next-task
  */
 PostEditPanel.prototype.onNextButtonClicked = function () {
-	this.emit( 'postedit-next-task' );
+	tasksStore.showNextTask();
 	this.helpPanelLogger.log( 'postedit-task-navigation', {
 		dir: 'next',
 		/* eslint-disable-next-line camelcase */
@@ -314,12 +349,11 @@ PostEditPanel.prototype.onNextButtonClicked = function () {
 };
 
 /**
- * Emit and log events when the prev button is clicked
+ * Navigate to previous card and log events when the prev button is clicked
  *
- * @fires PostEditPanel#postedit-prev-task
  */
 PostEditPanel.prototype.onPrevButtonClicked = function () {
-	this.emit( 'postedit-prev-task' );
+	tasksStore.showPreviousTask();
 	this.helpPanelLogger.log( 'postedit-task-navigation', {
 		dir: 'prev',
 		/* eslint-disable-next-line camelcase */
