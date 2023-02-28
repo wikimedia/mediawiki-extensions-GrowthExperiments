@@ -1,8 +1,10 @@
 /node_modules
 /vendor
+/.idea
 /composer.lock
 /.nyc_output
 /coverage
 /.eslintcache
 /tests/selenium/log
 /.api-testing.config.json
+.DS_Store
