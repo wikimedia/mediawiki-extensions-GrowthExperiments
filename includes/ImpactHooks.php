@@ -72,8 +72,7 @@ class ImpactHooks implements
 		}
 		// Refresh the user's impact after they've made an edit.
 		if ( $this->userIsInImpactDataCohort( $user ) &&
-			$user->equals( $revisionRecord->getUser() ) &&
-			$wikiPage->getNamespace() === NS_MAIN
+			$user->equals( $revisionRecord->getUser() )
 		) {
 			$this->refreshUserImpactDataInDeferredUpdate( $user );
 
