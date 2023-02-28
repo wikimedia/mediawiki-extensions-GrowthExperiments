@@ -3,15 +3,16 @@
 The GrowthExperiments frontend docs site is built with [VitePress](https://vitepress.vuejs.org/), a static site generator
 built with [Vite](https://vitejs.dev/) as build tool and Vue 3.
 
-## Development site
+## Getting started
 
-In the root of the repository, run:
+Install [NodeJS](https://nodejs.org/) 14+ and then from the project root (`documentation/frontend`):
 
 ```
-npm run docs:dev
+$ npm install
+$ npm run docs:dev
 ```
 
-This will serve the VitePress GrowthExperiments docs site locally at http://localhost:5173.
+This will serve the VitePress GrowthExperiments docs site locally at http://localhost:5173/GrowthExperiments/master/js/frontend/.
 
 ## Writing docs
 
