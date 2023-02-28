@@ -9,7 +9,7 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const NewImpact = require( './NewImpact.vue' );
-const ScoreCard = require( './ScoreCard.vue' );
+const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
 const TrendChart = require( './TrendChart.vue' );
 const ArticlesList = require( './ArticlesList.vue' );
@@ -121,7 +121,7 @@ describe( 'NewImpactVue', () => {
 	} );
 	it( 'displays activated state layout', () => {
 		const wrapper = renderComponent();
-		expect( wrapper.findAllComponents( ScoreCard ) ).toHaveLength( 4 );
+		expect( wrapper.findAllComponents( CScoreCard ) ).toHaveLength( 4 );
 		expect( wrapper.findAllComponents( RecentActivity ) ).toHaveLength( 1 );
 		expect( wrapper.findAllComponents( TrendChart ) ).toHaveLength( 1 );
 		expect( wrapper.findAllComponents( ArticlesList ) ).toHaveLength( 1 );

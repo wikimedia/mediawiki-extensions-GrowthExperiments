@@ -9,7 +9,7 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const NoEditsDisplay = require( './NoEditsDisplay.vue' );
-const ScoreCard = require( './ScoreCard.vue' );
+const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 
 const renderComponent = ( props, renderMode = 'desktop' ) => {
 	return mount( NoEditsDisplay, {
@@ -38,19 +38,19 @@ describe( 'NoEditsDisplay', () => {
 			}
 		};
 		const desktopWrapper = renderComponent( props, 'desktop' );
-		expect( desktopWrapper.findAllComponents( ScoreCard ) ).toHaveLength( 2 );
+		expect( desktopWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 2 );
 		expect( desktopWrapper.text() ).toContain( '123' );
 		expect( desktopWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( desktopWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
 
 		const overlayWrapper = renderComponent( props, 'overlay' );
-		expect( overlayWrapper.findAllComponents( ScoreCard ) ).toHaveLength( 2 );
+		expect( overlayWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 2 );
 		expect( overlayWrapper.text() ).toContain( '123' );
 		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
 
 		const summaryWrapper = renderComponent( props, 'overlay-summary' );
-		expect( summaryWrapper.findAllComponents( ScoreCard ) ).toHaveLength( 0 );
+		expect( summaryWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 0 );
 		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
 	} );

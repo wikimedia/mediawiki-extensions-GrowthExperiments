@@ -6,12 +6,12 @@
 		}">
 		<!-- TODO: add skeletons, maybe use suspense, load sections only if data available -->
 		<div v-if="data">
-			<score-cards
+			<c-score-cards
 				:user-name="userName"
+				:render-third-person="renderThirdPerson"
+				:has-intl="hasIntl"
 				:data="data"
-				:contributions-url="contributionsUrl"
-				:thanks-url="thanksUrl"
-			></score-cards>
+			></c-score-cards>
 		</div>
 		<div v-if="data && hasIntl">
 			<c-text
@@ -64,8 +64,8 @@
 const { inject } = require( 'vue' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( '../constants.js' );
 const CText = require( '../../vue-components/CText.vue' );
+const CScoreCards = require( '../../vue-components/CScoreCards.vue' );
 
-const ScoreCards = require( './ScoreCards.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
 const TrendChart = require( './TrendChart.vue' );
 const ArticlesList = require( './ArticlesList.vue' );
@@ -75,9 +75,9 @@ module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
 		CText,
+		CScoreCards,
 		ArticlesList,
 		RecentActivity,
-		ScoreCards,
 		TrendChart
 	},
 	props: {
@@ -132,12 +132,6 @@ module.exports = exports = {
 		},
 		contributionsUrl() {
 			return mw.util.getUrl( `Special:Contributions/${this.userName}` );
-		},
-		thanksUrl() {
-			return mw.util.getUrl( 'Special:Log', {
-				type: 'thanks',
-				page: this.userName
-			} );
 		},
 		countLabelText() {
 			return this.renderThirdPerson ?

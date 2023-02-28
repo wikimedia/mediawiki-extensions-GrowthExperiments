@@ -14,7 +14,7 @@ const renderComponent = ( props, provide ) => {
 		props,
 		components: {
 			CText: require( '../../vue-components/CText.vue' ),
-			ScoreCards: jest.fn( () => 'ScoreCardsMock' )
+			CScoreCards: jest.fn( () => 'ScoreCardsMock' )
 		},
 		global: {
 			provide: Object.assign( {
