@@ -55,6 +55,7 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 	}
 
 	public function testGetNextSuggestedTaskType() {
+		$this->overrideConfigValue( 'GELevelingUpManagerTaskTypeCountThresholdMultiple', 5 );
 		$userImpact = $this->createMock( UserImpact::class );
 		$userImpact->expects( $this->exactly( 2 ) )
 			->method( 'getEditCountByTaskType' )
@@ -81,7 +82,9 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 		$this->setService( 'GrowthExperimentsUserImpactLookup_Computed', $userImpactLookup );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $taskSuggesterFactory );
 		$result = $this->doApiRequestWithToken( [
-			'action' => 'query', 'meta' => 'growthnextsuggestedtasktype', 'gnsttactivetasktype' => 'copyedit'
+			'action' => 'query',
+			'meta' => 'growthnextsuggestedtasktype',
+			'gnsttactivetasktype' => 'copyedit'
 		] );
 		$this->assertSame( 'link-recommendation', $result[0]['query']['growthnextsuggestedtasktype'] );
 	}
