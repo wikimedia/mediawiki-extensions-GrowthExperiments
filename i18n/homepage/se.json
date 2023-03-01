@@ -5,11 +5,15 @@
 			"Kimberli Mäkäräinen (WMNO)"
 		]
 	},
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Šluhtte",
 	"growthexperiments-homepage-suggestededits-edit-card": "Rievdat",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Lassedieđut",
 	"growthexperiments-homepage-suggestededits-error-description": "Geahččal fas maŋŋelis.",
 	"growthexperiments-homepage-suggestededits-topics-more": "čájet lasi",
 	"growthexperiments-addlink-context-button-next": "Čuovvovaš",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Šluhtte",
 	"growthexperiments-addimage-detailsdialog-image": "Fiilanamma:",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "Šluhtte",
+	"growthexperiments-addimage-skip-dialog-cancel": "Šluhtte",
 	"growthexperiments-structuredtask-user-error-login-cta": "Čálit sisa"
 }

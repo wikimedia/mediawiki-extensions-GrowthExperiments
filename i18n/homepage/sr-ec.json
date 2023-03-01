@@ -345,6 +345,8 @@
 	"growthexperiments-addimage-detailsdialog-close": "Затвори",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Пошаљи",
 	"growthexperiments-addimage-rejectiondialog-action-cancel": "Откажи",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Слика је увредљива",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Слика је лошег квалитета",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Друго",
 	"growthexperiments-addimage-viewer-close-button": "Затвори",
 	"growthexperiments-addimage-skip-dialog-cancel": "Откажи",
