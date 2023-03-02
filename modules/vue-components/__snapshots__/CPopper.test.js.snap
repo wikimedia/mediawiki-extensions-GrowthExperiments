@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CPopper should render with a close button 1`] = `
+<div
+  class="ext-growthExperiments-CPopper"
+>
+  <div
+    class="ext-growthExperiments-CPopper__popover"
+    style="top: 0px;"
+    tabindex="0"
+  >
+    <div
+      class="ext-growthExperiments-CPopper__popover__close-button-container"
+    >
+      <button
+        aria-label="Some label"
+        class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-CPopper__popover__close-button"
+      >
+        
+        <span
+          class="cdx-icon cdx-icon--medium"
+        >
+          <svg
+            aria-hidden="true"
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!---->
+            <g>
+              Some icon
+            </g>
+          </svg>
+        </span>
+        
+      </button>
+    </div>
+    
+    Some text
+    
+  </div>
+</div>
+`;
+
+exports[`CPopper should render without a close button 1`] = `
+<div
+  class="ext-growthExperiments-CPopper"
+>
+  <div
+    class="ext-growthExperiments-CPopper__popover"
+    style="top: 0px;"
+    tabindex="0"
+  >
+    <!--v-if-->
+    
+    Some text
+    
+  </div>
+</div>
+`;
