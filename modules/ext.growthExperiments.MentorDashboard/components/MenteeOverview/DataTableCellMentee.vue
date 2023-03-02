@@ -69,7 +69,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 @import '../../../utils/mixins.less';
 
 @mentee-table-last-seen-font-size: 12px;
