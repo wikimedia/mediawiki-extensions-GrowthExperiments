@@ -45,7 +45,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-DataTableLimit {
 	padding: @padding-base;
