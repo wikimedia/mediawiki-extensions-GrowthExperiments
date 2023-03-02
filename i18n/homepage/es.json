@@ -123,7 +123,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Información sobre el cálculo de las rachas",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Tu}} mayor racha editando es de $2 {{PLURAL:$2|día|días}} que {{GENDER:$1|conseguiste}} entre $3.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "La racha actual más larga es $1 {{PLURAL:$1| día|días}} que se logró entre $2 .",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Alcanzaste tu}} racha de ediciones más larga el $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Alcanzaste tu}} racha de ediciones más larga el $2.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "La racha actual más larga es un día que se logró con $1 .",
 	"growthexperiments-homepage-impact-subheader-text": "Artículos más vistos (desde que {{GENDER:$1|los editaste}})",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Más visto (desde que se realizó la edición)",

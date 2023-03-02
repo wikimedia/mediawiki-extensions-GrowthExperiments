@@ -114,6 +114,7 @@
 	"growthexperiments-homepage-recent-questions-archived": "архивирано",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Питање је архивирано, вероватно зато што је давно постављено.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|}}{{GENDER:$2|Ваш ментор|Ваша менторка}}",
+	"growthexperiments-homepage-mentorship-preintro": "Додели смо {{GENDER:|вам}} {{GENDER:$1|искусног уредника за ментора и он|искусну уредницу за ментора и она}} ће вам одговорити на сва ваша питања.",
 	"growthexperiments-homepage-mentorship-learn-more": "Научите више о менторима.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|измена|измене|измена}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Активан|Активна}} данас",
