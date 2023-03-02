@@ -5,19 +5,20 @@
 	const store = require( './store/index.js' );
 	const { convertNumber } = require( '../utils/filters.js' );
 
+	const createApp = ( wrapper, mountPoint ) => {
+		const app = Vue.createMwApp( wrapper );
+		app.config.globalProperties.$filters = {
+			convertNumber
+		};
+		app.use( store )
+			.mount( mountPoint );
+	};
+
 	require( './MentorTools/MentorTools.js' );
-	// TODO create an App.vue root component to wrap more Mentor Vue modules as when migrated
-	const MenteeOverview = require( './components/MenteeOverview/MenteeOverview.vue' );
 
 	Vue.use( Vuex );
-
-	const app = Vue.createMwApp( MenteeOverview );
-
-	app.use( store )
-		.mount( '#vue-root' );
-
-	app.config.globalProperties.$filters = {
-		convertNumber
-	};
+	// TODO create an App.vue root component to wrap more Mentor Vue modules as when migrated
+	createApp( require( './components/MenteeOverview/MenteeOverview.vue' ), '#vue-root' );
+	createApp( require( './components/PersonalizedPraise/PersonalizedPraise.vue' ), '#vue-root-personalizedpraise' );
 
 }() );

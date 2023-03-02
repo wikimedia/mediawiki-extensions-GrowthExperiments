@@ -34,7 +34,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-.ext-growthExperiments-NoResults {
+.ext-growthExperiments-MenteeOverview .ext-growthExperiments-NoResults {
 	display: flex;
 	flex-direction: column;
 	align-items: center;

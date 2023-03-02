@@ -125,6 +125,13 @@
 				"JobQueueGroup"
 			]
 		},
+		"growthinvalidatepersonalizedpraisesuggestion": {
+			"class": "GrowthExperiments\\Api\\ApiInvalidatePersonalizedPraiseSuggestion",
+			"services": [
+				"GrowthExperimentsMentorProvider",
+				"GrowthExperimentsPraiseworthyMenteeSuggester"
+			]
+		},
 		"growthinvalidateimagerecommendation": {
 			"class": "GrowthExperiments\\Api\\ApiInvalidateImageRecommendation",
 			"services": [
@@ -1806,15 +1813,27 @@
 				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/DataTableCellMentee.vue",
 				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/NoResults.vue",
 				"ext.growthExperiments.MentorDashboard/components/MenteeOverview/LegendBox.vue",
+				"ext.growthExperiments.MentorDashboard/components/PersonalizedPraise/PersonalizedPraise.vue",
+				"ext.growthExperiments.MentorDashboard/components/PersonalizedPraise/PersonalizedPraiseSettings.vue",
+				"ext.growthExperiments.MentorDashboard/components/PersonalizedPraise/PersonalizedPraiseSettingsForm.vue",
+				"ext.growthExperiments.MentorDashboard/components/PersonalizedPraise/PersonalizedPraisePagination.vue",
+				"ext.growthExperiments.MentorDashboard/components/PersonalizedPraise/UserCard.vue",
+				"ext.growthExperiments.MentorDashboard/components/PersonalizedPraise/NoResults.vue",
 				"ext.growthExperiments.MentorDashboard/store/index.js",
 				"ext.growthExperiments.MentorDashboard/store/MenteeOverviewApi.js",
 				"ext.growthExperiments.MentorDashboard/store/modules/mentees.js",
 				"ext.growthExperiments.MentorDashboard/store/modules/mentees-search.js",
 				"ext.growthExperiments.MentorDashboard/store/modules/user-preferences.js",
+				"ext.growthExperiments.MentorDashboard/store/modules/praiseworthy-mentees.js",
+				"vue-components/CScoreCard.vue",
+				"vue-components/CScoreCards.vue",
 				"vue-components/CPopover.vue",
 				"vue-components/CPopper.vue",
+				"vue-components/CText.vue",
 				"vue-components/directives/click-outside.directive.js",
+				"ext.growthExperiments.Homepage.NewImpact/constants.js",
 				"utils/filters.js",
+				"utils/Utils.js",
 				{
 					"name": "vue-components/icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
@@ -1824,6 +1843,7 @@
 						"cdxIconClock",
 						"cdxIconHelp",
 						"cdxIconInfo",
+						"cdxIconInfoFilled",
 						"cdxIconEdit",
 						"cdxIconEditUndo",
 						"cdxIconBlock",
@@ -1835,7 +1855,12 @@
 						"cdxIconCollapse",
 						"cdxIconError",
 						"cdxIconSearch",
-						"cdxIconClose"
+						"cdxIconClose",
+						"cdxIconUserAvatar",
+						"cdxIconUserTalk",
+						"cdxIconChart",
+						"cdxIconAlert",
+						"cdxIconSettings"
 					]
 				},
 				{
@@ -1913,7 +1938,66 @@
 				"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label",
 				"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label",
 				"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label",
-				"growthexperiments-info-tooltip-close-label"
+				"growthexperiments-info-tooltip-close-label",
+				"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer",
+				"growthexperiments-mentor-dashboard-personalized-praise-talk-topics",
+				"growthexperiments-mentor-dashboard-personalized-praise-page-counter",
+				"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label",
+				"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label",
+				"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation",
+				"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-title",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-placeholder",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-save",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel",
+				"growthexperiments-homepage-impact-scores-edit-count",
+				"growthexperiments-homepage-impact-scores-thanks-count",
+				"growthexperiments-homepage-impact-scores-over-limit",
+				"growthexperiments-homepage-impact-scores-best-streak-info-text",
+				"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person",
+				"growthexperiments-homepage-impact-scores-best-streak-info-data-text",
+				"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person",
+				"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day",
+				"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person",
+				"growthexperiments-homepage-impact-scores-thanks-info-text",
+				"growthexperiments-homepage-impact-scores-thanks-info-text-third-person",
+				"growthexperiments-homepage-impact-recent-activity-title",
+				"growthexperiments-homepage-impact-recent-activity-title-third-person",
+				"growthexperiments-homepage-impact-recent-activity-last-edit-text",
+				"growthexperiments-homepage-impact-recent-activity-best-streak-text",
+				"growthexperiments-homepage-impact-recent-activity-streak-count-text",
+				"growthexperiments-homepage-impact-recent-activity-contribs-count-text",
+				"growthexperiments-homepage-impact-recent-activity-streak-data-text",
+				"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label",
+				"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person",
+				"growthexperiments-homepage-impact-subheader-text",
+				"growthexperiments-homepage-impact-subheader-text-third-person",
+				"growthexperiments-homepage-newimpact-contributions-link",
+				"growthexperiments-homepage-impact-pageviews-link-tooltip",
+				"growthexperiments-homepage-impact-empty-pageviews-tooltip-short",
+				"growthexperiments-homepage-impact-article-link-tooltip",
+				"growthexperiments-homepage-impact-body-no-edit",
+				"growthexperiments-homepage-impact-unactivated-subheader-text",
+				"growthexperiments-homepage-impact-unactivated-subheader-subtext",
+				"growthexperiments-homepage-impact-unactivated-suggested-edits-footer",
+				"growthexperiments-homepage-impact-unactivated-description",
+				"growthexperiments-homepage-impact-unactivated-suggested-edits-link",
+				"growthexperiments-homepage-impact-subheader-text-no-pageviews",
+				"growthexperiments-homepage-impact-contributions-link-no-edit",
+				"growthexperiments-homepage-impact-scores-streak-info-label",
+				"growthexperiments-homepage-impact-scores-thanks-info-label",
+				"growthexperiments-homepage-impact-error-data-not-found-text",
+				"growthexperiments-homepage-impact-error-data-not-found-text-third-person",
+				"growthexperiments-homepage-impact-error-data-not-found-subtext",
+				"growthexperiments-homepage-impact-error-data-not-found-subtext-third-person",
+				"growthexperiments-homepage-impact-edited-articles-trend-chart-title"
 			],
 			"dependencies": [
 				"ext.growthExperiments.icons",
@@ -1932,7 +2016,12 @@
 				"mediawiki.widgets.UserInputWidget",
 				"vue",
 				"vuex",
-				"@wikimedia/codex"
+				"@wikimedia/codex",
+				"moment"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
 			]
 		},
 		"ext.growthExperiments.MentorDashboard.styles": {
@@ -1941,7 +2030,14 @@
 				"ext.growthExperiments.MentorDashboard/styles/BaseModule.less",
 				"ext.growthExperiments.MentorDashboard/styles/MenteeOverview.less",
 				"ext.growthExperiments.MentorDashboard/styles/Resources.less",
-				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.less"
+				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.less",
+				"vue-components/mixins.less",
+				"vue-components/CScoreCard.less",
+				"vue-components/CScoreCards.less"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
 			]
 		},
 		"ext.growthExperiments.MentorDashboard.Discovery": {

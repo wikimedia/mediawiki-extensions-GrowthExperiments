@@ -6,6 +6,7 @@ use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\Modules\MenteeOverview;
 use GrowthExperiments\MentorDashboard\Modules\MentorTools;
+use GrowthExperiments\MentorDashboard\Modules\PersonalizedPraise;
 use GrowthExperiments\MentorDashboard\Modules\Resources;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
@@ -94,7 +95,19 @@ class MentorDashboardModuleRegistry {
 					$geServices->getMentorProvider(),
 					$geServices->getMentorStatusManager()
 				);
-			}
+			},
+			'personalized-praise' => static function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$geServices = GrowthExperimentsServices::wrap( $services );
+				return new PersonalizedPraise(
+					'personalized-praise',
+					$context,
+					$geServices->getPraiseworthyMenteeSuggester(),
+					$geServices->getPersonalizedPraiseSettings()
+				);
+			},
 		];
 	}
 }
