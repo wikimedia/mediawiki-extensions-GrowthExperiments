@@ -19,6 +19,8 @@ function TryNewTaskPanel( config ) {
 	this.activeTaskType = config.activeTaskType;
 	this.helpPanelLogger = config.helpPanelLogger;
 	this.tryNewTaskOptOuts = config.tryNewTaskOptOuts;
+	/** @member {OO.ui.CheckboxInputWidget|null} **/
+	this.optOutButton = null;
 }
 
 OO.initClass( TryNewTaskPanel );
@@ -68,7 +70,7 @@ TryNewTaskPanel.prototype.getFooterButtons = function () {
  * post-edit dialog.
  */
 TryNewTaskPanel.prototype.openPostEditDialogWithNewTask = function () {
-	this.logLinkClick( 'trynewtask' );
+	this.logAction( 'trynewtask' );
 	this.emit( 'close', this.nextSuggestedTaskType );
 };
 
@@ -78,7 +80,7 @@ TryNewTaskPanel.prototype.openPostEditDialogWithNewTask = function () {
  * to the task types.
  */
 TryNewTaskPanel.prototype.openPostEditDialog = function () {
-	this.logLinkClick( 'nothanks' );
+	this.logAction( 'nothanks' );
 	this.emit( 'close', null );
 };
 
@@ -91,17 +93,21 @@ TryNewTaskPanel.prototype.getHeaderText = function () {
  * Needs to be set up by the (device-dependent) wrapper code that handles displaying the panel.
  */
 TryNewTaskPanel.prototype.logClose = function () {
-	this.helpPanelLogger.log( 'trynewtask-close', '' );
+	this.helpPanelLogger.log( 'trynewtask-close', { 'dont-show-again': Number( this.optOutButton.isSelected() ) } );
 };
 
 /**
  * Log that the panel was displayed to the user.
  * Needs to be called by the code displaying the panel.
+ *
+ * @param {Object|undefined} actionData Additional data to pass as action_data to the logger.
  */
-TryNewTaskPanel.prototype.logImpression = function () {
-	this.helpPanelLogger.log( 'trynewtask-impression', {
-		nextSuggestedTaskType: this.nextSuggestedTaskType
-	} );
+TryNewTaskPanel.prototype.logImpression = function ( actionData ) {
+	var data = {
+		'next-suggested-task-type': this.nextSuggestedTaskType
+	};
+	data = $.extend( data, actionData || {} );
+	this.helpPanelLogger.log( 'trynewtask-impression', data );
 };
 
 /**
@@ -110,8 +116,8 @@ TryNewTaskPanel.prototype.logImpression = function () {
  *
  * @param {string} linkName Symbolic link name ('nothanks' or 'trynewtask').
  */
-TryNewTaskPanel.prototype.logLinkClick = function ( linkName ) {
-	this.helpPanelLogger.log( 'trynewtask-link-click', linkName );
+TryNewTaskPanel.prototype.logAction = function ( linkName ) {
+	this.helpPanelLogger.log( 'trynewtask-' + linkName + '-action', { 'dont-show-again': Number( this.optOutButton.isSelected() ) } );
 };
 
 /**
@@ -122,11 +128,11 @@ TryNewTaskPanel.prototype.logLinkClick = function ( linkName ) {
  */
 TryNewTaskPanel.prototype.getMainArea = function () {
 	var $mainArea = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-main' );
-	var optOutButton = new OO.ui.CheckboxInputWidget( {
+	this.optOutButton = new OO.ui.CheckboxInputWidget( {
 		selected: false,
 		value: 'optOutForTaskType'
 	} );
-	optOutButton.on( 'change', function ( isSelected ) {
+	this.optOutButton.on( 'change', function ( isSelected ) {
 		if ( isSelected ) {
 			this.tryNewTaskOptOuts.push( this.activeTaskType );
 		} else {
@@ -140,7 +146,7 @@ TryNewTaskPanel.prototype.getMainArea = function () {
 		);
 	}.bind( this ) );
 
-	var dismissField = new OO.ui.FieldLayout( optOutButton, {
+	var dismissField = new OO.ui.FieldLayout( this.optOutButton, {
 		label: mw.message(
 			'growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox'
 		).text(),
