@@ -1696,8 +1696,14 @@
 		"ext.growthExperiments.icons": {
 			"class": "ResourceLoaderImageModule",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
-			"selectorWithoutVariant": ".oo-ui-icon-{name}",
+			"selectorWithoutVariant": ".oo-ui-icon-{name},.mw-ui-icon-{name}:before",
 			"images": {
+				"growth-previous": {
+					"file": {
+						"ltr": "../images/arrowPrevious-ltr.svg",
+						"rtl": "../images/arrowPrevious-rtl.svg"
+					}
+				},
 				"askQuestion": {
 					"file": {
 						"ltr": "../images/askQuestion-ltr.svg",

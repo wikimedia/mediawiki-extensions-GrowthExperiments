@@ -1,8 +1,7 @@
 ( function ( M ) {
-
 	var mobile = M.require( 'mobile.startup' ),
 		View = mobile.View,
-		icons = mobile.icons,
+		Icon = mobile.Icon,
 		header = mobile.headers.header,
 		promisedView = mobile.promisedView,
 		Overlay = mobile.Overlay,
@@ -89,7 +88,13 @@
 				header(
 					mw.html.escape( options.heading ),
 					headerActions,
-					icons.back(),
+					new Icon( {
+						tagName: 'button',
+						name: 'previous',
+						glyphPrefix: 'growth',
+						additionalClassNames: 'back',
+						label: 'mobile-frontend-overlay-close'
+					} ),
 					'initial-header homepage-module-overlay-header'
 				)
 			];
