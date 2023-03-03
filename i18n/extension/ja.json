@@ -5,6 +5,7 @@
 			"MathXplore",
 			"Omotecho",
 			"Shirayuki",
+			"もなー(偽物)",
 			"カッパ鳥"
 		]
 	},
@@ -74,5 +75,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "ここで定義されたカテゴリを含む記事をこのタスク種別のタスクとして利用者に表示しない。",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "これらのテンプレートは[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|画像の提案]]新規参加者タスク機能のために必要となります。これらのテンプレートを含む記事は画像の提案タスクとして列挙されません。",
 	"growthexperiments-edit-config-delayed": "この設定への変更はすぐには反映されません ([[mw:Growth/FAQ#add-link-config|FAQ]]参照)。",
+	"growthexperiments-info-tooltip-close-label": "閉じる",
 	"specialpages-group-growth-tools": "Growthツール"
 }

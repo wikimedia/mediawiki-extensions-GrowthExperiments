@@ -86,5 +86,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Patronos de quadro de information",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Iste patronos es necessari pro le function de processo de novicio de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggestiones de imagine]]. Articulos que contine iste patronos non essera listate como processos de suggestion de imagine.",
 	"growthexperiments-edit-config-delayed": "Modificationes de iste parametro non prendera effecto immediatemente (vide le [[mw:Growth/FAQ#add-link-config|FAQ]]).",
+	"growthexperiments-info-tooltip-close-label": "Clauder",
 	"specialpages-group-growth-tools": "Utensiles de crescentia"
 }

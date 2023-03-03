@@ -93,5 +93,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "\nInformationsbox Vorlagen",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "\nDiese Vorlagen sind nötig für das [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|image suggestions]] Anfänger-Aufgaben-Feature.",
 	"growthexperiments-edit-config-delayed": "Änderungen an dieser Einstellung werden nicht sofort wirksam (siehe die [[mw:Growth/FAQ#add-link-config|FAQ]]).",
+	"growthexperiments-info-tooltip-close-label": "Schließen",
 	"specialpages-group-growth-tools": "Werkzeuge zur Neulings-Startseite"
 }

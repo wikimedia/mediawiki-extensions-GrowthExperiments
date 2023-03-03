@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dan Mihai Pitea",
 			"NGC 54"
 		]
 	},
@@ -20,7 +21,7 @@
 	"growthexperiments-edit-config-feedback-cta": "Oferiți feedback",
 	"growthexperiments-edit-config-error-invalid-title": "Pagina de configurație nu a fost configurată corect",
 	"growthexperiments-edit-config-edit-summary": "Rezumatul editării",
-	"growthexperiments-edit-config-config-changed": "Configurația a fost schimbată. S-ar putea să trebuiască să așteptați pentru câteva minute ca schimbările să aibă efect.",
+	"growthexperiments-edit-config-config-changed": "Configurația a fost schimbată. S-ar putea să trebuiască să așteptați câteva minute pentru ca schimbările să aibă efect.",
 	"growthexperiments-edit-config-return-to-form": "Vă puteți [[Special:EditGrowthConfig|întoarce]] la formularul de editare.",
 	"growthexperiments-edit-config-help-panel": "Setările panoului de ajutor",
 	"growthexperiments-edit-config-help-panel-description": "Panoul de ajutor poate fi disponibil în oricare spațiu de nume, în modul de citire și de editare, după cum este configurat mai jos. Include abilitatea de a căuta după ajutor, apăsa legături de ajutor și pune întrebări, fie mentorilor, fie la biroul de ajutor.",
@@ -86,5 +87,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Formate de infocasetă",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Aceste formate sunt necesare pentru funcția sarcinii de nou-venit de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugestii de imagine]]. Articolele ce conțin aceste formate nu vor fi listate ca sarcinii de sugestii de imagine.",
 	"growthexperiments-edit-config-delayed": "Schimbările asupra acestei setări nu vor avea imediat efect (vezi [[mw:Growth/FAQ#add-link-config|FAQ]]).",
+	"growthexperiments-info-tooltip-close-label": "Închide",
 	"specialpages-group-growth-tools": "Unelte Growth"
 }

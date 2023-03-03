@@ -66,7 +66,7 @@
 	"growthexperiments-homepage-impact-subheader-text": "ߡߍ߲ ߠߎ߬ ߘߐߜߍߣߍ߲߫ ߦߋ߫ ߓߘߍߞߍ߬ (ߞߊ߬ߦߌ߯ {{GENDER:$1|ߌ ߟߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߞߐ߫)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "ߡߍ߲ ߠߎ߬ ߘߐߜߍߣߍ߲߫ ߦߋ߫ ߓߘߍߞߍ߬ (ߊ߬ߟߎ߬ ߟߊ߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߞߐ߫)",
 	"growthexperiments-homepage-impact-subheader-subtext": "ߦߋߟߌ ߟߎ߬ ߦߙߌߞߊ ߞߊ߬ߦߌ߯ {{GENDER:$1|ߌ ߟߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߠߎ߬ ߞߍ߫ ߘߊ߫ (ߕߟߋ߬ ߆߀ ߕߊ߬ߡߌ߲߬ߣߍ߲) ߠߎ߬ ߞߘߐ߫:",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|ߌ ߓߘߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ <strong>$1</strong> {{PLURAL:|ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲߫ $1}}ߞߍ߫ (ߊ߬ߟߎ߬ ߓߍ߯ ߦߋ߫)",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|ߌ ߟߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ $1 ߟߎ߬ ߓߍ߯ ߦߋ߫",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|ߌ}} ߡߊ߫ ߞߎߡߘߊ߫ ߛߌ߫ ߛߌ߲ߘߌ߫ ߡߎߣߎ߲߬ ߥߟߊ߫ ߞߵߊ߬ߟߎ߫ ߡߊߦߟߍ߬ߡߊ߲߫.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "ߝߊ߲߬ߕߙߊ ߞߍߕߐ߫ ߦߴߊ߬ ߦߌ߬ߘߊ߬ ߟߊ߫ ߡߐ߱ ߦߙߌߞߊ ߡߍ߲ ߓߘߊ߫ ߞߎߡߘߊ߫ ߟߎ߫ ߦߋ߫ {{GENDER:$1|ߌ}} ߣߊ߬ ߡߍ߲ ߛߌ߲ߘߌ߫ ߟߊ߫ ߥߟߊ߫ ߞߵߊ߬ ߡߊߦߟߍ߬ߡߊ߲߫.",
 	"growthexperiments-homepage-impact-body-no-edit": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ <strong>ߛߌ߫</strong> ߡߊ߫ ߞߍ߫ ߞߎߡߘߊ ߞߊ߲߬",
@@ -266,6 +266,7 @@
 	"log-action-filter-growthexperiments-claimmentee": "ߡߞߊ߬ߙߊ߲߬ߘߋ߲ ߡߊߝߊ߬ߟߋ߲",
 	"log-action-filter-growthexperiments-setmentor": "ߡߞߊ߬ߙߊ߲߬ߓߊ߮ ߡߊߝߊ߬ߟߋ߲߫",
 	"log-action-filter-growthexperiments-addlink": "ߛߘߌ߬ߜߋ߲ ߞߎ߲߬ߦߌ߬ߘߊ߬ߟߌ",
+	"log-action-filter-growthexperiments-addimage": "ߖߌ߬ߦߊ߬ߓߍ ߘߐ߬ߛߎ߬ߟߌ ߟߎ߫",
 	"growthexperiments-homepage-claimmentee-invalid-username": "ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ߫ ߡߊߛߐߣߍ߲ ߟߊ߬ߓߊ߰ߙߊ߬ߕߐ߮ ߓߍ߲߬ߣߍ߲߫ ߕߍ߫",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|ߟߋ߬}} ߦߋ߫ {{GENDER:$3|ߌ ߟߊ߫}} ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ߫ ߞߎߘߊ ߘߌ߫",
 	"growthexperiments-notification-body-mentor-change": "ߊ߬ ߛߊߓߎ: $1",
@@ -460,6 +461,8 @@
 	"growthexperiments-homepage-mentorship-about-done": "ߊ߬ ߞߍ߫",
 	"growthexperiments-homepage-special-contribute-title": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߬ߛߎ߬ߟߌ ߟߎ߫",
 	"growthexperiments-homepage-special-contribute-cta": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߬ߛߎ߬ߟߌ ߦߋ߫",
+	"growthexperiments-tour-newimpact-discovery-title": "ߟߊ߬ߞߎ߬ߘߊ߬ߣߍ߲ ߠߎ߬ ߦߌ߬ߘߊ߬ߟߌ",
+	"growthexperiments-tour-newimpact-discovery-description": "{{GENDER:|ߌ ߟߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߡߞߊ߬ߝߏ߬ߟߌ߫ ߜߘߍ߫ ߟߎ߫ ߓߘߊ߫ ߝߊ߬ߙߊ߫߹",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "ߊ߬ ߟߊߛߐ߬ߘߐ߲߬",
 	"growthexperiments-homepage-newimpact-contributions-link": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߠߎ߬ ߓߍ߯ ߦߋ߫"
 }

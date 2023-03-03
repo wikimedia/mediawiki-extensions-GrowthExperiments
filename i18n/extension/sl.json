@@ -86,5 +86,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Predloge za infopolja",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Te predloge so potrebne za možnost opravila [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|predlaganja slik]] za začetnike. Članki, ki vsebujejo te predloge, ne bodo navedeni pri opravilih predlaganja slik.",
 	"growthexperiments-edit-config-delayed": "Spremembe te nastavitve ne bodo učinkovale takoj (glejte [[mw:Growth/FAQ#add-link-config|FAQ]]).",
+	"growthexperiments-info-tooltip-close-label": "Zapri",
 	"specialpages-group-growth-tools": "Orodja za rast"
 }
