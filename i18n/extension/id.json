@@ -8,6 +8,7 @@
 			"Kandar",
 			"Rachmat04",
 			"Sonic Speedy",
+			"Veracious",
 			"WillsonEP09"
 		]
 	},
@@ -53,5 +54,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Dinonaktifkan di konfigurasi situs",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Salin pengeditan: templat untuk menemukan artikel yang memerlukan pengeditan salinan, seperti peningkatan ejaan, tata bahasa, dan tanda baca.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Templat kotak info",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Templat-templat ini dibutuhkan untuk fitur tugas [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|saranan gambar]] untuk pendatang baru. Artikel yang memiliki templat ini tidak akan dicantumkan sebagai tugas saranan gambar."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Templat-templat ini dibutuhkan untuk fitur tugas [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|saranan gambar]] untuk pendatang baru. Artikel yang memiliki templat ini tidak akan dicantumkan sebagai tugas saranan gambar.",
+	"growthexperiments-info-tooltip-close-label": "Tutup"
 }
