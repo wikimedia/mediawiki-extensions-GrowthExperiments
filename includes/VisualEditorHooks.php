@@ -30,7 +30,7 @@ class VisualEditorHooks implements
 {
 
 	/** Prefix used for the VisualEditor API's plugin parameter. */
-	private const PLUGIN_PREFIX = 'ge-task-';
+	public const PLUGIN_PREFIX = 'ge-task-';
 
 	/** @var TitleFactory */
 	private $titleFactory;

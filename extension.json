@@ -328,6 +328,14 @@
 				"JobQueueGroup"
 			]
 		},
+		"levelingup": {
+			"class": "GrowthExperiments\\LevelingUp\\LevelingUpHooks",
+			"services": [
+				"MainConfig",
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
+				"GrowthExperimentsLevelingUpManager"
+			]
+		},
 		"mentor": {
 			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorHooks",
 			"services": [
@@ -538,7 +546,10 @@
 			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
 		],
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
-		"VisualEditorApiVisualEditorEditPostSave": "visualeditor",
+		"VisualEditorApiVisualEditorEditPostSave": [
+			"levelingup",
+			"visualeditor"
+		],
 		"WikimediaEventsShouldSchemaEditAttemptStepOversample": [
 			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"
 		]
@@ -2494,6 +2505,10 @@
 		"GEStructuredTaskRejectionReasonTextInputEnabled": {
 			"description": "Whether free text input should be shown when prompting the user for reasons why a suggestion was rejected.",
 			"value": false
+		},
+		"GELevelingUpManagerInvitationThresholds": {
+			"description": "Article namespace edit count thresholds at which the user should be invited to try suggested edits (assuming they haven't before).",
+			"value": [ 3, 7 ]
 		},
 		"GECampaigns": {
 			"description": "A map of campaign ID to campaign configuration. Campaign configuration currently includes these fields:\n* pattern: a regexp matched against the \"campaign\" request parameter during signup to determine whether the user should be included in some campaign\n* signupPageTemplate: a template name to use for the \"benefits\" block of Special:CreateAccount\n* signupPageTemplateParameters: a map of parameters to pass to the template\n* topics: an array of topic IDs (which are defined in GECampaignTopics) to include on the top of the topic selector as custom topics\n\nExamples can be found at https://www.mediawiki.org/wiki/Extension:GrowthExperiments/Technical_documentation/Special:EditGrowthConfig.",

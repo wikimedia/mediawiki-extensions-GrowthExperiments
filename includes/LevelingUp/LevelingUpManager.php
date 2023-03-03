@@ -7,22 +7,23 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Storage\NameTableStore;
+use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use Psr\Log\LoggerInterface;
+use RequestContext;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * Manage the "leveling up" of a user, as the user progresses in completing suggested edit tasks.
  */
 class LevelingUpManager {
-
-	private ConfigurationLoader $configurationLoader;
-	private UserImpactLookup $userImpactLookup;
-	private TaskSuggesterFactory $taskSuggesterFactory;
-	private LoggerInterface $logger;
 
 	/**
 	 * A JSON-encoded array containing task type IDs. If a task type ID is present in this array, it means that the
@@ -33,14 +34,30 @@ class LevelingUpManager {
 	public const TASK_TYPE_PROMPT_OPT_OUTS_PREF = 'growthexperiments-levelingup-tasktype-prompt-optouts';
 	public const CONSTRUCTOR_OPTIONS = [
 		'GELevelingUpManagerTaskTypeCountThresholdMultiple',
+		'GELevelingUpManagerInvitationThresholds',
 	];
+
 	private ServiceOptions $options;
-	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private IReadableDatabase $dbReplica;
+	private IReadableDatabase $dbPrimary;
+	private NameTableStore $changeTagDefStore;
 	private UserOptionsLookup $userOptionsLookup;
+	private UserFactory $userFactory;
+	private UserEditTracker $userEditTracker;
+	private ConfigurationLoader $configurationLoader;
+	private UserImpactLookup $userImpactLookup;
+	private TaskSuggesterFactory $taskSuggesterFactory;
+	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private LoggerInterface $logger;
 
 	/**
 	 * @param ServiceOptions $options
+	 * @param IReadableDatabase $dbReplica
+	 * @param IReadableDatabase $dbPrimary
+	 * @param NameTableStore $changeTagDefStore
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param UserFactory $userFactory
+	 * @param UserEditTracker $userEditTracker
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param UserImpactLookup $userImpactLookup
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
@@ -49,7 +66,12 @@ class LevelingUpManager {
 	 */
 	public function __construct(
 		ServiceOptions $options,
+		IReadableDatabase $dbReplica,
+		IReadableDatabase $dbPrimary,
+		NameTableStore $changeTagDefStore,
 		UserOptionsLookup $userOptionsLookup,
+		UserFactory $userFactory,
+		UserEditTracker $userEditTracker,
 		ConfigurationLoader $configurationLoader,
 		UserImpactLookup $userImpactLookup,
 		TaskSuggesterFactory $taskSuggesterFactory,
@@ -58,12 +80,17 @@ class LevelingUpManager {
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
+		$this->dbReplica = $dbReplica;
+		$this->dbPrimary = $dbPrimary;
+		$this->changeTagDefStore = $changeTagDefStore;
+		$this->userOptionsLookup = $userOptionsLookup;
+		$this->userFactory = $userFactory;
+		$this->userEditTracker = $userEditTracker;
 		$this->configurationLoader = $configurationLoader;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->logger = $logger;
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -186,6 +213,65 @@ class LevelingUpManager {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Whether to show the user an invitation to try out suggested edits, right after the user did
+	 * a normal edit.
+	 * We show an invitation if the user's mainspace edit count (after the edit) is in
+	 * $wgGELevelingUpManagerInvitationThresholds, and they did not make any suggested edit yet.
+	 * @param UserIdentity $userIdentity
+	 * @return bool
+	 */
+	public function shouldInviteUserAfterNormalEdit( UserIdentity $userIdentity ): bool {
+		$thresholds = $this->options->get( 'GELevelingUpManagerInvitationThresholds' );
+		if ( !$thresholds ) {
+			return false;
+		}
+
+		// Check total edit counts first, which is fast; don't bother checking users with many edits,
+		// for some arbitrary definition of "many".
+		// @phan-suppress-next-line PhanParamTooFewInternalUnpack
+		$quickThreshold = 3 * max( ...$thresholds );
+		if ( $this->userEditTracker->getUserEditCount( $userIdentity ) > $quickThreshold ) {
+			return false;
+		}
+
+		$wasPosted = RequestContext::getMain()->getRequest()->wasPosted();
+		$db = $wasPosted ? $this->dbPrimary : $this->dbReplica;
+
+		$user = $this->userFactory->newFromUserIdentity( $userIdentity );
+		$tagId = $this->changeTagDefStore->acquireId( TaskTypeHandler::NEWCOMER_TASK_TAG );
+		$editCounts = $db->newSelectQueryBuilder()
+			->table( 'revision' )
+			->join( 'page', null, 'rev_page = page_id' )
+			->leftJoin( 'change_tag', null, [ 'rev_id = ct_rev_id', 'ct_tag_id' => $tagId ] )
+			->fields( [
+				'article_edits' => 'COUNT(*)',
+				'suggested_edits' => 'COUNT(ct_rev_id)',
+				'last_edit_timestamp' => 'MAX(rev_timestamp)',
+			] )
+			->conds( [
+				'rev_actor' => $user->getActorId(),
+				'page_namespace' => NS_MAIN,
+				// count deleted revisions for now
+			] )
+			// limit() not needed because of the edit count check above, and it would be somewhat
+			// complicated to combine it with COUNT()
+			->fetchRow();
+
+		if ( $editCounts->suggested_edits > 0 ) {
+			return false;
+		}
+		$articleEdits = (int)$editCounts->article_edits;
+		if ( !$wasPosted && $editCounts->last_edit_timestamp < $db->timestamp( time() - 3 ) ) {
+			// If the last edit was more than 5 seconds ago, we are probably not seeing the actual
+			// last edit due to replication lag. 5 is chosen arbitrarily to be large enough to
+			// account for slow saves and the VE reload, but small enough to account for the user
+			// making edits in quick succession.
+			$articleEdits++;
+		}
+		return in_array( $articleEdits, $thresholds, true );
 	}
 
 }

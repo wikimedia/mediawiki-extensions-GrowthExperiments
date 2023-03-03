@@ -14,10 +14,14 @@ use GrowthExperiments\UserImpact\UserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use HashConfig;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Storage\NameTableStore;
+use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * @covers \GrowthExperiments\LevelingUp\LevelingUpManager
@@ -205,10 +209,18 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 	): LevelingUpManager {
 		return new LevelingUpManager(
 			new ServiceOptions(
-				[ 'GELevelingUpManagerTaskTypeCountThresholdMultiple' ],
-				new HashConfig( [ 'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5 ] )
+				LevelingUpManager::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,
+					'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
+				] )
 			),
+			$this->createNoOpAbstractMock( IReadableDatabase::class ),
+			$this->createNoOpAbstractMock( IReadableDatabase::class ),
+			$this->createNoOpAbstractMock( NameTableStore::class ),
 			$userOptionsLookup ?? $this->getUserOptionsLookup(),
+			$this->createNoOpAbstractMock( UserFactory::class ),
+			$this->createNoOpAbstractMock( UserEditTracker::class ),
 			$configurationLoader ?? $this->getConfigurationLoader(),
 			$userImpactLookup ?? $this->getUserImpactLookup(),
 			$taskSuggesterFactory ?? $this->getTaskSuggesterFactory(),

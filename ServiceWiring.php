@@ -1041,7 +1041,12 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new LevelingUpManager(
 			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getDBLoadBalancer()->getConnection( DB_PRIMARY ),
+			$services->getChangeTagDefStore(),
 			$services->getUserOptionsLookup(),
+			$services->getUserFactory(),
+			$services->getUserEditTracker(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getUserImpactLookup(),
 			$growthServices->getTaskSuggesterFactory(),
