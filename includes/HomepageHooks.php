@@ -20,6 +20,7 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
+use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -53,6 +54,7 @@ use Html;
 use IContextSource;
 use IDBAccessObject;
 use JobQueueGroup;
+use JobSpecification;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
@@ -887,6 +889,20 @@ class HomepageHooks implements
 						)
 					);
 				} );
+
+				$jobQueue = $this->jobQueueGroup->get( NotificationKeepGoingJob::JOB_NAME );
+				if ( $this->config->get( 'GELevelingUpFeaturesEnabled' ) &&
+					$this->experimentUserManager->isUserInVariant( $user, VariantHooks::VARIANT_CONTROL ) &&
+					$jobQueue->delayedJobsEnabled() ) {
+					$this->jobQueueGroup->lazyPush(
+						new JobSpecification( NotificationKeepGoingJob::JOB_NAME, [
+							'userId' => $user->getId(),
+							// Process the job X seconds after account creation (default: 48 hours)
+							'jobReleaseTimestamp' => (int)wfTimestamp() +
+								$this->config->get( 'GELevelingUpKeepGoingNotificationSendAfterSeconds' )
+						] )
+					);
+				}
 			}
 		} else {
 			$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.UsersNotOptedIntoGrowthFeatures' );

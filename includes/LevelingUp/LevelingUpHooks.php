@@ -3,6 +3,8 @@
 namespace GrowthExperiments\LevelingUp;
 
 use Config;
+use EchoAttributeManager;
+use EchoUserLocator;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\VariantHooks;
@@ -10,6 +12,7 @@ use GrowthExperiments\VisualEditorHooks;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -18,7 +21,8 @@ use MediaWiki\User\UserIdentity;
  */
 class LevelingUpHooks implements
 	BeforePageDisplayHook,
-	VisualEditorApiVisualEditorEditPostSaveHook
+	VisualEditorApiVisualEditorEditPostSaveHook,
+	UserGetDefaultOptionsHook
 {
 
 	private Config $config;
@@ -110,4 +114,38 @@ class LevelingUpHooks implements
 		$out->addJsConfigVars( 'wgGELevelingUpInviteToSuggestedEditsImmediate', true );
 	}
 
+	/**
+	 * Add GrowthExperiments events to Echo
+	 *
+	 * @param array &$notifications array of Echo notifications
+	 * @param array &$notificationCategories array of Echo notification categories
+	 * @param array &$icons array of icon details
+	 */
+	public static function onBeforeCreateEchoEvent(
+		&$notifications, &$notificationCategories, &$icons
+	) {
+		$notificationCategories['ge-newcomer'] = [
+			'tooltip' => 'echo-pref-tooltip-ge-newcomer',
+		];
+		$notifications['keep-going'] = [
+			'category' => 'ge-newcomer',
+			'group' => 'positive',
+			'section' => 'message',
+			'canNotifyAgent' => true,
+			'presentation-model' => EchoKeepGoingPresentationModel::class,
+			EchoAttributeManager::ATTR_LOCATORS => [
+				[ EchoUserLocator::class . '::locateEventAgent' ]
+			]
+		];
+
+		$icons['growthexperiments-keep-going'] = [
+			'path' => 'GrowthExperiments/images/notifications-keep-going.svg'
+		];
+	}
+
+	/** @inheritDoc */
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
+		$defaultOptions['echo-subscriptions-email-ge-newcomer'] = true;
+		$defaultOptions['echo-subscriptions-web-ge-newcomer'] = true;
+	}
 }
