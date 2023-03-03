@@ -23,6 +23,9 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->setMwGlobals( 'wgGEMentorDashboardEnabled', true );
+
+		// Prevent caching of MediaWiki:GrowthMentors.json
+		$this->setMainCache( CACHE_NONE );
 	}
 
 	/**

@@ -20,6 +20,11 @@ class ReassignMenteesIntegrationTest extends MediaWikiIntegrationTestCase {
 	/** @inheritDoc */
 	protected $tablesUsed = [ 'user', 'growthexperiments_mentor_mentee' ];
 
+	protected function setUp(): void {
+		parent::setUp();
+		$this->setMainCache( CACHE_NONE );
+	}
+
 	private function getNMenteesForMentor(
 		int $numOfMentees,
 		UserIdentity $primaryMentor,

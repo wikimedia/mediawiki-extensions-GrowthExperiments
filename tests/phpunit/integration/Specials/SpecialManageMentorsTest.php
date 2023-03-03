@@ -26,6 +26,8 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	protected function setUp(): void {
 		parent::setUp();
 
+		$this->setMainCache( CACHE_NONE );
+
 		// add one mentor to the system
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$this->mentorUser = $this->getMutableTestUser()->getUser();

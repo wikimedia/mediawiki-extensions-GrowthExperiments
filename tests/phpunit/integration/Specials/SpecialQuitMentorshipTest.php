@@ -16,6 +16,11 @@ use User;
  */
 class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 
+	protected function setUp(): void {
+		parent::setUp();
+		$this->setMainCache( CACHE_NONE );
+	}
+
 	/**
 	 * @inheritDoc
 	 */

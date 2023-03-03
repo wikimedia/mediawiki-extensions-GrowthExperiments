@@ -19,6 +19,11 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class ApiManageMentorListTest extends ApiTestCase {
 
+	protected function setUp(): void {
+		parent::setUp();
+		$this->setMainCache( CACHE_NONE );
+	}
+
 	private function serializeMentor( Mentor $mentor ) {
 		return [
 			'message' => $mentor->hasCustomIntroText() ? $mentor->getIntroText() : null,
