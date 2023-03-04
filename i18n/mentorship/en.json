@@ -35,6 +35,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label": "Expand the mentees filters form",
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label": "Collapse the mentees filters form",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Search",
+	"growthexperiments-mentor-dashboard-mentee-overview-talk": "talk",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "active $1 ago",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "unknown",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Show $1",

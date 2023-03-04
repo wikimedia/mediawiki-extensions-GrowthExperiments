@@ -167,6 +167,10 @@ class MenteesHandler extends SimpleHandler {
 					$menteeData['username'],
 					NS_USER
 				)->isKnown();
+				$menteeData['usertalk_exists'] = $this->titleFactory->newFromText(
+					$menteeData['username'],
+					NS_USER_TALK
+				)->isKnown();
 				$menteeData['user_is_hidden'] = $this->userFactory->newFromName(
 					$menteeData['username']
 				)->isHidden();

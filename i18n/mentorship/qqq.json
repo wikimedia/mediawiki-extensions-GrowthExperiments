@@ -41,6 +41,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label": "Icon label for the expand icon in the mentees filters form\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label": "Icon label for the collapse icon in the mentees filters form\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Placeholder in the search box\n\n{{doc-growthexperiments-mentor-dashboard}}\n\n{{identical|Search}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-talk": "Description for a link pointing to mentee's user talk page\n\n{{doc-growthexperiments-mentor-dashboard}}\n\n{{identical|talk}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "Display user activity\n\nParameters:\n* $1 - last time user saved an edit in human readable form\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "Message displayed instead of user tenure when it is unavailable\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Label for the page size filter\n\nParameters:\n* $1 - page size in number of rows\n\n{{doc-growthexperiments-mentor-dashboard}}",

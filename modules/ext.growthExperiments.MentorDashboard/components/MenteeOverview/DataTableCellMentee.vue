@@ -11,17 +11,26 @@
 			></cdx-icon>
 		</cdx-button>
 		<div class="ext-growthExperiments-DataTableCellMentee__user-info">
-			<a
-				:class="{
-					new: !value.userPageExists,
-					'ext-growthExperiments-DataTableCellMentee__suppressed': value.userIsHidden
-				}"
-				:href="usernameHref"
+			<div
+				class="ext-growthExperiments-DataTableCellMentee-UserLink"
+				:class="{ 'ext-growthExperiments-DataTableCellMentee__suppressed': value.userIsHidden }"
 			>
-				<span class="ext-growthExperiments-DataTableCellMentee__username">
+				<a
+					class="ext-growthExperiments-DataTableCellMentee-UserLink__username"
+					:class="{ new: !value.userPageExists }"
+					:href="usernameHref"
+				>
 					{{ value.username }}
+				</a>
+				<span class="ext-growthExperiments-DataTableCellMentee-UserLink__talkpage">
+					<a
+						:class="{ new: !value.userTalkExists }"
+						:href="usertalkHref"
+					>
+						{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-talk' ) }}
+					</a>
 				</span>
-			</a>
+			</div>
 			<div class="ext-growthExperiments-DataTableCellMentee__user-info__last-seen">
 				{{ $i18n( 'growthexperiments-mentor-dashboard-mentee-overview-active-ago', value.lastActive ) }}
 			</div>
@@ -58,6 +67,9 @@ module.exports = exports = {
 		},
 		usernameHref() {
 			return ( new mw.Title( this.value.username, 2 ) ).getUrl();
+		},
+		usertalkHref() {
+			return ( new mw.Title( this.value.username, 3 ) ).getUrl();
 		}
 	},
 	methods: {
@@ -96,7 +108,28 @@ module.exports = exports = {
 		}
 	}
 
-	&__suppressed &__username {
+	&-UserLink {
+		display: flex;
+
+		&__username {
+			.text-ellipsis();
+			min-width: 0;
+		}
+
+		&__talkpage {
+			margin-left: 2px;
+		}
+
+		&__talkpage:before {
+			content: '(';
+		}
+
+		&__talkpage:after {
+			content: ')';
+		}
+	}
+
+	&__suppressed {
 		text-decoration: line-through;
 		text-decoration-style: double;
 	}
