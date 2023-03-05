@@ -38,7 +38,7 @@ class PersonalizedPraiseHooksTest extends MediaWikiIntegrationTestCase {
 		$this->mockPageviews();
 		$this->setMwGlobals( [
 			'wgGEPersonalizedPraiseBackendEnabled' => true,
-			'wgGEPersonalizedPraiseEdits' => 1,
+			'wgGEPersonalizedPraiseMinEdits' => 1,
 		] );
 
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
