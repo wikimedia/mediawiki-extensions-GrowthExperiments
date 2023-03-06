@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Carcassonne93",
-			"NGC 54"
+			"NGC 54",
+			"Dan Mihai Pitea"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bun venit}}, {{bidi:$1}}!",
@@ -25,8 +26,8 @@
 	"growthexperiments-homepage-startediting-subheader-add-image": "Înainte de a adăuga o imagine, încercați să învățați cu niște editări mai ușoare!",
 	"growthexperiments-homepage-startediting-subheader-new-page": "Înainte de a crea un articol nou, încercați să învățați cu niște editări mai ușoare!",
 	"growthexperiments-homepage-startediting-subheader-other": "Ajutați prin adăugarea la cunoștințele lumii cu niște corecturi ușoare pe articolele Wikipedia.",
-	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Vedeți sugerate",
-	"growthexperiments-homepage-startediting-button": "Vedeți editări sugerate",
+	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Vedeți modificări sugerate",
+	"growthexperiments-homepage-startediting-button": "Vedeți modificări sugerate",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 din $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Anulare",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Continuare",
@@ -35,7 +36,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-subheader": "Editările {{GENDER:|dvs.}} ajută la îmbunătățirea Wikipediei și duce mai departe misiunea de a împărtăși cu lumea cunoaștere liberă. Continuați să începeți cu editări sugerate mici.",
 	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>Când {{GENDER:|v-ați}} creat {{GENDER:|contul}}, {{GENDER:|ați}} spus că {{GENDER:|doreați}} să adăugați o fotografie sau imagine.</strong> Acesta este un mod de editare important dar provocator, așa că {{GENDER:|vă}} recomandăm să încercați mai întâi niște editări simple. Dacă mai degrabă {{GENDER:|ați}} merge direct înainte la adăugarea unei fotografii sau imagini, {{GENDER:|puteți}} [$1 afla aici cum].",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Când {{GENDER:|v-ați}} creat {{GENDER:|contul}}, {{GENDER:|ați}} spus că {{GENDER:|doreați}} să creați un articol nou.</strong> Acesta este un mod de editare important dar provocator, așa că {{GENDER:|vă}} recomandăm să încercați mai întâi niște editări simple asupra unor articole existente. Dacă mai degrabă {{GENDER:|ați}} merge direct înainte la crearea unui articol nou, {{GENDER:|puteți}} [$1 afla aici cum].",
-	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Alegeți niște subiecte pe care sunteți {{GENDER:|interesat|interesată|interesat}} să le editați",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Alegeți niște subiecte a căror dezvoltare vă interesează",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Vom încerca să vă sugerăm articole care se potrivesc cu interesele {{GENDER:|dvs.}}",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Înapoi",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Primiți sugestii",

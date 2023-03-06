@@ -18,7 +18,8 @@
 			"Toa",
 			"McDutchie",
 			"GpieroMW",
-			"Pierpao"
+			"Pierpao",
+			"Vivbod"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
@@ -76,9 +77,9 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Facile",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Medio",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difficile",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Raccomandato per chi sta compiendo i suoi primi passi nelle modifiche.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Consigliato dopo aver completato alcune modifiche semplici.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Consigliato dopo aver imparato le principali pratiche su Wikipedia.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Raccomandato per quando stai imparando per la prima volta a modificare.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Dopo che hai completato alcune modifiche semplici.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Quando hai imparato le principali pratiche su Wikipedia.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Correggere e aggiungere collegamenti ad altre voci.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Aggiungere fonti e aggiornare voci obsolete",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Creare una nuova voce e ampliare voci brevi già esistenti.",
