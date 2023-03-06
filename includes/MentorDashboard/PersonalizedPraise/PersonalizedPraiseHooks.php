@@ -6,9 +6,15 @@ use Config;
 use DeferredUpdates;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
+use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 
-class PersonalizedPraiseHooks implements PageSaveCompleteHook {
+class PersonalizedPraiseHooks implements
+	PageSaveCompleteHook,
+	GetPreferencesHook,
+	UserGetDefaultOptionsHook
+{
 
 	private Config $config;
 	private MentorManager $mentorManager;
@@ -65,5 +71,23 @@ class PersonalizedPraiseHooks implements PageSaveCompleteHook {
 				);
 			}
 		} );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onGetPreferences( $user, &$preferences ) {
+		$preferences[ PraiseworthyConditionsLookup::WAS_PRAISED_PREF ] = [
+			'type' => 'api'
+		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
+		$defaultOptions += [
+			PraiseworthyConditionsLookup::WAS_PRAISED_PREF => false,
+		];
 	}
 }

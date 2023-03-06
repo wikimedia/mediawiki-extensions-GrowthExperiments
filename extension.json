@@ -466,6 +466,7 @@
 			"homepage",
 			"mentordashboard",
 			"mentoruseroptions",
+			"personalizedpraise",
 			"tour",
 			"variant",
 			"welcomeSurvey"
@@ -541,6 +542,7 @@
 			"homepage",
 			"mentordashboard",
 			"mentoruseroptions",
+			"personalizedpraise",
 			"tour"
 		],
 		"UserGetRights": "mentor",
