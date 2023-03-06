@@ -9,6 +9,7 @@
 			"Josecurioso",
 			"Julian leonardo paez",
 			"LORDZRAWN",
+			"Pedro Zimmer",
 			"Tiberius1701",
 			"Zapipedia (WMF)",
 			"ZebaX2010"
@@ -40,6 +41,10 @@
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Próxima sugerencia:",
 	"growthexperiments-help-panel-postedit-footer": "Ver todas las ediciones sugeridas",
 	"growthexperiments-help-panel-postedit-suggestededits-info": "Otros usuarios de {{SITENAME}} han encontrado artículos que necesitan trabajo. Continúa editando con estas ediciones sugeridas.",
+	"growthexperiments-help-panel-postedit-nonsuggested-header": "Prueba una edición sugerida",
+	"growthexperiments-help-panel-postedit-nonsuggested-body": "Las ediciones sugeridas ayudan a los nuevos editores a conocer las prácticas recomendadas de {{SITENAME}} y a desarrollar habilidades básicas de edición.",
+	"growthexperiments-help-panel-postedit-nonsuggested-try-button-text": "Prueba las ediciones sugeridas",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "No, gracias",
 	"growthexperiments-help-panel-questionreview-title": "Preguntar en el Café",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Pregunta a tu mentor",
 	"growthexperiments-help-panel-questionreview-header": "Cuando envías una pregunta, se <strong>comparte públicamente</strong> con tu nombre de usuario («$2») en $1, donde otro voluntario tratará de responderte en un plazo aproximado de un día.",

@@ -4,6 +4,7 @@
 			"Albertoleoncio",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
+			"Re demz",
 			"YuriNikolai"
 		]
 	},
@@ -82,5 +83,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Os artigos que contêm categorias definidas aqui não serão mostrados aos usuários como tarefas para este tipo de tarefa.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Predefinições de caixas informativas",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas predefinições são necessárias para a funcionalidade das tarefas de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugestão de imagens]] para recém-chegados. Os artigos que contenham estas predefinições não serão listados como tarefas de sugestão de imagens.",
+	"growthexperiments-info-tooltip-close-label": "Fechar",
 	"specialpages-group-growth-tools": "Ferramentas de crescimento"
 }

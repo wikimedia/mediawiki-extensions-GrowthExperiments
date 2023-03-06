@@ -2,12 +2,35 @@
 	"@metadata": {
 		"authors": [
 			"Adithyak1997",
+			"Jinoytommanjaly",
 			"Path slopu"
 		]
 	},
-	"growthexperiments-help-panel-submit-question-button-text": "എന്റെ ചോദ്യം പോസ്റ്റുചെയ്യുക",
+	"growthexperiments-help-panel-tog-help-panel": "എഡിറ്റർ സഹായമേശ പ്രവർത്തനക്ഷമമാക്കുക",
+	"growthexperiments-help-panel-cta-button-text": "എഡിറ്റിംഗിൽ സഹായം നേടുക",
+	"growthexperiments-help-panel-question-button-text": "തുടരുക",
+	"growthexperiments-help-panel-submit-question-button-text": "പ്രസിദ്ധീകരിക്കുക",
+	"growthexperiments-help-panel-return-home-button-text": "ചെയ്തു",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "എഡിറ്റിംഗിനെക്കുറിച്ചുള്ള മുൻനിര സഹായ പേജുകൾ",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "കൂടുതൽ സഹായ ലേഖനങ്ങൾ കാണുക",
+	"growthexperiments-help-panel-question-widget-header": "താങ്കളുടെ ചോദ്യം കമ്മ്യൂണിറ്റി സഹായമേശയിൽ പോസ്റ്റ് ചെയ്യുക",
+	"growthexperiments-help-panel-question-placeholder": "ഹലോ പറഞ്ഞ് {{GENDER:$1|താങ്കളുടെ}} ചോദ്യം ചോദിക്കുക.",
 	"growthexperiments-help-panel-back-home": "പിന്നോട്ട്",
 	"growthexperiments-help-panel-close": "ചെയ്തു",
-	"growthexperiments-help-panel-questionposter-invalid-title": "അസാധുവായ ശീർഷകം."
+	"growthexperiments-help-panel-home-title": "എഡിറ്റിംഗിൽ സഹായം നേടുക",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|താങ്കൾ}} ഒരു എഡിറ്റ് പ്രസിദ്ധീകരിച്ചു. നന്ദി, തുടരുക!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|താങ്കൾ}} ഒരു എഡിറ്റ് സംരക്ഷിച്ചു. നന്ദി, തുടരുക!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "നിർദ്ദേശങ്ങൾ അവലോകനം ചെയ്തതിന് നന്ദി. മുൻപോട്ട് തുടരുക!",
+	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "ഇന്ന് ലഭ്യമായ എല്ലാ ചിത്രങ്ങളുടെ ലേഖനങ്ങളും പൂർത്തിയായി. നന്നായി ചെയ്തു!",
+	"growthexperiments-help-panel-questionreview-title": "സഹായമേശയിൽ ചോദിക്കുക",
+	"growthexperiments-help-panel-questionreview-title-mentor": "താങ്കളുടെ ഉപദേശകനോട് ചോദിക്കുക",
+	"growthexperiments-help-panel-questionreview-header": "നിങ്ങൾ ഒരു ചോദ്യം സമർപ്പിക്കുമ്പോൾ, അത് നിങ്ങളുടെ ഉപയോക്തൃനാമമായ \"$2\" എന്ന പേരിൽ <strong>പരസ്യമായി</strong> $1 ലേക്ക് പ്രസിദ്ധീകരിക്കപ്പെടും, അവിടെ മറ്റൊരു സന്നദ്ധ എഡിറ്റർ അടുത്ത ദിവസത്തിനകം ഉത്തരം നൽകാൻ ശ്രമിക്കും.",
+	"growthexperiments-help-panel-questionreview-label": "താങ്കളുടെ ചോദ്യം",
+	"growthexperiments-help-panel-questionreview-include-article-title": "എന്റെ ചോദ്യത്തോടൊപ്പം പേജ് ശീർഷകം കൂടി ഉൾപ്പെടുത്തുക",
+	"growthexperiments-help-panel-question-subject-template": "സഹായമേശ ചോദ്യം",
+	"growthexperiments-help-panel-question-subject-template-with-title": "[[:$1|$1]]-ലേക്ക് സഹായമേശ ചോദ്യം",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "ഉപയോക്തൃ ഹോംപേജിൽ നിന്നുള്ള സഹായം മൊഡ്യൂൾ ചോദ്യം",
+	"growthexperiments-help-panel-questionposter-invalid-title": "അസാധുവായ ശീർഷകം.",
+	"growthexperiments-help-panel-button-header-general-help": "പൊതുവായ തിരുത്തൽ സഹായം",
+	"growthexperiments-help-panel-general-help-title": "പൊതുവായ തിരുത്തൽ സഹായം"
 }

@@ -19,5 +19,6 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Да",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Не",
 	"growthexperiments-edit-config-newcomertasks": "Предложене измене",
-	"growthexperiments-edit-config-newcomer-tasks-disabled": "Онемогућено"
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Онемогућено",
+	"growthexperiments-info-tooltip-close-label": "Затвори"
 }

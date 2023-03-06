@@ -8,7 +8,8 @@
 			"Omotecho",
 			"Shirayuki",
 			"Tmv",
-			"Yamagata Yusuke"
+			"Yamagata Yusuke",
+			"もなー(偽物)"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "編集者ヘルプパネルを有効にする",
@@ -37,6 +38,15 @@
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "次の提案:",
 	"growthexperiments-help-panel-postedit-footer": "すべてのお勧めの編集を見る",
 	"growthexperiments-help-panel-postedit-suggestededits-info": "{{SITENAME}}の他の利用者が作業が必要な記事を見つけました。これらのお勧めの編集を閲覧して、{{GENDER:|あなたの}}編集を続けてください。",
+	"growthexperiments-help-panel-postedit-trynewtask-try-button-text": "新しいタスクを試す",
+	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "いいえ、結構です",
+	"growthexperiments-help-panel-postedit-trynewtask-header": "新しいタイプの編集を試して、あなたの技術レベルを上げてください",
+	"growthexperiments-help-panel-postedit-trynewtask-subheader-tasktype": "あなたの貢献に感謝します。新しい<strong>$1</strong>をお試しください",
+	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "次回から表示しない",
+	"growthexperiments-help-panel-postedit-nonsuggested-header": "おすすめの編集を試す",
+	"growthexperiments-help-panel-postedit-nonsuggested-body": "提案された編集は、新しい編集者が {{SITENAME}} のベスト プラクティスを学び、主要な編集スキルを開発するのに役立ちます。",
+	"growthexperiments-help-panel-postedit-nonsuggested-try-button-text": "おすすめの編集を試す",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "いいえ、結構です",
 	"growthexperiments-help-panel-questionreview-title": "利用案内に質問をする",
 	"growthexperiments-help-panel-questionreview-title-mentor": "指導役に質問する",
 	"growthexperiments-help-panel-questionreview-header": "投稿した質問は利用者名とともに$1に「$2」として<strong>公開され</strong>、翌日か数日のうちに他の編集者がボランティアで回答しようと努めてくれるはずです。",

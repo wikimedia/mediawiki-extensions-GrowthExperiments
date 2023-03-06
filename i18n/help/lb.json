@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "De Panneau mat den Hëllefe fir Auteuren aktivéieren",
@@ -21,6 +22,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Eng aner Propositioun änneren:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Nächste Virschlag:",
 	"growthexperiments-help-panel-postedit-footer": "All proposéiert Ännerunge weisen",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "Nee Merci",
 	"growthexperiments-help-panel-questionreview-title": "Den Helpdesk froen",
 	"growthexperiments-help-panel-questionreview-label": "Är Fro",
 	"growthexperiments-help-panel-suggestededits-title": "Proposéiert Ännerungen",
