@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"ValeJappo"
+			"ValeJappo",
+			"Vivbod"
 		]
 	},
 	"apihelp-growthstarmentee-summary": "Aggiungi o rimuovi un allievo dai preferiti dell'utenza attuale (salvati privatamente e non pubblicamente registrati)",
@@ -15,5 +16,6 @@
 	"apihelp-query+growthmentorstatus-summary": "Richiedi lo stato di tutor dell'utenza attuale",
 	"apihelp-growthmanagementorlist-param-geaction": "Azione",
 	"apihelp-growthmanagementorlist-param-weight": "Peso",
+	"apihelp-growthmanagementorlist-param-autoassigned": "È il tutor automaticamente assegnato ai nuovi arrivati?",
 	"apihelp-growthmanagementorlist-param-summary": "Motivo della modifica"
 }
