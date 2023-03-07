@@ -213,6 +213,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 				new HashConfig( [
 					'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,
 					'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
+					'GELevelingUpKeepGoingNotificationThresholds' => [ 1, 4 ],
 				] )
 			),
 			$this->createNoOpAbstractMock( IReadableDatabase::class ),

@@ -58,7 +58,15 @@
 		"setUserMentorDatabaseJob": "GrowthExperiments\\Mentorship\\Store\\SetUserMentorDatabaseJob",
 		"reassignMenteesJob": "GrowthExperiments\\Mentorship\\ReassignMenteesJob",
 		"menteeOverviewUpdateDataForMentor": "GrowthExperiments\\MentorDashboard\\MenteeOverview\\MenteeOverviewUpdateDataForMentorJob",
-		"refreshUserImpactJob": "GrowthExperiments\\UserImpact\\RefreshUserImpactJob"
+		"refreshUserImpactJob": "GrowthExperiments\\UserImpact\\RefreshUserImpactJob",
+		"notificationKeepGoingJob": {
+			"class": "GrowthExperiments\\LevelingUp\\NotificationKeepGoingJob",
+			"services": [
+				"UserIdentityLookup",
+				"SpecialPageFactory",
+				"GrowthExperimentsLevelingUpManager"
+			]
+		}
 	},
 	"APIModules": {
 		"helppanelquestionposter": {
@@ -432,7 +440,8 @@
 			"mentor"
 		],
 		"BeforeCreateEchoEvent": [
-			"GrowthExperiments\\Mentorship\\Hooks\\MentorHooks::onBeforeCreateEchoEvent"
+			"GrowthExperiments\\Mentorship\\Hooks\\MentorHooks::onBeforeCreateEchoEvent",
+			"GrowthExperiments\\LevelingUp\\LevelingUpHooks::onBeforeCreateEchoEvent"
 		],
 		"BeforePageDisplay": [
 			"helppanel",
@@ -543,7 +552,8 @@
 			"mentordashboard",
 			"mentoruseroptions",
 			"personalizedpraise",
-			"tour"
+			"tour",
+			"levelingup"
 		],
 		"UserGetRights": "mentor",
 		"UnitTestsAfterDatabaseSetup": "schema",
@@ -569,7 +579,7 @@
 				"HelpPanel": "/analytics/legacy/helppanel/1.3.2",
 				"HomepageModule": "/analytics/legacy/homepagemodule/1.6.5",
 				"NewcomerTask": "/analytics/legacy/newcomertask/1.0.0",
-				"HomepageVisit": "/analytics/legacy/homepagevisit/1.5.1"
+				"HomepageVisit": "/analytics/legacy/homepagevisit/1.5.2"
 			}
 		},
 		"CirrusSearch": {
@@ -2189,6 +2199,15 @@
 		"GELevelingUpFeaturesEnabled": {
 			"description": "Feature flag to enable \"leveling up\" (phab:#growthexperiments-levelingup) functionality.",
 			"value": true
+		},
+		"GELevelingUpKeepGoingNotificationSendAfterSeconds": {
+			"description": "Send a 'keep going' notification to new editors after this many seconds. Defaults to 48 hours.",
+			"value": "172800"
+		},
+		"GELevelingUpKeepGoingNotificationThresholds": {
+			"description": "Article namespace edit count thresholds at which the user should receive a notification to keep going with suggested edits. The user can receive a notification if their edit count is greater than or equal to the first number in the array, and lower than or equal to the second number in the array.",
+			"value": [ 1, 4 ],
+			"merge_strategy": "provide_default"
 		},
 		"GELevelingUpManagerTaskTypeCountThresholdMultiple": {
 			"description": "The task type count threshold to use when determining whether to prompt a user to try a new task type. If the user has completed more than this number of a particular task type, it will not be suggested as a next task type to try. If a user completes edits for a task type in a multiple of of this number (e.g. 5, 10, or 15 with the default value), then the user is prompted to try a new task type.",

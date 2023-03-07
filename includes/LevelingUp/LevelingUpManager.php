@@ -35,6 +35,7 @@ class LevelingUpManager {
 	public const CONSTRUCTOR_OPTIONS = [
 		'GELevelingUpManagerTaskTypeCountThresholdMultiple',
 		'GELevelingUpManagerInvitationThresholds',
+		'GELevelingUpKeepGoingNotificationThresholds',
 	];
 
 	private ServiceOptions $options;
@@ -272,6 +273,32 @@ class LevelingUpManager {
 			$articleEdits++;
 		}
 		return in_array( $articleEdits, $thresholds, true );
+	}
+
+	/**
+	 * Get the suggested edits count from the user's impact data.
+	 *
+	 * @param UserIdentity $userIdentity
+	 * @return int
+	 */
+	public function getSuggestedEditsCount( UserIdentity $userIdentity ): int {
+		$impact = $this->userImpactLookup->getUserImpact( $userIdentity );
+		return $impact->getNewcomerTaskEditCount();
+	}
+
+	/**
+	 * Whether to send the keep going notification to a user.
+	 *
+	 * Note that this only checks the edit thresholds; the event should be enqueued
+	 * at account creation time with a job release timestamp of 48 hours.
+	 *
+	 * @param UserIdentity $userIdentity
+	 * @return bool
+	 */
+	public function shouldSendKeepGoingNotification( UserIdentity $userIdentity ): bool {
+		$suggestedEditCount = $this->getSuggestedEditsCount( $userIdentity );
+		$thresholds = $this->options->get( 'GELevelingUpKeepGoingNotificationThresholds' );
+		return $suggestedEditCount >= $thresholds[0] && $suggestedEditCount <= $thresholds[1];
 	}
 
 }
