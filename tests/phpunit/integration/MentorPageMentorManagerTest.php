@@ -33,6 +33,9 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$this->insertPage( 'MediaWiki:GrowthMentors.json', FormatJson::encode( [
 			'Mentors' => [],
 		] ) );
+
+		// Prevent caching of MediaWiki:GrowthMentors.json
+		$this->setMainCache( CACHE_NONE );
 	}
 
 	/**

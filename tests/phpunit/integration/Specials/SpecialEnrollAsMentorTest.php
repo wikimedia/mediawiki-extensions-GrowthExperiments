@@ -14,6 +14,11 @@ use SpecialPageTestBase;
  */
 class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 
+	protected function setUp(): void {
+		parent::setUp();
+		$this->setMainCache( CACHE_NONE );
+	}
+
 	/**
 	 * @inheritDoc
 	 */

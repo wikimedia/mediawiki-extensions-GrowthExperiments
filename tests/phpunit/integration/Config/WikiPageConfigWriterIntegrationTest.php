@@ -30,6 +30,9 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 
+		// Prevent GrowthExperimentsConfig.json caching
+		$this->setMainCache( CACHE_NONE );
+
 		$this->geServices = GrowthExperimentsServices::wrap(
 			$this->getServiceContainer()
 		);

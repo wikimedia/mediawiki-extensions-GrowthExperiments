@@ -17,6 +17,11 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class MentorHooksTest extends MediaWikiIntegrationTestCase {
 
+	protected function setUp(): void {
+		parent::setUp();
+		$this->setMainCache( CACHE_NONE );
+	}
+
 	private function getUserByRegistrationAndEditcount(
 		$timestamp,
 		int $editcount

@@ -27,6 +27,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 	 */
 	protected function setUp(): void {
 		$this->insertPage( 'MediaWiki:GrowthMentors.json', '{"Mentors": []}' );
+		$this->setMainCache( CACHE_NONE );
 	}
 
 	/**
