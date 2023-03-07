@@ -1675,6 +1675,7 @@
 			"dependencies": [
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-movement",
+				"oojs-ui.styles.icons-media",
 				"ext.growthExperiments.icons",
 				"ext.growthExperiments.SuggestedEditSession",
 				"ext.growthExperiments.DataStore"
