@@ -322,6 +322,7 @@ SuggestedEditsModule.prototype.logCardData = function () {
  */
 SuggestedEditsModule.prototype.setMatchModeAndSave = function ( mode ) {
 	this.filters.topicFiltersDialog.topicSelector.matchModeSelector.setSelectedMode( mode );
+	this.filtersStore.setTopicsMatchMode( mode );
 	this.fetchTasksAndUpdateView().then( function () {
 		this.filtersStore.savePreferences();
 	}.bind( this ) );
