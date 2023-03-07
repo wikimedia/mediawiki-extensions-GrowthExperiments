@@ -298,7 +298,7 @@
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} mentor is al gewijzigd. Weet {{GENDER:$2|je}} zeker dat {{GENDER:$2|je}} dit weer wil wijzigen?",
 	"growthexperiments-claimmentee-confirm": "Ja, ik wil echt van mentor veranderen",
 	"growthexperiments-log-name": "GrowthExperiments logboek",
-	"growthexperiments-log-header": "Dit is een logboek van acties die zijn uitgevoerd in de extensie GrowthExperiments.",
+	"growthexperiments-log-header": "Dit is een logboek van handelingen die zijn verricht in de uitbreiding GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 claimde {{GENDER:$6|$3}} als {{GENDER:$2|zijn|haar|diens}} mentee (vorige {{GENDER:$4|mentor}} $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 claimde {{GENDER:$6|$3}} als {{GENDER:$2|zijn|haar|diens}} mentee (geen eerdere mentor)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|stelde}} {{GENDER:$5|$7}} als mentor van {{GENDER:$6|$3}} in (vorige {{GENDER:$4|mentor}} $8)",

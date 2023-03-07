@@ -509,7 +509,7 @@
 	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "O mentorjih",
 	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "Odkloni mentorstvo",
 	"growthexperiments-homepage-mentorship-optout-header": "Želite odkloniti mentorstvo?",
-	"growthexperiments-homepage-mentorship-optout-text": "Za mentorstvo se lahko vedno odločite. Vendar morda ne boste prejeli {{GENDER:$1|istega mentorja|iste mentorice|istega_iste mentorja_ice}} kot prej.",
+	"growthexperiments-homepage-mentorship-optout-text": "Za mentorstvo se lahko vedno odločite. Vendar mogoče ne boste prejeli {{GENDER:$1|istega mentorja|iste mentorice|istega_iste mentorja_ice}} kot prej.",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Prekliči",
 	"growthexperiments-homepage-mentorship-optout-optout": "Odkloni",
 	"growthexperiments-homepage-mentorship-optout-confirmation-header": "{{GENDER:|Niste}} več mentorirani.",

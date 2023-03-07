@@ -12,6 +12,7 @@
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "ߦߊ߬ߣߌ߫ ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ ߟߊ߫ ߦߌ߬ߘߊ߬ߥߟߊ ߟߊߓߊ߯ߙߊ߫ ߕߐ߫߸ ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ߫ ߛߙߍߘߍ ߝߟߐ߫ ߞߊ߫ ߞߊ߲߫ ߞߊ߬ ߘߐߓߍ߲߬ ߡߎߣߎ߲߬. ߞߎ߲߬ߠߊ߬ߛߌ߰ߟߊ ߘߏ߫ ߘߌ߫ ߛߋ߫ ߞߊ߬ [[Special:EditGrowthConfig]] ߟߊߓߊ߯ߙߊ߫ ߞߎ߲߭ ߏ߬ ߟߊ߫.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|ߌ ߟߊ߫}} ߟߞߊ߬ߙߊ߲߬ߧߊ߬ߘߋ߲ ߠߎ߬",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "{{GENDER:|ߌ ߟߊ߫}} ߟߞߊ߬ߙߊ߲߬ߧߊ߬ߘߋ߲ ߠߎ߬ ߘߐߜߍ߫ ߘߎ߰ߟߊ߫. ߛߍ߲ߛߍ߲ߟߊ߲ ߠߊߓߊ߯ߙߊ߫ ߞߊ߬ ߡߞߊ߬ߙߊ߲߬ߘߋ߲߫ ߦߌ߬ߘߊ߬ߣߍ߲ ߠߎ߬ ߡߊߝߊ߬ߟߋ߲߫.",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "ߖߝ߭ߊߛߑߞߙߌߔߕ ߞߊ߬ߣߌ߲߬ߣߍ߲߬ ߦߋ߫ ߥߟߊ߬ߟߋ߲ ߓߟߏ߫.ߖߝ߭ߊߛߑߞߙߌߔߕ ߟߊߞߎߣߎ߲߫ ߖߊ߰ߣߌ߲߫ ߛߊ߫ ߞߊ߬ ߛߋ߫ ߞߙߊߞߏ ߣߌ߲߬ ߠߊߓߊ߯ߙߊ߫ ߟߊ߫.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "ߖߐ߲߫ ߦߴ{{GENDER:|ߌ ߟߊ߫}} ߥߟߊ߬ߟߋ߲ ߘߐ߫؟",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "ߞߎ߲߬ߠߊ߬ߝߏ߬ߣߌ߲߫ ߜߘߍ ߟߎ߬ ߞߊ߬ ߟߐ߬ ߖߐ߲߫ ߦߴ{{GENDER:|ߌ ߟߊ߫}} ߥߟߊ߬ߟߋ߲ ߘߐ ߡߊ߬",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "ߥߟߊ߬ߟߋ߲ ߣߌ߲߬ ߦߴ{{GENDER:|ߌ ߟߊ߫}} ߡߞߊ߬ߙߊ߲߬ߘߋ߲ ߠߎ߬ ߟߋ߬ ߦߌ߬ߘߊ߬ ߟߊ߫ ߡߍ߲ ߠߎ߬ ߣߊ߬ ߖߊ߬ߕߋ߬ߘߊ ߛߌ߲ߘߌ߫ ߟߊ߫ ߞߎ߲߬ߢߐ߮ ߝߌ߬ߟߊ߫ ߕߊ߬ߡߌ߲߬ߣߍ߲ ߞߘߐ߫ ߥߟߴߊ߬ߟߎ߫ ߣߊ߬ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߞߍ߫ ߟߊ߫ ߞߊߙߏ߫ ߥߐ߯ߙߐ߫ ߕߊ߬ߡߌ߲߬ߣߍ߲ ߞߘߐ߫߸ ߊ߬ ߣߴߊ߬ߟߎ߫ ߟߊ߫ [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|newcomer homepage enabled]] ߟߐ߲ߕߊ ߦߋ߫ ߟߊߞߎߘߦߊ߫ ߟߊ߫ ߕߎ߬ߡߊ߬ߙߋ߲߫ ߛߊ߬ߓߊ ߓߍ߯ ߟߊ߫.",
