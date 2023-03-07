@@ -61,11 +61,12 @@
 	 *
 	 * @param {mw.libs.ge.PostEditPanel} postEditPanel
 	 * @param {mw.libs.ge.HelpPanelLogger} logger
+	 * @param {boolean} showToast Whether the panel should show its predefined toast message when opening.
 	 * @return {Object} An object with:
 	 *   - openPromise {jQuery.Promise} A promise that resolves when the dialog has been displayed.
 	 *   - closePromise {jQuery.Promise} A promise that resolves when the dialog has been closed.
 	 */
-	function displayPanel( postEditPanel, logger ) {
+	function displayPanel( postEditPanel, logger, showToast ) {
 		if ( mw.libs.ge && mw.libs.ge.HelpPanel ) {
 			// It doesn't make any sense to show the help panel in an open state alongside
 			// the post-edit panel or the try new task panel, so close it.
@@ -76,7 +77,11 @@
 			lifecycle,
 			closePromise;
 		$( document.body ).append( drawer.$element );
-		lifecycle = drawer.showWithToastMessage();
+		if ( showToast ) {
+			lifecycle = drawer.showWithToastMessage();
+		} else {
+			lifecycle = drawer.openWithIntroContent();
+		}
 		closePromise = lifecycle.closed.done( function () {
 			postEditPanel.logClose();
 		} );
@@ -93,6 +98,7 @@
 	 * Helper method to tie getNextTask() and displayPanel() together.
 	 *
 	 * @param {boolean} isDialogShownUponReload Whether the dialog is shown upon page reload.
+	 * @param {boolean} showToast Whether the panel should show its predefined toast message when opening.
 	 * @return {Object} An object with:
 	 *   - task: task data as a plain Object (as returned by GrowthTasksApi), omitted
 	 *     when loading the task failed and when the task parameter is null;
@@ -101,7 +107,7 @@
 	 *   - openPromise: a promise that resolves when the panel has been displayed.
 	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
-	function setup( isDialogShownUponReload ) {
+	function setup( isDialogShownUponReload, showToast ) {
 		var postEditPanel, displayPanelPromises,
 			imageRecommendationQualityGates =
 				suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
@@ -124,7 +130,7 @@
 			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded
 		} );
 
-		displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger );
+		displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger, showToast );
 
 		return {
 			panel: postEditPanel,
@@ -141,10 +147,11 @@
 		 * @param {boolean} [isDialogShownUponReload] Whether the post-edit panel is being shown
 		 *  after a page reload. This is used to determine whether the editor has been opened
 		 *  since the page loads.
-		 *
 		 * @param {string} nextSuggestedTaskType If provided, use only this task type for fetching
 		 *   tasks. Used when we are prompting the user to try a new task type after completing
 		 *   a certain number of tasks of the current task type. See the LevelingUpManager service.
+		 * @param {boolean} showToast Whether the panel should show its predefined toast message when opening.
+		 *
 		 * @return {Object} An object with:
 		 *   - task: task data as a plain Object (as returned by GrowthTasksApi), might be omitted
 		 *     when loading the task failed;
@@ -153,7 +160,7 @@
 		 *   - openPromise: a promise that resolves when the panel has been displayed.
 		 *   - closePromise: A promise that resolves when the dialog has been closed.
 		 */
-		setupPanel: function ( isDialogShownUponReload, nextSuggestedTaskType ) {
+		setupPanel: function ( isDialogShownUponReload, nextSuggestedTaskType, showToast ) {
 			var setupResult,
 				fetchTasksConfig = {
 					excludePageId: mw.config.get( 'wgArticleId' ),
@@ -180,16 +187,20 @@
 				}
 				setupResult.openPromise.done( logPanelImpression( setupResult.panel, errorMessage ) );
 			} );
-			setupResult = setup( isDialogShownUponReload );
+			setupResult = setup( isDialogShownUponReload, showToast );
 			setupResult.openPromise.done( logPanelImpression( setupResult.panel ) );
 			return setupResult;
 		},
 		/**
-		 * Create and show the try-new-task dialog panel.
+		 * Create and maybe show the try-new-task dialog panel.
 		 *
-		 * @return {jQuery.Promise} If "nextSuggestedTasKType" is set in the suggested edit session,
+		 * @return {jQuery.Promise<undefined|null|string>} If "nextSuggestedTasKType" is set in the suggested edit session,
 		 *   return a promise that resolves when the try new task panel is closed; otherwise return
-		 *   an immediately-resolved promise.
+		 *   an immediately-resolved promise. The possible return values are:
+		 *   - undefined: the panel was not shown because it didn't meet the conditions to do so
+		 *   - null: the panel was shown and it was dismissed by the user
+		 *   - string: the panel was shown and it was accepted by the user. The returned string represents
+		 *  a valid task type id with the next suggested task type.
 		 */
 		setupTryNewTaskPanel: function () {
 			var tryNewTaskOptOuts = mw.config.get( 'wgGELevelingUpTryNewTaskOptOuts' );
@@ -205,7 +216,7 @@
 					helpPanelLogger: tryNewTaskHelpPanelLogger,
 					tryNewTaskOptOuts: tryNewTaskOptOuts
 				} );
-				var displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger );
+				var displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger, true );
 				displayPanelPromises.openPromise.done( function () {
 					tryNewTaskPanel.logImpression( {
 						'edit-count-for-task-type': suggestedEditSession.editCountByTaskType[ suggestedEditSession.taskType ]

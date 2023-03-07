@@ -460,8 +460,9 @@
 
 			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
 				return require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( function ( nextSuggestedTaskType ) {
+					var tryNewTaskPanelShown = nextSuggestedTaskType === null || typeof nextSuggestedTaskType === 'string';
 					var result = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
-						config.isDialogShownUponReload, nextSuggestedTaskType
+						config.isDialogShownUponReload, nextSuggestedTaskType, !tryNewTaskPanelShown
 					);
 					result.openPromise.done( function () {
 						self.postEditDialogNeedsToBeShown = false;
