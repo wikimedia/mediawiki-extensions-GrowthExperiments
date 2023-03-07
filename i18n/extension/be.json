@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Chadyka",
+			"Kareyac",
 			"Maksim L.",
 			"Plaga med"
 		]
@@ -80,5 +81,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Артыкулы, якія змяшчаюць шаблоны, вызначаныя тут, не будуць паказвацца ўдзельнікам як задання для гэтага тыпу задання.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Артыкулы, якія змяшчаюць катэгорыі, вызначаныя тут, не будуць паказвацца ўдзельнікам як задання для гэтага тыпу задання.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблоны-карткі",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Гэтыя шаблоны патрэбныя для [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|прапанавання выяваў]] для задання пачаткоўцам. Артыкулы, якія змяшчаюць гэтыя шаблоны, не будуць паказвацца ў спісе задач прапанавання выяваў."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Гэтыя шаблоны патрэбныя для [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|прапанавання выяваў]] для задання пачаткоўцам. Артыкулы, якія змяшчаюць гэтыя шаблоны, не будуць паказвацца ў спісе задач прапанавання выяваў.",
+	"growthexperiments-info-tooltip-close-label": "Закрыць"
 }
