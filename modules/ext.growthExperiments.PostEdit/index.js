@@ -66,9 +66,11 @@
 	 *   - closePromise {jQuery.Promise} A promise that resolves when the dialog has been closed.
 	 */
 	function displayPanel( postEditPanel, logger ) {
-		// It doesn't make any sense to show the help panel in an open state alongside
-		// the post-edit panel or the try new task panel, so close it.
-		mw.libs.ge.HelpPanel.close();
+		if ( mw.libs.ge && mw.libs.ge.HelpPanel ) {
+			// It doesn't make any sense to show the help panel in an open state alongside
+			// the post-edit panel or the try new task panel, so close it.
+			mw.libs.ge.HelpPanel.close();
+		}
 
 		var drawer = new PostEditDrawer( postEditPanel, logger ),
 			lifecycle,
