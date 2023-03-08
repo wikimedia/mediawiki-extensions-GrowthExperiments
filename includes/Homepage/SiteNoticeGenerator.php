@@ -15,14 +15,10 @@ use UserOptionsUpdateJob;
 
 class SiteNoticeGenerator {
 
-	/** @var ExperimentUserManager */
-	private $experimentUserManager;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
-	/** @var JobQueueGroup */
-	private $jobQueueGroup;
+	private ExperimentUserManager $experimentUserManager;
+	private UserOptionsLookup $userOptionsLookup;
+	private JobQueueGroup $jobQueueGroup;
+	private ?bool $homepageDiscoveryNoticeSeen = null;
 
 	/**
 	 * @param ExperimentUserManager $experimentUserManager
@@ -156,19 +152,18 @@ class SiteNoticeGenerator {
 	 * (Desktop uses a different mechanism based on guided tours, which has its own seen logic.)
 	 * @param \Skin $skin
 	 * @return bool True if the user has seen the notice already.
-	 * @suppress PhanUndeclaredProperty
 	 */
 	private function checkAndMarkMobileDiscoveryNoticeSeen( \Skin $skin ) {
 		// Make multiple calls to this method within the same request a no-op.
 		// Note this would be necessary even if we only called it once, because
 		// Minerva calls sitenotice hooks multiple times.
-		if ( isset( $skin->growthExperimentsHomepageDiscoveryNoticeSeen ) ) {
-			return $skin->growthExperimentsHomepageDiscoveryNoticeSeen;
+		if ( $this->homepageDiscoveryNoticeSeen !== null ) {
+			return $this->homepageDiscoveryNoticeSeen;
 		}
 
 		$user = $skin->getUser();
 		if ( $this->userOptionsLookup->getOption( $user, HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ) ) {
-			$skin->growthExperimentsHomepageDiscoveryNoticeSeen = true;
+			$this->homepageDiscoveryNoticeSeen = true;
 			return true;
 		}
 
@@ -176,7 +171,7 @@ class SiteNoticeGenerator {
 			'userId' => $user->getId(),
 			'options' => [ HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN => 1 ],
 		] ) );
-		$skin->growthExperimentsHomepageDiscoveryNoticeSeen = false;
+		$this->homepageDiscoveryNoticeSeen = false;
 		return false;
 	}
 
