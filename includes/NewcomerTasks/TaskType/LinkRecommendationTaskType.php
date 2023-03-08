@@ -47,7 +47,7 @@ class LinkRecommendationTaskType extends TaskType {
 		self::FIELD_MAX_WORD_COUNT => PHP_INT_MAX,
 		self::FIELD_MAX_TASKS_PER_DAY => 25,
 		self::FIELD_EXCLUDED_SECTIONS => [],
-		self::FIELD_UNDERLINKED_WEIGHT => 0,
+		self::FIELD_UNDERLINKED_WEIGHT => 0.5,
 		self::FIELD_UNDERLINKED_MIN_LENGTH => 300,
 	];
 
