@@ -13,10 +13,10 @@
 	"devDependencies": {
 		"@vitejs/plugin-vue": "4.0.0",
 		"@vue/test-utils": "2.3.2",
-		"@wikimedia/codex": "0.6.1",
-		"@wikimedia/codex-design-tokens": "0.6.1",
-		"@wikimedia/codex-icons": "0.6.1",
 		"jsdom": "21.1.1",
+		"@wikimedia/codex": "0.7.0",
+		"@wikimedia/codex-design-tokens": "0.7.0",
+		"@wikimedia/codex-icons": "0.7.0",
 		"less": "2.5.3",
 		"postcss": "8.4.21",
 		"postcss-prefix-selector": "1.16.0",
