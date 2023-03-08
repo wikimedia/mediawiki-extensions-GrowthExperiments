@@ -257,6 +257,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$queryBuilder->limit( self::MAX_EDITS );
 		$queryBuilder->options( $options );
 		$queryBuilder->caller( __METHOD__ );
+		// T331264
+		$queryBuilder->straightJoinOption();
 
 		$userTimeCorrection = new UserTimeCorrection(
 			UserTimeCorrection::SYSTEM,
