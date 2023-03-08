@@ -17,7 +17,7 @@
 			isSuggestedTask: suggestedEditSession.active
 		} ),
 		tryNewTaskHelpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
-			context: 'trynewtask',
+			context: 'postedit-trynewtask',
 			previousEditorInterface: suggestedEditSession.editorInterface,
 			sessionId: suggestedEditSession.clickId,
 			isSuggestedTask: suggestedEditSession.active
@@ -216,7 +216,11 @@
 					tryNewTaskOptOuts: tryNewTaskOptOuts
 				} );
 				var displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger );
-				displayPanelPromises.openPromise.done( tryNewTaskPanel.logImpression.bind( tryNewTaskPanel ) );
+				displayPanelPromises.openPromise.done( function () {
+					tryNewTaskPanel.logImpression( {
+						'edit-count-for-task-type': suggestedEditSession.editCountByTaskType[ suggestedEditSession.taskType ]
+					} );
+				} );
 				return displayPanelPromises.closePromise;
 			}
 			return $.Deferred().resolve();
