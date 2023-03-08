@@ -286,6 +286,9 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			if ( $row->ct_tag_id ?? null ) {
 				$newcomerTaskEditCount++;
 				$taskTypeId = $changeTagIds[$row->ct_tag_id];
+				if ( $taskTypeId && !isset( $editCountByTaskType[$taskTypeId] ) ) {
+					$editCountByTaskType[$taskTypeId] = 0;
+				}
 				// @phan-suppress-next-line PhanTypeMismatchDimFetchNullable False positive
 				$editCountByTaskType[$taskTypeId]++;
 			}
