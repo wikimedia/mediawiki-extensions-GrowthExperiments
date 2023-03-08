@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use IDBAccessObject;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\UserEditTracker;
@@ -142,7 +143,7 @@ class LevelingUpManager {
 	 *    rule if the user has completed 9 copyedit tasks.
 	 *  - Only suggest task types that are known to have at least one candidate task available. This is expensive,
 	 *    so avoid calling this method in the critical path.
-	 *  - (not yet implemented) allow the user to opt out of receiving nudges for new task types, on a per task type
+	 *  - allow the user to opt out of receiving nudges for new task types, on a per task type
 	 *    basis (e.g. if the user likes to do copyedit task, they can opt out of getting nudges for trying new tasks,
 	 *    but if they switch to references, they would get a prompt to try another task type after the 5th reference
 	 *    edit)
@@ -154,12 +155,14 @@ class LevelingUpManager {
 	 *  - the user just completed a newcomer task edit, and continues to edit the article in VisualEditor so there
 	 *    is no page reload, call this function with "copyedit" as the active task type ID. One could do this via an
 	 *    API call from ext.growthExperiments.suggestedEditSession in a post-edit hook on the client-side.
+	 * @param bool $readLatest If user impact lookup should read from the primary database.
 	 * @return string|null
 	 */
 	public function suggestNewTaskTypeForUser(
-		UserIdentity $userIdentity, string $activeTaskTypeId
+		UserIdentity $userIdentity, string $activeTaskTypeId, bool $readLatest = false
 	): ?string {
-		$userImpact = $this->userImpactLookup->getUserImpact( $userIdentity );
+		$flags = $readLatest ? IDBAccessObject::READ_LATEST : IDBAccessObject::READ_NORMAL;
+		$userImpact = $this->userImpactLookup->getUserImpact( $userIdentity, $flags );
 		if ( !$userImpact ) {
 			$this->logger->error(
 				'Unable to fetch next suggested task type for user {userId}; no user impact found.',

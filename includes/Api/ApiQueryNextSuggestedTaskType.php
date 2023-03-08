@@ -50,7 +50,11 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 		$this->getResult()->addValue(
 			'query',
 			$this->getModuleName(),
-			$this->levelingUpManager->suggestNewTaskTypeForUser( $this->getUser(), $params['activetasktype'] )
+			$this->levelingUpManager->suggestNewTaskTypeForUser(
+				$this->getUser(),
+				$params['activetasktype'],
+				true
+			)
 		);
 		$userImpact = $this->userImpactLookup->getUserImpact( $this->getUser() );
 		// User impact should definitely exist, but it's typed to potentially return null, so check to be sure.
@@ -59,13 +63,18 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 			// We can also use this to implement the "only show every Nth edit" rule when the
 			// user makes multiple edits to an article without reloading the page.
 			// This should logically be in a separate API module, but doesn't seem worth the boilerplate
-			// until there is a use case outside of the "try next task type" workflow.
+			// until there is a use case separate from the "try next task type" workflow.
 			$this->getResult()->addValue(
 				'query',
 				'editcountbytasktype',
 				$userImpact->getEditCountByTaskType()
 			);
 		}
+	}
+
+	/** @inheritDoc */
+	public function mustBePosted() {
+		return true;
 	}
 
 	/**

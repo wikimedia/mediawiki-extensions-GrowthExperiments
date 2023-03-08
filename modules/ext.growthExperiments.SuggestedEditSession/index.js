@@ -53,6 +53,11 @@
 		 */
 		this.nextSuggestedTaskType = undefined;
 		/**
+		 * @member {Object} Task type IDs are the keys, the values are the edit count
+		 *  for the task type.
+		 */
+		this.editCountByTaskType = {};
+		/**
 		 * @member {Object|null} Tasktype-specific task data. Not all task types have this.
 		 *   An 'error' field being present means that loading the task data failed (the
 		 *   field will contain an error message); callers are expected to handle this gracefully.
@@ -142,12 +147,10 @@
 			this.updateEditorInterface();
 			this.updateEditLinkUrls();
 			this.maybeShowPostEditDialog();
-			// Only attempt to fetch next suggested task type a single time.
+			// Attempt to fetch next suggested task type if not already known.
 			if ( this.nextSuggestedTaskType === undefined &&
-				mw.config.get( 'wgGELevelingUpFeaturesEnabled' ) &&
-				// "control" is the variant group that should be able to see the "try new task"
-				// workflow.
-				Utils.isUserInVariant( 'control' ) ) {
+				SuggestedEditSession.static.shouldShowLevelingUpFeatures()
+			) {
 				// We don't need to wait for the promise to resolve here. Presumably, we have enough
 				// time before the user gets to the point of making an edit for the API request
 				// to complete.
@@ -174,6 +177,7 @@
 			title: this.title.getPrefixedText(),
 			taskType: this.taskType,
 			nextSuggestedTaskType: this.nextSuggestedTaskType,
+			editCountByTaskType: this.editCountByTaskType,
 			taskData: this.taskData,
 			taskState: this.taskState,
 			editorInterface: this.editorInterface,
@@ -228,6 +232,7 @@
 				this.title = savedTitle;
 				this.taskType = data.taskType;
 				this.nextSuggestedTaskType = data.nextSuggestedTaskType;
+				this.editCountByTaskType = data.editCountByTaskType;
 				this.taskData = data.taskData;
 				this.taskState = data.taskState;
 				this.editorInterface = data.editorInterface;
@@ -399,8 +404,9 @@
 			meta: 'growthnextsuggestedtasktype',
 			gnsttactivetasktype: this.taskType
 		};
-		return new mw.Api().get( apiParams ).then( function ( result ) {
+		return new mw.Api().post( apiParams ).then( function ( result ) {
 			this.nextSuggestedTaskType = result.query.growthnextsuggestedtasktype;
+			this.editCountByTaskType = result.query.editcountbytasktype;
 		}.bind( this ) );
 	};
 
@@ -461,6 +467,11 @@
 							self.postEditDialogNeedsToBeShown = false;
 							self.save();
 						} ).then( function () {
+							// Prepare for follow-up edits by loading the next suggested task
+							// type based on the edit just now made.
+							if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
+								self.getNextSuggestedTaskType();
+							}
 							if ( self.editorInterface === 'visualeditor' ) {
 								return $.Deferred().resolve();
 							} else {
@@ -652,6 +663,19 @@
 		session.initialize();
 		mw.config.set( 'ge-suggestededit-session', session );
 		return session;
+	};
+
+	/**
+	 * Check if LevelingUpFeaturesEnabled flag is on, and that the user is in the 'control'
+	 * group (which gets leveling up + new impact module).
+	 *
+	 * @return {boolean}
+	 */
+	SuggestedEditSession.static.shouldShowLevelingUpFeatures = function () {
+		return mw.config.get( 'wgGELevelingUpFeaturesEnabled' ) &&
+			// "control" is the variant group that should be able to see the "try new task"
+			// workflow.
+			Utils.isUserInVariant( 'control' );
 	};
 
 	/**

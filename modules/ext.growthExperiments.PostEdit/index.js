@@ -206,7 +206,7 @@
 				Utils.getUserVariant() === 'control' &&
 				// A next suggested task type is available for the user
 				suggestedEditSession.nextSuggestedTaskType &&
-				// THe user hasn't opted out of seeing the prompt for this task type
+				// The user hasn't opted out of seeing the prompt for this task type
 				tryNewTaskOptOuts.indexOf( suggestedEditSession.taskType ) === -1
 			) {
 				var tryNewTaskPanel = new TryNewTaskPanel( {
