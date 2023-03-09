@@ -95,6 +95,7 @@ class LevelingUpHooks implements
 		// VE sets a query parameter, but there is no elegant way to detect post-edit reloads
 		// in the wikitext editor. Check the JS variable that it uses to configure the notice.
 		$isPostEditReload = $out->getRequest()->getCheck( 'venotify' )
+			|| $out->getRequest()->getCheck( 'mfnotify' )
 			|| ( $out->getJsConfigVars()['wgPostEdit'] ?? false );
 
 		if (
