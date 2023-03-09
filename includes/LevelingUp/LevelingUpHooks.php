@@ -113,6 +113,7 @@ class LevelingUpHooks implements
 		// Disable the default core post-edit notice.
 		$out->addJsConfigVars( 'wgPostEditConfirmationDisabled', true );
 		$out->addJsConfigVars( 'wgGELevelingUpInviteToSuggestedEditsImmediate', true );
+		$out->addJsConfigVars( 'wgCXSectionTranslationRecentEditInvitationSuppressed', true );
 	}
 
 	/**
