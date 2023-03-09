@@ -37,6 +37,8 @@
 	"growthexperiments-help-panel-postedit-subheader": "次のお勧めを編集する：",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "次の提案:",
 	"growthexperiments-help-panel-postedit-footer": "すべてのお勧めの編集を見る",
+	"growthexperiments-help-panel-postedit-suggestededits-levelingup-title": "あなたのフィルタに基づく提案はありません",
+	"growthexperiments-help-panel-postedit-suggestededits-title": "おすすめの編集",
 	"growthexperiments-help-panel-postedit-suggestededits-info": "{{SITENAME}}の他の利用者が作業が必要な記事を見つけました。これらのお勧めの編集を閲覧して、{{GENDER:|あなたの}}編集を続けてください。",
 	"growthexperiments-help-panel-postedit-trynewtask-try-button-text": "新しいタスクを試す",
 	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "いいえ、結構です",

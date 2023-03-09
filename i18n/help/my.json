@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dr Lotus Black",
+			"Msuantak",
 			"Ninjastrikers",
 			"Phosai",
 			"Teitei Para"
@@ -30,6 +31,8 @@
 	"growthexperiments-help-panel-postedit-subheader": "အခြားအကြံပေးမှုကို တည်းဖြတ်ရန်-",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "နောက်အကြံပြုချက်-",
 	"growthexperiments-help-panel-postedit-footer": "အကြံပြုထားသောတည်းဖြတ်မှုများ ပိုမိုကြည့်ရှုရန်",
+	"growthexperiments-help-panel-postedit-suggestededits-levelingup-info": "နောက်ထပ်ဆောင်းပါးများ တည်းဖြတ်ရန်အတွက် အကြံပြုထားသော တည်းဖြတ်မှုများတွင် {{GENDER:|သင်၏}} ခေါင်းစဉ်နှင့် ရွေးချယ်မှုများကို ပြောင်းပါ။",
+	"growthexperiments-help-panel-postedit-suggestededits-levelingup-title": "{{GENDER:|သင်၏}} စစ်ထုတ်မှုများအပေါ် အခြေခံ၍ အကြံပြုချက်များ မရှိပါ",
 	"growthexperiments-help-panel-questionreview-title": "အကူညီစားပွဲဝိုင်းတွင် မေးမြန်းရန်",
 	"growthexperiments-help-panel-questionreview-header": "မေးခွန်းတခု မေးမြန်းလိုက်ပါက သင်၏အသုံးပြုသူအမည် \"$2\" အနေဖြင့် $1သို့  <strong>လူသိရှင်ကြား</strong>ပေါ်နေမည်ဖြစ်ပါသည်။ အခြားစေတနာ့ဝန်ထမ်းများက နောက်တရက်အတွင်း သို့မဟုတ် ရက်အနည်းငယ်အတွင်း ဖြေပေးပါလိမ့်မည်။",
 	"growthexperiments-help-panel-questionreview-label": "သင်၏ မေးခွန်း",

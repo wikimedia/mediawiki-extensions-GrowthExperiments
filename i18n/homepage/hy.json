@@ -241,5 +241,6 @@
 	"growthexperiments-addimage-rejectiondialog-action-done": "Ուղարկել",
 	"growthexperiments-addimage-rejectiondialog-action-cancel": "Չեղարկել",
 	"growthexperiments-addimage-skip-dialog-cancel": "Չեղարկել",
-	"growthexperiments-addimage-caption-info-dialog-confirm": "Հասկանալի է"
+	"growthexperiments-addimage-caption-info-dialog-confirm": "Հասկանալի է",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Իմանալ ավելին"
 }

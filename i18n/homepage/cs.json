@@ -496,7 +496,7 @@
 	"growthexperiments-addimage-onboarding-content-intro-title": "Obrázky lidem pomáhají naučit se nové věci, ale v mnoha článcích obrázek chybí.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "Budete {{GENDER:|rozhodovat}}, zda by navržený obrázek měl být vložen do článku na Wikipedii.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Obrázky jsou navržené strojem. Budete rozhodovat, zda navržený obrázek do článku vložit anebo zda návrh odmítnete.",
-	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "Obrázky pochází z Wikimedia Commons, Wikipedií používaná databáze obrázků pod svobodnou licencí.",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "Obrázky pochází z Wikimedia Commons, Wikipedií používané databáze obrázků pod svobodnou licencí.",
 	"growthexperiments-addimage-onboarding-content-imagedetails-title": "Podívejte se na navržený obrázek",
 	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1": "Pomocí názvu, popisu a popisku navrženého obrázku a důvodu, proč byl navržen, rozhodněte, zda patří do tohoto článku.",
 	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2": "{{GENDER:|Můžete}} si také obrázek přiblížit, abyste ho {{GENDER:|lépe viděl|lépe viděla|lépe viděli}}.",
@@ -572,5 +572,7 @@
 	"growthexperiments-tour-newimpact-discovery-title": "Aktualizovaný modul",
 	"growthexperiments-tour-newimpact-discovery-description": "Přidali jsme více informací o {{GENDER:|vaší}} editační aktivitě!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Rozumím",
-	"growthexperiments-homepage-newimpact-contributions-link": "Zobrazit všechny editace"
+	"growthexperiments-homepage-newimpact-contributions-link": "Zobrazit všechny editace",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Vyzkoušet editační tipy",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Další informace"
 }

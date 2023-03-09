@@ -590,5 +590,14 @@
 	"growthexperiments-tour-newimpact-discovery-title": "Présentation mise à jour",
 	"growthexperiments-tour-newimpact-discovery-description": "Davantage de {{GENDER:}}vos activités de modification ont été ajoutées !",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "C’est bon",
-	"growthexperiments-homepage-newimpact-contributions-link": "Afficher toutes les modifications"
+	"growthexperiments-homepage-newimpact-contributions-link": "Afficher toutes les modifications",
+	"growthexperiments-levelingup-getstarted-notification-header": "Essayez une modification suggérée et commencez à développer {{GENDER:$2|}}vos compétences en matière de modification",
+	"growthexperiments-levelingup-getstarted-notification-body": "Les modifications suggérées aident les nouveaux rédacteurs à apprendre les meilleures pratiques sur {{SITENAME}} et à développer des compétences de base en matière de modification.",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Essayer des modifications suggérées",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "En savoir plus",
+	"growthexperiments-levelingup-keepgoing-notification-header": "Continuez à effectuer des modifications suggérées pour développer {{GENDER:$2|}}vos compétences en matière de modification",
+	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|}}Vous avez effectué $3 modification{{PLURAL:$3||s}} suggérée{{PLURAL:$3||s}}. Continuez pour apprendre davantage de nouvelles compétences.",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Effectuer une modification suggérée",
+	"echo-category-title-ge-newcomer": "Engagement d’un nouveau rédacteur",
+	"echo-pref-tooltip-ge-newcomer": "Me notifier au sujet des tâches pour nouveaux arrivants et des autres fonctionnalités de l’équipe Croissance destinées à améliorer la rétention des nouveaux rédacteurs."
 }

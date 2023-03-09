@@ -204,7 +204,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Nu s-a găsit vreo sugestie",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Selectați alte nivele de dificultate pentru a găsi editări sugerate.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Selectați alte interese sau nivele de dificultate pentru a găsi editări sugerate.",
-	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Schimbați-vă setările de filtrare la „Potrivește cel puțin un subiect selectat” pentru mai multe rezultate",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Schimbați-vă {{GENDER:$1|setările}} de filtrare la „Potrivește cel puțin un subiect selectat” pentru mai multe rezultate",
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Actualizează filtrul",
 	"growthexperiments-homepage-suggestededits-footer": "Alți utilizatori au observat că aceste articole au nevoie de muncă. Ajutați '''{{SITENAME}}''' să fie mai bună pentru cei '''$1 cititori''' ai săi din fiecare zi.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Alți utilizatori au observat că aceste articole au nevoie de muncă. Ajutați '''{{SITENAME}}''' să fie mai bună.",

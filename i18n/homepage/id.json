@@ -86,6 +86,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Penayangan pada artikel yang telah {{GENDER:$1|Anda}} sunting",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total suntingan",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Ucapan terima kasih yang diterima",
+	"growthexperiments-homepage-impact-scores-thanks-info-label": "Informasi selengkapnya tentang cara kerja terima kasih",
 	"growthexperiments-homepage-impact-subheader-text": "Orang-orang melihat artikel yang {{GENDER:$1|Anda}} sunting!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Jumlah tayangan sejak {{GENDER:$1|Anda}} sunting (60 hari terakhir):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Anda}} telah membuat <strong>$1</strong> {{PLURAL:$1|suntingan}} (lihat seluruhnya)",
@@ -548,5 +549,6 @@
 	"growthexperiments-tour-newimpact-discovery-title": "Desain yang diperbarui",
 	"growthexperiments-tour-newimpact-discovery-description": "Aktivitas pengeditan {{GENDER:|your}} lainnya telah ditambahkan!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Mengerti",
-	"growthexperiments-homepage-newimpact-contributions-link": "Lihat semua hasil edit"
+	"growthexperiments-homepage-newimpact-contributions-link": "Lihat semua hasil edit",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Pelajari lebih lanjut"
 }

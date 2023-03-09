@@ -447,5 +447,14 @@
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Wie is {{GENDER:|jouw}} {{GENDER:$1|mentor}}?",
 	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Jouw}} {{GENDER:$1|mentor}} is een gebruiker met veel ervaring met het bewerken van {{SITENAME}}. {{GENDER:$1|Hij|Zij}} heeft ervoor gekozen om nieuwe gebruikers te helpen met het bewerken. Ze beantwoorden vragen die {{GENDER:|je}} hebt over deze site.",
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Als {{GENDER:|je}} een vraag stelt aan je mentor, ziet {{GENDER:$1|hij|zij}} het op {{GENDER:$1|zijn|haar}} overlegpagina en {{GENDER:|jij}} krijgt een notificatie zodra {{GENDER:$1|hij|zij}} heeft gereageerd.",
-	"growthexperiments-homepage-mentorship-about-optout-par1": "Druk op de knop hieronder om te stoppen met een mentor. {{GENDER:|Je}} kunt een nieuwe mentor krijgen als {{GENDER:|je}} je later bedenkt."
+	"growthexperiments-homepage-mentorship-about-optout-par1": "Druk op de knop hieronder om te stoppen met een mentor. {{GENDER:|Je}} kunt een nieuwe mentor krijgen als {{GENDER:|je}} je later bedenkt.",
+	"growthexperiments-levelingup-getstarted-notification-header": "Probeer een voorgestelde bewerking en begin met het opbouwen van {{GENDER:$2|uw}} bewerkingsvaardigheden",
+	"growthexperiments-levelingup-getstarted-notification-body": "Voorgestelde bewerkingen helpen nieuwe bewerkers meer te weten te komen over ''best practices'' voor {{SITENAME}} en kernbewerkingsvaardigheden te ontwikkelen.",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Voorgestelde bewerkingen proberen",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Meer lezen",
+	"growthexperiments-levelingup-keepgoing-notification-header": "Blijf voorgestelde bewerkingen maken om {{GENDER:$2|uw}} bewerkingsvaardigheden te ontwikkelen",
+	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|U}} hebt $3 voorgestelde bewerking{{PLURAL:$3||en}} gemaakt. Blijf doorgaan om meer nieuwe vaardigheden te leren.",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Een voorgestelde bewerking maken",
+	"echo-category-title-ge-newcomer": "Betrokkenheid nieuwe redacteuren",
+	"echo-pref-tooltip-ge-newcomer": "Mij op de hoogte houden van taken voor nieuwkomers en andere functies van het Growth-team die zijn ontworpen om het behoud van nieuwe redacteuren te verbeteren."
 }

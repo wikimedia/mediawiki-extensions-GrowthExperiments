@@ -24,5 +24,8 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Je}} vraag staat nu op de overlegpagina van je mentor, en daar plaatst {{GENDER:$1|hij|zij|die}} zo snel mogelijk een antwoord.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Bekijk {{GENDER:$2|je}} vraag op de overlegpagina van je {{GENDER:$1|mentor}}.",
 	"growthexperiments-homepage-enable-preference": "Om de startpagina voor nieuwkomers aan te zetten ga je naar je instellingen voor \"Bewerkingsfuncties voor nieuwkomers\" in [[Special:Preferences#mw-prefsection-personal-homepage|Voorkeuren]].",
-	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Het toevoegen van links is de makkelijkste manier om te bewerken. Met links kunnen lezers klikken op iets waar ze meer over willen weten.<br />Links worden automatisch voorgesteld en {{GENDER:$1|jij}} bepaalt of ze aan het artikel toegevoegd moeten worden."
+	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Het toevoegen van links is de makkelijkste manier om te bewerken. Met links kunnen lezers klikken op iets waar ze meer over willen weten.<br />Links worden automatisch voorgesteld en {{GENDER:$1|jij}} bepaalt of ze aan het artikel toegevoegd moeten worden.",
+	"growthexperiments-levelingup-getstarted-notification-header": "Probeer een voorgestelde bewerking en begin met het opbouwen van {{GENDER:$2|je}} bewerkingsvaardigheden",
+	"growthexperiments-levelingup-keepgoing-notification-header": "Blijf voorgestelde bewerkingen maken om {{GENDER:$2|je}} bewerkingsvaardigheden te ontwikkelen",
+	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Je}} hebt $3 voorgestelde bewerking{{PLURAL:$3||en}} gemaakt. Blijf doorgaan om meer nieuwe vaardigheden te leren."
 }

@@ -17,6 +17,7 @@
 			"Tmv",
 			"Yamagata Yusuke",
 			"Yusuke1109",
+			"もなー(偽物)",
 			"バレロン"
 		]
 	},
@@ -542,5 +543,10 @@
 	"growthexperiments-tour-newimpact-discovery-title": "新しいデザイン",
 	"growthexperiments-tour-newimpact-discovery-description": "あなたの編集が追加されました！",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "わかりました",
-	"growthexperiments-homepage-newimpact-contributions-link": "すべての編集を表示"
+	"growthexperiments-homepage-newimpact-contributions-link": "すべての編集を表示",
+	"growthexperiments-levelingup-getstarted-notification-header": "提案された編集を試して、 あなたの編集スキルを向上させてください",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "おすすめの編集を試す",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "詳細",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "おすすめの編集をする",
+	"echo-category-title-ge-newcomer": "新しい編集者の活動"
 }

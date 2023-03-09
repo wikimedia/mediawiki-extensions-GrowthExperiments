@@ -186,7 +186,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Проналажење референци (извори за постојеће чланке)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "Ажурирање чланака (актуелизовање постојећих чланака)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Допуна кратких чланака",
-	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Додавање веза међу чланцима",
+	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Додавање унутрашњих веза",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Додавање линкова међу чланцима",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Израда новог чланка",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Детаљније",
@@ -213,7 +213,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Проналажење референци",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Ажурирање чланака",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Допуна кратких чланака",
-	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Додавање веза међу чланцима",
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Додавање унутрашњих веза",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Додавање линкова међу чланцима",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Биографија (све)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Биографија (жене)",
@@ -379,5 +379,6 @@
 	"growthexperiments-homepage-special-contribute-title": "Предложене измене",
 	"growthexperiments-homepage-special-contribute-cta": "Прикажи предложене измене",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Разумем",
-	"growthexperiments-homepage-newimpact-contributions-link": "Прикажи све измене"
+	"growthexperiments-homepage-newimpact-contributions-link": "Прикажи све измене",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Сазнајте више"
 }
