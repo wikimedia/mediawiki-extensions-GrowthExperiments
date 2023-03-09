@@ -6,9 +6,9 @@
 		TryNewTaskPanel = require( './TryNewTaskPanel.js' ),
 		HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
-		Utils = require( '../utils/Utils.js' ),
 		helpConfig = require( '../ext.growthExperiments.Help/data.json' ),
-		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+		SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
+		suggestedEditSession = SuggestedEditSession.getInstance(),
 		newcomerTaskLogger = new NewcomerTaskLogger(),
 		postEditPanelHelpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
 			context: 'postedit',
@@ -199,11 +199,7 @@
 		 */
 		setupTryNewTaskPanel: function () {
 			var tryNewTaskOptOuts = mw.config.get( 'wgGELevelingUpTryNewTaskOptOuts' );
-			if ( mw.config.get( 'wgGELevelingUpFeaturesEnabled' ) &&
-				// "control" is the group which has the new impact module, and the group that
-				// should see the leveling up features. ("oldimpact" is the experiment group
-				// that is not receiving the new features.)
-				Utils.getUserVariant() === 'control' &&
+			if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() &&
 				// A next suggested task type is available for the user
 				suggestedEditSession.nextSuggestedTaskType &&
 				// The user hasn't opted out of seeing the prompt for this task type
