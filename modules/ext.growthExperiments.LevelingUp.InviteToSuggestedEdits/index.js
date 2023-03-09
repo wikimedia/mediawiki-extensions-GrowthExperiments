@@ -15,14 +15,20 @@ function displayDrawer() {
 			context: 'postedit-nonsuggested'
 		} )
 	);
+	var closeDrawer = function () {
+		drawer.close();
+	};
 	$( document.body ).append( drawer.$element );
 	drawer.open();
 
 	drawer.opened.then( function () {
+		// Hide the drawer if the user opens the editor again.
+		mw.hook( 've.activationComplete' ).add( closeDrawer );
 		drawer.logImpression();
 	} );
 
 	drawer.closed.then( function () {
+		mw.hook( 've.activationComplete' ).remove( closeDrawer );
 		drawer.logClose();
 	} );
 
