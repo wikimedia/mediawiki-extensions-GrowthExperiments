@@ -15,6 +15,7 @@ use MediaWiki\SpecialPage\Hook\ChangesListSpecialPageStructuredFiltersHook;
 use MediaWiki\User\UserIdentity;
 use RecentChange;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
  * RecentChanges filters for mentors. Separate from MentorHooks because MentorManager
@@ -90,20 +91,21 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 				if ( !$selectedValues ) {
 					return;
 				}
-				$targetIds = [];
+
+				$targetUserIds = [];
 				if ( in_array( 'starred', $selectedValues, true ) ) {
-					$targetIds = $this->getStarredMenteeIds( $context->getUser() );
+					$targetUserIds = $this->getStarredMenteeIds( $context->getUser() );
 				}
 				if ( in_array( 'unstarred', $selectedValues, true ) ) {
-					$targetIds = array_merge( $targetIds, $this->getUnstarredMenteeIds( $context->getUser() ) );
+					$targetUserIds = array_merge( $targetUserIds, $this->getUnstarredMenteeIds( $context->getUser() ) );
 				}
-				// Un-alias the rc_user field, aliases do not work in WHERE.
-				$rcUserField = RecentChange::getQueryInfo()['fields']['rc_user'];
+				$targetActorIds = $this->convertUserIdsToActorIds( $dbr, $targetUserIds );
+
 				// The query is shared with other hook handlers, so with the associative array format
 				// there is a risk of key conflict. Convert into non-associate instead.
 				// Only apply when $targetIds has at least one ID
-				if ( $targetIds !== [] ) {
-					$conds[] = $dbr->makeList( [ $rcUserField => $targetIds ], IDatabase::LIST_AND );
+				if ( $targetActorIds !== [] ) {
+					$conds[] = $dbr->makeList( [ 'rc_actor' => $targetActorIds ], IDatabase::LIST_AND );
 				} else {
 					$conds[] = '0=1';
 				}
@@ -182,6 +184,25 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 
 		$this->menteeCache->set( $key, $unstarredMenteeIds );
 		return $unstarredMenteeIds;
+	}
+
+	/**
+	 * @param IDatabase $db
+	 * @param int[] $userIds
+	 * @return int[]
+	 */
+	private function convertUserIdsToActorIds( IDatabase $db, array $userIds ) {
+		if ( !$userIds ) {
+			return [];
+		}
+
+		// No need to worry about properly acquiring actor IDs - if it shows up in
+		// recent changes, it already has an actor ID
+		$queryBuilder = new SelectQueryBuilder( $db );
+		$queryBuilder->table( 'actor' );
+		$queryBuilder->field( 'actor_id' );
+		$queryBuilder->where( [ 'actor_user' => $userIds ] );
+		return array_map( 'intval', $queryBuilder->fetchFieldValues() );
 	}
 
 }
