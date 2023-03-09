@@ -569,6 +569,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "Keep making suggested edits to develop {{GENDER:$2|your}} editing skills",
 	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|You’ve}} made $3 {{PLURAL:$3|suggested edit|suggested edits}}. Keep going to learn more new skills.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Make a suggested edit",
-	"echo-category-title-ge-newcomer": "New editor engagement",
-	"echo-pref-tooltip-ge-newcomer": "Notify me about newcomer tasks and other Growth team features designed to improve new editor retention."
+	"echo-category-title-ge-newcomer": "Growth features",
+	"echo-pref-tooltip-ge-newcomer": "Notify me about tasks for newcomers and other features designed to help new users."
 }
