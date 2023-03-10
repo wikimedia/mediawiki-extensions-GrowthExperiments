@@ -23,15 +23,31 @@ function TaskTypeSelectionWidget( config, TASK_TYPES ) {
 		classes: [ 'mw-ge-homepage-taskTypeSelectionWidget-error' ],
 		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
 	} ).toggle( false );
+	this.$introMessage = $( '<div>' )
+		.addClass( 'mw-ge-homepage-taskTypeSelectionWidget-intro' )
+		.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-intro' ).text() );
+	this.$createMessageTitle = $( '<div>' )
+		.addClass( 'mw-ge-homepage-taskTypeSelectionWidget-create-title' )
+		.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-create-title' ).text() );
+	this.$createMessageBody = $( '<div>' )
+		.addClass( 'mw-ge-homepage-taskTypeSelectionWidget-create-body' )
+		.html(
+			mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-create-body' )
+				.params( [ mw.util.getUrl( this.introLinks.create ) ] )
+				.parse()
+		);
 
 	this.$element.append(
 		this.errorMessage.$element,
+		this.$introMessage,
 		this.makeHeadersForDifficulty( 'easy' ),
 		this.easyFilters.$element,
 		this.makeHeadersForDifficulty( 'medium' ),
 		this.mediumFilters.$element,
 		this.makeHeadersForDifficulty( 'hard' ),
-		this.hardFilters.$element
+		this.hardFilters.$element,
+		this.$createMessageTitle,
+		this.$createMessageBody
 	)
 		.addClass( 'mw-ge-homepage-taskTypeSelectionWidget' );
 }
@@ -67,31 +83,6 @@ TaskTypeSelectionWidget.prototype.setSelected = function ( taskTypes ) {
 };
 
 TaskTypeSelectionWidget.prototype.buildCheckboxFilters = function () {
-	var device = OO.ui.isMobile() ? 'mobile' : 'desktop';
-	this.createFilter = this.makeCheckbox( {
-		id: 'create',
-		difficulty: 'hard',
-		messages: {
-			label: mw.message( 'growthexperiments-homepage-suggestededits-tasktype-label-create' ).text()
-		},
-		disabled: true,
-		iconData: {}
-	}, false );
-	this.createFilter.$element.append( $( '<div>' )
-		.addClass( [
-			// The following classes are used here:
-			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-desktop
-			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-mobile
-			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg',
-			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + device
-		] )
-		.html(
-			mw.message( 'growthexperiments-homepage-suggestededits-create-article-additional-message' )
-				.params( [ mw.user, mw.util.getUrl( this.introLinks.create ) ] )
-				.parse()
-		)
-	);
-
 	this.easyFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: this.makeCheckboxesForDifficulty( 'easy', this.preselectedTaskTypes )
 	} ).connect( this, { select: 'onSelect' } );
@@ -102,7 +93,6 @@ TaskTypeSelectionWidget.prototype.buildCheckboxFilters = function () {
 
 	this.hardFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: this.makeCheckboxesForDifficulty( 'hard', this.preselectedTaskTypes )
-			.concat( [ this.createFilter ] )
 	} ).connect( this, { select: 'onSelect' } );
 };
 

@@ -8,6 +8,10 @@
 		margin-bottom: 1em;
 	}
 
+	&-intro {
+		margin-bottom: 24px;
+	}
+
 	&-difficulty-level {
 		padding-top: 24px;
 		display: flex;
@@ -101,6 +105,23 @@
 			&-desktop {
 				.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px );
 			}
+		}
+	}
+
+	&-create-title {
+		margin-top: 18px;
+		font-size: 0.925em;
+		font-weight: bold;
+		color: #b32424;
+	}
+
+	&-create-body {
+		margin: 4px 0 12px;
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+		color: @wmui-color-base20;
+
+		&-desktop {
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px );
 		}
 	}
 }
