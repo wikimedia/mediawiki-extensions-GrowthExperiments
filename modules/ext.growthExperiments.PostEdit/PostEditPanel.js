@@ -174,45 +174,55 @@ PostEditPanel.prototype.getMainArea = function () {
 	}
 
 	if ( !this.nextTask ) {
-		var $fallbackCard = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard' );
-
-		var postEditFallbackCardIconClass, postEditFallbackCardTitleMessage, postEditFallbackCardInfoMessage;
-		if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
-			postEditFallbackCardIconClass = 'mw-ge-help-panel-postedit-fallbackCard-icon-levelingup';
-			postEditFallbackCardTitleMessage = 'growthexperiments-help-panel-postedit-suggestededits-levelingup-title';
-			postEditFallbackCardInfoMessage = 'growthexperiments-help-panel-postedit-suggestededits-levelingup-info';
-		} else {
-			postEditFallbackCardIconClass = 'mw-ge-help-panel-postedit-fallbackCard-icon';
-			postEditFallbackCardTitleMessage = 'growthexperiments-help-panel-postedit-suggestededits-title';
-			postEditFallbackCardInfoMessage = 'growthexperiments-help-panel-postedit-suggestededits-info';
-		}
-
-		$fallbackCard.append(
-			// The following classes are used here:
-			// * mw-ge-help-panel-postedit-fallbackCard-icon-levelingup
-			// * mw-ge-help-panel-postedit-fallbackCard-icon
-			$( '<div>' ).addClass( postEditFallbackCardIconClass ),
-			$( '<div>' ).append(
-				$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-header' ).text(
-					// The following messages are used here:
-					// * growthexperiments-help-panel-postedit-suggestededits-title
-					// * growthexperiments-help-panel-postedit-suggestededits-levelingup-title
-					mw.message( postEditFallbackCardTitleMessage ).text()
-				),
-				$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-text' ).text(
-					// The following messages are used here:
-					// * growthexperiments-help-panel-postedit-suggestededits-info
-					// * growthexperiments-help-panel-postedit-suggestededits-levelingup-info
-					mw.message( postEditFallbackCardInfoMessage ).text()
-				)
-			)
-		);
-		return $mainArea.append( $fallbackCard );
+		this.$taskCard = this.getFallbackCard();
+		return $mainArea.append( this.$taskCard );
 	}
 
 	this.$taskCard = this.getCard( this.nextTask );
 
 	return $mainArea.append( $subHeader, this.$taskCard, this.getTaskNavigation() );
+};
+
+/**
+ * Create the fallback card element.
+ *
+ * @return {jQuery} A jQuery object wrapping the card element.
+ */
+PostEditPanel.prototype.getFallbackCard = function () {
+	var $fallbackCard = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard' );
+
+	var postEditFallbackCardIconClass, postEditFallbackCardTitleMessage, postEditFallbackCardInfoMessage;
+	if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
+		postEditFallbackCardIconClass = 'mw-ge-help-panel-postedit-fallbackCard-icon-levelingup';
+		postEditFallbackCardTitleMessage = 'growthexperiments-help-panel-postedit-suggestededits-levelingup-title';
+		postEditFallbackCardInfoMessage = 'growthexperiments-help-panel-postedit-suggestededits-levelingup-info';
+	} else {
+		postEditFallbackCardIconClass = 'mw-ge-help-panel-postedit-fallbackCard-icon';
+		postEditFallbackCardTitleMessage = 'growthexperiments-help-panel-postedit-suggestededits-title';
+		postEditFallbackCardInfoMessage = 'growthexperiments-help-panel-postedit-suggestededits-info';
+	}
+
+	$fallbackCard.append(
+		// The following classes are used here:
+		// * mw-ge-help-panel-postedit-fallbackCard-icon-levelingup
+		// * mw-ge-help-panel-postedit-fallbackCard-icon
+		$( '<div>' ).addClass( postEditFallbackCardIconClass ),
+		$( '<div>' ).append(
+			$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-header' ).text(
+				// The following messages are used here:
+				// * growthexperiments-help-panel-postedit-suggestededits-title
+				// * growthexperiments-help-panel-postedit-suggestededits-levelingup-title
+				mw.message( postEditFallbackCardTitleMessage ).text()
+			),
+			$( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard-text' ).text(
+				// The following messages are used here:
+				// * growthexperiments-help-panel-postedit-suggestededits-info
+				// * growthexperiments-help-panel-postedit-suggestededits-levelingup-info
+				mw.message( postEditFallbackCardInfoMessage ).text()
+			)
+		)
+	);
+	return $fallbackCard;
 };
 
 /**
