@@ -28,12 +28,14 @@
 	 *   data when omitted. Null disables linking.
 	 */
 	function SmallTaskCard( config ) {
-		this.task = config.task;
-		// Must precede parent constructor as getTagName behavior depends on this.
-		this.taskUrl = ( 'taskUrl' in config ) ? config.taskUrl : new mw.Title( this.task.title ).getUrl();
+		if ( config.task ) {
+			this.task = config.task;
+			// Must precede parent constructor as getTagName behavior depends on this.
+			this.taskUrl = ( 'taskUrl' in config ) ? config.taskUrl : new mw.Title( this.task.title ).getUrl();
+			this.taskType = config.taskTypes[ this.task.tasktype ];
+		}
 		SmallTaskCard.super.call( this, config );
 		OO.EventEmitter.call( this );
-		this.taskType = config.taskTypes[ this.task.tasktype ];
 		this.buildCard();
 	}
 	OO.inheritClass( SmallTaskCard, OO.ui.Element );
@@ -52,60 +54,64 @@
 	SmallTaskCard.prototype.buildCard = function () {
 		// Keep HTML structure in sync with SuggestedEdits::getTaskCard().
 
-		var $image, $title, $description, $pageviews, $taskType,
-			$cardTextContainer, $glue, $cardMetadataContainer;
+		var $image = $( '<div>' ).addClass( 'mw-ge-small-task-card-image mw-ge-small-task-card-image-skeleton' ),
+			$title = $( '<span>' ).addClass( 'mw-ge-small-task-card-title skeleton' ),
+			$description = $( '<span>' ).addClass( 'mw-ge-small-task-card-description skeleton' ),
+			$pageviews = $( '<span>' ).addClass( 'mw-ge-small-task-card-pageviews skeleton' ),
+			$taskType, $cardTextContainer, $glue, $cardMetadataContainer;
 
-		$image = $( '<div>' )
-			.addClass( 'mw-ge-small-task-card-image' );
-		if ( this.task.thumbnailSource ) {
-			$image.css( 'background-image', 'url("' + this.task.thumbnailSource + '")' );
-		} else if ( this.task.thumbnailSource === undefined ) {
-			$image.addClass( 'mw-ge-small-task-card-image-skeleton' );
-		} else {
-			$image.addClass( 'mw-ge-small-task-card-image-placeholder' );
+		if ( this.task ) {
+			$title.removeClass( 'skeleton' ).text( this.task.title );
+			$image.removeClass( 'mw-ge-small-task-card-image-skeleton' );
+			$description.removeClass( 'skeleton' );
+			$pageviews.removeClass( 'skeleton' );
+
+			if ( this.task.thumbnailSource ) {
+				$image
+					.css( 'background-image', 'url("' + this.task.thumbnailSource + '")' );
+			} else if ( this.task.thumbnailSource === undefined ) {
+				$image.addClass( 'mw-ge-small-task-card-image-skeleton' );
+			} else {
+				$image.addClass( 'mw-ge-small-task-card-image-placeholder' );
+			}
+
+			if ( this.task.description ) {
+				$title.addClass( 'mw-ge-small-task-card-title--with-description' );
+
+				$description.text( this.task.description );
+			} else if ( this.task.description === undefined ) {
+				$description.addClass( 'skeleton' );
+			}
+
+			if ( this.task.pageviews ) {
+				$pageviews
+					.text( mw.message(
+						'growthexperiments-homepage-suggestededits-pageviews',
+						mw.language.convertNumber( this.task.pageviews ) ).text()
+					)
+					.prepend( new OO.ui.IconWidget( { icon: 'chart' } ).$element );
+			} else if ( this.task.pageviews === undefined ) {
+				$pageviews.addClass( 'skeleton' );
+			}
+			$taskType = $( '<span>' )
+				.addClass( 'mw-ge-small-task-card-tasktype' )
+				// The following classes are used here:
+				// * mw-ge-small-task-card-tasktype-difficulty-easy
+				// * mw-ge-small-task-card-tasktype-difficulty-medium
+				// * mw-ge-small-task-card-tasktype-difficulty-hard
+				.addClass( 'mw-ge-small-task-card-tasktype-difficulty-' + this.taskType.difficulty )
+				// The following icons are used here:
+				// * difficulty-easy
+				// * difficulty-medium
+				// * difficulty-hard
+				.prepend( new OO.ui.IconWidget( { icon: 'difficulty-' + this.taskType.difficulty } ).$element );
+
+			$taskType.prepend( IconUtils.getIconElementForTaskType( this.taskType.iconData ) );
+			$taskType.append( $( '<span>' )
+				.addClass( 'mw-ge-small-task-card-tasktype-taskname' )
+				.text( this.taskType.messages.name )
+			);
 		}
-		$title = $( '<span>' )
-			.addClass( 'mw-ge-small-task-card-title' )
-			.text( this.task.title );
-
-		if ( this.task.description ) {
-			$title.addClass( 'mw-ge-small-task-card-title--with-description' );
-
-			$description = $( '<div>' )
-				.addClass( 'mw-ge-small-task-card-description' )
-				.text( this.task.description );
-		} else if ( this.task.description === undefined ) {
-			$description = $( '<div>' ).addClass( 'mw-ge-small-task-card-description skeleton' );
-		}
-
-		if ( this.task.pageviews ) {
-			$pageviews = $( '<span>' )
-				.addClass( 'mw-ge-small-task-card-pageviews' )
-				.text( mw.message( 'growthexperiments-homepage-suggestededits-pageviews',
-					mw.language.convertNumber( this.task.pageviews ) ).text() )
-				.prepend( new OO.ui.IconWidget( { icon: 'chart' } ).$element );
-		} else if ( this.task.pageviews === undefined ) {
-			$pageviews = $( '<span>' ).addClass( 'mw-ge-small-task-card-pageviews skeleton' );
-		}
-
-		$taskType = $( '<span>' )
-			.addClass( 'mw-ge-small-task-card-tasktype' )
-			// The following classes are used here:
-			// * mw-ge-small-task-card-tasktype-difficulty-easy
-			// * mw-ge-small-task-card-tasktype-difficulty-medium
-			// * mw-ge-small-task-card-tasktype-difficulty-hard
-			.addClass( 'mw-ge-small-task-card-tasktype-difficulty-' + this.taskType.difficulty )
-			// The following icons are used here:
-			// * difficulty-easy
-			// * difficulty-medium
-			// * difficulty-hard
-			.prepend( new OO.ui.IconWidget( { icon: 'difficulty-' + this.taskType.difficulty } ).$element );
-
-		$taskType.prepend( IconUtils.getIconElementForTaskType( this.taskType.iconData ) );
-		$taskType.append( $( '<span>' )
-			.addClass( 'mw-ge-small-task-card-tasktype-taskname' )
-			.text( this.taskType.messages.name )
-		);
 
 		$glue = $( '<div>' )
 			.addClass( 'mw-ge-small-task-card-glue' );
@@ -119,7 +125,8 @@
 			.append( $glue, $title, $description, $glue.clone(), $cardMetadataContainer );
 		// eslint-disable-next-line mediawiki/class-doc
 		this.$element
-			.addClass( 'mw-ge-small-task-card mw-ge-tasktype-' + this.task.tasktype )
+			.addClass( 'mw-ge-small-task-card' )
+			.addClass( this.task ? 'mw-ge-tasktype-' + this.task.tasktype : '' )
 			.addClass( OO.ui.isMobile() ?
 				'mw-ge-small-task-card-mobile' : 'mw-ge-small-task-card-desktop' )
 			.attr( 'href', this.taskUrl )

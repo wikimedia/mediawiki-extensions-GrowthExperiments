@@ -75,6 +75,14 @@
 			// is not defined yet
 			color: @wmui-color-base10;
 		}
+
+		&.skeleton {
+			.loading-animation (600ms);
+
+			&:before {
+				content: '\00a0';
+			}
+		}
 	}
 
 	&-description {
@@ -117,6 +125,10 @@
 
 		&.skeleton {
 			.loading-animation (1200ms);
+
+			&:before {
+				content: '\00a0';
+			}
 		}
 	}
 

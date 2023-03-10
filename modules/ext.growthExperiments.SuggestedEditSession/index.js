@@ -460,35 +460,34 @@
 
 			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
 				return require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( function ( nextSuggestedTaskType ) {
-					return require( 'ext.growthExperiments.PostEdit' ).setupPanel(
+					var result = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
 						config.isDialogShownUponReload, nextSuggestedTaskType
-					).then( function ( result ) {
-						result.openPromise.done( function () {
-							self.postEditDialogNeedsToBeShown = false;
-							self.save();
-						} ).then( function () {
-							// Prepare for follow-up edits by loading the next suggested task
-							// type based on the edit just now made.
-							if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
-								self.getNextSuggestedTaskType();
-							}
-							if ( self.editorInterface === 'visualeditor' ) {
-								return $.Deferred().resolve();
-							} else {
-								// VisualEditor edits will receive change tags through
-								// ve.init.target.saveFields and VE's PostSave hook implementation
-								// in GrowthExperiments.
-								// For non-VisualEditor-edits, we'll query the revision that was just
-								// saved, and send a POST to the newcomertask/complete endpoint to apply
-								// the relevant change tags.
-								return self.tagNonVisualEditorEditWithGrowthChangeTags( self.taskType );
-							}
-						} );
-						result.closePromise.done( function () {
-							self.postEditDialogIsOpen = false;
-						} );
-						return result.openPromise;
+					);
+					result.openPromise.done( function () {
+						self.postEditDialogNeedsToBeShown = false;
+						self.save();
+					} ).then( function () {
+						// Prepare for follow-up edits by loading the next suggested task
+						// type based on the edit just now made.
+						if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
+							self.getNextSuggestedTaskType();
+						}
+						if ( self.editorInterface === 'visualeditor' ) {
+							return $.Deferred().resolve();
+						} else {
+							// VisualEditor edits will receive change tags through
+							// ve.init.target.saveFields and VE's PostSave hook implementation
+							// in GrowthExperiments.
+							// For non-VisualEditor-edits, we'll query the revision that was just
+							// saved, and send a POST to the newcomertask/complete endpoint to apply
+							// the relevant change tags.
+							return self.tagNonVisualEditorEditWithGrowthChangeTags( self.taskType );
+						}
 					} );
+					result.closePromise.done( function () {
+						self.postEditDialogIsOpen = false;
+					} );
+					return result.openPromise;
 				} );
 			} );
 		}

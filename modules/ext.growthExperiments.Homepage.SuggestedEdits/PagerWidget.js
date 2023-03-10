@@ -35,4 +35,11 @@ SuggestedEditPagerWidget.prototype.setMessage = function ( currentPosition, tota
 	).parse() );
 };
 
+/**
+ * Set the pager widget text to a message indicating that tasks are loading.
+ */
+SuggestedEditPagerWidget.prototype.setLoadingMessage = function () {
+	this.$element.text( mw.message( 'growthexperiments-homepage-suggestededits-pager-loading' ).text() );
+};
+
 module.exports = SuggestedEditPagerWidget;

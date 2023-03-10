@@ -92,9 +92,6 @@
 	/**
 	 * Helper method to tie getNextTask() and displayPanel() together.
 	 *
-	 * @param {mw.libs.ge.TaskData|null} task Task data, or null when the task card should not be
-	 *   shown.
-	 * @param {string|null} errorMessage Error message, or null when there was no error.
 	 * @param {boolean} isDialogShownUponReload Whether the dialog is shown upon page reload.
 	 * @return {Object} An object with:
 	 *   - task: task data as a plain Object (as returned by GrowthTasksApi), omitted
@@ -104,8 +101,8 @@
 	 *   - openPromise: a promise that resolves when the panel has been displayed.
 	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
-	function setup( task, errorMessage, isDialogShownUponReload ) {
-		var postEditPanel, displayPanelPromises, openPromise, result,
+	function setup( isDialogShownUponReload ) {
+		var postEditPanel, displayPanelPromises,
 			imageRecommendationQualityGates =
 				suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
 			imageRecommendationDailyTasksExceeded =
@@ -117,16 +114,10 @@
 
 		hasEditorOpenedSincePageLoad = !isDialogShownUponReload;
 
-		if ( errorMessage ) {
-			mw.log.error( errorMessage );
-			mw.errorLogger.logError( new Error( errorMessage ), 'error.growthexperiments' );
-		}
-
 		postEditPanel = new PostEditPanel( {
 			taskType: suggestedEditSession.taskType,
 			taskState: suggestedEditSession.taskState,
-			nextTask: task,
-			taskTypes: task ? ALL_TASK_TYPES : {},
+			taskTypes: ALL_TASK_TYPES,
 			newcomerTaskLogger: newcomerTaskLogger,
 			helpPanelLogger: postEditPanelHelpPanelLogger,
 			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded,
@@ -134,26 +125,12 @@
 		} );
 
 		displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger );
-		openPromise = displayPanelPromises.openPromise;
-		openPromise.done( postEditPanel.logImpression.bind( postEditPanel, {
-			savedTaskType: suggestedEditSession.taskType,
-			errorMessage: errorMessage,
-			userTaskTypes: filtersStore.getSelectedTaskTypes(),
-			userTopics: filtersStore.getSelectedTopics(),
-			newcomerTaskToken: suggestedEditSession.newcomerTaskToken
-		} ) );
 
-		result = {
+		return {
 			panel: postEditPanel,
-			openPromise: openPromise,
+			openPromise: displayPanelPromises.openPromise,
 			closePromise: displayPanelPromises.closePromise
 		};
-		if ( task ) {
-			result.task = task;
-		} else if ( errorMessage ) {
-			result.errorMessage = errorMessage;
-		}
-		return result;
 	}
 
 	module.exports = {
@@ -168,7 +145,7 @@
 		 * @param {string} nextSuggestedTaskType If provided, use only this task type for fetching
 		 *   tasks. Used when we are prompting the user to try a new task type after completing
 		 *   a certain number of tasks of the current task type. See the LevelingUpManager service.
-		 * @return {jQuery.Promise<Object>} A promise resolving to an object with:
+		 * @return {Object} An object with:
 		 *   - task: task data as a plain Object (as returned by GrowthTasksApi), might be omitted
 		 *     when loading the task failed;
 		 *   - errorMessage: error message (only when loading the task failed);
@@ -177,18 +154,35 @@
 		 *   - closePromise: A promise that resolves when the dialog has been closed.
 		 */
 		setupPanel: function ( isDialogShownUponReload, nextSuggestedTaskType ) {
-			var fetchTasksConfig = {
-				excludePageId: mw.config.get( 'wgArticleId' ),
-				excludeExceededQuotaTaskTypes: true
-			};
+			var setupResult,
+				fetchTasksConfig = {
+					excludePageId: mw.config.get( 'wgArticleId' ),
+					excludeExceededQuotaTaskTypes: true
+				},
+				logPanelImpression = function ( panel, errorMessage ) {
+					return panel.logImpression.bind( panel, {
+						savedTaskType: suggestedEditSession.taskType,
+						errorMessage: errorMessage,
+						userTaskTypes: filtersStore.getSelectedTaskTypes(),
+						userTopics: filtersStore.getSelectedTopics(),
+						newcomerTaskToken: suggestedEditSession.newcomerTaskToken
+					} );
+				};
+
 			if ( nextSuggestedTaskType ) {
 				fetchTasksConfig.newTaskTypes = [ nextSuggestedTaskType ];
 			}
-			return tasksStore.fetchTasks( 'postEditDialog', fetchTasksConfig ).then( function () {
-				return setup( tasksStore.getCurrentTask(), null, isDialogShownUponReload );
-			}, function ( errorMessage ) {
-				return setup( null, errorMessage, isDialogShownUponReload );
+
+			tasksStore.fetchTasks( 'postEditDialog', fetchTasksConfig ).catch( function ( errorMessage ) {
+				if ( errorMessage ) {
+					mw.log.error( errorMessage );
+					mw.errorLogger.logError( new Error( errorMessage ), 'error.growthexperiments' );
+				}
+				setupResult.openPromise.done( logPanelImpression( setupResult.panel, errorMessage ) );
 			} );
+			setupResult = setup( isDialogShownUponReload );
+			setupResult.openPromise.done( logPanelImpression( setupResult.panel ) );
+			return setupResult;
 		},
 		/**
 		 * Create and show the try-new-task dialog panel.

@@ -114,6 +114,17 @@ NewcomerTasksStore.prototype.getQueuePosition = function () {
 };
 
 /**
+ * Get the loading state of the store. Will be true while requests
+ * to the growthtasks api are made
+ *
+ * @see NewcomerTasksStore.prototype.fetchTasks
+ * @return {boolean}
+ */
+NewcomerTasksStore.prototype.isTaskQueueLoading = function () {
+	return this.taskQueueLoading;
+};
+
+/**
  * Check whether previous navigation is possible
  *
  * @return {boolean}
@@ -226,13 +237,24 @@ NewcomerTasksStore.prototype.setPreloadedTaskQueue = function ( taskQueue ) {
 };
 
 /**
- * Set the flag indicating whether tasks are being fetched
+ * Set the flag indicating whether tasks are being fetched,
+ * including populating the task queue from server-side exported task data
  *
  * @param {boolean} isLoading
  */
 NewcomerTasksStore.prototype.setTaskQueueLoading = function ( isLoading ) {
 	this.taskQueueLoading = isLoading;
 	this.emit( CONSTANTS.EVENTS.TASK_QUEUE_LOADING, isLoading );
+};
+
+/**
+ * Set the error from the fetch tasks request
+ *
+ * @param {Error} error
+ */
+NewcomerTasksStore.prototype.setTaskQueueLoadingError = function ( error ) {
+	this.taskQueueLoadingError = error;
+	this.emit( CONSTANTS.EVENTS.TASK_QUEUE_FAILED_LOADING, error );
 };
 
 // Events emitted when state changes for reactivity
@@ -331,6 +353,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 			this.taskCount = updatedTaskQueue.length;
 		}
 
+		this.setTaskQueueLoading( false );
 		this.setTaskQueue( updatedTaskQueue );
 
 		if ( this.taskQueue.length ) {
@@ -339,7 +362,6 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 			this.preloadExtraDataForUpcomingTask();
 		}
 
-		this.setTaskQueueLoading( false );
 		this.synchronizeExtraData();
 		this.apiPromise = null;
 		promise.resolve();
@@ -350,6 +372,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		} else {
 			this.setTaskQueueLoading( false );
 		}
+		this.setTaskQueueLoadingError( new Error( error ) );
 		this.apiPromise = null;
 		promise.reject( error );
 	}.bind( this ) );

@@ -10,6 +10,8 @@ var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/'
 
 /**
  * @class mw.libs.ge.PostEditPanel
+ * @property {jQuery} $mainArea the main content element passed to the CollapsibleDrawer.
+ * Kept so we can update it on fetch task queue events.
  * @mixes OO.EventEmitter
  *
  * @constructor
@@ -38,6 +40,7 @@ function PostEditPanel( config ) {
 	this.newcomerTaskLogger = config.newcomerTaskLogger;
 	this.helpPanelLogger = config.helpPanelLogger;
 	this.$taskCard = null;
+	this.$mainArea = null;
 	this.imageRecommendationDailyTasksExceeded = config.imageRecommendationDailyTasksExceeded;
 	this.linkRecommendationDailyTasksExceeded = config.linkRecommendationDailyTasksExceeded;
 	this.prevButton = new OO.ui.ButtonWidget( {
@@ -51,8 +54,9 @@ function PostEditPanel( config ) {
 	this.prevButton.connect( this, { click: [ 'onPrevButtonClicked' ] } );
 	this.nextButton.connect( this, { click: [ 'onNextButtonClicked' ] } );
 	this.pager = new PagerWidget();
-
-	this.updateNavigation();
+	this.pager.setLoadingMessage();
+	this.togglePrevNavigation( false );
+	this.toggleNextNavigation( false );
 
 	tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, function () {
 		var currentTask = tasksStore.getCurrentTask();
@@ -73,6 +77,10 @@ function PostEditPanel( config ) {
 		var isNextEnabled = !isLoading && tasksStore.hasNextTask();
 		this.toggleNextNavigation( isNextEnabled );
 		this.nextButton.setIcon( isLoading ? 'ellipsis' : 'next' );
+	}.bind( this ) );
+	tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_FAILED_LOADING, function () {
+		this.toggleNavigation( false );
+		this.getMainArea();
 	}.bind( this ) );
 }
 
@@ -160,8 +168,12 @@ PostEditPanel.prototype.getHeaderText = function () {
  *   Null if the panel should not have a main area (as no task should be displayed).
  */
 PostEditPanel.prototype.getMainArea = function () {
-	var $subHeader = null,
-		$mainArea = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-main' );
+	var $subHeader = null;
+	if ( !this.$mainArea ) {
+		this.$mainArea = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-main' );
+	} else {
+		this.$mainArea.empty();
+	}
 
 	if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
 		$subHeader = $( '<div>' )
@@ -173,14 +185,18 @@ PostEditPanel.prototype.getMainArea = function () {
 			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-link-recommendation' ).text() );
 	}
 
-	if ( !this.nextTask ) {
+	if ( tasksStore.isTaskQueueLoading() ) {
+		this.$taskCard = this.getCard();
+		this.$mainArea.append( $subHeader, this.$taskCard, this.getTaskNavigation() );
+		return this.$mainArea;
+	} else if ( !this.nextTask ) {
 		this.$taskCard = this.getFallbackCard();
-		return $mainArea.append( this.$taskCard );
+		return this.$mainArea.append( this.$taskCard );
 	}
 
 	this.$taskCard = this.getCard( this.nextTask );
-
-	return $mainArea.append( $subHeader, this.$taskCard, this.getTaskNavigation() );
+	this.$mainArea.append( $subHeader, this.$taskCard, this.getTaskNavigation() );
+	return this.$mainArea;
 };
 
 /**
@@ -226,13 +242,18 @@ PostEditPanel.prototype.getFallbackCard = function () {
 };
 
 /**
- * Create the card element.
+ * Create the card element. If no task is provided the SmallTaskCard widget
+ * will be shown in a loading state.
  *
- * @param {mw.libs.ge.TaskData} task A task object, as returned by GrowthTasksApi
+ * @param {mw.libs.ge.TaskData|null} task A task object, as returned by GrowthTasksApi
  * @return {jQuery} A jQuery object wrapping the card element.
  */
 PostEditPanel.prototype.getCard = function ( task ) {
 	var params, url, taskCard;
+
+	if ( !task ) {
+		return new SmallTaskCard( {} ).$element;
+	}
 
 	this.newcomerTaskLogger.log( task );
 	params = {
@@ -278,9 +299,21 @@ PostEditPanel.prototype.updateTask = function ( task ) {
  * Update the pager text and navigation arrows state
  */
 PostEditPanel.prototype.updateNavigation = function () {
+	this.toggleNavigation( true );
 	this.togglePrevNavigation( tasksStore.hasPreviousTask() );
 	this.toggleNextNavigation( tasksStore.hasNextTask() );
 	this.updatePager( tasksStore.getQueuePosition() + 1, tasksStore.getTaskCount() );
+};
+
+/**
+ * Toggle the pager text and navigation arrows
+ *
+ * @param {boolean} show Make element visible, omit to toggle visibility
+ */
+PostEditPanel.prototype.toggleNavigation = function ( show ) {
+	this.pager.toggle( show );
+	this.prevButton.toggle( show );
+	this.nextButton.toggle( show );
 };
 
 /**
@@ -432,6 +465,9 @@ PostEditPanel.prototype.toggleNextNavigation = function ( isNextNavigationEnable
  * @param {number} totalTasks Number of tasks in the queue
  */
 PostEditPanel.prototype.updatePager = function ( currentTaskPosition, totalTasks ) {
+	if ( !this.pager.isVisible() ) {
+		this.pager.toggle( true );
+	}
 	this.pager.setMessage( currentTaskPosition, totalTasks );
 };
 
