@@ -829,18 +829,6 @@ class HomepageHooks implements
 			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
 			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
 			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 0 );
-			$this->userOptionsManager->setOption(
-				$user,
-				TourHooks::TOUR_COMPLETED_NEWIMPACT_DISCOVERY,
-				// If the new impact module isn't enabled yet, mark the tour
-				// as not seen. That way, when the module is eventually enabled,
-				// users will see it.
-				// If the new impact module is enabled, the user doesn't need to
-				// see this tour.
-				// When GEUseNewImpactModule is removed, this value can simply be 1, to
-				// indicate that it was seen.
-				(int)$this->config->get( 'GEUseNewImpactModule' )
-			);
 
 			if (
 				$this->config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&

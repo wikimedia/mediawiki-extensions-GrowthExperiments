@@ -2,18 +2,22 @@
 
 namespace GrowthExperiments;
 
+use Config;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\UserOptionsManager;
 
 class TourHooks implements
 	BeforePageDisplayHook,
 	ResourceLoaderRegisterModulesHook,
 	GetPreferencesHook,
-	UserGetDefaultOptionsHook
+	UserGetDefaultOptionsHook,
+	LocalUserCreatedHook
 {
 
 	public const TOUR_COMPLETED_HELP_PANEL = 'growthexperiments-tour-help-panel';
@@ -24,17 +28,25 @@ class TourHooks implements
 
 	private UserOptionsLookup $userOptionsLookup;
 	private ExperimentUserManager $experimentUserManager;
+	private Config $config;
+	private UserOptionsManager $userOptionsManager;
 
 	/**
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param ExperimentUserManager $experimentUserManager
+	 * @param Config $config
+	 * @param UserOptionsManager $userOptionsManager
 	 */
 	public function __construct(
 		UserOptionsLookup $userOptionsLookup,
-		ExperimentUserManager $experimentUserManager
+		ExperimentUserManager $experimentUserManager,
+		Config $config,
+		UserOptionsManager $userOptionsManager
 	) {
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->experimentUserManager = $experimentUserManager;
+		$this->config = $config;
+		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	/** @inheritDoc */
@@ -203,4 +215,23 @@ class TourHooks implements
 		}
 	}
 
+	/** @inheritDoc */
+	public function onLocalUserCreated( $user, $autocreated ) {
+		// Always set the new impact module discovery tour to seen, whether the user
+		// is autocreated or local to the wiki, and whether homepage is enabled or not.
+		// The only users who should see this tour are existing user accounts in the local
+		// wiki who had the old impact module, and now can see the new impact module.
+		$this->userOptionsManager->setOption(
+			$user,
+			self::TOUR_COMPLETED_NEWIMPACT_DISCOVERY,
+			// If the new impact module isn't enabled yet, mark the tour
+			// as not seen. That way, when the module is eventually enabled,
+			// users will see it.
+			// If the new impact module is enabled, the user doesn't need to
+			// see this tour.
+			// When GEUseNewImpactModule is removed, this value can simply be 1, to
+			// indicate that it was seen.
+			(int)$this->config->get( 'GEUseNewImpactModule' )
+		);
+	}
 }
