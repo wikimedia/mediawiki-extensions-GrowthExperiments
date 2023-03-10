@@ -25,6 +25,7 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Nuligar",
 	"growthexperiments-addimage-inspector-yes-button": "Yes",
 	"growthexperiments-addimage-inspector-no-button": "No",
+	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|Ne havas certeso}}",
 	"growthexperiments-addimage-detailsdialog-header": "Detali dil imajo",
 	"growthexperiments-addimage-detailsdialog-image": "Nomo dil arkivo:",
 	"growthexperiments-addimage-detailsdialog-description": "Deskripto:",

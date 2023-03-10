@@ -44,5 +44,11 @@
 	"welcomesurvey-question-email-placeholder": "{{GENDER:|ߌ ߟߊ߫}} ߢߎߡߍߙߋ߲߫ ߞߏ߲ߘߏ ߟߊߘߏ߲߬...",
 	"welcomesurvey-question-languages-label": "ߞߊ߲߫ ߃߀߀ ߡߊߜߍ߲ ߠߋ߬ ߦߋ߫ {{SITENAME}} ߘߐ߫. ߞߊ߲߫ ߜߘߍ ߘߏ߫ ߦߋ߫ ߦߋ߲߬ ߓߊ߬ {{GENDER:|ߌ}} ߦߋ߫ ߡߍ߲ ߞߊ߬ߙߊ߲߬ ߠߊ߫ ߊ߬ ߣߌ߫ ߞߊ߬ ߛߓߍߟߌ ߞߴߊ߬ ߘߐ߫؟",
 	"welcomesurvey-question-languages-placeholder": "ߞߊ߲ ߠߎ߬ ߝߊ߬ߙߊ߫ ߤߊ߲߯ ߞߊ߬ ߛߋ߫ {{PLURAL:|ߞߊ߲ ߞߋߟߋ߲߫ $1|ߞߊ߲ $1 ߠߎ߬}} ߘߐ߫...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|ߌ}} ߓߘߊ߫ ߞߊ߲ ߦߙߌߞߊ ߞߐߘߊ߲ ߝߊ߬ߙߊ߫"
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|ߌ}} ߓߘߊ߫ ߞߊ߲ ߦߙߌߞߊ ߞߐߘߊ߲ ߝߊ߬ߙߊ߫",
+	"welcomesurvey-reminder-link": "ߕߘߍ߬ ߝߛߍ߬ߝߛߍ߬ߟߌ ߘߐ߫",
+	"welcomesurvey-reminder-dismiss": "ߓߙߐߕߐ߫",
+	"welcomesurvey-mideditsignup-title": "ߌ ߣߌ߫ ߛߣߍ߫ $1߹",
+	"welcomesurvey-mideditsignup-body": "ߌ ߣߌ߫ ߗߋ߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߠߊ߫߹ {{GENDER:|ߌ ߟߊ߫}} ߓߟߏߓߌߟߊߢߐ߲߯ߞߊ߲ ߠߎ߬ ߟߊ߫ ߞߏ߫ ߓߍ߲߬ߢߐ߲߰ߦߊ߬ߣߍ߲ ߘߌ߫ ߛߋ߫ ߦߋ߫ ߟߴߌ ߓߟߏ߫ ߡߎ߬ߕߎ߲߫߸ ߊ߬ ߣߌ߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߬ߛߎ߬ߟߌ߫ ߜߘߍ߫ ߟߎ߫߸ ߌ ߟߊ߫ ߓߏ߬ߟߏ߲߬ߘߊ ߞߐߜߍ ߟߊ߫.",
+	"welcomesurvey-mideditsignup-button-homepage": "ߕߊ߯ ߒ ߠߊ߫ ߓߏ߬ߟߏ߲߬ߘߊ ߞߐߜߍ ߞߊ߲߬",
+	"welcomesurvey-mideditsignup-button-close": "ߊ߬ ߘߊߕߎ߲߯"
 }
