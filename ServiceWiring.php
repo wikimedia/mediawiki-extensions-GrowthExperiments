@@ -689,7 +689,6 @@ return [
 			$growthServices->getMentorProvider(),
 			$growthServices->getMentorStore(),
 			$growthServices->getChangeMentorFactory(),
-			$services->getPermissionManager(),
 			$services->getJobQueueGroupFactory()
 		);
 	},

@@ -7,13 +7,11 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
-use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use WikiMap;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\ScopedCallback;
 
 class ReassignMentees {
 	use LoggerAwareTrait;
@@ -27,7 +25,6 @@ class ReassignMentees {
 	private MentorProvider $mentorProvider;
 	private MentorStore $mentorStore;
 	private ChangeMentorFactory $changeMentorFactory;
-	private PermissionManager $permissionManager;
 	private JobQueueGroupFactory $jobQueueGroupFactory;
 	private UserIdentity $performer;
 	private UserIdentity $mentor;
@@ -39,7 +36,6 @@ class ReassignMentees {
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
 	 * @param ChangeMentorFactory $changeMentorFactory
-	 * @param PermissionManager $permissionManager
 	 * @param JobQueueGroupFactory $jobQueueGroupFactory
 	 * @param UserIdentity $performer
 	 * @param UserIdentity $mentor
@@ -51,7 +47,6 @@ class ReassignMentees {
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
 		ChangeMentorFactory $changeMentorFactory,
-		PermissionManager $permissionManager,
 		JobQueueGroupFactory $jobQueueGroupFactory,
 		UserIdentity $performer,
 		UserIdentity $mentor,
@@ -62,7 +57,6 @@ class ReassignMentees {
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorStore = $mentorStore;
 		$this->changeMentorFactory = $changeMentorFactory;
-		$this->permissionManager = $permissionManager;
 		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
 		$this->performer = $performer;
 		$this->mentor = $mentor;
@@ -124,7 +118,6 @@ class ReassignMentees {
 		string $reassignMessageKey,
 		...$reassignMessageAdditionalParams
 	): bool {
-		$guard = $this->permissionManager->addTemporaryUserRights( $this->mentor, 'bot' );
 		$lockName = 'GrowthExperiments-ReassignMentees-' . $this->mentor->getId() .
 			WikiMap::getCurrentWikiId();
 		if ( !$this->dbw->lock( $lockName, __METHOD__, 0 ) ) {
@@ -150,7 +143,6 @@ class ReassignMentees {
 			try {
 				$newMentor = $this->mentorManager->getRandomAutoAssignedMentor( $mentee );
 			} catch ( WikiConfigException $e ) {
-				ScopedCallback::consume( $guard );
 				$this->logger->warning(
 					'ReassignMentees failed to reassign mentees for {mentor}; mentor list is invalid',
 					[
@@ -182,9 +174,6 @@ class ReassignMentees {
 				true
 			);
 		}
-
-		// remove temporary bot rights
-		ScopedCallback::consume( $guard );
 
 		$this->dbw->unlock( $lockName, __METHOD__ );
 		return true;

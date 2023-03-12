@@ -7,7 +7,6 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -18,7 +17,6 @@ class ReassignMenteesFactory {
 	private MentorProvider $mentorProvider;
 	private MentorStore $mentorStore;
 	private ChangeMentorFactory $changeMentorFactory;
-	private PermissionManager $permissionManager;
 	private JobQueueGroupFactory $jobQueueGroupFactory;
 
 	/**
@@ -27,7 +25,6 @@ class ReassignMenteesFactory {
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
 	 * @param ChangeMentorFactory $changeMentorFactory
-	 * @param PermissionManager $permissionManager
 	 * @param JobQueueGroupFactory $jobQueueGroupFactory
 	 */
 	public function __construct(
@@ -36,7 +33,6 @@ class ReassignMenteesFactory {
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
 		ChangeMentorFactory $changeMentorFactory,
-		PermissionManager $permissionManager,
 		JobQueueGroupFactory $jobQueueGroupFactory
 	) {
 		$this->dbLoadBalancer = $dbLoadBalancer;
@@ -44,7 +40,6 @@ class ReassignMenteesFactory {
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorStore = $mentorStore;
 		$this->changeMentorFactory = $changeMentorFactory;
-		$this->permissionManager = $permissionManager;
 		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
 	}
 
@@ -65,7 +60,6 @@ class ReassignMenteesFactory {
 			$this->mentorProvider,
 			$this->mentorStore,
 			$this->changeMentorFactory,
-			$this->permissionManager,
 			$this->jobQueueGroupFactory,
 			$performer,
 			$mentor,
