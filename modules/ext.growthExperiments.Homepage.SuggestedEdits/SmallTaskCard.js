@@ -21,7 +21,8 @@
 	 *
 	 * @constructor
 	 * @param {Object} config
-	 * @param {mw.libs.ge.TaskData} config.task Task data, as returned by GrowthTasksApi.
+	 * @param {mw.libs.ge.TaskData} [config.task] Task data, as returned by GrowthTasksApi.
+	 *   When omitted, the card will show a loading skeleton.
 	 * @param {Object} config.taskTypes Task type data, as returned by
 	 *   HomepageHooks::getTaskTypesJson.
 	 * @param {string|null} [config.taskUrl] The URL the task links to. Will be generated from task
