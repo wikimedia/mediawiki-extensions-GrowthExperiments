@@ -4,6 +4,7 @@ namespace GrowthExperiments\LevelingUp;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -211,7 +212,7 @@ class LevelingUpManager {
 					null,
 					[ 'useCache' => false ]
 				);
-				if ( $suggestions->count() ) {
+				if ( $suggestions instanceof TaskSet && $suggestions->count() ) {
 					return $candidateTaskTypeId;
 				}
 			}
