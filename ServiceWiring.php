@@ -23,6 +23,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
@@ -638,13 +639,24 @@ return [
 		);
 	},
 
+	'GrowthExperimentsPersonalizedPraiseSettings' => static function (
+		MediaWikiServices $services
+	): PersonalizedPraiseSettings {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		return new PersonalizedPraiseSettings(
+			$geServices->getGrowthWikiConfig(),
+			$services->getUserOptionsManager()
+		);
+	},
+
 	'GrowthExperimentsPraiseworthyConditionsLookup' => static function (
 		MediaWikiServices $services
 	): PraiseworthyConditionsLookup {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		return new PraiseworthyConditionsLookup(
-			$geServices->getGrowthWikiConfig(),
+			$geServices->getPersonalizedPraiseSettings(),
 			$services->getUserOptionsLookup(),
 			$geServices->getMentorManager()
 		);

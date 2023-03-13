@@ -82,7 +82,7 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 		$this->mockPageviews();
 		$this->setMwGlobals( [
 			'wgGEPersonalizedPraiseBackendEnabled' => true,
-			'wgGEPersonalizedPraiseEdits' => $minEdits,
+			'wgGEPersonalizedPraiseMinEdits' => $minEdits,
 		] );
 
 		$mentor = $this->getTestSysop()->getUserIdentity();

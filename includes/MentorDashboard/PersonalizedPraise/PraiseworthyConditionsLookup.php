@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
-use Config;
 use DateInterval;
 use DatePeriod;
 use DateTime;
@@ -14,14 +13,10 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * Service to look up the conditions for mentee being praiseworthy
- *
- * As of now, this only uses GEPersonalizedPraiseDays and
- * GEPersonalizedPraiseEdits, but in the future, it will
- * make use of mentor's own preferences (see T322446).
  */
 class PraiseworthyConditionsLookup {
 
-	private Config $wikiConfig;
+	private PersonalizedPraiseSettings $settings;
 	private UserOptionsLookup $userOptionsLookup;
 	private MentorManager $mentorManager;
 
@@ -29,16 +24,16 @@ class PraiseworthyConditionsLookup {
 	public const WAS_PRAISED_PREF = 'growthexperiments-mentorship-was-praised';
 
 	/**
-	 * @param Config $wikiConfig
+	 * @param PersonalizedPraiseSettings $settings
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param MentorManager $mentorManager
 	 */
 	public function __construct(
-		Config $wikiConfig,
+		PersonalizedPraiseSettings $settings,
 		UserOptionsLookup $userOptionsLookup,
 		MentorManager $mentorManager
 	) {
-		$this->wikiConfig = $wikiConfig;
+		$this->settings = $settings;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->mentorManager = $mentorManager;
 	}
@@ -78,21 +73,6 @@ class PraiseworthyConditionsLookup {
 		}
 
 		return $res;
-	}
-
-	/**
-	 * Return conditions mentees need to meet to be praiseworthy for a mentor
-	 *
-	 * @todo Allow mentor to customize the praiseworthy settings (T322446)
-	 * @param UserIdentity $mentor
-	 * @return int[] Array with 'maxedits', 'minedits' and 'days' as the key
-	 */
-	private function getPraiseworthyConditionsForMentor( UserIdentity $mentor ) {
-		return [
-			'maxedits' => (int)$this->wikiConfig->get( 'GEPersonalizedPraiseMaxEdits' ),
-			'minedits' => (int)$this->wikiConfig->get( 'GEPersonalizedPraiseEdits' ),
-			'days' => (int)$this->wikiConfig->get( 'GEPersonalizedPraiseDays' )
-		];
 	}
 
 	/**
@@ -142,16 +122,13 @@ class PraiseworthyConditionsLookup {
 			return false;
 		}
 
-		$conditions = $this->getPraiseworthyConditionsForMentor( $mentor );
-		$maxEdits = $conditions['maxedits'];
-		$minEdits = $conditions['minedits'];
-		$daysToConsider = $conditions['days'];
+		$conditions = $this->settings->getPraiseworthyConditions( $mentor );
 
-		if ( $menteeImpact->getTotalEditsCount() >= $maxEdits ) {
+		if ( $menteeImpact->getTotalEditsCount() >= $conditions->getMaxEdits() ) {
 			return false;
 		}
 
-		$datePeriod = $this->buildDatePeriod( $daysToConsider );
-		return $this->getEditsInDatePeriod( $menteeImpact, $datePeriod ) >= $minEdits;
+		$datePeriod = $this->buildDatePeriod( $conditions->getDays() );
+		return $this->getEditsInDatePeriod( $menteeImpact, $datePeriod ) >= $conditions->getMinEdits();
 	}
 }

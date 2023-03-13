@@ -2386,10 +2386,10 @@
 			"value": false
 		},
 		"GEPersonalizedPraiseDays": {
-			"description": "Number of days to consider when checking whether a mentee is praiseworthy (used together with GEPersonalizedPraiseEdits). This must not be longer than wgRCMaxAge.",
+			"description": "Number of days to consider when checking whether a mentee is praiseworthy (used together with GEPersonalizedPraiseMinEdits). This must not be longer than wgRCMaxAge.",
 			"value": 7
 		},
-		"GEPersonalizedPraiseEdits": {
+		"GEPersonalizedPraiseMinEdits": {
 			"description": "Number of article edits a mentee needs to have within GEPersonalizedPraiseDays to be considered praiseworthy",
 			"value": 8
 		},

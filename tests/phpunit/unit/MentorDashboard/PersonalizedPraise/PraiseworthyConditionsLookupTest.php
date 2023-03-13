@@ -2,10 +2,11 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditions;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
-use HashConfig;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
@@ -35,6 +36,11 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		MWTimestamp::setFakeTime( '20230115235959' );
 		$mentee = new UserIdentityValue( 123, 'Mentee' );
 
+		$settingsMock = $this->createMock( PersonalizedPraiseSettings::class );
+		$settingsMock->expects( $this->once() )
+			->method( 'getPraiseworthyConditions' )
+			->willReturn( new PraiseworthyConditions( $maxEdits, $minEdits, $days ) );
+
 		$mentorManagerMock = $this->createMock( MentorManager::class );
 		$mentorManagerMock->expects( $this->once() )
 			->method( 'getMentorshipStateForUser' )
@@ -58,11 +64,7 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 			->willReturn( $editsByDay );
 
 		$conditionsLookup = new PraiseworthyConditionsLookup(
-			new HashConfig( [
-				'GEPersonalizedPraiseEdits' => $minEdits,
-				'GEPersonalizedPraiseDays' => $days,
-				'GEPersonalizedPraiseMaxEdits' => $maxEdits,
-			] ),
+			$settingsMock,
 			$userOptionsLookupMock,
 			$mentorManagerMock
 		);
