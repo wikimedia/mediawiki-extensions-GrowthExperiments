@@ -1,6 +1,6 @@
 <template>
 	<div class="ext-growthExperiments-ErrorDisplay">
-		<score-cards></score-cards>
+		<c-score-cards :render-third-person="renderThirdPerson" :user-name="userName"></c-score-cards>
 		<div
 			class="ext-growthExperiments-ErrorDisplay__display"
 		>
@@ -21,7 +21,7 @@
 
 <script>
 const { inject } = require( 'vue' );
-const ScoreCards = require( './ScoreCards.vue' );
+const CScoreCards = require( '../../vue-components/CScoreCards.vue' );
 const CText = require( '../../vue-components/CText.vue' );
 
 // @vue/component
@@ -29,7 +29,7 @@ module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	components: {
 		CText,
-		ScoreCards
+		CScoreCards
 	},
 	setup() {
 		const userName = inject( 'RELEVANT_USER_USERNAME' );

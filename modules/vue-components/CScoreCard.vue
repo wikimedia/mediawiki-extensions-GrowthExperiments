@@ -56,10 +56,10 @@ const { useSlots } = require( 'vue' );
 const {
 	cdxIconClose,
 	cdxIconInfo
-} = require( '../../vue-components/icons.json' );
+} = require( './icons.json' );
 const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
-const CText = require( '../../vue-components/CText.vue' );
-const CPopover = require( '../../vue-components/CPopover.vue' );
+const CText = require( './CText.vue' );
+const CPopover = require( './CPopover.vue' );
 
 // Uses the following message keys:
 // growthexperiments-info-tooltip-close-label

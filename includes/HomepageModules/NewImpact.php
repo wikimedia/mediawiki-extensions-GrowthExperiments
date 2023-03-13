@@ -170,7 +170,7 @@ class NewImpact extends BaseModule {
 	 *
 	 * @param int $index Card index, not relevant at the moment.
 	 * @return string HTML content of a scorecard
-	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.{less,vue}
+	 * @see modules/vue-components/CScoreCard.{less,vue}
 	 */
 	private function getScoreCardMarkup( int $index ): string {
 		return Html::rawElement( 'div', [
@@ -181,7 +181,7 @@ class NewImpact extends BaseModule {
 	/**
 	 * ScoreCards server markup. A wrapper using only top-level styles from ScoreCards.less.
 	 *
-	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.{less,vue}
+	 * @see modules/vue-components/CScoreCards.{less,vue}
 	 * @return string HTML content of the scorecards section
 	 */
 	private function getScoreCardsMarkup(): string {

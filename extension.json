@@ -790,11 +790,11 @@
 			"styles": [
 				"utils/mixins.less",
 				"vue-components/Skeleton.less",
-				"ext.growthExperiments.Homepage.NewImpact/styles/mixins.less",
 				"ext.growthExperiments.Homepage.NewImpact/styles/NewImpact.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
-				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.less",
-				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.less"
+				"vue-components/mixins.less",
+				"vue-components/CScoreCard.less",
+				"vue-components/CScoreCards.less"
 			],
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.NewImpact/init.js",
@@ -810,8 +810,6 @@
 				"ext.growthExperiments.Homepage.NewImpact/components/InfoBoxes.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/TrendChart.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpactSummary.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/StreakGraph.vue",
 				"ext.growthExperiments.Homepage.NewImpact/components/ArticlesList.vue",
@@ -827,6 +825,8 @@
 				"vue-components/CText.vue",
 				"vue-components/CList.vue",
 				"vue-components/CListItem.vue",
+				"vue-components/CScoreCard.vue",
+				"vue-components/CScoreCards.vue",
 				{
 					"name": "vue-components/icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
@@ -1149,8 +1149,8 @@
 				"vue-components/Skeleton.less",
 				"ext.growthExperiments.Homepage.NewImpact/styles/NewImpact.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
-				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCards.less",
-				"ext.growthExperiments.Homepage.NewImpact/components/ScoreCard.less"
+				"vue-components/CScoreCard.less",
+				"vue-components/CScoreCards.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [

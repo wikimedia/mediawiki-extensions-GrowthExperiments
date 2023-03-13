@@ -5,7 +5,7 @@
 			class="ext-growthExperiments-NoEditsDisplay__scorecards"
 			:class="`ext-growthExperiments-NoEditsDisplay__scorecards--${renderMode}`"
 		>
-			<score-card
+			<c-score-card
 				:icon="cdxIconUserTalk"
 				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 				:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
@@ -43,8 +43,8 @@
 						</p>
 					</div>
 				</template>
-			</score-card>
-			<score-card
+			</c-score-card>
+			<c-score-card
 				:icon="cdxIconChart"
 				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 				:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
@@ -74,7 +74,7 @@
 						</p>
 					</div>
 				</template>
-			</score-card>
+			</c-score-card>
 		</div>
 		<div
 			class="ext-growthExperiments-NoEditsDisplay__content"
@@ -140,7 +140,7 @@ const {
 	cdxIconChart,
 	cdxIconInfoFilled
 } = require( '../../vue-components/icons.json' );
-const ScoreCard = require( './ScoreCard.vue' );
+const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 const CText = require( '../../vue-components/CText.vue' );
 const { NO_DATA_CHARACTER } = require( '../constants.js' );
 
@@ -151,7 +151,7 @@ module.exports = exports = {
 		CdxButton,
 		CdxIcon,
 		CText,
-		ScoreCard
+		CScoreCard
 	},
 	props: {
 		userName: {
@@ -220,7 +220,7 @@ module.exports = exports = {
 <style lang="less">
 @import ( reference ) '../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 @import '../../utils/mixins.less';
-@import '../styles/mixins.less';
+@import '../../vue-components/mixins.less';
 
 .ext-growthExperiments-NoEditsDisplay {
 	&--desktop,

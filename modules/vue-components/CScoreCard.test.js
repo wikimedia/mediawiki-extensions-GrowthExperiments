@@ -1,9 +1,9 @@
-jest.mock( '../../vue-components/icons.json', () => ( {
+jest.mock( './icons.json', () => ( {
 	cdxIconClose: 'Some truthy icon',
 	cdxIconInfo: ''
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
-const ScoreCard = require( './ScoreCard.vue' );
+const ScoreCard = require( './CScoreCard.vue' );
 
 describe( 'ScoreCard', () => {
 	it( 'renders correctly', () => {

@@ -1,4 +1,4 @@
-jest.mock( '../../vue-components/icons.json', () => ( {
+jest.mock( './icons.json', () => ( {
 	cdxIconEdit: '',
 	cdxIconUserTalk: '',
 	cdxIconClock: '',
@@ -8,19 +8,22 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconInfoFilled: ''
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
-const ScoreCards = require( './ScoreCards.vue' );
-const useUserImpact = require( '../composables/useUserImpact.js' );
-const jsonData = require( '../__mocks__/serverExportedData.json' );
+const ScoreCards = require( './CScoreCards.vue' );
+const useUserImpact = require( '../ext.growthExperiments.Homepage.NewImpact/composables/useUserImpact.js' );
+const jsonData = require( './__mocks__/serverExportedData.json' );
 
 const renderComponent = ( { props = {}, provide = {} } = {} ) => {
 	return mount( ScoreCards, {
-		props,
+		props: Object.assign( {
+			userName: 'Alice',
+			renderThirdPerson: false,
+			hasIntl: true
+		}, props ),
+		provide: Object.assign( {
+			RENDER_MODE: 'desktop'
+		}, provide ),
 		global: {
 			provide: Object.assign( {
-				RENDER_MODE: 'desktop',
-				RELEVANT_USER_USERNAME: 'Alice',
-				RENDER_IN_THIRD_PERSON: false,
-				BROWSER_HAS_INTL: true,
 				$log: jest.fn()
 			}, provide ),
 			mocks: {
@@ -47,20 +50,24 @@ describe( 'ScoreCards', () => {
 		jest.useRealTimers();
 	} );
 	it( 'renders correctly without data', () => {
+		mw.util.getUrl = jest.fn()
+			.mockReturnValue( 'http://default.url' )
+			.mockReturnValueOnce( 'http://contributions.url' )
+			.mockReturnValueOnce( 'http://thanks.url' );
 		const wrapper = renderComponent( {
 			props: {
-				thanksUrl: 'http://thanks.url',
-				contributionsUrl: 'http://contributions.url',
 				data: null
 			}
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );
 	it( 'renders correctly with data', () => {
+		mw.util.getUrl = jest.fn()
+			.mockReturnValue( 'http://default.url' )
+			.mockReturnValueOnce( 'http://contributions.url' )
+			.mockReturnValueOnce( 'http://thanks.url' );
 		const wrapper = renderComponent( {
 			props: {
-				thanksUrl: 'http://thanks.url',
-				contributionsUrl: 'http://contributions.url',
 				data: useUserImpact( 60, jsonData ).value
 			}
 		} );
