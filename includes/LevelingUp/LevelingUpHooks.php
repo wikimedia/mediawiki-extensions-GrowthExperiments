@@ -83,6 +83,7 @@ class LevelingUpHooks implements
 		}
 
 		$apiResponse['modules'][] = 'ext.growthExperiments.LevelingUp.InviteToSuggestedEdits';
+		$apiResponse['jsconfigvars']['wgPostEditConfirmationDisabled'] = true;
 	}
 
 	/**
