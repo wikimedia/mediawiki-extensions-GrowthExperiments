@@ -346,6 +346,9 @@
 				"GrowthExperimentsLevelingUpManager"
 			]
 		},
+		"mediawikiservices": {
+			"class": "GrowthExperiments\\MediaWikiServicesHooks"
+		},
 		"mentor": {
 			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorHooks",
 			"services": [
@@ -500,6 +503,7 @@
 		"ManualLogEntryBeforePublish": [
 			"impact"
 		],
+		"MediaWikiServices": "mediawikiservices",
 		"MessageCache::get": "earlylifecycle",
 		"PageSaveComplete": [
 			"config",
