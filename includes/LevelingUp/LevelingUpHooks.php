@@ -147,7 +147,12 @@ class LevelingUpHooks implements
 
 	/** @inheritDoc */
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
+		global $wgEchoEnablePush;
+
 		$defaultOptions['echo-subscriptions-email-ge-newcomer'] = true;
 		$defaultOptions['echo-subscriptions-web-ge-newcomer'] = true;
+		if ( $wgEchoEnablePush ) {
+			$defaultOptions["echo-subscriptions-push-ge-newcomer"] = false;
+		}
 	}
 }
