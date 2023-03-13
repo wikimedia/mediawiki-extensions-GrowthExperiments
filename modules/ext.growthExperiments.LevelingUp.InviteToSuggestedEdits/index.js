@@ -10,20 +10,27 @@ var InviteToSuggestedEditsDrawer = require( './InviteToSuggestedEditsDrawer.js' 
  * @return {{openPromise:jQuery.Promise}}
  */
 function displayDrawer() {
+	var suppressClose = false;
+
 	var drawer = new InviteToSuggestedEditsDrawer(
 		new HelpPanelLogger( true, {
 			context: 'postedit-nonsuggested'
 		} )
 	);
 	var closeDrawer = function () {
-		drawer.close();
+		if ( !suppressClose ) {
+			drawer.close();
+		}
 	};
 	$( document.body ).append( drawer.$element );
 	drawer.open();
 
 	drawer.opened.then( function () {
 		// Hide the drawer if the user opens the editor again.
+		// HACK ignore memorized previous ve.activationComplete events.
+		suppressClose = true;
 		mw.hook( 've.activationComplete' ).add( closeDrawer );
+		suppressClose = false;
 		drawer.logImpression();
 	} );
 
