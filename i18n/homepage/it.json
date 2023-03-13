@@ -155,7 +155,7 @@
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Puoi}} sempre premere $2 in cima alla pagina per tornare qui.",
 	"growthexperiments-homepage-discovery-thanks-header": "Grazie per aver creato la {{GENDER:$1|tua}} utenza!",
 	"growthexperiments-homepage-discovery-thanks-text": "Premi $2 in cima alla pagina per visitare la {{GENDER:$1|tua}} pagina iniziale ed iniziare.",
-	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Ti diamo il benvenuto. Questa è la tua pagina iniziale!",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "{{GENDER:$1|Benvenuto|Benvenuta}} nella tua pagina iniziale!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Puoi}} sempre aprire il menu laterale e premere $2 per tornare qui",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Inizia qui!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Apri il menu laterale e  premi $2 per visitare la {{GENDER:$1|tua}} pagina iniziale.",

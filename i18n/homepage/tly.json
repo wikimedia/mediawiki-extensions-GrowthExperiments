@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Patriot Kur"
+			"Patriot Kur",
+			"Patriot Kor"
 		]
 	},
+	"growthexperiments-homepage-email-header-confirmed": "Enomə əlovə be",
+	"growthexperiments-homepage-email-button-noemail": "Enomə əlovə bıkə",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Ləğv karde"
 }

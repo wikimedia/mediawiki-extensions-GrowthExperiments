@@ -5,7 +5,8 @@
 			"Zoranzoki21",
 			"Вукан Ц",
 			"Kizule",
-			"Milicevic01"
+			"Milicevic01",
+			"Vlad5250"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Почетна страница}}",
@@ -177,7 +178,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Проналажење референци (извори за постојеће чланке)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "Ажурирање чланака (актуелизовање постојећих чланака)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Допуна кратких чланака",
-	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Додавање веза међу чланцима",
+	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Додавање унутрашњих веза",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Израда новог чланка",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Детаљније",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3—5 минута",
@@ -201,7 +202,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Проналажење референци",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Ажурирање чланака",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Допуна кратких чланака",
-	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Додавање веза међу чланцима",
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Додавање унутрашњих веза",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Биографија (све)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Биографија (жене)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Храна и пиће",
