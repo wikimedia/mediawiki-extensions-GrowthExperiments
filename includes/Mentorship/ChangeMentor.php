@@ -68,8 +68,9 @@ class ChangeMentor {
 	 * Log mentor change
 	 *
 	 * @param string $reason Reason for the change
+	 * @param bool $forceBot Whether to mark this log entry as bot-made
 	 */
-	protected function log( string $reason ) {
+	protected function log( string $reason, bool $forceBot ) {
 		$this->logger->debug(
 			'Logging mentor change for {mentee} from {oldMentor} to {newMentor} by {performer}', [
 				'mentee' => $this->mentee,
@@ -95,6 +96,10 @@ class ChangeMentor {
 				->getUserPage()
 		);
 		$logEntry->setComment( $reason );
+		if ( $forceBot ) {
+			// Don't spam RecentChanges with bulk changes (T304428)
+			$logEntry->setForceBotFlag( true );
+		}
 		$parameters = [];
 		if ( $this->mentor ) {
 			// $this->mentor is null when no mentor existed previously
@@ -215,7 +220,7 @@ class ChangeMentor {
 		}
 
 		$this->mentorStore->setMentorForUser( $this->mentee, $this->newMentor, MentorStore::ROLE_PRIMARY );
-		$this->log( $reason );
+		$this->log( $reason, $bulkChange );
 
 		// If mentee's status is MENTORSHIP_DISABLED (=GE decided not to display the mentorship
 		// module), enable the module, so the user can benefit from mentorship.

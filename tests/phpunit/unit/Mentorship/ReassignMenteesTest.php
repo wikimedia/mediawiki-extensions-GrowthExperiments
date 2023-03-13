@@ -10,7 +10,6 @@ use GrowthExperiments\Mentorship\ReassignMentees;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
-use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -50,7 +49,6 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			$mentorProviderMock ?? $this->createNoOpMock( MentorProvider::class ),
 			$mentorStoreMock ?? $this->createNoOpMock( MentorStore::class ),
 			$changeMentorFactoryMock ?? $this->createNoOpMock( ChangeMentorFactory::class ),
-			$this->createNoOpMock( PermissionManager::class, [ 'addTemporaryUserRights' ] ),
 			$this->createNoOpMock( JobQueueGroupFactory::class ),
 			$mentor,
 			$mentor,

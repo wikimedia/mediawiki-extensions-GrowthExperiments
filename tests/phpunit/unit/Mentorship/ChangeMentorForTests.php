@@ -13,7 +13,7 @@ use GrowthExperiments\Mentorship\ChangeMentor;
  */
 class ChangeMentorForTests extends ChangeMentor {
 	/** @inheritDoc */
-	protected function log( string $reason ) {
+	protected function log( string $reason, bool $forceBot ) {
 		// no-op
 	}
 
