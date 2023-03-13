@@ -124,6 +124,8 @@
 	"tag-mentorship_panel_question-description": "Bewerking gemaakt vanuit de \"Vraag het je mentor\"-functie van het hulppaneel",
 	"tag-newcomer_task": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks|Taak voor nieuwkomers]]",
 	"tag-newcomer_task-description": "Bewerking voorgesteld door de module voor voorgestelde bewerkingen van de startpagina voor nieuwkomers",
+	"tag-newcomer_task_copyedit": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#copyedit|Nieuwkomer-taak: proeflezen]]",
+	"tag-newcomer_task_references": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#references|Nieuwkomer-taak: referenties]]",
 	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link|Voorgesteld: voeg links toe]]",
 	"tag-newcomer_task_add_link-description": "De taakbewerking \"Link toevoegen\" voorgesteld door de module voor voorgestelde bewerkingen van de startpagina voor nieuwkomers",
 	"growthexperiments-homepage-help-dialog-title": "Stel een vraag aan de helpdesk",
@@ -211,7 +213,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Korte artikelen uitbreiden",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Links tussen artikelen aanbrengen",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Links tussen artikelen aanbrengen",
-	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Nieuwe pagina maken",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Leer meer",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3–5 minuten",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5–10 minuten",
@@ -228,6 +229,8 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Gemiddeld",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Moeilijk",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Selecteer het type bewerkingen",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "Wilt u een nieuw artikel aanmaken?",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-body": "De redacteuren van {{SITENAME}} raden aan dat u eerst een paar middelzware en moeilijke taken uitprobeert voordat u aan een nieuw artikel begint. [$1 Lees meer] over het schrijven van een nieuw artikel dat nog ontbreekt.",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Selecteer onderwerpen",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Klaar",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Klaar",
@@ -292,7 +295,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Ongeldige configuratie voor voorgestelde bewerkingen: ongeldige groep $1 voor taaktype $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Ongeldige configuratie voor voorgestelde bewerkingen: ongeldige sjabloonnaam $1 voor taaktype $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Ongeldige configuratie voor voorgestelde bewerkingen: bericht $1 ontbreekt voor veld $2",
-	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Om met succes een nieuw artikel te maken, moet {{GENDER:$1|je}} veel van de vaardigheden gebruiken die je kunt leren door een aantal eenvoudigere taken uit te voeren. Voor meer informatie over het maken van een nieuw artikel, [$2 klik hier].",
 	"growthexperiments-homepage-suggestededits-error-title": "Er zijn momenteel geen voorgestelde bewerkingen beschikbaar.",
 	"growthexperiments-homepage-suggestededits-error-description": "Probeer later opnieuw.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Selecteer ten minste één type bewerking",
@@ -455,6 +457,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "Blijf voorgestelde bewerkingen maken om {{GENDER:$2|uw}} bewerkingsvaardigheden te ontwikkelen",
 	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|U}} hebt $3 voorgestelde bewerking{{PLURAL:$3||en}} gemaakt. Blijf doorgaan om meer nieuwe vaardigheden te leren.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Een voorgestelde bewerking maken",
-	"echo-category-title-ge-newcomer": "Betrokkenheid nieuwe redacteuren",
-	"echo-pref-tooltip-ge-newcomer": "Mij op de hoogte houden van taken voor nieuwkomers en andere functies van het Growth-team die zijn ontworpen om het behoud van nieuwe redacteuren te verbeteren."
+	"echo-category-title-ge-newcomer": "Groeikenmerken",
+	"echo-pref-tooltip-ge-newcomer": "Mij op de hoogte houden van taken voor nieuwkomers en andere functies die zijn ontworpen om nieuwe gebruikers te helpen."
 }

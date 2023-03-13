@@ -230,7 +230,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Adder ligamines inter articulos",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Adder ligamines inter articulos",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "Adder un imagine suggerite",
-	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Crear un nove articulo",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Leger plus",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 minutas",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 minutas",
@@ -247,6 +246,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Medie",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difficile",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Selige typos de modificationes",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "Le modificationes suggerite es concipite pro adjutar te a apprender a modificar e devenir plus habile durante que tu labora a typos de modificationes plus grande.",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "Vole crear un nove articulo?",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-body": "Le redactores de {{SITENAME}} recommenda que tu essaya primo qualque cargas medie e difficile ante de tentar un nove articulo. [$1 Lege plus] sur como scriber un nove articulo mancante.",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Selige topicos",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Facite",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Facite",
@@ -320,7 +322,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configuration de modificationes suggerite non valide: nomine de patrono $1 non valide pro le typo de carga $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Configuration de modificationes suggerite non valide: nomine de categoria $1 non valide pro le typo de carga $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Configuration de modificationes suggerite non valide: message $1 mancante pro le campo $2",
-	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Pro correctemente crear un nove articulo, {{GENDER:$1|tu}} debe usar multe habilitates que tu pote apprender completante qualque travalios plus facile. Pro apprender plus sur como crear un nove articulo, [$2 clicca hic].",
 	"growthexperiments-homepage-suggestededits-error-title": "Nulle modificationes suggerite es disponibile a iste tempore.",
 	"growthexperiments-homepage-suggestededits-error-description": "Per favor reproba plus tarde.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Selige al minus un typo de modification",
@@ -562,6 +563,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "Continua a facer modificationes suggerite pro disveloppar {{GENDER:$2|tu}} competentias de modification",
 	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Tu}} ha facite $3 modification{{PLURAL:$3||es}} suggerite. Continua assi pro apprender plus nove competentias.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Facer un modification suggerite",
-	"echo-category-title-ge-newcomer": "Ingagiamento de nove contributores",
-	"echo-pref-tooltip-ge-newcomer": "Notificar me sur le cargas pro novicios e altere functionalitate del equipa Growth concipite pro meliorar le retention de nove contributores."
+	"echo-category-title-ge-newcomer": "Functiones de crescimento",
+	"echo-pref-tooltip-ge-newcomer": "Notificar me sur le cargas pro novicios e altere functionalitate concipite pro adjutar nove usatores."
 }

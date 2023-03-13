@@ -220,6 +220,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Öffne das Seitenmenü und tippe auf $2, um {{GENDER:$1|deine}} Startseite aufzurufen.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> von <strong>$2</strong> {{PLURAL:$2|Vorschlag|Vorschlägen}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Ende",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Lade …",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 Seitenaufrufe (in den letzten 60 Tagen)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Vorherige Bearbeitungsvorschläge",
 	"growthexperiments-homepage-suggestededits-next-card": "Nächster Bearbeitungsvorschlag",
@@ -256,7 +257,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Artikel verlinken",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Artikel verlinken",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "Ein vorgeschlagenes Bild hinzufügen",
-	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Einen neuen Artikel erstellen",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Mehr erfahren",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 – 5 Minuten",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 – 10 Minuten",
@@ -273,6 +273,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Mittel",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Schwer",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Wähle die Art der Bearbeitungen",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "Die vorgeschlagenen Änderungen sollen {{GENDER:|dir}} dabei helfen, das Bearbeiten zu lernen und bei größeren Änderungen besser zu werden.",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "Möchtest du einen neuen Artikel erstellen?",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-body": "{{SITENAME}}-Benutzer empfehlen, dass {{GENDER:|du}} zuerst ein paar mittlere und schwierige Aufgaben ausprobierst, bevor du dich an einem neuen Artikel versuchst. [$1 Weitere Informationen] über das Schreiben eines neuen fehlenden Artikels.",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Themen wählen",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fertig",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fertig",
@@ -346,7 +349,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültiger Vorlagenname $1 für Aufgabentyp $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Ungültige Konfiguration der vorgeschlagenen Bearbeitungen: Ungültiger Kategoriename $1 für Aufgabentyp $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Ungültige Konfiguration der Bearbeitungsvorschläge: Fehlende Nachricht $1 für Feld $2",
-	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Um erfolgreich neue Artikel anzulegen, wirst {{GENDER:$1|du}} viele Kenntnisse benötigen, die du beim Bearbeiten einiger einfacherer Aufgaben lernen kannst. [$2 Klicke hier], um mehr über das Anlegen neuer Artikel zu lernen.",
 	"growthexperiments-homepage-suggestededits-error-title": "Aktuell sind keine Bearbeitungs-Vorschläge verfügbar.",
 	"growthexperiments-homepage-suggestededits-error-description": "Bitte versuche es später nochmal.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Wähle mindestens eine Bearbeitungs-Art",
@@ -588,6 +590,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "Mache weiterhin Bearbeitungsvorschläge, um {{GENDER:$2|deine}} Kompetenzen in der Bearbeitung zu verbessern",
 	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Du hast}} $3 {{PLURAL:$3|Änderungsvorschlag|Änderungsvorschläge}} durchgeführt. Mache weiter, um dir weitere neue Fähigkeiten anzueignen.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Einen Bearbeitungsvorschlag machen",
-	"echo-category-title-ge-newcomer": "Neues Benutzer-Engagement",
-	"echo-pref-tooltip-ge-newcomer": "Benachrichtige mich über Newcomer-Aufgaben und andere Funktionen des Growth-Teams, die darauf ausgelegt sind, die Bindung neuer Benutzer zu verbessern."
+	"echo-category-title-ge-newcomer": "Engagement-Funktionen",
+	"echo-pref-tooltip-ge-newcomer": "Benachrichtigen Sie mich über Aufgaben für Neueinsteiger und andere Funktionen, die neuen Benutzern helfen sollen."
 }

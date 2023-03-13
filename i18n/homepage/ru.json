@@ -244,7 +244,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Добавьте ссылки на другие статьи",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Добавьте ссылки на другие статьи",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "Добавить предложенное изображение",
-	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Создать новую статью",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Узнать больше",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3—5 минут",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5—10 минут",
@@ -334,7 +333,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Некорректная конфигурация предлагаемых правок: недопустимое имя шаблона $1 для типа задачи $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Некорректная конфигурация предлагаемых правок: недействительное название категории $1 для типа задачи $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Некорректная конфигурация предлагаемых правок: отсутсвует сообщение $1 для поля $2",
-	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Чтобы успешно создать новую статью, {{GENDER:$1|вам}} потребуется использовать множество умений, которые вы можете изучить путём выполнения более простых задач. Чтобы узнать больше о том, как создать новую статью, [$2 нажмите сюда].",
 	"growthexperiments-homepage-suggestededits-error-title": "Пока что нет предлагаемых правок.",
 	"growthexperiments-homepage-suggestededits-error-description": "Пожалуйста, повторите позже.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Выберите хотя бы один тип правок",
@@ -558,5 +556,6 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Когда {{GENDER:|Вы}} отправляете сообщение наставнику, {{GENDER:$1|он|она|он}} увидит его на своей странице обсуждения. {{GENDER:|Вам}} должно прийти уведомление, когда наставник ответит.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Отказаться от наставничества",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Выберите кнопку ниже, чтобы пока не назначать {{GENDER:|Вам}} определённого наставника. {{GENDER:|Вы}} сможете выбрать нового наставника позже, если {{GENDER:|Вам}} того захочется.",
-	"growthexperiments-homepage-mentorship-about-done": "Готово"
+	"growthexperiments-homepage-mentorship-about-done": "Готово",
+	"echo-pref-tooltip-ge-newcomer": "Уведомлять меня о задачах для новичков и других функциях, призванных помочь новым участникам."
 }

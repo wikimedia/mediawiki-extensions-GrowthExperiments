@@ -240,7 +240,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "הוספת קישורים בין ערכים",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "הוספת קישורים בין ערכים",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "הוספת תמונה מוצעת",
-	"growthexperiments-homepage-suggestededits-tasktype-label-create": "יצירת ערך חדש",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "מידע נוסף",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3–5 דקות",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5–10 דקות",
@@ -257,6 +256,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "בינוני",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "קשה",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "בחר את סוג העריכה",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "עריכות מוצעות נועדו לעזור לך ללמוד לערוך ולהיות {{GENDER:|מיומן יותר ככל שאתה עובד|מיומנת יותר ככל שאת עובדת}} על סוגים גדולים יותר של עריכות.",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "רוצה ליצור ערך חדש?",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-body": "עורכי {{SITENAME}} ממליצים {{GENDER:|לך}} לנסות תחילה כמה משימות בינוניות וקשות לפני ניסיון ליצור ערך חדש. [ $1 למידע נוסף] על כתיבת ערך חדש שחסר כעת.",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "{{GENDER:|בחר|בחרי}} נושאים",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "בוצע",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "בוצע",
@@ -330,7 +332,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "הגדרות בלתי־תקינות של עריכות מוצעות: שם תבנית בלתי־תקין $1 עבור סוג משימה $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "הגדרות בלתי־תקינות של עריכות מוצעות: שם קטגוריה בלתי־תקין $1 עבור סוג משימה $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "הגדרות בלתי־תקינות של עריכות מוצעות: חסר ההודעה $1 לשדה $2",
-	"growthexperiments-homepage-suggestededits-create-article-additional-message": "כדי ליצור ערך חדש כמו שצריך {{GENDER:$1|תצטרך|תצטרכי}} להשתמש בכישורים רבים {{GENDER:$1|שאתה יכול|שאתה יכולה}} לרכוש באמצעות השלמת כמה משימות קלות יותר. למידע נוסף על יצירת ערך חדש, [$2 {{GENDER:$1|לחץ|לחצי}} כאן].",
 	"growthexperiments-homepage-suggestededits-error-title": "אין עריכות מוצעות זמינות כרגע.",
 	"growthexperiments-homepage-suggestededits-error-description": "נא לנסות שוב מאוחר יותר.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "נא לבחור לפחות סוג אחד של עריכה",
@@ -572,6 +573,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|המשך|המשיכי}} לעשות עריכות מוצעות לשם פיתוח מיומנויות העריכה שלך",
 	"growthexperiments-levelingup-keepgoing-notification-body": "עשית {{PLURAL:$3|עריכה מוצעת אחת|$3 עריכות מוצעות}}. {{GENDER:$2|תמשיך|תמשיכי}} ללמוד עוד מיומנויות חדשות.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "לעשות עריכה מוצעת",
-	"echo-category-title-ge-newcomer": "מעורבות עורכים חדשים",
-	"echo-pref-tooltip-ge-newcomer": "להודע לי על משימות חדשות ותכונות אחרות של צוות צמיחה שנועדו לשפר את שימור העורכים החדשים."
+	"echo-category-title-ge-newcomer": "אפשרויות צמיחה",
+	"echo-pref-tooltip-ge-newcomer": "להודיע לי על משימות לעורכים חדשים ותכונות אחרות שנועדו לעזור למשתמשים חדשים."
 }

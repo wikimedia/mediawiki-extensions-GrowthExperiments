@@ -250,7 +250,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "記事同士をつなぐリンクを追加する",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "記事同士をつなぐリンクを追加する",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "提案された画像の追加",
-	"growthexperiments-homepage-suggestededits-tasktype-label-create": "新しい記事を作成する",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "もっと詳しく",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 分",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 分",
@@ -267,6 +266,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "中ぐらい",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "難しい",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "編集のタイプを選ぶ",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "新しい記事を作成しますか?",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "トピックを選ぶ",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "完了",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "完了",
@@ -334,7 +334,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "お勧めの編集の設定が無効: 作業$2に対するグループ$1が無効です",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "お勧めの編集の設定が無効: 作業のタイプ$2のテンプレート名$1が無効です",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "お勧めの編集の設定が無効: $2 欄の $1 メッセージがありません",
-	"growthexperiments-homepage-suggestededits-create-article-additional-message": "新しい記事を正しく作成するには、{{GENDER:$1|}}いくつかの簡単な作業を完了することで習得したスキルの多くを使用する必要があります。新しい記事を作成する方法の詳細については、[$2 ここをクリック]してください。",
 	"growthexperiments-homepage-suggestededits-error-title": "現時点では、お勧めの編集はありません。",
 	"growthexperiments-homepage-suggestededits-error-description": "後ほどもう一度お試しください。",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "編集のタイプを最低1つ選んでください",
@@ -548,5 +547,6 @@
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "おすすめの編集を試す",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "詳細",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "おすすめの編集をする",
-	"echo-category-title-ge-newcomer": "新しい編集者の活動"
+	"echo-category-title-ge-newcomer": "新しい編集者の活動",
+	"echo-pref-tooltip-ge-newcomer": "新規利用者向けのタスクや、新規利用者を支援するための機能について通知します。"
 }

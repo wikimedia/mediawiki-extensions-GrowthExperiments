@@ -8,5 +8,6 @@
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Sus}} preguntas recientes",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Este usuario experto|Esta usuaria experta}} sabe que recién ha llegado y puede {{GENDER:$2|ayudarlo|ayudarla}} con la edición.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Otros usuarios han observado que estos artículos necesitan trabajo. Ayude a mejorar '''{{SITENAME}}'''.",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "¿Busca crear un artículo nuevo?",
 	"growthexperiments-homepage-suggestededits-error-description": "Inténtelo de nuevo más tarde."
 }

@@ -188,7 +188,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "ߛߘߌ߬ߜߋ߲ ߠߎ߬ ߝߊ߬ߙߊ߫ ߞߎߡߘߊ ߟߎ߬ ߣߌ߫ ߢߐ߲߯ߕߍ߫",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "ߛߘߌ߬ߜߋ߲ ߠߎ߬ ߝߊ߬ߙߊ߫ ߞߎߡߘߊ ߟߎ߬ ߣߌ߫ ߢߐ߲߮ ߕߍ߫",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "ߖߌ߬ߦߊ߬ߓߍ߫ ߞߎ߲߬ߦߌ߬ߘߊ߬ߣߍ߲ ߘߏ߫ ߝߊ߬ߙߊ߫",
-	"growthexperiments-homepage-suggestededits-tasktype-label-create": "ߞߎߡߘߊ߫ ߞߎߘߊ ߘߏ߫ ߛߌ߲ߘߌ߫",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "ߘߏ߫ ߜߘߍ߫ ߟߎ߫ ߘߐߞߊ߬ߙߊ߲߬",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "ߡߌ߬ߛߍ߲߫ ߃ - ߅",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "ߡߌ߬ߛߍ߲߫ ߅ - ߁߀",
@@ -481,6 +480,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "ߌ ߘߐߖߊ߬ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߬ߛߎ߬ߟߌ ߞߊ߲߬ ߞߊ߬ {{GENDER:$2|ߌ ߟߊ߫}} ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߝߊ߰ߡߎ߲߬ߠߌ߲ ߠߊߥߙߎߞߌ߫",
 	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|ߌ ߓߘߊ߫}} {{PLURAL:|ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߬ߛߎ߬ߟߌ߫|ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߬ߛߎ߬ߟߌ߫ $3 ߟߎ߫}} ߞߍ߫. ߌ ߘߐߖߊ߬ ߏ߬ ߞߊ߲߬ ߞߊ߬ ߝߊ߰ߡߎ߲߬ߠߌ߲߫ ߛߌߦߊߡߊ߲߫ ߠߎ߫ ߘߐߞߊ߬ߙߊ߲߫",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߬ߛߎ߬ߟߌ ߘߏ߫ ߞߍ߫",
-	"echo-category-title-ge-newcomer": "ߛߓߍߦߟߊ߫ ߞߎߘߊ߫ ߟߊߕߘߍ߬ߒ߬ߘߐ߬ߟߌ",
-	"echo-pref-tooltip-ge-newcomer": "ߒ ߖߊ߲߬ߓߌ߬ߟߊ߫ ߣߊ߬ߓߊ߰ߕߐ߫ ߞߎߘߊ ߟߎ߫ ߟߊ߫ ߘߊߞߎ߲ ߣߌ߫ ߛߘߍ߫ ߡߊ߬ߡߊ߬ߕߐ߬ߟߊ ߟߎ߬ ߟߊ߫ ߓߊ߯ߙߊ ߟߎ߫ ߟߊ߫߸ ߡߍ߲ ߠߎ߬ ߟߊߥߟߌ߬ߣߍ߲߫ ߦߋ߫ ߛߓߍߦߟߊ߫ ߞߎߘߊ ߟߎ߬ ߟߊ߫ ߘߐ߬ߡߌ߬ߘߊ߬ߟߌ ߟߎ߫ ߟߊߛߓߊ߬ߕߌ ߡߊ߬."
+	"echo-category-title-ge-newcomer": "ߖߏߙߏ߲ߘߏߟߌ ߟߥߊߟߌߟߌ ߟߎ߫",
+	"echo-pref-tooltip-ge-newcomer": "ߒ ߖߊ߲߬ߓߌ߬ߟߊ߫ ߣߊ߬ߓߊ߰ߕߐ߫ ߞߎߘߊ ߟߎ߫ ߟߊ߫ ߘߊߞߎ߲ ߣߌ߫ ߛߘߍ߫ ߡߊ߬ߡߊ߬ߕߐ߬ߟߊ ߟߎ߬ ߟߊ߫ ߓߊ߯ߙߊ ߟߎ߫ ߟߊ߫߸ ߡߍ߲ ߠߎ߬ ߟߊߥߟߌ߬ߣߍ߲߫ ߦߋ߫ ߛߓߍߦߟߊ߫ ߞߎߘߊ ߟߎ߬ ߡߊߘߍ߬ߡߍ߲ ߡߊ߬."
 }
