@@ -3,11 +3,13 @@
 const PostEditDrawer = require( '../../../modules/ext.growthExperiments.PostEdit/PostEditDrawer.js' );
 const PostEditPanel = require( '../../../modules/ext.growthExperiments.PostEdit/PostEditPanel.js' );
 const HelpPanelLogger = require( '../../../modules/utils/HelpPanelLogger.js' );
+const NewcomerTasksStore = require( '../../../modules/ext.growthExperiments.DataStore/NewcomerTasksStore.js' );
 
 QUnit.module( 'ext.growthExperiments.PostEdit/PostEditDrawer.js', QUnit.newMwEnvironment() );
 
 QUnit.test( 'should log postedit-toast-message-impression when the toast message is shown', function ( assert ) {
 	const postEditPanel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskType: 'copyedit',
 		taskState: 'saved'
 	} );
@@ -20,6 +22,7 @@ QUnit.test( 'should log postedit-toast-message-impression when the toast message
 
 QUnit.test( 'should log postedit-expand when the drawer is expanded', function ( assert ) {
 	const postEditPanel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskType: 'copyedit',
 		taskState: 'saved'
 	} );
@@ -32,6 +35,7 @@ QUnit.test( 'should log postedit-expand when the drawer is expanded', function (
 
 QUnit.test( 'should log postedit-collapse when the drawer is expanded', function ( assert ) {
 	const postEditPanel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskType: 'copyedit',
 		taskState: 'saved'
 	} );

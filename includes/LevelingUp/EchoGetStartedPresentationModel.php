@@ -26,11 +26,15 @@ class EchoGetStartedPresentationModel extends EchoEventPresentationModel {
 
 	/** @inheritDoc */
 	public function getSecondaryLinks() {
+		// We don't include the secondary link in email, because it's the same as the primary link,
+		// and it looks awkward in an email to have two buttons leading to the same thing.
+		if ( $this->getDistributionType() === 'email' ) {
+			return [];
+		}
 		return [ [
-			// TODO: make dynamic
-			'url' => 'https://www.mediawiki.org/wiki/Help:Growth/Tools/Suggested_edits',
-			'label' => $this->msg( 'growthexperiments-levelingup-getstarted-notification-learnmore-label' ),
-			'icon' => 'info'
+			'url' => $this->getSpecialHomepageUrl( 'get-started-secondary-link' ),
+			'label' => $this->msg( 'growthexperiments-levelingup-getstarted-notification-call-to-action-label' ),
+			'icon' => 'edit'
 		] ];
 	}
 

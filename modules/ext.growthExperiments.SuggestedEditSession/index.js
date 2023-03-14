@@ -672,10 +672,7 @@
 	 * @return {boolean}
 	 */
 	SuggestedEditSession.static.shouldShowLevelingUpFeatures = function () {
-		return mw.config.get( 'wgGELevelingUpFeaturesEnabled' ) &&
-			// "control" is the variant group that should be able to see the "try new task"
-			// workflow.
-			Utils.isUserInVariant( 'control' );
+		return mw.config.get( 'wgGELevelingUpEnabledForUser' );
 	};
 
 	/**

@@ -3,6 +3,7 @@
 const PostEditPanel = require( '../../../modules/ext.growthExperiments.PostEdit/PostEditPanel.js' );
 const NewcomerTaskLogger = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' );
 const HelpPanelLogger = require( '../../../modules/utils/HelpPanelLogger.js' );
+const NewcomerTasksStore = require( '../../../modules/ext.growthExperiments.DataStore/NewcomerTasksStore.js' );
 
 QUnit.module( 'ext.growthExperiments.PostEdit/PostEditPanel.js', QUnit.newMwEnvironment() );
 
@@ -17,6 +18,7 @@ QUnit.test( 'should generate a task URL with task token and log an impression wh
 	const newcomerTaskLogger = new NewcomerTaskLogger();
 	sinon.spy( newcomerTaskLogger, 'log' );
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskTypes: {
 			copyedit: {
 				messages: {
@@ -59,6 +61,7 @@ QUnit.test( 'should log an impression when calling logImpression', function ( as
 	sinon.spy( helpPanelLogger, 'log' );
 
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		nextTask: task,
 		taskTypes: {
 			copyedit: {
@@ -94,8 +97,13 @@ QUnit.test( 'should log an impression when calling logImpression', function ( as
 
 QUnit.test( 'should log postedit-task-navigation when calling onPrevButtonClicked and onNextButtonClicked', function ( assert ) {
 	const helpPanelLogger = new HelpPanelLogger();
+	const newcomerTaskLogger = new NewcomerTaskLogger();
 	sinon.spy( helpPanelLogger, 'log' );
-	const panel = new PostEditPanel( { helpPanelLogger } );
+	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
+		helpPanelLogger,
+		newcomerTaskLogger
+	} );
 	const getExpectedArgs = function ( dir ) {
 		return [
 			'postedit-task-navigation',
@@ -114,6 +122,7 @@ QUnit.test( 'should log postedit-task-navigation when calling onPrevButtonClicke
 
 QUnit.test( 'should return success toast message when edits have been published when wgEditSubmitButtonLabelPublish=false', function ( assert ) {
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'copyedit'
 	} );
@@ -126,6 +135,7 @@ QUnit.test( 'should return success toast message when edits have been published 
 
 QUnit.test( 'should return success toast message when edits have been published when wgEditSubmitButtonLabelPublish=true', function ( assert ) {
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'copyedit'
 	} );
@@ -138,6 +148,7 @@ QUnit.test( 'should return success toast message when edits have been published 
 
 QUnit.test( 'should return success toast message when edits have been published and image recommendation daily limit is reached', function ( assert ) {
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'image-recommendation',
 		imageRecommendationDailyTasksExceeded: true
@@ -150,6 +161,7 @@ QUnit.test( 'should return success toast message when edits have been published 
 
 QUnit.test( 'should return success toast message when edits have been published and link recommendation daily limit is reached', function ( assert ) {
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'link-recommendation',
 		linkRecommendationDailyTasksExceeded: true
@@ -162,6 +174,7 @@ QUnit.test( 'should return success toast message when edits have been published 
 
 QUnit.test( 'should return notice toast message when edits have not been published', function ( assert ) {
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'submitted',
 		taskType: 'link-recommendation'
 	} );
@@ -173,6 +186,7 @@ QUnit.test( 'should return notice toast message when edits have not been publish
 
 QUnit.test( 'should return notice toast message when edits have not been published and link recommendation daily limit is reached', function ( assert ) {
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'submitted',
 		taskType: 'link-recommendation',
 		linkRecommendationDailyTasksExceeded: true
@@ -185,6 +199,7 @@ QUnit.test( 'should return notice toast message when edits have not been publish
 
 QUnit.test( 'should return alternate header text when image recommendation daily limit is reached', function ( assert ) {
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'image-recommendation',
 		imageRecommendationDailyTasksExceeded: true
@@ -196,6 +211,7 @@ QUnit.test( 'should return alternate header text when image recommendation daily
 
 QUnit.test( 'should return alternate header text when link recommendation daily limit is reached', function ( assert ) {
 	const panel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'link-recommendation',
 		linkRecommendationDailyTasksExceeded: true
@@ -207,10 +223,12 @@ QUnit.test( 'should return alternate header text when link recommendation daily 
 
 QUnit.test( 'should return generic header text for image recommendation if the daily limit has not been reached', function ( assert ) {
 	const acceptedSuggestionPanel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'image-recommendation'
 	} );
 	const reviewedSuggestionPanel = new PostEditPanel( {
+		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'submitted',
 		taskType: 'image-recommendation'
 	} );

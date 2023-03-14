@@ -5,7 +5,6 @@ var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/'
 	PostEditToastMessage = require( './PostEditToastMessage.js' ),
 	Utils = require( '../utils/Utils.js' ),
 	rootStore = require( 'ext.growthExperiments.DataStore' ),
-	tasksStore = rootStore.newcomerTasks,
 	CONSTANTS = rootStore.CONSTANTS;
 
 /**
@@ -30,6 +29,7 @@ var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/'
  *   user has exceeded their daily limit for link recommendation tasks.
  * @param {mw.libs.ge.NewcomerTaskLogger} config.newcomerTaskLogger
  * @param {mw.libs.ge.HelpPanelLogger} config.helpPanelLogger
+ * @param {mw.libs.ge.NewcomerTasksStore} config.newcomerTasksStore
  */
 function PostEditPanel( config ) {
 	OO.EventEmitter.call( this );
@@ -39,6 +39,7 @@ function PostEditPanel( config ) {
 	this.taskTypes = config.taskTypes;
 	this.newcomerTaskLogger = config.newcomerTaskLogger;
 	this.helpPanelLogger = config.helpPanelLogger;
+	this.tasksStore = config.newcomerTasksStore;
 	this.$taskCard = null;
 	this.$mainArea = null;
 	this.imageRecommendationDailyTasksExceeded = config.imageRecommendationDailyTasksExceeded;
@@ -58,27 +59,29 @@ function PostEditPanel( config ) {
 	this.togglePrevNavigation( false );
 	this.toggleNextNavigation( false );
 
-	tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, function () {
-		var currentTask = tasksStore.getCurrentTask();
+	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, function () {
+		var currentTask = this.tasksStore.getCurrentTask();
 		if ( currentTask ) {
 			this.updateNextTask( currentTask );
+			this.updateNavigation();
+		} else {
+			this.getMainArea();
 		}
-		this.updateNavigation();
 	}.bind( this ) );
-	tasksStore.on( CONSTANTS.EVENTS.CURRENT_TASK_EXTRA_DATA_CHANGED, function () {
-		var currentTask = tasksStore.getCurrentTask();
+	this.tasksStore.on( CONSTANTS.EVENTS.CURRENT_TASK_EXTRA_DATA_CHANGED, function () {
+		var currentTask = this.tasksStore.getCurrentTask();
 		if ( currentTask ) {
 			this.updateTask( currentTask );
 		}
 	}.bind( this ) );
 
-	tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, function ( isLoading ) {
+	this.tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, function ( isLoading ) {
 		// Disable next navigation until more tasks are fetched or if there are no more tasks
-		var isNextEnabled = !isLoading && tasksStore.hasNextTask();
+		var isNextEnabled = !isLoading && this.tasksStore.hasNextTask();
 		this.toggleNextNavigation( isNextEnabled );
 		this.nextButton.setIcon( isLoading ? 'ellipsis' : 'next' );
 	}.bind( this ) );
-	tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_FAILED_LOADING, function () {
+	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_FAILED_LOADING, function () {
 		this.toggleNavigation( false );
 		this.getMainArea();
 	}.bind( this ) );
@@ -185,7 +188,7 @@ PostEditPanel.prototype.getMainArea = function () {
 			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-link-recommendation' ).text() );
 	}
 
-	if ( tasksStore.isTaskQueueLoading() ) {
+	if ( this.tasksStore.isTaskQueueLoading() ) {
 		this.$taskCard = this.getCard();
 		this.$mainArea.append( $subHeader, this.$taskCard, this.getTaskNavigation() );
 		return this.$mainArea;
@@ -300,9 +303,9 @@ PostEditPanel.prototype.updateTask = function ( task ) {
  */
 PostEditPanel.prototype.updateNavigation = function () {
 	this.toggleNavigation( true );
-	this.togglePrevNavigation( tasksStore.hasPreviousTask() );
-	this.toggleNextNavigation( tasksStore.hasNextTask() );
-	this.updatePager( tasksStore.getQueuePosition() + 1, tasksStore.getTaskCount() );
+	this.togglePrevNavigation( this.tasksStore.hasPreviousTask() );
+	this.toggleNextNavigation( this.tasksStore.hasNextTask() );
+	this.updatePager( this.tasksStore.getQueuePosition() + 1, this.tasksStore.getTaskCount() );
 };
 
 /**
@@ -392,10 +395,6 @@ PostEditPanel.prototype.logTaskClick = function () {
 PostEditPanel.prototype.updateNextTask = function ( task ) {
 	this.nextTask = task;
 	this.updateTask( task );
-	this.helpPanelLogger.log( 'postedit-impression', {
-		type: this.nextTask ? 'full' : 'small',
-		newcomerTaskToken: task.token
-	} );
 };
 
 /**
@@ -404,7 +403,7 @@ PostEditPanel.prototype.updateNextTask = function ( task ) {
  * @fires PostEditPanel#postedit-next-task
  */
 PostEditPanel.prototype.onNextButtonClicked = function () {
-	tasksStore.showNextTask();
+	this.tasksStore.showNextTask();
 	this.helpPanelLogger.log( 'postedit-task-navigation', {
 		dir: 'next',
 		/* eslint-disable-next-line camelcase */
@@ -417,7 +416,7 @@ PostEditPanel.prototype.onNextButtonClicked = function () {
  *
  */
 PostEditPanel.prototype.onPrevButtonClicked = function () {
-	tasksStore.showPreviousTask();
+	this.tasksStore.showPreviousTask();
 	this.helpPanelLogger.log( 'postedit-task-navigation', {
 		dir: 'prev',
 		/* eslint-disable-next-line camelcase */

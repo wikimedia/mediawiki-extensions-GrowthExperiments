@@ -124,6 +124,7 @@
 			taskType: suggestedEditSession.taskType,
 			taskState: suggestedEditSession.taskState,
 			taskTypes: ALL_TASK_TYPES,
+			newcomerTasksStore: tasksStore,
 			newcomerTaskLogger: newcomerTaskLogger,
 			helpPanelLogger: postEditPanelHelpPanelLogger,
 			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded,
