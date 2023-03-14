@@ -7,6 +7,8 @@ module.exports = exports = defineConfig( {
 		vue()
 	],
 	test: {
-		environment: 'jsdom'
+		environment: 'jsdom',
+		globals: true,
+		setupFiles: [ 'tests/setup.js' ]
 	}
 } );
