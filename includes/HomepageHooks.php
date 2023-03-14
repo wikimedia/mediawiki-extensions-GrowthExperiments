@@ -19,6 +19,7 @@ use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\LevelingUp\LevelingUpHooks;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\LevelingUp\NotificationGetStartedJob;
 use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
@@ -425,6 +426,11 @@ class HomepageHooks implements
 			}
 
 			if ( $taskType ) {
+				$isLevelingUpEnabledForUser = LevelingUpHooks::isLevelingUpEnabledForUser(
+					$context->getUser(),
+					$this->config,
+					$this->experimentUserManager
+				);
 				$levelingUpTryNewTaskOptOuts = $this->userOptionsLookup->getOption(
 					$context->getUser(),
 					LevelingUpManager::TASK_TYPE_PROMPT_OPT_OUTS_PREF,
@@ -433,7 +439,7 @@ class HomepageHooks implements
 				$levelingUpTryNewTaskOptOuts = json_decode( $levelingUpTryNewTaskOptOuts ) ?? [];
 				$out->addJsConfigVars( [
 					'wgGESuggestedEditTaskType' => $taskType->getId(),
-					'wgGELevelingUpFeaturesEnabled' => $this->config->get( 'GELevelingUpFeaturesEnabled' ),
+					'wgGELevelingUpEnabledForUser' => $isLevelingUpEnabledForUser,
 					'wgGELevelingUpTryNewTaskOptOuts' => $levelingUpTryNewTaskOptOuts,
 				] );
 
