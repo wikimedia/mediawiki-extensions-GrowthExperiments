@@ -9,13 +9,13 @@
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Selamat datang}}, $1!",
-	"welcomesurvey-save-confirmation-title": "Terima kasih! Respons Anda telah disimpan.",
-	"welcomesurvey-save-confirmation-text": "Jawaban Anda akan membantu kami memberikan cara yang berguna bagi Anda dalam memulai Wikipedia.",
-	"welcomesurvey-subtitle": "Bantu kami menyempurnakan pengalaman Wikipedia Anda dengan menjawab beberapa pertanyaan tambahan.",
+	"welcomesurvey-save-confirmation-title": "Terima kasih! Respons {{GENDER:|Anda}} telah disimpan.",
+	"welcomesurvey-save-confirmation-text": "Jawaban {{GENDER:|Anda}} akan membantu kami menyarankan cara yang tepat bagi Anda dalam memulai Wikipedia.",
+	"welcomesurvey-subtitle": "Bantu kami menyempurnakan pengalaman Wikipedia {{GENDER:|Anda}} dengan menjawab beberapa pertanyaan tambahan.",
 	"welcomesurvey-save-btn": "Selesai",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Lewati}} survei ini",
 	"welcomesurvey-close-btn": "Tutup dan kembali ke $1",
-	"welcomesurvey-sidebar-privacy-title": "Kami menghargai privasi Anda",
+	"welcomesurvey-sidebar-privacy-title": "Kami menghargai privasi {{GENDER:|Anda}}",
 	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation akan menggunakan jawaban-jawaban {{GENDER:$2|Anda}} untuk membantu Anda dalam memulai menyunting {{SITENAME}}. $1",
 	"welcomesurvey-privacy-policy-link-text": "Pelajari lebih lanjut mengenai data tentang editor baru",
 	"welcomesurvey-sidebar-editing-title": "Mulai dengan menyunting",
@@ -24,7 +24,7 @@
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutorial",
 	"welcomesurvey-sidebar-editing-link2-text": "Meja Bantuan",
 	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Meja bantuan",
-	"welcomesurvey-question-reason-label": "Mengapa Anda membuat akun hari ini?",
+	"welcomesurvey-question-reason-label": "Mengapa {{GENDER:|Anda}} membuat akun hari ini?",
 	"welcomesurvey-dropdown-option-select-label": "Mohon memilih...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Untuk memperbaiki saltik atau galat dalam sebuah artikel Wikipedia",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Untuk menambah atau mengubah informasi ke dalam artikel Wikipedia",
@@ -47,8 +47,8 @@
 	"welcomesurvey-question-mailinglist-help": "Harap diingat bahwa milis ini ditenagai oleh MailChimp, yang berarti penggunaan informasi {{GENDER:|Anda}} oleh MailChimp diatur menurut [https://www.intuit.com/privacy/statement/ Kebijakan Privasi] dan [https://mailchimp.com/legal/terms/Terms Ketentuan Layanan] mereka.",
 	"welcomesurvey-question-email-label": "Alamat surel (opsional)",
 	"welcomesurvey-question-email-placeholder": "Masukkan alamat surel {{GENDER:|Anda}}...",
-	"welcomesurvey-question-email-help": "Kami melihat Anda tidak memasukkan surel ketika membuat akun ini. <strong>Sangat disarankan</strong> untuk memasukkannya, karena surel diperlukan untuk pemulihan akun apabila kehilangan kata sandi Anda. CATATAN: Alamat surel Anda tidak diungkapkan ketika pengguna lain menghubungi Anda.",
-	"welcomesurvey-question-languages-label": "{{SITENAME}} tersedia dalam 300 bahasa. Apakah ada bahasa lain yang Anda dapat Anda baca dan tulis?",
+	"welcomesurvey-question-email-help": "Kami melihat {{GENDER:|Anda}} tidak memasukkan surel ketika membuat akun ini. <strong>Sangat disarankan</strong> untuk memasukkannya, karena surel diperlukan untuk pemulihan akun apabila Anda lupa kata sandi. CATATAN: Alamat surel Anda takkan diungkapkan ketika pengguna lain menghubungi Anda.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} tersedia dalam 300 bahasa. Apakah ada bahasa lain yang dapat {{GENDER:|Anda}} baca dan tulis?",
 	"welcomesurvey-question-languages-placeholder": "Tambahkan hingga {{PLURAL:$1|satu bahasa|$1 bahasa}}...",
-	"welcomesurvey-question-languages-maximum": "Anda sudah menambahkan jumlah bahasa maksimum."
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Anda}} sudah menambahkan jumlah bahasa maksimum."
 }

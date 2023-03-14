@@ -8,7 +8,9 @@
 			"Sakretsu",
 			"Sannita",
 			"ValeJappo",
-			"GpieroMW"
+			"GpieroMW",
+			"Salvemm el lombard",
+			"Vivbod"
 		]
 	},
 	"welcomesurvey": "Ciao, $1!",
@@ -19,7 +21,7 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Salta}} questo sondaggio",
 	"welcomesurvey-close-btn": "Chiudi e torna a $1",
 	"welcomesurvey-sidebar-privacy-title": "Abbiamo a cuore la {{GENDER:|tua}} privacy",
-	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation userà le tue risposte per aiutarti a contribuire a {{SITENAME}} più facilmente. $1.",
+	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation userà le tue risposte per aiutarti a iniziare a contribuire a {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Ulteriori informazioni sui dati sui nuovi utenti",
 	"welcomesurvey-sidebar-editing-title": "Inizia a contribuire",
 	"welcomesurvey-sidebar-editing-text": "Quasi ogni pagina può venire modificata da chiunque. Centinaia di modifiche sono effettuate ogni ora per aggiungere contenuti, correggere errori e migliorare la leggibilità delle voci. Le seguenti pagine potranno aiutarti se sei interessat{{GENDER:$1|o|a|o/a}} a contribuire.",
