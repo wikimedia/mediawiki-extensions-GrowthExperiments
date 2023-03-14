@@ -63,8 +63,10 @@ function PostEditPanel( config ) {
 		var currentTask = this.tasksStore.getCurrentTask();
 		if ( currentTask ) {
 			this.updateNextTask( currentTask );
+			this.updateNavigation();
+		} else {
+			this.getMainArea();
 		}
-		this.updateNavigation();
 	}.bind( this ) );
 	this.tasksStore.on( CONSTANTS.EVENTS.CURRENT_TASK_EXTRA_DATA_CHANGED, function () {
 		var currentTask = this.tasksStore.getCurrentTask();
