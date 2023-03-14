@@ -144,6 +144,21 @@ class LevelingUpHooks implements
 		$icons['growthexperiments-keep-going'] = [
 			'path' => 'GrowthExperiments/images/notifications-keep-going.svg'
 		];
+
+		$notifications['get-started'] = [
+			'category' => 'ge-newcomer',
+			'group' => 'positive',
+			'section' => 'message',
+			'canNotifyAgent' => true,
+			'presentation-model' => EchoGetStartedPresentationModel::class,
+			EchoAttributeManager::ATTR_LOCATORS => [
+				[ EchoUserLocator::class . '::locateEventAgent' ]
+			]
+		];
+
+		$icons['growthexperiments-get-started'] = [
+			'path' => 'GrowthExperiments/images/notifications-get-started.svg'
+		];
 	}
 
 	/** @inheritDoc */

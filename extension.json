@@ -66,6 +66,14 @@
 				"SpecialPageFactory",
 				"GrowthExperimentsLevelingUpManager"
 			]
+		},
+		"notificationGetStartedJob": {
+			"class": "GrowthExperiments\\LevelingUp\\NotificationGetStartedJob",
+			"services": [
+				"UserIdentityLookup",
+				"SpecialPageFactory",
+				"GrowthExperimentsLevelingUpManager"
+			]
 		}
 	},
 	"APIModules": {
@@ -2222,6 +2230,10 @@
 			"description": "Article namespace edit count thresholds at which the user should receive a notification to keep going with suggested edits. The user can receive a notification if their edit count is greater than or equal to the first number in the array, and lower than or equal to the second number in the array.",
 			"value": [ 1, 4 ],
 			"merge_strategy": "provide_default"
+		},
+		"GELevelingUpGetStartedNotificationSendAfterSeconds": {
+			"description": "Send a 'get started' notification to new editors after this many seconds. Defaults to 48 hours.",
+			"value": 172800
 		},
 		"GELevelingUpManagerTaskTypeCountThresholdMultiple": {
 			"description": "The task type count threshold to use when determining whether to prompt a user to try a new task type. If the user has completed more than this number of a particular task type, it will not be suggested as a next task type to try. If a user completes edits for a task type in a multiple of of this number (e.g. 5, 10, or 15 with the default value), then the user is prompted to try a new task type.",
