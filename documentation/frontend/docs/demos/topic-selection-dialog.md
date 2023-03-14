@@ -7,5 +7,6 @@ Topic selection dialog Vue prototype
 ====================================
 
 This is a .md using a custom component
-
+::: raw
 <TopicSelectionDemo />
+:::

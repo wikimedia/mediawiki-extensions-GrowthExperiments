@@ -20,6 +20,15 @@ module.exports = {
 	overrides: [
 		{
 			files: [
+				'docs/*.cjs'
+			],
+			extends: [
+				'wikimedia/mediawiki',
+				'wikimedia/client-es6'
+			]
+		},
+		{
+			files: [
 				'vite.components.config.js'
 			],
 			extends: [
