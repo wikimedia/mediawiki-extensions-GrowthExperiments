@@ -30,6 +30,10 @@ class AddLinkArticlePage extends Page {
 
 	get skipOnboardingDialogButton() { return $( '.structuredtask-onboarding-dialog-skip-button' ); }
 
+	get postEditDialogSmallTaskCard() { return $( '.mw-ge-postEditDrawer .mw-ge-small-task-card' ); }
+
+	get postEditDialogSmallTaskCardTitle() { return $( '.mw-ge-small-task-card-title' ); }
+
 	async waitForLinkInspector() {
 		await this.waitForDisplayedAndClickable( this.linkInspector );
 	}
@@ -73,6 +77,14 @@ class AddLinkArticlePage extends Page {
 	async clickButton( button ) {
 		await this.waitForDisplayedAndClickable( button );
 		return button.click();
+	}
+
+	async waitForPostEditNextSuggestedTask() {
+		await this.waitForDisplayedAndClickable( this.postEditDialogSmallTaskCard );
+		await this.waitForDisplayedAndClickable( this.postEditDialogSmallTaskCardTitle );
+		await browser.waitUntil( async () => {
+			return await this.postEditDialogSmallTaskCardTitle.getText() === 'The Hitchhiker\'s Guide to the Galaxy';
+		} );
 	}
 
 	async waitForDisplayedAndClickable( element ) {
