@@ -104,7 +104,8 @@ TryNewTaskPanel.prototype.logClose = function () {
  */
 TryNewTaskPanel.prototype.logImpression = function ( actionData ) {
 	var data = {
-		'next-suggested-task-type': this.nextSuggestedTaskType
+		'next-suggested-task-type': this.nextSuggestedTaskType,
+		savedTaskType: this.activeTaskType
 	};
 	data = $.extend( data, actionData || {} );
 	this.helpPanelLogger.log( 'trynewtask-impression', data );
