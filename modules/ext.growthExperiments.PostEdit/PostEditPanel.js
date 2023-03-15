@@ -392,10 +392,6 @@ PostEditPanel.prototype.logTaskClick = function () {
 PostEditPanel.prototype.updateNextTask = function ( task ) {
 	this.nextTask = task;
 	this.updateTask( task );
-	this.helpPanelLogger.log( 'postedit-impression', {
-		type: this.nextTask ? 'full' : 'small',
-		newcomerTaskToken: task.token
-	} );
 };
 
 /**
