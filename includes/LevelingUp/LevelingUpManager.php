@@ -312,8 +312,7 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public function shouldSendGetStartedNotification( UserIdentity $userIdentity ): bool {
-		$suggestedEditCount = $this->getSuggestedEditsCount( $userIdentity );
-		return $suggestedEditCount == 0;
+		return $this->getSuggestedEditsCount( $userIdentity ) === 0;
 	}
 
 }
