@@ -178,6 +178,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "{{GENDER:$1|사이드}} 메뉴를 열고 사용자 이름 ($2)을 클릭해서 홈페이지에 방문할 수 있습니다.",
 	"growthexperiments-homepage-suggestededits-pager": "{{PLURAL:$2|추천}} <strong>$2</strong>개 중 <strong>$1</strong>",
 	"growthexperiments-homepage-suggestededits-pager-end": "끝",
+	"growthexperiments-homepage-suggestededits-pager-loading": "불러오는 중…",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1회 방문 (지난 60일간)",
 	"growthexperiments-homepage-suggestededits-previous-card": "이전 편집 제안",
 	"growthexperiments-homepage-suggestededits-next-card": "다음 편집 제안",

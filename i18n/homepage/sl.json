@@ -196,6 +196,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Odprite stranski meni in tapnite $2, da {{GENDER:$1|obiščete}} svojo domačo stran.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> od <strong>$2</strong> {{PLURAL:$2|predloga|predlogov}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Konec",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Nalaganje ...",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 obiskov (v preteklih 60 dneh)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Prejšnje predlagano urejanje",
 	"growthexperiments-homepage-suggestededits-next-card": "Naslednje predlagano urejanje",

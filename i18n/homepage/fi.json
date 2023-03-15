@@ -152,6 +152,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Aloita täältä!",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> / <strong>$2</strong> {{PLURAL:$2|ehdotus|ehdotusta}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Loppu",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Ladataan…",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 lukukertaa (viimeiset 60 päivää)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Edellinen ehdotettu muokkaus",
 	"growthexperiments-homepage-suggestededits-next-card": "Seuraava ehdotettu muokkaus",

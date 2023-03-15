@@ -206,6 +206,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "{{GENDER:$1|افتح|افتحي}} القائمة الجانبية و{{GENDER:$1|انقر|انقري}} فوق $2 لزيارة لوحة {{GENDER:$1|المستخدم|المستخدمة}} خاصتك.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> من <strong>\n{{PLURAL:$2|$2 اقتراحات|اقتراح واحد|اقتراحين اثنين|$2 اقتراحات|$2 اقتراحا|$2 اقتراح}}</strong>",
 	"growthexperiments-homepage-suggestededits-pager-end": "النهاية",
+	"growthexperiments-homepage-suggestededits-pager-loading": "جارٍ التحميل…",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 تصفّح (آخر 60 يوما)",
 	"growthexperiments-homepage-suggestededits-previous-card": "التعديل المقترح السابق",
 	"growthexperiments-homepage-suggestededits-next-card": "التعديل المقترح الموالي",
@@ -263,6 +264,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "متوسطة",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "صعبة",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "{{GENDER:|حدّد|حدّدي}} مستوى التعديلات",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "تم تصميم التعديلات المقترحة {{GENDER:|لمساعدتكَ|لمساعدتكِ}} على تعلّم التعديل وزيادة مهاراتك في أثناء عملك على أنواع أخرى من التعديلات.",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "{{GENDER:|تريد|تريدين}} إنشاء مقالة جديدة؟",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-body": "يوصيك محررو {{SITENAME}} بتجربة بعض المهام المتوسطة والصعبة أولاً قبل محاولة كتابة مقالة جديدة. [$1 {{GENDER:|تعرف|تعرفي}} على المزيد] حول كتابة مقالة جديدة غير موجودة.",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "{{GENDER:|حدّد|حدّدي}} المواضيع",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "تم",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "تم",
@@ -570,5 +574,14 @@
 	"growthexperiments-tour-newimpact-discovery-title": "تصميم محيّن",
 	"growthexperiments-tour-newimpact-discovery-description": "تمت إضافة المزيد من {{GENDER:|أنشطتك}} التحريرية!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "عُلم",
-	"growthexperiments-homepage-newimpact-contributions-link": "عرض كل التعديلات"
+	"growthexperiments-homepage-newimpact-contributions-link": "عرض كل التعديلات",
+	"growthexperiments-levelingup-getstarted-notification-header": "{{GENDER:$2|جرّب|جرّبي}} تعديلًا مقترحًا و{{GENDER:$2|ابدأ|ابدئي}} في إنشاء مهارات قي التحرير",
+	"growthexperiments-levelingup-getstarted-notification-body": "تساعد التعديلاتُ المقترحة المحررينَ الجدد في تعلّم أفضل أساليب {{SITENAME}}، وفي تطوير مهارات التحرير الأساسية.",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "{{GENDER:|جرّب|جرّبي}} التعديلات المقترحة",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "تعلم المزيد",
+	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|استمر|استمري}} في إجراء التعديلات المقترحة لتطوير مهاراتك التحريرية",
+	"growthexperiments-levelingup-keepgoing-notification-body": "لقد أتممت {{PLURAL:$3|لا تعديل مقترح|تعديلًا مقترحًا واحدًا|تعديلين مقترحين|$3 تعديلات مقترحة|$3 تعديلًا مقترحًا|$3 تعديلٍ مقترحٍ}}. {{GENDER:$2|استمر|استمري}} في تعلّم المزيد من المهارات الجديدة.",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "{{GENDER:|قم|قومي}} بإجراء تعديل مقترح",
+	"echo-category-title-ge-newcomer": "ميزات النمو",
+	"echo-pref-tooltip-ge-newcomer": "إعلامي بالمهام الخاصة بالوافدين الجدد والميزات الأخرى المصممة لمساعدة المستخدمين الجدد."
 }

@@ -204,6 +204,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "{{GENDER:$1|פתַח|פִתחי}} את תפריט הצד {{GENDER:$1|ולחץ|ולחצי}} על $2 כדי לבקר בדף הבית שלך.",
 	"growthexperiments-homepage-suggestededits-pager": "{{PLURAL:$2|הצעה <strong>אחת</strong>|הצעה <strong>$1</strong> מתוך <strong>$2</strong>}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "סיום",
+	"growthexperiments-homepage-suggestededits-pager-loading": "טעינה...",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 ביקורים (ב־60 הימים האחרונים)",
 	"growthexperiments-homepage-suggestededits-previous-card": "עריכה מוצעות קודמת",
 	"growthexperiments-homepage-suggestededits-next-card": "העריכה המוצעות הבאה",

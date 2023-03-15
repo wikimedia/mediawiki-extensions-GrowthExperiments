@@ -58,6 +58,7 @@
 	"growthexperiments-tour-discovery-title": "Fänkt hei un!",
 	"growthexperiments-homepage-discovery-banner-header": "Wëllkomm op  {{GENDER:$1|Ärer}} Homepage!",
 	"growthexperiments-homepage-suggestededits-pager-end": "Schluss",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Lueden...",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 Visitten (an de leschte 60 Deeg)",
 	"growthexperiments-homepage-suggestededits-edit-card": "Änneren",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Keng aner Virschléi",
