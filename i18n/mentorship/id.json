@@ -53,11 +53,14 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktif",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Tidak aktif",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Karena Anda tidak aktif sampai $1, murid Anda akan dialihkan ke guru yang berbeda sementara waktu.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Tetapkan diri Anda sebagai 'non-aktif'",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Batal",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Jeda",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Anda akan absen selama:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "hari",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Terjadi galat yang tidak diketahui. Silakan coba lagi nanti.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Status Anda telah diubah menjadi \"Aktif\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Status Anda diubah menjadi \"Non-aktif\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Memberi pesan untuk murid-murid Anda",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Klaim pembimbing",
 	"growthexperiments-rcfilters-mentorship-title": "Bimbingan",
@@ -78,6 +81,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Sekitar setengah dari rata-rata",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Rata-rata (baku)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Sekitar dua kali dari rata-rata",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "Muatan {{GENDER:|Anda}} diubah menjadi \"$1\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Murid dipilihkan secara acak ke seorang guru saat membuat akun. Anda dapat mengelola berapa banyak murid yang ditugaskan untuk Anda, tetapi beberapa murid mungkin lebih sering bertanya dibanding yang lain",
+	"growthexperiments-mentor-list-missing-key": "Kunci <code>$1</code> tidak ada",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Definisi guru berisi kunci tak terduga <code>$1</code>"
 }

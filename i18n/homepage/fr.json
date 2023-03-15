@@ -87,7 +87,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difficile",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Recommandé pour {{GENDER:$1|}}vos premiers pas en tant que contribut{{GENDER:$1|eur|rice}}.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Pour quand {{GENDER:$1|}}vous aurez terminé quelques modifications faciles.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Quand vous vous serez familiarisé{{GENDER:$1||e}} avec les recommandations de Wikipédia.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Quand {{GENDER:$1|}}vous vous serez familiarisé{{GENDER:$1||e}} avec les recommandations de Wikipédia.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Relecture d’articles et ajout de liens vers d’autres articles.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Mettre à jour des articles et ajouter des références fiables",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Créer de nouveaux articles et développer des articles courts.",

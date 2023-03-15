@@ -263,7 +263,7 @@
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuration de modificationes suggerite non valide: mal structura",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuration de modificationes suggerite non valide pro le typo de carga \"$1\": \"$2\" debe esser un numero integre",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Configuration de modificationes suggerite non valide pro le typo de carga \"$1\": \"$2\" debe esser plus grande que $3",
-	"growthexperiments-homepage-suggestededits-config-fieldarray": "Configuration de modificationes suggerite non valide pro le typo de carga \"$1\": \"$2\" debe esser un array",
+	"growthexperiments-homepage-suggestededits-config-fieldarray": "Configuration de modificationes suggerite non valide pro le typo de carga \"$1\": \"$2\" debe esser un matrice",
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Configuration de modificationes suggerite non valide pro le typo de carga \"$1\", campo \"$2\": un maximo de $3 elementos es permittite",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuration de modificationes suggerite non valide: ID \"$1\" non valide – debe continer a-z, 0-9, - (minus) solmente",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configuration de modificationes suggerite non valide: le parametro <code>type</code> non pote valer $1 pro le typo de carga $2; valores possibile: $3",
