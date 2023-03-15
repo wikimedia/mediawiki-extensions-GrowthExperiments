@@ -43,7 +43,7 @@ describe( 'add link', function () {
 
 		await Util.waitForModuleState( 'ext.growthExperiments.PostEdit' );
 
-		await HomepagePage.waitForPostEditDialog();
+		await AddLinkArticlePage.waitForPostEditNextSuggestedTask();
 
 		await HomepagePage.runJobs();
 
