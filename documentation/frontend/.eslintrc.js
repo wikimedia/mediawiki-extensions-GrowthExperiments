@@ -29,7 +29,8 @@ module.exports = {
 		},
 		{
 			files: [
-				'vite.components.config.js'
+				'vite.components.config.js',
+				'vitest.config.js'
 			],
 			extends: [
 				'wikimedia/selenium',
@@ -46,11 +47,12 @@ module.exports = {
 		},
 		{
 			files: [
-				'**/*.test.js'
+				'component-demos/**/*.test.js'
 			],
-			env: {
-				jest: true
-			}
+			extends: [
+				'wikimedia/language/es6',
+				'wikimedia/mediawiki'
+			]
 		}
 	],
 	ignorePatterns: [
@@ -62,6 +64,7 @@ module.exports = {
 		'component-demos/lib.js'
 	],
 	parserOptions: {
-		ecmaVersion: 2020
+		ecmaVersion: 2020,
+		sourceType: 'module'
 	}
 };

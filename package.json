@@ -7,8 +7,9 @@
 		"minify-svg": "svgo --config=.svgo.config.js --quiet --recursive --folder images/",
 		"selenium-daily": "npm run selenium-test",
 		"selenium-test": "wdio tests/selenium/wdio.conf.js",
-		"test": "grunt test && npm run test:jest",
+		"test": "grunt test && npm run test:jest && npm run test:doc",
 		"test:jest": "jest",
+		"test:doc": "cd documentation/frontend && npm ci && npm run test",
 		"test:jest:update": "jest -u",
 		"coverage": "npm run test:jest",
 		"rollup": "rollup -c"
