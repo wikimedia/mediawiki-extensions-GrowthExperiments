@@ -21,6 +21,7 @@
 		"vite": "4.1.1",
 		"vitepress": "1.0.0-alpha.45",
 		"vitest": "0.29.1",
+		"vitest-fail-on-console": "0.3.0",
 		"vue": "3.2.37"
 	}
 }
