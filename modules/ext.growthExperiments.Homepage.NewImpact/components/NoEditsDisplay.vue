@@ -255,7 +255,7 @@ module.exports = exports = {
 
 	&__content {
 		display: flex;
-		background-color: @background-color-framed;
+		background-color: @background-color-interactive-subtle;
 		padding-bottom: 16px;
 
 		&--desktop {

@@ -96,7 +96,7 @@
 * Use the mixin in the button class instead of passing
 * specific class for the button AND the icon.
 */
-.codex-icon-only-button( @color: @color-accessory, @size: 20px ) {
+.codex-icon-only-button( @color: @color-subtle, @size: 20px ) {
 	// Overwrite .cdx-button:enabled color
 	&.cdx-button {
 		color: @color;
@@ -113,8 +113,8 @@
 }
 
 .popover-base() {
-	padding: @padding-base;
-	border: @border-base;
+	padding: @spacing-25 @spacing-75;
+	border: @border-width-base @border-style-base @border-color-base;
 	box-shadow: @box-shadow-drop-medium;
 	border-radius: @border-radius-base;
 	background-color: @background-color-base;

@@ -181,7 +181,7 @@ module.exports = exports = {
 	border-width: @border-width-base;
 	border-style: @border-style-base;
 	border-radius: @border-radius-base;
-	padding: @padding-input-text;
+	padding: @spacing-25 @spacing-50;
 	font-family: inherit;
 	font-size: inherit;
 	line-height: @line-height-component;
@@ -210,30 +210,30 @@ module.exports = exports = {
 		}
 
 		&:focus {
-			border-color: @border-color-base--focus;
+			border-color: @border-color-progressive--focus;
 			box-shadow: @box-shadow-inset-small @box-shadow-color-progressive--focus;
 			outline: @outline-base--focus;
 		}
 
 		&:invalid {
 			border-color: @border-color-destructive;
-			box-shadow: @box-shadow-inset-small @box-shadow-destructive--focus;
+			box-shadow: @box-shadow-inset-small @box-shadow-color-destructive--focus;
 			outline: @outline-base--focus;
 		}
 	}
 	/* stylelint-disable-next-line no-descending-specificity */
 	&:disabled {
-		background-color: @background-color-base--disabled;
-		color: @color-base--disabled;
-		-webkit-text-fill-color: @color-base--disabled;
-		border-color: @border-color-base--disabled;
+		background-color: @background-color-disabled-subtle;
+		color: @color-disabled;
+		-webkit-text-fill-color: @color-disabled;
+		border-color: @border-color-disabled;
 		// Don't implement coined effect on text-shadow from OOUI.
 		// This has never gone through design review and was a hack to increase
 		// color contrast.
 		// text-shadow: @text-shadow-base--disabled;
 		/* stylelint-disable-next-line no-descending-specificity */
 		~ .ext-growthExperiments-NumberInput__icon {
-			color: @color-base--disabled;
+			color: @color-disabled;
 			pointer-events: none;
 		}
 	}

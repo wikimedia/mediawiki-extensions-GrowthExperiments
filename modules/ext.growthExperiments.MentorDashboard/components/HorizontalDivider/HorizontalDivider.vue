@@ -13,7 +13,7 @@ module.exports = exports = {
 @import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-HorizontalDivider {
-	border-bottom: @border-base;
+	border-bottom: @border-width-base @border-style-base @border-color-base;
 	width: 100%;
 }
 </style>

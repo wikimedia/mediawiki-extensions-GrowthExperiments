@@ -91,7 +91,7 @@ module.exports = exports = {
 	padding: 8px 0;
 
 	&__number {
-		margin-right: calc( @padding-horizontal-base / 2 );
+		margin-right: @spacing-35;
 	}
 
 	&__graph {

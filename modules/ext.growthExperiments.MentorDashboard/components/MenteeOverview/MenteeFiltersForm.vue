@@ -202,7 +202,7 @@ module.exports = exports = {
 @import '../../../utils/mixins.less';
 
 .ext-growthExperiments-MenteeFiltersForm {
-	padding: @padding-horizontal-base;
+	padding: @spacing-75;
 
 	> h3 {
 		.no-gutter();

@@ -101,7 +101,7 @@ module.exports = exports = {
 .growthexperiments-homepage-module-new-impact-unactivated {
 	&-mobile-overlay,
 	&-mobile-summary {
-		background-color: @background-color-framed;
+		background-color: @background-color-interactive-subtle;
 	}
 }
 </style>

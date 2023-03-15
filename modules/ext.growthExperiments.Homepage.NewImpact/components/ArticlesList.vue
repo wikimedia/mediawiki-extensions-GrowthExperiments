@@ -133,7 +133,7 @@ module.exports = exports = {
 		color: @color-base;
 
 		> * {
-			padding: @padding-vertical-base;
+			padding: @spacing-25;
 		}
 
 		&__info {
@@ -177,7 +177,7 @@ module.exports = exports = {
 		}
 
 		&__tooltip-text {
-			padding-top: @padding-vertical-base;
+			padding-top: @spacing-25;
 			min-width: 220px;
 		}
 	}

@@ -177,7 +177,7 @@ module.exports = exports = {
 
 		caption {
 			text-align: left;
-			color: @color-accessory;
+			color: @color-subtle;
 			// TODO review available tokens
 			padding: 0.5em 0;
 		}

@@ -69,7 +69,7 @@ module.exports = exports = {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: @padding-base;
+	padding: @spacing-25 @spacing-75;
 
 	&__arrow-icon {
 		min-width: 32px;

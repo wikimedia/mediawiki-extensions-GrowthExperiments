@@ -48,7 +48,7 @@ module.exports = exports = {
 @import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-DataTableLimit {
-	padding: @padding-base;
+	padding: @spacing-25 @spacing-75;
 
 	&__select {
 		min-width: unset;
