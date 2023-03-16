@@ -378,16 +378,23 @@ class HomepageHooks implements
 		}
 
 		if ( $isSuggestedEditsEnabled ) {
-			// Always output these config vars since they are used by ext.growthExperiments.DataStore
-			// which can be included in any module
+			$isLevelingUpEnabledForUser = LevelingUpHooks::isLevelingUpEnabledForUser(
+				$context->getUser(),
+				$this->config,
+				$this->experimentUserManager
+			);
 			$out->addJsConfigVars( [
+				// Always output these config vars since they are used by ext.growthExperiments.DataStore
+				// which can be included in any module
 				'GEHomepageSuggestedEditsEnableTopics' => SuggestedEdits::isTopicMatchingEnabled(
 					$context,
 					$this->userOptionsLookup
 				),
 				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' ),
 				'wgGEStructuredTaskRejectionReasonTextInputEnabled' =>
-					$this->config->get( 'GEStructuredTaskRejectionReasonTextInputEnabled' )
+					$this->config->get( 'GEStructuredTaskRejectionReasonTextInputEnabled' ),
+				// Always output, it's used throughout the suggested editing session.
+				'wgGELevelingUpEnabledForUser' => $isLevelingUpEnabledForUser,
 			] );
 		}
 
@@ -426,11 +433,6 @@ class HomepageHooks implements
 			}
 
 			if ( $taskType ) {
-				$isLevelingUpEnabledForUser = LevelingUpHooks::isLevelingUpEnabledForUser(
-					$context->getUser(),
-					$this->config,
-					$this->experimentUserManager
-				);
 				$levelingUpTryNewTaskOptOuts = $this->userOptionsLookup->getOption(
 					$context->getUser(),
 					LevelingUpManager::TASK_TYPE_PROMPT_OPT_OUTS_PREF,
@@ -439,7 +441,6 @@ class HomepageHooks implements
 				$levelingUpTryNewTaskOptOuts = json_decode( $levelingUpTryNewTaskOptOuts ) ?? [];
 				$out->addJsConfigVars( [
 					'wgGESuggestedEditTaskType' => $taskType->getId(),
-					'wgGELevelingUpEnabledForUser' => $isLevelingUpEnabledForUser,
 					'wgGELevelingUpTryNewTaskOptOuts' => $levelingUpTryNewTaskOptOuts,
 				] );
 
