@@ -28,5 +28,6 @@
 	"apihelp-growthmanagementorlist-param-username": "Username of the mentor affected by the change. If not provided, currently logged in user will be used. Can be only used by privileged users.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "If isaway is true, then awaytimestamp must be provided.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalidates a suggestion of a praiseworthy mentee in the Personalized praise module on the Mentor dashboard",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Mentee to invalidate"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Mentee to invalidate",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Reason to invalidate the suggestion"
 }

@@ -7,6 +7,7 @@ use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
+use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
@@ -228,6 +229,10 @@ class GrowthExperimentsServices {
 
 	public function getImageRecommendationFilter(): ImageRecommendationFilter {
 		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationFilter' );
+	}
+
+	public function getPersonalizedPraiseLogger(): PersonalizedPraiseLogger {
+		return $this->coreServices->get( 'GrowthExperimentsPersonalizedPraiseLogger' );
 	}
 
 	public function getPersonalizedPraiseNotificationsDispatcher(): PersonalizedPraiseNotificationsDispatcher {

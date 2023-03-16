@@ -3,6 +3,7 @@
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
 use BagOStuff;
+use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\UserImpact;
@@ -22,6 +23,7 @@ class PraiseworthyMenteeSuggester {
 	private UserOptionsManager $userOptionsManager;
 	private PraiseworthyConditionsLookup $praiseworthyConditionsLookup;
 	private PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher;
+	private PersonalizedPraiseLogger $eventLogger;
 	private MentorStore $mentorStore;
 	private UserImpactLookup $userImpactLookup;
 
@@ -30,6 +32,7 @@ class PraiseworthyMenteeSuggester {
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param PraiseworthyConditionsLookup $praiseworthyConditionsLookup
 	 * @param PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher
+	 * @param PersonalizedPraiseLogger $personalizedPraiseLogger
 	 * @param MentorStore $mentorStore
 	 * @param UserImpactLookup $userImpactLookup
 	 */
@@ -38,6 +41,7 @@ class PraiseworthyMenteeSuggester {
 		UserOptionsManager $userOptionsManager,
 		PraiseworthyConditionsLookup $praiseworthyConditionsLookup,
 		PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher,
+		PersonalizedPraiseLogger $personalizedPraiseLogger,
 		MentorStore $mentorStore,
 		UserImpactLookup $userImpactLookup
 	) {
@@ -45,6 +49,7 @@ class PraiseworthyMenteeSuggester {
 		$this->userOptionsManager = $userOptionsManager;
 		$this->praiseworthyConditionsLookup = $praiseworthyConditionsLookup;
 		$this->notificationsDispatcher = $notificationsDispatcher;
+		$this->eventLogger = $personalizedPraiseLogger;
 		$this->mentorStore = $mentorStore;
 		$this->userImpactLookup = $userImpactLookup;
 	}
@@ -144,12 +149,17 @@ class PraiseworthyMenteeSuggester {
 			return;
 		}
 
+		$praiseworthyMentees = $this->getPraiseworthyMenteesForMentorUncached( $mentor );
 		$this->globalCache->set(
 			$key,
-			$this->getPraiseworthyMenteesForMentorUncached( $mentor ),
+			$praiseworthyMentees,
 			self::EXPIRATION_TTL
 		);
-		$this->notificationsDispatcher->maybeNotifyAboutPendingMentees( $mentor );
+
+		$wasNotified = $this->notificationsDispatcher->maybeNotifyAboutPendingMentees( $mentor );
+		foreach ( $praiseworthyMentees as $impact ) {
+			$this->eventLogger->logSuggested( $mentor, $impact->getUser(), $wasNotified );
+		}
 	}
 
 	/**
