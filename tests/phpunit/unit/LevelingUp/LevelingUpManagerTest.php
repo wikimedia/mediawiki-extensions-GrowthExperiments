@@ -43,6 +43,33 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	public function testGetTaskTypesGroupedByDifficultyWithLinks() {
+		$serviceOptions = new ServiceOptions(
+			LevelingUpManager::CONSTRUCTOR_OPTIONS,
+			new HashConfig( [
+				'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,
+				'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
+				'GELevelingUpKeepGoingNotificationThresholds' => [ 1, 4 ],
+				'GENewcomerTasksLinkRecommendationsEnabled' => false,
+			] )
+		);
+		$this->assertEquals(
+			[
+				'easy' => [ 'copyedit', 'links' ],
+				'medium' => [ 'update' ],
+				'hard' => [ 'cx', 'newarticle' ]
+			],
+			$this->getLevelingUpManager(
+				null,
+				null,
+				null,
+				null,
+				null,
+				$serviceOptions
+			)->getTaskTypesGroupedByDifficulty()
+		);
+	}
+
 	public function testGetNextSuggestedTaskTypeForUser() {
 		$userImpact = $this->createMock( UserImpact::class );
 		$userImpact->expects( $this->once() )
@@ -205,15 +232,17 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		?ConfigurationLoader $configurationLoader = null,
 		?UserImpactLookup $userImpactLookup = null,
 		?TaskSuggesterFactory $taskSuggesterFactory = null,
-		?NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup = null
+		?NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup = null,
+		?ServiceOptions $serviceOptions = null
 	): LevelingUpManager {
 		return new LevelingUpManager(
-			new ServiceOptions(
+			$serviceOptions ?? new ServiceOptions(
 				LevelingUpManager::CONSTRUCTOR_OPTIONS,
 				new HashConfig( [
 					'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,
 					'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
 					'GELevelingUpKeepGoingNotificationThresholds' => [ 1, 4 ],
+					'GENewcomerTasksLinkRecommendationsEnabled' => true,
 				] )
 			),
 			$this->createNoOpAbstractMock( IReadableDatabase::class ),
@@ -244,8 +273,9 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		$taskType3 = new TaskType( 'update', TaskType::DIFFICULTY_MEDIUM );
 		$taskType4 = new TaskType( 'cx', TaskType::DIFFICULTY_HARD );
 		$taskType5 = new TaskType( 'newarticle', TaskType::DIFFICULTY_HARD );
+		$taskType6 = new TaskType( 'links', TaskType::DIFFICULTY_EASY );
 		return new StaticConfigurationLoader( [
-			$taskType2, $taskType4, $taskType5, $taskType1, $taskType3
+			$taskType2, $taskType4, $taskType5, $taskType1, $taskType3, $taskType6
 		] );
 	}
 
