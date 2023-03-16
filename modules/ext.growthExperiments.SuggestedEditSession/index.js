@@ -666,10 +666,10 @@
 	};
 
 	/**
-	 * Check if LevelingUpFeaturesEnabled flag is on, and that the user is in the 'control'
-	 * group (which gets leveling up + new impact module).
+	 * Check if leveling up features are enabled for this user.
 	 *
 	 * @return {boolean}
+	 * @todo remove this once the feature is fully rolled out
 	 */
 	SuggestedEditSession.static.shouldShowLevelingUpFeatures = function () {
 		return mw.config.get( 'wgGELevelingUpEnabledForUser' );
