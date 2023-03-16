@@ -471,7 +471,9 @@
 						// Prepare for follow-up edits by loading the next suggested task
 						// type based on the edit just now made.
 						if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
-							self.getNextSuggestedTaskType();
+							self.getNextSuggestedTaskType().then( function () {
+								self.save();
+							} );
 						}
 						if ( self.editorInterface === 'visualeditor' ) {
 							return $.Deferred().resolve();
