@@ -215,6 +215,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Не найдено предлагаемых правок",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Выберите другой уровень сложности, чтобы найти предлагаемые правки.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Выберите другие интересы или измените уровень сложности, чтобы найти предлагаемые правки.",
+	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Обновить фильтр",
 	"growthexperiments-homepage-suggestededits-footer": "Другие участники отметили эти статьи как нуждающиеся в доработке. Помогите сделать '''{{grammar:accusative|{{SITENAME}}}}''' лучше для '''$1''' людей, читающих её каждый день.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Другие участники отметили эти статьи как нуждающиеся в доработке. Помогите сделать '''{{grammar:accusative|{{SITENAME}}}}''' лучше.",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1 тыс.",
@@ -435,6 +436,7 @@
 	"growthexperiments-addlink-summary-copyrightwarning": "При публикации изменений {{GENDER:|вы}} соглашаетесь с [https://foundation.wikimedia.org/wiki/Terms_of_Use Условиями использования] и соглашаетесь опубликовать свой вклад в соответствии с лицензиями [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] и [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
 	"growthexperiments-addlink-summary-summary": "Функция «Добавить ссылку»: {{PLURAL:$1|добавлена $1 ссылка|добавлено $1 ссылки|добавлено $1 ссылок}}.",
 	"growthexperiments-addlink-skip-body": "{{GENDER:|Вы}} уверены, что не хотите принять никакие предложения?",
+	"growthexperiments-addlink-skip-accept": "Пропустить всё",
 	"grant-managementorship": "Настроить наставничество",
 	"newcomertasksinfo": "Задачи для новичков",
 	"newcomertasksinfo-no-data": "Нет доступных данных.",
@@ -559,5 +561,7 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Отказаться от наставничества",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Выберите кнопку ниже, чтобы пока не назначать {{GENDER:|Вам}} определённого наставника. {{GENDER:|Вы}} сможете выбрать нового наставника позже, если {{GENDER:|Вам}} того захочется.",
 	"growthexperiments-homepage-mentorship-about-done": "Готово",
+	"growthexperiments-tour-newimpact-discovery-title": "Обновлённый дизайн",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Узнать больше",
 	"echo-pref-tooltip-ge-newcomer": "Уведомлять меня о задачах для новичков и других функциях, призванных помочь новым участникам."
 }
