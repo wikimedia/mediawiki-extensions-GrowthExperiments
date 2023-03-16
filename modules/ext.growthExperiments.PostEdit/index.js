@@ -204,7 +204,7 @@
 		 *  a valid task type id with the next suggested task type.
 		 */
 		setupTryNewTaskPanel: function () {
-			var tryNewTaskOptOuts = mw.config.get( 'wgGELevelingUpTryNewTaskOptOuts' );
+			var tryNewTaskOptOuts = mw.config.get( 'wgGELevelingUpTryNewTaskOptOuts', [] );
 			if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() &&
 				// A next suggested task type is available for the user
 				suggestedEditSession.nextSuggestedTaskType &&
