@@ -1,7 +1,7 @@
 <template>
 	<div class="ext-growthExperiments-DataTableCellMentee">
 		<cdx-button
-			type="quiet"
+			weight="quiet"
 			:aria-label="ariaLabel"
 			@click="toggleStarred"
 		>

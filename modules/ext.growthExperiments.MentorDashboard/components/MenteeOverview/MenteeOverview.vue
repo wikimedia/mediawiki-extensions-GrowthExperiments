@@ -10,7 +10,7 @@
 			>
 				<template #trigger="{ onClick }">
 					<cdx-button
-						type="quiet"
+						weight="quiet"
 						class="ext-growthExperiments-MenteeOverview__info-button"
 						:aria-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' ).text()"
 						@click="onClick"

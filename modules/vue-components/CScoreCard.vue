@@ -32,7 +32,7 @@
 				>
 					<template #trigger="{ onClick }">
 						<cdx-button
-							type="quiet"
+							weight="quiet"
 							class="ext-growthExperiments-ScoreCards__info-button"
 							:aria-label="infoIconLabel"
 							@click="onClick"

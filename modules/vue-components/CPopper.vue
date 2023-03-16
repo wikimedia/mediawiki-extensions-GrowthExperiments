@@ -11,7 +11,7 @@
 				v-if="icon"
 				class="ext-growthExperiments-CPopper__popover__close-button-container">
 				<cdx-button
-					type="quiet"
+					weight="quiet"
 					:aria-label="iconLabel"
 					class="ext-growthExperiments-CPopper__popover__close-button"
 					@click="$emit( 'close', $event )"

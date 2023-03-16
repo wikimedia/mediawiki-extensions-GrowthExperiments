@@ -114,7 +114,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
               
               <button
                 aria-label="growthexperiments-homepage-impact-scores-thanks-info-label"
-                class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+                class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
               >
                 
                 <span
@@ -245,7 +245,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
               
               <button
                 aria-label="growthexperiments-homepage-impact-scores-streak-info-label"
-                class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+                class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
               >
                 
                 <span
@@ -395,7 +395,7 @@ exports[`ScoreCards renders correctly without data 1`] = `
               
               <button
                 aria-label="growthexperiments-homepage-impact-scores-thanks-info-label"
-                class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+                class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
               >
                 
                 <span
@@ -526,7 +526,7 @@ exports[`ScoreCards renders correctly without data 1`] = `
               
               <button
                 aria-label="growthexperiments-homepage-impact-scores-streak-info-label"
-                class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+                class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
               >
                 
                 <span

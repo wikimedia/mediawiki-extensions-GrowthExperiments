@@ -55,7 +55,7 @@
 							<template #trigger="{ onClick }">
 								<cdx-button
 									class="ext-growthExperiments-ArticlesList__ArticleListItem__clock-button"
-									type="quiet"
+									weight="quiet"
 									:aria-label="$i18n( 'growthexperiments-homepage-impact-empty-pageviews-tooltip-short' ).text()"
 									@click="onClick"
 								>

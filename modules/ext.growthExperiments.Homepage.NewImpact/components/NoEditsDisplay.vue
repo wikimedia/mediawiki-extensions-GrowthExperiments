@@ -101,7 +101,7 @@
 				<div v-if="!isDisabled && renderMode === 'overlay'">
 					<cdx-button
 						data-link-id="impact-see-suggested-edits"
-						type="primary"
+						weight="primary"
 						action="progressive"
 						@click="onSuggestedEditsClick"
 					>

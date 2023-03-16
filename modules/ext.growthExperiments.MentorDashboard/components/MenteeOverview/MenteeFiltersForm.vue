@@ -43,8 +43,8 @@
 					<cdx-button
 						v-for="option in dayLabels"
 						:key="option.value"
-						:type="option.selected ? 'primary' : null"
-						:action="option.selected ? 'progressive' : null"
+						:weight="option.selected ? 'primary' : undefined"
+						:action="option.selected ? 'progressive' : undefined"
 						:class="{ 'button-group__button--selected': option.selected }"
 						:alt="option.altText"
 						@click.prevent="onDaysAgoUpdate( option.value )"
@@ -61,8 +61,8 @@
 					<cdx-button
 						v-for="option in monthLabels"
 						:key="option.value"
-						:type="option.selected ? 'primary' : null"
-						:action="option.selected ? 'progressive' : null"
+						:weight="option.selected ? 'primary' : undefined"
+						:action="option.selected ? 'progressive' : undefined"
 						:alt="option.altText"
 						@click.prevent="onDaysAgoUpdate( option.value )"
 					>
@@ -83,7 +83,6 @@
 			<cdx-button
 				class="ext-growthExperiments-utils__pull-right"
 				form="mentee-filters-form"
-				type="primary"
 			>
 				{{
 					$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit' ).text()

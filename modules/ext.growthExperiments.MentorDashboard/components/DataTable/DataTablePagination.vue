@@ -4,7 +4,7 @@
 			{{ paginationText }}
 		</span>
 		<cdx-button
-			type="quiet"
+			weight="quiet"
 			:aria-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label' ).text()"
 			:disabled="currentPage === 1"
 			@click="$emit( 'prev', $event )"
@@ -15,7 +15,7 @@
 			></cdx-icon>
 		</cdx-button>
 		<cdx-button
-			type="quiet"
+			weight="quiet"
 			:aria-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label' ).text()"
 			:disabled="currentPage === totalPages"
 			@click="$emit( 'next', $event )"

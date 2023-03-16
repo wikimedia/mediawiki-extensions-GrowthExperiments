@@ -90,7 +90,7 @@ exports[`ScoreCard renders correctly info slot 1`] = `
             
             <button
               aria-label="the label for the info icon"
-              class="cdx-button cdx-button--action-default cdx-button--type-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+              class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
             >
               
               <span
