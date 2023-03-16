@@ -19,6 +19,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseNotificationsDispatcher;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
@@ -227,6 +228,10 @@ class GrowthExperimentsServices {
 
 	public function getImageRecommendationFilter(): ImageRecommendationFilter {
 		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationFilter' );
+	}
+
+	public function getPersonalizedPraiseNotificationsDispatcher(): PersonalizedPraiseNotificationsDispatcher {
+		return $this->coreServices->get( 'GrowthExperimentsPersonalizedPraiseNotificationsDispatcher' );
 	}
 
 	public function getPersonalizedPraiseSettings(): PersonalizedPraiseSettings {

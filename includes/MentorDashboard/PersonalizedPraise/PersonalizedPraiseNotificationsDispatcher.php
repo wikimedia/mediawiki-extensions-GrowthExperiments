@@ -1,0 +1,196 @@
+<?php
+
+namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
+
+use BagOStuff;
+use Config;
+use EchoEvent;
+use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\User\UserIdentity;
+use MWTimestamp;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+
+class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
+
+	private Config $config;
+	private BagOStuff $cache;
+	private SpecialPageFactory $specialPageFactory;
+	private PersonalizedPraiseSettings $personalizedPraiseSettings;
+
+	/**
+	 * @param Config $config
+	 * @param BagOStuff $cache
+	 * @param SpecialPageFactory $specialPageFactory
+	 * @param PersonalizedPraiseSettings $personalizedPraiseSettings
+	 */
+	public function __construct(
+		Config $config,
+		BagOStuff $cache,
+		SpecialPageFactory $specialPageFactory,
+		PersonalizedPraiseSettings $personalizedPraiseSettings
+	) {
+		$this->config = $config;
+		$this->cache = $cache;
+		$this->specialPageFactory = $specialPageFactory;
+		$this->personalizedPraiseSettings = $personalizedPraiseSettings;
+	}
+
+	/**
+	 * @param UserIdentity $mentor
+	 * @return string
+	 */
+	private function makeLastNotifiedKey( UserIdentity $mentor ): string {
+		return $this->cache->makeKey(
+			'GrowthExperiments', self::class,
+			'last-notified', $mentor->getId()
+		);
+	}
+
+	/**
+	 * If available, get last notified timestamp
+	 *
+	 * @param UserIdentity $userIdentity
+	 * @return string|null
+	 */
+	private function getLastNotified( UserIdentity $userIdentity ): ?string {
+		$res = $this->cache->get( $this->makeLastNotifiedKey( $userIdentity ) );
+		if ( !is_string( $res ) ) {
+			return null;
+		}
+
+		return $res;
+	}
+
+	/**
+	 * Set last notified timestamp
+	 *
+	 * @param UserIdentity $userIdentity
+	 * @param string $lastNotified
+	 */
+	private function setLastNotified( UserIdentity $userIdentity, string $lastNotified ): void {
+		$this->cache->set(
+			$this->makeLastNotifiedKey( $userIdentity ),
+			$lastNotified,
+			self::TTL_INDEFINITE
+		);
+	}
+
+	/**
+	 * @param UserIdentity $mentor
+	 * @return string
+	 */
+	private function makePendingMenteesKey( UserIdentity $mentor ): string {
+		return $this->cache->makeKey(
+			'GrowthExperiments', self::class,
+			'pending-mentees', $mentor->getId()
+		);
+	}
+
+	/**
+	 * Are there any mentees the mentor was not yet notified about?
+	 *
+	 * @param UserIdentity $mentor
+	 * @return bool
+	 */
+	private function doesMentorHavePendingMentees( UserIdentity $mentor ): bool {
+		$res = $this->cache->get( $this->makePendingMenteesKey( $mentor ) );
+		return is_array( $res ) && $res;
+	}
+
+	/**
+	 * Purge the list of mentees the mentor was not yet notified about
+	 *
+	 * This should be called upon mentor getting a notification.
+	 *
+	 * @param UserIdentity $mentor
+	 */
+	private function purgePendingMenteesForMentor( UserIdentity $mentor ): void {
+		$this->cache->delete( $this->makePendingMenteesKey( $mentor ) );
+	}
+
+	/**
+	 * @param UserIdentity $mentor
+	 * @param UserIdentity $mentee
+	 */
+	private function markMenteeAsPendingForMentor(
+		UserIdentity $mentor, UserIdentity $mentee
+	): void {
+		$this->cache->merge(
+			$this->makePendingMenteesKey( $mentor ),
+			static function ( $cache, $key, $value ) use ( $mentee ) {
+				if ( !is_array( $value ) ) {
+					$value = [];
+				}
+				$value[] = $mentee->getId();
+				return array_unique( $value );
+			}
+		);
+	}
+
+	/**
+	 * Notify a mentor about new praiseworthy mentees
+	 *
+	 * @param UserIdentity $mentor
+	 */
+	private function notifyMentor( UserIdentity $mentor ) {
+		if ( !$this->config->get( 'GEPersonalizedPraiseEnabled' ) ) {
+			return;
+		}
+
+		EchoEvent::create( [
+			'type' => 'new-praiseworthy-mentees',
+			'title' => $this->specialPageFactory->getTitleForAlias( 'MentorDashboard' ),
+			'agent' => $mentor,
+		] );
+
+		$this->setLastNotified( $mentor, MWTimestamp::getInstance()->getTimestamp( TS_MW ) );
+		$this->purgePendingMenteesForMentor( $mentor );
+	}
+
+	/**
+	 * Called whenever GrowthExperiments suggests a new mentee to praise
+	 *
+	 * @param UserIdentity $mentor Mentor to whom the suggestion was made
+	 * @param UserIdentity $mentee Mentee which was suggested
+	 */
+	public function onMenteeSuggested( UserIdentity $mentor, UserIdentity $mentee ): void {
+		$freq = $this->personalizedPraiseSettings->getNotificationsFrequency( $mentor );
+		if ( $freq === PersonalizedPraiseSettings::NOTIFY_IMMEDIATELY ) {
+			$this->notifyMentor( $mentor );
+		} elseif ( $freq !== PersonalizedPraiseSettings::NOTIFY_NEVER ) {
+			$this->markMenteeAsPendingForMentor( $mentor, $mentee );
+		}
+	}
+
+	/**
+	 * If mentor has any mentees they were not yet notified about, notify them
+	 *
+	 * @param UserIdentity $mentor
+	 */
+	public function maybeNotifyAboutPendingMentees( UserIdentity $mentor ): void {
+		if ( !$this->doesMentorHavePendingMentees( $mentor ) ) {
+			return;
+		}
+
+		$hoursToWait = $this->personalizedPraiseSettings->getNotificationsFrequency( $mentor );
+		if ( $hoursToWait === PersonalizedPraiseSettings::NOTIFY_IMMEDIATELY ) {
+			// NOTE: immediate notification is normally handled in onMenteeSuggested; only
+			// process pending mentees that were not yet processed.
+			$this->notifyMentor( $mentor );
+			return;
+		} elseif ( $hoursToWait === PersonalizedPraiseSettings::NOTIFY_NEVER ) {
+			return;
+		}
+
+		$rawLastNotifiedTS = $this->getLastNotified( $mentor );
+		$notifiedSecondsAgo = (int)MWTimestamp::getInstance()->getTimestamp( TS_UNIX ) -
+			(int)MWTimestamp::getInstance( $rawLastNotifiedTS ?? false )->getTimestamp( TS_UNIX );
+
+		if (
+			$rawLastNotifiedTS !== null &&
+			$notifiedSecondsAgo >= $hoursToWait * ExpirationAwareness::TTL_HOUR
+		) {
+			$this->notifyMentor( $mentor );
+		}
+	}
+}
