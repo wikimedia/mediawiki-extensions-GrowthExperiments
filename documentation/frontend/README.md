@@ -58,10 +58,7 @@ None at the moment
 
 ### Vite config
 
-VitePress uses Vite for building and serving the live GrowthExperiments docs site. Configuration can be
-overridden via `docs/vite.config.js`. For example, you can add
+VitePress uses Vite for building and serving the live GrowthExperiments docs site. Configuration can be overridden via `docs/vite.config.js`. For example, you can add
 [Vite plugins](https://vitejs.dev/plugins/) here. 
 
-Note than in the current setup the file does not exist
-and all VitePress defaults for vite are used. `vite.components.config.js` is NOT the docs site
-vite configuration and serves other purposes. See [Standalone demos](#Standalone_demos)
+Note than `vite.components.config.js` is NOT the docs site vite configuration and serves other purposes. See [Standalone demos](#Standalone_demos)
