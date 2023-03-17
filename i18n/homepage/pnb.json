@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Abbas dhothar"
+			"Abbas dhothar",
+			"Bgo eiu"
 		]
 	},
 	"growthexperiments-homepage-startediting-dialog-intro-back": "رد کرو",
+	"growthexperiments-homepage-suggestededits-pager-loading": "لوڈ کر رہے اے…",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "ہور سکھو",
 	"growthexperiments-homepage-suggestededits-topics-more": "ہور وکھاؤ",
 	"growthexperiments-notification-body-mentor-change": "وجہ: $1"
