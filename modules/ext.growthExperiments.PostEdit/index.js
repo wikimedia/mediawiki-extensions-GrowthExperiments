@@ -220,7 +220,11 @@
 				var displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger, true );
 				displayPanelPromises.openPromise.done( function () {
 					tryNewTaskPanel.logImpression( {
-						'edit-count-for-task-type': suggestedEditSession.editCountByTaskType[ suggestedEditSession.taskType ]
+						// Increment the count for the task type, because the try new task panel
+						// is triggered at GELevelingUpManagerTaskTypeCountThresholdMultiple - 1,
+						// so when this code runs, the suggestedEditSession's edit count reflects
+						// the edit count just before the edit was saved.
+						'edit-count-for-task-type': suggestedEditSession.editCountByTaskType[ suggestedEditSession.taskType ] + 1
 					} );
 				} );
 				return displayPanelPromises.closePromise;
