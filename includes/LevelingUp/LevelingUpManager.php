@@ -38,6 +38,7 @@ class LevelingUpManager {
 		'GELevelingUpManagerTaskTypeCountThresholdMultiple',
 		'GELevelingUpManagerInvitationThresholds',
 		'GELevelingUpKeepGoingNotificationThresholds',
+		'GENewcomerTasksLinkRecommendationsEnabled',
 	];
 
 	private ServiceOptions $options;
@@ -99,7 +100,7 @@ class LevelingUpManager {
 	/**
 	 * Get the enabled task types, grouped by difficulty level.
 	 *
-	 * We use this method to assist in getting an list of task types ordered by difficulty level. We can't
+	 * We use this method to assist in getting a list of task types ordered by difficulty level. We can't
 	 * rely on the order in which they are returned by getTaskTypes(), because that is affected by the
 	 * structure of the JSON on MediaWiki:NewcomerTasks.json
 	 *
@@ -107,6 +108,17 @@ class LevelingUpManager {
 	 */
 	public function getTaskTypesGroupedByDifficulty(): array {
 		$taskTypes = $this->configurationLoader->getTaskTypes();
+		// HACK: "links" and "link-recommendation" are not loaded together. If link recommendation is enabled,
+		// remove "links" if it exists, and vice versa.
+		if ( $this->options->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
+			if ( isset( $taskTypes['links'] ) ) {
+				unset( $taskTypes['links'] );
+			}
+		} else {
+			if ( isset( $taskTypes['link-recommendation'] ) ) {
+				unset( $taskTypes['link-recommendation'] );
+			}
+		}
 		$taskTypesGroupedByDifficulty = [];
 		foreach ( $taskTypes as $taskType ) {
 			$taskTypesGroupedByDifficulty[$taskType->getDifficulty()][] = $taskType->getId();
