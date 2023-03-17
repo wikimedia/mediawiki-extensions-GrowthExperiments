@@ -8,6 +8,7 @@ use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 use StatusValue;
 
 /**
@@ -27,21 +28,25 @@ class StructuredMentorWriter implements IMentorWriter {
 	/** @var string */
 	public const CONFIG_KEY = 'Mentors';
 
+	private UserIdentityLookup $userIdentityLookup;
 	private WikiPageConfigWriterFactory $configWriterFactory;
 	private StructuredMentorListValidator $mentorListValidator;
 
 	/**
+	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param WikiPageConfigLoader $configLoader
 	 * @param WikiPageConfigWriterFactory $configWriterFactory
 	 * @param StructuredMentorListValidator $mentorListValidator
 	 * @param LinkTarget $mentorList
 	 */
 	public function __construct(
+		UserIdentityLookup $userIdentityLookup,
 		WikiPageConfigLoader $configLoader,
 		WikiPageConfigWriterFactory $configWriterFactory,
 		StructuredMentorListValidator $mentorListValidator,
 		LinkTarget $mentorList
 	) {
+		$this->userIdentityLookup = $userIdentityLookup;
 		$this->configLoader = $configLoader;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->mentorListValidator = $mentorListValidator;
@@ -77,6 +82,21 @@ class StructuredMentorWriter implements IMentorWriter {
 		UserIdentity $performer,
 		bool $bypassWarnings
 	): StatusValue {
+		// add 'username' key for readability (T331444)
+		foreach ( $mentorData as $mentorId => $_ ) {
+			$mentorUser = $this->userIdentityLookup->getUserIdentityByUserId( $mentorId );
+			if ( !$mentorUser ) {
+				$this->logger->warning( $this->mentorList->getText() . ' contains an invalid user for ID {userId}', [
+					'userId' => $mentorId,
+					'namespace' => $this->mentorList->getNamespace(),
+					'title' => $this->mentorList->getText()
+				] );
+				continue;
+			}
+
+			$mentorData[$mentorId]['username'] = $mentorUser->getName();
+		}
+
 		$configWriter = $this->configWriterFactory
 			->newWikiPageConfigWriter( $this->mentorList, $performer );
 		$configWriter->setVariable( self::CONFIG_KEY, $mentorData );

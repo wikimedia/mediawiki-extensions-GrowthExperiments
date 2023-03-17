@@ -10,6 +10,7 @@ use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Status;
@@ -21,6 +22,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 
 	private const MENTOR_LIST_CONTENT = [
 		123 => [
+			'username' => 'Mentor',
 			'message' => null,
 			'weight' => 2,
 			'automaticallyAssigned' => true,
@@ -49,6 +51,17 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$autoAssigned,
 			$weight
 		);
+	}
+
+	/**
+	 * @return UserIdentityLookup|\PHPUnit\Framework\MockObject\MockObject
+	 */
+	private function getUserIdentityLookupMock() {
+		$userIdentityLookupMock = $this->createMock( UserIdentityLookup::class );
+		$userIdentityLookupMock->expects( $this->atLeastOnce() )
+			->method( 'getUserIdentityByUserId' )
+			->willReturn( new UserIdentityValue( 123, 'Mentor' ) );
+		return $userIdentityLookupMock;
 	}
 
 	/**
@@ -101,6 +114,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf(
 			StructuredMentorWriter::class,
 			new StructuredMentorWriter(
+				$this->createNoOpMock( UserIdentityLookup::class ),
 				$this->createNoOpMock( WikiPageConfigLoader::class ),
 				$this->createNoOpMock( WikiPageConfigWriterFactory::class ),
 				$this->createNoOpMock( StructuredMentorListValidator::class ),
@@ -130,10 +144,14 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$expectedMentorList = self::MENTOR_LIST_CONTENT;
 			$expectedMentorList[$mentor->getUserIdentity()->getId()] = $expectedNewMentor;
 			$configWriterFactory = $this->getWikiPageWriterFactoryMock( $expectedMentorList, 'Add mentor' );
+
+			$userIdentityLookup = $this->getUserIdentityLookupMock();
 		} else {
 			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
+			$userIdentityLookup = $this->createNoOpMock( UserIdentityLookup::class );
 		}
 		$mentorWriter = new StructuredMentorWriter(
+			$userIdentityLookup,
 			$this->getWikiConfigLoaderMock( $expectLoad ),
 			$configWriterFactory,
 			new StructuredMentorListValidator(),
@@ -158,6 +176,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			[
 				'mentor' => $this->getMentor( 1, null, true, 2 ),
 				'expectedNewMentor' => [
+					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 2,
 					'automaticallyAssigned' => true,
@@ -168,6 +187,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			[
 				'mentor' => $this->getMentor( 123, null, true, 2 ),
 				'expectedNewMentor' => [
+					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 2,
 					'automaticallyAssigned' => true,
@@ -178,6 +198,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			[
 				'mentor' => $this->getMentor( 0, null, true, 2 ),
 				'expectedNewMentor' => [
+					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 2,
 					'automaticallyAssigned' => true,
@@ -205,6 +226,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
 		}
 		$mentorWriter = new StructuredMentorWriter(
+			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->getWikiConfigLoaderMock(),
 			$configWriterFactory,
 			new StructuredMentorListValidator(),
@@ -256,10 +278,14 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$expectedMentorList = self::MENTOR_LIST_CONTENT;
 			$expectedMentorList[$mentor->getUserIdentity()->getId()] = $expectedNewMentor;
 			$configWriterFactory = $this->getWikiPageWriterFactoryMock( $expectedMentorList, 'Change mentor' );
+
+			$userIdentityLookup = $this->getUserIdentityLookupMock();
 		} else {
 			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
+			$userIdentityLookup = $this->createNoOpMock( UserIdentityLookup::class );
 		}
 		$mentorWriter = new StructuredMentorWriter(
+			$userIdentityLookup,
 			$this->getWikiConfigLoaderMock(),
 			$configWriterFactory,
 			new StructuredMentorListValidator(),
@@ -284,6 +310,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			[
 				'mentor' => $this->getMentor( 1, null, true, 2 ),
 				'expectedNewMentor' => [
+					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 2,
 					'automaticallyAssigned' => true,
@@ -293,6 +320,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			[
 				'mentor' => $this->getMentor( 123, null, true, 4 ),
 				'expectedNewMentor' => [
+					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 4,
 					'automaticallyAssigned' => true,
