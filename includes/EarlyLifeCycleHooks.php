@@ -3,7 +3,7 @@
 namespace GrowthExperiments;
 
 use ConfigException;
-use MediaWiki\Cache\Hook\MessageCache__getHook;
+use MediaWiki\Cache\Hook\MessageCacheFetchOverridesHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use RequestContext;
@@ -14,7 +14,7 @@ use RequestContext;
  * hook handlers with lots of context dependencies (e.g. HomepageHooks), so that there's
  * less chance of causing dependency loops.
  */
-class EarlyLifeCycleHooks implements MessageCache__getHook {
+class EarlyLifeCycleHooks implements MessageCacheFetchOverridesHook {
 
 	private UserOptionsLookup $userOptionsLookup;
 
@@ -28,20 +28,22 @@ class EarlyLifeCycleHooks implements MessageCache__getHook {
 	/**
 	 * Change the tooltip of the userpage link when it point to Special:Homepage
 	 *
-	 * @param string &$lcKey message key to check and possibly convert
+	 * @param callable[] &$keys message keys to convert
 	 * @throws ConfigException
 	 */
-	public function onMessageCache__get( &$lcKey ) {
-		// Optimisation: There are 1000s of messages, limit cost for each one (T302623)
-		if ( $lcKey === 'tooltip-pt-userpage' ) {
+	public function onMessageCacheFetchOverrides( array &$keys ): void {
+		$keys['tooltip-pt-userpage'] = function ( string $key ): string {
 			$user = RequestContext::getMain()->getUser();
+
 			if ( $user->isSafeToLoad()
 				&& HomepageHooks::isHomepageEnabled( $user )
 				&& $this->userHasPersonalToolsPrefEnabled( $user )
 			) {
-				$lcKey = 'tooltip-pt-homepage';
+				return 'tooltip-pt-homepage';
 			}
-		}
+
+			return $key;
+		};
 	}
 
 	/**
