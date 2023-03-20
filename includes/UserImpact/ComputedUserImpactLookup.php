@@ -447,8 +447,9 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 						Status::wrap( $pageDataStatus )->getWikiText( false, false, 'en' )
 					);
 				} else {
-					$this->statsdDataFactory->increment(
-						'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle'
+					$this->statsdDataFactory->updateCount(
+						'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle',
+						$pageDataStatus->failCount
 					);
 				}
 			}
@@ -471,7 +472,16 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	): ?array {
 		$status = $this->pageViewService->getPageData( array_column( $allTitleObjects, 'title' ), $days );
 		if ( !$status->isGood() ) {
-			$this->logger->error( Status::wrap( $status )->getWikiText( false, false, 'en' ) );
+			if ( $status->hasMessagesExcept( 'pvi-cached-error-title' ) ) {
+				$this->logger->error(
+					Status::wrap( $status )->getWikiText( false, false, 'en' )
+				);
+			} else {
+				$this->statsdDataFactory->updateCount(
+					'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle',
+					$status->failCount
+				);
+			}
 			if ( !$status->isOK() ) {
 				return null;
 			}
