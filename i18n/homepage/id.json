@@ -262,7 +262,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|mengklaim}} {{GENDER:$6|$3}} sebagai murid mereka (sebelumnya tidak punya guru)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|mengatur}} {{GENDER:$5|$7}} sebagai guru {{GENDER:$6|$3}} ({{GENDER:$4|guru}} sebelumnya $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|mengatur}} {{GENDER:$5|$7}} sebagai guru {{GENDER:$6|$3}} (sebelumnya tidak punya guru)",
-	"growthexperiments-homepage-claimmentee-invalid-username": "Nama pengguna murid tidak valid",
+	"growthexperiments-homepage-claimmentee-invalid-username": "Nama pengguna murid tidak sah",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|adalah}} guru baru {{GENDER:$3|Anda}}",
 	"growthexperiments-notification-body-mentor-change": "Alasan: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Sapa}} {{GENDER:$2|guru}} baru {{GENDER:$3|Anda}}!",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Aboubacar.banamoridou.toure",
-			"Lancine.kounfantoh.fofana"
+			"Lancine.kounfantoh.fofana",
+			"ߒߓߋ߫ ߝߏߝߣߊ߫"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|ߌ ߣߌ߫ ߕߎ߬ߡߊ߫}}߸ <bdi>$1</bdi>",
@@ -130,6 +131,8 @@
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "ߞߎߡߘߊ߫ ߓߍߓߊ߮ ߟߎ߬ ߟߊߛߋ߫ ߘߊߞߎ߲ ߘߐ߫",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "ߢߊߢߌߣߌ߲ߠߌ߲ ߞߍ߫ ߞߊ߬ ߞߎ߲߬ߠߊ߬ߝߏ߬ߣߌ߲߫ ߜߘߍ߫ ߟߎ߫ ߝߊ߬ߙߊ߫ ߟߊߖߊ߲߰ߧߊ߫",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "ߞߎߡߘߊ ߘߏ߫ ߞߎߡߊߘߋ߲ ߜߋ߲߭ߞߘߎ߬ ߞߎߡߘߊ߫ ߜߘߍ߫ ߟߊ߫",
+	"growthexperiments-homepage-suggestededits-tasktype-description-links": "ߛߘߌ߬ߜߋ߲ ߝߙߊ߬ߟߌ ߦߋ߫ ߛߌߟߊ߫ ߣߐ߲߮ ߠߋ߬ ߘߌ߫ ߞߊ߬ ߛߋ߫ ߛߘߌ߬ߜߋ߲ ߠߎ߬ ߡߊߦߟߍ߬ߡߊ߲߬ ߠߊ߫߸ ߊ߬ ߣߌ߫ ߞߊ߬ ߘߐ߬ߞߊ߬ߙߊ߲߬ߠߌ߲߬ߠߊ ߟߎ߬ ߡߊߘߍ߬ߡߍ߲߫ ߠߊ߫ ߞߎߡߘߊ ߟߎ߬ ߣߌ߫ ߢߐ߲߯ ߕߍ߫ ߞߊ߬ ߘߐ߬ߞߊ߬ߙߊ߲߬ߠߌ߲ ߞߍ߫ ߞߊߟߌߦߊ߫ ߘߐ߫.",
+	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "ߛߊߞߍߟߌ߫ ߘߋߣߍ߲ (ߛߓߍߛߋ߲ ߘߐߓߍ߲߬ߠߌ߲߸ ߞߊ߲ߜߍ߸ ߊ߬ ߣߌ߫ ߞߟߊ߬ߘߊ)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "ߦߟߌߡߊߛߙߋ ߟߎ߬ (ߓߐߖߎ) ߢߌߣߌ߲߫ (ߞߎߡߘߊ߫ ߓߍߓߊ߮ ߢߍ߫)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "ߞߎߡߘߊ ߟߎ߬ ߟߊߞߎߘߦߊ߫ (ߞߎߡߘߊ߫ ߓߍߓߊ߮ ߟߎ߬ ߟߊߛߋ߫ ߘߊߞߎ߲ ߘߐ߫)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "ߞߎߡߘߊ߫ ߛߎߘߎ߲ ߠߎ߬ ߡߊߘߊ߬ߝߏ߬",
