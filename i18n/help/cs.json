@@ -46,7 +46,7 @@
 	"growthexperiments-help-panel-postedit-trynewtask-subheader-tasktype": "Děkujeme za {{GENDER:|vaše}} příspěvky. Vyzkoušejte další druh editací: <strong>$1</strong>",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "Znovu již nezobrazovat",
 	"growthexperiments-help-panel-postedit-nonsuggested-header": "Vyzkoušet editační tipy",
-	"growthexperiments-help-panel-postedit-nonsuggested-body": "Editační tipy pomáhají novým wikipedistům zjistit více informací o pravidlech a zvyklostech {{SITENAME}}.",
+	"growthexperiments-help-panel-postedit-nonsuggested-body": "Editační tipy pomáhají novým wikipedistům zjistit více informací o pravidlech a zvyklostech {{GRAMMAR:2sg|{{SITENAME}}}}.",
 	"growthexperiments-help-panel-postedit-nonsuggested-try-button-text": "Vyzkoušet editační tipy",
 	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "Ne, děkuji",
 	"growthexperiments-help-panel-questionreview-title": "Položit dotaz komunitě",
