@@ -90,6 +90,7 @@ class PersonalizedPraiseSettings {
 	 * (values specified by PersonalizedPraiseSettings::NOTIFY_* constants have special meaning)
 	 */
 	public function getNotificationsFrequency( UserIdentity $user ): int {
-		return $this->loadSettings( $user )['notifications-frequency'] ?? self::NOTIFY_IMMEDIATELY;
+		return $this->loadSettings( $user )['notifications-frequency']
+			?? (int)$this->wikiConfig->get( 'GEPersonalizedPraiseDefaultNotificationsFrequency' );
 	}
 }

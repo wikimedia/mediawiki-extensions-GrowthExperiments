@@ -2401,6 +2401,14 @@
 			"description": "Feature flag controlling whether personalized praise's backend is enabled",
 			"value": false
 		},
+		"GEPersonalizedPraiseEnabled": {
+			"description": "Feature flag controlling whether personalized praise's frontend is enabled",
+			"value": true
+		},
+		"GEPersonalizedPraiseDefaultNotificationsFrequency": {
+			"description": "Default frequency of notifications (in hours) related to personalized praise. Mentors can customize this.",
+			"value": "168"
+		},
 		"GEPersonalizedPraiseDays": {
 			"description": "Number of days to consider when checking whether a mentee is praiseworthy (used together with GEPersonalizedPraiseMinEdits). This must not be longer than wgRCMaxAge.",
 			"value": 7
