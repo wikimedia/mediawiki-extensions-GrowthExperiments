@@ -1,15 +1,16 @@
 
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/variables.less';
 
-@startediting-suggested-edits-background: fade( @wmui-color-accent90, 50% );
+@startediting-suggested-edits-background: fade( @background-color-progressive-subtle, 50% );
 
 // Styles for the mobile summary view of StartEditing module for variant D users.
 .growthexperiments-homepage-module-start-startediting {
 	&.growthexperiments-homepage-module-mobile-summary {
 		cursor: pointer;
-		border: solid 1px @wmui-color-accent50;
-		border-radius: 2px;
+		border: @border-width-base @border-style-base @border-color-progressive;
+		border-radius: @border-radius-base;
+		// TODO: Why is this a non-Codex color?
 		background-color: #f5f9ff;
 
 		.growthexperiments-homepage-module-header {

@@ -1,11 +1,11 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins.less';
 @import '../utils/variables.less';
 
 .suggested-edits-taskexplanation-difficulty-and-time,
 .suggested-edits-taskexplanation-additional-info {
 	p {
-		color: @colorGray2;
+		color: @color-base;
 	}
 
 	.suggested-edits-difficulty-indicator {
@@ -39,7 +39,7 @@
 			font-size: 12px;
 			margin-top: 2px;
 			padding-left: 4px;
-			color: @wmui-color-base10;
+			color: @color-base;
 		}
 
 		.suggested-edits-task-explanation-icon {
@@ -55,11 +55,11 @@
 
 	.suggested-edits-difficulty-indicator-mixin( @baseColor, @darkenColor ) {
 		background-color: @baseColor;
-		color: @wmui-color-base10;
-		border: solid 1px @darkenColor;
+		color: @color-base;
+		border: @border-width-base @border-style-base @darkenColor;
 		height: 12px;
 		line-height: 12px;
-		border-radius: 2px 0 0 2px;
+		border-radius: @border-radius-base 0 0 @border-radius-base;
 
 		&::before,
 		&::after {
@@ -72,17 +72,17 @@
 		&::before {
 			right: -5px;
 			bottom: -1px;
-			border-right: 4px solid transparent;
-			border-top: 9px solid @darkenColor;
-			border-bottom: 9px solid @darkenColor;
+			border-right: 4px @border-style-base @border-color-transparent;
+			border-top: 9px @border-style-base @darkenColor;
+			border-bottom: 9px @border-style-base @darkenColor;
 		}
 
 		&::after {
 			right: -4px;
 			bottom: 0;
-			border-right: 4px solid transparent;
-			border-top: 8px solid @baseColor;
-			border-bottom: 8px solid @baseColor;
+			border-right: 4px @border-style-base @border-color-transparent;
+			border-top: 8px @border-style-base @baseColor;
+			border-bottom: 8px @border-style-base @baseColor;
 		}
 	}
 
@@ -154,7 +154,7 @@
 		h4 {
 			font-size: 1.144em;
 			text-align: left;
-			color: @colorGray2;
+			color: @color-base;
 			padding-bottom: 4px;
 		}
 
@@ -190,7 +190,7 @@
 	}
 
 	.suggested-edits-mobile-peek-footer {
-		background-color: @colorBaseInverted;
+		background-color: @background-color-base;
 		min-height: 48px;
 		text-align: center;
 		font-weight: bold;

@@ -1,5 +1,6 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins';
+@import '../utils/variables.less';
 
 @form-width: 600px;
 @sidepanel-width: 300px;
@@ -16,9 +17,9 @@
 		}
 
 		&-section {
-			background-color: @colorGray15;
-			border: @colorGray12 solid 1px;
-			border-radius: 2px;
+			background-color: @background-color-growth-subtle;
+			border: @border-subtle;
+			border-radius: @border-radius-base;
 			padding: 1.2em;
 			margin-bottom: 1em;
 
@@ -50,7 +51,7 @@
 		}
 
 		.mw-htmlform-submit-buttons {
-			border-top: @colorGray12 solid 1px;
+			border-top: @border-base;
 			padding-top: 1em;
 			margin-top: 2em;
 
@@ -70,7 +71,7 @@
 		}
 
 		&-buttons {
-			border-top: @colorGray12 solid 1px;
+			border-top: @border-subtle;
 			padding-top: 1em;
 			margin-top: 2em;
 
@@ -110,13 +111,13 @@
 			// Hide the checkboxes in this field, and use the field div itself as a placeholder
 			height: 64px;
 			width: 100%;
-			background-color: @colorGray15;
-			border: 1px solid @colorGray10;
+			background-color: @background-color-growth-subtle;
+			border: @border-base;
 			text-align: center;
 			padding-top: 25px;
 			box-sizing: border-box;
 
-			// Put three animated dots in the placeholder box
+			// Put three animated pulsating dots in the placeholder box
 			&::before,
 			&::after,
 			.oo-ui-checkboxMultiselectInputWidget {
@@ -124,8 +125,8 @@
 				display: inline-block;
 				width: 1em;
 				height: 1em;
-				border-radius: 100%;
-				background-color: @colorGray7;
+				border-radius: @border-radius-circle;
+				background-color: @background-color-progressive;
 				animation: bounce-delay 1600ms infinite ease-in-out both;
 				animation-delay: -160ms;
 			}
@@ -158,7 +159,7 @@
 				text-align: unset;
 				padding-top: 0;
 				border: 0;
-				background-color: transparent;
+				background-color: @background-color-transparent;
 
 				&::before,
 				&::after,
@@ -178,7 +179,7 @@
 	}
 
 	20% {
-		opacity: 0.87;
+		opacity: @opacity-icon-base;
 		transform: scale( 1 );
 	}
 }

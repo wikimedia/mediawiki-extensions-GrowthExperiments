@@ -1,4 +1,4 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins';
 @import '../utils/variables.less';
 
@@ -32,10 +32,10 @@
 
 	&-progress {
 		padding: 1em @startEditingDialogSidePadding;
-		background-color: @colorGray15;
+		background-color: @background-color-interactive-subtle;
 
 		&-label {
-			color: @colorGray5;
+			color: @color-subtle;
 			font-size: 0.85em;
 		}
 
@@ -44,18 +44,18 @@
 			width: 8px;
 			height: 8px;
 			margin-right: 8px;
-			border-radius: 50%;
-			background-color: @colorGray12;
+			border-radius: @border-radius-circle;
+			background-color: @background-color-disabled;
 
 			&-completed {
-				background-color: @colorGray2;
+				background-color: @color-base;
 			}
 		}
 	}
 
 	&-intro {
 		&-general {
-			background-color: @colorGray15;
+			background-color: @background-color-growth-subtle;
 			padding: 1.5em @startEditingDialogSidePadding;
 
 			&::after {
@@ -67,7 +67,7 @@
 			&-title,
 			&-header {
 				font-weight: bold;
-				color: @colorGray2;
+				color: @color-base;
 				line-height: 1.375;
 			}
 
@@ -105,7 +105,7 @@
 
 		&-topic {
 			padding: 0 @startEditingDialogSidePadding 24px;
-			background-color: @colorGray15;
+			background-color: @background-color-growth-subtle;
 
 			.growthexperiments-homepage-mobile-summary &,
 			.growthexperiments-homepage-mobile-details & {
@@ -142,7 +142,7 @@
 			}
 
 			&-title {
-				color: @colorGray2;
+				color: @color-base;
 				font-weight: bold;
 				font-size: @headerFontSize;
 				line-height: 1.375;
@@ -196,7 +196,7 @@
 			&-header {
 				font-weight: bold;
 				font-size: @headerFontSize;
-				color: @colorGray2;
+				color: @color-base;
 				// Override margin reset on mobile
 				margin-bottom: 0.5em;
 				line-height: 1.375;
@@ -214,7 +214,7 @@
 			&-header {
 				font-weight: bold;
 				font-size: @headerFontSize;
-				color: @colorGray2;
+				color: @color-base;
 				margin-bottom: 4px;
 			}
 
@@ -255,14 +255,14 @@
 
 	&-difficulty {
 		&-banner {
-			color: @colorGray2;
+			color: @color-base;
 			line-height: 1.375;
-			background-color: @colorGray15;
+			background-color: @background-color-growth-subtle;
 			background-repeat: no-repeat;
 			// We can't use e.g. background-position-x: @startEditingDialogSidePadding; because
 			// that's not flippable for RTL. Instead, use a border with the same color as the background
 			background-position-x: left;
-			border-left: @colorGray15 solid @startEditingDialogSidePadding;
+			border-left: @background-color-growth-subtle @border-style-base @startEditingDialogSidePadding;
 
 			.growthexperiments-homepage-desktop & {
 				background-image: url( ../../images/difficulty-square-ltr.svg );
@@ -288,7 +288,7 @@
 		}
 
 		&-header {
-			color: @colorGray2;
+			color: @color-base;
 			font-weight: bold;
 			font-size: @headerFontSize;
 			margin-top: 0;
@@ -364,7 +364,7 @@
 			}
 
 			&-description {
-				color: @colorGray2;
+				color: @color-base;
 				line-height: 1.5;
 				padding-bottom: 1.5em;
 
@@ -385,13 +385,13 @@
 			}
 
 			&-description-header {
-				color: @colorGray2;
+				color: @color-base;
 				font-weight: bold;
 				font-size: 0.925em;
 			}
 
 			&-description-body {
-				color: @colorGray5;
+				color: @color-subtle;
 				font-size: 0.925em;
 			}
 		}

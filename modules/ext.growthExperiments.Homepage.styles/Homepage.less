@@ -1,4 +1,4 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins';
 @import '../utils/variables.less';
 
@@ -36,7 +36,7 @@
 	}
 
 	.recent-questions-growthexperiments-mentor-questions {
-		background-color: @colorGray15;
+		background-color: @background-color-growth-subtle;
 		margin: 16px -16px;
 		padding: 16px;
 
@@ -56,7 +56,7 @@
 		h3 {
 			font-family: @homepageHeaderFont;
 			font-size: 1em;
-			color: @colorGray5;
+			color: @color-subtle;
 			padding-top: 0;
 		}
 
@@ -69,12 +69,12 @@
 
 		.question-archived .question-text {
 			font-style: italic;
-			color: @colorGray5;
+			color: @color-subtle;
 		}
 
 		.question-posted-on {
 			font-size: 0.85em;
-			color: @colorGray7;
+			color: @color-subtle;
 			display: block;
 			margin-left: 0.3em;
 			margin-bottom: 0.6em;
@@ -115,7 +115,7 @@ body.mw-special-Homepage {
 		}
 
 		.minerva__tab-container {
-			border-bottom: 1px solid @colorGray14;
+			border-bottom: @border-subtle;
 		}
 
 		.growthexperiments-homepage-container {

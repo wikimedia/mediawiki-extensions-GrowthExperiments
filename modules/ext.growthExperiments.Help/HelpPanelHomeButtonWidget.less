@@ -1,5 +1,4 @@
-@import 'mediawiki.ui/variables';
-@import '../../lib/ooui/wikimedia-ui-base';
+@import 'mediawiki.skin.variables.less';
 
 // Copy of the @font-size-fieldset-header rule from OOUI.
 @font-size-fieldset-header: 16 / 16 / 0.875 / 1em;
@@ -9,17 +8,17 @@
 	margin-top: 16px;
 	cursor: pointer;
 	padding: 16px;
-	background-color: @colorGray15;
-	border: solid 1px @colorGray12;
-	border-radius: 2px;
+	background-color: @background-color-interactive-subtle;
+	border: @border-subtle;
+	border-radius: @border-radius-base;
 	box-shadow: 0 1px 2px 0 rgba( 0, 0, 0, 0.25 );
 	justify-content: space-between;
 	display: flex;
 	box-sizing: border-box;
 
 	&-suggested-edits {
-		border: solid 1px @wmui-color-accent50;
-		background-color: fade( @wmui-color-accent90, 50% );
+		border: @border-width-base @border-style-base @border-color-transparent;
+		background-color: fade( @background-color-progressive-subtle, 50% );
 	}
 
 	&-text {
@@ -35,7 +34,7 @@
 		&-subheader {
 			font-size: 88.6%; // 12.4px on Vector and 14.183px on MinervaNeue
 			padding-top: 0.5em;
-			color: @colorGray5;
+			color: @color-subtle;
 			line-height: 1.38;
 		}
 	}
@@ -48,12 +47,12 @@
 		&-icon {
 			min-height: 40px;
 			min-width: 40px;
-			opacity: 0.65;
+			opacity: @opacity-icon-subtle;
 
 			&-suggested-edits {
 				min-height: 64px;
 				min-width: 64px;
-				opacity: 1;
+				opacity: @opacity-base;
 			}
 		}
 	}
@@ -65,7 +64,8 @@
 
 		&-icon {
 			display: flex;
-			opacity: 50%;
+			// TODO: Is disabled icon opacity correct here?
+			opacity: @opacity-icon-base--disabled;
 		}
 
 		&-text {
@@ -73,7 +73,7 @@
 			padding-left: 8px;
 			font-weight: bold;
 			font-size: 1em;
-			color: @colorGray5;
+			color: @color-subtle;
 		}
 	}
 
@@ -93,7 +93,7 @@
 			font-size: @font-size-fieldset-header;
 			font-family: @font-family-base;
 			font-weight: bold;
-			color: @colorGray2;
+			color: @color-base;
 			padding: unset;
 			margin: unset;
 		}

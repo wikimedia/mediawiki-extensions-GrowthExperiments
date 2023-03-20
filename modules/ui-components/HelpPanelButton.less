@@ -1,15 +1,15 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/variables.less';
 
 .mw-ge-help-panel-button {
 	// High specificity in order to win the specificity war with very strong OOUI rules
 	&.oo-ui-buttonElement.oo-ui-iconElement.oo-ui-indicatorElement a.oo-ui-buttonElement-button {
 		&:focus:not( :active ) {
-			// to increase border while keeping box-shadow conflicting with ooui style
-			border-width: 2px;
+			// to increase border while keeping box-shadow conflicting with OOUI style
+			border-width: @border-width-thick;
 		}
 		box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.5 );
-		border-radius: 50%;
+		border-radius: @border-radius-circle;
 		height: 3em;
 		width: 3em;
 		// Unset padding that would make the button wider/taller than 3em
@@ -25,7 +25,7 @@
 			margin-left: -10/14em;
 			right: unset;
 			width: 20/14em;
-			opacity: 1;
+			opacity: @opacity-base;
 			transition: transform @help-panel-transition-duration, opacity @help-panel-transition-duration;
 		}
 
@@ -43,12 +43,12 @@
 	&--opened {
 		// High specificity in order to win the specificity war with very strong OOUI rules
 		&.oo-ui-buttonElement.oo-ui-iconElement.oo-ui-indicatorElement a.oo-ui-buttonElement-button {
-			background-color: @wmui-color-accent30;
+			background-color: @background-color-progressive--active;
 			border: unset;
 
 			&:focus:not( :active ) {
-				border: 1px solid @wmui-color-base100;
-				outline: 1px solid @wmui-color-accent30;
+				border: @border-width-base @border-style-base @border-color-inverted;
+				outline: @border-width-base @border-style-base @border-color-progressive--focus;
 			}
 
 			.oo-ui-iconElement-icon {
@@ -58,7 +58,7 @@
 
 			.oo-ui-indicatorElement-indicator {
 				transform: rotate( 0 );
-				opacity: 1;
+				opacity: @opacity-base;
 			}
 		}
 	}

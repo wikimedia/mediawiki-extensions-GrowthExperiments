@@ -1,4 +1,5 @@
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
+@import '../../utils/variables.less';
 @import '../../utils/mixins';
 
 .mw-ge-recommendedImage {
@@ -16,12 +17,12 @@
 		left: 0;
 		right: 0;
 		z-index: 1;
-		background-color: @wmui-color-base80;
+		background-color: @background-color-growth-apparent;
 		transition: background-color 300ms ease-out;
 		pointer-events: none;
 
 		&--image-shown {
-			background-color: transparent;
+			background-color: @background-color-transparent;
 		}
 	}
 
@@ -39,7 +40,7 @@
 		left: 0;
 		right: 0;
 		padding: 8px;
-		color: @wmui-color-base100;
+		color: @color-inverted;
 		background: rgba( 0, 0, 0, 0.5 );
 		display: flex;
 		align-items: center;
@@ -72,8 +73,8 @@
 		display: flex;
 		flex-direction: column;
 		padding: 7px 8px;
-		border: 1px solid @wmui-color-base70;
-		background: @wmui-color-base100;
+		border: @border-subtle;
+		background-color: @background-color-base;
 
 		&:not( [ typeof~='mw:Error' ] ) > a::after {
 			content: unset;
@@ -94,7 +95,7 @@
 
 		&-header {
 			font-weight: bold;
-			color: @wmui-color-base10;
+			color: @color-base;
 			display: flex;
 			align-items: center;
 			margin-bottom: 8px;
@@ -108,21 +109,23 @@
 	}
 
 	.mw-ge-recommendedImageCaption {
-		::before {
+		border: @border-width-thick @border-style-base @border-color-subtle;
+		padding: 0;
+		border-radius: @border-radius-base;
+
+		&::before {
 			content: unset;
 		}
-		border: 2px solid @wmui-color-base70;
-		padding: 0;
-		border-radius: 2px;
 
 		// Same as mobile but needs to win over figure[typeof~='mw:File/Thumb'] > figcaption
 		&--with-placeholder {
-			border-color: @wmui-color-accent50;
-			background-color: @wmui-color-accent90;
+			background-color: @background-color-progressive-subtle;
+			border-color: @border-color-progressive;
 		}
 
+		// TODO: This class should probably called `--with-error`.
 		&--with-warning {
-			border-color: @wmui-color-red50;
+			border-color: @border-color-error;
 		}
 	}
 

@@ -1,8 +1,9 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
+@import '../utils/variables.less';
 
 .growthexperiments-homepage-module-startemail {
 	width: 100%;
-	background-color: @colorGray15;
+	background-color: @background-color-growth-subtle;
 	border: unset;
 
 	// Override strong padding-top: 0 rule for mobile from Homepage.less
@@ -27,8 +28,8 @@
 		margin-right: 0.5em;
 
 		&:not( .oo-ui-image-progressive ) {
-			// Simulate #595959, closest to @wmui-color-base20
-			opacity: 0.65;
+			// Simulate #555, closest to @color-subtle
+			opacity: @opacity-icon-subtle;
 		}
 
 		body.mw-special-Homepage.growthexperiments-homepage-mobile-summary & {

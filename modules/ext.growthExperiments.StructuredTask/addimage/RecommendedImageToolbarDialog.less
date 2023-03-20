@@ -1,9 +1,9 @@
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../../utils/variables.less';
 @import '../../utils/mixins';
 
 .mw-ge-recommendedImageToolbarDialog {
-	color: @wmui-color-base10;
+	color: @color-base;
 
 	.mw-ge-recommendedImageToolbarDialog-title {
 		font-weight: bold;
@@ -28,7 +28,7 @@
 
 	.mw-ge-recommendedImageToolbarDialog-addImageCta {
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
-		color: @wmui-color-base20;
+		color: @color-subtle;
 		font-weight: bold;
 		margin: 16px 0 0;
 	}
@@ -46,13 +46,13 @@
 		cursor: pointer;
 		flex: 0 0 160px;
 		height: 120px;
-		background-color: @wmui-color-base80;
+		background-color: @background-color-growth-apparent;
 		position: relative;
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center;
 		margin-right: 12px;
-		border-radius: 2px;
+		border-radius: @border-radius-base;
 	}
 
 	.mw-ge-recommendedImageToolbarDialog-fullScreen-icon {
@@ -85,7 +85,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		max-width: 100%;
-		color: @wmui-color-base10;
+		color: @color-base;
 		white-space: nowrap;
 	}
 
@@ -93,7 +93,7 @@
 		.paragraph-ellipsis( @lines: 3, @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
 		white-space: normal;
 		margin-top: 4px;
-		color: @wmui-color-base20;
+		color: @color-subtle;
 
 		&--placeholder {
 			font-style: italic;
@@ -114,7 +114,7 @@
 
 		.oo-ui-buttonElement-button,
 		.oo-ui-labelElement-label {
-			color: @wmui-color-accent50;
+			color: @color-progressive;
 			font-weight: normal;
 		}
 
@@ -142,7 +142,7 @@
 
 	.mw-ge-recommendedImageToolbarDialog-buttons-skip {
 		.oo-ui-labelElement-label {
-			color: @wmui-color-base20;
+			color: @color-subtle;
 		}
 	}
 
@@ -150,8 +150,8 @@
 		@baseFontSize: 14px;
 		width: 480px;
 		margin: auto;
-		border: 1px solid @wmui-color-base70;
-		box-shadow: inset -1px 0 0 @wmui-color-base50, inset 1px 0 0 @wmui-color-base50, inset 0 1px 0 @wmui-color-base50, inset 0 -1px 0 @wmui-color-base50;
+		border: @border-subtle;
+		box-shadow: inset -1px 0 0 @border-color-base, inset 1px 0 0 @border-color-base, inset 0 1px 0 @border-color-base, inset 0 -1px 0 @border-color-base;
 		filter: drop-shadow( 0 4px 4px rgba( 0, 0, 0, 0.25 ) );
 
 		.mw-ge-recommendedImageToolbarDialog-reason,
@@ -169,6 +169,6 @@
 
 .ve-ce-documentNode {
 	&.mw-ge-recommendedImageToolbarDialog-caption {
-		color: @wmui-color-base20;
+		color: @color-subtle;
 	}
 }

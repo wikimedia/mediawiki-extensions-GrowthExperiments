@@ -1,9 +1,8 @@
-@import 'mediawiki.ui/variables';
-@import '../../lib/ooui/wikimedia-ui-base';
+@import 'mediawiki.skin.variables.less';
 
 .mw-ge-homepage-discovery-banner-nojs {
-	border: 3px solid @wmui-color-accent90;
-	border-radius: 4px;
+	border: @border-width-thick @border-style-base #eaf3ff;
+	border-radius: @border-radius-base;
 	min-height: 140px;
 	// Align with homepage container.
 	min-width: 780px;
@@ -32,19 +31,19 @@
 		h2 {
 			font-family: @font-family-base;
 			border-bottom: unset;
-			color: @colorGray2;
+			color: @color-base;
 			font-size: 2.2em;
 		}
 
 		p {
-			color: @colorGray7;
+			color: @color-subtle;
 			font-size: 1.4em;
 			padding-right: 10px;
 
 			.oo-ui-icon-userAvatar {
 				// Reset size to default.
 				font-size: 0.5em;
-				opacity: 0.5222;
+				opacity: @opacity-icon-subtle;
 			}
 		}
 	}

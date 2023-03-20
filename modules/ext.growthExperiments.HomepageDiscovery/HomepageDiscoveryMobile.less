@@ -1,4 +1,4 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
 
 // The header holding the hamburger icon has max-width: @contentMaxWidthTablet and width: 90%
 // so it stops growing at @contentMaxWidthTablet / 0.9 pixels.
@@ -59,13 +59,13 @@
 		h2 {
 			font-size: 1em;
 			font-weight: bold;
-			color: @colorGray2;
+			color: @color-base;
 		}
 
 		p {
 			font-size: 0.875em;
 			line-height: 1.29;
-			color: @colorGray7;
+			color: @color-subtle;
 
 			// match the icon size to the font size
 			.oo-ui-iconElement-icon {
@@ -73,8 +73,8 @@
 				min-width: 1em;
 				min-height: 1em;
 				vertical-align: bottom;
-				// 1 - 0x77 / 0xff; #777 is very close to @colorGray7
-				opacity: 0.5222;
+				// 1 - 0x77 / 0xff; #777 is very close to @color-subtle
+				opacity: @opacity-icon-subtle;
 			}
 		}
 	}
@@ -84,7 +84,7 @@
 		top: 14px;
 		right: 14px;
 		cursor: pointer;
-		opacity: 0.5222;
+		opacity: @opacity-icon-subtle;
 
 		.client-nojs & {
 			display: none;

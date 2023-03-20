@@ -3,7 +3,7 @@
 // - ext.growthExperiments.icons
 // (ResourceLoader does not seem to allow expressing dependencies for style modules.)
 
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/mixins.less';
 
 .mw-ge-customlandingpage {
@@ -30,7 +30,7 @@
 		margin: 0 auto 16px;
 		border: 0;
 		padding: 216px 0 0;
-		color: @wmui-color-base10;
+		color: @color-base;
 		font-weight: bold;
 		.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 21px, @targetLineHeight: 27.3px );
 		text-align: center;
@@ -42,7 +42,7 @@
 		margin-left: 36px;
 		text-indent: -36px;
 		list-style: none;
-		color: @wmui-color-base10;
+		color: @color-base;
 		font-weight: bold;
 
 		li {
@@ -51,14 +51,14 @@
 
 		.oo-ui-iconElement {
 			margin-right: 16px;
-			opacity: 0.65;
+			opacity: @opacity-icon-subtle;
 		}
 	}
 
 	.skin-minerva & {
 		width: auto;
 		margin-bottom: 24px;
-		border-bottom: 1px solid @wmui-color-base80;
+		border-bottom: @border-subtle;
 		padding-bottom: 24px;
 		background-size: 128px auto;
 
@@ -67,7 +67,7 @@
 		}
 
 		.mw-ge-donorsignup-body {
-			color: @wmui-color-base10;
+			color: @color-base;
 		}
 
 		.mw-ge-donorsignup-list .oo-ui-iconElement {
@@ -138,7 +138,7 @@
 }
 
 #footer-info-signupcampaign-legal {
-	color: @wmui-color-base30;
+	color: @color-subtle;
 
 	.minerva-footer & {
 		// override Minerva's display:none

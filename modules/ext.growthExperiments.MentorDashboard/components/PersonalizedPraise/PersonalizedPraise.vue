@@ -80,8 +80,6 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
-
 /* stylelint-disable-next-line selector-class-pattern */
 .growthexperiments-mentor-dashboard-module-personalized-praise {
 	position: relative;

@@ -1,14 +1,14 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/variables.less';
 
 @navHeight: 48px;
 
 .mw-ge-structuredTaskToolbarDialog {
-	background: @wmui-color-base100;
+	background-color: @background-color-base;
 
 	&.ve-ui-toolbarDialog-position-below {
-		border-top: 1px solid @wmui-color-base70;
-		box-shadow: 0 -1px 1px 0 fade( @wmui-color-base0, 10% );
+		border-top: @border-subtle;
+		box-shadow: 0 -1px 1px 0 rgba( 0, 0, 0, 0.1 );
 		transition: transform 500ms;
 		transform: translateY( 0 );
 
@@ -46,7 +46,7 @@
 		position: relative;
 
 		.mw-ge-structuredTaskToolbarDialog-head-robot-icon {
-			opacity: 0.65;
+			opacity: @opacity-icon-subtle;
 		}
 	}
 

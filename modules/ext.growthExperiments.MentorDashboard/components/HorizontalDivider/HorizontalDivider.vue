@@ -10,10 +10,10 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-growthExperiments-HorizontalDivider {
-	border-bottom: @border-width-base @border-style-base @border-color-base;
+	border-bottom: @border-base;
 	width: 100%;
 }
 </style>

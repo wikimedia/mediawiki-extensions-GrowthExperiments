@@ -1,4 +1,4 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 
 .ve-ui-surface-machineSuggestions {
 	z-index: 1;
@@ -21,12 +21,12 @@
 
 	.oo-ui-icon-robot {
 		margin-right: 9px;
-		opacity: 0.65;
+		opacity: @opacity-icon-subtle;
 	}
 
 	.mw-ge-machine-suggestions-mode-title-text {
 		font-weight: bold;
-		color: @wmui-color-base10;
+		color: @color-base;
 
 		&--is-loading {
 			font-weight: normal;
@@ -50,7 +50,7 @@
 		.ve-ui-toolbar-group-machineSuggestionsPlaceholder {
 			position: relative;
 			flex: 5;
-			border-right: 1px solid @wmui-color-base80;
+			border-right: @border-width-base @border-style-base #eaecf0;
 		}
 	}
 
@@ -114,7 +114,7 @@
 }
 
 .mw-ge-addImageDesktopArticleTarget--overlay-shown {
-	opacity: 0.5;
+	opacity: @opacity-medium;
 }
 
 .mw-ge-addImageDesktopArticleTarget-loadingOverlay {

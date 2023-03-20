@@ -1,4 +1,4 @@
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../../utils/mixins.less';
 
 .ge-addlink-mwSaveDialog {
@@ -11,19 +11,19 @@
 			margin-bottom: 16px;
 			text-align: left;
 			font-weight: normal;
-			color: @wmui-color-base10;
+			color: @color-base;
 			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 16px, @targetLineHeight: 23px );
 		}
 
 		tr {
-			border-bottom: 1px solid @wmui-color-base80;
+			border-bottom: @border-width-base @border-style-base #eaecf0;
 		}
 
 		th {
 			padding: 0 0 12px 0;
 			text-align: left;
 			font-weight: normal;
-			color: @wmui-color-base20;
+			color: @color-subtle;
 			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 13px, @targetLineHeight: 20px );
 
 			&:last-child {
@@ -47,7 +47,7 @@
 	.ge-addlink-mwSaveDialog-table-data {
 		padding: 0;
 		text-align: left;
-		color: @wmui-color-base10;
+		color: @color-base;
 		.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 14px, @targetLineHeight: 27px );
 
 		&:last-child {
@@ -58,6 +58,12 @@
 			.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 16px, @targetLineHeight: 32px );
 		}
 
+		.oo-ui-icon-link,
+		.oo-ui-icon-subtract {
+			// close to @color-subtle
+			opacity: @opacity-icon-subtle;
+		}
+
 		.oo-ui-icon-link {
 			min-width: 16px;
 			min-height: 16px;
@@ -65,13 +71,6 @@
 			height: 1.14285714em;
 			margin-left: 6px;
 			margin-right: 6px;
-			// close to @wmui-color-base20
-			opacity: 0.65;
-		}
-
-		.oo-ui-icon-subtract {
-			// close to @wmui-color-base20
-			opacity: 0.65;
 		}
 	}
 }

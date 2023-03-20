@@ -81,7 +81,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import 'mediawiki.skin.variables.less';
 @import '../../../utils/mixins.less';
 
 @mentee-table-last-seen-font-size: 12px;
@@ -90,7 +90,7 @@ module.exports = exports = {
 	display: flex;
 
 	&__star-icon {
-		opacity: 0.66;
+		opacity: @opacity-icon-subtle;
 
 		> svg {
 			cursor: pointer;

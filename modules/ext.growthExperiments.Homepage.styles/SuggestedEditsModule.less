@@ -1,6 +1,5 @@
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins.less';
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
 @import '../utils/variables.less';
 @import '../utils/mixins.less';
 
@@ -25,7 +24,7 @@
 
 		h4,
 		p {
-			color: @colorGray2;
+			color: @color-base;
 		}
 
 		.mw-ge-suggestion {
@@ -48,7 +47,7 @@
 
 .mw-ge-filters-dialog {
 	&-footer {
-		background: @wmui-color-base100;
+		background-color: @background-color-base;
 	}
 }
 
@@ -90,7 +89,7 @@
 	}
 
 	.suggested-edits-short-description {
-		color: @colorGray5;
+		color: @color-subtle;
 		font-size: 0.9em;
 	}
 }
@@ -114,7 +113,7 @@
 .drawer.homepage-welcome-notice {
 	// Needed to provide a solid background to the 50% fade on suggested
 	// edits background color used with main drawer contents.
-	background-color: @colorBaseInverted;
+	background-color: @background-color-base;
 	padding: 16px;
 
 	main {
@@ -135,7 +134,7 @@
 		}
 
 		footer {
-			background-color: @colorBaseInverted;
+			background-color: @background-color-base;
 			min-height: 48px;
 			text-align: center;
 			font-weight: bold;
@@ -248,9 +247,9 @@ body.mw-special-Homepage {
 		// negate the padding on .growthexperiments-homepage-module in Homepage.less
 		margin: 16px -16px -16px -16px;
 		padding: 12px 24px 12px;
-		border: 2px solid fade( @wmui-color-accent90, 50% );
-		background-color: @colorBaseInverted;
-		color: @colorGray5;
+		border: @border-width-thick @border-style-base fade( #eaf3ff, 50% );
+		background-color: @background-color-base;
+		color: @color-subtle;
 		font-size: 0.9em;
 	}
 
@@ -294,7 +293,7 @@ body.mw-special-Homepage {
 		background-color: @suggestedEditsBackgroundColor;
 
 		&.growthexperiments-homepage-module.activated {
-			border: transparent;
+			border-color: @border-color-transparent;
 		}
 
 		&.growthexperiments-homepage-module.unactivated {
@@ -331,7 +330,7 @@ body.mw-special-Homepage {
 
 			.suggested-edits-task-card-wrapper {
 				&:hover {
-					outline: 2px solid @wmui-color-accent50;
+					outline: 2px @border-style-base @border-color-progressive;
 				}
 			}
 		}
@@ -348,10 +347,10 @@ body.mw-special-Homepage {
 			// Get rid if the padding, make the line full-height, and hope for the best.
 			padding-top: 0;
 			padding-bottom: 0;
-			border-width: 0 0 1px 0;
+			border-color: @border-color-subtle;
+			border-width: 0 0 @border-width-base 0;
 			border-radius: 0;
-			border-color: #c8ccd1;
-			box-shadow: 0 0 1px 1px rgba( 0, 0, 0, 0.1 );
+			box-shadow: @box-shadow-drop-small;
 			font-weight: normal;
 
 			.oo-ui-labelElement-label {
@@ -374,7 +373,7 @@ body.mw-special-Homepage {
 			margin-top: 24px;
 			margin-bottom: 8px;
 			font-size: 0.875em;
-			color: @colorGray2;
+			color: @color-base;
 		}
 
 		.se-card-no-results,
@@ -393,7 +392,7 @@ body.mw-special-Homepage {
 			.se-card-text {
 				margin: 0;
 				text-align: center;
-				color: @colorGray2;
+				color: @color-base;
 			}
 
 			.se-card-title {
@@ -481,7 +480,7 @@ body.mw-special-Homepage {
 					.se-card-text {
 						height: @textHeight;
 						padding: @cardContentTextPadding;
-						color: @colorGray2;
+						color: @color-base;
 
 						h3.se-card-title {
 							margin: 0;
@@ -522,11 +521,11 @@ body.mw-special-Homepage {
 						.se-card-pageviews {
 							font-size: 0.875em;
 							padding-top: @cardPageviewsTopPadding;
-							color: @colorGray5;
+							color: @color-subtle;
 							.text-overflow( @visible: false );
 
 							.oo-ui-iconWidget {
-								opacity: 0.65;
+								opacity: @opacity-icon-subtle;
 								margin-right: 8px;
 								width: 16px;
 								min-width: 16px;
@@ -540,14 +539,15 @@ body.mw-special-Homepage {
 					.se-card-image {
 						height: @cardImageHeight;
 						width: @cardWrapperWidth;
-						box-shadow: inset 0 0 2px @wmui-color-base70;
+						// TODO: Revisit with Codex `box-shadow` tokens. Use border-color-subtle here.
+						box-shadow: inset 0 0 2px @border-color-subtle;
 						background-position: center 25%;
 						background-repeat: repeat-x;
 						// background-image will be set dynamically in SuggestedEditCardWidget.getImageContent
 
 						&.no-image {
 							// This is also used during loading, with .skeleton added to it.
-							background-color: @colorGray14;
+							background-color: @background-color-growth-apparent;
 							background-image: url( ../../images/suggestededits/placeholder-image.svg );
 							background-repeat: no-repeat;
 							background-position: center center;
@@ -555,7 +555,7 @@ body.mw-special-Homepage {
 						}
 
 						&.mw-ge-tasktype-image-recommendation {
-							background-color: @wmui-color-base30;
+							background-color: #72777d;
 							background-image: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ), url( ../../images/addimage/commons.svg );
 							background-repeat: no-repeat;
 							background-position: center center, right 12px bottom 12px;
@@ -570,32 +570,32 @@ body.mw-special-Homepage {
 					}
 
 					.se-card-image.skeleton {
-						.loading-animation (400ms);
+						.loading-animation( 400ms );
 
 						&::before {
-							border-radius: 2px 2px 0 0;
+							border-radius: @border-radius-base @border-radius-base 0 0;
 						}
 					}
 
 					.se-card-extract.skeleton {
-						.loading-animation (800ms);
+						.loading-animation( 800ms );
 
 						&::before {
-							background-image: linear-gradient( @colorGray14 14px, transparent 0 ), linear-gradient( @colorGray14 14px, transparent 0 ), linear-gradient( @colorGray14 14px, transparent 0 );
+							background-image: linear-gradient( @background-color-growth-apparent 14px, @background-color-transparent 0 ), linear-gradient( @background-color-growth-apparent 14px, transparent 0 ), linear-gradient( @background-color-growth-apparent 14px, transparent 0 );
 							background-size: 100% 12px, 100% 12px, 100% 12px;
 							background-position: 0 4px, 0 21px, 0 38px;
 						}
 
 						&::after {
 							// Disable the fading of the last block of text from
-							// se-card-extract:after.
+							// se-card-extract::after.
 							width: 0;
 							height: 0;
 						}
 					}
 
 					.se-card-pageviews.skeleton {
-						.loading-animation (1200ms);
+						.loading-animation( 1200ms );
 
 						&::before {
 							width: 316px;

@@ -1,15 +1,15 @@
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
-@import '../../utils/mixins';
+@import 'mediawiki.skin.variables.less';
 @import '../../utils/variables';
+@import '../../utils/mixins';
 
 .ve-ce-linkAnnotation.mw-ge-recommendedLinkAnnotation {
 	// On mobile, prevent text edit menu from showing up (T281771)
 	-webkit-user-select: none;
 	user-select: none;
-	background-color: @wmui-color-yellow90;
+	background-color: @background-color-warning-subtle;
 	// use box-shadow instead of border to prevent shifting when annotation is active (2px border instead of 1px)
-	box-shadow: 0 0 0 1px @wmui-color-yellow50;
-	border-radius: 2px;
+	box-shadow: 0 0 0 1px #edab00;
+	border-radius: @border-radius-base;
 	text-decoration: none;
 	color: inherit;
 	padding: 2px 6px 3px 6px;
@@ -24,7 +24,7 @@
 	&.mw-ge-recommendedLinkAnnotation-active {
 		.filter( drop-shadow( 0 1px 2px rgba( 0, 0, 0, 0.2 ) ) );
 		background-color: @activeAnnotationBackgroundColor;
-		box-shadow: 0 0 0 2px @wmui-color-accent50;
+		box-shadow: 0 0 0 2px @box-shadow-color-progressive-selected;
 
 		.mw-ge-recommendedLinkAnnotation-icon-undecided {
 			/* @embed */
@@ -33,7 +33,7 @@
 	}
 
 	&-accepted {
-		color: @wmui-color-accent50;
+		color: @color-progressive;
 	}
 
 	.mw-ge-recommendedLinkAnnotation-iconContainer {
@@ -96,7 +96,8 @@
 .ve-init-mobileTarget .ve-ce-surface:not( .ve-ce-surface-deactivated ) {
 	.ve-ce-linkAnnotation.ve-ce-annotation-active {
 		background-color: @activeAnnotationBackgroundColor;
-		box-shadow: 0 0 0 2px @wmui-color-accent50;
+		// TODO: Should this use `@box-shadow-color-progressive--active: #2a4b8d` instead?
+		box-shadow: 0 0 0 2px @box-shadow-color-progressive-selected;
 	}
 }
 

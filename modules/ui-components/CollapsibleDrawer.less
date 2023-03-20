@@ -1,4 +1,4 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/mixins.less';
 
 @headerHeight: 48px;
@@ -16,8 +16,8 @@
 
 	&-content {
 		padding-top: 0;
-		background: @wmui-color-base100;
-		border-top: 1px solid @wmui-color-base70;
+		background-color: @background-color-base;
+		border-top: @border-subtle;
 	}
 
 	&--animate-in {
@@ -45,7 +45,7 @@
 		.mw-ge-collapsibleDrawer-close-icon {
 			transition-timing-function: ease-in;
 			transition-delay: 100ms;
-			opacity: 1;
+			opacity: @opacity-base;
 		}
 	}
 
@@ -56,7 +56,7 @@
 	}
 
 	&-header {
-		color: @wmui-color-base10;
+		color: @color-base;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -91,7 +91,7 @@
 
 	&-mobile {
 		.mw-ge-collapsibleDrawer-content {
-			box-shadow: 0 -1px 1px 0 fade( @wmui-color-base0, 10% );
+			box-shadow: 0 -1px 1px 0 rgba( 0, 0, 0, 0.1 );
 		}
 	}
 
@@ -100,7 +100,7 @@
 		margin: auto;
 
 		.mw-ge-collapsibleDrawer-content {
-			border: 1px solid @wmui-color-base70;
+			border: @border-subtle;
 			filter: drop-shadow( 0 4px 4px rgba( 0, 0, 0, 0.25 ) );
 		}
 

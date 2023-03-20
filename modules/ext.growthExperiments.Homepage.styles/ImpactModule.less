@@ -1,6 +1,6 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins';
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import '../utils/variables.less';
 @import '../utils/mixins.less';
 
 .growthexperiments-homepage-module-impact {
@@ -32,8 +32,8 @@
 			}
 
 			.placeholder-image {
-				opacity: 0.38;
-				background-color: @colorGray14;
+				opacity: @opacity-low;
+				background-color: @background-color-growth-apparent;
 				background-size: 20px;
 			}
 		}
@@ -44,7 +44,7 @@
 			word-break: break-word;
 			padding: 0 10px 0 10px;
 			width: 100%;
-			color: @colorGray2;
+			color: @color-base;
 		}
 
 		.pageviews,
@@ -68,7 +68,7 @@
 		}
 
 		&:nth-child( 2n-1 ) {
-			background-color: @colorGray15;
+			background-color: @background-color-growth-subtle;
 		}
 	}
 
@@ -90,7 +90,7 @@
 
 		&-subheader,
 		&-subheader-subtext {
-			color: @wmui-color-base10;
+			color: @color-base;
 		}
 
 		&-subheader-subtext {
@@ -99,7 +99,7 @@
 		}
 
 		.growthexperiments-homepage-module-footer {
-			color: @wmui-color-base20;
+			color: @color-subtle;
 		}
 	}
 
@@ -120,7 +120,7 @@
 
 		.growthexperiments-homepage-module-header,
 		.growthexperiments-homepage-module-body {
-			background-color: @wmui-color-base90;
+			background-color: @background-color-growth-subtle;
 		}
 
 		&-image {
@@ -158,8 +158,8 @@
 	}
 
 	&-unactivated-mobile-summary {
-		background-color: @wmui-color-base90;
-		color: @wmui-color-base10;
+		background-color: @background-color-growth-subtle;
+		color: @color-base;
 
 		.growthexperiments-homepage-module-body {
 			flex-wrap: wrap;
@@ -194,8 +194,8 @@
 			margin: 15px @marginOffset @marginOffset @marginOffset;
 			width: 100%;
 			padding: 12px 16px;
-			background-color: @wmui-color-base100;
-			color: @wmui-color-base20;
+			background-color: @background-color-base;
+			color: @color-subtle;
 		}
 	}
 
@@ -208,7 +208,7 @@
 			left: 0;
 			bottom: 0;
 			right: 0;
-			background-color: @wmui-color-base90;
+			background-color: @background-color-growth-subtle;
 			z-index: -1;
 		}
 
@@ -219,7 +219,7 @@
 			width: 100%;
 			font-size: 0.8125em;
 			line-height: 1.5em;
-			background-color: @wmui-color-base100;
+			background-color: @background-color-base;
 		}
 	}
 
@@ -241,7 +241,7 @@
 		.growthexperiments-homepage-impact-column-pageviews {
 			line-height: 1;
 			font-size: 2em;
-			color: @colorProgressive;
+			color: @color-progressive;
 			padding-left: 10px;
 
 			.empty-pageviews-summary {
@@ -268,7 +268,7 @@
 .drawer.homepage-newimpact-discovery {
 	// Needed to provide a solid background to the 50% fade on suggested
 	// edits background color used with main drawer contents.
-	background-color: @colorBaseInverted;
+	background-color: @background-color-base;
 	padding: 16px;
 
 	main {
@@ -289,7 +289,7 @@
 		}
 
 		footer {
-			background-color: @colorBaseInverted;
+			background-color: @background-color-base;
 			min-height: 48px;
 			text-align: center;
 			font-weight: bold;

@@ -305,7 +305,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import 'mediawiki.skin.variables.less';
 @import '../../../utils/mixins.less';
 
 .ext-growthExperiments-MenteeOverview {
@@ -343,8 +343,8 @@ module.exports = exports = {
 
 	&__no-results {
 		background-color: #f8f9fa;
-		border: 1px solid #c8ccd1;
-		border-radius: 2px;
+		border: @border-subtle;
+		border-radius: @border-radius-base;
 		text-align: center;
 		padding: 93px 40px 151px;
 	}

@@ -1,13 +1,14 @@
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
+@import '../../utils/variables.less';
 @import '../../utils/mixins.less';
 
 .mw-ge-addImageSaveDialog {
-	color: @wmui-color-base10;
+	color: @color-base;
 
 	&-summaryLabel {
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 16px, @targetLineHeight: 22.8px );
 		padding-bottom: 7px;
-		border-bottom: 1px solid @wmui-color-base80;
+		border-bottom: @border-width-base @border-style-base #eaecf0;
 	}
 
 	&-imageSummary {
@@ -17,8 +18,8 @@
 
 		// accepted/rejected icon
 		& > .oo-ui-iconElement {
-			// approximate @base20 which has 36% brightness in HSB
-			opacity: 0.64;
+			// approximate @color-subtle which has 36% brightness in HSB
+			opacity: @opacity-icon-subtle;
 			margin-left: 8px;
 		}
 	}
@@ -40,7 +41,7 @@
 	&-imagePreview {
 		background-repeat: no-repeat;
 		background-position: center;
-		background-color: @wmui-color-base80;
+		background-color: @background-color-growth-apparent;
 		background-size: contain;
 		margin-bottom: 8px;
 	}
@@ -52,11 +53,11 @@
 	}
 
 	&-bodyContent {
-		border-bottom: 1px solid @wmui-color-base80;
+		border-bottom: @border-width-base @border-style-base #eaecf0;
 	}
 
 	&-copyrightWarning {
 		padding: 16px 0;
-		color: @wmui-color-base20;
+		color: @color-subtle;
 	}
 }

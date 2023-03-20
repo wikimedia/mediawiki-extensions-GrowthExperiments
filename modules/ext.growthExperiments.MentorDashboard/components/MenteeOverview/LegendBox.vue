@@ -42,6 +42,8 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .ext-growthExperiments-LegendBox {
 	width: 410px;
 
@@ -54,7 +56,7 @@ module.exports = exports = {
 		padding: 4px;
 
 		&__legend-icon {
-			opacity: 0.66;
+			opacity: @opacity-icon-subtle;
 		}
 
 		&__text {

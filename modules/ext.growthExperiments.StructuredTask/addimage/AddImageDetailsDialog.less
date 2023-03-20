@@ -1,12 +1,11 @@
-@import 'mediawiki.ui/variables.less';
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../../utils/mixins.less';
 
 .mw-ge-addImageDetailsDialog {
 	.oo-ui-messageDialog-title {
 		margin-top: 4px;
 		padding-bottom: 8px;
-		border-bottom: 1px solid @wmui-color-base70;
+		border-bottom: @border-subtle;
 		margin-bottom: 0;
 		text-align: center;
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 15.4px, @targetLineHeight: 22px );
@@ -19,7 +18,7 @@
 	}
 
 	.mw-ge-addImageDetailsDialog-reason {
-		border-bottom: 1px solid @wmui-color-base70;
+		border-bottom: @border-subtle;
 		padding: 8px 0 8px;
 		font-style: italic;
 	}
@@ -50,11 +49,11 @@
 		display: inline-block;
 		margin: 8px 0 0;
 		text-decoration: none;
-		color: @colorProgressive;
+		color: @color-progressive;
 		font-weight: bold;
 
 		&:visited {
-			color: @colorProgressive;
+			color: @color-progressive;
 		}
 
 		.oo-ui-iconElement-icon {
@@ -66,7 +65,7 @@
 		}
 	}
 
-	// Needs some extra specificity to ovrride OOUI defaults.
+	// Needs some extra specificity to override OOUI defaults.
 	.mw-ge-filelink.oo-ui-buttonElement.oo-ui-buttonWidget > .oo-ui-buttonElement-button {
 		padding: 0;
 		border: 0;
