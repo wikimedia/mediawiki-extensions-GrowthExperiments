@@ -116,6 +116,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Cancel",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Introduction message",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Your}} introduction message was changed to \"$1\".",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "Appreciation on a job well done!",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Hello $1, this is your mentor. Thank you for your contributions. I see you have been busy editing and I just wanted to take a moment to say thanks and that I hope you'll continue to stay involved! Feel free to drop a message on my talk page if you ever have questions. Cheers!",
 	"growthexperiments-mentor-list-missing-key": "Key <code>$1</code> is missing",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> is expected to be <code>$2</code>, but is <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Mentor definition contains an unexpected key <code>$1</code>",

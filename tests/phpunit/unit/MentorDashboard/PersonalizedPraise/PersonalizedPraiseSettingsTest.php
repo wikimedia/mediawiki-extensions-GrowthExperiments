@@ -6,10 +6,14 @@ use FormatJson;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditions;
 use HashConfig;
+use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
+use MessageLocalizer;
+use TitleFactory;
 
 /**
  * @coversDefaultClass \GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings
@@ -55,7 +59,11 @@ class PersonalizedPraiseSettingsTest extends MediaWikiUnitTestCase {
 				'GEPersonalizedPraiseMinEdits' => $minEdits,
 				'GEPersonalizedPraiseMaxEdits' => $maxEdits
 			] ),
-			$this->newUserOptionsLookupMock( $settingsValue )
+			$this->createMock( MessageLocalizer::class ),
+			$this->newUserOptionsLookupMock( $settingsValue ),
+			$this->createMock( UserFactory::class ),
+			$this->createMock( TitleFactory::class ),
+			$this->createMock( RevisionLookup::class )
 		);
 
 		$this->assertEquals(
