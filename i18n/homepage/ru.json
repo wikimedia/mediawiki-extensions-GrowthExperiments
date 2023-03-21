@@ -427,7 +427,7 @@
 	"growthexperiments-addlink-summary-summary": "Функция «Добавить ссылку»: {{PLURAL:$1|добавлена $1 ссылка|добавлено $1 ссылки|добавлено $1 ссылок}}.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Вы}} пропустили все предложения для этой статьи.",
 	"growthexperiments-addlink-skip-body": "{{GENDER:|Вы}} уверены, что не хотите принять никакие предложения?",
-	"growthexperiments-addlink-skip-accept": " Пропустить все",
+	"growthexperiments-addlink-skip-accept": "Пропустить всё",
 	"growthexperiments-addlink-skip-reject": "Рассмотреть опять",
 	"grant-managementorship": "Настроить наставничество",
 	"newcomertasksinfo": "Задачи для новичков",
