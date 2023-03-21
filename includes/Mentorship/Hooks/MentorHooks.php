@@ -114,6 +114,10 @@ class MentorHooks implements
 				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg'
 			]
 		];
+		// T332732: In he, the mentor icon should be displayed in LTR
+		$icons['growthexperiments-mentor-ltr'] = [
+			'path' => 'GrowthExperiments/images/mentor-ltr.svg'
+		];
 	}
 
 	/**
