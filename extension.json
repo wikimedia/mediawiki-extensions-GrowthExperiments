@@ -2399,7 +2399,7 @@
 		},
 		"GEPersonalizedPraiseBackendEnabled": {
 			"description": "Feature flag controlling whether personalized praise's backend is enabled",
-			"value": false
+			"value": true
 		},
 		"GEPersonalizedPraiseDays": {
 			"description": "Number of days to consider when checking whether a mentee is praiseworthy (used together with GEPersonalizedPraiseMinEdits). This must not be longer than wgRCMaxAge.",
