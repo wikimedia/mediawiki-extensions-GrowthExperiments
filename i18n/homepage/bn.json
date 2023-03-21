@@ -560,5 +560,7 @@
 	"growthexperiments-tour-newimpact-discovery-title": "হালনাগাদকৃত ডিজাইন",
 	"growthexperiments-tour-newimpact-discovery-description": "{{GENDER:|আপনার}} জন্য আরো সম্পাদনার সক্রিয়তার তথ্য যোগ করা হয়েছে!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "বুঝেছি",
-	"growthexperiments-homepage-newimpact-contributions-link": "সকল সম্পাদনা দেখুন"
+	"growthexperiments-homepage-newimpact-contributions-link": "সকল সম্পাদনা দেখুন",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "আরও জানুন",
+	"echo-category-title-ge-newcomer": "গ্রোথ বৈশিষ্ট্য"
 }
