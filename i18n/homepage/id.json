@@ -323,7 +323,7 @@
 	"log-action-filter-growthexperiments-setmentor": "Perubahan guru",
 	"log-action-filter-growthexperiments-addlink": "Saran pranala",
 	"log-action-filter-growthexperiments-addimage": "Saran gambar",
-	"growthexperiments-homepage-claimmentee-invalid-username": "Nama pengguna murid tidak valid",
+	"growthexperiments-homepage-claimmentee-invalid-username": "Nama pengguna mentee yang diberikan tidak valid",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|adalah}} guru baru {{GENDER:$3|Anda}}",
 	"growthexperiments-notification-body-mentor-change": "Alasan: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Sapa}} {{GENDER:$2|guru}} baru {{GENDER:$3|Anda}}!",
