@@ -196,6 +196,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Deschideți meniul lateral și apăsați pe $2 pentru a vă vizita pagina acasă a {{GENDER:$1|dvs.}}",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> din <strong>$2</strong> {{PLURAL:$2|sugestie|sugestii}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Sfârșit",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Se încarcă...",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 vizite (ultimele 60 de zile)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Editarea sugerată anterioară",
 	"growthexperiments-homepage-suggestededits-next-card": "Următoarea editare sugerată",
@@ -248,6 +249,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Mediu",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Greu",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Selectați tipuri de editări",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "Editările sugerate sunt concepute pentru a vă ajuta să învățați cum să editați și să deveniți mai {{GENDER:|priceput|pricepută}} pe măsură ce lucrați la tipuri mai mari de editări.",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "Doriți să creați un articol nou?",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-body": "Editorii {{SITENAME}} recomandă ca mai întâi {{GENDER:|să}} încercați câteva sarcini medii și grele înainte de a încerca crearea unui articol nou. [$1 Aflați mai multe] despre scrierea unui articol lipsă nou.",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Selectați subiecte",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Realizat",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Realizat",
@@ -554,5 +558,14 @@
 	"growthexperiments-tour-newimpact-discovery-title": "Design actualizat",
 	"growthexperiments-tour-newimpact-discovery-description": "Au fost adăugate mai multe despre activitatea {{GENDER:|dvs.}} de editare!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Am înțeles",
-	"growthexperiments-homepage-newimpact-contributions-link": "Vezi toate editările"
+	"growthexperiments-homepage-newimpact-contributions-link": "Vezi toate editările",
+	"growthexperiments-levelingup-getstarted-notification-header": "Încercați o editare sugerată și începeți să vă clădiți abilitățile de {{GENDER:$2|editare}}",
+	"growthexperiments-levelingup-getstarted-notification-body": "Editările sugerate ajută editorii noi să învețe despre modul de lucrul de la {{SITENAME}} și să își dezvolte abilități de editare de bază.",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Încercați editări sugerate",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Aflați mai mult",
+	"growthexperiments-levelingup-keepgoing-notification-header": "Continuați să efectuați editări sugerate pentru a vă dezvolta abilitățile de {{GENDER:$2|editare}}",
+	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Ați}} efectuat $3 {{PLURAL:$3|editare sugerată|editări sugerate}}. Continuați pentru a învăța alte abilități noi.",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Efectuați o editare sugerată",
+	"echo-category-title-ge-newcomer": "Funcții Growth",
+	"echo-pref-tooltip-ge-newcomer": "Notifică-mă despre sarcini pentru nou-veniți și alte funcții concepute pentru a ajuta utilizatorii noi."
 }
