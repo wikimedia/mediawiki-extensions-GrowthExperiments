@@ -17,12 +17,18 @@ class StructuredMentorListValidator implements IConfigValidator {
 	 *
 	 * A mapping of keys to data types, used for validating mentor JSON object.
 	 *
-	 * All keys mentioned here will be required.
+	 * All keys mentioned here (except keys listed in OPTIONAL_MENTOR_KEYS) will be required.
 	 */
 	private const MENTOR_KEY_DATATYPES = [
+		'username' => 'string',
 		'message' => '?string',
 		'weight' => 'int',
 		'automaticallyAssigned' => 'bool',
+	];
+
+	/** @var string[] List of optional keys in mentor serialization. */
+	private const OPTIONAL_MENTOR_KEYS = [
+		'username'
 	];
 
 	/**
@@ -68,11 +74,11 @@ class StructuredMentorListValidator implements IConfigValidator {
 		$supportedKeys = array_keys( self::MENTOR_KEY_DATATYPES );
 
 		// Ensure all supported keys are present in the mentor object
-		foreach ( $supportedKeys as $requiredKey ) {
-			if ( !array_key_exists( $requiredKey, $mentor ) ) {
+		foreach ( $supportedKeys as $key ) {
+			if ( !array_key_exists( $key, $mentor ) && !in_array( $key, self::OPTIONAL_MENTOR_KEYS ) ) {
 				return StatusValue::newFatal(
 					'growthexperiments-mentor-list-missing-key',
-					$requiredKey
+					$key
 				);
 			}
 		}
