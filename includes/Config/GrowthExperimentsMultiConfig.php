@@ -43,6 +43,7 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomRe
 		'GEMentorshipAutomaticEligibility',
 		'GEMentorshipMinimumAge',
 		'GEMentorshipMinimumEditcount',
+		'GEPersonalizedPraiseDefaultNotificationsFrequency',
 		'GEPersonalizedPraiseDays',
 		'GEPersonalizedPraiseMinEdits',
 		'GEPersonalizedPraiseMaxEdits',

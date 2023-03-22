@@ -359,14 +359,49 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'label-message' => 'growthexperiments-edit-config-mentorship-minimum-editcount',
 				'section' => 'mentorship',
 			],
+		];
 
+		if ( $this->getConfig()->get( 'GEPersonalizedPraiseEnabled' ) ) {
+			$descriptors = array_merge( $descriptors, [
+				'geconfig-personalized-praise-description' => [
+					'type' => 'info',
+					'label-message' => 'growthexperiments-edit-config-personalized-praise-description',
+					'section' => 'personalized-praise',
+				],
+				'geconfig-GEPersonalizedPraiseDefaultNotificationsFrequency' => [
+					'type' => 'int',
+					'label-message' => 'growthexperiments-edit-config-personalized-praise-notification-frequency',
+					'section' => 'personalized-praise',
+					'help-message' => 'growthexperiments-edit-config-personalized-praise-mentors-can-change',
+				],
+				'geconfig-GEPersonalizedPraiseMinEdits' => [
+					'type' => 'int',
+					'label-message' => 'growthexperiments-edit-config-personalized-praise-min-edits',
+					'section' => 'personalized-praise',
+					'help-message' => 'growthexperiments-edit-config-personalized-praise-mentors-can-change',
+				],
+				'geconfig-GEPersonalizedPraiseDays' => [
+					'type' => 'int',
+					'label-message' => 'growthexperiments-edit-config-personalized-praise-days',
+					'section' => 'personalized-praise',
+					'help-message' => 'growthexperiments-edit-config-personalized-praise-mentors-can-change',
+				],
+				'geconfig-GEPersonalizedPraiseMaxEdits' => [
+					'type' => 'int',
+					'label-message' => 'growthexperiments-edit-config-personalized-praise-max-edits',
+					'section' => 'personalized-praise',
+				],
+			] );
+		}
+
+		$descriptors = array_merge( $descriptors, [
 			// Description for suggested edits config
 			'newcomertasks-section-description' => [
 				'type' => 'info',
 				'label-message' => 'growthexperiments-edit-config-newcomer-tasks-description',
 				'section' => 'newcomertasks',
 			],
-		];
+		] );
 
 		$descriptors = array_merge( $descriptors, [
 			'geconfig-GEInfoboxTemplates' => [

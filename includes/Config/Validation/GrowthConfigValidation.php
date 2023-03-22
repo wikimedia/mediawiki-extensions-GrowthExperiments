@@ -73,7 +73,19 @@ class GrowthConfigValidation implements IConfigValidator {
 			],
 			'GEMentorshipMinimumEditcount' => [
 				'type' => 'int',
-			]
+			],
+			'GEPersonalizedPraiseDefaultNotificationsFrequency' => [
+				'type' => 'int',
+			],
+			'GEPersonalizedPraiseDays' => [
+				'type' => 'int',
+			],
+			'GEPersonalizedPraiseMinEdits' => [
+				'type' => 'int',
+			],
+			'GEPersonalizedPraiseMaxEdits' => [
+				'type' => 'int',
+			],
 		];
 	}
 
