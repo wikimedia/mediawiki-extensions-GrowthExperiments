@@ -9,6 +9,7 @@ use GrowthExperiments\HelpPanel\HelpPanelButton;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use MessageLocalizer;
 use OOUI\Tag;
 use OutputPage;
@@ -97,12 +98,16 @@ class HelpPanel {
 	/**
 	 * Whether to show the help panel to a particular user.
 	 *
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	private static function shouldShowHelpPanelToUser( User $user ) {
+	public static function shouldShowHelpPanelToUser( UserIdentity $user ) {
+		if ( !self::isHelpPanelEnabled() ) {
+			return false;
+		}
+
 		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		return $userOptionsLookup->getOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
+		return (bool)$userOptionsLookup->getOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
 	}
 
 	/**

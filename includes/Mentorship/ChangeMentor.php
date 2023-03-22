@@ -4,6 +4,8 @@ namespace GrowthExperiments\Mentorship;
 
 use DeferredUpdates;
 use EchoEvent;
+use GrowthExperiments\HelpPanel;
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogPager;
 use ManualLogEntry;
@@ -200,7 +202,34 @@ class ChangeMentor {
 	}
 
 	/**
+	 * Does user have mentorship-consuming features enabled?
+	 *
+	 * This is used to skip notifications about mentorship changes when the user doesn't actually
+	 * have relevant features enabled.
+	 *
+	 * @note This is a separate method to make unit testing possible
+	 * (HomepageHooks::isHomepageEnabled and HelpPanel::shouldShowHelpPanelToUser both use global
+	 * state)
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	protected function isMentorshipEnabledForUser( UserIdentity $user ): bool {
+		return HomepageHooks::isHomepageEnabled( $user )
+			|| HelpPanel::shouldShowHelpPanelToUser( $user );
+	}
+
+	/**
 	 * Change mentor
+	 *
+	 * This sets the new primary mentor in the database and adds a log under Special:Log. In most
+	 * cases, it also notifies the mentee about the mentor change. Notification is skipped if any
+	 * of the following conditions are true:
+	 *
+	 * 	1) Mentee does not have access to Special:Homepage
+	 * 	2) Mentee does not have access to the mentorship module AND $bulkChange is true
+	 *
+	 * If mentee's mentorship state is MENTORSHIP_DISABLED, access to mentorship is enabled by
+	 * this method, except when $bulkChange is true.
 	 *
 	 * @param UserIdentity $newMentor New mentor to assign
 	 * @param string $reason Reason for the change
@@ -221,6 +250,11 @@ class ChangeMentor {
 
 		$this->mentorStore->setMentorForUser( $this->mentee, $this->newMentor, MentorStore::ROLE_PRIMARY );
 		$this->log( $reason, $bulkChange );
+
+		if ( !$this->isMentorshipEnabledForUser( $this->mentee ) ) {
+			// skip notification if the user does not have Homepage enabled
+			return $status;
+		}
 
 		// If mentee's status is MENTORSHIP_DISABLED (=GE decided not to display the mentorship
 		// module), enable the module, so the user can benefit from mentorship.
