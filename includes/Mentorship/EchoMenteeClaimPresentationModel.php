@@ -8,6 +8,10 @@ class EchoMenteeClaimPresentationModel extends \EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getIconType() {
+		if ( in_array( $this->language->getCode(), [ 'he', 'yi' ] ) ) {
+			// T332732: In he, the mentor icon should be displayed in LTR
+			return 'growthexperiments-mentor-ltr';
+		}
 		return 'growthexperiments-mentor';
 	}
 
