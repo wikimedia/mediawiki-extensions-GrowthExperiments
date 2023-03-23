@@ -27,6 +27,7 @@ use PageImages\PageImages;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Status;
+use StatusValue;
 use Title;
 use TitleFactory;
 use TitleFormatter;
@@ -440,18 +441,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				array_column( $titleObjects, 'title' ), $days
 			);
 			if ( !$pageDataStatus->isGood() ) {
-				// Don't log pvi-cached-error-title messages (T328945) but track it in statsd,
-				// and do log any other message that occurs.
-				if ( $pageDataStatus->hasMessagesExcept( 'pvi-cached-error-title' ) ) {
-					$this->logger->error(
-						Status::wrap( $pageDataStatus )->getWikiText( false, false, 'en' )
-					);
-				} else {
-					$this->statsdDataFactory->updateCount(
-						'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle',
-						$pageDataStatus->failCount
-					);
-				}
+				$this->logPageDataBadStatus( $pageDataStatus );
 			}
 			if ( $pageDataStatus->isOK() ) {
 				$successful = array_filter( $pageDataStatus->success );
@@ -472,16 +462,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	): ?array {
 		$status = $this->pageViewService->getPageData( array_column( $allTitleObjects, 'title' ), $days );
 		if ( !$status->isGood() ) {
-			if ( $status->hasMessagesExcept( 'pvi-cached-error-title' ) ) {
-				$this->logger->error(
-					Status::wrap( $status )->getWikiText( false, false, 'en' )
-				);
-			} else {
-				$this->statsdDataFactory->updateCount(
-					'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle',
-					$status->failCount
-				);
-			}
+			$this->logPageDataBadStatus( $status );
 			if ( !$status->isOK() ) {
 				return null;
 			}
@@ -496,6 +477,26 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			);
 		}
 		return $status->getValue();
+	}
+
+	/**
+	 * Don't log pvi-cached-error-title messages (T328945) but track it in statsd,
+	 * and log any other message that occurs.
+	 *
+	 * @param StatusValue $status
+	 * @return void
+	 */
+	private function logPageDataBadStatus( StatusValue $status ) {
+		if ( $status->hasMessagesExcept( 'pvi-cached-error-title' ) ) {
+			$this->logger->error(
+				Status::wrap( $status )->getWikiText( false, false, 'en' )
+			);
+		} else {
+			$this->statsdDataFactory->updateCount(
+				'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle',
+				$status->failCount
+			);
+		}
 	}
 
 	/**
