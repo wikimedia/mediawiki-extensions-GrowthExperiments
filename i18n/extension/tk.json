@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"TayfunEt."
+		]
+	},
+	"growthexperiments-edit-config-personalized-praise": "Şahsy öwgi",
+	"growthexperiments-edit-config-personalized-praise-description": "Döredilen redaktorlardan höweslendiriji habarlary almak täze redaktoryň saklanmagyny gowulaşdyryp biler. Şahsylaşdyrylan öwgi moduly öndürijilikli täze redaktorlara jemgyýetde has gyzykly we has gyzykly bolmaklaryny duýmak üçin öwgüli täze redaktorlary öwredýär.",
+	"growthexperiments-edit-config-personalized-praise-mentors-can-change": "Mugallymlar, Ussat dolandyryş panelinde öz ulanyjylary üçin bu opsiýany üýtgedip bilerler.",
+	"growthexperiments-edit-config-personalized-praise-notification-frequency": "Düzgüne görä, üstünlikli redaktirlän halypalara höweslendirmek üçin halypalar näçe gezek habarnamalary almaly?",
+	"growthexperiments-edit-config-personalized-praise-min-edits": "Bir mugallymyň iň az mukdarda redaktirlemegi öwgä mynasyp bolmaly",
+	"growthexperiments-edit-config-personalized-praise-days": "Mugallymyň öwgä mynasyplygyna baha berlende göz öňünde tutulýan günleriň sany",
+	"growthexperiments-edit-config-personalized-praise-max-edits": "Ulanyjynyň öwgüsiniň iň köp mukdary öwgä mynasyp hasap edilip bilner"
+}

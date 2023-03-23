@@ -44,7 +44,7 @@
 	"welcomesurvey-question-mailinglist-help": "Merk at denne e-postlista drives av MailChimp, hvilket betyr at MailChimps bruk av {{GENDER:|din}} informasjon styres av deres [https://www.intuit.com/privacy/statement/ personvernsregler] og [https://mailchimp.com/legal/terms/ bruksvilkår].",
 	"welcomesurvey-question-email-label": "Epostadresse (valgfritt)",
 	"welcomesurvey-question-email-placeholder": "Skriv inn epostadressa {{GENDER:|di}} …",
-	"welcomesurvey-question-email-help": "Vi la merke til at {{GENDER:|du}} ikke skrev inn en epostadresse da du opprettet kontoen. Det <strong>anbefales sterkt</strong>, fordi en epost trengs om du skulle glemme passordet ditt. MERK: Epostadressa di vises ikke når andre brukere kontakter deg.",
+	"welcomesurvey-question-email-help": "Vi la merke til at {{GENDER:|du}} ikke skrev inn en e-postadresse da du opprettet kontoen. Det <strong>anbefales sterkt</strong>, fordi en e-post trengs om du skulle glemme passordet ditt. MERK: E-postadressa di vises ikke når andre brukere kontakter deg.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} er tilgjengelig på nesten 300 språk. Er det andre språk {{GENDER:|du}} kan lese og skrive på?",
 	"welcomesurvey-question-languages-placeholder": "Legg til opptil {{PLURAL:$1|ett|$1}} språk …",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Du}} har lagt til maksimalt antall språk.",

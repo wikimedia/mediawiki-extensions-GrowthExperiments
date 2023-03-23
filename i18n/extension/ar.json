@@ -64,6 +64,7 @@
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "لا، لا أسمح لأي مستخدم بالتسجيل كمرشدين.",
 	"growthexperiments-edit-config-mentorship-minimum-age": "الحدّ الأدنى لعدد الأيام التي يجب أن يكون فيها المستخدم مسجّلا قبل الانضمام إلى المرشدين",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "الحدّ الأدنى لعدد التعديلات التي يجب على المستخدم إجراؤها (على أيّ نطاق) للتسجيل كمرشد",
+	"growthexperiments-edit-config-personalized-praise": "مدح شخصي",
 	"growthexperiments-edit-config-newcomertasks": "التعديلات المقترحة",
 	"growthexperiments-edit-config-newcomer-tasks-description": "تظهر بعض الأنواع من التعديلات المقترحة عير قوالب الصيانة. المقالات التي تتضمّن على تلك القوالب تضاف إلى خلاصة المقترحات. لمشاهدة كم عدد المقالات لكلّ نوع من المهام، شاهدوا [[Special:NewcomerTasksInfo|هذه الصفحة]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "مُعطَّل",

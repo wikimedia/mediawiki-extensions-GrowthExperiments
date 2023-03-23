@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chinmayee Mishra"
+		]
+	},
+	"growthexperiments-edit-config-personalized-praise": "ବ୍ୟକ୍ତିଗତ ପ୍ରଶଂସା ପତ୍ର |",
+	"growthexperiments-edit-config-personalized-praise-description": "ପ୍ରତିଷ୍ଠିତ ସମ୍ପାଦକମାନଙ୍କଠାରୁ ଉତ୍ସାହଜନକ ବାର୍ତ୍ତା ଗ୍ରହଣ କରିବା ଦ୍ୱାରା ନୂତନ ସମ୍ପାଦକ ଧାରଣରେ ଉନ୍ନତି ହୋଇପାରେ | ପର୍ସନାଲାଇଜଡ୍ ପ୍ରଶଂସା ମଡ୍ୟୁଲ୍ ପୃଷ୍ଠପୋଷକ ନୂତନ ସମ୍ପାଦକମାନଙ୍କୁ ସେମାନଙ୍କ ପରାମର୍ଶଦାତାଙ୍କୁ ଉତ୍ସାହିତ କରେ, ଉତ୍ପାଦନକାରୀ ନୂତନ ସମ୍ପାଦକମାନଙ୍କୁ ସମ୍ପ୍ରଦାୟରେ ଅଧିକ ଜଡିତ ଏବଂ ଜଡିତ ଅନୁଭବ କରିବାରେ ସାହାଯ୍ୟ କରେ |",
+	"growthexperiments-edit-config-personalized-praise-mentors-can-change": "ମେଣ୍ଟର ଡ୍ୟାସବୋର୍ଡରେ ନିଜ ବ୍ୟବହାରକାରୀଙ୍କ ପାଇଁ ମେଣ୍ଟରମାନେ ଏହି ବିକଳ୍ପ ପରିବର୍ତ୍ତନ କରିପାରିବେ |",
+	"growthexperiments-edit-config-personalized-praise-notification-frequency": "ଡିଫଲ୍ଟ ଭାବରେ, ସଫଳତାର ସହ ସମ୍ପାଦନା କରୁଥିବା ମେଣ୍ଟର ମାନଙ୍କୁ ଉତ୍ସାହିତ କରିବାକୁ ସେମାନଙ୍କୁ ମନେ ପକାଇବା ପାଇଁ ମେଣ୍ଟରମାନେ କେତେଥର ବିଜ୍ଞପ୍ତି ଗ୍ରହଣ କରିବା ଉଚିତ୍?",
+	"growthexperiments-edit-config-personalized-praise-min-edits": "ସଂପାଦନା ନିଶ୍ଚିତ ଭାବରେ ପ୍ରଶଂସନୀୟ ହେବା ପାଇଁ ଆବଶ୍ୟକ ସର୍ବନିମ୍ନ ସଂଖ୍ୟାର ଅବଦାନ |",
+	"growthexperiments-edit-config-personalized-praise-days": "ମେଣ୍ଟିଙ୍କ ପ୍ରଶଂସା ଯୋଗ୍ୟତାକୁ ମୂଲ୍ୟାଙ୍କନ କରିବା ସମୟରେ ବିବେଚନା କରାଯାଉଥିବା ଦିନ ସଂଖ୍ୟା |",
+	"growthexperiments-edit-config-personalized-praise-max-edits": "ଜଣେ ଉପଭୋକ୍ତାଙ୍କୁ ପ୍ରଶଂସନୀୟ ବୋଲି ବିବେଚନା କରାଯାଇପାରିବା ପାଇଁ ଆବଶ୍ୟକ ସର୍ବାଧିକ ଆବଦାନ ସଂଖ୍ୟା |"
+}
