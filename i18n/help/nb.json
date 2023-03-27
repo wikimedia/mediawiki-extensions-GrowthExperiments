@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jon Harald Søby",
-			"Orf3us"
+			"Orf3us",
+			"Gabriel Kielland"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Slå på hjelpepanelet for bidragsytere",
@@ -102,12 +103,12 @@
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Vis spørsmålet ditt på nybegynnerforumet",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Varsler for spørsmålet ditt:",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Du vil få et varsel her på {{SITENAME}} når noen har svart.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email": "Du vil også få tilsendt en epost på $1 ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Du vil også få tilsendt en e-post på $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "endre",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Hvis {{GENDER:$2|du}} også ønsker å få varsel på epost må du bekrefte epostadressa di nå: $1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Hvis {{GENDER:$2|du}} også ønsker å få varsel på e-post må du bekrefte e-postadressa di nå: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Bekreft epostadresse",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Hvis {{GENDER:$1|du}} også ønsker å bli varslet via epost må du legge til en epostadresse nå.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Legg til epost",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Hvis {{GENDER:$1|du}} også ønsker å bli varslet via e-post må du legge til en e-postadresse nå.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Legg til e-post",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Om hjelpepanelet",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Du gjorde forresten din første redigering ved å legge til dette spørsmålet. Gratulerer!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Slå av hjelpepanelet",
