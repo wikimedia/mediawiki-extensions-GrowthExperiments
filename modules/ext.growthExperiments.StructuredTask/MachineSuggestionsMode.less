@@ -33,7 +33,7 @@
 			display: flex;
 			align-items: center;
 
-			&:before {
+			&::before {
 				content: '';
 				display: inline-block;
 				background: url( ../../images/spinner.gif ) no-repeat center;
@@ -101,7 +101,7 @@
 .mw-ge-addImageMobileArticleTarget--overlay-shown {
 	@toolbarHeight: 50px;
 
-	&:before {
+	&::before {
 		content: '';
 		position: fixed;
 		// Show the toolbar (the overlay applies to the entire document not just the article content)

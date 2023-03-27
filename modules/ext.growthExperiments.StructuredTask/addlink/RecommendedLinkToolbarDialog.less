@@ -277,7 +277,7 @@
 				.rel-line-height( @parentFontSize: 14px, @targetLineHeight: 16px );
 				margin-left: 0;
 
-				&:after {
+				&::after {
 					@iconDimension: unit( 12px / 14px, em );
 					/* @embed */
 					background-image: url( ../link-external-ltr.svg );
@@ -305,8 +305,8 @@
 			top: -11px;
 			z-index: 1;
 
-			&:before,
-			&:after {
+			&::before,
+			&::after {
 				content: '';
 				position: absolute;
 				width: 0;
@@ -314,14 +314,14 @@
 				bottom: -11px;
 			}
 
-			&:before {
+			&::before {
 				border-left: 10px solid transparent;
 				border-right: 10px solid transparent;
 				border-bottom: 10px solid #a8a8a8;
 				left: 0;
 			}
 
-			&:after {
+			&::after {
 				border-left: 9px solid transparent;
 				border-right: 9px solid transparent;
 				border-bottom: 9px solid @activeAnnotationBackgroundColor;

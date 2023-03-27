@@ -15,7 +15,7 @@
 	.animation-delay-modifier( 1000 );
 	.animation-delay-modifier( 1200 );
 
-	&:before {
+	&::before {
 		background-image: linear-gradient( @background-color-base--disabled 100%, transparent 0 );
 	}
 
@@ -28,7 +28,7 @@
 	}
 
 	&--darken {
-		&:before {
+		&::before {
 			background-image: linear-gradient( @background-color-filled--disabled 100%, transparent 0 );
 		}
 	}

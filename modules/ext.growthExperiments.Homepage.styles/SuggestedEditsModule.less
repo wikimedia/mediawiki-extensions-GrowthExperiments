@@ -495,7 +495,7 @@ body.mw-special-Homepage {
 							line-height: 1.5em;
 							height: @cardExtractHeight;
 
-							&:after {
+							&::after {
 								content: '';
 								position: absolute;
 								bottom: 0;
@@ -505,14 +505,14 @@ body.mw-special-Homepage {
 							}
 						}
 
-						&[ dir='ltr' ] .se-card-extract:after {
+						&[ dir='ltr' ] .se-card-extract::after {
 							/* @noflip */
 							right: 0;
 							/* @noflip */
 							background: linear-gradient( to right, rgba( 255, 255, 255, 0 ), #fff 50% );
 						}
 
-						&[ dir='rtl' ] .se-card-extract:after {
+						&[ dir='rtl' ] .se-card-extract::after {
 							/* @noflip */
 							left: 0;
 							/* @noflip */
@@ -572,7 +572,7 @@ body.mw-special-Homepage {
 					.se-card-image.skeleton {
 						.loading-animation (400ms);
 
-						&:before {
+						&::before {
 							border-radius: 2px 2px 0 0;
 						}
 					}
@@ -580,13 +580,13 @@ body.mw-special-Homepage {
 					.se-card-extract.skeleton {
 						.loading-animation (800ms);
 
-						&:before {
+						&::before {
 							background-image: linear-gradient( @colorGray14 14px, transparent 0 ), linear-gradient( @colorGray14 14px, transparent 0 ), linear-gradient( @colorGray14 14px, transparent 0 );
 							background-size: 100% 12px, 100% 12px, 100% 12px;
 							background-position: 0 4px, 0 21px, 0 38px;
 						}
 
-						&:after {
+						&::after {
 							// Disable the fading of the last block of text from
 							// se-card-extract:after.
 							width: 0;
@@ -597,7 +597,7 @@ body.mw-special-Homepage {
 					.se-card-pageviews.skeleton {
 						.loading-animation (1200ms);
 
-						&:before {
+						&::before {
 							width: 316px;
 							height: 16px;
 							clear: both;

@@ -117,8 +117,8 @@
 			box-sizing: border-box;
 
 			// Put three animated dots in the placeholder box
-			&:before,
-			&:after,
+			&::before,
+			&::after,
 			.oo-ui-checkboxMultiselectInputWidget {
 				content: '';
 				display: inline-block;
@@ -130,12 +130,12 @@
 				animation-delay: -160ms;
 			}
 
-			&:before {
+			&::before {
 				margin-right: 0.25em;
 				animation-delay: 0ms;
 			}
 
-			&:after {
+			&::after {
 				margin-left: 0.25em;
 				animation-delay: -330ms;
 			}
@@ -160,8 +160,8 @@
 				border: 0;
 				background-color: transparent;
 
-				&:before,
-				&:after,
+				&::before,
+				&::after,
 				.oo-ui-checkboxMultiselectInputWidget {
 					display: none;
 				}
