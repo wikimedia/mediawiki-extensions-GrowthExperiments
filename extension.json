@@ -2400,7 +2400,7 @@
 		},
 		"GEPersonalizedPraiseBackendEnabled": {
 			"description": "Feature flag controlling whether personalized praise's backend is enabled",
-			"value": false
+			"value": true
 		},
 		"GEPersonalizedPraiseEnabled": {
 			"description": "Feature flag controlling whether personalized praise's frontend is enabled",

@@ -54,7 +54,7 @@ class PersonalizedPraiseHooks implements
 		}
 
 		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-			$mentor = $this->mentorManager->getMentorForUserSafe( $user );
+			$mentor = $this->mentorManager->getMentorForUserIfExists( $user );
 			if ( !$mentor ) {
 				return;
 			}
