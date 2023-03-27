@@ -72,6 +72,13 @@
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "No, no permitir a nadie inscribirse como mentor/a.",
 	"growthexperiments-edit-config-mentorship-minimum-age": "Número de días mínimo desde el registro para poder inscribirse como mentor/a",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Número mínimo de ediciones (en el espacio principal) para poder postularse como mentor/a",
+	"growthexperiments-edit-config-personalized-praise": "Elogios personalizados",
+	"growthexperiments-edit-config-personalized-praise-description": "Recibir mensajes alentadores por parte de personas editoras consolidadas puede mejorar la retención de quienes están empezando a editar. El módulo de elogios personalizados muestra a las personas mentoras quienes son esas personas novatas productivas que podrían ser merecedoras de elogio, para ayudarlas a que se sientan más comprometidas e involucradas en la comunidad.",
+	"growthexperiments-edit-config-personalized-praise-mentors-can-change": "Las personas mentoras pueden modificar esta opción en su panel de mentoría.",
+	"growthexperiments-edit-config-personalized-praise-notification-frequency": "Por defecto, ¿con qué frecuencia deben recibir las personas mentoras notificaciones para recordarles que deben enviar ánimos a aquellos de sus aprendices que están editando correctamente?",
+	"growthexperiments-edit-config-personalized-praise-min-edits": "Número mínimo de ediciones que debe tener una persona novata para ser merecedora de elogios",
+	"growthexperiments-edit-config-personalized-praise-days": "Número de días que se tienen en cuenta a la hora de evaluar los méritos de las personas mentorizadas",
+	"growthexperiments-edit-config-personalized-praise-max-edits": "Número máximo de ediciones para que una persona sea apta para recibir elogios",
 	"growthexperiments-edit-config-newcomertasks": "Ediciones sugeridas",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Algunos tipos de ediciones sugeridas se muestran a través de plantillas de mantenimiento. Los artículos que contienen esas plantillas se agregan al feed. Para ver cuántos artículos están disponibles para cada tipo de tarea, consulte [[Special:NewcomerTasksInfo|esta página]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Desactivado",
@@ -98,5 +105,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Plantillas de ficha",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas plantillas son necesarias para la función de tareas para recién llegados [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugerencias de imagen]]. Los artículos que contienen estas plantillas no se incluirán como tareas de sugerencia de imágenes.",
 	"growthexperiments-edit-config-delayed": "Los cambios en esta configuración no tendrán efecto inmediato (véase [[mw:Growth/FAQ#add-link-config|FAQ]]).",
-	"growthexperiments-info-tooltip-close-label": "Cerrar"
+	"growthexperiments-info-tooltip-close-label": "Cerrar",
+	"specialpages-group-growth-tools": "Herramientas de Growth"
 }

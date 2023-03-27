@@ -64,6 +64,13 @@
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Ні, не дозволяти жодним користувачам записуватися у наставники.",
 	"growthexperiments-edit-config-mentorship-minimum-age": "Мінімальна кількість днів, яка має пройти з часу реєстрації, щоб користувач міг записатися наставником",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Мінімальна кількість редагувань, які користувач має зробити (у будь-якому просторі назв), щоб могти записатися наставником",
+	"growthexperiments-edit-config-personalized-praise": "Персоналізована похвала",
+	"growthexperiments-edit-config-personalized-praise-description": "Отримання підбадьорливих повідомлень від досвідчених редакторів може покращити утримання нових редакторів. Модуль персоналізованої похвали показує наставнику тих нових редакторів, які заслуговують на похвалу, щоб допомогти продуктивним новим редакторам відчути себе почутими і більш залученими до спільноти.",
+	"growthexperiments-edit-config-personalized-praise-mentors-can-change": "Наставники можуть змінити це налаштування для себе на Панелі наставника.",
+	"growthexperiments-edit-config-personalized-praise-notification-frequency": "За замовчуванням, як часто наставники повинні отримувати сповіщення з нагадуванням надсилати заохочення підопічним, які успішно редагують?",
+	"growthexperiments-edit-config-personalized-praise-min-edits": "Стандартна мінімальна кількість редагувань, яку мають зробити підопічні, щоб вважатися гідними похвали",
+	"growthexperiments-edit-config-personalized-praise-days": "Кількість днів, які враховуються під час оцінювання",
+	"growthexperiments-edit-config-personalized-praise-max-edits": "Максимальна кількість редагувань, яку мають зробити користувачі, щоб вважатися гідними похвали",
 	"growthexperiments-edit-config-newcomertasks": "Пропоновані редагування",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Деякі типи пропонованих редагувань з'являються через шаблони впорядкування. Статті, що містять ці шаблони, додаються до стрічки. Щоб дізнатися, скільки статей доступно для кожного типу завдань, перегляньте [[Special:NewcomerTasksInfo|цю сторінку]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Вимкнено",
@@ -89,5 +96,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Статті, що містять визначені тут категорії, не показуватимуться користувачам як завдання для цього типу завдань.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблони-картки",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Ці шаблони потрібні для функції завдання для новачків із [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|пропозицій зображень]]. Статті, які містять ці шаблони, не будуть перелічені у завданні із пропонування зображень.",
-	"growthexperiments-edit-config-delayed": "Зміни цього налаштування не набудуть чинності негайно (див. [[mw:Growth/FAQ#add-link-config|FAQ]])."
+	"growthexperiments-edit-config-delayed": "Зміни цього налаштування не набудуть чинності негайно (див. [[mw:Growth/FAQ#add-link-config|FAQ]]).",
+	"growthexperiments-info-tooltip-close-label": "Закрити",
+	"specialpages-group-growth-tools": "Інструменти Зростання"
 }

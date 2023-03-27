@@ -15,12 +15,16 @@
 	"apihelp-query+growthtasks-param-debug": "Añadir la información necesaria para corregir los errores en la página de resultados.",
 	"apihelp-query+growthtasks-example-1": "Obtener recomendaciones de tareas de corrección de textos para el usuario actual.",
 	"apihelp-query+growthtasks-example-2": "Obtener recomendaciones de tareas para el usuario actual, con información ampliada sobre las páginas.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Obtener el siguiente tipo de tarea sugerida para que la pruebe una persona usuaria.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "El tipo de tarea en la que la persona usuaria está trabajando actualmente.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Falta el parámetro 'accepted' en los datos del plugin Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "El parámetro 'accepted' debe ser un booleano en los datos del plugin Add Image, es $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "Falta el parámetro 'reason' en los datos del plugin Add Image",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "El parámetro 'reason' debe ser un array en los datos del plugin Add Image, es $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Elemento inválido '$1' para el parámetro 'reason', debe ser uno de: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "Falta el parámetro 'reasons' en los datos del plugin Add Image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "El parámetro 'reasons' debe ser un array en los datos del plugin Add Image, es $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Elemento inválido '$1' para el parámetro 'reasons', debe ser uno de: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "No se ha encontrado el registro de recomendación de enlaces",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Objetivos de recomendación de enlaces inesperados: $1",
-	"growthexperiments-underlinked-rescore-profile": "Perfil interno de recalificación utilizado en las recomendaciones de enlaces de GrowthExperiments para priorizar los artículos que aún no tienen suficientes enlaces."
+	"growthexperiments-underlinked-rescore-profile": "Perfil interno de recalificación utilizado en las recomendaciones de enlaces de GrowthExperiments para priorizar los artículos que aún no tienen suficientes enlaces.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "La revisión especificada en <var>editRevId</var> no fue encontrada.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "La revisian especificada en <var>editRevId</var> pertenece a una página diferente."
 }

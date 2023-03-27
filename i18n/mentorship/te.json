@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Chaduvari",
+			"V Bhavya",
 			"Veeven"
 		]
 	},
@@ -35,6 +36,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "గత $2 {{PLURAL:$1|నెలలో|నెలల్లో}} చురుగ్గా ఉన్న శిష్యుల కోసం వడపోత",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "చుక్క గుర్తున్న శిష్యులనే చూపించు",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "వెతుకు",
+	"growthexperiments-mentor-dashboard-mentee-overview-talk": "చర్చ",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 కిందట చురుగ్గా ఉన్నారు",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "తెలియని",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 చూపించు",
