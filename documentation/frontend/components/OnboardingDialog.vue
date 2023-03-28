@@ -1,7 +1,7 @@
 <template>
 	<!-- eslint-disable vue/no-v-model-argument -->
 	<cdx-dialog
-		v-model:open="open"
+		v-model:open="wrappedOpen"
 		class="ext-growthExperiments-OnboardingDialog"
 		title="Introduction"
 		:hide-title="true"
@@ -123,11 +123,10 @@
 </template>
 
 <script>
-import { CdxDialog, CdxButton, CdxIcon, CdxCheckbox } from '@wikimedia/codex';
+import { ref, computed, toRef } from 'vue';
+import { CdxDialog, CdxButton, CdxIcon, CdxCheckbox, useModelWrapper } from '@wikimedia/codex';
 import { cdxIconNext, cdxIconPrevious } from '@wikimedia/codex-icons';
 import OnboardingPaginator from './OnboardingPaginator.vue';
-
-import { ref, computed } from 'vue';
 
 export default {
 	name: 'OnboardingDialog',
@@ -166,16 +165,23 @@ export default {
 		showPaginator: {
 			type: Boolean,
 			default: false
+		},
+
+		/**
+		 * Whether the dialog is visible. Should be provided via a v-model:open
+		 * binding in the parent scope.
+		 */
+		open: {
+			type: Boolean,
+			default: false
 		}
 
 	},
 	emits: [ 'update:open', 'update:modelValue', 'update:currentStep' ],
 	setup( props, { emit, slots, modelValue } ) {
-
+		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const currentStep = ref( props.initialStep );
-
 		const currentSlotName = computed( () => `step${currentStep.value}` );
-
 		const hasSteps = computed( () => !!slots.step1 );
 
 		const onDialogOpenUpdate = ( newVal ) => {
@@ -193,7 +199,6 @@ export default {
 			if ( currentStep.value > 0 ) {
 				currentStep.value--;
 				emit( 'update:currentStep', currentStep.value );
-
 			}
 		};
 
@@ -215,13 +220,12 @@ export default {
 			onPrevClick,
 			cdxIconNext,
 			cdxIconPrevious,
-			open,
-			modelValue,
 			onDialogOpenUpdate,
 			hasSteps,
 			onLastStepBtnClick,
-			onHeaderBtnClick
-
+			onHeaderBtnClick,
+			wrappedOpen,
+			modelValue
 		};
 	}
 };
