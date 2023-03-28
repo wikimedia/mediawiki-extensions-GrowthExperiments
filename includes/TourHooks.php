@@ -56,6 +56,7 @@ class TourHooks implements
 		if ( !$out->getTitle()->isSpecial( 'WelcomeSurvey' ) &&
 			 !$out->getTitle()->isSpecial( 'Homepage' ) &&
 			 HomepageHooks::isHomepageEnabled( $out->getUser() ) &&
+			 !Util::isMobile( $skin ) &&
 			 !$this->userOptionsLookup->getBoolOption( $out->getUser(), self::TOUR_COMPLETED_HOMEPAGE_WELCOME )
 		) {
 			Util::maybeAddGuidedTour(
@@ -78,8 +79,7 @@ class TourHooks implements
 		$moduleTemplate = [
 			'localBasePath' => dirname( __DIR__ ) . '/modules',
 			'remoteExtPath' => 'GrowthExperiments/modules',
-			'dependencies' => 'ext.guidedTour',
-			'targets' => [ 'desktop' ]
+			'dependencies' => 'ext.guidedTour'
 		];
 		$modules = [
 			'ext.guidedTour.tour.helppanel' => $moduleTemplate + [

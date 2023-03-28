@@ -127,16 +127,13 @@ module.exports = ( function () {
 	function loadEditModule() {
 		mw.hook( 've.loadModules' ).add( function ( addPlugin ) {
 			// Either the desktop or the mobile module will be registered, but not both.
-			// Start with both, filter out the unregistered one, and add the remaining one
-			// as a VE plugin.
-			[
-				'ext.growthExperiments.StructuredTask.desktop',
-				'ext.growthExperiments.StructuredTask.mobile'
-			].filter( mw.loader.getState ).forEach( function ( module ) {
-				addPlugin( function () {
-					return mw.loader.using( module ).then( function () {
-						require( module ).initializeTarget( taskType );
-					} );
+			var module = mw.config.get( 'skin' ) === 'minerva' ?
+				'ext.growthExperiments.StructuredTask.mobile' :
+				'ext.growthExperiments.StructuredTask.desktop';
+
+			addPlugin( function () {
+				return mw.loader.using( module ).then( function () {
+					require( module ).initializeTarget( taskType );
 				} );
 			} );
 		} );

@@ -724,9 +724,6 @@
 		"ext.growthExperiments.HomepageDiscovery": {
 			"scripts": [
 				"ext.growthExperiments.HomepageDiscovery/index.js"
-			],
-			"targets": [
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.Homepage.mobile": {
@@ -767,9 +764,6 @@
 				"growthexperiments-tour-newimpact-discovery-title",
 				"growthexperiments-tour-newimpact-discovery-description",
 				"growthexperiments-tour-newimpact-discovery-response-button-okay"
-			],
-			"targets": [
-				"mobile"
 			],
 			"dependencies": [
 				"ext.growthExperiments.icons",
@@ -1369,9 +1363,6 @@
 				"growthexperiments-structuredtask-ve-machine-suggestions-mode-title",
 				"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button",
 				"growthexperiments-addlink-context-button-show-suggestion"
-			],
-			"targets": [
-				"desktop"
 			]
 		},
 		"ext.growthExperiments.StructuredTask.mobile": {
@@ -1397,9 +1388,6 @@
 			"messages": [
 				"growthexperiments-structuredtask-ve-machine-suggestions-mode-title",
 				"growthexperiments-addlink-context-button-show-suggestion"
-			],
-			"targets": [
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.StructuredTask.PreEdit": {
@@ -2168,9 +2156,6 @@
 				"welcomesurvey-mideditsignup-body",
 				"welcomesurvey-mideditsignup-button-homepage",
 				"welcomesurvey-mideditsignup-button-close"
-			],
-			"targets": [
-				"desktop"
 			],
 			"dependencies": [
 				"mediawiki.storage",

@@ -145,6 +145,7 @@ class WelcomeSurveyHooks implements
 				$welcomeSurveyLogger->logInteraction( WelcomeSurveyLogger::WELCOME_SURVEY_LOGGED_OUT );
 			}
 		} elseif (
+			!Util::isMobile( $context->getSkin() ) &&
 			$special instanceof SpecialCreateAccount
 			&& $user->isAnon() && $this->userWasEditing()
 			&& $this->shouldShowWelcomeSurvey( $context )
@@ -157,6 +158,7 @@ class WelcomeSurveyHooks implements
 	/** @inheritDoc */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		if ( $out->getRequest()->getCookie( 'ge.midEditSignup' )
+			&& !Util::isMobile( $skin )
 			// maybe the user filled out or dismissed the survey in another tab, don't show then
 			&& $this->welcomeSurveyFactory->newWelcomeSurvey( $out->getContext() )->isUnfinished()
 			&& (

@@ -882,7 +882,7 @@
 		// Hide the first edit text, which is shown depending on API response.
 		this.questionCompleteFirstEditText.toggle( false );
 		// Start pre-loading tour for help panel.
-		if ( shouldShowHelpPanelTour ) {
+		if ( shouldShowHelpPanelTour && mw.config.get( 'skin' ) !== 'minerva' ) {
 			mw.loader.load( 'ext.guidedTour.tour.helppanel' );
 		}
 		return new mw.Api().postWithToken( 'csrf', this.askhelpPanel.getPostData() )
