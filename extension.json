@@ -646,10 +646,6 @@
 				"ext.growthExperiments.SuggestedEditSession/index.js",
 				"utils/Utils.js"
 			],
-			"targets": [
-				"desktop",
-				"mobile"
-			],
 			"dependencies": [
 				"oojs",
 				"mediawiki.Title",
@@ -679,10 +675,6 @@
 				"growthexperiments-help-panel-postedit-nonsuggested-try-button-text",
 				"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text"
 			],
-			"targets": [
-				"desktop",
-				"mobile"
-			],
 			"dependencies": [
 				"mediawiki.user",
 				"oojs",
@@ -698,20 +690,12 @@
 				"minerva": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.minerva.less" ],
 				"vector": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less" ],
 				"vector-2022": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less" ]
-			},
-			"targets": [
-				"desktop",
-				"mobile"
-			]
+			}
 		},
 		"ext.growthExperiments.HomepageDiscovery.styles": {
 			"styles": [
 				"ext.growthExperiments.HomepageDiscovery/HomepageDiscovery.less",
 				"ext.growthExperiments.HomepageDiscovery/HomepageDiscoveryMobile.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.HomepageDiscovery": {
@@ -791,10 +775,6 @@
 				"mediawiki.user",
 				"oojs-ui-core",
 				"oojs-ui-windows"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.Homepage.NewImpact": {
@@ -904,10 +884,6 @@
 				"moment",
 				"vue",
 				"@wikimedia/codex"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.Homepage.Mentorship": {
@@ -925,10 +901,6 @@
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipDetailsModal.js",
 				"ui-components/SelectWithTextInputWidget.js",
 				"ui-components/OptionWithTextInputWidget.js"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			],
 			"dependencies": [
 				"ext.growthExperiments.Help",
@@ -1008,10 +980,6 @@
 				"ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.less",
 				"ext.growthExperiments.Homepage.SuggestedEdits/MatchModeSelectWidget.less",
 				"ext.growthExperiments.Homepage.SuggestedEdits/TopicSelectionWidget.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			],
 			"dependencies": [
 				"mediawiki.api",
@@ -1164,11 +1132,7 @@
 				"vue-components/CScoreCard.less",
 				"vue-components/CScoreCards.less"
 			],
-			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
+			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ]
 		},
 		"ext.growthExperiments.StructuredTask": {
 			"packageFiles": [
@@ -1351,10 +1315,6 @@
 				"ext.growthExperiments.SuggestedEditSession",
 				"ext.growthExperiments.StructuredTask.PreEdit",
 				"ext.growthExperiments.DataStore"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.StructuredTask.desktop": {
@@ -1480,10 +1440,6 @@
 				"oojs-ui-windows",
 				"ext.growthExperiments.SuggestedEditSession",
 				"ext.growthExperiments.DataStore"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.Help": {
@@ -1605,10 +1561,6 @@
 				"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text",
 				"growthexperiments-homepage-mentorship-confirmation-text",
 				"growthexperiments-homepage-mentorship-view-question-text"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.HelpPanel": {
@@ -1647,20 +1599,12 @@
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.HelpPanel.init": {
 			"scripts": "ext.growthExperiments.HelpPanel/index.js",
 			"dependencies": [
 				"ext.growthExperiments.SuggestedEditSession"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.PostEdit": {
@@ -1733,10 +1677,6 @@
 				"growthexperiments-homepage-suggestededits-tasktype-name-expand",
 				"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation",
 				"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.Account": {
@@ -1751,10 +1691,6 @@
 				"welcomesurvey-question-languages-placeholder",
 				"welcomesurvey-question-languages-maximum"
 			],
-			"targets": [
-				"desktop",
-				"mobile"
-			],
 			"dependencies": [
 				"oojs-ui-widgets",
 				"mediawiki.router"
@@ -1766,10 +1702,6 @@
 				"ext.growthExperiments.Account.styles/DonorSignupCampaign.less",
 				"ext.growthExperiments.Account.styles/SpecialContributions.less",
 				"ext.growthExperiments.Account.styles/WelcomeSurvey.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.icons": {
@@ -2001,10 +1933,6 @@
 				"vue",
 				"vuex",
 				"@wikimedia/codex"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.MentorDashboard.styles": {
@@ -2014,10 +1942,6 @@
 				"ext.growthExperiments.MentorDashboard/styles/MenteeOverview.less",
 				"ext.growthExperiments.MentorDashboard/styles/Resources.less",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.MentorDashboard.Discovery": {
@@ -2063,10 +1987,6 @@
 					"name": "ext.growthExperiments.DataStore/Topics.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTopicsJson" ]
 				}
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			],
 			"dependencies": [
 				"mediawiki.util",
