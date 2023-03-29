@@ -5,8 +5,6 @@
 		v-model="modelValue"
 		:total-steps="3"
 		:initial-step="0"
-		@default="open = false"
-
 	>
 		<template #title>
 			Introduction

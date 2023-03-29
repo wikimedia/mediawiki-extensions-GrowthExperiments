@@ -7,8 +7,7 @@
 		<!-- eslint-disable vue/no-v-model-argument -->
 		<add-link-dialog
 			v-model:open="open"
-
-			@default="open = false">
+		>
 		</add-link-dialog>
 	</div>
 </template>
