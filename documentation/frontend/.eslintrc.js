@@ -47,12 +47,15 @@ module.exports = {
 		},
 		{
 			files: [
-				'component-demos/**/*.test.js'
+				'{component-demos,components}/**/*.test.js'
 			],
 			extends: [
 				'wikimedia/language/es6',
 				'wikimedia/mediawiki'
-			]
+			],
+			rules: {
+				'compat/compat': 'off'
+			}
 		}
 	],
 	ignorePatterns: [
