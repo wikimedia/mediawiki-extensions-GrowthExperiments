@@ -4,7 +4,8 @@
 			"Jon Harald Søby",
 			"Kingu",
 			"Gabriel Kielland",
-			"Telaneo"
+			"Telaneo",
+			"EdoAug"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -16,7 +17,7 @@
 	"growthexperiments-homepage-email-header-noemail": "Legg til epostadressa {{GENDER:$1|di}}",
 	"growthexperiments-homepage-email-header-unconfirmed": "Bekreft epostadressa {{GENDER:$1|di}}",
 	"growthexperiments-homepage-email-header-confirmed": "Epostadresse lagt til",
-	"growthexperiments-homepage-email-header-startemail": "Epost: $1",
+	"growthexperiments-homepage-email-header-startemail": "E-post: $1",
 	"growthexperiments-homepage-email-text-noemail": "Anbefales for å gjenopprette konto",
 	"growthexperiments-homepage-email-text-unconfirmed": "Sjekk eposten {{GENDER:$1|din}} for en bekreftelseslenke, eller send ei ny lenke.",
 	"growthexperiments-homepage-email-text-confirmed": "Epostadressa {{GENDER:$1|di}} har blitt bekreftet. Du kan endre epostinnstillingene ved å trykke på «Innstillinger».",
