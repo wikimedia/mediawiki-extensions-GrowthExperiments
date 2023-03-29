@@ -4,6 +4,7 @@
 			"AVVK Chaitanya",
 			"Bvprasadenwiki",
 			"Chaduvari",
+			"V Bhavya",
 			"Veeven"
 		]
 	},
@@ -217,6 +218,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "మధ్యస్థం",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "క్లిష్టం",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "దిద్దుబాటు రకాన్ని ఎంచుకోండి",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "కొత్త కథనాన్ని సృష్టించాలనుకుంటున్నారా?",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "ఆసక్తులను ఎంచుకోండి",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "అయిపోయింది",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "అయిపోయింది",
@@ -483,5 +485,6 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "కొనసాగించు",
 	"growthexperiments-homepage-special-contribute-title": "దిద్దుబాటు సూచనలు",
 	"growthexperiments-homepage-special-contribute-description": "వ్యాసాల్లో చిన్నవి, తేలికైన మార్పులు చెయ్యండి (ఉదాహరణకు ఒక లింకును చేర్చడం, భాషా దోషాలను సవరించడం వంటివి)",
-	"growthexperiments-homepage-special-contribute-cta": "దిద్దుబాటు సూచనలను చూడండి"
+	"growthexperiments-homepage-special-contribute-cta": "దిద్దుబాటు సూచనలను చూడండి",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "సూచించిన సవరణ చేయండి"
 }

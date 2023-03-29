@@ -64,6 +64,13 @@
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "না, কোনো ব্যবহারকারীকে মেন্টর হিসেবে নথিভুক্ত করার অনুমতি দেবেন না।",
 	"growthexperiments-edit-config-mentorship-minimum-age": "মেন্টর হিসেবে যুক্ত হওয়ার ক্ষেত্রে ব্যবহারকারীদের নিবন্ধিত হওয়ার ন্যূনতম সংখ্যক দিন",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "মেন্টর হিসেবে যুক্ত হতে ব্যবহারকারীর (যেকোনো নামস্থানে) প্রয়োজনীয় ন্যূনতম সংখ্যক সম্পাদনা",
+	"growthexperiments-edit-config-personalized-praise": "ব্যক্তিগতকৃত প্রশংসা",
+	"growthexperiments-edit-config-personalized-praise-description": "অভিজ্ঞ অবদানকারীদের কাছ থেকে প্রশংসাসূচক বার্তা নতুন অবদানকারীদের অবদান রাখা চালিয়ে যাওয়ার ব্যাপারে উৎসাহিত করতে পারে। ব্যক্তিগতকৃত প্রশংসা মডিউল প্রশংসনীয় নবাগতদের তাদের মেন্টরের কাছে উপস্থাপন করে, যেন কর্মঠ নতুন অবদানকারীরা সম্প্রদায়ের সাথে আরও যুক্ত অনুভব করেন।",
+	"growthexperiments-edit-config-personalized-praise-mentors-can-change": "মেন্টর ড্যাশবোর্ডে তাদের নিজস্ব ব্যবহারকারীর জন্য এই অপশনটি পরিবর্তন করতে পারেন।",
+	"growthexperiments-edit-config-personalized-praise-notification-frequency": "স্বয়ংক্রিয়ভাবে, মেন্টরদের কত সময় পর পর বিজ্ঞপ্তি দেয়ার মাধ্যমে মনে করিয়ে দেয়া উচিত, যেন তারা সফলভাবে সম্পাদনা করছেন এমন পরামর্শগ্রহীতাদের উৎসাহ দিতে পারেন?",
+	"growthexperiments-edit-config-personalized-praise-min-edits": "প্রশংসাযোগ্য হতে হলে ন্যূনতম যে পরিমাণ সম্পাদনা পরামর্শগ্রহীতাদের করা উচিত",
+	"growthexperiments-edit-config-personalized-praise-days": "প্রশংসাযোগ্য হতে হলে ন্যূনতম যত দিন জুড়ে পরামর্শগ্রহীতাদের কাজ বিবেচনা করা উচিত",
+	"growthexperiments-edit-config-personalized-praise-max-edits": "প্রশংসাযোগ্য হতে হলে সর্বোচ্চ যে পরিমাণ সম্পাদনা একজন ব্যবহারকারীর করা উচিত",
 	"growthexperiments-edit-config-newcomertasks": "পরামর্শকৃত সম্পাদনা",
 	"growthexperiments-edit-config-newcomer-tasks-description": "কিছু পরামর্শকৃত সম্পাদনা রক্ষণাবেক্ষণ টেমপ্লেটের মাধ্যমে তৈরি হয়। যে সকল নিবন্ধে ঐ টেমপ্লেট যুক্ত করা আছে, সেগুলোই ফিডে প্রদর্শিত হয়। প্রতিটি কাজের জন্য কী পরিমাণে নিবন্ধ রয়েছে, তা জানতে [[Special:NewcomerTasksInfo|এই পাতাটি দেখুন]]।",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "নিষ্ক্রিয়",
@@ -90,5 +97,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "তথ্যছক টেমপ্লেটসমূহ",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "এই টেমপ্লেটসমূহ [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|ছবির পরামর্শসমূহ]] নবাগতদের কাজের জন্য প্রয়োজন। এই কাজের ধরনে এখানে সংজ্ঞায়িত টেমপ্লেটবিশিষ্ট নিবন্ধগুলো কাজ হিসেবে ব্যবহারকারীদের দেখানো হবে না।",
 	"growthexperiments-edit-config-delayed": "এই সেটিংয়ে পরিবর্তনগুলো অবিলম্বে কার্যকর হবে না (দেখুন [[mw:Growth/FAQ#add-link-config|FAQ]])।",
+	"growthexperiments-info-tooltip-close-label": "বন্ধ করুন",
 	"specialpages-group-growth-tools": "গ্রোথ সরঞ্জাম"
 }
