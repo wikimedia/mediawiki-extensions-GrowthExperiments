@@ -80,6 +80,7 @@ class SpecialMentorDashboard extends SpecialPage {
 			'mentee-overview' => 'stable',
 			'mentor-tools' => 'stable',
 			'resources' => 'stable',
+			'personalized-praise' => 'alpha',
 		];
 
 		$moduleConfig = array_filter( $rawConfig, static function ( $el ) use ( $deploymentMode ) {
@@ -104,6 +105,7 @@ class SpecialMentorDashboard extends SpecialPage {
 				'mentee-overview'
 			],
 			'sidebar' => [
+				'personalized-praise',
 				'mentor-tools',
 				'resources'
 			]

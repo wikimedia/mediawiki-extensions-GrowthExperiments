@@ -8,6 +8,7 @@ use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\UserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsManager;
 use Psr\Log\LoggerAwareTrait;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\ScopedCallback;
@@ -18,6 +19,7 @@ class PraiseworthyMenteeSuggester {
 	private const EXPIRATION_TTL = ExpirationAwareness::TTL_DAY;
 
 	private BagOStuff $globalCache;
+	private UserOptionsManager $userOptionsManager;
 	private PraiseworthyConditionsLookup $praiseworthyConditionsLookup;
 	private PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher;
 	private MentorStore $mentorStore;
@@ -25,6 +27,7 @@ class PraiseworthyMenteeSuggester {
 
 	/**
 	 * @param BagOStuff $globalCache
+	 * @param UserOptionsManager $userOptionsManager
 	 * @param PraiseworthyConditionsLookup $praiseworthyConditionsLookup
 	 * @param PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher
 	 * @param MentorStore $mentorStore
@@ -32,12 +35,14 @@ class PraiseworthyMenteeSuggester {
 	 */
 	public function __construct(
 		BagOStuff $globalCache,
+		UserOptionsManager $userOptionsManager,
 		PraiseworthyConditionsLookup $praiseworthyConditionsLookup,
 		PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher,
 		MentorStore $mentorStore,
 		UserImpactLookup $userImpactLookup
 	) {
 		$this->globalCache = $globalCache;
+		$this->userOptionsManager = $userOptionsManager;
 		$this->praiseworthyConditionsLookup = $praiseworthyConditionsLookup;
 		$this->notificationsDispatcher = $notificationsDispatcher;
 		$this->mentorStore = $mentorStore;
@@ -209,5 +214,36 @@ class PraiseworthyMenteeSuggester {
 		$this->globalCache->set( $key, $data, self::EXPIRATION_TTL );
 
 		$this->notificationsDispatcher->onMenteeSuggested( $mentorUser, $menteeImpact->getUser() );
+	}
+
+	/**
+	 * Mark a mentee as already praised
+	 *
+	 * @param UserIdentity $mentee
+	 */
+	public function markMenteeAsPraised( UserIdentity $mentee ): void {
+		$mentor = $this->mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
+		if ( !$mentor ) {
+			return;
+		}
+
+		$this->userOptionsManager->setOption(
+			$mentee,
+			PraiseworthyConditionsLookup::WAS_PRAISED_PREF,
+			true
+		);
+		$this->userOptionsManager->saveOptions( $mentee );
+
+		if ( $this->isMenteeMarkedAsPraiseworthy( $mentee, $mentor ) ) {
+			$this->globalCache->merge(
+				$this->makeCacheKeyForMentor( $mentor ),
+				static function ( $cache, $key, $value ) use ( $mentee ) {
+					if ( array_key_exists( $mentee->getId(), $value ) ) {
+						unset( $value[$mentee->getId()] );
+					}
+					return $value;
+				}
+			);
+		}
 	}
 }

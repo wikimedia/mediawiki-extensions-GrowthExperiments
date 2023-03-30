@@ -688,6 +688,7 @@ return [
 
 		$suggester = new PraiseworthyMenteeSuggester(
 			$services->getMainObjectStash(),
+			$services->getUserOptionsManager(),
 			$geServices->getPraiseworthyConditionsLookup(),
 			$geServices->getPersonalizedPraiseNotificationsDispatcher(),
 			$geServices->getMentorStore(),

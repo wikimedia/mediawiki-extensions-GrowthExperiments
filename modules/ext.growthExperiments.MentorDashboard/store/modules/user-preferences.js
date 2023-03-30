@@ -7,6 +7,11 @@ const storeState = {
 	isLoading: false
 };
 
+const personalizedPraiseSettings = mw.config.get( 'GEPersonalizedPraiseSettings' );
+if ( personalizedPraiseSettings ) {
+	mw.user.options.set( 'growthexperiments-personalized-praise-settings', personalizedPraiseSettings );
+}
+
 // getters
 const getters = {
 	getPreferenceByName( name ) {
