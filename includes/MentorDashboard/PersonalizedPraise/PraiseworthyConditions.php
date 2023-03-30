@@ -2,7 +2,9 @@
 
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
-class PraiseworthyConditions {
+use JsonSerializable;
+
+class PraiseworthyConditions implements JsonSerializable {
 
 	/** @var int Maximum number of edits a mentee can have to be praiseworthy */
 	private int $maxEdits;
@@ -31,6 +33,15 @@ class PraiseworthyConditions {
 		$this->maxEdits = $maxEdits;
 		$this->minEdits = $minEdits;
 		$this->days = $days;
+	}
+
+	/** @inheritDoc */
+	public function jsonSerialize(): array {
+		return [
+			'maxEdits' => $this->maxEdits,
+			'minEdits' => $this->minEdits,
+			'days' => $this->days
+		];
 	}
 
 	/**

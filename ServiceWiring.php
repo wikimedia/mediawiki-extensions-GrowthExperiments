@@ -661,7 +661,11 @@ return [
 
 		return new PersonalizedPraiseSettings(
 			$geServices->getGrowthWikiConfig(),
-			$services->getUserOptionsManager()
+			RequestContext::getMain(),
+			$services->getUserOptionsManager(),
+			$services->getUserFactory(),
+			$services->getTitleFactory(),
+			$services->getRevisionLookup()
 		);
 	},
 
