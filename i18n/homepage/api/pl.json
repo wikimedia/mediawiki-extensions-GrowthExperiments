@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Msz2001",
-			"Tar Lócesilion"
+			"Tar Lócesilion",
+			"Woytecr"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Uzyskaj sformatowane pytania wyświetlane za pośrednictwem modułów strony głównej",
@@ -14,6 +15,6 @@
 	"apihelp-growthsetmentor-param-mentee": "Nazwa nowicjusza(-ki)",
 	"apihelp-growthsetmentor-param-mentor": "Nazwa przewodnika",
 	"apihelp-growthsetmentor-param-reason": "Powód zmiany",
-	"apihelp-growthinvalidateimagerecommendation-summary": "Unieważnij zadanie sugerowania obrazków",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Unieważnij sugerowaną ilustrację",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Tytuł artykułu, dla którego sugerować obrazki"
 }

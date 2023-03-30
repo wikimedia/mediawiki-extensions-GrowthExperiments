@@ -16,11 +16,13 @@
 	"apihelp-query+growthtasks-param-debug": "Dodaj dane debugowania do danych wyjściowych.",
 	"apihelp-query+growthtasks-example-1": "Uzyskaj rekomendowane zadania związane z korektą tekstu, odpowiednie dla użytkownika.",
 	"apihelp-query+growthtasks-example-2": "Uzyskaj rekomendowane zadania dla użytkownika z pogłębionymi informacjami o stronach.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Uzyskaj sugerowany typ zadania dla użytkownika do wypróbowania jako następnej.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Typ zadania, nad którym aktualnie pracuje użytkownik.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Brakuje parametru 'accepted' w danych pluginu Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Parametr 'accepted' w danych pluginu Add Image musi być wartością logiczną, a jest $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "Brakuje parametru 'reason' w danych pluginu Add Image",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Parametr 'reason' w danych pluginu Add Image musi być tablicą, a jest $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Niepoprawny element '$1' w parametrze 'reason'; oczekiwano wartości ze zbioru: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "Brakuje parametru 'reasons' w danych pluginu Add Image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Parametr 'reasons' w danych pluginu Add Image musi być tablicą, a jest typu $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Niepoprawny element '$1' w parametrze 'reasons'; oczekiwano wartości ze zbioru: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Wpis sugestii linku nie został odnaleziony",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Nieoczekiwane strony docelowe rekomendacji linków: $1"
 }
