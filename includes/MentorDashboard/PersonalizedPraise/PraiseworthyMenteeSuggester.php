@@ -19,23 +19,27 @@ class PraiseworthyMenteeSuggester {
 
 	private BagOStuff $globalCache;
 	private PraiseworthyConditionsLookup $praiseworthyConditionsLookup;
+	private PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher;
 	private MentorStore $mentorStore;
 	private UserImpactLookup $userImpactLookup;
 
 	/**
 	 * @param BagOStuff $globalCache
 	 * @param PraiseworthyConditionsLookup $praiseworthyConditionsLookup
+	 * @param PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher
 	 * @param MentorStore $mentorStore
 	 * @param UserImpactLookup $userImpactLookup
 	 */
 	public function __construct(
 		BagOStuff $globalCache,
 		PraiseworthyConditionsLookup $praiseworthyConditionsLookup,
+		PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher,
 		MentorStore $mentorStore,
 		UserImpactLookup $userImpactLookup
 	) {
 		$this->globalCache = $globalCache;
 		$this->praiseworthyConditionsLookup = $praiseworthyConditionsLookup;
+		$this->notificationsDispatcher = $notificationsDispatcher;
 		$this->mentorStore = $mentorStore;
 		$this->userImpactLookup = $userImpactLookup;
 	}
@@ -140,6 +144,7 @@ class PraiseworthyMenteeSuggester {
 			$this->getPraiseworthyMenteesForMentorUncached( $mentor ),
 			self::EXPIRATION_TTL
 		);
+		$this->notificationsDispatcher->maybeNotifyAboutPendingMentees( $mentor );
 	}
 
 	/**
@@ -202,5 +207,7 @@ class PraiseworthyMenteeSuggester {
 		}
 		$data[$menteeImpact->getUser()->getId()] = $menteeImpact;
 		$this->globalCache->set( $key, $data, self::EXPIRATION_TTL );
+
+		$this->notificationsDispatcher->onMenteeSuggested( $mentorUser, $menteeImpact->getUser() );
 	}
 }

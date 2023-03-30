@@ -23,6 +23,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseNotificationsDispatcher;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
@@ -640,6 +641,19 @@ return [
 		);
 	},
 
+	'GrowthExperimentsPersonalizedPraiseNotificationsDispatcher' => static function (
+		MediaWikiServices $services
+	): PersonalizedPraiseNotificationsDispatcher {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		return new PersonalizedPraiseNotificationsDispatcher(
+			$services->getMainConfig(),
+			$services->getMainObjectStash(),
+			$services->getSpecialPageFactory(),
+			$geServices->getPersonalizedPraiseSettings()
+		);
+	},
+
 	'GrowthExperimentsPersonalizedPraiseSettings' => static function (
 		MediaWikiServices $services
 	): PersonalizedPraiseSettings {
@@ -671,6 +685,7 @@ return [
 		$suggester = new PraiseworthyMenteeSuggester(
 			$services->getMainObjectStash(),
 			$geServices->getPraiseworthyConditionsLookup(),
+			$geServices->getPersonalizedPraiseNotificationsDispatcher(),
 			$geServices->getMentorStore(),
 			$geServices->getUserImpactStore()
 		);

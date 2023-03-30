@@ -6,6 +6,7 @@ use Config;
 use DeferredUpdates;
 use EchoAttributeManager;
 use EchoUserLocator;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\EchoNewPraiseworthyMenteesPresentationModel;
 use GrowthExperiments\Mentorship\EchoMenteeClaimPresentationModel;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\Mentorship\MentorManager;
@@ -70,7 +71,7 @@ class MentorHooks implements
 	}
 
 	/**
-	 * Add GrowthExperiments events to Echo
+	 * Add Mentorship events to Echo
 	 *
 	 * @param array &$notifications array of Echo notifications
 	 * @param array &$notificationCategories array of Echo notification categories
@@ -105,6 +106,16 @@ class MentorHooks implements
 					[ EchoUserLocator::class, 'locateFromEventExtra' ],
 					[ 'mentor' ]
 				]
+			]
+		];
+		$notifications['new-praiseworthy-mentees'] = [
+			'category' => 'ge-mentorship',
+			'group' => 'positive',
+			'section' => 'message',
+			'canNotifyAgent' => true,
+			'presentation-model' => EchoNewPraiseworthyMenteesPresentationModel::class,
+			EchoAttributeManager::ATTR_LOCATORS => [
+				EchoUserLocator::class . '::locateEventAgent'
 			]
 		];
 
