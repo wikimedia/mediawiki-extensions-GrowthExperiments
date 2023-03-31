@@ -27,6 +27,13 @@ create demos for GrowthExperiments components.
 - [Post edit dialog](./demos/post-edit-dialog)
 - [Add Link dialog](./demos/add-link-dialog)
 
+### Low-level components
+
+These are demos for components used for building the _Proof-of-concept_ demos above. These
+are candidates to be eventually upstreamed to Codex or re-used by other teams. 
+
+- [On-boarding dialog](./demos/onboarding-dialog) ([T332767](https://phabricator.wikimedia.org/T332767))
+
 ## Importing components into MediaWiki
 
 Due to MediaWiki's ResourceLoader constraints on ES modules usage and the
