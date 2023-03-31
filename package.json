@@ -50,7 +50,7 @@
 		"postcss-html": "1.4.1",
 		"rollup": "3.2.5",
 		"stylelint-config-recommended-vue": "1.4.0",
-		"stylelint-config-wikimedia": "0.13.0",
+		"stylelint-config-wikimedia": "0.14.0",
 		"svgo": "2.8.0",
 		"vue": "3.2.37",
 		"vuex": "4.0.2",

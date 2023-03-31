@@ -120,11 +120,11 @@ module.exports = exports = {
 			margin-left: 2px;
 		}
 
-		&__talkpage:before {
+		&__talkpage::before {
 			content: '(';
 		}
 
-		&__talkpage:after {
+		&__talkpage::after {
 			content: ')';
 		}
 	}
