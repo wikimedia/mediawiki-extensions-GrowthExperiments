@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Eduardoaddad",
+			"Re demz",
 			"Stanglavine",
 			"YuriNikolai",
 			"Zapipedia (WMF)"
@@ -92,6 +93,8 @@
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|O seu mentorado, $3, foi adotado|A sua mentorada, $3, foi adotada}} por $1.{{GENDER:$2|}}",
 	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "O que é \"Adotar mentorado\"?",
+	"growthexperiments-notification-header-new-praiseworthy-mentees": "Mande incentivos a aprendizes através do seu painel de Mentor",
+	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Ver painel de mentor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Número de mentorados que me estão atribuídos",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Nenhum",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Cerca de metade da média",
@@ -103,6 +106,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Salvar",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Cancelar",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Mensagem de introdução",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "Apreciação por um trabalho bem feito!",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Hello $1, eu sou o seu mentor. Obrigada por suas contribuições. Vi que você está ocupado editando e eu queria usar esse momento para te agradecer e eu espero  que você continue presente! Sinta se a vontade para mandar mensagens na minha página de discussão se tiver perguntas. \nAbraço!",
 	"growthexperiments-mentor-list-missing-key": "A chave <code>$1</code> está em falta",
 	"growthexperiments-mentor-list-datatype-mismatch": "Era esperado que <code>$1</code> fosse <code>$2</code>, mas é <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "A definição de mentor contém uma chave inesperada <code>$1</code>",

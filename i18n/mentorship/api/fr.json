@@ -30,5 +30,7 @@
 	"apihelp-growthmanagementorlist-param-autoassigned": "Le tuteur est-il automatiquement affecté aux novices ?",
 	"apihelp-growthmanagementorlist-param-summary": "Motif du changement",
 	"apihelp-growthmanagementorlist-param-username": "Nom du tuteur affecté par le changement. S’il n’est pas fourni, l’utilisateur actuellement connecté sera utilisé. Ceci ne peut être utilisé que par des utilisateurs privilégiés.",
-	"growthexperiments-api-managementors-error-no-away-timestamp": "Si « isaway » (est absent(e)) vaut « true » (vrai), alors le paramètre « awaytimestamp » (horodatage d’absence) doit être fourni."
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Si « isaway » (est absent(e)) vaut « true » (vrai), alors le paramètre « awaytimestamp » (horodatage d’absence) doit être fourni.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalide une suggestion de félicitation de tutoré ans le module de félicitations personnalisé sur le tableau de bord du tuteur",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Tutoré à invalider"
 }

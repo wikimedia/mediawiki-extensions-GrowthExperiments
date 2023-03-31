@@ -31,5 +31,7 @@
 	"apihelp-growthmanagementorlist-param-autoassigned": "Wird Neuankömmlingen der Lotse automatisch zugeteilt?",
 	"apihelp-growthmanagementorlist-param-summary": "Grund für die Änderung",
 	"apihelp-growthmanagementorlist-param-username": "Benutzername des von der Änderung betroffenen Lotsen. Wenn nicht angegeben, wird der aktuell angemeldete Benutzer verwendet. Kann nur von privilegierten Benutzern verwendet werden.",
-	"growthexperiments-api-managementors-error-no-away-timestamp": "Wenn isaway wahr ist, muss awaytimestamp angegeben werden."
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Wenn isaway wahr ist, muss awaytimestamp angegeben werden.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Ungültigmachung eines Vorschlags für einen lobenswerten Mentee im Modul personalisiertes Lob auf dem Lotsen-Dashboard",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Mentee für ungültig erklären"
 }
