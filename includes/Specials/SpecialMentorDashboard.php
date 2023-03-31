@@ -6,12 +6,12 @@ use DeferredUpdates;
 use ErrorPageError;
 use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
+use GrowthExperiments\EventLogging\SpecialMentorDashboardLogger;
 use GrowthExperiments\MentorDashboard\MentorDashboardDiscoveryHooks;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Util;
 use Html;
-use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\User\UserOptionsLookup;
 use PermissionsError;
@@ -26,12 +26,6 @@ class SpecialMentorDashboard extends SpecialPage {
 		'beta' => [ 'beta', 'alpha' ],
 		'alpha' => [ 'alpha' ]
 	];
-
-	/** @var string Versioned schema URL for $schema field */
-	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/visit/1.0.0';
-
-	/** @var string Stream name for EventLogging::submit */
-	private const STREAM = 'mediawiki.mentor_dashboard.visit';
 
 	private MentorDashboardModuleRegistry $mentorDashboardModuleRegistry;
 	private MentorProvider $mentorProvider;
@@ -209,14 +203,12 @@ class SpecialMentorDashboard extends SpecialPage {
 	private function maybeLogVisit(): void {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) ) {
 			DeferredUpdates::addCallableUpdate( function () {
-				EventLogging::submit(
-					self::STREAM,
-					[
-						'$schema' => self::SCHEMA_VERSIONED,
-						'user_id' => $this->getUser()->getId(),
-						'is_mobile' => Util::isMobile( $this->getSkin() )
-					]
+				$logger = new SpecialMentorDashboardLogger(
+					$this->getUser(),
+					$this->getRequest(),
+					Util::isMobile( $this->getSkin() )
 				);
+				$logger->log();
 			} );
 		}
 	}
