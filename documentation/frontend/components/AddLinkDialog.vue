@@ -5,6 +5,7 @@
 		v-model="modelValue"
 		:total-steps="3"
 		:initial-step="0"
+		class="ext-growthExperiments-AddLinkDialog"
 	>
 		<template #title>
 			Introduction
@@ -14,50 +15,51 @@
 		</template>
 		<template #body="{ currentIndex }">
 			<onboarding-step
-
 				:current-index="currentIndex"
 				:index="1"
 			>
 				<template #image>
-					<div
-						class="
-							ext-growthExperiments-AddLinkDialog__image
-							ext-growthExperiments-AddLinkDialog__image-1">
+					<div class="ext-growthExperiments-AddLinkDialog__image">
+						<img
+							src="../../../images/addlink/onboarding-image1-ltr.svg"
+							width="360"
+							height="216"
+							alt="">
 					</div>
 				</template>
-				<template #header>
-					<h5 class="ext-growthExperiments-AddLinkDialog__text__title">
-						Adding links will help people learn faster.
-					</h5>
+				<template #content-title>
+					Adding links will help people learn faster.
 				</template>
-				<template #main>
-					<p>
-						You will decide whether words in one Wikipedia article should link
-						to other Wikipedia articles.
-					</p>
-					<div
-						class="ext-growthExperiments-AddLinkDialog__text__label">
-						Example sentence
-					</div>
-					<div
-						class="
-							ext-growthExperiments-AddLinkDialog__text__example">
-						The moon is the only
-						<!-- eslint-disable-next-line max-len -->
-						<mark class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
-							natural satellite</mark> that
-						<mark
+				<template #content-text>
+					<div>
+						<p>
+							You will decide whether words in one Wikipedia article should link
+							to other Wikipedia articles.
+						</p>
+						<div
+							class="ext-growthExperiments-AddLinkDialog__text__label">
+							Example sentence
+						</div>
+						<div
 							class="
-						ext-growthExperiments-AddLinkDialog__text__example__highlighted">
-							orbits</mark> around the
-						<mark
-							class="
-						ext-growthExperiments-AddLinkDialog__text__example__highlighted">
-							Earth</mark>.
+						ext-growthExperiments-AddLinkDialog__text__example">
+							The moon is the only
+							<!-- eslint-disable-next-line max-len -->
+							<mark class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
+								natural satellite</mark> that
+							<mark
+								class="
+					ext-growthExperiments-AddLinkDialog__text__example__highlighted">
+								orbits</mark> around the
+							<mark
+								class="
+					ext-growthExperiments-AddLinkDialog__text__example__highlighted">
+								Earth</mark>.
+						</div>
+						<p>
+							No special knowledge about the article is needed to do this task.
+						</p>
 					</div>
-					<p>
-						No special knowledge about the article is needed to do this task.
-					</p>
 				</template>
 			</onboarding-step>
 			<onboarding-step
@@ -65,18 +67,18 @@
 				:index="2"
 				:current-index="currentIndex">
 				<template #image>
-					<div
-						class="
-							ext-growthExperiments-AddLinkDialog__image
-							ext-growthExperiments-AddLinkDialog__image-2">
+					<div class="ext-growthExperiments-AddLinkDialog__image">
+						<img
+							src="../../../images/addlink/onboarding-image2-ltr.svg"
+							width="360"
+							height="216"
+							alt="">
 					</div>
 				</template>
-				<template #header>
-					<h5 class="ext-growthExperiments-AddLinkDialog__text__title">
-						Suggested links are machine-generated, and can be incorrect.
-					</h5>
+				<template #content-title>
+					Suggested links are machine-generated, and can be incorrect.
 				</template>
-				<template #main>
+				<template #content-text>
 					<!-- eslint-disable-next-line max-len -->
 					<p>The suggestions might be on words that don’t need them, or might link to the wrong article. Use your judgment to decide whether they are right or wrong.</p>
 				</template>
@@ -87,18 +89,18 @@
 				:index="3"
 				:current-index="currentIndex">
 				<template #image>
-					<div
-						class="
-							ext-growthExperiments-AddLinkDialog__image
-							ext-growthExperiments-AddLinkDialog__image-3">
+					<div class="ext-growthExperiments-AddLinkDialog__image">
+						<img
+							src="../../../images/addlink/onboarding-image3-ltr.svg"
+							width="360"
+							height="216"
+							alt="">
 					</div>
 				</template>
-				<template #header>
-					<h5 class="ext-growthExperiments-AddLinkDialog__text__title">
-						Guidelines
-					</h5>
+				<template #content-title>
+					Guidelines
 				</template>
-				<template #main>
+				<template #content-text>
 					<div class="ext-growthExperiments-AddLinkDialog__text__list">
 						<ul>
 							<li>Link concepts that a reader might want to learn more about.</li>
@@ -151,32 +153,38 @@ export default {
 	@import './variables.less';
 
 	.ext-growthExperiments-AddLinkDialog {
-		&__image {
-			height: 216px;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-color: @onboardingBackgroundColor;
+		width: 500px;
+		color: @color-base;
+		// REVIEW Overwrite Codex's gutter between header/body and body/footer. The gutter
+		// generated by the Cdx-dialog gap: 32px and position the paginator just below header
+		// stylelint-disable-next-line selector-class-pattern
+		&.cdx-dialog {
+			gap: 0;
+		}
 
-			&-1 {
-				background-image: url( ../../../images/addlink/onboarding-image1-ltr.svg );
-			}
+		// Position the paginator relative to the dialog content to scroll with step content
+		.ext-growthExperiments-OnboardingDialog__content {
+			position: relative;
 
-			&-2 {
-				background-image: url( ../../../images/addlink/onboarding-image2-ltr.svg );
-			}
-
-			&-3 {
-				background-image: url( ../../../images/addlink/onboarding-image3-ltr.svg );
+			&__paginator {
+				top: 0;
 			}
 		}
 
-		&__text {
-			&__title {
-				font-size: @font-size-medium;
-				line-height: @line-height-xx-small;
-				font-weight: @font-weight-bold;
-			}
+		&__image {
+			// REVIEW The negative margin values are needed to overwrite
+			// CdxDialog body left and right gutter and display full bleed image
+			margin-left: @spacing-150 * -1em;
+			margin-right: @spacing-150 * -1em;
+			background-color: @onboardingBackgroundColor;
+			// This border color is not a DS border-color yet and may be changed
+			// See https://phabricator.wikimedia.org/T332567
+			border-bottom: @border-width-base solid @onboardingImageBorderColor;
+			display: flex;
+			justify-content: center;
+		}
 
+		&__text {
 			&__label {
 				color: @color-placeholder;
 				font-size: @font-size-x-small;
