@@ -63,21 +63,22 @@ class LevelingUpHooks implements
 		array $saveResult,
 		array &$apiResponse
 	): void {
-		if ( !self::isLevelingUpEnabledForUser( $user, $this->config, $this->experimentUserManager ) ) {
-			return;
-		}
-
-		// Ignore suggested edits.
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$pluginFields = array_map(
 			fn( $taskTypeId ) => VisualEditorHooks::PLUGIN_PREFIX . $taskTypeId,
 			array_keys( $taskTypes )
 		);
-		if ( array_intersect( $pluginFields, array_keys( $pluginData ) ) ) {
-			return;
-		}
+		$isSuggestedEdit = count( array_intersect( $pluginFields, array_keys( $pluginData ) ) ) > 0;
 
-		if ( !$this->levelingUpManager->shouldInviteUserAfterNormalEdit( $user ) ) {
+		// Check that the feature is enabled, we are editing an article and the user
+		// just passed the threshold for the invite.
+		// Also check if the current edit is a suggested edit, as a micro-optimisation
+		// (shouldInviteUserAfterNormalEdit() would discard that case anyway).
+		if ( $page->getNamespace() !== NS_MAIN
+			|| $isSuggestedEdit
+			|| !self::isLevelingUpEnabledForUser( $user, $this->config, $this->experimentUserManager )
+			|| !$this->levelingUpManager->shouldInviteUserAfterNormalEdit( $user )
+		) {
 			return;
 		}
 
@@ -99,9 +100,10 @@ class LevelingUpHooks implements
 			|| ( $out->getJsConfigVars()['wgPostEdit'] ?? false );
 
 		if (
-			// Check that the feature is enabled, we are indeed in a post-edit reload, and
-			// the user just passed the threshold for the invite.
+			// Check that the feature is enabled, we are indeed in the post-edit reload of
+			// an article, and the user just passed the threshold for the invite.
 			!$isPostEditReload
+			|| ( !$out->getTitle() || !$out->getTitle()->inNamespace( NS_MAIN ) )
 			|| !self::isLevelingUpEnabledForUser( $out->getUser(), $this->config, $this->experimentUserManager )
 			|| !$this->levelingUpManager->shouldInviteUserAfterNormalEdit( $out->getUser() )
 		) {
