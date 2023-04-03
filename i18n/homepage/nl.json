@@ -16,7 +16,8 @@
 			"Nickthijssen1994",
 			"Robin van der Vliet",
 			"Romaine",
-			"Rots61"
+			"Rots61",
+			"Sjoerddebruin"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -81,7 +82,9 @@
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Schakel JavaScript in om dit onderdeel te bekijken.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Uw}} impact",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Recente activiteit ({{PLURAL:$1|vandaag|laatste $1 dagen}})",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Laatst bewerkt",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Weergaven bewerkte artikelen",
+	"growthexperiments-homepage-impact-scores-edit-count": "Totaal aantal bewerkingen",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} wordt door een gemeenschap van redacteuren gemaakt. Wie bijdraagt kan van een ander een bedankje krijgen voor een bewerking. Het aantal ontvangen bedankjes wordt hier weergegeven.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Dit is het hoogste aantal dagen op rij dat er ten minste één bewerking is uitgevoerd.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "De momenteel langste onafgebroken serie is $1 dag{{PLURAL:$1||en}} lang en werd tussen $2 behaald.",

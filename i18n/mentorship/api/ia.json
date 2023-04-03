@@ -28,5 +28,7 @@
 	"apihelp-growthmanagementorlist-param-autoassigned": "Es le mentor assignate automaticamente al novicios?",
 	"apihelp-growthmanagementorlist-param-summary": "Motivo del cambiamento",
 	"apihelp-growthmanagementorlist-param-username": "Le nomine del usator del mentor affectate per le cambiamento. Si non fornite, le usator actualmente in session essera usate. Pote solo esser usate per usatores privilegiate.",
-	"growthexperiments-api-managementors-error-no-away-timestamp": "Si isaway es ver, alora awaytimestamp debe esser fornite."
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Si isaway es ver, alora awaytimestamp debe esser fornite.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalida un suggestion de un apprentisse digne de laude in le modulo de laude personalisate sur le tabuliero del mentor",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Le apprentisse a invalidar"
 }

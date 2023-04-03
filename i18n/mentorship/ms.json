@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"growthexperiments-notification-header-new-praiseworthy-mentees": "Hantar sokongan kepada menti-menti melalui papan pemuka Mentor",
+	"growthexperiments-notification-body-new-praiseworthy-mentees": "Menti-menti telah dipaparkan penghargaan pada papan pemuka anda.",
+	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Lihat papan pemuka mentor",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "Inilah penghargaan kerana menyiapkan kerja dengan baik!",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Apa khabar $1, sayalah mentor anda. Terima kasih atas sumbangan anda. Saya dapat perhatikan kesungguhan anda dalam menyunting dan saya ingin mengambil kesempatan untuk berterima kasih kepada anda, dan saya berhadap anda dapat teruskan usaha anda! Jika ada masa lapang sila tinggalkan mesej pada laman perbincangan saya jika ada sebarang persoalan.",
+	"growthexperiments-mentor-dashboard-personalized-praise-title": "Kirim penghargaan",
+	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Pesanan positif dari pengguna-pengguna berpengalaman dan mentor-mentor berupaya membantu pengekalan penyunting baharu.",
+	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Metrik: Sebanyak $1 suntingan dalam $2 hari. Sesuaikan angka-angka ini melalui tetapan.",
+	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "Menti yang berbaloi untuk dipuji akan ditunjukkan di sini.",
+	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "$1 berbincang topik-topik",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$1 of $2 {{PLURAL:$2|menti|orang menti}}",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "Halaman terdahulu",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Halaman berikutnya",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation": "Hantar penghargaan",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Berlakunya ralat. Sila cuba lagi kemudian.",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Buka dialog tetapan",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Tetapan",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Metrik menti-menti yang patut dipuji",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe": "Suntingan dalam sesuatu rangka masa",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline": "Pesanan positif lalai anda",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Subjek",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Pemberitahuan",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext": "{{GENDER:|Anda}} akan diberitahu selepas menti dipaparkan pujian untuknya.",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Simpan",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Batalkan"
+}

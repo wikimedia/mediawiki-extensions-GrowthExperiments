@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Mentaksahkan cadangan dari menti yang terpuji dalam modul pemujian diperibadikan pada papan pemuka Mentor.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Menti yang perlu ditaksahkan"
+}

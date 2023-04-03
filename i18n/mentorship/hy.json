@@ -46,5 +46,11 @@
 	"growthexperiments-notification-body-mentee-claimed": "Պատճառ՝ $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Հիշել",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Չեղարկել",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "Նախորդ էջ",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Հաջորդ էջ",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Կարգավորումներ",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Ծանուցումներ",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Հիշել",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Չեղարկել",
 	"growthexperiments-manage-mentors-username": "Օգտանուն"
 }

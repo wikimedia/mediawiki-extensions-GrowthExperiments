@@ -8,6 +8,12 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "सदस्यनाम",
 	"growthexperiments-quit-mentorship-reason": "कारण",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "कोई नहीं",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "अगला पृष्ठ",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "सेटिंग्स",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "विषय",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "अधिसूचनाएँ",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "सहेजें",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "रद्द करें",
 	"growthexperiments-mentor-writer-error-message-too-long": "परिचय संदेश कुछ ज़्यादा ही लंबा है। अधिकतम लंबाई है $1।",
 	"growthexperiments-manage-mentors-none": "कोई नहीं",
 	"growthexperiments-manage-mentors-edit": "सम्पादन"
