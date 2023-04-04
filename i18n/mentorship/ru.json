@@ -11,7 +11,8 @@
 			"Pacha Tchernof",
 			"Deltaspace",
 			"UniCollab",
-			"Radmir Far"
+			"Radmir Far",
+			"Kaganer"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
@@ -58,7 +59,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Посмотреть список наставников",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Как представить себя в качестве {{GENDER:|наставника|наставницы}}",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Как взять подопечного",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "Инструменты Роста",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Инструменты от команды роста",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Настройки",
 	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Информация о наставничестве",
 	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "Этот модуль содержит настройки для вашего статуса {{GENDER:|наставника|наставницы}}. Если же вы хотите навсегда прекратить наставничество, инструкции как это сделать размещены на следующей странице: [[Special:QuitMentorship|Как покинуть наставничество?]]",

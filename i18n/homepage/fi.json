@@ -9,7 +9,8 @@
 			"Nike",
 			"Pyscowicz",
 			"Rönttönen",
-			"Veikk0.ma"
+			"Veikk0.ma",
+			"Yupik"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
@@ -275,6 +276,7 @@
 	"growthexperiments-claimmentee-confirm": "Kyllä, haluan vaihtaa mentoria",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|otti}} käyttäjän {{GENDER:$6|$3}} mentoroitavakseen (edellinen {{GENDER:$4|mentori}} $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|otti}} käyttäjän {{GENDER:$6|$3}} mentoroitavakseen (ei aiempaa mentoria)",
+	"log-action-filter-growthexperiments-addlink": "Linkkiehdotukset",
 	"log-action-filter-growthexperiments-addimage": "Kuvaehdotukset",
 	"growthexperiments-notification-body-mentor-change": "Syy: $1",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Sinun}} täytyy olla mentorilistalla [[$2]] voidaksesi käyttää toimintosivua Special:ClaimMentee",

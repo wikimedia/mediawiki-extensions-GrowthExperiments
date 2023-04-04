@@ -65,6 +65,9 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nie",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Strona zawierająca listę przewodników automatycznie przydzielanych nowicjuszom",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Strona zawierająca listę przewodników, którzy chcą wybierać nowicjuszy sami",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Czy użytkownicy powinni automatycznie kwalifikować się do bycia wikiprzewodnikami?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Tak, zezwól użytkownikom spełniającym wszystkie poniższe kryteria kwalifikacyjne na zapisywanie się jako wikiprzewodnicy.",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Nie, nie zezwalaj żadnym użytkownikom na zapisywanie się jako wikiprzewodnicy.",
 	"growthexperiments-edit-config-newcomertasks": "Sugerowane edycje",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Niektóre rodzaje sugerowanych edycji wybierane są poprzez szablony problemów umieszczane w artykułach. Artykuły zawierające te szablony będą dodawane do kanału. Aby zobaczyć ile artykułów zostało wybranych dla każdego z rodzajów zadań, zobacz [[Special:NewcomerTasksInfo|tę stronę]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Wyłącz",
@@ -80,10 +83,15 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Aktualizacja: szablony, które znajdują się na stronach wymagających aktualizacji.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Strona pomocy dotycząca aktualizowania artykułów.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Strona pomocy dotycząca zadania z sugerowaniem linków wewnętrznych.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "Maksymalna liczba sugestii linków do wyświetlenia w każdym sugerowanym zadaniu.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "Maksymalna liczba sugerowanych zadań „Dodaj link”, które nowicjusz może wykonać na dzień.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Lista nazw sekcji, w których nie należy polecać dodawania żadnych linków.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Strona pomocy dotycząca zadania z sugerowaniem ilustracji.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "Maksymalna liczba sugerowanych zadań „Dodaj ilustrację”, które nowicjusz może wykonać na dzień.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Ten rodzaj zadania używa do podpowiedzi sugestie maszynowe zamiast stron zawierających określone szablony.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artykuły mające te szablony nie będą pokazywane użytkownikom w zadaniach tego typu.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artykuły w tych kategoriach nie będą pokazywane użytkownikom w zadaniach tego typu.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Szablony infoboksów",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Te szablony są uwzględniane przy zadaniu [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|z sugestiami ilustracji]] dla nowicjuszy. Artykuły zawierające te szablony nie będą pokazywane w sugestiach dla tego zadania."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Te szablony są uwzględniane przy zadaniu [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|z sugestiami ilustracji]] dla nowicjuszy. Artykuły zawierające te szablony nie będą pokazywane w sugestiach dla tego zadania.",
+	"growthexperiments-edit-config-delayed": "Zmiany tego ustawienia nie zaczną obowiązywać natychmiast (patrz [[mw:Growth/FAQ#add-link-config|FAQ]])."
 }

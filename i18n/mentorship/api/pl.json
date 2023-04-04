@@ -19,7 +19,8 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Moduł opieki jest aktywny",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Moduł opieki jest całkowicie wyłączony. Ustala to zazwyczaj oprogramowanie w celu przeprowadzenia testów A/B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Podopieczny zrezygnował z opieki, a jego więź z przewodnikiem zostanie zniszczona. Moduł opieki zostanie zastąpiony opcją powrotu.",
-	"apihelp-query+growthmenteestatus-summary": "Sprawdź status opieki dla bieżącego użytkownika; sprawdź dokumentację action=growthsetmentorweight, aby uzyskać szczegółowe informacje o konkretnych statusach.",
+	"apihelp-query+growthmenteestatus-summary": "Sprawdź status opieki dla bieżącego użytkownika; sprawdź dokumentację action=growthsetmenteestatus, aby uzyskać szczegółowe informacje o konkretnych statusach.",
 	"apihelp-query+growthmentormentee-summary": "Uzyskaj wszystkich podopiecznych danego przewodnika",
-	"apihelp-query+growthmentormentee-param-gemmmentor": "Przewodnik, którego podopiecznych zwrócić"
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Przewodnik, którego podopiecznych zwrócić",
+	"apihelp-growthmanagementorlist-param-summary": "Powód zmiany"
 }
