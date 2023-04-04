@@ -106,6 +106,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "ߊ߬ ߘߐߛߊ߬",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "ߗߋߛߓߍ ߟߊߘߏ߲߬ߠߌ߲",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|ߌ ߟߊ߫}} ߗߋߛߓߍ߫ ߟߊ߬ߘߏ߲߬ߣߍ߲ ߓߘߊ߫ ߡߊߝߊ߬ߟߋ߲߫ ߞߵߊ߬ ߞߍ߫ \"$1\" ߘߌ߫.",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "ߞߐߜߍ߫ ߣߊ߬ߕߐ",
 	"growthexperiments-mentor-list-missing-key": "ߞߏ߲ߢߌ߲ <code>$1</code> ߞߐߢߌ߬ߣߊ߬ߣߍ߲߫",
 	"growthexperiments-mentor-list-datatype-mismatch": "ߛߎ߯ߦߊ <code>$1</code> ߘߐߞߐ߬ߣߐ߲߬ߣߍ߲߫ ߕߘߍ߬ ߦߋ߫ ߞߊ߬ ߞߍ߫ <code>$2</code> ߟߋ߬ ߘߌ߫߸ ߓߊ߬ߙߴߊ߬ ߦߋ߫ <code>$3</code> ߟߋ߬ ߘߌ߫",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "ߡߊߞߊ߬ߙߊ߲߬ߓߊ߮ ߘߊ߲߬ߠߊ߬ߕߍ߰ߟߌ ߞߣߐߘߐ ߦߋ߫ ߞߏ߲ߢߌ߲߫ <code>$1</code> ߘߐߞߐ߬ߣߐ߲߬ߓߊߟߌ ߟߋ߬ ߘߌ߫",
