@@ -95,19 +95,64 @@ module.exports = exports = {
 		},
 		timeframeItems() {
 			return [
-				{ label: 'Last 48 hours', value: 2 },
-				{ label: 'Last week', value: 7 },
-				{ label: 'Last 2 weeks', value: 15 },
-				{ label: 'Last month', value: 30 }
+				{
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours'
+					),
+					value: 2
+				},
+				{
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week'
+					),
+					value: 7
+				},
+				{
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks'
+					),
+					value: 15
+				},
+				{
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month'
+					),
+					value: 30
+				}
 			];
 		},
 		notificationFrequencyItems() {
 			return [
-				{ label: 'Immediately', value: 0 },
-				{ label: 'Daily', value: 24 },
-				{ label: 'Weekly', value: 168 },
-				{ label: 'Monthly', value: 720 },
-				{ label: 'Never', value: -1 }
+				{
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately'
+					),
+					value: 0
+				},
+				{
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily'
+					),
+					value: 24
+				},
+				{
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly'
+					),
+					value: 168
+				},
+				{
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly'
+					),
+					value: 720
+				},
+				{
+					label: this.$i18n(
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never'
+					),
+					value: -1
+				}
 			];
 		}
 	}
