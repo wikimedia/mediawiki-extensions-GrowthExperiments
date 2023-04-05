@@ -65,7 +65,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Vous serez absent(e) durant :",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "jours",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "L’entrée dans « Vous serez absent durant » n’est pas un nombre entier. Veuillez essayer à nouveau.",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Une erreur inconnue s’est produite. Veuillez essayer à nouveau plus tard.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Une erreur inconnue s’est produite. Veuillez essayer à nouveau ultérieurement.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Votre statut a été changé en « Actif ».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Votre statut a été changé en « Absent ».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Message à vos apprentis",
