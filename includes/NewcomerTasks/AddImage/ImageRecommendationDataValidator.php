@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use File;
+use MediaWiki\Language\RawMessage;
 use MWException;
 use StatusValue;
 
@@ -39,8 +40,10 @@ class ImageRecommendationDataValidator {
 			$invalidFilename = is_string( $filename ) ?
 				strip_tags( $filename ) :
 				'[type] ' . gettype( $filename );
-			return StatusValue::newFatal( 'rawmessage',
-				'Invalid filename format for ' . $titleTextSafe . ': ' . $invalidFilename );
+			return StatusValue::newFatal( new RawMessage(
+				'Invalid filename format for $1: $2',
+				[ $titleTextSafe, $invalidFilename ]
+			) );
 		}
 
 		$source = $imageRecommendationData->getSource();
@@ -49,18 +52,24 @@ class ImageRecommendationDataValidator {
 			ImageRecommendationImage::SOURCE_WIKIPEDIA,
 			ImageRecommendationImage::SOURCE_COMMONS,
 		], true ) ) {
-			return StatusValue::newFatal( 'rawmessage',
-				'Invalid source type for ' . $titleTextSafe . ': ' . strip_tags( $source ) );
+			return StatusValue::newFatal( new RawMessage(
+				'Invalid source type for $1: $2',
+				[ $titleTextSafe, strip_tags( $source ) ]
+			) );
 		}
 
 		if ( !is_string( $imageRecommendationData->getProjects() ) ) {
-			return StatusValue::newFatal( 'rawmessage',
-				'Invalid projects format for ' . $titleTextSafe );
+			return StatusValue::newFatal( new RawMessage(
+				'Invalid projects format for $1',
+				[ $titleTextSafe ]
+			) );
 		}
 
 		if ( !is_string( $imageRecommendationData->getDatasetId() ) ) {
-			return StatusValue::newFatal( 'rawmessage',
-				'Invalid datasetId format for ' . $titleTextSafe );
+			return StatusValue::newFatal( new RawMessage(
+				'Invalid datasetId format for $1',
+				[ $titleTextSafe ]
+			) );
 		}
 
 		return StatusValue::newGood();

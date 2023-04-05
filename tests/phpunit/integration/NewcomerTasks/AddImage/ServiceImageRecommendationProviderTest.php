@@ -20,6 +20,7 @@ use MediaWikiIntegrationTestCase;
 use MockTitleTrait;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
+use Status;
 use StatusValue;
 use TitleValue;
 
@@ -333,8 +334,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertInstanceOf( StatusValue::class, $result );
 		$this->assertTrue( $result->isOK() );
 		$this->assertSame(
-			'Invalid file Bad.png in article Foo. Filtered because AUDIO is not valid mime type ( BITMAP, DRAWING )',
-			$result->getErrors()[0]['params'][0]
+			'Invalid file Bad.png in article Foo. Filtered because AUDIO is not valid mime type (BITMAP, DRAWING)',
+			Status::wrap( $result )->getWikiText( false, false, 'en' )
 		);
 
 		$mockMetadataProvider = $this->createNoOpMock(
@@ -358,7 +359,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertTrue( $result->isOK() );
 		$this->assertSame(
 			'Invalid file Bad.png in article Foo. Filtered because not wide enough: 99 (minimum 100)',
-			$result->getErrors()[0]['params'][0]
+			Status::wrap( $result )->getWikiText( false, false, 'en' )
 		);
 	}
 
@@ -659,7 +660,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 				if ( !$response ) {
 					$this->fail( 'URL not configured: ' . $url );
 				}
-				list( $statusCode, $responseBody ) = $response;
+				[ $statusCode, $responseBody ] = $response;
 				if ( !is_string( $responseBody ) ) {
 					$responseBody = json_encode( $responseBody );
 				}

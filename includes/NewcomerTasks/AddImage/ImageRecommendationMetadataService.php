@@ -6,6 +6,7 @@ use FormatMetadata;
 use GrowthExperiments\Util;
 use MediaTransformError;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Language\RawMessage;
 use RepoGroup;
 use StatusValue;
 
@@ -59,8 +60,7 @@ class ImageRecommendationMetadataService {
 		if ( $file ) {
 			return ( new FormatMetadata )->fetchExtendedMetadata( $file );
 		}
-		return StatusValue::newFatal( 'rawmessage', 'Image file not found: '
-			. $fileName );
+		return StatusValue::newFatal( new RawMessage( 'Image file not found: $1', [ $fileName ] ) );
 	}
 
 	/**
@@ -73,15 +73,13 @@ class ImageRecommendationMetadataService {
 	public function getFileMetadata( string $fileName ) {
 		$file = $this->repoGroup->findFile( $fileName );
 		if ( !$file ) {
-			return StatusValue::newFatal( 'rawmessage', 'Image file not found: '
-				. $fileName );
+			return StatusValue::newFatal( new RawMessage( 'Image file not found: $1', [ $fileName ] ) );
 		} else {
 			$thumb = $file->transform( [ 'width' => self::THUMB_WIDTH ] );
 			if ( !$thumb ) {
 				return StatusValue::newFatal( 'rawmessage', 'Thumbnailing error' );
 			} elseif ( $thumb instanceof MediaTransformError ) {
-				return StatusValue::newFatal( 'rawmessage', 'Thumbnailing error: '
-					. $thumb->toText() );
+				return StatusValue::newFatal( new RawMessage( 'Thumbnailing error: $1', [ $thumb->toText() ] ) );
 			}
 		}
 		return [
@@ -107,8 +105,7 @@ class ImageRecommendationMetadataService {
 	public function getApiMetadata( string $fileName ) {
 		$file = $this->repoGroup->findFile( $fileName );
 		if ( !$file ) {
-			return StatusValue::newFatal( 'rawmessage', 'Image file not found: '
-				. $fileName );
+			return StatusValue::newFatal( new RawMessage( 'Image file not found: $1', [ $fileName ] ) );
 		}
 		$repoName = $file->getRepoName();
 		if ( !in_array( $repoName, $this->mediaInfoRepos, true ) ) {
