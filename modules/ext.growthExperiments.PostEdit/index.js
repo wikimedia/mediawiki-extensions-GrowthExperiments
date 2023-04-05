@@ -182,13 +182,16 @@
 		/**
 		 * Create and maybe show the try-new-task dialog panel.
 		 *
-		 * @return {jQuery.Promise<undefined|null|string>} If "nextSuggestedTasKType" is set in the suggested edit session,
-		 *   return a promise that resolves when the try new task panel is closed; otherwise return
-		 *   an immediately-resolved promise. The possible return values are:
-		 *   - undefined: the panel was not shown because it didn't meet the conditions to do so
-		 *   - null: the panel was shown and it was dismissed by the user
-		 *   - string: the panel was shown and it was accepted by the user. The returned string represents
+		 * @return {jQuery.Promise<{accepted: boolean, shown: boolean, closeData: undefined|null|string}>} A promise with
+		 *  three fields:
+		 *   - shown: whether the panel was shown
+		 *   - accepted: whether the panel was shown and accepted by the user
+		 *   - closeData: the value which the close handler was called with:
+		 *     - null: the panel was rejected by the user
+		 *     - string: the panel was accepted by the user. The returned string represents
 		 *  a valid task type id with the next suggested task type.
+		 *     - undefined: the panel was closed without any data, probably by the close handler in displayPanel. This
+		 * can happen when the user clicks on the VE "Edit" link while the panel is open
 		 */
 		setupTryNewTaskPanel: function () {
 			var tryNewTaskOptOuts = mw.config.get( 'wgGELevelingUpTryNewTaskOptOuts', [] );
@@ -214,9 +217,19 @@
 						'edit-count-for-task-type': suggestedEditSession.editCountByTaskType[ suggestedEditSession.taskType ] + 1
 					} );
 				} );
-				return displayPanelPromises.closePromise;
+				return displayPanelPromises.closePromise.then( function ( closeData ) {
+					return {
+						accepted: typeof closeData === 'string',
+						closeData: closeData,
+						shown: true
+					};
+				} );
 			}
-			return $.Deferred().resolve();
+
+			return $.Deferred().resolve( {
+				accepted: false,
+				shown: false
+			} );
 		}
 	};
 }() );
