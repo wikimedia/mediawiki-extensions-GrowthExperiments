@@ -4,7 +4,8 @@
 			"StanProg",
 			"Ted Masters",
 			"Vlad5250",
-			"Vodnokon4e"
+			"Vodnokon4e",
+			"Kareyac"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Активиране на помощния редакторски панел",
@@ -30,6 +31,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Редактиране на друго предложение:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Следващо предложение:",
 	"growthexperiments-help-panel-postedit-footer": "Преглед на повече предложения за редакции",
+	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "Не, благодаря",
 	"growthexperiments-help-panel-questionreview-title": "Попитайте бюрото за помощ",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Попитайте своя ментор",
 	"growthexperiments-help-panel-questionreview-header": "Когато задавате въпрос, той се <strong>публикува публично</strong>, като се отбелязва потребителско Ви име „$2“ в $1, където друг доброволец, в рамките на ден или два, ще се опита да отговори на въпроса Ви.",

@@ -89,5 +89,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Статті, що містять визначені тут категорії, не показуватимуться користувачам як завдання для цього типу завдань.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблони-картки",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Ці шаблони потрібні для функції завдання для новачків із [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|пропозицій зображень]]. Статті, які містять ці шаблони, не будуть перелічені у завданні із пропонування зображень.",
-	"growthexperiments-edit-config-delayed": "Зміни цього налаштування не набудуть чинності негайно (див. [[mw:Growth/FAQ#add-link-config|FAQ]])."
+	"growthexperiments-edit-config-delayed": "Зміни цього налаштування не набудуть чинності негайно (див. [[mw:Growth/FAQ#add-link-config|FAQ]]).",
+	"growthexperiments-info-tooltip-close-label": "Закрити",
+	"specialpages-group-growth-tools": "Інструменти Зростання"
 }

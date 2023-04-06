@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chaduvari",
-			"Veeven"
+			"Veeven",
+			"V Bhavya"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "ఎడిటరు సహాయ ప్యానెల్‌ను చేతనం చెయ్యి",
@@ -30,6 +31,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "మరొక సూచనను దిద్దుబాటు చెయ్యండి:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "తరువాతి సూచన:",
 	"growthexperiments-help-panel-postedit-footer": "మరిన్ని దిద్దుబాటు సూచనలు చూడండి",
+	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "మళ్ళీ చూపించవద్దు",
 	"growthexperiments-help-panel-questionreview-title": "సహాయ కేంద్రంలో అడగండి",
 	"growthexperiments-help-panel-questionreview-title-mentor": "మీ గురువును అడగండి",
 	"growthexperiments-help-panel-questionreview-header": "మీ ప్రశ్నను $1 కు పంపించినపుడు, అది మీ వాడుకరిపేరు \"$2\" కింద <strong>అందరికీ కనబడేలా ప్రచురింపబడుతుంది</strong>. మరొక స్వచ్ఛంద వాడుకరి మీ ప్రశ్నకు ఒకటి రెండు రోజుల్లో అక్కడ సమాధానమిస్తారు.",

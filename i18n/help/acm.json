@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"MRidhaAJ"
+		]
+	},
+	"growthexperiments-help-panel-postedit-suggestededits-levelingup-title": "ما مقترحين شي على {{GENDER:|مرشحاتك|مرشحاتج}}",
+	"growthexperiments-help-panel-postedit-suggestededits-title": "التعديلات المقترحة",
+	"growthexperiments-help-panel-postedit-trynewtask-toast-message": "نتهنالك ورا ما نشرت تعديل مقترح غير!",
+	"growthexperiments-help-panel-postedit-trynewtask-try-button-text": "سوي شغلة جديدة",
+	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "لا مشكور",
+	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "لا تطلع مرة ثانية",
+	"growthexperiments-help-panel-postedit-nonsuggested-header": "سوي تعديل مقترح",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "لا مشكور"
+}

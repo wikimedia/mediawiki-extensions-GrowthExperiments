@@ -55,7 +55,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "কোনো পরামর্শগ্রহীতা খুঁজে পাওয়া যায়নি",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "পরামর্শগ্রহীতাকে খুঁজে পেতে ছাঁকনি পরিবর্তন করুন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "{{GENDER:|আপনার}} পরামর্শগ্রহীতার করা সাম্প্রতিক পরিবর্তন",
-	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|আপনি}} {{GENDER:|আপনার}} সমস্ত পরামর্শদাতাদের করা সম্পাদনাগুলো দেখতে পারেন এই [$1 সাম্প্রতিক পরিবর্তনগুলির ফিল্টার] থেকে৷",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|আপনি}} [$1 সাম্প্রতিক পরিবর্তনের এই ছাঁকনিতে] গিয়ে {{GENDER:|আপনার}} সমস্ত পরামর্শদাতাদের করা সম্পাদনাগুলো দেখতে পারেন।",
 	"growthexperiments-mentor-dashboard-resources-headline": "সংস্থানসমূহ",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "মেন্টরশিপ ব্যবস্থাপনা",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "মেন্টর তালিকা দেখুন",

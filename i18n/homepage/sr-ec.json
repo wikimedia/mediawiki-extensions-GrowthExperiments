@@ -154,6 +154,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Отворите бочни мени и додирните $2 да бисте посетили {{GENDER:$1|своју}} почетну страницу.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> од <strong>$2</strong> {{PLURAL:$2|предлог|предлога}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Крај",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Учитавање…",
 	"growthexperiments-homepage-suggestededits-pageviews": "Посета у последњих 60 дана: $1",
 	"growthexperiments-homepage-suggestededits-previous-card": "Претходна предложена измена",
 	"growthexperiments-homepage-suggestededits-next-card": "Следећа предложена измена",

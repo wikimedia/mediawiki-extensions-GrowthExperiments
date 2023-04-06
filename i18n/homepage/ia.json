@@ -194,6 +194,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Aperi le menu lateral e tocca $2 pro visitar {{GENDER:$1|tu}} pagina de initio.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> de <strong>$2</strong> suggestion{{PLURAL:$2||es}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Fin",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Cargamento in curso…",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 visitas (ultime 60 dies)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Previe modification suggerite",
 	"growthexperiments-homepage-suggestededits-next-card": "Proxime modification suggerite",

@@ -332,5 +332,7 @@
 	"growthexperiments-tour-newimpact-discovery-title": "Uuenenud kujundus",
 	"growthexperiments-tour-newimpact-discovery-description": "Lisatud on rohkem andmeid sinu kaastöö kohta!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Selge",
-	"growthexperiments-homepage-newimpact-contributions-link": "Vaata kõiki muudatusi"
+	"growthexperiments-homepage-newimpact-contributions-link": "Vaata kõiki muudatusi",
+	"echo-category-title-ge-newcomer": "Growthi funktsioonid",
+	"echo-pref-tooltip-ge-newcomer": "Teavita mind uue kasutaja ülesannetest ja teistest funktsioonidest, mis on koostatud, et aidata uusi kasutajaid."
 }

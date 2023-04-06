@@ -203,6 +203,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Abra o menu lateral e toque em $2 para visitar a {{GENDER:$1|sua}} página inicial.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> de <strong>$2</strong> {{PLURAL:$2|sugestão|sugestões}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Terminar",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Carregando…",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 visitas (últimos 60 dias)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Edição sugerida anterior",
 	"growthexperiments-homepage-suggestededits-next-card": "Próxima edição sugerida",
@@ -572,5 +573,6 @@
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Saiba mais",
 	"growthexperiments-levelingup-keepgoing-notification-header": "Continue realizando edições sugeridas para desenvolver {{GENDER:$2|suas}} habilidades de edição",
 	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Você}} realizou {{PLURAL:$3|edição sugerida|edições sugeridas}}. Continue para aprender mais habilidades novas.",
-	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Faça uma edição sugerida"
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Faça uma edição sugerida",
+	"echo-pref-tooltip-ge-newcomer": "Notifique-me sobre tarefas para novatos e outras ferraments feitas para ajudar novos usuários."
 }

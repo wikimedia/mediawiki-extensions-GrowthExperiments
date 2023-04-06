@@ -3,7 +3,8 @@
 		"authors": [
 			"StanProg",
 			"Ted Masters",
-			"Vodnokon4e"
+			"Vodnokon4e",
+			"Kareyac"
 		]
 	},
 	"growthexperiments-desc": "Това разширение съдържа експерименти, направени от екипа на Растеж.",
@@ -59,5 +60,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Целева страница, от която новодошлите могат да научат повече за добавянето на източници.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Актуализиране: шаблони, използвани за откриването на статии, които се нуждаят от актуализация.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Целева страница, от която новодошлите могат да научат повече за актуализирането на статиите.",
+	"growthexperiments-info-tooltip-close-label": "Затваряне",
 	"specialpages-group-growth-tools": "Инструменти за растеж"
 }

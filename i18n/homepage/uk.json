@@ -204,6 +204,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Відкрийте бічне меню і натисніть $2, щоб перейти на {{GENDER:$1|свою}} домашню сторінку.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> з <strong>$2</strong> {{PLURAL:$2|пропозиції|пропозицій}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Кінець",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Завантаження…",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 {{PLURAL:$1|відвідування|відвідування|відвідувань}} (останні 60 днів)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Попереднє пропоноване редагування",
 	"growthexperiments-homepage-suggestededits-next-card": "Наступне пропоноване редагування",
@@ -261,6 +262,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Середньо",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Важко",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Виберіть типи редагувань",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "Пропоновані редагування призначені допомогти {{GENDER:|вам}} навчитися редагувати та стати більш вправними, коли ви перейдете до більших типів редагувань.",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "Хочете створити нову статтю?",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-body": "Редактори {{GRAMMAR:genitive|{{SITENAME}}}} рекомендують {{GENDER:|вам}} спочатку виконати кілька середніх і складних завдань, перш ніж писати нову статтю. [$1 Докладніше] про написання нової відсутньої статті.",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Обрати теми",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Готово",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Готово",
@@ -568,5 +572,14 @@
 	"growthexperiments-tour-newimpact-discovery-title": "Оновлений дизайн",
 	"growthexperiments-tour-newimpact-discovery-description": "Більше деталей про {{GENDER:|ваші}} редагування!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Зрозуміло",
-	"growthexperiments-homepage-newimpact-contributions-link": "Переглянути всі редагування"
+	"growthexperiments-homepage-newimpact-contributions-link": "Переглянути всі редагування",
+	"growthexperiments-levelingup-getstarted-notification-header": "Спробуйте пропоноване редагування і почніть розвивати {{GENDER:$2|свої}} навички редагування",
+	"growthexperiments-levelingup-getstarted-notification-body": "Пропоновані редагування допомагають новим редакторам дізнатися про найкращі практики {{GRAMMAR:genitive|{{SITENAME}}}} і розвинути основні навички редагування.",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Спробувати пропоновані редагування",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Дізнатися більше",
+	"growthexperiments-levelingup-keepgoing-notification-header": "Продовжуйте розвивати {{GENDER:$2|свої}} навички редагування, виконуючи пропоновані редагування",
+	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Ви}} зробили $3 {{PLURAL:$3|пропоноване редагування|пропоновані редагування|пропонованих редагувань}}. Продовжуйте, і здобуватимете нові навички.",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Зробіть пропоноване редагування",
+	"echo-category-title-ge-newcomer": "Функції зростання",
+	"echo-pref-tooltip-ge-newcomer": "Повідомляти мене про завдання для новачків та інші функції, розроблені для нових користувачів."
 }

@@ -90,5 +90,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "তথ্যছক টেমপ্লেটসমূহ",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "এই টেমপ্লেটসমূহ [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|ছবির পরামর্শসমূহ]] নবাগতদের কাজের জন্য প্রয়োজন। এই কাজের ধরনে এখানে সংজ্ঞায়িত টেমপ্লেটবিশিষ্ট নিবন্ধগুলো কাজ হিসেবে ব্যবহারকারীদের দেখানো হবে না।",
 	"growthexperiments-edit-config-delayed": "এই সেটিংয়ে পরিবর্তনগুলো অবিলম্বে কার্যকর হবে না (দেখুন [[mw:Growth/FAQ#add-link-config|FAQ]])।",
+	"growthexperiments-info-tooltip-close-label": "বন্ধ করুন",
 	"specialpages-group-growth-tools": "গ্রোথ সরঞ্জাম"
 }

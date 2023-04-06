@@ -224,6 +224,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Ouvrez le menu latéral et appuyez sur $2 pour visiter {{GENDER:$1|}}votre page d’accueil.",
 	"growthexperiments-homepage-suggestededits-pager": "Suggestion <strong>$1</strong> sur <strong>$2</strong>{{PLURAL:$2|}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Fin",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Chargement en cours...",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 visites (dans les 60 derniers jours)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Modification suggérée précédente",
 	"growthexperiments-homepage-suggestededits-next-card": "Modification suggérée suivante",

@@ -11,7 +11,8 @@
 			"Okras",
 			"Pacha Tchernof",
 			"Radmir Far",
-			"UniCollab"
+			"UniCollab",
+			"Kaganer"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
@@ -59,7 +60,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Посмотреть список наставников",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Как представить себя в качестве {{GENDER:|наставника|наставницы}}",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Как взять подопечного",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "Инструменты Роста",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Инструменты от команды роста",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Настройки",
 	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit": "Покинуть наставничество",
 	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-headline": "{{GENDER:|Вы}} хотите выйти из наставничества?",

@@ -580,8 +580,8 @@
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Vyzkoušet editační tipy",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Další informace",
 	"growthexperiments-levelingup-keepgoing-notification-header": "Pokračujte v editačních tipech, abyste {{GENDER:$2|zlepšil|zlepšila|zlepšili}} své editační dovednosti",
-	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Uložil|Uložila|Uložili}} jste $3 {{PLURAL:$3|editační tip|editačních tipů}}. Pokračujte, abyste {{GENDER:$2|získal|získala|získali}} další editační dovednosti.",
+	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Uložil|Uložila|Uložili}} jste $3 {{PLURAL:$3|editační tip|editační tipy|editačních tipů}}. Pokračujte, abyste {{GENDER:$2|získal|získala|získali}} další editační dovednosti.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Vyzkoušejte editační tipy",
 	"echo-category-title-ge-newcomer": "Funkce týmu Growth",
-	"echo-pref-tooltip-ge-newcomer": "Upozorněte mě na nové Editační tipy a dalších funkcích navržených, aby pomohly novým uživatelům."
+	"echo-pref-tooltip-ge-newcomer": "Upozorněte mě na nové Editační tipy a další funkce navržené, aby pomohly novým uživatelům."
 }
