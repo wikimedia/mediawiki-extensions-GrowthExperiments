@@ -88,7 +88,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Mer informasjon om den lengste dagrekken",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Din}} lengste rekke er for tiden på $2 {{PLURAL:$2|dag|dager}}, som du gjorde mellom $3.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "Den lengste dagrekka er $1 {{PLURAL:$1|dag|dager}}, og ble oppnådd mellom $2.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Din}} lengste dagrekke er én dag, noe du oppnådde $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Din}} lengste dagrekke er én dag, noe du oppnådde $2.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "Den nåværende lengste dagrekka er én dag, som ble oppnådd $1.",
 	"growthexperiments-homepage-impact-subheader-text": "Mest vist (siden {{GENDER:$1|din}} redigering)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Mest vist (siden redigeringen ble gjort)",

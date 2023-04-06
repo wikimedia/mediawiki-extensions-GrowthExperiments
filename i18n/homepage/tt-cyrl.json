@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Blackisnewyellow",
 			"Ерней"
 		]
 	},
@@ -11,6 +12,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Җиңел",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Уртача",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Кыен",
+	"growthexperiments-homepage-suggested-edits-header": "Тәкъдим ителгән үзгәртүләр",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3–5 минут",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5–10 минут",
 	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15–20 минут",
