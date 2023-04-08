@@ -11,10 +11,13 @@
 
 		<cdx-dialog
 			v-model:open="open"
+			class="ext-growthExperiments-PersonalizedPraise-Settings__dialog"
 			:title="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-title' )"
+			:close-button-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cancel' )"
 		>
 			<personalized-praise-settings-form
 				v-bind="settingsData"
+				@close="open = false"
 				@update:settings="onSettingsUpdate"
 			></personalized-praise-settings-form>
 		</cdx-dialog>
@@ -52,6 +55,10 @@ module.exports = exports = {
 		onSettingsUpdate( $event ) {
 			this.$emit( 'update:settings', $event );
 			this.open = false;
+			mw.notify(
+				this.$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-success' ),
+				{ type: 'success' }
+			);
 		}
 	}
 };
@@ -63,6 +70,10 @@ module.exports = exports = {
 		position: absolute;
 		top: 16px;
 		right: 0;
+	}
+
+	&__dialog {
+		gap: 0;
 	}
 }
 </style>

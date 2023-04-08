@@ -154,6 +154,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext": "Label in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Submit button label in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Cancel button label in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Success notification displayed after personalized praise settings are changed.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-list-missing-key": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
 	"growthexperiments-mentor-list-datatype-mismatch": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",

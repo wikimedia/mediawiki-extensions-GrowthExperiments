@@ -44,27 +44,11 @@ class PersonalizedPraise extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getSubheader() {
-		$conditions = $this->personalizedPraiseSettings->getPraiseworthyConditions(
-			$this->getUser()
-		);
-		return Html::rawElement(
-			'div',
+		return Html::element(
+			'p',
 			[],
-			implode( "\n", [
-				Html::element(
-					'p',
-					[],
-					$this->msg( 'growthexperiments-mentor-dashboard-personalized-praise-intro' )
-						->text()
-				),
-				Html::element(
-					'p',
-					[],
-					$this->msg( 'growthexperiments-mentor-dashboard-personalized-praise-metrics' )
-						->numParams( $conditions->getMinEdits(), $conditions->getDays() )
-						->text()
-				)
-			] )
+			$this->msg( 'growthexperiments-mentor-dashboard-personalized-praise-intro' )
+				->text()
 		);
 	}
 
