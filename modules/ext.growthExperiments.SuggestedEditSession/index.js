@@ -458,11 +458,19 @@
 			mw.hook( 'helpPanel.hideCta' ).fire();
 
 			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
-				return require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( function ( nextSuggestedTaskType ) {
-					var tryNewTaskPanelShown = nextSuggestedTaskType === null || typeof nextSuggestedTaskType === 'string';
+				return require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( function ( tryNewTaskResult ) {
+					self.postEditDialogIsOpen = false;
+					// Prevent the post edit dialog to show when the user clicks on edit
+					if ( tryNewTaskResult.shown && tryNewTaskResult.closeData === undefined ) {
+						self.getNextSuggestedTaskType().then( function () {
+							self.save();
+						} );
+						return $.Deferred().resolve().promise();
+					}
+					self.postEditDialogIsOpen = true;
 					var result = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
-						nextSuggestedTaskType,
-						!tryNewTaskPanelShown
+						tryNewTaskResult.closeData,
+						!tryNewTaskResult.shown
 					);
 					result.openPromise.done( function () {
 						self.postEditDialogNeedsToBeShown = false;
