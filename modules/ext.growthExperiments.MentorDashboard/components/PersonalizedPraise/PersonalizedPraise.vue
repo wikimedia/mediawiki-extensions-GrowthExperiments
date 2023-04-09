@@ -1,5 +1,12 @@
 <template>
 	<section class="ext-growthExperiments-PersonalizedPraise">
+		<p>
+			{{ $i18n(
+				'growthexperiments-mentor-dashboard-personalized-praise-metrics',
+				settings.minEdits,
+				settings.days
+			) }}
+		</p>
 		<personalized-praise-settings
 			:settings-data="settings"
 			@update:settings="onSettingsUpdate"

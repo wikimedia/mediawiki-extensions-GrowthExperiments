@@ -12,16 +12,20 @@
 					'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe'
 				) }}
 			</label>
-			<c-number-input
-				v-model="settingsData.minEdits"
-				min="0"
-				step="1"
-			></c-number-input>
 
-			<cdx-select
-				v-model:selected="settingsData.days"
-				:menu-items="timeframeItems()"
-			></cdx-select>
+			<div class="ext-growthExperiments-PersonalizedPraiseSettings__field_flexbox">
+				<c-number-input
+					v-model="settingsData.minEdits"
+					class="ext-growthExperiments-PersonalizedPraiseSettings__input"
+					min="0"
+					step="1"
+				></c-number-input>
+				<cdx-select
+					v-model:selected="settingsData.days"
+					class="ext-growthExperiments-PersonalizedPraiseSettings__input"
+					:menu-items="timeframeItems()"
+				></cdx-select>
+			</div>
 		</section>
 
 		<h3 class="no-gutter">
@@ -30,10 +34,16 @@
 		<section class="ext-growthExperiments-PersonalizedPraiseSettings__form_group">
 			<cdx-text-input
 				v-model="settingsData.messageSubject"
+				class="ext-growthExperiments-PersonalizedPraiseSettings__input"
 			></cdx-text-input>
-			<cdx-text-input
+			<textarea
 				v-model="settingsData.messageText"
-			></cdx-text-input>
+				class="
+					ext-growthExperiments-PersonalizedPraiseSettings__input
+					ext-growthExperiments-PersonalizedPraiseSettings__message_text
+				"
+				rows="6"
+			></textarea>
 		</section>
 
 		<h3>
@@ -45,14 +55,25 @@
 			</label>
 			<cdx-select
 				v-model:selected="settingsData.notificationFrequency"
+				class="ext-growthExperiments-PersonalizedPraiseSettings__input"
 				:menu-items="notificationFrequencyItems()"
 			></cdx-select>
 		</section>
 
 		<cdx-button
+			class="ext-growthExperiments-PersonalizedPraiseSettings__button"
 			form="personalized-praise-settings-form"
+			weight="primary"
+			action="progressive"
 		>
-			Submit
+			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-save' ) }}
+		</cdx-button>
+		<cdx-button
+			class="ext-growthExperiments-PersonalizedPraiseSettings__button"
+			type="button"
+			@click="$emit( 'close' )"
+		>
+			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cancel' ) }}
 		</cdx-button>
 	</form>
 </template>
@@ -77,7 +98,7 @@ module.exports = exports = {
 		messageText: { type: String, default: undefined },
 		notificationFrequency: { type: Number, default: undefined }
 	},
-	emits: [ 'update:settings' ],
+	emits: [ 'update:settings', 'close' ],
 	data() {
 		return {
 			settingsData: {
@@ -158,3 +179,28 @@ module.exports = exports = {
 	}
 };
 </script>
+
+<style lang="less">
+.ext-growthExperiments-PersonalizedPraiseSettings {
+	&__input {
+		width: 100%;
+	}
+
+	&__message_text {
+		font-family: inherit;
+		font-size: inherit;
+		padding: 8px;
+		resize: vertical;
+	}
+
+	&__field_flexbox {
+		display: flex;
+	}
+
+	&__button {
+		margin-top: 10px;
+		width: 100%;
+		max-width: inherit;
+	}
+}
+</style>

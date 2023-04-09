@@ -75,10 +75,14 @@ module.exports = exports = {
 				page: ( new mw.Title( this.mentee.userName, 3 ) ).getPrefixedText(),
 				formatversion: 2
 			} ).then( ( data ) => {
-				this.numberOfTalkPagePosts = data.parse.text.match( / mw-heading2 /g ).length;
+				const talkPosts = data.parse.text.match( / mw-heading2 /g );
+				// NOTE: When there is no 2nd level heading, .match() can return null.
+				this.numberOfTalkPagePosts = talkPosts !== null ? talkPosts.length : 0;
 			} ).catch( ( error ) => {
 				if ( error === 'missingtitle' ) {
 					this.numberOfTalkPagePosts = 0;
+				} else {
+					mw.log.error( error );
 				}
 			} );
 
@@ -99,11 +103,12 @@ module.exports = exports = {
 					preload: mw.config.get( 'GEPraiseworthyMessageTitle' ),
 					'preloadparams[]': userName
 				} );
-			} ).catch( function () {
+			} ).catch( function ( error ) {
 				mw.notify(
 					mw.msg( 'growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown' ),
 					{ type: 'error' }
 				);
+				mw.log.error( error );
 			} );
 		}
 	}
