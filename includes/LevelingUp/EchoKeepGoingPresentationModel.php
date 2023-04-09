@@ -16,12 +16,7 @@ class EchoKeepGoingPresentationModel extends EchoEventPresentationModel {
 
 	/** @inheritDoc */
 	public function getHeaderMessage() {
-		return $this->getMessageWithAgent( 'growthexperiments-levelingup-keepgoing-notification-header' );
-	}
-
-	/** @inheritDoc */
-	public function getBodyMessage() {
-		return $this->getMessageWithAgent( 'growthexperiments-levelingup-keepgoing-notification-body' )
+		return $this->getMessageWithAgent( 'growthexperiments-levelingup-keepgoing-notification-header' )
 			->params( $this->event->getExtra()['suggestededitcount'] );
 	}
 

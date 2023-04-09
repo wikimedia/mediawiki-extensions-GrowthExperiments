@@ -20,11 +20,6 @@ class EchoGetStartedPresentationModel extends EchoEventPresentationModel {
 	}
 
 	/** @inheritDoc */
-	public function getBodyMessage() {
-		return $this->getMessageWithAgent( 'growthexperiments-levelingup-getstarted-notification-body' );
-	}
-
-	/** @inheritDoc */
 	public function getSecondaryLinks() {
 		// We don't include the secondary link in email, because it's the same as the primary link,
 		// and it looks awkward in an email to have two buttons leading to the same thing.
