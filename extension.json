@@ -2657,6 +2657,10 @@
 			"description": "Global ON/OFF switch for image recommendations.",
 			"value": true
 		},
+		"GENewcomerTasksSectionImageRecommendationsEnabled": {
+			"description": "Global ON/OFF switch for section-level image recommendations.",
+			"value": true
+		},
 		"GEImageRecommendationServiceUrl": {
 			"description": "Root URL of the image recommendation service (no trailing slash).",
 			"value": false

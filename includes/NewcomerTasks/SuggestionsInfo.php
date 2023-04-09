@@ -11,6 +11,8 @@ use Status;
 use StatusValue;
 
 class SuggestionsInfo implements NewcomerTasksInfo {
+	public const USER = 'SuggestionsInfo';
+
 	/**
 	 * @var ConfigurationLoader
 	 */
