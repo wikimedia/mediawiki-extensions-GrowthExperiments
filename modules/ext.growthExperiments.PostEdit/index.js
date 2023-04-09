@@ -22,38 +22,11 @@
 			sessionId: suggestedEditSession.clickId,
 			isSuggestedTask: suggestedEditSession.active
 		} ),
-		hasEditorOpenedSincePageLoad = true,
 		rootStore = require( 'ext.growthExperiments.DataStore' ),
 		CONSTANTS = rootStore.CONSTANTS,
 		ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES,
 		tasksStore = rootStore.newcomerTasks,
 		filtersStore = tasksStore.filters;
-
-	/**
-	 * Attach a handler to be called when the editor is re-opened
-	 *
-	 * @param {Function} handler
-	 */
-	function addEditorReopenedHandler( handler ) {
-		var shouldExecuteHandler = !hasEditorOpenedSincePageLoad,
-			onEditorOpened = function () {
-				// The handler can be called when it's first attached if the editor has been opened
-				// since the initial page load (the handler gets called if an event was previously
-				// fired before the handler is attached) but in this case we only care
-				// about the editor being opened after the post-edit drawer is shown.
-				if ( shouldExecuteHandler ) {
-					handler();
-				} else {
-					shouldExecuteHandler = true;
-				}
-			};
-		if ( OO.ui.isMobile() ) {
-			mw.hook( 'mobileFrontend.editorOpened' ).add( onEditorOpened );
-		} else {
-			mw.hook( 've.activationComplete' ).add( onEditorOpened );
-			mw.hook( 'wikipage.editform' ).add( onEditorOpened );
-		}
-	}
 
 	/**
 	 * Display the given panel, using a mobile or desktop format as appropriate.
@@ -67,37 +40,56 @@
 	 *   - closePromise {jQuery.Promise} A promise that resolves when the dialog has been closed.
 	 */
 	function displayPanel( postEditPanel, logger, showToast ) {
+		var suppressClose = false;
+		var drawer = new PostEditDrawer( postEditPanel, logger );
+		var closeDrawer = function () {
+			if ( !suppressClose ) {
+				drawer.close();
+			}
+		};
+
 		if ( mw.libs.ge && mw.libs.ge.HelpPanel ) {
 			// It doesn't make any sense to show the help panel in an open state alongside
 			// the post-edit panel or the try new task panel, so close it.
 			mw.libs.ge.HelpPanel.close();
 		}
 
-		var drawer = new PostEditDrawer( postEditPanel, logger ),
-			lifecycle,
-			closePromise;
 		$( document.body ).append( drawer.$element );
 		if ( showToast ) {
-			lifecycle = drawer.showWithToastMessage();
+			drawer.showWithToastMessage();
 		} else {
-			lifecycle = drawer.openWithIntroContent();
+			drawer.openWithIntroContent();
 		}
-		closePromise = lifecycle.closed.done( function () {
+		drawer.opened.done( function () {
+			// Hide the drawer if the user opens the editor again.
+			// HACK ignore memorized previous ve.activationComplete events.
+			suppressClose = true;
+			if ( OO.ui.isMobile() ) {
+				mw.hook( 'mobileFrontend.editorOpened' ).add( closeDrawer );
+			} else {
+				mw.hook( 've.activationComplete' ).add( closeDrawer );
+				mw.hook( 'wikipage.editform' ).add( closeDrawer );
+			}
+			suppressClose = false;
+		} );
+		drawer.closed.done( function () {
+			if ( OO.ui.isMobile() ) {
+				mw.hook( 'mobileFrontend.editorOpened' ).remove( closeDrawer );
+			} else {
+				mw.hook( 've.activationComplete' ).remove( closeDrawer );
+				mw.hook( 'wikipage.editform' ).remove( closeDrawer );
+			}
 			postEditPanel.logClose();
 		} );
-		addEditorReopenedHandler( function () {
-			drawer.close();
-		} );
 		return {
-			openPromise: lifecycle.opened,
-			closePromise: closePromise
+			openPromise: drawer.opened,
+			closePromise: drawer.closed
 		};
 	}
 
 	/**
 	 * Helper method to tie getNextTask() and displayPanel() together.
 	 *
-	 * @param {boolean} isDialogShownUponReload Whether the dialog is shown upon page reload.
 	 * @param {boolean} showToast Whether the panel should show its predefined toast message when opening.
 	 * @return {Object} An object with:
 	 *   - task: task data as a plain Object (as returned by GrowthTasksApi), omitted
@@ -107,7 +99,7 @@
 	 *   - openPromise: a promise that resolves when the panel has been displayed.
 	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
-	function setup( isDialogShownUponReload, showToast ) {
+	function setup( showToast ) {
 		var postEditPanel, displayPanelPromises,
 			imageRecommendationQualityGates =
 				suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
@@ -117,8 +109,6 @@
 				suggestedEditSession.qualityGateConfig[ 'link-recommendation' ] || {},
 			linkRecommendationDailyTasksExceeded =
 				linkRecommendationQualityGates.dailyLimit || false;
-
-		hasEditorOpenedSincePageLoad = !isDialogShownUponReload;
 
 		postEditPanel = new PostEditPanel( {
 			taskType: suggestedEditSession.taskType,
@@ -145,9 +135,6 @@
 		/**
 		 * Create and show the post-edit dialog panel.
 		 *
-		 * @param {boolean} [isDialogShownUponReload] Whether the post-edit panel is being shown
-		 *  after a page reload. This is used to determine whether the editor has been opened
-		 *  since the page loads.
 		 * @param {string} nextSuggestedTaskType If provided, use only this task type for fetching
 		 *   tasks. Used when we are prompting the user to try a new task type after completing
 		 *   a certain number of tasks of the current task type. See the LevelingUpManager service.
@@ -161,7 +148,7 @@
 		 *   - openPromise: a promise that resolves when the panel has been displayed.
 		 *   - closePromise: A promise that resolves when the dialog has been closed.
 		 */
-		setupPanel: function ( isDialogShownUponReload, nextSuggestedTaskType, showToast ) {
+		setupPanel: function ( nextSuggestedTaskType, showToast ) {
 			var setupResult,
 				fetchTasksConfig = {
 					excludePageId: mw.config.get( 'wgArticleId' ),
@@ -188,7 +175,7 @@
 				}
 				setupResult.openPromise.done( logPanelImpression( setupResult.panel, errorMessage ) );
 			} );
-			setupResult = setup( isDialogShownUponReload, showToast );
+			setupResult = setup( showToast );
 			setupResult.openPromise.done( logPanelImpression( setupResult.panel ) );
 			return setupResult;
 		},

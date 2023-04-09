@@ -424,14 +424,13 @@
 	 *   next request instead. This is less fragile when we know for sure the editor will reload.
 	 * @param {number|null} [config.newRevId] The revision ID associated with the suggested edit.
 	 *   Will only be set for edits done via mobile.
-	 * @param {boolean} [config.isDialogShownUponReload] Whether the post-edit dialog is being shown
-	 *  in the next request.
 	 * @return {jQuery.Promise} A promise that resolves when the dialog is displayed.
 	 */
 	SuggestedEditSession.prototype.showPostEditDialog = function ( config ) {
 		var self = this,
 			uri = new mw.Uri();
 
+		config = config || {};
 		// T283120: avoid opening the dialog multiple times at once. This shouldn't be
 		// happening but with the various delayed mechanisms for opening the dialog, it's
 		// hard to avoid.
@@ -462,7 +461,8 @@
 				return require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( function ( nextSuggestedTaskType ) {
 					var tryNewTaskPanelShown = nextSuggestedTaskType === null || typeof nextSuggestedTaskType === 'string';
 					var result = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
-						config.isDialogShownUponReload, nextSuggestedTaskType, !tryNewTaskPanelShown
+						nextSuggestedTaskType,
+						!tryNewTaskPanelShown
 					);
 					result.openPromise.done( function () {
 						self.postEditDialogNeedsToBeShown = false;
@@ -570,7 +570,7 @@
 		}
 
 		if ( this.postEditDialogNeedsToBeShown ) {
-			this.showPostEditDialog( { isDialogShownUponReload: true } );
+			this.showPostEditDialog();
 			// For structured tasks, the edit can only be made once so the postEdit event handlers
 			// should not be attached.
 			if ( SuggestedEditSession.static.isStructuredTask( this.taskType ) ) {
