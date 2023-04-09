@@ -424,7 +424,6 @@
 	 *   next request instead. This is less fragile when we know for sure the editor will reload.
 	 * @param {number|null} [config.newRevId] The revision ID associated with the suggested edit.
 	 *   Will only be set for edits done via mobile.
-	 * @return {jQuery.Promise} A promise that resolves when the dialog is displayed.
 	 */
 	SuggestedEditSession.prototype.showPostEditDialog = function ( config ) {
 		var self = this,
@@ -435,7 +434,7 @@
 		// happening but with the various delayed mechanisms for opening the dialog, it's
 		// hard to avoid.
 		if ( this.postEditDialogIsOpen ) {
-			return $.Deferred().resolve().promise();
+			return;
 		}
 
 		if ( config.resetSession ) {
@@ -457,52 +456,49 @@
 			this.postEditDialogIsOpen = true;
 			mw.hook( 'helpPanel.hideCta' ).fire();
 
-			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
+			var postEditDialogClosePromise = mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
 				return require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( function ( tryNewTaskResult ) {
-					self.postEditDialogIsOpen = false;
-					// Prevent the post edit dialog to show when the user clicks on edit
-					if ( tryNewTaskResult.shown && tryNewTaskResult.closeData === undefined ) {
+					// Prepare for follow-up edits by loading the next suggested task
+					// type based on the edit just now made.
+					if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
 						self.getNextSuggestedTaskType().then( function () {
 							self.save();
 						} );
+					}
+
+					if ( tryNewTaskResult.shown && tryNewTaskResult.closeData === undefined ) {
+						// The user aborted the try new task dialog, probably by clicking on the edit link.
+						// Do not show the post-edit dialog.
 						return $.Deferred().resolve().promise();
 					}
-					self.postEditDialogIsOpen = true;
-					var result = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
+
+					var postEditDialogLifecycle = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
 						tryNewTaskResult.closeData,
 						!tryNewTaskResult.shown
 					);
-					result.openPromise.done( function () {
+					postEditDialogLifecycle.openPromise.done( function () {
 						self.postEditDialogNeedsToBeShown = false;
 						self.save();
-					} ).then( function () {
-						// Prepare for follow-up edits by loading the next suggested task
-						// type based on the edit just now made.
-						if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
-							self.getNextSuggestedTaskType().then( function () {
-								self.save();
-							} );
-						}
-						if ( self.editorInterface === 'visualeditor' ) {
-							return $.Deferred().resolve();
-						} else {
+						if ( self.editorInterface !== 'visualeditor' ) {
 							// VisualEditor edits will receive change tags through
 							// ve.init.target.saveFields and VE's PostSave hook implementation
 							// in GrowthExperiments.
 							// For non-VisualEditor-edits, we'll query the revision that was just
 							// saved, and send a POST to the newcomertask/complete endpoint to apply
 							// the relevant change tags.
-							return self.tagNonVisualEditorEditWithGrowthChangeTags( self.taskType );
+							self.tagNonVisualEditorEditWithGrowthChangeTags( self.taskType );
 						}
 					} );
-					result.closePromise.done( function () {
-						self.postEditDialogIsOpen = false;
-					} );
-					return result.openPromise;
+					return postEditDialogLifecycle.closePromise;
 				} );
 			} );
+
+			postEditDialogClosePromise.done( function () {
+				// Make sure we'll show the dialog again if the page is edited again in VE
+				// without a page reload.
+				self.postEditDialogIsOpen = false;
+			} );
 		}
-		return $.Deferred().resolve().promise();
 	};
 
 	/**
