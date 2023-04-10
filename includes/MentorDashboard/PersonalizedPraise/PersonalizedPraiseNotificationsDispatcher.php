@@ -5,6 +5,7 @@ namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 use BagOStuff;
 use Config;
 use EchoEvent;
+use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserIdentity;
 use MWTimestamp;
@@ -16,23 +17,27 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 	private BagOStuff $cache;
 	private SpecialPageFactory $specialPageFactory;
 	private PersonalizedPraiseSettings $personalizedPraiseSettings;
+	private PersonalizedPraiseLogger $eventLogger;
 
 	/**
 	 * @param Config $config
 	 * @param BagOStuff $cache
 	 * @param SpecialPageFactory $specialPageFactory
 	 * @param PersonalizedPraiseSettings $personalizedPraiseSettings
+	 * @param PersonalizedPraiseLogger $personalizedPraiseLogger
 	 */
 	public function __construct(
 		Config $config,
 		BagOStuff $cache,
 		SpecialPageFactory $specialPageFactory,
-		PersonalizedPraiseSettings $personalizedPraiseSettings
+		PersonalizedPraiseSettings $personalizedPraiseSettings,
+		PersonalizedPraiseLogger $personalizedPraiseLogger
 	) {
 		$this->config = $config;
 		$this->cache = $cache;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->personalizedPraiseSettings = $personalizedPraiseSettings;
+		$this->eventLogger = $personalizedPraiseLogger;
 	}
 
 	/**
@@ -143,6 +148,7 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 			'agent' => $mentor,
 		] );
 
+		$this->eventLogger->logNotified( $mentor );
 		$this->setLastNotified( $mentor, MWTimestamp::getInstance()->getTimestamp( TS_MW ) );
 		$this->purgePendingMenteesForMentor( $mentor );
 	}
@@ -166,10 +172,11 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 	 * If mentor has any mentees they were not yet notified about, notify them
 	 *
 	 * @param UserIdentity $mentor
+	 * @return bool Was the mentor notified?
 	 */
-	public function maybeNotifyAboutPendingMentees( UserIdentity $mentor ): void {
+	public function maybeNotifyAboutPendingMentees( UserIdentity $mentor ): bool {
 		if ( !$this->doesMentorHavePendingMentees( $mentor ) ) {
-			return;
+			return false;
 		}
 
 		$hoursToWait = $this->personalizedPraiseSettings->getNotificationsFrequency( $mentor );
@@ -177,9 +184,9 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 			// NOTE: immediate notification is normally handled in onMenteeSuggested; only
 			// process pending mentees that were not yet processed.
 			$this->notifyMentor( $mentor );
-			return;
+			return false;
 		} elseif ( $hoursToWait === PersonalizedPraiseSettings::NOTIFY_NEVER ) {
-			return;
+			return false;
 		}
 
 		$rawLastNotifiedTS = $this->getLastNotified( $mentor );
@@ -191,6 +198,8 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 			$notifiedSecondsAgo >= $hoursToWait * ExpirationAwareness::TTL_HOUR
 		) {
 			$this->notifyMentor( $mentor );
+			return true;
 		}
+		return false;
 	}
 }

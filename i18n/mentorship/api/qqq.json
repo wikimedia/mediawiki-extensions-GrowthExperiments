@@ -28,5 +28,6 @@
 	"apihelp-growthmanagementorlist-param-username": "{{doc-apihelp-param|growthmanagementorlist|username}}",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Message to show in API (action=growthmanagementors) if isaway is true, but awaytimestamp is not provided.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|summary}}",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|mentee}}"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|mentee}}",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|reason}}"
 }

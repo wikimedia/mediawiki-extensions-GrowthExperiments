@@ -9,6 +9,7 @@ use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\EditInfoService;
+use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
@@ -641,6 +642,16 @@ return [
 		);
 	},
 
+	'GrowthExperimentsPersonalizedPraiseLogger' => static function (
+		MediaWikiServices $services
+	): PersonalizedPraiseLogger {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		return new PersonalizedPraiseLogger(
+			$geServices->getPersonalizedPraiseSettings()
+		);
+	},
+
 	'GrowthExperimentsPersonalizedPraiseNotificationsDispatcher' => static function (
 		MediaWikiServices $services
 	): PersonalizedPraiseNotificationsDispatcher {
@@ -650,7 +661,8 @@ return [
 			$services->getMainConfig(),
 			$services->getMainObjectStash(),
 			$services->getSpecialPageFactory(),
-			$geServices->getPersonalizedPraiseSettings()
+			$geServices->getPersonalizedPraiseSettings(),
+			$geServices->getPersonalizedPraiseLogger()
 		);
 	},
 
@@ -691,6 +703,7 @@ return [
 			$services->getUserOptionsManager(),
 			$geServices->getPraiseworthyConditionsLookup(),
 			$geServices->getPersonalizedPraiseNotificationsDispatcher(),
+			$geServices->getPersonalizedPraiseLogger(),
 			$geServices->getMentorStore(),
 			$geServices->getUserImpactStore()
 		);
