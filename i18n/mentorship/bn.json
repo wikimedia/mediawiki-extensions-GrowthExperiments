@@ -120,6 +120,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "বাতিল",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "পরিচিতি বার্তা",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|আপনার}} ভূমিকা বার্তা \"$1\"-এ পরিবর্তন করা হয়েছে।",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "পূর্ববর্তী পাতা",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "একটি অজানা ত্রুটি দেখা দিয়েছে। অনুগ্রহ করে পরবর্তীতে আবার চেষ্টা করুন।",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "সেটিংস",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "বিজ্ঞপ্তি",

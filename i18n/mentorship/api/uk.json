@@ -30,5 +30,7 @@
 	"apihelp-growthmanagementorlist-param-autoassigned": "Чи призначається наставник новачкам автоматично?",
 	"apihelp-growthmanagementorlist-param-summary": "Причина зміни",
 	"apihelp-growthmanagementorlist-param-username": "Ім’я користувача наставника, якого торкнуться зміни. Якщо не вказано, використовуватиметься поточний користувач. Може використовуватися лише привілейованими користувачами.",
-	"growthexperiments-api-managementors-error-no-away-timestamp": "Якщо isaway має значення значення true, то треба вказати awaytimestamp."
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Якщо isaway має значення значення true, то треба вказати awaytimestamp.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Анулює пропозицію гідного похвали підопічного в модулі персоналізованої похвали на панелі наставника",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Підопічного до анулювання"
 }

@@ -4,5 +4,21 @@
 			"TayfunEt."
 		]
 	},
-	"growthexperiments-mentor-dashboard-mentee-overview-talk": "gürleşme"
+	"growthexperiments-mentor-dashboard-mentee-overview-talk": "gürleşme",
+	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Tejribeli ulanyjylaryň we terbiýeçileriň oňyn habarlary täze redaktoryň saklanmagyny gowulaşdyryp biler.",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Indiki sahypa",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Näbelli ýalňyşlyk ýüze çykdy. Gaýrat ediň biraz wagtdan gaýtadan synanyşyň.",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Sazlamalar",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours": "Soňky 48 sagat",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week": "Geçen hepde",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks": "Soňky 2 hepde",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month": "Geçen aý",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Mowzuk",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Duýduryşlar",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "Her gün",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly": "Hepdelik",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly": "Aýlyk",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never": "Hiç haçan",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Ýazdyr",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Goýbolsun et"
 }

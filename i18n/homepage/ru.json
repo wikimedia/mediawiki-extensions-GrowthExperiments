@@ -351,7 +351,7 @@
 	"growthexperiments-homepage-claimmentee-reason": "Описание причины, почему вы выбрали этого подопечного",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Вы изменили}} наставника {{PLURAL:$2|участника|участников}} $1 на {{GENDER:$4|$5}}. Вернитесь в [[Special:MentorDashboard|панель наставника]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "У {{GENDER:$1|$1}} наставник уже был изменён. {{GENDER:$2|Вы}}, уверены что хотите сменить его ещё раз?",
-	"growthexperiments-claimmentee-confirm": "Да, я действительно хочу сменить {{GENDER:|наставника|наставницу}}",
+	"growthexperiments-claimmentee-confirm": "Да, я действительно хочу продолжить",
 	"growthexperiments-log-name": "Журнал GrowthExperiments",
 	"growthexperiments-log-header": "Это журнал действий, сделанных в расширении GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|утвердил|утвердила}} {{GENDER:$6|$3}} как {{GENDER:$6|своего подопечного|свою подопечную}} ({{GENDER:$4|предыдущий наставник|предыдущая наставница}} — $5)",
