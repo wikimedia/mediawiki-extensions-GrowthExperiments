@@ -1,9 +1,11 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"BadDog"
+		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|šta je ovo?]])",
-	"growthexperiments-confirmemail-emailhelp": "Imejl je potreban za oporavak naloga ako kojim slučajem zaboravite lozinku.",
+	"growthexperiments-confirmemail-emailhelp": "E-adresa je neophodna za oporavak naloga u slučaju da zaboravite lozinku.",
 	"growthexperiments-confirmemail-emailrecommended": "Imejl-adresa (preporučuje se)",
 	"growthexperiments-confirmemail-emailwarning": "Kada otvorite nalog, potvrdite imejl-adresu klikom na vezu iz najnovijeg imejla.",
 	"growthexperiments-confirmemail-confirm-subject": "Dobro došli na projekat {{SITENAME}}: potvrdite imejl-adresu",

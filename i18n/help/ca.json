@@ -8,7 +8,8 @@
 			"Paucabot",
 			"Skurz0",
 			"Toniher",
-			"Xavier Dengra"
+			"Xavier Dengra",
+			"Robertgarrigos"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activa el Plafó d'Ajuda d'edició",
@@ -99,6 +100,8 @@
 	"growthexperiments-help-panel-questionposter-invalid-title": "El títol no és vàlid.",
 	"growthexperiments-help-panel-search-label": "Cerca ajuda",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Edicions suggerides",
+	"growthexperiments-help-panel-button-header-general-help": "Ajuda d'edició general",
+	"growthexperiments-help-panel-button-subheader-general-help": "Cerca respostes i llegeix articles interessants",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Consells d'inici ràpid",
 	"growthexperiments-help-panel-general-help-title": "Ajuda general d'edició",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Sobre les edicions suggerides",

@@ -111,7 +111,7 @@
 	"growthexperiments-homepage-help-subheader": "صفحات المساعدة الأكثر قراءة حول التحرير",
 	"growthexperiments-homepage-help-mobilebody": "{{GENDER:|اسأل|اسألي}} فريق المساعدة أو {{GENDER:|اقرأ|اقرئي}} صفحات المساعدة.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|أسئلتك}} الأخيرة",
-	"growthexperiments-homepage-recent-questions-posted-on": "نُشِرَ قبل $1",
+	"growthexperiments-homepage-recent-questions-posted-on": "نُشِرَ منذ $1",
 	"growthexperiments-homepage-recent-questions-archived": "مُؤرشِف",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "أُرشف هذا السؤال؛ لأنه مطروح على الأرجح منذ فترة طويلة.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|هنا}} {{GENDER:$2|مرشدك|مرشدتك}}",
