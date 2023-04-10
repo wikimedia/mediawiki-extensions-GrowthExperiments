@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kimberli Mäkäräinen (WMNO)",
 			"Yupik"
 		]
 	},
+	"growthexperiments-help-panel-question-button-text": "Joatkke",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Lassedieđut liŋkkaid lasiheami birra]]",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Lasit e-poastačujuhusa"
 }

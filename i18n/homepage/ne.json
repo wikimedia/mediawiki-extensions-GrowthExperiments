@@ -227,6 +227,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "मध्यम",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "कडा",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "सम्पादनका प्रकारहरू चयन गर्नुहोस्",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "सुझाव गरिएका सम्पादनहरू {{GENDER:|तपाईं}}लाई सम्पादन गर्न सिक्न र ठूला प्रकारका सम्पादनहरूमा काम गर्दा थप दक्ष बन्न मद्दत गर्न डिजाइन गरिएको हो।",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "नयाँ लेख सिर्जना गर्न चाहनुहुन्छ?",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-body": "{{SITENAME}} सम्पादकहरूले सुझाव दिन्छन् कि {{GENDER:|तपाईं}}ले नयाँ लेख प्रयास गर्नु अघि केही मध्यम र कठिन कार्यहरू प्रयास गर्नुहोस्। नयाँ हराएको लेख लेख्ने बारे [$1 थप जान्नुहोस्]।",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "विषयहरू चयन गर्नुहोस्",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "भयो",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "भयो",
@@ -513,5 +516,8 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|तपाईंको}} {{GENDER:$1|सल्लाहकार}} अर्को व्यक्ति हो जसमा {{SITENAME}}मा सम्पादन गर्ने धेरै अनुभव छ। {{GENDER:$1|उहाँ|उन|तिनीहरू}}ले {{GENDER:|तपाईं}} जस्ता नयाँ व्यक्तिहरूलाई कसरी सम्पादन गर्ने भन्ने बारे मार्गदर्शन गर्न स्वयम्सेवा गरेका छन्, र {{GENDER:|तपाईंले}} साइट प्रयोग गर्ने बारे प्रश्नहरूको जवाफ दिन सक्नुहुन्छ।",
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "जब {{GENDER:|तपाईंले}} सल्लाहकारलाई सन्देश पठाउनुहुन्छ, {{GENDER:$1|उहाँ|उनी|उनीहरू}}को प्रयोगकर्ता वार्ता पृष्ठमा देख्नेछन् र {{GENDER:$1|उहाँले जवाफ दिनुहुन्छ|उनीले जवाफ दिन्छिन्|उनीहरूले जवाफ दिन्छन्}} तपाईंले एक सूचना प्राप्त गर्नुपर्छ।",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "म सल्लाहकार बन्न चाहन्न",
-	"growthexperiments-homepage-mentorship-about-done": "भयो"
+	"growthexperiments-homepage-mentorship-about-done": "भयो",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "थप जान्नुहोस्",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "सुझाव गरिएको सम्पादन गर्नुहोस्",
+	"echo-category-title-ge-newcomer": "वृद्धि सुविधाहरू"
 }
