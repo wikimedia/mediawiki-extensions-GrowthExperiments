@@ -5,7 +5,7 @@
 		class="ext-growthExperiments-OnboardingDialog"
 		title="Introduction"
 		:hide-title="true"
-		@update:open="{ $emit( 'update:open', false ); currentIndex = initialStep }"
+		@update:open="( newVal ) => onDialogOpenUpdate( newVal )"
 	>
 		<template #header>
 			<div
@@ -19,9 +19,9 @@
 				if slot with inner text is provided  -->
 				<div class="ext-growthExperiments-OnboardingDialog__header__button">
 					<cdx-button
-						v-if="$slots.headerbtntext && currentIndex !== totalSteps - 1"
+						v-if="$slots.headerbtntext && currentStep !== totalSteps "
 						weight="quiet"
-						@click="$emit( 'update:open', false ); currentIndex = initialStep"
+						@click="onHeaderBtnClick"
 					>
 						<slot name="headerbtntext"></slot>
 					</cdx-button>
@@ -31,17 +31,24 @@
 
 		<!-- Dialog Content -->
 		<div class="ext-growthExperiments-OnboardingDialog__content">
-			<!-- Dialog paginator indicate current steps and total steps  -->
+			<!-- Dialog paginator indicate current steps and total steps. -->
 			<onboarding-paginator
+				v-if="showPaginator && totalSteps > 1 && hasSteps"
 				class="ext-growthExperiments-OnboardingDialog__content__paginator"
 				:total-steps="totalSteps"
-				:current-step="currentIndex + 1"
-			>
-			</onboarding-paginator>
-			<!-- This slot contains the content for the different steps in the dialog.
-				The content for each step must be wrapped into a OnboardingStep component  -->
-			<slot name="body" :current-index="currentIndex">
-			</slot>
+				:current-step="currentStep"
+			></onboarding-paginator>
+
+			<!-- Slot for the dialog steps.
+				Content for each step can be provided by using the named slots:
+				#step1, #step2, #step3, etc..
+				-->
+			<slot v-if="hasSteps" :name="currentSlotName"></slot>
+
+			<!-- Default slot to provide content to dialog body
+				if no step slot is provided.
+				-->
+			<slot v-else></slot>
 		</div>
 
 		<!-- Dialog Footer -->
@@ -57,7 +64,7 @@
 					<!-- The first step of the dialog displays a checkbox
 					if text content for the checkbox slot  is provided. -->
 					<div
-						v-if="currentIndex === 0"
+						v-if="currentStep === 1"
 						class="ext-growthExperiments-OnboardingDialog__footer__actions-prev">
 						<!-- eslint-disable-next-line max-len -->
 						<cdx-checkbox
@@ -84,12 +91,12 @@
 					<!-- Footer Acctions Next -->
 					<!-- The last step displays a button with a slot for the text content -->
 					<div
-						v-if="currentIndex + 1 === totalSteps"
+						v-if="currentStep === totalSteps"
 						class="ext-growthExperiments-OnboardingDialog__footer__actions-next">
 						<cdx-button
 							weight="primary"
 							action="progressive"
-							@click="$emit( 'update:open', false ); currentIndex = initialStep">
+							@click="onLastStepBtnClick">
 							<slot name="last-step-button-text">
 								Close
 							</slot>
@@ -120,7 +127,7 @@ import { CdxDialog, CdxButton, CdxIcon, CdxCheckbox } from '@wikimedia/codex';
 import { cdxIconNext, cdxIconPrevious } from '@wikimedia/codex-icons';
 import OnboardingPaginator from './OnboardingPaginator.vue';
 
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 export default {
 	name: 'OnboardingDialog',
@@ -136,7 +143,7 @@ export default {
 	props: {
 
 		/**
-		 * The total number of steps the dialog displays
+		 * The total number of steps the dialog will display
 		 */
 		totalSteps: {
 			type: Number,
@@ -145,41 +152,75 @@ export default {
 		},
 
 		/**
-		 * First step to show when the dialog open
+		 * The number of the step to show when the dialog open
 		 */
 		initialStep: {
 			type: Number,
-			default: 0
+			default: 1
+		},
+
+		/**
+		 * Control whether to display or hide the paginator at the top of
+		 * the dialog content when more than one step content is provided
+		 */
+		showPaginator: {
+			type: Boolean,
+			default: false
 		}
 
 	},
-	emits: [ 'update:open', 'update:modelValue' ],
+	emits: [ 'update:open', 'update:modelValue', 'update:currentStep' ],
+	setup( props, { emit, slots, modelValue } ) {
 
-	setup( props, { modelValue } ) {
+		const currentStep = ref( props.initialStep );
 
-		const currentIndex = ref( props.initialStep );
+		const currentSlotName = computed( () => `step${currentStep.value}` );
 
+		const hasSteps = computed( () => !!slots.step1 );
+
+		const onDialogOpenUpdate = ( newVal ) => {
+			emit( 'update:open', newVal );
+			currentStep.value = props.initialStep;
+
+		};
 		const onNextClick = () => {
-			if ( currentIndex.value + 1 < props.totalSteps ) {
-
-				currentIndex.value++;
+			if ( currentStep.value + 1 <= props.totalSteps ) {
+				currentStep.value++;
+				emit( 'update:currentStep', currentStep.value );
 			}
 		};
 		const onPrevClick = () => {
-			if ( currentIndex.value > 0 ) {
-				currentIndex.value--;
+			if ( currentStep.value > 0 ) {
+				currentStep.value--;
+				emit( 'update:currentStep', currentStep.value );
+
 			}
 		};
 
-		return {
+		const onHeaderBtnClick = () => {
+			emit( 'update:open', false );
+			currentStep.value = props.initialStep;
+		};
 
-			currentIndex,
+		const onLastStepBtnClick = () => {
+			emit( 'update:open', false );
+			currentStep.value = props.initialStep;
+
+		};
+
+		return {
+			currentSlotName,
+			currentStep,
 			onNextClick,
 			onPrevClick,
 			cdxIconNext,
 			cdxIconPrevious,
 			open,
-			modelValue
+			modelValue,
+			onDialogOpenUpdate,
+			hasSteps,
+			onLastStepBtnClick,
+			onHeaderBtnClick
 
 		};
 	}
@@ -192,7 +233,6 @@ export default {
 
 	.ext-growthExperiments-OnboardingDialog {
 		position: relative;
-		height: 520px;
 
 		&__header {
 			display: flex;
@@ -218,7 +258,6 @@ export default {
 				// This gutter is generated by Cdx-dialog gap value of 32px
 				top: 48px;
 				position: absolute;
-				z-index: 2;
 			}
 		}
 
