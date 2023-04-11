@@ -140,7 +140,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Вітальне повідомлення представляє {{GENDER:|вас}} як наставника. Будь ласка, не перевищуйте 240 символів. Вікітекст не допускається.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Причина",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Записатись",
-	"growthexperiments-mentorship-enrollasmentor-success": "Ви тепер зараховані як {{GENDER:|наставник|наставниця}}. {{GENDER:|Ви}} можете перейти [[Special:MentorDashboard|панелі наставника]].",
+	"growthexperiments-mentorship-enrollasmentor-success": "Ви тепер записані як {{GENDER:|наставник|наставниця}}. {{GENDER:|Ви}} можете перейти до [[Special:MentorDashboard|панелі наставника]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Додавання себе в якості наставника",
 	"tag-mentor list change": "Зміна списку наставників",
 	"tag-mentor list change-description": "Тег, який застосовується до змін, внесених до структурованого списку наставників за допомогою GrowthExperiments"
