@@ -80,6 +80,9 @@ class PersonalizedPraiseHooks implements
 		$preferences[ PraiseworthyConditionsLookup::WAS_PRAISED_PREF ] = [
 			'type' => 'api'
 		];
+		$preferences[ PraiseworthyConditionsLookup::SKIPPED_UNTIL_PREF ] = [
+			'type' => 'api'
+		];
 		$preferences[ PersonalizedPraiseSettings::PREF_NAME ] = [
 			'type' => 'api'
 		];
@@ -91,6 +94,7 @@ class PersonalizedPraiseHooks implements
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		$defaultOptions += [
 			PraiseworthyConditionsLookup::WAS_PRAISED_PREF => false,
+			PraiseworthyConditionsLookup::SKIPPED_UNTIL_PREF => null,
 			PersonalizedPraiseSettings::PREF_NAME => '{}',
 		];
 	}

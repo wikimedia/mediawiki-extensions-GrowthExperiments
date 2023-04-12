@@ -12,7 +12,11 @@
 			@update:settings="onSettingsUpdate"
 		></personalized-praise-settings>
 		<no-results v-if="!hasData"></no-results>
-		<user-card v-if="hasData" :mentee="mentee"></user-card>
+		<user-card
+			v-if="hasData"
+			:mentee="mentee"
+			@skip="onMenteeSkipped"
+		></user-card>
 		<personalized-praise-pagination
 			v-if="hasData"
 			:current-page="currentPage"
@@ -64,6 +68,9 @@ module.exports = exports = {
 		},
 		onSettingsUpdate( settings ) {
 			this.$store.dispatch( 'praiseworthyMentees/saveSettings', settings );
+		},
+		onMenteeSkipped( mentee ) {
+			this.$store.dispatch( 'praiseworthyMentees/removeMentee', mentee );
 		}
 	},
 	created() {

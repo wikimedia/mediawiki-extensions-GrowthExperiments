@@ -13,6 +13,7 @@ use MediaWiki\User\UserOptionsManager;
 use Psr\Log\LoggerAwareTrait;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\ScopedCallback;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class PraiseworthyMenteeSuggester {
 	use LoggerAwareTrait;
@@ -227,22 +228,15 @@ class PraiseworthyMenteeSuggester {
 	}
 
 	/**
-	 * Mark a mentee as already praised
+	 * Remove a mentee from the list of praiseworthy mentees
 	 *
 	 * @param UserIdentity $mentee
 	 */
-	public function markMenteeAsPraised( UserIdentity $mentee ): void {
+	private function removeMenteeFromSuggestions( UserIdentity $mentee ): void {
 		$mentor = $this->mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
 		if ( !$mentor ) {
 			return;
 		}
-
-		$this->userOptionsManager->setOption(
-			$mentee,
-			PraiseworthyConditionsLookup::WAS_PRAISED_PREF,
-			true
-		);
-		$this->userOptionsManager->saveOptions( $mentee );
 
 		if ( $this->isMenteeMarkedAsPraiseworthy( $mentee, $mentor ) ) {
 			$this->globalCache->merge(
@@ -255,5 +249,42 @@ class PraiseworthyMenteeSuggester {
 				}
 			);
 		}
+	}
+
+	/**
+	 * Mark a mentee as already praised
+	 *
+	 * @param UserIdentity $mentee
+	 */
+	public function markMenteeAsPraised( UserIdentity $mentee ): void {
+		$this->userOptionsManager->setOption(
+			$mentee,
+			PraiseworthyConditionsLookup::WAS_PRAISED_PREF,
+			true
+		);
+		$this->userOptionsManager->saveOptions( $mentee );
+
+		$this->removeMenteeFromSuggestions( $mentee );
+	}
+
+	/**
+	 * Mark a mentee as skipped
+	 *
+	 * The mentee will not be re-suggested for PraiseworthyConditionsLookup::SKIP_MENTEES_FOR_DAYS
+	 * days.
+	 *
+	 * @param UserIdentity $mentee
+	 */
+	public function markMenteeAsSkipped( UserIdentity $mentee ): void {
+		$this->userOptionsManager->setOption(
+			$mentee,
+			PraiseworthyConditionsLookup::SKIPPED_UNTIL_PREF,
+			( new ConvertibleTimestamp() )
+				->add( 'P' . PraiseworthyConditionsLookup::SKIP_MENTEES_FOR_DAYS . 'D' )
+				->getTimestamp( TS_MW )
+		);
+		$this->userOptionsManager->saveOptions( $mentee );
+
+		$this->removeMenteeFromSuggestions( $mentee );
 	}
 }
