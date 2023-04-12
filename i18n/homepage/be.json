@@ -324,7 +324,7 @@
 	"growthexperiments-templatecollectionfeature-invalid-collection": "Няслушная калекцыя шаблонаў $1.",
 	"growthexperiments-addlink-pagenotfound": "Старонка «$1» не існуе",
 	"growthexperiments-addlink-revdeleted": "Версія $1 старонкі «$2» недаступная",
-	"growthexperiments-addlink-wrongmodel": "Версія $1 старонкі «$2» — не вікі-тэкст",
+	"growthexperiments-addlink-wrongmodel": "Версія $1 старонкі «$2» — не вікіразметка",
 	"growthexperiments-addlink-invalidjson": "Адказ ад сэрвісу рэкамендацый спасылак для старонкі «$1» няслушны",
 	"growthexperiments-addlink-serviceerror": "Сэрвіс рэкамендацый спасылак адказаў памылкай для старонкі «$1»: $2",
 	"growthexperiments-addlink-notinstore": "Для артыкула «$1» не знойдзена прапанаваных спасылак",
