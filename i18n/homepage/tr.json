@@ -577,5 +577,7 @@
 	"growthexperiments-tour-newimpact-discovery-title": "Güncellenmiş tasarım",
 	"growthexperiments-tour-newimpact-discovery-description": "Değişiklik {{GENDER:|etkinliğinizden}} daha fazlası eklendi!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Anladım",
-	"growthexperiments-homepage-newimpact-contributions-link": "Tüm değişiklikeri görüntüle"
+	"growthexperiments-homepage-newimpact-contributions-link": "Tüm değişiklikeri görüntüle",
+	"echo-category-title-ge-newcomer": "Growth özellikleri",
+	"echo-pref-tooltip-ge-newcomer": "Yeni gelenler için görevler ve yeni kullanıcılara yardımcı olmak için tasarlanmış diğer özellikler hakkında beni uyar."
 }

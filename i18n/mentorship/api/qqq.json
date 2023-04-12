@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Amire80"
+		]
 	},
 	"apihelp-growthstarmentee-summary": "{{doc-apihelp-summary|growthstarmentee}}",
 	"apihelp-growthstarmentee-param-gesaction": "{{doc-apihelp-param|growthstarmentee|gesaction}}",
@@ -27,7 +29,7 @@
 	"apihelp-growthmanagementorlist-param-summary": "{{doc-apihelp-param|growthmanagementorlist|summary}}",
 	"apihelp-growthmanagementorlist-param-username": "{{doc-apihelp-param|growthmanagementorlist|username}}",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Message to show in API (action=growthmanagementors) if isaway is true, but awaytimestamp is not provided.",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|summary}}",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|mentee}}",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|reason}}"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|summary}}\n\nRelated messages:\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee}}\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason}}",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|mentee}}\nRelated messages:\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-summary}}\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason}}",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|reason}}\n\nRelated messages:\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-summary}}\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee}}"
 }

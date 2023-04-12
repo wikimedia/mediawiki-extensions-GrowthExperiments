@@ -30,6 +30,7 @@
 	"apihelp-growthmanagementorlist-param-summary": "סיבה לשינוי",
 	"apihelp-growthmanagementorlist-param-username": "שם המשתמש של החונך מושפע מהשינוי. אם זה לא מסופק, ישמש המשתמש שנמצא בחשבון עכשיו. יכול לשמש רק בידי משתמשים עם הרשאות.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "אם הערך של isaway הוא true, חובה לספק awaytimestamp.",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "ביטול הצעת חניך ראוי לשבח במודול הבעת הערכה אישית בלוח הבקרה לחונכים",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "אילו חניכים לבטל"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "פסילת הצעת חניך ראוי להערכה במודול הבעת הערכה אישית בלוח הבקרה לחונכים",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "אילו חניכים לפסול",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "סיבה לפסול את ההצעה"
 }

@@ -560,11 +560,9 @@
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Am înțeles",
 	"growthexperiments-homepage-newimpact-contributions-link": "Vezi toate editările",
 	"growthexperiments-levelingup-getstarted-notification-header": "Încercați o editare sugerată și începeți să vă clădiți abilitățile de {{GENDER:$2|editare}}",
-	"growthexperiments-levelingup-getstarted-notification-body": "Editările sugerate ajută editorii noi să învețe despre modul de lucrul de la {{SITENAME}} și să își dezvolte abilități de editare de bază.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Încercați editări sugerate",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Aflați mai mult",
 	"growthexperiments-levelingup-keepgoing-notification-header": "Continuați să efectuați editări sugerate pentru a vă dezvolta abilitățile de {{GENDER:$2|editare}}",
-	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Ați}} efectuat $3 {{PLURAL:$3|editare sugerată|editări sugerate}}. Continuați pentru a învăța alte abilități noi.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Efectuați o editare sugerată",
 	"echo-category-title-ge-newcomer": "Funcții Growth",
 	"echo-pref-tooltip-ge-newcomer": "Notifică-mă despre sarcini pentru nou-veniți și alte funcții concepute pentru a ajuta utilizatorii noi."

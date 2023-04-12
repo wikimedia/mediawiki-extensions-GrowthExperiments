@@ -597,11 +597,9 @@
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Listo",
 	"growthexperiments-homepage-newimpact-contributions-link": "Ver todas las ediciones",
 	"growthexperiments-levelingup-getstarted-notification-header": "Prueba una edición sugerida y empieza a desarrollar {{GENDER:$2|tus}} habilidades de edición",
-	"growthexperiments-levelingup-getstarted-notification-body": "Las ediciones sugeridas ayudan a que las personas que están empezando a editar conozcan las mejores prácticas de {{SITENAME}} y a desarrollar las habilidades básicas de edición.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Prueba las ediciones sugeridas",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Aprender más",
 	"growthexperiments-levelingup-keepgoing-notification-header": "Sigue realizando ediciones sugeridas para desarrollar {{GENDER: $2|tus}} habilidades de edición.",
-	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Has}} realizado $3 {{PLURAL:$3|edición sugerida|ediciones sugeridas}}. Sigue adelante para aprender nuevas habilidades de edición.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Hacer una edición sugerida",
 	"echo-category-title-ge-newcomer": "Funcionalidades de Crecimiento",
 	"echo-pref-tooltip-ge-newcomer": "Notificarme de las tareas para personas novatas y otras funciones diseñadas para ayudar a quienes están empezando a editar."

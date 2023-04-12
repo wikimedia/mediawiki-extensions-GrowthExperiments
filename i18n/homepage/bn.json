@@ -578,11 +578,9 @@
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "বুঝেছি",
 	"growthexperiments-homepage-newimpact-contributions-link": "সকল সম্পাদনা দেখুন",
 	"growthexperiments-levelingup-getstarted-notification-header": "একটি পরামর্শকৃত সম্পাদনা নিয়ে কাজ করুন এবং {{GENDER:$2|আপনার}} সম্পাদনার দক্ষতা বাড়িয়ে তুলুন",
-	"growthexperiments-levelingup-getstarted-notification-body": "পরামর্শকৃত সম্পাদনা নতুন অবদানকারীদের {{SITENAME}}-এর নিয়ম সম্পর্কে শিখতে এবং অবদান রাখার দক্ষতা বিকাশে সহায়তা করে৷",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "পরামর্শকৃত সম্পাদনা নিয়ে কাজ করুন",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "আরও জানুন",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|আপনার}} দক্ষতা বৃদ্ধির জন্য আরো পরামর্শকৃত সম্পাদনা নিয়ে কাজ করতে থাকুন।",
-	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|আপনি}} $3টি {{PLURAL:$3|পরামর্শকৃত সম্পাদনা}} করেছেন। দক্ষতা বৃদ্ধির লক্ষ্যে কাজ চালিয়ে যান।",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "একটি পরামর্শকৃত সম্পাদনা করুন",
 	"echo-category-title-ge-newcomer": "গ্রোথ বৈশিষ্ট্য",
 	"echo-pref-tooltip-ge-newcomer": "নবাগতদের জন্য এবং নবাগতদের সহায়তার জন্য তৈরি কাজের ব্যাপারে আমাকে জানাও।"

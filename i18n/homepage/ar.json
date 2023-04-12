@@ -576,11 +576,9 @@
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "عُلم",
 	"growthexperiments-homepage-newimpact-contributions-link": "عرض كل التعديلات",
 	"growthexperiments-levelingup-getstarted-notification-header": "{{GENDER:$2|جرّب|جرّبي}} تعديلًا مقترحًا و{{GENDER:$2|ابدأ|ابدئي}} في إنشاء مهارات قي التحرير",
-	"growthexperiments-levelingup-getstarted-notification-body": "تساعد التعديلاتُ المقترحة المحررينَ الجدد في تعلّم أفضل أساليب {{SITENAME}}، وفي تطوير مهارات التحرير الأساسية.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "{{GENDER:|جرّب|جرّبي}} التعديلات المقترحة",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "تعلم المزيد",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|استمر|استمري}} في إجراء التعديلات المقترحة لتطوير مهاراتك التحريرية",
-	"growthexperiments-levelingup-keepgoing-notification-body": "لقد أتممت {{PLURAL:$3|لا تعديل مقترح|تعديلًا مقترحًا واحدًا|تعديلين مقترحين|$3 تعديلات مقترحة|$3 تعديلًا مقترحًا|$3 تعديلٍ مقترحٍ}}. {{GENDER:$2|استمر|استمري}} في تعلّم المزيد من المهارات الجديدة.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "{{GENDER:|قم|قومي}} بإجراء تعديل مقترح",
 	"echo-category-title-ge-newcomer": "ميزات النمو",
 	"echo-pref-tooltip-ge-newcomer": "إعلامي بالمهام الخاصة بالوافدين الجدد والميزات الأخرى المصممة لمساعدة المستخدمين الجدد."

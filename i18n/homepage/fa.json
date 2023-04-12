@@ -575,11 +575,9 @@
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "گرفتم",
 	"growthexperiments-homepage-newimpact-contributions-link": "مشاهدهٔ همهٔ ویرایش‌ها",
 	"growthexperiments-levelingup-getstarted-notification-header": "یک ویرایش پیشنهادی را امتحان کنید و روند پرورش مهارت‌های ویرایشی {{GENDER:$2|خود}} را آغاز کنید",
-	"growthexperiments-levelingup-getstarted-notification-body": "ویرایش‌های پیشنهادی به ویرایشگران تازه کمک می‌کنند تا دربارهٔ بهترین شیوه‌های مشارکت در {{SITENAME}} بیشتر بیاموزند و مهارت‌های ویرایشی اصلی خود را توسعه دهند.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "ویرایش‌های پیشنهادی را بیازمایید",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "بیشتر بدانید",
 	"growthexperiments-levelingup-keepgoing-notification-header": "برای توسعه دادن مهارت‌های ویرایشی {{GENDER:$2|خود}} به انجام ویرایش‌های پیشنهادی ادامه دهید",
-	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|شما}} $3 {{PLURAL:$3|ویرایش پیشنهادی}} را انجام داده‌اید. برای کسب مهارت‌های جدید بیشتر، به کار خود ادامه دهید.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "انجام یک ویرایش پیشنهادی",
 	"echo-category-title-ge-newcomer": "ویژگی‌های رشد",
 	"echo-pref-tooltip-ge-newcomer": "مرا از وظایف تازه‌واردان و سایر ویژگی‌های طراحی‌شده برای کمک به کاربران جدید آگاه کن."

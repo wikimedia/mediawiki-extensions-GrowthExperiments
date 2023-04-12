@@ -566,11 +566,9 @@
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Razumem",
 	"growthexperiments-homepage-newimpact-contributions-link": "Ogled vseh urejanj",
 	"growthexperiments-levelingup-getstarted-notification-header": "Preizkusite predlagano urejanje in začnite pridobivati{{GENDER:$2|}} spretnosti urejanja",
-	"growthexperiments-levelingup-getstarted-notification-body": "Predlagana urejanja pomagajo novim urejevalcem spoznati najboljše prakse projekta {{SITENAME}} in razviti osnovne spretnosti urejanja.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Preizkusite predlagana urejanja",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Več o tem",
-	"growthexperiments-levelingup-keepgoing-notification-header": "Nadaljujte s predlaganimi popravki za razvoj {{GENDER:$2|svojih}} spretnosti urejanja",
-	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Opravili ste}} $3 {{PLURAL:$3|predlagano urejanje|predlagani urejanji|predlagana urejanja|predlaganih urejanj}}. Nadaljujte z učenjem novih spretnosti.",
+	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Opravili ste}} $3 {{PLURAL:$3|predlagano urejanje|predlagani urejanji|predlagana urejanja|predlaganih urejanj}}. Nadaljuje s pridobivanjem spretnosti.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Opravite predlagano urejanje",
 	"echo-category-title-ge-newcomer": "Možnosti rasti",
 	"echo-pref-tooltip-ge-newcomer": "Obveščaj me o nalogah za novince in drugih možnostih ekipe Growth, namenjenih pomoči novim uporabnikom."

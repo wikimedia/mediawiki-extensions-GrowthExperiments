@@ -574,11 +574,9 @@
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Зрозуміло",
 	"growthexperiments-homepage-newimpact-contributions-link": "Переглянути всі редагування",
 	"growthexperiments-levelingup-getstarted-notification-header": "Спробуйте пропоноване редагування і почніть розвивати {{GENDER:$2|свої}} навички редагування",
-	"growthexperiments-levelingup-getstarted-notification-body": "Пропоновані редагування допомагають новим редакторам дізнатися про найкращі практики {{GRAMMAR:genitive|{{SITENAME}}}} і розвинути основні навички редагування.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Спробувати пропоновані редагування",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Дізнатися більше",
 	"growthexperiments-levelingup-keepgoing-notification-header": "Продовжуйте розвивати {{GENDER:$2|свої}} навички редагування, виконуючи пропоновані редагування",
-	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Ви}} зробили $3 {{PLURAL:$3|пропоноване редагування|пропоновані редагування|пропонованих редагувань}}. Продовжуйте, і здобуватимете нові навички.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Зробіть пропоноване редагування",
 	"echo-category-title-ge-newcomer": "Функції зростання",
 	"echo-pref-tooltip-ge-newcomer": "Повідомляти мене про завдання для новачків та інші функції, розроблені для нових користувачів."

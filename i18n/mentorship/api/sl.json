@@ -30,5 +30,6 @@
 	"apihelp-growthmanagementorlist-param-username": "Uporabniško ime mentorja, na katerega vpliva sprememba. Če ni navedeno, bo uporabljen trenutno prijavljeni uporabnik. To možnost lahko uporabljajo samo uporabniki z dovoljenjem.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Če je »isaway« (odsoten) »true« (resničen), je treba navesti »awaytimestamp« (časovni žig odsotnosti).",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Razveljavi predlog za hvalevrednega mentoriranca v modulu Personalizirana pohvala na mentorski nadzorni plošči",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Neveljavni mentoriranec"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Neveljavni mentoriranec",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Razlog za razveljavitev predloga"
 }

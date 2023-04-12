@@ -577,11 +577,9 @@
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Rozumiem",
 	"growthexperiments-homepage-newimpact-contributions-link": "Zobacz wszystkie edycje",
 	"growthexperiments-levelingup-getstarted-notification-header": "Wypróbuj sugerowaną edycję i zacznij budować {{GENDER:$2|swoje}} umiejętności edytowania",
-	"growthexperiments-levelingup-getstarted-notification-body": "Sugerowanie edycji pomaga nowym redaktorom poznać dobre praktyki {{GRAMMAR:MS.lp|{{SITENAME}}}} i rozwinąć podstawowe umiejętności redakcyjne.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Wypróbuj sugerowane edycje",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Dowiedz się więcej",
 	"growthexperiments-levelingup-keepgoing-notification-header": "Wprowadzaj kolejne sugerowane zmiany, aby rozwijać {{GENDER:$2|swoje}} umiejętności edytowania",
-	"growthexperiments-levelingup-keepgoing-notification-body": "{{GENDER:$2|Dokonałeś|Dokonałaś}} $3 {{PLURAL:$3|sugerowaną edycję|sugerowane edycje|sugerowanych edycji}}. Kontynuuj, aby zdobywać nowe umiejętności.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Wykonaj sugerowaną edycję",
 	"echo-category-title-ge-newcomer": "Narzędzia Growth",
 	"echo-pref-tooltip-ge-newcomer": "Powiadamiaj mnie o zadaniach dla nowych użytkowników i innych funkcjach, które mają pomóc nowym użytkownikom."

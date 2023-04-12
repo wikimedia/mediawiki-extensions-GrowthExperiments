@@ -32,5 +32,6 @@
 	"apihelp-growthmanagementorlist-param-username": "Nom du tuteur affecté par le changement. S’il n’est pas fourni, l’utilisateur actuellement connecté sera utilisé. Ceci ne peut être utilisé que par des utilisateurs privilégiés.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Si « isaway » (est absent(e)) vaut « true » (vrai), alors le paramètre « awaytimestamp » (horodatage d’absence) doit être fourni.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalide une suggestion de tutoré digne de félicitation dans le module de félicitations personnalisé sur le tableau de bord du tuteur",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Tutoré à invalider"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Tutoré à invalider",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Motif pour invalider la suggestion"
 }
