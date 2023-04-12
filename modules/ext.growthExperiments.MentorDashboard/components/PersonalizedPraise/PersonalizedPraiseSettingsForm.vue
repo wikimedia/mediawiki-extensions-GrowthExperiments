@@ -46,19 +46,21 @@
 			></textarea>
 		</section>
 
-		<h3>
-			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline' ) }}
-		</h3>
-		<section class="ext-growthExperiments-PersonalizedPraiseSettings__form_group">
-			<label>
-				{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext' ) }}
-			</label>
-			<cdx-select
-				v-model:selected="settingsData.notificationFrequency"
-				class="ext-growthExperiments-PersonalizedPraiseSettings__input"
-				:menu-items="notificationFrequencyItems()"
-			></cdx-select>
-		</section>
+		<div v-if="areNotificationsEnabled">
+			<h3>
+				{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline' ) }}
+			</h3>
+			<section class="ext-growthExperiments-PersonalizedPraiseSettings__form_group">
+				<label>
+					{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext' ) }}
+				</label>
+				<cdx-select
+					v-model:selected="settingsData.notificationFrequency"
+					class="ext-growthExperiments-PersonalizedPraiseSettings__input"
+					:menu-items="notificationFrequencyItems()"
+				></cdx-select>
+			</section>
+		</div>
 
 		<cdx-button
 			class="ext-growthExperiments-PersonalizedPraiseSettings__button"
@@ -109,6 +111,11 @@ module.exports = exports = {
 				notificationFrequency: this.notificationFrequency
 			}
 		};
+	},
+	computed: {
+		areNotificationsEnabled() {
+			return mw.config.get( 'GEPersonalizedPraiseNotificationsEnabled' );
+		}
 	},
 	methods: {
 		onSettingsUpdate() {

@@ -138,7 +138,7 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 	 * @param UserIdentity $mentor
 	 */
 	private function notifyMentor( UserIdentity $mentor ) {
-		if ( !$this->config->get( 'GEPersonalizedPraiseEnabled' ) ) {
+		if ( !$this->config->get( 'GEPersonalizedPraiseNotificationsEnabled' ) ) {
 			return;
 		}
 

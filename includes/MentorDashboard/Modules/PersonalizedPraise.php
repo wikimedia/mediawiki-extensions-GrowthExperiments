@@ -97,6 +97,9 @@ class PersonalizedPraise extends BaseModule {
 			'GEPraiseworthyMessageTitle' => $this->personalizedPraiseSettings->getPraisingMessageTitle(
 				$this->getUser()
 			)->getPrefixedText(),
+			'GEPersonalizedPraiseNotificationsEnabled' => $this->getConfig()->get(
+				'GEPersonalizedPraiseNotificationsEnabled'
+			),
 		];
 	}
 
