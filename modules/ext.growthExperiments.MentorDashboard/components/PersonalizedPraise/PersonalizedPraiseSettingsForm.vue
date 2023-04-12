@@ -44,6 +44,9 @@
 				"
 				rows="6"
 			></textarea>
+			<c-text color="subtle" class="ext-growthExperiments-PersonalizedPraiseSettings__help_text">
+				{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text' ) }}
+			</c-text>
 		</section>
 
 		<h3>
@@ -81,6 +84,7 @@
 <script>
 const { CdxSelect, CdxTextInput, CdxButton } = require( '@wikimedia/codex' );
 const CNumberInput = require( '../CNumberInput/CNumberInput.vue' );
+const CText = require( '../../../vue-components/CText.vue' );
 
 // @vue/component
 module.exports = exports = {
@@ -89,7 +93,8 @@ module.exports = exports = {
 		CdxSelect,
 		CdxTextInput,
 		CdxButton,
-		CNumberInput
+		CNumberInput,
+		CText
 	},
 	props: {
 		minEdits: { type: Number, default: undefined },
