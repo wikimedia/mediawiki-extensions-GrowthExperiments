@@ -26,16 +26,20 @@
 	></c-score-cards>
 	<cdx-button
 		class="ext-growthExperiments-PersonalizedPraise__praise_button"
+		weight="primary"
+		action="progressive"
 		@click="onPraiseButtonClicked"
 	>
 		{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-send-appreciation' ) }}
 	</cdx-button>
+	<skip-mentee-dialog :mentee-user-name="mentee.userName" @skip="onMenteeSkipped"></skip-mentee-dialog>
 </template>
 
 <script>
 const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const { cdxIconUserAvatar } = require( '../../../vue-components/icons.json' );
 const CScoreCards = require( '../../../vue-components/CScoreCards.vue' );
+const SkipMenteeDialog = require( './SkipMenteeDialog.vue' );
 
 // @vue/component
 module.exports = exports = {
@@ -43,11 +47,13 @@ module.exports = exports = {
 	components: {
 		CdxButton,
 		CdxIcon,
-		CScoreCards
+		CScoreCards,
+		SkipMenteeDialog
 	},
 	props: {
 		mentee: { type: Array, required: true }
 	},
+	emits: [ 'skip' ],
 	setup() {
 		return {
 			cdxIconUserAvatar
@@ -108,7 +114,8 @@ module.exports = exports = {
 			const userName = this.mentee.userName;
 			return new mw.Api().postWithToken( 'csrf', {
 				action: 'growthinvalidatepersonalizedpraisesuggestion',
-				mentee: userName
+				mentee: userName,
+				reason: 'praised'
 			} ).then( function () {
 				// redirect the user
 				window.location.href = ( new mw.Title( userName, 3 ) ).getUrl() + '?' + $.param( {
@@ -125,6 +132,17 @@ module.exports = exports = {
 					{ type: 'error' }
 				);
 				mw.log.error( error );
+			} );
+		},
+		onMenteeSkipped( reason ) {
+			return new mw.Api().postWithToken( 'csrf', {
+				action: 'growthinvalidatepersonalizedpraisesuggestion',
+				mentee: this.mentee.userName,
+				reason: 'skipped',
+				skipreason: reason
+			} ).then( () => {
+				// Pass the event up to PersonalizedPraise.vue, to remove the mentee w/o the need for a reload
+				this.$emit( 'skip', this.mentee, reason );
 			} );
 		}
 	}

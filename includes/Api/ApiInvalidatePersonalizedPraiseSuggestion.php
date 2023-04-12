@@ -55,25 +55,36 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 		/** @var UserIdentity $mentee */
 		$mentee = $params['mentee'];
 
-		$this->praiseworthyMenteeSuggester->markMenteeAsPraised( $mentee );
+		if ( $params['reason'] === PersonalizedPraiseLogger::ACTION_PRAISED ) {
+			$this->praiseworthyMenteeSuggester->markMenteeAsPraised( $mentee );
+		} elseif ( $params['reason'] === PersonalizedPraiseLogger::ACTION_SKIPPED ) {
+			$this->praiseworthyMenteeSuggester->markMenteeAsSkipped( $mentee );
+		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), [
 			'status' => 'ok',
 			'mentee' => $mentee->getName(),
 		] );
 
-		if ( $params['reason'] === 'praised' ) {
-			$mentor = $this->mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
-			if ( !$mentor ) {
-				LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-					'ApiInvalidatePersonalizedPraiseSuggestion failed to load mentor for {mentee}',
-					[ 'mentee' => $mentee->getName() ]
-				);
-				return;
-			}
+		$mentor = $this->mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
+		if ( !$mentor ) {
+			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+				'ApiInvalidatePersonalizedPraiseSuggestion failed to load mentor for {mentee}',
+				[ 'mentee' => $mentee->getName() ]
+			);
+			return;
+		}
+
+		if ( $params['reason'] === PersonalizedPraiseLogger::ACTION_PRAISED ) {
 			$this->personalizedPraiseLogger->logPraised(
 				$mentor,
 				$mentee
+			);
+		} elseif ( $params['reason'] === PersonalizedPraiseLogger::ACTION_SKIPPED ) {
+			$this->personalizedPraiseLogger->logSkipped(
+				$mentor,
+				$mentee,
+				$params['skipreason']
 			);
 		}
 	}
@@ -103,10 +114,19 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 			],
 			'reason' => [
 				ParamValidator::PARAM_TYPE => [
-					'skip',
+					'skipped',
 					'praised'
 				],
-			]
+			],
+			'skipreason' => [
+				// NOTE: Keep in sync with SkipMenteeDialog.vue's reasonItems
+				ParamValidator::PARAM_TYPE => [
+					'already-praised',
+					'not-praiseworthy',
+					'not-now',
+					'other'
+				],
+			],
 		];
 	}
 }

@@ -23,6 +23,12 @@ class PraiseworthyConditionsLookup {
 	/** @var string */
 	public const WAS_PRAISED_PREF = 'growthexperiments-mentorship-was-praised';
 
+	/** @var string */
+	public const SKIPPED_UNTIL_PREF = 'growthexperiments-personalized-praise-skipped-until';
+
+	/** @var int Number of days skipped mentees cannot be suggested for */
+	public const SKIP_MENTEES_FOR_DAYS = 10;
+
 	/**
 	 * @param PersonalizedPraiseSettings $settings
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -89,11 +95,32 @@ class PraiseworthyConditionsLookup {
 	}
 
 	/**
+	 * Is the mentee currently skipped?
+	 *
+	 * @param UserIdentity $mentee
+	 * @return bool
+	 */
+	private function isMenteeSkipped( UserIdentity $mentee ): bool {
+		$skippedUntilRaw = $this->userOptionsLookup->getOption(
+			$mentee,
+			self::SKIPPED_UNTIL_PREF
+		);
+		if ( $skippedUntilRaw === null ) {
+			return false;
+		}
+
+		$noPraiseUntilUnix = ( new ConvertibleTimestamp( $skippedUntilRaw ) )->getTimestamp( TS_UNIX );
+		$nowUnix = ( new ConvertibleTimestamp() )->getTimestamp( TS_UNIX );
+		return $nowUnix < $noPraiseUntilUnix;
+	}
+
+	/**
 	 * Is the user able to be praised by a mentor?
 	 *
 	 * Users can receive praise if ALL of the following conditions are true:
 	 * 	* has mentorship module enabled
 	 * 	* was never praised in the past
+	 * 	* either was not skipped at all or was skipped at least SKIP_MENTEES_FOR_DAYS days ago
 	 *
 	 * Use this method if you want to know whether an user can theoretically appear in the
 	 * Personalized praise module. If you want to know whether they should be included in the
@@ -104,7 +131,8 @@ class PraiseworthyConditionsLookup {
 	 */
 	public function canUserBePraised( UserIdentity $mentee ): bool {
 		return $this->mentorManager->getMentorshipStateForUser( $mentee ) === MentorManager::MENTORSHIP_ENABLED &&
-			!$this->wasMenteePraised( $mentee );
+			!$this->wasMenteePraised( $mentee ) &&
+			!$this->isMenteeSkipped( $mentee );
 	}
 
 	/**
