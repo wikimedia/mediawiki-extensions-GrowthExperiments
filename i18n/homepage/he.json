@@ -571,7 +571,7 @@
 	"growthexperiments-levelingup-getstarted-notification-header": "{{GENDER:$2|נסה|נסי}} עריכה מוצעת {{GENDER:$2|והתחל|והתחילי}} לבנות את מיומנויות העריכה שלך",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "לנסות עריכות מוצעות",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "מידע נוסף",
-	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|המשך|המשיכי}} לעשות עריכות מוצעות לשם פיתוח מיומנויות העריכה שלך",
+	"growthexperiments-levelingup-keepgoing-notification-header": "עשית {{PLURAL:$3|עריכה מוצעת אחת|$3 עריכות מוצעות}}. {{GENDER:$2|תמשיך|תמשיכי}} ללמוד עוד מיומנויות חדשות.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "לעשות עריכה מוצעת",
 	"echo-category-title-ge-newcomer": "אפשרויות צמיחה",
 	"echo-pref-tooltip-ge-newcomer": "להודיע לי על משימות לעורכים חדשים ותכונות אחרות שנועדו לעזור למשתמשים חדשים."

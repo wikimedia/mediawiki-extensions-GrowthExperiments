@@ -17,5 +17,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Azione",
 	"apihelp-growthmanagementorlist-param-weight": "Peso",
 	"apihelp-growthmanagementorlist-param-autoassigned": "È il tutor automaticamente assegnato ai nuovi arrivati?",
-	"apihelp-growthmanagementorlist-param-summary": "Motivo della modifica"
+	"apihelp-growthmanagementorlist-param-summary": "Motivo della modifica",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Motivo per invalidare il suggerimento"
 }

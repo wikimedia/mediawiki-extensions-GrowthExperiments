@@ -10,6 +10,7 @@
 			"Func",
 			"Grace03",
 			"GuoPC",
+			"Hehua",
 			"Hmgrmb",
 			"Josephine W.",
 			"Lakejason0",
@@ -552,5 +553,6 @@
 	"growthexperiments-homepage-mentorship-about-done": "完成",
 	"growthexperiments-tour-newimpact-discovery-title": "更新的设计",
 	"growthexperiments-tour-newimpact-discovery-description": "更多关于{{GENDER:|your}}的编辑活动已经添加！",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "明白了"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "明白了",
+	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|您已经}}进行了$3个{{PLURAL:$3|建议编辑}}，继续学习更多新技能。"
 }

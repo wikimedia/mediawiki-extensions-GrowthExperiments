@@ -128,7 +128,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Einleitende Nachricht",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "Deine einleitende Nachricht wurde in „$1“ geändert.",
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "Anerkennung für eine gute Arbeit",
-	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Hallo $1, hier schreibt dein Lotse. Ich danke dir für deine Beiträge. Wie ich sehe, hast du fleißig bearbeitet, und ich wollte mich nur kurz bei dir bedanken und dir sagen, dass ich hoffe, dass du auch weiterhin dabei bleibst! Wenn du Fragen hast, kannst du mir gerne eine Nachricht auf meiner Diskussionsseite schicken. Bis dann!",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Hallo $1, hier ist dein Lotse. Ich danke dir für deine Beiträge. Wie ich sehe, hast du fleißig editiert, und ich wollte mich nur kurz bei dir bedanken und dir sagen, dass ich hoffe, dass du auch weiterhin dabei bleibst! Wenn du Fragen hast, kannst du mir gerne eine Nachricht auf meine Diskussionsseite schicken. Danke!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Wertschätzung senden",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Positive Botschaften von erfahrenen Benutzern und Lotsen können dazu beitragen, dass neue Benutzer länger dabei bleiben.",
 	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Metrik: {{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}} in {{PLURAL:$2|einem Tag|$2 Tagen}}. Passe diese Zahlen in den Einstellungen an.",
