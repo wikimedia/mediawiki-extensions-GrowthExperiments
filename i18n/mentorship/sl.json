@@ -119,7 +119,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Uvodno sporočilo",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Vaše}} uvodno sporočilo je bilo spremenjeno v »$1«.",
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "Pohvala za dobro opravljeno delo!",
-	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Pozdravljeni, $1. To je vaš mentor. Hvala za vaše prispevke. Vidim, da intenzivno urejate in se vam želim zahvaliti za dobro delo. Upam, da boste še naprej sodelovali! Če imate vprašanja, jih lahko pustite na moji pogovorni strani. Pozdrav!",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Pozdravljeni, $1. To je vaš mentor. Hvala za vaše prispevke. Vidim, da intenzivno urejate in se vam želim zahvaliti za dobro delo. Upam, da boste še naprej sodelovali. Če imate vprašanja, jih lahko pustite na moji pogovorni strani. Pozdrav!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Pošlji pohvalo",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Pozitivna sporočila izkušenih uporabnikov in mentorirancev lahko pomagajo izboljšati zadržanje novih urejevalcev.",
 	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Metrika: $1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}} v $2 {{PLURAL:$1|dnevu|dneh}}. Te številke lahko prilagodite v nastavitvah.",
