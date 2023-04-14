@@ -7,6 +7,8 @@
 		<!-- eslint-disable vue/no-v-model-argument -->
 		<add-link-dialog
 			v-model:open="open"
+			v-model:is-checked="isNeverShowAgainChecked"
+			@close="onDialogClose"
 		>
 		</add-link-dialog>
 	</div>
@@ -25,10 +27,17 @@ export default {
 	},
 	setup() {
 		const open = ref( false );
+		const isNeverShowAgainChecked = ref( false );
+
+		function onDialogClose( result ) {
+			// eslint-disable-next-line no-console
+			console.log( 'onDialogClose', result );
+		}
 
 		return {
-			open
-
+			open,
+			isNeverShowAgainChecked,
+			onDialogClose
 		};
 
 	}

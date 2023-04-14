@@ -6,10 +6,11 @@
 		<!-- eslint-disable vue/no-v-model-argument -->
 		<onboarding-dialog
 			v-model:open="open"
-			:total-steps="3"
-			:initial-step="1"
 			class="ext-growthExperiments-OnboardingDialogDemo__dialog"
+			:initial-step="1"
 			:show-paginator="true"
+			:total-steps="3"
+			@close="onDialogClose"
 		>
 			<template #title>
 				A slotted <i>Onboarding dialog</i> header
@@ -86,9 +87,10 @@
 </template>
 
 <script>
-import { CdxButton } from '@wikimedia/codex';
 import { ref } from 'vue';
+import { CdxButton } from '@wikimedia/codex';
 import OnboardingDialog from '../../components/OnboardingDialog.vue';
+
 export default {
 	name: 'OnboardingDialogDemo',
 
@@ -99,8 +101,15 @@ export default {
 
 	setup() {
 		const open = ref( false );
+
+		function onDialogClose( result ) {
+			// eslint-disable-next-line no-console
+			console.log( 'Dialog closed', result );
+		}
+
 		return {
-			open
+			open,
+			onDialogClose
 		};
 	}
 };
@@ -111,6 +120,8 @@ export default {
 @import '../node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-OnboardingDialogDemo {
+	padding-top: 2em;
+
 	&__dialog {
 		height: @onboardingDialogHeight;
 

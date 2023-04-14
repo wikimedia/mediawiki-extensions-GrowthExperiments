@@ -138,4 +138,38 @@ describe( 'Onboarding dialog', () => {
 
 	} );
 
+	it( 'should return a result when closing', () => {
+		const wrapper = renderComponent(
+			{
+				open: true,
+				totalSteps: 3,
+				'onUpdate:open': ( newVal ) => wrapper.setProps( { open: newVal } ),
+				'onUpdate:is-checked': ( newVal ) => wrapper.setProps( { isChecked: newVal } )
+			},
+			Object.assign( {}, steps, { checkbox: 'Check me', headerbtntext: 'Skip' } )
+		);
+
+		// In step 1, check checkbox
+		wrapper.get( '[type="checkbox"]' ).setValue( true )
+			// Forward to step 2
+			.then( () => wrapper.get( '[aria-label="next"]' ).trigger( 'click' ) )
+			// Forward to step 3
+			.then( () => wrapper.get( '[aria-label="next"]' ).trigger( 'click' ) )
+			// Backwards to step 2
+			.then( () => wrapper.get( '[aria-label="previous"]' ).trigger( 'click' ) )
+			// Click on "Skip"
+			.then( () => wrapper.get( '.ext-growthExperiments-OnboardingDialog__header__button > button' ).trigger( 'click' ) )
+			.then( () => {
+				expect( wrapper.emitted() ).toHaveProperty( 'close' );
+				expect( wrapper.emitted().close ).toMatchObject( [ [
+					{
+						closeSource: 'quiet',
+						currentStep: 2,
+						greaterStep: 3,
+						isChecked: true
+					}
+				] ] );
+			} );
+
+	} );
 } );
