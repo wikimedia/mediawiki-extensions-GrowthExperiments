@@ -43,13 +43,13 @@ export default {
 			&__dot {
 				background-color: @color-emphasized;
 				background-color: @background-color-disabled;
-				border-radius: 50%;
+				border-radius: @border-radius-circle;
 				width: 8px;
 				height: 8px;
 				margin-right: @spacing-50;
 
 				&--active {
-					background-color: #202122;
+					background-color: @color-base;
 				}
 			}
 		}
