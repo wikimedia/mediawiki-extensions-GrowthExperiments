@@ -6,7 +6,8 @@
 			"Mainframe98",
 			"McDutchie",
 			"Romaine",
-			"Siebrand"
+			"Siebrand",
+			"Sjoerddebruin"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentordashboard",
@@ -111,6 +112,11 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Annuleren",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Introductiebericht",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Uw}} introductiebericht is gewijzigd in \"$1\".",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Volgende pagina",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Onderwerp",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Meldingen",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Opslaan",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Annuleren",
 	"growthexperiments-mentor-list-missing-key": "Sleutel <code>$1</code> ontbreekt",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> zou moeten zijn <code>$2</code>, maar is <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Mentordefinitie bevat een onverwachte sleutel <code>$1</code>",

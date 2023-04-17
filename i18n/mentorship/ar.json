@@ -125,7 +125,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "رسالة التقديم",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "تمّ تغيير رسالة التقديم الخاصّة {{GENDER:|بكَ|بكِ}} إلى «$1».",
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "تقدير لعمل مُنجز جيّدًا!",
-	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "مرحبًا $1، أنا مرشدك. شكرًا لمساهماتكم. أرى أنكم كنتم مشغولين بالتحرير وأردت فقط أن أتوقف لحظة لأقول شكرًا وآمل أن تستمروا في المشاركة! لا تتردّدوا في ترك رسالة على صفحة نقاشي إذا كانت لديكم أي أسئلة. تحياتي!",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "مرحبًا $1، أنا مرشدك. شكرًا لمساهماتكم. أرى أنكم كنتم مشغولين بالتحرير، وأردت فقط أن أتوقف لحظة لأشكركم وأن أقول إنّني آمل أن تستمرّوا في المشاركة! لا تتردّدوا في ترك رسالة على صفحة نقاشي إذا كانت لديكم أي أسئلة. تحياتي!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "إرسال تقدير",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "قد تساعد الرسائل الإيجابية من قبل المستخدمين ذوي الخبرة والمرشدين في تحسين الاحتفاظ بالمحررين الجدد.",
 	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "المقياس: {{PLURAL:$1|لا تعديل|تعديل واحد|تعديلان|$1 تعديلات|$1 تعديلاً|$1 تعديل}} في خلال {{PLURAL:$2|لا يوم|اليوم الأخير|اليومين الأخيرين|الـ$2 أيام الأخيرة|الـ$2 يومًا الأخيرة|الـ$2 يومٍ الأخيرة}}. تخصيص هذه الأرقام في الإعدادات.",
