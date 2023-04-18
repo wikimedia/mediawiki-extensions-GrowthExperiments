@@ -361,7 +361,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			],
 		];
 
-		if ( $this->getConfig()->get( 'GEPersonalizedPraiseEnabled' ) ) {
+		if ( $this->getConfig()->get( 'GEPersonalizedPraiseBackendEnabled' ) ) {
 			$descriptors = array_merge( $descriptors, [
 				'geconfig-personalized-praise-description' => [
 					'type' => 'info',

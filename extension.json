@@ -2432,8 +2432,8 @@
 			"description": "Feature flag controlling whether personalized praise's backend is enabled",
 			"value": true
 		},
-		"GEPersonalizedPraiseEnabled": {
-			"description": "Feature flag controlling whether personalized praise's frontend is enabled",
+		"GEPersonalizedPraiseNotificationsEnabled": {
+			"description": "Feature flag controlling whether personalized praise notifications are enabled",
 			"value": true
 		},
 		"GEPersonalizedPraiseDefaultNotificationsFrequency": {
