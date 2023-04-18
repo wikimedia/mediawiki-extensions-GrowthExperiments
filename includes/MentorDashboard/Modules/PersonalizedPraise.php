@@ -2,12 +2,14 @@
 
 namespace GrowthExperiments\MentorDashboard\Modules;
 
+use ExtensionRegistry;
 use FormatJson;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\UserImpact\UserImpact;
 use Html;
 use IContextSource;
+use MediaWiki\Title\Title;
 
 class PersonalizedPraise extends BaseModule {
 
@@ -81,10 +83,37 @@ class PersonalizedPraise extends BaseModule {
 		);
 	}
 
+	/**
+	 * Check which users have Flow on their talk pages
+	 *
+	 * This method checks which praiseworthy mentees make use of Flow in their user talk pages,
+	 * so UserCard.vue can calculate the number of topics accordingly. The method can be called
+	 * even when Flow is not installed (in that case, it short-circuits and always returns false).
+	 *
+	 * @return array Dictionary of username => bool
+	 */
+	private function getFlowEnrollmentStatuses(): array {
+		$usernames = array_map( static function ( UserImpact $mentee ) {
+			return $mentee->getUser()->getName();
+		}, $this->getPraiseworthyMentees() );
+
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Flow' ) ) {
+			return array_fill_keys( $usernames, false );
+		}
+
+		$result = [];
+		foreach ( $usernames as $username ) {
+			$result[$username] = Title::newFromText( $username, NS_USER_TALK )->getContentModel()
+				=== CONTENT_MODEL_FLOW_BOARD;
+		}
+		return $result;
+	}
+
 	/** @inheritDoc */
 	protected function getJsConfigVars() {
 		return [
 			'GEPraiseworthyMentees' => $this->getPraiseworthyMentees(),
+			'GEPraiseworthyMenteesByFlowStatus' => $this->getFlowEnrollmentStatuses(),
 			'GEPersonalizedPraiseSettings' => FormatJson::encode( $this->personalizedPraiseSettings->toArray(
 				$this->getUser()
 			) ),

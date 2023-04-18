@@ -70,21 +70,37 @@ module.exports = exports = {
 		getNumberOfTalkPagePosts() {
 			// NOTE: This is not wrapper by numberOfTalkPagePosts !== undefined, to ensure it re-runs when
 			// the username changes. Unfortunately, this means the API request currently runs twice.
-			new mw.Api().get( {
-				action: 'parse',
-				page: ( new mw.Title( this.mentee.userName, 3 ) ).getPrefixedText(),
-				formatversion: 2
-			} ).then( ( data ) => {
-				const talkPosts = data.parse.text.match( / mw-heading2 /g );
-				// NOTE: When there is no 2nd level heading, .match() can return null.
-				this.numberOfTalkPagePosts = talkPosts !== null ? talkPosts.length : 0;
-			} ).catch( ( error ) => {
-				if ( error === 'missingtitle' ) {
-					this.numberOfTalkPagePosts = 0;
-				} else {
-					mw.log.error( error );
-				}
-			} );
+
+			const flowStatusByUsername = mw.config.get( 'GEPraiseworthyMenteesByFlowStatus' );
+			const talkPageName = ( new mw.Title( this.mentee.userName, 3 ) ).getPrefixedText();
+
+			if ( flowStatusByUsername[ this.mentee.userName ] ) {
+				new mw.Api().get( {
+					action: 'flow',
+					format: 'json',
+					submodule: 'view-topiclist',
+					page: talkPageName,
+					formatversion: 2
+				} ).then( ( data ) => {
+					this.numberOfTalkPagePosts = data.flow[ 'view-topiclist' ].result.topiclist.roots.length;
+				} );
+			} else {
+				new mw.Api().get( {
+					action: 'parse',
+					page: talkPageName,
+					formatversion: 2
+				} ).then( ( data ) => {
+					const talkPosts = data.parse.text.match( / mw-heading2 /g );
+					// NOTE: When there is no 2nd level heading, .match() can return null.
+					this.numberOfTalkPagePosts = talkPosts !== null ? talkPosts.length : 0;
+				} ).catch( ( error ) => {
+					if ( error === 'missingtitle' ) {
+						this.numberOfTalkPagePosts = 0;
+					} else {
+						mw.log.error( error );
+					}
+				} );
+			}
 
 			return this.numberOfTalkPagePosts;
 		},
