@@ -2,7 +2,7 @@
 	<div class="ext-growthExperiments-PersonalizedPraise-Settings">
 		<cdx-button
 			class="ext-growthExperiments-PersonalizedPraise-Settings__cogicon"
-			type="quiet"
+			weight="quiet"
 			:aria-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label' )"
 			@click="open = true"
 		>
