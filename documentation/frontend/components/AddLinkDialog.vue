@@ -1,7 +1,7 @@
 <template>
 	<!-- eslint-disable vue/no-v-model-argument -->
 	<onboarding-dialog
-		v-model:open="open"
+		v-model:open="wrappedOpen"
 		v-model="modelValue"
 		:total-steps="3"
 		:initial-step="1"
@@ -112,22 +112,36 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, toRef } from 'vue';
+import { useModelWrapper } from '@wikimedia/codex';
 import OnboardingDialog from './OnboardingDialog.vue';
 
 export default {
 	name: 'AddLinkDialog',
 	components: {
 		OnboardingDialog
+	},
+	props: {
+		/**
+		 * Whether the dialog is visible. Should be provided via a v-model:open
+		 * binding in the parent scope.
+		 */
+		open: {
+			type: Boolean,
+			default: false
+		}
 
 	},
 
-	setup() {
+	emits: [ 'update:open' ],
+
+	setup( props, { emit } ) {
+		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const modelValue = ref( false );
 
 		return {
 			modelValue,
-			open
+			wrappedOpen
 		};
 	}
 };
