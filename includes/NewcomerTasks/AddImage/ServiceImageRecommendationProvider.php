@@ -8,9 +8,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Title\TitleFactory;
 use StatusValue;
 use Title;
-use TitleFactory;
 use TitleValue;
 use Wikimedia\Assert\Assert;
 

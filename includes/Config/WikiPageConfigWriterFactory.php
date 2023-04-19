@@ -6,10 +6,10 @@ use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use InvalidArgumentException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
-use TitleFactory;
 use User;
 
 class WikiPageConfigWriterFactory {

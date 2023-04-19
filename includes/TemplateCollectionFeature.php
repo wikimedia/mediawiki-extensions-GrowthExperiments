@@ -13,7 +13,7 @@ use CirrusSearch\WarningCollector;
 use Elastica\Query\AbstractQuery;
 use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use MediaWiki\Linker\LinkTarget;
-use TitleFactory;
+use MediaWiki\Title\TitleFactory;
 use TitleValue;
 use Wikimedia\Assert\Assert;
 

@@ -9,9 +9,9 @@ use GrowthExperiments\Util;
 use Maintenance;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\TitleFactory;
 use PageProps;
 use Title;
-use TitleFactory;
 use WikiMap;
 
 $IP = getenv( 'MW_INSTALL_PATH' );

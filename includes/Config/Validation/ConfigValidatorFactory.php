@@ -6,8 +6,8 @@ use Config;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use InvalidArgumentException;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\TitleFactory;
 use Title;
-use TitleFactory;
 
 class ConfigValidatorFactory {
 	private Config $config;

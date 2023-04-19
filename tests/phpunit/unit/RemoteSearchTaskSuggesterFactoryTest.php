@@ -13,9 +13,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentityValue;
 use StatusValue;
-use TitleFactory;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory

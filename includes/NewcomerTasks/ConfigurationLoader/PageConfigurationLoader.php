@@ -14,9 +14,9 @@ use GrowthExperiments\Util;
 use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\TitleFactory;
 use Message;
 use StatusValue;
-use TitleFactory;
 use TitleValue;
 
 /**

@@ -19,12 +19,12 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
+use MediaWiki\Title\TitleFactory;
 use MWException;
 use PrefixingStatsdDataFactoryProxy;
 use RecentChange;
 use Status;
 use Title;
-use TitleFactory;
 use UserNotLoggedIn;
 use WikitextContent;
 

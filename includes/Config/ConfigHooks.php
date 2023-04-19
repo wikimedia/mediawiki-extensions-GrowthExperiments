@@ -14,11 +14,11 @@ use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
+use MediaWiki\Title\TitleFactory;
 use SpecialPage;
 use Status;
 use StatusValue;
 use TextContent;
-use TitleFactory;
 use TitleValue;
 use User;
 

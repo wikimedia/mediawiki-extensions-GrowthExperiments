@@ -11,6 +11,7 @@ use GrowthExperiments\ExperimentUserManager;
 use Html;
 use IContextSource;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\Title\TitleFactory;
 use MWException;
 use MWTimestamp;
 use OOUI\ButtonWidget;
@@ -18,7 +19,6 @@ use OOUI\IconWidget;
 use PageImages\PageImages;
 use SpecialPage;
 use Title;
-use TitleFactory;
 use Wikimedia\Rdbms\IDatabase;
 
 /**

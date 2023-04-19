@@ -8,8 +8,8 @@ use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Title\TitleFactory;
 use PrefixingStatsdDataFactoryProxy;
-use TitleFactory;
 use User;
 use UserNotLoggedIn;
 

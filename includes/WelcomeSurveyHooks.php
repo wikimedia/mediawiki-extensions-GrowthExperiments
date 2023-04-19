@@ -18,11 +18,11 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\TitleFactory;
 use RequestContext;
 use SpecialCreateAccount;
 use SpecialUserLogin;
 use Title;
-use TitleFactory;
 use User;
 
 class WelcomeSurveyHooks implements

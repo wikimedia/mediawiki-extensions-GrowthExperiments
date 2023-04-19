@@ -6,8 +6,8 @@ use GrowthExperiments\Mentorship\MentorManager;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Title\TitleFactory;
 use PrefixingStatsdDataFactoryProxy;
-use TitleFactory;
 use UserNotLoggedIn;
 use Wikimedia\Assert\Assert;
 

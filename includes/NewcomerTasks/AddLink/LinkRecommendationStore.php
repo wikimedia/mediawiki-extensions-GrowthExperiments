@@ -10,10 +10,10 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use RuntimeException;
 use stdClass;
-use TitleFactory;
 use TitleValue;
 use Wikimedia\Rdbms\IDatabase;
 

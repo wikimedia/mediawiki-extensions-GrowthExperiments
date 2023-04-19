@@ -3,8 +3,8 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use MediaWiki\Title\TitleFactory;
 use StatusValue;
-use TitleFactory;
 
 /**
  * Pseudo-factory for returning a pre-configured task suggester (not necessarily a

@@ -11,8 +11,8 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use MediaWiki\Title\TitleFactory;
 use Title;
-use TitleFactory;
 
 /**
  * Query module to support fetching image metadata from the Image Suggestion API.

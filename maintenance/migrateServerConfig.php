@@ -8,7 +8,7 @@ use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\GrowthExperimentsServices;
 use LoggedUpdateMaintenance;
 use MediaWiki\MediaWikiServices;
-use TitleFactory;
+use MediaWiki\Title\TitleFactory;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {

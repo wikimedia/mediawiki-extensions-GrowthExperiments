@@ -28,6 +28,7 @@ use IContextSource;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use Message;
@@ -40,7 +41,6 @@ use OOUI\Tag;
 use RuntimeException;
 use Status;
 use StatusValue;
-use TitleFactory;
 
 /**
  * Homepage module that displays a list of recommended tasks.

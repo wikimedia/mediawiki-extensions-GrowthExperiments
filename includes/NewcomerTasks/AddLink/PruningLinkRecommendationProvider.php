@@ -7,8 +7,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MalformedTitleException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\TitleFactory;
 use StatusValue;
-use TitleFactory;
 
 /**
  * A link recommendation provider that removes red links and links which have been rejected too

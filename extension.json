@@ -79,7 +79,9 @@
 	"APIModules": {
 		"helppanelquestionposter": {
 			"class": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion",
-			"services": [ "GrowthExperimentsQuestionPosterFactory" ]
+			"services": [
+				"GrowthExperimentsQuestionPosterFactory"
+			]
 		},
 		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore",
 		"growthsetmentor": {
@@ -208,7 +210,10 @@
 			"path": "/growthexperiments/v0/quickstarttips/{skin}/{editor}/{tasktypeid}/{uselang}",
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\TipsHandler",
-			"services": [ "GrowthExperimentsTipsAssembler", "GrowthExperimentsNewcomerTasksConfigurationLoader" ]
+			"services": [
+				"GrowthExperimentsTipsAssembler",
+				"GrowthExperimentsNewcomerTasksConfigurationLoader"
+			]
 		},
 		{
 			"path": "/growthexperiments/v0/suggestions/addlink/{title}",
@@ -276,7 +281,10 @@
 		},
 		{
 			"path": "/growthexperiments/v0/user-impact/{user}",
-			"method": [ "GET", "POST" ],
+			"method": [
+				"GET",
+				"POST"
+			],
 			"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
 			"services": [
 				"GrowthExperimentsUserImpactStore",
@@ -696,9 +704,15 @@
 				"ext.growthExperiments.HelpPanel/HelpPanelCta.less"
 			],
 			"skinStyles": {
-				"minerva": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.minerva.less" ],
-				"vector": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less" ],
-				"vector-2022": [ "ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less" ]
+				"minerva": [
+					"ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.minerva.less"
+				],
+				"vector": [
+					"ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less"
+				],
+				"vector-2022": [
+					"ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.vector.less"
+				]
 			}
 		},
 		"ext.growthExperiments.HomepageDiscovery.styles": {
@@ -1141,7 +1155,10 @@
 				"vue-components/CScoreCard.less",
 				"vue-components/CScoreCards.less"
 			],
-			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ]
+			"lessCallback": [
+				"GrowthExperiments\\HomepageHooks",
+				"lessCallback"
+			]
 		},
 		"ext.growthExperiments.StructuredTask": {
 			"packageFiles": [
@@ -1475,7 +1492,10 @@
 				"ext.growthExperiments.Help/QuickStartTipsTabPanelLayout.js",
 				{
 					"name": "ext.growthExperiments.Help/data.json",
-					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
+					"callback": [
+						"GrowthExperiments\\HelpPanelHooks",
+						"getModuleData"
+					]
 				}
 			],
 			"dependencies": [
@@ -1639,7 +1659,10 @@
 				"ui-components/CollapsibleDrawer.js",
 				{
 					"name": "ext.growthExperiments.Help/data.json",
-					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
+					"callback": [
+						"GrowthExperiments\\HelpPanelHooks",
+						"getModuleData"
+					]
 				}
 			],
 			"dependencies": [
@@ -1867,7 +1890,10 @@
 				},
 				{
 					"name": "ext.growthExperiments.MentorDashboard/store/Tags.json",
-					"callback": [ "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks", "getTagsToFilterBy" ]
+					"callback": [
+						"GrowthExperiments\\MentorDashboard\\MentorDashboardHooks",
+						"getTagsToFilterBy"
+					]
 				}
 			],
 			"messages": [
@@ -2079,23 +2105,38 @@
 				"utils/Utils.js",
 				{
 					"name": "ext.growthExperiments.DataStore/TaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+					"callback": [
+						"GrowthExperiments\\HomepageHooks",
+						"getTaskTypesJson"
+					]
 				},
 				{
 					"name": "ext.growthExperiments.DataStore/DefaultTaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
+					"callback": [
+						"GrowthExperiments\\HomepageHooks",
+						"getDefaultTaskTypesJson"
+					]
 				},
 				{
 					"name": "ext.growthExperiments.DataStore/AQSConfig.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
+					"callback": [
+						"GrowthExperiments\\HomepageHooks",
+						"getAQSConfigJson"
+					]
 				},
 				{
 					"name": "ext.growthExperiments.DataStore/config.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+					"callback": [
+						"GrowthExperiments\\HomepageHooks",
+						"getSuggestedEditsConfigJson"
+					]
 				},
 				{
 					"name": "ext.growthExperiments.DataStore/Topics.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTopicsJson" ]
+					"callback": [
+						"GrowthExperiments\\HomepageHooks",
+						"getTopicsJson"
+					]
 				}
 			],
 			"dependencies": [
@@ -2259,7 +2300,10 @@
 		},
 		"GELevelingUpKeepGoingNotificationThresholds": {
 			"description": "Article namespace edit count thresholds at which the user should receive a notification to keep going with suggested edits. The user can receive a notification if their edit count is greater than or equal to the first number in the array, and lower than or equal to the second number in the array.",
-			"value": [ 1, 4 ],
+			"value": [
+				1,
+				4
+			],
 			"merge_strategy": "provide_default"
 		},
 		"GELevelingUpGetStartedNotificationSendAfterSeconds": {
@@ -2304,7 +2348,11 @@
 		},
 		"GEHelpPanelReadingModeNamespaces": {
 			"description": "Numerical IDs of the MediaWiki namespaces in which to show the help panel in reading mode. Specifying a namespace will also include its talk namespace. Defaults to NS_PROJECT and NS_HELP namespaces.",
-			"value": [ 2, 4, 12 ]
+			"value": [
+				2,
+				4,
+				12
+			]
 		},
 		"GEHelpPanelExcludedNamespaces": {
 			"description": "MediaWiki namespaces that the help panel will be excluded from.",
@@ -2341,15 +2389,20 @@
 		"GEHelpPanelLinks": {
 			"description": "List of links to display in the help panel.",
 			"merge_strategy": "array_plus",
-			"value": [ {
-				"title": "Project:Help",
-				"text": "Site help",
-				"id": "help"
-			} ]
+			"value": [
+				{
+					"title": "Project:Help",
+					"text": "Site help",
+					"id": "help"
+				}
+			]
 		},
 		"GEHelpPanelSearchNamespaces": {
 			"description": "List of namespaces to include in the search for help content.",
-			"value": [ 4, 12 ]
+			"value": [
+				4,
+				12
+			]
 		},
 		"GEHelpPanelSearchForeignAPI": {
 			"description": "api.php URL of a foreign wiki to search instead of the current wiki. Used for testing/development to get more/better results.",
@@ -2504,7 +2557,11 @@
 			"value": {
 				"template-based": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\TemplateBasedTaskTypeHandler",
-					"services": [ "GrowthExperimentsNewcomerTasksConfigurationValidator", "GrowthExperimentsTemplateBasedTaskSubmissionHandler", "TitleParser" ]
+					"services": [
+						"GrowthExperimentsNewcomerTasksConfigurationValidator",
+						"GrowthExperimentsTemplateBasedTaskSubmissionHandler",
+						"TitleParser"
+					]
 				},
 				"link-recommendation": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\LinkRecommendationTaskTypeHandler",
@@ -2551,7 +2608,10 @@
 		},
 		"GEMediaInfoRepos": {
 			"description": "List of repo names which provide WikibaseMediaInfo data.",
-			"value": [ "shared", "wikimediacommons" ]
+			"value": [
+				"shared",
+				"wikimediacommons"
+			]
 		},
 		"GEDeveloperSetup": {
 			"description": "Set to true in developer (non-production) settings. In practice this will relax assumptions about page existence, which might be needed to approximate production behavior when e.g. a remote API is used for searching for pages, or a link recommendation service trained on a production wiki is used on a testing wiki.",
@@ -2627,7 +2687,10 @@
 		},
 		"GELevelingUpManagerInvitationThresholds": {
 			"description": "Article namespace edit count thresholds at which the user should be invited to try suggested edits (assuming they haven't before).",
-			"value": [ 3, 7 ]
+			"value": [
+				3,
+				7
+			]
 		},
 		"GECampaigns": {
 			"description": "A map of campaign ID to campaign configuration. Campaign configuration currently includes these fields:\n* pattern: a regexp matched against the \"campaign\" request parameter during signup to determine whether the user should be included in some campaign\n* signupPageTemplate: a template name to use for the \"benefits\" block of Special:CreateAccount\n* signupPageTemplateParameters: a map of parameters to pass to the template\n* topics: an array of topic IDs (which are defined in GECampaignTopics) to include on the top of the topic selector as custom topics\n\nExamples can be found at https://www.mediawiki.org/wiki/Extension:GrowthExperiments/Technical_documentation/Special:EditGrowthConfig.",
@@ -2746,10 +2809,20 @@
 	},
 	"ActionFilteredLogs": {
 		"growthexperiments": {
-			"claimmentee": [ "claimmentee", "claimmentee-no-previous-mentor" ],
-			"setmentor": [ "setmentor", "setmentor-no-previous-mentor" ],
-			"addlink": [ "addlink" ],
-			"addimage": [ "addimage" ]
+			"claimmentee": [
+				"claimmentee",
+				"claimmentee-no-previous-mentor"
+			],
+			"setmentor": [
+				"setmentor",
+				"setmentor-no-previous-mentor"
+			],
+			"addlink": [
+				"addlink"
+			],
+			"addimage": [
+				"addimage"
+			]
 		}
 	},
 	"AvailableRights": [
@@ -2776,16 +2849,28 @@
 	"RateLimits": {
 		"growthmentordashboardupdatedata": {
 			"&can-bypass": false,
-			"user": [ 1, 7200 ]
+			"user": [
+				1,
+				7200
+			]
 		},
 		"growthexperimentsuserimpacthandler": {
 			"&can-bypass": true,
-			"anon": [ 1, 86400 ],
-			"user": [ 1, 86400 ]
+			"anon": [
+				1,
+				86400
+			],
+			"user": [
+				1,
+				86400
+			]
 		},
 		"growthexperiments-apiqueryimagesuggestiondata": {
 			"&can-bypass": false,
-			"user": [ 500, 86400 ]
+			"user": [
+				500,
+				86400
+			]
 		}
 	},
 	"manifest_version": 2

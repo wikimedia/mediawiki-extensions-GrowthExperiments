@@ -6,8 +6,8 @@ use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
-use TitleFactory;
 use Wikimedia\Assert\Assert;
 
 /**

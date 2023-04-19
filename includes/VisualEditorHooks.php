@@ -13,11 +13,11 @@ use MediaWiki\Extension\VisualEditor\ApiVisualEditorEdit;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPreSaveHook;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use OutOfBoundsException;
 use PrefixingStatsdDataFactoryProxy;
 use Status;
-use TitleFactory;
 use UnexpectedValueException;
 
 /**

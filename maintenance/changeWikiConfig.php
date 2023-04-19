@@ -9,7 +9,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use InvalidArgumentException;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
-use TitleFactory;
+use MediaWiki\Title\TitleFactory;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {

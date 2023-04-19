@@ -18,13 +18,13 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IContextSource;
 use MalformedTitleException;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\TitleFactory;
 use MediaWikiUnitTestCase;
 use Message;
 use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
 use Title;
-use TitleFactory;
 use TitleParser;
 use TitleValue;
 

@@ -8,10 +8,10 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\TitleFactory;
 use MWTimestamp;
 use RequestContext;
 use StatusValue;
-use TitleFactory;
 use Wikimedia\Assert\Assert;
 use WikitextContent;
 

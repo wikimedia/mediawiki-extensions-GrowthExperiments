@@ -11,11 +11,11 @@ use LogicException;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\TitleFactory;
 use RuntimeException;
 use Status;
 use StatusValue;
 use Title;
-use TitleFactory;
 use WikiMap;
 use Wikimedia\Assert\PreconditionException;
 

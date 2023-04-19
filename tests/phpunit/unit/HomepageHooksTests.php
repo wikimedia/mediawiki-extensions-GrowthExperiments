@@ -16,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use HashConfig;
 use JobQueueGroup;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
@@ -26,7 +27,6 @@ use NamespaceInfo;
 use OutputPage;
 use PrefixingStatsdDataFactoryProxy;
 use Title;
-use TitleFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**

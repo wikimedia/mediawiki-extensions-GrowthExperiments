@@ -5,10 +5,10 @@ namespace GrowthExperiments\Config;
 use Config;
 use ConfigException;
 use IDBAccessObject;
+use MediaWiki\Title\TitleFactory;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 use Title;
-use TitleFactory;
 
 class WikiPageConfig implements Config, IDBAccessObject {
 

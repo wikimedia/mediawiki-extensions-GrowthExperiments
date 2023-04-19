@@ -13,7 +13,7 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
-use TitleFactory;
+use MediaWiki\Title\TitleFactory;
 
 /**
  * Suggest edits based on searching a wiki (potentially a different one) via the API.

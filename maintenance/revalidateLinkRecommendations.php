@@ -12,9 +12,9 @@ use GrowthExperiments\WikiConfigException;
 use LogicException;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\TitleFactory;
 use Status;
 use Title;
-use TitleFactory;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\DBReadOnlyError;
 

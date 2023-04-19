@@ -4,7 +4,7 @@ namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use MediaWiki\Cache\LinkBatchFactory;
-use TitleFactory;
+use MediaWiki\Title\TitleFactory;
 use Wikimedia\Rdbms\IDatabase;
 
 /**

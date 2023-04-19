@@ -21,11 +21,11 @@ use Html;
 use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserOptionsManager;
 use PrefixingStatsdDataFactoryProxy;
 use SpecialPage;
 use Throwable;
-use TitleFactory;
 use UserNotLoggedIn;
 
 class SpecialHomepage extends SpecialPage {

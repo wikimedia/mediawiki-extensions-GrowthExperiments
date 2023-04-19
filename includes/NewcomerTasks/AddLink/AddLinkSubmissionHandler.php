@@ -17,11 +17,11 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use Message;
 use Psr\Log\LoggerInterface;
 use StatusValue;
-use TitleFactory;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\DBReadOnlyError;
 

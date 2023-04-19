@@ -8,8 +8,8 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Title\TitleFactory;
 use StatusValue;
-use TitleFactory;
 
 /**
  * Factory for RemoteSearchTaskSuggester.

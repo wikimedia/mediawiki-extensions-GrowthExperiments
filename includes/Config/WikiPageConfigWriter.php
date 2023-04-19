@@ -10,13 +10,13 @@ use JsonContent;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MWException;
 use Psr\Log\LoggerInterface;
 use RecentChange;
 use Status;
-use TitleFactory;
 
 class WikiPageConfigWriter {
 

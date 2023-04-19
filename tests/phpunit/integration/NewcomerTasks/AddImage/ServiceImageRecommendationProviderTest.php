@@ -15,12 +15,12 @@ use IBufferingStatsdDataFactory;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Title\TitleFactory;
 use MediaWikiIntegrationTestCase;
 use MockTitleTrait;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
-use TitleFactory;
 use TitleValue;
 
 /**
