@@ -5,6 +5,9 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-talk": "haasayaa",
+	"growthexperiments-mentor-dashboard-personalized-praise-title": "Galataa yedda",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$1ppe $2 galatettiya {{PLURAL:$2|zoriyagaa|zoriyageeta}}",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation": "Galataa yedda",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours": "Aadhida 48 saateta",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week": "Aadhida saaminttaa",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks": "Aadhida 2 saaminttatta",
