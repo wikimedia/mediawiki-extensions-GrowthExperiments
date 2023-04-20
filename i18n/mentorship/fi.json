@@ -3,7 +3,8 @@
 		"authors": [
 			"Kyykaarme",
 			"MITO",
-			"Markus Mikkonen"
+			"Markus Mikkonen",
+			"Pyscowicz"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Selitys",
@@ -38,6 +39,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Keskiarvo (oletus)",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Tallenna",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Peruuta",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly": "Kuukausittain",
 	"growthexperiments-manage-mentors-username": "Käyttäjänimi",
 	"growthexperiments-manage-mentors-last-active": "Viimeisin toiminta",
 	"growthexperiments-manage-mentors-remove-mentor": "Poista"
