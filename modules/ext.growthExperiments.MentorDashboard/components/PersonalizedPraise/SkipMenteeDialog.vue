@@ -17,7 +17,7 @@
 		</p>
 
 		<cdx-radio
-			v-for="radio in reasonItems()"
+			v-for="radio in reasonItems"
 			:key="radio.value"
 			v-model="selectedReason"
 			name="reason"
@@ -44,8 +44,15 @@
 </template>
 
 <script>
-const { ref } = require( 'vue' );
+const { ref, inject } = require( 'vue' );
 const { CdxButton, CdxDialog, CdxRadio } = require( '@wikimedia/codex' );
+// NOTE: Keep in sync with ApiInvalidatePersonalizedPraiseSuggestion's skipreason param list
+const SKIP_REASONS = [
+	'already-praised',
+	'not-praiseworthy',
+	'not-now',
+	'other'
+];
 
 // @vue/component
 module.exports = exports = {
@@ -63,6 +70,20 @@ module.exports = exports = {
 		const open = ref( false );
 		const selectedReason = ref( null );
 		const skipMenteesForDays = Number( mw.config.get( 'GEPersonalizedPraiseSkipMenteesForDays' ) );
+		const $i18n = inject( 'i18n' );
+		const reasonItems = SKIP_REASONS.map( ( x ) => {
+			return {
+				label: $i18n(
+					// Giving grep a chance to find usages:
+					// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised
+					// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy
+					// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now
+					// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other
+					'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-' + x
+				),
+				value: x
+			};
+		} );
 
 		function onSkipButtonClicked() {
 			open.value = true;
@@ -74,36 +95,12 @@ module.exports = exports = {
 
 		return {
 			open,
+			reasonItems,
 			selectedReason,
 			skipMenteesForDays,
 			onSkipButtonClicked,
 			onSubmit
 		};
-	},
-	methods: {
-		reasonItems() {
-			// Giving grep a chance to find usages:
-			// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised
-			// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy
-			// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now
-			// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other
-
-			// NOTE: Keep in sync with ApiInvalidatePersonalizedPraiseSuggestion's skipreason param list
-			const reasons = [
-				'already-praised',
-				'not-praiseworthy',
-				'not-now',
-				'other'
-			];
-			return reasons.map( ( x ) => {
-				return {
-					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-' + x
-					),
-					value: x
-				};
-			} );
-		}
 	}
 };
 </script>
