@@ -151,7 +151,7 @@
 	"tag-help_panel_question-description": "Επεξεργασία που έγινε από τη λειτουργία του πλαισίου βοήθειας",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Προτεινόμενες επεξεργασίες",
 	"growthexperiments-help-panel-button-header-ask-help": "Ρωτήστε στο χώρο βοήθειας",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Ρωτήστε τον καθοδηγητή σας για βοήθεια",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Ρωτήστε {{GENDER:$1|τον καθοδηγητή|την καθοδηγήτριά}} {{GENDER:$2|σας}}",
 	"growthexperiments-help-panel-button-header-general-help": "Γενική βοήθεια επεξεργασίας",
 	"growthexperiments-help-panel-button-subheader-general-help": "Ψάξτε για απαντήσεις και διαβάστε τα κορυφαία άρθρα",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Πάρτε απαντήσεις από άλλους εθελοντές",

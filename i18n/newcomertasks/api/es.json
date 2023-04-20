@@ -17,6 +17,8 @@
 	"apihelp-query+growthtasks-example-2": "Obtener recomendaciones de tareas para el usuario actual, con información ampliada sobre las páginas.",
 	"apihelp-query+growthnextsuggestedtasktype-summary": "Obtener el siguiente tipo de tarea sugerida para que la pruebe una persona usuaria.",
 	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "El tipo de tarea en la que la persona usuaria está trabajando actualmente.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "Usar al guardar una edición sugerida en GrowthExperiments \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|Add an image]]\".",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Para el <var>ge-task-image-recommendation</var> plugin</dt><dd>\n$1\n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Falta el parámetro 'accepted' en los datos del plugin Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "El parámetro 'accepted' debe ser un booleano en los datos del plugin Add Image, es $1",
 	"apierror-growthexperiments-addimage-handler-reason-missing": "Falta el parámetro 'reasons' en los datos del plugin Add Image",
@@ -25,6 +27,9 @@
 	"apierror-growthexperiments-addlink-handler-notfound": "No se ha encontrado el registro de recomendación de enlaces",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Objetivos de recomendación de enlaces inesperados: $1",
 	"growthexperiments-underlinked-rescore-profile": "Perfil interno de recalificación utilizado en las recomendaciones de enlaces de GrowthExperiments para priorizar los artículos que aún no tienen suficientes enlaces.",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "El parámentrp <var>editRevId</var> se requiere cuando el parámetro es <var>accepted</var> es <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "El parámetro <var>editRevId</var> no puede ser usado cuando el parámetro <var>accepted</var> es <kbd>false</kbd>.",
+	"growthexperiments-addimage-feedback-accepted-caption": "El parámetro <var>caption</var> se requiere cuando el parámetro es <var>accepted</var>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "La revisión especificada en <var>editRevId</var> no fue encontrada.",
 	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "La revisian especificada en <var>editRevId</var> pertenece a una página diferente."
 }
