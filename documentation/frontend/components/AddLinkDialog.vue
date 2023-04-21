@@ -16,87 +16,99 @@
 		</template>
 
 		<template #step1>
-			<div class="ext-growthExperiments-AddLinkDialog__image">
-				<img
-					src="../../../images/addlink/onboarding-image1-ltr.svg"
-					width="360"
-					height="216"
-					alt="">
-			</div>
-			<h5 class="ext-growthExperiments-AddLinkDialog__title">
-				Adding links will help people learn faster.
-			</h5>
-			<div class="ext-growthExperiments-AddLinkDialog__text">
-				<p>
-					You will decide whether words in one Wikipedia article should link
-					to other Wikipedia articles.
-				</p>
-				<div
-					class="ext-growthExperiments-AddLinkDialog__text__label">
-					Example sentence
+			<div>
+				<div class="ext-growthExperiments-AddLinkDialog__image">
+					<img
+						src="../../../images/addlink/onboarding-image1-ltr.svg"
+						width="360"
+						height="216"
+						alt=""
+					>
 				</div>
-				<div
-					class="
+				<h5 class="ext-growthExperiments-AddLinkDialog__title">
+					Adding links will help people learn faster.
+				</h5>
+				<div class="ext-growthExperiments-AddLinkDialog__text">
+					<p>
+						You will decide whether words in one Wikipedia article should link
+						to other Wikipedia articles.
+					</p>
+					<div
+						class="ext-growthExperiments-AddLinkDialog__text__label">
+						Example sentence
+					</div>
+					<div
+						class="
 						ext-growthExperiments-AddLinkDialog__text__example">
-					The moon is the only
-					<!-- eslint-disable-next-line max-len -->
-					<mark class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
-						natural satellite
-					</mark> that
-					<mark class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
-						orbits
-					</mark> around the
-					<mark class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
-						Earth
-					</mark>.
+						The moon is the only
+						<!-- eslint-disable-next-line max-len -->
+						<mark
+							class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
+							natural satellite
+						</mark> that
+						<mark
+							class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
+							orbits
+						</mark> around the
+						<mark
+							class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
+							Earth
+						</mark>.
+					</div>
+					<p>
+						No special knowledge about the article is needed to do this task.
+					</p>
 				</div>
-				<p>
-					No special knowledge about the article is needed to do this task.
-				</p>
 			</div>
 		</template>
 
 		<template #step2>
-			<div class="ext-growthExperiments-AddLinkDialog__image">
-				<img
-					src="../../../images/addlink/onboarding-image2-ltr.svg"
-					width="360"
-					height="216"
-					alt="">
-			</div>
-			<h5 class="ext-growthExperiments-AddLinkDialog__title">
-				Suggested links are machine-generated, and can be incorrect.
-			</h5>
-			<div class="ext-growthExperiments-AddLinkDialog__text">
-				<p>
-					<!-- eslint-disable-next-line max-len -->
-					The suggestions might be on words that don’t need them, or might link to the wrong article. Use your judgment to decide whether they are right or wrong.
-				</p>
+			<div>
+				<div class="ext-growthExperiments-AddLinkDialog__image">
+					<img
+						src="../../../images/addlink/onboarding-image2-ltr.svg"
+						width="360"
+						height="216"
+						alt=""
+					>
+				</div>
+				<h5 class="ext-growthExperiments-AddLinkDialog__title">
+					Suggested links are machine-generated, and can be incorrect.
+				</h5>
+				<div class="ext-growthExperiments-AddLinkDialog__text">
+					<p>
+						<!-- eslint-disable-next-line max-len -->
+						The suggestions might be on words that don’t need them, or might link to the wrong article. Use your judgment to decide whether they are right or wrong.
+					</p>
 
-				<a class="ext-growthExperiments-AddLinkDialog__text__link" href="">
-					Learn more about machine suggestions
-				</a>
+					<a class="ext-growthExperiments-AddLinkDialog__text__link" href="">
+						Learn more about machine suggestions
+					</a>
+				</div>
 			</div>
 		</template>
 		<template #step3>
-			<div class="ext-growthExperiments-AddLinkDialog__image">
-				<img
-					src="../../../images/addlink/onboarding-image3-ltr.svg"
-					width="360"
-					height="216"
-					alt="">
-			</div>
-			<h5 class="ext-growthExperiments-AddLinkDialog__title">
-				Guidelines
-			</h5>
-			<div class="ext-growthExperiments-AddLinkDialog__text">
-				<div class="ext-growthExperiments-AddLinkDialog__text__list">
-					<ul>
-						<li>Link concepts that a reader might want to learn more about.</li>
-						<li>Make sure the link is going to the right article.</li>
-						<li>Don't link common words, years, or dates.</li>
-						<li>If you're not sure, skip.</li>
-					</ul>
+			<div>
+				<div class="ext-growthExperiments-AddLinkDialog__image">
+					<img
+						src="../../../images/addlink/onboarding-image3-ltr.svg"
+						width="360"
+						height="216"
+						alt=""
+					>
+				</div>
+				<h5 class="ext-growthExperiments-AddLinkDialog__title">
+					Guidelines
+				</h5>
+				<div class="ext-growthExperiments-AddLinkDialog__text">
+					<div class="ext-growthExperiments-AddLinkDialog__text__list">
+						<ul>
+							<li>Link concepts that a reader might want to learn more about.</li>
+							<li>Make sure the link is going to the right article.</li>
+							<li>Don't link common words, years, or dates.</li>
+							<li>If you're not sure, skip.</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</template>
@@ -132,9 +144,7 @@ export default {
 		}
 
 	},
-
 	emits: [ 'update:open' ],
-
 	setup( props, { emit } ) {
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const modelValue = ref( false );
@@ -163,8 +173,8 @@ export default {
 		gap: 0;
 	}
 
-	// Position the paginator relative to the dialog content to scroll with step content
 	.ext-growthExperiments-OnboardingDialog__content {
+		// Position the paginator relative to the dialog content to scroll with step content
 		position: relative;
 
 		&__paginator {
@@ -173,16 +183,16 @@ export default {
 	}
 
 	&__image {
-		// REVIEW The negative margin values are needed to overwrite
-		// CdxDialog body left and right gutter and display full bleed image
-		margin-left: @spacing-150 * -1em;
-		margin-right: @spacing-150 * -1em;
 		background-color: @onboardingBackgroundColor;
 		// This border color is not a DS border-color yet and may be changed
 		// See https://phabricator.wikimedia.org/T332567
 		border-bottom: @border-width-base @border-style-base @onboardingImageBorderColor;
 		display: flex;
 		justify-content: center;
+		// HACK The negative margin values are needed to overwrite
+		// CdxDialog body left and right gutter and display the full bleed image
+		margin-left: @spacing-150 * -1em;
+		margin-right: @spacing-150 * -1em;
 	}
 
 	&__title {
