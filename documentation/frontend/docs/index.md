@@ -36,6 +36,8 @@ are candidates to be eventually upstreamed to Codex or re-used by other teams.
 - [On-boarding dialog](./demos/onboarding-dialog) ([T332767](https://phabricator.wikimedia.org/T332767))
 - [MultiPane component](./demos/multi-pane) ([T336750](https://phabricator.wikimedia.org/T336750))
 - [Stepper component](./demos/onboarding-stepper) ([T333584](https://phabricator.wikimedia.org/T333584))
+- [Filter dialog](./demos/filter-dialog) ([T335752](https://phabricator.wikimedia.org/T335752))
+
 ## Importing components into MediaWiki
 
 Due to MediaWiki's ResourceLoader constraints on ES modules usage and the
