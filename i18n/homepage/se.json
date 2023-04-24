@@ -9,6 +9,7 @@
 	"growthexperiments-homepage-startediting-header": "Rievdadišgoađe",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 / $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Šluhtte",
+	"growthexperiments-homepage-startediting-dialog-intro-forward": "Joatkke",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Čájet evttohusaid",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|rievdadus|rievdadusa}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Aktiivvalaš}} odne",

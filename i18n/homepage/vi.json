@@ -9,7 +9,9 @@
 			"NguoiDungKhongDinhDanh",
 			"NguyenHung",
 			"Nguyễn Mạnh An",
-			"Vinhtantran"
+			"Vinhtantran",
+			"Nguyenphutrong2",
+			"RiceCracker12"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "\n{{GENDER:$1|Xin chào}}, {{bidi:$1}}!",
@@ -272,7 +274,7 @@
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Bạn}} đã thay đổi thành công người cố vấn của {{GENDER:$1|$4}} thành {{GENDER:$3|$5}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Người cố vấn của {{GENDER:$1|$1}} đã được thay đổi rồi. {{GENDER:$2|Bạn}} có chắc muốn thay đổi lại không?",
 	"growthexperiments-claimmentee-confirm": "Có, tôi thực sự muốn thay đổi người cố vấn",
-	"growthexperiments-log-name": "Nhật ký GrowthExperiments",
+	"growthexperiments-log-name": "Nhật trình GrowthExperiments",
 	"growthexperiments-log-header": "Đây là một nhật ký hoạt động được tạo ra bởi phần mở rộng GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 đã {{GENDER:$2|nhận}} {{GENDER:$6|$3}} làm người được cố vấn của họ (cựu {{GENDER:$4|cố vấn}} là $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 đã {{GENDER:$2|nhận}} {{GENDER:$6|$3}} làm người được cố vấn của họ (trước đó không có cố vấn nào)",
