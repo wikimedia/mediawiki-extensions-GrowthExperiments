@@ -12,10 +12,12 @@
 	>
 		<!-- eslint-enable max-len -->
 		<template #title>
-			Introduction
+			{{ $i18n( 'growthexperiments-structuredtask-onboarding-dialog-title' ).text() }}
 		</template>
 		<template #closeBtnText>
-			Skip all
+			{{
+				$i18n( 'growthexperiments-structuredtask-onboarding-dialog-label-skip-all' ).text()
+			}}
 		</template>
 		<template #step1>
 			<div>
@@ -29,23 +31,39 @@
 				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddImageDialog__title">
-					Images help people learn, but many articles don't have one.
+					{{
+						$i18n( 'growthexperiments-addimage-onboarding-content-intro-title' ).text()
+					}}
 				</h5>
 				<div class="ext-growthExperiments-AddImageDialog__text">
 					<p>
-						<!-- eslint-disable-next-line max-len -->
-						You will decide whether a suggested image should be put in a Wikipedia article.
+						{{
+							$i18n(
+								// eslint-disable-next-line max-len
+								"growthexperiments-addimage-onboarding-content-intro-body-paragraph1",
+								userName
+							).text()
+						}}
 					</p>
 					<br>
 					<p>
-						<!-- eslint-disable-next-line max-len -->
-						Suggestions are machine-generated, and you'll use your judgment to decide whether to accept or reject them.
+						{{
+							$i18n(
+								// eslint-disable-next-line max-len
+								"growthexperiments-addimage-onboarding-content-intro-body-paragraph2",
+								userName
+							).text()
+						}}
 					</p>
 					<br>
 					<p
 						class="ext-growthExperiments-AddImageDialog__text--italic">
-						<!-- eslint-disable-next-line max-len -->
-						Images come from Wikimedia Commons, a collection of freely licensed images used by Wikipedia.
+						{{
+							$i18n(
+								// eslint-disable-next-line max-len
+								"growthexperiments-addimage-onboarding-content-intro-body-paragraph3"
+							).text()
+						}}
 					</p>
 				</div>
 			</div>
@@ -62,16 +80,24 @@
 				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddImageDialog__title">
-					Look at the suggested image
+					{{
+						// eslint-disable-next-line max-len
+						$i18n( 'growthexperiments-addimage-onboarding-content-imagedetails-title' ).text()
+					}}
 				</h5>
 				<div class="ext-growthExperiments-AddImageDialog__text">
 					<p>
-						<!-- eslint-disable-next-line max-len -->
-						Use the filename, description, and the reason it was suggested to help you decide if it should be placed in the article.
+						{{
+							// eslint-disable-next-line max-len
+							$i18n( 'growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1', userName ).text()
+						}}
 					</p>
 					<br>
 					<p>
-						You can also expand the image to view it more clearly.
+						{{
+							// eslint-disable-next-line max-len
+							$i18n( 'growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2', userName ).text()
+						}}
 					</p>
 				</div>
 			</div>
@@ -88,12 +114,17 @@
 				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddImageDialog__title">
-					Look at the article
+					{{
+						// eslint-disable-next-line max-len
+						$i18n( 'growthexperiments-addimage-onboarding-content-article-title' ).text()
+					}}
 				</h5>
 				<div class="ext-growthExperiments-AddImageDialog__text">
 					<p>
-						<!-- eslint-disable-next-line max-len -->
-						Read over the article and think about whether the suggested image will help readers understand the content. Is it appropriate to be displayed in the article?
+						{{
+							// eslint-disable-next-line max-len
+							$i18n( 'growthexperiments-addimage-onboarding-content-article-body' ).text()
+						}}
 					</p>
 				</div>
 			</div>
@@ -110,38 +141,55 @@
 				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddImageDialog__title">
-					Decide if the image belongs
+					{{
+						// eslint-disable-next-line max-len
+						$i18n( 'growthexperiments-addimage-onboarding-content-decision-title' ).text()
+					}}
 				</h5>
 				<div class="ext-growthExperiments-AddImageDialog__text">
 					<p>
-						<!-- eslint-disable-next-line max-len -->
-						The suggestion may be unrelated to the article, low quality, or may not belong for other reasons. Use your judgment to decide whether the suggestion is right or wrong.
+						{{
+							// eslint-disable-next-line max-len
+							$i18n( 'growthexperiments-addimage-onboarding-content-decision-body-paragraph1', userName ).text()
+						}}
 					</p>
 					<br>
 					<p>
-						<!-- eslint-disable-next-line max-len -->
-						For images that you accept, you'll write a short caption, and then your edit will be published.
+						{{
+							// eslint-disable-next-line max-len
+							$i18n( 'growthexperiments-addimage-onboarding-content-decision-body-paragraph2', userName ).text()
+						}}
 					</p>
 				</div>
 			</div>
 		</template>
-
 		<template #checkboxLabel>
-			Don't show again
+			{{
+				$i18n(
+					// eslint-disable-next-line max-len
+					"growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox"
+				).text()
+			}}
 		</template>
 		<template
 			#startBtnText>
-			Get started
+			{{
+				$i18n(
+					// eslint-disable-next-line max-len
+					"growthexperiments-structuredtask-onboarding-dialog-get-started-button"
+				).text()
+			}}
 		</template>
 	</onboarding-dialog>
 </template>
 
 <script>
-import { ref, toRef } from 'vue';
+import { inject, ref, toRef } from 'vue';
 import { useModelWrapper } from '@wikimedia/codex';
 import OnboardingDialog from './OnboardingDialog.vue';
 
 export default {
+	compatConfig: { MODE: 3 },
 	name: 'AddImageDialog',
 	components: {
 		OnboardingDialog
@@ -167,6 +215,7 @@ export default {
 	emits: [ 'update:open', 'update:is-checked', 'close' ],
 
 	setup( props, { emit } ) {
+		const userName = inject( 'USER_USERNAME' );
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
 		const initialStep = 1;
@@ -176,6 +225,7 @@ export default {
 			currentStep,
 			initialStep,
 			totalSteps,
+			userName,
 			wrappedIsChecked,
 			wrappedOpen
 		};
