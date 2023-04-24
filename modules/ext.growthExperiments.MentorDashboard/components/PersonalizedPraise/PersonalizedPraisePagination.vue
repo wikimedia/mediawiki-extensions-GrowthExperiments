@@ -1,7 +1,7 @@
 <template>
 	<div class="ext-growthExperiments-PersonalizedPraise-Pagination">
 		<cdx-button
-			type="quiet"
+			weight="quiet"
 			:disabled="previousButtonDisabled"
 			:aria-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label' )"
 			@click="$emit( 'previous' )"
@@ -16,7 +16,7 @@
 			) }}
 		</c-text>
 		<cdx-button
-			type="quiet"
+			weight="quiet"
 			:disabled="nextButtonDisabled"
 			:aria-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label' )"
 			@click="$emit( 'next' )"
