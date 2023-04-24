@@ -21,7 +21,9 @@
 	"growthexperiments-homepage-email-button-confirmed": "ترجيحون",
 	"growthexperiments-homepage-email-changelink": "بدلايو",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "نوان مضمون سرجيو ۽ ننڍن مضمونن کي وڌايو.",
+	"growthexperiments-homepage-suggested-edits-header": "ڏسيل سنوارون",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|توھان جو}} اثر",
+	"growthexperiments-homepage-impact-scores-edit-count": "ڪُل سنوارون",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:$1|توھان}} جيڪي مضمون سنواريا اھي ماڻھو ڏسي رھيا آھن!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|توھان}} جي سنوارڻ کان ڏيٺون (گذريل 60 ڏينھن):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|توھان}} <strong>$1</strong> {{PLURAL:$1|سنوار|سنوارون}} ڪيون آھن (سڀ ڏسو)",
@@ -70,6 +72,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "مضمونن جي وچ ۾ ڳنڍڻا ڏيو",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "مضمونن جي وچ ۾ ڳنڍڻا ڏيو",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "ڪو ڏسيل عڪس وجهو",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 سنوارون",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "رواجي سنوار",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "حوالا لھو",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "مضمونن ۾ تجديد ڪريو",
@@ -77,6 +80,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "مضمونن جي وچ ۾ ڳنڍڻا ڏيو",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "مضمونن جي وچ ۾ ڳنڍڻا ڏيو",
 	"growthexperiments-homepage-suggestededits-error-description": "مھرباني ڪري بعد ۾ ٻيھر ڪوشش ڪريو.",
+	"growthexperiments-homepage-suggestededits-topics-more": "وڌيڪ ڏيکاريو",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "سمجهي ويس",
 	"growthexperiments-addlink-context-text-label": "متن",
 	"growthexperiments-addlink-summary-column-header-suggestion": "مشورو",
@@ -115,5 +119,6 @@
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|ٻيو|ٻيا}}",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "سمجهي ويس",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "سمجهي ويس",
+	"growthexperiments-homepage-special-contribute-title": "ڏسيل سنوارون",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "سمجهي ويس"
 }

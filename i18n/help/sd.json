@@ -11,10 +11,14 @@
 	"growthexperiments-help-panel-back-home": "واپس",
 	"growthexperiments-help-panel-close": "ٿي ويو",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "اڳيون مشورو:",
+	"growthexperiments-help-panel-postedit-suggestededits-title": "ڏسيل سنوارون",
 	"growthexperiments-help-panel-question-subject-template": "مدد پينل لاءِ سوال",
+	"growthexperiments-help-panel-question-subject-template-with-title": "مدد پينل لاءِ [[:$1|$1]] تي سوال",
 	"growthexperiments-help-panel-suggestededits-title": "ڏسيل سنوارون",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "بدلايو",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "مدد پينل بابت",
+	"tag-help_panel_question": "مدد پينل لاءِ سوال",
 	"tag-help_panel_question-description": "مدد پينل جي سوال موڪليو خصوصيت تان ڪيل سنوار",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "ڏسيل سنوارون",
 	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|سنوار|سنوارون}} · $2"
 }
