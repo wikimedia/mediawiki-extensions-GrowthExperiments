@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { vi, describe, expect, it } from 'vitest';
 import { mount } from '@vue/test-utils';
 import OnboardingDialog from './OnboardingDialog.vue';
 
@@ -13,7 +13,14 @@ const renderComponent = ( props, slots ) => {
 	const defaultSlots = { title: '<h3>Onboarding title</h3>' };
 	const wrapper = mount( OnboardingDialog, {
 		props: Object.assign( {}, defaultProps, props ),
-		slots: Object.assign( {}, defaultSlots, slots )
+		slots: Object.assign( {}, defaultSlots, slots ),
+		global: {
+			mocks: {
+				$i18n: vi.fn( ( x, ...params ) => ( {
+					text: vi.fn( () => `${params.join( ' of ' )}` )
+				} ) )
+			}
+		}
 	} );
 	return wrapper;
 };

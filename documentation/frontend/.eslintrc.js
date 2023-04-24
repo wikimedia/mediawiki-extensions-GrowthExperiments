@@ -58,14 +58,6 @@ module.exports = {
 			}
 		}
 	],
-	ignorePatterns: [
-		'.vitepress/cache/**',
-		'dist/*',
-		'docs/*.md',
-		// REVIEW: lib.js fails to be parsed by eslint, afaik there's no suitable eslint wikimedia
-		// configuration for it and the usage of import/export requires babel to be installed
-		'component-demos/lib.js'
-	],
 	parserOptions: {
 		ecmaVersion: 2020,
 		sourceType: 'module'
