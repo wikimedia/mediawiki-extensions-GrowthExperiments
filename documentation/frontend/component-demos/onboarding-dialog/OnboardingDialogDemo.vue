@@ -11,8 +11,10 @@
 			:initial-step="1"
 			:show-paginator="true"
 			:total-steps="3"
+			:stepper-label="`${currentStep} of 3`"
 			:is-rtl="readingDirection === 'rtl'"
 			@close="onDialogClose"
+			@update:current-step="( newVal ) => currentStep = newVal"
 		>
 			<template #title>
 				A slotted <i>Onboarding dialog</i> header
@@ -123,6 +125,9 @@
 			<template #checkboxLabel>
 				Don't show again
 			</template>
+			<template #startBtnText>
+				Get started
+			</template>
 		</onboarding-dialog>
 	</div>
 	<direction-radio-selector
@@ -149,13 +154,14 @@ export default {
 		const open = ref( false );
 		const isDontShowAgainChecked = ref( false );
 		const readingDirection = ref( 'ltr' );
-
+		const currentStep = ref( 1 );
 		function onDialogClose( result ) {
 			// eslint-disable-next-line no-console
 			console.log( 'Dialog closed', result );
 		}
 
 		return {
+			currentStep,
 			isDontShowAgainChecked,
 			open,
 			onDialogClose,
