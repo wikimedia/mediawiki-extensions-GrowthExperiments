@@ -9,7 +9,8 @@
 			"Pseudo Classes",
 			"Xiplus",
 			"羊羊32521",
-			"魔琴"
+			"魔琴",
+			"Winston Sung"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|歡迎}}，$1！",
@@ -53,6 +54,6 @@
 	"welcomesurvey-question-email-placeholder": "請輸入{{GENDER:|您}}的電子郵件地址…",
 	"welcomesurvey-question-email-help": "我們注意到{{GENDER:|您}}建立帳戶時，沒有輸入電子郵件地址。當您遺失密碼時，能使用電子郵件來恢復帳戶，因此我們<strong>強烈建議</strong>您輸入電子郵件地址。備註：當其他使用者與您聯繫時，並不會揭露您的電子郵件地址。",
 	"welcomesurvey-question-languages-label": "{{SITENAME}}有將近 300 種語言可用。請問{{GENDER:|您}}有其他閱讀和書寫時使用的語言嗎？",
-	"welcomesurvey-question-languages-placeholder": "添加到 {{PLURAL:$1|1 個語言|$1 個語言}}…",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|您}}已添加語言數量上限。"
+	"welcomesurvey-question-languages-placeholder": "新增至多 {{PLURAL:$1|1 個語言|$1 個語言}}…",
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|您}}已達到語言新增數量的上限。"
 }

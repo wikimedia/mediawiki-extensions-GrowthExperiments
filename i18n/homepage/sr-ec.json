@@ -285,6 +285,8 @@
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|поставио|поставила}} је {{GENDER:$5|корисника|корисницу}} $7 за {{GENDER:$5|ментора|менторку}} новајлије {{GENDER:$6|$3}} (без претходног ментора)",
 	"log-action-filter-growthexperiments-claimmentee": "промена ментора",
 	"log-action-filter-growthexperiments-setmentor": "додела новајлија",
+	"log-action-filter-growthexperiments-addlink": "Предлог веза",
+	"log-action-filter-growthexperiments-addimage": "Предлог слика",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Пружено кориснично име новајлије није важеће",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|је}} {{GENDER:$2|ваш нови ментор|ваша нова менторка}}",
 	"growthexperiments-notification-body-mentor-change": "Разлог: $1",

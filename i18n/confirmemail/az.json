@@ -14,7 +14,11 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Salam}} $2, \n\n{{SITENAME}} hesabınıza e-poçtunuzu əlavə etdiyiniz üçün təşəkkürlər. Qeydiyyatdan keçilən IP ünvanı: $1\n\nBunu \"$2\" hesabınıza bağlamaq istədiyiniz e-poçt ünvanı kimi təsdiq etmək üçün aşağıdakı düyməyə klikləyin:\n\n$3\n\nQeyd: bu təsdiq kodu <strong>$4 tarixində bitir.</strong>\n\nTəşəkkürlər,\n\n{{SITENAME}}\n\n----\n\nE-poçt ünvanı təsdiqini ləğv etmək üçün (hesabı qeydiyyatdan sizin keçirmədiyiniz və ya başqa səbəbdən) bu linkə klikləyin:\n\n$5",
 	"growthexperiments-signupcampaign-title": "İanəniz üçün təşəkkürlər! İndi Vikipediyanı bu gün daha yaxşı hala gətirən redaktorlar icmasına qoşulun",
 	"growthexperiments-signupcampaign-body": "Vikipediyanı redaktə etmək bir keçid əlavə etmək və ya bir söz dəyişdirmək qədər sadə ola bilər. {{GENDER:|Hesabınızı}} yaratdıqdan sonra maraqlandığınız mövzularda məqalələr üçün tövsiyələr alın!",
+	"growthexperiments-marketingvideocampaign-title": "Vikipediya sizin kimi insanlar tərəfindən qurulub",
+	"growthexperiments-marketingvideocampaign-body": "Hər ay 280 000 redaktor könüllü olur - siz də onlara qoşulacaqsınız? \n\nİlk redaktəni etməkdə tərəddüd etdiyinizi bilirik, lakin bu, əslində olduqca asandır. Bu videoda sizə bu barədə məlumat verən istifadəçilərimizdən soruşun:",
+	"growthexperiments-marketingvideocampaign-body-mobile": "Vikipediyanı sizin kimi minlərlə insan yazır. Onlara qoşulacaqsınız?\n\nBu, redaktorlarımızın sizə mesajıdır:",
 	"growthexperiments-signupcampaign-bullet1": "Maraq dairənizə aid məqalə tövsiyələri alın",
 	"growthexperiments-signupcampaign-bullet2": "Təcrübəli istifadəçidən kömək istə",
-	"growthexperiments-signupcampaign-bullet3": "Kiçik, asan redaktələrlə başlayın"
+	"growthexperiments-signupcampaign-bullet3": "Kiçik, asan redaktələrlə başlayın",
+	"growthexperiments-campaigns-footer": "Bu səhifədə hesabınızı yaratmaqla, o, təcrübə və təhlil məqsədləri üçün bu kampaniya ilə əlaqələndiriləcək."
 }
