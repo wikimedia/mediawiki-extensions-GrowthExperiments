@@ -8,7 +8,7 @@ use GrowthExperiments\Specials\SpecialEditGrowthConfig;
 use InvalidArgumentException;
 use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\Permissions\Authority;
-use WikiMap;
+use MediaWiki\WikiMap\WikiMap;
 
 class SpecialEditGrowthConfigLogger {
 

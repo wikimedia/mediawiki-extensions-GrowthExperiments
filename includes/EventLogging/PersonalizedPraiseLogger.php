@@ -6,7 +6,7 @@ use EventLogging;
 use ExtensionRegistry;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use MediaWiki\User\UserIdentity;
-use WikiMap;
+use MediaWiki\WikiMap\WikiMap;
 
 class PersonalizedPraiseLogger {
 	/** @var string Versioned schema URL for $schema field */
