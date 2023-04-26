@@ -20,12 +20,12 @@ use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\WikiMap\WikiMap;
 use RuntimeException;
 use Status;
 use StatusValue;
 use Title;
 use User;
-use WikiMap;
 use Wikimedia\Rdbms\DBReadOnlyError;
 
 $IP = getenv( 'MW_INSTALL_PATH' );

@@ -8,9 +8,9 @@ use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use WikiMap;
 use Wikimedia\Rdbms\IDatabase;
 
 class ReassignMentees {

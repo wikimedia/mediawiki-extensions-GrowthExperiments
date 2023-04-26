@@ -6,8 +6,8 @@ use DeferredUpdates;
 use Exception;
 use MediaWiki\Extension\EventBus\EventBusFactory;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\WikiMap\WikiMap;
 use MWTimestamp;
-use WikiMap;
 
 /**
  * Create and send event to EventGate when image suggestions are accepted, rejected or invalidated.
