@@ -159,18 +159,18 @@
 			pithumbsize: config.thumbnailWidth,
 			generator: 'growthtasks',
 			ggtlimit: config.size + this.lookAheadSize,
-			ggttasktypes: taskTypes.join( '|' ),
+			ggttasktypes: taskTypes,
 			formatversion: 2,
 			uselang: mw.config.get( 'wgUserLanguage' )
 		};
 		if ( topicFilters && topicFilters.hasFilters() ) {
-			apiParams.ggttopics = topicFilters.getTopics().join( '|' );
+			apiParams.ggttopics = topicFilters.getTopics();
 		}
 		if ( topicFilters && topicFilters.getTopicsMatchMode() ) {
 			apiParams.ggttopicsmode = topicFilters.getTopicsMatchMode();
 		}
 		if ( config.excludePageIds && config.excludePageIds.length ) {
-			apiParams.ggtexcludepageids = config.excludePageIds.join( '|' );
+			apiParams.ggtexcludepageids = config.excludePageIds;
 		}
 		if ( 'debug' in url.query ) {
 			apiParams.ggtdebug = 1;

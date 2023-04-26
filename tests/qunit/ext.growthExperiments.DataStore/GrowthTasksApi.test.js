@@ -42,13 +42,13 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 		formatversion: 2,
 		generator: 'growthtasks',
 		ggtlimit: 25,
-		ggttasktypes: 'copyedit',
+		ggttasktypes: [ 'copyedit' ],
 		piprop: 'name|original|thumbnail',
 		pithumbsize: 332,
 		prop: 'info|revisions|pageimages',
 		rvprop: 'ids',
 		uselang: 'qqx',
-		ggttopics: 'art|music',
+		ggttopics: [ 'art', 'music' ],
 		ggttopicsmode: 'AND'
 	};
 	api.fetchTasks( [ 'copyedit' ], topicFilters ).then( ( response ) => {
@@ -99,7 +99,7 @@ QUnit.test( 'should send topic match mode even if topics are empty', function ( 
 		formatversion: 2,
 		generator: 'growthtasks',
 		ggtlimit: 25,
-		ggttasktypes: 'copyedit',
+		ggttasktypes: [ 'copyedit' ],
 		piprop: 'name|original|thumbnail',
 		pithumbsize: 332,
 		prop: 'info|revisions|pageimages',

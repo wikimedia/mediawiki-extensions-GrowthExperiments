@@ -101,7 +101,7 @@
 			this.api.get( {
 				action: 'query',
 				list: 'search',
-				srnamespace: this.searchNamespaces.join( '|' ),
+				srnamespace: this.searchNamespaces,
 				srwhat: 'text',
 				srprop: 'snippet',
 				srsearch: query
