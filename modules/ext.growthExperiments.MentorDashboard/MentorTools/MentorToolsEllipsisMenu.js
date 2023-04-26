@@ -29,7 +29,7 @@
 			choose: [ 'onMenuItemSelected' ]
 		} );
 
-		this.$element.html( this.menu.$element );
+		this.$element.empty().append( this.menu.$element );
 	}
 	OO.inheritClass( MentorToolsEllipsisMenu, OO.ui.Widget );
 
