@@ -67,13 +67,13 @@
 					if text content for the checkbox slot  is provided. -->
 					<div
 						v-if="currentStep === 1"
-						class="ext-growthExperiments-OnboardingDialog__footer__actions-prev">
+						class="ext-growthExperiments-OnboardingDialog__footer__actions-prev"
+					>
 						<!-- eslint-disable-next-line max-len -->
 						<cdx-checkbox
 							v-if="$slots.checkbox"
-							v-model="modelValue"
-							:value="modelValue"
-							@update:model-value="$emit( 'update:modelValue', modelValue )"
+							v-model="wrappedIsChecked"
+							@update:model-value="newVal => wrappedIsChecked = newVal"
 						>
 							<slot name="checkbox">
 							</slot>
@@ -83,10 +83,12 @@
 					to the previous step -->
 					<div
 						v-else
-						class="ext-growthExperiments-OnboardingDialog__footer__actions-prev">
+						class="ext-growthExperiments-OnboardingDialog__footer__actions-prev"
+					>
 						<cdx-button
 							aria-label="previous"
-							@click="onPrevClick">
+							@click="onPrevClick"
+						>
 							<cdx-icon :icon="cdxIconPrevious" icon-label="previous"></cdx-icon>
 						</cdx-button>
 					</div>
@@ -98,7 +100,8 @@
 						<cdx-button
 							weight="primary"
 							action="progressive"
-							@click="onLastStepBtnClick">
+							@click="onLastStepBtnClick"
+						>
 							<slot name="last-step-button-text">
 								Close
 							</slot>
@@ -125,7 +128,7 @@
 </template>
 
 <script>
-import { ref, computed, toRef } from 'vue';
+import { ref, computed, toRef, watch } from 'vue';
 import { CdxDialog, CdxButton, CdxIcon, CdxCheckbox, useModelWrapper } from '@wikimedia/codex';
 import { cdxIconNext, cdxIconPrevious } from '@wikimedia/codex-icons';
 import OnboardingPaginator from './OnboardingPaginator.vue';
@@ -174,43 +177,79 @@ export default {
 		open: {
 			type: Boolean,
 			default: false
+		},
+
+		/**
+		 * The initial value to use for the optional checkbox model. Should be
+		 * provided via a v-model:is-checked binding in the parent scope.
+		 */
+		isChecked: {
+			type: Boolean,
+			default: false
 		}
 
 	},
-	emits: [ 'update:open', 'update:modelValue', 'update:currentStep' ],
-	setup( props, { emit, slots, modelValue } ) {
+	emits: [ 'update:open', 'update:is-checked', 'update:currentStep', 'close' ],
+	setup( props, { emit, slots } ) {
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
+		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
 		const currentStep = ref( props.initialStep );
+		const greaterStepShown = ref( props.initialStep );
+		const closeSource = ref( undefined );
 		const currentSlotName = computed( () => `step${currentStep.value}` );
 		const hasSteps = computed( () => !!slots.step1 );
 		const transitionName = ref( 'next' );
 
-		const onDialogOpenUpdate = ( newVal ) => {
+		watch( wrappedOpen, () => {
+			if ( wrappedOpen.value === false ) {
+				onClose();
+			}
+		} );
+
+		function onDialogOpenUpdate( newVal ) {
 			emit( 'update:open', newVal );
+		}
+
+		function onClose() {
+			emit( 'close', {
+				closeSource: closeSource.value || 'unkown',
+				isChecked: wrappedIsChecked.value,
+				currentStep: currentStep.value,
+				greaterStep: greaterStepShown.value
+			} );
 			currentStep.value = props.initialStep;
-		};
-		const onNextClick = () => {
-			if ( currentStep.value + 1 <= props.totalSteps ) {
+			greaterStepShown.value = props.initialStep;
+			closeSource.value = undefined;
+		}
+
+		function onNextClick() {
+			if ( currentStep.value < props.totalSteps + 1 ) {
 				currentStep.value++;
 				transitionName.value = 'next';
 				emit( 'update:currentStep', currentStep.value );
 			}
-		};
-		const onPrevClick = () => {
+			if ( greaterStepShown.value < props.totalSteps + 1 ) {
+				greaterStepShown.value++;
+			}
+		}
+
+		function onPrevClick() {
 			if ( currentStep.value > 0 ) {
 				currentStep.value--;
 				transitionName.value = 'prev';
 				emit( 'update:currentStep', currentStep.value );
 			}
-		};
-		const onHeaderBtnClick = () => {
+		}
+
+		function onHeaderBtnClick() {
+			closeSource.value = 'quiet';
 			emit( 'update:open', false );
-			currentStep.value = props.initialStep;
-		};
-		const onLastStepBtnClick = () => {
+		}
+
+		function onLastStepBtnClick() {
+			closeSource.value = 'primary';
 			emit( 'update:open', false );
-			currentStep.value = props.initialStep;
-		};
+		}
 
 		return {
 			cdxIconNext,
@@ -218,13 +257,13 @@ export default {
 			currentSlotName,
 			currentStep,
 			hasSteps,
-			modelValue,
 			onDialogOpenUpdate,
 			onHeaderBtnClick,
 			onNextClick,
 			onLastStepBtnClick,
 			onPrevClick,
 			wrappedOpen,
+			wrappedIsChecked,
 			transitionName
 		};
 	}

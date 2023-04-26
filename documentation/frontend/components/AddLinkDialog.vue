@@ -2,11 +2,12 @@
 	<!-- eslint-disable vue/no-v-model-argument -->
 	<onboarding-dialog
 		v-model:open="wrappedOpen"
-		v-model="modelValue"
+		v-model:is-checked="wrappedIsChecked"
 		:total-steps="3"
 		:initial-step="1"
 		class="ext-growthExperiments-AddLinkDialog"
 		:show-paginator="true"
+		@close="$emit( 'close', $event )"
 	>
 		<template #title>
 			Introduction
@@ -124,7 +125,7 @@
 </template>
 
 <script>
-import { ref, toRef } from 'vue';
+import { toRef } from 'vue';
 import { useModelWrapper } from '@wikimedia/codex';
 import OnboardingDialog from './OnboardingDialog.vue';
 
@@ -141,16 +142,25 @@ export default {
 		open: {
 			type: Boolean,
 			default: false
+		},
+
+		/**
+		 * The initial value to use for the optional checkbox model. Should be
+		 * provided via a v-model:is-checked binding in the parent scope.
+		 */
+		isChecked: {
+			type: Boolean,
+			default: false
 		}
 
 	},
-	emits: [ 'update:open' ],
+	emits: [ 'update:open', 'update:is-checked', 'close' ],
 	setup( props, { emit } ) {
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
-		const modelValue = ref( false );
+		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
 
 		return {
-			modelValue,
+			wrappedIsChecked,
 			wrappedOpen
 		};
 	}
