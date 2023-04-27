@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use Html;
 use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
@@ -1037,6 +1038,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$preferenceMap = [
 			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'GENewcomerTasksLinkRecommendationsEnabled',
 			ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => 'GENewcomerTasksImageRecommendationsEnabled',
+			SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID =>
+				'GENewcomerTasksSectionImageRecommendationsEnabled',
 		];
 		return array_filter( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES,
 			function ( $taskType ) use ( $preferenceMap ) {

@@ -4,6 +4,7 @@ namespace GrowthExperiments\Config\Validation;
 
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use StatusValue;
@@ -34,6 +35,11 @@ class NewcomerTasksValidator implements IConfigValidator {
 			'handler-id' => ImageRecommendationTaskTypeHandler::ID,
 			'icon' => 'robot',
 		],
+		'section-image-recommendation' => [
+			'difficulty' => 'medium',
+			'handler-id' => SectionImageRecommendationTaskTypeHandler::ID,
+			'icon' => 'robot',
+		],
 		'references' => [
 			'difficulty' => 'medium',
 			'handler-id' => TemplateBasedTaskTypeHandler::ID,
@@ -53,7 +59,8 @@ class NewcomerTasksValidator implements IConfigValidator {
 
 	public const SUGGESTED_EDITS_MACHINE_SUGGESTIONS_TASK_TYPES = [
 		'link-recommendation',
-		'image-recommendation'
+		'image-recommendation',
+		'section-image-recommendation'
 	];
 
 	/** @var TaskTypeHandlerRegistry */
