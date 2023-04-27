@@ -47,6 +47,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFacto
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
+use GrowthExperiments\NewcomerTasks\AddSectionImage\AddSectionImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
@@ -325,6 +326,10 @@ class GrowthExperimentsServices {
 
 	public function getAddImageSubmissionHandler(): AddImageSubmissionHandler {
 		return $this->coreServices->get( 'GrowthExperimentsAddImageSubmissionHandler' );
+	}
+
+	public function getAddSectionImageSubmissionHandler(): AddSectionImageSubmissionHandler {
+		return $this->coreServices->get( 'GrowthExperimentsAddSectionImageSubmissionHandler' );
 	}
 
 	public function getGrowthExperimentsCampaignConfig(): CampaignConfig {

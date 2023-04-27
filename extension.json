@@ -2582,6 +2582,15 @@
 						"GrowthExperimentsAddImageSubmissionHandler"
 					]
 				},
+				"section-image-recommendation": {
+					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\SectionImageRecommendationTaskTypeHandler",
+					"services": [
+						"GrowthExperimentsNewcomerTasksConfigurationValidator",
+						"TitleParser",
+						"GrowthExperimentsSectionImageRecommendationProvider",
+						"GrowthExperimentsAddSectionImageSubmissionHandler"
+					]
+				},
 				"null": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\NullTaskTypeHandler"
 				}

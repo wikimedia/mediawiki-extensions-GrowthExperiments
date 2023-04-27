@@ -63,6 +63,8 @@ use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\EventGateSearchIn
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddSectionImage\AddSectionImageSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddSectionImage\ServiceSectionImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -140,6 +142,11 @@ return [
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
+	},
+
+	'GrowthExperimentsAddSectionImageSubmissionHandler' => static function (): AddSectionImageSubmissionHandler {
+		// TODO add submission handler logic
+		return new AddSectionImageSubmissionHandler();
 	},
 
 	'GrowthExperimentsChangeMentorFactory' => static function (
@@ -625,6 +632,11 @@ return [
 			$services->getLinkBatchFactory(),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
 		);
+	},
+
+	'GrowthExperimentsSectionImageRecommendationProvider' => static function (): ImageRecommendationProvider {
+		// TODO integrate with API and instrumentation
+		return new ServiceSectionImageRecommendationProvider();
 	},
 
 	'GrowthExperimentsLinkRecommendationFilter' => static function (
