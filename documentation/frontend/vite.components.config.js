@@ -18,8 +18,11 @@ module.exports = exports = defineConfig( {
 		},
 		rollupOptions: {
 			// make sure to externalize deps that shouldn't be bundled
-			// into your library
-			external: [ 'vue' ],
+			// into your library, so far: vue, @wikimedia/codex
+			external: [
+				'vue',
+				'@wikimedia/codex'
+			],
 			output: {
 				// Provide global variables to use in the UMD build
 				// for externalized deps
