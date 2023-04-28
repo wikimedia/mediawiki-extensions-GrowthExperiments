@@ -2273,7 +2273,7 @@
 			},
 			{
 				"name": "modules/ext.growthExperiments.DataStore/DefaultTaskTypes.json",
-				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
+				"file": "tests/qunit/__mocks__/DefaultTaskTypes.json"
 			},
 			{
 				"name": "modules/ext.growthExperiments.DataStore/AQSConfig.json",
