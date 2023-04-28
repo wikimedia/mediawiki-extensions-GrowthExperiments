@@ -83,8 +83,13 @@ class NewcomerTasksUserOptionsLookup {
 	 * @see SearchStrategy::TOPIC_MATCH_MODES
 	 */
 	public function getTopicsMatchMode( UserIdentity $user ): string {
-		return $this->getStringOption( $user, SuggestedEdits::TOPICS_MATCH_MODE_PREF ) ??
+		$matchMode = $this->getStringOption( $user, SuggestedEdits::TOPICS_MATCH_MODE_PREF ) ??
 			SearchStrategy::TOPIC_MATCH_MODE_OR;
+		if ( $matchMode === SearchStrategy::TOPIC_MATCH_MODE_AND &&
+			!$this->config->get( 'GETopicsMatchModeEnabled' ) ) {
+			$matchMode = SearchStrategy::TOPIC_MATCH_MODE_OR;
+		}
+		return $matchMode;
 	}
 
 	/**
