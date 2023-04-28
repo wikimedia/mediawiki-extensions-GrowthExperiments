@@ -5,12 +5,13 @@
 	],
 	"overrides": [
 		{
-			"files": [ "jest.setup.js" ],
+			"files": [
+				"jest.setup.js"
+			],
 			"extends": [
 				"wikimedia/language/es6",
 				"wikimedia/mediawiki"
 			]
 		}
-
 	]
 }
