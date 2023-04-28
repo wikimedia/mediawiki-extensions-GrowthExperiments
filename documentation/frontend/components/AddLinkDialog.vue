@@ -19,12 +19,14 @@
 		<template #step1>
 			<div>
 				<div class="ext-growthExperiments-AddLinkDialog__image">
+					<!-- eslint-disable max-len -->
 					<img
 						src="../../../images/addlink/onboarding-image1-ltr.svg"
 						width="360"
 						height="216"
-						alt=""
+						alt="Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
 					>
+					<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
 					Adding links will help people learn faster.
@@ -66,12 +68,14 @@
 		<template #step2>
 			<div>
 				<div class="ext-growthExperiments-AddLinkDialog__image">
+					<!-- eslint-disable max-len -->
 					<img
 						src="../../../images/addlink/onboarding-image2-ltr.svg"
 						width="360"
 						height="216"
-						alt=""
+						alt="Illustration of the moon article, next to the article there's a robot representing a machine suggestion - asking if a word on the Moon article should be linked to the Cheese article."
 					>
+					<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
 					Suggested links are machine-generated, and can be incorrect.
@@ -91,12 +95,14 @@
 		<template #step3>
 			<div>
 				<div class="ext-growthExperiments-AddLinkDialog__image">
+					<!-- eslint-disable max-len -->
 					<img
 						src="../../../images/addlink/onboarding-image3-ltr.svg"
 						width="360"
 						height="216"
-						alt=""
+						alt="Illustration of an article sentence showing link suggestions for two different words. Next to the suggestion there's a blue check icon and a red cross icon for the options to accept or reject the suggestion."
 					>
+					<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
 					Guidelines
