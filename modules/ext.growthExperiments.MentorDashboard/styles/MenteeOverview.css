@@ -1,0 +1,14 @@
+/*
+* Container queries do not work in LESS because of
+* https://github.com/wikimedia/less.php/issues/91
+* and https://github.com/less/less.js/issues/3766.
+*
+* Use them in a plain CSS file instead, until
+* upstream adds support to LESS, when this could
+* be moved to MenteeOverview.vue or MenteeOverview.less.
+*/
+@container (min-width: 600px) {
+    .ext-growthExperiments-DataTable__table thead th:first-child {
+        width: 30% !important;
+    }
+}
