@@ -11,7 +11,6 @@ use FatalError;
 use Flow\Container;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
-use Hooks;
 use IContextSource;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\MediaWikiServices;
@@ -618,7 +617,7 @@ abstract class QuestionPoster {
 		$derivativeContext->setConfig( $services->getMainConfig() );
 		$derivativeContext->setTitle( $this->targetTitle );
 		$status = new Status();
-		if ( !Hooks::run( 'EditFilterMergedContent', [
+		if ( !$services->getHookContainer()->run( 'EditFilterMergedContent', [
 			$derivativeContext,
 			$content,
 			$status,
