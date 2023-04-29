@@ -9,7 +9,7 @@
 	 * @return {jQuery}
 	 */
 	function getDifficultyAndTime( difficulty, timeestimate, $icon ) {
-		return $( '<div>' ).addClass( 'suggested-edits-taskexplanation-difficulty-and-time' ).html(
+		return $( '<div>' ).addClass( 'suggested-edits-taskexplanation-difficulty-and-time' ).append(
 			$( '<div>' ).addClass( 'suggested-edits-difficulty-time-estimate' ).append(
 				$icon || '',
 				$( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )

@@ -36,7 +36,7 @@
 			choose: [ 'onMenuItemSelected' ]
 		} );
 
-		this.$element.html( this.menu.$element );
+		this.$element.empty().append( this.menu.$element );
 
 		this.windowManager = OO.ui.getWindowManager();
 		this.optoutProcess = new MentorshipOptoutProcess(

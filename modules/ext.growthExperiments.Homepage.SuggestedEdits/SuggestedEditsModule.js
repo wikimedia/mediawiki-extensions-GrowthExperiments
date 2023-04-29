@@ -275,7 +275,7 @@ SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
 		$explanationElement = $( explanationSelector ),
 		currentTask = this.tasksStore.getCurrentTask();
 	if ( currentTask ) {
-		$explanationElement.html(
+		$explanationElement.empty().append(
 			new TaskExplanationWidget( {
 				taskType: currentTask.tasktype,
 				mode: this.mode
@@ -419,7 +419,7 @@ SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapp
 	// A delay is added to make sure the fake card is shown and the real card is off screen.
 	setTimeout( function () {
 		$fakeCard.addClass( isGoingBack ? 'to-end' : 'to-start' );
-		$cardElement.html( this.currentCard.$element );
+		$cardElement.empty().append( this.currentCard.$element );
 		$cardElement.on( 'transitionend transitioncancel', onTransitionEnd );
 		$cardElement.removeClass( [ 'no-transition', 'to-start', 'to-end' ] );
 		$overlayContent.removeClass( 'is-swiping' );
@@ -451,7 +451,7 @@ SuggestedEditsModule.prototype.updateCardElement = function ( shouldAnimateEditC
 		} );
 	} else {
 		this.isFirstRender = false;
-		$cardElement.html( this.currentCard.$element );
+		$cardElement.empty().append( this.currentCard.$element );
 		promise.resolve();
 	}
 
@@ -607,7 +607,7 @@ SuggestedEditsModule.prototype.setupEditWidget = function ( $container ) {
 		classes: [ 'suggested-edits-footer-navigation-edit-button' ]
 	} );
 	var $editButton = $container.find( '.suggested-edits-footer-navigation-edit-button' );
-	$editButton.html( this.editWidget.$element );
+	$editButton.empty().append( this.editWidget.$element );
 
 	// OO.ui.mixin.ButtonElement.onClick prevents the default action when the 'click'
 	// event handler is set via OOJS, use the jQuery event handling mechanism instead.

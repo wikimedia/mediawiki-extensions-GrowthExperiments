@@ -59,7 +59,7 @@
 
 		if ( this.shouldShowSwitchLink() ) {
 			$content.append(
-				$( '<p>' ).html( $switchLink.text(
+				$( '<p>' ).append( $switchLink.text(
 					// Messages that can be used here:
 					// * growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text
 					// * growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text
