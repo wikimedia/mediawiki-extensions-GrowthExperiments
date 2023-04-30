@@ -10,13 +10,14 @@ use MediaWiki\WikiMap\WikiMap;
 
 class PersonalizedPraiseLogger {
 	/** @var string Versioned schema URL for $schema field */
-	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/personalized_praise/1.0.0';
+	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/personalized_praise/1.0.1';
 	/** @var string Stream name for EventLogging::submit */
 	private const STREAM = 'mediawiki.mentor_dashboard.personalized_praise';
 
 	public const ACTION_SUGGESTED = 'suggested';
 	public const ACTION_NOTIFIED = 'notified';
 	public const ACTION_PRAISED = 'praised';
+	public const ACTION_SKIPPED = 'skipped';
 
 	private PersonalizedPraiseSettings $personalizedPraiseSettings;
 
@@ -114,6 +115,28 @@ class PersonalizedPraiseLogger {
 				self::ACTION_PRAISED,
 				$mentor,
 				$mentee
+			);
+		}
+	}
+
+	/**
+	 * @param UserIdentity $mentor
+	 * @param UserIdentity $mentee
+	 * @param string $skipReason
+	 */
+	public function logSkipped(
+		UserIdentity $mentor,
+		UserIdentity $mentee,
+		string $skipReason
+	): void {
+		if ( $this->isEventLoggingAvailable() ) {
+			$this->doLog(
+				self::ACTION_SKIPPED,
+				$mentor,
+				$mentee,
+				[
+					'skip_reason' => $skipReason
+				]
 			);
 		}
 	}

@@ -5,6 +5,7 @@ namespace GrowthExperiments\MentorDashboard\Modules;
 use ExtensionRegistry;
 use FormatJson;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
+use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\UserImpact\UserImpact;
 use Html;
@@ -129,6 +130,8 @@ class PersonalizedPraise extends BaseModule {
 			'GEPersonalizedPraiseNotificationsEnabled' => $this->getConfig()->get(
 				'GEPersonalizedPraiseNotificationsEnabled'
 			),
+			'GEPersonalizedPraiseSkipMenteesForDays' =>
+				PraiseworthyConditionsLookup::SKIP_MENTEES_FOR_DAYS,
 		];
 	}
 

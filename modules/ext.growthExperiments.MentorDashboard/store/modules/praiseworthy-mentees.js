@@ -39,10 +39,25 @@ const actions = {
 	fetchMentees: function ( context ) {
 		context.commit( 'SET_MENTEES', mw.config.get( 'GEPraiseworthyMentees' ) );
 	},
+	removeMentee: function ( context, mentee ) {
+		context.commit( 'REMOVE_MENTEE', mentee.userId );
+
+		if ( context.getters.currentPage > context.state.mentees.length ) {
+			context.commit( 'SET_PAGE', context.state.mentees.length );
+		}
+	},
 	previousPage: function ( context ) {
+		if ( context.getters.currentPage <= 1 ) {
+			return;
+		}
+
 		context.commit( 'SET_PAGE', context.getters.currentPage - 1 );
 	},
 	nextPage: function ( context ) {
+		if ( context.getters.currentPage >= context.state.mentees.length ) {
+			return;
+		}
+
 		context.commit( 'SET_PAGE', context.getters.currentPage + 1 );
 	},
 	saveSettings: function ( context, settings ) {
@@ -63,6 +78,14 @@ const actions = {
 const mutations = {
 	SET_MENTEES: function ( state, mentees ) {
 		state.mentees = mentees;
+	},
+	REMOVE_MENTEE: function ( state, userId ) {
+		for ( let i = 0; i < state.mentees.length; i++ ) {
+			if ( userId === state.mentees[ i ].userId ) {
+				state.mentees.splice( i, 1 );
+				break;
+			}
+		}
 	},
 	SET_PAGE: function ( state, page ) {
 		if ( page > 0 && page <= state.mentees.length ) {
