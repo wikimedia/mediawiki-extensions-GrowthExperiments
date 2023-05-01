@@ -113,6 +113,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Introductiebericht",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Uw}} introductiebericht is gewijzigd in \"$1\".",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Volgende pagina",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Verzenden",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Annuleren",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Onderwerp",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Meldingen",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Opslaan",

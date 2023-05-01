@@ -10,6 +10,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|توھانجو}} مک صفحو",
 	"prefs-homepage": "نئين-ايندڙ جو مک صفحو",
 	"growthexperiments-homepage-enable": "نئين-ايندڙ جو مک صفحو ڏيکاريو",
+	"growthexperiments-homepage-pt-link": "ذاتي اوزارن ۾ ۾ واپرائيندڙنانءُ ڳنڍڻي تان نئين اچڻ واري گهر صفحي تي ڊفالٽ",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|پنھنجي}} ايميل وجهو",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|پنھنجي}} ايميل جي پڪ ڪريو",
 	"growthexperiments-homepage-email-header-confirmed": "ايميل وجهجي وئي",
