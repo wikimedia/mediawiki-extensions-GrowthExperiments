@@ -146,7 +146,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param string $titleText Title text, for logging.
 	 * @param ImageRecommendationData[] $suggestionData
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
-	 * @param AddImageSubmissionHandler $imageSubmissionHandler
+	 * @param AddImageSubmissionHandler|null $imageSubmissionHandler
 	 * @param array $suggestionFilters
 	 * @param int $maxSuggestionsToProcess Maximum number of valid suggestions to process and return
 	 * with an ImageRecommendation object.
@@ -158,7 +158,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		string $titleText,
 		array $suggestionData,
 		ImageRecommendationMetadataProvider $metadataProvider,
-		AddImageSubmissionHandler $imageSubmissionHandler,
+		?AddImageSubmissionHandler $imageSubmissionHandler,
 		array $suggestionFilters = [],
 		int $maxSuggestionsToProcess = 1
 	) {
@@ -216,7 +216,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				$status->merge( $fileMetadata );
 			}
 		}
-		if ( !$images ) {
+		if ( !$images && $imageSubmissionHandler ) {
 			$imageSubmissionHandler->invalidateRecommendation(
 				Title::newFromLinkTarget( $title )->toPageIdentity(),
 				// We need to pass a user ID for event logging purposes. We can't easily
