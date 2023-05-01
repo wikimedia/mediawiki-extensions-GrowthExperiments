@@ -19,7 +19,8 @@
 			"Diskdance",
 			"Ericliu1912",
 			"BlackShadowG",
-			"Lakejason0"
+			"Lakejason0",
+			"捍粵者"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -267,7 +268,7 @@
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "選擇興趣",
 	"growthexperiments-homepage-suggestededits-topics-more": "顯示更多",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|個主題}}",
-	"growthexperiments-homepage-suggestededits-topics-selectall": "選擇全部",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "全選",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "移除全部",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "挑選一些{{GENDER:$1|您}}有興趣編輯的主題",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "我們會嘗試建議符合{{GENDER:$1|您的}}興趣的條目。",

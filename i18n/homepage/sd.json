@@ -32,6 +32,7 @@
 	"growthexperiments-homepage-email-button-confirmed": "ترجيحون",
 	"growthexperiments-homepage-email-changelink": "(بدلايو)",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "نوان مضمون سرجيو ۽ ننڍن مضمونن کي وڌايو.",
+	"growthexperiments-homepage-suggested-edits-header": "ڏسيل سنوارون",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|توھان جو}} اثر",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:$1|توھان}} جيڪي مضمون سنواريا اھي ماڻھو ڏسي رھيا آھن!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|توھان}} جي سنوارڻ کان ڏيٺون (گذريل 60 ڏينھن):",
@@ -75,10 +76,12 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "مضمونن ۾ تجديد ڪريو (موجود مضمونن کي حال تائين جي تجديد ڪريو)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "ننڍن مضمون کي وڌايو",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "مضمونن جي وچ ۾ ڳنڍڻا ڏيو",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 سنوارون",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "رواجي سنوار",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "حوالا لھو",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "مضمونن ۾ تجديد ڪريو",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "ننڍن مضمون کي وڌايو",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "مضمونن جي وچ ۾ ڳنڍڻا ڏيو",
-	"growthexperiments-homepage-suggestededits-error-description": "مھرباني ڪري بعد ۾ ٻيھر ڪوشش ڪريو."
+	"growthexperiments-homepage-suggestededits-error-description": "مھرباني ڪري بعد ۾ ٻيھر ڪوشش ڪريو.",
+	"growthexperiments-homepage-suggestededits-topics-more": "وڌيڪ ڏيکاريو"
 }
