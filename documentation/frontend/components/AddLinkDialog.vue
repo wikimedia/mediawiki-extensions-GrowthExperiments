@@ -19,15 +19,14 @@
 
 		<template #step1>
 			<div>
-				<div class="ext-growthExperiments-AddLinkDialog__image">
-					<!-- eslint-disable max-len -->
-					<img
-						src="../../../images/addlink/onboarding-image1-ltr.svg"
-						width="360"
-						height="216"
-						alt="Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
-					>
-					<!-- eslint-enable max-len -->
+				<!-- eslint-disable max-len -->
+				<div
+					role="img"
+					aria-label="Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
+					class="ext-growthExperiments-AddLinkDialog__image
+					ext-growthExperiments-AddLinkDialog__image--1"
+				>
+				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
 					Adding links will help people learn faster.
@@ -68,15 +67,14 @@
 
 		<template #step2>
 			<div>
-				<div class="ext-growthExperiments-AddLinkDialog__image">
-					<!-- eslint-disable max-len -->
-					<img
-						src="../../../images/addlink/onboarding-image2-ltr.svg"
-						width="360"
-						height="216"
-						alt="Illustration of the moon article, next to the article there's a robot representing a machine suggestion - asking if a word on the Moon article should be linked to the Cheese article."
-					>
-					<!-- eslint-enable max-len -->
+				<!-- eslint-disable max-len -->
+				<div
+					role="img"
+					aria-label="Illustration of the moon article, next to the article there's a robot representing a machine suggestion - asking if a word on the Moon article should be linked to the Cheese article."
+					class="ext-growthExperiments-AddLinkDialog__image
+					ext-growthExperiments-AddLinkDialog__image--2"
+				>
+				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
 					Suggested links are machine-generated, and can be incorrect.
@@ -95,14 +93,14 @@
 		</template>
 		<template #step3>
 			<div>
-				<div class="ext-growthExperiments-AddLinkDialog__image">
-					<!-- eslint-disable max-len -->
-					<img
-						src="../../../images/addlink/onboarding-image3-ltr.svg"
-						width="360"
-						height="216"
-						alt="Illustration of an article sentence showing link suggestions for two different words. Next to the suggestion there's a blue check icon and a red cross icon for the options to accept or reject the suggestion."
-					>
+				<!-- eslint-disable max-len -->
+				<div
+					role="img"
+					aria-label="Illustration of an article sentence showing link suggestions for two different words. Next to the suggestion there's a blue check icon and a red cross icon for the options to accept or reject the suggestion."
+					class="
+					ext-growthExperiments-AddLinkDialog__image
+					ext-growthExperiments-AddLinkDialog__image--3"
+				>
 					<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
@@ -158,7 +156,6 @@ export default {
 			type: Boolean,
 			default: false
 		}
-
 	},
 	emits: [ 'update:open', 'update:is-checked', 'close' ],
 	setup( props, { emit } ) {
@@ -200,6 +197,18 @@ export default {
 
 	&__image {
 		.ext-growthExperiments-onboarding-dialog-image();
+
+		&--1 {
+			background-image: url( ../../../images/addlink/onboarding-image1-ltr.svg );
+		}
+
+		&--3 {
+			background-image: url( ../../../images/addlink/onboarding-image2-ltr.svg );
+		}
+
+		&--2 {
+			background-image: url( ../../../images/addlink/onboarding-image3-ltr.svg );
+		}
 	}
 
 	&__title {
