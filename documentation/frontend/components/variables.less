@@ -1,8 +1,41 @@
+@import '../node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.less';
+@import '../node_modules/@wikimedia/codex/dist/mixins/link.less';
+
 @onboardingBackgroundColor:  #f4f9ff;
-
 @onboardingExampleBorderColor: #eaecf0;
-
 @onboardingImageBorderColor: #eaecf0;
-
 @onboardingDialogHeight: 520px;
 @onboardingDialogWidth: 500px;
+
+.ext-growthExperiments-onboarding-dialog-size() {
+	width: @onboardingDialogWidth;
+	height: @onboardingDialogHeight;
+}
+.ext-growthExperiments-onboarding-dialog-color() {
+	color: @color-base;
+}
+
+.ext-growthExperiments-onboarding-dialog-image() {
+	background-color: @onboardingBackgroundColor;
+	// This border color is not a DS border-color yet and may be changed
+	// See https://phabricator.wikimedia.org/T332567
+	border-bottom: @border-width-base @border-style-base @onboardingImageBorderColor;
+	display: flex;
+	justify-content: center;
+	// HACK The negative margin values are needed to overwrite
+	// CdxDialog body left and right gutter and display the full bleed image
+	margin-left: @spacing-150 * -1em;
+	margin-right: @spacing-150 * -1em;
+}
+
+.ext-growthExperiments-onboarding-dialog-title() {
+	padding-top: @spacing-50;
+	font-size: @font-size-medium;
+	font-weight: @font-weight-bold;
+}
+
+.ext-growthExperiments-onboarding-dialog-text() {
+	padding-top: @spacing-50;
+	font-size: @font-size-small;
+	line-height: @line-height-xx-small;
+}
