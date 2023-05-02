@@ -309,6 +309,8 @@ module.exports = exports = {
 @import '../../../utils/mixins.less';
 
 .ext-growthExperiments-MenteeOverview {
+	container-type: inline-size;
+
 	&__info-box {
 		position: absolute;
 		top: -64px;

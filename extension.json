@@ -2079,6 +2079,7 @@
 				"ext.growthExperiments.MentorDashboard/styles/MentorDashboard.less",
 				"ext.growthExperiments.MentorDashboard/styles/BaseModule.less",
 				"ext.growthExperiments.MentorDashboard/styles/MenteeOverview.less",
+				"ext.growthExperiments.MentorDashboard/styles/MenteeOverview.css",
 				"ext.growthExperiments.MentorDashboard/styles/Resources.less",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.less",
 				"vue-components/mixins.less",

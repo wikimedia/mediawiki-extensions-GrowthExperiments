@@ -204,7 +204,7 @@ module.exports = exports = {
 			}
 
 			th:first-child {
-				width: 30%;
+				width: 40%;
 			}
 
 			tr {
