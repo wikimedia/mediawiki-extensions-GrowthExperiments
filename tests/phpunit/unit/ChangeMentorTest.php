@@ -196,7 +196,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$menteeMock = $this->getUserMock( 'Mentee', 1 );
 
 		$mentorManagerMock = $this->createMock( MentorManager::class );
-		$mentorManagerMock->expects( $this->once() )
+		$mentorManagerMock->expects( $this->atLeastOnce() )
 			->method( 'getMentorshipStateForUser' )
 			->with( $menteeMock )
 			->willReturn( $originalStatus );

@@ -155,6 +155,15 @@ class ChangeMentor {
 			);
 			return $status;
 		}
+
+		if ( $this->mentorManager->getMentorshipStateForUser( $this->mentee ) ===
+			MentorManager::MENTORSHIP_OPTED_OUT ) {
+			$status->fatal(
+				'growthexperiments-homepage-claimmentee-opt-out',
+				$this->mentee->getName()
+			);
+			return $status;
+		}
 		return $status;
 	}
 
