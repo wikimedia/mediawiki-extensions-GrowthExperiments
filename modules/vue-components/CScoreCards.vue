@@ -20,8 +20,8 @@
 			:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 			:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' ).text()"
-			@open="log( 'impact', 'open-thanks-info-tooltip' );"
-			@close="log( 'impact', 'close-thanks-info-tooltip' );"
+			@open="$emit( 'interaction', 'open-thanks-info-tooltip' );"
+			@close="$emit( 'interaction', 'close-thanks-info-tooltip' );"
 		>
 			<c-text
 				size="md"
@@ -67,8 +67,8 @@
 			:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 			:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' ).text()"
-			@open="log( 'impact', 'open-streak-info-tooltip' );"
-			@close="log( 'impact', 'close-streak-info-tooltip' );"
+			@open="$emit( 'interaction', 'open-streak-info-tooltip' );"
+			@close="$emit( 'interaction', 'close-streak-info-tooltip' );"
 		>
 			<c-text
 				as="span"
@@ -100,7 +100,6 @@
 <script>
 const moment = require( 'moment' );
 const { getIntlLocale } = require( '../utils/Utils.js' );
-const { inject } = require( 'vue' );
 const { CdxIcon } = require( '@wikimedia/codex' );
 const CScoreCard = require( './CScoreCard.vue' );
 const CText = require( './CText.vue' );
@@ -154,16 +153,14 @@ module.exports = exports = {
 			default: null
 		}
 	},
+	emits: [ 'interaction' ],
 	setup() {
-		const log = inject( '$log' );
-
 		return {
 			cdxIconEdit,
 			cdxIconUserTalk,
 			cdxIconClock,
 			cdxIconChart,
-			cdxIconInfoFilled,
-			log
+			cdxIconInfoFilled
 		};
 	},
 	computed: {

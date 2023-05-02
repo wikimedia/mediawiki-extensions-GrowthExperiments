@@ -11,6 +11,7 @@
 				:render-third-person="renderThirdPerson"
 				:has-intl="hasIntl"
 				:data="data"
+				@interaction="onCScoreCardInteraction"
 			></c-score-cards>
 		</div>
 		<div v-if="data && hasIntl">
@@ -98,12 +99,14 @@ module.exports = exports = {
 		const isMobileHomepage = mw.config.get( 'homepagemobile' );
 		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
 		const hasIntl = inject( 'BROWSER_HAS_INTL' );
+		const log = inject( '$log' );
 
 		return {
 			hasIntl,
 			DEFAULT_STREAK_TIME_FRAME,
 			isMobileHomepage,
-			renderThirdPerson
+			renderThirdPerson,
+			log
 		};
 	},
 	computed: {
@@ -142,6 +145,11 @@ module.exports = exports = {
 			return this.renderThirdPerson ?
 				this.$i18n( 'growthexperiments-homepage-impact-subheader-text-third-person' ).text() :
 				this.$i18n( 'growthexperiments-homepage-impact-subheader-text', this.userName ).text();
+		}
+	},
+	methods: {
+		onCScoreCardInteraction( event ) {
+			this.log( 'impact', event );
 		}
 	},
 	mounted() {
