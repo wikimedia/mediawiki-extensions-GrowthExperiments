@@ -438,10 +438,16 @@ $specialPageAliases['uk'] = [
 
 /** Urdu (اردو) */
 $specialPageAliases['ur'] = [
-	'WelcomeSurvey' => [ 'خیرمقدم_سروے' ],
-	'Homepage' => [ 'ہوم_پیج' ],
-	'Impact' => [ 'اثر', 'ثر' ],
-	'ClaimMentee' => [ 'ایک_نووارد_کا_دعوی' ],
+	'WelcomeSurvey' => [ 'خیرمقدمی_جائزہ', 'خیرمقدم_سروے' ],
+	'Homepage' => [ 'صفحۂ_اول', 'ہوم_پیج' ],
+	'Impact' => [ 'اثرات', 'اثر', 'ثر' ],
+	'ClaimMentee' => [ 'طلب_مسترشد', 'ایک_نووارد_کا_دعوی' ],
+	'NewcomerTasksInfo' => [ 'نووارد_کے_امور_مفوضہ_کی_معلومات' ],
+	'EditGrowthConfig' => [ 'ترمیم_ترتیبات_ارشاد' ],
+	'MentorDashboard' => [ 'مجلس_ارشاد' ],
+	'QuitMentorship' => [ 'ارشاد_چھوڑیں' ],
+	'ManageMentors' => [ 'انتظام_مرشدین' ],
+	'EnrollAsMentor' => [ 'شمولیت_بحیثیت_مرشد' ],
 ];
 
 /** Vietnamese (Tiếng Việt) */
