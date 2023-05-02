@@ -3,8 +3,8 @@
 		<p>
 			{{ $i18n(
 				'growthexperiments-mentor-dashboard-personalized-praise-metrics',
-				settings.minEdits,
-				settings.days
+				$filters.convertNumber( settings.minEdits ),
+				$filters.convertNumber( settings.days )
 			) }}
 		</p>
 		<personalized-praise-settings
