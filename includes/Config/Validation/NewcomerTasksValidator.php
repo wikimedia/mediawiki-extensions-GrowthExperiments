@@ -93,14 +93,15 @@ class NewcomerTasksValidator implements IConfigValidator {
 				);
 				continue;
 			}
+			$taskTypeHandler = $this->taskTypeHandlerRegistry->get( $handlerId );
 
 			$status->merge(
-				$this->taskTypeHandlerRegistry->get( $handlerId )
-					->validateTaskTypeConfiguration(
-						$taskId,
-						$taskConfig
-					)
+				$taskTypeHandler->validateTaskTypeConfiguration( $taskId, $taskConfig )
 			);
+			if ( $status->isGood() ) {
+				$taskType = $taskTypeHandler->createTaskType( $taskId, $taskConfig );
+				$status->merge( $taskTypeHandler->validateTaskTypeObject( $taskType ) );
+			}
 		}
 		return $status;
 	}
