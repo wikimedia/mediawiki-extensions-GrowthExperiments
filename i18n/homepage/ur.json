@@ -8,5 +8,7 @@
 	"growthexperiments-homepage-tab": "صفحۂ اول",
 	"tooltip-pt-homepage": "{{GENDER:|آپ کا}} صفحۂ اول",
 	"prefs-homepage": "نو وارد ویکی نویسوں کے لیے مخصوص سہولتیں",
-	"growthexperiments-homepage-enable": "نووارد کا صفحۂ اول دکھائیں"
+	"growthexperiments-homepage-enable": "نووارد کا صفحۂ اول دکھائیں",
+	"growthexperiments-homepage-mentorship-intro": "یہ {{GENDER:$1|تجربہ کار صارف}} جانتا ہے کہ آپ یہاں نووارد ہیں۔ یہ صارف ترمیم کاری میں {{GENDER:$2|آپ}} کی مدد کر سکتا ہے۔",
+	"growthexperiments-homepage-claimmentee-pretext": "اس صفحہ کی مدد سے {{GENDER:$1|آپ}} اپنے آپ کو کسی نووارد صارف کا مرشد بنا سکتے ہیں۔ تاہم ہمارا مشورہ یہ ہے کہ اس سہولت کو فقط ان صارفین کے لیے استعمال کریں جن سے آپ واقف ہیں۔"
 }

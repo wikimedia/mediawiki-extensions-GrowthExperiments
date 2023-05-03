@@ -88,6 +88,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "רשימת שמות פרקים שלא צריך להמליץ על קישורים בשבילם.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "דף יעד למידע נוסף על סוג המשימה הצעת תמונה.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "המספר המרבי של משימות \"הוספת תמונה\" מוצעות שמשתמש מתחיל יכול להשלים ביום.",
+	"growthexperiments-edit-config-newcomer-tasks-section-image-recommendation-learnmore": "דף יעד למידע נוסף על סוג המשימה הצעת תמונה לערך.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "סוג המשימה הזה מזוהה עם הצעות ממכונה, ואינו משתמש בתבניות כדי לייצר מאגר של משימות.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "ערכים שמכילים תבניות שמוגדרות כאן לא יוצגו למשתמשים בתור משימות לסוג המשימה הזה.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "ערכים שמכילים קטגוריות שמוגדרות כאן לא יוצגו למשתמשים בתור משימות לסוג המשימה הזה.",
