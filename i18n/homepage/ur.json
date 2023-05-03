@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Muhammad Shuaib"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{bidi:$1}} کی خدمت میں {{GENDER\n:$1|آداب}} عرض ہے۔",
+	"growthexperiments-homepage-tab": "صفحۂ اول",
+	"tooltip-pt-homepage": "{{GENDER:|آپ کا}} صفحۂ اول",
+	"growthexperiments-homepage-enable": "نووارد کا صفحۂ اول دکھائیں"
+}
