@@ -2525,9 +2525,14 @@
 			"description": "Should users be allowed to access Special:MentorDashboard?",
 			"value": true
 		},
-		"GEMentorDashboardDeploymentMode": {
-			"description": "One of stable/beta/alpha. Used by the mentor dashboard to display only features intended on that wiki.",
-			"value": "alpha"
+		"GEMentorDashboardEnabledModules": {
+			"description": "List of enabled modules in the Mentor dashboard",
+			"value": {
+				"mentee-overview": true,
+				"mentor-tools": true,
+				"resources": true,
+				"personalized-praise": true
+			}
 		},
 		"GEHomepageSuggestedEditsEnabled": {
 			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",

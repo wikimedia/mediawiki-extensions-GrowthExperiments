@@ -19,14 +19,6 @@ use SpecialPage;
 use UserOptionsUpdateJob;
 
 class SpecialMentorDashboard extends SpecialPage {
-
-	/** @var string[][] Mapping of module stability level => accepted deployment modes */
-	private const REQUIRED_DEPLOYMENT_MODE = [
-		'stable' => [ 'stable', 'beta', 'alpha' ],
-		'beta' => [ 'beta', 'alpha' ],
-		'alpha' => [ 'alpha' ]
-	];
-
 	private MentorDashboardModuleRegistry $mentorDashboardModuleRegistry;
 	private MentorProvider $mentorProvider;
 	private UserOptionsLookup $userOptionsLookup;
@@ -69,19 +61,13 @@ class SpecialMentorDashboard extends SpecialPage {
 	 * @return IDashboardModule[]
 	 */
 	private function getModules( bool $isMobile = false ): array {
-		$deploymentMode = $this->getConfig()->get( 'GEMentorDashboardDeploymentMode' );
-		$rawConfig = [
-			'mentee-overview' => 'stable',
-			'mentor-tools' => 'stable',
-			'resources' => 'stable',
-			'personalized-praise' => 'alpha',
-		];
-
-		$moduleConfig = array_filter( $rawConfig, static function ( $el ) use ( $deploymentMode ) {
-			return in_array( $deploymentMode, self::REQUIRED_DEPLOYMENT_MODE[$el] );
-		} );
+		$enabledModules = $this->getConfig()->get( 'GEMentorDashboardEnabledModules' );
 		$modules = [];
-		foreach ( $moduleConfig as $moduleId => $_ ) {
+		foreach ( $enabledModules as $moduleId => $enabled ) {
+			if ( !$enabled ) {
+				continue;
+			}
+
 			$modules[$moduleId] = $this->mentorDashboardModuleRegistry->get(
 				$moduleId,
 				$this->getContext()
