@@ -1,3 +1,10 @@
+d3:
+  # built manually to reduce size: https://www.mediawiki.org/wiki/Extension:GrowthExperiments/Technical_documentation#d3.js
+  license: ISC
+  homepage: https://d3js.org/
+  version: 7.6.1
+  type: doc-only
+
 wikimedia-ui-base:
   license: MIT
   homepage: https://www.mediawiki.org/wiki/Wikimedia_User_Interface
