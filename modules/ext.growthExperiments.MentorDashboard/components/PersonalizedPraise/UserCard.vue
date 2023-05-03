@@ -14,7 +14,7 @@
 			>
 				{{ $i18n(
 					'growthexperiments-mentor-dashboard-personalized-praise-talk-topics',
-					getNumberOfTalkPagePosts() !== undefined ? getNumberOfTalkPagePosts() : '...'
+					getNumberOfTalkPagePosts() !== undefined ? $filters.convertNumber( getNumberOfTalkPagePosts() ) : '...'
 				) }}
 			</a>
 		</p>

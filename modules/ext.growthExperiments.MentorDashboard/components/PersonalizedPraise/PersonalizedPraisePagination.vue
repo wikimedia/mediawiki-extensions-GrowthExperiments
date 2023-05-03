@@ -11,8 +11,8 @@
 		<c-text color="subtle" class="ext-growthExperiments-PersonalizedPraise-Pagination__label">
 			{{ $i18n(
 				'growthexperiments-mentor-dashboard-personalized-praise-page-counter',
-				currentPage,
-				totalPages
+				$filters.convertNumber( currentPage ),
+				$filters.convertNumber( totalPages )
 			) }}
 		</c-text>
 		<cdx-button
