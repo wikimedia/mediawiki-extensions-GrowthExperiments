@@ -74,18 +74,14 @@ StructuredTaskArticleTarget.prototype.updateToolbarSaveButtonState = function ()
  *
  * @abstract
  */
-StructuredTaskArticleTarget.prototype.beforeStructuredTaskSurfaceReady = function () {
-	throw new Error( 'beforeStructuredTaskSurfaceReady must be implemented by subclass' );
-};
+StructuredTaskArticleTarget.prototype.beforeStructuredTaskSurfaceReady = null;
 
 /**
  * Actions that should occur after surfaceReady
  *
  * @abstract
  */
-StructuredTaskArticleTarget.prototype.afterStructuredTaskSurfaceReady = function () {
-	throw new Error( 'afterStructuredTaskSurfaceReady must be implemented by subclass' );
-};
+StructuredTaskArticleTarget.prototype.afterStructuredTaskSurfaceReady = null;
 
 /** @inheritDoc */
 StructuredTaskArticleTarget.prototype.surfaceReady = function () {
@@ -108,23 +104,17 @@ StructuredTaskArticleTarget.prototype.surfaceReady = function () {
  * Check whether the user has made changes to the article.
  *
  * @abstract
- *
  * @return {boolean}
  */
-StructuredTaskArticleTarget.prototype.hasEdits = function () {
-	throw new Error( 'hasEdits must be implemented by subclass' );
-};
+StructuredTaskArticleTarget.prototype.hasEdits = null;
 
 /**
  * Check whether the user has reviewed any suggestions.
  *
  * @abstract
- *
  * @return {boolean}
  */
-StructuredTaskArticleTarget.prototype.hasReviewedSuggestions = function () {
-	throw new Error( 'hasReviewedSuggestions must be implemented by subclass' );
-};
+StructuredTaskArticleTarget.prototype.hasReviewedSuggestions = null;
 
 /** @inheritDoc */
 StructuredTaskArticleTarget.prototype.isSaveable = function () {
@@ -310,15 +300,10 @@ StructuredTaskArticleTarget.prototype.confirmLeavingSuggestionsMode = function (
  * Exit the editing mode without showing any prompts
  *
  * @abstract
- *
  * @param {string} [trackMechanism] Abort mechanism (passed from tryTeardown)
  * @return {jQuery.Promise} Promise that resolves when the surface has been torn down
  */
-StructuredTaskArticleTarget.prototype.teardownWithoutPrompt = function ( trackMechanism ) {
-	throw new Error(
-		'teardownWithoutPrompt must be implemented by subclass. trackMechanism: ' + trackMechanism
-	);
-};
+StructuredTaskArticleTarget.prototype.teardownWithoutPrompt = null;
 
 /** @inheritDoc **/
 StructuredTaskArticleTarget.prototype.tryTeardown = function ( noPrompt, trackMechanism ) {

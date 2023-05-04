@@ -48,25 +48,19 @@ FiltersDialog.prototype.initialize = function () {
  *
  * @abstract
  */
-FiltersDialog.prototype.savePreferences = function () {
-	throw new Error( 'savePreferences must be implemented by the subclass' );
-};
+FiltersDialog.prototype.savePreferences = null;
 
 /**
  * Get an array of selected filters
  *
  * @abstract
  */
-FiltersDialog.prototype.getEnabledFilters = function () {
-	throw new Error( 'getEnabledFilters must be implemented by the subclass' );
-};
+FiltersDialog.prototype.getEnabledFilters = null;
 
 /**
  * @abstract
  */
-FiltersDialog.prototype.updateFiltersFromState = function () {
-	throw new Error( 'updateFiltersFromState must be implemented by the subclass' );
-};
+FiltersDialog.prototype.updateFiltersFromState = null;
 
 /**
  * Update the number of articles found with the selected filters

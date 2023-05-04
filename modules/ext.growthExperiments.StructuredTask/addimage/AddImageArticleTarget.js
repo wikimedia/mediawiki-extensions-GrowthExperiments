@@ -635,12 +635,9 @@ AddImageArticleTarget.prototype.getDefaultThumbSize = function () {
  * Set up loading states and promise for saving without showing the save dialog first.
  *
  * @abstract
- *
  * @return {jQuery.Deferred}
  */
-AddImageArticleTarget.prototype.prepareSaveWithoutShowingDialog = function () {
-	throw new Error( 'prepareSaveWithoutShowingDialog must be implemented by subclass' );
-};
+AddImageArticleTarget.prototype.prepareSaveWithoutShowingDialog = null;
 
 /**
  * Save the article without showing the save dialog first.
