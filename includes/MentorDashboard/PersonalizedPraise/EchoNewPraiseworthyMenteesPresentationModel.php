@@ -18,11 +18,6 @@ class EchoNewPraiseworthyMenteesPresentationModel extends EchoEventPresentationM
 	}
 
 	/** @inheritDoc */
-	public function getBodyMessage() {
-		return $this->msg( 'growthexperiments-notification-body-new-praiseworthy-mentees' );
-	}
-
-	/** @inheritDoc */
 	public function getPrimaryLink() {
 		$title = SpecialPage::getTitleFor( 'MentorDashboard' );
 		return [
