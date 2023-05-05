@@ -29,9 +29,6 @@ class SubpageImageRecommendationProvider
 	/** @var ImageRecommendationMetadataProvider */
 	private $metadataProvider;
 
-	/** @var AddImageSubmissionHandler */
-	private $imageSubmissionHandler;
-
 	/** @var ImageRecommendationApiHandler */
 	private $apiHandler;
 
@@ -39,19 +36,16 @@ class SubpageImageRecommendationProvider
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param RecommendationProvider $fallbackRecommendationProvider
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
-	 * @param AddImageSubmissionHandler $imageSubmissionHandler
 	 * @param ImageRecommendationApiHandler $imageRecommendationApiHandler
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		RecommendationProvider $fallbackRecommendationProvider,
 		ImageRecommendationMetadataProvider $metadataProvider,
-		AddImageSubmissionHandler $imageSubmissionHandler,
 		ImageRecommendationApiHandler $imageRecommendationApiHandler
 	) {
 		parent::__construct( $wikiPageFactory, $fallbackRecommendationProvider );
 		$this->metadataProvider = $metadataProvider;
-		$this->imageSubmissionHandler = $imageSubmissionHandler;
 		$this->apiHandler = $imageRecommendationApiHandler;
 	}
 
@@ -78,7 +72,7 @@ class SubpageImageRecommendationProvider
 				$title->getPrefixedText(),
 				$this->apiHandler->getSuggestionDataFromApiResponse( $data ),
 				$this->metadataProvider,
-				$this->imageSubmissionHandler,
+				null,
 				$suggestionFilters
 			);
 		} else {
@@ -105,7 +99,6 @@ class SubpageImageRecommendationProvider
 						new DerivativeContext( RequestContext::getMain() ),
 						$services->getSiteStore()
 					),
-					$growthServices->getAddImageSubmissionHandler(),
 					$growthServices->getImageRecommendationApiHandler()
 				);
 			}
