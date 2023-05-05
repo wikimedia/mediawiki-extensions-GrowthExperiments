@@ -9,6 +9,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
+use GrowthExperiments\VariantHooks;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 
@@ -58,9 +60,9 @@ class NewcomerTasksUserOptionsLookup {
 		$taskTypes = $this->getJsonListOption( $user, SuggestedEdits::TASKTYPES_PREF );
 		// Filter out invalid task types for the user and use defaults based on user options.
 		if ( !$taskTypes ) {
-			$taskTypes = $this->getDefaultTaskTypes();
+			$taskTypes = $this->getDefaultTaskTypes( $user );
 		}
-		return $this->filterNonExistentTaskTypes( $this->convertTaskTypes( $taskTypes ) );
+		return $this->filterNonExistentTaskTypes( $this->convertTaskTypes( $taskTypes, $user ) );
 	}
 
 	/**
@@ -126,48 +128,79 @@ class NewcomerTasksUserOptionsLookup {
 	}
 
 	/**
+	 * Check if section-level image recommendations are enabled. When true, the
+	 * section-image-recommendation task type should be made available to the user.
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function areSectionImageRecommendationsEnabled( UserIdentity $user ): bool {
+		return $this->config->get( 'GENewcomerTasksSectionImageRecommendationsEnabled' )
+			&& array_key_exists( SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+				$this->configurationLoader->getTaskTypes() )
+			&& ( $this->shouldUserSeeAllTaskTypes( $user )
+				|| $this->experimentUserManager->isUserInVariant( $user, VariantHooks::VARIANT_SECTIONLEVELIMAGES ) );
+	}
+
+	/**
 	 * Remove task types which the user is not supposed to see, given the link recommendation
 	 * configuration and community configuration.
 	 * @param string[] $taskTypes Task types IDs.
+	 * @param UserIdentity $user
 	 * @return string[] Filtered task types IDs. Array keys are not preserved.
 	 */
-	public function filterTaskTypes( array $taskTypes ): array {
-		if ( $this->areLinkRecommendationsEnabled() ) {
-			$taskTypes = array_diff( $taskTypes, [ 'links' ] );
-		} else {
-			$taskTypes = array_diff( $taskTypes, [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ] );
-		}
-		if ( !$this->areImageRecommendationsEnabled() ) {
-			$taskTypes = array_diff( $taskTypes, [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ] );
-		}
+	public function filterTaskTypes( array $taskTypes, UserIdentity $user ): array {
+		$conversionMap = $this->getConversionMap( $user );
+		$taskTypes = array_filter( $taskTypes,
+			fn( $taskTypeId ) => !array_key_exists( $taskTypeId, $conversionMap )
+		);
 		return $this->filterNonExistentTaskTypes( $taskTypes );
 	}
 
 	/**
 	 * Get default task types when the user has no stored preference.
+	 * @param UserIdentity $user
 	 * @return string[]
 	 */
-	private function getDefaultTaskTypes(): array {
+	private function getDefaultTaskTypes( UserIdentity $user ): array {
+		if ( $this->areSectionImageRecommendationsEnabled( $user ) ) {
+			return [ SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
+		}
 		return SuggestedEdits::DEFAULT_TASK_TYPES;
+	}
+
+	/**
+	 * Get mapping of task types which the user is not supposed to see to a similar task type
+	 * or false (meaning nothing should be shown instead).
+	 * Identical to TaskTypesAbFilter.getConversionMap().
+	 * @param UserIdentity $user
+	 * @return array A map of old task type ID => new task type ID or false.
+	 * @phan-return array<string,string|false>
+	 */
+	private function getConversionMap( UserIdentity $user ): array {
+		$map = [];
+		if ( $this->areLinkRecommendationsEnabled() ) {
+			$map += [ 'links' => LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ];
+		} else {
+			$map += [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];
+		}
+		if ( !$this->areImageRecommendationsEnabled() ) {
+			$map += [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => false ];
+		}
+		if ( !$this->areSectionImageRecommendationsEnabled( $user ) ) {
+			$map += [ SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID => false ];
+		}
+		return $map;
 	}
 
 	/**
 	 * Convert task types which the user is not supposed to see, given the link recommendation
 	 * configuration, to the closest task type available to them.
-	 * This is a hack that should be removed when A/B tests are over (T278123, T290403).
 	 * @param string[] $taskTypes Task types IDs.
+	 * @param UserIdentity $user
 	 * @return string[] Converted task types IDs. Array keys are not preserved.
 	 */
-	private function convertTaskTypes( array $taskTypes ): array {
-		if ( $this->areLinkRecommendationsEnabled() ) {
-			$map = [ 'links' => LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ];
-		} else {
-			$map = [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];
-		}
-		if ( !$this->areImageRecommendationsEnabled() ) {
-			$map += [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => false ];
-		}
-
+	private function convertTaskTypes( array $taskTypes, UserIdentity $user ): array {
+		$map = $this->getConversionMap( $user );
 		$taskTypes = array_map( static function ( string $taskType ) use ( $map ) {
 			return $map[$taskType] ?? $taskType;
 		}, $taskTypes );
@@ -220,6 +253,15 @@ class NewcomerTasksUserOptionsLookup {
 			return null;
 		}
 		return $stored;
+	}
+
+	/**
+	 * Check if the user is an internal pseudo-user who should see all task types.
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	private function shouldUserSeeAllTaskTypes( UserIdentity $user ) {
+		return $user->getId() === 0 && $user->getName() === SuggestionsInfo::USER;
 	}
 
 }

@@ -7,20 +7,24 @@
  * - HomepageHooks::getDefaultTaskTypesJson() as ./DefaultTaskTypes.json
  */
 ( function () {
-	var OLD_LINK_TASK_TYPE = 'links',
+	var Utils = require( '../utils/Utils.js' ),
+		OLD_LINK_TASK_TYPE = 'links',
 		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
-		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation';
+		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
+		SECTION_IMAGE_RECOMMENDATION_TASK_TYPE = 'section-image-recommendation',
+		VARIANT_SECTIONLEVELIMAGES = 'sectionlevelimages';
 
 	/**
-	 * Check whether the old (non-structured) link task type is available.
+	 * Returns the given task type if it's available, or false if it is not.
 	 * Note that this doesn't check whether the user should see it, just that it exists
 	 * on the wiki.
 	 *
-	 * @return {boolean}
+	 * @param {string} taskTypeId
+	 * @return {string|false}
 	 */
-	function doesOldLinkTaskTypeExist() {
+	function taskTypeOrFalse( taskTypeId ) {
 		var taskTypes = require( './TaskTypes.json' );
-		return ( OLD_LINK_TASK_TYPE in taskTypes );
+		return ( taskTypeId in taskTypes ) ? taskTypeId : false;
 	}
 
 	/**
@@ -52,56 +56,84 @@
 	}
 
 	/**
+	 * Check whether section-level image recommendations are enabled for the current user.
+	 *
+	 * This is the equivalent of NewcomerTasksUserOptionsLookup::areSectionImageRecommendationsEnabled().
+	 *
+	 * @return {boolean}
+	 */
+	function areSectionImageRecommendationsEnabled() {
+		var config = require( './config.json' ),
+			taskTypes = require( './TaskTypes.json' );
+		return config.GENewcomerTasksSectionImageRecommendationsEnabled &&
+			SECTION_IMAGE_RECOMMENDATION_TASK_TYPE in taskTypes &&
+			Utils.isUserInVariant( VARIANT_SECTIONLEVELIMAGES );
+	}
+
+	/**
 	 * Get all task types, removing the ones the current user should not see.
 	 *
 	 * @return {Object} The same task type data, without the task types the user shouldn't see.
 	 */
 	function getTaskTypes() {
-		var taskTypes = require( './TaskTypes.json' );
+		var defaultTaskTypes = require( './TaskTypes.json' ),
+			conversionMap = getConversionMap(),
+			taskTypes = {};
 
 		// Abort if task types couldn't be loaded.
-		if ( !( taskTypes instanceof Object ) || '_error' in taskTypes ) {
-			return taskTypes;
+		if ( !( defaultTaskTypes instanceof Object ) || '_error' in defaultTaskTypes ) {
+			return defaultTaskTypes;
 		}
 
-		taskTypes = $.extend( {}, taskTypes );
+		Object.keys( defaultTaskTypes ).forEach( function ( taskTypeId ) {
+			if ( !( taskTypeId in conversionMap ) ) {
+				taskTypes[ taskTypeId ] = defaultTaskTypes[ taskTypeId ];
+			}
+		} );
+		return taskTypes;
+	}
+
+	/**
+	 * Get mapping of task types which the user is not supposed to see to a similar task type
+	 * or false (meaning nothing should be shown instead).
+	 *
+	 * This is the equivalent of NewcomerTasksUserOptionsLookup::getConversionMap().
+	 *
+	 * @return {Object} A map of old task type ID => new task type ID or false.
+	 */
+	function getConversionMap() {
+		var map = {};
 		if ( areLinkRecommendationsEnabled() ) {
-			delete taskTypes[ OLD_LINK_TASK_TYPE ];
+			map[ OLD_LINK_TASK_TYPE ] = LINK_RECOMMENDATION_TASK_TYPE;
 		} else {
-			delete taskTypes[ LINK_RECOMMENDATION_TASK_TYPE ];
+			map[ LINK_RECOMMENDATION_TASK_TYPE ] = taskTypeOrFalse( OLD_LINK_TASK_TYPE );
 		}
 		if ( !areImageRecommendationsEnabled() ) {
-			delete taskTypes[ IMAGE_RECOMMENDATION_TASK_TYPE ];
+			map[ IMAGE_RECOMMENDATION_TASK_TYPE ] = false;
 		}
-		return taskTypes;
+		if ( !areSectionImageRecommendationsEnabled() ) {
+			map[ SECTION_IMAGE_RECOMMENDATION_TASK_TYPE ] = false;
+		}
+		return map;
 	}
 
 	/**
 	 * Convert task types which the user is not supposed to see, given the user variant
 	 * configuration, to the closest task type available to them.
 	 *
-	 * @param {Array<string>} taskTypes
+	 * This is the equivalent of NewcomerTasksUserOptionsLookup::convertTaskTypes().
+	 *
+	 * @param {Array<string>} taskTypeIds
 	 * @return {Array<string>}
 	 */
-	function convertTaskTypes( taskTypes ) {
-		var linkRecommendationsEnabled = areLinkRecommendationsEnabled(),
-			imageRecommendationsEnabled = areImageRecommendationsEnabled();
-		taskTypes = taskTypes.map( function ( taskType ) {
-			if ( linkRecommendationsEnabled && taskType === OLD_LINK_TASK_TYPE ) {
-				return LINK_RECOMMENDATION_TASK_TYPE;
-			} else if ( !linkRecommendationsEnabled && taskType === LINK_RECOMMENDATION_TASK_TYPE ) {
-				return doesOldLinkTaskTypeExist() ? OLD_LINK_TASK_TYPE : null;
-			} else if ( !imageRecommendationsEnabled && taskType === IMAGE_RECOMMENDATION_TASK_TYPE ) {
-				return null;
-			} else {
-				return taskType;
-			}
+	function convertTaskTypes( taskTypeIds ) {
+		var map = getConversionMap();
+		return taskTypeIds.map( function ( taskTypeId ) {
+			return ( taskTypeId in map ) ? map[ taskTypeId ] : taskTypeId;
+		} ).filter( function ( element, index, self ) {
+			// filter duplicates and false
+			return element !== false && index === self.indexOf( element );
 		} );
-		// filter duplicates and null
-		taskTypes = taskTypes.filter( function ( element, index, self ) {
-			return element !== null && index === self.indexOf( element );
-		} );
-		return taskTypes;
 	}
 
 	/**
@@ -110,7 +142,12 @@
 	 * @return {string[]}
 	 */
 	function getDefaultTaskTypes() {
-		return require( './DefaultTaskTypes.json' );
+		var defaultDefaultTaskTypes = require( './DefaultTaskTypes.json' );
+		if ( areSectionImageRecommendationsEnabled() ) {
+			return [ SECTION_IMAGE_RECOMMENDATION_TASK_TYPE ];
+		} else {
+			return defaultDefaultTaskTypes;
+		}
 	}
 
 	module.exports = {

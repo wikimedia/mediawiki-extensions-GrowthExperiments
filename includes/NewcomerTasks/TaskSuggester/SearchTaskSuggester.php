@@ -147,7 +147,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		if ( !$taskSetFilters->getTaskTypeFilters() ) {
 			$taskSetFilters->setTaskTypeFilters(
 				$this->newcomerTasksUserOptionsLookup
-					->filterTaskTypes( array_keys( $this->taskTypes ) )
+					->filterTaskTypes( array_keys( $this->taskTypes ), $user )
 			);
 		}
 

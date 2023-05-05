@@ -1301,6 +1301,8 @@ class HomepageHooks implements
 			'GELinkRecommendationsEnabled' => $config->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
 				&& $config->get( 'GELinkRecommendationsFrontendEnabled' ),
 			'GEImageRecommendationsEnabled' => $config->get( 'GENewcomerTasksImageRecommendationsEnabled' ),
+			'GENewcomerTasksSectionImageRecommendationsEnabled' =>
+				$config->get( 'GENewcomerTasksSectionImageRecommendationsEnabled' ),
 		];
 	}
 
