@@ -60,6 +60,13 @@
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Nei, ikke la noen brukere melde seg som faddere.",
 	"growthexperiments-edit-config-mentorship-minimum-age": "Minimalt antall dager en bruker må være registrert for å kunne melde seg som fadder",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Minimalt antall redigeringer en bruker må ha (i alle navnerom) for å kunne melde seg som fadder",
+	"growthexperiments-edit-config-personalized-praise": "Personalisert ros",
+	"growthexperiments-edit-config-personalized-praise-description": "Å få rosende meldinger fra etablerte bidragsytere kan gjøre at folk forblir aktive. Modulen for personalisert ros viser fadderne rosverdige fadderbarn, og målet er å hjelpe produktive nye bidragsytere med å føle seg innlemmet i nettsamfunnet.",
+	"growthexperiments-edit-config-personalized-praise-mentors-can-change": "Faddere kan endre dette alternativet for sin egen bruker i fadderpanelet.",
+	"growthexperiments-edit-config-personalized-praise-notification-frequency": "Som standard, hvor ofte bør faddere motta varsler for å minne dem på å sende ros til fadderbarn som gjør gode redigeringer?",
+	"growthexperiments-edit-config-personalized-praise-min-edits": "Standard minimum antall redigeringer et fadderbarn må ha gjort for å anses som rosverdig",
+	"growthexperiments-edit-config-personalized-praise-days": "Antall dager som legges til grunn når man evaluerer fadderbarns rosverdighet",
+	"growthexperiments-edit-config-personalized-praise-max-edits": "Maksimal antall redigeringer en bruker kan ha for å anses som rosverdig",
 	"growthexperiments-edit-config-newcomertasks": "Foreslåtte redigeringer",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Noen typer foreslåtte redigeringer kommer fram ved hjelp av maler. Artikler som inneholder disse malene legges til i matingen. For å se hvor mange artikler som er tilgjengelige for hver oppgavetype, se [[Special:NewcomerTasksInfo|denne sida]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Deaktivert",
@@ -80,10 +87,13 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Liste over seksjonsnavn der det ikke bør anbefales å legge til lenker.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Målside for å lære mer om oppgavetypen legg til bilde.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "Maksimalt antall «Legg til bilde»-oppgaver en nybegynner kan utføre daglig.",
+	"growthexperiments-edit-config-newcomer-tasks-section-image-recommendation-learnmore": "Målside for å lære mer om oppgavetypen for foreslåtte seksjonsbilder.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Denne oppgavetypen assosieres med maskinforslag, og bruker ikke maler for å generere mulige oppgaver.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artikler som inneholder disse malene vises ikke til brukerne som oppgaver for denne oppgavetypen.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artikler som inneholder disse kategoriene blir ikke vist til brukerne som oppgaver for denne oppgavetypen.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infoboksmaler",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Disse malene trengs for nybegynnerfunksjonen for [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|bildeforslag]]. Artikler som inneholder disse malene blir ikke listet opp som bildeforslagsoppgaver.",
-	"growthexperiments-edit-config-delayed": "Endringer i denne innstillingen vil ikke tre i kraft umiddelbart (se [[mw:Growth/FAQ#add-link-config|OSS]])."
+	"growthexperiments-edit-config-delayed": "Endringer i denne innstillingen vil ikke tre i kraft umiddelbart (se [[mw:Growth/FAQ#add-link-config|OSS]]).",
+	"growthexperiments-info-tooltip-close-label": "Lukk",
+	"specialpages-group-growth-tools": "Growth-verktøy"
 }

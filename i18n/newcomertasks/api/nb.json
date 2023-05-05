@@ -14,6 +14,8 @@
 	"apihelp-query+growthtasks-param-debug": "Legg til feilsøkingsdata i resultatet.",
 	"apihelp-query+growthtasks-example-1": "Hent oppgaveforslag til korrekturlesingsoppgaver for denne brukeren.",
 	"apihelp-query+growthtasks-example-2": "Hent oppgaveforslag for den gjeldende brukeren, med utvidet informasjon om sidene.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Hent en foreslått oppgavetype en bruker kan prøve videre.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Oppgavetypen brukeren allerede jobber med.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Parameteren «accepted» mangler fra dataene til bildeinnleggingsmodulen",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Parameteren «accepted» må være boolsk i dataene for bildeinnleggingsmodulen, er $1",
 	"apierror-growthexperiments-addimage-handler-reason-missing": "Parameteren «reason» mangler fra dataene til bildeinnleggingsmodulen",

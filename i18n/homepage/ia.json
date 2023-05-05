@@ -173,6 +173,7 @@
 	"growthexperiments-specialimpact-invalid-username": "Nomine de usator mancante o invalide.",
 	"growthexperiments-homepage-claimmentee-no-user": "Apprentisse non existe",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Tu}} es ja mentor de $1",
+	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} ha optate pro non esser mentor",
 	"growthexperiments-homepage-enable-preference": "Pro activar le pagina de initio pro novicios, visita tu parametros de \"Functionalitate pro nove redactores\" in [[Special:Preferences#mw-prefsection-personal-homepage|Preferentias]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Tu}} non ha ancora facite alcun contribution.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Visita {{GENDER:$1|tu}} pagina de initio pro comenciar a modificar!",

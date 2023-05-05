@@ -203,6 +203,7 @@
 	"growthexperiments-specialimpact-invalid-username": "Nom d’utilisateur manquant ou incorrect.",
 	"growthexperiments-homepage-claimmentee-no-user": "Le tutoré n’existe pas",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Vous êtes déjà tut{{GENDER:$2|eur|rice}} de $1",
+	"growthexperiments-homepage-claimmentee-opt-out": "$1 s’est désisté{{GENDER:$1||e}} du tutorat",
 	"growthexperiments-homepage-enable-preference": "Pour activer la page d’accueil des nouveaux venus, consultez vos paramètres des « Fonctionnalités d’éditeur de nouvel arrivant » dans [[Special:Preferences#mw-prefsection-personal-homepage|vos préférences]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|}}Vous n’avez encore fait aucune contribution.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Visitez {{GENDER:$1|}}votre page d’accueil pour commencer à modifier !",

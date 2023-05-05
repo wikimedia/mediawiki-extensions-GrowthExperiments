@@ -108,7 +108,6 @@
 	"growthexperiments-notification-body-mentee-claimed": "السبب: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "ما معنى «المُطالبة بمرشَد»؟",
 	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|لديكَ|لديكِ}} مرشَدون يستحقون الثناء!",
-	"growthexperiments-notification-body-new-praiseworthy-mentees": "{{GENDER:|أرسل|أرسلي}} تشجيعًا إلى المُرشَدين بواسطة لوحتك الخاصة",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "{{GENDER:|شاهد|شاهدي}} لوحة المرشدين",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "نسبة عدد المُرشَدين المعيّنين لديَّ",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "لا أحد (أطالب بهم يدويًا)",

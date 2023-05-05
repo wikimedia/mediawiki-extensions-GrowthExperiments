@@ -112,7 +112,6 @@
 	"growthexperiments-notification-body-mentee-claimed": "Razón: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "¿Qué es \"Reclamar aprendiz\"?",
 	"growthexperiments-notification-header-new-praiseworthy-mentees": "¡{{GENDER:|Tienes}} aprendices que quizá merezcan reconocimiento!",
-	"growthexperiments-notification-body-new-praiseworthy-mentees": "Se muestran aprendices en tu panel de mentoría a los que tal vez quieras agradecer",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Ver panel de mentoría",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Número de aprendices asignados",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Ninguno (Los añadiré de manera manual)",

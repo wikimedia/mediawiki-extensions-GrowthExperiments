@@ -28,5 +28,8 @@
 	"apihelp-growthmanagementorlist-param-autoassigned": "Este mentorul atribuit automat nou-veniților?",
 	"apihelp-growthmanagementorlist-param-summary": "Motivul pentru schimbare",
 	"apihelp-growthmanagementorlist-param-username": "Numele de utilizator al mentorului afectat de schimbare. Dacă nu este furnizat, va fi utilizat utilizatorul actualmente autentificat. Se poate utiliza numai de către utilizatorii privilegiați.",
-	"growthexperiments-api-managementors-error-no-away-timestamp": "Dacă isaway este adevărat, atunci trebuie furnizat awaytimestamp."
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Dacă isaway este adevărat, atunci trebuie furnizat awaytimestamp.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalidează o sugestie pentru un ucenic demn de a fi lăudat în Modulul de laude personalizate de la pagina mentorului",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Ucenic de invalidat",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Motivul pentru invalidarea sugestiei"
 }

@@ -3,6 +3,7 @@
 		"authors": [
 			"Aefgh39622",
 			"Bebiezaza",
+			"Ekminarin",
 			"Horus",
 			"Just Sayori",
 			"Karit",
@@ -236,6 +237,7 @@
 	"growthexperiments-notification-body-mentor-change": "สาเหตุ: $1",
 	"right-setmentor": "ตั้งเมนเทอร์สำหรับผู้ใช้นี้",
 	"action-setmentor": "ตั้งเมนเทอร์สำหรับผู้ใช้นี้",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "เพิ่มเติมเกี่ยวกับการแก้ไขที่แนะนำนี้",
 	"growthexperiments-homepage-welcome-notice-header": "ยินดีต้อนรับสู่หน้าหลักของ{{GENDER:$1|คุณ}}",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "ดำเนินการต่อ",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "รับทราบ",
@@ -268,5 +270,6 @@
 	"newcomertasksinfo-no-data": "ไม่มีข้อมูล",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "ภาพไม่เกี่ยวข้อง",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "อื่น ๆ",
-	"growthexperiments-addimage-viewer-close-button": "ปิด"
+	"growthexperiments-addimage-viewer-close-button": "ปิด",
+	"growthexperiments-addimage-skip-dialog-title": "ไม่แน่ใจเกี่ยวกับภาพนี้?"
 }

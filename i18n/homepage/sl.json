@@ -175,6 +175,7 @@
 	"growthexperiments-specialimpact-invalid-username": "Manjkajoče ali neveljavno uporabniško ime.",
 	"growthexperiments-homepage-claimmentee-no-user": "Mentoriranec_ka ne obstaja",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$1|Uporabnika|Uporabnico|Uporabnika_co}} $1 že {{GENDER:$2|mentorirate}}",
+	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1 se je odpovedal|se je odpovedala|se je odpovedal_a}} mentorstvu",
 	"growthexperiments-homepage-enable-preference": "Da omogočite glavno stran za začetnike, pojdite na nastavitve »Možnosti urejanja za začetnike« v [[Special:Preferences#mw-prefsection-personal-homepage|nastavitvah]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Prispevali niste}} še ničesar.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "{{GENDER:$1|Obiščite}} svojo domačo stran, da začnete urejati!",

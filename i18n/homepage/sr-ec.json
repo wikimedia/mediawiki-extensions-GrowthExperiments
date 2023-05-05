@@ -137,6 +137,7 @@
 	"growthexperiments-specialimpact-invalid-username": "Корисничко име недостаје или није важеће.",
 	"growthexperiments-homepage-claimmentee-no-user": "Не постоји новајлија с тим корисничким именом",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Већ сте {{GENDER:$2|ментор|менторка}} {{GENDER:$1|корисника|кориснице}} $1",
+	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} не жели менторство",
 	"growthexperiments-homepage-enable-preference": "Да бисте омогућили уређивачке алате за новајлије, погледајте одељак „Почетна страница новајлија” у [[Special:Preferences#mw-prefsection-personal-homepage|подешавањима]].",
 	"growthexperiments-homepage-contributions-zero-title": "Још {{GENDER:$1|нисте}} дали никакав допринос.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Посетите {{GENDER:$1|своју}} почетну страницу како бисте почели да уређујете.",
