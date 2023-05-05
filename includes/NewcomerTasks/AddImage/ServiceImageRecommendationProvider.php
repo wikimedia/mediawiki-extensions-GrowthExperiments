@@ -6,6 +6,7 @@ use File;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IBufferingStatsdDataFactory;
+use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Title\TitleFactory;
@@ -82,8 +83,10 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			// These errors might show up to the end user, but provide no useful information;
 			// they are merely there to support debugging. So we keep them English-only to
 			// to reduce the translator burden.
-			return StatusValue::newFatal( 'rawmessage',
-				'Recommendation could not be loaded for non-existing page: ' . $titleTextSafe );
+			return StatusValue::newFatal( new RawMessage(
+				'Recommendation could not be loaded for non-existing page: $1',
+				[ $titleTextSafe ]
+			) );
 		}
 
 		$request = $this->apiHandler->getApiRequest( $title, $taskType );
@@ -108,15 +111,14 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 		if ( $data === null ) {
 			$errorMessage = __METHOD__ . ': Unable to decode JSON response for page {title}: {response}';
-			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorMessage, [
-				'title' => $titleTextSafe,
-				'response' => $response
-			] );
-			return StatusValue::newFatal( 'rawmessage', $errorMessage );
+			$errorContext = [ 'title' => $titleTextSafe, 'response' => $response ];
+			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorMessage, $errorContext );
+			return StatusValue::newFatal( new RawMessage( $errorMessage, $errorContext ) );
 		} elseif ( $request->getStatus() >= 400 ) {
-			return StatusValue::newFatal( 'rawmessage',
-				'API returned HTTP code ' . $request->getStatus() . ' for page '
-				. $titleTextSafe . ': ' . ( strip_tags( $data['detail'] ?? '(no reason given)' ) ) );
+			return StatusValue::newFatal( new RawMessage(
+				'API returned HTTP code $1 for page $2: $3',
+				[ $request->getStatus(), $titleTextSafe, strip_tags( $data['detail'] ?? '(no reason given)' ) ]
+			) );
 		}
 
 		$startTime = microtime( true );
@@ -164,8 +166,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	) {
 		$titleTextSafe = strip_tags( $titleText );
 		if ( count( $suggestionData ) === 0 ) {
-			return StatusValue::newFatal( 'rawmessage',
-				'No recommendation found for page: ' . $titleTextSafe );
+			return StatusValue::newFatal( new RawMessage(
+				'No recommendation found for page: $1', [ $titleTextSafe ] ) );
 		}
 		$images = [];
 		$datasetId = '';
@@ -257,11 +259,10 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	): bool {
 		$res = $imageWidth >= $minimumWidth;
 		if ( !$res ) {
-			$status->error(
-				'rawmessage',
-				"Invalid file $filename in article $pageTitleText. " .
-				"Filtered because not wide enough: $imageWidth (minimum $minimumWidth)"
-			);
+			$status->error( new RawMessage(
+				'Invalid file $1 in article $2. Filtered because not wide enough: $3 (minimum $4)',
+				[ $filename, $pageTitleText, $imageWidth, $minimumWidth ]
+			) );
 		}
 		return $res;
 	}
@@ -284,11 +285,10 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$res = in_array( $mediaType, $validMediaTypes );
 		if ( !$res ) {
 			$validMediaTypesText = implode( ', ', $validMediaTypes );
-			$status->error(
-				'rawmessage',
-				"Invalid file $filename in article $pageTitleText. " .
-				"Filtered because $mediaType is not valid mime type ( $validMediaTypesText )"
-			);
+			$status->error( new RawMessage(
+				'Invalid file $1 in article $2. Filtered because $3 is not valid mime type ($4)',
+				[ $filename, $pageTitleText, $mediaType, $validMediaTypesText ]
+			) );
 		}
 		return $res;
 	}
