@@ -162,7 +162,7 @@ class WelcomeSurveyHooks implements
 			// maybe the user filled out or dismissed the survey in another tab, don't show then
 			&& $this->welcomeSurveyFactory->newWelcomeSurvey( $out->getContext() )->isUnfinished()
 			&& (
-				// Check if we are post-edit, somewhat relying on EditPage internals.
+				// Check if we are post-edit, somewhat relying on \MediaWiki\EditPage\EditPage internals.
 				// There isn't a good way to do that; between trying to check the dynamically named
 				// postedit cookie and looking for the JS variable Article::show() sets based on
 				// that cookie, this is the less painful one.
