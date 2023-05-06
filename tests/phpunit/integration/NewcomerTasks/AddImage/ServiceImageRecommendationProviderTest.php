@@ -379,7 +379,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
-			$this->formatOldApiResponse( $data ),
+			$this->formatOldApiResponse( $data, $taskType ),
 			$mockMetadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class ),
 			$taskType->getSuggestionFilters()
@@ -430,7 +430,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
-			$this->formatOldApiResponse( $data ),
+			$this->formatOldApiResponse( $data, $taskType ),
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class ),
 			$taskType->getSuggestionFilters()
@@ -466,7 +466,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			new TitleValue( 0, $titleText ),
 			$titleText,
-			$this->formatOldApiResponse( $data ),
+			$this->formatOldApiResponse( $data, $taskType ),
 			$metadataProvider,
 			$submissionHandler,
 			$taskType->getSuggestionFilters()
@@ -680,7 +680,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		return $factory;
 	}
 
-	private function formatOldApiResponse( array $data ) {
+	private function formatOldApiResponse( array $data, TaskType $taskType ): array {
 		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->createNoOpMock( HttpRequestFactory::class ),
 			'https://example.com',
@@ -690,7 +690,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			null,
 			false
 		);
-		return $apiHandler->getSuggestionDataFromApiResponse( $data );
+		return $apiHandler->getSuggestionDataFromApiResponse( $data, $taskType );
 	}
 
 }

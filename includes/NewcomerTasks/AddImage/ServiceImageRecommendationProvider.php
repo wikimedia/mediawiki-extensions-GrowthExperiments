@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use File;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Language\RawMessage;
@@ -74,8 +75,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 	/** @inheritDoc */
 	public function get( LinkTarget $title, TaskType $taskType ) {
-		'@phan-var ImageRecommendationTaskType $taskType';
-		Assert::parameterType( ImageRecommendationTaskType::class, $taskType, '$taskType' );
+		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+		$allowedTaskTypes = [ ImageRecommendationTaskType::class, SectionImageRecommendationTaskType::class ];
+		Assert::parameterType( $allowedTaskTypes, $taskType, '$taskType' );
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$titleText = $title->getPrefixedDBkey();
 		$titleTextSafe = strip_tags( $titleText );
@@ -125,7 +127,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$responseData = self::processApiResponseData(
 			$title,
 			$titleText,
-			$this->apiHandler->getSuggestionDataFromApiResponse( $data ),
+			$this->apiHandler->getSuggestionDataFromApiResponse( $data, $taskType ),
 			$this->metadataProvider,
 			$this->imageSubmissionHandler,
 			$taskType->getSuggestionFilters(),
@@ -190,7 +192,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 			if ( is_array( $fileMetadata ) ) {
 				$imageWidth = $fileMetadata['originalWidth'] ?: 0;
-				$minWidth = $suggestionFilters['minimumSize']['width'];
+				$minWidth = $suggestionFilters['minimumSize']['width'] ?? 0;
 				$validMediaTypes = $suggestionFilters['validMediaTypes'];
 				if (
 					self::hasMinimumWidth( $minWidth, $imageWidth, $filename, $titleTextSafe, $status ) &&

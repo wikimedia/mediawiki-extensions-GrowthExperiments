@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
 use MWHttpRequest;
@@ -41,7 +43,15 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 	private const KIND_TO_SOURCE = [
 		'istype-lead-image' => ImageRecommendationImage::SOURCE_WIKIPEDIA,
 		'istype-wikidata-image' => ImageRecommendationImage::SOURCE_WIKIDATA,
-		'istype-commons-category' => ImageRecommendationImage::SOURCE_COMMONS
+		'istype-commons-category' => ImageRecommendationImage::SOURCE_COMMONS,
+		'istype-section-topics-p18' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
+	];
+
+	private const KIND_TO_TASK_TYPE_ID = [
+		'istype-lead-image' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+		'istype-wikidata-image' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+		'istype-commons-category' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+		'istype-section-topics-p18' => SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
 	];
 
 	/**
@@ -97,23 +107,8 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		] );
 	}
 
-	/**
-	 * Get the value of the source field based on "kind" field in the API response
-	 *
-	 * @param array $kind
-	 * @return string
-	 */
-	private function getSourceFromKind( array $kind ): string {
-		foreach ( $kind as $key ) {
-			if ( array_key_exists( $key, self::KIND_TO_SOURCE ) ) {
-				return self::KIND_TO_SOURCE[ $key ];
-			}
-		}
-		return '';
-	}
-
 	/** @inheritDoc */
-	public function getSuggestionDataFromApiResponse( array $apiResponse ): array {
+	public function getSuggestionDataFromApiResponse( array $apiResponse, TaskType $taskType ): array {
 		if ( !$apiResponse['rows'] ) {
 			return [];
 		}
@@ -129,9 +124,20 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 				break;
 			}
 
+			$kind = null;
+			foreach ( $suggestion['kind'] as $potentialKind ) {
+				if ( self::KIND_TO_TASK_TYPE_ID[$potentialKind] === $taskType->getId() ) {
+					$kind = $potentialKind;
+					break;
+				}
+			}
+			if ( !$kind ) {
+				continue;
+			}
+
 			$imageData[] = new ImageRecommendationData(
 				$suggestion['image'],
-				$this->getSourceFromKind( $suggestion['kind'] ),
+				self::KIND_TO_SOURCE[ $kind ],
 				implode( ',', $suggestion['found_on'] ?? [] ),
 				$suggestion['id']
 			);

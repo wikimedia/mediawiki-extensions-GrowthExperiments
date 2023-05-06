@@ -4,6 +4,8 @@ namespace GrowthExperiments\Tests\NewcomerTasks\AddImage;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use GrowthExperiments\NewcomerTasks\AddImage\ProductionImageRecommendationApiHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWikiUnitTestCase;
 use Wikimedia\UUID\GlobalIdGenerator;
@@ -19,6 +21,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 	 * @param array $expectedResult
 	 */
 	public function testGetSuggestionDataFromApiResponse( array $apiResponse, array $expectedResult ) {
+		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$globalIdGenerator = $this->createMock( GlobalIdGenerator::class );
 		$globalIdGenerator->method( 'getTimestampFromUUIDv1' )->willReturnCallback(
 			static function ( $id ) {
@@ -34,7 +37,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 		);
 		$this->assertArrayEquals(
 			$expectedResult,
-			$apiHandler->getSuggestionDataFromApiResponse( $apiResponse )
+			$apiHandler->getSuggestionDataFromApiResponse( $apiResponse, $taskType )
 		);
 	}
 
@@ -260,14 +263,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'page_rev' => 17463093
 					],
 				]
-				], [
-					new ImageRecommendationData(
-						'Image1.png', null, null, '1'
-					),
-					new ImageRecommendationData(
-						null, null, null, '1'
-					)
-				]
+				], []
 			],
 			'multiple kinds' => [
 				[ 'rows' => [ [

@@ -6,9 +6,11 @@ use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use Maintenance;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
+use Status;
 use StatusValue;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -32,6 +34,10 @@ class GetImageSuggestionData extends Maintenance {
 			'title',
 			'The page title to use in fetching image suggestion data.',
 			true
+		);
+		$this->addOption(
+			'section-level',
+			'Get section-level suggestions instead of top-level suggestions.'
 		);
 		$this->addOption(
 			'max-suggestions',
@@ -65,14 +71,18 @@ class GetImageSuggestionData extends Maintenance {
 			$this->fatalError( 'max-suggestions needs to be > 1' );
 		}
 		$serviceImageRecommendationProvider->setMaxSuggestionsToProcess( $maxSuggestions );
-		$taskType = $growthServices->getNewcomerTasksConfigurationLoader()
-			->getTaskTypes()[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID];
-		$result = $serviceImageRecommendationProvider->get( $title, $taskType );
-		$data = $result instanceof StatusValue ? $result->getErrors() : $result;
-		$jsonData = FormatJson::encode( $data, true );
-		if ( $result instanceof StatusValue ) {
-			$this->fatalError( $jsonData );
+		if ( $this->hasOption( 'section-level' ) ) {
+			$taskType = $growthServices->getNewcomerTasksConfigurationLoader()
+				->getTaskTypes()[ SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
+			$taskType = $growthServices->getNewcomerTasksConfigurationLoader()
+				->getTaskTypes()[ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
+		}
+		$result = $serviceImageRecommendationProvider->get( $title, $taskType );
+		if ( $result instanceof StatusValue ) {
+			$this->fatalError( Status::wrap( $result )->getWikiText( false, false, 'en' ) );
+		} else {
+			$jsonData = FormatJson::encode( $result, true );
 			$this->output( $jsonData . PHP_EOL );
 		}
 	}

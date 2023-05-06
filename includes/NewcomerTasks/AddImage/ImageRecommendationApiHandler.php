@@ -25,7 +25,8 @@ interface ImageRecommendationApiHandler {
 	 * Get an array of suggestion data from response returned by the API
 	 *
 	 * @param array $apiResponse
+	 * @param TaskType $taskType
 	 * @return ImageRecommendationData[]
 	 */
-	public function getSuggestionDataFromApiResponse( array $apiResponse ): array;
+	public function getSuggestionDataFromApiResponse( array $apiResponse, TaskType $taskType ): array;
 }

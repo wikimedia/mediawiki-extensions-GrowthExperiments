@@ -64,7 +64,6 @@ use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdate
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddSectionImage\AddSectionImageSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\AddSectionImage\ServiceSectionImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -632,11 +631,6 @@ return [
 			$services->getLinkBatchFactory(),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
 		);
-	},
-
-	'GrowthExperimentsSectionImageRecommendationProvider' => static function (): ImageRecommendationProvider {
-		// TODO integrate with API and instrumentation
-		return new ServiceSectionImageRecommendationProvider();
 	},
 
 	'GrowthExperimentsLinkRecommendationFilter' => static function (

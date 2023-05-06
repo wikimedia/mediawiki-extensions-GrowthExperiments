@@ -4,6 +4,8 @@ namespace GrowthExperiments\Tests\NewcomerTasks\AddImage;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use GrowthExperiments\NewcomerTasks\AddImage\MvpImageRecommendationApiHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWikiUnitTestCase;
 
@@ -18,6 +20,7 @@ class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 	 * @param array $expectedResult
 	 */
 	public function testGetSuggestionDataFromApiResponse( array $apiResponse, array $expectedResult ) {
+		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->createMock( HttpRequestFactory::class ),
 			'https://example.com',
@@ -29,7 +32,7 @@ class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 		);
 		$this->assertArrayEquals(
 			$expectedResult,
-			$apiHandler->getSuggestionDataFromApiResponse( $apiResponse )
+			$apiHandler->getSuggestionDataFromApiResponse( $apiResponse, $taskType )
 		);
 	}
 
