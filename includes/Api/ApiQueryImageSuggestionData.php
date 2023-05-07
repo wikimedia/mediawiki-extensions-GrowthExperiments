@@ -5,14 +5,20 @@ namespace GrowthExperiments\Api;
 use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
+use ApiResult;
 use Config;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendation;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
+use IApiMessage;
 use MediaWiki\Title\TitleFactory;
+use StatusValue;
 use Title;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * Query module to support fetching image metadata from the Image Suggestion API.
@@ -61,18 +67,18 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		if ( $user->pingLimiter( 'growthexperiments-apiqueryimagesuggestiondata' ) ) {
 			$this->dieWithError( 'apierror-ratelimited' );
 		}
+		$params = $this->extractRequestParams();
 		$enabledTaskTypes = $this->configurationLoader->getTaskTypes();
-		$imageRecommendationTaskType = $enabledTaskTypes[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
-		if ( !$imageRecommendationTaskType instanceof ImageRecommendationTaskType ) {
+		$taskType = $enabledTaskTypes[$params['tasktype']] ?? null;
+		if ( !$taskType instanceof ImageRecommendationTaskType
+			&& !$taskType instanceof SectionImageRecommendationTaskType
+		) {
 			// We could improve on this message with something more specific to this
 			// scenario, but probably not worth it for the additional work required
 			// of translators
-			$this->dieWithError( [
-				'growthexperiments-newcomertasks-invalid-tasktype', ImageRecommendationTaskTypeHandler::TASK_TYPE_ID
-			] );
+			$this->dieWithError( [ 'growthexperiments-newcomertasks-invalid-tasktype', $params['tasktype'] ] );
 		}
 		$continueTitle = null;
-		$params = $this->extractRequestParams();
 		if ( $params['continue'] !== null ) {
 			$continue = $this->parseContinueParamOrDie( $params['continue'], [ 'int', 'string' ] );
 			$continueTitle = $this->titleFactory->makeTitleSafe( $continue[0], $continue[1] );
@@ -80,8 +86,10 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		}
 		$pageSet = $this->getPageSet();
 		// Allow non-existing pages in developer setup, to facilitate local development/testing.
-		$pages = $this->config->get( 'GEDeveloperSetup' ) ? $pageSet->getPages() : $pageSet->getGoodPages();
-		foreach ( $pages as $pageIdentity ) {
+		$pages = $this->config->get( 'GEDeveloperSetup' )
+			? $pageSet->getGoodAndMissingPages()
+			: $pageSet->getGoodPages();
+		foreach ( $pages as $pageApiId => $pageIdentity ) {
 			if ( $continueTitle && !$continueTitle->equals( $pageIdentity ) ) {
 				continue;
 			}
@@ -91,19 +99,27 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 			}
 			$metadata = $this->imageRecommendationProvider->get(
 				$title,
-				$imageRecommendationTaskType
+				$taskType
 			);
+			$fit = null;
 			if ( $metadata instanceof ImageRecommendation ) {
 				$fit = $this->addPageSubItem(
-					$pageIdentity->getId(), $metadata->toArray(), 'growthimagesuggestiondata'
+					$pageApiId,
+					$metadata->toArray()
 				);
-				if ( !$fit ) {
-					$this->setContinueEnumParameter(
-						'continue',
-						$title->getNamespace() . '|' . $title->getText()
-					);
-					break;
-				}
+			} elseif ( !$this->hasErrorCode( $metadata, 'growthexperiments-no-recommendation-found' ) ) {
+				// like ApiQueryBase::addPageSubItems but we want to use a different path
+				$errorArray = $this->getErrorFormatter()->arrayFromStatus( $metadata );
+				$path = [ 'query', 'pages', $pageApiId ];
+				ApiResult::setIndexedTagName( $errorArray, 'growthimagesuggestiondataerrors' );
+				$fit = $this->getResult()->addValue( $path, 'growthimagesuggestiondataerrors', $errorArray );
+			}
+			if ( $fit === false ) {
+				$this->setContinueEnumParameter(
+					'continue',
+					$title->getNamespace() . '|' . $title->getText()
+				);
+				break;
 			}
 		}
 	}
@@ -111,10 +127,30 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 	/** @inheritDoc */
 	public function getAllowedParams() {
 		return [
+			'tasktype' => [
+				ParamValidator::PARAM_TYPE => [
+					// Do not filter out non-existing task-types: during API structure tests
+					// none of the task types exist and an empty list would cause test failures.
+					ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+					SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+				],
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_DEFAULT => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+			],
 			'continue' => [
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
-			]
+			],
 		];
+	}
+
+	private function hasErrorCode( StatusValue $status, string $errorCode ): bool {
+		foreach ( $status->getErrors() as $error ) {
+			$message = $error['message'];
+			if ( $message instanceof IApiMessage && $message->getApiCode() === $errorCode ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

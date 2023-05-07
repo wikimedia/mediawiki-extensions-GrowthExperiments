@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
+use ApiRawMessage;
 use File;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
@@ -123,11 +124,16 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			) );
 		}
 
+		$imageRecommendationDatas = $this->apiHandler->getSuggestionDataFromApiResponse( $data, $taskType );
+		if ( $imageRecommendationDatas instanceof StatusValue ) {
+			return $imageRecommendationDatas;
+		}
+
 		$startTime = microtime( true );
 		$responseData = self::processApiResponseData(
 			$title,
 			$titleText,
-			$this->apiHandler->getSuggestionDataFromApiResponse( $data, $taskType ),
+			$imageRecommendationDatas,
 			$this->metadataProvider,
 			$this->imageSubmissionHandler,
 			$taskType->getSuggestionFilters(),
@@ -168,8 +174,10 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	) {
 		$titleTextSafe = strip_tags( $titleText );
 		if ( count( $suggestionData ) === 0 ) {
-			return StatusValue::newFatal( new RawMessage(
-				'No recommendation found for page: $1', [ $titleTextSafe ] ) );
+			return StatusValue::newFatal( new ApiRawMessage(
+				[ 'No recommendation found for page: $1', $titleTextSafe ],
+				'growthexperiments-no-recommendation-found'
+			) );
 		}
 		$images = [];
 		$datasetId = '';

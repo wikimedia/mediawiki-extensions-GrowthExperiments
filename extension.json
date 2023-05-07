@@ -2665,15 +2665,19 @@
 			"value": true
 		},
 		"GEImageRecommendationApiHandler": {
-			"description": "Corresponding API handler to use for the image recommendation service (set via GEImageRecommendationServiceUrl); either 'mvp' or 'production'",
+			"description": "Corresponding API handler to use for the (top-level and section-level) image recommendations; can be 'production' (ProductionImageRecommendationApiHandler), 'mvp' (MvpImageRecommendationApiHandler) or 'actionapi' (ActionApiImageRecommendationApiHandler). See these classes for more information.",
 			"value": "mvp"
 		},
 		"GEImageRecommendationServiceWikiIdMasquerade": {
 			"description": "The wiki ID to use in requests to the image recommendation service. Used for developer setups.",
 			"value": null
 		},
+		"GEImageRecommendationServiceAccessToken": {
+			"description": "Personal access token from the wiki GEImageRecommendationServiceUrl points to. For developer setups using the 'actionapi' handler only.",
+			"value": null
+		},
 		"GELinkRecommendationServiceUrl": {
-			"description": "Root URL of the link recommendation service.",
+			"description": "Root URL of the link recommendation service. When using the 'actionapi' handler, this should point to api.php.",
 			"value": false
 		},
 		"GELinkRecommendationServiceAccessToken": {

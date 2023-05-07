@@ -14,6 +14,7 @@
 	"apihelp-growthsetmentor-param-mentor": "{{doc-apihelp-param|growthsetmentor|mentor}}",
 	"apihelp-growthsetmentor-param-reason": "{{doc-apihelp-param|growthsetmentor|reason}}",
 	"apihelp-query+growthimagesuggestiondata-summary": "{{doc-apihelp-param|growthimagesuggestiondata}}",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "{{doc-apihelp-param|growthimagesuggestiondata|tasktype}}",
 	"apihelp-growthinvalidateimagerecommendation-summary": "{{doc-apihelp-summary|growthinvalidateimagerecommendation}}",
 	"apihelp-growthinvalidateimagerecommendation-extended-description": "{{doc-apihelp-extended-description|growthimagesuggestiondata}}",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "{{doc-apihelp-param|growthinvalidateimagerecommendation|title}}",

@@ -38,6 +38,7 @@ use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\NewcomerTasks\AddImage\ActionApiImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\CacheBackedImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
@@ -89,6 +90,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
@@ -252,27 +254,36 @@ return [
 	): ImageRecommendationApiHandler {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$config = $growthServices->getGrowthConfig();
-		if ( $config->get( 'GEImageRecommendationApiHandler' ) === 'production' ) {
+		$apiHandlerType = $config->get( 'GEImageRecommendationApiHandler' );
+		if ( $apiHandlerType === 'production' ) {
 			return new ProductionImageRecommendationApiHandler(
 				$services->getHttpRequestFactory(),
 				$config->get( 'GEImageRecommendationServiceUrl' ),
 				$config->get( 'GEImageRecommendationServiceWikiIdMasquerade' ) ??
-				WikiMap::getCurrentWikiId(),
-					$services->getGlobalIdGenerator(),
+					WikiMap::getCurrentWikiId(),
+				$services->getGlobalIdGenerator(),
 				null,
 				$config->get( 'GEImageRecommendationServiceUseTitles' ),
 				!$config->get( 'GEDeveloperSetup' )
 			);
+		} elseif ( $apiHandlerType === 'mvp' ) {
+			return new MvpImageRecommendationApiHandler(
+				$services->getHttpRequestFactory(),
+				$config->get( 'GEImageRecommendationServiceUrl' ),
+				'wikipedia',
+				$services->getContentLanguage()->getCode(),
+				$config->get( 'GEImageRecommendationServiceHttpProxy' ),
+				null,
+				$config->get( 'GEImageRecommendationServiceUseTitles' ) );
+		} elseif ( $apiHandlerType === 'actionapi' ) {
+			return new ActionApiImageRecommendationApiHandler(
+				$services->getHttpRequestFactory(),
+				$config->get( 'GEImageRecommendationServiceUrl' ),
+				$config->get( 'GEImageRecommendationServiceAccessToken' )
+			);
+		} else {
+			throw new DomainException( 'Invalid GEImageRecommendationApiHandler value: ' );
 		}
-		return new MvpImageRecommendationApiHandler(
-			$services->getHttpRequestFactory(),
-			$config->get( 'GEImageRecommendationServiceUrl' ),
-			'wikipedia',
-			$services->getContentLanguage()->getCode(),
-			$config->get( 'GEImageRecommendationServiceHttpProxy' ),
-			null,
-			$config->get( 'GEImageRecommendationServiceUseTitles' )
-		);
 	},
 
 	'GrowthExperimentsLinkRecommendationHelper' => static function (
@@ -592,6 +603,9 @@ return [
 		}
 		if ( !$config->get( 'GENewcomerTasksImageRecommendationsEnabled' ) ) {
 			$configurationLoader->disableTaskType( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID );
+		}
+		if ( !$config->get( 'GENewcomerTasksSectionImageRecommendationsEnabled' ) ) {
+			$configurationLoader->disableTaskType( SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID );
 		}
 
 		$configurationLoader->setCampaignConfigCallback( static function () use ( $growthServices ) {
