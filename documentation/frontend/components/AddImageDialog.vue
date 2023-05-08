@@ -6,7 +6,6 @@
 		:total-steps="4"
 		:initial-step="1"
 		class="ext-growthExperiments-AddImageDialog"
-		:show-paginator="true"
 		@close="$emit( 'close', $event )"
 	>
 		<template #title>

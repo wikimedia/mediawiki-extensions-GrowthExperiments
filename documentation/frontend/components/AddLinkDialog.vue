@@ -6,7 +6,6 @@
 		:total-steps="3"
 		:initial-step="1"
 		class="ext-growthExperiments-AddLinkDialog"
-		:show-paginator="true"
 		:is-rtl="isRtl"
 		@close="$emit( 'close', $event )"
 	>

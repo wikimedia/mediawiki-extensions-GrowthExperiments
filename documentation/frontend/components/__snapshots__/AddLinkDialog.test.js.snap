@@ -28,8 +28,8 @@ exports[`AddLinkDialog > should render 3 step with Add a link on-boarding conten
             </div>
             <p>1 of 3</p>
           </div>
-          <div class=\\"ext-growthExperiments-OnboardingDialog__content__transition\\">
-            <transition-stub name=\\"right\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+          <div class=\\"ext-growthExperiments-MultiPane\\">
+            <transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
               <div>
                 <!-- eslint-disable max-len -->
                 <div role=\\"img\\" aria-label=\\"Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text.\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--1\\">
@@ -99,8 +99,8 @@ exports[`AddLinkDialog > should render second step with Add a link on-boarding c
             </div>
             <p>2 of 3</p>
           </div>
-          <div class=\\"ext-growthExperiments-OnboardingDialog__content__transition\\">
-            <transition-stub name=\\"right\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+          <div class=\\"ext-growthExperiments-MultiPane\\">
+            <transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
               <div>
                 <!-- eslint-disable max-len -->
                 <div role=\\"img\\" aria-label=\\"Illustration of the moon article, next to the article there's a robot representing a machine suggestion - asking if a word on the Moon article should be linked to the Cheese article.\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--2\\">
@@ -169,8 +169,8 @@ exports[`AddLinkDialog > should render third step with Add a link on-boarding co
             </div>
             <p>3 of 3</p>
           </div>
-          <div class=\\"ext-growthExperiments-OnboardingDialog__content__transition\\">
-            <transition-stub name=\\"right\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+          <div class=\\"ext-growthExperiments-MultiPane\\">
+            <transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
               <div>
                 <!-- eslint-disable max-len -->
                 <div role=\\"img\\" aria-label=\\"Illustration of an article sentence showing link suggestions for two different words. Next to the suggestion there's a blue check icon and a red cross icon for the options to accept or reject the suggestion.\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--3\\">

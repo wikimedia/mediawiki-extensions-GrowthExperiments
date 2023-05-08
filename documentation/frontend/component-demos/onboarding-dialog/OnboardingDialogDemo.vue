@@ -107,7 +107,6 @@ export default {
 		OnboardingDialog
 	},
 	setup() {
-
 		const open = ref( false );
 		const isDontShowAgainChecked = ref( false );
 		const readingDirection = ref( 'ltr' );

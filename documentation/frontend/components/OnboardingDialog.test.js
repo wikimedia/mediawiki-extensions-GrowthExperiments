@@ -79,19 +79,6 @@ describe( 'Onboarding dialog', () => {
 		expect( wrapper.text() ).not.to.contain( '1 of 3' );
 	} );
 
-	it( 'should display paginator based on "showPaginator" prop state', () => {
-		const wrapper = renderComponent(
-			{ initialStep: 1, open: true, totalSteps: 3 },
-			steps
-		);
-		expect( wrapper.text() ).not.to.contain( '1 of 3' );
-
-		wrapper.setProps( { showPaginator: true } ).then( () => {
-			expect( wrapper.text() ).toContain( '1 of 3' );
-
-		} );
-	} );
-
 	it( 'should render the first step as informed in initialStep prop', () => {
 		const wrapper = renderComponent(
 			{ initialStep: 3, open: true, showPaginator: true, totalSteps: 3 },

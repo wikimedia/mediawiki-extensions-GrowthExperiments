@@ -8,9 +8,7 @@
 		@update:open="( newVal ) => onDialogOpenUpdate( newVal )"
 	>
 		<template #header>
-			<div
-				class="ext-growthExperiments-OnboardingDialog__header"
-			>
+			<div class="ext-growthExperiments-OnboardingDialog__header">
 				<!-- Slot for dialog title -->
 				<h4 class="ext-growthExperiments-OnboardingDialog__header__title">
 					<slot name="title"></slot>
@@ -33,33 +31,27 @@
 		<div class="ext-growthExperiments-OnboardingDialog__content">
 			<!-- Dialog paginator indicate current steps and total steps. -->
 			<onboarding-paginator
-				v-if="showPaginator && totalSteps > 1 && hasSteps"
+				v-if="hasSteps"
+				v-model:current-step="currentStep"
 				class="ext-growthExperiments-OnboardingDialog__content__paginator"
 				:total-steps="totalSteps"
-				:current-step="currentStep"
 			></onboarding-paginator>
-
-			<div
+			<multi-pane
 				v-if="hasSteps"
-				class="ext-growthExperiments-OnboardingDialog__content__transition"
-				@touchstart="onTouchStart"
-				@touchmove="onTouchMove">
-				<transition :name="transitionName">
-					<!-- Slot for the dialog steps.
-						Content for each step can be provided by using the named slots:
-						#step1, #step2, #step3, etc..
-						-->
-					<slot :name="currentSlotName"></slot>
-				</transition>
-			</div>
-
+				ref="multiPaneRef"
+				v-model:current-step="currentStep"
+				:total-steps="totalSteps"
+				:is-rtl="isRtl"
+				@update:current-step="( newVal ) => currentStep = newVal"
+			>
+				<slot :name="currentSlotName"></slot>
+			</multi-pane>
 			<!-- Default slot to provide content to dialog body
 				if no step slot is provided.
 				-->
 			<slot v-else></slot>
 		</div>
 
-		<!-- Dialog Footer -->
 		<template #footer>
 			<div class="ext-growthExperiments-OnboardingDialog__footer">
 				<div class="ext-growthExperiments-OnboardingDialog__footer__actions">
@@ -77,8 +69,7 @@
 							v-model="wrappedIsChecked"
 							@update:model-value="newVal => wrappedIsChecked = newVal"
 						>
-							<slot name="checkbox">
-							</slot>
+							<slot name="checkbox"></slot>
 						</cdx-checkbox>
 					</div>
 					<!-- All the following steps display an Icon only button to navigate
@@ -134,6 +125,7 @@ import { ref, computed, toRef, watch } from 'vue';
 import { CdxDialog, CdxButton, CdxIcon, CdxCheckbox, useModelWrapper } from '@wikimedia/codex';
 import { cdxIconNext, cdxIconPrevious } from '@wikimedia/codex-icons';
 import OnboardingPaginator from './OnboardingPaginator.vue';
+import MultiPane from './MultiPane.vue';
 
 /**
  * @name OnboardingDialog
@@ -160,18 +152,10 @@ export default {
 		CdxButton,
 		CdxIcon,
 		CdxCheckbox,
+		MultiPane,
 		OnboardingPaginator
 	},
 	props: {
-
-		/**
-		 * The total number of steps
-		 */
-		totalSteps: {
-			type: Number,
-			default: 0
-		},
-
 		/**
 		 * The first step to show when the dialog is open
 		 */
@@ -179,21 +163,18 @@ export default {
 			type: Number,
 			default: 1
 		},
-
+		/**
+		 * The initial value to use for the optional checkbox model. Should be
+		 * provided via a v-model:is-checked binding in the parent scope.
+		 */
+		isChecked: {
+			type: Boolean,
+			default: false
+		},
 		isRtl: {
 			type: Boolean,
 			default: false
 		},
-
-		/**
-		 * Control whether to display or hide the paginator at the top of
-		 * the dialog content when more than one step content is provided
-		 */
-		showPaginator: {
-			type: Boolean,
-			default: false
-		},
-
 		/**
 		 * Whether the dialog is visible. Should be provided via a v-model:open
 		 * binding in the parent scope.
@@ -202,20 +183,16 @@ export default {
 			type: Boolean,
 			default: false
 		},
-
 		/**
-		 * The initial value to use for the optional checkbox model. Should be
-		 * provided via a v-model:is-checked binding in the parent scope.
+		 * The total number of steps
 		 */
-		isChecked: {
-			type: Boolean,
-			default: false
+		totalSteps: {
+			type: Number,
+			default: 0
 		}
-
 	},
 	emits: [ 'update:open', 'update:is-checked', 'update:currentStep', 'close' ],
 	setup( props, { emit, slots } ) {
-
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
 		const currentStep = ref( props.initialStep );
@@ -223,13 +200,17 @@ export default {
 		const closeSource = ref( undefined );
 		const currentSlotName = computed( () => `step${currentStep.value}` );
 		const hasSteps = computed( () => !!slots.step1 );
-		const transitionName = ref( props.isRtl ? 'left' : 'right' );
-		const initialX = ref( null );
-		const initialY = ref( null );
+		const multiPaneRef = ref( null );
 
 		watch( wrappedOpen, () => {
 			if ( wrappedOpen.value === false ) {
 				onClose();
+			}
+		} );
+
+		watch( currentStep, () => {
+			if ( greaterStepShown.value < props.totalSteps ) {
+				greaterStepShown.value++;
 			}
 		} );
 
@@ -253,27 +234,12 @@ export default {
 			wrappedIsChecked.value = false;
 		}
 
-		function navigateNext() {
-			if ( currentStep.value < props.totalSteps ) {
-				currentStep.value++;
-				transitionName.value = props.isRtl ? 'left' : 'right';
-				emit( 'update:currentStep', currentStep.value );
-			}
-			if ( greaterStepShown.value < props.totalSteps ) {
-				greaterStepShown.value++;
-			}
+		function onPrevClick() {
+			multiPaneRef.value.navigatePrev();
 		}
-
-		function navigatePrev() {
-			if ( currentStep.value > 1 ) {
-				currentStep.value--;
-				transitionName.value = props.isRtl ? 'right' : 'left';
-				emit( 'update:currentStep', currentStep.value );
-			}
+		function onNextClick() {
+			multiPaneRef.value.navigateNext();
 		}
-
-		const onNextClick = () => navigateNext();
-		const onPrevClick = () => navigatePrev();
 
 		function onHeaderBtnClick() {
 			closeSource.value = 'quiet';
@@ -285,152 +251,76 @@ export default {
 			emit( 'update:open', false );
 		}
 
-		function onTouchStart( e ) {
-			const touchEvent = e.touches.item( 0 );
-			initialX.value = touchEvent.clientX;
-			initialY.value = touchEvent.clientY;
-		}
-
-		const isSwipeToLeft = ( touchEvent ) => {
-			const newX = touchEvent.clientX;
-			return initialX.value > newX;
-		};
-		const onSwipeToRight = () => {
-			if ( props.isRtl ) {
-				navigateNext();
-			} else {
-				navigatePrev();
-			}
-		};
-		const onSwipeToLeft = () => {
-			if ( props.isRtl ) {
-				navigatePrev();
-			} else {
-				navigateNext();
-			}
-		};
-
-		function onTouchMove( e ) {
-			if ( !initialX.value || !initialY.value ) {
-				return;
-			}
-			if ( isSwipeToLeft( e.touches.item( 0 ) ) ) {
-				onSwipeToLeft();
-			} else {
-				onSwipeToRight();
-			}
-			initialX.value = null;
-			initialY.value = null;
-		}
-
 		return {
 			cdxIconNext,
 			cdxIconPrevious,
 			currentSlotName,
 			currentStep,
 			hasSteps,
+			multiPaneRef,
 			onDialogOpenUpdate,
 			onHeaderBtnClick,
 			onNextClick,
 			onPrevClick,
-			transitionName,
 			onLastStepBtnClick,
 			wrappedOpen,
-			wrappedIsChecked,
-			onTouchStart,
-			onTouchMove
+			wrappedIsChecked
 		};
 	}
 };
 </script>
 
 <style lang="less">
-	@import '../node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.less';
-	@import './variables.less';
+@import '../node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.less';
+@import './variables.less';
 
-	.ext-growthExperiments-OnboardingDialog {
-		position: relative;
-		// stylelint-disable-next-line selector-class-pattern
-		.cdx-dialog__body {
-			// REVIEW Overwrite CdxDialog overflow-x to avoid
-			// showing the horizontal scroll bar during transitions
-			overflow-x: hidden;
-		}
+.ext-growthExperiments-OnboardingDialog {
+	position: relative;
+	// stylelint-disable-next-line selector-class-pattern
+	.cdx-dialog__body {
+		// REVIEW Overwrite CdxDialog overflow-x to avoid
+		// showing the horizontal scroll bar during transitions
+		overflow-x: hidden;
+	}
 
-		&__header {
-			display: flex;
-			justify-content: space-between;
-			padding-top: @spacing-25;
-			padding-inline-start: @spacing-100;
-			// This is the background color for the AddlinkDialog Images
-			// and should be replaced as discussed on with a DS background color
-			// See https://phabricator.wikimedia.org/T332567
-			background-color: @onboardingBackgroundColor;
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		padding-top: @spacing-25;
+		padding-inline-start: @spacing-100;
+		// This is the background color for the AddlinkDialog Images
+		// and should be replaced as discussed on with a DS background color
+		// See https://phabricator.wikimedia.org/T332567
+		background-color: @onboardingBackgroundColor;
 
-			&__title {
-				font-size: @font-size-medium;
-				line-height: 2.72em;
-				font-weight: @font-weight-bold;
-			}
-		}
-
-		&__content {
-			&__paginator {
-				// REVIEW Set top to 48px to adjust paginator position
-				// to compensate the gutter between dialog's header and body.
-				// This gutter is generated by Cdx-dialog gap value of 32px
-				top: 48px;
-				position: absolute;
-				z-index: @z-index-top;
-			}
-
-			&__transition {
-				// REVIEW Position the transition steps relative to their wrapper element
-				// to display the transition correctly
-				position: relative;
-				// stylelint-disable selector-class-pattern
-				.right-enter-active,
-				.right-leave-active,
-				.left-enter-active,
-				.left-leave-active {
-					transition: all 500ms @animation-timing-function-base;
-				}
-
-				.right-enter-from {
-					transform: translateX( @size-full );
-				}
-
-				.right-leave-to {
-					transform: translateX( -@size-full );
-				}
-
-				.left-leave-to {
-					transform: translateX( @size-full );
-				}
-
-				.left-enter-from {
-					transform: translateX( -@size-full );
-				}
-
-				.right-leave-active,
-				.left-leave-active {
-					// REVIEW To correctly display the transition it is necesary
-					// to position absolute each step relative to their wrapper element
-					position: absolute;
-				}
-			}
-		}
-
-		&__footer {
-			border-top: @border-width-base @border-style-base @border-color-base;
-			padding: @spacing-100;
-
-			&__actions {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				font-size: @font-size-small;
-			}
+		&__title {
+			font-size: @font-size-medium;
+			line-height: 2.72em;
+			font-weight: @font-weight-bold;
 		}
 	}
+
+	&__content {
+		&__paginator {
+			// REVIEW Set top to 48px to adjust paginator position
+			// to compensate the gutter between dialog's header and body.
+			// This gutter is generated by Cdx-dialog gap value of 32px
+			top: 48px;
+			position: absolute;
+			z-index: @z-index-top;
+		}
+	}
+
+	&__footer {
+		border-top: @border-width-base @border-style-base @border-color-base;
+		padding: @spacing-100;
+
+		&__actions {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: @font-size-small;
+		}
+	}
+}
 </style>

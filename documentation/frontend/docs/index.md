@@ -34,6 +34,7 @@ These are demos for components used for building the _Proof-of-concept_ demos ab
 are candidates to be eventually upstreamed to Codex or re-used by other teams.
 
 - [On-boarding dialog](./demos/onboarding-dialog) ([T332767](https://phabricator.wikimedia.org/T332767))
+- [MultiPane component](./demos/multi-pane) ([T336750](https://phabricator.wikimedia.org/T336750))
 
 ## Importing components into MediaWiki
 
