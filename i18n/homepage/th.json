@@ -9,7 +9,9 @@
 			"MOphaswongse (WMF)",
 			"Patsagorn Y.",
 			"Prame Tan",
-			"Thas Tayapongsak"
+			"Thas Tayapongsak",
+			"Ekminarin",
+			"Trisorn Triboon"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|สวัสดี}} {{bidi:$1}}!",
@@ -219,5 +221,6 @@
 	"growthexperiments-claimmentee-confirm": "ใช่ ฉันมีความประสงค์ที่จะเปลี่ยนเมนเทอร์",
 	"growthexperiments-notification-body-mentor-change": "สาเหตุ: $1",
 	"right-setmentor": "ตั้งเมนเทอร์สำหรับผู้ใช้นี้",
-	"action-setmentor": "ตั้งเมนเทอร์สำหรับผู้ใช้นี้"
+	"action-setmentor": "ตั้งเมนเทอร์สำหรับผู้ใช้นี้",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "เพิ่มเติมเกี่ยวกับการแก้ไขที่แนะนำนี้"
 }

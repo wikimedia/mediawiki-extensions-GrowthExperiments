@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Muhammad Shuaib"
+		]
+	},
+	"growthexperiments-help-panel-tog-help-panel": "ویکی نویس کی معاونت میز کو فعال کریں",
+	"growthexperiments-help-panel-question-button-text": "جاری رکھیں",
+	"growthexperiments-help-panel-return-home-button-text": "مکمل",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "ترمیم کاری سے متعلق بہترین معاون صفحات",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "مزید معاون صفحات کا مطالعہ کریں",
+	"growthexperiments-help-panel-question-widget-header": "برادری کی معاونت میز پر اپنا سوال رکھیں",
+	"growthexperiments-help-panel-question-placeholder": "آداب کریں اور {{GENDER:$1|اپنا}} سوال پوچھیں۔",
+	"growthexperiments-help-panel-back-home": "پیچھے جائیں",
+	"growthexperiments-help-panel-close": "مکمل",
+	"growthexperiments-help-panel-home-title": "ترمیم کاری کے لیے مدد طلب کریں",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|آپ نے}} اپنی ترمیم شائع کر دی۔ شکریہ، اسے جاری رکھیں۔",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|آپ نے}} اپنی ترمیم کو محفوظ کر دیا۔ شکریہ، اسے جاری رکھیں۔",
+	"growthexperiments-help-panel-postedit-header": "اگلے مراحل",
+	"growthexperiments-help-panel-questionreview-label": "آپ کا سوال",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "برقی ڈاک کا پتا درج کریں",
+	"growthexperiments-help-panel-questionposter-invalid-title": "غلط عنوان۔",
+	"growthexperiments-help-panel-community-help-desk-text": "معاونت میز",
+	"growthexperiments-help-panel-search-label": "معاونت کی تلاش",
+	"growthexperiments-help-panel-search-no-results": "کوئی نتیجہ برآمد نہیں ہوا۔",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "بصری خانہ ترمیم میں جائیں",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "ماخذی خانہ ترمیم میں جائیں"
+}
