@@ -1,17 +1,15 @@
 <template>
-	<div>
-		<cdx-button @click="open = true">
-			Show Add link Dialog
-		</cdx-button>
+	<cdx-button @click="open = true">
+		Show Add link Dialog
+	</cdx-button>
 
-		<!-- eslint-disable vue/no-v-model-argument -->
-		<add-link-dialog
-			v-model:open="open"
-			v-model:is-checked="isNeverShowAgainChecked"
-			@close="onDialogClose"
-		>
-		</add-link-dialog>
-	</div>
+	<!-- eslint-disable vue/no-v-model-argument -->
+	<add-link-dialog
+		v-model:open="open"
+		v-model:is-checked="isNeverShowAgainChecked"
+		@close="onDialogClose"
+	>
+	</add-link-dialog>
 </template>
 
 <script>

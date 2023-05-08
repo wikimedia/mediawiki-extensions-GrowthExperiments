@@ -170,6 +170,5 @@ describe( 'Onboarding dialog', () => {
 					}
 				] ] );
 			} );
-
 	} );
 } );

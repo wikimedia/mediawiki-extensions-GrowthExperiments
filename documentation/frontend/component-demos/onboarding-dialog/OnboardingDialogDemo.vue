@@ -1,5 +1,5 @@
 <template>
-	<div class="ext-growthExperiments-OnboardingDialogDemo">
+	<div class="ext-growthExperiments-OnboardingDialogDemo" :dir="readingDirection">
 		<cdx-button @click="open = true">
 			Show dialog
 		</cdx-button>
@@ -11,6 +11,7 @@
 			:initial-step="1"
 			:show-paginator="true"
 			:total-steps="3"
+			:is-rtl="readingDirection === 'rtl'"
 			@close="onDialogClose"
 		>
 			<template #title>
@@ -27,8 +28,8 @@
 					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam nulla
-						ullam expedita consectetur.
+						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+						nulla ullam expedita consectetur.
 					</p>
 				</div>
 			</template>
@@ -41,28 +42,28 @@
 					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam nulla
-						ullam expedita consectetur.
+						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+						nulla ullam expedita consectetur.
 					</p>
 
 					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam nulla
-						ullam expedita consectetur.
+						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+						nulla ullam expedita consectetur.
 					</p>
 					<br><br>
 					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam nulla
-						ullam expedita consectetur.
+						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+						nulla ullam expedita consectetur.
 					</p>
 					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam nulla
-						ullam expedita consectetur.
+						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+						nulla ullam expedita consectetur.
 					</p>
 				</div>
 			</template>
@@ -78,37 +79,38 @@
 					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam nulla
-						ullam expedita consectetur.
+						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+						nulla ullam expedita consectetur.
 					</p>
 				</div>
 			</template>
-			<template #checkbox>
-				Don't show again
-			</template>
-			<template #last-step-button-text>
-				Get Started
-			</template>
 		</onboarding-dialog>
 	</div>
+	<direction-radio-selector
+		@update:reading-direction="( newVal ) => readingDirection = newVal"
+	>
+	</direction-radio-selector>
 </template>
 
 <script>
 import { ref } from 'vue';
 import { CdxButton } from '@wikimedia/codex';
 import OnboardingDialog from '../../components/OnboardingDialog.vue';
+import DirectionRadioSelector from '../../components/DirectionRadioSelector.vue';
 
 export default {
 	name: 'OnboardingDialogDemo',
 
 	components: {
 		CdxButton,
+		DirectionRadioSelector,
 		OnboardingDialog
 	},
-
 	setup() {
+
 		const open = ref( false );
 		const isDontShowAgainChecked = ref( false );
+		const readingDirection = ref( 'ltr' );
 
 		function onDialogClose( result ) {
 			// eslint-disable-next-line no-console
@@ -118,7 +120,8 @@ export default {
 		return {
 			isDontShowAgainChecked,
 			open,
-			onDialogClose
+			onDialogClose,
+			readingDirection
 		};
 	}
 };
@@ -126,10 +129,12 @@ export default {
 
 <style lang="less">
 @import '../../components/variables.less';
-@import '../node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.less';
+@import '../../node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.less';
 
 .ext-growthExperiments-OnboardingDialogDemo {
-	padding-top: 2em;
+	border: @border-width-base @border-style-base;
+	padding: @spacing-50;
+	margin: @spacing-50;
 
 	&__dialog {
 		height: @onboardingDialogHeight;

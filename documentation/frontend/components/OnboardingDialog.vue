@@ -161,6 +161,11 @@ export default {
 			default: 1
 		},
 
+		isRtl: {
+			type: Boolean,
+			default: false
+		},
+
 		/**
 		 * Control whether to display or hide the paginator at the top of
 		 * the dialog content when more than one step content is provided
@@ -191,6 +196,7 @@ export default {
 	},
 	emits: [ 'update:open', 'update:is-checked', 'update:currentStep', 'close' ],
 	setup( props, { emit, slots } ) {
+
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
 		const currentStep = ref( props.initialStep );
@@ -198,7 +204,7 @@ export default {
 		const closeSource = ref( undefined );
 		const currentSlotName = computed( () => `step${currentStep.value}` );
 		const hasSteps = computed( () => !!slots.step1 );
-		const transitionName = ref( 'next' );
+		const transitionName = ref( props.isRtl ? 'left' : 'right' );
 
 		watch( wrappedOpen, () => {
 			if ( wrappedOpen.value === false ) {
@@ -229,7 +235,7 @@ export default {
 		function onNextClick() {
 			if ( currentStep.value < props.totalSteps + 1 ) {
 				currentStep.value++;
-				transitionName.value = 'next';
+				transitionName.value = props.isRtl ? 'left' : 'right';
 				emit( 'update:currentStep', currentStep.value );
 			}
 			if ( greaterStepShown.value < props.totalSteps + 1 ) {
@@ -240,7 +246,7 @@ export default {
 		function onPrevClick() {
 			if ( currentStep.value > 0 ) {
 				currentStep.value--;
-				transitionName.value = 'prev';
+				transitionName.value = props.isRtl ? 'right' : 'left';
 				emit( 'update:currentStep', currentStep.value );
 			}
 		}
@@ -291,8 +297,8 @@ export default {
 		&__header {
 			display: flex;
 			justify-content: space-between;
-			padding-left: @spacing-100;
 			padding-top: @spacing-25;
+			padding-inline-start: @spacing-100;
 			// This is the background color for the AddlinkDialog Images
 			// and should be replaced as discussed on with a DS background color
 			// See https://phabricator.wikimedia.org/T332567
@@ -321,31 +327,31 @@ export default {
 				position: relative;
 
 				// stylelint-disable selector-class-pattern
-				.next-enter-active,
-				.next-leave-active,
-				.prev-enter-active,
-				.prev-leave-active {
+				.right-enter-active,
+				.right-leave-active,
+				.left-enter-active,
+				.left-leave-active {
 					transition: all 500ms @animation-timing-function-base;
 				}
 
-				.next-enter-from {
+				.right-enter-from {
 					transform: translateX( @size-full );
 				}
 
-				.next-leave-to {
+				.right-leave-to {
 					transform: translateX( -@size-full );
 				}
 
-				.prev-leave-to {
+				.left-leave-to {
 					transform: translateX( @size-full );
 				}
 
-				.prev-enter-from {
+				.left-enter-from {
 					transform: translateX( -@size-full );
 				}
 
-				.next-leave-active,
-				.prev-leave-active {
+				.right-leave-active,
+				.left-leave-active {
 					// REVIEW To correctly display the transition it is necesary
 					// to position absolute each step relative to their wrapper element
 					position: absolute;
@@ -365,5 +371,4 @@ export default {
 			}
 		}
 	}
-
 </style>

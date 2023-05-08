@@ -7,6 +7,7 @@
 		:initial-step="1"
 		class="ext-growthExperiments-AddLinkDialog"
 		:show-paginator="true"
+		:is-rtl="isRtl"
 		@close="$emit( 'close', $event )"
 	>
 		<template #title>
@@ -131,7 +132,7 @@
 </template>
 
 <script>
-import { toRef } from 'vue';
+import { toRef, ref } from 'vue';
 import { useModelWrapper } from '@wikimedia/codex';
 import OnboardingDialog from './OnboardingDialog.vue';
 
@@ -149,7 +150,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-
 		/**
 		 * The initial value to use for the optional checkbox model. Should be
 		 * provided via a v-model:is-checked binding in the parent scope.
@@ -162,10 +162,11 @@ export default {
 	},
 	emits: [ 'update:open', 'update:is-checked', 'close' ],
 	setup( props, { emit } ) {
+		const isRtl = ref( false );
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
-
 		return {
+			isRtl,
 			wrappedIsChecked,
 			wrappedOpen
 		};
