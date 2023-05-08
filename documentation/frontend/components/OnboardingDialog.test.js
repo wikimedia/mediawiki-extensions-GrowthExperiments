@@ -43,20 +43,18 @@ describe( 'Onboarding dialog', () => {
 		expect( wrapper.text() ).to.contain( 'This is step 1' );
 	} );
 
-	it( 'should render content passed to headerbtntext slot', () => {
+	it( 'should render content passed to closeBtnText slot', () => {
 		const wrapper = renderComponent(
-			{ open: true },
-			{
-				headerbtntext: 'Skip all'
-			} );
+			{ open: true, totalSteps: 2 },
+			{ closeBtnText: 'Skip all', step1: '<p>This is step 1</p>' } );
 		expect( wrapper.text() ).to.contain( 'Skip all' );
 	} );
 
-	it( 'should render content passed to checkbox slot', () => {
+	it( 'should render content passed to checkboxLabel slot', () => {
 		const wrapper = renderComponent(
 			{ open: true },
 			{
-				checkbox: "Don't show again"
+				checkboxLabel: "Don't show again"
 			} );
 		expect( wrapper.text() ).to.contain( "Don't show again" );
 	} );
@@ -70,13 +68,30 @@ describe( 'Onboarding dialog', () => {
 		expect( wrapper.text() ).toContain( '1 of 2' );
 	} );
 
-	it( 'should not render paginator if not steps slots provided', () => {
+	it( 'should not render paginator if dialog has only one step', () => {
 		const wrapper = renderComponent(
-			{ initialStep: 1, open: true, showPaginator: true, totalSteps: 3 },
+			{ initialStep: 1, open: true, totalSteps: 1 },
 			{
 				default: '<p>This is the default content</p>'
 			} );
 		expect( wrapper.text() ).not.to.contain( '1 of 3' );
+	} );
+
+	it( 'should render a icon only header button when there is only one step', () => {
+		const wrapper = renderComponent(
+			{ initialStep: 1, open: true, totalSteps: 1 },
+			{
+				default: '<p>This is the default content</p>'
+			} );
+		expect( wrapper.findAll( 'button[aria-label="close"]' ) ).toHaveLength( 1 );
+	} );
+
+	it( 'should display paginator if dialog includes more than one step', () => {
+		const wrapper = renderComponent(
+			{ initialStep: 1, open: true, totalSteps: 3 },
+			steps
+		);
+		expect( wrapper.text() ).toContain( '1 of 3' );
 	} );
 
 	it( 'should render the first step as informed in initialStep prop', () => {
@@ -88,14 +103,14 @@ describe( 'Onboarding dialog', () => {
 		expect( wrapper.text() ).not.to.contain( 'This is step 1' );
 	} );
 
-	it( 'should render content passed to last-step-btn slot', () => {
+	it( 'should render content passed to startBtnText slot', () => {
 		const wrapper = renderComponent(
 			{ initialStep: 2, open: true, totalSteps: 2 },
 			{
-				'last-step-button-text': 'Get started'
+				startBtnText: 'Empezar'
 			} );
-		expect( wrapper.text() ).not.to.contain( 'Close' );
-		expect( wrapper.text() ).to.contain( 'Get started' );
+		expect( wrapper.text() ).not.to.contain( 'Get started' );
+		expect( wrapper.text() ).to.contain( 'Empezar' );
 	} );
 
 	it( 'should navigate to the next step on click next button', () => {
@@ -133,7 +148,7 @@ describe( 'Onboarding dialog', () => {
 				'onUpdate:open': ( newVal ) => wrapper.setProps( { open: newVal } ),
 				'onUpdate:is-checked': ( newVal ) => wrapper.setProps( { isChecked: newVal } )
 			},
-			Object.assign( {}, steps, { checkbox: 'Check me', headerbtntext: 'Skip' } )
+			Object.assign( {}, steps, { checkboxLabel: 'Check me', headerBtnText: 'Skip' } )
 		);
 
 		// In step 1, check checkbox
@@ -145,7 +160,7 @@ describe( 'Onboarding dialog', () => {
 			// Backwards to step 2
 			.then( () => wrapper.get( '[aria-label="previous"]' ).trigger( 'click' ) )
 			// Click on "Skip"
-			.then( () => wrapper.get( '.ext-growthExperiments-OnboardingDialog__header__button > button' ).trigger( 'click' ) )
+			.then( () => wrapper.get( '.ext-growthExperiments-OnboardingDialog__header__top > button' ).trigger( 'click' ) )
 			.then( () => {
 				expect( wrapper.emitted() ).toHaveProperty( 'close' );
 				expect( wrapper.emitted().close ).toMatchObject( [ [
@@ -158,5 +173,4 @@ describe( 'Onboarding dialog', () => {
 				] ] );
 			} );
 	} );
-
 } );

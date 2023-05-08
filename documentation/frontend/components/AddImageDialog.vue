@@ -11,7 +11,7 @@
 		<template #title>
 			Introduction
 		</template>
-		<template #headerbtntext>
+		<template #closeBtnText>
 			Skip all
 		</template>
 		<template #step1>
@@ -127,11 +127,11 @@
 			</div>
 		</template>
 
-		<template #checkbox>
+		<template #checkboxLabel>
 			Don't show again
 		</template>
 		<template
-			#last-step-button-text>
+			#startBtnText>
 			Get started
 		</template>
 	</onboarding-dialog>
@@ -209,10 +209,12 @@ export default {
 	}
 
 	&__title {
+		.ext-growthExperiments-onboarding-dialog-textcontent();
 		.ext-growthExperiments-onboarding-dialog-title();
 	}
 
 	&__text {
+		.ext-growthExperiments-onboarding-dialog-textcontent();
 		.ext-growthExperiments-onboarding-dialog-text();
 
 		&--italic {
