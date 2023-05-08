@@ -41,7 +41,9 @@
 
 			<div
 				v-if="hasSteps"
-				class="ext-growthExperiments-OnboardingDialog__content__transition">
+				class="ext-growthExperiments-OnboardingDialog__content__transition"
+				@touchstart="onTouchStart"
+				@touchmove="onTouchMove">
 				<transition :name="transitionName">
 					<!-- Slot for the dialog steps.
 						Content for each step can be provided by using the named slots:
@@ -133,6 +135,23 @@ import { CdxDialog, CdxButton, CdxIcon, CdxCheckbox, useModelWrapper } from '@wi
 import { cdxIconNext, cdxIconPrevious } from '@wikimedia/codex-icons';
 import OnboardingPaginator from './OnboardingPaginator.vue';
 
+/**
+ * @name OnboardingDialog
+ *
+ *
+ * @description This is a multi-step dialog that gives the user detailed information
+ * to complete an structured task.
+ *
+ * Different steps are are navigable with arrow buttons back and forth.
+ * Displays a paginator that shows to the user the current progress in the dialog.
+ *
+ * A main title can be provided via #title slot and the text in the top button
+ * can be customized via #headerbtntext slot.
+ * Step content is provided via #step1, #step2, #step3, etc...
+ * Footer actions can be customized via #checkbox and #last-step-button-text slots respectively,
+ * to display a checkbox in the first step and a button with custom text in the last one.
+ */
+
 export default {
 	name: 'OnboardingDialog',
 
@@ -146,7 +165,7 @@ export default {
 	props: {
 
 		/**
-		 * The total number of steps the dialog will display
+		 * The total number of steps
 		 */
 		totalSteps: {
 			type: Number,
@@ -154,7 +173,7 @@ export default {
 		},
 
 		/**
-		 * The number of the step to show when the dialog open
+		 * The first step to show when the dialog is open
 		 */
 		initialStep: {
 			type: Number,
@@ -205,6 +224,8 @@ export default {
 		const currentSlotName = computed( () => `step${currentStep.value}` );
 		const hasSteps = computed( () => !!slots.step1 );
 		const transitionName = ref( props.isRtl ? 'left' : 'right' );
+		const initialX = ref( null );
+		const initialY = ref( null );
 
 		watch( wrappedOpen, () => {
 			if ( wrappedOpen.value === false ) {
@@ -232,24 +253,27 @@ export default {
 			wrappedIsChecked.value = false;
 		}
 
-		function onNextClick() {
-			if ( currentStep.value < props.totalSteps + 1 ) {
+		function navigateNext() {
+			if ( currentStep.value < props.totalSteps ) {
 				currentStep.value++;
 				transitionName.value = props.isRtl ? 'left' : 'right';
 				emit( 'update:currentStep', currentStep.value );
 			}
-			if ( greaterStepShown.value < props.totalSteps + 1 ) {
+			if ( greaterStepShown.value < props.totalSteps ) {
 				greaterStepShown.value++;
 			}
 		}
 
-		function onPrevClick() {
-			if ( currentStep.value > 0 ) {
+		function navigatePrev() {
+			if ( currentStep.value > 1 ) {
 				currentStep.value--;
 				transitionName.value = props.isRtl ? 'right' : 'left';
 				emit( 'update:currentStep', currentStep.value );
 			}
 		}
+
+		const onNextClick = () => navigateNext();
+		const onPrevClick = () => navigatePrev();
 
 		function onHeaderBtnClick() {
 			closeSource.value = 'quiet';
@@ -261,6 +285,44 @@ export default {
 			emit( 'update:open', false );
 		}
 
+		function onTouchStart( e ) {
+			const touchEvent = e.touches.item( 0 );
+			initialX.value = touchEvent.clientX;
+			initialY.value = touchEvent.clientY;
+		}
+
+		const isSwipeToLeft = ( touchEvent ) => {
+			const newX = touchEvent.clientX;
+			return initialX.value > newX;
+		};
+		const onSwipeToRight = () => {
+			if ( props.isRtl ) {
+				navigateNext();
+			} else {
+				navigatePrev();
+			}
+		};
+		const onSwipeToLeft = () => {
+			if ( props.isRtl ) {
+				navigatePrev();
+			} else {
+				navigateNext();
+			}
+		};
+
+		function onTouchMove( e ) {
+			if ( !initialX.value || !initialY.value ) {
+				return;
+			}
+			if ( isSwipeToLeft( e.touches.item( 0 ) ) ) {
+				onSwipeToLeft();
+			} else {
+				onSwipeToRight();
+			}
+			initialX.value = null;
+			initialY.value = null;
+		}
+
 		return {
 			cdxIconNext,
 			cdxIconPrevious,
@@ -270,11 +332,13 @@ export default {
 			onDialogOpenUpdate,
 			onHeaderBtnClick,
 			onNextClick,
-			onLastStepBtnClick,
 			onPrevClick,
+			transitionName,
+			onLastStepBtnClick,
 			wrappedOpen,
 			wrappedIsChecked,
-			transitionName
+			onTouchStart,
+			onTouchMove
 		};
 	}
 };
@@ -286,7 +350,6 @@ export default {
 
 	.ext-growthExperiments-OnboardingDialog {
 		position: relative;
-
 		// stylelint-disable-next-line selector-class-pattern
 		.cdx-dialog__body {
 			// REVIEW Overwrite CdxDialog overflow-x to avoid
@@ -325,7 +388,6 @@ export default {
 				// REVIEW Position the transition steps relative to their wrapper element
 				// to display the transition correctly
 				position: relative;
-
 				// stylelint-disable selector-class-pattern
 				.right-enter-active,
 				.right-leave-active,
