@@ -62,7 +62,7 @@
 
 					<p
 						class="
-						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__example"
+						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
 					>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
@@ -168,6 +168,7 @@ export default {
 <style lang="less">
 @import '../../components/variables.less';
 @import '../../node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.less';
+@import '../../components/mixins.less';
 
 .ext-growthExperiments-OnboardingDialogDemo {
 	border: @border-width-base @border-style-base;
@@ -177,10 +178,7 @@ export default {
 	&__dialog {
 		&__image {
 			background-image: url( ../../../../images/addlink/onboarding-image1-ltr.svg );
-			background-color: @onboardingBackgroundColor;
-			height: @size-1600;
-			background-repeat: no-repeat;
-			background-position: center;
+			.ext-growthExperiments-onboarding-dialog-image();
 		}
 
 		&__textcontent {
@@ -195,43 +193,6 @@ export default {
 				padding-top: @spacing-50;
 				font-size: @font-size-small;
 				line-height: @line-height-small;
-
-				&__label {
-					color: @color-placeholder;
-					font-size: @font-size-x-small;
-					line-height: @line-height-xx-small;
-					font-style: italic;
-					margin-top: @spacing-50;
-				}
-
-				&__example {
-					padding: @spacing-75;
-					background: @background-color-interactive-subtle;
-					// As discussed on https://phabricator.wikimedia.org/T332567
-					// this color is not a DS border-color yet
-					// and should be changed
-					border: @border-width-base @border-style-base @onboardingExampleBorderColor;
-					box-sizing: @box-sizing-base;
-					border-radius: @border-radius-base;
-					margin-bottom: @spacing-50;
-					line-height: @line-height-xx-small;
-					font-size: @font-size-small;
-				}
-
-				&__link {
-					.cdx-mixin-link-base();
-				}
-
-				&__list {
-					ul {
-						list-style: inside;
-						margin-left: @spacing-50;
-
-						li {
-							margin-top: @spacing-50;
-						}
-					}
-				}
 			}
 		}
 	}

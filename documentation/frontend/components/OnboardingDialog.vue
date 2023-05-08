@@ -272,10 +272,11 @@ export default {
 <style lang="less">
 @import '../node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.less';
 @import './variables.less';
+@import './mixins.less';
 
 .ext-growthExperiments-OnboardingDialog {
-	max-width: @size-3200;
-	height: @size-3200;
+	.ext-growthExperiments-onboarding-dialog-color();
+	.ext-growthExperiments-onboarding-dialog-size();
 	// stylelint-disable-next-line selector-class-pattern
 	&.cdx-dialog {
 		gap: 0;
@@ -302,8 +303,11 @@ export default {
 				font-size: @font-size-medium;
 				line-height: @line-height-xx-small;
 				font-weight: @font-weight-bold;
-				max-width: @size-1600;
 				padding-bottom: @spacing-75;
+			}
+
+			&__button {
+				min-width: @onboardingCloseButtonMinWidht;
 			}
 		}
 	}
