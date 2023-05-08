@@ -10,7 +10,8 @@ Onboarding Dialog Vue demo
 A reusable custom dialog created using [Codex Dialog](https://doc.wikimedia.org/codex/main/components/demos/dialog.html) component.
 
 ## Demo
-This example includes 3 steps that are navigable with arrow buttons back and forth. It includes a paginator to inform the user the progress within the dialog, a dismiss button in the dialog header, and a checkbox in the dialog footer on the first step.
+An Onboarding dialog example with 3 steps
+
 ::: raw
 <OnboardingDialogDemo />
 :::
@@ -19,23 +20,21 @@ This example includes 3 steps that are navigable with arrow buttons back and for
 
 ```vue
 <template>
-	<cdx-button @click="open = true">
-		Show dialog
-	</cdx-button>
-	<!-- eslint-disable vue/no-v-model-argument -->
 	<onboarding-dialog
 		v-model:open="open"
 		v-model:is-checked="isDontShowAgainChecked"
-		:total-steps="3"
+		class="ext-growthExperiments-OnboardingDialogDemo__dialog"
 		:initial-step="1"
 		:show-paginator="true"
+		:total-steps="3"
+		:is-rtl="readingDirection === 'rtl'"
 		@close="onDialogClose"
 	>
 		<template #title>
 			A slotted <i>Onboarding dialog</i> header
 		</template>
-		<template #headerbtntext>
-			<b>Skip all</b>
+		<template #closeBtnText>
+			Skip all
 		</template>
 		<template #step1>
 			<div>
@@ -45,8 +44,8 @@ This example includes 3 steps that are navigable with arrow buttons back and for
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-					nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam nulla
-					ullam expedita consectetur.
+					nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+					nulla ullam expedita consectetur.
 				</p>
 			</div>
 		</template>
@@ -60,13 +59,10 @@ This example includes 3 steps that are navigable with arrow buttons back and for
 				// step content...
 			</div>
 		</template>
-    	<template #checkbox>
-    	  	Don't show again
-    	</template>
-    	<template #last-step-button-text>
-    	  	Get Started
-    	</template>
-	</onboarding-dialog>
+			<template #checkboxLabel>
+				Don't show again
+			</template>
+		</onboarding-dialog>
 </template>
 
 <script>
@@ -116,8 +112,21 @@ To correctly display slide transitions between dialog steps, step content needs 
 
 ### CSS overwrites
 
-- #### Codex dialog body overflow-x
-The overflow-x in .cdx-dialog__body class is overwritten to 'hidden' to avoid showing the horizontal scroll bar during transitions
+- Codex dialog gap
+- Codex dialog body padding
+- Codex dialog body overflow-x (overwritten to avoid the horizontal scroll bar during transitions)
+```css
+.ext-growthExperiments-OnboardingPatternDialog {
+	&.cdx-dialog {
+    	gap: 0;
+  	}
+    .cdx-dialog__body {
+        padding: 0;
+        overflow-x: hidden;
+    }
+}
+```
+
 
 ## Usage
 ### Props
@@ -125,8 +134,9 @@ The overflow-x in .cdx-dialog__body class is overwritten to 'hidden' to avoid sh
 | Prop name | Description | Type  | Default |
 | --------- | ----------- | :---: | :-----: |
 | initialStep | The first step to show when the dialog is open | Number | 1 |
+| isChecked | Checkbox value provided via a v-model:is-checked binding in the parent scope | Boolean | false |
+| isRtl | If reading direction is RTL | Boolean | false |
 | open | Whether the dialog is visible. Should be provided via a v-model:open binding in the parent scope | Boolean | false |
-| showPaginator | Whether the dialog should display the paginator at the top of the content if more than one step is provided | Boolean | false |
 | totalSteps | The total number of steps the dialog includes | Number  | 0 |
 
 
@@ -134,11 +144,12 @@ The overflow-x in .cdx-dialog__body class is overwritten to 'hidden' to avoid sh
 
 | Name | Description | Bindings |
 | ---- | ----------- | -------- |
-| checkbox | If provided, the first step includes a checkbox in the dialog footer | |
+| checkboxLabel | Text for the checkbox label | |
 | default | If no #step1 is provided, the dialog will display this content | |
-| headerbtntext | Header button to display in all the steps aside from the last one | |
+| closeBtnText | Text for the header button | |
 | last-step-button-text | Text content for the footer button on the last step | |
-| stepN | Step content can be provided by using the named slots: #step1, #step2, #step3, etc... | |
+| stepN | Step content provided by named slots: #step1, #step2, #step3, etc... | |
+| startBtnText | Text for the last step button| |
 | title | Main dialog title | |
 
 
@@ -165,53 +176,42 @@ If no #step1 is provided, the dialog will display fixed content in the #default 
 
 ```vue
 <template>
-	<cdx-button @click="open = true">
-		Show dialog
-	</cdx-button>
 	<onboarding-dialog
 		v-model:open="open"
+		class="ext-growthExperiments-OnboardingDialogDemo__dialog"
 		:total-steps="1"
 		:initial-step="1"
 		@close="onDialogClose"
 	>
 		<template #title>
-			A simple <i>Onboarding dialog</i>
+			Onboarding dialog with one step
 		</template>
-		<template #headerbtntext>
-			Close
+		<!-- eslint-disable max-len -->
+		<div
+			class="ext-growthExperiments-OnboardingDialogDemo__dialog__image"
+			role="img"
+			aria-label="Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
+		>
+		</div>
+		<div class="ext-growthExperiments-OnboardingSimpleDialogDemo__dialog__content">
+			<h5 class="ext-growthExperiments-OnboardingSimpleDialogDemo__dialog__content__title">
+				This is a simple dialog without steps.
+			</h5>
+			<p class="ext-growthExperiments-OnboardingSimpleDialogDemo__dialog__content__text">
+				One or several paragraphs will be included here as dialog content, and this text can be multiline.
+			</p>
+			<p class="ext-growthExperiments-OnboardingSimpleDialogDemo__dialog__content__text">
+				Lorem ipsum dolor sit amet consectetur. Interdum ultricies etiam pharetra sapien curabitur commodo. Imperdiet sed purus proin libero malesuada amet nibh. Eleifend diam tincidunt sagittis gravida.
+			</p>
+			<p class="ext-growthExperiments-OnboardingSimpleDialogDemo__dialog__content__text">
+				Nulla phasellus eget risus volutpat aliquet velit leo ac.
+			</p>
+		<!-- eslint-enable max-len -->
+		</div>
+		<template #checkboxLabel>
+			Don't show again
 		</template>
-		<h5>This is a simple dialog without steps.</h5>
-		<p>This dialog doesn't include paginator, header button, and checkbox.</p>
 	</onboarding-dialog>
-</template>
-
-<script>
-import { ref } from 'vue';
-import { CdxButton } from '@wikimedia/codex';
-import OnboardingDialog from '../../components/OnboardingDialog.vue';
-
-export default {
-	name: 'OnboardingSimpleDialogDemo',
-
-	components: {
-		CdxButton,
-		OnboardingDialog
-	},
-
-	setup() {
-		const open = ref( false );
-
-		function onDialogClose( result ) {
-			// eslint-disable-next-line no-console
-			console.log( 'Dialog closed', result );
-		}
-
-		return {
-			open,
-			onDialogClose
-		};
-	}
-};
-</script>
+<template>
 
 ```
