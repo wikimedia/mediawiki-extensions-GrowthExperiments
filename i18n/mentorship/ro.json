@@ -101,7 +101,7 @@
 	"growthexperiments-notification-header-mentee-claimed": "Ucenicul {{GENDER:$3|dvs.}}, $3, a fost {{GENDER:$2|revendicat}} de $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Motiv: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Ce este „Revendicare ucenic”?",
-	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Aveți}} ucenici care sunt demni de laudă!",
+	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Aveți}} ucenici care sunt demni de laudă! Trimiteți încurajări ucenicilor prin intermediul paginii mentorului.",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Vezi pagina mentorului",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Numărul de ucenici atribuiți mie",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Fără (îi revendic manual)",

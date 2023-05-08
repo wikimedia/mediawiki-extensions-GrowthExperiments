@@ -101,7 +101,7 @@
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Vašega mentoriranca|Vašo mentoriranko|Vašega_o mentoriranca_ko}} $3 je {{GENDER:$2|zahteval|zahtevala|zahteval_a}} $1 .",
 	"growthexperiments-notification-body-mentee-claimed": "Razlog: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Kaj je »Zahtevaj mentoriranca?«",
-	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Pošljite}} mentorirancem prek nadzorne plošče spodbudo",
+	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Imate}} mentorirance, ki si zaslužijo pohvalo! Pošljite jim spodbudo mentorirancem prek svoje nadzorne plošče.",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Ogled nadzorne plošče mentorirancev",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Število mentorirancev, ki so mi dodeljeni",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Nobeno (zahtevam jih ročno)",

@@ -101,7 +101,7 @@
 	"growthexperiments-notification-header-mentee-claimed": "Tu {{GENDER:$3|apprentisse}}, $3, ha essite {{GENDER:$2|adoptate}} per $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Que significa \"adoptar un apprentisse\"?",
-	"growthexperiments-notification-header-new-praiseworthy-mentees": "Tu ha apprentisses digne de laude!",
+	"growthexperiments-notification-header-new-praiseworthy-mentees": "Tu ha apprentisses digne de laude! Invia incoragiamento a apprentisses usante tu tabuliero de mentor.",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Vider le tabuliero del mentor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Numero de apprentisses assignate a me",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Necun (io les adopta manualmente)",

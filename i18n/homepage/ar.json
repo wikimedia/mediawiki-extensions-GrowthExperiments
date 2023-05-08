@@ -185,6 +185,7 @@
 	"growthexperiments-specialimpact-invalid-username": "اسم المستخدم مفقود أو غير صالح.",
 	"growthexperiments-homepage-claimmentee-no-user": "مرشد(ة) غير موجود(ة)",
 	"growthexperiments-homepage-claimmentee-already-mentor": "أنت {{GENDER:$2|ترشد|ترشدين}} {{GENDER:$1|المستخدم $1|المستخدمة $1}} سلفا.",
+	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1 ألغى اشتراكه|$1 ألغت اشتراكها}} في الإرشاد",
 	"growthexperiments-homepage-enable-preference": "لتفعيل لوحة المستخدم للوافد الجديد، {{GENDER:|قم|قومي}} بزيارة إعدادات «مزايا التحرير للوافدين الجدد» في [[Special:Preferences#mw-prefsection-personal-homepage|التفضيلات]].",
 	"growthexperiments-homepage-contributions-zero-title": "لم {{GENDER:$1|تساهم|تساهمي}} بعد.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "{{GENDER:$1|زر|زوري}} لوحة {{GENDER:$1|المستخدم|المستخدمة}} خاصتك للبدء في التعديل!",

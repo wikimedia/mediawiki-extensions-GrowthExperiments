@@ -80,6 +80,7 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 је {{GENDER:$2|уклонио|уклонила}} $1 из менторства",
 	"echo-category-title-ge-mentorship": "Менторство",
 	"growthexperiments-notification-body-mentee-claimed": "Разлог: $1",
+	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Имате}} новајлије вредне хвале! Пошаљите им похвалу преко менторске табле.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Додељивање новајлија",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Нема",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Половина просека",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Artsiom91",
 			"Chadyka",
 			"Kareyac",
 			"Maksim L.",
@@ -82,5 +83,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Артыкулы, якія змяшчаюць катэгорыі, вызначаныя тут, не будуць паказвацца ўдзельнікам як задання для гэтага тыпу задання.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблоны-карткі",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Гэтыя шаблоны патрэбныя для [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|прапанавання выяваў]] для задання пачаткоўцам. Артыкулы, якія змяшчаюць гэтыя шаблоны, не будуць паказвацца ў спісе задач прапанавання выяваў.",
-	"growthexperiments-info-tooltip-close-label": "Закрыць"
+	"growthexperiments-info-tooltip-close-label": "Закрыць",
+	"specialpages-group-growth-tools": "Інструменты ад каманды росту"
 }
