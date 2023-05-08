@@ -211,15 +211,19 @@ export default {
 		}
 
 		function onClose() {
-			emit( 'close', {
-				closeSource: closeSource.value || 'unkown',
-				isChecked: wrappedIsChecked.value,
-				currentStep: currentStep.value,
-				greaterStep: greaterStepShown.value
-			} );
+			const closeResultObj = { closeSource: closeSource.value || 'unkown' };
+			if ( slots.step1 ) {
+				closeResultObj.currentStep = currentStep.value;
+				closeResultObj.greaterStep = greaterStepShown.value;
+			}
+			if ( slots.checkbox ) {
+				closeResultObj.isChecked = wrappedIsChecked.value;
+			}
+			emit( 'close', closeResultObj );
 			currentStep.value = props.initialStep;
 			greaterStepShown.value = props.initialStep;
 			closeSource.value = undefined;
+			wrappedIsChecked.value = false;
 		}
 
 		function onNextClick() {

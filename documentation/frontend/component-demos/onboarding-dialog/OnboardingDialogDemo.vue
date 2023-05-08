@@ -6,6 +6,7 @@
 		<!-- eslint-disable vue/no-v-model-argument -->
 		<onboarding-dialog
 			v-model:open="open"
+			v-model:is-checked="isDontShowAgainChecked"
 			class="ext-growthExperiments-OnboardingDialogDemo__dialog"
 			:initial-step="1"
 			:show-paginator="true"
@@ -82,6 +83,12 @@
 					</p>
 				</div>
 			</template>
+			<template #checkbox>
+				Don't show again
+			</template>
+			<template #last-step-button-text>
+				Get Started
+			</template>
 		</onboarding-dialog>
 	</div>
 </template>
@@ -101,6 +108,7 @@ export default {
 
 	setup() {
 		const open = ref( false );
+		const isDontShowAgainChecked = ref( false );
 
 		function onDialogClose( result ) {
 			// eslint-disable-next-line no-console
@@ -108,6 +116,7 @@ export default {
 		}
 
 		return {
+			isDontShowAgainChecked,
 			open,
 			onDialogClose
 		};
