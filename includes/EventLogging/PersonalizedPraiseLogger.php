@@ -10,7 +10,7 @@ use MediaWiki\WikiMap\WikiMap;
 
 class PersonalizedPraiseLogger {
 	/** @var string Versioned schema URL for $schema field */
-	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/personalized_praise/1.0.1';
+	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/personalized_praise/1.0.2';
 	/** @var string Stream name for EventLogging::submit */
 	private const STREAM = 'mediawiki.mentor_dashboard.personalized_praise';
 
