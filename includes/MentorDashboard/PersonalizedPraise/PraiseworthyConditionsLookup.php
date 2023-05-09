@@ -5,6 +5,7 @@ namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 use DateInterval;
 use DatePeriod;
 use DateTime;
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWiki\User\UserIdentity;
@@ -130,7 +131,11 @@ class PraiseworthyConditionsLookup {
 	 * @return bool
 	 */
 	public function canUserBePraised( UserIdentity $mentee ): bool {
-		return $this->mentorManager->getMentorshipStateForUser( $mentee ) === MentorManager::MENTORSHIP_ENABLED &&
+		// NOTE: This does not use HomepageHooks::isHomepageEnabled, because it accesses the global
+		// state. Personalized praise is not directly tied to Homepage, so relying on the
+		// preference value alone is sufficient.
+		return $this->userOptionsLookup->getBoolOption( $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE ) &&
+			$this->mentorManager->getMentorshipStateForUser( $mentee ) === MentorManager::MENTORSHIP_ENABLED &&
 			!$this->wasMenteePraised( $mentee ) &&
 			!$this->isMenteeSkipped( $mentee );
 	}
