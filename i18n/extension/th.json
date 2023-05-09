@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Patsagorn Y."
+			"Patsagorn Y.",
+			"Ekminarin"
 		]
 	},
-	"growthexperiments-desc": "ส่วนขยายนี้มีการทดลองที่รับผิดชอบโดยทีม Growth"
+	"growthexperiments-desc": "ส่วนขยายนี้มีการทดลองที่รับผิดชอบโดยทีม Growth",
+	"growthexperiments-edit-config-feedback-headline": "คุณมีความคิดหรือคำถามเกี่ยวกับแบบฟอร์มนี้ไหม?"
 }

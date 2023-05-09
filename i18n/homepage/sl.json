@@ -198,7 +198,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "Številni članki Wikipedije so dolgi samo stavek ali dva. Poiščite več informacij in jih dodajte, da bo članek popolnejši.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Dodajanje povezav je najlažji način urejanja. Povezave pomagajo bralcem pri pomikanju med članki, da se hitreje učijo.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Dodajanje povezav je najlažji način urejanja. Povezave omogočajo bralcem, da kliknejo kaj, o čemer želijo izvedeti več.<br />Povezave predlaga programje, {{GENDER:$1|vi}} pa boste odločili, ali naj se dodajo v članek.",
-	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "Predloge generira stroj. Slike izvirajo iz Wikimedijine zbirke (Wikimedia Commons), zbirke prosto licenciranih slik za wikipedijo.<br />{{GENDER:$1|Vi boste presodili}}, ali naj bodo vključene v članku. Zanje lahko {{GENDER:$1|napišete}} tudi napis.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "Predloge ustvarja programje. Slike izvirajo iz Wikimedijine zbirke (Wikimedia Commons), zbirke prosto licenciranih slik za Wikipedijo.<br />{{GENDER:$1|Vi boste presodili}}, ali naj bodo vključene v članku. Zanje lahko {{GENDER:$1|napišete}} tudi napis.",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Lektoriranje (popravljajte črkovanje, slovnico in ton)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Iskanje virov (v obstoječe članke dodajajte sklice)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "Posodabljanje člankov (dodajanje novih informacij)",
