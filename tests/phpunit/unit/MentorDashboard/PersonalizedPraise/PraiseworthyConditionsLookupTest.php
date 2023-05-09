@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditions;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
@@ -49,8 +50,11 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->expects( $this->atLeastOnce() )
 			->method( 'getBoolOption' )
-			->with( $mentee, PraiseworthyConditionsLookup::WAS_PRAISED_PREF )
-			->willReturn( false );
+			->withConsecutive(
+				[ $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE ],
+				[ $mentee, PraiseworthyConditionsLookup::WAS_PRAISED_PREF ],
+			)
+			->willReturnOnConsecutiveCalls( true, false );
 
 		$menteeImpactMock = $this->createMock( UserImpact::class );
 		$menteeImpactMock->expects( $this->once() )
