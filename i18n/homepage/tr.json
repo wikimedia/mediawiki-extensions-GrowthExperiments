@@ -276,6 +276,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Orta",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Zor",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Düzenleme türlerini seçin",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "Yeni bir madde oluşturmak ister misiniz?",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Konuları seçin",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Yapıldı",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Yapıldı",
@@ -287,6 +288,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Maddeler arasına bağlantılar ekleyin",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Maddeler arasına bağlantılar ekleyin",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Resimsiz bir maddeye görsel ekle",
+	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Önerilen bir bölüm görseli ekleyin",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Makine önerileri",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Daha spesifik sonuçlar için \"Seçilen tüm konuları eşleştir\" seçeneğini belirleyin",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Seçilen tüm konuları eşleştir",
@@ -584,6 +586,9 @@
 	"growthexperiments-tour-newimpact-discovery-description": "Değişiklik {{GENDER:|etkinliğinizden}} daha fazlası eklendi!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Anladım",
 	"growthexperiments-homepage-newimpact-contributions-link": "Tüm değişiklikeri görüntüle",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Önerilen düzenlemeleri deneyin",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Daha fazla bilgi edinin",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Önerilen bir düzenleme yapın",
 	"echo-category-title-ge-newcomer": "Growth özellikleri",
 	"echo-pref-tooltip-ge-newcomer": "Yeni gelenler için görevler ve yeni kullanıcılara yardımcı olmak için tasarlanmış diğer özellikler hakkında beni uyar."
 }

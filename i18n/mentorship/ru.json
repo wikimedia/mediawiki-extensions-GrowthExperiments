@@ -45,7 +45,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Перечислить только подопечных, которые были активны $2 {{PLURAL:$1|последний месяц|последние месяцы|последних месяцев}}.",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Показывать только добавленных в закладки подопечных",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Найти",
-	"growthexperiments-mentor-dashboard-mentee-overview-talk": "обсуждение",
+	"growthexperiments-mentor-dashboard-mentee-overview-talk": "обс.",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "активен $1 назад",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "неизвестно",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Показать $1",
