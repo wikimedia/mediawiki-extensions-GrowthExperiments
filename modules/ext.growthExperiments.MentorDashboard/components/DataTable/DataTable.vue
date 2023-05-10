@@ -144,7 +144,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-growthExperiments-DataTable {
 	&__footer-actions {
@@ -155,8 +155,8 @@ module.exports = exports = {
 	}
 
 	&__table {
-		border: 1px solid #c8ccd1;
-		border-radius: 2px;
+		border: @border-subtle;
+		border-radius: @border-radius-base;
 		overflow: hidden;
 		border-spacing: 0;
 		width: 100%;
@@ -165,9 +165,7 @@ module.exports = exports = {
 		&__icon {
 			grid-column: 2;
 			justify-self: center;
-			// FIXME the output color should be achieved by
-			// modifying the icon color not the opacity;
-			opacity: 0.66;
+			opacity: @opacity-icon-subtle;
 		}
 
 		&__header {
@@ -199,7 +197,7 @@ module.exports = exports = {
 
 		thead {
 			th {
-				border-bottom: 1px solid #c8ccd1;
+				border-bottom: @border-subtle;
 				cursor: pointer;
 			}
 
@@ -215,7 +213,7 @@ module.exports = exports = {
 
 		tbody {
 			td {
-				border-bottom: 1px solid #c8ccd1;
+				border-bottom: @border-subtle;
 			}
 
 			tr:last-child td {

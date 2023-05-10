@@ -1,9 +1,9 @@
+@import 'mediawiki.skin.variables.less';
 @import '../utils/variables.less';
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
 
 .mw-ge-inviteToSuggestedEditsDrawer {
 	.mw-ge-collapsibleDrawer-content {
-		background-color: tint( @wmui-color-accent90, 50% );
+		background-color: tint( @background-color-progressive-subtle, 50% );
 	}
 
 	.oo-ui-panelLayout {
@@ -20,7 +20,7 @@
 		height: 0;
 		padding-bottom: 128/360 * 100%;
 		margin-bottom: 16px;
-		border: 1px solid @wmui-color-base70;
+		border: @border-subtle;
 		background: url( ../../images/suggestededits/leveling-up-ltr.svg ) no-repeat top center;
 		background-size: contain;
 	}

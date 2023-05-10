@@ -1,5 +1,4 @@
-@import 'mediawiki.ui/variables';
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../../utils/mixins.less';
 @import './variables.less';
 
@@ -7,7 +6,7 @@
 // .growthexperiments-mentor-dashboard-container is here only to make the resulting selector
 // specific enough for browsers to prefer rules that are here.
 .growthexperiments-mentor-dashboard-container .growthexperiments-mentor-dashboard-module {
-	border: @colorGray12 @border-width-base @border-style-base;
+	border: @border-subtle;
 	padding: @mentorDashboardModulePadding;
 	margin: 6px;
 	.rel-line-height( @parentFontSize: 14px, @targetLineHeight: 20px );
@@ -17,7 +16,7 @@
 		.rel-font-size( @parentFontSize: 14px, @targetFontSize: 16.8px );
 		line-height: 1.2em;
 		font-weight: bold;
-		color: @colorGray2;
+		color: @color-base;
 		margin-top: 0;
 		padding-top: 0;
 		margin-bottom: 0;
@@ -29,7 +28,7 @@
 		font-family: @mentorDashboardHeaderFont;
 		font-size: 1em;
 		font-weight: bold;
-		color: @wmui-color-base20;
+		color: @color-subtle;
 		padding-bottom: 8px;
 	}
 }

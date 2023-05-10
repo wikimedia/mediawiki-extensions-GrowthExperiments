@@ -79,7 +79,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import 'mediawiki.skin.variables.less';
 /// Typographic scale
 // TODO match WIP line height spec from Codex https://www.figma.com/file/X8pKlndyPaqZg4I3GubQs6/Typography
 @font-size-80: 0.75em; // 12px

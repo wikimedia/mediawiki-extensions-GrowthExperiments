@@ -1,7 +1,6 @@
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/variables.less';
 @import '../utils/mixins.less';
-@import '../../lib/ooui/wikimedia-ui-base';
 
 .mw-ge-homepage-taskTypeSelectionWidget {
 	&-error {
@@ -62,7 +61,7 @@
 	p&-difficulty-level-desc {
 		font-size: 0.925em;
 		font-weight: bold;
-		color: @colorGray2;
+		color: @color-base;
 		padding-top: 5px;
 		flex-basis: 100%;
 	}
@@ -80,7 +79,7 @@
 			padding-left: 6px;
 			margin-top: 4px;
 			.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
-			color: @wmui-color-base20;
+			color: @color-subtle;
 
 			.oo-ui-iconElement-icon {
 				// To overwrite ooui default icon min-width/height
@@ -89,8 +88,8 @@
 				width: 16px;
 				height: 16px;
 				margin: 0 4px 0 0;
-				// @wmui-color-base20
-				opacity: 0.65;
+				// "Equals `#555` on `background-color: `#fff`, closest to `#54595d`."
+				opacity: @opacity-icon-subtle;
 			}
 
 			&-link-recommendation,
@@ -114,13 +113,14 @@
 		margin-top: 18px;
 		font-size: 0.925em;
 		font-weight: bold;
+		// TODO: Replace with Codex token.
 		color: #b32424;
 	}
 
 	&-create-body {
 		margin: 4px 0 12px;
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
-		color: @wmui-color-base20;
+		color: @color-subtle;
 
 		&-desktop {
 			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px );

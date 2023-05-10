@@ -1,4 +1,4 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/mixins.less';
 
 .animation-delay-modifier(@value) {
@@ -16,7 +16,7 @@
 	.animation-delay-modifier( 1200 );
 
 	&::before {
-		background-image: linear-gradient( @background-color-base--disabled 100%, transparent 0 );
+		background-image: linear-gradient( @background-color-disabled-subtle 100%, @background-color-transparent 0 );
 	}
 
 	&--double {
@@ -29,7 +29,7 @@
 
 	&--darken {
 		&::before {
-			background-image: linear-gradient( @background-color-filled--disabled 100%, transparent 0 );
+			background-image: linear-gradient( @background-color-disabled 100%, @background-color-transparent 0 );
 		}
 	}
 }

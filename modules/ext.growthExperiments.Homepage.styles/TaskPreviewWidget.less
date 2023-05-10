@@ -1,4 +1,4 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 
 .growthexperiments-task-preview-widget {
 	.suggested-edits-preview-pager {
@@ -14,12 +14,12 @@
 		&-image {
 			height: 80px;
 			width: 80px;
-			border-radius: 2px;
+			border-radius: @border-radius-base;
 		}
 
 		&-title {
 			line-height: 1.2;
-			color: @wmui-color-base10;
+			color: @color-base;
 		}
 
 		&-description {

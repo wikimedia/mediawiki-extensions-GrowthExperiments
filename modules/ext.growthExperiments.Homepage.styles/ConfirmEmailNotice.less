@@ -1,5 +1,4 @@
-@import 'mediawiki.ui/variables';
-@import '../../lib/ooui/wikimedia-ui-base';
+@import 'mediawiki.skin.variables.less';
 
 .mw-ge-homepage-confirmemail-nojs {
 	text-align: left;
@@ -15,11 +14,11 @@
 }
 
 .client-nojs .mw-ge-homepage-confirmemail-nojs {
-	background-color: @wmui-color-green90;
-	border: 1px solid @wmui-color-green50;
+	background-color: @background-color-success-subtle;
+	border: @border-width-base @border-style-base @border-color-success;
 	font-size: 1em;
 	font-weight: bold;
-	color: @colorGray2;
+	color: @color-base;
 
 	&-desktop {
 		margin: 1em 0;
@@ -31,11 +30,11 @@ body:not( .skin-minerva ) {
 	.mw-notification-area {
 		// Center the confirm email notification without impacting other notifications
 		.mw-notification-type-ge-homepage-confirmemail {
-			background-color: @wmui-color-green90;
-			border: 1px solid @wmui-color-green50;
+			background-color: @background-color-success-subtle;
+			border: @border-width-base @border-style-base @border-color-success;
 			font-size: 1em;
 			font-weight: bold;
-			color: @colorGray2;
+			color: @color-base;
 			position: fixed;
 			left: 50%;
 			box-sizing: border-box;

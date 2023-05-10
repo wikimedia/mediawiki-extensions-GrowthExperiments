@@ -94,7 +94,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import 'mediawiki.skin.variables.less';
 // Hack to render the background in gray for the unactivated state after data is
 // fecthed and the skeleton disappears
 /* stylelint-disable-next-line selector-class-pattern */

@@ -1,12 +1,12 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins';
 @import '../utils/variables.less';
 
 .growthexperiments-homepage-module {
-	border: @colorGray12 @border-width-base @border-style-base;
+	border: @border-subtle;
 	border-radius: @border-radius-base;
 	box-shadow: none;
-	color: @colorGray2;
+	color: @color-base;
 	padding: 16px;
 	box-sizing: border-box;
 
@@ -20,7 +20,7 @@
 		font-size: 1.2em;
 		line-height: 1.2em;
 		font-weight: bold;
-		color: @colorGray2;
+		color: @color-base;
 		margin-top: 0;
 		margin-bottom: 0;
 		padding-bottom: 1 / 1.05em;
@@ -51,17 +51,17 @@
 		font-family: @homepageHeaderFont;
 		font-size: 1em;
 		font-weight: normal;
-		color: @colorGray5;
+		color: @color-subtle;
 		margin: 0;
 	}
 
 	&-text-normal {
-		color: @colorGray2;
+		color: @color-base;
 	}
 
 	&-text-light {
 		font-size: 0.85em;
-		color: @colorGray7;
+		color: @color-subtle;
 	}
 
 	&-footer {

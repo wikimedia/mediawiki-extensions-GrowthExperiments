@@ -1,4 +1,4 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/variables.less';
 @import '../utils/mixins.less';
 
@@ -41,10 +41,11 @@
 
 	&-link {
 		margin-top: 1em;
-		color: @wmui-color-accent50;
+		color: @color-progressive;
 
 		&:visited {
-			color: @wmui-color-accent50;
+			// TODO: This should actually feature `@color-progressive--visited`.
+			color: @color-progressive;
 		}
 	}
 
@@ -58,7 +59,7 @@
 	}
 
 	&-image {
-		box-shadow: inset 0 -1px 0 @wmui-color-base80;
+		box-shadow: inset 0 -1px 0 @border-color-subtle;
 		height: 216px;
 		background-position: center;
 		background-repeat: no-repeat;

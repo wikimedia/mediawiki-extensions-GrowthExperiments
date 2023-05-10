@@ -1,28 +1,28 @@
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins';
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
 @import '../utils/variables.less';
 @import '../utils/mixins.less';
 
 .mw-ge-help-panel-postedit-main {
 	padding: 16px;
-	background-color: fade( @wmui-color-accent90, 50% );
+	background-color: fade( @background-color-progressive-subtle, 50% );
 
 	.mw-ge-help-panel-postedit-subheader2 {
-		color: @wmui-color-base10;
+		color: @color-base;
 		margin-bottom: 1em;
 		line-height: 1.5;
 	}
 }
 
 .mw-ge-help-panel-postedit-trynewtask-image {
-	background: url( ../../images/try-new-task-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
+	background: url( ../../images/try-new-task-ltr.svg ) no-repeat center/40px, #72777d;
 	background-size: cover;
 	width: 100%;
 	height: 216px;
 }
 
 .mw-ge-help-panel-postedit-trynewtask-footer {
-	background-color: fade( @wmui-color-accent90, 50% );
+	background-color: fade( @background-color-progressive-subtle, 50% );
 	text-align: right;
 	padding: 0 16px;
 }
@@ -34,7 +34,7 @@
 	margin: 0;
 	text-align: center;
 	font-weight: bold;
-	border-top: 1px solid @wmui-color-base70;
+	border-top: @border-subtle;
 
 	&-trynewtask,
 	&-nothanks {
@@ -58,11 +58,11 @@
 
 .mw-ge-help-panel-postedit-fallbackCard {
 	display: flex;
-	color: @wmui-color-base20;
-	background-color: @wmui-color-base100;
+	color: @color-subtle;
+	background-color: @background-color-base;
 	padding: 8px;
-	box-shadow: 0 1px 0 @wmui-color-base80;
-	border-radius: 2px;
+	box-shadow: 0 1px 0 @border-color-subtle;
+	border-radius: @border-radius-base;
 
 	&-icon {
 		min-width: 72px;
@@ -83,7 +83,7 @@
 
 	&-header {
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 15.4px, @targetLineHeight: 22px );
-		color: @wmui-color-base10;
+		color: @color-base;
 		margin-bottom: 4px;
 		font-weight: bold;
 	}

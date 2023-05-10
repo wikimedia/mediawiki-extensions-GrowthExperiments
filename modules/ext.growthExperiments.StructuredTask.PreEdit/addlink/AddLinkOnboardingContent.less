@@ -1,4 +1,5 @@
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
+@import '../../utils/variables.less';
 @import '../../utils/mixins.less';
 
 .addlink-onboarding-content {
@@ -8,19 +9,19 @@
 		.rel-font-size-and-line-height( @parentFontSize: @mobileFontSize, @targetFontSize: 14.8px, @targetLineHeight: 22px );
 		font-style: italic;
 		margin-top: 8px;
-		color: @wmui-color-base30;
+		color: @color-subtle;
 	}
 
 	&-example {
 		padding: 12px;
-		background: @wmui-color-base90;
-		border: 1px solid @wmui-color-base80;
+		background-color: @background-color-growth-subtle;
+		border: @border-subtle;
 		box-sizing: border-box;
-		border-radius: 2px;
+		border-radius: @border-radius-base;
 		margin-bottom: 8px;
 
 		.positive {
-			background: @wmui-color-accent90;
+			background-color: @background-color-progressive-subtle;
 			mix-blend-mode: multiply;
 			padding: 2px;
 		}

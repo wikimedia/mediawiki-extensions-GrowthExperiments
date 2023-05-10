@@ -197,7 +197,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import 'mediawiki.skin.variables.less';
 @import '../../../utils/mixins.less';
 
 .ext-growthExperiments-MenteeFiltersForm {

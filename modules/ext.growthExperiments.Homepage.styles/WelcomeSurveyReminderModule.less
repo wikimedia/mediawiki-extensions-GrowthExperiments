@@ -1,12 +1,12 @@
 // Dependencies:
 // - oojs-ui.styles.icons-interactions: loaded via ext.growthExperiments.Help (mentor/helpdesk module)
 
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 
 .growthexperiments-homepage-module-welcomesurveyreminder {
 	width: 100%;
-	background-color: @wmui-color-yellow90;
-	border-color: @wmui-color-yellow50;
+	background-color: @background-color-warning-subtle;
+	border-color: @border-color-warning;
 
 	&.fadeout {
 		visibility: hidden;
@@ -22,7 +22,7 @@
 		display: flex;
 
 		.welcomesurvey-reminder-feedback-icon {
-			// via https://codepen.io/sosuke/pen/Pjoqqp , target color @wmui-color-yellow50
+			// via https://codepen.io/sosuke/pen/Pjoqqp , target `@color-warning`
 			filter: invert( 89% ) sepia( 28% ) saturate( 1249% ) hue-rotate( 335deg ) brightness( 99% ) contrast( 105% );
 		}
 

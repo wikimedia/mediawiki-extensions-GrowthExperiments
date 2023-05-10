@@ -1,4 +1,4 @@
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../../utils/mixins.less';
 @import '../styles/variables.less';
 
@@ -16,7 +16,7 @@
 	}
 
 	h4 {
-		color: @wmui-color-base20;
+		color: @color-subtle;
 	}
 
 	.oo-ui-dropdownWidget {
@@ -25,7 +25,7 @@
 	}
 
 	#growthexperiments-mentor-dashboard-module-mentor-tools-status-away-message {
-		color: @wmui-color-base20;
+		color: @color-subtle;
 		.rel-font-size( @parentFontSize: 14px, @targetFontSize: 13px );
 	}
 
@@ -48,7 +48,7 @@
 			}
 
 			.oo-ui-buttonWidget {
-				opacity: 0.66;
+				opacity: @opacity-icon-subtle;
 				float: right;
 			}
 		}
@@ -58,7 +58,7 @@
 			margin-bottom: 20px;
 			margin-left: 20px;
 			padding-left: 12px;
-			border-left: solid 4px @wmui-color-base50;
+			border-left: 4px @border-style-base @border-color-base;
 		}
 	}
 
@@ -66,7 +66,7 @@
 		// to get out of padding set to the module's container div and be able to apply background-color edge-to-edge
 		margin: 0 @mentorDashboardModulePadding * -1 @mentorDashboardModulePadding * -1;
 		padding: 0 @mentorDashboardModulePadding @mentorDashboardModulePadding;
-		background-color: @wmui-color-base90;
+		background-color: @background-color-growth-subtle;
 		/* stylelint-disable-next-line no-descending-specificity */
 		h4 {
 			padding-top: 17px;
@@ -74,7 +74,7 @@
 
 		.growthexperiments-mentor-dashboard-module-mentor-tools-claim-mentee-footer {
 			margin-bottom: 0;
-			color: @wmui-color-base20;
+			color: @color-subtle;
 			.rel-font-size( @parentFontSize: 14px, @targetFontSize: 13px );
 		}
 	}

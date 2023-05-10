@@ -1,12 +1,11 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins';
 @import '../utils/variables.less';
 @import '../utils/mixins.less';
-@import '../../lib/ooui/wikimedia-ui-base';
 
 .mw-ge-help-panel-processdialog {
 	label > strong {
-		color: @colorGray5;
+		color: @color-subtle;
 	}
 
 	li {
@@ -21,7 +20,7 @@
 	h2 {
 		font-size: 100%;
 		border: 0;
-		color: @colorGray5;
+		color: @color-subtle;
 		line-height: 1.42857143em;
 		padding-top: 10px;
 	}
@@ -44,7 +43,7 @@
 			font-size: 1em;
 			// Vertically center due to changed font-size.
 			line-height: 2.857143em;
-			color: @colorGray2;
+			color: @color-base;
 		}
 	}
 
@@ -163,10 +162,10 @@
 
 	.oo-ui-processDialog-navigation {
 		.oo-ui-processDialog-actions-primary .oo-ui-actionWidget > .oo-ui-buttonElement-button {
-			border-left-color: transparent;
+			border-left-color: @border-color-transparent;
 
 			&:hover {
-				border-left-color: transparent;
+				border-left-color: @border-color-transparent;
 			}
 
 			&:focus {
@@ -187,12 +186,13 @@
 		.oo-ui-processDialog-actions-primary {
 			.oo-ui-widget-enabled.oo-ui-iconElement:not( .oo-ui-labelElement ) {
 				.oo-ui-buttonElement-button {
-					opacity: 0.5;
+					// TODO: Is disabled icon opacity correct here?
+					opacity: @opacity-icon-base--disabled;
 				}
 
 				.oo-ui-buttonElement-button:not( .oo-ui-buttonElement-pressed ):hover {
-					border-color: transparent;
-					background-color: transparent;
+					background-color: @background-color-transparent;
+					border-color: @border-color-transparent;
 				}
 			}
 		}
@@ -207,14 +207,13 @@
 	.mw-ge-help-panel-questioncomplete-notifications-section {
 		margin-bottom: 1em;
 		font-weight: bold;
-		color: @colorGray5;
+		color: @color-subtle;
 	}
 
 	dt {
 		float: left;
 		clear: left;
-		// approximate @colorTextLight for SVG icons (.651 ~= 1 - 0x59/0xff)
-		opacity: 0.651;
+		opacity: @opacity-icon-subtle;
 	}
 
 	dd {
@@ -236,9 +235,9 @@
 		height: 100%;
 
 		&-switch-editor-panel {
-			background-color: @wmui-color-base90;
-			border: solid 1px @wmui-color-base80;
-			border-radius: 2px;
+			background-color: @background-color-growth-subtle;
+			border: @border-subtle;
+			border-radius: @border-radius-base;
 			padding: 6px 12px;
 
 			.oo-ui-iconWidget {
@@ -249,7 +248,7 @@
 		&-quick-start-tips {
 			&-content {
 				padding: 0 16px;
-				color: @colorGray2;
+				color: @color-base;
 
 				.oo-ui-tabPanelLayout {
 					padding: 16px 0 0 0;
@@ -271,17 +270,17 @@
 					}
 
 					mark.positive {
-						background-color: @wmui-color-accent90;
+						background-color: @background-color-progressive-subtle;
 					}
 
 					mark.negative {
-						background-color: @wmui-color-red90;
+						background-color: @background-color-destructive-subtle;
 					}
 
 					&-main,
 					&-main-multiple {
 						line-height: 1.6;
-						color: @wmui-color-base10;
+						color: @color-base;
 
 						.oo-ui-iconWidget {
 							padding: 0 8px;
@@ -291,30 +290,30 @@
 					&-example-label {
 						.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 14.8px, @targetLineHeight: 22px );
 						font-style: italic;
-						color: @wmui-color-base30;
+						color: @color-subtle;
 						margin-top: 8px;
 					}
 
 					&-example {
-						border-radius: 2px;
-						border: solid 1px @wmui-color-base80;
-						background-color: @wmui-color-base90;
+						border-radius: @border-radius-base;
+						border: @border-subtle;
+						background-color: @background-color-growth-subtle;
 						padding: 0;
 
 						&-text {
 							line-height: 1.43;
-							color: @wmui-color-base10;
+							color: @color-base;
 							padding: 12px;
 							margin: 0;
 
 							sup {
-								color: #0645ad;
+								color: @color-progressive;
 							}
 						}
 					}
 
 					&-text {
-						color: @wmui-color-base20;
+						color: @color-subtle;
 						line-height: 1.43;
 					}
 
@@ -339,14 +338,14 @@
 		}
 
 		&-footer {
-			background-color: @wmui-color-base90;
+			background-color: @background-color-growth-subtle;
 			width: 100%;
 
 			&-text {
 				padding: 16px;
 				font-size: 0.929em;
 				line-height: 1.3;
-				color: @colorGray2;
+				color: @color-base;
 			}
 		}
 	}

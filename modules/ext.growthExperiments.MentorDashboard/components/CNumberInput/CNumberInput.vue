@@ -149,8 +149,7 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
-@import '../../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
-@import ( reference ) '../../../../../../resources/lib/codex-design-tokens/theme-wikimedia-ui.less';
+@import 'mediawiki.skin.variables.less';
 // TODO: these should be design tokens.
 @font-size-browser: 16;
 @font-size-base: 14 / @font-size-browser;

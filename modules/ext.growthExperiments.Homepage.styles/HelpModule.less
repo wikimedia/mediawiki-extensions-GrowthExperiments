@@ -1,4 +1,4 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/variables.less';
 
 .growthexperiments-homepage-module-help {
@@ -9,7 +9,7 @@
 		.oo-ui-iconElement {
 			width: 40px;
 			height: 40px;
-			opacity: 0.65;
+			opacity: @opacity-icon-subtle;
 		}
 	}
 
@@ -43,7 +43,7 @@
 	&.growthexperiments-homepage-module-mobile-summary {
 		// Make 'light' text darker against gray background
 		.growthexperiments-homepage-module-text-light {
-			color: @colorGray5;
+			color: @color-subtle;
 		}
 
 		.growthexperiments-homepage-module-section-header {

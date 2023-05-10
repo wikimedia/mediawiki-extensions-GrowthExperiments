@@ -1,11 +1,9 @@
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins.less';
-@import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
 @import '../../utils/variables.less';
 @import '../../utils/mixins.less';
 
 .mw-ge-recommendedLinkToolbarDialog {
-	@iconOpacity: 0.65;
 	@imageThumbnailSize: 56px;
 	@gutterSize: 12px;
 	transition: opacity 250ms;
@@ -24,9 +22,9 @@
 		top: 0;
 		left: 0;
 		width: 400px;
-		background-color: @wmui-color-base100;
-		border: 1px solid #a2a9b1;
-		border-radius: 2px;
+		background-color: @background-color-base;
+		border: @border-base;
+		border-radius: @border-radius-base;
 		filter: drop-shadow( 0 2px 1px rgba( 0, 0, 0, 0.3 ) );
 		transform: translateZ( 0 );
 	}
@@ -41,7 +39,7 @@
 
 		&-label {
 			.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
-			color: @wmui-color-base20;
+			color: @color-subtle;
 		}
 
 		&-text {
@@ -66,22 +64,22 @@
 		.mw-ge-recommendedLinkToolbarDialog-linkPreview-link {
 			.rel-line-height( @parentFontSize: 16px, @targetLineHeight: 16px );
 			font-weight: bold;
-			color: @wmui-color-accent50;
+			color: @color-progressive;
 		}
 
 		// OOUI icon is shown when the article doesn't have an image.
 		.mw-ge-recommendedLinkToolbarDialog-linkPreview-icon {
 			float: left;
 			font-size: 2em;
-			background-color: @wmui-color-base70;
-			border: 0.35714em solid @wmui-color-base70;
-			opacity: 0.4;
+			background-color: @background-color-growth-subtle;
+			border: @border-width-base @border-style-base @border-color-subtle;
+			opacity: @opacity-icon-subtle;
 			margin-bottom: 0;
 			margin-right: @gutterSize;
 			width: @imageThumbnailSize;
 			height: @imageThumbnailSize;
 			box-sizing: border-box;
-			border-radius: 2px;
+			border-radius: @border-radius-base;
 			background-size: 20px;
 			background-position: center;
 		}
@@ -91,20 +89,20 @@
 			.mw-ge-recommendedLinkToolbarDialog-linkPreview-hasImage {
 				background-size: cover;
 				border: unset;
-				opacity: 1;
+				opacity: @opacity-base;
 			}
 		}
 
 		&-extract {
 			.paragraph-ellipsis( @lines: 2, @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
 			margin-top: 4px;
-			color: @wmui-color-base30;
+			color: @color-subtle;
 		}
 	}
 
 	&-introLabel {
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19px );
-		color: @colorGray5;
+		color: @color-subtle;
 		margin: 8px 0;
 	}
 
@@ -159,15 +157,15 @@
 
 		&-prev,
 		&-next {
-			background: @wmui-color-base100;
+			background-color: @background-color-base;
 
-			// Additional specificity to override OOUI's base10 color
+			// Additional specificity to override OOUI's `@color-base` color
 			&.oo-ui-widget-enabled {
 				> .oo-ui-buttonElement-button {
-					color: @wmui-color-base20;
+					color: @color-subtle;
 
 					> .oo-ui-iconElement-icon:not( .oo-ui-image-invert ) {
-						opacity: @iconOpacity;
+						opacity: @opacity-icon-subtle;
 					}
 				}
 			}
@@ -176,7 +174,7 @@
 				> .oo-ui-buttonElement-button {
 					> .oo-ui-iconElement-icon {
 						// Intended opacity with existing disabled state's opacity
-						opacity: calc( @iconOpacity * 0.51 );
+						opacity: calc( @opacity-icon-subtle * @opacity-icon-base--disabled );
 					}
 				}
 			}
@@ -201,11 +199,11 @@
 			width: 8px;
 			height: 8px;
 			margin-right: 8px;
-			border-radius: 50%;
-			background-color: @wmui-color-base70;
+			border-radius: @border-radius-circle;
+			background-color: @background-color-growth-step-progress-dot;
 
 			&-selected {
-				background-color: @wmui-color-accent50;
+				background-color: @background-color-progressive;
 			}
 		}
 	}
@@ -315,16 +313,16 @@
 			}
 
 			&::before {
-				border-left: 10px solid transparent;
-				border-right: 10px solid transparent;
-				border-bottom: 10px solid #a8a8a8;
+				border-left: 10px @border-style-base @border-color-transparent;
+				border-right: 10px @border-style-base @border-color-transparent;
+				border-bottom: 10px @border-style-base @border-color-base;
 				left: 0;
 			}
 
 			&::after {
-				border-left: 9px solid transparent;
-				border-right: 9px solid transparent;
-				border-bottom: 9px solid @activeAnnotationBackgroundColor;
+				border-left: 9px @border-style-base @border-color-transparent;
+				border-right: 9px @border-style-base @border-color-transparent;
+				border-bottom: 9px @border-style-base @activeAnnotationBackgroundColor;
 				left: 1px;
 			}
 		}
@@ -338,7 +336,7 @@
 		}
 
 		&-closeButton {
-			opacity: @iconOpacity;
+			opacity: @opacity-icon-subtle;
 		}
 	}
 

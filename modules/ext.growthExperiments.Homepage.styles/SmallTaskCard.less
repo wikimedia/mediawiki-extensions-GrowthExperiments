@@ -1,5 +1,5 @@
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins';
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
 @import '../utils/variables.less';
 @import '../utils/mixins.less';
 
@@ -8,8 +8,8 @@
 	width: 100%;
 	box-sizing: border-box;
 	padding: 8px;
-	background-color: @wmui-color-base100;
-	box-shadow: 0 1px 0 0 @wmui-color-base80;
+	background-color: @background-color-base;
+	box-shadow: 0 1px 0 0 @border-color-subtle;
 
 	&:hover {
 		// Browser default is to underline links on hover, which looks weird when the
@@ -29,25 +29,25 @@
 
 		&-placeholder {
 			/* @embed */
-			background: url( ../../images/suggestededits/placeholder-image.svg ) no-repeat center/40px, @wmui-color-base80;
+			background: url( ../../images/suggestededits/placeholder-image.svg ) no-repeat center/40px, @background-color-growth-apparent;
 
 			.mw-ge-tasktype-image-recommendation & {
 				/* @embed */
-				background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
+				background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @color-subtle;
 
 				html:lang( he ) & {
 					// Use LTR asset for Hebrew since it contains a question mark
 					/* @noflip */
-					background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
+					background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @color-subtle;
 				}
 			}
 		}
 
 		&-skeleton {
-			.loading-animation (400ms);
+			.loading-animation( 400ms );
 
 			&::before {
-				border-radius: 2px 2px 0 0;
+				border-radius: @border-radius-base @border-radius-base 0 0;
 			}
 		}
 	}
@@ -68,12 +68,12 @@
 	&-title {
 		font-weight: bold;
 		margin-bottom: 4px;
-		color: @wmui-color-base10;
+		color: @color-base;
 
 		&:active {
 			// FIXME per https://phabricator.wikimedia.org/T307637#7909619 this color
 			// is not defined yet
-			color: @wmui-color-base10;
+			color: @color-base;
 		}
 
 		&.skeleton {
@@ -88,7 +88,7 @@
 	&-description {
 		text-overflow: ellipsis;
 		overflow: hidden;
-		color: @wmui-color-base20;
+		color: @color-subtle;
 
 		&.skeleton {
 			.loading-animation (800ms);
@@ -113,14 +113,14 @@
 		box-sizing: border-box;
 		justify-self: flex-start;
 		padding-right: 5px;
-		color: @wmui-color-base20;
+		color: @color-subtle;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space: nowrap;
 
 		.oo-ui-iconWidget {
 			margin-right: 8px;
-			opacity: 0.65;
+			opacity: @opacity-icon-subtle;
 		}
 
 		&.skeleton {
@@ -188,8 +188,8 @@
 		}
 
 		&-footer {
-			border-top: 1px solid @wmui-color-base70;
-			background-color: @wmui-color-base90;
+			border-top: @border-subtle;
+			background-color: @background-color-growth-subtle;
 
 			// need win over OOUI-s four-class selector in specificity, but works out fine here
 			.oo-ui-buttonElement-button {

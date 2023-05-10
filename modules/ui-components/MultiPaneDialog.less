@@ -1,4 +1,4 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/variables.less';
 @import '../utils/mixins.less';
 
@@ -15,7 +15,7 @@
 	.oo-ui-window-head,
 	.oo-ui-window-body,
 	.oo-ui-window-foot {
-		color: @wmui-color-base10;
+		color: @color-base;
 	}
 
 	&-fixed-content {
@@ -25,7 +25,7 @@
 
 	&-progress-indicator {
 		padding: 0 16px;
-		color: @wmui-color-base20;
+		color: @color-subtle;
 	}
 
 	&-progress-indicator,
@@ -35,22 +35,22 @@
 	}
 
 	&-dot {
-		border-radius: 50%;
+		border-radius: @border-radius-circle;
 		width: 8px;
 		height: 8px;
 		margin-right: 8px;
-		background-color: @wmui-color-base70;
+		background-color: @background-color-growth-step-progress-dot;
 		display: inline-block;
 
 		&.dot-completed {
-			background-color: @wmui-color-base10;
+			background-color: @color-base;
 		}
 	}
 
 	.oo-ui-panelLayout {
 		transition: left 500ms;
 		left: 0;
-		background: @wmui-color-base100;
+		background-color: @background-color-base;
 		width: 100%;
 		box-sizing: border-box;
 

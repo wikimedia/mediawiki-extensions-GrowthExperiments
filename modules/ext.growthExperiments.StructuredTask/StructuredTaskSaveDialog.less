@@ -1,10 +1,10 @@
-@import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/mixins.less';
 
 .ge-structuredTask-mwSaveDialog {
 	.ge-structuredTask-copyrightwarning {
+		color: @color-subtle;
 		margin: 16px 0 0;
-		color: @wmui-color-base20;
 		padding-bottom: 16px;
 
 		.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px );
@@ -17,7 +17,8 @@
 	&-watchlistCheckbox {
 		padding: 16px 0;
 		margin: 0;
-		border-bottom: 1px solid @wmui-color-base80;
+		// TODO: Revisit border-color, this should probably be `@border-color-subtle`.
+		border-bottom: @border-width-base @border-style-base #eaecf0;
 
 		.ve-ui-mwSaveDialog-field-wpWatchthis,
 		.ve-ui-mwSaveDialog-field-wpWatchlistExpiry {

@@ -1,7 +1,7 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
 @import '../utils/variables.less';
 
-@help-panel-position-bottom: 6em;
+@bottom-help-panel-position: 6em;
 
 .mw-ge-help-panel-widget-overlay {
 	// Since we don't show the help panel button in print media, let's hide the panel too.
@@ -10,26 +10,26 @@
 	}
 	position: fixed;
 	right: 1em;
-	bottom: @help-panel-position-bottom;
+	bottom: @bottom-help-panel-position;
 	z-index: 2;
-	border-radius: 2px;
+	border-radius: @border-radius-base;
 }
 
 .mw-ge-help-panel-popup .oo-ui-dialog {
 	font-size: 0.875em;
-	color: @colorGray2;
+	color: @color-base;
 	background-color: @background-color-base;
-	border-radius: 2px;
-	border: 1px solid @colorGray12;
+	border-radius: @border-radius-base;
+	border: @border-subtle;
 	box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
 	transition: bottom @help-panel-transition-duration, opacity @help-panel-transition-duration;
 	position: relative;
-	bottom: -@help-panel-position-bottom - 1em;
+	bottom: -@bottom-help-panel-position - 1em;
 	opacity: 0;
 
 	&.oo-ui-window-setup {
 		bottom: 0;
-		opacity: 1;
+		opacity: @opacity-base;
 	}
 }
 
@@ -42,7 +42,7 @@
 	0% {
 		// Start right below the bottom of the viewport, by moving down 100% of the height of
 		// the element, plus another 6em to account for the bottom: 6em; positioning rule
-		transform: translateY( calc( ~'100% + @{help-panel-position-bottom}' ) );
+		transform: translateY( calc( ~'100% + @{bottom-help-panel-position}' ) );
 		opacity: 0;
 	}
 

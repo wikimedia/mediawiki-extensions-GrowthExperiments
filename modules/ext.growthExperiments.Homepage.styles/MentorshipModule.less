@@ -1,4 +1,5 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
+@import '../utils/variables.less';
 
 .growthexperiments-homepage-mentorship,
 .growthexperiments-homepage-module-mentorship-optin {
@@ -8,7 +9,7 @@
 		.oo-ui-iconElement {
 			width: 40px;
 			height: 40px;
-			opacity: 0.65;
+			opacity: @opacity-icon-subtle;
 			margin-right: 1em;
 		}
 	}
@@ -31,17 +32,17 @@
 
 	&-editcount,
 	&-lastactive {
-		color: @colorGray7;
+		color: @color-subtle;
 		font-size: 0.85em;
 	}
 
 	&-intro {
 		margin: 0 8px 16px;
 		font-size: 1em;
-		border-left: solid 4px @colorGray10;
+		border-left: 4px @border-style-base @border-color-base;
 		padding: 8px;
 		font-style: normal;
-		color: @colorGray2;
+		color: @color-base;
 	}
 }
 
@@ -59,8 +60,8 @@
 			font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
 			margin: 8px;
 			padding: 8px 16px;
-			background-color: @colorBaseInverted;
-			box-shadow: 0 -4em 0 128px @colorBaseInverted;
+			background-color: @background-color-base;
+			box-shadow: 0 -4em 0 128px @color-inverted;
 		}
 
 		&-username {
@@ -78,7 +79,7 @@ body.mw-special-Homepage {
 		// Subtract 1em for margin-top on .overlay-content (in Homepage.less)
 		// Subtract 3em for padding-top on .overlay-content (in Minerva)
 		height: calc( ~'100vh - ( 1em + 3em )' );
-		background-color: @colorGray15;
+		background-color: @background-color-growth-subtle;
 		padding: 16px;
 	}
 
@@ -98,7 +99,7 @@ body.mw-special-Homepage {
 
 .growthexperiments-homepage-module-mobile-summary {
 	.growthexperiments-homepage-module-mentorship {
-		background-color: @colorGray15;
+		background-color: @background-color-growth-subtle;
 	}
 
 	.growthexperiments-homepage-mentorship {
@@ -109,7 +110,7 @@ body.mw-special-Homepage {
 		&-editcount,
 		&-lastactive {
 			font-size: 0.8em;
-			color: @colorGray5;
+			color: @color-subtle;
 		}
 	}
 }

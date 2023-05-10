@@ -1,16 +1,7 @@
-@import 'mediawiki.ui/variables';
+@import 'mediawiki.skin.variables.less';
+@import '../utils/variables.less';
 
 // Copied from the MachineVision extension
-
-// Variable definitions from style-variables.less in the MachineVision extension
-@base0: @colorGray1;
-@base10: @colorGray2;
-@base50: @colorGray10;
-@base90: @colorGray15;
-@accent10: #2a4b8d;
-@accent90: #eaf3ff;
-@transition-duration-base: 100ms;
-@suggestion-border-width: 1px;
 
 .fade-in( @duration ) {
 	@keyframes fadeIn {
@@ -34,25 +25,26 @@
 	}
 
 	.mw-ge-suggestion {
-		background-color: @base90;
-		border: @suggestion-border-width solid @base50;
-		color: @base10;
+		background-color: @background-color-growth-subtle;
+		border: @border-base;
+		color: @color-base;
 		cursor: pointer;
 		padding: 6px 20px;
 		border-radius: 18px;
 		white-space: nowrap;
-		transition: color @transition-duration-base;
+		transition-property: color;
+		transition-duration: @transition-duration-base;
 
 		&:hover,
 		&:focus {
-			color: @base0;
+			color: @color-emphasized;
 		}
 	}
 
 	.mw-ge-suggestion--confirmed {
-		background-color: @accent90;
-		border-color: @accent10;
-		color: @base0;
+		background-color: @background-color-progressive-subtle;
+		border-color: @border-color-progressive--active;
+		color: @color-emphasized;
 		position: relative;
 
 		.oo-ui-labelWidget {

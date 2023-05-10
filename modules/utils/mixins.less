@@ -1,9 +1,11 @@
+@import 'mediawiki.skin.variables.less';
 @import './variables.less';
+
 // displays a grey rectangle with a running gradient
 /* stylelint-disable-next-line selector-list-comma-newline-after */
-.loading-animation ( @delay, @color: @colorGray14 ) {
+.loading-animation ( @param-delay, @param-background-color: @background-color-growth-apparent ) {
 	animation: loading 2s ease infinite;
-	animation-delay: @delay;
+	animation-delay: @param-delay;
 
 	&::before {
 		content: '';
@@ -11,7 +13,7 @@
 		height: 100%;
 		float: left;
 		background-repeat: no-repeat;
-		background-image: linear-gradient( @color 100%, transparent 0 );
+		background-image: linear-gradient( @param-background-color 100%, @background-color-transparent 0 );
 		background-size: 100% 100%;
 		background-position: 0 0;
 	}
@@ -96,17 +98,17 @@
 * Use the mixin in the button class instead of passing
 * specific class for the button AND the icon.
 */
-.codex-icon-only-button( @color: @color-subtle, @size: 20px ) {
+.codex-icon-only-button( @param-color: @color-subtle, @param-size: 20px ) {
 	// Overwrite .cdx-button:enabled color
 	&.cdx-button {
-		color: @color;
+		color: @param-color;
 
 		.cdx-icon {
-			color: @color;
+			color: @param-color;
 
 			> svg {
-				width: @size;
-				height: @size;
+				width: @param-size;
+				height: @param-size;
 			}
 		}
 	}
@@ -114,7 +116,7 @@
 
 .popover-base() {
 	padding: @spacing-25 @spacing-75;
-	border: @border-width-base @border-style-base @border-color-base;
+	border: @border-base;
 	box-shadow: @box-shadow-drop-medium;
 	border-radius: @border-radius-base;
 	background-color: @background-color-base;
