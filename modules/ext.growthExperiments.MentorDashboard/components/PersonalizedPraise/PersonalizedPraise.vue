@@ -1,11 +1,11 @@
 <template>
 	<section class="ext-growthExperiments-PersonalizedPraise">
-		<p>
-			{{ $i18n(
-				'growthexperiments-mentor-dashboard-personalized-praise-metrics',
+		<p
+			v-i18n-html:growthexperiments-mentor-dashboard-personalized-praise-metrics="[
 				$filters.convertNumber( settings.minEdits ),
 				$filters.convertNumber( settings.days )
-			) }}
+			]"
+		>
 		</p>
 		<personalized-praise-settings
 			:settings-data="settings"

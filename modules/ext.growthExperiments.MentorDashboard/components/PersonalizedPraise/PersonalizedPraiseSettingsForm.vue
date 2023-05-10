@@ -144,7 +144,7 @@ module.exports = exports = {
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks'
 					),
-					value: 15
+					value: 14
 				},
 				{
 					label: this.$i18n(
