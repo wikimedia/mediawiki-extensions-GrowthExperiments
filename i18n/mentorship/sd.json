@@ -10,6 +10,9 @@
 	"growthexperiments-mentor-dashboard-must-be-mentor": "مينٽور ڊيشبورڊ کي فعال ڪرڻ لاءِ، {{GENDER:|توھان کي}} پھريان [[$1| بطور ھڪ مينٽور جي انرول ٿيڻ]] جي ضرورت آھي.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "ان کان اڳ جو مينٽور ڊيشبورڊ استعمال ڪري سگهجي مينٽور فھرست کي پھريان ڪنفگر ڪرڻ جي ضرورت آھي. ڪو منتظم [[Special:EditGrowthConfig]] کي استعمال ڪري ايئن ڪري سگهي ٿو.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "ڪنجي",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "سنوارن جو ڳاڻيٽو",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "سنوارن جو ڳاڻيٽو",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "واڌويجهہ جا اوزار",
 	"growthexperiments-rcfilters-mentorship-title": "مينٽورشپ",
 	"growthexperiments-quit-mentorship-title": "مينٽورشپ ڇڏيو",
 	"echo-category-title-ge-mentorship": "مينٽورشپ"

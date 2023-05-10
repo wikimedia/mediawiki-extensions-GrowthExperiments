@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jinoytommanjaly"
+			"Jinoytommanjaly",
+			"Akbarali"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ഇത് എന്താണ്?]])",
@@ -16,5 +17,5 @@
 	"growthexperiments-signupcampaign-body": "വിക്കിപീഡിയ എഡിറ്റുചെയ്യുന്നത് ഒരു ലിങ്ക് ചേർക്കുന്നതോ വാക്ക് മാറ്റുന്നതോ പോലെ ലളിതമാണ്. നിങ്ങളുടെ അക്കൗണ്ട് സൃഷ്‌ടിച്ചതിന് ശേഷം {{GENDER:|നിങ്ങളുടെ}} താൽപ്പര്യമുള്ള വിഷയങ്ങളിലെ ലേഖനങ്ങൾക്കുള്ള നിർദ്ദേശങ്ങൾ നേടുക!",
 	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|നിങ്ങളുടെ}} താൽപ്പര്യങ്ങളിൽ നിർദ്ദേശിച്ച ലേഖനങ്ങൾ",
 	"growthexperiments-signupcampaign-bullet2": "പരിചയസമ്പന്നനായ ഒരു എഡിറ്ററുടെ സഹായം തേടുക",
-	"growthexperiments-signupcampaign-bullet3": "ചെറിയ, എളുപ്പമുള്ള എഡിറ്റുകൾ ഉപയോഗിച്ച് ആരംഭിക്കുക"
+	"growthexperiments-signupcampaign-bullet3": "ചെറിയ, എളുപ്പമുള്ള എഡിറ്റുകൾ ഉപയോഗിച്ച് തുടങ്ങുക"
 }
