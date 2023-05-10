@@ -4,8 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use ApiRawMessage;
 use File;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Language\RawMessage;
@@ -76,11 +75,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 	/** @inheritDoc */
 	public function get( LinkTarget $title, TaskType $taskType ) {
-		Assert::parameterType( [
-			ImageRecommendationTaskType::class,
-			SectionImageRecommendationTaskType::class,
-		], $taskType, '$taskType' );
-		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
+		'@phan-var ImageRecommendationBaseTaskType $taskType';
+
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$titleText = $title->getPrefixedDBkey();
 		$titleTextSafe = strip_tags( $titleText );
@@ -153,7 +150,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/**
 	 * Process the data returned by the Image Suggestions API and return an ImageRecommendation
 	 * or an error.
-	 * @param TaskType $taskType
+	 * @param ImageRecommendationBaseTaskType $taskType
 	 * @param LinkTarget $title Title for which to generate the image recommendation for.
 	 *   The title in the API response will be ignored.
 	 * @param string $titleText Title text, for logging.
@@ -166,7 +163,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @throws \MWException
 	 */
 	public static function processApiResponseData(
-		TaskType $taskType,
+		ImageRecommendationBaseTaskType $taskType,
 		LinkTarget $title,
 		string $titleText,
 		array $suggestionData,
@@ -174,11 +171,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		?AddImageSubmissionHandler $imageSubmissionHandler,
 		int $maxSuggestionsToProcess = 1
 	) {
-		Assert::parameterType( [
-			ImageRecommendationTaskType::class,
-			SectionImageRecommendationTaskType::class,
-		], $taskType, '$taskType' );
-		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
+		'@phan-var ImageRecommendationBaseTaskType $taskType';
 
 		$suggestionFilters = $taskType->getSuggestionFilters();
 		$titleTextSafe = strip_tags( $titleText );

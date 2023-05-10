@@ -10,9 +10,8 @@ use Config;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendation;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use IApiMessage;
 use MediaWiki\Title\TitleFactory;
@@ -71,11 +70,8 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		$params = $this->extractRequestParams();
 		$enabledTaskTypes = $this->configurationLoader->getTaskTypes();
 		$taskType = $enabledTaskTypes[$params['tasktype']] ?? null;
-		Assert::parameterType( [
-			ImageRecommendationTaskType::class,
-			SectionImageRecommendationTaskType::class,
-		], $taskType, '$taskType' );
-		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
+		'@phan-var ImageRecommendationBaseTaskType $taskType';
 
 		$continueTitle = null;
 		if ( $params['continue'] !== null ) {

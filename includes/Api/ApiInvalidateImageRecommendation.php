@@ -10,9 +10,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
@@ -67,11 +66,8 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$taskType = $this->configurationLoader->getTaskTypes()[ $params['tasktype'] ] ?? null;
-		Assert::parameterType( [
-			ImageRecommendationTaskType::class,
-			SectionImageRecommendationTaskType::class,
-		], $taskType, '$taskType' );
-		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
+		'@phan-var ImageRecommendationBaseTaskType $taskType';/** @var ImageRecommendationBaseTaskType $taskType */
 		$titleValue = $params['title'];
 
 		$page = $this->titleFactory->newFromLinkTarget( $titleValue )->toPageIdentity();
