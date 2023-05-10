@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
 use RequestContext;
@@ -110,7 +111,12 @@ class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler 
 	}
 
 	/** @inheritDoc */
-	public function getSuggestionDataFromApiResponse( array $apiResponse ): array {
+	public function getSuggestionDataFromApiResponse( array $apiResponse, TaskType $taskType ): array {
+		if ( $taskType->getId() !== ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+			// The MVP API does not provide section-level recommendations.
+			return [];
+		}
+
 		if ( !$apiResponse['pages'] || !$apiResponse['pages'][0]['suggestions'] ) {
 			return [];
 		}

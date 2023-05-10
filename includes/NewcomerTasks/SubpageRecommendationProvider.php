@@ -35,7 +35,7 @@ abstract class SubpageRecommendationProvider implements RecommendationProvider {
 	 */
 	protected static $serviceName = null;
 
-	/** @var string Name of the Recommendation subclass. Subclasses of this class must provide this. */
+	/** @var string|array Name of the Recommendation subclass(es). Subclasses of this class must provide this. */
 	protected static $recommendationTaskTypeClass = null;
 
 	/** @var WikiPageFactory */
@@ -47,11 +47,17 @@ abstract class SubpageRecommendationProvider implements RecommendationProvider {
 	/**
 	 * Create the recommendation object from the JSON representation.
 	 * @param Title $title The page the recommendation is for.
+	 * @param TaskType $taskType
 	 * @param array $data Recommendation data (ie. the content of the JSON subpage).
 	 * @param array $suggestionFilters
 	 * @return Recommendation|StatusValue
 	 */
-	abstract public function createRecommendation( Title $title, array $data, array $suggestionFilters = [] );
+	abstract public function createRecommendation(
+		Title $title,
+		TaskType $taskType,
+		array $data,
+		array $suggestionFilters = []
+	);
 
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
@@ -104,7 +110,7 @@ abstract class SubpageRecommendationProvider implements RecommendationProvider {
 		// Turn $title into a real Title
 		$title = $this->wikiPageFactory->newFromLinkTarget( $title )->getTitle();
 
-		return $this->createRecommendation( $title, $data, $taskType->getSuggestionFilters() );
+		return $this->createRecommendation( $title, $taskType, $data, $taskType->getSuggestionFilters() );
 	}
 
 	/**

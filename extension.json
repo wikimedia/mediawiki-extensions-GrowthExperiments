@@ -2588,7 +2588,7 @@
 					"services": [
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
 						"TitleParser",
-						"GrowthExperimentsSectionImageRecommendationProvider",
+						"GrowthExperimentsImageRecommendationProvider",
 						"GrowthExperimentsAddSectionImageSubmissionHandler"
 					]
 				},

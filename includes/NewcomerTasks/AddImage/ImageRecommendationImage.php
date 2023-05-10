@@ -25,6 +25,11 @@ class ImageRecommendationImage implements JsonSerializable {
 	 * linked Wikidata item (via the P373 property).
 	 */
 	public const SOURCE_COMMONS = 'commons';
+	/**
+	 * The recommendation is based on the image property (P18 or similar) of a
+	 * Wikidata item that has been guessed by analyzing the text of an article section.
+	 */
+	public const SOURCE_WIKIDATA_SECTION = 'wikidata-section';
 
 	/** @var LinkTarget */
 	private $imageTitle;

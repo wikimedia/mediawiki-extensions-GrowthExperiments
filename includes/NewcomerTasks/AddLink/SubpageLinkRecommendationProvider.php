@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\SubpageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use StatusValue;
 use Title;
 
@@ -32,7 +33,12 @@ class SubpageLinkRecommendationProvider
 	 * @inheritDoc
 	 * @return LinkRecommendation|StatusValue
 	 */
-	public function createRecommendation( Title $title, array $data, array $suggestionFilters = [] ) {
+	public function createRecommendation(
+		Title $title,
+		TaskType $taskType,
+		array $data,
+		array $suggestionFilters = []
+	) {
 		return new LinkRecommendation(
 			$title,
 			$title->getArticleID(),

@@ -7,6 +7,8 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubpageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
 use RequestContext;
@@ -56,13 +58,21 @@ class SubpageImageRecommendationProvider
 	protected static $serviceName = 'GrowthExperimentsImageRecommendationProvider';
 
 	/** @inheritDoc */
-	protected static $recommendationTaskTypeClass = ImageRecommendationTaskType::class;
+	protected static $recommendationTaskTypeClass = [
+		ImageRecommendationTaskType::class,
+		SectionImageRecommendationTaskType::class,
+	];
 
 	/**
 	 * @inheritDoc
 	 * @return ImageRecommendation|StatusValue
 	 */
-	public function createRecommendation( Title $title, array $data, array $suggestionFilters = [] ) {
+	public function createRecommendation(
+		Title $title,
+		TaskType $taskType,
+		array $data,
+		array $suggestionFilters = []
+	) {
 		if ( isset( $data['pages'] ) || isset( $data['rows'] ) ) {
 			// This is the format used by the Image Suggestions API. It is not really useful
 			// as a serialization format but easy to obtain for actual wiki pages so allow it
@@ -70,7 +80,7 @@ class SubpageImageRecommendationProvider
 			return ServiceImageRecommendationProvider::processApiResponseData(
 				$title,
 				$title->getPrefixedText(),
-				$this->apiHandler->getSuggestionDataFromApiResponse( $data ),
+				$this->apiHandler->getSuggestionDataFromApiResponse( $data, $taskType ),
 				$this->metadataProvider,
 				null,
 				$suggestionFilters

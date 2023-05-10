@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -44,7 +45,8 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 
 	/** @inheritDoc */
 	public function get( LinkTarget $title, TaskType $taskType ) {
-		Assert::parameterType( ImageRecommendationTaskType::class, $taskType, '$taskType' );
+		$allowedTaskTypes = [ ImageRecommendationTaskType::class, SectionImageRecommendationTaskType::class ];
+		Assert::parameterType( $allowedTaskTypes, $taskType, '$taskType' );
 		return self::getWithSetCallback(
 			$this->cache,
 			$this->imageRecommendationProvider,

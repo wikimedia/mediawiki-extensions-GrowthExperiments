@@ -5,6 +5,12 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 use MediaWiki\Json\JsonUnserializer;
 
 class SectionImageRecommendationTaskType extends TaskType {
+
+	public const VALID_MEDIA_TYPES = [
+		MEDIATYPE_BITMAP,
+		MEDIATYPE_DRAWING
+	];
+
 	public const DEFAULT_SETTINGS = [];
 
 	/** @inheritDoc */
@@ -21,6 +27,18 @@ class SectionImageRecommendationTaskType extends TaskType {
 	) {
 		parent::__construct( $id, $difficulty );
 		$settings += self::DEFAULT_SETTINGS;
+	}
+
+	/**
+	 * Return the filters to apply to the recommendation
+	 *
+	 * @return array an array with the following fields:
+	 *   - validMediaTypes: an array of valid media types [ 'BITMAP' ]
+	 */
+	public function getSuggestionFilters(): array {
+		return [
+			'validMediaTypes' => self::VALID_MEDIA_TYPES
+		];
 	}
 
 	/** @inheritDoc */
