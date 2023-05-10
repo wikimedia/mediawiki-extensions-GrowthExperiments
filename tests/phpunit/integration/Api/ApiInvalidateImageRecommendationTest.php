@@ -9,6 +9,8 @@ use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Page\ProperPageIdentity;
 
 /**
@@ -28,6 +30,7 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 
 	public function testExecute() {
 		$pageName = 'Title1';
+		$this->insertConfigPage();
 		$this->insertPage( $pageName );
 		$this->setupTaskSet( [ $pageName ] );
 		$this->setupAddImageSubmissionHandler();
@@ -78,6 +81,15 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 			'action' => 'growthinvalidateimagerecommendation',
 			'title' => 'Blah'
 		] );
+	}
+
+	private function insertConfigPage() {
+		$this->insertPage( 'MediaWiki:NewcomerTasks.json', json_encode( [
+			ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => [
+				'type' => ImageRecommendationTaskTypeHandler::ID,
+				'group' => TaskType::DIFFICULTY_EASY,
+			],
+		] ) );
 	}
 
 	private function setupTaskSet( array $titles = [] ) {

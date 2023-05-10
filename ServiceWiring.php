@@ -121,7 +121,6 @@ return [
 			$cirrusSearchFactory,
 			$geServices->getTaskSuggesterFactory(),
 			$geServices->getNewcomerTasksUserOptionsLookup(),
-			$geServices->getNewcomerTasksConfigurationLoader(),
 			$services->getMainWANObjectCache(),
 			ExtensionRegistry::getInstance()->isLoaded( 'EventBus' ) ?
 				$geServices->getEventGateImageSuggestionFeedbackUpdater() : null,

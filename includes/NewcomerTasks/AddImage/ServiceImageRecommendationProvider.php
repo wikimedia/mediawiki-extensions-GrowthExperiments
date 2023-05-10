@@ -76,16 +76,18 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 	/** @inheritDoc */
 	public function get( LinkTarget $title, TaskType $taskType ) {
+		Assert::parameterType( [
+			ImageRecommendationTaskType::class,
+			SectionImageRecommendationTaskType::class,
+		], $taskType, '$taskType' );
 		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
-		$allowedTaskTypes = [ ImageRecommendationTaskType::class, SectionImageRecommendationTaskType::class ];
-		Assert::parameterType( $allowedTaskTypes, $taskType, '$taskType' );
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$titleText = $title->getPrefixedDBkey();
 		$titleTextSafe = strip_tags( $titleText );
 		if ( !$title->exists() && !$this->geDeveloperSetup ) {
 			// These errors might show up to the end user, but provide no useful information;
 			// they are merely there to support debugging. So we keep them English-only to
-			// to reduce the translator burden.
+			// reduce the translator burden.
 			return StatusValue::newFatal( new RawMessage(
 				'Recommendation could not be loaded for non-existing page: $1',
 				[ $titleTextSafe ]
@@ -131,12 +133,12 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 		$startTime = microtime( true );
 		$responseData = self::processApiResponseData(
+			$taskType,
 			$title,
 			$titleText,
 			$imageRecommendationDatas,
 			$this->metadataProvider,
 			$this->imageSubmissionHandler,
-			$taskType->getSuggestionFilters(),
 			$this->maxSuggestionsToProcess
 		);
 
@@ -151,27 +153,34 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/**
 	 * Process the data returned by the Image Suggestions API and return an ImageRecommendation
 	 * or an error.
+	 * @param TaskType $taskType
 	 * @param LinkTarget $title Title for which to generate the image recommendation for.
 	 *   The title in the API response will be ignored.
 	 * @param string $titleText Title text, for logging.
 	 * @param ImageRecommendationData[] $suggestionData
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
 	 * @param AddImageSubmissionHandler|null $imageSubmissionHandler
-	 * @param array $suggestionFilters
 	 * @param int $maxSuggestionsToProcess Maximum number of valid suggestions to process and return
-	 * with an ImageRecommendation object.
+	 *   with an ImageRecommendation object.
 	 * @return ImageRecommendation|StatusValue
 	 * @throws \MWException
 	 */
 	public static function processApiResponseData(
+		TaskType $taskType,
 		LinkTarget $title,
 		string $titleText,
 		array $suggestionData,
 		ImageRecommendationMetadataProvider $metadataProvider,
 		?AddImageSubmissionHandler $imageSubmissionHandler,
-		array $suggestionFilters = [],
 		int $maxSuggestionsToProcess = 1
 	) {
+		Assert::parameterType( [
+			ImageRecommendationTaskType::class,
+			SectionImageRecommendationTaskType::class,
+		], $taskType, '$taskType' );
+		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+
+		$suggestionFilters = $taskType->getSuggestionFilters();
 		$titleTextSafe = strip_tags( $titleText );
 		if ( count( $suggestionData ) === 0 ) {
 			return StatusValue::newFatal( new ApiRawMessage(
@@ -234,6 +243,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		}
 		if ( !$images && $imageSubmissionHandler ) {
 			$imageSubmissionHandler->invalidateRecommendation(
+				$taskType,
 				Title::newFromLinkTarget( $title )->toPageIdentity(),
 				// We need to pass a user ID for event logging purposes. We can't easily
 				// access a user ID here; passing 0 for an anonymous user seems OK.

@@ -139,6 +139,7 @@
 		"growthinvalidateimagerecommendation": {
 			"class": "GrowthExperiments\\Api\\ApiInvalidateImageRecommendation",
 			"services": [
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsAddImageSubmissionHandler",
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
@@ -230,6 +231,7 @@
 			"services": [
 				"TitleFactory",
 				"RevisionLookup",
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsAddImageSubmissionHandler"
 			]
 		},

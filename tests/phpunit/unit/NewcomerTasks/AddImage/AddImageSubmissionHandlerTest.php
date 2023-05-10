@@ -4,7 +4,6 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use CirrusSearch\CirrusSearch;
 use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
@@ -25,46 +24,41 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			return $this->createMock( CirrusSearch::class );
 		};
 		$imageTaskType = new ImageRecommendationTaskType( 'image', TaskType::DIFFICULTY_EASY );
-		$configurationLoaderMock = $this->createMock( ConfigurationLoader::class );
-		$configurationLoaderMock->method( 'getTaskTypes' )->willReturn( [
-			'image-recommendation' => $imageTaskType
-		] );
 		$handler = new AddImageSubmissionHandler(
 			$cirrusSearchFactoryMock,
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
 			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
-			$configurationLoaderMock,
 			$this->createMock( WANObjectCache::class ),
 			$this->createMock( EventGateImageSuggestionFeedbackUpdater::class )
 		);
 		$page = new PageIdentityValue( 1, 2, 3, '4' );
 		$user = new UserIdentityValue( 1, 'Alice' );
 
-		$status = $handler->validate( $page, $user, 1, [] );
+		$status = $handler->validate( $imageTaskType, $page, $user, 1, [] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertTrue( $status->hasMessage( 'apierror-growthexperiments-addimage-handler-accepted-missing' ) );
 
-		$status = $handler->validate( $page, $user, 1, [
+		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => null
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertTrue( $status->hasMessage( 'apierror-growthexperiments-addimage-handler-accepted-wrongtype' ) );
 
-		$status = $handler->validate( $page, $user, 1, [
+		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => false,
 			'reasons' => [ 1 ]
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertTrue( $status->hasMessage( 'apierror-growthexperiments-addimage-handler-reason-invaliditem' ) );
 
-		$status = $handler->validate( $page, $user, 1, [
+		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => false,
 			'reasons' => [ 'invalid-reason' ]
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertTrue( $status->hasMessage( 'apierror-growthexperiments-addimage-handler-reason-invaliditem' ) );
 
-		$status = $handler->validate( $page, $user, 1, [
+		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => true,
 			'reasons' => [],
 			'caption' => 'fail'
@@ -72,7 +66,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertTrue( $status->hasMessage( 'growthexperiments-addimage-caption-warning-tooshort' ) );
 
-		$status = $handler->validate( $page, $user, 1, [
+		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => false,
 			'reasons' => [ 'noinfo' ],
 			'filename' => 'SomeFile.jpg',
@@ -80,7 +74,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertArrayEquals( [ false, [ 'noinfo' ], 'SomeFile.jpg' ], $status->getValue() );
 
-		$status = $handler->validate( $page, $user, 1, [
+		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => true,
 			'reasons' => [],
 			'caption' => 'succeed',

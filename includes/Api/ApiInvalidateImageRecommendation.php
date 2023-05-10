@@ -6,12 +6,18 @@ use ApiBase;
 use ApiMain;
 use ApiUsageException;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Title\TitleFactory;
+use Wikimedia\Assert\Assert;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -22,15 +28,16 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class ApiInvalidateImageRecommendation extends ApiBase {
 
-	private const API_PARAM_TITLE = 'title';
 	private AddImageSubmissionHandler $imageSubmissionHandler;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 	private TitleFactory $titleFactory;
+	private ConfigurationLoader $configurationLoader;
 
 	/**
 	 * @param ApiMain $mainModule
 	 * @param string $moduleName
+	 * @param ConfigurationLoader $configurationLoader
 	 * @param AddImageSubmissionHandler $imageSubmissionHandler
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
@@ -39,12 +46,14 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	public function __construct(
 		ApiMain $mainModule,
 		string $moduleName,
+		ConfigurationLoader $configurationLoader,
 		AddImageSubmissionHandler $imageSubmissionHandler,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		TitleFactory $titleFactory
 	) {
 		parent::__construct( $mainModule, $moduleName );
+		$this->configurationLoader = $configurationLoader;
 		$this->imageSubmissionHandler = $imageSubmissionHandler;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
@@ -57,10 +66,18 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
-		$titleValue = $params[ self::API_PARAM_TITLE ];
+		$taskType = $this->configurationLoader->getTaskTypes()[ $params['tasktype'] ] ?? null;
+		Assert::parameterType( [
+			ImageRecommendationTaskType::class,
+			SectionImageRecommendationTaskType::class,
+		], $taskType, '$taskType' );
+		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+		$titleValue = $params['title'];
+
 		$page = $this->titleFactory->newFromLinkTarget( $titleValue )->toPageIdentity();
 		if ( $this->shouldInvalidatePage( $page ) ) {
 			$this->imageSubmissionHandler->invalidateRecommendation(
+				$taskType,
 				$page,
 				$this->getAuthority()->getUser()->getId(),
 				null,
@@ -93,7 +110,17 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	 */
 	public function getAllowedParams() {
 		return [
-			self::API_PARAM_TITLE => [
+			'tasktype' => [
+				ParamValidator::PARAM_TYPE => [
+					// Do not filter out non-existing task-types: during API structure tests
+					// none of the task types exist and an empty list would cause test failures.
+					ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+					SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+				],
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_DEFAULT => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+			],
+			'title' => [
 				ParamValidator::PARAM_REQUIRED => true,
 				ParamValidator::PARAM_TYPE => 'title',
 				TitleDef::PARAM_RETURN_OBJECT => true,
