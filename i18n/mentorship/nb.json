@@ -103,7 +103,7 @@
 	"growthexperiments-notification-header-mentee-claimed": "Ditt {{GENDER:$3|fadderbarn}}, $3, ble {{GENDER:$2|tatt opp}} av $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Årsak: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Hva er «Gjør krav på fadderbarn»?",
-	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Du}} har fadderbarn som er takkverdige!",
+	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Du}} har fadderbarn som er rosverdige! Send fadderbarna dine oppmuntring via fadderpanelet ditt.",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Vis fadderpanelet",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Antall fadderbarn tildelt meg",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Ingen (jeg vil gjøre krav på dem manuelt)",

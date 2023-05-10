@@ -121,7 +121,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Představení-se jako mentora",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Vaše}} představení-se bylo změněno na „$1“.",
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "Poděkování za dobře odvedenou práci!",
-	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Dobrý den, $1, jsem na Wikipedii vaším mentorem a děkuji za vaše příspěvky. Všiml jsem si, že aktivně editujete a rád bych vám za vaše editace touto zprávou poděkoval. Věřím, že budete aktivní i nadále! Neváhejte se na mě obrátit, pokud byste měl jakékoli otázky. Zdraví,",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Dobrý den, $1, jsem na Wikipedii vaším mentorem a děkuji za vaše příspěvky. Všiml jsem si, že aktivně editujete a rád bych vám za vaše editace touto zprávou poděkoval. Věřím, že budete aktivní i nadále! V případě libovolných otázek se na mě neváhejte obrátit. Zdraví,",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Zašlete ocenění svým nováčkům",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Pozitivní zprávy odeslané zkušenými wikipedisty a mentory přispívají k zvýšení retence nováčků.",
 	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Metrika: $1 {{PLURAL:$1|editace|editace|editací}} za $2 {{PLURAL:$1|den|dny|dní}}. Tato čísla můžete přizpůsobit ve svém nastavení.",
