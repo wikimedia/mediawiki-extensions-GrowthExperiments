@@ -130,7 +130,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Hallo $1, hier ist dein Lotse. Ich danke dir für deine Beiträge. Wie ich sehe, hast du fleißig editiert, und ich wollte mich nur kurz bei dir bedanken und dir sagen, dass ich hoffe, dass du auch weiterhin dabei bleibst! Wenn du Fragen hast, kannst du mir gerne eine Nachricht auf meine Diskussionsseite schicken. Danke!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Lob senden",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Positive Nachrichten von erfahrenen Benutzern und Lotsen erhöhen die Motivation der Benutzer.",
-	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Metrik: {{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}} in {{PLURAL:$2|einem Tag|$2 Tagen}}. Passe diese Zahlen in den Einstellungen an.",
+	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "<strong>Metrik:</strong> {{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}} in {{PLURAL:$2|einem Tag|$2 Tagen}}. Passe diese Zahlen in den Einstellungen an.",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "Lobenswerte Mentees werden hier vorgestellt.",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "$1 Diskussionsthemen",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$1 von $2 {{PLURAL:$2|lobenswerter Mentee|lobenwerten Mentees}}",

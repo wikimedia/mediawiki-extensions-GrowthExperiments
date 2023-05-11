@@ -123,7 +123,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "שלום $1, זה החונך שלך. תודה על תרומתך. אני רואה שהיית {{GENDER:$1|עסוק|עסוקה}} בעריכה, ורק רציתי להקדיש רגע להודות לך ולומר שאני מקווה {{GENDER:$1|שתמשיך להיות מעורב! אל תהסס|שתמשיכי להיות מעורבת! אל תהססי}} לשלוח הודעה לדף השיחה שלי אם יש לך אי־פעם שאלות. סחתין!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "שליחת פרגון",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "הודעות חיוביות ממשתמשים מנוסים ומחונכים משפרת את שימור העורכים החדשים.",
-	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "מדד: {{PLURAL:$1|עריכה אחת|$1 עריכות}} {{PLURAL:$2|ביום האחרון|ביומיים האחרונים|ב־$2 הימים האחרונים}}. אפשר להתאים את המספרים האלה בהגדרות.",
+	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "<strong>מדד</strong>: {{PLURAL:$1|עריכה אחת|$1 עריכות}} {{PLURAL:$2|ביום האחרון|ביומיים האחרונים|ב־$2 הימים האחרונים}}. אפשר להתאים את המספרים האלה בהגדרות.",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "חניכים שראויים להערכה יוצגו כאן.",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "$1 נושאים בדף השיחה",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$1 מתוך $2 {{PLURAL:$2|חניכים}} ראויים להערכה",
