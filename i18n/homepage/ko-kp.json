@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Garam"
+		]
+	},
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3~5분",
+	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5~10분",
+	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15~20분",
+	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20~30분",
+	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20~30분"
+}

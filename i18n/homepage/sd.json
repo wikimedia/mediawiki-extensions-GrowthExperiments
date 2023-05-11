@@ -54,6 +54,7 @@
 	"growthexperiments-homepage-help-mobilebody": "مدد ڊيسڪ کان پڇو يا مدد صفحا پڙھو.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|اوھان جا}} ھاڻوڪا سوال",
 	"growthexperiments-homepage-recent-questions-posted-on": "$1 اڳ لڳل",
+	"growthexperiments-homepage-mentorship-learn-more": "رھنمائن بابت وڌيڪ ڄاڻيو.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|سنوار|سنوارون}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "اڄ {{GENDER:$1|سرگرم}}",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "ڪالھ {{GENDER:$1|سرگرم}}",
@@ -74,6 +75,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "مضمونن جي وچ ۾ ڳنڍڻا ڏيڻ",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "مضمونن جي وچ ۾ ڳنڍڻا ڏيڻ",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "ڪو ڏسيل عڪس وجهو",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "وڌيڪ ڄاڻيو",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 سنوارون",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "رواجي سنوار",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "حوالا لھڻ",
@@ -85,6 +87,7 @@
 	"growthexperiments-homepage-suggestededits-topics-more": "وڌيڪ ڏيکاريو",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "سمجهي ويس",
 	"growthexperiments-addlink-context-text-label": "متن",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "مشين جي صلاحن بابت وڌيڪ ڄاڻيو",
 	"growthexperiments-addlink-summary-column-header-suggestion": "مشورو",
 	"newcomertasksinfo": "نون-ايندڙن جا ڪم",
 	"newcomertasksinfo-config-form-info": "نون-ايندڙن جي ڪمن يي ڪنفيگيوريشن [[Special:EditGrowthConfig]] تي ڏسي ۽ بدلائي سگهجي ٿي.",
@@ -122,5 +125,6 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "سمجهي ويس",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "سمجهي ويس",
 	"growthexperiments-homepage-special-contribute-title": "ڏسيل سنوارون",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "سمجهي ويس"
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "سمجهي ويس",
+	"echo-category-title-ge-newcomer": "واڌويجهہ جون خصوصيتون"
 }

@@ -85,5 +85,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artikler som inneholder disse kategoriene blir ikke vist til brukerne som oppgaver for denne oppgavetypen.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infoboksmaler",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Disse malene trengs for nybegynnerfunksjonen for [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|bildeforslag]]. Artikler som inneholder disse malene blir ikke listet opp som bildeforslagsoppgaver.",
-	"growthexperiments-edit-config-delayed": "Endringer i denne innstillingen vil ikke tre i kraft umiddelbart (se [[mw:Growth/FAQ#add-link-config|OSS]])."
+	"growthexperiments-edit-config-delayed": "Endringer i denne innstillingen vil ikke tre i kraft umiddelbart (se [[mw:Growth/FAQ#add-link-config|OSS]]).",
+	"growthexperiments-info-tooltip-close-label": "Lukk",
+	"specialpages-group-growth-tools": "Growth-verktøy"
 }

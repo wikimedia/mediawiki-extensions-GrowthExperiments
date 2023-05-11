@@ -62,7 +62,7 @@
 	"growthexperiments-edit-config-mentorship-minimum-age": "Numărul minim de zile pentru care un utilizator trebuie să fie înregistrat pentru a se putea înscrie ca mentor.",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Numărul minim de editări pe care un utilizator trebuie să îl aibă (în oricare spațiu de nume) pentru a se înscrie ca mentor",
 	"growthexperiments-edit-config-newcomertasks": "Editări sugerate",
-	"growthexperiments-edit-config-newcomer-tasks-description": "Unele tipuri de editări sugerate ies la suprafață prin formate de mentenanță. Articolele ce conțin acele legături sunt adăugate depozitului. Pentru a vedea câte articole sunt disponibile pentru fiecare tip de sarcină, vedeți [[Special:NewcomerTasksInfo|această pagină]].",
+	"growthexperiments-edit-config-newcomer-tasks-description": "Unele tipuri de editări sugerate au loc prin formate de mentenanță. Articolele ce conțin acele legături sunt adăugate depozitului. Pentru a vedea câte articole sunt disponibile pentru fiecare tip de sarcină, vedeți [[Special:NewcomerTasksInfo|această pagină]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Dezactivat",
 	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Dezactivat în configurația site-ului",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Corectare: formate pentru a găsi articole care necesită corectare, precum îmbunătățiri de ortografie, gramatică și punctuație.",
