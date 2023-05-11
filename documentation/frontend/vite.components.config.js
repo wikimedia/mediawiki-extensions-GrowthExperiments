@@ -18,8 +18,9 @@ module.exports = exports = defineConfig( {
 		},
 		rollupOptions: {
 			// make sure to externalize deps that shouldn't be bundled
-			// into your library, so far: vue, @wikimedia/codex
+			// into your library, so far: pinia, vue, @wikimedia/codex
 			external: [
+				'pinia',
 				'vue',
 				'@wikimedia/codex'
 			],

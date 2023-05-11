@@ -1,23 +1,34 @@
 import { describe, expect, it } from 'vitest';
 import { mount } from '@vue/test-utils';
+import { createTestingPinia } from '@pinia/testing';
 import { CdxButton } from '@wikimedia/codex';
 import ExampleComponent from './ExampleComponent.vue';
 
+const renderComponent = () => {
+	return mount( ExampleComponent, {
+		global: {
+			plugins: [ createTestingPinia( { stubActions: false } ) ]
+		}
+	} );
+};
+
 describe( 'ExampleComponent', () => {
 	it( 'renders correctly', () => {
-		const wrapper = mount( ExampleComponent );
-		expect( wrapper.text() ).toContain( 'Hello world' );
+		const wrapper = renderComponent();
 		expect( wrapper.text() ).toContain( 'Count is 0' );
 		const button = wrapper.findComponent( CdxButton );
 		expect( button ).toBeDefined();
-		expect( button.text() ).toContain( 'increment' );
+		expect( button.text() ).toContain( 'Increment' );
 	} );
 	it( 'increments correctly', () => {
-		const wrapper = mount( ExampleComponent );
+		const wrapper = renderComponent();
 		expect( wrapper.text() ).toContain( 'Count is 0' );
 		const button = wrapper.findComponent( CdxButton );
-		button.trigger( 'click' ).then( () =>
-			expect( wrapper.text() ).toContain( 'Count is 1' )
-		);
+		Promise.all( [
+			button.trigger( 'click' ),
+			button.trigger( 'click' )
+		] ).then( () => {
+			expect( wrapper.text() ).toContain( 'Count is 2' );
+		} );
 	} );
 } );
