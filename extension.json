@@ -1841,6 +1841,8 @@
 				"ext.growthExperiments.MentorDashboard/store/modules/mentees-search.js",
 				"ext.growthExperiments.MentorDashboard/store/modules/user-preferences.js",
 				"ext.growthExperiments.MentorDashboard/store/modules/praiseworthy-mentees.js",
+				"ext.growthExperiments.MentorDashboard/plugins/logger.js",
+				"ext.growthExperiments.MentorDashboard/logger/Logger.js",
 				"vue-components/CScoreCard.vue",
 				"vue-components/CScoreCards.vue",
 				"vue-components/CPopover.vue",

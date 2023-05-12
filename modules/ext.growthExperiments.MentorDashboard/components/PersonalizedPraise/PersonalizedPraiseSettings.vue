@@ -25,7 +25,7 @@
 </template>
 
 <script>
-const { ref } = require( 'vue' );
+const { ref, inject } = require( 'vue' );
 const { CdxIcon, CdxButton, CdxDialog } = require( '@wikimedia/codex' );
 const { cdxIconSettings } = require( '../../../vue-components/icons.json' );
 const PersonalizedPraiseSettingsForm = require( './PersonalizedPraiseSettingsForm.vue' );
@@ -45,9 +45,11 @@ module.exports = exports = {
 	emits: [ 'update:settings' ],
 	setup() {
 		const open = ref( false );
+		const log = inject( '$log' );
 
 		return {
 			open,
+			log,
 			cdxIconSettings
 		};
 	},
@@ -59,6 +61,12 @@ module.exports = exports = {
 				this.$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-success' ),
 				{ type: 'success' }
 			);
+			this.log( 'pp-settings-saved', $event );
+		}
+	},
+	watch: {
+		open( val ) {
+			this.log( val ? 'pp-settings-impression' : 'pp-settings-closed' );
 		}
 	}
 };

@@ -3,7 +3,7 @@
 		class="ext-growthExperiments-PersonalizedPraise__praise_button"
 		@click="onSkipButtonClicked"
 	>
-		{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee', menteeUserName ) }}
+		{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee', mentee.userName ) }}
 	</cdx-button>
 	<cdx-dialog
 		v-model:open="open"
@@ -63,7 +63,7 @@ module.exports = exports = {
 		CdxRadio
 	},
 	props: {
-		menteeUserName: { type: String, required: true }
+		mentee: { type: Array, required: true }
 	},
 	emits: [ 'skip' ],
 	setup( _props, { emit } ) {
@@ -71,6 +71,7 @@ module.exports = exports = {
 		const selectedReason = ref( null );
 		const skipMenteesForDays = Number( mw.config.get( 'GEPersonalizedPraiseSkipMenteesForDays' ) );
 		const $i18n = inject( 'i18n' );
+		const log = inject( '$log' );
 		const reasonItems = SKIP_REASONS.map( ( x ) => {
 			return {
 				label: $i18n(
@@ -98,9 +99,17 @@ module.exports = exports = {
 			reasonItems,
 			selectedReason,
 			skipMenteesForDays,
+			log,
 			onSkipButtonClicked,
 			onSubmit
 		};
+	},
+	watch: {
+		open( val ) {
+			this.log( val ? 'pp-skip-mentee' : 'pp-skip-mentee-close', {
+				menteeUserId: this.mentee.userId
+			} );
+		}
 	}
 };
 </script>
