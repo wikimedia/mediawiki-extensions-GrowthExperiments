@@ -145,9 +145,9 @@ class WelcomeSurveyHooks implements
 				$welcomeSurveyLogger->logInteraction( WelcomeSurveyLogger::WELCOME_SURVEY_LOGGED_OUT );
 			}
 		} elseif (
-			!Util::isMobile( $context->getSkin() ) &&
 			$special instanceof SpecialCreateAccount
 			&& $user->isAnon() && $this->userWasEditing()
+			&& !Util::isMobile( $context->getSkin() )
 			&& $this->shouldShowWelcomeSurvey( $context )
 		) {
 			$context->getOutput()->addModules( 'ext.growthExperiments.MidEditSignup' );
