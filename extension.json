@@ -2410,7 +2410,8 @@
 			"value": {
 				"template-based": "visualeditor",
 				"link-recommendation": "machineSuggestions",
-				"image-recommendation": "machineSuggestions"
+				"image-recommendation": "machineSuggestions",
+				"section-image-recommendation": "machineSuggestions"
 			}
 		},
 		"GEHelpPanelAskMentor": {
