@@ -14,11 +14,18 @@ use GrowthExperiments\Util;
 use Html;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\User\UserOptionsLookup;
+use MWCryptRand;
 use PermissionsError;
 use SpecialPage;
 use UserOptionsUpdateJob;
 
 class SpecialMentorDashboard extends SpecialPage {
+
+	/**
+	 * @var string Unique identifier for this specific rendering of Special:Homepage.
+	 * Used by various EventLogging schemas to correlate events.
+	 */
+	private string $pageviewToken;
 	private MentorDashboardModuleRegistry $mentorDashboardModuleRegistry;
 	private MentorProvider $mentorProvider;
 	private UserOptionsLookup $userOptionsLookup;
@@ -38,6 +45,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	) {
 		parent::__construct( 'MentorDashboard' );
 
+		$this->pageviewToken = $this->generatePageviewToken();
 		$this->mentorDashboardModuleRegistry = $mentorDashboardModuleRegistry;
 		$this->mentorProvider = $mentorProvider;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -54,6 +62,16 @@ class SpecialMentorDashboard extends SpecialPage {
 	 */
 	public function getDescription() {
 		return $this->msg( 'growthexperiments-mentor-dashboard-title' )->text();
+	}
+
+	/**
+	 * Returns 32-character random string.
+	 * The token is used for client-side logging and can be retrieved on Special:MentorDashboard via
+	 * the wgGEMentorDashboardPageviewToken JS variable.
+	 * @return string
+	 */
+	private function generatePageviewToken() {
+		return \Wikimedia\base_convert( MWCryptRand::generateHex( 40 ), 16, 32, 32 );
 	}
 
 	/**
@@ -146,6 +164,10 @@ class SpecialMentorDashboard extends SpecialPage {
 		parent::execute( $par );
 
 		$out = $this->getContext()->getOutput();
+		$out->addJsConfigVars( [
+			'wgGEMentorDashboardPageviewToken' => $this->pageviewToken
+		] );
+
 		$out->enableOOUI();
 		$dashboardModules = [ 'ext.growthExperiments.MentorDashboard' ];
 
@@ -190,6 +212,7 @@ class SpecialMentorDashboard extends SpecialPage {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) ) {
 			DeferredUpdates::addCallableUpdate( function () {
 				$logger = new SpecialMentorDashboardLogger(
+					$this->pageviewToken,
 					$this->getUser(),
 					$this->getRequest(),
 					Util::isMobile( $this->getSkin() )

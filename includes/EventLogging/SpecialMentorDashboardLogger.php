@@ -10,25 +10,29 @@ use WebRequest;
 class SpecialMentorDashboardLogger {
 
 	/** @var string Versioned schema URL for $schema field */
-	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/visit/1.0.1';
+	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/visit/1.1.0';
 
 	/** @var string Stream name for EventLogging::submit */
 	private const STREAM = 'mediawiki.mentor_dashboard.visit';
 
+	private string $pageviewToken;
 	private UserIdentity $user;
 	private WebRequest $request;
 	private bool $isMobile;
 
 	/**
+	 * @param string $pageviewToken
 	 * @param UserIdentity $user
 	 * @param WebRequest $request
 	 * @param bool $isMobile
 	 */
 	public function __construct(
+		string $pageviewToken,
 		UserIdentity $user,
 		WebRequest $request,
 		bool $isMobile
 	) {
+		$this->pageviewToken = $pageviewToken;
 		$this->user = $user;
 		$this->request = $request;
 		$this->isMobile = $isMobile;
@@ -44,6 +48,7 @@ class SpecialMentorDashboardLogger {
 			'wiki_db' => WikiMap::getCurrentWikiId(),
 			'user_id' => $this->user->getId(),
 			'is_mobile' => $this->isMobile,
+			'pageview_token' => $this->pageviewToken,
 		];
 		$event['referer_route'] = $this->request->getVal(
 			'source',
