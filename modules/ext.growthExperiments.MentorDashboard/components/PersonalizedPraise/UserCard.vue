@@ -32,7 +32,7 @@
 	>
 		{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-send-appreciation' ) }}
 	</cdx-button>
-	<skip-mentee-dialog :mentee-user-name="mentee.userName" @skip="onMenteeSkipped"></skip-mentee-dialog>
+	<skip-mentee-dialog :mentee="mentee" @skip="onMenteeSkipped"></skip-mentee-dialog>
 </template>
 
 <script>

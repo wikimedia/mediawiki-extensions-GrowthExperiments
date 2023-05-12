@@ -28,6 +28,7 @@
 </template>
 
 <script>
+const { inject } = require( 'vue' );
 const PersonalizedPraiseSettings = require( './PersonalizedPraiseSettings.vue' );
 const PersonalizedPraisePagination = require( './PersonalizedPraisePagination.vue' );
 const UserCard = require( './UserCard.vue' );
@@ -41,6 +42,12 @@ module.exports = exports = {
 		PersonalizedPraisePagination,
 		UserCard,
 		NoResults
+	},
+	setup() {
+		const log = inject( '$log' );
+		return {
+			log
+		};
 	},
 	computed: {
 		currentPage() {
@@ -61,9 +68,15 @@ module.exports = exports = {
 	},
 	methods: {
 		previousMentee() {
+			this.log( 'pp-prev-page', {
+				mentee: JSON.stringify( this.mentee )
+			} );
 			this.$store.dispatch( 'praiseworthyMentees/previousPage' );
 		},
 		nextMentee() {
+			this.log( 'pp-next-page', {
+				mentee: JSON.stringify( this.mentee )
+			} );
 			this.$store.dispatch( 'praiseworthyMentees/nextPage' );
 		},
 		onSettingsUpdate( settings ) {
@@ -75,6 +88,10 @@ module.exports = exports = {
 	},
 	created() {
 		this.$store.dispatch( 'praiseworthyMentees/fetchMentees' );
+		this.log( 'impression', {
+			totalMentees: this.totalPages,
+			mentee: JSON.stringify( this.mentee )
+		} );
 	}
 };
 </script>
