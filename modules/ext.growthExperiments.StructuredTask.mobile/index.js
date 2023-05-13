@@ -36,6 +36,19 @@ module.exports = ( function () {
 				} );
 			addImageTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
 			addImageTargetInitializer.initialize();
+		} else if ( taskTypeId === 'section-image-recommendation' ) {
+			var AddSectionImageTargetInitializer = StructuredTask.addSectionImage().AddSectionImageTargetInitializer,
+				addSectionImageTargetInitializer = new AddSectionImageTargetInitializer( {
+					tools: [ MachineSuggestionsPlaceholderTool ],
+					windows: [
+						require( './addimage/AddImageMobileSaveDialog.js' ),
+						StructuredTask.addSectionImage().RecommendedSectionImageToolbarDialog
+					],
+					taskArticleTarget: require( './addimage/AddImageMobileArticleTarget.js' ),
+					suggestionsArticleTarget: SuggestionsMobileArticleTarget
+				} );
+			addSectionImageTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
+			addSectionImageTargetInitializer.initialize();
 		}
 	}
 

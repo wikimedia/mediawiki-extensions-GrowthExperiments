@@ -10,9 +10,10 @@ module.exports = ( function () {
 		taskType = suggestedEditSession.taskType,
 		isAddLink = taskType === 'link-recommendation' && taskType in TASK_TYPES,
 		isAddImage = taskType === 'image-recommendation' && taskType in TASK_TYPES,
+		isAddSectionImage = taskType === 'section-image-recommendation' && taskType in TASK_TYPES,
 		dialogName,
 		logger,
-		shouldShowOnboarding = !mw.user.options.get( addLinkOnboardingPrefName ),
+		shouldShowOnboarding,
 		StructuredTaskOnboardingDialog,
 		LinkSuggestionInteractionLogger,
 		ImageSuggestionInteractionLogger,
@@ -151,7 +152,7 @@ module.exports = ( function () {
 		if ( suggestedEditSession.taskState !== 'started' ) {
 			return false;
 		}
-		return isAddImage ||
+		return isAddImage || isAddSectionImage ||
 			( isAddLink && mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) );
 	}
 
@@ -204,6 +205,26 @@ module.exports = ( function () {
 		shouldShowOnboarding = !mw.user.options.get( addImageOnboardingPrefName );
 		setupOnboarding( {
 			prefName: addImageOnboardingPrefName,
+			panels: require( './addimage/AddImageOnboardingContent.js' ).getPanels( {
+				includeImage: true
+			} )
+		} );
+	} else if ( isAddSectionImage ) {
+		ImageSuggestionInteractionLogger = require(
+			'../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js'
+		);
+		logger = new ImageSuggestionInteractionLogger( {
+			// eslint-disable-next-line camelcase
+			is_mobile: OO.ui.isMobile()
+		} );
+		// FIXME modify this
+		dialogName = 'addImageOnboardingDialog';
+		// FIXME modify this
+		shouldShowOnboarding = !mw.user.options.get( addImageOnboardingPrefName );
+		setupOnboarding( {
+			// FIXME modify this
+			prefName: addImageOnboardingPrefName,
+			// FIXME modify this
 			panels: require( './addimage/AddImageOnboardingContent.js' ).getPanels( {
 				includeImage: true
 			} )

@@ -1201,6 +1201,8 @@
 				"ext.growthExperiments.StructuredTask/addimage/AddImageLinearDeleteKeyDownHandler.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js",
+				"ext.growthExperiments.StructuredTask/addsectionimage/AddSectionImageTargetInitializer.js",
+				"ext.growthExperiments.StructuredTask/addsectionimage/AddSectionImageArticleTarget.js",
 				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",
 				"ui-components/SelectWithTextInputWidget.js",
@@ -1352,6 +1354,7 @@
 				"ext.growthExperiments.StructuredTask.desktop/addlink/RecommendedLinkToolbarDialogDesktop.js",
 				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopSaveDialog.js",
+				"ext.growthExperiments.StructuredTask.desktop/addsectionimage/AddSectionImageDesktopArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.desktop/MinimizedToolbarDialogButton.js",
 				"utils/Utils.js"
 			],
@@ -1380,6 +1383,7 @@
 				"ext.growthExperiments.StructuredTask.mobile/addlink/RecommendedLinkToolbarDialogMobile.js",
 				"ext.growthExperiments.StructuredTask.mobile/addimage/AddImageMobileArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.mobile/addimage/AddImageMobileSaveDialog.js",
+				"ext.growthExperiments.StructuredTask.mobile/addsectionimage/AddSectionImageMobileArticleTarget.js",
 				"utils/Utils.js",
 				"ui-components/SwipePane.js"
 			],

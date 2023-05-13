@@ -34,6 +34,18 @@ module.exports = ( function () {
 					suggestionsArticleTarget: SuggestionsDesktopArticleTarget
 				} );
 			addImageTargetInitializer.initialize();
+		} else if ( taskTypeId === 'section-image-recommendation' ) {
+			var AddSectionImageTargetInitializer = StructuredTask.addSectionImage().AddSectionImageTargetInitializer,
+				addSectionImageTargetInitializer = new AddSectionImageTargetInitializer( {
+					tools: [ MachineSuggestionsSaveTool ],
+					windows: [
+						require( './addimage/AddImageDesktopSaveDialog.js' ),
+						StructuredTask.addImage().RecommendedImageToolbarDialog
+					],
+					taskArticleTarget: require( './addsectionimage/AddSectionImageDesktopArticleTarget.js' ),
+					suggestionsArticleTarget: SuggestionsDesktopArticleTarget
+				} );
+			addSectionImageTargetInitializer.initialize();
 		}
 	}
 
