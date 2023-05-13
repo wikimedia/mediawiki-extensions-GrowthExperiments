@@ -31,17 +31,13 @@ class ImageRecommendationImage implements JsonSerializable {
 	 */
 	public const SOURCE_WIKIDATA_SECTION = 'wikidata-section';
 
-	/** @var LinkTarget */
-	private $imageTitle;
-
-	/** @var string */
-	private $source;
-
+	private LinkTarget $imageTitle;
+	private string $source;
 	/** @var string[] */
-	private $projects;
-
-	/** @var array */
-	private $metadata;
+	private array $projects;
+	private array $metadata;
+	private ?int $sectionNumber;
+	private ?string $sectionTitle;
 
 	/**
 	 * Create an ImageRecommendationImage object from an array representation.
@@ -54,7 +50,9 @@ class ImageRecommendationImage implements JsonSerializable {
 			new TitleValue( NS_FILE, $imageData['image'] ),
 			$imageData['source'],
 			$imageData['projects'] ?? [],
-			$imageData['metadata'] ?? []
+			$imageData['metadata'] ?? [],
+			$imageData['sectionNumber'] ?? null,
+			$imageData['sectionTitle'] ?? null
 		);
 	}
 
@@ -64,17 +62,26 @@ class ImageRecommendationImage implements JsonSerializable {
 	 * @param string[] $projects List of projects (as wiki IDs) the recommendation was based on.
 	 *   Only for SOURCE_INTERWIKI.
 	 * @param array $metadata Metadata for the recommended image.
+	 * @param int|null $sectionNumber Section number for which the image is recommended (1-based
+	 *   index of the section within the second-level sections), or null for top-level
+	 *   recommendations.
+	 * @param string|null $sectionTitle Wikitext of the section title for which the image is
+	 *   recommended, or null for top-level recommendations.
 	 */
 	public function __construct(
 		LinkTarget $imageTitle,
 		string $source,
 		array $projects = [],
-		array $metadata = []
+		array $metadata = [],
+		int $sectionNumber = null,
+		string $sectionTitle = null
 	) {
 		$this->imageTitle = $imageTitle;
 		$this->source = $source;
 		$this->projects = $projects;
 		$this->metadata = $metadata;
+		$this->sectionNumber = $sectionNumber;
+		$this->sectionTitle = $sectionTitle;
 	}
 
 	/**
@@ -103,6 +110,24 @@ class ImageRecommendationImage implements JsonSerializable {
 	}
 
 	/**
+	 * Section number for which the image is recommended (1-based index of the section within
+	 * the second-level sections), or null for top-level recommendations.
+	 * @return int|null
+	 */
+	public function getSectionNumber(): ?int {
+		return $this->sectionNumber;
+	}
+
+	/**
+	 * Wikitext of the section title for which the image is recommended, or null for top-level
+	 * recommendations.
+	 * @return string|null
+	 */
+	public function getSectionTitle(): ?string {
+		return $this->sectionTitle;
+	}
+
+	/**
 	 * @return array
 	 */
 	public function toArray(): array {
@@ -113,6 +138,8 @@ class ImageRecommendationImage implements JsonSerializable {
 			'source' => $this->source,
 			'projects' => $this->projects,
 			'metadata' => $this->metadata,
+			'sectionNumber' => $this->sectionNumber,
+			'sectionTitle' => $this->sectionTitle,
 		];
 	}
 

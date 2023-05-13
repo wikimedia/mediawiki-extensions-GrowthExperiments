@@ -54,7 +54,9 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					'istype-lead-image'
 				],
 				'origin_wiki' => 'commonswiki',
-				'page_rev' => 17463093
+				'page_rev' => 17463093,
+				'section_index' => null,
+				'section_heading' => null,
 			],
 			[
 				'wiki' => 'enwiki',
@@ -67,7 +69,9 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					'istype-commons-category'
 				],
 				'origin_wiki' => 'commonswiki',
-				'page_rev' => 17463093
+				'page_rev' => 17463093,
+				'section_index' => null,
+				'section_heading' => null,
 			],
 			[
 				'wiki' => 'enwiki',
@@ -80,7 +84,9 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					'istype-commons-category'
 				],
 				'origin_wiki' => 'commonswiki',
-				'page_rev' => 17463093
+				'page_rev' => 17463093,
+				'section_index' => null,
+				'section_heading' => null,
 			],
 			[
 				'wiki' => 'enwiki',
@@ -93,7 +99,9 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					'istype-commons-category'
 				],
 				'origin_wiki' => 'commonswiki',
-				'page_rev' => 17463093
+				'page_rev' => 17463093,
+				'section_index' => null,
+				'section_heading' => null,
 			],
 		];
 		return [
@@ -112,7 +120,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					new ImageRecommendationData(
 						'Image4.png', 'commons', '', '1.23'
 					),
-				]
+				],
 			],
 			'sort response by confidence' => [
 				[ 'rows' => [
@@ -127,7 +135,9 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 							'istype-lead-image'
 						],
 						'origin_wiki' => 'commonswiki',
-						'page_rev' => 17463093
+						'page_rev' => 17463093,
+						'section_index' => null,
+						'section_heading' => null,
 					],
 					[
 						'wiki' => 'enwiki',
@@ -140,17 +150,18 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 							'istype-lead-image'
 						],
 						'origin_wiki' => 'commonswiki',
-						'page_rev' => 17463093
+						'page_rev' => 17463093,
+						'section_index' => null,
+						'section_heading' => null,
 					],
-				]
-				], [
+				] ], [
 					new ImageRecommendationData(
 						'confidence90.png', 'wikipedia', 'eswiki', '1'
 					),
 					new ImageRecommendationData(
 						'confidence80.png', 'wikipedia', 'eswiki', '1'
-					)
-				]
+					),
+				],
 			],
 			'discard old dataset' => [
 				[ 'rows' => [
@@ -165,7 +176,9 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 							'istype-lead-image'
 						],
 						'origin_wiki' => 'commonswiki',
-						'page_rev' => 17463093
+						'page_rev' => 17463093,
+						'section_index' => null,
+						'section_heading' => null,
 					],
 					[
 						'wiki' => 'enwiki',
@@ -178,14 +191,15 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 							'istype-lead-image'
 						],
 						'origin_wiki' => 'commonswiki',
-						'page_rev' => 17463093
+						'page_rev' => 17463093,
+						'section_index' => null,
+						'section_heading' => null,
 					],
-				]
-				], [
+				] ], [
 					new ImageRecommendationData(
 						'confidence80-1.png', 'wikipedia', 'eswiki', '2'
-					)
-				]
+					),
+				],
 			],
 			'sort response by confidence and discard old dataset' => [
 				[ 'rows' => [
@@ -200,7 +214,9 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 							'istype-lead-image'
 						],
 						'origin_wiki' => 'commonswiki',
-						'page_rev' => 17463093
+						'page_rev' => 17463093,
+						'section_index' => null,
+						'section_heading' => null,
 					],
 					[
 						'wiki' => 'enwiki',
@@ -213,7 +229,9 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 							'istype-lead-image'
 						],
 						'origin_wiki' => 'commonswiki',
-						'page_rev' => 17463093
+						'page_rev' => 17463093,
+						'section_index' => null,
+						'section_heading' => null,
 					],
 					[
 						'wiki' => 'enwiki',
@@ -226,17 +244,18 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 							'istype-lead-image'
 						],
 						'origin_wiki' => 'commonswiki',
-						'page_rev' => 17463093
+						'page_rev' => 17463093,
+						'section_index' => null,
+						'section_heading' => null,
 					],
-				]
-				], [
+				] ], [
 					new ImageRecommendationData(
 						'confidence90.png', 'wikipedia', 'eswiki', '2'
 					),
 					new ImageRecommendationData(
 						'confidence80.png', 'wikipedia', 'eswiki', '2'
-					)
-				]
+					),
+				],
 			],
 			'empty details' => [
 				[ 'rows' => [
@@ -249,7 +268,9 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'found_on' => [],
 						'kind' => [],
 						'origin_wiki' => 'commonswiki',
-						'page_rev' => 17463093
+						'page_rev' => 17463093,
+						'section_index' => null,
+						'section_heading' => null,
 					],
 					[
 						'wiki' => 'enwiki',
@@ -260,10 +281,11 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'found_on' => [],
 						'kind' => [],
 						'origin_wiki' => 'commonswiki',
-						'page_rev' => 17463093
+						'page_rev' => 17463093,
+						'section_index' => null,
+						'section_heading' => null,
 					],
-				]
-				], []
+				] ], []
 			],
 			'multiple kinds' => [
 				[ 'rows' => [ [
@@ -279,14 +301,68 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'istype-commons-category'
 					],
 					'origin_wiki' => 'commonswiki',
-					'page_rev' => 17463093
-				] ]
-				], [
+					'page_rev' => 17463093,
+					'section_index' => null,
+					'section_heading' => null,
+				] ] ], [
 					new ImageRecommendationData(
 						'Image1.png', 'wikidata', '', '1.23'
-					)
-				]
-			]
+					),
+				],
+			],
 		];
 	}
+
+	/**
+	 * @dataProvider provideApiResponseData_section
+	 * @param array $apiResponse API response data.
+	 * @param array $expectedResult
+	 */
+	public function testGetSuggestionDataFromApiResponse_section( array $apiResponse, array $expectedResult ) {
+		$taskType = new ImageRecommendationTaskType( 'section-image-recommendation', TaskType::DIFFICULTY_EASY );
+		$globalIdGenerator = $this->createMock( GlobalIdGenerator::class );
+		$globalIdGenerator->method( 'getTimestampFromUUIDv1' )->willReturnCallback(
+			static function ( $id ) {
+				return $id;
+			}
+		);
+		$apiHandler = new ProductionImageRecommendationApiHandler(
+			$this->createMock( HttpRequestFactory::class ),
+			'https://example.com',
+			'enwiki',
+			$globalIdGenerator,
+			null
+		);
+		$this->assertArrayEquals(
+			$expectedResult,
+			$apiHandler->getSuggestionDataFromApiResponse( $apiResponse, $taskType )
+		);
+	}
+
+	public function provideApiResponseData_section() {
+		return [
+			'section' => [
+				[ 'rows' => [ [
+					'wiki' => 'enwiki',
+					'page_id' => 344465,
+					'id' => '1.23',
+					'image' => 'Image1.png',
+					'confidence' => 80,
+					'found_on' => [],
+					'kind' => [
+						'istype-section-topics-p18',
+					],
+					'origin_wiki' => 'wikidatawiki',
+					'page_rev' => 17463093,
+					'section_index' => 2,
+					'section_heading' => 'Foo',
+				] ] ], [
+					new ImageRecommendationData(
+						'Image1.png', 'wikidata-section', '', '1.23', 2, 'Foo'
+					),
+				],
+			],
+		];
+	}
+
 }

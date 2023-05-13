@@ -72,6 +72,24 @@ class ImageRecommendationDataValidator {
 			) );
 		}
 
+		if ( !is_int( $imageRecommendationData->getSectionNumber() )
+			&& $imageRecommendationData->getSectionNumber() !== null
+		) {
+			return StatusValue::newFatal( new RawMessage(
+				'Invalid section number for $1',
+				[ $titleTextSafe ]
+			) );
+		}
+
+		if ( !is_string( $imageRecommendationData->getSectionTitle() )
+			&& $imageRecommendationData->getSectionTitle() !== null
+		) {
+			return StatusValue::newFatal( new RawMessage(
+				'Invalid section title for $1',
+				[ $titleTextSafe ]
+			) );
+		}
+
 		return StatusValue::newGood();
 	}
 }

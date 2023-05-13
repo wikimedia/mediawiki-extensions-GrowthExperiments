@@ -19,24 +19,39 @@ class ImageRecommendationData {
 	/** @var mixed */
 	private $datasetId;
 
+	/** @var mixed */
+	private $sectionNumber;
+
+	/** @var mixed */
+	private $sectionTitle;
+
 	/**
 	 * @param mixed $filename Recommendation image file name
 	 * @param mixed $source Reason for the image being suggested; should be either
-	 * 	ImageRecommendationImage::SOURCE_WIKIDATA, ImageRecommendation::SOURCE_WIKIPEDIA or
-	 * 	ImageRecommendationImage::SOURCE_COMMONS
+	 *   ImageRecommendationImage::SOURCE_WIKIDATA, ImageRecommendation::SOURCE_WIKIPEDIA or
+	 *   ImageRecommendationImage::SOURCE_COMMONS
 	 * @param mixed $projects Projects in which the image is found; separated by comma
 	 * @param mixed $datasetId Dataset ID for the recommendation
+	 * @param mixed $sectionNumber Section number for which the image is recommended (1-based
+	 *   index of the section within the second-level sections), or null for top-level
+	 *   recommendations.
+	 * @param mixed $sectionTitle Wikitext of the section title for which the image is
+	 *   recommended, or null for top-level recommendations.
 	 */
 	public function __construct(
 		$filename = null,
 		$source = null,
 		$projects = null,
-		$datasetId = null
+		$datasetId = null,
+		$sectionNumber = null,
+		$sectionTitle = null
 	) {
 		$this->filename = $filename;
 		$this->source = $source;
 		$this->projects = $projects;
 		$this->datasetId = $datasetId;
+		$this->sectionNumber = $sectionNumber;
+		$this->sectionTitle = $sectionTitle;
 	}
 
 	/**
@@ -79,5 +94,19 @@ class ImageRecommendationData {
 	 */
 	public function getDatasetId() {
 		return $this->datasetId ?? null;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getSectionNumber() {
+		return $this->sectionNumber;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getSectionTitle() {
+		return $this->sectionTitle;
 	}
 }

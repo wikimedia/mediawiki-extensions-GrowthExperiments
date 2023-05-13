@@ -117,7 +117,9 @@ class ApiQueryImageSuggestionDataTest extends ApiQueryTestBase {
 								'image' => 'ImageSuggestionDataTestRecommendedImage',
 								'metadata' => [],
 								'projects' => [],
-								'source' => 'test'
+								'source' => 'test',
+								'sectionNumber' => null,
+								'sectionTitle' => null,
 							] ],
 							'titleNamespace' => 0,
 							'titleText' => 'ImageSuggestionDataTest'
