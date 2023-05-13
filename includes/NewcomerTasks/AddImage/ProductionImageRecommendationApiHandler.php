@@ -5,11 +5,13 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\Util;
 use MediaWiki\Http\HttpRequestFactory;
 use MWHttpRequest;
 use RequestContext;
 use StatusValue;
 use Title;
+use UnexpectedValueException;
 use Wikimedia\UUID\GlobalIdGenerator;
 
 /**
@@ -131,7 +133,10 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 
 			$kind = null;
 			foreach ( $suggestion['kind'] as $potentialKind ) {
-				if ( self::KIND_TO_TASK_TYPE_ID[$potentialKind] === $taskType->getId() ) {
+				if ( !array_key_exists( $potentialKind, self::KIND_TO_TASK_TYPE_ID ) ) {
+					Util::logException( new UnexpectedValueException(
+						'Unknown image suggestions API kind: ' . $potentialKind ) );
+				} elseif ( self::KIND_TO_TASK_TYPE_ID[$potentialKind] === $taskType->getId() ) {
 					$kind = $potentialKind;
 					break;
 				}
