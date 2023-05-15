@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|kas tai?]])",
+	"growthexperiments-confirmemail-emailhelp": "El. pašto adresas reikalingas norint atkurti jūsų paskyrą, jei prarandate savo slaptažodį.",
+	"growthexperiments-confirmemail-emailrecommended": "El. pašto adresas (rekomenduojama)",
+	"growthexperiments-confirmemail-emailwarning": "Norėdami patvirtinti savo adresą, ieškokite mūsų el. laiško.",
+	"growthexperiments-confirmemail-confirm-subject": "Sveiki atvykę į {{SITENAME}}: patvirtinkite savo el. pašto adresą",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Sveiki}}, $2,\n\nDėkojame, kad pridėjote el. paštą prie savo {{SITENAME}} paskyros, užregistruotos iš IP adreso $1.\n\nSpustelėkite toliau esantį mygtuką, kad patvirtintumėte el. pašto adreso sąsają su savo paskyra „$2“:\n\n$3 \n\nPastaba: šis patvirtinimo kodas <strong>baigia galioti $4</strong>.\n\nAčiū,\n\n{{SITENAME}}\n\n----\n\nJei norite atšaukti el. pašto adreso patvirtinimą (nes neužregistravote paskyros ar dėl kitų priežasčių), spustelėkite šią atšaukimo nuorodą:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Patvirtinti el. pašto adresą",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Sveiki}}, $2,\n\nDėkojame, kad pridėjote el. paštą prie savo {{SITENAME}} paskyros, užregistruotos iš IP adreso $1.\n\nSpustelėkite toliau esančią nuorodą, kad patvirtintumėte el. pašto adreso sąsają su savo paskyra „$2“:\n\n$3 \n\nPastaba: šis patvirtinimo kodas baigia galioti $4.\n\nAčiū,\n\n{{SITENAME}}\n\n----\n\nJei norite atšaukti el. pašto adreso patvirtinimą (nes neužregistravote paskyros ar dėl kitų priežasčių), spustelėkite šią atšaukimo nuorodą:\n\n$5"
+}
