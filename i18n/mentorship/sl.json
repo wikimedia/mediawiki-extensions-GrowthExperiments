@@ -121,7 +121,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Pozdravljeni, $1. To je vaš mentor. Hvala za vaše prispevke. Vidim, da intenzivno urejate in se vam želim zahvaliti za dobro delo. Upam, da boste še naprej sodelovali. Če imate vprašanja, jih lahko pustite na moji pogovorni strani. Pozdrav!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Pošlji pohvalo",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Pozitivna sporočila izkušenih uporabnikov in mentorirancev povečujejo zadržanje urejevalcev.",
-	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Metrika: $1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}} v $2 {{PLURAL:$1|dnevu|dneh}}. Te številke lahko prilagodite v nastavitvah.",
+	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "<strong>Metrika</strong>: $1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}} v $2 {{PLURAL:$1|dnevu|dneh}}. Te številke lahko prilagodite v nastavitvah.",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "Tu bodo prikazani hvalevredni mentoriranci",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "$1 pogovornih tem",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$1 od $2 {{PLURAL:$2|hvalevrednega mentoriranca|hvalevrednih mentorirancev}}",

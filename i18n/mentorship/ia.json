@@ -121,7 +121,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Hallo $1, io es tu mentor. Gratias pro tu contributiones. Io vide que tu ha essite ben occupate a modificar; io volerea prender un momento pro regratiar te. Per favor continua assi! Non hesita a lassar me un message sur mi pagina de discussion si jammais tu ha questiones. Salutes!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Inviar laude",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Messages positive de usatores experte e mentores meliora le retention de redactores.",
-	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Statistica: $1 modification{{PLURAL:$1||es}} in $2 die{{PLURAL:$2||s}}. Personalisa iste numeros in le parametros.",
+	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "<strong>Statistica:</strong> $1 modification{{PLURAL:$1||es}} in $2 die{{PLURAL:$2||s}}. Personalisa iste numeros in le parametros.",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "Apprentisses digne de laude apparera hic.",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "$1 topicos de discussion",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$1 de $2 apprentisse{{PLURAL:$2||s}} digne de laude",

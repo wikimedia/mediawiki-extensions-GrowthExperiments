@@ -116,6 +116,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Mégse",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Bemutatkozó üzenet",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "A bemutatkozó üzeneted a következőre módosult: „$1”.",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Elküldés",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Mégsem",
 	"growthexperiments-mentor-list-missing-key": "A <code>$1</code> kulcs hiányzik",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> várt típusa <code>$2</code>, de a tényleges típus <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "A mentordefiníció egy váratlan <code>$1</code> kulcsot tartalmaz",

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Tvarkyti dabartinio naudotojo klausimus, paskelbtus per pagalbos skydelį.",
+	"apihelp-helppanelquestionposter-param-body": "Naudotojo pateiktas klausimo tekstas.",
+	"apihelp-helppanelquestionposter-param-source": "Metodas, kuriuo buvo paskelbtas klausimas.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Skydelis „Klauskite pagalbos tarnybos“.",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Skydelis „Klauskite savo mentoriaus“ naujoko pagrindiniame puslapyje",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Ekranas „Klauskite savo mentoriaus“ pagalbos skydelyje",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Skydelis „Klauskite pagalbos tarnybos“ (senas pavadinimas)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Skydelis „Klauskite savo mentoriaus“ naujoko pagrindiniame puslapyje (senas pavadinimas)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Atitinkamas pavadinimas, jei pasirinktas, įtraukimui į klausimą.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Norėdami užduoti klausimą, turite būti prisijungę."
+}
