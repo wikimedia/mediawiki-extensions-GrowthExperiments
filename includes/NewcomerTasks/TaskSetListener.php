@@ -6,7 +6,7 @@ use DeferredUpdates;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddImage\CacheBackedImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use IBufferingStatsdDataFactory;
 use MediaWiki\MediaWikiServices;
 use WANObjectCache;
@@ -47,7 +47,7 @@ class TaskSetListener {
 		$fname = __METHOD__;
 		DeferredUpdates::addCallableUpdate( function () use ( $taskSet, $fname ) {
 			foreach ( $taskSet as $task ) {
-				if ( $task->getTaskType() instanceof ImageRecommendationTaskType ) {
+				if ( $task->getTaskType() instanceof ImageRecommendationBaseTaskType ) {
 					$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 					CacheBackedImageRecommendationProvider::getWithSetCallback(
 						$this->cache,

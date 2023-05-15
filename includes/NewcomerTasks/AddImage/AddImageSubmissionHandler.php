@@ -12,9 +12,8 @@ use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use ManualLogEntry;
 use MediaWiki\Page\ProperPageIdentity;
@@ -77,10 +76,8 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	public function validate(
 		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
 	): StatusValue {
-		Assert::parameterType( [
-			ImageRecommendationTaskType::class,
-			SectionImageRecommendationTaskType::class,
-		], $taskType, '$taskType' );
+		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
+		'@phan-var ImageRecommendationBaseTaskType $taskType';/** @var ImageRecommendationBaseTaskType $taskType */
 
 		$userErrorMessage = $this->getUserErrorMessage( $user );
 		if ( $userErrorMessage ) {
@@ -94,11 +91,8 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	public function handle(
 		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
 	): StatusValue {
-		Assert::parameterType( [
-			ImageRecommendationTaskType::class,
-			SectionImageRecommendationTaskType::class,
-		], $taskType, '$taskType' );
-		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
+		'@phan-var ImageRecommendationBaseTaskType $taskType';/** @var ImageRecommendationBaseTaskType $taskType */
 
 		$status = $this->parseData( $taskType, $data );
 		if ( !$status->isGood() ) {
@@ -131,8 +125,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		);
 		if ( $taskSet instanceof TaskSet ) {
 			$qualityGateConfig = $taskSet->getQualityGateConfig();
-			if ( ( $taskType instanceof ImageRecommendationTaskType
-					|| $taskType instanceof SectionImageRecommendationTaskType )
+			if ( $taskType instanceof ImageRecommendationBaseTaskType
 				&& isset( $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] )
 				&& $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount']
 					>= $taskType->getMaxTasksPerDay() - 1
@@ -176,14 +169,14 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 
 	/**
 	 * Validate and parse Add Image data submitted through the VE save API.
-	 * @param TaskType $taskType
+	 * @param ImageRecommendationBaseTaskType $taskType
 	 * @param array $data
 	 * @return StatusValue A status with [ $accepted, $reasons ] on success:
 	 *   - $accepted (bool): true if the image was accepted, false if it was rejected
 	 *   - $reasons (string[]): list of rejection reasons.
 	 *   - $filename (string) The filename of the image suggestion
 	 */
-	private function parseData( TaskType $taskType, array $data ): StatusValue {
+	private function parseData( ImageRecommendationBaseTaskType $taskType, array $data ): StatusValue {
 		if ( !array_key_exists( 'accepted', $data ) ) {
 			return StatusValue::newGood()
 				->error( 'apierror-growthexperiments-addimage-handler-accepted-missing' );
@@ -219,10 +212,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 			}
 		}
 		$recommendationAccepted = $data[ 'accepted' ] ?? false;
-		if ( $recommendationAccepted
-			&& ( $taskType instanceof ImageRecommendationTaskType
-				|| $taskType instanceof SectionImageRecommendationTaskType )
-		) {
+		if ( $recommendationAccepted ) {
 			$minCaptionLength = $taskType->getMinimumCaptionCharacterLength();
 			if ( strlen( trim( $data['caption'] ) ) < $minCaptionLength ) {
 				return StatusValue::newGood()->error(
@@ -245,7 +235,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 *   should appear in the user's suggested edits queue on Special:Homepage or via the growthtasks API.
 	 * - Generate and send an event to EventGate to the image-suggestion-feedback stream.
 	 *
-	 * @param ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType
+	 * @param ImageRecommendationBaseTaskType $taskType
 	 * @param ProperPageIdentity $page
 	 * @param int $userId
 	 * @param null|bool $accepted True if accepted, false if rejected, null if invalidating for
@@ -256,17 +246,13 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * @see ApiInvalidateImageRecommendation::execute
 	 */
 	public function invalidateRecommendation(
-		TaskType $taskType,
+		ImageRecommendationBaseTaskType $taskType,
 		ProperPageIdentity $page,
 		int $userId,
 		?bool $accepted,
 		string $filename,
 		array $rejectionReasons = []
 	) {
-		Assert::parameterType( [
-			ImageRecommendationTaskType::class,
-			SectionImageRecommendationTaskType::class,
-		], $taskType, '$taskType' );
 		/** @var CirrusSearch $cirrusSearch */
 		$cirrusSearch = ( $this->cirrusSearchFactory )();
 		$cirrusSearch->resetWeightedTags( $page,

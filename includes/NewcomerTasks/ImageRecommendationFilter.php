@@ -4,7 +4,7 @@ namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use WANObjectCache;
 
 /**
@@ -31,7 +31,7 @@ class ImageRecommendationFilter extends AbstractTaskSetFilter implements TaskSet
 			if ( count( $validTasks ) >= $maxLength ) {
 				break;
 			}
-			if ( !$task->getTaskType() instanceof ImageRecommendationTaskType ) {
+			if ( !$task->getTaskType() instanceof ImageRecommendationBaseTaskType ) {
 				$validTasks[] = $task;
 				continue;
 			}

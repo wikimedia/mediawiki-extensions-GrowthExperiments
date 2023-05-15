@@ -6,6 +6,7 @@ use DerivativeContext;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubpageRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -14,6 +15,7 @@ use MediaWiki\Page\WikiPageFactory;
 use RequestContext;
 use StatusValue;
 use Title;
+use Wikimedia\Assert\Assert;
 
 /**
  * Enable by adding the following to LocalSettings.php or a similar location:
@@ -73,6 +75,9 @@ class SubpageImageRecommendationProvider
 		array $data,
 		array $suggestionFilters = []
 	) {
+		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
+		'@phan-var ImageRecommendationBaseTaskType $taskType';/** @var ImageRecommendationBaseTaskType $taskType */
+
 		if ( isset( $data['pages'] ) || isset( $data['rows'] ) || isset( $data['query']['pages'] ) ) {
 			// This is the format used by the Image Suggestions API. It is not really useful
 			// as a serialization format but easy to obtain for actual wiki pages so allow it

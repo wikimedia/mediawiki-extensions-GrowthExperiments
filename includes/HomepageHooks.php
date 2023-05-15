@@ -1484,6 +1484,8 @@ class HomepageHooks implements
 					$taskType = 'link-recommendation';
 				} elseif ( $taskType === 'image suggestion' ) {
 					$taskType = 'image-recommendation';
+				} elseif ( $taskType === 'section image suggestion' ) {
+					$taskType = 'section-image-recommendation';
 				}
 				$this->perDbNameStatsdDataFactory->increment(
 					sprintf( 'GrowthExperiments.NewcomerTask.Reverted.%s', $taskType )

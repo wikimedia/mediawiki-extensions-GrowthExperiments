@@ -2,8 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Linker\LinkTarget;
 use OutOfBoundsException;
@@ -35,8 +34,7 @@ class StaticImageRecommendationProvider implements ImageRecommendationProvider {
 
 	/** @inheritDoc */
 	public function get( LinkTarget $title, TaskType $taskType ) {
-		$allowedTaskTypes = [ ImageRecommendationTaskType::class, SectionImageRecommendationTaskType::class ];
-		Assert::parameterType( $allowedTaskTypes, $taskType, '$taskType' );
+		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
 		$target = $title->getNamespace() . ':' . $title->getDBkey();
 		$ret = $this->recommendations[$target] ?? $this->default;
 		if ( $ret === null ) {
