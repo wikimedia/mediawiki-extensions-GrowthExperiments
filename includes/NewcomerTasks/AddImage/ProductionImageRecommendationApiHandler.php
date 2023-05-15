@@ -13,9 +13,14 @@ use Title;
 use Wikimedia\UUID\GlobalIdGenerator;
 
 /**
- * Handler for production image suggestion API
- * Documentation: https://www.mediawiki.org/wiki/Platform_Engineering_Team/Data_Value_Stream/
- * Data_Gateway#Image_Suggestions
+ * Handler for production image suggestion API.
+ * phpcs:ignore Generic.Files.LineLength.TooLong
+ * Documentation: https://www.mediawiki.org/wiki/Platform_Engineering_Team/Data_Value_Stream/Data_Gateway#Image_Suggestions
+ * Configuration of constructor parameters:
+ * - $url: GEImageRecommendationServiceUrl
+ * - $wiki: GEImageRecommendationServiceWikiIdMasquerade (or the actual wiki ID if not set)
+ * - $useTitles: GEImageRecommendationServiceUseTitles
+ * - $shouldVerifySsl: opposite of GEDeveloperSetup
  */
 class ProductionImageRecommendationApiHandler implements ImageRecommendationApiHandler {
 

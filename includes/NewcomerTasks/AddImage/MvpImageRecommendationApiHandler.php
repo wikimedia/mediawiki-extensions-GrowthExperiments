@@ -10,9 +10,13 @@ use StatusValue;
 use Title;
 
 /**
- * Handler for MVP image suggestion API
+ * Handler for MVP image suggestion API.
  * Documentation: https://image-suggestion-api.wmcloud.org/?doc#/Image%20Suggestions
  * This API should not be further used in production.
+ * Configuration of constructor parameters:
+ * - $url: GEImageRecommendationServiceUrl
+ * - $proxyUrl: GEImageRecommendationServiceHttpProxy
+ * - $useTitles: GEImageRecommendationServiceUseTitles
  */
 class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler {
 

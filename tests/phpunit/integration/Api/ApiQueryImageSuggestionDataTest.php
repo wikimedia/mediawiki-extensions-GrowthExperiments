@@ -30,6 +30,15 @@ class ApiQueryImageSuggestionDataTest extends ApiQueryTestBase {
 	}
 
 	public function testIsAnon() {
+		$this->overrideMwServices( null, [
+			'GrowthExperimentsNewcomerTasksConfigurationLoader' => static function (): ConfigurationLoader {
+				return new StaticConfigurationLoader( [
+					new ImageRecommendationTaskType(
+						'image-recommendation', TaskType::DIFFICULTY_MEDIUM, []
+					),
+				] );
+			},
+		] );
 		$user = $this->getServiceContainer()->getUserFactory()->newAnonymous();
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'You must be logged in.' );
@@ -58,6 +67,15 @@ class ApiQueryImageSuggestionDataTest extends ApiQueryTestBase {
 	}
 
 	public function testPingLimiter() {
+		$this->overrideMwServices( null, [
+			'GrowthExperimentsNewcomerTasksConfigurationLoader' => static function (): ConfigurationLoader {
+				return new StaticConfigurationLoader( [
+					new ImageRecommendationTaskType(
+						'image-recommendation', TaskType::DIFFICULTY_MEDIUM, []
+					),
+				] );
+			},
+		] );
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage(
 			"You've exceeded your rate limit. Please wait some time and try again."
