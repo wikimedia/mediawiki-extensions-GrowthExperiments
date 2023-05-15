@@ -705,6 +705,10 @@ class HomepageHooks implements
 			'type' => 'api'
 		];
 
+		$preferences[ SuggestedEdits::ADD_SECTION_IMAGE_ONBOARDING_PREF ] = [
+			'type' => 'api'
+		];
+
 		if ( $this->config->get( 'GELevelingUpFeaturesEnabled' ) ) {
 			$preferences[LevelingUpManager::TASK_TYPE_PROMPT_OPT_OUTS_PREF] = [
 				'type' => 'api'

@@ -1415,6 +1415,7 @@
 				"ext.growthExperiments.StructuredTask.PreEdit/StructuredTaskOnboardingContent.js",
 				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingContent.js",
 				"ext.growthExperiments.StructuredTask.PreEdit/addimage/AddImageOnboardingContent.js",
+				"ext.growthExperiments.StructuredTask.PreEdit/addsectionimage/AddSectionImageOnboardingContent.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
@@ -1427,6 +1428,7 @@
 				"ext.growthExperiments.StructuredTask.PreEdit/StructuredTaskOnboardingContent.less",
 				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingContent.less",
 				"ext.growthExperiments.StructuredTask.PreEdit/addimage/AddImageOnboardingContent.less",
+				"ext.growthExperiments.StructuredTask.PreEdit/addsectionimage/AddSectionImageOnboardingContent.less",
 				"ui-components/MultiPaneDialog.less"
 			],
 			"messages": [
@@ -1460,7 +1462,19 @@
 				"growthexperiments-addimage-onboarding-content-article-body",
 				"growthexperiments-addimage-onboarding-content-decision-title",
 				"growthexperiments-addimage-onboarding-content-decision-body-paragraph1",
-				"growthexperiments-addimage-onboarding-content-decision-body-paragraph2"
+				"growthexperiments-addimage-onboarding-content-decision-body-paragraph2",
+				"growthexperiments-addsectionimage-onboarding-content-step1-title",
+				"growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph1",
+				"growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph2",
+				"growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph3",
+				"growthexperiments-addsectionimage-onboarding-content-step2-title",
+				"growthexperiments-addsectionimage-onboarding-content-step2-body-paragraph1",
+				"growthexperiments-addsectionimage-onboarding-content-step2-body-paragraph2",
+				"growthexperiments-addsectionimage-onboarding-content-step3-title",
+				"growthexperiments-addsectionimage-onboarding-content-step3-body-paragraph1",
+				"growthexperiments-addsectionimage-onboarding-content-step4-title",
+				"growthexperiments-addsectionimage-onboarding-content-step4-body-paragraph1",
+				"growthexperiments-addsectionimage-onboarding-content-step4-body-paragraph2"
 			],
 			"dependencies": [
 				"mediawiki.jqueryMsg",

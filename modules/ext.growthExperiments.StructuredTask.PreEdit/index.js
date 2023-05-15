@@ -4,6 +4,7 @@ module.exports = ( function () {
 	var Utils = require( '../utils/Utils.js' ),
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
+		addSectionImageOnboardingPrefName = 'growthexperiments-addsectionimage-onboarding',
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 		TASK_TYPES = CONSTANTS.ALL_TASK_TYPES,
@@ -217,15 +218,12 @@ module.exports = ( function () {
 			// eslint-disable-next-line camelcase
 			is_mobile: OO.ui.isMobile()
 		} );
-		// FIXME modify this
-		dialogName = 'addImageOnboardingDialog';
-		// FIXME modify this
-		shouldShowOnboarding = !mw.user.options.get( addImageOnboardingPrefName );
+		dialogName = 'addSectionImageOnboardingDialog';
+
+		shouldShowOnboarding = !mw.user.options.get( addSectionImageOnboardingPrefName );
 		setupOnboarding( {
-			// FIXME modify this
-			prefName: addImageOnboardingPrefName,
-			// FIXME modify this
-			panels: require( './addimage/AddImageOnboardingContent.js' ).getPanels( {
+			prefName: addSectionImageOnboardingPrefName,
+			panels: require( './addsectionimage/AddSectionImageOnboardingContent.js' ).getPanels( {
 				includeImage: true
 			} )
 		} );
