@@ -32,11 +32,21 @@ class StaticImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 					[
 						'image' => 'One.png',
 						'source' => ImageRecommendationImage::SOURCE_WIKIDATA,
+						'sectionNumber' => null,
+						'sectionTitle' => null,
 					],
 					[
 						'image' => 'Two.png',
 						'source' => ImageRecommendationImage::SOURCE_WIKIPEDIA,
 						'projects' => [ 'enwiki', 'dewiki' ],
+						'sectionNumber' => null,
+						'sectionTitle' => null,
+					],
+					[
+						'image' => 'Three.png',
+						'source' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
+						'sectionNumber' => 2,
+						'sectionTitle' => 'Foo',
 					],
 				],
 				'datasetId' => '2',
@@ -54,16 +64,22 @@ class StaticImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, 'Bar' ), $taskType );
 		$this->assertInstanceOf( ImageRecommendation::class, $recommendation );
 		$this->assertSame( 'Bar', $recommendation->getTitle()->getText() );
-		$this->assertArrayHasKey( 0, $recommendation->getImages() );
-		$this->assertInstanceOf( ImageRecommendationImage::class, $recommendation->getImages()[0] );
-		$this->assertSame( NS_FILE, $recommendation->getImages()[0]->getImageTitle()->getNamespace() );
-		$this->assertSame( 'One.png', $recommendation->getImages()[0]->getImageTitle()->getText() );
-		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIDATA, $recommendation->getImages()[0]->getSource() );
-		$this->assertSame( [], $recommendation->getImages()[0]->getProjects() );
-		$this->assertInstanceOf( ImageRecommendationImage::class, $recommendation->getImages()[1] );
-		$this->assertSame( 'Two.png', $recommendation->getImages()[1]->getImageTitle()->getText() );
-		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIPEDIA, $recommendation->getImages()[1]->getSource() );
-		$this->assertSame( [ 'enwiki', 'dewiki' ], $recommendation->getImages()[1]->getProjects() );
+
+		$images = $recommendation->getImages();
+		$this->assertCount( 3, $recommendation->getImages() );
+		$this->assertContainsOnlyInstancesOf( ImageRecommendationImage::class, $images );
+		$this->assertSame( NS_FILE, $images[0]->getImageTitle()->getNamespace() );
+		$this->assertSame( 'One.png', $images[0]->getImageTitle()->getText() );
+		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIDATA, $images[0]->getSource() );
+		$this->assertSame( [], $images[0]->getProjects() );
+		$this->assertSame( 'Two.png', $images[1]->getImageTitle()->getText() );
+		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIPEDIA, $images[1]->getSource() );
+		$this->assertSame( [ 'enwiki', 'dewiki' ], $images[1]->getProjects() );
+		$this->assertSame( 'Three.png', $images[2]->getImageTitle()->getText() );
+		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIDATA_SECTION, $images[2]->getSource() );
+		$this->assertSame( [], $images[2]->getProjects() );
+		$this->assertSame( 2, $images[2]->getSectionNumber() );
+		$this->assertSame( 'Foo', $images[2]->getSectionTitle() );
 		$this->assertSame( '2', $recommendation->getDatasetId() );
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, 'Baz' ), $taskType );

@@ -139,7 +139,9 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 				$suggestion['image'],
 				self::KIND_TO_SOURCE[ $kind ],
 				implode( ',', $suggestion['found_on'] ?? [] ),
-				$suggestion['id']
+				$suggestion['id'],
+				$suggestion['section_index'],
+				$suggestion['section_heading'],
 			);
 		}
 		return $imageData;

@@ -188,6 +188,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			$source = $suggestion->getSource();
 			$projects = $suggestion->getFormattedProjects();
 			$datasetId = $suggestion->getDatasetId();
+			$sectionNumber = $suggestion->getSectionNumber();
+			$sectionTitle = $suggestion->getSectionTitle();
 			$fileMetadata = $metadataProvider->getFileMetadata( $filename );
 
 			if ( is_array( $fileMetadata ) ) {
@@ -210,7 +212,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 							new TitleValue( NS_FILE, $filename ),
 							$source,
 							$projects,
-							$imageMetadata
+							$imageMetadata,
+							$sectionNumber,
+							$sectionTitle
 						);
 					} else {
 						$status->merge( $imageMetadata );

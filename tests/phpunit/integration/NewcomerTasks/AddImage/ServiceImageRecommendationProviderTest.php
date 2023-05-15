@@ -528,8 +528,10 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 							'descriptionUrl' => 'description url',
 							'originalWidth' => 101,
 							'originalHeight' => 768,
-							'mediaType' => 'BITMAP'
+							'mediaType' => 'BITMAP',
 						],
+						'sectionNumber' => null,
+						'sectionTitle' => null,
 					],
 				],
 				'datasetId' => '1.23',
@@ -603,8 +605,10 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 							'descriptionUrl' => 'description url',
 							'originalWidth' => 1024,
 							'originalHeight' => 768,
-							'mediaType' => 'BITMAP'
+							'mediaType' => 'BITMAP',
 						],
+						'sectionNumber' => null,
+						'sectionTitle' => null,
 					],
 				],
 				'datasetId' => '1.23',
