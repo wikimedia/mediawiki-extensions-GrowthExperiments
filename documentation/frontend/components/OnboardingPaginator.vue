@@ -46,7 +46,7 @@ export default {
 				border-radius: @border-radius-circle;
 				width: 8px;
 				height: 8px;
-				margin-right: @spacing-50;
+				margin-inline-end: @spacing-50;
 
 				&--active {
 					background-color: @color-base;
