@@ -182,6 +182,8 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	 * @return {RegExp} A regex that looks like /phrase one|phrase two|..../g
 	 */
 	function buildRegex( phrases ) {
+		// FIXME or describe why it is okay
+		// eslint-disable-next-line security/detect-non-literal-regexp
 		return new RegExp( phrases.map( mw.util.escapeRegExp ).join( '|' ), 'g' );
 	}
 

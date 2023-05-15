@@ -72,14 +72,12 @@ module.exports = exports = {
 		},
 		endLabel() {
 			const intlLocale = getIntlLocale();
-			// eslint-disable-next-line compat/compat
 			return new Intl.DateTimeFormat( intlLocale, DATE_FORMAT ).format( new Date() );
 		},
 		startLabel() {
 			const date = new Date();
 			date.setDate( date.getDate() - ( this.timeFrame - 1 ) );
 			const intlLocale = getIntlLocale();
-			// eslint-disable-next-line compat/compat
 			return new Intl.DateTimeFormat( intlLocale, DATE_FORMAT ).format( date );
 		}
 	},
@@ -92,7 +90,6 @@ module.exports = exports = {
 		},
 		getStreakColumnTitle( index ) {
 			const intlLocale = getIntlLocale();
-			// eslint-disable-next-line compat/compat
 			const date = new Intl.DateTimeFormat( intlLocale, DATE_FORMAT )
 				.format( new Date( this.contribs.keys[ index ] ) );
 			if ( this.contribs.entries[ index ] > 0 ) {

@@ -133,6 +133,8 @@ module.exports = ( function () {
 
 			addPlugin( function () {
 				return mw.loader.using( module ).then( function () {
+					// FIXME or describe why it is okay
+					// eslint-disable-next-line security/detect-non-literal-require
 					require( module ).initializeTarget( taskType );
 				} );
 			} );

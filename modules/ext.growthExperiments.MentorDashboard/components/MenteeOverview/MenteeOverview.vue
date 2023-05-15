@@ -199,6 +199,7 @@ module.exports = exports = {
 					key,
 					icon,
 					sortBy,
+					// eslint-disable-next-line mediawiki/msg-doc
 					label: this.$i18n( label ).text(),
 					data: data || identity
 				};
@@ -288,7 +289,6 @@ module.exports = exports = {
 			this.$store.dispatch( 'mentees/savePresets' );
 		},
 		updateMenteeFilters( value ) {
-			// eslint-disable-next-line compat/compat
 			this.$store.dispatch( 'mentees/getAllMentees', Object.assign( {}, value, {
 				page: 1
 			} ) );

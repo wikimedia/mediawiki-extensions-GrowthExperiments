@@ -32,7 +32,6 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
 	};
 	const entries = [];
 	const keys = [];
-	// eslint-disable-next-line compat/compat
 	for ( const defaultValue of Array( timeFrameInDays ).fill( 0 ) ) {
 		const dateKey = withoutTime( today );
 		keys.push( dateKey );
@@ -61,12 +60,10 @@ const quantizeViews = ( items, n = 6 ) => {
 	if ( !chunkSize ) {
 		return items;
 	}
-	// eslint-disable-next-line compat/compat
 	const result = new Array( Math.min( n, items.length ) )
 		.fill()
 		.map( () => items.splice( 0, chunkSize ) )
 		.map( ( chunk ) => {
-			// eslint-disable-next-line compat/compat
 			return Object.assign( chunk[ 0 ], {
 				views: sum( chunk.map( ( item ) => item.views ) )
 			} );

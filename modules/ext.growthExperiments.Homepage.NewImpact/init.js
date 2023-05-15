@@ -16,10 +16,8 @@
 	 * fetch error.
 	 */
 	const fetchUserImpactData = ( userId ) => {
-		// eslint-disable-next-line compat/compat
 		return new Promise( ( resolve, reject ) => {
 			const encodedUserId = encodeURIComponent( `#${userId}` );
-			// eslint-disable-next-line compat/compat
 			const query = new URLSearchParams( { lang: mw.config.get( 'wgUserLanguage' ) } );
 			const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${encodedUserId}?${query.toString()}` );
 			watch( [ data, error ], ( [ dataValue, errorValue ] ) => {
@@ -50,7 +48,6 @@
 		};
 		const configKey = exportedDataConfigKeys[ specialPageTitle ];
 		const serverSideExportedData = mw.config.get( configKey, {} ).impact;
-		// eslint-disable-next-line compat/compat
 		return new Promise( ( resolve, reject ) => {
 			if ( serverSideExportedData && serverSideExportedData.impact ) {
 				resolve( serverSideExportedData.impact );
