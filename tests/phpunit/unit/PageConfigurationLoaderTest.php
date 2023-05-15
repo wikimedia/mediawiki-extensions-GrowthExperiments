@@ -39,6 +39,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::loadTaskTypes
+	 * @covers ::getTaskTypes
+	 * @covers ::getDisabledTaskTypes
 	 */
 	public function testLoadTaskTypes() {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
@@ -60,6 +62,9 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				}, $taskTypes )
 			);
 		}
+		$this->assertSame( array_values( $taskTypes ), array_values( $configurationLoader->getTaskTypes() ) );
+		$this->assertArrayKeyMatchesTaskTypeId( $configurationLoader->getTaskTypes() );
+		$this->assertSame( [], $configurationLoader->getDisabledTaskTypes() );
 
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( StatusValue::newFatal( 'foo' ),
 			[], PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
@@ -68,10 +73,13 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$this->assertInstanceOf( StatusValue::class, $taskTypes );
 			$this->assertTrue( $taskTypes->hasMessage( 'foo' ) );
 		}
+		$this->assertSame( [], $configurationLoader->getTaskTypes() );
+		$this->assertSame( [], $configurationLoader->getDisabledTaskTypes() );
 	}
 
 	/**
 	 * @covers ::loadTaskTypes
+	 * @covers ::getDisabledTaskTypes
 	 */
 	public function testLoadTaskTypes_disabled() {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
@@ -82,6 +90,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				return $tt->getId();
 			}, $configurationLoader->loadTaskTypes() )
 		);
+		$this->assertArrayEquals( [ 'copyedit' ], array_keys( $configurationLoader->getDisabledTaskTypes() ) );
+		$this->assertArrayKeyMatchesTaskTypeId( $configurationLoader->getDisabledTaskTypes() );
 
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
@@ -91,6 +101,9 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( [], array_map( static function ( TaskType $tt ) {
 			return $tt->getId();
 		}, $configurationLoader->loadTaskTypes() ) );
+		$this->assertArrayEquals( [ 'copyedit', 'references', 'update' ],
+			array_keys( $configurationLoader->getDisabledTaskTypes() ) );
+		$this->assertArrayKeyMatchesTaskTypeId( $configurationLoader->getDisabledTaskTypes() );
 
 		$disabledConfig = $this->getTaskConfig();
 		$disabledConfig['copyedit']['disabled'] = true;
@@ -101,6 +114,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				return $tt->getId();
 			}, $configurationLoader->loadTaskTypes() )
 		);
+		$this->assertArrayEquals( [ 'copyedit' ], array_keys( $configurationLoader->getDisabledTaskTypes() ) );
+		$this->assertArrayKeyMatchesTaskTypeId( $configurationLoader->getDisabledTaskTypes() );
 	}
 
 	/**
@@ -567,6 +582,12 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				return new TitleValue( $defaultNamespace, $title );
 			} );
 		return $titleParser;
+	}
+
+	private function assertArrayKeyMatchesTaskTypeId( array $taskTypes ) {
+		foreach ( $taskTypes as $taskTypeId => $taskType ) {
+			$this->assertSame( $taskTypeId, $taskType->getId() );
+		}
 	}
 
 }

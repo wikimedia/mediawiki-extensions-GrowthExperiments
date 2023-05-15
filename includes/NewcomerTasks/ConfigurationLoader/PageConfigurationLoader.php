@@ -59,7 +59,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	private $topicConfigurationPage;
 
 	/** @var array */
-	private $disabledTaskTypes = [];
+	private $disabledTaskTypeIds = [];
 
 	/** @var TaskType[]|StatusValue|null Cached task type set (or an error). */
 	private $taskTypes;
@@ -74,6 +74,9 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 	/** @var ?callable */
 	private $campaignConfigCallback;
+
+	/** @var TaskType[] */
+	private array $disabledTaskTypes;
 
 	/**
 	 * @param TitleFactory $titleFactory
@@ -110,13 +113,16 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 	/**
 	 * Hide the existence of the given task type. Must be called before task types are loaded.
+	 * This is equivalent to setting the 'disabled' field in community configuration.
 	 * @param string $taskTypeId
 	 */
 	public function disableTaskType( string $taskTypeId ): void {
 		if ( $this->taskTypes !== null ) {
 			throw new LogicException( __METHOD__ . ' must be called before task types are loaded' );
 		}
-		$this->disabledTaskTypes[] = $taskTypeId;
+		if ( !in_array( $taskTypeId, $this->disabledTaskTypeIds, true ) ) {
+			$this->disabledTaskTypeIds[] = $taskTypeId;
+		}
 	}
 
 	/** @inheritDoc */
@@ -127,19 +133,26 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 		$config = $this->configLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
 		if ( $config instanceof StatusValue ) {
-			$taskTypes = $config;
+			$allTaskTypes = $config;
 		} else {
-			$taskTypes = $this->parseTaskTypesFromConfig( $config );
+			$allTaskTypes = $this->parseTaskTypesFromConfig( $config );
 		}
 
-		if ( !$taskTypes instanceof StatusValue ) {
-			$taskTypes = array_filter( $taskTypes, function ( TaskType $taskType ) {
-				return !in_array( $taskType->getId(), $this->disabledTaskTypes, true );
-			} );
+		if ( !$allTaskTypes instanceof StatusValue ) {
+			$taskTypes = array_filter( $allTaskTypes,
+				fn( TaskType $taskType ) => !$this->isDisabled( $taskType ) );
+			$disabledTaskTypes = array_filter( $allTaskTypes,
+				fn( TaskType $taskType ) =>  $this->isDisabled( $taskType ) );
+		} else {
+			$taskTypes = $allTaskTypes;
+			$disabledTaskTypes = [];
 		}
 
 		$this->taskTypes = $taskTypes;
-		return $taskTypes;
+		$this->disabledTaskTypes = array_combine( array_map( static function ( TaskType $taskType ) {
+			return $taskType->getId();
+		}, $disabledTaskTypes ), $disabledTaskTypes );
+		return $this->taskTypes;
 	}
 
 	/** @inheritDoc */
@@ -159,6 +172,15 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 		$this->topics = $topics;
 		return $topics;
+	}
+
+	/** @inheritDoc */
+	public function getDisabledTaskTypes(): array {
+		// @phan-suppress-next-line PhanRedundantCondition
+		if ( !isset( $this->disabledTaskTypes ) ) {
+			$this->loadTaskTypes();
+		}
+		return $this->disabledTaskTypes;
 	}
 
 	/**
@@ -203,10 +225,9 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			if ( $status->isGood() ) {
 				$taskType = $taskTypeHandler->createTaskType( $taskTypeId, $taskTypeData );
 				$status->merge( $taskTypeHandler->validateTaskTypeObject( $taskType ) );
-				// Leave the disabled check to the end; it seems nicer to validate entries
-				// even when they are disabled.
-				if ( empty( $taskTypeData['disabled'] ) ) {
-					$taskTypes[] = $taskType;
+				$taskTypes[] = $taskType;
+				if ( !empty( $taskTypeData['disabled'] ) ) {
+					$this->disableTaskType( $taskTypeId );
 				}
 			}
 		}
@@ -312,4 +333,13 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		}
 		return [];
 	}
+
+	/**
+	 * @param TaskType $taskType
+	 * @return bool
+	 */
+	private function isDisabled( TaskType $taskType ) {
+		return in_array( $taskType->getId(), $this->disabledTaskTypeIds, true );
+	}
+
 }

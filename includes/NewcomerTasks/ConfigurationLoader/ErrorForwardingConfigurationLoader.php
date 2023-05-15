@@ -19,4 +19,9 @@ class ErrorForwardingConfigurationLoader extends StaticConfigurationLoader {
 		parent::__construct( $statusValue, [] );
 	}
 
+	/** @inheritDoc */
+	public function getDisabledTaskTypes(): array {
+		return [];
+	}
+
 }

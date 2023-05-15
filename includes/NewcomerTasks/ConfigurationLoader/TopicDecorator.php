@@ -62,4 +62,10 @@ class TopicDecorator implements ConfigurationLoader {
 		}
 		return $this->configurationLoader->loadTopics();
 	}
+
+	/** @inheritDoc */
+	public function getDisabledTaskTypes(): array {
+		// Extra task types are never disabled.
+		return $this->configurationLoader->getDisabledTaskTypes();
+	}
 }

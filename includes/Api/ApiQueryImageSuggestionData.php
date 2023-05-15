@@ -68,8 +68,9 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 			$this->dieWithError( 'apierror-ratelimited' );
 		}
 		$params = $this->extractRequestParams();
-		$enabledTaskTypes = $this->configurationLoader->getTaskTypes();
-		$taskType = $enabledTaskTypes[$params['tasktype']] ?? null;
+		$allTaskTypes = $this->configurationLoader->getTaskTypes()
+			+ $this->configurationLoader->getDisabledTaskTypes();
+		$taskType = $allTaskTypes[$params['tasktype']] ?? null;
 		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
 		'@phan-var ImageRecommendationBaseTaskType $taskType';
 

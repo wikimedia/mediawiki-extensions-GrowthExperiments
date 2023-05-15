@@ -38,4 +38,9 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 		return $this->topics;
 	}
 
+	/** @inheritDoc */
+	public function getDisabledTaskTypes(): array {
+		return [];
+	}
+
 }
