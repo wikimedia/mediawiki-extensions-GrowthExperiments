@@ -6,7 +6,6 @@ use CirrusSearch\CirrusSearch;
 use DeferredUpdates;
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
@@ -15,12 +14,15 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use ManualLogEntry;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
 use Message;
 use StatusValue;
 use WANObjectCache;
+use Wikimedia\Assert\Assert;
 
 /**
  * Record the user's decision on the recommendations for a given page.
@@ -46,7 +48,6 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
-	private ConfigurationLoader $configurationLoader;
 	private WANObjectCache $cache;
 
 	private ?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater;
@@ -55,7 +56,6 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param ConfigurationLoader $configurationLoader
 	 * @param WANObjectCache $cache
 	 * @param EventGateImageSuggestionFeedbackUpdater|null $eventGateImageFeedbackUpdater
 	 */
@@ -63,35 +63,44 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		callable $cirrusSearchFactory,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		ConfigurationLoader $configurationLoader,
 		WANObjectCache $cache,
 		?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
 	) {
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->configurationLoader = $configurationLoader;
 		$this->cache = $cache;
 		$this->eventGateImageFeedbackUpdater = $eventGateImageFeedbackUpdater;
 	}
 
 	/** @inheritDoc */
 	public function validate(
-		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
+		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
 	): StatusValue {
+		Assert::parameterType( [
+			ImageRecommendationTaskType::class,
+			SectionImageRecommendationTaskType::class,
+		], $taskType, '$taskType' );
+
 		$userErrorMessage = $this->getUserErrorMessage( $user );
 		if ( $userErrorMessage ) {
 			return StatusValue::newGood()->error( $userErrorMessage );
 		}
 
-		return $this->parseData( $data );
+		return $this->parseData( $taskType, $data );
 	}
 
 	/** @inheritDoc */
 	public function handle(
-		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
+		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
 	): StatusValue {
-		$status = $this->parseData( $data );
+		Assert::parameterType( [
+			ImageRecommendationTaskType::class,
+			SectionImageRecommendationTaskType::class,
+		], $taskType, '$taskType' );
+		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+
+		$status = $this->parseData( $taskType, $data );
 		if ( !$status->isGood() ) {
 			return $status;
 		}
@@ -101,6 +110,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		// one of the "not sure" options.
 		if ( array_diff( $reasons, self::REJECTION_REASONS_UNDECIDED ) ) {
 			$this->invalidateRecommendation(
+				$taskType,
 				$page,
 				$user->getId(),
 				$accepted,
@@ -120,12 +130,13 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 			)
 		);
 		if ( $taskSet instanceof TaskSet ) {
-			$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'] ?? null;
 			$qualityGateConfig = $taskSet->getQualityGateConfig();
-			if ( $imageRecommendation instanceof ImageRecommendationTaskType &&
-				isset( $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] ) &&
-				$qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] >=
-				$imageRecommendation->getMaxTasksPerDay() - 1 ) {
+			if ( ( $taskType instanceof ImageRecommendationTaskType
+					|| $taskType instanceof SectionImageRecommendationTaskType )
+				&& isset( $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] )
+				&& $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount']
+					>= $taskType->getMaxTasksPerDay() - 1
+			) {
 				$warnings['geimagerecommendationdailytasksexceeded'] = true;
 			}
 		}
@@ -165,13 +176,14 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 
 	/**
 	 * Validate and parse Add Image data submitted through the VE save API.
+	 * @param TaskType $taskType
 	 * @param array $data
 	 * @return StatusValue A status with [ $accepted, $reasons ] on success:
 	 *   - $accepted (bool): true if the image was accepted, false if it was rejected
 	 *   - $reasons (string[]): list of rejection reasons.
 	 *   - $filename (string) The filename of the image suggestion
 	 */
-	private function parseData( array $data ): StatusValue {
+	private function parseData( TaskType $taskType, array $data ): StatusValue {
 		if ( !array_key_exists( 'accepted', $data ) ) {
 			return StatusValue::newGood()
 				->error( 'apierror-growthexperiments-addimage-handler-accepted-missing' );
@@ -206,10 +218,12 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 				);
 			}
 		}
-		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
 		$recommendationAccepted = $data[ 'accepted' ] ?? false;
-		if ( $recommendationAccepted && $imageRecommendation instanceof ImageRecommendationTaskType ) {
-			$minCaptionLength = $imageRecommendation->getMinimumCaptionCharacterLength();
+		if ( $recommendationAccepted
+			&& ( $taskType instanceof ImageRecommendationTaskType
+				|| $taskType instanceof SectionImageRecommendationTaskType )
+		) {
+			$minCaptionLength = $taskType->getMinimumCaptionCharacterLength();
 			if ( strlen( trim( $data['caption'] ) ) < $minCaptionLength ) {
 				return StatusValue::newGood()->error(
 					'growthexperiments-addimage-caption-warning-tooshort',
@@ -231,6 +245,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 *   should appear in the user's suggested edits queue on Special:Homepage or via the growthtasks API.
 	 * - Generate and send an event to EventGate to the image-suggestion-feedback stream.
 	 *
+	 * @param ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType
 	 * @param ProperPageIdentity $page
 	 * @param int $userId
 	 * @param null|bool $accepted True if accepted, false if rejected, null if invalidating for
@@ -241,13 +256,17 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * @see ApiInvalidateImageRecommendation::execute
 	 */
 	public function invalidateRecommendation(
+		TaskType $taskType,
 		ProperPageIdentity $page,
 		int $userId,
 		?bool $accepted,
 		string $filename,
 		array $rejectionReasons = []
 	) {
-		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
+		Assert::parameterType( [
+			ImageRecommendationTaskType::class,
+			SectionImageRecommendationTaskType::class,
+		], $taskType, '$taskType' );
 		/** @var CirrusSearch $cirrusSearch */
 		$cirrusSearch = ( $this->cirrusSearchFactory )();
 		$cirrusSearch->resetWeightedTags( $page,
@@ -258,7 +277,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		$this->cache->set(
 			ImageRecommendationFilter::makeKey(
 				$this->cache,
-				$imageRecommendation->getId(),
+				$taskType->getId(),
 				$page->getDBkey()
 			),
 			true,

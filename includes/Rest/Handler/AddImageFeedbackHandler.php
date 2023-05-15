@@ -4,6 +4,8 @@ namespace GrowthExperiments\Rest\Handler;
 
 use ApiMessage;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\Util;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Rest\HttpException;
@@ -28,20 +30,24 @@ class AddImageFeedbackHandler extends SimpleHandler {
 
 	private TitleFactory $titleFactory;
 	private RevisionLookup $revisionLookup;
+	private ConfigurationLoader $configurationLoader;
 	private AddImageSubmissionHandler $addImageSubmissionHandler;
 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param RevisionLookup $revisionLookup
+	 * @param ConfigurationLoader $configurationLoader
 	 * @param AddImageSubmissionHandler $addImageSubmissionHandler
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		RevisionLookup $revisionLookup,
+		ConfigurationLoader $configurationLoader,
 		AddImageSubmissionHandler $addImageSubmissionHandler
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->revisionLookup = $revisionLookup;
+		$this->configurationLoader = $configurationLoader;
 		$this->addImageSubmissionHandler = $addImageSubmissionHandler;
 	}
 
@@ -83,10 +89,20 @@ class AddImageFeedbackHandler extends SimpleHandler {
 			$baseRevId = $title->getLatestRevID();
 		}
 
-		$status = $this->addImageSubmissionHandler->validate( $title->toPageIdentity(), $user, $baseRevId, $data );
+		// TODO support section images
+		$taskType = $this->configurationLoader->getTaskTypes()['image-recommendation'] ?? null;
+		if ( !( $taskType instanceof ImageRecommendationTaskType ) ) {
+			throw new LocalizedHttpException(
+				new MessageValue( 'growthexperiments-newcomertasks-invalid-tasktype', [ 'image-recommendation' ] )
+			);
+		}
+
+		$status = $this->addImageSubmissionHandler->validate(
+			$taskType, $title->toPageIdentity(), $user, $baseRevId, $data
+		);
 		if ( $status->isGood() ) {
 			$status->merge( $this->addImageSubmissionHandler->handle(
-				$title->toPageIdentity(), $user, $baseRevId, $editRevId, $data
+				$taskType, $title->toPageIdentity(), $user, $baseRevId, $editRevId, $data
 			), true );
 		}
 		if ( !$status->isGood() ) {

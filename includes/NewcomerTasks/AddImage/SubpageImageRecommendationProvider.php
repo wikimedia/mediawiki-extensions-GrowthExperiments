@@ -78,12 +78,12 @@ class SubpageImageRecommendationProvider
 			// as a serialization format but easy to obtain for actual wiki pages so allow it
 			// as a convenience.
 			return ServiceImageRecommendationProvider::processApiResponseData(
+				$taskType,
 				$title,
 				$title->getPrefixedText(),
 				$this->apiHandler->getSuggestionDataFromApiResponse( $data, $taskType ),
 				$this->metadataProvider,
-				null,
-				$suggestionFilters
+				null
 			);
 		} else {
 			return ImageRecommendation::fromArray( $data );

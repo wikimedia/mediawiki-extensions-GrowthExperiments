@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
@@ -20,6 +21,7 @@ interface SubmissionHandler {
 	 * Validate a recommendation submission. If validation fails, the submission won't
 	 * be turned into an edit.
 	 *
+	 * @param TaskType $taskType The type of the recommendation.
 	 * @param ProperPageIdentity $page The article the recommendation was about.
 	 * @param UserIdentity $user The user who acted on the recommendation.
 	 * @param int|null $baseRevId Revision that the recommendation was for, or null if no
@@ -30,14 +32,20 @@ interface SubmissionHandler {
 	 *   errors, the OK flag determines whether those should be logged as production errors.
 	 *   The StatusValue should always contain a single error.
 	 */
-	public function validate( ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId,
-		array $data ): StatusValue;
+	public function validate(
+		TaskType $taskType,
+		ProperPageIdentity $page,
+		UserIdentity $user,
+		?int $baseRevId,
+		array $data
+	): StatusValue;
 
 	/**
 	 * Handle a recommendation submission. This is called after validation was successful
 	 * and the recommendation has been turned into an edit and saved, but within the same
 	 * transaction round.
 	 *
+	 * @param TaskType $taskType The type of the recommendation.
 	 * @param ProperPageIdentity $page The article the recommendation was about.
 	 * @param UserIdentity $user The user who acted on the recommendation.
 	 * @param int|null $baseRevId Revision that the recommendation was for, or null if no
@@ -52,7 +60,12 @@ interface SubmissionHandler {
 	 *   - logId (int, optional): ID of the log entry that was created.
 	 */
 	public function handle(
-		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
+		TaskType $taskType,
+		ProperPageIdentity $page,
+		UserIdentity $user,
+		?int $baseRevId,
+		?int $editRevId,
+		array $data
 	): StatusValue;
 
 }

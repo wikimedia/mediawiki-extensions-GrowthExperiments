@@ -18,6 +18,7 @@ use IApiMessage;
 use MediaWiki\Title\TitleFactory;
 use StatusValue;
 use Title;
+use Wikimedia\Assert\Assert;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -70,14 +71,12 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		$params = $this->extractRequestParams();
 		$enabledTaskTypes = $this->configurationLoader->getTaskTypes();
 		$taskType = $enabledTaskTypes[$params['tasktype']] ?? null;
-		if ( !$taskType instanceof ImageRecommendationTaskType
-			&& !$taskType instanceof SectionImageRecommendationTaskType
-		) {
-			// We could improve on this message with something more specific to this
-			// scenario, but probably not worth it for the additional work required
-			// of translators
-			$this->dieWithError( [ 'growthexperiments-newcomertasks-invalid-tasktype', $params['tasktype'] ] );
-		}
+		Assert::parameterType( [
+			ImageRecommendationTaskType::class,
+			SectionImageRecommendationTaskType::class,
+		], $taskType, '$taskType' );
+		'@phan-var ImageRecommendationTaskType|SectionImageRecommendationTaskType $taskType';
+
 		$continueTitle = null;
 		if ( $params['continue'] !== null ) {
 			$continue = $this->parseContinueParamOrDie( $params['continue'], [ 'int', 'string' ] );

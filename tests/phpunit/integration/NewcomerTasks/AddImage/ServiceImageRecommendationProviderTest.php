@@ -321,14 +321,14 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$mockMetadataProvider->method( 'getMetadata' )
 			->willReturn( self::metadataFactory( 200, MEDIATYPE_AUDIO ) );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
+			$taskType,
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
 			[
 				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' )
 			],
 			$mockMetadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
-			$taskType->getSuggestionFilters()
+			$this->createMock( AddImageSubmissionHandler::class )
 		);
 
 		$this->assertInstanceOf( StatusValue::class, $result );
@@ -345,14 +345,14 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$mockMetadataProvider->method( 'getMetadata' )
 			->willReturn( self::metadataFactory( 99 ) );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
+			$taskType,
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
 			[
 				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' )
 			],
 			$mockMetadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
-			$taskType->getSuggestionFilters()
+			$this->createMock( AddImageSubmissionHandler::class )
 		);
 
 		$this->assertInstanceOf( StatusValue::class, $result );
@@ -377,12 +377,12 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$mockMetadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
+			$taskType,
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
 			$this->formatOldApiResponse( $data, $taskType ),
 			$mockMetadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
-			$taskType->getSuggestionFilters()
+			$this->createMock( AddImageSubmissionHandler::class )
 		);
 		if ( $expectedResult !== null ) {
 			$this->assertInstanceOf( ImageRecommendation::class, $result );
@@ -428,12 +428,12 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		} );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
+			$taskType,
 			new TitleValue( 0, 'Foo' ),
 			'Foo',
 			$this->formatOldApiResponse( $data, $taskType ),
 			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class ),
-			$taskType->getSuggestionFilters()
+			$this->createMock( AddImageSubmissionHandler::class )
 		);
 
 		$this->assertInstanceOf( ImageRecommendation::class, $result );
@@ -458,18 +458,18 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$context = $this;
 		$titleText = 'Foo';
 		$submissionHandler->method( 'invalidateRecommendation' )->willReturnCallback(
-			static function ( ProperPageIdentity $page ) use ( $context, $titleText ) {
+			static function ( $_, ProperPageIdentity $page ) use ( $context, $titleText ) {
 				$context->assertSame( $page->getDBkey(), $titleText );
 			}
 		);
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
+			$taskType,
 			new TitleValue( 0, $titleText ),
 			$titleText,
 			$this->formatOldApiResponse( $data, $taskType ),
 			$metadataProvider,
-			$submissionHandler,
-			$taskType->getSuggestionFilters()
+			$submissionHandler
 		);
 		$this->assertInstanceOf( StatusValue::class, $result );
 	}

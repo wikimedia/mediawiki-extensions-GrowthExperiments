@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\MainConfigNames;
 use TitleValue;
+use Wikimedia\Assert\ParameterTypeException;
 
 /**
  * @covers \GrowthExperiments\Api\ApiQueryImageSuggestionData
@@ -58,8 +59,8 @@ class ApiQueryImageSuggestionDataTest extends ApiQueryTestBase {
 				},
 			]
 		);
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'Invalid task type(s): image-recommendation' );
+		$this->expectException( ParameterTypeException::class );
+		$this->expectExceptionMessageMatches( '/^Bad value for parameter \$taskType:/' );
 		$this->check( [
 			[ 'prop' => 'growthimagesuggestiondata', 'titles' => 'ImageSuggestionDataTest' ],
 			[]

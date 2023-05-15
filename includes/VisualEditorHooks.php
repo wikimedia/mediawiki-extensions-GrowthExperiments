@@ -6,6 +6,7 @@ use ApiBase;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Api\Hook\APIGetAllowedParamsHook;
@@ -74,8 +75,8 @@ class VisualEditorHooks implements
 			return;
 		}
 		/** @var ?TaskTypeHandler $taskTypeHandler */
-		[ $data, $taskTypeHandler, $taskTypeId ] = $this->getDataFromApiRequest( $pluginData );
-		if ( !$data || !$taskTypeId ) {
+		[ $data, $taskTypeHandler, $taskType ] = $this->getDataFromApiRequest( $pluginData );
+		if ( !$data || !$taskType ) {
 			// Not an edit we are interested in looking at.
 			return;
 		}
@@ -87,6 +88,7 @@ class VisualEditorHooks implements
 			return;
 		}
 		$status = $taskTypeHandler->getSubmissionHandler()->validate(
+			$taskType,
 			$title->toPageIdentity(),
 			$user,
 			$params['oldid'],
@@ -119,9 +121,9 @@ class VisualEditorHooks implements
 			return;
 		}
 		/** @var ?TaskTypeHandler $taskTypeHandler */
-		[ $data, $taskTypeHandler, $taskTypeId ] = $this->getDataFromApiRequest( $pluginData );
-		if ( !$data || !$taskTypeId ) {
-
+		/** @var ?TaskType $taskType */
+		[ $data, $taskTypeHandler, $taskType ] = $this->getDataFromApiRequest( $pluginData );
+		if ( !$data || !$taskType ) {
 			return;
 		}
 		$title = $this->titleFactory->castFromPageIdentity( $page );
@@ -132,6 +134,7 @@ class VisualEditorHooks implements
 		$newRevId = $saveResult['edit']['newrevid'] ?? null;
 
 		$status = $taskTypeHandler->getSubmissionHandler()->handle(
+			$taskType,
 			$title->toPageIdentity(),
 			$user,
 			$params['oldid'],
@@ -143,7 +146,7 @@ class VisualEditorHooks implements
 			$apiResponse['gewarnings'][] = $status->getValue()['warnings'] ?? '';
 			if ( $newRevId ) {
 				$this->perDbNameStatsdDataFactory->increment(
-					'GrowthExperiments.NewcomerTask.' . $taskTypeId . '.Save'
+					'GrowthExperiments.NewcomerTask.' . $taskType->getId() . '.Save'
 				);
 			}
 		} else {
@@ -181,7 +184,7 @@ class VisualEditorHooks implements
 	 * Extract the data sent by the frontend structured task logic from the API request.
 	 * @param array $pluginData
 	 * @return array [ JSON data from frontend, TaskTypeHandler, task type ID ] or [ null, null, null ]
-	 * @phan-return array{0:?array,1:?TaskTypeHandler,2:?string}
+	 * @phan-return array{0:?array,1:?TaskTypeHandler,2:?TaskType}
 	 */
 	private function getDataFromApiRequest( array $pluginData ): array {
 		// Fast-track the common case of a non-Growth-related save - getTaskTypes() is not free.
@@ -201,7 +204,7 @@ class VisualEditorHooks implements
 					continue;
 				}
 
-				return [ $data, $taskTypeHandler, $taskTypeId ];
+				return [ $data, $taskTypeHandler, $taskType ];
 			}
 		}
 		return [ null, null, null ];

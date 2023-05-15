@@ -11,6 +11,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IDBAccessObject;
 use MalformedTitleException;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -84,7 +85,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 
 	/** @inheritDoc */
 	public function validate(
-		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
+		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
 	): StatusValue {
 		$title = $this->titleFactory->castFromPageIdentity( $page );
 		if ( !$title ) {
@@ -111,7 +112,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 	 * @throws MalformedTitleException
 	 */
 	public function handle(
-		ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
+		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
 	): StatusValue {
 		// The latest revision is the saved edit, so we need to find the link recommendation based on the base
 		// revision ID.
@@ -119,7 +120,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 			$baseRevId,
 			RevisionLookup::READ_LATEST
 		) : null;
-		/* @var Title $title */
 		$title = $this->titleFactory->castFromPageIdentity( $page );
 		if ( !$title ) {
 			// This should never happen, it's here to make Phan happy.
@@ -154,8 +154,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 			return StatusValue::newFatal( 'growthexperiments-addlink-handler-notfound' );
 		}
 		$links = $this->normalizeTargets( $linkRecommendation->getLinks() );
-		/** @var LinkRecommendationTaskType $linkRecommendationTaskType */
-		$linkRecommendationTaskType = $this->configurationLoader->getTaskTypes()['link-recommendation'];
 
 		$acceptedTargets = $this->normalizeTargets( $data['acceptedTargets'] ?: [] );
 		$rejectedTargets = $this->normalizeTargets( $data['rejectedTargets'] ?: [] );
@@ -179,10 +177,11 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		);
 		if ( $taskSet instanceof TaskSet ) {
 			$qualityGateConfig = $taskSet->getQualityGateConfig();
-			if ( isset( $qualityGateConfig[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] ) &&
-				$qualityGateConfig[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] >=
-				// @phan-suppress-next-line PhanUndeclaredMethod
-				$linkRecommendationTaskType->getMaxTasksPerDay() - 1 ) {
+			if ( $taskType instanceof LinkRecommendationTaskType
+				&& isset( $qualityGateConfig[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] )
+				&& $qualityGateConfig[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount']
+					>= $taskType->getMaxTasksPerDay() - 1
+			) {
 				$warnings['gelinkrecommendationdailytasksexceeded'] = true;
 			}
 		}
