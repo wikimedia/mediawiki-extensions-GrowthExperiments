@@ -19,8 +19,8 @@ use Title;
  * Uses a remote installation of this extension to proxy from ProductionApiImageRecommendationApiHandler.
  * Documentation: https://en.wikipedia.org/wiki/Special:ApiHelp/query+growthimagesuggestiondata
  * Configuration of constructor parameters:
- * - $url: GEImageRecommendationServiceUrl (should point to api.php)
- * - $wiki: GEImageRecommendationServiceWikiIdMasquerade (or the actual wiki ID if not set)
+ * - $apiUrl: GEImageRecommendationServiceUrl (should point to api.php)
+ * - $accessToken: GEImageRecommendationServiceAccessToken
  */
 class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHandler {
 
