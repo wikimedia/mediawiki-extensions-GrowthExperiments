@@ -84,6 +84,8 @@ class TipLoader {
 				return new CopyeditTipTree( $extraData );
 			case 'image-recommendation':
 				return new ImageRecommendationTipTree( $extraData );
+			case 'section-image-recommendation':
+				return new SectionImageRecommendationTipTree( $extraData );
 			case 'links':
 				return new LinkTipTree( $extraData );
 			case 'link-recommendation':
