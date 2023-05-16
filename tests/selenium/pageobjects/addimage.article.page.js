@@ -172,6 +172,8 @@ class AddImageArticlePage extends Page {
 		await childProcess.spawnSync(
 			'php',
 			[ 'maintenance/run.php', 'edit', '--user=Admin', articleTitle + '/addimage.json' ],
+			// FIXME or describe why it is okay
+			// eslint-disable-next-line security/detect-non-literal-fs-filename
 			{ input: fs.readFileSync( path.resolve( __dirname + '/../fixtures/' + articleTitle + '.suggestions.json' ) ), cwd: ip }
 		);
 		this.setupComplete = true;

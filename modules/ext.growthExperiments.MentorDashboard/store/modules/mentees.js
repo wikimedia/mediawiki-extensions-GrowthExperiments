@@ -127,7 +127,6 @@ const validateAndApplyFilters = ( context, filters = {} ) => {
 	if ( Number.isInteger( filters.limit ) ) {
 		context.commit( 'SET_LIMIT', filters.limit );
 	}
-	// eslint-disable-next-line compat/compat
 	const validFilters = Object.assign( {}, context.getters.filters );
 	if ( filters.prefix === null || isString( filters.prefix ) ) {
 		validFilters.prefix = filters.prefix;
@@ -169,7 +168,6 @@ const mwLink = ( title, ...args ) => {
 };
 
 const aggregateMentees = ( mentees, starredMentees ) => mentees.map( ( mentee ) => {
-	// eslint-disable-next-line compat/compat
 	return Object.assign( {}, mentee, {
 		isStarred: starredMentees.indexOf( Number( mentee.user_id ) ) !== -1,
 		questions: {

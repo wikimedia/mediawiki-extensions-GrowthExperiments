@@ -48,6 +48,8 @@
 			overlays = {},
 			currentModule = null,
 			// Matches routes like /homepage/moduleName or /homepage/moduleName/action
+			// FIXME or describe why it is okay
+			// eslint-disable-next-line security/detect-unsafe-regex
 			routeRegex = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/;
 
 		/**

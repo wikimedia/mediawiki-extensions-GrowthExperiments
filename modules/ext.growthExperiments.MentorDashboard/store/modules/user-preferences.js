@@ -25,7 +25,6 @@ const getters = {
 const actions = {
 	saveOption( context, payload ) {
 		context.commit( 'setLoading', true );
-		// eslint-disable-next-line compat/compat
 		const update = Object.assign( {}, payload.value );
 		const serializedUpdate = JSON.stringify( update );
 		return new mw.Api().saveOption( payload.name, serializedUpdate )
