@@ -96,6 +96,8 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'source' => 'commons',
 												'projects' => [ 'enwiki' ],
 												'metadata' => [ '...' ],
+												'sectionNumber' => null,
+												'sectionTitle' => null,
 											],
 										],
 										'datasetId' => '1234abcd'
@@ -128,6 +130,8 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'source' => 'commons',
 												'projects' => [ 'enwiki', 'dewiki' ],
 												'metadata' => [ '...' ],
+												'sectionNumber' => null,
+												'sectionTitle' => null,
 											],
 										],
 										'datasetId' => '1234abcd'
@@ -160,6 +164,8 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'source' => 'commons',
 												'projects' => [ 'enwiki' ],
 												'metadata' => [ '...' ],
+												'sectionNumber' => null,
+												'sectionTitle' => null,
 											],
 											[
 												'image' => 'Bar.jpg',
@@ -167,6 +173,8 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'source' => 'commons',
 												'projects' => [ 'dewiki' ],
 												'metadata' => [ '...' ],
+												'sectionNumber' => 2,
+												'sectionTitle' => 'Foo',
 											],
 										],
 										'datasetId' => '1234abcd'
@@ -178,7 +186,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 				],
 				'expectedResult' => [
 					new ImageRecommendationData( 'Foo.jpg', 'commons', 'enwiki', '1234abcd' ),
-					new ImageRecommendationData( 'Bar.jpg', 'commons', 'dewiki', '1234abcd' ),
+					new ImageRecommendationData( 'Bar.jpg', 'commons', 'dewiki', '1234abcd', 2, 'Foo' ),
 				],
 			],
 			'filter by source' => [
@@ -200,12 +208,49 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'source' => 'commons',
 												'projects' => [ 'enwiki' ],
 												'metadata' => [ '...' ],
+												'sectionNumber' => null,
+												'sectionTitle' => null,
 											],
 											[
 												'image' => 'Bar.jpg',
 												'displayFilename' => 'Bar.jpg',
 												'source' => 'wikidata-section',
 												'projects' => [],
+												'metadata' => [ '...' ],
+												'sectionNumber' => 2,
+												'sectionTitle' => 'Foo',
+											],
+										],
+										'datasetId' => '1234abcd'
+									],
+								],
+							],
+						],
+					],
+				],
+				'expectedResult' => [
+					new ImageRecommendationData( 'Foo.jpg', 'commons', 'enwiki', '1234abcd' ),
+				],
+			],
+			// only needed to work until d78543cb reaches production
+			'no section data' => [
+				'apiResponse' => [
+					'query' => [
+						'pages' => [
+							[
+								'pageid' => 1,
+								'ns' => 0,
+								'title' => 'Foo',
+								'growthimagesuggestiondata' => [
+									[
+										'titleNamespace' => 0,
+										'titleText' => 'Foo',
+										'images' => [
+											[
+												'image' => 'Foo.jpg',
+												'displayFilename' => 'Foo.jpg',
+												'source' => 'commons',
+												'projects' => [ 'enwiki' ],
 												'metadata' => [ '...' ],
 											],
 										],
