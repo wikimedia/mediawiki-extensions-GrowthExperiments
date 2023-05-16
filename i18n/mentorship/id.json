@@ -57,7 +57,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Kelola guru",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Lihat daftar guru",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Cara memperkenalkan {{GENDER:|diri Anda sendiri}} sebagai {{GENDER:|guru}}",
-	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Cara mendapat seorang bimbingan",
+	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Cara mendapat seorang murid",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Perkakas Growth",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Pengaturan",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Status guru",
@@ -129,7 +129,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Alasan",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Mendaftar",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Anda}} sekarang terdaftar sebagai guru. {{GENDER:|Anda}} sekarang dapat melanjutkan ke [[Special:MentorDashboard|dasbor guru]].",
-	"growthexperiments-mentorship-enrollasmentor-summary": "Menambahkan diri saya sebagai mentor",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Menambahkan diri saya sebagai guru",
 	"tag-mentor list change": "Perubahan daftar guru",
 	"tag-mentor list change-description": "Tag yang diterapkan pada penyuntingan di daftar guru terstruktur melalui GrowthExperiments"
 }
