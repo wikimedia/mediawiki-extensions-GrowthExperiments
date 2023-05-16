@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFactory;
+use GrowthExperiments\NewcomerTasks\AddSectionImage\SectionImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -12,6 +13,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use IContextSource;
 use MediaWiki\User\UserIdentity;
 use RequestContext;
@@ -40,6 +43,9 @@ class QualityGateDecorator implements TaskSuggester {
 	/** @var int */
 	private $linkRecommendationCountForUser;
 
+	private SectionImageRecommendationSubmissionLogFactory $sectionImageRecommendationSubmissionLogFactory;
+	private ?int $sectionImageRecommendationCountForUser = null;
+
 	/** @var CampaignConfig */
 	private $campaignConfig;
 
@@ -47,6 +53,7 @@ class QualityGateDecorator implements TaskSuggester {
 	 * @param TaskSuggester $taskSuggester
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
+	 * @param SectionImageRecommendationSubmissionLogFactory $sectionImageRecommendationSubmissionLogFactory
 	 * @param LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory
 	 * @param CampaignConfig $campaignConfig
 	 */
@@ -54,11 +61,13 @@ class QualityGateDecorator implements TaskSuggester {
 		TaskSuggester $taskSuggester,
 		ConfigurationLoader $configurationLoader,
 		ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory,
+		SectionImageRecommendationSubmissionLogFactory $sectionImageRecommendationSubmissionLogFactory,
 		LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory,
 		CampaignConfig $campaignConfig
 	) {
 		$this->taskSuggester = $taskSuggester;
 		$this->imageRecommendationSubmissionLogFactory = $imageRecommendationSubmissionLogFactory;
+		$this->sectionImageRecommendationSubmissionLogFactory = $sectionImageRecommendationSubmissionLogFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationSubmissionLogFactory = $linkRecommendationSubmissionLogFactory;
 		$this->campaignConfig = $campaignConfig;
@@ -91,6 +100,23 @@ class QualityGateDecorator implements TaskSuggester {
 					),
 				] );
 			}
+			$sectionImageRecommendationTaskType =
+				$this->configurationLoader->getTaskTypes()[SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID]
+				?? null;
+			if ( $sectionImageRecommendationTaskType instanceof SectionImageRecommendationTaskType ) {
+				$tasks->setQualityGateConfigForTaskType( SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID, [
+					'dailyLimit' => $this->isSectionImageRecommendationDailyTaskLimitExceeded(
+						$user,
+						$context,
+						$sectionImageRecommendationTaskType
+					),
+					'dailyCount' => $this->getSectionImageRecommendationTasksDoneByUserForCurrentDay(
+						$user,
+						$context
+					),
+				] );
+			}
+
 			$linkRecommendationTaskType =
 				$this->configurationLoader->getTaskTypes()[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
 			if ( $linkRecommendationTaskType instanceof LinkRecommendationTaskType ) {
@@ -202,4 +228,48 @@ class QualityGateDecorator implements TaskSuggester {
 		$this->linkRecommendationCountForUser = $linkRecommendationSubmissionLog->count();
 		return $this->linkRecommendationCountForUser;
 	}
+
+	/**
+	 * Check if daily limit of section image recommendation is exceeded for a user.
+	 *
+	 * TODO: Move this into a section-image-recommendation specific class.
+	 *
+	 * @param UserIdentity $user
+	 * @param IContextSource $contextSource
+	 * @param SectionImageRecommendationTaskType $sectionImageRecommendationTaskType
+	 * @return bool|null
+	 */
+	private function isSectionImageRecommendationDailyTaskLimitExceeded(
+		UserIdentity $user,
+		IContextSource $contextSource,
+		SectionImageRecommendationTaskType $sectionImageRecommendationTaskType
+	): ?bool {
+		return $this->getSectionImageRecommendationTasksDoneByUserForCurrentDay(
+				$user,
+				$contextSource
+			) >=
+			$sectionImageRecommendationTaskType->getMaxTasksPerDay();
+	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @param IContextSource $contextSource
+	 * @return int
+	 */
+	private function getSectionImageRecommendationTasksDoneByUserForCurrentDay(
+		UserIdentity $user,
+		IContextSource $contextSource
+	): int {
+		if ( $this->sectionImageRecommendationCountForUser ) {
+			return $this->sectionImageRecommendationCountForUser;
+		}
+		$sectionImageRecommendationSubmissionLog =
+			$this->sectionImageRecommendationSubmissionLogFactory->newSectionImageRecommendationSubmissionLog(
+				$user,
+				$contextSource
+			);
+		$this->sectionImageRecommendationCountForUser = $sectionImageRecommendationSubmissionLog->count();
+		return $this->sectionImageRecommendationCountForUser;
+	}
+
 }

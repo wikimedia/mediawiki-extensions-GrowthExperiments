@@ -41,6 +41,7 @@ class SectionImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandle
 		$this->submissionHandler = $submissionHandler;
 	}
 
+	/** @inheritDoc */
 	public function createTaskType( string $taskTypeId, array $config ): TaskType {
 		$settings = array_intersect_key( $config, SectionImageRecommendationTaskType::DEFAULT_SETTINGS );
 		$taskType = new SectionImageRecommendationTaskType(
@@ -78,6 +79,7 @@ class SectionImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandle
 		return $this->submissionHandler;
 	}
 
+	/** @inheritDoc */
 	public function getSubmitDataFormatMessage( TaskType $taskType, MessageLocalizer $localizer ): MessageSpecifier {
 		return $localizer->msg(
 			'apihelp-growthexperiments-structured-task-submit-data-format-section-image-recommendation',

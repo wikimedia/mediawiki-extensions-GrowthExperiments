@@ -574,6 +574,10 @@ SuggestedEditsModule.prototype.setupQualityGateClickHandling = function ( $eleme
 						is_mobile: OO.ui.isMobile(),
 						active_interface: 'qualitygate_dialog'
 					} ),
+					'section-image-recommendation': new ImageSuggestionInteractionLogger( {
+						is_mobile: OO.ui.isMobile(),
+						active_interface: 'qualitygate_dialog'
+					} ),
 					'link-recommendation': new LinkSuggestionInteractionLogger( {
 						is_mobile: OO.ui.isMobile(),
 						active_interface: 'qualitygate_dialog'

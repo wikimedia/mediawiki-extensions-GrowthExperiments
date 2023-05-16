@@ -48,6 +48,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddSectionImage\AddSectionImageSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddSectionImage\SectionImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
@@ -318,6 +319,11 @@ class GrowthExperimentsServices {
 
 	public function getImageRecommendationSubmissionLogFactory(): ImageRecommendationSubmissionLogFactory {
 		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationSubmissionLogFactory' );
+	}
+
+	// phpcs:ignore Generic.Files.LineLength.TooLong
+	public function getSectionImageRecommendationSubmissionLogFactory(): SectionImageRecommendationSubmissionLogFactory {
+		return $this->coreServices->get( 'GrowthExperimentsSectionImageRecommendationSubmissionLogFactory' );
 	}
 
 	public function getLinkRecommendationSubmissionLogFactory(): LinkRecommendationSubmissionLogFactory {

@@ -65,6 +65,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdate
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddSectionImage\AddSectionImageSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddSectionImage\SectionImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -835,6 +836,7 @@ return [
 						'args' => [
 							$growthServices->getNewcomerTasksConfigurationLoader(),
 							$growthServices->getImageRecommendationSubmissionLogFactory(),
+							$growthServices->getSectionImageRecommendationSubmissionLogFactory(),
 							$growthServices->getLinkRecommendationSubmissionLogFactory(),
 							$growthServices->getGrowthExperimentsCampaignConfig()
 						]
@@ -981,6 +983,14 @@ return [
 		MediaWikiServices $services
 	): ImageRecommendationSubmissionLogFactory {
 		return new ImageRecommendationSubmissionLogFactory(
+			$services->getUserOptionsLookup()
+		);
+	},
+
+	'GrowthExperimentsSectionImageRecommendationSubmissionLogFactory' => static function (
+		MediaWikiServices $services
+	): SectionImageRecommendationSubmissionLogFactory {
+		return new SectionImageRecommendationSubmissionLogFactory(
 			$services->getUserOptionsLookup()
 		);
 	},

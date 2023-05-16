@@ -16,6 +16,11 @@ function QualityGate( config ) {
 				return this.checkDailyLimitForTaskType( 'image-recommendation' );
 			}.bind( this )
 		},
+		'section-image-recommendation': {
+			dailyLimit: function () {
+				return this.checkDailyLimitForTaskType( 'section-image-recommendation' );
+			}.bind( this )
+		},
 		'link-recommendation': {
 			dailyLimit: function () {
 				return this.checkDailyLimitForTaskType( 'link-recommendation' );
@@ -26,6 +31,11 @@ function QualityGate( config ) {
 		'image-recommendation': {
 			dailyLimit: function () {
 				return this.showImageRecommendationDailyLimitAlertDialog();
+			}.bind( this )
+		},
+		'section-image-recommendation': {
+			dailyLimit: function () {
+				return this.showSectionImageRecommendationDailyLimitAlertDialog();
 			}.bind( this )
 		},
 		'link-recommendation': {
@@ -96,6 +106,22 @@ QualityGate.prototype.showImageRecommendationDailyLimitAlertDialog = function ()
 		{
 			action: 'accept',
 			label: mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded-dialog-button' ).text(),
+			flags: 'primary'
+		}
+	);
+};
+
+/**
+ * Show an alert dialog for dailyLimit gate for section-image-recommendation task type.
+ */
+QualityGate.prototype.showSectionImageRecommendationDailyLimitAlertDialog = function () {
+	this.loggers[ 'section-image-recommendation' ].log( 'impression', 'dailyLimit', this.config.loggerMetadataOverrides );
+	this.showAlertDialog(
+		'dailyLimit',
+		mw.message( 'growthexperiments-section-image-recommendation-daily-task-limit-exceeded' ).parse(),
+		{
+			action: 'accept',
+			label: mw.message( 'growthexperiments-section-image-recommendation-daily-task-limit-exceeded-dialog-button' ).text(),
 			flags: 'primary'
 		}
 	);

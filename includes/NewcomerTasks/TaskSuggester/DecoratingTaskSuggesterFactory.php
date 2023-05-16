@@ -44,7 +44,7 @@ class DecoratingTaskSuggesterFactory extends TaskSuggesterFactory {
 	}
 
 	/** @inheritDoc */
-	public function setLogger( LoggerInterface $logger ) {
+	public function setLogger( LoggerInterface $logger ): void {
 		$this->logger = $logger;
 		$this->taskSuggesterFactory->setLogger( $logger );
 	}
