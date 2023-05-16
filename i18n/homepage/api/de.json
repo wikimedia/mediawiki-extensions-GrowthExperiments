@@ -18,8 +18,10 @@
 	"apihelp-growthsetmentor-param-mentor": "Benutzername des Lotsen",
 	"apihelp-growthsetmentor-param-reason": "Grund für die Änderung",
 	"apihelp-query+growthimagesuggestiondata-summary": "Zugehörige [[mw:wikitech:Add_Image|Bildvorschlagsdaten]] abrufen, falls verfügbar",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "Aufgabentyp-ID (um anzugeben, ob Daten für Bildempfehlungen auf oberster oder Abschnittsebene abgerufen werden sollen)",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Eine Bildempfehlung ungültig machen.",
 	"apihelp-growthinvalidateimagerecommendation-extended-description": "Der Aufruf dieser API bewirkt:\n\n* das [[mw:wikitech:Add_Image|\"hasrecommendation:image\" gewichtete Tag]] für den Artikel zurücksetzen, so dass der Artikel nicht mehr in den Suchergebnissen für Bildvorschläge angezeigt wird.\n\n* Hinzufügen des Artikels zu einem kurzlebigen Cache, den der ImageRecommendationFilter der [[mw:Extension:GrowthExperiments|GrowthExperiments]]-Erweiterung konsultiert, um zu entscheiden, ob der Artikel aus der Warteschlange der vorgeschlagenen Bearbeitungen des Benutzers ausgeschlossen werden soll, wenn er auf der [[Special:Homepage]] oder über die [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]] API.\n\n* Erzeugen und Senden eines Events an EventGate zum [https://schema.wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback image-suggestion-feedback stream]. Dies ermöglicht Verbesserungen in der Bildvorschlags-Pipeline, da der Code in der Pipeline das Nutzerfeedback bei der Erstellung von Empfehlungen berücksichtigen kann.\n\nWeitere Lektüre: [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image]]",
+	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "Aufgabentyp (oberste Ebene oder Abschnittsebene)",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Titel des Artikels, für den die Bildempfehlungsaufgabe bestimmt ist",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "Der Dateiname ohne Präfix für die Bildempfehlung, zB <kbd>Foo.jpg</kbd>"
 }
