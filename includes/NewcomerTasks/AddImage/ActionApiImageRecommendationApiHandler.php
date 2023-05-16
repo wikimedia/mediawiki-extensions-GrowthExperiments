@@ -119,7 +119,10 @@ class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHa
 				$imageDataArray['image'],
 				$imageDataArray['source'],
 				implode( ',', $imageDataArray['projects'] ?? [] ),
-				$imageRecommendationArray['datasetId']
+				$imageRecommendationArray['datasetId'],
+				// the fallbacks are only needed until d78543cb reaches production
+				$imageDataArray['sectionNumber'] ?? null,
+				$imageDataArray['sectionTitle'] ?? null
 			);
 		}
 		return $imageData;
