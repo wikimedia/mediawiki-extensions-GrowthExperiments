@@ -3,7 +3,7 @@
 		class="ext-growthExperiments-CListItem"
 		:class="{
 			'ext-growthExperiments-CListItem--background-color-base': backgroundColor === 'base',
-			'ext-growthExperiments-CListItem--background-color-framed': backgroundColor === 'framed'
+			'ext-growthExperiments-CListItem--background-color-interactive-subtle': backgroundColor === 'framed'
 		}">
 		<slot></slot>
 	</li>
@@ -33,7 +33,7 @@ module.exports = exports = {
 		background-color: @background-color-base;
 	}
 
-	&--background-color-framed {
+	&--background-color-interactive-subtle {
 		background-color: @background-color-interactive-subtle;
 	}
 }
