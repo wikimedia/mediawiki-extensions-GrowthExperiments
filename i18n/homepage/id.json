@@ -303,7 +303,7 @@
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Pilih beberapa topik yang menarik bagi {{GENDER:$1|Anda}} untuk menyunting",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Kami akan mencoba memberikan saranan artikel yang cocok dengan ketertarikan {{GENDER:$1|Anda}}.",
 	"growthexperiments-homepage-claimmentee-title": "Klaim murid",
-	"growthexperiments-homepage-claimmentee-pretext": "Halaman ini memungkinkan {{GENDER:$1|Anda}} untuk mengubah gurunya dari seorang murid menjadi {{GENDER:$1|Anda}}. Sebaiknya gunakan fitur ini untuk pengguna yang {{GENDER:$1|Anda}} kenal, atau untuk pengguna yang {{GENDER:$1|Anda}} bimbing di kursus.",
+	"growthexperiments-homepage-claimmentee-pretext": "Halaman ini memungkinkan {{GENDER:$1|Anda}} untuk mengubah guru dari seorang murid menjadi diri {{GENDER:$1|Anda}}. Sebaiknya gunakan fitur ini untuk pengguna yang {{GENDER:$1|Anda}} kenal, atau untuk pengguna yang {{GENDER:$1|Anda}} bimbing di kursus.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nama pengguna yang dibimbing",
 	"growthexperiments-homepage-claimmentee-reason": "Alasan membimbing murid ini",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Anda mengganti}} mentor dari {{PLURAL:$2|pengguna|pengguna}} $1 ke{{GENDER:$4|$5}}",

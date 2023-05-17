@@ -13,7 +13,8 @@
 			"Sonic N800",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح",
-			"FShbib"
+			"FShbib",
+			"Karim185.3"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
@@ -312,8 +313,8 @@
 	"growthexperiments-log-header": "هذا سجل للأحداث التي حصلت بامتداد GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|طالب|طالبت}} بـ {{GENDER:$6|$3}} {{GENDER:$6|كمرشَد|كمرشدَة}} {{GENDER:$2|له|لها}} (سابقا {{GENDER:$4|المرشِد|المرشِدة}} $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "{{GENDER:$2|طالب|طالبت}} $1 بـ {{GENDER:$6|$3}} {{GENDER:$3|كمرشَد|كمرشَدة}} {{GENDER:$2|له|لها}} (لا وجود لمرشِد(ة) من قبل)",
-	"logentry-growthexperiments-setmentor": "{{GENDER:$2|قام|قامت}} $1 بتعيين {{GENDER:$5|$7}} {{GENDER:$5|كمرشِد|كمرشِدة}} لـ{{GENDER:$6|$3}} (سابقا {{GENDER:$4|كان|كانت}}: $8)",
-	"logentry-growthexperiments-setmentor-no-previous-mentor": "{{GENDER:$2|قام|قامت}} $1 بتعيين {{GENDER:$5|$7}} {{GENDER:$5|كمرشد|كمرشدة}} لـ {{GENDER:$6|$3}} (لا مرشد قبل هذا)",
+	"logentry-growthexperiments-setmentor": "{{GENDER:$2|عيَّن|عيَّنت}} $1 {{GENDER:$5|$7}} {{GENDER:$5|مرشدًا|مرشدةً}} لـ{{GENDER:$6|$3}} (سابقا {{GENDER:$4|كان|كانت}}: $8)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "{{GENDER:$2|عيَّن|عيَّنت}} $1  {{GENDER:$5|$7}} {{GENDER:$5|مرشدًا|مرشدةً}} لـ {{GENDER:$6|$3}} (لا مرشد قبل هذا)",
 	"logentry-growthexperiments-addlink": "{{GENDER:$2|راجع|راجعت}} $1 $4 اقتراحات روابط لـ $3: {{GENDER:$2|وافق|وافقت}} على $5، و{{GENDER:$2|رفض|رفضت}} $6، و{{GENDER:$2|تخطّى|تخطّت}} على $7",
 	"logentry-growthexperiments-addimage-accepted": "{{GENDER:$2|راجع|راجعت}} $1 على صورة مقترحة لـ$3",
 	"logentry-growthexperiments-addimage-rejected": "{{GENDER:$2|راجع|راجعت}} $1 على صورة مقترحة لـ$3: مرفوضة",

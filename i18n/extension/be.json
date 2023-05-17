@@ -3,7 +3,9 @@
 		"authors": [
 			"Chadyka",
 			"Plaga med",
-			"Maksim L."
+			"Maksim L.",
+			"Artsiom91",
+			"Kareyac"
 		]
 	},
 	"growthexperiments-desc": "Гэта пашырэнне змяшчае эксперыменты, якія праводзіць каманда Росту.",
@@ -78,8 +80,8 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Мэтавая старонка, дзе можна даведацца больш аб тыпе задання па рэкамендацыі спасылак.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Мэтавая старонка, дзе можна даведацца больш аб тыпе задачы па рэкамендацыі выяваў.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Гэты тып задання звязаны з машыннымі прапановамі і не выкарыстоўвае шаблоны для стварэння набору задач.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Артыкулы, якія змяшчаюць шаблоны, вызначаныя тут, не будуць паказвацца ўдзельнікам як задання для гэтага тыпу задання.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Артыкулы, якія змяшчаюць катэгорыі, вызначаныя тут, не будуць паказвацца ўдзельнікам як задання для гэтага тыпу задання.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Артыкулы, якія змяшчаюць шаблоны, вызначаныя тут, не будуць паказвацца ўдзельнікам як заданні для гэтага тыпу задання.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Артыкулы, якія змяшчаюць катэгорыі, вызначаныя тут, не будуць паказвацца ўдзельнікам як заданні для гэтага тыпу задання.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблоны-карткі",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Гэтыя шаблоны патрэбныя для [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|прапанавання выяваў]] для задання пачаткоўцам. Артыкулы, якія змяшчаюць гэтыя шаблоны, не будуць паказвацца ў спісе задач прапанавання выяваў."
 }
