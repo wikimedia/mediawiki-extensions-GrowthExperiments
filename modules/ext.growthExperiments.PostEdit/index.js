@@ -105,6 +105,10 @@
 				suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
 			imageRecommendationDailyTasksExceeded =
 				imageRecommendationQualityGates.dailyLimit || false,
+			sectionImageRecommendationQualityGates =
+				suggestedEditSession.qualityGateConfig[ 'section-image-recommendation' ] || {},
+			sectionImageRecommendationDailyTasksExceeded =
+				sectionImageRecommendationQualityGates.dailyLimit || false,
 			linkRecommendationQualityGates =
 				suggestedEditSession.qualityGateConfig[ 'link-recommendation' ] || {},
 			linkRecommendationDailyTasksExceeded =
@@ -118,6 +122,7 @@
 			newcomerTaskLogger: newcomerTaskLogger,
 			helpPanelLogger: postEditPanelHelpPanelLogger,
 			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded,
+			sectionImageRecommendationDailyTasksExceeded: sectionImageRecommendationDailyTasksExceeded,
 			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded
 		} );
 

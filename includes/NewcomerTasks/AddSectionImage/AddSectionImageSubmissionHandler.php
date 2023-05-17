@@ -11,6 +11,7 @@ use StatusValue;
 
 class AddSectionImageSubmissionHandler extends AbstractSubmissionHandler implements SubmissionHandler {
 
+	/** @inheritDoc */
 	public function validate(
 		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
 	): StatusValue {
@@ -18,6 +19,7 @@ class AddSectionImageSubmissionHandler extends AbstractSubmissionHandler impleme
 		return new StatusValue();
 	}
 
+	/** @inheritDoc */
 	public function handle(
 		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
 	): StatusValue {

@@ -1122,6 +1122,8 @@
 				"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header",
 				"growthexperiments-addimage-daily-task-limit-exceeded",
 				"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button",
+				"growthexperiments-addsectionimage-daily-task-limit-exceeded",
+				"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button",
 				"growthexperiments-addlink-daily-task-limit-exceeded",
 				"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button"
 			]
@@ -1669,9 +1671,12 @@
 				"growthexperiments-help-panel-postedit-success-message-saved",
 				"growthexperiments-help-panel-postedit-success-message-notsaved",
 				"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation",
+				"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation",
 				"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation",
 				"growthexperiments-help-panel-postedit-subheader-image-recommendation",
 				"growthexperiments-help-panel-postedit-subheader2-image-recommendation",
+				"growthexperiments-help-panel-postedit-subheader-section-image-recommendation",
+				"growthexperiments-help-panel-postedit-subheader2-section-image-recommendation",
 				"growthexperiments-help-panel-postedit-subheader-link-recommendation",
 				"growthexperiments-help-panel-postedit-subheader2-link-recommendation",
 				"growthexperiments-help-panel-postedit-header",

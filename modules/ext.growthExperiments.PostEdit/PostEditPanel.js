@@ -25,6 +25,8 @@ var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/'
  *   HomepageHooks::getTaskTypesJson.
  * @param {boolean} config.imageRecommendationDailyTasksExceeded If the
  *   user has exceeded their daily limit for image recommendation tasks.
+ * @param {boolean} config.sectionImageRecommendationDailyTasksExceeded If the
+ *   user has exceeded their daily limit for section image recommendation tasks.
  * @param {boolean} config.linkRecommendationDailyTasksExceeded If the
  *   user has exceeded their daily limit for link recommendation tasks.
  * @param {mw.libs.ge.NewcomerTaskLogger} config.newcomerTaskLogger
@@ -43,6 +45,7 @@ function PostEditPanel( config ) {
 	this.$taskCard = null;
 	this.$mainArea = null;
 	this.imageRecommendationDailyTasksExceeded = config.imageRecommendationDailyTasksExceeded;
+	this.sectionImageRecommendationDailyTasksExceeded = config.sectionImageRecommendationDailyTasksExceeded;
 	this.linkRecommendationDailyTasksExceeded = config.linkRecommendationDailyTasksExceeded;
 	this.prevButton = new OO.ui.ButtonWidget( {
 		icon: 'previous',
@@ -158,6 +161,8 @@ PostEditPanel.prototype.getHeaderText = function () {
 		return mw.message( 'growthexperiments-help-panel-postedit-subheader-image-recommendation' ).text();
 	} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
 		return mw.message( 'growthexperiments-help-panel-postedit-subheader-link-recommendation' ).text();
+	} else if ( this.taskType === 'section-image-recommendation' && this.sectionImageRecommendationDailyTasksExceeded ) {
+		return mw.message( 'growthexperiments-help-panel-postedit-subheader-section-image-recommendation' ).text();
 	}
 	return this.taskState === SuggestedEditSession.static.STATES.SAVED ?
 		mw.message( 'growthexperiments-help-panel-postedit-subheader' ).text() :
@@ -186,6 +191,10 @@ PostEditPanel.prototype.getMainArea = function () {
 		$subHeader = $( '<div>' )
 			.addClass( 'mw-ge-help-panel-postedit-subheader2' )
 			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-link-recommendation' ).text() );
+	} else if ( this.taskType === 'section-image-recommendation' && this.sectionImageRecommendationDailyTasksExceeded ) {
+		$subHeader = $( '<div>' )
+			.addClass( 'mw-ge-help-panel-postedit-subheader2' )
+			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-section-image-recommendation' ).text() );
 	}
 
 	if ( this.tasksStore.isTaskQueueLoading() ) {
