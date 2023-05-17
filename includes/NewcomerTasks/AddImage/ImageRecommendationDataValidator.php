@@ -51,6 +51,7 @@ class ImageRecommendationDataValidator {
 			ImageRecommendationImage::SOURCE_WIKIDATA,
 			ImageRecommendationImage::SOURCE_WIKIPEDIA,
 			ImageRecommendationImage::SOURCE_COMMONS,
+			ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
 		], true ) ) {
 			return StatusValue::newFatal( new RawMessage(
 				'Invalid source type for $1: $2',
