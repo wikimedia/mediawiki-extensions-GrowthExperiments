@@ -137,7 +137,11 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 			foreach ( $suggestion['kind'] as $potentialKind ) {
 				if ( !array_key_exists( $potentialKind, self::KIND_TO_TASK_TYPE_ID ) ) {
 					Util::logException( new UnexpectedValueException(
-						'Unknown image suggestions API kind: ' . $potentialKind ) );
+						"Unknown image suggestions API kind: $potentialKind"
+					), [
+						'page_id' => $suggestion['page_id'] ?? 0,
+						'dataset-id' => $suggestion['id'] ?? 'unknown',
+					] );
 				} elseif ( self::KIND_TO_TASK_TYPE_ID[$potentialKind] === $taskType->getId() ) {
 					$kind = $potentialKind;
 					break;
