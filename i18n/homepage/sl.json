@@ -538,6 +538,8 @@
 	"growthexperiments-addimage-caption-warning-tooshort": "Napisi morajo obsegati $1 {{PLURAL:$1|znak|znaka|znake|znakov}} ali več.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Pregledali}} ste vse današnje predloge za povezave.\n\nPrilagodite {{GENDER:|si}} raven težavnosti, da boste videli še druge vrste urejanj, ali se vrnite jutri po več predlogov za povezave.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Razumem",
+	"growthexperiments-addsectionimage-daily-task-limit-exceeded": "{{GENDER:|Pregledali}} ste vse današnje predloge za slike na ravni razdelkov.\n\nPrilagodite {{GENDER:|si}} raven težavnosti, da boste videli še druge vrste urejanj, ali se vrnite jutri po več predlogov za slike.",
+	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "Razumem",
 	"growthexperiments-homepage-mentorship-optin-header": "Mentor za urejanje",
 	"growthexperiments-homepage-mentorship-optin-text": "Če {{GENDER:|imate}} vprašanja o urejanju, lahko pridobite izkušenega urejevalca kot mentorja, ki vam bo pomagal.",
 	"growthexperiments-homepage-mentorship-optin-button": "Pridobite mentorja",
