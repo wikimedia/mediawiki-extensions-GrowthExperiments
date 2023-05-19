@@ -128,9 +128,9 @@ module.exports = ( function () {
 	 * @param {ve.ui.Surface} surface
 	 */
 	function disableVirtualKeyboard( surface ) {
-		var $documentNode = surface.getView().$documentNode;
-		$documentNode.attr( 'contenteditable', false );
-		$documentNode.addClass( 'mw-ge-user-select-none' );
+		surface.getView().$documentNode
+			.attr( 'contenteditable', false )
+			.addClass( 'mw-ge-user-select-none' );
 	}
 
 	/**
@@ -142,9 +142,9 @@ module.exports = ( function () {
 	 * be editable (ex: caption during add image task)
 	 */
 	function enableVirtualKeyboard( surface, disableDocumentEdit ) {
-		var $documentNode = surface.getView().$documentNode;
-		$documentNode.attr( 'contenteditable', !disableDocumentEdit );
-		$documentNode.removeClass( 'mw-ge-user-select-none' );
+		surface.getView().$documentNode
+			.attr( 'contenteditable', !disableDocumentEdit )
+			.removeClass( 'mw-ge-user-select-none' );
 	}
 
 	/**

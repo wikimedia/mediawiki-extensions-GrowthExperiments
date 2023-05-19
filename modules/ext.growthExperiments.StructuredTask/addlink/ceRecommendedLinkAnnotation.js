@@ -92,7 +92,6 @@ CERecommendedLinkAnnotation.prototype.attachContents = function () {
 		$fromIcon.addClass( 'current' );
 		$toIcon.addClass( isDeselect ? 'animate-from-top' : 'animate-from-bottom' );
 		icons.push( $fromIcon );
-
 	} else {
 		$toIcon.addClass( 'current' );
 	}

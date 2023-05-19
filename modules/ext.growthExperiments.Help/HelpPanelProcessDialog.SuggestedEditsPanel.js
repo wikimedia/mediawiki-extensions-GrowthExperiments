@@ -99,15 +99,9 @@
 	 * @param {boolean} inEditMode
 	 */
 	SuggestedEditsPanel.prototype.toggleFooter = function ( inEditMode ) {
-		if ( !this.footerPanel ) {
-			return;
-		}
-		if ( inEditMode ) {
-			this.footerPanel.toggle( false );
-			this.$element.removeClass( 'suggested-edits-panel-with-footer' );
-		} else {
-			this.footerPanel.toggle( true );
-			this.$element.addClass( 'suggested-edits-panel-with-footer' );
+		if ( this.footerPanel ) {
+			this.footerPanel.toggle( !inEditMode );
+			this.$element.toggleClass( 'suggested-edits-panel-with-footer', !inEditMode );
 		}
 	};
 
