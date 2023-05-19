@@ -95,8 +95,8 @@
 }
 
 .mw-mf-page-center__mask.suggested-edits {
-	// Set value to be higher than Minerva's overlay content (@z-indexOverlay: 3).
-	z-index: 4 !important; // stylelint-disable-line declaration-no-important
+	// Set value to be higher than Minerva's overlay content (@z-index-overlay-backdrop: 400).
+	z-index: @z-index-overlay;
 }
 
 .drawer.suggested-edits-taskexplanation-drawer {
@@ -177,7 +177,7 @@ body.mw-special-Homepage {
 
 			.suggested-edits-filters {
 				position: fixed;
-				z-index: 2;
+				z-index: @z-index-fixed;
 			}
 
 			.suggested-edits-module-wrapper {
@@ -217,8 +217,8 @@ body.mw-special-Homepage {
 	}
 
 	.drawer-container {
-		// Display over Minerva's overlay content (@z-indexOverOverlay: 4).
-		z-index: 5;
+		// Set value to be higher than Minerva's overlay content (@z-index-overlay-backdrop: 400).
+		z-index: @z-index-overlay;
 		position: relative;
 	}
 	// Hide the popup from the button widget,
@@ -308,7 +308,7 @@ body.mw-special-Homepage {
 						top: 100%;
 						cursor: pointer;
 						// Ensure it appears above the button after clicked.
-						z-index: 2;
+						z-index: @z-index-stacking-2;
 					}
 				}
 			}
@@ -614,7 +614,7 @@ body.mw-special-Homepage {
 							width: 316px;
 							height: 16px;
 							clear: both;
-							z-index: 100;
+							z-index: @z-index-top;
 						}
 					}
 				}
@@ -646,7 +646,7 @@ body.mw-special-Homepage {
 						top: 100%;
 						cursor: pointer;
 						// Ensure it appears above the button after clicked.
-						z-index: 2;
+						z-index: @z-index-stacking-2;
 					}
 
 					.oo-ui-iconElement-icon {

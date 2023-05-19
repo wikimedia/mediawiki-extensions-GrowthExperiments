@@ -1,7 +1,7 @@
 @import 'mediawiki.skin.variables.less';
 
 .ve-ui-surface-machineSuggestions {
-	z-index: 1;
+	z-index: @z-index-above-content;
 
 	// By default, a box is shown on top of the selected annotation
 	// and focused elements are highlighted (T282899)
@@ -123,7 +123,7 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	z-index: 2;
+	z-index: @z-index-overlay;
 	padding-top: 35%;
 
 	.mw-ge-addImageDesktopArticleTarget-progressBar {

@@ -64,9 +64,9 @@ body > .mw-ge-help-panel-widget-overlay {
 	position: fixed;
 	right: 1em;
 	bottom: 1em;
-	z-index: 2;
+	z-index: @z-index-fixed;
 
 	.secondary-navigation-enabled & {
-		z-index: 0;
+		z-index: @z-index-base;
 	}
 }

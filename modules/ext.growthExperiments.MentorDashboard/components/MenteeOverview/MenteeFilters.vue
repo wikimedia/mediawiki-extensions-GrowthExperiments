@@ -103,7 +103,7 @@ module.exports = exports = {
 	&__form {
 		width: 320px;
 		position: absolute;
-		z-index: 1;
+		z-index: @z-index-above-content;
 		top: 2px;
 		.popover-base();
 	}

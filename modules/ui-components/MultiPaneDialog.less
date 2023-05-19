@@ -20,7 +20,8 @@
 
 	&-fixed-content {
 		position: absolute;
-		z-index: 1;
+		z-index: @z-index-fixed; // FIXME: Not entirely sure, if that's fixed or absolute or what's
+		// the exact deal.
 	}
 
 	&-progress-indicator {

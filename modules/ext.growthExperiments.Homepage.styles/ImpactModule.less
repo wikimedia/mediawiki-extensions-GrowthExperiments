@@ -209,7 +209,7 @@
 			bottom: 0;
 			right: 0;
 			background-color: @background-color-growth-subtle;
-			z-index: -1;
+			z-index: @z-index-bottom;
 		}
 
 		.growthexperiments-homepage-module-footer {
@@ -253,8 +253,8 @@
 
 .overlay-enabled {
 	.drawer-container {
-		// Display over Minerva's overlay content (@z-indexOverOverlay: 4).
-		z-index: 5;
+		// Set value to be higher than Minerva's overlay content (@z-index-overlay-backdrop: 400).
+		z-index: @z-index-overlay;
 		position: relative;
 	}
 }
