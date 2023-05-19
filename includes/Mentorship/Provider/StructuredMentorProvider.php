@@ -98,10 +98,7 @@ class StructuredMentorProvider extends MentorProvider {
 	 */
 	private function getCustomMentorIntroText( UserIdentity $mentor ): ?string {
 		$mentorData = $this->getMentorDataForUser( $mentor );
-		if ( !$mentorData ) {
-			return null;
-		}
-		return $mentorData['message'];
+		return $mentorData ? $mentorData['message'] : null;
 	}
 
 	/**

@@ -295,9 +295,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				// @phan-suppress-next-line PhanTypeMismatchDimFetchNullable False positive
 				$editCountByTaskType[$taskTypeId]++;
 			}
-			if ( $lastEditTimestamp === null ) {
-				$lastEditTimestamp = $row->rev_timestamp;
-			}
+			$lastEditTimestamp ??= $row->rev_timestamp;
 			// Computed values $editCountByNamespace, $editCountByDay, $newcomerTaskEditCount and $lastEditTimestamp
 			// use data from all namespaces. Filter out non-article pages from the collection of returned articles
 			// ($editedArticles) since they are not relevant for the user article list of recent edits.
@@ -310,8 +308,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			// for the impact of the user for a particular article, e.g. when making a pageviews tool URL
 			// or choosing the date range for page view data to display for an article.
 			$editedArticles[$titleDbKey]['oldestEdit'] = $row->rev_timestamp;
-			$editedArticles[$titleDbKey]['newestEdit'] =
-				$editedArticles[$titleDbKey]['newestEdit'] ?? $row->rev_timestamp;
+			$editedArticles[$titleDbKey]['newestEdit'] ??= $row->rev_timestamp;
 		}
 
 		return new EditData(

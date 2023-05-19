@@ -159,11 +159,7 @@ class VariantHooks implements
 	public static function shouldCampaignSkipWelcomeSurvey(
 		string $campaign, CampaignConfig $campaignConfig
 	): bool {
-		if ( !$campaign ) {
-			return false;
-		}
-
-		return $campaignConfig->shouldSkipWelcomeSurvey( $campaign );
+		return $campaign && $campaignConfig->shouldSkipWelcomeSurvey( $campaign );
 	}
 
 	/**
