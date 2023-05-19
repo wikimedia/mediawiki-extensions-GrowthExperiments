@@ -530,6 +530,8 @@
 	"growthexperiments-addimage-caption-warning-tooshort": "Legendas debe esser de $1 character{{PLURAL:$1||es}} o plus.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "Tu ha completate tote le suggestiones de ligamines pro hodie.\n\nAdjusta tu nivello de difficultate pro vider altere typos de modificationes o reveni deman pro plus suggestiones de ligamines.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Comprendite",
+	"growthexperiments-addsectionimage-daily-task-limit-exceeded": "Tu ha completate tote le suggestiones de imagines al nivello de section pro hodie.\n\nAdjusta tu nivello de difficultate pro vider altere typos de modificationes o reveni deman pro plus suggestiones de imagines.",
+	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "Comprendite",
 	"growthexperiments-homepage-mentorship-optin-header": "Mentor pro le modification",
 	"growthexperiments-homepage-mentorship-optin-text": "Si tu ha questiones sur como modificar, un redactor experte pote esser a tu disposition como mentor.",
 	"growthexperiments-homepage-mentorship-optin-button": "Obtener un mentor",

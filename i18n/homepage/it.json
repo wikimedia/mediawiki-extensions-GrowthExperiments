@@ -509,6 +509,7 @@
 	"growthexperiments-addimage-caption-warning-tooshort": "Le descrizioni devono avere $1 {{PLURAL:$1|carattere|caratteri}} o più.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "Hai completato tutti i suggerimenti di collegamenti di oggi.\n\nRegola i tuoi livelli di difficoltà per vedere altri tipi di modifiche o torna domani per altri suggerimenti di collegamenti.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Capito",
+	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "Capito",
 	"growthexperiments-homepage-mentorship-optin-header": "Tutor per modificare",
 	"growthexperiments-homepage-mentorship-optin-text": "Se hai domande riguardo a modificare, un tutor esperto può essere assegnato come tuo tutor per aiutarti.",
 	"growthexperiments-homepage-mentorship-optin-button": "Ottieni un tutor",
