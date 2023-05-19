@@ -10,13 +10,14 @@ use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use WANObjectCache;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class DatabaseMentorStore extends MentorStore {
 
 	private UserFactory $userFactory;
 	private UserIdentityLookup $userIdentityLookup;
 	private JobQueueGroup $jobQueueGroup;
-	private IDatabase $dbr;
+	private IReadableDatabase $dbr;
 	private IDatabase $dbw;
 
 	/**
@@ -24,7 +25,7 @@ class DatabaseMentorStore extends MentorStore {
 	 * @param UserFactory $userFactory
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param JobQueueGroup $jobQueueGroup
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 * @param IDatabase $dbw
 	 * @param bool $wasPosted
 	 */
@@ -33,7 +34,7 @@ class DatabaseMentorStore extends MentorStore {
 		UserFactory $userFactory,
 		UserIdentityLookup $userIdentityLookup,
 		JobQueueGroup $jobQueueGroup,
-		IDatabase $dbr,
+		IReadableDatabase $dbr,
 		IDatabase $dbw,
 		bool $wasPosted
 	) {

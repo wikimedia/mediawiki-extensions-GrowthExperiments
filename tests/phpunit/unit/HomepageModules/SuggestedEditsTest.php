@@ -36,7 +36,7 @@ use TitleValue;
 use User;
 use WANObjectCache;
 use WebRequest;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -119,7 +119,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		);
 		$titleFactoryMock = $this->createMock( TitleFactory::class );
 		$linkBatchFactoryMock = $this->createMock( LinkBatchFactory::class );
-		$databaseMock = $this->createMock( IDatabase::class );
+		$databaseMock = $this->createMock( IReadableDatabase::class );
 		$databaseMock->expects( $this->once() )
 			->method( 'select' )
 			->willReturn( new ArrayIterator( [] ) );

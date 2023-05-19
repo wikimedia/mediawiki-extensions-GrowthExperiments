@@ -21,6 +21,7 @@ use StatusValue;
 use Title;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use WikitextContent;
 
 /**
@@ -30,7 +31,7 @@ use WikitextContent;
  */
 class LinkRecommendationUpdater {
 
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $dbr;
 
 	/** @var RevisionStore */
@@ -58,7 +59,7 @@ class LinkRecommendationUpdater {
 	private $linkRecommendationTaskType;
 
 	/**
-	 * @param IDatabase $dbr Read handle to the main database.
+	 * @param IReadableDatabase $dbr Read handle to the main database.
 	 * @param RevisionStore $revisionStore
 	 * @param NameTableStore $changeDefNameTableStore
 	 * @param PageProps $pageProps
@@ -69,7 +70,7 @@ class LinkRecommendationUpdater {
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 */
 	public function __construct(
-		IDatabase $dbr,
+		IReadableDatabase $dbr,
 		RevisionStore $revisionStore,
 		NameTableStore $changeDefNameTableStore,
 		PageProps $pageProps,

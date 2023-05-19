@@ -15,7 +15,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use stdClass;
 use Title;
 use TitleValue;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\ProtectionFilter
@@ -98,10 +98,10 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param array[] $map "<ns>:<title>" => [ exists, is protected ]
-	 * @return IDatabase|MockObject
+	 * @return IReadableDatabase
 	 */
 	protected function getMockDatabase( array $map ) {
-		$dbr = $this->createMock( IDatabase::class );
+		$dbr = $this->createMock( IReadableDatabase::class );
 		$dbr->expects( $this->exactly( 4 ) )
 			->method( 'select' )
 			->with( 'page_restrictions' )

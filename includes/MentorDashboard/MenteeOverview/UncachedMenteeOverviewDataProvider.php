@@ -16,7 +16,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -43,7 +43,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
 
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $mainDbr;
 
 	/** @var array Cache used by getLastEditTimestampForUsers */
@@ -62,14 +62,14 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param NameTableStore $changeTagDefStore
 	 * @param ActorMigration $actorMigration
 	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param IDatabase $mainDbr
+	 * @param IReadableDatabase $mainDbr
 	 */
 	public function __construct(
 		MentorStore $mentorStore,
 		NameTableStore $changeTagDefStore,
 		ActorMigration $actorMigration,
 		UserIdentityLookup $userIdentityLookup,
-		IDatabase $mainDbr
+		IReadableDatabase $mainDbr
 	) {
 		$this->setLogger( new NullLogger() );
 
@@ -245,7 +245,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 							(int)wfTimestamp( TS_UNIX ) - 2 * 7 * self::SECONDS_DAY
 						)
 					)
-				], IDatabase::LIST_OR ),
+				], IReadableDatabase::LIST_OR ),
 			],
 			__METHOD__
 		);

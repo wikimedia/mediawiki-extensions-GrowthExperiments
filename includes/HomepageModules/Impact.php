@@ -19,7 +19,7 @@ use OOUI\IconWidget;
 use PageImages\PageImages;
 use SpecialPage;
 use Title;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * This is the "Impact" module. It shows the page views information
@@ -54,7 +54,7 @@ class Impact extends BaseModule {
 	 */
 	private $editsTable = null;
 
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $dbr;
 
 	/**
@@ -80,7 +80,7 @@ class Impact extends BaseModule {
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param array $suggestedEditsConfig
 	 * @param TitleFactory $titleFactory
@@ -89,7 +89,7 @@ class Impact extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		IDatabase $dbr,
+		IReadableDatabase $dbr,
 		ExperimentUserManager $experimentUserManager,
 		array $suggestedEditsConfig,
 		TitleFactory $titleFactory,

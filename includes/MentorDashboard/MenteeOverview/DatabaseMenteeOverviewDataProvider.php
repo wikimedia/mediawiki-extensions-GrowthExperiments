@@ -8,7 +8,7 @@ use MediaWiki\User\UserIdentity;
 use stdClass;
 use WANObjectCache;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * Data provider for MenteeOverview module
@@ -23,7 +23,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 	/** @var MentorStore */
 	private $mentorStore;
 
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $growthDbr;
 
 	/** @var WANObjectCache */
@@ -32,12 +32,12 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 	/**
 	 * @param WANObjectCache $wanCache
 	 * @param MentorStore $mentorStore
-	 * @param IDatabase $growthDbr
+	 * @param IReadableDatabase $growthDbr
 	 */
 	public function __construct(
 		WANObjectCache $wanCache,
 		MentorStore $mentorStore,
-		IDatabase $growthDbr
+		IReadableDatabase $growthDbr
 	) {
 		$this->wanCache = $wanCache;
 		$this->mentorStore = $mentorStore;
