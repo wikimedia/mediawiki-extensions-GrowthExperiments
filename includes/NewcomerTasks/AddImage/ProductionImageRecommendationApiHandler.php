@@ -52,6 +52,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		'istype-wikidata-image' => ImageRecommendationImage::SOURCE_WIKIDATA,
 		'istype-commons-category' => ImageRecommendationImage::SOURCE_COMMONS,
 		'istype-section-topics-p18' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
+		'istype-depicts' => 'unknown',
 	];
 
 	private const KIND_TO_TASK_TYPE_ID = [
@@ -59,6 +60,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		'istype-wikidata-image' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
 		'istype-commons-category' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
 		'istype-section-topics-p18' => SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+		'istype-depicts' => 'ignored',
 	];
 
 	/**
