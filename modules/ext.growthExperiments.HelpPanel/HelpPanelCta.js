@@ -225,8 +225,7 @@
 			} );
 			lifecycle.closing.done( function () {
 				if ( OO.ui.isMobile() ) {
-					$body.append( $mfOverlay );
-					$body.append( $veUiOverlay );
+					$body.append( $mfOverlay, $veUiOverlay );
 				}
 				if ( guidanceAvailable ) {
 					attachHelpButton( helpPanelProcessDialog.logger.getEditor() );

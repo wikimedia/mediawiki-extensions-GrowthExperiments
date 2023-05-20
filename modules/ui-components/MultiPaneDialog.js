@@ -109,11 +109,7 @@ MultiPaneDialog.prototype.updateProgressIndicator = function () {
 	}
 
 	$progressIndicator.find( '.growthexperiments-multi-pane-dialog-dot' ).each( function ( index ) {
-		if ( index <= currentIndex ) {
-			$( this ).addClass( 'dot-completed' );
-		} else {
-			$( this ).removeClass( 'dot-completed' );
-		}
+		$( this ).toggleClass( 'dot-completed', index <= currentIndex );
 	} );
 };
 
@@ -145,13 +141,8 @@ MultiPaneDialog.prototype.showPanelIndex = function ( index ) {
 MultiPaneDialog.prototype.updatePanelTransitionClasses = function () {
 	var currentIndex = this.currentPanelIndex;
 	this.panels.forEach( function ( panel, index ) {
-		if ( index === currentIndex ) {
-			panel.$element.removeClass( [ 'offscreen-content-prev', 'offscreen-content-next' ] );
-		} else if ( index < currentIndex ) {
-			panel.$element.addClass( 'offscreen-content-prev' );
-		} else {
-			panel.$element.addClass( 'offscreen-content-next' );
-		}
+		panel.$element.toggleClass( 'offscreen-content-prev', index < currentIndex )
+			.toggleClass( 'offscreen-content-next', index > currentIndex );
 	} );
 };
 

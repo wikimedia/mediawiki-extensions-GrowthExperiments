@@ -119,9 +119,9 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogDesktop.prototype.teardown = function () {
-	var $documentNode = this.surface.getView().$documentNode;
-	$documentNode.attr( 'inputMode', '' );
-	$documentNode.off( 'keydown', this.documentNodeKeydownHandler );
+	this.surface.getView().$documentNode
+		.attr( 'inputMode', '' )
+		.off( 'keydown', this.documentNodeKeydownHandler );
 	return RecommendedLinkToolbarDialogDesktop.super.prototype.teardown.apply( this, arguments );
 };
 

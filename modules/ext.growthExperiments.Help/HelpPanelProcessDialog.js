@@ -206,12 +206,14 @@
 			button.$button.attr( 'data-link-id', 'special-change-email' );
 		}
 
-		$messageList.append( $( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'bell' } ).$element ) );
-		$messageList.append( $( '<dd>' ).text(
-			mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-wiki' ).text()
-		) );
-		$messageList.append( $( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'message' } ).$element ) );
-		$messageList.append( $( '<dd>' ).html( emailMessage ) );
+		$messageList.append(
+			$( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'bell' } ).$element ),
+			$( '<dd>' ).text(
+				mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-wiki' ).text()
+			),
+			$( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'message' } ).$element ),
+			$( '<dd>' ).html( emailMessage )
+		);
 		if ( button ) {
 			$messageList.append( $( '<dd>' ).append( button.$element ) );
 		}
