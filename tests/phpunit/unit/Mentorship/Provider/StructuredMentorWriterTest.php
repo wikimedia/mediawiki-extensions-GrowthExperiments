@@ -38,7 +38,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	 * @param int $weight
 	 * @return Mentor
 	 */
-	private function getMentor(
+	private static function getMentor(
 		int $userId,
 		?string $introText,
 		bool $autoAssigned,
@@ -171,10 +171,10 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideAddMentor() {
+	public static function provideAddMentor() {
 		return [
 			[
-				'mentor' => $this->getMentor( 1, null, true, 2 ),
+				'mentor' => self::getMentor( 1, null, true, 2 ),
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
@@ -185,7 +185,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 				'expectLoad' => true,
 			],
 			[
-				'mentor' => $this->getMentor( 123, null, true, 2 ),
+				'mentor' => self::getMentor( 123, null, true, 2 ),
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
@@ -196,7 +196,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 				'expectLoad' => true,
 			],
 			[
-				'mentor' => $this->getMentor( 0, null, true, 2 ),
+				'mentor' => self::getMentor( 0, null, true, 2 ),
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
@@ -246,14 +246,14 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideRemoveMentor() {
+	public static function provideRemoveMentor() {
 		return [
 			[
-				'mentor' => $this->getMentor( 123, null, true, 2 ),
+				'mentor' => self::getMentor( 123, null, true, 2 ),
 				'expectedError' => null,
 			],
 			[
-				'mentor' => $this->getMentor( 1, null, true, 2 ),
+				'mentor' => self::getMentor( 1, null, true, 2 ),
 				'expectedError' => 'growthexperiments-mentor-writer-error-not-in-the-list',
 			],
 		];
@@ -305,10 +305,10 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideChangeMentor() {
+	public static function provideChangeMentor() {
 		return [
 			[
-				'mentor' => $this->getMentor( 1, null, true, 2 ),
+				'mentor' => self::getMentor( 1, null, true, 2 ),
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
@@ -318,7 +318,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 				'expectedError' => 'growthexperiments-mentor-writer-error-not-in-the-list',
 			],
 			[
-				'mentor' => $this->getMentor( 123, null, true, 4 ),
+				'mentor' => self::getMentor( 123, null, true, 4 ),
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,

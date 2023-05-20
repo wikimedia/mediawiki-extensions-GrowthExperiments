@@ -486,7 +486,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		];
 	}
 
-	public function provideProcessApiResponseDataFilter(): array {
+	public static function provideProcessApiResponseDataFilter(): array {
 		$validSource = [
 			'from' => 'wikipedia',
 			'found_on' => 'enwiki,dewiki',
@@ -539,7 +539,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		];
 	}
 
-	public function provideProcessApiResponseData(): array {
+	public static function provideProcessApiResponseData(): array {
 		$validSource = [
 			'from' => 'wikipedia',
 			'found_on' => 'enwiki,dewiki',
@@ -616,7 +616,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		];
 	}
 
-	public function provideProcessApiResponseDataNoSuggestions(): array {
+	public static function provideProcessApiResponseDataNoSuggestions(): array {
 		$validSource = [
 			'from' => 'wikipedia',
 			'found_on' => 'enwiki,dewiki',

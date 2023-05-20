@@ -65,7 +65,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expectedOffset, $taskSet->getOffset() );
 	}
 
-	public function provideSuggest() {
+	public static function provideSuggest() {
 		return [
 			'empty filters' => [
 				'taskSetFilters' => new TaskSetFilters(),

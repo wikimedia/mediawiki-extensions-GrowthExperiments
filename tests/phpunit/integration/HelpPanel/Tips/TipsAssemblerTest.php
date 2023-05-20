@@ -46,7 +46,7 @@ class TipsAssemblerTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @return array
 	 */
-	public function getTipsProvider(): array {
+	public static function getTipsProvider(): array {
 		return [
 			[
 				[

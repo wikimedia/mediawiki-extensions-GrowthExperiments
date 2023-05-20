@@ -143,7 +143,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	public function provideOnSearchDataForIndex() {
+	public static function provideOnSearchDataForIndex() {
 		return [
 			// page revid, recommendation revid on replica read, on primary read, expect primary read, expect delete
 			'page has no recommendation' => [ 100, null, null, false, false ],

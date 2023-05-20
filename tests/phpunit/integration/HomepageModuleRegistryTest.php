@@ -29,7 +29,7 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 		$this->assertInstanceOf( IDashboardModule::class, $moduleRegistry->get( $moduleId, $context ) );
 	}
 
-	public function provideGet() {
+	public static function provideGet() {
 		foreach ( HomepageModuleRegistry::getModuleIds() as $moduleId ) {
 			yield [ $moduleId ];
 		}
@@ -59,7 +59,7 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 		$this->assertInstanceOf( $expectedModuleClass, $moduleRegistry->get( 'impact', $context ) );
 	}
 
-	public function provideGetImpactModule() {
+	public static function provideGetImpactModule() {
 		// configFlag, $requestData, $userVariant, $expectedModuleClass
 		return [
 			[ false, [], VariantHooks::VARIANT_CONTROL, Impact::class ],

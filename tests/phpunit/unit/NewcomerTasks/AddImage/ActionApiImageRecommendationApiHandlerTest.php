@@ -30,7 +30,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $expectedResult, $result );
 	}
 
-	public function provideGetSuggestionDataFromApiResponse() {
+	public static function provideGetSuggestionDataFromApiResponse() {
 		return [
 			'empty' => [
 				'apiResponse' => [

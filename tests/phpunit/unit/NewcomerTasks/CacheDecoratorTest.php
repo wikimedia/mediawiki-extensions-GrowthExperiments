@@ -72,7 +72,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideSuggest() {
+	public static function provideSuggest() {
 		$user = new UserIdentityValue( 1000, 'Test' );
 		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		// Use tasksets consisting of one task only, so we don't have to deal with randomization

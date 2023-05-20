@@ -33,7 +33,7 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 		$this->addToAssertionCount( 1 );
 	}
 
-	public function provideService() {
+	public static function provideService() {
 		$wiring = require __DIR__ . '/../../../ServiceWiring.php';
 		foreach ( $wiring as $name => $_ ) {
 			if ( in_array( $name, self::IGNORED_SERVICES, true ) ) {

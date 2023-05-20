@@ -116,7 +116,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	/**
 	 * @return array
 	 */
-	public function provideTestMissingParametersToNewcomerTaskSubpath(): array {
+	public static function provideTestMissingParametersToNewcomerTaskSubpath(): array {
 		return [
 			'missing click id' => [
 				1,

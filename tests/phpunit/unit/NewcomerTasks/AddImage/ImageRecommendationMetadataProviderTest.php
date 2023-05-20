@@ -90,7 +90,7 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expectedDescription, $metadata['description'] );
 	}
 
-	public function provideGetMetadata_Language() {
+	public static function provideGetMetadata_Language() {
 		return [
 			'primary language available' => [
 				'wikiLanguage' => 'cs',
@@ -159,7 +159,7 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $expectedReason, $actualReason );
 	}
 
-	public function provideGetMetadata_Reason() {
+	public static function provideGetMetadata_Reason() {
 		return [
 			// suggestion data, expected message, assert as message key (vs. actual message)?
 			[ [ 'source' => 'wikidata' ], 'growthexperiments-addimage-reason-wikidata', true ],
@@ -229,7 +229,7 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideGetShownLanguageCodes() {
+	public static function provideGetShownLanguageCodes() {
 		return [
 			// language chain, suggestion languages, shown language target count, expected shown languages
 			[ [ 'en' ], [ 'cs', 'fr', 'sk', 'ar' ], 2, [ 'cs', 'fr' ] ],

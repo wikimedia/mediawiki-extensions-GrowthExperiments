@@ -229,7 +229,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$changeMentor->execute( $this->getUserMock( 'NewMentor', 4 ), 'test' );
 	}
 
-	public function provideExecuteMenteeStatus() {
+	public static function provideExecuteMenteeStatus() {
 		return [
 			'enabled' => [ MentorManager::MENTORSHIP_ENABLED, MentorManager::MENTORSHIP_ENABLED ],
 			'disabled' => [ MentorManager::MENTORSHIP_DISABLED, MentorManager::MENTORSHIP_ENABLED ],

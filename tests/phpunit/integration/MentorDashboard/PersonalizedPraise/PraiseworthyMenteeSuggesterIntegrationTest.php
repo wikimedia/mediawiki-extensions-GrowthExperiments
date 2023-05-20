@@ -96,7 +96,7 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 		$this->assertCount( 1, $suggester->getPraiseworthyMenteesForMentorUncached( $mentor ) );
 	}
 
-	public function provideGetPraiseworthyMenteesForMentor() {
+	public static function provideGetPraiseworthyMenteesForMentor() {
 		return [ [ 10 ], [ 5 ] ];
 	}
 }

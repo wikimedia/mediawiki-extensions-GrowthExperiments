@@ -119,7 +119,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 			0, $lookupResult, 1, $expectedData );
 	}
 
-	public function provideLoadHttp() {
+	public static function provideLoadHttp() {
 		return [
 			'success' => [
 				'response' => '{ "foo": "bar" }',
@@ -132,7 +132,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 		];
 	}
 
-	public function provideLoadLocal() {
+	public static function provideLoadLocal() {
 		return [
 			'success' => [
 				'response' => new JsonContent( '{ "foo": "bar" }' ),

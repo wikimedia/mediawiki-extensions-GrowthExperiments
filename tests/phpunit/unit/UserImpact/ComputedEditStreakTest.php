@@ -41,7 +41,7 @@ class ComputedEditStreakTest extends MediaWikiUnitTestCase {
 	 *   * the expected best EditingStreak from the data set
 	 * @throws \Exception if DateTime is incorrect in makeDatePeriod
 	 */
-	public function provideEditingData(): array {
+	public static function provideEditingData(): array {
 		return [
 			'no-edit-data' => [
 				[],

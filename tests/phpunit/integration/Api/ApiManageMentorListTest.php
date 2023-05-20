@@ -147,7 +147,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 		);
 	}
 
-	public function provideAddPermissions() {
+	public static function provideAddPermissions() {
 		return [
 			'only enrollasmentor' => [ [ 'enrollasmentor' => true, 'managementors' => false, ] ],
 			'only managementors' => [ [ 'enrollasmentor' => false, 'managementors' => true ] ],
@@ -175,7 +175,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 		);
 	}
 
-	public function provideAddDefaultValues() {
+	public static function provideAddDefaultValues() {
 		return [
 			'none' => [ [] ],
 			'only message' => [ [ 'message' => 'foo' ] ],
