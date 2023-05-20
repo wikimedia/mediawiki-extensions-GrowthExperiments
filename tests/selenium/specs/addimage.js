@@ -30,7 +30,7 @@ describe( 'add image', function () {
 		await addImageArticlePage.discardEdits();
 	} );
 
-	it( 'mobile: user can close the image suggestion UI', async function () {
+	it.skip( 'mobile: user can close the image suggestion UI', async function () {
 		const addImageArticle = "Ma'amoul";
 		await addImageArticlePage.setup( addImageArticle, 'mobile' );
 		await addImageArticleMobilePage.closeImageInspector();

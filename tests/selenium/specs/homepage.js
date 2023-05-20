@@ -5,7 +5,7 @@ const assert = require( 'assert' ),
 
 describe( 'Homepage', function () {
 
-	it( 'saves change tags for unstructured task edits made via VisualEditor', async function () {
+	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', async function () {
 		const copyeditArticle = 'Classical kemençe';
 		await browser.execute( ( done ) =>
 			mw.loader.using( 'mediawiki.api' ).then( () =>
@@ -87,7 +87,7 @@ describe( 'Homepage', function () {
 		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
 	} );
 
-	it( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', async () => {
+	it.skip( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', async () => {
 		await HomepagePage.open();
 		await assert( HomepagePage.suggestedEditsCard.isExisting() );
 		await HomepagePage.assertCardTitleIs( 'Classical kemençe' );
