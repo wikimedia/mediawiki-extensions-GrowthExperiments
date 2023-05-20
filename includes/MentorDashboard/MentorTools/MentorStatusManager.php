@@ -12,6 +12,7 @@ use MediaWiki\User\UserOptionsManager;
 use StatusValue;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class MentorStatusManager implements IDBAccessObject {
@@ -49,7 +50,7 @@ class MentorStatusManager implements IDBAccessObject {
 	/** @var UserFactory */
 	private $userFactory;
 
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $dbr;
 
 	/** @var IDatabase */
@@ -61,14 +62,14 @@ class MentorStatusManager implements IDBAccessObject {
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserFactory $userFactory
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 * @param IDatabase $dbw
 	 */
 	public function __construct(
 		UserOptionsManager $userOptionsManager,
 		UserIdentityLookup $userIdentityLookup,
 		UserFactory $userFactory,
-		IDatabase $dbr,
+		IReadableDatabase $dbr,
 		IDatabase $dbw
 	) {
 		$this->userOptionsManager = $userOptionsManager;

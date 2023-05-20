@@ -16,7 +16,7 @@ use Status;
 use StatusValue;
 use stdClass;
 use User;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -27,7 +27,7 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class FixSuggestedEditChangeTags extends Maintenance {
 
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $dbr;
 
 	/** @var RevisionStore */
@@ -122,13 +122,13 @@ class FixSuggestedEditChangeTags extends Maintenance {
 
 	/**
 	 * Get a query for (one page of) all revisions with structured edit change tags.
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 * @param int $limit Number of rows the query should return.
 	 * @param int $fromRevision Revision to start from (ascending).
 	 * @return SelectQueryBuilder
 	 */
 	private function getStructuredEditTagsQuery(
-		IDatabase $dbr,
+		IReadableDatabase $dbr,
 		int $limit,
 		int $fromRevision
 	): SelectQueryBuilder {

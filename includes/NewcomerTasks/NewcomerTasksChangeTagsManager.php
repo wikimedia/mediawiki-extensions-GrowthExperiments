@@ -16,8 +16,8 @@ use MediaWiki\User\UserOptionsLookup;
 use PrefixingStatsdDataFactoryProxy;
 use RequestContext;
 use StatusValue;
-use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class NewcomerTasksChangeTagsManager {
 
@@ -31,7 +31,7 @@ class NewcomerTasksChangeTagsManager {
 	private $userOptionsLookup;
 	/** @var PrefixingStatsdDataFactoryProxy */
 	private $perDbNameStatsdDataFactory;
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $dbr;
 	/** @var Config|null */
 	private $config;

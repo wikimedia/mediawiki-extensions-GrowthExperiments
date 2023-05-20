@@ -3,23 +3,23 @@
 namespace GrowthExperiments\PeriodicMetrics;
 
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class NewcomersByMentorMetric implements IMetric {
 
 	/** @var MetricsFactory */
 	private $metricsFactory;
 
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $dbr;
 
 	/**
 	 * @param MetricsFactory $metricsFactory
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 */
 	public function __construct(
 		MetricsFactory $metricsFactory,
-		IDatabase $dbr
+		IReadableDatabase $dbr
 	) {
 		$this->metricsFactory = $metricsFactory;
 		$this->dbr = $dbr;

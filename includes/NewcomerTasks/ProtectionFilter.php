@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Title\TitleFactory;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * Filter out protected items from a small resultset.
@@ -18,18 +18,18 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
 
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $dbr;
 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
-		IDatabase $dbr
+		IReadableDatabase $dbr
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->linkBatchFactory = $linkBatchFactory;

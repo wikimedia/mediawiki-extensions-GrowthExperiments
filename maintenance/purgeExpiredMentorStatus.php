@@ -5,6 +5,7 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use Maintenance;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -18,7 +19,7 @@ require_once "$IP/maintenance/Maintenance.php";
  */
 class PurgeExpiredMentorStatus extends Maintenance {
 
-	/** @var IDatabase */
+	/** @var IReadableDatabase */
 	private $dbr;
 
 	/** @var IDatabase */
