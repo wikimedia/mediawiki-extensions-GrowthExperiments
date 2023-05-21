@@ -153,7 +153,7 @@ class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 		);
 	}
 
-	public function provideHasMentees() {
+	public static function provideHasMentees() {
 		return [
 			'has mentees' => [ true ],
 			'no mentees' => [ false ],

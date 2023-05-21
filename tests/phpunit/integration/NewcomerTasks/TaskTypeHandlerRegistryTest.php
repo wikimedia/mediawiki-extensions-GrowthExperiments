@@ -29,7 +29,7 @@ class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public function provideGetTaskTypeHandlerIdByChangeTagName(): array {
+	public static function provideGetTaskTypeHandlerIdByChangeTagName(): array {
 		return [
 			[
 				'newcomer task',
@@ -88,7 +88,7 @@ class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
 		$taskTypeHandler->getTaskTypeIdByChangeTagName( 'foo' );
 	}
 
-	public function provideGetTaskTypeIdByChangeTagNameForStructuredTasks(): array {
+	public static function provideGetTaskTypeIdByChangeTagNameForStructuredTasks(): array {
 		return [
 			[
 				'link-recommendation',

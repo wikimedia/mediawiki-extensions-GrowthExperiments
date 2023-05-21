@@ -135,7 +135,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		) );
 	}
 
-	public function provideLoadTaskTypes_error() {
+	public static function provideLoadTaskTypes_error() {
 		return [
 			[ 'wrongstructure' ],
 			[ 'invalidid' ],
@@ -191,7 +191,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		) );
 	}
 
-	public function provideLoadOresTopics_error() {
+	public static function provideLoadOresTopics_error() {
 		return [
 			[ 'wrongstructure' ],
 			[ 'invalidid' ],
@@ -250,7 +250,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		) );
 	}
 
-	public function provideLoadMorelikeTopics_error() {
+	public static function provideLoadMorelikeTopics_error() {
 		return [
 			[ 'wrongstructure' ],
 			[ 'invalidid' ],

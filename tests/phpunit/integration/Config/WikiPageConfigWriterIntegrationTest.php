@@ -143,7 +143,7 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	public function provideSetVariable() {
+	public static function provideSetVariable() {
 		return [
 			// variable name, initial config, $variable, $value, expected value
 			'basic' => [ 'var', [ 'var' => 'foo' ], 'var', 'bar', 'bar' ],
@@ -201,7 +201,7 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	public function provideVariableExists() {
+	public static function provideVariableExists() {
 		return [
 			// initial config, $variable, expected value
 			'set' => [ [ 'var' => 'foo' ], 'var', true ],

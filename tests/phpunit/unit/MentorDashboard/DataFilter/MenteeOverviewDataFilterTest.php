@@ -22,14 +22,14 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 	 * @param int $secondsAgo
 	 * @return string
 	 */
-	private function getLastActive( int $secondsAgo ): string {
+	private static function getLastActive( int $secondsAgo ): string {
 		return ConvertibleTimestamp::convert(
 			TS_MW,
 			wfTimestamp( TS_UNIX ) - $secondsAgo
 		);
 	}
 
-	private function getTestingData(): array {
+	private static function getTestingData(): array {
 		if ( self::$testingData !== null ) {
 			return self::$testingData;
 		}
@@ -40,21 +40,21 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 				'user_id' => 1,
 				'editcount' => 2,
 				'questions' => 14,
-				'last_active' => $this->getLastActive( self::SECONDS_DAY ),
+				'last_active' => self::getLastActive( self::SECONDS_DAY ),
 			],
 			[
 				'username' => 'Bar',
 				'user_id' => 2,
 				'editcount' => 42,
 				'questions' => 2,
-				'last_active' => $this->getLastActive( self::SECONDS_DAY * 4 ),
+				'last_active' => self::getLastActive( self::SECONDS_DAY * 4 ),
 			],
 			[
 				'username' => 'Baz',
 				'user_id' => 3,
 				'editcount' => 54,
 				'questions' => 10,
-				'last_active' => $this->getLastActive( self::SECONDS_DAY * 10 ),
+				'last_active' => self::getLastActive( self::SECONDS_DAY * 10 ),
 			],
 		];
 		return self::$testingData;
@@ -64,12 +64,12 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 	 * @param array|string $usernames
 	 * @return array
 	 */
-	private function getTestingDataForUsernames( $usernames ): array {
+	private static function getTestingDataForUsernames( $usernames ): array {
 		if ( is_string( $usernames ) ) {
 			$usernames = [ $usernames ];
 		}
 
-		$testingData = $this->getTestingData();
+		$testingData = self::getTestingData();
 		$res = [];
 		foreach ( $testingData as $userData ) {
 			if ( in_array( $userData['username'], $usernames ) ) {
@@ -87,7 +87,7 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 	 * @param int|null $minedits
 	 */
 	public function testMinEdits( $expected, ?int $minedits ) {
-		$dataFilter = new MenteeOverviewDataFilter( $this->getTestingData() );
+		$dataFilter = new MenteeOverviewDataFilter( self::getTestingData() );
 		$dataFilter->minEdits( $minedits );
 		$this->assertArrayEquals(
 			$expected,
@@ -95,14 +95,14 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideDataMinEdits() {
+	public static function provideDataMinEdits() {
 		return [
 			[
 				[],
 				300
 			],
 			[
-				$this->getTestingDataForUsernames( 'Baz' ),
+				self::getTestingDataForUsernames( 'Baz' ),
 				50
 			],
 		];
@@ -116,7 +116,7 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 	 * @param int|null $maxedits
 	 */
 	public function testMaxEdits( $expected, ?int $maxedits ) {
-		$dataFilter = new MenteeOverviewDataFilter( $this->getTestingData() );
+		$dataFilter = new MenteeOverviewDataFilter( self::getTestingData() );
 		$dataFilter->maxEdits( $maxedits );
 		$this->assertArrayEquals(
 			$expected,
@@ -124,14 +124,14 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideDataMaxEdits() {
+	public static function provideDataMaxEdits() {
 		return [
 			[
 				[],
 				1
 			],
 			[
-				$this->getTestingDataForUsernames( 'Foo' ),
+				self::getTestingDataForUsernames( 'Foo' ),
 				30
 			]
 		];
@@ -149,7 +149,7 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 	 * @param string $order
 	 */
 	public function testSort( $expected, string $sortBy, string $order ) {
-		$dataFilter = new MenteeOverviewDataFilter( $this->getTestingData() );
+		$dataFilter = new MenteeOverviewDataFilter( self::getTestingData() );
 		$dataFilter->sort( $sortBy, $order );
 		$this->assertArrayEquals(
 			$expected,
@@ -157,42 +157,42 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideDataSort() {
+	public static function provideDataSort() {
 		return [
 			[
-				$this->getTestingDataForUsernames( [ 'Foo', 'Bar', 'Baz' ] ),
+				self::getTestingDataForUsernames( [ 'Foo', 'Bar', 'Baz' ] ),
 				MenteeOverviewDataFilter::SORT_BY_EDITCOUNT,
 				MenteeOverviewDataFilter::SORT_ORDER_ASCENDING
 			],
 			[
-				$this->getTestingDataForUsernames( [ 'Baz', 'Bar', 'Foo' ] ),
+				self::getTestingDataForUsernames( [ 'Baz', 'Bar', 'Foo' ] ),
 				MenteeOverviewDataFilter::SORT_BY_EDITCOUNT,
 				MenteeOverviewDataFilter::SORT_ORDER_DESCENDING
 			],
 			[
-				$this->getTestingDataForUsernames( [ 'Bar', 'Baz', 'Foo' ] ),
+				self::getTestingDataForUsernames( [ 'Bar', 'Baz', 'Foo' ] ),
 				MenteeOverviewDataFilter::SORT_BY_QUESTIONS,
 				MenteeOverviewDataFilter::SORT_ORDER_ASCENDING
 			],
 		];
 	}
 
-	public function provideDataActiveDaysAgo() {
+	public static function provideDataActiveDaysAgo() {
 		return [
 			[
 				[],
 				1,
 			],
 			[
-				$this->getTestingDataForUsernames( 'Foo' ),
+				self::getTestingDataForUsernames( 'Foo' ),
 				2,
 			],
 			[
-				$this->getTestingDataForUsernames( 'Foo' ),
+				self::getTestingDataForUsernames( 'Foo' ),
 				3,
 			],
 			[
-				$this->getTestingDataForUsernames( [ 'Foo', 'Bar' ] ),
+				self::getTestingDataForUsernames( [ 'Foo', 'Bar' ] ),
 				5,
 			],
 		];
@@ -206,7 +206,7 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 	 * @param int $daysAgo
 	 */
 	public function testActiveDaysAgo( $expected, $daysAgo ) {
-		$dataFilter = new MenteeOverviewDataFilter( $this->getTestingData() );
+		$dataFilter = new MenteeOverviewDataFilter( self::getTestingData() );
 		$dataFilter->activeDaysAgo( $daysAgo );
 		$this->assertArrayEquals(
 			$expected,

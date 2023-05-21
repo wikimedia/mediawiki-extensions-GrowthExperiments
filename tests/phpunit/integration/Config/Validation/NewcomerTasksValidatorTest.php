@@ -23,7 +23,7 @@ class NewcomerTasksValidatorTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expectedStatus, $status );
 	}
 
-	public function provideValidate() {
+	public static function provideValidate() {
 		return [
 			'empty' => [
 				'config' => [],

@@ -30,9 +30,9 @@ class GrowthArticleTopicFeatureTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expectedWarnings, $warnings );
 	}
 
-	public function provideParseValue() {
+	public static function provideParseValue() {
 		if ( !class_exists( ArticleTopicFeature::class ) ) {
-			$this->markTestSkipped( 'depends on CirrusSearch' );
+			self::markTestSkipped( 'depends on CirrusSearch' );
 		}
 		return [
 			'single keyword' => [

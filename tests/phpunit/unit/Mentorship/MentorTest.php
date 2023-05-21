@@ -66,7 +66,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideGetIntroText() {
+	public static function provideGetIntroText() {
 		return [
 			[ null ],
 			[ 'custom intro' ],
@@ -89,7 +89,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $autoAssigned, $mentor->getAutoAssigned() );
 	}
 
-	public function provideGetAutoAssigned() {
+	public static function provideGetAutoAssigned() {
 		return [
 			[ true ],
 			[ false ]
@@ -112,7 +112,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $weight, $mentor->getWeight() );
 	}
 
-	public function provideGetWeight() {
+	public static function provideGetWeight() {
 		return [
 			[ IMentorWeights::WEIGHT_NORMAL ],
 			[ IMentorWeights::WEIGHT_LOW ],

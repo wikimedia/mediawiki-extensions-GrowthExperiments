@@ -46,7 +46,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 		$validator->validateVariable( $variable, $value );
 	}
 
-	public function validateVariableDataProvider() {
+	public static function validateVariableDataProvider() {
 		return [
 			[
 				'variable' => 'foo',
@@ -78,7 +78,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function validateDataProvider() {
+	public static function validateDataProvider() {
 		return [
 			'emptyOk' => [
 				'data' => [
@@ -146,7 +146,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function validateMentorDataProvider() {
+	public static function validateMentorDataProvider() {
 		return [
 			'unexpectedKey' => [
 				'mentorData' => [

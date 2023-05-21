@@ -102,7 +102,7 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideTimestamps(): array {
+	public static function provideTimestamps(): array {
 		return [
 			[ null, null, false ],
 			[ null, null, true ],
@@ -132,7 +132,7 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideGetAwayReason(): array {
+	public static function provideGetAwayReason(): array {
 		return [
 			'no block no timestamp' => [ null, null, false ],
 			'expired timestamp no block' => [ null, '20080203000000', false ],
@@ -162,7 +162,7 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideTestStatuses(): array {
+	public static function provideTestStatuses(): array {
 		return [
 			'no block no timestamp' => [ 'active', null, false ],
 			'expired timestamp no block' => [ 'active', '20080203000000', false ],
@@ -211,7 +211,7 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideMarkMentorAsActive(): array {
+	public static function provideMarkMentorAsActive(): array {
 		return [
 			'not blocked' => [ false ],
 			'blocked' => [ true ],

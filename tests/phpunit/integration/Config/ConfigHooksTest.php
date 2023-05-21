@@ -104,7 +104,7 @@ class ConfigHooksTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	public function provideApiEdit() {
+	public static function provideApiEdit() {
 		return [
 			'success' => [
 				'expectedError' => null,

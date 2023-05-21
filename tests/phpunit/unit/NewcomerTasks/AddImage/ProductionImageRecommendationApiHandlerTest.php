@@ -41,7 +41,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 		);
 	}
 
-	public function provideApiResponseData(): array {
+	public static function provideApiResponseData(): array {
 		$suggestions = [
 			[
 				'wiki' => 'enwiki',
@@ -339,7 +339,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 		);
 	}
 
-	public function provideApiResponseData_section() {
+	public static function provideApiResponseData_section() {
 		return [
 			'section' => [
 				[ 'rows' => [ [

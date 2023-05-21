@@ -159,7 +159,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideGetCurrentWikiConfig() {
+	public static function provideGetCurrentWikiConfig() {
 		return [
 			'empty existing page' => [ [], true, [] ],
 			'existing page with content' => [ [ 'foo' => 321 ], true, [ 'foo' => 321 ] ],
@@ -253,7 +253,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideSetVariable() {
+	public static function provideSetVariable() {
 		return [
 			'normal' => [
 				'foo', 123,
@@ -373,7 +373,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $writer->save( $summary, $minor, $tags )->isOK() );
 	}
 
-	public function provideSave() {
+	public static function provideSave() {
 		return [
 			'autopatrolled major' => [ true, 'summary', false, [] ],
 			'non-autopatrolled major' => [ false, 'summary', false, [] ],

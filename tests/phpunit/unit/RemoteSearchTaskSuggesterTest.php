@@ -59,8 +59,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$taskTypeSpec, $topicSpec, $requests, $taskSetFilters, $limit, $expectedTaskSet
 	) {
 		$user = new UserIdentityValue( 1, 'Foo' );
-		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
-		$topics = $this->getTopics( $topicSpec );
+		$taskTypes = self::getTaskTypes( $taskTypeSpec );
+		$topics = self::getTopics( $topicSpec );
 
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
 		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
@@ -89,7 +89,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideSuggest() {
+	public static function provideSuggest() {
 		$makeTask = static function ( TaskType $taskType, string $titleText, array $topicScores = [] ) {
 			$task = new Task( $taskType, new TitleValue( NS_MAIN, $titleText ) );
 			$task->setTopics( array_map( static function ( string $topicId ) {
@@ -469,8 +469,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$expectedTaskSet
 	) {
 		$user = new UserIdentityValue( 1, 'Foo' );
-		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
-		$topics = $this->getTopics( $topicSpec );
+		$taskTypes = self::getTaskTypes( $taskTypeSpec );
+		$topics = self::getTopics( $topicSpec );
 
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
 		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
@@ -506,13 +506,13 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideFilter() {
+	public static function provideFilter() {
 		return [
 			'found' => [
 				'taskTypes' => [ 'type1' => [ 'MaintTempl' ] ],
 				'topics' => [],
 				'taskSet' => new TaskSet( [
-					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
+					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
 				'pageids' => [ 1 ],
 				'requests' => [ [
@@ -531,14 +531,14 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					],
 				] ],
 				'expectedTaskSet' => new TaskSet( [
-					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
+					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
 			],
 			'not found' => [
 				'taskTypes' => [ 'type1' => [ 'MaintTempl' ] ],
 				'topics' => [],
 				'taskSet' => new TaskSet( [
-					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
+					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
 				'pageids' => [ 1 ],
 				'requests' => [ [
@@ -561,7 +561,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'taskTypes' => [ 'type1' => [ 'MaintTempl' ] ],
 				'topics' => [ 'topic1' => [ 'foo' ] ],
 				'taskSet' => new TaskSet( [
-					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1',
+					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1',
 						[ 'topic1' => [ 'foo' ] ], [ 'topic1' => 0.8 ] ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [ 'topic1' ] ) ),
 				'pageids' => [ 1 ],
@@ -581,7 +581,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					],
 				] ],
 				'expectedTaskSet' => new TaskSet( [
-					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1',
+					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1',
 						[ 'topic1' => [ 'foo' ] ], [ 'topic1' => 0.8 ] ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
 			],
@@ -589,7 +589,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'taskTypes' => [ 'type1' => [ 'MaintTempl' ] ],
 				'topics' => [],
 				'taskSet' => new TaskSet( [
-					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
+					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
 				'pageids' => [ 1 ],
 				'requests' => [ [
@@ -612,9 +612,9 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @param float[] $topicScores Topic ID => score.
 	 * @return Task
 	 */
-	private function getTask( $taskTypeSpec, $title, $topicSpec = [], $topicScores = [] ) {
-		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
-		$topics = $this->getTopics( $topicSpec );
+	private static function getTask( $taskTypeSpec, $title, $topicSpec = [], $topicScores = [] ) {
+		$taskTypes = self::getTaskTypes( $taskTypeSpec );
+		$topics = self::getTopics( $topicSpec );
 		$task = new Task( $taskTypes[0], new TitleValue( NS_MAIN, $title ) );
 		$task->setTopics( $topics, $topicScores );
 		return $task;
@@ -742,7 +742,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @param array[] $spec [ task type id => [ title, ... ], ... ]
 	 * @return TemplateBasedTaskType[]
 	 */
-	private function getTaskTypes( array $spec ) {
+	private static function getTaskTypes( array $spec ) {
 		$taskTypes = [];
 		foreach ( $spec as $topicId => $titleNames ) {
 			$titleValues = [];
@@ -759,7 +759,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @param array[] $spec [ topic id => [ title, ... ], ... ]
 	 * @return MorelikeBasedTopic[]
 	 */
-	private function getTopics( array $spec ) {
+	private static function getTopics( array $spec ) {
 		$topics = [];
 		foreach ( $spec as $topicId => $titleNames ) {
 			$titleValues = [];

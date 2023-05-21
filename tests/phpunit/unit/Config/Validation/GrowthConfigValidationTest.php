@@ -26,7 +26,7 @@ class GrowthConfigValidationTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideValidate() {
+	public static function provideValidate() {
 		return [
 			'good' => [
 				'data' => [

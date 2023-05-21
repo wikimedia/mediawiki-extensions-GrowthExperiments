@@ -93,16 +93,16 @@ class PruningLinkRecommendationProviderTest extends MediaWikiIntegrationTestCase
 		}
 	}
 
-	public function provideGet() {
+	public static function provideGet() {
 		// T289953 ugly hack to make page names unique
-		$keys = array_keys( $this->provideGetReal( 0 ) );
+		$keys = array_keys( self::provideGetReal( 0 ) );
 		foreach ( $keys as $i => $key ) {
-			$all = $this->provideGetReal( $i );
+			$all = self::provideGetReal( $i );
 			yield $key => $all[$key];
 		}
 	}
 
-	public function provideGetReal( int $i ) {
+	public static function provideGetReal( int $i ) {
 		$links = [
 			new LinkRecommendationLink( 'Foo', "Project:X$i", 2, 100, 0.75, 'pre', 'post', 0 ),
 			new LinkRecommendationLink( 'Bar', "Project:Y$i", 1, 200, 0.8, 'pre2', 'post2', 1 ),

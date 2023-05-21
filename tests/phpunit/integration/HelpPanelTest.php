@@ -77,7 +77,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $result, $message );
 	}
 
-	public function providerShouldShowHelpPanel(): array {
+	public static function providerShouldShowHelpPanel(): array {
 		return [
 			[
 				// title

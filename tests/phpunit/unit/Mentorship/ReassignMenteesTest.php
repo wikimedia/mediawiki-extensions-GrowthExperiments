@@ -89,7 +89,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideGetStage() {
+	public static function provideGetStage() {
 		return [
 			'isMentorHasMentees' => [ ReassignMentees::STAGE_LISTED_AS_MENTOR, true, true ],
 			'isMentorNoMentees' => [ ReassignMentees::STAGE_LISTED_AS_MENTOR, true, false ],

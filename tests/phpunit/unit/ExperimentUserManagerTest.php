@@ -96,7 +96,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	 * @see ::testVariantAssignmentByPlatform
 	 * @return array[]
 	 */
-	public function variantAssignmentByPlatformProvider(): array {
+	public static function variantAssignmentByPlatformProvider(): array {
 		return [
 			[
 				'mobile: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to oldimpact.',

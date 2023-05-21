@@ -72,7 +72,7 @@ class PersonalizedPraiseSettingsTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideGetPraiseworthyConditions() {
+	public static function provideGetPraiseworthyConditions() {
 		return [
 			'none set' => [
 				new PraiseworthyConditions( 500, 8, 7 ),

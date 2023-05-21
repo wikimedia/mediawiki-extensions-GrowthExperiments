@@ -38,7 +38,7 @@ class ImageRecommendationDataValidatorTest extends MediaWikiIntegrationTestCase 
 		$this->assertSame( $expectedMessage, Status::wrap( $status )->getWikiText( false, false, 'en' ) );
 	}
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		return [
 			'invalid filename: boolean' => [
 				[

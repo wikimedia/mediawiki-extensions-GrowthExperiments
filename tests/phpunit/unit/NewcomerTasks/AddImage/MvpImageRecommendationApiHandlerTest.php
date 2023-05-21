@@ -36,7 +36,7 @@ class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideApiResponseData(): array {
+	public static function provideApiResponseData(): array {
 		$suggestions = [
 			[
 				'filename' => 'Image1.png',

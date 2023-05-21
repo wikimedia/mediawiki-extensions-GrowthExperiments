@@ -82,7 +82,7 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $eligibleUser->isAllowed( 'enrollasmentor' ) );
 	}
 
-	public function provideOnUserGetRights() {
+	public static function provideOnUserGetRights() {
 		return [
 			[ 4, 10 ],
 			[ 10, 4 ],

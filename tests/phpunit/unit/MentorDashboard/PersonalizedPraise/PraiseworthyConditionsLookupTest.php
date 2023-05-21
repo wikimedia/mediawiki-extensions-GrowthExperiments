@@ -80,7 +80,7 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideIsMenteePraiseworthy() {
+	public static function provideIsMenteePraiseworthy() {
 		$editsByDay = [
 			'2022-01-01' => 100,
 			'2023-01-01' => 5,

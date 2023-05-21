@@ -28,7 +28,7 @@ class MenteeOverviewPrefixSearchDataFilterTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideDataGetUsernames() {
+	public static function provideDataGetUsernames() {
 		$data = [
 			[ 'username' => 'Joe Loe' ],
 			[ 'username' => 'Jane Doe' ],

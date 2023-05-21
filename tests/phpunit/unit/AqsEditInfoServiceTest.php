@@ -52,7 +52,7 @@ class AqsEditInfoServiceTest extends MediaWikiUnitTestCase {
 		$this->assertCount( 1, TestingAccessWrapper::newFromObject( $cache )->bag );
 	}
 
-	public function provideGetEditsPerDay() {
+	public static function provideGetEditsPerDay() {
 		$error = Status::newFatal( 'foo' );
 		return [
 			[ 10, [ 'items' => [ [ 'results' => [ [ 'edits' => 10 ] ] ] ] ] ],

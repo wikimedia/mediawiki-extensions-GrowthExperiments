@@ -156,7 +156,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideGetMentorDataForUser() {
+	public static function provideGetMentorDataForUser() {
 		return [
 			[
 				99,
@@ -248,7 +248,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideNewMentorFromUserIdentity() {
+	public static function provideNewMentorFromUserIdentity() {
 		return [
 			[ 12, 'This experienced user knows you\'re new and can help you with editing' ],
 			[ 33, 'I only test mentorship' ],
@@ -286,7 +286,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		$provider->$methodToCall();
 	}
 
-	public function provideGetMentors() {
+	public static function provideGetMentors() {
 		return [
 			[ [ 123, 42, 33, 12 ], 'getMentors' ],
 			[ [ 123, 42, 33, 12 ], 'getMentorsSafe' ],

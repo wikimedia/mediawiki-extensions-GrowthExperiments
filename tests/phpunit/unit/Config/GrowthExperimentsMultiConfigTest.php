@@ -30,7 +30,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $shouldEnable, $config->isWikiConfigEnabled() );
 	}
 
-	public function provideIsWikiConfigEnabled() {
+	public static function provideIsWikiConfigEnabled() {
 		return [
 			'enabled' => [ true ],
 			'disabled' => [ false ],
@@ -239,7 +239,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expectedValue, $config->get( $name ) );
 	}
 
-	public function provideMergeStrategy() {
+	public static function provideMergeStrategy() {
 		return [
 			// variable, PHP value, on-wiki value, expected
 			'replace' => [ 'GEHelpPanelViewMoreTitle', 'Foo', 'Bar', 'Bar' ],
