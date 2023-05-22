@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Tvarkyti dabartinio naudotojo klausimus, paskelbtus per pagalbos skydelį.",
+	"apihelp-helppanelquestionposter-param-body": "Naudotojo pateiktas klausimo tekstas.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Atitinkamas pavadinimas, jei pasirinktas, įtraukimui į klausimą."
+}
