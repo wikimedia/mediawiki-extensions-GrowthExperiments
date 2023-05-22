@@ -62,8 +62,9 @@ MultiPaneDialog.prototype.initialize = function () {
 
 	if ( this.hasSlideTransition ) {
 		this.updatePanelTransitionClasses();
-		// Elements need to be visible to slide in/out
-		this.$body.find( '.oo-ui-element-hidden' ).removeClass( 'oo-ui-element-hidden' );
+		// HACK Elements need to be visible to slide in/out, remove the
+		// hidden attribute added by OOUI StackLayout.
+		this.$body.find( '[hidden="hidden"]' ).removeAttr( 'hidden' );
 	}
 };
 
