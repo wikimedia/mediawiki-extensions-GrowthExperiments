@@ -18,6 +18,37 @@ When the current step is updated an update:current-step event is emitted.
 <MultiPaneDemo />
 :::
 
+::: details View code
+```vue
+    <multi-pane
+        v-model:current-step="currentStep"
+        :total-steps="3"
+        :is-rtl="isRtl"
+        @update:current-step="( newVal ) => currentStep = newVal"
+    >
+		<template #step1>
+			<div class="ext-growthExperiments-MultiPaneDemo__step
+				    ext-growthExperiments-MultiPaneDemo__step-1"
+			>
+			</div>
+		</template>
+		<template #step2>
+			<div
+				class="ext-growthExperiments-MultiPaneDemo__step
+			ext-growthExperiments-MultiPaneDemo__step-2"
+			>
+			</div>
+		</template>
+		<template #step3>
+			<div
+				class="ext-growthExperiments-MultiPaneDemo__step
+			ext-growthExperiments-MultiPaneDemo__step-3"
+			>
+			</div>
+		</template>
+	</multi-pane>
+```
+:::
 ## Caveats
 
 ### Transitions
