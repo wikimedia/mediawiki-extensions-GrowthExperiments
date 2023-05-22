@@ -1,4 +1,4 @@
-var addLinkModules, addImageModules;
+var addLinkModules, addImageModules, addSectionImageModules;
 
 function addLink() {
 	if ( !addLinkModules ) {
@@ -20,7 +20,7 @@ function addLink() {
 
 function addImage() {
 	if ( !addImageModules ) {
-		return {
+		addImageModules = {
 			AddImageTargetInitializer: require( './addimage/AddImageTargetInitializer.js' ),
 			AddImageArticleTarget: require( './addimage/AddImageArticleTarget.js' ),
 			RecommendedImageToolbarDialog: require( './addimage/RecommendedImageToolbarDialog.js' ),
@@ -30,6 +30,20 @@ function addImage() {
 		};
 	}
 	return addImageModules;
+}
+
+function addSectionImage() {
+	if ( !addSectionImageModules ) {
+		addSectionImageModules = {
+			AddSectionImageTargetInitializer: require( './addsectionimage/AddSectionImageTargetInitializer.js' ),
+			AddSectionImageArticleTarget: require( './addsectionimage/AddSectionImageArticleTarget.js' ),
+			RecommendedSectionImageToolbarDialog: require( './addimage/RecommendedImageToolbarDialog.js' ),
+			AddSectionImageSaveDialog: require( './addimage/AddImageSaveDialog.js' ),
+			ImageSuggestionInteractionLogger: require( './addimage/ImageSuggestionInteractionLogger.js' ),
+			AddImageUtils: require( './addimage/AddImageUtils.js' )
+		};
+	}
+	return addSectionImageModules;
 }
 
 module.exports = {
@@ -43,5 +57,6 @@ module.exports = {
 
 	// Lazy-load files specific to a task type.
 	addLink: addLink,
-	addImage: addImage
+	addImage: addImage,
+	addSectionImage: addSectionImage
 };

@@ -1,15 +1,24 @@
 var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' ),
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding',
 	MAX_IMAGE_DISPLAY_WIDTH = 500;
 
 /**
  * @typedef mw.libs.ge.ImageRecommendationImage
+ * @see ImageRecommendationImage PHP class
  * @property {string} image Image filename in unprefixed DBkey format.
  * @property {string} displayFilename Image filename with spaces instead of underscores.
  * @property {string} source Recommendation source; one of 'wikidata', 'wikipedia', 'commons'.
  * @property {string[]} projects Lists of projects (as wiki IDs) the recommendation is from.
  *   Only used when the source is 'wikipedia'.
+ * @property {number|null} sectionNumber Section number for which the image is recommended
+ *   (1-based index of the section within the second-level sections), or null for top-level
+ *   recommendations.
+ * @property {string|null} sectionTitle Wikitext section title of the section the image is
+ *   recommended for, or null for top-level recommendations. This is often but not always
+ *   the same as the ID of the section heading (apart from a space -> underscore
+ *   transformation). It might differ if the section title contains wikitext formatting, the
+ *   parser does something weird with plaintext in the given language (e.g. french spaces), or
+ *   the ID gets numbered because there are multiple identical headings on the page.
  * @property {Object} metadata See ImageRecommendationMetadataProvider::getMetadata()
  * @property {string} metadata.descriptionUrl File description page URL.
  * @property {string} metadata.fullUrl URL of full-sized image.
@@ -75,6 +84,21 @@ function AddImageArticleTarget() {
 	 * @private
 	 */
 	this.insertOffset = 0;
+
+	// define values that differ between top-level and section-level section recommendations
+	// as constants so AddSectionImageArticleTarget can override them
+
+	/** @property {string} TASK_TYPE_ID Task type ID */
+	this.TASK_TYPE_ID = 'image-recommendation';
+
+	/** @property {string} ADD_IMAGE_CAPTION_ONBOARDING_PREF User preference for onboarding seen flag */
+	this.ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
+
+	/** @property {string} CAPTION_INFO_DIALOG_NAME Name of the caption info help window */
+	this.CAPTION_INFO_DIALOG_NAME = 'addImageCaptionInfo';
+
+	/** @property {string} QUALITY_GATE_WARNING_KEY Warning key set by the submission handler */
+	this.QUALITY_GATE_WARNING_KEY = 'geimagerecommendationdailytasksexceeded';
 }
 
 AddImageArticleTarget.prototype.beforeStructuredTaskSurfaceReady = function () {
@@ -382,20 +406,29 @@ AddImageArticleTarget.prototype.getCaptionText = function () {
 
 /** @inheritDoc **/
 AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
-	options.plugins = 'ge-task-image-recommendation';
+	options.plugins = 'ge-task-' + this.TASK_TYPE_ID;
 	// This data will be processed in VisualEditorHooks::onVisualEditorApiVisualEditorEditPostSave
-	options[ 'data-ge-task-image-recommendation' ] = JSON.stringify( {
-		taskType: 'image-recommendation',
-		filename: this.getSelectedSuggestion().image,
-		accepted: !!this.recommendationAccepted,
-		reasons: this.recommendationRejectionReasons,
-		caption: this.recommendationAccepted ? this.getCaptionText() : ''
-	} );
+	options[ 'data-ge-task-' + this.TASK_TYPE_ID ] = JSON.stringify( this.getVEPluginData() );
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
 		.done( function () {
 			this.madeNullEdit = !this.recommendationAccepted;
 			this.onSaveDone();
 		}.bind( this ) );
+};
+
+/**
+ * Plugin data to pass to VisualEditorApiVisualEditorEdit(Pre|Post)SaveHook.
+ *
+ * @return {Object}
+ */
+AddImageArticleTarget.prototype.getVEPluginData = function () {
+	return {
+		taskType: this.TASK_TYPE_ID,
+		filename: this.getSelectedSuggestion().image,
+		accepted: !!this.recommendationAccepted,
+		reasons: this.recommendationRejectionReasons,
+		caption: this.recommendationAccepted ? this.getCaptionText() : ''
+	};
 };
 
 /**
@@ -492,7 +525,7 @@ AddImageArticleTarget.prototype.toggleEditModeTool = function ( shouldShow ) {
  * @param {boolean} [shouldCheckPref] Whether the dialog preference should be taken into account
  */
 AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPref ) {
-	var dialogName = 'addImageCaptionInfo',
+	var dialogName = this.CAPTION_INFO_DIALOG_NAME,
 		logCaptionInfoDialog = function ( action, context, closeData ) {
 			/* eslint-disable camelcase */
 			var actionData = $.extend(
@@ -523,7 +556,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 		return;
 	}
 
-	if ( !mw.user.options.get( ADD_IMAGE_CAPTION_ONBOARDING_PREF ) ) {
+	if ( !mw.user.options.get( this.ADD_IMAGE_CAPTION_ONBOARDING_PREF ) ) {
 		this.hasShownCaptionOnboarding = true;
 		openDialogPromise = this.surface.dialogs.openWindow(
 			dialogName,
@@ -609,12 +642,12 @@ AddImageArticleTarget.prototype.getSelectedSuggestion = function () {
 
 /** @inheritDoc **/
 AddImageArticleTarget.prototype.onSaveComplete = function ( data ) {
-	var imageRecWarningKey = 'geimagerecommendationdailytasksexceeded',
+	var imageRecWarningKey = this.QUALITY_GATE_WARNING_KEY,
 		geWarnings = data.gewarnings || [];
 
 	geWarnings.forEach( function ( warning ) {
 		if ( warning[ imageRecWarningKey ] ) {
-			suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] = { dailyLimit: true };
+			suggestedEditSession.qualityGateConfig[ this.TASK_TYPE_ID ] = { dailyLimit: true };
 			suggestedEditSession.save();
 		}
 	} );
@@ -666,7 +699,8 @@ AddImageArticleTarget.prototype.invalidateRecommendation = function () {
 		action: 'growthinvalidateimagerecommendation',
 		title: suggestedEditSession.getCurrentTitle().getNameText(),
 		// "image" is the unprefixed filename, e.g. Example.jpg
-		filename: this.getSelectedSuggestion().image
+		filename: this.getSelectedSuggestion().image,
+		tasktype: this.TASK_TYPE_ID
 	} );
 };
 

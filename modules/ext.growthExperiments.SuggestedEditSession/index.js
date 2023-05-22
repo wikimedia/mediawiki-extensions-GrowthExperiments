@@ -688,7 +688,11 @@
 	 * @return {boolean}
 	 */
 	SuggestedEditSession.static.isStructuredTask = function ( taskType ) {
-		return [ 'link-recommendation', 'image-recommendation' ].indexOf( taskType ) !== -1;
+		return [
+			'link-recommendation',
+			'image-recommendation',
+			'section-image-recommendation'
+		].indexOf( taskType ) !== -1;
 	};
 
 	// Always initiate. We need to do this to be able to terminate the session when the user
