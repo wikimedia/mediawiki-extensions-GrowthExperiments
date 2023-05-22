@@ -1,5 +1,4 @@
-var AddImageArticleTarget = require( '../addimage/AddImageArticleTarget.js' ),
-	MAX_IMAGE_DISPLAY_WIDTH = 500;
+var AddImageArticleTarget = require( '../addimage/AddImageArticleTarget.js' );
 
 /**
  * Mixin for a ve.init.mw.ArticleTarget instance. Used by AddSectionImageDesktopArticleTarget and
@@ -33,117 +32,106 @@ function AddSectionImageArticleTarget() {
 OO.mixinClass( AddSectionImageArticleTarget, AddImageArticleTarget );
 AddSectionImageArticleTarget.super = AddImageArticleTarget;
 
-/**
- * Check if the current article is a valid Add Image task (does not have any image yet).
- *
- * @return {boolean}
- */
+/** @inheritDoc */
 AddSectionImageArticleTarget.prototype.isValidTask = function () {
-	// FIXME check for unillustrated section instead
+	// Tasks can be invalid in three ways:
+	// - the section cannot be located (it has been removed, or moved, or its title changed);
+	// - the section already contains an image;
+	// - the recommended image is already used in another section.
+	// Theoretically there are other possibilities (the section has been edited and is now too
+	// short to be a good candidate, or its content changed to such an extent that its topic is
+	// now different), but those are rare and would be hard or impossible to detect here.
 
-	var surfaceModel = this.getSurface().getModel();
+	var imageTitle,
+		imageNodes = [],
+		surfaceModel = this.getSurface().getModel(),
+		// We break our unused abstraction here. If we actually used multiple image recommendations,
+		// they could belong to different sections, and then validity would have to be determined
+		// per-image, not per-task.
+		imageData = this.images[ this.selectedImageIndex ],
+		insertRange = this.getInsertRange( imageData );
 
-	if ( surfaceModel.getDocument().getNodesByType( 'mwBlockImage' ).length ||
-		surfaceModel.getDocument().getNodesByType( 'mwInlineImage' ).length
-	) {
+	if ( !insertRange ) {
+		// The error was already logged in getInsertRange().
 		return false;
 	}
-	// TODO check for images in infoboxes, once we support articles with infoboxes.
+
+	/** @type {ve.dm.Node[]} imageNodes */
+	imageNodes = imageNodes.concat( surfaceModel.getDocument().getNodesByType( 'mwBlockImage' ) );
+	imageNodes = imageNodes.concat( surfaceModel.getDocument().getNodesByType( 'mwInlineImage' ) );
+	for ( var i = 0; i < imageNodes.length; i++ ) {
+		if ( insertRange.containsOffset( imageNodes[ i ].getOffset() ) ) {
+			mw.log.error( 'Section ' + imageData.sectionNumber + ' already contains an image: ' +
+				imageNodes[ i ].getAttribute( 'resource' ) );
+			return false;
+		}
+		imageTitle = mw.Title.newFromText(
+			// Parsoid filename attributes start with "./".
+			imageNodes[ i ].getAttribute( 'resource' ).slice( 2 )
+		);
+		if ( imageTitle.getMain() === imageData.image ) {
+			mw.log.error( 'Image ' + imageData.image + ' is already used in another section' );
+			return false;
+		}
+	}
 	return true;
 };
 
-/**
- * Add the recommended image to the VE document.
- *
- * @param {mw.libs.ge.ImageRecommendationImage} imageData
- */
-AddSectionImageArticleTarget.prototype.insertImage = function ( imageData ) {
-	// FIXME insert into the appropriate section instead
+/** @inheritDoc */
+AddSectionImageArticleTarget.prototype.getInsertRange = function ( imageData ) {
+	var domElements, titleText, heading, nextHeading,
+		h2Count = 0,
+		surfaceModel = this.getSurface().getModel(),
+		headingNodes = surfaceModel.getDocument().getNodesByType( 'mwHeading' );
 
-	var linearModel, contentOffset, dimensions,
-		surface = this.getSurface(),
-		surfaceModel = surface.getModel(),
-		data = surfaceModel.getDocument().data,
-		NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
-		imageTitle = new mw.Title( imageData.image, NS_FILE ),
-		AddImageUtils = require( '../addimage/AddImageUtils.js' ),
-		targetWidth, imageRenderData;
-
-	// Define the image to be inserted.
-	// This will eventually be passed as the data parameter to MWBlockImageNode.toDomElements.
-	// See also https://www.mediawiki.org/wiki/Specs/HTML/2.2.0#Images
-
-	dimensions = {
-		width: imageData.metadata.originalWidth,
-		height: imageData.metadata.originalHeight
-	};
-	// On mobile, the image is rendered full width (with max width set to account for tablets).
-	// On desktop, the default thumbnail size is used.
-	targetWidth = surface.getContext().isMobile() ?
-		Math.min(
-			dimensions.width,
-			surface.getView().$documentNode.width(),
-			MAX_IMAGE_DISPLAY_WIDTH
-		) : this.getDefaultThumbSize();
-	imageRenderData = AddImageUtils.getImageRenderData( imageData.metadata, window, targetWidth );
-	linearModel = [
-		{
-			type: 'mwGeRecommendedImage',
-			attributes: {
-				mediaClass: 'File',
-				mediaTag: 'img',
-				// This is a Commons image so the link needs to use the English namespace name
-				// but Title uses the localized one. That's OK, Parsoid will figure it out.
-				// Native VE images also use localized titles.
-				href: './' + imageTitle.getPrefixedText(),
-				resource: './' + imageTitle.getPrefixedText(),
-				type: 'thumb',
-				defaultSize: true,
-				// The generated wikitext will ignore width/height when defaultSize is set, but
-				// it's still used for the visual size of the thumbnail in the editor.
-				width: targetWidth,
-				height: targetWidth * ( dimensions.height / dimensions.width ),
-				src: imageRenderData.src,
-				align: 'default',
-				filename: imageData.image,
-				originalClasses: [ 'mw-default-size' ],
-				isError: false,
-				mw: {},
-				// Pass image recommendation metadata to CERecommendedImageNode
-				recommendation: imageData,
-				recommendationIndex: this.selectedImageIndex
-			},
-			internal: {
-				whitespace: [ '\n', undefined, undefined, '\n' ]
+	for ( var i = 0; i < headingNodes.length; i++ ) {
+		if ( headingNodes[ i ].getAttribute( 'level' ) !== 2 ) {
+			// Currently only recommending for top-level headings.
+			continue;
+		}
+		h2Count++;
+		// FIXME accept null section numbers for testing convenience as the dataset hasn't been
+		//   fully initialized yet.
+		if ( !heading && ( h2Count === imageData.sectionNumber || imageData.sectionNumber === null ) ) {
+			// The article might have been edited since. Double-check that the title text matches.
+			// imageData.sectionTitle is wikitext and lowercased so this will be somewhat fragile.
+			domElements = headingNodes[ i ].getOriginalDomElements( headingNodes[ i ].getStore() );
+			titleText = $( '<div>' ).append( $( domElements ).clone() ).prop( 'innerText' ).toLowerCase();
+			if ( titleText === imageData.sectionTitle ||
+				domElements[ 0 ] instanceof HTMLHeadingElement &&
+					domElements[ 0 ].id.replace( /_/g, ' ' ).toLowerCase() === imageData.sectionTitle
+			) {
+				heading = headingNodes[ i ];
+			} else {
+				mw.log.error(
+					'Section title mismatch for section ' + imageData.sectionNumber + ': ' +
+						'expected "' + imageData.sectionTitle + '", got "' + titleText + '"'
+				);
+				break;
 			}
-		},
-		{ type: 'mwGeRecommendedImageCaption' },
-		{ type: 'paragraph', internal: { generated: 'wrapper' } },
-		// Caption will be spliced in here. In the linear model each character is a separate item.
-		{ type: '/paragraph' },
-		{ type: '/mwGeRecommendedImageCaption' },
-		{ type: '/mwGeRecommendedImage' }
-	];
-
-	// Find the position between the initial templates and text.
-	this.insertOffset = 0;
-	// 0, 0 means start from offset 0 and only move if it is invalid. 0, 1 would always move.
-	contentOffset = data.getRelativeOffset( 0, 0, function ( offset ) {
-		return this.isEndOfMetadata( data, offset );
-	}.bind( this ) );
-	if ( contentOffset === -1 ) {
-		// No valid position found. This shouldn't be possible.
-		mw.log.error( 'No valid offset found for image insertion' );
-		mw.errorLogger.logError( new Error( 'No valid offset found for image insertion' ),
-			'error.growthexperiments' );
-		this.insertOffset = 0;
+		} else if ( heading ) {
+			nextHeading = headingNodes[ i ];
+			break;
+		}
 	}
 
-	// Actually insert the image.
-	surfaceModel.setReadOnly( false );
-	surfaceModel.getLinearFragment( new ve.Range( this.insertOffset ) ).insertContent( linearModel );
-	surfaceModel.setReadOnly( true );
-	this.hasStartedCaption = true;
+	if ( nextHeading ) {
+		return new ve.Range(
+			heading.getOuterRange( false ).end,
+			nextHeading.getOuterRange( false ).start
+		);
+	} else if ( heading ) {
+		return new ve.Range(
+			heading.getOuterRange( false ).end,
+			surfaceModel.getDocument().getDocumentRange().end
+		);
+	} else {
+		if ( h2Count < imageData.sectionNumber ) {
+			mw.log.error( 'Section ' + imageData.sectionNumber + ' not found, the article only has ' +
+				h2Count + ' h2 sections' );
+		}
+		return null;
+	}
 };
 
 /** @inheritDoc **/

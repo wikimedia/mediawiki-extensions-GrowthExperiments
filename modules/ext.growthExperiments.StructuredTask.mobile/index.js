@@ -44,7 +44,7 @@ module.exports = ( function () {
 						require( './addimage/AddImageMobileSaveDialog.js' ),
 						StructuredTask.addSectionImage().RecommendedSectionImageToolbarDialog
 					],
-					taskArticleTarget: require( './addimage/AddImageMobileArticleTarget.js' ),
+					taskArticleTarget: require( './addsectionimage/AddSectionImageMobileArticleTarget.js' ),
 					suggestionsArticleTarget: SuggestionsMobileArticleTarget
 				} );
 			addSectionImageTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
