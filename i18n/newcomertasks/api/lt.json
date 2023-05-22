@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Gauti tinkamų naujokams užduočių rekomendacijas.",
+	"apihelp-query+growthtasks-extended-description": "Siūlomas straipsnių rinkinys, kuriame yra keletas neišspręstų problemų, kurias pakankamai lengva išspręsti naujam redaktoriui.",
+	"apihelp-query+growthtasks-param-tasktypes": "Užduočių tipai, kuriais apriboti rezultatus. Palikite tuščią, kad gautumėte visus pasiūlymus.",
+	"apihelp-query+growthtasks-param-topics": "Straipsnių temos, kurioms teikti pirmenybę užduočių pasiūlymuose.",
+	"apihelp-query+growthtasks-param-limit": "Maksimalus grąžintinų užduočių pasiūlymų skaičius.",
+	"apihelp-query+growthtasks-param-excludepageids": "Puslapių ID, kurių neįtraukti į užklausą.",
+	"apihelp-query+growthtasks-example-2": "Gaukite užduočių rekomendacijų dabartiniam naudotojui su išplėstine informacija apie puslapius.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Gaukite siūlomą užduoties tipą, kurį naudotojas gali išbandyti kitą.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Užduoties tipas, su kuriuo naudotojas šiuo metu dirba.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Naudoti, kai saugomas GrowthExperiments „[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|Pridėti nuorodą]]“ struktūruotas keitimas.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "Naudoti, kai saugomas GrowthExperiments „[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|Pridėti paveikslėlį]]“ struktūruotas keitimas.",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Skirta <var>ge-task-link-recommendation</var> papildiniui</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Skirta <var>ge-task-image-recommendation</var> papildiniui</dt><dd>\n$1\n</dd></dl>",
+	"apierror-growthexperiments-addlink-handler-notfound": "Nuorodos rekomendacijos įrašas nerastas",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "<var>editRevId</var> parametras yra būtinas, kai <var>accepted</var> parametras nustatytas kaip <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "<var>editRevId</var> parametraas negali būti naudojamas, kai <var>accepted</var> parametras nustatytas kaip <kbd>false</kbd>.",
+	"growthexperiments-addimage-feedback-accepted-caption": "<var>caption</var> parametras yra būtinas, kai <var>accepted</var> parametras yra nustatytas kaip <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "<var>editRevId</var> nurodyta versija nerasta.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "<var>editRevId</var> nurodyta versija priklauso kitam puslapiui."
+}

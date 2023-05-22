@@ -12,5 +12,16 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Nauja būsena",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Nustatant mentorių kaip išvykusį, turi būti nurodyta išvykimo būsenos trukmė (dienomis).",
 	"apihelp-growthmentordashboardupdatedata-summary": "Mentoriaus prietaisų skydelyje suplanuokite nepaprastą mentee apžvalgos modulio atnaujinimą. Dėl našumo priežasčių galite suplanuoti tik vieną atnaujinimą per dvi valandas.",
-	"apihelp-growthsetmenteestatus-summary": "Nustatyti mentee būseną (leidžia mentees įjungti/išjungti mentorystės modulį ar visiškai atsisakyti, kas ištrina mentee/mentoriaus santykį)"
+	"apihelp-growthsetmenteestatus-summary": "Nustatyti mentee būseną (leidžia mentees įjungti/išjungti mentorystės modulį ar visiškai atsisakyti, kas ištrina mentee/mentoriaus santykį)",
+	"apihelp-growthsetmenteestatus-param-state": "Nauja mentee būsena (įspėjimas: šio nustatymas į atsisakymą negrįžtamai ištrins mentee/mentoriaus santykį)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Mentorystės modulis įjungtas",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Mentorystės modulis visiškai išjungtas. Paprastai tai nustato programinė įranga ir naudojama A/B testavimui.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee atsisakė mentorystės; mentee/mentoriaus santykis bus ištrintas, mentorystės modulis bus pakeistas galimybę vėl prisijungti prie mentorystės",
+	"apihelp-query+growthmentormentee-summary": "Gauti visus mentees, priskirtus pateiktam mentoriui",
+	"apihelp-growthmanagementorlist-summary": "Tvarkykite struktūruoto mentorių sąrašo informaciją (įprastai talpinama [[MediaWiki:GrowthMentors.json]]). Šis modulis gali būti naudojamas tiek dabartinių, tiek ateities mentorių (kad pridėtu save ar pakeistų informaciją) ir administratorių (visiems naudotojams).",
+	"apihelp-growthmanagementorlist-param-geaction": "Veiksmas",
+	"apihelp-growthmanagementorlist-param-weight": "Svoris",
+	"apihelp-growthmanagementorlist-param-autoassigned": "Ar mentorius automatiškai priskiriamas naujokams?",
+	"apihelp-growthmanagementorlist-param-summary": "Pakeitimo priežastis",
+	"apihelp-growthmanagementorlist-param-username": "Mentoriaus, kuriam turės įtakos pakeitimas, naudotojo vardas. Jei nenurodyta, bus naudojamas šiuo metu prisijungęs naudotojas. Gali naudoti tik privilegijuoti naudotojai."
 }
