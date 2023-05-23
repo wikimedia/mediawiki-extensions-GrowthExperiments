@@ -1,5 +1,6 @@
 <template>
 	<div
+		ref="rootElementRef"
 		class="ext-growthExperiments-MultiPane"
 		@touchstart="onTouchStart"
 		@touchmove="onTouchMove">
@@ -12,7 +13,7 @@
 
 <script>
 import { computed, ref, toRef, watch } from 'vue';
-import { useModelWrapper } from '@wikimedia/codex';
+import { useModelWrapper, useComputedDirection } from '@wikimedia/codex';
 const TRANSITION_NAMES = {
 	LEFT: 'left',
 	RIGHT: 'right'
@@ -25,10 +26,6 @@ export default {
 			type: Number,
 			default: 0
 		},
-		isRtl: {
-			type: Boolean,
-			default: false
-		},
 		totalSteps: {
 			type: Number,
 			default: 1
@@ -36,14 +33,17 @@ export default {
 	},
 	emits: [ 'update:currentStep' ],
 	setup( props, { emit, expose } ) {
+		const rootElementRef = ref( null );
+		const computedDir = useComputedDirection( rootElementRef );
 		const wrappedCurrentStep = useModelWrapper( toRef( props, 'currentStep' ), emit, 'update:currentStep' );
 		const prevStep = ref( 1 );
 		const initialX = ref( null );
 		const initialY = ref( null );
 		const currentNavigation = ref( null );
 		const currentSlotName = computed( () => `step${wrappedCurrentStep.value}` );
+		const isRtl = computed( () => computedDir.value === 'rtl' );
 		const computedTransitionSet = computed( () => {
-			return props.isRtl ?
+			return isRtl.value ?
 				{ next: TRANSITION_NAMES.LEFT, prev: TRANSITION_NAMES.RIGHT } :
 				{ next: TRANSITION_NAMES.RIGHT, prev: TRANSITION_NAMES.LEFT };
 		} );
@@ -103,14 +103,14 @@ export default {
 		};
 
 		const onSwipeToRight = () => {
-			if ( props.isRtl ) {
+			if ( isRtl.value === true ) {
 				navigateNext();
 			} else {
 				navigatePrev();
 			}
 		};
 		const onSwipeToLeft = () => {
-			if ( props.isRtl ) {
+			if ( isRtl.value === true ) {
 				navigatePrev();
 			} else {
 				navigateNext();
@@ -132,12 +132,12 @@ export default {
 
 		// Make navigate methods available on parent component through a ref
 		expose( { navigatePrev, navigateNext } );
-
 		return {
 			computedTransitionName,
 			currentSlotName,
 			onTouchStart,
-			onTouchMove
+			onTouchMove,
+			rootElementRef
 		};
 	}
 };

@@ -1,118 +1,39 @@
 <template>
-	<div class="ext-growthExperiments-OnboardingDialogDemo" :dir="readingDirection">
-		<cdx-button @click="open = true">
-			Show dialog
-		</cdx-button>
-		<!-- eslint-disable vue/no-v-model-argument -->
-		<onboarding-dialog
-			v-model:open="open"
-			v-model:is-checked="isDontShowAgainChecked"
-			class="ext-growthExperiments-OnboardingDialogDemo__dialog"
-			:initial-step="1"
-			:show-paginator="true"
-			:total-steps="3"
-			:stepper-label="`${currentStep} of 3`"
-			:is-rtl="readingDirection === 'rtl'"
-			@close="onDialogClose"
-			@update:current-step="( newVal ) => currentStep = newVal"
-		>
-			<template #title>
-				A slotted <i>Onboarding dialog</i> header
-			</template>
-			<template #closeBtnText>
-				Skip all
-			</template>
-			<template #step1>
-				<div class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent"
-				>
-					<h5
-						class="
-					ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__title"
-					>
-						Step 1 with basic text content
-					</h5>
-					<p
-						class="
-					ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
-					>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
-						nulla ullam expedita consectetur.
-					</p>
-				</div>
-			</template>
-
-			<template #step2>
-				<div class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent"
-				>
-					<h5
-						class="
-						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__title"
-					>
-						Step 2 with long text content
-					</h5>
-					<p
-						class="
-						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
-					>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
-						nulla ullam expedita consectetur.
-					</p>
-
-					<p
-						class="
-						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
-					>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
-						nulla ullam expedita consectetur.
-					</p>
-					<br><br>
-					<p
-						class="
-						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
-					>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
-						nulla ullam expedita consectetur.
-					</p>
-					<p
-						class="
-						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
-					>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
-						nulla ullam expedita consectetur.
-					</p>
-				</div>
-			</template>
-			<template #step3>
-				<div>
-					<!-- eslint-disable max-len -->
-					<div
-						class="ext-growthExperiments-OnboardingDialogDemo__dialog__image"
-						role="img"
-						aria-label="Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
-					>
-					<!-- eslint-enable max-len -->
-					</div>
+	<demo-wrapper>
+		<div class="ext-growthExperiments-OnboardingDialogDemo">
+			<cdx-button @click="open = true">
+				Show dialog
+			</cdx-button>
+			<!-- eslint-disable vue/no-v-model-argument -->
+			<onboarding-dialog
+				v-model:open="open"
+				v-model:is-checked="isDontShowAgainChecked"
+				class="ext-growthExperiments-OnboardingDialogDemo__dialog"
+				:initial-step="1"
+				:show-paginator="true"
+				:total-steps="3"
+				:stepper-label="`${currentStep} of 3`"
+				@close="onDialogClose"
+				@update:current-step="( newVal ) => currentStep = newVal"
+			>
+				<template #title>
+					A slotted <i>Onboarding dialog</i> header
+				</template>
+				<template #closeBtnText>
+					Skip all
+				</template>
+				<template #step1>
 					<div class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent"
 					>
 						<h5
 							class="
 						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__title"
 						>
-							Step 3 This is an step with an image
+							Step 1 with basic text content
 						</h5>
 						<p
 							class="
-					ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
+						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
 						>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.
 							Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
@@ -120,41 +41,106 @@
 							nulla ullam expedita consectetur.
 						</p>
 					</div>
-				</div>
-			</template>
-			<template #checkboxLabel>
-				Don't show again
-			</template>
-			<template #startBtnText>
-				Get started
-			</template>
-		</onboarding-dialog>
-	</div>
-	<direction-radio-selector
-		@update:reading-direction="( newVal ) => readingDirection = newVal"
-	>
-	</direction-radio-selector>
+				</template>
+
+				<template #step2>
+					<div class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent"
+					>
+						<h5
+							class="
+							ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__title"
+						>
+							Step 2 with long text content
+						</h5>
+						<!-- eslint-disable-next-line max-len -->
+						<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+							Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
+							nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+							nulla ullam expedita consectetur.
+						</p>
+						<!-- eslint-disable-next-line max-len -->
+						<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+							Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
+							nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+							nulla ullam expedita consectetur.
+						</p>
+						<br><br>
+						<!-- eslint-disable-next-line max-len -->
+						<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+							Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
+							nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+							nulla ullam expedita consectetur.
+						</p>
+						<!-- eslint-disable-next-line max-len -->
+						<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+							Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
+							nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+							nulla ullam expedita consectetur.
+						</p>
+					</div>
+				</template>
+				<template #step3>
+					<div>
+						<!-- eslint-disable max-len -->
+						<div
+							class="ext-growthExperiments-OnboardingDialogDemo__dialog__image"
+							role="img"
+							aria-label="Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
+						>
+						<!-- eslint-enable max-len -->
+						</div>
+						<div class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent"
+						>
+							<h5
+								class="
+							ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__title"
+							>
+								Step 1 with basic text content
+							</h5>
+							<!-- eslint-disable-next-line max-len -->
+							<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
+								nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+								nulla ullam expedita consectetur.
+							</p>
+						</div>
+					</div>
+				</template>
+				<template #checkboxLabel>
+					Don't show again
+				</template>
+				<template #startBtnText>
+					Get started
+				</template>
+			</onboarding-dialog>
+		</div>
+	</demo-wrapper>
 </template>
 
 <script>
 import { ref } from 'vue';
 import { CdxButton } from '@wikimedia/codex';
+import DemoWrapper from '../DemoWrapper.vue';
 import OnboardingDialog from '../../components/OnboardingDialog.vue';
-import DirectionRadioSelector from '../../components/DirectionRadioSelector.vue';
 
 export default {
 	name: 'OnboardingDialogDemo',
 
 	components: {
 		CdxButton,
-		DirectionRadioSelector,
+		DemoWrapper,
 		OnboardingDialog
 	},
 	setup() {
 		const open = ref( false );
 		const isDontShowAgainChecked = ref( false );
-		const readingDirection = ref( 'ltr' );
 		const currentStep = ref( 1 );
+
 		function onDialogClose( result ) {
 			// eslint-disable-next-line no-console
 			console.log( 'Dialog closed', result );
@@ -164,8 +150,7 @@ export default {
 			currentStep,
 			isDontShowAgainChecked,
 			open,
-			onDialogClose,
-			readingDirection
+			onDialogClose
 		};
 	}
 };

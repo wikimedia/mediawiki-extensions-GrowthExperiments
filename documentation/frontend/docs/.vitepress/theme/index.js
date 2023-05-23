@@ -2,14 +2,7 @@ import DefaultTheme from 'vitepress/theme';
 import { createPinia } from 'pinia';
 import { createI18n } from 'vue-banana-i18n';
 import CustomLayout from './CustomLayout.vue';
-// Import two sets of translations (es,en) for testing purposes
-import * as messagesEN from '../../../../../i18n/homepage/en.json';
-import * as messagesAR from '../../../../../i18n/homepage/ar.json';
-const messages = {
-	en: messagesEN.default,
-	ar: messagesAR.default
-};
-const VALID_LOCALES = Object.keys( messages );
+import { DEFAULT_LOCALE, messages } from '../i18n.js';
 
 /**
  * Decorates the result of vue-banana-i18n plugin calls to "$i18n"
@@ -39,30 +32,15 @@ export default {
 	extends: DefaultTheme,
 	Layout: CustomLayout,
 	enhanceApp( ctx ) {
-		const defaultLocale = 'en';
-		const isServer = typeof window === 'undefined';
 		// Setup a single Pinia instance for all VitePress pages
 		ctx.app.use( createPinia() );
 
-		ctx.app.use( createI18n( { messages, locale: defaultLocale } ) );
+		ctx.app.use( createI18n( { messages, locale: DEFAULT_LOCALE } ) );
 
 		// HACK wrap vue-banana-i18n results in MW.Message-like objects
 		ctx.app.config.globalProperties.$i18n = i18nDecorator(
 			ctx.app.config.globalProperties.$i18n
 		);
-
-		// VitePress builds the site in nodejs environment when calling npm run docs:build
-		if ( !isServer ) {
-			// Initialize plugin based on "uselang" query parameter, fallback
-			// to english.
-			const urlParams = new URLSearchParams( window.location.search );
-			const urlLocale = urlParams.get( 'uselang' ) || defaultLocale;
-
-			if ( VALID_LOCALES.indexOf( urlLocale ) === -1 ) {
-				// eslint-disable-next-line no-console
-				console.error( `Invalid locale ${urlLocale}. Supported locales are: ${VALID_LOCALES.join( ', ' )}` );
-			}
-		}
 
 		// Avoid calls to mw.user.getName() by providing a mocked username and gender for all demos.
 		ctx.app.provide( 'USER_USERNAME', 'Alice' );

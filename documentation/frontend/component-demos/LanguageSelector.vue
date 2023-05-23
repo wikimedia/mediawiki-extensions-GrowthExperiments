@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
 import { useI18n } from 'vue-banana-i18n';
 import { CdxSelect } from '@wikimedia/codex';
 
@@ -23,6 +23,7 @@ export default {
 	name: 'LanguageSelector',
 	components: { CdxSelect },
 	setup() {
+		const setDemosLocale = inject( 'setDemosLocale' );
 		const selection = ref( null );
 		let banana = { locale: 'en' };
 		if ( !isServer ) {
@@ -31,11 +32,14 @@ export default {
 		}
 
 		function onLanguageUpdate( newVal ) {
-			banana.setLocale( newVal );
+			setDemosLocale( newVal );
 			selection.value = newVal;
 			const url = new URL( window.location.href );
 			url.searchParams.set( 'uselang', newVal );
-			history.replaceState( null, null, url );
+			// Codex's useComputedDirection() only reads direction using
+			// mounted hook, hence it does not react
+			window.location.href = url;
+			// history.replaceState( null, null, url );
 		}
 		return {
 			onLanguageUpdate,

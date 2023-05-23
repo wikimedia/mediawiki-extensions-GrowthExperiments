@@ -6,7 +6,6 @@
 		:total-steps="totalSteps"
 		:initial-step="initialStep"
 		class="ext-growthExperiments-AddLinkDialog"
-		:is-rtl="isRtl"
 		:stepper-label="$i18n( 'growthexperiments-structuredtask-onboarding-dialog-progress', currentStep, totalSteps ).text()"
 		@close="$emit( 'close', $event )"
 		@update:current-step="( newVal )=> currentStep = newVal"
@@ -164,7 +163,7 @@
 </template>
 
 <script>
-import { inject, toRef, ref } from 'vue';
+import { inject, ref, toRef } from 'vue';
 import { useModelWrapper } from '@wikimedia/codex';
 import OnboardingDialog from './OnboardingDialog.vue';
 
@@ -194,7 +193,6 @@ export default {
 	},
 	emits: [ 'update:open', 'update:is-checked', 'close' ],
 	setup( props, { emit } ) {
-		const isRtl = ref( false );
 		const userName = inject( 'USER_USERNAME' );
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
@@ -204,7 +202,6 @@ export default {
 		return {
 			currentStep,
 			initialStep,
-			isRtl,
 			totalSteps,
 			userName,
 			wrappedIsChecked,
