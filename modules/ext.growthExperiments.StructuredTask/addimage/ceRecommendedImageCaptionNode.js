@@ -91,9 +91,16 @@ CERecommendedImageCaptionNode.prototype.isValid = function () {
  * @return {string}
  */
 CERecommendedImageCaptionNode.prototype.getPlaceholderHtml = function () {
-	return mw.message( 'growthexperiments-addimage-caption-placeholder' ).params( [
-		suggestedEditSession.getCurrentTitle().getNameText()
-	] ).parse();
+	if ( this.getModel().getAttribute( 'taskType' ) === 'image-recommendation' ) {
+		return mw.message( 'growthexperiments-addimage-caption-placeholder' ).params( [
+			suggestedEditSession.getCurrentTitle().getNameText()
+		] ).parse();
+	} else {
+		return mw.message( 'growthexperiments-addsectionimage-caption-placeholder' ).params( [
+			suggestedEditSession.getCurrentTitle().getNameText(),
+			this.getModel().getAttribute( 'visibleSectionTitle' )
+		] ).parse();
+	}
 };
 
 /**

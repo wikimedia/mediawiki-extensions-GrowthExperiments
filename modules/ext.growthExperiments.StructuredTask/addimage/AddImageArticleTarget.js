@@ -19,6 +19,10 @@ var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEd
  *   transformation). It might differ if the section title contains wikitext formatting, the
  *   parser does something weird with plaintext in the given language (e.g. french spaces), or
  *   the ID gets numbered because there are multiple identical headings on the page.
+ * @property {string?} visibleSectionTitle Visible section title (i.e. the plaintext version of
+ *   the HTML section title) of the section the image is recommended for, or undefined for
+ *   top-level. This is a hack as the server has no easy way to provide it; it will be set in
+ *   getInsertRange().
  * @property {Object} metadata See ImageRecommendationMetadataProvider::getMetadata()
  * @property {string} metadata.descriptionUrl File description page URL.
  * @property {string} metadata.fullUrl URL of full-sized image.
@@ -232,7 +236,13 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 				whitespace: [ '\n', undefined, undefined, '\n' ]
 			}
 		},
-		{ type: 'mwGeRecommendedImageCaption' },
+		{
+			type: 'mwGeRecommendedImageCaption',
+			attributes: {
+				taskType: this.TASK_TYPE_ID,
+				visibleSectionTitle: imageData.visibleSectionTitle || null
+			}
+		},
 		{ type: 'paragraph', internal: { generated: 'wrapper' } },
 		// Caption will be spliced in here. In the linear model each character is a separate item.
 		{ type: '/paragraph' },
