@@ -803,6 +803,7 @@
 				"vue-components/Skeleton.less",
 				"ext.growthExperiments.Homepage.NewImpact/styles/NewImpact.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
+				"ext.growthExperiments.Homepage.NewImpact/components/LayoutWrapper.less",
 				"vue-components/mixins.less",
 				"vue-components/CScoreCard.less",
 				"vue-components/CScoreCards.less"
@@ -1150,6 +1151,7 @@
 				"vue-components/Skeleton.less",
 				"ext.growthExperiments.Homepage.NewImpact/styles/NewImpact.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
+				"ext.growthExperiments.Homepage.NewImpact/components/LayoutWrapper.less",
 				"vue-components/CScoreCard.less",
 				"vue-components/CScoreCards.less"
 			],
