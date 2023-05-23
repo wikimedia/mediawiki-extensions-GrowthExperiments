@@ -344,7 +344,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	 * @return ConfigurationLoader
 	 */
 	private function getConfigurationLoader( array $taskTypes = null ) {
-		$taskTypes = $taskTypes ?? [
+		$taskTypes ??= [
 			'copyedit', 'links',
 			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
 			ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,

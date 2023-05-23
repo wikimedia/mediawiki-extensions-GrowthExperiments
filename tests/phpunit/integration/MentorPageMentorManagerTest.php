@@ -263,7 +263,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	private function getMentorManager( IContextSource $context = null ) {
 		$coreServices = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
-		$context = $context ?? RequestContext::getMain();
+		$context ??= RequestContext::getMain();
 
 		return new MentorPageMentorManager(
 			$growthServices->getMentorStore(),
