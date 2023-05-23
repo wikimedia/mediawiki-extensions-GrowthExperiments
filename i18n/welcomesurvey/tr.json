@@ -44,6 +44,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Hayır, başka sebeplerden dolayı",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Hatırlamıyorum",
 	"welcomesurvey-question-mailinglist-label": "Düzenlemeye nasıl başlayacağım konusunda e-posta yoluyla ipuçları almak istiyorum.",
+	"welcomesurvey-question-mailinglist-help": "Lütfen bu e-posta listesinin MailChimp tarafından sağlandığını unutmayın, bu MailChimp’in [https://www.intuit.com/privacy/statement/ Gizlilik İlkeleri] ve [https://mailchimp.com/legal/terms/ Hizmet Şartları] ile {{GENDER:|bilgilerinizi}} işlediği anlamına gelir.",
 	"welcomesurvey-question-email-label": "Eposta adresi (isteğe bağlı)",
 	"welcomesurvey-question-email-placeholder": "Eposta {{GENDER:|adresinizi}} girin...",
 	"welcomesurvey-question-email-help": "Bu hesabı oluştururken bir e-posta {{GENDER:|girmediğinizi}} fark ettik. Parolanızı kaybederseniz hesap kurtarma için bir e-postaya ihtiyaç duyulduğu için bu <strong>önemle tavsiye edilir</strong>. NOT: Diğer kullanıcılar sizinle iletişim kurduğunda e-posta adresiniz gösterilmez.",
