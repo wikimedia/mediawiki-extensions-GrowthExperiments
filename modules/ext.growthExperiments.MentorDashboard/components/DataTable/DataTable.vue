@@ -36,6 +36,7 @@
 					>
 						<component
 							:is="field.cellComponent"
+							:field-name="field.sortBy"
 							v-bind="field.cellProps( row )"
 							@toggle-starred="$emit( 'toggle-starred', $event )"
 						></component>
