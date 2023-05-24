@@ -12,8 +12,7 @@ var TargetInitializer = require( '../TargetInitializer.js' ),
 	CERecommendedImageCaptionNode = require( '../addimage/ceRecommendedImageCaptionNode.js' ),
 	DMRecommendedImageCaptionNode = require( '../addimage/dmRecommendedImageCaptionNode.js' ),
 	AddImageLinearDeleteKeyDownHandler = require( '../addimage/AddImageLinearDeleteKeyDownHandler.js' ),
-	// FIXME clone me
-	AddSectionImageCaptionInfoDialog = require( '../addimage/AddImageCaptionInfoDialog.js' );
+	AddSectionImageCaptionInfoDialog = require( './AddSectionImageCaptionInfoDialog.js' );
 
 /**
  * Handle registrations and de-registrations of VE classes for Add Image structured task

@@ -14,13 +14,11 @@ function AddSectionImageArticleTarget() {
 	/** @inheritDoc */
 	this.TASK_TYPE_ID = 'section-image-recommendation';
 
-	// FIXME modify
 	/** @inheritDoc */
-	this.ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
+	this.ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addsectionimage-caption-onboarding';
 
-	// FIXME modify
 	/** @inheritDoc */
-	this.CAPTION_INFO_DIALOG_NAME = 'addImageCaptionInfo';
+	this.CAPTION_INFO_DIALOG_NAME = 'addSectionImageCaptionInfo';
 
 	/** @inheritDoc */
 	this.QUALITY_GATE_WARNING_KEY = 'gesectionimagerecommendationdailytasksexceeded';
