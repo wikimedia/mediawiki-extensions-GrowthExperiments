@@ -1,8 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Nokeoo"
 		]
 	},
-	"apihelp-growthsetmentor-param-reason": "Pakeitimo priežastis"
+	"apihelp-homepagequestionstore-summary": "Gaukite suformatuotus klausimus, paskelbtus per pagrindinio puslapio modulius",
+	"apihelp-homepagequestionstore-param-questionformat": "Klausimų grąžinimo formatas, pvz., HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Klausimų saugojimo vieta.",
+	"apihelp-homepagequestionstore-param-userid": "Naudotojo, dėl kurio gauti klausimus, ID.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Klausimų nerasta.",
+	"apihelp-growthsetmentor-summary": "Nustatyti naudotojo mentorių. Pokytis bus registruotas viešai.",
+	"apihelp-growthsetmentor-param-mentee": "Mentee naudotojo vardas",
+	"apihelp-growthsetmentor-param-mentor": "Mentoriaus naudotojo vardas",
+	"apihelp-growthsetmentor-param-reason": "Pakeitimo priežastis",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Straipsnio pavadinimas, kuriam skirta paeikslėlio rekomendacijos užduotis"
 }

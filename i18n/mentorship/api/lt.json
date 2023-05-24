@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Pažymėti ar atžymėti mentee kaip pažymėtą žvaigždute dabartinio naudotojo (talpinama privačiai ir neregistruojama žurnale)",
+	"apihelp-growthstarmentee-param-gesaction": "Veiksmas vykdymui (<kbd>star</kbd> ar <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Mentee (at)žymėjimui žvaigžde",
+	"apihelp-query+growthstarredmentees-summary": "Gaukite mentees, pažymėtų žvaigžde dabar prisijungusio mentoriaus, sąrašą",
+	"apihelp-growthsetmentorstatus-summary": "Nustatyti dabartinio naudotojo mentoriaus būseną į aktyvią/nėra",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Nauja būsena",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Nustatant mentorių kaip išvykusį, turi būti nurodyta išvykimo būsenos trukmė (dienomis).",
+	"apihelp-growthmentordashboardupdatedata-summary": "Mentoriaus prietaisų skydelyje suplanuokite nepaprastą mentee apžvalgos modulio atnaujinimą. Dėl našumo priežasčių galite suplanuoti tik vieną atnaujinimą per dvi valandas.",
+	"apihelp-growthsetmenteestatus-summary": "Nustatyti mentee būseną (leidžia mentees įjungti/išjungti mentorystės modulį ar visiškai atsisakyti, kas ištrina mentee/mentoriaus santykį)",
+	"apihelp-growthsetmenteestatus-param-state": "Nauja mentee būsena (įspėjimas: šio nustatymas į atsisakymą negrįžtamai ištrins mentee/mentoriaus santykį)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Mentorystės modulis įjungtas",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Mentorystės modulis visiškai išjungtas. Paprastai tai nustato programinė įranga ir naudojama A/B testavimui.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee atsisakė mentorystės; mentee/mentoriaus santykis bus ištrintas, mentorystės modulis bus pakeistas galimybę vėl prisijungti prie mentorystės",
+	"apihelp-query+growthmentormentee-summary": "Gauti visus mentees, priskirtus pateiktam mentoriui"
+}
