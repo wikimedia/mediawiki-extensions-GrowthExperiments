@@ -2,8 +2,8 @@
 	<div class="ext-growthExperiments-MultiPaneDemo">
 		<div class="ext-growthExperiments-MultiPaneDemo__container">
 			<multi-pane
+				v-model:current-step="currentStep"
 				:total-steps="3"
-				:current-step="currentStep"
 				:is-rtl="isRtl"
 				@update:current-step="( newVal ) => currentStep = newVal"
 			>
