@@ -5,9 +5,9 @@ namespace GrowthExperiments\Specials;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm;
 use GrowthExperiments\Specials\Forms\ManageMentorsEditMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
@@ -29,24 +29,24 @@ class SpecialManageMentors extends SpecialPage {
 	private UserEditTracker $userEditTracker;
 	private MentorProvider $mentorProvider;
 	private IMentorWriter $mentorWriter;
-	private ReassignMenteesFactory $reassignMenteesFactory;
 	private MentorStatusManager $mentorStatusManager;
+	private MentorRemover $mentorRemover;
 
 	/**
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserEditTracker $userEditTracker
 	 * @param MentorProvider $mentorProvider
 	 * @param IMentorWriter $mentorWriter
-	 * @param ReassignMenteesFactory $reassignMenteesFactory
 	 * @param MentorStatusManager $mentorStatusManager
+	 * @param MentorRemover $mentorRemover
 	 */
 	public function __construct(
 		UserIdentityLookup $userIdentityLookup,
 		UserEditTracker $userEditTracker,
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter,
-		ReassignMenteesFactory $reassignMenteesFactory,
-		MentorStatusManager $mentorStatusManager
+		MentorStatusManager $mentorStatusManager,
+		MentorRemover $mentorRemover
 	) {
 		parent::__construct( 'ManageMentors' );
 
@@ -54,8 +54,8 @@ class SpecialManageMentors extends SpecialPage {
 		$this->userEditTracker = $userEditTracker;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorWriter = $mentorWriter;
-		$this->reassignMenteesFactory = $reassignMenteesFactory;
 		$this->mentorStatusManager = $mentorStatusManager;
+		$this->mentorRemover = $mentorRemover;
 	}
 
 	/** @inheritDoc */
@@ -317,9 +317,7 @@ class SpecialManageMentors extends SpecialPage {
 		switch ( $action ) {
 			case 'remove-mentor':
 				return new ManageMentorsRemoveMentor(
-					$this->mentorProvider,
-					$this->mentorWriter,
-					$this->reassignMenteesFactory,
+					$this->mentorRemover,
 					$mentorUser,
 					$this->getContext()
 				);

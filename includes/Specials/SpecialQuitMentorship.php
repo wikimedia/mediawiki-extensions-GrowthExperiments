@@ -4,40 +4,29 @@ namespace GrowthExperiments\Specials;
 
 use ErrorPageError;
 use FormSpecialPage;
-use GrowthExperiments\Mentorship\Provider\IMentorWriter;
+use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\Mentorship\ReassignMenteesFactory;
-use GrowthExperiments\Mentorship\Store\MentorStore;
 use HTMLForm;
 use PermissionsError;
-use Status;
 use User;
 
 class SpecialQuitMentorship extends FormSpecialPage {
 
-	private ReassignMenteesFactory $reassignMenteesFactory;
-	private MentorStore $mentorStore;
 	private MentorProvider $mentorProvider;
-	private IMentorWriter $mentorWriter;
+	private MentorRemover $mentorRemover;
 
 	/**
-	 * @param ReassignMenteesFactory $reassignMenteesFactory
-	 * @param MentorStore $mentorStore
 	 * @param MentorProvider $mentorProvider
-	 * @param IMentorWriter $mentorWriter
+	 * @param MentorRemover $mentorRemover
 	 */
 	public function __construct(
-		ReassignMenteesFactory $reassignMenteesFactory,
-		MentorStore $mentorStore,
 		MentorProvider $mentorProvider,
-		IMentorWriter $mentorWriter
+		MentorRemover $mentorRemover
 	) {
 		parent::__construct( 'QuitMentorship', '', false );
 
-		$this->reassignMenteesFactory = $reassignMenteesFactory;
-		$this->mentorStore = $mentorStore;
 		$this->mentorProvider = $mentorProvider;
-		$this->mentorWriter = $mentorWriter;
+		$this->mentorRemover = $mentorRemover;
 	}
 
 	/** @inheritDoc */
@@ -142,20 +131,12 @@ class SpecialQuitMentorship extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
-		$this->mentorWriter->removeMentor(
-			$this->mentorProvider->newMentorFromUserIdentity( $this->getUser() ),
-			$this->getUser(),
-			$data['reason']
-		);
-		// reassignMentees() will submit a job
-		$this->reassignMenteesFactory->newReassignMentees(
+		return $this->mentorRemover->removeMentor(
 			$this->getUser(),
 			$this->getUser(),
+			$data['reason'],
 			$this->getContext()
-		)->reassignMentees(
-			'growthexperiments-quit-mentorship-reassign-mentees-log-message'
 		);
-		return Status::newGood();
 	}
 
 	/**

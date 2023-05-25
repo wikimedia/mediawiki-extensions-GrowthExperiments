@@ -28,10 +28,8 @@ class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 
 		return new SpecialQuitMentorship(
-			$geServices->getReassignMenteesFactory(),
-			$geServices->getMentorStore(),
 			$geServices->getMentorProvider(),
-			$geServices->getMentorWriter()
+			$geServices->getMentorRemover()
 		);
 	}
 

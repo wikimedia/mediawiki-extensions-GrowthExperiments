@@ -60,8 +60,8 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$this->getServiceContainer()->getUserEditTracker(),
 			$geServices->getMentorProvider(),
 			$geServices->getMentorWriter(),
-			$geServices->getReassignMenteesFactory(),
-			$geServices->getMentorStatusManager()
+			$geServices->getMentorStatusManager(),
+			$geServices->getMentorRemover()
 		);
 	}
 
