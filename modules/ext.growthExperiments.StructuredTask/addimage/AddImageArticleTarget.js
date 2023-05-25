@@ -175,7 +175,7 @@ AddImageArticleTarget.prototype.isValidTask = function () {
  * @param {mw.libs.ge.ImageRecommendationImage} imageData
  */
 AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
-	var linearModel, contentOffset, dimensions,
+	var linearModel, insertRange, relativeOffset, dimensions,
 		surface = this.getSurface(),
 		surfaceModel = surface.getModel(),
 		data = surfaceModel.getDocument().data,
@@ -241,17 +241,30 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 	];
 
 	// Find the position between the initial templates and text.
-	this.insertOffset = 0;
-	// 0, 0 means start from offset 0 and only move if it is invalid. 0, 1 would always move.
-	contentOffset = data.getRelativeOffset( 0, 0, function ( offset ) {
-		return this.isEndOfMetadata( data, offset );
-	}.bind( this ) );
-	if ( contentOffset === -1 ) {
-		// No valid position found. This shouldn't be possible.
+	insertRange = this.getInsertRange( imageData );
+	if ( insertRange === null ) {
+		relativeOffset = -1;
+	} else {
+		this.insertOffset = insertRange.start;
+		// <offset>, 0 means start from that offset and only move if it is invalid.
+		// <offset>, 1 would always move.
+		relativeOffset = data.getRelativeOffset( this.insertOffset, 0, function ( offset ) {
+			// This will update insertOffset.
+			return this.isEndOfMetadata( data, offset );
+		}.bind( this ) );
+		if ( this.insertOffset > insertRange.end ) {
+			relativeOffset = -1;
+		}
+	}
+	if ( relativeOffset === -1 ) {
+		// No valid position found.
 		mw.log.error( 'No valid offset found for image insertion' );
 		mw.errorLogger.logError( new Error( 'No valid offset found for image insertion' ),
 			'error.growthexperiments' );
-		this.insertOffset = 0;
+		// If range were null, this wouldn't be a good way to deal with it - we'd fall back
+		// to the top of the article for a section image recommendation. But in that case,
+		// isValidTask() will return false so we never get here.
+		this.insertOffset = insertRange ? insertRange.start : 0;
 	}
 
 	// Actually insert the image.
@@ -259,6 +272,20 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 	surfaceModel.getLinearFragment( new ve.Range( this.insertOffset ) ).insertContent( linearModel );
 	surfaceModel.setReadOnly( true );
 	this.hasStartedCaption = true;
+};
+
+/**
+ * Get the range in which the image can be inserted. The image will be inserted towards the
+ * top of that range, after templates.
+ *
+ * @param {mw.libs.ge.ImageRecommendationImage} imageData
+ * @return {ve.Range|null} Null when the image shouldn't be inserted.
+ */
+AddImageArticleTarget.prototype.getInsertRange = function (
+	// eslint-disable-next-line no-unused-vars
+	imageData
+) {
+	return this.getSurface().getModel().getDocument().getDocumentRange();
 };
 
 /**
@@ -312,6 +339,8 @@ AddImageArticleTarget.prototype.isEndOfMetadata = function ( data, offset ) {
 		return true;
 	} else if ( right.type.charAt( 0 ) === '/' ) {
 		// It's always fine to move out of something. The image is at the top level.
+		// For section images, MediaWiki section headers can appear in weird places
+		// (inside a table etc), but the recommender system will skip over those.
 		return false;
 	}
 
