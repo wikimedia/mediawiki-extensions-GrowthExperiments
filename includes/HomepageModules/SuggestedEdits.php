@@ -20,7 +20,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use Html;
@@ -368,7 +368,7 @@ class SuggestedEdits extends BaseModule {
 						'pageId' => $title->getArticleID(),
 						'token' => $task->getToken(),
 					];
-					if ( $task->getTaskType() instanceof ImageRecommendationTaskType ) {
+					if ( $task->getTaskType() instanceof ImageRecommendationBaseTaskType ) {
 						// Prevent loading of thumbnail for image recommendation tasks.
 						// TODO: Maybe there should be a property on the task type to check
 						// rather than special casing image recommendation here
