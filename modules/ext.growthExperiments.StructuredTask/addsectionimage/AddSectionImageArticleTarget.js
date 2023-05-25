@@ -102,6 +102,7 @@ AddSectionImageArticleTarget.prototype.getInsertRange = function ( imageData ) {
 					domElements[ 0 ].id.replace( /_/g, ' ' ).toLowerCase() === imageData.sectionTitle
 			) {
 				heading = headingNodes[ i ];
+				imageData.visibleSectionTitle = titleText;
 			} else {
 				mw.log.error(
 					'Section title mismatch for section ' + imageData.sectionNumber + ': ' +
