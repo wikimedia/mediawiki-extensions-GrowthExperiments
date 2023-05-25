@@ -107,7 +107,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Tu}} impacto",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Tu}} actividad reciente ({{PLURAL:$2|último día|últimos $2 días}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Actividad reciente ({{PLURAL:$1|último día|últimos días}})",
-	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Tu última contribución",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Última contribución",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Mejor racha",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|día|días}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Edición|Ediciones}}",

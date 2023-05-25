@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Afaz",
 			"MathXplore",
 			"Omotecho",
 			"Sou0012",
@@ -66,6 +67,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "平均の約2倍",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|あなたの}}の負荷が「$1」に変更されました。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "不明なエラーが発生しました。しばらくしてからもう一度やり直してください。",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "{{GENDER:|あなた}}の自己紹介メッセージを変更",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "保存",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "キャンセル",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "紹介メッセージ",
@@ -88,6 +90,11 @@
 	"growthexperiments-manage-mentors-last-active": "前回の操作",
 	"growthexperiments-manage-mentors-status": "状態",
 	"growthexperiments-manage-mentors-edit": "編集",
+	"growthexperiments-manage-mentors-edit-intro-msg": "自己紹介メッセージ",
 	"growthexperiments-manage-mentors-edit-reason": "理由",
-	"growthexperiments-manage-mentors-remove-mentor": "除去"
+	"growthexperiments-manage-mentors-remove-mentor": "除去",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "{{SITENAME}}の{{GENDER:|指導役}}（メンター）に興味をお持ちいただきありがとうございます。このフォームに記入して指導役として登録できます。",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "自己紹介メッセージ",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "自己紹介メッセージでは、{{GENDER:|あなた}}を指導役として自己紹介してください（240 文字未満、ウィキ構文は使用不可）。",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "登録"
 }
