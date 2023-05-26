@@ -1,6 +1,5 @@
 var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
-	MIN_CAPTION_LENGTH = ( CONSTANTS.ALL_TASK_TYPES[ 'image-recommendation' ] || {} ).minimumCaptionCharacterLength;
+	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS;
 
 /**
  * @typedef mw.libs.ge.ce.RecommendedImageCaptionWarning
@@ -19,6 +18,14 @@ function CERecommendedImageCaptionNode() {
 	 * @property {mw.libs.ge.AddImageArticleTarget} articleTarget
 	 */
 	this.articleTarget = ve.init.target;
+	/**
+	 * @property {string} taskType Task type ID ('image-recommendation' or 'section-image-recommendation')
+	 */
+	this.taskType = this.getModel().getAttribute( 'taskType' );
+	/**
+	 * @property {number} MIN_CAPTION_LENGTH Required minimum caption length for this task type
+	 */
+	this.MIN_CAPTION_LENGTH = CONSTANTS.ALL_TASK_TYPES[ this.taskType ].minimumCaptionCharacterLength;
 	/**
 	 * Localized warning text if the caption doesn't meet the validation rules
 	 *
@@ -91,7 +98,7 @@ CERecommendedImageCaptionNode.prototype.isValid = function () {
  * @return {string}
  */
 CERecommendedImageCaptionNode.prototype.getPlaceholderHtml = function () {
-	if ( this.getModel().getAttribute( 'taskType' ) === 'image-recommendation' ) {
+	if ( this.taskType === 'image-recommendation' ) {
 		return mw.message( 'growthexperiments-addimage-caption-placeholder' ).params( [
 			suggestedEditSession.getCurrentTitle().getNameText()
 		] ).parse();
@@ -226,7 +233,7 @@ CERecommendedImageCaptionNode.prototype.hideWarningIfNeeded = function () {
  */
 CERecommendedImageCaptionNode.prototype.validateCaption = function () {
 	this.warnings = [];
-	if ( this.getCaptionLengthWithoutTrailingWhitespace() < MIN_CAPTION_LENGTH ) {
+	if ( this.getCaptionLengthWithoutTrailingWhitespace() < this.MIN_CAPTION_LENGTH ) {
 		this.warnings.push( this.getLengthWarning() );
 	}
 	// Update the warning if it's already shown
@@ -254,7 +261,7 @@ CERecommendedImageCaptionNode.prototype.getLengthWarning = function () {
 	return {
 		id: 'too short',
 		text: mw.message( 'growthexperiments-addimage-caption-warning-tooshort' ).params(
-			[ mw.language.convertNumber( MIN_CAPTION_LENGTH ) ]
+			[ mw.language.convertNumber( this.MIN_CAPTION_LENGTH ) ]
 		).text()
 	};
 };
