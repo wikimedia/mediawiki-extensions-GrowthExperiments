@@ -177,7 +177,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$suggestionFilters = $taskType->getSuggestionFilters();
 		$titleTextSafe = strip_tags( $titleText );
 		if ( count( $suggestionData ) === 0 ) {
-			return StatusValue::newFatal( new ApiRawMessage(
+			return StatusValue::newGood()->error( new ApiRawMessage(
+				// Keep in sync with Util::STATSD_INCREMENTABLE_ERROR_MESSAGES
 				[ 'No recommendation found for page: $1', $titleTextSafe ],
 				'growthexperiments-no-recommendation-found'
 			) );
