@@ -4,7 +4,29 @@
 	const Vuex = require( 'vuex' );
 	const store = require( './store/index.js' );
 	const { convertNumber } = require( '../utils/filters.js' );
-	const logger = require( './plugins/logger.js' );
+	const MentorDashboardLogger = require( './logger/Logger.js' );
+	const loggerPlugin = require( './plugins/logger.js' );
+	// eslint-disable-next-line no-jquery/no-global-selector
+	const $dashboard = $( '.growthexperiments-mentor-dashboard-container' );
+
+	const handleClick = ( e ) => {
+		const pageviewToken = mw.config.get( 'wgGEMentorDashboardPageviewToken' ),
+			logger = new MentorDashboardLogger( pageviewToken ),
+			$link = $( e.target ),
+			$module = $link.closest( '.growthexperiments-mentor-dashboard-module' ),
+			linkId = $link.data( 'link-id' ),
+			linkData = $link.data( 'link-data' ),
+			moduleName = $module.data( 'module-name' ),
+			extraData = { linkId: linkId };
+
+		if ( linkData !== undefined && linkData !== null ) {
+			extraData.linkData = linkData;
+		}
+
+		logger.log( moduleName, 'link-click', extraData );
+	};
+	$dashboard
+		.on( 'click', 'a[data-link-id]', handleClick );
 
 	const createApp = ( wrapper, mountPoint, module ) => {
 		const app = Vue.createMwApp( wrapper );
@@ -12,7 +34,7 @@
 			convertNumber
 		};
 		app.use( store )
-			.use( logger, {
+			.use( loggerPlugin, {
 				module: module,
 				pageviewToken: mw.config.get( 'wgGEMentorDashboardPageviewToken' )
 			} )

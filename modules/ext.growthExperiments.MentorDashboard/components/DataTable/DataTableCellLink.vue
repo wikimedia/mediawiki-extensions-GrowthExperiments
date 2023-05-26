@@ -1,6 +1,10 @@
 <template>
 	<data-table-cell-value :align="align">
-		<a :href="value.link.href" :alt="value.link.text">
+		<a
+			:data-link-id="'data-link-' + fieldName"
+			:href="value.link.href"
+			:alt="value.link.text"
+		>
 			{{ value.value }}
 		</a>
 	</data-table-cell-value>
@@ -17,6 +21,7 @@ module.exports = exports = {
 	},
 	props: {
 		align: { type: String, default: 'left', validator: alignValidator },
+		fieldName: { type: String, required: true },
 		value: { type: Object, required: true }
 	}
 };

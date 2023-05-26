@@ -27,6 +27,7 @@ MentorDashboardLogger.prototype.log = function ( module, action, extraData ) {
 		is_mobile: this.isMobile,
 		user_id: this.userId,
 		pageview_token: this.pageviewToken
+		/* eslint-enable camelcase */
 	};
 	event.$schema = this.schema;
 	mw.eventLog.submit( this.stream, event );

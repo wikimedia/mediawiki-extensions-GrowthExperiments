@@ -36,6 +36,7 @@
 </template>
 
 <script>
+const { inject } = require( 'vue' );
 const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const { cdxIconUserAvatar } = require( '../../../vue-components/icons.json' );
 const CScoreCards = require( '../../../vue-components/CScoreCards.vue' );
@@ -55,7 +56,10 @@ module.exports = exports = {
 	},
 	emits: [ 'skip' ],
 	setup() {
+		const log = inject( '$log' );
+
 		return {
+			log,
 			cdxIconUserAvatar
 		};
 	},
@@ -112,6 +116,9 @@ module.exports = exports = {
 		},
 		onPraiseButtonClicked() {
 			const userName = this.mentee.userName;
+			this.log( 'pp-praise-mentee', {
+				menteeUserId: this.mentee.userId
+			} );
 			return new mw.Api().postWithToken( 'csrf', {
 				action: 'growthinvalidatepersonalizedpraisesuggestion',
 				mentee: userName,
