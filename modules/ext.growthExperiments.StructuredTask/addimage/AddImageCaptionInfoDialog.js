@@ -1,7 +1,5 @@
 var StructuredTaskMessageDialog = require( '../StructuredTaskMessageDialog.js' ),
-	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	// This needs to stay in sync with the one defined in SuggestedEdits.php
-	ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
+	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 /**
  * Dialog with guidance for Add an Image's caption step.
@@ -16,6 +14,15 @@ var StructuredTaskMessageDialog = require( '../StructuredTaskMessageDialog.js' )
  */
 function AddImageCaptionInfoDialog() {
 	AddImageCaptionInfoDialog.super.apply( this, arguments );
+
+	/**
+	 * Preference for showing caption onboarding the next time.
+	 * This needs to stay in sync with the one defined in SuggestedEdits.php
+	 *
+	 * @property {string}
+	 */
+	this.CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
+
 	this.$element.addClass( [
 		'mw-ge-addImageCaptionInfoDialog',
 		OO.ui.isMobile() ?
@@ -89,7 +96,9 @@ AddImageCaptionInfoDialog.static.actions = [
  * @param {boolean} [data.shouldShowDismissField] Whether the checkbox should be shown
  */
 AddImageCaptionInfoDialog.prototype.setupDismissField = function ( data ) {
-	var shouldShowDismissField = !!data.shouldShowDismissField;
+	var self = this,
+		shouldShowDismissField = !!data.shouldShowDismissField;
+
 	if ( this.dismissField ) {
 		this.dismissField.toggle( shouldShowDismissField );
 		return;
@@ -100,7 +109,7 @@ AddImageCaptionInfoDialog.prototype.setupDismissField = function ( data ) {
 		value: 'dismissCaptionOnboarding'
 	} );
 	this.checkBoxInput.on( 'change', function ( isSelected ) {
-		new mw.Api().saveOption( ADD_IMAGE_CAPTION_ONBOARDING_PREF, isSelected ? '1' : '0' );
+		new mw.Api().saveOption( self.CAPTION_ONBOARDING_PREF, isSelected ? '1' : '0' );
 	} );
 	// Set up the FieldLayout here instead of during initialization so that if the field doesn't
 	// need to be shown at all during the flow, it's not set up

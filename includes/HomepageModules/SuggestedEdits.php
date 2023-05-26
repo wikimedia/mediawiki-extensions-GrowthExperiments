@@ -93,9 +93,15 @@ class SuggestedEdits extends BaseModule {
 
 	/**
 	 * Used to keep track of the whether the user has opted out of seeing onboarding for
-	 * the caption step of Add an Image
+	 * the caption step of Add Image
 	 */
 	public const ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
+
+	/**
+	 * Used to keep track of the whether the user has opted out of seeing onboarding for
+	 * the caption step of Add Section Image
+	 */
+	public const ADD_SECTION_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addsectionimage-caption-onboarding';
 
 	/** @var EditInfoService */
 	private $editInfoService;
