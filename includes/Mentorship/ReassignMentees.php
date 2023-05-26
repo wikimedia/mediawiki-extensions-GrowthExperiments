@@ -156,11 +156,11 @@ class ReassignMentees {
 				$this->logger->warning(
 					'ReassignMentees failed to reassign mentees for {mentor}; no mentor is available',
 					[
-						'mentor' => $this->mentor->getName()
+						'mentor' => $this->mentor->getName(),
+						'impact' => 'Mentor-mentee relationship dropped'
 					]
 				);
-				// this is a continue, because a mentor can be available for other users (for
-				// instance, if they're a mentor themselves).
+				$this->mentorStore->dropMenteeRelationship( $mentee );
 				continue;
 			}
 
