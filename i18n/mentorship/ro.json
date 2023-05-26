@@ -121,7 +121,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Bună, $1, sunt mentorul dvs. Vă mulțumesc pentru contribuții. Văd că ați fost ocupat(ă) cu editarea și am vrut doar să-mi iau un moment să vă mulțumesc și să vă spun că sper că veți continua să vă implicați! Simțiți-vă liber(ă) să îmi trimiteți un mesaj pe pagina mea de discuție dacă aveți vreodată întrebări. Spor!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Trimite laudă",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Mesajele pozitive de la mentori și utilizatori experimentați cresc gradul de păstrare a editorilor.",
-	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Condiție: $1 {{PLURAL:$1|editare|editări}} în {{PLURAL:$2|ultima zi|ultimele $2 zile}}. Personalizați aceste valori în setări.",
+	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "<strong>Condiție</strong>: $1 {{PLURAL:$1|editare|editări}} în {{PLURAL:$2|ultima zi|ultimele $2 zile}}. Personalizați aceste valori în setări.",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "Ucenicii demni de laudă vor fi afișați aici.",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "$1 subiecte de discuție",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$1 din $2 {{PLURAL:$2|ucenic demn|ucenici demni}} de laudă",

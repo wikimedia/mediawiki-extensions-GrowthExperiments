@@ -556,6 +556,7 @@
 	"growthexperiments-addimage-caption-warning-tooshort": "Bildunterschriften müssen $1 {{PLURAL:$1|Zeichen}} oder länger sein.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Du}} hast alle Linkvorschläge von heute erledigt.\n\nPasse {{GENDER:|deinen}} Schwierigkeitsgrad an, um andere Arten von Bearbeitungen zu sehen, oder komme morgen für weitere Linkvorschläge wieder.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Verstanden",
+	"growthexperiments-addsectionimage-caption-placeholder": "Schreibe eine kurze Bildunterschrift, in der du beschreibst, inwiefern dieses Bild sowohl für den Artikel <strong>$1</strong> als auch für den Abschnitt <strong>$2</strong> relevant ist",
 	"growthexperiments-addsectionimage-daily-task-limit-exceeded": "{{GENDER:|Du}} hast alle heutigen Bildvorschläge auf Abschnittsebene abgeschlossen.\n\nPasse den Schwierigkeitsgrad für dich an, um andere Arten von Aufgaben zu sehen, oder komme morgen wieder vorbei, um weitere Bildvorschläge zu erhalten.",
 	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "Verstanden",
 	"growthexperiments-homepage-mentorship-optin-header": "Lotse für die Bearbeitung",
