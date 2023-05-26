@@ -77,7 +77,7 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
 
 /** @inheritDoc */
 AddSectionImageArticleTarget.prototype.getInsertRange = function ( imageData ) {
-	var domElements, titleText, heading, nextHeading,
+	var heading, nextHeading,
 		h2Count = 0,
 		surfaceModel = this.getSurface().getModel(),
 		headingNodes = surfaceModel.getDocument().getNodesByType( 'mwHeading' );
@@ -88,26 +88,8 @@ AddSectionImageArticleTarget.prototype.getInsertRange = function ( imageData ) {
 			continue;
 		}
 		h2Count++;
-		// FIXME accept null section numbers for testing convenience as the dataset hasn't been
-		//   fully initialized yet.
-		if ( !heading && ( h2Count === imageData.sectionNumber || imageData.sectionNumber === null ) ) {
-			// The article might have been edited since. Double-check that the title text matches.
-			// imageData.sectionTitle is wikitext and lowercased so this will be somewhat fragile.
-			domElements = headingNodes[ i ].getOriginalDomElements( headingNodes[ i ].getStore() );
-			titleText = $( '<div>' ).append( $( domElements ).clone() ).prop( 'innerText' ).toLowerCase();
-			if ( titleText === imageData.sectionTitle ||
-				domElements[ 0 ] instanceof HTMLHeadingElement &&
-					domElements[ 0 ].id.replace( /_/g, ' ' ).toLowerCase() === imageData.sectionTitle
-			) {
-				heading = headingNodes[ i ];
-				imageData.visibleSectionTitle = titleText;
-			} else {
-				mw.log.error(
-					'Section title mismatch for section ' + imageData.sectionNumber + ': ' +
-						'expected "' + imageData.sectionTitle + '", got "' + titleText + '"'
-				);
-				break;
-			}
+		if ( !heading && this.isSameSection( headingNodes[ i ], h2Count, imageData ) ) {
+			heading = headingNodes[ i ];
 		} else if ( heading ) {
 			nextHeading = headingNodes[ i ];
 			break;
@@ -130,6 +112,56 @@ AddSectionImageArticleTarget.prototype.getInsertRange = function ( imageData ) {
 				h2Count + ' h2 sections' );
 		}
 		return null;
+	}
+};
+
+/**
+ * Check if the given heading node is the section the recommendation was made for.
+ *
+ * @param {ve.dm.Node} node Section heading node.
+ * @param {number} sectionNumber Section number. 1-based, only top-level (h2) sections are counted.
+ * @param {mw.libs.ge.ImageRecommendationImage} imageData
+ * @return {boolean}
+ */
+AddSectionImageArticleTarget.prototype.isSameSection = function ( node, sectionNumber, imageData ) {
+	var expectedTitleText, actualTitleText, actualIdText, domElements;
+
+	// FIXME accept null section numbers for now as the dataset hasn't been fully initialized yet.
+	//   If the section number is null, we'll just try to match the text to every top-level section.
+	if ( sectionNumber !== imageData.sectionNumber && imageData.sectionNumber !== null ) {
+		return false;
+	}
+
+	// The article might have been edited since. Double-check that the title text matches.
+	// imageData.sectionTitle is wikitext so this will be somewhat fragile.
+	// The API format will change (T333333), so make sure the check works with old and new format.
+	expectedTitleText = imageData.sectionTitle.replace( /_/g, ' ' );
+	domElements = node.getOriginalDomElements( node.getStore() );
+	actualTitleText = $( '<div>' ).append( $( domElements ).clone() ).prop( 'innerText' );
+	// Also compare with the HTML ID of the heading (after underscore conversion) as a fallback.
+	// Note that the ID can have a numeric postfix like '_1' if there are multiple sections with
+	// the same wikitext. This is rare enough that we just ignore it.
+	actualIdText = domElements[ 0 ] instanceof HTMLHeadingElement ?
+		domElements[ 0 ].id.replace( /_/g, ' ' ) :
+		'';
+
+	if ( actualTitleText.toLowerCase() === expectedTitleText.toLowerCase() ||
+		actualIdText && actualIdText.toLowerCase() === expectedTitleText.toLowerCase()
+	) {
+		// Not the most elegant way to pass this back, but we'll need it later - if the visible
+		// title is significantly different from the wikitext title (e.g. due to LanguageConverter),
+		// and we managed to match the section anyway with the fallabck mechanism, we should show
+		// the user the title in the format in which it will be displayed in the article.
+		// (There is a case to be made for even preserving basic formatting like italic here, but
+		// that would be too complicated.)
+		imageData.visibleSectionTitle = actualTitleText;
+		return true;
+	} else {
+		mw.log.error(
+			'Section title mismatch for section ' + imageData.sectionNumber + ': ' +
+			'expected "' + imageData.sectionTitle + '", got "' + actualTitleText + '"'
+		);
+		return false;
 	}
 };
 
