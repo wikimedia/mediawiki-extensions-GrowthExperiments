@@ -18,6 +18,11 @@ function MentorDashboardLogger( pageviewToken ) {
 }
 
 MentorDashboardLogger.prototype.log = function ( module, action, extraData ) {
+	if ( mw.eventLog === undefined ) {
+		// EventLogging is not available.
+		return;
+	}
+
 	const event = {
 		/* eslint-disable camelcase */
 		database: mw.config.get( 'wgDBname' ),
