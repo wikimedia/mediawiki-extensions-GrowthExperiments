@@ -17,15 +17,22 @@
 			<template #title>
 				A slotted <i>Onboarding dialog</i> header
 			</template>
-			<template #headerbtntext>
-				<b>Skip all</b>
+			<template #closeBtnText>
+				Skip all
 			</template>
 			<template #step1>
-				<div>
-					<h5 class="ext-growthExperiments-OnboardingDialogDemo__dialog__title">
+				<div class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent"
+				>
+					<h5
+						class="
+					ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__title"
+					>
 						Step 1 with basic text content
 					</h5>
-					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
+					<p
+						class="
+					ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
+					>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
 						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
@@ -35,31 +42,47 @@
 			</template>
 
 			<template #step2>
-				<div>
-					<h5 class="ext-growthExperiments-OnboardingDialogDemo__dialog__title">
+				<div class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent"
+				>
+					<h5
+						class="
+						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__title"
+					>
 						Step 2 with long text content
 					</h5>
-					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
+					<p
+						class="
+						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
+					>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
 						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
 						nulla ullam expedita consectetur.
 					</p>
 
-					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
+					<p
+						class="
+						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__example"
+					>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
 						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
 						nulla ullam expedita consectetur.
 					</p>
 					<br><br>
-					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
+					<p
+						class="
+						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
+					>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
 						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
 						nulla ullam expedita consectetur.
 					</p>
-					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
+					<p
+						class="
+						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
+					>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
 						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
@@ -69,20 +92,36 @@
 			</template>
 			<template #step3>
 				<div>
-					<img
+					<!-- eslint-disable max-len -->
+					<div
 						class="ext-growthExperiments-OnboardingDialogDemo__dialog__image"
-						src="../../../../images/addlink/onboarding-image1-ltr.svg"
+						role="img"
+						aria-label="Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
 					>
-					<h5 class="ext-growthExperiments-OnboardingDialogDemo__dialog__title">
-						Step 3 This is an step with an image
-					</h5>
-					<p class="ext-growthExperiments-OnboardingDialogDemo__dialog__text">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
-						nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
-						nulla ullam expedita consectetur.
-					</p>
+					<!-- eslint-enable max-len -->
+					</div>
+					<div class="ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent"
+					>
+						<h5
+							class="
+						ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__title"
+						>
+							Step 3 This is an step with an image
+						</h5>
+						<p
+							class="
+					ext-growthExperiments-OnboardingDialogDemo__dialog__textcontent__paragraph"
+						>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+							Voluptatum necessitatibus nostrum vitae doloribus nisi itaque quasi
+							nihil nam eum magni aliquam distinctio, commodi, dolore quibusdam
+							nulla ullam expedita consectetur.
+						</p>
+					</div>
 				</div>
+			</template>
+			<template #checkboxLabel>
+				Don't show again
 			</template>
 		</onboarding-dialog>
 	</div>
@@ -136,10 +175,64 @@ export default {
 	margin: @spacing-50;
 
 	&__dialog {
-		height: @onboardingDialogHeight;
-
 		&__image {
-			margin: auto;
+			background-image: url( ../../../../images/addlink/onboarding-image1-ltr.svg );
+			background-color: @onboardingBackgroundColor;
+			height: @size-1600;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		&__textcontent {
+			padding-left: @spacing-150;
+			padding-right: @spacing-150;
+
+			&__title {
+				.ext-growthExperiments-onboarding-dialog-title();
+			}
+
+			&__paragraph {
+				padding-top: @spacing-50;
+				font-size: @font-size-small;
+				line-height: @line-height-small;
+
+				&__label {
+					color: @color-placeholder;
+					font-size: @font-size-x-small;
+					line-height: @line-height-xx-small;
+					font-style: italic;
+					margin-top: @spacing-50;
+				}
+
+				&__example {
+					padding: @spacing-75;
+					background: @background-color-interactive-subtle;
+					// As discussed on https://phabricator.wikimedia.org/T332567
+					// this color is not a DS border-color yet
+					// and should be changed
+					border: @border-width-base @border-style-base @onboardingExampleBorderColor;
+					box-sizing: @box-sizing-base;
+					border-radius: @border-radius-base;
+					margin-bottom: @spacing-50;
+					line-height: @line-height-xx-small;
+					font-size: @font-size-small;
+				}
+
+				&__link {
+					.cdx-mixin-link-base();
+				}
+
+				&__list {
+					ul {
+						list-style: inside;
+						margin-left: @spacing-50;
+
+						li {
+							margin-top: @spacing-50;
+						}
+					}
+				}
+			}
 		}
 	}
 }

@@ -7,35 +7,44 @@
 		:hide-title="true"
 		@update:open="( newVal ) => onDialogOpenUpdate( newVal )"
 	>
+		<!-- Dialog Header -->
 		<template #header>
-			<div class="ext-growthExperiments-OnboardingDialog__header">
-				<!-- Slot for dialog title -->
-				<h4 class="ext-growthExperiments-OnboardingDialog__header__title">
-					<slot name="title"></slot>
-				</h4>
-				<!-- Header button that will display in all steps except last one
-				if slot with inner text is provided  -->
-				<div class="ext-growthExperiments-OnboardingDialog__header__button">
+			<div
+				class="ext-growthExperiments-OnboardingDialog__header"
+			>
+				<div class="ext-growthExperiments-OnboardingDialog__header__top">
+					<h4 class="ext-growthExperiments-OnboardingDialog__header__top__title">
+						<slot name="title"></slot>
+					</h4>
 					<cdx-button
-						v-if="$slots.headerbtntext && currentStep !== totalSteps "
+						v-if="hasSteps"
+						class="ext-growthExperiments-OnboardingDialog__header__top__button"
 						weight="quiet"
 						@click="onHeaderBtnClick"
 					>
-						<slot name="headerbtntext"></slot>
+						<slot name="closeBtnText">
+						</slot>
+					</cdx-button>
+					<cdx-button
+						v-else
+						weight="quiet"
+						class="cdx-button--icon-only"
+						aria-label="close"
+						@click="onHeaderBtnClick">
+						<cdx-icon :icon="cdxIconClose" icon-label="close"></cdx-icon>
 					</cdx-button>
 				</div>
+				<onboarding-stepper
+					v-if="hasSteps"
+					v-model:model-value="currentStep"
+					class="ext-growthExperiments-OnboardingDialog__header__stepper"
+					:total-steps="totalSteps"
+					:label="`${currentStep} of ${totalSteps}`"
+				></onboarding-stepper>
 			</div>
 		</template>
-
 		<!-- Dialog Content -->
-		<div class="ext-growthExperiments-OnboardingDialog__content">
-			<!-- Dialog paginator indicate current steps and total steps. -->
-			<onboarding-paginator
-				v-if="hasSteps"
-				v-model:current-step="currentStep"
-				class="ext-growthExperiments-OnboardingDialog__content__paginator"
-				:total-steps="totalSteps"
-			></onboarding-paginator>
+		<div>
 			<multi-pane
 				v-if="hasSteps"
 				ref="multiPaneRef"
@@ -51,33 +60,28 @@
 				-->
 			<slot v-else></slot>
 		</div>
-
+		<!-- Dialog Footer -->
 		<template #footer>
 			<div class="ext-growthExperiments-OnboardingDialog__footer">
-				<div class="ext-growthExperiments-OnboardingDialog__footer__actions">
-					<!-- Footer Actions Prev -->
+				<cdx-checkbox
+					v-if="$slots.checkboxLabel"
+					v-model="wrappedIsChecked"
+					class="ext-growthExperiments-OnboardingDialog__footer__permanent-action"
+					@update:model-value="newVal => wrappedIsChecked = newVal"
+				>
+					<slot name="checkboxLabel">
+					</slot>
+				</cdx-checkbox>
 
-					<!-- The first step of the dialog displays a checkbox
-					if text content for the checkbox slot  is provided. -->
+				<div
+					class="ext-growthExperiments-OnboardingDialog__footer__navigation"
+				>
+					<!-- eslint-disable max-len -->
 					<div
-						v-if="currentStep === 1"
-						class="ext-growthExperiments-OnboardingDialog__footer__actions-prev"
+						v-if="currentStep !== 1"
+						class="ext-growthExperiments-OnboardingDialog__footer__navigation-prev"
 					>
-						<!-- eslint-disable-next-line max-len -->
-						<cdx-checkbox
-							v-if="$slots.checkbox"
-							v-model="wrappedIsChecked"
-							@update:model-value="newVal => wrappedIsChecked = newVal"
-						>
-							<slot name="checkbox"></slot>
-						</cdx-checkbox>
-					</div>
-					<!-- All the following steps display an Icon only button to navigate
-					to the previous step -->
-					<div
-						v-else
-						class="ext-growthExperiments-OnboardingDialog__footer__actions-prev"
-					>
+						<!-- eslint-enable max-len -->
 						<cdx-button
 							aria-label="previous"
 							@click="onPrevClick"
@@ -85,32 +89,35 @@
 							<cdx-icon :icon="cdxIconPrevious" icon-label="previous"></cdx-icon>
 						</cdx-button>
 					</div>
-					<!-- Footer Acctions Next -->
-					<!-- The last step displays a button with a slot for the text content -->
+					<!-- eslint-disable max-len -->
 					<div
 						v-if="currentStep === totalSteps"
-						class="ext-growthExperiments-OnboardingDialog__footer__actions-next">
+						class="ext-growthExperiments-OnboardingDialog__footer__navigation--next"
+					>
+						<!-- eslint-enable max-len -->
 						<cdx-button
 							weight="primary"
 							action="progressive"
-							@click="onLastStepBtnClick"
+							@click="onStartBtnClick"
 						>
-							<slot name="last-step-button-text">
-								Close
+							<slot name="startBtnText">
+								Get started
 							</slot>
 						</cdx-button>
 					</div>
-					<!-- All the previous steps display an Icon only button to navigate
-					to the next step -->
+					<!-- eslint-disable max-len -->
 					<div
 						v-else
-						class="ext-growthExperiments-OnboardingDialog__footer__actions-next">
+						class="ext-growthExperiments-OnboardingDialog__footer__navigation--next"
+					>
+						<!-- eslint-enable max-len -->
 						<cdx-button
 							weight="primary"
 							action="progressive"
 							class="cdx-button--icon-only"
 							aria-label="next"
-							@click="onNextClick">
+							@click="onNextClick"
+						>
 							<cdx-icon :icon="cdxIconNext" icon-label="next"></cdx-icon>
 						</cdx-button>
 					</div>
@@ -123,25 +130,16 @@
 <script>
 import { ref, computed, toRef, watch } from 'vue';
 import { CdxDialog, CdxButton, CdxIcon, CdxCheckbox, useModelWrapper } from '@wikimedia/codex';
-import { cdxIconNext, cdxIconPrevious } from '@wikimedia/codex-icons';
-import OnboardingPaginator from './OnboardingPaginator.vue';
+import { cdxIconNext, cdxIconPrevious, cdxIconClose } from '@wikimedia/codex-icons';
+import OnboardingStepper from './OnboardingStepper.vue';
 import MultiPane from './MultiPane.vue';
 
 /**
  * @name OnboardingDialog
  *
+ * @description A multi-step dialog that gives the user detailed information
+ * to complete a task. Different steps are are navigable with arrow buttons back and forth.
  *
- * @description This is a multi-step dialog that gives the user detailed information
- * to complete an structured task.
- *
- * Different steps are are navigable with arrow buttons back and forth.
- * Displays a paginator that shows to the user the current progress in the dialog.
- *
- * A main title can be provided via #title slot and the text in the top button
- * can be customized via #headerbtntext slot.
- * Step content is provided via #step1, #step2, #step3, etc...
- * Footer actions can be customized via #checkbox and #last-step-button-text slots respectively,
- * to display a checkbox in the first step and a button with custom text in the last one.
  */
 
 export default {
@@ -153,7 +151,7 @@ export default {
 		CdxIcon,
 		CdxCheckbox,
 		MultiPane,
-		OnboardingPaginator
+		OnboardingStepper
 	},
 	props: {
 		/**
@@ -224,7 +222,7 @@ export default {
 				closeResultObj.currentStep = currentStep.value;
 				closeResultObj.greaterStep = greaterStepShown.value;
 			}
-			if ( slots.checkbox ) {
+			if ( slots.checkboxLabel ) {
 				closeResultObj.isChecked = wrappedIsChecked.value;
 			}
 			emit( 'close', closeResultObj );
@@ -246,23 +244,24 @@ export default {
 			emit( 'update:open', false );
 		}
 
-		function onLastStepBtnClick() {
+		function onStartBtnClick() {
 			closeSource.value = 'primary';
 			emit( 'update:open', false );
 		}
 
 		return {
+			cdxIconClose,
 			cdxIconNext,
 			cdxIconPrevious,
-			currentSlotName,
 			currentStep,
+			currentSlotName,
 			hasSteps,
 			multiPaneRef,
 			onDialogOpenUpdate,
 			onHeaderBtnClick,
 			onNextClick,
 			onPrevClick,
-			onLastStepBtnClick,
+			onStartBtnClick,
 			wrappedOpen,
 			wrappedIsChecked
 		};
@@ -275,51 +274,59 @@ export default {
 @import './variables.less';
 
 .ext-growthExperiments-OnboardingDialog {
-	position: relative;
+	max-width: @size-3200;
+	height: @size-3200;
+	// stylelint-disable-next-line selector-class-pattern
+	&.cdx-dialog {
+		gap: 0;
+	}
 	// stylelint-disable-next-line selector-class-pattern
 	.cdx-dialog__body {
-		// REVIEW Overwrite CdxDialog overflow-x to avoid
-		// showing the horizontal scroll bar during transitions
 		overflow-x: hidden;
+		padding: 0;
 	}
 
 	&__header {
-		display: flex;
-		justify-content: space-between;
-		padding-top: @spacing-25;
-		padding-inline-start: @spacing-100;
-		// This is the background color for the AddlinkDialog Images
-		// and should be replaced as discussed on with a DS background color
-		// See https://phabricator.wikimedia.org/T332567
-		background-color: @onboardingBackgroundColor;
+		padding-inline-start: @spacing-150;
+		padding-inline-end: @spacing-75;
+		padding-top: @spacing-75;
+		padding-bottom: @spacing-100;
 
-		&__title {
-			font-size: @font-size-medium;
-			line-height: 2.72em;
-			font-weight: @font-weight-bold;
-		}
-	}
+		&__top {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
 
-	&__content {
-		&__paginator {
-			// REVIEW Set top to 48px to adjust paginator position
-			// to compensate the gutter between dialog's header and body.
-			// This gutter is generated by Cdx-dialog gap value of 32px
-			top: 48px;
-			position: absolute;
-			z-index: @z-index-top;
+			&__title {
+				padding-top: @spacing-50;
+				font-size: @font-size-medium;
+				line-height: @line-height-xx-small;
+				font-weight: @font-weight-bold;
+				max-width: @size-1600;
+				padding-bottom: @spacing-75;
+			}
 		}
 	}
 
 	&__footer {
-		border-top: @border-width-base @border-style-base @border-color-base;
-		padding: @spacing-100;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		padding: @spacing-100 @spacing-150 @spacing-35 @spacing-150;
 
-		&__actions {
+		&__navigation {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: flex-end;
 			font-size: @font-size-small;
+			flex-grow: 1;
+			margin-bottom: @spacing-75;
+
+			&--prev,
+			&--next {
+				padding-inline-start: @spacing-50;
+			}
 		}
 	}
 }

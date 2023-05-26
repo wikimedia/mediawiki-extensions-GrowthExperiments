@@ -12,7 +12,7 @@
 		<template #title>
 			Introduction
 		</template>
-		<template #headerbtntext>
+		<template #closeBtnText>
 			Skip all
 		</template>
 
@@ -118,11 +118,11 @@
 			</div>
 		</template>
 
-		<template #checkbox>
+		<template #checkboxLabel>
 			Don't show again
 		</template>
 		<template
-			#last-step-button-text>
+			#startBtnText>
 			Get started
 		</template>
 	</onboarding-dialog>
@@ -211,10 +211,12 @@ export default {
 	}
 
 	&__title {
+		.ext-growthExperiments-onboarding-dialog-textcontent();
 		.ext-growthExperiments-onboarding-dialog-title();
 	}
 
 	&__text {
+		.ext-growthExperiments-onboarding-dialog-textcontent();
 		.ext-growthExperiments-onboarding-dialog-text();
 
 		&__label {
@@ -250,7 +252,6 @@ export default {
 		&__list {
 			ul {
 				list-style: inside;
-				margin-left: @spacing-50;
 
 				li {
 					margin-top: @spacing-50;
