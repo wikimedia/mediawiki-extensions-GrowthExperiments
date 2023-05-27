@@ -131,7 +131,10 @@ module.exports = exports = {
 					dtpreload: 1,
 					preloadtitle: mw.config.get( 'GEPraiseworthyMessageSubject' ),
 					preload: mw.config.get( 'GEPraiseworthyMessageTitle' ),
-					'preloadparams[]': userName
+					preloadparams: [
+						userName,
+						mw.user.getName()
+					]
 				} );
 			} ).catch( function ( error ) {
 				mw.notify(

@@ -147,7 +147,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline": "Your default message",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Subject",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-placeholder": "...",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "In the default positive message, $1 is automatically substituted with the mentee's username (if present).",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "In the default positive message, $1 is automatically substituted with the mentee's username and $2 with the mentor's username (if present).",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Notifications",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately": "Immediately",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "Daily",
