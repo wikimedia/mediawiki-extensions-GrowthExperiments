@@ -98,6 +98,11 @@ class SuggestedEdits extends BaseModule {
 	public const ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
 
 	/**
+	 * Used to keep track of the whether the user has opted out of seeing "Add a section image" onboarding
+	 */
+	public const ADD_SECTION_IMAGE_ONBOARDING_PREF = 'growthexperiments-addsectionimage-onboarding';
+
+	/**
 	 * Used to keep track of the whether the user has opted out of seeing onboarding for
 	 * the caption step of Add Section Image
 	 */

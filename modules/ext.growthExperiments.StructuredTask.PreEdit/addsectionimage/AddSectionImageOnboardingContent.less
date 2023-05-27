@@ -1,0 +1,22 @@
+@import 'mediawiki.skin.variables.less';
+
+.onboarding-image( @index ) {
+	// FIXME add mobile assets when they are ready (T332925)
+	// &-image@{index} {
+	// 	background-image: url( '../../../images/addsectionimage/onboarding-image@{index}-ltr.svg' );
+	// }
+	&-image@{index}--desktop {
+		background-image: url( '../../../images/addsectionimage/desktop-onboarding-image@{index}-ltr.svg' );
+	}
+}
+
+.addsectionimage-onboarding-content {
+	&--color-subtle {
+		font-style: italic;
+		color: @color-subtle;
+	}
+	.onboarding-image( 1 );
+	.onboarding-image( 2 );
+	.onboarding-image( 3 );
+	.onboarding-image( 4 );
+}
