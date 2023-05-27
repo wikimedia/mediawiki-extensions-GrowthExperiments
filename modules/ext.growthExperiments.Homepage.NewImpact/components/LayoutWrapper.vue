@@ -29,7 +29,7 @@ module.exports = exports = {
 
 <style lang="less">
 .ext-growthExperiments-Layout {
-	&--overlay {
+	&--mobile-overlay {
 		// Expand all content over homepage modules padding
 		margin: -16px;
 	}

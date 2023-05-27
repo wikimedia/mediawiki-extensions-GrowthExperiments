@@ -64,7 +64,7 @@
 	 * @param {string} appConfig.mountPoint The XPath selector to mount the application.
 	 * Must exist in the document before calling this function.
 	 * @param {string} appConfig.mode The render mode to use for displaying the app. Can be
-	 * one of 'desktop', 'overlay', 'overlay-summary'.
+	 * one of 'desktop', 'mobile-overlay', 'mobile-summary'.
 	 * @param {Object} appConfig.data The initial data to boot the application with.
 	 * @param {number} appConfig.error Eventual fetch error from requesting data from API.
 	 * @return {Object} A Vue app instance
@@ -95,30 +95,46 @@
 	};
 
 	const initializeModule = ( data, error ) => {
-		if ( mw.config.get( 'homepagemobile' ) ) {
-			// We're on the mobile homepage, mount the app to show on the summary  and the
-			// app for the main overlay
-			createApp( {
-				data,
-				error,
-				mountPoint: '#new-impact-vue-root--mobile',
-				mode: 'overlay-summary'
-			} );
-			createApp( {
-				data,
-				error,
-				mountPoint: '#new-impact-vue-root',
-				mode: 'overlay'
-			} );
-		} else {
-			// We're on the mobile homepage or Special:Impact, mount only the app
-			// for the desktop homepage module
-			createApp( {
-				data,
-				error,
-				mountPoint: '#new-impact-vue-root',
-				mode: 'desktop'
-			} );
+		const renderMode = mw.config.get( 'homepagemodules' ).impact.renderMode;
+		switch ( renderMode ) {
+			case 'mobile-summary':
+				// We're on the mobile homepage, mount the app to show on the summary  and the
+				// app for the main overlay
+				createApp( {
+					data,
+					error,
+					mountPoint: '#new-impact-vue-root--mobile',
+					mode: renderMode
+				} );
+				createApp( {
+					data,
+					error,
+					mountPoint: '#new-impact-vue-root',
+					mode: 'mobile-overlay'
+				} );
+				break;
+			case 'mobile-details':
+				// We're on the mobile details view, mount only one app
+				createApp( {
+					data,
+					error,
+					mountPoint: '#new-impact-vue-root',
+					mode: 'mobile-details'
+				} );
+				break;
+			case 'desktop':
+				// We're on the desktop view, mount only one app
+				createApp( {
+					data,
+					error,
+					mountPoint: '#new-impact-vue-root',
+					mode: renderMode
+				} );
+				break;
+			default:
+				// This should not happen, mobile-overlay should not be used from the server,
+				// logging unrecgnized modes.
+				throw new Error( `Unrecognized homepage module render mode: ${renderMode}` );
 		}
 	};
 

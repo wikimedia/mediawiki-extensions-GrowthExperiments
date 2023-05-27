@@ -57,8 +57,8 @@ module.exports = exports = {
 		const isSuggestedEditsEnabled = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED' );
 		const isSuggestedEditsActivated = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED' );
 		const renderInThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
-		const impactComponent = renderMode === 'overlay-summary' ? 'NewImpactSummary' : 'NewImpact';
-		const errorComponent = renderMode === 'overlay-summary' ? 'ErrorDisplaySummary' : 'ErrorDisplay';
+		const impactComponent = renderMode === 'mobile-summary' ? 'NewImpactSummary' : 'NewImpact';
+		const errorComponent = renderMode === 'mobile-summary' ? 'ErrorDisplaySummary' : 'ErrorDisplay';
 
 		const impactData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, initialUserImpactData );
 

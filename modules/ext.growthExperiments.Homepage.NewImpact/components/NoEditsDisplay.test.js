@@ -43,13 +43,13 @@ describe( 'NoEditsDisplay', () => {
 		expect( desktopWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( desktopWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
 
-		const overlayWrapper = renderComponent( props, 'overlay' );
+		const overlayWrapper = renderComponent( props, 'mobile-overlay' );
 		expect( overlayWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 2 );
 		expect( overlayWrapper.text() ).toContain( '123' );
 		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
 
-		const summaryWrapper = renderComponent( props, 'overlay-summary' );
+		const summaryWrapper = renderComponent( props, 'mobile-summary' );
 		expect( summaryWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 0 );
 		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
@@ -60,7 +60,7 @@ describe( 'NoEditsDisplay', () => {
 			isDisabled: false,
 			isActivated: false,
 			data: null
-		}, 'overlay' );
+		}, 'mobile-overlay' );
 		const button = overlayWrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
 		expect( button.text() ).toBe( 'growthexperiments-homepage-impact-unactivated-suggested-edits-link' );
 		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-suggested-edits-footer' );
@@ -72,7 +72,7 @@ describe( 'NoEditsDisplay', () => {
 			isDisabled: false,
 			isActivated: false,
 			data: null
-		}, 'overlay' );
+		}, 'mobile-overlay' );
 		const button = wrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
 		global.mw.track = jest.fn();
 
@@ -90,7 +90,7 @@ describe( 'NoEditsDisplay', () => {
 			isDisabled: false,
 			isActivated: true,
 			data: null
-		}, 'overlay' );
+		}, 'mobile-overlay' );
 		const button = wrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
 		global.window.history.replaceState = jest.fn();
 		global.window.dispatchEvent = jest.fn();

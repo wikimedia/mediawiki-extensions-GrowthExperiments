@@ -1,7 +1,7 @@
 <template>
 	<div :class="`ext-growthExperiments-NoEditsDisplay--${renderMode}`">
 		<div
-			v-if="renderMode !== 'overlay-summary'"
+			v-if="renderMode !== 'mobile-summary'"
 			class="ext-growthExperiments-NoEditsDisplay__scorecards"
 			:class="`ext-growthExperiments-NoEditsDisplay__scorecards--${renderMode}`"
 		>
@@ -98,7 +98,10 @@
 					:weight="subtextFontWeight"
 				>
 				</c-text>
-				<div v-if="!isDisabled && renderMode === 'overlay'">
+				<div
+					v-if="!isDisabled && renderMode === 'mobile-overlay' || renderMode === 'mobile-details'"
+					class="ext-growthExperiments-NoEditsDisplay__content__messages__cta"
+				>
 					<cdx-button
 						data-link-id="impact-see-suggested-edits"
 						weight="primary"
@@ -183,6 +186,11 @@ module.exports = exports = {
 				return;
 			}
 
+			if ( renderMode === 'mobile-details' ) {
+				window.location.href = mw.Title.newFromText( 'Special:Homepage/suggested-edits' ).getUrl();
+				return;
+			}
+
 			window.history.replaceState( null, null, '#/homepage/suggested-edits' );
 			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 		};
@@ -197,7 +205,7 @@ module.exports = exports = {
 	},
 	computed: {
 		subtextFontWeight() {
-			return this.renderMode !== 'overlay-summary' ? 'bold' : null;
+			return this.renderMode !== 'mobile-summary' ? 'bold' : null;
 		},
 		footerFontSize() {
 			return this.renderMode !== 'desktop' ? 'sm' : null;
@@ -224,20 +232,25 @@ module.exports = exports = {
 
 .ext-growthExperiments-NoEditsDisplay {
 	&--desktop,
-	&--overlay-summary {
+	&--mobile-summary {
 		min-height: 320px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 	}
 
-	&--overlay-summary {
+	&--mobile-summary {
 		min-height: 160px;
 	}
 
-	&--overlay {
+	&--mobile-overlay {
 		// negate the expanded margin-top in LayoutOverlay.vue
 		margin-top: 16px;
+	}
+
+	&--mobile-details {
+		margin-left: -16px;
+		margin-right: -16px;
 	}
 
 	&__scorecards {
@@ -264,7 +277,8 @@ module.exports = exports = {
 		}
 
 		&--desktop,
-		&--overlay {
+		&--mobile-details,
+		&--mobile-overlay {
 			flex-direction: column;
 			align-items: center;
 			padding-right: 16px;
@@ -275,7 +289,8 @@ module.exports = exports = {
 			background: url( ../../../images/intro-heart-article.png ) no-repeat center;
 
 			&--desktop,
-			&--overlay {
+			&--mobile-details,
+			&--mobile-overlay {
 				// TODO review spacing size and find or create token
 				margin: 7px auto;
 				width: 160px;
@@ -283,7 +298,7 @@ module.exports = exports = {
 				background-size: cover;
 			}
 
-			&--overlay-summary {
+			&--mobile-summary {
 				.filter( drop-shadow( 0 0 2px rgba( 0, 0, 0, 0.25 ) ) );
 				min-width: 64px;
 				background-size: contain;
@@ -292,18 +307,23 @@ module.exports = exports = {
 
 		&__messages {
 			&--desktop,
-			&--overlay {
+			&--mobile-details,
+			&--mobile-overlay {
 				text-align: center;
 			}
 
-			&--overlay {
+			&--mobile-overlay {
 				> * {
 					margin-top: 16px;
 				}
 			}
 
-			&--overlay-summary {
+			&--mobile-summary {
 				margin-left: 1em;
+			}
+
+			&__cta {
+				margin-top: 1em;
 			}
 		}
 	}
@@ -313,12 +333,12 @@ module.exports = exports = {
 		padding: 16px;
 
 		&--desktop,
-		&--overlay-summary {
+		&--mobile-summary {
 			// expand white background over subtle gray background
 			margin: 0 -16px -16px -16px;
 		}
 
-		&--overlay {
+		&--mobile-overlay {
 			position: fixed;
 			bottom: 0;
 			width: 100%;

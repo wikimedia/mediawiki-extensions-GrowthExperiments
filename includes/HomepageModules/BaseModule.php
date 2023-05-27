@@ -122,6 +122,7 @@ abstract class BaseModule extends DashboardModule {
 			];
 		}
 		$this->setMode( $mode );
+		$data[ 'renderMode' ] = $mode;
 		return $data;
 	}
 
