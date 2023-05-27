@@ -7,9 +7,11 @@ use FormSpecialPage;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use HTMLForm;
+use LogicException;
 use PermissionsError;
 use SpecialPage;
 use Status;
+use UserBlockedError;
 
 class SpecialEnrollAsMentor extends FormSpecialPage {
 
@@ -71,6 +73,17 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 				SpecialPage::getTitleFor( 'MentorDashboard' )->getLocalURL()
 			);
 		}
+
+		if ( $this->mentorWriter->isBlocked( $this->getUser() ) ) {
+			$block = $this->getUser()->getBlock();
+			if ( !$block ) {
+				throw new LogicException(
+					'IMentorWriter::isBlocked returns true, but User::getBlock returns null'
+				);
+			}
+			throw new UserBlockedError( $block );
+		}
+
 		parent::execute( $par );
 	}
 

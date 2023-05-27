@@ -6,7 +6,9 @@ use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\Mentorship\Mentor;
-use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Permissions\Authority;
+use MediaWiki\Title\Title;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use StatusValue;
@@ -29,24 +31,28 @@ class StructuredMentorWriter implements IMentorWriter {
 	public const CONFIG_KEY = 'Mentors';
 
 	private UserIdentityLookup $userIdentityLookup;
+	private UserFactory $userFactory;
 	private WikiPageConfigWriterFactory $configWriterFactory;
 	private StructuredMentorListValidator $mentorListValidator;
 
 	/**
 	 * @param UserIdentityLookup $userIdentityLookup
+	 * @param UserFactory $userFactory
 	 * @param WikiPageConfigLoader $configLoader
 	 * @param WikiPageConfigWriterFactory $configWriterFactory
 	 * @param StructuredMentorListValidator $mentorListValidator
-	 * @param LinkTarget $mentorList
+	 * @param Title $mentorList
 	 */
 	public function __construct(
 		UserIdentityLookup $userIdentityLookup,
+		UserFactory $userFactory,
 		WikiPageConfigLoader $configLoader,
 		WikiPageConfigWriterFactory $configWriterFactory,
 		StructuredMentorListValidator $mentorListValidator,
-		LinkTarget $mentorList
+		Title $mentorList
 	) {
 		$this->userIdentityLookup = $userIdentityLookup;
+		$this->userFactory = $userFactory;
 		$this->configLoader = $configLoader;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->mentorListValidator = $mentorListValidator;
@@ -82,6 +88,11 @@ class StructuredMentorWriter implements IMentorWriter {
 		UserIdentity $performer,
 		bool $bypassWarnings
 	): StatusValue {
+		// check if $performer is not blocked from the mentor list page
+		if ( $this->isBlocked( $performer, Authority::READ_LATEST ) ) {
+			return StatusValue::newFatal( 'growthexperiments-mentor-writer-error-blocked' );
+		}
+
 		// add 'username' key for readability (T331444)
 		foreach ( $mentorData as $mentorId => $_ ) {
 			$mentorUser = $this->userIdentityLookup->getUserIdentityByUserId( $mentorId );
@@ -101,6 +112,17 @@ class StructuredMentorWriter implements IMentorWriter {
 			->newWikiPageConfigWriter( $this->mentorList, $performer );
 		$configWriter->setVariable( self::CONFIG_KEY, $mentorData );
 		return $configWriter->save( $summary, false, self::CHANGE_TAG, $bypassWarnings );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function isBlocked(
+		UserIdentity $performer,
+		int $freshness = Authority::READ_NORMAL
+	): bool {
+		$block = $this->userFactory->newFromUserIdentity( $performer )->getBlock( $freshness );
+		return $block && $block->appliesToTitle( $this->mentorList );
 	}
 
 	/**

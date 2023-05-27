@@ -171,6 +171,7 @@
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Error message displayed when a change to MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) tries to remove/change a mentor who is not in the list",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Error message displayed when a change to MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) tries to remove/change a mentor who is not in the list",
 	"growthexperiments-mentor-writer-error-message-too-long": "Error message displayed when a change to MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) tries to set a message longer than the allowed limit. Parameters:\n* $1 - maximum allowed message length\n* $2 - user ID of the affected mentor",
+	"growthexperiments-mentor-writer-error-blocked": "Error message displayed when a change to MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) does not go through because of a block.",
 	"growthexperiments-manage-mentors-title": "Headline of Special:ManageMentors",
 	"growthexperiments-manage-mentors-pretext-purpose": "Introductory text shown at Special:ManageMentors.",
 	"growthexperiments-manage-mentors-pretext-privileged": "Introductory text shown at Special:ManageMentors. Only shown to admin users.",

@@ -5,7 +5,7 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
-use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserNameUtils;
@@ -81,7 +81,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 				$this->createNoOpMock( UserIdentityLookup::class ),
 				$this->createNoOpMock( UserNameUtils::class ),
 				$this->createNoOpMock( MessageLocalizer::class ),
-				$this->createNoOpMock( LinkTarget::class )
+				$this->createNoOpMock( Title::class )
 			)
 		);
 	}
@@ -95,7 +95,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->createNoOpMock( UserNameUtils::class ),
 			$this->createNoOpMock( MessageLocalizer::class ),
-			$this->createNoOpMock( LinkTarget::class )
+			$this->createNoOpMock( Title::class )
 		);
 
 		$this->assertArrayEquals(
@@ -118,7 +118,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->createNoOpMock( UserNameUtils::class ),
 			$this->createNoOpMock( MessageLocalizer::class ),
-			$this->createNoOpMock( LinkTarget::class )
+			$this->createNoOpMock( Title::class )
 		);
 
 		$this->assertArrayEquals(
@@ -139,7 +139,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->createNoOpMock( UserNameUtils::class ),
 			$this->createNoOpMock( MessageLocalizer::class ),
-			$this->createNoOpMock( LinkTarget::class )
+			$this->createNoOpMock( Title::class )
 		);
 
 		$result = TestingAccessWrapper::newFromObject( $provider )->getMentorDataForUser(
@@ -231,7 +231,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->createNoOpMock( UserNameUtils::class ),
 			$this->getMockMessageLocalizer(),
-			$this->createNoOpMock( LinkTarget::class )
+			$this->createNoOpMock( Title::class )
 		);
 
 		$mentor = $provider->newMentorFromUserIdentity(
@@ -281,7 +281,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$userIdentityLookup,
 			$this->createNoOpMock( UserNameUtils::class ),
 			$this->createNoOpMock( MessageLocalizer::class ),
-			$this->createNoOpMock( LinkTarget::class )
+			$this->createNoOpMock( Title::class )
 		);
 		$provider->$methodToCall();
 	}
@@ -318,7 +318,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$userIdentityLookup,
 			$this->createNoOpMock( UserNameUtils::class ),
 			$this->createNoOpMock( MessageLocalizer::class ),
-			$this->createNoOpMock( LinkTarget::class )
+			$this->createNoOpMock( Title::class )
 		);
 
 		$this->assertArrayEquals(
