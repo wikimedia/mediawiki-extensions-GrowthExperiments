@@ -3,7 +3,7 @@
 namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Config\WikiPageConfigLoader;
-use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\Title;
 use Psr\Log\LoggerAwareTrait;
 use Status;
 use StatusValue;
@@ -18,7 +18,7 @@ trait GetMentorDataTrait {
 	use LoggerAwareTrait;
 
 	private WikiPageConfigLoader $configLoader;
-	private LinkTarget $mentorList;
+	private Title $mentorList;
 
 	/**
 	 * Wrapper around WikiPageConfigLoader

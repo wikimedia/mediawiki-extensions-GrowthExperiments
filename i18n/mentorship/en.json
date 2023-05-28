@@ -165,6 +165,7 @@
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 is not in the mentor list",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Mentor $1 is not a registered user",
 	"growthexperiments-mentor-writer-error-message-too-long": "Introduction message is too long (affected user ID: $2). Maximum length is $1.",
+	"growthexperiments-mentor-writer-error-blocked": "{{GENDER:|You}} are blocked from editing the list of mentors",
 	"growthexperiments-manage-mentors-title": "Manage mentors",
 	"growthexperiments-manage-mentors-pretext-purpose": "This page shows a list of mentors.",
 	"growthexperiments-manage-mentors-pretext-privileged": "{{GENDER:|You}} can remove mentors that violate community standards or policies or edit their mentorship-related options.",

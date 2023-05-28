@@ -555,6 +555,7 @@ return [
 
 		$writer = new StructuredMentorWriter(
 			$services->getUserIdentityLookup(),
+			$services->getUserFactory(),
 			$geServices->getWikiPageConfigLoader(),
 			$geServices->getWikiPageConfigWriterFactory(),
 			new StructuredMentorListValidator(

@@ -5,7 +5,6 @@ namespace GrowthExperiments\Mentorship\Provider;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserNameUtils;
@@ -25,14 +24,14 @@ class StructuredMentorProvider extends MentorProvider {
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserNameUtils $userNameUtils
 	 * @param MessageLocalizer $messageLocalizer
-	 * @param LinkTarget $mentorList
+	 * @param Title $mentorList
 	 */
 	public function __construct(
 		WikiPageConfigLoader $configLoader,
 		UserIdentityLookup $userIdentityLookup,
 		UserNameUtils $userNameUtils,
 		MessageLocalizer $messageLocalizer,
-		LinkTarget $mentorList
+		Title $mentorList
 	) {
 		parent::__construct();
 
