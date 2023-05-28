@@ -2,41 +2,32 @@
 
 namespace GrowthExperiments\Specials\Forms;
 
-use GrowthExperiments\Mentorship\Provider\IMentorWriter;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\Mentorship\ReassignMenteesFactory;
+use GrowthExperiments\Mentorship\MentorRemover;
 use IContextSource;
 use MediaWiki\User\UserIdentity;
 use Status;
 
 class ManageMentorsRemoveMentor extends ManageMentorsAbstractForm {
 
-	/** @var ReassignMenteesFactory */
-	private $reassignMenteesFactory;
+	private MentorRemover $mentorRemover;
 
 	/**
-	 * @param MentorProvider $mentorProvider
-	 * @param IMentorWriter $mentorWriter
-	 * @param ReassignMenteesFactory $reassignMenteesFactory
+	 * @param MentorRemover $mentorRemover
 	 * @param UserIdentity $mentorUser
 	 * @param IContextSource $context
 	 */
 	public function __construct(
-		MentorProvider $mentorProvider,
-		IMentorWriter $mentorWriter,
-		ReassignMenteesFactory $reassignMenteesFactory,
+		MentorRemover $mentorRemover,
 		UserIdentity $mentorUser,
 		IContextSource $context
 	) {
 		parent::__construct(
-			$mentorProvider,
-			$mentorWriter,
 			$mentorUser,
 			$context,
 			'growthexperiments-manage-mentors-'
 		);
 
-		$this->reassignMenteesFactory = $reassignMenteesFactory;
+		$this->mentorRemover = $mentorRemover;
 
 		$this->setPreHtml( $this->msg(
 			'growthexperiments-manage-mentors-remove-mentor-pretext',
@@ -64,22 +55,12 @@ class ManageMentorsRemoveMentor extends ManageMentorsAbstractForm {
 			return false;
 		}
 
-		$status = $this->mentorWriter->removeMentor(
-			$this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser ),
+		return Status::wrap( $this->mentorRemover->removeMentor(
 			$this->getUser(),
-			$data['reason']
-		);
-		if ( $status->isOK() ) {
-			$this->reassignMenteesFactory->newReassignMentees(
-				$this->getUser(),
-				$this->mentorUser,
-				$this->getContext()
-			)->reassignMentees(
-				'growthexperiments-quit-mentorship-reassign-mentees-log-message-removed',
-				$this->getUser()->getName()
-			);
-		}
-		return Status::wrap( $status );
+			$this->mentorUser,
+			$data['reason'],
+			$this->getContext()
+		) );
 	}
 
 	/**

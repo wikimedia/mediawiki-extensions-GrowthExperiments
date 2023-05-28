@@ -26,6 +26,7 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsL
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
@@ -187,6 +188,10 @@ class GrowthExperimentsServices {
 
 	public function getMentorProviderStructured(): StructuredMentorProvider {
 		return $this->coreServices->get( 'GrowthExperimentsMentorProviderStructured' );
+	}
+
+	public function getMentorRemover(): MentorRemover {
+		return $this->coreServices->get( 'GrowthExperimentsMentorRemover' );
 	}
 
 	public function getMentorStatusManager(): MentorStatusManager {

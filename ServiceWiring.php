@@ -31,6 +31,7 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSugge
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
@@ -498,6 +499,18 @@ return [
 		);
 		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $provider;
+	},
+
+	'GrowthExperimentsMentorRemover' => static function (
+		MediaWikiServices $services
+	): MentorRemover {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		return new MentorRemover(
+			$geServices->getMentorProvider(),
+			$geServices->getMentorWriter(),
+			$geServices->getReassignMenteesFactory()
+		);
 	},
 
 	'GrowthExperimentsMentorStatusManager' => static function (

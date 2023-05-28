@@ -2,8 +2,6 @@
 
 namespace GrowthExperiments\Specials\Forms;
 
-use GrowthExperiments\Mentorship\Provider\IMentorWriter;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use IContextSource;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\User\UserIdentity;
@@ -13,32 +11,20 @@ use Status;
 
 abstract class ManageMentorsAbstractForm extends OOUIHTMLForm {
 
-	/** @var MentorProvider */
-	protected $mentorProvider;
-
-	/** @var IMentorWriter */
-	protected $mentorWriter;
-
 	/** @var UserIdentity */
-	protected $mentorUser;
+	protected UserIdentity $mentorUser;
 
 	/**
-	 * @param MentorProvider $mentorProvider
-	 * @param IMentorWriter $mentorWriter
 	 * @param UserIdentity $mentorUser
 	 * @param IContextSource $context
 	 * @param string $messagePrefix
 	 */
 	public function __construct(
-		MentorProvider $mentorProvider,
-		IMentorWriter $mentorWriter,
 		UserIdentity $mentorUser,
 		IContextSource $context,
 		string $messagePrefix = ''
 	) {
 		// must happen before calling getFormFields(), as that might make use of $mentorUser
-		$this->mentorProvider = $mentorProvider;
-		$this->mentorWriter = $mentorWriter;
 		$this->mentorUser = $mentorUser;
 
 		parent::__construct(

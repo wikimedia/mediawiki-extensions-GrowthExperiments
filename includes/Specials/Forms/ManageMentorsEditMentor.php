@@ -13,8 +13,9 @@ use Status;
 
 class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 
-	/** @var MentorStatusManager */
-	private $mentorStatusManager;
+	private MentorProvider $mentorProvider;
+	private IMentorWriter $mentorWriter;
+	private MentorStatusManager $mentorStatusManager;
 
 	/**
 	 * @param MentorProvider $mentorProvider
@@ -30,10 +31,10 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 		UserIdentity $mentorUser,
 		IContextSource $context
 	) {
+		$this->mentorProvider = $mentorProvider;
+		$this->mentorWriter = $mentorWriter;
 		$this->mentorStatusManager = $mentorStatusManager;
 		parent::__construct(
-			$mentorProvider,
-			$mentorWriter,
 			$mentorUser,
 			$context,
 			'growthexperiments-manage-mentors-'

@@ -2828,8 +2828,8 @@
 				"UserEditTracker",
 				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorWriter",
-				"GrowthExperimentsReassignMenteesFactory",
-				"GrowthExperimentsMentorStatusManager"
+				"GrowthExperimentsMentorStatusManager",
+				"GrowthExperimentsMentorRemover"
 			]
 		},
 		"EnrollAsMentor": {
@@ -2843,10 +2843,8 @@
 		"QuitMentorship": {
 			"class": "GrowthExperiments\\Specials\\SpecialQuitMentorship",
 			"services": [
-				"GrowthExperimentsReassignMenteesFactory",
-				"GrowthExperimentsMentorStore",
 				"GrowthExperimentsMentorProvider",
-				"GrowthExperimentsMentorWriter"
+				"GrowthExperimentsMentorRemover"
 			]
 		}
 	},
