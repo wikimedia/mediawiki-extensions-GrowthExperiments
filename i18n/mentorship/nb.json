@@ -150,7 +150,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month": "Den siste måneden",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline": "Din standardmelding",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Emne",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "I den positive standardmeldingen blir $1 automatisk erstattet med fadderbarnets brukernavn.",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "I den positive standardmeldingen blir $1 automatisk erstattet med fadderbarnets brukernavn, og $2 med fadderens brukernavn (hvis det er til stede).",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Varsler",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately": "Med én gang",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "Daglig",

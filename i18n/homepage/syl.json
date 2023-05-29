@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sadidmibzalhan"
+			"Sadidmibzalhan",
+			"এম আবু সাঈদ"
 		]
 	},
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "ꠟꠣꠝ꠆ꠙꠣ ꠍ꠆ꠐ꠆ꠞꠤꠇ",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "ꠟꠦꠈ'ꠞ ꠝꠣꠏꠦ ꠖꠦꠈꠁꠘ {{GENDER:$1|you've}} ꠢꠣꠎꠣꠁꠟ"
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "ꠟꠦꠈ'ꠞ ꠝꠣꠏꠦ ꠖꠦꠈꠁꠘ {{GENDER:$1|you've}} ꠢꠣꠎꠣꠁꠟ",
+	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "ꠛꠥꠏꠤꠟ꠆ꠌꠤ"
 }

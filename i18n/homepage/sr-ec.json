@@ -379,6 +379,8 @@
 	"growthexperiments-addimage-summary-label": "Опис",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Разумем",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Разумем",
+	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-describe": "Опишите слику тако да је јасно како је повезана са чланком <strong>$1</strong> и његовима одељком <strong>$2</strong>.",
+	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "Разумео",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Откажи",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Настави",
 	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "О менторима",

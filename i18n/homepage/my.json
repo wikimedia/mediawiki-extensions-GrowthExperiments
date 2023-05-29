@@ -322,6 +322,7 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "သဘောပေါက်ပြီ",
 	"growthexperiments-addimage-caption-warning-tooshort": "ပုံစာများသည် $1 {{PLURAL:$1|စာလုံး|စာလုံးများ}} သို့မဟုတ် ပိုမိုရှည်ရမည်။",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "သဘောပေါက်ပြီ",
+	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "သဘောပေါက်ပြီ",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "မလုပ်တော့ပါ",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "ဆက်လက်",
 	"growthexperiments-homepage-mentorship-optout-cancel": "မလုပ်တော့ပါ",

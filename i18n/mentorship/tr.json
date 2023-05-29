@@ -156,7 +156,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month": "Geçen ay",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline": "Varsayılan iletiniz",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Konu",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "Varsayılan olumlu iletide, $1 kendiliğinden danışanın kullanıcı adıyla değiştirilir (varsa).",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "Varsayılan olumlu iletide, $1 danışanın ve $2 danışmanın kullanıcı adlarıyla (varsa) kendiliğinden değiştirilir.",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Bildirimler",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately": "Çabucak",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "Günlük",
