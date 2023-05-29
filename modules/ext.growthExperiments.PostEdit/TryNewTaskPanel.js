@@ -163,6 +163,7 @@ TryNewTaskPanel.prototype.getMainArea = function () {
 	// * growthexperiments-homepage-suggestededits-tasktype-name-links
 	// * growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation
 	// * growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation
+	// * growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation
 	var taskTypeName = mw.message(
 		'growthexperiments-homepage-suggestededits-tasktype-name-' + this.nextSuggestedTaskType
 	).parse();
