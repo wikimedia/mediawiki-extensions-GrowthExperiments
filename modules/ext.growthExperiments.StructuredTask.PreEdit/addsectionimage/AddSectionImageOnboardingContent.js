@@ -30,7 +30,7 @@ module.exports = ( function () {
 	 * @param {number} id
 	 * @param {string} title
 	 * @param {Array<string>} paragraphs
-	 * @param {Array<number>} subtleParagraphIndices The indices of the paragraphs which should be rendered
+	 * @param {?Array<number>} subtleParagraphIndices The indices of the paragraphs which should be rendered
 	 * with subtle styles.
 	 * @return {OO.ui.PanelLayout}
 	 */
