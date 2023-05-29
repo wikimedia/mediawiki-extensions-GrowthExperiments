@@ -123,6 +123,8 @@ PostEditPanel.prototype.getPostEditToastMessage = function () {
 	messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
 	if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
 		messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation';
+	} else if ( this.taskType === 'section-image-recommendation' && this.sectionImageRecommendationDailyTasksExceeded ) {
+		messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation';
 	} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
 		messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation';
 	}
@@ -159,10 +161,10 @@ PostEditPanel.prototype.getFooterButtons = function () {
 PostEditPanel.prototype.getHeaderText = function () {
 	if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
 		return mw.message( 'growthexperiments-help-panel-postedit-subheader-image-recommendation' ).text();
-	} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
-		return mw.message( 'growthexperiments-help-panel-postedit-subheader-link-recommendation' ).text();
 	} else if ( this.taskType === 'section-image-recommendation' && this.sectionImageRecommendationDailyTasksExceeded ) {
 		return mw.message( 'growthexperiments-help-panel-postedit-subheader-section-image-recommendation' ).text();
+	} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
+		return mw.message( 'growthexperiments-help-panel-postedit-subheader-link-recommendation' ).text();
 	}
 	return this.taskState === SuggestedEditSession.static.STATES.SAVED ?
 		mw.message( 'growthexperiments-help-panel-postedit-subheader' ).text() :
@@ -187,14 +189,14 @@ PostEditPanel.prototype.getMainArea = function () {
 		$subHeader = $( '<div>' )
 			.addClass( 'mw-ge-help-panel-postedit-subheader2' )
 			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-image-recommendation' ).text() );
-	} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
-		$subHeader = $( '<div>' )
-			.addClass( 'mw-ge-help-panel-postedit-subheader2' )
-			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-link-recommendation' ).text() );
 	} else if ( this.taskType === 'section-image-recommendation' && this.sectionImageRecommendationDailyTasksExceeded ) {
 		$subHeader = $( '<div>' )
 			.addClass( 'mw-ge-help-panel-postedit-subheader2' )
 			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-section-image-recommendation' ).text() );
+	} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
+		$subHeader = $( '<div>' )
+			.addClass( 'mw-ge-help-panel-postedit-subheader2' )
+			.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-link-recommendation' ).text() );
 	}
 
 	if ( this.tasksStore.isTaskQueueLoading() ) {
