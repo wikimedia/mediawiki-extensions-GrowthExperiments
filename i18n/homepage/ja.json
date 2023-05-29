@@ -17,7 +17,8 @@
 			"Yusuke1109",
 			"Kokage si",
 			"Yamagata Yusuke",
-			"バレロン"
+			"バレロン",
+			"もなー(偽物)"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}さん！",
@@ -163,6 +164,7 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "他のトピックや難易度を選択して、おすすめ編集を見つけてください。",
 	"growthexperiments-homepage-suggestededits-footer": "これらの記事には作業が必要だと指摘している利用者がいます。'''{{SITENAME}}'''が'''1日あたり$1人の読者'''にとってもっと良くなるよう手伝ってください。",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "これらの記事には作業が必要だと指摘している利用者がいます。'''{{SITENAME}}'''がもっと良くなるよう手伝ってください。",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1千",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$100万",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$10億",
@@ -251,13 +253,13 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "科学、技術、数学",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "文化",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "地域",
-	"growthexperiments-homepage-suggestededits-config-wrongstructure": "お勧めの編集の設定が無効: 構造が正しくありません",
-	"growthexperiments-homepage-suggestededits-config-invalidid": "お勧めの編集の設定が無効: \"$1\" id が無効です - 記入できるのは欧文文字と数字 a-z、0-9、- (マイナス記号) に限定されます",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "お勧めの編集の設定が無効: 作業についてタイプの $1 欄もしくは主題欄 $2 を記入していません",
-	"growthexperiments-homepage-suggestededits-config-invalidgroup": "お勧めの編集の設定が無効: 作業$2に対するグループ$1が無効です",
-	"growthexperiments-homepage-suggestededits-config-missingmessage": "お勧めの編集の設定が無効: $2 欄の $1 メッセージがありません",
+	"growthexperiments-homepage-suggestededits-config-wrongstructure": "お勧めの編集の設定が無効 : 構造が正しくありません",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "お勧め編集の設定が無効: \"$1\" id が無効です - 記入できるのは欧文文字 a-z と数字の 0-9、- (マイナス記号) に限定されます",
+	"growthexperiments-homepage-suggestededits-config-missingfield": "お勧め編集の設定が無効 : 作業についてタイプの $1 欄もしくは主題欄 $2 を記入していません",
+	"growthexperiments-homepage-suggestededits-config-invalidgroup": "お勧め編集の設定が無効 : 作業タイプ$2に対するグループ$1が無効です",
+	"growthexperiments-homepage-suggestededits-config-missingmessage": "お勧め編集の設定が無効 : $2 欄に $1 メッセージがありません",
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "新しい記事を正しく作成するには、{{GENDER:$1|}}いくつかの簡単な作業を完了することで習得したスキルの多くを使用する必要があります。新しい記事を作成する方法の詳細については、[$2 ここをクリック]してください。",
-	"growthexperiments-homepage-suggestededits-error-title": "現時点では、お勧めの編集はありません。",
+	"growthexperiments-homepage-suggestededits-error-title": "現時点では、お勧め編集はありません。",
 	"growthexperiments-homepage-suggestededits-error-description": "後ほどもう一度お試しください。",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "編集のタイプを最低1つ選んでください",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "トピックを選択",
@@ -288,5 +290,5 @@
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|あなたの}}新しい{{GENDER:$2|指導役}}についてもっと詳しく知る",
 	"right-setmentor": "利用者の指導役を任命",
 	"action-setmentor": "利用者の指導役の任命",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "このお勧めの編集の詳細"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "このお勧め編集の詳細"
 }

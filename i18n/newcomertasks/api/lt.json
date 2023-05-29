@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Gauti tinkamų naujokams užduočių rekomendacijas.",
+	"apihelp-query+growthtasks-extended-description": "Siūlomas straipsnių rinkinys, kuriame yra keletas neišspręstų problemų, kurias pakankamai lengva išspręsti naujam redaktoriui.",
+	"apihelp-query+growthtasks-param-tasktypes": "Užduočių tipai, kuriais apriboti rezultatus. Palikite tuščią, kad gautumėte visus pasiūlymus.",
+	"apihelp-query+growthtasks-param-topics": "Straipsnių temos, kurioms teikti pirmenybę užduočių pasiūlymuose.",
+	"apihelp-query+growthtasks-param-limit": "Maksimalus grąžintinų užduočių pasiūlymų skaičius.",
+	"apihelp-query+growthtasks-example-2": "Gaukite užduočių rekomendacijų dabartiniam naudotojui su išplėstine informacija apie puslapius."
+}

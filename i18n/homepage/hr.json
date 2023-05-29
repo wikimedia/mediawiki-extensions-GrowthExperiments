@@ -134,6 +134,7 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Izaberite druge interese ili nivoe za traženje predloženih uređivanja.",
 	"growthexperiments-homepage-suggestededits-footer": "Drugi su suradnici primijetili da ovi članci trebaju poboljšanja. '''{{SITENAME}}''' može uz Vašu pomoć postati bolja za svojih '''$1 dnevnih čitatelja'''.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Drugi su suradnici primijetili da ovi članci trebaju poboljšanja. '''{{SITENAME}}''' može uz Vašu pomoć postati bolja.",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "-",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "uređivanja prošloga dana",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "{{SITENAME}} raste sa suradnicima poput Vas. Pridružite nam se!",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Ispravite pravopis, gramatiku i stil",
