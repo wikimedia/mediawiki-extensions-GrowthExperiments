@@ -40,6 +40,7 @@ class Util {
 	private const STATSD_INCREMENTABLE_ERROR_MESSAGES = [
 		'AddLink' => 'growthexperiments-addlink-notinstore',
 		'AddLinkDuplicate' => 'growthexperiments-addlink-duplicatesubmission',
+		'AddImageNotFound' => 'No recommendation found for page: $1',
 	];
 
 	/**
