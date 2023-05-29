@@ -285,7 +285,14 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'section_index' => null,
 						'section_heading' => null,
 					],
-				] ], []
+				] ], [
+					new ImageRecommendationData(
+						'Image1.png', 'wikidata', '', '1'
+					),
+					new ImageRecommendationData(
+						null, 'wikidata', '', '1'
+					),
+				]
 			],
 			'multiple kinds' => [
 				[ 'rows' => [ [
@@ -309,6 +316,68 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'Image1.png', 'wikidata', '', '1.23'
 					),
 				],
+			],
+			'unknown kinds' => [
+				[ 'rows' => [ [
+					'wiki' => 'enwiki',
+					'page_id' => 344465,
+					'id' => '1.23',
+					'image' => 'Image1.png',
+					'confidence' => 80,
+					'found_on' => [],
+					'kind' => [
+						'istype-unknown',
+						'istype-other-unknown',
+					],
+					'origin_wiki' => 'commonswiki',
+					'page_rev' => 17463093,
+					'section_index' => null,
+					'section_heading' => null,
+				] ] ], [
+					new ImageRecommendationData(
+						'Image1.png', 'wikidata', '', '1.23'
+					),
+				],
+			],
+			'known and unknown kinds' => [
+				[ 'rows' => [ [
+					'wiki' => 'enwiki',
+					'page_id' => 344465,
+					'id' => '1.23',
+					'image' => 'Image1.png',
+					'confidence' => 80,
+					'found_on' => [ 'enwiki' ],
+					'kind' => [
+						'istype-unknown',
+						'istype-other-unknown',
+						'istype-lead-image',
+					],
+					'origin_wiki' => 'commonswiki',
+					'page_rev' => 17463093,
+					'section_index' => null,
+					'section_heading' => null,
+				] ] ], [
+					new ImageRecommendationData(
+						'Image1.png', 'wikipedia', 'enwiki', '1.23'
+					),
+				],
+			],
+			'has section' => [
+				[ 'rows' => [ [
+					'wiki' => 'enwiki',
+					'page_id' => 344465,
+					'id' => '1.23',
+					'image' => 'Image1.png',
+					'confidence' => 90,
+					'found_on' => [ 'enwiki', 'dewiki' ],
+					'kind' => [
+						'istype-lead-image'
+					],
+					'origin_wiki' => 'commonswiki',
+					'page_rev' => 17463093,
+					'section_index' => 1,
+					'section_heading' => 'Foo',
+				] ] ], [],
 			],
 		];
 	}

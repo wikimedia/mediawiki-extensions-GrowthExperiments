@@ -57,6 +57,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		'istype-depicts' => 'unknown',
 	];
 
+	// FIXME not used for now as kinds change too often.
 	private const KIND_TO_TASK_TYPE_ID = [
 		'istype-lead-image' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
 		'istype-wikidata-image' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
@@ -137,27 +138,39 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 				break;
 			}
 
-			$kind = null;
-			foreach ( $suggestion['kind'] as $potentialKind ) {
-				if ( !array_key_exists( $potentialKind, self::KIND_TO_TASK_TYPE_ID ) ) {
-					Util::logException( new WikiConfigException(
-						"Unknown image suggestions API kind: $potentialKind"
-					), [
-						'page_id' => $suggestion['page_id'] ?? 0,
-						'dataset-id' => $suggestion['id'] ?? 'unknown',
-					] );
-				} elseif ( self::KIND_TO_TASK_TYPE_ID[$potentialKind] === $taskType->getId() ) {
-					$kind = $potentialKind;
-					break;
-				}
-			}
-			if ( !$kind ) {
+			// Ideally we'd have a list of kinds relevant for each task type but kinds are
+			// still in flux. Just treat everything with a non-null section_heading as a
+			// section-level recommendation.
+			$recommendationTaskTypeId = isset( $suggestion['section_heading'] ) ?
+				SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID :
+				ImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
+			if ( $recommendationTaskTypeId !== $taskType->getId() ) {
 				continue;
+			}
+
+			$knownKinds = array_values( array_intersect( $suggestion['kind'], array_keys( self::KIND_TO_SOURCE ) ) );
+			foreach ( array_diff( $suggestion['kind'], $knownKinds ) as $unknownKind ) {
+				Util::logException( new WikiConfigException(
+					"Unknown image suggestions API kind: $unknownKind"
+				), [
+					'page_id' => $suggestion['page_id'] ?? 0,
+					'dataset-id' => $suggestion['id'] ?? 'unknown',
+				] );
+			}
+			if ( $knownKinds ) {
+				$source = self::KIND_TO_SOURCE[ $knownKinds[0] ];
+			} else {
+				$source = [
+					ImageRecommendationTaskTypeHandler::TASK_TYPE_ID
+						=> ImageRecommendationImage::SOURCE_WIKIDATA,
+					SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID
+						=> ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
+				][ $taskType->getId()];
 			}
 
 			$imageData[] = new ImageRecommendationData(
 				$suggestion['image'],
-				self::KIND_TO_SOURCE[ $kind ],
+				$source,
 				implode( ',', $suggestion['found_on'] ?? [] ),
 				$suggestion['id'],
 				$suggestion['section_index'],
@@ -228,12 +241,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 			$timestampA = $this->globalIdGenerator->getTimestampFromUUIDv1( $a['id'] ?? '' );
 			$timestampB = $this->globalIdGenerator->getTimestampFromUUIDv1( $b['id'] ?? '' );
 
-			if ( $timestampA > $timestampB ) {
-				return -1;
-			} elseif ( $timestampA === $timestampB ) {
-				return $confidenceA < $confidenceB ? 1 : -1;
-			}
-			return 1;
+			return $timestampB <=> $timestampA ?: $confidenceB <=> $confidenceA;
 		};
 		usort( $suggestions, $compare );
 		return $suggestions;
