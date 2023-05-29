@@ -185,7 +185,9 @@
 			 * @return {mw.libs.ge.TaskData}
 			 */
 			function cleanUpData( item ) {
-				var task;
+				var task,
+					imageOrSectionImage = item.tasktype === 'image-recommendation' ||
+						item.tasktype === 'section-image-recommendation';
 
 				task = {
 					title: item.title,
@@ -196,7 +198,7 @@
 					// want to show them. This is a micro-optimization to avoid fetching page image
 					// data from PCR when not needed. We still fetch it from the action API, there's
 					// no way to avoid that.
-					thumbnailSource: ( item.tasktype === 'image-recommendation' ) ? null :
+					thumbnailSource: imageOrSectionImage ? null :
 						// There is no way to tell whether the page has no page image or it is just
 						// missing due to API continuation.
 						item.thumbnail && item.thumbnail.source || undefined,
