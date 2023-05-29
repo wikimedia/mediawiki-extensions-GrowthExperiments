@@ -186,11 +186,11 @@ export default {
 			background-image: url( ../../../images/addlink/onboarding-image1-ltr.svg );
 		}
 
-		&--3 {
+		&--2 {
 			background-image: url( ../../../images/addlink/onboarding-image2-ltr.svg );
 		}
 
-		&--2 {
+		&--3 {
 			background-image: url( ../../../images/addlink/onboarding-image3-ltr.svg );
 		}
 	}
