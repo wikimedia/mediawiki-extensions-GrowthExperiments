@@ -51,7 +51,9 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		'istype-lead-image' => ImageRecommendationImage::SOURCE_WIKIPEDIA,
 		'istype-wikidata-image' => ImageRecommendationImage::SOURCE_WIKIDATA,
 		'istype-commons-category' => ImageRecommendationImage::SOURCE_COMMONS,
+		'istype-section-topics' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
 		'istype-section-topics-p18' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
+		'istype-section-alignment' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
 		'istype-depicts' => 'unknown',
 	];
 
@@ -59,7 +61,9 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		'istype-lead-image' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
 		'istype-wikidata-image' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
 		'istype-commons-category' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+		'istype-section-topics' => SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
 		'istype-section-topics-p18' => SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+		'istype-section-alignment' => SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
 		'istype-depicts' => 'ignored',
 	];
 
