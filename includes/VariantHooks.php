@@ -51,11 +51,6 @@ class VariantHooks implements
 	public const VARIANT_OLDIMPACT = 'oldimpact';
 
 	/**
-	 * A/B testing variant for section-level image recommendations (T329276)
-	 */
-	public const VARIANT_SECTIONLEVELIMAGES = 'sectionlevelimages';
-
-	/**
 	 * This defines the allowed values for the variant preference. The default value is defined
 	 * via $wgGEHomepageDefaultVariant.
 	 */
@@ -73,7 +68,6 @@ class VariantHooks implements
 		//     experiment; this is now default behavior for the control group.
 		self::VARIANT_CONTROL,
 		self::VARIANT_OLDIMPACT,
-		self::VARIANT_SECTIONLEVELIMAGES,
 	];
 
 	/** User option name for storing variants. */
