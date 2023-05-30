@@ -16,15 +16,14 @@
 		</template>
 		<template #step1>
 			<div>
-				<div class="ext-growthExperiments-AddImageDialog__image">
-					<!-- eslint-disable max-len -->
-					<img
-						src="../../../images/addimage/onboarding-image1-ltr.svg"
-						width="360"
-						height="216"
-						alt="Illustration of the moon article. Next to the article illustration there's a robot asking if an image of the moon should be added to the article."
-					>
-					<!-- eslint-enable max-len -->
+				<!-- eslint-disable max-len -->
+				<div
+					role="img"
+					aria-label="Illustration of the moon article. Next to the article illustration there's a robot asking if an image of the moon should be added to the article."
+					class="ext-growthExperiments-AddImageDialog__image
+					ext-growthExperiments-AddImageDialog__image--1"
+				>
+				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddImageDialog__title">
 					Images help people learn, but many articles don't have one.
@@ -50,15 +49,14 @@
 		</template>
 		<template #step2>
 			<div>
-				<div class="ext-growthExperiments-AddImageDialog__image">
-					<!-- eslint-disable max-len -->
-					<img
-						src="../../../images/addimage/onboarding-image2-ltr.svg"
-						width="360"
-						height="216"
-						alt="Illustration of an article. An image is being suggested for the article. The image suggestion is zoomed in to highlight that the image suggestion and details should be reviewed."
-					>
-					<!-- eslint-enable max-len -->
+				<!-- eslint-disable max-len -->
+				<div
+					role="img"
+					aria-label="Illustration of an article. An image is being suggested for the article. The image suggestion is zoomed in to highlight that the image suggestion and details should be reviewed."
+					class="ext-growthExperiments-AddImageDialog__image
+					ext-growthExperiments-AddImageDialog__image--2"
+				>
+				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddImageDialog__title">
 					Look at the suggested image
@@ -77,15 +75,14 @@
 		</template>
 		<template #step3>
 			<div>
-				<div class="ext-growthExperiments-AddImageDialog__image">
-					<!-- eslint-disable max-len -->
-					<img
-						src="../../../images/addimage/onboarding-image3-ltr.svg"
-						width="360"
-						height="216"
-						alt="Illustration of an article. At the bottom of the article there’s an image suggestion."
-					>
-					<!-- eslint-enable max-len -->
+				<!-- eslint-disable max-len -->
+				<div
+					role="img"
+					aria-label="Illustration of an article. At the bottom of the article there’s an image suggestion."
+					class="ext-growthExperiments-AddImageDialog__image
+					ext-growthExperiments-AddImageDialog__image--3"
+				>
+				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddImageDialog__title">
 					Look at the article
@@ -100,15 +97,14 @@
 		</template>
 		<template #step4>
 			<div>
-				<div class="ext-growthExperiments-AddImageDialog__image">
-					<!-- eslint-disable max-len -->
-					<img
-						src="../../../images/addimage/onboarding-image4-ltr.svg"
-						width="360"
-						height="216"
-						alt="Illustration of an article. An image is being suggested for the article. Inside of the suggestion there are three icon buttons for the options available: a checkmark to accept the suggestion, a cross to reject the suggestion, and an arrow to move to the next step."
-					>
-					<!-- eslint-enable max-len -->
+				<!-- eslint-disable max-len -->
+				<div
+					role="img"
+					aria-label="Illustration of an article. An image is being suggested for the article. Inside of the suggestion there are three icon buttons for the options available: a checkmark to accept the suggestion, a cross to reject the suggestion, and an arrow to move to the next step."
+					class="ext-growthExperiments-AddImageDialog__image
+					ext-growthExperiments-AddImageDialog__image--4"
+				>
+				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddImageDialog__title">
 					Decide if the image belongs
@@ -190,6 +186,22 @@ export default {
 
 	&__image {
 		.ext-growthExperiments-onboarding-dialog-image();
+
+		&--1 {
+			background-image: url( ../../../images/addimage/onboarding-image1-ltr.svg );
+		}
+
+		&--2 {
+			background-image: url( ../../../images/addimage/onboarding-image2-ltr.svg );
+		}
+
+		&--3 {
+			background-image: url( ../../../images/addimage/onboarding-image3-ltr.svg );
+		}
+
+		&--4 {
+			background-image: url( ../../../images/addimage/onboarding-image4-ltr.svg );
+		}
 	}
 
 	&__title {
