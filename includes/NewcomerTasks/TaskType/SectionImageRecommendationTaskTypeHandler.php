@@ -68,7 +68,9 @@ class SectionImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandle
 		if ( $taskType->getHandlerId() !== self::ID ) {
 			throw new InvalidArgumentException( '$taskType must be a section image recommendation task type' );
 		}
-		return parent::getSearchTerm( $taskType ) . 'hasrecommendation:image_section';
+		// T329396 makeshift solution to avoid section image recommendations displacing potentially more
+		// valuable top-level image recommendation tasks
+		return parent::getSearchTerm( $taskType ) . 'hasrecommendation:image_section -hasrecommendation:image';
 	}
 
 	/**
