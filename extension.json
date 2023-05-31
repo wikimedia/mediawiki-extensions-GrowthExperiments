@@ -348,7 +348,8 @@
 				"SpecialPageFactory",
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
 				"GrowthExperimentsSuggestionsInfo",
-				"GrowthExperimentsLevelingUpManager"
+				"GrowthExperimentsUserImpactLookup_Computed",
+				"GrowthExperimentsUserImpactStore"
 			]
 		},
 		"impact": {

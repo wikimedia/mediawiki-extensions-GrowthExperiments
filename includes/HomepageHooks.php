@@ -52,6 +52,8 @@ use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use GrowthExperiments\Specials\SpecialNewcomerTasksInfo;
+use GrowthExperiments\UserImpact\UserImpactLookup;
+use GrowthExperiments\UserImpact\UserImpactStore;
 use Html;
 use IContextSource;
 use IDBAccessObject;
@@ -175,6 +177,8 @@ class HomepageHooks implements
 	private ?MessageLocalizer $messageLocalizer;
 	private ?OutputPage $outputPage;
 	private ?UserIdentity $userIdentity;
+	private UserImpactLookup $userImpactLookup;
+	private UserImpactStore $userImpactStore;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
@@ -199,6 +203,8 @@ class HomepageHooks implements
 	 * @param SpecialPageFactory $specialPageFactory
 	 * @param NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
 	 * @param NewcomerTasksInfo $suggestionsInfo
+	 * @param UserImpactLookup $userImpactLookup
+	 * @param UserImpactStore $userImpactStore
 	 */
 	public function __construct(
 		Config $config,
@@ -219,7 +225,9 @@ class HomepageHooks implements
 		LinkRecommendationHelper $linkRecommendationHelper,
 		SpecialPageFactory $specialPageFactory,
 		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
-		NewcomerTasksInfo $suggestionsInfo
+		NewcomerTasksInfo $suggestionsInfo,
+		UserImpactLookup $userImpactLookup,
+		UserImpactStore $userImpactStore
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -240,6 +248,8 @@ class HomepageHooks implements
 		$this->specialPageFactory = $specialPageFactory;
 		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
 		$this->suggestionsInfo = $suggestionsInfo;
+		$this->userImpactLookup = $userImpactLookup;
+		$this->userImpactStore = $userImpactStore;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -867,6 +877,20 @@ class HomepageHooks implements
 			}
 			$this->experimentUserManager->setVariant( $user, $variant );
 			$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.UserVariant.' . $variant );
+
+			// Place an empty user impact object in the database table cache, to avoid
+			// making an extra HTTP request on first visit to Special:Homepage.
+			if ( $this->config->get( 'GEUseNewImpactModule' ) ) {
+				DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+					$userImpact = $this->userImpactLookup->getExpensiveUserImpact(
+						$user,
+						IDBAccessObject::READ_LATEST
+					);
+					if ( $userImpact ) {
+						$this->userImpactStore->setUserImpact( $userImpact );
+					}
+				} );
+			}
 
 			if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 				// Populate the cache of tasks with default task/topic selections
