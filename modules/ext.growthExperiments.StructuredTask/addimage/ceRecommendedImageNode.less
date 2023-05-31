@@ -5,7 +5,9 @@
 .mw-ge-recommendedImage {
 	position: relative;
 
-	&.ve-ce-mwBlockImageNode {
+	// the extra specificity is to make it win over figure[typeof~='mw:File/Thumb']
+	// in resources/skins.minerva.base.styles/content/tablet/common.less
+	&.ve-ce-mwBlockImageNode.ve-ce-mwBlockImageNode {
 		margin-bottom: 16px;
 		max-width: 500px;
 	}
