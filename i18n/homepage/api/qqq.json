@@ -19,5 +19,7 @@
 	"apihelp-growthinvalidateimagerecommendation-extended-description": "{{doc-apihelp-extended-description|growthimagesuggestiondata}}",
 	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "{{doc-apihelp-param|growthinvalidateimagerecommendation|tasktype}}",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "{{doc-apihelp-param|growthinvalidateimagerecommendation|title}}",
-	"apihelp-growthinvalidateimagerecommendation-param-filename": "{{doc-apihelp-param|growthinvalidateimagerecommendation|filename}}"
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "{{doc-apihelp-param|growthinvalidateimagerecommendation|filename}}",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "{{doc-apihelp-param|growthinvalidateimagerecommendation|sectiontitle}}",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "{{doc-apihelp-param|growthinvalidateimagerecommendation|sectionnumber}}"
 }

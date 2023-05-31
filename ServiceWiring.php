@@ -65,7 +65,6 @@ use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\EventGateSearchIn
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
-use GrowthExperiments\NewcomerTasks\AddSectionImage\AddSectionImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddSectionImage\SectionImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
@@ -144,11 +143,6 @@ return [
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
-	},
-
-	'GrowthExperimentsAddSectionImageSubmissionHandler' => static function (): AddSectionImageSubmissionHandler {
-		// TODO add submission handler logic
-		return new AddSectionImageSubmissionHandler();
 	},
 
 	'GrowthExperimentsChangeMentorFactory' => static function (

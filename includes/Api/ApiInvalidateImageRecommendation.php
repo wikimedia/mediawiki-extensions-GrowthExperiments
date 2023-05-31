@@ -77,7 +77,9 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 				$page,
 				$this->getAuthority()->getUser()->getId(),
 				null,
-				$params['filename']
+				$params['filename'],
+				$params['sectiontitle'],
+				$params['sectionnumber'],
 			);
 			$this->getResult()->addValue( null, $this->getModuleName(), [
 				'status' => 'ok'
@@ -124,6 +126,14 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 			'filename' => [
 				ParamValidator::PARAM_REQUIRED => true,
 				ParamValidator::PARAM_TYPE => 'string',
+			],
+			'sectiontitle' => [
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'string',
+			],
+			'sectionnumber' => [
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'integer',
 			]
 		];
 	}
