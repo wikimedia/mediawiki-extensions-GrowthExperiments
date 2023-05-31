@@ -33,12 +33,10 @@
 						<!-- eslint-disable-next-line max-len -->
 						You will decide whether a suggested image should be put in a Wikipedia article.
 					</p>
-					<br>
 					<p>
 						<!-- eslint-disable-next-line max-len -->
 						Suggestions are machine-generated, and you'll use your judgment to decide whether to accept or reject them.
 					</p>
-					<br>
 					<p
 						class="ext-growthExperiments-AddImageDialog__text--italic">
 						<!-- eslint-disable-next-line max-len -->
@@ -66,7 +64,6 @@
 						<!-- eslint-disable-next-line max-len -->
 						Use the filename, description, and the reason it was suggested to help you decide if it should be placed in the article.
 					</p>
-					<br>
 					<p>
 						You can also expand the image to view it more clearly.
 					</p>
@@ -114,7 +111,6 @@
 						<!-- eslint-disable-next-line max-len -->
 						The suggestion may be unrelated to the article, low quality, or may not belong for other reasons. Use your judgment to decide whether the suggestion is right or wrong.
 					</p>
-					<br>
 					<p>
 						<!-- eslint-disable-next-line max-len -->
 						For images that you accept, you'll write a short caption, and then your edit will be published.
@@ -213,9 +209,12 @@ export default {
 		.ext-growthExperiments-onboarding-dialog-textcontent();
 		.ext-growthExperiments-onboarding-dialog-text();
 
+		p {
+			padding-bottom: @spacing-50;
+		}
+
 		&--italic {
 			color: @color-placeholder;
-			font-size: @font-size-small;
 			font-style: italic;
 		}
 

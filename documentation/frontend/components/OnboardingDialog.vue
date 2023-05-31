@@ -283,7 +283,6 @@ export default {
 	}
 	// stylelint-disable-next-line selector-class-pattern
 	.cdx-dialog__body {
-		overflow-x: hidden;
 		padding: 0;
 	}
 
