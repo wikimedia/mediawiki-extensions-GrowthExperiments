@@ -10,10 +10,12 @@
 		@close="$emit( 'close', $event )"
 	>
 		<template #title>
-			Introduction
+			{{ $i18n( 'growthexperiments-structuredtask-onboarding-dialog-title' ).text() }}
 		</template>
 		<template #closeBtnText>
-			Skip all
+			{{
+				$i18n( 'growthexperiments-structuredtask-onboarding-dialog-label-skip-all' ).text()
+			}}
 		</template>
 
 		<template #step1>
@@ -28,37 +30,40 @@
 				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
-					Adding links will help people learn faster.
+					{{
+						$i18n( 'growthexperiments-addlink-onboarding-content-intro-title' ).text()
+					}}
 				</h5>
 				<div class="ext-growthExperiments-AddLinkDialog__text">
 					<p>
-						You will decide whether words in one Wikipedia article should link
-						to other Wikipedia articles.
+						{{
+							$i18n(
+								// eslint-disable-next-line max-len
+								'growthexperiments-addlink-onboarding-content-intro-body-paragraph1',
+								userName
+							).text()
+						}}
 					</p>
 					<div
 						class="ext-growthExperiments-AddLinkDialog__text__label">
-						Example sentence
+						{{
+							$i18n(
+								// eslint-disable-next-line max-len
+								'growthexperiments-addlink-onboarding-content-intro-body-example-label'
+							).text()
+						}}
 					</div>
-					<div
-						class="
-						ext-growthExperiments-AddLinkDialog__text__example">
-						The moon is the only
-						<!-- eslint-disable-next-line max-len -->
-						<mark
-							class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
-							natural satellite
-						</mark> that
-						<mark
-							class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
-							orbits
-						</mark> around the
-						<mark
-							class="ext-growthExperiments-AddLinkDialog__text__example__highlighted">
-							Earth
-						</mark>.
+					<!-- eslint-disable-next-line max-len, vue/first-attribute-linebreak -->
+					<div v-i18n-html:growthexperiments-addlink-onboarding-content-intro-body-example-text
+						class="ext-growthExperiments-AddLinkDialog__text__example"
+					>
 					</div>
 					<p>
-						No special knowledge about the article is needed to do this task.
+						{{
+							$i18n(
+								'growthexperiments-addlink-onboarding-content-intro-body-paragraph2'
+							).text()
+						}}
 					</p>
 				</div>
 			</div>
@@ -76,16 +81,32 @@
 				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
-					Suggested links are machine-generated, and can be incorrect.
+					{{
+						$i18n(
+							// eslint-disable-next-line max-len
+							'growthexperiments-addlink-onboarding-content-about-suggested-links-title'
+						).text()
+					}}
 				</h5>
 				<div class="ext-growthExperiments-AddLinkDialog__text">
 					<p>
 						<!-- eslint-disable-next-line max-len -->
-						The suggestions might be on words that don’t need them, or might link to the wrong article. Use your judgment to decide whether they are right or wrong.
+						{{
+							$i18n(
+								// eslint-disable-next-line max-len
+								'growthexperiments-addlink-onboarding-content-about-suggested-links-body',
+								userName
+							).text()
+						}}
 					</p>
 
 					<a class="ext-growthExperiments-AddLinkDialog__text__link" href="">
-						Learn more about machine suggestions
+						{{
+							$i18n(
+								// eslint-disable-next-line max-len
+								'growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text'
+							).text()
+						}}
 					</a>
 				</div>
 			</div>
@@ -103,15 +124,17 @@
 					<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
-					Guidelines
+					{{
+						$i18n(
+							// eslint-disable-next-line max-len
+							'growthexperiments-addlink-onboarding-content-linking-guidelines-title'
+						).text()
+					}}
 				</h5>
 				<div class="ext-growthExperiments-AddLinkDialog__text">
 					<div class="ext-growthExperiments-AddLinkDialog__text__list">
-						<ul>
-							<li>Link concepts that a reader might want to learn more about.</li>
-							<li>Make sure the link is going to the right article.</li>
-							<li>Don't link common words, years, or dates.</li>
-							<li>If you're not sure, skip.</li>
+						<!-- eslint-disable-next-line max-len -->
+						<ul v-i18n-html:growthexperiments-addlink-onboarding-content-linking-guidelines-body="[ userName ]">
 						</ul>
 					</div>
 				</div>
@@ -129,11 +152,12 @@
 </template>
 
 <script>
-import { toRef, ref } from 'vue';
+import { inject, toRef, ref } from 'vue';
 import { useModelWrapper } from '@wikimedia/codex';
 import OnboardingDialog from './OnboardingDialog.vue';
 
 export default {
+	compatConfig: { MODE: 3 },
 	name: 'AddLinkDialog',
 	components: {
 		OnboardingDialog
@@ -159,10 +183,12 @@ export default {
 	emits: [ 'update:open', 'update:is-checked', 'close' ],
 	setup( props, { emit } ) {
 		const isRtl = ref( false );
+		const userName = inject( 'USER_USERNAME' );
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
 		return {
 			isRtl,
+			userName,
 			wrappedIsChecked,
 			wrappedOpen
 		};
@@ -225,7 +251,8 @@ export default {
 			line-height: @line-height-xx-small;
 			font-size: @font-size-small;
 
-			&__highlighted {
+			// stylelint-disable selector-class-pattern
+			& > mark.positive {
 				background-color: @background-color-progressive-subtle;
 			}
 		}

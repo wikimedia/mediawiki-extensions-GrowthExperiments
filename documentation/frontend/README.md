@@ -39,9 +39,16 @@ The Vite config used to build standalone demos lives in the workspace root: `vit
 Running `npm run components:build` in this workspace will output bundled JS and CSS files in `/dist` that
 are suitable for importing into another project.
 
-To add a new component to the bundle re-export the component in `component-demos/lib.js`. Components used only 
-for demoing purposes should not be added to the lib file (eg: `MyComponentDemo.vue` ), only demoed components 
+To add a new component to the bundle re-export the component in `component/lib.js`. Components used for demoing purposes
+should not be added to the lib file (eg: `MyComponentDemo.vue` ), only the relevant demoed components
 should be added (eg: `MyComponent.vue` ).
+
+Steps to add a new component are:
+
+ 1. import and re-export the component in `component/lib.js`.
+ 2. `npm run components:build`
+ 3. `mv dist/*.* ../../modules/lib/growthlib`
+ 4. Load the resulting JS and CSS files in a ResourceLoader module
 
 ## Configuration
 
@@ -54,7 +61,8 @@ for more info.
 
 ### Theme config
 
-None at the moment
+A theme config extending from VitePress' default theme is used in `docs/.vitepress/theme/index.js` to register vue-banana-i18n
+plugins on application bootstrap. 
 
 ### Vite config
 

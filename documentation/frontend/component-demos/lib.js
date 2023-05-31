@@ -2,4 +2,4 @@ import TopicSelectionDialog from './topic-selection-dialog/TopicSelectionDialog.
 
 export {
 	TopicSelectionDialog
-}
+};

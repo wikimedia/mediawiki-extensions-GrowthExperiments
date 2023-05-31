@@ -16,4 +16,4 @@ export default {
 	// The build output location for the docs site, relative to the VitePress project
 	// root (/documentation/frontend/docs folder if you're running vitepress build docs).
 	outDir: '../../../docs/frontend'
-}
+};

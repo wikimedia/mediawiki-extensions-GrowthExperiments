@@ -10,7 +10,7 @@ exports[`AddLinkDialog > should render 3 step with Add a link on-boarding conten
       <header class=\\"cdx-dialog__header\\">
         <div class=\\"ext-growthExperiments-OnboardingDialog__header\\">
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
-            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\"> Introduction </h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet ext-growthExperiments-OnboardingDialog__header__top__button\\"> Skip all </button>
+            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div>
           <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
             <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">1 of 3</p>
@@ -32,14 +32,12 @@ exports[`AddLinkDialog > should render 3 step with Add a link on-boarding conten
                 <div role=\\"img\\" aria-label=\\"Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text.\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--1\\">
                   <!-- eslint-enable max-len -->
                 </div>
-                <h5 class=\\"ext-growthExperiments-AddLinkDialog__title\\"> Adding links will help people learn faster. </h5>
+                <h5 class=\\"ext-growthExperiments-AddLinkDialog__title\\">growthexperiments-addlink-onboarding-content-intro-title:[]</h5>
                 <div class=\\"ext-growthExperiments-AddLinkDialog__text\\">
-                  <p> You will decide whether words in one Wikipedia article should link to other Wikipedia articles. </p>
-                  <div class=\\"ext-growthExperiments-AddLinkDialog__text__label\\"> Example sentence </div>
-                  <div class=\\"ext-growthExperiments-AddLinkDialog__text__example\\"> The moon is the only
-                    <!-- eslint-disable-next-line max-len --><mark class=\\"ext-growthExperiments-AddLinkDialog__text__example__highlighted\\"> natural satellite </mark> that <mark class=\\"ext-growthExperiments-AddLinkDialog__text__example__highlighted\\"> orbits </mark> around the <mark class=\\"ext-growthExperiments-AddLinkDialog__text__example__highlighted\\"> Earth </mark>.
-                  </div>
-                  <p> No special knowledge about the article is needed to do this task. </p>
+                  <p>growthexperiments-addlink-onboarding-content-intro-body-paragraph1:[Alice]</p>
+                  <div class=\\"ext-growthExperiments-AddLinkDialog__text__label\\">growthexperiments-addlink-onboarding-content-intro-body-example-label:[]</div><!-- eslint-disable-next-line max-len, vue/first-attribute-linebreak -->
+                  <div class=\\"ext-growthExperiments-AddLinkDialog__text__example\\">growthexperiments-addlink-onboarding-content-intro-body-example-text</div>
+                  <p>growthexperiments-addlink-onboarding-content-intro-body-paragraph2:[]</p>
                 </div>
               </div>
             </transition-stub>
@@ -75,7 +73,7 @@ exports[`AddLinkDialog > should render second step with Add a link on-boarding c
       <header class=\\"cdx-dialog__header\\">
         <div class=\\"ext-growthExperiments-OnboardingDialog__header\\">
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
-            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\"> Introduction </h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet ext-growthExperiments-OnboardingDialog__header__top__button\\"> Skip all </button>
+            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div>
           <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
             <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">2 of 3</p>
@@ -97,11 +95,11 @@ exports[`AddLinkDialog > should render second step with Add a link on-boarding c
                 <div role=\\"img\\" aria-label=\\"Illustration of the moon article, next to the article there's a robot representing a machine suggestion - asking if a word on the Moon article should be linked to the Cheese article.\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--2\\">
                   <!-- eslint-enable max-len -->
                 </div>
-                <h5 class=\\"ext-growthExperiments-AddLinkDialog__title\\"> Suggested links are machine-generated, and can be incorrect. </h5>
+                <h5 class=\\"ext-growthExperiments-AddLinkDialog__title\\">growthexperiments-addlink-onboarding-content-about-suggested-links-title:[]</h5>
                 <div class=\\"ext-growthExperiments-AddLinkDialog__text\\">
                   <p>
-                    <!-- eslint-disable-next-line max-len --> The suggestions might be on words that don’t need them, or might link to the wrong article. Use your judgment to decide whether they are right or wrong.
-                  </p><a class=\\"ext-growthExperiments-AddLinkDialog__text__link\\" href=\\"\\"> Learn more about machine suggestions </a>
+                    <!-- eslint-disable-next-line max-len -->growthexperiments-addlink-onboarding-content-about-suggested-links-body:[Alice]
+                  </p><a class=\\"ext-growthExperiments-AddLinkDialog__text__link\\" href=\\"\\">growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text:[]</a>
                 </div>
               </div>
             </transition-stub>
@@ -138,7 +136,7 @@ exports[`AddLinkDialog > should render third step with Add a link on-boarding co
       <header class=\\"cdx-dialog__header\\">
         <div class=\\"ext-growthExperiments-OnboardingDialog__header\\">
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
-            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\"> Introduction </h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet ext-growthExperiments-OnboardingDialog__header__top__button\\"> Skip all </button>
+            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div>
           <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
             <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">3 of 3</p>
@@ -160,15 +158,11 @@ exports[`AddLinkDialog > should render third step with Add a link on-boarding co
                 <div role=\\"img\\" aria-label=\\"Illustration of an article sentence showing link suggestions for two different words. Next to the suggestion there's a blue check icon and a red cross icon for the options to accept or reject the suggestion.\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--3\\">
                   <!-- eslint-enable max-len -->
                 </div>
-                <h5 class=\\"ext-growthExperiments-AddLinkDialog__title\\"> Guidelines </h5>
+                <h5 class=\\"ext-growthExperiments-AddLinkDialog__title\\">growthexperiments-addlink-onboarding-content-linking-guidelines-title:[]</h5>
                 <div class=\\"ext-growthExperiments-AddLinkDialog__text\\">
                   <div class=\\"ext-growthExperiments-AddLinkDialog__text__list\\">
-                    <ul>
-                      <li>Link concepts that a reader might want to learn more about.</li>
-                      <li>Make sure the link is going to the right article.</li>
-                      <li>Don't link common words, years, or dates.</li>
-                      <li>If you're not sure, skip.</li>
-                    </ul>
+                    <!-- eslint-disable-next-line max-len -->
+                    <ul>growthexperiments-addlink-onboarding-content-linking-guidelines-body</ul>
                   </div>
                 </div>
               </div>
