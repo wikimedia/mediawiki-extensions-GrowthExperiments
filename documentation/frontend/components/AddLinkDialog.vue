@@ -11,7 +11,6 @@
 		@close="$emit( 'close', $event )"
 		@update:current-step="( newVal )=> currentStep = newVal"
 	>
-		<!-- eslint-enable max-len -->
 		<template #title>
 			{{ $i18n( 'growthexperiments-structuredtask-onboarding-dialog-title' ).text() }}
 		</template>
@@ -23,14 +22,12 @@
 
 		<template #step1>
 			<div>
-				<!-- eslint-disable max-len -->
 				<div
 					role="img"
-					aria-label="Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
+					:aria-label="$i18n( 'growthexperiments-addlink-onboarding-content-intro-image-alt-text' ).text()"
 					class="ext-growthExperiments-AddLinkDialog__image
 					ext-growthExperiments-AddLinkDialog__image--1"
 				>
-				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
 					{{
@@ -74,14 +71,12 @@
 
 		<template #step2>
 			<div>
-				<!-- eslint-disable max-len -->
 				<div
 					role="img"
-					aria-label="Illustration of the moon article, next to the article there's a robot representing a machine suggestion - asking if a word on the Moon article should be linked to the Cheese article."
+					:aria-label="$i18n( 'growthexperiments-addlink-onboarding-content-about-image-alt-text' ).text()"
 					class="ext-growthExperiments-AddLinkDialog__image
 					ext-growthExperiments-AddLinkDialog__image--2"
 				>
-				<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
 					{{
@@ -93,7 +88,6 @@
 				</h5>
 				<div class="ext-growthExperiments-AddLinkDialog__text">
 					<p>
-						<!-- eslint-disable-next-line max-len -->
 						{{
 							$i18n(
 								// eslint-disable-next-line max-len
@@ -116,15 +110,13 @@
 		</template>
 		<template #step3>
 			<div>
-				<!-- eslint-disable max-len -->
 				<div
 					role="img"
-					aria-label="Illustration of an article sentence showing link suggestions for two different words. Next to the suggestion there's a blue check icon and a red cross icon for the options to accept or reject the suggestion."
+					:aria-label="$i18n( 'growthexperiments-addlink-onboarding-content-linking-image-alt-text' ).text()"
 					class="
 					ext-growthExperiments-AddLinkDialog__image
 					ext-growthExperiments-AddLinkDialog__image--3"
 				>
-					<!-- eslint-enable max-len -->
 				</div>
 				<h5 class="ext-growthExperiments-AddLinkDialog__title">
 					{{

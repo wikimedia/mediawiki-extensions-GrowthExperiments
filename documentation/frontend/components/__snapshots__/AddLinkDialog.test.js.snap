@@ -28,10 +28,7 @@ exports[`AddLinkDialog > should render 3 step with Add a link on-boarding conten
           <div class=\\"ext-growthExperiments-MultiPane\\">
             <transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
               <div>
-                <!-- eslint-disable max-len -->
-                <div role=\\"img\\" aria-label=\\"Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text.\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--1\\">
-                  <!-- eslint-enable max-len -->
-                </div>
+                <div role=\\"img\\" aria-label=\\"growthexperiments-addlink-onboarding-content-intro-image-alt-text:[]\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--1\\"></div>
                 <h5 class=\\"ext-growthExperiments-AddLinkDialog__title\\">growthexperiments-addlink-onboarding-content-intro-title:[]</h5>
                 <div class=\\"ext-growthExperiments-AddLinkDialog__text\\">
                   <p>growthexperiments-addlink-onboarding-content-intro-body-paragraph1:[Alice]</p>
@@ -86,15 +83,10 @@ exports[`AddLinkDialog > should render second step with Add a link on-boarding c
           <div class=\\"ext-growthExperiments-MultiPane\\">
             <transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
               <div>
-                <!-- eslint-disable max-len -->
-                <div role=\\"img\\" aria-label=\\"Illustration of the moon article, next to the article there's a robot representing a machine suggestion - asking if a word on the Moon article should be linked to the Cheese article.\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--2\\">
-                  <!-- eslint-enable max-len -->
-                </div>
+                <div role=\\"img\\" aria-label=\\"growthexperiments-addlink-onboarding-content-about-image-alt-text:[]\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--2\\"></div>
                 <h5 class=\\"ext-growthExperiments-AddLinkDialog__title\\">growthexperiments-addlink-onboarding-content-about-suggested-links-title:[]</h5>
                 <div class=\\"ext-growthExperiments-AddLinkDialog__text\\">
-                  <p>
-                    <!-- eslint-disable-next-line max-len -->growthexperiments-addlink-onboarding-content-about-suggested-links-body:[Alice]
-                  </p><a class=\\"ext-growthExperiments-AddLinkDialog__text__link\\" href=\\"\\">growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text:[]</a>
+                  <p>growthexperiments-addlink-onboarding-content-about-suggested-links-body:[Alice]</p><a class=\\"ext-growthExperiments-AddLinkDialog__text__link\\" href=\\"\\">growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text:[]</a>
                 </div>
               </div>
             </transition-stub>
@@ -143,10 +135,7 @@ exports[`AddLinkDialog > should render third step with Add a link on-boarding co
           <div class=\\"ext-growthExperiments-MultiPane\\">
             <transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
               <div>
-                <!-- eslint-disable max-len -->
-                <div role=\\"img\\" aria-label=\\"Illustration of an article sentence showing link suggestions for two different words. Next to the suggestion there's a blue check icon and a red cross icon for the options to accept or reject the suggestion.\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--3\\">
-                  <!-- eslint-enable max-len -->
-                </div>
+                <div role=\\"img\\" aria-label=\\"growthexperiments-addlink-onboarding-content-linking-image-alt-text:[]\\" class=\\"ext-growthExperiments-AddLinkDialog__image ext-growthExperiments-AddLinkDialog__image--3\\"></div>
                 <h5 class=\\"ext-growthExperiments-AddLinkDialog__title\\">growthexperiments-addlink-onboarding-content-linking-guidelines-title:[]</h5>
                 <div class=\\"ext-growthExperiments-AddLinkDialog__text\\">
                   <div class=\\"ext-growthExperiments-AddLinkDialog__text__list\\">

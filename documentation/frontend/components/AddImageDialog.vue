@@ -24,7 +24,7 @@
 				<!-- eslint-disable max-len -->
 				<div
 					role="img"
-					aria-label="Illustration of the moon article. Next to the article illustration there's a robot asking if an image of the moon should be added to the article."
+					:aria-label="$i18n( 'growthexperiments-addimage-onboarding-content-intro-image-alt-text' ).text()"
 					class="ext-growthExperiments-AddImageDialog__image
 					ext-growthExperiments-AddImageDialog__image--1"
 				>
@@ -73,7 +73,7 @@
 				<!-- eslint-disable max-len -->
 				<div
 					role="img"
-					aria-label="Illustration of an article. An image is being suggested for the article. The image suggestion is zoomed in to highlight that the image suggestion and details should be reviewed."
+					:aria-label="$i18n( 'growthexperiments-addimage-onboarding-content-imagedetails-image-alt-text' ).text()"
 					class="ext-growthExperiments-AddImageDialog__image
 					ext-growthExperiments-AddImageDialog__image--2"
 				>
@@ -107,7 +107,7 @@
 				<!-- eslint-disable max-len -->
 				<div
 					role="img"
-					aria-label="Illustration of an article. At the bottom of the article there’s an image suggestion."
+					:aria-label="$i18n( 'growthexperiments-addimage-onboarding-content-article-image-alt-text' ).text()"
 					class="ext-growthExperiments-AddImageDialog__image
 					ext-growthExperiments-AddImageDialog__image--3"
 				>
@@ -134,7 +134,7 @@
 				<!-- eslint-disable max-len -->
 				<div
 					role="img"
-					aria-label="Illustration of an article. An image is being suggested for the article. Inside of the suggestion there are three icon buttons for the options available: a checkmark to accept the suggestion, a cross to reject the suggestion, and an arrow to move to the next step."
+					:aria-label="$i18n( 'growthexperiments-addimage-onboarding-content-decision-image-alt-text' ).text()"
 					class="ext-growthExperiments-AddImageDialog__image
 					ext-growthExperiments-AddImageDialog__image--4"
 				>
