@@ -18,7 +18,6 @@ const renderComponent = ( props, provide ) => {
 		},
 		global: {
 			provide: Object.assign( {
-				$log: jest.fn(),
 				RENDER_MODE: 'desktop'
 			}, provide )
 		}

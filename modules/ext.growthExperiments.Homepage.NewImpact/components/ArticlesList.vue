@@ -49,8 +49,8 @@
 						<c-popover
 							v-else
 							placement="above"
-							@open="log( 'impact', 'open-nopageviews-tooltip' )"
-							@close="log( 'impact', 'close-nopageviews-tooltip' )"
+							@open="$log( 'impact', 'open-nopageviews-tooltip' )"
+							@close="$log( 'impact', 'close-nopageviews-tooltip' )"
 						>
 							<template #trigger="{ onClick }">
 								<cdx-button
@@ -78,7 +78,6 @@
 </template>
 
 <script>
-const { inject } = require( 'vue' );
 const CList = require( '../../vue-components/CList.vue' );
 const CListItem = require( '../../vue-components/CListItem.vue' );
 const CPopover = require( '../../vue-components/CPopover.vue' );
@@ -110,9 +109,7 @@ module.exports = exports = {
 		}
 	},
 	setup() {
-		const log = inject( '$log' );
 		return {
-			log,
 			cdxIconClock,
 			xAccessor,
 			yAccessor
