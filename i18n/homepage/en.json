@@ -495,6 +495,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Image is low quality",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "I don't know this subject",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "I can’t read the language in the image details",
+	"growthexperiments-addimage-rejectiondialog-reason-sectionnotappropriate": "Section should not have an image",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Other",
 	"growthexperiments-addimage-viewer-close-button": "Close",
 	"growthexperiments-addimage-onboarding-content-intro-title": "Images help people learn, but many articles don't have one.",

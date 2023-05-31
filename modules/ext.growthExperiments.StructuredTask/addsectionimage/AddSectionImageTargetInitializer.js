@@ -1,6 +1,5 @@
 var TargetInitializer = require( '../TargetInitializer.js' ),
-	// FIXME clone me
-	RecommendedSectionImageRejectionDialog = require( '../addimage/RecommendedImageRejectionDialog.js' ),
+	RecommendedSectionImageRejectionDialog = require( './RecommendedSectionImageRejectionDialog.js' ),
 	RecommendedImageViewer = require( '../addimage/RecommendedImageViewer.js' ),
 	AddImageDetailsDialog = require( '../addimage/AddImageDetailsDialog.js' ),
 	ImageSuggestionInteractionLogger = require( '../addimage/ImageSuggestionInteractionLogger.js' ),
