@@ -194,7 +194,7 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 			(int)MWTimestamp::getInstance( $rawLastNotifiedTS ?? false )->getTimestamp( TS_UNIX );
 
 		if (
-			$rawLastNotifiedTS !== null &&
+			$rawLastNotifiedTS === null ||
 			$notifiedSecondsAgo >= $hoursToWait * ExpirationAwareness::TTL_HOUR
 		) {
 			$this->notifyMentor( $mentor );
