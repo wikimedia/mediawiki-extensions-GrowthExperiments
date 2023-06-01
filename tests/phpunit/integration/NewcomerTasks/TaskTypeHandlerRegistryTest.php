@@ -110,8 +110,9 @@ class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()
 		)->getTaskTypeHandlerRegistry();
 		$changeTags = $taskTypeHandlerRegistry->getUniqueChangeTags();
-		$this->assertSame( [
+		$this->assertArrayEquals( [
 			'newcomer task image suggestion',
+			'newcomer task section image suggestion',
 			'newcomer task add link',
 			'newcomer task copyedit',
 			'newcomer task references',

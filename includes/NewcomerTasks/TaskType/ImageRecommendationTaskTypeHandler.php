@@ -3,20 +3,13 @@
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
-use GrowthExperiments\NewcomerTasks\RecommendationProvider;
-use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
 use LogicException;
 use Message;
 use MessageLocalizer;
 use MessageSpecifier;
-use StatusValue;
-use TitleParser;
-use Wikimedia\Assert\Assert;
 
-class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
+class ImageRecommendationTaskTypeHandler extends ImageRecommendationBaseTaskTypeHandler {
 
 	public const ID = 'image-recommendation';
 
@@ -27,51 +20,8 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** The tag prefix used for CirrusSearch\Wikimedia\WeightedTags. */
 	public const WEIGHTED_TAG_PREFIX = 'recommendation.image';
 
-	private ImageRecommendationProvider $recommendationProvider;
-	private AddImageSubmissionHandler $submissionHandler;
-
-	/**
-	 * @param ConfigurationValidator $configurationValidator
-	 * @param TitleParser $titleParser
-	 * @param RecommendationProvider $recommendationProvider
-	 * @param AddImageSubmissionHandler $submissionHandler
-	 */
-	public function __construct(
-		ConfigurationValidator $configurationValidator,
-		TitleParser $titleParser,
-		RecommendationProvider $recommendationProvider,
-		AddImageSubmissionHandler $submissionHandler
-	) {
-		parent::__construct( $configurationValidator, $titleParser );
-		Assert::parameterType( ImageRecommendationProvider::class, $recommendationProvider,
-			'$recommendationProvider' );
-		$this->recommendationProvider = $recommendationProvider;
-		$this->submissionHandler = $submissionHandler;
-	}
-
 	/** @inheritDoc */
-	public function getId(): string {
-		return self::ID;
-	}
-
-	/**
-	 * @inheritDoc
-	 * @return ImageRecommendationProvider
-	 */
-	public function getRecommendationProvider(): RecommendationProvider {
-		return $this->recommendationProvider;
-	}
-
-	/**
-	 * @inheritDoc
-	 * @return AddImageSubmissionHandler
-	 */
-	public function getSubmissionHandler(): SubmissionHandler {
-		return $this->submissionHandler;
-	}
-
-	/** @inheritDoc */
-	public function createTaskType( string $taskTypeId, array $config ): TaskType {
+	public function createTaskType( string $taskTypeId, array $config ): ImageRecommendationTaskType {
 		$extraData = [ 'learnMoreLink' => $config['learnmore'] ?? null ];
 		$settings = array_intersect_key( $config, ImageRecommendationTaskType::DEFAULT_SETTINGS );
 		$taskType = new ImageRecommendationTaskType(
@@ -87,42 +37,11 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	}
 
 	/** @inheritDoc */
-	public function validateTaskTypeConfiguration( string $taskTypeId, array $config ): StatusValue {
-		$status = parent::validateTaskTypeConfiguration( $taskTypeId, $config );
-		if ( !$status->isOK() ) {
-			return $status;
-		}
-		foreach ( [
-			ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY,
-			ImageRecommendationTaskType::FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH,
-		  ] as $field ) {
-			if ( array_key_exists( $field, $config ) ) {
-				$status->merge( $this->configurationValidator->validateInteger(
-					$config, $field, $taskTypeId, 1 ) );
-			}
-		}
-		return $status;
-	}
-
-	/** @inheritDoc */
 	public function getSearchTerm( TaskType $taskType ): string {
 		if ( $taskType->getHandlerId() !== self::ID ) {
 			throw new InvalidArgumentException( '$taskType must be an image recommendation task type' );
 		}
-		return parent::getSearchTerm( $taskType ) . 'hasrecommendation:image' . ' ' . '-hastemplatecollection:infobox';
-	}
-
-	/** @inheritDoc */
-	public function getChangeTags( ?string $taskType = null ): array {
-		return [ TaskTypeHandler::NEWCOMER_TASK_TAG, self::CHANGE_TAG ];
-	}
-
-	/** @inheritDoc */
-	public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string {
-		if ( $changeTagName !== self::CHANGE_TAG ) {
-			throw new LogicException( "\"$changeTagName\" is not a valid change tag name for " . self::class );
-		}
-		return self::TASK_TYPE_ID;
+		return parent::getSearchTerm( $taskType ) . 'hasrecommendation:image -hastemplatecollection:infobox';
 	}
 
 	/** @inheritDoc */
@@ -131,7 +50,7 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 		MessageLocalizer $localizer
 	): MessageSpecifier {
 		if ( !( $taskType instanceof ImageRecommendationTaskType ) ) {
-			throw new \LogicException( 'impossible' );
+			throw new LogicException( 'impossible' );
 		}
 		$wrappedReasons = array_map(
 			fn( $reason ) => "<kbd>$reason</kbd>",
