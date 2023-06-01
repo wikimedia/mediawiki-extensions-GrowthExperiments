@@ -14,6 +14,7 @@ use Maintenance;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\ActorStore;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserSelectQueryBuilder;
 use Wikimedia\Rdbms\SelectQueryBuilder;
@@ -27,6 +28,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class RefreshUserImpactData extends Maintenance {
 
 	private ActorStore $actorStore;
+	private UserFactory $userFactory;
 	private UserImpactLookup $userImpactLookup;
 	private UserImpactStore $userImpactStore;
 	private UserDatabaseHelper $userDatabaseHelper;
@@ -73,6 +75,12 @@ class RefreshUserImpactData extends Maintenance {
 
 		$users = [];
 		foreach ( $this->getUsers() as $user ) {
+			if ( $this->userFactory->newFromUserIdentity( $user )->isHidden() ) {
+				// do not update impact data for hidden users (T337845)
+				$this->output( " ...skipping user {$user->getId()}, hidden.\n" );
+				continue;
+			}
+
 			if ( $this->hasOption( 'dry-run' ) ) {
 				if ( $this->hasOption( 'verbose' ) ) {
 					$this->output( "  ...would refresh user impact for user {$user->getId()}\n" );
@@ -126,6 +134,7 @@ class RefreshUserImpactData extends Maintenance {
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$this->actorStore = $services->getActorStore();
+		$this->userFactory = $services->getUserFactory();
 		$this->jobQueueGroupFactory = $services->getJobQueueGroupFactory();
 		$this->userImpactLookup = $growthServices->getUncachedUserImpactLookup();
 		$this->userImpactStore = $growthServices->getUserImpactStore();
