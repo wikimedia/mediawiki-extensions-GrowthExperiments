@@ -17,12 +17,18 @@ const MENU_ITEMS = [
 	{ label: 'Arabic', value: 'ar' }
 ];
 
+const isServer = typeof window === 'undefined';
+
 export default {
-	name: 'BasicSelect',
+	name: 'LanguageSelector',
 	components: { CdxSelect },
 	setup() {
-		const banana = useI18n();
-		const selection = ref( banana.locale );
+		const selection = ref( null );
+		let banana = { locale: 'en' };
+		if ( !isServer ) {
+			banana = useI18n();
+			selection.value = banana.locale;
+		}
 
 		function onLanguageUpdate( newVal ) {
 			banana.setLocale( newVal );
