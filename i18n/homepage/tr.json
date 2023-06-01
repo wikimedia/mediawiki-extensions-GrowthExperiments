@@ -528,7 +528,7 @@
 	"growthexperiments-addimage-caption-info-dialog-title": "Maddedeki görsel için bir altyazı yazın",
 	"growthexperiments-addimage-caption-info-dialog-message": "<strong>$1</strong> maddesinin okuyucuları altyazıyı görselin altında görecekler.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-describe": "Görseli açıklayın, böylece <strong>$1</strong> maddesi ile bağlantısı net bir şekilde açıklanabilsin.",
-	"growthexperiments-addimage-caption-info-dialog-guidelines-review": "Görselin detaylarını tekrar gözden geçirin.",
+	"growthexperiments-addimage-caption-info-dialog-guidelines-review": "Eklenecek bilginin uygunluğu için görselin ayrıntılarını tekrar gözden geçirin.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-neutral": "\"Güzel\", \"çirkin\" veya \"mükemmel\" gibi tanımlardan kaçınarak tarafsız kalın.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "Bu maddenin dilinde yazın: $1",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language-generic": "Şuan {{GENDER:|bulunduğunuz}} Vikipedi dilinde yazın.",

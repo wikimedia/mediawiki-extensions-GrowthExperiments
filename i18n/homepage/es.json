@@ -40,7 +40,8 @@
 			"Wizardeck",
 			"Zapipedia (WMF)",
 			"ZealousBlaze",
-			"ZebaX2010"
+			"ZebaX2010",
+			"No se"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Te damos la bienvenida}}, {{bidi:$1}}!",
@@ -106,7 +107,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Tu}} impacto",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Tu}} actividad reciente ({{PLURAL:$2|último día|últimos $2 días}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Actividad reciente ({{PLURAL:$1|último día|últimos días}})",
-	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Tu última contribución",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Última contribución",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Mejor racha",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|día|días}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Edición|Ediciones}}",
@@ -117,7 +118,7 @@
 	"growthexperiments-homepage-impact-scores-thanks-count": "Agradecimientos recibidos",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Información sobre el funcionamiento de Agradecer",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} se hace por una comunidad de personas editoras como {{GENDER:$1|tú}}. {{GENDER:$1|Podrías}} recibir un agradecimiento por parte de otra persona por alguna de {{GENDER:$1|tus ediciones}}, al igual que {{GENDER:$1|tú}} puedes agradecer a los demás por las suyas.",
-	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} es creado por una comunidad de editores. Cualquier colaborador puede ser agradecido por otro por una edición. Aquí se muestra el número de agradecimientos recibidos.",
+	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} es creado por una comunidad de personas editoras. Cualquier de ellas puede ser agradecida por otra por una de sus ediciones. Aquí se muestra el número de agradecimientos recibidos.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Este es el mayor número de días seguidos en los {{GENDER:$1|que realizaste}} al menos una edición.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Esta es la mayor cantidad de días seguidos en los que se realizó al menos una edición.",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Información sobre el cálculo de las rachas",

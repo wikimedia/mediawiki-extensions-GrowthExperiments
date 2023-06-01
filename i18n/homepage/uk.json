@@ -86,6 +86,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Перегляди відредагованих статей",
 	"growthexperiments-homepage-impact-scores-edit-count": "Разом редагувань",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Отримано подяк",
+	"growthexperiments-homepage-impact-scores-over-limit": "999+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Детальніше про те, як працюють подяки",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} створено спільнотою редакторів, як {{GENDER:$1|ви}}. Інші учасники можуть подякувати вам за редагування, яке ви зробили, і ви також можете подякувати іншим за їхні редагування.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} твориться спільнотою редакторів. Будь-який дописувач може отримати подяку за редагування. Тут показано кількість отриманих подяк.",
