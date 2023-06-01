@@ -103,7 +103,7 @@ describe( 'Onboarding dialog', () => {
 
 	it( 'should render the first step as informed in initialStep prop', () => {
 		const wrapper = renderComponent(
-			{ initialStep: 3, open: true, showPaginator: true, totalSteps: 3 },
+			{ initialStep: 3, open: true, totalSteps: 3 },
 			steps
 		);
 		expect( wrapper.text() ).to.contain( 'This is step 3' );
@@ -122,7 +122,7 @@ describe( 'Onboarding dialog', () => {
 
 	it( 'should navigate to the next step on click next button', () => {
 		const wrapper = renderComponent(
-			{ initialStep: 1, open: true, showPaginator: true, totalSteps: 3 },
+			{ initialStep: 1, open: true, totalSteps: 3 },
 			steps
 		);
 		const buttonNext = wrapper.get( '[aria-label="next"]' );
@@ -134,7 +134,7 @@ describe( 'Onboarding dialog', () => {
 
 	it( 'should navigate back on click previous button', () => {
 		const wrapper = renderComponent(
-			{ initialStep: 2, open: true, showPaginator: true, totalSteps: 3 },
+			{ initialStep: 2, open: true, totalSteps: 3 },
 			steps
 		);
 		const buttonNext = wrapper.get( '[aria-label="previous"]' );
