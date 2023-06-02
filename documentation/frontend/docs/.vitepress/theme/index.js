@@ -39,28 +39,29 @@ export default {
 	extends: DefaultTheme,
 	Layout: CustomLayout,
 	enhanceApp( ctx ) {
+		const defaultLocale = 'en';
 		const isServer = typeof window === 'undefined';
 		// Setup a single Pinia instance for all VitePress pages
 		ctx.app.use( createPinia() );
+
+		ctx.app.use( createI18n( { messages, locale: defaultLocale } ) );
+
+		// HACK wrap vue-banana-i18n results in MW.Message-like objects
+		ctx.app.config.globalProperties.$i18n = i18nDecorator(
+			ctx.app.config.globalProperties.$i18n
+		);
 
 		// VitePress builds the site in nodejs environment when calling npm run docs:build
 		if ( !isServer ) {
 			// Initialize plugin based on "uselang" query parameter, fallback
 			// to english.
 			const urlParams = new URLSearchParams( window.location.search );
-			const locale = urlParams.get( 'uselang' ) || 'en';
+			const urlLocale = urlParams.get( 'uselang' ) || defaultLocale;
 
-			if ( VALID_LOCALES.indexOf( locale ) === -1 ) {
+			if ( VALID_LOCALES.indexOf( urlLocale ) === -1 ) {
 				// eslint-disable-next-line no-console
-				console.error( `Invalid locale ${locale}. Supported locales are: ${VALID_LOCALES.join( ', ' )}` );
+				console.error( `Invalid locale ${urlLocale}. Supported locales are: ${VALID_LOCALES.join( ', ' )}` );
 			}
-
-			ctx.app.use( createI18n( { messages, locale } ) );
-
-			// HACK wrap vue-banana-i18n results in MW.Message-like objects
-			ctx.app.config.globalProperties.$i18n = i18nDecorator(
-				ctx.app.config.globalProperties.$i18n
-			);
 		}
 
 		// Avoid calls to mw.user.getName() by providing a mocked username and gender for all demos.
