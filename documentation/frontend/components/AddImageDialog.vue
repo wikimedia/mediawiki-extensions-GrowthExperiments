@@ -1,13 +1,16 @@
 <template>
-	<!-- eslint-disable vue/no-v-model-argument -->
+	<!-- eslint-disable vue/no-v-model-argument max-len-->
 	<onboarding-dialog
 		v-model:open="wrappedOpen"
 		v-model:is-checked="wrappedIsChecked"
-		:total-steps="4"
-		:initial-step="1"
+		:total-steps="totalSteps"
+		:initial-step="initialStep"
 		class="ext-growthExperiments-AddImageDialog"
+		:stepper-label="$i18n( 'growthexperiments-structuredtask-onboarding-dialog-progress', currentStep, totalSteps ).text()"
 		@close="$emit( 'close', $event )"
+		@update:current-step="( newVal )=> currentStep = newVal"
 	>
+		<!-- eslint-enable max-len -->
 		<template #title>
 			Introduction
 		</template>
@@ -134,7 +137,7 @@
 </template>
 
 <script>
-import { toRef } from 'vue';
+import { ref, toRef } from 'vue';
 import { useModelWrapper } from '@wikimedia/codex';
 import OnboardingDialog from './OnboardingDialog.vue';
 
@@ -166,8 +169,13 @@ export default {
 	setup( props, { emit } ) {
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
-
+		const initialStep = 1;
+		const currentStep = ref( initialStep );
+		const totalSteps = 4;
 		return {
+			currentStep,
+			initialStep,
+			totalSteps,
 			wrappedIsChecked,
 			wrappedOpen
 		};

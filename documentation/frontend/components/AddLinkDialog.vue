@@ -1,14 +1,17 @@
 <template>
-	<!-- eslint-disable vue/no-v-model-argument -->
+	<!-- eslint-disable vue/no-v-model-argument max-len-->
 	<onboarding-dialog
 		v-model:open="wrappedOpen"
 		v-model:is-checked="wrappedIsChecked"
-		:total-steps="3"
-		:initial-step="1"
+		:total-steps="totalSteps"
+		:initial-step="initialStep"
 		class="ext-growthExperiments-AddLinkDialog"
 		:is-rtl="isRtl"
+		:stepper-label="$i18n( 'growthexperiments-structuredtask-onboarding-dialog-progress', currentStep, totalSteps ).text()"
 		@close="$emit( 'close', $event )"
+		@update:current-step="( newVal )=> currentStep = newVal"
 	>
+		<!-- eslint-enable max-len -->
 		<template #title>
 			{{ $i18n( 'growthexperiments-structuredtask-onboarding-dialog-title' ).text() }}
 		</template>
@@ -186,8 +189,14 @@ export default {
 		const userName = inject( 'USER_USERNAME' );
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const wrappedIsChecked = useModelWrapper( toRef( props, 'isChecked' ), emit, 'update:is-checked' );
+		const initialStep = 1;
+		const currentStep = ref( initialStep );
+		const totalSteps = 3;
 		return {
+			currentStep,
+			initialStep,
 			isRtl,
+			totalSteps,
 			userName,
 			wrappedIsChecked,
 			wrappedOpen

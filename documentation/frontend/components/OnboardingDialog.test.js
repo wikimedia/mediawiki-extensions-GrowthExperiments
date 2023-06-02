@@ -70,7 +70,7 @@ describe( 'Onboarding dialog', () => {
 		const wrapper = renderComponent( {
 			open: true,
 			totalSteps: 2,
-			showPaginator: true
+			stepperLabel: '1 of 2'
 		}, steps );
 		expect( wrapper.text() ).toContain( '1 of 2' );
 	} );
@@ -95,7 +95,7 @@ describe( 'Onboarding dialog', () => {
 
 	it( 'should display paginator if dialog includes more than one step', () => {
 		const wrapper = renderComponent(
-			{ initialStep: 1, open: true, totalSteps: 3 },
+			{ initialStep: 1, open: true, stepperLabel: '1 of 3', totalSteps: 3 },
 			steps
 		);
 		expect( wrapper.text() ).toContain( '1 of 3' );

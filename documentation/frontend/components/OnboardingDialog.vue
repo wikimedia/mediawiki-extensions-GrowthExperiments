@@ -34,13 +34,15 @@
 						<cdx-icon :icon="cdxIconClose" icon-label="close"></cdx-icon>
 					</cdx-button>
 				</div>
+				<!-- eslint-disable max-len -->
 				<onboarding-stepper
 					v-if="hasSteps"
 					v-model:model-value="currentStep"
 					class="ext-growthExperiments-OnboardingDialog__header__stepper"
 					:total-steps="totalSteps"
-					:label="`${currentStep} of ${totalSteps}`"
+					:label="stepperLabel"
 				></onboarding-stepper>
+				<!-- eslint-enable max-len -->
 			</div>
 		</template>
 		<!-- Dialog Content -->
@@ -76,12 +78,10 @@
 				<div
 					class="ext-growthExperiments-OnboardingDialog__footer__navigation"
 				>
-					<!-- eslint-disable max-len -->
 					<div
 						v-if="currentStep !== 1"
 						class="ext-growthExperiments-OnboardingDialog__footer__navigation-prev"
 					>
-						<!-- eslint-enable max-len -->
 						<cdx-button
 							aria-label="previous"
 							@click="onPrevClick"
@@ -89,28 +89,25 @@
 							<cdx-icon :icon="cdxIconPrevious" icon-label="previous"></cdx-icon>
 						</cdx-button>
 					</div>
-					<!-- eslint-disable max-len -->
 					<div
 						v-if="currentStep === totalSteps"
 						class="ext-growthExperiments-OnboardingDialog__footer__navigation--next"
 					>
-						<!-- eslint-enable max-len -->
 						<cdx-button
 							weight="primary"
 							action="progressive"
 							@click="onStartBtnClick"
 						>
+							<!-- eslint-disable max-len -->
 							<slot name="startBtnText">
-								Get started
 							</slot>
+							<!-- eslint-enable max-len -->
 						</cdx-button>
 					</div>
-					<!-- eslint-disable max-len -->
 					<div
 						v-else
 						class="ext-growthExperiments-OnboardingDialog__footer__navigation--next"
 					>
-						<!-- eslint-enable max-len -->
 						<cdx-button
 							weight="primary"
 							action="progressive"
@@ -182,6 +179,13 @@ export default {
 			default: false
 		},
 		/**
+		 * Text label for the stepper component
+		 */
+		stepperLabel: {
+			type: String,
+			default: ''
+		},
+		/**
 		 * The total number of steps
 		 */
 		totalSteps: {
@@ -210,6 +214,7 @@ export default {
 			if ( greaterStepShown.value < props.totalSteps ) {
 				greaterStepShown.value++;
 			}
+			emit( 'update:currentStep', currentStep.value );
 		} );
 
 		function onDialogOpenUpdate( newVal ) {
