@@ -8,7 +8,8 @@
 		"docs:build": "vitepress build docs",
 		"docs:dev": "vitepress dev docs",
 		"docs:preview": "vitepress preview docs",
-		"test": "npm run lint && vitest run"
+		"test": "npm run lint && vitest run",
+		"test:update-snapshots": "vitest --update --run"
 	},
 	"devDependencies": {
 		"@pinia/testing": "0.0.12",
