@@ -42,6 +42,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilde
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
@@ -1499,8 +1500,11 @@ class HomepageHooks implements
 			);
 			$growthTasksChangeTags = array_merge(
 				TemplateBasedTaskTypeHandler::NEWCOMER_TASK_TEMPLATE_BASED_ALL_CHANGE_TAGS,
-				[ LinkRecommendationTaskTypeHandler::CHANGE_TAG ],
-				[ ImageRecommendationTaskTypeHandler::CHANGE_TAG ]
+				[
+					LinkRecommendationTaskTypeHandler::CHANGE_TAG,
+					ImageRecommendationTaskTypeHandler::CHANGE_TAG,
+					SectionImageRecommendationTaskTypeHandler::CHANGE_TAG,
+				]
 			);
 			foreach ( $tags as $tag ) {
 				// We can use more precise tags, skip this generic one applied to all suggested edits.
@@ -1512,12 +1516,12 @@ class HomepageHooks implements
 				// HACK: craft the task type ID from the change tag. We should probably add a method to
 				// TaskTypeHandlerRegistry to get a TaskType from a change tag.
 				$taskType = str_replace( 'newcomer task ', '', $tag );
-				if ( $taskType === 'add link' ) {
-					$taskType = 'link-recommendation';
-				} elseif ( $taskType === 'image suggestion' ) {
-					$taskType = 'image-recommendation';
-				} elseif ( $taskType === 'section image suggestion' ) {
-					$taskType = 'section-image-recommendation';
+				if ( $tag === LinkRecommendationTaskTypeHandler::CHANGE_TAG ) {
+					$taskType = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
+				} elseif ( $tag === ImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
+					$taskType = ImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
+				} elseif ( $tag === SectionImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
+					$taskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
 				}
 				$this->perDbNameStatsdDataFactory->increment(
 					sprintf( 'GrowthExperiments.NewcomerTask.Reverted.%s', $taskType )

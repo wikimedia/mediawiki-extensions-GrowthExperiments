@@ -2,16 +2,14 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
-use GrowthExperiments\NewcomerTasks\AddSectionImage\AddSectionImageSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
-use GrowthExperiments\NewcomerTasks\SubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use InvalidArgumentException;
+use LogicException;
+use Message;
 use MessageLocalizer;
 use MessageSpecifier;
-use TitleParser;
 
-class SectionImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
+class SectionImageRecommendationTaskTypeHandler extends ImageRecommendationBaseTaskTypeHandler {
 	public const ID = 'section-image-recommendation';
 
 	public const TASK_TYPE_ID = 'section-image-recommendation';
@@ -21,46 +19,20 @@ class SectionImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandle
 	/** The tag prefix used for CirrusSearch\Wikimedia\WeightedTags. */
 	public const WEIGHTED_TAG_PREFIX = 'recommendation.image_section';
 
-	private ImageRecommendationProvider $recommendationProvider;
-	private AddSectionImageSubmissionHandler $submissionHandler;
-
-	/**
-	 * @param ConfigurationValidator $configurationValidator
-	 * @param TitleParser $titleParser
-	 * @param ImageRecommendationProvider $recommendationProvider
-	 * @param AddSectionImageSubmissionHandler $submissionHandler
-	 */
-	public function __construct(
-		ConfigurationValidator $configurationValidator,
-		TitleParser $titleParser,
-		ImageRecommendationProvider $recommendationProvider,
-		AddSectionImageSubmissionHandler $submissionHandler
-	) {
-		parent::__construct( $configurationValidator, $titleParser );
-		$this->recommendationProvider = $recommendationProvider;
-		$this->submissionHandler = $submissionHandler;
-	}
-
 	/** @inheritDoc */
-	public function createTaskType( string $taskTypeId, array $config ): TaskType {
+	public function createTaskType( string $taskTypeId, array $config ): SectionImageRecommendationTaskType {
+		$extraData = [ 'learnMoreLink' => $config['learnmore'] ?? null ];
 		$settings = array_intersect_key( $config, SectionImageRecommendationTaskType::DEFAULT_SETTINGS );
 		$taskType = new SectionImageRecommendationTaskType(
 			$taskTypeId,
 			$config['group'],
-			$settings
+			$settings,
+			$extraData,
+			$this->parseExcludedTemplates( $config ),
+			$this->parseExcludedCategories( $config )
 		);
 		$taskType->setHandlerId( $this->getId() );
 		return $taskType;
-	}
-
-	/** @inheritDoc */
-	public function getId(): string {
-		return self::ID;
-	}
-
-	/** @inheritDoc */
-	public function getRecommendationProvider(): ImageRecommendationProvider {
-		return $this->recommendationProvider;
 	}
 
 	/** @inheritDoc */
@@ -73,18 +45,22 @@ class SectionImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandle
 		return parent::getSearchTerm( $taskType ) . 'hasrecommendation:image_section -hasrecommendation:image';
 	}
 
-	/**
-	 * @inheritDoc
-	 * @return AddSectionImageSubmissionHandler
-	 */
-	public function getSubmissionHandler(): SubmissionHandler {
-		return $this->submissionHandler;
-	}
-
 	/** @inheritDoc */
-	public function getSubmitDataFormatMessage( TaskType $taskType, MessageLocalizer $localizer ): MessageSpecifier {
+	public function getSubmitDataFormatMessage(
+		TaskType $taskType,
+		MessageLocalizer $localizer
+	): MessageSpecifier {
+		if ( !( $taskType instanceof SectionImageRecommendationTaskType ) ) {
+			throw new LogicException( 'impossible' );
+		}
+		$wrappedReasons = array_map(
+			fn( $reason ) => "<kbd>$reason</kbd>",
+			AddImageSubmissionHandler::REJECTION_REASONS
+		);
 		return $localizer->msg(
 			'apihelp-growthexperiments-structured-task-submit-data-format-section-image-recommendation',
+			Message::listParam( $wrappedReasons, 'comma' ),
+			Message::numParam( $taskType->getMinimumCaptionCharacterLength() )
 		);
 	}
 }
