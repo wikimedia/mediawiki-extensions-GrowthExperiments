@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dogogos123",
 			"Geraki"
 		]
 	},
@@ -35,5 +36,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "ενεργός πριν $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "άγνωστο",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Εμφάνιση $1",
-	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 από $2"
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 από $2",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "Στο προεπιλεγμένο θετικό μήνυμα, $1 αντικαθίσταται αυτόματα με το όνομα χρήστη του καθοδηγούμενου και $2 με το όνομα χρήστη του μέντορα (εάν υπάρχει).",
+	"growthexperiments-mentor-writer-error-blocked": "{{GENDER:|Εσείς}} δεν μπορείτε να επεξεργαστείτε τη λίστα των μεντόρων"
 }
