@@ -143,13 +143,22 @@
 				</div>
 			</div>
 		</template>
-
 		<template #checkboxLabel>
-			Don't show again
+			{{
+				$i18n(
+					// eslint-disable-next-line max-len
+					"growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox"
+				).text()
+			}}
 		</template>
 		<template
 			#startBtnText>
-			Get started
+			{{
+				$i18n(
+					// eslint-disable-next-line max-len
+					"growthexperiments-structuredtask-onboarding-dialog-get-started-button"
+				).text()
+			}}
 		</template>
 	</onboarding-dialog>
 </template>
