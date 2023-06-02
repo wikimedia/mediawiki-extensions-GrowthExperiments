@@ -45,7 +45,6 @@
 							).text()
 						}}
 					</p>
-					<br>
 					<p>
 						{{
 							$i18n(
@@ -55,7 +54,6 @@
 							).text()
 						}}
 					</p>
-					<br>
 					<p
 						class="ext-growthExperiments-AddImageDialog__text--italic">
 						{{
@@ -92,7 +90,6 @@
 							$i18n( 'growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1', userName ).text()
 						}}
 					</p>
-					<br>
 					<p>
 						{{
 							// eslint-disable-next-line max-len
@@ -153,7 +150,6 @@
 							$i18n( 'growthexperiments-addimage-onboarding-content-decision-body-paragraph1', userName ).text()
 						}}
 					</p>
-					<br>
 					<p>
 						{{
 							// eslint-disable-next-line max-len
@@ -271,9 +267,12 @@ export default {
 		.ext-growthExperiments-onboarding-dialog-textcontent();
 		.ext-growthExperiments-onboarding-dialog-text();
 
+		p {
+			padding-bottom: @spacing-50;
+		}
+
 		&--italic {
 			color: @color-placeholder;
-			font-size: @font-size-small;
 			font-style: italic;
 		}
 
