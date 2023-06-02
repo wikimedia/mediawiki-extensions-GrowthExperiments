@@ -7,6 +7,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use Job;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityLookup;
 use MWTimestamp;
 use Psr\Log\LoggerInterface;
@@ -22,6 +23,7 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 
 	private UserImpactStore $userImpactStore;
 	private UserImpactLookup $userImpactLookup;
+	private UserFactory $userFactory;
 	private UserImpactFormatter $userImpactFormatter;
 	private UserIdentityLookup $userIdentityLookup;
 	private LoggerInterface $logger;
@@ -56,6 +58,7 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 		$this->userImpactLookup = $growthServices->getUserImpactLookup();
 		$this->userImpactFormatter = $growthServices->getUserImpactFormatter();
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
+		$this->userFactory = $services->getUserFactory();
 		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 
 		$this->impactDataBatch = $params['impactDataBatch']
@@ -77,6 +80,11 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 			);
 		}
 		foreach ( $this->impactDataBatch as $userId => $impactJson ) {
+			if ( $this->userFactory->newFromId( $userId )->isHidden() ) {
+				// do not update impact data for hidden users (T337845)
+				continue;
+			}
+
 			$userImpact = null;
 			/** @var UserImpact $preloadedUserImpact */
 			$preloadedUserImpact = $preloadedUserImpacts[$userId] ?? null;
