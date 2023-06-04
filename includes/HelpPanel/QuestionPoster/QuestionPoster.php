@@ -11,6 +11,7 @@ use FatalError;
 use Flow\Container;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
+use GrowthExperiments\Hooks\HookRunner;
 use IContextSource;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\MediaWikiServices;
@@ -617,14 +618,15 @@ abstract class QuestionPoster {
 		$derivativeContext->setConfig( $services->getMainConfig() );
 		$derivativeContext->setTitle( $this->targetTitle );
 		$status = new Status();
-		if ( !$services->getHookContainer()->run( 'EditFilterMergedContent', [
+		$hookRunner = new HookRunner( $services->getHookContainer() );
+		if ( !$hookRunner->onEditFilterMergedContent(
 			$derivativeContext,
 			$content,
 			$status,
 			$summary,
 			$derivativeContext->getUser(),
 			false
-		] ) ) {
+		) ) {
 			if ( $status->isGood() ) {
 				$status->fatal( 'hookaborted' );
 			}
