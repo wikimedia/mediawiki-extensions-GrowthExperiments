@@ -271,7 +271,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Add links between articles",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Add links between articles",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Add an image to an unillustrated article",
-	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Add a suggested section image",
+	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Add an image to an article section",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Machine suggestions",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Choose the option to \"Match all selected topics\" for more specific results",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Match all selected topics",
