@@ -19,7 +19,7 @@
 			<div
 				class="ext-growthExperiments-OnboardingDialogDemo__dialog__image"
 				role="img"
-				aria-label="Illustration of the moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
+				aria-label="Illustration of the Moon article, with the articles Earth and Satellite being suggested as links that could be added to the associated text."
 			>
 			</div>
 			<div class="ext-growthExperiments-OnboardingSimpleDialogDemo__dialog__content">
