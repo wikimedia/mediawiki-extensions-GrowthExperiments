@@ -142,11 +142,15 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 			return;
 		}
 
-		EchoEvent::create( [
-			'type' => 'new-praiseworthy-mentees',
-			'title' => $this->specialPageFactory->getTitleForAlias( 'MentorDashboard' ),
-			'agent' => $mentor,
-		] );
+		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
+			// EchoEvent::create accesses global state, avoid calling it when running the test
+			// suite.
+			EchoEvent::create( [
+				'type' => 'new-praiseworthy-mentees',
+				'title' => $this->specialPageFactory->getTitleForAlias( 'MentorDashboard' ),
+				'agent' => $mentor,
+			] );
+		}
 
 		$this->eventLogger->logNotified( $mentor );
 		$this->setLastNotified( $mentor, MWTimestamp::getInstance()->getTimestamp( TS_MW ) );
@@ -184,7 +188,7 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 			// NOTE: immediate notification is normally handled in onMenteeSuggested; only
 			// process pending mentees that were not yet processed.
 			$this->notifyMentor( $mentor );
-			return false;
+			return true;
 		} elseif ( $hoursToWait === PersonalizedPraiseSettings::NOTIFY_NEVER ) {
 			return false;
 		}
