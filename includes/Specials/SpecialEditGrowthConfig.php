@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use Html;
 use HTMLForm;
@@ -542,6 +543,18 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'required' => false,
 					'section' => 'newcomertasks'
 				];
+			} elseif ( $taskType === SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+				$descriptors['newcomertasks-section-image-recommendationMaxTasksPerDay'] = [
+					'type' => 'int',
+					'default' => SectionImageRecommendationTaskType::DEFAULT_SETTINGS[
+						SectionImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
+					],
+					'label-message' =>
+						'growthexperiments-edit-config-newcomer-tasks-section-image-'
+							. 'recommendation-maximum-tasks-per-day',
+					'required' => false,
+					'section' => 'newcomertasks'
+				];
 			}
 		}
 
@@ -731,7 +744,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 		// Add default values for geconfig variables
 		foreach ( $descriptors as $nameRaw => $descriptor ) {
-			list( $prefix, $name ) = $this->getPrefixAndName( $nameRaw );
+			[ $prefix, $name ] = $this->getPrefixAndName( $nameRaw );
 			if ( strpos( $name, '-' ) !== false ) {
 				// Non-standard field, will be handled later in this method
 				continue;
@@ -818,6 +831,12 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					ucfirst( ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY );
 				$descriptors[$maxTasksDescriptorName]['default'] =
 					$newcomerTasksConfig[$taskType][ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY] ??
+					$descriptors[$maxTasksDescriptorName]['default'];
+			} elseif ( $taskType === SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+				$maxTasksDescriptorName = "newcomertasks-{$taskType}" .
+					ucfirst( SectionImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY );
+				$descriptors[$maxTasksDescriptorName]['default'] =
+					$newcomerTasksConfig[$taskType][SectionImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY] ??
 					$descriptors[$maxTasksDescriptorName]['default'];
 			}
 		}
@@ -913,7 +932,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				continue;
 			}
 
-			list( $prefix, $name ) = $this->getPrefixAndName( $nameRaw );
+			[ $prefix, $name ] = $this->getPrefixAndName( $nameRaw );
 
 			if ( $descriptor['type'] === 'namespacesmultiselect' ) {
 				if ( $data[$nameRaw] === '' ) {
@@ -1023,6 +1042,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				$suggestedEditsConfig['image-recommendation'][
 					ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
 				] = $data['image-recommendationMaxTasksPerDay'];
+			}
+			if ( isset( $data['section-image-recommendationMaxTasksPerDay'] ) ) {
+				$suggestedEditsConfig['section-image-recommendation'][
+					SectionImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
+				] = $data['section-image-recommendationMaxTasksPerDay'];
 			}
 		}
 
