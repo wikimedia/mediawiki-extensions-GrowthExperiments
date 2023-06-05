@@ -95,7 +95,15 @@
 	};
 
 	const initializeModule = ( data, error ) => {
-		const renderMode = mw.config.get( 'homepagemodules' ).impact.renderMode;
+		const homepageModules = mw.config.get( 'homepagemodules' );
+		// Set a default render mode to "desktop" which we'll use for:
+		// - desktop display of Special:Homepage
+		// - desktop display for Special:Impact
+		// - mobile display for Special:Impact
+		let renderMode = 'desktop';
+		if ( homepageModules && homepageModules.impact ) {
+			renderMode = homepageModules.impact.renderMode;
+		}
 		switch ( renderMode ) {
 			case 'mobile-summary':
 				// We're on the mobile homepage, mount the app to show on the summary  and the
