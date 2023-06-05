@@ -31,6 +31,12 @@ OO.mixinClass( AddSectionImageArticleTarget, AddImageArticleTarget );
 AddSectionImageArticleTarget.super = AddImageArticleTarget;
 
 /** @inheritDoc */
+AddSectionImageArticleTarget.prototype.setupTask = function () {
+	this.insertImagePlaceholder( this.images[ 0 ] );
+	this.getSurface().executeCommand( 'recommendedImage' );
+};
+
+/** @inheritDoc */
 AddSectionImageArticleTarget.prototype.isValidTask = function () {
 	// Tasks can be invalid in three ways:
 	// - the section cannot be located (it has been removed, or moved, or its title changed);
@@ -73,6 +79,44 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
 		}
 	}
 	return true;
+};
+
+/**
+ * Add a placeholder to indicate where the recommended image will be inserted.
+ *
+ * @param {mw.libs.ge.ImageRecommendationImage} imageData
+ */
+AddSectionImageArticleTarget.prototype.insertImagePlaceholder = function ( imageData ) {
+	// FIXME insert a placeholder instead
+	this.insertLinearModelAtRecommendationLocation( [
+		this.getImageLinearModel( imageData )[ 0 ],
+		{ type: '/mwGeRecommendedImage' }
+	], imageData );
+};
+
+/**
+ * @inheritDoc
+ */
+AddSectionImageArticleTarget.prototype.replacePlaceholderWithImage = function ( imageData ) {
+	var recommendedImageNodes,
+		self = this,
+		surfaceModel = this.getSurface().getModel();
+
+	surfaceModel.setReadOnly( false );
+	// FIXME use mwGeRecommendedImagePlaceholder
+	recommendedImageNodes = surfaceModel.getDocument().getNodesByType( 'mwGeRecommendedImage' );
+	recommendedImageNodes.forEach( function ( node ) {
+		self.approvalTransaction = ve.dm.TransactionBuilder.static.newFromReplacement(
+			surfaceModel.getDocument(),
+			node.getOuterRange(),
+			self.getImageLinearModel( imageData ),
+			// doesn't matter but marginally faster
+			true
+		);
+		surfaceModel.change( self.approvalTransaction );
+	} );
+	surfaceModel.setReadOnly( true );
+	this.hasStartedCaption = true;
 };
 
 /** @inheritDoc */

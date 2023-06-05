@@ -89,6 +89,9 @@ function AddImageArticleTarget() {
 	 */
 	this.insertOffset = 0;
 
+	/** @property {?ve.dm.Transaction} The document change performed when the user aproved the suggestion. */
+	this.approvalTransaction = null;
+
 	// define values that differ between top-level and section-level section recommendations
 	// as constants so AddSectionImageArticleTarget can override them
 
@@ -104,6 +107,11 @@ function AddImageArticleTarget() {
 	/** @property {string} QUALITY_GATE_WARNING_KEY Warning key set by the submission handler */
 	this.QUALITY_GATE_WARNING_KEY = 'geimagerecommendationdailytasksexceeded';
 }
+
+/** @return {boolean} */
+AddImageArticleTarget.prototype.isSectionLevelTask = function () {
+	return this.TASK_TYPE_ID !== 'image-recommendation';
+};
 
 AddImageArticleTarget.prototype.beforeStructuredTaskSurfaceReady = function () {
 	/**
@@ -123,13 +131,13 @@ AddImageArticleTarget.prototype.afterStructuredTaskSurfaceReady = function () {
 		// Save button will be shown during caption step
 		this.toggleSaveTool( false );
 		if ( OO.ui.isMobile() ) {
-			this.getSurface().executeCommand( 'recommendedImage' );
+			this.setupTask();
 		} else {
 			// On desktop, onboarding is shown after the editor loads and the inspector is shown
 			// upon closing onboarding.
-			mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add( function () {
-				this.getSurface().executeCommand( 'recommendedImage' );
-			}.bind( this ) );
+			mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
+				this.setupTask.bind( this )
+			);
 			mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 		}
 		this.logger.log( 'impression', {}, {
@@ -144,6 +152,14 @@ AddImageArticleTarget.prototype.afterStructuredTaskSurfaceReady = function () {
 		this.invalidateRecommendation();
 		StructuredTaskPreEdit.showErrorDialogOnFailure();
 	}
+};
+
+/**
+ * Set up the structured task. This should be called when the user is able to start interacting
+ * with the VE surface.
+ */
+AddImageArticleTarget.prototype.setupTask = function () {
+	this.getSurface().executeCommand( 'recommendedImage' );
 };
 
 /** @inheritDoc **/
@@ -174,81 +190,21 @@ AddImageArticleTarget.prototype.isValidTask = function () {
 };
 
 /**
- * Add the recommended image to the VE document.
+ * Add something to the VE document at the location where the recommended image should go.
+ * Used to insert either the image or a placeholder.
  *
+ * @param {Array} linearModel VisualEditor linear model
  * @param {mw.libs.ge.ImageRecommendationImage} imageData
+ * @return {ve.dm.Transaction}
  */
-AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
-	var linearModel, insertRange, relativeOffset, dimensions,
+AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = function (
+	linearModel,
+	imageData
+) {
+	var insertRange, relativeOffset, transaction,
 		surface = this.getSurface(),
 		surfaceModel = surface.getModel(),
-		data = surfaceModel.getDocument().data,
-		NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
-		imageTitle = new mw.Title( imageData.image, NS_FILE ),
-		AddImageUtils = require( './AddImageUtils.js' ),
-		targetWidth, imageRenderData;
-
-	// Define the image to be inserted.
-	// This will eventually be passed as the data parameter to MWBlockImageNode.toDomElements.
-	// See also https://www.mediawiki.org/wiki/Specs/HTML/2.2.0#Images
-
-	dimensions = {
-		width: imageData.metadata.originalWidth,
-		height: imageData.metadata.originalHeight
-	};
-	// On mobile, the image is rendered full width (with max width set to account for tablets).
-	// On desktop, the default thumbnail size is used.
-	targetWidth = surface.getContext().isMobile() ?
-		Math.min(
-			dimensions.width,
-			surface.getView().$documentNode.width(),
-			MAX_IMAGE_DISPLAY_WIDTH
-		) : this.getDefaultThumbSize();
-	imageRenderData = AddImageUtils.getImageRenderData( imageData.metadata, window, targetWidth );
-	linearModel = [
-		{
-			type: 'mwGeRecommendedImage',
-			attributes: {
-				mediaClass: 'File',
-				mediaTag: 'img',
-				// This is a Commons image so the link needs to use the English namespace name
-				// but Title uses the localized one. That's OK, Parsoid will figure it out.
-				// Native VE images also use localized titles.
-				href: './' + imageTitle.getPrefixedText(),
-				resource: './' + imageTitle.getPrefixedText(),
-				type: 'thumb',
-				defaultSize: true,
-				// The generated wikitext will ignore width/height when defaultSize is set, but
-				// it's still used for the visual size of the thumbnail in the editor.
-				width: targetWidth,
-				height: targetWidth * ( dimensions.height / dimensions.width ),
-				src: imageRenderData.src,
-				align: 'default',
-				filename: imageData.image,
-				originalClasses: [ 'mw-default-size' ],
-				isError: false,
-				mw: {},
-				// Pass image recommendation metadata to CERecommendedImageNode
-				recommendation: imageData,
-				recommendationIndex: this.selectedImageIndex
-			},
-			internal: {
-				whitespace: [ '\n', undefined, undefined, '\n' ]
-			}
-		},
-		{
-			type: 'mwGeRecommendedImageCaption',
-			attributes: {
-				taskType: this.TASK_TYPE_ID,
-				visibleSectionTitle: imageData.visibleSectionTitle || null
-			}
-		},
-		{ type: 'paragraph', internal: { generated: 'wrapper' } },
-		// Caption will be spliced in here. In the linear model each character is a separate item.
-		{ type: '/paragraph' },
-		{ type: '/mwGeRecommendedImageCaption' },
-		{ type: '/mwGeRecommendedImage' }
-	];
+		data = surfaceModel.getDocument().data;
 
 	// Find the position between the initial templates and text.
 	insertRange = this.getInsertRange( imageData );
@@ -279,8 +235,116 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 
 	// Actually insert the image.
 	surfaceModel.setReadOnly( false );
-	surfaceModel.getLinearFragment( new ve.Range( this.insertOffset ) ).insertContent( linearModel );
+	transaction = ve.dm.TransactionBuilder.static.newFromInsertion(
+		surfaceModel.getDocument(),
+		this.insertOffset,
+		linearModel
+	);
+	surfaceModel.change( transaction );
 	surfaceModel.setReadOnly( true );
+
+	return transaction;
+};
+
+/**
+ * @param {mw.libs.ge.ImageRecommendationImage} imageData
+ * @return {{width:number, height: number}}
+ */
+AddImageArticleTarget.prototype.getImageDimensions = function ( imageData ) {
+	var originalDimensions, targetWidth,
+		surface = this.getSurface();
+
+	originalDimensions = {
+		width: imageData.metadata.originalWidth,
+		height: imageData.metadata.originalHeight
+	};
+
+	// On mobile, the image is rendered full width (with max width set to account for tablets).
+	// On desktop, the default thumbnail size is used.
+	targetWidth = surface.getContext().isMobile() ?
+		Math.min(
+			originalDimensions.width,
+			surface.getView().$documentNode.width(),
+			MAX_IMAGE_DISPLAY_WIDTH
+		) : this.getDefaultThumbSize();
+
+	return {
+		width: targetWidth,
+		height: Math.round( targetWidth * ( originalDimensions.height / originalDimensions.width ) )
+	};
+};
+
+/**
+ * Define the image to be inserted.
+ * This will eventually be passed as the data parameter to MWBlockImageNode.toDomElements.
+ * See also https://www.mediawiki.org/wiki/Specs/HTML/2.2.0#Images
+ *
+ * @param {mw.libs.ge.ImageRecommendationImage} imageData
+ * @return {Array}
+ */
+AddImageArticleTarget.prototype.getImageLinearModel = function ( imageData ) {
+	var dimensions, imageRenderData,
+		NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
+		imageTitle = new mw.Title( imageData.image, NS_FILE ),
+		AddImageUtils = require( './AddImageUtils.js' );
+
+	dimensions = this.getImageDimensions( imageData );
+	imageRenderData = AddImageUtils.getImageRenderData( imageData.metadata, window, dimensions.width );
+	return [
+		{
+			type: 'mwGeRecommendedImage',
+			attributes: {
+				mediaClass: 'File',
+				mediaTag: 'img',
+				// This is a Commons image so the link needs to use the English namespace name
+				// but Title uses the localized one. That's OK, Parsoid will figure it out.
+				// Native VE images also use localized titles.
+				href: './' + imageTitle.getPrefixedText(),
+				resource: './' + imageTitle.getPrefixedText(),
+				type: 'thumb',
+				defaultSize: true,
+				// The generated wikitext will ignore width/height when defaultSize is set, but
+				// it's still used for the visual size of the thumbnail in the editor.
+				width: dimensions.width,
+				height: dimensions.height,
+				src: imageRenderData.src,
+				align: 'default',
+				filename: imageData.image,
+				originalClasses: [ 'mw-default-size' ],
+				isError: false,
+				mw: {},
+				// Pass image recommendation metadata to CERecommendedImageNode
+				recommendation: imageData,
+				recommendationIndex: this.selectedImageIndex
+			},
+			internal: {
+				whitespace: [ '\n', undefined, undefined, '\n' ]
+			}
+		},
+		{
+			type: 'mwGeRecommendedImageCaption',
+			attributes: {
+				taskType: this.TASK_TYPE_ID,
+				visibleSectionTitle: imageData.visibleSectionTitle || null
+			}
+		},
+		{ type: 'paragraph', internal: { generated: 'wrapper' } },
+		// Caption will be spliced in here. In the linear model each character is a separate item.
+		{ type: '/paragraph' },
+		{ type: '/mwGeRecommendedImageCaption' },
+		{ type: '/mwGeRecommendedImage' }
+	];
+};
+
+/**
+ * Add the recommended image to the VE document.
+ *
+ * @param {mw.libs.ge.ImageRecommendationImage} imageData
+ */
+AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
+	this.approvalTransaction = this.insertLinearModelAtRecommendationLocation(
+		this.getImageLinearModel( imageData )
+	);
 	this.hasStartedCaption = true;
 };
 
@@ -374,17 +438,29 @@ AddImageArticleTarget.prototype.isEndOfMetadata = function ( data, offset ) {
 };
 
 /**
- * Undo the last change. Can be used to undo insertImage().
+ * Replace the image placeholder with the actual image, when the user has approved it.
+ *
+ * @param {mw.libs.ge.ImageRecommendationImage} imageData
+ */
+AddImageArticleTarget.prototype.replacePlaceholderWithImage = function () {
+	throw new Error( 'Should only be called on the child class' );
+};
+
+/**
+ * Undo the last change. Can be used to undo insertImage() or replacePlaceholderWithImage().
  */
 AddImageArticleTarget.prototype.rollback = function () {
-	var surfaceModel = this.getSurface().getModel(), recommendedImageNodes;
+	var surfaceModel = this.getSurface().getModel();
+	if ( !this.approvalTransaction ) {
+		return;
+	}
+
 	surfaceModel.setReadOnly( false );
-	recommendedImageNodes = surfaceModel.getDocument().getNodesByType( 'mwGeRecommendedImage' );
-	recommendedImageNodes.forEach( function ( node ) {
-		surfaceModel.getLinearFragment( node.getOuterRange() ).delete();
-	} );
+	surfaceModel.change( this.approvalTransaction.reversed() );
 	surfaceModel.setReadOnly( true );
+	this.approvalTransaction = null;
 	this.updateSuggestionState( this.selectedImageIndex, null, [] );
+	this.hasStartedCaption = false;
 };
 
 /**
