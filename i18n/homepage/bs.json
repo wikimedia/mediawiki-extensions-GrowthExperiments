@@ -109,6 +109,7 @@
 	"growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox": "Ne prikazuj ponovo",
 	"growthexperiments-structuredtask-onboarding-dialog-label-next": "Sljedeći uvodni korak",
 	"growthexperiments-structuredtask-onboarding-dialog-label-previous": "Prethodni uvodni korak",
+	"growthexperiments-addlink-summary-summary": "Prijedlozi linkova: {{PLURAL:$1|dodan $1 link|dodana $1 linka|dodano $1 linkova}}.",
 	"growthexperiments-addlink-skip-body": "Jeste li sigurni da {{GENDER:|ne želite}} prihvatiti niti odbiti nijedan od prijedloga?",
 	"growthexperiments-addlink-skip-accept": "Preskoči sve",
 	"growthexperiments-addlink-skip-reject": "Pregledaj ponovo",
