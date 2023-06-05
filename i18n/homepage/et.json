@@ -74,7 +74,7 @@
 	"growthexperiments-homepage-contributions-zero-button": "Mine {{GENDER:$1|enda}} kodulehele",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Mine {{GENDER:$1|enda}} kodulehele",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong>. {{PLURAL:$2|soovitus}} <strong>$2</strong>-st",
-	"growthexperiments-homepage-suggestededits-pageviews": "$1 külastust (viimased 60 päeva)",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 {{PLURAL:$1|külastus|külastust}} (viimased 60 päeva)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Eelmine soovitatud muudatus",
 	"growthexperiments-homepage-suggestededits-next-card": "Järgmine soovitatud muudatus",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Rohkem soovitusi pole",

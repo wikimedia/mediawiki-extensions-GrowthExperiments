@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hello903hello"
+			"Hello903hello",
+			"捍粵者"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "開着編輯幫助版面",
@@ -22,13 +23,13 @@
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>準備好未？</strong> 請打開你想修改嘅章節，然後撳個鉛筆圖示。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "由<mark class=\"negative\">地求</mark>去水星有重大嘅技術挑戰。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "想作出改善嘅話，{{GENDER:|你}}只需要作出一兩處修改。{{GENDER:|你}}唔需要處理成篇文章，亦都唔需要對文章主題有特定知識。",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|你}}可以修正行文間嘅錯誤，譬如係錯別字、拗口嘅句子或唔啱嘅標點。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "您可以修正行文間嘅錯誤，譬如係錯別字、拗口嘅句子或唔啱嘅標點。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "火星<mark class=\"negative\">有有</mark>兩粒衛星。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules2": "{{GENDER:|你}}亦都可以重新寫過啲句子，確保呢啲句子入面無個人意見同諗法。{{SITENAME}}嘅內容係要中立、清楚同全面嘅。不過，要小心唔好改到句子入面啱嘅事實。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "木星係太陽系入面最大<mark class=\"negative\">、最得意</mark>嘅行星。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "呢句句子入面有需要剷走嘅個人諗法。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "{{SITENAME}}文章之間嘅連結容許讀者撳落佢哋想知多啲嘅嘢度。呢啲連結幫人輕鬆噉瀏覽其他{{SITENAME}}文章。",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "水星係<mark class=\"positive\">太陽系</mark>入面最細嘅<mark class=\"positive\">行星</mark>。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "水星係<mark class=\"positive\">太陽系</mark>最細嘅<mark class=\"positive\">行星</mark>。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-rules1": "月球大約係45.1億<mark class=\"negative\">年</mark>之前形成。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "金星有濃密嘅<mark class=\"positive\">大氣層</mark>",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step2": "請撳個「$1」掣$2，然後由清單度揀選佢應該連去嘅{{SITENAME}}文章。",
