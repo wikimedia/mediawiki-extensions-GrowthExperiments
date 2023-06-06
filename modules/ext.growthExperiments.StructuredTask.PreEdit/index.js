@@ -60,23 +60,31 @@ module.exports = ( function () {
 		mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).add(
 			showOnboardingIfEligible
 		);
-
 		if ( !shouldShowOnboarding ) {
 			return;
 		}
-		// Only append window manager & construct dialog if onboarding should be shown
-		StructuredTaskOnboardingDialog = require( './StructuredTaskOnboardingDialog.js' );
-		windowManager = new OO.ui.WindowManager( { modal: true } );
-		$( document.body ).append( windowManager.$element );
+		var uri = new mw.Uri();
+		if ( uri.query[ 'new-onboarding' ] === '1' ) {
+			/**
+			 * TODO use the Vue version of the dialog
+			 * https://phabricator.wikimedia.org/T331986
+			 */
+		} else {
+			// Only append window manager & construct dialog if onboarding should be shown
+			StructuredTaskOnboardingDialog = require( './StructuredTaskOnboardingDialog.js' );
+			windowManager = new OO.ui.WindowManager( { modal: true } );
+			$( document.body ).append( windowManager.$element );
 
-		windows[ dialogName ] = new StructuredTaskOnboardingDialog(
-			{
-				hasSlideTransition: true,
-				logger: logger
-			},
-			config
-		);
-		windowManager.addWindows( windows );
+			windows[ dialogName ] = new StructuredTaskOnboardingDialog(
+				{
+					hasSlideTransition: true,
+					logger: logger
+				},
+				config
+			);
+			windowManager.addWindows( windows );
+		}
+
 	}
 
 	/**
