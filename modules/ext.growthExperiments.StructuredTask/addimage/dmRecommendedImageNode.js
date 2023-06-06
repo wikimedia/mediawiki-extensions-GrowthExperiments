@@ -1,4 +1,8 @@
 /**
+ * Own attributes:
+ * - recommendation: {@see mw.libs.ge.dm.Recommendation}
+ * - recommendationIndex: {number} Zero-based index of the selected image suggestion.
+ *
  * @class mw.libs.ge.dm.RecommendedImageNode
  * @extends ve.dm.MWBlockImageNode
  * @constructor

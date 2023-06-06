@@ -195,7 +195,11 @@ RecommendedImageToolbarDialog.prototype.onResize = function () {
  * Insert the image and start caption step
  */
 RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
-	ve.init.target.insertImage( this.images[ 0 ] );
+	if ( ve.init.target.isSectionLevelTask() ) {
+		ve.init.target.replacePlaceholderWithImage( this.images[ 0 ] );
+	} else {
+		ve.init.target.insertImage( this.images[ 0 ] );
+	}
 	this.setState( true, [] );
 	this.logger.log( 'suggestion_accept', this.getSuggestionLogActionData() );
 	this.setUpCaptionStep();
