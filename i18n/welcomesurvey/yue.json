@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Hello903hello",
-			"Moon0319"
+			"Moon0319",
+			"捍粵者"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|歡迎}}，$1！",
+	"welcomesurvey": "歡迎，$1！",
 	"welcomesurvey-save-confirmation-title": "唔該晒！你嘅答覆經已儲存咗。",
 	"welcomesurvey-subtitle": "答咗以下幾條選填嘅問題，會幫到我哋改善{{GENDER:|閣下}}嘅維基百科使用體驗。",
 	"welcomesurvey-save-btn": "完成",
