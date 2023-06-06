@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<demo-wrapper>
 		<cdx-button @click="open = true">
 			Show Add image Dialog
 		</cdx-button>
@@ -11,19 +11,22 @@
 			@close="onDialogClose"
 		>
 		</add-image-dialog>
-	</div>
+	</demo-wrapper>
 </template>
 
 <script>
+import { ref } from 'vue';
 import { CdxButton } from '@wikimedia/codex';
 import AddImageDialog from '../../components/AddImageDialog.vue';
-import { ref } from 'vue';
+import DemoWrapper from '../DemoWrapper.vue';
+
 export default {
 	name: 'AddImageDialogDemo',
 
 	components: {
 		AddImageDialog,
-		CdxButton
+		CdxButton,
+		DemoWrapper
 	},
 	setup() {
 		const open = ref( false );

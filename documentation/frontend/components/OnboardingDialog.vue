@@ -52,7 +52,6 @@
 				ref="multiPaneRef"
 				v-model:current-step="currentStep"
 				:total-steps="totalSteps"
-				:is-rtl="isRtl"
 				@update:current-step="( newVal ) => currentStep = newVal"
 			>
 				<slot :name="currentSlotName"></slot>
@@ -163,10 +162,6 @@ export default {
 		 * provided via a v-model:is-checked binding in the parent scope.
 		 */
 		isChecked: {
-			type: Boolean,
-			default: false
-		},
-		isRtl: {
 			type: Boolean,
 			default: false
 		},

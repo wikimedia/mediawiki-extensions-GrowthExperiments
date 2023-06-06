@@ -4,7 +4,6 @@
 			<multi-pane
 				v-model:current-step="currentStep"
 				:total-steps="3"
-				:is-rtl="isRtl"
 				@update:current-step="( newVal ) => currentStep = newVal"
 			>
 				<template #step1>
@@ -67,12 +66,10 @@ export default {
 	},
 	setup() {
 		const currentStep = ref( 1 );
-		const isRtl = ref( false );
 		return {
 			cdxIconNext,
 			cdxIconPrevious,
-			currentStep,
-			isRtl
+			currentStep
 		};
 	}
 };
