@@ -2,7 +2,7 @@
 	"name": "GrowthExperiments",
 	"private": true,
 	"scripts": {
-		"api-testing": "mocha --require tests/api-testing/fixtures.cjs --parallel --recursive tests/api-testing",
+		"api-testing": "mocha --timeout 20000 --require tests/api-testing/fixtures.cjs --parallel --recursive tests/api-testing",
 		"doc": "cd documentation/frontend && npm ci && npm run docs:build",
 		"minify-svg": "svgo --config=.svgo.config.js --quiet --recursive --folder images/",
 		"selenium-daily": "npm run selenium-test",
