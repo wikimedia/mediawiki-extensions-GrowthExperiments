@@ -51,17 +51,18 @@ class PersonalizedPraiseLogger {
 			$additionalDataSerialized[] = sprintf( '%s=%s', $key, $value );
 		}
 
-		EventLogging::submit(
-			self::STREAM,
-			[
-				'$schema' => self::SCHEMA_VERSIONED,
-				'database' => WikiMap::getCurrentWikiId(),
-				'action' => $action,
-				'action_data' => implode( ';', $additionalDataSerialized ),
-				'mentor_id' => $mentor->getId(),
-				'mentee_id' => $mentee ? $mentee->getId() : null,
-			]
-		);
+		$eventData = [
+			'$schema' => self::SCHEMA_VERSIONED,
+			'database' => WikiMap::getCurrentWikiId(),
+			'action' => $action,
+			'action_data' => implode( ';', $additionalDataSerialized ),
+			'mentor_id' => $mentor->getId(),
+		];
+		if ( $mentee ) {
+			$eventData['mentee_id'] = $mentee->getId();
+		}
+
+		EventLogging::submit( self::STREAM, $eventData );
 	}
 
 	/**
