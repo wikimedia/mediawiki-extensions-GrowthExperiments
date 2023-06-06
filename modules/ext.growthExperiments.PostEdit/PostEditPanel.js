@@ -120,6 +120,7 @@ PostEditPanel.prototype.getPostEditToastMessage = function () {
 	// * growthexperiments-help-panel-postedit-success-message-notsaved
 	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation
 	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation
+	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation
 	messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
 	if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
 		messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation';
