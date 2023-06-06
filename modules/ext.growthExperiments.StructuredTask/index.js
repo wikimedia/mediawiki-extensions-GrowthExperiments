@@ -37,7 +37,7 @@ function addSectionImage() {
 		addSectionImageModules = {
 			AddSectionImageTargetInitializer: require( './addsectionimage/AddSectionImageTargetInitializer.js' ),
 			AddSectionImageArticleTarget: require( './addsectionimage/AddSectionImageArticleTarget.js' ),
-			RecommendedSectionImageToolbarDialog: require( './addimage/RecommendedImageToolbarDialog.js' ),
+			RecommendedSectionImageToolbarDialog: require( './addsectionimage/RecommendedSectionImageToolbarDialog.js' ),
 			AddSectionImageSaveDialog: require( './addimage/AddImageSaveDialog.js' ),
 			ImageSuggestionInteractionLogger: require( './addimage/ImageSuggestionInteractionLogger.js' ),
 			AddImageUtils: require( './addimage/AddImageUtils.js' )

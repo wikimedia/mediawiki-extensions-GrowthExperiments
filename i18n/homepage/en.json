@@ -475,6 +475,8 @@
 	"growthexperiments-addimage-inspector-help-button": "Get help with editing",
 	"growthexperiments-addimage-inspector-details-button": "View image details",
 	"growthexperiments-addimage-inspector-description-placeholder": "No description available",
+	"growthexperiments-addsectionimage-inspector-title": "Add an image to an article section",
+	"growthexperiments-addsectionimage-inspector-cta": "Add this image to the article section \"$1\"?",
 	"growthexperiments-addimage-detailsdialog-header": "Image details",
 	"growthexperiments-addimage-detailsdialog-image": "Filename:",
 	"growthexperiments-addimage-detailsdialog-description": "Description:",
