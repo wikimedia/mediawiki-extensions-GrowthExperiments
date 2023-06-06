@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Kyykaarme",
-			"MITO"
+			"MITO",
+			"Pyscowicz"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|mikä tämä on?]])",
 	"growthexperiments-confirmemail-emailhelp": "Sähköpostiosoitetta tarvitaan käyttäjätilisi palauttamiseksi, jos unohdat salasanasi.",
 	"growthexperiments-confirmemail-emailrecommended": "Sähköpostiosoite (suositeltava)",
+	"growthexperiments-confirmemail-confirm-subject": "Tervetuloa sivustolle {{SITENAME}}: Vahvista sähköpostiosoitteesi",
+	"growthexperiments-confirmemail-confirm-button": "Varmenna sähköpostiosoite",
 	"growthexperiments-signupcampaign-bullet3": "Aloita pienistä ja helpoista muokkauksista"
 }
