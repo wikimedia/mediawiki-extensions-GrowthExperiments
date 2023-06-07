@@ -359,6 +359,8 @@
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|reviewed}} $4 {{PLURAL:$4|link suggestion|link suggestions}} for $3: {{PLURAL:$5|accepted}} $5, {{PLURAL:$6|rejected}} $6 and {{PLURAL:$7|skipped}} $7",
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|reviewed}} an image suggestion for $3: accepted",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|reviewed}} an image suggestion for $3: rejected",
+	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|reviewed}} an image suggestion for $3 (section $4): accepted",
+	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|reviewed}} an image suggestion for $3 (section $4): rejected",
 	"log-action-filter-growthexperiments": "Type of GrowthExperiments event:",
 	"log-action-filter-growthexperiments-claimmentee": "Mentee changes",
 	"log-action-filter-growthexperiments-setmentor": "Mentor changes",

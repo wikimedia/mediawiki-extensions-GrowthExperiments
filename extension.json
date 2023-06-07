@@ -2864,7 +2864,8 @@
 		"growthexperiments/setmentor-no-previous-mentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
 		"growthexperiments/claimmentee-no-previous-mentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
 		"growthexperiments/addlink": "LogFormatter",
-		"growthexperiments/addimage": "GrowthExperiments\\NewcomerTasks\\AddImage\\AddImageLogFormatter"
+		"growthexperiments/addimage": "GrowthExperiments\\NewcomerTasks\\AddImage\\AddImageLogFormatter",
+		"growthexperiments/addsectionimage": "GrowthExperiments\\NewcomerTasks\\AddSectionImage\\AddSectionImageLogFormatter"
 	},
 	"ActionFilteredLogs": {
 		"growthexperiments": {
@@ -2880,7 +2881,8 @@
 				"addlink"
 			],
 			"addimage": [
-				"addimage"
+				"addimage",
+				"addsectionimage"
 			]
 		}
 	},

@@ -380,6 +380,8 @@
 	"logentry-growthexperiments-addlink": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-addlink}}\nAdditional parameters:\n* $4 - the number of links that the user reviewed.\n* $5 - the number of links that the user accepted.\n* $6 - the number of links that the user rejected.\n* $7 - the number of links that the user skipped.",
 	"logentry-growthexperiments-addimage-accepted": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-addimage}}",
 	"logentry-growthexperiments-addimage-rejected": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-addimage}}",
+	"logentry-growthexperiments-addsectionimage-accepted": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-addimage}}\nAdditional parameters:\n* $4 - the title of the section the suggestion was for",
+	"logentry-growthexperiments-addsectionimage-rejected": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-addimage}}\nAdditional parameters:\n* $4 - the title of the section the suggestion was for",
 	"log-action-filter-growthexperiments": "{{doc-log-action-filter-type|growthexperiments}}",
 	"log-action-filter-growthexperiments-claimmentee": "{{doc-log-action-filter-action|growthexperiments|claimmentee}}",
 	"log-action-filter-growthexperiments-setmentor": "{{doc-log-action-filter-action|growthexperiments|setmentor}}",
