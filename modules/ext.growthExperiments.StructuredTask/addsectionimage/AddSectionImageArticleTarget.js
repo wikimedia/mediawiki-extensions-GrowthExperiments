@@ -240,7 +240,7 @@ AddSectionImageArticleTarget.prototype.getSuggestionLogActionData = function ( i
 /** @inheritDoc **/
 AddSectionImageArticleTarget.prototype.formatSaveOptions = function ( saveOptions ) {
 	// FIXME modify or remove this method override
-	saveOptions.summary = '/* growthexperiments-addimage-summary-summary: 1 */';
+	saveOptions.summary = '/* growthexperiments-addsectionimage-summary-summary: 1 */';
 	return saveOptions;
 };
 
