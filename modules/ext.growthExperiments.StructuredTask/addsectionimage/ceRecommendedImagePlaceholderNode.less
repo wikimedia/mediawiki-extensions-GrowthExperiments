@@ -1,0 +1,52 @@
+@import 'mediawiki.skin.variables.less';
+
+.ge-section-image-placeholder {
+	// Border and background rules come from the placeholder's own design.
+	// background-image is omitted, we set some OOUI CSS classes on the element instead.
+	background-color: @background-color-progressive-subtle;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 32px;
+	border: 2px dashed @border-color-progressive;
+	// follow ceRecommendedImageNode.less
+	max-width: 500px;
+}
+
+.mw-ge-structuredTaskDesktopArticleTarget {
+	.ge-section-image-placeholder {
+		// copy figure[typeof~='mw:File/Thumb'].mw-halign-right rules from
+		// resources/src/mediawiki.skinning/content.media-common.less
+		/* @noflip */
+		float: right;
+		/* @noflip */
+		clear: right;
+		/* @noflip */
+		margin: 0.5em 0 1.3em 1.4em;
+	}
+}
+
+.mw-ge-structuredTaskMobileArticleTarget {
+	.ge-section-image-placeholder {
+		//	figure[typeof~='mw:File/Thumb'] from
+		// resources/skins.minerva.base.styles/content/thumbnails.less
+		margin: 0.6em auto;
+		display: table;
+	}
+}
+
+@media screen and ( min-width: @width-breakpoint-tablet ) {
+	.mw-ge-structuredTaskMobileArticleTarget {
+		.ge-section-image-placeholder {
+			// figure[typeof~='mw:File/Thumb'].mw-halign-right from
+			// MinervaNeue:resources/skins.minerva.base.styles/content/tablet/common.less
+			/* @noflip */
+			float: right;
+			/* @noflip */
+			clear: right;
+			/* @noflip */
+			margin-left: 1.4em;
+			/* @noflip */
+			margin-right: 0;
+		}
+	}
+}

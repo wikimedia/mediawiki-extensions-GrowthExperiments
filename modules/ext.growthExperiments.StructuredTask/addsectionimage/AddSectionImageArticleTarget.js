@@ -87,10 +87,15 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
  * @param {mw.libs.ge.ImageRecommendationImage} imageData
  */
 AddSectionImageArticleTarget.prototype.insertImagePlaceholder = function ( imageData ) {
-	// FIXME insert a placeholder instead
+	var dimensions = this.getImageDimensions( imageData );
 	this.insertLinearModelAtRecommendationLocation( [
-		this.getImageLinearModel( imageData )[ 0 ],
-		{ type: '/mwGeRecommendedImage' }
+		{
+			type: 'mwGeRecommendedImagePlaceholder',
+			attributes: {
+				width: dimensions.width,
+				height: dimensions.height
+			}
+		}
 	], imageData );
 };
 
@@ -103,8 +108,7 @@ AddSectionImageArticleTarget.prototype.replacePlaceholderWithImage = function ( 
 		surfaceModel = this.getSurface().getModel();
 
 	surfaceModel.setReadOnly( false );
-	// FIXME use mwGeRecommendedImagePlaceholder
-	recommendedImageNodes = surfaceModel.getDocument().getNodesByType( 'mwGeRecommendedImage' );
+	recommendedImageNodes = surfaceModel.getDocument().getNodesByType( 'mwGeRecommendedImagePlaceholder' );
 	recommendedImageNodes.forEach( function ( node ) {
 		self.approvalTransaction = ve.dm.TransactionBuilder.static.newFromReplacement(
 			surfaceModel.getDocument(),

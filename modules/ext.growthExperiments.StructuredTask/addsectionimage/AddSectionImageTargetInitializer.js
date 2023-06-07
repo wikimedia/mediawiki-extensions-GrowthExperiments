@@ -5,12 +5,12 @@ var TargetInitializer = require( '../TargetInitializer.js' ),
 	AddImageDetailsDialog = require( '../addimage/AddImageDetailsDialog.js' ),
 	ImageSuggestionInteractionLogger = require( '../addimage/ImageSuggestionInteractionLogger.js' ),
 	SuggestionInteractionLogger = require( '../SuggestionInteractionLogger.js' ),
-	// FIXME clone me
-	CERecommendedSectionImageNode = require( '../addimage/ceRecommendedImageNode.js' ),
-	// FIXME clone me
-	DMRecommendedSectionImageNode = require( '../addimage/dmRecommendedImageNode.js' ),
+	CERecommendedImageNode = require( '../addimage/ceRecommendedImageNode.js' ),
+	DMRecommendedImageNode = require( '../addimage/dmRecommendedImageNode.js' ),
 	CERecommendedImageCaptionNode = require( '../addimage/ceRecommendedImageCaptionNode.js' ),
 	DMRecommendedImageCaptionNode = require( '../addimage/dmRecommendedImageCaptionNode.js' ),
+	CERecommendedImagePlaceholderNode = require( './ceRecommendedImagePlaceholderNode.js' ),
+	DMRecommendedImagePlaceholderNode = require( './dmRecommendedImagePlaceholderNode.js' ),
 	AddImageLinearDeleteKeyDownHandler = require( '../addimage/AddImageLinearDeleteKeyDownHandler.js' ),
 	AddSectionImageCaptionInfoDialog = require( './AddSectionImageCaptionInfoDialog.js' );
 
@@ -36,7 +36,7 @@ function AddSectionImageTargetInitializer( platformConfig ) {
 	// selectAll command keeps the focus on the field when selecting all
 	// This is used in the caption step.
 	config.safeCommands = [ toolbarDialogCommand.name, 'selectAll' ];
-	config.dataModels = [ DMRecommendedSectionImageNode, DMRecommendedImageCaptionNode ];
+	config.dataModels = [ DMRecommendedImageNode, DMRecommendedImageCaptionNode, DMRecommendedImagePlaceholderNode ];
 	config.annotationViews = [];
 	config.windows = ( platformConfig.windows || [] ).concat( [
 		RecommendedSectionImageRejectionDialog,
@@ -45,7 +45,7 @@ function AddSectionImageTargetInitializer( platformConfig ) {
 		AddSectionImageCaptionInfoDialog
 	] );
 	config.commands = [ toolbarDialogCommand ];
-	config.nodes = [ CERecommendedSectionImageNode, CERecommendedImageCaptionNode ];
+	config.nodes = [ CERecommendedImageNode, CERecommendedImageCaptionNode, CERecommendedImagePlaceholderNode ];
 	SuggestionInteractionLogger.initialize( new ImageSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: OO.ui.isMobile(),

@@ -1207,6 +1207,8 @@
 				"ext.growthExperiments.StructuredTask/addsectionimage/AddSectionImageTargetInitializer.js",
 				"ext.growthExperiments.StructuredTask/addsectionimage/AddSectionImageArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/addsectionimage/AddSectionImageCaptionInfoDialog.js",
+				"ext.growthExperiments.StructuredTask/addsectionimage/ceRecommendedImagePlaceholderNode.js",
+				"ext.growthExperiments.StructuredTask/addsectionimage/dmRecommendedImagePlaceholderNode.js",
 				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",
 				"ui-components/SelectWithTextInputWidget.js",
@@ -1231,6 +1233,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.less",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageSaveDialog.less",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.less",
+				"ext.growthExperiments.StructuredTask/addsectionimage/ceRecommendedImagePlaceholderNode.less",
 				"ui-components/HelpPanelButton.less"
 			],
 			"messages": [
