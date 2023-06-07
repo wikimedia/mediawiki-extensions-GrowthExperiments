@@ -232,8 +232,10 @@ AddSectionImageArticleTarget.prototype.getSuggestionLogActionData = function ( i
 		sectionTitle = imageData.sectionTitle;
 
 	actionData = AddSectionImageArticleTarget.super.prototype.getSuggestionLogActionData.call( this, index );
-	actionData.sectionNumber = sectionNumber;
-	actionData.sectionTitle = sectionTitle;
+	/* eslint-disable camelcase */
+	actionData.section_ordinal = sectionNumber;
+	actionData.section_title = sectionTitle;
+	/* eslint-enable camelcase */
 	return actionData;
 };
 
