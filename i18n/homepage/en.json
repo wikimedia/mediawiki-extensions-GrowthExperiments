@@ -566,6 +566,7 @@
 	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-neutral": "Stay neutral by avoiding judgments like “good”, “ugly”, or “beautiful”.",
 	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-language": "Write in this article's language: $1.",
 	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-language-generic": "Write in the language of the Wikipedia {{GENDER:|you}} are in.",
+	"growthexperiments-addsectionimage-summary-summary": "Image suggestions feature: $1 {{PLURAL:$1|image|images}} added.",
 	"growthexperiments-addsectionimage-daily-task-limit-exceeded": "{{GENDER:|You}} have completed all of today's section-level image suggestions.\n\nAdjust {{GENDER:|your}} difficulty levels to see other types of edits or come back tomorrow for more image suggestions.",
 	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "Got it",
 	"growthexperiments-homepage-mentorship-optin-header": "Mentor for editing",

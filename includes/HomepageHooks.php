@@ -1416,7 +1416,8 @@ class HomepageHooks implements
 	) {
 		$allowedMessageKeys = [
 			'growthexperiments-addlink-summary-summary',
-			'growthexperiments-addimage-summary-summary'
+			'growthexperiments-addimage-summary-summary',
+			'growthexperiments-addsectionimage-summary-summary',
 		];
 		$messageParts = explode( ':', $auto );
 		$messageKey = $messageParts[ 0 ];
