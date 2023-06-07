@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hello903hello"
+			"Hello903hello",
+			"捍粵者"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|呢樣係乜嘢？]])",
@@ -10,5 +11,5 @@
 	"growthexperiments-confirmemail-emailwarning": "請留意由我哋發出嘅電郵去驗證你嘅地址。",
 	"growthexperiments-confirmemail-confirm-subject": "歡迎嚟到{{SITENAME}}：請確認你嘅電郵地址",
 	"growthexperiments-confirmemail-confirm-button": "確認電郵地址",
-	"growthexperiments-signupcampaign-bullet3": "由作出容易嘅修改開始"
+	"growthexperiments-signupcampaign-bullet3": "由簡易修改開始"
 }

@@ -3,12 +3,13 @@
 		"authors": [
 			"Hello903hello",
 			"Matttest",
-			"Moon0319"
+			"Moon0319",
+			"捍粵者"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|你好}}，{{bidi:$1}}！",
 	"growthexperiments-homepage-tab": "頭版",
-	"tooltip-pt-homepage": "{{GENDER:|你}}嘅頭版",
+	"tooltip-pt-homepage": "您嘅頭版",
 	"growthexperiments-homepage-email-header-noemail": "加{{GENDER:$1|你嘅}}電郵地址",
 	"growthexperiments-homepage-email-header-unconfirmed": "確認{{GENDER:$1|你嘅}}電郵地址",
 	"growthexperiments-homepage-email-header-confirmed": "加咗電郵地址",
@@ -28,10 +29,10 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "搞掂",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "搞掂",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "試下啲<strong>容易</strong>嘅修改提議先",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "你可以透過好多方式為{{SITENAME}}作出貢獻。",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "您可以用好多方式貢獻{{SITENAME}}。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "容易",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "建議畀啱啱開始學改嘢嘅{{GENDER:$1|你}}。",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "當{{GENDER:$1|你}}作出咗一啲容易嘅修改之後。",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "您簡易修改咗啲內容之後。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "當{{GENDER:$1|你}}學識咗維基百科嘅最好實踐方法嘅時候。",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|你嘅}}影響",
 	"growthexperiments-homepage-mentorship-question-subject": "來自[[User:$1|$1]]嘅問題",

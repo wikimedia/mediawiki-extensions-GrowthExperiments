@@ -3,7 +3,8 @@
 		"authors": [
 			"MITO",
 			"Markus Mikkonen",
-			"Kyykaarme"
+			"Kyykaarme",
+			"Pyscowicz"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Selitys",
@@ -32,7 +33,9 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "päivää",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Tapahtui virhe. Yritä myöhemmin uudelleen.",
 	"growthexperiments-rcfilters-mentorship-title": "Mentorointi",
+	"echo-category-title-ge-mentorship": "Mentorointi",
 	"growthexperiments-notification-body-mentee-claimed": "Syy: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Noin puolet keskiarvosta",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Keskiarvo (oletus)"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Keskiarvo (oletus)",
+	"growthexperiments-mentor-list-missing-key": "Avain <code>$1</code> puuttuu"
 }
