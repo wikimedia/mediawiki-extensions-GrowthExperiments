@@ -139,6 +139,8 @@
 	"tag-newcomer_task_add_link-description": "\"Add link\" task edit suggested by the suggested edits module of the newcomer homepage",
 	"tag-newcomer_task_image_suggestion": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-image|Suggested: add images]]",
 	"tag-newcomer_task_image_suggestion-description": "\"Add images\" task edit suggested by the suggested edits module of the newcomer homepage",
+	"tag-newcomer_task_section_image_suggestion": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-section-image|Suggested: add images to sections]]",
+	"tag-newcomer_task_section_image_suggestion-description": "\"Add images to sections\" task edit suggested by the suggested edits module of the newcomer homepage",
 	"growthexperiments-homepage-help-dialog-title": "Ask the help desk",
 	"growthexperiments-homepage-help-header": "Get help with editing",
 	"growthexperiments-homepage-help-subheader": "Top help pages about editing",
