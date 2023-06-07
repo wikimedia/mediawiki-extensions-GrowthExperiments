@@ -92,7 +92,7 @@ export default {
 		} );
 
 		function onTouchStart( e ) {
-			const touchEvent = e.touches.item( 0 );
+			const touchEvent = e.touches[ 0 ];
 			initialX.value = touchEvent.clientX;
 			initialY.value = touchEvent.clientY;
 		}
@@ -121,7 +121,7 @@ export default {
 			if ( !initialX.value || !initialY.value ) {
 				return;
 			}
-			if ( isSwipeToLeft( e.touches.item( 0 ) ) ) {
+			if ( isSwipeToLeft( e.touches[ 0 ] ) ) {
 				onSwipeToLeft();
 			} else {
 				onSwipeToRight();
