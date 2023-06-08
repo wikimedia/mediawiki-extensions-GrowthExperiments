@@ -13,7 +13,9 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use ManualLogEntry;
 use MediaWiki\Page\ProperPageIdentity;
@@ -126,11 +128,15 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		if ( $taskSet instanceof TaskSet ) {
 			$qualityGateConfig = $taskSet->getQualityGateConfig();
 			if ( $taskType instanceof ImageRecommendationBaseTaskType
-				&& isset( $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] )
-				&& $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount']
+				&& isset( $qualityGateConfig[$taskType->getId()]['dailyCount'] )
+				&& $qualityGateConfig[$taskType->getId()]['dailyCount']
 					>= $taskType->getMaxTasksPerDay() - 1
 			) {
-				$warnings['geimagerecommendationdailytasksexceeded'] = true;
+				if ( $taskType instanceof ImageRecommendationTaskType ) {
+					$warnings['geimagerecommendationdailytasksexceeded'] = true;
+				} elseif ( $taskType instanceof SectionImageRecommendationTaskType ) {
+					$warnings['gesectionimagerecommendationdailytasksexceeded'] = true;
+				}
 			}
 		}
 
