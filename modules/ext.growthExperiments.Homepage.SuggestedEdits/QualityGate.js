@@ -118,10 +118,10 @@ QualityGate.prototype.showSectionImageRecommendationDailyLimitAlertDialog = func
 	this.loggers[ 'section-image-recommendation' ].log( 'impression', 'dailyLimit', this.config.loggerMetadataOverrides );
 	this.showAlertDialog(
 		'dailyLimit',
-		mw.message( 'growthexperiments-section-image-recommendation-daily-task-limit-exceeded' ).parse(),
+		mw.message( 'growthexperiments-addsectionimage-daily-task-limit-exceeded' ).parse(),
 		{
 			action: 'accept',
-			label: mw.message( 'growthexperiments-section-image-recommendation-daily-task-limit-exceeded-dialog-button' ).text(),
+			label: mw.message( 'growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button' ).text(),
 			flags: 'primary'
 		}
 	);
