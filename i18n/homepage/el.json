@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AProdromou",
 			"Dogogos123",
 			"Geraki",
 			"Giannaras99",
@@ -236,6 +237,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Προσθήκη συνδέσμων μεταξύ λημμάτων",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Προσθήκη συνδέσμων μεταξύ λημμάτων",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Προσθήκη προτεινόμενης εικόνας",
+	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Προσθέστε μια εικόνα σε μια ενότητα άρθρου",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Μηχανικές προτάσεις",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Επιλέξτε την επιλογή «Αντιστοίχιση όλων των επιλεγμένων θεμάτων» για πιο συγκεκριμένα αποτελέσματα",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Αντιστοιχίστε όλα τα επιλεγμένα θέματα",
