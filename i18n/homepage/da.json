@@ -6,7 +6,8 @@
 			"Nico",
 			"Saederup92",
 			"SiGNOUT",
-			"Steenth"
+			"Steenth",
+			"Sarrus"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
@@ -327,6 +328,7 @@
 	"growthexperiments-addlink-rejectiondialog-action-done": "Færdig",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Retningslinjer",
 	"growthexperiments-structuredtask-onboarding-dialog-get-started-button": "Kom igang",
+	"growthexperiments-addlink-summary-summary": "Linkforslagsfunktion: $1 {{PLURAL:$1|link|links}} tilføjet.",
 	"grant-managementorship": "Administrer mentorskab",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Forslag",
