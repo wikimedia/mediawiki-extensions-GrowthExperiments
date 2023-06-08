@@ -29,17 +29,27 @@
 
 		&-placeholder {
 			/* @embed */
-			background: url( ../../images/suggestededits/placeholder-image.svg ) no-repeat center/40px, @background-color-growth-apparent;
+			background: url( ../../images/suggestededits/placeholder-image.svg ) no-repeat center/40px, @mediumBackgroundColor;
 
-			.mw-ge-tasktype-image-recommendation &,
-			.mw-ge-tasktype-section-image-recommendation & {
+			.mw-ge-tasktype-image-recommendation & {
 				/* @embed */
-				background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @color-subtle;
+				background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @mediumBackgroundColor;
 
 				html:lang( he ) & {
 					// Use LTR asset for Hebrew since it contains a question mark
 					/* @noflip */
-					background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @color-subtle;
+					background: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @mediumBackgroundColor;
+				}
+			}
+
+			.mw-ge-tasktype-section-image-recommendation & {
+				/* @embed */
+				background: url( ../../images/addsectionimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px @mediumBackgroundColor;
+
+				html:lang( he ) & {
+					// Use LTR asset for Hebrew since it contains a question mark
+					/* @noflip */
+					background: url( ../../images/addsectionimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px @mediumBackgroundColor;
 				}
 			}
 		}

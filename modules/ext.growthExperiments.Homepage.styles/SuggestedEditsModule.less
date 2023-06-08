@@ -556,16 +556,29 @@ body.mw-special-Homepage {
 
 						&.mw-ge-tasktype-image-recommendation,
 						&.mw-ge-tasktype-section-image-recommendation {
-							background-color: #72777d;
-							background-image: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ), url( ../../images/addimage/commons.svg );
+							background-color: @mediumBackgroundColor;
 							background-repeat: no-repeat;
 							background-position: center center, right 12px bottom 12px;
 							background-size: 75px, 100px;
+						}
+
+						&.mw-ge-tasktype-image-recommendation {
+							background-image: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ), url( ../../images/addimage/commons.svg );
 
 							html:lang( he ) & {
 								// Use LTR asset for Hebrew since it contains a question mark
 								/* @noflip */
 								background-image: url( ../../images/addimage/placeholder-with-question-mark-ltr.svg ), url( ../../images/addimage/commons.svg );
+							}
+						}
+
+						&.mw-ge-tasktype-section-image-recommendation {
+							background-image: url( ../../images/addsectionimage/placeholder-with-question-mark-ltr.svg ), url( ../../images/addimage/commons.svg );
+
+							html:lang( he ) & {
+								// Use LTR asset for Hebrew since it contains a question mark
+								/* @noflip */
+								background-image: url( ../../images/addsectionimage/placeholder-with-question-mark-ltr.svg ), url( ../../images/addimage/commons.svg );
 							}
 						}
 					}
