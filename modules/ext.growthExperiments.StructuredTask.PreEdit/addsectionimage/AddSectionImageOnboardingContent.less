@@ -1,12 +1,16 @@
 @import 'mediawiki.skin.variables.less';
 
 .onboarding-image( @index ) {
-	// FIXME add mobile assets when they are ready (T332925)
-	// &-image@{index} {
-	// 	background-image: url( '../../../images/addsectionimage/onboarding-image@{index}-ltr.svg' );
-	// }
+	&-image@{index} {
+		// FIXME add mobile assets when they are ready (T332925)
+		background-image: url( '../../../images/addsectionimage/desktop-onboarding-image@{index}-ltr.svg' );
+		// Reposition image so it does not overlap with the pager
+		background-position: 120px;
+	}
 	&-image@{index}--desktop {
 		background-image: url( '../../../images/addsectionimage/desktop-onboarding-image@{index}-ltr.svg' );
+		// Reposition image so it does not overlap with the pager
+		background-position: 120px;
 	}
 }
 
