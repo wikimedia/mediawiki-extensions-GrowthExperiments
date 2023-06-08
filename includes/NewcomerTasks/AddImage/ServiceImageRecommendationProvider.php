@@ -160,7 +160,6 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param int $maxSuggestionsToProcess Maximum number of valid suggestions to process and return
 	 *   with an ImageRecommendation object.
 	 * @return ImageRecommendation|StatusValue
-	 * @throws \MWException
 	 */
 	public static function processApiResponseData(
 		ImageRecommendationBaseTaskType $taskType,

@@ -67,7 +67,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	}
 
 	/**
-	 * @throws \MWException
 	 * @covers \GrowthExperiments\Specials\SpecialHomepage::handleDisabledPreference
 	 * @covers \GrowthExperiments\Specials\SpecialHomepage::execute
 	 */
@@ -83,7 +82,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 * @param string|null|int $titleId
 	 * @param array $params
 	 * @param array $expectedMissingParams
-	 * @throws \MWException
 	 */
 	public function testMissingParametersToNewcomerTaskSubpath(
 		$titleId, array $params, array $expectedMissingParams

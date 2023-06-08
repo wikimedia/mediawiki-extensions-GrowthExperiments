@@ -19,7 +19,6 @@ use Wikimedia\TestingAccessWrapper;
 class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @throws \MWException
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::__construct
 	 */
 	public function testConstruct() {
