@@ -127,9 +127,9 @@ class InitWikiConfig extends Maintenance {
 	}
 
 	/**
-	 * @return array|false
+	 * @return array
 	 */
-	private function getGEConfigVariables() {
+	private function getGEConfigVariables(): array {
 		// Init list of variables
 		$variables = [];
 
@@ -368,11 +368,6 @@ class InitWikiConfig extends Maintenance {
 			->newWikiPageConfigWriter( $title );
 
 		$variables = $this->getGEConfigVariables();
-		if ( $variables === false ) {
-			// Error messages were printed in getVariables
-			return false;
-		}
-
 		if ( !$dryRun ) {
 			$wikiPageConfigWriter->setVariables( $variables );
 			$status = $wikiPageConfigWriter->save( $this->getEditSummary() );
