@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\LevelingUp;
 
-use EchoEventPresentationModel;
+use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 
 /**
  * Echo notification for "Keep going" (T328288)

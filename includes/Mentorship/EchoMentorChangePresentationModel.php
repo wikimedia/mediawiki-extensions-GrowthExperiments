@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
-use EchoEventPresentationModel;
+use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 
 class EchoMentorChangePresentationModel extends EchoEventPresentationModel {
 

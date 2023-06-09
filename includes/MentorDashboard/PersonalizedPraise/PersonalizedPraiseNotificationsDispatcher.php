@@ -4,8 +4,8 @@ namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
 use BagOStuff;
 use Config;
-use EchoEvent;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserIdentity;
 use MWTimestamp;
@@ -143,9 +143,9 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 		}
 
 		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
-			// EchoEvent::create accesses global state, avoid calling it when running the test
+			// Event::create accesses global state, avoid calling it when running the test
 			// suite.
-			EchoEvent::create( [
+			Event::create( [
 				'type' => 'new-praiseworthy-mentees',
 				'title' => $this->specialPageFactory->getTitleForAlias( 'MentorDashboard' ),
 				'agent' => $mentor,

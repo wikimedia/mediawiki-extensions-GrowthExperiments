@@ -10,7 +10,7 @@ use MediaWiki\User\UserIdentity;
  *
  * This class overrides ChangeMentor::log and ChangeMentor::notify to no-ops, as they cannot be
  * reasonably unit-tested (due to direct construction of ManualLogEntry and direct call of
- * EchoEvent::create respectively).
+ * Event::create respectively).
  *
  * It also makes ChangeMentor consider Homepage enabled for everyone.
  */

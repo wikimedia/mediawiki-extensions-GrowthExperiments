@@ -2,7 +2,9 @@
 
 namespace GrowthExperiments\Mentorship;
 
-class EchoMenteeClaimPresentationModel extends \EchoEventPresentationModel {
+use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
+
+class EchoMenteeClaimPresentationModel extends EchoEventPresentationModel {
 
 	/**
 	 * @inheritDoc
