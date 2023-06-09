@@ -16,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use ManualLogEntry;
 use MediaWiki\Page\ProperPageIdentity;
@@ -36,13 +37,25 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * RecommendedImageRejectionDialog.rejectionReasons.
 	 */
 	public const REJECTION_REASONS = [
-		'notrelevant', 'noinfo', 'offensive', 'lowquality', 'unfamiliar', 'foreignlanguage', 'other'
+		'notrelevant',
+		'sectionnotappropriate',
+		'noinfo',
+		'offensive',
+		'lowquality',
+		'unfamiliar',
+		'foreignlanguage',
+		'other'
 	];
 	/**
 	 * Rejection reasons which means the user is undecided (as opposed thinking the image is bad).
 	 * Should be a subset of REJECTION_REASONS.
 	 */
 	private const REJECTION_REASONS_UNDECIDED = [ 'unfamiliar', 'foreignlanguage' ];
+
+	private const LOG_SUBTYPES = [
+		ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => 'addimage',
+		SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID => 'addsectionimage',
+	];
 
 	/** @var callable */
 	private $cirrusSearchFactory;
@@ -100,7 +113,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		if ( !$status->isGood() ) {
 			return $status;
 		}
-		[ $accepted, $reasons, $filename ] = $status->getValue();
+		[ $accepted, $reasons, $filename, $sectionTitle, $sectionNumber ] = $status->getValue();
 
 		// Remove this image from being recommended in the future, unless it was rejected with
 		// one of the "not sure" options.
@@ -111,6 +124,8 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 				$user->getId(),
 				$accepted,
 				$filename,
+				$sectionTitle,
+				$sectionNumber,
 				$reasons
 			);
 		}
@@ -140,10 +155,12 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 			}
 		}
 
-		$logEntry = new ManualLogEntry( 'growthexperiments', 'addimage' );
+		$subType = self::LOG_SUBTYPES[ $taskType->getId() ];
+		$logEntry = new ManualLogEntry( 'growthexperiments', $subType );
 		$logEntry->setTarget( $page );
 		$logEntry->setPerformer( $user );
 		$logEntry->setParameters( [
+			'4::section' => $sectionTitle,
 			'accepted' => $accepted,
 		] );
 		if ( $editRevId ) {
@@ -217,6 +234,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 				);
 			}
 		}
+
 		$recommendationAccepted = $data[ 'accepted' ] ?? false;
 		if ( $recommendationAccepted ) {
 			$minCaptionLength = $taskType->getMinimumCaptionCharacterLength();
@@ -228,7 +246,53 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 			}
 		}
 
-		return StatusValue::newGood( [ $data['accepted'], array_values( $data['reasons'] ), $data['filename'] ] );
+		// sectionTitle and sectionNumber are present in addimage and addsection image recommendation
+		// data. Values will be null for addimage submissions.
+		// See AddImageArticleTarget.prototype.invalidateRecommendation
+		if ( !array_key_exists( 'sectionTitle', $data ) ) {
+			return StatusValue::newGood()
+				->error( 'apierror-growthexperiments-addimage-handler-section-title-missing' );
+		}
+		if ( !array_key_exists( 'sectionNumber', $data ) ) {
+			return StatusValue::newGood()
+				->error( 'apierror-growthexperiments-addimage-handler-section-number-missing' );
+		}
+		if ( $taskType instanceof ImageRecommendationTaskType ) {
+			if ( $data['sectionTitle'] !== null ) {
+				return StatusValue::newGood()->error(
+					'apierror-growthexperiments-addimage-handler-section-title-wrongtype',
+					gettype( $data['sectionTitle'] )
+				);
+			}
+			if ( $data['sectionNumber'] !== null ) {
+				return StatusValue::newGood()->error(
+					'apierror-growthexperiments-addimage-handler-section-number-wrongtype',
+					gettype( $data['sectionTitle'] )
+				);
+			}
+		}
+		if ( $taskType instanceof SectionImageRecommendationTaskType ) {
+			if ( !is_string( $data['sectionTitle'] ) ) {
+				return StatusValue::newGood()->error(
+					'apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype',
+					gettype( $data['sectionTitle'] )
+				);
+			}
+			if ( !is_int( $data['sectionNumber'] ) ) {
+				return StatusValue::newGood()->error(
+					'apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype',
+					gettype( $data['sectionTitle'] )
+				);
+			}
+		}
+
+		return StatusValue::newGood( [
+			$data['accepted'],
+			array_values( $data['reasons'] ),
+			$data['filename'],
+			$data['sectionTitle'],
+			$data['sectionNumber'],
+		] );
 	}
 
 	/**
@@ -247,6 +311,8 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * @param null|bool $accepted True if accepted, false if rejected, null if invalidating for
 	 * other reasons (e.g. image exists on page when user visits it)
 	 * @param string $filename Unprefixed filename.
+	 * @param string|null $sectionTitle Title of the section the suggestion is for
+	 * @param int|null $sectionNumber Number of the section the suggestion is for
 	 * @param string[] $rejectionReasons Reasons for rejecting the image.
 	 * @throws \Exception
 	 * @see ApiInvalidateImageRecommendation::execute
@@ -257,13 +323,27 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		int $userId,
 		?bool $accepted,
 		string $filename,
+		?string $sectionTitle,
+		?int $sectionNumber,
 		array $rejectionReasons = []
 	) {
 		/** @var CirrusSearch $cirrusSearch */
 		$cirrusSearch = ( $this->cirrusSearchFactory )();
-		$cirrusSearch->resetWeightedTags( $page,
-			ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
-
+		if ( $taskType->getId() === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+			$cirrusSearch->resetWeightedTags(
+				$page,
+				ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
+			);
+		} elseif ( $taskType->getId() === SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+			$cirrusSearch->resetWeightedTags(
+				$page,
+				SectionImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
+			);
+			$cirrusSearch->resetWeightedTags(
+				$page,
+				ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
+			);
+		}
 		// Mark the task as "invalid" in a temporary cache, until the weighted tags in the search
 		// index are updated.
 		$this->cache->set(
@@ -282,6 +362,8 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 				$userId,
 				$accepted,
 				$filename,
+				$sectionTitle,
+				$sectionNumber,
 				$rejectionReasons
 			);
 		}

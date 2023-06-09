@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
-use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use LogicException;
 use StatusValue;
 use TitleParser;
@@ -19,20 +19,19 @@ abstract class ImageRecommendationBaseTaskTypeHandler extends StructuredTaskType
 	public const WEIGHTED_TAG_PREFIX = self::WEIGHTED_TAG_PREFIX;
 
 	protected ImageRecommendationProvider $recommendationProvider;
-	protected SubmissionHandler $submissionHandler;
+	protected AddImageSubmissionHandler $submissionHandler;
 
 	/**
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param TitleParser $titleParser
 	 * @param ImageRecommendationProvider $recommendationProvider
-	 * @param SubmissionHandler $submissionHandler
+	 * @param AddImageSubmissionHandler $submissionHandler
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,
 		ImageRecommendationProvider $recommendationProvider,
-		// FIXME narrow type once the submission handlers are merged
-		SubmissionHandler $submissionHandler
+		AddImageSubmissionHandler $submissionHandler
 	) {
 		parent::__construct( $configurationValidator, $titleParser );
 		Assert::parameterType( ImageRecommendationProvider::class, $recommendationProvider,
@@ -57,8 +56,7 @@ abstract class ImageRecommendationBaseTaskTypeHandler extends StructuredTaskType
 	}
 
 	/** @inheritDoc */
-	public function getSubmissionHandler(): SubmissionHandler {
-		// FIXME narrow return type once the submission handlers are merged
+	public function getSubmissionHandler(): AddImageSubmissionHandler {
 		return $this->submissionHandler;
 	}
 

@@ -244,7 +244,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				// access a user ID here; passing 0 for an anonymous user seems OK.
 				0,
 				null,
-				''
+				'',
+				null,
+				null
 			);
 			return $status;
 		}

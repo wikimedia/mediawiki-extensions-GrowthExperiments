@@ -2634,7 +2634,7 @@
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
 						"TitleParser",
 						"GrowthExperimentsImageRecommendationProvider",
-						"GrowthExperimentsAddSectionImageSubmissionHandler"
+						"GrowthExperimentsAddImageSubmissionHandler"
 					]
 				},
 				"null": {

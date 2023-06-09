@@ -15,7 +15,7 @@ use MWTimestamp;
 class EventGateImageSuggestionFeedbackUpdater {
 
 	private const STREAM = 'mediawiki.image_suggestions_feedback';
-	private const STREAM_VERSION = '2.0.0';
+	private const STREAM_VERSION = '2.1.0';
 	private const SCHEMA = '/mediawiki/page/image-suggestions-feedback/' . self::STREAM_VERSION;
 
 	private EventBusFactory $eventBusFactory;
@@ -38,6 +38,8 @@ class EventGateImageSuggestionFeedbackUpdater {
 	 * @param bool|null $accepted True if accepted, false if rejected, null if invalidating for
 	 * other reasons (e.g. image exists on page when user visits it)
 	 * @param string $filename The filename, without the File: prefix
+	 * @param string|null $sectionTitle Title of the section the suggestion is for
+	 * @param int|null $sectionNumber Number of the section the suggestion is for
 	 * @param array|null $rejectionReasons List of rejection reasons. See
 	 *   AddImageSubmissionHandler::REJECTION_REASONS
 	 * @throws Exception
@@ -47,6 +49,8 @@ class EventGateImageSuggestionFeedbackUpdater {
 		int $userId,
 		?bool $accepted,
 		string $filename,
+		?string $sectionTitle,
+		?int $sectionNumber,
 		?array $rejectionReasons = []
 	): void {
 		$eventBus = $this->eventBusFactory->getInstanceForStream( self::STREAM );
@@ -63,6 +67,12 @@ class EventGateImageSuggestionFeedbackUpdater {
 		];
 		if ( $rejectionReasons ) {
 			$attrs['rejection_reasons'] = $rejectionReasons;
+		}
+		if ( $sectionTitle !== null ) {
+			$attrs['section_title'] = $sectionTitle;
+		}
+		if ( $sectionNumber !== null ) {
+			$attrs['section_ordinal'] = $sectionNumber;
 		}
 		$event = $eventFactory->createEvent(
 			$this->wikiPageFactory->newFromID( $articleId )->getTitle()->getCanonicalURL(),

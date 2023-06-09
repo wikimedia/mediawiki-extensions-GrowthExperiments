@@ -810,12 +810,15 @@ AddImageArticleTarget.prototype.formatSaveOptions = function ( saveOptions ) {
  * the invalid task in their task queues.
  */
 AddImageArticleTarget.prototype.invalidateRecommendation = function () {
+	var imageData = this.getSelectedSuggestion();
 	new mw.Api().postWithToken( 'csrf', {
 		action: 'growthinvalidateimagerecommendation',
 		title: suggestedEditSession.getCurrentTitle().getNameText(),
 		// "image" is the unprefixed filename, e.g. Example.jpg
-		filename: this.getSelectedSuggestion().image,
-		tasktype: this.TASK_TYPE_ID
+		filename: imageData.image,
+		tasktype: this.TASK_TYPE_ID,
+		sectiontitle: imageData.sectionTitle,
+		sectionnumber: imageData.sectionNumber
 	} );
 };
 
