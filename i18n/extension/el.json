@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AProdromou",
 			"Geraki",
 			"Giannaras99"
 		]
@@ -27,5 +28,7 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Ναι",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Όχι",
 	"growthexperiments-edit-config-newcomertasks": "Προτεινόμενες επεξεργασίες",
-	"growthexperiments-edit-config-newcomer-tasks-description": "Ορισμένοι τύποι προτεινόμενων επεξεργασιών εμφανίζονται μέσω προτύπων συντήρησης. Τα λήμματα που περιέχουν αυτά τα πρότυπα προστίθενται στη ροή. Για να δείτε πόσα λήμματα είναι διαθέσιμα για κάθε τύπο εργασίας, ανατρέξτε σε [[Special:NewcomerTasksInfo|αυτή τη σελίδα]]."
+	"growthexperiments-edit-config-newcomer-tasks-description": "Ορισμένοι τύποι προτεινόμενων επεξεργασιών εμφανίζονται μέσω προτύπων συντήρησης. Τα λήμματα που περιέχουν αυτά τα πρότυπα προστίθενται στη ροή. Για να δείτε πόσα λήμματα είναι διαθέσιμα για κάθε τύπο εργασίας, ανατρέξτε σε [[Special:NewcomerTasksInfo|αυτή τη σελίδα]].",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "Ο μέγιστος αριθμός προτεινόμενων εργασιών \"Προσθήκη εικόνας σε ένα μη εικονογραφημένο άρθρο\" που μπορεί να ολοκληρώσει ένας νέος χρήστης καθημερινά.",
+	"growthexperiments-edit-config-newcomer-tasks-section-image-recommendation-maximum-tasks-per-day": "Ο μέγιστος αριθμός προτεινόμενων εργασιών \"Προσθήκη εικόνας σε ενότητα άρθρου\" που μπορεί να ολοκληρώσει ένας νέος χρήστης καθημερινά."
 }

@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Daud I.F. Argana",
+			"David Wadie Fisher-Freberg",
 			"Johnstad Di Maria",
 			"Kenrick95",
 			"Notanotheramy",
@@ -138,7 +139,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-step2": "Baca artikel dan pikirkan apakah gambar yang disarankan akan membantu pembaca memahami kontennya. Apakah gambar tersebut tepat untuk ditampilkan di dalam artikel?",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "Putuskan apakah gambar sebaiknya ditambahkan",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-step3": "Saranan mungkin tidak terkait dengan artikel, berkualitas rendah, atau sebaiknya tidak ditambahkan oleh karena alasan-alasan lain. Gunakan kebijaksanaan {{GENDER:|Anda}} untuk menentukan apakah sarannya benar atau salah.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "Untuk gambar yang {{GENDER:|Anda}} terima, {{GENDER:|Anda}} akan menulis keterangan singkat, kemudian suntingan {{GENDER:|Anda}} akan diterbitkan.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "Setelah {{GENDER:|Anda}} menerima gambar, {{GENDER:|Anda akan}} menulis teks singkat, lalu {{GENDER:|Anda}} dapat menerbitkan suntingan {{GENDER:|Anda}}.",
 	"growthexperiments-help-panel-questioncomplete-title": "Ajukan pertanyaan",
 	"growthexperiments-help-panel-questioncomplete-header": "Pertanyaan Anda telah dipublikasikan!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Pertanyaan Anda sekarang ada di Meja Bantuan Komunitas untuk dijawab oleh sukarelawan lain.",

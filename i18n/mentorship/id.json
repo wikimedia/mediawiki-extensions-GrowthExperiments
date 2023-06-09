@@ -5,6 +5,7 @@
 			"Agam Riyandana",
 			"DARMAS BUDI SANTOSO",
 			"Daud I.F. Argana",
+			"David Wadie Fisher-Freberg",
 			"PutriAmalia1991",
 			"Veracious"
 		]
@@ -133,7 +134,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Kirim",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Batal",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Metrik murid yang layak dipuji",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "Pada pesan tetapan positif, $1 akan otomatis diganti dengan nama pengguna murid (jika ada).",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "Dalam pesan positif baku, $1 secara otomatis diganti dengan nama pengguna yang dibimbing dan $2 dengan nama pengguna pembimbing (jika ada).",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext": "{{GENDER:|Anda}} akan diberi tahu saat seorang murid layak untuk dipuji:",
 	"growthexperiments-mentor-list-missing-key": "Kunci <code>$1</code> tidak ada",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Definisi guru berisi kunci tak terduga <code>$1</code>",
