@@ -35,6 +35,16 @@ $magicWords['ko'] = [
 	'mentor' => [ 0, '멘토' ],
 ];
 
+/** Norwegian Bokmål (norsk bokmål) */
+$magicWords['nb'] = [
+	'mentor' => [ 0, 'fadder' ],
+];
+
+/** Norwegian Nynorsk (norsk nynorsk) */
+$magicWords['nn'] = [
+	'mentor' => [ 0, 'fadder' ],
+];
+
 /** Russian (русский) */
 $magicWords['ru'] = [
 	'mentor' => [ 0, 'наставник' ],

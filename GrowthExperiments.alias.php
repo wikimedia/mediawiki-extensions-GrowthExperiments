@@ -281,7 +281,27 @@ $specialPageAliases['nb'] = [
 	'WelcomeSurvey' => [ 'Velkomstundersøkelse' ],
 	'Homepage' => [ 'Hjemmeside' ],
 	'Impact' => [ 'Virkning' ],
-	'ClaimMentee' => [ 'Krev_nykommer' ],
+	'ClaimMentee' => [ 'Gjør_krav_på_fadderbarn', 'Krev_nykommer' ],
+	'NewcomerTasksInfo' => [ 'Informasjon_om_nybegynneroppgaver' ],
+	'EditGrowthConfig' => [ 'Rediger_Growth-konfigurasjon' ],
+	'MentorDashboard' => [ 'Fadderpanel' ],
+	'QuitMentorship' => [ 'Avslutt_fadderskap' ],
+	'ManageMentors' => [ 'Behandle_faddere' ],
+	'EnrollAsMentor' => [ 'Bli_fadder' ],
+];
+
+/** Norwegian Nynorsk (norsk nynorsk) */
+$specialPageAliases['nn'] = [
+	'WelcomeSurvey' => [ 'Velkomstundersøking' ],
+	'Homepage' => [ 'Heimeside' ],
+	'Impact' => [ 'Verknad' ],
+	'ClaimMentee' => [ 'Gjer_krav_på_fadderbarn' ],
+	'NewcomerTasksInfo' => [ 'Informasjon_om_nybyrjaroppgåver' ],
+	'EditGrowthConfig' => [ 'Endre_Growth-konfigurasjon' ],
+	'MentorDashboard' => [ 'Fadderpanel' ],
+	'QuitMentorship' => [ 'Avslutt_fadderskap' ],
+	'ManageMentors' => [ 'Handsam_fadrar' ],
+	'EnrollAsMentor' => [ 'Bli_fadder' ],
 ];
 
 /** Polish (polski) */
