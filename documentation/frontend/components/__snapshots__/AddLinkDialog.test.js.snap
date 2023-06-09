@@ -6,11 +6,11 @@ exports[`AddLinkDialog > should render 3 step with Add a link on-boarding conten
 <transition-stub name=\\"cdx-dialog-fade\\" appear=\\"true\\" persisted=\\"false\\" css=\\"true\\">
   <div class=\\"cdx-dialog-backdrop\\">
     <div tabindex=\\"0\\"></div>
-    <div class=\\"cdx-dialog cdx-dialog--horizontal-actions ext-growthExperiments-OnboardingDialog ext-growthExperiments-AddLinkDialog\\" role=\\"dialog\\" aria-label=\\"Introduction\\">
+    <div class=\\"cdx-dialog cdx-dialog--horizontal-actions cdx-dialog--has-custom-header cdx-dialog--has-custom-footer ext-growthExperiments-OnboardingDialog ext-growthExperiments-AddLinkDialog\\" role=\\"dialog\\" aria-label=\\"Introduction\\">
       <header class=\\"cdx-dialog__header\\">
         <div class=\\"ext-growthExperiments-OnboardingDialog__header\\">
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
-            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
+            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div><!-- eslint-disable max-len -->
           <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
             <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</p>
@@ -45,7 +45,7 @@ exports[`AddLinkDialog > should render 3 step with Add a link on-boarding conten
         <div class=\\"ext-growthExperiments-OnboardingDialog__footer\\"><span class=\\"cdx-checkbox ext-growthExperiments-OnboardingDialog__footer__permanent-action\\"><input id=\\"cdx-checkbox-1\\" class=\\"cdx-checkbox__input\\" type=\\"checkbox\\" value=\\"false\\"><span class=\\"cdx-checkbox__icon\\"></span><label class=\\"cdx-checkbox__label\\" for=\\"cdx-checkbox-1\\">growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox:[]</label></span>
           <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation\\">
             <!--v-if-->
-            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation--next\\"><button class=\\"cdx-button cdx-button--action-progressive cdx-button--weight-primary cdx-button--framed cdx-button--icon-only cdx-button--icon-only\\" aria-label=\\"next\\"><span class=\\"cdx-icon cdx-icon--medium\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\"><title>next</title><g><path d=\\"M7 1 5.6 2.5 13 10l-7.4 7.5L7 19l9-9z\\"></path></g></svg></span></button></div>
+            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation--next\\"><button class=\\"cdx-button cdx-button--action-progressive cdx-button--weight-primary cdx-button--size-medium cdx-button--framed cdx-button--icon-only cdx-button--icon-only\\" aria-label=\\"next\\"><span class=\\"cdx-icon cdx-icon--medium\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\"><title>next</title><g><path d=\\"M7 1 5.6 2.5 13 10l-7.4 7.5L7 19l9-9z\\"></path></g></svg></span></button></div>
           </div>
         </div>
       </footer>
@@ -61,11 +61,11 @@ exports[`AddLinkDialog > should render second step with Add a link on-boarding c
 <transition-stub name=\\"cdx-dialog-fade\\" appear=\\"true\\" persisted=\\"false\\" css=\\"true\\">
   <div class=\\"cdx-dialog-backdrop\\">
     <div tabindex=\\"0\\"></div>
-    <div class=\\"cdx-dialog cdx-dialog--horizontal-actions ext-growthExperiments-OnboardingDialog ext-growthExperiments-AddLinkDialog\\" role=\\"dialog\\" aria-label=\\"Introduction\\">
+    <div class=\\"cdx-dialog cdx-dialog--horizontal-actions cdx-dialog--has-custom-header cdx-dialog--has-custom-footer ext-growthExperiments-OnboardingDialog ext-growthExperiments-AddLinkDialog\\" role=\\"dialog\\" aria-label=\\"Introduction\\">
       <header class=\\"cdx-dialog__header\\">
         <div class=\\"ext-growthExperiments-OnboardingDialog__header\\">
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
-            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
+            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div><!-- eslint-disable max-len -->
           <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
             <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</p>
@@ -96,8 +96,8 @@ exports[`AddLinkDialog > should render second step with Add a link on-boarding c
       <footer class=\\"cdx-dialog__footer\\">
         <div class=\\"ext-growthExperiments-OnboardingDialog__footer\\"><span class=\\"cdx-checkbox ext-growthExperiments-OnboardingDialog__footer__permanent-action\\"><input id=\\"cdx-checkbox-3\\" class=\\"cdx-checkbox__input\\" type=\\"checkbox\\" value=\\"false\\"><span class=\\"cdx-checkbox__icon\\"></span><label class=\\"cdx-checkbox__label\\" for=\\"cdx-checkbox-3\\">growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox:[]</label></span>
           <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation\\">
-            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation-prev\\"><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--framed cdx-button--icon-only\\" aria-label=\\"previous\\"><span class=\\"cdx-icon cdx-icon--medium\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\"><title>previous</title><g><path d=\\"m4 10 9 9 1.4-1.5L7 10l7.4-7.5L13 1z\\"></path></g></svg></span></button></div>
-            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation--next\\"><button class=\\"cdx-button cdx-button--action-progressive cdx-button--weight-primary cdx-button--framed cdx-button--icon-only cdx-button--icon-only\\" aria-label=\\"next\\"><span class=\\"cdx-icon cdx-icon--medium\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\"><title>next</title><g><path d=\\"M7 1 5.6 2.5 13 10l-7.4 7.5L7 19l9-9z\\"></path></g></svg></span></button></div>
+            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation-prev\\"><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed cdx-button--icon-only\\" aria-label=\\"previous\\"><span class=\\"cdx-icon cdx-icon--medium\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\"><title>previous</title><g><path d=\\"m4 10 9 9 1.4-1.5L7 10l7.4-7.5L13 1z\\"></path></g></svg></span></button></div>
+            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation--next\\"><button class=\\"cdx-button cdx-button--action-progressive cdx-button--weight-primary cdx-button--size-medium cdx-button--framed cdx-button--icon-only cdx-button--icon-only\\" aria-label=\\"next\\"><span class=\\"cdx-icon cdx-icon--medium\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\"><title>next</title><g><path d=\\"M7 1 5.6 2.5 13 10l-7.4 7.5L7 19l9-9z\\"></path></g></svg></span></button></div>
           </div>
         </div>
       </footer>
@@ -113,11 +113,11 @@ exports[`AddLinkDialog > should render third step with Add a link on-boarding co
 <transition-stub name=\\"cdx-dialog-fade\\" appear=\\"true\\" persisted=\\"false\\" css=\\"true\\">
   <div class=\\"cdx-dialog-backdrop\\">
     <div tabindex=\\"0\\"></div>
-    <div class=\\"cdx-dialog cdx-dialog--horizontal-actions ext-growthExperiments-OnboardingDialog ext-growthExperiments-AddLinkDialog\\" role=\\"dialog\\" aria-label=\\"Introduction\\">
+    <div class=\\"cdx-dialog cdx-dialog--horizontal-actions cdx-dialog--has-custom-header cdx-dialog--has-custom-footer ext-growthExperiments-OnboardingDialog ext-growthExperiments-AddLinkDialog\\" role=\\"dialog\\" aria-label=\\"Introduction\\">
       <header class=\\"cdx-dialog__header\\">
         <div class=\\"ext-growthExperiments-OnboardingDialog__header\\">
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
-            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
+            <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div><!-- eslint-disable max-len -->
           <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
             <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</p>
@@ -151,8 +151,8 @@ exports[`AddLinkDialog > should render third step with Add a link on-boarding co
       <footer class=\\"cdx-dialog__footer\\">
         <div class=\\"ext-growthExperiments-OnboardingDialog__footer\\"><span class=\\"cdx-checkbox ext-growthExperiments-OnboardingDialog__footer__permanent-action\\"><input id=\\"cdx-checkbox-5\\" class=\\"cdx-checkbox__input\\" type=\\"checkbox\\" value=\\"false\\"><span class=\\"cdx-checkbox__icon\\"></span><label class=\\"cdx-checkbox__label\\" for=\\"cdx-checkbox-5\\">growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox:[]</label></span>
           <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation\\">
-            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation-prev\\"><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--framed cdx-button--icon-only\\" aria-label=\\"previous\\"><span class=\\"cdx-icon cdx-icon--medium\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\"><title>previous</title><g><path d=\\"m4 10 9 9 1.4-1.5L7 10l7.4-7.5L13 1z\\"></path></g></svg></span></button></div>
-            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation--next\\"><button class=\\"cdx-button cdx-button--action-progressive cdx-button--weight-primary cdx-button--framed\\">
+            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation-prev\\"><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed cdx-button--icon-only\\" aria-label=\\"previous\\"><span class=\\"cdx-icon cdx-icon--medium\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\"><title>previous</title><g><path d=\\"m4 10 9 9 1.4-1.5L7 10l7.4-7.5L13 1z\\"></path></g></svg></span></button></div>
+            <div class=\\"ext-growthExperiments-OnboardingDialog__footer__navigation--next\\"><button class=\\"cdx-button cdx-button--action-progressive cdx-button--weight-primary cdx-button--size-medium cdx-button--framed\\">
                 <!-- eslint-disable max-len -->growthexperiments-structuredtask-onboarding-dialog-get-started-button:[]
                 <!-- eslint-enable max-len -->
               </button></div>

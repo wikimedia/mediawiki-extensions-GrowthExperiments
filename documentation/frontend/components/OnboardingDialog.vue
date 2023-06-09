@@ -277,10 +277,7 @@ export default {
 .ext-growthExperiments-OnboardingDialog {
 	.ext-growthExperiments-onboarding-dialog-color();
 	.ext-growthExperiments-onboarding-dialog-size();
-	// stylelint-disable-next-line selector-class-pattern
-	&.cdx-dialog {
-		gap: 0;
-	}
+
 	// stylelint-disable-next-line selector-class-pattern
 	.cdx-dialog__body {
 		padding: 0;
