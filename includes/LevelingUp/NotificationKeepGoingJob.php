@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\LevelingUp;
 
-use EchoEvent;
 use Job;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserIdentityLookup;
 use Title;
@@ -44,7 +44,7 @@ class NotificationKeepGoingJob extends Job {
 	public function run() {
 		$userIdentity = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['userId'] );
 		if ( $userIdentity && $this->levelingUpManager->shouldSendKeepGoingNotification( $userIdentity ) ) {
-			EchoEvent::create( [
+			Event::create( [
 				'type' => 'keep-going',
 				'title' => $this->specialPageFactory->getTitleForAlias( 'Homepage' ),
 				'extra' => [

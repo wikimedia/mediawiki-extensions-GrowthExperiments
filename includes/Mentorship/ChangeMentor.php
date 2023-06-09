@@ -3,12 +3,12 @@
 namespace GrowthExperiments\Mentorship;
 
 use DeferredUpdates;
-use EchoEvent;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogPager;
 use ManualLogEntry;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
@@ -179,7 +179,7 @@ class ChangeMentor {
 					'mentee' => $this->mentee,
 					'performer' => $this->performer
 				] );
-				EchoEvent::create( [
+				Event::create( [
 					'type' => 'mentor-changed',
 					'title' => $this->userFactory->newFromUserIdentity( $this->newMentor )
 						->getUserPage(),
@@ -195,7 +195,7 @@ class ChangeMentor {
 					$this->mentor !== null
 				) {
 					// mentee was claimed, notify old mentor as well
-					EchoEvent::create( [
+					Event::create( [
 						'type' => 'mentee-claimed',
 						'title' => $this->userFactory->newFromUserIdentity( $this->mentee )
 							->getUserPage(),
