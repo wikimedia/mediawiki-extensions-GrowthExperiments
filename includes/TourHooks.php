@@ -217,6 +217,9 @@ class TourHooks implements
 
 	/** @inheritDoc */
 	public function onLocalUserCreated( $user, $autocreated ) {
+		if ( $user->isTemp() ) {
+			return;
+		}
 		// Always set the new impact module discovery tour to seen, whether the user
 		// is autocreated or local to the wiki, and whether homepage is enabled or not.
 		// The only users who should see this tour are existing user accounts in the local
