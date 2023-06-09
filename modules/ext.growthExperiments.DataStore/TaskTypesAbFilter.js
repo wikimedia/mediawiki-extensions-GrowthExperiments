@@ -1,18 +1,15 @@
 /**
  * This is a temporary hack for filtering task types for an A/B test, per T278123.
  * This file is shared between multiple modules that handle task types. Dependencies:
- * - utils/Util.js
  * - HomepageHooks::getSuggestedEditsConfigJson() as ./config.json
  * - HomepageHooks::getTaskTypesJson() as ./TaskTypes.json
  * - HomepageHooks::getDefaultTaskTypesJson() as ./DefaultTaskTypes.json
  */
 ( function () {
-	var Utils = require( '../utils/Utils.js' ),
-		OLD_LINK_TASK_TYPE = 'links',
+	var OLD_LINK_TASK_TYPE = 'links',
 		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
 		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
-		SECTION_IMAGE_RECOMMENDATION_TASK_TYPE = 'section-image-recommendation',
-		VARIANT_SECTIONLEVELIMAGES = 'sectionlevelimages';
+		SECTION_IMAGE_RECOMMENDATION_TASK_TYPE = 'section-image-recommendation';
 
 	/**
 	 * Returns the given task type if it's available, or false if it is not.
@@ -66,8 +63,7 @@
 		var config = require( './config.json' ),
 			taskTypes = require( './TaskTypes.json' );
 		return config.GENewcomerTasksSectionImageRecommendationsEnabled &&
-			SECTION_IMAGE_RECOMMENDATION_TASK_TYPE in taskTypes &&
-			Utils.isUserInVariant( VARIANT_SECTIONLEVELIMAGES );
+			SECTION_IMAGE_RECOMMENDATION_TASK_TYPE in taskTypes;
 	}
 
 	/**
@@ -142,12 +138,7 @@
 	 * @return {string[]}
 	 */
 	function getDefaultTaskTypes() {
-		var defaultDefaultTaskTypes = require( './DefaultTaskTypes.json' );
-		if ( areSectionImageRecommendationsEnabled() ) {
-			return [ SECTION_IMAGE_RECOMMENDATION_TASK_TYPE ];
-		} else {
-			return defaultDefaultTaskTypes;
-		}
+		return require( './DefaultTaskTypes.json' );
 	}
 
 	module.exports = {

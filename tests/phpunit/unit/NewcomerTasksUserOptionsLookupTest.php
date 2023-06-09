@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\VariantHooks;
 use HashConfig;
 use MediaWiki\User\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentity;
@@ -218,16 +217,10 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	public function testSectionImageRecommendationAbTest() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
 		$user2 = new UserIdentityValue( 2, 'User2' );
-		$user3 = new UserIdentityValue( 3, 'User3' );
-		$user4 = new UserIdentityValue( 4, 'User4' );
 		$sectionImageTaskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [],
 			'User2' => [
-				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit", "' . $sectionImageTaskType . '" ]',
-			],
-			'User3' => [],
-			'User4' => [
 				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit", "' . $sectionImageTaskType . '" ]',
 			],
 		] );
@@ -240,24 +233,12 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		] );
 		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
 			[ 'isUserInVariant' ] );
-		$experimentUserManager->method( 'isUserInVariant' )
-			->with( $this->anything(), VariantHooks::VARIANT_SECTIONLEVELIMAGES )
-			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
-				return [
-					'User1' => false,
-					'User2' => false,
-					'User3' => true,
-					'User4' => true,
-				][$user->getName()];
-			} );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
-		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user3 ) );
-		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user4 ) );
 
 		$config->set( 'GENewcomerTasksSectionImageRecommendationsEnabled', true );
 
@@ -265,9 +246,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
-		$this->assertSame( [ 'section-image-recommendation' ], $lookup->getTaskTypeFilter( $user3 ) );
-		$this->assertSame( [ 'copyedit', 'section-image-recommendation' ], $lookup->getTaskTypeFilter( $user4 ) );
+		$this->assertSame( [ 'copyedit', 'section-image-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
 	}
 
 	/**
@@ -275,15 +254,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetDefaultTaskTypes() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
-		$user2 = new UserIdentityValue( 2, 'User2' );
 		$experimentUserManager = $this->createMock( ExperimentUserManager::class );
-		$experimentUserManager->method( 'isUserInVariant' )->willReturnMap( [
-			[ $user1, VariantHooks::VARIANT_SECTIONLEVELIMAGES, false ],
-			[ $user2, VariantHooks::VARIANT_SECTIONLEVELIMAGES, true ],
-		] );
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [],
-			'User2' => [],
 		] );
 		$config = new HashConfig( [
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
@@ -301,11 +274,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			$experimentUserManager, $userOptionsLookup, $config, $configurationLoader
 		);
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
 
 		$config->set( 'GENewcomerTasksSectionImageRecommendationsEnabled', true );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ $sectionImageTaskType ], $lookup->getTaskTypeFilter( $user2 ) );
 	}
 
 	/**

@@ -1,7 +1,5 @@
 ( function () {
 
-	var VARIANT_SECTIONLEVELIMAGES = 'sectionlevelimages';
-
 	// internal methods
 
 	/**
@@ -223,33 +221,6 @@
 	}
 
 	/**
-	 * Enable the section-level image recommendation user variant
-	 *
-	 * @private For debug/QA purposes only.
-	 * @return {jQuery.Promise}
-	 */
-	function enableSectionImageRecommendations() {
-		return updateTaskPreference( {
-			'growthexperiments-homepage-variant': VARIANT_SECTIONLEVELIMAGES,
-			// unset filters so the default for the A/B test is used
-			'growthexperiments-homepage-se-filters': null
-		} );
-	}
-
-	/**
-	 * Disble the section-level image recommendation user variant
-	 *
-	 * @private For debug/QA purposes only.
-	 * @return {jQuery.Promise}
-	 */
-	function disableSectionImageRecommendations() {
-		return updateTaskPreference( {
-			'growthexperiments-homepage-variant': null,
-			'growthexperiments-homepage-se-filters': null
-		} );
-	}
-
-	/**
 	 * Opt the user into growth-glam-2022 campaign
 	 *
 	 * @private For debug/QA purposes only.
@@ -267,8 +238,6 @@
 	ge.utils = {
 		getUserVariant: getUserVariant,
 		setUserVariant: setUserVariant,
-		enableSectionImageRecommendations: enableSectionImageRecommendations,
-		disableSectionImageRecommendations: disableSectionImageRecommendations,
 		enableCampaign: enableCampaign
 	};
 

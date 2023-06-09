@@ -10,7 +10,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
-use GrowthExperiments\VariantHooks;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 
@@ -19,7 +18,11 @@ use MediaWiki\User\UserOptionsLookup;
  */
 class NewcomerTasksUserOptionsLookup {
 
-	/** @var ExperimentUserManager */
+	/**
+	 * This property isn't used, but we want to preserve the ability to run A/B tests where
+	 * user options depend on the user's experiment group.
+	 * @var ExperimentUserManager
+	 */
 	private $experimentUserManager;
 
 	/** @var UserOptionsLookup */
@@ -136,9 +139,7 @@ class NewcomerTasksUserOptionsLookup {
 	public function areSectionImageRecommendationsEnabled( UserIdentity $user ): bool {
 		return $this->config->get( 'GENewcomerTasksSectionImageRecommendationsEnabled' )
 			&& array_key_exists( SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-				$this->configurationLoader->getTaskTypes() )
-			&& ( $this->shouldUserSeeAllTaskTypes( $user )
-				|| $this->experimentUserManager->isUserInVariant( $user, VariantHooks::VARIANT_SECTIONLEVELIMAGES ) );
+				$this->configurationLoader->getTaskTypes() );
 	}
 
 	/**
@@ -162,9 +163,8 @@ class NewcomerTasksUserOptionsLookup {
 	 * @return string[]
 	 */
 	private function getDefaultTaskTypes( UserIdentity $user ): array {
-		if ( $this->areSectionImageRecommendationsEnabled( $user ) ) {
-			return [ SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
-		}
+		// This doesn't do anything useful right now, but we want to preserve the ability
+		// to determine the default task types dynamically for A/B testing.
 		return SuggestedEdits::DEFAULT_TASK_TYPES;
 	}
 
