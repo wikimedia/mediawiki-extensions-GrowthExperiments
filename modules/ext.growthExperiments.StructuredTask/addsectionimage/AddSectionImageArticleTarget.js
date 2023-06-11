@@ -23,18 +23,14 @@ function AddSectionImageArticleTarget() {
 	/** @inheritDoc */
 	this.QUALITY_GATE_WARNING_KEY = 'gesectionimagerecommendationdailytasksexceeded';
 
+	/** @property {?ve.ce.HeadingNode} The heading for which the image is recommended. */
+	this.targetHeading = null;
 }
 // We can't use normal inheritance because OO.mixinClass only copies own properties. Instead we
 // mix in the pseudo-parent class. The end result is almost the same, we just need to set
 // 'super' manually.
 OO.mixinClass( AddSectionImageArticleTarget, AddImageArticleTarget );
 AddSectionImageArticleTarget.super = AddImageArticleTarget;
-
-/** @inheritDoc */
-AddSectionImageArticleTarget.prototype.setupTask = function () {
-	this.insertImagePlaceholder( this.images[ 0 ] );
-	this.getSurface().executeCommand( 'recommendedImage' );
-};
 
 /** @inheritDoc */
 AddSectionImageArticleTarget.prototype.isValidTask = function () {
@@ -127,7 +123,9 @@ AddSectionImageArticleTarget.prototype.replacePlaceholderWithImage = function ( 
 AddSectionImageArticleTarget.prototype.getInsertRange = function ( imageData ) {
 	var heading, nextHeading,
 		h2Count = 0,
-		surfaceModel = this.getSurface().getModel(),
+		surface = this.getSurface(),
+		surfaceModel = surface.getModel(),
+		surfaceView = surface.getView(),
 		headingNodes = surfaceModel.getDocument().getNodesByType( 'mwHeading' );
 
 	for ( var i = 0; i < headingNodes.length; i++ ) {
@@ -142,6 +140,14 @@ AddSectionImageArticleTarget.prototype.getInsertRange = function ( imageData ) {
 			nextHeading = headingNodes[ i ];
 			break;
 		}
+	}
+
+	// Set the target heading as a side effect.
+	// FIXME refactor so the information flow is clearer; maybe move the linear model + DOM
+	//   navigation logic to a helper class and have it convert imageData into an imageVeData
+	//   object with range + header.
+	if ( heading ) {
+		this.targetHeading = surfaceView.getDocument().getDocumentNode().getNodeFromOffset( heading.getRange().start );
 	}
 
 	if ( nextHeading ) {
@@ -211,6 +217,21 @@ AddSectionImageArticleTarget.prototype.isSameSection = function ( node, sectionN
 		);
 		return false;
 	}
+};
+
+/**
+ * Scroll the VE editor surface so that the title of the target section is at the top of the page.
+ *
+ * @return {jQuery.Promise}
+ */
+AddSectionImageArticleTarget.prototype.scrollToTargetSection = function () {
+	return OO.ui.Element.static.scrollIntoView( this.targetHeading.$element[ 0 ], {
+		animate: true,
+		alignToTop: true,
+		duration: 'slow',
+		padding: this.surface.padding,
+		direction: 'y'
+	} );
 };
 
 /** @inheritDoc **/

@@ -152,7 +152,9 @@ RecommendedImageToolbarDialog.prototype.getSetupProcess = function ( data ) {
  * Initialize elements after this.surface is set
  */
 RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
-	this.images = this.getArticleTarget().images;
+	var articleTarget = this.getArticleTarget();
+
+	this.images = articleTarget.images;
 	this.setUpToolbarDialogButton(
 		mw.message( 'growthexperiments-addimage-inspector-show-button' ).text()
 	);
@@ -169,7 +171,21 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 		this.moveDialogToSurfaceView();
 	}
 	this.showRecommendationAtIndex( 0 );
-	this.animateIn();
+	if ( articleTarget.isSectionLevelTask() ) {
+		/** @type {mw.libs.ge.AddSectionImageArticleTarget} */
+		var sectionImageArticleTarget = articleTarget;
+		// Something causes the editor to scroll to top shortly after initialization;
+		// wait for that to happen before scrolling & showing the dialog.
+		// FIXME find a more reliable way to avoid interference
+		setTimeout( function () {
+			sectionImageArticleTarget.insertImagePlaceholder( this.images[ 0 ] );
+			sectionImageArticleTarget.scrollToTargetSection().then( function () {
+				this.animateIn();
+			}.bind( this ) );
+		}.bind( this ), 300 );
+	} else {
+		this.animateIn();
+	}
 
 	mw.hook( 'growthExperiments.imageSuggestions.onImageCaptionReady' ).add(
 		this.onImageCaptionReady

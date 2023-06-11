@@ -1,4 +1,7 @@
 /**
+ * ContentEditable node for the recommended image placeholder. It tries to simulate the
+ * positioning and dimensions of the eventual image.
+ *
  * @class mw.libs.ge.ce.RecommendedImagePlaceholderNode
  * @extends ve.ce.LeafNode
  * @constructor

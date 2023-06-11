@@ -4,6 +4,7 @@ var RecommendedImageToolbarDialog = require( '../addimage/RecommendedImageToolba
  * @class mw.libs.ge.RecommendedSectionImageToolbarDialog
  * @extends mw.libs.ge.RecommendedImageToolbarDialog
  * @constructor
+ * @property {mw.libs.ge.AddSectionImageArticleTarget} getArticleTarget
  */
 function RecommendedSectionImageToolbarDialog() {
 	RecommendedSectionImageToolbarDialog.super.apply( this, arguments );
@@ -24,9 +25,15 @@ RecommendedSectionImageToolbarDialog.prototype.initialize = function () {
 
 /** @inheritDoc **/
 RecommendedSectionImageToolbarDialog.prototype.afterSetupProcess = function () {
+	// done in the parent method as well but updateCta() needs it before that
 	this.images = this.getArticleTarget().images;
 	this.updateCta();
 	RecommendedSectionImageToolbarDialog.super.prototype.afterSetupProcess.call( this );
+};
+
+/** @inheritDoc **/
+RecommendedImageToolbarDialog.prototype.scrollToToolbarDialogTarget = function () {
+	return this.getArticleTarget().scrollToTargetSection();
 };
 
 /**
