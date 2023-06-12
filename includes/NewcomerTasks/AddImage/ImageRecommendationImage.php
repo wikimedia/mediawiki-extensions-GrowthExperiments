@@ -50,6 +50,13 @@ class ImageRecommendationImage implements JsonSerializable {
 		self::SOURCE_WIKIDATA_SECTION_INTERSECTION,
 	];
 
+	/**
+	 * Maps deprecated source names to their current equivalents.
+	 */
+	public const SOURCE_ALIASES = [
+		'wikidata-section' => self::SOURCE_WIKIDATA_SECTION_TOPICS,
+	];
+
 	private LinkTarget $imageTitle;
 	private string $source;
 	/** @var string[] */

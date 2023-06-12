@@ -110,9 +110,11 @@ class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHa
 				continue;
 			}
 
+			$source = ImageRecommendationImage::SOURCE_ALIASES[ $imageDataArray['source'] ]
+				?? $imageDataArray['source'];
 			$imageData[] = new ImageRecommendationData(
 				$imageDataArray['image'],
-				$imageDataArray['source'],
+				$source,
 				implode( ',', $imageDataArray['projects'] ?? [] ),
 				$imageRecommendationArray['datasetId'],
 				// the fallbacks are only needed until d78543cb reaches production

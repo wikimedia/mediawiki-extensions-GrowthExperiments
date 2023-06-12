@@ -265,6 +265,40 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 					new ImageRecommendationData( 'Foo.jpg', 'commons', 'enwiki', '1234abcd' ),
 				],
 			],
+			'source alias' => [
+				'apiResponse' => [
+					'query' => [
+						'pages' => [
+							[
+								'pageid' => 1,
+								'ns' => 0,
+								'title' => 'Foo',
+								'growthimagesuggestiondata' => [
+									[
+										'titleNamespace' => 0,
+										'titleText' => 'Foo',
+										'images' => [
+											[
+												'image' => 'Foo.jpg',
+												'displayFilename' => 'Foo.jpg',
+												'source' => 'wikidata-section',
+												'projects' => [ 'enwiki' ],
+												'metadata' => [ '...' ],
+												'sectionNumber' => null,
+												'sectionTitle' => null,
+											],
+										],
+										'datasetId' => '1234abcd'
+									],
+								],
+							],
+						],
+					],
+				],
+				'expectedResult' => [
+					new ImageRecommendationData( 'Foo.jpg', 'wikidata-section-topics', 'enwiki', '1234abcd' ),
+				],
+			],
 		];
 	}
 
