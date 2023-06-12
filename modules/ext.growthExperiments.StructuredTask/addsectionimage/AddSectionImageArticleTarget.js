@@ -32,6 +32,11 @@ AddSectionImageArticleTarget.super = AddImageArticleTarget;
 
 /** @inheritDoc */
 AddSectionImageArticleTarget.prototype.setupTask = function () {
+	// Allow redirecting user if they click "Unsure", the document
+	// has unsaved changes but we don't care about those in this context.
+	$( window ).off( 'beforeunload' );
+	window.onbeforeunload = null;
+
 	this.insertImagePlaceholder( this.images[ 0 ] );
 	this.getSurface().executeCommand( 'recommendedImage' );
 };
