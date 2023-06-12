@@ -105,6 +105,10 @@ module.exports = ( function () {
 				flags: 'primary'
 			} ]
 		} ).done( function () {
+			// Allow redirecting user even if the document
+			// has unsaved changes, which we don't care about in this context.
+			$( window ).off( 'beforeunload' );
+			window.onbeforeunload = null;
 			// eslint-disable-next-line camelcase
 			logger.log( 'close', '', { active_interface: 'nosuggestions_dialog' } );
 			window.location.href = Utils.getSuggestedEditsFeedUrl();
