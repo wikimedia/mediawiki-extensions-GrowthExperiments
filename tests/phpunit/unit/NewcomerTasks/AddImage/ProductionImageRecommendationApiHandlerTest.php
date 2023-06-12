@@ -427,7 +427,29 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					'section_heading' => 'Foo',
 				] ] ], [
 					new ImageRecommendationData(
-						'Image1.png', 'wikidata-section', '', '1.23', 2, 'Foo'
+						'Image1.png', 'wikidata-section-topics', '', '1.23', 2, 'Foo'
+					),
+				],
+			],
+			'section w/ intersection' => [
+				[ 'rows' => [ [
+					'wiki' => 'enwiki',
+					'page_id' => 344465,
+					'id' => '1.23',
+					'image' => 'Image1.png',
+					'confidence' => 80,
+					'found_on' => [ 'enwiki', 'cswiki' ],
+					'kind' => [
+						'istype-section-topics',
+						'istype-section-alignment'
+					],
+					'origin_wiki' => 'wikidatawiki',
+					'page_rev' => 17463093,
+					'section_index' => 2,
+					'section_heading' => 'Foo',
+				] ] ], [
+					new ImageRecommendationData(
+						'Image1.png', 'wikidata-section-intersection', 'enwiki,cswiki', '1.23', 2, 'Foo'
 					),
 				],
 			],

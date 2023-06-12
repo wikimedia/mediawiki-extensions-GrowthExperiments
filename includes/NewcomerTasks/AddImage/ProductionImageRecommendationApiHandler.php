@@ -51,9 +51,10 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		'istype-lead-image' => ImageRecommendationImage::SOURCE_WIKIPEDIA,
 		'istype-wikidata-image' => ImageRecommendationImage::SOURCE_WIKIDATA,
 		'istype-commons-category' => ImageRecommendationImage::SOURCE_COMMONS,
-		'istype-section-topics' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
-		'istype-section-topics-p18' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
-		'istype-section-alignment' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
+		'istype-section-topics' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_TOPICS,
+		'istype-section-topics-p18' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_TOPICS,
+		'istype-section-alignment' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_ALIGNMENT,
+		// WIKIDATA_SECTION_INTERSECTION is handled by one-off code as it's based on two kinds
 		'istype-depicts' => 'unknown',
 	];
 
@@ -158,13 +159,23 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 				] );
 			}
 			if ( $knownKinds ) {
-				$source = self::KIND_TO_SOURCE[ $knownKinds[0] ];
+				$knownSources = array_map( fn( $kind ) => self::KIND_TO_SOURCE[$kind], $knownKinds );
+				$intersectionSources = [
+					ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_TOPICS,
+					ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_ALIGNMENT,
+				];
+				if ( array_diff( $intersectionSources, $knownSources ) === [] ) {
+					$source = ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_INTERSECTION;
+				} else {
+					$source = self::KIND_TO_SOURCE[ $knownKinds[0] ];
+				}
 			} else {
+				// FIXME we should probably ignore unknown types of suggestions once the API is more stable
 				$source = [
 					ImageRecommendationTaskTypeHandler::TASK_TYPE_ID
 						=> ImageRecommendationImage::SOURCE_WIKIDATA,
 					SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID
-						=> ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
+						=> ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_TOPICS,
 				][ $taskType->getId()];
 			}
 

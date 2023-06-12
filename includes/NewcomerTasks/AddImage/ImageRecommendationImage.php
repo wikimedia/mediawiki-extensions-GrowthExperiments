@@ -29,7 +29,26 @@ class ImageRecommendationImage implements JsonSerializable {
 	 * The recommendation is based on the image property (P18 or similar) of a
 	 * Wikidata item that has been guessed by analyzing the text of an article section.
 	 */
-	public const SOURCE_WIKIDATA_SECTION = 'wikidata-section';
+	public const SOURCE_WIKIDATA_SECTION_TOPICS = 'wikidata-section-topics';
+	/**
+	 * The recommendation is based on another language version of the article using the
+	 * image in the same section (where "same section" is being defined as the Wikidata
+	 * items guessed by analyzing the text of the sections having significant overlap).
+	 */
+	public const SOURCE_WIKIDATA_SECTION_ALIGNMENT = 'wikidata-section-alignment';
+	/**
+	 * The recommendation is based on both section topics and section alignment.
+	 */
+	public const SOURCE_WIKIDATA_SECTION_INTERSECTION = 'wikidata-section-intersection';
+
+	public const KNOWN_SOURCES = [
+		self::SOURCE_WIKIDATA,
+		self::SOURCE_WIKIPEDIA,
+		self::SOURCE_COMMONS,
+		self::SOURCE_WIKIDATA_SECTION_TOPICS,
+		self::SOURCE_WIKIDATA_SECTION_ALIGNMENT,
+		self::SOURCE_WIKIDATA_SECTION_INTERSECTION,
+	];
 
 	private LinkTarget $imageTitle;
 	private string $source;
