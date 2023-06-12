@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
-use Collation;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MalformedTitleException;
+use MediaWiki\Collation\CollationFactory;
 use Message;
 use MessageLocalizer;
 use StatusValue;
@@ -19,24 +19,24 @@ class ConfigurationValidator {
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
-	/** @var Collation */
-	private $collation;
+	/** @var CollationFactory */
+	private $collationFactory;
 
 	/** @var TitleParser */
 	private $titleParser;
 
 	/**
 	 * @param MessageLocalizer $messageLocalizer
-	 * @param Collation $collation
+	 * @param CollationFactory $collationFactory
 	 * @param TitleParser $titleParser
 	 */
 	public function __construct(
 		MessageLocalizer $messageLocalizer,
-		Collation $collation,
+		CollationFactory $collationFactory,
 		TitleParser $titleParser
 	) {
 		$this->messageLocalizer = $messageLocalizer;
-		$this->collation = $collation;
+		$this->collationFactory = $collationFactory;
 		$this->titleParser = $titleParser;
 	}
 
@@ -219,16 +219,22 @@ class ConfigurationValidator {
 	 * @param string[] $groups
 	 */
 	public function sortTopics( array &$topics, $groups ) {
-		usort( $topics, function ( Topic $left, Topic $right ) use ( $groups ) {
+		if ( !$topics ) {
+			return;
+		}
+
+		$collation = $this->collationFactory->getCategoryCollation();
+
+		usort( $topics, function ( Topic $left, Topic $right ) use ( $groups, $collation ) {
 			$leftGroup = $left->getGroupId();
 			$rightGroup = $right->getGroupId();
 			if ( $leftGroup !== $rightGroup ) {
 				return array_search( $leftGroup, $groups, true ) - array_search( $rightGroup, $groups, true );
 			}
 
-			$leftSortKey = $this->collation->getSortKey(
+			$leftSortKey = $collation->getSortKey(
 				$left->getName( $this->messageLocalizer )->text() );
-			$rightSortKey = $this->collation->getSortKey(
+			$rightSortKey = $collation->getSortKey(
 				$right->getName( $this->messageLocalizer )->text() );
 			return strcmp( $leftSortKey, $rightSortKey );
 		} );

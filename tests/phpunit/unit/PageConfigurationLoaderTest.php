@@ -17,6 +17,7 @@ use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IContextSource;
 use MalformedTitleException;
+use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleFactory;
 use MediaWikiUnitTestCase;
@@ -443,10 +444,11 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			'MediaWiki:TaskConfigPage' => $this->getMockTitle( 'TaskConfigPage', NS_MEDIAWIKI ),
 			'MediaWiki:TopicConfigPage' => $this->getMockTitle( 'TopicConfigPage', NS_MEDIAWIKI ),
 		] );
-		$messageLocalizer = $this->getMockMessageLocalizer( $customMessages );
-		$collation = $this->getMockCollation();
-		$configurationValidator = new ConfigurationValidator( $messageLocalizer, $collation,
-			$this->getMockTitleParser() );
+		$configurationValidator = new ConfigurationValidator(
+			$this->getMockMessageLocalizer( $customMessages ),
+			$this->getMockCollationFactory(),
+			$this->getMockTitleParser()
+		);
 		$wikiPageConfigLoader = $this->getMockWikiPageConfigLoader( [
 			'8:TaskConfigPage' => $taskConfig,
 			'8:TopicConfigPage' => $topicConfig,
@@ -547,12 +549,14 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @return Collation|MockObject
+	 * @return CollationFactory
 	 */
-	protected function getMockCollation() {
+	protected function getMockCollationFactory() {
 		$collation = $this->createNoOpMock( Collation::class, [ 'getSortKey' ] );
 		$collation->method( 'getSortKey' )->willReturnArgument( 0 );
-		return $collation;
+		$factory = $this->createMock( CollationFactory::class );
+		$factory->method( 'getCategoryCollation' )->willReturn( $collation );
+		return $factory;
 	}
 
 	/**

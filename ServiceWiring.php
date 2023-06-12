@@ -628,7 +628,7 @@ return [
 	): ConfigurationValidator {
 		return new ConfigurationValidator(
 			RequestContext::getMain(),
-			$services->getCollationFactory()->getCategoryCollation(),
+			$services->getCollationFactory(),
 			$services->getTitleParser()
 		);
 	},
