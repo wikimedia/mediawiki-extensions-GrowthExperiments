@@ -112,11 +112,35 @@ CERecommendedImageNode.prototype.showImage = function () {
 	this.$loadingOverlay.addClass( 'mw-ge-recommendedImage-loading-overlay--image-shown' );
 	this.isImageShown = true;
 	this.setupDetailsButton( this.$a );
-	// Scroll relative to the details button
 	setTimeout( function () {
-		this.articleTarget.surface.$scrollContainer.animate( {
-			scrollTop: this.$detailsButton.offset().top - this.scrollOffset
-		} );
+		if ( OO.ui.isMobile() ) {
+			// Scroll the page so that the details button is near the top of the screen.
+			// This helps keep the key elements (the caption edit area and the details button)
+			// visible and not overlapped by the keyboard.
+			this.articleTarget.surface.$scrollContainer.animate( {
+				scrollTop: this.$detailsButton.offset().top - this.scrollOffset
+			} );
+		} else {
+			// If the user scrolled away while examining the article, scroll the caption field
+			// and details button back into view. Don't scroll if we don't have to. Don't try to
+			// scroll the entire image into view, just in case it's very tall and that would lead
+			// to the caption are being hidden.
+			OO.ui.Element.static.scrollIntoView( this.$detailsButton[ 0 ], {
+				animate: true,
+				direction: 'y',
+				padding: {
+					top: this.scrollOffset,
+					// Approximate caption area height, to ensure it's fully in view:
+					// 102px for the figcaption element including margins (see
+					// CERecommendedImagePlaceholderNode() for details), 24px for the
+					// image node's bottom padding/border/margin.
+					// FIXME unlike in the placeholder, we could just get the actual height here
+					bottom: 126
+				},
+				duration: 400,
+				scrollContainer: this.articleTarget.surface.$scrollContainer[ 0 ]
+			} );
+		}
 	}.bind( this ), 300 );
 };
 
