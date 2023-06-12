@@ -160,7 +160,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline": "Tu mensaje predefinido",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Tema",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-placeholder": "...",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "En el mensaje positivo predeterminado, $1 se sustituye automáticamente por el nombre de usuario/a de tu aprendiz (si existe).",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "En el mensaje positivo predeterminado, $1 se sustituye automáticamente por el nombre de usuario/a de tu aprendiz y $2 por el de la persona mentora.",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Notificaciones",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately": "Inmediatamente",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "Diario",

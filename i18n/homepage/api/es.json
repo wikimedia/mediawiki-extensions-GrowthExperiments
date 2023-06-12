@@ -17,7 +17,11 @@
 	"apihelp-growthsetmentor-param-mentor": "Nombre de usuario del mentor",
 	"apihelp-growthsetmentor-param-reason": "Razones del cambio",
 	"apihelp-query+growthimagesuggestiondata-summary": "Recuperar los [[mw:wikitech:Add_Image|datos de sugerencia de imágenes]] asociados, si están disponibles",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "ID del tipo de tarea (para especificar si se deben obtener datos para recomendaciones de imágenes de nivel superior o de nivel de sección)",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar una recomendación de imagen",
+	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "Tipo de tarea (nivel principal o de sección)",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Título del artículo de la tarea de recomendación de imágenes",
-	"apihelp-growthinvalidateimagerecommendation-param-filename": "El nombre de archivo sin prefijo de la recomendación de imagen, por ejemplo <kbd>Foo.jpg</kbd>"
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "El nombre de archivo sin prefijo de la recomendación de imagen, por ejemplo <kbd>Foo.jpg</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "El título de la sección para la que se recomienda la imagen, por ejemplo <kbd>Historia</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "El índice basado en 1 de la sección para la que se recomienda la imagen, por ejemplo <kbd>3</kbd>."
 }
