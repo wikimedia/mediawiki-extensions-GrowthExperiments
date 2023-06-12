@@ -123,6 +123,9 @@ class HelpPanelHooks implements
 
 	/** @inheritDoc */
 	public function onLocalUserCreated( $user, $autocreated ) {
+		if ( $user->isTemp() ) {
+			return;
+		}
 		if ( !HelpPanel::isHelpPanelEnabled() ) {
 			return;
 		}

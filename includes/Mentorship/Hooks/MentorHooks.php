@@ -187,7 +187,7 @@ class MentorHooks implements
 
 	/** @inheritDoc */
 	public function onLocalUserCreated( $user, $autocreated ) {
-		if ( $autocreated ) {
+		if ( $autocreated || $user->isTemp() ) {
 			// Excluding autocreated users is necessary, see T276720
 			return;
 		}

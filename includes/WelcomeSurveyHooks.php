@@ -178,6 +178,9 @@ class WelcomeSurveyHooks implements
 
 	/** @inheritDoc */
 	public function onLocalUserCreated( $user, $autocreated ) {
+		if ( $user->isTemp() ) {
+			return;
+		}
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $user );
 		if ( $autocreated || !$this->shouldShowWelcomeSurvey( $context ) ) {

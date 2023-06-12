@@ -820,7 +820,7 @@ class HomepageHooks implements
 	 * @throws ConfigException
 	 */
 	public function onLocalUserCreated( $user, $autocreated ) {
-		if ( $autocreated || !self::isHomepageEnabled() ) {
+		if ( $autocreated || !self::isHomepageEnabled() || $user->isTemp() ) {
 			return;
 		}
 

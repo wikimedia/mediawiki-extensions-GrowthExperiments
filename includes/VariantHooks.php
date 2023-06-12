@@ -206,7 +206,7 @@ class VariantHooks implements
 	 * @inheritDoc
 	 */
 	public function onLocalUserCreated( $user, $autocreated ) {
-		if ( $autocreated ) {
+		if ( $autocreated || $user->isTemp() ) {
 			return;
 		}
 		$context = RequestContext::getMain();
