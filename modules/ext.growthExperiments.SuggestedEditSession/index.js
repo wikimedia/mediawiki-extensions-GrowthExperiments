@@ -712,7 +712,8 @@
 		// set it here to avoid this.
 		ge.suggestedEditSession.editorInterface = ge.suggestedEditSession.editorInterface || 'visualeditor';
 
-		if ( SuggestedEditSession.static.isStructuredTask( ge.suggestedEditSession.taskType ) ) {
+		if ( ge.suggestedEditSession.taskType === null ||
+			SuggestedEditSession.static.isStructuredTask( ge.suggestedEditSession.taskType ) ) {
 			return;
 		}
 		var pluginName = 'ge-task-' + ge.suggestedEditSession.taskType,
