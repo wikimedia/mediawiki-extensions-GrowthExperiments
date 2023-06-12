@@ -46,15 +46,20 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
 	// short to be a good candidate, or its content changed to such an extent that its topic is
 	// now different), but those are rare and would be hard or impossible to detect here.
 
-	var imageTitle,
+	var imageTitle, insertRange,
 		imageNodes = [],
 		surfaceModel = this.getSurface().getModel(),
 		// We break our unused abstraction here. If we actually used multiple image recommendations,
 		// they could belong to different sections, and then validity would have to be determined
 		// per-image, not per-task.
-		imageData = this.images[ this.selectedImageIndex ],
-		insertRange = this.getInsertRange( imageData );
+		imageData = this.images[ this.selectedImageIndex ];
 
+	if ( !imageData ) {
+		mw.log.error( 'Image suggestion list is empty' );
+		return false;
+	}
+
+	insertRange = this.getInsertRange( imageData );
 	if ( !insertRange ) {
 		// The error was already logged in getInsertRange().
 		return false;
