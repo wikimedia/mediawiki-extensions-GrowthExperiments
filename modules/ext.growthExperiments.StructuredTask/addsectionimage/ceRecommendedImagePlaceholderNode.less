@@ -13,9 +13,12 @@
 }
 
 .mw-ge-structuredTaskDesktopArticleTarget {
-	.ge-section-image-placeholder {
-		// copy figure[typeof~='mw:File/Thumb'].mw-halign-right rules from
-		// resources/src/mediawiki.skinning/content.media-common.less
+	// copy figure[typeof~='mw:File/Thumb'].mw-halign-right/left rules from
+	// resources/src/mediawiki.skinning/content.media-common.less
+	// (We can't just use one set and omit @noflip as we want to align
+	// based on the content language, not the UI language.)
+
+	.ge-section-image-placeholder.ge-align-right {
 		/* @noflip */
 		float: right;
 		/* @noflip */
@@ -23,11 +26,20 @@
 		/* @noflip */
 		margin: 0.5em 0 1.3em 1.4em;
 	}
+
+	.ge-section-image-placeholder.ge-align-left {
+		/* @noflip */
+		float: left;
+		/* @noflip */
+		clear: left;
+		/* @noflip */
+		margin: 0.5em 1.4em 1.3em 0;
+	}
 }
 
 .mw-ge-structuredTaskMobileArticleTarget {
 	.ge-section-image-placeholder {
-		//	figure[typeof~='mw:File/Thumb'] from
+		// figure[typeof~='mw:File/Thumb'] from
 		// resources/skins.minerva.base.styles/content/thumbnails.less
 		margin: 0.6em auto;
 		display: table;
@@ -36,9 +48,10 @@
 
 @media screen and ( min-width: @width-breakpoint-tablet ) {
 	.mw-ge-structuredTaskMobileArticleTarget {
-		.ge-section-image-placeholder {
-			// figure[typeof~='mw:File/Thumb'].mw-halign-right from
-			// MinervaNeue:resources/skins.minerva.base.styles/content/tablet/common.less
+		// figure[typeof~='mw:File/Thumb'].mw-halign-right/left from
+		// MinervaNeue:resources/skins.minerva.base.styles/content/tablet/common.less
+
+		.ge-section-image-placeholder.ge-align-right {
 			/* @noflip */
 			float: right;
 			/* @noflip */
@@ -47,6 +60,17 @@
 			margin-left: 1.4em;
 			/* @noflip */
 			margin-right: 0;
+		}
+
+		.ge-section-image-placeholder.ge-align-left {
+			/* @noflip */
+			float: left;
+			/* @noflip */
+			clear: left;
+			/* @noflip */
+			margin-right: 1.4em;
+			/* @noflip */
+			margin-left: 0;
 		}
 	}
 }
