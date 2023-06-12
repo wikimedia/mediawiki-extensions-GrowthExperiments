@@ -189,6 +189,10 @@ StructuredTaskToolbarDialog.prototype.getSuggestionLogActionData = function () {
  * Navigate to suggested edits feed
  */
 StructuredTaskToolbarDialog.prototype.goToSuggestedEdits = function () {
+	// Allow redirecting user if they click "Unsure", the document
+	// has unsaved changes but we don't care about those in this context.
+	$( window ).off( 'beforeunload' );
+	window.onbeforeunload = null;
 	var Utils = require( '../utils/Utils.js' );
 	window.location.href = Utils.getSuggestedEditsFeedUrl( 'suggestion-skip' );
 };
