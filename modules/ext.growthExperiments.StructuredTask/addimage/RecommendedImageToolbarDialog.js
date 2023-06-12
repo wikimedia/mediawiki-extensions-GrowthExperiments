@@ -124,10 +124,7 @@ RecommendedImageToolbarDialog.prototype.initialize = function () {
 	RecommendedImageToolbarDialog.super.prototype.initialize.call( this );
 	var $title = $( '<span>' ).addClass( 'mw-ge-recommendedImageToolbarDialog-title' )
 			.text(
-				mw.message(
-					'growthexperiments-addimage-inspector-title',
-					[ mw.language.convertNumber( 1 ) ]
-				).text()
+				mw.message( 'growthexperiments-addimage-inspector-title' ).text()
 			),
 		$cta = $( '<p>' ).addClass( 'mw-ge-recommendedImageToolbarDialog-addImageCta' )
 			.text( mw.message( 'growthexperiments-addimage-inspector-cta' ).text() );

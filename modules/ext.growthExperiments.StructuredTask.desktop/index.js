@@ -40,7 +40,7 @@ module.exports = ( function () {
 					tools: [ MachineSuggestionsSaveTool ],
 					windows: [
 						require( './addimage/AddImageDesktopSaveDialog.js' ),
-						StructuredTask.addImage().RecommendedImageToolbarDialog
+						StructuredTask.addSectionImage().RecommendedSectionImageToolbarDialog
 					],
 					taskArticleTarget: require( './addsectionimage/AddSectionImageDesktopArticleTarget.js' ),
 					suggestionsArticleTarget: SuggestionsDesktopArticleTarget
