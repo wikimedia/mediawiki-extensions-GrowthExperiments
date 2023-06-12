@@ -91,7 +91,6 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
 use MessageLocalizer;
-use MWException;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
 use OutputPage;
@@ -531,8 +530,6 @@ class HomepageHooks implements
 	 *
 	 * @param SkinTemplate $skin
 	 * @param array &$links
-	 * @throws MWException
-	 * @throws ConfigException
 	 */
 	public function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
 		$user = $skin->getUser();
@@ -991,7 +988,6 @@ class HomepageHooks implements
 	/**
 	 * Helper method to update the "Profile" menu entry in menus
 	 * @param array &$links
-	 * @throws MWException
 	 */
 	private function updateProfileMenuEntry( array &$links ) {
 		$userItem = $links['user-menu']['userpage'] ?? [];
@@ -1090,8 +1086,6 @@ class HomepageHooks implements
 
 	/**
 	 * @param User $user
-	 * @throws ConfigException
-	 * @throws MWException
 	 */
 	public function onConfirmEmailComplete( $user ) {
 		// context user is used for cases when someone else than $user confirms the email,

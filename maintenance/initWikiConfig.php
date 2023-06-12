@@ -92,7 +92,6 @@ class InitWikiConfig extends Maintenance {
 	 *
 	 * @param string $qid
 	 * @return array|null
-	 * @throws \MWException
 	 */
 	private function getWikidataData( string $qid ): ?array {
 		$url = "https://www.wikidata.org/wiki/Special:EntityData/$qid.json";
@@ -107,7 +106,6 @@ class InitWikiConfig extends Maintenance {
 	 * @param string $primaryQid
 	 * @param string[] $backupQids
 	 * @return string|null String on success, null on failure
-	 * @throws \MWException
 	 */
 	private function getRawTitleFromWikidata(
 		string $primaryQid,
@@ -130,7 +128,6 @@ class InitWikiConfig extends Maintenance {
 
 	/**
 	 * @return array|false
-	 * @throws \MWException
 	 */
 	private function getGEConfigVariables() {
 		// Init list of variables
@@ -235,7 +232,6 @@ class InitWikiConfig extends Maintenance {
 	 * @param array $backupQids
 	 * @param string|null $backupExternal Interwiki link to be used as link of last resort
 	 * @return array|null
-	 * @throws \MWException
 	 */
 	private function getHelpPanelLink(
 		string $primaryQid,

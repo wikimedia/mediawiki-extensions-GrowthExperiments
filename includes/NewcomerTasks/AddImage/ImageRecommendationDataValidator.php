@@ -4,7 +4,6 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use File;
 use MediaWiki\Language\RawMessage;
-use MWException;
 use StatusValue;
 
 /**
@@ -17,7 +16,6 @@ class ImageRecommendationDataValidator {
 	 *
 	 * @param string $filename
 	 * @return bool
-	 * @throws MWException
 	 */
 	private static function isValidTitle( string $filename ): bool {
 		return (bool)File::normalizeTitle( $filename );
@@ -30,7 +28,6 @@ class ImageRecommendationDataValidator {
 	 * @param ImageRecommendationData $imageRecommendationData
 	 *
 	 * @return StatusValue
-	 * @throws MWException
 	 */
 	public static function validate(
 		string $titleTextSafe, ImageRecommendationData $imageRecommendationData

@@ -7,7 +7,6 @@ use ApiMain;
 use ApiUsageException;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
-use MWException;
 use UserNotLoggedIn;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\StringDef;
@@ -54,9 +53,6 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 
 	/**
 	 * Save help panel question post.
-	 *
-	 * @throws ApiUsageException
-	 * @throws MWException
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();

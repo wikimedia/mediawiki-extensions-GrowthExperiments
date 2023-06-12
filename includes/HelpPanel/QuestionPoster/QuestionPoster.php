@@ -7,7 +7,6 @@ use Config;
 use Content;
 use DerivativeContext;
 use ExtensionRegistry;
-use FatalError;
 use Flow\Container;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
@@ -19,7 +18,6 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Title\TitleFactory;
-use MWException;
 use PrefixingStatsdDataFactoryProxy;
 use RecentChange;
 use Status;
@@ -218,8 +216,6 @@ abstract class QuestionPoster {
 
 	/**
 	 * @return Status
-	 * @throws MWException
-	 * @throws \Exception
 	 */
 	public function submit() {
 		$this->loadExistingQuestions();
@@ -263,8 +259,6 @@ abstract class QuestionPoster {
 
 	/**
 	 * @return Status
-	 * @throws MWException
-	 * @throws \Exception
 	 */
 	private function submitWikitext() {
 		$content = $this->makeWikitextContent();
@@ -379,8 +373,6 @@ abstract class QuestionPoster {
 	/**
 	 * @param Content $content
 	 * @return Status
-	 * @throws FatalError
-	 * @throws MWException
 	 */
 	protected function checkPermissions( $content ) {
 		$userPermissionStatus = $this->checkUserPermissions();
@@ -406,7 +398,6 @@ abstract class QuestionPoster {
 	 * Create a Content object with the header and question text provided by the user.
 	 *
 	 * @return Content|null
-	 * @throws MWException
 	 */
 	protected function makeWikitextContent() {
 		$wikitextContent = new WikitextContent(
@@ -609,7 +600,6 @@ abstract class QuestionPoster {
 	 * @param Content $content
 	 * @param string $summary
 	 * @return Status
-	 * @throws MWException
 	 */
 	protected function runEditFilterMergedContentHook( Content $content, $summary ) {
 		$derivativeContext = new DerivativeContext( $this->getContext() );

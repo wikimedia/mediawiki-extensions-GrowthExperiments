@@ -12,7 +12,6 @@ use Html;
 use IContextSource;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Title\TitleFactory;
-use MWException;
 use MWTimestamp;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
@@ -218,8 +217,6 @@ class Impact extends BaseModule {
 
 	/**
 	 * Generate the HTML for the edits table.
-	 *
-	 * @throws MWException
 	 */
 	private function generateEditsTable() {
 		$articleLinkTooltip = $this->getContext()
@@ -544,8 +541,6 @@ class Impact extends BaseModule {
 
 	/**
 	 * @return array Top 10 recently edited articles with pageviews
-	 * @throws MWException
-	 * @throws Exception
 	 */
 	public function getArticleContributions() {
 		if ( $this->contribs === null ) {

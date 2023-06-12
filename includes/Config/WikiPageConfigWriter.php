@@ -13,7 +13,6 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MWException;
 use Psr\Log\LoggerInterface;
 use RecentChange;
 use Status;
@@ -188,7 +187,6 @@ class WikiPageConfigWriter {
 	 * @param bool $bypassWarnings Should warnings/non-fatals stop the operation? Defaults to
 	 * true.
 	 * @return Status
-	 * @throws MWException
 	 */
 	public function save(
 		string $summary = '',

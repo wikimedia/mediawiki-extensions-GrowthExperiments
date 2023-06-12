@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
-use MWException;
 use RequestContext;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -48,7 +47,6 @@ class TipsHandler extends SimpleHandler {
 	 * @param string $tasktypeid
 	 * @param string $uselang
 	 * @return Response
-	 * @throws MWException
 	 */
 	public function run( string $skin, string $editor, string $tasktypeid, string $uselang
 	) {

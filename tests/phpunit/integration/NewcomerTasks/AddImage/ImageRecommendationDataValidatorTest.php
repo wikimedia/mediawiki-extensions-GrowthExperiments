@@ -27,7 +27,6 @@ class ImageRecommendationDataValidatorTest extends MediaWikiIntegrationTestCase 
 	 * @dataProvider dataProvider
 	 * @param array $data API response data.
 	 * @param string $expectedMessage
-	 * @throws \MWException
 	 */
 	public function testValidateError( array $data, string $expectedMessage ) {
 		$imageRecommendationData = new ImageRecommendationData(

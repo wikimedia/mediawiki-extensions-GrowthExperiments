@@ -23,7 +23,6 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	private $mutableTestUser = null;
 
 	/**
-	 * @throws \MWException
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::__construct
 	 */
 	public function testConstruct() {
@@ -44,7 +43,6 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @throws \MWException
 	 * @group Database
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::submit
 	 */
@@ -71,7 +69,6 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @throws \MWException
 	 * @group Database
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::submit
 	 */
@@ -98,7 +95,6 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::validateRelevantTitle
-	 * @throws \MWException
 	 */
 	public function testValidateRelevantTitle() {
 		$this->setMwGlobals( 'wgGEHelpPanelHelpDeskTitle', 'sample' );
