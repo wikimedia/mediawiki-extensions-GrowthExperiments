@@ -1,4 +1,8 @@
 /**
+ * A placeholder that shows where the suggested image will be inserted if the user accepts it.
+ * It takes up the same place in the linear model that the image will; it doesn't have any
+ * content or behavior of its own.
+ *
  * Own attributes:
  * - width: {number} Width of the image in pixels.
  * - height: {number} Height of the image in pixels.
