@@ -173,8 +173,8 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'source' => 'commons',
 												'projects' => [ 'dewiki' ],
 												'metadata' => [ '...' ],
-												'sectionNumber' => 2,
-												'sectionTitle' => 'Foo',
+												'sectionNumber' => null,
+												'sectionTitle' => null,
 											],
 										],
 										'datasetId' => '1234abcd'
@@ -186,7 +186,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 				],
 				'expectedResult' => [
 					new ImageRecommendationData( 'Foo.jpg', 'commons', 'enwiki', '1234abcd' ),
-					new ImageRecommendationData( 'Bar.jpg', 'commons', 'dewiki', '1234abcd', 2, 'Foo' ),
+					new ImageRecommendationData( 'Bar.jpg', 'commons', 'dewiki', '1234abcd' ),
 				],
 			],
 			'filter by source' => [

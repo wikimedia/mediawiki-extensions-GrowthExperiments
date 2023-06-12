@@ -24,13 +24,6 @@ use Title;
  */
 class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHandler {
 
-	private const SOURCE_TO_TASK_TYPE_ID = [
-		ImageRecommendationImage::SOURCE_WIKIPEDIA => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		ImageRecommendationImage::SOURCE_WIKIDATA => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		ImageRecommendationImage::SOURCE_COMMONS => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		ImageRecommendationImage::SOURCE_WIKIDATA_SECTION => SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-	];
-
 	private HttpRequestFactory $httpRequestFactory;
 	/** @var string api.php URL */
 	private string $apiUrl;
@@ -110,7 +103,9 @@ class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHa
 
 		$imageData = [];
 		foreach ( $imageRecommendationArray['images'] as $imageDataArray ) {
-			$imageDataArrayTaskTypeId = self::SOURCE_TO_TASK_TYPE_ID[$imageDataArray['source']] ?? null;
+			$imageDataArrayTaskTypeId = isset( $imageDataArray['sectionTitle'] ) ?
+				SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID :
+				ImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
 			if ( $imageDataArrayTaskTypeId !== $taskType->getId() ) {
 				continue;
 			}

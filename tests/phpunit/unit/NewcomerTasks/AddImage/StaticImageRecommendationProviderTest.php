@@ -44,7 +44,7 @@ class StaticImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 					],
 					[
 						'image' => 'Three.png',
-						'source' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
+						'source' => ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_TOPICS,
 						'sectionNumber' => 2,
 						'sectionTitle' => 'Foo',
 					],
@@ -76,7 +76,7 @@ class StaticImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIPEDIA, $images[1]->getSource() );
 		$this->assertSame( [ 'enwiki', 'dewiki' ], $images[1]->getProjects() );
 		$this->assertSame( 'Three.png', $images[2]->getImageTitle()->getText() );
-		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIDATA_SECTION, $images[2]->getSource() );
+		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_TOPICS, $images[2]->getSource() );
 		$this->assertSame( [], $images[2]->getProjects() );
 		$this->assertSame( 2, $images[2]->getSectionNumber() );
 		$this->assertSame( 'Foo', $images[2]->getSectionTitle() );

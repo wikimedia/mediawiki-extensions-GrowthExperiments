@@ -47,12 +47,7 @@ class ImageRecommendationDataValidator {
 		}
 
 		$source = $imageRecommendationData->getSource();
-		if ( !in_array( $source, [
-			ImageRecommendationImage::SOURCE_WIKIDATA,
-			ImageRecommendationImage::SOURCE_WIKIPEDIA,
-			ImageRecommendationImage::SOURCE_COMMONS,
-			ImageRecommendationImage::SOURCE_WIKIDATA_SECTION,
-		], true ) ) {
+		if ( !in_array( $source, ImageRecommendationImage::KNOWN_SOURCES, true ) ) {
 			return StatusValue::newFatal( new RawMessage(
 				'Invalid source type for $1: $2',
 				[ $titleTextSafe, strip_tags( $source ) ]

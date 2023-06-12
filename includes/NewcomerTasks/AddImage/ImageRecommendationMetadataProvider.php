@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use DerivativeContext;
+use InvalidArgumentException;
 use MediaWiki\Languages\LanguageNameUtils;
 use Message;
 use SiteLookup;
@@ -107,15 +108,17 @@ class ImageRecommendationMetadataProvider {
 	 * Construct the suggestion reason string when the suggested image is found in another project.
 	 * Only return the localized string if the localized project name is available.
 	 *
-	 * @param string $projectId
+	 * @param string $projectId Wiki ID
+	 * @param string $source 'wikipedia', 'wikidata-section-alignment' (see the
+	 *   ImageRecommendationImage constants)
 	 * @return string|null
 	 */
-	private function getWikipediaReasonOtherProject( string $projectId ): ?string {
+	private function getWikipediaReasonOtherProject( string $projectId, string $source ): ?string {
 		// Localized project name is from WikimediaMessages extension.
 		$projectName = $this->localizer->msg( 'project-localized-name-' . $projectId );
 		if ( $projectName->exists() ) {
 			return $this->localizer->msg(
-				'growthexperiments-addimage-reason-wikipedia-project',
+				"growthexperiments-addimage-reason-$source-project",
 				$projectName->text()
 			)->text();
 		}
@@ -207,13 +210,15 @@ class ImageRecommendationMetadataProvider {
 	/**
 	 * Construct the suggestion reason string when the suggested image is found in other projects
 	 *
-	 * @param string[] $projects Projects in which the image suggestion is used
+	 * @param string[] $projects Wiki IDs of projects in which the image suggestion is used
+	 * @param string $source 'wikipedia' or 'wikidata-section-alignment' (see the
+	 *   ImageRecommendationImage constants)
 	 * @return string
 	 */
-	private function getWikipediaReason( array $projects ): string {
+	private function getWikipediaReason( array $projects, string $source ): string {
 		$totalCount = count( $projects );
 		if ( $totalCount === 1 ) {
-			$reason = $this->getWikipediaReasonOtherProject( $projects[0] );
+			$reason = $this->getWikipediaReasonOtherProject( $projects[0], $source );
 			if ( $reason ) {
 				return $reason;
 			}
@@ -221,14 +226,45 @@ class ImageRecommendationMetadataProvider {
 
 		$languageCodes = $this->getLanguageCodesFromProjects( $projects );
 		if ( count( $languageCodes ) === 0 ) {
-			return $this->localizer->msg( 'growthexperiments-addimage-reason-wikipedia' )
+			return $this->localizer->msg( "growthexperiments-addimage-reason-$source" )
 				->numParams( $totalCount )->text();
 		}
 		return $this->localizer->msg(
-			'growthexperiments-addimage-reason-wikipedia-languages',
+			"growthexperiments-addimage-reason-$source-languages",
 				Message::numParam( $totalCount ),
 				$this->getLanguagesListParam( $languageCodes )
 			)->text();
+	}
+
+	/**
+	 * Construct the suggestion reason string when the suggested image is based on other projects
+	 *
+	 * @param string[] $projects Wiki IDs of projects in which the image suggestion is used
+	 * @return string
+	 */
+	private function getWikidataSectionIntersectionReason( $projects ): string {
+		$firstProject = $projects[0];
+		// Localized project name is from WikimediaMessages extension.
+		$projectName = $this->localizer->msg( 'project-localized-name-' . $firstProject );
+		if ( $projectName->exists() ) {
+			if ( count( $projects ) === 1 ) {
+				return $this->localizer->msg(
+					'growthexperiments-addimage-reason-wikidata-section-intersection-single',
+					$projectName
+				)->text();
+			} else {
+				return $this->localizer->msg(
+					'growthexperiments-addimage-reason-wikidata-section-intersection-multiple',
+					$projectName,
+					Message::numParam( count( $projects ) - 1 )
+				)->text();
+			}
+		} else {
+			return $this->localizer->msg(
+				'growthexperiments-addimage-reason-wikidata-section-intersection-languages',
+				Message::numParam( count( $projects ) )
+			)->text();
+		}
 	}
 
 	/**
@@ -243,8 +279,16 @@ class ImageRecommendationMetadataProvider {
 			return $this->localizer->msg( 'growthexperiments-addimage-reason-wikidata' )->text();
 		} elseif ( $source === ImageRecommendationImage::SOURCE_COMMONS ) {
 			return $this->localizer->msg( 'growthexperiments-addimage-reason-commons' )->text();
+		} elseif ( $source === ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_TOPICS ) {
+			return $this->localizer->msg( 'growthexperiments-addimage-reason-wikidata-section-topics' )->text();
+		} elseif ( $source === ImageRecommendationImage::SOURCE_WIKIPEDIA
+			|| $source === ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_ALIGNMENT
+		) {
+			return $this->getWikipediaReason( $suggestion['projects'], $source );
+		} elseif ( $source === ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_INTERSECTION ) {
+			return $this->getWikidataSectionIntersectionReason( $suggestion['projects'] );
 		}
-		return $this->getWikipediaReason( $suggestion['projects'] );
+		throw new InvalidArgumentException( "Unknown suggestion source: $source" );
 	}
 
 	/**

@@ -347,10 +347,9 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 
 	private function getMockMessageLocalizer( bool $shouldReturnKey = true ): DerivativeContext {
 		$localizer = $this->createMock( DerivativeContext::class );
-		$context = $this;
 		$localizer->method( 'msg' )->willReturnCallback(
-			static function ( $key, ...$params ) use ( $context, $shouldReturnKey ) {
-				$message = $context->createMock( Message::class );
+			function ( $key, ...$params ) use ( $shouldReturnKey ) {
+				$message = $this->createMock( Message::class );
 				$message->method( 'numParams' )->willReturn( $message );
 				return ImageRecommendationMetadataProviderTest::updateMessageMock(
 					$message, $key, $params, $shouldReturnKey
@@ -365,10 +364,9 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 
 	private function getMockSiteLookup(): SiteStore {
 		$siteLookup = $this->createMock( SiteStore::class );
-		$context = $this;
 		$siteLookup->method( 'getSite' )->willReturnCallback(
-			static function ( $siteId ) use ( $context ) {
-				$site = $context->createMock( Site::class );
+			function ( $siteId ) {
+				$site = $this->createMock( Site::class );
 				$site->method( 'getLanguageCode' )->willReturnCallback(
 					static function () use ( $siteId ) {
 						return str_replace( 'wiki', '', $siteId );
