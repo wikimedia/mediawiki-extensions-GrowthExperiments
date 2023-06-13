@@ -156,7 +156,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function execute( $par ) {
-		$this->requireLogin();
+		$this->requireNamedUser();
 		$this->maybeRedirectToEnrollAsMentor();
 		$this->requireMentorDashboardEnabled();
 		$this->requireMentorList();

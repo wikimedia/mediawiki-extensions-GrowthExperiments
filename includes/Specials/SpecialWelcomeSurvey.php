@@ -85,7 +85,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		if ( !$par && $this->getRequest()->wasPosted() ) {
 			$this->welcomeSurveyLogger->logInteraction( self::ACTION_SUBMIT_ATTEMPT );
 		}
-		$this->requireLogin();
+		$this->requireNamedUser();
 		if ( $par === 'skip' ) {
 			$this->processSkip();
 			return;
