@@ -23,6 +23,8 @@ function CERecommendedImagePlaceholderNode() {
 			height: this.model.getAttribute( 'height' ) + ( OO.ui.isMobile() ? 130 : 156 )
 		} )
 		.addClass( 'ge-section-image-placeholder' )
+		// mimic MediaWiki's default image alignment behavior, like ve.ce.MWBlockImageNode.getCssClass
+		.addClass( this.getModel().getDocument().getDir() === 'rtl' ? 'ge-align-left' : 'ge-align-right' )
 		// a somewhat hacky way of adding the 'image' OOUI icon (progressive variant) as background
 		.addClass( 'oo-ui-image-progressive oo-ui-icon-image' );
 }
