@@ -24,6 +24,8 @@
 	"apierror-growthexperiments-addimage-handler-reason-missing": "Falta el parámetro 'reasons' en los datos del plugin Add Image",
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "El parámetro 'reasons' debe ser un array en los datos del plugin Add Image, es $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Elemento inválido '$1' para el parámetro 'reasons', debe ser uno de: $2",
+	"apierror-growthexperiments-addimage-handler-section-number-missing": "Falta el parámetro 'sectionNumber' de los datos de Añadir Imagen",
+	"apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype": "El parámetro 'sectionTitle' debe formar parte del data plugin Añadir imágenes, es $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "No se ha encontrado el registro de recomendación de enlaces",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Objetivos de recomendación de enlaces inesperados: $1",
 	"growthexperiments-underlinked-rescore-profile": "Perfil interno de recalificación utilizado en las recomendaciones de enlaces de GrowthExperiments para priorizar los artículos que aún no tienen suficientes enlaces.",

@@ -87,7 +87,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "Numărul maxim de sarcini sugerate de tipul „Adaugă o legătură” pe care un nou-venit îl poate efectua zilnic.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Lista numelor de secțiuni în care nu ar trebui recomandată nicio legătură.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Pagina destinație pentru a afla mai mult despre tipul de sarcină de recomandări de imagini.",
-	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "Numărul maxim de sarcini sugerate de tipul „Adaugă o imagine” pe care un nou-venit îl poate efectua zilnic.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "Numărul maxim de sarcini sugerate de tipul „Adaugă o imagine la un articol neilustrat” pe care un nou-venit îl poate efectua zilnic.",
 	"growthexperiments-edit-config-newcomer-tasks-section-image-recommendation-learnmore": "Pagina destinație pentru a afla mai mult despre tipul de sarcină de recomandări de imagini pentru secțiuni de articole.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Aest tip de sarcină este asociat cu sugesti automate și nu folosește formate pentru a genera mulțimea de sarcini.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Articolele conținând formate definite aici nu vor fi afișate utilizatorilor ca sarcini pentru acest tip de sarcină.",
