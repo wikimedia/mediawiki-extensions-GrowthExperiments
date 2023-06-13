@@ -239,14 +239,6 @@ AddSectionImageArticleTarget.prototype.scrollToTargetSection = function () {
 	} );
 };
 
-/** @inheritDoc **/
-AddSectionImageArticleTarget.prototype.getVEPluginData = function () {
-	var pluginData = AddSectionImageArticleTarget.super.prototype.getVEPluginData.call( this );
-	pluginData.sectionNumber = this.getSelectedSuggestion().sectionNumber;
-	pluginData.sectionTitle = this.getSelectedSuggestion().sectionTitle;
-	return pluginData;
-};
-
 /**
  * Get data for the suggestion at the specified index (if any) or the selected suggestion
  * to pass to ImageSuggestionInteractionLogger.

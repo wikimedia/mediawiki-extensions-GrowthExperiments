@@ -542,7 +542,11 @@ AddImageArticleTarget.prototype.getVEPluginData = function () {
 		filename: this.getSelectedSuggestion().image,
 		accepted: !!this.recommendationAccepted,
 		reasons: this.recommendationRejectionReasons,
-		caption: this.recommendationAccepted ? this.getCaptionText() : ''
+		caption: this.recommendationAccepted ? this.getCaptionText() : '',
+		// The section parameters will always be null for image-recommendation tasks, but
+		// non-null for section-image-recommendation tasks. They are required parameters for both.
+		sectionNumber: this.getSelectedSuggestion().sectionNumber,
+		sectionTitle: this.getSelectedSuggestion().sectionTitle
 	};
 };
 
