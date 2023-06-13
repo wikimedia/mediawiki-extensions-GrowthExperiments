@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"MITO"
+			"MITO",
+			"Pyscowicz"
 		]
 	},
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Uusi tila",
-	"apihelp-growthmanagementorlist-param-geaction": "Toiminto"
+	"apihelp-growthmanagementorlist-param-geaction": "Toiminto",
+	"apihelp-growthmanagementorlist-param-summary": "Syy muutokselle"
 }
