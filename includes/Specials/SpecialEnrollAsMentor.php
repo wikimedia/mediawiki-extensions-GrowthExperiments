@@ -66,7 +66,7 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function execute( $par ) {
-		$this->requireLogin();
+		$this->requireNamedUser();
 
 		if ( $this->mentorProvider->isMentor( $this->getUser() ) ) {
 			$this->getOutput()->redirect(

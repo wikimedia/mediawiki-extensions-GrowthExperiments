@@ -91,7 +91,7 @@ class SpecialQuitMentorship extends FormSpecialPage {
 	 */
 	public function execute( $par ) {
 		$this->requireMentorDashboardEnabled();
-		$this->requireLogin();
+		$this->requireNamedUser();
 
 		parent::execute( $par );
 	}
