@@ -43,7 +43,7 @@
 	</g>
 	<defs>
 		<clipPath id="clip0_2_2006">
-			<path fill="#fff" d="M0 0h11.041v11.777H0z" transform="translate(268.222 11.698)"/>
+			<path fill="#fff" d="M268.222 11.698h11.041v11.777h-11.041z"/>
 		</clipPath>
 	</defs>
 </svg>

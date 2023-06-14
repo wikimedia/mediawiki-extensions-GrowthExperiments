@@ -44,7 +44,7 @@
 			<path fill="#fff" d="M0 0h360v216H0z"/>
 		</clipPath>
 		<clipPath id="clip1">
-			<path fill="#fff" d="M0 0h108v82H0z" transform="matrix(-1 0 0 1 310 38)"/>
+			<path fill="#fff" d="M310 38H202v82h108z"/>
 		</clipPath>
 		<filter id="filter0_d" width="120" height="204" x="196" y="30" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
 			<feFlood flood-opacity="0" result="BackgroundImageFix"/>

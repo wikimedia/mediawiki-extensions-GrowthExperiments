@@ -63,7 +63,7 @@
 			<stop offset="1" stop-color="#72777D"/>
 		</linearGradient>
 		<clipPath id="clip0">
-			<path fill="#fff" d="M0 0h360v216H0z" transform="matrix(-1 0 0 1 360 0)"/>
+			<path fill="#fff" d="M360 0H0v216h360z"/>
 		</clipPath>
 	</defs>
 </svg>
