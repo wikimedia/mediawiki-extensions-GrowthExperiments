@@ -1440,7 +1440,8 @@
 				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingContent.less",
 				"ext.growthExperiments.StructuredTask.PreEdit/addimage/AddImageOnboardingContent.less",
 				"ext.growthExperiments.StructuredTask.PreEdit/addsectionimage/AddSectionImageOnboardingContent.less",
-				"ui-components/MultiPaneDialog.less"
+				"ui-components/MultiPaneDialog.less",
+				"utils/mixins.less"
 			],
 			"messages": [
 				"growthexperiments-structuredtask-onboarding-dialog-label-skip-all",
