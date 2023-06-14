@@ -174,15 +174,10 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 	if ( articleTarget.isSectionLevelTask() ) {
 		/** @type {mw.libs.ge.AddSectionImageArticleTarget} */
 		var sectionImageArticleTarget = articleTarget;
-		// Something causes the editor to scroll to top shortly after initialization;
-		// wait for that to happen before scrolling & showing the dialog.
-		// FIXME find a more reliable way to avoid interference
-		setTimeout( function () {
-			sectionImageArticleTarget.insertImagePlaceholder( this.images[ 0 ] );
-			sectionImageArticleTarget.scrollToTargetSection().then( function () {
-				this.animateIn();
-			}.bind( this ) );
-		}.bind( this ), 300 );
+		sectionImageArticleTarget.insertImagePlaceholder( this.images[ 0 ] );
+		sectionImageArticleTarget.scrollToTargetSection().then( function () {
+			this.animateIn();
+		}.bind( this ) );
 	} else {
 		this.animateIn();
 	}
