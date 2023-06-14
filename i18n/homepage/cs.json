@@ -479,6 +479,8 @@
 	"growthexperiments-addimage-inspector-help-button": "Získejte pomoc s editací",
 	"growthexperiments-addimage-inspector-details-button": "Zobrazit podrobnosti o obrázku",
 	"growthexperiments-addimage-inspector-description-placeholder": "Žádný popis není k dispozici",
+	"growthexperiments-addsectionimage-inspector-title": "Přidání obrázku do kapitoly článku",
+	"growthexperiments-addsectionimage-inspector-cta": "Přidat tento obrázek do kapitoly \"$1\"?",
 	"growthexperiments-addimage-detailsdialog-header": "Podrobnosti o obrázku",
 	"growthexperiments-addimage-detailsdialog-image": "Název souboru:",
 	"growthexperiments-addimage-detailsdialog-description": "Popis:",

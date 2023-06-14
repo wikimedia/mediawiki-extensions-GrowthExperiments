@@ -508,6 +508,8 @@
 	"growthexperiments-addimage-inspector-help-button": "Obtener ayuda con la edición",
 	"growthexperiments-addimage-inspector-details-button": "Ver detalles de la imagen",
 	"growthexperiments-addimage-inspector-description-placeholder": "Descripción no disponible",
+	"growthexperiments-addsectionimage-inspector-title": "Añadir una imagen a la sección de un artículo",
+	"growthexperiments-addsectionimage-inspector-cta": "¿Añadir esta imagen a la sección \"$1\" del artículo?",
 	"growthexperiments-addimage-detailsdialog-header": "Detalles de la imagen",
 	"growthexperiments-addimage-detailsdialog-image": "Nombre del archivo:",
 	"growthexperiments-addimage-detailsdialog-description": "Descripción:",

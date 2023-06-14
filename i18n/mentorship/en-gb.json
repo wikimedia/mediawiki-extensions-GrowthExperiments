@@ -2,8 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Mako001",
 			"TheSkull28870"
 		]
 	},
-	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "You can change a mentee’s mentor to yourself. Frequently used for editing events so that instructors can be a newcomer’s mentor both on and off wiki."
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "You can change a mentee’s mentor to yourself. This is frequently used for editing events so that instructors can be a newcomer’s mentor both on and off wiki."
 }

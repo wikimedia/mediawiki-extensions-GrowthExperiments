@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Asma",
 			"Dr. Mohammed",
 			"Dyolf77",
 			"Dyolf77 (WMF)",
@@ -487,6 +488,8 @@
 	"growthexperiments-addimage-inspector-help-button": "{{GENDER:|احصل|احصلي}} على مساعدة في التحرير",
 	"growthexperiments-addimage-inspector-details-button": "إظهار تفاصيل الصورة",
 	"growthexperiments-addimage-inspector-description-placeholder": "لا يتوفر وصف",
+	"growthexperiments-addsectionimage-inspector-title": "أضف صورة إلى قسم المقال",
+	"growthexperiments-addsectionimage-inspector-cta": "أضف هذه الصورة إلى قسم المقالات \"$1\"؟",
 	"growthexperiments-addimage-detailsdialog-header": "تفاصيل الصورة",
 	"growthexperiments-addimage-detailsdialog-image": "اسم الملف:",
 	"growthexperiments-addimage-detailsdialog-description": "الوصف:",
@@ -566,8 +569,15 @@
 	"growthexperiments-addimage-reason-wikipedia-languages": "مستخدمة في نفس المقالة في {{PLURAL:$1||لغة أخرى|لغتين أخرتين|$1 لغات أخرى|$1 لغة أخرى}}: $2.",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1||آخر|آخرين|أخر}}",
 	"growthexperiments-addimage-reason-wikipedia-project": "مستخدمة في نفس المقالة من $1.",
+	"growthexperiments-addimage-reason-wikidata-section-alignment": "مستخدَمة في نفس قسم المقالة {{PLURAL:$1|لا لغة|بلغة أخرى|بلغتين أخرتين|بـ$1 لغات أخرى|بـ$1 لغة أخرى}}.",
+	"growthexperiments-addimage-reason-wikidata-section-alignment-languages": "مستخدَمة في نفس المقالة {{PLURAL:$1|لا لغة|بلغة أخرى|بلغتين أخرتين|بـ$1 لغات أخرى|بـ$1 لغة أخرى}}: $2.",
+	"growthexperiments-addimage-reason-wikidata-section-alignment-project": "مستخدَمة في نفس قسم المقالة في $1.",
+	"growthexperiments-addimage-reason-wikidata-section-intersection-single": "مستخدَمة في نفس قسم المقالة في $1، وتتعلق بعنصر ويكيبيانات الذي قد يكون متّصلًا بهذا القسم من المقالة.",
+	"growthexperiments-addimage-reason-wikidata-section-intersection-multiple": "مستخدَمة في نفس قسم المقالة في $1 و{{PLURAL:$2|لا لغة|بلغة أخرى|بلغتين أخرتين|بـ$2 لغات أخرى|بـ$2 لغة أخرى}}، وتتعلق بعنصر ويكيبيانات الذي قد يكون متّصلًا بهذا القسم من المقالة.",
+	"growthexperiments-addimage-reason-wikidata-section-intersection-languages": "مستخدَمة في نفس قسم المقالة {{PLURAL:$1|لا لغة|بلغة أخرى|بلغتين أخرتين|بـ$1 لغات أخرى|بـ$1 لغة أخرى}}، وتتعلق بعنصر ويكيبيانات الذي قد يكون متّصلًا بهذا القسم من المقالة.",
 	"growthexperiments-addimage-reason-wikidata": "وجدت في عنصر ويكي بيانات لهذه المقالة (تطابق قوي).",
 	"growthexperiments-addimage-reason-commons": "واحدة من عدة صور مرتبطة بعنصر ويكي بيانات لهذه المقالة.",
+	"growthexperiments-addimage-reason-wikidata-section-topics": "تتعلق بعنصر ويكيبيانات الذي قد يكون متّصلًا بهذا القسم من المقالة.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "لقد انتهيت من كلّ اقتراحات الصور لهذا اليوم.\n\n{{GENDER:|عدّل|عدّلي}} من مستوى الصعوبة للحصول على أنواع أخرى من التعديلات أو {{GENDER:|ارجع|ارجعي}} غداً للمزيد من اقتراحات الصّور.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "عُلم",
 	"growthexperiments-addimage-caption-warning-tooshort": "يجب أن يكون الشرح متكوّنا من {{PLURAL:$1||حرف واحد|حرفين|$1 أحرف|$1 حرفا|$1 حرف}} فأكثر.",
