@@ -230,13 +230,35 @@ AddSectionImageArticleTarget.prototype.isSameSection = function ( node, sectionN
  * @return {jQuery.Promise}
  */
 AddSectionImageArticleTarget.prototype.scrollToTargetSection = function () {
+	this.suppressSurfaceSelectEvents( true );
 	return OO.ui.Element.static.scrollIntoView( this.targetHeading.$element[ 0 ], {
 		animate: true,
 		alignToTop: true,
 		duration: 'slow',
 		padding: this.surface.padding,
 		direction: 'y'
-	} );
+	} ).done( function () {
+		this.suppressSurfaceSelectEvents( false );
+	}.bind( this ) );
+};
+
+/**
+ * Disable (or reenable) effects from the 'select' event emitted by ve.dm.Surface being
+ * handled by ve.ui.Surface. This is a hack to prevent the surface event handler from
+ * interfering with programmatic scrolling.
+ *
+ * @param {boolean} suppress
+ */
+AddSectionImageArticleTarget.prototype.suppressSurfaceSelectEvents = function ( suppress ) {
+	// It would be nicer to interfere at a less generic level closer to the 'select' event
+	// triggering or handling, but there isn't an easy way to do that - part of the event
+	// handling is debounced, so we might be dealing with scrolling that was initiated by an
+	// event that fired before we started suppressing select events.
+	if ( suppress ) {
+		ve.scrollIntoView = function () {};
+	} else {
+		ve.scrollIntoView = OO.ui.Element.static.scrollIntoView.bind( OO.ui.Element.static );
+	}
 };
 
 /**
