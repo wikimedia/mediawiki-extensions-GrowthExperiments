@@ -22,7 +22,7 @@
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "לשימוש בעת שמירת העריכה המבנית \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|הוספת קישור]]\" של GrowthExperiments.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "לשימוש בעת שמירת העריכה המבנית \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|הוספת תמונה]]\" של GrowthExperiments.",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>בשביל תוסף <var>ge-task-link-recommendation</var></dt><dd>\n$1\n</dd></dl>",
-	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>בשביל תוסף <var>-task-image-recommendation</var></dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>בשביל תוסף <var>ge-task-image-recommendation</var></dt><dd>\n$1\n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "הפרמטר \"accepted\" חסר מהנתונים של התוסף Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "הפרמטר \"accepted\" חייב להיות בוליאני בנתונים של התוסף Add Image, ועכשיו הוא $1",
 	"apierror-growthexperiments-addimage-handler-reason-missing": "הפרמטר \"reasons\" חסר בנתוני תוסף Add Image",

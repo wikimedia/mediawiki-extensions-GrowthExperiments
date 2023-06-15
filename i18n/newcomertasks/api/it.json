@@ -17,7 +17,7 @@
 	"apihelp-query+growthtasks-example-1": "Ottieni raccomandazioni per compiti di tipo \"revisione di testo\" per l'utente corrente.",
 	"apihelp-query+growthtasks-example-2": "Ottieni raccomandazioni di compiti per l'utente corrente, con informazioni dettagliate sulle pagine.",
 	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Il tipo di attività su cui l'utente sta attualmente lavorando.",
-	"apierror-growthexperiments-addimage-handler-accepted-missing": "parametro 'accepted' mancante dai dati del plugin Add Image",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Parametro 'accepted' mancante nei dati del plugin Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Il parametro 'accepted' deve essere un booleano nel plugin Add image, è $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Registro sui collegamenti consigliati non trovato",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Pagine inaspettate a cui puntano i collegamenti raccomandati: $1"

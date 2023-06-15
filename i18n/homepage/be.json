@@ -8,7 +8,8 @@
 			"No Sleep till Krupki",
 			"Plaga med",
 			"Tomato Cream",
-			"Tīgelika"
+			"Tīgelika",
+			"ZlyiLev"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
@@ -16,7 +17,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Ваша}} дамашняя старонка",
 	"prefs-homepage": "Магчымасці для рэдактараў-пачаткоўцаў",
 	"growthexperiments-homepage-enable": "Паказваць дамашнюю старонку для пачаткоўцаў",
-	"growthexperiments-homepage-pt-link": "Перайсці па змаўчанні на дамашнюю старонку для пачаткоўцаў, націснуўшы на спасылку з імем удзельніка ў асабістых інструментах",
+	"growthexperiments-homepage-pt-link": "Тэкст з імем удзельніка ў асабістых інструментах прадвызначана спасылаецца на дамашнюю старонку для пачаткоўцаў",
 	"growthexperiments-homepage-email-header-noemail": "Дадайце {{GENDER:$1|ваш}} адрас эл. пошты",
 	"growthexperiments-homepage-email-header-unconfirmed": "Пацвердзіце {{GENDER:$1|ваш}} адрас эл. пошты",
 	"growthexperiments-homepage-email-header-confirmed": "Адрас эл. пошты дадазены",
@@ -412,7 +413,7 @@
 	"growthexperiments-addlink-summary-title": "Падсумаванне",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Прапанова",
 	"growthexperiments-addlink-summary-column-header-linked": "Былі звязаныя?",
-	"growthexperiments-addlink-summary-copyrightwarning": "Захоўваючы змены, Вы згаджаецеся з [https://foundation.wikimedia.org/wiki/Terms_of_Use Умовамі выкарыстання], а таксама згаджаецеся на беззваротную публікацыю вашага ўкладу на ўмовах ліцэнзіяў [https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License CC BY-SA 3.0 License] і [https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License GFDL].",
+	"growthexperiments-addlink-summary-copyrightwarning": "Захоўваючы змены, Вы згаджаецеся з [https://foundation.wikimedia.org/wiki/Terms_of_Use Умовамі выкарыстання], а таксама згаджаецеся на беззваротную публікацыю вашага ўкладу на ўмовах ліцэнзій [https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License CC BY-SA 3.0 License] і [https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License GFDL].",
 	"growthexperiments-addlink-summary-summary": "Функцыя прапаноў спасылак: {{PLURAL:$1|дададзена $1 спасылка|дададзены $1 спасылкі|дададзены $1 спасылак}}.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Вы}} прапусцілі ўсе прапановы для гэтага артыкула.",
 	"growthexperiments-addlink-skip-body": "Вы ўпэўнены, што не {{GENDER:|жадаеце}} прымаць або адхіляць якія-небудзь прапановы?",
@@ -503,7 +504,7 @@
 	"growthexperiments-structuredtask-user-error-login-cta": "Увайсці",
 	"growthexperiments-structuredtask-anonuser": "Удзельнік больш не ў сістэме.",
 	"growthexperiments-addimage-summary-label": "Падсумаванне",
-	"growthexperiments-addimage-summary-copyrightwarning": "Захоўваючы змены, {{GENDER:|вы}} згаджаецеся з [https://foundation.wikimedia.org/wiki/Terms_of_Use Умовамі выкарыстання], а таксама згаджаецеся на беззваротную публікацыю вашага ўкладу на ўмовах ліцэнзіяў [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] і [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
+	"growthexperiments-addimage-summary-copyrightwarning": "Захоўваючы змены, {{GENDER:|вы}} згаджаецеся з [https://foundation.wikimedia.org/wiki/Terms_of_Use Умовамі выкарыстання], а таксама згаджаецеся на беззваротную публікацыю вашага ўкладу на ўмовах ліцэнзій [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] і [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
 	"growthexperiments-addimage-summary-summary": "Функцыя прапаноў выяў: {{PLURAL:$1|дададзена $1 выява|дададзена $1 выявы|дададзена $1 выяў}}.",
 	"growthexperiments-addimage-reason-wikipedia": "Выкарыстоўваецца ў тым жа артыкуле на $1 {{PLURAL:$1|іншай мове|іншых мовах}}.",
 	"growthexperiments-addimage-reason-wikipedia-languages": "Выкарыстоўваецца ў тым жа артыкуле на $1 {{PLURAL:$1|іншай мове|іншых мовах}}: $2.",
