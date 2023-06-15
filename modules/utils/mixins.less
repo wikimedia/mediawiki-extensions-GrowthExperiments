@@ -127,6 +127,33 @@
 	padding: 0;
 }
 
+/*
+* Mixin to avoid flipping images that contain problematic characters
+* like a question mark "?" in Hewbrew and Yiddish wikis.
+*/
+.background-image-noflip( @imageSrc ) {
+	html:lang( he ) &,
+	html:lang( yi ) & {
+		/* @noflip */
+		background-image: @imageSrc;
+	}
+}
+
+/*
+* Mixin to set a different background position based on the html document
+* direction. This is useful to position images that have a different
+* asset for LTR / RTL.
+*/
+.background-position-ltr-rtl( @bgPositionLTR, @bgPositionRTL ) {
+	html[ dir='ltr' ] & {
+		background-position: @bgPositionLTR;
+	}
+
+	html[ dir='rtl' ] & {
+		background-position: @bgPositionRTL;
+	}
+}
+
 // Helpers
 .ext-growthExperiments-utils__pull-right {
 	float: right;
