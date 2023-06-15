@@ -278,10 +278,32 @@ export default {
 	.ext-growthExperiments-onboarding-dialog-color();
 	.ext-growthExperiments-onboarding-dialog-size();
 
-	// stylelint-disable-next-line selector-class-pattern
-	.cdx-dialog__body {
-		padding: 0;
+	/**
+	* FIXME
+	* Overwrites of Cdx-dialog classes to avoid padding in the dialog body
+	* and to keep the same padding value when the dialog body content is and is not scrollable
+	* https://phabricator.wikimedia.org/T336265
+	*/
+
+	// stylelint-disable selector-class-pattern
+	&.cdx-dialog--dividers,
+	&.cdx-dialog--has-custom-header,
+	&.cdx-dialog--has-custom-footer {
+		.cdx-dialog__body {
+			padding: 0;
+		}
 	}
+
+	&.cdx-dialog--dividers {
+		.cdx-dialog__header {
+			padding-bottom: 0;
+		}
+
+		.cdx-dialog__footer {
+			padding-top: 0;
+		}
+	}
+	// stylelint-enable selector-class-pattern
 
 	&__header {
 		padding-inline-start: @spacing-150;
