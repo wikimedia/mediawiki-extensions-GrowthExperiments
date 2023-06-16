@@ -34,10 +34,10 @@ module.exports = ( function () {
 	 * Return the toolgroup for the edit mode dropdown with visual and machine suggestions modes.
 	 * This replaces VE's 'editMode' toolgroup.
 	 *
-	 * @return {Object}
+	 * @return {Object[]}
 	 */
 	function getEditModeToolGroup() {
-		var editModeToolGroup = {
+		return {
 			name: 'suggestionsEditMode',
 			type: 'list',
 			icon: 'edit',
@@ -46,10 +46,6 @@ module.exports = ( function () {
 			invisibleLabel: true,
 			include: editModeToolNames
 		};
-		if ( !OO.ui.isMobile() ) {
-			editModeToolGroup.align = 'after';
-		}
-		return editModeToolGroup;
 	}
 
 	/**
@@ -93,20 +89,17 @@ module.exports = ( function () {
 	 * @param {Object[]} currentGroups Existing VE action groups
 	 * @return {Object[]}
 	 */
-	function getToolbarGroups( currentGroups ) {
+	function getActionGroups( currentGroups ) {
 		var activeGroups = currentGroups.filter( function ( tool ) {
-			return tool.align !== 'after' ||
-				[ 'editMode', 'back' ].indexOf( tool.name ) !== -1;
+			return [ 'editMode', 'back' ].indexOf( tool.name ) !== -1;
 		} );
-		var saveGroup = {
-			name: 'save',
-			type: 'bar',
-			include: [ 'machineSuggestionsSave' ]
-		};
-		if ( !OO.ui.isMobile() ) {
-			saveGroup.align = 'after';
-		}
-		activeGroups.push( saveGroup );
+		activeGroups.push(
+			{
+				name: 'save',
+				type: 'bar',
+				include: [ 'machineSuggestionsSave' ]
+			}
+		);
 		return updateEditModeTool( activeGroups );
 	}
 
@@ -190,7 +183,7 @@ module.exports = ( function () {
 		canAddToolbarTitle: canAddToolbarTitle,
 		getTitleElement: getTitleElement,
 		getMobileTools: getMobileTools,
-		getToolbarGroups: getToolbarGroups,
+		getActionGroups: getActionGroups,
 		getEditModeToolNames: function () {
 			return editModeToolNames;
 		},
