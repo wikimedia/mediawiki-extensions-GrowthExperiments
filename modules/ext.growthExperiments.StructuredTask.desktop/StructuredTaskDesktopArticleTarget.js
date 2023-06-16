@@ -21,8 +21,8 @@ function StructuredTaskDesktopArticleTarget() {
 OO.inheritClass( StructuredTaskDesktopArticleTarget, ve.init.mw.DesktopArticleTarget );
 OO.mixinClass( StructuredTaskDesktopArticleTarget, StructuredTaskArticleTarget );
 
-StructuredTaskDesktopArticleTarget.static.toolbarGroups = MachineSuggestionsMode.getToolbarGroups(
-	StructuredTaskDesktopArticleTarget.static.toolbarGroups
+StructuredTaskDesktopArticleTarget.static.actionGroups = MachineSuggestionsMode.getActionGroups(
+	StructuredTaskDesktopArticleTarget.static.actionGroups
 );
 
 /**

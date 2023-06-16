@@ -26,7 +26,7 @@ OO.mixinClass( SuggestionsMobileArticleTarget, SuggestionsArticleTarget );
  * edit mode tools are un-registered (in index.js).
  */
 SuggestionsMobileArticleTarget.static.toolbarGroups =
-	SuggestionsMobileArticleTarget.static.toolbarGroups.push(
+	SuggestionsMobileArticleTarget.static.toolbarGroups.concat(
 		MachineSuggestionsMode.getEditModeToolGroup()
 	);
 
