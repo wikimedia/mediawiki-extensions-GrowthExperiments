@@ -1,4 +1,5 @@
-var AddImageArticleTarget = require( '../addimage/AddImageArticleTarget.js' );
+var scrollingDeferred,
+	AddImageArticleTarget = require( '../addimage/AddImageArticleTarget.js' );
 
 /**
  * Mixin for a ve.init.mw.ArticleTarget instance. Used by AddSectionImageDesktopArticleTarget and
@@ -255,9 +256,18 @@ AddSectionImageArticleTarget.prototype.suppressSurfaceSelectEvents = function ( 
 	// handling is debounced, so we might be dealing with scrolling that was initiated by an
 	// event that fired before we started suppressing select events.
 	if ( suppress ) {
-		ve.scrollIntoView = function () {};
+		if ( !scrollingDeferred ) {
+			scrollingDeferred = $.Deferred();
+		}
+		ve.scrollIntoView = function () {
+			return scrollingDeferred.promise();
+		};
 	} else {
 		ve.scrollIntoView = OO.ui.Element.static.scrollIntoView.bind( OO.ui.Element.static );
+		if ( scrollingDeferred ) {
+			scrollingDeferred.resolve();
+			scrollingDeferred = null;
+		}
 	}
 };
 
