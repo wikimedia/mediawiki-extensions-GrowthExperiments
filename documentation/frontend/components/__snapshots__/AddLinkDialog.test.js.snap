@@ -12,8 +12,7 @@ exports[`AddLinkDialog > should add a "learn more" link if an url is provided 1`
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
             <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div><!-- eslint-disable max-len -->
-          <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
-            <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</p>
+          <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\"><span class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</span>
             <div class=\\"ext-growthExperiments-OnboardingStepper__dots\\">
               <div class=\\"ext-growthExperiments-OnboardingStepper__dots__dot ext-growthExperiments-OnboardingStepper__dots__dot--active\\"></div>
               <div class=\\"ext-growthExperiments-OnboardingStepper__dots__dot ext-growthExperiments-OnboardingStepper__dots__dot--active\\"></div>
@@ -64,8 +63,7 @@ exports[`AddLinkDialog > should render 3 step with Add a link on-boarding conten
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
             <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div><!-- eslint-disable max-len -->
-          <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
-            <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</p>
+          <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\"><span class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</span>
             <div class=\\"ext-growthExperiments-OnboardingStepper__dots\\">
               <div class=\\"ext-growthExperiments-OnboardingStepper__dots__dot ext-growthExperiments-OnboardingStepper__dots__dot--active\\"></div>
               <div class=\\"ext-growthExperiments-OnboardingStepper__dots__dot\\"></div>
@@ -119,8 +117,7 @@ exports[`AddLinkDialog > should render second step with Add a link on-boarding c
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
             <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div><!-- eslint-disable max-len -->
-          <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
-            <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</p>
+          <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\"><span class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</span>
             <div class=\\"ext-growthExperiments-OnboardingStepper__dots\\">
               <div class=\\"ext-growthExperiments-OnboardingStepper__dots__dot ext-growthExperiments-OnboardingStepper__dots__dot--active\\"></div>
               <div class=\\"ext-growthExperiments-OnboardingStepper__dots__dot ext-growthExperiments-OnboardingStepper__dots__dot--active\\"></div>
@@ -172,8 +169,7 @@ exports[`AddLinkDialog > should render third step with Add a link on-boarding co
           <div class=\\"ext-growthExperiments-OnboardingDialog__header__top\\">
             <h4 class=\\"ext-growthExperiments-OnboardingDialog__header__top__title\\">growthexperiments-structuredtask-onboarding-dialog-title:[]</h4><button class=\\"cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium ext-growthExperiments-OnboardingDialog__header__top__button\\">growthexperiments-structuredtask-onboarding-dialog-label-skip-all:[]</button>
           </div><!-- eslint-disable max-len -->
-          <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\">
-            <p class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</p>
+          <div class=\\"ext-growthExperiments-OnboardingStepper ext-growthExperiments-OnboardingDialog__header__stepper\\"><span class=\\"ext-growthExperiments-OnboardingStepper__label\\">growthexperiments-structuredtask-onboarding-dialog-progress:[1,3]</span>
             <div class=\\"ext-growthExperiments-OnboardingStepper__dots\\">
               <div class=\\"ext-growthExperiments-OnboardingStepper__dots__dot ext-growthExperiments-OnboardingStepper__dots__dot--active\\"></div>
               <div class=\\"ext-growthExperiments-OnboardingStepper__dots__dot ext-growthExperiments-OnboardingStepper__dots__dot--active\\"></div>
