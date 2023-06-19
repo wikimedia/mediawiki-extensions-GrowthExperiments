@@ -41,4 +41,23 @@ describe( 'FilterDialog', () => {
 			expect( doneBtn.attributes() ).to.haveOwnProperty( 'disabled' );
 		} );
 	} );
+
+	it( 'should emit close event with correct value when click on close btn', () => {
+		const wrapper = renderComponent( { open: true } );
+		const closeBtn = wrapper.get( '[ aria-label="close"]' );
+		closeBtn.trigger( 'click' )
+			.then( () => {
+				expect( wrapper.emitted() ).toHaveProperty( 'close' );
+				expect( wrapper.emitted().close ).toMatchObject( [ [ { closeSource: 'cancel' } ] ] );
+			} );
+	} );
+	it( 'should emit close event with correct value when click on done btn', () => {
+		const wrapper = renderComponent( { open: true } );
+		const closeBtn = wrapper.get( '[ aria-label="done"]' );
+		closeBtn.trigger( 'click' )
+			.then( () => {
+				expect( wrapper.emitted() ).toHaveProperty( 'close' );
+				expect( wrapper.emitted().close ).toMatchObject( [ [ { closeSource: 'done' } ] ] );
+			} );
+	} );
 } );

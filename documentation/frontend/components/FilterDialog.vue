@@ -66,7 +66,7 @@
  * Dialog for filtering tasks in the suggested edits feed
  */
 
-import { ref, toRef, watch } from 'vue';
+import { ref, toRef } from 'vue';
 import { CdxDialog, CdxButton, CdxIcon, useModelWrapper } from '@wikimedia/codex';
 import { cdxIconClose } from '@wikimedia/codex-icons';
 
@@ -101,18 +101,15 @@ export default {
 		const onSave = () => {
 			closeSource.value = { closeSource: 'done' };
 			wrappedOpen.value = false;
+			emit( 'close', closeSource.value );
+			closeSource.value = undefined;
 		};
 		const onCancel = () => {
 			closeSource.value = { closeSource: 'cancel' };
 			wrappedOpen.value = false;
-		};
-		watch( wrappedOpen, () => {
-			if ( wrappedOpen.value === false ) {
-				emit( 'close', closeSource.value );
-			}
+			emit( 'close', closeSource.value );
 			closeSource.value = undefined;
-		} );
-
+		};
 		return {
 			cdxIconClose,
 			onCancel,
@@ -132,18 +129,35 @@ export default {
 	color: @color-base;
 	font-size: @font-size-small;
 	line-height: @line-height-xx-small;
+	/**
+	* REVIEW: the following overwrite is set to avoid a duplicated border if
+	* the dialog has scrollable content
+	*/
+	// stylelint-disable-next-line selector-class-pattern
+	&.cdx-dialog--dividers {
+		// stylelint-disable-next-line selector-class-pattern
+		.cdx-dialog__header {
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
+		// stylelint-disable-next-line selector-class-pattern
+		.cdx-dialog__footer {
+			padding-top: 0;
+			border-top: 0;
+		}
+	}
 
 	&__header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		border-bottom: @border-subtle;
 
 		&--loading {
 			.ext-growthExperiments-loading-stripes-anim();
 		}
 
 		&__title {
-			padding-top: @spacing-50;
 			font-weight: @font-weight-bold;
 			font-size: @font-size-base;
 			line-height: @line-height-medium;
@@ -151,9 +165,8 @@ export default {
 	}
 
 	&__footer {
-		padding-bottom: @spacing-100;
-		padding-left: @spacing-100;
-		padding-right: @spacing-100;
+		border-top: @border-subtle;
+		padding: @spacing-50 @spacing-100;
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
