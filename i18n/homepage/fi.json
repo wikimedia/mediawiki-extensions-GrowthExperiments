@@ -9,7 +9,8 @@
 			"Mediawikitranslator",
 			"Rönttönen",
 			"Veikk0.ma",
-			"Markus Mikkonen"
+			"Markus Mikkonen",
+			"Yupik"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
@@ -113,6 +114,7 @@
 	"growthexperiments-specialimpact-invalid-username": "Puuttuva tai virheellinen käyttäjänimi.",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Sinä}} olet jo käyttäjän {{GENDER:$1|$1}} mentori",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Sinä}} et ole vielä tehnyt yhtään muokkausta.",
+	"growthexperiments-homepage-contributions-zero-subtitle": "Vieraile {{GENDER:$1|aloitussivullasi}} ja aloita muokkaaminen!",
 	"growthexperiments-homepage-contributions-zero-button": "Mene {{GENDER:$1|aloitussivullesi}}",
 	"growthexperiments-tour-welcome-title": "Tervetuloa {{GENDER:$1|omalle}} aloitussivullesi!",
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Voit}} aina palata tänne klikkaamalla {{GENDER:$1|käyttäjänimeäsi}}.",
@@ -241,7 +243,7 @@
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Sinun}} täytyy olla mentorilistalla [[$2]] voidaksesi käyttää toimintosivua Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Mentorilistaa ei ole olemassa ([[$1]]) tai se on virheellinen.",
 	"growthexperiments-notification-learn-more": "Lue lisää {{GENDER:$1|uudesta}} {{GENDER:$2|mentoristasi}}",
-	"right-setmentor": "Aseta käyttäjälle mentori",
-	"action-setmentor": "asentaa käyttäjälle mentoria",
+	"right-setmentor": "Asettaa käyttäjälle mentori",
+	"action-setmentor": "asettaa käyttäjälle mentoria",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Lue lisää tästä ehdotetusta muokkauksesta"
 }
