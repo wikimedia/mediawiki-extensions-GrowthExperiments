@@ -99,6 +99,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "La lista de nombres de secciones en las que no se debe recomendar ningún enlace.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Página de destino para aprender más sobre el tipo de tarea de recomendación de imágenes.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "El número máximo de ediciones sugeridas de \"Añadir una imagen\" en artículos sin ilustrar que una persona recién llegada puede completar diariamente.",
+	"growthexperiments-edit-config-newcomer-tasks-section-image-recommendation-learnmore": "Página para aprender más sobre la tarea de recomendación de imágenes para artículos de secciones.",
 	"growthexperiments-edit-config-newcomer-tasks-section-image-recommendation-maximum-tasks-per-day": "El número máximo de tareas sugeridas \"Añadir una imagen a una sección del artículo\" que una persona recién llegada puede completar diariamente.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Este tipo de tarea está asociado con sugerencias de la máquina, y no usa plantillas para generar un conjunto de tareas.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artículos que contengan plantillas definidas aquí no se van a mostrar a usarios como tareas de este tipo.",

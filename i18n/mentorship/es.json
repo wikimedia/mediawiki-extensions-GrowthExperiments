@@ -178,6 +178,7 @@
 	"growthexperiments-mentor-writer-error-not-in-the-list": "El mentor $1 no está en la lista de mentores",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Mentor $1 no es un usuario registrado",
 	"growthexperiments-mentor-writer-error-message-too-long": "El mensaje de introducción es demasiado largo (ID de usuario afectado: $2). La longitud máxima es de $1.",
+	"growthexperiments-mentor-writer-error-blocked": "{{GENDER:|Has}} sido bloqueado por editar la lista de personas mentoras",
 	"growthexperiments-manage-mentors-title": "Gestionar mentores/as",
 	"growthexperiments-manage-mentors-pretext-purpose": "Esta página muestra la lista de mentores/as.",
 	"growthexperiments-manage-mentors-pretext-privileged": "Puedes eliminar a los mentores o mentoras que infrinjan las normas o políticas de la comunidad, así como editar su configuración relacionada con la mentoría.",
