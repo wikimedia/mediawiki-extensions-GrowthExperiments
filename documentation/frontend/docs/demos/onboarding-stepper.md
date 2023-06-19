@@ -38,6 +38,3 @@ When the current step is updated an update:current-step event is emitted.
 | modelValue | The current step | Number | 0 |
 | totalSteps | The total number of steps | Number | 0 |
 | label | If provided add a textual representation of step progress | String | '' |
-
-
-

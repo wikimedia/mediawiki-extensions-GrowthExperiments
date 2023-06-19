@@ -8,18 +8,13 @@ import AddLinkDialogDemo from '../../component-demos/add-link-dialog/AddLinkDial
 Add a link dialog Vue prototype
 ===============================
 
-When a newcomer starts an Add a link task a dialog is placed on top of visual editor giving the user detailed information in the steps to complete the task. 
+This dialog is part of the in context help process of the Growth features. It is shown when a user arrives to an article page to start an "Add a link" task.
 
-- This dialog has 3 steps which are navigable with arrows back and forth.
-- The first step includes a "Don't show again" checkbox mark so users can check it to indicate they don't want the instructions dialog to show again when doing Add a link tasks.
-- The last step includes a "Get started" button to close the dialog.
-- The dialog can be closed at any step that is not the last one by the "Skip all" button at the top.
-
-See the [Figma Design](https://www.figma.com/file/Pgo6fPGaDDiqXWGfMI8oiF/Growth---features?node-id=1271-97685).
+It has 3 navigable steps with arrows back and forth and includes a "Don't show again" checkbox that users can check to indicate they don't want to see the instructions again. The dialog can be closed at any step that is not the last one by the "Skip all" button at the top.
 
 
 ::: raw
 <AddLinkDialogDemo />
 :::
-
-
+---
+Find more details in Phabricator: [Refactor the "Add a link" on-boarding dialog to Vue](https://phabricator.wikimedia.org/T329037).

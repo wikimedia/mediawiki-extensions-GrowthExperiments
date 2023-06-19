@@ -111,20 +111,26 @@ To correctly display slide transitions between dialog steps, step content needs 
 ```
 
 ### CSS overwrites
-
-- Codex dialog gap
-- Codex dialog body padding
-- Codex dialog body overflow-x (overwritten to avoid the horizontal scroll bar during transitions)
+The following overwrites are applied to tha cdx-dialog styles to avoid padding in the dialog body
+and to keep the same padding value when the dialog body content is and is not scrollable:
 ```css
-.ext-growthExperiments-OnboardingPatternDialog {
-	&.cdx-dialog {
-    	gap: 0;
-  	}
-    .cdx-dialog__body {
-        padding: 0;
-        overflow-x: hidden;
-    }
-}
+	&.cdx-dialog--dividers,
+	&.cdx-dialog--has-custom-header,
+	&.cdx-dialog--has-custom-footer {
+		.cdx-dialog__body {
+			padding: 0;
+		}
+	}
+
+	&.cdx-dialog--dividers {
+		.cdx-dialog__header {
+			padding-bottom: 0;
+		}
+
+		.cdx-dialog__footer {
+			padding-top: 0;
+		}
+	}
 ```
 
 
@@ -135,8 +141,8 @@ To correctly display slide transitions between dialog steps, step content needs 
 | --------- | ----------- | :---: | :-----: |
 | initialStep | The first step to show when the dialog is open | Number | 1 |
 | isChecked | Checkbox value provided via a v-model:is-checked binding in the parent scope | Boolean | false |
-| isRtl | If reading direction is RTL | Boolean | false |
 | open | Whether the dialog is visible. Should be provided via a v-model:open binding in the parent scope | Boolean | false |
+| stepperLabel | Text representation of dialog progress in the stepper component | String | '' |
 | totalSteps | The total number of steps the dialog includes | Number  | 0 |
 
 
@@ -145,9 +151,8 @@ To correctly display slide transitions between dialog steps, step content needs 
 | Name | Description | Bindings |
 | ---- | ----------- | -------- |
 | checkboxLabel | Text for the checkbox label | |
-| default | If no #step1 is provided, the dialog will display this content | |
+| default | If no #step1 is provided, the dialog will display the content in the default slot | |
 | closeBtnText | Text for the header button | |
-| last-step-button-text | Text content for the footer button on the last step | |
 | stepN | Step content provided by named slots: #step1, #step2, #step3, etc... | |
 | startBtnText | Text for the last step button| |
 | title | Main dialog title | |

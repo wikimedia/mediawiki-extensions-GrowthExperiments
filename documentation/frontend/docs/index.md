@@ -12,25 +12,16 @@ file.
 
 ## Demos
 
-### Production
+### Complex components
 
-These are demos of components currently used in production.
+These are Vue and Codex demos of GrowthExperiments interfaces.
 
-- _to be created!_
-
-### Proof-of-concept
-
-These are not complete demonstrations, they exist only to showcase how one can
-create demos for GrowthExperiments components.
-
-- [Topic selection dialog](./demos/topic-selection-dialog)
-- [Post edit dialog](./demos/post-edit-dialog)
 - [Add Link dialog](./demos/add-link-dialog)
 - [Add Image dialog](./demos/add-image-dialog)
 
 ### Low-level components
 
-These are demos for components used for building the _Proof-of-concept_ demos above. These
+These are demos for components used for building the _Complex components_ demos above. These
 are candidates to be eventually upstreamed to Codex or re-used by other teams.
 
 - [On-boarding dialog](./demos/onboarding-dialog) ([T332767](https://phabricator.wikimedia.org/T332767))

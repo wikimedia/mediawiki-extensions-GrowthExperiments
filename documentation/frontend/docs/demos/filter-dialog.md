@@ -6,8 +6,6 @@ import FilterDialogDemo from '../../component-demos/filter-dialog/FilterDialogDe
 Filter Dialog Vue prototype
 ===========================
 
-
-
 A reusable custom dialog created using [Codex Dialog](https://doc.wikimedia.org/codex/main/components/demos/dialog.html) component.
 
 ## Demo

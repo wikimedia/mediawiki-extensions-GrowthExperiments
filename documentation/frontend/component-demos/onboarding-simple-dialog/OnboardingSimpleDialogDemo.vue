@@ -40,6 +40,9 @@
 			<template #checkboxLabel>
 				Don't show again
 			</template>
+			<template #startBtnText>
+				Get started
+			</template>
 		</onboarding-dialog>
 	</div>
 </template>
