@@ -44,4 +44,12 @@ describe( 'AddLinkDialog', () => {
 		} );
 		expect( wrapper.html() ).toMatchSnapshot();
 	} );
+	it( 'should add a "learn more" link if an url is provided', () => {
+		const wrapper = renderComponent( {
+			open: true,
+			initialStep: 2,
+			learnMoreLink: 'https://www.wikipedia.org/'
+		} );
+		expect( wrapper.html() ).toMatchSnapshot();
+	} );
 } );

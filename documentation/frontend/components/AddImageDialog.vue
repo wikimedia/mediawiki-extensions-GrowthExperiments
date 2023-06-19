@@ -206,6 +206,14 @@ export default {
 		isChecked: {
 			type: Boolean,
 			default: false
+		},
+		/**
+		 * Url to show a "learn more" link in one of the dialogs steps
+		 */
+		// eslint-disable-next-line vue/no-unused-properties
+		learnMoreLink: {
+			type: String,
+			default: ''
 		}
 	},
 	emits: [ 'update:open', 'update:is-checked', 'close' ],

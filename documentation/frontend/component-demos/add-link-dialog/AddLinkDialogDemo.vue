@@ -8,6 +8,7 @@
 		<add-link-dialog
 			v-model:open="open"
 			v-model:is-checked="isNeverShowAgainChecked"
+			learn-more-link="https://www.wikipedia.org/"
 			@close="onDialogClose"
 		>
 		</add-link-dialog>
