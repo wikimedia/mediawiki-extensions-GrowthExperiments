@@ -4,6 +4,7 @@ namespace GrowthExperiments\MentorDashboard\Modules;
 
 use ExtensionRegistry;
 use FormatJson;
+use GenderCache;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
@@ -16,23 +17,27 @@ class PersonalizedPraise extends BaseModule {
 
 	private PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester;
 	private PersonalizedPraiseSettings $personalizedPraiseSettings;
+	private GenderCache $genderCache;
 
 	/**
 	 * @param string $name
 	 * @param IContextSource $ctx
 	 * @param PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester
 	 * @param PersonalizedPraiseSettings $personalizedPraiseSettings
+	 * @param GenderCache $genderCache
 	 */
 	public function __construct(
 		$name,
 		IContextSource $ctx,
 		PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester,
-		PersonalizedPraiseSettings $personalizedPraiseSettings
+		PersonalizedPraiseSettings $personalizedPraiseSettings,
+		GenderCache $genderCache
 	) {
 		parent::__construct( $name, $ctx );
 
 		$this->praiseworthyMenteeSuggester = $praiseworthyMenteeSuggester;
 		$this->personalizedPraiseSettings = $personalizedPraiseSettings;
+		$this->genderCache = $genderCache;
 	}
 
 	/** @inheritDoc */
@@ -110,6 +115,27 @@ class PersonalizedPraise extends BaseModule {
 		return $result;
 	}
 
+	/**
+	 * Get an array of mentee objects with gender property.
+	 *
+	 * This function clones the mentee objects from getPraiseworthyMentees()
+	 * and adds a gender property, based on the genderCache service.
+	 * The gender property can be 'male', 'female', 'unknown' or null.
+	 *
+	 * @return array An array of mentee objects with gender property
+	 */
+	protected function getMenteeGenders() {
+		$praiseworthyMentees = $this->getPraiseworthyMentees();
+		$menteeGenders = [];
+
+		foreach ( $praiseworthyMentees as $mentee ) {
+			$userId = $mentee->getUser()->getId();
+			$menteeGenders[$userId] = $this->genderCache->getGenderOf( $mentee->getUser()->getName(), __METHOD__ );
+		}
+
+		return $menteeGenders;
+	}
+
 	/** @inheritDoc */
 	protected function getJsConfigVars() {
 		return [
@@ -132,6 +158,7 @@ class PersonalizedPraise extends BaseModule {
 			),
 			'GEPersonalizedPraiseSkipMenteesForDays' =>
 				PraiseworthyConditionsLookup::SKIP_MENTEES_FOR_DAYS,
+			'GEMenteeGenders' => $this->getMenteeGenders(),
 		];
 	}
 

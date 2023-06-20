@@ -44,7 +44,7 @@
 </template>
 
 <script>
-const { ref, inject } = require( 'vue' );
+const { ref, inject, computed } = require( 'vue' );
 const { CdxButton, CdxDialog, CdxRadio } = require( '@wikimedia/codex' );
 // NOTE: Keep in sync with ApiInvalidatePersonalizedPraiseSuggestion's skipreason param list
 const SKIP_REASONS = [
@@ -67,24 +67,29 @@ module.exports = exports = {
 		mentee: { type: Object, required: true }
 	},
 	emits: [ 'skip' ],
-	setup( _props, { emit } ) {
+	setup( props, { emit } ) {
 		const open = ref( false );
 		const selectedReason = ref( null );
 		const skipMenteesForDays = Number( mw.config.get( 'GEPersonalizedPraiseSkipMenteesForDays' ) );
 		const $i18n = inject( 'i18n' );
 		const log = inject( '$log' );
-		const reasonItems = SKIP_REASONS.map( ( x ) => {
-			return {
-				label: $i18n(
-					// Giving grep a chance to find usages:
-					// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised
-					// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy
-					// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now
-					// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other
-					'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-' + x
-				),
-				value: x
-			};
+		const menteeGender = computed( () => {
+			return mw.config.get( 'GEMenteeGenders' )[ props.mentee.userId ];
+		} );
+		const reasonItems = computed( () => {
+			return SKIP_REASONS.map( ( x ) => {
+				return {
+					label: $i18n(
+						// Giving grep a chance to find usages:
+						// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised
+						// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy
+						// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now
+						// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other
+						'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-' + x,
+						[ menteeGender.value ] ).text(),
+					value: x
+				};
+			} );
 		} );
 
 		function onSkipButtonClicked() {
@@ -97,12 +102,12 @@ module.exports = exports = {
 
 		return {
 			open,
-			reasonItems,
 			selectedReason,
 			skipMenteesForDays,
 			log,
 			onSkipButtonClicked,
-			onSubmit
+			onSubmit,
+			reasonItems
 		};
 	},
 	watch: {

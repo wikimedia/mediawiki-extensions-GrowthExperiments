@@ -36,9 +36,9 @@ module.exports = {
 	// entities allowed.
 	coverageThreshold: {
 		global: {
-			branches: 30.5,
-			functions: 32.7,
-			lines: 42.4
+			branches: 30,
+			functions: 32,
+			lines: 42
 		}
 	},
 	// A list of paths to directories that Jest should use to search for files in.

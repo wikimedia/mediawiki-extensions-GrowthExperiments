@@ -105,7 +105,8 @@ class MentorDashboardModuleRegistry {
 					'personalized-praise',
 					$context,
 					$geServices->getPraiseworthyMenteeSuggester(),
-					$geServices->getPersonalizedPraiseSettings()
+					$geServices->getPersonalizedPraiseSettings(),
+					$services->getGenderCache()
 				);
 			},
 		];
