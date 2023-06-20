@@ -6,7 +6,8 @@
 			"KATRINE1993",
 			"NikosLikomitros",
 			"Nikosgranturismogt",
-			"Norhorn"
+			"Norhorn",
+			"UnchartedViolator"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Καλώς ορίσατε}}, $1!",
@@ -44,10 +45,19 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Όχι, δεν ήξερα ότι μπορούσα να επεξεργαστώ τη Βικιπαίδεια",
 	"welcomesurvey-question-edited-option-no-other-label": "Όχι, για άλλους λόγους",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Δεν θυμάμαι",
+	"welcomesurvey-question-mailinglist-label": "Θέλω να λάβω συμβουλές μέσω email για το πώς να ξεκινήσω την επεξεργασία.",
+	"welcomesurvey-question-mailinglist-help": "Παρακαλούμε σημειώστε ότι αυτή η λίστα υποστηρίζεται από το MailChimp, που σημαίνει ότι η χρήση των πληροφοριών {{GENDER:|σας}} διέπεται από την [https://www.intuit.com/privacy/statement/ Πολιτική απορρήτου] και τους [https://mailchimp.com/ νομικοί/όροι/ Όρους Παροχής Υπηρεσιών].",
 	"welcomesurvey-question-email-label": "Διεύθυνση ηλεκτρονικού ταχυδρομείου (προαιρετικό)",
-	"welcomesurvey-question-email-placeholder": "Εισαγάγετε τη διεύθυνση ηλεκτρονικού σας ταχυδρομείου...",
+	"welcomesurvey-question-email-placeholder": "Εισάγετε τη διεύθυνσή ηλεκτρονικού ταχυδρομείου {{GENDER:|σας}}...",
 	"welcomesurvey-question-email-help": "Εντοπίσαμε ότι δεν καταχωρήσατε ένα email όταν δημιουργήσατε το λογαριασμό. <strong>\nΣυνιστάται ιδιαίτερα</strong>, επειδή απαιτείται ένα μήνυμα ηλεκτρονικού ταχυδρομείου για την ανάκτηση λογαριασμού εάν χάσετε ποτέ τον κωδικό πρόσβασής σας. ΣΗΜΕΙΩΣΗ: Η διεύθυνση email σας δεν αποκαλύπτεται όταν επικοινωνούν μαζί σας άλλοι χρήστες.",
 	"welcomesurvey-question-languages-label": "Η σελίδα {{SITENAME}} είναι διαθέσιμη σε σχεδόν 300 γλώσσες. Υπάρχουν άλλες γλώσσες στις οποίες διαβάζετε και γράφετε;",
 	"welcomesurvey-question-languages-placeholder": "Προσθέστε περισσότερες από {{PLURAL:$1|μια γλώσσα|$1 γλώσσες}}...",
-	"welcomesurvey-question-languages-maximum": "Έχετε προσθέσει το μέγιστο επιτρεπόμενο όριο γλωσσών."
+	"welcomesurvey-question-languages-maximum": "Έχετε προσθέσει το μέγιστο επιτρεπόμενο όριο γλωσσών.",
+	"welcomesurvey-reminder": "Βοηθήστε μας να βελτιώσουμε την εμπειρία σας στη Βικιπαίδεια απαντώντας λίγες προαιρετικές ερωτήσεις. $1",
+	"welcomesurvey-reminder-link": "Ξεκινήστε το ερωτηματολόγιο",
+	"welcomesurvey-reminder-dismiss": "Απόρριψη",
+	"welcomesurvey-mideditsignup-title": "Καλώς ορίσατε, $1!",
+	"welcomesurvey-mideditsignup-body": "Σας ευχαριστούμε για την επεξεργασία! {{GENDER:|Εσείς}} μπορείτε τώρα να δείτε τον αντίκτυπο των συνεισφορών σας και να λάβετε περισσότερες προτεινόμενες επεξεργασίες στην αρχική σελίδα σας.",
+	"welcomesurvey-mideditsignup-button-homepage": "Μετάβαση στην αρχική σελίδα του wiki",
+	"welcomesurvey-mideditsignup-button-close": "Κλείσιμο"
 }

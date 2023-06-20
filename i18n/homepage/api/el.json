@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geraki"
+			"Geraki",
+			"P20kios"
 		]
 	},
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Δεν βρέθηκαν ερωτήσεις.",
 	"apihelp-growthsetmentor-summary": "Ορισμός καθοδηγητή. Η αλλαγή θα καταγραφεί δημόσια.",
 	"apihelp-growthsetmentor-param-mentee": "Όνομα χρήστη καθοδηγούμενου",
 	"apihelp-growthsetmentor-param-mentor": "Όνομα χρήστη καθοδηγητή",
-	"apihelp-growthsetmentor-param-reason": "Αιτία αλλαγής"
+	"apihelp-growthsetmentor-param-reason": "Αιτία αλλαγής",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "Ο τίτλος της ενότητας για την οποία προορίζεται η σύσταση εικόνας, π.χ. <kbd>Ιστορία</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Ο δείκτης με βάση το 1 της ενότητας για την οποία αφορά η σύσταση εικόνας, π.χ. <kbd>3</kbd>."
 }
