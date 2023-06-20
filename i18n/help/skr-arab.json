@@ -5,16 +5,21 @@
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "جاری رکھو",
+	"growthexperiments-help-panel-submit-question-button-text": "شائع کرو",
 	"growthexperiments-help-panel-return-home-button-text": "تھی ڳیا",
 	"growthexperiments-help-panel-back-home": "پچھوں",
 	"growthexperiments-help-panel-close": "تھی ڳیا",
+	"growthexperiments-help-panel-postedit-header": "اڳلے مرحلے",
+	"growthexperiments-help-panel-postedit-subheader-notsaved": "اڳلی تجویز:",
 	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "کو، شکریہ",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "ولدا نہ ݙکھاؤ",
 	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "کو، شکریہ",
 	"growthexperiments-help-panel-questionreview-label": "تہاݙا سوال",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "ہدایات",
 	"growthexperiments-help-panel-questioncomplete-title": "سوال پُچھو",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "تبدیل کرو",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "آپݨے ای میل دی تصدیق کرو",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "ای میل شامل کرو",
-	"growthexperiments-help-panel-questionposter-invalid-title": "غلط عنوان۔"
+	"growthexperiments-help-panel-questionposter-invalid-title": "غلط عنوان۔",
+	"growthexperiments-help-panel-search-label": "مدد کیتے ڳول"
 }

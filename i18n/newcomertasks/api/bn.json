@@ -5,5 +5,7 @@
 		]
 	},
 	"apihelp-query+growthtasks-param-debug": "আউটপুটে ডিবাগ তথ্য যুক্ত করুন।",
-	"apihelp-query+growthtasks-example-1": "বর্তমান ব্যবহারকারীর জন্য রচনা সংশোধন-জাতীয় কাজের সুপারিশ সন্ধান করুন।"
+	"apihelp-query+growthtasks-example-1": "বর্তমান ব্যবহারকারীর জন্য রচনা সংশোধন-জাতীয় কাজের সুপারিশ সন্ধান করুন।",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "<var>editRevId-</var>-এ উল্লেখিত সংশোধনী পাওয়া যায়নি।",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "<var>editRevId-</var>-এ উল্লিখিত সংশোধনী একটি ভিন্ন পৃষ্ঠার অন্তর্গত।"
 }
