@@ -526,6 +526,7 @@
 	"growthexperiments-addimage-onboarding-content-decision-title": "Rozhodněte se, zda se sem obrázek hodí.",
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph1": "Navržený obrázek se článku nemusí týkat vůbec, může mít nízkou kvalitu nebo sem nemusí patřit z jiných důvodů. Použijte {{GENDER:|svůj}} úsudek a rozhodněte, zda je návrh správný, nebo ne.",
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph2": "Jakmile obrázek {{GENDER:|přijmete}}, požádáme vás, abyste {{GENDER:|napsal|napsala|napsali}} krátký popisek. Poté svou editaci můžete zveřejnit.",
+	"growthexperiments-addimage-onboarding-content-decision-image-alt-text": "Snímek článku s obrázkem navrženým k vložení. Uvnitř návrhu jsou k dispozici tři možnosti: fajfka pro potvrzení návrhu, křížek k jeho zamítnutí a šipka k posunutí k následujícímu kroku.",
 	"growthexperiments-addsectionimage-onboarding-content-step1-title": "Obrázky lidem pomáhají naučit se nové věci, ale v mnoha článcích obrázky chybí.",
 	"growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph1": "Budete {{GENDER:|rozhodovat}}, zda by navržený obrázek měl být vložen do konkrétní kapitoly článku na Wikipedii.",
 	"growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph2": "Obrázky jsou generovány strojově. Na základě {{GENDER:|svého}} úsudku budete rozhodovat, zda do článku obrázek vložit, anebo zda návrh odmítnete.",
