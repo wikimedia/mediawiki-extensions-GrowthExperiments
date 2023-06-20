@@ -4,7 +4,8 @@
 			"Geraki",
 			"Giannaras99",
 			"Giorgos456",
-			"Norhorn"
+			"Norhorn",
+			"Dogogos123"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Ενεργοποίηση της καρτέλας βοήθειας συντακτών",
@@ -32,6 +33,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Επεξεργαστείτε μια άλλη πρόταση:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Επόμενη πρόταση:",
 	"growthexperiments-help-panel-postedit-footer": "Δείτε όλες τις προτεινόμενες επεξεργασίες",
+	"growthexperiments-help-panel-postedit-suggestededits-info": "Άλλοι χρήστες του {{SITENAME}} βρήκαν άρθρα που χρειάζονται δουλειά. Συνεχίστε την επεξεργασία {{GENDER:|σας}} περιηγώντας σε αυτές τις προτεινόμενες τροποποιήσεις.",
 	"growthexperiments-help-panel-questionreview-title": "Ρωτήστε στο χώρο βοήθειας",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Ρωτήστε τον καθοδηγητή σας",
 	"growthexperiments-help-panel-questionreview-header": "Όταν υποβάλλετε μια ερώτηση <strong>δημοσιεύεται δημόσια</strong> υπό το όνομα χρήστη σας, «$2», στη $1 όπου ένας άλλος εθελοντής συντάκτης θα προσπαθήσει να δώσει μια απάντηση περίπου σε μια μέρα.",
@@ -151,7 +153,7 @@
 	"tag-help_panel_question-description": "Επεξεργασία που έγινε από τη λειτουργία του πλαισίου βοήθειας",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Προτεινόμενες επεξεργασίες",
 	"growthexperiments-help-panel-button-header-ask-help": "Ρωτήστε στο χώρο βοήθειας",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Ρωτήστε {{GENDER:$1|τον καθοδηγητή|την καθοδηγήτριά}} {{GENDER:$2|σας}}",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Ρωτήστε τον {{GENDER:$1| μέντορα}} {{GENDER:|σας}}  για βοήθεια",
 	"growthexperiments-help-panel-button-header-general-help": "Γενική βοήθεια επεξεργασίας",
 	"growthexperiments-help-panel-button-subheader-general-help": "Ψάξτε για απαντήσεις και διαβάστε τα κορυφαία άρθρα",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Πάρτε απαντήσεις από άλλους εθελοντές",

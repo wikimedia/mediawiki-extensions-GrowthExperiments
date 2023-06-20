@@ -106,7 +106,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Колькасць прызначаных мне падапечных",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Нічога",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Прыкладна на палову сярэдняга",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Сярэдняя (па змаўчанні)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Сярэдняя (прадвызначана)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Прыкладна ў два разы вышэй за сярэдняе",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Ваша}} нагрузка была зменена на \"$1\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Адбылася невядомая памылка. Калі ласка, паспрабуйце пазней.",

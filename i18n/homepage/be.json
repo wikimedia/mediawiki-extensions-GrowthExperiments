@@ -17,7 +17,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Ваша}} дамашняя старонка",
 	"prefs-homepage": "Магчымасці для рэдактараў-пачаткоўцаў",
 	"growthexperiments-homepage-enable": "Паказваць дамашнюю старонку для пачаткоўцаў",
-	"growthexperiments-homepage-pt-link": "Перайсці па змаўчанні на дамашнюю старонку для пачаткоўцаў, націснуўшы на спасылку з імем удзельніка ў асабістых інструментах",
+	"growthexperiments-homepage-pt-link": "Тэкст з імем удзельніка ў асабістых інструментах прадвызначана спасылаецца на дамашнюю старонку для пачаткоўцаў",
 	"growthexperiments-homepage-email-header-noemail": "Дадайце {{GENDER:$1|ваш}} адрас эл. пошты",
 	"growthexperiments-homepage-email-header-unconfirmed": "Пацвердзіце {{GENDER:$1|ваш}} адрас эл. пошты",
 	"growthexperiments-homepage-email-header-confirmed": "Адрас эл. пошты дадазены",
