@@ -533,9 +533,16 @@
 			}
 			var apiUrl = '/growthexperiments/v0/newcomertask/complete';
 			return new mw.Rest().post( apiUrl + '?' + $.param( { taskTypeId: taskType, revId: this.newRevId } ) )
-				.fail( function ( err ) {
-					mw.log.error( err );
-					mw.errorLogger.logError( new Error( err ), 'error.growthexperiments' );
+				.fail( function ( err, errObject ) {
+					mw.log.error( errObject );
+					var errMessage = errObject.exception;
+					if ( errObject.xhr &&
+						errObject.xhr.responseJSON &&
+						errObject.xhr.responseJSON.messageTranslations
+					) {
+						errMessage = errObject.xhr.responseJSON.messageTranslations.en;
+					}
+					mw.errorLogger.logError( new Error( errMessage ), 'error.growthexperiments' );
 				} );
 		}.bind( this ) );
 	};
