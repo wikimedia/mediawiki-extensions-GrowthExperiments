@@ -213,7 +213,6 @@ RecommendedLinkToolbarDialogDesktop.prototype.setupMinification = function () {
 	} );
 	this.toolbarDialogButton.on( 'click', this.onToolbarDialogButtonClicked.bind( this ) );
 	this.surface.getGlobalOverlay().$element
-		.addClass( 'mw-ge-minimizedToolbarDialogButton-container' )
 		.append( this.toolbarDialogButton.$element );
 };
 
