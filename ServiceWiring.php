@@ -718,6 +718,7 @@ return [
 		return new PraiseworthyConditionsLookup(
 			$geServices->getPersonalizedPraiseSettings(),
 			$services->getUserOptionsLookup(),
+			$services->getUserFactory(),
 			$geServices->getMentorManager()
 		);
 	},

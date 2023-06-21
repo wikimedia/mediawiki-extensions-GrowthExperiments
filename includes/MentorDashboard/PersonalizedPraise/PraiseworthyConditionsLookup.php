@@ -8,6 +8,7 @@ use DateTime;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -19,6 +20,7 @@ class PraiseworthyConditionsLookup {
 
 	private PersonalizedPraiseSettings $settings;
 	private UserOptionsLookup $userOptionsLookup;
+	private UserFactory $userFactory;
 	private MentorManager $mentorManager;
 
 	/** @var string */
@@ -33,15 +35,18 @@ class PraiseworthyConditionsLookup {
 	/**
 	 * @param PersonalizedPraiseSettings $settings
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param UserFactory $userFactory
 	 * @param MentorManager $mentorManager
 	 */
 	public function __construct(
 		PersonalizedPraiseSettings $settings,
 		UserOptionsLookup $userOptionsLookup,
+		UserFactory $userFactory,
 		MentorManager $mentorManager
 	) {
 		$this->settings = $settings;
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->userFactory = $userFactory;
 		$this->mentorManager = $mentorManager;
 	}
 
@@ -136,6 +141,7 @@ class PraiseworthyConditionsLookup {
 		// preference value alone is sufficient.
 		return $this->userOptionsLookup->getBoolOption( $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE ) &&
 			$this->mentorManager->getMentorshipStateForUser( $mentee ) === MentorManager::MENTORSHIP_ENABLED &&
+			$this->userFactory->newFromUserIdentity( $mentee )->getBlock() === null &&
 			!$this->wasMenteePraised( $mentee ) &&
 			!$this->isMenteeSkipped( $mentee );
 	}

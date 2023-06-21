@@ -8,10 +8,12 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditions;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use MWTimestamp;
+use User;
 
 /**
  * @coversDefaultClass \GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup
@@ -56,6 +58,16 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 			)
 			->willReturnOnConsecutiveCalls( true, false );
 
+		$userMock = $this->createMock( User::class );
+		$userMock->expects( $this->once() )
+			->method( 'getBlock' )
+			->willReturn( null );
+		$userFactoryMock = $this->createMock( UserFactory::class );
+		$userFactoryMock->expects( $this->once() )
+			->method( 'newFromUserIdentity' )
+			->with( $mentee )
+			->willReturn( $userMock );
+
 		$menteeImpactMock = $this->createMock( UserImpact::class );
 		$menteeImpactMock->expects( $this->once() )
 			->method( 'getUser' )
@@ -70,6 +82,7 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		$conditionsLookup = new PraiseworthyConditionsLookup(
 			$settingsMock,
 			$userOptionsLookupMock,
+			$userFactoryMock,
 			$mentorManagerMock
 		);
 		$this->assertEquals(
