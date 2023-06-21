@@ -240,7 +240,10 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
 		this.insertOffset,
 		linearModel
 	);
-	surfaceModel.change( transaction );
+	surfaceModel.change(
+		transaction,
+		new ve.dm.LinearSelection( new ve.Range( this.insertOffset ) )
+	);
 	surfaceModel.setReadOnly( true );
 
 	return transaction;
