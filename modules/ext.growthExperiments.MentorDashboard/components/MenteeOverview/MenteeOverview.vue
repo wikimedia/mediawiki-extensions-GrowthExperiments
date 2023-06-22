@@ -312,13 +312,16 @@ module.exports = exports = {
 	container-type: inline-size;
 
 	&__info-box {
+		// HACK Since the module heading is rendered in the server,
+		// aproximately align the "i" icon with the heading text
+		// in the vertical axis and to the right hand padding.
 		position: absolute;
-		top: -64px;
-		right: -16px;
+		top: @spacing-50 * -9;
+		right: @spacing-50 * -1;
 
 		/* stylelint-disable-next-line selector-class-pattern */
 		.skin-minerva & {
-			top: -114px;
+			top: @spacing-50 * -15;
 		}
 
 		&-wrapper {
