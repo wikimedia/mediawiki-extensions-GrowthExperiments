@@ -24,13 +24,20 @@ DMRecommendedImagePlaceholderNode.static.name = 'mwGeRecommendedImagePlaceholder
 DMRecommendedImagePlaceholderNode.static.isContent = false;
 
 /** @inheritDoc */
-DMRecommendedImagePlaceholderNode.static.matchTagNames = [ 'div' ];
+DMRecommendedImagePlaceholderNode.static.toDomElements = function () {
+	// No output - the page might be saved with the placeholder in it, and we don't want to
+	// mess up wikitext when that happens. (T340170)
+	return [];
+};
 
+// These are all fake - the output of toDomElements() is empty so there is nothing to match.
+// Restoring the linear model from HTML would not work, but it's only done on a wikitext -> VE
+// switch and we don't support that in structured editing workflows.
+/** @inheritDoc */
+DMRecommendedImagePlaceholderNode.static.matchTagNames = [ 'div' ];
 /** @inheritDoc */
 DMRecommendedImagePlaceholderNode.static.matchRdfaTypes = [ 'mw:GeRecommendedImagePlaceholder' ];
-
 DMRecommendedImagePlaceholderNode.static.preserveHtmlAttributes = false;
-
 /** @inheritDoc */
 DMRecommendedImagePlaceholderNode.static.toDataElement = function ( domElements ) {
 	return {
@@ -40,15 +47,6 @@ DMRecommendedImagePlaceholderNode.static.toDataElement = function ( domElements 
 			height: domElements[ 0 ].getAttribute( 'data-height' )
 		}
 	};
-};
-
-/** @inheritDoc */
-DMRecommendedImagePlaceholderNode.static.toDomElements = function ( dataElement, doc ) {
-	var div = doc.createElement( 'div' );
-	div.dataset.width = dataElement.attributes.width;
-	div.dataset.height = dataElement.attributes.height;
-	div.setAttribute( 'typeof', 'mw:GeRecommendedImagePlaceholder' );
-	return [ div ];
 };
 
 module.exports = DMRecommendedImagePlaceholderNode;
