@@ -33,6 +33,8 @@
 		app.config.globalProperties.$filters = {
 			convertNumber
 		};
+		// Mentor dashboard has no official mobile support (pending T279965)
+		app.provide( 'RENDER_MODE', 'desktop' );
 		app.use( store )
 			.use( loggerPlugin, {
 				module: module,

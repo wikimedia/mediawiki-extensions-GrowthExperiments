@@ -63,7 +63,7 @@ module.exports = exports = {
 		CdxRadio
 	},
 	props: {
-		mentee: { type: Array, required: true }
+		mentee: { type: Object, required: true }
 	},
 	emits: [ 'skip' ],
 	setup( _props, { emit } ) {
