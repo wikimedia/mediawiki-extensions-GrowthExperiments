@@ -276,7 +276,7 @@
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Уклони све",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Изаберите теме које {{GENDER:$1|вас}} занимају",
 	"growthexperiments-homepage-claimmentee-title": "Преузимање новајлије",
-	"growthexperiments-homepage-claimmentee-pretext": "Ова страница {{GENDER:$1|вам}} омогућава да преузмете новајлију коју желите. Препоручујемо да употребљавате функцију за преузимање корисника које познајете или оних које подучавате на неком курсу.",
+	"growthexperiments-homepage-claimmentee-pretext": "Ова страница {{GENDER:$1|Вам}} омогућава да преузмете новајлију кога желите. Препоручујемо да употребљавате ову функцију за преузимање корисника које познајете или оних које подучавате на неком курсу.",
 	"growthexperiments-homepage-claimmentee-mentee": "Корисничко име",
 	"growthexperiments-homepage-claimmentee-reason": "Разлог",
 	"growthexperiments-homepage-claimmentee-success": "Променили {{GENDER:$3|сте}} ментора за {{PLURAL:$2|корисника|кориснике}} $1. {{GENDER:$4|Нови ментор|Нова менторка}} је $5. Назад на [[Special:MentorDashboard|таблу]].",
