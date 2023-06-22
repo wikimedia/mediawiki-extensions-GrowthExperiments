@@ -1,7 +1,6 @@
 ( function () {
 	'use strict';
 	const Vue = require( 'vue' );
-	const Vuex = require( 'vuex' );
 	const store = require( './store/index.js' );
 	const { convertNumber } = require( '../utils/filters.js' );
 	const MentorDashboardLogger = require( './logger/Logger.js' );
@@ -43,7 +42,6 @@
 
 	require( './MentorTools/MentorTools.js' );
 
-	Vue.use( Vuex );
 	// TODO create an App.vue root component to wrap more Mentor Vue modules as when migrated
 	createApp(
 		require( './components/MenteeOverview/MenteeOverview.vue' ),

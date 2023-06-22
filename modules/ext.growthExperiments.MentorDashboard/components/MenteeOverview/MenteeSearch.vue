@@ -22,6 +22,7 @@ const { cdxIconSearch } = require( '../../../vue-components/icons.json' );
 module.exports = exports = {
 	name: 'MenteeSearch',
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: { CdxLookup },
 	emits: [ 'update:selected' ],
 	setup() {

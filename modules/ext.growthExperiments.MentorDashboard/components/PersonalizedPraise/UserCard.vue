@@ -45,6 +45,7 @@ const SkipMenteeDialog = require( './SkipMenteeDialog.vue' );
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxButton,
 		CdxIcon,

@@ -14,6 +14,7 @@ const { CdxSelect } = require( '@wikimedia/codex' );
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxSelect
 	},
