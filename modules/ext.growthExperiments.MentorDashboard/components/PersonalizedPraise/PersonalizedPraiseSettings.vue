@@ -73,11 +73,16 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .ext-growthExperiments-PersonalizedPraise-Settings {
 	&__cogicon {
+		// HACK Since the module heading is rendered in the server,
+		// aproximately align the "i" icon with the heading text
+		// in the vertical axis and to the right hand padding.
 		position: absolute;
-		top: 16px;
-		right: 0;
+		top: @spacing-50;
+		right: @spacing-50;
 	}
 
 	&__dialog {
