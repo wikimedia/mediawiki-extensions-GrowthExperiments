@@ -19,16 +19,18 @@
 					</cdx-button>
 				</template>
 				<template #content>
-					<h3>
-						{{
-							$i18n(
-								'growthexperiments-mentor-dashboard-mentee-overview-info-headline'
-							)
-						}}
-					</h3>
-					<p v-i18n-html="'growthexperiments-mentor-dashboard-mentee-overview-info-text'">
-					</p>
-					<legend-box v-if="legendItems.length" :items="legendItems"></legend-box>
+					<div class="ext-growthExperiments-MenteeOverview__info-content">
+						<h3>
+							{{
+								$i18n(
+									'growthexperiments-mentor-dashboard-mentee-overview-info-headline'
+								)
+							}}
+						</h3>
+						<p v-i18n-html="'growthexperiments-mentor-dashboard-mentee-overview-info-text'">
+						</p>
+						<legend-box v-if="legendItems.length" :items="legendItems"></legend-box>
+					</div>
 				</template>
 			</c-popover>
 		</div>
@@ -332,6 +334,10 @@ module.exports = exports = {
 
 	&__info-button {
 		.codex-icon-only-button( @color-subtle, 24px);
+	}
+
+	&__info-content {
+		max-width: 410px;
 	}
 
 	&__actions {
