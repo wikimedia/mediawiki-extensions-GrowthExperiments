@@ -12,8 +12,8 @@
 		<cdx-dialog
 			v-model:open="open"
 			class="ext-growthExperiments-PersonalizedPraise-Settings__dialog"
-			:title="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-title' )"
-			:close-button-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cancel' )"
+			:title="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-title' ).text()"
+			:close-button-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cancel' ).text()"
 		>
 			<personalized-praise-settings-form
 				v-bind="settingsData"

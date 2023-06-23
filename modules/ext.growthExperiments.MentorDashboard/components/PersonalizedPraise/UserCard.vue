@@ -22,7 +22,7 @@
 	<c-score-cards
 		:user-name="mentee.userName"
 		:data="mentee"
-		render-third-person="true"
+		:render-third-person="true"
 	></c-score-cards>
 	<cdx-button
 		class="ext-growthExperiments-PersonalizedPraise__praise_button"
@@ -52,7 +52,7 @@ module.exports = exports = {
 		SkipMenteeDialog
 	},
 	props: {
-		mentee: { type: Array, required: true }
+		mentee: { type: Object, required: true }
 	},
 	emits: [ 'skip' ],
 	setup() {
