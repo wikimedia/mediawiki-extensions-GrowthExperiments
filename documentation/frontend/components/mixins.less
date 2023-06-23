@@ -27,3 +27,52 @@
 	font-size: @font-size-small;
 	line-height: @line-height-xx-small;
 }
+
+@keyframes loading-stripes {
+	0% {
+		background-position: calc( -@size-150 ) 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+.ext-growthExperiments-loading-stripes-anim {
+	background-color: @filterLoadingColor;
+	background-image: linear-gradient( 135deg, #fff 25%, transparent 25%, transparent 50%, #fff 50%, #fff 75%, transparent 75%, transparent );
+	background-size: @size-150 @size-150;
+	animation: loading-stripes 650ms linear infinite;
+}
+
+.ext-growthExperiments-live-broadcast-icon {
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+}
+
+@keyframes play45 {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -900px 0;
+	}
+}
+
+.ext-growthExperiments-live-broadcast-anim {
+	animation-duration: 3000ms;
+	animation-timing-function: steps( 45 );
+	animation-iteration-count: infinite;
+	background-size: auto;
+	animation-name: play45;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.ext-growthExperiments-task-type-difficulty-icon {
+	height: 20px;
+	width: 20px;
+	display: inline-block;
+}
