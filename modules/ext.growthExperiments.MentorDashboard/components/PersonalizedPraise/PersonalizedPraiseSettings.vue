@@ -3,7 +3,7 @@
 		<cdx-button
 			class="ext-growthExperiments-PersonalizedPraise-Settings__cogicon"
 			weight="quiet"
-			:aria-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label' )"
+			:aria-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label' ).text()"
 			@click="open = true"
 		>
 			<cdx-icon :icon="cdxIconSettings"></cdx-icon>
