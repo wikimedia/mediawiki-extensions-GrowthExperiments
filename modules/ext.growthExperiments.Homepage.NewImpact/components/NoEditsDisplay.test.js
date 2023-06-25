@@ -11,19 +11,18 @@ const { mount } = require( '@vue/test-utils' );
 const NoEditsDisplay = require( './NoEditsDisplay.vue' );
 const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 
-const renderComponent = ( props, renderMode = 'desktop' ) => {
+const renderComponent = ( props, mocks = {}, renderMode = 'desktop' ) => {
 	return mount( NoEditsDisplay, {
 		props,
 		global: {
 			provide: {
-				$log: jest.fn(),
 				RENDER_MODE: renderMode
 			},
-			mocks: {
+			mocks: Object.assign( {
 				$filters: {
 					convertNumber: jest.fn( ( x ) => `${x}` )
 				}
-			}
+			}, mocks )
 		}
 	} );
 };
@@ -37,19 +36,19 @@ describe( 'NoEditsDisplay', () => {
 				receivedThanksCount: 123
 			}
 		};
-		const desktopWrapper = renderComponent( props, 'desktop' );
+		const desktopWrapper = renderComponent( props, {}, 'desktop' );
 		expect( desktopWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 2 );
 		expect( desktopWrapper.text() ).toContain( '123' );
 		expect( desktopWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( desktopWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
 
-		const overlayWrapper = renderComponent( props, 'mobile-overlay' );
+		const overlayWrapper = renderComponent( props, {}, 'mobile-overlay' );
 		expect( overlayWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 2 );
 		expect( overlayWrapper.text() ).toContain( '123' );
 		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
 
-		const summaryWrapper = renderComponent( props, 'mobile-summary' );
+		const summaryWrapper = renderComponent( props, {}, 'mobile-summary' );
 		expect( summaryWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 0 );
 		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
@@ -60,7 +59,7 @@ describe( 'NoEditsDisplay', () => {
 			isDisabled: false,
 			isActivated: false,
 			data: null
-		}, 'mobile-overlay' );
+		}, {}, 'mobile-overlay' );
 		const button = overlayWrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
 		expect( button.text() ).toBe( 'growthexperiments-homepage-impact-unactivated-suggested-edits-link' );
 		expect( overlayWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-suggested-edits-footer' );
@@ -72,7 +71,7 @@ describe( 'NoEditsDisplay', () => {
 			isDisabled: false,
 			isActivated: false,
 			data: null
-		}, 'mobile-overlay' );
+		}, {}, 'mobile-overlay' );
 		const button = wrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
 		global.mw.track = jest.fn();
 
@@ -90,7 +89,7 @@ describe( 'NoEditsDisplay', () => {
 			isDisabled: false,
 			isActivated: true,
 			data: null
-		}, 'mobile-overlay' );
+		}, {}, 'mobile-overlay' );
 		const button = wrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
 		global.window.history.replaceState = jest.fn();
 		global.window.dispatchEvent = jest.fn();
@@ -99,5 +98,21 @@ describe( 'NoEditsDisplay', () => {
 
 		expect( global.window.history.replaceState ).toHaveBeenNthCalledWith( 1, null, null, '#/homepage/suggested-edits' );
 		expect( global.window.dispatchEvent ).toHaveBeenNthCalledWith( 1, new HashChangeEvent( 'hashchange' ) );
+	} );
+	it( 'logs scorecard interactions', () => {
+		const logSpy = jest.fn();
+		const wrapper = renderComponent( {
+			userName: 'Alice',
+			isDisabled: false,
+			isActivated: true,
+			data: null
+		}, {
+			$log: logSpy
+		} );
+		const button = wrapper.get( '.ext-growthExperiments-ScoreCards__info-button' );
+		button.trigger( 'click' );
+		expect( logSpy ).toHaveBeenNthCalledWith( 1, 'impact', 'open-thanks-info-tooltip' );
+		button.trigger( 'click' );
+		expect( logSpy ).toHaveBeenNthCalledWith( 2, 'impact', 'close-thanks-info-tooltip' );
 	} );
 } );

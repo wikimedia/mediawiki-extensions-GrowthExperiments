@@ -10,8 +10,8 @@
 				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 				:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 				:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' ).text()"
-				@open="log( 'impact', 'open-thanks-info-tooltip' );"
-				@close="log( 'impact', 'close-thanks-info-tooltip' );"
+				@open="$log( 'impact', 'open-thanks-info-tooltip' );"
+				@close="$log( 'impact', 'close-thanks-info-tooltip' );"
 			>
 				<c-text
 					size="md"
@@ -176,7 +176,6 @@ module.exports = exports = {
 	},
 	setup( props ) {
 		const renderMode = inject( 'RENDER_MODE' );
-		const log = inject( '$log' );
 		const onSuggestedEditsClick = () => {
 			if ( !props.isActivated ) {
 				mw.track( 'growthexperiments.startediting', {
@@ -195,7 +194,6 @@ module.exports = exports = {
 			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 		};
 		return {
-			log,
 			renderMode,
 			onSuggestedEditsClick,
 			cdxIconUserTalk,
