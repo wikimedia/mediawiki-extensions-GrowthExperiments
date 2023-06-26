@@ -10,7 +10,6 @@
 		var url;
 		SuggestedEditCardWidget.super.call( this, data );
 		this.data = data;
-
 		if ( data.url ) {
 			// Override for developer setups
 			url = data.url;
@@ -19,7 +18,12 @@
 		} else if ( data.title ) {
 			url = new mw.Title( data.title ).getUrl();
 		}
-
+		// Get the new-onboarding query and pass it to the url
+		var uri = new mw.Uri();
+		if ( uri.query[ 'new-onboarding' ] ) {
+			url = new mw.Uri( url );
+			url = url.extend( { 'new-onboarding': uri.query[ 'new-onboarding' ] } );
+		}
 		this.$element.append(
 			$( '<div>' ).addClass( 'suggested-edits-task-card-wrapper' )
 				.append(

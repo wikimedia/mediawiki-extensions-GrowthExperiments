@@ -433,7 +433,9 @@ class SpecialHomepage extends SpecialPage {
 				// even if the user has the preference (probably unknowingly) disabled.
 				'gesuggestededit' => 1,
 				'geclickid' => $clickId,
-				'genewcomertasktoken' => $newcomerTaskToken
+				'genewcomertasktoken' => $newcomerTaskToken,
+				// Query parameter to show the onboarding Vue dialog
+				'new-onboarding' => $request->getVal( 'new-onboarding' )
 			],
 			$suggestedEdits instanceof SuggestedEdits ? $suggestedEdits->getRedirectParams( $taskTypeId ) : []
 		);
