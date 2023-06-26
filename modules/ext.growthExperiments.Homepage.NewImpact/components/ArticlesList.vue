@@ -175,7 +175,7 @@ module.exports = exports = {
 		}
 
 		&__tooltip-text {
-			padding-top: @spacing-25;
+			padding: @spacing-25 @spacing-75;
 			min-width: 220px;
 		}
 	}

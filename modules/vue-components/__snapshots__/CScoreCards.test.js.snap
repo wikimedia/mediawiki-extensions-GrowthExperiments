@@ -142,7 +142,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
               
             </div>
             <div
-              class="ext-growthExperiments-Popover__popover-container"
+              class="ext-growthExperiments-Popover__surface-container"
             >
               <!--v-if-->
             </div>
@@ -276,7 +276,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
               
             </div>
             <div
-              class="ext-growthExperiments-Popover__popover-container"
+              class="ext-growthExperiments-Popover__surface-container"
             >
               <!--v-if-->
             </div>
@@ -430,7 +430,7 @@ exports[`ScoreCards renders correctly without data 1`] = `
               
             </div>
             <div
-              class="ext-growthExperiments-Popover__popover-container"
+              class="ext-growthExperiments-Popover__surface-container"
             >
               <!--v-if-->
             </div>
@@ -564,7 +564,7 @@ exports[`ScoreCards renders correctly without data 1`] = `
               
             </div>
             <div
-              class="ext-growthExperiments-Popover__popover-container"
+              class="ext-growthExperiments-Popover__surface-container"
             >
               <!--v-if-->
             </div>

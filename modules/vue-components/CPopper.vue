@@ -5,20 +5,7 @@
 			class="ext-growthExperiments-CPopper__popover"
 			tabindex="0"
 			:style="popoverStyles"
-			@keyup.esc="$emit( 'close' )"
 		>
-			<div
-				v-if="icon"
-				class="ext-growthExperiments-CPopper__popover__close-button-container">
-				<cdx-button
-					weight="quiet"
-					:aria-label="iconLabel"
-					class="ext-growthExperiments-CPopper__popover__close-button"
-					@click="$emit( 'close', $event )"
-				>
-					<cdx-icon :icon="icon"></cdx-icon>
-				</cdx-button>
-			</div>
 			<slot></slot>
 		</div>
 	</div>
@@ -26,7 +13,7 @@
 
 <script>
 const { onMounted, ref, computed } = require( 'vue' );
-const { CdxButton, CdxIcon, useComputedDirection } = require( '@wikimedia/codex' );
+const { useComputedDirection } = require( '@wikimedia/codex' );
 /*
  * GrowthExperiments common component
  *
@@ -37,20 +24,7 @@ const { CdxButton, CdxIcon, useComputedDirection } = require( '@wikimedia/codex'
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
-	components: {
-		CdxButton,
-		CdxIcon
-	},
 	props: {
-		icon: {
-			// Icons are mocked as empty strings in tests
-			type: [ Object, String ],
-			default: null
-		},
-		iconLabel: {
-			type: String,
-			default: null
-		},
 		/*
 		 * The clipping point for the tooltip.
 		 * One of null|'above'
@@ -68,7 +42,6 @@ module.exports = exports = {
 			required: true
 		}
 	},
-	emits: [ 'close' ],
 	setup( props ) {
 		const containerRef = ref( null );
 		const computedDir = useComputedDirection( containerRef );
