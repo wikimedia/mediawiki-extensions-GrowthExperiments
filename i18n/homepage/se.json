@@ -6,6 +6,7 @@
 		]
 	},
 	"growthexperiments-homepage-tab": "Ruovttosiidu",
+	"growthexperiments-homepage-email-header-noemail": "Lasit {{GENDER:$1|iežat}} e-poastačujuhusa",
 	"growthexperiments-homepage-email-button-noemail": "Lasit e-poastačujuhusa",
 	"growthexperiments-homepage-email-button-unconfirmed": "Bivdde ođđa liŋkka",
 	"growthexperiments-homepage-startediting-header": "Rievdadišgoađe",

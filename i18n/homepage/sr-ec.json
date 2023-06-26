@@ -263,7 +263,7 @@
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Изаберите теме које {{GENDER:$1|вас}} занимају",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Покушаћемо да предлажемо чланке који се подударају с {{GENDER:$1|вашим}} интересовањима.",
 	"growthexperiments-homepage-claimmentee-title": "Преузимање новајлије",
-	"growthexperiments-homepage-claimmentee-pretext": "Ова страница {{GENDER:$1|вам}} омогућава да преузмете новајлију коју желите. Препоручујемо да употребљавате функцију за преузимање корисника које познајете или оних које подучавате на неком курсу.",
+	"growthexperiments-homepage-claimmentee-pretext": "Ова страница {{GENDER:$1|Вам}} омогућава да преузмете новајлију кога желите. Препоручујемо да употребљавате ову функцију за преузимање корисника које познајете или оних које подучавате на неком курсу.",
 	"growthexperiments-homepage-claimmentee-mentee": "Корисничко име",
 	"growthexperiments-homepage-claimmentee-reason": "Разлог",
 	"growthexperiments-homepage-claimmentee-success": "Променили {{GENDER:$2|сте}} ментора {{GENDER:$1|корисника|кориснице}} $4. {{GENDER:$3|Нови ментор|Нова менторка}} је $5.",
