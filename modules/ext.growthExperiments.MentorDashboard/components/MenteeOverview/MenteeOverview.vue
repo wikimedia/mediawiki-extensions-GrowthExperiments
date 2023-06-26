@@ -168,6 +168,7 @@ const MENTEES_TABLE_COLUMNS = [
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxIcon,
 		CdxButton,

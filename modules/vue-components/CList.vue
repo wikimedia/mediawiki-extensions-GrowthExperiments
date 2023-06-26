@@ -7,6 +7,7 @@ const { h, cloneVNode } = require( 'vue' );
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	props: {
 		unstyled: { type: Boolean },
 		striped: { type: Boolean, default: false }

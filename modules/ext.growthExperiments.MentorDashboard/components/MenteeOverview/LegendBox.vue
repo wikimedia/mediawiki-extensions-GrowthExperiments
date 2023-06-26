@@ -27,6 +27,7 @@ const icons = require( '../../../vue-components/icons.json' );
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxIcon
 	},

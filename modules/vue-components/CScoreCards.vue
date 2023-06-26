@@ -118,6 +118,7 @@ const DATA_ROWS_LIMIT = 1000;
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CScoreCard,
 		CText,

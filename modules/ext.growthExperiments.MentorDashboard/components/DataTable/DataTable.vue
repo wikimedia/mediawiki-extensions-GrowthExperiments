@@ -74,6 +74,7 @@ const LIMIT_OPTIONS = [ 5, 10, 15, 20, 25 ];
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxIcon,
 		DataTableLimit,
