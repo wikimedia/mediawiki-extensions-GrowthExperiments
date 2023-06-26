@@ -5,10 +5,10 @@ namespace GrowthExperiments\Mentorship;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
-use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\WikiMap\WikiMap;
+use MessageLocalizer;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IDatabase;
@@ -28,7 +28,7 @@ class ReassignMentees {
 	private JobQueueGroupFactory $jobQueueGroupFactory;
 	private UserIdentity $performer;
 	private UserIdentity $mentor;
-	private IContextSource $context;
+	private MessageLocalizer $messageLocalizer;
 
 	/**
 	 * @param IDatabase $dbw
@@ -39,7 +39,7 @@ class ReassignMentees {
 	 * @param JobQueueGroupFactory $jobQueueGroupFactory
 	 * @param UserIdentity $performer
 	 * @param UserIdentity $mentor
-	 * @param IContextSource $context
+	 * @param MessageLocalizer $messageLocalizer
 	 */
 	public function __construct(
 		IDatabase $dbw,
@@ -50,7 +50,7 @@ class ReassignMentees {
 		JobQueueGroupFactory $jobQueueGroupFactory,
 		UserIdentity $performer,
 		UserIdentity $mentor,
-		IContextSource $context
+		MessageLocalizer $messageLocalizer
 	) {
 		$this->dbw = $dbw;
 		$this->mentorManager = $mentorManager;
@@ -60,7 +60,7 @@ class ReassignMentees {
 		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
 		$this->performer = $performer;
 		$this->mentor = $mentor;
-		$this->context = $context;
+		$this->messageLocalizer = $messageLocalizer;
 		$this->logger = new NullLogger();
 	}
 
@@ -133,11 +133,7 @@ class ReassignMentees {
 		foreach ( $mentees as $mentee ) {
 			$changeMentor = $this->changeMentorFactory->newChangeMentor(
 				$mentee,
-				// this intentionally does not use context, because the context is not preserved
-				// between reassignMentees() (which schedules a job) and this method, see
-				// ReassignMenteesJob::run.
-				$this->performer,
-				$this->context
+				$this->performer
 			);
 
 			try {
@@ -166,7 +162,7 @@ class ReassignMentees {
 
 			$changeMentor->execute(
 				$newMentor,
-				$this->context->msg(
+				$this->messageLocalizer->msg(
 					$reassignMessageKey,
 					$this->mentor->getName(),
 					...$reassignMessageAdditionalParams

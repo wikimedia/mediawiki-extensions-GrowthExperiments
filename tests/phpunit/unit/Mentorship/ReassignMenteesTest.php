@@ -141,8 +141,8 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		$changeMentorFactory->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'newChangeMentor' )
 			->withConsecutive( ...array_map(
-				static function ( $el ) use ( $mentor, $context ) {
-					return [ $el, $mentor, $context ];
+				static function ( $el ) use ( $mentor ) {
+					return [ $el, $mentor ];
 				},
 				$mentees
 			) )

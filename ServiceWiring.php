@@ -153,7 +153,8 @@ return [
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			$geServices->getMentorManager(),
 			$geServices->getMentorStore(),
-			$services->getUserFactory()
+			$services->getUserFactory(),
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
 		);
 	},
 
@@ -992,6 +993,7 @@ return [
 		MediaWikiServices $services
 	): ImageRecommendationSubmissionLogFactory {
 		return new ImageRecommendationSubmissionLogFactory(
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
 			$services->getUserOptionsLookup()
 		);
 	},
@@ -1000,6 +1002,7 @@ return [
 		MediaWikiServices $services
 	): SectionImageRecommendationSubmissionLogFactory {
 		return new SectionImageRecommendationSubmissionLogFactory(
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
 			$services->getUserOptionsLookup()
 		);
 	},
@@ -1008,6 +1011,7 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationSubmissionLogFactory {
 		return new LinkRecommendationSubmissionLogFactory(
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
 			$services->getUserOptionsLookup()
 		);
 	},

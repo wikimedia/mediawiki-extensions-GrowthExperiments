@@ -68,8 +68,7 @@ class ApiSetMentor extends ApiBase {
 
 		$changeMentor = $this->changeMentorFactory->newChangeMentor(
 			$mentee,
-			$this->getUser(),
-			$this->getContext()
+			$this->getUser()
 		);
 		$status = $changeMentor->execute( $mentor, $params['reason'] );
 		if ( !$status->isOK() ) {

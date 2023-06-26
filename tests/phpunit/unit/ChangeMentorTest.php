@@ -8,14 +8,15 @@ use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Tests\ChangeMentorForTests;
-use LogPager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 use Status;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -39,10 +40,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 					true,
 					IMentorWeights::WEIGHT_NORMAL
 				),
-				$this->createMock( LogPager::class ),
 				$this->createMock( MentorManager::class ),
 				$this->createMock( MentorStore::class ),
-				$this->createMock( UserFactory::class )
+				$this->createMock( UserFactory::class ),
+				$this->createMock( IReadableDatabase::class )
 			)
 		);
 	}
@@ -51,10 +52,16 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 * @covers ::wasMentorChanged
 	 */
 	public function testWasMentorChangedSuccess() {
-		$logPagerMock = $this->createMock( LogPager::class );
 		$resultMock = $this->createMock( IResultWrapper::class );
 		$resultMock->method( 'fetchRow' )->willReturn( [ 'foo' ] );
-		$logPagerMock->method( 'getResult' )->willReturn( $resultMock );
+		$builderMock = $this->createMock( SelectQueryBuilder::class );
+		$builderMock->method( $this->anythingBut(
+			'fetchResultSet', 'fetchField', 'fetchFieldValues', 'fetchRow',
+			'fetchRowCount', 'estimateRowCount'
+		) )->willReturnSelf();
+		$builderMock->method( 'fetchRow' )->willReturn( $resultMock );
+		$dbMock = $this->createMock( IReadableDatabase::class );
+		$dbMock->method( 'newSelectQueryBuilder' )->willReturn( $builderMock );
 		$changeMentor = new ChangeMentor(
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
@@ -66,10 +73,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$logPagerMock,
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
-			$this->createMock( UserFactory::class )
+			$this->createMock( UserFactory::class ),
+			$dbMock
 		);
 		$this->assertNotFalse( $changeMentor->wasMentorChanged() );
 	}
@@ -89,10 +96,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'',
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( LogPager::class ),
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
-			$this->createMock( UserFactory::class )
+			$this->createMock( UserFactory::class ),
+			$this->createMock( IReadableDatabase::class )
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
@@ -120,10 +127,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( LogPager::class ),
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
-			$this->createMock( UserFactory::class )
+			$this->createMock( UserFactory::class ),
+			$this->createMock( IReadableDatabase::class )
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
@@ -147,10 +154,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( LogPager::class ),
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
-			$this->createMock( UserFactory::class )
+			$this->createMock( UserFactory::class ),
+			$this->createMock( IReadableDatabase::class )
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'SameMentor', 3 );
@@ -175,10 +182,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( LogPager::class ),
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
-			$this->createMock( UserFactory::class )
+			$this->createMock( UserFactory::class ),
+			$this->createMock( IReadableDatabase::class )
 		);
 		$status = $changeMentor->execute( $this->getUserMock( 'SameMentor', 3 ), 'test' );
 		$this->assertFalse( $status->isOK() );
@@ -221,10 +228,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( LogPager::class ),
 			$mentorManagerMock,
 			$this->createMock( MentorStore::class ),
-			$this->createMock( UserFactory::class )
+			$this->createMock( UserFactory::class ),
+			$this->createMock( IReadableDatabase::class )
 		);
 		$changeMentor->execute( $this->getUserMock( 'NewMentor', 4 ), 'test' );
 	}

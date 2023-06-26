@@ -169,8 +169,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 		foreach ( $this->mentees as $mentee ) {
 			$changementor = $this->changeMentorFactory->newChangeMentor(
 				$mentee,
-				$this->newMentor,
-				$this->getContext()
+				$this->newMentor
 			);
 
 			if (

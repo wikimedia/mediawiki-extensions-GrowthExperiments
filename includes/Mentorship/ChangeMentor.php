@@ -6,13 +6,14 @@ use DeferredUpdates;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use LogPager;
 use ManualLogEntry;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use Status;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class ChangeMentor {
 	private UserIdentity $mentee;
@@ -20,39 +21,39 @@ class ChangeMentor {
 	private ?UserIdentity $newMentor;
 	private UserIdentity $performer;
 	private LoggerInterface $logger;
-	private LogPager $logPager;
 	private MentorManager $mentorManager;
 	private MentorStore $mentorStore;
 	private UserFactory $userFactory;
+	private IReadableDatabase $dbr;
 
 	/**
 	 * @param UserIdentity $mentee Mentee's user object
 	 * @param UserIdentity $performer Performer's user object
 	 * @param LoggerInterface $logger
 	 * @param Mentor|null $mentor Old mentor
-	 * @param LogPager $logPager
 	 * @param MentorManager $mentorManager
 	 * @param MentorStore $mentorStore
 	 * @param UserFactory $userFactory
+	 * @param IReadableDatabase $dbr
 	 */
 	public function __construct(
 		UserIdentity $mentee,
 		UserIdentity $performer,
 		LoggerInterface $logger,
 		?Mentor $mentor,
-		LogPager $logPager,
 		MentorManager $mentorManager,
 		MentorStore $mentorStore,
-		UserFactory $userFactory
+		UserFactory $userFactory,
+		IReadableDatabase $dbr
 	) {
 		$this->logger = $logger;
 
 		$this->performer = $performer;
 		$this->mentee = $mentee;
-		$this->logPager = $logPager;
 		$this->mentorManager = $mentorManager;
 		$this->mentorStore = $mentorStore;
 		$this->userFactory = $userFactory;
+		$this->dbr = $dbr;
 		$this->mentor = $mentor ? $mentor->getUserIdentity() : null;
 	}
 
@@ -62,8 +63,17 @@ class ChangeMentor {
 	 * @return bool
 	 */
 	public function wasMentorChanged(): bool {
-		$this->logPager->doQuery();
-		return (bool)$this->logPager->getResult()->fetchRow();
+		$res = $this->dbr->newSelectQueryBuilder()
+			->select( [ 'log_page' ] )
+			->from( 'logging' )
+			->where( [
+				'log_type' => 'growthexperiments',
+				'log_namespace' => NS_USER,
+				'log_title' => Title::makeTitle( NS_USER, $this->mentee->getName() )->getDbKey()
+			] )
+			->caller( __METHOD__ )
+			->fetchRow();
+		return (bool)$res;
 	}
 
 	/**
