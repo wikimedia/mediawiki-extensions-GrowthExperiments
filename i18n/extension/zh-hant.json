@@ -89,7 +89,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "新手每天可以完成「添加連結」 建議任務的最大數量。",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "不推薦連結的章節名稱清單。",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "了解圖片建議任務類型更多資訊的目標頁面。",
-	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "新手每天可以完成的「加入圖片」建議任務的最大數量。",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "新手每天可以完成的「加入圖片到沒有插圖的條目」建議任務的最大數量。",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "此任務類型與機器建議關聯，並且不使用模板來產生任務池。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "包含此處定義模板的條目將不會以此任務類型向使用者顯示為任務。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "包含此處定義分類的條目將不會以此任務類型向使用者顯示為任務。",

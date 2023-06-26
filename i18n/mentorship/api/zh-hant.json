@@ -32,5 +32,8 @@
 	"apihelp-growthmanagementorlist-param-autoassigned": "導師會自動分配給新手嗎？",
 	"apihelp-growthmanagementorlist-param-summary": "更改的原因",
 	"apihelp-growthmanagementorlist-param-username": "被更改給影響到的導師使用者名稱。若未提供，會使用目前登入的使用者。這僅給特權使用者利用。",
-	"growthexperiments-api-managementors-error-no-away-timestamp": "若 isaway 為 true，必須提供 awaytimestamp。"
+	"growthexperiments-api-managementors-error-no-away-timestamp": "若 isaway 為 true，必須提供 awaytimestamp。",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "讓導師面板上個性化表揚模組的值得表揚學員建議無效",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "無效學員",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "讓建議無效的原因"
 }
