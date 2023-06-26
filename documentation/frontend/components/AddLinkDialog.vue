@@ -95,8 +95,11 @@
 							).text()
 						}}
 					</p>
-
-					<a class="ext-growthExperiments-AddLinkDialog__text__link" href="">
+					<a
+						v-if="learnMoreLink"
+						class="ext-growthExperiments-AddLinkDialog__text__link"
+						:href="learnMoreLink"
+						target="_blank">
 						{{
 							$i18n(
 								// eslint-disable-next-line max-len
@@ -181,6 +184,13 @@ export default {
 		isChecked: {
 			type: Boolean,
 			default: false
+		},
+		/**
+		 * Url to show a "learn more" link in the second step
+		 */
+		learnMoreLink: {
+			type: String,
+			default: ''
 		}
 	},
 	emits: [ 'update:open', 'update:is-checked', 'close' ],
