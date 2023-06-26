@@ -26,6 +26,29 @@ module.exports = ( function () {
 	}
 
 	/**
+	 * Get the alt text for the corresponding hero image for the specified panel
+	 *
+	 * @param {number} panelNumber Panel for which the hero image class is for
+	 * @return {string}
+	 */
+	function getImageAltText( panelNumber ) {
+		if ( !hasHeroImage ) {
+			return '';
+		}
+		var panelMap = {
+			1: 'intro',
+			2: 'about',
+			3: 'linking'
+		};
+
+		// The following messages are used here:
+		// * growthexperiments-addlink-onboarding-content-intro-image-alt-text
+		// * growthexperiments-addlink-onboarding-content-about-image-alt-text
+		// * growthexperiments-addlink-onboarding-content-linking-image-alt-text
+		return mw.message( 'growthexperiments-addlink-onboarding-content-' + panelMap[ panelNumber ] + '-image-alt-text' ).text();
+	}
+
+	/**
 	 * Get a dictionary of localized texts used in the intro panel
 	 *
 	 * @return {Object}
@@ -53,7 +76,7 @@ module.exports = ( function () {
 				$( '<div>' ).attr( 'class', 'addlink-onboarding-content-example' ).html( messages.exampleHtml ),
 				$( '<p>' ).text( messages.paragraph2 )
 			] );
-		return content.createPanel( messages.title, $content, getHeroClass( 1 ) );
+		return content.createPanel( messages.title, $content, getHeroClass( 1 ), getImageAltText( 1 ) );
 	}
 
 	/**
@@ -88,7 +111,7 @@ module.exports = ( function () {
 				target: '_blank'
 			} ) );
 		}
-		return content.createPanel( messages.title, $content, getHeroClass( 2 ) );
+		return content.createPanel( messages.title, $content, getHeroClass( 2 ), getImageAltText( 2 ) );
 	}
 
 	/**
@@ -118,7 +141,7 @@ module.exports = ( function () {
 		$list = $( '<ul>' ).html( messages.body ).addClass( 'addlink-onboarding-content-list' );
 		$list.find( 'li' ).addClass( 'addlink-onboarding-content-list-item' );
 		$content.append( $list );
-		return content.createPanel( messages.title, $content, getHeroClass( 3 ) );
+		return content.createPanel( messages.title, $content, getHeroClass( 3 ), getImageAltText( 3 ) );
 	}
 
 	return {
