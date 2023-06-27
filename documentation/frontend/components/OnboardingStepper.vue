@@ -1,8 +1,8 @@
 <template>
 	<div class="ext-growthExperiments-OnboardingStepper">
-		<p v-if="label" class="ext-growthExperiments-OnboardingStepper__label">
+		<span v-if="label" class="ext-growthExperiments-OnboardingStepper__label">
 			{{ label }}
-		</p>
+		</span>
 
 		<div class="ext-growthExperiments-OnboardingStepper__dots">
 			<div
@@ -44,9 +44,8 @@ export default {
 
 	.ext-growthExperiments-OnboardingStepper {
 		display: flex;
-		font-size: @font-size-x-small;
+		font-size: @font-size-small;
 		color: @color-subtle;
-		line-height: @line-height-xxx-small;
 		align-items: center;
 
 		&__label {

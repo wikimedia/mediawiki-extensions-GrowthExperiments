@@ -99,6 +99,11 @@ export default {
 :::
 
 ### Caveats
+- #### Dialog height
+In the demo example above the height of the dialog is set to 520px. 
+
+The dialog height must be set to a fixed value to avoid changes in dialog height between steps with different content length.
+
 - #### Transitions
 To correctly display slide transitions between dialog steps, step content needs to be wrapped in a single element, eg: div, section
 

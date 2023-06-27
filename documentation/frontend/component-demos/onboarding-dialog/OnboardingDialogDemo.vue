@@ -167,6 +167,8 @@ export default {
 	margin: @spacing-50;
 
 	&__dialog {
+		height: 520px;
+
 		&__image {
 			background-image: url( ../../../../images/addlink/onboarding-image1-ltr.svg );
 			.ext-growthExperiments-onboarding-dialog-image();

@@ -308,7 +308,7 @@ export default {
 	&__header {
 		padding-inline-start: @spacing-150;
 		padding-inline-end: @spacing-75;
-		padding-top: @spacing-75;
+		padding-top: @spacing-100;
 		padding-bottom: @spacing-100;
 
 		&__top {
@@ -317,11 +317,11 @@ export default {
 			align-items: flex-start;
 
 			&__title {
-				padding-top: @spacing-50;
+				padding-top: @spacing-35;
 				font-size: @font-size-medium;
 				line-height: @line-height-xx-small;
 				font-weight: @font-weight-bold;
-				padding-bottom: @spacing-75;
+				padding-bottom: @spacing-35;
 			}
 
 			&__button {
