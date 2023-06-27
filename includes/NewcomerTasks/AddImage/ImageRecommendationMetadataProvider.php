@@ -70,7 +70,7 @@ class ImageRecommendationMetadataProvider {
 			'description' => $this->getExtendedMetadataField( $extendedMetadata, 'ImageDescription' ),
 			// author field of {{information}} template
 			'author' => $this->getExtendedMetadataField( $extendedMetadata, 'Artist' ),
-			// short name like 'CC BY-SA 3.0',  typically parsed from the first license template on the page
+			// short name like 'CC BY-SA 4.0',  typically parsed from the first license template on the page
 			'license' => $this->getExtendedMetadataField( $extendedMetadata, 'LicenseShortName' ),
 			// DateTimeOriginal is the date field of {{information}} template.
 			// DateTime is image creation date from EXIF or similar embedded metadata, with fallback
