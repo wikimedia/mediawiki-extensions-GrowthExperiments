@@ -37,6 +37,7 @@ const { NO_DATA_CHARACTER } = require( '../constants.js' );
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CText
 	},

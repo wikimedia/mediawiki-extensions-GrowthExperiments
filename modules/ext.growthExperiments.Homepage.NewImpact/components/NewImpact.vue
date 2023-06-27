@@ -74,6 +74,7 @@ const ArticlesList = require( './ArticlesList.vue' );
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CText,
 		CScoreCards,
