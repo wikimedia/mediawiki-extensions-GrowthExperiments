@@ -414,7 +414,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		];
 	}
 
-	private function getPageViewDataInJobContext( array $allTitleObjects, UserIdentity $user, int $days ): ?array {
+	private function getPageViewDataInJobContext( array $allTitleObjects, UserIdentity $user, int $days ): array {
 		$pageViewData = [];
 		$titleObjects = $allTitleObjects;
 		$loopStartTime = microtime( true );
@@ -456,12 +456,12 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 	private function getPageViewDataInWebRequestContext(
 		array $allTitleObjects, UserIdentity $user, int $days
-	): ?array {
+	): array {
 		$status = $this->pageViewService->getPageData( array_column( $allTitleObjects, 'title' ), $days );
 		if ( !$status->isGood() ) {
 			$this->logPageDataBadStatus( $status );
 			if ( !$status->isOK() ) {
-				return null;
+				return [];
 			}
 		} elseif ( $status->successCount < count( $allTitleObjects ) ) {
 			$failedTitles = array_keys( array_diff_key( $allTitleObjects, $status->success ) );
