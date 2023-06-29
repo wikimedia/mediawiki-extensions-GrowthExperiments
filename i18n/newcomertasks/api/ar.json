@@ -25,7 +25,7 @@
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "معلمة 'مقبولة' مفقودة من بيانات إضافة صورة",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "معلمة 'مقبولة' يجب أن تكون ذات قيمة منطقية في بيانات إضافة صورة، هي $1",
 	"apierror-growthexperiments-addimage-handler-reason-missing": "معلمة 'الأسباب' مفقودة من بيانات إضافة صورة",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "يجب أن تكون معلمة \"أسباب\" مصفوفة في بيانات إضافة صورة ، وهي $1",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "يجب أن تكون معلمة 'أسباب' مصفوفة في بيانات إضافة صورة، وهي $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "العنصر '$1' لمعلمة 'الأسباب' غير صالح، يجب أن يكون واحدًا من: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "سجل توصية الروابط غير موجود",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "أهداف توصية الروابط غير متوقعة: $1",

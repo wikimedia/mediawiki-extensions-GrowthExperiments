@@ -7,12 +7,13 @@
 			"Meno25",
 			"Michel Bakni",
 			"أَحمد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"أيوب"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "لوحة المرشدين",
 	"growthexperiments-mentor-dashboard-pt-link": "لوحة المرشدين",
-	"growthexperiments-mentor-dashboard-disabled": "لا تتوفّر لوحة المرشدين في هذا الويكي.",
+	"growthexperiments-mentor-dashboard-disabled": "لوحة المرشدين غير متوفّرة في هذا الويكي.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "لتفعيل لوحة المرشدين، بتوجّب {{GENDER:|عليكَ|عليكِ}} أوّلا [[$1|التسجيل {{GENDER:|كمرشد|كمرشدة}}]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "قبل استخدام لوحة المرشدين، يجب إعداد قائمة المرشدين. يمكن لإداريّ أن يستخدم [[Special:EditGrowthConfig]] في هذا الصدد.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|مرشَدوكَ|مرشَدوكِ}}",

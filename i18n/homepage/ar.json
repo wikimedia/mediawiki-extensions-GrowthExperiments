@@ -14,7 +14,8 @@
 			"Sonic N800",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح",
-			"Karim185.3"
+			"Karim185.3",
+			"Asma"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
@@ -25,7 +26,7 @@
 	"growthexperiments-homepage-pt-link": "اختيار تلقائي للوحة المستخدم للوافد الجديد من وصلة اسم حساب المستخدم في الأدوات الشخصية",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|أضف|أضيفي}} بريدك الإلكتروني",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|أكد|أكدي}} بريدك الإلكتروني",
-	"growthexperiments-homepage-email-header-confirmed": "أُضِيف البريد الإلكتروني",
+	"growthexperiments-homepage-email-header-confirmed": "أُضِيفَ البريد الإلكتروني",
 	"growthexperiments-homepage-email-header-startemail": "البريد الإلكتروني: $1",
 	"growthexperiments-homepage-email-text-noemail": "موصى به لاسترداد الحساب",
 	"growthexperiments-homepage-email-text-unconfirmed": "{{GENDER:$1| تحقق|تحققي}} من بريدك الإلكتروني لاستعمال رابط التأكيد، أو {{GENDER:$1|احصل|احصلي}} على رابط جديد.",
@@ -159,8 +160,8 @@
 	"growthexperiments-homepage-help-mobilebody": "{{GENDER:|اسأل|اسألي}} فريق المساعدة أو {{GENDER:|اقرأ|اقرئي}} صفحات المساعدة.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|أسئلتك}} الأخيرة",
 	"growthexperiments-homepage-recent-questions-posted-on": "نُشِرَ منذ $1",
-	"growthexperiments-homepage-recent-questions-archived": "مُؤرشِف",
-	"growthexperiments-homepage-recent-questions-archived-tooltip": "أُرشف هذا السؤال؛ لأنه مطروح على الأرجح منذ فترة طويلة.",
+	"growthexperiments-homepage-recent-questions-archived": "مؤرشف",
+	"growthexperiments-homepage-recent-questions-archived-tooltip": "أُرشف هذا السؤال؛ على الأرجح لأنه مطروح منذ فترة طويلة.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|هنا}} {{GENDER:$2|مرشدك|مرشدتك}}",
 	"growthexperiments-homepage-mentorship-preintro": "قمنا بتعيين {{GENDER:$1|محرّر خبير|محرّرة خبيرة}} للردّ على أسئلتك حول التحرير.",
 	"growthexperiments-homepage-mentorship-learn-more": "تعلّم المزيد حول المرشدين.",
