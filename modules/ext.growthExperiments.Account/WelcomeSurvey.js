@@ -5,7 +5,7 @@
 		setupLanguageSelector: function () {
 			var ULSTagMultiselectWidget = require( './ULSTagMultiselectWidget.js' ),
 				shouldUseLanguageInfoOverlay = OO.ui.isMobile() &&
-					mw.mobileFrontend.require( 'mobile.startup' ).languageInfoOverlay,
+					mw.loader.getState( 'mobile.startup' ) === 'loaded',
 				/** @type {OO.Router} */
 				router = require( 'mediawiki.router' ),
 				langCodeMap = $.uls.data.getAutonyms(),

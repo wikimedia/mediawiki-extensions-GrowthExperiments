@@ -11,7 +11,7 @@
 	 */
 	var ULSTagMultiselectWidget = function UlsTagMultiselectWidget( config ) {
 		var shouldUseLanguageOverlay = OO.ui.isMobile() &&
-			mw.mobileFrontend.require( 'mobile.startup' ).languageInfoOverlay;
+			mw.loader.getState( 'mobile.startup' ) === 'loaded';
 		ULSTagMultiselectWidget.super.call( this, config );
 		this.$element.on( 'click', function ( e ) {
 			// Intercept clicks to the built-in input widget which we don't
