@@ -22,6 +22,7 @@ use MWTimestamp;
 use OOUI\ButtonWidget;
 use PermissionsError;
 use SpecialPage;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class SpecialManageMentors extends SpecialPage {
 
@@ -95,13 +96,10 @@ class SpecialManageMentors extends SpecialPage {
 
 	/**
 	 * @param UserIdentity $user
-	 * @return string
+	 * @return MWTimestamp
 	 */
-	private function getLastActiveTimestamp( UserIdentity $user ): string {
-		return $this->getContext()->getLanguage()->userTimeAndDate(
-			new MWTimestamp( $this->userEditTracker->getLatestEditTimestamp( $user ) ),
-			$this->getUser()
-		);
+	private function getLastActiveTimestamp( UserIdentity $user ): MWTimestamp {
+		return new MWTimestamp( $this->userEditTracker->getLatestEditTimestamp( $user ) );
 	}
 
 	private function makeUserLink( UserIdentity $user ) {
@@ -113,9 +111,9 @@ class SpecialManageMentors extends SpecialPage {
 
 	/**
 	 * @param Mentor $mentor
-	 * @return string
+	 * @return array{0:string,1:int}
 	 */
-	private function formatWeight( Mentor $mentor ): string {
+	private function formatWeight( Mentor $mentor ): array {
 		$msgKey = null;
 		switch ( $mentor->getWeight() ) {
 			case IMentorWeights::WEIGHT_LOW:
@@ -132,33 +130,44 @@ class SpecialManageMentors extends SpecialPage {
 					'Weight ' . $mentor->getWeight() . ' is not supported'
 				);
 		}
-		return $this->msg( $msgKey )->text();
+		return [ $this->msg( $msgKey )->text(), $mentor->getWeight() ];
 	}
 
 	/**
 	 * @param Mentor $mentor
-	 * @return string
+	 * @return array{0:string,1:int}
 	 */
-	private function formatStatus( Mentor $mentor ): string {
-		switch ( $this->mentorStatusManager->getMentorStatus( $mentor->getUserIdentity() ) ) {
-			case MentorStatusManager::STATUS_ACTIVE:
-				return $this->msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active' )
-					->text();
-			case MentorStatusManager::STATUS_AWAY:
-				return $this->msg( 'growthexperiments-manage-mentors-status-away-until' )
-					->params( $this->getLanguage()->userDate(
-						$this->mentorStatusManager->getMentorBackTimestamp(
-							$mentor->getUserIdentity()
-						),
-						$this->getUser()
-					) )
-					->text();
+	private function formatStatus( Mentor $mentor ): array {
+		$reason = $this->mentorStatusManager->getAwayReason( $mentor->getUserIdentity() );
+		switch ( $reason ) {
+			case MentorStatusManager::AWAY_BECAUSE_BLOCK:
+			case MentorStatusManager::AWAY_BECAUSE_LOCK:
+				return [
+					// FIXME use better custom message
+					$this->msg( 'blockedtitle' )->text(),
+					// XXX: is this the maximum on the frontend?
+					PHP_INT_MAX
+				];
+			case MentorStatusManager::AWAY_BECAUSE_TIMESTAMP:
+				$ts = $this->mentorStatusManager->getMentorBackTimestamp( $mentor->getUserIdentity() );
+				if ( $ts !== null ) {
+					return [
+						$this->msg( 'growthexperiments-manage-mentors-status-away-until' )
+							->params( $this->getLanguage()->userDate( $ts, $this->getUser() ) )
+							->text(),
+						(int)ConvertibleTimestamp::convert( TS_UNIX, $ts )
+					];
+				}
+				// if the reason is a timestamp, but we've got no timestamp, just pretend they are active
+				// hence no break here
+			case null:
+				return [
+					$this->msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active' )
+						->text(),
+					-1
+				];
 			default:
-				throw new LogicException(
-					'Status '
-					. $this->mentorStatusManager->getMentorStatus( $mentor->getUserIdentity() )
-					. ' is not supported'
-				);
+				throw new LogicException( "Reason for absence \"$reason\" is not supported" );
 		}
 	}
 
@@ -168,12 +177,24 @@ class SpecialManageMentors extends SpecialPage {
 	 * @return string
 	 */
 	private function getMentorAsHtmlRow( Mentor $mentor, int $i ): string {
+		[ $weightText, $weightRank ] = $this->formatWeight( $mentor );
+		[ $statusText, $statusRank ] = $this->formatStatus( $mentor );
+		$ts = $this->getLastActiveTimestamp( $mentor->getUserIdentity() );
+
 		$items = [
 			Html::element( 'td', [], (string)$i ),
-			Html::rawElement( 'td', [], $this->makeUserLink( $mentor->getUserIdentity() ) ),
-			Html::element( 'td', [], $this->getLastActiveTimestamp( $mentor->getUserIdentity() ) ),
-			Html::element( 'td', [], $this->formatWeight( $mentor ) ),
-			Html::element( 'td', [], $this->formatStatus( $mentor ) ),
+			Html::rawElement(
+				'td',
+				[ 'data-sort-value' => $mentor->getUserIdentity()->getName() ],
+				$this->makeUserLink( $mentor->getUserIdentity() )
+			),
+			Html::element(
+				'td',
+				[ 'data-sort-value' => $ts->getTimestamp( TS_UNIX ) ],
+				$this->getContext()->getLanguage()->userTimeAndDate( $ts, $this->getUser() )
+			),
+			Html::element( 'td', [ 'data-sort-value' => $weightRank ], $weightText ),
+			Html::element( 'td', [ 'data-sort-value' => $statusRank ], $statusText ),
 			Html::element( 'td', [], $mentor->getIntroText() ),
 		];
 		if ( $this->canManageMentors() ) {
@@ -251,22 +272,23 @@ class SpecialManageMentors extends SpecialPage {
 			),
 			Html::element(
 				'th',
-				[],
+				// unix timestamp
+				[ 'data-sort-type' => 'number' ],
 				$this->msg( 'growthexperiments-manage-mentors-last-active' )->text()
 			),
 			Html::element(
 				'th',
-				[],
+				[ 'data-sort-type' => 'number' ],
 				$this->msg( 'growthexperiments-manage-mentors-weight' )->text()
 			),
 			Html::element(
 				'th',
-				[],
+				[ 'data-sort-type' => 'number' ],
 				$this->msg( 'growthexperiments-manage-mentors-status' )->text()
 			),
 			Html::element(
 				'th',
-				[],
+				[ 'class' => 'unsortable' ],
 				$this->msg( 'growthexperiments-manage-mentors-intro-msg' )->text()
 			),
 		];
@@ -274,12 +296,12 @@ class SpecialManageMentors extends SpecialPage {
 		if ( $this->canManageMentors() ) {
 			$headerItems[] = Html::element(
 				'th',
-				[],
+				[ 'class' => 'unsortable' ],
 				$this->msg( 'growthexperiments-manage-mentors-edit' )->text()
 			);
 			$headerItems[] = Html::element(
 				'th',
-				[],
+				[ 'class' => 'unsortable' ],
 				$this->msg( 'growthexperiments-manage-mentors-remove-mentor' )->text()
 			);
 		}

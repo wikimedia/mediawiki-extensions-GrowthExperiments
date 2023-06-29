@@ -70,7 +70,7 @@ class Mentor {
 	}
 
 	/**
-	 * @return int Mentor's weight (one of IIMentorWeights::WEIGHT_*)
+	 * @return int Mentor's weight (one of IMentorWeights::WEIGHT_*)
 	 */
 	public function getWeight(): int {
 		return $this->weight;
