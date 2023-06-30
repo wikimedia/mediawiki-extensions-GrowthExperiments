@@ -132,7 +132,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 			'stage' => [ 'type' => 'hidden', 'default' => 2 ]
 		];
 		$stage = $req->getInt( 'wpstage', 1 );
-		$this->setMentees( $req->getVal( 'wpmentees' ) );
+		$this->setMentees( $req->getVal( 'wpmentees', '' ) );
 		if ( $stage >= 2 && $this->validateMentees() ) {
 			$fields['stage']['default'] = 3;
 			$fields['confirm'] = [
@@ -213,7 +213,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 		);
 	}
 
-	private function setMentees( $namesRaw = '' ) {
+	private function setMentees( string $namesRaw = '' ) {
 		$names = explode( "\n", $namesRaw );
 		$this->mentees = [];
 
