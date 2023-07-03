@@ -390,7 +390,7 @@
 	"growthexperiments-addlink-summary-title": "Samenvatting",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Suggestie",
 	"growthexperiments-addlink-summary-column-header-linked": "Gelinkt?",
-	"growthexperiments-addlink-summary-copyrightwarning": "Door wijzigingen te publiceren gaat {{GENDER:|u}} akkoord met de [https://foundation.wikimedia.org/wiki/Terms_of_Use gebruiksvoorwaarden] en stemt u ermee in uw bijdrage vrij te geven onder de licenties [https://creativecommons.org/licenses/by-sa/3.0/CC BY-SA 3.0] en [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
+	"growthexperiments-addlink-summary-copyrightwarning": "Door wijzigingen te publiceren gaat {{GENDER:|u}} akkoord met de [https://foundation.wikimedia.org/wiki/Terms_of_Use gebruiksvoorwaarden] en stemt u ermee in uw bijdrage vrij te geven onder de licenties [https://creativecommons.org/licenses/by-sa/3.0/CC BY-SA 3.0] en [https://www.gnu.org/licenses/fdl-1.3.html GFDL 1.3].",
 	"growthexperiments-addlink-summary-summary": "Functie voor linksuggesties: $1 {{PLURAL:$1|link|links}} toegevoegd.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Je hebt}} alle suggesties voor dit artikel overgeslagen.",
 	"growthexperiments-addlink-skip-body": "Weet je zeker dat {{GENDER:|je}} geen suggesties wilt accepteren of afwijzen?",

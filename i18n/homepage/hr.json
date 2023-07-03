@@ -365,7 +365,7 @@
 	"growthexperiments-addlink-summary-title": "Pregled izmjena",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Prijedlog",
 	"growthexperiments-addlink-summary-column-header-linked": "Povezano?",
-	"growthexperiments-addlink-summary-copyrightwarning": "Snimanjem izmjena {{GENDER:|prihvaćate}} naše [https://foundation.wikimedia.org/wiki/Terms_of_Use Uvjete upotrebe], a svoj doprinos objavljujete pod licencijama [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] i [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
+	"growthexperiments-addlink-summary-copyrightwarning": "Snimanjem izmjena {{GENDER:|prihvaćate}} naše [https://foundation.wikimedia.org/wiki/Terms_of_Use Uvjete upotrebe], a svoj doprinos objavljujete pod licencijama [https://creativecommons.org/licenses/by-sa/4.0/ CC BY-SA 4.0] i [https://www.gnu.org/licenses/fdl-1.3.html GFDL 1.3].",
 	"growthexperiments-addlink-summary-summary": "Predložene wikipoveznice: {{PLURAL:$1|dodana $1 poveznica|dodane $1 poveznice|dodano $1 poveznica}}",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Preskočili ste sve prijedloge za ovaj članak.}}",
 	"growthexperiments-addlink-skip-body": "Jeste li sigurni da {{GENDER:|ne želite}} prihvatiti ili odbiti nijedan prijedlog?",
