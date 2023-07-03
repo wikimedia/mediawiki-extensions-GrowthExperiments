@@ -14,6 +14,7 @@
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	props: {
 		/**
 		 * The render mode to use for displaying the app. Can be

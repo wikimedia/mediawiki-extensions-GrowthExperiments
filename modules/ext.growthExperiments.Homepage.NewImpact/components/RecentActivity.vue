@@ -45,6 +45,7 @@ const DATE_FORMAT = { month: 'short', day: 'numeric' };
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CText,
 		StreakGraph
