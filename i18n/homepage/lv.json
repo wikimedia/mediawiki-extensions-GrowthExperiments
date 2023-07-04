@@ -208,6 +208,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20—30 minūtes",
 	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3—5 minūtes",
 	"growthexperiments-homepage-suggestededits-tasktype-time-image-recommendation": "3—5 minūtes",
+	"growthexperiments-homepage-suggestededits-tasktype-time-section-image-recommendation": "10—15 minūtes",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 labojumi",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Viegli",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Vidēji",
@@ -441,6 +442,7 @@
 	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2": "{{GENDER:|Tu}} vari arī palielināt attēlu, lai redzētu to skaidrāk.",
 	"growthexperiments-addimage-onboarding-content-article-title": "Apskati rakstu",
 	"growthexperiments-addimage-onboarding-content-decision-title": "Izlem, vai attēls iederētos",
+	"growthexperiments-addsectionimage-onboarding-content-step4-title": "Izlem, vai attēls iederētos",
 	"growthexperiments-addimage-skip-dialog-title": "Nav pārliecības par šo attēlu?",
 	"growthexperiments-addimage-skip-dialog-body": "Apstiprini, ka {{GENDER:|vēlies}} izlaist šo ieteikumu.",
 	"growthexperiments-addimage-skip-dialog-confirm": "Izlaist ieteikumu",
@@ -489,5 +491,6 @@
 	"growthexperiments-homepage-special-contribute-title": "Ieteiktie labojumi",
 	"growthexperiments-homepage-special-contribute-cta": "Skatīt ieteiktos labojumus",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Sapratu",
-	"growthexperiments-homepage-newimpact-contributions-link": "Skatīt visus labojumus"
+	"growthexperiments-homepage-newimpact-contributions-link": "Skatīt visus labojumus",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Uzzināt vairāk"
 }
