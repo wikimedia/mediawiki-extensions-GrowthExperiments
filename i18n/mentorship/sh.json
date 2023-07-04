@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"BadDog"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentorstva",
@@ -29,5 +30,9 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "nepoznato",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Prikaži $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label": "Ozvjezdaj",
-	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 od $2"
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 od $2",
+	"growthexperiments-rcfilters-mentorship-starred-label": "Vaše označene novajlije",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Novajlije koje ste označili zvjezdicom na mentorskoj tabli",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "Vaše neoznačene novajlije",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Ostale novajlije dodijeljene Vama"
 }

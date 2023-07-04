@@ -44,6 +44,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "いいえ。ウィキペディアが編集できると初めて知りました",
 	"welcomesurvey-question-edited-option-no-other-label": "いいえ。別の理由から編集したことがありません",
 	"welcomesurvey-question-edited-option-dont-remember-label": "覚えていません",
+	"welcomesurvey-question-mailinglist-label": "編集の初歩を知りたいので、メールでコツを教えてほしい。",
+	"welcomesurvey-question-mailinglist-help": "このメーリングリストは MailChimp を採用しており、MailChimp 側で[https://www.intuit.com/privacy/statement/ 個人情報の保護方針]ならびに[https://mailchimp.com/legal/terms/ サービスの条件]に従って {{GENDER:|あなた}}の個人情報を管理します。",
 	"welcomesurvey-question-email-label": "メールアドレス (省略可能)",
 	"welcomesurvey-question-email-placeholder": "{{GENDER:|}}メールアドレスを入力……",
 	"welcomesurvey-question-email-help": "このアカウントを登録したとき、{{GENDER:|}}メールアドレスを入力されなかったようです。ぜひ入力するよう<strong>強くお勧めしており</strong>、パスワードを忘れてしまったときにメールアドレスがないと、アカウントの再利用の手続きができなくなります。注記：他の利用者から連絡を受けた場合、相手にあなたのメールアドレスが伝わることはありません。",
