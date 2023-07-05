@@ -6,6 +6,8 @@
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "مہاندرا",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "ورتݨ ناں",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "تبدیلیاں دی گنتی",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "رجسٹریشن تریخ",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "چھاݨے",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "اپ ݙیٹ",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "تبدیلیاں دی گنتی",
@@ -14,10 +16,14 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "موجودہ ݙینہ",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "موجودہ مہینے",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "ڳولو",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "نامعلوم",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "ݙکھاؤ $1",
+	"growthexperiments-mentor-dashboard-resources-headline": "وسائل",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "ترتیباں",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "متحرک",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "دور",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "منسوخ",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "اجھکو",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ݙیہاڑے"
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ݙیہاڑے",
+	"growthexperiments-notification-body-mentee-claimed": "وجہ: $1"
 }

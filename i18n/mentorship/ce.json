@@ -4,11 +4,11 @@
 			"Умар"
 		]
 	},
-	"growthexperiments-mentor-dashboard-title": "Хьехамхочун панель",
-	"growthexperiments-mentor-dashboard-pt-link": "Хьехамхочун панель",
-	"growthexperiments-mentor-dashboard-disabled": "ХӀокху вики чохь латина йац хьехамхочун панель.",
-	"growthexperiments-mentor-dashboard-must-be-mentor": "Хьехамхочун панель лато, хьалха [[$1|хьехамхо санна дӀайазло]].",
-	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Хьехамхочун панель лелайале хьехамхойн могӀам нисбан беза. Иза кхочушдан куьйгалхочо лело мега [[Special:EditGrowthConfig]].",
+	"growthexperiments-mentor-dashboard-title": "Ӏуьналчан панель",
+	"growthexperiments-mentor-dashboard-pt-link": "Ӏуьналчан панель",
+	"growthexperiments-mentor-dashboard-disabled": "ХӀокху вики чохь латина йац Ӏуьналчан панель.",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Ӏуьналчан панель лато, хьалха [[$1|Ӏуьналча санна дӀайазло]].",
+	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Ӏуьналчан панель лелайале Ӏуьналчийн могӀам нисбан беза. Иза кхочушдан куьйгалхочо лело мега [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Хьо}} тӀехьожурш",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Хьажа {{GENDER:|айхьа}} Ӏуьналла деш болчарга лахахь. Лела де литтарш, уьш гар хийца.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Таблицас йоьху JavaScript. Дехар до, латайе JavaScript, модуль лелайан.",
