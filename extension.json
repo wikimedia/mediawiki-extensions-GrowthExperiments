@@ -2927,11 +2927,11 @@
 		"growthexperimentsuserimpacthandler": {
 			"&can-bypass": true,
 			"anon": [
-				1,
+				5,
 				86400
 			],
 			"user": [
-				1,
+				10,
 				86400
 			]
 		},
