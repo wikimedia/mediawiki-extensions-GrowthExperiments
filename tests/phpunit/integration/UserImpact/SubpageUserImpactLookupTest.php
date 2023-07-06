@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use DateTime;
 use GrowthExperiments\UserImpact\ComputeEditingStreaks;
 use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
@@ -10,7 +9,6 @@ use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpact;
 use JsonContent;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserTimeCorrection;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -33,7 +31,6 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 20 ],
 			1,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			new EditingStreak(
@@ -49,7 +46,6 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			[ '2022-08-24' => 11, '2022-08-25' => 21 ],
 			[ 'copyedit' => 11, 'link-recommendation' => 21 ],
 			2,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			100,
 			wfTimestamp( TS_UNIX, '20200909000000' ),
 			new EditingStreak(),
@@ -62,7 +58,6 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			[ '2022-08-24' => 12, '2022-08-25' => 22 ],
 			[ 'copyedit' => 12, 'link-recommendation' => 22 ],
 			3,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			110,
 			wfTimestamp( TS_UNIX, '20220101000000' ),
 			new EditingStreak(),
