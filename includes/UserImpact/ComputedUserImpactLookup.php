@@ -24,7 +24,7 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserTimeCorrection;
+use MediaWiki\User\UserIdentityValue;
 use MWTimestamp;
 use PageImages\PageImages;
 use Psr\Log\LoggerInterface;
@@ -142,7 +142,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editData->getEditCountByDay(),
 			$editData->getEditCountByTaskType(),
 			$editData->getRevertedEditCount(),
-			$editData->getUserTimeCorrection(),
 			$editData->getNewcomerTaskEditCount(),
 			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
 			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() ),
@@ -193,7 +192,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editData->getEditCountByDay(),
 			$editData->getEditCountByTaskType(),
 			$editData->getRevertedEditCount(),
-			$editData->getUserTimeCorrection(),
 			$editData->getNewcomerTaskEditCount(),
 			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
 			$pageViewData['dailyTotalViews'],
@@ -282,14 +280,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		// T331264
 		$queryBuilder->straightJoinOption();
 
-		$userTimeCorrection = new UserTimeCorrection(
-			UserTimeCorrection::SYSTEM,
-			// Make the time correction object testing friendly - otherwise it would contain a
-			// current-time DateTime object.
-			new DateTime( '@' . ConvertibleTimestamp::time() ),
-			$this->config->get( MainConfigNames::LocalTZoffset )
-		);
-
 		$editCountByNamespace = [];
 		$editCountByDay = [];
 		$revertedEditCount = 0;
@@ -302,7 +292,9 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$linkTarget = new TitleValue( (int)$row->page_namespace, $row->page_title );
 			$titleDbKey = $this->titleFormatter->getPrefixedDBkey( $linkTarget );
 			$editTime = new MWTimestamp( $row->rev_timestamp );
-			$editTime->offsetForUser( $user );
+			// Avoid using registered user timezone preference which can be used to de-anonymize users. Use
+			// empty UserIdentity instead which will fall back to use the wiki's default timezone and local tz offset.
+			$editTime->offsetForUser( new UserIdentityValue( 0, '' ) );
 			$day = $editTime->format( 'Ymd' );
 
 			$editCountByNamespace[$row->page_namespace]
@@ -346,8 +338,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$revertedEditCount,
 			$newcomerTaskEditCount,
 			$lastEditTimestamp,
-			$editedArticles,
-			$userTimeCorrection
+			$editedArticles
 		);
 	}
 

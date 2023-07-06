@@ -7,7 +7,6 @@ use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserTimeCorrection;
 use MediaWikiUnitTestCase;
 
 /**
@@ -24,7 +23,6 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 				[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 				[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 				1,
-				new UserTimeCorrection( 'System|0' ),
 				80,
 				wfTimestamp( TS_UNIX, '20200101000000' ),
 				new EditingStreak(),
@@ -37,7 +35,6 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 				[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 				[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 				1,
-				new UserTimeCorrection( 'System|0' ),
 				90,
 				wfTimestamp( TS_UNIX, '20200909000000' ),
 				[ '2022-08-24' => 100, '2022-08-25' => 150 ],

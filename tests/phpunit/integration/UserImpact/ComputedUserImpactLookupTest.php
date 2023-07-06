@@ -95,23 +95,28 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$testUser = $this->getMutableTestUser();
 		$user = $testUser->getUser();
 		$userIdentity = $testUser->getUserIdentity();
+
 		// UTC+10
 		$this->getServiceContainer()->getUserOptionsManager()->setOption( $userIdentity, 'timecorrection',
 			'ZoneInfo|600|Australia/Sydney' );
+		// UTC+2
+		$this->setMwGlobals( 'wgLocaltimezone', 'UTC' );
+		$this->setMwGlobals( 'wgLocalTZoffset', 120 );
+		// Days should be computed using wikis defaults rather than user preference to avoid sensitive user data leak
 		ConvertibleTimestamp::setFakeTime( '20221001040000' );
 		$status->merge( $this->editPage( 'Test 1', 'test edit', '', NS_MAIN, $user ) );
 		ConvertibleTimestamp::setFakeTime( '20221001050000' );
 		$status->merge( $this->editPage( 'Test 2', 'test edit', '', NS_MAIN, $user ) );
 		ConvertibleTimestamp::setFakeTime( '20221001160000' );
 		$status->merge( $this->editPage( 'Test 3', 'test edit', '', NS_MAIN, $user ) );
-		ConvertibleTimestamp::setFakeTime( '20221001170000' );
+		ConvertibleTimestamp::setFakeTime( '20221001230000' );
 		$status->merge( $this->editPage( 'Test 4', 'test edit', '', NS_MAIN, $user ) );
 
 		/** @var ComputedUserImpactLookup $userImpactLookup */
 		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
 		$userImpact = $userImpactLookup->getUserImpact( $userIdentity );
 
-		$this->assertSame( [ '2022-10-01' => 2, '2022-10-02' => 2 ], $userImpact->getEditCountByDay() );
+		$this->assertSame( [ '2022-10-01' => 3, '2022-10-02' => 1 ], $userImpact->getEditCountByDay() );
 	}
 
 	public function testGetUserImpactExpensive_empty() {

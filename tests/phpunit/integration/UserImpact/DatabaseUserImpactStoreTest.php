@@ -2,12 +2,10 @@
 
 namespace GrowthExperiments\Tests;
 
-use DateTime;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpact;
-use MediaWiki\User\UserTimeCorrection;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -34,7 +32,6 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ '2020-01-01' => 10, '2020-01-02' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 20 ],
 			1,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			10,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			new EditingStreak(),
@@ -51,7 +48,6 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ '2020-01-01' => 20, '2020-01-02' => 30 ],
 			[ 'copyedit' => 20, 'link-recommendation' => 30 ],
 			2,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			20,
 			wfTimestamp( TS_UNIX, '20200102000000' ),
 			new EditingStreak(),
@@ -76,7 +72,6 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ '2020-01-01' => 30, '2020-01-02' => 40 ],
 			[ 'copyedit' => 30, 'link-recommendation' => 40 ],
 			1,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			30,
 			wfTimestamp( TS_UNIX, '20200103000000' ),
 			[ '2020-01-01' => 1000, '2020-01-02' => 2000 ],
@@ -101,7 +96,6 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ '2020-01-01' => 10, '2020-01-02' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 20 ],
 			1,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			10,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			new EditingStreak(),
@@ -114,7 +108,6 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ '2020-01-01' => 15, '2020-01-02' => 25 ],
 			[ 'copyedit' => 15, 'link-recommendation' => 25 ],
 			2,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			15,
 			wfTimestamp( TS_UNIX, '20200101120000' ),
 			new EditingStreak(),

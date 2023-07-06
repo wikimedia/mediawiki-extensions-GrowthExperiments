@@ -6,7 +6,6 @@ use JsonSerializable;
 use LogicException;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserTimeCorrection;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Assert\ParameterAssertionException;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -64,8 +63,6 @@ class UserImpact implements JsonSerializable {
 	 * @param array $editCountByTaskType
 	 * @param int $revertedEditCount Number of edits by the user that got reverted (determined by
 	 * the mw-reverted tag).
-	 * @param UserTimeCorrection $timeZone The timezone used to define what a day means, typically
-	 *   the timezone of the user.
 	 * @param int $newcomerTaskEditCount Number of edits the user made which have the
 	 *   newcomer task tag. Might exclude edits made a long time ago or many edits ago.
 	 * @param int|null $lastEditTimestamp Unix timestamp of the user's last edit.
@@ -79,7 +76,6 @@ class UserImpact implements JsonSerializable {
 		array $editCountByDay,
 		array $editCountByTaskType,
 		int $revertedEditCount,
-		UserTimeCorrection $timeZone,
 		int $newcomerTaskEditCount,
 		?int $lastEditTimestamp,
 		EditingStreak $longestEditingStreak,
@@ -218,7 +214,6 @@ class UserImpact implements JsonSerializable {
 			[],
 			[],
 			0,
-			new UserTimeCorrection( 'System|0' ),
 			0,
 			0,
 			new EditingStreak(),
