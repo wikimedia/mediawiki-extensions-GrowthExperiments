@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalizedPraise NoResult when no mentees 1`] = `
+<section
+  class="ext-growthExperiments-PersonalizedPraise"
+>
+  <p>
+    growthexperiments-mentor-dashboard-personalized-praise-metrics (1,14)
+  </p>
+  <div
+    class="ext-growthExperiments-PersonalizedPraise-Settings"
+  >
+    <button
+      aria-label="growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label"
+      class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--icon-only ext-growthExperiments-PersonalizedPraise-Settings__cogicon"
+    >
+      
+      <span
+        class="cdx-icon cdx-icon--medium"
+      >
+        <svg
+          aria-hidden="true"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!---->
+          <path
+            d=""
+          />
+        </svg>
+      </span>
+      
+    </button>
+    <transition-stub>
+      <!---->
+    </transition-stub>
+  </div>
+  <div
+    class="ext-growthExperiments-NoResults"
+  >
+    <div
+      class="ext-growthExperiments-NoResults__image"
+    />
+    <p>
+      {}
+    </p>
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</section>
+`;
+
+exports[`PersonalizedPraise full data when has mentees 1`] = `
+<section
+  class="ext-growthExperiments-PersonalizedPraise"
+>
+  <p>
+    growthexperiments-mentor-dashboard-personalized-praise-metrics (1,14)
+  </p>
+  <personalized-praise-settings-stub
+    settingsdata="[object Object]"
+  />
+  <!--v-if-->
+  <user-card-stub
+    mentee="[object Object]"
+  />
+  <personalized-praise-pagination-stub
+    currentpage="1"
+    totalpages="1"
+  />
+</section>
+`;
