@@ -46,8 +46,6 @@ module.exports = exports = {
 @import 'mediawiki.skin.variables.less';
 
 .ext-growthExperiments-LegendBox {
-	width: 410px;
-
 	&__list {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
