@@ -142,8 +142,9 @@
 			const mentorTools = this;
 
 			new mw.Api().postWithToken( 'csrf', {
-				action: 'growthsetmentorstatus',
-				gesstatus: 'active'
+				action: 'growthmanagementorlist',
+				geaction: 'change',
+				isaway: false
 			} ).then( function () {
 				mw.notify(
 					mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active' ),
@@ -206,7 +207,7 @@
 		} else {
 			this.$mentorAwayMessage.text( mw.msg(
 				'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message',
-				backtimestamp.human
+				backtimestamp
 			) );
 		}
 	};
