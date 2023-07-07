@@ -31,6 +31,16 @@ module.exports = {
 	],
 	// The directory where Jest should output its coverage files
 	coverageDirectory: 'coverage',
+	// Thresholds specified as a positive number are taken to be the minimum percentage required.
+	// Thresholds specified as a negative number represent the maximum number of uncovered
+	// entities allowed.
+	coverageThreshold: {
+		global: {
+			branches: 30.5,
+			functions: 32.7,
+			lines: 42.4
+		}
+	},
 	// A list of paths to directories that Jest should use to search for files in.
 	roots: [
 		'./modules/ext.growthExperiments.MentorDashboard',

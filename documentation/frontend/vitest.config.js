@@ -9,6 +9,16 @@ module.exports = exports = defineConfig( {
 	test: {
 		environment: 'jsdom',
 		globals: true,
-		setupFiles: [ 'tests/setup.js' ]
+		setupFiles: [ 'tests/setup.js' ],
+		coverage: {
+			include: [
+				'components/**/*.vue'
+			],
+			all: true,
+			lines: 78.1,
+			functions: 63.8,
+			branches: 91.1,
+			statements: 78.1
+		}
 	}
 } );
