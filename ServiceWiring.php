@@ -1110,6 +1110,7 @@ return [
 		MediaWikiServices $services
 	): UserDatabaseHelper {
 		return new UserDatabaseHelper(
+			$services->getUserFactory(),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
 		);
 	},

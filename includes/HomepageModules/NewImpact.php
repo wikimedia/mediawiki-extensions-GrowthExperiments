@@ -31,6 +31,7 @@ class NewImpact extends BaseModule {
 	/** @var array|null|false Lazy-loaded if false */
 	private $formattedUserImpact = false;
 	private bool $forceShowingForOther = false;
+	private ?array $hasMainspaceEditsCache = null;
 
 	/**
 	 * @param IContextSource $ctx
@@ -327,7 +328,9 @@ class NewImpact extends BaseModule {
 	 */
 	public function getState() {
 		if ( $this->canRender()
-			&& $this->getContext()->getUser()->getEditCount()
+			// On null (first 1000 edits are non-mainspace) assume rest are non-mainspace as well
+			// (chances are it's some kind of bot or role account).
+			&& $this->hasMainspaceEdits()
 			// Always show the module activated when a user is looking to another user data
 			|| $this->shouldShowForOtherUser()
 		) {
@@ -414,4 +417,15 @@ class NewImpact extends BaseModule {
 		return $this->formattedUserImpact;
 	}
 
+	/** @return bool|null */
+	private function hasMainspaceEdits(): ?bool {
+		// The cache has four states: true/false/null (valid hasMainspaceEdits() return values)
+		// and uninitialized. Use an array hack to differentiate.
+		if ( !$this->hasMainspaceEditsCache ) {
+			$this->hasMainspaceEditsCache = [
+				$this->userDatabaseHelper->hasMainspaceEdits( $this->userIdentity ),
+			];
+		}
+		return $this->hasMainspaceEditsCache[0];
+	}
 }
