@@ -17,6 +17,7 @@
 	"apihelp-query+growthimagesuggestiondata-param-tasktype": "{{doc-apihelp-param|growthimagesuggestiondata|tasktype}}",
 	"apihelp-growthinvalidateimagerecommendation-summary": "{{doc-apihelp-summary|growthinvalidateimagerecommendation}}",
 	"apihelp-growthinvalidateimagerecommendation-extended-description": "{{doc-apihelp-extended-description|growthimagesuggestiondata}}",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "Message to show in API response if the requested task is not present in the Community configuration\n\nParameters:\n* $1 - requested task type's ID",
 	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "{{doc-apihelp-param|growthinvalidateimagerecommendation|tasktype}}",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "{{doc-apihelp-param|growthinvalidateimagerecommendation|title}}",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "{{doc-apihelp-param|growthinvalidateimagerecommendation|filename}}",

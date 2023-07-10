@@ -71,6 +71,14 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		$allTaskTypes = $this->configurationLoader->getTaskTypes()
 			+ $this->configurationLoader->getDisabledTaskTypes();
 		$taskType = $allTaskTypes[$params['tasktype']] ?? null;
+
+		if ( $taskType === null ) {
+			$this->dieWithError(
+				[ 'growthexperiments-homepage-imagesuggestiondata-not-in-config', $params['tasktype'] ],
+				'not-in-config'
+			);
+		}
+
 		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
 		'@phan-var ImageRecommendationBaseTaskType $taskType';
 
