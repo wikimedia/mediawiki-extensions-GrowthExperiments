@@ -13,7 +13,8 @@
 			"MrJaroslavik",
 			"Patrik L.",
 			"Chadyka",
-			"Kendo13"
+			"Kendo13",
+			"Zoji"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",
@@ -276,7 +277,7 @@
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Změnil|Změnila|Změnil(a)}} jste mentora {{GENDER:$1|uživatele|uživatelky}} $4 na {{GENDER:$3|uživatele|uživatelku}} $5.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Mentor {{GENDER:$1|uživatele|uživatelky}} $1 již byl změněn. Jste si {{GENDER:$2|jist|jistá}} tím, že ho chcete změnit znovu?",
 	"growthexperiments-claimmentee-confirm": "Ano, opravdu chci mentora změnit",
-	"growthexperiments-log-name": "Protokolovací kniha rozšíření GrowthExperiments",
+	"growthexperiments-log-name": "Kniha rozšíření GrowthExperiments",
 	"growthexperiments-log-header": "Toto je kniha událostí pocházející z rozšíření GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|se stal mentorem|se stala mentorkou}} {{GENDER:$6|uživatele|uživatelky}} $3 (předchozí {{GENDER:$4|mentor|mentorka}} $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|se stal mentorem|se stala mentorkou}} {{GENDER:$6|uživatele|uživatelky}} $3 (mentor nebyl nastaven)",

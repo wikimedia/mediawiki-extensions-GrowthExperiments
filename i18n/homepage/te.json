@@ -3,7 +3,9 @@
 		"authors": [
 			"Veeven",
 			"AVVK Chaitanya",
-			"Chaduvari"
+			"Chaduvari",
+			"Bvprasadenwiki",
+			"V Bhavya"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{bidi:$1}} గారూ, {{GENDER:$1|స్వాగతం}}!",
@@ -134,6 +136,11 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "దిద్దుబాటు సూచనల కోసం ఇతర ఆసక్తులను లేదా క్లిష్టత స్థాయిలను ఎంచుకోండి.",
 	"growthexperiments-homepage-suggestededits-footer": "ఈ వ్యాసాల్లో చెయ్యాల్సిన పనులు కొన్ని ఉన్నాయని ఇతర వాడుకరులు గుర్తించారు. '''{{SITENAME}}''', దాని '''$1 మంది పాఠకుల''' కోసం రోజురోజుకూ అభివృద్ధి చెందడంలో సాయపడండి.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "ఈ వ్యాసాల్లో చెయ్యాల్సిన పనులు ఉన్నాయని ఇతర వాడుకరులు గుర్తించారు. '''{{SITENAME}}''' ను మెరుగుపరచడంలో సాయపడండి.",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
+	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1K",
+	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
+	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1B",
+	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "కిందటి రోజు జరిగిన దిద్దుబాట్లు",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "మీవంటి స్వచ్ఛంద సేవకులు {{SITENAME}}ను ఈరోజు మెరుగుపరచడంలో తోడ్పడ్డారు. మీరు చేరండి!",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "అక్షరక్రమం, వ్యాకరణం, ధ్వని లను సవరించండి",

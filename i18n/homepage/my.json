@@ -4,7 +4,8 @@
 			"Dr Lotus Black",
 			"NayiMuu",
 			"Ninjastrikers",
-			"Phosai"
+			"Phosai",
+			"Msuantak"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|မင်္ဂလာပါ}}၊ {{bidi:$1}}။",
@@ -23,6 +24,7 @@
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|သင်၏}} အီးမေးလ်ကို အတည်ပြုရန်",
 	"growthexperiments-homepage-email-header-confirmed": "အီးမေးလ် ပေါင်းထည့်ခဲ့သည်",
 	"growthexperiments-homepage-email-text-noemail": "အကောင့်ပြန်လည်ရယူရန်အတွက် အကြံပြုထားသည်",
+	"growthexperiments-homepage-email-text-unconfirmed": "အတည်ပြု လင့်ခ် သို့မဟုတ် လင့်ခ်အသစ် ပေးပို့ရန်အတွက် {{GENDER:$1|သင့်}} အီးမေးလ်အား စစ်ဆေးပါ။",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|သင်၏}} အီးမေးလ်ကို အတည်ပြုပြီးပါပြီ။ အီးမေးလ်အပြင်အဆင်များကို ရွေးချယ်စရာများထဲတွင် ပြောင်းလဲနိုင်ပါသည်။",
 	"growthexperiments-homepage-email-button-noemail": "အီးမေးလ်ပေါင်းထည့်ရန်",
 	"growthexperiments-homepage-email-button-unconfirmed": "လင့်ခ်အသစ် ရယူရန်",
