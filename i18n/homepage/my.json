@@ -4,7 +4,8 @@
 			"Dr Lotus Black",
 			"NayiMuu",
 			"Ninjastrikers",
-			"Phosai"
+			"Phosai",
+			"Msuantak"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|မင်္ဂလာပါ}}၊ {{bidi:$1}}။",
@@ -18,6 +19,7 @@
 	"growthexperiments-homepage-email-header-confirmed": "အီးမေးလ် ပေါင်းထည့်ခဲ့သည်",
 	"growthexperiments-homepage-email-header-startemail": "အီးမေးလ်: $1",
 	"growthexperiments-homepage-email-text-noemail": "အကောင့်ပြန်လည်ရယူရန်အတွက် အကြံပြုထားသည်",
+	"growthexperiments-homepage-email-text-unconfirmed": "အတည်ပြု လင့်ခ် သို့မဟုတ် လင့်ခ်အသစ် ပေးပို့ရန်အတွက် {{GENDER:$1|သင့်}} အီးမေးလ်အား စစ်ဆေးပါ။",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|သင်၏}} အီးမေးလ်ကို အတည်ပြုပြီးပါပြီ။ အီးမေးလ်အပြင်အဆင်များကို ရွေးချယ်စရာများထဲတွင် ပြောင်းလဲနိုင်ပါသည်။",
 	"growthexperiments-homepage-email-button-noemail": "အီးမေးလ်ပေါင်းထည့်ရန်",
 	"growthexperiments-homepage-email-button-unconfirmed": "လင့်ခ်အသစ် ရယူရန်",
@@ -225,6 +227,7 @@
 	"log-action-filter-growthexperiments-addlink": "လင့်ခ် အကြံပြုချက်များ",
 	"log-action-filter-growthexperiments-addimage": "ရုပ်ပုံ အကြံပြုချက်များ",
 	"growthexperiments-notification-body-mentor-change": "အကြောင်းပြချက်: $1",
+	"action-enrollasmentor": "နည်းပြအဖြစ် စာရင်းသွင်းပါ။",
 	"growthexperiments-homepage-suggestededits-more-info": "အကြံပေးထားသောတည်းဖြတ်မှုများနှင့်ပတ်သက်၍ ပိုမိုသည့်သတင်းအချက်အလက်",
 	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|သင်၏}}ဗဟိုစာမျက်နှာမှ ကြိုဆိုပါသည်",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "ဆက်လက်",

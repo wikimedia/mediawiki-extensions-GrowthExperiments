@@ -13,7 +13,8 @@
 			"לואיקה",
 			"מגזין יהלום",
 			"Dee",
-			"Tgr"
+			"Tgr",
+			"Neriah"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|שלום}}, {{bidi:$1}}!",
@@ -317,7 +318,7 @@
 	"growthexperiments-homepage-claimmentee-mentee": "שם המשתמש של החניך",
 	"growthexperiments-homepage-claimmentee-reason": "סיבה לקליטת החניך הזה",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|שינית}} את החונך של {{PLURAL:$2|המשתמש|המשתמשים}} $1 ל{{GRAMMAR:תחילית|{{GENDER:$4|$5}}}}. חזרה ל[[Special:MentorDashboard|לוח הבקרה לחונכים]].",
-	"growthexperiments-homepage-claimmentee-alreadychanged": "החונך של $1 כבר שוּנה. האם {{GENDER:$2|אתה בטוח שאתה|את בטוחה שאת}} רוצה לשנות אותו שוב?",
+	"growthexperiments-homepage-claimmentee-alreadychanged": "החונך של $1 כבר שונה. האם {{GENDER:$2|אתה בטוח שאתה|את בטוחה שאת}} רוצה לשנות אותו שוב?",
 	"growthexperiments-claimmentee-confirm": "כן, אני באמת רוצה לשנות את {{GENDER:|החונך|החונכת}}",
 	"growthexperiments-log-name": "יומן GrowthExperiments",
 	"growthexperiments-log-header": "זהו יומן של פעולות שנעשו בהרחבה GrowthExperiments.",
