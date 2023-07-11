@@ -12,7 +12,7 @@ exports[`PersonalizedPraise NoResult when no mentees 1`] = `
   >
     <button
       aria-label="growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label"
-      class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--icon-only ext-growthExperiments-PersonalizedPraise-Settings__cogicon"
+      class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium cdx-button--icon-only ext-growthExperiments-PersonalizedPraise-Settings__cogicon"
     >
       
       <span
