@@ -14,7 +14,7 @@ exports[`CPopper should render with a close button 1`] = `
     >
       <button
         aria-label="Some label"
-        class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--icon-only ext-growthExperiments-CPopper__popover__close-button"
+        class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium cdx-button--icon-only ext-growthExperiments-CPopper__popover__close-button"
       >
         
         <span

@@ -66,7 +66,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
         
         <button
           alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title"
-          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--framed"
+          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
         >
           
           localised-1
@@ -74,7 +74,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
         </button>
         <button
           alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title"
-          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--framed"
+          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
         >
           
           localised-7
@@ -82,7 +82,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
         </button>
         <button
           alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title"
-          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--framed"
+          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
         >
           
           localised-14
@@ -103,7 +103,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
         
         <button
           alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title"
-          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--framed"
+          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
         >
           
           localised-1
@@ -111,7 +111,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
         </button>
         <button
           alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title"
-          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--framed"
+          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
         >
           
           localised-2
@@ -119,7 +119,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
         </button>
         <button
           alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title"
-          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--framed"
+          class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
         >
           
           localised-6
@@ -161,7 +161,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
     class="ext-growthExperiments-MenteeFiltersForm__form-group ext-growthExperiments-MenteeFiltersForm__form-actions"
   >
     <button
-      class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--framed ext-growthExperiments-utils__pull-right"
+      class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed ext-growthExperiments-utils__pull-right"
       form="mentee-filters-form"
     >
       
