@@ -21,7 +21,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UserImpact implements JsonSerializable {
 
 	/** Cache version, to be increased when breaking backwards compatibility. */
-	public const VERSION = 7;
+	public const VERSION = 8;
 
 	/** @var UserIdentity */
 	private $user;
@@ -34,6 +34,8 @@ class UserImpact implements JsonSerializable {
 
 	/** @var int[] */
 	private $editCountByDay;
+
+	private int $revertedEditCount;
 
 	/** @var int */
 	private $newcomerTaskEditCount;
@@ -57,6 +59,8 @@ class UserImpact implements JsonSerializable {
 	 * @param int[] $editCountByDay Day => number of edits the user made on that day. Indexed with
 	 *   ISO 8601 dates, e.g. '2022-08-25'. Might exclude edits made many edits ago.
 	 * @param array $editCountByTaskType
+	 * @param int $revertedEditCount Number of edits by the user that got reverted (determined by
+	 * the mw-reverted tag).
 	 * @param UserTimeCorrection $timeZone The timezone used to define what a day means, typically
 	 *   the timezone of the user.
 	 * @param int $newcomerTaskEditCount Number of edits the user made which have the
@@ -70,6 +74,7 @@ class UserImpact implements JsonSerializable {
 		array $editCountByNamespace,
 		array $editCountByDay,
 		array $editCountByTaskType,
+		int $revertedEditCount,
 		UserTimeCorrection $timeZone,
 		int $newcomerTaskEditCount,
 		?int $lastEditTimestamp,
@@ -80,6 +85,7 @@ class UserImpact implements JsonSerializable {
 		$this->editCountByNamespace = $editCountByNamespace;
 		$this->editCountByDay = $editCountByDay;
 		$this->editCountByTaskType = $editCountByTaskType;
+		$this->revertedEditCount = $revertedEditCount;
 		$this->newcomerTaskEditCount = $newcomerTaskEditCount;
 		$this->lastEditTimestamp = $lastEditTimestamp;
 		$this->generatedAt = ConvertibleTimestamp::time();
@@ -151,6 +157,14 @@ class UserImpact implements JsonSerializable {
 	}
 
 	/**
+	 * Number of total edits by the user that got reverted.
+	 * @return int
+	 */
+	public function getRevertedEditCount(): int {
+		return $this->revertedEditCount;
+	}
+
+	/**
 	 * Unix timestamp of the user's last edit, or null if the user has zero edits.
 	 * @return int|null
 	 */
@@ -195,6 +209,7 @@ class UserImpact implements JsonSerializable {
 			[],
 			[],
 			[],
+			0,
 			new UserTimeCorrection( 'System|0' ),
 			0,
 			0,
@@ -240,6 +255,7 @@ class UserImpact implements JsonSerializable {
 		$this->editCountByNamespace = $json['editCountByNamespace'];
 		$this->editCountByDay = $json['editCountByDay'];
 		$this->editCountByTaskType = $json['editCountByTaskType'];
+		$this->revertedEditCount = $json['revertedEditCount'];
 		$this->newcomerTaskEditCount = $json['newcomerTaskEditCount'];
 		$this->lastEditTimestamp = $json['lastEditTimestamp'];
 		$this->generatedAt = $json['generatedAt'];
@@ -270,6 +286,7 @@ class UserImpact implements JsonSerializable {
 			'editCountByNamespace' => $this->editCountByNamespace,
 			'editCountByDay' => $this->editCountByDay,
 			'editCountByTaskType' => $this->editCountByTaskType,
+			'revertedEditCount' => $this->revertedEditCount,
 			'newcomerTaskEditCount' => $this->newcomerTaskEditCount,
 			'lastEditTimestamp' => $this->lastEditTimestamp,
 			'generatedAt' => $this->generatedAt,

@@ -57,6 +57,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
       <!--v-if-->
     </div>
   </div>
+  <!--v-if-->
   <div
     class="ext-growthExperiments-ScoreCard"
   >
@@ -344,6 +345,7 @@ exports[`ScoreCards renders correctly without data 1`] = `
       <!--v-if-->
     </div>
   </div>
+  <!--v-if-->
   <div
     class="ext-growthExperiments-ScoreCard"
   >

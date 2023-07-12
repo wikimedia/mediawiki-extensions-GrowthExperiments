@@ -79,6 +79,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 					'2022-08-25' => 1
 				],
 				[ 'copyedit' => 1, 'link-recommendation' => 1 ],
+				1,
 				new UserTimeCorrection( 'ZoneInfo|660|Australia/Sydney' ),
 				2,
 				wfTimestamp( TS_UNIX, '20220825000000' ),

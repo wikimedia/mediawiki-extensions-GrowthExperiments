@@ -96,7 +96,7 @@ class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 		$oldTime = MWTimestamp::setFakeTime( $generatedAt );
 		$userImpact = new ExpensiveUserImpact(
 			UserIdentityValue::newRegistered( $userId, "User$userId" ),
-			0, [], [], [],
+			0, [], [], [], 0,
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			0, null, [], [], new EditingStreak()
 		);

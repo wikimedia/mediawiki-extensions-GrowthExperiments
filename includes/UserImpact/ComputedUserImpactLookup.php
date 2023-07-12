@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\UserImpact;
 
+use ChangeTags;
 use DateTime;
 use DBAccessObjectUtils;
 use ExtensionRegistry;
@@ -144,6 +145,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editData->getEditCountByNamespace(),
 			$editData->getEditCountByDay(),
 			$editData->getEditCountByTaskType(),
+			$editData->getRevertedEditCount(),
 			$editData->getUserTimeCorrection(),
 			$editData->getNewcomerTaskEditCount(),
 			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
@@ -193,6 +195,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editData->getEditCountByNamespace(),
 			$editData->getEditCountByDay(),
 			$editData->getEditCountByTaskType(),
+			$editData->getRevertedEditCount(),
 			$editData->getUserTimeCorrection(),
 			$editData->getNewcomerTaskEditCount(),
 			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
@@ -216,25 +219,43 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 */
 	private function getEditData( User $user, int $flags ): EditData {
 		[ $index, $options ] = DBAccessObjectUtils::getDBOptions( $flags );
-		$changeTagNames = $this->taskTypeHandlerRegistry->getUniqueChangeTags();
 		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
+
 		$queryBuilder = new SelectQueryBuilder( $db );
 		$queryBuilder->table( 'revision' )
 			->join( 'page', null, 'rev_page = page_id' );
+
+		$taskChangeTagNames = $this->taskTypeHandlerRegistry->getUniqueChangeTags();
+		$additionalChangeTagNames = [
+			ChangeTags::TAG_REVERTED
+		];
+
+		$changeTagNames = array_merge( $taskChangeTagNames, $additionalChangeTagNames );
 		$changeTagIds = [];
+		$changeTagIdToName = [];
 		foreach ( $changeTagNames as $changeTagName ) {
 			try {
-				$taskTypeHandlerId = $this->taskTypeHandlerRegistry->getTaskTypeHandlerIdByChangeTagName(
-					$changeTagName
-				);
-				if ( !$taskTypeHandlerId ) {
-					// In theory shouldn't be possible, given that the change tag names originate from the
-					// task type handler registry. Adding this to make phan happy.
-					throw new LogicException( "Unable to find task type handler ID for change tag \"$changeTagName\"" );
+				// Presume the tag is not related to a task; set $taskTypeId to the task type ID
+				// if it is.
+				$taskTypeId = null;
+				if ( in_array( $changeTagName, $taskChangeTagNames ) ) {
+					$taskTypeHandlerId = $this->taskTypeHandlerRegistry->getTaskTypeHandlerIdByChangeTagName(
+						$changeTagName
+					);
+					if ( !$taskTypeHandlerId ) {
+						// In theory shouldn't be possible, given that the change tag names originate from the
+						// task type handler registry. Adding this to make phan happy.
+						throw new LogicException(
+							"Unable to find task type handler ID for change tag \"$changeTagName\""
+						);
+					}
+					$taskTypeHandler = $this->taskTypeHandlerRegistry->get( $taskTypeHandlerId );
+					$taskTypeId = $taskTypeHandler->getTaskTypeIdByChangeTagName( $changeTagName );
 				}
-				$taskTypeHandler = $this->taskTypeHandlerRegistry->get( $taskTypeHandlerId );
-				$taskTypeId = $taskTypeHandler->getTaskTypeIdByChangeTagName( $changeTagName );
-				$changeTagIds[$this->changeTagDefStore->getId( $changeTagName )] = $taskTypeId;
+
+				$tagId = $this->changeTagDefStore->getId( $changeTagName );
+				$changeTagIds[$tagId] = $taskTypeId;
+				$changeTagIdToName[$tagId] = $changeTagName;
 			} catch ( NameTableAccessException $nameTableAccessException ) {
 				// Some tags won't exist in test scenarios, and possibly in some small wikis where
 				// no suggested edits have been done yet. We can safely ignore the exception,
@@ -271,6 +292,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 		$editCountByNamespace = [];
 		$editCountByDay = [];
+		$revertedEditCount = 0;
 		$editCountByTaskType = array_fill_keys( array_keys( $this->configurationLoader->getTaskTypes() ), 0 );
 		$newcomerTaskEditCount = 0;
 		$lastEditTimestamp = null;
@@ -287,13 +309,19 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				= ( $editCountByNamespace[$row->page_namespace] ?? 0 ) + 1;
 			$editCountByDay[$day] = ( $editCountByDay[$day] ?? 0 ) + 1;
 			if ( $row->ct_tag_id ?? null ) {
-				$newcomerTaskEditCount++;
 				$taskTypeId = $changeTagIds[$row->ct_tag_id];
-				if ( $taskTypeId && !isset( $editCountByTaskType[$taskTypeId] ) ) {
-					$editCountByTaskType[$taskTypeId] = 0;
+				if ( $taskTypeId ) {
+					$newcomerTaskEditCount++;
+					if ( !isset( $editCountByTaskType[$taskTypeId] ) ) {
+						$editCountByTaskType[$taskTypeId] = 0;
+					}
+					$editCountByTaskType[$taskTypeId]++;
 				}
-				// @phan-suppress-next-line PhanTypeMismatchDimFetchNullable False positive
-				$editCountByTaskType[$taskTypeId]++;
+
+				$changeTagName = $changeTagIdToName[$row->ct_tag_id];
+				if ( $changeTagName === ChangeTags::TAG_REVERTED ) {
+					$revertedEditCount++;
+				}
 			}
 			$lastEditTimestamp ??= $row->rev_timestamp;
 			// Computed values $editCountByNamespace, $editCountByDay, $newcomerTaskEditCount and $lastEditTimestamp
@@ -315,6 +343,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editCountByNamespace,
 			array_reverse( $this->updateToIso8601DateKeys( $editCountByDay ) ),
 			$editCountByTaskType,
+			$revertedEditCount,
 			$newcomerTaskEditCount,
 			$lastEditTimestamp,
 			$editedArticles,

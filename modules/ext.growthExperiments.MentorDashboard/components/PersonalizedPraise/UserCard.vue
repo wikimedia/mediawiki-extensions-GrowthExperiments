@@ -23,6 +23,12 @@
 		:user-name="mentee.userName"
 		:data="mentee"
 		:render-third-person="true"
+		:score-cards="[
+			'edit-count',
+			'reverted-edit-count',
+			'thanks-count',
+			'best-streak'
+		]"
 	></c-score-cards>
 	<cdx-button
 		class="ext-growthExperiments-PersonalizedPraise__praise_button"

@@ -858,6 +858,7 @@
 			],
 			"messages": [
 				"growthexperiments-homepage-impact-scores-edit-count",
+				"growthexperiments-homepage-impact-scores-reverted-edit-count",
 				"growthexperiments-homepage-impact-scores-thanks-count",
 				"growthexperiments-homepage-impact-scores-over-limit",
 				"growthexperiments-homepage-impact-scores-best-streak-info-text",
@@ -2045,6 +2046,7 @@
 				"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel",
 				"growthexperiments-mentor-dashboard-personalized-praise-settings-success",
 				"growthexperiments-homepage-impact-scores-edit-count",
+				"growthexperiments-homepage-impact-scores-reverted-edit-count",
 				"growthexperiments-homepage-impact-scores-thanks-count",
 				"growthexperiments-homepage-impact-scores-over-limit",
 				"growthexperiments-homepage-impact-scores-best-streak-info-text",

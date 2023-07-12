@@ -73,6 +73,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Views on articles {{GENDER:$1|you've}} edited",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Views on articles edited",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total edits",
+	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Reverted edits",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Thanks received",
 	"growthexperiments-homepage-impact-scores-over-limit": "999+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "More information about how thanks works",

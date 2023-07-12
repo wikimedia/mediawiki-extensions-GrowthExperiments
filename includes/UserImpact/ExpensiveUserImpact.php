@@ -31,6 +31,8 @@ class ExpensiveUserImpact extends UserImpact {
 	 * @param int[] $editCountByDay Day => number of edits the user made on that day. Indexed with
 	 *   ISO 8601 dates, e.g. '2022-08-25'. Might exclude edits made many edits ago.
 	 * @param array<string,int> $editCountByTaskType Number of newcomer task edits per task type.
+	 * @param int $revertedEditCount Number of edits by the user that got reverted (determined by
+	 * the mw-reverted tag).
 	 * @param UserTimeCorrection $timeZone The timezone used to define what a day means, typically
 	 *   the timezone of the user.
 	 * @param int $newcomerTaskEditCount Number of edits the user made which have the
@@ -48,6 +50,7 @@ class ExpensiveUserImpact extends UserImpact {
 		array $editCountByNamespace,
 		array $editCountByDay,
 		array $editCountByTaskType,
+		int $revertedEditCount,
 		UserTimeCorrection $timeZone,
 		int $newcomerTaskEditCount,
 		?int $lastEditTimestamp,
@@ -56,7 +59,8 @@ class ExpensiveUserImpact extends UserImpact {
 		EditingStreak $longestEditingStreak
 	) {
 		parent::__construct( $user, $receivedThanksCount, $editCountByNamespace, $editCountByDay,
-			$editCountByTaskType, $timeZone, $newcomerTaskEditCount, $lastEditTimestamp, $longestEditingStreak );
+			$editCountByTaskType, $revertedEditCount, $timeZone, $newcomerTaskEditCount,
+			$lastEditTimestamp, $longestEditingStreak );
 		$this->dailyTotalViews = $dailyTotalViews;
 		$this->dailyArticleViews = $dailyArticleViews;
 	}
@@ -99,6 +103,7 @@ class ExpensiveUserImpact extends UserImpact {
 			[],
 			[],
 			[],
+			0,
 			new UserTimeCorrection( 'System|0' ),
 			0,
 			0,

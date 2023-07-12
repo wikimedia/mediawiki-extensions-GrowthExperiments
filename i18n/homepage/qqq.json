@@ -94,6 +94,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Text for the label by the side of the cumulative total count of views on edited articles in the impact module.\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Third person text for the label by the side of the cumulative total count of views on edited articles in the impact module.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "Label for the newcomer homepage impact module, which shows the total number of edits.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Label for the impact module, which shows the total number of reverted edits.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Label for the newcomer homepage impact module, which shows the total number of thanks received.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-impact-scores-over-limit": "Text to use instead of the actual number when the user has 1000 or more edits or thanks.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Accessible text for the thanks received informational icon.\n\n{{doc-growthexperiments-homepage}}",

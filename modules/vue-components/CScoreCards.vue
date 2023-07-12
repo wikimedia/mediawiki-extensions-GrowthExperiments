@@ -1,6 +1,7 @@
 <template>
 	<div class="ext-growthExperiments-ScoreCards">
 		<c-score-card
+			v-if="scoreCards.includes( 'edit-count' )"
 			:icon="cdxIconEdit"
 			:label="$i18n( 'growthexperiments-homepage-impact-scores-edit-count' ).text()"
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-edit-count' ).text()"
@@ -16,6 +17,23 @@
 			</c-text>
 		</c-score-card>
 		<c-score-card
+			v-if="scoreCards.includes( 'reverted-edit-count' )"
+			:icon="cdxIconEditUndo"
+			:label="$i18n( 'growthexperiments-homepage-impact-scores-reverted-edit-count' ).text()"
+			:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-reverted-edit-count' ).text()"
+		>
+			<c-text size="md" weight="bold">
+				<a
+					:href="revertsUrl"
+					class="ext-growthExperiments-ScoreCards__link"
+					data-link-id="impact-reverted-edits"
+				>
+					{{ revertedEditsCount }}
+				</a>
+			</c-text>
+		</c-score-card>
+		<c-score-card
+			v-if="scoreCards.includes( 'thanks-count' )"
 			:icon="cdxIconUserTalk"
 			:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
@@ -51,6 +69,7 @@
 			</template>
 		</c-score-card>
 		<c-score-card
+			v-if="scoreCards.includes( 'last-edit' )"
 			:icon="cdxIconClock"
 			:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' ).text()"
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-last-edit-text' ).text()"
@@ -63,6 +82,7 @@
 			</c-text>
 		</c-score-card>
 		<c-score-card
+			v-if="scoreCards.includes( 'best-streak' )"
 			:icon="cdxIconChart"
 			:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
@@ -105,6 +125,7 @@ const CScoreCard = require( './CScoreCard.vue' );
 const CText = require( './CText.vue' );
 const {
 	cdxIconEdit,
+	cdxIconEditUndo,
 	cdxIconUserTalk,
 	cdxIconClock,
 	cdxIconChart,
@@ -147,6 +168,27 @@ module.exports = exports = {
 			default: false
 		},
 		/**
+		 * List of score cards that should be included
+		 *
+		 * Supported values:
+		 *   * edit-count
+		 *   * reverted-edit-count
+		 *   * thanks-count
+		 *   * last-edit
+		 *   * best-streak
+		 */
+		scoreCards: {
+			type: Array,
+			default: () => {
+				return [
+					'edit-count',
+					'thanks-count',
+					'last-edit',
+					'best-streak'
+				];
+			}
+		},
+		/**
 		 * JavaScript representation of the UserImpact PHP object
 		 */
 		data: {
@@ -158,6 +200,7 @@ module.exports = exports = {
 	setup() {
 		return {
 			cdxIconEdit,
+			cdxIconEditUndo,
 			cdxIconUserTalk,
 			cdxIconClock,
 			cdxIconChart,
@@ -172,6 +215,12 @@ module.exports = exports = {
 				return this.$i18n( 'growthexperiments-homepage-impact-scores-over-limit' );
 			}
 			return this.$filters.convertNumber( this.data.totalEditsCount );
+		},
+		revertedEditsCount() {
+			if ( !this.data ) {
+				return NO_DATA_CHARACTER;
+			}
+			return this.$filters.convertNumber( this.data.revertedEditCount );
 		},
 		receivedThanksCount() {
 			if ( !this.data ) {
@@ -270,6 +319,11 @@ module.exports = exports = {
 		},
 		contributionsUrl() {
 			return mw.util.getUrl( `Special:Contributions/${this.userName}` );
+		},
+		revertsUrl() {
+			return mw.util.getUrl( `Special:Contributions/${this.userName}`, {
+				tagfilter: 'mw-reverted'
+			} );
 		},
 		thanksUrl() {
 			return mw.util.getUrl( 'Special:Log', {

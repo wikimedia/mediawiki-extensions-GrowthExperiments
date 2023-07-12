@@ -22,6 +22,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			[ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
+			1,
 			new UserTimeCorrection( 'System|0' ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
@@ -31,6 +32,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 10, $userImpact->getReceivedThanksCount() );
 		$this->assertSame( [ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 			$userImpact->getEditCountByNamespace() );
+		$this->assertSame( 1, $userImpact->getRevertedEditCount() );
 		$this->assertSame( 100, $userImpact->getEditCountIn( NS_MAIN ) );
 		$this->assertSame( 80, $userImpact->getNewcomerTaskEditCount() );
 		$this->assertSame( (int)wfTimestamp( TS_UNIX, '20200101000000' ), $userImpact->getLastEditTimestamp() );
@@ -45,6 +47,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			[ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
+			1,
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),

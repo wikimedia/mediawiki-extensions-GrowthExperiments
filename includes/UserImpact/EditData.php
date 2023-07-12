@@ -10,11 +10,12 @@ use MediaWiki\User\UserTimeCorrection;
 class EditData {
 	private array $editCountByNamespace;
 	private array $editCountByDay;
+	private array $editCountByTaskType;
+	private int $revertedEditCount;
 	private int $newcomerTaskEditCount;
 	private ?string $lastEditTimestamp;
 	private array $editedArticles;
 	private UserTimeCorrection $userTimeCorrection;
-	private array $editCountByTaskType;
 
 	/**
 	 * @param int[] $editCountByNamespace Number of edits made by the user per namespace ID.
@@ -22,6 +23,8 @@ class EditData {
 	 *   by day. The format matches {@see UserImpact::getEditCountByDay()}.
 	 * @param array<string,int> $editCountByTaskType Number of newcomer task edits per task type
 	 *  {@see UserImpact::getEditCountByTaskType()}.
+	 * @param int $revertedEditCount Number of edits by the user that got reverted (determined by
+	 * the mw-reverted tag).
 	 * @param int $newcomerTaskEditCount Number of edits with "newcomer task" tag (suggested edits).
 	 * @param string|null $lastEditTimestamp MW_TS date of last article-space edit.
 	 * @param array[] $editedArticles List of article-space titles the user has edited, sorted from
@@ -34,6 +37,7 @@ class EditData {
 		array $editCountByNamespace,
 		array $editCountByDay,
 		array $editCountByTaskType,
+		int $revertedEditCount,
 		int $newcomerTaskEditCount,
 		?string $lastEditTimestamp,
 		array $editedArticles,
@@ -41,11 +45,12 @@ class EditData {
 	) {
 		$this->editCountByNamespace = $editCountByNamespace;
 		$this->editCountByDay = $editCountByDay;
+		$this->editCountByTaskType = $editCountByTaskType;
+		$this->revertedEditCount = $revertedEditCount;
 		$this->newcomerTaskEditCount = $newcomerTaskEditCount;
 		$this->lastEditTimestamp = $lastEditTimestamp;
 		$this->editedArticles = $editedArticles;
 		$this->userTimeCorrection = $userTimeCorrection;
-		$this->editCountByTaskType = $editCountByTaskType;
 	}
 
 	/**
@@ -65,6 +70,15 @@ class EditData {
 	 */
 	public function getEditCountByDay(): array {
 		return $this->editCountByDay;
+	}
+
+	/**
+	 * Number of total edits by the user that got reverted (determined
+	 * by the mw-reverted tag).
+	 * @return int
+	 */
+	public function getRevertedEditCount(): int {
+		return $this->revertedEditCount;
 	}
 
 	/**

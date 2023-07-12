@@ -8,7 +8,7 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 
 	function getExpectedResponse() {
 		return {
-			'@version': 7,
+			'@version': 8,
 			userId: 1,
 			userName: 'Admin',
 			receivedThanksCount: 10,
@@ -20,6 +20,7 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 				'2022-08-24': 1,
 				'2022-08-25': 1
 			},
+			revertedEditCount: 1,
 			newcomerTaskEditCount: 2,
 			editCountByTaskType: {
 				copyedit: 1,
