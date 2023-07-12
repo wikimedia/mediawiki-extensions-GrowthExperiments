@@ -7,7 +7,7 @@
 	</cdx-button>
 	<cdx-dialog
 		v-model:open="open"
-		:title="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-header' ).text()"
+		:title="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-header', menteeGender ).text()"
 	>
 		<p>
 			{{ $i18n(
@@ -107,7 +107,8 @@ module.exports = exports = {
 			log,
 			onSkipButtonClicked,
 			onSubmit,
-			reasonItems
+			reasonItems,
+			menteeGender
 		};
 	},
 	watch: {

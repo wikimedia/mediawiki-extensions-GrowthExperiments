@@ -127,7 +127,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Next page",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation": "Send praise",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee": "Skip this {{GENDER:$1|mentee}}",
-	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-header": "(Optional) Why would {{GENDER:|you}} like to skip this mentee?",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-header": "(Optional) Why would {{GENDER:|you}} like to skip this {{GENDER:$1|mentee}}?",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-pretext": "Skipping a mentee will remove them from the praise-worthy list temporarily (for $1 {{PLURAL:$1|day|days}}). They can re-appear later if their following activity meets {{GENDER:|your}} preferred metrics.",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised": "I've already sent praise to this {{GENDER:$1|mentee}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy": "I don't think this {{GENDER:$1|mentee}} is praise-worthy",
