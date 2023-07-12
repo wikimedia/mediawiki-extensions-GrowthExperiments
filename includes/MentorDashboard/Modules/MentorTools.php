@@ -20,11 +20,8 @@ class MentorTools extends BaseModule {
 	/** @var int Pseudo weight, only recognized within MentorTools */
 	public const WEIGHT_NONE = 'none';
 
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var MentorStatusManager */
-	private $mentorStatusManager;
+	private MentorProvider $mentorProvider;
+	private MentorStatusManager $mentorStatusManager;
 
 	/**
 	 * @param string $name
@@ -199,12 +196,6 @@ class MentorTools extends BaseModule {
 				'div',
 				[ 'class' => self::BASE_MODULE_CSS_CLASS . '-other-actions' ],
 				implode( "\n", [
-					Html::element(
-						'h4',
-						[],
-						$this->msg( 'growthexperiments-mentor-dashboard-mentor-tools-claim-mentee' )
-							->text()
-					),
 					Html::rawElement(
 						'div',
 						[
