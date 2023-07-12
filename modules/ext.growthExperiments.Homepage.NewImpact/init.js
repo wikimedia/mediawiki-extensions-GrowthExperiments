@@ -10,6 +10,23 @@
 	const relevantUserId = mw.config.get( 'GENewImpactRelevantUserId' );
 
 	/**
+	 * Maybe retrieve server exported data for the impact module
+	 *
+	 * @return {Object} User impact API data server side exported
+	 */
+	function getServerExportedData() {
+		// If there's no special page name assume the module is loaded from a page including
+		// {{Special:Impact/username}}
+		const specialPageTitle = mw.config.get( 'wgCanonicalSpecialPageName' ) || 'Included';
+		const exportedDataConfigKeys = {
+			Impact: 'specialimpact',
+			Homepage: 'homepagemodules',
+			Included: 'specialimpact:included'
+		};
+		const configKey = exportedDataConfigKeys[ specialPageTitle ];
+		return mw.config.get( configKey, {} ).impact;
+	}
+	/**
 	 * Fetch data from growthexperiments/v0/user-impact/<user_id> api endpoint
 	 *
 	 * @param {number} userId The user id to request data
@@ -34,7 +51,7 @@
 
 	/**
 	 * Maybe retrieve data from the following sources (in order):
-	 *  (1) Server exported data in specialimpact/homepagemodules mw.config values.
+	 *  (1) Server exported data in mw.config values.
 	 *  (2) The API response from requesting the user-impact endpoint.
 	 *
 	 * @param {number} userId The user id to request data
@@ -42,13 +59,7 @@
 	 * fetch error.
 	 */
 	const getUserImpactData = ( userId ) => {
-		const specialPageTitle = mw.config.get( 'wgCanonicalSpecialPageName' );
-		const exportedDataConfigKeys = {
-			Impact: 'specialimpact',
-			Homepage: 'homepagemodules'
-		};
-		const configKey = exportedDataConfigKeys[ specialPageTitle ];
-		const serverSideExportedData = mw.config.get( configKey, {} ).impact;
+		const serverSideExportedData = getServerExportedData();
 		return new Promise( ( resolve, reject ) => {
 			if ( serverSideExportedData && serverSideExportedData.impact ) {
 				resolve( serverSideExportedData.impact );
