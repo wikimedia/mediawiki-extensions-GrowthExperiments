@@ -27,6 +27,8 @@
 	"apihelp-growthmanagementorlist-param-message": "رسالة التقديم (ترك النصّ فارغا للحصول على الرسالة الافتراضية)",
 	"apihelp-growthmanagementorlist-param-weight": "الوزن",
 	"apihelp-growthmanagementorlist-param-autoassigned": "هل يتمّ تعيين المرشد تلقائيًا للوافدين الجدد؟",
+	"apihelp-growthmanagementorlist-param-isaway": "هل المرشد غير متوفّر حاليًا؟ وَجَبَ ضبط الحالة (افتراضيًا محدّدة على خاطئ).",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "ألى متى يكون المرشد غير متوفّرٍ؟ الحد الأقصى هو 1 سنة من اليوم. تم تجاهله ما لم يكن غير_متوفّر صحيحًا.",
 	"apihelp-growthmanagementorlist-param-summary": "سبب التغيير",
 	"apihelp-growthmanagementorlist-param-username": "اسم المستخدم للمرشد المتأثّر بالتغيير. إذا لم يتم توفيره، فسيتم استخدام المستخدم الذي قام بتسجيل الدخول حاليًا. يمكن استخدامها فقط من قبل المستخدمين من ذوي الصلاحيات.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "إذا كانت isaway صحيحة، فيجب توفير awaytimestamp.",

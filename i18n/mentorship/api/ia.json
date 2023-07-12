@@ -26,6 +26,8 @@
 	"apihelp-growthmanagementorlist-param-message": "Message de introduction (lassa vacue pro usar le message predefinite de mentor)",
 	"apihelp-growthmanagementorlist-param-weight": "Peso",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Es le mentor assignate automaticamente al novicios?",
+	"apihelp-growthmanagementorlist-param-isaway": "Es le mentor actualmente absente? Debe esser definite (es predefinite como false).",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "Usque a quando es le mentor absente? Le maximo es 1 anno a partir de hodie. Ignorate salvo si ‘isaway’ es ver.",
 	"apihelp-growthmanagementorlist-param-summary": "Motivo del cambiamento",
 	"apihelp-growthmanagementorlist-param-username": "Le nomine del usator del mentor affectate per le cambiamento. Si non fornite, le usator actualmente in session essera usate. Pote solo esser usate per usatores privilegiate.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Si isaway es ver, alora awaytimestamp debe esser fornite.",
