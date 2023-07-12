@@ -321,7 +321,7 @@
 	"logentry-growthexperiments-addimage-rejected": "{{GENDER:$2|راجع|راجعت}} $1 على صورة مقترحة لـ$3: مرفوضة",
 	"log-action-filter-growthexperiments": "نوع الحدث من GrowthExperiments:",
 	"log-action-filter-growthexperiments-claimmentee": "تغييرات المُرشَدين (المتعلمين)",
-	"log-action-filter-growthexperiments-setmentor": "تغييرلت المُرشِدين",
+	"log-action-filter-growthexperiments-setmentor": "تغييرات المُرشِدين",
 	"log-action-filter-growthexperiments-addlink": "اقتراحات الروابط",
 	"log-action-filter-growthexperiments-addimage": "اقتراحات الصّور",
 	"growthexperiments-homepage-claimmentee-invalid-username": "اسم المستخدم المقدم للمرشَد غير صالح",
