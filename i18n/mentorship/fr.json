@@ -3,6 +3,7 @@
 		"authors": [
 			"DreZhsh",
 			"Gomoko",
+			"Thibaut120094",
 			"Trizek (WMF)",
 			"Verdy p",
 			"Wladek92"
@@ -135,9 +136,9 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee": "Ignorer ce{{GENDER:$1||tte}} tutoré{{GENDER:$1||e}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-header": "(Facultatif) Pourquoi désirez-vous{{GENDER:|}} ignorer ce tutoré ?",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-pretext": "Ignorer un tutoré le retirera temporairement de la liste digne de félicitations (durant $1 jour{{PLURAL:$1||s}}). Il pourra réapparaître plus tard si ses activités suivantes correspondent à {{GENDER:|}}vos métriques préférées.",
-	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised": "J’ai déjà adressé mes félicitations à ce tutoré.",
-	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy": "Je ne pense pas que ce tutoré soit digne de félicitations.",
-	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now": "Je ne souhaite pas envoyer de félicitation pour l’instant.",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised": "J’ai déjà adressé mes félicitations à {{GENDER:$1|ce tutoré|cette tutorée}}.",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy": "Je ne pense pas que {{GENDER:$1|ce tutoré|cette tutorée}} soit digne de félicitations.",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now": "Je ne souhaite pas envoyer de félicitations à {{GENDER:$1|ce tutoré|cette tutorée}}.",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other": "Autre / Je préfère ne pas le dire",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Soumettre",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Annuler",

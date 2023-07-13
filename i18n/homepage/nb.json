@@ -177,6 +177,7 @@
 	"growthexperiments-specialimpact-title": "Påvirkning",
 	"growthexperiments-specialimpact-showing-for-other-user": "Viser påvirkningsdata for $1",
 	"growthexperiments-specialimpact-invalid-username": "Manglende eller ugyldig brukernavn.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Manglende brukernavnparameter på den inkluderte spesialsiden Impact.",
 	"growthexperiments-homepage-claimmentee-no-user": "Fadderbarnet finnes ikke",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Du}} er allerede fadder for {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} har valgt å ikke ha fadder",

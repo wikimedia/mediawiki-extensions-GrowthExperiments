@@ -194,6 +194,7 @@
 	"growthexperiments-specialimpact-title": "Etki",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 için etki verileri gösteriliyor",
 	"growthexperiments-specialimpact-invalid-username": "Eksik veya geçersiz kullanıcı adı.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Eklenen özel Etki sayfasında kullanıcı adı değişkeni eksik.",
 	"growthexperiments-homepage-claimmentee-no-user": "Danışmanlığı yapılan kullanıcı yok",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Siz}} zaten danışmansınız {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} danışmanlıktan ayrıldı",

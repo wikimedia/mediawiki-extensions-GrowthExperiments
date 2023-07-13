@@ -103,7 +103,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation": "Пошаљи похвалу",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee": "Прескочи овог {{GENDER:$1|новајлију}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised": "Већ сам похвалио овог новајлију",
-	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy": "Овај новајлија није још за похвалу",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy": "Овај {{GENDER:$1|новајлија}} није још за похвалу",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now": "Не желим сад да шаљем похвале",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other": "Друго / Не желим да кажем",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Пошаљи",

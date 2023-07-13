@@ -186,6 +186,7 @@
 	"growthexperiments-specialimpact-title": "השפעה",
 	"growthexperiments-specialimpact-showing-for-other-user": "הצגת נתוני השפעה על $1",
 	"growthexperiments-specialimpact-invalid-username": "שם משתמש חסר או בלתי־תקין.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "חסר פרמטר שם משתמש בדף המיוחד הכלול \"השפעה\" (Impact).",
 	"growthexperiments-homepage-claimmentee-no-user": "החניך אינו קיים",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|אתה כבר חונך|את כבר חונכת}} את $1",
 	"growthexperiments-homepage-claimmentee-opt-out": "$1 {{GENDER:$1|יצא|יצאה}} לחונכות",

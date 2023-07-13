@@ -203,6 +203,7 @@
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Affichage des données d’impact pour $1",
 	"growthexperiments-specialimpact-invalid-username": "Nom d’utilisateur manquant ou incorrect.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Paramètre de nom d’utilisateur manquant dans la page spéciale Impact incluse.",
 	"growthexperiments-homepage-claimmentee-no-user": "Le tutoré n’existe pas",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Vous êtes déjà tut{{GENDER:$2|eur|rice}} de $1",
 	"growthexperiments-homepage-claimmentee-opt-out": "$1 s’est désisté{{GENDER:$1||e}} du tutorat",

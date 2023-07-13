@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"ANukuma"
+			"ANukuma",
+			"Veracious"
 		]
 	},
-	"apihelp-growthsetmentorstatus-param-gesstatus": "Status baru"
+	"apihelp-growthstarmentee-param-gesmentee": "Murid yang akan dilepas bintangnya",
+	"apihelp-query+growthstarredmentees-summary": "Dapatkan daftar murid yang dibintangi oleh guru yang sedang masuk log",
+	"apihelp-growthsetmentorstatus-summary": "Tetapkan status keguruan pengguna saat ini menjadi aktif/pergi",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Status baru",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Guru meminta murid untuk",
+	"apihelp-growthmanagementorlist-param-geaction": "Tindakan"
 }
