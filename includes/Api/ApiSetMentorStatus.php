@@ -11,9 +11,6 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMentorStatus extends ApiBase {
 
-	/** @var int Also hardcoded in AwaySettingsDialog.js */
-	private const MAX_BACK_IN_DAYS = 365;
-
 	/** @var MentorProvider */
 	private $mentorProvider;
 
@@ -59,17 +56,9 @@ class ApiSetMentorStatus extends ApiBase {
 			case MentorStatusManager::STATUS_AWAY:
 				$this->requireAtLeastOneParameter( $params, 'gesbackindays' );
 
-				$backInDays = (int)$params['gesbackindays'];
-				if ( $backInDays > self::MAX_BACK_IN_DAYS ) {
-					$this->dieWithError(
-						'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh',
-						'toohigh'
-					);
-				}
-
 				$status = $this->mentorStatusManager->markMentorAsAway(
 					$mentor,
-					$backInDays
+					(int)$params['gesbackindays']
 				);
 				break;
 			default:
@@ -114,6 +103,13 @@ class ApiSetMentorStatus extends ApiBase {
 	 * @inheritDoc
 	 */
 	public function mustBePosted() {
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function isDeprecated() {
 		return true;
 	}
 

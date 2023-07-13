@@ -67,28 +67,30 @@
 			this.emit( 'cancel' );
 		} else if ( action === 'save' ) {
 			return new OO.ui.Process( function () {
+				const backAtTimestamp = new Date();
+				backAtTimestamp.setDate(
+					backAtTimestamp.getDate() + Number( dialog.awayForDays.getValue() )
+				);
+
 				return new mw.Api().postWithToken( 'csrf', {
-					action: 'growthsetmentorstatus',
-					gesstatus: 'away',
-					gesbackindays: dialog.awayForDays.getValue()
+					action: 'growthmanagementorlist',
+					geaction: 'change',
+					isaway: true,
+					awaytimestamp: backAtTimestamp.toISOString()
 				} ).then( function ( data ) {
 					mw.notify(
 						mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away' ),
 						{ type: 'info' }
 					);
-					dialog.emit( 'awayset', data.growthsetmentorstatus.backintimestamp );
+					dialog.emit( 'awayset', data.growthmanagementorlist.mentor.awayTimestampHuman );
 					dialog.close( { action: action } );
 				} ).catch( function ( errorCode ) {
 					let msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown';
-					if ( errorCode === 'badinteger' ) {
-						msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger';
-					} else if ( errorCode === 'toohigh' ) {
-						msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh';
+					if ( errorCode === 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh' ) {
+						msgCode = errorCode;
 					}
 
 					// Messages that can be used here:
-					// eslint-disable-next-line max-len
-					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger
 					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh
 					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown
 					mw.notify(

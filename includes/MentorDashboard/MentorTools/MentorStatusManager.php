@@ -17,6 +17,9 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class MentorStatusManager implements IDBAccessObject {
 
+	/** @var int Also hardcoded in AwaySettingsDialog.js */
+	private const MAX_BACK_IN_DAYS = 365;
+
 	/** @var string Mentor status */
 	public const STATUS_ACTIVE = 'active';
 	/** @var string Mentor status */
@@ -303,6 +306,18 @@ class MentorStatusManager implements IDBAccessObject {
 		$canChangeStatus = $this->canChangeStatus( $mentor );
 		if ( !$canChangeStatus->isOK() ) {
 			return $canChangeStatus;
+		}
+
+		if (
+			(
+				(int)ConvertibleTimestamp::convert( TS_UNIX, $timestamp ) -
+				(int)ConvertibleTimestamp::now( TS_UNIX )
+			) > self::MAX_BACK_IN_DAYS * self::SECONDS_DAY
+		) {
+			return StatusValue::newFatal(
+				'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh',
+				self::MAX_BACK_IN_DAYS
+			);
 		}
 
 		$this->userOptionsManager->setOption(

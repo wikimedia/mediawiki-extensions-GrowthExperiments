@@ -15,14 +15,9 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiManageMentorList extends ApiBase {
 
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var IMentorWriter */
-	private $mentorWriter;
-
-	/** @var MentorStatusManager */
-	private $mentorStatusManager;
+	private MentorProvider $mentorProvider;
+	private IMentorWriter $mentorWriter;
+	private MentorStatusManager $mentorStatusManager;
 
 	/**
 	 * @param ApiMain $mainModule
@@ -122,22 +117,28 @@ class ApiManageMentorList extends ApiBase {
 
 		if ( $params['geaction'] !== 'remove' ) {
 			if ( $params['isaway'] ) {
-				$this->mentorStatusManager->markMentorAsAwayTimestamp(
+				$result = $this->mentorStatusManager->markMentorAsAwayTimestamp(
 					$mentorUser,
 					$params['awaytimestamp']
 				);
+				if ( !$result->isOK() ) {
+					$this->dieStatus( $result );
+				}
 			} else {
 				$this->mentorStatusManager->markMentorAsActive( $mentorUser );
 			}
 		}
 
+		$rawBackTs = $this->mentorStatusManager->getMentorBackTimestamp( $mentorUser );
 		$this->getResult()->addValue( null, $this->getModuleName(), [
 			'status' => 'ok',
 			'mentor' => [
 				'message' => $mentor->hasCustomIntroText() ? $mentor->getIntroText() : null,
 				'weight' => $mentor->getWeight(),
 				'automaticallyAssigned' => $mentor->getAutoAssigned(),
-				'awayTimestamp' => $this->mentorStatusManager->getMentorBackTimestamp( $mentorUser ),
+				'awayTimestamp' => $rawBackTs,
+				'awayTimestampHuman' => $rawBackTs !== null ? $this->getContext()
+					->getLanguage()->date( $rawBackTs, true ) : null,
 			]
 		] );
 	}
