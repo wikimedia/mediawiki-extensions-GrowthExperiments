@@ -1,14 +1,38 @@
 /* global jest:false */
 'use strict';
 const { config } = require( '@vue/test-utils' );
-// Mock Vue plugins in test suites
-config.global.mocks = {
-	$i18n: ( str ) => {
-		return {
-			text: () => str,
-			parse: () => str
-		};
+
+/**
+ * Mock for the calls to MW core's i18n plugin which returns
+ * a mw.Message object.
+ *
+ * @param {string} key The text key to parse
+ * @param {...*} args Arbitrary number of arguments to be parsed
+ * @return {mw.growthTests.MwMessageInterface}
+ */
+function $i18nMock( key, ...args ) {
+	function serializeArgs() {
+		return args.length ? `${key}:[${args.join( ',' )}]` : key;
 	}
+	/**
+	 * mw.Message-like object with .text() and .parse() method
+	 *
+	 * @typedef {Object} mw.growthTests.MwMessageInterface
+	 *
+	 * @property {Function} text parses the given banana message
+	 * @property {Function} parse parses the given banana message (without html support)
+	 */
+	return {
+		text: () => serializeArgs(),
+		parse: () => serializeArgs()
+	};
+}
+// Mock Vue plugins in test suites
+config.global.provide = {
+	i18n: $i18nMock
+};
+config.global.mocks = {
+	$i18n: $i18nMock
 };
 config.global.directives = {
 	'i18n-html': ( el, binding ) => {

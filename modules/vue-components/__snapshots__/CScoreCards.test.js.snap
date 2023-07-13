@@ -226,7 +226,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
         class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
       >
         
-        growthexperiments-homepage-impact-recent-activity-streak-count-text
+        growthexperiments-homepage-impact-recent-activity-streak-count-text:[1]
         
       </span>
       
