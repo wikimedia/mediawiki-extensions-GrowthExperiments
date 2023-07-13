@@ -161,12 +161,32 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	 * @return HomepageHooks
 	 */
 	private function getHomepageHooks(): HomepageHooks {
-		// hack - phpunit refuses to proxy calls if the constructor is disabled, and the constructor
-		// has way too many parameters
-		return new class extends HomepageHooks {
-			public function __construct() {
-			}
-		};
+		$services = $this->getServiceContainer();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new HomepageHooks(
+			$services->getMainConfig(),
+			$services->getDBLoadBalancer(),
+			$services->getUserOptionsManager(),
+			$services->getUserOptionsLookup(),
+			$services->getUserIdentityUtils(),
+			$services->getNamespaceInfo(),
+			$services->getTitleFactory(),
+			$services->getPerDbNameStatsdDataFactory(),
+			$services->getJobQueueGroup(),
+			$growthServices->getNewcomerTasksConfigurationLoader(),
+			$growthServices->getGrowthExperimentsCampaignConfig(),
+			$growthServices->getExperimentUserManager(),
+			$growthServices->getTaskTypeHandlerRegistry(),
+			$growthServices->getTaskSuggesterFactory(),
+			$growthServices->getNewcomerTasksUserOptionsLookup(),
+			$growthServices->getLinkRecommendationStore(),
+			$growthServices->getLinkRecommendationHelper(),
+			$services->getSpecialPageFactory(),
+			$growthServices->getNewcomerTasksChangeTagsManager(),
+			$growthServices->getSuggestionsInfo(),
+			$growthServices->getUserImpactLookup(),
+			$growthServices->getUserImpactStore()
+		);
 	}
 
 	/**

@@ -6,9 +6,9 @@ use Config;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
-use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use SpecialPage;
+use User;
 
 class MentorDashboardDiscoveryHooks implements SkinTemplateNavigation__UniversalHook, BeforePageDisplayHook {
 
@@ -36,12 +36,12 @@ class MentorDashboardDiscoveryHooks implements SkinTemplateNavigation__Universal
 	/**
 	 * Are mentor dashboard discovery features enabled?
 	 *
-	 * @param UserIdentity $user
+	 * @param User $user
 	 * @return bool
 	 */
-	private function isDiscoveryEnabled( UserIdentity $user ): bool {
+	private function isDiscoveryEnabled( User $user ): bool {
 		return $this->config->get( 'GEMentorDashboardEnabled' ) &&
-			$user->isRegistered() &&
+			$user->isNamed() &&
 			$this->mentorProvider->isMentor( $user );
 	}
 

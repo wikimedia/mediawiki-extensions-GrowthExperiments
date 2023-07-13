@@ -80,7 +80,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	 */
 	protected function run( ApiPageSet $resultPageSet = null ) {
 		$user = $this->getUser();
-		if ( !$user->isRegistered() ) {
+		if ( !$user->isNamed() ) {
 			$this->dieWithError( 'apierror-mustbeloggedin-generic' );
 		}
 		$params = $this->extractRequestParams();

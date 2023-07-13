@@ -41,7 +41,7 @@ class SpecialEditGrowthConfigLogger {
 				'is_privileged_user' => $authority->isAllowed(
 					SpecialEditGrowthConfig::REQUIRED_RIGHT_TO_WRITE
 				),
-				'is_registered_user' => $authority->isRegistered(),
+				'is_registered_user' => $authority->isNamed(),
 			]
 		);
 	}
@@ -63,7 +63,7 @@ class SpecialEditGrowthConfigLogger {
 				'is_privileged_user' => $authority->isAllowed(
 					SpecialEditGrowthConfig::REQUIRED_RIGHT_TO_WRITE
 				),
-				'is_registered_user' => $authority->isRegistered(),
+				'is_registered_user' => $authority->isNamed(),
 				'performer' => [
 					'user_id' => $authority->getUser()->getId(),
 					'user_text' => $authority->getUser()->getName(),

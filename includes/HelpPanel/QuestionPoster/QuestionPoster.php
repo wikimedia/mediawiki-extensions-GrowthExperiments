@@ -151,7 +151,7 @@ abstract class QuestionPoster {
 		$this->permissionManager = $permissionManager;
 		$this->context = $context;
 		$this->relevantTitleRaw = $relevantTitleRaw;
-		if ( !$this->getContext()->getUser()->isRegistered() ) {
+		if ( !$this->getContext()->getUser()->isNamed() ) {
 			throw new UserNotLoggedIn();
 		}
 		$this->config = $this->getContext()->getConfig();

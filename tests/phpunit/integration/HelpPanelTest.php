@@ -56,9 +56,9 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 		$request->method( 'getBool' )
 			->with( 'gesuggestededit' )
 			->willReturn( $gesuggestededit );
-		$user = $this->createPartialMock( \User::class, [ 'getId' ] );
-		$user->method( 'getId' )
-			->willReturn( $userId );
+		$user = $this->createPartialMock( \User::class, [ 'isNamed' ] );
+		$user->method( 'isNamed' )
+			->willReturn( (bool)$userId );
 		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->method( 'getOption' )
 			->with( $this->anything(), HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE )

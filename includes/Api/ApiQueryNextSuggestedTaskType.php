@@ -43,7 +43,7 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		if ( $this->getUser()->isAnon() ) {
+		if ( !$this->getUser()->isNamed() ) {
 			$this->dieWithError( 'apierror-mustbeloggedin-generic' );
 		}
 		$params = $this->extractRequestParams();

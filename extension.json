@@ -88,7 +88,8 @@
 			"class": "GrowthExperiments\\Api\\ApiSetMentor",
 			"services": [
 				"GrowthExperimentsMentorManager",
-				"GrowthExperimentsChangeMentorFactory"
+				"GrowthExperimentsChangeMentorFactory",
+				"UserIdentityUtils"
 			]
 		},
 		"growthstarmentee": {
@@ -333,6 +334,7 @@
 				"DBLoadBalancer",
 				"UserOptionsManager",
 				"UserOptionsLookup",
+				"UserIdentityUtils",
 				"NamespaceInfo",
 				"TitleFactory",
 				"PerDbNameStatsdDataFactory",
@@ -362,7 +364,8 @@
 				"UserOptionsLookup",
 				"UserFactory",
 				"UserEditTracker",
-				"JobQueueGroup"
+				"JobQueueGroup",
+				"UserIdentityUtils"
 			]
 		},
 		"levelingup": {
@@ -450,7 +453,8 @@
 				"TitleFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
-				"PerDbNameStatsdDataFactory"
+				"PerDbNameStatsdDataFactory",
+				"UserIdentityUtils"
 			]
 		},
 		"welcomeSurvey": {

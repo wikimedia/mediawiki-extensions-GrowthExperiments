@@ -123,6 +123,7 @@ return [
 			$geServices->getTaskSuggesterFactory(),
 			$geServices->getNewcomerTasksUserOptionsLookup(),
 			$services->getMainWANObjectCache(),
+			$services->getUserIdentityUtils(),
 			ExtensionRegistry::getInstance()->isLoaded( 'EventBus' ) ?
 				$geServices->getEventGateImageSuggestionFeedbackUpdater() : null,
 		);
@@ -138,6 +139,7 @@ return [
 			$growthServices->getLinkSubmissionRecorder(),
 			$services->getLinkBatchFactory(),
 			$services->getTitleFactory(),
+			$services->getUserIdentityUtils(),
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
@@ -1047,7 +1049,8 @@ return [
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$services->getPerDbNameStatsdDataFactory(),
 			$services->getRevisionLookup(),
-			$services->getDBLoadBalancer()
+			$services->getDBLoadBalancer(),
+			$services->getUserIdentityUtils()
 		);
 	},
 

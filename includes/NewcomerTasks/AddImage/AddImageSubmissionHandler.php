@@ -21,6 +21,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use ManualLogEntry;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use Message;
 use StatusValue;
 use WANObjectCache;
@@ -63,6 +64,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 	private WANObjectCache $cache;
+	private UserIdentityUtils $userIdentityUtils;
 
 	private ?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater;
 
@@ -71,6 +73,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param WANObjectCache $cache
+	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param EventGateImageSuggestionFeedbackUpdater|null $eventGateImageFeedbackUpdater
 	 */
 	public function __construct(
@@ -78,12 +81,14 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		WANObjectCache $cache,
+		UserIdentityUtils $userIdentityUtils,
 		?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
 	) {
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->cache = $cache;
+		$this->userIdentityUtils = $userIdentityUtils;
 		$this->eventGateImageFeedbackUpdater = $eventGateImageFeedbackUpdater;
 	}
 
@@ -94,7 +99,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
 		'@phan-var ImageRecommendationBaseTaskType $taskType';/** @var ImageRecommendationBaseTaskType $taskType */
 
-		$userErrorMessage = $this->getUserErrorMessage( $user );
+		$userErrorMessage = self::getUserErrorMessage( $this->userIdentityUtils, $user );
 		if ( $userErrorMessage ) {
 			return StatusValue::newGood()->error( $userErrorMessage );
 		}

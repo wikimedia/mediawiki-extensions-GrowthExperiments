@@ -88,6 +88,7 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Hook\ConfirmEmailCompleteHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
 use MessageLocalizer;
@@ -159,6 +160,7 @@ class HomepageHooks implements
 	private ILoadBalancer $lb;
 	private UserOptionsManager $userOptionsManager;
 	private UserOptionsLookup $userOptionsLookup;
+	private UserIdentityUtils $userIdentityUtils;
 	private NamespaceInfo $namespaceInfo;
 	private TitleFactory $titleFactory;
 	private ConfigurationLoader $configurationLoader;
@@ -188,6 +190,7 @@ class HomepageHooks implements
 	 * @param ILoadBalancer $lb
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param NamespaceInfo $namespaceInfo
 	 * @param TitleFactory $titleFactory
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
@@ -211,6 +214,7 @@ class HomepageHooks implements
 		ILoadBalancer $lb,
 		UserOptionsManager $userOptionsManager,
 		UserOptionsLookup $userOptionsLookup,
+		UserIdentityUtils $userIdentityUtils,
 		NamespaceInfo $namespaceInfo,
 		TitleFactory $titleFactory,
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
@@ -233,6 +237,7 @@ class HomepageHooks implements
 		$this->lb = $lb;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->userIdentityUtils = $userIdentityUtils;
 		$this->namespaceInfo = $namespaceInfo;
 		$this->titleFactory = $titleFactory;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
@@ -1350,11 +1355,11 @@ class HomepageHooks implements
 	}
 
 	/**
-	 * @param UserIdentity $user
+	 * @param User $user
 	 * @return bool
 	 */
-	private function userHasPersonalToolsPrefEnabled( UserIdentity $user ): bool {
-		return $user->isRegistered() &&
+	private function userHasPersonalToolsPrefEnabled( User $user ): bool {
+		return $user->isNamed() &&
 			$this->userOptionsLookup->getBoolOption( $user, self::HOMEPAGE_PREF_PT_LINK );
 	}
 
@@ -1530,7 +1535,7 @@ class HomepageHooks implements
 		$context = RequestContext::getMain();
 		$request = $context->getRequest();
 		$user = $recentChange->getPerformerIdentity();
-		if ( !$user->isRegistered() ) {
+		if ( !$this->userIdentityUtils->isNamed( $user ) ) {
 			return;
 		}
 		$plugins = $request->getVal( 'plugins', '' );

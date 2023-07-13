@@ -16,6 +16,7 @@ use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserOptionsLookup;
 use MWTimestamp;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -34,6 +35,7 @@ class ImpactHooks implements
 	private UserEditTracker $userEditTracker;
 	private UserImpactFormatter $userImpactFormatter;
 	private JobQueueGroup $jobQueueGroup;
+	private UserIdentityUtils $userIdentityUtils;
 
 	/**
 	 * @param Config $config
@@ -44,6 +46,7 @@ class ImpactHooks implements
 	 * @param UserFactory $userFactory
 	 * @param UserEditTracker $userEditTracker
 	 * @param JobQueueGroup $jobQueueGroup
+	 * @param UserIdentityUtils $userIdentityUtils
 	 */
 	public function __construct(
 		Config $config,
@@ -53,7 +56,8 @@ class ImpactHooks implements
 		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory,
 		UserEditTracker $userEditTracker,
-		JobQueueGroup $jobQueueGroup
+		JobQueueGroup $jobQueueGroup,
+		UserIdentityUtils $userIdentityUtils
 	) {
 		$this->config = $config;
 		$this->userImpactLookup = $userImpactLookup;
@@ -63,6 +67,7 @@ class ImpactHooks implements
 		$this->userFactory = $userFactory;
 		$this->userEditTracker = $userEditTracker;
 		$this->jobQueueGroup = $jobQueueGroup;
+		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
 	/** @inheritDoc */
@@ -103,7 +108,7 @@ class ImpactHooks implements
 	 * @return bool
 	 */
 	private function userIsInImpactDataCohort( UserIdentity $userIdentity ): bool {
-		if ( !$userIdentity->isRegistered() ) {
+		if ( !$this->userIdentityUtils->isNamed( $userIdentity ) ) {
 			return false;
 		}
 		if ( !$this->userOptionsLookup->getBoolOption( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE ) ) {

@@ -73,10 +73,11 @@ class MenteesHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run() {
-		$user = $this->getAuthority()->getUser();
-		if ( !$user->isRegistered() ) {
+		$authority = $this->getAuthority();
+		if ( !$authority->isNamed() ) {
 			throw new HttpException( 'You must be logged in', 403 );
 		}
+		$user = $authority->getUser();
 
 		$params = $this->getValidatedParams();
 		$limit = $params['limit'] ?? 10;

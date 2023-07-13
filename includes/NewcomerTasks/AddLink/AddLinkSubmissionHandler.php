@@ -20,6 +20,7 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use Message;
 use Psr\Log\LoggerInterface;
 use StatusValue;
@@ -37,6 +38,8 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 	private $addLinkSubmissionRecorder;
 	/** @var TitleFactory */
 	private $titleFactory;
+	/** @var UserIdentityUtils */
+	private $userIdentityUtils;
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 	/** @var LinkBatchFactory */
@@ -56,6 +59,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 	 * @param LinkSubmissionRecorder $addLinkSubmissionRecorder
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param TitleFactory $titleFactory
+	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param ConfigurationLoader $configurationLoader
@@ -67,6 +71,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		LinkSubmissionRecorder $addLinkSubmissionRecorder,
 		LinkBatchFactory $linkBatchFactory,
 		TitleFactory $titleFactory,
+		UserIdentityUtils $userIdentityUtils,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		ConfigurationLoader $configurationLoader,
@@ -77,6 +82,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		$this->titleFactory = $titleFactory;
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkBatchFactory = $linkBatchFactory;
+		$this->userIdentityUtils = $userIdentityUtils;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->configurationLoader = $configurationLoader;
@@ -100,7 +106,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 			return StatusValue::newGood()->error( 'growthexperiments-addlink-notinstore',
 				$title->getPrefixedText() );
 		}
-		$userErrorMessage = $this->getUserErrorMessage( $user );
+		$userErrorMessage = self::getUserErrorMessage( $this->userIdentityUtils, $user );
 		if ( $userErrorMessage ) {
 			return StatusValue::newGood()->error( $userErrorMessage );
 		}

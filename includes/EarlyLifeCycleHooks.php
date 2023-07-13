@@ -4,9 +4,9 @@ namespace GrowthExperiments;
 
 use ConfigException;
 use MediaWiki\Cache\Hook\MessageCacheFetchOverridesHook;
-use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use RequestContext;
+use User;
 
 /**
  * Hook handler class that contains hooks which are riskier than the average (called often,
@@ -47,11 +47,11 @@ class EarlyLifeCycleHooks implements MessageCacheFetchOverridesHook {
 	}
 
 	/**
-	 * @param UserIdentity $user
+	 * @param User $user
 	 * @return bool
 	 */
-	private function userHasPersonalToolsPrefEnabled( UserIdentity $user ): bool {
-		return $user->isRegistered()
+	private function userHasPersonalToolsPrefEnabled( User $user ): bool {
+		return $user->isNamed()
 			&& $this->userOptionsLookup->getBoolOption( $user, HomepageHooks::HOMEPAGE_PREF_PT_LINK );
 	}
 

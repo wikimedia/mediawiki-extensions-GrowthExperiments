@@ -4,11 +4,13 @@ namespace GrowthExperiments\Api;
 
 use ApiBase;
 use ApiMain;
+use ApiUsageException;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use User;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -19,22 +21,28 @@ class ApiSetMentor extends ApiBase {
 	/** @var ChangeMentorFactory */
 	private $changeMentorFactory;
 
+	/** @var UserIdentityUtils */
+	private $userIdentityUtils;
+
 	/**
 	 * @param ApiMain $mainModule
 	 * @param string $moduleName
 	 * @param MentorManager $mentorManager
 	 * @param ChangeMentorFactory $changeMentorFactory
+	 * @param UserIdentityUtils $userIdentityUtils
 	 */
 	public function __construct(
 		ApiMain $mainModule,
 		$moduleName,
 		MentorManager $mentorManager,
-		ChangeMentorFactory $changeMentorFactory
+		ChangeMentorFactory $changeMentorFactory,
+		UserIdentityUtils $userIdentityUtils
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
 		$this->mentorManager = $mentorManager;
 		$this->changeMentorFactory = $changeMentorFactory;
+		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
 	/**
@@ -58,11 +66,8 @@ class ApiSetMentor extends ApiBase {
 			$this->checkUserRightsAny( 'setmentor' );
 		}
 
-		if ( !$mentee->isRegistered() || !$mentor->isRegistered() ) {
-			// User doesn't exist
-			$wrongUser = $mentee->isRegistered() ? $mentor : $mentee;
-			$this->dieWithError( [ 'nosuchusershort', $wrongUser->getName() ] );
-		}
+		$this->assertUserExists( $mentee );
+		$this->assertUserExists( $mentor );
 
 		$oldMentorObj = $this->mentorManager->getMentorForUserIfExists( $mentee );
 
@@ -81,6 +86,17 @@ class ApiSetMentor extends ApiBase {
 			'newMentor' => $mentor,
 			'oldMentor' => $oldMentorObj instanceof Mentor ? $oldMentorObj->getUserIdentity() : false,
 		] );
+	}
+
+	/**
+	 * Throw an exception if the user is anonymous or temporary.
+	 * @param UserIdentity $user
+	 * @throws ApiUsageException
+	 */
+	private function assertUserExists( UserIdentity $user ) {
+		if ( !$this->userIdentityUtils->isNamed( $user ) ) {
+			$this->dieWithError( [ 'nosuchusershort', $user->getName() ] );
+		}
 	}
 
 	public function mustBePosted() {

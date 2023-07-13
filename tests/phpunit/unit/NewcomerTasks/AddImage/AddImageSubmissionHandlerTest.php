@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Page\PageIdentityValue;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use StatusValue;
@@ -24,12 +25,15 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 		$cirrusSearchFactoryMock = function () {
 			return $this->createMock( CirrusSearch::class );
 		};
+		$userIdentityUtilsMock = $this->createMock( UserIdentityUtils::class );
+		$userIdentityUtilsMock->method( 'isNamed' )->willReturn( true );
 		$imageTaskType = new ImageRecommendationTaskType( 'image', TaskType::DIFFICULTY_EASY );
 		$handler = new AddImageSubmissionHandler(
 			$cirrusSearchFactoryMock,
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
 			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createMock( WANObjectCache::class ),
+			$userIdentityUtilsMock,
 			$this->createMock( EventGateImageSuggestionFeedbackUpdater::class )
 		);
 		$page = new PageIdentityValue( 1, 2, 3, '4' );
@@ -121,11 +125,16 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'section-image-recommendation',
 			TaskType::DIFFICULTY_EASY
 		);
+		$userIdentityUtils = $this->createMock( UserIdentityUtils::class );
+		$userIdentityUtils
+			->method( 'isNamed' )
+			->willReturn( true );
 		$handler = new AddImageSubmissionHandler(
 			$cirrusSearchFactoryMock,
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
 			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createMock( WANObjectCache::class ),
+			$userIdentityUtils,
 			$this->createMock( EventGateImageSuggestionFeedbackUpdater::class )
 		);
 		$page = new PageIdentityValue( 1, 2, 3, '4' );

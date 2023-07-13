@@ -16,6 +16,7 @@ use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPreSaveHook;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use OutOfBoundsException;
 use PrefixingStatsdDataFactoryProxy;
 use Status;
@@ -41,23 +42,28 @@ class VisualEditorHooks implements
 	private $taskTypeHandlerRegistry;
 	/** @var PrefixingStatsdDataFactoryProxy */
 	private $perDbNameStatsdDataFactory;
+	/** @var UserIdentityUtils */
+	private $userIdentityUtils;
 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+	 * @param UserIdentityUtils $userIdentityUtils
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		ConfigurationLoader $configurationLoader,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
+		UserIdentityUtils $userIdentityUtils
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
 	/** @inheritDoc */
@@ -71,7 +77,7 @@ class VisualEditorHooks implements
 	) {
 		// This is going to run on every edit and not in a deferred update, so at least filter
 		// by authenticated users to make this slightly faster for anons.
-		if ( !$user->isRegistered() ) {
+		if ( !$this->userIdentityUtils->isNamed( $user ) ) {
 			return;
 		}
 		/** @var ?TaskTypeHandler $taskTypeHandler */
@@ -117,7 +123,7 @@ class VisualEditorHooks implements
 		}
 		// This is going to run on every edit and not in a deferred update, so at least filter
 		// by authenticated users to make this slightly faster for anons.
-		if ( !$user->isRegistered() ) {
+		if ( !$this->userIdentityUtils->isNamed( $user ) ) {
 			return;
 		}
 		/** @var ?TaskTypeHandler $taskTypeHandler */

@@ -77,7 +77,7 @@ class DatabaseMentorStore extends MentorStore {
 		$user = $this->userFactory->newFromId( $id );
 		// Return null if user does not exist
 		$user->load();
-		if ( !$user->isRegistered() ) {
+		if ( !$user->getId() ) {
 			return null;
 		}
 		return new UserIdentityValue( $user->getId(), $user->getName() );

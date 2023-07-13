@@ -95,9 +95,12 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		$userMock->expects( $expectCall ? $this->once() : $this->never() )
 			->method( 'getBlock' )
 			->willReturn( $blockMock );
+		$userMock
+			->method( 'isNamed' )
+			->willReturn( true );
 
 		$userFactoryMock = $this->createMock( UserFactory::class );
-		$userFactoryMock->expects( $expectCall ? $this->once() : $this->never() )
+		$userFactoryMock
 			->method( 'newFromUserIdentity' )
 			->willReturn( $userMock );
 		return $userFactoryMock;

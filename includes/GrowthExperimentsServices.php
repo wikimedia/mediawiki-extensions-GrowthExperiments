@@ -55,9 +55,9 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
-use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
@@ -273,7 +273,7 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsStarredMenteesStore' );
 	}
 
-	public function getSuggestionsInfo(): SuggestionsInfo {
+	public function getSuggestionsInfo(): NewcomerTasksInfo {
 		return $this->coreServices->get( 'GrowthExperimentsSuggestionsInfo' );
 	}
 
