@@ -8,7 +8,8 @@
 			"Michel Bakni",
 			"أَحمد",
 			"محمد أحمد عبد الفتاح",
-			"أيوب"
+			"أيوب",
+			"Karim185.3"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "لوحة المرشدين",
@@ -161,7 +162,7 @@
 	"growthexperiments-manage-mentors-remove-mentor-reason": "سبب إزالة المرشد",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|المستخدم|المستخدمة}} [[User:$1|$1]] لم {{GENDER:$1|يعد متاحاً كمرشد|تعد متاحة كمرشدة}}.",
 	"growthexperiments-manage-mentors-return-back": "بالإمكان [[Special:ManageMentors|العودة]] إلى قائمة المرشدين",
-	"growthexperiments-mentorship-enrollasmentor-title": "{{GENDER:|سجّل|سجّلي}} نفسك {{GENDER:|كمرشد|كمرشدة}}",
+	"growthexperiments-mentorship-enrollasmentor-title": "{{GENDER:|سجّل|سجّلي}} نفسك {{GENDER:|مرشدُا|مرشدةً}}",
 	"growthexperiments-mentorship-enrollasmentor-pretext": "شكرًا على التطوّع بصفة {{GENDER:|مرشد|مرشدة}} في {{SITENAME}}. يمكنك الانخراط في خُطَّة {{GENDER:|مرشد|مرشدة}} عبر ملء هذه الاستمارة.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "رسالة التقديم",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "تقدّمك رسالة التقديم {{GENDER:|كمرشد|كمرشدة}}. يرجى الاقتصار على 240 حرفًا فقط. لا يسمح بنص الويكي.",

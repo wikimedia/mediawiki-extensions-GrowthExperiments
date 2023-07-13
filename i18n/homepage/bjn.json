@@ -5,5 +5,6 @@
 		]
 	},
 	"growthexperiments-tour-response-tip-text": "Wayah patakunan {{GENDER:$1|Pian}} tajawab, {{GENDER:$1|Pian}} pacangan manarima pamadahan di sini.",
-	"growthexperiments-log-header": "Ini log tindakan nang diulah dalam éksténsi GrowthExperiments."
+	"growthexperiments-log-header": "Ini log tindakan nang diulah dalam éksténsi GrowthExperiments.",
+	"growthexperiments-structuredtask-user-error": "Kami kada kawa manaikakan babakan {{GENDER:|Pian}} maraga {{GENDER:|Pian}} sudah kada babuat log. Silakan babuat log wan cuba pulang."
 }

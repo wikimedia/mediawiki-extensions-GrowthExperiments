@@ -357,7 +357,7 @@
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Změnil|Změnila|Změnil(a)}} jste mentora {{PLURAL:$2|uživatele|uživatelů}} $1 na {{GENDER:$4|uživatele|uživatelku}} $5. Vrátit se zpět na [[Special:MentorDashboard|nástěnku mentora]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Mentor {{GENDER:$1|uživatele|uživatelky}} $1 již byl změněn. Jste si {{GENDER:$2|jist|jistá}} tím, že ho chcete změnit znovu?",
 	"growthexperiments-claimmentee-confirm": "Ano, opravdu chci pokračovat",
-	"growthexperiments-log-name": "Protokolovací kniha rozšíření GrowthExperiments",
+	"growthexperiments-log-name": "Kniha rozšíření GrowthExperiments",
 	"growthexperiments-log-header": "Toto je kniha událostí pocházející z rozšíření GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|se stal mentorem|se stala mentorkou}} {{GENDER:$6|uživatele|uživatelky}} $3 (předchozí {{GENDER:$4|mentor|mentorka}} $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|se stal mentorem|se stala mentorkou}} {{GENDER:$6|uživatele|uživatelky}} $3 (mentor nebyl nastaven)",
