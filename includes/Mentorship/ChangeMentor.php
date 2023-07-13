@@ -241,14 +241,14 @@ class ChangeMentor {
 	 * Change mentor
 	 *
 	 * This sets the new primary mentor in the database and adds a log under Special:Log. In most
-	 * cases, it also notifies the mentee about the mentor change. Notification is skipped if any
-	 * of the following conditions are true:
+	 * cases, it also notifies the mentee about the mentor change. Notification is only
+	 * sent if all of the following conditions are true:
 	 *
-	 * 	1) Mentee does not have access to Special:Homepage
-	 * 	2) Mentee does not have access to the mentorship module AND $bulkChange is true
+	 * 	1) Mentee has access to Special:Homepage or Help panel
+	 * 	2) Mentee has mentorship enabled (MENTORSHIP_ENABLED)
 	 *
 	 * If mentee's mentorship state is MENTORSHIP_DISABLED, access to mentorship is enabled by
-	 * this method, except when $bulkChange is true.
+	 * this method, except when $bulkChange is true, but a notification is not sent.
 	 *
 	 * @param UserIdentity $newMentor New mentor to assign
 	 * @param string $reason Reason for the change
@@ -270,33 +270,29 @@ class ChangeMentor {
 		$this->mentorStore->setMentorForUser( $this->mentee, $this->newMentor, MentorStore::ROLE_PRIMARY );
 		$this->log( $reason, $bulkChange );
 
-		if ( !$this->isMentorshipEnabledForUser( $this->mentee ) ) {
-			// skip notification if the user does not have Homepage enabled
-			return $status;
-		}
+		if ( $this->isMentorshipEnabledForUser( $this->mentee ) ) {
+			$mentorshipState = $this->mentorManager->getMentorshipStateForUser( $this->mentee );
 
-		// If mentee's status is MENTORSHIP_DISABLED (=GE decided not to display the mentorship
-		// module), enable the module, so the user can benefit from mentorship.
-		// NOTE: This intentionally does not change MENTORSHIP_OPTOUT (as in that case, the
-		// mentee explicitly said they're not interested in mentorship at all).
-		if (
-			$this->mentorManager->getMentorshipStateForUser( $this->mentee ) ===
-			MentorManager::MENTORSHIP_DISABLED
-		) {
-			if ( $bulkChange ) {
-				// mentor is changed for many mentee; do not enable mentorship for this user or
-				// notify them about the change, as that might confuse them (see T301981).
-				return $status;
+			if ( $mentorshipState === MentorManager::MENTORSHIP_ENABLED ) {
+				$this->notify( $reason );
 			}
 
-			$this->mentorManager->setMentorshipStateForUser(
-				$this->mentee,
-				MentorManager::MENTORSHIP_ENABLED
-			);
-		}
+			if ( !$bulkChange && $mentorshipState === MentorManager::MENTORSHIP_DISABLED ) {
+				// For non-bulk changes when MENTORSHIP_DISABLED (=GrowthExperiments decided not
+				// to include the mentorship module), set the state to MENTORSHIP_ENABLED to ensure
+				// the user can benefit from mentorship (T327206).
+				// NOTE: Do not enable for MENTORSHIP_OPTOUT, as that means "I'm not interested
+				// in being mentored at all" (as an explicit user choice).
+				// NOTE: Call to notify() is intentionally above this condition. For users who
+				// didn't have mentorship access before, notification "Your mentor has changed"
+				// would be confusing (T330035).
 
-		// Notify mentee about the change
-		$this->notify( $reason );
+				$this->mentorManager->setMentorshipStateForUser(
+					$this->mentee,
+					MentorManager::MENTORSHIP_ENABLED
+				);
+			}
+		}
 
 		return $status;
 	}
