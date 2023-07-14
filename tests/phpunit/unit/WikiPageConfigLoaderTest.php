@@ -15,6 +15,7 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Utils\UrlUtils;
 use MediaWikiUnitTestCase;
 use MessageSpecifier;
 use MWHttpRequest;
@@ -33,21 +34,18 @@ use WikitextContent;
  */
 class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 
-	/** @var array */
-	private $oldWgUrlProtocols;
-
-	protected function setUp(): void {
-		// work around wfParseUrl using a global
-		global $wgUrlProtocols;
-		parent::setUp();
-		$this->oldWgUrlProtocols = $wgUrlProtocols;
-		$wgUrlProtocols = [ 'http://', 'https://' ];
-	}
-
-	protected function tearDown(): void {
-		global $wgUrlProtocols;
-		parent::tearDown();
-		$wgUrlProtocols = $this->oldWgUrlProtocols;
+	private function getUrlUtils() {
+		return new UrlUtils( [
+			// UrlUtils throws if the relevant $wg(|Canonical|Internal) variable is null, but the old
+			// implementations implicitly converted it to an empty string (presumably by mistake).
+			// Preserve the old behavior for compatibility.
+			UrlUtils::SERVER => 'http://local.wiki',
+			UrlUtils::CANONICAL_SERVER => 'http://local.wiki',
+			UrlUtils::INTERNAL_SERVER => 'http://local.wiki',
+			UrlUtils::FALLBACK_PROTOCOL => 'http',
+			UrlUtils::HTTPS_PORT => 443,
+			UrlUtils::VALID_PROTOCOLS => [ 'http://', 'https://' ],
+		] );
 	}
 
 	private function internalTestLoad(
@@ -81,7 +79,8 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 			$configValidatorFactory,
 			$requestFactory,
 			$revisionLookup,
-			$titleFactory
+			$titleFactory,
+			$this->getUrlUtils()
 		);
 		$data = $loader->load( $titleValue );
 		$this->assertResultSame( $expectedData, $data );
@@ -175,7 +174,8 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 			$configValidatorFactory,
 			$this->getMockRequestFactory( '', '', 0 ),
 			$this->getMockRevisionLookup( $title, false, 0 ),
-			$this->getMockTitleFactory( '', '', false )
+			$this->getMockTitleFactory( '', '', false ),
+			$this->getUrlUtils()
 		);
 		$this->assertSame( [ 'abc' => 123 ], $loader->load( $title ) );
 	}

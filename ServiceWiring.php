@@ -928,7 +928,8 @@ return [
 				->getWikiPageConfigValidatorFactory(),
 			$services->getHttpRequestFactory(),
 			$services->getRevisionLookup(),
-			$services->getTitleFactory()
+			$services->getTitleFactory(),
+			$services->getUrlUtils()
 		);
 	},
 
