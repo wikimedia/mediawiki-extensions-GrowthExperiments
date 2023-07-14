@@ -49,8 +49,8 @@
 				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 				:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 				:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' ).text()"
-				@open="log( 'impact', 'open-streak-info-tooltip' );"
-				@close="log( 'impact', 'close-streak-info-tooltip' );"
+				@open="$log( 'impact', 'open-streak-info-tooltip' );"
+				@close="$log( 'impact', 'close-streak-info-tooltip' );"
 			>
 				<!-- &#8211; is the code for the en dash character: — -->
 				<c-text
