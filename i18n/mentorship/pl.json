@@ -77,7 +77,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Zmień swój status dostępności jeśli nie będziesz mieć czasu przez więcej niż tydzień. W czasie niedostępności pytania od twoich podopiecznych dostanie inny przewodnik(-czka).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Nie będzie cię przez:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dni",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "W polu „Nie będzie cię przez” powinna być liczba całkowita. Popraw i spróbuj ponownie.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Wartość w polu „Nie będzie cię przez” jest zbyt duża. Maksymalna liczba dni nieobecności przewodnika to 365 (jeden rok).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Wystąpił niespodziewany błąd. Prosimy spróbować ponownie później.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Twój status został zmieniony na „Aktywny(-a)”.",

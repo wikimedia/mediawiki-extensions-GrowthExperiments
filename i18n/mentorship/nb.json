@@ -77,7 +77,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Hvis {{GENDER:|du}} ikke kan være fadder i en spesifikk tidsperiode (mer enn éi uke) kan du merke deg selv som borte. I denne tidsperioden vil andre faddere motta spørsmålene fra fadderbarna dine.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Du blir borte i:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dager",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Det du skrev inn i «{{GENDER:|Du}} blir borte i» er ikke et heltall. Prøv igjen.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Det du skrev inn i «{{GENDER:|Du}} blir borte i» er for høyt. Maksimalt antall dager en fadder kan være borte i er 365 (ett år).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ukjent feil oppsto. Prøv igjen senere.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Statusen din ble endret til «Aktiv».",

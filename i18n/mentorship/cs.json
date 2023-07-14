@@ -78,7 +78,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Pokud nemůžete nějakou chvíli (více než jeden týden) působit jako {{GENDER:|mentor|mentorka}}, můžete svůj stav změnit na \"Pryč\". Během doby, kdy jste pryč, budou otázky od vašich nováčků směřovány na nějakého jiného mentora.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Budu pryč následující...",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dny",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Vstup v políčku „Budu pryč následující...“ není celé číslo. Prosím, zkuste to znovu.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Vstup v políčku „Budu pryč následující...“ je příliš velký. Maximální počet dní, po které mentor může být pryč, je 365 (tj. jeden rok).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Došlo k neznámé chybě. Zkuste to prosím později.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Váš stav byl změněn na „Aktivní“.",

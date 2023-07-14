@@ -72,7 +72,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Se não pode exercer a mentoria durante um período específico (maior que uma semana) pode configurar-se como ausente. Durante esse período outro mentor receberá perguntas dos seus mentorados.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Você irá embora por:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dias",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "O valor introduzido em \"Estará ausente durante\" não é um número inteiro. Tente novamente, por favor.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ocorreu um erro desconhecido. Por favor, tente novamente mais tarde.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Seu status foi alterado para \"Ativo\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Seu status foi alterado para \"Ausente\".",

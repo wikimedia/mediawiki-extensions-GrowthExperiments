@@ -74,7 +74,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "如果{{GENDER:|您}}无法在特定期间内（长于一周）进行指导，{{GENDER:|您}}可以将{{GENDER:|您}}设置为离开，在此期间，其他导师将会收到{{GENDER:|您}}学员的问题。",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "您将离开：",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "日",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "在“{{GENDER:|您将}}离开：”的输入内容不是整数。请再重试。",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "发生错误。请稍后重试。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "您的状态已变更为“活跃”。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "您的状态已变更为“离开”。",

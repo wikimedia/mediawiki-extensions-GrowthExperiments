@@ -74,7 +74,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Jei {{GENDER:|jūs}} negali būti mentoriumi tam tikrą laikotarpį (daugiau nei 1 savaitę), {{GENDER:|jūs}} galite nustatyti, kad {{GENDER:|esatę}} išvykę. Per tą laikotarpį kitas mentorius gaus klausimus iš {{GENDER:|jūsų}} mentees.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Jūsų nebus:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dienas",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Įvestis lauke „{{GENDER:|Jūsų}} nebus“ bėra sveikasis skaičius. Pabandykite dar kartą.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Įvestis lauke „{{GENDER:|Jūsų}} nebus“ yra per didelė. Maksimalus dienų skaičius kiek mentorius gali būti išvykęs yra 365 (vieneri metai).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Įvyko nežinoma klaida. Pabandykite dar kartą vėliau.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Jūsų būsena pakeista į „Aktyvus“.",

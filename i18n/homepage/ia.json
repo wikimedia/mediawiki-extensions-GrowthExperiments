@@ -173,6 +173,7 @@
 	"growthexperiments-specialimpact-title": "Impacto",
 	"growthexperiments-specialimpact-showing-for-other-user": "Monstrar datos de impacto pro $1",
 	"growthexperiments-specialimpact-invalid-username": "Nomine de usator mancante o invalide.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Le parametro de nomine de usator manca sur le pagina special ‘Impact’ includite.",
 	"growthexperiments-homepage-claimmentee-no-user": "Apprentisse non existe",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Tu}} es ja mentor de $1",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} ha optate pro non esser mentor",

@@ -187,6 +187,7 @@
 	"growthexperiments-specialimpact-title": "التأثير",
 	"growthexperiments-specialimpact-showing-for-other-user": "عرض بيانات وقع تأثير لـ $1",
 	"growthexperiments-specialimpact-invalid-username": "اسم المستخدم مفقود أو غير صالح.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "معلمة اسم المستخدم مفقودة في صفحة التأثير الخاصة المضمنة.",
 	"growthexperiments-homepage-claimmentee-no-user": "مرشد(ة) غير موجود(ة)",
 	"growthexperiments-homepage-claimmentee-already-mentor": "أنت {{GENDER:$2|ترشد|ترشدين}} {{GENDER:$1|المستخدم $1|المستخدمة $1}} سلفا.",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1 ألغى اشتراكه|$1 ألغت اشتراكها}} في الإرشاد",

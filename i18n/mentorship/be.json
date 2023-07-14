@@ -80,7 +80,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Калі {{GENDER:|вы}} не можаце настаўляць на пэўны час (больш за 1 тыдзень), вы можаце паставіць сябе ў адпачынак («адсутнічае», «away»). На працягу гэтага перыяду іншы настаўнік атрымае пытанні ад вашых падапечных.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Вы сыдзеце на:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "дні",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Увод у «Вы сыдзеце на:» — не цэлы лік. Калі ласка, паспрабуйце зноў.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Увод у «Вы сыдзеце на:» занадта высокі. Максімальная колькасць дзён, на якія настаўнік можа адсутнічаць — 365 (адзін год).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Адбылася невядомая памылка. Калі ласка, паспрабуйце пазней.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Ваш статус быў зменены на «Актыўны».",

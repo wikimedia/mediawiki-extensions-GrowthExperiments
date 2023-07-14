@@ -71,7 +71,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "თუკი გარკვეული დროით (1 კვირაზე მეტი ხნით) არ შეგიძლიათ მენტორობა, შესაძლებელია საკუთარი თავის გამოცხადება ადგილზე არმყოფად. ამ პერიოდის განმავლობაში სხვა მენტორი მიიღებს თქვენი მოწაფეების კითხვებს.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "წასვლის ხანგრძლივობა:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "დღე",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "„წასვლის ხანგრძლივობის“ ველში შენატანი მთელი რიცხვი არ არის. გთხოვთ, ხელახლა სცადოთ.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "„წასვლის ხანგრძლივობის“ ველში შენატანი ძალიან დიდია. იმ დღეების მაქსიმალური რაოდენობა, რომლითაც მენტორს შეუძლია წასვლა, 365-ია (ერთი წელი).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "წარმოიშვა უცნობი ხარვეზი. გთხოვთ, მოგვიანებით სცადოთ.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "თქვენი სტატუსი შეიცვალა „აქტიურით“.",

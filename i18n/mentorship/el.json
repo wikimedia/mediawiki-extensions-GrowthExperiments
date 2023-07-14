@@ -79,7 +79,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Αν {{GENDER:|εσείς}} δεν μπορείτε να καθοδηγείσετε για συγκεκριμένη χρονική περίοδο (περισσότερο απο μία εβδομάδα) {{GENDER:|εσείς}} μπορείτε να θέσετε {{GENDER:|τον}} ευατό σας ως μαρκιά. Κατά τη διάρκεια αυτής της περιόδου ένας άλλος μέντορας θα δεχτεί τις ερωτήσεις από τον καθοδηγούμενο {{GENDER:|σας}}.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "θα λείπετε για:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ημέρες",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Η εισαγωγή στο \"{{GENDER:|Θα φύγετε για}}\" δεν είναι ακέραιος. ΠΑΡΑΚΑΛΩ προσπαθησε ξανα.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Η είσοδος στο \"{{GENDER:|Θα φύγεις}}\" είναι πολύ υψηλή. Ο μέγιστος αριθμός ημερών που μπορεί να λείπει ένας μέντορας είναι 365 (ένα έτος).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Παρουσιάστηκε σφάλμα. Παρακαλούμε δοκιμάστε πάλι αργότερα.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Η κατάσταση σας άλλαξε σε \"Ενεργός\".",

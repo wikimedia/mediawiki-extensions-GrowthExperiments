@@ -61,7 +61,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Om du inte kan vara fadder en specifik tidsperiod (längre än en vecka) kan du ange att du är borta. Under den perioden kommer en annan fadder få frågor från dina nybörjare.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Du blir borta i:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dagar",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Inmatningen i \"{{GENDER:|Du}} blir borta i\" är inte ett heltal. Försök igen.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Inmatningen i \"{{GENDER:|Du}} blir borta i\" är inte ett heltal. Det högsta antalet dagar en fadder kan bli borta är 365 dagar (ett år).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ett okänt fel har uppstått. Försök igen senare.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Din status har ändrats till \"Aktiv\".",

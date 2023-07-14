@@ -84,7 +84,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "如果{{GENDER:|您}}無法在特定期間內（長於一週）進行指導，{{GENDER:|您}}可以將{{GENDER:|您自己}}設定為離開。在此期間，其他導師將會收到{{GENDER:|您的}}學員的問題。",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "您將離開：",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "日",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "在「{{GENDER:|您將}}離開：」的輸入內容不是整數。請再重試。",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "「{{GENDER:|您}}將離開：」中輸入的值太高。導師可以離開的最大天數為365天（一年）。",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "發生錯誤。請稍後重試。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "您的狀態已變更為「活躍」。",

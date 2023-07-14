@@ -72,7 +72,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Müəyyən bir müddət ərzində (1 həftədən çox) mentorluq edə bilmirsinizsə, statusunuzu qeyri-aktiv edə bilərsiniz. Bu müddət ərzində başqa bir mentor istifadəçilərinizdən suallar alacaq.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Qeyri-aktiv olma müddətiniz:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "gün",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "\"Qeyri-aktiv olma müddətiniz\"-də yazdığınız bir tam ədəd deyil. Zəhmət olmasa bir daha cəhd edin.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Naməlum xəta baş verdi. Zəhmət olmasa bir az sonra yenə cəhd edin.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Statusunuz \"aktiv\" olaraq dəyişdirildi.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Statusunuz \"qeyri-aktiv\" olaraq dəyişdirildi.",

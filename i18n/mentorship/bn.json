@@ -80,7 +80,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "যদি {{GENDER:|আপনি}} একটি নির্দিষ্ট সময়ের জন্য পরামর্শ দিতে না পারেন (১ সপ্তাহের বেশি), তবে {{GENDER:|আপনি}} {{GENDER:|আপনাকে}} নিষ্ক্রিয় হিসেবে নথিভুক্ত করতে পারেন। সেই সময়ের মধ্যে অন্য একজন মেন্টর {{GENDER:|আপনার}} পরামর্শগ্রহীতাদের কাছ থেকে প্রশ্ন পাবেন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "আপনি নিষ্ক্রিয় থাকবেন:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "দিন",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "\"{{GENDER:|আপনি}} নিষ্ক্রিয় থাকবেন\"-এর ইনপুট পূর্ণসংখ্যা হতে হবে। আবার চেষ্টা করুন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "\"{{GENDER:|আপনি}} নিষ্ক্রিয় থাকবেন\"-এ আপনার প্রদত্ত সংখ্যাটির মান অতি উচ্চ। একজন মেন্টর সর্বোচ্চ ৩৬৫ দিন (এক বছর) নিষ্ক্রিয় থাকতে পারেন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "একটি ত্রুটি দেখা দিয়েছে। অনুগ্রহ করে পরবর্তীতে আবার চেষ্টা করুন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "আপনার অবস্থা \"সক্রিয়\" হিসেবে পরিবর্তিত হয়েছে।",

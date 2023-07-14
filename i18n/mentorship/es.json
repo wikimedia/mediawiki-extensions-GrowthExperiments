@@ -86,7 +86,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Si no puedes ejercer tu labor de {{GENDER:|mentor|mentora}} durante un periodo de tiempo específico (más de 1 semana) puedes indicar que estás ausente. Durante ese periodo, otro mentor o mentora recibirá las preguntas de tus aprendices.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Estarás ausente por:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "días",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "El valor en \"Estarás fuera durante\" no es un número entero. Por favor, inténtalo de nuevo.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "La entrada en \"{{GENDER:|You'll}} be gone for\" es demasiado alta. El número máximo de días que un mentor puede ausentarse es 365 (un año).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ha ocurrido un error desconocido. Por favor, inténtalo de nuevo.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Tu estado ha cambiado a \"Activo\".",

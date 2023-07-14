@@ -76,7 +76,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "اگر برای بازهٔ زمانی مشخصی (بیش از ۱ هفته) قادر به مربی‌گری {{GENDER:|نیستید}}، می‌توانید {{GENDER:|خود}} را در حالت دور از دسترس قرار دهید. در طول این مدت، یک مربی دیگر پرسش‌های کارآموزهای {{GENDER:|شما}} را دریافت خواهد کرد.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "شما برای این مدت در دسترس نخواهید بود:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "روز",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "ورودی «{{GENDER:|شما}} برای این مدت در دسترس نخواهید بود» رقم نیست. لطفاً دوباره تلاش کنید.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "ورودی «شما برای این مدت در دسترس نخواهید بود» بسیار زیاد است. حداکثر تعداد روزهایی که یک مربی می‌تواند دور از دسترس باشد ۳۶۵ روز (یک سال) است.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "خطای نامعلومی رخ داد. لطفاً بعداً دوباره تلاش کنید.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "وضعیت شما به «فعال» تغییر یافت.",

@@ -77,7 +77,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Ha egy ideig (több mint egy hétig) nem tudsz mentorálni, távol levőnek állíthatod magadat. Ebben az időszakban a mentoráltjaid kérdéseit egy másik mentor fogja megkapni.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Nem fogsz mentorálni",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "napig",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "A „Nem fogsz mentorálni” értéke nem egész szám. Próbáld újra.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "A „Nem fogsz mentorálni” értéke túl nagy. Legfeljebb 365 napig (egy évig) lehet távol levő egy mentor.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ismeretlen hiba történt. Próbáld újra később.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "A státuszod „Aktív”-ra változott.",

@@ -75,7 +75,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Če v določenem časovnem obdobju ne morete biti {{GENDER:|mentor|mentorica|mentor_ica}} (dlje kot 1 teden), lahko {{GENDER:|nastavite}}, da {{GENDER:|ste}} odsotni. V tem obdobju bo prejel vprašanja {{GENDER:|vaših}} mentorirancev drug mentor.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Odsotni boste:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dni",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "V polje »{{GENDER:|Odsotni boste}}« vpišite celo število. Prosimo, poskusite znova.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Vnos v polju »{{GENDER:|Odsotni boste}}« je previsok. Mentor je lahko odsoten največ 365 dni (eno leto).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Prišlo je do neznane napake. Prosimo, poskusite znova pozneje.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Vaš status je bil spremenjen v »Dejaven«.",

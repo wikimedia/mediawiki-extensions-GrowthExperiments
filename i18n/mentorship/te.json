@@ -60,7 +60,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "ఒక నిర్ణీత కాలం పాటు (1 వారం కంటే ఎక్కువ) మీరు గురుత్వం చెయ్యలేని పక్షంలో మీ స్థితిని 'అందుబాటులో లేరు' అని పెట్టవచ్చు. ఆ కాలంలో మీ శిష్యుల ప్రశ్నలు మరో గురువుకు వెళ్తాయి.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "ఎన్నాళ్ళ పాటు కనబడరు:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "రోజులు",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "\"ఎన్నాళ్ళ పాటు \"{{GENDER:|కనబడరు}}\" అనే దానికి మీరు ఇచ్చినది పూర్ణాంకం కాదు. మళ్ళీ ప్రయత్నించండి.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "\"{{GENDER:|You'll}} be gone for\" లో మీరిచ్చిన సంఖ్య బాగా ఎక్కువగా ఉంది. గురువు గరిష్ఠంగా 365 రోజుల పాటు (ఒక సంవత్సరం) మాత్రమే అందుబాటులో లేకుండా వెళ్ళగలరు.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "తెలియని లోపమేదో ఎదురైంది. తరువాత మళ్ళీ ప్రయత్నించండి.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "మీ స్థితిని \"క్రియాశీలం\" కు మార్చాం.",

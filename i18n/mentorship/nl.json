@@ -75,7 +75,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Als {{GENDER:|u}} gedurende een bepaalde periode (meer dan 1 week) geen mentor kan zijn, kan {{GENDER:|u}} {{GENDER:|zichzelf}} als afwezig instellen. In die periode krijgt een andere mentor vragen van {{GENDER:|uw}} leerlingen.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "U bent weg gedurende:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dagen",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "Invoer in \"{{GENDER:|U}} bent weg gedurende\" is geen geheel getal. Probeer het opnieuw.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Invoer in \"{{GENDER:|U}} bent weg gedurende\" is te hoog. Het maximum aantal dagen dat een mentor afwezig kan zijn is 365 (een jaar).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Er is een onbekende fout opgetreden. Probeer het later opnieuw.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Uw status is gewijzigd in \"Actief\".",

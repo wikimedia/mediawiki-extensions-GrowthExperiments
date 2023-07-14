@@ -47,7 +47,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "一定期間（1週間以上）指導ができない場合は不在に設定することができます。その期間中、別の指導役が{{GENDER:|あなたの}}担当生徒からの質問を受けます。",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "不在期間:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "日",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "入力された\"不在期間\"が整数ではありません。もう一度試してください。",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "入力された\"不在期間\"が長すぎます。指導役が不在にできる最大日数は365日（1年）です。。",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "不明なエラーが発生しました。しばらくしてからもう一度お試しください。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "ステータスが\"アクティブ\"に変更されました。",
