@@ -109,10 +109,14 @@ describe( 'NoEditsDisplay', () => {
 		}, {
 			$log: logSpy
 		} );
-		const button = wrapper.get( '.ext-growthExperiments-ScoreCards__info-button' );
-		button.trigger( 'click' );
+		const scorecards = wrapper.findAllComponents( CScoreCard );
+		scorecards[ 0 ].vm.$emit( 'open' );
 		expect( logSpy ).toHaveBeenNthCalledWith( 1, 'impact', 'open-thanks-info-tooltip' );
-		button.trigger( 'click' );
+		scorecards[ 0 ].vm.$emit( 'close' );
 		expect( logSpy ).toHaveBeenNthCalledWith( 2, 'impact', 'close-thanks-info-tooltip' );
+		scorecards[ 1 ].vm.$emit( 'open' );
+		expect( logSpy ).toHaveBeenNthCalledWith( 3, 'impact', 'open-streak-info-tooltip' );
+		scorecards[ 1 ].vm.$emit( 'close' );
+		expect( logSpy ).toHaveBeenNthCalledWith( 4, 'impact', 'close-streak-info-tooltip' );
 	} );
 } );
