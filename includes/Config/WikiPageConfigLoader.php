@@ -16,6 +16,7 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Utils\UrlUtils;
 use StatusValue;
 use WANObjectCache;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -44,6 +45,7 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	private TitleFactory $titleFactory;
 	private WANObjectCache $cache;
 	private HashBagOStuff $inProcessCache;
+	private UrlUtils $urlUtils;
 
 	/**
 	 * @param WANObjectCache $cache
@@ -51,13 +53,15 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	 * @param HttpRequestFactory $requestFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param TitleFactory $titleFactory
+	 * @param UrlUtils $urlUtils
 	 */
 	public function __construct(
 		WANObjectCache $cache,
 		ConfigValidatorFactory $configValidatorFactory,
 		HttpRequestFactory $requestFactory,
 		RevisionLookup $revisionLookup,
-		TitleFactory $titleFactory
+		TitleFactory $titleFactory,
+		UrlUtils $urlUtils
 	) {
 		$this->cache = $cache;
 		$this->inProcessCache = new HashBagOStuff();
@@ -65,6 +69,7 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 		$this->requestFactory = $requestFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->titleFactory = $titleFactory;
+		$this->urlUtils = $urlUtils;
 	}
 
 	/**
@@ -187,7 +192,7 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 		// TODO: Move newcomer-tasks-* messages to...somewhere more generic
 
 		if ( $configPage->isExternal() ) {
-			$url = Util::getRawUrl( $configPage, $this->titleFactory );
+			$url = Util::getRawUrl( $configPage, $this->titleFactory, $this->urlUtils );
 			return Util::getJsonUrl( $this->requestFactory, $url );
 		} else {
 			$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, $flags );

@@ -15,6 +15,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\Utils\UrlUtils;
 use MWExceptionHandler;
 use Psr\Log\LogLevel;
 use RawMessage;
@@ -25,6 +26,7 @@ use Status;
 use StatusValue;
 use Throwable;
 use Traversable;
+use UnexpectedValueException;
 use User;
 use Wikimedia\NormalizedException\NormalizedException;
 
@@ -290,10 +292,17 @@ class Util {
 	 * @param TitleFactory $titleFactory
 	 * @return string
 	 */
-	public static function getRawUrl( LinkTarget $title, TitleFactory $titleFactory ) {
+	public static function getRawUrl(
+		LinkTarget $title,
+		TitleFactory $titleFactory,
+		UrlUtils $urlUtils
+	) {
 		// Use getFullURL to get the interwiki domain.
 		$url = $titleFactory->newFromLinkTarget( $title )->getFullURL();
-		$parts = wfParseUrl( wfExpandUrl( $url, PROTO_CANONICAL ) );
+		$parts = $urlUtils->parse( (string)$urlUtils->expand( $url, PROTO_CANONICAL ) );
+		if ( !$parts ) {
+			throw new UnexpectedValueException( 'URL is expected to be valid' );
+		}
 		$baseUrl = $parts['scheme'] . $parts['delimiter'] . $parts['host'];
 		if ( isset( $parts['port'] ) && $parts['port'] ) {
 			$baseUrl .= ':' . $parts['port'];
