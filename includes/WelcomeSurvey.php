@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments;
 
-use ExtensionRegistry;
 use FormatJson;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use IContextSource;
@@ -27,22 +26,26 @@ class WelcomeSurvey {
 	private bool $allowFreetext;
 	private LanguageNameUtils $languageNameUtils;
 	private UserOptionsManager $userOptionsManager;
+	private bool $ulsInstalled;
 
 	/**
 	 * @param IContextSource $context
 	 * @param LanguageNameUtils $languageNameUtils
 	 * @param UserOptionsManager $userOptionsManager
+	 * @param bool $ulsInstalled
 	 */
 	public function __construct(
 		IContextSource $context,
 		LanguageNameUtils $languageNameUtils,
-		UserOptionsManager $userOptionsManager
+		UserOptionsManager $userOptionsManager,
+		bool $ulsInstalled
 	) {
 		$this->context = $context;
 		$this->allowFreetext =
 			(bool)$this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
 		$this->languageNameUtils = $languageNameUtils;
 		$this->userOptionsManager = $userOptionsManager;
+		$this->ulsInstalled = $ulsInstalled;
 	}
 
 	/**
@@ -322,7 +325,7 @@ class WelcomeSurvey {
 				"group" => "email",
 			]
 		];
-		if ( !ExtensionRegistry::getInstance()->isLoaded( 'UniversalLanguageSelector' ) ) {
+		if ( !$this->ulsInstalled ) {
 			$questions['languages']['disabled'] = true;
 		}
 		return $questions;

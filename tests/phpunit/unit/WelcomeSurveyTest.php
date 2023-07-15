@@ -33,7 +33,8 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 			new WelcomeSurvey(
 				$contextMock,
 				$this->getLanguageNameUtilsMockObject(),
-				$this->createNoOpMock( UserOptionsManager::class )
+				$this->createNoOpMock( UserOptionsManager::class ),
+				false
 			)
 		);
 	}
@@ -85,7 +86,8 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		return new WelcomeSurvey(
 			$contextMock,
 			$this->getLanguageNameUtilsMockObject(),
-			$this->createNoOpMock( UserOptionsManager::class )
+			$this->createNoOpMock( UserOptionsManager::class ),
+			false
 		);
 	}
 
@@ -134,7 +136,8 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$welcomeSurvey = new WelcomeSurvey(
 			$context,
 			$this->getLanguageNameUtilsMockObject(),
-			$mockUserOptionsManager
+			$mockUserOptionsManager,
+			false
 		);
 
 		// register

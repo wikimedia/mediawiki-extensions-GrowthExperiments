@@ -15,17 +15,21 @@ use MediaWiki\User\UserOptionsManager;
 class WelcomeSurveyFactory {
 	private LanguageNameUtils $languageNameUtils;
 	private UserOptionsManager $userOptionsManager;
+	private bool $ulsInstalled;
 
 	/**
 	 * @param LanguageNameUtils $languageNameUtils
 	 * @param UserOptionsManager $userOptionsManager
+	 * @param bool $ulsInstalled
 	 */
 	public function __construct(
 		LanguageNameUtils $languageNameUtils,
-		UserOptionsManager $userOptionsManager
+		UserOptionsManager $userOptionsManager,
+		bool $ulsInstalled
 	) {
 		$this->languageNameUtils = $languageNameUtils;
 		$this->userOptionsManager = $userOptionsManager;
+		$this->ulsInstalled = $ulsInstalled;
 	}
 
 	/**
@@ -36,7 +40,8 @@ class WelcomeSurveyFactory {
 		return new WelcomeSurvey(
 			$context,
 			$this->languageNameUtils,
-			$this->userOptionsManager
+			$this->userOptionsManager,
+			$this->ulsInstalled
 		);
 	}
 }

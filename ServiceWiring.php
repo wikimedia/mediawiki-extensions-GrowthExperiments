@@ -917,7 +917,8 @@ return [
 	): WelcomeSurveyFactory {
 		return new WelcomeSurveyFactory(
 			$services->getLanguageNameUtils(),
-			$services->getUserOptionsManager()
+			$services->getUserOptionsManager(),
+			ExtensionRegistry::getInstance()->isLoaded( 'UniversalLanguageSelector' )
 		);
 	},
 
