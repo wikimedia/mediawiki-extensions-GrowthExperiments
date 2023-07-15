@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
+use ExtensionRegistry;
 use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
@@ -42,6 +43,8 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 				$mentorManager,
 				$permissionManager,
 				MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory(),
+				ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
+				ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 				$context,
 				'foo'
 			] )

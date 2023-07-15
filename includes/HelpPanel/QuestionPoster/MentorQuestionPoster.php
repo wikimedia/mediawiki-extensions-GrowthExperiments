@@ -27,6 +27,8 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 * @param MentorManager $mentorManager
 	 * @param PermissionManager $permissionManager
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+	 * @param bool $confirmEditInstalled
+	 * @param bool $flowInstalled
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitleRaw
@@ -38,6 +40,8 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 		MentorManager $mentorManager,
 		PermissionManager $permissionManager,
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
+		bool $confirmEditInstalled,
+		bool $flowInstalled,
 		IContextSource $context,
 		$body,
 		$relevantTitleRaw = ''
@@ -48,6 +52,8 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 			$titleFactory,
 			$permissionManager,
 			$perDbNameStatsdDataFactory,
+			$confirmEditInstalled,
+			$flowInstalled,
 			$context,
 			$body,
 			$relevantTitleRaw

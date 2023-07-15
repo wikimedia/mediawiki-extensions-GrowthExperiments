@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use ApiTestCase;
 use ApiUsageException;
 use DerivativeContext;
+use ExtensionRegistry;
 use FauxRequest;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
@@ -76,6 +77,8 @@ class ApiQuestionStoreTest extends ApiTestCase {
 			] ),
 			$services->getPermissionManager(),
 			$services->getPerDbNameStatsdDataFactory(),
+			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
+			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$context,
 			'foo'
 		);

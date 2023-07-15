@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
+use ExtensionRegistry;
 use FauxRequest;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use MediaWikiIntegrationTestCase;
@@ -37,6 +38,8 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
+			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
+			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$context,
 			'foo'
 		);
@@ -54,6 +57,8 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
+			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
+			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$this->buildContext(),
 			'a great question'
 		);
@@ -80,6 +85,8 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
+			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
+			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$this->buildContext(),
 			'a great question'
 		);
@@ -104,6 +111,8 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
+			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
+			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$this->buildContext(),
 			'blah',
 			'sample'
@@ -117,6 +126,8 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
+			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
+			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$this->buildContext(),
 			'blah',
 			'>123'

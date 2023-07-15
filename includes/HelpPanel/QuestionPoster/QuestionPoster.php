@@ -6,7 +6,6 @@ use CommentStoreComment;
 use Config;
 use Content;
 use DerivativeContext;
-use ExtensionRegistry;
 use Flow\Container;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
@@ -121,11 +120,16 @@ abstract class QuestionPoster {
 	 */
 	private $perDbNameStatsdDataFactory;
 
+	private bool $confirmEditInstalled = false;
+	private bool $flowInstalled = false;
+
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
 	 * @param PermissionManager $permissionManager
 	 * @param StatsdDataFactoryInterface $perDbNameStatsdDataFactory
+	 * @param bool $confirmEditInstalled
+	 * @param bool $flowInstalled
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitleRaw
@@ -136,6 +140,8 @@ abstract class QuestionPoster {
 		TitleFactory $titleFactory,
 		PermissionManager $permissionManager,
 		StatsdDataFactoryInterface $perDbNameStatsdDataFactory,
+		bool $confirmEditInstalled,
+		bool $flowInstalled,
 		IContextSource $context,
 		$body,
 		$relevantTitleRaw = ''
@@ -155,6 +161,8 @@ abstract class QuestionPoster {
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->body = trim( $body );
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->confirmEditInstalled = $confirmEditInstalled;
+		$this->flowInstalled = $flowInstalled;
 	}
 
 	/**
@@ -222,7 +230,7 @@ abstract class QuestionPoster {
 		$this->loadExistingQuestions();
 
 		// Do not let captcha to stop us
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ) ) {
+		if ( $this->confirmEditInstalled ) {
 			$scope = $this->permissionManager->addTemporaryUserRights(
 				$this->getContext()->getUser(),
 				'skipcaptcha'
@@ -235,10 +243,7 @@ abstract class QuestionPoster {
 		$contentModel = $this->getTargetContentModel();
 		if ( $contentModel === CONTENT_MODEL_WIKITEXT ) {
 			$status = $this->submitWikitext();
-		} elseif (
-			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ) &&
-			$contentModel === CONTENT_MODEL_FLOW_BOARD
-		) {
+		} elseif ( $this->flowInstalled && $contentModel === CONTENT_MODEL_FLOW_BOARD ) {
 			$status = $this->submitStructuredDiscussions();
 		} else {
 			throw new \Exception( "Content model $contentModel is not supported." );

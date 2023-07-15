@@ -45,6 +45,9 @@ class QuestionPosterFactory {
 	/** @var PrefixingStatsdDataFactoryProxy */
 	private $perDbNameStatsdDataFactory;
 
+	private bool $confirmEditInstalled;
+	private bool $flowInstalled;
+
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
@@ -53,6 +56,8 @@ class QuestionPosterFactory {
 	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
 	 *   (as opposed to the bottom). Only affects wikitext pages.
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+	 * @param bool $confirmEditInstalled
+	 * @param bool $flowInstalled
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
@@ -60,7 +65,9 @@ class QuestionPosterFactory {
 		MentorManager $mentorManager,
 		PermissionManager $permissionManager,
 		bool $helpDeskPostOnTop,
-		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
+		bool $confirmEditInstalled,
+		bool $flowInstalled
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
@@ -68,6 +75,8 @@ class QuestionPosterFactory {
 		$this->permissionManager = $permissionManager;
 		$this->helpDeskPostOnTop = $helpDeskPostOnTop;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->confirmEditInstalled = $confirmEditInstalled;
+		$this->flowInstalled = $flowInstalled;
 	}
 
 	/**
@@ -99,6 +108,8 @@ class QuestionPosterFactory {
 				$this->titleFactory,
 				$this->permissionManager,
 				$this->perDbNameStatsdDataFactory,
+				$this->confirmEditInstalled,
+				$this->flowInstalled,
 				$context,
 				$body,
 				$relevantTitle
@@ -112,6 +123,8 @@ class QuestionPosterFactory {
 				$this->mentorManager,
 				$this->permissionManager,
 				$this->perDbNameStatsdDataFactory,
+				$this->confirmEditInstalled,
+				$this->flowInstalled,
 				$context,
 				$body,
 				$relevantTitle
@@ -123,6 +136,8 @@ class QuestionPosterFactory {
 				$this->mentorManager,
 				$this->permissionManager,
 				$this->perDbNameStatsdDataFactory,
+				$this->confirmEditInstalled,
+				$this->flowInstalled,
 				$context,
 				$body,
 				$relevantTitle

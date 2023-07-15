@@ -752,7 +752,9 @@ return [
 			$growthServices->getMentorManager(),
 			$services->getPermissionManager(),
 			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' ),
-			$services->getPerDbNameStatsdDataFactory()
+			$services->getPerDbNameStatsdDataFactory(),
+			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
+			ExtensionRegistry::getInstance()->isLoaded( 'Flow' )
 		);
 	},
 
