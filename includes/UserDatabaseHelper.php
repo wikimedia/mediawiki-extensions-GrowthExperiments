@@ -64,20 +64,20 @@ class UserDatabaseHelper {
 		$queryBuilder = new SelectQueryBuilder( $this->dbr );
 		$queryBuilder->table( 'revision' );
 		$queryBuilder->join( 'page', null, 'page_id = rev_page' );
-		$queryBuilder->field( '1' );
+		$queryBuilder->field( 'page_namespace' );
 		$queryBuilder->where( [
-			'rev_actor' => $user->getActorId(),
-			'page_namespace' => NS_MAIN,
+			'rev_actor' => $user->getActorId()
 		] );
 		// Look at the user's oldest edits - arbitrary choice, other than we want the method to be
 		// deterministic. Can be done efficiently via the rev_actor_timestamp index.
 		$queryBuilder->orderBy( 'rev_timestamp', SelectQueryBuilder::SORT_ASC );
 		$queryBuilder->limit( $limit );
 		$queryBuilder->caller( __METHOD__ );
-		// Opting for code readability over the slightly more performant approach of doing the
-		// same wrapping that Database::selectRowCount() does but with an outer LIMIT of 1.
-		$rowCount = $queryBuilder->fetchRowCount();
-		return $rowCount === $limit ? null : (bool)$rowCount;
+		$result = array_map( 'intval', $queryBuilder->fetchFieldValues() );
+		if ( in_array( NS_MAIN, $result ) ) {
+			return true;
+		}
+		return count( $result ) === $limit ? null : false;
 	}
 
 }
