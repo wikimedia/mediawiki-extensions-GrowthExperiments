@@ -175,6 +175,7 @@
 	"growthexperiments-specialimpact-title": "Vpliv",
 	"growthexperiments-specialimpact-showing-for-other-user": "Prikazujem podatke o vplivu za $1!",
 	"growthexperiments-specialimpact-invalid-username": "Manjkajoče ali neveljavno uporabniško ime.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Manjka parameter uporabniškega imena na vključeni posebni strani Impact.",
 	"growthexperiments-homepage-claimmentee-no-user": "Mentoriranec_ka ne obstaja",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$1|Uporabnika|Uporabnico|Uporabnika_co}} $1 že {{GENDER:$2|mentorirate}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1 se je odpovedal|se je odpovedala|se je odpovedal_a}} mentorstvu",

@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Afaz",
+			"MagicAho",
 			"MathXplore",
 			"Omotecho",
 			"Sou0012",
@@ -73,6 +74,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|あなたの}}の紹介メッセージを「$1」に変更しました。",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "前のページ",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "次のページ",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-header": "(オプション) {{GENDER:|you}} がこの{{GENDER:$1|をスキップしたいのはなぜですか?メンティー}}?",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "送信",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "キャンセル",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "不明なエラーが発生しました。しばらくしてからもう一度お試しください。",

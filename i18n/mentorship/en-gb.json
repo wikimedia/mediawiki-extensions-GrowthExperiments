@@ -8,16 +8,7 @@
 			"TheSkull28870"
 		]
 	},
-	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-text": "If {{GENDER:|you}} wish to quit mentoring permanently, you can do so via Special:QuitMentorship. Clicking 'OK' will redirect you there.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "{{GENDER:|You}} are currently blocked. {{GENDER:|Your}} status is temporarily set to 'away' and {{GENDER:|your}} mentees are temporarily reassigned to a different mentor. If {{GENDER:|you}} are unblocked (or the block expires), then {{GENDER:|your}} status will be set to 'Active' and {{GENDER:|your}} mentees will be reassigned to {{GENDER:|you}}.",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Input in '{{GENDER:|You'll}} be gone for' is too high. The maximum number of days a mentor can be away for is $1 (one year).",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Your status was changed to 'Active'.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Your status was changed to 'Away'.",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "You can change a mentee’s mentor to yourself. This is frequently used for editing events so that instructors can be a newcomer’s mentor both on and off wiki.",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "What is 'Claim mentee'?",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Your}} load was changed to '$1'.",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Your}} introduction message was changed to '$1'.",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Open the settings dialogue",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Your personalised praise settings were saved.",
-	"growthexperiments-manage-mentors-edit-is-away-blocked": "Mentor '$1' is currently blocked, and their away status cannot be changed."
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Your personalised praise settings were saved."
 }

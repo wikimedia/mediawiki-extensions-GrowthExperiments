@@ -5,16 +5,6 @@
 			"Reedy"
 		]
 	},
-	"growthexperiments-edit-config-help-panel-view-more": "Destination page for 'View more help articles'",
-	"growthexperiments-edit-config-help-panel-links-description": "The help panel displays five links and one 'view more' link. These can be configured to be any links in the wiki, but recommendations are included below.",
-	"growthexperiments-edit-config-help-panel-links-mos-label": "1) Label of first help panel link (recommended: 'Manual of Style')",
-	"growthexperiments-edit-config-help-panel-links-editing-label": "2) Label of second help panel link (recommended: 'How to edit')",
-	"growthexperiments-edit-config-help-panel-links-images-label": "3) Label of third help panel link (recommended: 'How to insert images')",
-	"growthexperiments-edit-config-help-panel-links-references-label": "4) Label of fourth help panel link (recommended: 'How to add a reference')",
-	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Label of fifth help panel link (recommended: 'How to create an article')",
 	"growthexperiments-edit-config-personalized-praise": "Personalised praise",
-	"growthexperiments-edit-config-personalized-praise-description": "Receiving encouraging messages from established editors can improve new editor retention. The Personalised praise module surfaces praiseworthy new editors to their mentor, to help productive new editors feel more engaged and involved in the community.",
-	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "The maximum number of 'Add a link' suggested tasks a newcomer can complete daily.",
-	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "The maximum number of 'Add an image to an unillustrated article' suggested tasks a newcomer can complete daily.",
-	"growthexperiments-edit-config-newcomer-tasks-section-image-recommendation-maximum-tasks-per-day": "The maximum number of 'Add an image to an article section' suggested tasks a newcomer can complete daily."
+	"growthexperiments-edit-config-personalized-praise-description": "Receiving encouraging messages from established editors can improve new editor retention. The Personalised praise module surfaces praiseworthy new editors to their mentor, to help productive new editors feel more engaged and involved in the community."
 }
