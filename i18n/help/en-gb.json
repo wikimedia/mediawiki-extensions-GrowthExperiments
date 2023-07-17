@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piano1forte2",
+			"Reedy"
+		]
+	},
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Ready?</strong> Click '{{int:vector-view-edit}}' to get started.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "Once {{GENDER:|you}} see a correction {{GENDER:|you}} want to make, click '$1' to get started. Then go ahead and fix issues by deleting and typing as needed.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step1": "Once {{GENDER:|you}} see somewhere to add a link, click '$1' to get started. Then highlight the word or phrase want to make into a link.",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "Tap the '$1' button $2 and choose the {{SITENAME}} article from the list to which it should link.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step1": "When {{GENDER:|you}} find a sentence that needs a reference, click '$1' to get started.\n\nSome sentences even have tags showing exactly where a reference is needed.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step3": "When {{GENDER:|you've}} found a source, click at the end of the sentence and then click the '$1' button $2. Add as much information as {{GENDER:|you}} know about the source, and insert the citation.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step1": "When {{GENDER:|you}} see information that needs to be updated, click '$1' to get started.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step1": "When {{GENDER:|you}} find a section {{GENDER:|you}} want to expand, click '$1' to get started. If {{GENDER:|you}} wish, {{GENDER:|you}} can add a new header to start a section."
+}
