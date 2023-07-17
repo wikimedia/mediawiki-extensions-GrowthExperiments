@@ -12,6 +12,7 @@ use GrowthExperiments\VariantHooks;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use RequestContext;
+use User;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Homepage\HomepageModuleRegistry
@@ -51,7 +52,7 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 
 		$this->overrideConfigValue( 'GEUseNewImpactModule', $configFlag );
 		$context->setRequest( new DerivativeRequest( $context->getRequest(), $requestData ) );
-		$user = $this->getMutableTestUser()->getUser();
+		$user = $this->createMock( User::class );
 		$growthServices->getExperimentUserManager()->setVariant( $user, $userVariant );
 		$context->setUser( $user );
 

@@ -11,6 +11,7 @@ use SpecialPageTestBase;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialEnrollAsMentor
+ * @group Database
  */
 class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 

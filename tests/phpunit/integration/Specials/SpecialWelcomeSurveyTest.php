@@ -16,8 +16,11 @@ use SpecialPageTestBase;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialWelcomeSurvey
+ * @group Database
  */
 class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
+	/** @inheritDoc */
+	protected $tablesUsed = [ 'user_properties' ];
 
 	/**
 	 * @inheritDoc

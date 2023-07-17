@@ -9,6 +9,7 @@ use SpecialPageTestBase;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialMentorDashboard
+ * @group Database
  */
 class SpecialMentorDashboardTest extends SpecialPageTestBase {
 

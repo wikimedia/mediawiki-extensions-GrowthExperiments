@@ -14,6 +14,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialManageMentors
+ * @group Database
  */
 class SpecialManageMentorsTest extends SpecialPageTestBase {
 

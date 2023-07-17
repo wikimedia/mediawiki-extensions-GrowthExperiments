@@ -10,8 +10,11 @@ use Title;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Mentorship\Provider\StructuredMentorWriter
+ * @group Database
  */
 class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase {
+	/** @inheritDoc */
+	protected $tablesUsed = [ 'growthexperiments_mentor_mentee', 'revision' ];
 
 	/**
 	 * @param Title $title
@@ -53,15 +56,13 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 	 * @covers ::saveMentorData
 	 */
 	public function testEditTagged() {
-		$mentorListTitle = $this->getServiceContainer()->getTitleFactory()
-			->newFromText( 'MediaWiki:GrowthMentors.json' );
+		$mentorListTitle = $this->getNonexistingTestPage( 'MediaWiki:GrowthMentors.json' )->getTitle();
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$mentorUser = $this->getTestUser()->getUser();
 		$mentor = $geServices->getMentorProvider()
 			->newMentorFromUserIdentity( $mentorUser );
 		$writer = $geServices->getMentorWriter();
 
-		$this->assertFalse( $mentorListTitle->exists() );
 		$writer->addMentor( $mentor, $mentorUser, 'Add mentor' );
 		$this->assertTrue( $mentorListTitle->exists() );
 		$revId = $this->getLatestEditId( $mentorListTitle );

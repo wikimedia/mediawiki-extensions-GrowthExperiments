@@ -13,6 +13,7 @@ use User;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialQuitMentorship
+ * @group Database
  */
 class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 

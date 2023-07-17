@@ -29,8 +29,11 @@ use WikiPage;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HomepageHooks
+ * @group Database
  */
 class HomepageHooksTest extends MediaWikiIntegrationTestCase {
+	/** @inheritDoc */
+	protected $tablesUsed = [ 'user_properties' ];
 
 	/**
 	 * @covers ::getTaskTypesJson
