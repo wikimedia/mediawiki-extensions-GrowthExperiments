@@ -374,7 +374,7 @@
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Du}} hast {{Gender:$4|den Lotsen|die Lotsin}} {{PLURAL:$2|des Benutzers|der Benutzer}} $1 zu {{GENDER:$4|$5}} geändert. Zurück zur [[Special:MentorDashboard|Lotsen-Verwaltungsseite]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} Lotse/Lotsin wurde bereits geändert. Bist {{GENDER:$2|du}} sicher, dass {{GENDER:$2|du}} die Lotsin/den Lotsen erneut ändern willst?",
 	"growthexperiments-claimmentee-confirm": "Ja, ich möchte wirklich fortfahren",
-	"growthexperiments-log-name": "GrowthExperiments Log",
+	"growthexperiments-log-name": "GrowthExperiments-Logbuch",
 	"growthexperiments-log-header": "Dies ist das Protokoll der Aktivitäten in der GrowthExperiments-Erweiterung.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|hat sich}} {{GENDER:$6|$3}} als {{GENDER:$6|Betreuten|Betreute}} zugeordnet. ({{GENDER:$4|bisheriger Lotse|bisherige Lotsin}} war $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|hat sich}} {{GENDER:$6|$3}} als {{GENDER:$6|Betreuten|Betreute}} zugeordnet ($6 hatte bisher keine(n) Lotsin/Lotsen)",
