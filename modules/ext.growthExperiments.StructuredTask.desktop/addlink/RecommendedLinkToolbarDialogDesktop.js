@@ -258,6 +258,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.toggleDialogVisibility = function 
 	$dialog.css( 'transform', transformVal );
 	this.toolbarDialogButton.emit( 'dialogVisibilityChanged', isVisible );
 	this.isHidden = !isVisible;
+	this.annotationView.updateActiveClass( isVisible );
 };
 
 /**
