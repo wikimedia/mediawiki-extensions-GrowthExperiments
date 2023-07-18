@@ -286,8 +286,7 @@ PostEditPanel.prototype.getCard = function ( task ) {
 		url = new mw.Title( task.title ).getUrl( params );
 	}
 	// Prevents SmallTaskCard component to render the pageviews section or the loading skeleton
-	// on mobile
-	task.pageviews = OO.ui.isMobile() ? null : task.pageviews;
+	task.pageviews = null;
 
 	taskCard = new SmallTaskCard( {
 		task: task,
