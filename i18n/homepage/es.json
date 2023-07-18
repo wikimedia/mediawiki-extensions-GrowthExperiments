@@ -40,7 +40,8 @@
 			"SpikeShroom",
 			"Tgr",
 			"Jack30",
-			"JDíaz32"
+			"JDíaz32",
+			"No se"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Te damos la bienvenida}}, {{bidi:$1}}!",
@@ -152,7 +153,7 @@
 	"tag-newcomer_task_add_link-description": "Edición de la tarea \"Añadir enlace\" sugerida por el módulo de ediciones sugeridas de la página para nuevos usuarios",
 	"tag-newcomer_task_image_suggestion": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Structured_tasks/Add_an_image|Sugerencia: añadir una imagen]]",
 	"tag-newcomer_task_image_suggestion-description": "Edición de la tarea \"Añadir imágenes\" sugerida por el módulo de ediciones sugeridas de la página para nuevos usuarios",
-	"growthexperiments-homepage-help-dialog-title": "Preguntar en el café de ayuda",
+	"growthexperiments-homepage-help-dialog-title": "Preguntar en el Café de Ayuda",
 	"growthexperiments-homepage-help-header": "Obtén más ayuda para editar",
 	"growthexperiments-homepage-help-subheader": "Páginas principales de ayuda sobre la edición",
 	"growthexperiments-homepage-help-mobilebody": "Haz una pregunta en el Café de Ayuda o lee páginas de ayuda",
@@ -247,7 +248,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20-30 minutos",
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20-30 minutos",
 	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3-5 minutos",
-	"growthexperiments-homepage-suggestededits-tasktype-time-image-recommendation": "3 - 5 minutos",
+	"growthexperiments-homepage-suggestededits-tasktype-time-image-recommendation": "3-5 minutos",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "Tipo de ediciones: $1",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Fácil",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Medio",
