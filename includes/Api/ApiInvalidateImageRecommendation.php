@@ -13,9 +13,11 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Title\TitleFactory;
+use Psr\Log\LoggerAwareTrait;
 use Wikimedia\Assert\Assert;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -26,6 +28,7 @@ use Wikimedia\ParamValidator\ParamValidator;
  * when the article already has an image). See mw.libs.ge.AddImageArticleTarget.
  */
 class ApiInvalidateImageRecommendation extends ApiBase {
+	use LoggerAwareTrait;
 
 	private AddImageSubmissionHandler $imageSubmissionHandler;
 	private TaskSuggesterFactory $taskSuggesterFactory;
@@ -57,6 +60,8 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->titleFactory = $titleFactory;
+
+		$this->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 	}
 
 	/**
@@ -65,7 +70,22 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
+
 		$taskType = $this->configurationLoader->getTaskTypes()[ $params['tasktype'] ] ?? null;
+		if ( $taskType === null ) {
+			$this->logger->warning(
+				'Task type {tasktype} was not found in {configpage}',
+				[
+					'tasktype' => $params['tasktype'],
+					'configpage' => $this->getConfig()->get( 'GENewcomerTasksConfigTitle' ),
+				]
+			);
+			$this->dieWithError(
+				[ 'growthexperiments-homepage-imagesuggestiondata-not-in-config', $params['tasktype'] ],
+				'not-in-config'
+			);
+		}
+
 		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
 		'@phan-var ImageRecommendationBaseTaskType $taskType';/** @var ImageRecommendationBaseTaskType $taskType */
 		$titleValue = $params['title'];
