@@ -11,8 +11,7 @@ use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserOptionsManager;
 use StatusValue;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
-use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class MentorStatusManager implements IDBAccessObject {
@@ -53,11 +52,7 @@ class MentorStatusManager implements IDBAccessObject {
 	/** @var UserFactory */
 	private $userFactory;
 
-	/** @var IReadableDatabase */
-	private $dbr;
-
-	/** @var IDatabase */
-	private $dbw;
+	private IConnectionProvider $connectionProvider;
 
 	private HashBagOStuff $inprocessCache;
 
@@ -65,21 +60,18 @@ class MentorStatusManager implements IDBAccessObject {
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserFactory $userFactory
-	 * @param IReadableDatabase $dbr
-	 * @param IDatabase $dbw
+	 * @param IConnectionProvider $connectionProvider
 	 */
 	public function __construct(
 		UserOptionsManager $userOptionsManager,
 		UserIdentityLookup $userIdentityLookup,
 		UserFactory $userFactory,
-		IReadableDatabase $dbr,
-		IDatabase $dbw
+		IConnectionProvider $connectionProvider
 	) {
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userFactory = $userFactory;
-		$this->dbr = $dbr;
-		$this->dbw = $dbw;
+		$this->connectionProvider = $connectionProvider;
 		$this->inprocessCache = new HashBagOStuff();
 	}
 
@@ -245,7 +237,9 @@ class MentorStatusManager implements IDBAccessObject {
 	 */
 	public function getAwayMentors( int $flags = 0 ): array {
 		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
+		$db = ( $index === DB_PRIMARY )
+			? $this->connectionProvider->getPrimaryDatabase()
+			: $this->connectionProvider->getReplicaDatabase();
 
 		// This should be okay, as up_property is an index, and we won't
 		// get a lot of rows to process.

@@ -20,8 +20,8 @@ use MWTimestamp;
 use Status;
 use StatusValue;
 use Wikimedia\Rdbms\DBReadOnlyError;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\IReadableDatabase;
 use WikitextContent;
 
 /**
@@ -31,8 +31,7 @@ use WikitextContent;
  */
 class LinkRecommendationUpdater {
 
-	/** @var IReadableDatabase */
-	private $dbr;
+	private IConnectionProvider $connectionProvider;
 
 	/** @var RevisionStore */
 	private $revisionStore;
@@ -59,7 +58,7 @@ class LinkRecommendationUpdater {
 	private $linkRecommendationTaskType;
 
 	/**
-	 * @param IReadableDatabase $dbr Read handle to the main database.
+	 * @param IConnectionProvider $connectionProvider
 	 * @param RevisionStore $revisionStore
 	 * @param NameTableStore $changeDefNameTableStore
 	 * @param PageProps $pageProps
@@ -70,7 +69,7 @@ class LinkRecommendationUpdater {
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 */
 	public function __construct(
-		IReadableDatabase $dbr,
+		IConnectionProvider $connectionProvider,
 		RevisionStore $revisionStore,
 		NameTableStore $changeDefNameTableStore,
 		PageProps $pageProps,
@@ -79,7 +78,7 @@ class LinkRecommendationUpdater {
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkRecommendationStore $linkRecommendationStore
 	) {
-		$this->dbr = $dbr;
+		$this->connectionProvider = $connectionProvider;
 		$this->revisionStore = $revisionStore;
 		$this->changeDefNameTableStore = $changeDefNameTableStore;
 		$this->pageProps = $pageProps;
@@ -190,7 +189,8 @@ class LinkRecommendationUpdater {
 		}
 
 		// 5. exclude pages where the last edit is a link recommendation edit or its revert.
-		$tags = ChangeTags::getTagsWithData( $this->dbr, null, $revision->getId() );
+		$dbr = $this->connectionProvider->getReplicaDatabase();
+		$tags = ChangeTags::getTagsWithData( $dbr, null, $revision->getId() );
 		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
 			return $this->failure( 'last edit is a link recommendation' );
 		}
@@ -204,7 +204,7 @@ class LinkRecommendationUpdater {
 		if ( is_array( $revertTagData ) ) {
 			$linkRecommendationChangeTagId = $this->changeDefNameTableStore
 				->acquireId( LinkRecommendationTaskTypeHandler::CHANGE_TAG );
-			$revertedAddLinkEditCount = $this->dbr->selectRowCount(
+			$revertedAddLinkEditCount = $dbr->selectRowCount(
 				[ 'revision', 'change_tag' ],
 				'1',
 				[

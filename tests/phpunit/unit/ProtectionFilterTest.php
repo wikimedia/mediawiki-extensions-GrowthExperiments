@@ -15,6 +15,7 @@ use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use stdClass;
 use TitleValue;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
@@ -34,7 +35,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 		$filter = new ProtectionFilter(
 			$this->getMockTitleFactory( $pageMap ),
 			$this->getMockLinkBatchFactory(),
-			$this->getMockDatabase( $pageMap )
+			$this->getMockConnectionProvider( $pageMap )
 		);
 		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_EASY );
 		$taskSet = new TaskSet( [
@@ -98,9 +99,9 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param array[] $map "<ns>:<title>" => [ exists, is protected ]
-	 * @return IReadableDatabase
+	 * @return IConnectionProvider
 	 */
-	protected function getMockDatabase( array $map ) {
+	protected function getMockConnectionProvider( array $map ): IConnectionProvider {
 		$dbr = $this->createMock( IReadableDatabase::class );
 		$dbr->expects( $this->exactly( 4 ) )
 			->method( 'select' )
@@ -121,7 +122,9 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 					}
 					return new ArrayIterator( $data );
 				} );
-		return $dbr;
+		$connProvider = $this->createMock( IConnectionProvider::class );
+		$connProvider->method( 'getReplicaDatabase' )->willReturn( $dbr );
+		return $connProvider;
 	}
 
 }

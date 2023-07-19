@@ -156,7 +156,7 @@ return [
 			$geServices->getMentorManager(),
 			$geServices->getMentorStore(),
 			$services->getUserFactory(),
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
+			$services->getDBLoadBalancerFactory()
 		);
 	},
 
@@ -369,8 +369,7 @@ return [
 	): LinkRecommendationStore {
 		$loadBalancer = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
 		return new LinkRecommendationStore(
-			$loadBalancer->getConnection( DB_REPLICA ),
-			$loadBalancer->getConnection( DB_PRIMARY ),
+			$loadBalancer,
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory(),
 			$services->getPageStore()
@@ -382,7 +381,7 @@ return [
 	): LinkRecommendationUpdater {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new LinkRecommendationUpdater(
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getDBLoadBalancerFactory(),
 			$services->getRevisionStore(),
 			$services->getNameTableStoreFactory()->getChangeTagDef(),
 			$services->getPageProps(),
@@ -417,7 +416,7 @@ return [
 		return new DatabaseMenteeOverviewDataProvider(
 			$services->getMainWANObjectCache(),
 			$geServices->getMentorStore(),
-			$geServices->getLoadBalancer()->getConnection( DB_REPLICA )
+			$geServices->getLoadBalancer()
 		);
 	},
 
@@ -431,7 +430,7 @@ return [
 			$services->getActorMigration(),
 			$services->getUserIdentityLookup(),
 			$services->getTempUserConfig(),
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA, 'vslow' )
+			$services->getDBLoadBalancerFactory()
 		);
 		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $provider;
@@ -519,8 +518,7 @@ return [
 			$services->getUserOptionsManager(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
-			$services->getDBLoadBalancer()->getConnection( DB_PRIMARY )
+			$services->getDBLoadBalancerFactory()
 		);
 	},
 
@@ -537,8 +535,7 @@ return [
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
 			$services->getJobQueueGroup(),
-			$lb->getConnection( DB_REPLICA ),
-			$lb->getConnection( DB_PRIMARY ),
+			$lb,
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
 				$geServices->getGrowthConfig()->get( 'CommandLineMode' ) ||
 				RequestContext::getMain()->getRequest()->wasPosted()
@@ -656,7 +653,7 @@ return [
 		return new ProtectionFilter(
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory(),
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
+			$services->getDBLoadBalancerFactory()
 		);
 	},
 

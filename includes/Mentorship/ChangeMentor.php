@@ -14,7 +14,7 @@ use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use Status;
 use User;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 class ChangeMentor {
 	private UserIdentity $mentee;
@@ -25,7 +25,7 @@ class ChangeMentor {
 	private MentorManager $mentorManager;
 	private MentorStore $mentorStore;
 	private UserFactory $userFactory;
-	private IReadableDatabase $dbr;
+	private IConnectionProvider $connectionProvider;
 	private ?User $menteeUser = null;
 
 	/**
@@ -36,7 +36,7 @@ class ChangeMentor {
 	 * @param MentorManager $mentorManager
 	 * @param MentorStore $mentorStore
 	 * @param UserFactory $userFactory
-	 * @param IReadableDatabase $dbr
+	 * @param IConnectionProvider $connectionProvider
 	 */
 	public function __construct(
 		UserIdentity $mentee,
@@ -46,7 +46,7 @@ class ChangeMentor {
 		MentorManager $mentorManager,
 		MentorStore $mentorStore,
 		UserFactory $userFactory,
-		IReadableDatabase $dbr
+		IConnectionProvider $connectionProvider
 	) {
 		$this->logger = $logger;
 
@@ -55,7 +55,7 @@ class ChangeMentor {
 		$this->mentorManager = $mentorManager;
 		$this->mentorStore = $mentorStore;
 		$this->userFactory = $userFactory;
-		$this->dbr = $dbr;
+		$this->connectionProvider = $connectionProvider;
 		$this->mentor = $mentor ? $mentor->getUserIdentity() : null;
 	}
 
@@ -65,7 +65,7 @@ class ChangeMentor {
 	 * @return bool
 	 */
 	public function wasMentorChanged(): bool {
-		$res = $this->dbr->newSelectQueryBuilder()
+		$res = $this->connectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
 			->select( [ 'log_page' ] )
 			->from( 'logging' )
 			->where( [

@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Title\TitleFactory;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * Filter out protected items from a small resultset.
@@ -18,22 +18,21 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
 
-	/** @var IReadableDatabase */
-	private $dbr;
+	private IConnectionProvider $connectionProvider;
 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param IReadableDatabase $dbr
+	 * @param IConnectionProvider $connectionProvider
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
-		IReadableDatabase $dbr
+		IConnectionProvider $connectionProvider
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->linkBatchFactory = $linkBatchFactory;
-		$this->dbr = $dbr;
+		$this->connectionProvider = $connectionProvider;
 	}
 
 	/** @inheritDoc */
@@ -57,7 +56,7 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 		// In the longer run, adding batch querying to RestrictionStore itself would be nice.
 		$results = [];
 		if ( $validTasks ) {
-			$results = $this->dbr->select(
+			$results = $this->connectionProvider->getReplicaDatabase()->select(
 				'page_restrictions',
 				[ 'pr_page' ],
 				[

@@ -22,8 +22,7 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 			$this->getServiceContainer()->getUserFactory(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
 			$this->getServiceContainer()->getJobQueueGroup(),
-			$this->db,
-			$this->db,
+			$this->getServiceContainer()->getDBLoadBalancer(),
 			$wasPosted
 		);
 		$store->setLogger( new NullLogger() );

@@ -15,6 +15,7 @@ use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 use Status;
 use User;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\SelectQueryBuilder;
@@ -44,7 +45,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				$this->createMock( MentorManager::class ),
 				$this->createMock( MentorStore::class ),
 				$this->getMockUserFactory(),
-				$this->createMock( IReadableDatabase::class )
+				$this->createMock( IConnectionProvider::class )
 			)
 		);
 	}
@@ -74,6 +75,8 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$builderMock->method( 'fetchRow' )->willReturn( $resultMock );
 		$dbMock = $this->createMock( IReadableDatabase::class );
 		$dbMock->method( 'newSelectQueryBuilder' )->willReturn( $builderMock );
+		$connProvider = $this->createMock( IConnectionProvider::class );
+		$connProvider->method( 'getReplicaDatabase' )->willReturn( $dbMock );
 		$changeMentor = new ChangeMentor(
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
@@ -88,7 +91,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
-			$dbMock
+			$connProvider
 		);
 		$this->assertNotFalse( $changeMentor->wasMentorChanged() );
 	}
@@ -111,7 +114,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
-			$this->createMock( IReadableDatabase::class )
+			$this->createMock( IConnectionProvider::class )
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
@@ -142,7 +145,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
-			$this->createMock( IReadableDatabase::class )
+			$this->createMock( IConnectionProvider::class )
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
@@ -169,7 +172,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
-			$this->createMock( IReadableDatabase::class )
+			$this->createMock( IConnectionProvider::class )
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'SameMentor', 3 );
@@ -197,7 +200,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->createMock( MentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
-			$this->createMock( IReadableDatabase::class )
+			$this->createMock( IConnectionProvider::class )
 		);
 		$status = $changeMentor->execute( $this->getUserMock( 'SameMentor', 3 ), 'test' );
 		$this->assertFalse( $status->isOK() );
@@ -260,7 +263,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$mentorManagerMock,
 			$mentorStoreMock,
 			$this->getMockUserFactory(),
-			$this->createMock( IReadableDatabase::class )
+			$this->createMock( IConnectionProvider::class )
 		);
 		$changeMentor->isMentorshipEnabled = $isMentorshipEnabled;
 

@@ -9,24 +9,21 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use WANObjectCache;
-use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class DatabaseMentorStore extends MentorStore {
 
 	private UserFactory $userFactory;
 	private UserIdentityLookup $userIdentityLookup;
 	private JobQueueGroup $jobQueueGroup;
-	private IReadableDatabase $dbr;
-	private IDatabase $dbw;
+	private ILoadBalancer $loadBalancer;
 
 	/**
 	 * @param WANObjectCache $wanCache
 	 * @param UserFactory $userFactory
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param JobQueueGroup $jobQueueGroup
-	 * @param IReadableDatabase $dbr
-	 * @param IDatabase $dbw
+	 * @param ILoadBalancer $loadBalancer
 	 * @param bool $wasPosted
 	 */
 	public function __construct(
@@ -34,8 +31,7 @@ class DatabaseMentorStore extends MentorStore {
 		UserFactory $userFactory,
 		UserIdentityLookup $userIdentityLookup,
 		JobQueueGroup $jobQueueGroup,
-		IReadableDatabase $dbr,
-		IDatabase $dbw,
+		ILoadBalancer $loadBalancer,
 		bool $wasPosted
 	) {
 		parent::__construct( $wanCache, $wasPosted );
@@ -43,8 +39,7 @@ class DatabaseMentorStore extends MentorStore {
 		$this->userFactory = $userFactory;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->jobQueueGroup = $jobQueueGroup;
-		$this->dbr = $dbr;
-		$this->dbw = $dbw;
+		$this->loadBalancer = $loadBalancer;
 	}
 
 	/**
@@ -56,7 +51,7 @@ class DatabaseMentorStore extends MentorStore {
 		$flags
 	): ?UserIdentity {
 		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
+		$db = $this->loadBalancer->getConnection( $index );
 		$id = $db->newSelectQueryBuilder()
 			->select( 'gemm_mentor_id' )
 			->from( 'growthexperiments_mentor_mentee' )
@@ -94,7 +89,7 @@ class DatabaseMentorStore extends MentorStore {
 		int $flags = 0
 	): array {
 		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
+		$db = $this->loadBalancer->getConnection( $index );
 
 		$conds = [
 			'gemm_mentor_id' => $mentor->getId()
@@ -146,8 +141,9 @@ class DatabaseMentorStore extends MentorStore {
 		?UserIdentity $mentor,
 		string $mentorRole
 	): void {
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		if ( $mentor === null ) {
-			$this->dbw->delete(
+			$dbw->delete(
 				'growthexperiments_mentor_mentee',
 				[
 					'gemm_mentee_id' => $mentee->getId(),
@@ -157,7 +153,7 @@ class DatabaseMentorStore extends MentorStore {
 			);
 			return;
 		}
-		$this->dbw->upsert(
+		$dbw->upsert(
 			'growthexperiments_mentor_mentee',
 			[
 				'gemm_mentee_id' => $mentee->getId(),
@@ -205,7 +201,7 @@ class DatabaseMentorStore extends MentorStore {
 		UserIdentity $mentee,
 		bool $isActive
 	): void {
-		$this->dbw->update(
+		$this->loadBalancer->getConnection( DB_PRIMARY )->update(
 			'growthexperiments_mentor_mentee',
 			[ 'gemm_mentee_is_active' => $isActive ],
 			[
@@ -225,7 +221,7 @@ class DatabaseMentorStore extends MentorStore {
 			return null;
 		}
 
-		return (bool)$this->dbr->newSelectQueryBuilder()
+		return (bool)$this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
 			->select( 'gemm_mentee_is_active' )
 			->from( 'growthexperiments_mentor_mentee' )
 			->where( [

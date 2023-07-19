@@ -16,17 +16,14 @@ use RuntimeException;
 use stdClass;
 use TitleValue;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * Service that handles access to the link recommendation related database tables.
  */
 class LinkRecommendationStore {
 
-	/** @var IDatabase Read handle */
-	private $dbr;
-
-	/** @var IDatabase Write handle */
-	private $dbw;
+	private ILoadBalancer $loadBalancer;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -38,21 +35,18 @@ class LinkRecommendationStore {
 	private $pageStore;
 
 	/**
-	 * @param IDatabase $dbr
-	 * @param IDatabase $dbw
+	 * @param ILoadBalancer $loadBalancer
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param PageStore $pageStore
 	 */
 	public function __construct(
-		IDatabase $dbr,
-		IDatabase $dbw,
+		ILoadBalancer $loadBalancer,
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
 		PageStore $pageStore
 	) {
-		$this->dbr = $dbr;
-		$this->dbw = $dbw;
+		$this->loadBalancer = $loadBalancer;
 		$this->titleFactory = $titleFactory;
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->pageStore = $pageStore;
@@ -185,10 +179,11 @@ class LinkRecommendationStore {
 			// $revId can be outdated due to replag; we don't want to delete the record then.
 			$conds[] = "gelr_page = $pageId AND gelr_revision >= $revId";
 		}
-		return array_map( 'intval', $this->dbr->selectFieldValues(
+		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		return array_map( 'intval', $dbr->selectFieldValues(
 			'growthexperiments_link_recommendations',
 			'gelr_page',
-			$this->dbr->makeList( $conds, IDatabase::LIST_OR ),
+			$dbr->makeList( $conds, IDatabase::LIST_OR ),
 			__METHOD__
 		) );
 	}
@@ -200,7 +195,7 @@ class LinkRecommendationStore {
 	 * @return int[]
 	 */
 	public function listPageIds( int $limit, int $from = null ): array {
-		return array_map( 'intval', $this->dbr->selectFieldValues(
+		return array_map( 'intval', $this->loadBalancer->getConnection( DB_REPLICA )->selectFieldValues(
 			'growthexperiments_link_recommendations',
 			'gelr_page',
 			$from ? [ "gelr_page > $from" ] : [],
@@ -225,7 +220,7 @@ class LinkRecommendationStore {
 			'gelr_page' => $pageId,
 			'gelr_data' => json_encode( $linkRecommendation->toArray() ),
 		];
-		$this->dbw->replace(
+		$this->loadBalancer->getConnection( DB_PRIMARY )->replace(
 			'growthexperiments_link_recommendations',
 			'gelr_revision',
 			$row,
@@ -239,12 +234,13 @@ class LinkRecommendationStore {
 	 * @return int The number of deleted rows.
 	 */
 	public function deleteByPageIds( array $pageIds ): int {
-		$this->dbw->delete(
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$dbw->delete(
 			'growthexperiments_link_recommendations',
 			[ 'gelr_page' => $pageIds ],
 			__METHOD__
 		);
-		return $this->dbw->affectedRows();
+		return $dbw->affectedRows();
 	}
 
 	/**
@@ -271,7 +267,7 @@ class LinkRecommendationStore {
 	 * @return int[]
 	 */
 	public function getExcludedLinkIds( int $pageId, int $limit ): array {
-		$pageIdsToExclude = $this->dbr->selectFieldValues(
+		$pageIdsToExclude = $this->loadBalancer->getConnection( DB_REPLICA )->selectFieldValues(
 			'growthexperiments_link_submissions',
 			'gels_target',
 			[
@@ -357,7 +353,7 @@ class LinkRecommendationStore {
 			}
 		}
 		// No need to check if $rows is empty, Database::insert() does that.
-		$this->dbw->insert(
+		$this->loadBalancer->getConnection( DB_PRIMARY )->insert(
 			'growthexperiments_link_submissions',
 			$rows,
 			__METHOD__
@@ -388,7 +384,7 @@ class LinkRecommendationStore {
 	 * @return IDatabase
 	 */
 	public function getDB( int $index ): IDatabase {
-		return ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
+		return $this->loadBalancer->getConnection( $index );
 	}
 
 	/**
