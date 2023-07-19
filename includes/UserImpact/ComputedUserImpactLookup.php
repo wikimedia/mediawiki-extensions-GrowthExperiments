@@ -34,7 +34,7 @@ use StatusValue;
 use TitleFormatter;
 use TitleValue;
 use User;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -67,8 +67,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	public const PAGEVIEW_DAYS = 60;
 
 	private ServiceOptions $config;
-	private IDatabase $dbr;
-	private IDatabase $dbw;
+	private IConnectionProvider $connectionProvider;
 	private NameTableStore $changeTagDefStore;
 	private UserFactory $userFactory;
 	private UserOptionsLookup $userOptionsLookup;
@@ -83,8 +82,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 	/**
 	 * @param ServiceOptions $config
-	 * @param IDatabase $dbr
-	 * @param IDatabase $dbw
+	 * @param IConnectionProvider $connectionProvider
 	 * @param NameTableStore $changeTagDefStore
 	 * @param UserFactory $userFactory
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -99,8 +97,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 */
 	public function __construct(
 		ServiceOptions $config,
-		IDatabase $dbr,
-		IDatabase $dbw,
+		IConnectionProvider $connectionProvider,
 		NameTableStore $changeTagDefStore,
 		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup,
@@ -114,8 +111,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		?ThanksQueryHelper $thanksQueryHelper
 	) {
 		$this->config = $config;
-		$this->dbr = $dbr;
-		$this->dbw = $dbw;
+		$this->connectionProvider = $connectionProvider;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -219,7 +215,9 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 */
 	private function getEditData( User $user, int $flags ): EditData {
 		[ $index, $options ] = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
+		$db = ( $index === DB_PRIMARY )
+			? $this->connectionProvider->getPrimaryDatabase()
+			: $this->connectionProvider->getReplicaDatabase();
 
 		$queryBuilder = new SelectQueryBuilder( $db );
 		$queryBuilder->table( 'revision' )

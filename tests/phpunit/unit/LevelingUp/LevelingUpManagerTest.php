@@ -21,7 +21,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * @covers \GrowthExperiments\LevelingUp\LevelingUpManager
@@ -247,8 +247,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 					'GENewcomerTasksLinkRecommendationsEnabled' => true,
 				] )
 			),
-			$this->createNoOpAbstractMock( IReadableDatabase::class ),
-			$this->createNoOpAbstractMock( IReadableDatabase::class ),
+			$this->createNoOpAbstractMock( IConnectionProvider::class ),
 			$this->createNoOpAbstractMock( NameTableStore::class ),
 			$userOptionsLookup ?? $this->getUserOptionsLookup(),
 			$this->createNoOpAbstractMock( UserFactory::class ),

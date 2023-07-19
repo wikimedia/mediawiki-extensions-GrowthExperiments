@@ -999,7 +999,7 @@ return [
 		MediaWikiServices $services
 	): ImageRecommendationSubmissionLogFactory {
 		return new ImageRecommendationSubmissionLogFactory(
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getDBLoadBalancerFactory(),
 			$services->getUserOptionsLookup()
 		);
 	},
@@ -1008,7 +1008,7 @@ return [
 		MediaWikiServices $services
 	): SectionImageRecommendationSubmissionLogFactory {
 		return new SectionImageRecommendationSubmissionLogFactory(
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getDBLoadBalancerFactory(),
 			$services->getUserOptionsLookup()
 		);
 	},
@@ -1017,7 +1017,7 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationSubmissionLogFactory {
 		return new LinkRecommendationSubmissionLogFactory(
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getDBLoadBalancerFactory(),
 			$services->getUserOptionsLookup()
 		);
 	},
@@ -1049,7 +1049,7 @@ return [
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$services->getPerDbNameStatsdDataFactory(),
 			$services->getRevisionLookup(),
-			$services->getDBLoadBalancer(),
+			$services->getDBLoadBalancerFactory(),
 			$services->getUserIdentityUtils()
 		);
 	},
@@ -1080,8 +1080,7 @@ return [
 
 		return new ComputedUserImpactLookup(
 			new ServiceOptions( ComputedUserImpactLookup::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
-			$services->getDBLoadBalancer()->getConnection( DB_PRIMARY ),
+			$services->getDBLoadBalancerFactory(),
 			$services->getChangeTagDefStore(),
 			$services->getUserFactory(),
 			$services->getUserOptionsLookup(),
@@ -1100,9 +1099,7 @@ return [
 		MediaWikiServices $services
 	): UserImpactLookup {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$dbr = $growthServices->getLoadBalancer()->getConnection( DB_REPLICA );
-		$dbw = $growthServices->getLoadBalancer()->getConnection( DB_PRIMARY );
-		return new DatabaseUserImpactStore( $dbr, $dbw );
+		return new DatabaseUserImpactStore( $growthServices->getLoadBalancer() );
 	},
 
 	'GrowthExperimentsUserImpactFormatter' => static function (
@@ -1118,7 +1115,7 @@ return [
 	): UserDatabaseHelper {
 		return new UserDatabaseHelper(
 			$services->getUserFactory(),
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
+			$services->getDBLoadBalancerFactory()
 		);
 	},
 
@@ -1137,8 +1134,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new LevelingUpManager(
 			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
-			$services->getDBLoadBalancer()->getConnection( DB_PRIMARY ),
+			$services->getDBLoadBalancerFactory(),
 			$services->getChangeTagDefStore(),
 			$services->getUserOptionsLookup(),
 			$services->getUserFactory(),

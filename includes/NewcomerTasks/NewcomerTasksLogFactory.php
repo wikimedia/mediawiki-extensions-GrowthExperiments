@@ -7,20 +7,20 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserTimeCorrection;
 use MWTimestamp;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class NewcomerTasksLogFactory {
 
-	private IReadableDatabase $dbr;
+	private IConnectionProvider $connectionProvider;
 	private UserOptionsLookup $userOptionsLookup;
 
 	/**
-	 * @param IReadableDatabase $dbr
+	 * @param IConnectionProvider $connectionProvider
 	 * @param UserOptionsLookup $userOptionsLookup
 	 */
-	public function __construct( IReadableDatabase $dbr, UserOptionsLookup $userOptionsLookup ) {
-		$this->dbr = $dbr;
+	public function __construct( IConnectionProvider $connectionProvider, UserOptionsLookup $userOptionsLookup ) {
+		$this->connectionProvider = $connectionProvider;
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
@@ -35,14 +35,15 @@ class NewcomerTasksLogFactory {
 		$localMidnight = new DateTime( 'T00:00', $userTimeCorrection->getTimeZone() );
 		$utcTimestamp = MWTimestamp::convert( TS_MW, $localMidnight->getTimestamp() );
 
-		return $this->dbr->newSelectQueryBuilder()
+		$dbr = $this->connectionProvider->getReplicaDatabase();
+		return $dbr->newSelectQueryBuilder()
 			->select( [ 'log_action' ] )
 			->from( 'logging' )
 			->where( [
 				'log_type' => 'growthexperiments',
 				'log_action' => $logAction,
 				'actor_name' => $user->getName(),
-				$this->dbr->buildComparison( '>', [ 'log_timestamp' => $utcTimestamp ] )
+				$dbr->buildComparison( '>', [ 'log_timestamp' => $utcTimestamp ] )
 			] )
 			->join( 'actor', null, 'log_actor=actor_id' );
 	}

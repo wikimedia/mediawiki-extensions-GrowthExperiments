@@ -18,8 +18,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
-use Wikimedia\Rdbms\DBConnRef;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Rest\Handler\NewcomerTaskCompleteHandler
@@ -186,10 +185,6 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 			[ 'copyedit' => new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 				'link-recommendation' => new TaskType( 'link-recommendation', TaskType::DIFFICULTY_EASY ) ]
 		);
-		$loadBalancer = $this->createMock( ILoadBalancer::class );
-		$loadBalancer->method( 'getConnection' )->willReturn(
-			$this->createMock( DBConnRef::class )
-		);
 		$userIdentityUtils = $this->createMock( UserIdentityUtils::class );
 		$userIdentityUtils->method( 'isNamed' )
 			->willReturnCallback( static function ( UserIdentity $userIdentity ) {
@@ -202,7 +197,7 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 			$configurationLoader,
 			$this->createNoOpMock( \PrefixingStatsdDataFactoryProxy::class ),
 			$revisionLookup ?? $this->createMock( RevisionLookup::class ),
-			$loadBalancer,
+			$this->createMock( IConnectionProvider::class ),
 			$userIdentityUtils,
 			new HashConfig( $config ),
 			$user

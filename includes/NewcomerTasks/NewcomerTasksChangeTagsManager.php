@@ -17,8 +17,7 @@ use MediaWiki\User\UserOptionsLookup;
 use PrefixingStatsdDataFactoryProxy;
 use RequestContext;
 use StatusValue;
-use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 class NewcomerTasksChangeTagsManager {
 
@@ -32,8 +31,8 @@ class NewcomerTasksChangeTagsManager {
 	private $userOptionsLookup;
 	/** @var PrefixingStatsdDataFactoryProxy */
 	private $perDbNameStatsdDataFactory;
-	/** @var IReadableDatabase */
-	private $dbr;
+	/** @var IConnectionProvider */
+	private $connectionProvider;
 	/** @var UserIdentityUtils */
 	private $userIdentityUtils;
 	/** @var Config|null */
@@ -47,7 +46,7 @@ class NewcomerTasksChangeTagsManager {
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param RevisionLookup $revisionLookup
-	 * @param ILoadBalancer $loadBalancer
+	 * @param IConnectionProvider $connectionProvider
 	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param Config|null $config
 	 * @param UserIdentity|null $user
@@ -59,7 +58,7 @@ class NewcomerTasksChangeTagsManager {
 		ConfigurationLoader $configurationLoader,
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		RevisionLookup $revisionLookup,
-		ILoadBalancer $loadBalancer,
+		IConnectionProvider $connectionProvider,
 		UserIdentityUtils $userIdentityUtils,
 		Config $config = null,
 		UserIdentity $user = null
@@ -69,7 +68,7 @@ class NewcomerTasksChangeTagsManager {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
-		$this->dbr = $loadBalancer->getConnection( DB_REPLICA );
+		$this->connectionProvider = $connectionProvider;
 		$this->userIdentityUtils = $userIdentityUtils;
 		$this->config = $config;
 		$this->user = $user;
@@ -148,7 +147,7 @@ class NewcomerTasksChangeTagsManager {
 		$rc_id = null;
 		$log_id = null;
 		$existingTags = ChangeTags::getTags(
-			$this->dbr,
+			$this->connectionProvider->getReplicaDatabase(),
 			$rc_id,
 			$revId,
 			$log_id

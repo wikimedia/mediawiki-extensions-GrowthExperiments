@@ -20,7 +20,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use Psr\Log\LoggerInterface;
 use RequestContext;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * Manage the "leveling up" of a user, as the user progresses in completing suggested edit tasks.
@@ -43,8 +43,7 @@ class LevelingUpManager {
 	];
 
 	private ServiceOptions $options;
-	private IReadableDatabase $dbReplica;
-	private IReadableDatabase $dbPrimary;
+	private IConnectionProvider $connectionProvider;
 	private NameTableStore $changeTagDefStore;
 	private UserOptionsLookup $userOptionsLookup;
 	private UserFactory $userFactory;
@@ -57,8 +56,7 @@ class LevelingUpManager {
 
 	/**
 	 * @param ServiceOptions $options
-	 * @param IReadableDatabase $dbReplica
-	 * @param IReadableDatabase $dbPrimary
+	 * @param IConnectionProvider $connectionProvider
 	 * @param NameTableStore $changeTagDefStore
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param UserFactory $userFactory
@@ -71,8 +69,7 @@ class LevelingUpManager {
 	 */
 	public function __construct(
 		ServiceOptions $options,
-		IReadableDatabase $dbReplica,
-		IReadableDatabase $dbPrimary,
+		IConnectionProvider $connectionProvider,
 		NameTableStore $changeTagDefStore,
 		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory,
@@ -85,8 +82,7 @@ class LevelingUpManager {
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
-		$this->dbReplica = $dbReplica;
-		$this->dbPrimary = $dbPrimary;
+		$this->connectionProvider = $connectionProvider;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userFactory = $userFactory;
@@ -256,7 +252,9 @@ class LevelingUpManager {
 		}
 
 		$wasPosted = RequestContext::getMain()->getRequest()->wasPosted();
-		$db = $wasPosted ? $this->dbPrimary : $this->dbReplica;
+		$db = $wasPosted
+			? $this->connectionProvider->getPrimaryDatabase()
+			: $this->connectionProvider->getReplicaDatabase();
 
 		$user = $this->userFactory->newFromUserIdentity( $userIdentity );
 		$tagId = $this->changeTagDefStore->acquireId( TaskTypeHandler::NEWCOMER_TASK_TAG );

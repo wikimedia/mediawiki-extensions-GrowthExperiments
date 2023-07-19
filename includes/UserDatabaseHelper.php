@@ -4,7 +4,7 @@ namespace GrowthExperiments;
 
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
@@ -12,19 +12,19 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
  */
 class UserDatabaseHelper {
 
-	private IDatabase $dbr;
 	private UserFactory $userFactory;
+	private IConnectionProvider $connectionProvider;
 
 	/**
 	 * @param UserFactory $userFactory
-	 * @param IDatabase $dbr Read handle to the database with the user table.
+	 * @param IConnectionProvider $connectionProvider For the database with the user table.
 	 */
 	public function __construct(
 		UserFactory $userFactory,
-		IDatabase $dbr
+		IConnectionProvider $connectionProvider
 	) {
 		$this->userFactory = $userFactory;
-		$this->dbr = $dbr;
+		$this->connectionProvider = $connectionProvider;
 	}
 
 	/**
@@ -40,11 +40,12 @@ class UserDatabaseHelper {
 	 * @return int|null User ID, or null if no user has registered on or after that timestamp.
 	 */
 	public function findFirstUserIdForRegistrationTimestamp( $registrationTimestamp ): ?int {
-		$registrationTimestamp = $this->dbr->timestamp( $registrationTimestamp );
-		$queryBuilder = new SelectQueryBuilder( $this->dbr );
+		$dbr = $this->connectionProvider->getReplicaDatabase();
+		$registrationTimestamp = $dbr->timestamp( $registrationTimestamp );
+		$queryBuilder = new SelectQueryBuilder( $dbr );
 		$queryBuilder->table( 'user' );
 		$queryBuilder->field( 'user_id' );
-		$queryBuilder->where( "user_registration >= " . $this->dbr->addQuotes( $registrationTimestamp ) );
+		$queryBuilder->where( "user_registration >= " . $dbr->addQuotes( $registrationTimestamp ) );
 		$queryBuilder->orderBy( 'user_id', SelectQueryBuilder::SORT_ASC );
 		$queryBuilder->limit( 1 );
 		$queryBuilder->caller( __METHOD__ );
@@ -61,7 +62,7 @@ class UserDatabaseHelper {
 	 */
 	public function hasMainspaceEdits( UserIdentity $userIdentity, int $limit = 1000 ): ?bool {
 		$user = $this->userFactory->newFromUserIdentity( $userIdentity );
-		$queryBuilder = new SelectQueryBuilder( $this->dbr );
+		$queryBuilder = new SelectQueryBuilder( $this->connectionProvider->getReplicaDatabase() );
 		$queryBuilder->table( 'revision' );
 		$queryBuilder->join( 'page', null, 'page_id = rev_page' );
 		$queryBuilder->field( 'page_namespace' );

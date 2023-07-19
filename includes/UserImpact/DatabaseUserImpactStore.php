@@ -4,7 +4,7 @@ namespace GrowthExperiments\UserImpact;
 
 use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class DatabaseUserImpactStore implements UserImpactStore {
@@ -14,22 +14,15 @@ class DatabaseUserImpactStore implements UserImpactStore {
 	/** @internal only exposed for tests */
 	public const TABLE_NAME = 'growthexperiments_user_impact';
 
-	/** @var IDatabase */
-	private $dbr;
-
-	/** @var IDatabase */
-	private $dbw;
+	private ILoadBalancer $loadBalancer;
 
 	/**
-	 * @param IDatabase $dbr
-	 * @param IDatabase $dbw
+	 * @param ILoadBalancer $loadBalancer
 	 */
 	public function __construct(
-		IDatabase $dbr,
-		IDatabase $dbw
+		ILoadBalancer $loadBalancer
 	) {
-		$this->dbr = $dbr;
-		$this->dbw = $dbw;
+		$this->loadBalancer = $loadBalancer;
 	}
 
 	/** @inheritDoc */
@@ -49,7 +42,7 @@ class DatabaseUserImpactStore implements UserImpactStore {
 		}
 
 		$userImpacts = array_fill_keys( $userIds, null );
-		$queryBuilder = new SelectQueryBuilder( $this->dbr );
+		$queryBuilder = new SelectQueryBuilder( $this->loadBalancer->getConnection( DB_REPLICA ) );
 		$queryBuilder->table( self::TABLE_NAME );
 		$queryBuilder->fields( [ 'geui_user_id', 'geui_data' ] );
 		$queryBuilder->where( [ 'geui_user_id' => $userIds ] );
@@ -69,11 +62,12 @@ class DatabaseUserImpactStore implements UserImpactStore {
 	 * @return void
 	 */
 	public function setUserImpact( UserImpact $userImpact ): void {
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$data = [
 			'geui_data' => json_encode( $userImpact, JSON_UNESCAPED_UNICODE ),
-			'geui_timestamp' => $this->dbw->timestamp( $userImpact->getGeneratedAt() ),
+			'geui_timestamp' => $dbw->timestamp( $userImpact->getGeneratedAt() ),
 		];
-		$this->dbw->upsert(
+		$dbw->upsert(
 			self::TABLE_NAME,
 			[
 				'geui_user_id' => $userImpact->getUser()->getId(),
