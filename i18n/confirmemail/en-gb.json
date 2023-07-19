@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piano1forte2"
+		]
+	},
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hi}} $2,\n\nThanks for adding an email to your {{SITENAME}} account, registered from IP address $1.\n\nPlease click on the button below to confirm this is the email address you'd like to link to your account '$2':\n\n$3\n\nNote: this confirmation code <strong>expires at $4</strong>.\n\nThanks,\n\n{{SITENAME}}\n\n----\n\nTo cancel the email address confirmation (because you did not register the account or for any other reason), click on this cancellation link:\n\n$5",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hi}} $2,\n\nThanks for adding an email to your {{SITENAME}} account, registered from IP address $1.\n\nPlease click on the link below to confirm this is the email address you'd like to link to your account '$2':\n\n$3\n\nNote: this confirmation code expires at $4.\n\nThanks,\n\n{{SITENAME}}\n\n----\n\nTo cancel the email address confirmation (because you did not register the account or for any other reason), click on this cancellation link:\n\n$5"
+}

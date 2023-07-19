@@ -2,8 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Afia360",
-			"Ohvet"
+			"Ohvet",
+			"Piano1forte2",
+			"Reedy"
 		]
 	},
-	"growthexperiments-help-panel-submit-question-button-text": "Ma amansan nhunu"
+	"growthexperiments-help-panel-submit-question-button-text": "Ma amansan nhunu",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-text-value": "Images come from Wikimedia Commons, a collection of freely licenced images used by Wikipedia."
 }
