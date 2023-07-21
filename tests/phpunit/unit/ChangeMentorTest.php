@@ -194,28 +194,45 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param int $originalStatus
-	 * @param int $expectedStatus
+	 * @param string|null $expectedError
+	 * @param int $expectedMentorshipStatus
+	 * @param bool $expectedNotify
+	 * @param int $originalMentorshipStatus
+	 * @param bool $isMentorshipEnabled
+	 * @param bool $bulkChange
 	 * @covers ::execute
 	 * @dataProvider provideExecuteMenteeStatus
 	 */
-	public function testExecuteMenteeStatus( int $originalStatus, int $expectedStatus ) {
+	public function testExecuteMenteeStatus(
+		?string $expectedError,
+		int $expectedMentorshipStatus,
+		bool $expectedNotify,
+		int $originalMentorshipStatus,
+		bool $isMentorshipEnabled,
+		bool $bulkChange
+	) {
 		$menteeMock = $this->getUserMock( 'Mentee', 1 );
+		$newMentorMock = $this->getUserMock( 'NewMentor', 4 );
 
 		$mentorManagerMock = $this->createMock( MentorManager::class );
 		$mentorManagerMock->expects( $this->atLeastOnce() )
 			->method( 'getMentorshipStateForUser' )
 			->with( $menteeMock )
-			->willReturn( $originalStatus );
+			->willReturn( $originalMentorshipStatus );
 
-		if ( $originalStatus === $expectedStatus ) {
+		if ( $originalMentorshipStatus === $expectedMentorshipStatus ) {
 			$mentorManagerMock->expects( $this->never() )
 				->method( 'setMentorshipStateForUser' );
 		} else {
 			$mentorManagerMock->expects( $this->once() )
 				->method( 'setMentorshipStateForUser' )
-				->with( $menteeMock, $expectedStatus );
+				->with( $menteeMock, $expectedMentorshipStatus );
 		}
+
+		$mentorStoreMock = $this->createMock( MentorStore::class );
+		$mentorStoreMock->expects( $expectedError === null ? $this->once() : $this->never() )
+			->method( 'setMentorForUser' )
+			->with( $menteeMock, $newMentorMock, MentorStore::ROLE_PRIMARY );
 
 		$changeMentor = new ChangeMentorForTests(
 			$menteeMock,
@@ -229,18 +246,85 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				IMentorWeights::WEIGHT_NORMAL
 			),
 			$mentorManagerMock,
-			$this->createMock( MentorStore::class ),
-			$this->createMock( UserFactory::class ),
+			$mentorStoreMock,
+			$this->createNoOpMock( UserFactory::class ),
 			$this->createMock( IReadableDatabase::class )
 		);
-		$changeMentor->execute( $this->getUserMock( 'NewMentor', 4 ), 'test' );
+		$changeMentor->isMentorshipEnabled = $isMentorshipEnabled;
+
+		$result = $changeMentor->execute(
+			$newMentorMock,
+			'test',
+			$bulkChange
+		);
+
+		$this->assertSame( $expectedNotify, $changeMentor->didNotify );
+		if ( $expectedError === null ) {
+			$this->assertTrue( $result->isOK() );
+		} else {
+			$this->assertTrue( $result->hasMessage( $expectedError ) );
+			$this->assertFalse( $result->isOK() );
+		}
 	}
 
 	public static function provideExecuteMenteeStatus() {
 		return [
-			'enabled' => [ MentorManager::MENTORSHIP_ENABLED, MentorManager::MENTORSHIP_ENABLED ],
-			'disabled' => [ MentorManager::MENTORSHIP_DISABLED, MentorManager::MENTORSHIP_ENABLED ],
-			'opt-out' => [ MentorManager::MENTORSHIP_OPTED_OUT, MentorManager::MENTORSHIP_OPTED_OUT ],
+			'enabled, nonbulk' => [
+				'expectedError' => null,
+				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'expectedNotify' => true,
+				'originalMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'isMentorshipEnabled' => true,
+				'bulkChange' => false,
+			],
+			'enabled, bulk' => [
+				'expectedError' => null,
+				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'expectedNotify' => true,
+				'originalMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'isMentorshipEnabled' => true,
+				'bulkChange' => true,
+			],
+			'enabled, no mentorship' => [
+				'expectedError' => null,
+				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'expectedNotify' => false,
+				'originalMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'isMentorshipEnabled' => false,
+				'bulkChange' => false,
+			],
+			'disabled, nonbulk' => [
+				'expectedError' => null,
+				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'expectedNotify' => false,
+				'originalMentorshipStatus' => MentorManager::MENTORSHIP_DISABLED,
+				'isMentorshipEnabled' => true,
+				'bulkChange' => false,
+			],
+			'disabled, bulk' => [
+				'expectedError' => null,
+				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_DISABLED,
+				'expectedNotify' => false,
+				'originalMentorshipStatus' => MentorManager::MENTORSHIP_DISABLED,
+				'isMentorshipEnabled' => true,
+				'bulkChange' => true,
+			],
+			'opted_out, nonbulk' => [
+				'expectedError' => 'growthexperiments-homepage-claimmentee-opt-out',
+				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_OPTED_OUT,
+				'expectedNotify' => false,
+				'originalMentorshipStatus' => MentorManager::MENTORSHIP_OPTED_OUT,
+				'isMentorshipEnabled' => true,
+				'bulkChange' => false,
+			],
+			'opted_out, bulk' => [
+				'expectedError' => 'growthexperiments-homepage-claimmentee-opt-out',
+				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_OPTED_OUT,
+				'expectedNotify' => false,
+				'originalMentorshipStatus' => MentorManager::MENTORSHIP_OPTED_OUT,
+				'isMentorshipEnabled' => true,
+				'bulkChange' => true,
+			],
 		];
 	}
 
