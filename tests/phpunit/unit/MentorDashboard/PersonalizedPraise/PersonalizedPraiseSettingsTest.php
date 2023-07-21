@@ -81,12 +81,12 @@ class PersonalizedPraiseSettingsTest extends MediaWikiUnitTestCase {
 			],
 			'maxEdits set' => [
 				new PraiseworthyConditions( 200, 8, 7 ),
-				FormatJson::encode( [ 'maxEdits' => 200, ] ),
+				FormatJson::encode( [ PraiseworthyConditions::SETTING_MAX_EDITS => 200, ] ),
 				500, 8, 7
 			],
 			'minEdits set' => [
 				new PraiseworthyConditions( 500, 200, 7 ),
-				FormatJson::encode( [ 'minEdits' => 200, ] ),
+				FormatJson::encode( [ PraiseworthyConditions::SETTING_MIN_EDITS => 200, ] ),
 				500, 8, 7
 			],
 			'something else set' => [
