@@ -14,7 +14,6 @@
 					'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe'
 				).text() }}
 			</label>
-
 			<div class="ext-growthExperiments-PersonalizedPraiseSettings__field_flexbox">
 				<c-number-input
 					v-model="settingsData.minEdits"
@@ -28,6 +27,23 @@
 					:menu-items="timeframeItems()"
 				></cdx-select>
 			</div>
+
+			<label>
+				{{ $i18n(
+					'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts'
+				).text() }}
+			</label>
+			<c-number-input
+				v-model="settingsData.maxReverts"
+				class="ext-growthExperiments-PersonalizedPraiseSettings__input"
+				min="0"
+				step="1"
+			></c-number-input>
+			<c-text color="subtle" class="ext-growthExperiments-PersonalizedPraiseSettings__help_text">
+				{{ $i18n(
+					'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts-help'
+				).text() }}
+			</c-text>
 		</section>
 
 		<h3 class="no-gutter">
@@ -105,6 +121,7 @@ module.exports = exports = {
 	},
 	props: {
 		minEdits: { type: Number, default: undefined },
+		maxReverts: { type: Number, default: undefined },
 		days: { type: Number, default: undefined },
 		messageSubject: { type: String, default: undefined },
 		messageText: { type: String, default: undefined },
@@ -115,6 +132,7 @@ module.exports = exports = {
 		return {
 			settingsData: {
 				minEdits: this.minEdits,
+				maxReverts: this.maxReverts,
 				days: this.days,
 				messageSubject: this.messageSubject,
 				messageText: this.messageText,
@@ -129,6 +147,10 @@ module.exports = exports = {
 	},
 	methods: {
 		onSettingsUpdate() {
+			if ( this.$data.settingsData.maxReverts === '' ) {
+				this.$data.settingsData.maxReverts = null;
+			}
+
 			this.$emit( 'update:settings', this.$data.settingsData );
 		},
 		timeframeItems() {

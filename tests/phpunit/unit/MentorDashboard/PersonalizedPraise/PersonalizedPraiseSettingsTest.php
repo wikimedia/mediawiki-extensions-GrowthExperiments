@@ -42,6 +42,7 @@ class PersonalizedPraiseSettingsTest extends MediaWikiUnitTestCase {
 	 * @param string $settingsValue
 	 * @param int $maxEdits
 	 * @param int $minEdits
+	 * @param int|null $maxReverts
 	 * @param int $minDays
 	 * @covers ::getPraiseworthyConditions
 	 * @dataProvider provideGetPraiseworthyConditions
@@ -51,13 +52,15 @@ class PersonalizedPraiseSettingsTest extends MediaWikiUnitTestCase {
 		string $settingsValue,
 		int $maxEdits,
 		int $minEdits,
+		?int $maxReverts,
 		int $minDays
 	) {
 		$settings = new PersonalizedPraiseSettings(
 			new HashConfig( [
 				'GEPersonalizedPraiseDays' => $minDays,
 				'GEPersonalizedPraiseMinEdits' => $minEdits,
-				'GEPersonalizedPraiseMaxEdits' => $maxEdits
+				'GEPersonalizedPraiseMaxEdits' => $maxEdits,
+				'GEPersonalizedPraiseMaxReverts' => $maxReverts,
 			] ),
 			$this->createMock( MessageLocalizer::class ),
 			$this->newUserOptionsLookupMock( $settingsValue ),
@@ -66,33 +69,43 @@ class PersonalizedPraiseSettingsTest extends MediaWikiUnitTestCase {
 			$this->createMock( RevisionLookup::class )
 		);
 
-		$this->assertEquals(
-			$expected,
-			$settings->getPraiseworthyConditions( $this->mentor )
+		$this->assertSame(
+			$expected->jsonSerialize(),
+			$settings->getPraiseworthyConditions( $this->mentor )->jsonSerialize()
 		);
 	}
 
 	public static function provideGetPraiseworthyConditions() {
 		return [
 			'none set' => [
-				new PraiseworthyConditions( 500, 8, 7 ),
+				new PraiseworthyConditions( 500, 8, 12, 7 ),
 				'{}',
-				500, 8, 7
+				500, 8, 12, 7
 			],
 			'maxEdits set' => [
-				new PraiseworthyConditions( 200, 8, 7 ),
+				new PraiseworthyConditions( 200, 8, 12, 7 ),
 				FormatJson::encode( [ PraiseworthyConditions::SETTING_MAX_EDITS => 200, ] ),
-				500, 8, 7
+				500, 8, 12, 7
 			],
 			'minEdits set' => [
-				new PraiseworthyConditions( 500, 200, 7 ),
+				new PraiseworthyConditions( 500, 200, 12, 7 ),
 				FormatJson::encode( [ PraiseworthyConditions::SETTING_MIN_EDITS => 200, ] ),
-				500, 8, 7
+				500, 8, 12, 7
+			],
+			'maxReverts set' => [
+				new PraiseworthyConditions( 500, 8, 200, 7 ),
+				FormatJson::encode( [ PraiseworthyConditions::SETTING_MAX_REVERTS => 200, ] ),
+				500, 8, 12, 7
+			],
+			'maxReverts null' => [
+				new PraiseworthyConditions( 500, 8, null, 7 ),
+				'{}',
+				500, 8, null, 7
 			],
 			'something else set' => [
-				new PraiseworthyConditions( 500, 8, 7 ),
+				new PraiseworthyConditions( 500, 8, 12, 7 ),
 				FormatJson::encode( [ 'foo' => 200, ] ),
-				500, 8, 7
+				500, 8, 12, 7
 			],
 		];
 	}

@@ -91,6 +91,22 @@ class PersonalizedPraiseSettings {
 	}
 
 	/**
+	 * Simulation of (?int)$value
+	 *
+	 * @note Could be replaced with https://wiki.php.net/rfc/nullable-casting, if it ever becomes
+	 * a part of PHP.
+	 * @param mixed $value
+	 * @return int|null Null if $value is null, otherwise (int)$value.
+	 */
+	private function castToNullableInt( $value ): ?int {
+		if ( $value === null ) {
+			return null;
+		}
+
+		return (int)$value;
+	}
+
+	/**
 	 * Get praiseworthy conditions for a mentor
 	 *
 	 * Defaults are provided by Community configuration as:
@@ -113,6 +129,8 @@ class PersonalizedPraiseSettings {
 				$this->wikiConfig->get( 'GEPersonalizedPraiseMaxEdits' ) ),
 			(int)( $settings[PraiseworthyConditions::SETTING_MIN_EDITS] ??
 				$this->wikiConfig->get( 'GEPersonalizedPraiseMinEdits' ) ),
+			$this->castToNullableInt( $settings[PraiseworthyConditions::SETTING_MAX_REVERTS] ??
+				$this->wikiConfig->get( 'GEPersonalizedPraiseMaxReverts' ) ),
 			(int)( $settings[PraiseworthyConditions::SETTING_DAYS] ??
 				$this->wikiConfig->get( 'GEPersonalizedPraiseDays' ) ),
 		);

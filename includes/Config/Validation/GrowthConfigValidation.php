@@ -86,6 +86,9 @@ class GrowthConfigValidation implements IConfigValidator {
 			'GEPersonalizedPraiseMaxEdits' => [
 				'type' => 'int',
 			],
+			'GEPersonalizedPraiseMaxReverts' => [
+				'type' => '?int',
+			],
 		];
 	}
 

@@ -166,6 +166,11 @@ class PraiseworthyConditionsLookup {
 		if ( $menteeImpact->getTotalEditsCount() >= $conditions->getMaxEdits() ) {
 			return false;
 		}
+		if (
+			$conditions->getMaxReverts() !== null &&
+			$menteeImpact->getRevertedEditCount() > $conditions->getMaxReverts() ) {
+			return false;
+		}
 
 		$datePeriod = $this->buildDatePeriod( $conditions->getDays() );
 		return $this->getEditsInDatePeriod( $menteeImpact, $datePeriod ) >= $conditions->getMinEdits();

@@ -19,6 +19,8 @@ trait DatatypeValidationTrait {
 				return is_bool( $value );
 			case 'int':
 				return is_int( $value );
+			case '?int':
+				return $value === null || is_int( $value );
 			case 'string':
 				return is_string( $value );
 			case '?string':

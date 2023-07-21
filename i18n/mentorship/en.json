@@ -139,6 +139,8 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Settings",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Praise-worthy mentees metric",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe": "Edits within a time frame",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts": "Maximum number of reverts the mentee can have",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts-help": "If this field is empty, then the mentee's reverted edit count is ignored",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours": "Last 48 hours",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week": "Last week",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks": "Last 2 weeks",

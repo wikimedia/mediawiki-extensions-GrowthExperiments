@@ -8,6 +8,7 @@ class PraiseworthyConditions implements JsonSerializable {
 
 	public const SETTING_MAX_EDITS = 'maxEdits';
 	public const SETTING_MIN_EDITS = 'minEdits';
+	public const SETTING_MAX_REVERTS = 'maxReverts';
 	public const SETTING_DAYS = 'days';
 
 	/** @var int Maximum number of edits a mentee can have to be praiseworthy */
@@ -15,6 +16,11 @@ class PraiseworthyConditions implements JsonSerializable {
 
 	/** @var int Minimum number of edits a mentee must have to be praiseworthy */
 	private int $minEdits;
+
+	/** @var int|null Maximum number of reverted edits a mentee can have to be praiseworthy or
+	 * null if the check should be skipped.
+	 */
+	private ?int $maxReverts;
 
 	/**
 	 * @var int
@@ -27,15 +33,18 @@ class PraiseworthyConditions implements JsonSerializable {
 	/**
 	 * @param int $maxEdits
 	 * @param int $minEdits
+	 * @param int|null $maxReverts
 	 * @param int $days
 	 */
 	public function __construct(
 		int $maxEdits,
 		int $minEdits,
+		?int $maxReverts,
 		int $days
 	) {
 		$this->maxEdits = $maxEdits;
 		$this->minEdits = $minEdits;
+		$this->maxReverts = $maxReverts;
 		$this->days = $days;
 	}
 
@@ -44,7 +53,8 @@ class PraiseworthyConditions implements JsonSerializable {
 		return [
 			self::SETTING_MAX_EDITS => $this->maxEdits,
 			self::SETTING_MIN_EDITS => $this->minEdits,
-			self::SETTING_DAYS => $this->days
+			self::SETTING_MAX_REVERTS => $this->maxReverts,
+			self::SETTING_DAYS => $this->days,
 		];
 	}
 
@@ -60,6 +70,14 @@ class PraiseworthyConditions implements JsonSerializable {
 	 */
 	public function getMinEdits(): int {
 		return $this->minEdits;
+	}
+
+	/**
+	 * @return int|null Maximum number of reverted edits a mentee can have to be praiseworthy.
+	 * Can be null if the check should be skipped.
+	 */
+	public function getMaxReverts(): ?int {
+		return $this->maxReverts;
 	}
 
 	/**

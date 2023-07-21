@@ -47,6 +47,7 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomRe
 		'GEPersonalizedPraiseDays',
 		'GEPersonalizedPraiseMinEdits',
 		'GEPersonalizedPraiseMaxEdits',
+		'GEPersonalizedPraiseMaxReverts',
 	];
 
 	/**
