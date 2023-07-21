@@ -18,10 +18,25 @@ module.exports = ( function () {
 			return '';
 		}
 		// The following classes are used here:
-		// * addlink-onboarding-content-image1
-		// * addlink-onboarding-content-image2
-		// * addlink-onboarding-content-image3
+		// * addsectionimage-onboarding-content-image1
+		// * addsectionimage-onboarding-content-image2
+		// * addsectionimage-onboarding-content-image3
 		return 'addsectionimage-onboarding-content-image' + panelNumber + heroImageModifier;
+	}
+
+	/**
+	 * Get the alt text for the corresponding hero image for the specified panel
+	 *
+	 * @param {number} panelNumber Panel for which the hero image class is for
+	 * @return {string}
+	 */
+	function getImageAltText( panelNumber ) {
+		// The following messages are used here:
+		// * growthexperiments-addsectionimage-onboarding-content-step1-alt-text
+		// * growthexperiments-addsectionimage-onboarding-content-step2-alt-text
+		// * growthexperiments-addsectionimage-onboarding-content-step3-alt-text
+		// * growthexperiments-addsectionimage-onboarding-content-step4-alt-text
+		return mw.message( 'growthexperiments-addsectionimage-onboarding-content-step' + panelNumber + '-alt-text' ).text();
 	}
 
 	/**
@@ -43,7 +58,7 @@ module.exports = ( function () {
 			}
 			return $p;
 		} ) );
-		return content.createPanel( title, $content, getHeroClass( id ) );
+		return content.createPanel( title, $content, getHeroClass( id ), getImageAltText( id ) );
 	}
 
 	return {

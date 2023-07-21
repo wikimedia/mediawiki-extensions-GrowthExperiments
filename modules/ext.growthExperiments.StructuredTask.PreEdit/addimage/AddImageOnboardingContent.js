@@ -9,7 +9,7 @@ module.exports = ( function () {
 	/**
 	 * Make a paragraph element
 	 *
-	 * @param {string|jQuery} text Text or element with with to make a paragraph
+	 * @param {string|jQuery} text Text or element with which to make a paragraph
 	 * @param {string[]} extraClasses
 	 * @return {jQuery}
 	 */
@@ -110,28 +110,32 @@ module.exports = ( function () {
 					'growthexperiments-addimage-onboarding-content-intro-title'
 				).text(),
 				$content: getIntroContent(),
-				heroImageClassName: 'addimage-onboarding-content-image1' + heroImageModifier
+				heroImageClassName: 'addimage-onboarding-content-image1' + heroImageModifier,
+				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-intro-image-alt-text' ).text()
 			},
 			imageDetails: {
 				title: mw.message(
 					'growthexperiments-addimage-onboarding-content-imagedetails-title'
 				).text(),
 				$content: getImageDetailsContent(),
-				heroImageClassName: 'addimage-onboarding-content-image2' + heroImageModifier
+				heroImageClassName: 'addimage-onboarding-content-image2' + heroImageModifier,
+				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-imagedetails-image-alt-text' ).text()
 			},
 			article: {
 				title: mw.message(
 					'growthexperiments-addimage-onboarding-content-article-title'
 				).text(),
 				$content: getArticleContent(),
-				heroImageClassName: 'addimage-onboarding-content-image3' + heroImageModifier
+				heroImageClassName: 'addimage-onboarding-content-image3' + heroImageModifier,
+				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-article-image-alt-text' ).text()
 			},
 			decision: {
 				title: mw.message(
 					'growthexperiments-addimage-onboarding-content-decision-title'
 				).text(),
 				$content: getDecisionContent(),
-				heroImageClassName: 'addimage-onboarding-content-image4' + heroImageModifier
+				heroImageClassName: 'addimage-onboarding-content-image4' + heroImageModifier,
+				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-decision-image-alt-text' ).text()
 			}
 		};
 	}
@@ -144,7 +148,8 @@ module.exports = ( function () {
 	 */
 	function createPanelFromData( data ) {
 		var heroImageClassName = hasHeroImage ? data.heroImageClassName : '';
-		return content.createPanel( data.title, data.$content, heroImageClassName );
+		var heroImageAltText = hasHeroImage ? data.heroImageAltText : '';
+		return content.createPanel( data.title, data.$content, heroImageClassName, heroImageAltText );
 	}
 
 	return {
