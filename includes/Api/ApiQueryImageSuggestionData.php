@@ -14,7 +14,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use IApiMessage;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Title\TitleFactory;
+use Psr\Log\LoggerAwareTrait;
 use StatusValue;
 use Title;
 use Wikimedia\Assert\Assert;
@@ -28,6 +30,7 @@ use Wikimedia\ParamValidator\ParamValidator;
  * - Image suggestion metadata is cached
  */
 class ApiQueryImageSuggestionData extends ApiQueryBase {
+	use LoggerAwareTrait;
 
 	private ImageRecommendationProvider $imageRecommendationProvider;
 	private ConfigurationLoader $configurationLoader;
@@ -55,6 +58,8 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		$this->configurationLoader = $configurationLoader;
 		$this->config = $config;
 		$this->titleFactory = $titleFactory;
+
+		$this->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 	}
 
 	/** @inheritDoc */
@@ -73,6 +78,13 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		$taskType = $allTaskTypes[$params['tasktype']] ?? null;
 
 		if ( $taskType === null ) {
+			$this->logger->warning(
+				'Task type {tasktype} was not found in {configpage}',
+				[
+					'tasktype' => $params['tasktype'],
+					'configpage' => $this->getConfig()->get( 'GENewcomerTasksConfigTitle' ),
+				]
+			);
 			$this->dieWithError(
 				[ 'growthexperiments-homepage-imagesuggestiondata-not-in-config', $params['tasktype'] ],
 				'not-in-config'
