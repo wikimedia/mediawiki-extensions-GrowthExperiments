@@ -15,6 +15,9 @@ use MediaWiki\User\UserIdentity;
  * It also makes ChangeMentor consider Homepage enabled for everyone.
  */
 class ChangeMentorForTests extends ChangeMentor {
+	public bool $didNotify = false;
+	public bool $isMentorshipEnabled = true;
+
 	/** @inheritDoc */
 	protected function log( string $reason, bool $forceBot ) {
 		// no-op
@@ -22,11 +25,12 @@ class ChangeMentorForTests extends ChangeMentor {
 
 	/** @inheritDoc */
 	protected function notify( string $reason ) {
-		// no-op
+		// record notification has happened for tests
+		$this->didNotify = true;
 	}
 
 	/** @inheritDoc */
 	protected function isMentorshipEnabledForUser( UserIdentity $user ): bool {
-		return true;
+		return $this->isMentorshipEnabled;
 	}
 }
