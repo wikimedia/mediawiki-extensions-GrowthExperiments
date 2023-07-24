@@ -3,9 +3,6 @@
 	@media print {
 		display: none;
 	}
-	position: fixed;
-	bottom: 2em;
-	right: 1em;
 	animation: help-panel-slidein 800ms;
 
 	&.animate-out {
@@ -17,6 +14,12 @@
 	.client-js &:not( .mw-ge-help-panel-ready ) {
 		display: none;
 	}
+}
+
+.mw-ge-help-panel-widget-overlay .mw-ge-help-panel-cta {
+	position: fixed;
+	bottom: 2em;
+	right: 1em;
 }
 
 @keyframes help-panel-slidein {

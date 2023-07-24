@@ -40,6 +40,10 @@
 			$body = $( 'body' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
+			// If standardized menu area is available - use that.
+			helpButtonLocationDock = mw.util.addPortletLink( 'p-dock-bottom', '#', '' ),
+			helpButtonLocation = helpButtonLocationDock ?
+				$( helpButtonLocationDock ).html( '' ) : $overlay,
 			logger = new HelpPanelLogger( configData.GEHelpPanelLoggingEnabled, {
 				previousEditorInterface: suggestedEditSession.editorInterface,
 				// If the user is following a link in a suggested edit task card (which has a
@@ -108,7 +112,7 @@
 			// Don't reattach the button wrapper if it's already attached to the overlay, otherwise
 			// the animation happens twice
 			if ( $buttonWrapper.parent()[ 0 ] !== $overlay[ 0 ] ) {
-				$overlay.append( $buttonWrapper );
+				$buttonWrapper.appendTo( helpButtonLocation );
 				isCtaHidden = false;
 			} else if ( isCtaHidden ) {
 				toggleHelpButtonVisibility( true );
@@ -177,8 +181,8 @@
 		if ( $buttonToInfuse.length ) {
 			helpCtaButton = mw.libs.ge.HelpPanelButton.static.infuse( $buttonToInfuse );
 			// The button is already on the page, but it won't be visible until we add the -ready
-			// class to $buttonWrapper. While it's not yet visible, relocate it into the overlay.
-			$overlay.append( $buttonWrapper );
+			// class to $buttonWrapper. While it's not yet visible, relocate it into the menu.
+			$buttonWrapper.appendTo( helpButtonLocation );
 		} else {
 			helpCtaButton = new HelpPanelButton( {
 				label: mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
