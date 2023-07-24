@@ -8,13 +8,11 @@ use ApiUsageException;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Title\TitleFactory;
 use Psr\Log\LoggerAwareTrait;
@@ -70,8 +68,11 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
-
-		$taskType = $this->configurationLoader->getTaskTypes()[ $params['tasktype'] ] ?? null;
+		// This API is used by external clients for their own structured task workflows so
+		// include disabled task types.
+		$allTaskTypes = $this->configurationLoader->getTaskTypes()
+			+ $this->configurationLoader->getDisabledTaskTypes();
+		$taskType = $allTaskTypes[$params['tasktype']] ?? null;
 		if ( $taskType === null ) {
 			$this->logger->warning(
 				'Task type {tasktype} was not found in {configpage}',
@@ -91,7 +92,7 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 		$titleValue = $params['title'];
 
 		$page = $this->titleFactory->newFromLinkTarget( $titleValue )->toPageIdentity();
-		if ( $this->shouldInvalidatePage( $page ) ) {
+		if ( $page->exists() ) {
 			$this->imageSubmissionHandler->invalidateRecommendation(
 				$taskType,
 				$page,
@@ -161,27 +162,5 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	/** @inheritDoc */
 	public function isInternal() {
 		return true;
-	}
-
-	/**
-	 * Check whether the specified page exists and is in the user's task set
-	 *
-	 * @param ProperPageIdentity $page
-	 * @return bool
-	 */
-	private function shouldInvalidatePage( ProperPageIdentity $page ): bool {
-		if ( !$page->exists() ) {
-			return false;
-		}
-		$user = $this->getUser();
-		$taskSet = $this->taskSuggesterFactory->create()->suggest(
-			$user,
-			new TaskSetFilters(
-				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-				$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
-				$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
-			)
-		);
-		return $taskSet->containsPage( $page );
 	}
 }

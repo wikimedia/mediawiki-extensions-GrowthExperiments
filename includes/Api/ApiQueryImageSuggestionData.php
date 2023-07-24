@@ -73,6 +73,8 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 			$this->dieWithError( 'apierror-ratelimited' );
 		}
 		$params = $this->extractRequestParams();
+		// This API is used by external clients for their own structured task workflows so
+		// include disabled task types.
 		$allTaskTypes = $this->configurationLoader->getTaskTypes()
 			+ $this->configurationLoader->getDisabledTaskTypes();
 		$taskType = $allTaskTypes[$params['tasktype']] ?? null;
