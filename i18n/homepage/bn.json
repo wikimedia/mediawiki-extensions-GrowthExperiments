@@ -88,6 +88,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "{{GENDER:$1|আপনার}} অবদান রাখা নিবন্ধগুলো পরিদর্শিত হয়েছে",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "অবদান রাখা নিবন্ধের পরিদর্শন সংখ্যা",
 	"growthexperiments-homepage-impact-scores-edit-count": "মোট সম্পাদনা",
+	"growthexperiments-homepage-impact-scores-reverted-edit-count": "বাতিলকৃত সম্পাদনা",
 	"growthexperiments-homepage-impact-scores-thanks-count": "ধন্যবাদ পেয়েছেন",
 	"growthexperiments-homepage-impact-scores-over-limit": "৯৯৯+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "ধন্যবাদ কীভাবে কাজ করে সে সম্পর্কে আরও তথ্য",

@@ -72,6 +72,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ваш}} утицај",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Последња измена",
 	"growthexperiments-homepage-impact-scores-edit-count": "Укупно измена",
+	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Враћене измене",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Број захваљивања",
 	"growthexperiments-homepage-impact-subheader-text": "Најчитаније ({{GENDER:$1|од}} ваше измене)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Прикази откако {{GENDER:$1|сте}} уредили (у последњих 60 дана):",

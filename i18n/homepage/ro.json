@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alesaru",
 			"Carcassonne93",
 			"Dan Mihai Pitea",
 			"NGC 54"
@@ -77,6 +78,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Vizualizări asupra articolelor pe care le-ați {{GENDER:$1|editat}}",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Vizualizări asupra articolelor editate",
 	"growthexperiments-homepage-impact-scores-edit-count": "Editări totale",
+	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Editările au fost anulate",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Mulțumiri primite",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Mai multe informații despre cum funcționează mulțumirile",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} este creată de o comunitate de editori precum {{GENDER:$1|dvs}}. {{GENDER:$1|Puteți}} primi mulțumiri din partea altui {{GENDER:$1|contribuitor}} pentru o editare pe care ați efectuat-o, dar și {{GENDER:$1|dvs.}} le puteți mulțumi altora pentru editările lor.",

@@ -30,6 +30,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|ݙین٘ہ|ݙیہاڑے}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|تبدیلی|تبدیلیاں}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "کل تبدیلیاں",
+	"growthexperiments-homepage-impact-scores-reverted-edit-count": "واپس تھیاں تبدیلی",
 	"growthexperiments-homepage-impact-article-link-tooltip": "مضمون تے ون٘ڄو",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "گھن گھندا",
 	"growthexperiments-tour-response-button-okay": "سمجھ آڳئی",
