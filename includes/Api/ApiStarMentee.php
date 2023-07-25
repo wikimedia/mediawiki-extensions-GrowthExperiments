@@ -32,7 +32,7 @@ class ApiStarMentee extends ApiBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		if ( !$this->getUser()->isRegistered() ) {
+		if ( !$this->getUser()->isNamed() ) {
 			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
 		}
 

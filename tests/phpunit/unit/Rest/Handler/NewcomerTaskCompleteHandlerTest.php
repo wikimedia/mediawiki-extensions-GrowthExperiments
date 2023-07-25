@@ -15,6 +15,7 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use Wikimedia\Rdbms\DBConnRef;
@@ -189,6 +190,12 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 		$loadBalancer->method( 'getConnection' )->willReturn(
 			$this->createMock( DBConnRef::class )
 		);
+		$userIdentityUtils = $this->createMock( UserIdentityUtils::class );
+		$userIdentityUtils->method( 'isNamed' )
+			->willReturnCallback( static function ( UserIdentity $userIdentity ) {
+				return (bool)$userIdentity->getId();
+			} );
+
 		$newcomerTasksChangeTagsManager = new NewcomerTasksChangeTagsManager(
 			$userOptionsLookup,
 			$this->createMock( TaskTypeHandlerRegistry::class ),
@@ -196,6 +203,7 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 			$this->createNoOpMock( \PrefixingStatsdDataFactoryProxy::class ),
 			$revisionLookup ?? $this->createMock( RevisionLookup::class ),
 			$loadBalancer,
+			$userIdentityUtils,
 			new HashConfig( $config ),
 			$user
 		);

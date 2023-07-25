@@ -226,7 +226,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 
 	private function validateMentees() {
 		foreach ( $this->mentees as $mentee ) {
-			if ( !( $mentee instanceof User && $mentee->isRegistered() ) ) {
+			if ( !( $mentee instanceof User && $mentee->isNamed() ) ) {
 				return false;
 			}
 		}

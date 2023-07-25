@@ -52,12 +52,13 @@ class AddImageFeedbackHandler extends SimpleHandler {
 	}
 
 	public function run() {
-		$user = $this->getAuthority()->getUser();
+		$authority = $this->getAuthority();
+		$user = $authority->getUser();
 		$title = $this->titleFactory->newFromLinkTarget( $this->getValidatedParams()['title'] );
 		$data = $this->getValidatedBody();
 		$editRevId = $data['editRevId'];
 
-		if ( !$user->isRegistered() ) {
+		if ( !$authority->isNamed() ) {
 			throw $this->makeException( 'rest-permission-denied-anon', [], 401 );
 		}
 		if ( $data['accepted'] && !$editRevId ) {

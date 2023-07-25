@@ -130,7 +130,7 @@ class Util {
 		$modules,
 		UserOptionsLookup $userOptionsLookup
 	) {
-		if ( $out->getUser()->isRegistered()
+		if ( $out->getUser()->isNamed()
 			&& !$userOptionsLookup->getBoolOption( $out->getUser(), $pref )
 			&& TourHooks::growthTourDependenciesLoaded()
 			// Do not show the tour if the user is in the middle of an edit.

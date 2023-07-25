@@ -5,8 +5,8 @@ namespace GrowthExperiments\EventLogging;
 use ExtensionRegistry;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use MediaWiki\Extension\EventLogging\EventLogging;
-use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
+use User;
 use WebRequest;
 
 class WelcomeSurveyLogger {
@@ -23,8 +23,8 @@ class WelcomeSurveyLogger {
 	private $webRequest;
 	/** @var bool */
 	private $isMobile;
-	/** @var UserIdentity */
-	private $userIdentity;
+	/** @var User */
+	private $user;
 	/** @var array */
 	private $loggedActions = [];
 
@@ -37,12 +37,12 @@ class WelcomeSurveyLogger {
 
 	/**
 	 * @param WebRequest $webRequest
-	 * @param UserIdentity $userIdentity
+	 * @param User $user
 	 * @param bool $isMobile
 	 */
-	public function initialize( WebRequest $webRequest, UserIdentity $userIdentity, bool $isMobile ): void {
+	public function initialize( WebRequest $webRequest, User $user, bool $isMobile ): void {
 		$this->webRequest = $webRequest;
-		$this->userIdentity = $userIdentity;
+		$this->user = $user;
 		$this->isMobile = $isMobile;
 	}
 
@@ -57,7 +57,7 @@ class WelcomeSurveyLogger {
 			'action' => $action,
 			'is_mobile' => $this->isMobile,
 			'was_posted' => $this->webRequest->wasPosted(),
-			'user_id' => $this->userIdentity->getId(),
+			'user_id' => $this->user->getId(),
 			'token' => $this->webRequest->getVal( '_welcomesurveytoken' ),
 			'returnto_param_is_present' =>
 				$this->webRequest->getFuzzyBool( '_returnto' ) ??
@@ -70,7 +70,7 @@ class WelcomeSurveyLogger {
 		$this->webRequest->response()->setCookie( self::INTERACTION_PHASE_COOKIE, $action );
 		// Except that if the user reached handleResponses() and is logged in, we'll assume submission worked,
 		// and we can delete the cookie.
-		if ( $this->userIdentity->isRegistered() && $action === SpecialWelcomeSurvey::ACTION_SUBMIT_SUCCESS ) {
+		if ( $this->user->isNamed() && $action === SpecialWelcomeSurvey::ACTION_SUBMIT_SUCCESS ) {
 			$this->webRequest->response()->clearCookie( self::INTERACTION_PHASE_COOKIE );
 		}
 

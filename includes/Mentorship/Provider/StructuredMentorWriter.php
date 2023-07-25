@@ -135,7 +135,9 @@ class StructuredMentorWriter implements IMentorWriter {
 		bool $bypassWarnings = false
 	): StatusValue {
 		$mentorUserIdentity = $mentor->getUserIdentity();
-		if ( !$mentorUserIdentity->isRegistered() ) {
+		if ( !$mentorUserIdentity->isRegistered()
+			|| !$this->userFactory->newFromUserIdentity( $mentorUserIdentity )->isNamed()
+		) {
 			return StatusValue::newFatal(
 				'growthexperiments-mentor-writer-error-anonymous-user',
 				$mentorUserIdentity->getName()

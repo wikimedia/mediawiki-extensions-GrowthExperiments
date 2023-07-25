@@ -29,7 +29,7 @@ class ApiQueryStarredMentees extends ApiQueryBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		if ( !$this->getUser()->isRegistered() ) {
+		if ( !$this->getUser()->isNamed() ) {
 			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
 		}
 

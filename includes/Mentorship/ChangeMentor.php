@@ -13,6 +13,7 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use Status;
+use User;
 use Wikimedia\Rdbms\IReadableDatabase;
 
 class ChangeMentor {
@@ -25,6 +26,7 @@ class ChangeMentor {
 	private MentorStore $mentorStore;
 	private UserFactory $userFactory;
 	private IReadableDatabase $dbr;
+	private ?User $menteeUser = null;
 
 	/**
 	 * @param UserIdentity $mentee Mentee's user object
@@ -103,10 +105,7 @@ class ChangeMentor {
 				"$primaryLogtype-no-previous-mentor"
 		);
 		$logEntry->setPerformer( $this->performer );
-		$logEntry->setTarget(
-			$this->userFactory->newFromUserIdentity( $this->mentee )
-				->getUserPage()
-		);
+		$logEntry->setTarget( $this->getMenteeUser()->getUserPage() );
 		$logEntry->setComment( $reason );
 		if ( $forceBot ) {
 			// Don't spam RecentChanges with bulk changes (T304428)
@@ -139,7 +138,7 @@ class ChangeMentor {
 		] );
 		$status = Status::newGood();
 
-		if ( !$this->mentee->isRegistered() ) {
+		if ( !$this->getMenteeUser()->isNamed() ) {
 			$this->logger->info(
 				'Mentor change for {mentee} from {oldMentor} to {newMentor}'
 				. ' did not succeed, because the mentee doesn\'t exist', [
@@ -191,8 +190,7 @@ class ChangeMentor {
 				] );
 				Event::create( [
 					'type' => 'mentor-changed',
-					'title' => $this->userFactory->newFromUserIdentity( $this->newMentor )
-						->getUserPage(),
+					'title' => $this->getMenteeUser()->getUserPage(),
 					'extra' => [
 						'mentee' => $this->mentee->getId(),
 						'reason' => $reason
@@ -207,8 +205,7 @@ class ChangeMentor {
 					// mentee was claimed, notify old mentor as well
 					Event::create( [
 						'type' => 'mentee-claimed',
-						'title' => $this->userFactory->newFromUserIdentity( $this->mentee )
-							->getUserPage(),
+						'title' => $this->getMenteeUser()->getUserPage(),
 						'extra' => [
 							'mentor' => $this->mentor->getId(),
 							'reason' => $reason
@@ -295,5 +292,12 @@ class ChangeMentor {
 		}
 
 		return $status;
+	}
+
+	private function getMenteeUser(): User {
+		if ( !$this->menteeUser ) {
+			$this->menteeUser = $this->userFactory->newFromUserIdentity( $this->mentee );
+		}
+		return $this->menteeUser;
 	}
 }

@@ -123,7 +123,7 @@ class HelpPanel {
 			return false;
 		}
 
-		if ( $out->getUser()->isAnon() ) {
+		if ( !$out->getUser()->isNamed() ) {
 			return false;
 		}
 

@@ -12,6 +12,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserOptionsLookup;
 use PrefixingStatsdDataFactoryProxy;
 use RequestContext;
@@ -33,6 +34,8 @@ class NewcomerTasksChangeTagsManager {
 	private $perDbNameStatsdDataFactory;
 	/** @var IReadableDatabase */
 	private $dbr;
+	/** @var UserIdentityUtils */
+	private $userIdentityUtils;
 	/** @var Config|null */
 	private $config;
 	/** @var UserIdentity|null */
@@ -45,6 +48,7 @@ class NewcomerTasksChangeTagsManager {
 	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param ILoadBalancer $loadBalancer
+	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param Config|null $config
 	 * @param UserIdentity|null $user
 	 * FIXME $config and $user should be mandatory and injected by a factory
@@ -56,6 +60,7 @@ class NewcomerTasksChangeTagsManager {
 		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		RevisionLookup $revisionLookup,
 		ILoadBalancer $loadBalancer,
+		UserIdentityUtils $userIdentityUtils,
 		Config $config = null,
 		UserIdentity $user = null
 	) {
@@ -65,6 +70,7 @@ class NewcomerTasksChangeTagsManager {
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->dbr = $loadBalancer->getConnection( DB_REPLICA );
+		$this->userIdentityUtils = $userIdentityUtils;
 		$this->config = $config;
 		$this->user = $user;
 	}
@@ -160,7 +166,7 @@ class NewcomerTasksChangeTagsManager {
 	 * @return StatusValue
 	 */
 	private function checkUserAccess( UserIdentity $userIdentity ): StatusValue {
-		if ( !$userIdentity->isRegistered() ) {
+		if ( !$this->userIdentityUtils->isNamed( $userIdentity ) ) {
 			return StatusValue::newFatal( 'You must be logged-in' );
 		}
 		if ( !$this->config || !$this->user ) {

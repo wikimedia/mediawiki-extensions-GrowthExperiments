@@ -65,7 +65,7 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 	/** @inheritDoc */
 	public function execute() {
 		$user = $this->getUser();
-		if ( $user->isAnon() ) {
+		if ( !$user->isNamed() ) {
 			$this->dieWithError( [ 'apierror-mustbeloggedin-generic' ] );
 		}
 

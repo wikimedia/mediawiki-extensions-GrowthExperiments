@@ -148,7 +148,7 @@ class HelpPanelHooks implements
 		$enablePercentage = $this->config->get( 'GEHelpPanelNewAccountEnablePercentage' );
 		if (
 			$growthOptInOptOutOverride === HomepageHooks::GROWTH_FORCE_OPTIN ||
-			( $user->isRegistered() && !$autocreated && rand( 0, 99 ) < $enablePercentage )
+			( !$autocreated && rand( 0, 99 ) < $enablePercentage )
 		) {
 			$this->userOptionsManager->setOption( $user, self::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 		}

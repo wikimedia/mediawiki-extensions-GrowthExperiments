@@ -17,6 +17,7 @@ use HashConfig;
 use JobQueueGroup;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
@@ -129,6 +130,7 @@ class HomepageHooksTests extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( ILoadBalancer::class ),
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$userOptionsLookup ?? $this->createNoOpMock( UserOptionsLookup::class ),
+			$this->createNoOpMock( UserIdentityUtils::class ),
 			$this->createNoOpMock( NamespaceInfo::class ),
 			$titleFactoryMock ?? $this->createNoOpMock( TitleFactory::class ),
 			$this->createNoOpMock( PrefixingStatsdDataFactoryProxy::class ),
