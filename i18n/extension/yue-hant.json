@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"growthexperiments-edit-config-title": "修改 Growth 設定",
+	"growthexperiments-edit-config-last-edit": "[[$3]]：最近喺$2由[[User:$1|$1]]更新。",
+	"growthexperiments-edit-config-feedback-cta": "畀意見",
+	"growthexperiments-edit-config-edit-summary": "編輯摘要",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "頁頂",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "頁底",
+	"growthexperiments-edit-config-homepage": "新人主頁",
+	"growthexperiments-edit-config-mentorship-enabled": "係唔係開著導師（mentorship）功能？",
+	"growthexperiments-edit-config-mentorship-enabled-true": "係",
+	"growthexperiments-edit-config-mentorship-enabled-false": "唔係"
+}

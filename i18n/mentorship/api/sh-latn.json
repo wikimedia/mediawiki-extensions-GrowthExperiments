@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Označi ili odznači mentija zvjezdicom od strane trenutnog korisnika (pohranjuje se privatno i ne protokolira se)",
+	"apihelp-growthstarmentee-param-gesaction": "Radnja koju treba poduzeti (<kbd>star</kbd> ili <kbd>unstar</kbd>)",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Novi status",
+	"apihelp-growthmanagementorlist-param-geaction": "Radnja",
+	"apihelp-growthmanagementorlist-param-summary": "Razlog promjene"
+}

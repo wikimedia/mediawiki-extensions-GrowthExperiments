@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|呢樣係乜嘢？]])",
+	"growthexperiments-confirmemail-emailhelp": "你要入個電郵地址先可以喺唔記得密碼嘅時候攞返你嘅戶口。",
+	"growthexperiments-confirmemail-emailrecommended": "電郵地址（建議填）",
+	"growthexperiments-confirmemail-emailwarning": "請留意由我哋發出嘅電郵去驗證你嘅地址。",
+	"growthexperiments-confirmemail-confirm-subject": "歡迎嚟到{{SITENAME}}：請確認你嘅電郵地址",
+	"growthexperiments-confirmemail-confirm-button": "確認電郵地址",
+	"growthexperiments-signupcampaign-bullet3": "由簡易修改開始"
+}
