@@ -15,6 +15,8 @@
 	"apihelp-growthsetmentor-param-mentee": "Ім'я користувача підопічного",
 	"apihelp-growthsetmentor-param-mentor": "Ім'я користувача наставника",
 	"apihelp-growthsetmentor-param-reason": "Причина зміни",
+	"apihelp-query+growthimagesuggestiondata-summary": "Отримати пов'язані [[mw:wikitech:Add_Image|дані пропозицій зображень]], якщо вони є",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "Ідентифікатор типу завдання «$1» не знайдено в конфігурації вікі.",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Позначити рекомендацію зображення як недійсну.",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Назва статті, до якої це завдання з рекомендації зображення"
 }
