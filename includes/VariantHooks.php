@@ -285,7 +285,7 @@ class VariantHooks implements
 	}
 
 	/**
-	 * Check if the campaign field is set and if the geNewLandingHtml field is true.
+	 * Check if the campaign field is set.
 	 * @param IContextSource $context
 	 * @return bool
 	 */
