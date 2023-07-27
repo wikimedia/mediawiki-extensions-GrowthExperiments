@@ -30,7 +30,8 @@
 			"VIGNERON",
 			"Vega",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Framawiki"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Bonjour, {{GENDER:$1|}}{{bidi:$1}} !",
@@ -213,7 +214,7 @@
 	"growthexperiments-tour-discovery-description": "Cliquer sur {{GENDER:$1|}}votre nom d’utilisat{{GENDER:$1|eur|rice}} pour visiter {{GENDER:$1|}}votre page d’accueil.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Aller sur {{GENDER:$1|}}votre page d’accueil",
 	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|}}Vous pouvez toujours cliquer sur {{GENDER:$1|}}votre nom d'utilisateur pour revenir ici. Continuez à découvrir les <b>modifications suggérées</b> sur {{GENDER:$1|}}votre page d’accueil.",
-	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|}}Vous pouvez toujours cliquer sur {{GENDER:$1|}}votre nom d’utilisateur pour revenir ici. Sur votre {{GENDER:$1|}}votre page d’accueil, {{GENDER:$1|}}vous pouvez trouver des suggestions de modifications, poser des questions à {{GENDER:$1|}}votre tuteur ou tutrice et voir {{GENDER:$1|}}votre impact.",
+	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|}}Vous pouvez toujours cliquer sur {{GENDER:$1|}}votre nom d’utilisateur pour revenir ici. Sur {{GENDER:$1|}}votre page d’accueil, {{GENDER:$1|}}vous pouvez trouver des suggestions de modifications, poser des questions à {{GENDER:$1|}}votre tuteur ou tutrice et voir {{GENDER:$1|}}votre impact.",
 	"growthexperiments-homepage-discovery-banner-header": "Bienvenue sur {{GENDER:$1|}}votre page d’accueil !",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|}}Vous pouvez toujours cliquer sur $2 en haut de la page pour revenir ici.",
 	"growthexperiments-homepage-discovery-thanks-header": "Merci d’avoir créé {{GENDER:$1|}}votre compte !",
@@ -286,7 +287,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "Vous souhaitez créer un nouvel article ?",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-create-body": "Les rédacteurs de {{SITENAME}} {{GENDER:|}}vous recommandent d’essayer d’abord quelques tâches moyennes et difficiles avant de tenter un nouvel article. [$1 En savoir plus] sur la rédaction d’un nouvel article manquant.",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Sélectionner les sujets",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fait",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Valider",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fait",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> article{{PLURAL:$1||s}} trouvé{{PLURAL:$1||s}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Corriger",

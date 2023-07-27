@@ -6,7 +6,8 @@
 			"Omotecho",
 			"Shirayuki",
 			"もなー(偽物)",
-			"カッパ鳥"
+			"カッパ鳥",
+			"春春眠眠"
 		]
 	},
 	"growthexperiments-desc": "この拡張機能は Growth チームが完了した実験を含んでいます。",
@@ -55,8 +56,14 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "新しい記事を作成する方法に関するリンク先ページ",
 	"growthexperiments-edit-config-homepage-intro-links-image": "ビジュアルエディターで画像を追加する方法に関するリンク先ページ",
 	"growthexperiments-edit-config-mentorship": "指導役",
+	"growthexperiments-edit-config-mentorship-enabled": "指導役機能は有効ですか？",
 	"growthexperiments-edit-config-mentorship-enabled-true": "はい",
 	"growthexperiments-edit-config-mentorship-enabled-false": "いいえ",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "利用者は自動的に指導役となる資格を得る必要がありますか?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "はい、以下の資格基準をすべて満たす利用者が指導役として登録できるようにします。",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "いいえ、利用者が指導役として登録することを許可しないでください。",
+	"growthexperiments-edit-config-mentorship-minimum-age": "指導役としてサインアップするために必要とする利用者が登録してからの最小日数",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "指導役として登録するために、利用者が（どの名前空間でも）編集していなければならない最小回数",
 	"growthexperiments-edit-config-newcomertasks": "お勧めの編集",
 	"growthexperiments-edit-config-newcomer-tasks-description": "いくつかの種別のお勧めの編集は、メンテナンステンプレートを通じて表面化されます。これらのテンプレートを含む記事がフィードに追加されます。各タスク種別に対して利用可能な記事の数を確認するには、[[Special:NewcomerTasksInfo|このページ]]をご覧ください。",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "無効",

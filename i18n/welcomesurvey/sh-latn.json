@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Dobro došli}}, $1!",
+	"welcomesurvey-reminder-dismiss": "Odbaci",
+	"welcomesurvey-mideditsignup-button-close": "Zatvori"
+}
