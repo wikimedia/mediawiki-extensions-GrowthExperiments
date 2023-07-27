@@ -6,17 +6,16 @@
 		TryNewTaskPanel = require( './TryNewTaskPanel.js' ),
 		HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
-		helpConfig = require( '../ext.growthExperiments.Help/data.json' ),
 		SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
 		suggestedEditSession = SuggestedEditSession.getInstance(),
 		newcomerTaskLogger = new NewcomerTaskLogger(),
-		postEditPanelHelpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
+		postEditPanelHelpPanelLogger = new HelpPanelLogger( {
 			context: 'postedit',
 			previousEditorInterface: suggestedEditSession.editorInterface,
 			sessionId: suggestedEditSession.clickId,
 			isSuggestedTask: suggestedEditSession.active
 		} ),
-		tryNewTaskHelpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
+		tryNewTaskHelpPanelLogger = new HelpPanelLogger( {
 			context: 'postedit-trynewtask',
 			previousEditorInterface: suggestedEditSession.editorInterface,
 			sessionId: suggestedEditSession.clickId,

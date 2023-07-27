@@ -8,7 +8,7 @@
 ( function () {
 	function showMidEditSignupDialog() {
 		var HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
-			helpPanelLogger = new HelpPanelLogger( true );
+			helpPanelLogger = new HelpPanelLogger();
 
 		mw.storage.session.remove( 'ge.midEditSignup' );
 		mw.cookie.set( 'ge.midEditSignup', null );

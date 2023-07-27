@@ -16,7 +16,6 @@
 	 *
 	 * @class mw.libs.ge.HelpPanelLogger
 	 * @constructor
-	 * @param {boolean} enabled
 	 * @param {Object} [config]
 	 * @cfg string [context] Allow overriding the context field for all events
 	 * @cfg string [previousEditorInterface] Type of the last editor the user made an edit with,
@@ -27,9 +26,8 @@
 	 * @cfg string [sessionId] Allow overriding the help_panel_session_id field for all events
 	 * @see https://meta.wikimedia.org/wiki/Schema:HelpPanel
 	 */
-	function HelpPanelLogger( enabled, config ) {
+	function HelpPanelLogger( config ) {
 		config = config || {};
-		this.enabled = enabled;
 		// This will be updated via the setEditor method in response to
 		// MobileFrontend's editorOpened/editorClosed hooks.
 		this.editor = null;
@@ -53,7 +51,7 @@
 		var eventData;
 		// T273700 in some rare cases the user is logged out when this is called, so to avoid
 		// eventgate-validation issues make sure we have an ID.
-		if ( !this.enabled || !mw.user.getId() ) {
+		if ( !mw.user.getId() ) {
 			return;
 		}
 

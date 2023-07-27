@@ -225,7 +225,6 @@ class HelpPanelHooks implements
 		// The copyright warning can contain markup and has to be parsed via PHP messages API.
 		$copyrightWarningMessage = $context->msg( 'wikimedia-copyrightwarning' );
 		return [
-			'GEHelpPanelLoggingEnabled' => $config->get( 'GEHelpPanelLoggingEnabled' ),
 			'GEHelpPanelSearchNamespaces' => self::getGrowthWikiConfig()
 				->get( 'GEHelpPanelSearchNamespaces' ),
 			'GEHelpPanelReadingModeNamespaces' => self::getGrowthWikiConfig()

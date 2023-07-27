@@ -2445,10 +2445,6 @@
 			"description": "Global ON/OFF switch for the help panel feature.",
 			"value": true
 		},
-		"GEHelpPanelLoggingEnabled": {
-			"description": "ON/OFF switch for the help panel event logging feature.",
-			"value": true
-		},
 		"GEHelpPanelLinks": {
 			"description": "List of links to display in the help panel.",
 			"merge_strategy": "array_plus",

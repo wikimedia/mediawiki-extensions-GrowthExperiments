@@ -5,7 +5,6 @@
 		"helpPanelLinks": "<ul class=\"mw-ge-help-panel-links\"><li><a href=\"/w/index.php?title=Mewlocal:Help&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"Mewlocal:Help (page does not exist)\" target=\"_blank\" data-link-id=\"help\">Site help</a></li></ul>",
 		"viewMoreLink": "<a href=\"/wiki/Main_Page\" title=\"Main Page\" target=\"_blank\" data-link-id=\"view-more\">View more help articles</a>"
 	},
-	"GEHelpPanelLoggingEnabled": true,
 	"GEHelpPanelReadingModeNamespaces": [
 		2,
 		4,

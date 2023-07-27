@@ -44,7 +44,7 @@
 			helpButtonLocationDock = mw.util.addPortletLink( 'p-dock-bottom', '#', '' ),
 			helpButtonLocation = helpButtonLocationDock ?
 				$( helpButtonLocationDock ).html( '' ) : $overlay,
-			logger = new HelpPanelLogger( configData.GEHelpPanelLoggingEnabled, {
+			logger = new HelpPanelLogger( {
 				previousEditorInterface: suggestedEditSession.editorInterface,
 				// If the user is following a link in a suggested edit task card (which has a
 				// click ID, which causes wgGEHomepagePageviewToken to be set on the server side),

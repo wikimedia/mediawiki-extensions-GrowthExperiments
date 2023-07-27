@@ -13,7 +13,7 @@ function displayDrawer() {
 	var suppressClose = false;
 
 	var drawer = new InviteToSuggestedEditsDrawer(
-		new HelpPanelLogger( true, {
+		new HelpPanelLogger( {
 			context: 'postedit-nonsuggested'
 		} )
 	);

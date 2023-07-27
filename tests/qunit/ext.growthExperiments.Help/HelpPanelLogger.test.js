@@ -12,22 +12,12 @@ QUnit.module( 'utils/HelpPanelLogger.js', QUnit.newMwEnvironment( {
 	}
 } ) );
 
-QUnit.test( 'disabled/enabled', function ( assert ) {
-	this.sandbox.spy( mw, 'track' );
-	let helpPanelLogger = new HelpPanelLogger( false );
-	helpPanelLogger.log();
-	assert.strictEqual( mw.track.notCalled, true );
-
-	helpPanelLogger = new HelpPanelLogger( true );
-	helpPanelLogger.log();
-	assert.strictEqual( mw.track.calledOnce, true );
-} );
-
 QUnit.test( 'log', function ( assert ) {
 	this.sandbox.spy( mw, 'track' );
 	this.sandbox.stub( mw.user, 'sessionId' ).returns( '1234' );
+	this.sandbox.stub( mw.user, 'generateRandomSessionId' ).returns( 'foo' );
 
-	const helpPanelLogger = new HelpPanelLogger( true, {
+	const helpPanelLogger = new HelpPanelLogger( {
 		context: 'reading',
 		previousEditorInterface: 'visualeditor',
 		sessionId: 'foo'
