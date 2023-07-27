@@ -234,6 +234,11 @@
 		flex-direction: column;
 		height: 100%;
 
+		// display:flex would override hidden="hidden"
+		&[ hidden ] {
+			display: none;
+		}
+
 		&-switch-editor-panel {
 			background-color: @background-color-growth-subtle;
 			border: @border-subtle;
