@@ -91,7 +91,9 @@ class AddImageFeedbackHandler extends SimpleHandler {
 		}
 
 		// TODO support section images
-		$taskType = $this->configurationLoader->getTaskTypes()['image-recommendation'] ?? null;
+		$allTaskTypes = $this->configurationLoader->getTaskTypes()
+			+ $this->configurationLoader->getDisabledTaskTypes();
+		$taskType = $allTaskTypes['image-recommendation'] ?? null;
 		if ( !( $taskType instanceof ImageRecommendationTaskType ) ) {
 			throw new LocalizedHttpException(
 				new MessageValue( 'growthexperiments-newcomertasks-invalid-tasktype', [ 'image-recommendation' ] )
