@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Dobro došli}}, $1!"
+}

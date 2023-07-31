@@ -10,6 +10,7 @@
 	"growthexperiments-homepage-tab": "ߓߏ߬ߟߏ߲߬ߘߊ ߞߐߜߍ",
 	"tooltip-pt-homepage": "{{GENDER:|ߌ ߟߊ߫}} ߓߏ߬ߟߏ߲߬ߘߊ ߞߐߜߍ",
 	"growthexperiments-homepage-enable": "ߣߊ߬ߓߊ߰ߕߐ߫ ߞߎߘߊ ߟߎ߬ ߟߊ߫ ߓߏ߬ߟߏ߲߬ߘߊ ߞߐߜߍ ߟߊߓߊ߯ߙߊ߫",
+	"growthexperiments-homepage-pt-link": "ߞߊ߬ ߣߊ߬ߓߊ߰ߕߐ߬ ߞߎߘߊ ߟߎ߬ ߟߊ߫ ߓߏ߬ߟߏ߲߬ߘߊ ߟߊߓߊ߯ߙߊ߫ ߝߍ߭ ߓߟߏ߫ ߟߊ߬ߓߊ߰ߙߊ߬ߟߌ߬ ߕߐ߮ ߛߘߌ߬ߜߋ߲ ߝߍ߬ ߘߎ߲߬ߘߎ߬ߡߊ߬ ߖߐ߯ߙߊ߲ ߘߌ߫",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|ߌ}} ߟߊ߫ ߢߎߡߍߙߋ߲ߞߏ߲ߘߏ ߝߙߊ߬",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|ߌ ߟߊ߫}} ߢߎߡߍߙߋ߲ߞߏ߲ߘߏ ߟߊߛߙߋߦߊ߫",
 	"growthexperiments-homepage-email-header-confirmed": "ߢߎߡߍߙߋ߲ߞߏ߲ߘߏ ߓߘߊ߫ ߝߙߊ߬",

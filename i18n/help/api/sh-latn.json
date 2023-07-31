@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Rukovanje pitanjima koja su postavljena pomoću za trenutnog korisnika.",
+	"apihelp-helppanelquestionposter-param-body": "Tekst pitanja koje je postavio korisnik.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Relevatan naslov, ako je izabrano, za uključivanje s pitanjem."
+}

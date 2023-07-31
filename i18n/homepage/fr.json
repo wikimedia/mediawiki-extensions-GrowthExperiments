@@ -30,7 +30,8 @@
 			"Scriptance",
 			"Tektasc",
 			"VIGNERON",
-			"Paraboule"
+			"Paraboule",
+			"Framawiki"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Bonjour, {{GENDER:$1|}}{{bidi:$1}} !",
@@ -219,7 +220,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difficile",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Sélectionner les types de modification",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Sélectionner ses centres d’intérêt",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fait",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Valider",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fait",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> article{{PLURAL:$1||s}} trouvé{{PLURAL:$1||s}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Corriger",
