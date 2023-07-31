@@ -123,6 +123,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never": "Никад",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Сачувај",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Откажи",
+	"growthexperiments-mentor-list-missing-key": "Кључ <code>$1</code> недостаје",
 	"growthexperiments-mentor-writer-error-already-added": "Ментор $1 је већ додат на списак ментора",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Ментор $1 није на списку ментора",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Ментор $1 није регистрован корисник",

@@ -3,6 +3,7 @@
 		"authors": [
 			"BadDog",
 			"Kizule",
+			"Milicevic01",
 			"Vlad5250",
 			"Zoranzoki21"
 		]
@@ -48,6 +49,7 @@
 	"welcomesurvey-question-languages-label": "Пројекат {{SITENAME}} је доступан на више од 300 језика. Знате ли још неке језике?",
 	"welcomesurvey-question-languages-placeholder": "Додајте највише {{PLURAL:$1|један језик|$1 језика}}…",
 	"welcomesurvey-question-languages-maximum": "Додали сте највећи могући број језика.",
+	"welcomesurvey-reminder-dismiss": "Одбаци",
 	"welcomesurvey-mideditsignup-title": "Добро дошли, $1!",
 	"welcomesurvey-mideditsignup-button-close": "Затвори"
 }
