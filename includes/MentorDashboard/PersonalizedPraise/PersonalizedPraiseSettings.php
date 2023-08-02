@@ -109,12 +109,12 @@ class PersonalizedPraiseSettings {
 		$settings = $this->loadSettings( $user );
 
 		return new PraiseworthyConditions(
-			$settings[PraiseworthyConditions::SETTING_MAX_EDITS] ??
-				(int)$this->wikiConfig->get( 'GEPersonalizedPraiseMaxEdits' ),
-			$settings[PraiseworthyConditions::SETTING_MIN_EDITS] ??
-				(int)$this->wikiConfig->get( 'GEPersonalizedPraiseMinEdits' ),
-			$settings[PraiseworthyConditions::SETTING_DAYS] ??
-				(int)$this->wikiConfig->get( 'GEPersonalizedPraiseDays' ),
+			(int)( $settings[PraiseworthyConditions::SETTING_MAX_EDITS] ??
+				$this->wikiConfig->get( 'GEPersonalizedPraiseMaxEdits' ) ),
+			(int)( $settings[PraiseworthyConditions::SETTING_MIN_EDITS] ??
+				$this->wikiConfig->get( 'GEPersonalizedPraiseMinEdits' ) ),
+			(int)( $settings[PraiseworthyConditions::SETTING_DAYS] ??
+				$this->wikiConfig->get( 'GEPersonalizedPraiseDays' ) ),
 		);
 	}
 
