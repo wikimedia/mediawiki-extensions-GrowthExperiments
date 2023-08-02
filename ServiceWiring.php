@@ -429,6 +429,7 @@ return [
 			$services->getChangeTagDefStore(),
 			$services->getActorMigration(),
 			$services->getUserIdentityLookup(),
+			$services->getTempUserConfig(),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA, 'vslow' )
 		);
 		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
