@@ -76,5 +76,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Додељивање новајлија",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Половина просека",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Просечно (подразумевано)",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Дупло више од просека"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Дупло више од просека",
+	"growthexperiments-mentor-list-missing-key": "Кључ <code>$1</code> недостаје"
 }
