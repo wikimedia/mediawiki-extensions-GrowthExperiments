@@ -46,6 +46,11 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	private WANObjectCache $cache;
 	private HashBagOStuff $inProcessCache;
 	private UrlUtils $urlUtils;
+	/**
+	 * @var bool Hack to disable DB access in non-database tests. The proper replacement to this would be a
+	 * NullConfigLoader or similar class, and the ServiceWiring code would determine which one to use.
+	 */
+	private bool $isTestWithStorageDisabled;
 
 	/**
 	 * @param WANObjectCache $cache
@@ -54,6 +59,7 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	 * @param RevisionLookup $revisionLookup
 	 * @param TitleFactory $titleFactory
 	 * @param UrlUtils $urlUtils
+	 * @param bool $isTestWithStorageDisabled
 	 */
 	public function __construct(
 		WANObjectCache $cache,
@@ -61,7 +67,8 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 		HttpRequestFactory $requestFactory,
 		RevisionLookup $revisionLookup,
 		TitleFactory $titleFactory,
-		UrlUtils $urlUtils
+		UrlUtils $urlUtils,
+		bool $isTestWithStorageDisabled
 	) {
 		$this->cache = $cache;
 		$this->inProcessCache = new HashBagOStuff();
@@ -70,6 +77,7 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 		$this->revisionLookup = $revisionLookup;
 		$this->titleFactory = $titleFactory;
 		$this->urlUtils = $urlUtils;
+		$this->isTestWithStorageDisabled = $isTestWithStorageDisabled;
 	}
 
 	/**
@@ -195,7 +203,9 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 			$url = Util::getRawUrl( $configPage, $this->titleFactory, $this->urlUtils );
 			return Util::getJsonUrl( $this->requestFactory, $url );
 		} else {
-			$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, $flags );
+			$revision = $this->isTestWithStorageDisabled
+				? null
+				: $this->revisionLookup->getRevisionByTitle( $configPage, 0, $flags );
 			if ( !$revision ) {
 				// The configuration page does not exist. Pretend it does not configure anything
 				// specific (failure mode and empty-page behavior is equal, see T325236).
