@@ -32,6 +32,10 @@ class PersonalizedPraiseSettings {
 	/** @var string */
 	public const USER_MESSAGE_PRELOAD_SUBPAGE_NAME = 'Personalized praise message';
 
+	private const SETTING_MESSAGE_SUBJECT = 'messageSubject';
+	private const SETTING_MESSAGE_TEXT = 'messageText';
+	private const SETTING_NOTIFICATION_FREQUENCY = 'notificationFrequency';
+
 	private Config $wikiConfig;
 	private MessageLocalizer $messageLocalizer;
 	private UserOptionsLookup $userOptionsLookup;
@@ -80,9 +84,9 @@ class PersonalizedPraiseSettings {
 	public function toArray( UserIdentity $user ): array {
 		$conditions = $this->getPraiseworthyConditions( $user );
 		return array_merge( [
-			'messageSubject' => $this->getPraisingMessageDefaultSubject( $user ),
-			'messageText' => $this->getPraisingMessageContent( $user ),
-			'notificationFrequency' => $this->getNotificationsFrequency( $user )
+			self::SETTING_MESSAGE_SUBJECT => $this->getPraisingMessageDefaultSubject( $user ),
+			self::SETTING_MESSAGE_TEXT => $this->getPraisingMessageContent( $user ),
+			self::SETTING_NOTIFICATION_FREQUENCY => $this->getNotificationsFrequency( $user ),
 		], $conditions->jsonSerialize() );
 	}
 
@@ -105,9 +109,12 @@ class PersonalizedPraiseSettings {
 		$settings = $this->loadSettings( $user );
 
 		return new PraiseworthyConditions(
-			$settings['maxEdits'] ?? (int)$this->wikiConfig->get( 'GEPersonalizedPraiseMaxEdits' ),
-			$settings['minEdits'] ?? (int)$this->wikiConfig->get( 'GEPersonalizedPraiseMinEdits' ),
-			$settings['days'] ?? (int)$this->wikiConfig->get( 'GEPersonalizedPraiseDays' ),
+			$settings[PraiseworthyConditions::SETTING_MAX_EDITS] ??
+				(int)$this->wikiConfig->get( 'GEPersonalizedPraiseMaxEdits' ),
+			$settings[PraiseworthyConditions::SETTING_MIN_EDITS] ??
+				(int)$this->wikiConfig->get( 'GEPersonalizedPraiseMinEdits' ),
+			$settings[PraiseworthyConditions::SETTING_DAYS] ??
+				(int)$this->wikiConfig->get( 'GEPersonalizedPraiseDays' ),
 		);
 	}
 
@@ -118,7 +125,7 @@ class PersonalizedPraiseSettings {
 	 * @return string
 	 */
 	public function getPraisingMessageDefaultSubject( UserIdentity $user ): string {
-		return $this->loadSettings( $user )[ 'messageSubject' ] ?? $this->messageLocalizer->msg(
+		return $this->loadSettings( $user )[ self::SETTING_MESSAGE_SUBJECT ] ?? $this->messageLocalizer->msg(
 			'growthexperiments-mentor-dashboard-personalized-praise-praise-message-title'
 		)->inContentLanguage()->text();
 	}
@@ -182,7 +189,7 @@ class PersonalizedPraiseSettings {
 	 * (values specified by PersonalizedPraiseSettings::NOTIFY_* constants have special meaning)
 	 */
 	public function getNotificationsFrequency( UserIdentity $user ): int {
-		return $this->loadSettings( $user )['notificationFrequency']
+		return $this->loadSettings( $user )[self::SETTING_NOTIFICATION_FREQUENCY]
 			?? (int)$this->wikiConfig->get( 'GEPersonalizedPraiseDefaultNotificationsFrequency' );
 	}
 }

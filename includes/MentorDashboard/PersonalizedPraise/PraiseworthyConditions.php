@@ -6,6 +6,10 @@ use JsonSerializable;
 
 class PraiseworthyConditions implements JsonSerializable {
 
+	public const SETTING_MAX_EDITS = 'maxEdits';
+	public const SETTING_MIN_EDITS = 'minEdits';
+	public const SETTING_DAYS = 'days';
+
 	/** @var int Maximum number of edits a mentee can have to be praiseworthy */
 	private int $maxEdits;
 
@@ -38,9 +42,9 @@ class PraiseworthyConditions implements JsonSerializable {
 	/** @inheritDoc */
 	public function jsonSerialize(): array {
 		return [
-			'maxEdits' => $this->maxEdits,
-			'minEdits' => $this->minEdits,
-			'days' => $this->days
+			self::SETTING_MAX_EDITS => $this->maxEdits,
+			self::SETTING_MIN_EDITS => $this->minEdits,
+			self::SETTING_DAYS => $this->days
 		];
 	}
 
