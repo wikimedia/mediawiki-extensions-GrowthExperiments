@@ -8,6 +8,7 @@
 	"apihelp-query+growthtasks-extended-description": "{{doc-apihelp-extended-description|query+growthtasks}}",
 	"apihelp-query+growthtasks-param-tasktypes": "{{doc-apihelp-param|query+growthtasks|tasktypes}}",
 	"apihelp-query+growthtasks-param-topics": "{{doc-apihelp-param|query+growthtasks|topics}}",
+	"apihelp-query+growthtasks-param-topicsmode": "{{doc-apihelp-param|query+growthtasks|topicsmode}}",
 	"apihelp-query+growthtasks-param-limit": "{{doc-apihelp-param|query+growthtasks|limit}}",
 	"apihelp-query+growthtasks-param-excludepageids": "{{doc-apihelp-param|query+growthtasks|excludepageids}}",
 	"apihelp-query+growthtasks-param-debug": "{{doc-apihelp-param|query+growthtasks|debug}}",

@@ -6,6 +6,7 @@
 	"apihelp-query+growthtasks-extended-description": "Suggests a set of articles which have some outstanding issues easy enough for a new editor to tackle.",
 	"apihelp-query+growthtasks-param-tasktypes": "Task types to limit results to. Leave empty to receive all suggestions.",
 	"apihelp-query+growthtasks-param-topics": "Article topics to prefer in task suggestions.",
+	"apihelp-query+growthtasks-param-topicsmode": "Matching mode for topics.",
 	"apihelp-query+growthtasks-param-limit": "Maximum number of task suggestions to return.",
 	"apihelp-query+growthtasks-param-excludepageids": "Page IDs to exclude from the query.",
 	"apihelp-query+growthtasks-param-debug": "Add debug data to the output.",

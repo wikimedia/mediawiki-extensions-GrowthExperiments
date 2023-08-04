@@ -31,5 +31,6 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "If isaway is true, then awaytimestamp must be provided.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalidates a suggestion of a praiseworthy mentee in the Personalized praise module on the Mentor dashboard",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Mentee to invalidate",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Reason to invalidate the suggestion"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Reason to invalidate the suggestion",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Skip reason to invalidate the suggestion"
 }
