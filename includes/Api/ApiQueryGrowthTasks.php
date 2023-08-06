@@ -227,7 +227,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 					return $topic->getName( $this->getContext() );
 				}, $topics ),
 			],
-			 'topicsmode' => [
+			'topicsmode' => [
 				ParamValidator::PARAM_TYPE => SearchStrategy::TOPIC_MATCH_MODES,
 			],
 			'limit' => [
