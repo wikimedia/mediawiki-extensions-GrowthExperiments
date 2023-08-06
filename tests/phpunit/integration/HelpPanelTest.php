@@ -25,10 +25,10 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 		] );
 
 		$title = HelpPanel::getHelpDeskTitle( $config );
+		$title->resetArticleID( 0 );
 
 		$this->assertSame( "HelpDesk/$sitename", $title->getText() );
 		$this->assertTrue( $title->isValid(), 'Title is valid' );
-		$this->assertFalse( $title->exists(), 'Title does not exist' );
 	}
 
 	/**

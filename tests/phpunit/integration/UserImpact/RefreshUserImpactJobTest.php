@@ -21,6 +21,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @covers \GrowthExperiments\UserImpact\RefreshUserImpactJob
+ * @group Database
  */
 class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 

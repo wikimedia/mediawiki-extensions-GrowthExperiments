@@ -14,6 +14,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\PageIdentity;
+use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Title\TitleFactory;
 use MediaWikiIntegrationTestCase;
@@ -322,7 +324,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			->willReturn( self::metadataFactory( 200, MEDIATYPE_AUDIO ) );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			$taskType,
-			new TitleValue( 0, 'Foo' ),
+			new PageIdentityValue( 0, NS_MAIN, 'Foo', PageIdentity::LOCAL ),
 			'Foo',
 			[
 				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' )
@@ -346,7 +348,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			->willReturn( self::metadataFactory( 99 ) );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			$taskType,
-			new TitleValue( 0, 'Foo' ),
+			new PageIdentityValue( 0, NS_MAIN, 'Foo', PageIdentity::LOCAL ),
 			'Foo',
 			[
 				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' )
@@ -378,7 +380,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			$taskType,
-			new TitleValue( 0, 'Foo' ),
+			new PageIdentityValue( 0, NS_MAIN, 'Foo', PageIdentity::LOCAL ),
 			'Foo',
 			$this->formatOldApiResponse( $data, $taskType ),
 			$mockMetadataProvider,
@@ -429,7 +431,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			$taskType,
-			new TitleValue( 0, 'Foo' ),
+			new PageIdentityValue( 0, NS_MAIN, 'Foo', PageIdentity::LOCAL ),
 			'Foo',
 			$this->formatOldApiResponse( $data, $taskType ),
 			$metadataProvider,
@@ -465,7 +467,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			$taskType,
-			new TitleValue( 0, $titleText ),
+			new PageIdentityValue( 0, NS_MAIN, $titleText, PageIdentity::LOCAL ),
 			$titleText,
 			$this->formatOldApiResponse( $data, $taskType ),
 			$metadataProvider,

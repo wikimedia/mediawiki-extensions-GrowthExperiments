@@ -10,6 +10,7 @@ use IBufferingStatsdDataFactory;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use StatusValue;
@@ -151,7 +152,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * Process the data returned by the Image Suggestions API and return an ImageRecommendation
 	 * or an error.
 	 * @param ImageRecommendationBaseTaskType $taskType
-	 * @param LinkTarget $title Title for which to generate the image recommendation for.
+	 * @param LinkTarget|ProperPageIdentity $title Title for which to generate the image recommendation for.
 	 *   The title in the API response will be ignored.
 	 * @param string $titleText Title text, for logging.
 	 * @param ImageRecommendationData[] $suggestionData
@@ -163,7 +164,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 */
 	public static function processApiResponseData(
 		ImageRecommendationBaseTaskType $taskType,
-		LinkTarget $title,
+		$title,
 		string $titleText,
 		array $suggestionData,
 		ImageRecommendationMetadataProvider $metadataProvider,
@@ -235,10 +236,17 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				$status->merge( $fileMetadata );
 			}
 		}
+		if ( $title instanceof ProperPageIdentity ) {
+			$pageIdentity = $title;
+			$linkTarget = Title::newFromPageIdentity( $title );
+		} else {
+			$pageIdentity = Title::newFromLinkTarget( $title )->toPageIdentity();
+			$linkTarget = $title;
+		}
 		if ( !$images && $imageSubmissionHandler ) {
 			$imageSubmissionHandler->invalidateRecommendation(
 				$taskType,
-				Title::newFromLinkTarget( $title )->toPageIdentity(),
+				$pageIdentity,
 				// We need to pass a user ID for event logging purposes. We can't easily
 				// access a user ID here; passing 0 for an anonymous user seems OK.
 				0,
@@ -251,7 +259,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		}
 		// If $status is bad but $images is not empty (fetching some but not all images failed),
 		// we can just ignore the errors, they won't be a problem for the recommendation workflow.
-		return new ImageRecommendation( $title, $images, $datasetId );
+		return new ImageRecommendation( $linkTarget, $images, $datasetId );
 	}
 
 	/**

@@ -18,7 +18,7 @@ use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use PageImages\PageImages;
 use SpecialPage;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * This is the "Impact" module. It shows the page views information
@@ -53,8 +53,8 @@ class Impact extends BaseModule {
 	 */
 	private $editsTable = null;
 
-	/** @var IReadableDatabase */
-	private $dbr;
+	/** @var IConnectionProvider */
+	private $connectionProvider;
 
 	/**
 	 * @var bool
@@ -79,7 +79,7 @@ class Impact extends BaseModule {
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
-	 * @param IReadableDatabase $dbr
+	 * @param IConnectionProvider $connectionProvider
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param array $suggestedEditsConfig
 	 * @param TitleFactory $titleFactory
@@ -88,14 +88,14 @@ class Impact extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		IReadableDatabase $dbr,
+		IConnectionProvider $connectionProvider,
 		ExperimentUserManager $experimentUserManager,
 		array $suggestedEditsConfig,
 		TitleFactory $titleFactory,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'impact', $context,  $wikiConfig, $experimentUserManager );
-		$this->dbr = $dbr;
+		$this->connectionProvider = $connectionProvider;
 		$this->isSuggestedEditsEnabledForUser = $suggestedEditsConfig['isSuggestedEditsEnabled'];
 		$this->isSuggestedEditsActivatedForUser = $suggestedEditsConfig['isSuggestedEditsActivated'];
 		$this->titleFactory = $titleFactory;
@@ -582,8 +582,9 @@ class Impact extends BaseModule {
 	 */
 	private function queryArticleEdits() {
 		$actorMigration = ActorMigration::newMigration();
-		$actorQuery = $actorMigration->getWhere( $this->dbr, 'rev_user', $this->getContext()->getUser() );
-		$subquery = $this->dbr->buildSelectSubquery(
+		$dbr = $this->connectionProvider->getReplicaDatabase();
+		$actorQuery = $actorMigration->getWhere( $dbr, 'rev_user', $this->getContext()->getUser() );
+		$subquery = $dbr->buildSelectSubquery(
 			array_merge( [ 'revision' ], $actorQuery[ 'tables' ], [ 'page' ] ),
 			[ 'rev_page', 'page_title', 'page_namespace', 'rev_timestamp' ],
 			[
@@ -595,7 +596,7 @@ class Impact extends BaseModule {
 			[ 'ORDER BY' => 'rev_timestamp DESC', 'limit' => 1000 ],
 			[ 'page' => [ 'JOIN', [ 'rev_page = page_id' ] ] ] + $actorQuery[ 'joins' ]
 		);
-		$result = $this->dbr->select(
+		$result = $dbr->select(
 			[ 'latest_edits' => $subquery ],
 			[
 				'rev_page',
@@ -630,8 +631,9 @@ class Impact extends BaseModule {
 	 */
 	private function getArticleEditCount() {
 		$actorMigration = ActorMigration::newMigration();
-		$actorQuery = $actorMigration->getWhere( $this->dbr, 'rev_user', $this->getContext()->getUser() );
-		return $this->dbr->selectRowCount(
+		$dbr = $this->connectionProvider->getReplicaDatabase();
+		$actorQuery = $actorMigration->getWhere( $dbr, 'rev_user', $this->getContext()->getUser() );
+		return $dbr->selectRowCount(
 			array_merge( [ 'revision' ], $actorQuery[ 'tables' ], [ 'page' ] ),
 			'rev_id',
 			[
