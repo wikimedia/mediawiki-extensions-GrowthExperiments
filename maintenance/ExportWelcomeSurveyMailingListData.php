@@ -33,6 +33,18 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		$this->addOption( 'to',
 			'Export date up to this registration timestamp, e.g. 20220316000000', false, true );
 		$this->addOption(
+			'question',
+			'Welcome survey checkbox question to be used',
+			true,
+			true
+		);
+		$this->addOption(
+			'group',
+			'Welcome survey group to process (if omitted, all groups are processed)',
+			false,
+			true
+		);
+		$this->addOption(
 			'output-format',
 			'Output format for the results, "text" or "csv"',
 			false
@@ -107,6 +119,9 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		$this->handle = fopen( 'php://output', 'w' );
 		$headers = [ 'Email Address', 'Opt-in date', 'Group', 'User ID', 'Is email address confirmed' ];
 		$this->writeToHandle( $headers );
+
+		$question = $this->getOption( 'question' );
+		$group = $this->getOption( 'group' );
 		do {
 			$queryBuilder = clone $queryBuilderTemplate;
 			$queryBuilder->andWhere( 'user_id > ' . ( $fromId ?? 0 ) );
@@ -118,13 +133,14 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 				// We only want to export survey responses in the T303240_mailinglist group,
 				// see https://gerrit.wikimedia.org/r/c/operations/mediawiki-config/+/775951
 				// and only when the user gets the Growth features
-				if ( !$homepageEnabled
-					|| !$welcomeSurveyResponse
-					|| $welcomeSurveyResponse['_group'] !== 'T303240_mailinglist'
-				) {
+				if ( !(
+					$homepageEnabled &&
+					$welcomeSurveyResponse &&
+					( $group === null || $welcomeSurveyResponse['_group'] === $group )
+				) ) {
 					continue;
 				}
-				if ( isset( $welcomeSurveyResponse['mailinglist'] ) && $welcomeSurveyResponse['mailinglist'] ) {
+				if ( isset( $welcomeSurveyResponse[$question] ) && $welcomeSurveyResponse[$question] ) {
 					// user_email_authenticated is the timestamp of when the email was confirmed; we want a 1 or 0
 					// to indicate if the email is confirmed.
 					$outputData = [
