@@ -34,5 +34,6 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "אם הערך של isaway הוא true, חובה לספק awaytimestamp.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "פסילת הצעת חניך ראוי להערכה במודול הבעת הערכה אישית בלוח הבקרה לחונכים",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "אילו חניכים לפסול",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "סיבה לפסול את ההצעה"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "סיבה לפסול את ההצעה",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "הסיבה לפסיחה כדי לבטל את ההצעה"
 }

@@ -8,6 +8,7 @@
 	"apihelp-query+growthtasks-extended-description": "Suggere un insimul de articulos que ha certe problemas pendente que es assatis facile a resolver pro un nove redactor.",
 	"apihelp-query+growthtasks-param-tasktypes": "Le typos de carga al quales limitar le resultatos. Lassa vacue pro reciper tote le suggestiones.",
 	"apihelp-query+growthtasks-param-topics": "Topicos de articulo a preferer in suggestiones de carga.",
+	"apihelp-query+growthtasks-param-topicsmode": "Modo de correspondentia pro topicos.",
 	"apihelp-query+growthtasks-param-limit": "Numero maxime de suggestiones de cargas a retornar.",
 	"apihelp-query+growthtasks-param-excludepageids": "IDs de pagina a excluder del consulta.",
 	"apihelp-query+growthtasks-param-debug": "Adder datos de depuration al sortita.",

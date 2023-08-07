@@ -9,6 +9,7 @@
 	"apihelp-query+growthtasks-extended-description": "Schlägt eine Reihe von Artikeln vor, die Probleme haben, die einfach genug sind, um von neuen Benutzern behoben werden zu können.",
 	"apihelp-query+growthtasks-param-tasktypes": "Aufgabentypen, auf die die Ergebnisse beschränkt sein sollen. Lasse das Feld leer, um alle Vorschläge zu erhalten.",
 	"apihelp-query+growthtasks-param-topics": "Artikelthemen, die bei den Aufgabenvorschlägen bevorzugt werden sollen.",
+	"apihelp-query+growthtasks-param-topicsmode": "Matching-Modus für Themen.",
 	"apihelp-query+growthtasks-param-limit": "Maximale Wiederholungsanzahl von Aufgabenvorschlägen.",
 	"apihelp-query+growthtasks-param-excludepageids": "Seiten-IDs, die von der Abfrage ausgeschlossen werden sollen.",
 	"apihelp-query+growthtasks-param-debug": "Füge Debugging-Daten zur Ausgabe hinzu.",

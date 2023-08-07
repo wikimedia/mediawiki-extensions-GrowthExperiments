@@ -10,6 +10,7 @@
 	"apihelp-query+growthtasks-extended-description": "הצעת ערכה של ערכים שיש בהם עניינים מסוימים שצריך לטפל, ושלעורך מתחיל יהיה קל לעשות את זה.",
 	"apihelp-query+growthtasks-param-tasktypes": "סוגי משימות שהתוצאות יהיו מוגבלות אליהם. יש להשאיר את זה ריק כדי לקבל את כל ההצעות.",
 	"apihelp-query+growthtasks-param-topics": "נושאי ערכים להעדפה בהצעת משימות.",
+	"apihelp-query+growthtasks-param-topicsmode": "מצב התאמה לנושאים.",
 	"apihelp-query+growthtasks-param-limit": "מספר מרבי של הצעות משימות להחזיר.",
 	"apihelp-query+growthtasks-param-excludepageids": "מזהי דפים שצריך להוציא מהשאילתה.",
 	"apihelp-query+growthtasks-param-debug": "הוספת נתוני ניפוי שגיאות לפלט.",
