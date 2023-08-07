@@ -4,13 +4,15 @@
 		@submit.prevent="onSettingsUpdate"
 	>
 		<h3 class="no-gutter">
-			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline' ) }}
+			{{ $i18n(
+				'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline'
+			).text() }}
 		</h3>
 		<section class="ext-growthExperiments-PersonalizedPraiseSettings__form_group">
 			<label>
 				{{ $i18n(
 					'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe'
-				) }}
+				).text() }}
 			</label>
 
 			<div class="ext-growthExperiments-PersonalizedPraiseSettings__field_flexbox">
@@ -29,7 +31,7 @@
 		</section>
 
 		<h3 class="no-gutter">
-			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline' ) }}
+			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline' ).text() }}
 		</h3>
 		<section class="ext-growthExperiments-PersonalizedPraiseSettings__form_group">
 			<cdx-text-input
@@ -45,17 +47,19 @@
 				rows="6"
 			></textarea>
 			<c-text color="subtle" class="ext-growthExperiments-PersonalizedPraiseSettings__help_text">
-				{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text' ) }}
+				{{ $i18n(
+					'growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text'
+				).text() }}
 			</c-text>
 		</section>
 
 		<div v-if="areNotificationsEnabled">
 			<h3>
-				{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline' ) }}
+				{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline' ).text() }}
 			</h3>
 			<section class="ext-growthExperiments-PersonalizedPraiseSettings__form_group">
 				<label>
-					{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext' ) }}
+					{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext' ).text() }}
 				</label>
 				<cdx-select
 					v-model:selected="settingsData.notificationFrequency"
@@ -71,14 +75,14 @@
 			weight="primary"
 			action="progressive"
 		>
-			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-save' ) }}
+			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-save' ).text() }}
 		</cdx-button>
 		<cdx-button
 			class="ext-growthExperiments-PersonalizedPraiseSettings__button"
 			type="button"
 			@click="$emit( 'close' )"
 		>
-			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cancel' ) }}
+			{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cancel' ).text() }}
 		</cdx-button>
 	</form>
 </template>
@@ -132,25 +136,25 @@ module.exports = exports = {
 				{
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours'
-					),
+					).text(),
 					value: 2
 				},
 				{
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week'
-					),
+					).text(),
 					value: 7
 				},
 				{
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks'
-					),
+					).text(),
 					value: 14
 				},
 				{
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month'
-					),
+					).text(),
 					value: 30
 				}
 			];
@@ -160,31 +164,31 @@ module.exports = exports = {
 				{
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately'
-					),
+					).text(),
 					value: 0
 				},
 				{
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily'
-					),
+					).text(),
 					value: 24
 				},
 				{
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly'
-					),
+					).text(),
 					value: 168
 				},
 				{
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly'
-					),
+					).text(),
 					value: 720
 				},
 				{
 					label: this.$i18n(
 						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never'
-					),
+					).text(),
 					value: -1
 				}
 			];
