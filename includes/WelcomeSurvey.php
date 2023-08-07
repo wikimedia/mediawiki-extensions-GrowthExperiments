@@ -303,6 +303,13 @@ class WelcomeSurvey {
 				],
 				"disabled" => false
 			],
+			"user-research-nonediting" => [
+				"type" => "check",
+				"label-message" => "welcomesurvey-question-user-research-nonediting-label",
+				"help" => $this->addLinkTarget(
+					$this->context->msg( 'welcomesurvey-question-user-research-nonediting-help' )->parse()
+				)
+			],
 			"mentor-info" => [
 				"type" => "info",
 				"label-message" => [ "welcomesurvey-question-mentor-info",
