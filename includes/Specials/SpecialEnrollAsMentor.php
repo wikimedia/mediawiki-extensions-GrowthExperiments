@@ -137,7 +137,7 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 		return Status::wrap( $this->mentorWriter->addMentor(
 			$mentor,
 			$this->getUser(),
-			'/* growthexperiments-mentorship-enrollasmentor-summary */'
+			''
 		) );
 	}
 

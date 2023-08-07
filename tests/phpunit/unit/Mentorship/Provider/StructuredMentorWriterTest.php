@@ -188,7 +188,10 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		if ( $expectedError === null ) {
 			$expectedMentorList = self::MENTOR_LIST_CONTENT;
 			$expectedMentorList[$mentor->getUserIdentity()->getId()] = $expectedNewMentor;
-			$configWriterFactory = $this->getWikiPageWriterFactoryMock( $expectedMentorList, 'Add mentor' );
+			$configWriterFactory = $this->getWikiPageWriterFactoryMock(
+				$expectedMentorList,
+				'/* growthexperiments-manage-mentors-summary-add-self-with-reason:Mentor|Add mentor */'
+			);
 
 			$userIdentityLookup = $this->getUserIdentityLookupMock();
 		} else {
@@ -206,7 +209,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 
 		$status = $mentorWriter->addMentor(
 			$mentor,
-			$this->createNoOpMock( UserIdentity::class ),
+			$mentor->getUserIdentity(),
 			'Add mentor'
 		);
 		if ( $expectedError === null ) {
@@ -282,7 +285,10 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		if ( $expectedError === null ) {
 			$expectedMentorList = self::MENTOR_LIST_CONTENT;
 			unset( $expectedMentorList[$mentor->getUserIdentity()->getId()] );
-			$configWriterFactory = $this->getWikiPageWriterFactoryMock( $expectedMentorList, 'Remove mentor' );
+			$configWriterFactory = $this->getWikiPageWriterFactoryMock(
+				$expectedMentorList,
+				'/* growthexperiments-manage-mentors-summary-remove-self-with-reason:Mentor|Remove mentor */'
+			);
 		} else {
 			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
 		}
@@ -297,7 +303,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 
 		$status = $mentorWriter->removeMentor(
 			$mentor,
-			$this->createNoOpMock( UserIdentity::class ),
+			$mentor->getUserIdentity(),
 			'Remove mentor'
 		);
 		if ( $expectedError === null ) {
@@ -339,7 +345,10 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		if ( $expectedError === null ) {
 			$expectedMentorList = self::MENTOR_LIST_CONTENT;
 			$expectedMentorList[$mentor->getUserIdentity()->getId()] = $expectedNewMentor;
-			$configWriterFactory = $this->getWikiPageWriterFactoryMock( $expectedMentorList, 'Change mentor' );
+			$configWriterFactory = $this->getWikiPageWriterFactoryMock(
+				$expectedMentorList,
+				'/* growthexperiments-manage-mentors-summary-change-self-with-reason:Mentor|Change mentor */'
+			);
 
 			$userIdentityLookup = $this->getUserIdentityLookupMock();
 		} else {
@@ -357,7 +366,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 
 		$status = $mentorWriter->changeMentor(
 			$mentor,
-			$this->createNoOpMock( UserIdentity::class ),
+			$mentor->getUserIdentity(),
 			'Change mentor'
 		);
 		if ( $expectedError === null ) {

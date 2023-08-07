@@ -269,11 +269,37 @@ class MentorHooks implements
 	 * @inheritDoc
 	 */
 	public function onFormatAutocomments( &$comment, $pre, $auto, $post, $title, $local, $wikiId ) {
-		$allowedMessageKeys = [
-			'growthexperiments-mentorship-enrollasmentor-summary'
+		// NOTE: this message is no longer used, but parsing support needs to be kept to support
+		// older revisions.
+		$noParamMessageKeys = [
+			'growthexperiments-mentorship-enrollasmentor-summary',
 		];
-		if ( in_array( $auto, $allowedMessageKeys ) ) {
+		if ( in_array( $auto, $noParamMessageKeys ) ) {
 			$comment = wfMessage( $auto )->text();
+		}
+
+		$mentorChangeMessageKeys = [
+			'growthexperiments-manage-mentors-summary-add-admin-no-reason',
+			'growthexperiments-manage-mentors-summary-add-admin-with-reason',
+			'growthexperiments-manage-mentors-summary-add-self-no-reason',
+			'growthexperiments-manage-mentors-summary-add-self-with-reason',
+			'growthexperiments-manage-mentors-summary-change-admin-no-reason',
+			'growthexperiments-manage-mentors-summary-change-admin-with-reason',
+			'growthexperiments-manage-mentors-summary-change-self-no-reason',
+			'growthexperiments-manage-mentors-summary-change-self-with-reason',
+			'growthexperiments-manage-mentors-summary-remove-admin-no-reason',
+			'growthexperiments-manage-mentors-summary-remove-admin-with-reason',
+			'growthexperiments-manage-mentors-summary-remove-self-no-reason',
+			'growthexperiments-manage-mentors-summary-remove-self-with-reason',
+		];
+
+		$messageParts = explode( ':', $auto );
+		$messageKey = $messageParts[0];
+		if ( in_array( $messageKey, $mentorChangeMessageKeys ) ) {
+			$comment = wfMessage( $messageKey )
+				->params( ...explode( '|', $messageParts[1] ) )
+				->inContentLanguage()
+				->parse();
 		}
 	}
 
