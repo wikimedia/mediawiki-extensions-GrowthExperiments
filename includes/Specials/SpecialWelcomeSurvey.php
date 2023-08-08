@@ -98,12 +98,11 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	/**
 	 * Overridden in order to inject the current user's name as message parameter
 	 *
-	 * @return string
+	 * @inheritDoc
 	 */
 	public function getDescription() {
 		return $this->msg( strtolower( $this->mName ) )
-			->params( $this->getUser()->getName() )
-			->text();
+			->params( $this->getUser()->getName() );
 	}
 
 	/**

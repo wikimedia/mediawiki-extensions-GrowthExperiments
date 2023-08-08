@@ -46,7 +46,7 @@ class SpecialImpact extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'growthexperiments-specialimpact-title' )->text();
+		return $this->msg( 'growthexperiments-specialimpact-title' );
 	}
 
 	/**

@@ -88,10 +88,10 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
-	 * @return string
+	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'growthexperiments-manage-mentors-title' )->text();
+		return $this->msg( 'growthexperiments-manage-mentors-title' );
 	}
 
 	/**

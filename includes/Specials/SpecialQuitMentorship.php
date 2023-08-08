@@ -59,7 +59,7 @@ class SpecialQuitMentorship extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'growthexperiments-quit-mentorship-title' )->text();
+		return $this->msg( 'growthexperiments-quit-mentorship-title' );
 	}
 
 	/**

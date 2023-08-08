@@ -59,7 +59,7 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'growthexperiments-mentorship-enrollasmentor-title' )->text();
+		return $this->msg( 'growthexperiments-mentorship-enrollasmentor-title' );
 	}
 
 	/**
