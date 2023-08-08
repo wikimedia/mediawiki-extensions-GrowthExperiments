@@ -127,7 +127,7 @@
 	"tag-help_panel_question-description": "Измене направљене функцијом постављања питања из помоћне табле",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Предложене измене",
 	"growthexperiments-help-panel-button-header-ask-help": "Питајте",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Затражите помоћ ментора",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Питајте свог {{GENDER:$1|ментора|менторку}} за помоћ",
 	"growthexperiments-help-panel-button-header-general-help": "Општа помоћ",
 	"growthexperiments-help-panel-button-subheader-general-help": "Прочитајте странице помоћи и потражите одговоре",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Сазнајте одговоре од других добровољаца",

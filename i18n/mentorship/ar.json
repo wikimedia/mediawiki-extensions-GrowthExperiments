@@ -145,7 +145,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "السبب",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "التسجيل",
 	"growthexperiments-mentorship-enrollasmentor-success": "تم تسجيلك الآن {{GENDER:|كمرشد|كمرشدة}}. يمكنك المرور إلى [[Special:MentorDashboard|لوحة المرشدين]].",
-	"growthexperiments-mentorship-enrollasmentor-summary": "إضافة نفسي {{GENDER:|كمرشد|كمرشدة}}",
+	"growthexperiments-mentorship-enrollasmentor-summary": "إضافة نفسي {{GENDER:|مرشدًا|مرشدةً}}",
 	"tag-mentor list change": "تغيير قائمة المرشِدين",
 	"tag-mentor list change-description": "وسم ينطبق على التعديلات التي تم إجراؤها على القائمة المهيكلة للمرشدين عبر GrowthExperiments"
 }
