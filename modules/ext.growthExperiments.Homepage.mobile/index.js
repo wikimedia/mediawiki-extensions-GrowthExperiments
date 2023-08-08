@@ -307,7 +307,7 @@
 							.addClass( 'growthexperiments-homepage-newimpact-discovery-footer' )
 							.append(
 								new Anchor( {
-									href: '#',
+									href: '#/homepage/impact',
 									progressive: true,
 									label: mw.msg(
 										'growthexperiments-tour-newimpact-discovery-response-button-okay'
@@ -323,19 +323,14 @@
 					homepageModuleLogger.log( 'generic', 'mobile-overlay', 'newimpactdiscovery-close',
 						{ type: 'outside-click' } );
 				}
-				// FIXME: Seems wrong to do this, but otherwise we're sent back to Special:Homepage
-				// when the user closes the drawer.
-				var router = require( 'mediawiki.router' );
-				router.navigateTo( '#/homepage/impact', {
-					path: location.pathname + location.search + '#/homepage/impact',
-					useReplaceState: false
-				} );
 			}
 		} );
 
 		$overlayModules.find( '[data-module-name="impact"]' ).append( newImpactDiscoveryDrawer.$el[ 0 ] );
 		newImpactDiscoveryDrawer.$el.find( '.homepage-newimpact-discovery' ).on( 'click', function () {
 			buttonClicked = true;
+			// FIXME: when the click target is the Drawer surface the onBeforeHide hook is also
+			// triggered making an unnecessary repeated post request to the options API
 			markAsSeen();
 			homepageModuleLogger.log( 'generic', 'mobile-overlay', 'newimpactdiscovery-close', {
 				type: 'button'
