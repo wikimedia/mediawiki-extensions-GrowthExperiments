@@ -51,6 +51,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 				'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
 				'GELevelingUpKeepGoingNotificationThresholds' => [ 1, 4 ],
 				'GENewcomerTasksLinkRecommendationsEnabled' => false,
+				'GELevelingUpGetStartedMaxTotalEdits' => 10,
 			] )
 		);
 		$this->assertEquals(
@@ -242,6 +243,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 					'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,
 					'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
 					'GELevelingUpKeepGoingNotificationThresholds' => [ 1, 4 ],
+					'GELevelingUpGetStartedMaxTotalEdits' => 10,
 					'GENewcomerTasksLinkRecommendationsEnabled' => true,
 				] )
 			),
