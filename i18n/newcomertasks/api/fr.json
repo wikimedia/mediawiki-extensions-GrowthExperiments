@@ -12,6 +12,7 @@
 	"apihelp-query+growthtasks-extended-description": "Suggère un ensemble d’articles qui ont quelques problèmes en suspens assez faciles à traiter par un nouvel éditeur.",
 	"apihelp-query+growthtasks-param-tasktypes": "Types de tâche auxquels limiter les résultats. Laisser vide pour recevoir toutes les suggestions.",
 	"apihelp-query+growthtasks-param-topics": "Sujets d’article à préférer dans les suggestions de tâche.",
+	"apihelp-query+growthtasks-param-topicsmode": "Mode correspondant pour les sujets.",
 	"apihelp-query+growthtasks-param-limit": "Nombre maximal de suggestions de tâches à renvoyer.",
 	"apihelp-query+growthtasks-param-excludepageids": "Identifiants des pages à exclure de la requête.",
 	"apihelp-query+growthtasks-param-debug": "Ajouter des données de débogage à la sortie.",

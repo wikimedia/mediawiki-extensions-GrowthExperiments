@@ -35,5 +35,6 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Si « isaway » (est absent(e)) vaut « true » (vrai), alors le paramètre « awaytimestamp » (horodatage d’absence) doit être fourni.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalide une suggestion de tutoré digne de félicitation dans le module de félicitations personnalisé sur le tableau de bord du tuteur",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Tutoré à invalider",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Motif pour invalider la suggestion"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Motif pour invalider la suggestion",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Sauter le motif pour invalider la suggestion"
 }
