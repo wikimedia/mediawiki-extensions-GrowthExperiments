@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Piano1forte2"
+			"Piano1forte2",
+			"Reedy"
 		]
 	},
-	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Use when saving a GrowthExperiments '[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|Add a link]]' structured edit."
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Use when saving a GrowthExperiments '[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|Add a link]]' structured edit.",
+	"growthexperiments-underlinked-rescore-profile": "Internal rescore profile used in GrowthExperiments link recommendations for prioritising articles which do not yet have enough links."
 }

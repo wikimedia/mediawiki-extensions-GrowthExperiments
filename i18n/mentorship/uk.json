@@ -5,7 +5,8 @@
 			"DDPAT",
 			"Ice bulldog",
 			"Ата",
-			"Пан Хаунд"
+			"Пан Хаунд",
+			"Andriy.v"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
@@ -164,7 +165,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Вітальне повідомлення представляє {{GENDER:|вас}} як наставника. Будь ласка, не перевищуйте 240 символів. Вікітекст не допускається.",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Записатись",
 	"growthexperiments-mentorship-enrollasmentor-success": "Ви тепер записані як {{GENDER:|наставник|наставниця}}. {{GENDER:|Ви}} можете перейти до [[Special:MentorDashboard|панелі наставника]].",
-	"growthexperiments-mentorship-enrollasmentor-summary": "Додавання себе в якості наставника",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Додавання себе до списку наставників",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Лише користувачі, які мають принаймні $1 {{PLURAL:$1|редагування|редагування|редагувань}} та $2 {{PLURAL:$2|день|дні|днів}} активності, можуть записатися як наставники.",
 	"tag-mentor list change": "Зміна списку наставників",
 	"tag-mentor list change-description": "Тег, який застосовується до змін, внесених до структурованого списку наставників за допомогою GrowthExperiments"
