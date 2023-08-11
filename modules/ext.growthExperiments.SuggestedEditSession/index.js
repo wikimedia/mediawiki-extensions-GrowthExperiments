@@ -566,6 +566,10 @@
 	 *   postEditDialogNeedsToBeShown flag.
 	 */
 	SuggestedEditSession.prototype.maybeShowPostEditDialog = function () {
+		// Exit early if on History page
+		if ( mw.config.get( 'wgAction' ) === 'history' ) {
+			return;
+		}
 		var self = this,
 			currentTitle = this.getCurrentTitle(),
 			uri = new mw.Uri(),
