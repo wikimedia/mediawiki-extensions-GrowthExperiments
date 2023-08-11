@@ -27,6 +27,9 @@
 				<c-popover
 					:close-icon="cdxIconClose"
 					:close-icon-label="$i18n( 'growthexperiments-info-tooltip-close-label' ).text()"
+					:header-icon="infoHeaderIcon"
+					:header-icon-label="infoIconLabel"
+					:title="iconLabel"
 					@open="$emit( 'open' )"
 					@close="$emit( 'close' );"
 				>
@@ -74,21 +77,41 @@ module.exports = exports = {
 		CText
 	},
 	props: {
+		/*
+		 * The main scorecard icon
+		 */
 		icon: {
 			type: [ String, Object ],
 			default: null
 		},
-		label: {
-			type: String,
-			required: true
-		},
+		/*
+		 * The label for the main scorecard icon
+		 */
 		iconLabel: {
 			type: String,
 			required: true
 		},
+		/*
+		 * The icon placed as inline prefix of the information
+		 * popover title. Will use the same label as defined in infoIconLabel.
+		 */
+		infoHeaderIcon: {
+			type: [ String, Object ],
+			default: null
+		},
+		/*
+		 * The label for the information icon
+		 */
 		infoIconLabel: {
 			type: String,
 			default: ''
+		},
+		/*
+		 * The label displayed below the main scorecard icon
+		 */
+		label: {
+			type: String,
+			required: true
 		}
 	},
 	emits: [

@@ -117,7 +117,7 @@ exports[`ScoreCard renders correctly info slot 1`] = `
             
           </div>
           <div
-            class="ext-growthExperiments-Popover__popover-container"
+            class="ext-growthExperiments-Popover__surface-container"
           >
             <!--v-if-->
           </div>

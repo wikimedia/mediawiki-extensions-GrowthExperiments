@@ -37,6 +37,7 @@
 			:icon="cdxIconUserTalk"
 			:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
+			:info-header-icon="cdxIconInfoFilled"
 			:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' ).text()"
 			@open="$emit( 'interaction', 'open-thanks-info-tooltip' );"
 			@close="$emit( 'interaction', 'close-thanks-info-tooltip' );"
@@ -55,13 +56,6 @@
 			</c-text>
 			<template #info-content>
 				<div class="ext-growthExperiments-ScoreCards__scorecard__info">
-					<span>
-						<cdx-icon
-							class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
-							:icon="cdxIconInfoFilled"
-						></cdx-icon>
-						{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text() }}
-					</span>
 					<p>
 						{{ receivedThanksInfoText }}
 					</p>
@@ -87,6 +81,7 @@
 			:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 			:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 			:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' ).text()"
+			:info-header-icon="cdxIconInfoFilled"
 			@open="$emit( 'interaction', 'open-streak-info-tooltip' );"
 			@close="$emit( 'interaction', 'close-streak-info-tooltip' );"
 		>
@@ -98,13 +93,6 @@
 			</c-text>
 			<template #info-content>
 				<div class="ext-growthExperiments-ScoreCards__scorecard__info">
-					<span>
-						<cdx-icon
-							class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
-							:icon="cdxIconInfoFilled"
-						></cdx-icon>
-						{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text() }}
-					</span>
 					<p>
 						{{ longestEditingStreakFirstParagraph }}
 					</p>
@@ -120,7 +108,6 @@
 <script>
 const moment = require( 'moment' );
 const { getIntlLocale } = require( '../utils/Utils.js' );
-const { CdxIcon } = require( '@wikimedia/codex' );
 const CScoreCard = require( './CScoreCard.vue' );
 const CText = require( './CText.vue' );
 const {
@@ -142,8 +129,7 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CScoreCard,
-		CText,
-		CdxIcon
+		CText
 	},
 	props: {
 		/**

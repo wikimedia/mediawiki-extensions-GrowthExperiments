@@ -3,6 +3,8 @@
 		<div class="ext-growthExperiments-MenteeOverview__info-box-wrapper">
 			<c-popover
 				class="ext-growthExperiments-MenteeOverview__info-box"
+				:title="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ).text()"
+				title-class="ext-growthExperiments-MenteeOverview__info-box__title"
 				:icon="cdxIconInfo"
 				:icon-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' ).text()"
 				:close-icon="cdxIconClose"
@@ -20,13 +22,6 @@
 				</template>
 				<template #content>
 					<div class="ext-growthExperiments-MenteeOverview__info-content">
-						<h3>
-							{{
-								$i18n(
-									'growthexperiments-mentor-dashboard-mentee-overview-info-headline'
-								)
-							}}
-						</h3>
 						<p v-i18n-html="'growthexperiments-mentor-dashboard-mentee-overview-info-text'">
 						</p>
 						<legend-box v-if="legendItems.length" :items="legendItems"></legend-box>
@@ -329,6 +324,10 @@ module.exports = exports = {
 
 		&-wrapper {
 			position: relative;
+		}
+
+		&__title {
+			font-weight: @font-weight-bold;
 		}
 	}
 
