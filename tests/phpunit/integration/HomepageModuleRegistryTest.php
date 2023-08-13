@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use DerivativeRequest;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
@@ -12,9 +11,10 @@ use GrowthExperiments\VariantHooks;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use RequestContext;
-use User;
+use Title;
 
 /**
+ * @group Database
  * @coversDefaultClass \GrowthExperiments\Homepage\HomepageModuleRegistry
  */
 class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
@@ -48,11 +48,14 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 		string $expectedModuleClass
 	) {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		$context = RequestContext::getMain();
 
 		$this->overrideConfigValue( 'GEUseNewImpactModule', $configFlag );
-		$context->setRequest( new DerivativeRequest( $context->getRequest(), $requestData ) );
-		$user = $this->createMock( User::class );
+		$context = RequestContext::newExtraneousContext(
+			Title::makeTitle( NS_SPECIAL, 'Blankpage' ),
+			$requestData
+		);
+		$user = $this->getTestUser()->getUser();
+
 		$growthServices->getExperimentUserManager()->setVariant( $user, $userVariant );
 		$context->setUser( $user );
 
