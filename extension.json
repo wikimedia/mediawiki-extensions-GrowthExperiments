@@ -2035,6 +2035,8 @@
 				"growthexperiments-mentor-dashboard-personalized-praise-settings-title",
 				"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline",
 				"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts",
+				"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts-help",
 				"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours",
 				"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week",
 				"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks",
@@ -2561,6 +2563,10 @@
 		"GEPersonalizedPraiseMaxEdits": {
 			"description": "Maximum number of total edits a mentee can have to be considered praiseworthy (used to avoid suggesting experienced users)",
 			"value": 500
+		},
+		"GEPersonalizedPraiseMaxReverts": {
+			"description": "Maximum number of total reverted edits a mentee can have to be considered praiseworthy or null if check should be skipped.",
+			"value": null
 		},
 		"GEStructuredMentorList": {
 			"description": "Title of the wiki page that has the mentor list in JSON format (used by StructuredMentorProvider)",

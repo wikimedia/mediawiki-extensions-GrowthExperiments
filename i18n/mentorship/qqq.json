@@ -145,6 +145,8 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Title of Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Headline in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe": "Subtitle in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts": "Subtitle in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts-help": "Label in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours": "Label in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week": "Label in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks": "Label in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",

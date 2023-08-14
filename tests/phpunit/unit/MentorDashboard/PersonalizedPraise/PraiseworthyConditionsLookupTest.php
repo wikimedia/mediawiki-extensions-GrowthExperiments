@@ -23,9 +23,11 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param bool $expectedPraiseworthy
 	 * @param array $editsByDay
+	 * @param int $totalReverts
 	 * @param int $minEdits
 	 * @param int $days
 	 * @param int $maxEdits
+	 * @param int|null $maxReverts
 	 * @dataProvider provideIsMenteePraiseworthy
 	 * @covers ::isMenteePraiseworthyForMentor
 	 * @covers ::getEditsInDatePeriod
@@ -33,8 +35,8 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 	 */
 	public function testIsMenteePraiseworthyDefaults(
 		bool $expectedPraiseworthy,
-		array $editsByDay,
-		int $minEdits, int $days, int $maxEdits
+		array $editsByDay, int $totalReverts,
+		int $minEdits, int $days, int $maxEdits, ?int $maxReverts
 	) {
 		MWTimestamp::setFakeTime( '20230115235959' );
 		$mentee = new UserIdentityValue( 123, 'Mentee' );
@@ -42,7 +44,7 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		$settingsMock = $this->createMock( PersonalizedPraiseSettings::class );
 		$settingsMock->expects( $this->once() )
 			->method( 'getPraiseworthyConditions' )
-			->willReturn( new PraiseworthyConditions( $maxEdits, $minEdits, $days ) );
+			->willReturn( new PraiseworthyConditions( $maxEdits, $minEdits, $maxReverts, $days ) );
 
 		$mentorManagerMock = $this->createMock( MentorManager::class );
 		$mentorManagerMock->expects( $this->once() )
@@ -78,6 +80,9 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		$menteeImpactMock->expects( $this->atMost( 1 ) )
 			->method( 'getEditCountByDay' )
 			->willReturn( $editsByDay );
+		$menteeImpactMock->expects( $this->atMost( 1 ) )
+			->method( 'getRevertedEditCount' )
+			->willReturn( $totalReverts );
 
 		$conditionsLookup = new PraiseworthyConditionsLookup(
 			$settingsMock,
@@ -101,12 +106,14 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		];
 
 		return [
-			[ true, $editsByDay, 1, 1, 500 ],
-			[ false, $editsByDay, 11, 1, 500 ],
-			[ true, $editsByDay, 11, 15, 500 ],
-			[ false, $editsByDay, 110, 15, 500 ],
-			[ true, $editsByDay, 16, 400, 500 ],
-			[ false, $editsByDay, 16, 400, 115 ],
+			[ true, $editsByDay, 5, 1, 1, 500, null ],
+			[ false, $editsByDay, 5, 11, 1, 500, null ],
+			[ true, $editsByDay, 5, 11, 15, 500, null ],
+			[ false, $editsByDay, 5, 110, 15, 500, null ],
+			[ true, $editsByDay, 0, 16, 400, 500, null ],
+			[ false, $editsByDay, 0, 16, 400, 115, null ],
+			[ true, $editsByDay, 10, 1, 1, 500, 20 ],
+			[ false, $editsByDay, 10, 1, 1, 500, 5 ],
 		];
 	}
 }
