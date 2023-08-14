@@ -3,7 +3,6 @@
 namespace GrowthExperiments\NewcomerTasks;
 
 use DateTime;
-use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserTimeCorrection;
@@ -42,7 +41,7 @@ class NewcomerTasksLogFactory {
 			->where( [
 				'log_type' => 'growthexperiments',
 				'log_action' => $logAction,
-				'actor_name' => Title::makeTitle( NS_USER, $user->getName() )->getDbKey(),
+				'actor_name' => $user->getName(),
 				$this->dbr->buildComparison( '>', [ 'log_timestamp' => $utcTimestamp ] )
 			] )
 			->join( 'actor', null, 'log_actor=actor_id' );
