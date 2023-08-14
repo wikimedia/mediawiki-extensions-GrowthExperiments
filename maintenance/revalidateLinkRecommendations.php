@@ -6,6 +6,7 @@ use Config;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\WikiConfigException;
@@ -67,6 +68,8 @@ class RevalidateLinkRecommendations extends Maintenance {
 			. 'model checksum appears in the given file (one checksum per line)', false, true );
 		$this->addOption( 'olderThan', 'Regenerate a task which was generated '
 			. 'before this date', false, true );
+		$this->addOption( 'scoreLessThan', 'Regenerate a task when any suggested link has '
+			. 'a lower score than this one.', false, true );
 		$this->addOption( 'limit', 'Limit the number of changes.', false, true );
 		$this->addOption( 'force', 'Store the new recommendation even if it fails quality criteria.' );
 		$this->addOption( 'dry-run', 'Do not actually make any changes.' );
@@ -172,6 +175,16 @@ class RevalidateLinkRecommendations extends Maintenance {
 				$linkRecommendation->getMetadata()->getTaskTimestamp() <
 				$this->getOlderThanTimestamp()
 			) {
+				return false;
+			}
+		}
+		if ( $this->hasOption( 'scoreLessThan' ) ) {
+			$recommendationScore = min( array_map( static function ( LinkRecommendationLink $link ) {
+				return $link->getScore();
+			}, $linkRecommendation->getLinks() ) );
+
+			// Abort if the recommendation is invalid and give chance to other checks
+			if ( $recommendationScore < (int)$this->getOption( 'scoreLessThan' ) ) {
 				return false;
 			}
 		}
