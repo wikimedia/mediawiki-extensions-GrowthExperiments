@@ -106,13 +106,6 @@
 				"GrowthExperimentsMentorStore"
 			]
 		},
-		"growthsetmentorstatus": {
-			"class": "GrowthExperiments\\Api\\ApiSetMentorStatus",
-			"services": [
-				"GrowthExperimentsMentorProvider",
-				"GrowthExperimentsMentorStatusManager"
-			]
-		},
 		"growthmanagementorlist": {
 			"class": "GrowthExperiments\\Api\\ApiManageMentorList",
 			"services": [
