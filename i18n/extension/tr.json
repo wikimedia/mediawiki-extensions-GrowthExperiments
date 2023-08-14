@@ -60,6 +60,7 @@
 	"growthexperiments-edit-config-mentorship-enabled": "Danışmanlık özellikleri etkinleştirildi mi?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Evet",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Hayır",
+	"growthexperiments-edit-config-personalized-praise": "Kişiselleştirilmiş övgü",
 	"growthexperiments-edit-config-newcomertasks": "Önerilen düzenlemeler",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Bazı önerilen düzenleme türleri, bakım şablonları aracılığıyla ortaya çıkar. Bu şablonları içeren makaleler beslemeye eklenir. Her bir görev türü için kaç makalenin mevcut olduğunu görmek için [[Special:NewcomerTasksInfo|this page]] konusuna bakın.",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Devre dışı",

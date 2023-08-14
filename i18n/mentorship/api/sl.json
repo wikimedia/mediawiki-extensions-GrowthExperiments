@@ -33,5 +33,6 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Če je »isaway« (odsoten) »true« (resničen), je treba navesti »awaytimestamp« (časovni žig odsotnosti).",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Razveljavi predlog za hvalevrednega mentoriranca v modulu Personalizirana pohvala na mentorski nadzorni plošči",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Neveljavni mentoriranec",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Razlog za razveljavitev predloga"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Razlog za razveljavitev predloga",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Preskočitev razloga za neprimernost predloga"
 }

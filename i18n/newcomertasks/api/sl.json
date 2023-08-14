@@ -8,6 +8,7 @@
 	"apihelp-query+growthtasks-extended-description": "Predlaga nabor člankov, ki imajo nekaj nerešenih težav, ki so dovolj preproste, da se jih loti nov urejevalec.",
 	"apihelp-query+growthtasks-param-tasktypes": "Vrste nalog, na katere želite omejiti zadetke. Če želite prejeti vse predloge, pustite prazno.",
 	"apihelp-query+growthtasks-param-topics": "Teme člankov, ki naj imajo prednost pri predlaganih nalogah.",
+	"apihelp-query+growthtasks-param-topicsmode": "Način ujemanja za teme.",
 	"apihelp-query+growthtasks-param-limit": "Največje število predlogov nalog za vrnitev.",
 	"apihelp-query+growthtasks-param-excludepageids": "ID-ji strani, ki jih želite izključiti iz poizvedbe.",
 	"apihelp-query+growthtasks-param-debug": "Izhodu dodajte podatke za odpravljanje napak.",

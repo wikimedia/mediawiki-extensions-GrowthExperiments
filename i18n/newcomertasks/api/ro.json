@@ -8,6 +8,7 @@
 	"apihelp-query+growthtasks-extended-description": "Sugerează un set de articole care care are unele probleme remarcabile suficient de ușoare pentru ca un nou editor să le abordeze.",
 	"apihelp-query+growthtasks-param-tasktypes": "Tipurile de sarcini la care să limitați rezultatele. Lăsați gol pentru a primi toate sugestiile.",
 	"apihelp-query+growthtasks-param-topics": "Subiecte de articole de preferat în sugestiile de sarcini.",
+	"apihelp-query+growthtasks-param-topicsmode": "Mod de potrivire pentru subiecte.",
 	"apihelp-query+growthtasks-param-limit": "Numărul maxim de sugestii de sarcini de întors.",
 	"apihelp-query+growthtasks-param-excludepageids": "ID-uri de pagină care să fie excluse de la interogare.",
 	"apihelp-query+growthtasks-param-debug": "Adăugați date de depanare la ieșire.",

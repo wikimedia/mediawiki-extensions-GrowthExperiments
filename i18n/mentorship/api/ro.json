@@ -33,5 +33,6 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Dacă isaway este adevărat, atunci trebuie furnizat awaytimestamp.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalidează o sugestie pentru un ucenic demn de a fi lăudat în Modulul de laude personalizate de la pagina mentorului",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Ucenic de invalidat",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Motivul pentru invalidarea sugestiei"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Motivul pentru invalidarea sugestiei",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Omiteți motivul pentru a invalida sugestia."
 }

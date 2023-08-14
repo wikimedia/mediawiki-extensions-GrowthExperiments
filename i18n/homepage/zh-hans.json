@@ -114,7 +114,7 @@
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "有关感谢功能如何工作的更多信息",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}}由像{{GENDER:$1|您}}一样的编者组成的社群建立。其他贡献者可能{{GENDER:$1|您}}的编辑而感谢{{GENDER:$1|您}}，{{GENDER:$1|您}}也可以感谢他人的编辑。",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}}由编者社群建立。每位贡献者都可能因为自己的编辑而收到他人的感谢。收到的感谢数显示于此。",
-	"growthexperiments-homepage-impact-subheader-text": "最多浏览(自{{GENDER:$1|你的}}编辑以来)",
+	"growthexperiments-homepage-impact-subheader-text": "浏览次数最多（自{{GENDER:$1|你}}编辑后）",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|您}}编辑后的浏览次数（过去 60 天）：",
 	"growthexperiments-homepage-impact-contributions-link": "查看{{GENDER:$2|您的}}所有编辑（$1）",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|您}}还没有创建或编辑任何条目。",
