@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
+<form
+  id="personalized-praise-settings-form"
+>
+  <h3
+    class="no-gutter"
+  >
+    growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline
+  </h3>
+  <section
+    class="ext-growthExperiments-PersonalizedPraiseSettings__form_group"
+  >
+    <label>
+      growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe
+    </label>
+    <div
+      class="ext-growthExperiments-PersonalizedPraiseSettings__field_flexbox"
+    >
+      <div
+        class="ext-growthExperiments-NumberInput ext-growthExperiments-PersonalizedPraiseSettings__input"
+      >
+        <input
+          class="ext-growthExperiments-NumberInput__input ext-growthExperiments-NumberInput__input--has-value"
+          min="0"
+          step="1"
+          type="number"
+        />
+      </div>
+      <div
+        aria-disabled="false"
+        class="cdx-select-vue cdx-select-vue--enabled cdx-select-vue--value-selected cdx-select-vue--status-default ext-growthExperiments-PersonalizedPraiseSettings__input"
+      >
+        <div
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-owns="cdx-select-menu-0"
+          class="cdx-select-vue__handle"
+          id="cdx-select-handle-1"
+          role="combobox"
+          tabindex="0"
+        >
+          
+          growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week
+          
+          <!---->
+          <span
+            class="cdx-icon cdx-icon--medium cdx-select-vue__indicator"
+          >
+            <svg
+              aria-hidden="true"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <!---->
+              <g>
+                <path
+                  d="m17.5 4.75-7.5 7.5-7.5-7.5L1 6.25l9 9 9-9z"
+                />
+              </g>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="cdx-menu"
+          style="display: none;"
+        >
+          <ul
+            aria-multiselectable="false"
+            class="cdx-menu__listbox"
+            id="cdx-select-menu-0"
+            role="listbox"
+          >
+            <!---->
+            <!---->
+            
+            <li
+              aria-disabled="false"
+              aria-selected="false"
+              class="cdx-menu-item cdx-menu-item--enabled"
+              id="cdx-menu-item-2"
+              role="option"
+            >
+              
+              <span
+                class="cdx-menu-item__content"
+              >
+                <!---->
+                <span
+                  class="cdx-menu-item__text"
+                >
+                  <span
+                    class="cdx-menu-item__text__label"
+                  >
+                    <bdi>
+                      growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours
+                    </bdi>
+                  </span>
+                  <!---->
+                  <!---->
+                  <!---->
+                </span>
+              </span>
+              
+            </li>
+            <li
+              aria-disabled="false"
+              aria-selected="true"
+              class="cdx-menu-item cdx-menu-item--selected cdx-menu-item--enabled"
+              id="cdx-menu-item-3"
+              role="option"
+            >
+              
+              <span
+                class="cdx-menu-item__content"
+              >
+                <!---->
+                <span
+                  class="cdx-menu-item__text"
+                >
+                  <span
+                    class="cdx-menu-item__text__label"
+                  >
+                    <bdi>
+                      growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week
+                    </bdi>
+                  </span>
+                  <!---->
+                  <!---->
+                  <!---->
+                </span>
+              </span>
+              
+            </li>
+            <li
+              aria-disabled="false"
+              aria-selected="false"
+              class="cdx-menu-item cdx-menu-item--enabled"
+              id="cdx-menu-item-4"
+              role="option"
+            >
+              
+              <span
+                class="cdx-menu-item__content"
+              >
+                <!---->
+                <span
+                  class="cdx-menu-item__text"
+                >
+                  <span
+                    class="cdx-menu-item__text__label"
+                  >
+                    <bdi>
+                      growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks
+                    </bdi>
+                  </span>
+                  <!---->
+                  <!---->
+                  <!---->
+                </span>
+              </span>
+              
+            </li>
+            <li
+              aria-disabled="false"
+              aria-selected="false"
+              class="cdx-menu-item cdx-menu-item--enabled"
+              id="cdx-menu-item-5"
+              role="option"
+            >
+              
+              <span
+                class="cdx-menu-item__content"
+              >
+                <!---->
+                <span
+                  class="cdx-menu-item__text"
+                >
+                  <span
+                    class="cdx-menu-item__text__label"
+                  >
+                    <bdi>
+                      growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month
+                    </bdi>
+                  </span>
+                  <!---->
+                  <!---->
+                  <!---->
+                </span>
+              </span>
+              
+            </li>
+            
+            <!---->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <label>
+      growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts
+    </label>
+    <div
+      class="ext-growthExperiments-NumberInput ext-growthExperiments-PersonalizedPraiseSettings__input"
+    >
+      <input
+        class="ext-growthExperiments-NumberInput__input"
+        min="0"
+        step="1"
+        type="number"
+      />
+    </div>
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-PersonalizedPraiseSettings__help_text"
+    >
+      
+      growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts-help
+      
+    </div>
+  </section>
+  <h3
+    class="no-gutter"
+  >
+    growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline
+  </h3>
+  <section
+    class="ext-growthExperiments-PersonalizedPraiseSettings__form_group"
+  >
+    <div
+      class="cdx-text-input cdx-text-input--status-default ext-growthExperiments-PersonalizedPraiseSettings__input"
+    >
+      <input
+        class="cdx-text-input__input"
+        type="text"
+      />
+      <!---->
+      <!---->
+      <!---->
+    </div>
+    <textarea
+      class="ext-growthExperiments-PersonalizedPraiseSettings__input ext-growthExperiments-PersonalizedPraiseSettings__message_text"
+      rows="6"
+    />
+    <div
+      class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-PersonalizedPraiseSettings__help_text"
+    >
+      
+      growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text
+      
+    </div>
+  </section>
+  <!--v-if-->
+  <button
+    class="cdx-button cdx-button--action-progressive cdx-button--weight-primary cdx-button--size-medium cdx-button--framed ext-growthExperiments-PersonalizedPraiseSettings__button"
+    form="personalized-praise-settings-form"
+  >
+    
+    growthexperiments-mentor-dashboard-personalized-praise-settings-save
+    
+  </button>
+  <button
+    class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed ext-growthExperiments-PersonalizedPraiseSettings__button"
+    type="button"
+  >
+    
+    growthexperiments-mentor-dashboard-personalized-praise-settings-cancel
+    
+  </button>
+</form>
+`;
