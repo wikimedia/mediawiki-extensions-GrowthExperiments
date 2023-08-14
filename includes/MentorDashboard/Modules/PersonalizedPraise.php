@@ -51,16 +51,6 @@ class PersonalizedPraise extends BaseModule {
 	}
 
 	/** @inheritDoc */
-	protected function getSubheader() {
-		return Html::element(
-			'p',
-			[],
-			$this->msg( 'growthexperiments-mentor-dashboard-personalized-praise-intro' )
-				->text()
-		);
-	}
-
-	/** @inheritDoc */
 	protected function getBody() {
 		return Html::rawElement(
 			'div',

@@ -4,6 +4,55 @@ exports[`PersonalizedPraise NoResult when no mentees 1`] = `
 <section
   class="ext-growthExperiments-PersonalizedPraise"
 >
+  <div
+    class="ext-growthExperiments-PersonalizedPraise__info-wrapper"
+  >
+    <p
+      class="ext-growthExperiments-PersonalizedPraise__intro"
+    >
+      growthexperiments-mentor-dashboard-personalized-praise-intro
+    </p>
+    <div
+      class="ext-growthExperiments-Popover ext-growthExperiments-PersonalizedPraise__info-box"
+      icon="info-icon"
+    >
+      <div>
+        <div>
+          
+          <button
+            aria-label="growthexperiments-mentor-dashboard-personalized-praise-info-icon-label"
+            class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium cdx-button--icon-only ext-growthExperiments-PersonalizedPraise__info-button"
+          >
+            
+            <span
+              class="cdx-icon cdx-icon--medium"
+            >
+              <svg
+                aria-hidden="true"
+                height="20"
+                viewBox="0 0 20 20"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <!---->
+                <g>
+                  info-icon
+                </g>
+              </svg>
+            </span>
+            
+          </button>
+          
+        </div>
+        <div
+          class="ext-growthExperiments-Popover__surface-container"
+        >
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
   <p>
     growthexperiments-mentor-dashboard-personalized-praise-metrics (1,14)
   </p>
@@ -27,9 +76,9 @@ exports[`PersonalizedPraise NoResult when no mentees 1`] = `
           xmlns:xlink="http://www.w3.org/1999/xlink"
         >
           <!---->
-          <path
-            d=""
-          />
+          <g>
+            settings-icon
+          </g>
         </svg>
       </span>
       
@@ -57,6 +106,24 @@ exports[`PersonalizedPraise full data when has mentees 1`] = `
 <section
   class="ext-growthExperiments-PersonalizedPraise"
 >
+  <div
+    class="ext-growthExperiments-PersonalizedPraise__info-wrapper"
+  >
+    <p
+      class="ext-growthExperiments-PersonalizedPraise__intro"
+    >
+      growthexperiments-mentor-dashboard-personalized-praise-intro
+    </p>
+    <c-popover-stub
+      class="ext-growthExperiments-PersonalizedPraise__info-box"
+      closeicon="close-icon"
+      closeiconlabel="growthexperiments-info-tooltip-close-label"
+      headericon="info-icon"
+      headericonlabel="growthexperiments-mentor-dashboard-personalized-praise-info-icon-label"
+      icon="info-icon"
+      title="growthexperiments-mentor-dashboard-personalized-praise-info-headline"
+    />
+  </div>
   <p>
     growthexperiments-mentor-dashboard-personalized-praise-metrics (1,14)
   </p>

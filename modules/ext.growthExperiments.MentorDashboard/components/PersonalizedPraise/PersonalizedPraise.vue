@@ -1,5 +1,37 @@
 <template>
 	<section class="ext-growthExperiments-PersonalizedPraise">
+		<div class="ext-growthExperiments-PersonalizedPraise__info-wrapper">
+			<p class="ext-growthExperiments-PersonalizedPraise__intro">
+				{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-intro' ).text() }}
+			</p>
+			<c-popover
+				class="ext-growthExperiments-PersonalizedPraise__info-box"
+				:icon="cdxIconInfo"
+				:header-icon="cdxIconInfo"
+				:header-icon-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-icon-label' ).text()"
+				:title="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-headline' ).text()"
+				:close-icon="cdxIconClose"
+				:close-icon-label="$i18n( 'growthexperiments-info-tooltip-close-label' ).text()"
+			>
+				<template #trigger="{ onClick }">
+					<cdx-button
+						weight="quiet"
+						class="ext-growthExperiments-PersonalizedPraise__info-button"
+						:aria-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-icon-label' ).text()"
+						@click="onClick"
+					>
+						<cdx-icon :icon="cdxIconInfo"></cdx-icon>
+					</cdx-button>
+				</template>
+				<template #content>
+					<div class="ext-growthExperiments-PersonalizedPraise__info-content">
+						<p>{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-par1' ).text() }}</p>
+						<p>{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-par2' ).text() }}</p>
+						<p>{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-par3' ).text() }}</p>
+					</div>
+				</template>
+			</c-popover>
+		</div>
 		<p
 			v-i18n-html:growthexperiments-mentor-dashboard-personalized-praise-metrics="[
 				$filters.convertNumber( settings.minEdits ),
@@ -29,16 +61,22 @@
 
 <script>
 const { inject } = require( 'vue' );
+const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
 const PersonalizedPraiseSettings = require( './PersonalizedPraiseSettings.vue' );
 const PersonalizedPraisePagination = require( './PersonalizedPraisePagination.vue' );
 const UserCard = require( './UserCard.vue' );
 const NoResults = require( './NoResults.vue' );
+const CPopover = require( '../../../vue-components/CPopover.vue' );
+const { cdxIconInfo, cdxIconClose } = require( '../../../vue-components/icons.json' );
 
 // @vue/component
 module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
+		CdxIcon,
+		CdxButton,
+		CPopover,
 		PersonalizedPraiseSettings,
 		PersonalizedPraisePagination,
 		UserCard,
@@ -47,7 +85,9 @@ module.exports = exports = {
 	setup() {
 		const log = inject( '$log' );
 		return {
-			log
+			log,
+			cdxIconInfo,
+			cdxIconClose
 		};
 	},
 	computed: {
@@ -98,8 +138,31 @@ module.exports = exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.skin.variables.less';
+@import '../../../utils/mixins.less';
+
 /* stylelint-disable-next-line selector-class-pattern */
 .growthexperiments-mentor-dashboard-module-personalized-praise {
 	position: relative;
+}
+
+.ext-growthExperiments-PersonalizedPraise {
+	&__intro {
+		display: inline;
+	}
+
+	// NOTE: This is needed to make the selector more specific than .ext-growthExperiments-Popover
+	// from CPopover.vue.
+	& &__info-box {
+		display: inline-block;
+	}
+
+	&__info-button {
+		.codex-icon-only-button( @color-subtle, 24px);
+	}
+
+	&__info-content {
+		max-width: 410px;
+	}
 }
 </style>

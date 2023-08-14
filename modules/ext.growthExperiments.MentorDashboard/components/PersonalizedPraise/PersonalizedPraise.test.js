@@ -1,8 +1,10 @@
 jest.mock( '../../../vue-components/icons.json', () => ( {
-	cdxIconNext: '',
-	cdxIconPrevious: '',
-	cdxIconSettings: '',
-	cdxIconUserAvatar: ''
+	cdxIconNext: 'next-icon',
+	cdxIconPrevious: 'previous-icon',
+	cdxIconSettings: 'settings-icon',
+	cdxIconUserAvatar: 'user-avatar-icon',
+	cdxIconInfo: 'info-icon',
+	cdxIconClose: 'close-icon'
 } ), { virtual: true } );
 const { mount, shallowMount } = require( '@vue/test-utils' );
 const Vuex = require( 'vuex' );
