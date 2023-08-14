@@ -52,6 +52,8 @@ class RevalidateLinkRecommendations extends Maintenance {
 	/** @var string[] */
 	private $allowedChecksums;
 
+	private ?int $olderThanTimestamp = null;
+
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'GrowthExperiments' );
@@ -63,6 +65,8 @@ class RevalidateLinkRecommendations extends Maintenance {
 		$this->addOption( 'all', 'Regenerate all tasks.' );
 		$this->addOption( 'exceptDatasetChecksums', 'Regenerate a task unless its '
 			. 'model checksum appears in the given file (one checksum per line)', false, true );
+		$this->addOption( 'olderThan', 'Regenerate a task which was generated '
+			. 'before this date', false, true );
 		$this->addOption( 'limit', 'Limit the number of changes.', false, true );
 		$this->addOption( 'force', 'Store the new recommendation even if it fails quality criteria.' );
 		$this->addOption( 'dry-run', 'Do not actually make any changes.' );
@@ -156,7 +160,20 @@ class RevalidateLinkRecommendations extends Maintenance {
 		if ( $this->hasOption( 'exceptDatasetChecksums' ) ) {
 			$allowedChecksums = $this->getAllowedChecksums();
 			$actualChecksum = $linkRecommendation->getMetadata()->getDatasetChecksums()['model'] ?? 'wrong';
-			return in_array( $actualChecksum, $allowedChecksums, true );
+
+			// Abort if the recommendation is invalid and give chance to other checks
+			if ( !in_array( $actualChecksum, $allowedChecksums, true ) ) {
+				return false;
+			}
+		}
+		if ( $this->hasOption( 'olderThan' ) ) {
+			// Abort if the recommendation is invalid and give chance to other checks
+			if (
+				$linkRecommendation->getMetadata()->getTaskTimestamp() <
+				$this->getOlderThanTimestamp()
+			) {
+				return false;
+			}
 		}
 		return true;
 	}
@@ -218,6 +235,24 @@ class RevalidateLinkRecommendations extends Maintenance {
 			}
 		}
 		return $this->allowedChecksums;
+	}
+
+	/**
+	 * Helper method to handle caching/fetching of the older than timestamp
+	 * @return int
+	 */
+	private function getOlderThanTimestamp(): int {
+		if ( !$this->olderThanTimestamp ) {
+			$rawTS = wfTimestamp(
+				TS_UNIX,
+				$this->getOption( 'olderThan' )
+			);
+			if ( !$rawTS ) {
+				throw new UnexpectedValueException( "Parameter olderThan does not contain a valid timestamp" );
+			}
+			$this->olderThanTimestamp = (int)$rawTS;
+		}
+		return $this->olderThanTimestamp;
 	}
 
 }
