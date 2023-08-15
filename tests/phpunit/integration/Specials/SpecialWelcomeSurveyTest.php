@@ -69,7 +69,7 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 		), true );
 		$this->assertArrayEquals( [
 			'_skip' => true,
-			// TODO: it should be "exp2_target_specialpage"
+			// TODO: it should be "control"
 			'_group' => null,
 			// TODO: 'reason' should be set to placeholder
 			'_submit_date' => $fakeTime,

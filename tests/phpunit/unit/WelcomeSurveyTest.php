@@ -45,7 +45,7 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 	 */
 	public function testAllowFreetextResponsesTrue() {
 		$welcomeSurvey = $this->getWelcomeSurveyForFreetextTest( true );
-		$questions = $welcomeSurvey->getQuestions( 'exp2_target_specialpage' );
+		$questions = $welcomeSurvey->getQuestions( 'control' );
 		$this->assertArrayHasKey( 'reason-other', $questions );
 	}
 
@@ -55,14 +55,14 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 	 */
 	public function testAllowFreetextResponsesFalse() {
 		$welcomeSurvey = $this->getWelcomeSurveyForFreetextTest( false );
-		$questions = $welcomeSurvey->getQuestions( 'exp2_target_specialpage' );
+		$questions = $welcomeSurvey->getQuestions( 'control' );
 		$this->assertArrayNotHasKey( 'reason-other', $questions );
 	}
 
 	private function getWelcomeSurveyForFreetextTest( $allowFreetext ) {
 		$configMock = new HashConfig( [
 			'WelcomeSurveyAllowFreetextResponses' => $allowFreetext,
-			'WelcomeSurveyExperimentalGroups' => [ 'exp2_target_specialpage' => [
+			'WelcomeSurveyExperimentalGroups' => [ 'control' => [
 				"range" => "x",
 				"format" => "specialpage",
 				"questions" => [
