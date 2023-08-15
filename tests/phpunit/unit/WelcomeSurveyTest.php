@@ -63,7 +63,6 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$configMock = new HashConfig( [
 			'WelcomeSurveyAllowFreetextResponses' => $allowFreetext,
 			'WelcomeSurveyExperimentalGroups' => [ 'control' => [
-				"range" => "x",
 				"format" => "specialpage",
 				"questions" => [
 					"reason",
