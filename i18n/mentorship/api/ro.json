@@ -28,6 +28,7 @@
 	"apihelp-growthmanagementorlist-param-weight": "Povară",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Este mentorul atribuit automat nou-veniților?",
 	"apihelp-growthmanagementorlist-param-isaway": "Mentorul este plecat în prezent? Trebuie setat (implicit la false).",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "Până când este plecat mentorul? Maximul este de 1 an începând de astăzi. Ignorat, cu excepția cazului în care isaway este adevărat.",
 	"apihelp-growthmanagementorlist-param-summary": "Motivul pentru schimbare",
 	"apihelp-growthmanagementorlist-param-username": "Numele de utilizator al mentorului afectat de schimbare. Dacă nu este furnizat, va fi utilizat utilizatorul actualmente autentificat. Se poate utiliza numai de către utilizatorii privilegiați.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Dacă isaway este adevărat, atunci trebuie furnizat awaytimestamp.",
