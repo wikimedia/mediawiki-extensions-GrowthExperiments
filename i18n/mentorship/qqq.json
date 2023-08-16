@@ -3,6 +3,7 @@
 		"authors": [
 			"Amire80",
 			"Martin Urbanec (WMF)",
+			"McDutchie",
 			"Robby",
 			"Xiplus",
 			"Ата"
@@ -126,7 +127,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Explanatory text on the Mentor dashboard in the \"Send praise\" module. This text clarifies the purpose of this feature.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-icon-label": "Icon label in the info icon popup\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "Explanatory text on the Mentor dashboard in the \"Send praise\" module. This text clarifies how the feature works.\n\n{{doc-growthexperiments-mentor-dashboard}}",
-	"growthexperiments-mentor-dashboard-personalized-praise-info-par1": "Explanatory text on the Mentor dashboard in the \"Send praise\" module. This text clarifies how the feature works.\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-personalized-praise-info-par1": "Explanatory text on the Mentor dashboard in the \"Send praise\" module. This text clarifies how the feature works.\n\n{{doc-growthexperiments-mentor-dashboard}}\n\n{{doc-singularthey}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-par2": "Explanatory text on the Mentor dashboard in the \"Send praise\" module. This text clarifies how the feature works.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-par3": "Explanatory text on the Mentor dashboard in the \"Send praise\" module. This text clarifies how the feature works.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Text on the Mentor dashboard in the \"Send praise\" module.  These numbers are populated based on the Mentor's settings.\nParameters:\n* $1 - minimum number of edits the user needs to have\n* $2 – minimum user tenure in days\n\n{{doc-growthexperiments-mentor-dashboard}}",

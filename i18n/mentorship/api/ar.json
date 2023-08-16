@@ -34,5 +34,6 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "إذا كانت isaway صحيحة، فيجب توفير awaytimestamp.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "يبطل اقتراحًا مقدمًا من مرشَد جدير بالثناء في وحدة المديح المشخص على لوحة المرشدين",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "مرشَد للإبطال",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "سبب إبطال الاقتراح"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "سبب إبطال الاقتراح",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "تخطي سبب إبطال الاقتراح"
 }
