@@ -337,7 +337,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Bu səhifə istifadəçinin mentorunu {{GENDER:$1|özünüzə}} dəyişmək imkanı verir. Tanıdığınız istifadəçilərdə ya da mentorluq etdiyiniz istifadəçilərdə bunu istifadə etməyiniz tövsiyə edilir.",
 	"growthexperiments-homepage-claimmentee-mentee": "İstifadəçinin adı",
 	"growthexperiments-homepage-claimmentee-reason": "Bu istifadəçini seçmə səbəbiniz",
-	"growthexperiments-homepage-claimmentee-success": "$1 adlı {{PLURAL:$2|istifadəçinin|istifadəçilərin}} mentorunu {{GENDER:$4|$5}} olaraq {{GENDER:$3|dəyişdiniz}}. [[Special:MentorDashboard\nMentor idarəetmə paneli]]nə qayıt",
+	"growthexperiments-homepage-claimmentee-success": "$1 adlı {{PLURAL:$2|istifadəçinin|istifadəçilərin}} mentorunu {{GENDER:$4|$5}} olaraq {{GENDER:$3|dəyişdiniz}}. [[Special:MentorDashboard|Mentor idarəetmə paneli]]nə qayıt",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1}} adlı istifadəçinin mentoru onsuz da dəyişdirilib. Yenidən dəyişdirmək istədiyinizə {{GENDER:$2|əminsiniz}}?",
 	"growthexperiments-claimmentee-confirm": "Bəli, davam etmək istəyirəm",
 	"growthexperiments-log-name": "İnkişafTəcrübələri qeydləri",

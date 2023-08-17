@@ -4,9 +4,11 @@
 			"Joao Xavier"
 		]
 	},
+	"growthexperiments-mentor-dashboard-title": "Kontrolopanelo dil mentoro",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Anular",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dii",
 	"growthexperiments-quit-mentorship-reason": "Motivo",
 	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Anular"
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Anular",
+	"growthexperiments-manage-mentors-title": "Administrar mentori"
 }

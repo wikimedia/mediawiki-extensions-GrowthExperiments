@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jon Harald Søby",
-			"Ranveig"
+			"Ranveig",
+			"Njardarlogar"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
@@ -48,5 +49,6 @@
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Syningar frå nylege endringar (dei siste 60 dagane):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Overvak syningar i artiklar du har endra",
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 endringar hittil",
-	"tag-newcomer_task": "Oppgåve for nybyrjarar"
+	"tag-newcomer_task": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks|Oppgåve for nybyrjarar]]",
+	"tag-newcomer_task_copyedit": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#copyedit|Oppgåve for nybyrjarar: korrekturlesing]]"
 }
