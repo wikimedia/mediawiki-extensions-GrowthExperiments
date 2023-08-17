@@ -49,7 +49,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Нема скорашњих активности новајлија",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Можда још немате додељене новајлије. Подаци се ажурирају на свака три сата.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Ниједна новајлија није пронађена",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Промените филтере да бисте нашли новајлије.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Промените филтере {{GENDER:|да}} бисте нашли новајлије.",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Скорашње измене {{GENDER:|Ваших}} новајлија",
 	"growthexperiments-mentor-dashboard-resources-headline": "Повезане странице",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Управљање менторима",
