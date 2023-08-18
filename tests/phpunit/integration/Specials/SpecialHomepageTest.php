@@ -79,13 +79,14 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	/**
 	 * @dataProvider provideTestMissingParametersToNewcomerTaskSubpath
 	 * @covers ::handleNewcomerTask
-	 * @param string|null|int $titleId
 	 * @param array $params
 	 * @param array $expectedMissingParams
 	 */
 	public function testMissingParametersToNewcomerTaskSubpath(
-		$titleId, array $params, array $expectedMissingParams
+		array $params, array $expectedMissingParams
 	) {
+		// Make sure that the title ID is valid
+		$titleId = $this->getExistingTestPage()->getId();
 		$this->setMwGlobals( [ 'wgGEDeveloperSetup' => true ] );
 		$user = $this->enableHomepageForTesting();
 		$request = new FauxRequest( $params );
@@ -117,7 +118,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	public static function provideTestMissingParametersToNewcomerTaskSubpath(): array {
 		return [
 			'missing click id' => [
-				1,
 				[
 					'genewcomertasktoken' => 2,
 					'getasktype' => 'links'
@@ -127,7 +127,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 				]
 			],
 			'null click id' => [
-				1,
 				[
 					'geclickid' => null,
 					'genewcomertasktoken' => 2,
@@ -138,7 +137,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 				]
 			],
 			'missing token' => [
-				1,
 				[
 					'geclickid' => 1,
 					'getasktype' => 'copyedit'
@@ -148,7 +146,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 				]
 			],
 			'null token' => [
-				1,
 				[
 					'genewcomertasktoken' => null,
 					'geclickid' => 1,
@@ -159,7 +156,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 				]
 			],
 			'missing task type' => [
-				1,
 				[
 					'genewcomertasktoken' => 2,
 					'geclickid' => 1,
@@ -169,7 +165,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 				]
 			],
 			'null task type' => [
-				1,
 				[
 					'genewcomertasktoken' => 2,
 					'geclickid' => 1,
