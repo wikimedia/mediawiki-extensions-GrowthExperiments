@@ -147,14 +147,27 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
       <span
         class="cdx-checkbox__icon"
       />
-      <label
-        class="cdx-checkbox__label"
-        for="cdx-checkbox-0"
+      <div
+        class="cdx-label cdx-checkbox__label"
       >
-        
-        growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred
-        
-      </label>
+        <label
+          class="cdx-label__label"
+          for="cdx-checkbox-0"
+        >
+          <!---->
+          <span
+            class="cdx-label__label__text"
+          >
+            
+            
+            growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred
+            
+            
+          </span>
+          <!---->
+        </label>
+        <!---->
+      </div>
     </span>
   </section>
   <section
