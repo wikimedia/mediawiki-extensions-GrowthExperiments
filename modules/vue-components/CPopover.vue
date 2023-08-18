@@ -183,13 +183,14 @@ module.exports = exports = {
 		}
 
 		&__header {
-			height: @spacing-200;
+			min-height: @spacing-200;
 			display: flex;
 			justify-content: space-between;
 			// Vertical alignment with the close button
 			align-items: center;
-			// Horizontal alignment with content padding
+			padding-top: @spacing-25;
 			padding-left: @spacing-75;
+			padding-right: @spacing-75;
 
 			&__icon {
 				margin-right: 1em;
@@ -203,6 +204,7 @@ module.exports = exports = {
 		}
 
 		&__content {
+			// Should match header padding
 			padding-left: @spacing-75;
 			padding-right: @spacing-75;
 			padding-bottom: @spacing-25;
