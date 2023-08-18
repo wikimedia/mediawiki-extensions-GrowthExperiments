@@ -47,7 +47,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "Претходна страница резултата",
 	"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label": "Откажи менторство",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Нема скорашњих активности новајлија",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Можда још немате додељене новајлије. Подаци се ажурирају на свака три сата.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "The mentor dashboard only shows recently active mentees. More information can be displayed via the info icon. If {{GENDER:|you}} recently enrolled into mentorship, {{GENDER:|you}} might have no mentees assigned yet.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Ниједна новајлија није пронађена",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Промените филтере {{GENDER:|да}} бисте нашли новајлије.",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Скорашње измене {{GENDER:|Ваших}} новајлија",
@@ -97,6 +97,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Порука за новајлије",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Ваша}} порука представљања је промењена на „$1”.",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Пошаљи похвалу",
+	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "Више информација",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "Број тема на сзр: $1",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "Претходна страница",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Следећа страница",
@@ -153,5 +154,6 @@
 	"growthexperiments-mentorship-enrollasmentor-title": "Постаните {{GENDER:|ментор|менторка}}",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Представите се",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Упиши ме",
-	"growthexperiments-mentorship-enrollasmentor-summary": "Додавање себе као ментора"
+	"growthexperiments-mentorship-enrollasmentor-summary": "Додавање себе као ментора",
+	"tag-mentor list change": "Промењен списак ментора"
 }

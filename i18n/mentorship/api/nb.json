@@ -26,10 +26,13 @@
 	"apihelp-growthmanagementorlist-param-message": "Introduksjonsmelding (bruk en tom streng for standard-faddermeldingen)",
 	"apihelp-growthmanagementorlist-param-weight": "Vekting",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Blir fadderen automatisk tildelt nybegynnere?",
+	"apihelp-growthmanagementorlist-param-isaway": "Er fadderen for tiden borte? Må settes (standard er false).",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "Til når er fadderen borte? Maksimal verdi er 1 år fra i dag. Ignoreres med mindre isaway er true.",
 	"apihelp-growthmanagementorlist-param-summary": "Årsak for endringen",
 	"apihelp-growthmanagementorlist-param-username": "Brukernavnet til fadderen som påvirkes av endringen. Hvis det ikke er angitt blir den nåværende innloggede brukeren brukt. Kan kun brukes av brukere som har rettigheten til det.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Hvis isaway er true må awaytimestamp også angis.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Ugyldiggjør et forslag om rosverdig fadderbarn i modulen for personlig ros i fadderpanelet",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Fadderbarn som skal ugyldiggjøres",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Årsak til at forslaget skal ugyldiggjøres"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Årsak til at forslaget skal ugyldiggjøres",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Hopp over årsaken til at forslaget skal ugyldiggjøres"
 }

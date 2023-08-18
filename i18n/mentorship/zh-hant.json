@@ -124,6 +124,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "取消",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "介紹訊息",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|您的}}介紹訊息已更改成「$1」。",
+	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "更多資訊",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "上一頁",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "下一頁",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "設定",
