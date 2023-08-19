@@ -3,9 +3,9 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Title\Title;
 use MWHttpRequest;
 use StatusValue;
-use Title;
 
 /**
  * Interface for interfacing with the image recommendation API, allowing different API endpoints

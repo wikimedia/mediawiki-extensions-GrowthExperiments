@@ -11,13 +11,13 @@ use GrowthExperiments\ExperimentUserManager;
 use Html;
 use IContextSource;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MWTimestamp;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use PageImages\PageImages;
 use SpecialPage;
-use Title;
 use Wikimedia\Rdbms\IReadableDatabase;
 
 /**

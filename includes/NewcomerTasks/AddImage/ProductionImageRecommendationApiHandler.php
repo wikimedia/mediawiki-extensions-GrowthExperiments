@@ -8,10 +8,10 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Title\Title;
 use MWHttpRequest;
 use RequestContext;
 use StatusValue;
-use Title;
 use Wikimedia\UUID\GlobalIdGenerator;
 
 /**

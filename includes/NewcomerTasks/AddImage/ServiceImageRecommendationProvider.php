@@ -10,9 +10,9 @@ use IBufferingStatsdDataFactory;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use StatusValue;
-use Title;
 use TitleValue;
 use Wikimedia\Assert\Assert;
 

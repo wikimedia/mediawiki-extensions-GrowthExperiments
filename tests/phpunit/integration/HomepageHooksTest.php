@@ -17,13 +17,13 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use RawMessage;
 use RecentChange;
 use RequestContext;
 use StatusValue;
 use stdClass;
-use Title;
 use Wikimedia\TestingAccessWrapper;
 use WikiPage;
 

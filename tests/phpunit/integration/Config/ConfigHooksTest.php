@@ -14,9 +14,9 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Session\SessionManager;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use RequestContext;
-use Title;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Config\ConfigHooks

@@ -9,12 +9,12 @@ use GrowthExperiments\HelpPanel\HelpPanelButton;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MessageLocalizer;
 use OOUI\Tag;
 use OutputPage;
 use RawMessage;
-use Title;
 use User;
 use WebRequest;
 

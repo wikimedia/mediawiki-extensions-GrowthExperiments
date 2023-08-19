@@ -12,9 +12,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Title\Title;
 use RequestContext;
 use StatusValue;
-use Title;
 use Wikimedia\Assert\Assert;
 
 /**

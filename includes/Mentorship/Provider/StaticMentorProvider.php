@@ -4,8 +4,8 @@ namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Mentorship\Mentor;
 use InvalidArgumentException;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
-use Title;
 
 /**
  * Static implementation of MentorProvider, created for use in tests

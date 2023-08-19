@@ -19,6 +19,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeH
 use Html;
 use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MWTimestamp;
 use OOUI\ButtonWidget;
@@ -27,7 +28,6 @@ use PageProps;
 use PermissionsError;
 use ReadOnlyMode;
 use Status;
-use Title;
 use User;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Rdbms\IDatabase;

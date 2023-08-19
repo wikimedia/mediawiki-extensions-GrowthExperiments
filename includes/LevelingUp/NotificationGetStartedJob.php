@@ -5,8 +5,8 @@ namespace GrowthExperiments\LevelingUp;
 use Job;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentityLookup;
-use Title;
 
 /**
  * Job class for sending a "get started" notification to new users.

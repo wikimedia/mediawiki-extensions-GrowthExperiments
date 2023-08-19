@@ -19,12 +19,12 @@ use GrowthExperiments\WikiConfigException;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\WikiMap\WikiMap;
 use RuntimeException;
 use Status;
 use StatusValue;
-use Title;
 use User;
 use Wikimedia\Rdbms\DBReadOnlyError;
 

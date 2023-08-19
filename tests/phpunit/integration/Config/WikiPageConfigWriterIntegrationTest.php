@@ -8,11 +8,11 @@ use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\GrowthExperimentsServices;
 use InvalidArgumentException;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
 use Throwable;
-use Title;
 use User;
 use Wikimedia\TestingAccessWrapper;
 

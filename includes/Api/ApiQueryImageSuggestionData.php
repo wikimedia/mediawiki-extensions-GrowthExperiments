@@ -15,10 +15,10 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use IApiMessage;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use Psr\Log\LoggerAwareTrait;
 use StatusValue;
-use Title;
 use Wikimedia\Assert\Assert;
 use Wikimedia\ParamValidator\ParamValidator;
 

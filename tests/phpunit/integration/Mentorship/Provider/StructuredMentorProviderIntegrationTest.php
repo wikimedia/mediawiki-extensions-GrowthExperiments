@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests;
 
 use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
-use Title;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Mentorship\Provider\StructuredMentorProvider

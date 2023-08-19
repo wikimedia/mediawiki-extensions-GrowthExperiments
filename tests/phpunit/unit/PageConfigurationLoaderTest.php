@@ -19,13 +19,13 @@ use IContextSource;
 use MalformedTitleException;
 use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWikiUnitTestCase;
 use Message;
 use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
-use Title;
 use TitleParser;
 use TitleValue;
 

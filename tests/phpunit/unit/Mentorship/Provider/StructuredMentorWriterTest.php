@@ -9,13 +9,13 @@ use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use MediaWiki\Block\AbstractBlock;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Status;
-use Title;
 use User;
 
 /**

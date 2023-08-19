@@ -9,8 +9,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\Title\Title;
 use StatusValue;
-use Title;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**

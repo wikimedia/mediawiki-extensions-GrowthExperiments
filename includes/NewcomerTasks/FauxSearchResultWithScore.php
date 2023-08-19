@@ -3,7 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks;
 
 use FauxSearchResult;
-use Title;
+use MediaWiki\Title\Title;
 
 /**
  * A manually constructed search result, for use with FauxSearchResultSet.

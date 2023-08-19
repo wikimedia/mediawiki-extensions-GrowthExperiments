@@ -13,9 +13,9 @@ use GrowthExperiments\WikiConfigException;
 use LogicException;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use Status;
-use Title;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\DBReadOnlyError;
 

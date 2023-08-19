@@ -5,12 +5,12 @@ namespace GrowthExperiments\Mentorship\Provider;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserNameUtils;
 use MessageLocalizer;
 use SpecialPage;
-use Title;
 
 class StructuredMentorProvider extends MentorProvider {
 	use GetMentorDataTrait;

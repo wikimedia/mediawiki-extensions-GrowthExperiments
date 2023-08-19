@@ -11,10 +11,10 @@ use MalformedTitleException;
 use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
+use MediaWiki\Title\Title;
 use MessageLocalizer;
 use OOUI\IconWidget;
 use OutputPage;
-use Title;
 use Wikimedia\Assert\Assert;
 
 /**
