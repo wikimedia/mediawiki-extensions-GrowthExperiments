@@ -6,11 +6,11 @@ use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use MockHttpTrait;
 use MWHttpRequest;
 use StatusValue;
-use Title;
 
 /**
  * @group medium

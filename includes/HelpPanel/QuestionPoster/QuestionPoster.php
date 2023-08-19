@@ -17,11 +17,11 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use PrefixingStatsdDataFactoryProxy;
 use RecentChange;
 use Status;
-use Title;
 use UserNotLoggedIn;
 use WikitextContent;
 

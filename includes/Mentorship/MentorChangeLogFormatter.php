@@ -3,7 +3,7 @@
 namespace GrowthExperiments\Mentorship;
 
 use LogFormatter;
-use Title;
+use MediaWiki\Title\Title;
 
 class MentorChangeLogFormatter extends LogFormatter {
 

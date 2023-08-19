@@ -5,8 +5,8 @@ namespace GrowthExperiments\Tests;
 use ChangeTags;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
-use Title;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Mentorship\Provider\StructuredMentorWriter

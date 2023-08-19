@@ -4,10 +4,10 @@ namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\WikiConfigException;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use Title;
 
 abstract class MentorProvider {
 	use LoggerAwareTrait;

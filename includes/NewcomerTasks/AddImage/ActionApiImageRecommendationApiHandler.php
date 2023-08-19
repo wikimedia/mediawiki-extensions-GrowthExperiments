@@ -10,9 +10,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Title\Title;
 use Status;
 use StatusValue;
-use Title;
 
 /**
  * Handler for the action=query&prop=growthimagesuggestiondata API.

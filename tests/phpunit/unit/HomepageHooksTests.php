@@ -16,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use HashConfig;
 use JobQueueGroup;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
@@ -27,7 +28,6 @@ use MessageLocalizer;
 use NamespaceInfo;
 use OutputPage;
 use PrefixingStatsdDataFactoryProxy;
-use Title;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**

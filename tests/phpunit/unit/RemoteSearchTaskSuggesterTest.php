@@ -21,6 +21,7 @@ use GrowthExperiments\Util;
 use LinkBatch;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -29,7 +30,6 @@ use PHPUnit\Framework\MockObject\Matcher\Invocation as InvocationInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use Status;
 use StatusValue;
-use Title;
 use TitleParser;
 use TitleValue;
 

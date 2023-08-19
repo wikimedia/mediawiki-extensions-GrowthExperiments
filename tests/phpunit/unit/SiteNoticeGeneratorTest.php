@@ -7,6 +7,7 @@ use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
 use JobQueueGroup;
 use MediaWiki\Minerva\Skins\SkinMinerva;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
@@ -345,7 +346,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->with( $this->anything(), HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN )
 			->willReturn( true );
 
-		$titleMock = $this->createMock( \Title::class );
+		$titleMock = $this->createMock( Title::class );
 
 		$skinMock = $this->createMock( $class );
 		$skinMock->method( 'getOutput' )

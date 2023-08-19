@@ -5,8 +5,8 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 use GrowthExperiments\NewcomerTasks\SubpageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Title\Title;
 use StatusValue;
-use Title;
 
 /**
  * Enable by adding the following to LocalSettings.php or a similar location:

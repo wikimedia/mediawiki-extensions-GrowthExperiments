@@ -7,12 +7,12 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 use MockHttpTrait;
 use MWHttpRequest;
 use StatusValue;
-use Title;
 use User;
 
 /**

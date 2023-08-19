@@ -5,9 +5,9 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Title\Title;
 use RequestContext;
 use StatusValue;
-use Title;
 
 /**
  * Handler for MVP image suggestion API.

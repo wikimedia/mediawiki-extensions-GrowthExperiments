@@ -9,8 +9,8 @@ use JsonContent;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Title\Title;
 use StatusValue;
-use Title;
 use TitleValue;
 use Wikimedia\Assert\Assert;
 

@@ -14,9 +14,9 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
+use MediaWiki\Title\Title;
 use Status;
 use StatusValue;
-use Title;
 use TitleFormatter;
 
 $IP = getenv( 'MW_INSTALL_PATH' );

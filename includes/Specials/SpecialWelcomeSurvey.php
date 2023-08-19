@@ -10,9 +10,9 @@ use GrowthExperiments\WelcomeSurveyFactory;
 use Html;
 use HTMLForm;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\Title;
 use MWTimestamp;
 use Status;
-use Title;
 
 class SpecialWelcomeSurvey extends FormSpecialPage {
 

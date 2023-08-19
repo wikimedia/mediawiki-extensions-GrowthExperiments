@@ -4,9 +4,9 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use ManualLogEntry;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
-use Title;
 
 /**
  * @group Database

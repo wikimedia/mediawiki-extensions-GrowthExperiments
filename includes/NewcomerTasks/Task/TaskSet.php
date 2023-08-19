@@ -11,8 +11,8 @@ use MediaWiki\Json\JsonUnserializable;
 use MediaWiki\Json\JsonUnserializableTrait;
 use MediaWiki\Json\JsonUnserializer;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Title\Title;
 use OutOfBoundsException;
-use Title;
 use Traversable;
 use Wikimedia\Assert\Assert;
 

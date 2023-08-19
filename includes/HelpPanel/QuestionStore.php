@@ -9,11 +9,11 @@ use Language;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
 use RequestContext;
 use TextContent;
-use Title;
 use User;
 use UserOptionsUpdateJob;
 
