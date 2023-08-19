@@ -6,7 +6,6 @@ use ApiTestCase;
 use ApiUsageException;
 use DerivativeContext;
 use ExtensionRegistry;
-use FauxRequest;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\HomepageMentorQuestionPoster;
@@ -15,6 +14,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Request\FauxRequest;
 
 /**
  * @group API

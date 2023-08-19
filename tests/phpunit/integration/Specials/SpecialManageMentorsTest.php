@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Tests;
 
-use FauxRequest;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialManageMentors;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\UserIdentity;
 use PermissionsError;
 use SpecialPageTestBase;

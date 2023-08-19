@@ -3,11 +3,11 @@
 namespace GrowthExperiments\Tests;
 
 use ErrorPageError;
-use FauxRequest;
-use FauxResponse;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialQuitMentorship;
+use MediaWiki\Request\FauxRequest;
+use MediaWiki\Request\FauxResponse;
 use SpecialPageTestBase;
 use User;
 

@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use FauxRequest;
 use GlobalVarConfig;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -11,6 +10,7 @@ use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialHomepage;
 use InvalidArgumentException;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Request\FauxRequest;
 use SpecialPageTestBase;
 use User;
 

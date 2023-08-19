@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Tests;
 
-use FauxResponse;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
+use MediaWiki\Request\FauxResponse;
 use PermissionsError;
 use SpecialPage;
 use SpecialPageTestBase;

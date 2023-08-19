@@ -7,6 +7,7 @@ use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
 use JobQueueGroup;
 use MediaWiki\Minerva\Skins\SkinMinerva;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
@@ -223,7 +224,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testMaybeShowIfUserAbandonedWelcomeSurvey() {
 		$skinMock = $this->getSkinMock();
-		$request = new \FauxRequest();
+		$request = new FauxRequest();
 		$request->setHeader( 'REFERER', '?title=Special:WelcomeSurvey&blah' );
 		$skinMock->method( 'getRequest' )
 			->willReturn( $request );
@@ -275,7 +276,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testMaybeShowIfUserAbandonedWelcomeSurveyRefererIsNotMatched() {
 		$skinMock = $this->getSkinMock();
-		$request = new \FauxRequest();
+		$request = new FauxRequest();
 		$request->setHeader( 'REFERER', '?title=Main_Page&blah' );
 		$skinMock->method( 'getRequest' )
 			->willReturn( $request );

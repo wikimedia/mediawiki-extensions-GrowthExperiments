@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\Tests;
 
-use FauxRequest;
 use GlobalVarConfig;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Request\FauxRequest;
 use PermissionsError;
 use SpecialPageTestBase;
 use User;

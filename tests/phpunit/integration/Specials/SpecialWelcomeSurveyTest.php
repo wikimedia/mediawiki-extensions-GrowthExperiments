@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use FauxRequest;
 use FormatJson;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -10,6 +9,7 @@ use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use GrowthExperiments\WelcomeSurvey;
 use IDBAccessObject;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Request\FauxRequest;
 use MWTimestamp;
 use Psr\Log\NullLogger;
 use SpecialPageTestBase;
