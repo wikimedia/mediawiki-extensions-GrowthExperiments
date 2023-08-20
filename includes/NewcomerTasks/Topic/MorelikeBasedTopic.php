@@ -3,10 +3,10 @@
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
 use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use Message;
 use MessageLocalizer;
-use RawMessage;
 use TitleValue;
 
 /**
