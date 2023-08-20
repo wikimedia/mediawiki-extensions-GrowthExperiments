@@ -189,7 +189,8 @@ return [
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			$services->getTitleFactory(),
 			$geServices->getWikiPageConfigLoader(),
-			$services->getMainConfig()->get( 'GEWikiConfigPageTitle' )
+			$services->getMainConfig()->get( 'GEWikiConfigPageTitle' ),
+			defined( 'MW_PHPUNIT_TEST' ) && $services->isStorageDisabled()
 		);
 	},
 
@@ -934,7 +935,8 @@ return [
 			$services->getHttpRequestFactory(),
 			$services->getRevisionLookup(),
 			$services->getTitleFactory(),
-			$services->getUrlUtils()
+			$services->getUrlUtils(),
+			defined( 'MW_PHPUNIT_TEST' ) && $services->isStorageDisabled()
 		);
 	},
 

@@ -17,23 +17,30 @@ class WikiPageConfig implements Config, IDBAccessObject {
 	private ?WikiPageConfigLoader $configLoader;
 	private ?string $rawConfigTitle;
 	private ?Title $configTitle = null;
+	/**
+	 * @var bool Hack to disable DB access in non-database tests.
+	 */
+	private bool $isTestWithStorageDisabled;
 
 	/**
 	 * @param LoggerInterface $logger
 	 * @param TitleFactory $titleFactory
 	 * @param WikiPageConfigLoader $configLoader
 	 * @param string $rawConfigTitle
+	 * @param bool $isTestWithStorageDisabled
 	 */
 	public function __construct(
 		LoggerInterface $logger,
 		TitleFactory $titleFactory,
 		WikiPageConfigLoader $configLoader,
-		string $rawConfigTitle
+		string $rawConfigTitle,
+		bool $isTestWithStorageDisabled
 	) {
 		$this->logger = $logger;
 		$this->titleFactory = $titleFactory;
 		$this->configLoader = $configLoader;
 		$this->rawConfigTitle = $rawConfigTitle;
+		$this->isTestWithStorageDisabled = $isTestWithStorageDisabled;
 	}
 
 	/**
@@ -75,6 +82,9 @@ class WikiPageConfig implements Config, IDBAccessObject {
 	 * @return array
 	 */
 	private function getConfigData( int $flags = 0 ): array {
+		if ( $this->isTestWithStorageDisabled ) {
+			return [];
+		}
 		if ( !$this->getConfigTitle()->exists() ) {
 			// configLoader throws an exception for no-page case
 			return [];

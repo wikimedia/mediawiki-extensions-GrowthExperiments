@@ -80,7 +80,9 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 			$requestFactory,
 			$revisionLookup,
 			$titleFactory,
-			$this->getUrlUtils()
+			$this->getUrlUtils(),
+			// Pretend that storage is not disabled and let the mocks do the work.
+			false
 		);
 		$data = $loader->load( $titleValue );
 		$this->assertResultSame( $expectedData, $data );
@@ -175,7 +177,9 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 			$this->getMockRequestFactory( '', '', 0 ),
 			$this->getMockRevisionLookup( $title, false, 0 ),
 			$this->getMockTitleFactory( '', '', false ),
-			$this->getUrlUtils()
+			$this->getUrlUtils(),
+			// Pretend that storage is not disabled and let the mocks do the work.
+			false
 		);
 		$this->assertSame( [ 'abc' => 123 ], $loader->load( $title ) );
 	}
