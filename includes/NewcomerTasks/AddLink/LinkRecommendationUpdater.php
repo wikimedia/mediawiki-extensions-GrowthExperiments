@@ -286,7 +286,8 @@ class LinkRecommendationUpdater {
 				throw new WikiConfigException( 'Could not load task types: ' .
 					Status::wrap( $taskTypes )->getWikiText( false, false, 'en' ) );
 			}
-			$taskTypes = $this->configurationLoader->getTaskTypes();
+			$taskTypes = $this->configurationLoader->getTaskTypes() +
+				$this->configurationLoader->getDisabledTaskTypes();
 			$taskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
 			if ( !( $taskType instanceof LinkRecommendationTaskType ) ) {
 				throw new WikiConfigException( 'Could not load link recommendation task type' );
