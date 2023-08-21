@@ -57,17 +57,6 @@ class WelcomeSurvey {
 	 * @throws \ConfigException
 	 */
 	public function getGroup( $useDefault = false ) {
-		if ( $this->context->getConfig()->get( 'WelcomeSurveyEnableWithHomepage' ) ) {
-			// At the earliest, this runs in BeforeWelcomeCreation, which is way
-			// after LocalUserCreated. We can just rely at the homepage preference
-			// at this point.
-			if ( HomepageHooks::isHomepageEnabled( $this->context->getUser() ) ) {
-				return self::DEFAULT_SURVEY_GROUP;
-			} else {
-				return false;
-			}
-		}
-
 		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
 
 		// The group is specified in the URL
