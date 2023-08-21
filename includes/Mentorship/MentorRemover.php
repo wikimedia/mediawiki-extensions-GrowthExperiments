@@ -54,7 +54,7 @@ class MentorRemover {
 				$context
 			)->reassignMentees(
 				'growthexperiments-quit-mentorship-reassign-mentees-log-message-removed',
-				$mentor->getName()
+				$performer->getName()
 			);
 		}
 		return $status;
