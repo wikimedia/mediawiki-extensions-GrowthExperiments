@@ -2795,23 +2795,6 @@
 			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",
 			"merge_strategy": "array_plus_2d",
 			"value": {
-				"exp1_group1": {
-					"percentage": 0,
-					"format": "specialpage",
-					"questions": [
-						"reason",
-						"edited",
-						"email"
-					]
-				},
-				"exp1_group2": {
-					"percentage": 0,
-					"questions": []
-				},
-				"exp2_control": {
-					"percentage": 0,
-					"questions": []
-				},
 				"exp2_target_specialpage": {
 					"percentage": 100,
 					"format": "specialpage",
