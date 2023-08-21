@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
+			"Lejonel",
 			"LittleGun",
 			"Paracel63",
 			"Sabelöga",
@@ -88,7 +89,9 @@
 	"growthexperiments-manage-mentors-pretext-stored-at": "Mentorslistan finns i [[$1|mediawikinamnrymden]], inklusive dess historik.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "För att bli fadder, besök [[Special:EnrollAsMentor|fadderpanelen]].",
 	"growthexperiments-manage-mentors-auto-assigned": "Automatiskt tilldelade faddrar",
+	"growthexperiments-manage-mentors-auto-assigned-text": "Nya konton delas slumpmässigt ut till dessa faddrar.",
 	"growthexperiments-manage-mentors-manually-assigned": "Manuellt tilldelade faddrar",
+	"growthexperiments-manage-mentors-manually-assigned-text": "Nya konton delas inte ut slumpmässigt till dessa faddrar. Liksom övriga mentorer kan dessa faddrar manuellt välja konton de vill handleda. Det här avsnittet är huvudsakligen till för workshop-värdar som bara vill hjälpa personer de träffat.",
 	"growthexperiments-manage-mentors-none": "Ingen",
 	"growthexperiments-manage-mentors-username": "Användarnamn",
 	"growthexperiments-manage-mentors-last-active": "Senast aktiv",

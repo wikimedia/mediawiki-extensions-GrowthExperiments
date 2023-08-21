@@ -132,7 +132,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "المزيد من المعلومات",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-par1": "{{GENDER:|أرسل|أرسلي}} إلى مرشَديك رسالة تشجيع على صفحة النقاش الخاصة بهم.",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-par2": "غالبًا ما يزداد نشاط التحرير للوافدين الجدد عندما يتلقون الشكر أو الرسائل الإيجابية الأخرى حول عملهم من محرر أو معلم متمرس.",
-	"growthexperiments-mentor-dashboard-personalized-praise-info-par3": "{{GENDER:|يمكنكَ|يمكنكِ}}تخصيص رسالتك الافتراضية في الإعدادات.",
+	"growthexperiments-mentor-dashboard-personalized-praise-info-par3": "{{GENDER:|يمكنكَ|يمكنكِ}} تخصيص رسالتك الافتراضية في الإعدادات.",
 	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "<strong>المقياس</strong>: {{PLURAL:$1|لا تعديل|تعديل واحد|تعديلان|$1 تعديلات|$1 تعديلاً|$1 تعديل}} في خلال {{PLURAL:$2|لا يوم|اليوم الأخير|اليومين الأخيرين|الـ$2 أيام الأخيرة|الـ$2 يومًا الأخيرة|الـ$2 يومٍ الأخيرة}}. تخصيص هذه الأرقام في الإعدادات.",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "سيظهر المرشَدون الذين يستحقّون الثناء هنا.",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "{{PLURAL:$1|لا موضوع|موضوع واحد|موضوعان|$1 مواضيع|$1 موضوعًا|$1 موضوع}} في صفحة النقاش",

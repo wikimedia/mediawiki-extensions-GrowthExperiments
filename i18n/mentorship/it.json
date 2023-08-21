@@ -50,7 +50,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Nessun allievo attivo di recente trovato",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Il cruscotto del mentore mostra solo gli allievi attivi di recente. Ulteriori informazioni possono essere visualizzate tramite l'icona delle informazioni. Se {{GENDER:|ti}} sei iscritto di recente al tutoraggio, {{GENDER:|potresti}} non avere ancora alcun allievo assegnato.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nessun allievo trovato",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifica i filtri per trovare gli allievi.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifica i {{GENDER:|}}filtri per trovare gli allievi.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Risorse",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gestisci i tutor",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Vedi elenco dei tutor",
