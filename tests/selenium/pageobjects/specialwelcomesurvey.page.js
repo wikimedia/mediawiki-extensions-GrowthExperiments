@@ -8,7 +8,7 @@ class SpecialWelcomeSurveyPage extends Page {
 	get finishButtonSelector() { return $( "button[value='Finish']" ); }
 
 	open() {
-		super.openTitle( 'Special:WelcomeSurvey', { _group: 'exp2_target_specialpage' } );
+		super.openTitle( 'Special:WelcomeSurvey', { _group: 'control' } );
 	}
 
 }

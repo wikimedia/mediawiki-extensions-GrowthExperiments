@@ -20,7 +20,7 @@ class WelcomeSurvey {
 
 	public const SURVEY_PROP = 'welcomesurvey-responses';
 
-	public const DEFAULT_SURVEY_GROUP = 'exp2_target_specialpage';
+	public const DEFAULT_SURVEY_GROUP = 'control';
 
 	private IContextSource $context;
 	private bool $allowFreetext;
