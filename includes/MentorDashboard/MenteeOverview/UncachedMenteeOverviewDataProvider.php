@@ -12,6 +12,7 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CentralAuth\CentralAuthServices;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
+use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerAwareTrait;
@@ -42,6 +43,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
+	private TempUserConfig $tempUserConfig;
 
 	/** @var IReadableDatabase */
 	private $mainDbr;
@@ -62,6 +64,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param NameTableStore $changeTagDefStore
 	 * @param ActorMigration $actorMigration
 	 * @param UserIdentityLookup $userIdentityLookup
+	 * @param TempUserConfig $tempUserConfig
 	 * @param IReadableDatabase $mainDbr
 	 */
 	public function __construct(
@@ -69,6 +72,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		NameTableStore $changeTagDefStore,
 		ActorMigration $actorMigration,
 		UserIdentityLookup $userIdentityLookup,
+		TempUserConfig $tempUserConfig,
 		IReadableDatabase $mainDbr
 	) {
 		$this->setLogger( new NullLogger() );
@@ -77,6 +81,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->actorMigration = $actorMigration;
 		$this->userIdentityLookup = $userIdentityLookup;
+		$this->tempUserConfig = $tempUserConfig;
 		$this->mainDbr = $mainDbr;
 	}
 
@@ -168,6 +173,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * Only mentees that meet all of the following conditions
 	 * should be considered:
 	 *  * user is not a bot
+	 *  * user is not a temporary account (safety check should temp users end up as mentees)
 	 *  * user is not indefinitely blocked
 	 *  * user is not globally locked (via CentralAuth's implementation)
 	 *  * user registered less than 2 weeks ago OR made at least one edit in the last 6 months
@@ -197,6 +203,12 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			[
 				// filter to mentees only
 				'user_id' => $menteeIds,
+
+				// exclude temporary accounts, if enabled (T341389)
+				$this->tempUserConfig->isEnabled() ? (
+					'user_name NOT ' . $this->tempUserConfig->getMatchPattern()
+						->buildLike( $this->mainDbr )
+				) : '' .
 
 				// ensure mentees have homepage enabled
 				'user_id IN (' . $this->mainDbr->selectSQLText(
