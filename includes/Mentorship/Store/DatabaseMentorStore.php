@@ -119,6 +119,7 @@ class DatabaseMentorStore extends MentorStore {
 		$builder = $this->userIdentityLookup
 			->newSelectQueryBuilder()
 			->registered()
+			->named()
 			->whereUserIds( $ids );
 
 		if ( !$includeHiddenUsers ) {

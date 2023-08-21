@@ -64,6 +64,9 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		$userMock->expects( $this->once() )
 			->method( 'getBlock' )
 			->willReturn( null );
+		$userMock->expects( $this->once() )
+			->method( 'isNamed' )
+			->willReturn( true );
 		$userFactoryMock = $this->createMock( UserFactory::class );
 		$userFactoryMock->expects( $this->once() )
 			->method( 'newFromUserIdentity' )

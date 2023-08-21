@@ -139,9 +139,12 @@ class PraiseworthyConditionsLookup {
 		// NOTE: This does not use HomepageHooks::isHomepageEnabled, because it accesses the global
 		// state. Personalized praise is not directly tied to Homepage, so relying on the
 		// preference value alone is sufficient.
+
+		$menteeUser = $this->userFactory->newFromUserIdentity( $mentee );
 		return $this->userOptionsLookup->getBoolOption( $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE ) &&
 			$this->mentorManager->getMentorshipStateForUser( $mentee ) === MentorManager::MENTORSHIP_ENABLED &&
-			$this->userFactory->newFromUserIdentity( $mentee )->getBlock() === null &&
+			$menteeUser->isNamed() &&
+			$menteeUser->getBlock() === null &&
 			!$this->wasMenteePraised( $mentee ) &&
 			!$this->isMenteeSkipped( $mentee );
 	}
