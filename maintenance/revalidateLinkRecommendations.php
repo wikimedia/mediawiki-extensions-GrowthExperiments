@@ -184,7 +184,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 			}, $linkRecommendation->getLinks() ) );
 
 			// Abort if the recommendation is invalid and give chance to other checks
-			if ( $recommendationScore < (int)$this->getOption( 'scoreLessThan' ) ) {
+			if ( $recommendationScore < (float)$this->getOption( 'scoreLessThan' ) ) {
 				return false;
 			}
 		}
