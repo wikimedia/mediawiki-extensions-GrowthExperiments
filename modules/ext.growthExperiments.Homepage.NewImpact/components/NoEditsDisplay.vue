@@ -9,6 +9,7 @@
 				:icon="cdxIconUserTalk"
 				:label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 				:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
+				:info-header-icon="cdxIconInfoFilled"
 				:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' ).text()"
 				@open="$log( 'impact', 'open-thanks-info-tooltip' );"
 				@close="$log( 'impact', 'close-thanks-info-tooltip' );"
@@ -31,13 +32,6 @@
 				</c-text>
 				<template #info-content>
 					<div class="ext-growthExperiments-ScoreCards__scorecard__info">
-						<span>
-							<cdx-icon
-								class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
-								:icon="cdxIconInfoFilled"
-							></cdx-icon>
-							{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text() }}
-						</span>
 						<p>
 							{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', userName ).text() }}
 						</p>
@@ -48,6 +42,7 @@
 				:icon="cdxIconChart"
 				:label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 				:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
+				:info-header-icon="cdxIconInfoFilled"
 				:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' ).text()"
 				@open="$log( 'impact', 'open-streak-info-tooltip' );"
 				@close="$log( 'impact', 'close-streak-info-tooltip' );"
@@ -62,13 +57,6 @@
 				</c-text>
 				<template #info-content>
 					<div class="ext-growthExperiments-ScoreCards__scorecard__info">
-						<span>
-							<cdx-icon
-								class="ext-growthExperiments-ScoreCards__scorecard__info__icon"
-								:icon="cdxIconInfoFilled"
-							></cdx-icon>
-							{{ $i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text() }}
-						</span>
 						<p>
 							{{ $i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', userName ).text() }}
 						</p>
@@ -137,7 +125,7 @@
 
 <script>
 const { inject } = require( 'vue' );
-const { CdxButton, CdxIcon } = require( '@wikimedia/codex' );
+const { CdxButton } = require( '@wikimedia/codex' );
 const {
 	cdxIconUserTalk,
 	cdxIconChart,
@@ -153,7 +141,6 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxButton,
-		CdxIcon,
 		CText,
 		CScoreCard
 	},
