@@ -1257,6 +1257,8 @@ class HomepageHooks implements
 		// frontend code's responsibility (handled in TaskTypeAbFilter).
 		return [
 			'GESearchTaskSuggesterDefaultLimit' => SearchTaskSuggester::DEFAULT_LIMIT,
+			'GEApiQueryGrowthTasksLookaheadSize' =>
+				$config->get( 'GEApiQueryGrowthTasksLookaheadSize' ),
 			'GERestbaseUrl' => Util::getRestbaseUrl( $config ),
 			'GENewcomerTasksRemoteArticleOrigin' => $config->get( 'GENewcomerTasksRemoteArticleOrigin' ),
 			'GEHomepageSuggestedEditsIntroLinks' => self::getGrowthWikiConfig()

@@ -2522,6 +2522,10 @@
 		]
 	},
 	"config": {
+		"GEApiQueryGrowthTasksLookaheadSize": {
+			"description": "Number of items to fetch lookahead when querying the GrowthTasks API.",
+			"value": null
+		},
 		"GELevelingUpFeaturesEnabled": {
 			"description": "Feature flag to enable \"leveling up\" (phab:#growthexperiments-levelingup) functionality.",
 			"value": true

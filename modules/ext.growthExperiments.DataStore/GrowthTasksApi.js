@@ -81,6 +81,7 @@
 	 * @param {Object} config.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref
 	 * @param {string} [config.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin]
 	 * @param {number} config.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit
+	 * @param {number|null} config.suggestedEditsConfig.GEApiQueryGrowthTasksLookaheadSize
 	 * @param {Object} config.aqsConfig Configuration for the AQS service, as returned by
 	 *   HomepageHooks::getAQSConfigJson. Used by the getExtraDataFromAqs method.
 	 * @param {string} config.aqsConfig.project Project domain name to get views for (might be
@@ -99,7 +100,8 @@
 		this.logContext = config.logContext;
 		this.thumbnailWidth = this.isMobile ? 260 : 332;
 		this.pageSize = this.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit;
-		this.lookAheadSize = config.lookAheadSize || DEFAULT_LOOKAHEAD_SIZE;
+		this.lookAheadSize = Number.isInteger( this.suggestedEditsConfig.GEApiQueryGrowthTasksLookaheadSize ) ?
+			this.suggestedEditsConfig.GEApiQueryGrowthTasksLookaheadSize : DEFAULT_LOOKAHEAD_SIZE;
 	}
 
 	/**

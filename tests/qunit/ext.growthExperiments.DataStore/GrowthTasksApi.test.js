@@ -62,58 +62,60 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'should send topic match mode even if topics are empty', function ( assert ) {
-	const done = assert.async();
-	const api = new GrowthTasksApi( {
-		taskTypes: {
-			copyedit: {
-				id: 'copyedit'
+QUnit.test( 'should send topic match mode even if topics are empty and use configured lookahead size',
+	function ( assert ) {
+		const done = assert.async();
+		const api = new GrowthTasksApi( {
+			taskTypes: {
+				copyedit: {
+					id: 'copyedit'
+				}
+			},
+			suggestedEditsConfig: {
+				GENewcomerTasksTopicFiltersPref: 'preference-name',
+				GESearchTaskSuggesterDefaultLimit: 20,
+				GEApiQueryGrowthTasksLookaheadSize: 10
 			}
-		},
-		suggestedEditsConfig: {
-			GENewcomerTasksTopicFiltersPref: 'preference-name',
-			GESearchTaskSuggesterDefaultLimit: 20
-		}
-	} );
-	const topicFilters = new TopicFilters( {
-		topics: [],
-		topicsMatchMode: TOPIC_MATCH_MODES.AND
-	} );
+		} );
+		const topicFilters = new TopicFilters( {
+			topics: [],
+			topicsMatchMode: TOPIC_MATCH_MODES.AND
+		} );
 
-	const response = {
-		batchcomplete: true,
-		query: {
-			pages: []
-		},
-		growthtasks: {
-			totalCount: 3
-		}
-	};
-	this.sandbox.stub( mw.Api.prototype, 'get' ).returns(
-		$.Deferred().resolve( response ).promise( {
-			abort: function () {}
-		} )
-	);
-	const expectedParams = {
-		action: 'query',
-		formatversion: 2,
-		generator: 'growthtasks',
-		ggtlimit: 25,
-		ggttasktypes: [ 'copyedit' ],
-		piprop: 'name|original|thumbnail',
-		pithumbsize: 332,
-		prop: 'info|revisions|pageimages',
-		rvprop: 'ids',
-		uselang: 'qqx',
-		ggttopicsmode: 'AND'
-	};
-	api.fetchTasks( [ 'copyedit' ], topicFilters ).then( () => {
-		assert.strictEqual( mw.Api.prototype.get.calledOnce, true );
-		assert.deepEqual( mw.Api.prototype.get.getCall( 0 ).args[ 0 ], expectedParams );
-		// TODO add assertions for response post processing
-		done();
+		const response = {
+			batchcomplete: true,
+			query: {
+				pages: []
+			},
+			growthtasks: {
+				totalCount: 3
+			}
+		};
+		this.sandbox.stub( mw.Api.prototype, 'get' ).returns(
+			$.Deferred().resolve( response ).promise( {
+				abort: function () {}
+			} )
+		);
+		const expectedParams = {
+			action: 'query',
+			formatversion: 2,
+			generator: 'growthtasks',
+			ggtlimit: 30,
+			ggttasktypes: [ 'copyedit' ],
+			piprop: 'name|original|thumbnail',
+			pithumbsize: 332,
+			prop: 'info|revisions|pageimages',
+			rvprop: 'ids',
+			uselang: 'qqx',
+			ggttopicsmode: 'AND'
+		};
+		api.fetchTasks( [ 'copyedit' ], topicFilters ).then( () => {
+			assert.strictEqual( mw.Api.prototype.get.calledOnce, true );
+			assert.deepEqual( mw.Api.prototype.get.getCall( 0 ).args[ 0 ], expectedParams );
+			// TODO add assertions for response post processing
+			done();
+		} );
 	} );
-} );
 
 QUnit.test( 'should read topic filters and topics match mode preferences', function ( assert ) {
 	const api = new GrowthTasksApi( {
