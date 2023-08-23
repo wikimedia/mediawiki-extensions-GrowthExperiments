@@ -339,6 +339,7 @@
 	"growthexperiments-addimage-inspector-yes-button": "Да",
 	"growthexperiments-addimage-inspector-no-button": "Не",
 	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|Нисам сигуран}}",
+	"growthexperiments-addimage-inspector-details-button": "Детаљи слике",
 	"growthexperiments-addimage-inspector-description-placeholder": "Опис није доступан",
 	"growthexperiments-addimage-detailsdialog-header": "Детаљи слике",
 	"growthexperiments-addimage-detailsdialog-image": "Назив датотеке:",
