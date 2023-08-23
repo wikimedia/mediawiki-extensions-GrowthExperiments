@@ -2493,9 +2493,9 @@
 			"description": "If set to true, freetext responses with the welcome survey are allowed.",
 			"value": false
 		},
-		"WelcomeSurveyPrivacyPolicyUrl": {
-			"description": "URL of the privacy policy to be used on the Welcome survey.",
-			"value": "https://meta.wikimedia.org/wiki/Data_retention_guidelines#Exceptions_to_these_guidelines"
+		"WelcomeSurveyPrivacyStatementUrl": {
+			"description": "URL of the privacy statement to be used on the Welcome survey.",
+			"value": "https://foundation.wikimedia.org/wiki/Special:Mylanguage/Legal:New_User_Welcome_Survey_Privacy_Statement"
 		},
 		"WelcomeSurveyReminderExpiry": {
 			"description": "Number of days a reminder on Special:Homepage should be shown for if the user has not filled out the welcome survey yet. Set to 0 to disable the reminder.",

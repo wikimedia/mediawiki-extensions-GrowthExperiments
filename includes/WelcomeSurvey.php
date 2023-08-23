@@ -191,6 +191,9 @@ class WelcomeSurvey {
 		) {
 			$questionNames = array_diff( $questionNames, [ 'email' ] );
 		}
+		if ( $questionNames !== [] && !in_array( 'privacy-info', $questionNames ) ) {
+			$questionNames[] = 'privacy-info';
+		}
 
 		if ( $this->allowFreetext && in_array( 'reason', $questionNames ) ) {
 			// Insert reason-other after reason
@@ -297,6 +300,15 @@ class WelcomeSurvey {
 				"help" => $this->addLinkTarget(
 					$this->context->msg( 'welcomesurvey-question-user-research-nonediting-help' )->parse()
 				)
+			],
+			"privacy-info" => [
+				"type" => "info",
+				"help" => $this->addLinkTarget( $this->context->msg(
+					'welcomesurvey-privacy-footer-text',
+					$this->context->getUser()->getName(),
+					$this->context->getConfig()->get( 'WelcomeSurveyPrivacyStatementUrl' )
+				)->parse() ),
+				"cssclass" => "welcomesurvey-privacy-info"
 			],
 			"mentor-info" => [
 				"type" => "info",
