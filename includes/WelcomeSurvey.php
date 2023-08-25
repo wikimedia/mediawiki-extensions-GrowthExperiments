@@ -301,6 +301,12 @@ class WelcomeSurvey {
 					$this->context->msg( 'welcomesurvey-question-user-research-nonediting-help' )->parse()
 				)
 			],
+			"user-research" => [
+				"type" => "check",
+				"label-message" => "welcomesurvey-question-user-research-label",
+				"help" => $this->context->msg( 'welcomesurvey-question-user-research-help' )
+					->parse(),
+			],
 			"privacy-info" => [
 				"type" => "info",
 				"help" => $this->addLinkTarget( $this->context->msg(
