@@ -122,6 +122,7 @@
 	"growthexperiments-mentor-writer-error-message-too-long": "Il messaggio introduttivo è troppo lungo (ID utente interessato: $2). La lunghezza massima è $1.",
 	"growthexperiments-manage-mentors-title": "Gestione tutor",
 	"growthexperiments-manage-mentors-pretext-purpose": "Questa pagina mostra un elenco di tutor.",
+	"growthexperiments-manage-mentors-error-no-such-user": "Errore: non esiste alcun utente con ID pari a $1. Probabilmente si tratta di un errore interno.",
 	"growthexperiments-manage-mentors-auto-assigned": "Tutor assegnati automaticamente",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Le nuove utenze vengono assegnate casualmente a questi tutor.",
 	"growthexperiments-manage-mentors-manually-assigned": "Tutor assegnati manualmente",

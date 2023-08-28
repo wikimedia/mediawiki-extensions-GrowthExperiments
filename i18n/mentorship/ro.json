@@ -186,7 +186,7 @@
 	"growthexperiments-manage-mentors-manually-assigned-text": "Acestor mentori nu le sunt atribuite aleatoriu conturi noi. Ca și alți mentori, acești mentori pot selecta manual conturile cărora ar dori să le fie mentori. Această secțiune este în principal pentru organizatorii de ateliere care doresc să îndrume doar oamenii pe care i-au întâlnit.",
 	"growthexperiments-manage-mentors-none": "Niciunul",
 	"growthexperiments-manage-mentors-username": "Nume de utilizator",
-	"growthexperiments-manage-mentors-last-active": "Activ ultima oară",
+	"growthexperiments-manage-mentors-last-active": "Activ(ă) ultima oară",
 	"growthexperiments-manage-mentors-weight": "Numărul de nou-veniți alocați",
 	"growthexperiments-manage-mentors-status": "Stare",
 	"growthexperiments-manage-mentors-status-away-until": "Plecat până în $1",

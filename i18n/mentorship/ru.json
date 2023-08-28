@@ -118,6 +118,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Отменить",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Приветственное сообщение",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Ваше}} приветственное сообщение было изменено на «$1».",
+	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "Подробнее",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "Предыдущая страница",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately": "Немедленно",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "Ежедневно",
