@@ -143,22 +143,24 @@ class ListTaskCounts extends Maintenance {
 	 * @param int[] $taskTypeCounts task type ID => total count
 	 */
 	private function reportTaskCounts( array $taskCounts, array $taskTypeCounts ): void {
-		// Limit to link recommendations to avoid excessive use of statsd metrics as we don't
-		// care too much about the others. Maybe there will be a nicer way to handle this in
+		$dataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
+		foreach ( $taskTypeCounts as $taskTypeId => $taskTypeCount ) {
+			$dataFactory->updateCount( "growthexperiments.tasktypecount.$taskTypeId", $taskTypeCount );
+		}
+
+		// Limit per-topic data to link-recommendations to avoid excessive use of statsd metrics,
+		// see T345204#9128846 for details. Maybe there will be a nicer way to handle this in
 		// the future with Prometheus.
 		$taskTypeId = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
-		$taskData = $taskCounts[$taskTypeId] ?? null;
-		if ( $taskData === null ) {
-			$this->output( "No link recommendation task type, skipping statsd\n" );
+		$linkRecommendationData = $taskCounts[$taskTypeId] ?? null;
+		if ( $linkRecommendationData === null ) {
+			$this->output( "No link recommendation task type, skipping per-topic statsd\n" );
 			return;
 		}
 
-		$taskTypeCount = $taskTypeCounts[$taskTypeId];
-		$dataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
-		foreach ( $taskData as $topic => $count ) {
+		foreach ( $linkRecommendationData as $topic => $count ) {
 			$dataFactory->updateCount( "growthexperiments.taskcount.$taskTypeId.$topic", $count );
 		}
-		$dataFactory->updateCount( "growthexperiments.tasktypecount.$taskTypeId", $taskTypeCount );
 	}
 
 	/**
