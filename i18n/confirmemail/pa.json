@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kuldeepburjbhalaike"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ਇਹ ਕੀ ਹੈ?]])",
+	"growthexperiments-confirmemail-emailhelp": "ਜੇਕਰ ਤੁਸੀਂ ਆਪਣਾ ਪਾਸਵਰਡ ਗੁਆ ਦਿੰਦੇ ਹੋ ਤਾਂ ਤੁਹਾਡੇ ਖਾਤੇ ਨੂੰ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਈਮੇਲ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ।",
+	"growthexperiments-confirmemail-emailrecommended": "ਈਮੇਲ ਪਤਾ (ਸਿਫਾਰਸ਼ੀ)",
+	"growthexperiments-confirmemail-emailwarning": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੇ ਪਤੇ ਦੀ ਪੁਸ਼ਟੀ ਕਰਨ ਲਈ ਸਾਡੇ ਵੱਲੋਂ ਇੱਕ ਈਮੇਲ ਲੱਭੋ।",
+	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}} ਵਿੱਚ ਸੁਆਗਤ ਹੈ: ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੇ ਈਮੇਲ ਪਤੇ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ}} $2,\n\nਆਈਪੀ ਪਤੇ $1 ਤੋਂ ਰਜਿਸਟਰ ਕੀਤੇ, ਆਪਣੇ {{SITENAME}} ਖਾਤੇ ਵਿੱਚ ਇੱਕ ਈਮੇਲ ਜੋੜਨ ਲਈ ਧੰਨਵਾਦ।\n\n\"$2\" ਖਾਤੇ ਨਾਲ ਇਸ ਈਮੇਲ ਨੂੰ ਲਿੰਕ ਕਰਨ ਦੀ ਪੁਸ਼ਟੀ ਲਈ ਹੇਠਾਂ ਦਿੱਤੇ ਬਟਨ ਨੂੰ ਦਬਾਓ:\n\n$3 \n\nਨੋਟ: ਇਸ ਪੁਸ਼ਟੀਕਰਨ ਕੋਡ ਦੀ <strong>ਮਿਆਦ $4 'ਤੇ ਸਮਾਪਤ ਹੋਵੇਗੀ</strong>।\n\nਧੰਨਵਾਦ,\n\n{{SITENAME}}\n\n---\n\nਈਮੇਲ ਪਤੇ ਦੀ ਪੁਸ਼ਟੀ ਨੂੰ ਰੱਦ ਕਰਨ ਲਈ (ਕਿਉਂਕਿ ਤੁਸੀਂ ਖਾਤਾ ਰਜਿਸਟਰ ਨਹੀਂ ਕੀਤਾ ਜਾਂ ਕਿਸੇ ਹੋਰ ਕਾਰਨ ਕਰਕੇ), ਇਸ ਰੱਦ ਕਰਨ ਵਾਲੇ ਲਿੰਕ 'ਤੇ ਕਲਿੱਕ ਕਰੋ:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "ਈਮੇਲ ਪਤੇ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ}} $2,\n\nਆਈਪੀ ਪਤੇ $1 ਤੋਂ ਰਜਿਸਟਰ ਕੀਤੇ, ਆਪਣੇ {{SITENAME}} ਖਾਤੇ ਵਿੱਚ ਇੱਕ ਈਮੇਲ ਜੋੜਨ ਲਈ ਧੰਨਵਾਦ।\n\n\"$2\" ਖਾਤੇ ਨਾਲ ਇਸ ਈਮੇਲ ਨੂੰ ਲਿੰਕ ਕਰਨ ਦੀ ਪੁਸ਼ਟੀ ਲਈ ਹੇਠਾਂ ਦਿੱਤੇ ਬਟਨ ਨੂੰ ਦਬਾਓ:\n\n$3 \n\nਨੋਟ: ਇਸ ਪੁਸ਼ਟੀਕਰਨ ਕੋਡ ਦੀ ਮਿਆਦ $4 'ਤੇ ਸਮਾਪਤ ਹੋਵੇਗੀ।\n\nਧੰਨਵਾਦ,\n\n{{SITENAME}}\n\n---\n\nਈਮੇਲ ਪਤੇ ਦੀ ਪੁਸ਼ਟੀ ਨੂੰ ਰੱਦ ਕਰਨ ਲਈ (ਕਿਉਂਕਿ ਤੁਸੀਂ ਖਾਤਾ ਰਜਿਸਟਰ ਨਹੀਂ ਕੀਤਾ ਜਾਂ ਕਿਸੇ ਹੋਰ ਕਾਰਨ ਕਰਕੇ), ਇਸ ਰੱਦ ਕਰਨ ਵਾਲੇ ਲਿੰਕ 'ਤੇ ਕਲਿੱਕ ਕਰੋ:\n\n$5",
+	"growthexperiments-signupcampaign-title": "ਦਾਨ ਕਰਨ ਲਈ ਧੰਨਵਾਦ! ਹੁਣ ਵਿਕੀਪੀਡੀਆ ਨੂੰ ਅੱਜ ਬਿਹਤਰ ਬਣਾਉਣ ਵਾਲੇ ਸੰਪਾਦਕਾਂ ਦੇ ਭਾਈਚਾਰੇ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+	"growthexperiments-signupcampaign-body": "ਵਿਕੀਪੀਡੀਆ ਨੂੰ ਸੰਪਾਦਿਤ ਕਰਨਾ ਇੱਕ ਲਿੰਕ ਜੋੜਨ ਜਾਂ ਸ਼ਬਦ ਨੂੰ ਬਦਲਣ ਜਿੰਨਾ ਸੌਖਾ ਹੋ ਸਕਦਾ ਹੈ। ਆਪਣਾ ਖਾਤਾ ਬਣਾਉਣ ਤੋਂ ਬਾਅਦ ਦਿਲਚਸਪੀ ਦੇ {{GENDER:|ਤੁਹਾਡੇ}} ਵਿਸ਼ਿਆਂ ਵਿੱਚ ਲੇਖਾਂ ਲਈ ਸੁਝਾਅ ਪ੍ਰਾਪਤ ਕਰੋ!",
+	"growthexperiments-marketingvideocampaign-title": "ਵਿਕੀਪੀਡੀਆ ਤੁਹਾਡੇ ਵਰਗੇ ਲੋਕਾਂ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ ਹੈ",
+	"growthexperiments-marketingvideocampaign-body": "ਹਰ ਮਹੀਨੇ 280,000 ਸੰਪਾਦਕ ਵਲੰਟੀਅਰ ਹੁੰਦੇ ਹਨ - ਕੀ ਤੁਸੀਂ ਉਹਨਾਂ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋਗੇ?\n\nਅਸੀਂ ਜਾਣਦੇ ਹਾਂ ਕਿ ਤੁਹਾਡਾ ਪਹਿਲਾ ਸੰਪਾਦਨ ਕਰਨਾ ਅਕਸਰ ਡਰਾਉਣਾ ਹੁੰਦਾ ਹੈ, ਪਰ ਇਹ ਅਸਲ ਵਿੱਚ ਕਾਫ਼ੀ ਆਸਾਨ ਹੈ। ਬਸ ਸਾਡੇ ਸਮਰਪਿਤ ਸੰਪਾਦਕਾਂ ਨੂੰ ਪੁੱਛੋ, ਜੋ ਤੁਹਾਨੂੰ ਇਸ ਵੀਡੀਓ ਵਿੱਚ ਇਸ ਬਾਰੇ ਦੱਸਦੇ ਹਨ:",
+	"growthexperiments-marketingvideocampaign-body-mobile": "ਤੁਹਾਡੇ ਵਰਗੇ ਹਜ਼ਾਰਾਂ ਲੋਕ ਵਿਕੀਪੀਡੀਆ ਬਣਾਉਣ ਵਾਲੇ ਹਨ। ਕੀ ਤੁਸੀਂ ਉਹਨਾਂ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋਗੇ?\n\nਇਹ ਤੁਹਾਡੇ ਲਈ ਸਾਡੇ ਸੰਪਾਦਕਾਂ ਦਾ ਸੁਨੇਹਾ ਹੈ:",
+	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|ਤੁਹਾਡੀ}} ਰੁਚੀਆਂ ਵਿੱਚ ਸੁਝਾਏ ਗਏ ਲੇਖ",
+	"growthexperiments-signupcampaign-bullet2": "ਕਿਸੇ ਤਜਰਬੇਕਾਰ ਸੰਪਾਦਕ ਤੋਂ ਮਦਦ ਮੰਗੋ",
+	"growthexperiments-signupcampaign-bullet3": "ਛੋਟੇ, ਆਸਾਨ ਸੰਪਾਦਨਾਂ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ",
+	"growthexperiments-campaigns-footer": "ਇਸ ਪੰਨੇ 'ਤੇ {{GENDER:|ਤੁਹਾਡਾ}} ਖਾਤਾ ਬਣਾਉਣ ਤੋਂ ਬਾਅਦ, ਇਸ ਨੂੰ ਅਨੁਭਵ ਅਤੇ ਵਿਸ਼ਲੇਸ਼ਣ ਦੇ ਉਦੇਸ਼ਾਂ ਲਈ ਇਸ ਮੁਹਿੰਮ ਨਾਲ ਜੋੜਿਆ ਜਾਵੇਗਾ।"
+}

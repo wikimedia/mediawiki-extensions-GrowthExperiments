@@ -5,7 +5,8 @@
 			"LittleGun",
 			"Paracel63",
 			"Sabelöga",
-			"Trizek (WMF)"
+			"Trizek (WMF)",
+			"Lejonel"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Fadderpanel",
@@ -71,6 +72,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Din status ha ändrats till \"Borta\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Meddelande till dina nybörjare",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Välj nybörjare",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Du kan ändra någons fadder till dig själv. Det är vanligt att göra så vid skrivstugor och liknande, så att volontären på skrivstugan också är fadder på wikin.",
 	"growthexperiments-rcfilters-mentorship-title": "Fadderskap",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Dina}} stjärnmärkta nybörjare",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Dina tilldelade nybörjare som du har stjärnmarkerat i din fadderpanel",

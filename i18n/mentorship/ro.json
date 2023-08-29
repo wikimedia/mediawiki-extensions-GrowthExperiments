@@ -123,7 +123,7 @@
 	"growthexperiments-manage-mentors-auto-assigned": "Mentori atribuiți automat",
 	"growthexperiments-manage-mentors-manually-assigned": "Mentori atribuiți manual",
 	"growthexperiments-manage-mentors-username": "Nume de utilizator",
-	"growthexperiments-manage-mentors-last-active": "Activ ultima oară",
+	"growthexperiments-manage-mentors-last-active": "Activ(ă) ultima oară",
 	"growthexperiments-manage-mentors-intro-msg": "Mesaj pentru nou-veniți",
 	"growthexperiments-manage-mentors-remove-mentor": "Eliminare",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Sunteți}} pe cale să îl/o eliminați pe [[User:$1|$1]] din funcția de {{GENDER:$1|mentor}}.",

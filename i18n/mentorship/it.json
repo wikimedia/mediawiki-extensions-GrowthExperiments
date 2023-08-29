@@ -106,6 +106,7 @@
 	"growthexperiments-mentor-writer-error-already-added": "Il tutor $1 è già stato aggiunto alla lista dei tutor",
 	"growthexperiments-mentor-writer-error-message-too-long": "Il messaggio introduttivo è troppo lungo. La lunghezza massima è $1.",
 	"growthexperiments-manage-mentors-title": "Gestione tutor",
+	"growthexperiments-manage-mentors-error-no-such-user": "Errore: non esiste alcun utente con ID pari a $1. Probabilmente si tratta di un errore interno.",
 	"growthexperiments-manage-mentors-auto-assigned": "Tutor assegnati automaticamente",
 	"growthexperiments-manage-mentors-manually-assigned": "Tutor assegnati manualmente",
 	"growthexperiments-manage-mentors-username": "Nome utente",
