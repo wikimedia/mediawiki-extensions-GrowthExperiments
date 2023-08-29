@@ -8,7 +8,6 @@ use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 
@@ -146,20 +145,6 @@ class ListTaskCounts extends Maintenance {
 		$dataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
 		foreach ( $taskTypeCounts as $taskTypeId => $taskTypeCount ) {
 			$dataFactory->updateCount( "growthexperiments.tasktypecount.$taskTypeId", $taskTypeCount );
-		}
-
-		// Limit per-topic data to link-recommendations to avoid excessive use of statsd metrics,
-		// see T345204#9128846 for details. Maybe there will be a nicer way to handle this in
-		// the future with Prometheus.
-		$taskTypeId = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
-		$linkRecommendationData = $taskCounts[$taskTypeId] ?? null;
-		if ( $linkRecommendationData === null ) {
-			$this->output( "No link recommendation task type, skipping per-topic statsd\n" );
-			return;
-		}
-
-		foreach ( $linkRecommendationData as $topic => $count ) {
-			$dataFactory->updateCount( "growthexperiments.taskcount.$taskTypeId.$topic", $count );
 		}
 	}
 
