@@ -45,7 +45,7 @@
 		"grunt-stylelint": "0.18.0",
 		"jest": "27.4.7",
 		"jest-fail-on-console": "^3.0.2",
-		"jquery": "3.6.1",
+		"jquery": "3.7.1",
 		"moment": "^2.29.4",
 		"postcss-html": "1.4.1",
 		"rollup": "3.2.5",
