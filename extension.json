@@ -2806,10 +2806,6 @@
 					]
 				}
 			}
-		},
-		"WelcomeSurveyEnableWithHomepage": {
-			"description": "Display default welcome survey (defined in WelcomeSurvey::DEFAULT_SURVEY_GROUP) to all users with homepage enabled (usually enabled via GEHomepageNewAccountEnablePercentage). Users with no homepage won't be shown any survey.",
-			"value": false
 		}
 	},
 	"SpecialPages": {
