@@ -56,6 +56,8 @@
 	"welcomesurvey-question-languages-maximum": "Error messages shown below the languages field, shown in a welcome survey to new accounts. Displayed when the user has added the maximum number of languages and cannot add any more.",
 	"welcomesurvey-question-user-research-nonediting-label": "Checkbox label for the user research opt-in checkbox, shown in a welcome survey to new accounts.",
 	"welcomesurvey-question-user-research-nonediting-help": "Checkbox help text for user research opt-in checkbox, shown in a welcome survey to new accounts.",
+	"welcomesurvey-question-user-research-label": "Checkbox label for the user research opt-in checkbox, shown in a welcome survey to new accounts.",
+	"welcomesurvey-question-user-research-help": "Checkbox help text for user research opt-in checkbox, shown in a welcome survey to new accounts.",
 	"welcomesurvey-reminder": "Reminder shown to users on Special:Homepage if they have not filled out the welcome survey yet.\n\nParameters:\n* $1 - Link to the survey (({{msg-mw|welcomesurvey-reminder-link}}).",
 	"welcomesurvey-reminder-link": "Link to the welcome survey. Used in {{msg-mw|welcomesurvey-reminder}}.",
 	"welcomesurvey-reminder-dismiss": "Invisible button label (for accessibility purposes) for dismissing the welcome survey reminder on Special:Homepage.",
