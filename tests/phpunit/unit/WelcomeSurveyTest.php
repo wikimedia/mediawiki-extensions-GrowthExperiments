@@ -70,7 +70,8 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 					"email",
 					"mentor-info",
 					"mentor"
-				] ] ]
+				] ] ],
+			'WelcomeSurveyPrivacyStatementUrl' => 'http://privacy.link',
 		] );
 		$contextMock = $this->createMock( RequestContext::class );
 		$contextMock->method( 'getConfig' )
