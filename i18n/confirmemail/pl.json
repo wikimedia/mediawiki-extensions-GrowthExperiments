@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
+			"Msz2001",
 			"Nux",
 			"Tar Lócesilion",
 			"Woytecr"
@@ -15,5 +16,13 @@
 	"growthexperiments-confirmemail-confirm-body-html": "Cześć, $2!\n\nDziękujemy za dodanie e-maila do Twojego konta w {{SITENAME}}, zarejestrowanego z adresu IP $1.\n\nKliknij na poniższy link, aby potwierdzić, że chcesz połączyć ten adres e-mail do Twojego konta „$2”:\n\n$3\n\nKod potwierdzający <strong>wygaśnie $4</strong>.\n\nDziękujemy!\n\n{{SITENAME}}\n\n----\n\nAby anulować połączenie adresu e-mail (ponieważ nie jest związany z kontem $2 lub z jakiegokolwiek innego powodu) kliknij:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Potwierdź adres e-mail",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "Cześć, $2!\n\nDziękujemy za dodanie e-maila do Twojego konta, zarejestrowanego z adresu IP $1.\n\nKliknij na poniższy link, aby potwierdzić, że chcesz połączyć ten adres e-mail do Twojego konta „$2”:\n\n$3\n\nKod potwierdzający wygaśnie $4.\n\nDziękujemy!\n\n{{SITENAME}}\n\n----\n\nAby anulować połączenie adresu e-mail (ponieważ nie jest związany z kontem $2 lub z jakiegokolwiek innego powodu) kliknij:\n\n$5",
-	"growthexperiments-signupcampaign-bullet3": "Zacznij od małych, prostych edycji"
+	"growthexperiments-signupcampaign-title": "Dziękujemy za darowiznę! Już dziś dołącz do społeczności edytorów, dzięki której Wikipedia staje się coraz lepsza",
+	"growthexperiments-signupcampaign-body": "Edytowanie Wikipedii może być tak proste, jak dodanie linku lub zmiana słowa. Otrzymuj sugestie artykułów na interesujące Cię tematy po utworzeniu konta!",
+	"growthexperiments-marketingvideocampaign-title": "Wikipedię tworzą ludzie tacy jak Ty",
+	"growthexperiments-marketingvideocampaign-body": "Co miesiąc 280 000 wolontariuszy edytuje — czy dołączysz do nich?\n\nWiemy, że dokonanie pierwszej edycji może być onieśmielające, ale w rzeczywistości jest to całkiem łatwe. Zapytaj naszych oddanych redaktorów, którzy opowiedzą Ci o tym w tym filmie:",
+	"growthexperiments-marketingvideocampaign-body-mobile": "Tysiące ludzi takich jak Ty tworzy Wikipedię. Czy dołączysz do nich?\n\nWiadomość od naszych redaktorów do Ciebie:",
+	"growthexperiments-signupcampaign-bullet1": "Sugerowane artykuły w kręgu Twoich zainteresowań",
+	"growthexperiments-signupcampaign-bullet2": "Poproś doświadczonego redaktora o pomoc",
+	"growthexperiments-signupcampaign-bullet3": "Zacznij od małych, prostych edycji",
+	"growthexperiments-campaigns-footer": "Kiedy utworzysz swoje konto na tej stronie, zostanie ono powiązane w celach badawczych z tą kampanią."
 }
