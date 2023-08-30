@@ -23,7 +23,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 			$this->getServiceContainer()->getActorMigration(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
 			$this->getServiceContainer()->getTempUserConfig(),
-			$this->db
+			$this->getServiceContainer()->getDBLoadBalancerFactory()
 		);
 	}
 

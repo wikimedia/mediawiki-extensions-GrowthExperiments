@@ -8,7 +8,7 @@ use MediaWiki\User\UserIdentity;
 use stdClass;
 use WANObjectCache;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * Data provider for MenteeOverview module
@@ -23,8 +23,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 	/** @var MentorStore */
 	private $mentorStore;
 
-	/** @var IReadableDatabase */
-	private $growthDbr;
+	private ILoadBalancer $growthLB;
 
 	/** @var WANObjectCache */
 	protected $wanCache;
@@ -32,16 +31,16 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 	/**
 	 * @param WANObjectCache $wanCache
 	 * @param MentorStore $mentorStore
-	 * @param IReadableDatabase $growthDbr
+	 * @param ILoadBalancer $growthLB
 	 */
 	public function __construct(
 		WANObjectCache $wanCache,
 		MentorStore $mentorStore,
-		IReadableDatabase $growthDbr
+		ILoadBalancer $growthLB
 	) {
 		$this->wanCache = $wanCache;
 		$this->mentorStore = $mentorStore;
-		$this->growthDbr = $growthDbr;
+		$this->growthLB = $growthLB;
 	}
 
 	/**
@@ -100,7 +99,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 					return $mentee->getId();
 				}, $mentees );
 
-				$res = $this->growthDbr->select(
+				$res = $this->growthLB->getConnection( DB_REPLICA )->select(
 					'growthexperiments_mentee_data',
 					[ 'mentee_id', 'mentee_data' ],
 					[
@@ -127,7 +126,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 	 * @return array|null Formatted data if exists; null otherwise
 	 */
 	public function getFormattedDataForMentee( UserIdentity $mentee ): ?array {
-		$res = $this->growthDbr->newSelectQueryBuilder()
+		$res = $this->growthLB->getConnection( DB_REPLICA )->newSelectQueryBuilder()
 			->select( [ 'mentee_id', 'mentee_data' ] )
 			->from( 'growthexperiments_mentee_data' )
 			->conds( [

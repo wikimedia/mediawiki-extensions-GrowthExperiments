@@ -17,6 +17,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -45,8 +46,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private $userIdentityLookup;
 	private TempUserConfig $tempUserConfig;
 
-	/** @var IReadableDatabase */
-	private $mainDbr;
+	private IConnectionProvider $mainConnProvider;
 
 	/** @var array Cache used by getLastEditTimestampForUsers */
 	private $lastTimestampCache = [];
@@ -65,7 +65,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param ActorMigration $actorMigration
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param TempUserConfig $tempUserConfig
-	 * @param IReadableDatabase $mainDbr
+	 * @param IConnectionProvider $mainConnProvider
 	 */
 	public function __construct(
 		MentorStore $mentorStore,
@@ -73,7 +73,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		ActorMigration $actorMigration,
 		UserIdentityLookup $userIdentityLookup,
 		TempUserConfig $tempUserConfig,
-		IReadableDatabase $mainDbr
+		IConnectionProvider $mainConnProvider
 	) {
 		$this->setLogger( new NullLogger() );
 
@@ -82,7 +82,11 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$this->actorMigration = $actorMigration;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->tempUserConfig = $tempUserConfig;
-		$this->mainDbr = $mainDbr;
+		$this->mainConnProvider = $mainConnProvider;
+	}
+
+	private function getReadConnection(): IReadableDatabase {
+		return $this->mainConnProvider->getReplicaDatabase( false, 'vslow' );
 	}
 
 	/**
@@ -194,7 +198,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			return [];
 		}
 
-		$res = $this->mainDbr->select(
+		$dbr = $this->getReadConnection();
+		$res = $dbr->select(
 			'user',
 			[
 				'user_id',
@@ -207,11 +212,11 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				// exclude temporary accounts, if enabled (T341389)
 				$this->tempUserConfig->isEnabled() ? (
 					'user_name NOT ' . $this->tempUserConfig->getMatchPattern()
-						->buildLike( $this->mainDbr )
+						->buildLike( $dbr )
 				) : '' .
 
 				// ensure mentees have homepage enabled
-				'user_id IN (' . $this->mainDbr->selectSQLText(
+				'user_id IN (' . $dbr->selectSQLText(
 					'user_properties',
 					'up_user',
 					[
@@ -221,7 +226,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				) . ')',
 
 				// ensure mentees do not have mentorship disabled
-				'user_id NOT IN (' . $this->mainDbr->selectSQLText(
+				'user_id NOT IN (' . $dbr->selectSQLText(
 					'user_properties',
 					'up_user',
 					[
@@ -232,28 +237,28 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				) . ')',
 
 				// user is not a bot,
-				'user_id NOT IN (' . $this->mainDbr->selectSQLText(
+				'user_id NOT IN (' . $dbr->selectSQLText(
 					'user_groups',
 					'ug_user',
 					[ 'ug_group' => 'bot' ]
 				) . ')',
 
 				// user is not indefinitely blocked
-				'user_id NOT IN (' . $this->mainDbr->selectSQLText(
+				'user_id NOT IN (' . $dbr->selectSQLText(
 					'ipblocks',
 					'ipb_user',
 					[
-						'ipb_expiry' => $this->mainDbr->getInfinity(),
+						'ipb_expiry' => $dbr->getInfinity(),
 						// not an IP block
 						'ipb_user != 0',
 					]
 				) . ')',
 
 				// only users who either made an edit or registered less than 2 weeks ago
-				$this->mainDbr->makeList( [
+				$dbr->makeList( [
 					'user_editcount > 0',
-					'user_registration > ' . $this->mainDbr->addQuotes(
-						$this->mainDbr->timestamp(
+					'user_registration > ' . $dbr->addQuotes(
+						$dbr->timestamp(
 							(int)wfTimestamp( TS_UNIX ) - 2 * 7 * self::SECONDS_DAY
 						)
 					)
@@ -288,7 +293,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$startTime = microtime( true );
 
 		$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
-		$rows = $this->mainDbr->select(
+		$rows = $this->getReadConnection()->select(
 			[ 'revision' ] + $queryInfo['tables'],
 			[
 				'rev_user' => $queryInfo['fields']['rev_user'],
@@ -403,7 +408,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private function getUsernames( array $userIds ): array {
 		$startTime = microtime( true );
 
-		$rows = $this->mainDbr->select(
+		$rows = $this->getReadConnection()->select(
 			'user',
 			[ 'user_id', 'user_name' ],
 			[
@@ -470,8 +475,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			return array_fill_keys( $userIds, 0 );
 		}
 
+		$dbr = $this->getReadConnection();
 		$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
-		$taggedEditsSubquery = $this->mainDbr->buildSelectSubquery(
+		$taggedEditsSubquery = $dbr->buildSelectSubquery(
 			[ 'change_tag', 'revision' ] + $queryInfo['tables'],
 			[
 				'rev_user' => $queryInfo['fields']['rev_user'],
@@ -487,7 +493,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				'revision' => [ 'JOIN', 'rev_id=ct_rev_id' ],
 			] + $queryInfo['joins']
 		);
-		$rows = $this->mainDbr->select(
+		$rows = $dbr->select(
 			[ 'user', 'tagged_edits' => $taggedEditsSubquery ],
 			[ 'user_id', 'tagged' => 'COUNT(ct_rev_id)' ],
 			[ 'user_id' => $userIds ],
@@ -513,7 +519,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 */
 	private function getRegistrationTimestampForUsers( array $userIds ): array {
 		$startTime = microtime( true );
-		$rows = $this->mainDbr->select(
+		$rows = $this->getReadConnection()->select(
 			'user',
 			[ 'user_id', 'user_registration' ],
 			[ 'user_id' => $userIds ],
@@ -553,7 +559,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			}
 		);
 
-		$rows = $this->mainDbr->select(
+		$rows = $this->getReadConnection()->select(
 			[ 'logging' ],
 			[ 'log_title', 'blocks' => 'COUNT(log_id)' ],
 			[
@@ -591,7 +597,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private function getEditCountsForUsers( array $userIds ): array {
 		$startTime = microtime( true );
 
-		$rows = $this->mainDbr->select(
+		$rows = $this->getReadConnection()->select(
 			'user',
 			[ 'user_id', 'user_editcount' ],
 			[

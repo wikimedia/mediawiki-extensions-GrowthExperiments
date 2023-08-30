@@ -13,8 +13,7 @@ use MediaWiki\User\UserIdentityLookup;
 use PHPUnit\Framework\Constraint\Constraint;
 use User;
 use WANObjectCache;
-use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * @group API
@@ -152,8 +151,7 @@ class ApiSetMentorTest extends ApiTestCase {
 				$this->createMock( UserFactory::class ),
 				$this->createMock( UserIdentityLookup::class ),
 				$this->createMock( JobQueueGroup::class ),
-				$this->createNoOpMock( IReadableDatabase::class ),
-				$this->createNoOpMock( IDatabase::class ),
+				$this->createNoOpMock( ILoadBalancer::class ),
 				true,
 				true
 			] )

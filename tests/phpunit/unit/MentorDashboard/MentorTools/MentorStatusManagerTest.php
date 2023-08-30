@@ -11,8 +11,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
 use User;
-use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -78,8 +77,7 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 			$userOptionsManager,
 			$this->createMock( UserIdentityLookup::class ),
 			$this->getMockUserFactory( $isMentorBlocked ),
-			$this->createMock( IReadableDatabase::class ),
-			$this->createMock( IDatabase::class )
+			$this->createMock( IConnectionProvider::class )
 		);
 	}
 
@@ -196,8 +194,7 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 			$userOptionsManager,
 			$this->createMock( UserIdentityLookup::class ),
 			$this->getMockUserFactory( $isMentorBlocked ),
-			$this->createMock( IReadableDatabase::class ),
-			$this->createMock( IDatabase::class )
+			$this->createMock( IConnectionProvider::class )
 		);
 
 		$status = $manager->markMentorAsActive( $mentor );
