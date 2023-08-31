@@ -14,8 +14,6 @@
 	"welcomesurvey-save-btn": "Finalitzar",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Omet}} aquesta enquesta",
 	"welcomesurvey-close-btn": "Tanca i torna a $1",
-	"welcomesurvey-sidebar-privacy-title": "Valorem la vostra privacitat",
-	"welcomesurvey-sidebar-privacy-text": "La Fundació Wikimedia emprarà les {{GENDER:$2|vostres}} respostes per ajudar-vos a començar a editar {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Llegiu més sobre les dades dels nous editors",
 	"welcomesurvey-sidebar-editing-title": "Iniciar-se en l'edició de pàgines",
 	"welcomesurvey-sidebar-editing-text": "Tothom pot editar gairebé qualsevol pàgina. Cada hora es publiquen centenars de modificacions d'addició de contingut, correcció d'errors i de millora de la verificabilitat o intel·ligibilitat. Les pàgines següents {{GENDER:$1|us}} poden ajudar si {{GENDER:$1|teniu}} interès en contribuir-hi.",

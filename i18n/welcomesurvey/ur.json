@@ -11,8 +11,6 @@
 	"welcomesurvey-save-btn": "ختم کریں",
 	"welcomesurvey-skip-btn": "اس سوال نامہ کو چھوڑ کر {{GENDER:$1|آگے بڑھیں}}",
 	"welcomesurvey-close-btn": "بند کریں اور $1 کی جانب واپس جائیں",
-	"welcomesurvey-sidebar-privacy-title": "ہم آپ کے متعلق مکمل رازداری برتتے ہیں",
-	"welcomesurvey-sidebar-privacy-text": "ویکی میڈیا فاؤنڈیشن {{GENDER:$2|آپ کے}} جوابوں کو {{SITENAME}} پر ترمیم کاری کی ابتدا کرنے میں آپ کے تعاون کے لیے استعمال کرے گا۔ $1۔",
 	"welcomesurvey-privacy-policy-link-text": "نئے صارفین کے ڈیٹا کی مزید تفصیلات دیکھیں",
 	"welcomesurvey-sidebar-editing-title": "ترمیم کاری کا آغاز",
 	"welcomesurvey-sidebar-editing-text": "تقریباً ہر صفحہ میں ہر شخص ترمیم کر سکتا ہے اور اس طرح ہر گھنٹے سینکڑوں تبدیلیاں ہوتی ہیں اور مندرجات میں اضافہ، اغلاط کی اصلاح اور فقروں کی درستی وغیرہ کا کام انجام پاتا ہے۔ اگر {{GENDER:$1|آپ}} ویکیپیڈیا میں ترمیم کرنا چاہتے ہیں تو درج ذیل صفحات سے آپ مدد لے سکتے ہیں۔",

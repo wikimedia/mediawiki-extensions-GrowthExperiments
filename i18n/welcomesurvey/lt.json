@@ -13,8 +13,6 @@
 	"welcomesurvey-save-btn": "Baigti",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Praleisti}} šią apklausą",
 	"welcomesurvey-close-btn": "Uždaryti ir grįžti į $1",
-	"welcomesurvey-sidebar-privacy-title": "Vertiname {{GENDER:|jūsų}} privatumą",
-	"welcomesurvey-sidebar-privacy-text": "Vikimedijos fondas naudos {{GENDER:$2|jūsų}} atsakymus, kad padėtų jums pradėti redaguoti {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Sužinokite daugiau apie naujų redaktorių duomenis",
 	"welcomesurvey-sidebar-editing-title": "Redagavimo pradžia",
 	"welcomesurvey-sidebar-editing-text": "Beveik kiekvieną puslapį gali redaguoti bet kas, o kas valandą atliekama šimtai pakeitimų, siekiant papildyti turinį, ištaisyti klaidas ir pagerinti skaitomumą. Šie puslapiai gali padėti, jei {{GENDER:$1|jus domina}} prisidėjimas.",

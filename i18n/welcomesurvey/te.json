@@ -12,8 +12,6 @@
 	"welcomesurvey-save-btn": "ముగించు",
 	"welcomesurvey-skip-btn": "సర్వేను {{GENDER:$1|వదిలెయ్యండి}}",
 	"welcomesurvey-close-btn": "మూసేసి $1 కు తిరిగి వెళ్ళండి",
-	"welcomesurvey-sidebar-privacy-title": "మీ గోప్యతను మేం గౌరవిస్తాం",
-	"welcomesurvey-sidebar-privacy-text": "వికీమీడియా ఫౌండేషను {{GENDER:$2|మీ}} సమాధానాలను వాడుకుని మీరు {{SITENAME}} లో దిద్దుబాట్లు మొదలుపెట్టేందుకు సాయపడుతుంది. $1.",
 	"welcomesurvey-privacy-policy-link-text": "కొత్త వాడుకరుల డేటా గురించి మరింత తెలుసుకోండి",
 	"welcomesurvey-sidebar-editing-title": "దిద్దుబాట్లు మొదలుపెట్టడం",
 	"welcomesurvey-sidebar-editing-text": "దాదాపుగా ఏ పేజీనైనా ఎవ్వరైనా దిద్దుబాటు చెయ్యవచ్చు. గంట గంటకీ వందలాది పేజీల్లో సమాచారం చేర్చడం, తప్పులు సరిచెయ్యడం, పఠనీయతను పెంచడం వంటి పనులు జరుగుతూంటాయి. ఇక్కడ పనులు చేసేందుకు మీకు {{GENDER:$1|ఆసక్తి ఉంటే}} కింది పేజీలు మీకు సాయంగా పనికొస్తాయి.",

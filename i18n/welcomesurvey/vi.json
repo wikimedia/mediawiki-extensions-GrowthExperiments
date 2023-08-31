@@ -20,8 +20,6 @@
 	"welcomesurvey-save-btn": "Kết thúc",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Bỏ qua}} khảo sát này",
 	"welcomesurvey-close-btn": "Đóng và quay lại $1",
-	"welcomesurvey-sidebar-privacy-title": "Chúng tôi tôn trọng sự riêng tư của bạn",
-	"welcomesurvey-sidebar-privacy-text": "Tổ chức Wikimedia sẽ sử dụng các câu trả lời {{GENDER:$2|của bạn}} để giúp bạn bắt đầu sửa đổi {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Tìm hiểu thêm về dữ liệu về biên tập viên mới",
 	"welcomesurvey-sidebar-editing-title": "Bắt đầu sửa đổi",
 	"welcomesurvey-sidebar-editing-text": "Hầu như mọi trang đều có thể được sửa đổi bởi bất kỳ ai và đã có hàng trăm sửa đổi được thực hiện mỗi giờ nhằm thêm nội dung, sửa lỗi và cải thiện chất lượng bài viết. Các trang sau có thể giúp bạn nếu {{GENDER:$1}}bạn muốn đóng góp.",

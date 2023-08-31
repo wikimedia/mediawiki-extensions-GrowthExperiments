@@ -11,8 +11,6 @@
 	"welcomesurvey-save-btn": "Bitir",
 	"welcomesurvey-skip-btn": "Sorğunu cavablandırmadan {{GENDER:$1|keç}}",
 	"welcomesurvey-close-btn": "Bağla və $1 səhifəsinə geri qayıt",
-	"welcomesurvey-sidebar-privacy-title": "Gizliliyinizə dəyər veririk",
-	"welcomesurvey-sidebar-privacy-text": "Vikimedia Fondu {{GENDER:$2|cavablarınızı}} {{SITENAME}} layihəsində redaktəyə başlamağınıza kömək etmək üçün istifadə edəcək. $1",
 	"welcomesurvey-privacy-policy-link-text": "Yeni istifadəçilər haqqında məlumatlar haqqında daha çox məlumat əldə edin",
 	"welcomesurvey-sidebar-editing-title": "Redaktəyə başlamaq",
 	"welcomesurvey-sidebar-editing-text": "Demək olar ki, hər kəs hər bir səhifəni redaktə edə bilər. Səhvləri düzəltmək və oxunuşu yaxşılaşdırmaq üçün hər saat yüzlərlə dəyişiklik edilir. Aşağıdakı səhifələr redaktə etməkdə {{GENDER:$1|marağınız}} olarsa kömək edə bilər.",

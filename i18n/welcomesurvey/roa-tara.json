@@ -11,8 +11,6 @@
 	"welcomesurvey-save-btn": "Spicce",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Zumbe}} stu sondagge",
 	"welcomesurvey-close-btn": "Achiude e tuèrne a $1",
-	"welcomesurvey-sidebar-privacy-title": "Nuje valorizzame 'a privacy toje",
-	"welcomesurvey-sidebar-privacy-text": "'A Wikimedia Foundation ause le resposte {{GENDER:$2|tune}}pe dà 'na màne a accumenzà a cangià {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "'Mbare de cchiù sus a le date de le condrebbuture nuève",
 	"welcomesurvey-sidebar-editing-title": "Accuminze cu le cangiaminde",
 	"welcomesurvey-sidebar-editing-text": "Quase ogne pàgene pò essere cangiate da cengate e ogne ore avènene fatte 'nu sbuènne de cangiaminde pe aggiungere condenute, correggere errore e migliorà 'a leggibbilità. Ste pàggene ponne essere utile ce {{GENDER:$1|sì inderessate}} a condrebbuì.",

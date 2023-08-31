@@ -16,8 +16,6 @@
 	"welcomesurvey-save-btn": "完了",
 	"welcomesurvey-skip-btn": "このアンケートを{{GENDER:$1|中止}}",
 	"welcomesurvey-close-btn": "閉じて$1に戻る",
-	"welcomesurvey-sidebar-privacy-title": "{{GENDER:|皆さん}}のプライバシーを尊重します",
-	"welcomesurvey-sidebar-privacy-text": "ウィキメディア財団は{{SITENAME}}の編集を始める人が参照できるように、{{GENDER:$2|皆さんの}}回答を活用します。$1。",
 	"welcomesurvey-privacy-policy-link-text": "個人情報について",
 	"welcomesurvey-sidebar-editing-title": "編集入門",
 	"welcomesurvey-sidebar-editing-text": "ほとんどすべてのページは、だれでも編集でき、コンテンツの追加からミスの修正、読みやすさの改善などの編集が、毎時間、何百件も行われています。もし{{GENDER:$1|皆さんも編集に興味がある}}場合は、以下のそれぞれのページがお役に立つはずです。",

@@ -16,8 +16,6 @@
 	"welcomesurvey-save-btn": "{{GENDER:|أنهِ|أنهي}}",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|تخطَّ|تخطي}} هذا الاستطلاع",
 	"welcomesurvey-close-btn": "{{GENDER:|أغلق|أغلقي}} و{{GENDER:|عُد|عودي}} إلى $1",
-	"welcomesurvey-sidebar-privacy-title": "نحن نقدر خصوصيتك",
-	"welcomesurvey-sidebar-privacy-text": "ستستخدم مؤسّسة ويكيميديا {{GENDER:$2|إجابتكَ|إجاباتكِ}} لمساعدتك عند الشروع في تعديل {{SITENAME}}. $1",
 	"welcomesurvey-privacy-policy-link-text": "{{GENDER:|تعلّم|تعلّمي}} المزيد حول البيانات والمحررين الجدد",
 	"welcomesurvey-sidebar-editing-title": "الشروع في التحرير",
 	"welcomesurvey-sidebar-editing-text": "يمكن لأي شخص تعديل كل صفحة تقريبا، كل ساعة، تحدث مئات التعديلات، لإضافة محتوى وتصحيح الأخطاء وتحسين إمكانية القراءة، الصفحات التالية يمكنها مساعدتك إذا كنت {{GENDER:$1|مهتمًا|مهتمة}} بالمساهمة.",

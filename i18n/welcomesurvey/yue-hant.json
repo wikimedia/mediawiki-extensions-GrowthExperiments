@@ -8,8 +8,6 @@
 	"welcomesurvey-save-confirmation-title": "唔該晒！你嘅答覆經已儲存咗。",
 	"welcomesurvey-subtitle": "答咗以下幾條選填嘅問題，會幫到我哋改善{{GENDER:|閣下}}嘅維基百科使用體驗。",
 	"welcomesurvey-save-btn": "完成",
-	"welcomesurvey-sidebar-privacy-title": "我哋重視你嘅私隱",
-	"welcomesurvey-sidebar-privacy-text": "維基媒體基金會會用{{GENDER:$2|閣下}}嘅回答去幫你開始改{{SITENAME}}。$1。",
 	"welcomesurvey-question-edited-label": "{{GENDER:|你}}有冇改過維基百科？",
 	"welcomesurvey-question-edited-option-yes-many-label": "有，好多次",
 	"welcomesurvey-question-edited-option-yes-few-label": "有，一兩次",

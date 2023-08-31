@@ -5,7 +5,6 @@
 			"Mdb897"
 		]
 	},
-	"welcomesurvey-sidebar-privacy-text": "ⵔⴰⴷ ⵜⵙⵙⵎⵔⵙ ⵜⵎⵔⵙⵍⵜ ⵏ ⵡⵉⴽⵉⵎⵉⴷⵢⴰ ⵜⵉⵎⵔⴰⵔⵓⵜⵉⵏ {{GENDER:$2|ⵏⵏⴽ|ⵏⵏⵎ}} ⵃⵎⴰ ⴰⴷ {{GENDER:$2|ⴰⴽ|ⴰⵎ}} ⵜⴰⵡⵙ ⴳ ⵓⵙⵙⵏⵜⵉ ⵏ ⵓⵙⵏⴼⵍ ⵏ  {{SITENAME}}. $1.",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|ⴰⵔⴰ}} ⴰⵙⴰⵔⴰⴳ ⵏⵉⴹⵏ...",
 	"welcomesurvey-question-mentor-label": "ⵢⴰⵀ, {{GENDER:$1|ⵔⵉⵖ}}"
 }

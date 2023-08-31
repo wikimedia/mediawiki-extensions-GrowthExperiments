@@ -21,8 +21,6 @@
 	"welcomesurvey-save-btn": "Zakończ",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Pomiń}} tę ankietę",
 	"welcomesurvey-close-btn": "Zamknij i wróć na stronę $1",
-	"welcomesurvey-sidebar-privacy-title": "Szanujemy {{GENDER:|Twoją}} prywatność",
-	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation użyje {{GENDER:$2|Twoich}} odpowiedzi, aby pomóc ci rozpocząć przygodę z {{GRAMMAR:N.lp|{{SITENAME}}}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Poznaj więcej danych o nowicjuszach",
 	"welcomesurvey-sidebar-editing-title": "Pierwsze kroki w edytowaniu",
 	"welcomesurvey-sidebar-editing-text": "Każdy może edytować prawie wszystkie strony. Każdej godziny wykonywane są setki zmian mające na celu dodanie nowej treści, poprawienie błędów czy usprawnienie czytelności. Poniższe strony mogą ci pomóc, jeżeli jesteś zainteresowan{{GENDER:$1|y|a|y}} pomocą.",

@@ -17,8 +17,6 @@
 	"welcomesurvey-save-btn": "Befejezés",
 	"welcomesurvey-skip-btn": "Kérdőív {{GENDER:$1|kihagyása}}",
 	"welcomesurvey-close-btn": "Bezárás és visszatérés ide: $1",
-	"welcomesurvey-sidebar-privacy-title": "Odafigyelünk adataid védelmére",
-	"welcomesurvey-sidebar-privacy-text": "A Wikimédia Alapítvány arra fogja használni a {{GENDER:$2|válaszaidat}}, hogy segítsen a(z) {{SITENAME}} szerkesztésének elkezdésében. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Tudj meg többet az új szerkesztőkről gyűjtött adatokról",
 	"welcomesurvey-sidebar-editing-title": "Szerkesztés elkezdése",
 	"welcomesurvey-sidebar-editing-text": "Bárki szerkeszthet szinte minden oldalt, és minden egyes órában több száz változtatás történik: új tartalom, hibák javítása, olvashatóság növelése… A következő lapok segíthetnek, ha {{GENDER:$1|érdekel}} a közreműködés.",

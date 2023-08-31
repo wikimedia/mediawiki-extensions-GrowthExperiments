@@ -11,8 +11,6 @@
 	"welcomesurvey-save-btn": "დასრულება",
 	"welcomesurvey-skip-btn": "ამ გამოკითხვის {{GENDER:$1|გამოტოვება}}",
 	"welcomesurvey-close-btn": "დახურვა და დაბრუნება გვერდზე „$1“",
-	"welcomesurvey-sidebar-privacy-title": "ჩვენ ვაფასებთ {{GENDER:|თქვენს}} კონფიდენციალურობას",
-	"welcomesurvey-sidebar-privacy-text": "ფონდი ვიკიმედია {{GENDER:$2|თქვენი}} პასუხების გამოყენებით დაგეხმარებათ {{GRAMMAR:ნათესაობითი|{{SITENAME}}}} რედაქტირების დაწყებაში. $1.",
 	"welcomesurvey-privacy-policy-link-text": "შეიტყვეთ მეტი ახალი რედაქტორების მონაცემთა შესახებ",
 	"welcomesurvey-sidebar-editing-title": "რედაქტირების დაწყება",
 	"welcomesurvey-sidebar-editing-text": "თითქმის ყველა გვერდის რედაქტირება შეუძლია ნებისმიერ ადამიანს და ყოველ საათში ასობით ცვლილება ხდება — ამატებენ შიგთავსს, შეცდომებს ასწორებენ და აუმჯობესებენ კითხვადობას. თუ {{GENDER:$1|დაინტერესებული ხართ}} შეიტანოთ წვლილი, შემდეგი გვერდები დაგეხმარებათ.",

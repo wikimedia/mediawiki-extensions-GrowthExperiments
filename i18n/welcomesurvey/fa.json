@@ -18,8 +18,6 @@
 	"welcomesurvey-save-btn": "پایان",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|رد کردن}} این پیمایش",
 	"welcomesurvey-close-btn": "برای برگشتن به $1 صفحه را ببندید",
-	"welcomesurvey-sidebar-privacy-title": "ما به حریم خصوصی {{GENDER:|شما}} احترام می‌گذاریم",
-	"welcomesurvey-sidebar-privacy-text": "بنیاد ویکی‌مدیا پاسخ‌های {{GENDER:$2|شما}} را استفاده خواهد کرد تا به شما در شروع به ویرایش در {{SITENAME}} کمک کند. $1.",
 	"welcomesurvey-privacy-policy-link-text": "در مورد داده‌ها از کاربران تازه‌وارد بیشتر بخوانید",
 	"welcomesurvey-sidebar-editing-title": "شروع ویرایش‌کردن",
 	"welcomesurvey-sidebar-editing-text": "تقریباً هر صفحه‌ای می‌تواند توسط هر کسی ویرایش شود، و صدها تغییر در هر ساعت برای اضافه کردن محتوا، اصلاح اشتباهات، و بهبود خوانایی صورت می‌گیرد. درصوتی که به مشارکت در این زمینه \n علاقه‌مندید صفحه‌های زیر می‌توانند به شما {{GENDER:$1|کمک کنند}}.",

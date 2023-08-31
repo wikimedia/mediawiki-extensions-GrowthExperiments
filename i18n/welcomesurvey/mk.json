@@ -12,8 +12,6 @@
 	"welcomesurvey-save-btn": "Готово",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескокни}} ја анкетава",
 	"welcomesurvey-close-btn": "Затвори и врати ме на $1",
-	"welcomesurvey-sidebar-privacy-title": "Ја цениме {{GENDER:|вашата}} приватност",
-	"welcomesurvey-sidebar-privacy-text": "Фондацијата Викимедија ќе се послужи со {{GENDER:$2|вашите}} одговори за да ви помогне да почнете со уредување на {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Дознајте повеќе за податоците за нови уредници",
 	"welcomesurvey-sidebar-editing-title": "Како да почнете со уредување",
 	"welcomesurvey-sidebar-editing-text": "Речиси секоја страница може да ја уредува било кој, и секој час се вршат стотици промени со кои се додава содржина, се исправаат грешки и се подобрува читливоста. Следниве страници ќе ви бидат од помош ако {{GENDER:$1|сте заинтересирани}} за учество.",

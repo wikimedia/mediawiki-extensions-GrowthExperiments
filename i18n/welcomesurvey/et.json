@@ -10,8 +10,6 @@
 	"welcomesurvey-subtitle": "Aita meil teha Vikipeedia kasutamine sinu jaoks sujuvamaks, vastates mõnele valikulisele küsimusele.",
 	"welcomesurvey-save-btn": "Valmis",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Jäta}} küsitlus vahele",
-	"welcomesurvey-sidebar-privacy-title": "Hoolime sinu privaatsusest",
-	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation kasutab {{GENDER:$2|sinu}} vastuseid selleks, et aidata sul alustada {{GRAMMAR:genitive|{{SITENAME}}}} muutmisega. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Loe veel uute toimetajate andmete kohta",
 	"welcomesurvey-sidebar-editing-title": "Muutmisega algust tegemine",
 	"welcomesurvey-sidebar-editing-text": "Igaüks saab muuta peaaegu iga lehekülge. Igas tunnis tehakse sadu muudatusi, et lisada sisu ning parandada vigu ja loetavust. Järgmised leheküljed on abiks, kui {{GENDER:$1|oled}} kaastöö tegemisest huvitatud.",

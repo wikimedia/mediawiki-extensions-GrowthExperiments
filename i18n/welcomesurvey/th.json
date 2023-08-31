@@ -14,8 +14,6 @@
 	"welcomesurvey-save-btn": "เสร็จสิ้น",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|ข้าม}}แบบสอบถาม",
 	"welcomesurvey-close-btn": "ปิดและกลับไปที่$1",
-	"welcomesurvey-sidebar-privacy-title": "เราเคารพความเป็นส่วนตัวของคุณ",
-	"welcomesurvey-sidebar-privacy-text": "มูลนิธิวิกิมีเดียจะใช้การตอบกลับ{{GENDER:$2|คุณ}}เพื่อปรับปรุงการแนะนำการแก้ไขของคุณใน{{SITENAME}} $1",
 	"welcomesurvey-privacy-policy-link-text": "เรียนรู้เพิ่มเติมเกี่ยวกับการใช้ข้อมูลผู้ใช้ใหม่",
 	"welcomesurvey-sidebar-editing-title": "มาเริ่มต้นกับการแก้ไข",
 	"welcomesurvey-sidebar-editing-text": "ทุกคนสามารถแก้ไขได้แทบจะในทุกหน้า ในทุก ๆ ชั่วโมงจะมีกว่าร้อยการแก้ไขเพื่อทำการเพิ่มเนื้อหา แก้ข้อผิดพลาด และปรับกรุงความสามารถในการอ่าน หน้าที่แสดงถัดจากนี้คือหน้าที่{{GENDER:$1|คุณอาจสนใจ}}ร่วมปรับปรุง",

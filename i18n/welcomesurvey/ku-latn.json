@@ -12,8 +12,6 @@
 	"welcomesurvey-save-btn": "Bi dawî bike",
 	"welcomesurvey-skip-btn": "Vê anketê {{GENDER:$1|derbas bibe}}",
 	"welcomesurvey-close-btn": "Bigire û vegere $1",
-	"welcomesurvey-sidebar-privacy-title": "Em qîmet didin mahremiyeta {{GENDER:|te}}",
-	"welcomesurvey-sidebar-privacy-text": "Weqfa Wîkîmedyayê dê bersivên {{GENDER:$2|te}} ji bo alîkarîkirina bi destpêkirina {{SITENAME}}yê bi kar bîne. $1",
 	"welcomesurvey-privacy-policy-link-text": "Li ser daneyên bikarhênerên nû zêdetir hîn bibe",
 	"welcomesurvey-sidebar-editing-title": "Bi guhartinê destpêkirin",
 	"welcomesurvey-sidebar-editing-text": "Hema hema hemû rûpel ji aliyê herkesî ve dikarin werin guhartin, û hezaran guhartin di her saetê de pêk tên ku naverok lê tê zêdekirin, xeletî tên sererastkirin, û xwendinbarî tê pêşvexistin. Heke bixwazî {{GENDER:$1|beşdar bibî}}, ev rûpel dikarin alîkariya te bikin.",
