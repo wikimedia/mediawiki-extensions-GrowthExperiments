@@ -10,7 +10,7 @@
 	},
 	"welcomesurvey": "Title which appears at the top of a welcome survey users are shown after account sign-up, and shown on all form steps. Should be friendly and welcoming but succinct. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.",
 	"welcomesurvey-save-confirmation-title": "Dialog title after submitting a welcome survey form.",
-	"welcomesurvey-save-confirmation-text": "Short text after the section heading “Thanks! Your responses have been saved” shown to users after they complete a welcome survey after signing up for a Wikipedia account. Parameters:\n* $1 - Link to the privacy policy.",
+	"welcomesurvey-save-confirmation-text": "Short text after the section heading “Thanks! Your responses have been saved” shown to users after they complete a welcome survey after signing up for a Wikipedia account.",
 	"welcomesurvey-subtitle": "Message conveying to the user the benefit of filling in a short welcome survey.  Should not imply that anything will change about the user’s experience based on their responses.",
 	"welcomesurvey-save-btn": "Text on a button to submit answers to a welcome survey that is shown to users after they sign up for a new Wikipedia account.",
 	"welcomesurvey-skip-btn": "Button to exit the form and return to where they were prior to account creation. The user is not able to return and complete the form later, so the call to action should clearly indicate this is a permanent skip. It should also be clear that this is for skipping the whole survey, not just one question.\n\nParameters:\n* $1 - Name of the current user (for use with GENDER).",
