@@ -14,8 +14,6 @@
 	"welcomesurvey-save-btn": "Afslut",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Spring denne brugerundersøgelse over}}",
 	"welcomesurvey-close-btn": "Luk og gå tilbage til $1",
-	"welcomesurvey-sidebar-privacy-title": "Vi værdsætter dit privatliv",
-	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation vil bruge {{GENDER:$2|dine}} svar til at hjælpe dig med at komme i gang med at redigere {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Lær mere om data om nybegyndere",
 	"welcomesurvey-sidebar-editing-title": "At komme i gang med at redigere",
 	"welcomesurvey-sidebar-editing-text": "Næsten alle sider kan redigeres af enhver, og hver time foretages mange ændringer der tilføjer indhold, retter fejl og forbedrer læsbarhed. Disse sider kan være til hjælp hvis {{GENDER:$1|du er interesseret}} i at bidrage.",

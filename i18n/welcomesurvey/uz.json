@@ -11,8 +11,6 @@
 	"welcomesurvey-save-btn": "Bitirish",
 	"welcomesurvey-skip-btn": "Bu soʻrovni {{GENDER:$1|oʻtkazib yuborish}}",
 	"welcomesurvey-close-btn": "Yopish va $1 sahifasiga qaytish",
-	"welcomesurvey-sidebar-privacy-title": "Biz sizning maxfiyligingizni qadrlaymiz",
-	"welcomesurvey-sidebar-privacy-text": "Vikimedia Jamgʻarmasi {{GENDER:$2|javoblaringizdan}} {{SITENAME}}da tahrirlashni boshlashingizda yordam berish maqsadida foydalanadi. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Yangi tahrirchilar toʻgʻrisida maʼlumot bilan batafsil tanishish",
 	"welcomesurvey-sidebar-editing-title": "Tahrirlashni boshlash",
 	"welcomesurvey-sidebar-editing-link1-text": "Qoʻllanma",

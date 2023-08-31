@@ -22,8 +22,6 @@
 	"welcomesurvey-save-btn": "Завершить",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Пропустить}} этот опрос",
 	"welcomesurvey-close-btn": "Закрыть и вернуться к $1",
-	"welcomesurvey-sidebar-privacy-title": "Мы ценим {{GENDER:|вашу}} конфиденциальность",
-	"welcomesurvey-sidebar-privacy-text": "Фонд Викимедиа будет использовать {{GENDER:$2|ваши}} ответы чтобы помочь вам начать править в {{GRAMMAR:genitive|{{SITENAME}}}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Узнать больше о данных по новым редакторам",
 	"welcomesurvey-sidebar-editing-title": "Начните редактирование",
 	"welcomesurvey-sidebar-editing-text": "Почти каждую страницу может редактировать каждый, и каждый час совершаются сотни изменений по добавлению содержимого, исправлению ошибок и улучшению читаемости. Следующие страницы могут помочь, если {{GENDER:$1|вы заинтересованы}} в участии.",

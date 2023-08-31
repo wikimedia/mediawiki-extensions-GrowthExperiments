@@ -11,8 +11,6 @@
 	"welcomesurvey-save-btn": "Amaitu",
 	"welcomesurvey-skip-btn": "Inkesta {{GENDER:$1|saltatu}}",
 	"welcomesurvey-close-btn": "Itxi eta $1(e)ra itzuli",
-	"welcomesurvey-sidebar-privacy-title": "Zure pribatutasuna aintzat daukatu",
-	"welcomesurvey-sidebar-privacy-text": "Erantzun hauek nola erabiliko diren jakiteko, {{GENDER:$2|ikus}} $1 inkesta.",
 	"welcomesurvey-privacy-policy-link-text": "pribatutasun adierazpena",
 	"welcomesurvey-sidebar-editing-title": "Aldaketen hasten",
 	"welcomesurvey-sidebar-editing-text": "Ia orrialde guztiak edonork edita ditzake, orduro ehunka aldaketa egiten dira edukia gehitu, akatsak zuzendu eta irakurgarritasuna hobetzeko. Hurrengo orrialdeek lagun zaitzakete editatzen lagundu nahi {{GENDER:$1|bazenu}}:",

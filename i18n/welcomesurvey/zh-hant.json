@@ -20,8 +20,6 @@
 	"welcomesurvey-save-btn": "完成",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|跳過}}此調查",
 	"welcomesurvey-close-btn": "關閉並返回至$1",
-	"welcomesurvey-sidebar-privacy-title": "我們重視{{GENDER:|您的}}隱私",
-	"welcomesurvey-sidebar-privacy-text": "維基媒體基金會將會使用{{GENDER:$2|您}}的解答來協助您編輯{{SITENAME}}。$1。",
 	"welcomesurvey-privacy-policy-link-text": "了解更多關於新編者的資料",
 	"welcomesurvey-sidebar-editing-title": "編輯入門",
 	"welcomesurvey-sidebar-editing-text": "幾乎所有頁面都可讓任何人做出編輯，每小時會產生上百次的變更來添加內容、糾正錯誤，以及增進可讀性。若{{GENDER:$1|您有興趣}}做出貢獻，以下頁面可以協助您。",

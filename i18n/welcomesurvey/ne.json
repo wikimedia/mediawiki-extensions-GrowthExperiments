@@ -12,8 +12,6 @@
 	"welcomesurvey-save-btn": "समाप्त गर्नुहोस्",
 	"welcomesurvey-skip-btn": "यस सर्वेक्षणलाई {{GENDER:$1|छोड्नुहोस्}}",
 	"welcomesurvey-close-btn": "बन्द गर्नुहोस् र $1मा फर्कनुहोस्",
-	"welcomesurvey-sidebar-privacy-title": "हामी {{GENDER:|तपाईं}}को गोपनीयताको कदर गर्छौं",
-	"welcomesurvey-sidebar-privacy-text": "विकिमीडिया फाउन्डेसनले {{GENDER:$2|तपाईं}}लाई {{SITENAME}} सम्पादन सुरु गर्न मद्दत गर्नका लागि तपाईका जवाफहरू प्रयोग गर्नेछ। $1 ।",
 	"welcomesurvey-privacy-policy-link-text": "नयाँ सम्पादकहरूमा डेटा बारे थप जान्नुहोस्",
 	"welcomesurvey-sidebar-editing-title": "सम्पादन सुरु गर्नुहोस्",
 	"welcomesurvey-sidebar-editing-text": "लगभग हरेक पृष्ठ जो कोहीद्वारा सम्पादन गर्न सकिन्छ, र सामग्री थप्न, गल्तीहरू सच्याउन, र पठनीयता सुधार गर्न प्रत्येक घण्टा सयौं परिवर्तनहरू गरिन्छ। यदि तपाईं योगदान गर्न {{GENDER:$1|इच्छुक हुनुहुन्छ}} भने निम्न पृष्ठहरूले मद्दत गर्न सक्नुहुन्छ।",

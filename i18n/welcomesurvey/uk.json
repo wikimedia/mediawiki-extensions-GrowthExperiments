@@ -18,8 +18,6 @@
 	"welcomesurvey-save-btn": "Завершити",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Пропустити}} це опитування",
 	"welcomesurvey-close-btn": "Закрити й повернутись до $1",
-	"welcomesurvey-sidebar-privacy-title": "Ми цінуємо {{GENDER:|вашу}} конфіденційність",
-	"welcomesurvey-sidebar-privacy-text": "Фонд Вікімедіа використає {{GENDER:$2|ваші}} відповіді, щоб допомогти вам почати редагувати {{GRAMMAR:accusative|{{SITENAME}}}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Дізнатися більше про дані щодо нових редакторів",
 	"welcomesurvey-sidebar-editing-title": "Як почати редагувати",
 	"welcomesurvey-sidebar-editing-text": "Майже будь-яку сторінку може редагувати кожен, і щогодини здійснюються зміни з метою додавання вмісту, виправлення помилок та покращення загальної читабельності. Подані сторінки можуть Вам допомогти, якщо {{GENDER:$1|Ви зацікавлені}} в тому, щоб зробити свій внесок.",

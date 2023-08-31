@@ -11,8 +11,6 @@
 	"welcomesurvey-save-btn": "Završi",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Preskoči}} anketu",
 	"welcomesurvey-close-btn": "Zatvori i vrati me na stranicu $1",
-	"welcomesurvey-sidebar-privacy-title": "Cenimo {{GENDER:|vašu}} privatnost",
-	"welcomesurvey-sidebar-privacy-text": "Zadužbina Vikimedija će koristiti odgovore kako bi {{GENDER:$2|vam}} pomogla da počnete uređivati projekat. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Detaljnije",
 	"welcomesurvey-sidebar-editing-title": "Započnite uređivanje",
 	"welcomesurvey-sidebar-editing-text": "Svako može da uređuje gotovo svaku stranicu. Svakog sata urednici objave nekoliko stotina izmena dodajući sadržaj, ispravljajući greške i poboljšavajući čitljivost. Sledeće stranice vam mogu biti od pomoći {{GENDER:$1|ako želite}} da doprinesete.",

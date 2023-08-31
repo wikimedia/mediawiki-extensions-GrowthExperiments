@@ -17,8 +17,6 @@
 	"welcomesurvey-save-btn": "Slutför",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Hoppa över}} denna enkät",
 	"welcomesurvey-close-btn": "Stäng och gå tillbaka till $1",
-	"welcomesurvey-sidebar-privacy-title": "Vi värderar {{GENDER:|din}} integritet",
-	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation kommer att använda {{GENDER:$2|dina}} svar till att hjälpa dig komma igång med att redigera {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Läs mer om data om nybörjare",
 	"welcomesurvey-sidebar-editing-title": "Kom igång med att redigera",
 	"welcomesurvey-sidebar-editing-text": "Nästan alla sidor kan redigeras av vem som helst och hundratals ändringar görs varje timme för att lägga till innehåller, korrigera misstag och förbättra läsbarheten. Följande sidor kan hjälpa till om du {{GENDER:$1|är intresserad}} av att bidra.",

@@ -12,8 +12,6 @@
 	"welcomesurvey-save-btn": "Ljúka",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Sleppa}} þessari könnun",
 	"welcomesurvey-close-btn": "Loka og fara aftur á $1",
-	"welcomesurvey-sidebar-privacy-title": "Við tökum tillit til friðhelgi {{GENDER:|þinnar}}",
-	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation mun nota {{GENDER:$2|þín}} svör til að hjálpa þér að hefja breytingar á {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Lærðu meira um gögn um nýja notendur",
 	"welcomesurvey-sidebar-editing-title": "Hefjast handa við breytingar",
 	"welcomesurvey-sidebar-editing-text": "Næstum því allar síður er hægt að breyta af hverjum sem er og hundruðir breyta eru gerðar á hverjum klukkutíma til að bæta við efni, leiðrétta mistök og bæta læsi. Eftirfarandi síður geta hjálpað til ef {{GENDER:$1|þú hefur áhuga}} á því að hjálpa til.",

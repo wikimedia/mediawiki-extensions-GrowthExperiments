@@ -13,8 +13,6 @@
 	"welcomesurvey-save-btn": "کۆتایی",
 	"welcomesurvey-skip-btn": "ئەم ڕاپرسییە {{GENDER:$1|بپەڕێنە}}",
 	"welcomesurvey-close-btn": "داخستن و گەڕانەوە بۆ $1",
-	"welcomesurvey-sidebar-privacy-title": "ئێمە پاراستنی زانیاری تاکەکەسیت بەنرخ دادەنێین.",
-	"welcomesurvey-sidebar-privacy-text": "دامەزراوەی ویکیمیدیا {{GENDER:$2|وەڵامەکانت}} بەکاردێنێت بۆ یارمەتیدانت لە دەستکاریکردنی {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "زیاتر بزانە دەرببارەی داتا لەسەر نووسەرە نوێیەکان",
 	"welcomesurvey-sidebar-editing-title": "بە دەستکاریکردن دەست پێ بکە",
 	"welcomesurvey-sidebar-editing-text": "نزیکەی هەموو پەڕەکان دەکرێت لەلایەن هەرکەسێکەوەبێت دەستکاری بکرێت، لە هەر کاتژمێرێک ببە دەیان و سەدان دەستکاری لە وتار و پەڕەکان دەکرێت، لە ناویاندا هەڵەکان چاک دەکرێنەوە، شێوازی خوێندنەوەیان باشتر دەکرێت. ئەم پەڕانە دەشێت یارمەتیت بدەن ئەگەر {{GENDER:$1|تۆ حەز بە}} دەستکاریکردن دەکەیت.",

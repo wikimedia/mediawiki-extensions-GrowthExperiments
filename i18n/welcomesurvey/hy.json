@@ -13,8 +13,6 @@
 	"welcomesurvey-save-btn": "Վերջ",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Հարցումը բաց թողնել}}",
 	"welcomesurvey-close-btn": "Փակել և հետ գնալ $1",
-	"welcomesurvey-sidebar-privacy-title": "Մենք գնահատում ենք Ձեր գաղտնիությունը",
-	"welcomesurvey-sidebar-privacy-text": "Եթե ցանկանում եք տեղեկանալ, թե այս պատասխանները ինչպես են օգտագործվում, {{GENDER:$2|տեսե՛ք}} այս հարցումը $1։",
 	"welcomesurvey-privacy-policy-link-text": "Գաղտնիության քաղաքականություն",
 	"welcomesurvey-sidebar-editing-title": "Սկսել խմբագրումը",
 	"welcomesurvey-sidebar-editing-text": "Գրեթե բոլոր էջերը կարող են խմբագրվել յուրաքանչյուրի կողմից։ Ամեն ժամ հարյուրավոր փոփոխություններ են կատարվում բովանդակություն ավելացնելու, սխալներ ուղղելու և ընթեռնելիությունը բարելավելու ուղղությամբ։ Եթե ցանկանում եք ներդրում ունենալ, ապա հետևյալ էջերը կարող են {{GENDER:$1|Ձեզ համար օգտակար լինել}}։",

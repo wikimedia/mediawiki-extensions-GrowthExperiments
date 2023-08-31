@@ -11,8 +11,6 @@
 	"welcomesurvey-save-btn": "Чекхдаккха",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|ДӀадахийта}} хӀара хатар",
 	"welcomesurvey-close-btn": "ДӀачӀаьгӀна, йуха гӀо $1 тӀе",
-	"welcomesurvey-sidebar-privacy-title": "Оха ларам бо {{GENDER:|хьан}} конфиденциалина",
-	"welcomesurvey-sidebar-privacy-text": "Викимедиа Фондо лелора ду {{GENDER:$2|хьан}} жоьпаш хьуна {{GRAMMAR:genitive|{{SITENAME}}}}. $1 тӀехь нисдарш деш гӀо деш.",
 	"welcomesurvey-privacy-policy-link-text": "Кхин сов хьажа керлачу редакторийн хаамашка",
 	"welcomesurvey-sidebar-editing-title": "ДӀадоладе хийцамаш бар",
 	"welcomesurvey-sidebar-editing-text": "ХӀора агӀо аьлча сана хӀоранна а йиш йу нисйан, цул сов хӀора сахьтехь дукха хийцамаш бан чулацам тӀетухуш, гӀалаташ нисдеш а,  йешайалар тадеш а. РогӀера агӀонаша гӀодира ду, дакъалацамехь хьан {{GENDER:$1|дӀайаздар}} делахь.",

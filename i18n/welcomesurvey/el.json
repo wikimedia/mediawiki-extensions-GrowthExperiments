@@ -17,8 +17,6 @@
 	"welcomesurvey-save-btn": "Ολοκλήρωση",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Παράκαμψη}} αυτού του ερωτηματολόγιου",
 	"welcomesurvey-close-btn": "Κλείσιμο και επιστροφή σε $1",
-	"welcomesurvey-sidebar-privacy-title": "Εκτιμούμε την ιδιωτικότητά σας",
-	"welcomesurvey-sidebar-privacy-text": "Το Wikimedia Foundation θα χρησιμοποιήσει {{GENDER:$2|τις}} απαντήσεις για να σας βοηθήσει να ξεκινήσετε να επεξεργάζεστε τη {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Μάθετε περισσότερα για τα δεδομένα για τους νέους συντάκτες",
 	"welcomesurvey-sidebar-editing-title": "Ξεκινώντας με την επεξεργασία",
 	"welcomesurvey-sidebar-editing-text": "Σχεδόν κάθε σελίδα μπορεί να επεξεργαστεί από οποιονδήποτε, και εκατοντάδες αλλαγές γίνονται κάθε ώρα για να προστεθεί περιεχόμενο, διορθωθούν λάθη, και να βελτιωθεί η αναγνωσιμότητα. Οι παρακάτω σελίδες μπορούν να σας βοηθήσουν αν {{GENDER:$1|ενδιαφέρεστε}} να συνεισφέρετε.",

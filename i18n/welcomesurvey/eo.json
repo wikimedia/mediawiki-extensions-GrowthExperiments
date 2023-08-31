@@ -13,8 +13,6 @@
 	"welcomesurvey-save-btn": "Fini",
 	"welcomesurvey-skip-btn": "{{GENDER:$1| Preterpasi}} ĉi tiun enketon",
 	"welcomesurvey-close-btn": "Fermu kaj reiru al $1",
-	"welcomesurvey-sidebar-privacy-title": "Ni alte taksas {{GENDER:|vian}} privatecon",
-	"welcomesurvey-sidebar-privacy-text": "La Vikimedia Fondaĵo uzos {{GENDER:$2| viajn}} respondojn por helpi vin komenci redakti {{SITENAME}}n. $1 .",
 	"welcomesurvey-privacy-policy-link-text": "Lernu pli pri datumoj pri novaj redaktantoj",
 	"welcomesurvey-sidebar-editing-title": "Komencu kun redaktado",
 	"welcomesurvey-sidebar-editing-text": "Preskaŭ ĉiu paĝo povas esti redaktita de iu ajn, kaj centoj da ŝanĝoj estas faritaj ĉiuhore por aldoni enhavon, korekti erarojn kaj plibonigi legeblecon. La sekvaj paĝoj povas helpi se {{GENDER:$1| vi interesiĝas}} kontribui.",

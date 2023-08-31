@@ -17,8 +17,6 @@
 	"welcomesurvey-save-btn": "Voltooien",
 	"welcomesurvey-skip-btn": "Deze vragen {{GENDER:$1|overslaan}}",
 	"welcomesurvey-close-btn": "Sluiten en teruggaan naar $1",
-	"welcomesurvey-sidebar-privacy-title": "We respecteren uw privacy",
-	"welcomesurvey-sidebar-privacy-text": "De Wikimedia Foundation zal {{GENDER:$2|uw}} antwoorden gebruiken om u op weg te helpen met het bewerken van {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Leer meer over data bij nieuwe editors",
 	"welcomesurvey-sidebar-editing-title": "Beginnen met bewerken",
 	"welcomesurvey-sidebar-editing-text": "Bijna elke pagina kan door iedereen bewerkt worden, en elk uur worden honderden bewerkingen gedaan om inhoud toe te voegen, fouten te verbeteren en leesbaarheid te vergroten. Indien {{GENDER:$1|u geïnteresseerd bent}} om bij te dragen, kunnen de volgende pagina's nuttig zijn voor {{GENDER:$1|u}}.",

@@ -15,8 +15,6 @@
 	"welcomesurvey-save-btn": "সম্পন্ন",
 	"welcomesurvey-skip-btn": "জরিপটি {{GENDER:$1|এড়িয়ে যান}}",
 	"welcomesurvey-close-btn": "বন্ধ করুন ও $1-এ ফিরে যান",
-	"welcomesurvey-sidebar-privacy-title": "আমরা {{GENDER:|আপনার}} ব্যক্তিগত গোপনীয়তার প্রতি শ্রদ্ধাশীল",
-	"welcomesurvey-sidebar-privacy-text": "উইকিমিডিয়া ফাউন্ডেশন {{GENDER:$2|আপনার}} উত্তরের ভিত্তিতে আপনাকে {{SITENAME}}-তে অবদান রাখার ব্যাপারে সাহায্য করবে। $1।",
 	"welcomesurvey-privacy-policy-link-text": "নতুন অবদানকারী সংক্রান্ত তথ্য নিয়ে আরো জানুন",
 	"welcomesurvey-sidebar-editing-title": "অবদান রাখা শুরু করুন",
 	"welcomesurvey-sidebar-editing-text": "প্রায় সকল নিবন্ধে যে কেউ অবদান রাখতে পারেন। এখানে প্রতি ঘণ্টায় বিপুল সংখ্যক তথ্য যুক্ত হচ্ছে, ভুল সংশোধিত হচ্ছে, এবং লেখার প্রাঞ্জলতা বৃদ্ধি পাচ্ছে। আপনি যদি {{GENDER:$1|অবদান রাখতে আগ্রহী}} হোন, তবে নিম্নলিখিত পাতাগুলো আপনাকে সাহায্য করবে।",

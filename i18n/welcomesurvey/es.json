@@ -21,8 +21,6 @@
 	"welcomesurvey-save-btn": "Finalizar",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Omitir}} esta encuesta",
 	"welcomesurvey-close-btn": "Cerrar y volver a $1",
-	"welcomesurvey-sidebar-privacy-title": "Valoramos {{GENDER:|tu}} privacidad",
-	"welcomesurvey-sidebar-privacy-text": "La Fundación Wikimedia usará {{GENDER:$2|tus}} respuestas para ayudarte a comenzar a editar {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Más información sobre los datos en los editores nuevos",
 	"welcomesurvey-sidebar-editing-title": "Empezar a editar",
 	"welcomesurvey-sidebar-editing-text": "Casi cualquier página puede ser editada por cualquier persona, y se realizan cientos de cambios cada hora para añadir contenido, corregir errores y mejorar la legibilidad. Las siguientes páginas te pueden ayudar si {{GENDER:$1|estás interesado|estás interesada}} en contribuir.",
