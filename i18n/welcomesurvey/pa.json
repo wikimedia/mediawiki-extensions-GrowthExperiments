@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kuldeepburjbhalaike"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|ਜੀ ਆਇਆਂ ਨੂੰ}}, $1!",
+	"welcomesurvey-save-btn": "ਸਮਾਪਤ",
+	"welcomesurvey-skip-btn": "ਇਸ ਸਰਵੇਖਣ ਨੂੰ {{GENDER:$1|ਛੱਡੋ}}",
+	"welcomesurvey-close-btn": "ਬੰਦ ਕਰੋ ਅਤੇ $1 'ਤੇ ਵਾਪਸ ਜਾਓ",
+	"welcomesurvey-privacy-policy-link-text": "ਨਵੇਂ ਸੰਪਾਦਕਾਂ ਦੇ ਡੇਟਾ ਬਾਰੇ ਹੋਰ ਜਾਣੋ",
+	"welcomesurvey-sidebar-editing-title": "ਸੰਪਾਦਨ ਨਾਲ ਸ਼ੁਰੂਆਤ",
+	"welcomesurvey-sidebar-editing-text": "ਲਗਭਗ ਹਰ ਪੰਨੇ ਨੂੰ ਕਿਸੇ ਵੀ ਵਿਅਕਤੀ ਦੁਆਰਾ ਸੰਪਾਦਿਤ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਅਤੇ ਸਮੱਗਰੀ ਨੂੰ ਜੋੜਨ, ਗਲਤੀਆਂ ਨੂੰ ਠੀਕ ਕਰਨ ਅਤੇ ਪੜ੍ਹਨਯੋਗਤਾ ਵਿੱਚ ਸੁਧਾਰ ਕਰਨ ਲਈ ਹਰ ਘੰਟੇ ਸੈਂਕੜੇ ਬਦਲਾਅ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਹੇਠਾਂ ਦਿੱਤੇ ਪੰਨੇ ਮਦਦ ਕਰ ਸਕਦੇ ਹਨ ਜੇਕਰ ਤੁਸੀਂ ਯੋਗਦਾਨ ਪਾਉਣ ਵਿੱਚ  {{GENDER:$1|ਦਿਲਚਸਪੀ ਰੱਖਦੇ ਹੋ}}।",
+	"welcomesurvey-sidebar-editing-link1-text": "ਟਿਊਟੋਰਿਅਲ",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutorial",
+	"welcomesurvey-sidebar-editing-link2-text": "ਹੈਲਪ ਡੈਸਕ",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Help_desk",
+	"welcomesurvey-dropdown-option-select-label": "ਕਿਰਪਾ ਕਰਕੇ ਚੁਣੋ...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "ਵਿਕੀਪੀਡੀਆ ਲੇਖ ਵਿੱਚ ਟਾਈਪੋ ਜਾਂ ਗਲਤੀ ਨੂੰ ਠੀਕ ਕਰਨ ਲਈ",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "ਵਿਕੀਪੀਡੀਆ ਲੇਖ ਵਿੱਚ ਜਾਣਕਾਰੀ ਜੋੜਨ ਜਾਂ ਬਦਲਣ ਲਈ",
+	"welcomesurvey-question-reason-option-add-image-label": "ਵਿਕੀਪੀਡੀਆ ਲੇਖ ਵਿੱਚ ਇੱਕ ਫੋਟੋ ਜਾਂ ਚਿੱਤਰ ਜੋੜਨ ਲਈ",
+	"welcomesurvey-question-reason-option-new-page-label": "ਇੱਕ ਨਵਾਂ ਵਿਕੀਪੀਡੀਆ ਲੇਖ ਬਣਾਉਣ ਲਈ",
+	"welcomesurvey-question-reason-option-program-participant-label": "ਮੈਂ ਕਿਸੇ ਪ੍ਰੋਗਰਾਮ, ਕਲਾਸ ਜਾਂ ਇਵੈਂਟ ਵਿੱਚ ਭਾਗ ਲੈ ਰਿਹਾ/ਰਹੀ ਹਾਂ",
+	"welcomesurvey-question-reason-option-read-label": "ਵਿਕੀਪੀਡੀਆ ਨੂੰ ਪੜ੍ਹਨ ਲਈ",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "ਹੋਰ",
+	"welcomesurvey-question-reason-option-other-label": "ਹੋਰ (ਕਿਰਪਾ ਕਰਕੇ ਵਰਣਨ ਕਰੋ)",
+	"welcomesurvey-question-reason-other-placeholder": "ਹੋਰ ਕਾਰਨ{{GENDER:$1| ਦਾਖਲ ਕਰੋ}}...",
+	"welcomesurvey-question-mentor-info": "ਅਸੀਂ ਸੰਪਾਦਨ ਵਿੱਚ ਨਵੇਂ ਵਰਤੋਂਕਾਰਾਂ ਦੀ ਮਦਦ ਕਰਨ ਲਈ ਵਧੇਰੇ ਤਜਰਬੇਕਾਰ ਸੰਪਾਦਕਾਂ ਲਈ ਇੱਕ ਪ੍ਰੋਗਰਾਮ ਸ਼ੁਰੂ ਕਰਨ ਬਾਰੇ ਵਿਚਾਰ ਕਰ ਰਹੇ ਹਾਂ। ਕੀ ਤੁਸੀਂ ਸੰਪਾਦਨ ਵਿੱਚ ਮਦਦ ਲੈਣ ਲਈ ਸੰਪਰਕ ਕਰਨ ਵਿੱਚ {{GENDER:$1| ਦਿਲਚਸਪੀ ਰੱਖਦੇ ਹੋ}}?",
+	"welcomesurvey-question-mentor-label": "ਹਾਂ, {{GENDER:$1| ਮੈਨੂੰ ਦਿਲਚਸਪੀ ਹੈ}}",
+	"welcomesurvey-question-edited-option-yes-many-label": "ਹਾਂ, ਕਈ ਵਾਰ",
+	"welcomesurvey-question-edited-option-yes-few-label": "ਹਾਂ, ਇੱਕ ਜਾਂ ਦੋ ਵਾਰ",
+	"welcomesurvey-question-edited-option-no-dunno-label": "ਨਹੀਂ, ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਸੀ ਕਿ ਮੈਂ ਵਿਕੀਪੀਡੀਆ ਨੂੰ ਸੰਪਾਦਿਤ ਕਰ ਸਕਦਾ/ਸਕਦੀ ਹਾਂ",
+	"welcomesurvey-question-edited-option-no-other-label": "ਨਹੀਂ, ਹੋਰ ਕਾਰਨਾਂ ਕਰਕੇ",
+	"welcomesurvey-question-edited-option-dont-remember-label": "ਮੈਨੂੰ ਯਾਦ ਨਹੀਂ",
+	"welcomesurvey-question-email-label": "ਈਮੇਲ ਪਤਾ (ਵਿਕਲਪਿਕ)"
+}

@@ -219,7 +219,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Культура",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Рэгіёны",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Няслушная канфігурацыя прапанаваных правак: благая структура",
-	"growthexperiments-homepage-suggestededits-config-invalidid": "Няслушная канфігурацыя прапанаваных правак: няслушны ідэнтыфікатар «$1» — павінен утрымліваць толькі a-z, 0-9, - (мінус)",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "Няслушная канфігурацыя прапанаваных правак: няслушны ідэнтыфікатар «$1» — павінен змяшчаць толькі a-z, 0-9, - (мінус)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Няслушная канфігурацыя прапанаваных правак: адсутнічае поле $1 для тыпу задання або тэмы $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Няслушная канфігурацыя прапанаваных правак: няслушная група $1 для задання тыпу $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Няслушная канфігурацыя прапанаваных правак: адсутнічае паведамленне $1 для поля $2",
