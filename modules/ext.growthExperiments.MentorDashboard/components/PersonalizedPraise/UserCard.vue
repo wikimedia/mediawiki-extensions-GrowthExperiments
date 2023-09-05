@@ -141,7 +141,8 @@ module.exports = exports = {
 					preloadparams: [
 						userName,
 						mw.user.getName()
-					]
+					],
+					gepersonalizedpraise: 1
 				} );
 			} ).catch( function ( error ) {
 				mw.notify(

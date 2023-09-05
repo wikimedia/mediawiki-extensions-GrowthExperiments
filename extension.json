@@ -482,7 +482,8 @@
 			"levelingup",
 			"mentordashboarddiscovery",
 			"tour",
-			"welcomeSurvey"
+			"welcomeSurvey",
+			"mentor"
 		],
 		"CentralAuthPostLoginRedirect": [
 			"variant",
@@ -2156,6 +2157,17 @@
 			],
 			"dependencies": [
 				"mediawiki.pulsatingdot"
+			]
+		},
+		"ext.growthExperiments.MentorDashboard.PostEdit": {
+			"scripts": [
+				"ext.growthExperiments.MentorDashboard/PersonalizedPraisePostEdit.js"
+			],
+			"dependencies": [
+				"mediawiki.notification"
+			],
+			"messages": [
+				"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success"
 			]
 		},
 		"ext.growthExperiments.DataStore": {

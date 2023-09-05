@@ -17,6 +17,7 @@ use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
+use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
@@ -36,7 +37,8 @@ class MentorHooks implements
 	ListDefinedTagsHook,
 	ChangeTagsListActiveHook,
 	FormatAutocommentsHook,
-	UserGetRightsHook
+	UserGetRightsHook,
+	BeforePageDisplayHook
 {
 
 	private Config $config;
@@ -318,6 +320,19 @@ class MentorHooks implements
 			$user->getEditCount() >= $this->wikiConfig->get( 'GEMentorshipMinimumEditcount' )
 		) {
 			$rights[] = 'enrollasmentor';
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onBeforePageDisplay( $out, $skin ): void {
+		if ( $out->getRequest()->getBool( 'gepersonalizedpraise' ) ) {
+			$out->addModules( 'ext.growthExperiments.MentorDashboard.PostEdit' );
+			$out->addJsConfigVars( [
+				'wgPostEditConfirmationDisabled' => true,
+				'wgGEMentorDashboardPersonalizedPraisePostEdit' => true,
+			] );
 		}
 	}
 }

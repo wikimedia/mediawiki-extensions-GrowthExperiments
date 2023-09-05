@@ -147,6 +147,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Submit button in the Skip mentee dialog in Personalized praise\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Cancel button in the Skip mentee dialog in Personalized praise\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Generic error message when sending appreciation fails.\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Success message when sending appreciation.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Label of the Personalized praise's cog icon, which opens the settings.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Title of Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Headline in Personalized praise's Settings module\n\n{{doc-growthexperiments-mentor-dashboard}}",
