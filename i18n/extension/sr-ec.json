@@ -7,6 +7,7 @@
 		]
 	},
 	"growthexperiments-desc": "Овај додатак садржи пројекте Тима за развој.",
+	"growthexperiments-edit-config-feedback-headline": "Идеје и питања о формулару?",
 	"growthexperiments-edit-config-feedback-cta": "Повратне информације",
 	"growthexperiments-edit-config-edit-summary": "Опис измене",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Врх странице",
@@ -14,6 +15,7 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Странице за разговор ментора",
 	"growthexperiments-edit-config-help-panel-links": "Везе до помоћи",
 	"growthexperiments-edit-config-homepage": "Почетна страница за новајлије",
+	"growthexperiments-edit-config-homepage-intro-links-image": "Одредишна страница о додавању слика у Визуелном уређивачу",
 	"growthexperiments-edit-config-mentorship": "Менторство",
 	"growthexperiments-edit-config-mentorship-enabled": "Јесу ли омогућене функције менторства?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Да",
