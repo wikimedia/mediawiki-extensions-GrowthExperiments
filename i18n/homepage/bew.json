@@ -54,6 +54,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Abisnya {{GENDER:$1|lu}} ngelarin berapa permakan gampil.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Kapan {{GENDER:$1|lu}} udah mbelajarin pasal plaktèk Wikipédi paling baè'.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Pemermakan naskah èn penambahan sènggètan ke laèn-laèn makalah.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Nambahin sumber nyang kena dipercaya èn merbaruin makalah nyang udah ketinggalan jaman",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Keja makalah baru èn nglèbarin makalah pèndèk.",
 	"growthexperiments-homepage-suggested-edits-header": "Permakan nyang disaranin",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Lu punya}} sawaban",
