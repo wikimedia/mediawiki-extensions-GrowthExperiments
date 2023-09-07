@@ -123,6 +123,7 @@
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Корисник|Корисница}} [[User:$1|$1]] није више {{GENDER:$1|ментор|менторка}}.",
 	"growthexperiments-mentorship-enrollasmentor-title": "Постаните {{GENDER:|ментор|менторка}}",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Представите се",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Представљање себе као {{GENDER:|ментора|менторку}}. Не више од 240 карактера и без викитекста!",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Упиши ме",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Додавање себе као ментора",
 	"tag-mentor list change": "Промењен списак ментора"
