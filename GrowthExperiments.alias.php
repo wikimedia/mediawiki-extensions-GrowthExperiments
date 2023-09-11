@@ -53,6 +53,7 @@ $specialPageAliases['bn'] = [
 	'Homepage' => [ 'নীড়পাতা' ],
 	'Impact' => [ 'প্রভাব' ],
 	'ClaimMentee' => [ 'পরামর্শগ্রহীতা_দাবিকরণ' ],
+	'NewcomerTasksInfo' => [ 'নবাগতদের_কাজ' ],
 	'EditGrowthConfig' => [ 'গ্রোথ_কনফিগারেশন_সম্পাদনা' ],
 	'MentorDashboard' => [ 'মেন্টর_ড্যাশবোর্ড' ],
 	'QuitMentorship' => [ 'মেন্টরশিপ_পরিত্যাগ' ],
