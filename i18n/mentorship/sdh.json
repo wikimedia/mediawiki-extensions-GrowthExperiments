@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"TerranBoy"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "ناو وەکاربەر",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "ڕێکەفت خوەتوومارکردن",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "پاڵیارەگان",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "مینە",
+	"growthexperiments-mentor-dashboard-mentee-overview-talk": "وەتوویش",
+	"growthexperiments-mentor-dashboard-resources-headline": "سەرچاوەیل",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "ڕیکخستنەگان",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "چالاک",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "نائامادە",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "هەڵوەشاننەوە",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ڕووژەیل",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "پاشەکەفت",
+	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "زانیاری فێشتر",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "کلکردن",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "هەڵوەشاننەوە",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "ڕیکخستنەگان",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "باوەت",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "ڕووژانە",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly": "هەفتانە",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly": "مانگانە",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never": "هەرگز",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "پاشەکەفت",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "هەڵوەشاننەوە",
+	"growthexperiments-manage-mentors-username": "ناو وەکاربەر",
+	"growthexperiments-manage-mentors-edit": "دەسکاری"
+}
