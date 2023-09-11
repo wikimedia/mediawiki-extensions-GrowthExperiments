@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bangrapip"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Selamet dateng}}, $1!",
+	"welcomesurvey-save-btn": "Sudahin",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Longkapin}} ni angkèt",
+	"welcomesurvey-close-btn": "Tutup èn kombali ke $1",
+	"welcomesurvey-privacy-policy-link-text": "Belajarin lebi lanjut pasal data pasal pemermak baru",
+	"welcomesurvey-sidebar-editing-title": "Mulain dengen mermak",
+	"welcomesurvey-sidebar-editing-link1-text": "Pedoman cara-cara",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipédi:Pedoman cara-cara",
+	"welcomesurvey-sidebar-editing-link2-text": "Mèja pertulungan",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipédi:Mèja_pertulungan",
+	"welcomesurvey-dropdown-option-select-label": "Dimohon pilih...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Bakal ngebetulin salah ketik atawa kengabluam di makalah Wikipédi",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Bakal nambahin atawa ngrobah inpormasi di makalah Wikipédi",
+	"welcomesurvey-question-reason-option-add-image-label": "Bakal nambahin potrèt atawa gambar ke makalah Wikipédi",
+	"welcomesurvey-question-reason-option-new-page-label": "Bakal ngeja makalah Wikipédi baru",
+	"welcomesurvey-question-reason-option-program-participant-label": "Gua ngikut serènta di acara, kelas, atawa kenduri",
+	"welcomesurvey-question-reason-option-read-label": "Bakal ngebaca Wikipédi",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Laènnya",
+	"welcomesurvey-question-reason-option-other-label": "Laènnya (dimohon jabarin)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Masupin}} alesan laèn...",
+	"welcomesurvey-question-mentor-label": "Gua, {{GENDER:$1|Gua kebèngbat}}",
+	"welcomesurvey-question-edited-option-yes-many-label": "Ya, lah udah sering",
+	"welcomesurvey-question-edited-option-yes-few-label": "Ya, barang sekali apa dua kali",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Kaga', gua kaga' tau apa gua bisa mermak Wikipédi, apa kaga'",
+	"welcomesurvey-question-edited-option-no-other-label": "Kaga', laèn alesan",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Gua kaga' èling",
+	"welcomesurvey-question-email-label": "Aderès surlès (sunah)"
+}
