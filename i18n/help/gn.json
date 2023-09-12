@@ -5,5 +5,6 @@
 		]
 	},
 	"growthexperiments-help-panel-postedit-subheader-link-recommendation": "Ehaijey ambue hendáicha",
-	"growthexperiments-help-panel-postedit-subheader2-link-recommendation": "Eñeha'ã ambue hendáicha térã ñemoambuepy térã eju jey ko'ẽrõ rehechave hag̃ua mba'e ambuéva."
+	"growthexperiments-help-panel-postedit-subheader2-link-recommendation": "Eñeha'ã ambue hendáicha térã ñemoambuepy térã eju jey ko'ẽrõ rehechave hag̃ua mba'e ambuéva.",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Oĩmbáma?</strong> Ejopy \"{{int:vector-view-edit}}\" rehe eñepyrũ hag̃ua."
 }
