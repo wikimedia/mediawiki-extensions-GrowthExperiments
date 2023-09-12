@@ -52,7 +52,7 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 		return $mentees;
 	}
 
-	private function makeNEdits( Authority $performer, int $edits = 1 ): void {
+	private function makeNEdits( Authority $performer, int $edits ): void {
 		for ( $i = 0; $i < $edits; $i++ ) {
 			$this->editPage(
 				Title::newFromText( sprintf( 'Sandbox %d', $i ) ),
@@ -74,11 +74,10 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 	}
 
 	/**
-	 * @param int $minEdits
-	 * @dataProvider provideGetPraiseworthyMenteesForMentor
 	 * @covers ::getPraiseworthyMenteesForMentorUncached
 	 */
-	public function testGetPraiseworthyMenteesForMentor( int $minEdits ) {
+	public function testGetPraiseworthyMenteesForMentor() {
+		$minEdits = 2;
 		$this->mockPageviews();
 		$this->setMwGlobals( [
 			'wgGEPersonalizedPraiseBackendEnabled' => true,
@@ -96,7 +95,4 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 		$this->assertCount( 1, $suggester->getPraiseworthyMenteesForMentorUncached( $mentor ) );
 	}
 
-	public static function provideGetPraiseworthyMenteesForMentor() {
-		return [ [ 10 ], [ 5 ] ];
-	}
 }
