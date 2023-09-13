@@ -6,6 +6,7 @@ use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\MentorshipSummaryCreator;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
@@ -154,7 +155,16 @@ class StructuredMentorWriter implements IMentorWriter {
 		}
 		$mentorData[$mentorUserIdentity->getId()] = $this->serializeMentor( $mentor );
 
-		return $this->saveMentorData( $mentorData, $summary, $performer, $bypassWarnings );
+		return $this->saveMentorData(
+			$mentorData,
+			MentorshipSummaryCreator::createAddSummary(
+				$performer,
+				$mentorUserIdentity,
+				$summary
+			),
+			$performer,
+			$bypassWarnings
+		);
 	}
 
 	/**
@@ -178,7 +188,16 @@ class StructuredMentorWriter implements IMentorWriter {
 		}
 		unset( $mentorData[$mentorUserIdentity->getId()] );
 
-		return $this->saveMentorData( $mentorData, $summary, $performer, $bypassWarnings );
+		return $this->saveMentorData(
+			$mentorData,
+			MentorshipSummaryCreator::createRemoveSummary(
+				$performer,
+				$mentorUserIdentity,
+				$summary
+			),
+			$performer,
+			$bypassWarnings
+		);
 	}
 
 	/**
@@ -202,6 +221,15 @@ class StructuredMentorWriter implements IMentorWriter {
 		}
 		$mentorData[$mentorUserIdentity->getId()] = $this->serializeMentor( $mentor );
 
-		return $this->saveMentorData( $mentorData, $summary, $performer, $bypassWarnings );
+		return $this->saveMentorData(
+			$mentorData,
+			MentorshipSummaryCreator::createChangeSummary(
+				$performer,
+				$mentorUserIdentity,
+				$summary
+			),
+			$performer,
+			$bypassWarnings
+		);
 	}
 }
