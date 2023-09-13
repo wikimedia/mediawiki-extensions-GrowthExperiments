@@ -4,9 +4,9 @@ namespace GrowthExperiments\NewcomerTasks\Task;
 
 use ArrayAccess;
 use ArrayIterator;
-use BadMethodCallException;
 use Countable;
 use IteratorAggregate;
+use LogicException;
 use MediaWiki\Json\JsonUnserializable;
 use MediaWiki\Json\JsonUnserializableTrait;
 use MediaWiki\Json\JsonUnserializer;
@@ -103,7 +103,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 	 * @suppress PhanPluginNeverReturnMethod LSP violation
 	 */
 	public function offsetSet( $offset, $value ): void {
-		throw new BadMethodCallException( 'TaskSet is read-only' );
+		throw new LogicException( __CLASS__ . ' is read-only' );
 	}
 
 	/**
@@ -112,7 +112,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 	 * @suppress PhanPluginNeverReturnMethod LSP violation
 	 */
 	public function offsetUnset( $offset ): void {
-		throw new BadMethodCallException( 'TaskSet is read-only' );
+		throw new LogicException( __CLASS__ . ' is read-only' );
 	}
 
 	/**
