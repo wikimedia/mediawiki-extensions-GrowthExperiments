@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"TerranBoy"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "ناو وەکاربەر",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "ڕێکەفت خوەتوومارکردن",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "پاڵیارەگان",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "مینە",
+	"growthexperiments-mentor-dashboard-resources-headline": "سەرچاوەیل",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "ڕیکخستنەگان",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "چالاک",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "نائامادە",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "هەڵوەشاننەوە",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ڕووژەیل"
+}
