@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ashay vb",
 			"ಮಲ್ನಾಡಾಚ್ ಕೊಂಕ್ಣೊ"
 		]
 	},
@@ -23,5 +24,17 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "ಸಕ್ರಿಯ",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "ರದ್ದುಮಾಡಿ",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ದಿನಗಳು",
-	"growthexperiments-notification-body-mentee-claimed": "ಕಾರಣ: $1"
+	"growthexperiments-notification-body-mentee-claimed": "ಕಾರಣ: $1",
+	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "$1 ಮಾರ್ಗದರ್ಶಕರಾಗಿ ಸೇರಿಸಲಾಗುತ್ತಿದೆ",
+	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "$1 ಮಾರ್ಗದರ್ಶಿಯಾಗಿ ಸೇರಿಸಲಾಗುತ್ತಿದೆ: $2",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "ನನ್ನನ್ನೇ ಮಾರ್ಗದರ್ಶಕನಾಗಿ ಸೇರಿಸುತ್ತಿದ್ದೇನೆ",
+	"growthexperiments-manage-mentors-summary-add-self-with-reason": "ನನ್ನನ್ನು ಮಾರ್ಗದರ್ಶಕನಾಗಿ ಸೇರಿಸುತ್ತಿದ್ದೇನೆ: $2",
+	"growthexperiments-manage-mentors-summary-change-admin-no-reason": "$1 ರ ಮಾರ್ಗದರ್ಶನದ ಆಯ್ಕೆಗಳನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ",
+	"growthexperiments-manage-mentors-summary-change-admin-with-reason": "$1 ರ ಮಾರ್ಗದರ್ಶನದ ಆಯ್ಕೆಗಳನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ: $2",
+	"growthexperiments-manage-mentors-summary-change-self-no-reason": "ನನ್ನ ಮಾರ್ಗದರ್ಶನದ ಆಯ್ಕೆಗಳನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ",
+	"growthexperiments-manage-mentors-summary-change-self-with-reason": "ನನ್ನ ಮಾರ್ಗದರ್ಶನ ಆಯ್ಕೆಗಳನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ: $2",
+	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "ಮಾರ್ಗದರ್ಶಕರಾಗಿ $1 ತೆಗೆದುಹಾಕಲಾಗುತ್ತಿದೆ",
+	"growthexperiments-manage-mentors-summary-remove-admin-with-reason": "ಮಾರ್ಗದರ್ಶಕರಾಗಿ $1 ತೆಗೆದುಹಾಕಲಾಗುತ್ತಿದೆ: $2",
+	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "ಮಾರ್ಗದರ್ಶಕ ಹುದ್ದೆಗೆ ರಾಜೀನಾಮೆ",
+	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "ಮಾರ್ಗದರ್ಶಕರಾಗಿ ರಾಜೀನಾಮೆ: $2"
 }
