@@ -127,14 +127,15 @@ class FixLinkRecommendationData extends Maintenance {
 	private function fixSearchIndex() {
 		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
 		$batchSize = $this->getBatchSize();
-		$from = 0;
 		$randomize = $this->getOption( 'random', false );
 		$fixedCount = 0;
+		$pageIdsFixed = [];
 
 		$oresTopics = array_keys( ArticleTopicFeature::TERMS_TO_LABELS );
 		// Search offsets are limited to 10K. Search topic by topic. This is still not a 100%
 		// guarantee that we'll avoid a >10K result set, but it's the best we can do.
 		foreach ( $oresTopics as $oresTopic ) {
+			$from = 0;
 			$this->verboseOutput( "  checking topic $oresTopic...\n" );
 			$searchQuery = "hasrecommendation:link articletopic:$oresTopic";
 			// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
@@ -143,6 +144,7 @@ class FixLinkRecommendationData extends Maintenance {
 				$pageIdsToCheck = $this->titlesToPageIds( $titles );
 				$pageIdsToFix = array_diff( $pageIdsToCheck,
 					$this->linkRecommendationStore->filterPageIds( $pageIdsToCheck ) );
+				$pageIdsToFix = array_diff( $pageIdsToFix, $pageIdsFixed );
 				$pagesToFix = $this->pageIdsToPageRecords( $pageIdsToFix );
 
 				foreach ( $pagesToFix as $pageRecord ) {
@@ -152,13 +154,14 @@ class FixLinkRecommendationData extends Maintenance {
 					if ( !$this->hasOption( 'dry-run' ) ) {
 						$this->cirrusSearch->resetWeightedTags( $pageRecord, 'recommendation.link' );
 					}
-				}
-				if ( $from === 10000 ) {
-					$this->error( "  topic $oresTopic had more than 10K tasks\n" );
-					break;
+					$pageIdsFixed[] = $pageRecord->getId();
 				}
 				$from = min( 10000, $batchSize + $from );
 				$fixedCount += count( $pagesToFix );
+				if ( $batchSize + $from > 10000 ) {
+					$this->error( "  topic $oresTopic had more than 10K tasks" );
+					break;
+				}
 			}
 		}
 		$this->maybeReportFixedCount( $fixedCount, 'search-index' );
