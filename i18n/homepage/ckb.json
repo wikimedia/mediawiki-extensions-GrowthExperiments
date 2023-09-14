@@ -6,7 +6,8 @@
 			"Kushared",
 			"Muhammed taha",
 			"Sarchia",
-			"ئارام بکر"
+			"ئارام بکر",
+			"TerranBoy"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|سڵاو}}، {{bidi:$1}}!",
@@ -160,7 +161,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "وا بکە وشەکانی وتارێک ببەسترێنەوە بە وتارێکی تر",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-link-recommendation": "وا بکە وشەکانی وتارێک ببەسترێنەوە بە وتارێکی تر.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "دەستکاریی دەق بریتییە لە چاککردنی ھەڵەی بچووک لە شێوازی نووسینی وتارێک، و ڕێیەکی بەکەڵک و ئاسانە بۆ ڕاھاتن لەگەڵ دەستکاریکردنی ویکیپیدیا. دەستکارییەکانی دەق یارمەتیی وتارەکان دەدەن کە پرۆفێشناڵ و متمانەپێکراو بن.",
-	"growthexperiments-homepage-suggestededits-tasktype-description-references": "کتێب، وێبسایت، و سەرچاوەکانی ھەواڵ بەکاربھێنە بۆ سەلماندنی ئەوەی کە ویکیپیدیا دەقیقە، و ئەو سەرچاوانە زیاد بکە بۆ ئەوەی خوێنەران ھەست بکەن کە ئەوەی دەیخوێننەوە دروستە.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-references": "کتێب، وێبگە، و سەرچاوەکانی ھەواڵ بەکاربھێنە بۆ سەلماندنی ئەوەی کە ویکیپیدیا دەقیقە، و ئەو سەرچاوانە زیاد بکە بۆ ئەوەی خوێنەران ھەست بکەن کە ئەوەی دەیخوێننەوە دروستە.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "بەشێکی وتارەکان بەسەردەچن بە تێپەڕبوونی کات و پێشھاتنی ڕووداوی نوێ. زانیاریی نوێ بدۆزەوە و زیادی بکە بۆ ئەوەی ویکیپیدیا ھەمیشە زانیاریی تازە و دروستی تێدا بێت.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "زۆر وتاری ویکیپیدیا تەنیا یەک یان دوو ڕستە درێژن. زانیاریی زیاتر بدۆزەوە و زیادی بکە تا وتارەکە تەواوتر بکەیت.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "زیادکردنی بەستەرەکان ئاسانترین ڕێیە بۆ دەستکاری. بەستەرەکان یارمەتیی خوێنەران دەدەن کە لەنێوان وتارەکان بجوڵێن بۆ ئەوەی خێراتر فێرببن.",
