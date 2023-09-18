@@ -161,6 +161,14 @@ class AddImageFeedbackHandler extends SimpleHandler {
 						ParamValidator::PARAM_TYPE => 'string',
 						ParamValidator::PARAM_REQUIRED => false,
 					],
+					'sectionTitle' => [
+						ParamValidator::PARAM_TYPE => 'string',
+						ParamValidator::PARAM_REQUIRED => false,
+					],
+					'sectionNumber' => [
+						ParamValidator::PARAM_TYPE => 'integer',
+						ParamValidator::PARAM_REQUIRED => false,
+					],
 				] + $this->getTokenParamDefinition()
 			);
 		}
