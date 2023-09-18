@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"DreZhsh",
 			"Gomoko",
 			"Thibaut120094",
@@ -39,7 +40,7 @@
 	"apierror-growthexperiments-addimage-handler-section-number-missing": "Le paramètre « sectionNumber » (numéro de section) est manquant dans les données du greffon « Ajouter une image »",
 	"apierror-growthexperiments-addimage-handler-section-number-wrongtype": "Le paramètre « sectionNumber » (numéro de section) doit être null dans les données du greffon « Ajouter une image », mais il vaut $1",
 	"apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype": "Le paramètre « sectionTitle » (titre de section) doit être une chaîne dans les données du greffon « Ajouter une image », mais il vaut $1",
-	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "Le paramètre « sectionNumber » (numéro de section) doit être un entier dans les données du greffon « Ajouter une image de section », mais il vaut  $1",
+	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "Le paramètre « sectionNumber » (numéro de section) doit être un entier dans les données du greffon « Ajouter une image de section », mais il vaut $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Enregistrement de la suggestion de lien non trouvé",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Cibles de recommandation de lien inattendues : $1",
 	"growthexperiments-underlinked-rescore-profile": "Profil de rescore interne utilisé dans les recommandations de liens d’ExpériencesDeCroissance pour prioriser les articles qui n’ont pas encore assez de liens.",

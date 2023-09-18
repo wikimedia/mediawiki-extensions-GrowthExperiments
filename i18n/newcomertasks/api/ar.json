@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Drii10291",
 			"Dyolf77 (WMF)"
 		]
@@ -20,8 +21,8 @@
 	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "\nA JSON string of an object with these keys:\n* <var>acceptedTargets</var>: (optional) Array with the titles of pages, the recommended link to which was accepted by the user.\n* <var>rejectedTargets</var>: (optional) Array with the titles of pages, the recommended link to which was rejected by the user.\n* <var>skippedTargets</var>: (optional) Array with the titles of pages, the recommended link to which was skipped (ignored) by the user.",
 	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "A JSON string of an object with these keys:\n* <var>accepted</var>: A boolean indicating whether the user accepted the recommended image.\n* <var>reasons</var>: An array of strings identifying boolean indicating why the user rejected the recommended image. Valid values: $1\n* <var>caption</var>: Image caption provided by the user. (Must have at least $2 characters.)",
 	"apihelp-growthexperiments-structured-task-submit-data-format-section-image-recommendation": "سلسلة JSON لكائن مع هذه المفاتيح:\n* <var>مقبولة</var>: قيمة منطقية تشير إلى ما إذا كان المستخدم قد قبل الصورة الموصى بها.\n* <var>الأسباب</var>: مصفوفة من السلاسل التي تحدد منطقية تشير إلى سبب رفض المستخدم للصورة الموصى بها. القيم الصالحة: $1\n* <var>وصف توضيحي</var>: شرح الصورة المقدم من قبل المستخدم. (يجب أن يكون على الأقل $2 حرف.)\n* <var>عنوان_قسم</var>: عنوان القسم الذي كان الاقتراح له.\n* <var>رقم_قسم</var>: الرَّقَم الترتيبي لقسم المقالة الذي كان الاقتراح من أجله.",
-	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "استخدام عند حفظ  التعديل المهيكل من GrowthExperiments «[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|إضافة رابط]]».",
-	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "استخدام عند حفظ  التعديل المهيكل من GrowthExperiments «[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|إضافة صورة]]».",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "استخدام عند حفظ التعديل المهيكل من GrowthExperiments «[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|إضافة رابط]]».",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "استخدام عند حفظ التعديل المهيكل من GrowthExperiments «[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|إضافة صورة]]».",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-section-image-recommendation": "الاستخدام عند حفظ التعديل المهيكل من GrowthExperiments «[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image#\"Add_an_image\"_to_a_Section|إضافة صورة]]».",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>For the <var>ge-task-link-recommendation</var> plugin</dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>For the <var>ge-task-image-recommendation</var> plugin</dt><dd>\n$1\n</dd></dl>",

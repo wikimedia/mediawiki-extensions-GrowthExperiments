@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Fraxinus.cs",
+			"Martin Urbanec",
 			"Martin Urbanec (WMF)",
 			"Matěj Suchánek",
 			"Patrik L."
@@ -208,6 +209,18 @@
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Důvod pro odebrání mentora",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Uživatel|Uživatelka}} [[User:$1|$1]] již není {{GENDER:$1|mentorem|mentorkou}}.",
 	"growthexperiments-manage-mentors-return-back": "Můžete se [[Special:ManageMentors|vrátit]] k seznamu mentorů.",
+	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "Přidání $1 jako mentora",
+	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "Přidání $1 jako mentora: $2",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Přidávám se jako mentor",
+	"growthexperiments-manage-mentors-summary-add-self-with-reason": "Přidávám se jako mentor: $2",
+	"growthexperiments-manage-mentors-summary-change-admin-no-reason": "Změna nastavení mentorství uživatele $1",
+	"growthexperiments-manage-mentors-summary-change-admin-with-reason": "Změna nastavení mentorství uživatele $1: $2",
+	"growthexperiments-manage-mentors-summary-change-self-no-reason": "Změna vlastních nastavení mentora",
+	"growthexperiments-manage-mentors-summary-change-self-with-reason": "Změna vlastních nastavení mentora: $2",
+	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "Odebrání uživatele $1 jako mentora",
+	"growthexperiments-manage-mentors-summary-remove-admin-with-reason": "Odebrání uživatele $1 jako mentora: $2",
+	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "Rezignace na roli mentora",
+	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "Rezignace na roli mentora: $2",
 	"growthexperiments-mentorship-enrollasmentor-title": "Zapsat se jako {{GENDER:|mentor|mentorka}}",
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Děkujeme vám za ochotu působit jako {{GENDER:|mentor|mentorka}} {{GRAMMAR:2sg|{{SITENAME}}}}. Můžete se zapsat vyplněním tohoto formuláře.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Úvodní zpráva",

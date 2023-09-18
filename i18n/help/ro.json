@@ -7,7 +7,7 @@
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activați panoul de ajutor al editorului",
-	"growthexperiments-help-panel-cta-button-text": "Primiți ajutor cu editarea",
+	"growthexperiments-help-panel-cta-button-text": "Obțineți ajutor cu editarea",
 	"growthexperiments-help-panel-question-button-text": "Continuă",
 	"growthexperiments-help-panel-submit-question-button-text": "Publicare",
 	"growthexperiments-help-panel-return-home-button-text": "Realizat",
@@ -17,7 +17,7 @@
 	"growthexperiments-help-panel-question-placeholder": "Salutați și {{GENDER:$1|puneți-vă}} întrebarea",
 	"growthexperiments-help-panel-back-home": "Înapoi",
 	"growthexperiments-help-panel-close": "Realizat",
-	"growthexperiments-help-panel-home-title": "Primiți ajutor cu editarea",
+	"growthexperiments-help-panel-home-title": "Obțineți ajutor cu editarea",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Ați}} publicat o editare. Vă mulțumim și continuați!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Ați}} salvat o editare. Vă mulțumim și continuați!",
 	"growthexperiments-help-panel-postedit-success-message-notsaved": "Vă mulțumim pentru revizuirea sugestiilor. Continuați!",

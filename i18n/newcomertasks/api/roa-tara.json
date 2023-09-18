@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Joetaras"
 		]
 	},
@@ -14,7 +15,7 @@
 	"apihelp-query+growthtasks-example-1": "Pigghie le raccomandaziune pe attivitate de tipe \"revisione de teste\" pe l'utende de mò.",
 	"apihelp-query+growthtasks-example-2": "Pigghie le raccomandaziune pe attivitate pe l'utende de mò, cu le 'mbormaizune estese sus a le pàggene.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "parametre 'accepted' mangande de le date d'u plugin Add Image",
-	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "parametre 'accepted' adda essere 'nu boolean jndr'à  'u plugin Add Image, jè $1",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "parametre 'accepted' adda essere 'nu boolean jndr'à 'u plugin Add Image, jè $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Righe pa raccomandazione d'u collegamende non acchiate",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Pàggene inaspettate addò appondane le collegaminde raccomandate: $1"
 }

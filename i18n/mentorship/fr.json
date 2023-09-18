@@ -3,6 +3,7 @@
 		"authors": [
 			"DreZhsh",
 			"Gomoko",
+			"Obscaeris",
 			"Thibaut120094",
 			"Trizek (WMF)",
 			"Verdy p",
@@ -220,7 +221,7 @@
 	"growthexperiments-manage-mentors-summary-change-admin-with-reason": "Changement des options de tutorat de $1 : $2",
 	"growthexperiments-manage-mentors-summary-change-self-no-reason": "Changement de mes options de tutorat",
 	"growthexperiments-manage-mentors-summary-change-self-with-reason": "Changement de mes options de tutorat : $2",
-	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "$1 supprimé comme tuteur",
+	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "Suppression de $1 comme tuteur",
 	"growthexperiments-manage-mentors-summary-remove-admin-with-reason": "$1 supprimé comme tuteur : $2",
 	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "Démission en tant que tuteur",
 	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "Démission en tant que tuteur : $2",

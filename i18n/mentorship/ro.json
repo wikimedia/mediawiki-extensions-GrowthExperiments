@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"NGC 54"
+			"Alesaru",
+			"NGC 54",
+			"Strainu"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Pagina mentorului",
@@ -206,6 +208,18 @@
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Motivul pentru eliminarea mentorului",
 	"growthexperiments-manage-mentors-remove-mentor-success": "Utilizatorul [[User:$1|$1]] nu mai este {{GENDER:$1|mentor}}.",
 	"growthexperiments-manage-mentors-return-back": "Vă puteți [[Special:ManageMentors|întoarce]] la lista mentorilor.",
+	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "Se adaugă $1 ca mentor",
+	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "Adăugarea $1 ca mentor: $2",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Mă adaug ca mentore ca mentor",
+	"growthexperiments-manage-mentors-summary-add-self-with-reason": "Mă adaug ca mentor: $2",
+	"growthexperiments-manage-mentors-summary-change-admin-no-reason": "Modificarea opțiunilor de mentorat ale lui $1",
+	"growthexperiments-manage-mentors-summary-change-admin-with-reason": "Modificarea opțiunilor de mentorat pentru $1: $2",
+	"growthexperiments-manage-mentors-summary-change-self-no-reason": "Schimbarea opțiunilor mele de mentorat",
+	"growthexperiments-manage-mentors-summary-change-self-with-reason": "Schimbarea opțiunilor mele de mentorat: $2",
+	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "Se elimină $1 ca mentor",
+	"growthexperiments-manage-mentors-summary-remove-admin-with-reason": "Eliminarea $1 ca mentor: $2",
+	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "Demisionez ca mentor",
+	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "Demisie ca mentor: $2",
 	"growthexperiments-mentorship-enrollasmentor-title": "Înscrieți-vă ca {{GENDER:|mentor}}",
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Vă {{GENDER:|mulțumim}} pentru că vă voluntariați ca {{GENDER:|mentor}} la {{SITENAME}}. {{GENDER:|Vă}} puteți înscrie ca mentor prin completarea acestui formular.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Mesaj de introducere",

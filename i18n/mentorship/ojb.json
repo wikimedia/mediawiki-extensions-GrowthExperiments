@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nibi-zhimaaganish"
+		]
+	},
+	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "Asigagindaaso $1 biindig bezhig gekinoo'amaaged",
+	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "Asigagindaaso $1 biindig beghiz gekinoo'amaaged: $2",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Asigagindaaso gi biindig bezhig gekinoo'amaaged",
+	"growthexperiments-manage-mentors-summary-add-self-with-reason": "Asigagindaaso gi biindig bezhig gekinoo'amaaged: $2",
+	"growthexperiments-manage-mentors-summary-change-admin-no-reason": "Aanji' $1's gikinoo'amaagoowin onaabam",
+	"growthexperiments-manage-mentors-summary-change-admin-with-reason": "Aanji' $1's gikinoo'amaagoowin onaabam: $2",
+	"growthexperiments-manage-mentors-summary-change-self-no-reason": "Aanji' gi gikinoo'amaagoowin onaabam",
+	"growthexperiments-manage-mentors-summary-change-self-with-reason": "Aanji' gi gikinoo'amaagoowin onaabam: $2",
+	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "Gidin $1 biindig bezhig gekinoo'amaaged",
+	"growthexperiments-manage-mentors-summary-remove-admin-with-reason": "Gidin $1 biindig beghiz gekinoo'amaaged: $2",
+	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "Majaa biindig bezhig gekinoo'amaaged",
+	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "Ishkwaataa biindig bezhig gekinoo'amaaged: $2"
+}

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Martin Urbanec",
 			"Martin Urbanec (WMF)",
 			"Matěj Suchánek"
 		]
@@ -34,5 +35,6 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Pokud je isaway zaškrtnuté, potom musí být parameter awaytimestamp vyplněný.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Zneplatní návrh nováčka k ocenění v modulu Zašlete ocenění svým nováčkům na Nástěnce mentora",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Nováček ke zneplatnění",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Důvod zneplatnění návrhu"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Důvod zneplatnění návrhu",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Přeskočit důvod na zneplatnění návrhu"
 }
