@@ -32,30 +32,14 @@ use WikitextContent;
 class LinkRecommendationUpdater {
 
 	private IConnectionProvider $connectionProvider;
-
-	/** @var RevisionStore */
-	private $revisionStore;
-
-	/** @var NameTableStore */
-	private $changeDefNameTableStore;
-
-	/** @var PageProps */
-	private $pageProps;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
-	/** @var SearchIndexUpdater */
-	private $searchIndexUpdater;
-
-	/** @var LinkRecommendationStore */
-	private $linkRecommendationStore;
-
-	/** @var LinkRecommendationProvider */
-	private $linkRecommendationProvider;
-
-	/** @var LinkRecommendationTaskType */
-	private $linkRecommendationTaskType;
+	private RevisionStore $revisionStore;
+	private NameTableStore $changeDefNameTableStore;
+	private PageProps $pageProps;
+	private ConfigurationLoader $configurationLoader;
+	private SearchIndexUpdater $searchIndexUpdater;
+	private LinkRecommendationStore $linkRecommendationStore;
+	private LinkRecommendationProvider $linkRecommendationProvider;
+	private LinkRecommendationTaskType $linkRecommendationTaskType;
 
 	/**
 	 * @param IConnectionProvider $connectionProvider
@@ -204,18 +188,17 @@ class LinkRecommendationUpdater {
 		if ( is_array( $revertTagData ) ) {
 			$linkRecommendationChangeTagId = $this->changeDefNameTableStore
 				->acquireId( LinkRecommendationTaskTypeHandler::CHANGE_TAG );
-			$revertedAddLinkEditCount = $dbr->selectRowCount(
-				[ 'revision', 'change_tag' ],
-				'1',
-				[
-					'rev_id = ct_rev_id',
+			$revertedAddLinkEditCount = $dbr->newSelectQueryBuilder()
+				->from( 'revision' )
+				->join( 'change_tag', null, [ 'rev_id = ct_rev_id' ] )
+				->where( [
 					'rev_page' => $title->getArticleID(),
 					'rev_id <=' . (int)$revertTagData['newestRevertedRevId'],
 					'rev_id >=' . (int)$revertTagData['oldestRevertedRevId'],
 					'ct_tag_id' => $linkRecommendationChangeTagId,
-				],
-				__METHOD__
-			);
+				] )
+				->caller( __METHOD__ )
+				->fetchRowCount();
 			if ( $revertedAddLinkEditCount > 0 ) {
 				return $this->failure( 'last edit reverts a link recommendation edit' );
 			}

@@ -132,12 +132,10 @@ class UpdateMenteeData extends Maintenance {
 			$menteeIdsToDelete = array_diff(
 				array_map(
 					'intval',
-					$dbw->selectFieldValues(
-						'growthexperiments_mentee_data',
-						'mentee_id',
-						'',
-						__METHOD__
-					)
+					$dbw->newSelectQueryBuilder()
+						->select( 'mentee_id' )
+						->from( 'growthexperiments_mentee_data' )
+						->caller( __METHOD__ )->fetchFieldValues()
 				),
 				$allUpdatedMenteeIds
 			);

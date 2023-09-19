@@ -41,14 +41,11 @@ class PurgeExpiredMentorStatus extends Maintenance {
 	}
 
 	private function getRows() {
-		yield from $this->dbr->select(
-			'user_properties',
-			[ 'up_user', 'up_value' ],
-			[
-				'up_property' => MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF
-			],
-			__METHOD__
-		);
+		yield from $this->dbr->newSelectQueryBuilder()
+			->select( [ 'up_user', 'up_value' ] )
+			->from( 'user_properties' )
+			->where( [ 'up_property' => MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF ] )
+			->caller( __METHOD__ )->fetchResultSet();
 	}
 
 	private function filterAndBatch() {

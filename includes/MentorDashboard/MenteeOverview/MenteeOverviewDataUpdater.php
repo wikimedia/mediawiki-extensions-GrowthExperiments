@@ -18,29 +18,14 @@ use Wikimedia\Rdbms\LBFactory;
 class MenteeOverviewDataUpdater {
 	public const LAST_UPDATE_PREFERENCE = 'growthexperiments-mentor-dashboard-last-update';
 
-	/** @var UncachedMenteeOverviewDataProvider */
-	private $uncachedMenteeOverviewDataProvider;
-
-	/** @var MenteeOverviewDataProvider */
-	private $menteeOverviewDataProvider;
-
-	/** @var MentorStore */
-	private $mentorStore;
-
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
-
-	/** @var LBFactory */
-	private $lbFactory;
-
-	/** @var ILoadBalancer */
-	private $growthLoadBalancer;
-
-	/** @var int */
-	private $batchSize = 200;
-
-	/** @var array */
-	private $mentorProfilingInfo = [];
+	private UncachedMenteeOverviewDataProvider $uncachedMenteeOverviewDataProvider;
+	private MenteeOverviewDataProvider $menteeOverviewDataProvider;
+	private MentorStore $mentorStore;
+	private UserOptionsManager $userOptionsManager;
+	private LBFactory $lbFactory;
+	private ILoadBalancer $growthLoadBalancer;
+	private int $batchSize = 200;
+	private array $mentorProfilingInfo = [];
 
 	/**
 	 * @param UncachedMenteeOverviewDataProvider $uncachedMenteeOverviewDataProvider
@@ -97,12 +82,11 @@ class MenteeOverviewDataUpdater {
 		$updatedMenteeIds = [];
 		foreach ( $data as $menteeId => $menteeData ) {
 			$encodedData = FormatJson::encode( $menteeData );
-			$storedEncodedData = $dbr->selectField(
-				'growthexperiments_mentee_data',
-				'mentee_data',
-				[ 'mentee_id' => $menteeId ],
-				__METHOD__
-			);
+			$storedEncodedData = $dbr->newSelectQueryBuilder()
+				->select( 'mentee_data' )
+				->from( 'growthexperiments_mentee_data' )
+				->where( [ 'mentee_id' => $menteeId ] )
+				->caller( __METHOD__ )->fetchField();
 			if ( $storedEncodedData === false ) {
 				// Row doesn't exist yet, insert it
 				$dbw->insert(

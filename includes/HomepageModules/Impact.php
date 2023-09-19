@@ -11,6 +11,7 @@ use GrowthExperiments\ExperimentUserManager;
 use Html;
 use IContextSource;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MWTimestamp;
@@ -630,21 +631,21 @@ class Impact extends BaseModule {
 	 * @throws Exception
 	 */
 	private function getArticleEditCount() {
-		$actorMigration = ActorMigration::newMigration();
 		$dbr = $this->connectionProvider->getReplicaDatabase();
-		$actorQuery = $actorMigration->getWhere( $dbr, 'rev_user', $this->getContext()->getUser() );
-		return $dbr->selectRowCount(
-			array_merge( [ 'revision' ], $actorQuery[ 'tables' ], [ 'page' ] ),
-			'rev_id',
-			[
-				$actorQuery[ 'conds' ],
+		return $dbr->newSelectQueryBuilder()
+			->select( 'rev_id' )
+			->from( 'revision' )
+			->join( 'page', null, [ 'rev_page = page_id' ] )
+			->where( [
+				'rev_actor' => MediaWikiServices::getInstance()->getActorNormalization()->findActorId(
+					$this->getUser(),
+					$dbr
+				),
 				'rev_deleted' => 0,
-				'page_namespace' => 0,
-			],
-			__METHOD__,
-			[],
-			[ 'page' => [ 'JOIN', [ 'rev_page = page_id' ] ] ] + $actorQuery[ 'joins' ]
-		);
+				'page_namespace' => NS_MAIN,
+			] )
+			->caller( __METHOD__ )
+			->fetchRowCount();
 	}
 
 	private function getArticleOrTotalEditCountText() {
