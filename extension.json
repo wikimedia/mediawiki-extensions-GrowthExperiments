@@ -647,7 +647,7 @@
 	"ResourceModules": {
 		"ext.growthExperiments.mobileMenu.icons": {
 			"class": "ResourceLoaderImageModule",
-			"selector": ".mw-ui-icon-minerva-{name}:before",
+			"selector": ".minerva-icon--{name}",
 			"defaultColor": "#54595d",
 			"images": {
 				"newspaper": {
