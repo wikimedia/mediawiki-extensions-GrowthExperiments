@@ -135,7 +135,7 @@ class WelcomeSurveyHooks implements
 
 	/** @inheritDoc */
 	public function onSpecialPageBeforeExecute( $special, $subPage ) {
-		$context = RequestContext::getMain();
+		$context = $special->getContext();
 		$user = $context->getUser();
 		if ( $special instanceof SpecialUserLogin && $user->isAnon() ) {
 			$request = $context->getRequest();
