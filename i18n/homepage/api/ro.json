@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"NGC 54"
+			"NGC 54",
+			"Amire80"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Obțineți întrebări în format publicate prin intermediul modulelor paginii acasă",
@@ -15,7 +16,7 @@
 	"apihelp-growthsetmentor-param-reason": "Motivul pentru schimbare",
 	"apihelp-query+growthimagesuggestiondata-summary": "Preia [[mw:wikitech:Add_Image|datele asociate legate de sugestiile de imagini]], dacă sunt disponibile",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidează o recomandare de imagine.",
-	"apihelp-growthinvalidateimagerecommendation-extended-description": "Apelarea acestui API va:\n\n* Reseta [[mw:wikitech:Add_Image|eticheta ponderată \"hasrecommendation:image\"]] pentru articol, astfel încât articolul nu mai este furnizat în rezultatele căutării după  sugestii de imagine.\n\n* Adăuga articolul într-un cache de scurtă durată, pe care ImageRecommendationFilter al extensiei [[mw:Extension:GrowthExperiments|GrowthExperiments]] îl consultă pentru a decide dacă articolul ar trebui exclus din coada de editări sugerate ale utilizatorului când este accesată pe [[Special:Homepage]] sau via API-ul [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]].\n\n* Generata și trimite un eveniment către EventGate la [https://schema.wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback image-suggestion-feedback stream]. Asta permite îmbunătățiri în canalul de sugestii de imagini, căci codul din canal poate lua în considerare feedback-ul utilizatorilor atunci când se generează recomandări.\n\nLectură suplimentară: [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image]]",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "Apelarea acestui API va:\n\n* Reseta [[mw:wikitech:Add_Image|eticheta ponderată \"hasrecommendation:image\"]] pentru articol, astfel încât articolul nu mai este furnizat în rezultatele căutării după sugestii de imagine.\n\n* Adăuga articolul într-un cache de scurtă durată, pe care ImageRecommendationFilter al extensiei [[mw:Extension:GrowthExperiments|GrowthExperiments]] îl consultă pentru a decide dacă articolul ar trebui exclus din coada de editări sugerate ale utilizatorului când este accesată pe [[Special:Homepage]] sau via API-ul [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]].\n\n* Generata și trimite un eveniment către EventGate la [https://schema.wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback image-suggestion-feedback stream]. Asta permite îmbunătățiri în canalul de sugestii de imagini, căci codul din canal poate lua în considerare feedback-ul utilizatorilor atunci când se generează recomandări.\n\nLectură suplimentară: [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image]]",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Titlul articolului pentru care este sarcina de recomandare de imagine",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "Numele fișierului fără prefix pentru recomandarea de imagine, de exemplu <kbd>Foo.jpg</kbd>"
 }
