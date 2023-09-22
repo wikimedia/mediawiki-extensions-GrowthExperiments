@@ -8,6 +8,7 @@ use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
+use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserNameUtils;
 use MessageLocalizer;
 use SpecialPage;
@@ -64,13 +65,38 @@ class StructuredMentorProvider extends MentorProvider {
 		UserIdentity $mentorUser,
 		?UserIdentity $menteeUser = null
 	): Mentor {
-		$mentorData = $this->getMentorDataForUser( $mentorUser );
+		return $this->newFromMentorDataAndUserIdentity(
+			$this->getMentorDataForUser( $mentorUser ),
+			$mentorUser,
+			$menteeUser
+		);
+	}
+
+	/**
+	 * @param array|null $mentorData
+	 * @param UserIdentity $mentorUser
+	 * @param UserIdentity|null $menteeUser
+	 * @return Mentor
+	 */
+	private function newFromMentorDataAndUserIdentity(
+		?array $mentorData,
+		UserIdentity $mentorUser,
+		?UserIdentity $menteeUser = null
+	): Mentor {
+		$weight = $mentorData['weight'] ?? IMentorWeights::WEIGHT_NORMAL;
+		if (
+			$mentorData &&
+			array_key_exists( 'automaticallyAssigned', $mentorData ) &&
+			!$mentorData['automaticallyAssigned']
+		) {
+			// T347157: To aid with migration; remove once automaticallyAssigned is not set.
+			$weight = IMentorWeights::WEIGHT_NONE;
+		}
 		return new Mentor(
 			$mentorUser,
-			$this->getCustomMentorIntroText( $mentorUser ),
+			$mentorData['message'] ?? null,
 			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ),
-			$mentorData['automaticallyAssigned'] ?? true,
-			$mentorData['weight'] ?? IMentorWeights::WEIGHT_NORMAL
+			$weight
 		);
 	}
 
@@ -89,15 +115,6 @@ class StructuredMentorProvider extends MentorProvider {
 			->params( $mentor->getName() )
 			->params( $mentee ? $mentee->getName() : '' )
 			->text();
-	}
-
-	/**
-	 * @param UserIdentity $mentor
-	 * @return string|null
-	 */
-	private function getCustomMentorIntroText( UserIdentity $mentor ): ?string {
-		$mentorData = $this->getMentorDataForUser( $mentor );
-		return $mentorData ? $mentorData['message'] : null;
 	}
 
 	/**
@@ -128,9 +145,13 @@ class StructuredMentorProvider extends MentorProvider {
 	public function getAutoAssignedMentors(): array {
 		$userIDs = array_keys( array_filter(
 			$this->getMentorData(),
-			static function ( array $mentorData ) {
-				return $mentorData['automaticallyAssigned'];
-			}
+			function ( array $mentorData, int $userId ) {
+				return $this->newFromMentorDataAndUserIdentity(
+					$mentorData,
+					new UserIdentityValue( $userId, $mentorData['username'] ?? '' )
+				)->getWeight() !== IMentorWeights::WEIGHT_NONE;
+			},
+			ARRAY_FILTER_USE_BOTH
 		) );
 
 		if ( $userIDs === [] ) {
@@ -151,12 +172,16 @@ class StructuredMentorProvider extends MentorProvider {
 
 		$usernames = [];
 		foreach ( $mentors as $userId => $mentorData ) {
-			if ( !$mentorData['automaticallyAssigned'] ) {
+			$user = $this->userIdentityLookup->getUserIdentityByUserId( $userId );
+			if ( !$user ) {
 				continue;
 			}
 
-			$user = $this->userIdentityLookup->getUserIdentityByUserId( $userId );
-			if ( !$user ) {
+			$mentor = $this->newFromMentorDataAndUserIdentity(
+				$mentorData,
+				$user
+			);
+			if ( $mentor->getWeight() === IMentorWeights::WEIGHT_NONE ) {
 				continue;
 			}
 
@@ -175,9 +200,13 @@ class StructuredMentorProvider extends MentorProvider {
 	public function getManuallyAssignedMentors(): array {
 		$userIDs = array_keys( array_filter(
 			$this->getMentorData(),
-			static function ( array $mentorData ) {
-				return !$mentorData['automaticallyAssigned'];
-			}
+			function ( array $mentorData, int $userId ) {
+				return $this->newFromMentorDataAndUserIdentity(
+					$mentorData,
+					new UserIdentityValue( $userId, $mentorData['username'] ?? '' )
+				)->getWeight() === IMentorWeights::WEIGHT_NONE;
+			},
+			ARRAY_FILTER_USE_BOTH
 		) );
 
 		if ( $userIDs === [] ) {

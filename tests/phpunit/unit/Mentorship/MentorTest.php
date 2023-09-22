@@ -20,7 +20,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 123, 'Mentor' ),
 			null,
 			'foo',
-			true,
 			IMentorWeights::WEIGHT_NORMAL
 		);
 		$this->assertInstanceOf( Mentor::class, $mentor );
@@ -35,7 +34,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 			$mentorUserIdentity,
 			null,
 			'foo',
-			true,
 			IMentorWeights::WEIGHT_NORMAL
 		);
 
@@ -53,7 +51,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 123, 'Mentor' ),
 			$introText,
 			'foo',
-			true,
 			IMentorWeights::WEIGHT_NORMAL
 		);
 
@@ -74,29 +71,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param bool $autoAssigned
-	 * @covers ::getAutoAssigned
-	 * @dataProvider provideGetAutoAssigned
-	 */
-	public function testGetAutoAssigned( bool $autoAssigned ) {
-		$mentor = new Mentor(
-			new UserIdentityValue( 123, 'Mentor' ),
-			null,
-			'foo',
-			$autoAssigned,
-			IMentorWeights::WEIGHT_NORMAL
-		);
-		$this->assertEquals( $autoAssigned, $mentor->getAutoAssigned() );
-	}
-
-	public static function provideGetAutoAssigned() {
-		return [
-			[ true ],
-			[ false ]
-		];
-	}
-
-	/**
 	 * @param int $weight
 	 * @covers ::getWeight
 	 * @dataProvider provideGetWeight
@@ -106,7 +80,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 123, 'Mentor' ),
 			null,
 			'foo',
-			true,
 			$weight
 		);
 		$this->assertEquals( $weight, $mentor->getWeight() );
@@ -114,6 +87,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 
 	public static function provideGetWeight() {
 		return [
+			[ IMentorWeights::WEIGHT_NONE ],
 			[ IMentorWeights::WEIGHT_NORMAL ],
 			[ IMentorWeights::WEIGHT_LOW ],
 			[ IMentorWeights::WEIGHT_HIGH ],
@@ -130,7 +104,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 123, 'Mentor' ),
 			null,
 			'foo',
-			true,
 			IMentorWeights::WEIGHT_NORMAL
 		);
 
@@ -143,25 +116,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getAutoAssigned
-	 * @covers ::setAutoAssigned
-	 */
-	public function testSetAutoAssigned() {
-		$mentor = new Mentor(
-			new UserIdentityValue( 123, 'Mentor' ),
-			null,
-			'foo',
-			true,
-			IMentorWeights::WEIGHT_NORMAL
-		);
-
-		$this->assertTrue( $mentor->getAutoAssigned() );
-
-		$mentor->setAutoAssigned( false );
-		$this->assertFalse( $mentor->getAutoAssigned() );
-	}
-
-	/**
 	 * @covers ::getWeight
 	 * @covers ::setWeight
 	 */
@@ -170,7 +124,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 123, 'Mentor' ),
 			null,
 			'foo',
-			true,
 			IMentorWeights::WEIGHT_NORMAL
 		);
 

@@ -73,7 +73,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 			$services->getWikiPageFactory(),
 			$services->getTitleFactory(),
 			new StaticMentorManager( [
-				$user->getName() => new Mentor( $mentor, '', '', true, IMentorWeights::WEIGHT_NORMAL ),
+				$user->getName() => new Mentor( $mentor, '', '', IMentorWeights::WEIGHT_NORMAL ),
 			] ),
 			$services->getPermissionManager(),
 			$services->getPerDbNameStatsdDataFactory(),

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -11,32 +12,29 @@ use MediaWiki\User\UserIdentity;
  * mentor's custom introduction message, if there is any, or whether they're automatically
  * assigned to newcomers).
  */
-class Mentor {
+class Mentor implements IMentorWeights {
 
 	private UserIdentity $mentorUser;
 	private ?string $introText;
 	private string $defaultIntroText;
-	private bool $autoAssigned;
+	/** @var int One of Mentor::WEIGHT_* */
 	private int $weight;
 
 	/**
 	 * @param UserIdentity $mentorUser
 	 * @param string|null $introText if null, $defaultIntroText will be used instead
 	 * @param string $defaultIntroText
-	 * @param bool $autoAssigned
 	 * @param int $weight
 	 */
 	public function __construct(
 		UserIdentity $mentorUser,
 		?string $introText,
 		string $defaultIntroText,
-		bool $autoAssigned,
 		int $weight
 	) {
 		$this->mentorUser = $mentorUser;
 		$this->introText = $introText;
 		$this->defaultIntroText = $defaultIntroText;
-		$this->autoAssigned = $autoAssigned;
 		$this->weight = $weight;
 	}
 
@@ -64,13 +62,15 @@ class Mentor {
 
 	/**
 	 * @return bool Is the mentor automatically assigned to newcomers?
+	 * @deprecated since 1.41, use getWeight() instead
 	 */
 	public function getAutoAssigned(): bool {
-		return $this->autoAssigned;
+		wfDeprecated( __METHOD__, '1.41' );
+		return $this->weight === self::WEIGHT_NONE;
 	}
 
 	/**
-	 * @return int Mentor's weight (one of IMentorWeights::WEIGHT_*)
+	 * @return int Mentor's weight (one of Mentor::WEIGHT_*)
 	 */
 	public function getWeight(): int {
 		return $this->weight;
@@ -85,9 +85,11 @@ class Mentor {
 
 	/**
 	 * @param bool $autoAssigned
+	 * @deprecated since 1.41, use getWeight() instead
 	 */
 	public function setAutoAssigned( bool $autoAssigned ): void {
-		$this->autoAssigned = $autoAssigned;
+		wfDeprecated( __METHOD__, '1.41' );
+		$this->setWeight( self::WEIGHT_NONE );
 	}
 
 	/**

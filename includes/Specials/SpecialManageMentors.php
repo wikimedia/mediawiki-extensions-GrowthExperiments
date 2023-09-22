@@ -114,8 +114,10 @@ class SpecialManageMentors extends SpecialPage {
 	 * @return array{0:string,1:int}
 	 */
 	private function formatWeight( Mentor $mentor ): array {
-		$msgKey = null;
 		switch ( $mentor->getWeight() ) {
+			case IMentorWeights::WEIGHT_NONE:
+				$msgKey = 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none';
+				break;
 			case IMentorWeights::WEIGHT_LOW:
 				$msgKey = 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low';
 				break;
