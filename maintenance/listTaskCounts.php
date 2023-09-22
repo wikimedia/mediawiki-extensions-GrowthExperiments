@@ -122,7 +122,9 @@ class ListTaskCounts extends Maintenance {
 			$suggestionsInfo = $suggestionsInfoService;
 		}
 		$info = $suggestionsInfo->getInfo( [ 'resetCache' => true ] );
-		[ 'topics' => $topicsInfo, 'tasks' => $tasksInfo ] = $info;
+
+		$topicsInfo = $info['topics'] ?? [];
+		$tasksInfo = $info['tasks'] ?? [];
 
 		foreach ( $taskTypes as $taskType ) {
 			foreach ( $topics as $topic ) {
