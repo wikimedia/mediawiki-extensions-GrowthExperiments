@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use ChangeTags;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
@@ -68,7 +69,7 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 		$revId = $this->getLatestEditId( $mentorListTitle );
 		$this->assertEditTagged( [ StructuredMentorWriter::CHANGE_TAG ], $revId );
 
-		$mentor->setAutoAssigned( false );
+		$mentor->setWeight( IMentorWeights::WEIGHT_NONE );
 		$oldRevId = $revId;
 		$writer->changeMentor( $mentor, $mentorUser, 'Change mentor' );
 		$revId = $this->getLatestEditId( $mentorListTitle );

@@ -74,12 +74,10 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 					$mentorAuto->getId() => [
 						'message' => null,
 						'weight' => 2,
-						'automaticallyAssigned' => true
 					],
 					$mentorManual->getId() => [
 						'message' => 'I only test mentorship',
-						'weight' => 2,
-						'automaticallyAssigned' => false
+						'weight' => 0,
 					]
 				]
 			] )

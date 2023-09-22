@@ -25,7 +25,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "{{doc-apihelp-param|growthmanagementorlist|geaction}}",
 	"apihelp-growthmanagementorlist-param-message": "{{doc-apihelp-param|growthmanagementorlist|message}}",
 	"apihelp-growthmanagementorlist-param-weight": "{{doc-apihelp-param|growthmanagementorlist|weight}}",
-	"apihelp-growthmanagementorlist-param-autoassigned": "{{doc-apihelp-param|growthmanagementorlist|autoassigned}}",
 	"apihelp-growthmanagementorlist-param-isaway": "{{doc-apihelp-param|growthmanagementorlist|isaway}}",
 	"apihelp-growthmanagementorlist-param-awaytimestamp": "{{doc-apihelp-param|growthmanagementorlist|awaytimestamp}}",
 	"apihelp-growthmanagementorlist-param-summary": "{{doc-apihelp-param|growthmanagementorlist|summary}}",

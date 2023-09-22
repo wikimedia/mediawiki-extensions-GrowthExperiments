@@ -219,7 +219,6 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::newMentorFromUserIdentity
-	 * @covers ::getCustomMentorIntroText
 	 * @covers ::getDefaultMentorIntroText
 	 * @dataProvider provideNewMentorFromUserIdentity
 	 * @param int $userId
@@ -280,7 +279,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->getWikiConfigLoaderMock(),
 			$userIdentityLookup,
 			$this->createNoOpMock( UserNameUtils::class ),
-			$this->createNoOpMock( MessageLocalizer::class ),
+			$this->getMockMessageLocalizer(),
 			$this->createNoOpMock( Title::class )
 		);
 		$provider->$methodToCall();
@@ -317,7 +316,7 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->getWikiConfigLoaderMock(),
 			$userIdentityLookup,
 			$this->createNoOpMock( UserNameUtils::class ),
-			$this->createNoOpMock( MessageLocalizer::class ),
+			$this->getMockMessageLocalizer(),
 			$this->createNoOpMock( Title::class )
 		);
 

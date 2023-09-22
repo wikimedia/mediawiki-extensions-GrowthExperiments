@@ -70,7 +70,6 @@ class StructuredMentorWriter implements IMentorWriter {
 		return [
 			'message' => $mentor->hasCustomIntroText() ? $mentor->getIntroText() : null,
 			'weight' => $mentor->getWeight(),
-			'automaticallyAssigned' => $mentor->getAutoAssigned(),
 		];
 	}
 

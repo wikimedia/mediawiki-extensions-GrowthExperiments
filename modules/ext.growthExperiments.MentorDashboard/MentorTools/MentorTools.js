@@ -68,7 +68,7 @@
 		);
 		const weightOptions = [
 			new OO.ui.MenuOptionWidget( {
-				data: 'none',
+				data: 0,
 				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none' )
 			} ),
 			new OO.ui.MenuOptionWidget( {
@@ -93,13 +93,11 @@
 		} );
 
 		// Populated via PHP, see MentorTools::getBody (search for getMentorWeight)
-		const mentorWeight = $( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown select' ).val(),
-			mentorWeightInt = Number( mentorWeight );
 		this.mentorWeightDropdown.getMenu().selectItem(
 			this.mentorWeightDropdown.getMenu().findItemFromData(
-				// findItemFromData uses datatype-sensitive comparator; parseInt() is required
-				// we use a ternary condition to avoid issues with the 'none' weight
-				!isNaN( mentorWeightInt ) ? mentorWeightInt : mentorWeight
+				Number(
+					$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown select' ).val()
+				)
 			)
 		);
 
@@ -165,15 +163,11 @@
 	 * @return {Promise<void>|Promise<any>|*}
 	 */
 	MentorTools.prototype.setMentorWeight = function ( selectedItem ) {
-		const apiOptions = {
+		return new mw.Api().postWithToken( 'csrf', {
 			action: 'growthmanagementorlist',
 			geaction: 'change',
-			autoassigned: selectedItem.getData() !== 'none'
-		};
-		if ( selectedItem.getData() !== 'none' ) {
-			apiOptions.weight = Number( selectedItem.getData() );
-		}
-		return new mw.Api().postWithToken( 'csrf', apiOptions );
+			weight: Number( selectedItem.getData() )
+		} );
 	};
 
 	MentorTools.prototype.onMentorWeightDropdownChanged = function () {

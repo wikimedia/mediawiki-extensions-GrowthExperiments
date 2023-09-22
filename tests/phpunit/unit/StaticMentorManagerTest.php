@@ -22,14 +22,12 @@ class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 12, 'FooMentor' ),
 			'text 1',
 			'',
-			true,
 			IMentorWeights::WEIGHT_NORMAL
 		);
 		$mentor2 = new Mentor(
 			new UserIdentityValue( 13, 'BarMentor' ),
 			'text 2',
 			'',
-			true,
 			IMentorWeights::WEIGHT_NORMAL
 		);
 		$mentorManager = new StaticMentorManager( [ 'Foo' => $mentor1, 'Bar' => $mentor2 ] );
@@ -47,14 +45,12 @@ class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 12, 'FooMentor' ),
 			'text 1',
 			'',
-			true,
 			IMentorWeights::WEIGHT_NORMAL
 		);
 		$mentor2 = new Mentor(
 			new UserIdentityValue( 13, 'BarMentor' ),
 			'text 2',
 			'',
-			true,
 			IMentorWeights::WEIGHT_NORMAL
 		);
 		$mentorManager = new StaticMentorManager( [ 'Foo' => $mentor1, 'Bar' => $mentor2 ] );
