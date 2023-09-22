@@ -55,7 +55,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'growthexperiments-homepage-claimmentee-title' )->text();
+		return $this->msg( 'growthexperiments-homepage-claimmentee-title' );
 	}
 
 	protected function preHtml() {

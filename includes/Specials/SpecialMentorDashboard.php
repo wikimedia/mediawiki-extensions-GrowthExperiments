@@ -61,7 +61,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'growthexperiments-mentor-dashboard-title' )->text();
+		return $this->msg( 'growthexperiments-mentor-dashboard-title' );
 	}
 
 	/**

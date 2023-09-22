@@ -215,7 +215,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'growthexperiments-edit-config-title' )->text();
+		return $this->msg( 'growthexperiments-edit-config-title' );
 	}
 
 	/**
