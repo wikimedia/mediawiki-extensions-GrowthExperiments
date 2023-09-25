@@ -18,7 +18,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Äʹšš lij seʹlvv.",
 	"growthexperiments-homepage-recent-questions-archived": "arkiivõsttum",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|muuttâs|muttâz|muttsed}}",
-	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktiivlaž}} $2 {{PLURAL:$2|peiʹvv|peeiʹv|peiʹvved}} mââiårra",
+	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktiivlaž}} $2 {{PLURAL:$2|$2 peiʹvved|1=peiʹvv|2=2 peeiʹv|3=3 peeiʹv|4=4 peeiʹv|5=5 peeiʹv|6=6 peeiʹv}} mââiårra",
 	"growthexperiments-homepage-suggestededits-no-results": "Eʹtǩǩõõzz jie käunnʼjam",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Raaj ođđ artikkeeʹl",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Lââʹssteâđ",
