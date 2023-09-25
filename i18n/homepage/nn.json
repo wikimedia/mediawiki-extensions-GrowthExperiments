@@ -51,5 +51,7 @@
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 endringar hittil",
 	"tag-newcomer_task": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks|Oppgåve for nybyrjarar]]",
 	"tag-newcomer_task_copyedit": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#copyedit|Oppgåve for nybyrjarar: korrekturlesing]]",
+	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link|Føreslege: legg til lenkjer]]",
+	"growthexperiments-addlink-summary-summary": "Lenkjeframlegg: $1 {{PLURAL:$1|lenkje lagd|lenkjer lagde}} til.",
 	"echo-category-title-ge-newcomer": "Nybyrjarfunksjonar"
 }
