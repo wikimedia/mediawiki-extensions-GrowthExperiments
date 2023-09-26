@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Filzstift"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Du kannst dich bei Bedarf aktiv als {{GENDER:|Lotse|Lotsin}} einem Neuling zuordnen. Dies ist beispielsweise bei Einführungsveranstaltungen sinnvoll, damit eine Lotsin oder ein Lotse mehrere Neulinge innerhalb und ausserhalb des Projektes betreuen kann.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Es wird empfohlen, mit der Einstellung «Mittelwert» zu beginnen. So kannst du ausprobieren, ob dir die Menge an Neulingen genügt oder ob du sie erhöhen oder verringern möchtest."
+}

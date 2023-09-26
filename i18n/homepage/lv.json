@@ -453,6 +453,7 @@
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|citi|cits|citi}}",
 	"growthexperiments-addimage-reason-wikipedia-project": "Izmantots tajā pašā rakstā $1 valodā.",
 	"growthexperiments-addimage-reason-wikidata": "Atrasts Wikidata ierakstā par šo rakstu (spēcīga atbilstība).",
+	"growthexperiments-addimage-reason-commons": "Viens no vairākiem attēliem, kas saistīti ar šī raksta Wikidata vienumu.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Sapratu",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Sapratu",
 	"growthexperiments-homepage-mentorship-optin-header": "Labošanas mentors",

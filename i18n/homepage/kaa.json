@@ -7,5 +7,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Sálem}}, {{bidi:$1}}!",
 	"prefs-homepage": "Jańadan qosılǵan redaktorlar ushın funciyalar",
-	"growthexperiments-homepage-email-changelink": "ózgertiw"
+	"growthexperiments-homepage-email-changelink": "ózgertiw",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Siltemeler qosıw adamlarǵa tezirek úyreniwge járdem beredi.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Mısal gáp"
 }

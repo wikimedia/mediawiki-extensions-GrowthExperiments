@@ -17,7 +17,8 @@
 			"沈澄心",
 			"羊羊32521",
 			"魔琴",
-			"Stang"
+			"Stang",
+			"LittlePaw365"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|欢迎}}，$1！",
@@ -26,7 +27,7 @@
 	"welcomesurvey-subtitle": "回答几个可选的问题来帮助我们改善{{GENDER:|您}}在维基百科的体验。",
 	"welcomesurvey-save-btn": "完成",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|跳过}}该调查",
-	"welcomesurvey-close-btn": "关闭并返回至 $1",
+	"welcomesurvey-close-btn": "关闭并返回$1",
 	"welcomesurvey-sidebar-privacy-title": "我们重视{{GENDER:|您的}}隐私",
 	"welcomesurvey-sidebar-privacy-text": "维基媒体基金会将使用{{GENDER:$2|您的}}回答协助您编辑{{SITENAME}}。$1。",
 	"welcomesurvey-privacy-policy-link-text": "了解更多关于新用户的数据",
