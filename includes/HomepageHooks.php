@@ -786,14 +786,11 @@ class HomepageHooks implements
 			];
 		}
 
-		$geEnabled = $request->getInt( self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED, -1 );
-		if ( $geEnabled !== null ) {
-			$formDescriptor[self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED] = [
-				'type' => 'hidden',
-				'name' => self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED,
-				'default' => $geEnabled
-			];
-		}
+		$formDescriptor[self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED] = [
+			'type' => 'hidden',
+			'name' => self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED,
+			'default' => $request->getInt( self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED, -1 )
+		];
 	}
 
 	/**
