@@ -226,6 +226,7 @@ module.exports = exports = {
 	}
 
 	&__message_text {
+		box-sizing: border-box;
 		font-family: inherit;
 		font-size: inherit;
 		padding: 8px;

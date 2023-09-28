@@ -88,6 +88,12 @@ module.exports = exports = {
 
 	&__dialog {
 		gap: 0;
+		// Overwrite: Codex CdxDialog does not support configuring the body styles. Avoid
+		// extra top vertical gutter caused by skins default stles by removing top padding.
+		/* stylelint-disable-next-line selector-class-pattern */
+		.cdx-dialog__body {
+			padding: 0 @spacing-150 @spacing-100;
+		}
 	}
 }
 </style>
