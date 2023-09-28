@@ -14,8 +14,8 @@
 			"Filzstift"
 		]
 	},
-	"growthexperiments-mentor-dashboard-title": "Lotsen-Verwaltungsseite",
-	"growthexperiments-mentor-dashboard-pt-link": "Lotsen-Verwaltungsseite",
+	"growthexperiments-mentor-dashboard-title": "Lotsen-Dashboard",
+	"growthexperiments-mentor-dashboard-pt-link": "Lotsen-Dashboard",
 	"growthexperiments-mentor-dashboard-disabled": "Die Lotsen-Verwaltungsseite ist in diesem Wiki nicht aktiviert.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Um die Lotsen-Verwaltungsseite zu aktivieren, musst du dich zunächst [[$1|als {{Gender:|Lotse|Lotsin}} eintragen]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Bevor die Lotsen-Verwaltungsseite benutzt werden kann, muss die Growth-Erweiterung konfiguriert werden. Ein Administrator kann [[Special:EditGrowthConfig]] dafür verwenden.",
@@ -91,7 +91,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Dein Status wurde auf \"Abwesend\" geändert.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "Nachricht an deine Neulinge",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Neuling übernehmen",
-	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Du kannst dich bei Bedarf aktiv als {{GENDER:|Lotse|Lotsin}} einem Neuling zuordnen. Dies ist beispielsweise bei Einführungsveranstaltungen sinnvoll, damit eine Lotsin oder ein Lotse mehrere Neulinge innerhalb und ausserhalb des Projektes betreuen kann.",
+	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Du kannst dich bei Bedarf aktiv als {{GENDER:|Lotse|Lotsin}} einem Neuling zuordnen. Dies ist beispielsweise bei Einführungsveranstaltungen sinnvoll, damit eine Lotsin oder ein Lotse mehrere Neulinge innerhalb und außerhalb des Projektes betreuen kann.",
 	"growthexperiments-rcfilters-mentorship-title": "Betreuung durch Lotsen",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Deine}} Sternchen-Mentees",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Deine Neulinge, die du auf deiner Lotsen-Verwaltungsseite mit einem Sternchen versehen hast.",
