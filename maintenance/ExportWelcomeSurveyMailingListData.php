@@ -111,7 +111,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			->limit( $this->getBatchSize() )
 			->caller( __METHOD__ );
 		if ( $toId ) {
-			$queryBuilderTemplate->where( 'user_id <= ' . $toId );
+			$queryBuilderTemplate->where( 'user_id <= ' . $dbr->addQuotes( $toId ) );
 		}
 
 		$homepageEnabledDefaultValue = $services->getUserOptionsLookup()
@@ -124,7 +124,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		$group = $this->getOption( 'group' );
 		do {
 			$queryBuilder = clone $queryBuilderTemplate;
-			$queryBuilder->andWhere( 'user_id > ' . ( $fromId ?? 0 ) );
+			$queryBuilder->andWhere( 'user_id > ' . $dbr->addQuotes( $fromId ?? 0 ) );
 			$result = $queryBuilder->fetchResultSet();
 			foreach ( $result as $row ) {
 				$fromId = $row->user_id;
@@ -164,7 +164,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 	 * @param string $registrationDate
 	 * @return int|null
 	 */
-	private function getLastUserIdBeforeRegistrationDate( IDatabase $dbr, string $registrationDate ) {
+	private function getLastUserIdBeforeRegistrationDate( IDatabase $dbr, string $registrationDate ): ?int {
 		$queryBuilder = new SelectQueryBuilder( $dbr );
 		$queryBuilder
 			->fields( [ 'user_id' => 'max(user_id)' ] )
@@ -172,7 +172,8 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			// Old user records have no registration date. We won't use 'from' dates old enough
 			// to encounter those so we can ignore them here.
 			->where( 'user_registration <= ' . $dbr->timestamp( $registrationDate ) );
-		return $queryBuilder->fetchField();
+		$res = $queryBuilder->fetchField();
+		return is_numeric( $res ) ? intval( $res ) : null;
 	}
 
 	/**

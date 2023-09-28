@@ -59,9 +59,8 @@ class WelcomeSurveyLogger {
 			'was_posted' => $this->webRequest->wasPosted(),
 			'user_id' => $this->user->getId(),
 			'token' => $this->webRequest->getVal( '_welcomesurveytoken' ),
-			'returnto_param_is_present' =>
-				$this->webRequest->getFuzzyBool( '_returnto' ) ??
-				$this->webRequest->getFuzzyBool( 'returnto' )
+			'returnto_param_is_present' => ( $this->webRequest->getVal( '_returnto' ) ??
+				$this->webRequest->getVal( 'returnto' ) ) !== null,
 		];
 		// Used for integration testing, see SpecialWelcomeSurveyTest.php.
 		$this->loggedActions[] = $event;
