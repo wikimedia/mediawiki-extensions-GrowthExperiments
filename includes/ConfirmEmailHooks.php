@@ -5,11 +5,13 @@ namespace GrowthExperiments;
 use Html;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
+use MediaWiki\User\Hook\UserSendConfirmationMailHook;
 use Message;
 use RequestContext;
 use User;
 
-class ConfirmEmailHooks {
+class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmationMailHook {
 
 	/**
 	 * @return bool Whether the email confirmation improvements are enabled
@@ -25,8 +27,8 @@ class ConfirmEmailHooks {
 	 * @param array &$formDescriptor HTMLForm form descriptor
 	 * @param string $action
 	 */
-	public static function onAuthChangeFormFields(
-		array $requests, array $fieldInfo, array &$formDescriptor, $action
+	public function onAuthChangeFormFields(
+		$requests, $fieldInfo, &$formDescriptor, $action
 	) {
 		if ( !self::isConfirmEmailEnabled() ) {
 			return;
@@ -83,7 +85,7 @@ class ConfirmEmailHooks {
 	 * @param array &$mail
 	 * @param array $info
 	 */
-	public static function onUserSendConfirmationMail( User $user, array &$mail, array $info ) {
+	public function onUserSendConfirmationMail( $user, &$mail, $info ) {
 		if ( !self::isConfirmEmailEnabled() ) {
 			return;
 		}

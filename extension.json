@@ -459,12 +459,15 @@
 				"GrowthExperimentsWelcomeSurveyFactory",
 				"GrowthExperimentsCampaignConfig"
 			]
+		},
+		"confirmEmail": {
+			"class": "GrowthExperiments\\ConfirmEmailHooks"
 		}
 	},
 	"Hooks": {
 		"APIGetAllowedParams": "visualeditor",
 		"AuthChangeFormFields": [
-			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
+			"confirmEmail",
 			"homepage",
 			"variant",
 			"mentor"
@@ -589,9 +592,7 @@
 		],
 		"UserGetRights": "mentor",
 		"UnitTestsAfterDatabaseSetup": "schema",
-		"UserSendConfirmationMail": [
-			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
-		],
+		"UserSendConfirmationMail": "confirmEmail",
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
 		"VisualEditorApiVisualEditorEditPostSave": [
 			"levelingup",
