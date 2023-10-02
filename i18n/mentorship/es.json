@@ -131,6 +131,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Hola $1, soy tu {{GENDER:$2|mentor|mentora}}. Gracias por tus contribuciones. Veo que has estado editando y sólo quería dedicarte un momento para darte las gracias y decirte que espero que sigas participando. No dudes en dejar un mensaje en mi página de discusión si alguna vez tienes preguntas. Saludos.",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Reconoce su labor",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Los mensajes positivos de parte de las personas mentoras y/o más experimentadas pueden ayudar a mejorar la retención de quienes acaban de llegar.",
+	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "Más información",
 	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "Requisitos: $1 {{PLURAL:$1|contribución|contribuciones}} en {{PLURAL:$2|el último|los últimos}} $2 {{PLURAL:$2|día|días}}. Personaliza estas cifras en los ajustes.",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "Aquí se mostrarán tus aprendices destacados.",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "$1 mensajes en la discusión",
