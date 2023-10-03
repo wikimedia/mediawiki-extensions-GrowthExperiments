@@ -55,20 +55,17 @@ class DeleteOldSurveys extends Maintenance {
 		$break = false;
 		$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
 		do {
-			$res = $dbr->select(
-				[ 'user', 'user_properties' ],
-				[ 'user_id', 'up_value', 'user_registration' ],
-				[
-					'user_id = up_user',
+			$res = $dbr->newSelectQueryBuilder()
+				->select( [ 'user_id', 'up_value', 'user_registration' ] )
+				->from( 'user_properties' )
+				->join( 'user', null, [ 'user_id = up_user' ] )
+				->where( [
 					'up_property' => WelcomeSurvey::SURVEY_PROP,
-					'user_id > ' . $dbr->addQuotes( $fromUserId ),
-				],
-				__METHOD__,
-				[
-					'ORDER BY' => 'user_id ASC',
-					'LIMIT' => $this->mBatchSize,
-				]
-			);
+					'user_id > ' . $dbr->addQuotes( $fromUserId )
+				] )
+				->orderBy( 'user_id ASC' )
+				->limit( $this->mBatchSize )
+				->caller( __METHOD__ )->fetchResultSet();
 			$ids = [];
 			$deletedCount = $skippedCount = 0;
 			foreach ( $res as $row ) {

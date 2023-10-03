@@ -20,13 +20,10 @@ use Wikimedia\Rdbms\ILoadBalancer;
  * that class for details about generating the data.
  */
 class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, ExpirationAwareness {
-	/** @var MentorStore */
-	private $mentorStore;
 
+	private MentorStore $mentorStore;
 	private ILoadBalancer $growthLB;
-
-	/** @var WANObjectCache */
-	protected $wanCache;
+	protected WANObjectCache $wanCache;
 
 	/**
 	 * @param WANObjectCache $wanCache
@@ -99,13 +96,11 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 					return $mentee->getId();
 				}, $mentees );
 
-				$res = $this->growthLB->getConnection( DB_REPLICA )->select(
-					'growthexperiments_mentee_data',
-					[ 'mentee_id', 'mentee_data' ],
-					[
-						'mentee_id' => $menteeIds
-					]
-				);
+				$res = $this->growthLB->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+					->select( [ 'mentee_id', 'mentee_data' ] )
+					->from( 'growthexperiments_mentee_data' )
+					->where( [ 'mentee_id' => $menteeIds ] )
+					->fetchResultSet();
 				$data = [];
 				foreach ( $res as $row ) {
 					$data[] = $this->formatDataForMentee( $row );

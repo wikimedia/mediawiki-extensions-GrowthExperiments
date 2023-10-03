@@ -33,17 +33,13 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	/** @var int Number of seconds in a day */
 	private const SECONDS_DAY = 86400;
 
-	/** @var MentorStore */
-	private $mentorStore;
+	private MentorStore $mentorStore;
 
-	/** @var NameTableStore */
-	private $changeTagDefStore;
+	private NameTableStore $changeTagDefStore;
 
-	/** @var ActorMigration */
-	private $actorMigration;
+	private ActorMigration $actorMigration;
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
+	private UserIdentityLookup $userIdentityLookup;
 	private TempUserConfig $tempUserConfig;
 
 	private IConnectionProvider $mainConnProvider;
@@ -292,25 +288,22 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private function getLastEditTimestampForUsersInternal( array $userIds ): array {
 		$startTime = microtime( true );
 
-		$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
-		$rows = $this->getReadConnection()->select(
-			[ 'revision' ] + $queryInfo['tables'],
-			[
-				'rev_user' => $queryInfo['fields']['rev_user'],
+		$rows = $this->getReadConnection()->newSelectQueryBuilder()
+			->select( [
+				'actor_user',
 				'last_edit' => 'MAX(rev_timestamp)'
-			],
-			[
-				$queryInfo['fields']['rev_user'] => $userIds,
-			],
-			__METHOD__,
-			[
-				'GROUP BY' => $queryInfo['fields']['rev_user'],
-			],
-			$queryInfo['joins']
-		);
+			] )
+			->from( 'revision' )
+			->join( 'actor', null, 'rev_actor = actor_id' )
+			->where( [
+				'actor_user' => $userIds,
+			] )
+			->caller( __METHOD__ )
+			->groupBy( 'actor_user' )
+			->fetchResultSet();
 		$res = [];
 		foreach ( $rows as $row ) {
-			$res[$row->rev_user] = $row->last_edit;
+			$res[$row->actor_user] = $row->last_edit;
 		}
 
 		$this->storeProfilingData(
@@ -408,14 +401,12 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private function getUsernames( array $userIds ): array {
 		$startTime = microtime( true );
 
-		$rows = $this->getReadConnection()->select(
-			'user',
-			[ 'user_id', 'user_name' ],
-			[
-				'user_id' => $userIds
-			],
-			__METHOD__
-		);
+		$rows = $this->getReadConnection()->newSelectQueryBuilder()
+			->select( [ 'user_id', 'user_name' ] )
+			->from( 'user' )
+			->where( [ 'user_id' => $userIds ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		$res = [];
 		foreach ( $rows as $row ) {
 			$res[$row->user_id] = $row->user_name;
@@ -559,20 +550,18 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			}
 		);
 
-		$rows = $this->getReadConnection()->select(
-			[ 'logging' ],
-			[ 'log_title', 'blocks' => 'COUNT(log_id)' ],
-			[
+		$rows = $this->getReadConnection()->newSelectQueryBuilder()
+			->select( [ 'log_title', 'blocks' => 'COUNT(log_id)' ] )
+			->from( 'logging' )
+			->where( [
 				'log_type' => 'block',
 				'log_action' => 'block',
-				'log_namespace' => 2,
+				'log_namespace' => NS_USER,
 				'log_title' => array_keys( $users )
-			],
-			__METHOD__,
-			[
-				'GROUP BY' => 'log_title',
-			]
-		);
+			] )
+			->groupBy( 'log_title' )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		$res = [];
 		foreach ( $rows as $row ) {
@@ -597,14 +586,12 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private function getEditCountsForUsers( array $userIds ): array {
 		$startTime = microtime( true );
 
-		$rows = $this->getReadConnection()->select(
-			'user',
-			[ 'user_id', 'user_editcount' ],
-			[
-				'user_id' => $userIds
-			],
-			__METHOD__
-		);
+		$rows = $this->getReadConnection()->newSelectQueryBuilder()
+			->select( [ 'user_id', 'user_editcount' ] )
+			->from( 'user' )
+			->where( [ 'user_id' => $userIds ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		$res = [];
 		foreach ( $rows as $row ) {
 			$res[$row->user_id] = (int)$row->user_editcount;

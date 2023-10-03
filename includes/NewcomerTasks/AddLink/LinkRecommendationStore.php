@@ -24,15 +24,9 @@ use Wikimedia\Rdbms\ILoadBalancer;
 class LinkRecommendationStore {
 
 	private ILoadBalancer $loadBalancer;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
-
-	/** @var PageStore */
-	private $pageStore;
+	private TitleFactory $titleFactory;
+	private LinkBatchFactory $linkBatchFactory;
+	private PageStore $pageStore;
 
 	/**
 	 * @param ILoadBalancer $loadBalancer
@@ -62,17 +56,17 @@ class LinkRecommendationStore {
 	 */
 	protected function getByCondition( array $condition, int $flags = 0 ): ?LinkRecommendation {
 		[ $index, $options ] = DBAccessObjectUtils::getDBOptions( $flags );
-		$row = $this->getDB( $index )->selectRow(
-			'growthexperiments_link_recommendations',
-			[ 'gelr_page', 'gelr_revision', 'gelr_data' ],
-			$condition,
-			__METHOD__,
-			$options + [
-				// $condition is supposed to be unique, but if somehow that isn't the case,
-				// use the most up-to-date recommendation.
-				'ORDER BY' => 'gelr_revision DESC'
-			]
-		);
+		$row = $this->getDB( $index )->newSelectQueryBuilder()
+			->select( [ 'gelr_page', 'gelr_revision', 'gelr_data' ] )
+			->from( 'growthexperiments_link_recommendations' )
+			->where( $condition )
+			->caller( __METHOD__ )
+			->options( $options + [
+					// $condition is supposed to be unique, but if somehow that isn't the case,
+					// use the most up-to-date recommendation.
+					'ORDER BY' => 'gelr_revision DESC'
+				] )
+			->fetchRow();
 		if ( $row === false ) {
 			return null;
 		}
@@ -137,16 +131,13 @@ class LinkRecommendationStore {
 	 * @return LinkRecommendation[]
 	 */
 	public function getAllRecommendations( int $limit, int &$fromPageId ): array {
-		$res = $this->getDB( DB_REPLICA )->select(
-			'growthexperiments_link_recommendations',
-			[ 'gelr_revision', 'gelr_page', 'gelr_data' ],
-			[ 'gelr_page >= ' . $fromPageId ],
-			__METHOD__,
-			[
-				'ORDER BY' => 'gelr_page ASC',
-				'LIMIT' => $limit,
-			]
-		);
+		$res = $this->getDB( DB_REPLICA )->newSelectQueryBuilder()
+			->select( [ 'gelr_revision', 'gelr_page', 'gelr_data' ] )
+			->from( 'growthexperiments_link_recommendations' )
+			->where( [ 'gelr_page >= ' . $fromPageId ] )
+			->orderBy( 'gelr_page ASC' )
+			->limit( $limit )
+			->caller( __METHOD__ )->fetchResultSet();
 		$rows = iterator_to_array( $res );
 		$fromPageId = ( $res->numRows() === $limit ) ? end( $rows )->gelr_page + 1 : false;
 		reset( $rows );
@@ -195,17 +186,16 @@ class LinkRecommendationStore {
 	 * @return int[]
 	 */
 	public function listPageIds( int $limit, int $from = null ): array {
-		return array_map( 'intval', $this->loadBalancer->getConnection( DB_REPLICA )->selectFieldValues(
-			'growthexperiments_link_recommendations',
-			'gelr_page',
-			$from ? [ "gelr_page > $from" ] : [],
-			__METHOD__,
-			[
-				'LIMIT' => $limit,
-				'GROUP BY' => 'gelr_page',
-				'ORDER BY' => 'gelr_page ASC',
-			]
-		) );
+		return array_map( 'intval', $this->loadBalancer->getConnection( DB_REPLICA )
+			->newSelectQueryBuilder()
+			->select( 'gelr_page' )
+			->from( 'growthexperiments_link_recommendations' )
+			->where( $from ? [ "gelr_page > $from" ] : [] )
+			->groupBy( 'gelr_page' )
+			->orderBy( 'gelr_page ASC' )
+			->limit( $limit )
+			->caller( __METHOD__ )->fetchFieldValues()
+		);
 	}
 
 	/**
@@ -267,19 +257,14 @@ class LinkRecommendationStore {
 	 * @return int[]
 	 */
 	public function getExcludedLinkIds( int $pageId, int $limit ): array {
-		$pageIdsToExclude = $this->loadBalancer->getConnection( DB_REPLICA )->selectFieldValues(
-			'growthexperiments_link_submissions',
-			'gels_target',
-			[
-				'gels_page' => $pageId,
-				'gels_feedback' => 'r',
-			],
-			__METHOD__,
-			[
-				'GROUP BY' => 'gels_target',
-				'HAVING' => "COUNT(*) >= $limit",
-			]
-		);
+		$pageIdsToExclude = $this->loadBalancer->getConnection( DB_REPLICA )
+			->newSelectQueryBuilder()
+			->select( 'gels_target' )
+			->from( 'growthexperiments_link_submissions' )
+			->where( [ 'gels_page' => $pageId, 'gels_feedback' => 'r' ] )
+			->groupBy( 'gels_target' )
+			->having( "COUNT(*) >= $limit" )
+			->caller( __METHOD__ )->fetchFieldValues();
 		return array_map( 'intval', $pageIdsToExclude );
 	}
 
@@ -368,13 +353,11 @@ class LinkRecommendationStore {
 	 */
 	public function hasSubmission( LinkRecommendation $linkRecommendation, int $flags ): bool {
 		[ $index, $options ] = DBAccessObjectUtils::getDBOptions( $flags );
-		return (bool)$this->getDB( $index )->selectRowCount(
-			'growthexperiments_link_submissions',
-			'*',
-			[ 'gels_revision' => $linkRecommendation->getRevisionId() ],
-			__METHOD__,
-			$options
-		);
+		return (bool)$this->getDB( $index )->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'growthexperiments_link_submissions' )
+			->where( [ 'gels_revision' => $linkRecommendation->getRevisionId() ] )
+			->caller( __METHOD__ )->fetchRowCount();
 	}
 
 	// common
