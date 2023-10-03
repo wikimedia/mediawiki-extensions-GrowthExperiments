@@ -463,7 +463,11 @@ class SpecialManageMentors extends SpecialPage {
 		}
 
 		$out = $this->getOutput();
-		$out->enableOOUI();
+		// We only need OOUI (ButtonWidget) when can manage mentors
+		// Avoid access to the global context when transcluding (T346760)
+		if ( $this->canManageMentors() ) {
+			$out->enableOOUI();
+		}
 		$out->addHTML( implode( "\n", [
 			$this->makePreHTML(),
 			$this->makeHeadlineElement( $this->msg( 'growthexperiments-manage-mentors-auto-assigned' )->text() ),
