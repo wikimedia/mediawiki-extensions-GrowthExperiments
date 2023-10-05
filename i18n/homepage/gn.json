@@ -7,5 +7,6 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>Rejapokuévo nde kuatiarã, ere remyatyrõse hague peteĩ jejavymi jehaípe.</strong> Ko'ápe ikatu rejuhu mba'emi ikatuhahag̃ua reñepyrũ. Reipotárõ, ikatu ehoite emyatyrõ hag̃ua peteĩ kuatia ndete reiporavóva, ikatu eheka ku kuatia ha ejopy \"{{int:vector-view-edit}}\" rehe.",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>Rejapokuévo nde kuatiarã, ere remoĩse térã remoambuese hague marandukuéra peteĩ kuatiápe.</strong> Ko'ápe ikatu rejuhu mba'emi ikatuhahag̃ua reñepyrũ. Reipotárõ, ikatu ehoite emyatyrõ hag̃ua peteĩ kuatia ndete reiporavóva, ikatu eheka ku kuatia ha ejopy \"{{int:vector-view-edit}}\" rehe.",
 	"growthexperiments-structuredtask-editmode-selection-visual": "Ñemoambue techapy",
-	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Ndaikuaái ko mba'e"
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Ndaikuaái ko mba'e",
+	"growthexperiments-addimage-onboarding-content-article-title": "Emañamína pe kuatiáre"
 }
