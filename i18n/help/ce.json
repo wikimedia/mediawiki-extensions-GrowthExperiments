@@ -49,6 +49,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "хийца",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "хьайн email бакъйе",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "ТӀетоха эл. поштан адрес",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "ГӀоьнан панелах лаьцна",
 	"growthexperiments-help-panel-questionposter-invalid-title": "ГӀалате цӀе.",
 	"growthexperiments-help-panel-search-label": "ГӀо лахар",
 	"growthexperiments-help-panel-search-no-results": "ХӀума цакарий",
@@ -56,5 +57,6 @@
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Кховдийна нисдарш",
 	"growthexperiments-help-panel-button-header-ask-help": "ГӀоьнан агӀонгахь хаттар ло",
 	"growthexperiments-help-panel-button-header-ask-help-mentor": "ГӀо деха {{GENDER:$1|хьайн Ӏуьналче}}",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "Чехка стартан хьехам"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Чехка стартан хьехам",
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|нисдар}} · $2"
 }
