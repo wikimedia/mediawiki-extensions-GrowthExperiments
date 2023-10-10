@@ -42,7 +42,8 @@
 			"Diskdance",
 			"Hehua",
 			"Lantianjialiang",
-			"LittlePaw365"
+			"LittlePaw365",
+			"CrownedWharf566"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -449,7 +450,7 @@
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "建议",
 	"growthexperiments-structuredtask-editmode-selection-visual": "可视化编辑",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "留下建议？",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "改变模组将允许{{GENDER:$1|you}}来进行其他种类的编辑.结束检阅来提交{{GENDER:$1|your}}现有的进度。",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "改变模式将允许{{GENDER:$1|您}}来进行其他种类的编辑。结束检阅来提交{{GENDER:$1|您}}现有的进度。",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "在不发送的情况下转换",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "取消",
 	"growthexperiments-structuredtask-summary-submit": "提交",

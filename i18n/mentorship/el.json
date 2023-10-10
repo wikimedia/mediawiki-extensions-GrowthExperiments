@@ -92,7 +92,7 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1| αποσύρθηκε}} από την καθοδήγηση.",
 	"echo-category-title-ge-mentorship": "Καθοδήγηση",
 	"echo-pref-tooltip-ge-mentorship": "Ειδοποιήσεις που σχετίζονται με χαρακτηριστικά καθοδήγησης που διατηρούνται από την ομάδα Growth. Αυτή η ειδοποίηση σάς ενημερώνει ότι υποβληθήκατε αξίωση ως καθοδηγούμενος ή ότι ένας από τους καθοδηγούμενους σας υποβλήθηκε από κάποιον άλλο.",
-	"growthexperiments-notification-header-mentee-claimed": "Το {{GENDER:$3| σας καθοδηγούμενος}}, $3 , ήταν {{GENDER:$2| αξίωση}} από $1 .",
+	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|O καθοδηγούμενος σας|Η καθοδηγουμένη σας}}, $3, είχε αξιωθεί από {{GENDER:$2|τον|την}} $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Αιτία: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Τι είναι η \"διεκδίκηση καθοδηγούμνου\";",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Αριθμός από καθοδηγούμενους καθορισμένοι σε εμένα",

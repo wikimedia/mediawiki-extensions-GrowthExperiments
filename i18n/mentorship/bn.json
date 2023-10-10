@@ -141,7 +141,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "কারণ",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "নথিভুক্ত করুন",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|আপনি}} এখন একজন মেন্টর হিসেবে নথিভুক্ত হয়েছেন। {{GENDER:|আপনি}} এখন [[Special:MentorDashboard|মেন্টর ড্যাশবোর্ডে]] প্রবেশ করতে পারবেন।",
-	"growthexperiments-mentorship-enrollasmentor-summary": "একজন পরামর্শদাতা হিসেবে নিজেকে যুক্ত করছি",
+	"growthexperiments-mentorship-enrollasmentor-summary": "নিজেকে একজন মেন্টর হিসেবে যুক্ত করেছি",
 	"tag-mentor list change": "মেন্টরের তালিকা পরিবর্তন",
 	"tag-mentor list change-description": "GrowthExperiments-এর মাধ্যমে কাঠামোগত মেন্টর তালিকায় করা সম্পাদনাগুলোতে ট্যাগ প্রয়োগ করা হয়েছে"
 }
