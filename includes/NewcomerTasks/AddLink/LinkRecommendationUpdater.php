@@ -39,7 +39,7 @@ class LinkRecommendationUpdater {
 	private SearchIndexUpdater $searchIndexUpdater;
 	private LinkRecommendationStore $linkRecommendationStore;
 	private LinkRecommendationProvider $linkRecommendationProvider;
-	private LinkRecommendationTaskType $linkRecommendationTaskType;
+	private ?LinkRecommendationTaskType $linkRecommendationTaskType = null;
 
 	/**
 	 * @param IConnectionProvider $connectionProvider
