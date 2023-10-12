@@ -456,7 +456,7 @@
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "建议",
 	"growthexperiments-structuredtask-editmode-selection-visual": "可视化编辑",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "留下建议？",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "改变模组将允许{{GENDER:$1|you}}来进行其他种类的编辑.结束检阅来提交{{GENDER:$1|your}}现有的进度。",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "改变模式将允许{{GENDER:$1|您}}来进行其他种类的编辑。结束检阅来提交{{GENDER:$1|您}}现有的进度。",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "在不发送的情况下转换",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "取消",
 	"growthexperiments-structuredtask-summary-submit": "提交",
@@ -566,6 +566,6 @@
 	"growthexperiments-homepage-mentorship-about-optout-par1": "如果{{GENDER:|您}}不希望现在就有一个特定的导师分配给{{GENDER:|您}}，请选择下面的按钮退出。若{{GENDER:|您}}改变了主意，{{GENDER:|您}}可以在任何时候重新获得一个新的导师。",
 	"growthexperiments-homepage-mentorship-about-done": "完成",
 	"growthexperiments-tour-newimpact-discovery-title": "更新的设计",
-	"growthexperiments-tour-newimpact-discovery-description": "更多关于{{GENDER:|your}}的编辑活动已经添加！",
+	"growthexperiments-tour-newimpact-discovery-description": "更多关于{{GENDER:|您}}的编辑活动已经添加！",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "明白了"
 }
