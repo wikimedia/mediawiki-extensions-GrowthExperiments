@@ -469,7 +469,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			}
 			if ( $pageDataStatus->isOK() ) {
 				$successful = array_filter( $pageDataStatus->success );
-				$pageViewData = $pageViewData + array_intersect_key( $pageDataStatus->getValue(), $successful );
+				$pageViewData += array_intersect_key( $pageDataStatus->getValue(), $successful );
 			}
 			$titleObjects = array_diff_key( $titleObjects, $pageViewData );
 			if ( count( $titleObjects ) === $titleObjectsCount ) {
