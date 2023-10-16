@@ -5,7 +5,7 @@
 			"Vlad5250"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вашата}} домашна страница",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здраво}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Домашна страница",
 	"tooltip-pt-homepage": "{{GENDER:|Вашата}} домашна страница",
 	"prefs-homepage": "Домашна страница за новодојденци",
@@ -18,6 +18,8 @@
 	"growthexperiments-homepage-userpage-header-done": "Уредете своја корисничка страница",
 	"growthexperiments-homepage-userpage-button": "Создај корисничка страница",
 	"growthexperiments-homepage-userpage-button-done": "Уреди корисничка страница",
+	"growthexperiments-homepage-email-header-noemail": "Додајте {{GENDER:$1|ваша}} е-пошта",
+	"growthexperiments-homepage-email-header-unconfirmed": "Потврдете ја {{GENDER:$1|вашата}} е-пошта",
 	"growthexperiments-homepage-email-header-confirmed": "Додадена е-пошта",
 	"growthexperiments-homepage-email-text-noemail": "Се препорачува за обнова на сметката",
 	"growthexperiments-homepage-email-button-noemail": "Додај е-пошта",
