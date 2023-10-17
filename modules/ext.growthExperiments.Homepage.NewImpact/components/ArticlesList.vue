@@ -136,6 +136,7 @@ module.exports = exports = {
 
 		&__info {
 			flex: 5;
+			min-width: 0;
 			display: flex;
 			align-items: center;
 
