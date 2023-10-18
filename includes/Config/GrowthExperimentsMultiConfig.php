@@ -48,6 +48,8 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomRe
 		'GEPersonalizedPraiseMinEdits',
 		'GEPersonalizedPraiseMaxEdits',
 		'GEPersonalizedPraiseMaxReverts',
+		'GELevelingUpGetStartedMaxTotalEdits',
+		'GELevelingUpKeepGoingNotificationThresholds'
 	];
 
 	/**

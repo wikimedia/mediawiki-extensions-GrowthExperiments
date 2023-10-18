@@ -558,6 +558,33 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 		}
 
+		if ( $this->getConfig()->get( 'GELevelingUpFeaturesEnabled' ) ) {
+			$levelUpDescriptors = [
+				'geconfig-level-up-notifications-description' => [
+					'type' => 'info',
+					'label-message' => 'growthexperiments-edit-config-level-up-notifications-description',
+					'section' => 'level-up-notifications'
+				],
+				'geconfig-GELevelingUpGetStartedMaxTotalEdits' => [
+					'type' => 'int',
+					'label-message' => 'growthexperiments-edit-config-try-suggested-edits-notification-title',
+					'section' => 'level-up-notifications',
+					'help-message' => 'growthexperiments-edit-config-try-suggested-edits-notification-description',
+					'required' => true
+				],
+				'geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum' => [
+					'type' => 'int',
+					'label-message' => 'growthexperiments-edit-config-keep-going-notification-title',
+					'section' => 'level-up-notifications',
+					'help-message' => 'growthexperiments-edit-config-keep-going-notification-description',
+					'required' => true,
+					'min' => $this->growthWikiConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' )[0]
+				]
+			];
+
+			$descriptors = array_merge( $descriptors, $levelUpDescriptors );
+		}
+
 		$descriptors = array_merge( $descriptors, [
 			'geconfig-help-panel-description' => [
 				'type' => 'info',
@@ -757,6 +784,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				}
 			}
 		}
+
+		$descriptors['geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum']['default'] =
+			$this->growthWikiConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' )[1];
+
 		// Add default values for newcomertasks variables
 		$newcomerTasksConfig = $this->getNewcomerTasksConfig();
 		foreach ( $this->getDefaultDataForEnabledTaskTypes() as $taskType => $group ) {
@@ -1104,6 +1135,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		}
 
 		$dataToSave = $this->preprocessSubmittedData( $data );
+
+		$geconfigThresholds = $this->growthWikiConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' );
+		$geconfigThresholds[1] = intval( $data['geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum'] );
+		$dataToSave['geconfig']['GELevelingUpKeepGoingNotificationThresholds'] = $geconfigThresholds;
 
 		// Normalize complex variables
 		$dataToSave['geconfig']['GEHomepageSuggestedEditsIntroLinks'] =

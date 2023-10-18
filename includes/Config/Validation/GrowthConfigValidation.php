@@ -89,6 +89,12 @@ class GrowthConfigValidation implements IConfigValidator {
 			'GEPersonalizedPraiseMaxReverts' => [
 				'type' => '?int',
 			],
+			'GELevelingUpGetStartedMaxTotalEdits' => [
+				'type' => 'int',
+			],
+			'GELevelingUpKeepGoingNotificationThresholds' => [
+				'type' => 'int[]',
+			],
 		];
 	}
 
