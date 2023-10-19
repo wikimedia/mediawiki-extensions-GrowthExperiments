@@ -68,8 +68,6 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 					"reason",
 					"edited",
 					"email",
-					"mentor-info",
-					"mentor"
 				] ] ],
 			'WelcomeSurveyPrivacyStatementUrl' => 'http://privacy.link',
 		] );
