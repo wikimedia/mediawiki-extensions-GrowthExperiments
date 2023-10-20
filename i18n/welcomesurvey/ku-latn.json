@@ -30,8 +30,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Yên din",
 	"welcomesurvey-question-reason-option-other-label": "Yên din (ji kerema xwe re pênase bike)",
 	"welcomesurvey-question-reason-other-placeholder": "Sedemeke din {{GENDER:$1|binivîse}}...",
-	"welcomesurvey-question-mentor-info": "Em ê bernameyekê çêdikin ku bi saya wê bikarhênerên bi tecrûbe dê alikariya bikarhênerên nû bike. Tu dixwazî em bi te re {{GENDER:$1|têkilî deynin}}?",
-	"welcomesurvey-question-mentor-label": "Erê, {{GENDER:$1|dixwazim}}",
 	"welcomesurvey-question-edited-label": "{{GENDER:|Te}} berê qet li ser Wîkîpediyayê tiştinan guhartin?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Erê, gelek caran",
 	"welcomesurvey-question-edited-option-yes-few-label": "Erê, yek-du caran",

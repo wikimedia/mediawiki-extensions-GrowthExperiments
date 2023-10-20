@@ -29,8 +29,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Otre",
 	"welcomesurvey-question-reason-option-other-label": "Otre (descrive)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Mitte}} 'n'otre mutive...",
-	"welcomesurvey-question-mentor-info": "Ste conziderame l'inizie de 'nu programme pe le cangiature cchiù esperte pe dà 'na màne a le utinde cchiù nuève cu le cangiaminde. {{GENDER:$1|Sì inderessate}} a essere condattate pe dà 'na màne cu le cangiaminde?",
-	"welcomesurvey-question-mentor-label": "Sìne, {{GENDER:$1|sò inderessate}}",
 	"welcomesurvey-question-edited-label": "E' cangiate maje Uicchipèdie?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Sìne, assaije vote",
 	"welcomesurvey-question-edited-option-yes-few-label": "Sì, 'na vote o doje",

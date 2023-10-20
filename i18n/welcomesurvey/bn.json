@@ -33,8 +33,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "অন্য",
 	"welcomesurvey-question-reason-option-other-label": "অন্য (দয়া করে ব্যাখ্যা করুন)",
 	"welcomesurvey-question-reason-other-placeholder": "অন্য কারণটি {{GENDER:$1|লিখুন}}...",
-	"welcomesurvey-question-mentor-info": "আমরা অভিজ্ঞ উইকিপিডিয়ানদের জন্য একটি কার্যক্রম শুরু করতে যাচ্ছি, যেখানে তারা নবাগতদের অবদান রাখতে সহায়তা করবেন। আপনি কি নতুনদের অবদান রাখার ব্যাপারে সাহায্য করতে {{GENDER:$1|আগ্রহী}}?",
-	"welcomesurvey-question-mentor-label": "হ্যাঁ, {{GENDER:$1|আমি আগ্রহী}}",
 	"welcomesurvey-question-edited-label": "{{GENDER:|আপনি}} কি কখনও উইকিপিডিয়ায় অবদান রেখেছেন?",
 	"welcomesurvey-question-edited-option-yes-many-label": "হ্যাঁ, অনেকবার",
 	"welcomesurvey-question-edited-option-yes-few-label": "হ্যাঁ, এক বা দুইবার",

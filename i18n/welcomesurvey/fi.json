@@ -34,7 +34,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Muu",
 	"welcomesurvey-question-reason-option-other-label": "Muu (kuvaile)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Syötä}} toinen syy...",
-	"welcomesurvey-question-mentor-label": "Kyllä, {{GENDER:$1|olen kiinnostunut}}",
 	"welcomesurvey-question-edited-label": "{{GENDER:|Oletko}} koskaan muokannut Wikipediaa?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Kyllä, monta kertaa",
 	"welcomesurvey-question-edited-option-yes-few-label": "Kyllä, kerran tai kaksi",

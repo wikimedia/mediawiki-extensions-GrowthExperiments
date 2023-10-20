@@ -29,8 +29,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Iné",
 	"welcomesurvey-question-reason-option-other-label": "Iné (prosím, popíšte)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Zadajte}} iný dôvod...",
-	"welcomesurvey-question-mentor-info": "Uvažujeme o spustení projektu, ktorý by umožnil prepojiť skúsených redaktorov s nováčikmi. {{GENDER:$1|Chcete}}, aby vás v takom prípade skúsený redaktor kontaktoval a pomohol vám s editovaním?",
-	"welcomesurvey-question-mentor-label": "Áno, {{GENDER:$1|chcem}}",
 	"welcomesurvey-question-edited-label": "Upravovali ste niekedy Wikipédiu?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Áno, mnohokrát",
 	"welcomesurvey-question-edited-option-yes-few-label": "Áno, raz či dvakrát",

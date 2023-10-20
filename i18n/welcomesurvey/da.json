@@ -32,8 +32,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Andet",
 	"welcomesurvey-question-reason-option-other-label": "Andet (beskriv venligst)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Angiv}} en anden årsag...",
-	"welcomesurvey-question-mentor-info": "Vi overvejer at oprette et initiativ hvor mere erfarne brugere hjælper nyere brugere med at redigere. {{GENDER:$1|Er du interesseret}} i at blive kontaktet med henblik på at få hjælp med at redigere?",
-	"welcomesurvey-question-mentor-label": "Ja, {{GENDER:$1|jeg er interesseret}}",
 	"welcomesurvey-question-edited-label": "Har du nogensinde redigeret Wikipedia?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Ja, mange gange",
 	"welcomesurvey-question-edited-option-yes-few-label": "Ja, en eller to gange",

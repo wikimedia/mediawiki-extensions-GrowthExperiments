@@ -33,8 +33,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Lain-lain",
 	"welcomesurvey-question-reason-option-other-label": "Lain-lain (mohon jelaskan)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Masukkan}} alasan yang lain...",
-	"welcomesurvey-question-mentor-info": "Kami mempertimbangkan memulai sebuah program bagi penyunting yang berpengalaman lebih untuk membantu pengguna baru dalam menyunting. {{GENDER:$1|Apakah Anda berminat}} dihubungi untuk membantu menyunting?",
-	"welcomesurvey-question-mentor-label": "Ya, {{GENDER:$1|Saya tertarik}}",
 	"welcomesurvey-question-edited-label": "Pernahkah {{GENDER:|Anda}} menyunting Wikipedia?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Ya, beberapa kali",
 	"welcomesurvey-question-edited-option-yes-few-label": "Ya, sekali atau dua kali",

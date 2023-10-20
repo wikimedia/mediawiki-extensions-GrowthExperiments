@@ -33,8 +33,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "нешто друго",
 	"welcomesurvey-question-reason-option-other-label": "нешто друго (опишите)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Унесите}} други разлог…",
-	"welcomesurvey-question-mentor-info": "Започет је програм менторства у ком искуснији уредници помажу новим корисницима. Циљ је да се новајлијама олакша савладавање вештина уређивања. {{GENDER:$1|Јесте ли заинтересовани}}?",
-	"welcomesurvey-question-mentor-label": "Да, {{GENDER:$1|заинтересован сам|заинтересована сам}}",
 	"welcomesurvey-question-edited-label": "Да ли {{GENDER:|сте}} икада уређивали Википедију?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Да, много пута",
 	"welcomesurvey-question-edited-option-yes-few-label": "Да, једном или двапут",

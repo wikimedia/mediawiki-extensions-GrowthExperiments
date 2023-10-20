@@ -35,8 +35,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "기타",
 	"welcomesurvey-question-reason-option-other-label": "기타 (기술해 주십시오)",
 	"welcomesurvey-question-reason-other-placeholder": "다른 이유 {{GENDER:$1|입력}}...",
-	"welcomesurvey-question-mentor-info": "위키백과에 숙련된 사용자가 새 사용자를 돕도록 하는 새로운 프로그램을 시작하려고 준비 중입니다. 편집에 도움을 받기 위해 연락받으실 생각이 있으신가요?{{GENDER:$1|}}",
-	"welcomesurvey-question-mentor-label": "예, {{GENDER:$1|관심이 있습니다}}",
 	"welcomesurvey-question-edited-label": "위키백과를 편집해본 적이 있으십니까?",
 	"welcomesurvey-question-edited-option-yes-many-label": "예, 여러 차례",
 	"welcomesurvey-question-edited-option-yes-few-label": "예, 한 두 차례",

@@ -35,8 +35,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Anders",
 	"welcomesurvey-question-reason-option-other-label": "Anders (graag omschrijven)",
 	"welcomesurvey-question-reason-other-placeholder": "Vul {{GENDER:$1|uw}} reden in...",
-	"welcomesurvey-question-mentor-info": "We overwegen om een programma te beginnen waarin ervaren gebruikers nieuwkomers ondersteunen bij bewerken. Stelt {{GENDER:$1|u}} het op prijs dat iemand contact met {{GENDER:$1|u}} opneemt voor bewerkingshulp?",
-	"welcomesurvey-question-mentor-label": "Ja, {{GENDER:$1|ik}} heb belangstelling",
 	"welcomesurvey-question-edited-label": "Hebt u Wikipedia ooit bewerkt?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Ja, meerdere keren",
 	"welcomesurvey-question-edited-option-yes-few-label": "Ja, een of twee keer",

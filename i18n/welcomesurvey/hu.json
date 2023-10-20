@@ -35,8 +35,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Egyéb",
 	"welcomesurvey-question-reason-option-other-label": "Egyéb (kérjük, fejtsd ki)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Írj}} be egy egyéb okot…",
-	"welcomesurvey-question-mentor-info": "Gondolkodunk egy program indításán tapasztaltabb szerkesztőknek, hogy segítsenek az új szerkesztőknek a Wikipédia szerkesztésében. {{GENDER:$1|Szeretnéd}}, ha felvennénk veled a kapcsolatot a szerkesztéssel kapcsolatos segítségnyújtás érdekében?",
-	"welcomesurvey-question-mentor-label": "Igen, {{GENDER:$1|érdekel}}",
 	"welcomesurvey-question-edited-label": "Szerkesztetted már a Wikipédiát?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Igen, sokszor",
 	"welcomesurvey-question-edited-option-yes-few-label": "Igen, egyszer vagy kétszer",

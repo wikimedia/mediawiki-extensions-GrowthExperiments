@@ -29,8 +29,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Digər",
 	"welcomesurvey-question-reason-option-other-label": "Digər (zəhmət olmasa açıqlayın)",
 	"welcomesurvey-question-reason-other-placeholder": "Digər səbəbi {{GENDER:$1|daxil edin}}...",
-	"welcomesurvey-question-mentor-info": "Yeni istifadəçilərə redaktə etməkdə kömək etmək üçün daha təcrübəli redaktorlar üçün bir proqram başlatmağı düşünürük. Redaktələrdə kömək almaq üçün sizinlə əlaqə saxlanmağını {{GENDER:$1|istəyirsiniz}}?",
-	"welcomesurvey-question-mentor-label": "Bəli, {{GENDER:$1|istəyirəm}}",
 	"welcomesurvey-question-edited-label": "Heç Vikipediyada redaktə etmisiniz?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Bəli, bir neçə dəfə",
 	"welcomesurvey-question-edited-option-yes-few-label": "Bəli, bir ya da iki dəfə",

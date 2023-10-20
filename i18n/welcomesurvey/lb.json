@@ -22,7 +22,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Anerer",
 	"welcomesurvey-question-reason-option-other-label": "Anerer (wgl. beschreiwen)",
 	"welcomesurvey-question-reason-other-placeholder": "Anere Grond {{GENDER:$1|aginn}}...",
-	"welcomesurvey-question-mentor-label": "Jo, {{GENDER:$1|ech sinn interesséiert}}",
 	"welcomesurvey-question-edited-label": "Hutt Dir schonn Ännerungen op Wikipedia gemaach?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Jo, ganz dacks",
 	"welcomesurvey-question-edited-option-yes-few-label": "Jo, een oder zweemol",

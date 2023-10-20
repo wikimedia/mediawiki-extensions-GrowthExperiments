@@ -30,8 +30,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "ఇతర",
 	"welcomesurvey-question-reason-option-other-label": "ఇతర (వివరించండి)",
 	"welcomesurvey-question-reason-other-placeholder": "ఇతర కారణం {{GENDER:$1|ఇవ్వండి}}...",
-	"welcomesurvey-question-mentor-info": "అనుభవజ్ఞులు కొత్త వాడుకరులకు దిద్దుబాట్లు చెయ్యడంలో సాయపడే కార్యక్రమం ఒకదాన్ని మేం మొదలు పెట్టాలనుకుంటున్నాం. దిద్దుబాటు చెయ్యడంలో మీకు సాయపడేందుకు మేం {{GENDER:$1|మిమ్మల్ని సంప్రదించవచ్చా}}?",
-	"welcomesurvey-question-mentor-label": "అలాగే, {{GENDER:$1|నాకు ఆసక్తి ఉంది}}",
 	"welcomesurvey-question-edited-label": "మీరు వికీపీడియాలో ఎప్పుడైనా దిద్దుబాటు చేసారా?",
 	"welcomesurvey-question-edited-option-yes-many-label": "ఓ, చాలా సార్లు",
 	"welcomesurvey-question-edited-option-yes-few-label": "ఒకటి రెండు సార్లు చేసాను",

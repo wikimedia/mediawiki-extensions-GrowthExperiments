@@ -31,8 +31,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Այլ",
 	"welcomesurvey-question-reason-option-other-label": "Այլ (ներկայացնել)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Ավելացնել}} այլ պատճառ",
-	"welcomesurvey-question-mentor-info": "Մեր նպատակն է ստեղծել ծրագիր, որպեսզի ավելի փորձառու խմբագիրները օգնեն նորեկներին խմբագրել։ {{GENDER:$1|Դուք}} ցանկանու՞մ եք օգնություն ստանալ։",
-	"welcomesurvey-question-mentor-label": "Այո, {{GENDER:$1|ցանկանում եմ}}",
 	"welcomesurvey-question-edited-label": "Երբևէ Վիքիպեդիա խմբագրել եք",
 	"welcomesurvey-question-edited-option-yes-many-label": "Այո, շատ անգամներ",
 	"welcomesurvey-question-edited-option-yes-few-label": "Այո, մեկ կամ երկու անգամ",

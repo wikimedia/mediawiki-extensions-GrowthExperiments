@@ -30,8 +30,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "अन्य",
 	"welcomesurvey-question-reason-option-other-label": "अन्य (कृपया वर्णन गर्नुहोस्)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|}} अन्य कारण...",
-	"welcomesurvey-question-mentor-info": "हामी नयाँ प्रयोगकर्ताहरूलाई सम्पादन गर्न मद्दत गर्न थप अनुभवी सम्पादकहरूको लागि एउटा कार्यक्रम सुरु गर्ने विचार गरिरहेका छौं। के तपाई सम्पादन गर्न मद्दत प्राप्त गर्न {{GENDER:$1|सम्पर्क गर्न इच्छुक हुनुहुन्छ}}?",
-	"welcomesurvey-question-mentor-label": "हो, {{GENDER:$1|मलाई चासो छ}}",
 	"welcomesurvey-question-edited-label": "के {{GENDER:|तपाईं}}ले कहिल्यै विकिपिडिया सम्पादन गर्नुभएको छ?",
 	"welcomesurvey-question-edited-option-yes-many-label": "हो, धेरै पटक",
 	"welcomesurvey-question-edited-option-yes-few-label": "हो, एक वा दुई पटक",

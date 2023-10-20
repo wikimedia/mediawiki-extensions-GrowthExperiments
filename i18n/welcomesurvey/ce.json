@@ -29,8 +29,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Кхийерг",
 	"welcomesurvey-question-reason-option-other-label": "Кхидерг (дийца)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Йазде}} кхин бахьана...",
-	"welcomesurvey-question-mentor-info": "Тхо хьоьжуш ду зеделлачу редакторшна программа лато, керлачу декъашхошна гӀо хилийтархьама. {{GENDER:$1|Хьуна}} лаьий хийцамаш беш хьайна гӀодан хьайца зӀене балийта?",
-	"welcomesurvey-question-mentor-label": "ХӀаъ, {{GENDER:$1|сан хьашто йу}},",
 	"welcomesurvey-question-edited-label": "{{GENDER:|Ахьа}} цхьаа Википедехь хийцамаш бинери?",
 	"welcomesurvey-question-edited-option-yes-many-label": "ХӀаъ, дукха",
 	"welcomesurvey-question-edited-option-yes-few-label": "ХӀаъ, цӀа-шозза",

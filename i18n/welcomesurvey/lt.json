@@ -31,8 +31,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Kita",
 	"welcomesurvey-question-reason-option-other-label": "Kita (prašome patikslinti)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Įveskite}} kitą priežastį...",
-	"welcomesurvey-question-mentor-info": "Svarstome pradėti programą, skirtą labiau patyrusiems redaktoriams, kad šie padėtų naujesniems naudotojams redaguoti. {{GENDER:$1|Ar jus domina}}, kad su jumis susisiektų ir gautumėte redagavimo pagalbą?",
-	"welcomesurvey-question-mentor-label": "Taip, {{GENDER:$1|man įdomu}}",
 	"welcomesurvey-question-edited-label": "Ar {{GENDER:|jūs}} kada nors redagavote Vikipediją?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Taip, daug kartų",
 	"welcomesurvey-question-edited-option-yes-few-label": "Taip, kartą ar du",

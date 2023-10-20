@@ -38,8 +38,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Altro",
 	"welcomesurvey-question-reason-option-other-label": "Altro (per favore, specifica)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Inserisci}} altri motivi...",
-	"welcomesurvey-question-mentor-info": "Stiamo pensando di avviare un programma per permettere agli utenti più esperti di aiutare quelli nuovi. Sei interessat{{GENDER:$1|o|a|o/a}} a venire contattat{{GENDER:$1|o|a|o/a}} per ricevere aiuto?",
-	"welcomesurvey-question-mentor-label": "Sì, sono {{GENDER:$1|interessato|interessata|interessato/a}}",
 	"welcomesurvey-question-edited-label": "{{GENDER:|Hai}} mai contribuito a Wikipedia?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Sì, molte volte",
 	"welcomesurvey-question-edited-option-yes-few-label": "Sì, una o due volte",

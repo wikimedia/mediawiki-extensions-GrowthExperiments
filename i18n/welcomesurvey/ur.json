@@ -29,8 +29,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "دیگر",
 	"welcomesurvey-question-reason-option-other-label": "دیگر (براہ کرم اسے بیان کریں)",
 	"welcomesurvey-question-reason-other-placeholder": "دوسری وجہ {{GENDER:$1|تحریر کریں}}۔۔۔",
-	"welcomesurvey-question-mentor-info": "ہم تجربہ کار صارفین کے لیے ایک ایسا پروگرام شروع کرنا چاہتے ہیں جس سے نئے صارفین کو ترمیم کاری میں مدد ملے۔ کیا آپ چاہتے ہیں کہ ترمیم کاری میں معاونت کے لیے {{GENDER:$1|آپ}} سے رابطہ کیا جائے؟",
-	"welcomesurvey-question-mentor-label": "{{GENDER:$1|جی ہاں}}",
 	"welcomesurvey-question-edited-label": "کیا اپ نے کبھی ویکیپیڈیا میں ترمیم کی؟",
 	"welcomesurvey-question-edited-option-yes-many-label": "ہاں، متعدد دفعہ",
 	"welcomesurvey-question-edited-option-yes-few-label": "ہاں، ایک یا دو دفعہ",

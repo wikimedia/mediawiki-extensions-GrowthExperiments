@@ -31,8 +31,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Alia",
 	"welcomesurvey-question-reason-option-other-label": "Aliaj (bonvolu priskribi)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1| Enigu}} alian kialon...",
-	"welcomesurvey-question-mentor-info": "Ni pripensas komenci programon por pli spertaj redaktantoj por helpi pli novajn uzantojn pri redaktado. {{GENDER:$1| Ĉu vi interesiĝas}} esti kontaktita por ricevi helpon pri redaktado?",
-	"welcomesurvey-question-mentor-label": "Jes, {{GENDER:$1| Mi interesiĝas}}",
 	"welcomesurvey-question-edited-label": "Ĉu {{GENDER:|vi}} iam redaktis Vikipedion?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Jes, multfoje",
 	"welcomesurvey-question-edited-option-yes-few-label": "Jes, unu aŭ dufoje",

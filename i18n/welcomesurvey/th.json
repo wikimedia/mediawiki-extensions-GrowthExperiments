@@ -32,8 +32,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "อื่น ๆ",
 	"welcomesurvey-question-reason-option-other-label": "อื่น ๆ (กรุณาอธิบาย)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|ป้อน}}เหตุผลอื่น ๆ",
-	"welcomesurvey-question-mentor-info": "เรากำลังพิจารณาเปิดโครงการให้ผู้ใช้มีประสบการณ์ช่วยเหลือผู้ใช้มือใหม่ในเรื่องการแก้ไข {{GENDER:$1|คุณสนใจ}}รับการติดต่อเพื่อช่วยเหลือในการแก้ไขหรือไม่?",
-	"welcomesurvey-question-mentor-label": "ใช่ {{GENDER:$1|ฉันสนใจ}}",
 	"welcomesurvey-question-edited-label": "คุณเคยแก้ไขวิกิพีเดียมาก่อนหรือไม่?",
 	"welcomesurvey-question-edited-option-yes-many-label": "เคย หลายครั้งแล้ว",
 	"welcomesurvey-question-edited-option-yes-few-label": "เคย แต่ไม่กี่ครั้ง",

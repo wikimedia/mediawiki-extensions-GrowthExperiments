@@ -40,8 +40,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Другое",
 	"welcomesurvey-question-reason-option-other-label": "Другое (опишите)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Введите}} другую причину...",
-	"welcomesurvey-question-mentor-info": "Мы рассматриваем возможность запуска программы для более опытных редакторов, чтобы помочь новым участникам с редактированием. {{GENDER:$1|Вы}} заинтересованы в том, чтобы с вами связались для помощи в редактировании?",
-	"welcomesurvey-question-mentor-label": "Да, {{GENDER:$1|я заинтересован|я заинтересована}},",
 	"welcomesurvey-question-edited-label": "{{GENDER:|Вы}} когда-нибудь редактировали Википедию?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Да, много раз",
 	"welcomesurvey-question-edited-option-yes-few-label": "Да, один-два раза",

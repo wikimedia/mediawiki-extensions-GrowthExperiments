@@ -5,6 +5,5 @@
 			"Mdb897"
 		]
 	},
-	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|ⴰⵔⴰ}} ⴰⵙⴰⵔⴰⴳ ⵏⵉⴹⵏ...",
-	"welcomesurvey-question-mentor-label": "ⵢⴰⵀ, {{GENDER:$1|ⵔⵉⵖ}}"
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|ⴰⵔⴰ}} ⴰⵙⴰⵔⴰⴳ ⵏⵉⴹⵏ..."
 }

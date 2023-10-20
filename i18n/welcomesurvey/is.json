@@ -28,8 +28,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Annað",
 	"welcomesurvey-question-reason-option-other-label": "Annað (vinsamlegast lýstu því)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Bæta við}} annari ástæðu...",
-	"welcomesurvey-question-mentor-info": "Við erum að skoða að byrja verkefni fyrir notendur með meiri reynslu til að hjálpa nýrri notendum við breytingar. {{GENDER:$1|Hefur þú áhuga}} á því að haft sé samband við þig til að hjálpa þér við að gera breytingar?",
-	"welcomesurvey-question-mentor-label": "Já, {{GENDER:$1|ég er til}}",
 	"welcomesurvey-question-edited-label": "Hefur {{GENDER:|þú}} einhverntímann breytt Wikipedia?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Já, nokkrum sinnum",
 	"welcomesurvey-question-edited-option-yes-few-label": "Já, einu sinni eða tvisvar",

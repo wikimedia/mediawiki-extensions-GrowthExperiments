@@ -31,8 +31,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "ھیتر",
 	"welcomesurvey-question-reason-option-other-label": "ھیتر (تکایە باسی بکە)",
 	"welcomesurvey-question-reason-other-placeholder": "ھۆکاری تر {{GENDER:$1|داخل بکە}}...",
-	"welcomesurvey-question-mentor-info": "ئێمە ڕەچاوی دەستپێکردنی بەرنامەیەک بۆ دەستکاریکەرە بەئەزموونەکان دەکەین تا بۆ بابەتی دەستکاریکردن یارمەتیی بەکارھێنەرە نوێیەکان بدەن. {{GENDER:$1|حەز دەکەیت}} پەیوەندیت پێوە بکرێت تا یارمەتیی دەستکاریکردن وەرگریت؟",
-	"welcomesurvey-question-mentor-label": "بەڵێ، {{GENDER:$1|ئارەزوومە}}",
 	"welcomesurvey-question-edited-label": "{{GENDER:|تۆ}} قەت دەستکاریی ویکیپیدیات کردووە؟",
 	"welcomesurvey-question-edited-option-yes-many-label": "بەڵێ، چەندین جار",
 	"welcomesurvey-question-edited-option-yes-few-label": "بەڵێ، یەک یان دوو جار",

@@ -36,8 +36,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "سایر",
 	"welcomesurvey-question-reason-option-other-label": "سایر (لطفاً شرح دهید)",
 	"welcomesurvey-question-reason-other-placeholder": "دلیل دیگر را {{GENDER:$1|وارد کنید}}...",
-	"welcomesurvey-question-mentor-info": "برنامه‌ای را برای ویرایشگران با تجربه بیشتر، شروع می‌کرده‌ایم تا در ویرایش‌کردن به کاربران تازه‌وارد کمک کنند. آیا {{GENDER:$1|علاقه‌مندید}} که به شما برای آشنایی با ویرایش کردن، تماس گرفته شود؟",
-	"welcomesurvey-question-mentor-label": "بله، {{GENDER:$1|علاقه‌مند هستم}}",
 	"welcomesurvey-question-edited-label": "آیا تا کنون ویکی‌پدیا را ویرایش {{GENDER:|کرده‌اید}}؟",
 	"welcomesurvey-question-edited-option-yes-many-label": "بله، به دفعات زیاد",
 	"welcomesurvey-question-edited-option-yes-few-label": "بله، یک یا دو بار",

@@ -4,6 +4,5 @@
 			"Ерней"
 		]
 	},
-	"welcomesurvey-question-reason-other-placeholder": "Башка сәбәпне {{GENDER:$1|кертегез}}…",
-	"welcomesurvey-question-mentor-label": "Әйе, {{GENDER:$1|миңа кызык}}"
+	"welcomesurvey-question-reason-other-placeholder": "Башка сәбәпне {{GENDER:$1|кертегез}}…"
 }

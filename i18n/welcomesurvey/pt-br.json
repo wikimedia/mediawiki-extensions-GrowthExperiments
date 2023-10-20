@@ -33,8 +33,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Outro",
 	"welcomesurvey-question-reason-option-other-label": "Outro (por favor descreva)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Digite}} outro motivo...",
-	"welcomesurvey-question-mentor-info": "Estamos pensando em iniciar um programa para que editores mais experientes ajudem os usuários mais novos com edições. {{GENDER:$1|Você está interessado}} em ser contatado para obter ajuda com edições?",
-	"welcomesurvey-question-mentor-label": "Sim, {{GENDER:$1|tenho interesse}}",
 	"welcomesurvey-question-edited-label": "Já alguma vez editou a Wikipédia?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Sim, muitas vezes",
 	"welcomesurvey-question-edited-option-yes-few-label": "Sim, uma ou duas vezes",

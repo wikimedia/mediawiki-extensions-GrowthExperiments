@@ -32,8 +32,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Altres",
 	"welcomesurvey-question-reason-option-other-label": "Si us plau, descriviu aquesta situació",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Introduïu}} una altra raó...",
-	"welcomesurvey-question-mentor-info": "Estem pensant en iniciar un programa per a editors amb més experiència per ajudar els usuaris nouvinguts a editar. {{GENDER:$1|T'interessa}} que et contactin per obtenir ajuda amb l'edició?",
-	"welcomesurvey-question-mentor-label": "Sí, {{GENDER:$1|estic interessat}}!",
 	"welcomesurvey-question-edited-label": "Heu editat mai abans la Viquipèdia?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Sí, moltes vegades",
 	"welcomesurvey-question-edited-option-yes-few-label": "Sí, potser un parell de cops",

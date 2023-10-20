@@ -34,8 +34,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "その他",
 	"welcomesurvey-question-reason-option-other-label": "その他 (詳しく書いてください)",
 	"welcomesurvey-question-reason-other-placeholder": "その他の理由を{{GENDER:$1|記入してください}}…",
-	"welcomesurvey-question-mentor-info": "履歴が長い編集者から新規編集者に、編集についてアドバイスをするプログラムを始めようと計画中です。編集について教えたもらえるとしたら{{GENDER:$1|関心はありますか}}？",
-	"welcomesurvey-question-mentor-label": "はい、{{GENDER:$1|関心があります}}",
 	"welcomesurvey-question-edited-label": "これまでにウィキペディアの編集をしたことがありますか？",
 	"welcomesurvey-question-edited-option-yes-many-label": "はい、何回も編集しています。",
 	"welcomesurvey-question-edited-option-yes-few-label": "はい、1、2回、編集したことがあります",

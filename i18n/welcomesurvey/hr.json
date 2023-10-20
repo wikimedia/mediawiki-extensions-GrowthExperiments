@@ -32,8 +32,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Ostalo",
 	"welcomesurvey-question-reason-option-other-label": "Ostalo (opišite)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|}}Unesite drugi razlog...",
-	"welcomesurvey-question-mentor-info": "Započet je program mentorstva u kojem iskusni suradnici pomažu novacima uređivati članke na Wikipediji. Zanima li Vas takva mogućnost?{{GENDER:$1|}}",
-	"welcomesurvey-question-mentor-label": "Da, možda ću trebati pomoć {{GENDER:$1|}}",
 	"welcomesurvey-question-edited-label": "Jeste li prije uređivali Wikipediju?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Jesam, mnogo puta",
 	"welcomesurvey-question-edited-option-yes-few-label": "Jesam, jednom ili dvaput",

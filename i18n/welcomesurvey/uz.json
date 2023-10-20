@@ -20,7 +20,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Boshqa",
 	"welcomesurvey-question-reason-option-other-label": "Boshqa (iltimos, tasvirlab bering)",
 	"welcomesurvey-question-reason-other-placeholder": "Boshqa sabab {{GENDER:$1|kirit}}...",
-	"welcomesurvey-question-mentor-label": "Ha, {{GENDER:$1|Men qiziqaman}}",
 	"welcomesurvey-question-edited-option-yes-many-label": "Ha, koʻp marta",
 	"welcomesurvey-question-edited-option-yes-few-label": "Yoʻq, bir yoki ikki marta",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Eslab qolmayman",

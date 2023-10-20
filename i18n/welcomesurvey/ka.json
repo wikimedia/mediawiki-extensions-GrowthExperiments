@@ -29,8 +29,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "სხვა",
 	"welcomesurvey-question-reason-option-other-label": "სხვა (აღწერეთ)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|მიუთითეთ}} სხვა მიზეზი...",
-	"welcomesurvey-question-mentor-info": "ჩვენ განვიხილავთ უფრო გამოცდილი რედაქტორებისთვის პროგრამის ჩაშვებას, რათა დავეხმაროთ ახალ მომხმარებლებს რედაქტირებაში. {{GENDER:$1|დაინტერესდებით}}, რომ დაგიკავშირდნენ რედაქტირებასთან დაკავშირებით დახმარების მისაღებად?",
-	"welcomesurvey-question-mentor-label": "დიახ, {{GENDER:$1|დაინტერესებული ვარ}}",
 	"welcomesurvey-question-edited-label": "ოდესმე {{GENDER:|დაგირედაქტირებიათ}} ვიკიპედია?",
 	"welcomesurvey-question-edited-option-yes-many-label": "დიახ, ბევრჯერ",
 	"welcomesurvey-question-edited-option-yes-few-label": "დიახ, ერთი-ორჯერ",

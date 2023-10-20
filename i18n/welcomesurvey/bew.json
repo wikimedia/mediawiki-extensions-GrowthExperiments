@@ -27,7 +27,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Laènnya",
 	"welcomesurvey-question-reason-option-other-label": "Laènnya (dimohon jabarin)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Masupin}} alesan laèn...",
-	"welcomesurvey-question-mentor-label": "Gua, {{GENDER:$1|Gua kebèngbat}}",
 	"welcomesurvey-question-edited-label": "Apa {{GENDER:|lu}} pernah mermak Wikipédi?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Ya, lah udah sering",
 	"welcomesurvey-question-edited-option-yes-few-label": "Ya, barang sekali apa dua kali",

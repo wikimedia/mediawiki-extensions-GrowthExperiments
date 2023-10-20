@@ -38,8 +38,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Khác",
 	"welcomesurvey-question-reason-option-other-label": "Khác (vui lòng mô tả)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1}}Nhập lý do khác…",
-	"welcomesurvey-question-mentor-info": "Chúng tôi đang xem xét bắt đầu một chương trình để các biên tập viên có kinh nghiệm hơn giúp người dùng mới trong việc sửa đổi Wikipedia. {{GENDER:$1|Bạn}} có muốn được liên hệ để nhận trợ giúp sửa đổi không?",
-	"welcomesurvey-question-mentor-label": "Vâng, {{GENDER:$1|tôi}} quan tâm",
 	"welcomesurvey-question-edited-label": "Bạn đã từng sửa đổi Wikipedia chưa?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Có, nhiều lần",
 	"welcomesurvey-question-edited-option-yes-few-label": "Có, một hoặc hai lần",

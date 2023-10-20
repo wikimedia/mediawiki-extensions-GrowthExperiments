@@ -29,8 +29,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Cits",
 	"welcomesurvey-question-reason-option-other-label": "Cits (lūdzu, apraksti)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Ievadi}} citu iemeslu...",
-	"welcomesurvey-question-mentor-info": "Mēs apsveram uzsākt programmu pieredzējušiem redaktoriem, lai palīdzētu jauniem dalībniekiem apgūt labošanu. {{GENDER:$1|Vai tevi interesē}} citu palīdzība labošanā?",
-	"welcomesurvey-question-mentor-label": "Jā, {{GENDER:$1|mani tas interesē}}",
 	"welcomesurvey-question-edited-label": "Vai esi kādreiz labojis Vikipēdiju?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Jā, daudzas reizes",
 	"welcomesurvey-question-edited-option-yes-few-label": "Jā, vienu vai divas reizes",

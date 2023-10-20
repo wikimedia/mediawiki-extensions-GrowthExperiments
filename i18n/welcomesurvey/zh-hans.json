@@ -46,8 +46,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "其他",
 	"welcomesurvey-question-reason-option-other-label": "其他 (请说明)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|输入}}其他原因…",
-	"welcomesurvey-question-mentor-info": "我们正在考虑为更有经验的编辑人员加入一个计划，帮助新用户进行编辑。{{GENDER:$1|您是否有兴趣}}联系我们，以获得编辑方面的帮助？",
-	"welcomesurvey-question-mentor-label": "是的，{{GENDER:$1|我有兴趣}}",
 	"welcomesurvey-question-edited-label": "{{GENDER:|您}}有没有编辑过维基百科？",
 	"welcomesurvey-question-edited-option-yes-many-label": "是的，很多次了",
 	"welcomesurvey-question-edited-option-yes-few-label": "是的，一或两次",

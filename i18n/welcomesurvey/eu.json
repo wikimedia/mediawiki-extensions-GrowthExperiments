@@ -29,8 +29,6 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Beste bat",
 	"welcomesurvey-question-reason-option-other-label": "Beste bat (mesedez, adierazi)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Sartu}} beste arrazoia...",
-	"welcomesurvey-question-mentor-info": "Editore adituek heldu berriei laguntzeko programa berri bat abiatzea pentsatzen ari gara. Nahiko al {{GENDER:$1|zenuke}} horrelako laguntza jasotzea?",
-	"welcomesurvey-question-mentor-label": "Bai, interesatuta {{GENDER:$1|nago}}",
 	"welcomesurvey-question-edited-label": "Noizbait editatu al duzu Wikipedia?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Bai, askotan",
 	"welcomesurvey-question-edited-option-yes-few-label": "Bai, behin edo birritan",
