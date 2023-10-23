@@ -66,21 +66,18 @@ CERecommendedLinkAnnotation.prototype.attachContents = function () {
 	var shouldAnimateIcons = false,
 		newState = this.model.getState(),
 		stateData = AnnotationAnimation.getLastState(),
-		oldState,
-		isDeselect,
-		$toIcon,
-		$fromIcon,
 		icons = [];
 
 	// The following classes are used here:
 	// * mw-ge-recommendedLinkAnnotation-icon-accepted
 	// * mw-ge-recommendedLinkAnnotation-icon-rejected
 	// * mw-ge-recommendedLinkAnnotation-icon-undecided
-	$toIcon = $( '<span>' ).addClass( 'mw-ge-recommendedLinkAnnotation-icon-' + newState );
+	var $toIcon = $( '<span>' ).addClass( 'mw-ge-recommendedLinkAnnotation-icon-' + newState );
 	icons.push( $toIcon );
 
+	var $fromIcon, isDeselect;
 	if ( this.isRenderingUpdatedAnnotation() ) {
-		oldState = stateData.oldState;
+		var oldState = stateData.oldState;
 		isDeselect = stateData.isDeselect;
 		shouldAnimateIcons = oldState !== newState;
 		// The following classes are used here:

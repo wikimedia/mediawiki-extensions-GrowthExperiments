@@ -115,10 +115,9 @@ AskHelpPanel.prototype.initializeHelpDeskProperties = function () {
  * to the mentor's talk page (see GEHelpPanelAskMentor)
  */
 AskHelpPanel.prototype.initializeMentorProperties = function () {
-	var userName = mw.user.getName(),
-		mentorName, mentorGender, primaryMentorName, primaryMentorGender, backAt,
-		mentorTalkLinkText, $mentorTalkLink;
+	var userName = mw.user.getName();
 
+	var mentorName, mentorGender, primaryMentorName, primaryMentorGender, backAt;
 	if ( this.askSource === 'mentor-homepage' ) {
 		mentorName = mw.config.get( 'GEHomepageMentorshipEffectiveMentorName' );
 		mentorGender = mw.config.get( 'GEHomepageMentorshipEffectiveMentorGender' );
@@ -142,10 +141,10 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 	this.panelTitleMessages.questioncomplete =
 		mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text();
 
-	mentorTalkLinkText = mw.message(
+	var mentorTalkLinkText = mw.message(
 		'growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text',
 		mentorName, userName ).text();
-	$mentorTalkLink = $( '<a>' )
+	var $mentorTalkLink = $( '<a>' )
 		.attr( {
 			href: mw.Title.newFromText( mentorName, 3 ).getUrl(),
 			target: '_blank',

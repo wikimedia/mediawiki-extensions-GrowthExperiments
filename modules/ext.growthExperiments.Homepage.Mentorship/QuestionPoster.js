@@ -43,9 +43,7 @@
 				} );
 			},
 			questionRoute = '/homepage/' + config.dialog.name + '/question',
-			suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-			QuestionPosterDialog, Help, loggerInstance, windowManagerInstance, ctaButton,
-			dialogInstance, routerInstance;
+			suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 		// no-op if the CTA button isn't found. This happens if the RL module is loaded
 		// before the corresponding HTML is set in the DOM, as currently occurs with
@@ -54,19 +52,19 @@
 			return;
 		}
 
-		routerInstance = require( 'mediawiki.router' );
-		Help = require( 'ext.growthExperiments.Help' );
-		QuestionPosterDialog = Help.HelpPanelProcessDialog;
-		loggerInstance = new Help.HelpPanelLogger(
+		var routerInstance = require( 'mediawiki.router' );
+		var Help = require( 'ext.growthExperiments.Help' );
+		var QuestionPosterDialog = Help.HelpPanelProcessDialog;
+		var loggerInstance = new Help.HelpPanelLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			{
 				context: config.context,
 				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' )
 			}
 		);
-		windowManagerInstance = new OO.ui.WindowManager( { modal: true } );
+		var windowManagerInstance = new OO.ui.WindowManager( { modal: true } );
 		suggestedEditSession.helpPanelShouldBeLocked = true;
-		dialogInstance = new QuestionPosterDialog( $.extend( {
+		var dialogInstance = new QuestionPosterDialog( $.extend( {
 			size: 'medium',
 			logger: loggerInstance,
 			layoutType: 'dialog',
@@ -76,7 +74,7 @@
 			askSource: 'mentor-homepage',
 			isQuestionPoster: true
 		}, config.dialog ) );
-		ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
+		var ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
 
 		appendWindowManagerToBody( windowManagerInstance, dialogInstance );
 		registerDialogRoute(

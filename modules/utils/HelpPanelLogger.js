@@ -48,14 +48,13 @@
 	 *   fields are set to some default value if omitted.
 	 */
 	HelpPanelLogger.prototype.log = function ( action, data, metadataOverride ) {
-		var eventData;
 		// T273700 in some rare cases the user is logged out when this is called, so to avoid
 		// eventgate-validation issues make sure we have an ID.
 		if ( !mw.user.getId() ) {
 			return;
 		}
 
-		eventData = $.extend(
+		var eventData = $.extend(
 			{
 				action: action,
 				/* eslint-disable-next-line camelcase */
@@ -157,7 +156,6 @@
 	 * @return {string}
 	 */
 	HelpPanelLogger.prototype.getCurrentEditor = function () {
-		var veTarget, surface, mode;
 
 		// If the editor has already been set in response to a hook from
 		// MobileFrontend, use that.
@@ -167,11 +165,11 @@
 			return this.editor;
 		} else {
 			// Desktop: VE in visual or source mode
-			veTarget = OO.getProp( window, 've', 'init', 'target' );
+			var veTarget = OO.getProp( window, 've', 'init', 'target' );
 			if ( veTarget ) {
-				surface = veTarget.getSurface();
+				var surface = veTarget.getSurface();
 				if ( surface ) {
-					mode = surface.getMode();
+					var mode = surface.getMode();
 					if ( mode === 'source' ) {
 						return 'wikitext-2017';
 					}

@@ -41,11 +41,10 @@
 				taskTypeID,
 				mw.config.get( 'wgUserLanguage' )
 			].join( '/' ),
-			tipLabelNumber = 1,
-			key;
+			tipLabelNumber = 1;
 
 		return $.get( apiPath ).then( function ( quickStartTipsData ) {
-			for ( key in quickStartTipsData ) {
+			for ( var key in quickStartTipsData ) {
 				tipPanel = new QuickStartTipsTabPanelLayout( 'tipset-' + String( tipLabelNumber ), {
 					taskType: taskTypeID,
 					label: String( mw.language.convertNumber( tipLabelNumber ) ),

@@ -91,9 +91,8 @@
 		} );
 		popupButtonWidget.getPopup().connect( this, {
 			toggle: function ( show ) {
-				var drawer;
 				if ( show && OO.ui.isMobile() ) {
-					drawer = new Drawer( {
+					var drawer = new Drawer( {
 						children: [
 							this.getName( '<h4>' ),
 							$( '<div>' )

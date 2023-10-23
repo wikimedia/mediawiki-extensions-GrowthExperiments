@@ -72,7 +72,7 @@
 	 *   Whether to keep the fragment as is (instead of encoding it)
 	 */
 	function removeQueryParam( url, queryParam, useLiteralFragment ) {
-		var newUrl, fragment = '', queryParams;
+		var queryParams;
 		if ( Array.isArray( queryParam ) ) {
 			queryParams = queryParam;
 		} else {
@@ -86,6 +86,7 @@
 			delete url.query[ param ];
 		} );
 
+		var newUrl;
 		if ( Object.keys( url.query ).length === 1 && url.query.title ) {
 			// After removing the param only title remains. Rewrite to a prettier URL.
 			newUrl = mw.util.getUrl( url.query.title );
@@ -93,6 +94,7 @@
 			newUrl = url;
 		}
 
+		var fragment = '';
 		// mw.uri.toString encodes fragment by default.
 		if ( useLiteralFragment && url.fragment ) {
 			fragment = '#' + url.fragment;

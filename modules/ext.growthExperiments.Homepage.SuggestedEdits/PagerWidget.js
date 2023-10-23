@@ -21,14 +21,14 @@ OO.inheritClass( SuggestedEditPagerWidget, OO.ui.Widget );
  * @param {number} totalCount
  */
 SuggestedEditPagerWidget.prototype.setMessage = function ( currentPosition, totalCount ) {
-	var currentPositionText, totalCountText;
 
+	var currentPositionText;
 	if ( currentPosition > totalCount ) {
 		currentPositionText = mw.message( 'growthexperiments-homepage-suggestededits-pager-end' ).text();
 	} else {
 		currentPositionText = mw.language.convertNumber( currentPosition );
 	}
-	totalCountText = mw.language.convertNumber( totalCount );
+	var totalCountText = mw.language.convertNumber( totalCount );
 
 	this.$element.html( mw.message(
 		'growthexperiments-homepage-suggestededits-pager', currentPositionText, totalCountText

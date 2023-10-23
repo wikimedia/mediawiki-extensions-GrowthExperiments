@@ -37,7 +37,6 @@
 	 * @param {Object} [extraData] Additional data related to the action or the state of the module
 	 */
 	HomepageModuleLogger.prototype.log = function ( module, mode, action, extraData ) {
-		var event, state, data;
 		if ( !this.enabled ) {
 			return;
 		}
@@ -46,13 +45,13 @@
 			return;
 		}
 
-		data = $.extend(
+		var data = $.extend(
 			{},
 			mw.config.get( 'wgGEHomepageModuleActionData-' + module ),
 			extraData || {}
 		);
 
-		event = {
+		var event = {
 			/* eslint-disable camelcase */
 			action: action,
 			action_data: Utils.serializeActionData( data ),
@@ -65,7 +64,7 @@
 			homepage_pageview_token: this.homepagePageviewToken
 			/* eslint-enable camelcase */
 		};
-		state = mw.config.get( 'wgGEHomepageModuleState-' + module );
+		var state = mw.config.get( 'wgGEHomepageModuleState-' + module );
 		if ( state ) {
 			// Don't pass things like event.state = '', that causes validation errors
 			event.state = state;

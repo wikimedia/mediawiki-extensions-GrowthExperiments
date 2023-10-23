@@ -170,9 +170,9 @@ FiltersStore.prototype.savePreferences = function () {
 		topicPrefName = suggestedEditsConfig.GENewcomerTasksTopicFiltersPref,
 		prefValueHasBeenSetBefore = mw.user.options.get( topicPrefName ),
 		selectedTopics = this.getSelectedTopics(),
-		topicFilters = this.getTopicsQuery(),
-		topicPrefValue;
+		topicFilters = this.getTopicsQuery();
 
+	var topicPrefValue;
 	if ( selectedTopics.length ) {
 		topicPrefValue = JSON.stringify( selectedTopics );
 	} else {
@@ -234,9 +234,9 @@ FiltersStore.prototype.formatTopicGroups = function ( topicData ) {
 	}
 	/* eslint-enable no-underscore-dangle */
 
-	var key, topic, grouped = {};
-	for ( key in topicData ) {
-		topic = topicData[ key ];
+	var grouped = {};
+	for ( var key in topicData ) {
+		var topic = topicData[ key ];
 		if ( grouped[ topic.groupId ] === undefined ) {
 			grouped[ topic.groupId ] = {
 				id: topic.groupId,

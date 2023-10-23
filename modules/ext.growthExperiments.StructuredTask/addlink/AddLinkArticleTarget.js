@@ -37,14 +37,12 @@ function AddLinkArticleTarget( logger ) {
  *   passed to loadSuccess(). Will be modified.
  */
 AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
-	var data, addlinkData, doc;
-
 	if ( !response ) {
 		return;
 	}
-	data = response.visualeditor || response.visualeditoredit;
-	doc = ve.parseXhtml( data.content );
-	addlinkData = suggestedEditSession.taskData;
+	var data = response.visualeditor || response.visualeditoredit;
+	var doc = ve.parseXhtml( data.content );
+	var addlinkData = suggestedEditSession.taskData;
 	// TODO start loading this earlier (T267691)
 	this.annotateSuggestions( doc, addlinkData.links );
 	data.content = '<!doctype html>' + ve.serializeXhtml( doc );
@@ -108,18 +106,17 @@ AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
  * @return {{ recommendationWikitextOffset: number, fragment: ve.dm.SurfaceFragment }[]}
  */
 AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
-	var i, annotations, thisRecommendationWikitextOffset,
-		lastRecommendationWikitextOffset = null,
+	var lastRecommendationWikitextOffset = null,
 		surfaceModel = this.getSurface().getModel(),
 		data = surfaceModel.getDocument().data,
 		dataLength = data.getLength(),
 		recommendationRanges = {};
 
-	for ( i = 0; i < dataLength; i++ ) {
+	for ( var i = 0; i < dataLength; i++ ) {
 		// TODO maybe this could be more efficient (T267693)
-		annotations = data.getAnnotationsFromOffset( i ).getAnnotationsByName( 'mwGeRecommendedLink' );
+		var annotations = data.getAnnotationsFromOffset( i ).getAnnotationsByName( 'mwGeRecommendedLink' );
 		if ( annotations.getLength() ) {
-			thisRecommendationWikitextOffset = annotations.get( 0 )
+			var thisRecommendationWikitextOffset = annotations.get( 0 )
 				.getAttribute( 'recommendationWikitextOffset' );
 			if ( thisRecommendationWikitextOffset === lastRecommendationWikitextOffset ) {
 				// Continuation of the current annotation
@@ -167,9 +164,7 @@ AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
  * @param {LinkRecommendationLink[]} suggestions Description of suggested links
  */
 AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions ) {
-	var i, regex, textNode, nextNode, match, phrase, suggestion, anythingLeft, linkText,
-		postText, linkWrapper,
-		phraseMap = {},
+	var phraseMap = {},
 		phraseMapKeys = [],
 		annotations = [],
 		numberOfLinksShown = 0,
@@ -198,7 +193,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	 */
 	function annotateSuggestion( annotation ) {
 		// Wrap linkText in a <span typeof="mw:RecommendedLink"> tag
-		linkWrapper = doc.createElement( 'span' );
+		var linkWrapper = doc.createElement( 'span' );
 		linkWrapper.setAttribute( 'typeof', 'mw:RecommendedLink' );
 		linkWrapper.setAttribute( 'data-target', annotation.suggestion.link_target );
 		linkWrapper.setAttribute( 'data-text', annotation.suggestion.link_text );
@@ -209,13 +204,14 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		annotation.postText.parentNode.insertBefore( linkWrapper, annotation.postText );
 	}
 
+	var phrase;
 	// For each phrase, gather the link targets for that phrase and the occurrence number for each
 	// link target, and start an occurrence counter. There will typically be only one link target
 	// per phrase, but this data structure supports multiple link targets for different occurrences
 	// of the same phrase.
 	// If suggestions contains { text: 'foo', index: 2, target: 'bar' }, then
 	// phraseMap will contain { 'foo': { occurrencesSeen: 0, linkTargets: { 2: 'bar' } } }
-	for ( i = 0; i < suggestions.length; i++ ) {
+	for ( var i = 0; i < suggestions.length; i++ ) {
 		if ( !phraseMap[ suggestions[ i ].link_text ] ) {
 			phraseMap[ suggestions[ i ].link_text ] = {
 				occurrencesSeen: 0,
@@ -228,26 +224,27 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 
 	// Build a regex that matches any phrase in phraseMap. We remove phrases from phraseMap when
 	// we've found them, so if phraseMap is empty we'll know we're done.
-	regex = buildRegex( Object.keys( phraseMap ) );
-	anythingLeft = Object.keys( phraseMap ).length > 0;
-	textNode = treeWalker.nextNode();
+	var regex = buildRegex( Object.keys( phraseMap ) );
+	var anythingLeft = Object.keys( phraseMap ).length > 0;
+	var textNode = treeWalker.nextNode();
 	// TODO: deal with span-wrapped entities, and possibly with partially-annotated phrases
 	//   (T267695)
 	while ( anythingLeft && textNode ) {
 		// Move the TreeWalker forward before we do anything. This avoids the need for confusing
 		// trickery later if we change the DOM to add a wrapper
-		nextNode = treeWalker.nextNode();
+		var nextNode = treeWalker.nextNode();
 
 		// Using .exec() and .lastIndex allows us to find multiple matches of the regex in a loops
 		regex.lastIndex = 0;
+		var match;
 		while ( anythingLeft && ( match = regex.exec( textNode.data ) ) ) {
 			phrase = phraseMap[ match[ 0 ] ];
-			suggestion = phrase.suggestions[ phrase.occurrencesSeen ];
+			var suggestion = phrase.suggestions[ phrase.occurrencesSeen ];
 			if ( suggestion ) {
 				// Split the textNode in three parts: before the matched phrase (textNode),
 				// the matched phrase (linkText), and the text after the matched phrase (postText)
-				linkText = textNode.splitText( match.index );
-				postText = linkText.splitText( match[ 0 ].length );
+				var linkText = textNode.splitText( match.index );
+				var postText = linkText.splitText( match[ 0 ].length );
 
 				// Save the matched phrase and the text after and the suggestion
 				// instead of inserting the annotation so we can apply
@@ -490,9 +487,7 @@ AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
 AddLinkArticleTarget.prototype.getAnnotationStates = function () {
 	var states = [];
 	this.getSurface().linkRecommendationFragments.forEach( function ( recommendation ) {
-		var state, annotations, annotation;
-
-		annotations = recommendation.fragment
+		var annotations = recommendation.fragment
 			.getAnnotations()
 			.getAnnotationsByName( 'mwGeRecommendedLink' );
 
@@ -507,10 +502,10 @@ AddLinkArticleTarget.prototype.getAnnotationStates = function () {
 				recommendation.recommendationWikitextOffset ), 'error.growthexperiments' );
 			return;
 		}
-		annotation = annotations.get( 0 );
+		var annotation = annotations.get( 0 );
 
 		// Despite the name, getDisplayTitle() is the title, not the display title.
-		state = {
+		var state = {
 			title: annotation.getDisplayTitle(),
 			text: annotation.getOriginalDomElements( annotation.getStore() )
 				.map( function ( element ) {

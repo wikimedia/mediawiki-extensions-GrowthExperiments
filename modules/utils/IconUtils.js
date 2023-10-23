@@ -8,7 +8,6 @@
 	 * @return {jQuery|string}
 	 */
 	function getIconElementForTaskType( iconData, config ) {
-		var label, iconWidget;
 		if ( !iconData || !( 'icon' in iconData ) ) {
 			return '';
 		}
@@ -16,8 +15,8 @@
 		// The following messages are used here:
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
 		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
-		label = 'descriptionMessageKey' in iconData ? mw.message( iconData.descriptionMessageKey ).text() : '';
-		iconWidget = new OO.ui.IconWidget( $.extend( config, {
+		var label = 'descriptionMessageKey' in iconData ? mw.message( iconData.descriptionMessageKey ).text() : '';
+		var iconWidget = new OO.ui.IconWidget( $.extend( config, {
 			icon: iconData.icon,
 			classes: [ 'suggested-edits-task-explanation-icon' ]
 		} ) );

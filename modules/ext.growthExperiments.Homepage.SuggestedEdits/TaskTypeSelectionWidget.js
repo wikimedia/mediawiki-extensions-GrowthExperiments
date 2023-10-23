@@ -146,8 +146,8 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
 	difficulty,
 	selectedTaskTypes
 ) {
-	var taskType, checkboxes = [];
-	for ( taskType in this.TASK_TYPES ) {
+	var checkboxes = [];
+	for ( var taskType in this.TASK_TYPES ) {
 		if ( this.TASK_TYPES[ taskType ].difficulty === difficulty ) {
 			checkboxes.push( this.makeCheckbox(
 				this.TASK_TYPES[ taskType ],
@@ -164,17 +164,14 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
  * @return {OO.ui.CheckboxMultioptionWidget}
  */
 TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, selected ) {
-	var $additionalMessage,
-		$additionalMessageContent,
-		descriptionMessage,
-		device = OO.ui.isMobile() ? 'mobile' : 'desktop',
+	var device = OO.ui.isMobile() ? 'mobile' : 'desktop',
 		$label = $( '<span>' ).text( taskTypeData.messages.label );
 	if ( 'filterIcon' in taskTypeData.iconData ) {
 		// Messages that can be used here:
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
 		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
-		descriptionMessage = mw.message( taskTypeData.iconData.descriptionMessageKey ).escaped();
-		$additionalMessage = new OO.ui.Element( { classes: [
+		var descriptionMessage = mw.message( taskTypeData.iconData.descriptionMessageKey ).escaped();
+		var $additionalMessage = new OO.ui.Element( { classes: [
 			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg',
 			// The following classes are used here:
 			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-copyedit
@@ -188,7 +185,7 @@ TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, select
 			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + taskTypeData.id,
 			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + device
 		] } ).$element;
-		$additionalMessageContent = $( '<span>' ).append(
+		var $additionalMessageContent = $( '<span>' ).append(
 			new OO.ui.IconWidget( { icon: taskTypeData.iconData.filterIcon } ).$element,
 			descriptionMessage
 		);

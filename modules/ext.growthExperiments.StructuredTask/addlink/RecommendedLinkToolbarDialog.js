@@ -298,8 +298,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 				other_reason: otherReason ? encodeURIComponent( otherReason ) : undefined
 				/* eslint-enable camelcase */
 			} );
-		}.bind( this ),
-		openRejectionDialogWindowPromise;
+		}.bind( this );
 
 	// Temporarily disable read-only mode
 	surfaceModel.setReadOnly( false );
@@ -309,7 +308,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		// impression and close events.
 		this.updateAnnotation( fragment, annotation, attributes );
 
-		openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
+		var openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
 			'recommendedLinkRejection', {
 				selection: this.currentDataModel.getRejectionReason(),
 				otherRejectionReason: this.currentDataModel.getOtherRejectionReason()
@@ -371,14 +370,14 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 RecommendedLinkToolbarDialog.prototype.getIndexForModel = function ( annotationModel ) {
 	var modelRecommendationWikiTextOffset = annotationModel.getAttribute( 'recommendationWikitextOffset' ),
 		currentIndex = this.currentIndex,
-		fragment = this.linkRecommendationFragments[ currentIndex ],
-		i, modelIndex;
+		fragment = this.linkRecommendationFragments[ currentIndex ];
 
 	if ( modelRecommendationWikiTextOffset === fragment.recommendationWikitextOffset ) {
 		return currentIndex;
 	}
 
-	for ( i = 0; i < this.linkRecommendationFragments.length; i++ ) {
+	var modelIndex;
+	for ( var i = 0; i < this.linkRecommendationFragments.length; i++ ) {
 		fragment = this.linkRecommendationFragments[ i ];
 		if ( modelRecommendationWikiTextOffset === fragment.recommendationWikitextOffset ) {
 			modelIndex = i;
@@ -614,10 +613,8 @@ RecommendedLinkToolbarDialog.prototype.setupButtons = function () {
  * @param {number} total Total number of indicators to build
  */
 RecommendedLinkToolbarDialog.prototype.setupProgressIndicators = function ( total ) {
-	var i, $indicator;
-
-	for ( i = 0; i < total; i++ ) {
-		$indicator = $( '<span>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-indicator' );
+	for ( var i = 0; i < total; i++ ) {
+		var $indicator = $( '<span>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-indicator' );
 		this.$progress.append( $indicator );
 	}
 };
@@ -778,8 +775,7 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 		),
 		linkPreviewTextLeft = this.linkPreviewTextLeft || $linkPreviewText.position().left,
 		canOverflowStateAlign = false,
-		imageOffset = 68, // @imageThumbnailSize + @gutterSize in RecommendedLinkToolbarDialog.less
-		availableWidth;
+		imageOffset = 68; // @imageThumbnailSize + @gutterSize in RecommendedLinkToolbarDialog.less
 
 	// This doesn't have to be re-computed (doesn't change upon window resize).
 	this.acceptanceButtonsWidth = acceptanceButtonsWidth;
@@ -789,6 +785,7 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 		acceptanceButtonsWidth += this.reopenRejectionDialogButton.$element.outerWidth();
 	}
 
+	var availableWidth;
 	// Use document dir rather than surface dir since this corresponds to the direction of the UI
 	if ( document.documentElement.dir === 'rtl' ) {
 		availableWidth = $linkPreviewText.width() - $nextButton.width();
@@ -817,12 +814,11 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
  */
 RecommendedLinkToolbarDialog.prototype.updateSurfacePadding = function () {
 	var bottomPadding = Math.max( this.$element.height(), this.minHeight ) + this.scrollOffset,
-		topOffset = this.topOffset || 0,
-		topPadding;
+		topOffset = this.topOffset || 0;
 	if ( !this.originalTopPadding ) {
 		this.originalTopPadding = this.surface.padding.top;
 	}
-	topPadding = this.originalTopPadding + topOffset;
+	var topPadding = this.originalTopPadding + topOffset;
 	this.surface.setPadding( { top: topPadding, bottom: bottomPadding } );
 };
 

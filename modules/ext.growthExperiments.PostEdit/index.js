@@ -99,8 +99,7 @@
 	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
 	function setup( showToast ) {
-		var postEditPanel, displayPanelPromises,
-			imageRecommendationQualityGates =
+		var imageRecommendationQualityGates =
 				suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
 			imageRecommendationDailyTasksExceeded =
 				imageRecommendationQualityGates.dailyLimit || false,
@@ -113,7 +112,7 @@
 			linkRecommendationDailyTasksExceeded =
 				linkRecommendationQualityGates.dailyLimit || false;
 
-		postEditPanel = new PostEditPanel( {
+		var postEditPanel = new PostEditPanel( {
 			taskType: suggestedEditSession.taskType,
 			taskState: suggestedEditSession.taskState,
 			taskTypes: ALL_TASK_TYPES,
@@ -125,7 +124,7 @@
 			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded
 		} );
 
-		displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger, showToast );
+		var displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger, showToast );
 
 		return {
 			panel: postEditPanel,
@@ -153,8 +152,7 @@
 		 *   - closePromise: A promise that resolves when the dialog has been closed.
 		 */
 		setupPanel: function ( nextSuggestedTaskType, showToast ) {
-			var setupResult,
-				fetchTasksConfig = {
+			var fetchTasksConfig = {
 					excludePageId: mw.config.get( 'wgArticleId' ),
 					excludeExceededQuotaTaskTypes: true
 				},
@@ -172,6 +170,7 @@
 				fetchTasksConfig.newTaskTypes = [ nextSuggestedTaskType ];
 			}
 
+			var setupResult;
 			tasksStore.fetchTasks( 'postEditDialog', fetchTasksConfig ).catch( function ( errorMessage ) {
 				if ( errorMessage ) {
 					mw.log.error( errorMessage );

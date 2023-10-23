@@ -201,13 +201,13 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
 	linearModel,
 	imageData
 ) {
-	var insertRange, relativeOffset, transaction,
-		surface = this.getSurface(),
+	var surface = this.getSurface(),
 		surfaceModel = surface.getModel(),
 		data = surfaceModel.getDocument().data;
 
 	// Find the position between the initial templates and text.
-	insertRange = this.getInsertRange( imageData );
+	var insertRange = this.getInsertRange( imageData );
+	var relativeOffset;
 	if ( insertRange === null ) {
 		relativeOffset = -1;
 	} else {
@@ -235,7 +235,7 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
 
 	// Actually insert the image.
 	surfaceModel.setReadOnly( false );
-	transaction = ve.dm.TransactionBuilder.static.newFromInsertion(
+	var transaction = ve.dm.TransactionBuilder.static.newFromInsertion(
 		surfaceModel.getDocument(),
 		this.insertOffset,
 		linearModel
@@ -254,17 +254,16 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
  * @return {{width:number, height: number}}
  */
 AddImageArticleTarget.prototype.getImageDimensions = function ( imageData ) {
-	var originalDimensions, targetWidth,
-		surface = this.getSurface();
+	var surface = this.getSurface();
 
-	originalDimensions = {
+	var originalDimensions = {
 		width: imageData.metadata.originalWidth,
 		height: imageData.metadata.originalHeight
 	};
 
 	// On mobile, the image is rendered full width (with max width set to account for tablets).
 	// On desktop, the default thumbnail size is used.
-	targetWidth = surface.getContext().isMobile() ?
+	var targetWidth = surface.getContext().isMobile() ?
 		Math.min(
 			originalDimensions.width,
 			surface.getView().$documentNode.width(),
@@ -286,13 +285,12 @@ AddImageArticleTarget.prototype.getImageDimensions = function ( imageData ) {
  * @return {Array}
  */
 AddImageArticleTarget.prototype.getImageLinearModel = function ( imageData ) {
-	var dimensions, imageRenderData,
-		NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
+	var NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
 		imageTitle = new mw.Title( imageData.image, NS_FILE ),
 		AddImageUtils = require( './AddImageUtils.js' );
 
-	dimensions = this.getImageDimensions( imageData );
-	imageRenderData = AddImageUtils.getImageRenderData( imageData.metadata, window, dimensions.width );
+	var dimensions = this.getImageDimensions( imageData );
+	var imageRenderData = AddImageUtils.getImageRenderData( imageData.metadata, window, dimensions.width );
 	return [
 		{
 			type: 'mwGeRecommendedImage',
@@ -478,9 +476,9 @@ AddImageArticleTarget.prototype.insertCaption = function ( captionText ) {
 		documentModel = surfaceModel.getDocument(),
 		captionNode = documentModel.getNodesByType( 'mwGeRecommendedImageCaption' )[ 0 ],
 		captionNodeRange = captionNode.getRange( false ),
-		selection = surfaceModel.getSelection().getRange(),
-		insertOffset;
+		selection = surfaceModel.getSelection().getRange();
 
+	var insertOffset;
 	if ( captionNodeRange.containsRange( selection ) ) {
 		insertOffset = selection;
 	} else {
@@ -659,9 +657,9 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 			}
 			this.logger.log( action, actionData, { active_interface: 'captioninfo_dialog' } );
 			/* eslint-enable camelcase */
-		}.bind( this ),
-		openDialogPromise;
+		}.bind( this );
 
+	var openDialogPromise;
 	if ( !shouldCheckPref ) {
 		openDialogPromise = this.surface.dialogs.openWindow( dialogName );
 		openDialogPromise.opening.then( function () {

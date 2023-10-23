@@ -24,8 +24,7 @@ DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements ) {
 		text = domElements[ 0 ].getAttribute( 'data-text' ),
 		wikitextOffset = domElements[ 0 ].getAttribute( 'data-wikitext-offset' ),
 		score = domElements[ 0 ].getAttribute( 'data-score' ),
-		title = mw.Title.newFromText( target ),
-		dataElement;
+		title = mw.Title.newFromText( target );
 
 	if ( !title ) {
 		// We would like to not wrap the text in an annotation at all, but ve.dm.Converter
@@ -35,7 +34,7 @@ DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements ) {
 		return { type: 'mwGeRecommendedLinkError' };
 	}
 	// Let the parent class build the attributes as if this is a real link
-	dataElement = this.dataElementFromTitle( title, target );
+	var dataElement = this.dataElementFromTitle( title, target );
 	// true means accepted; false means explicitly rejected; null means no selection made yet
 	dataElement.attributes.recommendationAccepted = null;
 	// undefined means no reason supplied, otherwise this is a string.

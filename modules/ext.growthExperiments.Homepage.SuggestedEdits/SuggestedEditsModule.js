@@ -30,7 +30,6 @@ var EditCardWidget = require( './EditCardWidget.js' ),
  * @param {mw.libs.ge.DataStore} rootStore
  */
 function SuggestedEditsModule( config, logger, rootStore ) {
-	var $previous, $next, $filters, $filtersContainer, $navContainer;
 	SuggestedEditsModule.super.call( this, config );
 	this.config = config;
 	this.logger = logger;
@@ -73,7 +72,7 @@ function SuggestedEditsModule( config, logger, rootStore ) {
 	this.nextWidget = new PreviousNextWidget( { direction: 'Next' } )
 		.connect( this, { click: 'onNextCard' } );
 
-	$navContainer = this.$element;
+	var $navContainer = this.$element;
 	if ( this.config.$nav.length ) {
 		$navContainer = this.config.$nav;
 		this.setupEditWidget( $navContainer );
@@ -84,16 +83,17 @@ function SuggestedEditsModule( config, logger, rootStore ) {
 	this.setupQualityGateClickHandling(
 		$cardWrapperElement
 	);
-	$previous = $navContainer.find( '.suggested-edits-previous' );
-	$next = $navContainer.find( '.suggested-edits-next' );
+	var $previous = $navContainer.find( '.suggested-edits-previous' );
+	var $next = $navContainer.find( '.suggested-edits-next' );
 
+	var $filtersContainer;
 	if ( this.mode === 'mobile-overlay' || this.mode === 'mobile-details' ) {
 		$filtersContainer = this.$element.closest( '.growthexperiments-homepage-module' )
 			.find( '.growthexperiments-homepage-module-section-subheader' );
 	} else {
 		$filtersContainer = this.$element;
 	}
-	$filters = $filtersContainer.find( '.suggested-edits-filters' );
+	var $filters = $filtersContainer.find( '.suggested-edits-filters' );
 	if ( !$filters.length ) {
 		$filters = $( '<div>' ).addClass( 'suggested-edits-filters' ).appendTo( $filtersContainer );
 	}
@@ -396,8 +396,7 @@ SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapp
 	var isGoingBack = this.isGoingBack,
 		$fakeCard = $cardElement.clone(),
 		$overlayContent = this.config.$container.find( '.overlay-content' ),
-		promise = $.Deferred(),
-		onTransitionEnd;
+		promise = $.Deferred();
 
 	// Prevent scrolling while animation is in progress
 	$overlayContent.addClass( 'is-swiping' );
@@ -410,7 +409,7 @@ SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapp
 	// The current card is positioned off screen so it can be animated in.
 	$cardElement.addClass( [ 'no-transition', isGoingBack ? 'to-start' : 'to-end' ] );
 
-	onTransitionEnd = function () {
+	var onTransitionEnd = function () {
 		$fakeCard.remove();
 		$cardElement.off( 'transitionend transitioncancel', onTransitionEnd );
 		promise.resolve();

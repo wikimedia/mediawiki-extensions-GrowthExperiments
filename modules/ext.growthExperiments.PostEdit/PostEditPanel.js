@@ -99,9 +99,9 @@ OO.mixinClass( PostEditPanel, OO.EventEmitter );
  * @return {OO.ui.MessageWidget}
  */
 PostEditPanel.prototype.getPostEditToastMessage = function () {
-	var hasSavedTask = this.taskState === SuggestedEditSession.static.STATES.SAVED,
-		type, messageKey;
+	var hasSavedTask = this.taskState === SuggestedEditSession.static.STATES.SAVED;
 
+	var type;
 	if ( hasSavedTask ) {
 		type = mw.config.get( 'wgEditSubmitButtonLabelPublish' ) ? 'published' : 'saved';
 		if ( mw.config.get( 'wgStableRevisionId' ) &&
@@ -121,7 +121,7 @@ PostEditPanel.prototype.getPostEditToastMessage = function () {
 	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation
 	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation
 	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation
-	messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
+	var messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
 	if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
 		messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation';
 	} else if ( this.taskType === 'section-image-recommendation' && this.sectionImageRecommendationDailyTasksExceeded ) {

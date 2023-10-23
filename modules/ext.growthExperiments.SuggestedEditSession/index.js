@@ -210,14 +210,14 @@
 	 * @return {boolean} Whether an active session was successfully restored.
 	 */
 	SuggestedEditSession.prototype.maybeRestore = function () {
-		var currentTitle, savedTitle,
-			data = mw.storage.session.getObject( 'ge-suggestededit-session' );
+		var data = mw.storage.session.getObject( 'ge-suggestededit-session' );
 
 		if ( this.active ) {
 			throw new Error( 'Trying to load an already started suggested edit session' );
 		}
 
 		if ( data ) {
+			var currentTitle, savedTitle;
 			try {
 				currentTitle = this.getCurrentTitle();
 				savedTitle = new mw.Title( data.title );

@@ -33,8 +33,6 @@
 		 */
 		preRender: function () {
 			var options = this.options,
-				infoButton,
-				ellipsisMenu,
 				headerActions = [];
 
 			function shouldShowInfoButton( moduleName ) {
@@ -47,7 +45,7 @@
 
 			if ( shouldShowInfoButton( options.moduleName ) ) {
 				this.headerPromise = mw.loader.using( 'oojs-ui' ).then( function () {
-					infoButton = new OO.ui.ButtonWidget( {
+					var infoButton = new OO.ui.ButtonWidget( {
 						id: 'mw-ge-homepage-suggestededits-info',
 						icon: 'info-unpadded',
 						framed: false,
@@ -72,7 +70,7 @@
 			} else if ( shouldShowEllipsisMenu( options.moduleName ) ) {
 				this.headerPromise = mw.loader.using( 'oojs-ui' ).then( function () {
 					// eslint-disable-next-line no-jquery/no-global-selector
-					ellipsisMenu = initEllipsisMenu( $( '.growthexperiments-homepage-container' ) );
+					var ellipsisMenu = initEllipsisMenu( $( '.growthexperiments-homepage-container' ) );
 					return View.make(
 						{ class: 'homepage-module-overlay-ellipsis-menu' },
 						[ ellipsisMenu.$element ]

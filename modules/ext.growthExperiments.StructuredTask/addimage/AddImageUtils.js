@@ -27,13 +27,12 @@
 
 		// The file is a thumbnail and can be resized.
 		if ( thumb.width && thumb.resizeUrl ) {
-			var aspectRatio = metadata.originalWidth / metadata.originalHeight,
-				targetSrcWidth;
+			var aspectRatio = metadata.originalWidth / metadata.originalHeight;
 
 			if ( !renderWidth ) {
 				renderWidth = Math.min( viewport.innerWidth, viewport.innerHeight * aspectRatio );
 			}
-			targetSrcWidth = Math.floor( viewport.devicePixelRatio * renderWidth );
+			var targetSrcWidth = Math.floor( viewport.devicePixelRatio * renderWidth );
 
 			// The image should be resized if the target source width is smaller than the original
 			// or if the file needs to be re-rasterized (resizeUrl only works if the target width is

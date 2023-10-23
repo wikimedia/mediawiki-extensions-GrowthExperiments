@@ -45,16 +45,15 @@
 	 * we can get meaningful information about the offset.
 	 */
 	ULSTagMultiselectWidget.prototype.initializeUls = function () {
-		var $inputWidget, offset,
-			widget = this;
+		var widget = this;
 
 		if ( this.$uls ) {
 			return;
 		}
 		this.$uls = this.$element.closest( '.oo-ui-fieldLayout' );
 
-		$inputWidget = this.input.$element;
-		offset = $inputWidget.offset();
+		var $inputWidget = this.input.$element;
+		var offset = $inputWidget.offset();
 
 		this.$uls.uls( {
 			ulsPurpose: 'welcomesurvey-languages-picker',
@@ -78,12 +77,11 @@
 	 * @param {Object[]} items
 	 */
 	ULSTagMultiselectWidget.prototype.onChangeTags = function ( items ) {
-		var selectedLangCodes;
 		// Parent method
 		ULSTagMultiselectWidget.super.prototype.onChangeTags.apply( this, arguments );
 
 		// Update the hidden checkboxes in the form
-		selectedLangCodes = items.map( function ( item ) {
+		var selectedLangCodes = items.map( function ( item ) {
 			return item.getData();
 		} );
 		// eslint-disable-next-line no-jquery/no-global-selector

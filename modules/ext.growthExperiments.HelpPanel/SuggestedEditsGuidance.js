@@ -16,8 +16,7 @@
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypeId = suggestedEditSession.taskType,
 		guidancePrefName = 'growthexperiments-homepage-suggestededits-guidance-blue-dot',
-		StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' ),
-		guidancePrefValue;
+		StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' );
 
 	if ( StructuredTaskPreEdit.shouldInitializeStructuredTask() ) {
 		StructuredTaskPreEdit.checkTaskData().then( function () {
@@ -45,6 +44,7 @@
 		} );
 	}
 
+	var guidancePrefValue;
 	try {
 		guidancePrefValue = JSON.parse( mw.user.options.get( guidancePrefName ) || {} );
 	} catch ( e ) {
