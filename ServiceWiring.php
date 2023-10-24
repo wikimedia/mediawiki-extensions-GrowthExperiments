@@ -948,6 +948,7 @@ return [
 			$services->getWikiPageFactory(),
 			$services->getTitleFactory(),
 			$services->getUserFactory(),
+			$services->getHookContainer(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
 	},

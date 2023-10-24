@@ -3,19 +3,26 @@
 namespace GrowthExperiments\Config;
 
 use CommentStoreComment;
+use Content;
+use DerivativeContext;
 use FormatJson;
 use GrowthExperiments\Config\Validation\IConfigValidator;
 use InvalidArgumentException;
 use JsonContent;
+use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\HookContainer\HookRunner;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use RecentChange;
+use RequestContext;
 use Status;
+use User;
 
 class WikiPageConfigWriter {
 
@@ -26,11 +33,9 @@ class WikiPageConfigWriter {
 	private WikiPageFactory $wikiPageFactory;
 	private TitleFactory $titleFactory;
 	private UserFactory $userFactory;
+	private HookContainer $hookContainer;
 	private LoggerInterface $logger;
 	private ?array $wikiConfig = null;
-
-	/** @var string[] List of variables that can be overridden on wiki */
-	private array $allowList;
 
 	/**
 	 * @param IConfigValidator $configValidator
@@ -38,8 +43,8 @@ class WikiPageConfigWriter {
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
 	 * @param UserFactory $userFactory
+	 * @param HookContainer $hookContainer
 	 * @param LoggerInterface $logger
-	 * @param string[] $allowList
 	 * @param LinkTarget $configPage
 	 * @param UserIdentity $performer
 	 */
@@ -49,8 +54,8 @@ class WikiPageConfigWriter {
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
 		UserFactory $userFactory,
+		HookContainer $hookContainer,
 		LoggerInterface $logger,
-		array $allowList,
 		LinkTarget $configPage,
 		UserIdentity $performer
 	) {
@@ -59,9 +64,9 @@ class WikiPageConfigWriter {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
 		$this->userFactory = $userFactory;
+		$this->hookContainer = $hookContainer;
 		$this->logger = $logger;
 
-		$this->allowList = $allowList;
 		$this->configPage = $configPage;
 		$this->performer = $performer;
 	}
@@ -217,20 +222,27 @@ class WikiPageConfigWriter {
 		// doesn't need to make sure config was indeed changed.
 		if ( $this->wikiConfig !== $this->getCurrentWikiConfig() ) {
 			$page = $this->wikiPageFactory->newFromLinkTarget( $this->configPage );
+			$content = new JsonContent( FormatJson::encode( $this->wikiConfig ) );
+			$performerUser = $this->userFactory->newFromUserIdentity( $this->performer );
+
+			// Give AbuseFilter et al. a chance to block the edit (T346235)
+			$status->merge( $this->runEditFilterMergedContentHook(
+				$performerUser,
+				$page->getTitle(),
+				$content,
+				$summary,
+				$minor
+			) );
+
 			$updater = $page->newPageUpdater( $this->performer );
 			if ( is_string( $tags ) ) {
 				$updater->addTag( $tags );
 			} elseif ( is_array( $tags ) ) {
 				$updater->addTags( $tags );
 			}
-			$updater->setContent( SlotRecord::MAIN, new JsonContent(
-				FormatJson::encode( $this->wikiConfig )
-			) );
+			$updater->setContent( SlotRecord::MAIN, $content );
 
-			if ( $this->userFactory
-				->newFromUserIdentity( $this->performer )
-				->isAllowed( 'autopatrol' )
-			) {
+			if ( $performerUser->isAllowed( 'autopatrol' ) ) {
 				$updater->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
 			}
 
@@ -246,6 +258,46 @@ class WikiPageConfigWriter {
 		// or null edit concepts)
 		$this->wikiPageConfigLoader->invalidate( $this->configPage );
 
+		return $status;
+	}
+
+	/**
+	 * Run the EditFilterMergedContentHook
+	 *
+	 * @param User $performerUser
+	 * @param Title $title
+	 * @param Content $content
+	 * @param string $summary
+	 * @param bool $minor
+	 * @return Status
+	 */
+	private function runEditFilterMergedContentHook(
+		User $performerUser,
+		Title $title,
+		Content $content,
+		string $summary,
+		bool $minor
+	): Status {
+		// Ensure context has right values for title and performer, which are available to the
+		// config writer. Use the global context for the rest.
+		$derivativeContext = new DerivativeContext( RequestContext::getMain() );
+		$derivativeContext->setUser( $performerUser );
+		$derivativeContext->setTitle( $title );
+
+		$status = new Status();
+		$hookRunner = new HookRunner( $this->hookContainer );
+		if ( !$hookRunner->onEditFilterMergedContent(
+			$derivativeContext,
+			$content,
+			$status,
+			$summary,
+			$performerUser,
+			$minor
+		) ) {
+			if ( $status->isGood() ) {
+				$status->fatal( 'hookaborted' );
+			}
+		}
 		return $status;
 	}
 }

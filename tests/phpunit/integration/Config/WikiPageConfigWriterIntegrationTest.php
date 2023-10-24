@@ -128,8 +128,8 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getUserFactory(),
+			$this->getServiceContainer()->getHookContainer(),
 			new NullLogger(),
-			[ $variable ],
 			$this->getExistingTestPage()->getTitle(),
 			$this->getTestUser()->getUserIdentity()
 		);
@@ -187,8 +187,8 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getUserFactory(),
+			$this->getServiceContainer()->getHookContainer(),
 			new NullLogger(),
-			[ $variable ],
 			$this->getExistingTestPage()->getTitle(),
 			$this->getTestUser()->getUserIdentity()
 		);

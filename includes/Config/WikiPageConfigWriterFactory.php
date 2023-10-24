@@ -4,6 +4,7 @@ namespace GrowthExperiments\Config;
 
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use InvalidArgumentException;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\TitleFactory;
@@ -13,26 +14,17 @@ use Psr\Log\LoggerInterface;
 use User;
 
 class WikiPageConfigWriterFactory {
-	/** @var WikiPageConfigLoader */
-	private $wikiPageConfigLoader;
 
-	/** @var ConfigValidatorFactory */
-	private $configValidatorFactory;
-
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var UserFactory */
-	private $userFactory;
-
-	/** @var LoggerInterface */
-	private $logger;
+	private WikiPageConfigLoader $wikiPageConfigLoader;
+	private ConfigValidatorFactory $configValidatorFactory;
+	private WikiPageFactory $wikiPageFactory;
+	private TitleFactory $titleFactory;
+	private UserFactory $userFactory;
+	private HookContainer $hookContainer;
+	private LoggerInterface $logger;
 
 	/** @var User|null Injected system user, to allow injecting from tests */
-	private $systemUser;
+	private ?User $systemUser;
 
 	/**
 	 * @param WikiPageConfigLoader $wikiPageConfigLoader
@@ -40,6 +32,7 @@ class WikiPageConfigWriterFactory {
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
 	 * @param UserFactory $userFactory
+	 * @param HookContainer $hookContainer
 	 * @param LoggerInterface $logger
 	 * @param User|null $systemUser
 	 */
@@ -49,6 +42,7 @@ class WikiPageConfigWriterFactory {
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
 		UserFactory $userFactory,
+		HookContainer $hookContainer,
 		LoggerInterface $logger,
 		?User $systemUser = null
 	) {
@@ -57,6 +51,7 @@ class WikiPageConfigWriterFactory {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
 		$this->userFactory = $userFactory;
+		$this->hookContainer = $hookContainer;
 		$this->logger = $logger;
 		$this->systemUser = $systemUser;
 	}
@@ -82,8 +77,8 @@ class WikiPageConfigWriterFactory {
 			$this->wikiPageFactory,
 			$this->titleFactory,
 			$this->userFactory,
+			$this->hookContainer,
 			$this->logger,
-			GrowthExperimentsMultiConfig::ALLOW_LIST,
 			$configPage,
 			$performerTmp
 		);

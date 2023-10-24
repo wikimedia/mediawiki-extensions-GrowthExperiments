@@ -10,6 +10,7 @@ use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriter;
 use InvalidArgumentException;
 use JsonContent;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\SlotRecord;
@@ -114,8 +115,8 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 				$this->createNoOpMock( WikiPageFactory::class ),
 				$this->createNoOpMock( TitleFactory::class ),
 				$this->createNoOpMock( UserFactory::class ),
+				$this->createNoOpMock( HookContainer::class ),
 				new NullLogger(),
-				[],
 				$this->createMock( LinkTarget::class ),
 				new UserIdentityValue( 1, 'Performer' )
 			)
@@ -141,8 +142,8 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( WikiPageFactory::class ),
 			$this->getTitleFactoryMock( $configPage, $configPageExists ),
 			$this->createNoOpMock( UserFactory::class ),
+			$this->createNoOpMock( HookContainer::class ),
 			new NullLogger(),
-			[],
 			$configPage,
 			new UserIdentityValue( 1, 'Performer' )
 		);
@@ -180,8 +181,8 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( WikiPageFactory::class ),
 			$this->getTitleFactoryMock( $configPage, true ),
 			$this->createNoOpMock( UserFactory::class ),
+			$this->createNoOpMock( HookContainer::class ),
 			new NullLogger(),
-			[],
 			$configPage,
 			new UserIdentityValue( 1, 'Performer' )
 		);
@@ -230,8 +231,8 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( WikiPageFactory::class ),
 			$this->getTitleFactoryMock( $configPage, true ),
 			$this->createNoOpMock( UserFactory::class ),
+			$this->createNoOpMock( HookContainer::class ),
 			new NullLogger(),
-			[],
 			$configPage,
 			new UserIdentityValue( 1, 'Performer' )
 		);
@@ -279,8 +280,8 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( WikiPageFactory::class ),
 			$this->getTitleFactoryMock( $configPage, true ),
 			$this->createNoOpMock( UserFactory::class ),
+			$this->createNoOpMock( HookContainer::class ),
 			new NullLogger(),
-			[],
 			$configPage,
 			new UserIdentityValue( 1, 'Performer' )
 		);
@@ -356,14 +357,20 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 			->with( $newConfig )
 			->willReturn( StatusValue::newGood() );
 
+		$hookContainer = $this->createMock( HookContainer::class );
+		$hookContainer->expects( $this->once() )
+			->method( 'run' )
+			->with( 'EditFilterMergedContent', $this->anything() )
+			->willReturn( true );
+
 		$writer = new WikiPageConfigWriter(
 			$validator,
 			$wikiPageConfigLoader,
 			$this->getWikiPageFactoryMock( $configPage, $updater ),
 			$this->getTitleFactoryMock( $configPage, true ),
 			$this->getUserFactoryMock( $isAutopatrol ),
+			$hookContainer,
 			new NullLogger(),
-			[],
 			$configPage,
 			new UserIdentityValue( 1, 'Performer' )
 		);
