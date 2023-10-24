@@ -58,12 +58,15 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 		$pageName = 'Title1';
 		$this->insertPage( $pageName );
 		$this->setupTaskSet();
-		$this->expectException( ApiUsageException::class );
-		$this->doApiRequestWithToken( [
+		$result = $this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation',
 			'title' => $pageName,
 			'filename' => 'Foo.jpg',
 		] );
+		$this->assertArrayEquals( [ 'growthinvalidateimagerecommendation' => [
+				'status' => 'ok'
+			]
+		], $result[ 0 ] );
 	}
 
 	public function testMissingTitleParam() {
