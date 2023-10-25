@@ -6,6 +6,7 @@ use Config;
 use DeferredUpdates;
 use EchoAttributeManager;
 use EchoUserLocator;
+use GenderCache;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\EchoNewPraiseworthyMenteesPresentationModel;
 use GrowthExperiments\Mentorship\EchoMenteeClaimPresentationModel;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
@@ -44,6 +45,7 @@ class MentorHooks implements
 	private Config $config;
 	private Config $wikiConfig;
 	private UserIdentityLookup $userIdentityLookup;
+	private GenderCache $genderCache;
 	private MentorManager $mentorManager;
 	private MentorProvider $mentorProvider;
 	private MentorStore $mentorStore;
@@ -52,6 +54,7 @@ class MentorHooks implements
 	 * @param Config $config
 	 * @param Config $wikiConfig
 	 * @param UserIdentityLookup $userIdentityLookup
+	 * @param GenderCache $genderCache
 	 * @param MentorManager $mentorManager
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
@@ -60,6 +63,7 @@ class MentorHooks implements
 		Config $config,
 		Config $wikiConfig,
 		UserIdentityLookup $userIdentityLookup,
+		GenderCache $genderCache,
 		MentorManager $mentorManager,
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore
@@ -67,6 +71,7 @@ class MentorHooks implements
 		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
 		$this->userIdentityLookup = $userIdentityLookup;
+		$this->genderCache = $genderCache;
 		$this->mentorManager = $mentorManager;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorStore = $mentorStore;
@@ -329,10 +334,23 @@ class MentorHooks implements
 	public function onBeforePageDisplay( $out, $skin ): void {
 		if ( $out->getRequest()->getBool( 'gepersonalizedpraise' ) ) {
 			$out->addModules( 'ext.growthExperiments.MentorDashboard.PostEdit' );
-			$out->addJsConfigVars( [
+
+			$jsConfigVars = [
 				'wgPostEditConfirmationDisabled' => true,
 				'wgGEMentorDashboardPersonalizedPraisePostEdit' => true,
-			] );
+			];
+
+			// NOTE: gepersonalizedpraise query parameter should be only passed in NS_USER_TALK,
+			// but verify that just in case
+			$title = $skin->getTitle();
+			if ( $title->getNamespace() === NS_USER_TALK ) {
+				$userIdentity = $this->userIdentityLookup->getUserIdentityByName( $skin->getTitle()->getText() );
+				if ( $userIdentity ) {
+					$jsConfigVars['wgGEMentorDashboardPersonalizedPraiseMenteeGender'] = $this->genderCache
+						->getGenderOf( $userIdentity );
+				}
+			}
+			$out->addJsConfigVars( $jsConfigVars );
 		}
 	}
 }
