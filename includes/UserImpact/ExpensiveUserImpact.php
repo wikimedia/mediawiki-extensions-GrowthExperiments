@@ -141,7 +141,12 @@ class ExpensiveUserImpact extends UserImpact {
 	 * @throws Exception
 	 */
 	public function isPageViewDataStale(): bool {
-		$latestPageViewsDateTime = new DateTime( array_key_last( $this->getDailyTotalViews() ) );
+		$dailyTotalViews = $this->getDailyTotalViews();
+		if ( $dailyTotalViews === [] ) {
+			return true;
+		}
+
+		$latestPageViewsDateTime = new DateTime( array_key_last( $dailyTotalViews ) );
 		$now = MWTimestamp::getInstance();
 		$diff = $now->timestamp->diff( $latestPageViewsDateTime );
 		// Page view data generation can lag by 24-48 hours.
