@@ -2,7 +2,7 @@
 
 // The header holding the hamburger icon has max-width: @contentMaxWidthTablet and width: 90%
 // so it stops growing at @contentMaxWidthTablet / 0.9 pixels.
-@hamburger-header-maxwidth: ( @width-breakpoint-desktop - 6.7em ) / 0.9;
+@hamburger-header-maxwidth: ( @min-width-breakpoint-desktop - 6.7em ) / 0.9;
 
 .mw-ge-homepage-discovery-banner-mobile {
 	display: flex;
@@ -24,7 +24,7 @@
 		height: 54px;
 		margin-right: 25px;
 
-		@media all and ( min-width: @width-breakpoint-tablet ) {
+		@media all and ( min-width: @min-width-breakpoint-tablet ) {
 			// We use a different arrow image  (wider but less tall) for tablets
 			width: 103px;
 			height: 42px;
@@ -41,7 +41,7 @@
 		/* @embed */
 		background: url( ../../images/homepage-discovery-arrow-up-variant-cd-ltr.svg ) no-repeat left;
 
-		@media all and ( min-width: @width-breakpoint-tablet ) {
+		@media all and ( min-width: @min-width-breakpoint-tablet ) {
 			/* @embed */
 			background: url( ../../images/homepage-discovery-arrow-up-longer-variant-cd-ltr.svg ) no-repeat left;
 		}
@@ -50,7 +50,7 @@
 	.mw-ge-homepage-discovery-message {
 		flex-grow: 1;
 
-		@media all and ( min-width: @width-breakpoint-tablet ) {
+		@media all and ( min-width: @min-width-breakpoint-tablet ) {
 			text-align: center;
 			// awkward way to compensate for the arrow
 			padding-right: 103px;
