@@ -142,6 +142,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Submitter",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Cancellar",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Un error incognite ha occurrite. Per favor reproba plus tarde.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Gratias pro inviar un message a tu apprentisse! Retorna al [[Special:MentorDashboard|tabuliero de instrumentos del mentor]].",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Aperir le dialogo de parametros",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Parametros",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Statistica de apprentisses digne de laude",
