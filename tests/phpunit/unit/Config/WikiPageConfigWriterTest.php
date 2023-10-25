@@ -20,6 +20,7 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
 use RecentChange;
 use StatusValue;
@@ -72,11 +73,16 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param LinkTarget $configPage
 	 * @param PageUpdater $updater
-	 * @return WikiPageFactory|\PHPUnit\Framework\MockObject\MockObject
+	 * @param bool $editExpected
+	 * @return WikiPageFactory|MockObject
 	 */
-	private function getWikiPageFactoryMock( LinkTarget $configPage, PageUpdater $updater ) {
+	private function getWikiPageFactoryMock(
+		LinkTarget $configPage,
+		PageUpdater $updater,
+		bool $editExpected = true
+	) {
 		$wikiPage = $this->createMock( WikiPage::class );
-		$wikiPage->expects( $this->once() )
+		$wikiPage->expects( $editExpected ? $this->once() : $this->never() )
 			->method( 'newPageUpdater' )
 			->willReturn( $updater );
 		$wikiPageFactory = $this->createMock( WikiPageFactory::class );
@@ -89,11 +95,12 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param bool $isAutopatrol
-	 * @return UserFactory|\PHPUnit\Framework\MockObject\MockObject
+	 * @param bool $editExpected
+	 * @return UserFactory|MockObject
 	 */
-	private function getUserFactoryMock( bool $isAutopatrol ) {
+	private function getUserFactoryMock( bool $isAutopatrol, bool $editExpected = true ) {
 		$user = $this->createMock( User::class );
-		$user->expects( $this->once() )
+		$user->expects( $editExpected ? $this->once() : $this->never() )
 			->method( 'isAllowed' )
 			->willReturn( $isAutopatrol );
 		$userFactory = $this->createMock( UserFactory::class );
@@ -305,16 +312,20 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::save
 	 * @dataProvider provideSave
+	 * @param bool $editExpected Is an edit expected?
 	 * @param bool $isAutopatrol
 	 * @param string $summary
 	 * @param bool $minor
 	 * @param array|string $tags
+	 * @param bool $hookResponse
 	 */
 	public function testSave(
+		bool $editExpected,
 		bool $isAutopatrol,
 		string $summary,
 		bool $minor,
-		$tags
+		$tags,
+		bool $hookResponse
 	) {
 		$newConfig = [
 			'Test' => 123,
@@ -324,27 +335,27 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 		$configPage = $this->createMock( LinkTarget::class );
 
 		$wikiPageConfigLoader = $this->getWikiPageConfigLoaderMock( $configPage, [], true );
-		$wikiPageConfigLoader->expects( $this->once() )
+		$wikiPageConfigLoader->expects( $editExpected ? $this->once() : $this->never() )
 			->method( 'invalidate' )
 			->with( $configPage );
 
 		$updater = $this->createMock( PageUpdater::class );
 		if ( is_string( $tags ) ) {
-			$updater->expects( $this->once() )
+			$updater->expects( $editExpected ? $this->once() : $this->never() )
 				->method( 'addTag' )
 				->with( $tags );
 		} else {
-			$updater->expects( $this->once() )
+			$updater->expects( $editExpected ? $this->once() : $this->never() )
 				->method( 'addTags' )
 				->with( $tags );
 		}
-		$updater->expects( $this->once() )
+		$updater->expects( $editExpected ? $this->once() : $this->never() )
 			->method( 'setContent' )
 			->with( SlotRecord::MAIN, new JsonContent( FormatJson::encode( $newConfig ) ) );
-		$updater->expects( $isAutopatrol ? $this->once() : $this->never() )
+		$updater->expects( ( $isAutopatrol && $editExpected ) ? $this->once() : $this->never() )
 			->method( 'setRcPatrolStatus' )
 			->with( RecentChange::PRC_AUTOPATROLLED );
-		$updater->expects( $this->once() )
+		$updater->expects( $editExpected ? $this->once() : $this->never() )
 			->method( 'saveRevision' )
 			->with(
 				CommentStoreComment::newUnsavedComment( $summary ),
@@ -361,14 +372,14 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 		$hookContainer->expects( $this->once() )
 			->method( 'run' )
 			->with( 'EditFilterMergedContent', $this->anything() )
-			->willReturn( true );
+			->willReturn( $hookResponse );
 
 		$writer = new WikiPageConfigWriter(
 			$validator,
 			$wikiPageConfigLoader,
-			$this->getWikiPageFactoryMock( $configPage, $updater ),
+			$this->getWikiPageFactoryMock( $configPage, $updater, $editExpected ),
 			$this->getTitleFactoryMock( $configPage, true ),
-			$this->getUserFactoryMock( $isAutopatrol ),
+			$this->getUserFactoryMock( $isAutopatrol, $editExpected ),
 			$hookContainer,
 			new NullLogger(),
 			$configPage,
@@ -377,15 +388,25 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( [], TestingAccessWrapper::newFromObject( $writer )->getCurrentWikiConfig() );
 		TestingAccessWrapper::newFromObject( $writer )->wikiConfig = $newConfig;
 
-		$this->assertTrue( $writer->save( $summary, $minor, $tags )->isOK() );
+		$status = $writer->save( $summary, $minor, $tags );
+		if ( $editExpected ) {
+			$this->assertStatusOK( $status );
+		} else {
+			if ( !$hookResponse ) {
+				$this->assertStatusError( 'hookaborted', $status );
+			} else {
+				$this->assertStatusNotOK( $status );
+			}
+		}
 	}
 
 	public static function provideSave() {
 		return [
-			'autopatrolled major' => [ true, 'summary', false, [] ],
-			'non-autopatrolled major' => [ false, 'summary', false, [] ],
-			'autopatrolled major with tags' => [ true, 'summary', false, [ 'foo', 'bar' ] ],
-			'non-autopatrolled major with tag' => [ false, 'summary', false, 'foo' ],
+			'autopatrolled major' => [ true, true, 'summary', false, [], true ],
+			'non-autopatrolled major' => [ true, false, 'summary', false, [], true ],
+			'autopatrolled major with tags' => [ true, true, 'summary', false, [ 'foo', 'bar' ], true ],
+			'non-autopatrolled major with tag' => [ true, false, 'summary', false, 'foo', true ],
+			'hook aborted major' => [ false, true, 'summary', false, [], false ],
 		];
 	}
 }

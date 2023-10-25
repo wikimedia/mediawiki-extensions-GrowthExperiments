@@ -234,6 +234,10 @@ class WikiPageConfigWriter {
 				$minor
 			) );
 
+			if ( !$status->isOK() ) {
+				return $status;
+			}
+
 			$updater = $page->newPageUpdater( $this->performer );
 			if ( is_string( $tags ) ) {
 				$updater->addTag( $tags );
