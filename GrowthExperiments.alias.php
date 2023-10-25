@@ -380,6 +380,10 @@ $specialPageAliases['sr-ec'] = [
 	'Homepage' => [ 'Почетна_страница' ],
 	'Impact' => [ 'Утицај' ],
 	'ClaimMentee' => [ 'Преузимање_новајлије' ],
+	'NewcomerTasksInfo' => [ 'Информације_о_задацима_за_новајлије' ],
+	'MentorDashboard' => [ 'Менторска_табла' ],
+	'QuitMentorship' => [ 'Отказивање_менторства' ],
+	'ManageMentors' => [ 'Управљање_менторима' ],
 ];
 
 /** Serbian Latin (srpski (latinica)) */
@@ -388,6 +392,10 @@ $specialPageAliases['sr-el'] = [
 	'Homepage' => [ 'Početna_stranica' ],
 	'Impact' => [ 'Uticaj' ],
 	'ClaimMentee' => [ 'Preuzimanje_novajlije' ],
+	'NewcomerTasksInfo' => [ 'Informacije_o_zadacima_za_novajlije' ],
+	'MentorDashboard' => [ 'Mentorska_tabla' ],
+	'QuitMentorship' => [ 'Otkazivanje_mentorstva' ],
+	'ManageMentors' => [ 'Upravljanje_mentorima' ],
 ];
 
 /** Swedish (svenska) */
