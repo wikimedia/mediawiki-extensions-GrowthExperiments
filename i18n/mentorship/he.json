@@ -144,6 +144,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "שליחה",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "ביטול",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "אירעה שגיאה לא ידועה. נא לנסות שוב מאוחר יותר.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "תודה שפרסמת הודעה לחניך {{GENDER:|שלך}}! חזרה אל [[Special:MentorDashboard|לוח הבקרה לחונכים]].",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "פתיחת תיבת הדו־שיח של ההגדרות",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "הגדרות",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "מדד חניכים ראויים להערכה",
