@@ -140,7 +140,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Submit",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Cancel",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Unknown error occurred. Please try again later.",
-	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Thanks for posting a message to {{GENDER:|your}} mentee! Return to [[Special:MentorDashboard|Mentor dashboard]].",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Thanks for posting a message to {{GENDER:|your}} {{GENDER:$1|mentee}}! Return to [[Special:MentorDashboard|Mentor dashboard]].",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Open the settings dialog",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Settings",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Praise-worthy mentees metric",

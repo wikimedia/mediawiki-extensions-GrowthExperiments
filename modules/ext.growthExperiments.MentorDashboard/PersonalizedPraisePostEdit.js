@@ -5,7 +5,8 @@
 			mw.notify(
 				$( '<span>' ).html(
 					mw.message(
-						'growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success'
+						'growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success',
+						mw.config.get( 'wgGEMentorDashboardPersonalizedPraiseMenteeGender' )
 					).parse()
 				),
 				{ type: 'success' }
