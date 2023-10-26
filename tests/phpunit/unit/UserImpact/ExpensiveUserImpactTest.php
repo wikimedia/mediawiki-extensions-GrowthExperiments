@@ -78,4 +78,41 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $userImpact, $rehydrated );
 	}
 
+	/**
+	 * @dataProvider provideIsPageViewDataStale
+	 * @param bool $expectedStale
+	 * @param array $dailyTotalViews
+	 */
+	public function testIsPageViewDataStale( bool $expectedStale, array $dailyTotalViews ) {
+		ConvertibleTimestamp::setFakeTime( '2022-08-24T00:00:00Z' );
+		$dailyArticleViews = [
+			'Foo' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],
+			'Bar' => [ '2022-08-24' => 30, '2022-08-25' => 40 ],
+		];
+		$userImpact = new ExpensiveUserImpact(
+			UserIdentityValue::newRegistered( 1, 'User1' ),
+			10,
+			[ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
+			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
+			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
+			1,
+			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
+			80,
+			wfTimestamp( TS_UNIX, '20200101000000' ),
+			$dailyTotalViews,
+			$dailyArticleViews,
+			new EditingStreak()
+		);
+
+		$this->assertSame( $expectedStale, $userImpact->isPageViewDataStale() );
+	}
+
+	public function provideIsPageViewDataStale() {
+		return [
+			'fresh' => [ false, [ '2022-08-24' => 100, '2022-08-25' => 150 ] ],
+			'stale' => [ false, [ '2022-07-24' => 100, '2022-08-25' => 150 ] ],
+			'no data' => [ true, [] ],
+		];
+	}
+
 }
