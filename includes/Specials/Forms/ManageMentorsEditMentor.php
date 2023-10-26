@@ -105,6 +105,7 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 					[ '!==', 'isAway', '1' ],
 					[ '!==', 'isAwayChangeable', '1' ],
 				],
+				'min' => MWTimestamp::getInstance()->getTimestamp( TS_MW ),
 				'default' => MWTimestamp::getInstance( (string)$awayTimestamp )
 					->format( 'Y-m-d\TH:m:s\Z' ),
 			],
