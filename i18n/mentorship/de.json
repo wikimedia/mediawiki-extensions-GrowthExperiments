@@ -152,7 +152,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Übermitteln",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Abbrechen",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es später erneut.",
-	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Vielen Dank, dass du eine Nachricht an {{GENDER:|deinen}} Mentee gesendet hast! Kehre zum [[Special:MentorDashboard|Lotsen-Dashboard]] zurück.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Vielen Dank, dass du eine Nachricht an {{GENDER:|deinen}} {{GENDER:$1|Mentee}} gesendet hast! Kehre zum [[Special:MentorDashboard|Lotsen-Dashboard]] zurück.",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Öffnen des Einstellungsdialogs",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Einstellungen",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Metrik für lobenswerte Mentees",

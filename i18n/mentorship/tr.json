@@ -150,6 +150,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Gönder",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "İptal",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Bilinmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "{{GENDER:$1|Danışanınıza}} bir ileti gönderdiğiniz için teşekkürler! [[Special:MentorDashboard|Danışman paneline]] geri dön.",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Ayarlar penceresini aç",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Ayarlar",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Övgüye değer danışanlar ölçümü",

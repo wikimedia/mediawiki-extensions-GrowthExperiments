@@ -6,7 +6,8 @@
 			"Hirok Raja",
 			"ZI Jony",
 			"আজিজ",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"জয়শ্রীরাম সরকার"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "মেন্টর ড্যাশবোর্ড",
@@ -143,6 +144,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "জমা দিন",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "বাতিল",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "একটি অজানা ত্রুটি দেখা দিয়েছে। অনুগ্রহ করে পরবর্তীতে আবার চেষ্টা করুন।",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "{{GENDER:|your}} {{GENDER:$1|mentee}}! এ একটি বার্তা প্রকাশ করার জন্য ধন্যবাদ৷ [[Special:MentorDashboard|মেন্টর ড্যাশবোর্ড]] এ ফিরে যান।",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "সেটিংস ডায়ালগ খুলুন",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "সেটিংস",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "প্রশংসার যোগ্য পরামর্শগ্রহীতাদের মেট্রিক",

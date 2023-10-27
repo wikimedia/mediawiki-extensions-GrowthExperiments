@@ -142,6 +142,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Pošlji",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Prekliči",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Prišlo je do neznane napake. Prosimo, poskusite znova pozneje.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Hvala, ker ste poslali sporočilo {{GENDER:$1|svojemu|svoji|svojemu_svoji}} {{GENDER:$1|mentorirancu|mentoriranki|mentorirancu_ki}}! Vrnitev na [[Special:MentorDashboard|Nadzorno ploščo mentorja]].",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Odpri pogovorno okno nastavitev",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Nastavitve",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Metrika hvalevrednuh mentorirancev",
