@@ -24,7 +24,8 @@
 			"NR Deblocked",
 			"Etonkovidova",
 			"Iluvatar",
-			"Novichev"
+			"Novichev",
+			"Stjn"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Включить панель помощи редактору",
@@ -137,7 +138,7 @@
 	"growthexperiments-help-panel-community-help-desk-text": "Форум помощи начинающим",
 	"growthexperiments-help-panel-search-label": "Поиск помощи",
 	"growthexperiments-help-panel-search-no-results": "Результатов не найдено.",
-	"tag-help_panel_question": "Вопрос из панели помощи",
+	"tag-help_panel_question": "вопрос из панели помощи",
 	"tag-help_panel_question-description": "Правка через панель на домашней странице",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Предложенные правки",
 	"growthexperiments-help-panel-button-header-ask-help": "Задайте вопрос в справочной",
