@@ -21,13 +21,12 @@
 	 * @param {string} currentEditor
 	 */
 	SwitchEditorPanel.prototype.toggle = function ( inEditMode, currentEditor ) {
-		var shouldShow,
-			currentTitle = new mw.Title( mw.config.get( 'wgPageName' ) );
+		var currentTitle = new mw.Title( mw.config.get( 'wgPageName' ) );
 		this.currentEditor = currentEditor;
 		if ( this.currentEditor === 'wikitext-2017' ) {
 			this.currentEditor = 'wikitext';
 		}
-		shouldShow = inEditMode && !this.isCurrentEditorPreferred() && !currentTitle.isTalkPage();
+		var shouldShow = inEditMode && !this.isCurrentEditorPreferred() && !currentTitle.isTalkPage();
 		this.$element.toggle( shouldShow );
 	};
 

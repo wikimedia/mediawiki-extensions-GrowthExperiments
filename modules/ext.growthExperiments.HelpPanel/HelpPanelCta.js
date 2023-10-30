@@ -12,18 +12,15 @@
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
 		guidanceEnabled = mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
-		askHelpEnabled = mw.config.get( 'wgGEAskQuestionEnabled' ),
-		guidanceAvailable,
-		taskTypeId,
-		taskTypeLogData;
+		askHelpEnabled = mw.config.get( 'wgGEAskQuestionEnabled' );
 	if ( guidanceEnabled && suggestedEditSession.active &&
 		!suggestedEditSession.postEditDialogNeedsToBeShown
 	) {
 		require( './SuggestedEditsGuidance.js' );
 	}
-	taskTypeId = suggestedEditSession.taskType;
-	taskTypeLogData = taskTypeId ? { taskType: taskTypeId } : null;
-	guidanceAvailable = guidanceEnabled && taskTypeId && TASK_TYPES[ taskTypeId ];
+	var taskTypeId = suggestedEditSession.taskType;
+	var taskTypeLogData = taskTypeId ? { taskType: taskTypeId } : null;
+	var guidanceAvailable = guidanceEnabled && taskTypeId && TASK_TYPES[ taskTypeId ];
 
 	// This shouldn't happen, but just to be sure
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
@@ -34,8 +31,6 @@
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
 			$buttonWrapper = $buttonToInfuse.parent(),
-			$mfOverlay,
-			$veUiOverlay,
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$body = $( 'body' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
@@ -69,9 +64,7 @@
 				suggestedEditSession: suggestedEditSession
 			} ),
 			isCtaHidden = true,
-			helpCtaButton,
-			lifecycle,
-			onContextResizeDebounced;
+			lifecycle;
 
 		// Export the help panel to mw.libs.ge, so that other components can close it if needed.
 		window.mw.libs.ge = window.mw.libs.ge || {};
@@ -165,7 +158,7 @@
 				var isContextItemVisible = window.ve.init.target.surface.context.isVisible();
 				$buttonWrapper.toggleClass( 'animate-out', isContextItemVisible );
 			};
-			onContextResizeDebounced = OO.ui.debounce( onContextResize, 200 );
+			var onContextResizeDebounced = OO.ui.debounce( onContextResize, 200 );
 			mw.hook( 've.activationComplete' ).add( function () {
 				window.ve.init.target.surface.context.on( 'resize', onContextResizeDebounced );
 			} );
@@ -178,6 +171,7 @@
 		$body.append( $overlay );
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
+		var helpCtaButton;
 		if ( $buttonToInfuse.length ) {
 			helpCtaButton = mw.libs.ge.HelpPanelButton.static.infuse( $buttonToInfuse );
 			// The button is already on the page, but it won't be visible until we add the -ready
@@ -196,6 +190,7 @@
 		toggleHelpButtonVisibility( true );
 
 		function openHelpPanel( panel ) {
+			var $mfOverlay, $veUiOverlay;
 			if ( OO.ui.isMobile() ) {
 				// HACK: Detach the MobileFrontend overlay for both VE and source edit modes.
 				// Per T212967, leaving them enabled results in a phantom text input that the
@@ -258,8 +253,7 @@
 		 * @param {Object} taskTypeData
 		 */
 		function maybeAddMobilePeek( taskTypeData ) {
-			var mobilePeek,
-				// Drawer.onBeforeHide fires whether the drawer was dismissed or tapped on
+			var // Drawer.onBeforeHide fires whether the drawer was dismissed or tapped on
 				// (and replaced with the full help panel). Use this flag to differentiate.
 				tapped = false;
 
@@ -270,7 +264,7 @@
 				return;
 			}
 
-			mobilePeek = new Drawer( {
+			var mobilePeek = new Drawer( {
 				className: 'suggested-edits-mobile-peek',
 				showCollapseIcon: false,
 				children: [

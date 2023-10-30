@@ -256,7 +256,6 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 		levels[ ALL_TASK_TYPES[ taskType ].difficulty ] = true;
 	} );
 	[ 'easy', 'medium', 'hard' ].forEach( function ( level ) {
-		var label;
 		if ( !levels[ level ] ) {
 			return;
 		}
@@ -264,7 +263,7 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 		// * growthexperiments-homepage-suggestededits-difficulty-filter-label-easy
 		// * growthexperiments-homepage-suggestededits-difficulty-filter-label-medium
 		// * growthexperiments-homepage-suggestededits-difficulty-filter-label-hard
-		label = mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label-' +
+		var label = mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label-' +
 			level ).text();
 		messages.push( label );
 		// Icons: difficulty-easy, difficulty-medium, difficulty-hard

@@ -62,7 +62,6 @@ TopicFiltersDialog.prototype.initialize = function () {
 };
 
 TopicFiltersDialog.prototype.buildTopicFilters = function () {
-	var $topicSelectorWrapper;
 	this.content.$element.empty();
 	this.content.$element.append( this.errorMessage.$element );
 	this.topicSelector = new TopicSelectionWidget( {
@@ -83,7 +82,7 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 			this.emit( 'toggleMatchMode', mode );
 		}
 	} );
-	$topicSelectorWrapper = $( '<div>' )
+	var $topicSelectorWrapper = $( '<div>' )
 		.addClass( 'suggested-edits-topic-filters-topic-selector' )
 		.append(
 			$( '<h4>' )

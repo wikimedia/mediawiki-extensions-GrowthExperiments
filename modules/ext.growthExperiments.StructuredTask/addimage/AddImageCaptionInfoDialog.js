@@ -57,8 +57,9 @@ AddImageCaptionInfoDialog.static.message = function () {
 			mw.message(
 				'growthexperiments-addimage-caption-info-dialog-guidelines-neutral'
 			).parse()
-		],
-		languageGuideline;
+		];
+
+	var languageGuideline;
 	if ( contentLanguageName ) {
 		languageGuideline = mw.message(
 			'growthexperiments-addimage-caption-info-dialog-guidelines-language'

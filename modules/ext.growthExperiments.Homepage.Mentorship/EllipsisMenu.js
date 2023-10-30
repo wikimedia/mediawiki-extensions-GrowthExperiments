@@ -2,8 +2,7 @@
 	'use strict';
 
 	var MentorshipOptoutProcess = require( './MentorshipOptoutProcess.js' ),
-		MentorshipDetailsModal = require( './MentorshipDetailsModal.js' ),
-		ellipsisMenu;
+		MentorshipDetailsModal = require( './MentorshipDetailsModal.js' );
 
 	/**
 	 * @class mw.libs.ge.EllipsisMenu
@@ -84,6 +83,7 @@
 		this.optoutProcess.showOptoutDialog();
 	};
 
+	var ellipsisMenu;
 	/**
 	 * @param {jQuery} $homepageContainer
 	 * @return {mw.libs.ge.EllipsisMenu}

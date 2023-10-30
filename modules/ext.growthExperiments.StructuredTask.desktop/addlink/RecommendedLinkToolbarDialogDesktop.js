@@ -87,9 +87,9 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 			top: annotationOffset.top - surfaceOffset.top + 30
 		},
 		positionName = this.isRtl ? 'right' : 'left',
-		isStartAnchored = true,
-		startPosition;
+		isStartAnchored = true;
 
+	var startPosition;
 	if ( this.isRtl ) {
 		// Offset is the surface's right edge and the annotation's right edge.
 		startPosition = surfaceOffset.left + surfaceWidth -

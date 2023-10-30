@@ -18,15 +18,13 @@
 	 * @param {number} [position] The position of the task in the task queue.
 	 */
 	NewcomerTaskLogger.prototype.log = function ( task, position ) {
-		var data;
-
 		if ( task.isTaskLogged ) {
 			// already logged
 			return;
 		}
 
 		task.isTaskLogged = true;
-		data = this.getLogData( task, position );
+		var data = this.getLogData( task, position );
 		mw.track( 'event.NewcomerTask', data );
 	};
 

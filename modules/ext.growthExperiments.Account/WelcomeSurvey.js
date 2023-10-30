@@ -9,10 +9,9 @@
 				/** @type {OO.Router} */
 				router = require( 'mediawiki.router' ),
 				langCodeMap = $.uls.data.getAutonyms(),
-				languageMax = 10,
-				widgetInstance, $warning;
+				languageMax = 10;
 
-			widgetInstance = new ULSTagMultiselectWidget( {
+			var widgetInstance = new ULSTagMultiselectWidget( {
 				placeholder: mw.message( 'welcomesurvey-question-languages-placeholder' )
 					.params( [ mw.language.convertNumber( languageMax ) ] )
 					.text(),
@@ -34,7 +33,7 @@
 				widgetInstance.addLanguageByCode( lang );
 			} );
 
-			$warning = $( '<div>' )
+			var $warning = $( '<div>' )
 				.addClass( 'warning' )
 				.text( mw.message( 'welcomesurvey-question-languages-maximum' ).text() )
 				.css( 'display', 'none' );

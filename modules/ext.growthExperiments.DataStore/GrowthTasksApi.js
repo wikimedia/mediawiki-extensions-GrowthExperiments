@@ -131,8 +131,7 @@
 	 *   - tasks: a list of task data objects
 	 */
 	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, topicFilters, config ) {
-		var apiParams, actionApiPromise, finalPromise,
-			startTime = mw.now(),
+		var startTime = mw.now(),
 			self = this,
 			url = new mw.Uri( window.location.href );
 		config = $.extend( {
@@ -151,7 +150,7 @@
 			} );
 		}
 
-		apiParams = {
+		var apiParams = {
 			action: 'query',
 			prop: 'info|revisions|pageimages' + ( config.getDescription ? '|description' : '' ),
 			rvprop: 'ids',
@@ -176,8 +175,8 @@
 			apiParams.ggtdebug = 1;
 		}
 
-		actionApiPromise = new mw.Api().get( apiParams );
-		finalPromise = actionApiPromise.then( function ( data ) {
+		var actionApiPromise = new mw.Api().get( apiParams );
+		var finalPromise = actionApiPromise.then( function ( data ) {
 			var tasks = [];
 
 			/**
@@ -185,11 +184,10 @@
 			 * @return {mw.libs.ge.TaskData}
 			 */
 			function cleanUpData( item ) {
-				var task,
-					imageOrSectionImage = item.tasktype === 'image-recommendation' ||
+				var imageOrSectionImage = item.tasktype === 'image-recommendation' ||
 						item.tasktype === 'section-image-recommendation';
 
-				task = {
+				var task = {
 					title: item.title,
 					pageId: item.pageid || null,
 					revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
@@ -265,8 +263,7 @@
 	 * @see https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
 	 */
 	GrowthTasksApi.prototype.getExtraDataFromPcs = function ( task, config ) {
-		var encodedTitle,
-			self = this,
+		var self = this,
 			title = task.title,
 			startTime = mw.now(),
 			apiUrlBase = this.suggestedEditsConfig.GERestbaseUrl;
@@ -286,7 +283,7 @@
 			task.imageWidth = task.imageWidth || null;
 			return $.Deferred().resolve( task ).promise();
 		}
-		encodedTitle = formatTitle( title );
+		var encodedTitle = formatTitle( title );
 		return $.get( apiUrlBase + '/page/summary/' + encodedTitle ).then( function ( data ) {
 			task.extract = data.extract || null;
 			task.description = data.description || null;
@@ -327,8 +324,7 @@
 	 * @see https://w.wiki/J8K
 	 */
 	GrowthTasksApi.prototype.getExtraDataFromAqs = function ( task, config ) {
-		var encodedTitle, pageviewsApiUrl, day, firstPageviewDay, lastPageviewDay,
-			self = this,
+		var self = this,
 			startTime = mw.now(),
 			title = task.title;
 
@@ -341,15 +337,15 @@
 			return $.Deferred().resolve( task ).promise();
 		}
 
-		encodedTitle = formatTitle( title );
+		var encodedTitle = formatTitle( title );
 		// Get YYYYMMDD timestamps of 2 days ago (typically the last day that has full
 		// data in AQS) and 60+2 days ago, using Javascript's somewhat cumbersome date API
-		day = new Date();
+		var day = new Date();
 		day.setDate( day.getDate() - 2 );
-		lastPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
+		var lastPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
 		day.setDate( day.getDate() - 60 );
-		firstPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
-		pageviewsApiUrl = 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' +
+		var firstPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
+		var pageviewsApiUrl = 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' +
 			this.aqsConfig.project + '/all-access/user/' + encodedTitle + '/daily/' +
 			firstPageviewDay + '/' + lastPageviewDay;
 
@@ -427,9 +423,9 @@
 	 * @private
 	 */
 	GrowthTasksApi.prototype.handleError = function ( error, details ) {
-		var message,
-			isRealError = true;
+		var isRealError = true;
 
+		var message;
 		if ( error === 'http' && details && details.textStatus === 'abort' ) {
 			// XHR abort, not a real error
 			message = null;
@@ -502,10 +498,8 @@
 	 * @private
 	 */
 	GrowthTasksApi.prototype.fixThumbnailWidth = function ( task, newWidth ) {
-		var data;
-
 		if ( task.thumbnailSource && task.imageWidth ) {
-			data = mw.util.parseImageUrl( task.thumbnailSource );
+			var data = mw.util.parseImageUrl( task.thumbnailSource );
 			if ( data && data.resizeUrl && data.width < newWidth && task.imageWidth > newWidth ) {
 				task.thumbnailSource = data.resizeUrl( newWidth );
 			}

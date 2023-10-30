@@ -83,8 +83,8 @@ MultiPaneDialog.prototype.getFooterElement = function () {
  * @return {jQuery}
  */
 MultiPaneDialog.prototype.getProgressDots = function () {
-	var dots = [], i;
-	for ( i = 0; i < this.panels.length; i++ ) {
+	var dots = [];
+	for ( var i = 0; i < this.panels.length; i++ ) {
 		dots.push( $( '<span>' ).addClass( 'growthexperiments-multi-pane-dialog-dot' ) );
 	}
 	return $( '<div>' ).addClass( 'growthexperiments-multi-pane-dialog-dots-container' ).append( dots );
@@ -95,14 +95,13 @@ MultiPaneDialog.prototype.getProgressDots = function () {
  */
 MultiPaneDialog.prototype.updateProgressIndicator = function () {
 	var currentIndex = this.currentPanelIndex,
-		$progressIndicator = this.progressIndicator.$element,
-		progressText;
+		$progressIndicator = this.progressIndicator.$element;
 
 	if ( this.progressMessageKey ) {
 		// The following keys are used here:
 		// * growthexperiments-addlink-onboarding-dialog-progress
 		// * other keys can be added when MultiPaneDialog is used in more places
-		progressText = mw.msg( this.progressMessageKey,
+		var progressText = mw.msg( this.progressMessageKey,
 			mw.language.convertNumber( currentIndex + 1 ),
 			mw.language.convertNumber( this.panels.length )
 		);

@@ -113,9 +113,8 @@
 		}
 
 		overlayManager.add( routeRegex, function ( moduleName ) {
-			var moduleData;
 			if ( overlays[ moduleName ] === undefined ) {
-				moduleData = getModuleData( moduleName );
+				var moduleData = getModuleData( moduleName );
 				var overlay = new MobileOverlay( {
 					moduleName: moduleName,
 					html: moduleData.$overlay,
@@ -199,14 +198,13 @@
 			},
 			// FIXME: in a follow-up, convert these messages to something besides variant
 			//   C/D, e.g. "se-activated" / "se-unactivated"
-			variantKey = isSuggestedEditsActivated ? 'd' : 'c',
-			welcomeDrawer;
+			variantKey = isSuggestedEditsActivated ? 'd' : 'c';
 
 		if ( mw.user.options.get( welcomeNoticeSeenPreference ) ) {
 			return;
 		}
 
-		welcomeDrawer = new Drawer( {
+		var welcomeDrawer = new Drawer( {
 			className: 'homepage-welcome-notice',
 			showCollapseIcon: false,
 			children: [
@@ -285,14 +283,13 @@
 			buttonClicked = false,
 			markAsSeen = function () {
 				new mw.Api().saveOption( newImpactDiscoverySeen, 1 );
-			},
-			newImpactDiscoveryDrawer;
+			};
 
 		if ( mw.user.options.get( newImpactDiscoverySeen ) ) {
 			return;
 		}
 
-		newImpactDiscoveryDrawer = new Drawer( {
+		var newImpactDiscoveryDrawer = new Drawer( {
 			className: 'homepage-newimpact-discovery',
 			showCollapseIcon: false,
 			children: [

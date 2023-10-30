@@ -33,8 +33,6 @@ var SuggestionWidget = require( './SuggestionWidget.js' ),
  * @param {Object} GROUPED_TOPICS Topics to show, organized by group
  */
 function TopicSelectionWidget( config, GROUPED_TOPICS ) {
-	var key, group, groupWidget, suggestionWidgets, displayedSuggestionWidgets,
-		hiddenSuggestionWidgets, anyHiddenSelected;
 	config = $.extend( {
 		initialLimit: 12,
 		filters: new TopicFilters()
@@ -63,17 +61,17 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 
 	this.suggestions = [];
 	this.suggestionGroupWidgets = [];
-	for ( key in GROUPED_TOPICS ) {
-		group = GROUPED_TOPICS[ key ];
-		suggestionWidgets = group.topics.map( function ( topic ) {
+	for ( var key in GROUPED_TOPICS ) {
+		var group = GROUPED_TOPICS[ key ];
+		var suggestionWidgets = group.topics.map( function ( topic ) {
 			return new SuggestionWidget( { suggestionData: {
 				id: topic.id,
 				text: topic.name,
 				confirmed: config.filters.getTopics().indexOf( topic.id ) !== -1
 			} } );
 		} );
-		displayedSuggestionWidgets = suggestionWidgets;
-		hiddenSuggestionWidgets = [];
+		var displayedSuggestionWidgets = suggestionWidgets;
+		var hiddenSuggestionWidgets = [];
 
 		// If there are no topic groups, all topics are in one group whose ID is null
 		if ( group.id === null ) {
@@ -85,7 +83,7 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 				hiddenSuggestionWidgets = suggestionWidgets.slice( config.initialLimit );
 			}
 			// If any of the suggestions we want to hide is selected, don't hide anything
-			anyHiddenSelected = hiddenSuggestionWidgets.some( function ( suggestion ) {
+			var anyHiddenSelected = hiddenSuggestionWidgets.some( function ( suggestion ) {
 				return suggestion.confirmed;
 			} );
 			if ( anyHiddenSelected ) {
@@ -94,7 +92,7 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 			}
 		}
 
-		groupWidget = new SuggestionGroupWidget( {
+		var groupWidget = new SuggestionGroupWidget( {
 			items: displayedSuggestionWidgets,
 			hiddenItems: hiddenSuggestionWidgets,
 			header: group.id === null ? undefined : group.name,

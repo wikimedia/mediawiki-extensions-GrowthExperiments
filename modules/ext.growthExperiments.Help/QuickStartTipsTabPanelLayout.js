@@ -10,7 +10,6 @@
 	 * @constructor
 	 */
 	function QuickStartTipsTabPanelLayout( name, config ) {
-		var key, panel;
 		QuickStartTipsTabPanelLayout.super.call( this, name,
 			$.extend( { scrollable: false, expanded: false }, config )
 		);
@@ -19,8 +18,8 @@
 			expanded: false,
 			scrollable: false
 		} );
-		for ( key in config.data ) {
-			panel = new OO.ui.PanelLayout( {
+		for ( var key in config.data ) {
+			var panel = new OO.ui.PanelLayout( {
 				padded: false,
 				expanded: false
 			} );

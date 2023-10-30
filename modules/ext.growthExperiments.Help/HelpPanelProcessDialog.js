@@ -158,16 +158,12 @@
 	};
 
 	HelpPanelProcessDialog.prototype.setNotificationLabelText = function () {
-		var $messageList,
-			$link,
-			emailMessage,
-			button;
+		var $messageList = $( '<dl>' ).addClass( 'mw-ge-help-panel-notifications' );
 
-		$messageList = $( '<dl>' ).addClass( 'mw-ge-help-panel-notifications' );
-
+		var emailMessage, button;
 		if ( this.userEmail ) {
 			if ( this.userEmailConfirmed ) {
-				$link = $( '<a>' )
+				var $link = $( '<a>' )
 					.attr( {
 						href: mw.util.getUrl( 'Special:ChangeEmail' ),
 						target: '_blank',
@@ -287,8 +283,7 @@
 	};
 
 	HelpPanelProcessDialog.prototype.buildHomePanelButtons = function () {
-		var buttonId,
-			buttonIds = [ 'general-help' ];
+		var buttonIds = [ 'general-help' ];
 		if ( this.askHelpEnabled || mw.config.get( 'wgGEHelpPanelAskMentor' ) ) {
 			buttonIds.unshift( 'ask-help' );
 		}
@@ -299,7 +294,7 @@
 			var mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
 			// Asking the mentor needs a different button but the same panel / logging.
 			// FIXME find a nicer way to do this.
-			buttonId = id;
+			var buttonId = id;
 			if ( id === 'ask-help' && mw.config.get( 'wgGEHelpPanelAskMentor' ) &&
 				// Do not try to use mentor data when it is not present. This is the case on the
 				// homepage when the help panel is disabled. Home button widgets are not used
@@ -331,8 +326,6 @@
 
 	/** @inheritDoc **/
 	HelpPanelProcessDialog.prototype.initialize = function () {
-		var guidanceTipsPromise;
-
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
 		this.$content
@@ -377,7 +370,7 @@
 				this.suggestedEditSession.taskType
 			]
 		} );
-		guidanceTipsPromise = this.suggestededitsPanel.build();
+		var guidanceTipsPromise = this.suggestededitsPanel.build();
 
 		this.askhelpPanel = new AskHelpPanel( {
 			askSource: this.askSource,
@@ -810,16 +803,15 @@
 		var self = this;
 		if ( enable && this.guidanceEnabled && !this.guidanceAutoAdvanceTimer ) {
 			this.guidanceAutoAdvanceTimer = window.setInterval( function () {
-				var tabIndexLayout, tabs, currentTab, nextTab;
 				// Skip if the panel is not active or not loaded yet.
 				if ( self.currentPanel !== 'suggested-edits' || !self.suggestededitsPanel.tipsPanel ) {
 					return;
 				}
 				// This seems to be the least insane method of finding the next tab :/
-				tabIndexLayout = self.suggestededitsPanel.tipsPanel.tabIndexLayout;
-				tabs = tabIndexLayout.getTabs();
-				currentTab = tabs.findItemFromData( tabIndexLayout.getCurrentTabPanelName() );
-				nextTab = tabs.getItems()[
+				var tabIndexLayout = self.suggestededitsPanel.tipsPanel.tabIndexLayout;
+				var tabs = tabIndexLayout.getTabs();
+				var currentTab = tabs.findItemFromData( tabIndexLayout.getCurrentTabPanelName() );
+				var nextTab = tabs.getItems()[
 					( tabs.getItemIndex( currentTab ) + 1 ) % tabs.getItemCount()
 				];
 				if ( nextTab ) {

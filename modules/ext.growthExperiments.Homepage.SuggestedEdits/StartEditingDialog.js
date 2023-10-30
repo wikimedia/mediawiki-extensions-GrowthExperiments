@@ -175,7 +175,7 @@ StartEditingDialog.prototype.swapPanel = function ( panel ) {
 };
 
 StartEditingDialog.prototype.attachActions = function () {
-	var i, len, actionWidgets = this.actions.get();
+	var actionWidgets = this.actions.get();
 
 	// Parent method
 	StartEditingDialog.super.prototype.attachActions.call( this );
@@ -195,7 +195,7 @@ StartEditingDialog.prototype.attachActions = function () {
 		this.$desktopActions.find( '.oo-ui-actionWidget' ).removeClass( 'oo-ui-actionWidget' );
 	}
 
-	for ( i = 0, len = actionWidgets.length; i < len; i++ ) {
+	for ( var i = 0, len = actionWidgets.length; i < len; i++ ) {
 		// Find the 'activate' button so that we can make it the pending element later
 		// (see getActionProcess)
 		if ( actionWidgets[ i ].action === 'activate' ) {
@@ -254,8 +254,7 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 };
 
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
-	var settings, logData,
-		dialog = this;
+	var dialog = this;
 
 	// Don't allow the dialog to be closed by the user in non-modal mode
 	if ( !this.getManager().modal && ( !action || action === 'close' || action === 'done' ) ) {
@@ -296,10 +295,10 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				// initialization to avoid brief flashes of pending state when switching panels
 				// or closing the dialog.
 				this.setPendingElement( this.$activateButton );
-				settings = {
+				var settings = {
 					'growthexperiments-homepage-suggestededits-activated': 1
 				};
-				logData = { trigger: this.trigger };
+				var logData = { trigger: this.trigger };
 				if ( this.topicSelector ) {
 					settings[ SUGGESTED_EDITS_CONFIG.GENewcomerTasksTopicFiltersPref ] =
 						this.topicSelector.getSelectedTopics().length > 0 ?
@@ -340,18 +339,16 @@ StartEditingDialog.prototype.getSizeProperties = function () {
 };
 
 StartEditingDialog.prototype.getBodyHeight = function () {
-	var i, oldVisibility, panelHeight, maxHeight, panels;
-
 	// When the dialog is displayed modally, give it a consistent height
 	// Measure the height of each panel, and find the tallest one
 	// (Non-modal mode behaves like fullscreen mode, and this method isn't called)
-	maxHeight = 0;
-	panels = this.panels.getItems();
-	for ( i = 0; i < panels.length; i++ ) {
+	var maxHeight = 0;
+	var panels = this.panels.getItems();
+	for ( var i = 0; i < panels.length; i++ ) {
 		// Make the panel visible so we can measure it
-		oldVisibility = panels[ i ].isVisible();
+		var oldVisibility = panels[ i ].isVisible();
 		panels[ i ].toggle( true );
-		panelHeight = panels[ i ].$element[ 0 ].scrollHeight;
+		var panelHeight = panels[ i ].$element[ 0 ].scrollHeight;
 		panels[ i ].toggle( oldVisibility );
 
 		if ( panelHeight > maxHeight ) {
@@ -363,10 +360,7 @@ StartEditingDialog.prototype.getBodyHeight = function () {
 };
 
 StartEditingDialog.prototype.buildIntroPanel = function () {
-	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageData,
-		imageUrl, generalImageUrl, $topicIntro, $topicMessage, $topicSelectorWrapper,
-		$topicDescription, descriptionImage,
-		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
+	var imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
 		introLinks = SUGGESTED_EDITS_CONFIG.GEHomepageSuggestedEditsIntroLinks,
 		responseMap = {
 			'add-image': {
@@ -428,6 +422,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		},
 		introPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
 
+	var surveyData;
 	try {
 		surveyData = JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) ) || {};
 	} catch ( e ) {
@@ -441,16 +436,17 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		$overlay: true
 	}, this.filtersStore.getGroupedTopics() ) : false;
 
-	generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.png';
+	var generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.png';
 
-	responseData = responseMap[ surveyData.reason ];
+	var responseData = responseMap[ surveyData.reason ];
+	var imageUrl;
 	if ( responseData ) {
-		imageData = responseData.image[ this.topicsAvailable() ? 'withTopics' : 'withoutTopics' ];
+		var imageData = responseData.image[ this.topicsAvailable() ? 'withTopics' : 'withoutTopics' ];
 		imageUrl = typeof imageData === 'string' ? imageData : imageData[ this.getDir() ];
 	}
 
 	if ( this.topicsAvailable() ) {
-		$topicMessage = $( '<div>' )
+		var $topicMessage = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic-message' )
 			.append( responseData ?
 				responseData.labelHtml :
@@ -462,7 +458,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				]
 			);
 
-		$topicIntro = $( '<div>' )
+		var $topicIntro = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic' )
 			.append(
 				$( '<div>' )
@@ -513,7 +509,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 					);
 				}
 			} );
-			$topicSelectorWrapper = $( '<div>' )
+			var $topicSelectorWrapper = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )
 				.append(
 					$( '<p>' )
@@ -529,9 +525,9 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				$topicSelectorWrapper
 			);
 		} else {
-			descriptionImage = OO.ui.isMobile() ? 'intro-topic-description-landscape.svg' :
+			var descriptionImage = OO.ui.isMobile() ? 'intro-topic-description-landscape.svg' :
 				'intro-topic-description-square.svg';
-			$topicDescription = $( '<div>' )
+			var $topicDescription = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-topic-description' )
 				.append(
 					$( '<img>' )
@@ -558,11 +554,11 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 			);
 		}
 	} else {
-		$generalImage = $( '<img>' )
+		var $generalImage = $( '<img>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
 			.attr( { src: imagePath + '/' + generalImageUrl } );
 
-		$generalIntro = $( '<div>' )
+		var $generalIntro = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-general' )
 			.append(
 				// Put the image after the first paragraph in general mode (when it isn't floated);
@@ -584,6 +580,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() )
 			);
 
+		var $responseIntro;
 		if ( responseData ) {
 			$responseIntro = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-response' )
@@ -701,9 +698,8 @@ StartEditingDialog.prototype.buildDifficultyLegend = function () {
 };
 
 StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, totalPages ) {
-	var i,
-		$indicator = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-progress' );
-	for ( i = 0; i < totalPages; i++ ) {
+	var $indicator = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-progress' );
+	for ( var i = 0; i < totalPages; i++ ) {
 		$indicator.append( $( '<span>' )
 			.addClass( 'mw-ge-startediting-dialog-progress-indicator' )
 			.addClass( i < currentPage ? 'mw-ge-startediting-dialog-progress-indicator-completed' : '' )
@@ -739,7 +735,6 @@ StartEditingDialog.prototype.markSuggestedEditsModuleAsActivated = function ( $m
  * @return {jQuery.Promise}
  */
 StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
-	var $homepage, $suggestedEditsModule, $startEditingModule, moduleDependencies;
 	if ( this.mode === 'mobile-details' ) {
 		window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
 		// Keep the dialog open while the page is reloading.
@@ -747,16 +742,16 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 	}
 
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$homepage = $( '.growthexperiments-homepage-container:not(.homepage-module-overlay)' );
-	$suggestedEditsModule = $homepage.find( '.growthexperiments-homepage-module-suggested-edits' );
-	moduleDependencies = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ].rlModules;
+	var $homepage = $( '.growthexperiments-homepage-container:not(.homepage-module-overlay)' );
+	var $suggestedEditsModule = $homepage.find( '.growthexperiments-homepage-module-suggested-edits' );
+	var moduleDependencies = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ].rlModules;
 
 	// Rearrange the homepage.
 	// FIXME needs to be kept in sync with the PHP code. Maybe the homepage layout
 	//   (module containers) should be templated and made available via an API or JSON config.
 	if ( this.mode === 'desktop' ) {
 		// Remove StartEditing module
-		$startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' );
+		var $startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' );
 		$startEditingModule.remove();
 		this.markSuggestedEditsModuleAsActivated( $suggestedEditsModule );
 		this.emit( 'activation' );

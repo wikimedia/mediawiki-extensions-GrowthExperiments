@@ -478,10 +478,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
  *   this.taskQueue will be updated.
  */
 NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, context ) {
-	var pcsPromise,
-		aqsPromise,
-		preloaded,
-		apiConfig = {
+	var apiConfig = {
 			context: context || 'suggestedEditsModule.getExtraDataAndUpdateQueue'
 		},
 		suggestedEditData = this.taskQueue[ taskIndex ],
@@ -491,19 +488,19 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 		return $.Deferred().resolve().promise();
 	}
 
-	pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig ).fail( function () {
+	var pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig ).fail( function () {
 		// Set the PCS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
 		this.taskQueue[ this.currentTaskIndex ].description = null;
 		this.taskQueue[ this.currentTaskIndex ].thumbnailSource = null;
 	}.bind( this ) );
-	aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData, apiConfig ).fail( function () {
+	var aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData, apiConfig ).fail( function () {
 		// Set the AQS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
 		this.taskQueue[ this.currentTaskIndex ].pageviews = null;
 	}.bind( this ) );
 
-	preloaded = this.preloadCardImage( suggestedEditData );
+	var preloaded = this.preloadCardImage( suggestedEditData );
 	if ( !preloaded ) {
 		pcsPromise.done( function () {
 			this.preloadCardImage( suggestedEditData );

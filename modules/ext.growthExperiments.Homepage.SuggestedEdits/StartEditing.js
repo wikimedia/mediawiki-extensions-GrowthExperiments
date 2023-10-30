@@ -25,9 +25,7 @@
 	 *   initiation was successful or cancelled.
 	 */
 	function launchCta( module, mode, trigger ) {
-		var lifecycle, dialog;
-
-		dialog = new StartEditingDialog( {
+		var dialog = new StartEditingDialog( {
 			module: module,
 			mode: mode,
 			trigger: trigger,
@@ -46,7 +44,7 @@
 		logger.log( module, mode, 'se-cta-click', { trigger: trigger } );
 
 		modalWindowManager.addWindows( [ dialog ] );
-		lifecycle = modalWindowManager.openWindow( dialog );
+		var lifecycle = modalWindowManager.openWindow( dialog );
 		return lifecycle.closing.then( function ( data ) {
 			return ( data && data.action === 'activate' );
 		} );
@@ -112,18 +110,17 @@
 	 * @param {boolean} useTopicMatchMode If topic match mode feature is enabled in the UI
 	 */
 	function setupEmbeddedDialog( $container, useTopicMatchMode ) {
-		var mode, dialog, windowManager,
-			// Only do this for the start-startediting module on desktop
-			$startEditingModule = $container.find(
-				'.growthexperiments-homepage-module-start-startediting' +
-				'.growthexperiments-homepage-module-desktop'
-			);
+		// Only do this for the start-startediting module on desktop
+		var $startEditingModule = $container.find(
+			'.growthexperiments-homepage-module-start-startediting' +
+			'.growthexperiments-homepage-module-desktop'
+		);
 		if ( $startEditingModule.length === 0 ) {
 			return;
 		}
 
-		mode = $startEditingModule.data( 'mode' );
-		dialog = new StartEditingDialog( {
+		var mode = $startEditingModule.data( 'mode' );
+		var dialog = new StartEditingDialog( {
 			// For technical reasons we implement this dialog with the StartEditing module,
 			// but conceptually it is the pre-initiation view of the SuggestedEdits module.
 			module: 'suggested-edits',
@@ -139,7 +136,7 @@
 			isSuggestedEditsActivated = true;
 			shouldSuggestedEditsAppearActivated = true;
 		} );
-		windowManager = new OO.ui.WindowManager( { modal: false } );
+		var windowManager = new OO.ui.WindowManager( { modal: false } );
 		$startEditingModule.append( windowManager.$element );
 		windowManager.addWindows( [ dialog ] );
 		windowManager.openWindow( dialog );

@@ -13,14 +13,13 @@
 		mw.storage.session.remove( 'ge.midEditSignup' );
 		mw.cookie.set( 'ge.midEditSignup', null );
 		mw.loader.using( [ 'mediawiki.user', 'mediawiki.Title', 'oojs-ui-windows' ] ).then( function () {
-			var lifecycle,
-				MessageDialogWithVerticalButtons = require( '../ui-components/MessageDialogWithVerticalButtons.js' ),
+			var MessageDialogWithVerticalButtons = require( '../ui-components/MessageDialogWithVerticalButtons.js' ),
 				messageDialog = new MessageDialogWithVerticalButtons(),
 				windowManager = new OO.ui.WindowManager();
 
 			$( document.body ).append( windowManager.$element );
 			windowManager.addWindows( [ messageDialog ] );
-			lifecycle = windowManager.openWindow( messageDialog, {
+			var lifecycle = windowManager.openWindow( messageDialog, {
 				title: mw.message( 'welcomesurvey-mideditsignup-title' )
 					.params( [ mw.user.getName() ] )
 					.text(),
