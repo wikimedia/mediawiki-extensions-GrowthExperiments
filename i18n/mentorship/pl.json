@@ -144,6 +144,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Zatwierdź",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Anuluj",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Wystąpił nieznany błąd. Spróbuj ponownie później.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Dziękujemy za przesłanie wiadomości do {{GENDER:$1|podopiecznego|podopiecznej|podopiecznego(-nej)}}! Wróć do [[Special:MentorDashboard|panelu przewodnika]].",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Otwórz okno ustawień",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Ustawienia",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Wskaźnik podopiecznych godnych pochwały",

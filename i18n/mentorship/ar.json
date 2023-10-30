@@ -150,6 +150,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "إرسال",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "إلغاء",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "لقد حدث خطأ. كرر المحاولة لاحقا.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "شكرًا {{GENDER:|لإرسالك}} رسالةً إلى {{GENDER:$1|مرشَدك|مرشَدتك}}! الرجوع إلى [[Special:MentorDashboard|لوحة المرشدين]].",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "فتح نافذة الإعدادات",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "الإعدادات",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "مقياس المرشَدين الجديرين بالثناء",
