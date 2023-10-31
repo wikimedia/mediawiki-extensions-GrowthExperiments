@@ -141,5 +141,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Причина",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Записаться",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Вы}} записаны в качестве {{GENDER:|наставника|наставницы}}. {{GENDER:|Вы}} можете перейти и продолжить на [[Special:MentorDashboard|панели наставника]] прямо сейчас.",
-	"growthexperiments-mentorship-enrollasmentor-summary": "Добавление себя в наставники"
+	"growthexperiments-mentorship-enrollasmentor-summary": "Добавление себя в наставники",
+	"tag-mentor list change": "изменение списка наставников",
+	"tag-mentor list change-description": "Метка, применяемая к изменениям структурированного списка наставников через GrowthExperiments"
 }
