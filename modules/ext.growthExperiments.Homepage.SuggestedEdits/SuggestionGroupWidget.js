@@ -10,7 +10,7 @@
 function SuggestionGroupWidget( config ) {
 	config = config || {};
 	// Parent constructor
-	SuggestionGroupWidget.parent.call( this, config );
+	SuggestionGroupWidget.super.call( this, config );
 	// Mixin constructor
 	OO.ui.mixin.GroupWidget.call( this, config );
 
