@@ -29,9 +29,14 @@ class EchoMentorChangePresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getBodyMessage() {
-		if ( $this->event->getExtra()['reason'] !== '' ) {
+		$extra = $this->event->getExtra();
+		if ( array_key_exists( 'reason', $extra ) && $extra['reason'] !== '' ) {
+			// B&C: pre-T327493 notification
 			return $this->msg( 'growthexperiments-notification-body-mentor-change' )
-				->params( $this->event->getExtra()['reason'] );
+				->params( $extra['reason'] );
+		} elseif ( array_key_exists( 'oldMentor', $extra ) ) {
+			return $this->msg( 'growthexperiments-notification-body-mentor-change-new' )
+				->params( $extra['oldMentor'] );
 		}
 		return false;
 	}

@@ -193,7 +193,7 @@ class ChangeMentor {
 					'title' => $this->getMenteeUser()->getUserPage(),
 					'extra' => [
 						'mentee' => $this->mentee->getId(),
-						'reason' => $reason
+						'oldMentor' => $this->mentor->getName(),
 					],
 					'agent' => $this->newMentor,
 				] );
