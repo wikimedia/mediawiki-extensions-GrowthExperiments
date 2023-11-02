@@ -1787,7 +1787,7 @@
 		"ext.growthExperiments.icons": {
 			"class": "ResourceLoaderImageModule",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
-			"selectorWithoutVariant": ".oo-ui-icon-{name},.mw-ui-icon-{name}:before",
+			"selectorWithoutVariant": ".oo-ui-icon-{name},.mw-ui-icon-{name}",
 			"images": {
 				"growth-previous": {
 					"file": {
