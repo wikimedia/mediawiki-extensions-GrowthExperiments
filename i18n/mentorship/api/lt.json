@@ -21,7 +21,6 @@
 	"apihelp-growthmanagementorlist-summary": "Tvarkykite struktūruoto mentorių sąrašo informaciją (įprastai talpinama [[MediaWiki:GrowthMentors.json]]). Šis modulis gali būti naudojamas tiek dabartinių, tiek ateities mentorių (kad pridėtu save ar pakeistų informaciją) ir administratorių (visiems naudotojams).",
 	"apihelp-growthmanagementorlist-param-geaction": "Veiksmas",
 	"apihelp-growthmanagementorlist-param-weight": "Svoris",
-	"apihelp-growthmanagementorlist-param-autoassigned": "Ar mentorius automatiškai priskiriamas naujokams?",
 	"apihelp-growthmanagementorlist-param-summary": "Pakeitimo priežastis",
 	"apihelp-growthmanagementorlist-param-username": "Mentoriaus, kuriam turės įtakos pakeitimas, naudotojo vardas. Jei nenurodyta, bus naudojamas šiuo metu prisijungęs naudotojas. Gali naudoti tik privilegijuoti naudotojai."
 }

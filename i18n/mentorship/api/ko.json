@@ -20,7 +20,6 @@
 	"apihelp-query+growthmentormentee-summary": "지정된 멘토에 할당된 모든 멘티를 가져옵니다",
 	"apihelp-growthmanagementorlist-summary": "구조화된 멘토 목록(보통 [[MediaWiki:GrowthMentors.json]]에 저장됨)의 정보를 관리합니다. 이 모듈은 (자신을 추가하고 자신의 상세 정보를 변경하기 위해) 현재 및 미래의 멘토에 의해, 그리고 (모든 사용자를 위해) 관리자에 의해 추가될 수 있습니다.",
 	"apihelp-growthmanagementorlist-param-message": "소개 메시지 (기본 멘토 메시지의 경우 빈 문자열 사용)",
-	"apihelp-growthmanagementorlist-param-autoassigned": "멘토가 자동으로 새로 오신 분에게 할당됩니까?",
 	"apihelp-growthmanagementorlist-param-summary": "변경 이유",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "멘토 대시보드 내 개인화된 칭찬 모듈에서 칭찬할만한 멘티 제안을 무효화합니다"
 }

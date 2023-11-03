@@ -27,7 +27,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Action",
 	"apihelp-growthmanagementorlist-param-message": "Message d’introduction (utilisez une chaîne vide pour le message par défaut du tuteur)",
 	"apihelp-growthmanagementorlist-param-weight": "Poids",
-	"apihelp-growthmanagementorlist-param-autoassigned": "Le tuteur est-il automatiquement affecté aux novices ?",
 	"apihelp-growthmanagementorlist-param-isaway": "Le tuteur est-il actuellement absent ? Doit être défini (faux par défaut).",
 	"apihelp-growthmanagementorlist-param-awaytimestamp": "Jusqu’à quand le tuteur est-il absent ? Le maximum est un an à partir d’aujourd’hui. Ignoré sauf si isaway est vrai.",
 	"apihelp-growthmanagementorlist-param-summary": "Motif du changement",

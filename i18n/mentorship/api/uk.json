@@ -27,7 +27,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Дія",
 	"apihelp-growthmanagementorlist-param-message": "Вітальне повідомлення (використовуйте порожній рядок для повідомлення наставника за замовчуванням)",
 	"apihelp-growthmanagementorlist-param-weight": "Вага",
-	"apihelp-growthmanagementorlist-param-autoassigned": "Чи призначається наставник новачкам автоматично?",
 	"apihelp-growthmanagementorlist-param-isaway": "Наставник зараз відсутній? Потрібно встановити (за замовчуванням значення false).",
 	"apihelp-growthmanagementorlist-param-summary": "Причина зміни",
 	"apihelp-growthmanagementorlist-param-username": "Ім’я користувача наставника, якого торкнуться зміни. Якщо не вказано, використовуватиметься поточний користувач. Може використовуватися лише привілейованими користувачами.",

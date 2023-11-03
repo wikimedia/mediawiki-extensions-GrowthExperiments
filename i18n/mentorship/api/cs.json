@@ -27,7 +27,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Akce",
 	"apihelp-growthmanagementorlist-param-message": "Představení se jako mentor (pokud chcete použít výchozí zprávu, použijte prázdný řetězec)",
 	"apihelp-growthmanagementorlist-param-weight": "Váha",
-	"apihelp-growthmanagementorlist-param-autoassigned": "Je mentor automaticky přiřazen nováčkům?",
 	"apihelp-growthmanagementorlist-param-isaway": "Je mentor momentálně pryč? Musí být nastaveno (výchozí hodnota je false).",
 	"apihelp-growthmanagementorlist-param-awaytimestamp": "Do jaké doby je mentor pryč? Maximum je jeden rok ode dneška. Ignorováno, pokud isaway není zaškrtnuto.",
 	"apihelp-growthmanagementorlist-param-summary": "Důvod změny",

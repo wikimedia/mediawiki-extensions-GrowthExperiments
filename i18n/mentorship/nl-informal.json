@@ -11,5 +11,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Op het mentordashboard staan alleen de recentelijk actieve leerlingen. Met het pictogram Info kun je meer informatie krijgen. Als je je nog maar net hebt ingeschreven voor mentorschap heb je mogelijk nog geen leerlingen toegewezen gekregen.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Wijzig je filters om leerlingen te vinden.",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Hoe introduceer je {{GENDER:|jezelf}} als {{GENDER:|mentor}}",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Hallo $1, ik ben je mentor. Bedankt voor je bijdragen. Ik zie dat je druk bezig bent geweest met bewerken, en ik wilde je even bedanken en zeggen dat ik hoop dat je zo doorgaat! Plaats gerust een berichtje op mijn overlegpagina als je vragen hebt. Bedankt!",
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Wat fijn dat je op {{SITENAME}} mentor wilt worden. Met dit formulier kun je je aanmelden."
 }

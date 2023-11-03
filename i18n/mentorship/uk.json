@@ -147,6 +147,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Надіслати",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Скасувати",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Сталася невідома помилка. Будь ласка, спробуйте пізніше.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Дякуємо, що написали повідомлення {{GENDER:$1|своєму підопчному|своїй підопічній}}! Повернутися до [[Special:MentorDashboard|панелі наставника]].",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Відкрийте діалогове вікно налаштувань",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Налаштування",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Показник гідних похвали підопічних",

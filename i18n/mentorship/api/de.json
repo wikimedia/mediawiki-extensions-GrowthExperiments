@@ -28,7 +28,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Aktion",
 	"apihelp-growthmanagementorlist-param-message": "Einführungsnachricht (leere Zeichenfolge für die Standard-Lotsen-Nachricht verwenden)",
 	"apihelp-growthmanagementorlist-param-weight": "Gewichtung",
-	"apihelp-growthmanagementorlist-param-autoassigned": "Wird Neuankömmlingen der Lotse automatisch zugeteilt?",
 	"apihelp-growthmanagementorlist-param-isaway": "Ist der Lotse derzeit abwesend? Muss festgelegt werden (Standardwert ist „false“).",
 	"apihelp-growthmanagementorlist-param-awaytimestamp": "Bis wann ist der Lotse abwesend? Das Maximum beträgt 1 Jahr ab heute. Wird ignoriert, es sei denn, isaway ist true.",
 	"apihelp-growthmanagementorlist-param-summary": "Grund für die Änderung",

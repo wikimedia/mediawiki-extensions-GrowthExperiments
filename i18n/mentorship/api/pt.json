@@ -25,7 +25,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Ação",
 	"apihelp-growthmanagementorlist-param-message": "Mensagem de apresentação (use um texto vazio para usar a mensagem de mentor padrão)",
 	"apihelp-growthmanagementorlist-param-weight": "Peso",
-	"apihelp-growthmanagementorlist-param-autoassigned": "O mentor é atribuído automaticamente a recém-chegados?",
 	"apihelp-growthmanagementorlist-param-summary": "Motivo da alteração",
 	"apihelp-growthmanagementorlist-param-username": "Nome de utilizador do mentor afetado pela alteração. Se não for fornecido, será usado o utilizador com sessão iniciada neste momento. Só pode ser usado por utilizadores privilegiados.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Se \"isaway\" for verdadeiro, então \"awaytimestamp\" tem de ser fornecido."

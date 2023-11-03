@@ -25,7 +25,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Dejanje",
 	"apihelp-growthmanagementorlist-param-message": "Uvodno sporočilo (za privzeto mentorsko sporočilo uporabite prazen niz)",
 	"apihelp-growthmanagementorlist-param-weight": "Utež",
-	"apihelp-growthmanagementorlist-param-autoassigned": "Se novincem mentor dodeli samodejno?",
 	"apihelp-growthmanagementorlist-param-isaway": "Je mentor trenutno odsoten? Mora biti nastavljen (privzeto na »false«).",
 	"apihelp-growthmanagementorlist-param-awaytimestamp": "Do kdaj je mentor odsoten? Največ je 1 leto od danes. Prezrto, razen če je isaway »true«.",
 	"apihelp-growthmanagementorlist-param-summary": "Razlog za spremembo",

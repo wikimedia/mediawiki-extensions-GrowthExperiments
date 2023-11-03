@@ -26,7 +26,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Művelet",
 	"apihelp-growthmanagementorlist-param-message": "Bevezető üzenet (használj üres sztringet az alapértelmezett mentorüzenethez)",
 	"apihelp-growthmanagementorlist-param-weight": "Súly",
-	"apihelp-growthmanagementorlist-param-autoassigned": "A mentor automatikusan hozzá van rendelve az új szerkesztőkhöz?",
 	"apihelp-growthmanagementorlist-param-summary": "Változtatás oka",
 	"apihelp-growthmanagementorlist-param-username": "A módosítással érintett mentor felhasználóneve. Ha nincs megadva, a jelenleg bejelentkezett felhasználó lesz használva. Csak kiváltságos felhasználók használhatják."
 }
