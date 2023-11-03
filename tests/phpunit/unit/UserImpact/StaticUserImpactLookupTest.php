@@ -27,7 +27,8 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 				new UserTimeCorrection( 'System|0' ),
 				80,
 				wfTimestamp( TS_UNIX, '20200101000000' ),
-				new EditingStreak()
+				new EditingStreak(),
+				null
 			),
 			2 => new ExpensiveUserImpact(
 				UserIdentityValue::newRegistered( 2, 'User2' ),
@@ -44,7 +45,8 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 					'Foo' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],
 					'Bar' => [ '2022-08-24' => 30, '2022-08-25' => 40 ],
 				],
-				new EditingStreak()
+				new EditingStreak(),
+				null
 			),
 		];
 		$lookup = new StaticUserImpactLookup( $userImpacts );

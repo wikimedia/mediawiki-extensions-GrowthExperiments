@@ -37,7 +37,8 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			10,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
-			new EditingStreak()
+			new EditingStreak(),
+			null
 		);
 		$store->setUserImpact( $userImpact );
 		$this->assertEquals( $userImpact, $store->getUserImpact( $user ) );
@@ -53,7 +54,8 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			20,
 			wfTimestamp( TS_UNIX, '20200102000000' ),
-			new EditingStreak()
+			new EditingStreak(),
+			null
 		);
 		$store->setUserImpact( $userImpact2 );
 		$this->assertEquals( $userImpact2, $store->getUserImpact( $user2 ) );
@@ -79,7 +81,8 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			wfTimestamp( TS_UNIX, '20200103000000' ),
 			[ '2020-01-01' => 1000, '2020-01-02' => 2000 ],
 			[ '2020-01-01' => [ 'Foo' => 500, 'Bar' => 500 ], '2020-01-02' => [ 'Foo' => 1000, 'Bar' => 1000 ] ],
-			new EditingStreak()
+			new EditingStreak(),
+			null
 		);
 		$store->setUserImpact( $expensiveUserImpact );
 		$this->assertEquals( $expensiveUserImpact, $store->getUserImpact( $user ) );
@@ -101,7 +104,8 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			10,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
-			new EditingStreak()
+			new EditingStreak(),
+			null
 		);
 		$updatedUserImpact = new UserImpact(
 			$user,
@@ -113,7 +117,8 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			15,
 			wfTimestamp( TS_UNIX, '20200101120000' ),
-			new EditingStreak()
+			new EditingStreak(),
+			null
 		);
 
 		$store->setUserImpact( $userImpact );

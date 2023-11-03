@@ -71,7 +71,8 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
-			new EditingStreak()
+			new EditingStreak(),
+			null
 		);
 
 		MWTimestamp::setFakeTime( '2022-08-25 12:00:00' );
@@ -143,7 +144,8 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
-			new EditingStreak()
+			new EditingStreak(),
+			null
 		);
 
 		MWTimestamp::setFakeTime( '2022-08-15 12:00:00' );

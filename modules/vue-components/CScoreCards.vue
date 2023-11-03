@@ -197,8 +197,6 @@ module.exports = exports = {
 		totalEditsCount() {
 			if ( !this.data ) {
 				return NO_DATA_CHARACTER;
-			} else if ( this.data.totalEditsCount >= DATA_ROWS_LIMIT ) {
-				return this.$i18n( 'growthexperiments-homepage-impact-scores-over-limit' );
 			}
 			return this.$filters.convertNumber( this.data.totalEditsCount );
 		},
@@ -218,8 +216,15 @@ module.exports = exports = {
 		},
 		receivedThanksInfoText() {
 			return this.renderThirdPerson ?
-				this.$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text-third-person' ).text() :
-				this.$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', this.userName ).text();
+				this.$i18n(
+					'growthexperiments-homepage-impact-scores-thanks-info-text-third-person',
+					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+				).text() :
+				this.$i18n(
+					'growthexperiments-homepage-impact-scores-thanks-info-text',
+					this.userName,
+					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+				).text();
 		},
 		lastEditFormattedTimeAgo() {
 			if ( this.data && this.data.lastEditTimestamp ) {
@@ -271,8 +276,15 @@ module.exports = exports = {
 		},
 		longestEditingStreakFirstParagraph() {
 			return this.renderThirdPerson ?
-				this.$i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text-third-person' ).text() :
-				this.$i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', this.userName ).text();
+				this.$i18n(
+					'growthexperiments-homepage-impact-scores-best-streak-info-text-third-person',
+					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+				).text() :
+				this.$i18n(
+					'growthexperiments-homepage-impact-scores-best-streak-info-text',
+					this.userName,
+					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+				).text();
 		},
 		longestEditingStreakSecondParagraph() {
 			// Show the second information paragraph only if bestStreakFormattedDates is computed.

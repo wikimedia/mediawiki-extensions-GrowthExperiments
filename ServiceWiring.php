@@ -1084,7 +1084,7 @@ return [
 			$services->getDBLoadBalancerFactory(),
 			$services->getChangeTagDefStore(),
 			$services->getUserFactory(),
-			$services->getUserOptionsLookup(),
+			$services->getUserEditTracker(),
 			$services->getTitleFormatter(),
 			$services->getTitleFactory(),
 			$services->getStatsdDataFactory(),

@@ -26,7 +26,8 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			new UserTimeCorrection( 'System|0' ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
-			new EditingStreak()
+			new EditingStreak(),
+			10
 		);
 		$this->assertInstanceOf( UserImpact::class, $userImpact );
 		$this->assertSame( 10, $userImpact->getReceivedThanksCount() );
@@ -36,6 +37,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 100, $userImpact->getEditCountIn( NS_MAIN ) );
 		$this->assertSame( 80, $userImpact->getNewcomerTaskEditCount() );
 		$this->assertSame( (int)wfTimestamp( TS_UNIX, '20200101000000' ), $userImpact->getLastEditTimestamp() );
+		$this->assertSame( 10, $userImpact->getTotalEditsCount() );
 	}
 
 	public function testSerialization() {
@@ -51,7 +53,8 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
-			new EditingStreak()
+			new EditingStreak(),
+			10
 		);
 
 		$data = $userImpact->jsonSerialize();
