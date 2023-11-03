@@ -39,7 +39,7 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 	}, config );
 
 	// Parent constructor
-	TopicSelectionWidget.parent.call( this, config );
+	TopicSelectionWidget.super.call( this, config );
 
 	if ( !GROUPED_TOPICS ) {
 		this.suggestions = [];

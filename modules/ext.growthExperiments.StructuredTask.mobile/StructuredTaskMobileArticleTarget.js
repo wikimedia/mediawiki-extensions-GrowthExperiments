@@ -79,7 +79,7 @@ StructuredTaskMobileArticleTarget.prototype.maybeUpdateMobileEditorPreference = 
 /** @override **/
 StructuredTaskMobileArticleTarget.prototype.teardownWithoutPrompt = function ( trackMechanism ) {
 	// Close the editor overlay
-	return this.constructor.parent.super.prototype.tryTeardown.call(
+	return this.constructor.super.super.prototype.tryTeardown.call(
 		this, true, trackMechanism
 	);
 };

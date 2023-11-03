@@ -38,7 +38,7 @@ StructuredTaskArticleTarget.prototype.getSurfaceConfig = function ( config ) {
 	config = config || {};
 	config.mode = 'machineSuggestions';
 	// Task-specific ArticleTarget -> StructuredTask ArticleTarget -> VE ArticleTarget
-	return this.constructor.parent.super.prototype.getSurfaceConfig.call( this, config );
+	return this.constructor.super.super.prototype.getSurfaceConfig.call( this, config );
 };
 
 /**
@@ -56,7 +56,7 @@ StructuredTaskArticleTarget.prototype.formatSaveOptions = function ( defaultSave
  * @inheritDoc
  */
 StructuredTaskArticleTarget.prototype.getSaveOptions = function () {
-	var saveOptions = this.constructor.parent.super.prototype.getSaveOptions.call( this );
+	var saveOptions = this.constructor.super.super.prototype.getSaveOptions.call( this );
 	// Don't add the article to the user's watchlist if no edits were made
 	if ( !this.hasEdits() ) {
 		saveOptions.watchlist = 'nochange';
@@ -91,7 +91,7 @@ StructuredTaskArticleTarget.prototype.surfaceReady = function () {
 	this.editNotices = [];
 
 	this.beforeStructuredTaskSurfaceReady();
-	this.constructor.parent.super.prototype.surfaceReady.apply( this, arguments );
+	this.constructor.super.super.prototype.surfaceReady.apply( this, arguments );
 	this.updateHistory();
 	this.afterStructuredTaskSurfaceReady();
 	suggestedEditSession.trackEditorReady();
@@ -119,7 +119,7 @@ StructuredTaskArticleTarget.prototype.hasReviewedSuggestions = null;
 /** @inheritDoc */
 StructuredTaskArticleTarget.prototype.isSaveable = function () {
 	// Call parent method just in case it has some side effect, but ignore its return value.
-	this.constructor.parent.super.prototype.isSaveable.call( this );
+	this.constructor.super.super.prototype.isSaveable.call( this );
 	// The page is saveable if the user accepted or rejected recommendations.
 	// (If there are only rejections, the save will be a null edit but it's still a convenient
 	// way of handling various needed updates via the same mechanism, so we don't special-case it.)
@@ -308,7 +308,7 @@ StructuredTaskArticleTarget.prototype.teardownWithoutPrompt = null;
 /** @inheritDoc **/
 StructuredTaskArticleTarget.prototype.tryTeardown = function ( noPrompt, trackMechanism ) {
 	if ( this.edited || this.hasReviewedSuggestions() ) {
-		return this.constructor.parent.super.prototype.tryTeardown.call(
+		return this.constructor.super.super.prototype.tryTeardown.call(
 			this, noPrompt, trackMechanism
 		);
 	}
