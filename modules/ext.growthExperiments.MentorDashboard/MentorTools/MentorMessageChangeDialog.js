@@ -66,8 +66,7 @@ MentorMessageChangeDialog.prototype.getActionProcess = function ( action ) {
 			return new mw.Api().postWithToken( 'csrf', {
 				action: 'growthmanagementorlist',
 				geaction: 'change',
-				message: newMessage,
-				autoassigned: mw.config.get( 'GEMentorDashboardMentorAutoAssigned' )
+				message: newMessage
 			} ).then( function () {
 				mw.notify(
 					mw.msg(

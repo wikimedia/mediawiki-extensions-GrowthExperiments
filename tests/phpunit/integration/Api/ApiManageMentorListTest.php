@@ -28,7 +28,6 @@ class ApiManageMentorListTest extends ApiTestCase {
 		return [
 			'message' => $mentor->hasCustomIntroText() ? $mentor->getIntroText() : null,
 			'weight' => $mentor->getWeight(),
-			'automaticallyAssigned' => $mentor->getAutoAssigned(),
 		];
 	}
 
@@ -70,7 +69,6 @@ class ApiManageMentorListTest extends ApiTestCase {
 				'action' => 'growthmanagementorlist',
 				'geaction' => 'add',
 				'message' => 'intro',
-				'autoassigned' => true,
 				'weight' => IMentorWeights::WEIGHT_NORMAL
 			],
 			null,
@@ -95,7 +93,6 @@ class ApiManageMentorListTest extends ApiTestCase {
 				'action' => 'growthmanagementorlist',
 				'geaction' => 'change',
 				'message' => 'intro',
-				'autoassigned' => true,
 				'weight' => IMentorWeights::WEIGHT_NORMAL,
 				'username' => 'FooUser',
 			],
@@ -115,7 +112,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 				'action' => 'growthmanagementorlist',
 				'geaction' => 'foobar',
 				'message' => 'intro',
-				'autoassigned' => false,
+				'weight' => IMentorWeights::WEIGHT_NONE,
 			],
 			null,
 			$this->getTestSysop()->getUser()
@@ -135,12 +132,10 @@ class ApiManageMentorListTest extends ApiTestCase {
 				'action' => 'growthmanagementorlist',
 				'geaction' => 'add',
 				'message' => 'intro',
-				'autoassigned' => true,
 				'weight' => IMentorWeights::WEIGHT_NORMAL
 			],
 			[
 				'message' => 'intro',
-				'autoassigned' => true,
 				'weight' => IMentorWeights::WEIGHT_NORMAL
 			],
 			$this->getMutableTestUser( 'mentors' )->getUser()
@@ -168,8 +163,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 			],
 			$params + [
 				'message' => null,
-				'autoassigned' => false,
-				'weight' => IMentorWeights::WEIGHT_NORMAL
+				'weight' => IMentorWeights::WEIGHT_NORMAL,
 			],
 			$this->getMutableTestUser( 'sysop' )->getUser()
 		);
@@ -180,7 +174,6 @@ class ApiManageMentorListTest extends ApiTestCase {
 			'none' => [ [] ],
 			'only message' => [ [ 'message' => 'foo' ] ],
 			'only weight' => [ [ 'weight' => IMentorWeights::WEIGHT_LOW ] ],
-			'only autoassigned' => [ [ 'autoassigned' => true ] ],
 		];
 	}
 
@@ -199,7 +192,6 @@ class ApiManageMentorListTest extends ApiTestCase {
 				'action' => 'growthmanagementorlist',
 				'geaction' => 'add',
 				'message' => 'intro',
-				'autoassigned' => true,
 				'weight' => IMentorWeights::WEIGHT_NORMAL,
 				'username' => $mentorUser->getName(),
 				'isaway' => true,

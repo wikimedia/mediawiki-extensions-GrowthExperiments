@@ -28,7 +28,8 @@ class StructuredMentorListValidator implements IConfigValidator {
 
 	/** @var string[] List of optional keys in mentor serialization. */
 	private const OPTIONAL_MENTOR_KEYS = [
-		'username'
+		'username',
+		'automaticallyAssigned',
 	];
 
 	/**

@@ -17,9 +17,6 @@ class MentorTools extends BaseModule {
 	/** @var string Base CSS class for this module */
 	private const BASE_MODULE_CSS_CLASS = 'growthexperiments-mentor-dashboard-module-mentor-tools';
 
-	/** @var int Pseudo weight, only recognized within MentorTools */
-	public const WEIGHT_NONE = 'none';
-
 	private MentorProvider $mentorProvider;
 	private MentorStatusManager $mentorStatusManager;
 
@@ -49,17 +46,12 @@ class MentorTools extends BaseModule {
 	}
 
 	/**
-	 * @return int|string
+	 * @return int
 	 */
 	private function getMentorWeight() {
-		$mentor = $this->mentorProvider
-			->newMentorFromUserIdentity( $this->getUser() );
-
-		if ( !$mentor->getAutoAssigned() ) {
-			return self::WEIGHT_NONE;
-		}
-
-		return $mentor->getWeight();
+		return $this->mentorProvider
+			->newMentorFromUserIdentity( $this->getUser() )
+			->getWeight();
 	}
 
 	/**
@@ -68,7 +60,7 @@ class MentorTools extends BaseModule {
 	protected function getBody() {
 		$weightOptions = [
 			[
-				'data' => self::WEIGHT_NONE,
+				'data' => IMentorWeights::WEIGHT_NONE,
 				'label' => $this->msg(
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none'
 				)->text()
@@ -269,7 +261,6 @@ class MentorTools extends BaseModule {
 
 		return [
 			'GEMentorDashboardMentorIntroMessage' => $mentor->getIntroText(),
-			'GEMentorDashboardMentorAutoAssigned' => $mentor->getAutoAssigned(),
 			'GEMentorDashboardMentorIntroMessageMaxLength' => MentorProvider::INTRO_TEXT_LENGTH
 		];
 	}

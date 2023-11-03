@@ -7,12 +7,14 @@ namespace GrowthExperiments\MentorDashboard\MentorTools;
  */
 interface IMentorWeights {
 	/** @var int */
+	public const WEIGHT_NONE = 0;
 	public const WEIGHT_LOW = 1;
 	public const WEIGHT_NORMAL = 2;
 	public const WEIGHT_HIGH = 4;
 
 	/** @var int[] */
 	public const WEIGHTS = [
+		self::WEIGHT_NONE,
 		self::WEIGHT_LOW,
 		self::WEIGHT_NORMAL,
 		self::WEIGHT_HIGH

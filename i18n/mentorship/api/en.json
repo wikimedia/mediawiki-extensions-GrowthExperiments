@@ -23,7 +23,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Action",
 	"apihelp-growthmanagementorlist-param-message": "Introduction message (use an empty string for the default mentor message)",
 	"apihelp-growthmanagementorlist-param-weight": "Weight",
-	"apihelp-growthmanagementorlist-param-autoassigned": "Is the mentor automatically assigned to newcomers?",
 	"apihelp-growthmanagementorlist-param-isaway": "Is the mentor currently away? Has to be set (defaults to false).",
 	"apihelp-growthmanagementorlist-param-awaytimestamp": "Until when is the mentor away? Maximum is 1 year from today. Ignored unless isaway is true.",
 	"apihelp-growthmanagementorlist-param-summary": "Reason for the change",

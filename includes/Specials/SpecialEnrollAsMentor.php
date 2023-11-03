@@ -4,6 +4,7 @@ namespace GrowthExperiments\Specials;
 
 use Config;
 use FormSpecialPage;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use HTMLForm;
@@ -116,12 +117,8 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 			],
 			'weight' => [
 				'type' => 'hidden',
-				'default' => 2,
+				'default' => IMentorWeights::WEIGHT_NORMAL,
 			],
-			'automaticallyAssigned' => [
-				'type' => 'hidden',
-				'default' => true,
-			]
 		];
 	}
 
@@ -132,7 +129,6 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->getUser() );
 		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
 		$mentor->setWeight( (int)$data['weight'] );
-		$mentor->setAutoAssigned( (bool)$data['automaticallyAssigned'] );
 
 		return Status::wrap( $this->mentorWriter->addMentor(
 			$mentor,

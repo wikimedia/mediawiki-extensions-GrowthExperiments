@@ -39,7 +39,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 					$this->getUserMock( 'OldMentor', 3 ),
 					'o/',
 					'',
-					true,
 					IMentorWeights::WEIGHT_NORMAL
 				),
 				$this->createMock( MentorManager::class ),
@@ -85,7 +84,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				$this->getUserMock( 'OldMentor', 3 ),
 				'o/',
 				'',
-				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
 			$this->createMock( MentorManager::class ),
@@ -107,7 +105,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			new Mentor(
 				$this->getUserMock( 'OldMentor', 3 ),
 				'o/',
-				true,
 				'',
 				IMentorWeights::WEIGHT_NORMAL
 			),
@@ -139,7 +136,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				$this->getUserMock( 'OldMentor', 3 ),
 				'o/',
 				'',
-				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
 			$this->createMock( MentorManager::class ),
@@ -166,7 +162,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				$this->getUserMock( 'SameMentor', 3 ),
 				'o/',
 				'',
-				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
 			$this->createMock( MentorManager::class ),
@@ -194,7 +189,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				$this->getUserMock( 'SameMentor', 3 ),
 				'o/',
 				'',
-				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
 			$this->createMock( MentorManager::class ),
@@ -257,7 +251,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				$this->getUserMock( 'Mentor', 3 ),
 				'o/',
 				'',
-				true,
 				IMentorWeights::WEIGHT_NORMAL
 			),
 			$mentorManagerMock,

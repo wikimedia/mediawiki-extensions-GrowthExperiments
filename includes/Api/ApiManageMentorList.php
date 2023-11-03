@@ -74,7 +74,6 @@ class ApiManageMentorList extends ApiBase {
 		if ( $params['weight'] !== null ) {
 			$mentor->setWeight( (int)$params['weight'] );
 		}
-		$mentor->setAutoAssigned( $params['autoassigned'] );
 
 		// ensure awaytimestamp is provided when isaway=true
 		if ( $params['isaway'] && $params['awaytimestamp'] === null ) {
@@ -135,10 +134,12 @@ class ApiManageMentorList extends ApiBase {
 			'mentor' => [
 				'message' => $mentor->hasCustomIntroText() ? $mentor->getIntroText() : null,
 				'weight' => $mentor->getWeight(),
-				'automaticallyAssigned' => $mentor->getAutoAssigned(),
 				'awayTimestamp' => $rawBackTs,
 				'awayTimestampHuman' => $rawBackTs !== null ? $this->getContext()
 					->getLanguage()->date( $rawBackTs, true ) : null,
+
+				// NOTE: Legacy attribute, weight provides the same info.
+				'automaticallyAssigned' => $mentor->getWeight() !== IMentorWeights::WEIGHT_NONE,
 			]
 		] );
 	}
@@ -175,9 +176,6 @@ class ApiManageMentorList extends ApiBase {
 			],
 			'weight' => [
 				ParamValidator::PARAM_TYPE => array_map( 'strval', IMentorWeights::WEIGHTS )
-			],
-			'autoassigned' => [
-				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'isaway' => [
 				ParamValidator::PARAM_TYPE => 'boolean',

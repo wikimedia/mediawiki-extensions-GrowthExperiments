@@ -62,15 +62,12 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 				'label-message' => 'growthexperiments-manage-mentors-edit-intro-msg',
 				'default' => $mentor->getIntroText(),
 			],
-			'automaticallyAssigned' => [
-				'type' => 'check',
-				'label-message' => 'growthexperiments-manage-mentors-edit-is-auto-assigned',
-				'default' => $mentor->getAutoAssigned(),
-			],
 			'weight' => [
 				'type' => 'radio',
 				'label-message' => 'growthexperiments-manage-mentors-edit-weight',
 				'options-messages' => [
+					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none' =>
+						IMentorWeights::WEIGHT_NONE,
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low' =>
 						IMentorWeights::WEIGHT_LOW,
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium' =>
@@ -129,7 +126,6 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 		$awayTimestamp = $this->mentorStatusManager->getMentorBackTimestamp( $this->mentorUser );
 
 		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
-		$mentor->setAutoAssigned( $data['automaticallyAssigned'] );
 		$mentor->setWeight( (int)$data['weight'] );
 
 		$status = Status::newGood();

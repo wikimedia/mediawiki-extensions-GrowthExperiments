@@ -28,7 +28,6 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			'username' => 'Mentor',
 			'message' => null,
 			'weight' => 2,
-			'automaticallyAssigned' => true,
 		],
 	];
 
@@ -44,21 +43,18 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param int $userId
 	 * @param string|null $introText
-	 * @param bool $autoAssigned
 	 * @param int $weight
 	 * @return Mentor
 	 */
 	private static function getMentor(
 		int $userId,
 		?string $introText,
-		bool $autoAssigned,
 		int $weight
 	): Mentor {
 		return new Mentor(
 			new UserIdentityValue( $userId, 'Mentor' ),
 			$introText,
 			self::DEFAULT_INTRO_TEXT,
-			$autoAssigned,
 			$weight
 		);
 	}
@@ -223,49 +219,45 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	public static function provideAddMentor() {
 		return [
 			[
-				'mentor' => self::getMentor( 1, null, true, 2 ),
+				'mentor' => self::getMentor( 1, null, 2 ),
 				'isBlocked' => false,
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 2,
-					'automaticallyAssigned' => true,
 				],
 				'expectedError' => null,
 				'expectLoad' => true,
 			],
 			[
-				'mentor' => self::getMentor( 123, null, true, 2 ),
+				'mentor' => self::getMentor( 123, null, 2 ),
 				'isBlocked' => false,
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 2,
-					'automaticallyAssigned' => true,
 				],
 				'expectedError' => 'growthexperiments-mentor-writer-error-already-added',
 				'expectLoad' => true,
 			],
 			[
-				'mentor' => self::getMentor( 0, null, true, 2 ),
+				'mentor' => self::getMentor( 0, null, 2 ),
 				'isBlocked' => false,
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 2,
-					'automaticallyAssigned' => true,
 				],
 				'expectedError' => 'growthexperiments-mentor-writer-error-anonymous-user',
 				'expectLoad' => false,
 			],
 			[
-				'mentor' => self::getMentor( 2, null, true, 2 ),
+				'mentor' => self::getMentor( 2, null, 2 ),
 				'isBlocked' => true,
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 2,
-					'automaticallyAssigned' => true,
 				],
 				'expectedError' => 'growthexperiments-mentor-writer-error-blocked',
 				'expectLoad' => true,
@@ -380,22 +372,20 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	public static function provideChangeMentor() {
 		return [
 			[
-				'mentor' => self::getMentor( 1, null, true, 2 ),
+				'mentor' => self::getMentor( 1, null, 2 ),
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 2,
-					'automaticallyAssigned' => true,
 				],
 				'expectedError' => 'growthexperiments-mentor-writer-error-not-in-the-list',
 			],
 			[
-				'mentor' => self::getMentor( 123, null, true, 4 ),
+				'mentor' => self::getMentor( 123, null, 4 ),
 				'expectedNewMentor' => [
 					'username' => 'Mentor',
 					'message' => null,
 					'weight' => 4,
-					'automaticallyAssigned' => true,
 				],
 				'expectedError' => null,
 			],

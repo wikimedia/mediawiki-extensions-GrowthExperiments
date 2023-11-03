@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\User\UserIdentity;
@@ -56,15 +57,13 @@ class ReassignMenteesIntegrationTest extends MediaWikiIntegrationTestCase {
 			$this->getMutableTestUser()->getUserIdentity(),
 			null,
 			'foo',
-			true,
-			2
+			IMentorWeights::WEIGHT_NORMAL
 		);
 		$mentorManual = new Mentor(
 			$this->getMutableTestUser()->getUserIdentity(),
 			null,
 			'foo',
-			false,
-			2
+			IMentorWeights::WEIGHT_NONE
 		);
 		$writer->addMentor( $mentorAuto, $mentorAuto->getUserIdentity(), '' );
 		$writer->addMentor( $mentorManual, $mentorManual->getUserIdentity(), '' );
