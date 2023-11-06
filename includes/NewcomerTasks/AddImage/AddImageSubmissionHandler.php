@@ -122,7 +122,10 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 
 		// Remove this image from being recommended in the future, unless it was rejected with
 		// one of the "not sure" options.
-		if ( array_diff( $reasons, self::REJECTION_REASONS_UNDECIDED ) ) {
+		// NOTE: This has to check $accepted, because $reasons will be empty for accepted
+		// suggested edits. Accepted edits need to be invalidated to account for possible
+		// reverts, see T350598 for more details.
+		if ( $accepted || array_diff( $reasons, self::REJECTION_REASONS_UNDECIDED ) ) {
 			$this->invalidateRecommendation(
 				$taskType,
 				$page,
