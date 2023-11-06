@@ -7,6 +7,7 @@ use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use MediaWiki\Block\AbstractBlock;
 use MediaWiki\Title\Title;
@@ -152,6 +153,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf(
 			StructuredMentorWriter::class,
 			new StructuredMentorWriter(
+				$this->createNoOpMock( MentorProvider::class ),
 				$this->createNoOpMock( UserIdentityLookup::class ),
 				$this->createNoOpMock( UserFactory::class ),
 				$this->createNoOpMock( WikiPageConfigLoader::class ),
@@ -195,6 +197,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$userIdentityLookup = $this->createNoOpMock( UserIdentityLookup::class );
 		}
 		$mentorWriter = new StructuredMentorWriter(
+			$this->createNoOpMock( MentorProvider::class ),
 			$userIdentityLookup,
 			$this->getUserFactoryMock( $isBlocked || $expectedError === null, $isBlocked ),
 			$this->getWikiConfigLoaderMock( $expectLoad ),
@@ -285,6 +288,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
 		}
 		$mentorWriter = new StructuredMentorWriter(
+			$this->createNoOpMock( MentorProvider::class ),
 			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->getUserFactoryMock( $expectedError === null ),
 			$this->getWikiConfigLoaderMock(),
@@ -348,6 +352,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$userIdentityLookup = $this->createNoOpMock( UserIdentityLookup::class );
 		}
 		$mentorWriter = new StructuredMentorWriter(
+			$this->createNoOpMock( MentorProvider::class ),
 			$userIdentityLookup,
 			$this->getUserFactoryMock( $expectedError === null ),
 			$this->getWikiConfigLoaderMock(),
@@ -399,6 +404,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	 */
 	public function testIsBlocked( bool $isBlocked ) {
 		$writer = new StructuredMentorWriter(
+			$this->createNoOpMock( MentorProvider::class ),
 			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->getUserFactoryMock( true, $isBlocked ),
 			$this->createNoOpMock( WikiPageConfigLoader::class ),

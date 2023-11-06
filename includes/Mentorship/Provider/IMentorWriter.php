@@ -85,4 +85,18 @@ interface IMentorWriter {
 		string $summary,
 		bool $bypassWarnings = false
 	): StatusValue;
+
+	/**
+	 * Save a no-op edit to the mentor list
+	 *
+	 * This is useful when the serialization rules for the mentor list have changed.
+	 *
+	 * @param UserIdentity $performer
+	 * @param string $summary
+	 * @return StatusValue
+	 */
+	public function touchList(
+		UserIdentity $performer,
+		string $summary
+	): StatusValue;
 }
