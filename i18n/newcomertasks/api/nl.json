@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dedalus"
+			"Dedalus",
+			"McDutchie"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Ontvang taakaanbevelingen die geschikt zijn voor nieuwkomers.",
 	"apihelp-query+growthtasks-extended-description": "Stelt een reeks artikelen voor met een aantal openstaande problemen die gemakkelijk genoeg zijn voor een nieuwe redacteur om aan te pakken.",
 	"apihelp-query+growthtasks-param-tasktypes": "Taaktypen om de resultaten tot te beperken. Laat leeg om alle suggesties te ontvangen.",
 	"apihelp-query+growthtasks-param-topics": "Artikelonderwerpen die de voorkeur hebben in taaksuggesties.",
-	"apihelp-query+growthtasks-param-limit": "Maximaal aantal taaksuggesties om te retourneren."
+	"apihelp-query+growthtasks-param-limit": "Maximaal aantal taaksuggesties om te retourneren.",
+	"apihelp-query+growthtasks-param-debug": "Foutopsporingsgegevens toevoegen aan de uitvoer.",
+	"apihelp-query+growthtasks-example-2": "Taakaanbevelingen ontvangen voor de huidige gebruiker, met uitgebreide informatie over de pagina’s."
 }
