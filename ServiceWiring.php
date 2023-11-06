@@ -550,6 +550,7 @@ return [
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		$writer = new StructuredMentorWriter(
+			$geServices->getMentorProvider(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
 			$geServices->getWikiPageConfigLoader(),

@@ -10,6 +10,7 @@ use InvalidArgumentException;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\User;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -45,14 +46,21 @@ class ChangeWikiConfig extends Maintenance {
 			false,
 			true
 		);
+		$this->addOption(
+			'touch',
+			'Make a null edit to the page (useful to reflect config serialization changes); '
+			. 'not supported for all config pages'
+		);
 
 		$this->addArg(
 			'key',
-			'Config key that is updated (use . to separate keys in a multidimensional array)'
+			'Config key that is updated (use . to separate keys in a multidimensional array)',
+			false
 		);
 		$this->addArg(
 			'value',
-			'New value of the config key'
+			'New value of the config key',
+			false
 		);
 		$this->addOption(
 			'create-only',
@@ -93,13 +101,36 @@ class ChangeWikiConfig extends Maintenance {
 	 */
 	public function execute() {
 		$this->initServices();
+
+		$touch = $this->hasOption( 'touch' );
+		$key = $this->getArg( 0 );
+		$value = $this->getArg( 1 );
+
+		if ( !$touch && ( $key === null || $value === null ) ) {
+			$this->fatalError( 'Key and value are required when --touch is not used.' );
+		}
+
+		if ( !$touch ) {
+			$this->saveChange( $key, $value );
+		} else {
+			$this->touchConfigPage();
+		}
+	}
+
+	/**
+	 * Make a change to the config page
+	 *
+	 * @param mixed $key
+	 * @param mixed $value
+	 * @return void
+	 */
+	private function saveChange( $key, $value ) {
 		$configWriter = $this->initConfigWriter();
 
-		$key = $this->getArg( 0 );
 		if ( strpos( $key, '.' ) !== false ) {
 			$key = explode( '.', $key );
 		}
-		$value = $this->getArg( 1 );
+
 		if ( $this->hasOption( 'json' ) ) {
 			$status = FormatJson::parse( $value, FormatJson::FORCE_ASSOC );
 			if ( !$status->isGood() ) {
@@ -127,6 +158,45 @@ class ChangeWikiConfig extends Maintenance {
 		}
 
 		$this->output( "Saved!\n" );
+	}
+
+	/**
+	 * @param string $rawPageA Raw page title
+	 * @param string $rawPageB Raw page title
+	 * @return bool
+	 */
+	private function rawPageTitleEquals( string $rawPageA, string $rawPageB ): bool {
+		$pageA = $this->titleFactory->newFromText( $rawPageA );
+		$pageB = $this->titleFactory->newFromText( $rawPageB );
+		if ( $pageA === null || $pageB === null ) {
+			return false;
+		}
+		return $pageA->equals( $pageB );
+	}
+
+	/**
+	 * If supported, make a no-op change
+	 */
+	private function touchConfigPage() {
+		$rawConfigPage = $this->getOption(
+			'page',
+			$this->getConfig()->get( 'GEWikiConfigPageTitle' )
+		);
+
+		if ( $this->rawPageTitleEquals( $rawConfigPage, $this->getConfig()->get( 'GEStructuredMentorList' ) ) ) {
+			$statusValue = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+				->getMentorWriter()
+				->touchList(
+					User::newSystemUser( 'Maintenance script', [ 'steal' => true ] ),
+					''
+				);
+			if ( !$statusValue->isOK() ) {
+				$this->fatalError( \Status::wrap( $statusValue )->getWikiText() );
+			}
+			$this->output( "Saved!\n" );
+		} else {
+			$this->fatalError( '--touch is not supported for ' . $rawConfigPage );
+		}
 	}
 }
 

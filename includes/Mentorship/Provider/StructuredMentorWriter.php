@@ -31,12 +31,14 @@ class StructuredMentorWriter implements IMentorWriter {
 	/** @var string */
 	public const CONFIG_KEY = 'Mentors';
 
+	private MentorProvider $mentorProvider;
 	private UserIdentityLookup $userIdentityLookup;
 	private UserFactory $userFactory;
 	private WikiPageConfigWriterFactory $configWriterFactory;
 	private StructuredMentorListValidator $mentorListValidator;
 
 	/**
+	 * @param MentorProvider $mentorProvider
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserFactory $userFactory
 	 * @param WikiPageConfigLoader $configLoader
@@ -45,6 +47,7 @@ class StructuredMentorWriter implements IMentorWriter {
 	 * @param Title $mentorList
 	 */
 	public function __construct(
+		MentorProvider $mentorProvider,
 		UserIdentityLookup $userIdentityLookup,
 		UserFactory $userFactory,
 		WikiPageConfigLoader $configLoader,
@@ -52,6 +55,7 @@ class StructuredMentorWriter implements IMentorWriter {
 		StructuredMentorListValidator $mentorListValidator,
 		Title $mentorList
 	) {
+		$this->mentorProvider = $mentorProvider;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userFactory = $userFactory;
 		$this->configLoader = $configLoader;
@@ -229,6 +233,28 @@ class StructuredMentorWriter implements IMentorWriter {
 			),
 			$performer,
 			$bypassWarnings
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function touchList( UserIdentity $performer, string $summary ): StatusValue {
+		$mentorData = $this->getMentorData();
+		foreach ( $mentorData as $mentorId => $mentorArr ) {
+			$mentorUser = $this->userIdentityLookup->getUserIdentityByUserId( $mentorId );
+			if ( !$mentorUser ) {
+				continue;
+			}
+			$mentorData[$mentorUser->getId()] = $this->serializeMentor(
+				$this->mentorProvider->newMentorFromUserIdentity( $mentorUser )
+			);
+		}
+		return $this->saveMentorData(
+			$mentorData,
+			$summary,
+			$performer,
+			true
 		);
 	}
 }
