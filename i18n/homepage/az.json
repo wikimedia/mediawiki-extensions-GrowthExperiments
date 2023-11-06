@@ -371,6 +371,7 @@
 	"growthexperiments-homepage-claimmentee-invalid-username": "İstifadəçinin adı səhv qeyd olunub",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|sənin}} yeni {{GENDER:$2|mentorundur}}.",
 	"growthexperiments-notification-body-mentor-change": "Səbəb: $1",
+	"growthexperiments-notification-body-mentor-change-new": "$1 artıq {{GENDER:|sizin}} {{GENDER:$1|mentorunuz}} deyil.",
 	"growthexperiments-notification-say-hi-mentor-change": "Yeni {{GENDER:$2|mentoruna}} {{GENDER:$3|salam}} ver!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Special:ClaimMentee istifadə edə bilmək üçün [[$2]] səhifəsində {{GENDER:$1|adınız}} mentor olaraq yazılmalıdır.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Mentorların siyahısı səhv quraşdırılıb.",

@@ -395,7 +395,7 @@
 	"growthexperiments-homepage-claimmentee-invalid-username": "Der angegebene Benutzername ist ungültig",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|ist}} {{GENDER:$2|dein neuer Lotse|deine neue Lotsin}}.",
 	"growthexperiments-notification-body-mentor-change": "Grund: $1",
-	"growthexperiments-notification-body-mentor-change-new": "{{GENDER:|Dein}} ehemaliger Lotse, $1, ist nicht mehr {{GENDER:|dein Lotse}}.",
+	"growthexperiments-notification-body-mentor-change-new": "{{GENDER:$1|Dein ehemaliger Lotse|Deine ehemalige Lotsin}}, $1, ist nicht mehr {{GENDER:$1|dein Lotse|deine Lotsin}}.",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Sag}} hallo zu {{GENDER:$2|deinem neuen Lotsen|deiner neuen Lotsin}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Du musst in der Liste [[$2]] als {{GENDER:$1|Lotse|Lotsin}} aufgeführt sein, um die Funktion Special:ClaimMentee nutzen zu können",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Die Liste der Lotsen/Lotsinnen enthält (einen) Fehler.",

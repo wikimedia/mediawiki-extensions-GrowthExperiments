@@ -144,6 +144,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Send",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Avbryt",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Ukjent feil oppsto. Prøv igjen senere.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Takk for at du postet en melding til {{GENDER:$1|fadderbarnet}} {{GENDER:|ditt}}! Gå tilbake til [[Special:MentorDashboard|fadderpanelet]].",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Åpne innstillingsdialogen",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Innstillinger",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Måling for takkverdige fadderbarn",

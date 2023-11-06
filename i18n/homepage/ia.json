@@ -368,6 +368,7 @@
 	"growthexperiments-homepage-claimmentee-invalid-username": "Le nomine de usator del apprentisse fornite non es valide",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|es}} {{GENDER:$3|tu}} nove mentor",
 	"growthexperiments-notification-body-mentor-change": "Motivo: $1",
+	"growthexperiments-notification-body-mentor-change-new": "Tu mentor anterior, $1, non es plus tu mentor.",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Dice}} salute a {{GENDER:$3|tu}} nove {{GENDER:$2|mentor|mentrice}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Tu}} debe esser listate como mentor sur [[$2]] pro poter usar Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Le lista de mentores es mal configurate.",

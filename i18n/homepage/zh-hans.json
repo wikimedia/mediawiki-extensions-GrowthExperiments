@@ -372,7 +372,7 @@
 	"log-action-filter-growthexperiments-addlink": "链接建议",
 	"log-action-filter-growthexperiments-addimage": "图片建议",
 	"growthexperiments-homepage-claimmentee-invalid-username": "提供的学员用户名无效",
-	"growthexperiments-notification-header-mentor-change": "$1{{GENDER:$2|是}}{{GENDER:$3|您的}}新导师",
+	"growthexperiments-notification-header-mentor-change": "$1{{GENDER:$2|是}}{{GENDER:$3|您的}}新{{GENDER:$2|导师}}",
 	"growthexperiments-notification-body-mentor-change": "原因：$1",
 	"growthexperiments-notification-say-hi-mentor-change": "向{{GENDER:$3|您的}}新{{GENDER:$2|导师}}{{GENDER:$3|问好}}！",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|您}}必须在 [[$2]] 上列为导师，才能使用Special:ClaimMentee",

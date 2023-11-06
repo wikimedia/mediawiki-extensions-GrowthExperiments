@@ -99,6 +99,8 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artikelen die hier gedefinieerde sjablonen bevatten, worden niet aan gebruikers getoond als taken voor dit taaktype.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artikelen die hier gedefinieerde categorieën bevatten, worden niet aan gebruikers getoond als taken voor dit taaktype.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infobox-sjablonen",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Deze sjablonen zijn nodig voor de nieuwkomerstaakfunctie [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|afbeeldingssuggesties]]. Artikelen die deze sjablonen bevatten, worden niet vermeld als taken voor afbeeldingssuggesties.",
+	"growthexperiments-edit-config-delayed": "Wijzigingen in deze instelling worden niet onmiddellijk van kracht (zie de [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Sluiten",
 	"specialpages-group-growth-tools": "Groeihulpmiddelen"
 }

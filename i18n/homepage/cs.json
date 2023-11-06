@@ -386,6 +386,7 @@
 	"growthexperiments-homepage-claimmentee-invalid-username": "Uživatelské jméno nováčka je neplatné",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|je}} {{GENDER:$3|váš}} nový mentor",
 	"growthexperiments-notification-body-mentor-change": "Důvod: $1",
+	"growthexperiments-notification-body-mentor-change-new": "{{GENDER:|Váš}} bývalý {{GENDER:$1|mentor}}, $1, už není {{GENDER:|vaším}} {{GENDER:$1|mentorem}}.",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Pozdravte}} {{GENDER:$2|svého nového mentora|svou novou mentorku}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Musíte být {{GENDER:$1|uveden|uvedena}} na seznamu mentorů na [[$2]], abyste {{GENDER:$1|mohl|mohla}} použít tuto funkci.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Seznam mentorů je špatně nakonfigurován.",

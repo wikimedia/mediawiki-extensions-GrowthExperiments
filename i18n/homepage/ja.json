@@ -84,7 +84,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|あなた}}の影響力",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|あなたの}}最近の活動（過去$2{{PLURAL:$2|日}}）",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "最近の活動（過去$1{{PLURAL:$1|日}}）",
-	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "最終編集:",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "最終編集",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "最長連続記録",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|日}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|編集}}",
