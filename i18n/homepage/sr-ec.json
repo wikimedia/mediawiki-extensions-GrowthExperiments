@@ -314,6 +314,7 @@
 	"growthexperiments-homepage-claimmentee-invalid-username": "Пружено кориснично име новајлије није важеће",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|је}} {{GENDER:$2|ваш нови ментор|ваша нова менторка}}",
 	"growthexperiments-notification-body-mentor-change": "Разлог: $1",
+	"growthexperiments-notification-body-mentor-change-new": "{{GENDER:$1|Ментор|Менторка}} $1 није више Ваш ментор.",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Поздравите}} {{GENDER:$2|новог ментора|нову менторку}}",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Морате бити {{GENDER:$1|ментор|менторка}} (на страници [[$2]]) да бисте могли приступити страници Посебно:Преузимање_новајлије",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Списак ментора је погрешно подешен.",

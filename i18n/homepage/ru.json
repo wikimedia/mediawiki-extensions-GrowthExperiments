@@ -23,6 +23,7 @@
 			"Movses",
 			"NBS",
 			"NR Deblocked",
+			"Novichev",
 			"Okras",
 			"Pacha Tchernof",
 			"Putnik",
@@ -564,6 +565,7 @@
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Выберите кнопку ниже, чтобы пока не назначать {{GENDER:|Вам}} определённого наставника. {{GENDER:|Вы}} сможете выбрать нового наставника позже, если {{GENDER:|Вам}} того захочется.",
 	"growthexperiments-homepage-mentorship-about-done": "Готово",
 	"growthexperiments-tour-newimpact-discovery-title": "Обновлённый дизайн",
+	"growthexperiments-homepage-newimpact-contributions-link": "Смотреть все правки",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Узнать больше",
 	"echo-category-title-ge-newcomer": "Функции «Роста»",
 	"echo-pref-tooltip-ge-newcomer": "Уведомлять меня о задачах для новичков и других функциях, призванных помочь новым участникам."
