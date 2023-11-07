@@ -21,7 +21,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UserImpact implements JsonSerializable {
 
 	/** Cache version, to be increased when breaking backwards compatibility. */
-	public const VERSION = 8;
+	public const VERSION = 9;
 
 	/** @var UserIdentity */
 	private $user;
@@ -50,6 +50,9 @@ class UserImpact implements JsonSerializable {
 	private EditingStreak $longestEditingStreak;
 	private array $editCountByTaskType;
 
+	/** @var int|null Copy of user.user_editcount */
+	private ?int $totalUserEditCount;
+
 	/**
 	 * @param UserIdentity $user
 	 * @param int $receivedThanksCount Number of thanks the user has received. Might exclude
@@ -67,6 +70,7 @@ class UserImpact implements JsonSerializable {
 	 *   newcomer task tag. Might exclude edits made a long time ago or many edits ago.
 	 * @param int|null $lastEditTimestamp Unix timestamp of the user's last edit.
 	 * @param EditingStreak $longestEditingStreak
+	 * @param int|null $totalUserEditCount Copy of user.user_editcount for the user
 	 */
 	public function __construct(
 		UserIdentity $user,
@@ -78,7 +82,8 @@ class UserImpact implements JsonSerializable {
 		UserTimeCorrection $timeZone,
 		int $newcomerTaskEditCount,
 		?int $lastEditTimestamp,
-		EditingStreak $longestEditingStreak
+		EditingStreak $longestEditingStreak,
+		?int $totalUserEditCount
 	) {
 		$this->user = $user;
 		$this->receivedThanksCount = $receivedThanksCount;
@@ -90,6 +95,7 @@ class UserImpact implements JsonSerializable {
 		$this->lastEditTimestamp = $lastEditTimestamp;
 		$this->generatedAt = ConvertibleTimestamp::time();
 		$this->longestEditingStreak = $longestEditingStreak;
+		$this->totalUserEditCount = $totalUserEditCount;
 	}
 
 	/**
@@ -183,10 +189,12 @@ class UserImpact implements JsonSerializable {
 	/**
 	 * Total number of edits across all namespaces.
 	 *
+	 * @note Unlike all other methods in this class, this one is not capped to recent edits (in
+	 * other words, ComputedUserImpactLookup::MAX_EDITS is ignored).
 	 * @return int
 	 */
 	public function getTotalEditsCount(): int {
-		return array_sum( $this->editCountByNamespace );
+		return $this->totalUserEditCount ?? array_sum( $this->editCountByNamespace );
 	}
 
 	/**
@@ -213,7 +221,8 @@ class UserImpact implements JsonSerializable {
 			new UserTimeCorrection( 'System|0' ),
 			0,
 			0,
-			new EditingStreak()
+			new EditingStreak(),
+			0
 		);
 	}
 
@@ -255,6 +264,7 @@ class UserImpact implements JsonSerializable {
 		$this->editCountByNamespace = $json['editCountByNamespace'];
 		$this->editCountByDay = $json['editCountByDay'];
 		$this->editCountByTaskType = $json['editCountByTaskType'];
+		$this->totalUserEditCount = $json['totalUserEditCount'];
 		$this->revertedEditCount = $json['revertedEditCount'];
 		$this->newcomerTaskEditCount = $json['newcomerTaskEditCount'];
 		$this->lastEditTimestamp = $json['lastEditTimestamp'];
@@ -286,6 +296,7 @@ class UserImpact implements JsonSerializable {
 			'editCountByNamespace' => $this->editCountByNamespace,
 			'editCountByDay' => $this->editCountByDay,
 			'editCountByTaskType' => $this->editCountByTaskType,
+			'totalUserEditCount' => $this->totalUserEditCount,
 			'revertedEditCount' => $this->revertedEditCount,
 			'newcomerTaskEditCount' => $this->newcomerTaskEditCount,
 			'lastEditTimestamp' => $this->lastEditTimestamp,

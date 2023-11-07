@@ -21,9 +21,9 @@ use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserTimeCorrection;
 use MWTimestamp;
 use PageImages\PageImages;
@@ -70,7 +70,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	private IConnectionProvider $connectionProvider;
 	private NameTableStore $changeTagDefStore;
 	private UserFactory $userFactory;
-	private UserOptionsLookup $userOptionsLookup;
+	private UserEditTracker $userEditTracker;
 	private TitleFormatter $titleFormatter;
 	private TitleFactory $titleFactory;
 	private IBufferingStatsdDataFactory $statsdDataFactory;
@@ -85,7 +85,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @param IConnectionProvider $connectionProvider
 	 * @param NameTableStore $changeTagDefStore
 	 * @param UserFactory $userFactory
-	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param UserEditTracker $userEditTracker
 	 * @param TitleFormatter $titleFormatter
 	 * @param TitleFactory $titleFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
@@ -100,7 +100,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		IConnectionProvider $connectionProvider,
 		NameTableStore $changeTagDefStore,
 		UserFactory $userFactory,
-		UserOptionsLookup $userOptionsLookup,
+		UserEditTracker $userEditTracker,
 		TitleFormatter $titleFormatter,
 		TitleFactory $titleFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
@@ -114,7 +114,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$this->connectionProvider = $connectionProvider;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->userFactory = $userFactory;
-		$this->userOptionsLookup = $userOptionsLookup;
+		$this->userEditTracker = $userEditTracker;
 		$this->titleFormatter = $titleFormatter;
 		$this->titleFactory = $titleFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
@@ -145,7 +145,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editData->getUserTimeCorrection(),
 			$editData->getNewcomerTaskEditCount(),
 			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
-			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() )
+			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() ),
+			$this->userEditTracker->getUserEditCount( $user )
 		);
 	}
 
@@ -197,7 +198,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
 			$pageViewData['dailyTotalViews'],
 			$pageViewData['dailyArticleViews'],
-			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() )
+			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() ),
+			$this->userEditTracker->getUserEditCount( $user )
 		);
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.ComputedUserImpactLookup.getExpensiveUserImpact', microtime( true ) - $start

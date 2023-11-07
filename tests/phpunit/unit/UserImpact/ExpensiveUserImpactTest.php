@@ -43,7 +43,8 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
-			 new EditingStreak()
+			 new EditingStreak(),
+			null
 		);
 		$this->assertInstanceOf( ExpensiveUserImpact::class, $userImpact );
 		$this->assertSame( $dailyTotalViews, $userImpact->getDailyTotalViews() );
@@ -70,7 +71,8 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
-			new EditingStreak()
+			new EditingStreak(),
+			null
 		);
 		$data = $userImpact->jsonSerialize();
 		$this->assertSame( $dailyTotalViews, $data['dailyTotalViews'] );
@@ -101,7 +103,8 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
-			new EditingStreak()
+			new EditingStreak(),
+			null
 		);
 
 		$this->assertSame( $expectedStale, $userImpact->isPageViewDataStale() );

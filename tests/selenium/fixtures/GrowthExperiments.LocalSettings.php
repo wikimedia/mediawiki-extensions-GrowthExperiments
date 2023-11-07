@@ -107,7 +107,8 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 						]
 					]
 				],
-				new EditingStreak()
+				new EditingStreak(),
+				2
 			)
 		] );
 		$services->redefineService( 'GrowthExperimentsUserImpactLookup',
