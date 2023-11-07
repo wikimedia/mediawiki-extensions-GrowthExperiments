@@ -1,11 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dedalus"
+			"Dedalus",
+			"McDutchie"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "Opgemaakte vragen verkrijgen die via homepagemodules zijn geplaatst",
+	"apihelp-homepagequestionstore-param-questionformat": "Het formaat waarin de vragen worden geretourneerd, bv. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "De opslaglocatie van de vragen.",
+	"apihelp-homepagequestionstore-param-userid": "De ID van de gebruiker waarvoor vragen moeten worden verkregen.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Geen vragen gevonden",
+	"apihelp-growthsetmentor-summary": "De mentor van de gebruiker instellen. De wijziging wordt in het openbaar gelogd.",
 	"apihelp-growthsetmentor-param-mentee": "Gebruikersnaam van de mentee",
 	"apihelp-growthsetmentor-param-mentor": "Gebruikersnaam van de mentor",
-	"apihelp-growthsetmentor-param-reason": "Reden voor de wijziging."
+	"apihelp-growthsetmentor-param-reason": "Reden voor de wijziging.",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Titel van het artikel waarvoor de afbeeldingsaanbevelingstaak is bedoeld"
 }

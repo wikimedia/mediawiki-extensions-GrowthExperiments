@@ -5,7 +5,9 @@
 			"Mainframe98",
 			"McDutchie",
 			"Romaine",
-			"Siebrand"
+			"Siebrand",
+			"HanV",
+			"Sjoerddebruin"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentordashboard",
@@ -89,6 +91,7 @@
 	"growthexperiments-quit-mentorship-title": "Mentorschap beëindigen",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Het is jammer dat u stopt. Om het mentorschap te beëindigen, moet u eerst uw naam [[$1|uit de lijst met mentoren]] verwijderen. Zodra u dit heeft gedaan, keert u terug naar deze pagina.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "De volgende stap om het mentorschap te beëindigen is om uw leerlingen opnieuw toe te wijzen. Als u zeker weet dat u wilt stoppen, druk dan op de onderstaande knop.",
+	"growthexperiments-quit-mentorship-error-not-a-mentor": "U bent geen mentor.",
 	"growthexperiments-quit-mentorship-has-mentees-pretext": "Het is jammer om {{GENDER:|u}} te zien vertrekken. Om het mentorschap te beëindigen, moet u het onderstaande formulier invullen. Zodra u het hebt ingediend, worden al uw leerlingen opnieuw toegewezen aan een andere mentor. Dit kan niet worden teruggedraaid. Het [[Special:MentorDashboard|mentordashboard]] stelt u ook in staat om het aantal leerlingen te verminderen (of tijdelijk geen nieuwe leerlingen te accepteren), zonder dat uw bestaande leerlingen zonder mentor komen te zitten.",
 	"growthexperiments-quit-mentorship-reason": "Reden",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Ja, wijs mijn leerlingen opnieuw toe",
@@ -106,6 +109,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Gemiddeld (standaard)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Ongeveer tweemaal het gemiddelde",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Uw}} aantal leerlingen is gewijzigd in \"$1\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Er is een onbekende fout opgetreden. Probeer het later opnieuw.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Leerlingen worden willekeurig toegewezen aan mentoren wanneer hun accounts worden aangemaakt. U kunt beheren hoeveel leerlingen aan u worden toegewezen, maar sommige leerlingen stellen mogelijk vaker vragen dan anderen",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Het wordt aanbevolen om te beginnen met de instelling \"Gemiddeld\" om uw ondersteuningscapaciteit te meten voordat u deze verhoogt of verlaagt.",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Wijzig {{GENDER:|uw}} introductiebericht",
@@ -138,6 +142,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Reden",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Inschrijven",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|U}} staat nu ingeschreven als mentor. U kunt nu doorgaan naar het [[Special:MentorDashboard|mentordashboard]].",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Ik heb mezelf toegevoegd als mentor",
 	"tag-mentor list change": "Wijziging van de mentorlijst",
 	"tag-mentor list change-description": "Label toegepast op bewerkingen die zijn aangebracht in de gestructureerde mentorlijst via GrowthExperiments"
 }

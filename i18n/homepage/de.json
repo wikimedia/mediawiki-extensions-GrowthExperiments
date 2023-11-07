@@ -328,7 +328,7 @@
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Alle entfernen",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Wähle einige Themen, die {{GENDER:$1|du}} gerne bearbeiten möchtest",
 	"growthexperiments-homepage-claimmentee-title": "Betreuung zuordnen",
-	"growthexperiments-homepage-claimmentee-pretext": "Diese Seite ermöglicht es dir als Lotse, einen Neuling zu übernehmen. Diese Funktion kann für Neulinge verwendet werden, die du kennst oder die du in einem Kurs betreust.",
+	"growthexperiments-homepage-claimmentee-pretext": "Diese Seite ermöglicht es {{GENDER:$1|dir}} als Lotse, einen Neuling zu übernehmen. Diese Funktion kann für Neulinge verwendet werden, die  {{GENDER:$1|du}} kennst oder die {{GENDER:$1|du}} in einem Kurs betreust.",
 	"growthexperiments-homepage-claimmentee-mentee": "Benutzername des Betreuten",
 	"growthexperiments-homepage-claimmentee-reason": "Begründung für die Zuordnung des Betreuten",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Du}} hast {{Gender:$4|den Lotsen|die Lotsin}} {{PLURAL:$2|des Benutzers|der Benutzer}} $1 zu {{GENDER:$4|$5}} geändert. Zurück zur [[Special:MentorDashboard|Lotsen-Verwaltungsseite]].",

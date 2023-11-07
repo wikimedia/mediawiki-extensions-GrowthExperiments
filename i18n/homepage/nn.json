@@ -48,5 +48,7 @@
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Overvak syningar i artiklar du har endra",
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 endringar hittil",
 	"tag-newcomer_task": "Oppgåve for nybyrjarar",
+	"growthexperiments-homepage-mentorship-question-subject": "Spørsmål frå [[User:$1|$1]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Spørsmål frå [[User:$1|$1]] på [[$2]]",
 	"growthexperiments-addlink-summary-summary": "Lenkjeframlegg: $1 {{PLURAL:$1|lenkje lagd|lenkjer lagde}} til."
 }

@@ -10,6 +10,7 @@
 	"growthexperiments-edit-config-feedback-headline": "Идеје и питања о формулару?",
 	"growthexperiments-edit-config-feedback-cta": "Повратне информације",
 	"growthexperiments-edit-config-edit-summary": "Опис измене",
+	"growthexperiments-edit-config-help-panel": "Подешавања панела за помоћ",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Врх странице",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Дно странице",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Странице за разговор ментора",
@@ -23,5 +24,6 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "Не",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Могу ли корисници аутоматски да буду ментори?",
 	"growthexperiments-edit-config-newcomertasks": "Предложене измене",
-	"growthexperiments-edit-config-newcomer-tasks-disabled": "Онемогућено"
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Онемогућено",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблони за инфокутије"
 }
