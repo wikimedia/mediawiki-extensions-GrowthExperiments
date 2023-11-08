@@ -70,6 +70,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::checkUserPermissions
 	 */
 	public function testBlockedUserCantPostQuestion() {
+		$this->tablesUsed[] = 'ipblocks';
 		$block = new DatabaseBlock();
 		$block->setTarget( $this->mUser );
 		$block->setBlocker( $this->getTestSysop()->getUser() );
