@@ -118,6 +118,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "پیام معرفی {{GENDER:|شما}} به «$1» تغییر یافت.",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "صفحهٔ قبل",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "صفحهٔ بعدی",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "از این که برای {{GENDER:$1|کارآموز}} {{GENDER:|خود}} پیامی ارسال کردید سپاسگزاریم! بازگشت به [[Special:MentorDashboard|پیشخوان مربی]]",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "گشودن پنجرهٔ تنظیمات",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "تنظیمات",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours": "۴۸ ساعت گذشته",
