@@ -127,6 +127,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-info-icon-label": "Více informací o modulu Ocenění vašim nováčkům.",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "Více informací",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-par1": "Zašlete svému nováčkovi povzbuzující zprávu na jeho diskusní stránku.",
+	"growthexperiments-mentor-dashboard-personalized-praise-info-par2": "Editační aktivita nováčků se často zvýší, když obdrží poděkování nebo jinou pozitivní zprávu o jejich práci od svého mentora či jiného zkušeného wikipedisty.",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-par3": "Můžete si přizpůsobit svou zprávu v nastavení.",
 	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "<strong>Metrika</strong>: $1 {{PLURAL:$1|editace|editace|editací}} za $2 {{PLURAL:$1|den|dny|dní}}. Tato čísla můžete přizpůsobit ve svém nastavení.",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "Nováčci hodní ocenění se zobrazí zde.",

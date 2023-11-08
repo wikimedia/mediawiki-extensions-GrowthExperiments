@@ -7,7 +7,8 @@
 			"Elroy",
 			"Klaas van Buiten",
 			"Mainframe98",
-			"Mar(c)"
+			"Mar(c)",
+			"McDutchie"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Welkom}}, $1!",
@@ -18,6 +19,7 @@
 	"welcomesurvey-skip-btn": "Deze vragen {{GENDER:$1|overslaan}}",
 	"welcomesurvey-close-btn": "Sluiten en teruggaan naar $1",
 	"welcomesurvey-privacy-policy-link-text": "Leer meer over data bij nieuwe editors",
+	"welcomesurvey-privacy-footer-text": "De Wikimedia Foundation gebruikt {{GENDER:$1|uw}} antwoorden om u te helpen bij het bewerken van {{SITENAME}}. [$2 Lees meer in onze privacyverklaring].",
 	"welcomesurvey-sidebar-editing-title": "Beginnen met bewerken",
 	"welcomesurvey-sidebar-editing-text": "Bijna elke pagina kan door iedereen bewerkt worden, en elk uur worden honderden bewerkingen gedaan om inhoud toe te voegen, fouten te verbeteren en leesbaarheid te vergroten. Indien {{GENDER:$1|u geïnteresseerd bent}} om bij te dragen, kunnen de volgende pagina's nuttig zijn voor {{GENDER:$1|u}}.",
 	"welcomesurvey-sidebar-editing-link1-text": "Snelcursus",
@@ -43,10 +45,21 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Nee, ik wist niet dat ik Wikipedia kon bewerken",
 	"welcomesurvey-question-edited-option-no-other-label": "Nee, om andere redenen niet",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ik kan het me niet herinneren",
+	"welcomesurvey-question-mailinglist-label": "Ik wil per e-mail tips ontvangen over hoe ik kan beginnen met bewerken.",
+	"welcomesurvey-question-mailinglist-help": "Houd er rekening mee dat deze mailinglijst wordt verzorgd door MailChimp, wat inhoudt dat het gebruik van uw gegevens onder het [https://www.intuit.com/privacy/statement/ privacybeleid] en de [https://mailchimp.com/legal/terms/ servicevoorwaarden] van MailChimp valt.",
 	"welcomesurvey-question-email-label": "E-mailadres (niet verplicht)",
 	"welcomesurvey-question-email-placeholder": "Vul uw e-mailadres in...",
 	"welcomesurvey-question-email-help": "U hebt geen e-mailadres ingevuld toen u dit account aanmaakte. Het wordt <strong>sterk aangeraden</strong> dit wel te doen, omdat een e-mail nodig is om uw account te herstellen indien u uw wachtwoord ooit kwijtraakt. Opmerking: Uw e-mailadres wordt niet geopenbaard wanneer andere gebruikers contact met u opnemen.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} is beschikbaar in bijna 300 talen. Zijn er andere talen waarin u kunt lezen en schrijven?",
 	"welcomesurvey-question-languages-placeholder": "Voeg {{PLURAL:$1|een taal|maximaal $1 talen}} toe...",
-	"welcomesurvey-question-languages-maximum": "U hebt het maximum aantal talen toegevoegd."
+	"welcomesurvey-question-languages-maximum": "U hebt het maximum aantal talen toegevoegd.",
+	"welcomesurvey-question-user-research-label": "Ik wil per e-mail benaderd worden over deelname aan gebruikersonderzoek",
+	"welcomesurvey-question-user-research-help": "Als u hiervoor kiest, kunnen we in de toekomst contact met u opnemen voor onderzoek om onze diensten te verbeteren.",
+	"welcomesurvey-reminder": "Help ons uw Wikipedia-ervaring te verbeteren door een paar vrijblijvende vragen te beantwoorden in onze welkomstenquête. $1",
+	"welcomesurvey-reminder-link": "De enquête invullen",
+	"welcomesurvey-reminder-dismiss": "Sluiten",
+	"welcomesurvey-mideditsignup-title": "Welkom, $1!",
+	"welcomesurvey-mideditsignup-body": "Bedankt voor het bewerken! U kunt nu de uitwerking van uw bijdragen zien en meer wijzigingsvoorstellen op uw startpagina krijgen.",
+	"welcomesurvey-mideditsignup-button-homepage": "Naar mijn startpagina gaan",
+	"welcomesurvey-mideditsignup-button-close": "Sluiten"
 }
