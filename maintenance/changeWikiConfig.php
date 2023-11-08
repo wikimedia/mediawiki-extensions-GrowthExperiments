@@ -188,7 +188,7 @@ class ChangeWikiConfig extends Maintenance {
 				->getMentorWriter()
 				->touchList(
 					User::newSystemUser( 'Maintenance script', [ 'steal' => true ] ),
-					''
+					$this->getOption( 'summary', '' )
 				);
 			if ( !$statusValue->isOK() ) {
 				$this->fatalError( \Status::wrap( $statusValue )->getWikiText() );
