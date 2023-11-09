@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit\LevelingUp;
 
+use Config;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
@@ -77,6 +78,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			->method( 'getEditCountByTaskType' )
 			->willReturn( [
 				'copyedit' => 4,
+				'links' => 0,
 				'link-recommendation' => 0,
 			] );
 		$userImpactLookup = $this->getUserImpactLookup();
@@ -228,25 +230,33 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		) );
 	}
 
+	private function getDefaultConfigValues(): array {
+		return [
+			'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,
+			'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
+			'GELevelingUpKeepGoingNotificationThresholds' => [ 1, 4 ],
+			'GELevelingUpGetStartedMaxTotalEdits' => 10,
+			'GENewcomerTasksLinkRecommendationsEnabled' => true,
+		];
+	}
+
 	private function getLevelingUpManager(
 		?UserOptionsLookup $userOptionsLookup = null,
 		?ConfigurationLoader $configurationLoader = null,
 		?UserImpactLookup $userImpactLookup = null,
 		?TaskSuggesterFactory $taskSuggesterFactory = null,
 		?NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup = null,
-		?ServiceOptions $serviceOptions = null
+		?ServiceOptions $serviceOptions = null,
+		?Config $config = null
 	): LevelingUpManager {
+		$defaultConfigValues = $this->getDefaultConfigValues();
+		$config = $config ?? new HashConfig( $defaultConfigValues );
+		$serviceOptions = $serviceOptions ?? new ServiceOptions(
+			LevelingUpManager::CONSTRUCTOR_OPTIONS,
+			new HashConfig( $defaultConfigValues )
+		);
 		return new LevelingUpManager(
-			$serviceOptions ?? new ServiceOptions(
-				LevelingUpManager::CONSTRUCTOR_OPTIONS,
-				new HashConfig( [
-					'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,
-					'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
-					'GELevelingUpKeepGoingNotificationThresholds' => [ 1, 4 ],
-					'GELevelingUpGetStartedMaxTotalEdits' => 10,
-					'GENewcomerTasksLinkRecommendationsEnabled' => true,
-				] )
-			),
+			$serviceOptions,
 			$this->createNoOpAbstractMock( IConnectionProvider::class ),
 			$this->createNoOpAbstractMock( NameTableStore::class ),
 			$userOptionsLookup ?? $this->getUserOptionsLookup(),
@@ -256,7 +266,8 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$userImpactLookup ?? $this->getUserImpactLookup(),
 			$taskSuggesterFactory ?? $this->getTaskSuggesterFactory(),
 			$newcomerTasksUserOptionsLookup ?? $this->getNewcomerTasksUserOptionsLookup(),
-			new NullLogger()
+			new NullLogger(),
+			$config,
 		);
 	}
 

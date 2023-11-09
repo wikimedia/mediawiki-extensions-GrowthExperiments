@@ -94,5 +94,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "These templates are needed for the [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|image suggestions]] newcomer task feature. Articles containing these templates will not be listed as image suggestion tasks.",
 	"growthexperiments-edit-config-delayed": "Changes to this setting won't take effect immediately (see [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Close",
-	"specialpages-group-growth-tools": "Growth tools"
+	"specialpages-group-growth-tools": "Growth tools",
+	"growthexperiments-edit-config-level-up-notifications": "Notifications: Growth Features",
+	"growthexperiments-edit-config-level-up-notifications-description": "These notifications are sent to newcomers 48 hours after account creation, and have been shown to increase the probability of new accounts editing in the week after the notifications are sent.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Try Suggested edits notification",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Maximum number of edits a newcomer can have to qualify for receiving this notification. If set to 0, no newcomers </br> will receive this notification. The higher the number, the more newcomers will receive this notification.<br> This notification is only sent to newcomers who have not completed Suggested edits.",
+	"growthexperiments-edit-config-keep-going-notification-title": "Keep going notification",
+	"growthexperiments-edit-config-keep-going-notification-description": "Maximum number of suggested edits a newcomer can complete to qualify for receiving this notification. If set to 0,<br> no newcomers will receive this notification. The higher the number, the more newcomers will receive this notification.<br> This notification is only sent to newcomers who have already completed at least one Suggested edit."
 }

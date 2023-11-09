@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\LevelingUp;
 
+use Config;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -37,9 +38,7 @@ class LevelingUpManager {
 	public const CONSTRUCTOR_OPTIONS = [
 		'GELevelingUpManagerTaskTypeCountThresholdMultiple',
 		'GELevelingUpManagerInvitationThresholds',
-		'GELevelingUpKeepGoingNotificationThresholds',
 		'GENewcomerTasksLinkRecommendationsEnabled',
-		'GELevelingUpGetStartedMaxTotalEdits',
 	];
 
 	private ServiceOptions $options;
@@ -53,6 +52,7 @@ class LevelingUpManager {
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 	private LoggerInterface $logger;
+	private Config $growthConfig;
 
 	/**
 	 * @param ServiceOptions $options
@@ -78,7 +78,8 @@ class LevelingUpManager {
 		UserImpactLookup $userImpactLookup,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		LoggerInterface $logger
+		LoggerInterface $logger,
+		Config $growthConfig
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
@@ -92,6 +93,7 @@ class LevelingUpManager {
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->logger = $logger;
+		$this->growthConfig = $growthConfig;
 	}
 
 	/**
@@ -312,7 +314,7 @@ class LevelingUpManager {
 	 */
 	public function shouldSendKeepGoingNotification( UserIdentity $userIdentity ): bool {
 		$suggestedEditCount = $this->getSuggestedEditsCount( $userIdentity );
-		$thresholds = $this->options->get( 'GELevelingUpKeepGoingNotificationThresholds' );
+		$thresholds = $this->growthConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' );
 		return $suggestedEditCount >= $thresholds[0] && $suggestedEditCount <= $thresholds[1];
 	}
 
@@ -323,7 +325,7 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public function shouldSendGetStartedNotification( UserIdentity $userIdentity ): bool {
-		$maxEdits = (int)$this->options->get( 'GELevelingUpGetStartedMaxTotalEdits' );
+		$maxEdits = (int)$this->growthConfig->get( 'GELevelingUpGetStartedMaxTotalEdits' );
 
 		return $this->getSuggestedEditsCount( $userIdentity ) === 0 &&
 			$this->userEditTracker->getUserEditCount( $userIdentity ) < $maxEdits;

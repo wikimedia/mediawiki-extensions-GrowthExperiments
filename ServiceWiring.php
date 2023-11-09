@@ -1145,7 +1145,8 @@ return [
 			$growthServices->getUserImpactLookup(),
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
-			LoggerFactory::getInstance( 'GrowthExperiments' )
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$growthServices->getGrowthWikiConfig(),
 		);
 	},
 
