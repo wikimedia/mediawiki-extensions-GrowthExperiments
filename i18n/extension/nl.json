@@ -102,5 +102,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Deze sjablonen zijn nodig voor de nieuwkomerstaakfunctie [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|afbeeldingssuggesties]]. Artikelen die deze sjablonen bevatten, worden niet vermeld als taken voor afbeeldingssuggesties.",
 	"growthexperiments-edit-config-delayed": "Wijzigingen in deze instelling worden niet onmiddellijk van kracht (zie de [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Sluiten",
-	"specialpages-group-growth-tools": "Groeihulpmiddelen"
+	"specialpages-group-growth-tools": "Groeihulpmiddelen",
+	"growthexperiments-edit-config-level-up-notifications": "Meldingen: groeifuncties"
 }

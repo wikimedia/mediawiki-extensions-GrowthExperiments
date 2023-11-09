@@ -6,6 +6,7 @@
 			"FF-11",
 			"Filzstift",
 			"Inkowik",
+			"McDutchie",
 			"Metalhead64",
 			"MrFraggle",
 			"Reinhard Kraasch",
@@ -101,8 +102,14 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artikel, die hier definierte Vorlagen enthalten, werden den Benutzern nicht als Aufgaben für diesen Aufgabentyp angezeigt.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artikel, die hier definierte Kategorien enthalten, werden den Benutzern nicht als Aufgaben für diesen Aufgabentyp angezeigt.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "\nInformationsbox Vorlagen",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "\nDiese Vorlagen sind nötig für das [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|image suggestions]] Anfänger-Aufgaben-Feature.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Diese Vorlagen sind nötig für das [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|image suggestions]] Anfänger-Aufgaben-Feature.",
 	"growthexperiments-edit-config-delayed": "Änderungen an dieser Einstellung werden nicht sofort wirksam (siehe die [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Schließen",
-	"specialpages-group-growth-tools": "Werkzeuge zur Neulings-Startseite"
+	"specialpages-group-growth-tools": "Werkzeuge zur Neulings-Startseite",
+	"growthexperiments-edit-config-level-up-notifications": "Benachrichtigungen: Funktionen für Neulinge",
+	"growthexperiments-edit-config-level-up-notifications-description": "Diese Benachrichtigungen werden 48 Stunden nach der Kontoerstellung an Neulinge gesendet und erhöhen nachweislich die Wahrscheinlichkeit, dass neue Nutzer in der Woche nach dem Versand der Benachrichtigungen Seiten bearbeiten.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Versuch Benachrichtigung über vorgeschlagene Bearbeitungen",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Die maximale Anzahl an Änderungen, die ein Neuling vornehmen muss, um sich für den Erhalt dieser Benachrichtigung zu qualifizieren. Wenn auf 0 gesetzt, erhalten keine Neulinge diese Benachrichtigung. Je höher die Zahl, desto mehr Neulinge erhalten diese Benachrichtigung.<br> Diese Benachrichtigung wird nur an Neulinge gesendet, die die vorgeschlagenen Änderungen noch nicht abgeschlossen haben.",
+	"growthexperiments-edit-config-keep-going-notification-title": "Weiter mit der Benachrichtigung",
+	"growthexperiments-edit-config-keep-going-notification-description": "Maximale Anzahl vorgeschlagener Änderungen, die ein Neuling durchführen kann, um sich für den Erhalt dieser Benachrichtigung zu qualifizieren. Wenn auf 0 gesetzt, erhalten Neuankömmlinge diese Benachrichtigung nicht. Je höher die Zahl, desto mehr Neulinge erhalten diese Benachrichtigung.<br> Diese Benachrichtigung wird nur an Neulinge gesendet, die bereits mindestens eine vorgeschlagene Änderung abgeschlossen haben."
 }

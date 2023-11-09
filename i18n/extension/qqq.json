@@ -113,5 +113,4 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Description of trying suggested edits notification section in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-keep-going-notification-title": "Subheader in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-keep-going-notification-description": "Description of keep going notification section in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}"
-
 }
