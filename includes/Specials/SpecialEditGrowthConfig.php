@@ -570,7 +570,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'label-message' => 'growthexperiments-edit-config-try-suggested-edits-notification-title',
 					'section' => 'level-up-notifications',
 					'help-message' => 'growthexperiments-edit-config-try-suggested-edits-notification-description',
-					'required' => true
+					'required' => true,
+					// NOTE: zero is used to disable the notification
+					'min' => 0,
 				],
 				'geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum' => [
 					'type' => 'int',
@@ -578,7 +580,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'section' => 'level-up-notifications',
 					'help-message' => 'growthexperiments-edit-config-keep-going-notification-description',
 					'required' => true,
-					'min' => $this->growthWikiConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' )[0]
+					// NOTE: zero is used to disable the notification
+					'min' => 0,
 				]
 			];
 
