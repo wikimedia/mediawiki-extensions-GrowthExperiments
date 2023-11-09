@@ -67,7 +67,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Viste que tu es absente usque al $1, tu apprentisses essera temporarimente reassignate a un altere mentor.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "Tu es actualmente blocate. Tu stato ha essite temporarimente mittite a \"absente\" e tu apprentisses ha essite temporarimente reassignate a un altere mentor. Si tu es disblocate (o le blocada expira) alora tu stato essera mittite a \"active\" e tu apprentisses essera reassignate a te.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "Tu es actualmente blocate. Tu non pote cambiar tu stato de mentor durante que tu es blocate.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "{{GENDER:$1|$1}} es actualmente blocate. Su stato de mentor non pote esser modificate durante que illo es blocate.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1 es actualmente blocate. Su stato de mentor non pote esser modificate durante que {{GENDER:$1|ille|illa}} es blocate.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Marcar te como 'absente'",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Cancellar",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pausar",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ameisenigel",
-			"Brettchenweber"
+			"Brettchenweber",
+			"McDutchie"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Erhalte Aufgabenempfehlungen, die für Neulinge geeignet sind.",
@@ -12,7 +13,7 @@
 	"apihelp-query+growthtasks-param-limit": "Maximale Wiederholungsanzahl von Aufgabenvorschlägen.",
 	"apihelp-query+growthtasks-param-excludepageids": "Seiten-IDs, die von der Abfrage ausgeschlossen werden sollen.",
 	"apihelp-query+growthtasks-param-debug": "Füge Debugging-Daten zur Ausgabe hinzu.",
-	"apihelp-query+growthtasks-example-1": "Erhalte Aufgabenempfehlungen vom Typ Kopieren und Einfügen für den aktuellen Benutzer.",
+	"apihelp-query+growthtasks-example-1": "Erhalte Aufgabenempfehlungen vom Typ Korrekturlesen für den aktuellen Benutzer.",
 	"apihelp-query+growthtasks-example-2": "Erhalte Aufgabenempfehlungen mit erweiterten Informationen über die Seiten für den aktuellen Benutzer.",
 	"apihelp-query+growthnextsuggestedtasktype-summary": "Abrufen eines vorgeschlagenen Aufgabentyps, den ein Benutzer als nächstes versuchen kann.",
 	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Der Aufgabentyp, an dem der Benutzer gerade arbeitet.",

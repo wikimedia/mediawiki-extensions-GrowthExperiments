@@ -1,8 +1,32 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98"
+			"Mainframe98",
+			"McDutchie"
 		]
 	},
-	"apihelp-growthsetmentorstatus-param-gesstatus": "Nieuwe status"
+	"apihelp-growthstarmentee-summary": "Instellen of opheffen van de stermarkering van een leerling door de huidige gebruiker (privé opgeslagen en niet gelogd)",
+	"apihelp-growthstarmentee-param-gesaction": "De te verrichten handeling (<kbd>star</kbd> of <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "De leerling voor wie het sterretje geplaatst of verwijderd moet worden",
+	"apihelp-query+growthstarredmentees-summary": "Verkrijg de lijst van leerlingen die de momenteel aangemelde mentor met een ster heeft gemarkeerd",
+	"apihelp-growthsetmentorstatus-summary": "De mentorstatus van de huidige gebruiker instellen op actief/afwezig",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Nieuwe status",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Wanneer u de mentor instelt als afwezig, moet hier de lengte van de afwezigheid staan (in dagen)",
+	"apihelp-query+growthmentorstatus-summary": "De mentorstatus van de huidige gebruiker opvragen",
+	"apihelp-growthmentordashboardupdatedata-summary": "Plan een buitengewone update van de overzichtsmodule leerlingen in het mentordashboard. Om prestatieredenen kunt u slechts één update per twee uur plannen.",
+	"apihelp-growthsetmenteestatus-summary": "De status van de leerling instellen (hiermee kunnen de leerlingen de mentorschapsmodule in- of uitschakelen, of zich volledig afmelden waardoor de relatie tussen de leerling en de mentor wordt verwijderd)",
+	"apihelp-growthsetmenteestatus-param-state": "Nieuwe status van de leerling (waarschuwing: als u dit op ‘optout’ zet, wordt de relatie tussen de leerling en de mentor definitief verwijderd)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "De mentorschapsmodule is ingeschakeld",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "De mentorschapsmodule is volledig uitgeschakeld. Dit wordt normaal gesproken door de software ingesteld en gebruikt voor A/B-testen.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "De leerling heeft zich afgemeld voor mentorschap; de relatie leerling-mentor wordt verwijderd, de mentorschapsmodule wordt vervangen door de mogelijkheid om zich weer aan te melden",
+	"apihelp-query+growthmenteestatus-summary": "De leerling-status van de huidige gebruiker opvragen; zie documentatie van action=growthsetmenteestatus voor gedetailleerde informatie over individuele statussen.",
+	"apihelp-query+growthmentormentee-summary": "Ervoor zorgen dat alle leerlingen aan een bepaalde mentor worden toegewezen",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor om de leerlingen van op te vragen",
+	"apihelp-growthmanagementorlist-summary": "Informatie beheren in de gestructureerde mentorlijst (meestal opgeslagen in [[MediaWiki:GrowthMentors.json]]). Deze module kan gebruikt worden door zowel huidige als toekomstige mentoren (om zichzelf toe te voegen of de eigen gegevens te wijzigen) en door moderatoren (voor alle gebruikers).",
+	"apihelp-growthmanagementorlist-param-geaction": "Handeling",
+	"apihelp-growthmanagementorlist-param-message": "Inleidend bericht (laat leeg voor het standaard mentorbericht)",
+	"apihelp-growthmanagementorlist-param-weight": "Gewicht",
+	"apihelp-growthmanagementorlist-param-summary": "Reden voor de wijziging",
+	"apihelp-growthmanagementorlist-param-username": "Gebruikersnaam van de mentor die door de wijziging wordt betroffen. Als dit niet is opgegeven, wordt de momenteel aangemelde gebruiker gebruikt. Kan alleen worden gebruikt door bevoorrechte gebruikers.",
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Als isaway op true staat, moet awaytimestamp worden opgegeven."
 }

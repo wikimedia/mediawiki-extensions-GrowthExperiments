@@ -7,7 +7,8 @@
 			"Elroy",
 			"Klaas van Buiten",
 			"Mainframe98",
-			"Mar(c)"
+			"Mar(c)",
+			"McDutchie"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Welkom}}, $1!",
@@ -45,10 +46,19 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Nee, ik wist niet dat ik Wikipedia kon bewerken",
 	"welcomesurvey-question-edited-option-no-other-label": "Nee, om andere redenen niet",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ik kan het me niet herinneren",
+	"welcomesurvey-question-mailinglist-label": "Ik wil per e-mail tips ontvangen over hoe ik kan beginnen met bewerken.",
+	"welcomesurvey-question-mailinglist-help": "Houd er rekening mee dat deze mailinglijst wordt verzorgd door MailChimp, wat inhoudt dat het gebruik van uw gegevens onder het [https://www.intuit.com/privacy/statement/ privacybeleid] en de [https://mailchimp.com/legal/terms/ servicevoorwaarden] van MailChimp valt.",
 	"welcomesurvey-question-email-label": "E-mailadres (niet verplicht)",
 	"welcomesurvey-question-email-placeholder": "Vul uw e-mailadres in...",
 	"welcomesurvey-question-email-help": "U hebt geen e-mailadres ingevuld toen u dit account aanmaakte. Het wordt <strong>sterk aangeraden</strong> dit wel te doen, omdat een e-mail nodig is om uw account te herstellen indien u uw wachtwoord ooit kwijtraakt. Opmerking: Uw e-mailadres wordt niet geopenbaard wanneer andere gebruikers contact met u opnemen.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} is beschikbaar in bijna 300 talen. Zijn er andere talen waarin u kunt lezen en schrijven?",
 	"welcomesurvey-question-languages-placeholder": "Voeg {{PLURAL:$1|een taal|maximaal $1 talen}} toe...",
-	"welcomesurvey-question-languages-maximum": "U hebt het maximum aantal talen toegevoegd."
+	"welcomesurvey-question-languages-maximum": "U hebt het maximum aantal talen toegevoegd.",
+	"welcomesurvey-reminder": "Help ons uw Wikipedia-ervaring te verbeteren door een paar vrijblijvende vragen te beantwoorden in onze welkomstenquête. $1",
+	"welcomesurvey-reminder-link": "De enquête invullen",
+	"welcomesurvey-reminder-dismiss": "Sluiten",
+	"welcomesurvey-mideditsignup-title": "Welkom, $1!",
+	"welcomesurvey-mideditsignup-body": "Bedankt voor het bewerken! U kunt nu de uitwerking van uw bijdragen zien en meer wijzigingsvoorstellen op uw startpagina krijgen.",
+	"welcomesurvey-mideditsignup-button-homepage": "Naar mijn startpagina gaan",
+	"welcomesurvey-mideditsignup-button-close": "Sluiten"
 }
