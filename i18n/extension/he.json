@@ -97,5 +97,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "התבניות האלה נחוצות בשביל משימת [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|הצעות תמונה]] למתחיל. ערכים שמכילים את התבניות האלו לא יירשמו בתור משימות הצעת תמונה.",
 	"growthexperiments-edit-config-delayed": "שינויים בהגדרה הזאת לא יופעלו מיד (ר' [[mw:Growth/FAQ#add-link-config|שו\"ת]]).",
 	"growthexperiments-info-tooltip-close-label": "סגירה",
-	"specialpages-group-growth-tools": "כלי צמיחה"
+	"specialpages-group-growth-tools": "כלי צמיחה",
+	"growthexperiments-edit-config-level-up-notifications": "התראות: אפשרויות צמיחה",
+	"growthexperiments-edit-config-level-up-notifications-description": "ההתראות האלו נשלחות למשתמשים חדשים 48 שעות לאחר יצירת החשבון, והוכח שהם מגבירות את ההסתברות לעריכה מחשבונות חדשים בשבוע שלאחר שליחת ההודעות.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "התראה על המלצה לנסות עריכות מוצעות",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "המספר המרבי של עריכות שצריכות להיות למשתמש חדש כדי שיהיה זכאי לקבלת ההתראה הזאת. אם זה 0, שום משתמש חדש לא יקבל את ההתראה הזאת. ככל שהמספר גבוה יותר, כך יותר משתמשים חדשים יקבלו את ההתראה הזאת. ההתראה נשלחת רק למשתמשים חדשים שלא השלימו עריכות מוצעות.",
+	"growthexperiments-edit-config-keep-going-notification-title": "התראה שמזמינה להמשיך",
+	"growthexperiments-edit-config-keep-going-notification-description": "המספר המרבי של עריכות מוצעות שמשתמש חדש צריך להשלים כדי להיות זכאי לקבלת ההתראה הזאת. אם זה 0, שום משתמש חדש לא יקבל את ההתראה הזאת. ככל שהמספר גבוה יותר, כך יותר משתמשים חדשים יקבלו את ההתראה הזאת. ההתראה הזאת נשלחת רק למצטרפים חדשים שכבר השלימו לפחות עריכה מוצעת אחת."
 }

@@ -6,6 +6,7 @@
 			"Jeeputer",
 			"Kaganer",
 			"Martin Urbanec (WMF)",
+			"McDutchie",
 			"Pikne",
 			"Robby",
 			"Tgr",
@@ -108,9 +109,9 @@
 	"growthexperiments-info-tooltip-close-label": "Accessibility label text for the close button in informational tooltips of the GrowthExperiments extension.\n\n{{doc-growthexperiments-homepage}}",
 	"specialpages-group-growth-tools": "{{doc-special-group|that=Provide tools for newcomers|like=[[Special:ClaimMentee]], [[Special:Homepage]], [[Special:MentorDashboard]], etc. Developed and supported by [[m:Growth|Growth team]].}}",
 	"growthexperiments-edit-config-level-up-notifications": "Subheader in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
-	"growthexperiments-edit-config-level-up-notifications-description": "Description of levelling up notifications section in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
+	"growthexperiments-edit-config-level-up-notifications-description": "Description of levelling up notifications section in Special:EditGrowthConfig\n\n'''Note:''' “the probability of new accounts editing” refers to the chance that new users edit pages. '''The automated translations may get this wrong.'''\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Subheader in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Description of trying suggested edits notification section in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
-	"growthexperiments-edit-config-keep-going-notification-title": "Subheader in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
+	"growthexperiments-edit-config-keep-going-notification-title": "Subheader in Special:EditGrowthConfig. \"Keep going\" should be consistent with {{msg-mw|Growthexperiments-levelingup-keepgoing-notification-header}}.\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-keep-going-notification-description": "Description of keep going notification section in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}"
 }

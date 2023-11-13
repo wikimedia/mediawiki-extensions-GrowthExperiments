@@ -103,5 +103,10 @@
 	"growthexperiments-edit-config-delayed": "Wijzigingen in deze instelling worden niet onmiddellijk van kracht (zie de [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Sluiten",
 	"specialpages-group-growth-tools": "Groeihulpmiddelen",
-	"growthexperiments-edit-config-level-up-notifications": "Meldingen: groeifuncties"
+	"growthexperiments-edit-config-level-up-notifications": "Meldingen: groeifuncties",
+	"growthexperiments-edit-config-level-up-notifications-description": "Deze meldingen worden 48 uur na het aanmaken van een account naar nieuwkomers verzonden. Het is aangetoond dat ze de kans vergroten dat nieuwe gebruikers pagina’s bewerken in de week nadat de meldingen zijn verzonden.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Melding “Voorgestelde bewerkingen proberen”",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Het maximale aantal bewerkingen dat een nieuwkomer kan hebben om in aanmerking te komen voor het ontvangen van deze melding. Als dit is ingesteld op 0, ontvangen nieuwkomers deze melding niet. Hoe hoger het getal, hoe meer nieuwkomers deze melding zullen ontvangen. Deze melding wordt alleen verstuurd naar nieuwkomers die nog geen Voorgestelde bewerkingen hebben voltooid.",
+	"growthexperiments-edit-config-keep-going-notification-title": "Melding “Ga zo door”",
+	"growthexperiments-edit-config-keep-going-notification-description": "Het maximale aantal voorgestelde bewerkingen dat een nieuwkomer kan voltooien om in aanmerking te komen voor het ontvangen van deze melding. Als dit is ingesteld op 0, ontvangen nieuwkomers deze melding niet. Hoe hoger het getal, hoe meer nieuwkomers deze melding zullen ontvangen. Deze melding wordt alleen verstuurd naar nieuwkomers die al minstens één voorgestelde bewerking hebben voltooid."
 }

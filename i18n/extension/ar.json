@@ -100,5 +100,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "نحتاج إلى هذه القوالب لميزة مهمة [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|اقتراح الصور]] للوافدين الجدد. لن يتم سرد المقالات التي تحتوي على هذه القوالب كمهام اقتراح الصور.",
 	"growthexperiments-edit-config-delayed": "لن تسري التغييرات على هذا الإعداد على الفور (راجع [[mw:Growth/FAQ#add-link-config|الأسئلة المتكرّرة]]).",
 	"growthexperiments-info-tooltip-close-label": "إغلاق",
-	"specialpages-group-growth-tools": "أدوات النموّ"
+	"specialpages-group-growth-tools": "أدوات النموّ",
+	"growthexperiments-edit-config-level-up-notifications": "الإخطارات: مزايا النمو",
+	"growthexperiments-edit-config-level-up-notifications-description": "يتم إرسال هذه الإخطارات إلى الوافدين الجدد بعد 48 ساعة من إنشاء الحساب، وقد ثبت أنها تزيد من احتمالية تحرير الحسابات الجديدة في الأسبوع الذي يلي إرسال الإخطارات.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "تجرِبة إخطار التعديلات المقترحة",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "الحد الأقصى لعدد التعديلات التي يمكن أن يحصل عليها الوافد الجديد للتأهل لتلقي هذا الإشعار. إذا تم التعيين على 0، فلن يكون هناك أي وافدين جدد</br> يتلقون هذا الإخطار. كلما زاد العدد، زاد عدد الوافدين الجدد الذين سيتلقون هذا الإشعار.<br> يتم إرسال هذا الإشعار فقط إلى الوافدين الجدد الذين لم يكملوا التعديلات المقترحة.",
+	"growthexperiments-edit-config-keep-going-notification-title": "الاستمرار في الإخطار",
+	"growthexperiments-edit-config-keep-going-notification-description": "الحد الأقصى لعدد التعديلات المقترحة التي يمكن للوافد الجديد إكمالها للتأهل لتلقي هذا الإشعار. إذا تم ضبطه على 0،<br> لن يتلقى أي قادمين جدد هذا الإشعار. كلما زاد العدد، زاد عدد الوافدين الجدد الذين سيتلقون هذا الإشعار.<br> يتم إرسال هذا الإشعار فقط إلى القادمين الجدد الذين أكملوا بالفعل تعديلًا مقترحًا واحدًا على الأقل."
 }

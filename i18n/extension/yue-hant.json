@@ -1,17 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
+			"H78c67c",
 			"Winston Sung"
 		]
 	},
+	"growthexperiments-desc": "呢個擴充功能包含 Growth 團隊所做嘅實驗。",
 	"growthexperiments-edit-config-title": "修改 Growth 設定",
-	"growthexperiments-edit-config-last-edit": "[[$3]]：最近喺$2由[[User:$1|$1]]更新。",
+	"growthexperiments-edit-config-last-edit": "[[$3]]：最近喺$2由[[User:$1|$1]]更新（[$4 差異]）。",
 	"growthexperiments-edit-config-feedback-cta": "畀意見",
 	"growthexperiments-edit-config-edit-summary": "編輯摘要",
+	"growthexperiments-edit-config-return-to-form": "你可以[[Special:EditGrowthConfig|返去]]修改表格度。",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "頁頂",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "頁底",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "幫助櫃枱",
 	"growthexperiments-edit-config-homepage": "新人主頁",
+	"growthexperiments-edit-config-mentorship": "導師計劃",
 	"growthexperiments-edit-config-mentorship-enabled": "係唔係開著導師（mentorship）功能？",
 	"growthexperiments-edit-config-mentorship-enabled-true": "係",
-	"growthexperiments-edit-config-mentorship-enabled-false": "唔係"
+	"growthexperiments-edit-config-mentorship-enabled-false": "唔係",
+	"growthexperiments-edit-config-newcomertasks": "修改建議",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "明細模",
+	"specialpages-group-growth-tools": "Growth 工具"
 }

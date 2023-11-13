@@ -306,6 +306,7 @@
 	"growthexperiments-homepage-claimmentee-invalid-username": "Pogrešno suradničko ime",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|је}} {{GENDER:$2|Vaš novi mentor|Vaša nova mentorica}}",
 	"growthexperiments-notification-body-mentor-change": "Razlog: $1",
+	"growthexperiments-notification-body-mentor-change-new": "$1 više nije {{GENDER:$1|Vaš mentor|Vaša mentorica|Vaš mentor/mentorica}}.",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Pozdravite}} {{GENDER:$2|svog novog mentora|svoju novu mentoricu}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|}}Morate biti na popisu mentora na stranici [[$2]] kako biste koristili Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Popis mentora nije dobro podešen.",

@@ -1,8 +1,46 @@
 {
 	"@metadata": {
 		"authors": [
+			"H78c67c",
 			"Winston Sung"
 		]
 	},
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1而家鎖徂，渠忌導師身份鎖徂嗰陣毋改得"
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|你嘅}}學員",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "呢個表要 JavaScript。請開着 JavaScript 嚟用呢個模組。",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth 工具",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "設定",
+	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit": "退出導師計劃",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "導師狀態",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "活躍",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1而家鎖徂，渠忌導師身份鎖徂嗰陣毋改得",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "取消",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "暫停",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "日",
+	"growthexperiments-notification-body-mentee-claimed": "原因：$1",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "儲存",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "取消",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "上一版",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "下一版",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "遞交",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "取消",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "設定",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "每日",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly": "每星期",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly": "每月",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "儲存",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "取消",
+	"growthexperiments-manage-mentors-title": "管理導師",
+	"growthexperiments-manage-mentors-pretext-purpose": "呢版顯示導師一覽。",
+	"growthexperiments-manage-mentors-pretext-privileged": "{{GENDER:|你}}可以拎走違反社羣準則或政策嘅導師，或修改佢哋嘅導師相關選項。",
+	"growthexperiments-manage-mentors-none": "冇",
+	"growthexperiments-manage-mentors-username": "用戶名",
+	"growthexperiments-manage-mentors-status": "狀態",
+	"growthexperiments-manage-mentors-edit-reason": "原因",
+	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "加$1做導師",
+	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "加$1做導師：$2",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "加自己做導師",
+	"growthexperiments-manage-mentors-summary-add-self-with-reason": "加自己做導師：$2",
+	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "辭職唔做導師",
+	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "辭職唔做導師：$2",
+	"growthexperiments-mentorship-enrollasmentor-summary": "加自己做導師"
 }
