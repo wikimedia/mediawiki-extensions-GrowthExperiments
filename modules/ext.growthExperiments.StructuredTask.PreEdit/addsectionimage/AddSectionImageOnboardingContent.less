@@ -1,12 +1,15 @@
 @import 'mediawiki.skin.variables.less';
 @import '../../utils/mixins.less';
 
+@imageBgPostionY: 24px;
+
 .onboarding-image( @index ) {
 	&-image@{index} {
 		// FIXME add mobile assets when they are ready (T332925)
 		background-image: url( '../../../images/addsectionimage/desktop-onboarding-image@{index}-ltr.svg' );
-		// Reposition image so it does not overlap with the pager
-		.background-position-ltr-rtl( 100px, 30px );
+		// Reposition image so it does not overlap with the pager. Horizontal
+		// shifts make the image exceed the viewport, see T349024#9320264.
+		background-position: center @imageBgPostionY;
 	}
 
 	&-image@{index}--desktop {
@@ -17,6 +20,10 @@
 }
 
 .addsectionimage-onboarding-content {
+	& .structuredtask-onboarding-content-image {
+		height: 216px + @imageBgPostionY;
+	}
+
 	&--color-subtle {
 		font-style: italic;
 		color: @color-subtle;
