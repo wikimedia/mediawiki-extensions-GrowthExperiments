@@ -6,7 +6,6 @@ use DateTime;
 use Exception;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserTimeCorrection;
 use MWTimestamp;
 use Wikimedia\Assert\Assert;
 
@@ -33,8 +32,6 @@ class ExpensiveUserImpact extends UserImpact {
 	 * @param array<string,int> $editCountByTaskType Number of newcomer task edits per task type.
 	 * @param int $revertedEditCount Number of edits by the user that got reverted (determined by
 	 * the mw-reverted tag).
-	 * @param UserTimeCorrection $timeZone The timezone used to define what a day means, typically
-	 *   the timezone of the user.
 	 * @param int $newcomerTaskEditCount Number of edits the user made which have the
 	 *   newcomer task tag. Might exclude edits made a long time ago or many edits ago.
 	 * @param int|null $lastEditTimestamp Unix timestamp of the user's last edit.
@@ -52,7 +49,6 @@ class ExpensiveUserImpact extends UserImpact {
 		array $editCountByDay,
 		array $editCountByTaskType,
 		int $revertedEditCount,
-		UserTimeCorrection $timeZone,
 		int $newcomerTaskEditCount,
 		?int $lastEditTimestamp,
 		array $dailyTotalViews,
@@ -61,8 +57,8 @@ class ExpensiveUserImpact extends UserImpact {
 		?int $totalUserEditCount
 	) {
 		parent::__construct( $user, $receivedThanksCount, $editCountByNamespace, $editCountByDay,
-			$editCountByTaskType, $revertedEditCount, $timeZone, $newcomerTaskEditCount,
-			$lastEditTimestamp, $longestEditingStreak, $totalUserEditCount );
+			$editCountByTaskType, $revertedEditCount, $newcomerTaskEditCount, $lastEditTimestamp,
+			$longestEditingStreak, $totalUserEditCount );
 		$this->dailyTotalViews = $dailyTotalViews;
 		$this->dailyArticleViews = $dailyArticleViews;
 	}
@@ -106,7 +102,6 @@ class ExpensiveUserImpact extends UserImpact {
 			[],
 			[],
 			0,
-			new UserTimeCorrection( 'System|0' ),
 			0,
 			0,
 			[],

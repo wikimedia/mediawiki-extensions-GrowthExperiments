@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use DateTime;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\EditingStreak;
@@ -14,10 +13,8 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserSelectQueryBuilder;
-use MediaWiki\User\UserTimeCorrection;
 use MediaWikiIntegrationTestCase;
 use MWTimestamp;
-use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @covers \GrowthExperiments\UserImpact\RefreshUserImpactJob
@@ -98,7 +95,6 @@ class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 		$userImpact = new ExpensiveUserImpact(
 			UserIdentityValue::newRegistered( $userId, "User$userId" ),
 			0, [], [], [], 0,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			0, null, [], [], new EditingStreak(), null
 		);
 		MWTimestamp::setFakeTime( $oldTime );

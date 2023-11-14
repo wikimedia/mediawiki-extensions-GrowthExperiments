@@ -8,7 +8,6 @@ use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use Language;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserTimeCorrection;
 use MediaWikiUnitTestCase;
 use MWTimestamp;
 
@@ -66,7 +65,6 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
-			new UserTimeCorrection( 'System|0' ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
@@ -139,7 +137,6 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			[ '2022-08-14' => 10, '2022-08-15' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
-			new UserTimeCorrection( 'System|0' ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,

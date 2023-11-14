@@ -2,8 +2,6 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use MediaWiki\User\UserTimeCorrection;
-
 /**
  * Value object for containing edit data related to a user's impact.
  */
@@ -15,7 +13,6 @@ class EditData {
 	private int $newcomerTaskEditCount;
 	private ?string $lastEditTimestamp;
 	private array $editedArticles;
-	private UserTimeCorrection $userTimeCorrection;
 
 	/**
 	 * @param int[] $editCountByNamespace Number of edits made by the user per namespace ID.
@@ -30,8 +27,6 @@ class EditData {
 	 * @param array[] $editedArticles List of article-space titles the user has edited, sorted from
 	 *   most recently edited to least recently edited. Keyed by article title (in dbkey format),
 	 *   the value is an array with 'oldestEdit' and 'newestEdit' fields, each with an MW_TS date.
-	 * @param UserTimeCorrection $userTimeCorrection The timezone used for defining what "day" means
-	 *   in $editCountByDay, based on the user's timezone preference.
 	 */
 	public function __construct(
 		array $editCountByNamespace,
@@ -40,8 +35,7 @@ class EditData {
 		int $revertedEditCount,
 		int $newcomerTaskEditCount,
 		?string $lastEditTimestamp,
-		array $editedArticles,
-		UserTimeCorrection $userTimeCorrection
+		array $editedArticles
 	) {
 		$this->editCountByNamespace = $editCountByNamespace;
 		$this->editCountByDay = $editCountByDay;
@@ -50,7 +44,7 @@ class EditData {
 		$this->newcomerTaskEditCount = $newcomerTaskEditCount;
 		$this->lastEditTimestamp = $lastEditTimestamp;
 		$this->editedArticles = $editedArticles;
-		$this->userTimeCorrection = $userTimeCorrection;
+		$this->editCountByTaskType = $editCountByTaskType;
 	}
 
 	/**
@@ -63,10 +57,9 @@ class EditData {
 
 	/**
 	 * Number of article-space edits made by the user by day.
-	 * Days are interpreted according to the user's timezone.
+	 * Days are interpreted according to the wiki's timezone default offset.
 	 * @return int[] Same as UserImpact::getEditCountByDay().
-	 * @see UserImpact::getEditCountByDay()
-	 * @see self::getUserTimeCorrection()
+	 * @see $wgLocalTZoffset
 	 */
 	public function getEditCountByDay(): array {
 		return $this->editCountByDay;
@@ -114,15 +107,6 @@ class EditData {
 	 */
 	public function getEditedArticles(): array {
 		return $this->editedArticles;
-	}
-
-	/**
-	 * The timezone used for defining what "day" means in getEditCountByDay()
-	 * based on the user's timezone preference.
-	 * @return UserTimeCorrection
-	 */
-	public function getUserTimeCorrection(): UserTimeCorrection {
-		return $this->userTimeCorrection;
 	}
 
 }

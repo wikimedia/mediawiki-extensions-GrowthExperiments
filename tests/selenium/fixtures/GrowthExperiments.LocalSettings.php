@@ -16,7 +16,6 @@ use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserTimeCorrection;
 
 // Raise limits from I2aead24cb7f47
 if ( defined( 'MW_QUIBBLE_CI' ) ) {
@@ -80,7 +79,6 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				],
 				[ 'copyedit' => 1, 'link-recommendation' => 1 ],
 				1,
-				new UserTimeCorrection( 'ZoneInfo|660|Australia/Sydney' ),
 				2,
 				wfTimestamp( TS_UNIX, '20220825000000' ),
 				[

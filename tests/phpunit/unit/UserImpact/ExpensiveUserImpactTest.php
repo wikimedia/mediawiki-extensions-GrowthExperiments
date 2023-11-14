@@ -2,11 +2,9 @@
 
 namespace GrowthExperiments\Tests;
 
-use DateTime;
 use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserTimeCorrection;
 use MediaWikiUnitTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -38,7 +36,6 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
-			new UserTimeCorrection( 'System|0' ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
@@ -66,7 +63,6 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
@@ -98,7 +94,6 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
-			new UserTimeCorrection( 'System|0', new DateTime( '@' . ConvertibleTimestamp::time() ) ),
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
