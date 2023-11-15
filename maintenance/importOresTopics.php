@@ -288,10 +288,8 @@ class ImportOresTopics extends Maintenance {
 	 */
 	private function hasOresModel( string $wikiId ): bool {
 		if ( $this->wikiHasOresModel === null ) {
-			// We don't care about the version but we can't ask for an empty set of
-			// fields and it's the smallest.
 			$oresApiUrl = 'https://ores.wikimedia.org/v3/scores/';
-			$modelData = $this->getJsonData( $oresApiUrl, [ 'model_info' => 'version' ] );
+			$modelData = $this->getJsonData( $oresApiUrl, [ 'model_info' => '' ] );
 			$this->wikiHasOresModel = isset( $modelData[$wikiId]['models']['articletopic'] );
 		}
 		return $this->wikiHasOresModel;
