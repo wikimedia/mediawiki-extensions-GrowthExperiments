@@ -96,5 +96,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Iste patronos es necessari pro le function de processo de novicio de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggestiones de imagine]]. Articulos que contine iste patronos non essera listate como processos de suggestion de imagine.",
 	"growthexperiments-edit-config-delayed": "Modificationes de iste parametro non prendera effecto immediatemente (vide le [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Clauder",
-	"specialpages-group-growth-tools": "Utensiles de crescentia"
+	"specialpages-group-growth-tools": "Utensiles de crescentia",
+	"growthexperiments-edit-config-level-up-notifications": "Notificationes: functionalitate pro novicios",
+	"growthexperiments-edit-config-level-up-notifications-description": "Iste notificationes se invia a novicios 48 horas post le creation del conto. Ha essite demonstrate que illos augmenta le probabilitate que nove usatores apporta modificationes in le septimana post le invio del notificationes.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Notification “Tentar modificationes suggerite”",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Le numero maxime de modificationes que un novicio pote haber pro qualificar se pro reciper iste notification. Si es mittite a 0, necun novicio recipera iste notification. Quanto plus grande le numero, tanto plus novicios recipera iste notification. Iste notification se invia solmente al novicios qui non ha completate le Modificationes suggerite.",
+	"growthexperiments-edit-config-keep-going-notification-title": "Notification “Continua assi”",
+	"growthexperiments-edit-config-keep-going-notification-description": "Le numero maxime de modificationes que un novicio pote haber pro qualificar se pro reciper iste notification. Si es mittite a 0, necun novicio recipera iste notification. Quanto plus grande le numero, tanto plus novicios recipera iste notification. Iste notification se invia solmente al novicios qui ha ja completate al minus un Modification suggerite."
 }
