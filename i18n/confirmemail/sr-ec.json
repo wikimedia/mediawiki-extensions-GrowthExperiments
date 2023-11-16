@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
+			"Kizule",
 			"Milicevic01"
 		]
 	},
@@ -13,5 +14,6 @@
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Здраво}}, $2,\n\nХвала Вам на додавању имејла налогу „$2” на пројекту {{SITENAME}}, регистрованом с IP адресе $1.\n\nКликните на доње дугме како бисте потврдили да желите повезати имејл-адресу с налогом:\n\n$3\n\nНапомена: Код за потврду <strong>истиче у $4</strong>.\n\nХвала,\n\n{{SITENAME}}\n\n----\n\nДа бисте отказали поврду имејл-адресе (јер нисте отворили налог или из било којег другог разлога), кликните на следећу везу:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Потврди имејл-адресу",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Здраво}}, $2,\n\nХвала Вам на додавању имејла налогу „$2” на пројекту {{SITENAME}}, регистрованом с IP адресе $1.\n\nКликните на доњу везу како бисте потврдили да желите повезати имејл-адресу с налогом:\n\n$3\n\nНапомена: Код за потврду истиче у $4.\n\nХвала,\n\n{{SITENAME}}\n\n----\n\nДа бисте отказали поврду имејл-адресе (јер нисте отворили налог или из било којег другог разлога), кликните на следећу везу:\n\n$5",
-	"growthexperiments-marketingvideocampaign-title": "Википедију граде људи као Ви"
+	"growthexperiments-marketingvideocampaign-title": "Википедију граде људи као Ви",
+	"growthexperiments-signupcampaign-bullet3": "Почните са малим, лаким изменама"
 }
