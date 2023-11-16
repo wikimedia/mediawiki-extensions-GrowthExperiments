@@ -9,7 +9,8 @@
 			"MrFraggle",
 			"Reinhard Kraasch",
 			"Umherirrender",
-			"Filzstift"
+			"Filzstift",
+			"McDutchie"
 		]
 	},
 	"growthexperiments-desc": "Diese Erweiterung enthält Experimente des Growth-Teams.",
@@ -92,7 +93,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artikel, die hier definierte Vorlagen enthalten, werden den Benutzern nicht als Aufgaben für diesen Aufgabentyp angezeigt.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artikel, die hier definierte Kategorien enthalten, werden den Benutzern nicht als Aufgaben für diesen Aufgabentyp angezeigt.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "\nInformationsbox Vorlagen",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "\nDiese Vorlagen sind nötig für das [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|image suggestions]] Anfänger-Aufgaben-Feature.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Diese Vorlagen sind nötig für das [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|image suggestions]] Anfänger-Aufgaben-Feature.",
 	"growthexperiments-edit-config-delayed": "Änderungen an dieser Einstellung werden nicht sofort wirksam (siehe die [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Schließen",
 	"specialpages-group-growth-tools": "Werkzeuge zur Neulings-Startseite"
