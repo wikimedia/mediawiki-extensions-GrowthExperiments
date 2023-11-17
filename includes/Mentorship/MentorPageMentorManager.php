@@ -64,6 +64,19 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		string $role = MentorStore::ROLE_PRIMARY
 	): ?Mentor {
 		$mentorUser = $this->mentorStore->loadMentorUser( $user, $role );
+
+		if ( $this->getMentorshipStateForUser( $user ) === self::MENTORSHIP_OPTED_OUT ) {
+			if ( !$mentorUser ) {
+				// The user is opted out, but the database contains a mentor anyway. Drop it from
+				// the DB as well. This has to happen to ensure false mentor/mentee assignment is
+				// not visible in dumps etc.
+				$this->mentorStore->dropMenteeRelationship( $user );
+			}
+
+			// Never offer any mentor to users who opted out of mentorship (T351415)
+			return null;
+		}
+
 		if ( !$mentorUser ) {
 			return null;
 		}
@@ -77,6 +90,18 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		string $role = MentorStore::ROLE_PRIMARY
 	): Mentor {
 		$mentorUser = $this->mentorStore->loadMentorUser( $user, $role );
+
+		if ( $this->getMentorshipStateForUser( $user ) === self::MENTORSHIP_OPTED_OUT ) {
+			if ( !$mentorUser ) {
+				// The user is opted out, but the database contains a mentor anyway. Drop it from
+				// the DB as well. This has to happen to ensure false mentor/mentee assignment is
+				// not visible in dumps etc.
+				$this->mentorStore->dropMenteeRelationship( $user );
+			}
+
+			// Never offer any mentor to users who opted out of mentorship (T351415)
+			throw new WikiConfigException( 'Mentorship: Mentee opted out' );
+		}
 
 		if (
 			$role === MentorStore::ROLE_BACKUP &&

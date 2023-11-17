@@ -257,6 +257,51 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
+	 * @covers ::getMentorshipStateForUser
+	 * @covers ::setMentorshipStateForUser
+	 * @covers ::getMentorForUserSafe
+	 * @covers ::getMentorForUserIfExists
+	 * @see T351415
+	 */
+	public function testSetMentorshipStateForUserOptOut() {
+		$mentorManager = $this->getMentorManager();
+		$menteeUser = $this->getMutableTestUser()->getUserIdentity();
+		$mentorUser = $this->getMutableTestUser()->getUserIdentity();
+
+		// prepare the mentor list
+		$this->insertPage( 'MediaWiki:GrowthMentors.json', FormatJson::encode( [
+			'Mentors' => [
+				$mentorUser->getId() => [
+					'message' => null,
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+				]
+			]
+		] ) );
+
+		// assert default behaviour matches expectations
+		$this->assertEquals(
+			MentorManager::MENTORSHIP_ENABLED,
+			$mentorManager->getMentorshipStateForUser( $menteeUser )
+		);
+		$this->assertEquals(
+			$mentorUser,
+			$mentorManager->getMentorForUserSafe( $menteeUser )->getUserIdentity()
+		);
+
+		// opt out of mentorship; this should drop the mentor mentee relationship
+		$mentorManager->setMentorshipStateForUser( $menteeUser, MentorManager::MENTORSHIP_OPTED_OUT );
+
+		// assert mentor mentee relationship is dropped
+		$this->assertNull(
+			$mentorManager->getMentorForUserSafe( $menteeUser )
+		);
+		$this->assertNull(
+			$mentorManager->getMentorForUserIfExists( $menteeUser )
+		);
+	}
+
+	/**
 	 * @param IContextSource|null $context
 	 * @return MentorPageMentorManager
 	 */
