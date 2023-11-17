@@ -9,6 +9,8 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CentralAuth\CentralAuthServices;
+use MediaWiki\MainConfigNames;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\ActorMigration;
@@ -195,6 +197,10 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		}
 
 		$dbr = $this->getReadConnection();
+
+		$oldBlockSchema = (bool)( MediaWikiServices::getInstance()->getMainConfig()
+			->get( MainConfigNames::BlockTargetMigrationStage ) & SCHEMA_COMPAT_READ_OLD );
+
 		$res = $dbr->select(
 			'user',
 			[
@@ -240,15 +246,30 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				) . ')',
 
 				// user is not indefinitely blocked
-				'user_id NOT IN (' . $dbr->selectSQLText(
-					'ipblocks',
-					'ipb_user',
-					[
-						'ipb_expiry' => $dbr->getInfinity(),
-						// not an IP block
-						'ipb_user != 0',
-					]
-				) . ')',
+				'user_id NOT IN (' .
+				(
+					$oldBlockSchema ? $dbr->selectSQLText(
+						'ipblocks',
+						'ipb_user',
+						[
+							'ipb_expiry' => $dbr->getInfinity(),
+							// not an IP block
+							'ipb_user != 0',
+						]
+					) : $dbr->selectSQLText(
+						[ 'block', 'block_target' ],
+						'bt_user',
+						[
+							'bl_expiry' => $dbr->getInfinity(),
+							// not an IP block
+							$dbr->expr( 'bt_user', '!=', null )
+						],
+						'',
+						[],
+						[ 'block_target' => [ 'JOIN', 'bt_id=bl_target' ] ]
+					)
+				)
+				. ')',
 
 				// only users who either made an edit or registered less than 2 weeks ago
 				$dbr->makeList( [
