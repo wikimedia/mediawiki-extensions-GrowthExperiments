@@ -788,8 +788,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 		}
 
-		$descriptors['geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum']['default'] =
-			$this->growthWikiConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' )[1];
+		if ( $this->getConfig()->get( 'GELevelingUpFeaturesEnabled' ) ) {
+			$descriptors['geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum']['default'] =
+				$this->growthWikiConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' )[1];
+		}
 
 		// Add default values for newcomertasks variables
 		$newcomerTasksConfig = $this->getNewcomerTasksConfig();
