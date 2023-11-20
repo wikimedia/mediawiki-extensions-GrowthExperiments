@@ -55,6 +55,7 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 	}
 
 	public function testPageNotInTaskSet() {
+		$this->insertConfigPage();
 		$pageName = 'Title1';
 		$this->insertPage( $pageName );
 		$this->setupTaskSet();
