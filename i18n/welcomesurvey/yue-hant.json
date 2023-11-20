@@ -1,12 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"H78c67c"
 		]
 	},
-	"welcomesurvey": "歡迎，$1！",
+	"welcomesurvey": "{{GENDER:$1|歡迎}}，$1！",
 	"welcomesurvey-save-btn": "完成",
+	"welcomesurvey-close-btn": "閂埋同返去$1",
 	"welcomesurvey-sidebar-privacy-text": "維基媒體基金會會用{{GENDER:$2|閣下}}嘅回答去幫你開始改{{SITENAME}}。$1。",
+	"welcomesurvey-sidebar-editing-link2-text": "幫助櫃枱",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:幫助櫃枱",
+	"welcomesurvey-dropdown-option-select-label": "請揀……",
+	"welcomesurvey-question-reason-option-edit-typo-label": "去改篇維基百科文章度嘅錯字或錯誤",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "去加或改篇維基百科文章度嘅資料",
+	"welcomesurvey-question-reason-option-add-image-label": "去加幅相或加張圖落篇維基百科文章度",
+	"welcomesurvey-question-reason-option-new-page-label": "去開篇新嘅維基百科文章",
+	"welcomesurvey-question-reason-option-program-participant-label": "我參加緊個項目、課堂或活動",
+	"welcomesurvey-question-reason-option-read-label": "去睇維基百科",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "其他",
+	"welcomesurvey-question-reason-option-other-label": "其他（請説明）",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|入}}其他原因……",
 	"welcomesurvey-question-edited-option-yes-many-label": "有，好多次",
 	"welcomesurvey-question-edited-option-yes-few-label": "有，一兩次",
 	"welcomesurvey-question-edited-option-no-dunno-label": "冇，我唔知道原來我可以改維基百科",
