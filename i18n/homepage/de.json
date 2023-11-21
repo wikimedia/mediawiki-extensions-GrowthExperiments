@@ -28,7 +28,8 @@
 			"Wolfdietmann",
 			"Wnme",
 			"Thereoper",
-			"Filzstift"
+			"Filzstift",
+			"Johannnes89"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -338,8 +339,8 @@
 	"growthexperiments-log-header": "Dies ist das Protokoll der Aktivitäten in der GrowthExperiments-Erweiterung.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|hat sich}} {{GENDER:$6|$3}} als {{GENDER:$6|Betreuten|Betreute}} zugeordnet. ({{GENDER:$4|bisheriger Lotse|bisherige Lotsin}} war $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|hat sich}} {{GENDER:$6|$3}} als {{GENDER:$6|Betreuten|Betreute}} zugeordnet ($6 hatte bisher keine(n) Lotsin/Lotsen)",
-	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|hat}} {{GENDER:$5|$7}} als {{GENDER:$5|Lotsen|Lotsin}} von {{GENDER:$6|$3}} festgelegt ({{GENDER:$4|bisheriger Lotse|bisherige Lotsin}} $8)",
-	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|hat}} {{GENDER:$5|$7}} als {{GENDER:$5|Lotsen|Lotsin}} von {{GENDER:$6|$3}} festgelegt ($3 hatte bisher keinen Lotsen)",
+	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|hat}} {{GENDER:$5|$7}} als {{GENDER:$5|Lotse|Lotsin}} von {{GENDER:$6|$3}} festgelegt ({{GENDER:$4|bisheriger Lotse|bisherige Lotsin}} $8)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|hat}} {{GENDER:$5|$7}} als {{GENDER:$5|Lotse|Lotsin}} von {{GENDER:$6|$3}} festgelegt (hatte bisher keinen Lotsen)",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|überprüfte}} $4 {{PLURAL:$4|Linkvorschlag|Linkvorschläge}} für $3: $5 akzeptiert, $6 abgelehnt und $7 übersprungen",
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|überprüfte}} einen Bildvorschlag für $3: akzeptiert",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|überprüfte}} einen Bildvorschlag für $3: abgelehnt",
@@ -347,7 +348,7 @@
 	"log-action-filter-growthexperiments-claimmentee": "Betreuten-Änderungen",
 	"log-action-filter-growthexperiments-setmentor": "Lotsen/Lotsinnen-Änderungen",
 	"log-action-filter-growthexperiments-addlink": "Linkvorschläge",
-	"log-action-filter-growthexperiments-addimage": "Hast du Vorschläge?",
+	"log-action-filter-growthexperiments-addimage": "Bildvorschläge",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Der angegebene Benutzername ist ungültig",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|ist}} {{GENDER:$2|dein neuer Lotse|deine neue Lotsin}}.",
 	"growthexperiments-notification-body-mentor-change": "Grund: $1",
