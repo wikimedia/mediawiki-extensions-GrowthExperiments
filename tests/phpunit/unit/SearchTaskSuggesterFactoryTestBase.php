@@ -11,7 +11,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use Status;
 use StatusValue;
 
-abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
+abstract class SearchTaskSuggesterFactoryTestBase extends MediaWikiUnitTestCase {
 
 	public function provideCreate() {
 		$error = $this->createNoOpMock( Status::class, [ 'getWikiText' ] );

@@ -35,8 +35,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$skinMock = $this->getSkinMock();
 		$skinMock->getTitle()->expects( $this->exactly( 2 ) )
 			->method( 'isSpecial' )
-			->withConsecutive( [ 'WelcomeSurvey' ], [ 'Homepage' ] )
-			->willReturnOnConsecutiveCalls( false, true );
+			->willReturnMap( [
+				[ 'WelcomeSurvey', false ],
+				[ 'Homepage', true ]
+			] );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
@@ -70,8 +72,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturn( 'Bar' );
 		$skinMock->getTitle()->expects( $this->exactly( 2 ) )
 			->method( 'isSpecial' )
-			->withConsecutive( [ 'WelcomeSurvey' ], [ 'Homepage' ] )
-			->willReturnOnConsecutiveCalls( false, true );
+			->willReturnMap( [
+				[ 'WelcomeSurvey', false ],
+				[ 'Homepage', true ]
+			] );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
@@ -151,8 +155,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturn( 'Bar' );
 		$skinMock->getTitle()->expects( $this->exactly( 2 ) )
 			->method( 'isSpecial' )
-			->withConsecutive( [ 'WelcomeSurvey' ], [ 'Homepage' ] )
-			->willReturnOnConsecutiveCalls( false, true );
+			->willReturnMap( [
+				[ 'WelcomeSurvey', false ],
+				[ 'Homepage', true ]
+			] );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(

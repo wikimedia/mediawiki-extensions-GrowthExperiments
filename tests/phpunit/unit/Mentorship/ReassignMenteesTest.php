@@ -121,13 +121,10 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		$mentorManager = $this->createMock( MentorManager::class );
 		$mentorManager->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'getRandomAutoAssignedMentor' )
-			->withConsecutive( ...array_map(
-				static function ( $el ) {
-					return [ $el ];
-				},
+			->willReturnMap( array_map(
+				static fn ( $el ) => [ $el, [], $newMentor ],
 				$mentees
-			) )
-			->willReturn( $newMentor );
+			) );
 		$mentorStore = $this->createMock( MentorStore::class );
 		$mentorStore->expects( $this->once() )
 			->method( 'getMenteesByMentor' )
@@ -140,13 +137,10 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		$changeMentorFactory = $this->createMock( ChangeMentorFactory::class );
 		$changeMentorFactory->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'newChangeMentor' )
-			->withConsecutive( ...array_map(
-				static function ( $el ) use ( $mentor ) {
-					return [ $el, $mentor ];
-				},
+			->willReturnMap( array_map(
+				static fn ( $el ) => [ $el, $mentor, $changeMentor ],
 				$mentees
-			) )
-			->willReturn( $changeMentor );
+			) );
 		$reassignMentees = $this->newReassignMentees(
 			$mentor,
 			$mentorManager,

@@ -23,7 +23,7 @@ use StatusValue;
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester
  */
-class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest {
+class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTestBase {
 
 	/**
 	 * @dataProvider provideCreate
