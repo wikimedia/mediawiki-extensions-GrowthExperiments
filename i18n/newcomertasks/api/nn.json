@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ranveig"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Få foreslåtte oppgåver for nybyrjarar.",
+	"apihelp-query+growthtasks-extended-description": "Foreslår eit sett artiklar som har uteståande problem som er enkle nok til å ordna for nybyrjarar.",
+	"apihelp-query+growthtasks-param-tasktypes": "Oppgåvetypar resultata bør avgrensast til. La han vera tom for å motta alle forslag.",
+	"apihelp-query+growthtasks-param-topics": "Artikkelemne som skal føretrekkast i foreslåtte oppgåver.",
+	"apihelp-query+growthtasks-param-topicsmode": "Match-modus for emne.",
+	"apihelp-query+growthtasks-param-limit": "Maksimalt tal på oppgåveforslag som skal returnerast.",
+	"apihelp-query+growthtasks-param-excludepageids": "Side-ID-ar som skal ekskluderast frå spørjinga.",
+	"apihelp-query+growthtasks-param-debug": "Legg til feilsøkingsdata i resultatet.",
+	"apihelp-query+growthtasks-example-1": "Hent oppgåveforslag for korrekturlesingsoppgåver for denne  brukaren.",
+	"apihelp-query+growthtasks-example-2": "Hent oppgåveforslag for den gjeldande brukaren, med utvida informasjon om sidene.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Hent ein foreslått oppgåvetype ein brukar kan prøva etterpå.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Oppgåvetypen brukaren allereie jobbar med.",
+	"apierror-growthexperiments-addlink-handler-notfound": "Lenkjeforslagshistorikk ikkje funne",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Uventa lenkjeforslagsmål: $1",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "Endringa som er spesifisert i <var>editRevId</var> blei ikkje funnen.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Endringa som er spesifisert i <var>editRevId</var> høyrer til ei anna side."
+}
