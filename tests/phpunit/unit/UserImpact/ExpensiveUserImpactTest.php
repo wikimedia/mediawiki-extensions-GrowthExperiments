@@ -6,6 +6,7 @@ use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Wikimedia\TestingAccessWrapper;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -51,7 +52,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 	public function testSerialization() {
 		ConvertibleTimestamp::setFakeTime( time() );
 
-		$dailyTotalViews = [ '2022-08-24' => 100, '2022-08-25' => 150 ];
+		$dailyTotalViews = [ '2022-08-24' => 100, '2022-08-25' => 150, '2022-08-26' => 0 ];
 		$dailyArticleViews = [
 			'Foo' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			'Bar' => [ '2022-08-24' => 30, '2022-08-25' => 40 ],
@@ -71,8 +72,14 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			null
 		);
 		$data = $userImpact->jsonSerialize();
-		$this->assertSame( $dailyTotalViews, $data['dailyTotalViews'] );
+		$this->assertSame(
+			[ '2022-08-24' => 100, '2022-08-25' => 150 ],
+			$data['dailyTotalViews']
+		);
 		$rehydrated = ExpensiveUserImpact::newFromJsonArray( $data );
+		TestingAccessWrapper::newFromObject( $userImpact )->dailyTotalViews = [
+			'2022-08-24' => 100, '2022-08-25' => 150
+		];
 		$this->assertEquals( $userImpact, $rehydrated );
 	}
 

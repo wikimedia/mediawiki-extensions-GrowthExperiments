@@ -137,18 +137,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertNull( $userImpact->getLastEditTimestamp() );
 		$this->assertSame( 0, $userImpact->getReceivedThanksCount() );
 		$this->assertSame( [], $userImpact->getDailyArticleViews() );
-
-		$dailyTotalViews = $userImpact->getDailyTotalViews();
-		$expectedDays = array_merge(
-			array_map( static function ( $day ) {
-			return '2022-09-' . str_pad( $day, 2, '0', STR_PAD_LEFT );
-			}, range( 1, 30 ) ),
-			array_map( static function ( $day ) {
-				return '2022-10-' . str_pad( $day, 2, '0', STR_PAD_LEFT );
-			}, range( 1, 30 ) )
-		);
-		$this->assertSame( $expectedDays, array_keys( $dailyTotalViews ) );
-		$this->assertSame( 0, $dailyTotalViews['2022-09-10'] );
+		$this->assertSame( [], $userImpact->getDailyTotalViews() );
 	}
 
 	public function testGetUserImpactExpensive() {

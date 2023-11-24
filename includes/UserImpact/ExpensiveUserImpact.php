@@ -126,11 +126,26 @@ class ExpensiveUserImpact extends UserImpact {
 		$this->dailyArticleViews = $json['dailyArticleViews'];
 	}
 
+	/**
+	 * Filter view counts to only include dates with non-zero counts
+	 *
+	 * @note This is a safeguard filtering. ComputedUserImpactLookup should not generate impact
+	 * objects with zeros in the first place.
+	 * @see https://phabricator.wikimedia.org/T351898
+	 * @param array $views
+	 * @return array
+	 */
+	private function filterViewCounts( array $views ): array {
+		return array_filter( $views, static function ( $el ) {
+			return $el > 0;
+		} );
+	}
+
 	/** @inheritDoc */
 	public function jsonSerialize(): array {
 		return parent::jsonSerialize() + [
-			'dailyTotalViews' => $this->dailyTotalViews,
-			'dailyArticleViews' => $this->dailyArticleViews,
+			'dailyTotalViews' => $this->filterViewCounts( $this->dailyTotalViews ),
+			'dailyArticleViews' => $this->filterViewCounts( $this->dailyArticleViews ),
 		];
 	}
 

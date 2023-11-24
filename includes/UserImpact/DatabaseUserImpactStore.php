@@ -70,20 +70,38 @@ class DatabaseUserImpactStore implements UserImpactStore {
 	 * @return void
 	 */
 	public function setUserImpact( UserImpact $userImpact ): void {
+		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+
 		$data = [
 			'geui_data' => gzdeflate( json_encode( $userImpact, JSON_UNESCAPED_UNICODE ) ),
 			'geui_timestamp' => $dbw->timestamp( $userImpact->getGeneratedAt() ),
 		];
-		$dbw->upsert(
-			self::TABLE_NAME,
-			[
-				'geui_user_id' => $userImpact->getUser()->getId(),
-			] + $data,
-			'geui_user_id',
-			$data,
-			__METHOD__
-		);
+
+		$storedUserId = $dbr->newSelectQueryBuilder()
+			->select( 'geui_user_id' )
+			->from( self::TABLE_NAME )
+			->where( [ 'geui_user_id' => $userImpact->getUser()->getId() ] )
+			->caller( __METHOD__ )
+			->fetchField();
+		if ( $storedUserId !== false ) {
+			$dbw->newUpdateQueryBuilder()
+				->update( self::TABLE_NAME )
+				->set( $data )
+				->where( [ 'geui_user_id' => $userImpact->getUser()->getId() ] )
+				->caller( __METHOD__ )
+				->execute();
+		} else {
+			$dbw->upsert(
+				self::TABLE_NAME,
+				[
+					'geui_user_id' => $userImpact->getUser()->getId(),
+				] + $data,
+				'geui_user_id',
+				$data,
+				__METHOD__
+			);
+		}
 	}
 
 }
