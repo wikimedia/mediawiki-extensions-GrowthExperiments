@@ -4,6 +4,7 @@ namespace GrowthExperiments\UserImpact;
 
 use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
@@ -47,7 +48,14 @@ class DatabaseUserImpactStore implements UserImpactStore {
 		$queryBuilder->fields( [ 'geui_user_id', 'geui_data' ] );
 		$queryBuilder->where( [ 'geui_user_id' => $userIds ] );
 		foreach ( $queryBuilder->fetchResultSet() as $row ) {
-			$userImpactArray = json_decode( $row->geui_data, true );
+			AtEase::suppressWarnings();
+			$userImpactArray = gzinflate( $row->geui_data );
+			AtEase::restoreWarnings();
+			if ( $userImpactArray === false ) {
+				$userImpactArray = $row->geui_data;
+			}
+			$userImpactArray = json_decode( $userImpactArray, true );
+
 			if ( ( $userImpactArray['@version'] ?? 0 ) !== UserImpact::VERSION ) {
 				continue;
 			}
@@ -64,7 +72,7 @@ class DatabaseUserImpactStore implements UserImpactStore {
 	public function setUserImpact( UserImpact $userImpact ): void {
 		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$data = [
-			'geui_data' => json_encode( $userImpact, JSON_UNESCAPED_UNICODE ),
+			'geui_data' => gzdeflate( json_encode( $userImpact, JSON_UNESCAPED_UNICODE ) ),
 			'geui_timestamp' => $dbw->timestamp( $userImpact->getGeneratedAt() ),
 		];
 		$dbw->upsert(
