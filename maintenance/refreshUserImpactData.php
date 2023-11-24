@@ -75,9 +75,15 @@ class RefreshUserImpactData extends Maintenance {
 
 		$users = [];
 		foreach ( $this->getUsers() as $user ) {
-			if ( $this->userFactory->newFromUserIdentity( $user )->isHidden() ) {
+			$realUser = $this->userFactory->newFromUserIdentity( $user );
+			if ( $realUser->isHidden() ) {
 				// do not update impact data for hidden users (T337845)
 				$this->output( " ...skipping user {$user->getId()}, hidden.\n" );
+				continue;
+			}
+			if ( $realUser->isBot() ) {
+				// do not update impact data for bots (T351898)
+				$this->output( " ...skipping user {$user->getId()}, bot.\n" );
 				continue;
 			}
 
