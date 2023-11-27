@@ -104,7 +104,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|edit|edits}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Views from recent edits (last 60 days):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Monitor views of articles you've edited",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 edits so far",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 edits to articles so far",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Help extend free knowledge to the world by editing topics that matter most to {{GENDER:$1|you}}.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "See suggested edits",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Start with a few <strong>suggested edits</strong>, then see how many people are viewing {{GENDER:$1|your}} contributions here.",
