@@ -8,7 +8,7 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 
 	function getExpectedResponse() {
 		return {
-			'@version': 9,
+			'@version': 10,
 			userId: 1,
 			userName: 'Admin',
 			receivedThanksCount: 10,
