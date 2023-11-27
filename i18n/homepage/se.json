@@ -7,6 +7,7 @@
 	},
 	"growthexperiments-homepage-tab": "Ruovttosiidu",
 	"tooltip-pt-homepage": "{{GENDER:|Iežat}} ruovttosiidu",
+	"growthexperiments-homepage-enable": "Čájet ođđa geavaheddjiid álgosiiddu",
 	"growthexperiments-homepage-email-header-noemail": "Lasit {{GENDER:$1|iežat}} e-poastačujuhusa",
 	"growthexperiments-homepage-email-header-unconfirmed": "Nanne {{GENDER:$1|iežat}} e-poastačujuhusa",
 	"growthexperiments-homepage-email-header-confirmed": "E-poastačujuhus lasihuvvon",

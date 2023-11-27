@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ranveig"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Få foreslåtte oppgåver for nybyrjarar.",
+	"apihelp-query+growthtasks-extended-description": "Foreslår eit sett artiklar som har uteståande problem som er enkle nok til å ordna for nybyrjarar.",
+	"apihelp-query+growthtasks-param-tasktypes": "Oppgåvetypar resultata bør avgrensast til. La han vera tom for å motta alle forslag.",
+	"apihelp-query+growthtasks-param-topics": "Artikkelemne som skal føretrekkast i foreslåtte oppgåver.",
+	"apihelp-query+growthtasks-param-limit": "Maksimalt tal på oppgåveforslag som skal returnerast.",
+	"apihelp-query+growthtasks-param-debug": "Legg til feilsøkingsdata i resultatet.",
+	"apihelp-query+growthtasks-example-2": "Hent oppgåveforslag for den gjeldande brukaren, med utvida informasjon om sidene."
+}
