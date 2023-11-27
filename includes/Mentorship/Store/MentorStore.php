@@ -143,7 +143,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, Logg
 	 * Return mentees who are mentored by given mentor
 	 *
 	 * @param UserIdentity $mentor
-	 * @param string|null $mentorRole Passing null is deprecated since 1.39.
+	 * @param string $mentorRole
 	 * @param bool $includeHiddenUsers
 	 * @param bool $includeInactiveUsers
 	 * @param int $flags
@@ -151,7 +151,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, Logg
 	 */
 	abstract public function getMenteesByMentor(
 		UserIdentity $mentor,
-		?string $mentorRole = null,
+		string $mentorRole,
 		bool $includeHiddenUsers = false,
 		bool $includeInactiveUsers = true,
 		int $flags = 0
