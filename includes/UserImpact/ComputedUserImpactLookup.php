@@ -36,7 +36,6 @@ use TitleValue;
 use User;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
-use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class ComputedUserImpactLookup implements UserImpactLookup {
 
@@ -381,7 +380,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		// Short-circuit if the user has no edits.
 		if ( !$titles ) {
 			return [
-				'dailyTotalViews' => array_fill_keys( $this->getDatesForLastDays( $days ), 0 ),
+				'dailyTotalViews' => [],
 				'dailyArticleViews' => [],
 			];
 		}
@@ -423,8 +422,17 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$dailyArticleViews[$title]['newestEdit'] = $allTitleObjects[$title]['newestEdit'];
 
 			foreach ( $days as $day => $views ) {
-				$dailyTotalViews[$day] = ( $dailyTotalViews[$day] ?? 0 ) + $views;
-				$dailyArticleViews[$title]['views'][$day] = $views ?? 0;
+				// NOTE: Do not insert the data if it is a zero due to JSON blob size issues (T351898)
+
+				$todayTotalViews = ( ( $dailyTotalViews[$day] ?? 0 ) + $views );
+				if ( $todayTotalViews > 0 ) {
+					$dailyTotalViews[$day] = $todayTotalViews;
+				}
+
+				$todayArticleViews = ( $views ?? 0 );
+				if ( $todayArticleViews > 0 ) {
+					$dailyArticleViews[$title]['views'][$day] = $todayArticleViews;
+				}
 			}
 		}
 
@@ -529,21 +537,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$iso8601Array[$iso8601Key] = $value;
 		}
 		return $iso8601Array;
-	}
-
-	/**
-	 * Return ISO 8601 dates for the last $days days.
-	 * These are not necessarily the exact same dates we would get from the pageview
-	 * service, but this is only used when there are no edits, so it hardly matters.
-	 * @param int $days
-	 * @return string[]
-	 */
-	private function getDatesForLastDays( int $days ): array {
-		$dates = [];
-		for ( $i = 0; $i < $days; $i++ ) {
-			$dates[] = date( 'Y-m-d', strtotime( "-$i days", ConvertibleTimestamp::time() ) );
-		}
-		return array_reverse( $dates );
 	}
 
 	/**
