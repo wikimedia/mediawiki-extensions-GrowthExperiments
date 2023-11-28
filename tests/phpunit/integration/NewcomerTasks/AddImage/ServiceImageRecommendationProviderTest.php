@@ -162,16 +162,16 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			$this->createMock( AddImageSubmissionHandler::class )
 		);
 
+		$expectedKeys = [
+			'timing.growthExperiments.imageRecommendationProvider.get' => true,
+			'timing.growthExperiments.imageRecommendationProvider.processApiResponseData' => true,
+		];
 		$statsDataFactory->expects( $this->exactly( 2 ) )
 			->method( 'timing' )
-			->withConsecutive(
-				[ $this->equalTo(
-					'timing.growthExperiments.imageRecommendationProvider.get'
-				) ],
-				[ $this->equalTo(
-					'timing.growthExperiments.imageRecommendationProvider.processApiResponseData'
-				) ]
-			);
+			->willReturnCallback( function ( $key ) use ( &$expectedKeys ): void {
+				$this->assertArrayHasKey( $key, $expectedKeys );
+				unset( $expectedKeys[$key] );
+			} );
 
 		$provider->get( new TitleValue( NS_MAIN, '15' ), $taskType );
 	}

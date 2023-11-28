@@ -54,11 +54,10 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->expects( $this->atLeastOnce() )
 			->method( 'getBoolOption' )
-			->withConsecutive(
-				[ $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE ],
-				[ $mentee, PraiseworthyConditionsLookup::WAS_PRAISED_PREF ],
-			)
-			->willReturnOnConsecutiveCalls( true, false );
+			->willReturnMap( [
+				[ $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE, UserOptionsLookup::READ_NORMAL, true ],
+				[ $mentee, PraiseworthyConditionsLookup::WAS_PRAISED_PREF, UserOptionsLookup::READ_NORMAL, false ],
+			] );
 
 		$userMock = $this->createMock( User::class );
 		$userMock->expects( $this->once() )

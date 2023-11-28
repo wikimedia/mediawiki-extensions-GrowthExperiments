@@ -47,11 +47,10 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 
 		$globalVarConfig = $this->createMock( GlobalVarConfig::class );
 		$globalVarConfig->expects( $this->exactly( 2 ) )->method( 'get' )
-			->withConsecutive(
-				[ 'GEWikiConfigEnabled' ],
-				[ 'GEFoo' ]
-			)
-			->willReturnOnConsecutiveCalls( false, 'global' );
+			->willReturnMap( [
+				[ 'GEWikiConfigEnabled', false ],
+				[ 'GEFoo', 'global' ]
+			] );
 
 		$config = new GrowthExperimentsMultiConfig(
 			$wikiConfig,
