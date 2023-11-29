@@ -3,8 +3,8 @@
 namespace GrowthExperiments;
 
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
 
 /**
