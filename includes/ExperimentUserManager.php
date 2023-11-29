@@ -4,8 +4,8 @@ namespace GrowthExperiments;
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsManager;
 
 /**
  * Service for handling experiment / variant related functions for users.

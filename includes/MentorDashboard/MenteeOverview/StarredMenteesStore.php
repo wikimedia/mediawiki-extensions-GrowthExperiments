@@ -3,9 +3,9 @@
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use IDBAccessObject;
+use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
-use MediaWiki\User\UserOptionsManager;
 
 class StarredMenteesStore implements IDBAccessObject {
 	public const STARRED_MENTEES_PREFERENCE = 'growthexperiments-starred-mentees';
