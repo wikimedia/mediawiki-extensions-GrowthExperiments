@@ -4,7 +4,7 @@ namespace GrowthExperiments;
 
 use ConfigException;
 use MediaWiki\Cache\Hook\MessageCacheFetchOverridesHook;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
 use RequestContext;
 use User;
 
