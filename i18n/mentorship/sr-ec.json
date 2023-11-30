@@ -100,6 +100,7 @@
 	"growthexperiments-mentor-writer-error-anonymous-user": "Ментор $1 није регистрован корисник",
 	"growthexperiments-manage-mentors-title": "Управљање менторима",
 	"growthexperiments-manage-mentors-pretext-purpose": "Ова страница је списак ментора.",
+	"growthexperiments-manage-mentors-pretext-stored-at": "Списак ментора се чува у [[$1|именском простору Медијавики]], укључујући историју.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Да постанете ментор идите на [[Special:EnrollAsMentor]].",
 	"growthexperiments-manage-mentors-auto-assigned": "Аутоматски додељени ментори",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Нови налози се аутоматски додељују овим менторима.",

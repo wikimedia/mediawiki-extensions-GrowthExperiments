@@ -5,8 +5,13 @@
 			"Kimberli Mäkäräinen (WMNO)"
 		]
 	},
+	"growthexperiments-desc": "Dán viiddidanoasis leat Growth-joavkku geahččaleamit.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Maŋemus rievdadusa lea geavaheaddji [[User:$1|$1]] rievdadus $2 ([$4 liŋka]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Maŋemus rievdadusa lea dovdameahttun geavaheaddji $1 rievdadus ([$3 liŋka]).",
 	"growthexperiments-edit-config-feedback-cta": "Atte máhcahaga",
 	"growthexperiments-edit-config-edit-summary": "Čoahkkáigeassu",
+	"growthexperiments-edit-config-homepage": "Ođđa geavaheddjiid álgosiidu",
 	"growthexperiments-edit-config-newcomertasks": "Evttohuvvon rievdadusat",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Váldojuvvon eret anus",
 	"growthexperiments-info-tooltip-close-label": "Gidde"
 }
