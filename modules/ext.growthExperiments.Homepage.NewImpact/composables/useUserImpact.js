@@ -106,7 +106,8 @@ function useUserImpact( timeFrame, initialData ) {
 
 		const toPageviewsArray = ( viewsByDay ) => {
 			// Fall back to empty array if no page view data (clock icon scenario)
-			return Object.keys( viewsByDay || [] ).map( ( key ) => ( {
+			// Ensure datestring keys are alphanumerically ordered
+			return Object.keys( viewsByDay || [] ).sort().map( ( key ) => ( {
 				date: new Date( key ),
 				views: viewsByDay[ key ]
 			} ) );
