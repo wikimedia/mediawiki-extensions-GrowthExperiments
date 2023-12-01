@@ -649,7 +649,7 @@
 	},
 	"ResourceModules": {
 		"ext.growthExperiments.mobileMenu.icons": {
-			"class": "ResourceLoaderImageModule",
+			"class": "MediaWiki\\ResourceLoader\\ImageModule",
 			"selector": ".minerva-icon--{name}",
 			"defaultColor": "#54595d",
 			"images": {
@@ -1785,7 +1785,7 @@
 			]
 		},
 		"ext.growthExperiments.icons": {
-			"class": "ResourceLoaderImageModule",
+			"class": "MediaWiki\\ResourceLoader\\ImageModule",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
 			"selectorWithoutVariant": ".oo-ui-icon-{name},.mw-ui-icon-{name}",
 			"images": {
