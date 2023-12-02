@@ -1,3 +1,5 @@
+@import 'mediawiki.skin.variables.less';
+
 .mw-ge-help-panel-cta {
 	// Don't show the help panel in printable versions of a page.
 	@media print {
@@ -20,6 +22,12 @@
 	position: fixed;
 	bottom: 2em;
 	right: 1em;
+}
+
+.suggested-edits-mobile-peek-footer {
+	a {
+		.cdx-mixin-link-underlined();
+	}
 }
 
 @keyframes help-panel-slidein {

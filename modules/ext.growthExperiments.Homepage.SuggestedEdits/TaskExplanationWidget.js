@@ -1,9 +1,9 @@
 ( function () {
 	'use strict';
 
-	var mobileFrontend = mw.mobileFrontend,
+	var mobileStatus = mw.loader.getState( 'mobile.startup' ),
 		suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
-		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,
+		Drawer = mobileStatus && mobileStatus !== 'registered' ? require( 'mobile.startup' ).Drawer : undefined,
 		IconUtils = require( '../utils/IconUtils.js' );
 
 	/**
