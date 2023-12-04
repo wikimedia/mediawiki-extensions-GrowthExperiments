@@ -56,7 +56,9 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
  * @return {Array}
  */
 const quantizeViews = ( items, n = 6 ) => {
-	const chunkSize = Math.ceil( items.length / n );
+	// cunkSize will be 1 unless there are enough items ( ( n * 2 ) - 1 )
+	// to compute a mean between two values
+	const chunkSize = Math.ceil( items.length / ( ( n * 2 ) - 1 ) );
 	if ( !chunkSize ) {
 		return items;
 	}
@@ -160,4 +162,7 @@ function useUserImpact( timeFrame, initialData ) {
 	} );
 }
 
-module.exports = exports = useUserImpact;
+module.exports = exports = {
+	useUserImpact,
+	quantizeViews
+};
