@@ -26,7 +26,7 @@
 <script>
 const { inject } = require( 'vue' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( './constants.js' );
-const useUserImpact = require( './composables/useUserImpact.js' );
+const { useUserImpact } = require( './composables/useUserImpact.js' );
 const Layout = require( './components/LayoutWrapper.vue' );
 // TODO wrap NewImpact, NoEditsDisplay, ScoreCards...
 // components in async components so we only load one at a time.
