@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Upwinxp"
 		]
 	},
 	"growthexperiments-desc": "Ta razširitev vsebuje poskuse, ki jih je pripravila skupina Growth.",
@@ -11,7 +12,7 @@
 	"growthexperiments-config-validator-array-toobig": "$1 ima preveč predmetov (dovoljenih je največ $2)",
 	"growthexperiments-edit-config-disabled": "Skupnostna konfiguracija je trenutno onemogočena.",
 	"growthexperiments-edit-config-title": "Konfiguracija možnosti Edit Growth",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Zadnjič posodobil_a [[User:$1|$1]] $2 ([$4 razl]).",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Zadnjič posodobil/a [[User:$1|$1]] $2 ([$4 razl]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Zadnjič posodobil neznan uporabnik $1 ([$3 razl]).",
 	"growthexperiments-edit-config-pretext": "Ta stran vam omogoča urejanje konfiguracije možnosti ekipe [[:mw:Special:MyLanguage/Growth|Growth]]. V vašem imenu bo uredila $1. Spremembe si lahko ogledate v zgodovini strani za to stran.",
 	"growthexperiments-edit-config-pretext-banner": "{{|}}Prikažete lahko tudi pasico na strani novinca, ki vključuje obvestila o dogodkih, pomembnih za novince. Če {{GENDER:|}}želite to storiti, {{GENDER:|}}jo morate ročno dodati v [[$1]]. Vsa vsebina, ki bo dodana tam, bo prikazana kot rumena pasica na vrhu [[Special:Homepage]].",
@@ -96,5 +97,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Te predloge so potrebne za možnost opravila [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|predlaganja slik]] za začetnike. Članki, ki vsebujejo te predloge, ne bodo navedeni pri opravilih predlaganja slik.",
 	"growthexperiments-edit-config-delayed": "Spremembe te nastavitve ne bodo učinkovale takoj (glejte [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Zapri",
-	"specialpages-group-growth-tools": "Orodja za rast"
+	"specialpages-group-growth-tools": "Orodja za rast",
+	"growthexperiments-edit-config-level-up-notifications": "Obvestila: funkcije rasti",
+	"growthexperiments-edit-config-level-up-notifications-description": "Ta obvestila so novincem poslana 48 ur po ustvaritvi računa in dokazano povečajo verjetnost, da bodo novi računi v tednu po tem, ko je obvestilo poslano, prispevali z urejanjem.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Preizkus obvestila o predlaganih popravkih",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Največje število urejanj, ki jih lahko ima novinec, da izpolnjuje pogoje za prejem tega obvestila. Če je nastavljeno na 0, ne bo tega obvestila</br> prejel noben novinec. Večje kot je število, več novincev bo prejelo to obvestilo.<br> To obvestilo se pošlje samo novincem, ki niso opravili predlaganih urejanj.",
+	"growthexperiments-edit-config-keep-going-notification-title": "Nadaljuj obveščanje",
+	"growthexperiments-edit-config-keep-going-notification-description": "Največje število predlaganih urejanj, ki jih lahko opravi novinec, da izpolnjuje pogoje za prejem tega obvestila. Če je nastavljeno na 0, ne bo tega obvestila</br> prejel noben novinec. Večje kot je število, več novincev bo prejelo to obvestilo.<br> To obvestilo se pošlje samo novincem, ki so že opravili predlagana urejanja."
 }

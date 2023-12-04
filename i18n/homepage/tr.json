@@ -126,7 +126,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|düzenleme|düzenleme}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Son düzenlemelerin görüntülenme sayısı (son 60 gün):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Düzenlediğiniz maddelerin görünümlerini izleyin",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "Şimdiye kadar 0 değişiklik",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "Maddelere şu ana kadar 0 değişiklik",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:$1|Sizin}} için önemli konuları düzenleyerek özgür bilginin dünyaya yayılmasına yardım edin.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Önerilen düzenlemelere bakın",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Birkaç <strong>önerilen değişiklikle</strong> başlayın, ardından kaç kişinin {{GENDER:$1|katkılarınızı}} gördüğüne buradan bakın.",

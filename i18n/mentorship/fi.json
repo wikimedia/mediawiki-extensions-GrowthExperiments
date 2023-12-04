@@ -4,7 +4,8 @@
 			"Kyykaarme",
 			"MITO",
 			"Markus Mikkonen",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Rönttönen"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Selitys",
@@ -33,6 +34,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "päivää",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Tapahtui virhe. Yritä myöhemmin uudelleen.",
 	"growthexperiments-rcfilters-mentorship-title": "Mentorointi",
+	"growthexperiments-quit-mentorship-reason": "Syy",
 	"echo-category-title-ge-mentorship": "Mentorointi",
 	"growthexperiments-notification-body-mentee-claimed": "Syy: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Ei mitään",
@@ -40,8 +42,14 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Keskiarvo (oletus)",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Tallenna",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Peruuta",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Esittelyviesti",
+	"growthexperiments-mentor-dashboard-personalized-praise-title": "Lähetä kiitosta",
+	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Kokeneiden käyttäjien ja mentoreiden positiiviset viestit lisäävät muokkaajien pysyvyyttä.",
+	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "Lisätietoja",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "Edellinen sivu",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Seuraava sivu",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation": "Lähetä kiitokset",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Lähetä",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Peruuta",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Tapahtui virhe. Yritä myöhemmin uudelleen.",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Asetukset",

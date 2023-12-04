@@ -133,7 +133,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|<strong>Eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Seitenaufrufe der letzten Bearbeitungen (letzte 60 Tage):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Beobachte Seitenaufrufe von Artikeln, die du bearbeitet hast",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "Zur Zeit gibt es 0 Bearbeitungen",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "Zur Zeit gibt es an Artikel 0 Bearbeitungen",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Hilf freies Wissen auf der Welt zu erweitern, indem {{GENDER:$1|du}} Themen bearbeitest, die für dich am meisten bedeuten.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Vorgeschlagene Bearbeitungen ansehen",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Beginne mit ein paar <strong>vorgeschlagenen Bearbeitungen</strong> und sieh dir an, wie viele Menschen sich {{GENDER:$1|deine}} Bearbeitungen ansehen.",

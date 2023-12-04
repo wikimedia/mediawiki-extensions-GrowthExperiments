@@ -118,7 +118,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|עריכה <strong>אחת</strong>|<strong>$1</strong> עריכות}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "צפיות משינויים אחרונים (60 הימים האחרונים):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "הצגת צפיות בערים שערכת",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 עריכות בינתיים",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 עריכות של ערכים בינתיים",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:$1|תעזור|תעזרי}} להעניק ידע חופשי לעולם באמצעות עריכה בנושאים שהכי חשובים לך.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "לצפות בעריכות המוצעות",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "{{GENDER:$1|תתחיל|תתחילי}} מכמה <strong>עריכות מוצעות</strong>, ואז {{GENDER:$1|תראה|תראי}} כמה אנשים צופים בעריכות שלך כאן.",

@@ -100,5 +100,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Ці шаблони потрібні для функції завдання для новачків із [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|пропозицій зображень]]. Статті, які містять ці шаблони, не будуть перелічені у завданні із пропонування зображень.",
 	"growthexperiments-edit-config-delayed": "Зміни цього налаштування не набудуть чинності негайно (див. [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Закрити",
-	"specialpages-group-growth-tools": "Інструменти Зростання"
+	"specialpages-group-growth-tools": "Інструменти Зростання",
+	"growthexperiments-edit-config-level-up-notifications": "Сповіщення: функції Зростання",
+	"growthexperiments-edit-config-level-up-notifications-description": "Ці сповіщення надсилаються новачкам через 48 годин після створення облікового запису, і було показано, що вони збільшують ймовірність редагування упродовж тижня після надсилання сповіщень.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Сповіщення «Спробуйте пропоновані редагування»",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Максимальна кількість редагувань, яку може мати новачок, щоб отримати це сповіщення. Якщо встановлено значення 0, ніхто з новачків<br/> не отримає це сповіщення. Чим вище число, тим більше новачків отримають це сповіщення.<br> Це сповіщення надсилається лише новачкам, які не виконали Пропонованих редагувань.",
+	"growthexperiments-edit-config-keep-going-notification-title": "Сповіщення «Продовжуйте»",
+	"growthexperiments-edit-config-keep-going-notification-description": "Максимальна кількість пропонованих редагувань, яку новачок може виконати, щоб отримати це сповіщення. Якщо встановлено значення 0, ніхто з новачків<br/> не отримає це сповіщення. Чим вище число, тим більше новачків отримають це сповіщення.<br> Це сповіщення надсилається лише новачкам, які уже виконали хоча б одне пропоноване редагування."
 }
