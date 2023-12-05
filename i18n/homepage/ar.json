@@ -120,7 +120,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان اثنان|<strong>$1</strong> تعديلات|<strong>$1</strong> تعديلا|<strong>$1</strong> تعديل}} للمقالات",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "مرات المشاهدة من أحدث التعديلات (آخر 60 يوما):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "مراقبة مشاهدات المقالات التي قمت بتحريرها",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 تعديل إلى حدّ الآن",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 تعديل على المقالات إلى حدّ الآن",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:$1|ساعد|ساعدي}} في نشر المعرفة الحرّة إلى العالم عبر التعديل في مواضيع {{GENDER:$1|تهتمّ|تهتمّين}} بها.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "{{GENDER:$1|ابدأ|ابدئي}} ببعض <strong>التعديلات المقترحة</strong>، ثمّ {{GENDER:$1|اطّلع|اطّلعي}} على عدد مشاهدي مساهماتك هنا.",
