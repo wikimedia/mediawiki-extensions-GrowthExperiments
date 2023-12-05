@@ -26,7 +26,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Jouw}} startpagina",
 	"prefs-homepage": "Bewerkingsfuncties voor nieuwkomers",
 	"growthexperiments-homepage-enable": "Toon nieuwkomersstartpagina",
-	"growthexperiments-homepage-pt-link": "De gebruikersnaamkoppeling wordt gebruikt om een voor persoonlijke hulpmiddelen standaardstartpagina voor nieuwelingen te maken",
+	"growthexperiments-homepage-pt-link": "Naar de startpagina voor nieuwkomers gaan bij klikken op de gebruikersnaam in ‘Persoonlijke hulpmiddelen’",
 	"growthexperiments-homepage-email-header-noemail": "Voeg {{GENDER:$1|uw}} e-mailadres toe",
 	"growthexperiments-homepage-email-header-unconfirmed": "Bevestig {{GENDER:$1|uw}} e-mailadres",
 	"growthexperiments-homepage-email-header-confirmed": "E-mailadres toegevoegd",

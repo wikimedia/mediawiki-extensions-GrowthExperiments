@@ -7,7 +7,8 @@
 			"Saederup92",
 			"Steenth",
 			"Sarrus",
-			"SiGNOUT"
+			"SiGNOUT",
+			"Dipsacus fullonum"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
@@ -68,7 +69,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Tilføjelse af pålidelige kilder og ajourføring af artikler der er forældede.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Opret nye artikler og udvid korte artikler.",
 	"growthexperiments-homepage-suggested-edits-header": "Foreslåede redigeringer",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Dit}} indtryk",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påvirkning",
 	"growthexperiments-homepage-impact-subheader-text": "Folk læser de artikler {{GENDER:$1|du}} har redigeret!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Antal visninger siden {{GENDER:$1|du}} redigerede (de sidste 60 dage):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Du har}} foretaget <strong>$1</strong> {{PLURAL:$1|redigering|redigeringer}} (se alle)",
@@ -127,8 +128,8 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Vis {{GENDER:$2|dit}} spørgsmål på din {{GENDER:$1|mentors}} diskussionsside.",
 	"growthexperiments-homepage-mentorship-question-subject": "Spørgsmål fra [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Spørgsmål fra [[User:$1|$1]] på [[$2]]",
-	"growthexperiments-specialimpact-title": "Indtryk",
-	"growthexperiments-specialimpact-showing-for-other-user": "Viser indtryksdata for $1",
+	"growthexperiments-specialimpact-title": "Påvirkning",
+	"growthexperiments-specialimpact-showing-for-other-user": "Viser påvirkningsdata for $1",
 	"growthexperiments-specialimpact-invalid-username": "Manglende eller ugyldigt brugernavn.",
 	"growthexperiments-homepage-claimmentee-no-user": "Nybegynderen findes ikke.",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Du}} er allerede mentor for {{GENDER:$1|$1}}",

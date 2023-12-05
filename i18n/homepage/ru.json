@@ -33,7 +33,8 @@
 			"Tanzun",
 			"Urfiner",
 			"Wileyfoxyx",
-			"UniCollab"
+			"UniCollab",
+			"Novichev"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здравствуйте}}, {{bidi:$1}}!",
@@ -428,7 +429,7 @@
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Вы}} пропустили все предложения для этой статьи.",
 	"growthexperiments-addlink-skip-body": "{{GENDER:|Вы}} уверены, что не хотите принять никакие предложения?",
 	"growthexperiments-addlink-skip-accept": "Пропустить всё",
-	"growthexperiments-addlink-skip-reject": "Рассмотреть опять",
+	"growthexperiments-addlink-skip-reject": "Рассмотреть снова",
 	"grant-managementorship": "Настроить наставничество",
 	"newcomertasksinfo": "Задачи для новичков",
 	"newcomertasksinfo-no-data": "Нет доступных данных.",
