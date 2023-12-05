@@ -9,7 +9,7 @@ jest.mock( './icons.json', () => ( {
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const ScoreCards = require( './CScoreCards.vue' );
-const useUserImpact = require( '../ext.growthExperiments.Homepage.NewImpact/composables/useUserImpact.js' );
+const { useUserImpact } = require( '../ext.growthExperiments.Homepage.NewImpact/composables/useUserImpact.js' );
 const jsonData = require( './__mocks__/serverExportedData.json' );
 
 const renderComponent = ( { props = {}, provide = {} } = {} ) => {
