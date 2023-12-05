@@ -1,7 +1,7 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es5",
+		"wikimedia/client-es6",
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
@@ -13,6 +13,7 @@
 		"commonjs": true
 	},
 	"rules": {
+		"no-var": "off",
 		"max-len": "off"
 	},
 	"settings": {

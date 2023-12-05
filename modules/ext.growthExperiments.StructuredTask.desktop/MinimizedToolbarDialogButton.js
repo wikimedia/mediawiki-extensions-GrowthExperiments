@@ -23,7 +23,6 @@ function MinimizedToolbarDialogButton( config ) {
 OO.inheritClass( MinimizedToolbarDialogButton, OO.ui.ButtonWidget );
 
 MinimizedToolbarDialogButton.static.icon = 'robot';
-// eslint-disable-next-line es-x/no-regexp-prototype-flags
 MinimizedToolbarDialogButton.static.flags = [ 'primary', 'progressive' ];
 
 /**
