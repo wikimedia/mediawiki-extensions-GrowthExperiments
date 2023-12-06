@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Upwinxp"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentorska nadzorna plošča",
@@ -168,7 +169,7 @@
 	"growthexperiments-mentor-list-missing-key": "Ključ <code>$1</code> manjka",
 	"growthexperiments-mentor-list-datatype-mismatch": "Vrsta <code>$1</code> naj bi bila <code>$2</code>, vendar je <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Opredelitev mentorja vsebuje nepričakovani ključ <code>$1</code>",
-	"growthexperiments-mentor-writer-error-already-added": "{{GENDER:$1|Mentor|Mentorica|Mentor_ica}} $1 je že {{GENDER:$1|bil dodan|bila dodana|bil_a dodan_a}} na seznam mentorjev",
+	"growthexperiments-mentor-writer-error-already-added": "{{GENDER:$1|Mentor|Mentorica|Mentor/ica}} $1 je že {{GENDER:$1|bil dodan|bila dodana|bil/a dodan/a}} na seznam mentorjev",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "{{GRAMMAR:$1|Mentorja|Mentorice|Mentorja/ice}} $1 ni na seznamu mentorjev",
 	"growthexperiments-mentor-writer-error-anonymous-user": "{{GRAMMAR:$1|Mentor|Mentorica|Mentor_ica}} $1 ni {{GRAMMAR:$1|registriran uporabnik|registrirana uporabnica|registriran_a uporabnik_ca}}",
 	"growthexperiments-mentor-writer-error-message-too-long": "Uvodno sporočilo je predolgo (ID prizadetega uporabnika: $2). Največja dolžina je $1.",
@@ -204,7 +205,7 @@
 	"growthexperiments-manage-mentors-remove-mentor": "Odstrani",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Odstranili}} boste [[User:$1|$1]] kot {{GENDER:$1|mentorja|mentorico|mentorja_ico}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Razlog za odstranitev mentorja",
-	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Uporabnik|Uporabnica|Uporabnik_ca}} [[User:$1|$1]] ni več {{GENDER:$1|mentor|mentorica|mentor_ica}}.",
+	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Uporabnik|Uporabnica|Uporabnik/ca}} [[User:$1|$1]] ni več {{GENDER:$1|mentor|mentorica|mentor/ica}}.",
 	"growthexperiments-manage-mentors-return-back": "Lahko se [[Special:ManageMentors|vrnete]] na seznam mentorjev.",
 	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "Dodajanje $1 kot mentorja",
 	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "Dodajanje $1 kot mentorja: $2",
