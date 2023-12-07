@@ -301,6 +301,8 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|преузео|преузела}} је новајлију {{GENDER:$6|$3}} (без претходног ментора)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|поставио|поставила}} је {{GENDER:$5|корисника|корисницу}} $7 за {{GENDER:$5|ментора|менторку}} новајлије {{GENDER:$6|$3}} ({{GENDER:$4|претходни ментор|претходна менторка}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|поставио|поставила}} је {{GENDER:$5|корисника|корисницу}} $7 за {{GENDER:$5|ментора|менторку}} новајлије {{GENDER:$6|$3}} (без претходног ментора)",
+	"logentry-growthexperiments-addimage-accepted": "$1 је {{GENDER:$2|прегледао|прегледала}} предлог слике за $3: прихваћено",
+	"logentry-growthexperiments-addimage-rejected": "$1 је {{GENDER:$2|прегледао|прегледала}} предлог слике за $3: одбијено",
 	"log-action-filter-growthexperiments-claimmentee": "промена ментора",
 	"log-action-filter-growthexperiments-setmentor": "додела новајлија",
 	"log-action-filter-growthexperiments-addlink": "Предлог веза",
