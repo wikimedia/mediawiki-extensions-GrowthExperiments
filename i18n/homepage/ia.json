@@ -105,7 +105,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> modification{{PLURAL:$1||es}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Visitas de modificationes recente (ultime 60 dies):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Surveliar visitas de articulos que tu ha modificate",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 modificationes usque al presente",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 modificationes de articulos usque al presente",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Adjuta a extender le cognoscentia libere al mundo modificante le articulos de {{GENDER:$1|tu}} interesse.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Vider modificationes suggerite",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Comencia con alcun poc <strong>modificationes suggerite</strong>, alora vide quante personas visita {{GENDER:$1|tu}} contributiones hic.",

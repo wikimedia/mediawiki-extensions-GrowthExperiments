@@ -120,7 +120,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong>টি {{PLURAL:$1|সম্পাদনা}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "সাম্প্রতিক সম্পাদনার পরিদর্শন (বিগত ৬০ দিনের):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "আপনার অবদান রাখা নিবন্ধের পরিদর্শনসংখ্যা দেখুন",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "এখন পর্যন্ত ০টি সম্পাদনা করেছেন",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "এখন পর্যন্ত নিবন্ধে ০টি সম্পাদনা করেছেন",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:$1|আপনার}} কাছে সবচেয়ে গুরুত্বপূর্ণ মনে হয় এমন বিষয়গুলি সম্পাদনা করে বিনামূল্যে জ্ঞান ছড়িয়ে দিতে সাহায্য করুন।",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "পরামর্শকৃত সম্পাদনাগুলি দেখুন",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "প্রথমে কিছু <strong>পরামর্শকৃত সম্পাদনা</strong> দিয়ে শুরু করুন, তারপর এখানে দেখুন কতজন মানুষ {{GENDER:$1|আপনার}} এই অবদান দেখছেন।",

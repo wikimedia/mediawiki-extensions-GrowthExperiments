@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ElangoRamanujam"
+			"ElangoRamanujam",
+			"Fahimrazick"
 		]
 	},
 	"growthexperiments-homepage-suggestededits-pager-end": "முடிவு",
@@ -19,5 +20,5 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "விரிவாக்குக",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "இணைப்புகள்",
 	"growthexperiments-addimage-rejectiondialog-action-done": "முடிந்த",
-	"growthexperiments-addimage-viewer-close-button": "மூடுக"
+	"growthexperiments-addimage-viewer-close-button": "மூடு"
 }
