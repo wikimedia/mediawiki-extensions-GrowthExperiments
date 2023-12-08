@@ -41,11 +41,11 @@ AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
 		return;
 	}
 	var data = response.visualeditor || response.visualeditoredit;
-	var doc = ve.parseXhtml( data.content );
+	var doc = ve.createDocumentFromHtml( data.content );
 	var addlinkData = suggestedEditSession.taskData;
 	// TODO start loading this earlier (T267691)
 	this.annotateSuggestions( doc, addlinkData.links );
-	data.content = '<!doctype html>' + ve.serializeXhtml( doc );
+	data.content = '<!doctype html>' + ve.properOuterHtml( doc.documentElement );
 };
 
 /**
