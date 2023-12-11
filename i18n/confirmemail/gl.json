@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño"
+			"Toliño",
+			"O Breixo"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|que é isto?]])",
 	"growthexperiments-confirmemail-emailhelp": "O correo electrónico é necesario para recuperar a súa conta se perde o seu contrasinal.",
 	"growthexperiments-confirmemail-emailrecommended": "Enderezo de correo electrónico (recomendado)",
-	"growthexperiments-confirmemail-emailwarning": "Busca un correo electrónico noso para verificar o seu enderezo.",
+	"growthexperiments-confirmemail-emailwarning": "Busque un correo electrónico noso para verificar o seu enderezo.",
 	"growthexperiments-confirmemail-confirm-subject": "Dámoslle a benvida a {{SITENAME}}: Confirme o seu enderezo de correo electrónico",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Ola}}, $2:\n\nGrazas por engadir un correo electrónico á súa conta de {{SITENAME}}, rexistrada desde o enderezo IP $1.\n\nFaga clic no botón de abaixo para confirmalo como o enderezo de correo electrónico que se ligará á súa conta \"$2\":\n\n$3 \n\nNota: Este código de confirmación <strong>caduca o $4</strong>.\n\nGrazas,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmación do enderezo de correo electrónico (porque non rexistrou a conta ou por calquera outro motivo), prema nesta ligazón de cancelación:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Confirmar o enderezo de correo electrónico",

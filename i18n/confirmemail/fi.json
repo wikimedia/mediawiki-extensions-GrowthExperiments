@@ -3,12 +3,14 @@
 		"authors": [
 			"Kyykaarme",
 			"MITO",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Rönttönen"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|mikä tämä on?]])",
 	"growthexperiments-confirmemail-emailhelp": "Sähköpostiosoitetta tarvitaan käyttäjätilisi palauttamiseksi, jos unohdat salasanasi.",
 	"growthexperiments-confirmemail-emailrecommended": "Sähköpostiosoite (suositeltava)",
+	"growthexperiments-confirmemail-emailwarning": "Ole hyvä ja etsi meidän lähettämämme sähköposti vahvistaaksesi osoitteesi.",
 	"growthexperiments-confirmemail-confirm-subject": "Tervetuloa sivustolle {{SITENAME}}: Vahvista sähköpostiosoitteesi",
 	"growthexperiments-confirmemail-confirm-button": "Varmenna sähköpostiosoite"
 }

@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Achiri Bitamsimli",
+			"Adam Tuferu",
+			"Alhassan Peter",
+			"Anamzooya",
+			"Attah Mohammed",
+			"Chirifo",
+			"Din-nani1",
+			"Dnshitobu",
+			"Hasslaebetch",
+			"Hidrash",
+			"Jahinfo",
+			"Naporo",
+			"Ruky Wunpini",
+			"Sir Amugi",
+			"Yakubu Fadilatu"
+		]
+	},
+	"growthexperiments-homepage-startediting-header": "Pilimi maaliniŋ",
+	"growthexperiments-homepage-startediting-dialog-progress": "$1 zaŋ $2",
+	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Nyaaŋa",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Bɔmi tɛha",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Naaya",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Alaha",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Din saɣisi",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Kpɛma",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Deemi li",
+	"growthexperiments-tour-response-button-okay": "Deemi li",
+	"growthexperiments-homepage-recent-questions-archived": "Lahibali kura gubu shee"
+}
