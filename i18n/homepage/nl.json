@@ -309,7 +309,7 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Alles selecteren",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Alles verwijderen",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Kies enkele onderwerpen die {{GENDER:$1|je}} wil bewerken",
-	"growthexperiments-homepage-claimmentee-title": "Claim mentee",
+	"growthexperiments-homepage-claimmentee-title": "Leerling aannemen",
 	"growthexperiments-homepage-claimmentee-pretext": "Op deze pagina kan {{GENDER:$1|je}} de mentor van de mentee veranderen in {{GENDER:$1|jezelf}}. Het wordt aanbevolen om deze functie te gebruiken voor gebruikers die {{GENDER:$1|je}} kent, of voor gebruikers die {{GENDER:$1|je}} begeleidt op een cursus.",
 	"growthexperiments-homepage-claimmentee-mentee": "Gebruikersnaam van de mentee",
 	"growthexperiments-homepage-claimmentee-reason": "Reden om deze mentee te claimen",
