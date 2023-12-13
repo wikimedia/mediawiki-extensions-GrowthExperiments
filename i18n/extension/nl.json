@@ -57,7 +57,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "Bestemmingspagina voor een link over het maken van een nieuw artikel",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Bestemmingspagina voor een link over het toevoegen van afbeeldingen in de visuele editor",
 	"growthexperiments-edit-config-mentorship": "Mentorschap",
-	"growthexperiments-edit-config-mentorship-description-structured": "Mentoren kunnen twee rollen hebben. Standaard worden ze willekeurig toegewezen aan nieuwkomers. Voor mentoren die alleen mentor willen zijn voor mensen uit evenementen of cursussen bestaat er een optie: zij krijgen geen nieuwkomers toegewezen, maar kunnen ze wel aanvragen.\n\nHet ideale aantal mentoren is: één mentor voor elke groep van 500 nieuwe accounts, met een minimum van 3 mentoren.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|Meer weten over hoe mentorschap werkt]]",
+	"growthexperiments-edit-config-mentorship-description-structured": "Mentoren kunnen twee rollen hebben. Standaard worden ze willekeurig toegewezen aan nieuwkomers. Voor mentoren die alleen mentor willen zijn voor mensen uit evenementen of cursussen is er een andere mogelijkheid: zij krijgen geen nieuwkomers toegewezen, maar kunnen ze wel zelf aannemen.\n\nHet ideale aantal mentoren is: één mentor voor elke groep van 500 nieuwe accounts, met een minimum van 3 mentoren.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|Meer weten over hoe mentorschap werkt]]",
 	"growthexperiments-edit-config-mentorship-enabled": "Zijn mentorschapsfuncties ingeschakeld?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Ja",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nee",
