@@ -29,7 +29,7 @@
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Ongeldig item '$1' voor parameter 'reasons', moet een van de volgende zijn: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Gegevens voor koppelingsaanbeveling niet gevonden",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Onverwachte doelen voor koppelingsaanbeveling: $1",
-	"growthexperiments-underlinked-rescore-profile": "Intern rescore-profiel gebruikt in koppelingsaanbevelingen van GrowthExperiments om prioriteit te geven aan artikelen die nog niet voldoende koppelingen hebben.",
+	"growthexperiments-underlinked-rescore-profile": "Intern herschikkingsprofiel gebruikt in koppelingsaanbevelingen van GrowthExperiments om prioriteit te geven aan artikelen waarnaar er nog niet voldoende koppelingen zijn.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "De parameter <var>editRevId</var> is vereist wanneer de parameter <var>accepted</var> is ingesteld op <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "De parameter <var>editRevId</var> kan niet worden gebruikt als de parameter <var>accepted</var> is ingesteld op <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "De parameter <var>caption</var> is vereist wanneer de parameter <var>accepted</var> is ingesteld op <kbd>true</kbd>.",

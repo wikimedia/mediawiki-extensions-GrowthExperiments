@@ -15,5 +15,19 @@
 	"growthexperiments-homepage-email-header-confirmed": "لادريسة د ليميل تزادت",
 	"growthexperiments-homepage-email-header-startemail": "لادريسة د ليميل: $1",
 	"growthexperiments-homepage-email-text-noemail": "لوصف د لمقال تجدد",
-	"tag-newcomer_task_add_link": "[[mw:Growth/Personalized first day/Structured tasks/Add a link|قتيراح: زيد ليانات]]"
+	"growthexperiments-homepage-new-impact-header": "التأتير ديالك",
+	"growthexperiments-homepage-impact-header": "التأتير ديالك",
+	"growthexperiments-homepage-impact-subheader-text": "أكتر ما تشاف (من التبديل ديالك)",
+	"growthexperiments-homepage-impact-subheader-text-third-person": "أكتر ما تشاف (من فاش تدار التبديل)",
+	"growthexperiments-homepage-impact-subheader-subtext": "الشوفات من فاش درتي التبديل (60 يوم اللخرة):",
+	"tag-newcomer_task_add_link": "[[mw:Growth/Personalized first day/Structured tasks/Add a link|قتيراح: زيد ليانات]]",
+	"growthexperiments-homepage-recent-questions-posted-on": "تپوسطا من $1",
+	"growthexperiments-homepage-recent-questions-archived-tooltip": "هاد السؤال ترشّڤ؛ حيت ف لغالب تحطّ من مدة طويلة.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "صافي!",
+	"growthexperiments-addlink-summary-summary": "لميزة د قتيراح الليانات: $1 {{PLURAL:$1|ليان تزاد|ليانات تزادو}}.",
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "صافي!",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "صافي!",
+	"growthexperiments-tour-newimpact-discovery-title": "أپدييت د الديزاين",
+	"growthexperiments-tour-newimpact-discovery-description": "راه زدنا ف عرض لأنشطة د التبديل ديالك!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "صافي!"
 }

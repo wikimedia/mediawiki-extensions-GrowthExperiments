@@ -112,6 +112,7 @@
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Дополнительная информация о том, как работают благодарности",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Ваша}} самая длинная серия на данный момент $2 {{PLURAL:$2|день|дней}}, которую {{GENDER:$1|вы}} достигли $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Самые просматриваемые (после {{GENDER:$1| вашего}} редактирования)",
+	"growthexperiments-homepage-impact-subheader-text-third-person": "Самые просматриваемые (с момента редактирования)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Просмотров после {{GENDER:$1|ваших}} правок (за 60 дней):",
 	"growthexperiments-homepage-impact-contributions-link": "Посмотреть все {{GENDER:$2|ваши}} правки ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Вы}} ещё не создали и не отредактировали ни одну статью.",
