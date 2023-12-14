@@ -266,7 +266,11 @@ AddImageArticleTarget.prototype.getImageDimensions = function ( imageData ) {
 	var targetWidth = surface.getContext().isMobile() ?
 		Math.min(
 			originalDimensions.width,
-			surface.getView().$documentNode.width(),
+			// Use the editor overlay element instead of the surface since its width is not
+			// computed while VE is not loaded (eg: slow connections). The overlay width is the
+			// same as the surface on phones and it will be capped by MAX_IMAGE_DISPLAY_WIDTH on
+			// tablet.
+			this.$element.width(),
 			MAX_IMAGE_DISPLAY_WIDTH
 		) : this.getDefaultThumbSize();
 
