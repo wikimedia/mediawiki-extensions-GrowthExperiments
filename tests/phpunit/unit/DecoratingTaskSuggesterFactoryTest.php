@@ -46,12 +46,12 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 
 	private function getEmptyContainer() {
 		return new class implements ContainerInterface {
-			public function get( $id ) {
+			public function get( string $id ) {
 				throw new class implements ContainerExceptionInterface {
 				};
 			}
 
-			public function has( $id ) {
+			public function has( string $id ): bool {
 				return false;
 			}
 		};
