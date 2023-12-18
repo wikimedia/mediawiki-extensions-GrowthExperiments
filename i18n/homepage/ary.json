@@ -12,5 +12,9 @@
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|زيد|زيدي}} لادريسة د ليميل ديالك",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|كونفيرمي|كونفيرمي}} لادريسة د ليميل ديالك",
 	"growthexperiments-homepage-email-header-confirmed": "لادريسة د ليميل تزادت",
-	"growthexperiments-homepage-email-text-noemail": "لوصف د لمقال تجدد"
+	"growthexperiments-homepage-email-text-noemail": "لوصف د لمقال تجدد",
+	"growthexperiments-homepage-impact-header": "التأتير ديالك",
+	"growthexperiments-homepage-impact-subheader-subtext": "الشوفات من فاش درتي التبديل (60 يوم اللخرة):",
+	"growthexperiments-homepage-recent-questions-posted-on": "تپوسطا من $1",
+	"growthexperiments-homepage-recent-questions-archived-tooltip": "هاد السؤال ترشّڤ؛ حيت ف لغالب تحطّ من مدة طويلة."
 }
