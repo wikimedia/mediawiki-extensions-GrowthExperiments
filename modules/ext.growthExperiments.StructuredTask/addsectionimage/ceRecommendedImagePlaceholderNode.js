@@ -12,8 +12,9 @@ function CERecommendedImagePlaceholderNode() {
 		.css( {
 			// width is the sum of:
 			// - 2x8px padding on desktop
+			// - - 2x16px margin on mobile
 			// - the image
-			width: this.model.getAttribute( 'width' ) + ( OO.ui.isMobile() ? 0 : 16 ),
+			width: this.model.getAttribute( 'width' ) + ( OO.ui.isMobile() ? -32 : 16 ),
 			// height is the sum of:
 			// - 2x7px padding on desktop / 2x9.6px padding on mobile
 			// - header (desktop only): 32 px icon height + 8px bottom margin
