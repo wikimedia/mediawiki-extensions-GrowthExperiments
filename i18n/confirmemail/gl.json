@@ -1,25 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
+			"MAGHOI",
 			"O Breixo",
 			"Toliño"
 		]
 	},
-	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|que é isto?]])",
-	"growthexperiments-confirmemail-emailhelp": "O correo electrónico é necesario para recuperar a súa conta se perde o seu contrasinal.",
+	"growthexperiments-confirmemail-captcha-help": "([[Especial:Captcha/help|que é isto?]])",
+	"growthexperiments-confirmemail-emailhelp": "Cómpre o correo electrónico para recuperar a súa conta se perde o seu contrasinal.",
 	"growthexperiments-confirmemail-emailrecommended": "Enderezo de correo electrónico (recomendado)",
 	"growthexperiments-confirmemail-emailwarning": "Busque un correo electrónico noso para verificar o seu enderezo.",
-	"growthexperiments-confirmemail-confirm-subject": "Dámoslle a benvida a {{SITENAME}}: Confirme o seu enderezo de correo electrónico",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Ola}}, $2:\n\nGrazas por engadir un correo electrónico á súa conta de {{SITENAME}}, rexistrada desde o enderezo IP $1.\n\nFaga clic no botón de abaixo para confirmalo como o enderezo de correo electrónico que se ligará á súa conta \"$2\":\n\n$3 \n\nNota: Este código de confirmación <strong>caduca o $4</strong>.\n\nGrazas,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmación do enderezo de correo electrónico (porque non rexistrou a conta ou por calquera outro motivo), prema nesta ligazón de cancelación:\n\n$5",
-	"growthexperiments-confirmemail-confirm-button": "Confirmar o enderezo de correo electrónico",
+	"growthexperiments-confirmemail-confirm-subject": "Benvido/a a {{SITENAME}}: Por favor, confirme o seu enderezo de correo electrónico",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Ola}}, $2:\n\nGrazas por engadir un correo electrónico á súa conta de {{SITENAME}}, rexistrada desde o enderezo IP $1.\n\nFaga clic no botón de abaixo para confirmalo como o enderezo de correo electrónico que se ligará á súa conta \"$2\":\n\n$3 \n\nNota: Este código de confirmación caduca o $4.\n\nGrazas,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmación do enderezo de correo electrónico (porque non rexistrou a conta ou por calquera outro motivo), prema nesta ligazón de cancelación:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Confirme o enderezo de correo electrónico",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Ola}}, $2:\n\nGrazas por engadir un correo electrónico á súa conta de {{SITENAME}}, rexistrada desde o enderezo IP $1.\n\nFaga clic no botón de abaixo para confirmalo como o enderezo de correo electrónico que se ligará á súa conta \"$2\":\n\n$3 \n\nNota: Este código de confirmación caduca o $4.\n\nGrazas,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmación do enderezo de correo electrónico (porque non rexistrou a conta ou por calquera outro motivo), prema nesta ligazón de cancelación:\n\n$5",
-	"growthexperiments-signupcampaign-title": "Grazas por doar! Únase á comunidade de editores para mellorar Wikipedia hoxe",
-	"growthexperiments-signupcampaign-body": "Editar Wikipedia pode ser tan sinxelo como engadir unha ligazón ou cambiar unha palabra. Reciba suxestións para facer artigos en temas {{GENDER:|do seu}} interese despois de crear a súa conta.",
-	"growthexperiments-marketingvideocampaign-title": "Xente coma vostede fai Wikipedia",
-	"growthexperiments-marketingvideocampaign-body": "280.000 editores son voluntarios cada mes. Unirase a eles?\n\nSabemos que facer a súa primeira edición adoita ser intimidante, pero en realidade é bastante sinxelo. Pregunte aos nosos editores dedicados, que o contan neste vídeo:",
-	"growthexperiments-marketingvideocampaign-body-mobile": "Miles de persoas coma vostede son as que elaboran Wikipedia. Unirase a eles?\n\nEsta é unha mensaxe dos nosos editores para vostede:",
-	"growthexperiments-signupcampaign-bullet1": "Artigos suxeridos sobre {{GENDER:|os seus}} intereses",
-	"growthexperiments-signupcampaign-bullet2": "Pida axuda a un editor experimentado",
-	"growthexperiments-signupcampaign-bullet3": "Comece con edicións pequenas e sinxelas",
-	"growthexperiments-campaigns-footer": "Ao crear {{GENDER:|a súa}} conta nesta páxina, asociarase a esta campaña con fins de experiencia e análise."
+	"growthexperiments-signupcampaign-title": "Grazas por doar! Agora únete á comunidade de editores para mellorar a Wikipedia hoxe",
+	"growthexperiments-signupcampaign-body": "Editar a Wikipedia pode ser tan sinxelo como engadir unha ligazón ou cambiar unha palabra. Recibe suxestións de artigos en {{GENDER:|teu}} temas de interese despois de crear a túa conta.",
+	"growthexperiments-marketingvideocampaign-title": "A Wikipedia está construída por persoas coma ti",
+	"growthexperiments-marketingvideocampaign-body": "280.000 editores son voluntarios cada mes. Unirase a eles?\n\nSabemos que facer a primeira edición adoita ser intimidante, mais, en realidade, é bastante sinxelo. Pregunte aos nosos editores dedicados, que o contan neste vídeo:",
+	"growthexperiments-marketingvideocampaign-body-mobile": "Miles de persoas coma ti son as que constrúen a Wikipedia. Uniraste a eles?\n\nEsta é unha mensaxe dos nosos editores para ti:",
+	"growthexperiments-signupcampaign-bullet1": "Artigos suxeridos en {{GENDER:|os teus}} intereses",
+	"growthexperiments-signupcampaign-bullet2": "Pide axuda a un editor experimentado",
+	"growthexperiments-signupcampaign-bullet3": "Comeza con edicións pequenas e sinxelas",
+	"growthexperiments-campaigns-footer": "Ao crear {{GENDER:|a túa}} conta nesta páxina, asociarase a esta campaña con fins de experiencia e análise."
 }

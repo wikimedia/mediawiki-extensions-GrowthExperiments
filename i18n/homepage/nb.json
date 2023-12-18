@@ -109,7 +109,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|redigering|redigeringer}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Visninger fra nylige redigeringer (siste 60 dager):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Overvåk visninger i artikler du har redigert",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 redigeringer hittil",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 artikkelredigeringer hittil",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Hjelp til med å øke verdens frie kunnskap ved å redigere emnene som betyr mest for {{GENDER:$1|deg}}.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Se foreslåtte redigeringer",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Begynn med noen <strong>foreslåtte redigeringer</strong>, og se hvor mange som leser bidragene {{GENDER:$1|dine}} her.",
