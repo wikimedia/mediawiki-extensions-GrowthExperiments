@@ -439,7 +439,9 @@ RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 		thumbWidth = window.innerWidth > COMPACT_VIEW_BREAKPOINT ? 160 : 120,
 		imageRenderData = AddImageUtils.getImageRenderData( metadata, window, thumbWidth );
 	this.$reason.text( metadata.reason );
-	this.$imageThumbnail.css( 'background-image', 'url("' + imageRenderData.src + '")' );
+	this.$imageThumbnail
+		.addClass( 'mw-no-invert' )
+		.css( 'background-image', 'url("' + imageRenderData.src + '")' );
 	// The description can be in a different language than the UI or content language, so the
 	// text directionality should be set to auto instead of following the UI or the content.
 	this.$imageInfo.append( [

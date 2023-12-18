@@ -682,7 +682,8 @@ RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
 	ve.init.platform.linkCache.get( this.currentDataModel.getAttribute( 'lookupTitle' ) )
 		.then( function ( linkData ) {
 			if ( linkData.imageUrl ) {
-				icon.$element.addClass( 'mw-ge-recommendedLinkToolbarDialog-linkPreview-hasImage' )
+				icon.$element
+					.addClass( 'mw-ge-recommendedLinkToolbarDialog-linkPreview-hasImage mw-no-invert' )
 					.css( 'background-image', 'url(' + linkData.imageUrl + ')' );
 			}
 		} );
