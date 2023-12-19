@@ -83,7 +83,7 @@ class DatabaseMentorStore extends MentorStore {
 	 */
 	public function getMenteesByMentor(
 		UserIdentity $mentor,
-		?string $mentorRole = null,
+		string $mentorRole,
 		bool $includeHiddenUsers = false,
 		bool $includeInactiveUsers = true,
 		int $flags = 0
@@ -92,14 +92,9 @@ class DatabaseMentorStore extends MentorStore {
 		$db = $this->loadBalancer->getConnection( $index );
 
 		$conds = [
-			'gemm_mentor_id' => $mentor->getId()
+			'gemm_mentor_id' => $mentor->getId(),
+			'gemm_mentor_role' => $mentorRole,
 		];
-
-		if ( $mentorRole === null ) {
-			wfDeprecated( __METHOD__ . ' with no role parameter', '1.39' );
-		} else {
-			$conds['gemm_mentor_role'] = $mentorRole;
-		}
 
 		if ( !$includeInactiveUsers ) {
 			$conds['gemm_mentee_is_active'] = true;

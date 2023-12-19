@@ -61,15 +61,6 @@ class Mentor implements IMentorWeights {
 	}
 
 	/**
-	 * @return bool Is the mentor automatically assigned to newcomers?
-	 * @deprecated since 1.41, use getWeight() instead
-	 */
-	public function getAutoAssigned(): bool {
-		wfDeprecated( __METHOD__, '1.41' );
-		return $this->weight === self::WEIGHT_NONE;
-	}
-
-	/**
 	 * @return int Mentor's weight (one of Mentor::WEIGHT_*)
 	 */
 	public function getWeight(): int {
@@ -81,15 +72,6 @@ class Mentor implements IMentorWeights {
 	 */
 	public function setIntroText( ?string $introText ): void {
 		$this->introText = $introText;
-	}
-
-	/**
-	 * @param bool $autoAssigned
-	 * @deprecated since 1.41, use getWeight() instead
-	 */
-	public function setAutoAssigned( bool $autoAssigned ): void {
-		wfDeprecated( __METHOD__, '1.41' );
-		$this->setWeight( self::WEIGHT_NONE );
 	}
 
 	/**
