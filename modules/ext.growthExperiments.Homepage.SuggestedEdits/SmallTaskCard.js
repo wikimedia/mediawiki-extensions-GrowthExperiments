@@ -69,6 +69,7 @@
 
 			if ( this.task.thumbnailSource ) {
 				$image
+					.addClass( 'mw-no-invert' )
 					.css( 'background-image', 'url("' + this.task.thumbnailSource + '")' );
 			} else if ( this.task.thumbnailSource === undefined ) {
 				$image.addClass( 'mw-ge-small-task-card-image-skeleton' );
