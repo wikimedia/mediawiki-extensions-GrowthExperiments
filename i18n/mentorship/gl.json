@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Avelino",
+			"O Breixo"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Procurar",
+	"growthexperiments-mentorship-enrollasmentor-title": "Inscríbete como {{GENDER:|mentor|mentora}}",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Mensaxe de presentación",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscribirse",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Engadirme como {{GENDER:|mentor|mentora}}",
+	"tag-mentor list change": "Cambio da lista de mentores"
+}

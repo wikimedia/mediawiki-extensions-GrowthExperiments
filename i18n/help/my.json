@@ -4,7 +4,8 @@
 			"Dr Lotus Black",
 			"Ninjastrikers",
 			"Phosai",
-			"Teitei Para"
+			"Teitei Para",
+			"Msuantak"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "တည်းဖြတ်သူအကူအညီစားပွဲခုံအား အသုံးပြုခွင့်ပေးမည်",
@@ -31,7 +32,7 @@
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "နောက်အကြံပြုချက်-",
 	"growthexperiments-help-panel-postedit-footer": "အကြံပြုထားသောတည်းဖြတ်မှုများ ပိုမိုကြည့်ရှုရန်",
 	"growthexperiments-help-panel-questionreview-title": "အကူညီစားပွဲဝိုင်းတွင် မေးမြန်းရန်",
-	"growthexperiments-help-panel-questionreview-header": "မေးခွန်းတခု မေးမြန်းလိုက်ပါက သင်၏အသုံးပြုသူအမည် \"$2\" အနေဖြင့် $1သို့  <strong>လူသိရှင်ကြား</strong>ပေါ်နေမည်ဖြစ်ပါသည်။ အခြားစေတနာ့ဝန်ထမ်းများက နောက်တရက်အတွင်း သို့မဟုတ် ရက်အနည်းငယ်အတွင်း ဖြေပေးပါလိမ့်မည်။",
+	"growthexperiments-help-panel-questionreview-header": "မေးခွန်းတခု မေးမြန်းလိုက်ပါက သင်၏အသုံးပြုသူအမည် \"$2\" အနေဖြင့် $1 သို့  <strong>လူသိရှင်ကြား လွှင့်တင်သွားမည်</strong>ဖြစ်ပါသည်။ အခြားစေတနာ့ဝန်ထမ်းများက နောက်တစ်ရက်အတွင်း သို့မဟုတ် ရက်အနည်းငယ်အတွင်း ဖြေပေးပါလိမ့်မည်။",
 	"growthexperiments-help-panel-questionreview-label": "သင်၏ မေးခွန်း",
 	"growthexperiments-help-panel-questionreview-include-article-title": "မိမိ၏မေးခွန်းနှင့်အတူ စာမျက်နှာခေါင်းစဉ် ပါဝင်ရန်",
 	"growthexperiments-help-panel-question-subject-template": "အကူအညီစားပွဲ မေးခွန်း",
@@ -69,7 +70,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step1": "မွမ်းမံရန်လိုအပ်သော သတင်းအချက်အလက်ကိုတွေ့ပါက \"$1\" ကိုနှိပ်၍ {{GENDER:|စတင်}}နိုင်ပါသည်။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step2": "ရေးသားခြင်း၊ ဖျက်ပစ်ခြင်းဖြင့် ဆောင်းပါးကိုမွမ်းမံပါ။ အကယ်၍ အချက်အလက်များကို {{GENDER:|သင်}}ပြောင်းလဲလိုက်ပါက ရင်းမြစ်အတွက် [[$1|အကိုးအကားတခု]] ထည့်သင့်ပါသည်။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step2-no-link": "ရေးသားခြင်း၊ ဖျက်ပစ်ခြင်းဖြင့် ဆောင်းပါးကိုမွမ်းမံပါ။ အကယ်၍ အချက်အလက်များကို {{GENDER:|သင်}}ပြောင်းလဲလိုက်ပါက ရင်းမြစ်အတွက် အကိုးအကားတခု ထည့်သင့်ပါသည်။",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-publish": "ဆောင်းပါးကို ဆက်လက်မွမ်းမံပါ၊ သို့မဟုတ် {{GENDER:|သင်၏}}တည်းဖြတ်မှုကို သိမ်းဆည်းရန် \"$1\" ကိုနှိပ်ပါ။",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-publish": "ဆောင်းပါးကို ဆက်လက်မွမ်းမံပါ၊ သို့မဟုတ် {{GENDER:|သင်၏}}တည်းဖြတ်မှုကို လွှင့်တင်ရန် \"$1\" ကိုနှိပ်ပါ။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-text-publish": "[[$1|မွမ်းမံခြင်းအကြောင်း ပိုမိုသင်ယူရန်]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-value": "တိုသည်ဖြစ်စေ ရှည်သည်ဖြစ်စေ {{SITENAME}} ဆောင်းပါးအတော်များများသည် အချက်အလက်ပိုမိုပေါင်းထည့်၍ ချဲ့ကားနိုင်ပါသည်။ ယင်းက အကြောင်းအရာတခုအကြောင်း ပိုမိုလေ့လာရန် အကူညီဖြစ်ပါသည်။",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-calm": "ကွဲပြားချက်တခုပြုလုပ်ဖို့ {{GENDER:|သင့်အနေဖြင့်}} ဤဆောင်းပါးတွင် အချက်လက်တစ်ခု ထည့်သွင်းရန်သာလိုအပ်သည်။ စာပိုဒ်တခုလုံးကို ပြင်ဆင်ရန် မလိုအပ်ပါ။",

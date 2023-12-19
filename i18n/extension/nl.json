@@ -10,7 +10,7 @@
 			"McDutchie"
 		]
 	},
-	"growthexperiments-desc": "Deze extensie bevat experimenten uitgevoerd door het Growth-team.",
+	"growthexperiments-desc": "Deze uitbreiding bevat experimenten uitgevoerd door het Growth-team.",
 	"growthexperiments-config-validator-additional-fields": "De nieuwe configuratie heeft configuratiesleutels die hier niet kunnen worden aangepast.",
 	"growthexperiments-config-validator-error": "Validatie voor $1 mislukt met: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> zou moeten zijn <code>$2</code>, maar is <code>$3</code>",
