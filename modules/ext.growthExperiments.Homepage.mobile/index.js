@@ -1,3 +1,4 @@
+var mobile = require( 'mobile.startup' );
 ( function () {
 	'use strict';
 	var HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
@@ -18,8 +19,7 @@
 		$summaryModules = $summaryModulesContainer.find( summaryModulesSelector ),
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$overlayModules = $( '.growthexperiments-homepage-overlay-container' ),
-		Drawer = mw.mobileFrontend.require( 'mobile.startup' ).Drawer,
-		Anchor = mw.mobileFrontend.require( 'mobile.startup' ).Anchor;
+		Drawer = mobile.Drawer;
 
 	/**
 	 * Remove query params before the mobile modules are initialized.
@@ -41,9 +41,8 @@
 	 */
 	function onMobileInit() {
 		var MobileOverlay = require( './MobileOverlay.js' ),
-			OverlayManager = mw.mobileFrontend.require( 'mobile.startup' ).OverlayManager,
 			router = require( 'mediawiki.router' ),
-			overlayManager = OverlayManager.getSingleton(),
+			overlayManager = mobile.getOverlayManager(),
 			lazyLoadModules = [],
 			overlays = {},
 			currentModule = null,
@@ -224,18 +223,18 @@
 						$( '<footer>' )
 							.addClass( 'growthexperiments-homepage-welcome-notice-footer' )
 							.append(
-								new Anchor( {
+								$( '<a>' ).attr( {
 									href: '#',
-									additionalClassNames: 'growthexperiments-homepage-welcome-notice-button',
-									progressive: true,
+									class: 'growthexperiments-homepage-welcome-notice-button'
+								} ).text(
 									// The following messages are used here:
 									// * growthexperiments-homepage-welcome-notice-button-text-variant-c
 									// * growthexperiments-homepage-welcome-notice-button-text-variant-d
-									label: mw.msg(
+									mw.msg(
 										'growthexperiments-homepage-welcome-notice-button-text-variant-' +
 										variantKey
 									)
-								} ).$el
+								)
 							)
 					)
 			],
@@ -303,13 +302,13 @@
 						$( '<footer>' )
 							.addClass( 'growthexperiments-homepage-newimpact-discovery-footer' )
 							.append(
-								new Anchor( {
-									href: '#/homepage/impact',
-									progressive: true,
-									label: mw.msg(
+								$( '<a>' ).attr( {
+									href: '#/homepage/impact'
+								} ).text(
+									mw.msg(
 										'growthexperiments-tour-newimpact-discovery-response-button-okay'
 									)
-								} ).$el
+								)
 							)
 					)
 			],

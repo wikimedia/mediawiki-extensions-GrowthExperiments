@@ -753,6 +753,9 @@
 				"ui-components/SelectWithTextInputWidget.js",
 				"ui-components/OptionWithTextInputWidget.js"
 			],
+			"styles": [
+				"ext.growthExperiments.Homepage.mobile/index.less"
+			],
 			"messages": [
 				"growthexperiments-homepage-suggestededits-more-info",
 				"growthexperiments-homepage-welcome-notice-header",
@@ -769,6 +772,7 @@
 				"growthexperiments-tour-newimpact-discovery-response-button-okay"
 			],
 			"dependencies": [
+				"mobile.startup",
 				"ext.growthExperiments.icons",
 				"ext.growthExperiments.Homepage.Mentorship",
 				"ext.growthExperiments.DataStore",

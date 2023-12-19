@@ -5,9 +5,9 @@
 		TASK_TYPES = require( 'ext.growthExperiments.DataStore' ).CONSTANTS.ALL_TASK_TYPES,
 		HelpPanelLogger = Help.HelpPanelLogger,
 		HelpPanelProcessDialog = Help.HelpPanelProcessDialog,
-		mobileFrontend = mw.mobileFrontend,
-		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,
-		Anchor = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Anchor : undefined,
+		mobileStatus = mw.loader.getState( 'mobile.startup' ),
+		mobileFrontendEnabled = mobileStatus && mobileStatus !== 'registered',
+		Drawer = mobileFrontendEnabled ? require( 'mobile.startup' ).Drawer : undefined,
 		configData = Help.configData,
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
@@ -275,14 +275,14 @@
 					),
 					$( '<div>' ).addClass( 'suggested-edits-mobile-peek-footer' )
 						.append(
-							new Anchor( {
+							$( '<a>' ).attr( {
 								href: '#',
-								additionalClassNames: 'suggested-edits-mobile-peek-more-about-this-edit',
-								progressive: true,
-								label: mw.msg(
+								class: 'suggested-edits-mobile-peek-more-about-this-edit'
+							} ).text(
+								mw.msg(
 									'growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit'
 								)
-							} ).$el
+							)
 						)
 				],
 				onBeforeHide: function ( drawer ) {
