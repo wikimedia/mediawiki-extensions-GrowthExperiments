@@ -102,5 +102,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Te szablony są uwzględniane przy zadaniu [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|z sugestiami ilustracji]] dla nowicjuszy. Artykuły zawierające te szablony nie będą pokazywane w sugestiach dla tego zadania.",
 	"growthexperiments-edit-config-delayed": "Zmiany tego ustawienia nie zaczną obowiązywać natychmiast (patrz [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Zamknij",
-	"specialpages-group-growth-tools": "Narzędzia Growth"
+	"specialpages-group-growth-tools": "Narzędzia Growth",
+	"growthexperiments-edit-config-level-up-notifications": "Powiadomienia: Growth",
+	"growthexperiments-edit-config-level-up-notifications-description": "Powiadomienia te są wysyłane do nowych użytkowników 48 godzin po utworzeniu konta i wykazano, że zwiększają prawdopodobieństwo wykonania edycji przez nowicjuszy w ciągu tygodnia od wysłania powiadomień.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Wypróbuj powiadomienie o sugerowanych edycjach",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Maksymalna liczba edycji, jakie może wprowadzić nowicjusz, aby kwalifikować się do otrzymania tego powiadomienia. Jeśli ustawione na 0, żaden nowicjusz nie</br> otrzyma tego powiadomienia. Im wyższa liczba, tym więcej nowych użytkowników otrzyma to powiadomienie.<br> To powiadomienie jest wysyłane tylko do nowych użytkowników, którzy nie wykonywali Sugerowanych edycji.",
+	"growthexperiments-edit-config-keep-going-notification-title": "Powiadomienie zachęcające do dalszych edycji",
+	"growthexperiments-edit-config-keep-going-notification-description": "Maksymalna liczba edycji, jakie może wprowadzić nowicjusz, aby kwalifikować się do otrzymania tego powiadomienia. Jeśli ustawione na 0, żaden nowicjusz nie<br> otrzyma tego powiadomienia. Im wyższa liczba, tym więcej nowych użytkowników otrzyma to powiadomienie.<br> To powiadomienie jest wysyłane tylko do nowych użytkowników, którzy wykonali co najmniej jedną z Sugerowanych edycji."
 }
