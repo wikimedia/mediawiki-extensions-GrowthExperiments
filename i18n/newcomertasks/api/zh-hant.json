@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
-			"Xiplus"
+			"Xiplus",
+			"SunAfterRain"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "取得適合編輯新手的任務建議。",
@@ -16,9 +17,9 @@
 	"apihelp-query+growthtasks-example-2": "取得目前使用者的任務推薦，以及有關頁面的擴充資訊。",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "在加入圖片外掛資料中缺少'accepted'參數",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "在加入圖片外掛資料中的'accepted'參數應該是布林值，實際為$1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "在加入圖片外掛資料中缺少'reason'參數",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "在加入圖片外掛資料中的'reason'參數應該是陣列，實際為$1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reason'參數中無效的項目'$1'，應該是$2之一。",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "添加圖像外掛程式資料中缺少'reasons'參數",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "添加圖像外掛程式資料中的'reasons'參數應該是一個陣列，實際為$1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reasons'參數的專案'$1'無效，應該是以下專案之一：$2",
 	"apierror-growthexperiments-addlink-handler-notfound": "找不到連結建議紀錄",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "未預期的連結建議目標：$1"
 }

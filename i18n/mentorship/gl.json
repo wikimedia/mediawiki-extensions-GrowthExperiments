@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Avelino"
+			"Avelino",
+			"O Breixo"
 		]
 	},
-	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Só os usuarios con polo menos $1 {{PLURAL:$1| edicións}} e $2 {{PLURAL:$2| días}} de presenza poden inscribirse como mentores."
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Procurar",
+	"growthexperiments-mentorship-enrollasmentor-title": "Inscríbete como {{GENDER:|mentor|mentora}}",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Mensaxe de presentación",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Inscribirse",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Engadirme como {{GENDER:|mentor|mentora}}",
+	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Só os usuarios con polo menos $1 {{PLURAL:$1| edicións}} e $2 {{PLURAL:$2| días}} de presenza poden inscribirse como mentores.",
+	"tag-mentor list change": "Cambio da lista de mentores"
 }

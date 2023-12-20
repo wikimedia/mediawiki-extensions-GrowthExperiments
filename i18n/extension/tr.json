@@ -10,7 +10,8 @@
 			"MuratTheTurkish",
 			"Rapsar",
 			"SaldırganSincap",
-			"ToprakM"
+			"ToprakM",
+			"LostMyMind"
 		]
 	},
 	"growthexperiments-desc": "Bu eklenti, Growth ekibinin yaptığı deneyleri içeriyor.",
@@ -36,7 +37,7 @@
 	"growthexperiments-edit-config-help-panel-post-on-top": "Yeni sorular yardım danışma sayfasının neresine gönderilmelidir?",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Sayfanın başı",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Sayfanın sonu",
-	"growthexperiments-edit-config-help-panel-view-more": "\"Daha fazla yardım maddesini gör\" için hedef sayfa",
+	"growthexperiments-edit-config-help-panel-view-more": "\"Daha fazla yardım sayfası görüntüle\" için hedef sayfa",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Yardım için yardım panelinin ücretsiz metin aramasına dahil edilecek ad alanları",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Yardım panelinden gelen sorular nereye yönlendirilmelidir?",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Danışman tartışma sayfaları",
@@ -60,6 +61,9 @@
 	"growthexperiments-edit-config-mentorship-enabled": "Danışmanlık özellikleri etkinleştirildi mi?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Evet",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Hayır",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Evet, aşağıdaki tüm uygunluk kriterlerini karşılayan kullanıcıların danışman olarak kaydolmasına izin verin.",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Hayır, hiçbir kullanıcının danışman olarak kaydolmasına izin vermeyin.",
+	"growthexperiments-edit-config-mentorship-minimum-age": "Bir kullanıcının danışman olması için kayıtlı olması gereken minimum gün sayısı",
 	"growthexperiments-edit-config-personalized-praise": "Kişiselleştirilmiş övgü",
 	"growthexperiments-edit-config-newcomertasks": "Önerilen düzenlemeler",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Bazı önerilen düzenleme türleri, bakım şablonları aracılığıyla ortaya çıkar. Bu şablonları içeren makaleler beslemeye eklenir. Her bir görev türü için kaç makalenin mevcut olduğunu görmek için [[Special:NewcomerTasksInfo|this page]] konusuna bakın.",
@@ -75,5 +79,9 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Referans ekleme hakkında daha fazla bilgi edinmek için hedef sayfası.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Güncelleme: Güncel bilgilerle güncellenmesi gereken makaleleri bulmak için şablonlar.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Makaleleri güncelleme hakkında daha fazla bilgi edinmek için hedef sayfa.",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Bilgikutusu şablonları"
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Bağlantı önerilmemesi gereken bölüm adlarının listesi.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Resim önerisi görev türü hakkında daha fazla bilgi edinmek için hedef sayfa.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Burada tanımlanan şablonları içeren maddeler, kullanıcılara bu görev türü için görev olarak gösterilmeyecektir.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Burada tanımlanan kategorileri içeren maddeler, kullanıcılara bu görev türü için görev olarak gösterilmeyecektir.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Bilgi kutusu şablonları"
 }
