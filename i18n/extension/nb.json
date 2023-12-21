@@ -96,5 +96,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Disse malene trengs for nybegynnerfunksjonen for [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|bildeforslag]]. Artikler som inneholder disse malene blir ikke listet opp som bildeforslagsoppgaver.",
 	"growthexperiments-edit-config-delayed": "Endringer i denne innstillingen vil ikke tre i kraft umiddelbart (se [[mw:Growth/FAQ#add-link-config|OSS]]).",
 	"growthexperiments-info-tooltip-close-label": "Lukk",
-	"specialpages-group-growth-tools": "Growth-verktøy"
+	"specialpages-group-growth-tools": "Growth-verktøy",
+	"growthexperiments-edit-config-level-up-notifications": "Varsler: Growth-funksjoner",
+	"growthexperiments-edit-config-level-up-notifications-description": "Disse varslene sendes til nykommere to døgn etter at kontoene deres opprettes, og har vist seg å øke sannsynligheten for at nye kontoer redigerer i uka etter at varslene ble sendt.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Varsel for å prøve foreslåtte redigeringer",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Maksimalt antall redigeringer en nykommer kan ha for å kvalifisere til å få dette varselet. Hvis den er satt til 0 vil ingen nykommere få dette varselet. Jo høyere tall, jo flere nykommere får varselet. Dette varselet sendes kun til nykommere som ikke har fullført noen foreslåtte redigeringer.",
+	"growthexperiments-edit-config-keep-going-notification-title": "Varsel for å fortsette",
+	"growthexperiments-edit-config-keep-going-notification-description": "Maksimalt antall foreslåtte redigeringer en nykommer kan fullføre for å kvalifisere til å motta dette varselet. Hvis det er satt til 0 vil ingen nykommere få dette varselet. Jo høyere tall, jo flere får varselet. Dette varselet sendes kun til nykommere som har fullført minst én foreslått redigering."
 }

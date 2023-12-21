@@ -206,7 +206,7 @@
 	"growthexperiments-manage-mentors-remove-mentor": "Odstrani",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Odstranili}} boste [[User:$1|$1]] kot {{GENDER:$1|mentorja|mentorico|mentorja_ico}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Razlog za odstranitev mentorja",
-	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Uporabnik|Uporabnica|Uporabnik/ca}} [[User:$1|$1]] ni več {{GENDER:$1|mentor|mentorica|mentor/ica}}.",
+	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Uporabnik|Uporabnica|Uporabnik_ca}} [[User:$1|$1]] ni več {{GENDER:$1|mentor|mentorica|mentor_ica}}.",
 	"growthexperiments-manage-mentors-return-back": "Lahko se [[Special:ManageMentors|vrnete]] na seznam mentorjev.",
 	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "Dodajanje $1 kot mentorja",
 	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "Dodajanje $1 kot mentorja: $2",
