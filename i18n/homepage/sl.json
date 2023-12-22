@@ -161,7 +161,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Aktiven|Aktivna|Aktiven_na}} danes",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Aktiven|Aktivna|Aktiven_na}} včeraj",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktiven|Aktivna|Aktiven_na}} pred $2 {{PLURAL:$2|dnevom|dnevoma|dnevi}}",
-	"growthexperiments-homepage-mentorship-intro": "Ta {{GENDER:$1|izkušeni uporabnik|izkušena uporabnica|izkušeni/a uporabnik/ca}} ve, da ste tu novi, in {{GENDER:$2|vam|vam|vam}} lahko pomaga pri urejanju.",
+	"growthexperiments-homepage-mentorship-intro": "Ta {{GENDER:$1|izkušeni uporabnik|izkušena uporabnica|izkušeni_a uporabnik_ca}} ve, da ste tu novi, in {{GENDER:$2|vam|vam|vam}} lahko pomaga pri urejanju.",
 	"growthexperiments-homepage-mentorship-question-button": "Postavite{{GENDER:$2|}} {{GENDER:$1|svojemu mentorju|svoji mentorici|svojemu_i mentorju_ici}} vprašanje",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Ogled drugih pogovorov{{GENDER:$2|}} {{GENDER:$1|vašega mentorja|vaše mentorice|vašega_vašega mentorja_ice}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Vprašajte}} {{GENDER:$1|svojega mentorja|svojo mentorico|svojega_jo mentorja_ico}}",

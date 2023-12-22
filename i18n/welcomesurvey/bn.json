@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aishik Rehman",
 			"Al Riaz Uddin Ripon",
 			"Ankan",
 			"Sibabrata Banerjee",
@@ -15,7 +16,7 @@
 	"welcomesurvey-save-btn": "সম্পন্ন",
 	"welcomesurvey-skip-btn": "জরিপটি {{GENDER:$1|এড়িয়ে যান}}",
 	"welcomesurvey-close-btn": "বন্ধ করুন ও $1-এ ফিরে যান",
-	"welcomesurvey-privacy-policy-link-text": "নতুন অবদানকারী সংক্রান্ত তথ্য নিয়ে আরো জানুন",
+	"welcomesurvey-privacy-policy-link-text": "নতুন অবদানকারী সংক্রান্ত তথ্য নিয়ে আরও জানুন",
 	"welcomesurvey-sidebar-editing-title": "অবদান রাখা শুরু করুন",
 	"welcomesurvey-sidebar-editing-text": "প্রায় সকল নিবন্ধে যে কেউ অবদান রাখতে পারেন। এখানে প্রতি ঘণ্টায় বিপুল সংখ্যক তথ্য যুক্ত হচ্ছে, ভুল সংশোধিত হচ্ছে, এবং লেখার প্রাঞ্জলতা বৃদ্ধি পাচ্ছে। আপনি যদি {{GENDER:$1|অবদান রাখতে আগ্রহী}} হোন, তবে নিম্নলিখিত পাতাগুলো আপনাকে সাহায্য করবে।",
 	"welcomesurvey-sidebar-editing-link1-text": "টিউটোরিয়াল",
@@ -51,7 +52,7 @@
 	"welcomesurvey-reminder-link": "জরিপ শুরু করুন",
 	"welcomesurvey-reminder-dismiss": "বাতিল",
 	"welcomesurvey-mideditsignup-title": "স্বাগতম, $1!",
-	"welcomesurvey-mideditsignup-body": "সম্পাদনার জন্য ধন্যবাদ! {{GENDER:|আপনি}} এখন আপনার অবদানের প্রভাব দেখতে পারেন এবং আপনার নীড়পাতায় আরো পরামর্শকৃত সম্পাদনা পেতে পাবেন৷",
+	"welcomesurvey-mideditsignup-body": "সম্পাদনার জন্য ধন্যবাদ! {{GENDER:|আপনি}} এখন আপনার অবদানের প্রভাব দেখতে পারেন এবং আপনার নীড়পাতায় আরও পরামর্শকৃত সম্পাদনা পেতে পাবেন৷",
 	"welcomesurvey-mideditsignup-button-homepage": "আমার নীড়পাতায় যান",
 	"welcomesurvey-mideditsignup-button-close": "বন্ধ করুন"
 }
