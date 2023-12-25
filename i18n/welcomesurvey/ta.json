@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Balajijagadesh"
+			"Balajijagadesh",
+			"Fahimrazick"
 		]
 	},
 	"welcomesurvey-save-btn": "நிறைவு செய்க",
 	"welcomesurvey-sidebar-editing-link1-text": "பயிற்சி",
 	"welcomesurvey-sidebar-editing-link2-text": "ஒத்தாசைப் பக்கம்",
-	"welcomesurvey-dropdown-option-select-label": "தயவுகூர்ந்து தேர்ந்தெடுக்கவும்",
+	"welcomesurvey-dropdown-option-select-label": "தெரிவு செய்...",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "பிற",
 	"welcomesurvey-question-edited-option-yes-many-label": "ஆம், பல முறை",
 	"welcomesurvey-question-edited-option-dont-remember-label": "எனக்கு நினைவில்லை",
