@@ -14,7 +14,7 @@
 	"growthexperiments-config-validator-array-toobig": "$1 ima preveč predmetov (dovoljenih je največ $2)",
 	"growthexperiments-edit-config-disabled": "Skupnostna konfiguracija je trenutno onemogočena.",
 	"growthexperiments-edit-config-title": "Konfiguracija možnosti Edit Growth",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Zadnjič posodobil/a [[User:$1|$1]] $2 ([$4 razl]).",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Zadnjič posodobil_a [[User:$1|$1]] $2 ([$4 razl]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Zadnjič posodobil neznan uporabnik $1 ([$3 razl]).",
 	"growthexperiments-edit-config-pretext": "Ta stran vam omogoča urejanje konfiguracije možnosti ekipe [[:mw:Special:MyLanguage/Growth|Growth]]. V vašem imenu bo uredila $1. Spremembe si lahko ogledate v zgodovini strani za to stran.",
 	"growthexperiments-edit-config-pretext-banner": "{{|}}Prikažete lahko tudi pasico na strani novinca, ki vključuje obvestila o dogodkih, pomembnih za novince. Če {{GENDER:|}}želite to storiti, {{GENDER:|}}jo morate ročno dodati v [[$1]]. Vsa vsebina, ki bo dodana tam, bo prikazana kot rumena pasica na vrhu [[Special:Homepage]].",

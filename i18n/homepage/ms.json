@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"CyberTroopers",
-			"Tofeiku"
+			"Tofeiku",
+			"Hakimi97"
 		]
 	},
 	"growthexperiments-homepage-email-header-startemail": "E-mel: $1",
@@ -12,6 +13,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Tambah pautan di antara rencana",
 	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3 - 5 minit",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Tambah pautan di antara rencana",
+	"growthexperiments-addlink-context-text-label": "Teks",
 	"growthexperiments-addlink-context-button-accept": "Ya",
 	"growthexperiments-addlink-context-button-reject": "Tidak",
 	"growthexperiments-addlink-context-button-next": "Langkau",

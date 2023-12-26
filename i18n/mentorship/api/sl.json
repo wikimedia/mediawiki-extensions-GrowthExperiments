@@ -5,7 +5,7 @@
 			"Upwinxp"
 		]
 	},
-	"apihelp-growthstarmentee-summary": "Označi ali odznači mentoriranca/ko kot z zvezdico za trenutnega uporabnika/co (shranjeno zasebno in se ne zapiše v dnevnik)",
+	"apihelp-growthstarmentee-summary": "Označi ali odznači mentoriranca_ko kot z zvezdico za trenutnega uporabnika_co (shranjeno zasebno in se ne zapiše v dnevnik)",
 	"apihelp-growthstarmentee-param-gesaction": "Dejanje za izvedbo (<kbd>star</kbd> ali <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Mentoriranec za (od)označitev z zvezdico",
 	"apihelp-query+growthstarredmentees-summary": "Pridobi seznam mentorirancev, ki jih je trenutno prijavljeni mentor označil z zvezdico",
