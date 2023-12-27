@@ -6,7 +6,8 @@
 			"Hirok Raja",
 			"ZI Jony",
 			"আজিজ",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"জয়শ্রীরাম সরকার"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "মেন্টর ড্যাশবোর্ড",
@@ -52,7 +53,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "ফলাফলের আগের পৃষ্ঠা",
 	"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label": "পরামর্শগ্রহীতা হতে তারকাচিহ্ন অপসারণ",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "সম্প্রতি সক্রিয় কোন পরামর্শগ্রহীতা পাওয়া যায়নি",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "মেন্টর ড্যাশবোর্ড শুধুমাত্র সম্প্রতি সক্রিয় পরামর্শগ্রহীতাদের দেখায়। আরো তথ্য থাকলে তা তথ্য আইকনের মাধ্যমে প্রদর্শিত হতে পারে। যদি {{GENDER:|আপনি}} সম্প্রতি মেন্টরশিপে নথিভুক্ত হন, তাহলে {{GENDER:|আপনার}} এখনো কোনো পরামর্শগ্রহীতা নিয়োগ করা নাও হতে পারে।",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "মেন্টর ড্যাশবোর্ড শুধুমাত্র সম্প্রতি সক্রিয় পরামর্শগ্রহীতাদের দেখায়। আরও তথ্য থাকলে তা তথ্য আইকনের মাধ্যমে প্রদর্শিত হতে পারে। যদি {{GENDER:|আপনি}} সম্প্রতি মেন্টরশিপে নথিভুক্ত হন, তাহলে {{GENDER:|আপনার}} এখনো কোনো পরামর্শগ্রহীতা নিয়োগ করা নাও হতে পারে।",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "কোনো পরামর্শগ্রহীতা খুঁজে পাওয়া যায়নি",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "পরামর্শগ্রহীতাকে খুঁজে পেতে ছাঁকনি পরিবর্তন করুন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "{{GENDER:|আপনার}} পরামর্শগ্রহীতার করা সাম্প্রতিক পরিবর্তন",
@@ -122,7 +123,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "পরিচিতি বার্তা",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|আপনার}} ভূমিকা বার্তা \"$1\"-এ পরিবর্তন করা হয়েছে।",
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "ভালো কাজের জন্য প্রশংসা!",
-	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "সুপ্রিয় $1, আমি আপনার মেন্টর। আপনার অবদানের জন্য আমি আন্তরিকভাবে ধন্যবাদ জানাই। আমি লক্ষ্য করেছি যে আপনি উইকিপিডিয়ায় অবদান রেখে যাচ্ছেন। আমি আশা করি আপনি যুক্ত থাকবেন এবং অবদান রাখা চালিয়ে যাবেন! যেকোনো প্রশ্নের জন্য নির্দ্বিধায় আমার আলাপ পাতায় একটি বার্তা পাঠান। শুভেচ্ছা!",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "প্রিয় $1, আমি আপনার মেন্টর। উইকিপিডিয়ায় অবদান রাখার জন্য আপনাকে আন্তরিকভাবে ধন্যবাদ। আশা করি আপনি উইকিপিডিয়ার সাথেই থাকবেন এবং অবদান রাখা চালিয়ে যাবেন। কোনো জিজ্ঞাসা থাকলে নির্দ্বিধায় আমার আলাপ পাতায় একটি বার্তা দিতে পারেন। আপনার জন্য শুভেচ্ছা রইলো।",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "প্রশংসাসূচক বার্তা পাঠান",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "অভিজ্ঞ ব্যবহারকারী এবং মেন্টরদের কাছ থেকে ইতিবাচক বার্তা নতুন অবদানকারীদের ধরে রাখতে সাহায্য করতে পারে।",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "আরও তথ্য",
