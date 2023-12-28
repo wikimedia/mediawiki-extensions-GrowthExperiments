@@ -6,7 +6,8 @@
 			"Hirok Raja",
 			"ZI Jony",
 			"আজিজ",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"জয়শ্রীরাম সরকার"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "মেন্টর ড্যাশবোর্ড",
@@ -51,7 +52,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "ফলাফলের আগের পৃষ্ঠা",
 	"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label": "পরামর্শগ্রহীতা হতে তারকাচিহ্ন অপসারণ",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "সম্প্রতি সক্রিয় কোন পরামর্শগ্রহীতা পাওয়া যায়নি",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "মেন্টর ড্যাশবোর্ড শুধুমাত্র সম্প্রতি সক্রিয় পরামর্শগ্রহীতাদের দেখায়। আরো তথ্য থাকলে তা তথ্য আইকনের মাধ্যমে প্রদর্শিত হতে পারে। যদি {{GENDER:|আপনি}} সম্প্রতি মেন্টরশিপে নথিভুক্ত হন, তাহলে {{GENDER:|আপনার}} এখনো কোনো পরামর্শগ্রহীতা নিয়োগ করা নাও হতে পারে।",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "মেন্টর ড্যাশবোর্ড শুধুমাত্র সম্প্রতি সক্রিয় পরামর্শগ্রহীতাদের দেখায়। আরও তথ্য থাকলে তা তথ্য আইকনের মাধ্যমে প্রদর্শিত হতে পারে। যদি {{GENDER:|আপনি}} সম্প্রতি মেন্টরশিপে নথিভুক্ত হন, তাহলে {{GENDER:|আপনার}} এখনো কোনো পরামর্শগ্রহীতা নিয়োগ করা নাও হতে পারে।",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "কোনো পরামর্শগ্রহীতা খুঁজে পাওয়া যায়নি",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "পরামর্শগ্রহীতাকে খুঁজে পেতে ছাঁকনি পরিবর্তন করুন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "{{GENDER:|আপনার}} পরামর্শগ্রহীতার করা সাম্প্রতিক পরিবর্তন",

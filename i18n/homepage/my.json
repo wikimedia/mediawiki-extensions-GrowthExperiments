@@ -68,7 +68,7 @@
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "နောက်ဆုံး တည်းဖြတ်ခဲ့သည်",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|တည်းဖြတ်မှု|တည်းဖြတ်မှုများ}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$2 ပေါ်ရှိ $1 {{PLURAL:$1|တည်းဖြတ်မှု|တည်းဖြတ်မှုများ}}",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "{{GENDER:$1|သင်}} တည်းဖြတ်ခဲ့သော ဆောင်းပါးများရှိ ကြည့်ရှုနှုန်းများ",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "{{GENDER:$1|သင်}}တည်းဖြတ်ခဲ့သော ဆောင်းပါးများရှိ ကြည့်ရှုနှုန်းများ",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "တည်းဖြတ်ထားသော ဆောင်းပါးများအပေါ် ကြည့်ရှုနှုန်းများ",
 	"growthexperiments-homepage-impact-scores-edit-count": "စုစုပေါင်း တည်းဖြတ်မှုများ",
 	"growthexperiments-homepage-impact-scores-thanks-count": "ကျေးဇူးစကား လက်ခံရရှိ",
