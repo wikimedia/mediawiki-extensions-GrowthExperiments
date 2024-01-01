@@ -92,6 +92,7 @@
 	"growthexperiments-homepage-suggestededits-no-more-results": "Non hai máis suxestións",
 	"growthexperiments-homepage-suggestededits-footer": "Outros usuarios fixeron notar que estes artigos precisan traballo. Axuda a facer '''{{SITENAME}}''' mellor para os seus '''$1 lectores''' diarios.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Corrixa a ortografía, a gramática e o ton",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "Faga artigos máis longos buscando e engadindo máis información",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Enlaza palabras dun artigo a outro con ligazóns",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Revisión (corrixir ortografía, gramática e ton)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Engade ligazóns entre artigos",
