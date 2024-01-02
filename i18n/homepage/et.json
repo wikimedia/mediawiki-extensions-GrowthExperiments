@@ -75,7 +75,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Selge",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|muudatus|muudatust}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Viimaste muudatuste vaatamisi (viimased 60 päeva):",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "Seni 0 muudatust",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "Seni artiklites 0 muudatust",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Aita vabade teadmiste levikule kaasa, muutes teemasid, mis {{GENDER:$1|sulle}} enim korda lähevad.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Alusta mõnest <strong>soovitatud muudatusest</strong>, seejärel vaata siit, kui palju inimesi {{GENDER:$1|sinu}} kaastööd vaatab.",
 	"growthexperiments-homepage-impact-error-data-not-found-text": "Ajutine viivitus {{GENDER:$1|sinu}} teabe hankimisel",

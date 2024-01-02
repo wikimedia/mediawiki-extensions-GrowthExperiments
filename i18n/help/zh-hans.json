@@ -3,6 +3,7 @@
 		"authors": [
 			"A Chinese Wikipedian",
 			"BlackShadowG",
+			"Diskdance",
 			"GoForceX",
 			"GuoPC",
 			"Jbyccc",
@@ -44,6 +45,7 @@
 	"growthexperiments-help-panel-postedit-header": "接下来",
 	"growthexperiments-help-panel-postedit-subheader-image-recommendation": "更多编辑方式",
 	"growthexperiments-help-panel-postedit-subheader2-image-recommendation": "尝试其他类型的编辑或是在明天回来以获得更多图片建议。",
+	"growthexperiments-help-panel-postedit-subheader-section-image-recommendation": "更多编辑方式",
 	"growthexperiments-help-panel-postedit-subheader-link-recommendation": "更多编辑方式",
 	"growthexperiments-help-panel-postedit-subheader2-link-recommendation": "尝试其他类型的编辑或是在明天回来以获得更多链接建议。",
 	"growthexperiments-help-panel-postedit-subheader": "下一个编辑建议：",
@@ -56,6 +58,7 @@
 	"growthexperiments-help-panel-postedit-trynewtask-header": "通过尝试一种新型编辑来使{{GENDER:|您的}}技术更上一层楼",
 	"growthexperiments-help-panel-postedit-trynewtask-subheader-tasktype": "感谢{{GENDER:|您的}}贡献。尝试新的编辑类型： <strong>$1</strong>",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "不再显示",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "不用了，谢谢",
 	"growthexperiments-help-panel-questionreview-title": "询问咨询台",
 	"growthexperiments-help-panel-questionreview-title-mentor": "咨询您的导师",
 	"growthexperiments-help-panel-questionreview-header": "您的提问将以您的用户名“$2”<strong>公开发布</strong>至$1。接下来一天左右的时间里，其他的志愿编辑会尝试回答您的问题。",
