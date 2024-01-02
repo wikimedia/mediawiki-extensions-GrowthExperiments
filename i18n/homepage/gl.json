@@ -117,6 +117,7 @@
 	"growthexperiments-homepage-suggestededits-footer": "Outros usuarios fixeron notar que estes artigos precisan traballo. Axuda a facer '''{{SITENAME}}''' mellor para os seus '''$1 lectores''' diarios.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Ver todas as suxestións",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Corrixa a ortografía, a gramática e o ton",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "Faga artigos máis longos buscando e engadindo máis información",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Enlaza palabras dun artigo a outro con ligazóns",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Revisión (corrixir ortografía, gramática e ton)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Engade ligazóns entre artigos",
@@ -137,6 +138,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Seleccionar os tipos de edicións",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Engadir ligazóns entre artigos",
 	"log-action-filter-growthexperiments-addlink": "Suxestións de ligazóns",
+	"growthexperiments-homepage-suggestededits-more-info": "Máis información sobre as modificacións suxeridas",
 	"growthexperiments-addlink-context-button-help": "Busque axuda para editar",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Suxestión",
 	"growthexperiments-addlink-skip-reject": "Revisar de novo",
@@ -147,5 +149,7 @@
 	"growthexperiments-addimage-inspector-show-button": "Mostrar suxestión de imaxe",
 	"growthexperiments-addimage-inspector-help-button": "Busque axuda para editar",
 	"growthexperiments-addimage-detailsdialog-close": "Pechar",
-	"growthexperiments-addimage-viewer-close-button": "Pechar"
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Non hai información suficiente para decidir",
+	"growthexperiments-addimage-viewer-close-button": "Pechar",
+	"growthexperiments-addimage-caption-info-dialog-guidelines-review": "Revisa os detalles da imaxe de novo para obter información relevante para incluír."
 }

@@ -474,7 +474,7 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Cits / Es nevēlos teikt",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Gatavs",
 	"growthexperiments-homepage-mentorship-about-header": "Par mentoriem",
-	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Kas ir {{GENDER:|tavs}} mentors?",
+	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Kas ir {{GENDER:|tavs|tava}} {{GENDER:$1|mentors|mentore}}?",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Atteikties no mentoriem",
 	"growthexperiments-homepage-mentorship-about-done": "Gatavs"
 }
