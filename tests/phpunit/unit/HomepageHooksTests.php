@@ -61,7 +61,6 @@ class HomepageHooksTests extends MediaWikiUnitTestCase {
 			->willReturn( true );
 		$homepageHooks = $this->getHomepageHooksMock(
 			new HashConfig( [
-				'CommandLineMode' => false,
 				'GEHomepageEnabled' => true,
 			] ),
 			$titleFactoryMock,
@@ -93,7 +92,7 @@ class HomepageHooksTests extends MediaWikiUnitTestCase {
 
 		// Scenario if Homepage is globally disabled, user has pref enabled
 		$homepageHooks = $this->getHomepageHooksMock(
-			new HashConfig( [ 'CommandLineMode' => false, 'GEHomepageEnabled' => false ] ),
+			new HashConfig( [ 'GEHomepageEnabled' => false ] ),
 		);
 		$homepageHooks->setUserIdentity( $userIdentity );
 		$cards = [];
@@ -106,7 +105,7 @@ class HomepageHooksTests extends MediaWikiUnitTestCase {
 			->with( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE )
 			->willReturn( false );
 		$homepageHooks = $this->getHomepageHooksMock(
-			new HashConfig( [ 'CommandLineMode' => false, 'GEHomepageEnabled' => true ] ),
+			new HashConfig( [ 'GEHomepageEnabled' => true ] ),
 			$titleFactoryMock,
 			$specialPageFactoryMock,
 			$userOptionsLookupMock
@@ -126,7 +125,7 @@ class HomepageHooksTests extends MediaWikiUnitTestCase {
 		UserOptionsLookup $userOptionsLookup = null
 	): HomepageHooks {
 		return new HomepageHooks(
-			$config ?? new HashConfig( [ 'CommandLineMode' => false ] ),
+			$config ?? new HashConfig( [] ),
 			$this->createNoOpMock( ILoadBalancer::class ),
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$userOptionsLookup ?? $this->createNoOpMock( UserOptionsLookup::class ),

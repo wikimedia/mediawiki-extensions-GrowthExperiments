@@ -258,7 +258,7 @@ class HomepageHooks implements
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
-			|| $config->get( 'CommandLineMode' )
+			|| MW_ENTRY_POINT === 'cli'
 			|| RequestContext::getMain()->getRequest()->wasPosted();
 	}
 

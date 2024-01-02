@@ -537,7 +537,7 @@ return [
 			$services->getJobQueueGroup(),
 			$lb,
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
-				$geServices->getGrowthConfig()->get( 'CommandLineMode' ) ||
+				MW_ENTRY_POINT === 'cli' ||
 				RequestContext::getMain()->getRequest()->wasPosted()
 		);
 		$store->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );

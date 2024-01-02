@@ -41,7 +41,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 	public const CONSTRUCTOR_OPTIONS = [
 		MainConfigNames::LocalTZoffset,
-		'CommandLineMode',
 		'GEUserImpactMaxArticlesToProcessForPageviews',
 		'GEUserImpactMaximumProcessTimeSeconds',
 	];
@@ -401,7 +400,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				'oldestEdit' => $data['oldestEdit']
 			];
 		}
-		if ( defined( 'MEDIAWIKI_JOB_RUNNER' ) || $this->config->get( 'CommandLineMode' ) ) {
+		if ( defined( 'MEDIAWIKI_JOB_RUNNER' ) || MW_ENTRY_POINT === 'cli' ) {
 			$pageViewData = $this->getPageViewDataInJobContext( $allTitleObjects, $user, $days );
 		} else {
 			$pageViewData = $this->getPageViewDataInWebRequestContext( $allTitleObjects, $user, $days );
