@@ -378,6 +378,7 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "Предлог",
 	"growthexperiments-addlink-summary-column-header-linked": "Линковано?",
 	"growthexperiments-addlink-summary-copyrightwarning": "Објављивањем измена, прихватате [https://foundation.wikimedia.org/wiki/Terms_of_Use услове коришћења] и неопозиво прихватате да објавите свој допринос под лиценцама [https://creativecommons.org/licenses/by-sa/4.0/ CC BY-SA 4.0] и [https://www.gnu.org/licenses/fdl-1.3.html GFDL 1.3].",
+	"growthexperiments-addlink-summary-summary": "Предложене везе: $1 {{PLURAL:$1|веза додата|везе додате}}.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Прескочио си|Прескочила си|Прескочио си}} све предлоге за овај чланак.",
 	"growthexperiments-addlink-skip-body": "Да ли {{GENDER:|сте}} сигурни да не желите да прихватите или одбијете било који предлог?",
 	"growthexperiments-addlink-skip-accept": "Прескочи све",

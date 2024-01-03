@@ -216,7 +216,7 @@
 	"growthexperiments-manage-mentors-return-back": "بالإمكان [[Special:ManageMentors|العودة]] إلى قائمة المرشدين",
 	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "إضافة $1 كمرشد",
 	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "إضافة $1 كمرشد: $2",
-	"growthexperiments-manage-mentors-summary-add-self-no-reason": "إضافة نفسي {{GENDER:|كمرشدٍ|كمرشدةٍ}}",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "إضافة نفسي {{GENDER:|مُرشِدًا|مُرشِدةً}}",
 	"growthexperiments-manage-mentors-summary-add-self-with-reason": "إضافة نفسي كمرشد: $2",
 	"growthexperiments-manage-mentors-summary-change-admin-no-reason": "تغيير خيارات الإرشاد الخاصة بـ $1",
 	"growthexperiments-manage-mentors-summary-change-admin-with-reason": "تغيير خيارات الإرشاد الخاصة بـ $1 : $2",
