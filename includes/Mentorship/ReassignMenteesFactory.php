@@ -6,6 +6,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\Language\FormatterFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -18,6 +19,7 @@ class ReassignMenteesFactory {
 	private MentorStore $mentorStore;
 	private ChangeMentorFactory $changeMentorFactory;
 	private JobQueueGroupFactory $jobQueueGroupFactory;
+	private FormatterFactory $formatterFactory;
 
 	/**
 	 * @param ILoadBalancer $dbLoadBalancer
@@ -26,6 +28,7 @@ class ReassignMenteesFactory {
 	 * @param MentorStore $mentorStore
 	 * @param ChangeMentorFactory $changeMentorFactory
 	 * @param JobQueueGroupFactory $jobQueueGroupFactory
+	 * @param FormatterFactory $formatterFactory
 	 */
 	public function __construct(
 		ILoadBalancer $dbLoadBalancer,
@@ -33,7 +36,8 @@ class ReassignMenteesFactory {
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
 		ChangeMentorFactory $changeMentorFactory,
-		JobQueueGroupFactory $jobQueueGroupFactory
+		JobQueueGroupFactory $jobQueueGroupFactory,
+		FormatterFactory $formatterFactory
 	) {
 		$this->dbLoadBalancer = $dbLoadBalancer;
 		$this->mentorManager = $mentorManager;
@@ -41,6 +45,7 @@ class ReassignMenteesFactory {
 		$this->mentorStore = $mentorStore;
 		$this->changeMentorFactory = $changeMentorFactory;
 		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
+		$this->formatterFactory = $formatterFactory;
 	}
 
 	/**
@@ -61,6 +66,7 @@ class ReassignMenteesFactory {
 			$this->mentorStore,
 			$this->changeMentorFactory,
 			$this->jobQueueGroupFactory,
+			$this->formatterFactory->getStatusFormatter( $context ),
 			$performer,
 			$mentor,
 			$context

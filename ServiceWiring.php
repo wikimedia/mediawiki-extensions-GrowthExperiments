@@ -772,7 +772,8 @@ return [
 			$growthServices->getMentorProvider(),
 			$growthServices->getMentorStore(),
 			$growthServices->getChangeMentorFactory(),
-			$services->getJobQueueGroupFactory()
+			$services->getJobQueueGroupFactory(),
+			$services->getFormatterFactory()
 		);
 	},
 

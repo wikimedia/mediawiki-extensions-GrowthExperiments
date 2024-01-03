@@ -165,14 +165,6 @@ class ChangeMentor {
 			return $status;
 		}
 
-		if ( $this->mentorManager->getMentorshipStateForUser( $this->mentee ) ===
-			MentorManager::MENTORSHIP_OPTED_OUT ) {
-			$status->fatal(
-				'growthexperiments-homepage-claimmentee-opt-out',
-				$this->mentee->getName()
-			);
-			return $status;
-		}
 		return $status;
 	}
 
@@ -258,6 +250,27 @@ class ChangeMentor {
 		string $reason,
 		bool $bulkChange = false
 	): Status {
+		// Ensure mentor/mentee relationship is dropped if the mentee is opted out from mentorship (T354259)
+		if ( $this->mentorManager->getMentorshipStateForUser( $this->mentee ) ===
+			MentorManager::MENTORSHIP_OPTED_OUT ) {
+			$this->logger->info(
+				'ChangeMentor dropped mentee relationship for {user} '
+				. 'because the user is opted out of mentorship',
+				[ 'user' => $this->mentee->getName() ]
+			);
+			$this->mentorStore->dropMenteeRelationship( $this->mentee );
+
+			// Pretend the action failed, which is likely better than pretending it succeeded
+			// (leaving the on-wiki user wondering "why is there no log in
+			// Special:Log/growthexperiments for the reassignment"). We might've performed
+			// an internal cleanup by dropping the relationship, but from the on-wiki users point
+			// of view, the mentor change failed.
+			return Status::newFatal(
+				'growthexperiments-homepage-claimmentee-opt-out',
+				$this->mentee->getName()
+			);
+		}
+
 		$this->newMentor = $newMentor;
 		$status = $this->validate();
 		if ( !$status->isOK() ) {
