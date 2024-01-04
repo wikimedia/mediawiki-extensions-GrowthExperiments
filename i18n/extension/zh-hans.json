@@ -19,7 +19,8 @@
 			"羊羊32521",
 			"魔琴",
 			"CrownedWharf566",
-			"LittlePaw365"
+			"LittlePaw365",
+			"Diskdance"
 		]
 	},
 	"growthexperiments-desc": "这个扩展包括了 Growth 团队的试验性功能。",
@@ -96,5 +97,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "包含此处定义的模板的文章将不会显示为用户作为任务类型的任务。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "包含此处定义分类的条目将不会以此任务类型向用户显示为任务。",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "信息框模版",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|图片建议]]新手任务功能需要这些模板，包含这些模板的条目将不会列在图片建议任务内。"
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|图片建议]]新手任务功能需要这些模板，包含这些模板的条目将不会列在图片建议任务内。",
+	"growthexperiments-info-tooltip-close-label": "关闭"
 }
