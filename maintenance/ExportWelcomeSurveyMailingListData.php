@@ -7,6 +7,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\WelcomeSurvey;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
@@ -100,6 +101,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			] )
 			->fields( [
 				'user_id',
+				'user_name',
 				'user_registration',
 				'user_email',
 				'user_email_authenticated',
@@ -114,8 +116,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			$queryBuilderTemplate->where( 'user_id <= ' . $dbr->addQuotes( $toId ) );
 		}
 
-		$homepageEnabledDefaultValue = $services->getUserOptionsLookup()
-			->getDefaultOption( HomepageHooks::HOMEPAGE_PREF_ENABLE );
+		$userOptionsLookup = $services->getUserOptionsLookup();
 		$this->handle = fopen( 'php://output', 'w' );
 		$headers = [ 'Email Address', 'Opt-in date', 'Group', 'User ID', 'Is email address confirmed' ];
 		$this->writeToHandle( $headers );
@@ -128,7 +129,13 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			$result = $queryBuilder->fetchResultSet();
 			foreach ( $result as $row ) {
 				$fromId = $row->user_id;
-				$homepageEnabled = (bool)( $row->homepage_enabled ?? $homepageEnabledDefaultValue );
+				$homepageEnabled = (bool)(
+					$row->homepage_enabled ??
+					$userOptionsLookup->getDefaultOption(
+						HomepageHooks::HOMEPAGE_PREF_ENABLE,
+						new UserIdentityValue( $row->user_id, $row->user_name )
+					)
+				);
 				$welcomeSurveyResponse = FormatJson::decode( (string)$row->survey_data, true );
 				// We only want to export survey responses in the T303240_mailinglist group,
 				// see https://gerrit.wikimedia.org/r/c/operations/mediawiki-config/+/775951
