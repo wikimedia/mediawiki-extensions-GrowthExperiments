@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use GrowthExperiments\DashboardModule\DashboardModule;
 use GrowthExperiments\ExperimentUserManager;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
 
 /**
  * BaseModule is a base class for homepage modules.

@@ -2,17 +2,18 @@
 
 namespace GrowthExperiments\Specials;
 
-use FormSpecialPage;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
 use GrowthExperiments\WelcomeSurveyFactory;
-use Html;
 use HTMLForm;
+use MediaWiki\Config\ConfigException;
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
-use MWTimestamp;
-use Status;
+use MediaWiki\Utils\MWTimestamp;
 
 class SpecialWelcomeSurvey extends FormSpecialPage {
 
@@ -295,7 +296,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 * @param Title $title
 	 * @param string $query
 	 * @return string
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	private function getCloseButtonHtml( Title $title, $query ) {
 		return $this->getConfirmationButtonsWrapper(

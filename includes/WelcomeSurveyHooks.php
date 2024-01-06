@@ -3,7 +3,6 @@
 
 namespace GrowthExperiments;
 
-use Config;
 use DerivativeContext;
 use ExtensionRegistry;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
@@ -11,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use IContextSource;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Config\Config;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\PostLoginRedirectHook;
 use MediaWiki\Logger\LoggerFactory;
@@ -18,12 +18,12 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Specials\SpecialCreateAccount;
+use MediaWiki\Specials\SpecialUserLogin;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\User;
 use RequestContext;
-use SpecialCreateAccount;
-use SpecialUserLogin;
-use User;
 
 class WelcomeSurveyHooks implements
 	GetPreferencesHook,

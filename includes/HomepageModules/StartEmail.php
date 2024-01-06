@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use GrowthExperiments\ExperimentUserManager;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\SpecialPage;
 use OOUI\IconWidget;
-use SpecialPage;
 
 class StartEmail extends BaseModule {
 

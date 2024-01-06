@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use DeferredUpdates;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddImage\CacheBackedImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use IBufferingStatsdDataFactory;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\MediaWikiServices;
 use WANObjectCache;
 

@@ -6,11 +6,11 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
-use MalformedTitleException;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\MalformedTitleException;
+use MediaWiki\Title\TitleParser;
 use SearchResult;
 use StatusValue;
-use TitleParser;
 
 /**
  * A TaskTypeHandler is responsible for all the type-specific behavior of some TaskType

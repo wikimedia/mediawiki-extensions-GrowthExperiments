@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
+use MediaWiki\SpecialPage\SpecialPage;
 use OOUI\Tag;
-use SpecialPage;
 
 class SpecialNewcomerTasksInfo extends SpecialPage {
 

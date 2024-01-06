@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Specials;
 
-use DeferredUpdates;
 use ErrorPageError;
 use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
@@ -11,12 +10,13 @@ use GrowthExperiments\MentorDashboard\MentorDashboardDiscoveryHooks;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Util;
-use Html;
+use MediaWiki\Deferred\DeferredUpdates;
+use MediaWiki\Html\Html;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MWCryptRand;
 use PermissionsError;
-use SpecialPage;
 use UserOptionsUpdateJob;
 
 class SpecialMentorDashboard extends SpecialPage {

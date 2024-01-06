@@ -8,9 +8,9 @@ use DateTime;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsLookup;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**

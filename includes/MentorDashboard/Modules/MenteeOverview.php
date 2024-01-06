@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\MentorDashboard\Modules;
 
-use Html;
-use SpecialPage;
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class MenteeOverview extends BaseModule {
 

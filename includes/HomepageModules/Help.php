@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
 
 class Help extends BaseModule {
 	public const HELP_MODULE_QUESTION_TAG = 'help module question';

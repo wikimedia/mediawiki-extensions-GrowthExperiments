@@ -9,9 +9,9 @@ use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
-use User;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMentor extends ApiBase {

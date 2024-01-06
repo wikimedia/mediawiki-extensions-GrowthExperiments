@@ -5,12 +5,12 @@ namespace GrowthExperiments\Homepage;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
-use Html;
 use JobQueueGroup;
+use MediaWiki\Html\Html;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use OOUI\IconWidget;
-use OutputPage;
 use UserOptionsUpdateJob;
 
 class SiteNoticeGenerator {

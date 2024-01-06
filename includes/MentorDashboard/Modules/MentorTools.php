@@ -5,12 +5,12 @@ namespace GrowthExperiments\MentorDashboard\Modules;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use Html;
 use IContextSource;
 use LogicException;
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\SpecialPage;
 use OOUI\ButtonWidget;
 use OOUI\DropdownInputWidget;
-use SpecialPage;
 
 class MentorTools extends BaseModule {
 

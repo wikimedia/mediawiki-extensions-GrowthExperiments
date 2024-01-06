@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
-use Config;
-use DeferredUpdates;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use MediaWiki\Config\Config;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;

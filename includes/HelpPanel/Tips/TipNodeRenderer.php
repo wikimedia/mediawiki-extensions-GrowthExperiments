@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\HelpPanel\Tips;
 
-use Html;
 use LogicException;
+use MediaWiki\Html\Html;
+use MediaWiki\Output\OutputPage;
 use MessageLocalizer;
 use OOUI\IconWidget;
-use OutputPage;
 
 /**
  * Transform an array of TipNodes into an array of rendered HTML.

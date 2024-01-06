@@ -2,8 +2,6 @@
 
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
-use CommentStoreComment;
-use Config;
 use Content;
 use DerivativeContext;
 use Flow\Container;
@@ -12,16 +10,18 @@ use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\Hooks\HookRunner;
 use IContextSource;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
+use MediaWiki\CommentStore\CommentStoreComment;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Status\Status;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use PrefixingStatsdDataFactoryProxy;
 use RecentChange;
-use Status;
 use UserNotLoggedIn;
 use WikitextContent;
 

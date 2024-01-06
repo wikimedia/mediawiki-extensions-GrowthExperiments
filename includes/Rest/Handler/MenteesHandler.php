@@ -10,11 +10,11 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleParser;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MWTimestamp;
+use MediaWiki\Utils\MWTimestamp;
 use RequestContext;
-use TitleParser;
 use Wikimedia\Assert\ParameterAssertionException;
 use Wikimedia\ParamValidator\ParamValidator;
 

@@ -4,7 +4,7 @@ namespace GrowthExperiments;
 
 use IContextSource;
 use MediaWiki\Languages\LanguageNameUtils;
-use MediaWiki\User\UserOptionsManager;
+use MediaWiki\User\Options\UserOptionsManager;
 
 /**
  * Factory class for WelcomeSurvey

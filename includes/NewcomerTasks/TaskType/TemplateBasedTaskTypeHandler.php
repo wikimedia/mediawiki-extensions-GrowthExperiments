@@ -7,8 +7,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use InvalidArgumentException;
+use MediaWiki\Title\TitleParser;
 use StatusValue;
-use TitleParser;
 
 /**
  * A handler for task types that represent an article with a certain maintenance template on it.

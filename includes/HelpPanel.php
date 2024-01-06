@@ -2,21 +2,21 @@
 
 namespace GrowthExperiments;
 
-use Config;
-use ConfigException;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\HelpPanelButton;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use Html;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigException;
+use MediaWiki\Html\Html;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MessageLocalizer;
 use OOUI\Tag;
-use OutputPage;
-use User;
-use WebRequest;
 
 class HelpPanel {
 	use GrowthConfigLoaderStaticTrait;

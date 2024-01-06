@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\MentorDashboard;
 
-use Config;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use MediaWiki\Config\Config;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
-use MediaWiki\User\UserOptionsLookup;
-use SpecialPage;
-use User;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\User;
 
 class MentorDashboardDiscoveryHooks implements SkinTemplateNavigation__UniversalHook, BeforePageDisplayHook {
 

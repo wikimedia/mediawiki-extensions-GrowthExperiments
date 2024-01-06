@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\LevelingUp;
 
-use Config;
 use EchoAttributeManager;
 use EchoUserLocator;
 use GrowthExperiments\ExperimentUserManager;
@@ -11,6 +10,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\VariantHooks;
 use GrowthExperiments\VisualEditorHooks;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Page\ProperPageIdentity;

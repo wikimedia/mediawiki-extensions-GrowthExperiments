@@ -6,8 +6,8 @@ use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use LogicException;
+use MediaWiki\Title\TitleParser;
 use StatusValue;
-use TitleParser;
 use Wikimedia\Assert\Assert;
 
 abstract class ImageRecommendationBaseTaskTypeHandler extends StructuredTaskTypeHandler {

@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use GrowthExperiments\ExperimentUserManager;
 use IContextSource;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\Config\Config;
+use MediaWiki\User\Options\UserOptionsLookup;
 
 class StartEditing extends BaseModule {
 

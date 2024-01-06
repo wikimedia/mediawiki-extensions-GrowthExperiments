@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Specials;
 
-use FormSpecialPage;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
@@ -16,22 +15,23 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
-use Html;
 use HTMLForm;
+use MediaWiki\Html\Html;
 use MediaWiki\Page\PageProps;
 use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\SpecialPage\FormSpecialPage;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
-use MWTimestamp;
+use MediaWiki\User\User;
+use MediaWiki\Utils\MWTimestamp;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use PermissionsError;
-use ReadOnlyMode;
-use Status;
-use User;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\ReadOnlyMode;
 
 class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var string Right required to write */

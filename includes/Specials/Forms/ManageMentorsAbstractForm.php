@@ -4,10 +4,10 @@ namespace GrowthExperiments\Specials\Forms;
 
 use IContextSource;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
 use OOUIHTMLForm;
-use SpecialPage;
-use Status;
 
 abstract class ManageMentorsAbstractForm extends OOUIHTMLForm {
 

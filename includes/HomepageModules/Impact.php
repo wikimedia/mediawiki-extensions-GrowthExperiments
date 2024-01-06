@@ -2,23 +2,23 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use ActorMigration;
-use Config;
 use DateTime;
 use Exception;
 use ExtensionRegistry;
 use GrowthExperiments\ExperimentUserManager;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
-use MWTimestamp;
+use MediaWiki\User\ActorMigration;
+use MediaWiki\Utils\MWTimestamp;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use PageImages\PageImages;
-use SpecialPage;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 /**

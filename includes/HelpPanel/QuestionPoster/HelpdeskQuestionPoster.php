@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
-use ConfigException;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\MediaWikiServices;
 
 /**

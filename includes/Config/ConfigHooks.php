@@ -2,25 +2,25 @@
 
 namespace GrowthExperiments\Config;
 
-use Config;
 use Content;
-use DeferredUpdates;
 use FormatJson;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use IContextSource;
 use JsonContent;
+use MediaWiki\Config\Config;
 use MediaWiki\Content\Hook\JsonValidateSaveHook;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Page\PageIdentity;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Status\Status;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\TitleFactory;
-use SpecialPage;
-use Status;
+use MediaWiki\Title\TitleValue;
+use MediaWiki\User\User;
 use StatusValue;
 use TextContent;
-use TitleValue;
-use User;
 
 class ConfigHooks implements
 	EditFilterMergedContentHook,

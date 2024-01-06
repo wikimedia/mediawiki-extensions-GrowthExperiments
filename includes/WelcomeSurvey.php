@@ -5,10 +5,11 @@ namespace GrowthExperiments;
 use FormatJson;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use IContextSource;
-use MediaWiki\HtmlHelper;
+use MediaWiki\Config\ConfigException;
+use MediaWiki\Html\HtmlHelper;
 use MediaWiki\Languages\LanguageNameUtils;
-use MediaWiki\User\UserOptionsManager;
-use MWTimestamp;
+use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\Utils\MWTimestamp;
 use stdClass;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\RemexHtml\HTMLData;
@@ -54,7 +55,7 @@ class WelcomeSurvey {
 	 *
 	 * @param bool $useDefault Use default group from WelcomeSurveyDefaultGroup, if it is defined
 	 * @return bool|string
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public function getGroup( $useDefault = false ) {
 		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
@@ -166,7 +167,7 @@ class WelcomeSurvey {
 	 * @param string $group
 	 * @param bool $asKeyedArray True to use the question name as key, false to use a numerical index
 	 * @return array Questions configuration
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public function getQuestions( $group, $asKeyedArray = true ) {
 		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );

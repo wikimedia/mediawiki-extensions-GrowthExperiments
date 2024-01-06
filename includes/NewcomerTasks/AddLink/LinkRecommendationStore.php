@@ -11,10 +11,10 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
 use RuntimeException;
 use stdClass;
-use TitleValue;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 

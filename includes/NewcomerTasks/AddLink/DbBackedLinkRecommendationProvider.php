@@ -5,8 +5,8 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\TitleFormatter;
 use StatusValue;
-use TitleFormatter;
 use Wikimedia\Assert\Assert;
 
 /**

@@ -12,9 +12,9 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\User;
 use RequestContext;
 use TextContent;
-use User;
 use UserOptionsUpdateJob;
 
 class QuestionStore {

@@ -14,10 +14,10 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IBufferingStatsdDataFactory;
 use ISearchResultSet;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserIdentity;
 use SearchEngine;
 use SearchEngineFactory;
-use SpecialPage;
 use StatusValue;
 
 /**

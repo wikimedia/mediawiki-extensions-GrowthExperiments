@@ -9,8 +9,8 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSetti
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\UserImpact\UserImpact;
-use Html;
 use IContextSource;
+use MediaWiki\Html\Html;
 use MediaWiki\Title\Title;
 
 class PersonalizedPraise extends BaseModule {

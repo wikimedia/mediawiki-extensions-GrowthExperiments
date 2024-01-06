@@ -13,8 +13,8 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleValue;
 use StatusValue;
-use TitleValue;
 use Wikimedia\Assert\Assert;
 
 /**

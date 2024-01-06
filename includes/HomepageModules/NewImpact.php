@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use Exception;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\UserDatabaseHelper;
@@ -10,8 +9,9 @@ use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactStore;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
 use MediaWiki\User\UserIdentity;
 
 /**

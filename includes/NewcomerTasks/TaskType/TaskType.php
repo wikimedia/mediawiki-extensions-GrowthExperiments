@@ -7,9 +7,9 @@ use MediaWiki\Json\JsonUnserializable;
 use MediaWiki\Json\JsonUnserializableTrait;
 use MediaWiki\Json\JsonUnserializer;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\TitleValue;
 use Message;
 use MessageLocalizer;
-use TitleValue;
 
 /**
  * Describes a type of suggested edit.

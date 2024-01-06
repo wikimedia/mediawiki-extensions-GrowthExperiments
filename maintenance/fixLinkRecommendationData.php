@@ -14,10 +14,10 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
-use Status;
+use MediaWiki\Title\TitleFormatter;
 use StatusValue;
-use TitleFormatter;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {

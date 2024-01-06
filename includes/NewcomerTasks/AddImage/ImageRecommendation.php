@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use JsonSerializable;
 use MediaWiki\Linker\LinkTarget;
-use TitleValue;
+use MediaWiki\Title\TitleValue;
 
 /**
  * Value object for machine-generated image recommendations. An image recommendation consists

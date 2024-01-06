@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
-use DeferredUpdates;
 use Exception;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\RefreshUserImpactJob;
@@ -11,6 +10,7 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use IBufferingStatsdDataFactory;
 use JobQueueGroup;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;

@@ -5,9 +5,9 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
+use MediaWiki\Status\Status;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
-use Status;
 use StatusValue;
 
 abstract class TaskSuggesterFactory implements LoggerAwareInterface {

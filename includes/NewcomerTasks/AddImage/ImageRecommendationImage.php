@@ -4,7 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use JsonSerializable;
 use MediaWiki\Linker\LinkTarget;
-use TitleValue;
+use MediaWiki\Title\TitleValue;
 
 /**
  * Represents an individual suggested image within an ImageRecommendation.

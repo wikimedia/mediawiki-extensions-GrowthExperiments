@@ -10,7 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeH
 use Maintenance;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
-use Status;
+use MediaWiki\Status\Status;
 use StatusValue;
 
 $IP = getenv( 'MW_INSTALL_PATH' );

@@ -3,9 +3,9 @@
 namespace GrowthExperiments\EventLogging;
 
 use EventLogging;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\WikiMap\WikiMap;
-use WebRequest;
 
 class SpecialMentorDashboardLogger {
 

@@ -5,7 +5,7 @@ namespace GrowthExperiments\PeriodicMetrics;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentityLookup;
-use MWTimestamp;
+use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 class InactiveMentorsMetric implements IMetric {

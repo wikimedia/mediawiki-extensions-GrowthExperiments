@@ -11,17 +11,17 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm;
 use GrowthExperiments\Specials\Forms\ManageMentorsEditMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
-use Html;
 use HTMLForm;
-use Linker;
 use LogicException;
+use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
-use MWTimestamp;
+use MediaWiki\Utils\MWTimestamp;
 use OOUI\ButtonWidget;
 use PermissionsError;
-use SpecialPage;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class SpecialManageMentors extends SpecialPage {

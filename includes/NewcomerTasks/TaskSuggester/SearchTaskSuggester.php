@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use ISearchResultSet;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
 use Message;
 use MultipleIterator;
@@ -21,7 +22,6 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use SearchResult;
-use Status;
 use StatusValue;
 
 /**

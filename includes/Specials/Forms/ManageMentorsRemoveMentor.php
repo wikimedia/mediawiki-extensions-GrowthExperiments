@@ -4,8 +4,8 @@ namespace GrowthExperiments\Specials\Forms;
 
 use GrowthExperiments\Mentorship\MentorRemover;
 use IContextSource;
+use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
-use Status;
 
 class ManageMentorsRemoveMentor extends ManageMentorsAbstractForm {
 

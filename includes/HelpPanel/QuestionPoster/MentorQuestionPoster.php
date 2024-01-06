@@ -9,8 +9,8 @@ use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\User;
 use PrefixingStatsdDataFactoryProxy;
-use User;
 use UserNotLoggedIn;
 
 /**

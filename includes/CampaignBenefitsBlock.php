@@ -4,17 +4,17 @@ namespace GrowthExperiments;
 
 use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
-use Html;
 use HTMLForm;
 use IContextSource;
-use MalformedTitleException;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\Title;
 use MessageLocalizer;
 use OOUI\IconWidget;
-use OutputPage;
 use Wikimedia\Assert\Assert;
 
 /**

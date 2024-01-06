@@ -2,27 +2,27 @@
 
 namespace GrowthExperiments\Config;
 
-use CommentStoreComment;
 use Content;
 use DerivativeContext;
 use FormatJson;
 use GrowthExperiments\Config\Validation\IConfigValidator;
 use InvalidArgumentException;
 use JsonContent;
+use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\HookContainer\HookRunner;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use RecentChange;
 use RequestContext;
-use Status;
-use User;
 
 class WikiPageConfigWriter {
 

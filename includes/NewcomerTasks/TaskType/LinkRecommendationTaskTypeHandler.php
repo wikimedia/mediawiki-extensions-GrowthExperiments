@@ -9,9 +9,9 @@ use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
 use LogicException;
+use MediaWiki\Title\TitleParser;
 use MessageLocalizer;
 use MessageSpecifier;
-use TitleParser;
 use Wikimedia\Assert\Assert;
 
 class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {

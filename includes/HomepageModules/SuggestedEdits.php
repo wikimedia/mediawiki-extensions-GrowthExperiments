@@ -2,8 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
-use DeferredUpdates;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
@@ -23,14 +21,17 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsLookup;
 use Message;
 use OOUI\ButtonGroupWidget;
 use OOUI\ButtonWidget;
@@ -39,7 +40,6 @@ use OOUI\HtmlSnippet;
 use OOUI\IconWidget;
 use OOUI\Tag;
 use RuntimeException;
-use Status;
 use StatusValue;
 
 /**

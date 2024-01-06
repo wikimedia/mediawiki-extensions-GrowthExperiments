@@ -5,9 +5,9 @@ namespace GrowthExperiments\NewcomerTasks\Topic;
 use MediaWiki\Json\JsonUnserializer;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\TitleValue;
 use Message;
 use MessageLocalizer;
-use TitleValue;
 
 /**
  * A topic based on morelike search (text similarity with a predefined set of reference articles).

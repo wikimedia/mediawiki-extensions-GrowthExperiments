@@ -4,8 +4,8 @@ namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\Specials\CampaignBenefitsBlock;
 use GrowthExperiments\VariantHooks;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsLookup;
 
 /**
  * Wrapper for the GECampaigns PHP / community configuration variable, used to retrieve

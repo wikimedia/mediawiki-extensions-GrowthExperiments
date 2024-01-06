@@ -6,8 +6,8 @@ use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\StartEmail;
 use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\Logger\LoggerFactory;
-use User;
-use WebRequest;
+use MediaWiki\Request\WebRequest;
+use MediaWiki\User\User;
 
 class SpecialHomepageLogger {
 

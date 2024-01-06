@@ -15,9 +15,9 @@ use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleValue;
 use Message;
 use StatusValue;
-use TitleValue;
 
 /**
  * Load configuration from a local or remote .json wiki page.

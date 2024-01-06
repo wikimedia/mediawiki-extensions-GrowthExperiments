@@ -5,8 +5,8 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use DerivativeContext;
 use InvalidArgumentException;
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Site\SiteLookup;
 use Message;
-use SiteLookup;
 use StatusValue;
 
 class ImageRecommendationMetadataProvider {

@@ -2,18 +2,18 @@
 
 namespace GrowthExperiments\Specials;
 
-use Config;
-use FormSpecialPage;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use Html;
-use Linker;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\SpecialPage\FormSpecialPage;
+use MediaWiki\Status\Status;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use Message;
 use PermissionsError;
-use Status;
-use User;
 
 class SpecialClaimMentee extends FormSpecialPage {
 

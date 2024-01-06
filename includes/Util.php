@@ -3,31 +3,32 @@
 namespace GrowthExperiments;
 
 use ApiRawMessage;
-use Config;
 use Exception;
 use FormatJson;
 use IContextSource;
 use Iterator;
+use MediaWiki\Config\Config;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Parser\Sanitizer;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\User;
 use MediaWiki\Utils\UrlUtils;
 use MWExceptionHandler;
 use Psr\Log\LogLevel;
 use RequestContext;
-use Sanitizer;
 use Skin;
-use Status;
 use StatusValue;
 use Throwable;
 use Traversable;
 use UnexpectedValueException;
-use User;
 use Wikimedia\NormalizedException\NormalizedException;
 
 class Util {
@@ -119,13 +120,13 @@ class Util {
 	 * Add the guided tour module if the user is logged-in, hasn't seen the tour already,
 	 * and the tour dependencies are loaded.
 	 *
-	 * @param \OutputPage $out
+	 * @param OutputPage $out
 	 * @param string $pref
 	 * @param string|string[] $modules
 	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public static function maybeAddGuidedTour(
-		\OutputPage $out,
+		OutputPage $out,
 		$pref,
 		$modules,
 		UserOptionsLookup $userOptionsLookup

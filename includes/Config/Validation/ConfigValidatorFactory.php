@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Config\Validation;
 
-use Config;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use InvalidArgumentException;
+use MediaWiki\Config\Config;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;

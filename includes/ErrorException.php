@@ -3,7 +3,7 @@
 namespace GrowthExperiments;
 
 use Exception;
-use Status;
+use MediaWiki\Status\Status;
 use StatusValue;
 
 /**

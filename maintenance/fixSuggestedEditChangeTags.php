@@ -12,10 +12,10 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionStore;
-use Status;
+use MediaWiki\Status\Status;
+use MediaWiki\User\User;
 use StatusValue;
 use stdClass;
-use User;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 

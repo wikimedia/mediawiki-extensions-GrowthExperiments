@@ -3,9 +3,9 @@
 namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Config\WikiPageConfigLoader;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use Psr\Log\LoggerAwareTrait;
-use Status;
 use StatusValue;
 
 /**

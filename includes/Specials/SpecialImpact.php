@@ -5,11 +5,11 @@ namespace GrowthExperiments\Specials;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageModules\NewImpact;
-use Html;
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserNamePrefixSearch;
 use MediaWiki\User\UserNameUtils;
-use SpecialPage;
 
 class SpecialImpact extends SpecialPage {
 

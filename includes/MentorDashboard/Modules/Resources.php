@@ -3,12 +3,12 @@
 namespace GrowthExperiments\MentorDashboard\Modules;
 
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use Html;
 use IContextSource;
-use MalformedTitleException;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
-use SpecialPage;
-use TitleParser;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\MalformedTitleException;
+use MediaWiki\Title\TitleParser;
 
 class Resources extends BaseModule {
 	/** @var TitleParser */

@@ -2,16 +2,16 @@
 
 namespace GrowthExperiments\Specials;
 
-use Config;
-use FormSpecialPage;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use HTMLForm;
 use LogicException;
+use MediaWiki\Config\Config;
+use MediaWiki\SpecialPage\FormSpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Status\Status;
 use PermissionsError;
-use SpecialPage;
-use Status;
 use UserBlockedError;
 
 class SpecialEnrollAsMentor extends FormSpecialPage {

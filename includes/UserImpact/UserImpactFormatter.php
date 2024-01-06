@@ -4,7 +4,7 @@ namespace GrowthExperiments\UserImpact;
 
 use DateTime;
 use Exception;
-use MWTimestamp;
+use MediaWiki\Utils\MWTimestamp;
 use stdClass;
 
 /**

@@ -3,7 +3,7 @@
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
 use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class EchoNewPraiseworthyMenteesPresentationModel extends EchoEventPresentationModel {
 

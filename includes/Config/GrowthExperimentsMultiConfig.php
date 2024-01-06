@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Config;
 
-use Config;
-use ConfigException;
 use IDBAccessObject;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Settings\Config\MergeStrategy;
 
 /**

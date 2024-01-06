@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
-use Config;
 use FormatJson;
+use MediaWiki\Config\Config;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsLookup;
 use MessageLocalizer;
 use WikitextContent;
 

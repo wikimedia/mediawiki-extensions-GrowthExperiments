@@ -7,9 +7,9 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use IContextSource;
+use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
-use MWTimestamp;
-use Status;
+use MediaWiki\Utils\MWTimestamp;
 
 class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 

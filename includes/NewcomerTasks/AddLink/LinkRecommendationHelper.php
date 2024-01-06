@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
-use DeferredUpdates;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\ProperPageIdentity;
 use StatusValue;

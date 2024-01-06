@@ -10,7 +10,7 @@ use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use LogicException;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
-use User;
+use MediaWiki\User\User;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiManageMentorList extends ApiBase {

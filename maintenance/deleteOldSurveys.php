@@ -5,8 +5,8 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\WelcomeSurvey;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
-use MWTimestamp;
-use User;
+use MediaWiki\User\User;
+use MediaWiki\Utils\MWTimestamp;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {

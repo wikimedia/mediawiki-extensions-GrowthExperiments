@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\Mentorship\MentorManager;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
 use OOUI\ButtonWidget;
 
 class MentorshipOptIn extends BaseModule {

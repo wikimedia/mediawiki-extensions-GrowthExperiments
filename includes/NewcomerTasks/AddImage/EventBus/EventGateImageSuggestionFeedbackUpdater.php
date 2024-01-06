@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage\EventBus;
 
-use DeferredUpdates;
 use Exception;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\EventBus\EventBusFactory;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Utils\MWTimestamp;
 use MediaWiki\WikiMap\WikiMap;
-use MWTimestamp;
 
 /**
  * Create and send event to EventGate when image suggestions are accepted, rejected or invalidated.

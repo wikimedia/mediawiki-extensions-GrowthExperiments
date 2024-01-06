@@ -6,7 +6,7 @@ use DateTime;
 use Exception;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
-use MWTimestamp;
+use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Assert\Assert;
 
 /**

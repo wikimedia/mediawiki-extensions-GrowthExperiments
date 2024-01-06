@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\WelcomeSurveyFactory;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use OOUI\ButtonInputWidget;
 use OOUI\IconWidget;

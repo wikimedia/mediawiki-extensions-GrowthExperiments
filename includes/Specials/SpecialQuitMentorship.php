@@ -3,12 +3,12 @@
 namespace GrowthExperiments\Specials;
 
 use ErrorPageError;
-use FormSpecialPage;
 use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use HTMLForm;
+use MediaWiki\SpecialPage\FormSpecialPage;
+use MediaWiki\User\User;
 use PermissionsError;
-use User;
 
 class SpecialQuitMentorship extends FormSpecialPage {
 

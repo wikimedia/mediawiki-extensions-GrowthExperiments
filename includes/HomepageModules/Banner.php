@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use GrowthExperiments\ExperimentUserManager;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
 
 /**
  * A module for displaying some text that can be specified on-wiki. This can be used as a low-key

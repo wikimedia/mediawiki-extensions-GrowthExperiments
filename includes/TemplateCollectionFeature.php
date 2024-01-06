@@ -14,7 +14,7 @@ use Elastica\Query\AbstractQuery;
 use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleFactory;
-use TitleValue;
+use MediaWiki\Title\TitleValue;
 use Wikimedia\Assert\Assert;
 
 /**

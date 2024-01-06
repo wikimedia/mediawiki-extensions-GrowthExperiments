@@ -7,8 +7,8 @@ use GrowthExperiments\Util;
 use IDBAccessObject;
 use JsonContent;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
-use TitleValue;
 
 /**
  * Load user impact data from JSON stored at the page `User:<name>/userimpact.json`,

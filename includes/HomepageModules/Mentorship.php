@@ -2,8 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
-use ConfigException;
 use DateInterval;
 use GenderCache;
 use GrowthExperiments\ExperimentUserManager;
@@ -13,15 +11,17 @@ use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigException;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\Utils\MWTimestamp;
 use MessageLocalizer;
-use MWTimestamp;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
-use User;
 
 /**
  * This is the "Mentorship" module. It shows your mentor and

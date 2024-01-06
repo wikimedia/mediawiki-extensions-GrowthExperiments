@@ -16,8 +16,8 @@ use MediaWiki\Rest\Validator\JsonBodyValidator;
 use MediaWiki\Rest\Validator\UnsupportedContentTypeBodyValidator;
 use MediaWiki\Rest\Validator\Validator;
 use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
-use Status;
 use Wikimedia\Message\MessageValue;
 use Wikimedia\ParamValidator\ParamValidator;
 

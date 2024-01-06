@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Maintenance;
 
 use CirrusSearch\Query\ArticleTopicFeature;
-use Config;
 use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -18,14 +17,15 @@ use GrowthExperiments\NewcomerTasks\TaskType\NullTaskTypeHandler;
 use GrowthExperiments\WikiConfigException;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\User;
 use MediaWiki\WikiMap\WikiMap;
 use RuntimeException;
-use Status;
 use StatusValue;
-use User;
 use Wikimedia\Rdbms\DBReadOnlyError;
 
 $IP = getenv( 'MW_INSTALL_PATH' );

@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use Config;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
@@ -12,10 +11,11 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\WikiConfigException;
 use LogicException;
 use Maintenance;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
-use Status;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\DBReadOnlyError;
 

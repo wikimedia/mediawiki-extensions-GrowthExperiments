@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\EventLogging;
 
-use DeferredUpdates;
 use ExtensionRegistry;
 use GrowthExperiments\Specials\SpecialEditGrowthConfig;
 use InvalidArgumentException;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\WikiMap\WikiMap;

@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
-use ActorMigration;
 use ChangeTags;
 use ExtensionRegistry;
 use GrowthExperiments\HomepageHooks;
@@ -12,6 +11,7 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CentralAuth\CentralAuthServices;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
+use MediaWiki\User\ActorMigration;
 use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;

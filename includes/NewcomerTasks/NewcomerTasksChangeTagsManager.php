@@ -3,17 +3,17 @@
 namespace GrowthExperiments\NewcomerTasks;
 
 use ChangeTags;
-use Config;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use MediaWiki\Config\Config;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
-use MediaWiki\User\UserOptionsLookup;
 use PrefixingStatsdDataFactoryProxy;
 use RequestContext;
 use StatusValue;

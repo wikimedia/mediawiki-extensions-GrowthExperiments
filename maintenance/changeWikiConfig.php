@@ -9,6 +9,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use InvalidArgumentException;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 
@@ -191,7 +192,7 @@ class ChangeWikiConfig extends Maintenance {
 					$this->getOption( 'summary', '' )
 				);
 			if ( !$statusValue->isOK() ) {
-				$this->fatalError( \Status::wrap( $statusValue )->getWikiText() );
+				$this->fatalError( Status::wrap( $statusValue )->getWikiText() );
 			}
 			$this->output( "Saved!\n" );
 		} else {

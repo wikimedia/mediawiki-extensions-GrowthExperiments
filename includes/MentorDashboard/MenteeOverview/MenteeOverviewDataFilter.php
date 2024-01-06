@@ -3,7 +3,7 @@
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use LogicException;
-use MWTimestamp;
+use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 

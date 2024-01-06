@@ -5,9 +5,9 @@ namespace GrowthExperiments\EventLogging;
 use ExtensionRegistry;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use MediaWiki\Extension\EventLogging\EventLogging;
+use MediaWiki\Request\WebRequest;
+use MediaWiki\User\User;
 use Psr\Log\LoggerInterface;
-use User;
-use WebRequest;
 
 class WelcomeSurveyLogger {
 

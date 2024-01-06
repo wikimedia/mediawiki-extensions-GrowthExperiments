@@ -6,8 +6,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentityValue;
-use Status;
 use StatusValue;
 
 class SuggestionsInfo implements NewcomerTasksInfo {

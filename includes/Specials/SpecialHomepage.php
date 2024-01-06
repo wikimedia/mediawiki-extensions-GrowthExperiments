@@ -2,9 +2,6 @@
 
 namespace GrowthExperiments\Specials;
 
-use Config;
-use ConfigException;
-use DeferredUpdates;
 use ErrorPageError;
 use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
@@ -17,14 +14,17 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
-use Html;
 use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigException;
+use MediaWiki\Deferred\DeferredUpdates;
+use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleFactory;
-use MediaWiki\User\UserOptionsManager;
+use MediaWiki\User\Options\UserOptionsManager;
 use PrefixingStatsdDataFactoryProxy;
-use SpecialPage;
 use Throwable;
 use UserNotLoggedIn;
 

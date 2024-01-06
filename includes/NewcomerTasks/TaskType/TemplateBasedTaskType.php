@@ -4,7 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use MediaWiki\Json\JsonUnserializer;
 use MediaWiki\Linker\LinkTarget;
-use TitleValue;
+use MediaWiki\Title\TitleValue;
 
 class TemplateBasedTaskType extends TaskType {
 

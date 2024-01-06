@@ -4,10 +4,10 @@ namespace GrowthExperiments\Api;
 
 use ApiBase;
 use ApiMain;
-use Config;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogicException;
+use MediaWiki\Config\Config;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMenteeStatus extends ApiBase {

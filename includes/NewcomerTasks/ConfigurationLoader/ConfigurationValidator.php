@@ -4,12 +4,12 @@ namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use MalformedTitleException;
 use MediaWiki\Collation\CollationFactory;
+use MediaWiki\Title\MalformedTitleException;
+use MediaWiki\Title\TitleParser;
 use Message;
 use MessageLocalizer;
 use StatusValue;
-use TitleParser;
 
 /**
  * Helper class for validating task type / topic / etc. configuration.

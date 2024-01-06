@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\DashboardModule;
 
-use Config;
-use Html;
 use IContextSource;
 use InvalidArgumentException;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\User;
 use Message;
 use MessageSpecifier;
 use OOUI\IconWidget;
-use SpecialPage;
-use User;
 
 abstract class DashboardModule implements IDashboardModule {
 	/**

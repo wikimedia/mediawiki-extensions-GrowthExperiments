@@ -2,14 +2,14 @@
 
 namespace GrowthExperiments;
 
-use Html;
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\User\Hook\UserSendConfirmationMailHook;
+use MediaWiki\User\User;
 use Message;
 use RequestContext;
-use User;
 
 class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmationMailHook {
 

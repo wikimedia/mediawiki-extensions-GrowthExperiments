@@ -10,8 +10,8 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleValue;
 use StatusValue;
-use TitleValue;
 use Wikimedia\Assert\Assert;
 
 /**

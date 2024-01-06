@@ -2,8 +2,6 @@
 
 namespace GrowthExperiments\Mentorship\Hooks;
 
-use Config;
-use DeferredUpdates;
 use EchoAttributeManager;
 use EchoUserLocator;
 use GenderCache;
@@ -18,6 +16,8 @@ use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
+use MediaWiki\Config\Config;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;

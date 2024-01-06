@@ -7,7 +7,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use Job;
 use MediaWiki\MediaWikiServices;
-use User;
+use MediaWiki\User\User;
 
 /**
  * Refresh the newcomer tasks cache for a user.

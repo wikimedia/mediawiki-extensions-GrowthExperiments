@@ -14,12 +14,12 @@ use MediaWiki\Extension\VisualEditor\ApiVisualEditorEdit;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPreSaveHook;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use OutOfBoundsException;
 use PrefixingStatsdDataFactoryProxy;
-use Status;
 use UnexpectedValueException;
 
 /**

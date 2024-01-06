@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments;
 
-use ConfigException;
 use MediaWiki\Cache\Hook\MessageCacheFetchOverridesHook;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\User;
 use RequestContext;
-use User;
 
 /**
  * Hook handler class that contains hooks which are riskier than the average (called often,
