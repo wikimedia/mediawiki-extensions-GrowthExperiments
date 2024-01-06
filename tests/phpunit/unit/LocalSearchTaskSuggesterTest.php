@@ -12,11 +12,11 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IBufferingStatsdDataFactory;
 use ISearchResultSet;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Status\Status;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use SearchEngine;
 use SearchEngineFactory;
-use Status;
 use StatusValue;
 use Wikimedia\TestingAccessWrapper;
 

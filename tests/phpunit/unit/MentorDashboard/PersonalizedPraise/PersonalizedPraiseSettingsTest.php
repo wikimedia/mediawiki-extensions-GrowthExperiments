@@ -5,13 +5,13 @@ namespace GrowthExperiments\Tests;
 use FormatJson;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditions;
-use HashConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 

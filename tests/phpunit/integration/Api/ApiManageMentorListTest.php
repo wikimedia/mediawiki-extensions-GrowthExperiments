@@ -8,7 +8,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
-use User;
+use MediaWiki\User\User;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**

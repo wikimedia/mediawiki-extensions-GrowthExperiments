@@ -5,8 +5,8 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
 use MediaWiki\Request\FauxResponse;
+use MediaWiki\SpecialPage\SpecialPage;
 use PermissionsError;
-use SpecialPage;
 use SpecialPageTestBase;
 
 /**

@@ -2,17 +2,17 @@
 
 namespace GrowthExperiments\Tests;
 
-use GlobalVarConfig;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialHomepage;
 use InvalidArgumentException;
+use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\User\User;
 use SpecialPageTestBase;
-use User;
 
 /**
  * @group Database

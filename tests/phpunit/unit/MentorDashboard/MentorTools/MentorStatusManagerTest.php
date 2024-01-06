@@ -4,13 +4,13 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use MediaWiki\Block\AbstractBlock;
+use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
-use User;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 

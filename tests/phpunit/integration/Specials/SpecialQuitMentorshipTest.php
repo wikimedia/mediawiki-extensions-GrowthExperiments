@@ -8,8 +8,8 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialQuitMentorship;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Request\FauxResponse;
+use MediaWiki\User\User;
 use SpecialPageTestBase;
-use User;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialQuitMentorship

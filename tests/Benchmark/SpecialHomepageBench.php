@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Tests\Benchmark;
 
-use GlobalVarConfig;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialHomepage;
+use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\MediaWikiServices;
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 
 $path = dirname( __DIR__, 4 );
 

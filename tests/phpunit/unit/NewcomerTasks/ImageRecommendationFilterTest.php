@@ -9,8 +9,8 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use HashBagOStuff;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use TitleValue;
 use WANObjectCache;
 
 /**

@@ -5,8 +5,8 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use MediaWiki\Json\JsonCodec;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use TitleValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic

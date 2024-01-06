@@ -8,12 +8,12 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditions;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
+use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\Utils\MWTimestamp;
 use MediaWikiUnitTestCase;
-use MWTimestamp;
-use User;
 
 /**
  * @coversDefaultClass \GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup

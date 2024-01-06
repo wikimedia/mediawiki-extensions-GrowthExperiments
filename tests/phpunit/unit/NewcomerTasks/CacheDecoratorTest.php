@@ -13,11 +13,11 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use HashBagOStuff;
 use JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\Stub\ReturnArgument;
 use StatusValue;
-use TitleValue;
 use WANObjectCache;
 
 /**

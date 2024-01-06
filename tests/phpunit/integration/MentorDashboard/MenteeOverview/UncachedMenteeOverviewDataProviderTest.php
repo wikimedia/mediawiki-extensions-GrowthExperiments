@@ -5,8 +5,8 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
-use User;
 use Wikimedia\TestingAccessWrapper;
 
 /**

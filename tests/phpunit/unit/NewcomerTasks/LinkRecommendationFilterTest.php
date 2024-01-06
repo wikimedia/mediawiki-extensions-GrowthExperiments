@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
 
 /**
@@ -59,9 +60,9 @@ class LinkRecommendationFilterTest extends MediaWikiUnitTestCase {
 	private function getTaskSet(): TaskSet {
 		$copyEditTaskType = new TemplateBasedTaskType( 'copyedit', 'easy', [], [] );
 		$linkRecommendation = new LinkRecommendationTaskType( 'link-recommendation', 'easy', [] );
-		$task1 = new Task( $copyEditTaskType, new \TitleValue( NS_MAIN, 'Task1' ) );
-		$task2 = new Task( $copyEditTaskType, new \TitleValue( NS_MAIN, 'Task2' ) );
-		$task3 = new Task( $linkRecommendation, new \TitleValue( NS_MAIN, 'Task3' ) );
+		$task1 = new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Task1' ) );
+		$task2 = new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Task2' ) );
+		$task3 = new Task( $linkRecommendation, new TitleValue( NS_MAIN, 'Task3' ) );
 		return new TaskSet(
 			[ $task1, $task2, $task3 ],
 			3,

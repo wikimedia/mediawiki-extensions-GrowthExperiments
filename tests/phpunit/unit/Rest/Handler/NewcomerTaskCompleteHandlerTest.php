@@ -7,17 +7,17 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\Rest\Handler\NewcomerTaskCompleteHandler;
-use HashConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\RequestData;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserOptionsLookup;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 /**

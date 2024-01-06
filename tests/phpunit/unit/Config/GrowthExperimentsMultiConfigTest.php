@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Tests;
 
-use ConfigException;
-use GlobalVarConfig;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\WikiPageConfig;
-use HashConfig;
+use MediaWiki\Config\ConfigException;
+use MediaWiki\Config\GlobalVarConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWikiUnitTestCase;
 
 /**

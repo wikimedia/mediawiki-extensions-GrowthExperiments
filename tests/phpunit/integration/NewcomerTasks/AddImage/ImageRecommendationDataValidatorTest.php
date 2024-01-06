@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests\NewcomerTasks\AddImage;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationDataValidator;
+use MediaWiki\Status\Status;
 use MediaWikiIntegrationTestCase;
-use Status;
 use StatusValue;
 
 /**

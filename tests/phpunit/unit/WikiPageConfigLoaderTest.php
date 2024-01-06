@@ -14,16 +14,16 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\Utils\UrlUtils;
 use MediaWikiUnitTestCase;
 use MessageSpecifier;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
-use Status;
 use StatusValue;
-use TitleValue;
 use WANObjectCache;
 use WikitextContent;
 

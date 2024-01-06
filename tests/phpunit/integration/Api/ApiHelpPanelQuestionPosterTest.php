@@ -4,6 +4,9 @@ use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Status\Status;
+use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 
 /**
  * @group API

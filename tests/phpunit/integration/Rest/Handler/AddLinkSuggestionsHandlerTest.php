@@ -10,11 +10,11 @@ use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\ResponseFactory;
+use MediaWiki\Title\TitleValue;
+use MediaWiki\Utils\MWTimestamp;
 use MediaWikiIntegrationTestCase;
-use MWTimestamp;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
-use TitleValue;
 use Wikimedia\TestingAccessWrapper;
 
 class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {

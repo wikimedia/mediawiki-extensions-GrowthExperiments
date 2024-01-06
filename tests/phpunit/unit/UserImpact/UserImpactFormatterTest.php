@@ -8,8 +8,8 @@ use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use Language;
 use MediaWiki\User\UserIdentityValue;
+use MediaWiki\Utils\MWTimestamp;
 use MediaWikiUnitTestCase;
-use MWTimestamp;
 
 /**
  * @covers \GrowthExperiments\UserImpact\UserImpactFormatter

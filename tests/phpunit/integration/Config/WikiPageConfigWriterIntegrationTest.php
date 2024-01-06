@@ -9,11 +9,11 @@ use GrowthExperiments\GrowthExperimentsServices;
 use InvalidArgumentException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
 use Throwable;
-use User;
 use Wikimedia\TestingAccessWrapper;
 
 /**

@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Json\JsonCodec;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use TitleValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskType\TaskType

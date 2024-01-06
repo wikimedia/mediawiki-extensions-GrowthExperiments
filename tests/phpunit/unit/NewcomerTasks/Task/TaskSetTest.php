@@ -8,8 +8,8 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use InvalidArgumentException;
 use MediaWiki\Json\JsonCodec;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use TitleValue;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\Task\TaskSet

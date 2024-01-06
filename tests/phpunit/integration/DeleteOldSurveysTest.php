@@ -5,9 +5,9 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\Maintenance\DeleteOldSurveys;
 use GrowthExperiments\WelcomeSurvey;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
-use User;
 use Wikimedia\TestingAccessWrapper;
 
 require_once __DIR__ . '/../../../maintenance/deleteOldSurveys.php';

@@ -13,7 +13,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoade
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\MainConfigNames;
-use TitleValue;
+use MediaWiki\Title\TitleValue;
 
 /**
  * @covers \GrowthExperiments\Api\ApiQueryImageSuggestionData

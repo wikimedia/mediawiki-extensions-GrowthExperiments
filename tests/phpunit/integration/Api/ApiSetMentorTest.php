@@ -7,11 +7,11 @@ use ApiUsageException;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use HashBagOStuff;
 use JobQueueGroup;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use PHPUnit\Framework\Constraint\Constraint;
-use User;
 use WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
 

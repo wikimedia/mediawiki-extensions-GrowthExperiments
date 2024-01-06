@@ -4,9 +4,13 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanelHooks;
-use HashConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Request\WebRequest;
+use MediaWiki\Title\TitleValue;
+use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -36,7 +40,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider providerShouldShowHelpPanel
 	 */
 	public function testShouldShowHelpPanel(
-		\TitleValue $title,
+		TitleValue $title,
 		string $action,
 		bool $gesuggestededit,
 		int $userId,
@@ -46,17 +50,17 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 		bool $expected,
 		string $message
 	) {
-		$out = $this->createMock( \OutputPage::class );
+		$out = $this->createMock( OutputPage::class );
 		$out->method( 'getTitle' )
 			->willReturn( $title );
-		$request = $this->createMock( \WebRequest::class );
+		$request = $this->createMock( WebRequest::class );
 		$request->method( 'getVal' )
 			->with( 'action' )
 			->willReturn( $action );
 		$request->method( 'getBool' )
 			->with( 'gesuggestededit' )
 			->willReturn( $gesuggestededit );
-		$user = $this->createPartialMock( \User::class, [ 'isNamed' ] );
+		$user = $this->createPartialMock( User::class, [ 'isNamed' ] );
 		$user->method( 'isNamed' )
 			->willReturn( (bool)$userId );
 		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
@@ -81,7 +85,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 		return [
 			[
 				// title
-				new \TitleValue( NS_MAIN, 'Foo' ),
+				new TitleValue( NS_MAIN, 'Foo' ),
 				// action=
 				'edit',
 				// getBool( 'gesuggestededit' )
@@ -99,7 +103,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 				'Normal scenario - edit on a main namespace, suggested edit flag, user has pref enabled'
 			],
 			[
-				new \TitleValue( NS_PROJECT, 'Foo' ),
+				new TitleValue( NS_PROJECT, 'Foo' ),
 				'edit',
 				false,
 				1,
@@ -111,7 +115,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 				'Namespace of title is in excluded namespaces, help panel should not show'
 			],
 			[
-				new \TitleValue( NS_MAIN, 'Foo' ),
+				new TitleValue( NS_MAIN, 'Foo' ),
 				'blah',
 				true,
 				1,
@@ -122,7 +126,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 				'Action of "blah" should result in help panel not showing'
 			],
 			[
-				new \TitleValue( NS_MAIN, 'Foo' ),
+				new TitleValue( NS_MAIN, 'Foo' ),
 				'edit',
 				true,
 				1,
@@ -133,7 +137,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 				'User has help panel disabled, but gesuggestededit is set, so the help panel should show'
 			],
 			[
-				new \TitleValue( NS_MAIN, 'Foo' ),
+				new TitleValue( NS_MAIN, 'Foo' ),
 				'edit',
 				true,
 				0,

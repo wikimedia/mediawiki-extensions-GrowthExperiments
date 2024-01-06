@@ -8,10 +8,10 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Status\Status;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
-use Status;
-use TitleValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory

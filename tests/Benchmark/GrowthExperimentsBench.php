@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Benchmark;
 
-use CommentStoreComment;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationMetadata;
@@ -15,13 +14,14 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\TitleValue;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentityValue;
 use StatusValue;
 use TextContent;
-use TitleValue;
-use User;
 
 class GrowthExperimentsBench {
 

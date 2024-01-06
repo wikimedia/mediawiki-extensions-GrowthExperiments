@@ -7,9 +7,11 @@ use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
 use JobQueueGroup;
 use MediaWiki\Minerva\Skins\SkinMinerva;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Title\Title;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
 use OOUI\IconWidget;
@@ -333,7 +335,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @return MockObject|Skin
 	 */
 	private function getSkinMock( $class = Skin::class ) {
-		$outputMock = $this->createMock( \OutputPage::class );
+		$outputMock = $this->createMock( OutputPage::class );
 		$outputMock->method( 'msg' )
 			->willReturnCallback( function ( $key ) {
 				$messageMock = $this->getDefaultMessageMock();
@@ -344,7 +346,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 				return $messageMock;
 			} );
 
-		$userMock = $this->createNoOpMock( \User::class, [ 'getId', 'getName' ] );
+		$userMock = $this->createNoOpMock( User::class, [ 'getId', 'getName' ] );
 		// This will make user settings update job fail, but we don't care about that.
 		$userMock->method( 'getId' )
 			->willReturn( -1 );

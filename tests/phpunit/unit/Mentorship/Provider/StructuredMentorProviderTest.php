@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
@@ -14,7 +15,6 @@ use MediaWikiUnitTestCase;
 use Message;
 use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
-use Status;
 use Wikimedia\TestingAccessWrapper;
 
 /**

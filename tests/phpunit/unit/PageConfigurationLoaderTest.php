@@ -16,18 +16,18 @@ use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IContextSource;
-use MalformedTitleException;
 use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleParser;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
 use Message;
 use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
-use TitleParser;
-use TitleValue;
 
 /**
  * @coversDefaultClass  \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader

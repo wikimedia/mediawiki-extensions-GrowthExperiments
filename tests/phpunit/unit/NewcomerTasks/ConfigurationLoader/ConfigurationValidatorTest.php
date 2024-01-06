@@ -4,10 +4,10 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use MediaWiki\Collation\CollationFactory;
+use MediaWiki\Title\TitleParser;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 use StatusValue;
-use TitleParser;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator

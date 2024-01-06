@@ -3,13 +3,13 @@
 namespace GrowthExperiments\Tests;
 
 use BagOStuff;
-use Config;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseNotificationsDispatcher;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use HashBagOStuff;
-use HashConfig;
 use LogicException;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;

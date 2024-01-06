@@ -15,6 +15,7 @@ use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 
 // Raise limits from I2aead24cb7f47

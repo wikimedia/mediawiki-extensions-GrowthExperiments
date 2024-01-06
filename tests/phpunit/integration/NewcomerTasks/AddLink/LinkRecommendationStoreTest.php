@@ -7,8 +7,8 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationMetadata;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\TitleValue;
 use MediaWikiIntegrationTestCase;
-use TitleValue;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore

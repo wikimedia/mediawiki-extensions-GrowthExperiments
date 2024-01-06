@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 
 /**

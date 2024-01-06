@@ -6,9 +6,9 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Status\Status;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
-use Status;
 use StatusValue;
 
 abstract class SearchTaskSuggesterFactoryTestBase extends MediaWikiUnitTestCase {

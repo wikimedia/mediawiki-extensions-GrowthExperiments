@@ -11,10 +11,10 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use stdClass;
-use TitleValue;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
 

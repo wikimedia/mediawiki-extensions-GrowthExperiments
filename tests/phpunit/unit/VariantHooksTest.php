@@ -4,13 +4,13 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\VariantHooks;
-use HashConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use MediaWiki\User\UserOptionsManager;
+use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use Skin;
-use User;
 
 /**
  * @coversDefaultClass \GrowthExperiments\VariantHooks

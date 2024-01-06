@@ -5,10 +5,10 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserOptionsLookup;
-use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
 
 /**

@@ -7,9 +7,9 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationImage;
 use GrowthExperiments\NewcomerTasks\AddImage\StaticImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
 use StatusValue;
-use TitleValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\AddImage\StaticImageRecommendationProvider

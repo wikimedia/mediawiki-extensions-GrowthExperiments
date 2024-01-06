@@ -5,11 +5,11 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use DerivativeContext;
 use Language;
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Site\Site;
+use MediaWiki\Site\SiteStore;
 use MediaWikiUnitTestCase;
 use Message;
 use PHPUnit\Framework\MockObject\MockObject;
-use Site;
-use SiteStore;
 use StatusValue;
 
 /**

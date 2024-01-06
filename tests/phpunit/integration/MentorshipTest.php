@@ -3,11 +3,11 @@
 namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
-use GlobalVarConfig;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use RequestContext;

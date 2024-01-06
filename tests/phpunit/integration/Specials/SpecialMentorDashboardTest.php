@@ -4,7 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialMentorDashboard;
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 use SpecialPageTestBase;
 
 /**

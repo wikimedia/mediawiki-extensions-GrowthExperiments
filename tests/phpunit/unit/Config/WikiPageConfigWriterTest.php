@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use CommentStoreComment;
 use FormatJson;
 use GrowthExperiments\Config\Validation\IConfigValidator;
 use GrowthExperiments\Config\Validation\NoValidationValidator;
@@ -10,6 +9,7 @@ use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriter;
 use InvalidArgumentException;
 use JsonContent;
+use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
@@ -17,6 +17,7 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -24,7 +25,6 @@ use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
 use RecentChange;
 use StatusValue;
-use User;
 use Wikimedia\TestingAccessWrapper;
 use WikiPage;
 

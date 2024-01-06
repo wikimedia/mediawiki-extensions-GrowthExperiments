@@ -10,7 +10,7 @@ use GrowthExperiments\WelcomeSurvey;
 use IDBAccessObject;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
-use MWTimestamp;
+use MediaWiki\Utils\MWTimestamp;
 use Psr\Log\NullLogger;
 use SpecialPageTestBase;
 

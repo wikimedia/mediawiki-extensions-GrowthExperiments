@@ -21,17 +21,17 @@ use GrowthExperiments\Util;
 use LinkBatch;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleParser;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\Matcher\Invocation as InvocationInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use Status;
 use StatusValue;
-use TitleParser;
-use TitleValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester

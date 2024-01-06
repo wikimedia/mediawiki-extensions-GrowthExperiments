@@ -6,6 +6,7 @@ use ApiTestCase;
 use ApiUsageException;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
 
@@ -52,7 +53,7 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 				'meta' => 'growthmentorstatus'
 			],
 			null,
-			new \User()
+			new User()
 		);
 	}
 

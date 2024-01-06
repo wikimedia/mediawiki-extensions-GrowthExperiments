@@ -3,9 +3,9 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use DerivativeContext;
+use MediaWiki\Site\Site;
+use MediaWiki\Site\SiteStore;
 use RequestContext;
-use Site;
-use SiteStore;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider

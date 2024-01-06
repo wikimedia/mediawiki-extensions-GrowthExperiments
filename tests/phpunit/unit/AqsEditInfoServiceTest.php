@@ -4,10 +4,10 @@ namespace GrowthExperiments;
 
 use HashBagOStuff;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Status\Status;
 use MediaWikiUnitTestCase;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
-use Status;
 use StatusValue;
 use WANObjectCache;
 use Wikimedia\TestingAccessWrapper;

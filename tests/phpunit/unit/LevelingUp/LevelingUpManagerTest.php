@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Unit\LevelingUp;
 
-use Config;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
@@ -13,13 +12,14 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\UserImpact\UserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
-use HashConfig;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Storage\NameTableStore;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IConnectionProvider;

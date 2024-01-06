@@ -6,8 +6,8 @@ use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Json\JsonCodec;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use TitleValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\Task\Task

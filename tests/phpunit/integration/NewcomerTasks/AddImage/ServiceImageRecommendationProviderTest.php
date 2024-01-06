@@ -17,14 +17,14 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleValue;
 use MediaWikiIntegrationTestCase;
 use MockTitleTrait;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
-use Status;
 use StatusValue;
-use TitleValue;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider

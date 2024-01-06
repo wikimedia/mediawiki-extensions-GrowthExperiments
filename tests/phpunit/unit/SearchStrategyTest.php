@@ -14,9 +14,9 @@ use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
+use MediaWiki\Title\TitleParser;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use TitleParser;
-use TitleValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy

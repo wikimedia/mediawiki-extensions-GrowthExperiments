@@ -6,10 +6,10 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\NullSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
+use MediaWiki\Title\TitleParser;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
 use StatusValue;
-use TitleParser;
-use TitleValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler

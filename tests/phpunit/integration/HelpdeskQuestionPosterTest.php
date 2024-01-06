@@ -6,11 +6,11 @@ use DerivativeContext;
 use ExtensionRegistry;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use RequestContext;
-use Status;
-use User;
 
 /**
  * @group medium

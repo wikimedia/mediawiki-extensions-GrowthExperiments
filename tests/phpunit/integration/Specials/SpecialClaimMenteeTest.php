@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\Tests;
 
-use GlobalVarConfig;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialClaimMentee;
+use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\User\User;
 use PermissionsError;
 use SpecialPageTestBase;
-use User;
 
 /**
  * @group Database

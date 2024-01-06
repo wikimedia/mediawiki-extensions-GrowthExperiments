@@ -10,11 +10,11 @@ use GrowthExperiments\NewcomerTasks\AddLink\PruningLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Status\Status;
+use MediaWiki\Title\TitleValue;
 use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
-use Status;
 use StatusValue;
-use TitleValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\AddLink\PruningLinkRecommendationProvider
