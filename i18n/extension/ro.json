@@ -97,5 +97,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Aceste formate sunt necesare pentru funcția sarcinii de nou-venit de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugestii de imagine]]. Articolele ce conțin aceste formate nu vor fi listate ca sarcinii de sugestii de imagine.",
 	"growthexperiments-edit-config-delayed": "Schimbările asupra acestei setări nu vor avea imediat efect (vezi [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Închide",
-	"specialpages-group-growth-tools": "Unelte Growth"
+	"specialpages-group-growth-tools": "Unelte Growth",
+	"growthexperiments-edit-config-level-up-notifications": "Notificări: Funcții Growth",
+	"growthexperiments-edit-config-level-up-notifications-description": "Aceste notificări sunt trimise nou-veniților la 48 de ore după crearea contului și s-a demonstrat că cresc probabilitatea conturilor noi care editează în săptămână de după ce sunt trimise notificările.",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Încercați notificarea pentru Editările sugerate",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Numărul maxim de editări pe care îl poate avea un nou-venit pentru a se califica pentru primirea acestei notificări. Dacă este setat la 0, niciun nou-venit </br> nu va primi această notificare. Cu cât este mai mare numărul, cu atât mai mulți nou-veniți vor primi această notificare.<br> Această notificare este trimisă numai nou-veniților care nu au îndeplinit Editări sugerate.",
+	"growthexperiments-edit-config-keep-going-notification-title": "Continuați să primiți notificări",
+	"growthexperiments-edit-config-keep-going-notification-description": "Numărul maxim de editări pe care îl poate îndeplini un nou-venit pentru a se califica pentru primirea acestei notificări. Dacă este setat la 0,</br> niciun nou-venit nu va primi această notificare. Cu cât este mai mare numărul, cu atât mai mulți nou-veniți vor primi această notificare.<br> Această notificare este trimisă numai nou-veniților care au îndeplinit deja cel puțin o Editare sugerată."
 }
