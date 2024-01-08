@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"NGC 54"
+			"NGC 54",
+			"Alesaru",
+			"Strainu"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Pagina mentorului",
@@ -106,11 +108,11 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "A apărut o eroare necunoscută. Vă rugăm să reîncercați mai târziu.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Ucenicii sunt atribuiți aleatoriu mentorilor pe măsură ce le sunt create conturile. Poți administra cât de mulți ucenici sunt atribuiți dvs., dar unii ucenici pot pune întrebări mai frecvent decât alții.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Este recomandat să începeți cu setarea „Mediu” pentru a vă evalua capacitatea de asistență înainte de a o crește sau descrește.",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Schimbați-vă {{GENDER:|mesajul}} de introducere",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Schimbați-vă {{GENDER:|mesajul}} introductiv",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Salvează",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Anulare",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Mesaj de introducere",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Mesajul}} dvs. de introducere a fost schimbat în „$1”.",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Mesaj introductiv",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Mesajul}} introductiv al dvs. a fost schimbat în „$1”.",
 	"growthexperiments-mentor-list-missing-key": "Cheia <code>$1</code> lipsește",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> este de așteptat să fie <code>$2</code>, dar este <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Definirea de mentor conține o cheie <code>$1</code> neașteptată",
@@ -132,8 +134,8 @@
 	"growthexperiments-manage-mentors-return-back": "Vă puteți [[Special:ManageMentors|întoarce]] la lista mentorilor.",
 	"growthexperiments-mentorship-enrollasmentor-title": "Înscrieți-vă ca {{GENDER:|mentor}}",
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Vă {{GENDER:|mulțumim}} pentru că vă voluntariați ca {{GENDER:|mentor}} la {{SITENAME}}. {{GENDER:|Vă}} puteți înscrie ca mentor prin completarea acestui formular.",
-	"growthexperiments-mentorship-enrollasmentor-form-message": "Mesaj de introducere",
-	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Mesajul de introducere {{GENDER:|vă}} introduce ca mentor. Vă rugăm să îl mențineți mai scurt de 240 de caractere. Nu este permis wikitextul.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Mesaj introductiv",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Mesajul introductiv {{GENDER:|vă}} introduce ca mentor. Vă rugăm să îl mențineți mai scurt de 240 de caractere. Nu este permis wikitextul.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Motiv",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Înscrie-te",
 	"growthexperiments-mentorship-enrollasmentor-success": "Sunteți acum {{GENDER:|înscris|înscrisă}} ca mentor. Acum {{GENDER:|puteți}} merge la [[Special:MentorDashboard|pagina mentorului]].",

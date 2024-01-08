@@ -22,7 +22,7 @@
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|欢迎}}，$1！",
-	"welcomesurvey-save-confirmation-title": "谢谢{{GENDER:|您的}}回复！您的回复已保存。",
+	"welcomesurvey-save-confirmation-title": "谢谢！{{GENDER:|您的}}回复已保存。",
 	"welcomesurvey-save-confirmation-text": "{{GENDER:|您的}}回答将帮助我们给您提供入门维基百科的有效方法。",
 	"welcomesurvey-subtitle": "回答几个可选的问题来帮助我们改善{{GENDER:|您}}在维基百科的体验。",
 	"welcomesurvey-save-btn": "完成",
@@ -58,10 +58,10 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "我不记得了",
 	"welcomesurvey-question-mailinglist-label": "我想通过电子邮件接收有关如何开始编辑的提示。",
 	"welcomesurvey-question-mailinglist-help": "请注意，本邮件列表由MailChimp提供，这意味着MailChimp对{{GENDER:|您的}}信息的使用受其[https://www.intuit.com/privacy/statement/ 隐私政策]和[https://mailchimp.com/legal/terms/ 服务条款]的约束。",
-	"welcomesurvey-question-email-label": "电子邮箱地址 (可选)",
+	"welcomesurvey-question-email-label": "电子邮箱地址（可选）",
 	"welcomesurvey-question-email-placeholder": "输入{{GENDER:|您的}}电子邮箱地址…",
 	"welcomesurvey-question-email-help": "我们注意到{{GENDER:|您}}在创建该账号时没有输入电子邮件地址。我们<strong>强烈建议</strong>您输入电子邮件地址，因为如果您丢失了密码，您需要一个电子邮箱来恢复账号。注意：当其他用户联系您时，您的电子邮件地址不会泄露。",
 	"welcomesurvey-question-languages-label": "{{SITENAME}}提供近300种语言版本。{{GENDER:|您}}还用其他语言阅读和写作吗？",
 	"welcomesurvey-question-languages-placeholder": "合计共{{PLURAL:$1|一种语言|$1种语言}}……",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|您}}已添加了最大数量的语言。"
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|您}}已添加的语言已达上限。"
 }
