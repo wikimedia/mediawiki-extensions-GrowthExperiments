@@ -63,6 +63,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Veido jaunus un paplašini īsus rakstus.",
 	"growthexperiments-homepage-suggested-edits-header": "Ieteiktie labojumi",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Tavs}} ieguldījums",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "Lūdzu, iespējo JavaScript, lai skatītu šo komponentu.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Tavs}} ieguldījums",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Tava}} nesenā aktivitāte ({{PLURAL:$2|pēdējās $2 dienas|pēdējā $2 diena|pēdējās $2 dienas}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Pēdējais labojums",
@@ -76,6 +77,7 @@
 	"growthexperiments-homepage-impact-scores-over-limit": "999+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Plašāka informācija par to, kā darbojas pateciības",
 	"growthexperiments-homepage-impact-subheader-text": "Cilvēki lasa rakstus, ko tu esi {{GENDER:$1|labojis|labojusi}}!",
+	"growthexperiments-homepage-impact-subheader-text-third-person": "Skatītākie (kopš veikts labojums)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Skatījumi kopš {{GENDER:$1|tava}} labojuma (pēdējās 60 dienas):",
 	"growthexperiments-homepage-impact-contributions-link": "Tu esi {{GENDER:$2|veicis|veikusi}} <strong>$1</strong> {{PLURAL:$1|labojumus|labojumu|labojumus}} (skatīt visus)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Tu vēl neesi {{GENDER:$1|izveidojis|izveidojusi}} nevienu rakstu.",
@@ -97,6 +99,7 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Sāc ar dažiem <strong>ieteiktajiem labojumiem</strong>, pēc tam šeit apskati, cik cilvēku redz {{GENDER:$1|tavu}} ieguldījumu.",
 	"growthexperiments-homepage-impact-unactivated-description": "Tiklīdz {{GENDER:$1|sāksi}} labot, šeit {{GENDER:$1|redzēsi}}, cik cilvēku apskata {{GENDER:$1|tevis}} labotos rakstus.",
 	"growthexperiments-homepage-impact-error-data-not-found-text": "Īslaicīga aizkavēšanās, iegūstot {{GENDER:$1|tavu}} informāciju",
+	"growthexperiments-homepage-impact-error-data-not-found-text-third-person": "Īslaicīga informācijas iegūšanas kavēšanās",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Palīdzības dienesta paziņojumi",
 	"growthexperiments-tour-response-tip-text": "Kad {{GENDER:$1|tavs}} jautājums tiks atbildēts, {{GENDER:$1|tu}} šeit saņemsi jaunu paziņojumu.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "{{GENDER:$1|Mentora|Mentores}} paziņojumi",
@@ -223,7 +226,7 @@
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Izvēlies tēmas",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Gatavs",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Pabeigts",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "Atrasti <strong>$1</strong> {{PLURAL:$1|raksti|raksts|raksti}}",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|Atrasti|Atrasts|Atrasti}} <strong>$1</strong> {{PLURAL:$1|raksti|raksts|raksti}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Uzlabot tekstu",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Atrast atsauces",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Atjaunināt rakstus",
@@ -496,5 +499,7 @@
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Sapratu",
 	"growthexperiments-homepage-newimpact-contributions-link": "Skatīt visus labojumus",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Izmēģini ieteiktos labojumus",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Uzzināt vairāk"
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Uzzināt vairāk",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Veikt ieteikto labojumu",
+	"echo-pref-tooltip-ge-newcomer": "Paziņot man par jaunpienācēju uzdevumiem un citām funkcijām, kas paredzētas, lai palīdzētu jauniem dalībniekiem."
 }
