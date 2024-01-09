@@ -33,7 +33,7 @@
 				<template #info-content>
 					<div class="ext-growthExperiments-ScoreCards__scorecard__info">
 						<p>
-							{{ $i18n( 'growthexperiments-homepage-impact-scores-thanks-info-text', userName ).text() }}
+							{{ receivedThanksInfoText }}
 						</p>
 					</div>
 				</template>
@@ -58,7 +58,7 @@
 				<template #info-content>
 					<div class="ext-growthExperiments-ScoreCards__scorecard__info">
 						<p>
-							{{ $i18n( 'growthexperiments-homepage-impact-scores-best-streak-info-text', userName ).text() }}
+							{{ longestEditingStreakFirstParagraph }}
 						</p>
 					</div>
 				</template>
@@ -133,7 +133,7 @@ const {
 } = require( '../../vue-components/icons.json' );
 const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 const CText = require( '../../vue-components/CText.vue' );
-const { NO_DATA_CHARACTER } = require( '../constants.js' );
+const { NO_DATA_CHARACTER, DATA_ROWS_LIMIT } = require( '../constants.js' );
 
 // @vue/component
 module.exports = exports = {
@@ -164,6 +164,7 @@ module.exports = exports = {
 	},
 	setup( props ) {
 		const renderMode = inject( 'RENDER_MODE' );
+		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
 		const onSuggestedEditsClick = () => {
 			if ( !props.isActivated ) {
 				mw.track( 'growthexperiments.startediting', {
@@ -183,6 +184,7 @@ module.exports = exports = {
 		};
 		return {
 			renderMode,
+			renderThirdPerson,
 			onSuggestedEditsClick,
 			cdxIconUserTalk,
 			cdxIconChart,
@@ -200,6 +202,30 @@ module.exports = exports = {
 			return this.data ?
 				this.$filters.convertNumber( this.data.receivedThanksCount ) :
 				NO_DATA_CHARACTER;
+		},
+		receivedThanksInfoText() {
+			return this.renderThirdPerson ?
+				this.$i18n(
+					'growthexperiments-homepage-impact-scores-thanks-info-text-third-person',
+					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+				).text() :
+				this.$i18n(
+					'growthexperiments-homepage-impact-scores-thanks-info-text',
+					this.userName,
+					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+				).text();
+		},
+		longestEditingStreakFirstParagraph() {
+			return this.renderThirdPerson ?
+				this.$i18n(
+					'growthexperiments-homepage-impact-scores-best-streak-info-text-third-person',
+					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+				).text() :
+				this.$i18n(
+					'growthexperiments-homepage-impact-scores-best-streak-info-text',
+					this.userName,
+					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+				).text();
 		},
 		thanksUrl() {
 			return mw.util.getUrl( 'Special:Log', {
