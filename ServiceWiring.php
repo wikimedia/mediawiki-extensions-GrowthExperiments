@@ -427,6 +427,7 @@ return [
 	): UncachedMenteeOverviewDataProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		$provider = new UncachedMenteeOverviewDataProvider(
+			new ServiceOptions( UncachedMenteeOverviewDataProvider::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
 			$geServices->getMentorStore(),
 			$services->getChangeTagDefStore(),
 			$services->getActorMigration(),

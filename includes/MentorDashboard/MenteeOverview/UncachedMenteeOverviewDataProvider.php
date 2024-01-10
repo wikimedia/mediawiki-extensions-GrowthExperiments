@@ -8,9 +8,9 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\CentralAuth\CentralAuthServices;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\ActorMigration;
@@ -20,6 +20,7 @@ use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -32,8 +33,14 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	use LoggerAwareTrait;
 
+	public const CONSTRUCTOR_OPTIONS = [
+		MainConfigNames::BlockTargetMigrationStage,
+	];
+
 	/** @var int Number of seconds in a day */
 	private const SECONDS_DAY = 86400;
+
+	private ServiceOptions $options;
 
 	private MentorStore $mentorStore;
 
@@ -58,6 +65,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private $profilingInfo = [];
 
 	/**
+	 * @param ServiceOptions $options
 	 * @param MentorStore $mentorStore
 	 * @param NameTableStore $changeTagDefStore
 	 * @param ActorMigration $actorMigration
@@ -66,6 +74,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param IConnectionProvider $mainConnProvider
 	 */
 	public function __construct(
+		ServiceOptions $options,
 		MentorStore $mentorStore,
 		NameTableStore $changeTagDefStore,
 		ActorMigration $actorMigration,
@@ -73,8 +82,10 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		TempUserConfig $tempUserConfig,
 		IConnectionProvider $mainConnProvider
 	) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->setLogger( new NullLogger() );
 
+		$this->options = $options;
 		$this->mentorStore = $mentorStore;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->actorMigration = $actorMigration;
@@ -198,91 +209,97 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 		$dbr = $this->getReadConnection();
 
-		$oldBlockSchema = (bool)( MediaWikiServices::getInstance()->getMainConfig()
-			->get( MainConfigNames::BlockTargetMigrationStage ) & SCHEMA_COMPAT_READ_OLD );
-
-		$res = $dbr->select(
-			'user',
-			[
+		$queryBuilder = $dbr->newSelectQueryBuilder()
+			->select( [
 				'user_id',
 				'has_edits' => 'user_editcount > 0'
-			],
-			[
+			] )
+			->from( 'user' )
+			->where( [
 				// filter to mentees only
 				'user_id' => $menteeIds,
 
-				// exclude temporary accounts, if enabled (T341389)
-				$this->tempUserConfig->isEnabled() ? (
-					'user_name NOT ' . $this->tempUserConfig->getMatchPattern()
-						->buildLike( $dbr )
-				) : '' .
-
 				// ensure mentees have homepage enabled
-				'user_id IN (' . $dbr->selectSQLText(
-					'user_properties',
-					'up_user',
-					[
+				'user_id IN (' . $dbr->newSelectQueryBuilder()
+					->select( 'up_user' )
+					->from( 'user_properties' )
+					->where( [
 						'up_property' => HomepageHooks::HOMEPAGE_PREF_ENABLE,
 						'up_value' => 1
-					]
-				) . ')',
+					] )
+					->getSQL() .
+				')',
 
 				// ensure mentees do not have mentorship disabled
-				'user_id NOT IN (' . $dbr->selectSQLText(
-					'user_properties',
-					'up_user',
-					[
+				'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
+					->select( 'up_user' )
+					->from( 'user_properties' )
+					->where( [
 						'up_property' => MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
 						// sanity check, should never match (1 is the default value)
-						'up_value != 1',
-					]
-				) . ')',
+						$dbr->expr( 'up_value', '!=', 1 ),
+					] )
+					->getSQL() .
+				')',
 
 				// user is not a bot,
-				'user_id NOT IN (' . $dbr->selectSQLText(
-					'user_groups',
-					'ug_user',
-					[ 'ug_group' => 'bot' ]
-				) . ')',
-
-				// user is not indefinitely blocked
-				'user_id NOT IN (' .
-				(
-					$oldBlockSchema ? $dbr->selectSQLText(
-						'ipblocks',
-						'ipb_user',
-						[
-							'ipb_expiry' => $dbr->getInfinity(),
-							// not an IP block
-							'ipb_user != 0',
-						]
-					) : $dbr->selectSQLText(
-						[ 'block', 'block_target' ],
-						'bt_user',
-						[
-							'bl_expiry' => $dbr->getInfinity(),
-							// not an IP block
-							$dbr->expr( 'bt_user', '!=', null )
-						],
-						'',
-						[],
-						[ 'block_target' => [ 'JOIN', 'bt_id=bl_target' ] ]
-					)
-				)
-				. ')',
+				'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
+					->select( 'ug_user' )
+					->from( 'user_groups' )
+					->where( [ 'ug_group' => 'bot' ] )
+					->getSQL() .
+				')',
 
 				// only users who either made an edit or registered less than 2 weeks ago
-				$dbr->makeList( [
-					'user_editcount > 0',
-					'user_registration > ' . $dbr->addQuotes(
-						$dbr->timestamp(
-							(int)wfTimestamp( TS_UNIX ) - 2 * 7 * self::SECONDS_DAY
-						)
-					)
-				], IReadableDatabase::LIST_OR ),
-			],
-			__METHOD__
-		);
+				$dbr->expr( 'user_editcount', '>', 0 )
+					->or( 'user_registration', '>', $dbr->timestamp(
+						(int)wfTimestamp( TS_UNIX ) - 2 * 7 * self::SECONDS_DAY
+					) ),
+			] )
+			->caller( __METHOD__ );
+
+		// Exclude users which are indefinitely blocked
+		if ( $this->options->get( MainConfigNames::BlockTargetMigrationStage ) & SCHEMA_COMPAT_READ_OLD ) {
+			$queryBuilder->andWhere(
+				'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
+					->select( 'ipb_user' )
+					->from( 'ipblocks' )
+					->where( [
+						'ipb_expiry' => $dbr->getInfinity(),
+						// not an IP block
+						$dbr->expr( 'ipb_user', '!=', 0 ),
+					] )
+					->getSQL() .
+				')'
+			);
+		} else {
+			$queryBuilder->andWhere(
+				'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
+					->select( 'bt_user' )
+					->from( 'block' )
+					->join( 'block_target', null, [
+						'bt_id=bl_target'
+					] )
+					->where( [
+						'bl_expiry' => $dbr->getInfinity(),
+						// not an IP block
+						$dbr->expr( 'bt_user', '!=', null )
+					] )
+					->getSQL() .
+				')'
+			);
+		}
+
+		// exclude temporary accounts, if enabled (T341389)
+		if ( $this->tempUserConfig->isEnabled() ) {
+			foreach ( $this->tempUserConfig->getMatchPatterns() as $pattern ) {
+				$queryBuilder->andWhere(
+					$dbr->expr( 'user_name', IExpression::NOT_LIKE, $pattern->toLikeValue( $dbr ) )
+				);
+			}
+		}
+
+		$res = $queryBuilder->fetchResultSet();
 
 		$editingUsers = [];
 		$notEditingUsers = [];
