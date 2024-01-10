@@ -24,7 +24,7 @@
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentorul de la care să se solicite ucenici",
 	"apihelp-growthmanagementorlist-summary": "Administrează informații în lista structurată a mentorilor (de obicei stocată în [[MediaWiki:GrowthMentors.json]]). Acest modul poate fi utilizat atât de mentorii actuali, cât și de cei viitori, (pentru a se adăuga sau pentru a își schimba detaliile) și de administratori (pentru toți utilizatorii).",
 	"apihelp-growthmanagementorlist-param-geaction": "Acțiune",
-	"apihelp-growthmanagementorlist-param-message": "Mesaj de introducere (utilizează un șir gol pentru mesajul implicit al mentorului)",
+	"apihelp-growthmanagementorlist-param-message": "Mesaj introductiv (utilizează un șir gol pentru mesajul implicit al mentorului)",
 	"apihelp-growthmanagementorlist-param-weight": "Povară",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Este mentorul atribuit automat nou-veniților?",
 	"apihelp-growthmanagementorlist-param-isaway": "Mentorul este plecat în prezent? Trebuie setat (implicit la false).",

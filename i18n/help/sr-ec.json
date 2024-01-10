@@ -119,6 +119,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Додавање веза помаже људима да уче брже.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Није потребно посебно знање о чланку за вршење овог задатка.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Предложене везе су машински генерисане, и могу бити неисправне.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Сазнајте више о машинским предлозима]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Смернице",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Пример реченице",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "Види предложену слику",
