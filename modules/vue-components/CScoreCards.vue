@@ -118,10 +118,7 @@ const {
 	cdxIconChart,
 	cdxIconInfoFilled
 } = require( './icons.json' );
-const { NO_DATA_CHARACTER } = require( '../ext.growthExperiments.Homepage.NewImpact/constants.js' );
-// References ComputedUserImpactLookup::MAX_EDITS / MAX_THANKS. If we get exactly this number
-// for edit count or thanks count, there are probably more.
-const DATA_ROWS_LIMIT = 1000;
+const { NO_DATA_CHARACTER, DATA_ROWS_LIMIT } = require( '../ext.growthExperiments.Homepage.NewImpact/constants.js' );
 
 // @vue/component
 module.exports = exports = {

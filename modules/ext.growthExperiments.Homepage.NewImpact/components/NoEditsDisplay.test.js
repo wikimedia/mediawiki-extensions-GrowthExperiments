@@ -16,7 +16,8 @@ const renderComponent = ( props, mocks = {}, renderMode = 'desktop' ) => {
 		props,
 		global: {
 			provide: {
-				RENDER_MODE: renderMode
+				RENDER_MODE: renderMode,
+				RENDER_IN_THIRD_PERSON: false
 			},
 			mocks: Object.assign( {
 				$filters: {
@@ -52,6 +53,29 @@ describe( 'NoEditsDisplay', () => {
 		expect( summaryWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 0 );
 		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-description' );
 		expect( summaryWrapper.text() ).toContain( 'growthexperiments-homepage-impact-unactivated-subheader-text' );
+	} );
+	it( 'displays correct info in scorecard tooltips', () => {
+		const props = {
+			userName: 'Alice',
+			isDisabled: true,
+			data: {
+				receivedThanksCount: 123
+			}
+		};
+		const wrapper = renderComponent( props, {
+			$log: jest.fn()
+		} );
+		const scorecards = wrapper.findAllComponents( CScoreCard );
+		scorecards[ 0 ].find( '.ext-growthExperiments-ScoreCards__info-button' ).trigger( 'click' );
+		scorecards[ 1 ].find( '.ext-growthExperiments-ScoreCards__info-button' ).trigger( 'click' );
+		wrapper.vm.$nextTick().then( () => {
+			expect( wrapper.text() ).toContain(
+				'growthexperiments-homepage-impact-scores-thanks-info-text:[Alice,1000]'
+			);
+			expect( wrapper.text() ).toContain(
+				'growthexperiments-homepage-impact-scores-best-streak-info-text:[Alice,1000]'
+			);
+		} );
 	} );
 	it( 'displays button to suggested edits and different text ( overlay )', () => {
 		const overlayWrapper = renderComponent( {
