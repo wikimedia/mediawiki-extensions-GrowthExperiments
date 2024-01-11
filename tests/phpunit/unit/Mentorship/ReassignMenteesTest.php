@@ -10,6 +10,8 @@ use GrowthExperiments\Mentorship\ReassignMentees;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -50,6 +52,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			$mentorStoreMock ?? $this->createNoOpMock( MentorStore::class ),
 			$changeMentorFactoryMock ?? $this->createNoOpMock( ChangeMentorFactory::class ),
 			$this->createNoOpMock( JobQueueGroupFactory::class ),
+			$this->createNoOpMock( StatusFormatter::class ),
 			$mentor,
 			$mentor,
 			$contextMock ?? $this->createNoOpMock( IContextSource::class )
@@ -133,7 +136,8 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		$changeMentor = $this->createMock( ChangeMentor::class );
 		$changeMentor->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'execute' )
-			->with( $newMentor, 'foo' );
+			->with( $newMentor, 'foo' )
+			->willReturn( Status::newGood() );
 		$changeMentorFactory = $this->createMock( ChangeMentorFactory::class );
 		$changeMentorFactory->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'newChangeMentor' )

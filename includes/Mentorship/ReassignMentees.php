@@ -6,6 +6,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\WikiMap\WikiMap;
 use MessageLocalizer;
@@ -26,6 +27,7 @@ class ReassignMentees {
 	private MentorStore $mentorStore;
 	private ChangeMentorFactory $changeMentorFactory;
 	private JobQueueGroupFactory $jobQueueGroupFactory;
+	private StatusFormatter $statusFormatter;
 	private UserIdentity $performer;
 	private UserIdentity $mentor;
 	private MessageLocalizer $messageLocalizer;
@@ -37,6 +39,7 @@ class ReassignMentees {
 	 * @param MentorStore $mentorStore
 	 * @param ChangeMentorFactory $changeMentorFactory
 	 * @param JobQueueGroupFactory $jobQueueGroupFactory
+	 * @param StatusFormatter $statusFormatter
 	 * @param UserIdentity $performer
 	 * @param UserIdentity $mentor
 	 * @param MessageLocalizer $messageLocalizer
@@ -48,6 +51,7 @@ class ReassignMentees {
 		MentorStore $mentorStore,
 		ChangeMentorFactory $changeMentorFactory,
 		JobQueueGroupFactory $jobQueueGroupFactory,
+		StatusFormatter $statusFormatter,
 		UserIdentity $performer,
 		UserIdentity $mentor,
 		MessageLocalizer $messageLocalizer
@@ -58,6 +62,7 @@ class ReassignMentees {
 		$this->mentorStore = $mentorStore;
 		$this->changeMentorFactory = $changeMentorFactory;
 		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
+		$this->statusFormatter = $statusFormatter;
 		$this->performer = $performer;
 		$this->mentor = $mentor;
 		$this->messageLocalizer = $messageLocalizer;
@@ -160,7 +165,7 @@ class ReassignMentees {
 				continue;
 			}
 
-			$changeMentor->execute(
+			$status = $changeMentor->execute(
 				$newMentor,
 				$this->messageLocalizer->msg(
 					$reassignMessageKey,
@@ -169,6 +174,16 @@ class ReassignMentees {
 				)->text(),
 				true
 			);
+			if ( !$status->isOK() ) {
+				$this->logger->warning(
+					'ReassignMentees failed to assign {mentor} as {user}\'s mentor for {reason}',
+					[
+						'mentor' => $newMentor->getName(),
+						'user' => $mentee->getName(),
+						'reason' => $this->statusFormatter->getWikiText( $status, [ 'lang' => 'en' ] )
+					]
+				);
+			}
 		}
 
 		$this->dbw->unlock( $lockName, __METHOD__ );
