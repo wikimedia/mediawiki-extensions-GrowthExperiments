@@ -10,9 +10,9 @@
 		<rect width="8" height="96" x="112" y="32" fill="#A2A9B1" rx="1"/>
 		<use xlink:href="#a" fill="#FFF"/>
 		<use xlink:href="#a" fill="#FC3" fill-opacity=".5"/>
-		<path fill="#54595D" d="m114 41 12 18h-20L94 41h20zm-38 0 12 18H68L56 41h20zm-38 0 12 18H30L18 41h20z"/>
+		<path fill="#54595D" d="m114 41 12 18h-20L94 41zm-38 0 12 18H68L56 41zm-38 0 12 18H30L18 41z"/>
 		<use xlink:href="#b" fill="#FFF"/>
 		<use xlink:href="#b" fill="#FC3" fill-opacity=".5"/>
-		<path fill="#54595D" d="m114 81 12 18h-20L94 81h20zm-38 0 12 18H68L56 81h20zm-38 0 12 18H30L18 81h20z"/>
+		<path fill="#54595D" d="m114 81 12 18h-20L94 81zm-38 0 12 18H68L56 81zm-38 0 12 18H30L18 81z"/>
 	</g>
 </svg>

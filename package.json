@@ -4,7 +4,7 @@
 	"scripts": {
 		"api-testing": "mocha --timeout 20000 --require tests/api-testing/fixtures.cjs --parallel --recursive tests/api-testing",
 		"doc": "cd documentation/frontend && npm ci && npm run docs:build",
-		"minify-svg": "svgo --config=.svgo.config.js --quiet --recursive --folder images/",
+		"minify:svg": "svgo --config=.svgo.config.js --quiet --recursive --folder images/",
 		"selenium-daily": "npm run selenium-test",
 		"selenium-test": "wdio tests/selenium/wdio.conf.js",
 		"test": "grunt test && npm run test:jest && npm run test:doc",
@@ -51,7 +51,7 @@
 		"rollup": "3.2.5",
 		"stylelint-config-recommended-vue": "1.4.0",
 		"stylelint-config-wikimedia": "0.14.0",
-		"svgo": "3.0.2",
+		"svgo": "3.2.0",
 		"vue": "3.2.37",
 		"vuex": "4.0.2",
 		"wdio-intercept-service": "4.2.2",
