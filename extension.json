@@ -2130,10 +2130,6 @@
 				"vuex",
 				"@wikimedia/codex",
 				"moment"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.MentorDashboard.styles": {
@@ -2147,10 +2143,6 @@
 				"vue-components/mixins.less",
 				"vue-components/CScoreCard.less",
 				"vue-components/CScoreCards.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.growthExperiments.MentorDashboard.Discovery": {
