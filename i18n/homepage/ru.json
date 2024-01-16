@@ -212,7 +212,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Откройте боковое меню и нажмите на $2, чтобы попасть на  {{GENDER:$1|вашу}} домашнюю страницу.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> из <strong>$2</strong> {{PLURAL:$2|предложения|предложений}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Конец",
-	"growthexperiments-homepage-suggestededits-pager-loading": "Загрузка…",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Загружается…",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 {{PLURAL:$1|просмотр|просмотра|просмотров}} за последние 60 дней",
 	"growthexperiments-homepage-suggestededits-previous-card": "Предыдущая предлагаемая правка",
 	"growthexperiments-homepage-suggestededits-next-card": "Следующая предлагаемая правка",
