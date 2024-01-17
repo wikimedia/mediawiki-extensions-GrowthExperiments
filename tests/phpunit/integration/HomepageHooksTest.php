@@ -76,7 +76,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	public function testGetAQSConfigJson() {
 		$config = HomepageHooks::getAQSConfigJson();
 		$this->assertInstanceOf( stdClass::class, $config );
-		$this->assertObjectHasAttribute( 'project', $config );
+		$this->assertObjectHasProperty( 'project', $config );
 	}
 
 	/**
