@@ -78,7 +78,7 @@
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "กิจกรรมล่าสุด (ล่าสุด $1 {{PLURAL:$1|วัน}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "แก้ไขล่าสุด",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|การแก้ไข}}",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "จำนวนการดูบทความที่{{GENDER:$1คุณ}}แก้ไข",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "จำนวนการดูบทความที่{{GENDER:$1|คุณ}}แก้ไข",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "จำนวนการดูบทความที่คุณแก้ไข",
 	"growthexperiments-homepage-impact-scores-edit-count": "จำนวนการแก้ไข",
 	"growthexperiments-homepage-impact-scores-thanks-count": "คำขอบคุณที่ได้รับ",

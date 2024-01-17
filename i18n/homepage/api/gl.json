@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"O Breixo"
+		]
+	},
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "O título da sección para a que se recomenda a imaxe, por exemplo, <kbd>Historia</kbd>"
+}
