@@ -18,9 +18,6 @@ use StatusValue;
  */
 class ApiQueryMentorStatusTest extends ApiTestCase {
 
-	/** @inheritdoc */
-	protected $tablesUsed = [ 'page' ];
-
 	protected function setUp(): void {
 		parent::setUp();
 		$this->setMwGlobals( 'wgGEMentorDashboardEnabled', true );

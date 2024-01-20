@@ -23,9 +23,6 @@ use StatusValue;
 class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTestCase {
 	use MockHttpTrait;
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'user', 'revision', 'growthexperiments_mentor_mentee' ];
-
 	/**
 	 * @param UserIdentity $mentor
 	 * @param int $numOfMentees

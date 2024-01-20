@@ -19,9 +19,6 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class ComputedUserImpactLookupTest extends ApiTestCase {
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'page', 'logging' ];
-
 	public function testGetUserImpact_empty() {
 		// This is a lazy way of ensuring that the tag exists. Revision 1 is the main page,
 		// created by the installer.

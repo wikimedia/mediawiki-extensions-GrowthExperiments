@@ -14,9 +14,6 @@ use MediaWikiIntegrationTestCase;
  */
 class NewcomerTasksLogTest extends MediaWikiIntegrationTestCase {
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'logging' ];
-
 	private function logNewcomerTasks( int $tasks, UserIdentity $user, string $taskType ) {
 		for ( $i = 0; $i < $tasks; $i++ ) {
 			$logEntry = new ManualLogEntry( 'growthexperiments', $taskType );

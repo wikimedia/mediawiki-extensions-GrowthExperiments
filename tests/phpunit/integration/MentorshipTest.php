@@ -19,9 +19,6 @@ use RequestContext;
  */
 class MentorshipTest extends MediaWikiIntegrationTestCase {
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'user', 'page' ];
-
 	/**
 	 * @inheritDoc
 	 */

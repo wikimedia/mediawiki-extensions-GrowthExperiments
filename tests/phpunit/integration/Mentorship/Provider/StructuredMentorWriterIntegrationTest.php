@@ -14,9 +14,6 @@ use MediaWikiIntegrationTestCase;
  * @group Database
  */
 class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase {
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'growthexperiments_mentor_mentee', 'revision' ];
-
 	/**
 	 * @param Title $title
 	 * @return int

@@ -15,9 +15,6 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ DatabaseUserImpactStore::TABLE_NAME ];
-
 	public function testGetSetUserImpact() {
 		ConvertibleTimestamp::setFakeTime( time() );
 		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer() );

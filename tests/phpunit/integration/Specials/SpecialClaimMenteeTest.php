@@ -18,9 +18,6 @@ use SpecialPageTestBase;
  */
 class SpecialClaimMenteeTest extends SpecialPageTestBase {
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'user', 'page' ];
-
 	/**
 	 * @inheritDoc
 	 */

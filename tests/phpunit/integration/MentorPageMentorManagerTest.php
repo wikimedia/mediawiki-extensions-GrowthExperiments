@@ -21,9 +21,6 @@ use RequestContext;
  */
 class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'user', 'page', 'growthexperiments_mentor_mentee' ];
-
 	/**
 	 * @inheritDoc
 	 */
