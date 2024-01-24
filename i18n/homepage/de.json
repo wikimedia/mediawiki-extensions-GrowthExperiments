@@ -104,7 +104,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Aufrufe bearbeiteter Artikel",
 	"growthexperiments-homepage-impact-scores-edit-count": "Bearbeitungen insgesamt",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Zurückgesetzte Bearbeitungen",
-	"growthexperiments-homepage-impact-scores-thanks-count": "Dank erhalten",
+	"growthexperiments-homepage-impact-scores-thanks-count": "Dankeschöns erhalten",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Weitere Informationen darüber, wie Danke funktioniert",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} wird von einer Community von Benutzern wie {{GENDER:$1|dir}} erstellt. {{GENDER:$1|Dir}} wird möglicherweise von einem anderen Benutzer für eine Änderung gedankt, die {{GENDER:$1|du}} gemacht hast, und {{GENDER:$1|du}} kannst dich auch bei anderen für deren Bearbeitungen bedanken.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} wird von einer Community von Benutzern erstellt. Jeder Mitwirkende kann von einem anderen für eine Bearbeitung gedankt werden. Die Anzahl der erhaltenen Danksagungen wird hier angezeigt.",
