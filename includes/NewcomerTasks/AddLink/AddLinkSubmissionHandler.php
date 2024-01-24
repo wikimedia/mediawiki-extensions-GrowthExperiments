@@ -16,7 +16,6 @@ use IDBAccessObject;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\ProperPageIdentity;
-use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
@@ -124,7 +123,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		// revision ID.
 		$linkRecommendation = $baseRevId ? $this->linkRecommendationStore->getByRevId(
 			$baseRevId,
-			RevisionLookup::READ_LATEST
+			IDBAccessObject::READ_LATEST
 		) : null;
 		$title = $this->titleFactory->castFromPageIdentity( $page );
 		if ( !$title ) {
@@ -143,7 +142,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 			// Try to find the find the link recommendation based on the link target.
 			$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget(
 				$title,
-				RevisionLookup::READ_LATEST,
+				IDBAccessObject::READ_LATEST,
 				true
 			);
 		}

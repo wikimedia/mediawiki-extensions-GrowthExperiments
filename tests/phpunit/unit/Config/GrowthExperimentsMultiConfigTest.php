@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\WikiPageConfig;
+use IDBAccessObject;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Config\HashConfig;
@@ -84,10 +85,10 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 	public function testGetWithFlagsFromWiki() {
 		$wikiConfig = $this->getMockWikiPageConfig();
 		$wikiConfig->expects( $this->once() )->method( 'hasWithFlags' )
-			->with( 'GEMentorshipEnabled', GrowthExperimentsMultiConfig::READ_LATEST )
+			->with( 'GEMentorshipEnabled', IDBAccessObject::READ_LATEST )
 			->willReturn( true );
 		$wikiConfig->expects( $this->once() )->method( 'getWithFlags' )
-			->with( 'GEMentorshipEnabled', GrowthExperimentsMultiConfig::READ_LATEST )
+			->with( 'GEMentorshipEnabled', IDBAccessObject::READ_LATEST )
 			->willReturn( false );
 
 		$config = new GrowthExperimentsMultiConfig(
@@ -96,7 +97,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 		);
 		$this->assertFalse( $config->getWithFlags(
 			'GEMentorshipEnabled',
-			GrowthExperimentsMultiConfig::READ_LATEST
+			IDBAccessObject::READ_LATEST
 		) );
 	}
 
@@ -107,7 +108,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 	public function testGetFromGlobal() {
 		$wikiConfig = $this->getMockWikiPageConfig();
 		$wikiConfig->expects( $this->once() )->method( 'hasWithFlags' )
-			->with( 'GEMentorshipEnabled', GrowthExperimentsMultiConfig::READ_NORMAL )
+			->with( 'GEMentorshipEnabled', IDBAccessObject::READ_NORMAL )
 			->willReturn( false );
 		$wikiConfig->expects( $this->never() )->method( 'getWithFlags' );
 
@@ -131,7 +132,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 
 		$wikiConfig = $this->getMockWikiPageConfig();
 		$wikiConfig->expects( $this->once() )->method( 'hasWithFlags' )
-			->with( 'GEMentorshipEnabled', GrowthExperimentsMultiConfig::READ_NORMAL )
+			->with( 'GEMentorshipEnabled', IDBAccessObject::READ_NORMAL )
 			->willReturn( false );
 		$wikiConfig->expects( $this->never() )->method( 'getWithFlags' );
 
@@ -165,7 +166,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 	public function testHasWithFlagsWiki() {
 		$wikiConfig = $this->getMockWikiPageConfig();
 		$wikiConfig->expects( $this->once() )->method( 'hasWithFlags' )
-			->with( 'GEMentorshipEnabled', GrowthExperimentsMultiConfig::READ_LATEST )
+			->with( 'GEMentorshipEnabled', IDBAccessObject::READ_LATEST )
 			->willReturn( true );
 
 		$config = new GrowthExperimentsMultiConfig(
@@ -174,7 +175,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 		);
 		$this->assertTrue( $config->hasWithFlags(
 			'GEMentorshipEnabled',
-			GrowthExperimentsMultiConfig::READ_LATEST
+			IDBAccessObject::READ_LATEST
 		) );
 	}
 
@@ -185,7 +186,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 	public function testHasGlobal() {
 		$wikiConfig = $this->getMockWikiPageConfig();
 		$wikiConfig->expects( $this->once() )->method( 'hasWithFlags' )
-			->with( 'GEMentorshipEnabled', GrowthExperimentsMultiConfig::READ_NORMAL )
+			->with( 'GEMentorshipEnabled', IDBAccessObject::READ_NORMAL )
 			->willReturn( false );
 
 		$config = new GrowthExperimentsMultiConfig(
@@ -205,7 +206,7 @@ class GrowthExperimentsMultiConfigTest extends MediaWikiUnitTestCase {
 	public function testHasNotFound() {
 		$wikiConfig = $this->getMockWikiPageConfig();
 		$wikiConfig->expects( $this->once() )->method( 'hasWithFlags' )
-			->with( 'GEMentorshipEnabled', GrowthExperimentsMultiConfig::READ_NORMAL )
+			->with( 'GEMentorshipEnabled', IDBAccessObject::READ_NORMAL )
 			->willReturn( false );
 
 		$config = new GrowthExperimentsMultiConfig(

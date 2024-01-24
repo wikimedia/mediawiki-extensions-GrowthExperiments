@@ -7,7 +7,7 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 
-class StarredMenteesStore implements IDBAccessObject {
+class StarredMenteesStore {
 	public const STARRED_MENTEES_PREFERENCE = 'growthexperiments-starred-mentees';
 
 	private const SEPARATOR = '|';
@@ -41,7 +41,7 @@ class StarredMenteesStore implements IDBAccessObject {
 
 	/**
 	 * @param UserIdentity $user
-	 * @param int $flags Bitarray, one of StarredMenteesStore::READ_*
+	 * @param int $flags Bitarray, one of IDBAccessObject::READ_*
 	 * @return UserIdentity[]
 	 */
 	public function getStarredMentees( UserIdentity $user, int $flags = 0 ): array {
@@ -59,7 +59,7 @@ class StarredMenteesStore implements IDBAccessObject {
 
 	/**
 	 * @param UserIdentity $user
-	 * @param int $flags Bitarray, one of StarredMenteesStore::READ_* constants
+	 * @param int $flags Bitarray, one of IDBAccessObject::READ_* constants
 	 * @return int[]
 	 */
 	private function getStarredMenteeIds( UserIdentity $user, int $flags = 0 ): array {
@@ -80,7 +80,7 @@ class StarredMenteesStore implements IDBAccessObject {
 	 * @param UserIdentity $mentee
 	 */
 	public function starMentee( UserIdentity $mentor, UserIdentity $mentee ): void {
-		$starredMentees = $this->getStarredMenteeIds( $mentor, self::READ_LOCKING );
+		$starredMentees = $this->getStarredMenteeIds( $mentor, IDBAccessObject::READ_LOCKING );
 		$menteeId = $mentee->getId();
 
 		if ( in_array( $menteeId, $starredMentees ) ) {
@@ -103,7 +103,7 @@ class StarredMenteesStore implements IDBAccessObject {
 	 * @param UserIdentity $mentee
 	 */
 	public function unstarMentee( UserIdentity $mentor, UserIdentity $mentee ): void {
-		$starredMentees = $this->getStarredMenteeIds( $mentor, self::READ_LOCKING );
+		$starredMentees = $this->getStarredMenteeIds( $mentor, IDBAccessObject::READ_LOCKING );
 		$menteeId = $mentee->getId();
 
 		// Delete $menteeId from $starredMentees, if it is there

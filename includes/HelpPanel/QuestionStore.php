@@ -4,6 +4,7 @@ namespace GrowthExperiments\HelpPanel;
 
 use Flow\Container;
 use FormatJson;
+use IDBAccessObject;
 use JobQueueGroup;
 use Language;
 use MediaWiki\Logger\LoggerFactory;
@@ -256,7 +257,7 @@ class QuestionStore {
 
 	private function assignArchiveUrl( QuestionRecord $questionRecord ) {
 		$revision = $this->revisionStore->getRevisionById( $questionRecord->getRevId(),
-			$this->wasPosted ? RevisionStore::READ_LATEST : RevisionStore::READ_NORMAL );
+			$this->wasPosted ? IDBAccessObject::READ_LATEST : IDBAccessObject::READ_NORMAL );
 		if ( !$revision ) {
 			return $questionRecord;
 		}

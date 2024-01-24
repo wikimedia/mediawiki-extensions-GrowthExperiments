@@ -14,7 +14,7 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
-class MentorStatusManager implements IDBAccessObject {
+class MentorStatusManager {
 
 	/** @var int Also hardcoded in AwaySettingsDialog.js */
 	private const MAX_BACK_IN_DAYS = 365;
@@ -79,7 +79,7 @@ class MentorStatusManager implements IDBAccessObject {
 	 * Can user change their status?
 	 *
 	 * @param UserIdentity $mentor
-	 * @param int $flags bitfield consisting of MentorStatusManager::READ_* constants
+	 * @param int $flags bitfield consisting of IDBAccessObject::READ_* constants
 	 * @return StatusValue
 	 */
 	public function canChangeStatus( UserIdentity $mentor, int $flags = 0 ): StatusValue {
@@ -121,11 +121,11 @@ class MentorStatusManager implements IDBAccessObject {
 	 * Why is the user away?
 	 *
 	 * @param UserIdentity $mentor
-	 * @param int $flags bitfield consisting of MentorStatusManager::READ_* constants
+	 * @param int $flags bitfield consisting of IDBAccessObject::READ_* constants
 	 * @return string|null Away reason (AWAY_* constant) or null if mentor is not away
 	 */
 	public function getAwayReason( UserIdentity $mentor, int $flags = 0 ): ?string {
-		if ( DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
+		if ( DBAccessObjectUtils::hasFlags( $flags, IDBAccessObject::READ_LATEST ) ) {
 			$this->invalidateAwayReasonCache( $mentor );
 		}
 
@@ -144,7 +144,7 @@ class MentorStatusManager implements IDBAccessObject {
 	 * This bypasses caching.
 	 *
 	 * @param UserIdentity $mentor
-	 * @param int $flags bitfield consisting of MentorStatusManager::READ_* constants
+	 * @param int $flags bitfield consisting of IDBAccessObject::READ_* constants
 	 * @return string|null Away reason (AWAY_* constant) or null if mentor is not away
 	 */
 	private function getAwayReasonUncached( UserIdentity $mentor, int $flags = 0 ): ?string {
@@ -172,7 +172,7 @@ class MentorStatusManager implements IDBAccessObject {
 	 * Get mentor's current status
 	 *
 	 * @param UserIdentity $mentor
-	 * @param int $flags bitfield; consists of MentorStatusManager::READ_* constants
+	 * @param int $flags bitfield; consists of IDBAccessObject::READ_* constants
 	 * @return string one of MentorStatusManager::STATUS_* constants
 	 */
 	public function getMentorStatus( UserIdentity $mentor, int $flags = 0 ): string {
@@ -183,7 +183,7 @@ class MentorStatusManager implements IDBAccessObject {
 
 	/**
 	 * @param UserIdentity $mentor
-	 * @param int $flags bitfield; consists of MentorStatusManager::READ_* constants
+	 * @param int $flags bitfield; consists of IDBAccessObject::READ_* constants
 	 * @return string|null Null if expiry is not set (mentor's current status does not expire)
 	 */
 	public function getMentorBackTimestamp( UserIdentity $mentor, int $flags = 0 ): ?string {
@@ -232,7 +232,7 @@ class MentorStatusManager implements IDBAccessObject {
 	/**
 	 * Get mentors marked as away
 	 *
-	 * @param int $flags bitfield; consists of MentorStatusManager::READ_* constants
+	 * @param int $flags bitfield; consists of IDBAccessObject::READ_* constants
 	 * @return UserIdentity[]
 	 */
 	public function getAwayMentors( int $flags = 0 ): array {

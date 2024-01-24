@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\Maintenance\DeleteOldSurveys;
 use GrowthExperiments\WelcomeSurvey;
+use IDBAccessObject;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
@@ -129,7 +130,7 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 				$userOptionsManager->getOptions(
 					$user,
 					UserOptionsLookup::EXCLUDE_DEFAULTS,
-					UserOptionsLookup::READ_LATEST
+					IDBAccessObject::READ_LATEST
 				),
 				"$name should have a survey pref but doesn't" );
 		}
@@ -152,7 +153,7 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 				$userOptionsManager->getOptions(
 					$user,
 					UserOptionsLookup::EXCLUDE_DEFAULTS,
-					UserOptionsLookup::READ_LATEST
+					IDBAccessObject::READ_LATEST
 				),
 				"$name should not have a survey pref but does" );
 		}

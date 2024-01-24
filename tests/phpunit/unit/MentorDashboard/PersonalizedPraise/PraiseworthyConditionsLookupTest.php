@@ -8,6 +8,7 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditions;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
+use IDBAccessObject;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
@@ -55,8 +56,8 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		$userOptionsLookupMock->expects( $this->atLeastOnce() )
 			->method( 'getBoolOption' )
 			->willReturnMap( [
-				[ $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE, UserOptionsLookup::READ_NORMAL, true ],
-				[ $mentee, PraiseworthyConditionsLookup::WAS_PRAISED_PREF, UserOptionsLookup::READ_NORMAL, false ],
+				[ $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE, IDBAccessObject::READ_NORMAL, true ],
+				[ $mentee, PraiseworthyConditionsLookup::WAS_PRAISED_PREF, IDBAccessObject::READ_NORMAL, false ],
 			] );
 
 		$userMock = $this->createMock( User::class );

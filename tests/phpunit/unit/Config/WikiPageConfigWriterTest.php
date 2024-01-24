@@ -7,6 +7,7 @@ use GrowthExperiments\Config\Validation\IConfigValidator;
 use GrowthExperiments\Config\Validation\NoValidationValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriter;
+use IDBAccessObject;
 use InvalidArgumentException;
 use JsonContent;
 use MediaWiki\CommentStore\CommentStoreComment;
@@ -47,7 +48,7 @@ class WikiPageConfigWriterTest extends MediaWikiUnitTestCase {
 		$wikiPageConfigLoader = $this->createMock( WikiPageConfigLoader::class );
 		$wikiPageConfigLoader->expects( $expectLoad ? $this->atLeastOnce() : $this->never() )
 			->method( 'load' )
-			->with( $configPage, WikiPageConfigLoader::READ_LATEST )
+			->with( $configPage, IDBAccessObject::READ_LATEST )
 			->willReturn( $currentConfig ?? false );
 		return $wikiPageConfigLoader;
 	}

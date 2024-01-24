@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Config;
 
-use IDBAccessObject;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Title\Title;
@@ -10,7 +9,7 @@ use MediaWiki\Title\TitleFactory;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 
-class WikiPageConfig implements Config, IDBAccessObject {
+class WikiPageConfig implements Config {
 
 	private LoggerInterface $logger;
 	private TitleFactory $titleFactory;

@@ -8,9 +8,9 @@ use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use IDBAccessObject;
 use LogicException;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
-use MediaWiki\User\User;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiManageMentorList extends ApiBase {
@@ -44,7 +44,7 @@ class ApiManageMentorList extends ApiBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		$block = $this->getUser()->getBlock( User::READ_LATEST );
+		$block = $this->getUser()->getBlock( IDBAccessObject::READ_LATEST );
 		if ( $block && $block->isSitewide() ) {
 			$this->dieBlocked( $block );
 		}

@@ -7,7 +7,7 @@ use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorshipSummaryCreator;
-use MediaWiki\Permissions\Authority;
+use IDBAccessObject;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -93,7 +93,7 @@ class StructuredMentorWriter implements IMentorWriter {
 		bool $bypassWarnings
 	): StatusValue {
 		// check if $performer is not blocked from the mentor list page
-		if ( $this->isBlocked( $performer, Authority::READ_LATEST ) ) {
+		if ( $this->isBlocked( $performer, IDBAccessObject::READ_LATEST ) ) {
 			return StatusValue::newFatal( 'growthexperiments-mentor-writer-error-blocked' );
 		}
 
@@ -123,7 +123,7 @@ class StructuredMentorWriter implements IMentorWriter {
 	 */
 	public function isBlocked(
 		UserIdentity $performer,
-		int $freshness = Authority::READ_NORMAL
+		int $freshness = IDBAccessObject::READ_NORMAL
 	): bool {
 		$block = $this->userFactory->newFromUserIdentity( $performer )->getBlock( $freshness );
 		return $block && $block->appliesToTitle( $this->mentorList );

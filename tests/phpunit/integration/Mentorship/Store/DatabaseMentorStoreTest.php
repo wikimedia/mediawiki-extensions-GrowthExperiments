@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\NullLogger;
 use Wikimedia\TestingAccessWrapper;
@@ -62,7 +63,11 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 			'primary'
 		);
 		$this->assertSame( 'job-limit', $response['reached'] );
-		$actualMentor = $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY, MentorStore::READ_LATEST );
+		$actualMentor = $store->loadMentorUser(
+			$mentee,
+			MentorStore::ROLE_PRIMARY,
+			IDBAccessObject::READ_LATEST
+		);
 		$this->assertSameUser( $mentor, $actualMentor );
 	}
 

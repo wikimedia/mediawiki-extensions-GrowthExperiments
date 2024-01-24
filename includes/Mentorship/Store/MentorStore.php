@@ -12,7 +12,7 @@ use Psr\Log\NullLogger;
 use WANObjectCache;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
-abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, LoggerAwareInterface {
+abstract class MentorStore implements ExpirationAwareness, LoggerAwareInterface {
 	use LoggerAwareTrait;
 
 	/** @var string */
@@ -99,13 +99,13 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, Logg
 	public function loadMentorUser(
 		UserIdentity $mentee,
 		string $mentorRole,
-		$flags = self::READ_NORMAL
+		$flags = IDBAccessObject::READ_NORMAL
 	): ?UserIdentity {
 		if ( !$this->validateMentorRole( $mentorRole ) ) {
 			throw new InvalidArgumentException( "Invalid \$mentorRole passed: $mentorRole" );
 		}
 
-		if ( DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
+		if ( DBAccessObjectUtils::hasFlags( $flags, IDBAccessObject::READ_LATEST ) ) {
 			$this->invalidateMentorCache( $mentee, $mentorRole );
 		}
 
@@ -241,7 +241,7 @@ abstract class MentorStore implements IDBAccessObject, ExpirationAwareness, Logg
 	 */
 	public function isMentee(
 		UserIdentity $user,
-		int $flags = self::READ_NORMAL
+		int $flags = IDBAccessObject::READ_NORMAL
 	): bool {
 		return $this->loadMentorUser(
 			$user,

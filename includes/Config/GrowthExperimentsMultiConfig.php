@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Config;
 
-use IDBAccessObject;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Settings\Config\MergeStrategy;
@@ -19,7 +18,7 @@ use MediaWiki\Settings\Config\MergeStrategy;
  * works without any config page, and also to not let wikis break
  * GE setup by removing an arbitrary config variable.
  */
-class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomReadConstants {
+class GrowthExperimentsMultiConfig implements Config, ICustomReadConstants {
 
 	private WikiPageConfig $wikiPageConfig;
 	private Config $globalVarConfig;

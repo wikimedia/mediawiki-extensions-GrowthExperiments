@@ -8,8 +8,8 @@ use ApiUsageException;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
+use IDBAccessObject;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
-use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -49,7 +49,7 @@ class ApiSetMentor extends ApiBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		$block = $this->getUser()->getBlock( User::READ_LATEST );
+		$block = $this->getUser()->getBlock( IDBAccessObject::READ_LATEST );
 		if ( $block && $block->isSitewide() ) {
 			$this->dieBlocked( $block );
 		}

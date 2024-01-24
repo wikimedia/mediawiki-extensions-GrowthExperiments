@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Mentorship\Mentor;
+use IDBAccessObject;
 use InvalidArgumentException;
-use MediaWiki\Permissions\Authority;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
 
@@ -14,12 +14,12 @@ interface IMentorWriter {
 	 * Is an user blocked from writing to the mentor list?
 	 *
 	 * @param UserIdentity $performer
-	 * @param int $freshness One of Authority::READ_*
+	 * @param int $freshness One of IDBAccessObject::READ_*
 	 * @return bool
 	 */
 	public function isBlocked(
 		UserIdentity $performer,
-		int $freshness = Authority::READ_NORMAL
+		int $freshness = IDBAccessObject::READ_NORMAL
 	): bool;
 
 	/**

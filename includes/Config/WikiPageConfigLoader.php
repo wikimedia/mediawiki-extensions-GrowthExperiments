@@ -37,7 +37,7 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
  * as \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader,
  * generalized to this class taking care about config in general.
  */
-class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
+class WikiPageConfigLoader implements ICustomReadConstants {
 
 	private ConfigValidatorFactory $configValidatorFactory;
 	private HttpRequestFactory $requestFactory;
@@ -101,13 +101,13 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	/**
 	 * Load the configured page, with caching.
 	 * @param LinkTarget $configPage
-	 * @param int $flags bit field, see self::READ_XXX
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return array|StatusValue The content of the configuration page (as JSON
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
 	public function load( LinkTarget $configPage, int $flags = 0 ) {
 		if (
-			DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ||
+			DBAccessObjectUtils::hasFlags( $flags, IDBAccessObject::READ_LATEST ) ||
 			// This is a custom flag, but bitfield logic should work regardless.
 			DBAccessObjectUtils::hasFlags( $flags, self::READ_UNCACHED )
 		) {
@@ -130,7 +130,7 @@ class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
 	 * Load configuration from the WAN cache
 	 *
 	 * @param LinkTarget $configPage
-	 * @param int $flags bit field, see self::READ_XXX
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return array|StatusValue The content of the configuration page (as JSON
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */

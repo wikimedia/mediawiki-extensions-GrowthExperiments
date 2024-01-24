@@ -8,6 +8,7 @@ use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
+use IDBAccessObject;
 use LogicException;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -104,17 +105,25 @@ class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 	private function getMockUserIdentityLookup(): UserIdentityLookup {
 		return new class implements UserIdentityLookup {
 			/** @inheritDoc */
-			public function getUserIdentityByName( string $name, int $queryFlags = self::READ_NORMAL ): ?UserIdentity {
+			public function getUserIdentityByName(
+				string $name,
+				int $queryFlags = IDBAccessObject::READ_NORMAL
+			): ?UserIdentity {
 				throw new LogicException( 'Not implemented' );
 			}
 
 			/** @inheritDoc */
-			public function getUserIdentityByUserId( int $userId, int $queryFlags = self::READ_NORMAL ): ?UserIdentity {
+			public function getUserIdentityByUserId(
+				int $userId,
+				int $queryFlags = IDBAccessObject::READ_NORMAL
+			): ?UserIdentity {
 				return UserIdentityValue::newRegistered( $userId, "User$userId" );
 			}
 
 			/** @inheritDoc */
-			public function newSelectQueryBuilder( $dbOrQueryFlags = self::READ_NORMAL ): UserSelectQueryBuilder {
+			public function newSelectQueryBuilder(
+				$dbOrQueryFlags = IDBAccessObject::READ_NORMAL
+			): UserSelectQueryBuilder {
 				throw new LogicException( 'Not implemented' );
 			}
 		};

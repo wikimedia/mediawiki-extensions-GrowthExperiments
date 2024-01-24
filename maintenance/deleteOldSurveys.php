@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\WelcomeSurvey;
+use IDBAccessObject;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
@@ -102,7 +103,7 @@ class DeleteOldSurveys extends Maintenance {
 				if ( !$dryRun ) {
 					$this->beginTransaction( $dbw, __METHOD__ );
 					$user = User::newFromId( $id );
-					$user->load( User::READ_EXCLUSIVE );
+					$user->load( IDBAccessObject::READ_EXCLUSIVE );
 					// Setting an option to null will assign it the default value, which in turn
 					// will delete it (meaning we won't have to reprocess this row on the next run).
 					$userOptionsManager->setOption( $user, WelcomeSurvey::SURVEY_PROP, null );

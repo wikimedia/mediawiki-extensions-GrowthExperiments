@@ -6,6 +6,7 @@ use Content;
 use DerivativeContext;
 use FormatJson;
 use GrowthExperiments\Config\Validation\IConfigValidator;
+use IDBAccessObject;
 use InvalidArgumentException;
 use JsonContent;
 use MediaWiki\CommentStore\CommentStoreComment;
@@ -80,7 +81,7 @@ class WikiPageConfigWriter {
 		if ( $this->titleFactory->newFromLinkTarget( $this->configPage )->exists() ) {
 			$config = $this->wikiPageConfigLoader->load(
 				$this->configPage,
-				WikiPageConfigLoader::READ_LATEST
+				IDBAccessObject::READ_LATEST
 			);
 			if ( !is_array( $config ) ) {
 				if ( $config instanceof Status ) {
