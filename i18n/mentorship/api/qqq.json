@@ -33,5 +33,6 @@
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|summary}}\n\nRelated messages:\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee}}\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason}}",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|mentee}}\nRelated messages:\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-summary}}\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason}}",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|reason}}\n\nRelated messages:\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-summary}}\n* {{msg-mw|Apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee}}",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "\"Skip reason\" means \"The reason for skipping\".\n\n{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|skipreason}}"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "\"Skip reason\" means \"The reason for skipping\".\n\n{{doc-apihelp-param|growthinvalidatepersonalizedpraisesuggestion|skipreason}}",
+	"apihelp-query+growthmentorlist-summary": "{{doc-apihelp-summary|query+growthmentorlist}}"
 }
