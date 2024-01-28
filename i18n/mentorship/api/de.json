@@ -35,5 +35,7 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Wenn isaway wahr ist, muss awaytimestamp angegeben werden.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Ungültigmachung eines Vorschlags für einen lobenswerten Mentee im Modul personalisiertes Lob auf dem Lotsen-Dashboard",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Mentee für ungültig erklären",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Grund, den Vorschlag ungültig zu machen"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Grund, den Vorschlag ungültig zu machen",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Grund überspringen, um den Vorschlag ungültig zu machen",
+	"apihelp-query+growthmentorlist-summary": "Alle Lotsen auflisten"
 }

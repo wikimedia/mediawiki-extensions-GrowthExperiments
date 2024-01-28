@@ -34,5 +34,6 @@
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "פסילת הצעת חניך ראוי להערכה במודול הבעת הערכה אישית בלוח הבקרה לחונכים",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "אילו חניכים לפסול",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "סיבה לפסול את ההצעה",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "הסיבה לפסיחה כדי לבטל את ההצעה"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "הסיבה לפסיחה כדי לבטל את ההצעה",
+	"apihelp-query+growthmentorlist-summary": "רשימת כל החונכים"
 }

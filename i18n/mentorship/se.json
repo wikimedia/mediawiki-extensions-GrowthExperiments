@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kimberli Mäkäräinen (WMNO)",
+			"Lea-Christine Sara",
 			"Yupik"
 		]
 	},
@@ -14,11 +15,16 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Čájet $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 / $2",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Ásahusat",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Eret",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Gaskkalduhte",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Boddu",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Don jávkat: ",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "beaivvit",
 	"growthexperiments-quit-mentorship-reason": "Sivva",
 	"growthexperiments-notification-body-mentee-claimed": "Sivva: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Vurke",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Gaskkalduhte",
+	"growthexperiments-mentor-dashboard-personalized-praise-title": "Sádde movttiideami",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "Lassedieđut",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "Ovddit siidu",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Čuovvovaš siidu",

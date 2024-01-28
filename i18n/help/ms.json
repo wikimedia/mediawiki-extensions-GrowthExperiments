@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hakimi97",
 			"Tofeiku"
 		]
 	},
+	"growthexperiments-help-panel-tog-help-panel": "Dayakan panel bantuan penyunting",
+	"growthexperiments-help-panel-cta-button-text": "Dapatkan bantuan untuk menyunting",
+	"growthexperiments-help-panel-question-button-text": "Teruskan",
 	"growthexperiments-help-panel-postedit-trynewtask-try-button-text": "Cuba tugas baru",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "Jangan tunjukkan lagi",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Ketahui lebih lanjut tentang penyuntingan kopi]]",
