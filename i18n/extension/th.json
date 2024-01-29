@@ -6,5 +6,16 @@
 		]
 	},
 	"growthexperiments-desc": "ส่วนขยายนี้มีการทดลองที่รับผิดชอบโดยทีม Growth",
-	"growthexperiments-edit-config-feedback-headline": "คุณมีความคิดหรือคำถามเกี่ยวกับแบบฟอร์มนี้ไหม?"
+	"growthexperiments-edit-config-last-edit": "[[$3]]: อัปเดตล่าสุดโดย [[ผู้ใช้:$1|$1]] $2 ([$4 ต่าง])",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: อัปเดตล่าสุดโดยผู้ใช้ที่ไม่ทราบ $1 ([$3 ต่าง])",
+	"growthexperiments-edit-config-feedback-headline": "คุณมีความคิดหรือคำถามเกี่ยวกับแบบฟอร์มนี้ไหม?",
+	"growthexperiments-edit-config-feedback-cta": "ให้ข้อเสนอแนะ",
+	"growthexperiments-edit-config-edit-summary": "ความย่อการแก้ไข",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "ด้านบนของหน้า",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "ด้านล่างของหน้า",
+	"growthexperiments-edit-config-mentorship-enabled-true": "ใช่",
+	"growthexperiments-edit-config-mentorship-enabled-false": "ไม่",
+	"growthexperiments-edit-config-newcomertasks": "การแก้ไขที่แนะนำ",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "ปิดใช้งาน",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "ปิดใช้งานในการกำหนดค่าไซต์"
 }

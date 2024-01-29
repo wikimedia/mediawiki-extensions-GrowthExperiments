@@ -4,7 +4,9 @@
 			"Horus",
 			"Just Sayori",
 			"MOphaswongse (WMF)",
-			"Patsagorn Y."
+			"Patsagorn Y.",
+			"Ekminarin",
+			"RidJasper"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ยินดีต้อนรับ}} $1!",
@@ -36,14 +38,14 @@
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|ป้อน}}เหตุผลอื่น ๆ",
 	"welcomesurvey-question-mentor-info": "เรากำลังพิจารณาเปิดโครงการให้ผู้ใช้มีประสบการณ์ช่วยเหลือผู้ใช้มือใหม่ในเรื่องการแก้ไข {{GENDER:$1|คุณสนใจ}}รับการติดต่อเพื่อช่วยเหลือในการแก้ไขหรือไม่?",
 	"welcomesurvey-question-mentor-label": "ใช่ {{GENDER:$1|ฉันสนใจ}}",
-	"welcomesurvey-question-edited-label": "คุณเคยแก้ไขวิกิพีเดียมาก่อนหรือไม่?",
+	"welcomesurvey-question-edited-label": "{{GENDER:|คุณ}}เคยแก้ไขวิกิพีเดียมาก่อนหรือไม่?",
 	"welcomesurvey-question-edited-option-yes-many-label": "เคย หลายครั้งแล้ว",
 	"welcomesurvey-question-edited-option-yes-few-label": "เคย แต่ไม่กี่ครั้ง",
 	"welcomesurvey-question-edited-option-no-dunno-label": "ไม่เคย ฉันไม่ทราบว่าวิกิพีเดียสามารถแก้ไขได้",
 	"welcomesurvey-question-edited-option-no-other-label": "ไม่เคย เนื่องด้วยเหตุผลอื่น",
 	"welcomesurvey-question-edited-option-dont-remember-label": "ฉันจำไม่ได้",
 	"welcomesurvey-question-email-label": "ที่อยู่อีเมล (ไม่จำเป็น)",
-	"welcomesurvey-question-email-placeholder": "ป้อนอีเมลของคุณ...",
+	"welcomesurvey-question-email-placeholder": "ป้อนที่อยู่อีเมล{{GENDER:|ของคุณ}}...",
 	"welcomesurvey-question-email-help": "เราสังเกตว่าคุณยังไม่ได้ให้ที่อยู่อีเมลขณะสร้างบัญชีนี้ เรา<strong>แนะนำเป็นอย่างยิ่ง</strong>ให้เพิ่มที่อยู่อีเมล เมื่อคุณไม่สามารถเข้าถึงบัญชีอย่างลืมรหัสผ่าน คุณจะสามารถกู้คืนผ่านอีเมลในภายหลังได้ หมายเหตุว่าจะไม่มีการเปิดเผยที่อยู่อีเมลแม้ว่าผู้ใช้อื่นติดต่อคุณ",
 	"welcomesurvey-question-languages-label": "{{SITENAME}}มีในอีกกว่า 300 ภาษา มีภาษาอื่นที่คุณอ่านและเขียนได้อีกหรือไม่?",
 	"welcomesurvey-question-languages-placeholder": "เพิ่มภาษาได้กว่า {{PLURAL:$1| $1 ภาษา}}...",

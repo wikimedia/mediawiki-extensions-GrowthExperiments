@@ -71,6 +71,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Luotettavien lähteiden lisääminen ja vanhentuneiden artikkelien päivittäminen.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Luo uusia artikkeleita ja laajenna lyhyitä artikkeleita.",
 	"growthexperiments-homepage-suggested-edits-header": "Ehdotetut muokkaukset",
+	"growthexperiments-homepage-new-impact-header": "Vaikutuksesi",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Ota JavaScript käyttöön nähdäksesi tämän komponentin.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Sinun}} vaikutuksesi",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:$1|Sinun}} muokkaamiasi artikkeleita luetaan!",

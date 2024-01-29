@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Yupik",
-			"Kimberli Mäkäräinen (WMNO)"
+			"Kimberli Mäkäräinen (WMNO)",
+			"Lea-Christine Sara"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Čilgehus",
@@ -14,7 +15,11 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Čájet $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 / $2",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Ásahusat",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Eret",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Gaskkalduhte",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Boddu",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Don jávkat: ",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "beaivvit",
 	"growthexperiments-quit-mentorship-reason": "Sivva",
 	"growthexperiments-notification-body-mentee-claimed": "Sivva: $1",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Vurke",
