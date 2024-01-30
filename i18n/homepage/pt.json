@@ -316,7 +316,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Cultura",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regiões",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Evento de campanha",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Nome de tópico não reconhecido|Nomes de tópicos não reconhecidos}} para a palavra-chave <kbd>articletopic:</kbd>:$1",
+	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Nome de tópico não reconhecido|Nomes de tópicos não reconhecidos}} para a palavra-chave <kbd>growtharticletopic:</kbd>: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuração de edições sugeridas inválida: estrutura incorreta",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuração de edições sugeridas inválida para o tipo de tarefa \"$1\": \"$2\" tem de ser um número inteiro",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Configuração de edições sugeridas inválida para o tipo de tarefa \"$1\": \"$2\" tem de ser maior do que $3",
@@ -563,5 +563,11 @@
 	"growthexperiments-tour-newimpact-discovery-title": "Design atualizado",
 	"growthexperiments-tour-newimpact-discovery-description": "Foi adicionada mais informação da sua atividade de edição!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Entendido",
-	"growthexperiments-homepage-newimpact-contributions-link": "Ver todas as edições"
+	"growthexperiments-homepage-newimpact-contributions-link": "Ver todas as edições",
+	"growthexperiments-levelingup-getstarted-notification-header": "Experimente uma edição sugerida e comece a desenvolver as suas competências de edição{{GENDER:$2|}}",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Tentar as edições sugeridas",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Saber mais",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Fazer uma edição sugerida",
+	"echo-category-title-ge-newcomer": "Funcionalidades de crescimento",
+	"echo-pref-tooltip-ge-newcomer": "Notificar-me sobre tarefas para recém-chegados e outras funcionalidades desenvolvidas para ajudar utilizadores novos."
 }

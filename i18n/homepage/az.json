@@ -6,7 +6,7 @@
 			"Toghrul Rahimli"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salam}} {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salam}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Ana səhifə",
 	"tooltip-pt-homepage": "{{GENDER:|Sənin}} ana səhifən",
 	"prefs-homepage": "Yeni istifadəçi redaktor özəllikləri",

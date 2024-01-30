@@ -1,8 +1,28 @@
 {
 	"@metadata": {
 		"authors": [
-			"Patsagorn Y."
+			"Patsagorn Y.",
+			"Ekminarin",
+			"RidJasper"
 		]
 	},
-	"growthexperiments-mentor-dashboard-pt-link": "แดชบอร์ดเมนเทอร์"
+	"growthexperiments-mentor-dashboard-pt-link": "แดชบอร์ดเมนเทอร์",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "จำนวนการแก้ไข",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "วันที่ลงทะเบียน",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "ตัวกรอง",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "อัปเดต",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "จำนวนการแก้ไข",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "ขั้นต่ำ",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "สูงสุด",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "แก้ไขล่าสุด",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "วันล่าสุด",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "เดือนล่าสุด",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "ค้นหา",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "ใช้งาน $1 ที่แล้ว",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "ไม่ทราบ",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "แสดง $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 จาก $2",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label": "ผลลัพธ์หน้าถัดไป",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "ผลลัพธ์หน้าก่อนหน้า",
+	"growthexperiments-manage-mentors-edit": "แก้ไข"
 }

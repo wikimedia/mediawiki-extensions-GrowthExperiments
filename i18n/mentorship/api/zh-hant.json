@@ -25,12 +25,12 @@
 	"apihelp-query+growthmenteestatus-summary": "查詢目前使用者的學員狀態，請查看 action=growthsetmenteestatus 的文件以了解個別狀態的詳細資訊。",
 	"apihelp-query+growthmentormentee-summary": "取得分配給指定導師的全部學員。",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "要查詢學員的導師",
-	"apihelp-growthmanagementorlist-summary": "管理在結構化導師清單中的資訊（通常存放在 [[MediaWiki:GrowthMentors.json]] 中）。此模組可被目前與往後的導師（添加他們自己或是更改他們的詳細資訊）以及管理員（適用於所有使用者）來使用。",
+	"apihelp-growthmanagementorlist-summary": "管理在結構化導師清單中的資訊（通常存放在 [[MediaWiki:GrowthMentors.json]] 中）。此模組可被目前與往後的導師（新增他們自己或是變更他們的詳細資訊）以及管理員（適用於所有使用者）來使用。",
 	"apihelp-growthmanagementorlist-param-geaction": "操作",
 	"apihelp-growthmanagementorlist-param-message": "介紹訊息（導師訊息預設為空字串）",
 	"apihelp-growthmanagementorlist-param-weight": "權重",
 	"apihelp-growthmanagementorlist-param-autoassigned": "導師會自動分配給新手嗎？",
-	"apihelp-growthmanagementorlist-param-summary": "更改的原因",
-	"apihelp-growthmanagementorlist-param-username": "被更改給影響到的導師使用者名稱。若未提供，會使用目前登入的使用者。這僅給特權使用者利用。",
+	"apihelp-growthmanagementorlist-param-summary": "變更的原因",
+	"apihelp-growthmanagementorlist-param-username": "被變更給影響到的導師使用者名稱。若未提供，會使用目前登入的使用者。這僅給特權使用者利用。",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "若 isaway 為 true，必須提供 awaytimestamp。"
 }

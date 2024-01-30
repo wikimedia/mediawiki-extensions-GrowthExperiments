@@ -88,6 +88,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Половина просека",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Просечно (подразумевано)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Дупло више од просека",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Ваша}} заузетост је промењена у „$1”.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Дошло је до непознате грешке. Покушајте поново касније.",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Промените {{GENDER:|вашу}} поруку представљања",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Сачувај",

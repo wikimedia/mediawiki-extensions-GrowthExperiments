@@ -49,6 +49,7 @@
 	"welcomesurvey-question-languages-label": "Пројекат {{SITENAME}} је доступан на више од 300 језика. Знате ли још неке језике?",
 	"welcomesurvey-question-languages-placeholder": "Додајте највише {{PLURAL:$1|један језик|$1 језика}}…",
 	"welcomesurvey-question-languages-maximum": "Додали сте највећи могући број језика.",
+	"welcomesurvey-reminder-link": "Анкета",
 	"welcomesurvey-reminder-dismiss": "Одбаци",
 	"welcomesurvey-mideditsignup-title": "Добро дошли, $1!",
 	"welcomesurvey-mideditsignup-button-homepage": "Почетна",
