@@ -34,5 +34,6 @@
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Razveljavi predlog za hvalevrednega mentoriranca v modulu Personalizirana pohvala na mentorski nadzorni plošči",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Neveljavni mentoriranec",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Razlog za razveljavitev predloga",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Preskočitev razloga za neprimernost predloga"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Preskočitev razloga za neprimernost predloga",
+	"apihelp-query+growthmentorlist-summary": "Naštetje vseh mentorjev"
 }

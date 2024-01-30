@@ -34,5 +34,6 @@
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "يبطل اقتراحًا مقدمًا من مرشَد جدير بالثناء في وحدة المديح المشخص على لوحة المرشدين",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "مرشَد للإبطال",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "سبب إبطال الاقتراح",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "تخطي سبب إبطال الاقتراح"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "تخطي سبب إبطال الاقتراح",
+	"apihelp-query+growthmentorlist-summary": "قائمة بجميع المرشدين"
 }
