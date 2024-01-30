@@ -441,7 +441,7 @@ return [
 
 	'GrowthExperimentsMenteeOverviewDataUpdater' => static function (
 		MediaWikiServices $services
-	) {
+	): MenteeOverviewDataUpdater {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new MenteeOverviewDataUpdater(
 			$geServices->getUncachedMenteeOverviewDataProvider(),
@@ -945,7 +945,7 @@ return [
 
 	'GrowthExperimentsWikiPageConfigWriterFactory' => static function (
 		MediaWikiServices $services
-	) {
+	): WikiPageConfigWriterFactory {
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
 		return new WikiPageConfigWriterFactory(
 			$growthExperimentsServices->getWikiPageConfigLoader(),
