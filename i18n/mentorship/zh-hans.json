@@ -14,7 +14,8 @@
 			"Zhang8569",
 			"范",
 			"魔琴",
-			50829
+			50829,
+			"SunAfterRain"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "导师面板",
@@ -131,5 +132,17 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|您}}即将移除[[User:$1|$1]]的导师身份。",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "移除该导师的原因",
 	"growthexperiments-manage-mentors-remove-mentor-success": "用户[[User:$1|$1]]不再是一名{{GENDER:$1|导师}}。",
-	"growthexperiments-manage-mentors-return-back": "您可[[Special:ManageMentors|返回]]导师列表。"
+	"growthexperiments-manage-mentors-return-back": "您可[[Special:ManageMentors|返回]]导师列表。",
+	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "将 $1 添加为导师",
+	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "将 $1 添加为导师：$2",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "将自己添加为导师",
+	"growthexperiments-manage-mentors-summary-add-self-with-reason": "将自己添加为导师：$2",
+	"growthexperiments-manage-mentors-summary-change-admin-no-reason": "更改 $1 的导师选项",
+	"growthexperiments-manage-mentors-summary-change-admin-with-reason": "更改 $1 的导师选项：$2",
+	"growthexperiments-manage-mentors-summary-change-self-no-reason": "更改自己的导师选项",
+	"growthexperiments-manage-mentors-summary-change-self-with-reason": "更改自己的导师选项：$2",
+	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "移除 $1 的导师身份",
+	"growthexperiments-manage-mentors-summary-remove-admin-with-reason": "移除 $1 的导师身份：$2",
+	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "辞去导师身份",
+	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "辞去导师身份：$2"
 }

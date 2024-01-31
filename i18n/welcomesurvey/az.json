@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"NMW03"
+			"NMW03",
+			"Toghrul Rahimli"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Xoş gəlmisiniz}}, $1!",
@@ -42,5 +43,7 @@
 	"welcomesurvey-question-email-help": "Bu hesabı yaradarkən e-poçt daxil etmədiyinizi gördük. Şifrənizi itirdiyiniz halda hesabın bərpası üçün bir e-poçt lazım olduğu üçün bu <strong>şiddətlə tövsiyə olunur</strong>. QEYD: Digər istifadəçilər sizinlə əlaqə saxladıqda e-poçt ünvanınız göstərilmir.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} təxminən 300-ə yaxın dildə mövcuddur. Yazıb-oxuya bildiyiniz başqa bir dil var?",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|Bir dilə|$1 dilə}} qədər əlavə edin...",
-	"welcomesurvey-question-languages-maximum": "Maksimum sayda dil əlavə etdiniz."
+	"welcomesurvey-question-languages-maximum": "Maksimum sayda dil əlavə etdiniz.",
+	"welcomesurvey-reminder": "Yeni istifadəçi sorğumuzda bir neçə suala cavab verərək Vikipediya təcrübənizi təkmilləşdirməyə kömək edin. $1",
+	"welcomesurvey-reminder-link": "Sorğuya qatıl"
 }

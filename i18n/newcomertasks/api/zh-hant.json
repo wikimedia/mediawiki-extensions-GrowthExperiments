@@ -3,7 +3,8 @@
 		"authors": [
 			"Kly",
 			"Xiplus",
-			"SunAfterRain"
+			"SunAfterRain",
+			"Winston Sung"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "取得適合編輯新手的任務建議。",
@@ -12,13 +13,13 @@
 	"apihelp-query+growthtasks-param-topics": "在任務建議裡優先的條目主題。",
 	"apihelp-query+growthtasks-param-limit": "回傳任務建議的最大數量。",
 	"apihelp-query+growthtasks-param-excludepageids": "要從查詢排除的頁面ID。",
-	"apihelp-query+growthtasks-param-debug": "添加調試資料到輸出裡。",
+	"apihelp-query+growthtasks-param-debug": "新增調試資料到輸出裡。",
 	"apihelp-query+growthtasks-example-1": "取得目前使用者的校稿類型任務的任務推薦。",
 	"apihelp-query+growthtasks-example-2": "取得目前使用者的任務推薦，以及有關頁面的擴充資訊。",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "在加入圖片外掛資料中缺少'accepted'參數",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "在加入圖片外掛資料中的'accepted'參數應該是布林值，實際為$1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "添加圖像外掛程式資料中缺少'reasons'參數",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "添加圖像外掛程式資料中的'reasons'參數應該是一個陣列，實際為$1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "新增圖片外掛程式資料中缺少'reasons'參數",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "新增圖片外掛程式資料中的'reasons'參數應該是一個陣列，實際為$1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reasons'參數的專案'$1'無效，應該是以下專案之一：$2",
 	"apierror-growthexperiments-addlink-handler-notfound": "找不到連結建議紀錄",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "未預期的連結建議目標：$1"
