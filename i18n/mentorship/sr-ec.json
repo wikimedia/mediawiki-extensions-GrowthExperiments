@@ -99,6 +99,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Порука за новајлије",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Ваша}} порука представљања је промењена на „$1”.",
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "Свака част на доборо одрађеном послу!",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Поздрав $1, овде {{GENEDER:$2|твој ментор|твоја менторка}}. Велико хвала за доприносе које пружаш и надам се да ћеш се задржати. За сва питања и недоумице стојим ти на располагању. Видимо се!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Пошаљи похвалу",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "Више информација",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "Број тема на сзр: $1",
