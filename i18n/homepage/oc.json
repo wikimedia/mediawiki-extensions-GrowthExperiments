@@ -2,9 +2,22 @@
 	"@metadata": {
 		"authors": [
 			"Guilhelma",
-			"Quentí"
+			"Quentí",
+			"Lhanars",
+			"Robertgarrigos"
 		]
 	},
+	"growthexperiments-homepage-tab": "\nEspaci de progression de l'utilizator",
+	"prefs-homepage": "Espaci de progression de l'utilizator",
+	"growthexperiments-homepage-email-button-noemail": "Ajustar un corrieu",
+	"growthexperiments-homepage-startediting-dialog-intro-title": "Edicions suggeridas per començar",
+	"growthexperiments-homepage-startediting-dialog-intro-header": "La Wikipèdia repausa sus la collaboracion de personas coma vosautres.",
+	"growthexperiments-homepage-startediting-dialog-intro-subheader": "Vòstras modificacions contribuïsson a melhorar la Wikipèdia dins sa mission de partejar de coneissenças gratuitas amb lo mond. Contunhatz a començar per de pichonas suggestions de modificacions.",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrar per tèma",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Seleccionatz de subjèctes per obtenir de suggestions que vos interèssan. Podètz causir un o mantun subjècte.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Pròvatz qualques suggestions d'edicion facilas.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Recomandat mentre fachas vòstras primièras edicions",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Corregir l'ortografia, la gramatica e lo ton",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografia (totas)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografia (femna)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Manjars e bevendas",
