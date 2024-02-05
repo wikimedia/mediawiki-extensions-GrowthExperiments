@@ -33,5 +33,6 @@
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Ugyldiggjør et forslag om rosverdig fadderbarn i modulen for personlig ros i fadderpanelet",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Fadderbarn som skal ugyldiggjøres",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Årsak til at forslaget skal ugyldiggjøres",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Hopp over årsaken til at forslaget skal ugyldiggjøres"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Hopp over årsaken til at forslaget skal ugyldiggjøres",
+	"apihelp-query+growthmentorlist-summary": "List opp alle fadderne"
 }

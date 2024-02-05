@@ -13,5 +13,6 @@
 	"apihelp-growthsetmentor-param-mentee": "Tələbənin istifadəçi adı",
 	"apihelp-growthsetmentor-param-mentor": "Mentorun istifadəçi adı",
 	"apihelp-growthsetmentor-param-reason": "Dəyişikliyin səbəbi",
-	"apihelp-query+growthimagesuggestiondata-summary": "Mümkünsə, əlaqəli [[mw:wikitech:Add_Image|şəkil təklifi məlumatını]] gətirin"
+	"apihelp-query+growthimagesuggestiondata-summary": "Mümkünsə, əlaqəli [[mw:wikitech:Add_Image|şəkil təklifi məlumatını]] gətirin",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "Tapşırıq növü ID '$1' viki konfiqurasiyasında tapılmadı."
 }

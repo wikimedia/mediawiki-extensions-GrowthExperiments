@@ -34,5 +34,6 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "若 isaway 為 true，必須提供 awaytimestamp。",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "讓導師面板上個性化表揚模組的值得表揚學員建議無效",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "無效學員",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "讓建議無效的原因"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "讓建議無效的原因",
+	"apihelp-query+growthmentorlist-summary": "列出所有導師"
 }

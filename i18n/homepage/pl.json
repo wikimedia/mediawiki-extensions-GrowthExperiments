@@ -388,7 +388,7 @@
 	"growthexperiments-notification-body-mentor-change": "Powód: $1",
 	"growthexperiments-notification-body-mentor-change-new": "{{GENDER:$1|Twój były przewodnik|Twoja była przewodniczka}}, $1, nie jest już {{GENDER:$1|Twoim przewodnikiem|Twoją przewodniczką}}.",
 	"growthexperiments-notification-say-hi-mentor-change": "Przywitaj się ze {{GENDER:$2|swoim nowym|swoją nową}} przewodni{{GENDER:$2|kiem|czką|kiem(-czką)}}!{{GENDER:$3|}}",
-	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Musisz}} być na liście przewodników na [[$2]], aby móc używać Special:ClaimMentee",
+	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Musisz}} być na liście przewodników na [[$2]], aby móc używać {{#Special:ClaimMentee}}",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Lista przewodników jest nieprawidłowo skonfigurowana.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Lista przewodników ([[$1]]) nie istnieje albo jest źle skonfigurowana.",
 	"growthexperiments-notification-learn-more": "Dowiedz się więcej o {{GENDER:$2|swoim nowym|swojej nowej}} przewodni{{GENDER:$2|ku|czce|ku(-czce)}}{{GENDER:$1|}}",
