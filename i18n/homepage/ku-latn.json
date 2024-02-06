@@ -48,7 +48,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Çêbû",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Çêbû",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Pêşî çend guhartinên pêşniyazkirî yên <strong>hêsan</strong> biceribîne",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Gelek rê hene ku pê dikarî {{SITENAME}}yê baştir bikî.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Gelek rê hene ku pê dikarî {{GRAMMAR:oblique|{{SITENAME}}}} baştir bikî.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Hêsan",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Ortê",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Dijwar",

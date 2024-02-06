@@ -131,6 +131,7 @@
 	"growthexperiments-homepage-mentorship-question-subject": "คำถามจาก[[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "คำถามจาก[[User:$1|$1]]เกี่ยวกับ[[$2]]",
 	"growthexperiments-specialimpact-title": "ผลกระทบ",
+	"growthexperiments-specialimpact-invalid-username": "ไม่พบชื่อผู้ใช้หรือไม่ถูกต้อง",
 	"growthexperiments-homepage-claimmentee-no-user": "ไม่มีผู้รักคำปรึกษาในชื่อนี้",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|คุณ}}ยังไม่ได้ทำการแก้ไขใด",
 	"growthexperiments-homepage-contributions-zero-subtitle": "เข้าชมหน้าหลักของ{{GENDER:$1|คุณ}}เพื่อเริ่มแก้ไขบทความ!",

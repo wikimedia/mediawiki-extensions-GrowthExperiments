@@ -15,6 +15,8 @@
 	"apihelp-growthsetmentor-param-mentor": "Nome de utilizador do mentor",
 	"apihelp-growthsetmentor-param-reason": "Motivo da mudança",
 	"apihelp-query+growthimagesuggestiondata-summary": "Obter [[mw:wikitech:Add_Image|os dados de recomendação de imagem]] associados, se disponíveis",
-	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar a tarefa de recomendação de imagem",
-	"apihelp-growthinvalidateimagerecommendation-param-title": "Título do artigo ao qual respeita a recomendação de imagem"
+	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar uma recomendação de imagem.",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "Chamar esta API irá:\n\n* Reiniciar a [[mw:wikitech:Add_Image|etiqueta ponderada \"hasrecommendation:image\"]] do artigo, para que este deixe de ser devolvido nos resultados de pesquisas por sugestões de imagens.\n\n* Adicionar o artigo a uma ''cache'' de curta duração, que o FiltroDeRecomendaçõesDeImagem da extensão [[mw:Extension:GrowthExperiments|GrowthExperiments]] consulta para decidir se o artigo deve ser excluído da fila de edições sugeridas do utilizador quando acedido desde a [[Special:Homepage|página principal]] ou através da API [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]].\n\n* Gerar e enviar um evento a EventGate para o [https://schema.wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback ''stream'' image-suggestion-feedback]. Isto permite melhoramentos da fila de sugestões de imagens, porque o código na fila pode levar em conta a opinião do utilizador ao gerar recomendações.\n\nLeitura adicional: [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image]]",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Título do artigo ao qual respeita a recomendação de imagem",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "O nome de ficheiro sem prefixo para a recomendação de imagem, por exemplo, <kbd>Foo.jpg</kbd>"
 }
