@@ -36,7 +36,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title": "לסנן לחניכים שהיו פעילים {{PLURAL:$1|מאז אתמול|מאז שלשום|ב־$2 הימים האחרונים}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "לסנן לחניכים שהיו פעילים {{PLURAL:$1|בחודש האחרון|בחודשיים האחרונים|ב־$2 החודשים האחרונים}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "להציג רק חניכים שסומנו בכוכב",
-	"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label": "הרחבת טופס מסנני החניכים",
+	"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label": "הצגת טופס מסנני החניכים",
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label": "הסתרת טופס מסנני החניכים",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "חיפוש",
 	"growthexperiments-mentor-dashboard-mentee-overview-talk": "שיחה",
