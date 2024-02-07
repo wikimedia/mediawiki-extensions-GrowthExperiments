@@ -26,7 +26,13 @@
 	"apihelp-growthmanagementorlist-param-message": "Mensagem de apresentação (use um texto vazio para usar a mensagem de mentor padrão)",
 	"apihelp-growthmanagementorlist-param-weight": "Peso",
 	"apihelp-growthmanagementorlist-param-autoassigned": "O mentor é atribuído automaticamente a recém-chegados?",
+	"apihelp-growthmanagementorlist-param-isaway": "O mentor está atualmente ausente? Tem de ser definido (por omissão, é falso).",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "O mentor estará ausente até quando? O máximo é 1 ano a contar de hoje. Ignorado, a menos que 'isaway' seja verdadeiro.",
 	"apihelp-growthmanagementorlist-param-summary": "Motivo da alteração",
 	"apihelp-growthmanagementorlist-param-username": "Nome de utilizador do mentor afetado pela alteração. Se não for fornecido, será usado o utilizador com sessão iniciada neste momento. Só pode ser usado por utilizadores privilegiados.",
-	"growthexperiments-api-managementors-error-no-away-timestamp": "Se \"isaway\" for verdadeiro, então \"awaytimestamp\" tem de ser fornecido."
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Se \"isaway\" for verdadeiro, então \"awaytimestamp\" tem de ser fornecido.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalida a sugestão de um mentorado digno de elogio no módulo de elogios personalizados do painel de controlo do mentor.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Mentorado a invalidar",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Razão para invalidar a sugestão",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Saltar razão para invalidar a sugestão"
 }
