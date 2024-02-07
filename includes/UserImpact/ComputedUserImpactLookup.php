@@ -28,7 +28,6 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserIdentityValue;
 use MediaWiki\Utils\MWTimestamp;
 use PageImages\PageImages;
 use Psr\Log\LoggerInterface;
@@ -290,9 +289,10 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$linkTarget = new TitleValue( (int)$row->page_namespace, $row->page_title );
 			$titleDbKey = $this->titleFormatter->getPrefixedDBkey( $linkTarget );
 			$editTime = new MWTimestamp( $row->rev_timestamp );
-			// Avoid using registered user timezone preference which can be used to de-anonymize users. Use
-			// empty UserIdentity instead which will fall back to use the wiki's default timezone and local tz offset.
-			$editTime->offsetForUser( new UserIdentityValue( 0, '' ) );
+			// Avoid using registered user timezone preference which can be used to de-anonymize users.
+			// Use anonymous UserIdentity instead which will fall back to use the wiki's default
+			// timezone and local tz offset.
+			$editTime->offsetForUser( $this->userFactory->newAnonymous() );
 			$day = $editTime->format( 'Ymd' );
 
 			$editCountByNamespace[$row->page_namespace]
