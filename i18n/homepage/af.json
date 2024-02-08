@@ -35,6 +35,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Middelmatig",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Moeilik",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Jou}} impak",
+	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Teruggerolde wysigings",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Hierdie area sal wys hoeveel keer mense die artikels wat {{GENDER:$1|jy}} geskep of geredigeer het, bekyk het.",
 	"growthexperiments-specialimpact-title": "Impak",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER: $ 2 | U het}} {{GENDER: $ 1 | $ 1's}} mentor verander na $ 2",
