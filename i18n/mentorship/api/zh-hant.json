@@ -29,11 +29,14 @@
 	"apihelp-growthmanagementorlist-param-geaction": "操作",
 	"apihelp-growthmanagementorlist-param-message": "介紹訊息（導師訊息預設為空字串）",
 	"apihelp-growthmanagementorlist-param-weight": "權重",
+	"apihelp-growthmanagementorlist-param-isaway": "導師目前不在嗎？這必須設定（預設為 false）。",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "導師要離開到什麼時候？最長期限為從今天起的 1 年。若 isaway 為 true，則將其忽略。",
 	"apihelp-growthmanagementorlist-param-summary": "變更的原因",
 	"apihelp-growthmanagementorlist-param-username": "被變更給影響到的導師使用者名稱。若未提供，會使用目前登入的使用者。這僅給特權使用者利用。",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "若 isaway 為 true，必須提供 awaytimestamp。",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "讓導師面板上個性化表揚模組的值得表揚學員建議無效",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "無效學員",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "讓建議無效的原因",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "略過讓建議無效的原因",
 	"apihelp-query+growthmentorlist-summary": "列出所有導師"
 }

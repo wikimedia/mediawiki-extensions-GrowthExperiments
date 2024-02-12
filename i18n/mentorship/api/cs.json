@@ -35,5 +35,6 @@
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Zneplatní návrh nováčka k ocenění v modulu Zašlete ocenění svým nováčkům na Nástěnce mentora",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Nováček ke zneplatnění",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Důvod zneplatnění návrhu",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Přeskočit důvod na zneplatnění návrhu"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Přeskočit důvod na zneplatnění návrhu",
+	"apihelp-query+growthmentorlist-summary": "Seznam všech mentorů"
 }

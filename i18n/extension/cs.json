@@ -100,5 +100,8 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Tyto šablony jsou zapotřebí pro [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|strukturované přidávání obrázků]]. Články obsahující tyto šablony nebudou navrženy k oilustrování.",
 	"growthexperiments-edit-config-delayed": "Změny tohoto nastavení se neprojeví okamžitě (viz [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Zavřít",
-	"specialpages-group-growth-tools": "Growth funkce"
+	"specialpages-group-growth-tools": "Growth funkce",
+	"growthexperiments-edit-config-level-up-notifications": "Notifikace funkcí týmu Growth",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Upozornění \"Vyzkoušejte editační tipy\"",
+	"growthexperiments-edit-config-keep-going-notification-title": "Upozornění \"Jen tak dál\""
 }
