@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"NMW03"
+			"NMW03",
+			"Toghrul Rahimli"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Xoş gəlmisiniz}}, $1!",
@@ -20,7 +21,7 @@
 	"welcomesurvey-sidebar-editing-link1-title": "Vikipediya:Təlimat",
 	"welcomesurvey-sidebar-editing-link2-text": "Yardım masası",
 	"welcomesurvey-sidebar-editing-link2-title": "Vikipediya:Yardım_masası",
-	"welcomesurvey-question-reason-label": "Vikipediya hesabını hansı səbəblərlə açmısan?",
+	"welcomesurvey-question-reason-label": "Vikipediya hesabınızı niyə bu gün yaratdınız?",
 	"welcomesurvey-dropdown-option-select-label": "Zəhmət olmasa, seçin...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Vikipediya məqaləsindəki səhvi düzəltmək üçün",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Vikipediya məqaləsindəki məlumatı dəyişmək və ya yeni məlumat əlavə etmək üçün",
@@ -39,6 +40,8 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Xeyr, Vikipediyada redaktə edə bildiyimi bilmirdim",
 	"welcomesurvey-question-edited-option-no-other-label": "Xeyr, digər səbəb",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Yadımda deyil",
+	"welcomesurvey-question-mailinglist-label": "Mən redaktə etməyə necə başlamaq barədə e-poçt vasitəsilə məsləhətlər almaq istəyirəm.",
+	"welcomesurvey-question-mailinglist-help": "Nəzərə alın ki, bu poçt siyahısı MailChimp tərəfindən idarə olunur, yəni MailChimp-in {{GENDER:|sizin}} məlumatınızdan istifadə etməsi onların [https://www.intuit.com/privacy/statement/ Məxfilik Siyasəti] və [https://mailchimp.com/legal/terms/ İstifadə Şərtləri] ilə tənzimlənir.",
 	"welcomesurvey-question-email-label": "E-poçt ünvanı (məcburi deyil)",
 	"welcomesurvey-question-email-placeholder": "E-poçt ünvanınızı daxil edin...",
 	"welcomesurvey-question-email-help": "Bu hesabı yaradarkən e-poçt daxil etmədiyinizi gördük. Şifrənizi itirdiyiniz halda hesabın bərpası üçün bir e-poçt lazım olduğu üçün bu <strong>şiddətlə tövsiyə olunur</strong>. QEYD: Digər istifadəçilər sizinlə əlaqə saxladıqda e-poçt ünvanınız göstərilmir.",
