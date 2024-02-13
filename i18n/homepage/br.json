@@ -3,7 +3,8 @@
 		"authors": [
 			"Gwendal",
 			"Huñvreüs",
-			"Y-M D"
+			"Y-M D",
+			"Adriendelucca"
 		]
 	},
 	"prefs-homepage": "Dibarzhioù evit an implijerien nevez-deuet",
@@ -11,8 +12,12 @@
 	"tag-newcomer_task": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks|Labour evit an dud nevez-deuet]]",
 	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link|Aliet: ouzhpennañ liammoù]]",
 	"growthexperiments-homepage-discovery-thanks-header": "Trugarez da vezañ krouet {{GENDER:$1|ho}} kont!",
+	"growthexperiments-log-name": "Marilh GrowthExperiments",
+	"growthexperiments-log-header": "Hemañ zo ur marilh an oberoù graet en astenn GrowthExperiments.",
 	"growthexperiments-addlink-summary-summary": "Arc’hweladur aliañ liammoù: $1 {{PLURAL:$1|liamm}} ouzhpennet.",
 	"growthexperiments-addimage-submitting-title": "O kas...",
+	"growthexperiments-structuredtask-user-error-login-cta": "Kevreañ",
+	"growthexperiments-structuredtask-anonuser": "Implijer n’eo ket kevreet ken.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Nullañ",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Kenderc'hel",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Nullañ",

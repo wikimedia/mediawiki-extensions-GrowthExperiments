@@ -11,5 +11,6 @@
 	"prefs-homepage": "Функцыі рэдагаваньня навічка",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Дзеля пошуку прапанаваных рэдагаваньняў абярыце іншыя зацікаўленасьці ці ўзроўні складанасьці.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Мэнтар {{GENDER:$1|$1}} ужо зьмяняўся. Вы {{GENDER:$2|ўпеўненыя}}, што хочаце зьмяніць яго зноўку?",
-	"growthexperiments-addimage-viewer-close-button": "Закрыць"
+	"growthexperiments-addimage-viewer-close-button": "Закрыць",
+	"echo-category-title-ge-newcomer": "Функцыі росту"
 }
