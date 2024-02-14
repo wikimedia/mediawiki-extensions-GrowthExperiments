@@ -211,10 +211,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @throws \Exception
 	 */
 	private function getEditData( User $user, int $flags ): EditData {
-		[ $index, $options ] = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = ( $index === DB_PRIMARY )
-			? $this->connectionProvider->getPrimaryDatabase()
-			: $this->connectionProvider->getReplicaDatabase();
+		$db = DBAccessObjectUtils::getDBFromRecency( $this->connectionProvider, $flags );
 
 		$queryBuilder = new SelectQueryBuilder( $db );
 		$queryBuilder->table( 'revision' )
@@ -272,7 +269,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		// hopefully able to use the rev_actor_timestamp index for an efficient query
 		$queryBuilder->orderBy( 'rev_timestamp', 'DESC' );
 		$queryBuilder->limit( self::MAX_EDITS );
-		$queryBuilder->options( $options );
+		$queryBuilder->recency( $flags );
 		$queryBuilder->caller( __METHOD__ );
 		// T331264
 		$queryBuilder->straightJoinOption();

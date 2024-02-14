@@ -236,10 +236,7 @@ class MentorStatusManager {
 	 * @return UserIdentity[]
 	 */
 	public function getAwayMentors( int $flags = 0 ): array {
-		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = ( $index === DB_PRIMARY )
-			? $this->connectionProvider->getPrimaryDatabase()
-			: $this->connectionProvider->getReplicaDatabase();
+		$db = DBAccessObjectUtils::getDBFromRecency( $this->connectionProvider, $flags );
 
 		// This should be okay, as up_property is an index, and we won't
 		// get a lot of rows to process.
@@ -253,7 +250,7 @@ class MentorStatusManager {
 					$db->timestamp()
 				)
 			] )
-			->options( $options )
+			->recency( $flags )
 			->caller( __METHOD__ )
 			->fetchFieldValues();
 
