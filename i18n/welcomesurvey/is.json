@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Snævar",
+			"Stefán Örvar Sigmundsson",
 			"Sveinn í Felli"
 		]
 	},
@@ -36,7 +37,7 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ég man ekki",
 	"welcomesurvey-question-email-label": "Tölvupóstfang (valfrjálst)",
 	"welcomesurvey-question-email-placeholder": "Settu inn tölvupóstfangið {{GENDER:|þitt}}...",
-	"welcomesurvey-question-email-help": "Við tókum eftir því að þú tilgreindir ekki tölvupóstfang við stofnun aðgangsins. Við <strong>mælumst ákaflega</strong> með því því tölvupóstfangið er nauðsynlegt til að endurvekja aðgaginn ef þú týnir einhverntímann lykilorðinu þínu. ATHUGAÐU: Tölvupóstfanginu þínu er ekki deilt með öðrum þegar notendur hafa samband við þig.",
+	"welcomesurvey-question-email-help": "Við tókum eftir því að {{GENDER:|þú}} slóst ekki inn tölvupóst þegar þú bjóst til þennan aðgang. Það er <strong>mjög svo mælt með því</strong> þar sem tölvupóstur er nauðsynlegur til að endurheimta aðganginn ef þú týnir aðgangsorðinu þínu. ATH: Tölvupóstfangið þitt er ekki gefið upp þegar aðrir notendur hafa samband við þig.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} er aðgengileg á 300 tungumálum. Eru önnur tungumál sem þú lest og skrifar á?",
 	"welcomesurvey-question-languages-placeholder": "Bættu við allt að $1 {{PLURAL:$1|tungumáli|tungumálum}}...",
 	"welcomesurvey-question-languages-maximum": "Þú hefur bætt við hámarksfjölda tungumála."
