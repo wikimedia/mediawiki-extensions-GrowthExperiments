@@ -232,6 +232,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
     >
       <input
         class="cdx-text-input__input"
+        size="1"
         type="text"
       />
       <!---->

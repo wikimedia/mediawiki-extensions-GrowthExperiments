@@ -83,9 +83,8 @@ exports[`PersonalizedPraise NoResult when no mentees 1`] = `
       </span>
       
     </button>
-    <transition-stub>
-      <!---->
-    </transition-stub>
+    <!--teleport start-->
+    <!--teleport end-->
   </div>
   <div
     class="ext-growthExperiments-NoResults"
