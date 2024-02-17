@@ -247,7 +247,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	}
 
 	private function showConfirmationPage( $to, $query ) {
-		$this->getOutput()->setPageTitle( $this->msg( 'welcomesurvey-save-confirmation-title' ) );
+		$this->getOutput()->setPageTitleMsg( $this->msg( 'welcomesurvey-save-confirmation-title' ) );
 		HomepageHooks::isHomepageEnabled( $this->getUser() ) ?
 			$this->showHomepageAwareConfirmationPage( $to, $query ) :
 			$this->showDefaultConfirmationPage( $to, $query );
