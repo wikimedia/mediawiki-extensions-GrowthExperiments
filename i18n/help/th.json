@@ -9,7 +9,8 @@
 			"Patsagorn Y.",
 			"Prame Tan",
 			"SaldırganSincap",
-			"RidJasper"
+			"RidJasper",
+			"Siam2019"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "เปิดใช้งานแผงช่วยเหลือผู้เขียน",
@@ -94,6 +95,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-calm": "เพียงแค่{{GENDER:|คุณ}}เพิ่มข้อเท็จจริงเพียงหนึ่งอย่างให้บทความนี้ ก็ช่วยสร้างความเปลี่ยนแปลงได้แล้ว {{GENDER:|คุณ}}ไม่จำเป็นต้องเขียนย่อหน้าหรือบทความใหม่",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2": "เมื่อ{{GENDER:|คุณ}}เพิ่มข้อมูลใหม่ให้กับบทความ อย่าลืม[[$1|เพิ่มแหล่งอ้างอิงด้วย]] ทุกคนจะได้รู้ว่าข้อมูลนี้มากจากไหน",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|เรียนรู้เพิ่มเติมเกี่ยวกับการต่อเติมบทความ]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "การเพิ่มลิงก์จะช่วยให้ผู้อ่านเรียนรู้ได้เร็วขึ้น",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "รูปภาพช่วยให้ผู้คนเรียนรู้ แต่บทความจำนวนมากไม่มีภาพ",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "ดูภาพที่แนะนำ",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "ดูบทความ",
 	"growthexperiments-help-panel-questioncomplete-title": "ถามคำถาม",
