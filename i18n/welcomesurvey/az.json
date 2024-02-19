@@ -13,7 +13,7 @@
 	"welcomesurvey-skip-btn": "Sorğunu cavablandırmadan {{GENDER:$1|keç}}",
 	"welcomesurvey-close-btn": "Bağla və $1 səhifəsinə geri qayıt",
 	"welcomesurvey-privacy-policy-link-text": "Yeni istifadəçilər haqqında məlumatlar haqqında daha çox məlumat əldə edin",
-	"welcomesurvey-privacy-footer-text": "Vikimedia Fondu {{SITENAME}} saytını redaktə etməyə başlamağınıza kömək etmək üçün cavablarınızı istifadə edəcək. [$2 Ətraflı məlumat üçün Məxfilik bəyanatımızı nəzərdən keçirin].",
+	"welcomesurvey-privacy-footer-text": "Vikimedia Fondu {{SITENAME}} saytını redaktə etməyə başlamağınıza kömək etmək üçün {{GENDER:$1|cavablarınızı}} istifadə edəcək. [$2 Ətraflı məlumat üçün Məxfilik bəyanatımızı nəzərdən keçirin].",
 	"welcomesurvey-sidebar-editing-title": "Redaktəyə başlamaq",
 	"welcomesurvey-sidebar-editing-text": "Demək olar ki, hər kəs hər bir səhifəni redaktə edə bilər. Səhvləri düzəltmək və oxunuşu yaxşılaşdırmaq üçün hər saat yüzlərlə dəyişiklik edilir. Aşağıdakı səhifələr redaktə etməkdə {{GENDER:$1|marağınız}} olarsa kömək edə bilər.",
 	"welcomesurvey-sidebar-editing-link1-text": "Təlimat",
