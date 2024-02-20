@@ -18,7 +18,10 @@
 
 	&-suggested-edits {
 		border: @border-width-base @border-style-base @border-color-transparent;
-		background-color: fade( @background-color-progressive-subtle, 50% );
+		// equivalent to fade( @background-color-progressive-subtle, 50%)
+		// The LESS mixin is used with a hardcoded value for now due to incompatbility with
+		// skins that use CSS variables (T357740).
+		background-color: fade( #eaf3ff, 50% );
 	}
 
 	&-text {
