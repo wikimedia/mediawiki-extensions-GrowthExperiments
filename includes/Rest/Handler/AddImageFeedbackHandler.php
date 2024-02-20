@@ -55,7 +55,7 @@ class AddImageFeedbackHandler extends SimpleHandler {
 		$authority = $this->getAuthority();
 		$user = $authority->getUser();
 		$title = $this->titleFactory->newFromLinkTarget( $this->getValidatedParams()['title'] );
-		$data = $this->getValidatedBody();
+		$data = $this->getValidatedBody() ?? [];
 		$editRevId = $data['editRevId'];
 
 		if ( !$authority->isNamed() ) {
