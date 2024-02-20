@@ -16,7 +16,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Cədvəl JavaScript tələb edir. Zəhmət olmasa JavaScript-i aktivləşdirin.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "{{GENDER:|Cədvəlinizdə}} kim var?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Cədvəlinizdəkilər haqqında ətraflı məlumat",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Bu cədvəldə hesabı son iki həftə ərzində yaradılmış və ya son altı ayda redaktə etmiş və [https://mediawiki.org/wiki/Special:MyLanguage/Growth /Feature_summary#NH yeni gələn ana səhifəsi aktiv] olan istifadəçilər göstərilir. Məlumatlar hər üç saatdan bir yenilənir.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Bu cədvəldə hesabı son iki həftə ərzində yaradılmış və ya son altı ayda redaktə etmiş və [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH yeni gələn ana səhifəsi aktiv] olan istifadəçilər göstərilir. Məlumatlar hər üç saatdan bir yenilənir.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legend",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "İstifadəçiləri ulduzla",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "İstifadəçi adı",
