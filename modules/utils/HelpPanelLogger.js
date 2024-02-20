@@ -188,7 +188,7 @@
 			if ( $( '#wpTextbox1:visible' ).length ||
 				// wikitext editor with syntax highlighting
 				// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
-				$( '.wikiEditor-ui .CodeMirror:visible' ).length
+				$( '.wikiEditor-ui .CodeMirror:visible, .wikiEditor-ui .cm-editor:visible' ).length
 			) {
 				return 'wikitext';
 			}
