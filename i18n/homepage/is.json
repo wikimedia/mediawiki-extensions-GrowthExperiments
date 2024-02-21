@@ -11,7 +11,7 @@
 	"tooltip-pt-homepage": "Heimasíðan {{GENDER:|þín}}",
 	"prefs-homepage": "Eiginleikar ritils fyrir nýskráða notendur",
 	"growthexperiments-homepage-enable": "Birta heimasíðu nýskráðs notanda",
-	"growthexperiments-homepage-pt-link": "Sjálfgefið birta heimasíðu nýskráðs notanda út frá notendanafnstengli í einkaverkfærum",
+	"growthexperiments-homepage-pt-link": "Sjálfgefið á nýliðaheimasíðu frá notandanafnstengli í persónulegum verkfærum",
 	"growthexperiments-homepage-email-header-noemail": "Bæta við {{GENDER:$1|þínu}} tölvupóstfangi",
 	"growthexperiments-homepage-email-header-unconfirmed": "Staðfesta tölvupóstfangið {{GENDER:$1|þitt}}",
 	"growthexperiments-homepage-email-header-confirmed": "Tölvupóstfangi bætt við",
