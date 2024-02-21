@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Snævar",
-			"Sveinn í Felli"
+			"Sveinn í Felli",
+			"Stefán Örvar Sigmundsson"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Halló}}, {{bidi:$1}}!",
@@ -40,10 +41,10 @@
 	"growthexperiments-homepage-startediting-dialog-intro-title": "Tillögur að breytingum til að hefjast handa",
 	"growthexperiments-homepage-startediting-dialog-intro-header": "Wikipedia er byggt á samvinnu fólks eins og {{GENDER:|þér}}.",
 	"growthexperiments-homepage-startediting-dialog-intro-subheader": "Breytingarnar {{GENDER:|þínar}} hjálpa við að bæta Wikipedia og til að komast nær markmiðunu að deila frjálsri þekkingu með heiminum. Haltu áfram með því að byrja með litlum tillögum að breytingum.",
-	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>Þegar {{GENDER:|þú}} bjóst til {{GENDER:|þinn}} aðgang, sagðir {{GENDER:|þú}} að {{GENDER:|þú}} vildir bæta við mynd.</strong> Það er mikilvæg en krefjandi leið til að breyta, svo við mælum með því að  {{GENDER:|þú}} reynir nokkrar auðveldar breytingar fyrst. Ef {{GENDER:|þú}} villt frekar fara í að bæta við mynd, þá getur {{GENDER:|þú}} [$1 lært það hér].",
-	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>Þegar {{GENDER:|þú}} bjóst til {{GENDER:|þinn}} aðgang, sagðir {{GENDER:|þú}} að {{GENDER:|þú}} vildir laga staðfestingarvillu eða villu.</strong> Hérna getur {{GENDER:|þú}} fundið tillögur að litlum breytingum til að hefjast handa. Ef {{GENDER:|þú}} villt frekar fara í að breyta ákveðinni grein, þá getur {{GENDER:|þú}} leitað eftir greininni og ýtt á „{{int:vector-view-edit}}”.",
-	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>Þegar {{GENDER:|þú}} bjóst til {{GENDER:|þinn}} aðgang, sagðir {{GENDER:|þú}} að {{GENDER:|þú}} vildir bæta við eða breyta upplýsingum á grein sem er til fyrir.</strong> Hérna getur {{GENDER:|þú}} fundið tillögur að litlum breytingum til að hefjast handa. Ef {{GENDER:|þú}} villt frekar fara í að breyta ákveðinni grein, þá getur {{GENDER:|þú}} leitað eftir greininni og ýtt á „{{int:vector-view-edit}}”.",
-	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Þegar {{GENDER:|þú}} bjóst til {{GENDER:|þinn}} aðgang, sagðir {{GENDER:|þú}} að {{GENDER:|þú}} vildir búa til nýja grein.</strong> Það er mikilvæg en krefjandi leið til að breyta, svo við mælum með því að  {{GENDER:|þú}} reynir nokkrar auðveldar breytingar fyrst. Ef {{GENDER:|þú}} villt frekar fara í að búa til nýja grein, þá getur {{GENDER:|þú}} [$1 lært það hér].",
+	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>Þegar {{GENDER:|þú}} bjóst til {{GENDER:|þinn}} aðgang, sagðir {{GENDER:|þú}} að {{GENDER:|þú}} vildir bæta við mynd.</strong> Það er mikilvæg en krefjandi leið til að breyta svo við mælum með því að {{GENDER:|þú}} reynir nokkrar auðveldar breytingar fyrst. Ef {{GENDER:|þú}} villt frekar fara í að bæta við mynd, þá getur {{GENDER:|þú}} [$1 lært það hér].",
+	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>Þegar {{GENDER:|þú}} bjóst til {{GENDER:|þinn}} aðgang, sagðir {{GENDER:|þú}} að {{GENDER:|þú}} vildir laga stafsetningarvillu eða villu.</strong> Hérna getur {{GENDER:|þú}} fundið tillögur að litlum breytingum til að hefjast handa. Ef {{GENDER:|þú}} villt frekar fara í að breyta ákveðinni grein, þá getur {{GENDER:|þú}} leitað eftir greininni og ýtt á „{{int:vector-view-edit}}”.",
+	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>Þegar {{GENDER:|þú}} bjóst til {{GENDER:|þinn}} aðgang, sagðir {{GENDER:|þú}} að {{GENDER:|þú}} vildir bæta við eða breyta upplýsingum í fyrirliggjandi grein.</strong> Hérna getur {{GENDER:|þú}} fundið tillögur að litlum breytingum til að hefjast handa. Ef {{GENDER:|þú}} villt frekar fara í að breyta ákveðinni grein þá getur {{GENDER:|þú}} leitað eftir greininni og ýtt á „{{int:vector-view-edit}}”.",
+	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Þegar {{GENDER:|þú}} bjóst til {{GENDER:|þinn}} aðgang, sagðir {{GENDER:|þú}} að {{GENDER:|þú}} vildir búa til nýja grein.</strong> Það er mikilvæg en krefjandi tegund breytingar svo við mælum með að {{GENDER:|þú}} reynir fyrst smávægilegar breytingar á fyrirliggjandi greinum. Ef {{GENDER:|þú}} vilt frekar fara beint í að búa til nýja grein getur {{GENDER:|þú}} [$1 lært hvernig hér].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Velja nokkur viðfangsefni sem {{GENDER:|þú}} hefur áhuga að breyta",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Sía eftir viðfangsefni",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Notaðu viðfangsefni til að fá tillögur sem {{GENDER:|þér}} finnst áhugaverð. {{GENDER:|Þú}} getur valið eitt viðfangsefni eða nokkur.",
@@ -61,14 +62,14 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Þegar {{GENDER:$1|þú}} hefur lært um bestu vinnbrögðin á Wikipediu.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Stafsetningarleiðrétting og að bæta við tenglum við aðrar greinar.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Bæta við áreiðanlegum heimildum og uppfæra greinar sem eru úreldar",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Búa til nýjar greinar og stækka smærri greinar.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Búa til nýjar greinar og lengja styttri greinar.",
 	"growthexperiments-homepage-suggested-edits-header": "Tillögur að breytingum",
 	"growthexperiments-homepage-impact-header": "Áhrifin {{GENDER:$1|þín}}",
 	"growthexperiments-homepage-impact-subheader-text": "Fólk er að skoða greinarnar sem {{GENDER:$1|þú}} breyttir!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Skoðanir frá breytingu {{GENDER:$1|þinni}} (síðustu 60 dagar):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Þú}} hefur gert <strong>$1</strong> {{PLURAL:$1|breytingu|breytingar}} (sjá allar)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Þú}} hefur ekki enn búið til eða breytt neinum greinum.",
-	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Þetta svæði sýnir þér hversu oft fólk hefur skoðað greinarnar sem  {{GENDER:$1|þú}} hefur breytt eða búið til.",
+	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Þetta svæði mun sýna hversu oft fólk hefur skoðað greinarnar sem {{GENDER:$1|þú}} hefur breytt eða búið til.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> breytingar á greinum",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|breyting|breytingar}} á öðrum síðum (sjá allar)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Skoða síðu",

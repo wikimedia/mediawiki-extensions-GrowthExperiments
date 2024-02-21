@@ -9,7 +9,8 @@
 			"Patsagorn Y.",
 			"Prame Tan",
 			"SaldırganSincap",
-			"RidJasper"
+			"RidJasper",
+			"Siam2019"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "เปิดใช้งานแผงช่วยเหลือผู้เขียน",
@@ -31,6 +32,7 @@
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "คำแนะนำถัดไป:",
 	"growthexperiments-help-panel-postedit-footer": "ดูการแก้ไขที่แนะนำทั้งหมด",
 	"growthexperiments-help-panel-postedit-suggestededits-title": "การแก้ไขที่แนะนำ",
+	"growthexperiments-help-panel-postedit-trynewtask-toast-message": "ขอแสดงความยินดีที่เผยแพร่การแก้ไขที่แนะนำอีกรายการหนึ่ง",
 	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "ไม่ขอบคุณ",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "ไม่ต้องแสดงอีก",
 	"growthexperiments-help-panel-postedit-nonsuggested-header": "ลองการแก้ไขที่แนะนำ",
@@ -100,9 +102,15 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-calm": "เพียงแค่{{GENDER:|คุณ}}เพิ่มข้อเท็จจริงเพียงหนึ่งอย่างให้บทความนี้ ก็ช่วยสร้างความเปลี่ยนแปลงได้แล้ว {{GENDER:|คุณ}}ไม่จำเป็นต้องเขียนย่อหน้าหรือบทความใหม่",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2": "เมื่อ{{GENDER:|คุณ}}เพิ่มข้อมูลใหม่ให้กับบทความ อย่าลืม[[$1|เพิ่มแหล่งอ้างอิงด้วย]] ทุกคนจะได้รู้ว่าข้อมูลนี้มากจากไหน",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|เรียนรู้เพิ่มเติมเกี่ยวกับการต่อเติมบทความ]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "การเพิ่มลิงก์จะช่วยให้ผู้อ่านเรียนรู้ได้เร็วขึ้น",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "รูปภาพช่วยให้ผู้คนเรียนรู้ แต่บทความจำนวนมากไม่มีภาพ",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "ดูภาพที่แนะนำ",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "ดูบทความ",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-header-value": "รูปภาพช่วยให้ผู้คนเรียนรู้ แต่บทความจำนวนมากไม่มีภาพ",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-text-value": "รูปภาพมาจากวิกิมีเดียคอมมอนส์ ซึ่งเป็นชุดของรูปภาพเสรีที่วิกิพีเดียใช้",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-header-step1": "ดูภาพที่แนะนำ",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-main-multiple-1-step1": "ใช้ชื่อไฟล์ คำอธิบายและเหตุผล เพื่อช่วยแนะนำ{{GENDER:|คุณ}} ในการตัดสินใจว่าควรใส่ไว้ในบทความหรือไม่",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-main-multiple-2-step1": "{{GENDER:|คุณ}}สามารถขยายรูปภาพเพื่อให้มองเห็นได้ชัดเจนยิ่งขึ้น",
 	"growthexperiments-help-panel-questioncomplete-title": "ถามคำถาม",
 	"growthexperiments-help-panel-questioncomplete-header": "เผยแพร่คำถามของคุณแล้ว!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "คำถามของคุณอยู่ที่แผนกช่วยเหลือของชุมชน สำหรับให้อาสาสมัครอื่นตอบเรียบร้อยแล้ว",
