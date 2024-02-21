@@ -112,7 +112,7 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 			'message' => [
 				'type' => 'text',
 				'label-message' => 'growthexperiments-mentorship-enrollasmentor-form-message',
-				'help' => $this->msg( 'growthexperiments-mentorship-enrollasmentor-form-message-help' )->text(),
+				'help-message' => 'growthexperiments-mentorship-enrollasmentor-form-message-help',
 				'maxlength' => MentorProvider::INTRO_TEXT_LENGTH,
 			],
 			'weight' => [

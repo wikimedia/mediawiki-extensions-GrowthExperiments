@@ -85,7 +85,7 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 					'growthexperiments-manage-mentors-edit-is-away-blocked'
 				)
 					->params( $this->mentorUser->getName() )
-					->text() : '',
+					->escaped() : '',
 				'default' => $this->mentorStatusManager->getMentorStatus(
 					$this->mentorUser
 					) === MentorStatusManager::STATUS_AWAY,
