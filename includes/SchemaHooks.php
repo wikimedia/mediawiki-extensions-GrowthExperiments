@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments;
 
-use Exception;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Hook\UnitTestsAfterDatabaseSetupHook;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
@@ -16,7 +16,7 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 	public function onLoadExtensionSchemaUpdates( $updater ) {
 		global $wgGEDatabaseCluster;
 		if ( $wgGEDatabaseCluster ) {
-			throw new Exception( 'Cannot use automatic schema upgrades when not on the '
+			throw new ConfigException( 'Cannot use automatic schema upgrades when not on the '
 				. 'default cluster' );
 		}
 
@@ -45,7 +45,7 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 		global $wgGEDatabaseCluster;
 
 		if ( $wgGEDatabaseCluster ) {
-			throw new Exception( 'Cannot use database tests when not on the default cluster' );
+			throw new ConfigException( 'Cannot use database tests when not on the default cluster' );
 		}
 	}
 
