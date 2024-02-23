@@ -9,7 +9,7 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Halló}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Heimasíða",
 	"tooltip-pt-homepage": "Heimasíðan {{GENDER:|þín}}",
-	"prefs-homepage": "Eiginleikar ritils fyrir nýskráða notendur",
+	"prefs-homepage": "Ritstýringareiginleikar nýliða",
 	"growthexperiments-homepage-enable": "Birta heimasíðu nýskráðs notanda",
 	"growthexperiments-homepage-pt-link": "Sjálfgefið á nýliðaheimasíðu frá notandanafnstengli í persónulegum verkfærum",
 	"growthexperiments-homepage-email-header-noemail": "Bæta við {{GENDER:$1|þínu}} tölvupóstfangi",
