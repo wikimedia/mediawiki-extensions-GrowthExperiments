@@ -3,7 +3,6 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use ApiRawMessage;
-use Exception;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -12,6 +11,7 @@ use MediaWiki\Language\RawMessage;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
+use RuntimeException;
 use StatusValue;
 
 /**
@@ -81,7 +81,7 @@ class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHa
 			}
 			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
 				Status::wrap( $warningStatus )->getWikiText( false, false, 'en' ),
-				[ 'exception' => new Exception( __METHOD__ ) ]
+				[ 'exception' => new RuntimeException ]
 			);
 		}
 

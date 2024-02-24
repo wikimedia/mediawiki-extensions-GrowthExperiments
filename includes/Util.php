@@ -3,7 +3,6 @@
 namespace GrowthExperiments;
 
 use ApiRawMessage;
-use Exception;
 use FormatJson;
 use IContextSource;
 use Iterator;
@@ -24,6 +23,7 @@ use MediaWiki\Utils\UrlUtils;
 use MWExceptionHandler;
 use Psr\Log\LogLevel;
 use RequestContext;
+use RuntimeException;
 use Skin;
 use StatusValue;
 use Throwable;
@@ -198,7 +198,7 @@ class Util {
 	 */
 	public static function logText( string $message, array $context = [] ) {
 		LoggerFactory::getInstance( 'GrowthExperiments' )->error( $message, $context + [
-			'exception' => new Exception( $message ),
+			'exception' => new RuntimeException,
 		] );
 	}
 
@@ -230,7 +230,7 @@ class Util {
 		if ( !$warningStatus->isGood() ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
 				$warningStatus->getWikiText( false, false, 'en' ),
-				[ 'exception' => new Exception( __FUNCTION__ ) ]
+				[ 'exception' => new RuntimeException ]
 			);
 		}
 		return $errorStatus;
@@ -278,7 +278,7 @@ class Util {
 			if ( !$warningStatus->isGood() ) {
 				LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
 					Status::wrap( $warningStatus )->getWikiText( false, false, 'en' ),
-					[ 'exception' => new Exception( 'getApiUrl' ) ]
+					[ 'exception' => new RuntimeException ]
 				);
 			}
 		}
