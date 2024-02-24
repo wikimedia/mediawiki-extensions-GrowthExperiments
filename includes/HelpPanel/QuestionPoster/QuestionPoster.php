@@ -22,6 +22,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use PrefixingStatsdDataFactoryProxy;
 use RecentChange;
+use RuntimeException;
 use UserNotLoggedIn;
 use WikitextContent;
 
@@ -246,7 +247,7 @@ abstract class QuestionPoster {
 		} elseif ( $this->flowInstalled && $contentModel === CONTENT_MODEL_FLOW_BOARD ) {
 			$status = $this->submitStructuredDiscussions();
 		} else {
-			throw new \Exception( "Content model $contentModel is not supported." );
+			throw new RuntimeException( "Content model $contentModel is not supported." );
 		}
 
 		if ( $status->isGood() ) {
