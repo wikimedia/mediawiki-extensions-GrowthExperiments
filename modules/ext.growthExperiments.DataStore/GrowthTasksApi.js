@@ -430,6 +430,8 @@
 			// XHR abort, not a real error
 			message = null;
 			isRealError = false;
+		} else if ( error === 'http' && details && details.textStatus === 'parsererror' ) {
+			message = 'Failed to parse valid JSON response';
 		} else if ( error === 'http' ) {
 			// jQuery AJAX error; textStatus is AJAX status, exception is status code text
 			// from server (empty string for network error and non 2xx/304 for HTTP/2)
