@@ -137,6 +137,7 @@
 	"growthexperiments-specialimpact-title": "ผลกระทบ",
 	"growthexperiments-specialimpact-invalid-username": "ไม่พบชื่อผู้ใช้หรือไม่ถูกต้อง",
 	"growthexperiments-homepage-claimmentee-no-user": "ไม่มีผู้รักคำปรึกษาในชื่อนี้",
+	"growthexperiments-homepage-enable-preference": "หากต้องการเปิดใช้งานหน้าแรกของผู้มาใหม่ โปรดไปที่การตั้งค่า \"คุณสมบัติแก้ไขผู้มาใหม่\" ใน[[Special:Preferences#mw-prefsection-personal-homepage|การตั้งค่า]]",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|คุณ}}ยังไม่ได้ทำการแก้ไขใด",
 	"growthexperiments-homepage-contributions-zero-subtitle": "เข้าชมหน้าหลักของ{{GENDER:$1|คุณ}}เพื่อเริ่มแก้ไขบทความ!",
 	"growthexperiments-homepage-contributions-zero-button": "ไปที่หน้าหลักของ{{GENDER:$1|คุณ}}",

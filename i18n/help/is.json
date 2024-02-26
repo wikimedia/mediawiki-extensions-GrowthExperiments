@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Snævar"
+			"Snævar",
+			"Stefán Örvar Sigmundsson"
 		]
 	},
 	"growthexperiments-help-panel-cta-button-text": "Fá aðstoð við breytingar",
@@ -50,7 +51,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "Bættu við fleiri tenglum eða ýttu á bláa örvarhnappinn til að gefa út breytinguna {{GENDER:|þína}}!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Læra meira um að bæta við tenglum]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-value": "Allt á {{SITENAME}} kemur frá áreiðanlegri heimild eins og bækur eða fréttabréf. Þegar lesendur sjá heimildir í grein geta þeir verið vissir um það sem þeir eru að læra.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "Satúrnus er líklega best þekkt fyrir kerfi hringja sem gefur henni sitt einstaka útlit.<sup>[3]</sup>",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "Satúrnus er líklega þekktastur fyrir plánetuhringakerfið sem gerir hann sjónrænt einstakt. <sup>[3]</sup>",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-value": "Þessi setning hefur tilvísun í lokin sem tengir í heimild.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-calm": "{{GENDER:|Þú}} þarft aðeins að bæta við einni heimild við þessa grein. {{GENDER:|Þú}} þarft ekki að vinna að allri greininni.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-rules1": "Setningar þurfa heimildir þegar þær nefna ákveðnar staðreyndir eins og tölur, dagsetningar eða sagnfræðilega atburði.\n\nEf setning inniheldur upplýsingr sem fólk gæti orðið ósammála um eða upplýsingar sem eru ekki almennt þekktar þá þarf hún líklega heimild.",
