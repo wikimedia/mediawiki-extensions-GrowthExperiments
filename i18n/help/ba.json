@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bashkorttan"
+		]
+	},
+	"growthexperiments-help-panel-cta-button-text": "Мөхәррирләү буйынса ярҙам",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Мөхәррирләү тураһында иң яҡшы ярҙам биттәре",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Башҡа ярҙам мәҡәләләрен ҡарау",
+	"growthexperiments-help-panel-home-title": "Мөхәррирләү буйынса ярҙам",
+	"growthexperiments-help-panel-postedit-success-message-published": "Төҙәтеүегеҙҙе баҫтырҙығыҙ. Рәхмәт һәм дауам итегеҙ!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "Төҙәтеүегеҙҙе Һаҡланығыҙ. Рәхмәт һәм дауам итегеҙ!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "Тәҡдимдәрҙе ҡарағанығыҙ өсөн рәхмәт. Дауам итегеҙ!",
+	"growthexperiments-help-panel-suggestededits-title": "Тәҡдим ителгән төҙәтеүҙәр",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Тиҙ башлау кәңәштәре",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Әҙерһегеҙме?</strong> Башлар өсөн \"{{int:vector-view-edit}}\" баҫығыҙ.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "<mark class=\"negative\">Ерҙәнн</mark> Меркурийға осош етди техник ҡатмарлыҡтар менән бәйле.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "Мәҡәләне яҡшыртыу өсөн бер-ике бәләкәй үҙгәреш тә етә. Бөтә мәҡәлә өҫтөндә эшләү мотлаҡ түгел. Шулай уҡ, мәҡәлә темаһы буйынса махсус белемегеҙ ҙә кәрәкмәй.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "Орфографик һәм грамматик хаталарҙы төҙәтә алаһығыҙ. Улар, мәҫәлән, оҙон һөйләмдәр, ҡабатланған һүҙҙәр йәки яңылыш тыныш билдәләре булған һөйләмдәр.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Марстың ике бәләкәй айы <mark class=\"negative\">бар бар</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules2": "Шулай уҡ, шәхси фекерҙәр булмаһын өсөн, һөйләмдәрҙе үҙгәртеп яҙырға мөмкин. {{SITENAME}} эстәлеге нейтраль, аңлайышлы һәм энциклопедик булырға тейеш. Әммә һөйләмдәрҙәге факттарҙы үҙгәртмәгеҙ.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "Юпитер — Ҡояш системаһындағы иң ҙур <mark class=\"negative\">һәм иң ҡыҙыҡлы</mark> планета.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Был һөйләмдә алып шәхси фекер бар, уны алып ташлау кәрәк.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "Эшләргә теләгән төҙәтеүҙе күргәс, башлау өсөн \"$1\" төймәһенә баҫығыҙ. Шунан хаталарҙы төҙәтегеҙ һәм кәрәк саҡта өҫтәп яҙығыҙ.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "Башҡа эшләп булырлыҡ үҙгәртеүҙәрҙе ҡарағыҙ йәки үҙгәртеүҙәрегеҙҙе баҫтырыу өсөн, \"$1\" төймәһенә баҫығыҙ!",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Ярҙам панеле тураһында",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Ярҙам панелен ябыу",
+	"growthexperiments-help-panel-search-label": "Ярҙам эҙләү",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Тәҡдим ителгән төҙәтеүҙәр",
+	"growthexperiments-help-panel-button-header-general-help": "Дөйөм мөхәррирләү ярҙамы",
+	"growthexperiments-help-panel-button-subheader-general-help": "Иң яҡшы мәҡәләләр араһында яуаптар ҡарағыҙ",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Тиҙ башлау кәңәштәре",
+	"growthexperiments-help-panel-general-help-title": "Дөйөм мөхәррирләү ярҙамы",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Тәҡдим ителгән төҙәтеүҙәр тураһында"
+}
