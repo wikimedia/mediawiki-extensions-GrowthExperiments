@@ -83,6 +83,7 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 се {{GENDER:$1|повукао|повукла}} из менторства.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 је {{GENDER:$2|уклонио|уклонила}} $1 из менторства",
 	"echo-category-title-ge-mentorship": "Менторство",
+	"growthexperiments-notification-header-mentee-claimed": "Вашег {{GENDER:$3|новајлију}} $3 је {{GENDER:$2|преузео|преузела}} $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Разлог: $1",
 	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Имате}} новајлије вредне хвале! Пошаљите им похвалу преко менторске табле.",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Менторска табла",
