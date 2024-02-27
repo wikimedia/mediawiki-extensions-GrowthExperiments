@@ -96,6 +96,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Порука за новајлије",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Ваша}} порука представљања је промењена на „$1”.",
 	"growthexperiments-mentor-list-missing-key": "Кључ <code>$1</code> недостаје",
+	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> је требало да буде <code>$2</code>, али је <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Ментор $1 је већ додат на списак ментора",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Ментор $1 није на списку ментора",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Ментор $1 није регистрован корисник",

@@ -8,6 +8,8 @@
 		]
 	},
 	"growthexperiments-desc": "이 확장 기능은 성장 팀의 실험적인 기능을 포함합니다.",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> 변수는 <code>$2</code> 자료형을 예상했으나 <code>$3</code> 자료형이 왔습니다",
+	"growthexperiments-config-validator-contentmodel-mismatch": "콘텐츠 모델 불일치: GrowthExperiments 구성 파일에는 JSON 콘텐츠 모델이 있어야 하지만 $1 항목이 확인되었습니다",
 	"growthexperiments-config-validator-array-toobig": "$1에 너무 많은 항목이 있습니다 (최대 $2개 허용)",
 	"growthexperiments-edit-config-disabled": "공동체 구성이 현재 비활성화되어 있습니다.",
 	"growthexperiments-edit-config-title": "성장 구성 편집",
@@ -85,5 +87,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "정보상자 틀",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "이 틀은 [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|이미지 제안]] 신규 사용자 작업 기능에 필요합니다. 이러한 틀이 포함된 문서는 이미지 제안 작업으로 나열되지 않습니다.",
 	"growthexperiments-edit-config-delayed": "이 설정의 변경은 즉시 효력이 발생하지 않습니다. ([[mw:Growth/FAQ#add-link-config|FAQ]] 참고)",
+	"growthexperiments-info-tooltip-close-label": "닫기",
 	"specialpages-group-growth-tools": "성장 도구"
 }

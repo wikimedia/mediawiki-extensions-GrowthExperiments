@@ -140,6 +140,8 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|Apskati}} citas {{GENDER:$1|sava mentora|savas mentores}} sarunas",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Jautā}} {{GENDER:$1|savam mentoram|savai mentorei}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Kad tu uzdod jautājumu, to ar {{GENDER:$2|tavu}} dalībnieka vārdu \"$2\" <strong>publiski ievieto</strong> $3 lapā, kur {{GENDER:$1|viņš|viņa|tie}} to var atrast un uz to atbildēt.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "{{GENDER:$2|Tavs galvenais mentors|Tava galvenā mentore}}, \"[[User:$1|$1]]\", pašlaik ir prombūtnē.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "Tikmēr uz taviem jautājumiem atbildēs {{GENDER:$2|cits mentors|cita mentore}}, \"[[User:$1|$1]]\".",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2}}{{GENDER:$1|tava mentora|tavas mentores}} diskusiju lapā",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Tavs}} jautājums tagad ir tava {{GENDER:$1|mentora|mentores}} diskusiju lapā, kur {{GENDER:$1|viņš|viņa|tie}} atbildēs, tiklīdz varēs.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Apskati {{GENDER:$2|savu}} jautājumu {{GENDER:$1|sava mentora|savas mentores}} diskusiju lapā.",
