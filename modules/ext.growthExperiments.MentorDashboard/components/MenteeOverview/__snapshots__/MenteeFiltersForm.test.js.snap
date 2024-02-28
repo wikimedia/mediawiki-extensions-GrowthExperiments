@@ -136,7 +136,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
     class="ext-growthExperiments-MenteeFiltersForm__form-group"
   >
     <span
-      class="cdx-checkbox"
+      class="cdx-checkbox cdx-checkbox--status-default"
     >
       <input
         class="cdx-checkbox__input"
