@@ -160,9 +160,9 @@
 	TaskExplanationWidget.prototype.getDifficultyIndicator = function () {
 		return $( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )
 			// The following classes are used here:
-			// * suggested-edits-difficulty-indicator-label-easy
-			// * suggested-edits-difficulty-indicator-label-medium
-			// * suggested-edits-difficulty-indicator-label-hard
+			// * suggested-edits-difficulty-indicator-easy
+			// * suggested-edits-difficulty-indicator-medium
+			// * suggested-edits-difficulty-indicator-hard
 			.addClass( 'suggested-edits-difficulty-indicator-' + this.taskTypeData.difficulty )
 			.text( mw.message(
 				// The following messages are used here:

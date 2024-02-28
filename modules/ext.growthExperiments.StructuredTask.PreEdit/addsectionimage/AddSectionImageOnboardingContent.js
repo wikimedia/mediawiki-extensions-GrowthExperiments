@@ -21,6 +21,11 @@ module.exports = ( function () {
 		// * addsectionimage-onboarding-content-image1
 		// * addsectionimage-onboarding-content-image2
 		// * addsectionimage-onboarding-content-image3
+		// * addsectionimage-onboarding-content-image4
+		// * addsectionimage-onboarding-content-image1--desktop
+		// * addsectionimage-onboarding-content-image2--desktop
+		// * addsectionimage-onboarding-content-image3--desktop
+		// * addsectionimage-onboarding-content-image4--desktop
 		return 'addsectionimage-onboarding-content-image' + panelNumber + heroImageModifier;
 	}
 

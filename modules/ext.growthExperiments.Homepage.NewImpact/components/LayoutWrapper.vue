@@ -1,4 +1,11 @@
 <template>
+	<!--
+		The following classes are generated here:
+		* ext-growthExperiments-Layout--desktop
+		* ext-growthExperiments-Layout--mobile-details
+		* ext-growthExperiments-Layout--mobile-overlay
+		* ext-growthExperiments-Layout--mobile-summary
+	-->
 	<div :class="`ext-growthExperiments-Layout--${renderMode}`">
 		<slot></slot>
 	</div>

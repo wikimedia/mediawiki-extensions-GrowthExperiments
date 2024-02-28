@@ -117,6 +117,10 @@ class TaskExplanationWidget extends Widget {
 					->appendContent(
 						$this->getIcon() ?? '',
 						( new Tag( 'div' ) )->addClasses( [
+							// The following classes are generated here:
+							// * suggested-edits-difficulty-indicator-easy
+							// * suggested-edits-difficulty-indicator-medium
+							// * suggested-edits-difficulty-indicator-hard
 							'suggested-edits-difficulty-indicator suggested-edits-difficulty-indicator-' . $difficulty
 						] )->appendContent(
 							$this->localizer->msg(
