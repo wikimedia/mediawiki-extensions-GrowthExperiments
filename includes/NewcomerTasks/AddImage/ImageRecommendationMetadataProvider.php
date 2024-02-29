@@ -178,9 +178,9 @@ class ImageRecommendationMetadataProvider {
 	 * The parameter is used with "growthexperiments-addimage-reason-wikipedia-languages" key.
 	 *
 	 * @param string[] $languageCodes Language codes of the projects in which the image is found
-	 * @return array
+	 * @return mixed
 	 */
-	private function getLanguagesListParam( array $languageCodes ): array {
+	private function getLanguagesListParam( array $languageCodes ) {
 		$totalLanguages = count( $languageCodes );
 		$shownLanguageCodes = $this->getShownLanguageCodes(
 			$languageCodes,

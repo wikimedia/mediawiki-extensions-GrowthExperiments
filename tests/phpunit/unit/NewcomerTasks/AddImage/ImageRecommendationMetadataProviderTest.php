@@ -319,9 +319,9 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 			case 'project-localized-name-frwiki':
 				return 'French Wikipedia';
 			case 'growthexperiments-addimage-reason-wikipedia-project':
-				return 'Used in the same article in ' . $params[0];
+				return 'Used in the same article in Czech Wikipedia';
 			case 'growthexperiments-addimage-reason-wikipedia-languages':
-				return 'Used in the same article in ' . $params[0]['num'] . ' other languages';
+				return 'Used in the same article in 2 other languages';
 			default:
 				return $key;
 		}
