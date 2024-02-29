@@ -115,6 +115,8 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|көн}} элек {{GENDER:$1|актив}}",
 	"growthexperiments-homepage-mentorship-intro": "Был {{GENDER:$1|тәжрибәле ҡатнашыусы}} һеҙҙең яңы килгәнегеҙҙе белә һәм {{GENDER:$2|һеҙгә}} мөхәррирләү буйынса ярҙам итә ала.",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$1|Остазығыҙға}} һорау {{GENDER:$2|бирегеҙ}}",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$1|Остазығыҙҙың}} башҡа әңгәмәләрен {{GENDER:$2|ҡарағыҙ}}",
+	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$1Остазығыҙға}} һорау Ask {{GENDER:$2|бирегеҙ}}",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong> {{PLURAL:$2|тәҡдим}} араһынан <strong>$1</strong>",
 	"growthexperiments-homepage-suggestededits-pager-loading": "Йөкләнә...",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 ҡарау (аҙаҡҡы 60 көн)",

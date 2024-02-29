@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Исмаил Садуев",
 			"Умар"
 		]
 	},
@@ -59,7 +60,7 @@
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "ГӀоьнан панелах лаьцна",
 	"growthexperiments-help-panel-questionposter-invalid-title": "ГӀалате цӀе.",
 	"growthexperiments-help-panel-search-label": "ГӀо лахар",
-	"growthexperiments-help-panel-search-no-results": "ХӀума цакарий",
+	"growthexperiments-help-panel-search-no-results": "Результаташ ца карийна",
 	"tag-help_panel_question": "ГӀоьнан панель тӀера хаттар",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Кховдийна нисдарш",
 	"growthexperiments-help-panel-button-header-ask-help": "ГӀоьнан агӀонгахь хаттар ло",
