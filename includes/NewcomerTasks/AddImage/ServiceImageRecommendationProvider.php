@@ -116,7 +116,10 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			$errorMessage = __METHOD__ . ': Unable to decode JSON response for page {title}: {response}';
 			$errorContext = [ 'title' => $titleTextSafe, 'response' => $response ];
 			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorMessage, $errorContext );
-			return StatusValue::newFatal( new RawMessage( $errorMessage, $errorContext ) );
+			return StatusValue::newFatal( new RawMessage(
+				"Unable to decode JSON response for page $1: $2",
+				[ $titleTextSafe, $response ]
+			) );
 		} elseif ( $request->getStatus() >= 400 ) {
 			return StatusValue::newFatal( new RawMessage(
 				'API returned HTTP code $1 for page $2: $3',
