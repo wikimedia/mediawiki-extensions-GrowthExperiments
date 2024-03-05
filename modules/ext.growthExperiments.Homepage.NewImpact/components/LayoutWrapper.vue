@@ -25,7 +25,7 @@ module.exports = exports = {
 	props: {
 		/**
 		 * The render mode to use for displaying the app. Can be
-		 * one of 'desktop', 'overlay', 'overlay-summary'.
+		 * one of 'desktop', 'mobile-details', 'mobile-overlay', 'mobile-summary'.
 		 */
 		renderMode: {
 			type: String,
