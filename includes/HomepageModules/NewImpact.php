@@ -285,6 +285,11 @@ class NewImpact extends BaseModule {
 			],
 			Html::rawElement( 'div',
 				[
+					// The following classes are generated here:
+					// * ext-growthExperiments-Layout--desktop
+					// * ext-growthExperiments-Layout--mobile-details
+					// * ext-growthExperiments-Layout--mobile-overlay
+					// * ext-growthExperiments-Layout--mobile-summary
 					'class' => 'ext-growthExperiments-Layout--' . $this->getMode()
 				],
 				Html::rawElement( 'div',

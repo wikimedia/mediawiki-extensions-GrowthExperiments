@@ -112,6 +112,9 @@ class SiteNoticeGenerator {
 		$baseCssClassName = 'mw-ge-homepage-confirmemail-nojs';
 		$cssClasses = [
 			$baseCssClassName,
+			// The following classes are generated here:
+			// * mw-ge-homepage-confirmemail-nojs-mobile
+			// * mw-ge-homepage-confirmemail-nojs-desktop
 			Util::isMobile( $skin ) ? $baseCssClassName . '-mobile' : $baseCssClassName . '-desktop'
 		];
 		$siteNotice = Html::rawElement( 'div', [ 'class' => $cssClasses ],
