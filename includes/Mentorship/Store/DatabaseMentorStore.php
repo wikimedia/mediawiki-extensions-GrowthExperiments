@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
-use DBAccessObjectUtils;
+use IDBAccessObject;
 use JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -50,8 +50,11 @@ class DatabaseMentorStore extends MentorStore {
 		string $mentorRole,
 		$flags
 	): ?UserIdentity {
-		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = $this->loadBalancer->getConnection( $index );
+		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
+			$db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		} else {
+			$db = $this->loadBalancer->getConnection( DB_REPLICA );
+		}
 		$id = $db->newSelectQueryBuilder()
 			->select( 'gemm_mentor_id' )
 			->from( 'growthexperiments_mentor_mentee' )
@@ -59,7 +62,7 @@ class DatabaseMentorStore extends MentorStore {
 				'gemm_mentee_id' => $mentee->getId(),
 				'gemm_mentor_role' => $mentorRole,
 			] )
-			->options( $options )
+			->recency( $flags )
 			->caller( __METHOD__ )
 			->fetchField();
 
@@ -88,24 +91,22 @@ class DatabaseMentorStore extends MentorStore {
 		bool $includeInactiveUsers = true,
 		int $flags = 0
 	): array {
-		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = $this->loadBalancer->getConnection( $index );
-
-		$conds = [
-			'gemm_mentor_id' => $mentor->getId(),
-			'gemm_mentor_role' => $mentorRole,
-		];
-
-		if ( !$includeInactiveUsers ) {
-			$conds['gemm_mentee_is_active'] = true;
+		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
+			$db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		} else {
+			$db = $this->loadBalancer->getConnection( DB_REPLICA );
 		}
 
-		$ids = $db->newSelectQueryBuilder()
+		$queryBuilder = $db->newSelectQueryBuilder()
 			->select( 'gemm_mentee_id' )
 			->from( 'growthexperiments_mentor_mentee' )
-			->where( $conds )
-			->caller( __METHOD__ )
-			->fetchFieldValues();
+			->where( [ 'gemm_mentor_id' => $mentor->getId(), 'gemm_mentor_role' => $mentorRole ] );
+
+		if ( !$includeInactiveUsers ) {
+			$queryBuilder->andWhere( [ 'gemm_mentee_is_active' => true ] );
+		}
+
+		$ids = $queryBuilder->caller( __METHOD__ )->fetchFieldValues();
 
 		if ( $ids === [] ) {
 			return [];

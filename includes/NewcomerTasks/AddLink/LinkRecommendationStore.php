@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
-use DBAccessObjectUtils;
 use DomainException;
 use GrowthExperiments\Util;
 use IDBAccessObject;
@@ -17,6 +16,7 @@ use RuntimeException;
 use stdClass;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
  * Service that handles access to the link recommendation related database tables.
@@ -55,17 +55,20 @@ class LinkRecommendationStore {
 	 * @return LinkRecommendation|null
 	 */
 	protected function getByCondition( array $condition, int $flags = 0 ): ?LinkRecommendation {
-		[ $index, $options ] = DBAccessObjectUtils::getDBOptions( $flags );
-		$row = $this->getDB( $index )->newSelectQueryBuilder()
+		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
+			$db = $this->getDB( DB_PRIMARY );
+		} else {
+			$db = $this->getDB( DB_REPLICA );
+		}
+		$row = $db->newSelectQueryBuilder()
 			->select( [ 'gelr_page', 'gelr_revision', 'gelr_data' ] )
 			->from( 'growthexperiments_link_recommendations' )
 			->where( $condition )
 			->caller( __METHOD__ )
-			->options( $options + [
-					// $condition is supposed to be unique, but if somehow that isn't the case,
-					// use the most up-to-date recommendation.
-					'ORDER BY' => 'gelr_revision DESC'
-				] )
+			->recency( $flags )
+			// $condition is supposed to be unique, but if somehow that isn't the case,
+			// use the most up-to-date recommendation.
+			->orderBy( 'gelr_revision', SelectQueryBuilder::SORT_DESC )
 			->fetchRow();
 		if ( $row === false ) {
 			return null;
@@ -352,8 +355,12 @@ class LinkRecommendationStore {
 	 * @return bool
 	 */
 	public function hasSubmission( LinkRecommendation $linkRecommendation, int $flags ): bool {
-		[ $index, $options ] = DBAccessObjectUtils::getDBOptions( $flags );
-		return (bool)$this->getDB( $index )->newSelectQueryBuilder()
+		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
+			$db = $this->getDB( DB_PRIMARY );
+		} else {
+			$db = $this->getDB( DB_REPLICA );
+		}
+		return (bool)$db->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'growthexperiments_link_submissions' )
 			->where( [ 'gels_revision' => $linkRecommendation->getRevisionId() ] )
