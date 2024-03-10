@@ -102,7 +102,7 @@ class TipNodeRenderer {
 				return $item['data'];
 			}
 			return null;
-		},  $node->getData() ) );
+		}, $node->getData() ) );
 
 		return Html::rawElement( 'div', [
 			'class' => $this->getBaseCssClasses( $node->getType(), $tipTextVariants )
@@ -191,7 +191,7 @@ class TipNodeRenderer {
 				'growthexperiments-quickstart-tips-tip-' . $node->getType() . '-text'
 			] ], $this->messageLocalizer->msg(
 				$this->getMessageKeyWithVariantFallback( $node )
-		)->parse() ) );
+			)->parse() ) );
 	}
 
 	/**

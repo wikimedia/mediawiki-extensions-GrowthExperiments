@@ -177,6 +177,9 @@ class HelpPanel {
 				   self::getGrowthWikiConfig()->get( 'GEHelpPanelReadingModeNamespaces' ) );
 	}
 
+	/**
+	 * @return bool
+	 */
 	public static function isHelpPanelEnabled() {
 		return MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelEnabled' );
 	}

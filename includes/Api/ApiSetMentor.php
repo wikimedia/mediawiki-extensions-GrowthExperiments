@@ -99,6 +99,7 @@ class ApiSetMentor extends ApiBase {
 		}
 	}
 
+	/** @inheritDoc */
 	public function mustBePosted() {
 		return true;
 	}
@@ -110,6 +111,7 @@ class ApiSetMentor extends ApiBase {
 		return 'csrf';
 	}
 
+	/** @inheritDoc */
 	public function isWriteMode() {
 		return true;
 	}

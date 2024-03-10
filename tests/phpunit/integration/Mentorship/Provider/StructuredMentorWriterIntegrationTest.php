@@ -33,8 +33,8 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 	 * @param int $revId
 	 */
 	private function assertEditTagged( array $tags, int $revId ) {
-		$this->assertCount(
-			count( $tags ),
+		$this->assertSameSize(
+			$tags,
 			array_intersect(
 				$tags,
 				ChangeTags::getTags(

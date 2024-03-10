@@ -82,7 +82,7 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 		] );
 
 		$mentor = $this->getTestSysop()->getUserIdentity();
-		list( $praiseworthyMentee, $otherMentee ) = $this->getNMentees( $mentor, 2 );
+		[ $praiseworthyMentee, $otherMentee ] = $this->getNMentees( $mentor, 2 );
 
 		$this->makeNEdits( $praiseworthyMentee, $minEdits );
 		$this->makeNEdits( $otherMentee, $minEdits - 1 );

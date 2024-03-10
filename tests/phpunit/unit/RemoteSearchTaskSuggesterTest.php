@@ -81,7 +81,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->assertInstanceOf( TaskSet::class, $taskSet );
 			$this->assertSame( $expectedTaskSet->getOffset(), $taskSet->getOffset() );
 			$this->assertSame( $expectedTaskSet->getTotalCount(), $taskSet->getTotalCount() );
-			$this->assertCount( count( $expectedTaskSet ), $taskSet );
+			$this->assertSameSize( $expectedTaskSet, $taskSet );
 			// Responses are shuffled due to T242057 so we need order-insensitive comparison.
 			$expectedTaskData = $this->taskSetToArray( $expectedTaskSet );
 			$actualTaskData = $this->taskSetToArray( $taskSet );
@@ -491,7 +491,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->assertInstanceOf( TaskSet::class, $filteredTaskSet );
 			$this->assertSame( $expectedTaskSet->getOffset(), $filteredTaskSet->getOffset() );
 			$this->assertSame( $expectedTaskSet->getTotalCount(), $filteredTaskSet->getTotalCount() );
-			$this->assertCount( count( $expectedTaskSet ), $filteredTaskSet );
+			$this->assertSameSize( $expectedTaskSet, $filteredTaskSet );
 			for ( $i = 0; $i < count( $expectedTaskSet ); $i++ ) {
 				$expectedTask = $expectedTaskSet[$i];
 				$filteredTask = $filteredTaskSet[$i];

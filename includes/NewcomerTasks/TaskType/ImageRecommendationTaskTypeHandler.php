@@ -53,7 +53,7 @@ class ImageRecommendationTaskTypeHandler extends ImageRecommendationBaseTaskType
 			throw new LogicException( 'impossible' );
 		}
 		$wrappedReasons = array_map(
-			fn( $reason ) => "<kbd>$reason</kbd>",
+			fn ( $reason ) => "<kbd>$reason</kbd>",
 			AddImageSubmissionHandler::REJECTION_REASONS
 		);
 		return $localizer->msg(

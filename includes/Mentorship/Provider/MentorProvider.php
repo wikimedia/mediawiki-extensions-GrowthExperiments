@@ -105,7 +105,7 @@ abstract class MentorProvider {
 		}
 		try {
 			$mentors = array_merge( $mentors, $this->getManuallyAssignedMentors() );
-		}  catch ( WikiConfigException $e ) {
+		} catch ( WikiConfigException $e ) {
 		}
 		return array_unique( $mentors );
 	}

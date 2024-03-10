@@ -84,7 +84,7 @@ class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 		}
 
 		/** @var string $html */
-		list( $html, ) = $this->executeSpecialPage( '', null, null, $mentorUser );
+		[ $html, ] = $this->executeSpecialPage( '', null, null, $mentorUser );
 		$this->assertStringContainsString(
 			'growthexperiments-quit-mentorship-reassign-mentees-confirm',
 			$html
@@ -125,7 +125,7 @@ class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 
 		/** @var string $html */
 		/** @var FauxResponse $response */
-		list( $html, $response ) = $this->executeSpecialPage( '', $request, null, $mentorUser );
+		[ $html, $response ] = $this->executeSpecialPage( '', $request, null, $mentorUser );
 		$queueResponse = $this->getServiceContainer()->getJobRunner()->run( [
 			'type' => 'reassignMenteesJob',
 			'maxJobs' => 1,

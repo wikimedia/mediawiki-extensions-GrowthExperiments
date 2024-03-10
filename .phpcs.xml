@@ -5,6 +5,7 @@
 		<exclude name="MediaWiki.Commenting.FunctionComment.WrongStyle" />
 		<exclude name="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName" />
 		<exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationPrivate" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeClassBrace.BraceNotOnOwnLine" />
 	</rule>
 	<exclude-pattern type="relative-root">./documentation/frontend/node_modules/*</exclude-pattern>
 	<file>.</file>

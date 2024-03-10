@@ -65,7 +65,7 @@ class LevelingUpHooks implements
 	): void {
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$pluginFields = array_map(
-			fn( $taskTypeId ) => VisualEditorHooks::PLUGIN_PREFIX . $taskTypeId,
+			fn ( $taskTypeId ) => VisualEditorHooks::PLUGIN_PREFIX . $taskTypeId,
 			array_keys( $taskTypes )
 		);
 		$isSuggestedEdit = count( array_intersect( $pluginFields, array_keys( $pluginData ) ) ) > 0;

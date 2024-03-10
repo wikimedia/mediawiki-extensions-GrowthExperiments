@@ -73,7 +73,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	 * @covers ::getMentorAsHtmlRow
 	 */
 	public function testNotAuthorizedRead() {
-		list( $html, ) = $this->executeSpecialPage();
+		[ $html, ] = $this->executeSpecialPage();
 		$this->assertStringContainsString(
 			$this->mentorUser->getName(),
 			$html
@@ -100,7 +100,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	 */
 	public function testAuthorizedRead() {
 		$performer = $this->getTestSysop()->getUser();
-		list( $html, ) = $this->executeSpecialPage( '', null, null, $performer );
+		[ $html, ] = $this->executeSpecialPage( '', null, null, $performer );
 		$this->assertStringContainsStringIgnoringCase(
 			$this->mentorUser->getName(),
 			$html
@@ -158,7 +158,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$this->mentorUser,
 			MentorStore::ROLE_PRIMARY
 		) );
-		list( $html, ) = $this->executeSpecialPage(
+		[ $html, ] = $this->executeSpecialPage(
 			'remove-mentor/' . $this->mentorUser->getId(),
 			new FauxRequest( [ 'wpreason' => 'foo' ], true ),
 			null,
@@ -206,7 +206,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			'this is intro',
 			$mentorProvider->newMentorFromUserIdentity( $this->mentorUser )->getIntroText()
 		);
-		list( $html, ) = $this->executeSpecialPage(
+		[ $html, ] = $this->executeSpecialPage(
 			'edit-mentor/' . $this->mentorUser->getId(),
 			new FauxRequest( [
 				'wpmessage' => 'new intro',

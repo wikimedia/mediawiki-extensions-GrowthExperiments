@@ -412,7 +412,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 				return self::metadataFactory( 99 );
 			}
 			if ( $filename === 'InvalidMediaType.png' ) {
-				return self::metadataFactory( 200,  MEDIATYPE_AUDIO );
+				return self::metadataFactory( 200, MEDIATYPE_AUDIO );
 			}
 			return self::metadataFactory( 101 );
 		} );
@@ -424,7 +424,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 				return self::metadataFactory( 99 );
 			}
 			if ( $suggestion['filename'] === 'InvalidMediaType.png' ) {
-				return self::metadataFactory( 200,  MEDIATYPE_AUDIO );
+				return self::metadataFactory( 200, MEDIATYPE_AUDIO );
 			}
 			return self::metadataFactory( 101 );
 		} );

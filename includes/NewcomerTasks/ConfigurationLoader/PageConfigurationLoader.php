@@ -140,9 +140,9 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 		if ( !$allTaskTypes instanceof StatusValue ) {
 			$taskTypes = array_filter( $allTaskTypes,
-				fn( TaskType $taskType ) => !$this->isDisabled( $taskType ) );
+				fn ( TaskType $taskType ) => !$this->isDisabled( $taskType ) );
 			$disabledTaskTypes = array_filter( $allTaskTypes,
-				fn( TaskType $taskType ) =>  $this->isDisabled( $taskType ) );
+				fn ( TaskType $taskType ) => $this->isDisabled( $taskType ) );
 		} else {
 			$taskTypes = $allTaskTypes;
 			$disabledTaskTypes = [];

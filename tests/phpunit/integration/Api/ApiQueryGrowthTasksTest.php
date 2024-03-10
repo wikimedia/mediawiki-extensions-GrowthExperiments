@@ -60,7 +60,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			'list' => 'growthtasks',
 		];
 
-		list( $data ) = $this->doApiRequest( $baseParams );
+		[ $data ] = $this->doApiRequest( $baseParams );
 		$this->assertSame( 6, $data['query']['growthtasks']['totalCount'] );
 		$this->assertSame( 'Copyedit-1', $data['query']['growthtasks']['suggestions'][0]['title'] );
 		$this->assertSame( 'copyedit', $data['query']['growthtasks']['suggestions'][0]['tasktype'] );
@@ -76,16 +76,16 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->assertResponseContainsTitles( [ 'Copyedit-1', 'Link-1', 'Update-1', 'Copyedit-2',
 			'Update-2', 'Copyedit-3' ], $data );
 
-		list( $data ) = $this->doApiRequest( $baseParams + [ 'gttasktypes' => 'update|link' ] );
+		[ $data ] = $this->doApiRequest( $baseParams + [ 'gttasktypes' => 'update|link' ] );
 		$this->assertResponseContainsTitles( [ 'Link-1', 'Update-1', 'Update-2' ], $data );
 		$this->assertSame( 3, $data['query']['growthtasks']['totalCount'] );
 
-		list( $data ) = $this->doApiRequest( $baseParams + [ 'gtlimit' => '2', 'gtoffset' => 3 ] );
+		[ $data ] = $this->doApiRequest( $baseParams + [ 'gtlimit' => '2', 'gtoffset' => 3 ] );
 		$this->assertResponseContainsTitles( [ 'Copyedit-2', 'Update-2' ], $data );
 		$this->assertSame( 6, $data['query']['growthtasks']['totalCount'] );
 		$this->assertSame( 5, $data['continue']['gtoffset'] );
 
-		list( $data ) = $this->doApiRequest( $baseParams + [ 'gtlimit' => '2', 'gtoffset' => 4 ] );
+		[ $data ] = $this->doApiRequest( $baseParams + [ 'gtlimit' => '2', 'gtoffset' => 4 ] );
 		$this->assertResponseContainsTitles( [ 'Update-2', 'Copyedit-3' ], $data );
 		$this->assertSame( 6, $data['query']['growthtasks']['totalCount'] );
 		$this->assertArrayNotHasKey( 'continue', $data );
@@ -104,7 +104,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
-		list( $data ) = $this->doApiRequest( [ 'action' => 'query', 'generator' => 'growthtasks' ] );
+		[ $data ] = $this->doApiRequest( [ 'action' => 'query', 'generator' => 'growthtasks' ] );
 		$pages = reset( $data['query']['pages'] );
 		$this->assertSame( 2, $data['growthtasks']['totalCount'] );
 		$this->assertSame( 0, $pages['ns'] );
@@ -141,7 +141,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
-		list( $data ) = $this->doApiRequest( [ 'action' => 'paraminfo',
+		[ $data ] = $this->doApiRequest( [ 'action' => 'paraminfo',
 			'modules' => 'query+growthtasks' ] );
 		$this->assertArrayHasKey( 'paraminfo', $data );
 		$this->assertArrayHasKey( 0, $data['paraminfo']['modules'] );
@@ -161,7 +161,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			StatusValue::newFatal( 'bar' ) );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
-		list( $data ) = $this->doApiRequest( [ 'action' => 'paraminfo',
+		[ $data ] = $this->doApiRequest( [ 'action' => 'paraminfo',
 			'modules' => 'query+growthtasks' ] );
 		$this->assertArrayHasKey( 'paraminfo', $data );
 	}

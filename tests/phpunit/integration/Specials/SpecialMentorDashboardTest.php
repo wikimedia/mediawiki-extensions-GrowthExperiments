@@ -49,7 +49,7 @@ class SpecialMentorDashboardTest extends SpecialPageTestBase {
 		$this->assertTrue( $mentorProvider->isMentor( $mentorUser ) );
 
 		/** @var string $html */
-		list( $html, ) = $this->executeSpecialPage( '', null, null, $mentorUser );
+		[ $html, ] = $this->executeSpecialPage( '', null, null, $mentorUser );
 		$this->assertNotEmpty( $html );
 	}
 
@@ -59,7 +59,7 @@ class SpecialMentorDashboardTest extends SpecialPageTestBase {
 	public function testNonMentor() {
 		$user = $this->getTestUser()->getUser();
 
-		list( , $response ) = $this->executeSpecialPage( '', null, null, $user );
+		[ , $response ] = $this->executeSpecialPage( '', null, null, $user );
 		$this->assertEquals(
 			SpecialPage::getTitleFor( 'EnrollAsMentor' )->getFullURL(),
 			$response->getHeader( 'Location' )

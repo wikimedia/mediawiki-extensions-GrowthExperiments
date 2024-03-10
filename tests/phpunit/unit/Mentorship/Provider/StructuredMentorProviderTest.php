@@ -200,8 +200,8 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			->willReturnCallback( function ( $key, ...$params ) {
 				$message = $this->createMock( Message::class );
 				$message->method( 'exists' )->willReturn( true );
-				$message->method( 'inContentLanguage' )->will( $this->returnSelf() );
-				$message->method( 'params' )->will( $this->returnSelf() );
+				$message->method( 'inContentLanguage' )->willReturnSelf();
+				$message->method( 'params' )->willReturnSelf();
 				$message->method( 'text' )->willReturnCallback(
 					static function () use ( $key, $params ) {
 						switch ( $key ) {

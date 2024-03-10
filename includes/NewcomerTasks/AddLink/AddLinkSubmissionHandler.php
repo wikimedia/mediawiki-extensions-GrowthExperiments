@@ -204,7 +204,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 			$status = $this->addLinkSubmissionRecorder->record( $user, $linkRecommendation, $acceptedTargets,
 				$rejectedTargets, $skippedTargets, $editRevId );
 			$status->merge(
-				StatusValue::newGood( [ 'warnings' => $warnings , 'logId' => $status->getValue() ] ),
+				StatusValue::newGood( [ 'warnings' => $warnings, 'logId' => $status->getValue() ] ),
 				true
 			);
 		} catch ( DBReadOnlyError $e ) {

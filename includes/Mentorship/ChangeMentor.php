@@ -91,7 +91,7 @@ class ChangeMentor {
 				'oldMentor' => $this->mentor,
 				'newMentor' => $this->newMentor,
 				'performer' => $this->performer,
-		] );
+			] );
 
 		if ( $this->performer->getId() === $this->newMentor->getId() ) {
 			$primaryLogtype = 'claimmentee';
@@ -135,7 +135,7 @@ class ChangeMentor {
 				'mentee' => $this->mentee,
 				'oldMentor' => $this->mentor,
 				'newMentor' => $this->newMentor
-		] );
+			] );
 		$status = Status::newGood();
 
 		if ( !$this->getMenteeUser()->isNamed() ) {
@@ -145,7 +145,7 @@ class ChangeMentor {
 					'mentee' => $this->mentee,
 					'oldMentor' => $this->mentor,
 					'newMentor' => $this->newMentor
-			] );
+				] );
 			$status->fatal( 'growthexperiments-homepage-claimmentee-no-user' );
 			return $status;
 		}
@@ -156,7 +156,7 @@ class ChangeMentor {
 					'mentee' => $this->mentee,
 					'oldMentor' => $this->mentor,
 					'newMentor' => $this->newMentor
-			] );
+				] );
 			$status->fatal(
 				'growthexperiments-homepage-claimmentee-already-mentor',
 				$this->mentee->getName(),

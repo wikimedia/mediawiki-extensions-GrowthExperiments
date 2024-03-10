@@ -138,7 +138,7 @@ class FixLinkRecommendationData extends Maintenance {
 			$from = 0;
 			$this->verboseOutput( "  checking topic $oresTopic...\n" );
 			$searchQuery = "hasrecommendation:link articletopic:$oresTopic";
-			// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
+			// phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 			while ( $titles = $this->search( $searchQuery, $batchSize, $from, $randomize ) ) {
 				$this->verboseOutput( '    checking ' . count( $titles ) . " titles...\n" );
 				$pageIdsToCheck = $this->titlesToPageIds( $titles );
@@ -171,7 +171,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
 		$from = null;
 		$fixedCount = 0;
-		// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
+		// phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 		while ( $pageIds = $this->linkRecommendationStore->listPageIds( $this->getBatchSize(), $from ) ) {
 			$this->verboseOutput( '  checking ' . count( $pageIds ) . " titles...\n" );
 			$titlesToFix = $this->search( '-hasrecommendation:link pageid:' . implode( '|', $pageIds ),

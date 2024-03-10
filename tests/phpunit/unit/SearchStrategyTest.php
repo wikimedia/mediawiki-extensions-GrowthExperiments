@@ -160,7 +160,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 	}
 
 	private function assertIntersectionTopicsInQueries( $queries, $topicIds ) {
-		list( $query1, $query2 ) = array_values( $queries );
+		[ $query1, $query2 ] = array_values( $queries );
 		foreach ( $topicIds as $id ) {
 			$this->assertStringContainsString( $id, $query1->getQueryString() );
 			$this->assertStringContainsString( $id, $query2->getQueryString() );
@@ -168,7 +168,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 	}
 
 	private function assertTopicsInQueries( $queries, $topicIds ) {
-		list( $query1, $query2 ) = array_values( $queries );
+		[ $query1, $query2 ] = array_values( $queries );
 		foreach ( $topicIds as $id ) {
 			if ( $query1->getTopic()->getId() === $id ) {
 				$this->assertSame( $query1->getTopic()->getId(), $id );
@@ -181,7 +181,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 	}
 
 	private function assertTaskTypeInQueries( $queries, $taskTypes ) {
-		list( $query1, $query2 ) = array_values( $queries );
+		[ $query1, $query2 ] = array_values( $queries );
 		foreach ( $taskTypes as $id ) {
 			if ( $query1->getTaskType()->getId() === $id ) {
 				$this->assertSame( $query1->getTaskType()->getId(), $id );

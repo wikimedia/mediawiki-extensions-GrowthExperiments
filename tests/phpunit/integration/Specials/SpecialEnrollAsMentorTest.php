@@ -68,7 +68,7 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 		$this->assertTrue( $mentorProvider->isMentor( $mentorUser ) );
 
 		/** @var FauxResponse $response */
-		list( , $response ) = $this->executeSpecialPage( '', null, null, $mentorUser );
+		[ , $response ] = $this->executeSpecialPage( '', null, null, $mentorUser );
 		$this->assertEquals(
 			SpecialPage::getTitleFor( 'MentorDashboard' )->getFullURL(),
 			$response->getHeader( 'Location' )
@@ -83,7 +83,7 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 		$user = $this->getTestUser()->getUser();
 
 		/** @var string $html */
-		list( $html, ) = $this->executeSpecialPage( '', null, null, $user );
+		[ $html, ] = $this->executeSpecialPage( '', null, null, $user );
 		$this->assertNotEmpty( $html );
 	}
 }

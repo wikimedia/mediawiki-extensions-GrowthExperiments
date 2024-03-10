@@ -55,7 +55,7 @@ class SpecialEditGrowthConfigTest extends SpecialPageTestBase {
 		$this->setMwGlobals( $configOverrides );
 
 		/** @var string $html */
-		list( $html, ) = $this->executeSpecialPage();
+		[ $html, ] = $this->executeSpecialPage();
 		$this->assertNotEmpty( $html );
 	}
 }

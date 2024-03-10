@@ -126,7 +126,7 @@ class SearchStrategy {
 	 */
 	protected function validateParams( array $taskTypes, array $topics ) {
 		Assert::parameterElementType( TaskType::class, $taskTypes, '$taskTypes' );
-		Assert::parameterElementType( [ OresBasedTopic::class,  MorelikeBasedTopic::class,
+		Assert::parameterElementType( [ OresBasedTopic::class, MorelikeBasedTopic::class,
 			CampaignTopic::class ], $topics, '$topics' );
 	}
 

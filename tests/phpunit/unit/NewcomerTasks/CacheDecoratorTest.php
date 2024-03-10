@@ -92,7 +92,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
@@ -109,7 +109,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
 							'return' => StatusValue::newFatal( 'error' ),
 						],
 						'filter' => null,
@@ -126,7 +126,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
@@ -155,7 +155,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
 							'return' => StatusValue::newFatal( 'error' ),
 						],
 						'filter' => null,
@@ -167,7 +167,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 					],
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
@@ -184,7 +184,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
@@ -196,7 +196,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 					],
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilterLinks, 15, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilterLinks, 15, 0, [ 'excludePageIds' => [] ] ],
 							'return' => $taskset2,
 						],
 						'filter' => null,
@@ -213,7 +213,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'calls' => [
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
 							'return' => $taskset,
 						],
 						'filter' => null,
@@ -225,7 +225,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 					],
 					[
 						'suggest' => [
-							'expect' => [ $user, $taskSetFilterArt, 15, 0 , [ 'excludePageIds' => [] ] ],
+							'expect' => [ $user, $taskSetFilterArt, 15, 0, [ 'excludePageIds' => [] ] ],
 							'return' => $taskset2,
 						],
 						'filter' => null,

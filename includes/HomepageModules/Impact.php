@@ -95,7 +95,7 @@ class Impact extends BaseModule {
 		TitleFactory $titleFactory,
 		PageViewService $pageViewService = null
 	) {
-		parent::__construct( 'impact', $context,  $wikiConfig, $experimentUserManager );
+		parent::__construct( 'impact', $context, $wikiConfig, $experimentUserManager );
 		$this->connectionProvider = $connectionProvider;
 		$this->isSuggestedEditsEnabledForUser = $suggestedEditsConfig['isSuggestedEditsEnabled'];
 		$this->isSuggestedEditsActivatedForUser = $suggestedEditsConfig['isSuggestedEditsActivated'];

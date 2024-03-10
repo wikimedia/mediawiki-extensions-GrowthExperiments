@@ -962,7 +962,7 @@ class HomepageHooks implements
 			$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
-			array_push( $tags,  ...$this->taskTypeHandlerRegistry->getChangeTags() );
+			array_push( $tags, ...$this->taskTypeHandlerRegistry->getChangeTags() );
 		}
 	}
 
@@ -983,7 +983,7 @@ class HomepageHooks implements
 			$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
-			array_push( $tags,  ...$this->taskTypeHandlerRegistry->getChangeTags() );
+			array_push( $tags, ...$this->taskTypeHandlerRegistry->getChangeTags() );
 		}
 	}
 
