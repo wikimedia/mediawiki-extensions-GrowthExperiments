@@ -166,6 +166,19 @@ return [
 		return $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
 	},
 
+	'GrowthExperimentsCommunityConfig' => static function ( MediaWikiServices $services ): Config {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		if (
+			ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) &&
+			$geServices->getGrowthConfig()->get( 'GEUseCommunityConfigurationExtension' )
+		) {
+			return $services->get( 'CommunityConfiguration.WikiPageConfigReader' );
+		} else {
+			return $services->get( 'GrowthExperimentsMultiConfig' );
+		}
+	},
+
 	'GrowthExperimentsConfigValidatorFactory' => static function (
 		MediaWikiServices $services
 	): ConfigValidatorFactory {

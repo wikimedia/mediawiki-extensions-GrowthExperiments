@@ -3,8 +3,11 @@
 namespace GrowthExperiments\Config;
 
 use Content;
+use ExtensionRegistry;
 use FormatJson;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
+use GrowthExperiments\Specials\SpecialEditGrowthConfig;
+use GrowthExperiments\Specials\SpecialEditGrowthConfigRedirect;
 use IContextSource;
 use JsonContent;
 use MediaWiki\Config\Config;
@@ -13,6 +16,7 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Page\PageIdentity;
+use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
@@ -26,7 +30,8 @@ class ConfigHooks implements
 	EditFilterMergedContentHook,
 	JsonValidateSaveHook,
 	PageSaveCompleteHook,
-	SkinTemplateNavigation__UniversalHook
+	SkinTemplateNavigation__UniversalHook,
+	SpecialPage_initListHook
 {
 	private ConfigValidatorFactory $configValidatorFactory;
 	private WikiPageConfigLoader $configLoader;
@@ -157,6 +162,34 @@ class ConfigHooks implements
 					'EditGrowthConfig'
 				)->getFullUrl();
 			}
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onSpecialPage_initList( &$list ) {
+		if (
+			ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) &&
+			$this->config->get( 'GEUseCommunityConfigurationExtension' )
+		) {
+			$list['EditGrowthConfig'] = [
+				'class' => SpecialEditGrowthConfigRedirect::class,
+			];
+		} else {
+			$list['EditGrowthConfig'] = [
+				'class' => SpecialEditGrowthConfig::class,
+				'services' => [
+					'TitleFactory',
+					'RevisionLookup',
+					'PageProps',
+					'DBLoadBalancer',
+					'ReadOnlyMode',
+					'GrowthExperimentsWikiPageConfigLoader',
+					'GrowthExperimentsWikiPageConfigWriterFactory',
+					'GrowthExperimentsCommunityConfig'
+				]
+			];
 		}
 	}
 }

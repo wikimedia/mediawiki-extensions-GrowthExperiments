@@ -105,7 +105,7 @@ class GrowthExperimentsServices {
 	}
 
 	public function getGrowthWikiConfig(): Config {
-		return $this->coreServices->get( 'GrowthExperimentsMultiConfig' );
+		return $this->coreServices->get( 'GrowthExperimentsCommunityConfig' );
 	}
 
 	public function getLoadBalancer(): ILoadBalancer {

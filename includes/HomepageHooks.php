@@ -279,7 +279,7 @@ class HomepageHooks implements
 					'PerDbNameStatsdDataFactory',
 					'GrowthExperimentsExperimentUserManager',
 					'GrowthExperimentsMentorManager',
-					'GrowthExperimentsMultiConfig',
+					'GrowthExperimentsCommunityConfig',
 					'UserOptionsManager',
 					'TitleFactory',
 				]
@@ -300,7 +300,7 @@ class HomepageHooks implements
 				'services' => [
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsChangeMentorFactory',
-					'GrowthExperimentsMultiConfig'
+					'GrowthExperimentsCommunityConfig'
 				]
 			];
 
