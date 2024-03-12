@@ -9,7 +9,9 @@
 			"Dogogos123",
 			"Iakovos Iason Tountas",
 			"MnLsVt",
-			"Pablothecat"
+			"Pablothecat",
+			"MDShanks",
+			"NikosLikomitros"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Γεια σας}}, {{bidi:$1}}!",
@@ -402,7 +404,7 @@
 	"growthexperiments-addlink-context-button-show-suggestion": "Εμφάνιση πρότασης συνδέσμου",
 	"growthexperiments-addlink-rejectiondialog-title": "Γιατί δεν είναι αυτός καλός σύνδεσμος;",
 	"growthexperiments-addlink-rejectiondialog-message": "Η απαντήσεις {{GENDER:$1|σας}} βοηθούν τις μελλοντικές προτάσεις.",
-	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Σχεδόν ο καθένας θέλει να μάθει τι είναι",
+	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Σχεδόν ο καθένας ξέρει τι είναι",
 	"growthexperiments-addlink-rejectiondialog-reason-more-fewer-words": "Το κείμενο θα πρέπει να περιλαμβάνει περισσότερες ή λιγότερες λέξεις (π.χ. «ελληνική σημαία» αντί «σημαία»)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Συνδέει σε λάθος λήμμα (π.χ. συνδέει στο «φεγγάρι» αντί στο «πλανήτης»)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Πατήστε στο μολύβι επεξεργασίας $1 δίπλα από το σύνδεσμο για να αλλάξετε τον προορισμό συνδέσμου",

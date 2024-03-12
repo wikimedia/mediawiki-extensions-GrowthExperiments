@@ -6,9 +6,13 @@
 			"Lhanars"
 		]
 	},
+	"growthexperiments-help-panel-cta-button-text": "Demandatz d'ajuda per l'edicion",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Paginas principalas sus l'edicion",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Mòstra mai d'articles d'ajuda",
+	"growthexperiments-help-panel-home-title": "Demandatz d'ajuda per l'edicion",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>I ès ?</strong> Clica sus \"{{int:vector-view-edit}}\" per commençar.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>I ès ?</strong> Dobras la seccion que vòles editar  e clicas sus l'icòna  del gredon.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Una correccion es una pitchòta modificacion del biais que  l'article es escrich, per exemple, une modificacion de l'ortogràfia, de la gramatica o de la lisibilitat del tèxte. Las correccions fan venir l'article mai professional e mai dignes de fisança."
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Una correccion es una pitchòta modificacion del biais que  l'article es escrich, per exemple, une modificacion de l'ortogràfia, de la gramatica o de la lisibilitat del tèxte. Las correccions fan venir l'article mai professional e mai dignes de fisança.",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Sul panèl d'ajuda",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Desactivar lo panèl d'ajuda"
 }

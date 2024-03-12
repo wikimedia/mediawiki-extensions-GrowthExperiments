@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Wien ass an Ärer Tabell?",
@@ -36,6 +37,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "ongeféier d'Hallschent vum Duerchschnëtt",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Duerchschnëtt (de Standard)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Ongeféier dat Duebelt vum Duerchschnëtt",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Ofbriechen",
 	"growthexperiments-manage-mentors-username": "Benotzernumm",
 	"growthexperiments-manage-mentors-last-active": "Fir d'lescht aktiv",
 	"growthexperiments-manage-mentors-weight": "Gewiicht",

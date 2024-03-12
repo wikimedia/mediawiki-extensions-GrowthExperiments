@@ -66,6 +66,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|သင်၏}} သက်ရောက်မှု",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1| သင်}}၏ မကြာသေးမီက လုပ်ဆောင်မှု (နောက်ဆုံး $2 {{PLURAL:$2|ရက်}}က)",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "နောက်ဆုံး တည်းဖြတ်ခဲ့သည်",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|ရက်|ရက်}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|တည်းဖြတ်မှု|တည်းဖြတ်မှုများ}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$2 ပေါ်ရှိ $1 {{PLURAL:$1|တည်းဖြတ်မှု|တည်းဖြတ်မှုများ}}",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "{{GENDER:$1|သင်}}တည်းဖြတ်ခဲ့သော ဆောင်းပါးများရှိ ကြည့်ရှုနှုန်းများ",
