@@ -2452,7 +2452,7 @@
 			"value": 100
 		},
 		"GEHelpPanelHelpDeskTitle": {
-			"description": "Mediawiki title for help panel CTA when users have disabled JS. Templates or magic words contained in this string will be expanded.",
+			"description": "MediaWiki title for help panel CTA when users have disabled JS. Templates or magic words contained in this string will be expanded.",
 			"value": "Main_Page"
 		},
 		"GEHelpPanelHelpDeskPostOnTop": {
