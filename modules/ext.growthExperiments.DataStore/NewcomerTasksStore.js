@@ -353,8 +353,8 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 			this.taskCount = updatedTaskQueue.length;
 		}
 
-		this.setTaskQueueLoading( false );
 		this.setTaskQueue( updatedTaskQueue );
+		this.setTaskQueueLoading( false );
 
 		if ( this.taskQueue.length ) {
 			this.maybeUpdateQualityGateConfig( this.taskQueue[ 0 ] );
