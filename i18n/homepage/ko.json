@@ -19,7 +19,7 @@
 			"Dr1t jg"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{bidi:$1}} {{GENDER:$1|안녕}}!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
 	"growthexperiments-homepage-tab": "홈페이지",
 	"tooltip-pt-homepage": "{{GENDER:|홈페이지}}",
 	"prefs-homepage": "새 편집자 기능",
