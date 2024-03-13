@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"CptViraj"
+			"CptViraj",
+			"Varnent"
 		]
 	},
+	"growthexperiments-structuredtask-onboarding-dialog-title": "પ્રસ્તાવના",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "વધુ જાણો"
 }
