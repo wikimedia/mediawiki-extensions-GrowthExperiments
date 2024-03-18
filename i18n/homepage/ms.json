@@ -21,5 +21,6 @@
 	"growthexperiments-addlink-context-button-reject": "Tidak",
 	"growthexperiments-addlink-context-button-next": "Langkau",
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-message": "Cadangan tidak lagi tersedia di rencana ini.",
+	"growthexperiments-addimage-summary-copyrightwarning": "Dengan menyimpan perubahan, {{GENDER:|anda}} bersetuju dengan [https://foundation.wikimedia.org/wiki/Terms_of_Use Terma Penggunaan] dan bersetuju melepaskan sumbangan anda di bawah lesen [https://creativecommons.org/licenses/by-sa/4.0/ CC BY-SA 4.0] dan [https://www.gnu.org/licenses/fdl-1.3.html GFDL 1.3].",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Faham"
 }
