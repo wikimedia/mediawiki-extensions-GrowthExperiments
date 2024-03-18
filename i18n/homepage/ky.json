@@ -1,13 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bosogo"
+			"Bosogo",
+			"Varnent"
 		]
 	},
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Жокко чыгаруу",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Улантуу",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Даяр",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Улантуу",
+	"growthexperiments-structuredtask-onboarding-dialog-title": "Киришүү",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Жокко чыгаруу",
 	"growthexperiments-addimage-inspector-yes-button": "Ооба",
 	"growthexperiments-addimage-inspector-no-button": "Жок",

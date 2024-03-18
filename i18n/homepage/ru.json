@@ -360,7 +360,7 @@
 	"growthexperiments-homepage-claimmentee-invalid-username": "Предоставлено некорректное имя учётной записи подопечного",
 	"growthexperiments-notification-header-mentor-change": "$1 теперь {{GENDER:$2|ваш новый наставник|ваша новая наставница}}{{GENDER:$3|}}",
 	"growthexperiments-notification-body-mentor-change": "Причина: $1",
-	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Поздоровайтесь}} с {{GENDER:$2|вашим новым наставником|вашей новой наставницей}}!",
+	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Поздоровайтесь}} со {{GENDER:$2|своим новым наставником|своей новой наставницей}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Вы}} должны быть указаны в списке наставников на [[$2]], чтобы иметь возможность использовать Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Список наставников сконфигурирован неправильно.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Список наставников ([[$1]]) не существует или неправильно настроен.",
