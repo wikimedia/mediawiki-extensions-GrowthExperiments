@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ranveig"
+			"Ranveig",
+			"Amire80"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Få foreslåtte oppgåver for nybyrjarar.",
@@ -11,7 +12,7 @@
 	"apihelp-query+growthtasks-param-limit": "Maksimalt tal på oppgåveforslag som skal returnerast.",
 	"apihelp-query+growthtasks-param-excludepageids": "Side-ID-ar som skal ekskluderast frå spørjinga.",
 	"apihelp-query+growthtasks-param-debug": "Legg til feilsøkingsdata i resultatet.",
-	"apihelp-query+growthtasks-example-1": "Hent oppgåveforslag for korrekturlesingsoppgåver for denne  brukaren.",
+	"apihelp-query+growthtasks-example-1": "Hent oppgåveforslag for korrekturlesingsoppgåver for denne brukaren.",
 	"apihelp-query+growthtasks-example-2": "Hent oppgåveforslag for den gjeldande brukaren, med utvida informasjon om sidene.",
 	"apihelp-query+growthnextsuggestedtasktype-summary": "Hent ein foreslått oppgåvetype ein brukar kan prøva etterpå.",
 	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Oppgåvetypen brukaren allereie jobbar med.",
