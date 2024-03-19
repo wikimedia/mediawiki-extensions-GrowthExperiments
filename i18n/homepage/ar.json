@@ -235,7 +235,7 @@
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 تريليون",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان اثنان|$1 تعديلات|$1 تعديلا|$1 تعديل}} خلال اليوم الأخير",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "لقد ساهم متطوعون ومتطوعات مثلك في تحسين {{SITENAME}} اليوم، {{GENDER:|انضم|انضمي}} إليهم!",
-	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "{{GENDER:|شاهد|شاهدي}} كل المقترحات",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "{{GENDER:|شاهد|شاهدي}} كل الاقتراحات",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "{{GENDER:|أصلح|أصلحي}} الإملاء والنحو ونمط المقالة",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "{{GENDER:|أضف|أضيفي}} مصادر للتحقق من مقالات ويكيبيديا",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "{{GENDER:|حدِّث|حدِّثي}} المقالات",
