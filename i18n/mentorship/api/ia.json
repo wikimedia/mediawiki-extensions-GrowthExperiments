@@ -33,5 +33,6 @@
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalida un suggestion de un apprentisse digne de laude in le modulo de laude personalisate sur le tabuliero del mentor",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Le apprentisse a invalidar",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Motivo pro invalidar le suggestion",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Motivo pro saltar pro invalidar le suggestion"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Motivo pro saltar pro invalidar le suggestion",
+	"apihelp-query+growthmentorlist-summary": "Listar tote le mentores"
 }
