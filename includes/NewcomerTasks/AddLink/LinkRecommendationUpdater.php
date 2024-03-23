@@ -248,7 +248,7 @@ class LinkRecommendationUpdater {
 		);
 		$goodLinkCount = count( $recommendation->getLinks() );
 		if ( $goodLinkCount === 0
-			 || !$force && $goodLinkCount < $this->getLinkRecommendationTaskType()->getMinimumLinksPerTask()
+			 || ( !$force && $goodLinkCount < $this->getLinkRecommendationTaskType()->getMinimumLinksPerTask() )
 		) {
 			return $this->failure( "number of good links too small ($goodLinkCount)" );
 		}

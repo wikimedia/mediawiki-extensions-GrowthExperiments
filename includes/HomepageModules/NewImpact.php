@@ -332,10 +332,10 @@ class NewImpact extends BaseModule {
 	 * @inheritDoc
 	 */
 	public function getState() {
-		if ( $this->canRender()
+		if ( ( $this->canRender()
 			// On null (first 1000 edits are non-mainspace) assume rest are non-mainspace as well
 			// (chances are it's some kind of bot or role account).
-			&& $this->hasMainspaceEdits()
+			&& $this->hasMainspaceEdits() )
 			// Always show the module activated when a user is looking to another user data
 			|| $this->shouldShowForOtherUser()
 		) {

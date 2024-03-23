@@ -75,7 +75,7 @@ class SiteNoticeGenerator {
 		&$siteNotice, \Skin $skin, &$minervaEnableSiteNotice
 	) {
 		if ( $this->isWelcomeSurveyInReferer( $skin )
-			|| Util::isMobile( $skin ) && !$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin )
+			|| ( Util::isMobile( $skin ) && !$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin ) )
 		) {
 			return $this->setDiscoverySiteNotice(
 				$siteNotice,
