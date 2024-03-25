@@ -17,7 +17,7 @@ use StatusValue;
 use WANObjectCache;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandlerTest
+ * @covers \GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler
  */
 class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 
