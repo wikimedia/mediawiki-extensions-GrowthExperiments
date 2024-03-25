@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dyolf77 (WMF)"
+			"Dyolf77 (WMF)",
+			"Amire80",
+			"Drii10291"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "{{GENDER:|تحصّل|تحصّلي}} على الاقتراحات الملائمة للوافدين الجدد",
 	"apihelp-query+growthtasks-extended-description": "تقوم باقتراح حزمة من المقالات ذات المشاكل العالقة السهلة بما يكفي ليتعامل معها محرر جديد.",
-	"apihelp-query+growthtasks-param-tasktypes": "أنواع المهام لحصر النتائج. {{GENDER:|اُتركها|اُتركيها}} فارعة للحصول على كلّّ المقترحات.",
+	"apihelp-query+growthtasks-param-tasktypes": "أنواع المهام لحصر النتائج. {{GENDER:|اُتركها|اُتركيها}} فارعة للحصول على كلّّ الاقتراحات.",
 	"apihelp-query+growthtasks-param-topics": "مواضيع المقالات المحبّذة في اقتراح المهام.",
 	"apihelp-query+growthtasks-param-limit": "العدد الأقصى من المهام المقترحة.",
 	"apihelp-query+growthtasks-param-excludepageids": "معرّفات الصفحات المُراد استبعادها من الاستعلام.",

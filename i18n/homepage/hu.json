@@ -23,7 +23,7 @@
 	"prefs-homepage": "Új felhasználó szerkesztő funkciói",
 	"growthexperiments-homepage-enable": "Az új szerkesztők honlapjának megjelenítése",
 	"growthexperiments-homepage-pt-link": "A szerkesztői névről az új szerkesztők honlapjára történő linkelés (a szerkesztői lap helyett)",
-	"growthexperiments-homepage-email-header-noemail": "$1, add meg az e-mail-címedet",
+	"growthexperiments-homepage-email-header-noemail": "Add meg az {{GENDER:$1|e-mail-címed}}",
 	"growthexperiments-homepage-email-header-unconfirmed": "Erősítsd meg az e-mail-címedet",
 	"growthexperiments-homepage-email-header-confirmed": "E-mail megadva",
 	"growthexperiments-homepage-email-header-startemail": "E-mail: $1",
