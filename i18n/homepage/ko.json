@@ -91,7 +91,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "편집한 문서의 조회수",
 	"growthexperiments-homepage-impact-scores-edit-count": "총 편집",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "되돌려진 편집",
-	"growthexperiments-homepage-impact-scores-thanks-count": "감사 표현을 받았습니다",
+	"growthexperiments-homepage-impact-scores-thanks-count": "받은 감사 표현",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "감사 표현의 동작 방식에 관한 추가 정보",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} 사이트는 {{GENDER:$1|여러분}}과 같은 편집자 공동체가 만들어갑니다. 여러분이 편집한 내용에 대해 다른 기여자로부터 감사를 표할 수 있고 다른 사람의 편집 내용에 대해서도 감사를 표할 수 있습니다. 측정 항목에는 최근 $2개 편집에 대해 받은 감사 표현만 포함됩니다.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} 사이트는 편집자 공동체가 만들어갑니다. 모든 기여자는 편집에 대해 다른 사람으로부터 감사 표현을 받을 수 있습니다. 받은 감사 표현의 수가 여기에 표시됩니다. 측정항목에는 가장 최근 $1개 편집에 대해 받은 감사 표현만 포함됩니다.",

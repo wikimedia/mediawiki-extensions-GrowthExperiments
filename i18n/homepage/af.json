@@ -40,5 +40,6 @@
 	"growthexperiments-specialimpact-title": "Impak",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER: $ 2 | U het}} {{GENDER: $ 1 | $ 1's}} mentor verander na $ 2",
 	"growthexperiments-log-header": "Dit is 'n logboek van aksies wat in GrowthExperiments-uitbreiding gedoen is.",
-	"growthexperiments-notification-header-mentor-change": "$ 1 {{GENDER: $ 2 | is u}} nuwe mentor"
+	"growthexperiments-notification-header-mentor-change": "$ 1 {{GENDER: $ 2 | is u}} nuwe mentor",
+	"growthexperiments-notification-body-mentor-change": "Rede: $1"
 }
