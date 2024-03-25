@@ -100,5 +100,20 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Try Suggested edits notification",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Maximum number of edits a newcomer can have to qualify for receiving this notification. If set to 0, no newcomers </br> will receive this notification. The higher the number, the more newcomers will receive this notification.<br> This notification is only sent to newcomers who have not completed Suggested edits.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Keep going notification",
-	"growthexperiments-edit-config-keep-going-notification-description": "Maximum number of suggested edits a newcomer can complete to qualify for receiving this notification. If set to 0,<br> no newcomers will receive this notification. The higher the number, the more newcomers will receive this notification.<br> This notification is only sent to newcomers who have already completed at least one Suggested edit."
+	"growthexperiments-edit-config-keep-going-notification-description": "Maximum number of suggested edits a newcomer can complete to qualify for receiving this notification. If set to 0,<br> no newcomers will receive this notification. The higher the number, the more newcomers will receive this notification.<br> This notification is only sent to newcomers who have already completed at least one Suggested edit.",
+	"communityconfiguration-mentorship-title": "Mentorship",
+	"communityconfiguration-mentorship-description": "Customize mentorship settings and eligibility, while adjusting edit minimums and timeframes for mentors and praise-worthy mentees.",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Should users be automatically eligible for mentorship?",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-control-label": "x",
+	"communityconfiguration-mentorship-gementorshipenabled-label": "Are mentorship features enabled?",
+	"communityconfiguration-mentorship-gementorshipenabled-control-label": "x",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Minimum number of days a user must be registered to sign up as a mentor",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Minimum number of edits a user must have made (on any namespace) to sign up as a mentor",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Number of days that are considered when evaluating mentee's praiseworthiness",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Mentors can change this option for their own user in the Mentor dashboard.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-label": "By default, how often should mentors receive notifications to remind them to send encouragement to mentees who are editing successfully?",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Mentors can change this option for their own user in the Mentor dashboard.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Maximum number of edits an user can have to be considered praiseworthy",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Default minimum number of edits a mentee must have to be praiseworthy",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentors can change this option for their own user in the Mentor dashboard."
 }
