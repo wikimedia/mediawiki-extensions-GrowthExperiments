@@ -69,8 +69,8 @@ class UserImpactFormatter {
 				// if there's no data for that day. (We can't differentiate between no data and
 				// legitimately 0 views, but it's not really possible to edit a page and not
 				// generate any pageviews.)
-				|| $data['firstEditDate'] === $lastDayWithPageViewData
-					&& $data['views'][$lastDayWithPageViewData] === 0;
+				|| ( $data['firstEditDate'] === $lastDayWithPageViewData
+					&& $data['views'][$lastDayWithPageViewData] === 0 );
 
 			if ( $noPageviewDataYet ) {
 				$recentEditsWithoutPageviews[$title] = $data;
