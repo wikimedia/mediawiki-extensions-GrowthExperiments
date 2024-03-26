@@ -103,5 +103,17 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "התראה על המלצה לנסות עריכות מוצעות",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "המספר המרבי של עריכות שצריכות להיות למשתמש חדש כדי שיהיה זכאי לקבלת ההתראה הזאת. אם זה 0, שום משתמש חדש לא יקבל את ההתראה הזאת. ככל שהמספר גבוה יותר, כך יותר משתמשים חדשים יקבלו את ההתראה הזאת. ההתראה נשלחת רק למשתמשים חדשים שלא השלימו עריכות מוצעות.",
 	"growthexperiments-edit-config-keep-going-notification-title": "התראה שמזמינה להמשיך",
-	"growthexperiments-edit-config-keep-going-notification-description": "המספר המרבי של עריכות מוצעות שמשתמש חדש צריך להשלים כדי להיות זכאי לקבלת ההתראה הזאת. אם זה 0, שום משתמש חדש לא יקבל את ההתראה הזאת. ככל שהמספר גבוה יותר, כך יותר משתמשים חדשים יקבלו את ההתראה הזאת. ההתראה הזאת נשלחת רק למצטרפים חדשים שכבר השלימו לפחות עריכה מוצעת אחת."
+	"growthexperiments-edit-config-keep-going-notification-description": "המספר המרבי של עריכות מוצעות שמשתמש חדש צריך להשלים כדי להיות זכאי לקבלת ההתראה הזאת. אם זה 0, שום משתמש חדש לא יקבל את ההתראה הזאת. ככל שהמספר גבוה יותר, כך יותר משתמשים חדשים יקבלו את ההתראה הזאת. ההתראה הזאת נשלחת רק למצטרפים חדשים שכבר השלימו לפחות עריכה מוצעת אחת.",
+	"communityconfiguration-mentorship-title": "חונכות",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "האם משתמשים צריכים להיות זכאים אוטומטית לתפקיד חונך?",
+	"communityconfiguration-mentorship-gementorshipenabled-label": "האם אפשרויות החונכות מופעלות?",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "מספר הימים שמשתמש צריך להיות רשום כדי להירשם לתפקיד חונך",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "מספר העריכות הנדרש שמשתמש צריך לעשות (בכל מרחב שם) כדי להירשם בתור חונך",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "מספר הימים הנלקחים בחשבון בעת הערכת מידת השבח של החניך",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "חונכים יכולים לשנות את האפשרות הזאת עבור החשבון שלהם בלוח הבקרה לחונכים.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-label": "כברירת מחדל, באיזו תדירות חונכים צריכים לקבל התראות כדי להזכיר להם לשלוח עידוד לחניכים שעורכים טוב?",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "חונכים יכולים לשנות את האפשרות הזאת עבור החשבון שלהם בלוח הבקרה לחונכים.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "המספר העריכות המרבי שיכולות להיות למשתמש כדי שייחשב ראוי לשבח",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "ברירת מחדל של מספר העריכות הקטן ביותר שצריכות להיות לחניך כדי שיהיה ראוי לשבח",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "חונכים יכולים לשנות את האפשרות הזאת עבור החשבון שלהם בלוח הבקרה לחונכים."
 }

@@ -102,5 +102,17 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Notification “Tentar modificationes suggerite”",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Le numero maxime de modificationes que un novicio pote haber pro qualificar se pro reciper iste notification. Si es mittite a 0, necun novicio recipera iste notification. Quanto plus grande le numero, tanto plus novicios recipera iste notification. Iste notification se invia solmente al novicios qui non ha completate le Modificationes suggerite.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Notification “Continua assi”",
-	"growthexperiments-edit-config-keep-going-notification-description": "Le numero maxime de modificationes que un novicio pote haber pro qualificar se pro reciper iste notification. Si es mittite a 0, necun novicio recipera iste notification. Quanto plus grande le numero, tanto plus novicios recipera iste notification. Iste notification se invia solmente al novicios qui ha ja completate al minus un Modification suggerite."
+	"growthexperiments-edit-config-keep-going-notification-description": "Le numero maxime de modificationes que un novicio pote haber pro qualificar se pro reciper iste notification. Si es mittite a 0, necun novicio recipera iste notification. Quanto plus grande le numero, tanto plus novicios recipera iste notification. Iste notification se invia solmente al novicios qui ha ja completate al minus un Modification suggerite.",
+	"communityconfiguration-mentorship-title": "Mentorato",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Debe le usatores esser automaticamente eligibile al mentorato?",
+	"communityconfiguration-mentorship-gementorshipenabled-label": "Es le functionalitate de mentorato activate?",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Etate minime in dies del conto de un usator pro poter inscriber se como mentor",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Numero minime de modificationes que un usator debe haber facite (in qualcunque spatio de nomines) pro poter inscriber se como mentor",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Numero de dies considerate quando se evaluta le commendabilitate de un apprentisse",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Le mentores pote cambiar iste option pro lor proprie conto de usator in le tabuliero de instrumentos del mentor.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-label": "Per predefinition, a qual frequentia debe le mentores reciper notificationes pro rememorar les de inviar incoragiamentos al apprentisses qui face bon modificationes?",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Le mentores pote cambiar iste option pro lor proprie conto de usator in le tabuliero de instrumentos del mentor.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Numero maxime de modificationes que un usator pote haber pro esser considerate commendabile",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Numero minime predefinite de modificationes que un apprentisse debe haber pro esser commendabile",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Le mentores pote cambiar iste option pro lor proprie conto de usator in le tabuliero de instrumentos del mentor."
 }
