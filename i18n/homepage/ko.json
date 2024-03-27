@@ -91,7 +91,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "편집한 문서의 조회수",
 	"growthexperiments-homepage-impact-scores-edit-count": "총 편집",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "되돌려진 편집",
-	"growthexperiments-homepage-impact-scores-thanks-count": "감사 표현을 받았습니다",
+	"growthexperiments-homepage-impact-scores-thanks-count": "받은 감사 표현",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "감사 표현의 동작 방식에 관한 추가 정보",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "최장 연속 활동에 관한 정보",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|당신의}} 현재의 최장 연속 활동 기간은 $3 사이에 수행한 $2{{PLURAL:$2|일}}입니다.",

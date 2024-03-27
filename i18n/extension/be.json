@@ -5,7 +5,8 @@
 			"Chadyka",
 			"Kareyac",
 			"Maksim L.",
-			"Plaga med"
+			"Plaga med",
+			"No Sleep till Krupki"
 		]
 	},
 	"growthexperiments-desc": "Гэта пашырэнне змяшчае эксперыменты, якія праводзіць каманда Росту.",
@@ -77,7 +78,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "Максімальная колькасць праранаваных заданняў «Дадаць спасылку», якія навічок зможа выполнять штодзённа.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Спіс назваў раздзелаў, у якіх не варта рэкамендаваць спасылкі.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Мэтавая старонка, дзе можна даведацца больш аб тыпе задачы па рэкамендацыі выяваў.",
-	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "Максімальная колькасць праранаваных заданняў «Дадаць выяву», якія навічок зможа выполнять штодзённа.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "Максімальная колькасць прапанаваных заданняў «Дадаць малюнак у неілюстраваны артыкул», якія пачатковец можа выконваць штодня.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Гэты тып задання звязаны з машыннымі прапановамі і не выкарыстоўвае шаблоны для стварэння набору задач.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Артыкулы, якія змяшчаюць шаблоны, вызначаныя тут, не будуць паказвацца ўдзельнікам як заданні для гэтага тыпу задання.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Артыкулы, якія змяшчаюць катэгорыі, вызначаныя тут, не будуць паказвацца ўдзельнікам як заданні для гэтага тыпу задання.",

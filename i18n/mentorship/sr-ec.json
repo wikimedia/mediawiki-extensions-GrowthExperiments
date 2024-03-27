@@ -173,6 +173,7 @@
 	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "Одустао од менторисања",
 	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "Одустао од менторисања: $2",
 	"growthexperiments-mentorship-enrollasmentor-title": "Постаните {{GENDER:|ментор|менторка}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Хвала за волонтирање на {{SITENAME}} као {{GENDER:|ментор|менторка}}. Попуните следећи образац да би постали {{GENDER:|ментор|менторка}}.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Представите се",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Представљање себе као {{GENDER:|ментора|менторку}}. Не више од 240 карактера и без викитекста!",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Упиши ме",
