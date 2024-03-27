@@ -56,7 +56,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "صفحهٔ مقصد پیوندی دربارهٔ ایجاد یک مقالهٔ تازه",
 	"growthexperiments-edit-config-homepage-intro-links-image": "صفحهٔ مقصد پیوندی دربارهٔ چگونگی افزودن تصاویر با استفاده از ویرایشگر دیداری",
 	"growthexperiments-edit-config-mentorship": "مربی‌گری",
-	"growthexperiments-edit-config-mentorship-description-structured": "مربی‌ها می‌توانند دو نقش داشته باشند. به‌طور پیش‌فرض، مربی‌ها به‌طور تصادفی به تازه‌واردان اختصاص داده می شوند. برای مربی‌هایی که تنها می‌خواهند مربی افزاد جذب‌شده از طریق رویدادها یا کلاس‌ها باشند، یک گزینه در دسترس است: هیچ تازه‌واردی به آنان اختصاص داده نمی‌شود، اما خودشان می‌توانند آموزش آن‌ها را برعهده بگیرند.\n\nشمار ایدئال مربی‌ها، یک کربی برای هر گروه ۵۰۰تایی از حساب‌های جدید است و حداقل تعداد نیز ۳ مربی است.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|دربارهٔ نحوهٔ کارکرد مربی‌گری بیشتر بدانید]]",
+	"growthexperiments-edit-config-mentorship-description-structured": "مربی‌ها می‌توانند دو نقش داشته باشند. به‌طور پیش‌فرض، مربی‌ها به‌طور تصادفی به تازه‌واردان اختصاص داده می‌شوند. برای مربی‌هایی که تنها می‌خواهند مربی افزاد جذب‌شده از طریق رویدادها یا کلاس‌ها باشند، یک گزینه در دسترس است: هیچ تازه‌واردی به آنان اختصاص داده نمی‌شود، اما خودشان می‌توانند آموزش آن‌ها را برعهده بگیرند.\n\nشمار ایدئال مربی‌ها، یک کربی برای هر گروه ۵۰۰تایی از حساب‌های جدید است و حداقل تعداد نیز ۳ مربی است.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|دربارهٔ نحوهٔ کارکرد مربی‌گری بیشتر بدانید]]",
 	"growthexperiments-edit-config-mentorship-enabled": "آیا ویژگی‌های مربی‌گری فعال هستند؟",
 	"growthexperiments-edit-config-mentorship-enabled-true": "بله",
 	"growthexperiments-edit-config-mentorship-enabled-false": "خیر",
