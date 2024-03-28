@@ -46,7 +46,7 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "不記得了",
 	"welcomesurvey-question-mailinglist-label": "我想透過電子郵件接收有關如何開始編輯的提示。",
 	"welcomesurvey-question-mailinglist-help": "請注意，本郵件清單由 MailChimp 提供，這意味著 MailChimp 對{{GENDER:|您的}}資訊方面使用受其[https://www.intuit.com/privacy/statement/ 隱私政策]和[https://mailchimp.com/legal/terms/ 服務條款]的約束。",
-	"welcomesurvey-question-email-label": "電子郵件地址（選填）",
+	"welcomesurvey-question-email-label": "電子信箱地址（非必填）",
 	"welcomesurvey-question-email-placeholder": "請輸入{{GENDER:|您}}的電子郵件地址…",
 	"welcomesurvey-question-email-help": "我們注意到{{GENDER:|您}}建立帳戶時，沒有輸入電子郵件地址。當您遺失密碼時，能使用電子郵件來恢復帳戶，因此我們<strong>強烈建議</strong>您輸入電子郵件地址。備註：當其他使用者與您聯繫時，並不會揭露您的電子郵件地址。",
 	"welcomesurvey-question-languages-label": "{{SITENAME}}有將近 300 種語言可用。請問{{GENDER:|您}}有其他閱讀和書寫時使用的語言嗎？",

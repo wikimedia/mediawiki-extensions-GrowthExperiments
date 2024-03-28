@@ -101,5 +101,7 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Təklif edilən redaktə bildirişini sınayın",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Yeni gələnin bu bildirişi almaq üçün uyğun ola biləcəyi redaktələrin maksimum sayı. 0-a təyin edilərsə, heç kim bu bildirişi almayacaq. Sayı nə qədər çox olarsa, bir o qədər çox yeni istifadəçi bu bildirişi alacaq.<br> Bu bildiriş yalnız Təklif edilən redaktələri tamamlamamış istifadəçilərə göndərilir.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Davam edin bildirişi",
-	"growthexperiments-edit-config-keep-going-notification-description": "Yeni gələnin bu bildirişi almaq hüququna malik olmaq üçün tamamlaya biləcəyi təklif olunan redaktələrin maksimum sayı. 0-a təyin edilərsə,<br> yeni gələnlər bu bildirişi almayacaq. Sayı nə qədər çox olarsa, bir o qədər çox yeni istifadəçi bu bildirişi alacaq.<br> Bu bildiriş yalnız ən azı bir Təklif edilən redaktəni tamamlamışlara göndərilir."
+	"growthexperiments-edit-config-keep-going-notification-description": "Yeni gələnin bu bildirişi almaq hüququna malik olmaq üçün tamamlaya biləcəyi təklif olunan redaktələrin maksimum sayı. 0-a təyin edilərsə,<br> yeni gələnlər bu bildirişi almayacaq. Sayı nə qədər çox olarsa, bir o qədər çox yeni istifadəçi bu bildirişi alacaq.<br> Bu bildiriş yalnız ən azı bir Təklif edilən redaktəni tamamlamışlara göndərilir.",
+	"communityconfiguration-mentorship-title": "Mentorluq",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Mentorlar bu seçimi Mentor idarəetmə panelində öz istifadəçiləri üçün dəyişə bilərlər."
 }
