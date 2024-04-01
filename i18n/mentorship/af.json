@@ -4,5 +4,6 @@
 			"Rooiratel"
 		]
 	},
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Aantal teruggerolde wysigings"
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Aantal teruggerolde wysigings",
+	"growthexperiments-notification-body-mentee-claimed": "Rede: $1"
 }
