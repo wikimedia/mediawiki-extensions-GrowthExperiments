@@ -5,6 +5,7 @@
 			"BnSrSa",
 			"DDPAT",
 			"Danniel07",
+			"Eulalio",
 			"Ice bulldog",
 			"Jackiezelaya",
 			"Khiari",
@@ -108,5 +109,17 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas plantillas son necesarias para la función de tareas para recién llegados [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugerencias de imagen]]. Los artículos que contienen estas plantillas no se incluirán como tareas de sugerencia de imágenes.",
 	"growthexperiments-edit-config-delayed": "Los cambios en esta configuración no tendrán efecto inmediato (véase [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Cerrar",
-	"specialpages-group-growth-tools": "Herramientas de Growth"
+	"specialpages-group-growth-tools": "Herramientas de Growth",
+	"communityconfiguration-mentorship-title": "Tutoría",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "¿Los usuarios deberían ser automáticamente elegibles para recibir tutoría?",
+	"communityconfiguration-mentorship-gementorshipenabled-label": "¿Están habilitadas las funciones de tutoría?",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Número de días mínimo desde el registro para poder inscribirse como tutor/a",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Número mínimo de ediciones que un usuario debe haber realizado (en cualquier espacio de nombres) para registrarse como tutor",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Número de días que se tienen en cuenta a la hora de evaluar los méritos de las personas evaluadas",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Los tutores pueden cambiar esta opción para su propio usuario en el panel de Tutor.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-label": "Por defecto, ¿con qué frecuencia deben recibir las/os tutoras/es notificaciones para recordarles que deben enviar ánimos a aquellos de sus aprendices que están editando correctamente?",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Los tutores pueden cambiar esta opción para su propio usuario en el panel de Tutor.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "El número máximo de ediciones que un usuario puede tener debe considerarse digno de elogio",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Número mínimo de ediciones que debe tener una persona novata para ser merecedora de elogios",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Los tutores pueden cambiar esta opción para su propio usuario en el panel de Tutor."
 }
