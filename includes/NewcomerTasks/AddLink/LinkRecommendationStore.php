@@ -213,12 +213,12 @@ class LinkRecommendationStore {
 			'gelr_page' => $pageId,
 			'gelr_data' => json_encode( $linkRecommendation->toArray() ),
 		];
-		$this->loadBalancer->getConnection( DB_PRIMARY )->replace(
-			'growthexperiments_link_recommendations',
-			'gelr_revision',
-			$row,
-			__METHOD__
-		);
+		$this->loadBalancer->getConnection( DB_PRIMARY )->newReplaceQueryBuilder()
+			->replaceInto( 'growthexperiments_link_recommendations' )
+			->uniqueIndexFields( 'gelr_revision' )
+			->row( $row )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	/**
