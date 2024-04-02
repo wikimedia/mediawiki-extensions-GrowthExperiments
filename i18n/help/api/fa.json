@@ -9,7 +9,7 @@
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "مدیریت ارسال سوال‌های میز کمک برای کاربر کنونی.",
-	"apihelp-helppanelquestionposter-param-body": "متن پرسش که توسط کاربر ارایه شده‌است.",
+	"apihelp-helppanelquestionposter-param-body": "متن پرسش که توسط کاربر ارایه شده است.",
 	"apihelp-helppanelquestionposter-param-source": "شیوه‌ای که پرسش ارسال شده است.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "پنل «پرسش میز کمک»",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "پنل «پرسش از راهنمایتان» در صفحهٔ اصلی تازه‌واردان",
