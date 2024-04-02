@@ -92,15 +92,16 @@ class DatabaseUserImpactStore implements UserImpactStore {
 				->caller( __METHOD__ )
 				->execute();
 		} else {
-			$dbw->upsert(
-				self::TABLE_NAME,
-				[
+			$dbw->newInsertQueryBuilder()
+				->insertInto( self::TABLE_NAME )
+				->row( [
 					'geui_user_id' => $userImpact->getUser()->getId(),
-				] + $data,
-				'geui_user_id',
-				$data,
-				__METHOD__
-			);
+				] + $data )
+				->onDuplicateKeyUpdate()
+				->uniqueIndexFields( 'geui_user_id' )
+				->set( $data )
+				->caller( __METHOD__ )
+				->execute();
 		}
 	}
 
