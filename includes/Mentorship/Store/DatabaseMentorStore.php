@@ -150,19 +150,20 @@ class DatabaseMentorStore extends MentorStore {
 			);
 			return;
 		}
-		$dbw->upsert(
-			'growthexperiments_mentor_mentee',
-			[
+		$dbw->newInsertQueryBuilder()
+			->insertInto( 'growthexperiments_mentor_mentee' )
+			->row( [
 				'gemm_mentee_id' => $mentee->getId(),
 				'gemm_mentor_id' => $mentor->getId(),
 				'gemm_mentor_role' => $mentorRole,
-			],
-			[ [ 'gemm_mentee_id', 'gemm_mentor_role' ] ],
-			[
+			] )
+			->onDuplicateKeyUpdate()
+			->uniqueIndexFields( [ 'gemm_mentee_id', 'gemm_mentor_role' ] )
+			->set( [
 				'gemm_mentor_id' => $mentor->getId()
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	/**
