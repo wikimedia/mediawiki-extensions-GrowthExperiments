@@ -6,7 +6,9 @@
 			"Pierpao",
 			"Sakretsu",
 			"Stefano",
+			"Titore",
 			"ValeJappo",
+			"Valepert",
 			"Vivbod"
 		]
 	},
@@ -51,6 +53,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Il cruscotto del mentore mostra solo gli allievi attivi di recente. Ulteriori informazioni possono essere visualizzate tramite l'icona delle informazioni. Se {{GENDER:|ti}} sei iscritto di recente al tutoraggio, {{GENDER:|potresti}} non avere ancora alcun allievo assegnato.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nessun allievo trovato",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifica i {{GENDER:|}}filtri per trovare gli allievi.",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Modifiche recenti dei {{GENDER:|tuoi}} allievi",
 	"growthexperiments-mentor-dashboard-resources-headline": "Risorse",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gestisci i tutor",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Vedi elenco dei tutor",
@@ -139,6 +142,6 @@
 	"growthexperiments-manage-mentors-edit-reason": "Motivo",
 	"growthexperiments-manage-mentors-remove-mentor": "Rimuovi",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Messaggio introduttivo",
-	"growthexperiments-mentorship-enrollasmentor-enroll": "Iscriversi",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Iscriviti",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Solo utenti con almeno $1 {{PLURAL:$1|modifica|modifiche}} e $2 {{PLURAL:$2|giorno|giorni}} di presenza possono iscriversi come tutor."
 }
