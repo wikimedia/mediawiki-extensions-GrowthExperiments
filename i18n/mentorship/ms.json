@@ -4,6 +4,18 @@
 			"Hakimi97"
 		]
 	},
+	"growthexperiments-mentor-dashboard-title": "Papan pemuka mentor",
+	"growthexperiments-mentor-dashboard-pt-link": "Papan pemuka mentor",
+	"growthexperiments-mentor-dashboard-disabled": "Papan pemuka mentor tidak didayakan di wiki ini.",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Untuk mendayakan papan pemuka mentor, {{GENDER:|anda}} perlu terlebih dahulu [[$1|mendaftar sebagai seorang mentor]].",
+	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Sebelum papan pemuka mentor boleh digunakan, senarai mentor perlu dikonfigurasikan terlebih dahulu. Penyelia boleh menggunakan [[Special:EditGrowthConfig]] untuk tujuan itu.",
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Menti {{GENDER:|anda}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Lihat menti {{GENDER:|anda}} seperti berikut. Gunakan penapis untuk menukar nama menti yang ditunjukkan.",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Jadual tersebut memerlukan JavaScript. Sila dayakan JavaScript supaya dapat menggunakan modul ini.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Siapakah yang terdapat di jadual {{JANTINA:|anda}}?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Maklumat lanjut tentang siapa yang berada dalam jadual {{GENDER:|anda}}.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Jadual ini menunjukkan mentee {{GENDER:|anda}} yang akaunnya telah dicipta dalam tempoh dua minggu yang lalu atau yang telah menyunting dalam tempoh enam bulan yang lalu dan mempunyai [https://mediawiki.org/wiki/Special:MyLanguage/Growth /Feature_summary#NH halaman utama pendatang baru yang didayakan]. Data dikemas kini setiap tiga jam.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Petunjuk",
 	"growthexperiments-notification-header-new-praiseworthy-mentees": "Hantar sokongan kepada menti-menti melalui papan pemuka Mentor",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Lihat papan pemuka mentor",
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "Inilah penghargaan kerana menyiapkan kerja dengan baik!",
@@ -27,5 +39,14 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Pemberitahuan",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext": "{{GENDER:|Anda}} akan diberitahu selepas menti dipaparkan pujian untuknya.",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Simpan",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Batalkan"
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Batalkan",
+	"growthexperiments-manage-mentors-pretext-to-enroll": "Untuk mendaftar sebagai mentor, pergi ke [[Special:EnrollAsMentor]].",
+	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "Menambah $1 sebagai mentor",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Menambah diri saya sebagai mentor",
+	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "Mengalih keluar $1 sebagai mentor",
+	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "Mengundurkan diri dari menjadi mentor",
+	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "Mengundur diri dari menjadi mentor: $2",
+	"growthexperiments-mentorship-enrollasmentor-title": "Daftar sebagai {{GENDER:|mentor}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Terima kasih kepada {{GENDER:|anda}} kerana menawarkan diri sebagai {{SITENAME}} {{GENDER:|mentor}}. {{JANTINA:|Anda}} boleh mendaftar sebagai mentor dengan mengisi borang ini.",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Menambah diri saya sebagai mentor"
 }
