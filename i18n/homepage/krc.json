@@ -6,7 +6,7 @@
 	},
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Разылыкъ къалай ишлегенини юсюнден асламыракъ информация",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Эм узун серияны юсюнден асламыракъ информация",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Сиз}} $3 алгъан, {{GENDER:$1|сизни}} баргъан эм узун сериягъыз – бир кюндю.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "Эм узун {{GENDER:$1|сериягъыз}} $2 датада болгъан бир кюн.",
 	"growthexperiments-homepage-impact-subheader-text": "Эм кёб къаралгъанла ({{GENDER:$1|сизни}} тюзетиуюгюзден сора)",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-title": "Ахыр $1 {{PLURAL:$1|кюнде}} тюзетилген статьяны, хар кюн къаралгъанын кёргюзген сыз диаграмма.",
 	"growthexperiments-homepage-impact-error-data-not-found-text": "{{GENDER:$1|Сизни}} информациягъызны алыуда заманлы тыйгъыч болду",

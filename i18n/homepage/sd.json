@@ -76,7 +76,7 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "ھاڻوڪي ڊگهي اسٽريڪ $1 {{PLURAL:$1|ڏينھن}} آھي جيڪا  $2 جي وچ ۾ حاصل ڪئي وئي.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|توهان جي}} ھاڻوڪي ڊگهي اسٽريڪ هڪ ڏينھن آهي جيڪا {{GENDER:$1|توھان}} $2 تي حاصل ڪئي.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "ھاڻوڪي ڊگهي ترين اسٽريڪ هڪ ڏينھن آهي جيڪا $1 تي حاصل ڪئي وئي.",
-	"growthexperiments-homepage-impact-subheader-text": "({{GENDER:$1|توھان}} جيڪي سنوار کانپوءِ) سڀ کان وڌيڪ ڏيٺون",
+	"growthexperiments-homepage-impact-subheader-text": "({{GENDER:$1|توھان جي}} سنوار بعد) سڀ کان وڌيڪ ڏيٺون",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|توھان}} جي سنوارڻ کان ڏيٺون (گذريل 60 ڏينھن):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|پنھنجون}} سڀ سنوارون ڏسو ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|توھان}} اڃا ڪي بہ مضمون سرجيا يا سنواريا ناھن.",
