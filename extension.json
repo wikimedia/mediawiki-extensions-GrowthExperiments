@@ -655,6 +655,11 @@
 			}
 		},
 		"CommunityConfiguration": {
+			"ProviderClasses": {
+				"GrowthSuggestedEdits": {
+					"class": "GrowthExperiments\\Config\\Providers\\SuggestedEditsConfigProvider"
+				}
+			},
 			"Providers": {
 				"HelpPanel": {
 					"store": {
@@ -714,7 +719,7 @@
 							"GrowthExperiments\\Config\\Schemas\\SuggestedEditsSchema"
 						]
 					},
-					"type": "data"
+					"type": "GrowthSuggestedEdits"
 				}
 			}
 		}
