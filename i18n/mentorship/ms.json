@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"growthexperiments-mentor-dashboard-title": "Papan pemuka mentor",
+	"growthexperiments-mentor-dashboard-pt-link": "Papan pemuka mentor",
+	"growthexperiments-mentor-dashboard-disabled": "Papan pemuka mentor tidak didayakan di wiki ini.",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Untuk mendayakan papan pemuka mentor, {{GENDER:|anda}} perlu terlebih dahulu [[$1|mendaftar sebagai seorang mentor]].",
+	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Sebelum papan pemuka mentor boleh digunakan, senarai mentor perlu dikonfigurasikan terlebih dahulu. Penyelia boleh menggunakan [[Special:EditGrowthConfig]] untuk tujuan itu.",
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Menti {{GENDER:|anda}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Lihat menti {{GENDER:|anda}} seperti berikut. Gunakan penapis untuk menukar nama menti yang ditunjukkan.",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Jadual tersebut memerlukan JavaScript. Sila dayakan JavaScript supaya dapat menggunakan modul ini.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Siapakah yang terdapat di jadual {{JANTINA:|anda}}?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Maklumat lanjut tentang siapa yang berada dalam jadual {{GENDER:|anda}}.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Jadual ini menunjukkan mentee {{GENDER:|anda}} yang akaunnya telah dicipta dalam tempoh dua minggu yang lalu atau yang telah menyunting dalam tempoh enam bulan yang lalu dan mempunyai [https://mediawiki.org/wiki/Special:MyLanguage/Growth /Feature_summary#NH halaman utama pendatang baru yang didayakan]. Data dikemas kini setiap tiga jam.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Petunjuk",
+	"growthexperiments-mentorship-enrollasmentor-title": "Daftar sebagai {{GENDER:|mentor}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Terima kasih kepada {{GENDER:|anda}} kerana menawarkan diri sebagai {{SITENAME}} {{GENDER:|mentor}}. {{JANTINA:|Anda}} boleh mendaftar sebagai mentor dengan mengisi borang ini.",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Menambah diri saya sebagai mentor"
+}
