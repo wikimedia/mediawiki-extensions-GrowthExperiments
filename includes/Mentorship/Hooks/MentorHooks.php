@@ -300,7 +300,7 @@ class MentorHooks implements
 			'growthexperiments-manage-mentors-summary-remove-self-with-reason',
 		];
 
-		$messageParts = explode( ':', $auto );
+		$messageParts = explode( ':', $auto, 2 );
 		$messageKey = $messageParts[0];
 		if ( in_array( $messageKey, $mentorChangeMessageKeys ) ) {
 			$comment = wfMessage( $messageKey )

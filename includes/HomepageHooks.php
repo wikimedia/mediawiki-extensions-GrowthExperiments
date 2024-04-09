@@ -1415,7 +1415,7 @@ class HomepageHooks implements
 			'growthexperiments-addimage-summary-summary',
 			'growthexperiments-addsectionimage-summary-summary',
 		];
-		$messageParts = explode( ':', $auto );
+		$messageParts = explode( ':', $auto, 2 );
 		$messageKey = $messageParts[ 0 ];
 		if ( in_array( $messageKey, $allowedMessageKeys ) ) {
 			$messageParamsStr = $messageParts[ 1 ] ?? '';
