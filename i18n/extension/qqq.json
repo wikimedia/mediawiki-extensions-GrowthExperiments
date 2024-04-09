@@ -128,5 +128,9 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Help text for mentorship in Community configuration",
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Field label for mentorship in Community configuration",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Field label for mentorship in Community configuration",
-	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Help text for mentorship in Community configuration"
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Help text for mentorship in Community configuration",
+	"communityconfiguration-growthhomepage-title": "Headline of the Community configuration module for homepage",
+	"communityconfiguration-growthhomepage-description": "Description of the Community configuration module for homepage",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Field label for Growth homepage in Community configuration",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Field label for Growth homepage in Community configuration"
 }

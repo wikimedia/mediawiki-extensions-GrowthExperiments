@@ -670,6 +670,21 @@
 						]
 					},
 					"type": "mw-config"
+				},
+				"GrowthHomepage": {
+					"store": {
+						"type": "wikipage",
+						"args": [
+							"MediaWiki:GrowthExperimentsHomepage.json"
+						]
+					},
+					"validator": {
+						"type": "jsonschema",
+						"args": [
+							"GrowthExperiments\\Config\\Schemas\\HomepageSchema"
+						]
+					},
+					"type": "mw-config"
 				}
 			}
 		}

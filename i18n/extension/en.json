@@ -115,5 +115,9 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Mentors can change this option for their own user in the Mentor dashboard.",
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Maximum number of edits an user can have to be considered praiseworthy",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Default minimum number of edits a mentee must have to be praiseworthy",
-	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentors can change this option for their own user in the Mentor dashboard."
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentors can change this option for their own user in the Mentor dashboard.",
+	"communityconfiguration-growthhomepage-title": "Newcomer Homepage",
+	"communityconfiguration-growthhomepage-description": "Define what are the Help links that you want new editors to go through.",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Destination help for a link about creating a new article",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Destination page for a link about how to add images in the visual editor"
 }
