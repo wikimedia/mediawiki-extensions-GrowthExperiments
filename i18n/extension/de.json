@@ -123,5 +123,9 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Lotsen können diese Option für ihren eigenen Benutzer im Lotsen-Dashboard ändern.",
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Maximale Anzahl von Bearbeitungen, die ein Benutzer haben kann, um als lobenswert angesehen zu werden",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Standardmäßige Mindestanzahl an Bearbeitungen, die ein Mentee haben muss, um lobenswert zu sein",
-	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Lotsen können diese Option für ihren eigenen Benutzer im Lotsen-Dashboard ändern."
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Lotsen können diese Option für ihren eigenen Benutzer im Lotsen-Dashboard ändern.",
+	"communityconfiguration-growthhomepage-title": "Neulings-Startseite",
+	"communityconfiguration-growthhomepage-description": "Lege fest, welche Hilfe-Links neuen Benutzern angezeigt werden sollen.",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Zielseite für einen Link über das Erstellen neuer Artikel",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Zielseite für einen Link zu einer Anleitung zum Hinzufügen von Bildern im visuellen Editor"
 }

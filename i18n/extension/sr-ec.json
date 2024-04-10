@@ -45,5 +45,6 @@
 	"communityconfiguration-mentorship-title": "Менторство",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Минималан број дана од регистрације да би корисник могао бити ментор",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Минимални број измена који корисник мора имати да би могао бити ментор.",
-	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Минималан број измена које новајлија треба да има да би био похваљен"
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Минималан број измена које новајлија треба да има да би био похваљен",
+	"communityconfiguration-growthhomepage-title": "Почетна страница за новајлије"
 }
