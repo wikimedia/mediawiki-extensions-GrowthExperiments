@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Filzstift"
+		]
+	},
+	"growthexperiments-help-panel-questionreview-header": "Wenn du eine Frage speicherst, wird sie unter deinem Benutzernamen «$2» auf der Seite $1 veröffentlicht, wo dir andere Wikipedia-Autoren eine Antwort geben werden.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Deine Frage ist jetzt auf der Seite «Fragen zur Wikipedia» zur Beantwortung durch einen anderen freiwilligen Autor.",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "Deine Frage auf der Seite «Fragen zur Wikipedia» ansehen",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Du erhältst ausserdem ein E-Mail an $1 ($2)"
+}
