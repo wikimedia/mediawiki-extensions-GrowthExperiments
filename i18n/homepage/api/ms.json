@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Dapatkan soalan berformat yang disiarkan melalui modul halaman utama",
+	"apihelp-homepagequestionstore-param-questionformat": "Format untuk mengembalikan soalan, cth HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Lokasi penyimpanan soalan.",
+	"apihelp-homepagequestionstore-param-userid": "ID pengguna untuk mendapatkan soalan.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Tiada soalan ditemui.",
+	"apihelp-growthsetmentor-summary": "Tetapkan mentor pengguna. Perubahan akan dilog secara terbuka.",
+	"apihelp-growthsetmentor-param-mentee": "Nama pengguna menti",
+	"apihelp-growthsetmentor-param-mentor": "Nama pengguna mentor",
+	"apihelp-growthsetmentor-param-reason": "Sebab perubahan tersebut",
+	"apihelp-query+growthimagesuggestiondata-summary": "Ambil [[mw:wikitech:Add_Image|data cadangan imej]] yang berkaitan, jika tersedia",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "ID jenis tugasan (untuk menentukan sama ada untuk mengambil data bagi tujuan pengesyoran imej peringkat teratas atau peringkat bahagian)",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "ID jenis tugasan '$1' tidak ditemui dalam konfigurasi wiki.",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Batalkan pengesyoran imej."
+}
