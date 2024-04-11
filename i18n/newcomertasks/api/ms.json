@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Dapatkan pengesyoran tugasan yang sesuai untuk pengguna baharu.",
+	"apihelp-query+growthtasks-extended-description": "Mencadangkan satu set rencana yang mempunyai beberapa isu tertunggak yang cukup mudah untuk ditangani oleh penyunting baharu.",
+	"apihelp-query+growthtasks-param-tasktypes": "Jenis tugasan untuk mengehadkan hasil. Biarkan kosong untuk menerima semua cadangan.",
+	"apihelp-query+growthtasks-param-topics": "Topik rencana untuk diutamakan dalam cadangan tugasan.",
+	"apihelp-query+growthtasks-param-topicsmode": "Mod padanan untuk topik.",
+	"apihelp-query+growthtasks-param-limit": "Bilangan maksimum cadangan tugasan untuk dikembalikan.",
+	"apihelp-query+growthtasks-param-excludepageids": "ID Halaman untuk dikecualikan daripada kueri.",
+	"apihelp-query+growthtasks-param-debug": "Tambah data nyahpepijat pada output.",
+	"apihelp-query+growthtasks-example-1": "Dapatkan pengesyoran tugasan untuk tugasan jenis suntingan kopi untuk pengguna semasa.",
+	"apihelp-query+growthtasks-example-2": "Dapatkan pengesyoran tugasan untuk pengguna semasa, dengan maklumat lanjutan tentang halaman.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Dapatkan jenis tugasan yang dicadangkan untuk pengguna dapat mencuba seterusnya.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Jenis tugasan yang sedang diusahakan oleh pengguna.",
+	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "Rentetan JSON bagi sesuatu objek dengan kekunci berikut:\n* <var>acceptedTargets</var> : (pilihan) Tatasusunan dengan tajuk halaman, pautan disyorkan yang diterima oleh pengguna.\n* <var>rejectedTargets</var> : (pilihan) Tatasusunan dengan tajuk halaman, pautan disyorkan yang ditolak oleh pengguna.\n* <var>skippedTargets</var> : (pilihan) Tatasusunan dengan tajuk halaman, pautan disyorkan yang telah dilangkau (diabaikan) oleh pengguna.",
+	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "Rentetan JSON objek dengan kekunci ini:\n* <var>accpeted</var> : Boolean yang menunjukkan sama ada pengguna menerima imej yang disyorkan.\n* <var>reasons</var> : Tatasusunan rentetan yang mengenal pasti boolean yang menunjukkan mengapa pengguna menolak imej yang disyorkan. Nilai sah: $1 \n* <var>caption</var> : Kapsyen imej disediakan oleh pengguna. (Mesti mempunyai sekurang-kurangnya $2 {{PLURAL:$2|aksara}}.)"
+}

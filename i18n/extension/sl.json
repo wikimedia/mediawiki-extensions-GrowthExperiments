@@ -103,5 +103,9 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Preizkus obvestila o predlaganih popravkih",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Največje število urejanj, ki jih lahko ima novinec, da izpolnjuje pogoje za prejem tega obvestila. Če je nastavljeno na 0, ne bo tega obvestila</br> prejel noben novinec. Večje kot je število, več novincev bo prejelo to obvestilo.<br> To obvestilo se pošlje samo novincem, ki niso opravili predlaganih urejanj.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Nadaljuj obveščanje",
-	"growthexperiments-edit-config-keep-going-notification-description": "Največje število predlaganih urejanj, ki jih lahko opravi novinec, da izpolnjuje pogoje za prejem tega obvestila. Če je nastavljeno na 0, ne bo tega obvestila</br> prejel noben novinec. Večje kot je število, več novincev bo prejelo to obvestilo.<br> To obvestilo se pošlje samo novincem, ki so že opravili predlagana urejanja."
+	"growthexperiments-edit-config-keep-going-notification-description": "Največje število predlaganih urejanj, ki jih lahko opravi novinec, da izpolnjuje pogoje za prejem tega obvestila. Če je nastavljeno na 0, ne bo tega obvestila</br> prejel noben novinec. Večje kot je število, več novincev bo prejelo to obvestilo.<br> To obvestilo se pošlje samo novincem, ki so že opravili predlagana urejanja.",
+	"communityconfiguration-growthhomepage-title": "Domača stran za začetnike",
+	"communityconfiguration-growthhomepage-description": "Določite, katere so povezave pomoči, skozi katere naj gredo novi urejevalci.",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Ciljna stran za povezavo na stran o ustvaritvi novega članka",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Ciljna stran za povezavo na stran o dodajanju slik v vizualnem urejevalniku"
 }

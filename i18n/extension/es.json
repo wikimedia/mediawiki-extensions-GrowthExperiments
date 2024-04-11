@@ -121,5 +121,9 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Los tutores pueden cambiar esta opción para su propio usuario en el panel de Tutor.",
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "El número máximo de ediciones que un usuario puede tener debe considerarse digno de elogio",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Número mínimo de ediciones que debe tener una persona novata para ser merecedora de elogios",
-	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Los tutores pueden cambiar esta opción para su propio usuario en el panel de Tutor."
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Los tutores pueden cambiar esta opción para su propio usuario en el panel de Tutor.",
+	"communityconfiguration-growthhomepage-title": "Página de inicio para recién llegados",
+	"communityconfiguration-growthhomepage-description": "Definir cuáles son los enlaces de ayuda que desea que los nuevos editores pasen.",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Ayuda de destino para un enlace sobre la creación de un nuevo artículo",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Página de destino para un enlace sobre cómo agregar imágenes en el editor visual"
 }

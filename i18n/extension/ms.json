@@ -115,5 +115,9 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Mentor boleh menukar pilihan ini untuk pengguna mereka sendiri pada papan pemuka Mentor.",
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Bilangan maksimum suntingan yang boleh dimiliki oleh pengguna yang dianggap patut diberi pujian",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Bilangan minimum suntingan lalai mesti ada pada seorang menti yang patut dipuji",
-	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentor boleh menukar pilihan ini untuk pengguna mereka sendiri pada papan pemuka Mentor."
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentor boleh menukar pilihan ini untuk pengguna mereka sendiri pada papan pemuka Mentor.",
+	"communityconfiguration-growthhomepage-title": "Halaman utama pengguna baharu",
+	"communityconfiguration-growthhomepage-description": "Tentukan pautan Bantuan mana satu yang anda mahu penyunting baharu hadamkan.",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Bantuan destinasi untuk pautan tentang mencipta rencana baharu",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Halaman destinasi untuk pautan berkenaan cara menambah imej dalam alat sunting visual"
 }
