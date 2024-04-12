@@ -93,14 +93,14 @@ class PurgeExpiredMentorStatus extends Maintenance {
 			return;
 		}
 		$this->dbw->begin( __METHOD__ );
-		$this->dbw->delete(
-			'user_properties',
-			[
+		$this->dbw->newDeleteQueryBuilder()
+			->deleteFrom( 'user_properties' )
+			->where( [
 				'up_property' => MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF,
 				'up_user' => $toDelete
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->execute();
 		$this->dbw->commit( __METHOD__ );
 		$this->waitForReplication();
 	}

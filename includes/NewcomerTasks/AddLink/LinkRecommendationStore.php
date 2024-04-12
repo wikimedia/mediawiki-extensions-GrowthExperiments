@@ -228,11 +228,11 @@ class LinkRecommendationStore {
 	 */
 	public function deleteByPageIds( array $pageIds ): int {
 		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
-		$dbw->delete(
-			'growthexperiments_link_recommendations',
-			[ 'gelr_page' => $pageIds ],
-			__METHOD__
-		);
+		$dbw->newDeleteQueryBuilder()
+			->deleteFrom( 'growthexperiments_link_recommendations' )
+			->where( [ 'gelr_page' => $pageIds ] )
+			->caller( __METHOD__ )
+			->execute();
 		return $dbw->affectedRows();
 	}
 

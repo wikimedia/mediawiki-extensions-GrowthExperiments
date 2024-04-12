@@ -140,14 +140,14 @@ class DatabaseMentorStore extends MentorStore {
 	): void {
 		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		if ( $mentor === null ) {
-			$dbw->delete(
-				'growthexperiments_mentor_mentee',
-				[
+			$dbw->newDeleteQueryBuilder()
+				->deleteFrom( 'growthexperiments_mentor_mentee' )
+				->where( [
 					'gemm_mentee_id' => $mentee->getId(),
 					'gemm_mentor_role' => $mentorRole
-				],
-				__METHOD__
-			);
+				] )
+				->caller( __METHOD__ )
+				->execute();
 			return;
 		}
 		$dbw->newInsertQueryBuilder()

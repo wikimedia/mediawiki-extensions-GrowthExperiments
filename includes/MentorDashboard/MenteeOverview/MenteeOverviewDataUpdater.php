@@ -129,13 +129,13 @@ class MenteeOverviewDataUpdater {
 			$updatedMenteeIds
 		);
 		if ( $menteeIdsToDelete !== [] ) {
-			$dbw->delete(
-				'growthexperiments_mentee_data',
-				[
+			$dbw->newDeleteQueryBuilder()
+				->deleteFrom( 'growthexperiments_mentee_data' )
+				->where( [
 					'mentee_id' => $menteeIdsToDelete
-				],
-				__METHOD__
-			);
+				] )
+				->caller( __METHOD__ )
+				->execute();
 			$this->lbFactory->waitForReplication();
 		}
 

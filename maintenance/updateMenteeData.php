@@ -140,12 +140,13 @@ class UpdateMenteeData extends Maintenance {
 				$allUpdatedMenteeIds
 			);
 			if ( $menteeIdsToDelete !== [] ) {
-				$dbw->delete(
-					'growthexperiments_mentee_data',
-					[
+				$dbw->newDeleteQueryBuilder()
+					->deleteFrom( 'growthexperiments_mentee_data' )
+					->where( [
 						'mentee_id' => $menteeIdsToDelete
-					]
-				);
+					] )
+					->caller( __METHOD__ )
+					->execute();
 			}
 		}
 
