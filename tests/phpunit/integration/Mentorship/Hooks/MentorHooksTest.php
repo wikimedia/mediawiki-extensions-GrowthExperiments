@@ -30,15 +30,15 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 
 		$dbw = $this->getServiceContainer()->getDBLoadBalancer()
 			->getConnection( DB_PRIMARY );
-		$dbw->update(
-			'user',
-			[
+		$dbw->newUpdateQueryBuilder()
+			->update( 'user' )
+			->set( [
 				'user_registration' => $dbw->timestamp( $timestamp ),
 				'user_editcount' => $editcount
-			],
-			[ 'user_id' => $user->getId() ],
-			__METHOD__
-		);
+			] )
+			->where( [ 'user_id' => $user->getId() ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		return $this->getServiceContainer()->getUserFactory()
 			->newFromId( $user->getId() );

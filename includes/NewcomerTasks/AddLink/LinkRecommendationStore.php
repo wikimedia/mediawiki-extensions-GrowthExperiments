@@ -340,12 +340,13 @@ class LinkRecommendationStore {
 				];
 			}
 		}
-		// No need to check if $rows is empty, Database::insert() does that.
-		$this->loadBalancer->getConnection( DB_PRIMARY )->insert(
-			'growthexperiments_link_submissions',
-			$rows,
-			__METHOD__
-		);
+		if ( $rows ) {
+			$this->loadBalancer->getConnection( DB_PRIMARY )->newInsertQueryBuilder()
+				->insertInto( 'growthexperiments_link_submissions' )
+				->rows( $rows )
+				->caller( __METHOD__ )
+				->execute();
+		}
 	}
 
 	/**

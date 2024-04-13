@@ -44,12 +44,12 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 
 	private function createMenteeWithEditCount( User $mentor, int $editcount ): User {
 		$mentee = $this->createMentee( $mentor );
-		$this->db->update(
-			'user',
-			[ 'user_editcount' => $editcount ],
-			[ 'user_id' => $mentee->getId() ],
-			__METHOD__
-		);
+		$this->db->newUpdateQueryBuilder()
+			->update( 'user' )
+			->set( [ 'user_editcount' => $editcount ] )
+			->where( [ 'user_id' => $mentee->getId() ] )
+			->caller( __METHOD__ )
+			->execute();
 		return $mentee;
 	}
 
@@ -67,12 +67,12 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 
 	private function createMenteeWithRegistration( User $mentor, ?string $registration ) {
 		$mentee = $this->createMentee( $mentor );
-		$this->db->update(
-			'user',
-			[ 'user_registration' => $registration ],
-			[ 'user_id' => $mentee->getId() ],
-			__METHOD__
-		);
+		$this->db->newUpdateQueryBuilder()
+			->update( 'user' )
+			->set( [ 'user_registration' => $registration ] )
+			->where( [ 'user_id' => $mentee->getId() ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		// user_registration was likely read already, recreate the user
 		$mentee = $this->getServiceContainer()->getUserFactory()->newFromId( $mentee->getId() );

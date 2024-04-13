@@ -199,15 +199,15 @@ class DatabaseMentorStore extends MentorStore {
 		UserIdentity $mentee,
 		bool $isActive
 	): void {
-		$this->loadBalancer->getConnection( DB_PRIMARY )->update(
-			'growthexperiments_mentor_mentee',
-			[ 'gemm_mentee_is_active' => $isActive ],
-			[
+		$this->loadBalancer->getConnection( DB_PRIMARY )->newUpdateQueryBuilder()
+			->update( 'growthexperiments_mentor_mentee' )
+			->set( [ 'gemm_mentee_is_active' => $isActive ] )
+			->where( [
 				'gemm_mentee_id' => $mentee->getId(),
 				'gemm_mentor_role' => self::ROLE_PRIMARY,
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->execute();
 		$this->invalidateIsMenteeActive( $mentee );
 	}
 

@@ -89,23 +89,23 @@ class MenteeOverviewDataUpdater {
 				->caller( __METHOD__ )->fetchField();
 			if ( $storedEncodedData === false ) {
 				// Row doesn't exist yet, insert it
-				$dbw->insert(
-					'growthexperiments_mentee_data',
-					[
+				$dbw->newInsertQueryBuilder()
+					->insertInto( 'growthexperiments_mentee_data' )
+					->row( [
 						'mentee_id' => $menteeId,
 						'mentee_data' => $encodedData
-					],
-					__METHOD__
-				);
+					] )
+					->caller( __METHOD__ )
+					->execute();
 			} else {
 				// Row exists, if anything changed, update
 				if ( FormatJson::decode( $storedEncodedData, true ) !== $menteeData ) {
-					$dbw->update(
-						'growthexperiments_mentee_data',
-						[ 'mentee_data' => $encodedData ],
-						[ 'mentee_id' => $menteeId ],
-						__METHOD__
-					);
+					$dbw->newUpdateQueryBuilder()
+						->update( 'growthexperiments_mentee_data' )
+						->set( [ 'mentee_data' => $encodedData ] )
+						->where( [ 'mentee_id' => $menteeId ] )
+						->caller( __METHOD__ )
+						->execute();
 				}
 			}
 
