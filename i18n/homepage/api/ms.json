@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Dapatkan soalan berformat yang disiarkan melalui modul halaman utama",
+	"apihelp-homepagequestionstore-param-questionformat": "Format untuk mengembalikan soalan, cth HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Lokasi penyimpanan soalan.",
+	"apihelp-homepagequestionstore-param-userid": "ID pengguna untuk mendapatkan soalan.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Tiada soalan ditemui.",
+	"apihelp-growthsetmentor-summary": "Tetapkan mentor pengguna. Perubahan akan dilog secara terbuka.",
+	"apihelp-growthsetmentor-param-mentee": "Nama pengguna menti",
+	"apihelp-growthsetmentor-param-mentor": "Nama pengguna mentor",
+	"apihelp-growthsetmentor-param-reason": "Sebab perubahan tersebut",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Tajuk rencana tugasan berkaitan fungsi pengesyoran imej"
+}

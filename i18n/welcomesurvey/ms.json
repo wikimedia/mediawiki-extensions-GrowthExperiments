@@ -1,10 +1,47 @@
 {
 	"@metadata": {
 		"authors": [
-			"Anakmalaysia"
+			"Anakmalaysia",
+			"Hakimi97"
 		]
 	},
-	"welcomesurvey-question-languages-label": "{{SITENAME}} terdapat dalam hampir 300. Adakah anda membaca dan menulis dalam mana-mana bahasa yang lain?",
+	"welcomesurvey": "Selamat datang, $1!",
+	"welcomesurvey-save-confirmation-title": "Terima kasih! {{GENDER:|Respons anda}} telah disimpan.",
+	"welcomesurvey-save-confirmation-text": "{{GENDER:|Jawapan anda}} akan membantu kami memberi anda cara yang berguna untuk bermula di Wikipedia.",
+	"welcomesurvey-subtitle": "Bantu kami meningkatkan pengalaman Wikipedia {{GENDER:|anda}} dengan menjawab beberapa soalan pilihan.",
+	"welcomesurvey-save-btn": "Selesai",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Langkau}} tinjauan ini",
+	"welcomesurvey-close-btn": "Tutup dan kembali ke $1",
+	"welcomesurvey-privacy-policy-link-text": "Ketahui lebih lanjut tentang data pada alat sunting baharu",
+	"welcomesurvey-sidebar-editing-title": "Mula dengan menyunting",
+	"welcomesurvey-sidebar-editing-text": "Hampir setiap halaman boleh disunting oleh sesiapa sahaja, dan beratus-ratus perubahan dibuat setiap jam untuk menambah kandungan, membetulkan kesilapan dan meningkatkan kebolehbacaan. Halaman berikut boleh membantu jika {{GENDER:$1|anda berminat}} untuk menyumbang.",
+	"welcomesurvey-sidebar-editing-link1-text": "Tutorial",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutorial",
+	"welcomesurvey-sidebar-editing-link2-text": "Meja Bantuan",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Meja_bantuan",
+	"welcomesurvey-question-reason-label": "Mengapakah {{GENDER:|anda}} mencipta akaun anda hari ini?",
+	"welcomesurvey-dropdown-option-select-label": "Sila pilih...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Untuk membetulkan kesilapan ejaan atau ralat pada rencana Wikipedia",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Untuk menambah atau menukar maklumat pada rencana Wikipedia",
+	"welcomesurvey-question-reason-option-add-image-label": "Untuk menambah foto atau imej pada rencana Wikipedia",
+	"welcomesurvey-question-reason-option-new-page-label": "Untuk mencipta rencana Wikipedia baharu",
+	"welcomesurvey-question-reason-option-program-participant-label": "Saya mengambil bahagian dalam program, kelas atau acara",
+	"welcomesurvey-question-reason-option-read-label": "Untuk membaca Wikipedia",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Lain-lain",
+	"welcomesurvey-question-reason-option-other-label": "Lain-lain (sila huraikan)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Masukkan}} sebab lain...",
+	"welcomesurvey-question-edited-label": "Pernahkah {{GENDER:|anda}} menyunting Wikipedia?",
+	"welcomesurvey-question-edited-option-yes-many-label": "Ya, banyak kali",
+	"welcomesurvey-question-edited-option-yes-few-label": "Ya, sekali dua",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Tidak, saya tidak tahu saya boleh menyunting Wikipedia",
+	"welcomesurvey-question-edited-option-no-other-label": "Tidak, atas sebab lain",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Saya tidak ingat",
+	"welcomesurvey-question-mailinglist-label": "Saya ingin menerima petua melalui e-mel tentang cara mula menyunting.",
+	"welcomesurvey-question-mailinglist-help": "Sila ambil perhatian bahawa senarai pengemelan ini dikuasakan oleh MailChimp, yang bermaksud penggunaan maklumat {{GENDER:|anda}} oleh MailChimp dikawal oleh [https://www.intuit.com/privacy/statement/ Dasar Privasi] dan [https mereka. ://mailchimp.com/legal/terms/ Syarat Perkhidmatan].",
+	"welcomesurvey-question-email-label": "Alamat e-mel (pilihan)",
+	"welcomesurvey-question-email-placeholder": "Masukkan alamat e-mel {{GENDER:|anda}}...",
+	"welcomesurvey-question-email-help": "Kami mendapati {{GENDER:|anda}} tidak memasukkan sebarang e-mel semasa mencipta akaun ini. Kami <strong>amat menyarankannya</strong>, kerana e-mel diperlukan untuk pemulihan akaun jika anda kehilangan kata laluan anda. NOTA: Alamat e-mel anda tidak didedahkan apabila pengguna lain menghubungi anda.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} tersedia dalam hampir 300 bahasa. Adakah terdapat bahasa lain yang {{GENDER:|anda}} boleh baca dan tulis?",
 	"welcomesurvey-question-languages-placeholder": "Tambah {{PLURAL:$1|satu bahasa|sehingga $1 bahasa}}...",
-	"welcomesurvey-question-languages-maximum": "Anda telah mencapai jumlah bahasa maksimum."
+	"welcomesurvey-question-languages-maximum": "{{JANTINA:|Anda}} telah menambah bilangan maksimum bahasa."
 }

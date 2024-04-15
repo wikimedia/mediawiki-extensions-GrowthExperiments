@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Tandakan atau nyahtandakan status menti yang dibintangi oleh pengguna semasa (disimpan secara peribadi dan tidak dilog)",
+	"apihelp-growthstarmentee-param-gesaction": "Tindakan untuk diambil (<kbd>star</kbd> atau <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Mentee untuk di(nyah)bintang",
+	"apihelp-query+growthstarredmentees-summary": "Dapatkan senarai menti yang ditanda bintang oleh mentor yang telah log masuk",
+	"apihelp-growthsetmentorstatus-summary": "Tetapkan status mentor pengguna semasa kepada aktif/tidak hadir",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Status baharu",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Apabila menetapkan mentor sebagai tidak hadir, hal ini mesti diiringi status ketidakhadiran (dalam bilangan hari)",
+	"apihelp-query+growthmentorstatus-summary": "Kueri status mentor pengguna semasa",
+	"apihelp-growthmentordashboardupdatedata-summary": "Jadualkan suatu kemas kini luar biasa berkenaan modul gambaran keseluruhan menti pada papan pemuka mentor. Anda hanya boleh menjadualkan satu kemas kini setiap dua jam atas sebab prestasi.",
+	"apihelp-growthsetmenteestatus-summary": "Tetapkan status menti (membenarkan menti mendaya/melumpuhkan modul bimbingan, atau memilih keluar sepenuhnya, yang memadamkan hubungan menti/mentor)",
+	"apihelp-growthsetmenteestatus-param-state": "Status baharu menti (amaran: tetapan ini kepada menarik diri akan memadamkan hubungan menti/mentor secara kekal)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Modul bimbingan didayakan",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Modul bimbingan dilumpuhkan sepenuhnya. Perkara ini biasanya ditetapkan oleh perisian dan digunakan untuk ujian A/B.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee menarik diri daripada sesi bimbingan; hubungan menti/mentor akan dipadamkan, modul bimbingan akan digantikan dengan keberadaan kemungkinan untuk ikut serta semula",
+	"apihelp-query+growthmenteestatus-summary": "Tanya status menti pengguna semasa; lihat dokumentasi action=growthsetmenteestatus untuk maklumat terperinci tentang status individu.",
+	"apihelp-query+growthmentormentee-summary": "Dapatkan semua menti yang diagihkan kepada seseorang mentor tertentu",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor untuk bertanya kepada menti",
+	"apihelp-growthmanagementorlist-summary": "Urus maklumat dalam senarai mentor berstruktur (biasanya disimpan pada [[MediaWiki:GrowthMentors.json]]). Modul ini boleh digunakan oleh kedua-dua mentor semasa dan mentor akan datang (untuk menambah diri mereka sendiri atau menukar butiran mereka) dan penyelia (untuk semua pengguna).",
+	"apihelp-growthmanagementorlist-param-geaction": "Tindakan",
+	"apihelp-growthmanagementorlist-param-message": "Mesej pengenalan (gunakan rentetan kosong untuk mesej mentor lalai)",
+	"apihelp-growthmanagementorlist-param-weight": "Pemberat",
+	"apihelp-growthmanagementorlist-param-summary": "Sebab perubahan tersebut",
+	"apihelp-growthmanagementorlist-param-username": "Nama pengguna mentor yang terjejas oleh perubahan. Jika tidak disediakan, pengguna yang telah log masuk akan digunakan. Hanya boleh digunakan oleh pengguna istimewa."
+}

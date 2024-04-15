@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Dapatkan pengesyoran tugasan yang sesuai untuk pengguna baharu.",
+	"apihelp-query+growthtasks-extended-description": "Mencadangkan satu set rencana yang mempunyai beberapa isu tertunggak yang cukup mudah untuk ditangani oleh penyunting baharu.",
+	"apihelp-query+growthtasks-param-tasktypes": "Jenis tugasan untuk mengehadkan hasil. Biarkan kosong untuk menerima semua cadangan.",
+	"apihelp-query+growthtasks-param-topics": "Topik rencana untuk diutamakan dalam cadangan tugasan.",
+	"apihelp-query+growthtasks-param-limit": "Bilangan maksimum cadangan tugasan untuk dikembalikan.",
+	"apihelp-query+growthtasks-param-excludepageids": "ID Halaman untuk dikecualikan daripada kueri.",
+	"apihelp-query+growthtasks-param-debug": "Tambah data nyahpepijat pada output.",
+	"apihelp-query+growthtasks-example-2": "Dapatkan pengesyoran tugasan untuk pengguna semasa, dengan maklumat lanjutan tentang halaman."
+}
