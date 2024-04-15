@@ -118,5 +118,9 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "يمكن للمرشدين تغيير هذا الخِيار لاستخدامهم الخاص في لوحة المرشدين.",
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "الحد الأقصى لعدد التعديلات التي يمكن اعتبارها جديرة بالثناء للمستخدم",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "الحدّ الافتراضي الأدنى من التعديلات التي على المُرشَد القيام بها حتّى يتأهّل لتلقّي الثناء",
-	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "يمكن للمرشدين تغيير هذا الخِيار لاستخدامهم الخاص في لوحة المرشدين."
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "يمكن للمرشدين تغيير هذا الخِيار لاستخدامهم الخاص في لوحة المرشدين.",
+	"communityconfiguration-growthhomepage-title": "لوحة المستخدم للوافدين الجدد",
+	"communityconfiguration-growthhomepage-description": "تحديد وصلات المساعدة التي تريدون أن يطّلع عليها المحررون الجدد.",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "وجهة المساعدة للحصول على رابط حول إنشاء مقالة جديدة",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "صفحة الوصول إلى رابط حول إضافة صور باستخدام المحرر المرئي"
 }
