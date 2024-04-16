@@ -103,5 +103,21 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Încercați notificarea pentru Editările sugerate",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Numărul maxim de editări pe care îl poate avea un nou-venit pentru a se califica pentru primirea acestei notificări. Dacă este setat la 0, niciun nou-venit </br> nu va primi această notificare. Cu cât este mai mare numărul, cu atât mai mulți nou-veniți vor primi această notificare.<br> Această notificare este trimisă numai nou-veniților care nu au îndeplinit Editări sugerate.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Continuați să primiți notificări",
-	"growthexperiments-edit-config-keep-going-notification-description": "Numărul maxim de editări pe care îl poate îndeplini un nou-venit pentru a se califica pentru primirea acestei notificări. Dacă este setat la 0,</br> niciun nou-venit nu va primi această notificare. Cu cât este mai mare numărul, cu atât mai mulți nou-veniți vor primi această notificare.<br> Această notificare este trimisă numai nou-veniților care au îndeplinit deja cel puțin o Editare sugerată."
+	"growthexperiments-edit-config-keep-going-notification-description": "Numărul maxim de editări pe care îl poate îndeplini un nou-venit pentru a se califica pentru primirea acestei notificări. Dacă este setat la 0,</br> niciun nou-venit nu va primi această notificare. Cu cât este mai mare numărul, cu atât mai mulți nou-veniți vor primi această notificare.<br> Această notificare este trimisă numai nou-veniților care au îndeplinit deja cel puțin o Editare sugerată.",
+	"communityconfiguration-mentorship-title": "Activitate de mentor",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Ar trebui ca utilizatorii să fie eligibili automat pentru a fi mentori?",
+	"communityconfiguration-mentorship-gementorshipenabled-label": "Funcțiile de activitate a mentorului sunt activate?",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Numărul minim de zile pentru care un utilizator trebuie să fie înregistrat pentru a se putea înscrie ca mentor.",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Numărul minim de editări pe care un utilizator trebuie să îl aibă (în oricare spațiu de nume) pentru a se înscrie ca mentor",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Numărul de zile care sunt luate în considerare atunci când se evaluează cât de demn este un ucenic pentru laude",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Mentorii pot schimba această opțiune pentru propriul lor utilizator în pagina mentorului.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-label": "În mod implicit, cât de des ar trebui ca mentorii să primească notificări care să le amintească să trimită încurajări ucenicilor care editează cu succes?",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Mentorii pot schimba această opțiune pentru propriul lor utilizator în pagina mentorului.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Numărul maxim de editări pe care le poate avea un utilizator pentru a fi considerat demn de laude",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Numărul minim implicit de editări pe care trebuie să le aibă un ucenic pentru a fi demn de laude",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentorii pot schimba această opțiune pentru propriul lor utilizator în pagina mentorului.",
+	"communityconfiguration-growthhomepage-title": "Pagina acasă pentru nou-veniți",
+	"communityconfiguration-growthhomepage-description": "Definiți care sunt legăturile de ajutor prin care vreți să treacă editorii noi.",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Ajutorul de destinație pentru o legătură despre crearea unui articol nou",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina destinație pentru o legătură despre adăugarea cum se adaugă imagini în editorul vizual"
 }
