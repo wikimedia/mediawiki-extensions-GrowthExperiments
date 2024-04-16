@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hakimi97"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Dapatkan soalan berformat yang disiarkan melalui modul halaman utama",
+	"apihelp-homepagequestionstore-param-questionformat": "Format untuk mengembalikan soalan, cth HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Lokasi penyimpanan soalan.",
+	"apihelp-homepagequestionstore-param-userid": "ID pengguna untuk mendapatkan soalan.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Tiada soalan ditemui.",
+	"apihelp-growthsetmentor-summary": "Tetapkan mentor pengguna. Perubahan akan dilog secara terbuka.",
+	"apihelp-growthsetmentor-param-mentee": "Nama pengguna menti",
+	"apihelp-growthsetmentor-param-mentor": "Nama pengguna mentor",
+	"apihelp-growthsetmentor-param-reason": "Sebab perubahan tersebut",
+	"apihelp-query+growthimagesuggestiondata-summary": "Ambil [[mw:wikitech:Add_Image|data cadangan imej]] yang berkaitan, jika tersedia",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Batalkan pengesyoran imej.",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "Memanggil API ini akan:\n\n* Tetapkan semula [[mw:wikitech:Add_Image|\"hasrecommendation:image\" teg berwajaran]] untuk rencana, supaya rencana itu tidak lagi dikembalikan dalam hasil carian untuk cadangan imej.\n\n* Tambahkan rencana pada suatu cache berjangka pendek, yang apabila ImageRecommendationFilter di bawah sambungan [[mw:Extension:GrowthExperiments|GrowthExperiments]] berunding untuk memutuskan sama ada rencana itu harus dikecualikan daripada susun giliran suntingan yang dicadangkan untuk pengguna apabila diakses pada [[Special:Homepage]] atau melalui API [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]].\n\n* Jana dan hantar acara ke EventGate melalui [https://schema .wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback image-suggestion-penstriman maklum balas]. Perkara ini membenarkan penambahbaikan dalam saluran paip cadangan imej, kerana kod dalam saluran paip boleh mengambil kira maklum balas pengguna apabila menjana pengesyoran.\n\nBacaan lanjut: [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image]]",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Tajuk rencana tugasan berkaitan fungsi pengesyoran imej",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "Nama fail yang tidak ditetapkan awalan untuk pengesyoran imej, cth <kbd>Foo.jpg</kbd>"
+}
