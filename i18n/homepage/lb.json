@@ -300,12 +300,20 @@
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Verstanen",
 	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-neutral": "Bleift neutral, andeems Dir Urteeler wéi „gutt“, „ellen“ oder „schéin“ evitéiert.",
 	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-language": "Schreift an der Sprooch vun dësem Artikel: $1.",
+	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-language-generic": "Schreift op der Sprooch vun der Wikipedia, op där {{GENDER:|Dir}} sidd.",
 	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "Verstanen",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Ofbriechen",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Virufueren",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Ofbriechen",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Ech wëll en anere Mentor",
+	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Ech wëll guer kee Mentor",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Fäerdeg",
 	"growthexperiments-homepage-mentorship-about-done": "Fäerdeg",
+	"growthexperiments-homepage-special-contribute-title": "Ännerungsvirschléi",
+	"growthexperiments-homepage-special-contribute-cta": "Ännerungsvirschléi weisen",
 	"growthexperiments-tour-newimpact-discovery-title": "Aktualiséierten Design",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Verstanen"
+	"growthexperiments-tour-newimpact-discovery-description": "Et gouf méi vun {{GENDER:|Ärer}} Ännerungsaktivitéit derbäigesat!",
+	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Verstanen",
+	"growthexperiments-homepage-newimpact-contributions-link": "All Ännerunge weisen",
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Méi gewuer ginn"
 }
