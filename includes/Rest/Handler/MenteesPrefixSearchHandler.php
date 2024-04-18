@@ -55,7 +55,7 @@ class MenteesPrefixSearchHandler extends SimpleHandler {
 		return [
 			'prefix' => [
 				self::PARAM_SOURCE => 'path',
-				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_REQUIRED => true,
 				ParamValidator::PARAM_TYPE => 'string',
 			],
 			'limit' => [
