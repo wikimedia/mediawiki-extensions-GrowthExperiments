@@ -16,5 +16,11 @@
 	"apihelp-query+growthimagesuggestiondata-summary": "Ambil [[mw:wikitech:Add_Image|data cadangan imej]] yang berkaitan, jika tersedia",
 	"apihelp-query+growthimagesuggestiondata-param-tasktype": "ID jenis tugasan (untuk menentukan sama ada untuk mengambil data bagi tujuan pengesyoran imej peringkat teratas atau peringkat bahagian)",
 	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "ID jenis tugasan '$1' tidak ditemui dalam konfigurasi wiki.",
-	"apihelp-growthinvalidateimagerecommendation-summary": "Batalkan pengesyoran imej."
+	"apihelp-growthinvalidateimagerecommendation-summary": "Batalkan pengesyoran imej.",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "Memanggil API ini akan:\n\n* Tetapkan semula [[mw:wikitech:Add_Image|\"hasrecommendation:image\" teg berwajaran]] untuk rencana, supaya rencana itu tidak lagi dikembalikan dalam hasil carian untuk cadangan imej.\n\n* Tambahkan rencana pada suatu cache berjangka pendek, yang apabila ImageRecommendationFilter di bawah sambungan [[mw:Extension:GrowthExperiments|GrowthExperiments]] berunding untuk memutuskan sama ada rencana itu harus dikecualikan daripada susun giliran suntingan yang dicadangkan untuk pengguna apabila diakses pada [[Special:Homepage]] atau melalui API [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]].\n\n* Jana dan hantar acara ke EventGate melalui [https://schema .wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback image-suggestion-penstriman maklum balas]. Perkara ini membenarkan penambahbaikan dalam saluran paip cadangan imej, kerana kod dalam saluran paip boleh mengambil kira maklum balas pengguna apabila menjana pengesyoran.\n\nBacaan lanjut: [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image]]",
+	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "Jenis tugasan (peringkat teratas atau peringkat bahagian)",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Tajuk rencana tugasan berkaitan fungsi pengesyoran imej",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "Nama fail yang tidak ditetapkan awalan untuk pengesyoran imej, cth <kbd>Foo.jpg</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "Tajuk bahagian untuk pengesyoran imej, cth <kbd>Sejarah</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Indeks berasas 1 untuk fungsi bahagian yang dicadangkan imej, cth <kbd>3</kbd>"
 }
