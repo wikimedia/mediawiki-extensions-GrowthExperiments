@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use ArrayIterator;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
@@ -15,6 +14,7 @@ use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use stdClass;
+use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
 
@@ -117,10 +117,10 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 						if ( isset( $map[$key] ) && $map[$key][1] ) {
 							$item = new stdClass();
 							$item->pr_page = $id;
-							$data[$id] = $item;
+							$data[] = $item;
 						}
 					}
-					return new ArrayIterator( $data );
+					return new FakeResultWrapper( $data );
 				} );
 		$connProvider = $this->createMock( IConnectionProvider::class );
 		$connProvider->method( 'getReplicaDatabase' )->willReturn( $dbr );

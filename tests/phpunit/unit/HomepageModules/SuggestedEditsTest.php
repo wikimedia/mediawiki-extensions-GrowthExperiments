@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\HomepageModules;
 
-use ArrayIterator;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -36,6 +35,7 @@ use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
 use OOUI\Theme;
 use WANObjectCache;
+use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\TestingAccessWrapper;
@@ -123,7 +123,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$databaseMock = $this->createMock( IReadableDatabase::class );
 		$databaseMock->expects( $this->once() )
 			->method( 'select' )
-			->willReturn( new ArrayIterator( [] ) );
+			->willReturn( new FakeResultWrapper( [] ) );
 		$connProvider = $this->createMock( IConnectionProvider::class );
 		$connProvider->method( 'getReplicaDatabase' )->willReturn( $databaseMock );
 
