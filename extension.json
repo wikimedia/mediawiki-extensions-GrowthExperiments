@@ -685,6 +685,21 @@
 						]
 					},
 					"type": "mw-config"
+				},
+				"GrowthSuggestedEdits": {
+					"store": {
+						"type": "wikipage",
+						"args": [
+							"MediaWiki:GrowthExperimentsSuggestedEdits.json"
+						]
+					},
+					"validator": {
+						"type": "jsonschema",
+						"args": [
+							"GrowthExperiments\\Config\\Schemas\\SuggestedEditsSchema"
+						]
+					},
+					"type": "data"
 				}
 			}
 		}

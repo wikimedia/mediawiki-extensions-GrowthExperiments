@@ -119,5 +119,8 @@
 	"communityconfiguration-growthhomepage-title": "Newcomer Homepage",
 	"communityconfiguration-growthhomepage-description": "Define what are the Help links that you want new editors to go through.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Destination help for a link about creating a new article",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Destination page for a link about how to add images in the visual editor"
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Destination page for a link about how to add images in the visual editor",
+	"communityconfiguration-growthsuggestededits-title": "Suggested edits",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Infobox templates",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "These templates are needed for the image suggestions newcomer task feature. Articles containing these templates will not be listed as image suggestion tasks."
 }
