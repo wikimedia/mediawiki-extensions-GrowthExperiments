@@ -127,5 +127,8 @@
 	"communityconfiguration-growthhomepage-title": "Neulings-Startseite",
 	"communityconfiguration-growthhomepage-description": "Lege fest, welche Hilfe-Links neuen Benutzern angezeigt werden sollen.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Zielseite für einen Link über das Erstellen neuer Artikel",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Zielseite für einen Link zu einer Anleitung zum Hinzufügen von Bildern im visuellen Editor"
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Zielseite für einen Link zu einer Anleitung zum Hinzufügen von Bildern im visuellen Editor",
+	"communityconfiguration-growthsuggestededits-title": "Vorgeschlagene Bearbeitungen",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Infobox-Vorlagen",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Diese Vorlagen werden für die Bildvorschlags-Aufgabe für Neueinsteiger benötigt. Artikel, die diese Vorlagen enthalten, werden nicht als Bildvorschlagsaufgaben aufgeführt."
 }

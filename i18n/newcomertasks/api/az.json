@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"NMW03"
+			"NMW03",
+			"Nemoralis"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Yeni başlayanlar üçün uyğun tapşırıq tövsiyələrini alın.",

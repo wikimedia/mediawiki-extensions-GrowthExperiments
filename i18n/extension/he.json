@@ -119,5 +119,8 @@
 	"communityconfiguration-growthhomepage-title": "דף הבית למתחילים",
 	"communityconfiguration-growthhomepage-description": "נא להגדיר על אילו קישורי עזרה אתם רוצים שעורכים חדשים יעברו.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "היעד לדף העזרה על יצירת ערך חדש",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "דף היעד של קישור על הוספת תמונות בעורך החזותי"
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "דף היעד של קישור על הוספת תמונות בעורך החזותי",
+	"communityconfiguration-growthsuggestededits-title": "עריכות מוצעות",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "תבניות מידע",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "התבניות האלו נחוצות עבור תכונת המשימות של הצעות לתמונות למשתמשים חדשים. ערכים שמכילים את התבניות האלו לא יופיעו כמשימות הצעת תמונה."
 }

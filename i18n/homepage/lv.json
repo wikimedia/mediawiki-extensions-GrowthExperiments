@@ -447,6 +447,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Attēls ir aizvainojošs",
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Attēls ir zemas kvalitātes",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Es nepārzinu šo tēmu",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Es nesaprotu valodu attēla aprakstā",
 	"growthexperiments-addimage-rejectiondialog-reason-sectionnotappropriate": "Sadaļai attēls nav nepieciešams",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Cits",
 	"growthexperiments-addimage-viewer-close-button": "Aizvērt",
