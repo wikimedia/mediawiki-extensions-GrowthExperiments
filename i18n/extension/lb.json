@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"growthexperiments-desc": "An dëser Erweiderung sinn Experimenter vum 'Growth team'.",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Lescht Aktualiséierung vum [[User:$1|$1]] $2 ([$4 Ënnerscheed]).",
+	"growthexperiments-edit-config-edit-summary": "Resumé vun der Ännerung",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Uewen op der Säit",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Ënnen op der Säit",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Helpdesk",

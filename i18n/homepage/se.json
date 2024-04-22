@@ -206,7 +206,10 @@
 	"growthexperiments-addimage-skip-dialog-cancel": "Gaskkalduhte",
 	"growthexperiments-addimage-caption-title": "Lasit govvateavstta",
 	"growthexperiments-addimage-caption-placeholder": "Čále oanehis govvateavstta, mas muitalit movt dát govva laktása artihkkalii <strong>$1</strong>",
+	"growthexperiments-addimage-caption-info-dialog-confirm": "Ok, ipmirdin.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Čálit sisa",
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Ok, ipmirdin.",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Ok, ipmirdin.",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Gaskkalduhte",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Gaskkalduhte"
 }
