@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Volvox"
+		]
+	},
+	"apihelp-helppanelquestionposter-param-body": "Den Text vun der Fro, dee vum Benotzer ugi gouf.",
+	"apihelp-helppanelquestionposter-param-source": "D'Method, mat där d'Fro gestallt gouf.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Dir musst ageloggt si fir eng Fro ze stellen."
+}
