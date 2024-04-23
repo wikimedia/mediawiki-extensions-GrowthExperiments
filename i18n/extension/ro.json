@@ -105,6 +105,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Continuați să primiți notificări",
 	"growthexperiments-edit-config-keep-going-notification-description": "Numărul maxim de editări pe care îl poate îndeplini un nou-venit pentru a se califica pentru primirea acestei notificări. Dacă este setat la 0,</br> niciun nou-venit nu va primi această notificare. Cu cât este mai mare numărul, cu atât mai mulți nou-veniți vor primi această notificare.<br> Această notificare este trimisă numai nou-veniților care au îndeplinit deja cel puțin o Editare sugerată.",
 	"communityconfiguration-mentorship-title": "Activitate de mentor",
+	"communityconfiguration-mentorship-info-text": "Mentorii pot avea două roluri. Din oficiu, sunt atribuiți aleatoriu nou-veniților. Există o opțiune pentru mentorii care vor să fie mentori numai pentru oameni din evenimente sau clase: nu li se atribuie niciun nou-venit, dar îi pot revendica pe aceștia. Numărul ideal de mentori este: câte un mentor pentru fiecare grup de 500 de conturi noi, cu un minimum de 3 mentori. [https://www.mediawiki.org/wiki/Help:Growth/Mentorship Află mai multe despre cum funcționează activitatea de mentor].",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Ar trebui ca utilizatorii să fie eligibili automat pentru a fi mentori?",
 	"communityconfiguration-mentorship-gementorshipenabled-label": "Funcțiile de activitate a mentorului sunt activate?",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Numărul minim de zile pentru care un utilizator trebuie să fie înregistrat pentru a se putea înscrie ca mentor.",
@@ -119,5 +120,8 @@
 	"communityconfiguration-growthhomepage-title": "Pagina acasă pentru nou-veniți",
 	"communityconfiguration-growthhomepage-description": "Definiți care sunt legăturile de ajutor prin care vreți să treacă editorii noi.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Ajutorul de destinație pentru o legătură despre crearea unui articol nou",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina destinație pentru o legătură despre adăugarea cum se adaugă imagini în editorul vizual"
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina destinație pentru o legătură despre adăugarea cum se adaugă imagini în editorul vizual",
+	"communityconfiguration-growthsuggestededits-title": "Editări sugerate",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Formate de infocasetă",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Aceste formate sunt necesare pentru funcția funcția sarcinii de sugestii de imagini pentru nou-veniți. Articolele care conțin aceste formate nu vor fi listate ca sarcini de sugestii de imagini."
 }

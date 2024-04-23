@@ -104,6 +104,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Notification “Continua assi”",
 	"growthexperiments-edit-config-keep-going-notification-description": "Le numero maxime de modificationes que un novicio pote haber pro qualificar se pro reciper iste notification. Si es mittite a 0, necun novicio recipera iste notification. Quanto plus grande le numero, tanto plus novicios recipera iste notification. Iste notification se invia solmente al novicios qui ha ja completate al minus un Modification suggerite.",
 	"communityconfiguration-mentorship-title": "Mentorato",
+	"communityconfiguration-mentorship-info-text": "Mentores pote haber duo rolos. Per predefinition, illes es assignate aleatorimente al novicios. Existe un option pro mentores qui vole solmente esser le mentores de personas qui assiste a eventos o cursos: nulle novicios es assignate a illes, ma illes pote reclamar les. Le numero ideal de mentores es: un mentor pro cata gruppo de 500 nove contos, con un minimo de 3 mentores. [https://www.mediawiki.org/wiki/Help:Growth/Mentorship Saper plus sur como functiona le mentorato].",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Debe le usatores esser automaticamente eligibile al mentorato?",
 	"communityconfiguration-mentorship-gementorshipenabled-label": "Es le functionalitate de mentorato activate?",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Etate minime in dies del conto de un usator pro poter inscriber se como mentor",
@@ -118,5 +119,8 @@
 	"communityconfiguration-growthhomepage-title": "Pagina de initio pro novicios",
 	"communityconfiguration-growthhomepage-description": "Definir le ligamines de adjuta que nove redactores deberea percurrer.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Adjuta de destination pro un ligamine sur como crear un nove articulo",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina de destination pro un ligamine sur como adder imagines in le editor visual"
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina de destination pro un ligamine sur como adder imagines in le editor visual",
+	"communityconfiguration-growthsuggestededits-title": "Modificationes suggerite",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Patronos de quadro de information",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Iste patronos es necessari pro le function de processo de novicio de suggestiones de imagine. Articulos que contine iste patronos non essera listate como processos de suggestion de imagine."
 }

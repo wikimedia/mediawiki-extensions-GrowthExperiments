@@ -92,5 +92,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Questi template sono utilizzati per il [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggerimento delle immagini]] ai nuovi utenti. Le pagine contenenti questi template non saranno indicate come elementi che necessitano di immagini.",
 	"growthexperiments-info-tooltip-close-label": "Chiudi",
 	"specialpages-group-growth-tools": "Strumenti Growth",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina di destinazione del collegamento su come aggiungere immagini con l'editor visuale"
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina di destinazione del collegamento su come aggiungere immagini con l'editor visuale",
+	"communityconfiguration-growthsuggestededits-title": "Modifiche suggerite",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Template sinottici"
 }

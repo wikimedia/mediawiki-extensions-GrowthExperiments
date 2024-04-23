@@ -125,5 +125,8 @@
 	"communityconfiguration-growthhomepage-title": "Página de inicio para recién llegados",
 	"communityconfiguration-growthhomepage-description": "Definir cuáles son los enlaces de ayuda que desea que los nuevos editores pasen.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Ayuda de destino para un enlace sobre la creación de un nuevo artículo",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Página de destino para un enlace sobre cómo agregar imágenes en el editor visual"
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Página de destino para un enlace sobre cómo agregar imágenes en el editor visual",
+	"communityconfiguration-growthsuggestededits-title": "Ediciones sugeridas",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Plantillas de ficha",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Se necesitan estas plantillas para sugerir imágenes como tareas para los recién llegados. Los artículos que contengan estas plantillas no aparecerán en las tareas de sugerencia de imágenes."
 }
