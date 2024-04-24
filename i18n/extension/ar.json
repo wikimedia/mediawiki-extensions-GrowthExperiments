@@ -108,6 +108,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "الاستمرار في الإخطار",
 	"growthexperiments-edit-config-keep-going-notification-description": "الحد الأقصى لعدد التعديلات المقترحة التي يمكن للوافد الجديد إكمالها للتأهل لتلقي هذا الإشعار. إذا تم ضبطه على 0،<br> لن يتلقى أي قادمين جدد هذا الإشعار. كلما زاد العدد، زاد عدد الوافدين الجدد الذين سيتلقون هذا الإشعار.<br> يتم إرسال هذا الإشعار فقط إلى القادمين الجدد الذين أكملوا بالفعل تعديلًا مقترحًا واحدًا على الأقل.",
 	"communityconfiguration-mentorship-title": "الإرشاد",
+	"communityconfiguration-mentorship-info-text": "يمكن أن يكون للمرشدين دوران. بشكل افتراضي، يتم تعيينهم بشكل عشوائي للوافدين الجدد. يوجد خِيار خاصّ للمرشدين بأن يهتمّوا فقط بأشخاص يشاركون في فعاليات أو دورات تدريبية: لا يُعيّن وافدون جدد لهم، بل يمكنهم المطالبة بهم. العدد المثالي للمرشدين هو: مرشد واحد لكلّ 500 حساب جديد مع عدد لا يقلّ عن 3 مرشدين. [https://www.mediawiki.org/wiki/Help:Growth/Mentorship|اعرفوا المزيد عن كيفية عمل الإرشاد]",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "هل يجب أن يكون المستخدمون مؤهلين تلقائيًا للإرشاد؟",
 	"communityconfiguration-mentorship-gementorshipenabled-label": "هل مزايا الإرشاد مُفعّلة؟",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "الحدّ الأدنى لعدد الأيام التي يجب أن يكون فيها المستخدم مسجّلا قبل الانضمام إلى المرشدين",
@@ -122,5 +123,8 @@
 	"communityconfiguration-growthhomepage-title": "لوحة المستخدم للوافدين الجدد",
 	"communityconfiguration-growthhomepage-description": "تحديد وصلات المساعدة التي تريدون أن يطّلع عليها المحررون الجدد.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "وجهة المساعدة للحصول على رابط حول إنشاء مقالة جديدة",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "صفحة الوصول إلى رابط حول إضافة صور باستخدام المحرر المرئي"
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "صفحة الوصول إلى رابط حول إضافة صور باستخدام المحرر المرئي",
+	"communityconfiguration-growthsuggestededits-title": "التعديلات المقترحة",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "قوالب صندوق المعلومات",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "هذه القوالب مطلوبة لميزة اقتراحات الصور من مهام الوافدين الجدد. لن يتم إدراج المقالات التي تحتوي على هذه القوالب كمهام اقتراح صور."
 }

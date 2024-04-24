@@ -111,6 +111,7 @@
 	"growthexperiments-info-tooltip-close-label": "Cerrar",
 	"specialpages-group-growth-tools": "Herramientas de Growth",
 	"communityconfiguration-mentorship-title": "Tutoría",
+	"communityconfiguration-mentorship-info-text": "Las mentoras pueden tener dos funciones. Por defecto, se asignan aleatoriamente a las recién llegadas. Existe una opción para quienes solo quieran orientar a las personas en sus actos o clases: en este caso, no se les asignarán principiantes de manera automática, pero podrán reclamarlos. El número ideal de mentores es: una por cada grupo de 500 cuentas nuevas, con un mínimo de 3 mentores/as. [https://www.mediawiki.org/wiki/Help:Growth/Mentorship Know more about how mentorship works].",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "¿Los usuarios deberían ser automáticamente elegibles para recibir tutoría?",
 	"communityconfiguration-mentorship-gementorshipenabled-label": "¿Están habilitadas las funciones de tutoría?",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Número de días mínimo desde el registro para poder inscribirse como tutor/a",

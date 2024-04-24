@@ -104,5 +104,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Davam edin bildirişi",
 	"growthexperiments-edit-config-keep-going-notification-description": "Yeni gələnin bu bildirişi almaq hüququna malik olmaq üçün tamamlaya biləcəyi təklif olunan redaktələrin maksimum sayı. 0-a təyin edilərsə,<br> yeni gələnlər bu bildirişi almayacaq. Sayı nə qədər çox olarsa, bir o qədər çox yeni istifadəçi bu bildirişi alacaq.<br> Bu bildiriş yalnız ən azı bir Təklif edilən redaktəni tamamlamışlara göndərilir.",
 	"communityconfiguration-mentorship-title": "Mentorluq",
-	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Mentorlar bu seçimi Mentor idarəetmə panelində öz istifadəçiləri üçün dəyişə bilərlər."
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Mentorlar bu seçimi Mentor idarəetmə panelində öz istifadəçiləri üçün dəyişə bilərlər.",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Məlumat qutusu şablonları",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Bu şablonlar yeni gələnlər üçün şəkil tövsiyyəsi funksiyası üçün lazımdır. Bu şablonları ehtiva edən məqalələr şəkil tövsiyyəsi tapşırıqları kimi siyahıya alınmayacaq."
 }
