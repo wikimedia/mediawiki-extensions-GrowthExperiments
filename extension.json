@@ -656,6 +656,21 @@
 		},
 		"CommunityConfiguration": {
 			"Providers": {
+				"HelpPanel": {
+					"store": {
+						"type": "wikipage",
+						"args": [
+							"MediaWiki:GrowthExperimentsHelpPanel.json"
+						]
+					},
+					"validator": {
+						"type": "jsonschema",
+						"args": [
+							"GrowthExperiments\\Config\\Schemas\\HelpPanelSchema"
+						]
+					},
+					"type": "mw-config"
+				},
 				"Mentorship": {
 					"store": {
 						"type": "wikipage",
