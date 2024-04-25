@@ -38,7 +38,7 @@ class HelpPanelSchema extends JsonSchema {
 						'class' => MediaWikiDefinitions::class, 'field' => 'PageTitle'
 					]
 				],
-				'label' => [
+				'text' => [
 					self::TYPE => self::TYPE_STRING
 				]
 			]
