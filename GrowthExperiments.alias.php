@@ -235,6 +235,7 @@ $specialPageAliases['ko'] = [
 	'MentorDashboard' => [ '멘토대시보드' ],
 	'QuitMentorship' => [ '멘토링그만두기', '멘토링끝내기' ],
 	'ManageMentors' => [ '멘토관리' ],
+	'EnrollAsMentor' => [ '멘토로등록' ],
 ];
 
 /** Latvian (latviešu) */
