@@ -30,5 +30,6 @@
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Si isaway es cierto, entonces awaytimestamp debe ser proporcionado.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalida la sugerencia de un aprendiz digno de elogio en el módulo de elogios personalizados del panel de mentoría.",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Aprendiz a invalidar",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Razones para invalidar una sugerencia"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Razones para invalidar una sugerencia",
+	"apihelp-query+growthmentorlist-summary": "Lista de todas las personas mentoras"
 }

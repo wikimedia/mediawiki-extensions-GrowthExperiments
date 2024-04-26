@@ -109,8 +109,6 @@
 	"growthexperiments-edit-config-keep-going-notification-description": "الحد الأقصى لعدد التعديلات المقترحة التي يمكن للوافد الجديد إكمالها للتأهل لتلقي هذا الإشعار. إذا تم ضبطه على 0،<br> لن يتلقى أي قادمين جدد هذا الإشعار. كلما زاد العدد، زاد عدد الوافدين الجدد الذين سيتلقون هذا الإشعار.<br> يتم إرسال هذا الإشعار فقط إلى القادمين الجدد الذين أكملوا بالفعل تعديلًا مقترحًا واحدًا على الأقل.",
 	"communityconfiguration-mentorship-title": "الإرشاد",
 	"communityconfiguration-mentorship-info-text": "يمكن أن يكون للمرشدين دوران. بشكل افتراضي، يتم تعيينهم بشكل عشوائي للوافدين الجدد. يوجد خِيار خاصّ للمرشدين بأن يهتمّوا فقط بأشخاص يشاركون في فعاليات أو دورات تدريبية: لا يُعيّن وافدون جدد لهم، بل يمكنهم المطالبة بهم. العدد المثالي للمرشدين هو: مرشد واحد لكلّ 500 حساب جديد مع عدد لا يقلّ عن 3 مرشدين. [https://www.mediawiki.org/wiki/Help:Growth/Mentorship|اعرفوا المزيد عن كيفية عمل الإرشاد]",
-	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "هل يجب أن يكون المستخدمون مؤهلين تلقائيًا للإرشاد؟",
-	"communityconfiguration-mentorship-gementorshipenabled-label": "هل مزايا الإرشاد مُفعّلة؟",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "الحدّ الأدنى لعدد الأيام التي يجب أن يكون فيها المستخدم مسجّلا قبل الانضمام إلى المرشدين",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "الحدّ الأدنى لعدد التعديلات التي يجب على المستخدم إجراؤها (في أيّ نطاق) للتسجيل كمرشد",
 	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "عدد الأيام التي يتم أخذها في الاعتبار حتّى يتمّ تقييم استحقاق المُرشَد",

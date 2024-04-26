@@ -105,8 +105,6 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Teruskan pemberitahuan",
 	"growthexperiments-edit-config-keep-going-notification-description": "Bilangan maksimum suntingan yang dicadangkan yang boleh diselesaikan oleh pengguna baharu untuk melayakkan diri menerima pemberitahuan ini. Jika ditetapkan kepada 0,<br> tiada pengguna baharu akan menerima pemberitahuan ini. Lebih tinggi bilangannya, lebih ramai pengguna baharu akan menerima pemberitahuan ini.<br> Pemberitahuan ini hanya dihantar kepada pengguna baharu yang telah menyelesaikan sekurang-kurangnya satu suntingan yang dicadangkan.",
 	"communityconfiguration-mentorship-title": "Pembimbingan",
-	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Adakah pengguna layak secara automatik untuk sesi pembimbingan?",
-	"communityconfiguration-mentorship-gementorshipenabled-label": "Adakah ciri sesi pembimbingan didayakan?",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Bilangan hari minimum pengguna mesti didaftarkan untuk mendaftar sebagai mentor",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Bilangan minimum suntingan yang mesti dilakukan oleh pengguna (pada mana-mana ruang nama) untuk mendaftar sebagai mentor",
 	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Bilangan hari yang dipertimbangkan semasa menilai keterpujian menti",

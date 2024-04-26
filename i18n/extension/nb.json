@@ -103,9 +103,16 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Maksimalt antall redigeringer en nykommer kan ha for å kvalifisere til å få dette varselet. Hvis den er satt til 0 vil ingen nykommere få dette varselet. Jo høyere tall, jo flere nykommere får varselet. Dette varselet sendes kun til nykommere som ikke har fullført noen foreslåtte redigeringer.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Varsel for å fortsette",
 	"growthexperiments-edit-config-keep-going-notification-description": "Maksimalt antall foreslåtte redigeringer en nykommer kan fullføre for å kvalifisere til å motta dette varselet. Hvis det er satt til 0 vil ingen nykommere få dette varselet. Jo høyere tall, jo flere får varselet. Dette varselet sendes kun til nykommere som har fullført minst én foreslått redigering.",
+	"communityconfiguration-helppanel-title": "Hjelpepanel",
+	"communityconfiguration-helppanel-gehelppanellinks-0-label": "Første lenke",
+	"communityconfiguration-helppanel-gehelppanellinks-1-label": "Andre lenke",
+	"communityconfiguration-helppanel-gehelppanellinks-2-label": "Tredje lenke",
+	"communityconfiguration-helppanel-gehelppanellinks-3-label": "Fjerde lenke",
+	"communityconfiguration-helppanel-gehelppanellinks-4-label": "Femte lenke",
+	"communityconfiguration-helppanel-gehelppanellinks-title-label": "Målside",
+	"communityconfiguration-helppanel-gehelppanellinks-text-label": "Etikett",
 	"communityconfiguration-mentorship-title": "Fadderskap",
-	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Bør brukere automatisk kvalifisere for fadderprogrammet?",
-	"communityconfiguration-mentorship-gementorshipenabled-label": "Er fadderskapsfunksjonene slått på?",
+	"communityconfiguration-mentorship-info-text": "Faddere kan ha to roller. Som standard blir nybegynnere tildelt en fadder tilfeldig. Det er også mulig å være fadder kun for kurs- eller arrangementsdeltakere: Slike faddere får ikke tildelt tilfeldige nybegynnere, men kan gjøre krav på nybegynnere. Det ideelle antallet faddere er: Én fadder per 500 nye kontoer, med minst 3 faddere. [https://www.mediawiki.org/wiki/Help:Growth/Mentorship Lær mer om hvordan fadderskap fungerer].",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Minimalt antall dager en bruker må være registrert for å kunne melde seg som fadder",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Minimalt antall redigeringer en bruker må ha (i alle navnerom) for å kunne melde seg som fadder",
 	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Antall dager som legges til grunn når man evaluerer fadderbarns rosverdighet",
@@ -114,5 +121,8 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Faddere kan endre dette alternativet for sin egen bruker i fadderpanelet.",
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Maksimalt antall redigeringer en bruker kan ha for å anses som rosverdig",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Standard minimalt antall redigeringer et fadderbarn må ha gjort for å regnes som rosverdig",
-	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Faddere kan endre dette alternativet for sin egen bruker i fadderpanelet."
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Faddere kan endre dette alternativet for sin egen bruker i fadderpanelet.",
+	"communityconfiguration-growthhomepage-title": "Hjemmeside for nybegynnere",
+	"communityconfiguration-growthsuggestededits-title": "Foreslåtte redigeringer",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Infoboksmaler"
 }
