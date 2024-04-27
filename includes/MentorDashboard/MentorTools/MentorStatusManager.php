@@ -245,10 +245,8 @@ class MentorStatusManager {
 			->from( 'user_properties' )
 			->where( [
 				'up_property' => self::MENTOR_AWAY_TIMESTAMP_PREF,
-				'up_value IS NOT NULL',
-				'up_value > ' . $db->addQuotes(
-					$db->timestamp()
-				)
+				$db->expr( 'up_value', '!=', null ),
+				$db->expr( 'up_value', '>', $db->timestamp() )
 			] )
 			->recency( $flags )
 			->caller( __METHOD__ )

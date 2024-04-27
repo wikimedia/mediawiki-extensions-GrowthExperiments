@@ -15,7 +15,6 @@ use MediaWiki\SpecialPage\Hook\ChangesListSpecialPageStructuredFiltersHook;
 use MediaWiki\User\UserIdentity;
 use RecentChange;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
  * RecentChanges filters for mentors. Separate from MentorHooks because MentorManager
@@ -105,7 +104,7 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 				// there is a risk of key conflict. Convert into non-associate instead.
 				// Only apply when $targetIds has at least one ID
 				if ( $targetActorIds !== [] ) {
-					$conds[] = $dbr->makeList( [ 'rc_actor' => $targetActorIds ], IDatabase::LIST_AND );
+					$conds['rc_actor'] = $targetActorIds;
 				} else {
 					$conds[] = '0=1';
 				}
@@ -198,11 +197,13 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 
 		// No need to worry about properly acquiring actor IDs - if it shows up in
 		// recent changes, it already has an actor ID
-		$queryBuilder = new SelectQueryBuilder( $db );
-		$queryBuilder->table( 'actor' );
-		$queryBuilder->field( 'actor_id' );
-		$queryBuilder->where( [ 'actor_user' => $userIds ] );
-		return array_map( 'intval', $queryBuilder->fetchFieldValues() );
+		$res = $db->newSelectQueryBuilder()
+			->select( 'actor_id' )
+			->from( 'actor' )
+			->where( [ 'actor_user' => $userIds ] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		return array_map( 'intval', $res );
 	}
 
 }

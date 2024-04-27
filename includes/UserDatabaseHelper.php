@@ -42,14 +42,13 @@ class UserDatabaseHelper {
 	public function findFirstUserIdForRegistrationTimestamp( $registrationTimestamp ): ?int {
 		$dbr = $this->connectionProvider->getReplicaDatabase();
 		$registrationTimestamp = $dbr->timestamp( $registrationTimestamp );
-		$queryBuilder = new SelectQueryBuilder( $dbr );
-		$queryBuilder->table( 'user' );
-		$queryBuilder->field( 'user_id' );
-		$queryBuilder->where( "user_registration >= " . $dbr->addQuotes( $registrationTimestamp ) );
-		$queryBuilder->orderBy( 'user_id', SelectQueryBuilder::SORT_ASC );
-		$queryBuilder->limit( 1 );
-		$queryBuilder->caller( __METHOD__ );
-		$userId = $queryBuilder->fetchField();
+		$userId = $dbr->newSelectQueryBuilder()
+			->field( 'user_id' )
+			->from( 'user' )
+			->where( $dbr->expr( 'user_registration', '>=', $registrationTimestamp ) )
+			->orderBy( 'user_id', SelectQueryBuilder::SORT_ASC )
+			->caller( __METHOD__ )
+			->fetchField();
 		return $userId === false ? null : (int)$userId;
 	}
 
@@ -62,19 +61,20 @@ class UserDatabaseHelper {
 	 */
 	public function hasMainspaceEdits( UserIdentity $userIdentity, int $limit = 1000 ): ?bool {
 		$user = $this->userFactory->newFromUserIdentity( $userIdentity );
-		$queryBuilder = new SelectQueryBuilder( $this->connectionProvider->getReplicaDatabase() );
-		$queryBuilder->table( 'revision' );
-		$queryBuilder->join( 'page', null, 'page_id = rev_page' );
-		$queryBuilder->field( 'page_namespace' );
-		$queryBuilder->where( [
-			'rev_actor' => $user->getActorId()
-		] );
-		// Look at the user's oldest edits - arbitrary choice, other than we want the method to be
-		// deterministic. Can be done efficiently via the rev_actor_timestamp index.
-		$queryBuilder->orderBy( 'rev_timestamp', SelectQueryBuilder::SORT_ASC );
-		$queryBuilder->limit( $limit );
-		$queryBuilder->caller( __METHOD__ );
-		$result = array_map( 'intval', $queryBuilder->fetchFieldValues() );
+		$res = $this->connectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
+			->select( 'page_namespace' )
+			->from( 'revision' )
+			->join( 'page', null, 'page_id = rev_page' )
+			->where( [
+				'rev_actor' => $user->getActorId()
+			] )
+			// Look at the user's oldest edits - arbitrary choice, other than we want the method to be
+			// deterministic. Can be done efficiently via the rev_actor_timestamp index.
+			->orderBy( 'rev_timestamp', SelectQueryBuilder::SORT_ASC )
+			->limit( $limit )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		$result = array_map( 'intval', $res );
 		if ( in_array( NS_MAIN, $result ) ) {
 			return true;
 		}

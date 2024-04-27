@@ -88,8 +88,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			return;
 		}
 
-		$queryBuilderTemplate = new SelectQueryBuilder( $dbr );
-		$queryBuilderTemplate
+		$queryBuilderTemplate = $dbr->newSelectQueryBuilder()
 			->table( 'user' )
 			->join( 'user_properties', 'survey_prop', [
 				'user_id = survey_prop.up_user',
@@ -113,7 +112,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			->limit( $this->getBatchSize() )
 			->caller( __METHOD__ );
 		if ( $toId ) {
-			$queryBuilderTemplate->where( 'user_id <= ' . $dbr->addQuotes( $toId ) );
+			$queryBuilderTemplate->where( $dbr->expr( 'user_id', '<=', $toId ) );
 		}
 
 		$userOptionsLookup = $services->getUserOptionsLookup();
@@ -125,7 +124,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		$group = $this->getOption( 'group' );
 		do {
 			$queryBuilder = clone $queryBuilderTemplate;
-			$queryBuilder->andWhere( 'user_id > ' . $dbr->addQuotes( $fromId ?? 0 ) );
+			$queryBuilder->andWhere( $dbr->expr( 'user_id', '>', $fromId ?? 0 ) );
 			$result = $queryBuilder->fetchResultSet();
 			foreach ( $result as $row ) {
 				$fromId = $row->user_id;
@@ -172,14 +171,13 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 	 * @return int|null
 	 */
 	private function getLastUserIdBeforeRegistrationDate( IDatabase $dbr, string $registrationDate ): ?int {
-		$queryBuilder = new SelectQueryBuilder( $dbr );
-		$queryBuilder
-			->fields( [ 'user_id' => 'max(user_id)' ] )
-			->table( 'user' )
+		$res = $dbr->newSelectQueryBuilder()
+			->select( [ 'user_id' => 'max(user_id)' ] )
+			->from( 'user' )
 			// Old user records have no registration date. We won't use 'from' dates old enough
 			// to encounter those so we can ignore them here.
-			->where( 'user_registration <= ' . $dbr->timestamp( $registrationDate ) );
-		$res = $queryBuilder->fetchField();
+			->where( $dbr->expr( 'user_registration', '<=', $registrationDate ) )
+			->fetchField();
 		return is_numeric( $res ) ? intval( $res ) : null;
 	}
 

@@ -6,7 +6,6 @@ use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class DatabaseUserImpactStore implements UserImpactStore {
 
@@ -43,10 +42,11 @@ class DatabaseUserImpactStore implements UserImpactStore {
 		}
 
 		$userImpacts = array_fill_keys( $userIds, null );
-		$queryBuilder = new SelectQueryBuilder( $this->loadBalancer->getConnection( DB_REPLICA ) );
-		$queryBuilder->table( self::TABLE_NAME );
-		$queryBuilder->fields( [ 'geui_user_id', 'geui_data' ] );
-		$queryBuilder->where( [ 'geui_user_id' => $userIds ] );
+		$queryBuilder = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+			->select( [ 'geui_user_id', 'geui_data' ] )
+			->from( self::TABLE_NAME )
+			->where( [ 'geui_user_id' => $userIds ] )
+			->caller( __METHOD__ );
 		foreach ( $queryBuilder->fetchResultSet() as $row ) {
 			AtEase::suppressWarnings();
 			$userImpactArray = gzinflate( $row->geui_data );

@@ -20,6 +20,7 @@ use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use PageImages\PageImages;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
  * This is the "Impact" module. It shows the page views information
@@ -585,35 +586,34 @@ class Impact extends BaseModule {
 		$actorMigration = ActorMigration::newMigration();
 		$dbr = $this->connectionProvider->getReplicaDatabase();
 		$actorQuery = $actorMigration->getWhere( $dbr, 'rev_user', $this->getContext()->getUser() );
-		$subquery = $dbr->buildSelectSubquery(
-			array_merge( [ 'revision' ], $actorQuery[ 'tables' ], [ 'page' ] ),
-			[ 'rev_page', 'page_title', 'page_namespace', 'rev_timestamp' ],
-			[
+		$subquery = $dbr->newSelectQueryBuilder()
+			->select( [ 'rev_page', 'page_title', 'page_namespace', 'rev_timestamp' ] )
+			->from( 'revision' )
+			->tables( $actorQuery[ 'tables' ] )
+			->joinConds( $actorQuery[ 'joins' ] )
+			->join( 'page', null, 'rev_page = page_id' )
+			->where( [
 				$actorQuery[ 'conds' ],
 				'rev_deleted' => 0,
 				'page_namespace' => 0,
-			],
-			__METHOD__,
-			[ 'ORDER BY' => 'rev_timestamp DESC', 'limit' => 1000 ],
-			[ 'page' => [ 'JOIN', [ 'rev_page = page_id' ] ] ] + $actorQuery[ 'joins' ]
-		);
-		$result = $dbr->select(
-			[ 'latest_edits' => $subquery ],
-			[
+			] )
+			->orderBy( 'rev_timestamp', SelectQueryBuilder::SORT_DESC )
+			->limit( 1000 )
+			->caller( __METHOD__ );
+		$result = $dbr->newSelectQueryBuilder()
+			->select( [
 				'rev_page',
 				'page_title',
 				'page_namespace',
 				'max_ts' => 'MAX(rev_timestamp)',
 				'min_ts' => 'MIN(rev_timestamp)',
-			],
-			[],
-			__METHOD__,
-			[
-				'GROUP BY' => 'rev_page',
-				'ORDER BY' => 'max_ts DESC',
-				'LIMIT' => 10,
-			]
-		);
+			] )
+			->from( $subquery, 'latest_edits' )
+			->groupBy( 'rev_page' )
+			->orderBy( 'max_ts', SelectQueryBuilder::SORT_DESC )
+			->limit( 10 )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		$contribs = [];
 		foreach ( $result as $row ) {
 			$contribs[] = [

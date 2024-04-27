@@ -156,13 +156,14 @@ class RefreshUserImpactData extends Maintenance {
 		$queryBuilder->limit( $this->getBatchSize() );
 		$queryBuilder->orderByUserId( SelectQueryBuilder::SORT_ASC );
 		$lastUserId = (int)$this->getOption( 'fromUser', 0 );
+		$dbr = $this->getDB( DB_REPLICA );
 		do {
 			$this->output( "processing {$this->getBatchSize()} users starting with $lastUserId\n" );
 			$batchQueryBuilder = clone $queryBuilder;
-			$batchQueryBuilder->where( 'actor_user > ' . $lastUserId );
+			$batchQueryBuilder->where( $dbr->expr( 'actor_user', '>', $lastUserId ) );
 			$userIds = $batchQueryBuilder->fetchFieldValues();
 			if ( $userIds ) {
-				$users = $this->actorStore->newSelectQueryBuilder( $this->getDB( DB_REPLICA ) )
+				$users = $this->actorStore->newSelectQueryBuilder( $dbr )
 					->whereUserIds( $userIds )
 					->fetchUserIdentities();
 			} else {
@@ -203,7 +204,7 @@ class RefreshUserImpactData extends Maintenance {
 		if ( $editedWithin ) {
 			$timestamp = $dbr->timestamp( $this->getTimestampFromRelativeDate( $editedWithin ) );
 			$queryBuilder->join( 'revision', null, [ 'rev_actor = actor_id' ] );
-			$queryBuilder->where( "rev_timestamp >= $timestamp" );
+			$queryBuilder->where( $dbr->expr( 'rev_timestamp', '>=', $timestamp ) );
 			$queryBuilder->groupBy( [ 'actor_user' ] );
 		}
 		if ( $registeredWithin ) {
@@ -211,14 +212,14 @@ class RefreshUserImpactData extends Maintenance {
 				$this->getTimestampFromRelativeDate( $registeredWithin )
 			);
 			if ( $firstUserId ) {
-				$queryBuilder->where( "actor_user >= $firstUserId" );
+				$queryBuilder->where( $dbr->expr( 'actor_user', '>=', $firstUserId ) );
 			} else {
 				$queryBuilder->where( '0 = 1' );
 			}
 		}
 		if ( $hasEditsAtLeast ) {
 			$queryBuilder->join( 'user', null, [ 'user_id = actor_user' ] );
-			$queryBuilder->where( 'user_editcount >= ' . (int)$hasEditsAtLeast );
+			$queryBuilder->where( $dbr->expr( 'user_editcount', '>=', (int)$hasEditsAtLeast ) );
 		}
 		return $queryBuilder;
 	}

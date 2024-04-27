@@ -56,15 +56,15 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 		// In the longer run, adding batch querying to RestrictionStore itself would be nice.
 		$results = [];
 		if ( $validTasks ) {
-			$results = $this->connectionProvider->getReplicaDatabase()->select(
-				'page_restrictions',
-				[ 'pr_page' ],
-				[
+			$results = $this->connectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
+				->select( [ 'pr_page' ] )
+				->from( 'page_restrictions' )
+				->where( [
 					'pr_page' => array_keys( $validTasks ),
 					'pr_type' => 'edit'
-				],
-				__METHOD__
-			);
+				] )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 		}
 
 		foreach ( $results as $item ) {

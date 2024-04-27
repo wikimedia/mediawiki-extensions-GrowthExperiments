@@ -16,6 +16,7 @@ use RuntimeException;
 use stdClass;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\OrExpressionGroup;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
@@ -134,10 +135,11 @@ class LinkRecommendationStore {
 	 * @return LinkRecommendation[]
 	 */
 	public function getAllRecommendations( int $limit, int &$fromPageId ): array {
-		$res = $this->getDB( DB_REPLICA )->newSelectQueryBuilder()
+		$dbr = $this->getDB( DB_REPLICA );
+		$res = $dbr->newSelectQueryBuilder()
 			->select( [ 'gelr_revision', 'gelr_page', 'gelr_data' ] )
 			->from( 'growthexperiments_link_recommendations' )
-			->where( [ 'gelr_page >= ' . $fromPageId ] )
+			->where( $dbr->expr( 'gelr_page', '>=', $fromPageId ) )
 			->orderBy( 'gelr_page ASC' )
 			->limit( $limit )
 			->caller( __METHOD__ )->fetchResultSet();
@@ -161,25 +163,23 @@ class LinkRecommendationStore {
 			->fetchPageRecords();
 
 		$conds = [];
+		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 		/** @var PageRecord $pageRecord */
 		foreach ( $pageRecords as $pageRecord ) {
-			// Making it obvious there's no SQL injection risk is nice, but Phan disagrees.
-			// @phan-suppress-next-line PhanRedundantConditionInLoop
-			$pageId = (int)$pageRecord->getId();
-			$revId = (int)$pageRecord->getLatest();
+			$pageId = $pageRecord->getId();
+			$revId = $pageRecord->getLatest();
 			if ( !$pageId || !$revId ) {
 				continue;
 			}
 			// $revId can be outdated due to replag; we don't want to delete the record then.
-			$conds[] = "gelr_page = $pageId AND gelr_revision >= $revId";
+			$conds[] = $dbr->expr( 'gelr_page', '=', $pageId )->and( 'gelr_revision', '>=', $revId );
 		}
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
-		return array_map( 'intval', $dbr->selectFieldValues(
-			'growthexperiments_link_recommendations',
-			'gelr_page',
-			$dbr->makeList( $conds, IDatabase::LIST_OR ),
-			__METHOD__
-		) );
+		return array_map( 'intval', $dbr->newSelectQueryBuilder()
+			->select( 'gelr_page' )
+			->from( 'growthexperiments_link_recommendations' )
+			->where( new OrExpressionGroup( ...$conds ) )
+			->caller( __METHOD__ )
+			->fetchFieldValues() );
 	}
 
 	/**
@@ -189,11 +189,11 @@ class LinkRecommendationStore {
 	 * @return int[]
 	 */
 	public function listPageIds( int $limit, int $from = null ): array {
-		return array_map( 'intval', $this->loadBalancer->getConnection( DB_REPLICA )
-			->newSelectQueryBuilder()
+		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		return array_map( 'intval', $dbr->newSelectQueryBuilder()
 			->select( 'gelr_page' )
 			->from( 'growthexperiments_link_recommendations' )
-			->where( $from ? [ "gelr_page > $from" ] : [] )
+			->where( $from ? $dbr->expr( 'gelr_page', '>', $from ) : [] )
 			->groupBy( 'gelr_page' )
 			->orderBy( 'gelr_page ASC' )
 			->limit( $limit )

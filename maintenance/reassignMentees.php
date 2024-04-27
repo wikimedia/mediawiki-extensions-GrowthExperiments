@@ -79,7 +79,7 @@ class ReassignMentees extends Maintenance {
 			->from( 'growthexperiments_mentor_mentee' )
 			->where( [
 				'gemm_mentor_role' => MentorStore::ROLE_PRIMARY,
-				'gemm_mentor_id NOT IN (' . $this->growthDbr->makeList( $officialMentorIds ) . ')'
+				$this->growthDbr->expr( 'gemm_mentor_id', '!=', $officialMentorIds ),
 			] )
 			->fetchFieldValues();
 

@@ -45,9 +45,9 @@ class NewcomersByMentorMetric implements IMetric {
 			->where( [
 				'log_type' => 'newusers',
 				'log_action' => 'create',
-				'log_timestamp > ' . $this->dbr->timestamp(
+				$this->dbr->expr( 'log_timestamp', '>', $this->dbr->timestamp(
 					(int)wfTimestamp() - ExpirationAwareness::TTL_MONTH
-				)
+				) )
 			] )
 			->caller( __METHOD__ )
 			->fetchField();

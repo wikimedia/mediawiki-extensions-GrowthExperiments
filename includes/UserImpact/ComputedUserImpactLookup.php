@@ -34,7 +34,6 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use StatusValue;
 use Wikimedia\Rdbms\IConnectionProvider;
-use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class ComputedUserImpactLookup implements UserImpactLookup {
 
@@ -213,8 +212,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	private function getEditData( User $user, int $flags ): EditData {
 		$db = DBAccessObjectUtils::getDBFromRecency( $this->connectionProvider, $flags );
 
-		$queryBuilder = new SelectQueryBuilder( $db );
-		$queryBuilder->table( 'revision' )
+		$queryBuilder = $db->newSelectQueryBuilder()
+			->table( 'revision' )
 			->join( 'page', null, 'rev_page = page_id' );
 
 		$taskChangeTagNames = $this->taskTypeHandlerRegistry->getUniqueChangeTags();

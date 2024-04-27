@@ -37,12 +37,13 @@ class DeleteExpiredUserImpactData extends Maintenance {
 		$expiry = $this->getOption( 'expiry', '30days' );
 		$expiryTimestamp = $this->getTimestampFromRelativeDate( $expiry );
 
-		$queryBuilder = new SelectQueryBuilder( $dbw );
-		$queryBuilder->table( DatabaseUserImpactStore::TABLE_NAME );
-		$queryBuilder->field( 'geui_user_id' );
-		$queryBuilder->where( 'geui_timestamp < ' . $expiryTimestamp );
-		$queryBuilder->orderBy( 'geui_timestamp', SelectQueryBuilder::SORT_ASC );
-		$queryBuilder->limit( $this->getBatchSize() );
+		$queryBuilder = $dbw->newSelectQueryBuilder()
+			->select( 'geui_user_id' )
+			->from( DatabaseUserImpactStore::TABLE_NAME )
+			->where( $dbw->expr( 'geui_timestamp', '<', $dbw->timestamp( $expiryTimestamp ) ) )
+			->orderBy( 'geui_timestamp', SelectQueryBuilder::SORT_ASC )
+			->limit( $this->getBatchSize() )
+			->caller( __METHOD__ );
 
 		$deletedCount = 0;
 		$idsToDelete = $queryBuilder->fetchFieldValues();

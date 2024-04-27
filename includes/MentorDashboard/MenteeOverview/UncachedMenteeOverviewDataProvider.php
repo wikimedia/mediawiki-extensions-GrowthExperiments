@@ -548,12 +548,12 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 */
 	private function getRegistrationTimestampForUsers( array $userIds ): array {
 		$startTime = microtime( true );
-		$rows = $this->getReadConnection()->select(
-			'user',
-			[ 'user_id', 'user_registration' ],
-			[ 'user_id' => $userIds ],
-			__METHOD__
-		);
+		$rows = $this->getReadConnection()->newSelectQueryBuilder()
+			->select( [ 'user_id', 'user_registration' ] )
+			->from( 'user' )
+			->where( [ 'user_id' => $userIds ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		$res = [];
 		foreach ( $rows as $row ) {
 			$res[$row->user_id] = $row->user_registration;

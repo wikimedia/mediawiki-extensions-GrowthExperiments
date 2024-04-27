@@ -17,6 +17,7 @@ use stdClass;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\ProtectionFilter
@@ -105,7 +106,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 		$dbr = $this->createMock( IReadableDatabase::class );
 		$dbr->expects( $this->exactly( 4 ) )
 			->method( 'select' )
-			->with( 'page_restrictions' )
+			->with( [ 'page_restrictions' ] )
 			->willReturnCallback(
 				static function ( $table, $vars, $conds ) use ( $map ) {
 					$data = [];
@@ -122,6 +123,10 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 					}
 					return new FakeResultWrapper( $data );
 				} );
+		$dbr->method( 'newSelectQueryBuilder' )
+			->willReturnCallback( static function () use ( $dbr ) {
+				return new SelectQueryBuilder( $dbr );
+			} );
 		$connProvider = $this->createMock( IConnectionProvider::class );
 		$connProvider->method( 'getReplicaDatabase' )->willReturn( $dbr );
 		return $connProvider;
