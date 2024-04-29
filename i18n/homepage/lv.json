@@ -425,6 +425,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Attēls ir aizvainojošs",
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Attēls ir zemas kvalitātes",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Es nepārzinu šo tēmu",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Es nesaprotu valodu attēla aprakstā",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Cits",
 	"growthexperiments-addimage-viewer-close-button": "Aizvērt",
 	"growthexperiments-addimage-onboarding-content-intro-title": "Attēli palīdz cilvēkiem mācīties, bet daudziem rakstiem to nav.",

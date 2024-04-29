@@ -11,7 +11,12 @@
 			"Zhang8569",
 			"范",
 			"魔琴",
-			50829
+			50829,
+			"Diskdance",
+			"Lakejason0",
+			"Lantianjialiang",
+			"SunAfterRain",
+			"沈澄心"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "导师面板",
@@ -87,6 +92,7 @@
 	"growthexperiments-quit-mentorship-title": "离开导师项目",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "很遗憾看到您要离开了，要开始退出导师项目的流程，您首先需要[[$1|从导师列表]]移除您的名字。完成操作后，请回到本页。",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "退出导师项目的下一步是重新分配您的学员，如果您确定要离开，请按下下面的按钮。",
+	"growthexperiments-quit-mentorship-reason": "原因",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "是的，重新分配我的学生",
 	"growthexperiments-quit-mentorship-success": "您的学员将很快地重新分配给其他导师。",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|您}}目前没有任何学员。",
@@ -104,6 +110,9 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|您的}}负担已变更为“$1”。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "建立账户时，学员会被随机分配给导师。您可以控制分配给您的学员的数量，不过某些学员相比其他人会更为活跃地发问。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "推荐您先选择“平均水平”，以便评估您指导学员的能力，然后再增加或减少分配给您的学员。",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "保存",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "取消",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "介绍信息",
 	"growthexperiments-mentor-writer-error-already-added": "导师$1已被添加到导师列表中",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "导师$1不在导师列表上",
 	"growthexperiments-manage-mentors-title": "管理导师",

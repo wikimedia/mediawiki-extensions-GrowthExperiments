@@ -11,5 +11,9 @@
 	"apihelp-query+growthtasks-param-limit": "Bilangan maksimum cadangan tugasan untuk dikembalikan.",
 	"apihelp-query+growthtasks-param-excludepageids": "ID Halaman untuk dikecualikan daripada kueri.",
 	"apihelp-query+growthtasks-param-debug": "Tambah data nyahpepijat pada output.",
-	"apihelp-query+growthtasks-example-2": "Dapatkan pengesyoran tugasan untuk pengguna semasa, dengan maklumat lanjutan tentang halaman."
+	"apihelp-query+growthtasks-example-2": "Dapatkan pengesyoran tugasan untuk pengguna semasa, dengan maklumat lanjutan tentang halaman.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Parameter 'diterima' hilang daripada data pemalam Tambah Imej",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Parameter 'diterima' mestilah berkelogikan boolean pada data pemalam Tambah Imej, yakni $1",
+	"apierror-growthexperiments-addlink-handler-notfound": "Rekod pengesyoran pautan tidak ditemui",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Sasaran pengesyoran pautan yang tidak dijangka: $1"
 }

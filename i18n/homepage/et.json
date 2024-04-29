@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kareyac",
-			"Pikne"
+			"Pikne",
+			"Yupik"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Tere}}, {{bidi:$1}}!",
@@ -222,6 +223,7 @@
 	"growthexperiments-homepage-suggestededits-error-description": "Proovi hiljem uuesti.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Vali vähemalt üht tüüpi muudatused.",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Vali teemad",
+	"growthexperiments-homepage-suggestededits-topics-more": "näita rohkem",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|teema|teemat}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Vali kõik",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Eemalda kõik",
