@@ -19,6 +19,7 @@
 			"Xiplus",
 			"Yining Chen",
 			"Zhang8569",
+			"沈澄心",
 			"羊羊32521",
 			"魔琴"
 		]
@@ -98,5 +99,18 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "包含此处定义分类的条目将不会以此任务类型向用户显示为任务。",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "信息框模版",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|图片建议]]新手任务功能需要这些模板，包含这些模板的条目将不会列在图片建议任务内。",
-	"growthexperiments-info-tooltip-close-label": "关闭"
+	"growthexperiments-info-tooltip-close-label": "关闭",
+	"communityconfiguration-helppanel-title": "帮助面板",
+	"communityconfiguration-helppanel-gehelppanelexcludednamespaces-label": "在阅读和编辑模式下，禁用帮助面板的命名空间",
+	"communityconfiguration-helppanel-gehelppanelreadingmodenamespaces-label": "阅读模式下，帮助面板可用的命名空间",
+	"communityconfiguration-helppanel-gehelppanelsearchnamespaces-label": "要包含在帮助面板的自由文本搜索帮助中的命名空间",
+	"communityconfiguration-helppanel-gehelppanelhelpdesktitle-label": "应在帮助面板中发布问题的咨询台页面。",
+	"communityconfiguration-helppanel-gehelppanellinks-0-label": "第一个链接",
+	"communityconfiguration-helppanel-gehelppanellinks-1-label": "第二个链接",
+	"communityconfiguration-helppanel-gehelppanellinks-2-label": "第三个链接",
+	"communityconfiguration-helppanel-gehelppanellinks-3-label": "第四个链接",
+	"communityconfiguration-helppanel-gehelppanellinks-4-label": "第五个链接",
+	"communityconfiguration-helppanel-gehelppanellinks-title-label": "目标页面",
+	"communityconfiguration-growthsuggestededits-title": "编辑建议",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "信息框模板"
 }
