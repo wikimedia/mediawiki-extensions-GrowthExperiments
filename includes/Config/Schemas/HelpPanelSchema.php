@@ -22,10 +22,23 @@ class HelpPanelSchema extends JsonSchema {
 			'class' => MediaWikiDefinitions::class, 'field' => 'Namespaces'
 		]
 	];
+
+	public const GEHelpPanelAskMentor = [
+		self::TYPE => self::TYPE_STRING,
+		self::ENUM => [ 'mentor-talk-page', 'help-desk-page' ],
+		self::DEFAULT => 'mentor-talk-page'
+	];
+
 	public const GEHelpPanelHelpDeskTitle = [
 		self::REF => [
 			'class' => MediaWikiDefinitions::class, 'field' => 'PageTitle'
 		]
+	];
+
+	public const GEHelpPanelPostOnTop = [
+		self::TYPE => self::TYPE_STRING,
+		self::ENUM => [ 'top', 'bottom' ],
+		self::DEFAULT => 'top'
 	];
 
 	public const GEHelpPanelLinks = [
