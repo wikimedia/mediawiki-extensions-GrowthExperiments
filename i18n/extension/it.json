@@ -94,5 +94,6 @@
 	"specialpages-group-growth-tools": "Strumenti Growth",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina di destinazione del collegamento su come aggiungere immagini con l'editor visuale",
 	"communityconfiguration-growthsuggestededits-title": "Modifiche suggerite",
-	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Template sinottici"
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Template sinottici",
+	"communityconfiguration-growthsuggestededits-expand-excludedtemplates-label": "Le voci contenenti i template qui definiti non saranno mostrate agli utenti per questo tipo di attività."
 }
