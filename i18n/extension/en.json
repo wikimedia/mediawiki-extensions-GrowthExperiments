@@ -171,7 +171,7 @@
 	"communityconfiguration-growthsuggestededits-expand-excludedtemplates-label": "Articles containing templates defined here will not be shown to users as tasks for this task type.",
 	"communityconfiguration-growthsuggestededits-expand-excludedcategories-label": "Articles containing categories defined here will not be shown to users as tasks for this task type.",
 	"communityconfiguration-growthsuggestededits-expand-learnmore-label": "Destination page for learning more about expanding articles.",
-	"communityconfiguration-growthsuggestededits-image_recommendation-label": " Add an image to an unillustrated article",
+	"communityconfiguration-growthsuggestededits-image_recommendation-label": "Add an image to an unillustrated article",
 	"communityconfiguration-growthsuggestededits-image_recommendation-disabled-control-label": "The task is disabled.",
 	"communityconfiguration-growthsuggestededits-image_recommendation-excludedtemplates-label": "Articles containing templates defined here will not be shown to users as tasks for this task type.",
 	"communityconfiguration-growthsuggestededits-image_recommendation-excludedcategories-label": "Articles containing categories defined here will not be shown to users as tasks for this task type",
