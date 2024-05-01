@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"محک"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|خش بمویی}}، $1!"
+}

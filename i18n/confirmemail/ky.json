@@ -4,5 +4,9 @@
 			"Bosogo"
 		]
 	},
-	"growthexperiments-confirmemail-emailrecommended": "Электрондук почта (сунушталат)"
+	"growthexperiments-confirmemail-emailhelp": "Эгер сырсөзүңүздү унутуп калсаңыз, аккаунтуңузду калыбына келтирүү үчүн электрондук почта талап кылынат.",
+	"growthexperiments-confirmemail-emailrecommended": "Электрондук почта (сунушталат)",
+	"growthexperiments-confirmemail-emailwarning": "Электрондук почтаңызга жөнөтүлгөн шилтеме аркылуу электрондук почтаңызды ырастаңыз.",
+	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}} сайтына кош келиңиз: электрондук почтаңызды ырастаңыз",
+	"growthexperiments-confirmemail-confirm-button": "Электрондук почтаны ырастоо"
 }
