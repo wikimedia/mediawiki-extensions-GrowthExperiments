@@ -30,7 +30,7 @@
 	"growthexperiments-edit-config-help-panel-description": "بمكن أن تتوافر لوحة المساعدة على أيّ نطاق، في وضع القراءة أو في وضع التحرير، مثلما هو مضبوط أدناه. تتضمّن اللوحة البحث عن المساعدة، والضغط على روابط المساعدة، وطرح الأسئلة إمّا على المرشدين أو على ميدان المساعدة.",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "النطاقات أين تتوافر لوحة المساعدة مفعّلة على وضعيّة القراءة",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "النطاقات أين لوحة المساعدة معطّلة على كلّ من وضعيّتي القراءة والتحرير",
-	"growthexperiments-edit-config-help-panel-helpdesk-title": "صفحة ميدان المسابقة أين يجب طرح الأسئلة المتأتّية من لوحة المساعدة.",
+	"growthexperiments-edit-config-help-panel-helpdesk-title": "صفحة ميدان المساعدة أين يجب طرح الأسئلة المتأتّية من لوحة المساعدة.",
 	"growthexperiments-edit-config-help-panel-post-on-top": "أين ستنشر الأسئلة الجديدة على صفحة ميدان المساعدة؟",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "أعلى الصفحة",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "أسفل الصفحة",
