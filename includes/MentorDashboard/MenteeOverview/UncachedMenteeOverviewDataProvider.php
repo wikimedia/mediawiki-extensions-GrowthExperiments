@@ -506,34 +506,28 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 		$dbr = $this->getReadConnection();
 		$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
-		$taggedEditsSubquery = $dbr->buildSelectSubquery(
-			[ 'change_tag', 'revision' ] + $queryInfo['tables'],
-			[
+		$taggedEditsSubquery = $dbr->newSelectQueryBuilder()
+			->select( [
 				'rev_user' => $queryInfo['fields']['rev_user'],
 				'ct_rev_id'
-			],
-			[
+			] )
+			->from( 'change_tag' )
+			->join( 'revision', null, 'rev_id=ct_rev_id' )
+			->tables( $queryInfo['tables'] )
+			->where( [
 				'actor_user' => $userIds,
 				'ct_tag_id' => $tagIds
-			],
-			__METHOD__,
-			[],
-			[
-				'revision' => [ 'JOIN', 'rev_id=ct_rev_id' ],
-			] + $queryInfo['joins']
-		);
-		$rows = $dbr->select(
-			[ 'user', 'tagged_edits' => $taggedEditsSubquery ],
-			[ 'user_id', 'tagged' => 'COUNT(ct_rev_id)' ],
-			[ 'user_id' => $userIds ],
-			__METHOD__,
-			[
-				'GROUP BY' => 'user_id',
-			],
-			[
-				'tagged_edits' => [ 'LEFT JOIN', 'rev_user=user_id' ]
-			]
-		);
+			] )
+			->joinConds( $queryInfo['joins'] )
+			->caller( __METHOD__ );
+		$rows = $dbr->newSelectQueryBuilder()
+			->select( [ 'user_id', 'tagged' => 'COUNT(ct_rev_id)' ] )
+			->from( 'user' )
+			->leftJoin( $taggedEditsSubquery, 'tagged_edits', 'rev_user=user_id' )
+			->where( [ 'user_id' => $userIds ] )
+			->caller( __METHOD__ )
+			->groupBy( 'user_id' )
+			->fetchResultSet();
 
 		$res = [];
 		foreach ( $rows as $row ) {
