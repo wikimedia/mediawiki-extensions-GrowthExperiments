@@ -225,7 +225,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 					->from( 'user_properties' )
 					->where( [
 						'up_property' => HomepageHooks::HOMEPAGE_PREF_ENABLE,
-						'up_value' => 1
+						'up_value' => '1',
 					] )
 					->getSQL() .
 				')',
@@ -237,7 +237,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 					->where( [
 						'up_property' => MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
 						// sanity check, should never match (1 is the default value)
-						$dbr->expr( 'up_value', '!=', 1 ),
+						$dbr->expr( 'up_value', '!=', '1' ),
 					] )
 					->getSQL() .
 				')',
