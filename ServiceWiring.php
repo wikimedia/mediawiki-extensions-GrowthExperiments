@@ -2,6 +2,7 @@
 
 use CirrusSearch\CirrusSearch;
 use GrowthExperiments\AqsEditInfoService;
+use GrowthExperiments\Config\CommunityConfigurationWikiPageConfigReader;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
@@ -173,7 +174,9 @@ return [
 			ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) &&
 			$geServices->getGrowthConfig()->get( 'GEUseCommunityConfigurationExtension' )
 		) {
-			return $services->get( 'CommunityConfiguration.WikiPageConfigReader' );
+			return new CommunityConfigurationWikiPageConfigReader(
+				$services->get( 'CommunityConfiguration.WikiPageConfigReader' )
+			);
 		} else {
 			return $services->get( 'GrowthExperimentsMultiConfig' );
 		}
