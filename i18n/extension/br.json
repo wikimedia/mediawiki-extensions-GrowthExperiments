@@ -4,9 +4,13 @@
 			"Adriendelucca"
 		]
 	},
+	"communityconfiguration-helppanel-gehelppanelpostontop-option-top-label": "Krec'h ar bajenn",
+	"communityconfiguration-helppanel-gehelppanelpostontop-option-bottom-label": "Traoñ ar bajenn",
 	"communityconfiguration-helppanel-gehelppanellinks-0-label": "Liamm kentañ",
 	"communityconfiguration-helppanel-gehelppanellinks-1-label": "Eil liamm",
 	"communityconfiguration-helppanel-gehelppanellinks-2-label": "Trede liamm",
 	"communityconfiguration-helppanel-gehelppanellinks-3-label": "Pevare liamm",
-	"communityconfiguration-helppanel-gehelppanellinks-4-label": "Pempvet liamm"
+	"communityconfiguration-helppanel-gehelppanellinks-4-label": "Pempvet liamm",
+	"communityconfiguration-growthsuggestededits-update-label": "Hizivaat ar pennadoù",
+	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Ouzhpennañ ul liamm"
 }
