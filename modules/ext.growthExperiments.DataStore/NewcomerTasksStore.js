@@ -130,7 +130,7 @@ NewcomerTasksStore.prototype.isTaskQueueLoading = function () {
  * @return {boolean}
  */
 NewcomerTasksStore.prototype.hasPreviousTask = function () {
-	return !this.taskQueueLoading && this.currentTaskIndex > 0;
+	return this.currentTaskIndex > 0;
 };
 
 /**
@@ -139,7 +139,7 @@ NewcomerTasksStore.prototype.hasPreviousTask = function () {
  * @return {boolean}
  */
 NewcomerTasksStore.prototype.hasNextTask = function () {
-	return !this.taskQueueLoading && this.currentTaskIndex < this.taskQueue.length - 1;
+	return this.currentTaskIndex < this.taskQueue.length - 1;
 };
 
 /**
@@ -353,8 +353,8 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 			this.taskCount = updatedTaskQueue.length;
 		}
 
-		this.setTaskQueueLoading( false );
 		this.setTaskQueue( updatedTaskQueue );
+		this.setTaskQueueLoading( false );
 
 		if ( this.taskQueue.length ) {
 			this.maybeUpdateQualityGateConfig( this.taskQueue[ 0 ] );
