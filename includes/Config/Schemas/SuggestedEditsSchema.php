@@ -51,7 +51,7 @@ class SuggestedEditsSchema extends JsonSchema {
 				self::REF => [ 'class' => MediaWikiDefinitions::class, 'field' => 'PageTitle' ],
 			],
 			'maxTasksPerDay' => [
-				self::TYPE => self::TYPE_NUMBER,
+				self::TYPE => self::TYPE_INTEGER,
 			],
 		],
 	];
@@ -73,7 +73,7 @@ class SuggestedEditsSchema extends JsonSchema {
 				self::REF => [ 'class' => MediaWikiDefinitions::class, 'field' => 'PageTitle' ],
 			],
 			'maxTasksPerDay' => [
-				self::TYPE => self::TYPE_NUMBER,
+				self::TYPE => self::TYPE_INTEGER,
 			],
 		],
 	];
@@ -95,7 +95,7 @@ class SuggestedEditsSchema extends JsonSchema {
 				self::REF => [ 'class' => MediaWikiDefinitions::class, 'field' => 'PageTitle' ],
 			],
 			'maximumLinksToShowPerTask' => [
-				self::TYPE => self::TYPE_NUMBER,
+				self::TYPE => self::TYPE_INTEGER,
 			],
 			'excludedSections' => [
 				self::TYPE => self::TYPE_ARRAY,
@@ -105,7 +105,7 @@ class SuggestedEditsSchema extends JsonSchema {
 				self::DEFAULT => [],
 			],
 			'maxTasksPerDay' => [
-				self::TYPE => self::TYPE_NUMBER,
+				self::TYPE => self::TYPE_INTEGER,
 			],
 			'underlinkedWeight' => [
 				self::TYPE => self::TYPE_NUMBER,

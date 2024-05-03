@@ -15,27 +15,27 @@ class MentorshipSchema extends JsonSchema {
 		self::DEFAULT => false,
 	];
 	public const GEMentorshipMinimumAge = [
-		self::TYPE => self::TYPE_NUMBER,
+		self::TYPE => self::TYPE_INTEGER,
 		self::DEFAULT => 90,
 	];
 	public const GEMentorshipMinimumEditcount = [
-		self::TYPE => self::TYPE_NUMBER,
+		self::TYPE => self::TYPE_INTEGER,
 		self::DEFAULT => 500,
 	];
 	public const GEPersonalizedPraiseDays = [
-		self::TYPE => self::TYPE_NUMBER,
+		self::TYPE => self::TYPE_INTEGER,
 		self::DEFAULT => 7,
 	];
 	public const GEPersonalizedPraiseDefaultNotificationsFrequency = [
-		self::TYPE => self::TYPE_NUMBER,
+		self::TYPE => self::TYPE_INTEGER,
 		self::DEFAULT => 168,
 	];
 	public const GEPersonalizedPraiseMaxEdits = [
-		self::TYPE => self::TYPE_NUMBER,
+		self::TYPE => self::TYPE_INTEGER,
 		self::DEFAULT => 500,
 	];
 	public const GEPersonalizedPraiseMinEdits = [
-		self::TYPE => self::TYPE_NUMBER,
+		self::TYPE => self::TYPE_INTEGER,
 		self::DEFAULT => 8,
 	];
 }
