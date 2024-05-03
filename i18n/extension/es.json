@@ -114,6 +114,8 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Probar la notificación de Ediciones Sugeridas",
 	"growthexperiments-edit-config-keep-going-notification-title": "Notificación de Sigue adelante",
 	"communityconfiguration-helppanel-title": "Panel de ayuda",
+	"communityconfiguration-helppanel-gehelppanelpostontop-option-top-label": "Parte superior de la página",
+	"communityconfiguration-helppanel-gehelppanelpostontop-option-bottom-label": "Parte inferior de la página",
 	"communityconfiguration-helppanel-gehelppanellinks-0-label": "Primer enlace",
 	"communityconfiguration-helppanel-gehelppanellinks-1-label": "Segundo enlace",
 	"communityconfiguration-helppanel-gehelppanellinks-2-label": "Tercer enlace",
@@ -142,12 +144,14 @@
 	"communityconfiguration-growthsuggestededits-copyedit-disabled-control-label": "La tarea está deshabilitada.",
 	"communityconfiguration-growthsuggestededits-copyedit-templates-label": "Edición de textos: plantillas para encontrar artículos que necesitan edición de textos, como mejoras ortográficas, gramaticales y de puntuación.",
 	"communityconfiguration-growthsuggestededits-copyedit-learnmore-label": "Página de destino para obtener más información sobre la edición de copias.",
+	"communityconfiguration-growthsuggestededits-links-disabled-control-label": "La tarea está deshabilitada.",
 	"communityconfiguration-growthsuggestededits-references-excludedtemplates-label": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"communityconfiguration-growthsuggestededits-references-excludedcategories-label": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"communityconfiguration-growthsuggestededits-update-label": "Actualizar artículos",
 	"communityconfiguration-growthsuggestededits-update-templates-label": "Actualizar: plantillas para buscar artículos que necesiten actualizarse con información actual.",
 	"communityconfiguration-growthsuggestededits-update-excludedtemplates-label": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"communityconfiguration-growthsuggestededits-update-excludedcategories-label": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
+	"communityconfiguration-growthsuggestededits-expand-disabled-control-label": "La tarea está deshabilitada.",
 	"communityconfiguration-growthsuggestededits-expand-excludedtemplates-label": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"communityconfiguration-growthsuggestededits-expand-excludedcategories-label": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"communityconfiguration-growthsuggestededits-expand-learnmore-label": "Página de destino para aprender más sobre la expansión de artículos.",
@@ -158,5 +162,8 @@
 	"communityconfiguration-growthsuggestededits-image_recommendation-maxtasksperday-label": "El número máximo de ediciones sugeridas de \"Añadir una imagen\" en artículos sin ilustrar que una persona recién llegada puede completar diariamente.",
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-label": "Añadir una imagen para una sección de un artículo",
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-excludedtemplates-label": "Los artículos que contengan plantillas definidas aquí no se van a mostrar a usuarios como tareas de este tipo.",
-	"communityconfiguration-growthsuggestededits-section_image_recommendation-maxtasksperday-label": "El número máximo de ediciones sugeridas de \"Añadir una imagen\" en artículos sin ilustrar que una persona recién llegada puede completar diariamente."
+	"communityconfiguration-growthsuggestededits-section_image_recommendation-maxtasksperday-label": "El número máximo de ediciones sugeridas de \"Añadir una imagen\" en artículos sin ilustrar que una persona recién llegada puede completar diariamente.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Página de destino para aprender más sobre cómo agregar agregar enlace.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maxtasksperday-label": "El número máximo de tareas sugeridas \"Añadir una imagen a una sección del artículo\" que una persona recién llegada puede completar diariamente.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Puntuación mínima requerida de enlace"
 }

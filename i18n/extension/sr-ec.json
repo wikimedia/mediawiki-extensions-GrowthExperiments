@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"BadDog",
 			"Kizule",
 			"Milicevic01"
@@ -55,7 +56,7 @@
 	"communityconfiguration-growthsuggestededits-links-label": "Додавање унутрашњих веза",
 	"communityconfiguration-growthsuggestededits-links-disabled-control-label": "Овај задатак је онемогућен.",
 	"communityconfiguration-growthsuggestededits-expand-disabled-control-label": "Овај задатак је онемогућен.",
-	"communityconfiguration-growthsuggestededits-image_recommendation-label": " Додај слику у неилустрован чланак",
+	"communityconfiguration-growthsuggestededits-image_recommendation-label": "Додај слику у неилустрован чланак",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Додај везу",
 	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Одредишна страница за информисање о задатку „Додај везу”"
 }

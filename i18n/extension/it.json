@@ -92,6 +92,10 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Questi template sono utilizzati per il [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggerimento delle immagini]] ai nuovi utenti. Le pagine contenenti questi template non saranno indicate come elementi che necessitano di immagini.",
 	"growthexperiments-info-tooltip-close-label": "Chiudi",
 	"specialpages-group-growth-tools": "Strumenti Growth",
+	"communityconfiguration-helppanel-gehelppanelaskmentor-label": "Dove vanno dirette le domande provenienti dal pannello introduttivo?",
+	"communityconfiguration-helppanel-gehelppanelpostontop-label": "Dove vanno pubblicate le nuove domande allo sportello informazioni?",
+	"communityconfiguration-helppanel-gehelppanelpostontop-option-top-label": "In cima alla pagina",
+	"communityconfiguration-helppanel-gehelppanelpostontop-option-bottom-label": "In fondo alla pagina",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina di destinazione del collegamento su come aggiungere immagini con l'editor visuale",
 	"communityconfiguration-growthsuggestededits-title": "Modifiche suggerite",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Template sinottici",
@@ -102,6 +106,7 @@
 	"communityconfiguration-growthsuggestededits-copyedit-excludedcategories-label": "Le voci contenenti le categorie qui definite non saranno mostrate agli utenti per questo tipo di attività.",
 	"communityconfiguration-growthsuggestededits-copyedit-learnmore-label": "Pagina di destinazione per approfondire come correggere una voce.",
 	"communityconfiguration-growthsuggestededits-links-label": "Aggiungi collegamenti tra le voci",
+	"communityconfiguration-growthsuggestededits-links-disabled-control-label": "L'attività è disabilitata.",
 	"communityconfiguration-growthsuggestededits-links-templates-label": "Collegamenti: template per trovare voci che hanno bisogno di più collegamenti.",
 	"communityconfiguration-growthsuggestededits-links-excludedtemplates-label": "Le voci contenenti i template qui definiti non saranno mostrate agli utenti per questo tipo di attività.",
 	"communityconfiguration-growthsuggestededits-links-excludedcategories-label": "Le voci contenenti le categorie qui definite non saranno mostrate agli utenti per questo tipo di attività.",
@@ -117,6 +122,7 @@
 	"communityconfiguration-growthsuggestededits-update-excludedcategories-label": "Le voci contenenti le categorie qui definite non saranno mostrate agli utenti per questo tipo di attività.",
 	"communityconfiguration-growthsuggestededits-update-learnmore-label": "Pagina di destinazione per approfondire come aggiornare una voce.",
 	"communityconfiguration-growthsuggestededits-expand-label": "Amplia voci brevi",
+	"communityconfiguration-growthsuggestededits-expand-disabled-control-label": "L'attività è disabilitata.",
 	"communityconfiguration-growthsuggestededits-expand-templates-label": "Ampliare voci: template per trovare voci da ampliare.",
 	"communityconfiguration-growthsuggestededits-expand-excludedtemplates-label": "Le voci contenenti i template qui definiti non saranno mostrate agli utenti per questo tipo di attività.",
 	"communityconfiguration-growthsuggestededits-expand-excludedcategories-label": "Le voci contenenti le categorie qui definite non saranno mostrate agli utenti per questo tipo di attività.",
@@ -130,5 +136,6 @@
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-disabled-control-label": "L'attività è disabilitata.",
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-excludedtemplates-label": "Le voci contenenti i template qui definiti non saranno mostrate agli utenti per questo tipo di attività.",
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-excludedcategories-label": "Le voci contenenti le categorie qui definite non saranno mostrate agli utenti per questo tipo di attività",
-	"communityconfiguration-growthsuggestededits-section_image_recommendation-learnmore-label": "Pagina di destinazione per saperne di più sulle tipologie di attività sulle immagini consigliate"
+	"communityconfiguration-growthsuggestededits-section_image_recommendation-learnmore-label": "Pagina di destinazione per saperne di più sulle tipologie di attività sulle immagini consigliate",
+	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Aggiungi un collegamento"
 }

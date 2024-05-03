@@ -104,9 +104,15 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Varsel for å fortsette",
 	"growthexperiments-edit-config-keep-going-notification-description": "Maksimalt antall foreslåtte redigeringer en nykommer kan fullføre for å kvalifisere til å motta dette varselet. Hvis det er satt til 0 vil ingen nykommere få dette varselet. Jo høyere tall, jo flere får varselet. Dette varselet sendes kun til nykommere som har fullført minst én foreslått redigering.",
 	"communityconfiguration-helppanel-title": "Hjelpepanel",
+	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Fadderdiskusjonssider",
+	"communityconfiguration-helppanel-gehelppanelaskmentor-option-help-desk-page-label": "Hjelpesentralen",
+	"communityconfiguration-helppanel-gehelppanelpostontop-label": "Hvor på hjelpesentralen skal det nye spørsmålet postes?",
+	"communityconfiguration-helppanel-gehelppanelpostontop-option-top-label": "Toppen av siden",
+	"communityconfiguration-helppanel-gehelppanelpostontop-option-bottom-label": "Bunnen av siden",
 	"communityconfiguration-helppanel-gehelppanelexcludednamespaces-label": "Navnerom der hjelpepanelet er deaktivert i både lese- og redigeringsmodus",
 	"communityconfiguration-helppanel-gehelppanelreadingmodenamespaces-label": "Navnerom der hjelpepanelet er tilgjengelig i lesemodus",
 	"communityconfiguration-helppanel-gehelppanelsearchnamespaces-label": "Navnerom som skal inkluderes i hjelpepanelets fritekstsøk etter hjelp",
+	"communityconfiguration-helppanel-gehelppanelhelpdesktitle-label": "Hjelpesentralside der spørsmål kan postes fra hjelpepanelet.",
 	"communityconfiguration-helppanel-gehelppanellinks-0-label": "Første lenke",
 	"communityconfiguration-helppanel-gehelppanellinks-1-label": "Andre lenke",
 	"communityconfiguration-helppanel-gehelppanellinks-2-label": "Tredje lenke",
@@ -127,5 +133,11 @@
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Faddere kan endre dette alternativet for sin egen bruker i fadderpanelet.",
 	"communityconfiguration-growthhomepage-title": "Hjemmeside for nybegynnere",
 	"communityconfiguration-growthsuggestededits-title": "Foreslåtte redigeringer",
-	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Infoboksmaler"
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Infoboksmaler",
+	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Legg til ei lenke",
+	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "Oppgaven er deaktivert.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-excludedcategories-label": "Artikler som inneholder kategorier definert her blir ikke vist til brukere som oppgaver for denne oppgavetypen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Målside for å lære mer om oppgavetypen for å legge til lenker",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumlinkstoshowpertask-label": "Maksimalt antall lenker som skal vises per oppgave",
+	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-label": "Vekting av underlenkede artikler"
 }
