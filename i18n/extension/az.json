@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"NMW03"
+			"NMW03",
+			"Nemoralis"
 		]
 	},
 	"growthexperiments-desc": "Bu qadcet, İnkişaf komandası tərəfindən edilən təcrübələri ehtiva edir.",
@@ -10,6 +11,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>, <code>$2</code> olmalıdır, amma <code>$3</code> olaraq qeyd olunub.",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Məzmun modeli xətası: GrowthExperiments konfiqurasiya faylı JSON məzmun modelinə sahib olmalıdır, $1 aşkar edildi.",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Səhv tapşırıq tipi idarəçisi nömrəsi: <code>$1</code> etibarlı dəyər deyil.",
+	"growthexperiments-config-validator-array-toobig": "$1 həddindən çox element var (maksimum $2 icazə verilir)",
 	"growthexperiments-edit-config-disabled": "İcma konfiqurasiyası hal-hazırda deaktivdir.",
 	"growthexperiments-edit-config-title": "İnkişaf konfiqurasiyasını redaktə edin",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Axırıncı dəfə [[User:$1|$1]] tərəfindən $2 tarixində ([$4 dəyişiklik]) yenilənib.",
