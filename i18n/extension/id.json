@@ -55,5 +55,18 @@
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Salin pengeditan: templat untuk menemukan artikel yang memerlukan pengeditan salinan, seperti peningkatan ejaan, tata bahasa, dan tanda baca.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Templat kotak info",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Templat-templat ini dibutuhkan untuk fitur tugas [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|saranan gambar]] untuk pendatang baru. Artikel yang memiliki templat ini tidak akan dicantumkan sebagai tugas saranan gambar.",
-	"growthexperiments-info-tooltip-close-label": "Tutup"
+	"growthexperiments-info-tooltip-close-label": "Tutup",
+	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Halaman pembicaraan pembimbing",
+	"communityconfiguration-helppanel-gehelppanelaskmentor-option-help-desk-page-label": "Meja bantuan",
+	"communityconfiguration-growthsuggestededits-copyedit-disabled-control-label": "Tugas telah dinonaktifkan.",
+	"communityconfiguration-growthsuggestededits-links-disabled-control-label": "Tugas telah dinonaktifkan.",
+	"communityconfiguration-growthsuggestededits-references-label": "Cari referensi",
+	"communityconfiguration-growthsuggestededits-references-disabled-control-label": "Tugas telah dinonaktifkan.",
+	"communityconfiguration-growthsuggestededits-update-label": "Perbarui artikel",
+	"communityconfiguration-growthsuggestededits-update-disabled-control-label": "Tugas telah dinonaktifkan.",
+	"communityconfiguration-growthsuggestededits-expand-label": "Kembangkan artikel pendek",
+	"communityconfiguration-growthsuggestededits-expand-disabled-control-label": "Tugas telah dinonaktifkan.",
+	"communityconfiguration-growthsuggestededits-image_recommendation-disabled-control-label": "Tugas telah dinonaktifkan.",
+	"communityconfiguration-growthsuggestededits-section_image_recommendation-disabled-control-label": "Tugas telah dinonaktifkan.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "Tugas telah dinonaktifkan."
 }

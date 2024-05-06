@@ -155,6 +155,7 @@
 	"communityconfiguration-growthsuggestededits-expand-excludedtemplates-label": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"communityconfiguration-growthsuggestededits-expand-excludedcategories-label": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"communityconfiguration-growthsuggestededits-expand-learnmore-label": "Página de destino para aprender más sobre la expansión de artículos.",
+	"communityconfiguration-growthsuggestededits-image_recommendation-label": "Añadir una imagen a un artículo sin ilustrar",
 	"communityconfiguration-growthsuggestededits-image_recommendation-disabled-control-label": "La tarea está deshabilitada.",
 	"communityconfiguration-growthsuggestededits-image_recommendation-excludedtemplates-label": "Los artículos que contengan plantillas definidas aquí no se van a mostrar a usuarios como tareas de este tipo.",
 	"communityconfiguration-growthsuggestededits-image_recommendation-excludedcategories-label": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
