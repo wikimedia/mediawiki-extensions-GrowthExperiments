@@ -12,8 +12,6 @@ use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\LocalizedHttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Rest\TokenAwareHandlerTrait;
-use MediaWiki\Rest\Validator\JsonBodyValidator;
-use MediaWiki\Rest\Validator\UnsupportedContentTypeBodyValidator;
 use MediaWiki\Rest\Validator\Validator;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Status\Status;
@@ -132,47 +130,43 @@ class AddImageFeedbackHandler extends SimpleHandler {
 				TitleDef::PARAM_RETURN_OBJECT => true,
 				TitleDef::PARAM_MUST_EXIST => true,
 			],
-		];
-	}
-
-	/** @inheritDoc */
-	public function getBodyValidator( $contentType ) {
-		if ( $contentType === 'application/json' ) {
-			return new JsonBodyValidator(
-				[
-					'editRevId' => [
-						ParamValidator::PARAM_TYPE => 'integer',
-						ParamValidator::PARAM_REQUIRED => false,
-					],
-					'filename' => [
-						ParamValidator::PARAM_TYPE => 'string',
-						ParamValidator::PARAM_REQUIRED => true,
-					],
-					'accepted' => [
-						ParamValidator::PARAM_TYPE => 'boolean',
-						ParamValidator::PARAM_REQUIRED => true,
-					],
-					'reasons' => [
-						ParamValidator::PARAM_TYPE => AddImageSubmissionHandler::REJECTION_REASONS,
-						ParamValidator::PARAM_ISMULTI => true,
-						ParamValidator::PARAM_REQUIRED => false,
-					],
-					'caption' => [
-						ParamValidator::PARAM_TYPE => 'string',
-						ParamValidator::PARAM_REQUIRED => false,
-					],
-					'sectionTitle' => [
-						ParamValidator::PARAM_TYPE => 'string',
-						ParamValidator::PARAM_REQUIRED => false,
-					],
-					'sectionNumber' => [
-						ParamValidator::PARAM_TYPE => 'integer',
-						ParamValidator::PARAM_REQUIRED => false,
-					],
-				] + $this->getTokenParamDefinition()
-			);
-		}
-		return new UnsupportedContentTypeBodyValidator( $contentType );
+			'editRevId' => [
+				self::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+			'filename' => [
+				self::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
+			],
+			'accepted' => [
+				self::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_REQUIRED => true,
+			],
+			'reasons' => [
+				self::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_TYPE => AddImageSubmissionHandler::REJECTION_REASONS,
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+			'caption' => [
+				self::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+			'sectionTitle' => [
+				self::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+			'sectionNumber' => [
+				self::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+		] + $this->getTokenParamDefinition();
 	}
 
 	/**
