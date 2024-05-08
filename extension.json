@@ -674,7 +674,10 @@
 							"GrowthExperiments\\Config\\Schemas\\HelpPanelSchema"
 						]
 					},
-					"type": "mw-config"
+					"type": "mw-config",
+					"options": {
+						"helpURL": "https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#Help_panel"
+					}
 				},
 				"Mentorship": {
 					"store": {
@@ -689,7 +692,10 @@
 							"GrowthExperiments\\Config\\Schemas\\MentorshipSchema"
 						]
 					},
-					"type": "mw-config"
+					"type": "mw-config",
+					"options": {
+						"helpPage": "Help:Growth/Mentorship"
+					}
 				},
 				"GrowthHomepage": {
 					"store": {
@@ -704,7 +710,10 @@
 							"GrowthExperiments\\Config\\Schemas\\HomepageSchema"
 						]
 					},
-					"type": "mw-config"
+					"type": "mw-config",
+					"options": {
+						"helpURL": "https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#Newcomer_homepage"
+					}
 				},
 				"GrowthSuggestedEdits": {
 					"store": {
@@ -719,7 +728,10 @@
 							"GrowthExperiments\\Config\\Schemas\\SuggestedEditsSchema"
 						]
 					},
-					"type": "GrowthSuggestedEdits"
+					"type": "GrowthSuggestedEdits",
+					"options": {
+						"helpPage": "Help:Growth/Tools/Suggested_edits"
+					}
 				}
 			}
 		}
