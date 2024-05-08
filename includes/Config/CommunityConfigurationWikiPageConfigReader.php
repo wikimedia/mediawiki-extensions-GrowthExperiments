@@ -5,12 +5,12 @@ namespace GrowthExperiments\Config;
 use MediaWiki\Config\Config;
 
 class CommunityConfigurationWikiPageConfigReader implements Config {
-	private const MAP_POST_ON_TOP_VALUES = [
+	public const MAP_POST_ON_TOP_VALUES = [
 		'top' => true,
 		'bottom' => false,
 	];
 
-	private const MAP_ASK_MENTOR_VALUES = [
+	public const MAP_ASK_MENTOR_VALUES = [
 		'mentor-talk-page' => true,
 		'help-desk-page' => false,
 	];
