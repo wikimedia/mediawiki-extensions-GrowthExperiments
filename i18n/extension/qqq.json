@@ -151,6 +151,7 @@
 	"communityconfiguration-growthhomepage-description": "Description of the Community configuration module for homepage",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Field label for Growth homepage in Community configuration",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Field label for Growth homepage in Community configuration",
+	"communityconfiguration-growthsuggestededits-description": "Description of the Community configuration module for suggested edits",
 	"communityconfiguration-growthsuggestededits-title": "Headline of the Community configuration module for suggested edits",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Field label for Suggested Edits in Community configuration\n\nSame as {{msg-mw|growthexperiments-edit-config-newcomer-tasks-infobox-templates}}",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Help text for Suggested Edits in Community configuration\n\nSame as {{msg-mw|growthexperiments-edit-config-newcomer-tasks-infobox-templates-help}}",
