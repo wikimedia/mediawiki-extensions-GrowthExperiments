@@ -104,6 +104,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Varsel for å fortsette",
 	"growthexperiments-edit-config-keep-going-notification-description": "Maksimalt antall foreslåtte redigeringer en nykommer kan fullføre for å kvalifisere til å motta dette varselet. Hvis det er satt til 0 vil ingen nykommere få dette varselet. Jo høyere tall, jo flere får varselet. Dette varselet sendes kun til nykommere som har fullført minst én foreslått redigering.",
 	"communityconfiguration-helppanel-title": "Hjelpepanel",
+	"communityconfiguration-helppanel-gehelppanelaskmentor-label": "Hvor skal spørsmål fra hjelpepanelet rettes?",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Fadderdiskusjonssider",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-help-desk-page-label": "Hjelpesentralen",
 	"communityconfiguration-helppanel-gehelppanelpostontop-label": "Hvor på hjelpesentralen skal det nye spørsmålet postes?",
