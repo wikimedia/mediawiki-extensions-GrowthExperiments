@@ -105,5 +105,13 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Davam edin bildirişi",
 	"growthexperiments-edit-config-keep-going-notification-description": "Yeni gələnin bu bildirişi almaq hüququna malik olmaq üçün tamamlaya biləcəyi təklif olunan redaktələrin maksimum sayı. 0-a təyin edilərsə,<br> yeni gələnlər bu bildirişi almayacaq. Sayı nə qədər çox olarsa, bir o qədər çox yeni istifadəçi bu bildirişi alacaq.<br> Bu bildiriş yalnız ən azı bir Təklif edilən redaktəni tamamlamışlara göndərilir.",
 	"communityconfiguration-mentorship-title": "Mentorluq",
-	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Mentorlar bu seçimi Mentor idarəetmə panelində öz istifadəçiləri üçün dəyişə bilərlər."
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Mentor kimi qeydiyyatdan keçmək üçün istifadəçinin qeydiyyatda olduğu minimum gün sayı",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Mentor kimi qeydiyyatdan keçmək üçün istifadəçinin etməli olduğu minimum redaktə sayı (istənilən ad fəzasında).",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "İstifadəçinin tərifə layiq olduğunu qiymətləndirərkən nəzərə alınan günlərin sayı",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Mentorlar bu seçimi Mentor idarəetmə panelində öz istifadəçiləri üçün dəyişə bilərlər.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-label": "Defolt olaraq, mentorlar faydalı redaktə edən istifadəçilərə həvəsləndirici mesaj göndərməyi xatırlamaq üçün nə qədər tez-tez bildiriş almalıdırlar?",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Mentorlar bu seçimi Mentor idarəetmə panelində öz istifadəçiləri üçün dəyişə bilərlər.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Tərifə layiq hesab olunması üçün maksimum redaktə sayı",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Tərifə layiq hesab olunması üçün defolt minimum redaktə sayı",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentorlar bu seçimi Mentor idarəetmə panelində öz istifadəçiləri üçün dəyişə bilərlər."
 }
