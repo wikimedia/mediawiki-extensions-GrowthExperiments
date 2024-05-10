@@ -141,6 +141,7 @@
 	"communityconfiguration-growthhomepage-description": "تحديد وصلات المساعدة التي تريدون أن يطّلع عليها المحررون الجدد.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "وجهة المساعدة للحصول على رابط حول إنشاء مقالة جديدة",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "صفحة الوصول إلى رابط حول إضافة صور باستخدام المحرر المرئي",
+	"communityconfiguration-growthsuggestededits-description": "تخصيص ميزة التعديلات المقترحة على لوحة المستخدمين للوافدين الجدد.",
 	"communityconfiguration-growthsuggestededits-title": "التعديلات المقترحة",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "قوالب صندوق المعلومات",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "هذه القوالب مطلوبة لميزة اقتراحات الصور من مهام الوافدين الجدد. لن يتم إدراج المقالات التي تحتوي على هذه القوالب كمهام اقتراح صور.",

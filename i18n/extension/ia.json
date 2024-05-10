@@ -137,6 +137,7 @@
 	"communityconfiguration-growthhomepage-description": "Definir le ligamines de adjuta que nove redactores deberea percurrer.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Adjuta de destination pro un ligamine sur como crear un nove articulo",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina de destination pro un ligamine sur como adder imagines in le editor visual",
+	"communityconfiguration-growthsuggestededits-description": "Personalisar le function ‘Modificationes suggerite’ del pagina de initio pro novicios.",
 	"communityconfiguration-growthsuggestededits-title": "Modificationes suggerite",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Patronos de quadro de information",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Iste patronos es necessari pro le function de processo de novicio de suggestiones de imagine. Articulos que contine iste patronos non essera listate como processos de suggestion de imagine.",
