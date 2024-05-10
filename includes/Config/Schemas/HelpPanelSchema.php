@@ -35,7 +35,7 @@ class HelpPanelSchema extends JsonSchema {
 		]
 	];
 
-	public const GEHelpPanelPostOnTop = [
+	public const GEHelpPanelHelpDeskPostOnTop = [
 		self::TYPE => self::TYPE_STRING,
 		self::ENUM => [ 'top', 'bottom' ],
 		self::DEFAULT => 'top'
