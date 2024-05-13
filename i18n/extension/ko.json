@@ -93,8 +93,8 @@
 	"growthexperiments-edit-config-level-up-notifications": "알림: 성장 기능",
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "편집 제안 알림 사용해 보기",
 	"growthexperiments-edit-config-keep-going-notification-title": "계속 알림",
-	"communityconfiguration-helppanel-gehelppanelpostontop-option-top-label": "문서 최상단",
-	"communityconfiguration-helppanel-gehelppanelpostontop-option-bottom-label": "문서 최하단",
+	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-top-label": "문서 최상단",
+	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-bottom-label": "문서 최하단",
 	"communityconfiguration-mentorship-title": "멘토",
 	"communityconfiguration-growthhomepage-title": "새 사용자 홈페이지",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "링크 추가"

@@ -107,5 +107,6 @@
 	"communityconfiguration-growthhomepage-title": "Domača stran za začetnike",
 	"communityconfiguration-growthhomepage-description": "Določite, katere so povezave pomoči, skozi katere naj gredo novi urejevalci.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Ciljna stran za povezavo na stran o ustvaritvi novega članka",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Ciljna stran za povezavo na stran o dodajanju slik v vizualnem urejevalniku"
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Ciljna stran za povezavo na stran o dodajanju slik v vizualnem urejevalniku",
+	"communityconfiguration-growthsuggestededits-description": "Prilagoditev možnosti Predlagana urejanja domače strani novinca."
 }
