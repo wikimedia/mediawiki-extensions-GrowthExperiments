@@ -86,7 +86,6 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Specials\Contribute\Card\ContributeCard;
 use MediaWiki\Specials\Contribute\Card\ContributeCardActionLink;
 use MediaWiki\Specials\Contribute\Hook\ContributeCardsHook;
-use MediaWiki\Specials\SpecialContributions;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\NamespaceInfo;
@@ -1069,9 +1068,7 @@ class HomepageHooks implements
 	}
 
 	/**
-	 * @param int $userId
-	 * @param User $user
-	 * @param SpecialContributions $sp
+	 * @inheritDoc
 	 */
 	public function onSpecialContributionsBeforeMainOutput( $userId, $user, $sp ) {
 		if (
