@@ -267,9 +267,9 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$wikiPageConfigLoader = $this->getMockWikiPageConfigLoader( [ '8:TaskConfiguration' => [] ] );
 		$configurationValidator = $this->createMock( ConfigurationValidator::class );
 		$taskHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
-		$configurationLoader = new PageConfigurationLoader( $this->getMockTitleFactory( [], false ),
-			$wikiPageConfigLoader, $configurationValidator, $taskHandlerRegistry, $taskTitle, null,
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$configurationLoader = new PageConfigurationLoader( $configurationValidator, $taskHandlerRegistry,
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES, $this->getMockTitleFactory( [], false ),
+			$wikiPageConfigLoader, $taskTitle, null );
 		$topics = $configurationLoader->loadTopics();
 		$this->assertSame( [], $topics );
 	}
@@ -454,8 +454,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			'8:TopicConfigPage' => $topicConfig,
 		] );
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry( $configurationValidator );
-		return new PageConfigurationLoader( $titleFactory, $wikiPageConfigLoader, $configurationValidator,
-			$taskTypeHandlerRegistry, $taskConfigTitle, $topicConfigTitle, $topicType );
+		return new PageConfigurationLoader( $configurationValidator, $taskTypeHandlerRegistry,
+			$topicType, $titleFactory, $wikiPageConfigLoader, $taskConfigTitle, $topicConfigTitle );
 	}
 
 	/**

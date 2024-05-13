@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use ApiRawMessage;
+use ExtensionRegistry;
 use FormatJson;
 use IContextSource;
 use Iterator;
@@ -362,4 +363,14 @@ class Util {
 		return \Wikimedia\base_convert( \MWCryptRand::generateHex( 40 ), 16, 32, 32 );
 	}
 
+	/**
+	 * Should CommunityConfiguration be used?
+	 *
+	 * @return bool
+	 */
+	public static function useCommunityConfiguration(): bool {
+		return ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) &&
+			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+				->getGrowthConfig()->get( 'GEUseCommunityConfigurationExtension' );
+	}
 }

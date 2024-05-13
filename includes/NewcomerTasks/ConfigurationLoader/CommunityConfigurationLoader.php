@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
+use FormatJson;
+use GrowthExperiments\Config\Providers\SuggestedEditsConfigProvider;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\Util;
@@ -9,13 +11,11 @@ use LogicException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleFactory;
 
-class PageConfigurationLoader extends AbstractDataConfigurationLoader {
+class CommunityConfigurationLoader extends AbstractDataConfigurationLoader {
 
+	private SuggestedEditsConfigProvider $suggestedEditsConfigProvider;
 	private TitleFactory $titleFactory;
 	private WikiPageConfigLoader $configLoader;
-
-	/** @var LinkTarget|string */
-	private $taskConfigurationPage;
 
 	/** @var LinkTarget|string|null */
 	private $topicConfigurationPage;
@@ -24,10 +24,9 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param string $topicType
+	 * @param SuggestedEditsConfigProvider $suggestedEditsConfigProvider
 	 * @param TitleFactory $titleFactory
 	 * @param WikiPageConfigLoader $configLoader
-	 * @param string|LinkTarget $taskConfigurationPage Wiki page to load task configuration from
-	 *   (local or interwiki).
 	 * @param string|LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
 	 *   (local or interwiki). Can be omitted, in which case topic matching will be disabled.
 	 */
@@ -35,17 +34,32 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 		ConfigurationValidator $configurationValidator,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		string $topicType,
+		SuggestedEditsConfigProvider $suggestedEditsConfigProvider,
 		TitleFactory $titleFactory,
 		WikiPageConfigLoader $configLoader,
-		$taskConfigurationPage,
 		$topicConfigurationPage
 	) {
 		parent::__construct( $configurationValidator, $taskTypeHandlerRegistry, $topicType );
 
+		$this->suggestedEditsConfigProvider = $suggestedEditsConfigProvider;
 		$this->titleFactory = $titleFactory;
 		$this->configLoader = $configLoader;
-		$this->taskConfigurationPage = $taskConfigurationPage;
 		$this->topicConfigurationPage = $topicConfigurationPage;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function loadTaskTypesConfig() {
+		$result = $this->suggestedEditsConfigProvider->loadForNewcomerTasks();
+		if ( $result->isOK() ) {
+			// GrowthExperiments needs arrays, not stdClass...
+			return FormatJson::decode(
+				FormatJson::encode( $result->getValue() ),
+				true
+			);
+		}
+		return $result;
 	}
 
 	/**
@@ -66,13 +80,6 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 	/**
 	 * @inheritDoc
 	 */
-	protected function loadTaskTypesConfig() {
-		return $this->configLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function loadTopicsConfig() {
 		return $this->configLoader->load( $this->makeTitle( $this->topicConfigurationPage ) );
 	}
@@ -82,8 +89,6 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 	 */
 	public function loadTopics() {
 		if ( $this->topicConfigurationPage === null ) {
-			// NOTE: This has to be here, rather than loadTopicsConfig(), as empty data does not
-			// pass validation tests in the parent.
 			return [];
 		}
 
