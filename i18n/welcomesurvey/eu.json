@@ -13,7 +13,7 @@
 	"welcomesurvey-close-btn": "Itxi eta $1(e)ra itzuli",
 	"welcomesurvey-sidebar-privacy-title": "Zure pribatutasuna aintzat daukatu",
 	"welcomesurvey-sidebar-privacy-text": "Erantzun hauek nola erabiliko diren jakiteko, {{GENDER:$2|ikus}} $1 inkesta.",
-	"welcomesurvey-privacy-policy-link-text": "pribatutasun adierazpena",
+	"welcomesurvey-privacy-policy-link-text": "Ikasi editore berrien datuei buruz gehiago",
 	"welcomesurvey-sidebar-editing-title": "Aldaketen hasten",
 	"welcomesurvey-sidebar-editing-text": "Ia orrialde guztiak edonork edita ditzake, orduro ehunka aldaketa egiten dira edukia gehitu, akatsak zuzendu eta irakurgarritasuna hobetzeko. Hurrengo orrialdeek lagun zaitzakete editatzen lagundu nahi {{GENDER:$1|bazenu}}:",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutoriala",
@@ -39,7 +39,12 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Ez, ez nekien Wikipedia alda zitekeenik",
 	"welcomesurvey-question-edited-option-no-other-label": "Ez, beste arrazoi batzuengatik",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ez dut gogoratzen",
+	"welcomesurvey-question-mailinglist-label": "Editatzen hasteko aholkuak jaso nahi ditut posta elektroniko bidez.",
+	"welcomesurvey-question-mailinglist-help": "Kontuan izan posta-zerrenda hau MailChimp-ek sustatzen duela, hau da, MailChimp-ek zure informazioaren erabilera bere [https://www.intuit.com/privacy/statement/ Pribatutasun Politika] eta [https://www.intuit.com/privacy/statement/ Erabilera Baldintzak] arautzen duela esan nahi du.",
 	"welcomesurvey-question-email-label": "E-posta helbidea (hautazkoa)",
 	"welcomesurvey-question-email-placeholder": "Sartu zure helbide elektronikoa...",
-	"welcomesurvey-question-email-help": "Konturatu gara ez zenuela sartu e-postarik kontua sortzerakoan. <strong>Oso gomendagarria da</strong>, hori delako modu bakarra kontua berreskuratzeko pasahitza ahaztuko bazenu. OHARRA: Zure e-posta ez zaio inori emango berarekin kontaktuan jartzerakoan."
+	"welcomesurvey-question-email-help": "Konturatu gara ez zenuela sartu e-postarik kontua sortzerakoan. <strong>Oso gomendagarria da</strong>, hori delako modu bakarra kontua berreskuratzeko pasahitza ahaztuko bazenu. OHARRA: Zure e-posta ez zaio inori emango berarekin kontaktuan jartzerakoan.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} 300 hizkuntzatan erabilgarri dago. Gai al zara beste hizkuntza batzueatn irakurri edo idazteko?",
+	"welcomesurvey-question-languages-placeholder": "Gehitu {{PLURAL:$1|hizkuntza bat|$1 hizkuntza}} arte...",
+	"welcomesurvey-question-languages-maximum": "Baimenduta dagoen hizkuntza kopuru maximoa gehitu duzu."
 }

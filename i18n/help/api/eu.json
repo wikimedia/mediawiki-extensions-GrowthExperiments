@@ -6,6 +6,12 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Oraingo erabiltzaileak laguntza paneletik egindako galderak kudeatu.",
 	"apihelp-helppanelquestionposter-param-body": "Erabiltzaileak bidalitako galderaren testua.",
-	"apihelp-helppanelquestionposter-param-source": "The component at the source of the question. Valid values are 'helppanel', 'homepage-help', and 'homepage-mentorship'",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Izenburu esangurtsua, aukeratu bada, galderan gehitzeko."
+	"apihelp-helppanelquestionposter-param-source": "Galdera argitaratu den metodoa.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"Galdetu laguntza mahaiari\" panela",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "\"Galdetu zure mentoreari\" panela etorri berriaren hasierako orrialdean",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Laguntza paneleko \"Galdetu zure tutoreari\" pantaila",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Galdetu laguntza-mahaiari\" panela (izen zaharra)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "\"Galdetu zure mentoreari\" panela etorri berriaren hasierako orrialdean",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Izenburu esangurtsua, aukeratu bada, galderan gehitzeko.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Saioa hasi behar duzu galdera bat egiteko."
 }
