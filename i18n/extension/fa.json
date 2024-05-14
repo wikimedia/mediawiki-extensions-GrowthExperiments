@@ -90,5 +90,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "مقاله‌هایی که حاوی رده‌های مشخص‌شده در اینجا باشند، به‌عنوان وظیفه برای این نوع از وظیفه به کاربران نمایش داده نخواهند شد.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "الگوهای جعبه اطلاعات",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "این الگوها برای ویژگی وظیفهٔ تازه‌وارد برای [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|تصویرهای پیشنهاد]] لازم هستند. مقاله‌هایی که حاوی این الگوها باشند به‌عنوان وظایف تصویرهای پیشنهادی فهرست نخواهند شد.",
-	"growthexperiments-edit-config-delayed": "تغییرات اعمال‌شده در این تنظیم بلافاصله اعمال نخواهند شد ([[mw:Growth/FAQ#add-link-config|پرسش‌های متداول]] را ببینید)."
+	"growthexperiments-edit-config-delayed": "تغییرات اعمال‌شده در این تنظیم بلافاصله اعمال نخواهند شد ([[mw:Growth/FAQ#add-link-config|پرسش‌های متداول]] را ببینید).",
+	"growthexperiments-info-tooltip-close-label": "بستن",
+	"specialpages-group-growth-tools": "ابزارهای توسعه"
 }

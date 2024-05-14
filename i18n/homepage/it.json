@@ -86,6 +86,7 @@
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|La tua}} attività recente ({{PLURAL:$2|ultimo giorno|ultimi $2 giorni}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Attività recente ({{PLURAL:$1|ultimo giorno|ultimi $1 giorni}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Ultima modifica",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Serie più lunga",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|giorno|giorni}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Modifica|Modifiche}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|modifica|modifiche}} in $2",
@@ -98,6 +99,9 @@
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} è stato creato da una comunità di utenti. Qualsiasi collaboratore può essere ringraziato da un altro per una modifica. Il numero di ringraziamenti ricevuti è mostrato qui.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Questo è il numero più alto di giorni consecutivi in cui {{GENDER:$1|tu}} hai apportato almeno una modifica.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Questo è il numero più alto di giorni consecutivi in cui è stata apportata almeno una modifica.",
+	"growthexperiments-homepage-impact-scores-streak-info-label": "Maggiori informazioni sulla serie più lunga",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "La tua serie più lunga attuale è $2 {{PLURAL:$2| giorno|giorni}} che hai ottenuto tra $3.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "La serie più lunga attuale è $1 {{PLURAL:$1|giorno|giorni}} che è stata raggiunta tra $2.",
 	"growthexperiments-homepage-impact-subheader-text": "I più visti (dalla {{GENDER:$1|tua}} modifica)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Più vista (da quando la modifica è stata fatta)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visualizzazioni {{GENDER:$1|delle tue}} ultime modifiche (negli ultimi 60 giorni):",
@@ -541,5 +545,6 @@
 	"growthexperiments-tour-newimpact-discovery-description": "Sono stati aggiunti più dettagli sulla {{GENDER:|tua}} attività!",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Capito",
 	"growthexperiments-homepage-newimpact-contributions-link": "Vedi tutte le modifiche",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Prova modifiche suggerite"
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Prova modifiche suggerite",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Fai una modifica suggerita"
 }
