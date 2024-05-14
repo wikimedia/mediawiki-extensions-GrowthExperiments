@@ -34,5 +34,6 @@
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Maakt een suggestie van een lovenswaardige leerling ongeldig in de module Gepersonaliseerde complimenten op het Mentor-dashboard",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Leerling om ongeldig te maken",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Reden om de suggestie ongeldig te maken",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Reden ongeldigverklaring suggestie overslaan"
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Reden ongeldigverklaring suggestie overslaan",
+	"apihelp-query+growthmentorlist-summary": "Een lijst maken van alle mentoren"
 }
