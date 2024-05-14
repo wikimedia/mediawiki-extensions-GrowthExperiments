@@ -126,6 +126,7 @@
 	"communityconfiguration-helppanel-gehelppanelreadingmodenamespaces-label": "Field label for the help panel in Community configuration\n\nSame as {{msg-mw|growthexperiments-edit-config-help-panel-reading-namespaces}}",
 	"communityconfiguration-helppanel-gehelppanelsearchnamespaces-label": "Field label for the help panel in Community configuration\n\nSame as {{msg-mw|growthexperiments-edit-config-help-panel-searched-namespaces}}",
 	"communityconfiguration-helppanel-gehelppanelhelpdesktitle-label": "Field label for the help panel in Community configuration\n\nSame as {{msg-mw|growthexperiments-edit-config-help-panel-helpdesk-title}}",
+	"communityconfiguration-helppanel-gehelppanellinks-label": "Field label for the help panel links in Community configuration\n\nSame as {{msg-mw|growthexperiments-edit-config-help-panel-links}}",
 	"communityconfiguration-helppanel-gehelppanellinks-0-label": "Field label for the first help panel link in Community configuration",
 	"communityconfiguration-helppanel-gehelppanellinks-1-label": "Field label for the second help panel link in Community configuration",
 	"communityconfiguration-helppanel-gehelppanellinks-2-label": "Field label for the third help panel link in Community configuration",
