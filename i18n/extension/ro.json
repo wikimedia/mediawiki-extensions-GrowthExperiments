@@ -138,6 +138,7 @@
 	"communityconfiguration-growthhomepage-description": "Definiți care sunt legăturile de ajutor prin care vreți să treacă editorii noi.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Ajutorul de destinație pentru o legătură despre crearea unui articol nou",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Pagina destinație pentru o legătură despre adăugarea cum se adaugă imagini în editorul vizual",
+	"communityconfiguration-growthsuggestededits-description": "Personalizează funcția de editări sugerate a paginii acasă a nou-venitului.",
 	"communityconfiguration-growthsuggestededits-title": "Editări sugerate",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Formate de infocasetă",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Aceste formate sunt necesare pentru funcția funcția sarcinii de sugestii de imagini pentru nou-veniți. Articolele care conțin aceste formate nu vor fi listate ca sarcini de sugestii de imagini.",
