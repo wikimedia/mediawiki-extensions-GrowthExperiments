@@ -29,9 +29,8 @@ require_once "$IP/maintenance/Maintenance.php";
  * Aligns link recommendation data in the growthexperiments_link_recommendations table and the
  * search index. Useful for fixing test setups if the DB or the index gets messed up somehow.
  *
- * No attempt is made to handle replication lag, delayed search index updates due to job queue
- * size or batching, and similar potential race conditions. As such, this script is not appropriate
- * for production use.
+ * No attempt is made to handle delayed search index updates due to job queue
+ * size. As such, the script is risky for production, and needs to be used with care.
  */
 class FixLinkRecommendationData extends Maintenance {
 
@@ -76,6 +75,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$this->addOption( 'statsd', 'Report the number of fixes (or would-be fixes, '
 			. 'when called with --dry-run) to statsd' );
 		$this->addOption( 'verbose', 'Show debug output.' );
+		$this->addOption( 'force', 'Force the script to run in production (use with care)' );
 		$this->setBatchSize( 100 );
 	}
 
@@ -101,11 +101,13 @@ class FixLinkRecommendationData extends Maintenance {
 		if ( $this->hasOption( 'db-table' )
 			&& !$this->hasOption( 'dry-run' )
 			&& !$growthServices->getGrowthConfig()->get( 'GEDeveloperSetup' )
+			&& !$this->hasOption( 'force' )
 		) {
 			// Adding search index entries is batched in production, and takes hours. This script would delete
 			// the associated DB records in the meantime.
 			$this->fatalError( 'The --db-table option cannot be safely run in production. (If the current '
-				. 'environment is not production, $wgGEDeveloperSetup should be set to true.)' );
+				. 'environment is not production, $wgGEDeveloperSetup should be set to true. If you REALLY '
+				. 'know what you are doing, use --force.)' );
 		}
 		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
