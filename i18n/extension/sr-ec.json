@@ -3,7 +3,8 @@
 		"authors": [
 			"BadDog",
 			"Kizule",
-			"Milicevic01"
+			"Milicevic01",
+			"Amire80"
 		]
 	},
 	"growthexperiments-desc": "Овај додатак садржи пројекте Тима за развој.",
@@ -41,5 +42,5 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "Списак назива одељака у којима везе не би требало препоручивати.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблони за инфокутије",
 	"growthexperiments-info-tooltip-close-label": "Затвори",
-	"specialpages-group-growth-tools": "Алатке за развој"
+	"specialpages-group-growth-tools": "Менторство"
 }
