@@ -23,7 +23,7 @@
 	"growthexperiments-homepage-email-header-confirmed": "Адрас эл. пошты дадазены",
 	"growthexperiments-homepage-email-header-startemail": "Эл. пошта: $1",
 	"growthexperiments-homepage-email-text-noemail": "Рэкамендуецца для аднаўлення ўліковага запісу",
-	"growthexperiments-homepage-email-text-unconfirmed": "Праверце {{GENDER:$1|сваю}} эл. пошту, каб знайсці спасылку для пацверджання або адпраўце новую спасылку.",
+	"growthexperiments-homepage-email-text-unconfirmed": "Праверце {{GENDER:$1|сваю}} эл. пошту, каб знайсці спасылку для пацвярджэння або адпраўце новую спасылку.",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|Ваш}} адрас эл. пошты быў пацверджаны. Вы можаце змяніць налады электроннай пошты ў Параметрах.",
 	"growthexperiments-homepage-email-button-noemail": "Дадаць адрас эл. пошты",
 	"growthexperiments-homepage-email-button-unconfirmed": "Атрымаць новую спасылку",

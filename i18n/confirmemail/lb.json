@@ -1,11 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|Wat ass dat?]])",
 	"growthexperiments-confirmemail-emailrecommended": "E-Mail-Adress (recommandéiert)",
+	"growthexperiments-confirmemail-emailwarning": "Kuckt wgl., ob Dir eng E-Mail vun eis kritt hutt fir Är Adress ze verifizéieren.",
+	"growthexperiments-confirmemail-confirm-subject": "Wëllkomm op {{SITENAME}}: Confirméiert wgl. Är E-Mail-Adress",
 	"growthexperiments-confirmemail-confirm-button": "E-Mailadress confirméieren",
+	"growthexperiments-marketingvideocampaign-title": "D'Wikipedia gëtt vu Leit wéi Iech opgebaut",
 	"growthexperiments-signupcampaign-bullet2": "Frot Hëllef bei engem erfuerenen Editeur",
 	"growthexperiments-signupcampaign-bullet3": "Fänkt mat klengen, einfachen Ännerungen un"
 }
