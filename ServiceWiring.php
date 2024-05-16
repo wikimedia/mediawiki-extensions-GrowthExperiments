@@ -69,6 +69,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddSectionImage\SectionImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
@@ -102,10 +103,12 @@ use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use GrowthExperiments\Util;
 use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Extension\EventBus\EventBusFactory;
 use MediaWiki\Extension\Thanks\ThanksServices;
 use MediaWiki\Logger\LoggerFactory;
@@ -170,10 +173,7 @@ return [
 	'GrowthExperimentsCommunityConfig' => static function ( MediaWikiServices $services ): Config {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		if (
-			ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) &&
-			$geServices->getGrowthConfig()->get( 'GEUseCommunityConfigurationExtension' )
-		) {
+		if ( Util::useCommunityConfiguration() ) {
 			return new CommunityConfigurationWikiPageConfigReader(
 				$services->get( 'CommunityConfiguration.WikiPageConfigReader' )
 			);
@@ -618,15 +618,28 @@ return [
 			$topicConfigTitle = $config->get( 'GENewcomerTasksTopicConfigTitle' );
 		}
 
-		$configurationLoader = new PageConfigurationLoader(
-			$services->getTitleFactory(),
-			$growthServices->getWikiPageConfigLoader(),
-			$growthServices->getNewcomerTasksConfigurationValidator(),
-			$growthServices->getTaskTypeHandlerRegistry(),
-			$taskConfigTitle,
-			$topicConfigTitle,
-			$topicType
-		);
+		if ( Util::useCommunityConfiguration() ) {
+			$configurationLoader = new CommunityConfigurationLoader(
+				$growthServices->getNewcomerTasksConfigurationValidator(),
+				$growthServices->getTaskTypeHandlerRegistry(),
+				$topicType,
+				CommunityConfigurationServices::wrap( $services )
+					->getConfigurationProviderFactory()->newProvider( 'GrowthSuggestedEdits' ),
+				$services->getTitleFactory(),
+				$growthServices->getWikiPageConfigLoader(),
+				$topicConfigTitle
+			);
+		} else {
+			$configurationLoader = new PageConfigurationLoader(
+				$growthServices->getNewcomerTasksConfigurationValidator(),
+				$growthServices->getTaskTypeHandlerRegistry(),
+				$topicType,
+				$services->getTitleFactory(),
+				$growthServices->getWikiPageConfigLoader(),
+				$taskConfigTitle,
+				$topicConfigTitle
+			);
+		}
 
 		if ( !$config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$configurationLoader->disableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
