@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Pols12",
 			"Revi",
 			"Robby",
@@ -11,7 +12,7 @@
 	"welcomesurvey": "Title which appears at the top of a welcome survey users are shown after account sign-up, and shown on all form steps. Should be friendly and welcoming but succinct. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.",
 	"welcomesurvey-save-confirmation-title": "Dialog title after submitting a welcome survey form.",
 	"welcomesurvey-save-confirmation-text": "Short text after the section heading “Thanks! Your responses have been saved” shown to users after they complete a welcome survey after signing up for a Wikipedia account.",
-	"welcomesurvey-subtitle": "Message conveying to the user the benefit of filling in a short welcome survey.  Should not imply that anything will change about the user’s experience based on their responses.",
+	"welcomesurvey-subtitle": "Message conveying to the user the benefit of filling in a short welcome survey. Should not imply that anything will change about the user’s experience based on their responses.",
 	"welcomesurvey-save-btn": "Text on a button to submit answers to a welcome survey that is shown to users after they sign up for a new Wikipedia account.",
 	"welcomesurvey-skip-btn": "Button to exit the form and return to where they were prior to account creation. The user is not able to return and complete the form later, so the call to action should clearly indicate this is a permanent skip. It should also be clear that this is for skipping the whole survey, not just one question.\n\nParameters:\n* $1 - Name of the current user (for use with GENDER).",
 	"welcomesurvey-close-btn": "Text of the close button on the survey confirmation page. Users will be returned to whatever page they were on prior to sign-up and being shown this survey. Parameters:\n* $1 - Name of the page the user will be redirected to when they click the button.",
@@ -37,7 +38,7 @@
 	"welcomesurvey-question-reason-option-read-label": "One response option to the question \"Why did you create your account today?\" (will be shown in a short survey after sign-up).",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "One response option to the question \"Why did you create your account today?\" (will be shown in a short survey after sign-up).\n{{Identical|Other}}",
 	"welcomesurvey-question-reason-option-other-label": "One response option to the question \"Why did you create your account today?\" If this option is selected, a text-field to enter the other reason will appear (will be shown in a short survey after sign-up).",
-	"welcomesurvey-question-reason-other-placeholder": "Placeholder of the text-field that is only shown if a proceeding option of \"Other reason\" is selected in answer to the question  \"Why did you create your account today?\"  (will be shown in a short survey after sign-up).\n\nParameters:\n* $1 - Name of the current user (for use with GENDER).",
+	"welcomesurvey-question-reason-other-placeholder": "Placeholder of the text-field that is only shown if a proceeding option of \"Other reason\" is selected in answer to the question \"Why did you create your account today?\" (will be shown in a short survey after sign-up).\n\nParameters:\n* $1 - Name of the current user (for use with GENDER).",
 	"welcomesurvey-question-edited-label": "Question asking about a person’s level of editing experience (will be shown in a short welcome survey to new Wikipedia account users after account sign-up).",
 	"welcomesurvey-question-edited-option-yes-many-label": "One response option to the question \"Have you ever edited Wikipedia?\" in a welcome survey to new accounts.",
 	"welcomesurvey-question-edited-option-yes-few-label": "One response option to the question \"Have you ever edited Wikipedia?\" in a welcome survey to new accounts.",

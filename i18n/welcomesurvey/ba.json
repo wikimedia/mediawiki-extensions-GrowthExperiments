@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Bashkorttan"
 		]
 	},
@@ -14,7 +15,7 @@
 	"welcomesurvey-privacy-policy-link-text": "Яңы мөхәррирҙәр тураһында тулыраҡ мәғлүмәт",
 	"welcomesurvey-privacy-footer-text": "Викимедиа Фонды {{GENDER:$1|яуаптарығыҙҙы}} {{SITENAME}} төҙәтеүҙәрен башлап ебәреүегеҙҙә ярҙам итеү өсөн ҡулланасаҡ. [$2 Сер һаҡлау сәйәсәте тураһында тулыраҡ мәғлүмәт].",
 	"welcomesurvey-sidebar-editing-title": "Мөхәррирләүҙе башлау",
-	"welcomesurvey-sidebar-editing-text": "Һәр битте тиерлек һәр кем мөхәррирләй ала, һәм сәғәт һайын эстәлек өҫтәү, хаталарҙы төҙәтеү һәм уҡыуҙы яҡшыртыу буйынса йөҙәрләгән үҙгәрештәр яһала.  {{GENDER:$1|Ҡатнашырға теләгегеҙ}} булһа, киләһе биттәр ярҙамсы була ала.",
+	"welcomesurvey-sidebar-editing-text": "Һәр битте тиерлек һәр кем мөхәррирләй ала, һәм сәғәт һайын эстәлек өҫтәү, хаталарҙы төҙәтеү һәм уҡыуҙы яҡшыртыу буйынса йөҙәрләгән үҙгәрештәр яһала. {{GENDER:$1|Ҡатнашырға теләгегеҙ}} булһа, киләһе биттәр ярҙамсы була ала.",
 	"welcomesurvey-sidebar-editing-link1-text": "Ҡулланма",
 	"welcomesurvey-sidebar-editing-link1-title": "Википедия:Ҡулланма",
 	"welcomesurvey-sidebar-editing-link2-text": "Ярҙам хеҙмәте",
