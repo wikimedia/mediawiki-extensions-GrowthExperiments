@@ -16,5 +16,5 @@
 	"apihelp-growthsetmentor-param-mentee": "Nome utente dell'allievo",
 	"apihelp-growthsetmentor-param-mentor": "Nome del tutor",
 	"apihelp-growthsetmentor-param-reason": "Motivo della modifica",
-	"apihelp-query+growthimagesuggestiondata-summary": "Recupera i [[mw:wikitech:Add_Image|dati suggeriti per le immagini]] associati, se disponibili"
+	"apihelp-query+growthimagesuggestiondata-summary": "Recupera i [https://www.mediawiki.org/wiki/wikitech:Add_Image dati suggeriti per le immagini] associati, se disponibili"
 }
