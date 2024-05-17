@@ -113,6 +113,7 @@
 	"communityconfiguration-helppanel-gehelppanelreadingmodenamespaces-label": "Namespaces where the help panel is available in reading mode",
 	"communityconfiguration-helppanel-gehelppanelsearchnamespaces-label": "Namespaces to include in the help panel's free text search for help",
 	"communityconfiguration-helppanel-gehelppanelhelpdesktitle-label": "Help desk page where questions should be posted from the help panel.",
+	"communityconfiguration-helppanel-gehelppanellinks-label": "Help panel links",
 	"communityconfiguration-helppanel-gehelppanellinks-0-label": "First link",
 	"communityconfiguration-helppanel-gehelppanellinks-1-label": "Second link",
 	"communityconfiguration-helppanel-gehelppanellinks-2-label": "Third link",
