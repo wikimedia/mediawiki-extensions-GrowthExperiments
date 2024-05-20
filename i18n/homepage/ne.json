@@ -4,6 +4,7 @@
 			"Bada Kaji",
 			"पर्वत सुबेदी",
 			"बडा काजी",
+			"सरोज कुमार ढकाल",
 			"हिमाल सुबेदी"
 		]
 	},
@@ -107,7 +108,7 @@
 	"tag-newcomer_task-description": "नवआगन्तुक गृहपृष्ठको सुझाव गरिएको सम्पादन मोड्युलद्वारा सुझाव गरिएको सम्पादन गर्नुहोस्",
 	"tag-newcomer_task_copyedit": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#copyedit|नयाँ आगमन कार्य: संशोधन]]",
 	"tag-newcomer_task_copyedit-description": "\"संशोधन सम्पादन\" कार्य सम्पादन नयाँ आगमन गृहपृष्ठको सुझाव गरिएको सम्पादन मोड्युलद्वारा सुझाव गरिएको",
-	"tag-newcomer_task_references": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#addref|नयाँ आगमन कार्य: सन्दर्भहरू]]",
+	"tag-newcomer_task_references": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#addref नयाँ आगमनकर्ता कार्य: सन्दर्भहरू]",
 	"tag-newcomer_task_references-description": "\"सन्दर्भ\" कार्य सम्पादन नयाँ आगमन गृहपृष्ठ को सुझाव गरिएको सम्पादन मोड्युल द्वारा सुझाव",
 	"tag-newcomer_task_update": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#update|नयाँ आगमन कार्य: अपडेट]]",
 	"tag-newcomer_task_update-description": "\"अद्यावधिक\" कार्य सम्पादन नयाँ आगमन गृहपृष्ठ को सुझाव गरिएको सम्पादन मोड्युल द्वारा सुझाव",
@@ -115,9 +116,9 @@
 	"tag-newcomer_task_expand-description": "\"विस्तार गर्नुहोस्\" कार्य सम्पादन नयाँ आगमन गृहपृष्ठ को सुझाव गरिएको सम्पादन मोड्युल द्वारा सुझाव",
 	"tag-newcomer_task_links": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#addlink|नयाँ आगमन कार्य: कडीहरू]]",
 	"tag-newcomer_task_links-description": "\"कडीहरू\" कार्य सम्पादन नयाँ आगमन गृहपृष्ठको सुझाव गरिएको सम्पादन मोड्युलद्वारा सुझाव गरिएको",
-	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link|सुझाव गरिएको: कडीहरू थप्नुहोस्]]",
+	"tag-newcomer_task_add_link": "[https://www.mediawiki\n.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link सुझाव गरिएको: कडीहरू थप्नुहोस्]",
 	"tag-newcomer_task_add_link-description": "\"कडी थप्नुहोस्\" कार्य सम्पादन नयाँ आगमन गृहपृष्ठको सुझाव गरिएको सम्पादन मोड्युलद्वारा सुझाव गरिएको",
-	"tag-newcomer_task_image_suggestion": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-image|सुझाईएको: तस्बिरहरू थप्नुहोस्]]",
+	"tag-newcomer_task_image_suggestion": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-image सुझाव दिइएको: तस्बिरहरू थप्नुहोस्]",
 	"tag-newcomer_task_image_suggestion-description": "\"तस्बिरहरू थप्नुहोस्\" कार्य सम्पादन नयाँ आगमन गृहपृष्ठको सुझाव गरिएको सम्पादन मोड्युलद्वारा सुझाव गरिएको",
 	"growthexperiments-homepage-help-dialog-title": "सहायता कक्षलाई सोध्नुहोस्",
 	"growthexperiments-homepage-help-header": "सम्पादन गर्न मद्दत प्राप्त गर्नुहोस्",
