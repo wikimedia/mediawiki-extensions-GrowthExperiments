@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Умар"
+			"Умар",
+			"Amire80"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Марша догӀийла}}, $1!",
@@ -15,7 +16,7 @@
 	"welcomesurvey-sidebar-privacy-text": "Викимедиа Фондо лелора ду {{GENDER:$2|хьан}} жоьпаш хьуна {{GRAMMAR:genitive|{{SITENAME}}}}. $1 тӀехь нисдарш деш гӀо деш.",
 	"welcomesurvey-privacy-policy-link-text": "Кхин сов хьажа керлачу редакторийн хаамашка",
 	"welcomesurvey-sidebar-editing-title": "ДӀадоладе хийцамаш бар",
-	"welcomesurvey-sidebar-editing-text": "ХӀора агӀо аьлча сана хӀоранна а йиш йу нисйан, цул сов хӀора сахьтехь дукха хийцамаш бан чулацам тӀетухуш, гӀалаташ нисдеш а,  йешайалар тадеш а. РогӀера агӀонаша гӀодира ду, дакъалацамехь хьан {{GENDER:$1|дӀайаздар}} делахь.",
+	"welcomesurvey-sidebar-editing-text": "ХӀора агӀо аьлча сана хӀоранна а йиш йу нисйан, цул сов хӀора сахьтехь дукха хийцамаш бан чулацам тӀетухуш, гӀалаташ нисдеш а, йешайалар тадеш а. РогӀера агӀонаша гӀодира ду, дакъалацамехь хьан {{GENDER:$1|дӀайаздар}} делахь.",
 	"welcomesurvey-sidebar-editing-link1-text": "Боца хаамаш",
 	"welcomesurvey-sidebar-editing-link1-title": "ГӀо:Чудалор",
 	"welcomesurvey-sidebar-editing-link2-text": "Форум/Керлачарна гӀо",

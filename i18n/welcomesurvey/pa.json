@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kuldeepburjbhalaike"
+			"Kuldeepburjbhalaike",
+			"Amire80"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ਜੀ ਆਇਆਂ ਨੂੰ}}, $1!",
@@ -14,7 +15,7 @@
 	"welcomesurvey-sidebar-privacy-title": "ਅਸੀਂ {{GENDER:|ਤੁਹਾਡੀ}} ਗੋਪਨੀਯਤਾ ਦੀ ਕਦਰ ਕਰਦੇ ਹਾਂ",
 	"welcomesurvey-privacy-policy-link-text": "ਨਵੇਂ ਸੰਪਾਦਕਾਂ ਦੇ ਡੇਟਾ ਬਾਰੇ ਹੋਰ ਜਾਣੋ",
 	"welcomesurvey-sidebar-editing-title": "ਸੰਪਾਦਨ ਨਾਲ ਸ਼ੁਰੂਆਤ",
-	"welcomesurvey-sidebar-editing-text": "ਲਗਭਗ ਹਰ ਪੰਨੇ ਨੂੰ ਕਿਸੇ ਵੀ ਵਿਅਕਤੀ ਦੁਆਰਾ ਸੰਪਾਦਿਤ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਅਤੇ ਸਮੱਗਰੀ ਨੂੰ ਜੋੜਨ, ਗਲਤੀਆਂ ਨੂੰ ਠੀਕ ਕਰਨ ਅਤੇ ਪੜ੍ਹਨਯੋਗਤਾ ਵਿੱਚ ਸੁਧਾਰ ਕਰਨ ਲਈ ਹਰ ਘੰਟੇ ਸੈਂਕੜੇ ਬਦਲਾਅ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਹੇਠਾਂ ਦਿੱਤੇ ਪੰਨੇ ਮਦਦ ਕਰ ਸਕਦੇ ਹਨ ਜੇਕਰ ਤੁਸੀਂ ਯੋਗਦਾਨ ਪਾਉਣ ਵਿੱਚ  {{GENDER:$1|ਦਿਲਚਸਪੀ ਰੱਖਦੇ ਹੋ}}।",
+	"welcomesurvey-sidebar-editing-text": "ਲਗਭਗ ਹਰ ਪੰਨੇ ਨੂੰ ਕਿਸੇ ਵੀ ਵਿਅਕਤੀ ਦੁਆਰਾ ਸੰਪਾਦਿਤ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਅਤੇ ਸਮੱਗਰੀ ਨੂੰ ਜੋੜਨ, ਗਲਤੀਆਂ ਨੂੰ ਠੀਕ ਕਰਨ ਅਤੇ ਪੜ੍ਹਨਯੋਗਤਾ ਵਿੱਚ ਸੁਧਾਰ ਕਰਨ ਲਈ ਹਰ ਘੰਟੇ ਸੈਂਕੜੇ ਬਦਲਾਅ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਹੇਠਾਂ ਦਿੱਤੇ ਪੰਨੇ ਮਦਦ ਕਰ ਸਕਦੇ ਹਨ ਜੇਕਰ ਤੁਸੀਂ ਯੋਗਦਾਨ ਪਾਉਣ ਵਿੱਚ {{GENDER:$1|ਦਿਲਚਸਪੀ ਰੱਖਦੇ ਹੋ}}।",
 	"welcomesurvey-sidebar-editing-link1-text": "ਟਿਊਟੋਰਿਅਲ",
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutorial",
 	"welcomesurvey-sidebar-editing-link2-text": "ਹੈਲਪ ਡੈਸਕ",

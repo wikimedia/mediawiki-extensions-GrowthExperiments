@@ -11,7 +11,7 @@
 	"apihelp-homepagequestionstore-param-userid": "De ID van de gebruiker waarvoor vragen moeten worden verkregen.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Geen vragen gevonden",
 	"apihelp-growthsetmentor-summary": "De mentor van de gebruiker instellen. De wijziging wordt in het openbaar gelogd.",
-	"apihelp-growthsetmentor-param-mentee": "Gebruikersnaam van de mentee",
+	"apihelp-growthsetmentor-param-mentee": "Gebruikersnaam van de leerling",
 	"apihelp-growthsetmentor-param-mentor": "Gebruikersnaam van de mentor",
 	"apihelp-growthsetmentor-param-reason": "Reden voor de wijziging.",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Titel van het artikel waarvoor de afbeeldingsaanbevelingstaak is bedoeld"

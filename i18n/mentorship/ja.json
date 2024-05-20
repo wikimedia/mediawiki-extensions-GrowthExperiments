@@ -6,7 +6,8 @@
 			"Sou0012",
 			"春春眠眠",
 			"Afaz",
-			"MagicAho"
+			"MagicAho",
+			"Shirayuki"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "指導役ダッシュボード",
@@ -119,12 +120,12 @@
 	"growthexperiments-manage-mentors-last-active": "前回の操作",
 	"growthexperiments-manage-mentors-intro-msg": "初心者へのメッセージ",
 	"growthexperiments-manage-mentors-remove-mentor": "除去",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|あなた}}は[[User:$1|$1]]を{{GENDER:$1|メンター}}から外そうとしています。",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|あなた}}は[[User:$1|$1]]を{{GENDER:$1|指導役}}から外そうとしています。",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "指導役を外す理由",
 	"growthexperiments-manage-mentors-remove-mentor-success": "利用者[[User:$1|$1]]は{{GENDER:$1|指導役}}ではなくなりました。",
 	"growthexperiments-manage-mentors-return-back": "指導役の一覧に[[Special:ManageMentors|戻る]]ことができます。",
 	"growthexperiments-mentorship-enrollasmentor-title": "{{GENDER:|指導役}}として登録する",
-	"growthexperiments-mentorship-enrollasmentor-pretext": "{{SITENAME}}の{{GENDER:|指導役}}（メンター）に興味をお持ちいただきありがとうございます。このフォームに記入して指導役として登録できます。",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "{{SITENAME}}の{{GENDER:|指導役}}に興味をお持ちいただきありがとうございます。このフォームに記入して指導役として登録できます。",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "自己紹介メッセージ",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "自己紹介メッセージでは、{{GENDER:|あなた}}を指導役として自己紹介してください（240 文字未満、ウィキ構文は使用不可）。",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "理由",
