@@ -58,4 +58,10 @@ class HelpPanelSchema extends JsonSchema {
 		],
 		self::DEFAULT => []
 	];
+
+	public const GEHelpPanelViewMoreTitle = [
+		self::REF => [
+			'class' => MediaWikiDefinitions::class, 'field' => 'PageTitle'
+		]
+	];
 }
