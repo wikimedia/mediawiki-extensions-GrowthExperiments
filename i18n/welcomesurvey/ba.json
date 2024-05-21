@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bashkorttan"
+			"Bashkorttan",
+			"Amire80"
 		]
 	},
 	"welcomesurvey": "$1, рәхим итегеҙ!",
@@ -13,7 +14,7 @@
 	"welcomesurvey-close-btn": "Ябырға һәм $1 битенә кире ҡайтырға",
 	"welcomesurvey-privacy-policy-link-text": "Яңы мөхәррирҙәр тураһында тулыраҡ мәғлүмәт",
 	"welcomesurvey-sidebar-editing-title": "Мөхәррирләүҙе башлау",
-	"welcomesurvey-sidebar-editing-text": "Һәр битте тиерлек һәр кем мөхәррирләй ала, һәм сәғәт һайын эстәлек өҫтәү, хаталарҙы төҙәтеү һәм уҡыуҙы яҡшыртыу буйынса йөҙәрләгән үҙгәрештәр яһала.  {{GENDER:$1|Ҡатнашырға теләгегеҙ}} булһа, киләһе биттәр ярҙамсы була ала.",
+	"welcomesurvey-sidebar-editing-text": "Һәр битте тиерлек һәр кем мөхәррирләй ала, һәм сәғәт һайын эстәлек өҫтәү, хаталарҙы төҙәтеү һәм уҡыуҙы яҡшыртыу буйынса йөҙәрләгән үҙгәрештәр яһала. {{GENDER:$1|Ҡатнашырға теләгегеҙ}} булһа, киләһе биттәр ярҙамсы була ала.",
 	"welcomesurvey-sidebar-editing-link1-text": "Ҡулланма",
 	"welcomesurvey-sidebar-editing-link1-title": "Википедия:Ҡулланма",
 	"welcomesurvey-sidebar-editing-link2-text": "Ярҙам хеҙмәте",
