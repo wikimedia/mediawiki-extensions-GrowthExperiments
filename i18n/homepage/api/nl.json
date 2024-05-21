@@ -14,7 +14,7 @@
 	"apihelp-growthsetmentor-param-mentee": "Gebruikersnaam van de leerling",
 	"apihelp-growthsetmentor-param-mentor": "Gebruikersnaam van de mentor",
 	"apihelp-growthsetmentor-param-reason": "Reden voor de wijziging.",
-	"apihelp-query+growthimagesuggestiondata-summary": "Gekoppelde [[mw:wikitech:Add_Image|gegevens over afbeeldingssuggesties]] ophalen, indien beschikbaar",
+	"apihelp-query+growthimagesuggestiondata-summary": "De bijbehorende [https://www.mediawiki.org/wiki/wikitech:Add_Image gegevens over afbeeldingssuggesties] ophalen, indien beschikbaar",
 	"apihelp-query+growthimagesuggestiondata-param-tasktype": "Taaktype-ID (om aan te geven of gegevens moeten worden opgehaald voor afbeeldingsaanbevelingen op het hoogste niveau of op sectieniveau)",
 	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "Taaktype-ID ‘$1’ is niet gevonden in de configuratie van de wiki.",
 	"apihelp-growthinvalidateimagerecommendation-summary": "Een afbeeldingsaanbeveling ongeldig maken.",
