@@ -148,7 +148,7 @@
 	"tag-mentorship_module_question-description": "Правка через модуль наставничества «Задать вопрос наставнику» на домашней странице новичка",
 	"tag-mentorship_panel_question": "Вопрос через панель наставничества",
 	"tag-mentorship_panel_question-description": "Правка через функцию справочной панели «Спросить своего наставника»",
-	"tag-newcomer_task": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks|задача для новичков]]",
+	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Task Задача для новичков]",
 	"tag-newcomer_task-description": "Правка, предложенная модулем предложенных правок домашней страницы новичка",
 	"tag-newcomer_task_copyedit": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#copyedit|задача для новичков: корректура]]",
 	"tag-newcomer_task_copyedit-description": "Задача «Корректура», предложенная модулем предлагаемых правок на домашней странице новичка",

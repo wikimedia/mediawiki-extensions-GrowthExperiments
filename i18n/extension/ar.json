@@ -119,6 +119,7 @@
 	"communityconfiguration-helppanel-gehelppanelreadingmodenamespaces-label": "النطاقات أين تتوافر لوحة المساعدة مفعّلة على وضعيّة القراءة",
 	"communityconfiguration-helppanel-gehelppanelsearchnamespaces-label": "النطاقات المراد تضمينها للحصول على المساعدة في البحث عن النص الحرّ في لوحة المساعدة",
 	"communityconfiguration-helppanel-gehelppanelhelpdesktitle-label": "صفحة ميدان المساعدة أين يجب طرح الأسئلة المتأتّية من لوحة المساعدة.",
+	"communityconfiguration-helppanel-gehelppanellinks-label": "روابط لوحة المساعدة",
 	"communityconfiguration-helppanel-gehelppanellinks-0-label": "الرابط الأول",
 	"communityconfiguration-helppanel-gehelppanellinks-1-label": "الرابط الثاني",
 	"communityconfiguration-helppanel-gehelppanellinks-2-label": "الرابط الثالث",
