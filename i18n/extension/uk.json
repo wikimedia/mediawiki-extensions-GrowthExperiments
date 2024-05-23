@@ -106,5 +106,15 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Сповіщення «Спробуйте пропоновані редагування»",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Максимальна кількість редагувань, яку може мати новачок, щоб отримати це сповіщення. Якщо встановлено значення 0, ніхто з новачків<br/> не отримає це сповіщення. Чим вище число, тим більше новачків отримають це сповіщення.<br> Це сповіщення надсилається лише новачкам, які не виконали Пропонованих редагувань.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Сповіщення «Продовжуйте»",
-	"growthexperiments-edit-config-keep-going-notification-description": "Максимальна кількість пропонованих редагувань, яку новачок може виконати, щоб отримати це сповіщення. Якщо встановлено значення 0, ніхто з новачків<br/> не отримає це сповіщення. Чим вище число, тим більше новачків отримають це сповіщення.<br> Це сповіщення надсилається лише новачкам, які уже виконали хоча б одне пропоноване редагування."
+	"growthexperiments-edit-config-keep-going-notification-description": "Максимальна кількість пропонованих редагувань, яку новачок може виконати, щоб отримати це сповіщення. Якщо встановлено значення 0, ніхто з новачків<br/> не отримає це сповіщення. Чим вище число, тим більше новачків отримають це сповіщення.<br> Це сповіщення надсилається лише новачкам, які уже виконали хоча б одне пропоноване редагування.",
+	"communityconfiguration-mentorship-title": "Наставництво",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Мінімальна кількість днів, яка має пройти з часу реєстрації, щоб користувач міг записатися наставником",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Мінімальна кількість редагувань, які користувач має зробити (у будь-якому просторі назв), щоб могти записатися наставником",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Кількість днів, які враховуються під час оцінювання підопічних",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Наставники можуть змінити це налаштування для себе на Панелі наставника.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-label": "За замовчуванням, як часто наставники повинні отримувати сповіщення з нагадуванням надсилати заохочення підопічним, які успішно редагують?",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Наставники можуть змінити це налаштування для себе на Панелі наставника.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Максимальна кількість редагувань, яку мають зробити користувачі, щоб вважатися гідними похвали",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Стандартна мінімальна кількість редагувань, яку мають зробити підопічні, щоб вважатися гідними похвали",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Наставники можуть змінити це налаштування для себе на Панелі наставника."
 }

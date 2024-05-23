@@ -22,7 +22,8 @@
 			"列维劳德",
 			"沈澄心",
 			"羊羊32521",
-			"魔琴"
+			"魔琴",
+			"LittlePaw365"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "启用编者帮助面板",
@@ -185,7 +186,7 @@
 	"growthexperiments-help-panel-button-subheader-ask-help": "从其他志愿者那里得到答案",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "小贴士",
 	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1{{PLURAL:$1|次编辑}} · $2",
-	"growthexperiments-help-panel-general-help-title": "综合编辑帮助",
+	"growthexperiments-help-panel-general-help-title": "常规编辑帮助",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "关于编辑建议",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|您}}正在使用源代码编辑器。这些编辑窍门对可视化编辑器非常有帮助。",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "切换到可视化编辑器",

@@ -11,7 +11,8 @@
 			"Madamebiblio",
 			"MarcoAurelio",
 			"Zapipedia (WMF)",
-			"ZebaX2010"
+			"ZebaX2010",
+			"Amire80"
 		]
 	},
 	"welcomesurvey": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, $1!",
@@ -47,7 +48,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "No, por otros motivos",
 	"welcomesurvey-question-edited-option-dont-remember-label": "No lo recuerdo",
 	"welcomesurvey-question-mailinglist-label": "Quiero recibir consejos por correo electrónico sobre cómo empezar a editar.",
-	"welcomesurvey-question-mailinglist-help": "Ten presente que la lista de correo se gestiona con la tecnología de MailChimp, lo que significa que el uso que hace MailChimp de  {{GENDER:|tu}} información se rige por su [https://www.intuit.com/privacy/statement/es/ Política de privacidad] y sus [https://mailchimp.com/es/legal/terms/ Condiciones de servicio].",
+	"welcomesurvey-question-mailinglist-help": "Ten presente que la lista de correo se gestiona con la tecnología de MailChimp, lo que significa que el uso que hace MailChimp de {{GENDER:|tu}} información se rige por su [https://www.intuit.com/privacy/statement/es/ Política de privacidad] y sus [https://mailchimp.com/es/legal/terms/ Condiciones de servicio].",
 	"welcomesurvey-question-email-label": "Dirección de correo electrónico (opcional)",
 	"welcomesurvey-question-email-placeholder": "Escribe {{GENDER:|tu}} dirección de correo electrónico...",
 	"welcomesurvey-question-email-help": "Notamos que no introdujiste un correo electrónico cuando creaste esta cuenta. Esto es <strong>altamente recomendado</strong>, ya que un correo electrónico es necesario para la recuperación de la cuenta si en algún momento pierdes tu contraseña. NOTA: Tu dirección de correo electrónico no es revelada cuándo otros usuarios te contactan.",

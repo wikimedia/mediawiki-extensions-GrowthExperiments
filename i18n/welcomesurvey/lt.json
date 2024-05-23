@@ -3,7 +3,8 @@
 		"authors": [
 			"Eitvys200",
 			"Nokeoo",
-			"Tomasdd"
+			"Tomasdd",
+			"Amire80"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Sveiki}}, $1!",
@@ -48,7 +49,7 @@
 	"welcomesurvey-reminder": "Padėkite mums patobulinti {{GENDER:|jūsų}} Vikipedijos patirtį atsakydami į kelis klausimus mūsų Įžangos apklausoje. $1",
 	"welcomesurvey-reminder-link": "Pradėti apklausą",
 	"welcomesurvey-reminder-dismiss": "Paslėpti",
-	"welcomesurvey-mideditsignup-title": "Sveiki,  $1!",
+	"welcomesurvey-mideditsignup-title": "Sveiki, $1!",
 	"welcomesurvey-mideditsignup-body": "Ačiū už redagavimą! {{GENDER:|Jūs}} dabar galite matyti savo indėlio poveikį ir gauti daugiau siūlomų pakeitimų savo pagrindiniame puslapyje.",
 	"welcomesurvey-mideditsignup-button-homepage": "Eikite į mano pagrindinį puslapį",
 	"welcomesurvey-mideditsignup-button-close": "Uždaryti"
