@@ -1242,10 +1242,12 @@ class HomepageHooks implements
 		$configurationLoader = self::getConfigurationLoaderForResourceLoader( $context );
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {
-			$status = Status::wrap( $taskTypes );
-			$status->setMessageLocalizer( $context );
+			$errorMessages = array_map(
+				static fn ( $spec ) => $context->msg( $spec->getKey(), ...$spec->getParams() )->parse(),
+				$taskTypes->getMessages()
+			);
 			return [
-				'_error' => $status->getWikiText(),
+				'_error' => $errorMessages[0],
 			];
 		} else {
 			$taskTypesData = [];
@@ -1281,10 +1283,12 @@ class HomepageHooks implements
 		$configurationLoader = self::getConfigurationLoaderForResourceLoader( $context );
 		$topics = $configurationLoader->loadTopics();
 		if ( $topics instanceof StatusValue ) {
-			$status = Status::wrap( $topics );
-			$status->setMessageLocalizer( $context );
+			$errorMessages = array_map(
+				static fn ( $spec ) => $context->msg( $spec->getKey(), ...$spec->getParams() )->parse(),
+				$topics->getMessages()
+			);
 			return [
-				'_error' => $status->getWikiText(),
+				'_error' => $errorMessages[0],
 			];
 		} else {
 			$topicsData = [];

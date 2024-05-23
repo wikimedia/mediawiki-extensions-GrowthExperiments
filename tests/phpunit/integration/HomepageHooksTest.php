@@ -64,7 +64,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$context = new RL\Context( MediaWikiServices::getInstance()->getResourceLoader(),
 			RequestContext::getMain()->getRequest() );
 		$configData = HomepageHooks::getTaskTypesJson( $context );
-		$this->assertSame( [ '_error' => 'foo' ], $configData );
+		$this->assertSame( [ '_error' => '(foo)' ], $configData );
 	}
 
 	/**
