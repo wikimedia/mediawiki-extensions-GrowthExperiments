@@ -134,6 +134,7 @@
 	"communityconfiguration-helppanel-gehelppanellinks-title-placeholder": "Wikipedia:Wie schreibe ich gute Artikel",
 	"communityconfiguration-helppanel-gehelppanellinks-text-label": "Bezeichnung",
 	"communityconfiguration-helppanel-gehelppanellinks-text-placeholder": "Wie schreibe ich gute Artikel",
+	"communityconfiguration-helppanel-gehelppanelviewmoretitle-label": "Zielseite für „Mehr Hilfeseiten anzeigen“",
 	"communityconfiguration-mentorship-title": "Betreuung durch Lotsen",
 	"communityconfiguration-mentorship-info-text": "Lotsen können zwei Rollen einnehmen. Standardmäßig werden sie nach dem Zufallsprinzip Neuankömmlingen zugewiesen. Es gibt eine Option für Lotsen, die nur Lotsen für Personen aus Veranstaltungen oder Kursen sein wollen: Sie bekommen keine Neulinge zugewiesen, können sie aber anfordern. Die ideale Anzahl von Lotsen ist: ein Lotse für eine Gruppe von 500 neuen Accounts, mit einem Minimum von 3 Lotsen. [https://www.mediawiki.org/wiki/Help:Growth/Mentorship Erfahre mehr über die Funktionsweise der Lotsenschaft].",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Mindestanzahl von Tagen, die ein Benutzer registriert sein muss, um sich als Lotse/Lotsin anzumelden",
