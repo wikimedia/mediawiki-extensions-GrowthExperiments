@@ -37,7 +37,6 @@ class Util {
 	private const MINUTE = 60;
 	private const HOUR = 3600;
 	private const DAY = 86400;
-	private const WEEK = 604800;
 	private const MONTH = 2592000;
 	private const YEAR = 31536000;
 
@@ -98,14 +97,12 @@ class Util {
 			return [ 'minutes' ];
 		} elseif ( $time < self::DAY ) {
 			return [ 'hours' ];
-		} elseif ( $time < self::WEEK ) {
-			return [ 'days' ];
 		} elseif ( $time < self::MONTH ) {
-			return [ 'weeks' ];
+			return [ 'days' ];
 		} elseif ( $time < self::YEAR ) {
-			return [ 'weeks' ];
+			return [ 'months' ];
 		} else {
-			return [ 'years', 'weeks' ];
+			return [ 'years', 'months' ];
 		}
 	}
 
