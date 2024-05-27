@@ -110,5 +110,7 @@
 	"specialpages-group-growth-tools": "Outils de croissance",
 	"communityconfiguration-helppanel-gehelppanellinks-0-label": "Premier lien",
 	"communityconfiguration-helppanel-gehelppanellinks-1-label": "Deuxième lien",
-	"communityconfiguration-helppanel-gehelppanellinks-4-label": "Cinquième lien"
+	"communityconfiguration-helppanel-gehelppanellinks-4-label": "Cinquième lien",
+	"communityconfiguration-helppanel-gehelppanellinks-title-placeholder": "Aide:Comment rédiger un bon article",
+	"communityconfiguration-helppanel-gehelppanellinks-text-placeholder": "Comment rédiger un bon article"
 }

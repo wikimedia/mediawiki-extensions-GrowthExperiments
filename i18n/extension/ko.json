@@ -95,6 +95,8 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "계속 알림",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-top-label": "문서 최상단",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-bottom-label": "문서 최하단",
+	"communityconfiguration-helppanel-gehelppanellinks-label": "도움말 패널 링크",
+	"communityconfiguration-helppanel-gehelppanellinks-text-placeholder": "좋은 글을 작성하는 방법",
 	"communityconfiguration-mentorship-title": "멘토",
 	"communityconfiguration-growthhomepage-title": "새 사용자 홈페이지",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "링크 추가"
