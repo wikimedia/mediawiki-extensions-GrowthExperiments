@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"ऐक्टिवेटेड्"
+		]
+	},
+	"growthexperiments-help-panel-cta-button-text": "सम्पादन लागि सहायता पायी",
+	"growthexperiments-help-panel-question-button-text": "जारी रखी",
+	"growthexperiments-help-panel-submit-question-button-text": "प्रकाशित करी",
+	"growthexperiments-help-panel-return-home-button-text": "हो गेल",
+	"growthexperiments-help-panel-back-home": "पाछे",
+	"growthexperiments-help-panel-close": "हो गेल",
+	"growthexperiments-help-panel-home-title": "सम्पादन लागि सहायता पायी",
+	"growthexperiments-help-panel-postedit-subheader-notsaved": "अगला सुझाओ:",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "दिशानिर्देश",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "उदाहरण वाक्य",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "लेख देखी",
+	"growthexperiments-help-panel-questioncomplete-title": "एगो प्रश्न पूछी",
+	"growthexperiments-help-panel-questioncomplete-header": "अपनेके प्रश्न प्रकाशित हो गेल !",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "परिवर्तन",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "अपन ई-पत्रके पुष्टि करी",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "ई-पत्र जोड़ी",
+	"growthexperiments-help-panel-questionposter-invalid-title": "अमान्य शीर्षक ।",
+	"growthexperiments-help-panel-search-label": "सहायता लागि खोजी",
+	"growthexperiments-help-panel-search-no-results": "कौनो परिणाम नै भेटल ।"
+}
