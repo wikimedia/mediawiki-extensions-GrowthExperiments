@@ -17,6 +17,7 @@ use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IContextSource;
 use MediaWiki\Collation\CollationFactory;
+use MediaWiki\Config\Config;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\Title;
@@ -269,7 +270,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$taskHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$configurationLoader = new PageConfigurationLoader( $configurationValidator, $taskHandlerRegistry,
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES, $this->getMockTitleFactory( [], false ),
-			$wikiPageConfigLoader, $taskTitle, null );
+			$wikiPageConfigLoader, $taskTitle, null, $this->createMock( Config::class ) );
 		$topics = $configurationLoader->loadTopics();
 		$this->assertSame( [], $topics );
 	}
@@ -455,7 +456,9 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		] );
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry( $configurationValidator );
 		return new PageConfigurationLoader( $configurationValidator, $taskTypeHandlerRegistry,
-			$topicType, $titleFactory, $wikiPageConfigLoader, $taskConfigTitle, $topicConfigTitle );
+			$topicType, $titleFactory, $wikiPageConfigLoader, $taskConfigTitle, $topicConfigTitle,
+			$this->createMock( Config::class )
+		);
 	}
 
 	/**

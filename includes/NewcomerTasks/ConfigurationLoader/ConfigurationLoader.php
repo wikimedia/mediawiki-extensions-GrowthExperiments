@@ -24,6 +24,12 @@ interface ConfigurationLoader {
 	public function loadTopics();
 
 	/**
+	 * Load configured infobox templates.
+	 * @return string[]|StatusValue
+	 */
+	public function loadInfoboxTemplates();
+
+	/**
 	 * Convenience method to get task types as an array of task type id => task type.
 	 *
 	 * If an error is generated while loading task types, an empty array is
@@ -51,5 +57,4 @@ interface ConfigurationLoader {
 	 * @return Topic[]
 	 */
 	public function getTopics(): array;
-
 }

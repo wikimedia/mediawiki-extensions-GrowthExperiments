@@ -1464,7 +1464,11 @@ class HomepageHooks implements
 		$growthServices = GrowthExperimentsServices::wrap( $mwServices );
 		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$taskTypes = $configurationLoader->getTaskTypes();
-		$infoboxTemplates = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplates' );
+		$infoboxTemplates = $configurationLoader->loadInfoboxTemplates();
+		// FIXME remove once GrowthExperiments drops support for CC1.0
+		if ( $infoboxTemplates instanceof StatusValue ) {
+			$infoboxTemplates = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplates' );
+		}
 		$infoboxTemplatesTest = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplatesTest' );
 		$templateCollectionFeature = new TemplateCollectionFeature(
 			'infobox', $infoboxTemplates, $mwServices->getTitleFactory()

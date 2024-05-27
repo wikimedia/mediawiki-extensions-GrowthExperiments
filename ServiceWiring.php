@@ -638,7 +638,8 @@ return [
 				$services->getTitleFactory(),
 				$growthServices->getWikiPageConfigLoader(),
 				$taskConfigTitle,
-				$topicConfigTitle
+				$topicConfigTitle,
+				$growthServices->getGrowthWikiConfig(),
 			);
 		}
 

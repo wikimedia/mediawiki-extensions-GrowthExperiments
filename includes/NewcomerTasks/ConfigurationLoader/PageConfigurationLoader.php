@@ -6,6 +6,7 @@ use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\Util;
 use LogicException;
+use MediaWiki\Config\Config;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleFactory;
 
@@ -20,6 +21,9 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 	/** @var LinkTarget|string|null */
 	private $topicConfigurationPage;
 
+	/** @var Config */
+	private Config $growthConfig;
+
 	/**
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
@@ -30,6 +34,7 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 	 *   (local or interwiki).
 	 * @param string|LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
 	 *   (local or interwiki). Can be omitted, in which case topic matching will be disabled.
+	 * @param Config $growthConfig
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
@@ -38,7 +43,8 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 		TitleFactory $titleFactory,
 		WikiPageConfigLoader $configLoader,
 		$taskConfigurationPage,
-		$topicConfigurationPage
+		$topicConfigurationPage,
+		Config $growthConfig
 	) {
 		parent::__construct( $configurationValidator, $taskTypeHandlerRegistry, $topicType );
 
@@ -46,6 +52,7 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 		$this->configLoader = $configLoader;
 		$this->taskConfigurationPage = $taskConfigurationPage;
 		$this->topicConfigurationPage = $topicConfigurationPage;
+		$this->growthConfig = $growthConfig;
 	}
 
 	/**
@@ -88,5 +95,12 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 		}
 
 		return parent::loadTopics();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function loadInfoboxTemplates() {
+		return $this->growthConfig->get( 'GEInfoboxTemplates' );
 	}
 }

@@ -63,6 +63,17 @@ class CommunityConfigurationLoader extends AbstractDataConfigurationLoader {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function loadInfoboxTemplates() {
+		$result = $this->suggestedEditsConfigProvider->loadValidConfiguration();
+		if ( $result->isOK() ) {
+			return $result->getValue()->{'GEInfoboxTemplates'};
+		}
+		return $result;
+	}
+
+	/**
 	 * @param string|LinkTarget|null $target
 	 * @return LinkTarget|null
 	 */

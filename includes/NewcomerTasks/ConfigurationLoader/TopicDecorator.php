@@ -68,4 +68,9 @@ class TopicDecorator implements ConfigurationLoader {
 		// Extra task types are never disabled.
 		return $this->configurationLoader->getDisabledTaskTypes();
 	}
+
+	/** @inheritDoc */
+	public function loadInfoboxTemplates(): array {
+		return $this->configurationLoader->loadInfoboxTemplates();
+	}
 }

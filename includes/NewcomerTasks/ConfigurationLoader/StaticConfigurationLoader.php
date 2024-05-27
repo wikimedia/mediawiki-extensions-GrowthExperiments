@@ -19,13 +19,18 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 	/** @var Topic[]|StatusValue */
 	private $topics;
 
+	/** @var string[]|StatusValue */
+	private $infoboxTemplates;
+
 	/**
 	 * @param TaskType[]|StatusValue $taskTypes
 	 * @param Topic[]|StatusValue $topics
+	 * @param string[]|StatusValue $infoboxTemplates
 	 */
-	public function __construct( $taskTypes, $topics = [] ) {
+	public function __construct( $taskTypes, $topics = [], $infoboxTemplates = [] ) {
 		$this->taskTypes = $taskTypes;
 		$this->topics = $topics;
+		$this->infoboxTemplates = $infoboxTemplates;
 	}
 
 	/** @inheritDoc */
@@ -43,4 +48,8 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 		return [];
 	}
 
+	/** @inheritDoc */
+	public function loadInfoboxTemplates() {
+		return $this->infoboxTemplates;
+	}
 }

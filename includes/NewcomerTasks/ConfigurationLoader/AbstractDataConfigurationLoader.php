@@ -105,6 +105,11 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 	 */
 	abstract protected function loadTopicsConfig();
 
+	/**
+	 * @return array|StatusValue
+	 */
+	abstract public function loadInfoboxTemplates();
+
 	/** @inheritDoc */
 	public function loadTaskTypes() {
 		if ( $this->taskTypes !== null ) {
