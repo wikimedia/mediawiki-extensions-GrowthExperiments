@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"ऐक्टिवेटेड्"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "सदस्सनाम",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "पञ्जीकरण तिथि",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "फिल्टर्",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "अद्यतन",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "सम्पादन गिनती",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "न्यूनतम",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "अधिकतम",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "हालके सम्पादन",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "हालके दिन",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "हालके महीना",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "खोजी",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "सक्रिय $1 पहिले",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "अज्ञात",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 देखावी",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 मे $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label": "परिणामके अगिला पन्ना",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "परिणामके पिछला पन्ना",
+	"growthexperiments-mentor-dashboard-resources-headline": "सन्साधन",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "सेटिङ्ग्स्",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "सक्रिय",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "दिन",
+	"growthexperiments-quit-mentorship-reason": "कारण",
+	"growthexperiments-notification-body-mentee-claimed": "कारण: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "सहेजी",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "निरस्त करी",
+	"growthexperiments-manage-mentors-none": "कौनो न",
+	"growthexperiments-manage-mentors-username": "सदस्सनाम",
+	"growthexperiments-manage-mentors-last-active": "अन्तिम सक्रिय",
+	"growthexperiments-manage-mentors-edit-reason": "कारण",
+	"growthexperiments-manage-mentors-remove-mentor": "हटावी"
+}

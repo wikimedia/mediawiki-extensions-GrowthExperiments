@@ -123,6 +123,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Пример реченице",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "Види предложену слику",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "Види чланак",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "Одлучите да ли слика припада",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-step3": "Предлог може бити нерелевантан за чланак, лошег квалитета или не припада из неког другог разлога. Сами {{GENDER:|процените}} да ли је предлог исправан или не.",
 	"growthexperiments-help-panel-questioncomplete-title": "Постављање питања",
 	"growthexperiments-help-panel-questioncomplete-header": "Питање је постављено.",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Питање се сада налази на Тргу. Ускоро ћете добити одговор.",
