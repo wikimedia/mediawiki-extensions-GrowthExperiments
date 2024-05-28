@@ -19,4 +19,18 @@ class HomepageSchema extends JsonSchema {
 		],
 		self::ADDITIONAL_PROPERTIES => false,
 	];
+
+	public const GELevelingUpGetStartedMaxTotalEdits = [
+		self::TYPE => self::TYPE_INTEGER,
+		// NOTE: zero is used to disable the notification
+		self::MINIMUM => 0,
+		self::DEFAULT => 10,
+	];
+
+	// TODO constant name should have "Max" if the minimum is no editable, see T366139
+	public const GELevelingUpKeepGoingNotificationThresholds = [
+		self::TYPE => self::TYPE_INTEGER,
+		self::MINIMUM => 0,
+		self::DEFAULT => 4
+	];
 }

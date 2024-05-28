@@ -17,11 +17,18 @@ class CommunityConfigurationWikiPageConfigReader implements Config {
 
 	private Config $wikiPageConfigReader;
 
+	private Config $mainConfig;
+
 	/**
 	 * @param Config $wikiPageConfigReader
+	 * @param Config $mainConfig
 	 */
-	public function __construct( Config $wikiPageConfigReader ) {
+	public function __construct(
+		Config $wikiPageConfigReader,
+		Config $mainConfig
+	) {
 		$this->wikiPageConfigReader = $wikiPageConfigReader;
+		$this->mainConfig = $mainConfig;
 	}
 
 	/**
@@ -35,6 +42,10 @@ class CommunityConfigurationWikiPageConfigReader implements Config {
 		}
 		if ( $name === 'GEHelpPanelAskMentor' ) {
 			$value = self::MAP_ASK_MENTOR_VALUES[$value];
+		}
+		if ( $name === 'GELevelingUpKeepGoingNotificationThresholds' ) {
+			$thresholds = $this->mainConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' );
+			$value = [ $thresholds[ 0 ], $value ];
 		}
 		return $value;
 	}
