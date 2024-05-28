@@ -4,7 +4,8 @@
 			"Dedalus",
 			"Effeietsanders",
 			"Mainframe98",
-			"Mar(c)"
+			"Mar(c)",
+			"McDutchie"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|wat is dit?]])",
@@ -26,7 +27,7 @@
 	"growthexperiments-thankyoupage-title": "Wat fijn dat je een donateur bent. Maak een account aan om Wikipedia te kunnen bewerken en verbeteren.",
 	"growthexperiments-thankyoupage-body": "Wikipedia wordt gecreëerd door mensen zoals jij die met elkaar werken.  Het bewerken van een artikel is gemakkelijker dan je denkt!\n\nMet een account heb je toegang tot:",
 	"growthexperiments-thankyoupage-body-mobile": "Wikipedia wordt gecreëerd door mensen zoals jij die met elkaar werken.  Het bewerken van een artikel is gemakkelijker dan je denkt!",
-	"growthexperiments-thankyoupage-bullet1": "Eenvoudige taken die bij je interesses passen",
+	"growthexperiments-thankyoupage-bullet1": "Eenvoudige taken die bij {{#FORMAL:je|uw}} interesses passen",
 	"growthexperiments-thankyoupage-bullet2": "Hulp en begeleiding tijdens het bewerken",
 	"growthexperiments-thankyoupage-bullet3": "Inzicht in hoeveel mensen je werk bekijken",
 	"growthexperiments-campaigns-footer": "Als je op deze pagina een account aanmaakt, wordt die voor ervarings- en analysedoeleinden aan deze campagne gekoppeld."
