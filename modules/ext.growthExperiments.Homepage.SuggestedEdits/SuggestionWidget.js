@@ -7,7 +7,7 @@
  * and adapted for use outside the MachineVision extension
  *
  * @param {Object} config
- * @cfg {Object} suggestionData
+ * @param {Object} config.suggestionData
  */
 function SuggestionWidget( config ) {
 	this.suggestionData = config.suggestionData;

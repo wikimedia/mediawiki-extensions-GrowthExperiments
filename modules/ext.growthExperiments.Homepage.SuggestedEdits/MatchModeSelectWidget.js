@@ -6,11 +6,13 @@
  *
  * @class mw.libs.ge.MatchModeSelectWidget
  * @extends OO.ui.Widget
+ *
  * @param {Object} config
  * @param {string} config.initialValue value to pre-select an option
  * @param {Object[]} config.options available select options. Options
  *   required properties: "data", "label". ie: { data: 'OR', label: 'Match ANY' }
- * @cfg {jQuery|true} [$overlay] Overlay to display the widget in, or true to use default OOUI window
+ * @param {jQuery|true} [config.$overlay] Overlay to display the widget in, or true to use default OOUI window
+ * @param {string[]} config.classes
  */
 function MatchModeSelectWidget( config ) {
 	var defaultClasses = [ 'mw-ge-MatchModeSelectWidget' ];

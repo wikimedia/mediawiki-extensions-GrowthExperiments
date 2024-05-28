@@ -7,8 +7,8 @@
 	 * @constructor
 	 * @param {mw.libs.ge.HelpPanelLogger} logger
 	 * @param {Object} config
-	 * @cfg {number[]} searchNamespaces Namespace IDs to include in the search
-	 * @cfg {string} foreignApi api.php URL of a foreign wiki to search instead of the local wiki
+	 * @param {number[]} config.searchNamespaces Namespace IDs to include in the search
+	 * @param {string} config.foreignApi api.php URL of a foreign wiki to search instead of the local wiki
 	 */
 	function HelpPanelSearchWidget( logger, config ) {
 		HelpPanelSearchWidget.super.call( this, config );

@@ -4,17 +4,17 @@
 	 * @class mw.libs.ge.HelpPanelProcessDialog
 	 * @extends OO.ui.ProcessDialog
 	 *
+	 * @constructor
 	 * @param {Object} config
-	 * @cfg {mw.libs.ge.HelpPanelLogger} logger
-	 * @cfg {string} [layoutType] Dialog layout: 'helppanel' (Growth help panel look) or 'dialog'
+	 * @param {mw.libs.ge.HelpPanelLogger} config.logger
+	 * @param {string} [config.layoutType] Dialog layout: 'helppanel' (Growth help panel look) or 'dialog'
 	 *   (standard OOUI process dialog look). Default is 'helppanel'. This only affects the few
 	 *   layout options which have to be handled dynamically in JS code.
-	 * @cfg {string} askSource Logical name of the source to use with the HelpPanelPostQuestion API
-	 * @cfg {boolean} guidanceEnabled Whether guidance feature is enabled.
-	 * @cfg {SuggestedEditSession} suggestedEditSession The suggested edit session
-	 * @cfg {string} taskTypeId The ID of the suggested edit task type.
-	 * @cfg {boolean} [isQuestionPoster] Whether the dialog from QuestionPoster (Special:Homepage)
-	 * @constructor
+	 * @param {string} config.askSource Logical name of the source to use with the HelpPanelPostQuestion API
+	 * @param {boolean} config.guidanceEnabled Whether guidance feature is enabled.
+	 * @param {SuggestedEditSession} config.suggestedEditSession The suggested edit session
+	 * @param {string} config.taskTypeId The ID of the suggested edit task type.
+	 * @param {boolean} [config.isQuestionPoster] Whether the dialog from QuestionPoster (Special:Homepage)
 	 */
 	var configData = require( './data.json' ),
 		SuggestedEditsPanel = require( './HelpPanelProcessDialog.SuggestedEditsPanel.js' ),

@@ -15,16 +15,17 @@
 	 * post-edit dialog.
 	 *
 	 * @class mw.libs.ge.HelpPanelLogger
+	 * @see https://meta.wikimedia.org/wiki/Schema:HelpPanel
+	 *
 	 * @constructor
 	 * @param {Object} [config]
-	 * @cfg string [context] Allow overriding the context field for all events
-	 * @cfg string [previousEditorInterface] Type of the last editor the user made an edit with,
+	 * @param {string} [config.context] Allow overriding the context field for all events
+	 * @param {string} [config.previousEditorInterface] Type of the last editor the user made an edit with,
 	 *   if known. Used for editor_interface if the type of editor cannot be determined on the fly
 	 *   (ie. we are not editing right now).
-	 * @cfg string [isSuggestedTask] Allow overriding the is_suggested_task field for all events.
+	 * @param {string} [config.isSuggestedTask] Allow overriding the is_suggested_task field for all events.
 	 *   This must be set for suggested edits, the logger does not try to detect them.
-	 * @cfg string [sessionId] Allow overriding the help_panel_session_id field for all events
-	 * @see https://meta.wikimedia.org/wiki/Schema:HelpPanel
+	 * @param {string} [config.sessionId] Allow overriding the help_panel_session_id field for all events
 	 */
 	function HelpPanelLogger( config ) {
 		config = config || {};

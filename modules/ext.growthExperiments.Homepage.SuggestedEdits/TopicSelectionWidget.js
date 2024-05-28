@@ -27,9 +27,9 @@ var SuggestionWidget = require( './SuggestionWidget.js' ),
  *
  * @class mw.libs.ge.TopicSelectionWidget
  * @param {Object} config
- * @cfg {number} [initialLimit=12] Number of topics to display initially; use Infinity to disable
- * @cfg {mw.libs.ge.TopicFilters} [filters=new TopicFilters()] Initially selected topic filters
- * @cfg {jQuery|true} [$overlay] Overlay to display the widget in, or true to use default OOUI window
+ * @param {number} [config.initialLimit=12] Number of topics to display initially; use Infinity to disable
+ * @param {mw.libs.ge.TopicFilters} [config.filters=new TopicFilters()] Initially selected topic filters
+ * @param {jQuery|true} [config.$overlay] Overlay to display the widget in, or true to use default OOUI window
  * @param {Object} GROUPED_TOPICS Topics to show, organized by group
  */
 function TopicSelectionWidget( config, GROUPED_TOPICS ) {

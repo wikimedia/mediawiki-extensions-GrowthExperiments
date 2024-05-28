@@ -2,10 +2,10 @@
  * GroupWidget that groups SuggestionWidgets
  *
  * @param {Object} config
- * @cfg {boolean} [selectAll] If true, add a "select all" link
- * @cfg {string} [header] Header message to show above the group
- * @cfg {SuggestionWidget[]} [items] Items to add initially
- * @cfg {SuggestionWidget[]} [hiddenItems] Items initially hidden behind "show more"
+ * @param {boolean} [config.selectAll] If true, add a "select all" link
+ * @param {string} [config.header] Header message to show above the group
+ * @param {SuggestionWidget[]} [config.items] Items to add initially
+ * @param {SuggestionWidget[]} [config.hiddenItems] Items initially hidden behind "show more"
  */
 function SuggestionGroupWidget( config ) {
 	config = config || {};
