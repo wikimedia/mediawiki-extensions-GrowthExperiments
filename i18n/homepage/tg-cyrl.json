@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"ToJack"
+			"ToJack",
+			"ZulfiqorF"
 		]
 	},
-	"tooltip-pt-homepage": "Саҳифаи аввали {{GENDER:|шумо}}",
+	"tooltip-pt-homepage": "Оғоза",
 	"growthexperiments-homepage-email-changelink": "тағйир",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Иҷро шуд",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Пайвандҳоро миёни мақолаҳо илова намудан",
