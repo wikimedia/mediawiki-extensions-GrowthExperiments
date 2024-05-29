@@ -102,7 +102,7 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|heeft}} het mentorschap beëindigd.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 {{GENDER:$2|heeft}} $1 afgemeld van het mentorschap",
 	"echo-category-title-ge-mentorship": "Mentorschap",
-	"echo-pref-tooltip-ge-mentorship": "Meldingen met betrekking tot mentorschapsfuncties die worden onderhouden door het Growth-team. Je bent nu leerling van een mentor of een van uw leerlingen heeft nu een andere mentor.",
+	"echo-pref-tooltip-ge-mentorship": "Meldingen met betrekking tot de mentorschapsfuncties die worden onderhouden door het Growth-team. Met deze melding weet u dat u als leerling bent aangenomen, of dat een van uw leerlingen door iemand anders is aangenomen.",
 	"growthexperiments-notification-header-mentee-claimed": "Uw {{GENDER:$3|leerling}} $3 is nu {{GENDER:$2|toegewezen}} aan $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Reden: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Wat betekent dat, “een leerling aannemen”?",
