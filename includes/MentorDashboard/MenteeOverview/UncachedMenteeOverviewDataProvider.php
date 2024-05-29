@@ -427,7 +427,13 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			}
 		}
 		foreach ( $res as $userId => $userData ) {
-			$res[$userId]['last_active'] = $userData['last_edit'] ?? $userData['registration'];
+			if ( !isset( $userData['registration'] ) ) {
+				$this->logger->error(
+					__METHOD__ . ': Registration timestamp not found for user ID {userId}',
+					[ 'userId' => $userId ]
+				);
+			}
+			$res[$userId]['last_active'] = $userData['last_edit'] ?? $userData['registration'] ?? null;
 		}
 		return $res;
 	}
