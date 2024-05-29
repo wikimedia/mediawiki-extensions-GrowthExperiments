@@ -572,13 +572,17 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		// fetch usernames (assoc. array; username => user ID)
 		// NOTE: username has underscores, not spaces
 		$users = [];
+		$userNamesAsStrings = [];
+		'@phan-var array<string> $userNamesAsStrings';
 		$userIdentities = iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserIds( $userIds )
 			->fetchUserIdentities() );
 		array_walk(
 			$userIdentities,
-			static function ( UserIdentity $value, $key ) use ( &$users ) {
-				$users[str_replace( ' ', '_', $value->getName() )] = $value->getId();
+			static function ( UserIdentity $value, $key ) use ( &$users, &$userNamesAsStrings ) {
+				$username = str_replace( ' ', '_', $value->getName() );
+				$userNamesAsStrings[] = $username;
+				$users[$username] = $value->getId();
 			}
 		);
 
@@ -589,7 +593,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				'log_type' => 'block',
 				'log_action' => 'block',
 				'log_namespace' => NS_USER,
-				'log_title' => array_keys( $users )
+				'log_title' => $userNamesAsStrings
 			] )
 			->groupBy( 'log_title' )
 			->caller( __METHOD__ )
