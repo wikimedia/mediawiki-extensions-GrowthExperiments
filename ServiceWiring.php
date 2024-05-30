@@ -175,7 +175,8 @@ return [
 
 		if ( Util::useCommunityConfiguration() ) {
 			return new CommunityConfigurationWikiPageConfigReader(
-				$services->get( 'CommunityConfiguration.WikiPageConfigReader' )
+				$services->get( 'CommunityConfiguration.WikiPageConfigReader' ),
+				$services->getMainConfig()
 			);
 		} else {
 			return $services->get( 'GrowthExperimentsMultiConfig' );
