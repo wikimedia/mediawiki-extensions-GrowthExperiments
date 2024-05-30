@@ -6,7 +6,7 @@
 	},
 	"growthexperiments-edit-config-title": "Projekti Growth häälestus",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Viimati muutnud [[User:$1|$1]] $2 ([$4 erin]).",
-	"growthexperiments-edit-config-pretext": "See lehekülg võimaldab häälestada projekti [[:mw:Special:MyLanguage/Growth|Growth]] funktsioone. See teeb sinu nimel muudatuse lehekülgedel $1. Näed enda muudatusi nende lehekülgede ajaloos.",
+	"growthexperiments-edit-config-pretext": "See lehekülg võimaldab häälestada projekti [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth Growth] funktsioone. See teeb sinu nimel muudatuse lehekülgedel $1. Näed enda muudatusi nende lehekülgede ajaloos.",
 	"growthexperiments-edit-config-pretext-banner": "Saad ka kuvada uue kasutaja kodulehe kohal riba, kus saab anda teada uutele kasutajatele huvipakkuvatest üritustest. Kui soovid seda teha, siis tuleb sul käsitsi lehekülge [[$1]] redigeerida. Sinna lisatud sisu kuvatakse kollasel ribal lehekülje [[Special:Homepage]] kohal.",
 	"growthexperiments-edit-config-feedback-headline": "Kas sul on selle vormiga seoses ideid või küsimusi?",
 	"growthexperiments-edit-config-feedback-cta": "Anna tagasisidet",
