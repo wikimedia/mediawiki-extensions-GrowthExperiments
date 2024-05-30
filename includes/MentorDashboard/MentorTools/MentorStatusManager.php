@@ -260,6 +260,7 @@ class MentorStatusManager {
 			$this->userIdentityLookup
 				->newSelectQueryBuilder()
 				->whereUserIds( $awayMentorIds )
+				->caller( __METHOD__ )
 				->fetchUserIdentities()
 		);
 	}

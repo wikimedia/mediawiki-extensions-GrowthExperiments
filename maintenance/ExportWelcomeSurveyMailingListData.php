@@ -177,6 +177,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			// Old user records have no registration date. We won't use 'from' dates old enough
 			// to encounter those so we can ignore them here.
 			->where( $dbr->expr( 'user_registration', '<=', $registrationDate ) )
+			->caller( __METHOD__ )
 			->fetchField();
 		return is_numeric( $res ) ? intval( $res ) : null;
 	}

@@ -54,6 +54,7 @@ class StarredMenteesStore {
 		return iterator_to_array( $this->userIdentityLookup
 			->newSelectQueryBuilder()
 			->whereUserIds( $ids )
+			->caller( __METHOD__ )
 			->fetchUserIdentities() );
 	}
 

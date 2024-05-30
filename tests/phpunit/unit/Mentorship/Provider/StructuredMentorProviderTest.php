@@ -269,7 +269,9 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	public function testGetMentors( array $expectedIds, string $methodToCall ) {
 		$queryBuilder = $this->createMock( UserSelectQueryBuilder::class );
 		$queryBuilder->expects( $this->once() )->method( 'whereUserIds' )
-			->with( $expectedIds );
+			->with( $expectedIds )->willReturnSelf();
+		$queryBuilder->method( 'registered' )->willReturnSelf();
+		$queryBuilder->method( 'caller' )->willReturnSelf();
 
 		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
 		$userIdentityLookup->expects( $this->once() )->method( 'newSelectQueryBuilder' )

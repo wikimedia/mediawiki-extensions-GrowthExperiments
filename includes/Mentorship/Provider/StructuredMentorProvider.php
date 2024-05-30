@@ -129,6 +129,7 @@ class StructuredMentorProvider extends MentorProvider {
 		return $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserIds( $mentorIds )
 			->registered()
+			->caller( __METHOD__ )
 			->fetchUserNames();
 	}
 
@@ -161,6 +162,7 @@ class StructuredMentorProvider extends MentorProvider {
 		return $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserIds( $userIDs )
 			->registered()
+			->caller( __METHOD__ )
 			->fetchUserNames();
 	}
 
@@ -216,6 +218,7 @@ class StructuredMentorProvider extends MentorProvider {
 		return $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserIds( $userIDs )
 			->registered()
+			->caller( __METHOD__ )
 			->fetchUserNames();
 	}
 }
