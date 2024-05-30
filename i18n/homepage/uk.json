@@ -19,7 +19,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Ваша}} домашня сторінка",
 	"prefs-homepage": "Можливості нового редактора",
 	"growthexperiments-homepage-enable": "Показувати домашню сторінку для новачків",
-	"growthexperiments-homepage-pt-link": "За замовчуванням направити посилання з імені користувача в особистих інструментах на головну для новачків",
+	"growthexperiments-homepage-pt-link": "За замовчуванням направити посилання з імені користувача в особистих інструментах на домашню сторінку новачка",
 	"growthexperiments-homepage-email-header-noemail": "Додайте {{GENDER:$1|свою}} електронну пошту",
 	"growthexperiments-homepage-email-header-unconfirmed": "Підтвердіть {{GENDER:$1|свою}} електронну пошту",
 	"growthexperiments-homepage-email-header-confirmed": "Адресу ел. пошти додано",
