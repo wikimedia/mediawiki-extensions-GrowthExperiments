@@ -891,7 +891,6 @@
 			]
 		},
 		"ext.growthExperiments.Homepage.NewImpact": {
-			"es6": true,
 			"styles": [
 				"utils/mixins.less",
 				"vue-components/Skeleton.less",
@@ -1957,7 +1956,6 @@
 			}
 		},
 		"ext.growthExperiments.MentorDashboard": {
-			"es6": true,
 			"packageFiles": [
 				"ext.growthExperiments.MentorDashboard/init.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.js",
