@@ -173,6 +173,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				return $user->getName();
 			}, $mentees ) )
 			->whereLocked( true )
+			->caller( __METHOD__ )
 			->fetchLocalUserIdentitites();
 
 		return array_map( static function ( UserIdentity $user ) {
@@ -582,6 +583,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		'@phan-var array<string> $userNamesAsStrings';
 		$userIdentities = iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserIds( $userIds )
+			->caller( __METHOD__ )
 			->fetchUserIdentities() );
 		array_walk(
 			$userIdentities,

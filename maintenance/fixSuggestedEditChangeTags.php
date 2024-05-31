@@ -107,7 +107,7 @@ class FixSuggestedEditChangeTags extends Maintenance {
 			$this->output( "Fetching batch from revision $fromRevision\n" );
 			$queryBuilder = $this->getStructuredEditTagsQuery( $this->dbr, $this->getBatchSize(),
 				$fromRevision );
-			$res = $queryBuilder->fetchResultSet();
+			$res = $queryBuilder->caller( __METHOD__ )->fetchResultSet();
 			foreach ( $res as $row ) {
 				$this->processRow( $row, $fixedRevisions );
 				$fromRevision = $row->rev_id + 1;

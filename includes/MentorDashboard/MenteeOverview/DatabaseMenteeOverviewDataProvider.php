@@ -82,10 +82,11 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 	 * @inheritDoc
 	 */
 	public function getFormattedDataForMentor( UserIdentity $mentor ): array {
+		$method = __METHOD__;
 		return $this->wanCache->getWithSetCallback(
 			$this->makeCacheKey( $mentor ),
 			self::TTL_DAY,
-			function ( $oldValue, &$ttl, &$setOpts ) use ( $mentor ) {
+			function ( $oldValue, &$ttl, &$setOpts ) use ( $mentor, $method ) {
 				$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
 				if ( $mentees === [] ) {
 					$ttl = self::TTL_HOUR;
@@ -100,6 +101,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 					->select( [ 'mentee_id', 'mentee_data' ] )
 					->from( 'growthexperiments_mentee_data' )
 					->where( [ 'mentee_id' => $menteeIds ] )
+					->caller( $method )
 					->fetchResultSet();
 				$data = [];
 				foreach ( $res as $row ) {

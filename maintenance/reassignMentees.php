@@ -68,6 +68,7 @@ class ReassignMentees extends Maintenance {
 	private function getAllUnofficialMentors(): array {
 		$officialMentors = iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserNames( $this->mentorProvider->getMentors() )
+			->caller( __METHOD__ )
 			->fetchUserIdentities() );
 		$officialMentorIds = array_map( static function ( UserIdentity $user ) {
 			return $user->getId();
@@ -81,6 +82,7 @@ class ReassignMentees extends Maintenance {
 				'gemm_mentor_role' => MentorStore::ROLE_PRIMARY,
 				$this->growthDbr->expr( 'gemm_mentor_id', '!=', $officialMentorIds ),
 			] )
+			->caller( __METHOD__ )
 			->fetchFieldValues();
 
 		if ( $unofficialMentorIds === [] ) {
@@ -89,6 +91,7 @@ class ReassignMentees extends Maintenance {
 
 		return iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserIds( $unofficialMentorIds )
+			->caller( __METHOD__ )
 			->fetchUserIdentities() );
 	}
 

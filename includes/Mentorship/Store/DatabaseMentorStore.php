@@ -123,6 +123,7 @@ class DatabaseMentorStore extends MentorStore {
 		}
 
 		return iterator_to_array( $builder
+			->caller( __METHOD__ )
 			->fetchUserIdentities() );
 	}
 

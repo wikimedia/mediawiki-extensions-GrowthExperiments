@@ -276,6 +276,7 @@ class LevelingUpManager {
 			] )
 			// limit() not needed because of the edit count check above, and it would be somewhat
 			// complicated to combine it with COUNT()
+			->caller( __METHOD__ )
 			->fetchRow();
 
 		if ( $editCounts->suggested_edits > 0 ) {

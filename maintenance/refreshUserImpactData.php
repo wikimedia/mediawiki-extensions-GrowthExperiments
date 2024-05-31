@@ -155,6 +155,7 @@ class RefreshUserImpactData extends Maintenance {
 		$queryBuilder->select( 'actor_user' );
 		$queryBuilder->limit( $this->getBatchSize() );
 		$queryBuilder->orderByUserId( SelectQueryBuilder::SORT_ASC );
+		$queryBuilder->caller( __METHOD__ );
 		$lastUserId = (int)$this->getOption( 'fromUser', 0 );
 		$dbr = $this->getDB( DB_REPLICA );
 		do {
@@ -165,6 +166,7 @@ class RefreshUserImpactData extends Maintenance {
 			if ( $userIds ) {
 				$users = $this->actorStore->newSelectQueryBuilder( $dbr )
 					->whereUserIds( $userIds )
+					->caller( __METHOD__ )
 					->fetchUserIdentities();
 			} else {
 				$users = [];
