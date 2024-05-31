@@ -236,11 +236,11 @@ class FixLinkRecommendationData extends Maintenance {
 
 	/**
 	 * @param Title[] $titles
-	 * @return int[]
+	 * @return list<int>
 	 */
 	private function titlesToPageIds( array $titles ): array {
 		$linkBatch = $this->linkBatchFactory->newLinkBatch( $titles );
-		return $linkBatch->execute();
+		return array_values( $linkBatch->execute() );
 	}
 
 	/**
