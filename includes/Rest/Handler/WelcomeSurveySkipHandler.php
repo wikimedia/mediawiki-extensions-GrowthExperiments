@@ -35,8 +35,10 @@ class WelcomeSurveySkipHandler extends Handler {
 	 * @throws HttpException
 	 */
 	public function execute() {
-		$params = $this->getValidatedParams();
-		if ( !$this->getSession()->getToken( 'welcomesurvey' )->match( $params['token'] ) ) {
+		$body = $this->getValidatedBody();
+		'@phan-var array $body';
+
+		if ( !$this->getSession()->getToken( 'welcomesurvey' )->match( $body['token'] ) ) {
 			throw new HttpException( 'Invalid token', 400 );
 		}
 
@@ -47,13 +49,23 @@ class WelcomeSurveySkipHandler extends Handler {
 	}
 
 	/** @inheritDoc */
-	public function getParamSettings() {
+	public function getBodyParamSettings(): array {
 		return [
 			'token' => [
-				self::PARAM_SOURCE => 'post',
+				self::PARAM_SOURCE => 'body',
 				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_REQUIRED => true,
 			],
+		];
+	}
+
+	/**
+	 * Support x-www-form-urlencoded (and nothing else), as required by RFC 6749.
+	 * @return string[]
+	 */
+	public function getSupportedRequestTypes(): array {
+		return [
+			'application/x-www-form-urlencoded'
 		];
 	}
 

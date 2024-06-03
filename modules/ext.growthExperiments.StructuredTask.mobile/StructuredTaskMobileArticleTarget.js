@@ -51,7 +51,7 @@ StructuredTaskMobileArticleTarget.prototype.setupToolbar = function () {
  * Update history as if the user were to navigate to edit mode from read mode
  *
  * This allows the close button to take the user to the article's read mode
- * instead of Special:Homepage and for OO.Router to show abandonededit dialog
+ * instead of Special:Homepage and for OO.RouteReferenceMapper to show abandonededit dialog
  * which relies on hashchange event.
  *
  * @override
