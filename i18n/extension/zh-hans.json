@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
+			"Anterdc99",
 			"BlackShadowG",
 			"Cosine02",
 			"CrownedWharf566",
 			"Diskdance",
 			"Grace03",
 			"GuoPC",
+			"Lakejason0",
 			"LittlePaw365",
 			"NACHOgao3",
 			"Shizhao",
@@ -111,6 +113,11 @@
 	"communityconfiguration-helppanel-gehelppanellinks-3-label": "第四个链接",
 	"communityconfiguration-helppanel-gehelppanellinks-4-label": "第五个链接",
 	"communityconfiguration-helppanel-gehelppanellinks-title-label": "目标页面",
+	"communityconfiguration-helppanel-gehelppanellinks-title-placeholder": "Wikipedia:更优秀条目写作指南",
+	"communityconfiguration-growthhomepage-title": "新手入职",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-label": "新手主页链接",
+	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-label": "尝试建议修改通知",
+	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-label": "继续通知",
 	"communityconfiguration-growthsuggestededits-title": "编辑建议",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "信息框模板"
 }

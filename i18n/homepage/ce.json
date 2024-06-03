@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Исмаил Садуев",
 			"Умар"
 		]
 	},
@@ -104,7 +105,7 @@
 	"growthexperiments-homepage-suggestededits-pager-end": "Чаккхе",
 	"growthexperiments-homepage-suggestededits-pager-loading": "Чуйолуш...",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 {{PLURAL:$1|хьовсарш}} тӀаьххьарчу 60 ден чохь",
-	"growthexperiments-homepage-suggestededits-edit-card": "Нисйе",
+	"growthexperiments-homepage-suggestededits-edit-card": "Нисйан",
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Карладаккха литтар",
 	"growthexperiments-homepage-suggestededits-footer": "Кхечу декъашхоша хӀара йаззамаш билгалбина кечбан безаш сана. ГӀо де '''{{grammar:accusative|{{SITENAME}}}}''' дика йан '''$1''' иза хӀора ден оьшуш болучу неха дуьхьа.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Кхечу декъашхоша хӀара йаззамаш билгалбина кечбан безаш сана. ГӀо де '''{{grammar:accusative|{{SITENAME}}}}''' дика йан.",
@@ -116,14 +117,14 @@
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|нисдар}} тӀаьххьарчу дийнахь",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Тахана хьо санначу волонтёраш дакъалаьцна {{grammar:accusative|{{SITENAME}}}} кечйеш. Дакъалаца!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Хьажа дерриге кховдийнарш",
-	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Нисйе орфографи, грамматика, стиль",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Орфографи а, грамматика а, стиль а нисйан",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Википедера йаззамаш таллархьама тӀетоха хьосташ",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Карлабаха болуш болу йаззамаш керла хила хиламаш тӀетоьхна",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "Информаци карина а, тӀетоьхна а йаззам кхин буьззина бан",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Цхьана агӀонан тӀера кхечу агӀоне хьажоргаш тӀетоха",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-link-recommendation": "Цхьана агӀонан тӀера кхечу агӀоне хьажоргаш тӀетоха.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-image-recommendation": "Йаззаман чу Викилармера сурт чудила дезий те аьлла сацам бе.",
-	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Корректура (нисйе орфографи, грамматика, стиль)",
+	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Корректура (орфографи а, грамматика а, стиль а нисйан)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Боца йаззам шорбе",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Кхечу агӀонашна тӀетоха хьажоргаш",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Кхечу агӀонашна тӀетоха хьажоргаш",
