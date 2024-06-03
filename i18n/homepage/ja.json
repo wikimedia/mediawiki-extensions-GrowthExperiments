@@ -18,7 +18,8 @@
 			"Yusuke1109",
 			"Kokage si",
 			"バレロン",
-			"もなー(偽物)"
+			"もなー(偽物)",
+			"Apple TD"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}さん！",
@@ -517,10 +518,12 @@
 	"growthexperiments-homepage-mentorship-optin-header": "編集の指導役",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "キャンセル",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "続行",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "指導役について",
 	"growthexperiments-homepage-mentorship-optout-cancel": "キャンセル",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "違う指導役が欲しいです",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "指導役は不要です",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "その他 / 言いたくありません",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "完了",
+	"growthexperiments-homepage-mentorship-about-header": "指導役について",
 	"growthexperiments-homepage-mentorship-about-done": "完了"
 }
