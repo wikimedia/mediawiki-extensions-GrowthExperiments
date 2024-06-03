@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use GrowthExperiments\Config\CommunityConfigurationWikiPageConfigReader;
+use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\GrowthExperimentsServices;
 use IDBAccessObject;
@@ -159,18 +159,18 @@ class MigrateCommunityConfig extends LoggedUpdateMaintenance {
 					isset( $config[$maybeOverriddenProp] )
 				) {
 					if ( $maybeOverriddenProp === 'GEHelpPanelHelpDeskPostOnTop' ) {
-						// Apply same transforms that CommunityConfigurationWikiPageConfigReader
+						// Apply same transforms as MediaWikiConfigReaderWrapper
 						$config[$maybeOverriddenProp] = array_search(
 							$config[$maybeOverriddenProp],
-							CommunityConfigurationWikiPageConfigReader::MAP_POST_ON_TOP_VALUES
+							MediaWikiConfigReaderWrapper::MAP_POST_ON_TOP_VALUES
 						);
 
 					}
 					if ( $maybeOverriddenProp === 'GEHelpPanelAskMentor' ) {
-						// Apply same transforms that CommunityConfigurationWikiPageConfigReader
+						// Apply same transforms as MediaWikiConfigReaderWrapper
 						$config[$maybeOverriddenProp] = array_search(
 							$config[$maybeOverriddenProp],
-							CommunityConfigurationWikiPageConfigReader::MAP_ASK_MENTOR_VALUES
+							MediaWikiConfigReaderWrapper::MAP_ASK_MENTOR_VALUES
 						);
 					}
 				}

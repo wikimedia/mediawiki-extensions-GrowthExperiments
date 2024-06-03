@@ -3,8 +3,15 @@
 namespace GrowthExperiments\Config;
 
 use MediaWiki\Config\Config;
+use MediaWiki\Extension\CommunityConfiguration\Access\MediaWikiConfigReader;
 
-class CommunityConfigurationWikiPageConfigReader implements Config {
+/**
+ * Wrapper around MediaWikiConfigReader from CommunityConfiguration, in order
+ * to modify configuration before passing it to GrowthExperiments if needed.
+ *
+ * @see MediaWikiConfigReader
+ */
+class MediaWikiConfigReaderWrapper implements Config {
 	public const MAP_POST_ON_TOP_VALUES = [
 		'top' => true,
 		'bottom' => false,
@@ -15,19 +22,19 @@ class CommunityConfigurationWikiPageConfigReader implements Config {
 		'help-desk-page' => false,
 	];
 
-	private Config $wikiPageConfigReader;
+	private Config $mediawikiConfigReader;
 
 	private Config $mainConfig;
 
 	/**
-	 * @param Config $wikiPageConfigReader
+	 * @param Config $mediawikiConfigReader
 	 * @param Config $mainConfig
 	 */
 	public function __construct(
-		Config $wikiPageConfigReader,
+		Config $mediawikiConfigReader,
 		Config $mainConfig
 	) {
-		$this->wikiPageConfigReader = $wikiPageConfigReader;
+		$this->mediawikiConfigReader = $mediawikiConfigReader;
 		$this->mainConfig = $mainConfig;
 	}
 
@@ -36,7 +43,7 @@ class CommunityConfigurationWikiPageConfigReader implements Config {
 	 * @return mixed
 	 */
 	public function get( $name ) {
-		$value = $this->wikiPageConfigReader->get( $name );
+		$value = $this->mediawikiConfigReader->get( $name );
 		if ( $name === 'GEHelpPanelHelpDeskPostOnTop' ) {
 			$value = self::MAP_POST_ON_TOP_VALUES[$value];
 		}
@@ -55,6 +62,6 @@ class CommunityConfigurationWikiPageConfigReader implements Config {
 	 * @return bool
 	 */
 	public function has( $name ): bool {
-		return $this->wikiPageConfigReader->has( $name );
+		return $this->mediawikiConfigReader->has( $name );
 	}
 }
