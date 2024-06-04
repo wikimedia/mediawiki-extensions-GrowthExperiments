@@ -18,9 +18,10 @@
 	"growthexperiments-edit-config-homepage-intro-links-image": "Zilsäit fir e Link iwwer wéi Biller am Visual-Editeur derbäigesat kënne ginn",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Jo",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Neen",
-	"growthexperiments-edit-config-newcomertasks": "Proposéiert Ännerungen",
+	"growthexperiments-edit-config-newcomertasks": "Ännerungsvirschléi",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Desaktivéiert",
 	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Linken: Schabloune fir Artikelen ze fannen, déi méi Linke brauchen.",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Referenzen: Schabloune fir Artikelen ze fannen, déi méi Referenze brauchen.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infobox-Schablounen",
 	"growthexperiments-info-tooltip-close-label": "Zoumaachen"
 }
