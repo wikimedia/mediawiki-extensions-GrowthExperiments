@@ -201,6 +201,9 @@ class MigrateCommunityConfig extends LoggedUpdateMaintenance {
 		if ( $dryRun ) {
 			$validationStatus = $provider->getValidator()->validateStrictly( $objectProps );
 			if ( !$validationStatus->isOK() ) {
+				if ( $this->hasValidationError( $validationStatus ) ) {
+					$this->output( "Errors found:\n" );
+				}
 				$this->error(
 					$this->formatterFactory->getStatusFormatter( RequestContext::getMain() )->getWikiText(
 						$validationStatus
@@ -218,6 +221,9 @@ class MigrateCommunityConfig extends LoggedUpdateMaintenance {
 				" options to use CommunityConfiguration Extension ([[phab:$PHAB]])"
 			);
 			if ( !$storeStatus->isOK() ) {
+				if ( $this->hasValidationError( $storeStatus ) ) {
+					$this->output( "Errors found:\n" );
+				}
 				$this->fatalError(
 					$this->formatterFactory->getStatusFormatter( RequestContext::getMain() )->getWikiText(
 						$storeStatus
@@ -297,6 +303,16 @@ class MigrateCommunityConfig extends LoggedUpdateMaintenance {
 	private function getGrowthExperimentsCommunityConfig( string $titleText ) {
 		$title = $this->titleFactory->newFromTextThrow( $titleText );
 		return $this->wikiPageConfigLoader->load( $title, IDBAccessObject::READ_LATEST );
+	}
+
+	/**
+	 * @param StatusValue $storeStatus
+	 * @return bool
+	 */
+	private function hasValidationError( StatusValue $storeStatus ): bool {
+		return array_reduce( $storeStatus->getMessages(), static function ( $carry, $item ) {
+			return $carry || $item->getKey() === 'communityconfiguration-schema-validation-error';
+		}, false );
 	}
 }
 
