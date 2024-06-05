@@ -104,5 +104,6 @@
 	"growthexperiments-edit-config-level-up-notifications": "Notifikace funkcí týmu Growth",
 	"growthexperiments-edit-config-level-up-notifications-description": "Tyto notifikace jsou nováčkům zasílány 48 hodin po vytvoření jejich uživatelského účtu. Jejich cílem je zvýšit pravděpodobnost, že nováček bude v týdnu po odeslání notifikace editovat.",
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Upozornění \"Vyzkoušejte editační tipy\"",
-	"growthexperiments-edit-config-keep-going-notification-title": "Upozornění \"Jen tak dál\""
+	"growthexperiments-edit-config-keep-going-notification-title": "Upozornění \"Jen tak dál\"",
+	"communityconfiguration-helppanel-title": "Panel Potřebuji pomoci"
 }

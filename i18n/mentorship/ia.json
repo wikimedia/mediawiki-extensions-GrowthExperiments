@@ -137,7 +137,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-pretext": "Saltar removera temporarimente un apprentisse del lista de apprentisses digne de laude (durante $1 die{{PLURAL:$1||s}}). Le apprentisse pote reapparer plus tarde si su activitate sequente satisface tu criterios preferite.",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised": "Io ha ja inviate laude a iste {{GENDER:$1|apprentisse}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy": "Io non pensa que iste {{GENDER:$1|apprentisse}} es digne de laude",
-	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now": "I non vole laudar iste {{GENDER:$1|apprentisse}}",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now": "Io non vole laudar iste {{GENDER:$1|apprentisse}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other": "Altere / Io prefere non dicer",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Submitter",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Cancellar",

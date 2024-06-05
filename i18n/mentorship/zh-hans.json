@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			50829,
 			"BlackShadowG",
 			"Diskdance",
 			"GuoPC",
@@ -15,8 +16,7 @@
 			"Zhang8569",
 			"沈澄心",
 			"范",
-			"魔琴",
-			50829
+			"魔琴"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "导师面板",
