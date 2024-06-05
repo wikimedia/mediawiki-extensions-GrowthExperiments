@@ -2,8 +2,8 @@
 
 use CirrusSearch\CirrusSearch;
 use GrowthExperiments\AqsEditInfoService;
-use GrowthExperiments\Config\CommunityConfigurationWikiPageConfigReader;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
+use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
 use GrowthExperiments\Config\WikiPageConfig;
@@ -171,11 +171,9 @@ return [
 	},
 
 	'GrowthExperimentsCommunityConfig' => static function ( MediaWikiServices $services ): Config {
-		$geServices = GrowthExperimentsServices::wrap( $services );
-
 		if ( Util::useCommunityConfiguration() ) {
-			return new CommunityConfigurationWikiPageConfigReader(
-				$services->get( 'CommunityConfiguration.WikiPageConfigReader' ),
+			return new MediaWikiConfigReaderWrapper(
+				$services->get( 'CommunityConfiguration.MediaWikiConfigReader' ),
 				$services->getMainConfig()
 			);
 		} else {
