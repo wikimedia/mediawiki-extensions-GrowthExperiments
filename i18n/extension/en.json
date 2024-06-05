@@ -141,7 +141,7 @@
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentors can change this option for their own user in the Mentor dashboard.",
 	"communityconfiguration-growthhomepage-title": "Newcomer onboarding",
 	"communityconfiguration-growthhomepage-description": "Personalize onboarding for new account holders via post-registration help, Leveling up notifications, and defining infobox templates.",
-	"communityconfiguration-growthhomepage-info-text": "The Newcomer homepage ([[Special:Homepage]]) provides guidance for new account holders. Upon registration, if a new account holder indicates they want to create an article or add a new image to Wikipedia, we recommend they start with a smaller edit to get started, but also provide a link to further guidance.",
+	"communityconfiguration-growthhomepage-info-text": "The Newcomer homepage ([[Special:Homepage]]) provides guidance for new account holders. Upon registration, if a new account holder indicates they want to create an article or add a new image to Wikipedia, we recommend making a smaller edit first to get started and provide a link for further guidance.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-label": "Newcomer homepage links",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Destination help for a link about creating a new article",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Destination page for a link about how to add images in the visual editor",
