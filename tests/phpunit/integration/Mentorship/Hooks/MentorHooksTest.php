@@ -28,8 +28,7 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 	): User {
 		$user = $this->getMutableTestUser()->getUser();
 
-		$dbw = $this->getServiceContainer()->getDBLoadBalancer()
-			->getConnection( DB_PRIMARY );
+		$dbw = $this->getServiceContainer()->getConnectionProvider()->getPrimaryDatabase();
 		$dbw->newUpdateQueryBuilder()
 			->update( 'user' )
 			->set( [

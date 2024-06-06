@@ -38,8 +38,7 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 			array_intersect(
 				$tags,
 				ChangeTags::getTags(
-					$this->getServiceContainer()->getDBLoadBalancer()
-						->getConnection( DB_REPLICA ),
+					$this->getServiceContainer()->getConnectionProvider()->getReplicaDatabase(),
 					null,
 					$revId
 				)
