@@ -71,10 +71,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 	private function formatDataForMentee( stdClass $row ): array {
 		$input = FormatJson::decode( $row->mentee_data, true );
 		$input['user_id'] = $row->mentee_id;
-		if ( !array_key_exists( 'last_active', $input ) ) {
-			$input['last_active'] = $input['last_edit'] ?? $input['registration'];
-		}
-
+		$input['last_active'] ??= $input['last_edit'] ?? $input['registration'];
 		return $input;
 	}
 

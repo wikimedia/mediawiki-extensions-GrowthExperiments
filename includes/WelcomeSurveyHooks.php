@@ -111,7 +111,7 @@ class WelcomeSurveyHooks implements
 			// VE
 			|| ( $query['veaction'] ?? null ) === 'edit'
 			// mobile editor
-			|| strpos( $title->getFragment(), '/editor/' ) === 0
+			|| str_starts_with( $title->getFragment(), '/editor/' )
 		);
 	}
 
