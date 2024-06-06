@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use BagOStuff;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseNotificationsDispatcher;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
@@ -58,21 +57,6 @@ class PersonalizedPraiseNotificationsDispatcherTest extends MediaWikiUnitTestCas
 
 	/**
 	 * @covers ::__construct
-	 */
-	public function testConstruct() {
-		$this->assertInstanceOf(
-			PersonalizedPraiseNotificationsDispatcher::class,
-			new PersonalizedPraiseNotificationsDispatcher(
-				$this->createNoOpMock( Config::class ),
-				$this->createNoOpMock( BagOStuff::class ),
-				$this->createNoOpMock( SpecialPageFactory::class ),
-				$this->createNoOpMock( PersonalizedPraiseSettings::class ),
-				$this->createNoOpMock( PersonalizedPraiseLogger::class )
-			)
-		);
-	}
-
-	/**
 	 * @covers ::onMenteeSuggested
 	 * @covers ::getLastNotified
 	 * @covers ::doesMentorHavePendingMentees
