@@ -156,7 +156,8 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$userOptionsLookupMock,
 			$linkRecommendationFilter,
 			$imageRecommendationFilter
-		) extends SuggestedEdits {
+		) extends SuggestedEdits
+		{
 
 			public function resetTaskCache(
 				UserIdentity $user, TaskSetFilters $taskSetFilters, array $suggesterOptions
