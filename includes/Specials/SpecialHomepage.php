@@ -381,11 +381,12 @@ class SpecialHomepage extends SpecialPage {
 	 * @return bool
 	 */
 	private function handleNewcomerTask( string $par = null ): bool {
-		if ( !$par || strpos( $par, 'newcomertask/' ) !== 0 ||
-			 !SuggestedEdits::isEnabled( $this->getConfig() ) ) {
+		if ( !$par ||
+			!str_starts_with( $par, 'newcomertask/' ) ||
+			!SuggestedEdits::isEnabled( $this->getConfig() )
+		) {
 			return false;
 		}
-		$request = $this->getRequest();
 		$titleId = (int)explode( '/', $par )[1];
 		if ( !$titleId ) {
 			return false;
@@ -396,6 +397,7 @@ class SpecialHomepage extends SpecialPage {
 			return false;
 		}
 
+		$request = $this->getRequest();
 		$clickId = $request->getVal( 'geclickid' );
 		$newcomerTaskToken = $request->getVal( 'genewcomertasktoken' );
 		$taskTypeId = $request->getVal( 'getasktype', '' );
