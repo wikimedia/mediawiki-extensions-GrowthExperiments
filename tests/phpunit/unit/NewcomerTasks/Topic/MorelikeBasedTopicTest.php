@@ -9,6 +9,8 @@ use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
 
 /**
+ * FIXME: Can't test get/setName because Message classes break unit tests
+ *
  * @covers \GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic
  */
 class MorelikeBasedTopicTest extends MediaWikiUnitTestCase {
@@ -22,8 +24,6 @@ class MorelikeBasedTopicTest extends MediaWikiUnitTestCase {
 			return $title->getDBkey();
 		}, $topic->getReferencePages() ) );
 	}
-
-	// FIXME can't test get/setName because Message classes break unit tests
 
 	public function testJsonSerialization() {
 		// JsonCodec isn't stable to construct but there is not better way in a unit test.

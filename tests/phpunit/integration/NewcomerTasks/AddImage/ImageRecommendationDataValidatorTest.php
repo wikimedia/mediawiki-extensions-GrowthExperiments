@@ -9,10 +9,11 @@ use MediaWikiIntegrationTestCase;
 use StatusValue;
 
 /**
+ * These are integration tests instead of unit because of the usage of {@see File::normalizeTitle}.
+ *
  * @covers \GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationDataValidator
  */
 class ImageRecommendationDataValidatorTest extends MediaWikiIntegrationTestCase {
-	// These are integration tests instead of unit because of the usage of File::normalizeTitle.
 
 	public function testValidate() {
 		$imageRecommendationData = new ImageRecommendationData(
