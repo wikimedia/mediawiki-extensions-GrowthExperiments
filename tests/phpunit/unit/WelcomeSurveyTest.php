@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use GrowthExperiments\WelcomeSurvey;
-use MediaWiki\Config\Config;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\User\Options\UserOptionsManager;
@@ -19,25 +18,6 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * @coversDefaultClass \GrowthExperiments\WelcomeSurvey
  */
 class WelcomeSurveyTest extends MediaWikiUnitTestCase {
-
-	/**
-	 * @covers ::__construct
-	 */
-	public function testConstruct() {
-		$contextMock = $this->createMock( RequestContext::class );
-		$contextMock->expects( $this->once() )
-			->method( 'getConfig' )
-			->willReturn( $this->createMock( Config::class ) );
-		$this->assertInstanceOf(
-			WelcomeSurvey::class,
-			new WelcomeSurvey(
-				$contextMock,
-				$this->getLanguageNameUtilsMockObject(),
-				$this->createNoOpMock( UserOptionsManager::class ),
-				false
-			)
-		);
-	}
 
 	/**
 	 * @covers ::__construct

@@ -17,8 +17,8 @@ class TaskTest extends MediaWikiUnitTestCase {
 	public function testTask() {
 		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_EASY );
 		$task = new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) );
-		$this->assertTrue( $task->getTitle()->getNamespace() === NS_MAIN );
-		$this->assertTrue( $task->getTitle()->getText() === 'Foo' );
+		$this->assertTrue( $task->getTitle()->inNamespace( NS_MAIN ) );
+		$this->assertSame( 'Foo', $task->getTitle()->getText() );
 		$this->assertSame( $taskType, $task->getTaskType() );
 		$this->assertSame( [], $task->getTopics() );
 

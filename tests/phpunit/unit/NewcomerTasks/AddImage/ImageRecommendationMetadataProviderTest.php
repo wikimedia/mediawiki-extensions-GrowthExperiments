@@ -8,8 +8,6 @@ use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Site\Site;
 use MediaWiki\Site\SiteStore;
 use MediaWikiUnitTestCase;
-use Message;
-use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
 
 /**
@@ -312,7 +310,7 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 		], $overrides );
 	}
 
-	private static function getMessageValue( string $key, array $params ): string {
+	private function getMessageValue( string $key ): string {
 		switch ( $key ) {
 			case 'project-localized-name-cswiki':
 				return 'Czech Wikipedia';
@@ -327,34 +325,12 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	private static function updateMessageMock(
-		MockObject $message,
-		string $key,
-		array $params,
-		bool $shouldReturnKey
-	): MockObject {
-		$message->method( 'exists' )->willReturn( true );
-		$message->method( 'text' )->willReturnCallback(
-			static function () use ( $key, $params, $shouldReturnKey ) {
-				if ( $shouldReturnKey ) {
-					return $key;
-				}
-				return ImageRecommendationMetadataProviderTest::getMessageValue( $key, $params );
-			}
-		);
-		return $message;
-	}
-
 	private function getMockMessageLocalizer( bool $shouldReturnKey = true ): DerivativeContext {
 		$localizer = $this->createMock( DerivativeContext::class );
 		$localizer->method( 'msg' )->willReturnCallback(
-			function ( $key, ...$params ) use ( $shouldReturnKey ) {
-				$message = $this->createMock( Message::class );
-				$message->method( 'numParams' )->willReturn( $message );
-				return ImageRecommendationMetadataProviderTest::updateMessageMock(
-					$message, $key, $params, $shouldReturnKey
-				);
-			}
+			fn ( $key ) => $this->getMockMessage(
+				$shouldReturnKey ? $key : $this->getMessageValue( $key )
+			)
 		);
 		$mockLanguage = $this->createMock( Language::class );
 		$mockLanguage->method( 'getCode' )->willReturn( 'en' );
