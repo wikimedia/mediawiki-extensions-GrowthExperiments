@@ -26,8 +26,6 @@ use OOUI\IconWidget;
 /**
  * This is the "Mentorship" module. It shows your mentor and
  * provides ways to interact with them.
- *
- * @package GrowthExperiments\HomepageModules
  */
 class Mentorship extends BaseModule {
 

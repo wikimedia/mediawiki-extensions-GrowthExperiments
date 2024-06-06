@@ -11,8 +11,6 @@ use MediaWiki\Html\Html;
 /**
  * BaseModule is a base class for homepage modules.
  * It provides utilities and a default structure (header, subheader, body, footer).
- *
- * @package GrowthExperiments\HomepageModules
  */
 abstract class BaseModule extends DashboardModule {
 

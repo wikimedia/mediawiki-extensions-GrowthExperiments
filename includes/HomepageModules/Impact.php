@@ -28,8 +28,6 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
  *
  * All timestamps in this file are in UTC. That's also what
  * the pageviews tool expects.
- *
- * @package GrowthExperiments\HomepageModules
  */
 class Impact extends BaseModule {
 
