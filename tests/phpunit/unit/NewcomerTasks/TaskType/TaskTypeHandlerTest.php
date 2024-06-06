@@ -18,23 +18,22 @@ class TaskTypeHandlerTest extends MediaWikiUnitTestCase {
 
 	public function testValidateTaskTypeConfiguration() {
 		$taskTypeHandler = $this->getTaskTypeHandler();
-		$this->assertGood( $taskTypeHandler->validateTaskTypeConfiguration( 'test', [
+		$this->assertStatusGood( $taskTypeHandler->validateTaskTypeConfiguration( 'test', [
 			'group' => 'easy',
 		] ) );
 		foreach ( [
 			'excludedTemplates' => 'invalidtemplatetitle',
 			'excludedCategories' => 'invalidcategorytitle',
 		  ] as $key => $error ) {
-			$this->assertGood( $taskTypeHandler->validateTaskTypeConfiguration( 'test', [
+			$this->assertStatusGood( $taskTypeHandler->validateTaskTypeConfiguration( 'test', [
 				'group' => 'easy',
 				$key => [ 'Foo', 'Bar' ],
 			] ) );
-			$this->assertHasError( "growthexperiments-homepage-suggestededits-config-$error",
+			$this->assertStatusError( "growthexperiments-homepage-suggestededits-config-$error",
 				$taskTypeHandler->validateTaskTypeConfiguration( 'test', [
 					'group' => 'easy',
 					$key => [ 'Foo', 1 ],
-				] )
-			);
+				] ) );
 		}
 	}
 
@@ -62,15 +61,6 @@ class TaskTypeHandlerTest extends MediaWikiUnitTestCase {
 				return new NullSubmissionHandler();
 			}
 		};
-	}
-
-	private function assertGood( StatusValue $statusValue ) {
-		$this->assertTrue( $statusValue->isGood(), "Expected good status, found " . $statusValue );
-	}
-
-	private function assertHasError( string $errorKey, StatusValue $statusValue ) {
-		$this->assertTrue( $statusValue->hasMessage( $errorKey ), "Expected error $errorKey, found "
-			. $statusValue );
 	}
 
 }

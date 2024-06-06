@@ -141,8 +141,8 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		);
 		/** @var StatusValue $status */
 		$status = $questionPoster->submit();
-		$this->assertFalse(
-			$status->isGood(), 'Check user permissions short-circuits checkPermissions call'
+		$this->assertStatusNotGood(
+			$status, 'Check user permissions short-circuits checkPermissions call'
 		);
 	}
 
@@ -179,8 +179,8 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 			);
 		/** @var StatusValue $status */
 		$status = $questionPoster->submit();
-		$this->assertFalse(
-			$status->isGood(), 'Check edit filter merged content hook short-circuits checkPermissions call'
+		$this->assertStatusNotGood(
+			$status, 'Check edit filter merged content hook short-circuits checkPermissions call'
 		);
 	}
 

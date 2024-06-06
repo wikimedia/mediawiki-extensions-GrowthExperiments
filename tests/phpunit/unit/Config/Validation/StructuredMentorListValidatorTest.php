@@ -73,8 +73,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 		if ( $expectedError === null ) {
 			$this->assertTrue( $status->isOK() );
 		} else {
-			$this->assertFalse( $status->isOK() );
-			$this->assertTrue( $status->hasMessage( $expectedError ) );
+			$this->assertStatusError( $expectedError, $status );
 		}
 	}
 
@@ -139,10 +138,9 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 			]
 		] );
 		if ( $expectedError === null ) {
-			$this->assertTrue( $status->isGood() );
+			$this->assertStatusGood( $status );
 		} else {
-			$this->assertFalse( $status->isGood() );
-			$this->assertTrue( $status->hasMessage( $expectedError ) );
+			$this->assertStatusMessage( $expectedError, $status );
 		}
 	}
 

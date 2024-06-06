@@ -18,7 +18,7 @@ class ErrorForwardingTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$suggester = new ErrorForwardingTaskSuggester( StatusValue::newFatal( 'foo' ) );
 		$result = $suggester->suggest( $user, new TaskSetFilters() );
 		$this->assertInstanceOf( StatusValue::class, $result );
-		$this->assertTrue( $result->hasMessage( 'foo' ) );
+		$this->assertStatusError( 'foo', $result );
 	}
 
 }

@@ -117,11 +117,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
 		/** @var Status $status */
 		$status = $changeMentorWrapper->validate();
-		$this->assertFalse( $status->isGood() );
-		$this->assertSame(
-			'growthexperiments-homepage-claimmentee-no-user',
-			$status->getErrors()[0]['message']
-		);
+		$this->assertStatusError( 'growthexperiments-homepage-claimmentee-no-user', $status );
 	}
 
 	/**
@@ -147,7 +143,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
 		/** @var Status $status */
 		$status = $changeMentorWrapper->validate();
-		$this->assertTrue( $status->isGood() );
+		$this->assertStatusGood( $status );
 	}
 
 	/**
@@ -173,7 +169,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'SameMentor', 3 );
 		/** @var Status $status */
 		$status = $changeMentorWrapper->validate();
-		$this->assertFalse( $status->isGood() );
+		$this->assertStatusNotGood( $status );
 	}
 
 	/**
@@ -197,9 +193,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$this->createMock( IConnectionProvider::class )
 		);
 		$status = $changeMentor->execute( $this->getUserMock( 'SameMentor', 3 ), 'test' );
-		$this->assertFalse( $status->isOK() );
-		$this->assertTrue( $status->hasMessage(
-			'growthexperiments-homepage-claimmentee-already-mentor' ) );
+		$this->assertStatusError( 'growthexperiments-homepage-claimmentee-already-mentor', $status );
 	}
 
 	/**
@@ -270,8 +264,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		if ( $expectedError === null ) {
 			$this->assertTrue( $result->isOK() );
 		} else {
-			$this->assertTrue( $result->hasMessage( $expectedError ) );
-			$this->assertFalse( $result->isOK() );
+			$this->assertStatusError( $expectedError, $result );
 		}
 	}
 
