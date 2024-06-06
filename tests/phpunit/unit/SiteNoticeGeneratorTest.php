@@ -246,10 +246,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$skinMock->method( 'getLanguage' )
 			->willReturn( $languageMock );
 		$skinMock->getTitle()->method( 'isSpecial' )
-			->willReturnMap( [
-				'WelcomeSurvey' => false,
-				'Homepage' => false,
-			] );
+			->willReturn( false );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
