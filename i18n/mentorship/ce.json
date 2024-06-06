@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Умар"
+			"Умар",
+			"Исмаил Садуев"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Ӏуьналчан панель",
@@ -90,7 +91,7 @@
 	"growthexperiments-manage-mentors-status": "Статус",
 	"growthexperiments-manage-mentors-status-away-until": "$1 кхаччалц вац/йац",
 	"growthexperiments-manage-mentors-intro-msg": "Керлачарна хаам",
-	"growthexperiments-manage-mentors-edit": "Нисйе",
+	"growthexperiments-manage-mentors-edit": "Нисйан",
 	"growthexperiments-manage-mentors-edit-intro-msg": "Маршаллин хаам",
 	"growthexperiments-manage-mentors-edit-is-away": "Вац/йац?",
 	"growthexperiments-manage-mentors-edit-away-until": "Кхаччалц вац/йац",

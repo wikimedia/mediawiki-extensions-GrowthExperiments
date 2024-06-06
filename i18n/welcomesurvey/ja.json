@@ -6,7 +6,8 @@
 			"Mugenpman",
 			"Omotecho",
 			"Shirayuki",
-			"TAKAHASHI Shuuji"
+			"TAKAHASHI Shuuji",
+			"Chqaz"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ようこそ}}、$1さん!",
@@ -17,6 +18,7 @@
 	"welcomesurvey-skip-btn": "このアンケートを{{GENDER:$1|中止}}",
 	"welcomesurvey-close-btn": "閉じて$1に戻る",
 	"welcomesurvey-privacy-policy-link-text": "個人情報について",
+	"welcomesurvey-privacy-footer-text": "ウィキメディア財団は、{{GENDER:$1|あなたの}}回答を使用して、{{SITENAME}}の編集を開始します。[$2 詳細については、プライバシー ポリシーをご覧ください]。",
 	"welcomesurvey-sidebar-editing-title": "編集入門",
 	"welcomesurvey-sidebar-editing-text": "ほとんどすべてのページは、だれでも編集でき、コンテンツの追加からミスの修正、読みやすさの改善などの編集が、毎時間、何百件も行われています。もし{{GENDER:$1|皆さんも編集に興味がある}}場合は、以下のそれぞれのページがお役に立つはずです。",
 	"welcomesurvey-sidebar-editing-link1-text": "チュートリアル",
@@ -48,6 +50,7 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}}は世界のおよそ 300 言語で掲載しています。{{GENDER:|}}読み書きができる他の言語はありますか？",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|言語|$1 言語}}を追加……",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|}}追加した言語数が上限に達しました。",
+	"welcomesurvey-question-user-research-label": "利用者調査への参加についてメールで連絡を受けたい",
 	"welcomesurvey-reminder": "{{GENDER:|皆さん}}のウィキペディア体験をもっとよくするお手伝いをさせてください。回答はオプションですが、「ようこそアンケート」をご用意しましたのでぜひ答えを書いていただけないでしょうか。$1",
 	"welcomesurvey-reminder-link": "アンケートに答える",
 	"welcomesurvey-reminder-dismiss": "閉じる",
