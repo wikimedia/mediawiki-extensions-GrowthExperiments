@@ -55,7 +55,7 @@
 	"growthexperiments-edit-config-homepage-intro-links-create": "صفحة الوصول لرابط إنشاء مقالة جديدة",
 	"growthexperiments-edit-config-homepage-intro-links-image": "صفحة الوصول إلى رابط حول إضافة صور باستخدام المحرر المرئي",
 	"growthexperiments-edit-config-mentorship": "الإرشاد",
-	"growthexperiments-edit-config-mentorship-description-structured": "يمكن أن يكون للمرشدين دوران. بشكل افتراضي، يتم تعيينهم بشكل عشوائي للوافدين الجدد. يوجد خِيار خاصّ للمرشدين بأن يهتمّوا فقط بأشخاص يشاركون في فعاليات أو دورات تدريبية: لا يتمّ تعيين وافدين جدد لهم، بل يمكنهم المطالبة بهم.\n\nالعدد المثالي للمرشدين هو: مرشد واحد لكلّ 500 حساب جديد مع عدد لا يقلّ عن 3.\n\n[https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/FAQ#Mentorship تعرّفوا المزيد عن كيفية عمل الإرشاد]",
+	"growthexperiments-edit-config-mentorship-description-structured": "يمكن أن يكون للمرشدين دوران. بشكل افتراضي، يتم تعيينهم بشكل عشوائي للوافدين الجدد. هناك خيار للمستخدمين الذين يريدون فقط أن يكونوا مرشدين للأشخاص من الفعاليات أو من فصول الدراسة: لا يتم تعيين أي وافدين جدد لهم تلقائيًا، ولكن يمكنهم المطالبة بهم يدويًا.\n\nالعدد المثالي للمرشدين هو: مرشد واحد لكلّ 500 حساب جديد مع عدد لا يقلّ عن 3.\n\n[https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/FAQ#Mentorship تعرّفوا المزيد عن كيفية عمل الإرشاد]",
 	"growthexperiments-edit-config-mentorship-enabled": "هل مزايا الإرشاد مُفعّلة؟",
 	"growthexperiments-edit-config-mentorship-enabled-true": "نعم",
 	"growthexperiments-edit-config-mentorship-enabled-false": "لا",
