@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests;
 
 use ApiTestCase;
 use ApiUsageException;
-use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
@@ -23,9 +22,7 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 
 	public function setUp(): void {
 		parent::setUp();
-		if ( !ExtensionRegistry::getInstance()->isLoaded( 'EventBus' ) ) {
-			$this->markTestSkipped( 'These tests require EventBus.' );
-		}
+		$this->markTestSkippedIfExtensionNotLoaded( 'EventBus' );
 	}
 
 	public function testExecute() {
