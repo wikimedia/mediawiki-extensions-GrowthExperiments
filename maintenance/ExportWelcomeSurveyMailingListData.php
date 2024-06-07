@@ -8,7 +8,7 @@ use GrowthExperiments\WelcomeSurvey;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityValue;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -54,7 +54,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = $this->getDB( DB_REPLICA );
+		$dbr = $this->getReplicaDB();
 
 		$from = wfTimestampOrNull( TS_MW, $this->getOption( 'from' ) );
 		$to = wfTimestampOrNull( TS_MW, $this->getOption( 'to' ) );
@@ -166,11 +166,11 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 
 	/**
 	 * Given a registration date, return the ID of the user who last registered before that date.
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 * @param string $registrationDate
 	 * @return int|null
 	 */
-	private function getLastUserIdBeforeRegistrationDate( IDatabase $dbr, string $registrationDate ): ?int {
+	private function getLastUserIdBeforeRegistrationDate( IReadableDatabase $dbr, string $registrationDate ): ?int {
 		$res = $dbr->newSelectQueryBuilder()
 			->select( [ 'user_id' => 'max(user_id)' ] )
 			->from( 'user' )

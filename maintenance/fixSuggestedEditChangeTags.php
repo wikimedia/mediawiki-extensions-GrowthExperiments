@@ -66,7 +66,7 @@ class FixSuggestedEditChangeTags extends Maintenance {
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 
-		$this->dbr = $this->getDB( DB_REPLICA );
+		$this->dbr = $this->getReplicaDB();
 		$this->revisionStore = $services->getRevisionStore();
 		$this->user = User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] );
 

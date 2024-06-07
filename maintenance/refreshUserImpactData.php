@@ -157,7 +157,7 @@ class RefreshUserImpactData extends Maintenance {
 		$queryBuilder->orderByUserId( SelectQueryBuilder::SORT_ASC );
 		$queryBuilder->caller( __METHOD__ );
 		$lastUserId = (int)$this->getOption( 'fromUser', 0 );
-		$dbr = $this->getDB( DB_REPLICA );
+		$dbr = $this->getReplicaDB();
 		do {
 			$this->output( "processing {$this->getBatchSize()} users starting with $lastUserId\n" );
 			$batchQueryBuilder = clone $queryBuilder;
@@ -201,7 +201,7 @@ class RefreshUserImpactData extends Maintenance {
 		$registeredWithin = $this->getOption( 'registeredWithin' );
 		$hasEditsAtLeast = $this->getOption( 'hasEditsAtLeast' );
 
-		$dbr = $this->getDB( DB_REPLICA );
+		$dbr = $this->getReplicaDB();
 		$queryBuilder = $this->actorStore->newSelectQueryBuilder( $dbr );
 		if ( $editedWithin ) {
 			$timestamp = $dbr->timestamp( $this->getTimestampFromRelativeDate( $editedWithin ) );
