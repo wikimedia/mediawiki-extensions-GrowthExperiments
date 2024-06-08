@@ -94,13 +94,13 @@ class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
 				'link-recommendation',
 				'newcomer task add link',
 				'"foo" is not a valid change tag name for ' .
-				'GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler',
+				LinkRecommendationTaskTypeHandler::class,
 			],
 			[
 				'image-recommendation',
 				'newcomer task image suggestion',
 				'"foo" is not a valid change tag name for ' .
-				'GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler',
+				ImageRecommendationTaskTypeHandler::class,
 			]
 		];
 	}

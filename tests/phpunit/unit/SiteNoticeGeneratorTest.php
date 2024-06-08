@@ -316,32 +316,13 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @return MockObject|\Message
-	 */
-	private function getDefaultMessageMock() {
-		$messageMock = $this->createMock( \Message::class );
-		$messageMock->method( 'params' )
-			->willReturn( $messageMock );
-		$messageMock->method( 'rawParams' )
-			->willReturn( $messageMock );
-		return $messageMock;
-	}
-
-	/**
 	 * @param string $class
 	 * @return MockObject|Skin
 	 */
 	private function getSkinMock( $class = Skin::class ) {
 		$outputMock = $this->createMock( OutputPage::class );
 		$outputMock->method( 'msg' )
-			->willReturnCallback( function ( $key ) {
-				$messageMock = $this->getDefaultMessageMock();
-				$messageMock->method( 'text' )
-					->willReturn( $key );
-				$messageMock->method( 'parse' )
-					->willReturn( $key );
-				return $messageMock;
-			} );
+			->willReturnCallback( fn ( $key ) => $this->getMockMessage( $key ) );
 
 		$userMock = $this->createNoOpMock( User::class, [ 'getId', 'getName' ] );
 		// This will make user settings update job fail, but we don't care about that.
