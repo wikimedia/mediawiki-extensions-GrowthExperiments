@@ -36,8 +36,8 @@ class PurgeExpiredMentorStatus extends Maintenance {
 	}
 
 	private function initServices(): void {
-		$this->dbr = $this->getDB( DB_REPLICA );
-		$this->dbw = $this->getDB( DB_PRIMARY );
+		$this->dbr = $this->getReplicaDB();
+		$this->dbw = $this->getPrimaryDB();
 	}
 
 	private function getRows() {
