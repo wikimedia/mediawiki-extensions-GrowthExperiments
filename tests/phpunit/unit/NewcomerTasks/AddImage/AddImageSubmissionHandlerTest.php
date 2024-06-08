@@ -41,27 +41,27 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage( 'apierror-growthexperiments-addimage-handler-accepted-missing' ) );
+		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-accepted-missing', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => null
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage( 'apierror-growthexperiments-addimage-handler-accepted-wrongtype' ) );
+		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-accepted-wrongtype', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => false,
 			'reasons' => [ 1 ]
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage( 'apierror-growthexperiments-addimage-handler-reason-invaliditem' ) );
+		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-reason-invaliditem', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => false,
 			'reasons' => [ 'invalid-reason' ]
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage( 'apierror-growthexperiments-addimage-handler-reason-invaliditem' ) );
+		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-reason-invaliditem', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => true,
@@ -69,7 +69,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'caption' => 'fail'
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage( 'growthexperiments-addimage-caption-warning-tooshort' ) );
+		$this->assertStatusMessage( 'growthexperiments-addimage-caption-warning-tooshort', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => true,
@@ -79,9 +79,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'sectionNumber' => null,
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'apierror-growthexperiments-addimage-handler-section-title-wrongtype'
-		) );
+		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-section-title-wrongtype', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => true,
@@ -91,9 +89,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'sectionNumber' => 1337,
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'apierror-growthexperiments-addimage-handler-section-number-wrongtype'
-		) );
+		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-section-number-wrongtype', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => false,
@@ -149,9 +145,10 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'sectionNumber' => null,
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype'
-		) );
+		$this->assertStatusMessage(
+			'apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype',
+			$status
+		);
 
 		$status = $handler->validate( $sectionImageTaskType, $page, $user, 1, [
 			'accepted' => true,
@@ -162,9 +159,10 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'sectionNumber' => null,
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype'
-		) );
+		$this->assertStatusMessage(
+			'apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype',
+			$status
+		);
 
 		$status = $handler->validate( $sectionImageTaskType, $page, $user, 1, [
 			'accepted' => true,
@@ -175,9 +173,10 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'sectionNumber' => null,
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype'
-		) );
+		$this->assertStatusMessage(
+			'apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype',
+			$status
+		);
 
 		$status = $handler->validate( $sectionImageTaskType, $page, $user, 1, [
 			'accepted' => true,
@@ -188,9 +187,10 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'sectionNumber' => 'wrongtype'
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype'
-		) );
+		$this->assertStatusMessage(
+			'apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype',
+			$status
+		);
 
 		$status = $handler->validate( $sectionImageTaskType, $page, $user, 1, [
 			'accepted' => true,

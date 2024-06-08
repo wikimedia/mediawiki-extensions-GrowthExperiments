@@ -214,8 +214,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		if ( $expectedError === null ) {
 			$this->assertTrue( $status->isOK() );
 		} else {
-			$this->assertFalse( $status->isOK() );
-			$this->assertTrue( $status->hasMessage( $expectedError ) );
+			$this->assertStatusError( $expectedError, $status );
 		}
 	}
 
@@ -305,8 +304,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		if ( $expectedError === null ) {
 			$this->assertTrue( $status->isOK() );
 		} else {
-			$this->assertFalse( $status->isOK() );
-			$this->assertTrue( $status->hasMessage( $expectedError ) );
+			$this->assertStatusError( $expectedError, $status );
 		}
 	}
 
@@ -369,8 +367,7 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		if ( $expectedError === null ) {
 			$this->assertTrue( $status->isOK() );
 		} else {
-			$this->assertFalse( $status->isOK() );
-			$this->assertTrue( $status->hasMessage( $expectedError ) );
+			$this->assertStatusError( $expectedError, $status );
 		}
 	}
 

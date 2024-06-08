@@ -73,7 +73,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		foreach ( range( 1, 2 ) as $_ ) {
 			$taskTypes = $configurationLoader->loadTaskTypes();
 			$this->assertInstanceOf( StatusValue::class, $taskTypes );
-			$this->assertTrue( $taskTypes->hasMessage( 'foo' ) );
+			$this->assertStatusError( 'foo', $taskTypes );
 		}
 		$this->assertSame( [], $configurationLoader->getTaskTypes() );
 		$this->assertSame( [], $configurationLoader->getDisabledTaskTypes() );
@@ -131,10 +131,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			[ 'growthexperiments-homepage-suggestededits-tasktype-name-foo' => $msg ] );
 		$status = $configurationLoader->loadTaskTypes();
-		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'growthexperiments-homepage-suggestededits-config-' . $error
-		) );
+		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-' . $error, $status );
 	}
 
 	public static function provideLoadTaskTypes_error() {
@@ -175,7 +172,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		foreach ( range( 1, 2 ) as $_ ) {
 			$topics = $configurationLoader->loadTopics();
 			$this->assertInstanceOf( StatusValue::class, $topics );
-			$this->assertTrue( $topics->hasMessage( 'foo' ) );
+			$this->assertStatusError( 'foo', $topics );
 		}
 	}
 
@@ -187,10 +184,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getOresTopicConfig( $error ),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$status = $configurationLoader->loadTopics();
-		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'growthexperiments-homepage-suggestededits-config-' . $error
-		) );
+		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-' . $error, $status );
 	}
 
 	public static function provideLoadOresTopics_error() {
@@ -234,7 +228,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		foreach ( range( 1, 2 ) as $_ ) {
 			$topics = $configurationLoader->loadTopics();
 			$this->assertInstanceOf( StatusValue::class, $topics );
-			$this->assertTrue( $topics->hasMessage( 'foo' ) );
+			$this->assertStatusError( 'foo', $topics );
 		}
 	}
 
@@ -246,10 +240,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getMorelikeTopicConfig( $error ),
 			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
 		$status = $configurationLoader->loadTopics();
-		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'growthexperiments-homepage-suggestededits-config-' . $error
-		) );
+		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-' . $error, $status );
 	}
 
 	public static function provideLoadMorelikeTopics_error() {

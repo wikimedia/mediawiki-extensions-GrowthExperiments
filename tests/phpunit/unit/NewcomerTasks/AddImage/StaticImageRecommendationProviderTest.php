@@ -84,11 +84,11 @@ class StaticImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, 'Baz' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
-		$this->assertTrue( $recommendation->hasMessage( 'failed' ) );
+		$this->assertStatusError( 'failed', $recommendation );
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, 'Boom' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
-		$this->assertTrue( $recommendation->hasMessage( 'default' ) );
+		$this->assertStatusError( 'default', $recommendation );
 	}
 
 }

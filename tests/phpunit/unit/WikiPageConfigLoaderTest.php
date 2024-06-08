@@ -300,8 +300,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 				} else {
 					$key = $expectedMessage instanceof MessageSpecifier
 						? $expectedMessage->getKey() : $expectedMessage;
-					$this->assertTrue( $data->hasMessage( $expectedMessage ),
-						"error result did not have message with key $key: $data" );
+					$this->assertStatusError( $key, $data );
 				}
 			}
 		} else {
