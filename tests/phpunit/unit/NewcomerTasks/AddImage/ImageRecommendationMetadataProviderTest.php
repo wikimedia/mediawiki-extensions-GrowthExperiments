@@ -1,8 +1,10 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks\AddImage;
+namespace GrowthExperiments\Tests\Unit;
 
 use DerivativeContext;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use Language;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Site\Site;

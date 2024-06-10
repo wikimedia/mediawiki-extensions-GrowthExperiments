@@ -1,7 +1,8 @@
 <?php
 
-namespace GrowthExperiments;
+namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\AqsEditInfoService;
 use HashBagOStuff;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Status\Status;

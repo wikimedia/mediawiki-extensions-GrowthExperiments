@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Mentorship\Mentor;

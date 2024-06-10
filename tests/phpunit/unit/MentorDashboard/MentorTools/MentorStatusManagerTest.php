@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use MediaWiki\Block\AbstractBlock;

@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;

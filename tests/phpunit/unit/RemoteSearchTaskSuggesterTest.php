@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
@@ -17,6 +17,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use GrowthExperiments\Tests\InvokedBetween;
 use GrowthExperiments\Util;
 use LinkBatch;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -29,7 +30,6 @@ use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWHttpRequest;
-use PHPUnit\Framework\MockObject\Matcher\Invocation as InvocationInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
 
@@ -778,14 +778,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @return InvokedBetween
 	 */
 	private function exactlyBetween( $min, $max ) {
-		// CI uses PHPUnit 8.5 which requires expects() parameters to implement InvocationInterface.
-		// The local package definition uses 7.5 where that interface does not exist. Yay.
-		if ( interface_exists( InvocationInterface::class ) ) {
-			return new class( $min, $max ) extends InvokedBetween implements InvocationInterface {
-			};
-		} else {
-			return new InvokedBetween( $min, $max );
-		}
+		return new InvokedBetween( $min, $max );
 	}
 
 	private function taskSetToArray( TaskSet $taskSet ) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace phpunit\unit\NewcomerTasks\AddImage;
+namespace GrowthExperiments\Tests\Unit;
 
 use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\AddImage\ActionApiImageRecommendationApiHandler;

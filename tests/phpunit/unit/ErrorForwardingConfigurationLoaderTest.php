@@ -1,7 +1,8 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
+namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use MediaWikiUnitTestCase;
 use StatusValue;
 

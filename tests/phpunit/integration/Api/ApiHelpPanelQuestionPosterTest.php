@@ -1,10 +1,15 @@
 <?php
 
+namespace GrowthExperiments\Tests\Integration;
+
+use ApiUsageException;
 use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
+use IDBAccessObject;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Status\Status;
+use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 

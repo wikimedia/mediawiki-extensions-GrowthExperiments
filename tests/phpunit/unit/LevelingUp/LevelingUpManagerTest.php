@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\Unit\LevelingUp;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;

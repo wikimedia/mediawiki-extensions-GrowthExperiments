@@ -1,7 +1,8 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks;
+namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;

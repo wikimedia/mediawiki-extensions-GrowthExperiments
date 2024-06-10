@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\Integration\NewcomerTasks;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\Task\Task;

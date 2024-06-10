@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\Unit\UserImpact;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\UserImpact\EditingStreak;
 use MediaWikiUnitTestCase;

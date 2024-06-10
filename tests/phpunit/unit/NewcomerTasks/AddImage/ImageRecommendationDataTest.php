@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\NewcomerTasks\AddImage;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use MediaWikiUnitTestCase;

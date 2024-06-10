@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\Integration\HelpPanel\Tips;
+namespace GrowthExperiments\Tests\Integration;
 
 use DerivativeContext;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;

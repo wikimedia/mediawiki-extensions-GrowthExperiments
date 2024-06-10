@@ -1,9 +1,10 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
+namespace GrowthExperiments\Tests\Unit;
 
 use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;

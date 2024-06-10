@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewPrefixSearchDataFilter;
 use MediaWikiUnitTestCase;

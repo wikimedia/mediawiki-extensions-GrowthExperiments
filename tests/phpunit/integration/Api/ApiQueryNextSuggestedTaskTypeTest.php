@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\Integration\Api;
+namespace GrowthExperiments\Tests\Integration;
 
 use ApiTestCase;
 use ApiUsageException;

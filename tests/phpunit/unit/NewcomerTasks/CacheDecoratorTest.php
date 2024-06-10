@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use Exception;
 use GrowthExperiments\NewcomerTasks\Task\Task;
