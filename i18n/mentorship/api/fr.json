@@ -4,6 +4,7 @@
 			"Ajeje Brazorf",
 			"DreZhsh",
 			"Gomoko",
+			"SleaY",
 			"Verdy p"
 		]
 	},
@@ -16,11 +17,11 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Pour déclarer un tuteur comme absent, il faut indiquer la durée de son état d’absence (en jours).",
 	"apihelp-query+growthmentorstatus-summary": "Demander l’état du tuteur de l’utilisateur actuel",
 	"apihelp-growthmentordashboardupdatedata-summary": "Programmer une mise à jour extraordinaire du module de supervision des tutorés dans le tableau de bord du tuteur. Vous ne pouvez programmer qu’une seule mise à jour toutes les deux heures, pour des raisons de performance.",
-	"apihelp-growthsetmenteestatus-summary": "Définir l’état du tutoré (permet aux tutorés d’activer / désactiver le module de tutorat, ou de se désinscrire complètement, ce qui supprime la relation tutoré – tuteur).",
+	"apihelp-growthsetmenteestatus-summary": "Définir l’état de l'apprenti (permet aux apprentis d’activer / désactiver le module de mentorat, ou de se désinscrire complètement, ce qui supprime la relation apprenti – tuteur).",
 	"apihelp-growthsetmenteestatus-param-state": "Nouvel état du tutoré (attention : définir cela pour se désinscrire supprimera de façon permanente la relation tutoré – tuteur).",
-	"apihelp-growthsetmenteestatus-param-state-enabled": "Le module de tutorat est activé",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Le module de mentorat est activé",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Le module de tutorat est complètement désactivé. Cela est normalement défini par le logiciel et utilisé pour les tests A / B.",
-	"apihelp-growthsetmenteestatus-param-state-optout": "Le tutoré est sorti du tutorat ; la relation tutoré – tuteur sera supprimée, le module de tutorat sera remplacé par la possibilité de se réinscrire.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "L'apprenti a quitté le mentorat ; la relation apprenti – mentor sera supprimée, le module de mentorat sera remplacé par la possibilité de se réinscrire.",
 	"apihelp-query+growthmenteestatus-summary": "Interroge l’état de tutoré de l’utilisateur actuel ; voir la documentation de « action=growthsetmenteestatus » pour des informations détaillées sur les états individuels.",
 	"apihelp-query+growthmentormentee-summary": "Obtenir tous les tutorés affectés à un tuteur donné.",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Tuteur pour lequel rechercher les tutorés",

@@ -61,9 +61,9 @@
 	"growthexperiments-edit-config-homepage": "Page d’accueil des débutants",
 	"growthexperiments-edit-config-homepage-intro-links-create": "Page de destination pour un lien concernant la création d’un nouvel article",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Page de destination pour un lien sur comment ajouter des images dans l’éditeur visuel",
-	"growthexperiments-edit-config-mentorship": "Tutorat",
-	"growthexperiments-edit-config-mentorship-description-structured": "Les tuteurs peuvent avoir deux rôles. Par défaut, ils sont attribués au hasard aux nouveaux arrivants. Une option existe pour les tuteurs qui souhaitent uniquement être les tuteurs de personnes qui assistent à des événements ou à des cours : aucun nouveau venu ne leur est affecté, mais ils peuvent les réclamer.\n\nLe nombre idéal de tuteurs est : un tuteur pour chaque groupe de 500 nouveaux comptes, avec un minimum de 3 tuteurs.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|En savoir plus sur le fonctionnement du tutorat.]]",
-	"growthexperiments-edit-config-mentorship-enabled": "Les fonctionnalités de tutorat sont-elles activées ?",
+	"growthexperiments-edit-config-mentorship": "Mentorat",
+	"growthexperiments-edit-config-mentorship-description-structured": "Les mentors peuvent avoir deux rôles. Par défaut, ils sont attribués aléatoirement aux nouveaux arrivants. Il existe une option pour les utilisateurs qui souhaitent uniquement être les mentors de personnes participant à des événements ou à des cours : aucun nouveau venu ne leur est automatiquement attribué, mais ils peuvent les réclamer manuellement.\n\nLe nombre idéal de mentors est : un mentor pour chaque groupe de 500 nouveaux comptes, avec un minimum de 3 mentors.\n\n[https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/FAQ#Mentorship En savoir plus sur comment fonctionne le mentorat]",
+	"growthexperiments-edit-config-mentorship-enabled": "Les fonctionnalités de mentorat sont-elles activées ?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Oui",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Non",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Les utilisateurs doivent-ils être automatiquement éligibles au tutorat ?",
@@ -112,5 +112,6 @@
 	"communityconfiguration-helppanel-gehelppanellinks-1-label": "Deuxième lien",
 	"communityconfiguration-helppanel-gehelppanellinks-4-label": "Cinquième lien",
 	"communityconfiguration-helppanel-gehelppanellinks-title-placeholder": "Aide:Comment rédiger un bon article",
-	"communityconfiguration-helppanel-gehelppanellinks-text-placeholder": "Comment rédiger un bon article"
+	"communityconfiguration-helppanel-gehelppanellinks-text-placeholder": "Comment rédiger un bon article",
+	"communityconfiguration-mentorship-info-text": "Les nouveaux arrivants peuvent être automatiquement affectés à des mentors, et ils sont classés comme « Mentors attribués automatiquement » dans le [[Spécial : Gérer les Mentors | Tableau de bord des Mentors]]. Un mentor peut également mettre à jour ses paramètres dans le tableau de bord Mentor pour réclamer uniquement les mentorés manuellement, puis ils y sont classés comme « Mentors attribués manuellement ». Le nombre idéal de mentors est : un mentor pour chaque groupe de 500 nouveaux comptes, avec un minimum de 3 mentors. Les mentorés peuvent également recevoir des messages d'encouragement de la part d'éditeurs établis, ce qui peut améliorer la rétention des nouveaux éditeurs. Le module d'éloges personnalisés présente les nouveaux éditeurs dignes d'éloges à leur mentor, pour aider les nouveaux éditeurs productifs à se sentir plus engagés et impliqués dans la communauté."
 }
