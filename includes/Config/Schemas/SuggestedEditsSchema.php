@@ -52,6 +52,7 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 			'maxTasksPerDay' => [
 				self::TYPE => self::TYPE_INTEGER,
+				self::MINIMUM => 1,
 			],
 		],
 	];
@@ -74,6 +75,7 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 			'maxTasksPerDay' => [
 				self::TYPE => self::TYPE_INTEGER,
+				self::MINIMUM => 1,
 			],
 		],
 	];
@@ -96,6 +98,7 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 			'maximumLinksToShowPerTask' => [
 				self::TYPE => self::TYPE_INTEGER,
+				self::MINIMUM => 1,
 			],
 			'excludedSections' => [
 				self::TYPE => self::TYPE_ARRAY,
@@ -106,6 +109,7 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 			'maxTasksPerDay' => [
 				self::TYPE => self::TYPE_INTEGER,
+				self::MINIMUM => 1,
 			],
 			'underlinkedWeight' => [
 				self::TYPE => self::TYPE_NUMBER,
