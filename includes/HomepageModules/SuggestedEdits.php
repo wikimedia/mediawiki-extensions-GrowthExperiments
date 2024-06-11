@@ -939,7 +939,7 @@ class SuggestedEdits extends BaseModule {
 	 * @return array
 	 */
 	public function getRedirectParams( ?string $taskTypeId = null ): array {
-		$taskType = $this->configurationLoader->getTaskTypes()[ $taskTypeId ];
+		$taskType = $this->configurationLoader->getTaskTypes()[ $taskTypeId ] ?? null;
 		if ( !$taskType ) {
 			return [];
 		}
