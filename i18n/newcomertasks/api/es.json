@@ -3,13 +3,15 @@
 		"authors": [
 			"LORDZRAWN",
 			"Reverse88",
-			"Zapipedia (WMF)"
+			"Zapipedia (WMF)",
+			"Eulalio"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Consigue recomendaciones de tareas adaptadas a recién llegados.",
 	"apihelp-query+growthtasks-extended-description": "Sugiere un conjunto de artículos que tienen algunos problemas pendientes lo suficientemente fáciles de abordar para un nuevo editor.",
 	"apihelp-query+growthtasks-param-tasktypes": "Tipos de tareas para limitar los resultados. Dejar en blanco para recibir todas las sugerencias.",
 	"apihelp-query+growthtasks-param-topics": "Temas de preferencia de artículos en las sugerencias de tareas.",
+	"apihelp-query+growthtasks-param-topicsmode": "Modo de coincidencia de temas.",
 	"apihelp-query+growthtasks-param-limit": "Número máximo de sugerencias de tareas a ofrecer.",
 	"apihelp-query+growthtasks-param-excludepageids": "IDs de páginas a excluir de la consulta.",
 	"apihelp-query+growthtasks-param-debug": "Añadir la información necesaria para corregir los errores en la página de resultados.",

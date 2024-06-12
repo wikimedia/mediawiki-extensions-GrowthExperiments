@@ -149,7 +149,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-step2": "記事に目を通して、提案された画像が読者が内容を理解する役に立つかどうか考えてください。その画像を記事に表示するのは適切ですか？",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "画像が記事に相応しいかどうか決定してください",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-step3": "提案は記事と関連がなかったり、品質が低かったり、その他の理由によって相応しくないかもしれません。{{GENDER:|あなたの}}判断で提案が正しいか間違っているか決定してください。",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "{{GENDER:|あなた}}が受け入れた画像に対して、{{GENDER:|あなた}}が短いキャプションを書くと、{{GENDER:|あなたの}}編集が公開されます。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "画像を受け入れた後、短いキャプションを書くと、{{GENDER:|あなたの}}編集を公開できます。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-header-value": "画像は人々の学びに役立つのに、多くの記事には画像がありません。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-main-multiple-1-value": "提案された画像をウィキペディアの特定の記事に置くべきかどうか、{{GENDER:|あなた}}に決定してもらいます。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-main-multiple-2-value": "提案は機械によって生成され、受け入れるか却下するかを{{GENDER:|あなた}}が{{GENDER:|あなた自身の}}判断で決めてください。",

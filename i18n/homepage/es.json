@@ -214,6 +214,7 @@
 	"growthexperiments-specialimpact-title": "Impacto",
 	"growthexperiments-specialimpact-showing-for-other-user": "Mostrando datos de impacto para $1",
 	"growthexperiments-specialimpact-invalid-username": "Nombre de usuario no válido o faltante.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Falta el parámetro de nombre de usuario/a en la página especial Impacto.",
 	"growthexperiments-homepage-claimmentee-no-user": "El aprendiz no existe",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Ya eres {{GENDER:$2|el mentor|la mentora}} de {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} ha abandonado la mentoría",
