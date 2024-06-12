@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiTestCase;
 use ApiUsageException;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
+use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 

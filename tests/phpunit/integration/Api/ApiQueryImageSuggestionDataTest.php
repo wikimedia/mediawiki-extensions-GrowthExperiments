@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiQueryTestBase;
 use ApiUsageException;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendation;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationImage;
@@ -13,6 +12,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoade
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Tests\Api\Query\ApiQueryTestBase;
 use MediaWiki\Title\TitleValue;
 
 /**

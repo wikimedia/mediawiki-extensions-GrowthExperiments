@@ -5,10 +5,11 @@ namespace GrowthExperiments\Tests\Integration;
 use ApiMain;
 use ApiQueryTokens;
 use ApiUsageException;
-use DerivativeContext;
 use FormatJson;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use JsonContent;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Revision\RevisionRecord;
@@ -16,7 +17,6 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Session\SessionManager;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Config\ConfigHooks

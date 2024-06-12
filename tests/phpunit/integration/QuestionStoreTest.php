@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use DerivativeContext;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStore;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 
 /**
  * @group Database

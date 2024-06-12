@@ -8,10 +8,10 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\NewImpact;
 use GrowthExperiments\VariantHooks;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 
 /**
  * @group Database

@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use DerivativeContext;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Config\GlobalVarConfig;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 
 /**
  * @group medium

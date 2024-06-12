@@ -2,16 +2,16 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use DerivativeContext;
 use GrowthExperiments\WelcomeSurvey;
 use MediaWiki\Config\HashConfig;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
-use RequestContext;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**

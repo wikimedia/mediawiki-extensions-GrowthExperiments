@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiTestCase;
 use ChangeTags;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Title\Title;
 use StatusValue;
 use Wikimedia\Timestamp\ConvertibleTimestamp;

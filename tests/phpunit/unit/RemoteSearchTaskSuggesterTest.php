@@ -19,7 +19,7 @@ use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Tests\InvokedBetween;
 use GrowthExperiments\Util;
-use LinkBatch;
+use MediaWiki\Cache\LinkBatch;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Status\Status;

@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use DerivativeContext;
 use ExtensionRegistry;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 
 /**
  * @group medium

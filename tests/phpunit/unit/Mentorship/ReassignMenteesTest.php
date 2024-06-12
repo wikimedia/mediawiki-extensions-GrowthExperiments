@@ -8,8 +8,9 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\ReassignMentees;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\Message\Message;
 use MediaWiki\Status\Status;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentity;
@@ -112,7 +113,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 2, 'Mentee 2' ),
 		];
 
-		$msg = $this->createMock( \Message::class );
+		$msg = $this->createMock( Message::class );
 		$msg->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'text' )
 			->willReturn( 'foo' );

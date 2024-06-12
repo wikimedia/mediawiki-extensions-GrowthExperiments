@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\HelpPanel\QuestionStore;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
+use MediaWiki\Context\RequestContext;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 
 class QuestionStoreFactoryTest extends MediaWikiIntegrationTestCase {
 

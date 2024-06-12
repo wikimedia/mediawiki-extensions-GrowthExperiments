@@ -2,14 +2,14 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use DerivativeContext;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Mentorship\ReassignMentees
