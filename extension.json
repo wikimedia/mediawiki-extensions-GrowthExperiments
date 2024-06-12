@@ -1256,7 +1256,8 @@
 				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
 				"ext.growthExperiments.Homepage.NewImpact/components/LayoutWrapper.less",
 				"vue-components/CScoreCard.less",
-				"vue-components/CScoreCards.less"
+				"vue-components/CScoreCards.less",
+				"ext.growthExperiments.Homepage.styles/CommunityUpdates.less"
 			],
 			"lessCallback": [
 				"GrowthExperiments\\HomepageHooks",

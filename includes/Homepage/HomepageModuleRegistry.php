@@ -6,6 +6,7 @@ use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\Banner;
+use GrowthExperiments\HomepageModules\CommunityUpdates;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -17,6 +18,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\WelcomeSurveyReminder;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\MediaWikiServices;
 use OutOfBoundsException;
 
@@ -239,8 +241,19 @@ class HomepageModuleRegistry {
 					$growthServices->getExperimentUserManager(),
 					$services->getUserOptionsLookup()
 				);
-			}
-
+			},
+			'community-updates' => static function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				return new CommunityUpdates(
+					$context,
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getExperimentUserManager(),
+					CommunityConfigurationServices::wrap( $services )->getConfigurationProviderFactory()
+				);
+			},
 		];
 	}
 

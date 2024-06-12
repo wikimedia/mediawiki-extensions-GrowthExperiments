@@ -221,12 +221,13 @@ class SpecialHomepage extends SpecialPage {
 				!SuggestedEdits::isActivated( $this->getUser(), $this->userOptionsManager )
 			),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getConfig() ),
+			'community-updates' => $this->getConfig()->get( 'GECommunityUpdatesEnabled' ),
 			'impact' => true,
 			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
 				$mentorshipState === MentorManager::MENTORSHIP_ENABLED,
 			'mentorship-optin' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
 				$mentorshipState === MentorManager::MENTORSHIP_OPTED_OUT,
-			'help' => true,
+			'help' => true
 		] );
 		$modules = [];
 		foreach ( $moduleConfig as $moduleId => $_ ) {
@@ -250,7 +251,10 @@ class SpecialHomepage extends SpecialPage {
 					[ 'impact' ]
 			],
 			'sidebar' => [
-				'primary' => $isSuggestedEditsEnabled ? [ 'impact' ] : [],
+				'primary' => array_merge(
+					[ 'community-updates' ],
+					$isSuggestedEditsEnabled ? [ 'impact' ] : []
+				),
 				'secondary' => [ 'mentorship', 'mentorship-optin', 'help' ]
 			]
 		];
