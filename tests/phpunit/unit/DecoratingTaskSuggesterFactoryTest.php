@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;

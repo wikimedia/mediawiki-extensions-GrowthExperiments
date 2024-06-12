@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;

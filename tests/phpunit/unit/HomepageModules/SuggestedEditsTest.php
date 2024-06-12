@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\HomepageModules;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;

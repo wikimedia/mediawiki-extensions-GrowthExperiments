@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
 use GrowthExperiments\GrowthExperimentsServices;

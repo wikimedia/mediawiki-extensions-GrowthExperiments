@@ -1,8 +1,9 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks\AddImage;
+namespace GrowthExperiments\Tests\Unit;
 
 use CirrusSearch\CirrusSearch;
+use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;

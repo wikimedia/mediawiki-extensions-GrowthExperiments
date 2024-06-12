@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\NewcomerTasks\AddImage;
+namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationDataValidator;

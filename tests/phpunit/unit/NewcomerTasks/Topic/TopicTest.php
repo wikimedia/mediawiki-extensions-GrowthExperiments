@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Json\JsonCodec;

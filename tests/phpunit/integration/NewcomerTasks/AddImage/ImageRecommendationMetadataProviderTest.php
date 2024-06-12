@@ -1,8 +1,10 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks\AddImage;
+namespace GrowthExperiments\Tests\Integration;
 
 use DerivativeContext;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use MediaWiki\Site\Site;
 use MediaWiki\Site\SiteStore;
 use RequestContext;
@@ -10,7 +12,7 @@ use RequestContext;
 /**
  * @covers \GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider
  */
-class ImageRecommendationMetadataProviderIntegrationTest extends \MediaWikiIntegrationTestCase {
+class ImageRecommendationMetadataProviderTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideGetMetadata_Reason

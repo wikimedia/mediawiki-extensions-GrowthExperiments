@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\Unit\NewcomerTasks;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;

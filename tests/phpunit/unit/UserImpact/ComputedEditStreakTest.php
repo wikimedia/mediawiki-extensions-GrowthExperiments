@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\Unit\UserImpact;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\UserImpact\ComputeEditingStreaks;
 use GrowthExperiments\UserImpact\EditingStreak;

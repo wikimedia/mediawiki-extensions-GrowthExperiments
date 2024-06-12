@@ -1,6 +1,6 @@
 <?php
 
-namespace phpunit\integration\LevelingUp;
+namespace GrowthExperiments\Tests\Integration;
 
 use ChangeTags;
 use GrowthExperiments\GrowthExperimentsServices;
