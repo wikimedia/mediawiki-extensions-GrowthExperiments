@@ -113,6 +113,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Weiter mit der Benachrichtigung",
 	"growthexperiments-edit-config-keep-going-notification-description": "Maximale Anzahl vorgeschlagener Änderungen, die ein Neuling durchführen kann, um sich für den Erhalt dieser Benachrichtigung zu qualifizieren. Wenn auf 0 gesetzt, erhalten Neuankömmlinge diese Benachrichtigung nicht. Je höher die Zahl, desto mehr Neulinge erhalten diese Benachrichtigung.<br> Diese Benachrichtigung wird nur an Neulinge gesendet, die bereits mindestens eine vorgeschlagene Änderung abgeschlossen haben.",
 	"communityconfiguration-mentorship-title": "Betreuung durch Lotsen",
+	"communityconfiguration-mentorship-description": "Anpassen der Lotsen-Einstellungen und -Berechtigungen und gleichzeitiges Anpassen der Bearbeitungsmindestwerte und -zeitrahmen für Lotsen und lobenswerte Mentees an.",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Sollten Benutzer automatisch für die Lotsenschaft berechtigt sein?",
 	"communityconfiguration-mentorship-gementorshipenabled-label": "Sind Lotsen-Funktionen aktiviert?",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Mindestanzahl von Tagen, die ein Benutzer registriert sein muss, um sich als Lotse/Lotsin anzumelden",

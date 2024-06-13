@@ -33,7 +33,7 @@
 	"welcomesurvey-question-reason-option-read-label": "เพื่ออ่านอย่างเดียว",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "อื่น ๆ",
 	"welcomesurvey-question-reason-option-other-label": "อื่น ๆ (กรุณาอธิบาย)",
-	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|ป้อน}}เหตุผลอื่น ๆ",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|กรอก}}เหตุผลอื่น ๆ",
 	"welcomesurvey-question-edited-label": "{{GENDER:|คุณ}}เคยแก้ไขวิกิพีเดียมาก่อนหรือไม่?",
 	"welcomesurvey-question-edited-option-yes-many-label": "เคย หลายครั้งแล้ว",
 	"welcomesurvey-question-edited-option-yes-few-label": "เคย แต่ไม่กี่ครั้ง",

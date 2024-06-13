@@ -105,6 +105,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "התראה שמזמינה להמשיך",
 	"growthexperiments-edit-config-keep-going-notification-description": "המספר המרבי של עריכות מוצעות שמשתמש חדש צריך להשלים כדי להיות זכאי לקבלת ההתראה הזאת. אם זה 0, שום משתמש חדש לא יקבל את ההתראה הזאת. ככל שהמספר גבוה יותר, כך יותר משתמשים חדשים יקבלו את ההתראה הזאת. ההתראה הזאת נשלחת רק למצטרפים חדשים שכבר השלימו לפחות עריכה מוצעת אחת.",
 	"communityconfiguration-mentorship-title": "חונכות",
+	"communityconfiguration-mentorship-description": "התאמה אישית של הגדרות החונכוּת והזכאות, תוך התאמת מספר העריכות המינימלי ומסגרות זמן עבור חונכים ועבור חניכים ראויים לשבח.",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "האם משתמשים צריכים להיות זכאים אוטומטית לתפקיד חונך?",
 	"communityconfiguration-mentorship-gementorshipenabled-label": "האם אפשרויות החונכות מופעלות?",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "מספר הימים שמשתמש צריך להיות רשום כדי להירשם לתפקיד חונך",

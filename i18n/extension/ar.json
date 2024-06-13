@@ -108,6 +108,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "الاستمرار في الإخطار",
 	"growthexperiments-edit-config-keep-going-notification-description": "الحد الأقصى لعدد التعديلات المقترحة التي يمكن للوافد الجديد إكمالها للتأهل لتلقي هذا الإشعار. إذا تم ضبطه على 0،<br> لن يتلقى أي قادمين جدد هذا الإشعار. كلما زاد العدد، زاد عدد الوافدين الجدد الذين سيتلقون هذا الإشعار.<br> يتم إرسال هذا الإشعار فقط إلى القادمين الجدد الذين أكملوا بالفعل تعديلًا مقترحًا واحدًا على الأقل.",
 	"communityconfiguration-mentorship-title": "الإرشاد",
+	"communityconfiguration-mentorship-description": "تخصيص إعدادات الإرشاد والأهليّة، مع تعديل الحد الأدنى والأطر الزمنية للمرشِدين وللمرشَدين الجديرين بالثناء.",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "هل يجب أن يكون المستخدمون مؤهلين تلقائيًا للإرشاد؟",
 	"communityconfiguration-mentorship-gementorshipenabled-label": "هل مزايا الإرشاد مُفعّلة؟",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "الحدّ الأدنى لعدد الأيام التي يجب أن يكون فيها المستخدم مسجّلا قبل الانضمام إلى المرشدين",
