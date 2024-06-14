@@ -4,9 +4,10 @@ namespace GrowthExperiments;
 
 use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
-use IContextSource;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Hook\PostLoginRedirectHook;
 use MediaWiki\Hook\SkinAddFooterLinksHook;
 use MediaWiki\Hook\SpecialCreateAccountBenefitsHook;
@@ -20,7 +21,6 @@ use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\Options\UserOptionsManager;
-use RequestContext;
 use Skin;
 
 /**

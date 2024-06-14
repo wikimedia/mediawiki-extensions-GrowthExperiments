@@ -108,6 +108,8 @@ use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Extension\EventBus\EventBusFactory;
 use MediaWiki\Extension\Thanks\ThanksServices;

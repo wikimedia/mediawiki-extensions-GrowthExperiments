@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HelpPanel;
 
 use GrowthExperiments\Util;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 
 class QuestionFormatter {

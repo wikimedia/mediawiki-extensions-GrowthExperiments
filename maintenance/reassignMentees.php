@@ -7,10 +7,10 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use Maintenance;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
-use RequestContext;
 use Wikimedia\Rdbms\IReadableDatabase;
 
 $IP = getenv( 'MW_INSTALL_PATH' );

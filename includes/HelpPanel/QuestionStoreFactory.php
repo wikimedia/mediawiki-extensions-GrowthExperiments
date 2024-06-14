@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\HelpPanel;
 
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 
 class QuestionStoreFactory {

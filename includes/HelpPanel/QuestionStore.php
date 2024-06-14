@@ -7,6 +7,7 @@ use FormatJson;
 use IDBAccessObject;
 use JobQueueGroup;
 use Language;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
@@ -14,7 +15,6 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
-use RequestContext;
 use TextContent;
 use UserOptionsUpdateJob;
 

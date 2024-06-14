@@ -3,14 +3,14 @@
 namespace GrowthExperiments;
 
 use MediaWiki\MediaWikiServices;
-use Parser;
+use MediaWiki\Parser\Parser;
 
 /**
  * Class that consumes parser-functions related hooks.
  */
 class ParserFunctionsHooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 	/**
-	 * @param \Parser $parser
+	 * @param Parser $parser
 	 */
 	public function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 'mentor', static function ( Parser $parser, $username ) {

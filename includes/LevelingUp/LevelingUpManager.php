@@ -13,6 +13,7 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use IDBAccessObject;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserEditTracker;
@@ -20,7 +21,6 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use Psr\Log\LoggerInterface;
-use RequestContext;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 /**

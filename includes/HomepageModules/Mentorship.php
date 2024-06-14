@@ -3,7 +3,6 @@
 namespace GrowthExperiments\HomepageModules;
 
 use DateInterval;
-use GenderCache;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
@@ -11,9 +10,10 @@ use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use IContextSource;
+use MediaWiki\Cache\GenderCache;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;

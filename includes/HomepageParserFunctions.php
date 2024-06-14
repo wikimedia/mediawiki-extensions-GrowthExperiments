@@ -3,8 +3,8 @@
 namespace GrowthExperiments;
 
 use GrowthExperiments\Mentorship\MentorManager;
+use MediaWiki\Parser\Parser;
 use MediaWiki\User\UserFactory;
-use Parser;
 
 /**
  * Class for handling parser functions introduced by GrowthExperiments

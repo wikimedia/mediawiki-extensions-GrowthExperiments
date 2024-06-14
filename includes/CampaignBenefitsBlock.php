@@ -4,9 +4,9 @@ namespace GrowthExperiments;
 
 use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
-use HTMLForm;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;

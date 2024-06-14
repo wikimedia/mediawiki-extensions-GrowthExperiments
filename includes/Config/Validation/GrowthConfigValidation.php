@@ -4,7 +4,7 @@ namespace GrowthExperiments\Config\Validation;
 
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use InvalidArgumentException;
-use Message;
+use MediaWiki\Message\Message;
 use StatusValue;
 
 /**

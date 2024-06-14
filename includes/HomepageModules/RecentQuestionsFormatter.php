@@ -4,7 +4,7 @@ namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\HelpPanel\QuestionFormatter;
 use GrowthExperiments\HelpPanel\QuestionRecord;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 
 class RecentQuestionsFormatter {

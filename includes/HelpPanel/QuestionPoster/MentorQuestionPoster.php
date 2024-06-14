@@ -5,7 +5,7 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\WikiConfigException;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;

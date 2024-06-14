@@ -2,8 +2,6 @@
 
 namespace GrowthExperiments\LevelingUp;
 
-use EchoAttributeManager;
-use EchoUserLocator;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -11,8 +9,10 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\VariantHooks;
 use GrowthExperiments\VisualEditorHooks;
 use MediaWiki\Config\Config;
+use MediaWiki\Extension\Notifications\AttributeManager;
+use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
-use MediaWiki\Hook\BeforePageDisplayHook;
+use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\UserIdentity;
@@ -136,8 +136,8 @@ class LevelingUpHooks implements
 			'section' => 'message',
 			'canNotifyAgent' => true,
 			'presentation-model' => EchoKeepGoingPresentationModel::class,
-			EchoAttributeManager::ATTR_LOCATORS => [
-				[ EchoUserLocator::class . '::locateEventAgent' ]
+			AttributeManager::ATTR_LOCATORS => [
+				[ UserLocator::class . '::locateEventAgent' ]
 			]
 		];
 
@@ -151,8 +151,8 @@ class LevelingUpHooks implements
 			'section' => 'message',
 			'canNotifyAgent' => true,
 			'presentation-model' => EchoGetStartedPresentationModel::class,
-			EchoAttributeManager::ATTR_LOCATORS => [
-				[ EchoUserLocator::class . '::locateEventAgent' ]
+			AttributeManager::ATTR_LOCATORS => [
+				[ UserLocator::class . '::locateEventAgent' ]
 			]
 		];
 

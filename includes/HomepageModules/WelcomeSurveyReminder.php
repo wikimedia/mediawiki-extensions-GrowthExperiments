@@ -4,8 +4,8 @@ namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\WelcomeSurveyFactory;
-use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use OOUI\ButtonInputWidget;

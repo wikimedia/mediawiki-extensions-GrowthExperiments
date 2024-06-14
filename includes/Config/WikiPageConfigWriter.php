@@ -3,13 +3,14 @@
 namespace GrowthExperiments\Config;
 
 use Content;
-use DerivativeContext;
 use FormatJson;
 use GrowthExperiments\Config\Validation\IConfigValidator;
 use IDBAccessObject;
 use InvalidArgumentException;
 use JsonContent;
 use MediaWiki\CommentStore\CommentStoreComment;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\HookContainer\HookRunner;
 use MediaWiki\Linker\LinkTarget;
@@ -23,7 +24,6 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use RecentChange;
-use RequestContext;
 
 class WikiPageConfigWriter {
 

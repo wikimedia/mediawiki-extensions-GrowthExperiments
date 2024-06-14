@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\DashboardModule;
 
-use IContextSource;
 use InvalidArgumentException;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\User;
-use Message;
 use MessageSpecifier;
 use OOUI\IconWidget;
 

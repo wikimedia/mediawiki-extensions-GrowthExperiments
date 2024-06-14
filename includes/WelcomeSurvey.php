@@ -4,8 +4,8 @@ namespace GrowthExperiments;
 
 use FormatJson;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
-use IContextSource;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\HtmlHelper;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\User\Options\UserOptionsManager;

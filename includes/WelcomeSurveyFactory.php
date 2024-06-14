@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments;
 
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\User\Options\UserOptionsManager;
 

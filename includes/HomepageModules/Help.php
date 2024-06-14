@@ -4,8 +4,8 @@ namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel;
-use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 
 class Help extends BaseModule {

@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use GrowthExperiments\Mentorship\MentorManager;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;

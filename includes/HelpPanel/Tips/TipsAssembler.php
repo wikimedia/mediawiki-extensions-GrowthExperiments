@@ -4,7 +4,7 @@ namespace GrowthExperiments\HelpPanel\Tips;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MessageLocalizer;
 
 /**

@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\EventLogging;
 
-use EventLogging;
+use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\WikiMap\WikiMap;
