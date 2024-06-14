@@ -69,9 +69,9 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 
 		/** @var \StatusValue $status */
 		$status = $questionPoster->submit();
-		$this->assertEquals(
+		$this->assertStatusError(
 			'apierror-missingcontent-revid',
-			$status->getErrorsByType( 'error' )[0]['message'],
+			$status,
 			'if checkContent returns fatal status, submit short circuits'
 		);
 	}
@@ -102,17 +102,17 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 
 		/** @var StatusValue $status */
 		$status = $questionPoster->submit();
-		$this->assertEquals(
+		$this->assertStatusError(
 			'apierror-missingcontent-revid',
-			$status->getErrorsByType( 'error' )[0]['message'],
+			$status,
 			'If content is null, submit short-circuits'
 		);
 
 		/** @var StatusValue $status */
 		$status = $questionPoster->submit();
-		$this->assertEquals(
+		$this->assertStatusError(
 			'apierror-missingcontent-revid',
-			$status->getErrorsByType( 'error' )[0]['message'],
+			$status,
 			'If content is a string, submit short-circuits'
 		);
 	}
