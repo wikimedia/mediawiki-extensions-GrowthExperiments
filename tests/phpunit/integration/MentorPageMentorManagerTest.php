@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use DerivativeContext;
 use Exception;
 use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -10,10 +9,11 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
-use IContextSource;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Mentorship\MentorPageMentorManager

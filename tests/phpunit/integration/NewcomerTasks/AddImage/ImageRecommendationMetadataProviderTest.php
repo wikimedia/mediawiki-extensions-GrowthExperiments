@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use DerivativeContext;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Site\Site;
 use MediaWiki\Site\SiteStore;
-use RequestContext;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider

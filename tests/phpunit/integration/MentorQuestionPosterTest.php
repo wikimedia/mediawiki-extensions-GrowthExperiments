@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use DerivativeContext;
 use ExtensionRegistry;
 use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 use Wikimedia\TestingAccessWrapper;
 
 /**

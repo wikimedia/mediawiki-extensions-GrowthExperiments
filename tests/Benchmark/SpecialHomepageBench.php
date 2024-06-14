@@ -5,6 +5,8 @@ namespace GrowthExperiments\Tests\Benchmark;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialHomepage;
 use MediaWiki\Config\GlobalVarConfig;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPage;
 
@@ -39,7 +41,7 @@ class SpecialHomepageBench extends GrowthExperimentsBench {
 			$userOptionManager,
 			$services->getTitleFactory()
 		);
-		$context = new \DerivativeContext( \RequestContext::getMain() );
+		$context = new DerivativeContext( RequestContext::getMain() );
 		$testUser = $services->getUserFactory()->newFromId( 1 );
 		$context->setUser( $testUser );
 		$userOptionManager->setOption( $testUser, 'growthexperiments-homepage-enable', 1 );

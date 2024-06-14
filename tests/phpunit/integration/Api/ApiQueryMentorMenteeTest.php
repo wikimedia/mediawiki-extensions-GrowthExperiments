@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiTestCase;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\UserIdentity;
 
 /**

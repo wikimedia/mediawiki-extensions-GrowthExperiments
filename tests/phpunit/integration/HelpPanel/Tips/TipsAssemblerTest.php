@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use DerivativeContext;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\RequestContext;
 use MediaWikiIntegrationTestCase;
-use RequestContext;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HelpPanel\Tips\TipsAssembler

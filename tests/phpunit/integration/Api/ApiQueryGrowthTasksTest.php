@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use ApiRawMessage;
-use ApiTestCase;
 use ApiUsageException;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\Task;
@@ -11,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Tests\Api\ApiTestCase;
 use StatusValue;
 
 /**

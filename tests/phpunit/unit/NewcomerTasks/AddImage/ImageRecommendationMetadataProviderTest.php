@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use DerivativeContext;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use Language;
+use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Site\Site;
 use MediaWiki\Site\SiteStore;

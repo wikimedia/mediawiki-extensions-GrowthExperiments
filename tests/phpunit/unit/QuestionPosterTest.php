@@ -4,12 +4,12 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionRecord;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
-use RequestContext;
 use StatusValue;
 use Wikimedia\ScopedCallback;
 use Wikimedia\TestingAccessWrapper;

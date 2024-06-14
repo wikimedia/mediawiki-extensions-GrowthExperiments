@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiTestCase;
 use ApiUsageException;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use HashBagOStuff;
 use JobQueueGroup;
+use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;

@@ -2,9 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiTestCase;
 use ApiUsageException;
-use DerivativeContext;
 use ExtensionRegistry;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
@@ -14,7 +12,9 @@ use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Tests\Api\ApiTestCase;
 
 /**
  * @group API
