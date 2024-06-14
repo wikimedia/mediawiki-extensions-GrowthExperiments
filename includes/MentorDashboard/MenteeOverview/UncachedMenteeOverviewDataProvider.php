@@ -292,7 +292,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		}
 
 		// exclude temporary accounts, if enabled (T341389)
-		if ( $this->tempUserConfig->isEnabled() ) {
+		if ( $this->tempUserConfig->isKnown() ) {
 			foreach ( $this->tempUserConfig->getMatchPatterns() as $pattern ) {
 				$queryBuilder->andWhere(
 					$dbr->expr( 'user_name', IExpression::NOT_LIKE, $pattern->toLikeValue( $dbr ) )
