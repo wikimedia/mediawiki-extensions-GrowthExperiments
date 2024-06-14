@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
@@ -45,9 +46,7 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testErrorForwardingTaskSuggester() {
-		$this->overrideConfigValues( [
-			'SearchType' => 'Foo',
-		] );
+		$this->overrideConfigValue( MainConfigNames::SearchType, 'Foo' );
 		$this->resetServices();
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$taskSuggesterFactory = $growthServices->getTaskSuggesterFactory();
@@ -58,9 +57,7 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 
 	public function testLocalSearchTaskSuggester() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
-		$this->overrideConfigValues( [
-			'SearchType' => 'CirrusSearch',
-		] );
+		$this->overrideConfigValue( MainConfigNames::SearchType, 'CirrusSearch' );
 		$this->resetServices();
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$taskSuggesterFactory = $growthServices->getTaskSuggesterFactory();

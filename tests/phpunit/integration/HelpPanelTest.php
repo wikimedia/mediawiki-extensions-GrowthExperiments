@@ -72,7 +72,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 			->willReturn( $user );
 		$out->method( 'getRequest' )
 			->willReturn( $request );
-		$this->setMwGlobals( [
+		$this->overrideConfigValues( [
 			'GEHelpPanelExcludedNamespaces' => $excludedNamespaces,
 			'GEHelpPanelEnabled' => $GEHelpPanelEnabled
 		] );
@@ -110,8 +110,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 				1,
 				[ NS_PROJECT ],
 				true,
-				// FIXME: This should be false, need to set and override GrowthExperimentsConfig.json.
-				true,
+				false,
 				'Namespace of title is in excluded namespaces, help panel should not show'
 			],
 			[

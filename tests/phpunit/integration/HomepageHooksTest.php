@@ -192,7 +192,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	public function testOnRecentChange_save() {
 		// FIXME: These tests should cover a success case as well, and should
 		// use a data provider for the test cases.
-		$this->setMwGlobals( [ 'GEHomepageSuggestedEditsEnabled' => true ] );
+		$this->overrideConfigValue( 'GEHomepageSuggestedEditsEnabled', true );
 		$homepageHooks = $this->getHomepageHooks();
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
