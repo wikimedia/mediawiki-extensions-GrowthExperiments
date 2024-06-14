@@ -4,12 +4,12 @@ namespace GrowthExperiments\MentorDashboard\Modules;
 
 use ExtensionRegistry;
 use FormatJson;
-use GenderCache;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\UserImpact\UserImpact;
-use IContextSource;
+use MediaWiki\Cache\GenderCache;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Title\Title;
 

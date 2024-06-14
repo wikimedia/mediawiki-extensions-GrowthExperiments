@@ -4,7 +4,7 @@ namespace GrowthExperiments\NewcomerTasks;
 
 use CirrusSearch\Query\ArticleTopicFeature;
 use CirrusSearch\WarningCollector;
-use Message;
+use MediaWiki\Message\Message;
 
 /**
  * Implementation of growtharticletopic: keyword which is similar to articletopic: but

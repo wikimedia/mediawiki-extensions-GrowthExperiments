@@ -5,12 +5,12 @@ namespace GrowthExperiments\Rest\Handler;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\Util;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
-use RequestContext;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**

@@ -2,9 +2,6 @@
 
 namespace GrowthExperiments\Mentorship\Hooks;
 
-use EchoAttributeManager;
-use EchoUserLocator;
-use GenderCache;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\EchoNewPraiseworthyMenteesPresentationModel;
 use GrowthExperiments\Mentorship\EchoMenteeClaimPresentationModel;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
@@ -14,19 +11,22 @@ use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Cache\GenderCache;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Deferred\DeferredUpdates;
-use MediaWiki\Hook\BeforePageDisplayHook;
+use MediaWiki\Extension\Notifications\AttributeManager;
+use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\Hook\FormatAutocommentsHook;
+use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LogLevel;
-use RequestContext;
 use Throwable;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -96,9 +96,9 @@ class MentorHooks implements
 			'group' => 'positive',
 			'section' => 'alert',
 			'presentation-model' => EchoMentorChangePresentationModel::class,
-			EchoAttributeManager::ATTR_LOCATORS => [
+			AttributeManager::ATTR_LOCATORS => [
 				[
-					[ EchoUserLocator::class, 'locateFromEventExtra' ],
+					[ UserLocator::class, 'locateFromEventExtra' ],
 					[ 'mentee' ]
 				],
 			],
@@ -108,9 +108,9 @@ class MentorHooks implements
 			'group' => 'positive',
 			'section' => 'message',
 			'presentation-model' => EchoMenteeClaimPresentationModel::class,
-			EchoAttributeManager::ATTR_LOCATORS => [
+			AttributeManager::ATTR_LOCATORS => [
 				[
-					[ EchoUserLocator::class, 'locateFromEventExtra' ],
+					[ UserLocator::class, 'locateFromEventExtra' ],
 					[ 'mentor' ]
 				]
 			]
@@ -121,8 +121,8 @@ class MentorHooks implements
 			'section' => 'message',
 			'canNotifyAgent' => true,
 			'presentation-model' => EchoNewPraiseworthyMenteesPresentationModel::class,
-			EchoAttributeManager::ATTR_LOCATORS => [
-				EchoUserLocator::class . '::locateEventAgent'
+			AttributeManager::ATTR_LOCATORS => [
+				UserLocator::class . '::locateEventAgent'
 			]
 		];
 

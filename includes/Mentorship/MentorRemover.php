@@ -4,7 +4,7 @@ namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
 

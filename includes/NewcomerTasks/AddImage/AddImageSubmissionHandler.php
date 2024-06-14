@@ -19,10 +19,10 @@ use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeH
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use ManualLogEntry;
 use MediaWiki\Deferred\DeferredUpdates;
+use MediaWiki\Message\Message;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
-use Message;
 use StatusValue;
 use WANObjectCache;
 use Wikimedia\Assert\Assert;

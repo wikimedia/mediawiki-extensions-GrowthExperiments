@@ -3,7 +3,7 @@
 namespace GrowthExperiments\Specials\Forms;
 
 use GrowthExperiments\Mentorship\MentorRemover;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
 
