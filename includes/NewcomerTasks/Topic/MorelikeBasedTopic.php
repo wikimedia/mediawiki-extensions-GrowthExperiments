@@ -5,8 +5,8 @@ namespace GrowthExperiments\NewcomerTasks\Topic;
 use MediaWiki\Json\JsonUnserializer;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\TitleValue;
-use Message;
 use MessageLocalizer;
 
 /**

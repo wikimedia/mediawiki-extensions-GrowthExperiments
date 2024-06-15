@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Specials;
 
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 
 /**
  * An implementation for Special:EditGrowthConfig when CommunityConfiguration extension is enabled

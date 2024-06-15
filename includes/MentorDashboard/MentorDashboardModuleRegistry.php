@@ -8,7 +8,7 @@ use GrowthExperiments\MentorDashboard\Modules\MenteeOverview;
 use GrowthExperiments\MentorDashboard\Modules\MentorTools;
 use GrowthExperiments\MentorDashboard\Modules\PersonalizedPraise;
 use GrowthExperiments\MentorDashboard\Modules\Resources;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 
 class MentorDashboardModuleRegistry {

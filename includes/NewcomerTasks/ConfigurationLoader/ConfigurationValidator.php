@@ -5,9 +5,9 @@ namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Collation\CollationFactory;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleParser;
-use Message;
 use MessageLocalizer;
 use StatusValue;
 

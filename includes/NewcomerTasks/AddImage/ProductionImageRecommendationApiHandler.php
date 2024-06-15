@@ -7,10 +7,10 @@ use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeH
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Title\Title;
 use MWHttpRequest;
-use RequestContext;
 use StatusValue;
 use Wikimedia\UUID\GlobalIdGenerator;
 

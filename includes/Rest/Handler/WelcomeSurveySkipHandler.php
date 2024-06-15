@@ -3,10 +3,10 @@
 namespace GrowthExperiments\Rest\Handler;
 
 use GrowthExperiments\WelcomeSurveyFactory;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Rest\Handler;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\Response;
-use RequestContext;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**

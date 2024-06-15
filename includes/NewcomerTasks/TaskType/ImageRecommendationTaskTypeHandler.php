@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use InvalidArgumentException;
 use LogicException;
-use Message;
+use MediaWiki\Message\Message;
 use MessageLocalizer;
 use MessageSpecifier;
 

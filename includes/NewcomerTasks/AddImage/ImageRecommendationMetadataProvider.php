@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
-use DerivativeContext;
 use InvalidArgumentException;
+use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Message\Message;
 use MediaWiki\Site\SiteLookup;
-use Message;
 use StatusValue;
 
 class ImageRecommendationMetadataProvider {

@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\Specials\Forms;
 
-use IContextSource;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\HTMLForm\OOUIHTMLForm;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
-use OOUIHTMLForm;
 
 abstract class ManageMentorsAbstractForm extends OOUIHTMLForm {
 

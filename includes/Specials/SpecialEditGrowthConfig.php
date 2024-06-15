@@ -15,8 +15,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
-use HTMLForm;
 use MediaWiki\Html\Html;
+use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\Message\Message;
 use MediaWiki\Page\PageProps;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\SpecialPage\FormSpecialPage;
@@ -254,7 +255,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		if ( $this->userCanWrite ) {
 			$form->addPreHtml( $this->msg(
 				'growthexperiments-edit-config-pretext',
-				\Message::listParam( array_map( static function ( Title $title ) {
+				Message::listParam( array_map( static function ( Title $title ) {
 					return '[[' . $title->getPrefixedText() . ']]';
 				}, array_values( $this->configPages ) ) )
 			)->parseAsBlock() );

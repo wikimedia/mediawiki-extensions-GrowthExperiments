@@ -6,7 +6,7 @@ use LogicException;
 use MediaWiki\Json\JsonUnserializable;
 use MediaWiki\Json\JsonUnserializableTrait;
 use MediaWiki\Json\JsonUnserializer;
-use Message;
+use MediaWiki\Message\Message;
 use MessageLocalizer;
 
 /**

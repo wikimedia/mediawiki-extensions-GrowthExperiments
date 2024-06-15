@@ -6,7 +6,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;

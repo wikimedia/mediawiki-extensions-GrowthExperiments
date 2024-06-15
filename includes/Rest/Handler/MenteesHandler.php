@@ -7,6 +7,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\Util;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Title\TitleFactory;
@@ -14,7 +15,6 @@ use MediaWiki\Title\TitleParser;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
-use RequestContext;
 use Wikimedia\Assert\ParameterAssertionException;
 use Wikimedia\ParamValidator\ParamValidator;
 

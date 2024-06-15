@@ -3,7 +3,7 @@
 namespace GrowthExperiments\MentorDashboard\Modules;
 
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\SpecialPage\SpecialPage;

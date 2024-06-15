@@ -3,7 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
 use MediaWiki\Json\JsonUnserializer;
-use Message;
+use MediaWiki\Message\Message;
 use MessageLocalizer;
 
 /**

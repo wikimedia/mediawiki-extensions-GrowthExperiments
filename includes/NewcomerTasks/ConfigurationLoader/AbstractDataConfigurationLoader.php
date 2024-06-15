@@ -11,8 +11,8 @@ use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use InvalidArgumentException;
 use LogicException;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\TitleValue;
-use Message;
 use StatusValue;
 
 /**

@@ -5,10 +5,10 @@ namespace GrowthExperiments\Mentorship;
 use GenericParameterJob;
 use GrowthExperiments\GrowthExperimentsServices;
 use Job;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityLookup;
-use RequestContext;
 
 /**
  * Job to reassign all mentees operated by a given mentor
