@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 

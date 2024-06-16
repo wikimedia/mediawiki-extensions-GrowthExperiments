@@ -3,11 +3,12 @@
 namespace GrowthExperiments\HelpPanel;
 
 use Flow\Container;
-use FormatJson;
 use IDBAccessObject;
 use JobQueueGroup;
 use Language;
+use MediaWiki\Content\TextContent;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
@@ -15,7 +16,6 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
-use TextContent;
 use UserOptionsUpdateJob;
 
 class QuestionStore {

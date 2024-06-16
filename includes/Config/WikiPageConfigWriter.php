@@ -3,16 +3,16 @@
 namespace GrowthExperiments\Config;
 
 use Content;
-use FormatJson;
 use GrowthExperiments\Config\Validation\IConfigValidator;
 use IDBAccessObject;
 use InvalidArgumentException;
-use JsonContent;
 use MediaWiki\CommentStore\CommentStoreComment;
+use MediaWiki\Content\JsonContent;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\HookContainer\HookRunner;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\SlotRecord;

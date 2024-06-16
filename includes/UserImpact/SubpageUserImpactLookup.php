@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use FormatJson;
 use GrowthExperiments\Util;
 use IDBAccessObject;
-use JsonContent;
+use MediaWiki\Content\JsonContent;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;

@@ -4,13 +4,13 @@ namespace GrowthExperiments\Config;
 
 use ApiRawMessage;
 use DBAccessObjectUtils;
-use FormatJson;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Util;
 use HashBagOStuff;
 use IDBAccessObject;
-use JsonContent;
+use MediaWiki\Content\JsonContent;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;

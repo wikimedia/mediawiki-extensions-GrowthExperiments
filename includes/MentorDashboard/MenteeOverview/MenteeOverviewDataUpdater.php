@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
-use FormatJson;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\ILoadBalancer;

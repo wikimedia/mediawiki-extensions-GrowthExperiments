@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;

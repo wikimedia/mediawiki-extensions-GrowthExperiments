@@ -4,17 +4,18 @@ namespace GrowthExperiments\Config;
 
 use Content;
 use ExtensionRegistry;
-use FormatJson;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Specials\SpecialEditGrowthConfig;
 use GrowthExperiments\Specials\SpecialEditGrowthConfigRedirect;
-use JsonContent;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\Hook\JsonValidateSaveHook;
+use MediaWiki\Content\JsonContent;
+use MediaWiki\Content\TextContent;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -24,7 +25,6 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\User;
 use StatusValue;
-use TextContent;
 
 class ConfigHooks implements
 	EditFilterMergedContentHook,

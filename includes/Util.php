@@ -4,12 +4,12 @@ namespace GrowthExperiments;
 
 use ApiRawMessage;
 use ExtensionRegistry;
-use FormatJson;
 use Iterator;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;

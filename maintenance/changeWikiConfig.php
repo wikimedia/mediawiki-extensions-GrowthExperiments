@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use FormatJson;
 use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\GrowthExperimentsServices;
 use InvalidArgumentException;
 use Maintenance;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;

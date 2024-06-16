@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use FormatJson;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use InvalidArgumentException;
-use JsonContent;
+use MediaWiki\Content\JsonContent;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
