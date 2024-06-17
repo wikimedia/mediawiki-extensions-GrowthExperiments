@@ -113,9 +113,13 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 			'underlinkedWeight' => [
 				self::TYPE => self::TYPE_NUMBER,
+				self::MINIMUM => 0,
+				self::MAXIMUM => 1,
 			],
 			'minimumLinkScore' => [
 				self::TYPE => self::TYPE_NUMBER,
+				self::MINIMUM => 0,
+				self::MAXIMUM => 1,
 			],
 		],
 	];
