@@ -2,6 +2,9 @@
 
 namespace GrowthExperiments\Config\Schemas;
 
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefinitions;
 
@@ -52,6 +55,9 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 			'maxTasksPerDay' => [
 				self::TYPE => self::TYPE_INTEGER,
+				self::DEFAULT => ImageRecommendationTaskType::DEFAULT_SETTINGS[
+					ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
+				],
 				self::MINIMUM => 1,
 			],
 		],
@@ -75,6 +81,9 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 			'maxTasksPerDay' => [
 				self::TYPE => self::TYPE_INTEGER,
+				self::DEFAULT => SectionImageRecommendationTaskType::DEFAULT_SETTINGS[
+					SectionImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
+				],
 				self::MINIMUM => 1,
 			],
 		],
@@ -98,6 +107,9 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 			'maximumLinksToShowPerTask' => [
 				self::TYPE => self::TYPE_INTEGER,
+				self::DEFAULT => LinkRecommendationTaskType::DEFAULT_SETTINGS[
+					LinkRecommendationTaskType::FIELD_MAX_LINKS_TO_SHOW_PER_TASK
+				],
 				self::MINIMUM => 1,
 			],
 			'excludedSections' => [
@@ -109,15 +121,24 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 			'maxTasksPerDay' => [
 				self::TYPE => self::TYPE_INTEGER,
+				self::DEFAULT => LinkRecommendationTaskType::DEFAULT_SETTINGS[
+					LinkRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY
+				],
 				self::MINIMUM => 1,
 			],
 			'underlinkedWeight' => [
 				self::TYPE => self::TYPE_NUMBER,
+				self::DEFAULT => LinkRecommendationTaskType::DEFAULT_SETTINGS[
+					LinkRecommendationTaskType::FIELD_UNDERLINKED_WEIGHT
+				],
 				self::MINIMUM => 0,
 				self::MAXIMUM => 1,
 			],
 			'minimumLinkScore' => [
 				self::TYPE => self::TYPE_NUMBER,
+				self::DEFAULT => LinkRecommendationTaskType::DEFAULT_SETTINGS[
+					LinkRecommendationTaskType::FIELD_MIN_LINK_SCORE
+				],
 				self::MINIMUM => 0,
 				self::MAXIMUM => 1,
 			],
