@@ -7,7 +7,7 @@ use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpact;
-use JsonContent;
+use MediaWiki\Content\JsonContent;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;

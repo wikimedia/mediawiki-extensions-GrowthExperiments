@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use FormatJson;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use GrowthExperiments\WelcomeSurvey;
 use IDBAccessObject;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Utils\MWTimestamp;

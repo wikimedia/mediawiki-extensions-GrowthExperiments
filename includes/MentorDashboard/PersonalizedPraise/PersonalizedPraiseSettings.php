@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
-use FormatJson;
 use MediaWiki\Config\Config;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;

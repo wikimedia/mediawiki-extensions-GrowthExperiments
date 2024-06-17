@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
-use FormatJson;
 use GrowthExperiments\Config\Providers\SuggestedEditsConfigProvider;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\Util;
 use LogicException;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleFactory;
 

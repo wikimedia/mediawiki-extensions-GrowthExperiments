@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use FormatJson;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\WelcomeSurvey;
 use Maintenance;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IReadableDatabase;
