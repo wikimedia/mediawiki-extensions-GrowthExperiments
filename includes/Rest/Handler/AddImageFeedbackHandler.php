@@ -129,7 +129,16 @@ class AddImageFeedbackHandler extends SimpleHandler {
 				ParamValidator::PARAM_REQUIRED => true,
 				TitleDef::PARAM_RETURN_OBJECT => true,
 				TitleDef::PARAM_MUST_EXIST => true,
-			],
+			]
+		];
+	}
+
+	/**
+	 * @inheritDoc
+	 * @return array[]
+	 */
+	public function getBodyParamSettings(): array {
+		return [
 			'editRevId' => [
 				self::PARAM_SOURCE => 'body',
 				ParamValidator::PARAM_TYPE => 'integer',
@@ -165,7 +174,7 @@ class AddImageFeedbackHandler extends SimpleHandler {
 				self::PARAM_SOURCE => 'body',
 				ParamValidator::PARAM_TYPE => 'integer',
 				ParamValidator::PARAM_REQUIRED => false,
-			],
+			]
 		] + $this->getTokenParamDefinition();
 	}
 
