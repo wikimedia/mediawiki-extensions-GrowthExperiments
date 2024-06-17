@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use MediaWiki\Config\ServiceOptions;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\TestingAccessWrapper;
@@ -19,10 +18,6 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 	private function getDataProvider(): UncachedMenteeOverviewDataProvider {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		return new UncachedMenteeOverviewDataProvider(
-			new ServiceOptions(
-				UncachedMenteeOverviewDataProvider::CONSTRUCTOR_OPTIONS,
-				$this->getServiceContainer()->getMainConfig()
-			),
 			$geServices->getMentorStore(),
 			$this->getServiceContainer()->getChangeTagDefStore(),
 			$this->getServiceContainer()->getActorMigration(),
