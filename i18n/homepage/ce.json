@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Умар"
+			"Умар",
+			"Исмаил Садуев"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Маршалла}}, {{bidi:$1}}!",
@@ -94,7 +95,7 @@
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong> {{PLURAL:$2|кховдийначарех}} <strong>$1</strong>",
 	"growthexperiments-homepage-suggestededits-pager-end": "Чаккхе",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 {{PLURAL:$1|хьовсарш}} тӀаьххьарчу 60 ден чохь",
-	"growthexperiments-homepage-suggestededits-edit-card": "Нисйе",
+	"growthexperiments-homepage-suggestededits-edit-card": "Нисйан",
 	"growthexperiments-homepage-suggestededits-footer": "Кхечу декъашхоша хӀара йаззамаш билгалбина кечбан безаш сана. ГӀо де '''{{grammar:accusative|{{SITENAME}}}}''' дика йан '''$1''' иза хӀора ден оьшуш болучу неха дуьхьа.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Кхечу декъашхоша хӀара йаззамаш билгалбина кечбан безаш сана. ГӀо де '''{{grammar:accusative|{{SITENAME}}}}''' дика йан.",
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
@@ -105,14 +106,14 @@
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|нисдар}} тӀаьххьарчу дийнахь",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Тахана хьо санначу волонтёраш дакъалаьцна {{grammar:accusative|{{SITENAME}}}} кечйеш. Дакъалаца!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Хьажа дерриге кховдийнарш",
-	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Нисйе орфографи, грамматика, стиль",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Орфографи а, грамматика а, стиль а нисйан",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Википедера йаззамаш таллархьама тӀетоха хьосташ",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Карлабаха болуш болу йаззамаш керла хила хиламаш тӀетоьхна",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "Информаци карина а, тӀетоьхна а йаззам кхин буьззина бан",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Цхьана агӀонан тӀера кхечу агӀоне хьажоргаш тӀетоха",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-link-recommendation": "Цхьана агӀонан тӀера кхечу агӀоне хьажоргаш тӀетоха.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-image-recommendation": "Йаззаман чу Викилармера сурт чудила дезий те аьлла сацам бе.",
-	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Корректура (нисйе орфографи, грамматика, стиль)",
+	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Корректура (орфографи а, грамматика а, стиль а нисйан)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Боца йаззам шорбе",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Кхечу агӀонашна тӀетоха хьажоргаш",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Кхечу агӀонашна тӀетоха хьажоргаш",
@@ -196,7 +197,7 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Йерриге харжа",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "ДӀайаха йерриге",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|Хьайна}} хийца хьашто йолу темаш харжа",
-	"growthexperiments-log-name": "GrowthExperiments тептар",
+	"growthexperiments-log-name": "GrowthExperiments журнал",
 	"log-action-filter-growthexperiments": "GrowthExperiments хиламийн тайпа:",
 	"growthexperiments-notification-header-mentor-change": "$1 хӀинца {{GENDER:$2|хьан керла Ӏуьналча}}{{GENDER:$3|}}",
 	"growthexperiments-notification-body-mentor-change": "Бахьана: $1",
@@ -207,7 +208,7 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Кхетта",
 	"growthexperiments-addlink-pagenotfound": "«$1» агӀо йац",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "Йоза",
+	"growthexperiments-addlink-context-text-label": "Текст",
 	"growthexperiments-addlink-context-button-accept": "ХӀаъ",
 	"growthexperiments-addlink-context-button-reject": "ХӀан-хӀа",
 	"growthexperiments-addlink-context-button-help": "Хийцамаш беш гӀодар",

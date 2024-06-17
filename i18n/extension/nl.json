@@ -13,7 +13,7 @@
 	"growthexperiments-desc": "Deze uitbreiding bevat experimenten uitgevoerd door het Growth-team.",
 	"growthexperiments-config-validator-additional-fields": "De nieuwe configuratie heeft configuratiesleutels die hier niet kunnen worden aangepast.",
 	"growthexperiments-config-validator-error": "Validatie voor $1 mislukt met: \"$2\"",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> zou moeten zijn <code>$2</code>, maar is <code>$3</code>",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> zou <code>$2</code> moeten zijn, maar is <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Inhoud-model komt niet overeen: GrowthExperiments-configuratiebestand moet JSON-inhoudsmodel hebben, $1 gedetecteerd",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Ongeldige ID voor behandeling taaktype: <code>$1</code> is geen geldige waarde",
 	"growthexperiments-config-validator-array-toobig": "$1 bevat te veel items (maximaal $2 toegestaan)",

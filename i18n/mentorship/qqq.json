@@ -5,7 +5,8 @@
 			"Martin Urbanec (WMF)",
 			"Robby",
 			"Xiplus",
-			"Ата"
+			"Ата",
+			"McDutchie"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Title of a special page\n\n{{doc-growthexperiments-mentor-dashboard}}",
@@ -124,8 +125,8 @@
 	"growthexperiments-mentor-writer-error-message-too-long": "Error message displayed when a change to MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) tries to set a message longer than the allowed limit. Parameters:\n* $1 - maximum allowed message length",
 	"growthexperiments-manage-mentors-title": "Headline of Special:ManageMentors",
 	"growthexperiments-manage-mentors-error-no-such-user": "Error message shown by Special:ManageMentors when a given mentor does not exist. This message only shows if user manually changes their URL address, or when links in the interface are incorrect.",
-	"growthexperiments-manage-mentors-auto-assigned": "Headline in Special:ManageMentors",
-	"growthexperiments-manage-mentors-manually-assigned": "Headline in Special:ManageMentors",
+	"growthexperiments-manage-mentors-auto-assigned": "Headline in Special:ManageMentors. The word \"assigned\" should be translated as an adjective (present participle), that is, that the mentors are usually assigned automatically (it doesn't mean \"mentors were assigned automatically\").",
+	"growthexperiments-manage-mentors-manually-assigned": "Headline in Special:ManageMentors. The word \"assigned\" should be translated as an adjective (present participle), that is, that the mentors are usually assigned manually (it doesn't mean \"mentors were assigned manually\").",
 	"growthexperiments-manage-mentors-username": "Column header in Special:ManageMentors",
 	"growthexperiments-manage-mentors-last-active": "Column header in Special:ManageMentors",
 	"growthexperiments-manage-mentors-intro-msg": "Column header in Special:ManageMentors",

@@ -316,7 +316,7 @@
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|U}} hebt de mentor van de gebruiker{{PLURAL:$2||s}} $1 veranderd in {{GENDER:$4|$5}}. Keer terug naar het [[Special:MentorDashboard|mentordashboard]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} mentor is al gewijzigd. Weet {{GENDER:$2|je}} zeker dat {{GENDER:$2|je}} dit weer wil wijzigen?",
 	"growthexperiments-claimmentee-confirm": "Ja, ik wil echt van mentor veranderen",
-	"growthexperiments-log-name": "GrowthExperiments logboek",
+	"growthexperiments-log-name": "GrowthExperiments-logboek",
 	"growthexperiments-log-header": "Dit is een logboek van handelingen die zijn verricht in de uitbreiding GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 heeft {{GENDER:$6|$3}} als {{GENDER:$2|zijn|haar|diens}} leerling aangevraagd (vorige {{GENDER:$4|mentor}} $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 heeft {{GENDER:$6|$3}} als {{GENDER:$2|zijn|haar|diens}} leerling aangevraagd (geen eerdere mentor)",

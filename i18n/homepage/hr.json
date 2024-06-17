@@ -365,7 +365,7 @@
 	"growthexperiments-addlink-skip-accept": "Preskoči sve",
 	"growthexperiments-addlink-skip-reject": "Ponovo pregledaj",
 	"grant-managementorship": "Upravlja mentorstvima",
-	"newcomertasksinfo": "Zadaci za novake",
+	"newcomertasksinfo": "Zadatci za novake",
 	"newcomertasksinfo-no-data": "Podatci nedostupni.",
 	"newcomertasksinfo-config-form-info": "Konfiguracija zadataka za novake može se pogledati i promijeniti na [[Special:EditGrowthConfig]].",
 	"newcomertasksinfo-table-header-task-type": "Vrsta zadatka",
