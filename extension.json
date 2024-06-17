@@ -300,6 +300,12 @@
 		}
 	],
 	"HookHandlers": {
+		"communityconfig": {
+			"class": "GrowthExperiments\\Config\\CommunityConfigurationHooks",
+			"services": [
+				"MainConfig"
+			]
+		},
 		"config": {
 			"class": "GrowthExperiments\\Config\\ConfigHooks",
 			"services": [
@@ -507,6 +513,7 @@
 		"CirrusSearchScoreBuilder": "homepage",
 		"ConfirmEmailComplete": "homepage",
 		"ContributeCards": "homepage",
+		"CommunityConfigurationSchemaBeforeEditor": "communityconfig",
 		"EditFilterMergedContent": "config",
 		"FormatAutocomments": [
 			"homepage",
