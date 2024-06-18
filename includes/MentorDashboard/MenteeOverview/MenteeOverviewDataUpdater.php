@@ -115,6 +115,7 @@ class MenteeOverviewDataUpdater {
 			if ( $thisBatch >= $this->batchSize ) {
 				$thisBatch = 0;
 				$this->lbFactory->waitForReplication();
+				$this->lbFactory->autoReconfigure();
 			}
 		}
 
