@@ -8,9 +8,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\CentralAuth\CentralAuthServices;
-use MediaWiki\MainConfigNames;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\ActorMigration;
@@ -33,14 +31,8 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	use LoggerAwareTrait;
 
-	public const CONSTRUCTOR_OPTIONS = [
-		MainConfigNames::BlockTargetMigrationStage,
-	];
-
 	/** @var int Number of seconds in a day */
 	private const SECONDS_DAY = 86400;
-
-	private ServiceOptions $options;
 
 	private MentorStore $mentorStore;
 
@@ -65,7 +57,6 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private $profilingInfo = [];
 
 	/**
-	 * @param ServiceOptions $options
 	 * @param MentorStore $mentorStore
 	 * @param NameTableStore $changeTagDefStore
 	 * @param ActorMigration $actorMigration
@@ -74,7 +65,6 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param IConnectionProvider $mainConnProvider
 	 */
 	public function __construct(
-		ServiceOptions $options,
 		MentorStore $mentorStore,
 		NameTableStore $changeTagDefStore,
 		ActorMigration $actorMigration,
@@ -82,10 +72,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		TempUserConfig $tempUserConfig,
 		IConnectionProvider $mainConnProvider
 	) {
-		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->setLogger( new NullLogger() );
 
-		$this->options = $options;
 		$this->mentorStore = $mentorStore;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->actorMigration = $actorMigration;
@@ -260,36 +248,21 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			->caller( __METHOD__ );
 
 		// Exclude users which are indefinitely blocked
-		if ( $this->options->get( MainConfigNames::BlockTargetMigrationStage ) & SCHEMA_COMPAT_READ_OLD ) {
-			$queryBuilder->andWhere(
-				'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
-					->select( 'ipb_user' )
-					->from( 'ipblocks' )
-					->where( [
-						'ipb_expiry' => $dbr->getInfinity(),
-						// not an IP block
-						$dbr->expr( 'ipb_user', '!=', 0 ),
-					] )
-					->getSQL() .
-				')'
-			);
-		} else {
-			$queryBuilder->andWhere(
-				'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
-					->select( 'bt_user' )
-					->from( 'block' )
-					->join( 'block_target', null, [
-						'bt_id=bl_target'
-					] )
-					->where( [
-						'bl_expiry' => $dbr->getInfinity(),
-						// not an IP block
-						$dbr->expr( 'bt_user', '!=', null )
-					] )
-					->getSQL() .
-				')'
-			);
-		}
+		$queryBuilder->andWhere(
+			'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
+				->select( 'bt_user' )
+				->from( 'block' )
+				->join( 'block_target', null, [
+					'bt_id=bl_target'
+				] )
+				->where( [
+					'bl_expiry' => $dbr->getInfinity(),
+					// not an IP block
+					$dbr->expr( 'bt_user', '!=', null )
+				] )
+				->getSQL() .
+			')'
+		);
 
 		// exclude temporary accounts, if enabled (T341389)
 		if ( $this->tempUserConfig->isKnown() ) {
