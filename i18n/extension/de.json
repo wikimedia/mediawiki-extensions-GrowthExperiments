@@ -151,7 +151,7 @@
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Standardmäßige Mindestanzahl an Bearbeitungen, die ein Mentee haben muss, um lobenswert zu sein",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Lotsen können diese Option für ihren eigenen Benutzer im Lotsen-Dashboard ändern.",
 	"communityconfiguration-growthhomepage-title": "Einarbeitung von Neulingen",
-	"communityconfiguration-growthhomepage-description": "Personalisiere die Einarbeitung für neue Kontoinhaber durch Hilfe nach der Registrierung, Level-up-Benachrichtigungen und das Definieren von Infobox-Vorlagen.",
+	"communityconfiguration-growthhomepage-description": "Personalisiere die Einarbeitung für neue Kontoinhaber durch Hilfe nach der Registrierung und Level-up-Benachrichtigungen.",
 	"communityconfiguration-growthhomepage-info-text": "Die Newcomer-Startseite ([[Special:Homepage]]) bietet Anleitungen für neue Kontoinhaber. Wenn ein neuer Kontoinhaber bei der Registrierung angibt, dass er einen Artikel erstellen oder ein neues Bild zu Wikipedia hinzufügen möchte, empfehlen wir, zunächst eine kleinere Bearbeitung vorzunehmen, um den Einstieg zu erleichtern und einen Link für weitere Anleitungen bereitzustellen.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-label": "Links zur Homepage von Newcomern",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Zielseite für einen Link über das Erstellen neuer Artikel",
@@ -206,7 +206,7 @@
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-excludedtemplates-label": "Artikel, die hier definierte Vorlagen enthalten, werden den Benutzern nicht als Aufgaben für diesen Aufgabentyp angezeigt.",
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-excludedcategories-label": "Artikel, die hier definierte Kategorien enthalten, werden den Benutzern nicht als Aufgaben für diesen Aufgabentyp angezeigt",
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-learnmore-label": "Zielseite, um mehr über den Aufgabentyp Bildempfehlung zu erfahren",
-	"communityconfiguration-growthsuggestededits-section_image_recommendation-maxtasksperday-label": "Die maximale Anzahl der vorgeschlagenen Aufgaben „Hinzufügen eines Bilds zu einem nicht illustrierten Artikel“, die ein Neuling täglich erledigen kann",
+	"communityconfiguration-growthsuggestededits-section_image_recommendation-maxtasksperday-label": "Die maximale Anzahl der vorgeschlagenen Aufgaben „Hinzufügen eines Bilds zu einem Artikelabschnitt“, die ein Neuling täglich erledigen kann",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Link hinzufügen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "Die Aufgabe ist deaktiviert.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-excludedtemplates-label": "Artikel, die hier definierte Vorlagen enthalten, werden den Benutzern nicht als Aufgaben für diesen Aufgabentyp angezeigt",
@@ -214,7 +214,9 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Zielseite für weitere Informationen zum Aufgabentyp „Link hinzufügen“",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumlinkstoshowpertask-label": "Maximale Anzahl der pro Aufgabe anzuzeigenden Links",
 	"communityconfiguration-growthsuggestededits-link_recommendation-excludedsections-label": "Liste der von der Aufgabe „Link hinzufügen“ ausgeschlossenen Abschnitte",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maxtasksperday-label": "Die maximale Anzahl der vorgeschlagenen Aufgaben „Ein Bild zu einem Artikel hinzufügen“, die ein Neuling täglich erledigen kann",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maxtasksperday-label": "Die maximale Anzahl der vorgeschlagenen Aufgaben „Ein Link hinzufügen“, die ein Neuling täglich erledigen kann",
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-label": "Gewichtung der unterverlinkten Artikel",
-	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Mindestens erforderlicher Link-Score"
+	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Beeinflusst die Priorisierung von Artikeln mit unzureichenden Links. Dieses Feld erfordert einen Prozentsatz in Dezimalform, die Zahl sollte also zwischen 0 und 1 liegen. Je mehr {{GENDER:|du}} diese Zahl erhöhst, desto wahrscheinlicher ist es, dass neue Benutzer Vorschläge für Artikel mit unzureichenden Links erhalten.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Mindestens erforderlicher Link-Score",
+	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Mindestsicherheitsschwelle, um eine Link-Empfehlung vorzuschlagen. Dieses Feld erfordert einen Prozentsatz in Dezimalform, die Zahl sollte also zwischen 0 und 1 liegen. Wenn {{GENDER:|du}} die Zahl erhöhst, ist die Wahrscheinlichkeit höher, dass die dem Endbenutzer präsentierten Vorschläge gute Vorschläge sind, es sind jedoch weniger Vorschläge verfügbar. Wenn du die Zahl verringerst, sind zwar mehr Vorschläge verfügbar, bei einigen ist die Wahrscheinlichkeit jedoch geringer, dass es sich um qualitativ hochwertige Vorschläge handelt."
 }
