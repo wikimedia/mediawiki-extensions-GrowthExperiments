@@ -18,7 +18,8 @@
 			"Thibaut120094",
 			"Trizek (WMF)",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"SleaY"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activer le panneau d’aide du rédacteur",
@@ -61,7 +62,7 @@
 	"growthexperiments-help-panel-postedit-nonsuggested-try-button-text": "Essayer des modifications suggérées",
 	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "Non merci",
 	"growthexperiments-help-panel-questionreview-title": "Demander au centre d’assistance",
-	"growthexperiments-help-panel-questionreview-title-mentor": "Demander à votre tuteur",
+	"growthexperiments-help-panel-questionreview-title-mentor": "Demander à votre mentor",
 	"growthexperiments-help-panel-questionreview-header": "Lorsque vous soumettez une question, elle est <strong>publiée aux yeux de tous</strong> sous votre nom d’utilisateur, « $2 », sur le $1 où un autre contributeur bénévole essayera de fournir une réponse, généralement dans la journée qui suit.",
 	"growthexperiments-help-panel-questionreview-label": "Votre question",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inclure le titre de la page avec ma question",
@@ -179,7 +180,7 @@
 	"tag-help_panel_question-description": "Modification faite par la fonctionnalité d’envoi de question dans le panneau d’aide",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modifications suggérées",
 	"growthexperiments-help-panel-button-header-ask-help": "Demander au centre d’assistance",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Demander de l’aide à votre tut{{GENDER:$1|eur|rice}}",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Demander de l’aide à votre mentor{{GENDER:$1||e}}",
 	"growthexperiments-help-panel-button-header-general-help": "Aide générale d’édition",
 	"growthexperiments-help-panel-button-subheader-general-help": "Rechercher des réponses et lire les articles en tête",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Obtenir des réponses d’autres bénévoles",

@@ -530,6 +530,7 @@
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "この記事の言語で書いてください: $1。",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language-generic": "{{GENDER:|あなた}}がいるウィキペディアの言語で書いてください。",
 	"growthexperiments-addimage-caption-info-dialog-confirm": "わかりました",
+	"growthexperiments-addimage-caption-help-button": "画像キャプションの書き方のヘルプ",
 	"growthexperiments-structuredtask-user-error": "{{GENDER:|あなた}}がログインしていないので、{{GENDER:|あなたの}}編集を公開することができませんでした。ログインして、再度試してください。",
 	"growthexperiments-structuredtask-user-error-login-cta": "ログイン",
 	"growthexperiments-structuredtask-anonuser": "利用者はログインしていません。",

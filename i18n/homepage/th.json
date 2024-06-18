@@ -147,7 +147,7 @@
 	"growthexperiments-homepage-discovery-banner-header": "ยินดีต้อนรับสู่หน้าหลักของ{{GENDER:$1|คุณ}}!",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|คุณ}}สามารถคลิก $2 ที่ด้านบนของหน้าเพื่อกลับมาที่นี่ได้เสมอ",
 	"growthexperiments-homepage-discovery-thanks-header": "ขอบคุณสำหรับการสร้างบัญชีผู้ใช้ของ{{GENDER:$1|คุณ}}",
-	"growthexperiments-homepage-discovery-thanks-text": "คลิก $2 ที่หน้าบนสุดของด้านนี้เพื่อเข้าสู่หน้าหลักของ{{GENDER:$1|คุณ}}และเริ่มต้นกันเลย",
+	"growthexperiments-homepage-discovery-thanks-text": "กด $2 ที่หน้าบนสุดของด้านนี้เพื่อเข้าสู่หน้าหลักของ{{GENDER:$1|คุณ}}และเริ่มต้นกันเลย",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "ยินดีต้อนรับสู่หน้าหลักของ{{GENDER:$1|คุณ}}",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|คุณ}}สามารถเปิดเมนูข้างแล้วกด $2 เพื่อกลับมาที่นี่ได้เสมอ",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "เริ่มต้นที่นี่!",

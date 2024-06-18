@@ -1,35 +1,42 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kuldeepburjbhalaike"
+			"Kuldeepburjbhalaike",
+			"Cabal"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ}}, {{bidi:$1}}!",
-	"growthexperiments-homepage-tab": "ਹੋਮਪੇਜ",
-	"tooltip-pt-homepage": "{{GENDER:|ਤੁਹਾਡਾ}} ਹੋਮਪੇਜ",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ਜੀ}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "ਮੁੱਢਲਾ ਸਫ਼ਾ",
+	"tooltip-pt-homepage": "{{GENDER:|ਤੁਹਾਡਾ}} ਮੁੱਢਲਾ ਸਫ਼ਾ",
 	"prefs-homepage": "ਨਵੇਂ ਆਏ ਸੰਪਾਦਕ ਦੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ",
-	"growthexperiments-homepage-enable": "ਨਵੇਂ ਆਏ ਸੰਪਾਦਕ ਦਾ ਹੋਮਪੇਜ ਦੇਖੋ",
+	"growthexperiments-homepage-enable": "ਨਵੇਂ ਆਉਣ ਵਾਲਿਆਂ ਦਾ ਮੁੱਢਲਾ ਸਫ਼ਾ ਵਿਖਾਓ",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|ਤੁਹਾਡਾ}} ਈਮੇਲ ਜੋੜੋ",
-	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|ਤੁਹਾਡਾ}} ਈਮੇਲ ਪੁਸ਼ਟੀ ਕਰੋ",
+	"growthexperiments-homepage-email-header-unconfirmed": "ਤਸਦੀਕ ਕਰੋ {{GENDER:$1|ਤੁਹਾਡਾ}} ਈਮੇਲ",
 	"growthexperiments-homepage-email-header-confirmed": "ਈਮੇਲ ਜੋੜਿਆ ਗਿਆ",
 	"growthexperiments-homepage-email-header-startemail": "ਈਮੇਲ: $1",
 	"growthexperiments-homepage-email-text-unconfirmed": "ਇੱਕ ਪੁਸ਼ਟੀਕਰਨ ਲਿੰਕ ਲਈ {{GENDER:$1|ਤੁਹਾਡਾ}} ਈਮੇਲ ਚੈੱਕ ਕਰੋ, ਜਾਂ ਇੱਕ ਨਵਾਂ ਲਿੰਕ ਭੇਜੋ।",
-	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|ਤੁਹਾਡੇ}} ਈਮੇਲ ਦੀ ਪੁਸ਼ਟੀ ਹੋ ਗਈ ਹੈ। ਤੁਸੀਂ ਤਰਜੀਹਾਂ ਵਿੱਚ ਆਪਣੀਆਂ ਈਮੇਲ ਸੈਟਿੰਗਾਂ ਬਦਲ ਸਕਦੇ ਹੋ।",
+	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|ਤੁਹਾਡੇ}} ਈਮੇਲ ਦੀ ਤਸਦੀਕ ਹੋ ਗਈ ਹੈ। ਤੁਸੀਂ ਤਰਜੀਹਾਂ ਵਿੱਚ ਆਪਣੀਆਂ ਈਮੇਲ ਸੈਟਿੰਗਾਂ ਬਦਲ ਸਕਦੇ ਹੋ।",
 	"growthexperiments-homepage-email-button-noemail": "ਈਮੇਲ ਜੋੜੋ",
 	"growthexperiments-homepage-email-button-unconfirmed": "ਇੱਕ ਨਵਾਂ ਲਿੰਕ ਪ੍ਰਾਪਤ ਕਰੋ",
 	"growthexperiments-homepage-email-button-confirmed": "ਤਰਜੀਹਾਂ",
 	"growthexperiments-homepage-email-changelink": "ਬਦਲੋ",
-	"growthexperiments-homepage-email-confirmlink": "ਪੁਸ਼ਟੀ ਕਰੋ",
+	"growthexperiments-homepage-email-confirmlink": "ਤਸਦੀਕ ਕਰੋ",
 	"growthexperiments-homepage-startediting-header": "ਸੋਧ ਸ਼ੁਰੂ ਕਰੋ",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "ਸੁਝਾਏ ਸੋਧ ਦੇਖੋ",
 	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "ਸੁਝਾਏ ਗਏ ਸੋਧਾਂ ਨਾਲ ਸ਼ੁਰੂਆਤ ਕਰੋ",
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "ਸੁਝਾਅ ਪ੍ਰਾਪਤ ਕਰੋ",
 	"growthexperiments-homepage-startediting-button": "ਸੁਝਾਏ ਸੋਧ ਦੇਖੋ",
 	"growthexperiments-homepage-startediting-dialog-header": "ਸੁਝਾਏ ਸੋਧਾਂ ਬਾਰੇ",
+	"growthexperiments-homepage-startediting-dialog-progress": "$2 ਵਿੱਚੋਂ $1",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "ਰੱਦ ਕਰੋ",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "ਜਾਰੀ ਰੱਖੋ",
+	"growthexperiments-homepage-startediting-dialog-intro-title": "ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਸੁਝਾਏ ਗਏ ਸੋਧ",
 	"growthexperiments-homepage-startediting-dialog-intro-header": "ਵਿਕੀਪੀਡੀਆ {{GENDER:|ਤੁਹਾਡੇ}} ਜਿਹੇ ਲੋਕਾਂ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ ਹੈ ਜੋ ਇਕੱਠੇ ਕੰਮ ਕਰਦੇ ਹਨ।",
+	"growthexperiments-homepage-startediting-dialog-difficulty-back": "ਪਿਛਾਂਹ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "ਸੁਝਾਅ ਪ੍ਰਾਪਤ ਕਰੋ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "ਮੁਕੰਮਲ",
-	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "ਮੁਕੰਮਲ"
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "ਮੁਕੰਮਲ",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "ਸੌਖਾ",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "ਦਰਮਿਆਨਾ",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "ਔਖਾ"
 }
