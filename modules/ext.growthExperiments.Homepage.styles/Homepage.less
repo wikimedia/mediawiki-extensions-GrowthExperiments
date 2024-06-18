@@ -245,3 +245,20 @@ body.mw-special-Homepage {
 		}
 	}
 }
+
+// Tweaks for dark support support (T357699).
+// FIXME: This should be removed when there is capacity for updating the extension
+// to use Codex design tokens.
+html.skin-theme-clientpref-night {
+	img {
+		filter: invert( 1 );
+	}
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os {
+		img {
+			filter: invert( 1 );
+		}
+	}
+}
