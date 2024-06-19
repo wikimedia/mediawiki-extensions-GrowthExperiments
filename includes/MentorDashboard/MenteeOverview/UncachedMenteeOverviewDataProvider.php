@@ -401,13 +401,16 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			}
 		}
 		foreach ( $res as $userId => $userData ) {
-			if ( !isset( $userData['registration'] ) ) {
+			$res[$userId]['last_active'] = $userData['last_edit'] ?? $userData['registration'] ?? null;
+			if ( $res[$userId]['last_active'] === null ) {
 				$this->logger->error(
-					__METHOD__ . ': Registration timestamp not found for user ID {userId}',
-					[ 'userId' => $userId ]
+					__METHOD__ . ': Registration and last_edit timestamps not found for user ID {userId}',
+					[
+						'userId' => $userId,
+						'exception' => new \RuntimeException
+					]
 				);
 			}
-			$res[$userId]['last_active'] = $userData['last_edit'] ?? $userData['registration'] ?? null;
 		}
 		return $res;
 	}
