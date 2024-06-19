@@ -120,6 +120,7 @@
 	"communityconfiguration-helppanel-gehelppanellinks-title-placeholder": "Wikipedia:Writing_better_articles",
 	"communityconfiguration-helppanel-gehelppanellinks-text-label": "Label",
 	"communityconfiguration-helppanel-gehelppanellinks-text-placeholder": "How to write a good article",
+	"communityconfiguration-helppanel-gehelppanellinks-add-element-button-label": "Add another link",
 	"communityconfiguration-helppanel-gehelppanelviewmoretitle-label": "Destination page for \"View more help articles\"",
 	"communityconfiguration-mentorship-title": "Mentorship",
 	"communityconfiguration-mentorship-description": "Customize mentorship settings and eligibility, while adjusting edit minimums and timeframes for mentors and praise-worthy mentees.",
