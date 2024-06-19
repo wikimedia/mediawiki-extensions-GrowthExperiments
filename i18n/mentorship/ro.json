@@ -156,6 +156,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month": "Ultima lună",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline": "Mesajul dvs. implicit",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Subiect",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-placeholder": "...",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "În mesajul pozitiv implicit, $1 este înlocuit automat cu numele de utilizator al ucenicului și $2 cu numele de utilizator al mentorului (dacă este prezent).",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Notificări",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately": "Imediat",
