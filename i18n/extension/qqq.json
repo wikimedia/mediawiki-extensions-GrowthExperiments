@@ -128,6 +128,7 @@
 	"communityconfiguration-helppanel-gehelppanelsearchnamespaces-label": "Field label for the help panel in Community configuration\n\nSame as {{msg-mw|growthexperiments-edit-config-help-panel-searched-namespaces}}",
 	"communityconfiguration-helppanel-gehelppanelhelpdesktitle-label": "Field label for the help panel in Community configuration\n\nSame as {{msg-mw|growthexperiments-edit-config-help-panel-helpdesk-title}}",
 	"communityconfiguration-helppanel-gehelppanellinks-label": "Field label for the help panel links in Community configuration\n\nSame as {{msg-mw|growthexperiments-edit-config-help-panel-links}}",
+	"communityconfiguration-helppanel-gehelppanellinks-item-label": "Field label for each help panel link in Community configuration\n\nParameters:\n* $1 - ordinal number the item is listed in",
 	"communityconfiguration-helppanel-gehelppanellinks-0-label": "Field label for the first help panel link in Community configuration",
 	"communityconfiguration-helppanel-gehelppanellinks-1-label": "Field label for the second help panel link in Community configuration",
 	"communityconfiguration-helppanel-gehelppanellinks-2-label": "Field label for the third help panel link in Community configuration",
