@@ -18,6 +18,11 @@ use StatusValue;
  */
 class SuggestedEditsSchemaTest extends MediaWikiIntegrationTestCase {
 
+	public function setUp(): void {
+		parent::setUp();
+		$this->markTestSkippedIfExtensionNotLoaded( 'CommunityConfiguration' );
+	}
+
 	public function testDefaultTaskTypesDataWithEmptyConfig(): void {
 		$this->overrideConfigValues( [
 			'GEUseCommunityConfigurationExtension' => true,
