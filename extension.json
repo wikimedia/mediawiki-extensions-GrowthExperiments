@@ -2914,6 +2914,10 @@
 					]
 				}
 			}
+		},
+		"GECommunityUpdatesEnabled": {
+			"description": "Are Community Updates enabled?",
+			"value": true
 		}
 	},
 	"SpecialPages": {
