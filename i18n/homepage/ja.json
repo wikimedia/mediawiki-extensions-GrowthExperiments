@@ -386,7 +386,7 @@
 	"log-action-filter-growthexperiments-addlink": "リンクの提案",
 	"log-action-filter-growthexperiments-addimage": "画像の提案",
 	"growthexperiments-homepage-claimmentee-invalid-username": "入力された指導対象者の利用者名が無効です",
-	"growthexperiments-notification-header-mentor-change": "$1{{GENDER:$2|が}}{{GENDER:$3|あなたの}}新しい指導役です",
+	"growthexperiments-notification-header-mentor-change": "$1{{GENDER:$2|が}}{{GENDER:$3|あなたの}}新しい{{GENDER:$2|指導役}}です",
 	"growthexperiments-notification-body-mentor-change": "理由: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|}}新しい{{GENDER:$2|指導役}}の方に挨拶をしましょう！",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|}}Special:ClaimMenteeを使うためには[[$2]]に指導役としてリストされていなければなりません。",

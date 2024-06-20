@@ -24,11 +24,17 @@
 	"growthexperiments-recurringcampaign-body": "Creați-vă un cont acum pentru a vă autentifica și a evita să vedeți bannere de strângere de fonduri. Odată ce aveți un {{GENDER:|cont}}, {{GENDER:|puteți}} de asemenea să învățați cum să editați Wikipedia cu schimbări mici care vor avea un impact mare pentru restul lumii. Vom fi aci să vă {{GENDER:|ghidăm}} pe măsură ce {{GENDER:|începeți}}!",
 	"growthexperiments-josacampaign-title": "Bun venit la celebrarea zilei de naștere a Wikipediei!\n\nOdată ce v-ați creat contul, puteți începe să contribuiți la enciclopedie.",
 	"growthexperiments-josacampaign-body": "Acesta este un eveniment organizat de Jordanian Open Source Association și Wikimedia in the Levant pentru a vă ajuta să învățați despre Wikipedia și cum să contribuiți la ea.\n\nPentru a începe să contribuiți, tot ceea ce aveți de făcut este să completați acest formular și apoi să alegeți o sarcină la care să lucrați.\n\nDacă aveți nevoie de ajutor, vă rugăm să întrebați organizatorii evenimentului.",
-	"growthexperiments-thankyoupage-title": "Creați un cont pentru a începe să editați și îmbunătățiți Wikipedia.",
+	"growthexperiments-thankyoupage-title": "Vă mulțumim pentru că sunteți un donator. Creați un cont pentru a începe să editați și îmbunătățiți Wikipedia.",
 	"growthexperiments-thankyoupage-body": "Wikipedia este construită de oameni precum {{GENDER:|dvs.}} ce lucrează împreună. Editarea unui articol este mai ușoară decât ați {{GENDER:|putea}} crede!\n\nCu contul dvs., veți avea acces la:",
 	"growthexperiments-thankyoupage-body-mobile": "Wikipedia este construită de oameni precum {{GENDER:|dvs.}} ce lucrează împreună. Editarea unui articol este mai ușoară decât ați {{GENDER:|putea}} crede!",
 	"growthexperiments-thankyoupage-bullet1": "Sarcini simple care se potrivesc cu interesele {{GENDER:|dvs.}}",
 	"growthexperiments-thankyoupage-bullet2": "Ajutor și îndrumare pe măsură ce {{GENDER:|editați}}",
 	"growthexperiments-thankyoupage-bullet3": "Date despre câte persoane {{GENDER:|vă}} vizualizează munca",
+	"growthexperiments-thankyoubanner-title": "Creați un cont pentru a începe să editați și îmbunătățiți Wikipedia.",
+	"growthexperiments-thankyoubanner-body": "Wikipedia este construită de oameni precum {{GENDER:|dvs.}} ce lucrează împreună. Editarea unui articol este mai ușoară decât ați {{GENDER:|putea}} crede!\n\nCu contul dvs., veți avea acces la:",
+	"growthexperiments-thankyoubanner-body-mobile": "Wikipedia este construită de oameni precum {{GENDER:|dvs.}} ce lucrează împreună. Editarea unui articol este mai ușoară decât ați {{GENDER:|putea}} crede!",
+	"growthexperiments-thankyoubanner-bullet1": "Sarcini simple care se potrivesc cu interesele {{GENDER:|dvs.}}",
+	"growthexperiments-thankyoubanner-bullet2": "Ajutor și îndrumare pe măsură ce {{GENDER:|editați}}",
+	"growthexperiments-thankyoubanner-bullet3": "Date despre câte persoane {{GENDER:|vă}} vizualizează munca",
 	"growthexperiments-campaigns-footer": "Creându-vă {{GENDER:|contul}} pe această pagină, acesta va fi asociat cu această campanie în scopuri de experiență și analiză."
 }

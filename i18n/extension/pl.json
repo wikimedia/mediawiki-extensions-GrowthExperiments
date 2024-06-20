@@ -108,5 +108,16 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Wypróbuj powiadomienie o sugerowanych edycjach",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Maksymalna liczba edycji, jakie może wprowadzić nowicjusz, aby kwalifikować się do otrzymania tego powiadomienia. Jeśli ustawione na 0, żaden nowicjusz nie</br> otrzyma tego powiadomienia. Im wyższa liczba, tym więcej nowych użytkowników otrzyma to powiadomienie.<br> To powiadomienie jest wysyłane tylko do nowych użytkowników, którzy nie wykonywali Sugerowanych edycji.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Powiadomienie zachęcające do dalszych edycji",
-	"growthexperiments-edit-config-keep-going-notification-description": "Maksymalna liczba edycji, jakie może wprowadzić nowicjusz, aby kwalifikować się do otrzymania tego powiadomienia. Jeśli ustawione na 0, żaden nowicjusz nie<br> otrzyma tego powiadomienia. Im wyższa liczba, tym więcej nowych użytkowników otrzyma to powiadomienie.<br> To powiadomienie jest wysyłane tylko do nowych użytkowników, którzy wykonali co najmniej jedną z Sugerowanych edycji."
+	"growthexperiments-edit-config-keep-going-notification-description": "Maksymalna liczba edycji, jakie może wprowadzić nowicjusz, aby kwalifikować się do otrzymania tego powiadomienia. Jeśli ustawione na 0, żaden nowicjusz nie<br> otrzyma tego powiadomienia. Im wyższa liczba, tym więcej nowych użytkowników otrzyma to powiadomienie.<br> To powiadomienie jest wysyłane tylko do nowych użytkowników, którzy wykonali co najmniej jedną z Sugerowanych edycji.",
+	"communityconfiguration-mentorship-title": "Wikiprzewodnicy",
+	"communityconfiguration-mentorship-description": "Dostosuj ustawienia mentoringu i uprawnienia, dostosowując minimalne wartości edycji i ramy czasowe dla mentorów i godnych pochwał podopiecznych.",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Minimalna liczba dni od momentu rejestracji użytkownika, aby mógł zapisać się jako wikiprzewodnk",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Minimalna liczba edycji, które użytkownik musi zrobić (w dowolnej przestrzeni nazw), aby mógł zapisać się jako wikiprzewodnk",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Liczba dni branych pod uwagę przy ocenie możliwości pochwały podopiecznego",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Przewodnicy mogą zmienić sobie tę opcję w Panelu wikiprzewodnika.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-label": "Domyślnie jak często przewodnicy powinni otrzymywać powiadomienia przypominające o wysłaniu zachęty do podopiecznych, którzy dobrze edytują?",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Przewodnicy mogą zmienić sobie tę opcję w Panelu wikiprzewodnika.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Maksymalna liczba edycji, jaką użytkownik może mieć, aby zostać uznany za gotowy do otrzymania pochwały",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Domyślna minimalna liczba edycji, które musi mieć podopieczny, aby uznać go za gotowym do otrzymania pochwały",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Przewodnicy mogą zmienić sobie tę opcję w Panelu wikiprzewodnika."
 }

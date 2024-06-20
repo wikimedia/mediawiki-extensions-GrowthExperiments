@@ -403,7 +403,7 @@
 	"log-action-filter-growthexperiments-addlink": "Suggestions de lien",
 	"log-action-filter-growthexperiments-addimage": "Suggestions d’image",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Le nom d’utilisateur du tutoré fourni est incorrect",
-	"growthexperiments-notification-header-mentor-change": "$1 est {{GENDER:$3|}}votre nouve{{GENDER:$2|au|lle}} tut{{GENDER:$2|eur|rice}}",
+	"growthexperiments-notification-header-mentor-change": "$1 est {{GENDER:$3|}}votre nouve{{GENDER:$2|au|lle}} mentor{{GENDER:$2||e}}",
 	"growthexperiments-notification-body-mentor-change": "Motif : $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|}}Dites bonjour à {{GENDER:$3|}}votre nouve{{GENDER:$2|au|lle}} tut{{GENDER:$2|eur|rice}} !",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|}}Vous devez être listé{{GENDER:$1|e}} comme tut{{GENDER:$1|eur|rice}} sur [[$2]] pour pouvoir utiliser Special:ClaimMentee.",
