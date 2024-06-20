@@ -121,6 +121,10 @@ class SpecialHomepage extends SpecialPage {
 
 		$out->addHTML( Html::openElement( 'div', [
 			'class' => 'growthexperiments-homepage-container ' .
+				// Enable "Poor man's dark mode". Temporary workaround for T357699.
+				// FIXME: This should be removed when there is capacity for updating the extension
+				// to use Codex design tokens.
+				'notheme skin-invert ' .
 				'growthexperiments-homepage-container-user-variant-' . $userVariant
 		] ) );
 		$modules = $this->getModules( $isMobile, $par );
