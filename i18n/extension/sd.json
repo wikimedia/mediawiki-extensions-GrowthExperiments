@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Charoo",
 			"Mehtab ahmed"
 		]
 	},
@@ -9,5 +10,6 @@
 	"growthexperiments-edit-config-mentorship": "مينٽورشپ",
 	"growthexperiments-edit-config-newcomertasks": "ڏسيل سنوارون",
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "حوالا: سانچا انھن مضمونن لاءِ جن ۾ وڌيڪ حوالن جي گهرج آھي.",
-	"specialpages-group-growth-tools": "واڌويجهہ جا اوزار"
+	"specialpages-group-growth-tools": "واڌويجهہ جا اوزار",
+	"communityconfiguration-helppanel-gehelppanellinks-add-element-button-label": "ٻيو ڳنڍڻو شامل ڪريو"
 }
