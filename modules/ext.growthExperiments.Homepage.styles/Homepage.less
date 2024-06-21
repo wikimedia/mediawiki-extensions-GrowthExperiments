@@ -250,15 +250,25 @@ body.mw-special-Homepage {
 // FIXME: This should be removed when there is capacity for updating the extension
 // to use Codex design tokens.
 html.skin-theme-clientpref-night {
-	img {
+	.mw-no-invert,
+	.mw-body-content img {
 		filter: invert( 1 );
+	}
+
+	.cdx-no-invert {
+		filter: none;
 	}
 }
 
 @media ( prefers-color-scheme: dark ) {
 	html.skin-theme-clientpref-os {
-		img {
-			filter: invert( 1 );
+		.mw-no-invert,
+		.mw-body-content img {
+			filter: invert( 1 ) hue-rotate( 180deg );
+		}
+
+		.cdx-no-invert {
+			filter: none;
 		}
 	}
 }
