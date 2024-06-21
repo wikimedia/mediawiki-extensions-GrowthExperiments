@@ -56,7 +56,8 @@ class HelpPanelSchema extends JsonSchema {
 				]
 			]
 		],
-		self::DEFAULT => []
+		self::DEFAULT => [],
+		self::MAX_ITEMS => 10,
 	];
 
 	public const GEHelpPanelViewMoreTitle = [
