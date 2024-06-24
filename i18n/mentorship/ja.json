@@ -7,7 +7,8 @@
 			"春春眠眠",
 			"Afaz",
 			"MagicAho",
-			"Shirayuki"
+			"Shirayuki",
+			"Apple TD"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "指導役ダッシュボード",
@@ -58,7 +59,7 @@
 	"growthexperiments-mentor-dashboard-resources-headline": "リソース",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "指導役の管理",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "指導役の一覧を見る",
-	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "{{GENDER:|指導役}}として自己紹介紹介する方法",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "{{GENDER:|指導役}}として自己紹介する方法",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "指導対象者を受け入れる方法",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growthツール",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "設定",
@@ -104,6 +105,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "平均の約2倍",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|あなたの}}の負荷が「$1」に変更されました。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "不明なエラーが発生しました。しばらくしてからもう一度やり直してください。",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "自分に割り当てられる指導対象者の数を変更する前に平均から始めることをお勧めします。",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "{{GENDER:|あなた}}の自己紹介メッセージを変更",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "保存",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "キャンセル",
