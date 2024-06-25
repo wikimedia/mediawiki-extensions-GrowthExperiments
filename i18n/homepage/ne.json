@@ -4,7 +4,8 @@
 			"Bada Kaji",
 			"पर्वत सुबेदी",
 			"बडा काजी",
-			"हिमाल सुबेदी"
+			"हिमाल सुबेदी",
+			"सरोज कुमार ढकाल"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|नमस्कार}}, {{bidi: $1}}ज्यू!",
@@ -196,7 +197,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "थप जानकारी खोजी र थपेर लेख लामो बनाउनुहोस्",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "यस लेखबाट अर्को लेखमा कडीहरू थप्नुहोस्",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-link-recommendation": "यस लेखबाट अर्को लेखमा कडीहरू थप्नुहोस्",
-	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-image-recommendation": "लेखमा विकिमीडिया कमन्सबाट तस्वीर थप्ने कि नदिने निर्णय गर्नुहोस्।",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-image-recommendation": "लेखमा विकिमिडिया कमन्सबाट तस्वीर थप्ने कि नदिने निर्णय गर्नुहोस्।",
 	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "सुधार भनेको लेख लेख्ने तरिकामा सानो सुधार गर्नु हो, जस्तै हिज्जे, व्याकरण वा पाठको स्पष्टता। सुधार सम्पादनहरूले लेखहरूलाई थप व्यावसायिक र विश्वसनीय हुन मद्दत गर्दछ।",
 	"growthexperiments-homepage-suggestededits-tasktype-description-references": "विकिपिडिया सहि छ भनी प्रमाणित गर्नका लागि पुस्तकहरू, वेबसाइटहरू र समाचार स्रोतहरू प्रयोग गर्नुहोस्, र तिनीहरूलाई लेखहरूमा थप्नुहोस् ताकि पाठकहरूले आफूले पढेका कुराहरू सत्य हो भनी विश्वस्त महसुस गर्न सकून्।",
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "समय बित्दै जाँदा लेखहरू पुराना हुन्छन् र नयाँ घटनाहरू हुन्छन्। सही जानकारी खोज्नुहोस् र थप्नुहोस् ताकि विकिपिडियामा सधैं वर्तमान सत्य समावेश छ।",
@@ -448,7 +449,7 @@
 	"growthexperiments-addimage-onboarding-content-intro-title": "चित्रहरूले मानिसहरूलाई सिक्न मद्दत गर्छ, तर धेरै लेखहरूमा एउटा हुँदैन।",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "{{GENDER:|तपाईंले}} विकिपिडिया लेखमा सुझाव गरिएको तस्बिर राख्नु पर्छ कि छैन भनेर निर्णय गर्नुहुनेछ।",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "सुझावहरू मेसिनद्वारा निर्मित छन्, र {{GENDER:|तपाईंले}} यसलाई स्वीकार गर्ने वा अस्वीकार गर्ने निर्णय गर्न {{GENDER:|आफ्नो}} निर्णय प्रयोग गर्नुहुनेछ।",
-	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "तस्बिरहरू विकिमीडिया कमन्सबाट आउँछन्, विकिपिडियाद्वारा प्रयोग गरिएको स्वतन्त्र रूपमा इजाजतपत्र प्राप्त तस्बिरहरूको संग्रह।",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "तस्वीरहरू विकिमिडिया कमन्सबाट आउँछन्, विकिपिडियाद्वारा प्रयोग गरिएको स्वतन्त्र रूपमा इजाजतपत्र प्राप्त तस्वीरहरूको सङ्ग्रह।",
 	"growthexperiments-addimage-onboarding-content-imagedetails-title": "सुझाव गरिएको चित्र हेर्नुहोस्",
 	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1": "तस्वीरको नाम, विवरण, र {{GENDER:|तपाईं}}लाई लेखमा राख्नु पर्ने हो कि भनेर निर्णय गर्न मद्दत गर्न सुझाव दिइएको कारण प्रयोग गर्नुहोस्।",
 	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2": "{{GENDER:|तपाईं}}ले यसलाई अझ स्पष्ट रूपमा हेर्नको लागि तस्विरलाई विस्तार गर्न सक्नुहुन्छ।",
