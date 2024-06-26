@@ -2,11 +2,16 @@
 
 namespace GrowthExperiments\Config;
 
+use GrowthExperiments\Config\Schemas\CommunityUpdatesSchema;
 use MediaWiki\Config\Config;
+use MediaWiki\Extension\CommunityConfiguration\Hooks\CommunityConfigurationProvider_initListHook;
 use MediaWiki\Extension\CommunityConfiguration\Hooks\CommunityConfigurationSchemaBeforeEditorHook;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 
-class CommunityConfigurationHooks implements CommunityConfigurationSchemaBeforeEditorHook {
+class CommunityConfigurationHooks implements
+	CommunityConfigurationSchemaBeforeEditorHook,
+	CommunityConfigurationProvider_initListHook
+{
 
 	private Config $config;
 
@@ -50,6 +55,26 @@ class CommunityConfigurationHooks implements CommunityConfigurationSchemaBeforeE
 					);
 				}
 				break;
+		}
+	}
+
+	public function onCommunityConfigurationProvider_initList( array &$providers ) {
+		if ( $this->config->get( 'GECommunityUpdatesEnabled' ) ) {
+			$providers['CommunityUpdates'] = [
+				"store" => [
+					"type" => "wikipage",
+					"args" => [
+						"MediaWiki:GrowthExperimentsCommunityUpdates.json"
+					]
+				],
+				"validator" => [
+					"type" => "jsonschema",
+					"args" => [
+						CommunityUpdatesSchema::class
+					]
+				],
+				"type" => "data"
+			];
 		}
 	}
 }

@@ -514,6 +514,7 @@
 		"ConfirmEmailComplete": "homepage",
 		"ContributeCards": "homepage",
 		"CommunityConfigurationSchemaBeforeEditor": "communityconfig",
+		"CommunityConfigurationProvider_initList": "communityconfig",
 		"EditFilterMergedContent": "config",
 		"FormatAutocomments": [
 			"homepage",
