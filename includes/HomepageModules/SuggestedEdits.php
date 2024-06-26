@@ -21,6 +21,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use GrowthExperiments\Util;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -885,11 +886,13 @@ class SuggestedEdits extends BaseModule {
 			$topicsMatchMode = $taskSet->getFilters()->getTopicFiltersMode();
 		}
 
+		$isMobile = Util::isMobile( $this->getContext()->getOutput()->getSkin() );
+
 		// these will be updated on the client side as needed
 		$data = [
 			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
 			'taskCount' => ( $taskSet instanceof TaskSet ) ? $taskSet->getTotalCount() : 0,
-			'editCount' => $this->editInfoService->getEditsPerDay(),
+			'editCount' => $isMobile ? $this->editInfoService->getEditsPerDay() : null,
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
 			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopics( $user );
