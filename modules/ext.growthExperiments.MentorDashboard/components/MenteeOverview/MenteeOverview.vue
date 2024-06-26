@@ -351,7 +351,7 @@ module.exports = exports = {
 	}
 
 	&__no-results {
-		background-color: #f8f9fa;
+		background-color: @background-color-neutral-subtle;
 		border: @border-subtle;
 		border-radius: @border-radius-base;
 		text-align: center;
