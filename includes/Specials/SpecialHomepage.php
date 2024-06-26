@@ -48,6 +48,7 @@ class SpecialHomepage extends SpecialPage {
 
 	/** @var TitleFactory */
 	private $titleFactory;
+	private bool $isMobile;
 
 	/**
 	 * @param HomepageModuleRegistry $moduleRegistry
@@ -107,7 +108,7 @@ class SpecialHomepage extends SpecialPage {
 		}
 
 		$out = $this->getContext()->getOutput();
-		$isMobile = Util::isMobile( $out->getSkin() );
+		$this->isMobile = Util::isMobile( $out->getSkin() );
 		$loggingEnabled = $this->getConfig()->get( 'GEHomepageLoggingEnabled' );
 		$userVariant = $this->experimentUserManager->getVariant( $this->getUser() );
 		$out->addJsConfigVars( [
@@ -127,9 +128,9 @@ class SpecialHomepage extends SpecialPage {
 				'notheme skin-invert ' .
 				'growthexperiments-homepage-container-user-variant-' . $userVariant
 		] ) );
-		$modules = $this->getModules( $isMobile, $par );
+		$modules = $this->getModules( $this->isMobile, $par );
 
-		if ( $isMobile ) {
+		if ( $this->isMobile ) {
 			if (
 				array_key_exists( $par, $modules ) &&
 				$modules[$par]->supports( IDashboardModule::RENDER_MOBILE_DETAILS )
@@ -158,7 +159,7 @@ class SpecialHomepage extends SpecialPage {
 			$this->experimentUserManager->getVariant( $this->getUser() )
 		);
 		$this->statsdDataFactory->timing(
-			'timing.growthExperiments.specialHomepage.serverSideRender.' . ( $isMobile ? 'mobile' : 'desktop' ),
+			'timing.growthExperiments.specialHomepage.serverSideRender.' . ( $this->isMobile ? 'mobile' : 'desktop' ),
 			microtime( true ) - $startTime
 		);
 
@@ -169,7 +170,7 @@ class SpecialHomepage extends SpecialPage {
 				$this->pageviewToken,
 				$this->getContext()->getUser(),
 				$this->getRequest(),
-				$isMobile,
+				$this->isMobile,
 				$modules
 			);
 			DeferredUpdates::addCallableUpdate( static function () use ( $logger ) {
@@ -287,9 +288,21 @@ class SpecialHomepage extends SpecialPage {
 					if ( !$module ) {
 						continue;
 					}
+
+					$startTime = microtime( true );
+
 					$module->setPageURL( $this->getPageTitle()->getLinkURL() );
 					$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_DESKTOP );
 					$out->addHTML( $html );
+
+					$this->perDbNameStatsdDataFactory->timing(
+						implode( '.', [
+							'timing.growthExperiments.specialHomepage.ssr',
+							$moduleName,
+							$this->isMobile ? 'mobile' : 'desktop'
+						] ),
+						microtime( true ) - $startTime
+					);
 				}
 				$out->addHTML( Html::closeElement( 'div' ) );
 			}
