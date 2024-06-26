@@ -4,6 +4,8 @@
 			"Ezagren"
 		]
 	},
+	"growthexperiments-homepage-enable": "Tampaiakan laman tatambaian pamakai hanyar",
+	"growthexperiments-homepage-pt-link": "Baku gasan laman tatambaian pamakai hanyar matan tautan ngaran pamakai dalam pakakas paribadi",
 	"growthexperiments-homepage-startediting-header": "Mulai mambabak",
 	"growthexperiments-tour-response-tip-text": "Wayah patakunan {{GENDER:$1|Pian}} tajawab, {{GENDER:$1|Pian}} pacangan manarima pamadahan di sini.",
 	"growthexperiments-log-header": "Ini log tindakan nang diulah dalam éksténsi GrowthExperiments.",
