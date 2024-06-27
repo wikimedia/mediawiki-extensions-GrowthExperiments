@@ -105,6 +105,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Davam edin bildirişi",
 	"growthexperiments-edit-config-keep-going-notification-description": "Yeni gələnin bu bildirişi almaq hüququna malik olmaq üçün tamamlaya biləcəyi təklif olunan redaktələrin maksimum sayı. 0-a təyin edilərsə,<br> yeni gələnlər bu bildirişi almayacaq. Sayı nə qədər çox olarsa, bir o qədər çox yeni istifadəçi bu bildirişi alacaq.<br> Bu bildiriş yalnız ən azı bir Təklif edilən redaktəni tamamlamışlara göndərilir.",
 	"communityconfiguration-mentorship-title": "Mentorluq",
+	"communityconfiguration-mentorship-description": "Mentorlar və tərifə layiq istifadəçilər üçün redaktə limitlərini və vaxt çərçivələrini tənzimləyərkən mentorluq parametrlərini və uyğunluğunu fərdiləşdirin.",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Mentor kimi qeydiyyatdan keçmək üçün istifadəçinin qeydiyyatda olduğu minimum gün sayı",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Mentor kimi qeydiyyatdan keçmək üçün istifadəçinin etməli olduğu minimum redaktə sayı (istənilən ad fəzasında).",
 	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "İstifadəçinin tərifə layiq olduğunu qiymətləndirərkən nəzərə alınan günlərin sayı",

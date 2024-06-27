@@ -10,7 +10,8 @@
 			"Metalhead64",
 			"MrFraggle",
 			"Reinhard Kraasch",
-			"Umherirrender"
+			"Umherirrender",
+			"TMg"
 		]
 	},
 	"growthexperiments-desc": "Diese Erweiterung enthält Experimente des Growth-Teams.",
@@ -70,7 +71,7 @@
 	"growthexperiments-edit-config-mentorship-minimum-age": "Mindestanzahl von Tagen, die ein Benutzer registriert sein muss, um sich als Lotse/Lotsin anzumelden",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Mindestanzahl an Bearbeitungen, die ein Benutzer (in einem beliebigen Namensraum) vorgenommen haben muss, um sich als Lotse/Lotsin anzumelden",
 	"growthexperiments-edit-config-personalized-praise": "Persönliches Lob",
-	"growthexperiments-edit-config-personalized-praise-description": "Der Erhalt ermutigender Nachrichten von etablierten Benutzer kann die Bindung neuer Benutzer verbessern. Das personalisierte Lob-Modul bringt lobenswerte neue Benutzer zu ihrem Lotsen, um produktiven neuen Benutzern zu helfen, sich engagierter und in die Community eingebunden zu fühlen.",
+	"growthexperiments-edit-config-personalized-praise-description": "Der Erhalt ermutigender Nachrichten von etablierten Benutzern kann die Bindung neuer Benutzer verbessern. Das personalisierte Lob-Modul bringt lobenswerte neue Benutzer zu ihrem Lotsen, um produktiven neuen Benutzern zu helfen, sich engagierter und in die Community eingebunden zu fühlen.",
 	"growthexperiments-edit-config-personalized-praise-mentors-can-change": "Lotsen können diese Option für ihren eigenen Benutzer im Lotsen-Dashboard ändern.",
 	"growthexperiments-edit-config-personalized-praise-notification-frequency": "Wie oft sollten Lotsen standardmäßig Benachrichtigungen erhalten, um sie daran zu erinnern, Mentees, die erfolgreich etwas bearbeiten, eine Ermutigung zu senden?",
 	"growthexperiments-edit-config-personalized-praise-min-edits": "Standardmäßige Mindestanzahl an Bearbeitungen, die ein Mentee haben muss, um lobenswert zu sein",
