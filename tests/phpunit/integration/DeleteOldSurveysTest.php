@@ -80,9 +80,9 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 	 */
 	private function setRegistrationDate( User $user, string $date ) {
 		TestingAccessWrapper::newFromObject( $user )->mRegistration = wfTimestamp( TS_MW, $date );
-		$this->db->newUpdateQueryBuilder()
+		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'user' )
-			->set( [ 'user_registration' => $this->db->timestamp( $date ) ] )
+			->set( [ 'user_registration' => $this->getDb()->timestamp( $date ) ] )
 			->where( [ 'user_id' => $user->getId() ] )
 			->caller( __METHOD__ )
 			->execute();
