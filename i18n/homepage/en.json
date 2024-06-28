@@ -173,7 +173,7 @@
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Showing impact data for $1",
 	"growthexperiments-specialimpact-invalid-username": "Missing or invalid username.",
-	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Missing username parameter on included special page Impact.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "When including the special page \"Impact\" a username must be provided as the first parameter.",
 	"growthexperiments-homepage-claimmentee-no-user": "Mentee doesn't exist",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|You}} already mentor {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} opted out of mentorship",
