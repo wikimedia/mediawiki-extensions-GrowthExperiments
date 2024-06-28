@@ -8,7 +8,6 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
-use StatusValue;
 
 /**
  * @group API
@@ -28,15 +27,14 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 
 	/**
 	 * @param UserIdentity $user
-	 * @return StatusValue
 	 */
-	private function addMentor( UserIdentity $user ): StatusValue {
+	private function addMentor( UserIdentity $user ): void {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
-		return $geServices->getMentorWriter()->addMentor(
+		$this->assertStatusGood( $geServices->getMentorWriter()->addMentor(
 			$geServices->getMentorProvider()->newMentorFromUserIdentity( $user ),
 			$user,
 			''
-		);
+		) );
 	}
 
 	/**

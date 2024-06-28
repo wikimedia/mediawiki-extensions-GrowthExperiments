@@ -60,20 +60,20 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 			->newMentorFromUserIdentity( $mentorUser );
 		$writer = $geServices->getMentorWriter();
 
-		$writer->addMentor( $mentor, $mentorUser, 'Add mentor' );
+		$this->assertStatusGood( $writer->addMentor( $mentor, $mentorUser, 'Add mentor' ) );
 		$this->assertTrue( $mentorListTitle->exists() );
 		$revId = $this->getLatestEditId( $mentorListTitle );
 		$this->assertEditTagged( [ StructuredMentorWriter::CHANGE_TAG ], $revId );
 
 		$mentor->setWeight( IMentorWeights::WEIGHT_NONE );
 		$oldRevId = $revId;
-		$writer->changeMentor( $mentor, $mentorUser, 'Change mentor' );
+		$this->assertStatusGood( $writer->changeMentor( $mentor, $mentorUser, 'Change mentor' ) );
 		$revId = $this->getLatestEditId( $mentorListTitle );
 		$this->assertNotEquals( $oldRevId, $revId );
 		$this->assertEditTagged( [ StructuredMentorWriter::CHANGE_TAG ], $revId );
 
 		$oldRevId = $revId;
-		$writer->removeMentor( $mentor, $mentorUser, 'Remove mentor' );
+		$this->assertStatusGood( $writer->removeMentor( $mentor, $mentorUser, 'Remove mentor' ) );
 		$revId = $this->getLatestEditId( $mentorListTitle );
 		$this->assertNotEquals( $oldRevId, $revId );
 		$this->assertEditTagged( [ StructuredMentorWriter::CHANGE_TAG ], $revId );

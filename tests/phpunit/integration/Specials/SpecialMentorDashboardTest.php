@@ -41,11 +41,11 @@ class SpecialMentorDashboardTest extends SpecialPageTestBase {
 		$mentorWriter = $geServices->getMentorWriter();
 
 		$mentorUser = $this->getTestUser()->getUser();
-		$mentorWriter->addMentor(
+		$this->assertStatusGood( $mentorWriter->addMentor(
 			$mentorProvider->newMentorFromUserIdentity( $mentorUser ),
 			$mentorUser,
 			''
-		);
+		) );
 		$this->assertTrue( $mentorProvider->isMentor( $mentorUser ) );
 
 		/** @var string $html */

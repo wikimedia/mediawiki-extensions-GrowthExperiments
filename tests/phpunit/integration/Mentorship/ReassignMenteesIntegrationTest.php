@@ -62,8 +62,8 @@ class ReassignMenteesIntegrationTest extends MediaWikiIntegrationTestCase {
 			'foo',
 			IMentorWeights::WEIGHT_NONE
 		);
-		$writer->addMentor( $mentorAuto, $mentorAuto->getUserIdentity(), '' );
-		$writer->addMentor( $mentorManual, $mentorManual->getUserIdentity(), '' );
+		$this->assertStatusGood( $writer->addMentor( $mentorAuto, $mentorAuto->getUserIdentity(), '' ) );
+		$this->assertStatusGood( $writer->addMentor( $mentorManual, $mentorManual->getUserIdentity(), '' ) );
 
 		$quittingMentees = $this->getNMenteesForMentor(
 			3, $quittingMentorUser, $mentorAuto->getUserIdentity()
