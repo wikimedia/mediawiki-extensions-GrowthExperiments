@@ -91,7 +91,7 @@
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "עריכות ששוחזרו",
 	"growthexperiments-homepage-impact-scores-thanks-count": "תודות שהתקבלו",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "מידע נוסף על אופן הפעולה של התודות",
-	"growthexperiments-homepage-impact-scores-thanks-info-text": "אתר {{SITENAME}} נוצר על־ידי קהילה של עורכים {{GENDER:$1|כמוך}}. ייתכן {{GENDER:$1|שתורם אחר יודה לך}} על עריכה {{GENDER:$1|שעשית}}, {{GENDER:$1|ואתה יכול|ואת יכולה}} להודות לאחרים גם על העריכות שלהם. המדד יכלול רק תודות שהתקבלו עבור {{PLURAL:$2|העריכה האחרונה|$2 העריכות האחרונות}} שלך.",
+	"growthexperiments-homepage-impact-scores-thanks-info-text": "אתר {{SITENAME}} נוצר על־ידי קהילה של עורכים {{GENDER:$1|כמוך}}. ייתכן {{GENDER:$1|שתורמים אחרים יודו לך}} על עריכה {{GENDER:$1|שעשית}}, {{GENDER:$1|ואתה יכול|ואת יכולה}} להודות לאחרים גם על העריכות שלהם. המדד יכלול רק תודות שהתקבלו עבור {{PLURAL:$2|העריכה האחרונה|$2 העריכות האחרונות}} שלך.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "אתר {{SITENAME}} נוצר על־ידי קהילה של עורכים. כל תורם יכול לקבל תודה על עריכה מתורם אחר. מספר התודות שהתקבלו מוצג כאן. המדד יכלול רק תודות שהתקבלו עבור {{PLURAL:$1|העריכה האחרונה|$1 העריכות האחרונות}} שלך.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "זהו המספר הגבוה ביותר של ימים רצופים {{GENDER:$1|שעשית}} בהם עריכה אחת לפחות. המדד יכלול רק רצפי עריכה שכלולים {{PLURAL:$2|בעריכה האחרונה|ב־$2 העריכות האחרונות}} שלך.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "זהו המספר הגבוה ביותר של ימים שבהם בוצעה לפחות עריכה אחת. המדד יכלול רק רצפי עריכה שהתקבלו עבור {{PLURAL:$1|העריכה האחרונה|$1 העריכות האחרונות}} שלך.",
