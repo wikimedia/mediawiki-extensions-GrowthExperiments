@@ -1243,7 +1243,7 @@ class HomepageHooks implements
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {
 			$errorMessages = array_map(
-				static fn ( $spec ) => $context->msg( $spec->getKey(), ...$spec->getParams() )->parse(),
+				static fn ( $spec ) => $context->msg( $spec )->parse(),
 				$taskTypes->getMessages()
 			);
 			return [
@@ -1284,7 +1284,7 @@ class HomepageHooks implements
 		$topics = $configurationLoader->loadTopics();
 		if ( $topics instanceof StatusValue ) {
 			$errorMessages = array_map(
-				static fn ( $spec ) => $context->msg( $spec->getKey(), ...$spec->getParams() )->parse(),
+				static fn ( $spec ) => $context->msg( $spec )->parse(),
 				$topics->getMessages()
 			);
 			return [

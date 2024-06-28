@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ProperPageIdentity;
@@ -59,7 +58,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			->onlyMethods( [ 'loadTaskTypes' ] )
 			->getMockForAbstractClass();
 		$configurationLoader->method( 'loadTaskTypes' )
-			->willReturn( StatusValue::newFatal( new RawMessage( 'foo' ) ) );
+			->willReturn( StatusValue::newFatal( 'foo' ) );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 		$context = new RL\Context( MediaWikiServices::getInstance()->getResourceLoader(),
 			RequestContext::getMain()->getRequest() );
