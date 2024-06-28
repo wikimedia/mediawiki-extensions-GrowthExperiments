@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Mentorship\Provider;
 
-use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -10,37 +9,25 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserNameUtils;
 use MessageLocalizer;
 
-class StructuredMentorProvider extends MentorProvider {
-	use GetMentorDataTrait;
+abstract class AbstractStructuredMentorProvider extends MentorProvider {
 
 	private UserIdentityLookup $userIdentityLookup;
-	private UserNameUtils $userNameUtils;
 	private MessageLocalizer $messageLocalizer;
 
 	/**
-	 * @param WikiPageConfigLoader $configLoader
 	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param UserNameUtils $userNameUtils
 	 * @param MessageLocalizer $messageLocalizer
-	 * @param Title $mentorList
 	 */
 	public function __construct(
-		WikiPageConfigLoader $configLoader,
 		UserIdentityLookup $userIdentityLookup,
-		UserNameUtils $userNameUtils,
-		MessageLocalizer $messageLocalizer,
-		Title $mentorList
+		MessageLocalizer $messageLocalizer
 	) {
 		parent::__construct();
 
-		$this->configLoader = $configLoader;
 		$this->userIdentityLookup = $userIdentityLookup;
-		$this->userNameUtils = $userNameUtils;
 		$this->messageLocalizer = $messageLocalizer;
-		$this->mentorList = $mentorList;
 	}
 
 	/**
@@ -49,6 +36,13 @@ class StructuredMentorProvider extends MentorProvider {
 	public function getSignupTitle(): ?Title {
 		return SpecialPage::getTitleFor( 'EnrollAsMentor' );
 	}
+
+	/**
+	 * Get list of mentors
+	 *
+	 * @return array
+	 */
+	abstract protected function getMentorData(): array;
 
 	/**
 	 * @param UserIdentity $mentor

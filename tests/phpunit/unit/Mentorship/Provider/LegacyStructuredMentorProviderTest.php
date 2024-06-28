@@ -4,13 +4,12 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
+use GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorProvider;
 use MediaWiki\Message\Message;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserNameUtils;
 use MediaWiki\User\UserSelectQueryBuilder;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
@@ -18,9 +17,10 @@ use PHPUnit\Framework\MockObject\MockObject;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Mentorship\Provider\StructuredMentorProvider
+ * @covers \GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorProvider
+ * @covers \GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorProvider
  */
-class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
+class LegacyStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 
 	private const MENTOR_LIST_CONTENT = [
 		123 => [
@@ -70,31 +70,11 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		return $configLoader;
 	}
 
-	/**
-	 * @covers ::__construct
-	 */
-	public function testConstruct() {
-		$this->assertInstanceOf(
-			StructuredMentorProvider::class,
-			new StructuredMentorProvider(
-				$this->createNoOpMock( WikiPageConfigLoader::class ),
-				$this->createNoOpMock( UserIdentityLookup::class ),
-				$this->createNoOpMock( UserNameUtils::class ),
-				$this->createNoOpMock( MessageLocalizer::class ),
-				$this->createNoOpMock( Title::class )
-			)
-		);
-	}
-
-	/**
-	 * @covers ::getMentorData
-	 */
 	public function testGetMentorDataSuccess() {
-		$provider = new StructuredMentorProvider(
-			$this->getWikiConfigLoaderMock(),
+		$provider = new LegacyStructuredMentorProvider(
 			$this->createNoOpMock( UserIdentityLookup::class ),
-			$this->createNoOpMock( UserNameUtils::class ),
 			$this->createNoOpMock( MessageLocalizer::class ),
+			$this->getWikiConfigLoaderMock(),
 			$this->createNoOpMock( Title::class )
 		);
 
@@ -104,20 +84,16 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::getMentorData
-	 */
 	public function testGetMentorDataFailure() {
 		$statusMock = $this->createMock( Status::class );
 		$statusMock->expects( $this->once() )
 			->method( 'getWikiText' )
 			->willReturn( '' );
 
-		$provider = new StructuredMentorProvider(
-			$this->getWikiConfigLoaderMock( $statusMock ),
+		$provider = new LegacyStructuredMentorProvider(
 			$this->createNoOpMock( UserIdentityLookup::class ),
-			$this->createNoOpMock( UserNameUtils::class ),
 			$this->createNoOpMock( MessageLocalizer::class ),
+			$this->getWikiConfigLoaderMock( $statusMock ),
 			$this->createNoOpMock( Title::class )
 		);
 
@@ -131,14 +107,12 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	 * @param int $userId
 	 * @param array|null $expectedData
 	 * @dataProvider provideGetMentorDataForUser
-	 * @covers ::getMentorDataForUser
 	 */
 	public function testGetMentorDataForUser( int $userId, ?array $expectedData ) {
-		$provider = new StructuredMentorProvider(
-			$this->getWikiConfigLoaderMock(),
+		$provider = new LegacyStructuredMentorProvider(
 			$this->createNoOpMock( UserIdentityLookup::class ),
-			$this->createNoOpMock( UserNameUtils::class ),
 			$this->createNoOpMock( MessageLocalizer::class ),
+			$this->getWikiConfigLoaderMock(),
 			$this->createNoOpMock( Title::class )
 		);
 
@@ -218,18 +192,15 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::newMentorFromUserIdentity
-	 * @covers ::getDefaultMentorIntroText
 	 * @dataProvider provideNewMentorFromUserIdentity
 	 * @param int $userId
 	 * @param string $expectedMessage
 	 */
 	public function testNewMentorFromUserIdentity( int $userId, string $expectedMessage ) {
-		$provider = new StructuredMentorProvider(
-			$this->getWikiConfigLoaderMock(),
+		$provider = new LegacyStructuredMentorProvider(
 			$this->createNoOpMock( UserIdentityLookup::class ),
-			$this->createNoOpMock( UserNameUtils::class ),
 			$this->getMockMessageLocalizer(),
+			$this->getWikiConfigLoaderMock(),
 			$this->createNoOpMock( Title::class )
 		);
 
@@ -260,10 +231,6 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param int[] $expectedIds
 	 * @param string $methodToCall
-	 * @covers ::getMentors
-	 * @covers ::getMentorsSafe
-	 * @covers ::getAutoAssignedMentors
-	 * @covers ::getManuallyAssignedMentors
 	 * @dataProvider provideGetMentors
 	 */
 	public function testGetMentors( array $expectedIds, string $methodToCall ) {
@@ -277,11 +244,10 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		$userIdentityLookup->expects( $this->once() )->method( 'newSelectQueryBuilder' )
 			->willReturn( $queryBuilder );
 
-		$provider = new StructuredMentorProvider(
-			$this->getWikiConfigLoaderMock(),
+		$provider = new LegacyStructuredMentorProvider(
 			$userIdentityLookup,
-			$this->createNoOpMock( UserNameUtils::class ),
 			$this->getMockMessageLocalizer(),
+			$this->getWikiConfigLoaderMock(),
 			$this->createNoOpMock( Title::class )
 		);
 		$provider->$methodToCall();
@@ -296,9 +262,6 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		];
 	}
 
-	/**
-	 * @covers ::getWeightedAutoAssignedMentors
-	 */
 	public function testGetWeightedAutoAssignedMentors() {
 		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
 		$userIdentityLookup->expects( $this->atLeastOnce() )
@@ -314,11 +277,10 @@ class StructuredMentorProviderTest extends MediaWikiUnitTestCase {
 				);
 			} );
 
-		$provider = new StructuredMentorProvider(
-			$this->getWikiConfigLoaderMock(),
+		$provider = new LegacyStructuredMentorProvider(
 			$userIdentityLookup,
-			$this->createNoOpMock( UserNameUtils::class ),
 			$this->getMockMessageLocalizer(),
+			$this->getWikiConfigLoaderMock(),
 			$this->createNoOpMock( Title::class )
 		);
 

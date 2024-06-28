@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter;
+use GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use MediaWiki\Block\AbstractBlock;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
@@ -20,9 +20,10 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Mentorship\Provider\StructuredMentorWriter
+ * @covers \GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorWriter
+ * @covers \GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter
  */
-class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
+class LegacyStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 
 	private const MENTOR_LIST_CONTENT = [
 		123 => [
@@ -133,10 +134,10 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		$writer = $this->createMock( WikiPageConfigWriter::class );
 		$writer->expects( $this->once() )
 			->method( 'setVariable' )
-			->with( StructuredMentorWriter::CONFIG_KEY, $expectedMentorList );
+			->with( AbstractStructuredMentorWriter::CONFIG_KEY, $expectedMentorList );
 		$writer->expects( $this->once() )
 			->method( 'save' )
-			->with( $expectedSummary, false, StructuredMentorWriter::CHANGE_TAG )
+			->with( $expectedSummary, false, AbstractStructuredMentorWriter::CHANGE_TAG )
 			->willReturn( $status );
 
 		$factory = $this->createMock( WikiPageConfigWriterFactory::class );
@@ -147,33 +148,11 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::__construct
-	 */
-	public function testConstruct() {
-		$this->assertInstanceOf(
-			StructuredMentorWriter::class,
-			new StructuredMentorWriter(
-				$this->createNoOpMock( MentorProvider::class ),
-				$this->createNoOpMock( UserIdentityLookup::class ),
-				$this->createNoOpMock( UserFactory::class ),
-				$this->createNoOpMock( WikiPageConfigLoader::class ),
-				$this->createNoOpMock( WikiPageConfigWriterFactory::class ),
-				$this->createNoOpMock( StructuredMentorListValidator::class ),
-				$this->mentorList
-			)
-		);
-	}
-
-	/**
 	 * @param Mentor $mentor
 	 * @param bool $isBlocked
 	 * @param array $expectedNewMentor
 	 * @param string|null $expectedError
 	 * @param bool $expectLoad
-	 * @covers ::addMentor
-	 * @covers ::getMentorData
-	 * @covers ::saveMentorData
-	 * @covers ::serializeMentor
 	 * @dataProvider provideAddMentor
 	 */
 	public function testAddMentor(
@@ -196,13 +175,12 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
 			$userIdentityLookup = $this->createNoOpMock( UserIdentityLookup::class );
 		}
-		$mentorWriter = new StructuredMentorWriter(
+		$mentorWriter = new LegacyStructuredMentorWriter(
 			$this->createNoOpMock( MentorProvider::class ),
 			$userIdentityLookup,
 			$this->getUserFactoryMock( $isBlocked || $expectedError === null, $isBlocked ),
 			$this->getWikiConfigLoaderMock( $expectLoad ),
 			$configWriterFactory,
-			new StructuredMentorListValidator(),
 			$this->mentorList
 		);
 
@@ -270,9 +248,6 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param Mentor $mentor
 	 * @param string|null $expectedError
-	 * @covers ::removeMentor
-	 * @covers ::saveMentorData
-	 * @covers ::getMentorData
 	 * @dataProvider provideRemoveMentor
 	 */
 	public function testRemoveMentor( Mentor $mentor, ?string $expectedError ) {
@@ -286,13 +261,12 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		} else {
 			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
 		}
-		$mentorWriter = new StructuredMentorWriter(
+		$mentorWriter = new LegacyStructuredMentorWriter(
 			$this->createNoOpMock( MentorProvider::class ),
 			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->getUserFactoryMock( $expectedError === null ),
 			$this->getWikiConfigLoaderMock(),
 			$configWriterFactory,
-			new StructuredMentorListValidator(),
 			$this->mentorList
 		);
 
@@ -325,10 +299,6 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	 * @param Mentor $mentor
 	 * @param array $expectedNewMentor
 	 * @param string|null $expectedError
-	 * @covers ::changeMentor
-	 * @covers ::getMentorData
-	 * @covers ::saveMentorData
-	 * @covers ::serializeMentor
 	 * @dataProvider provideChangeMentor
 	 */
 	public function testChangeMentor(
@@ -349,13 +319,12 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$configWriterFactory = $this->createNoOpMock( WikiPageConfigWriterFactory::class );
 			$userIdentityLookup = $this->createNoOpMock( UserIdentityLookup::class );
 		}
-		$mentorWriter = new StructuredMentorWriter(
+		$mentorWriter = new LegacyStructuredMentorWriter(
 			$this->createNoOpMock( MentorProvider::class ),
 			$userIdentityLookup,
 			$this->getUserFactoryMock( $expectedError === null ),
 			$this->getWikiConfigLoaderMock(),
 			$configWriterFactory,
-			new StructuredMentorListValidator(),
 			$this->mentorList
 		);
 
@@ -397,16 +366,14 @@ class StructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param bool $isBlocked
 	 * @dataProvider provideIsBlocked
-	 * @covers ::isBlocked
 	 */
 	public function testIsBlocked( bool $isBlocked ) {
-		$writer = new StructuredMentorWriter(
+		$writer = new LegacyStructuredMentorWriter(
 			$this->createNoOpMock( MentorProvider::class ),
 			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->getUserFactoryMock( true, $isBlocked ),
 			$this->createNoOpMock( WikiPageConfigLoader::class ),
 			$this->createNoOpMock( WikiPageConfigWriterFactory::class ),
-			$this->createNoOpMock( StructuredMentorListValidator::class ),
 			$this->mentorList
 		);
 

@@ -6,8 +6,8 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\EchoNewPraiseworthyMent
 use GrowthExperiments\Mentorship\EchoMenteeClaimPresentationModel;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
@@ -262,14 +262,14 @@ class MentorHooks implements
 	 * @inheritDoc
 	 */
 	public function onListDefinedTags( &$tags ) {
-		$tags[] = StructuredMentorWriter::CHANGE_TAG;
+		$tags[] = AbstractStructuredMentorWriter::CHANGE_TAG;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function onChangeTagsListActive( &$tags ) {
-		$tags[] = StructuredMentorWriter::CHANGE_TAG;
+		$tags[] = AbstractStructuredMentorWriter::CHANGE_TAG;
 	}
 
 	/**

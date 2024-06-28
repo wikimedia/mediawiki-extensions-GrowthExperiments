@@ -14,7 +14,7 @@ use StatusValue;
  * This declares WikiPageConfigLoader $configLoader and LinkTarget $mentorList as private
  * variables, which need to be set by the constructor.
  */
-trait GetMentorDataTrait {
+trait LegacyGetMentorDataTrait {
 	use LoggerAwareTrait;
 
 	private WikiPageConfigLoader $configLoader;
@@ -30,7 +30,7 @@ trait GetMentorDataTrait {
 	 *
 	 * @return array
 	 */
-	private function getMentorData(): array {
+	protected function getMentorData(): array {
 		$res = $this->configLoader->load( $this->mentorList );
 		if ( $res instanceof StatusValue ) {
 			// Loading the mentor list failed. Log an error and return an empty array.

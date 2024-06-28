@@ -5,12 +5,13 @@ namespace GrowthExperiments\Tests\Integration;
 use ChangeTags;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
-use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
+use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Mentorship\Provider\StructuredMentorWriter
+ * @covers \GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorWriter
+ * @covers \GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter
  * @group Database
  */
 class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase {
@@ -46,12 +47,6 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 		);
 	}
 
-	/**
-	 * @covers ::addMentor
-	 * @covers ::changeMentor
-	 * @covers ::removeMentor
-	 * @covers ::saveMentorData
-	 */
 	public function testEditTagged() {
 		$mentorListTitle = $this->getNonexistingTestPage( 'MediaWiki:GrowthMentors.json' )->getTitle();
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
@@ -63,19 +58,19 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 		$this->assertStatusGood( $writer->addMentor( $mentor, $mentorUser, 'Add mentor' ) );
 		$this->assertTrue( $mentorListTitle->exists() );
 		$revId = $this->getLatestEditId( $mentorListTitle );
-		$this->assertEditTagged( [ StructuredMentorWriter::CHANGE_TAG ], $revId );
+		$this->assertEditTagged( [ AbstractStructuredMentorWriter::CHANGE_TAG ], $revId );
 
 		$mentor->setWeight( IMentorWeights::WEIGHT_NONE );
 		$oldRevId = $revId;
 		$this->assertStatusGood( $writer->changeMentor( $mentor, $mentorUser, 'Change mentor' ) );
 		$revId = $this->getLatestEditId( $mentorListTitle );
 		$this->assertNotEquals( $oldRevId, $revId );
-		$this->assertEditTagged( [ StructuredMentorWriter::CHANGE_TAG ], $revId );
+		$this->assertEditTagged( [ AbstractStructuredMentorWriter::CHANGE_TAG ], $revId );
 
 		$oldRevId = $revId;
 		$this->assertStatusGood( $writer->removeMentor( $mentor, $mentorUser, 'Remove mentor' ) );
 		$revId = $this->getLatestEditId( $mentorListTitle );
 		$this->assertNotEquals( $oldRevId, $revId );
-		$this->assertEditTagged( [ StructuredMentorWriter::CHANGE_TAG ], $revId );
+		$this->assertEditTagged( [ AbstractStructuredMentorWriter::CHANGE_TAG ], $revId );
 	}
 }

@@ -8,18 +8,12 @@ use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Mentorship\Provider\StructuredMentorProvider
+ * @covers \GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorProvider
+ * @covers \GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorProvider
  * @group Database
  */
 class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCase {
 
-	/**
-	 * @covers ::getMentors
-	 * @covers ::getMentorsSafe
-	 * @covers ::getAutoAssignedMentors
-	 * @covers ::getWeightedAutoAssignedMentors
-	 * @covers ::getManuallyAssignedMentors
-	 */
 	public function testNoMentorList() {
 		// ensure the mentor list indeed doesn't exist at this point
 		$this->overrideConfigValue( 'GEStructuredMentorList', 'MediaWiki:DoesNotExist.json' );
@@ -35,12 +29,6 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 		$this->assertArrayEquals( [], $mentorProvider->getManuallyAssignedMentors() );
 	}
 
-	/**
-	 * @covers ::getMentors
-	 * @covers ::getMentorsSafe
-	 * @covers ::getAutoAssignedMentors
-	 * @covers ::getManuallyAssignedMentors
-	 */
 	public function testEmptyMentorList() {
 		$this->insertPage(
 			'MediaWiki:GrowthMentors.json',
@@ -58,12 +46,6 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 		$this->assertArrayEquals( [], $mentorProvider->getManuallyAssignedMentors() );
 	}
 
-	/**
-	 * @covers ::getMentors
-	 * @covers ::getMentorsSafe
-	 * @covers ::getAutoAssignedMentors
-	 * @covers ::getManuallyAssignedMentors
-	 */
 	public function testWithMentors() {
 		$mentorAuto = $this->getMutableTestUser()->getUser();
 		$mentorManual = $this->getMutableTestUser()->getUser();
@@ -103,9 +85,6 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 		);
 	}
 
-	/**
-	 * @covers ::getWeightedAutoAssignedMentors
-	 */
 	public function testGetWeightedAutoAssignedMentors() {
 		$mentorAuto = $this->getMutableTestUser()->getUser();
 		$mentorManual = $this->getMutableTestUser()->getUser();

@@ -2,16 +2,13 @@
 
 namespace GrowthExperiments\Mentorship\Provider;
 
-use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
-use GrowthExperiments\Config\WikiPageConfigLoader;
-use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorshipSummaryCreator;
 use IDBAccessObject;
-use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
+use Psr\Log\LoggerAwareTrait;
 use StatusValue;
 
 /**
@@ -22,8 +19,8 @@ use StatusValue;
  *
  * This class uses WikiPageConfigWriter under the hood.
  */
-class StructuredMentorWriter implements IMentorWriter {
-	use GetMentorDataTrait;
+abstract class AbstractStructuredMentorWriter implements IMentorWriter {
+	use LoggerAwareTrait;
 
 	/** @var string Change tag to tag structured mentor list edits with */
 	public const CHANGE_TAG = 'mentor list change';
@@ -31,38 +28,31 @@ class StructuredMentorWriter implements IMentorWriter {
 	/** @var string */
 	public const CONFIG_KEY = 'Mentors';
 
-	private MentorProvider $mentorProvider;
-	private UserIdentityLookup $userIdentityLookup;
-	private UserFactory $userFactory;
-	private WikiPageConfigWriterFactory $configWriterFactory;
-	private StructuredMentorListValidator $mentorListValidator;
+	protected MentorProvider $mentorProvider;
+	protected UserIdentityLookup $userIdentityLookup;
+	protected UserFactory $userFactory;
 
 	/**
 	 * @param MentorProvider $mentorProvider
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserFactory $userFactory
-	 * @param WikiPageConfigLoader $configLoader
-	 * @param WikiPageConfigWriterFactory $configWriterFactory
-	 * @param StructuredMentorListValidator $mentorListValidator
-	 * @param Title $mentorList
 	 */
 	public function __construct(
 		MentorProvider $mentorProvider,
 		UserIdentityLookup $userIdentityLookup,
-		UserFactory $userFactory,
-		WikiPageConfigLoader $configLoader,
-		WikiPageConfigWriterFactory $configWriterFactory,
-		StructuredMentorListValidator $mentorListValidator,
-		Title $mentorList
+		UserFactory $userFactory
 	) {
 		$this->mentorProvider = $mentorProvider;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userFactory = $userFactory;
-		$this->configLoader = $configLoader;
-		$this->configWriterFactory = $configWriterFactory;
-		$this->mentorListValidator = $mentorListValidator;
-		$this->mentorList = $mentorList;
 	}
+
+	/**
+	 * Get list of mentors
+	 *
+	 * @return array
+	 */
+	abstract protected function getMentorData(): array;
 
 	/**
 	 * Serialize a Mentor object to an array
@@ -77,16 +67,23 @@ class StructuredMentorWriter implements IMentorWriter {
 		];
 	}
 
+	abstract protected function doSaveMentorData(
+		array $mentorData,
+		string $summary,
+		UserIdentity $performer,
+		bool $bypassWarnings
+	): StatusValue;
+
 	/**
-	 * Wrapper around WikiPageConfigWriter to save all mentor data
+	 * Save mentor data
 	 *
 	 * @param array $mentorData
 	 * @param string $summary
 	 * @param UserIdentity $performer
-	 * @param bool $bypassWarnings Should warnings raised by the validator stop the operation?
+	 * @param bool $bypassWarnings
 	 * @return StatusValue
 	 */
-	private function saveMentorData(
+	protected function saveMentorData(
 		array $mentorData,
 		string $summary,
 		UserIdentity $performer,
@@ -101,10 +98,8 @@ class StructuredMentorWriter implements IMentorWriter {
 		foreach ( $mentorData as $mentorId => $_ ) {
 			$mentorUser = $this->userIdentityLookup->getUserIdentityByUserId( $mentorId );
 			if ( !$mentorUser ) {
-				$this->logger->warning( $this->mentorList->getText() . ' contains an invalid user for ID {userId}', [
+				$this->logger->warning( 'Mentor list contains an invalid user for ID {userId}', [
 					'userId' => $mentorId,
-					'namespace' => $this->mentorList->getNamespace(),
-					'title' => $this->mentorList->getText()
 				] );
 				continue;
 			}
@@ -112,21 +107,12 @@ class StructuredMentorWriter implements IMentorWriter {
 			$mentorData[$mentorId]['username'] = $mentorUser->getName();
 		}
 
-		$configWriter = $this->configWriterFactory
-			->newWikiPageConfigWriter( $this->mentorList, $performer );
-		$configWriter->setVariable( self::CONFIG_KEY, $mentorData );
-		return $configWriter->save( $summary, false, self::CHANGE_TAG, $bypassWarnings );
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function isBlocked(
-		UserIdentity $performer,
-		int $freshness = IDBAccessObject::READ_NORMAL
-	): bool {
-		$block = $this->userFactory->newFromUserIdentity( $performer )->getBlock( $freshness );
-		return $block && $block->appliesToTitle( $this->mentorList );
+		return $this->doSaveMentorData(
+			$mentorData,
+			$summary,
+			$performer,
+			$bypassWarnings
+		);
 	}
 
 	/**

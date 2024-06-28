@@ -4,7 +4,6 @@ use CirrusSearch\CirrusSearch;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
-use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
@@ -31,10 +30,11 @@ use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\MentorRemover;
+use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
+use GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorProvider;
+use GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\Mentorship\Provider\StructuredMentorProvider;
-use GrowthExperiments\Mentorship\Provider\StructuredMentorWriter;
 use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -490,14 +490,13 @@ return [
 
 	'GrowthExperimentsMentorProviderStructured' => static function (
 		MediaWikiServices $services
-	): StructuredMentorProvider {
+	): AbstractStructuredMentorProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		$provider = new StructuredMentorProvider(
-			$geServices->getWikiPageConfigLoader(),
+		$provider = new LegacyStructuredMentorProvider(
 			$services->getUserIdentityLookup(),
-			$services->getUserNameUtils(),
 			new DerivativeContext( RequestContext::getMain() ),
+			$geServices->getWikiPageConfigLoader(),
 			$services->getTitleFactory()->newFromText(
 				$services->getMainConfig()->get( 'GEStructuredMentorList' )
 			)
@@ -556,15 +555,12 @@ return [
 	): IMentorWriter {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		$writer = new StructuredMentorWriter(
+		$writer = new LegacyStructuredMentorWriter(
 			$geServices->getMentorProvider(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
 			$geServices->getWikiPageConfigLoader(),
 			$geServices->getWikiPageConfigWriterFactory(),
-			new StructuredMentorListValidator(
-				$services->getUserIdentityLookup()
-			),
 			$services->getTitleFactory()->newFromText(
 				$services->getMainConfig()->get( 'GEStructuredMentorList' )
 			)
