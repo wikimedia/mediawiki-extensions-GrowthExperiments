@@ -62,11 +62,11 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	public function testGetMentorUserNew() {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$sysop = $this->getTestSysop()->getUser();
-		$geServices->getMentorWriter()->addMentor(
+		$this->assertStatusGood( $geServices->getMentorWriter()->addMentor(
 			$geServices->getMentorProvider()->newMentorFromUserIdentity( $sysop ),
 			$sysop,
 			''
-		);
+		) );
 
 		$mentorManager = $this->getMentorManager();
 		$mentor = $mentorManager->getMentorForUser( $this->getTestUser()->getUser() );
@@ -94,11 +94,11 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	public function testMentorCannotBeMentee() {
 		$user = $this->getMutableTestUser()->getUser();
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
-		$geServices->getMentorWriter()->addMentor(
+		$this->assertStatusGood( $geServices->getMentorWriter()->addMentor(
 			$geServices->getMentorProvider()->newMentorFromUserIdentity( $user ),
 			$user,
 			''
-		);
+		) );
 
 		$this->expectException( WikiConfigException::class );
 		$this->assertNull( $this->getMentorManager()->getMentorForUser( $user ) );
@@ -113,16 +113,16 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$provider = $geServices->getMentorProvider();
 		$writer = $geServices->getMentorWriter();
-		$writer->addMentor(
+		$this->assertStatusGood( $writer->addMentor(
 			$provider->newMentorFromUserIdentity( $userMentee ),
 			$userMentee,
 			''
-		);
-		$writer->addMentor(
+		) );
+		$this->assertStatusGood( $writer->addMentor(
 			$provider->newMentorFromUserIdentity( $userMentor ),
 			$userMentor,
 			''
-		);
+		) );
 
 		$mentor = $this->getMentorManager()->getMentorForUser( $userMentee );
 		$this->assertEquals( $mentor->getUserIdentity()->getName(), $userMentor->getName() );
@@ -146,7 +146,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$mentor = $geServices->getMentorProvider()->newMentorFromUserIdentity( $mentorUser );
 		$mentor->setIntroText( 'This is a sample text.' );
-		$geServices->getMentorWriter()->addMentor( $mentor, $mentorUser, '' );
+		$this->assertStatusGood( $geServices->getMentorWriter()->addMentor( $mentor, $mentorUser, '' ) );
 
 		$mentee = $this->getMutableTestUser()->getUser();
 		$geServices->getMentorStore()

@@ -53,11 +53,11 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
-		$growthServices->getMentorWriter()->addMentor(
+		$this->assertStatusGood( $growthServices->getMentorWriter()->addMentor(
 			$growthServices->getMentorProvider()->newMentorFromUserIdentity( $mentorUser ),
 			$mentorUser,
 			''
-		);
+		) );
 
 		$mentee = $this->getMutableTestUser()->getUser();
 		$context = new DerivativeContext( RequestContext::getMain() );
@@ -86,11 +86,11 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 			$this->getTestUser( 'sysop' )->getUser()
 		);
 		$mentor->setIntroText( 'description' );
-		$growthServices->getMentorWriter()->addMentor(
+		$this->assertStatusGood( $growthServices->getMentorWriter()->addMentor(
 			$mentor,
 			$mentor->getUserIdentity(),
 			''
-		);
+		) );
 
 		$mentee = $this->getMutableTestUser()->getUser();
 		$growthServices->getMentorStore()->setMentorForUser(

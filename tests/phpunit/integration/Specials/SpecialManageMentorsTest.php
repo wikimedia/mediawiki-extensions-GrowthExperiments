@@ -35,12 +35,13 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		$mentor = $geServices->getMentorProvider()
 			->newMentorFromUserIdentity( $this->mentorUser );
 		$mentor->setIntroText( 'this is intro' );
-		$geServices->getMentorWriter()
+		$this->assertStatusGood( $geServices->getMentorWriter()
 			->addMentor(
 				$mentor,
 				$this->mentorUser,
 				'Test'
-			);
+			)
+		);
 
 		// assign a mentee to the mentor
 		$geServices->getMentorStore()->setMentorForUser(

@@ -43,11 +43,11 @@ class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 	private function makeUserMentor( User $mentorUser ): User {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$mentor = $geServices->getMentorProvider()->newMentorFromUserIdentity( $mentorUser );
-		$geServices->getMentorWriter()->addMentor(
+		$this->assertStatusGood( $geServices->getMentorWriter()->addMentor(
 			$mentor,
 			$mentorUser,
 			''
-		);
+		) );
 		return $mentorUser;
 	}
 

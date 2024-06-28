@@ -59,11 +59,11 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 		$mentorWriter = $geServices->getMentorWriter();
 
 		$mentorUser = $this->getMutableTestUser()->getUser();
-		$mentorWriter->addMentor(
+		$this->assertStatusGood( $mentorWriter->addMentor(
 			$mentorProvider->newMentorFromUserIdentity( $mentorUser ),
 			$mentorUser,
 			''
-		);
+		) );
 		return $mentorUser;
 	}
 
