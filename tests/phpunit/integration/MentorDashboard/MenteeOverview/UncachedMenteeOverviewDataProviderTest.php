@@ -39,7 +39,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 
 	private function createMenteeWithEditCount( User $mentor, int $editcount ): User {
 		$mentee = $this->createMentee( $mentor );
-		$this->db->newUpdateQueryBuilder()
+		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'user' )
 			->set( [ 'user_editcount' => $editcount ] )
 			->where( [ 'user_id' => $mentee->getId() ] )
@@ -62,7 +62,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 
 	private function createMenteeWithRegistration( User $mentor, ?string $registration ) {
 		$mentee = $this->createMentee( $mentor );
-		$this->db->newUpdateQueryBuilder()
+		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'user' )
 			->set( [ 'user_registration' => $registration ] )
 			->where( [ 'user_id' => $mentee->getId() ] )
