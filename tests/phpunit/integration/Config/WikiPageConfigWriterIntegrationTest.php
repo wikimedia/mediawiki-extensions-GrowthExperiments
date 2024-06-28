@@ -21,9 +21,6 @@ use Wikimedia\TestingAccessWrapper;
  * @group Database
  */
 class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
-	/** @var GrowthExperimentsServices */
-	private $geServices;
-
 	/** @var Title */
 	private $defaultConfigTitle;
 
@@ -33,9 +30,6 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 		// Prevent GrowthExperimentsConfig.json caching
 		$this->setMainCache( CACHE_NONE );
 
-		$this->geServices = GrowthExperimentsServices::wrap(
-			$this->getServiceContainer()
-		);
 		$this->defaultConfigTitle = $this->getServiceContainer()
 			->getTitleFactory()
 			->newFromText( 'MediaWiki:GrowthExperimentsConfig.json' );
@@ -50,7 +44,7 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 		?LinkTarget $configPage = null,
 		?User $performer = null
 	): WikiPageConfigWriter {
-		return $this->geServices
+		return GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getWikiPageConfigWriterFactory()
 			->newWikiPageConfigWriter(
 				$configPage ?? $this->defaultConfigTitle,
@@ -59,7 +53,8 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function getLoader() {
-		return $this->geServices->getWikiPageConfigLoader();
+		return GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getWikiPageConfigLoader();
 	}
 
 	/**
