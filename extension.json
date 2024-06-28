@@ -740,6 +740,21 @@
 					"options": {
 						"helpPage": "Help:Growth/Tools/Suggested_edits"
 					}
+				},
+				"GrowthMentorList": {
+					"store": {
+						"type": "wikipage",
+						"args": [
+							"MediaWiki:GrowthMentors.json"
+						]
+					},
+					"validator": {
+						"type": "noop"
+					},
+					"type": "data",
+					"options": {
+						"skipDashboardListing": true
+					}
 				}
 			}
 		}
