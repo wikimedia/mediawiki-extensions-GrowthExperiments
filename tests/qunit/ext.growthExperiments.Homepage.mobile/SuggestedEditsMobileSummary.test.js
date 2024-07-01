@@ -28,7 +28,7 @@ QUnit.module( 'ext.growthExperiments.Homepage.mobile/SuggestedEditsMobileSummary
 	}
 } ) );
 
-QUnit.test( 'should show LastDayEditsWidget if there is no task preview ', function ( assert ) {
+QUnit.test( 'should show MobileNoTasksWidget if there is no task preview ', function ( assert ) {
 	const done = assert.async();
 	const getConfigStub = this.sandbox.stub( mw.config, 'get' );
 	getConfigStub.withArgs( 'homepagemodules' ).returns( {
@@ -36,8 +36,7 @@ QUnit.test( 'should show LastDayEditsWidget if there is no task preview ', funct
 		}
 	} );
 	getConfigStub.withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
-		taskCount: 0,
-		editCount: 10
+		taskCount: 0
 	} );
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
@@ -45,7 +44,7 @@ QUnit.test( 'should show LastDayEditsWidget if there is no task preview ', funct
 		homepageModuleLogger: { log() {} }
 	}, store );
 	module.initialize().then( () => {
-		assert.true( [ ...module.$content[ 0 ].classList ].includes( 'growthexperiments-last-day-edits-widget' ) );
+		assert.true( [ ...module.$content[ 0 ].classList ].includes( 'growthexperiments-suggestededits-mobilesummary-notasks-widget' ) );
 		done();
 	} );
 } );
@@ -75,7 +74,7 @@ QUnit.test( 'should hide page views in SmallTaskCard if task preview is availabl
 	} );
 } );
 
-QUnit.test( 'should show LastDayEditsWidget for updateUiBasedOnState if there is no current task', function ( assert ) {
+QUnit.test( 'should show MobileNoTasksWidget for updateUiBasedOnState if there is no current task', function ( assert ) {
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
@@ -83,7 +82,7 @@ QUnit.test( 'should show LastDayEditsWidget for updateUiBasedOnState if there is
 	}, store );
 	store.newcomerTasks.currentTaskIndex = -1;
 	module.updateUiBasedOnState();
-	assert.true( [ ...module.$content[ 0 ].classList ].includes( 'growthexperiments-last-day-edits-widget' ) );
+	assert.true( [ ...module.$content[ 0 ].classList ].includes( 'growthexperiments-suggestededits-mobilesummary-notasks-widget' ) );
 } );
 
 QUnit.test( 'should show the preview for the current task for updateUiBasedOnState', function ( assert ) {

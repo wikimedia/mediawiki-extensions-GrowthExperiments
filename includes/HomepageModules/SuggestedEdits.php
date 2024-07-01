@@ -27,7 +27,6 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Html\Html;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Status\Status;
@@ -569,36 +568,28 @@ class SuggestedEdits extends BaseModule {
 			return Html::rawElement( 'div', [ 'class' => [ 'growthexperiments-task-preview-widget' ] ],
 				$subheader . $this->getTaskCard() . $centeredButton );
 		} else {
-			// For some reason phan thinks $siteEditsPerDay and/or $metricNumber get double-escaped,
-			// but they are escaped just the right amount.
-			$siteEditsPerDay = $this->editInfoService->getEditsPerDay();
-			if ( $siteEditsPerDay instanceof StatusValue ) {
-				LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-					'Failed to load site edits per day stat: {status}',
-					[ 'status' => Status::wrap( $siteEditsPerDay )->getWikiText( false, false, 'en' ) ]
-				);
-				// TODO probably have some kind of fallback message?
-				$siteEditsPerDay = 0;
-			}
-			$metricNumber = $this->getContext()->getLanguage()->formatNum( $siteEditsPerDay );
-			$metricSubtitle = $this->getContext()
-				->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle' )
-				->params( $siteEditsPerDay )
+			$baseClass = 'growthexperiments-suggestededits-mobilesummary-notasks-widget';
+
+			$previewTitle = $this->getContext()
+				->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-notasks-title' )
+				->text();
+			$subtitle = $this->getContext()
+				->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle' )
 				->text();
 			$footerText = $this->getContext()
 				->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-footer' )
 				->text();
-			$noTaskPreviewContent = Html::rawElement( 'div', [ 'class' => 'suggested-edits-main' ],
-				Html::rawElement( 'div', [ 'class' => 'suggested-edits-icon' ] ) .
-				Html::rawElement( 'div', [ 'class' => 'suggested-edits-metric' ],
-					Html::element( 'div', [ 'class' => 'suggested-edits-metric-number' ], $metricNumber ) .
-					Html::element( 'div', [ 'class' => 'suggested-edits-metric-subtitle' ], $metricSubtitle )
+			$noTaskPreviewContent = Html::rawElement( 'div', [ 'class' => $baseClass . '__main' ],
+				Html::rawElement( 'div', [ 'class' => $baseClass . '__icon' ] ) .
+				Html::rawElement( 'div', [],
+					Html::element( 'div', [ 'class' => $baseClass . '__title' ], $previewTitle ) .
+					Html::element( 'div', [ 'class' => $baseClass . '__subtitle' ], $subtitle )
 				)
 			) . Html::element( 'div', [
-				'class' => 'suggested-edits-footer'
+				'class' => $baseClass . '__footer'
 			], $footerText );
 			return Html::rawElement( 'div', [
-				'class' => [ 'growthexperiments-last-day-edits-widget' ]
+				'class' => [ $baseClass ]
 			], $noTaskPreviewContent );
 		}
 	}
@@ -892,7 +883,6 @@ class SuggestedEdits extends BaseModule {
 		$data = [
 			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
 			'taskCount' => ( $taskSet instanceof TaskSet ) ? $taskSet->getTotalCount() : 0,
-			'editCount' => $isMobile ? $this->editInfoService->getEditsPerDay() : null,
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
 			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopics( $user );

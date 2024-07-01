@@ -1,0 +1,35 @@
+@import 'mediawiki.skin.variables.less';
+
+.growthexperiments-suggestededits-mobilesummary-notasks-widget {
+	&__main {
+		display: flex;
+		padding: 8px 16px 8px 0;
+	}
+
+	&__icon {
+		width: 64px;
+		// Image URLs are relative to the current CSS
+		background-image: url( ../../images/suggestededits/Topic-general-64w.svg );
+		background-repeat: no-repeat;
+		padding-right: 16px;
+	}
+
+	&__title {
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+
+	&__subtitle {
+		font-size: 0.8em;
+	}
+
+	&__footer {
+		// This is a fake footer (last div in the body, not a real footer); style it like the footer
+		// Negate the padding on .growthexperiments-homepage-module in Homepage.less
+		margin: 16px -16px -16px -16px;
+		padding: 12px 24px 12px;
+		background-color: @background-color-base;
+		color: @color-subtle;
+		font-size: 0.8em;
+	}
+}
