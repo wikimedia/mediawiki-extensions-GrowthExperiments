@@ -82,7 +82,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "דף היעד שאפשר ללמוד בו עוד על הוספת מקורות.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "עדכון: תבניות למציאת ערכים שזקוקים לעדכון עם מידע נוכחי.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "דף היעד שאפשר ללמוד בו עוד על עדכון ערכים.",
-	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "דף יעד למידע נוסף על סוג המשימה הצעת קישור.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "דף יעד למידע נוסף על סוג המשימה הצעת תמונה.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "המספר המרבי של הצעות קישורים שיוצגו בכל משימה מוצעת.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "המספר המרבי של משימות \"הוספת קישור\" שמשתמש מתחיל יכול להשלים ביום.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-excluded-sections": "רשימת שמות פרקים שלא צריך להמליץ על קישורים בשבילם.",
@@ -106,7 +106,7 @@
 	"growthexperiments-edit-config-keep-going-notification-description": "המספר המרבי של עריכות מוצעות שמשתמש חדש צריך להשלים כדי להיות זכאי לקבלת ההתראה הזאת. אם זה 0, שום משתמש חדש לא יקבל את ההתראה הזאת. ככל שהמספר גבוה יותר, כך יותר משתמשים חדשים יקבלו את ההתראה הזאת. ההתראה הזאת נשלחת רק למצטרפים חדשים שכבר השלימו לפחות עריכה מוצעת אחת.",
 	"communityconfiguration-helppanel-title": "חלונית עזרה",
 	"communityconfiguration-helppanel-description": "התאמה אישית של חלונית עזרה כדי להתאים לדרישות הקהילה שלך ולהגדיר משאבים בתוכה כדי לסייע ולהנחות עורכים חדשים.",
-	"communityconfiguration-helppanel-info-text": "חלונית העזרה יכולה להיות זמינה בכל מרחב שם, במצב קריאה או עריכה, כפי שהוגדר להלן. היא כוללת את היכולת לחפש עזרה, ללחוץ על קישורי עזרה ולשלוח שאלות לחונכים או לדלפק הייעוץ. היא מציגה חמישה קישורים וקישור ''להציג עוד'' אחד. ניתן להגדיר אותם כך שיהי כל קישור בוויקי, אבל יש כמה יעדים מומלצים להלן.",
+	"communityconfiguration-helppanel-info-text": "חלונית העזרה יכולה להיות זמינה בכל מרחב שם, במצב קריאה או עריכה, כפי שהוגדר להלן. היא כוללת את היכולת לחפש עזרה, ללחוץ על קישורי עזרה ולשלוח שאלות לחונכים או לדלפק הייעוץ. ניתן להגדיר אותם לכל קישור בוויקי, אבל יש כמה יעדים מומלצים להלן.",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-label": "לאן להפנות שאלות מחלונית העזרה?",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "דפי שיחה של חונכים",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-help-desk-page-label": "דלפק העזרה",
@@ -151,7 +151,7 @@
 	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-help-text": "המספר המרבי של עריכות מוצעות שמשתמש חדש צריך להשלים כדי להיות זכאי לקבלת ההתראה הזאת. אם זה 0, שום משתמש חדש לא יקבל את ההתראה הזאת. ככל שהמספר גבוה יותר, כך יותר משתמשים חדשים יקבלו את ההתראה הזאת. ההתראה הזאת נשלחת רק למצטרפים חדשים שכבר השלימו לפחות עריכה מוצעת אחת.",
 	"communityconfiguration-growthsuggestededits-title": "עריכות מוצעות",
 	"communityconfiguration-growthsuggestededits-description": "התאמה אישית של תכונת העריכה המוצעת של דף הבית לעורכים חדשים.",
-	"communityconfiguration-growthsuggestededits-info-text": "עריכות מוצעות עוזרות לעורכים חדשים להתחיל לערוך. למצטרפים חדשים באתר למחשבים ובאתר לניידים יש גישה לעריכות מוצעות דרך דף הבית למתחילים. עריכות מוצעות יקבלו את התג \"משימה למתחיל\".\n\n''נא לשים לב לכך שעדכונים לטופס הזה לא ישפיעו על עריכות מוצעות ביישומי ויקיפדיה ל־iOS ול־Android. נא לפנות לצוות היישומים דרך [https://www.mediawiki.org/wiki/Talk:Wikimedia_Apps Talk:Wikimedia_Apps] כדי לדון בתכונות היישומים לנייד.''",
+	"communityconfiguration-growthsuggestededits-info-text": "עריכות מוצעות עוזרות לעורכים חדשים להתחיל לערוך. למצטרפים חדשים באתר למחשבים ובאתר לניידים יש גישה לעריכות מוצעות דרך דף הבית למתחילים. עריכות מוצעות יקבלו את התג \"משימה למתחיל\". ''נא לשים לב לכך שעדכונים לטופס הזה לא ישפיעו על עריכות מוצעות ביישומי ויקיפדיה ל־iOS ול־Android. נא לפנות לצוות היישומים דרך [https://www.mediawiki.org/wiki/Talk:Wikimedia_Apps Talk:Wikimedia_Apps] כדי לדון בתכונות היישומים לנייד.''\n\nחלק מהסוגים של משימות למתחילים מוצפים דרך תבניות תחזוקה. ערכים שמכילים את התבניות האלו נוספים להזנת העריכות המוצעות בדף הבית. כדי לראות כמה ערכים זמינים לכל סוג משימה, ר' [[Special:NewcomerTasksInfo]].",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "תבניות מידע",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "התבניות האלו נחוצות עבור תכונת המשימות של הצעות לתמונות למשתמשים חדשים. ערכים שמכילים את התבניות האלו לא יופיעו כמשימות הצעת תמונה.",
 	"communityconfiguration-growthsuggestededits-copyedit-label": "הגהה",
@@ -207,5 +207,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-label": "משקל הערכים עם מעט מדי קישורים",
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "זה משפיע על סדר העדיפויות של ערכים עם מעט מדי קישורים. השדה הזה דורש אחוז בצורתו העשרונית, כך שהמספר צריך להיות בין 0 ל־1. ככל {{GENDER:|שתגדיל|שתגדילי}} את המספר הזה, כך יגדל הסיכוי שמצטרפים חדשים יקבלו הצעות לערך עם מעט מדי קישורים.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "דירוג קישור מינימלי נדרש",
-	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "סף ביטחון מינימלי להצעת קישור. השדה הזה מחייב אחוז בצורתו העשרונית, כך שהמספר צריך להיות בין 0 ל־1. אם {{GENDER:|תגדיל|תגדילי}} את המספר, תהיה סבירות גבוהה יותר שהצעות שמוצגות למשתמש הקצה יהיו טובות, אבל יהיו זמינות פחות הצעות. אם {{GENDER:|תקטין|תקטיני}} את המספר, יהיו זמינות הצעות נוספות, אך לחלקן תהיה סבירות נמוכה יותר להיות הצעות באיכות טובה."
+	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "סף ביטחון מינימלי להצעות קישור. השדה הזה מחייב אחוז בצורתו העשרונית, כך שהמספר צריך להיות בין 0 ל־1. אם {{GENDER:|תגדיל|תגדילי}} את המספר, תהיה סבירות גבוהה יותר שהצעות שמוצגות למשתמש הקצה יהיו טובות, אבל יהיו זמינות פחות הצעות. אם {{GENDER:|תקטין|תקטיני}} את המספר, יהיו זמינות הצעות נוספות, אך לחלקן תהיה סבירות נמוכה יותר להיות הצעות באיכות טובה."
 }

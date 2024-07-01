@@ -108,9 +108,18 @@
 	"growthexperiments-edit-config-delayed": "Les modifications apportées à ce paramètre ne prendront pas effet immédiatement (voir [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Fermer",
 	"specialpages-group-growth-tools": "Outils de croissance",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Nombre maximum de modifications qu'un nouvel arrivant peut effectuer pour pouvoir recevoir cette notification. Si défini sur 0, aucun nouveaux arrivants</br> ne recevra cette notification. Plus le nombre est élevé, plus les nouveaux arrivants recevront cette notification.<br> Cette notification n'est envoyée qu'aux nouveaux arrivants qui n'ont pas effectué les modifications suggérées.",
+	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Pages de discussion du mentor",
+	"communityconfiguration-helppanel-gehelppanellinks-title-label": "Page de destination",
 	"communityconfiguration-helppanel-gehelppanellinks-title-placeholder": "Aide:Comment rédiger un bon article",
+	"communityconfiguration-helppanel-gehelppanellinks-text-label": "Libellé",
 	"communityconfiguration-helppanel-gehelppanellinks-text-placeholder": "Comment rédiger un bon article",
+	"communityconfiguration-helppanel-gehelppanellinks-add-element-button-label": "Ajouter un autre lien",
+	"communityconfiguration-mentorship-title": "Mentorat",
 	"communityconfiguration-mentorship-info-text": "Les nouveaux arrivants peuvent être automatiquement affectés à des mentors, et ils sont classés comme « Mentors attribués automatiquement » dans le [[Special:ManageMentors|Tableau de bord des Mentors]]. Un mentor peut également mettre à jour ses paramètres dans le tableau de bord Mentor pour réclamer uniquement les mentorés manuellement, puis ils y sont classés comme « Mentors attribués manuellement ». Le nombre idéal de mentors est : un mentor pour chaque groupe de 500 nouveaux comptes, avec un minimum de 3 mentors. Les mentorés peuvent également recevoir des messages d'encouragement de la part d'éditeurs établis, ce qui peut améliorer la rétention des nouveaux éditeurs. Le module d'éloges personnalisés présente les nouveaux éditeurs dignes d'éloges à leur mentor, pour aider les nouveaux éditeurs productifs à se sentir plus engagés et impliqués dans la communauté.",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-control-label": "Les contributeurs qui répondent à tous les critères d'éligibilité sont automatiquement inscrits en tant que mentors",
-	"communityconfiguration-mentorship-gementorshipenabled-control-label": "Les fonctionnalités de mentorat sont activées"
+	"communityconfiguration-mentorship-gementorshipenabled-control-label": "Les fonctionnalités de mentorat sont activées",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Nombre minimal de jours pendant lesquels l’utilisateur doit avoir été inscrit pour s’inscrire comme mentor",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Nombre minimum de modifications que l’utilisateur doit avoir effectuées (sur n’importe quel espace de noms) pour s’inscrire comme mentor",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Les mentors peuvent modifier cette option pour leur propre utilisateur dans le tableau de bord du mentor."
 }

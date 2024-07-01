@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"DDPAT",
+			"Facenapalm",
 			"Ice bulldog",
 			"Iniquity",
 			"Kareyac",
@@ -25,5 +26,6 @@
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Модуль наставничества полностью деактивирован. Обычно это устанавливается программным обеспечением и используется для А/Б-тестирования.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Наставляемый отказался от наставничества; отношения подопечный/наставник будут удалены, модуль наставничества будет заменен с возможностью вернуться",
 	"apihelp-query+growthmenteestatus-summary": "Запрос статуса подопечного текущего пользователя; см. документацию action=growthsetmenteestatus для получения подробной информации об отдельных статусах.",
-	"apihelp-query+growthmentormentee-summary": "Получить всех подопечных, назначенных данному наставнику"
+	"apihelp-query+growthmentormentee-summary": "Получить всех подопечных, назначенных данному наставнику",
+	"apihelp-query+growthmentorlist-summary": "Перечислить всех менторов"
 }
