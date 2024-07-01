@@ -29,7 +29,8 @@
 			"Wnme",
 			"Thereoper",
 			"Filzstift",
-			"Johannnes89"
+			"Johannnes89",
+			"TMg"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -329,7 +330,7 @@
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Alle entfernen",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Wähle einige Themen, die {{GENDER:$1|du}} gerne bearbeiten möchtest",
 	"growthexperiments-homepage-claimmentee-title": "Betreuung zuordnen",
-	"growthexperiments-homepage-claimmentee-pretext": "Diese Seite ermöglicht es {{GENDER:$1|dir}} als Lotse, einen Neuling zu übernehmen. Diese Funktion kann für Neulinge verwendet werden, die  {{GENDER:$1|du}} kennst oder die {{GENDER:$1|du}} in einem Kurs betreust.",
+	"growthexperiments-homepage-claimmentee-pretext": "Diese Seite ermöglicht es dir als {{GENDER:$1|Lotse|Lotsin}}, einen Neuling zu übernehmen. Diese Funktion kann für Neulinge verwendet werden, die {{GENDER:$1|du}} kennst oder die {{GENDER:$1|du}} in einem Kurs betreust.",
 	"growthexperiments-homepage-claimmentee-mentee": "Benutzername des Betreuten",
 	"growthexperiments-homepage-claimmentee-reason": "Begründung für die Zuordnung des Betreuten",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Du}} hast {{Gender:$4|den Lotsen|die Lotsin}} {{PLURAL:$2|des Benutzers|der Benutzer}} $1 zu {{GENDER:$4|$5}} geändert. Zurück zur [[Special:MentorDashboard|Lotsen-Verwaltungsseite]].",
@@ -353,7 +354,7 @@
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|ist}} {{GENDER:$2|dein neuer Lotse|deine neue Lotsin}}.",
 	"growthexperiments-notification-body-mentor-change": "Grund: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Sag}} hallo zu {{GENDER:$2|deinem neuen Lotsen|deiner neuen Lotsin}}!",
-	"growthexperiments-homepage-claimmentee-must-be-mentor": "Du musst in der Liste [[$2]] als {{GENDER:$1|Lotse|Lotsin}} aufgeführt sein, um die Funktion Special:ClaimMentee nutzen zu können",
+	"growthexperiments-homepage-claimmentee-must-be-mentor": "Du musst in der Liste [[$2]] als {{GENDER:$1|Lotse|Lotsin}} aufgeführt sein, um die Funktion Spezial:Neulingsübernahme nutzen zu können",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Die Liste der Lotsen/Lotsinnen enthält (einen) Fehler.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Die Liste der Lotsinnen/Lotsen ([[$1]]) existiert nicht oder enthält Fehler.",
 	"growthexperiments-notification-learn-more": "Erfahre mehr über {{GENDER:$1|}}{{GENDER:$2|deinen neuen Lotsen|deine neue Lotsin}}",
@@ -486,7 +487,7 @@
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph1": "Der Vorschlag kann in keinem Zusammenhang mit dem Artikel stehen, von geringer Qualität sein oder aus anderen Gründen nicht dazugehören. Entscheide durch {{GENDER:|dein}} Urteil, ob der Vorschlag richtig oder falsch ist.",
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph2": "Schreibe für Bilder, die {{GENDER:|du}} akzeptierst, eine kurze Bildunterschrift, und dann wird {{GENDER:|deine}} Bearbeitung veröffentlicht.",
 	"growthexperiments-addimage-skip-dialog-title": "Bist du dir bei diesem Bild nicht sicher?",
-	"growthexperiments-addimage-skip-dialog-body": "Bestätige, dass {{GENDER:||du}} diesen Vorschlag überspringen möchtest.",
+	"growthexperiments-addimage-skip-dialog-body": "Bestätige, dass {{GENDER:|du}} diesen Vorschlag überspringen möchtest.",
 	"growthexperiments-addimage-skip-dialog-confirm": "Vorschlag überspringen",
 	"growthexperiments-addimage-skip-dialog-cancel": "Abbrechen",
 	"growthexperiments-newcomertasks-invalid-tasktype": "Ungültige(r) Aufgabentyp(en): $1",
