@@ -107,52 +107,35 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public const ADD_SECTION_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addsectionimage-caption-onboarding';
 
-	/** @var ExperimentUserManager */
-	private $experimentUserManager;
+	private ?PageViewService $pageViewService;
 
-	/** @var PageViewService|null */
-	private $pageViewService;
+	private ConfigurationLoader $configurationLoader;
 
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
+	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 
-	/** @var NewcomerTasksUserOptionsLookup */
-	private $newcomerTasksUserOptionsLookup;
+	private TaskSuggester $taskSuggester;
 
-	/** @var TaskSuggester */
-	private $taskSuggester;
+	private TitleFactory $titleFactory;
 
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var ProtectionFilter */
-	private $protectionFilter;
+	private ProtectionFilter $protectionFilter;
 
 	/** @var string[] cache key => HTML */
-	private $htmlCache = [];
+	private array $htmlCache = [];
 
 	/** @var TaskSet|StatusValue */
 	private $tasks;
 
-	/** @var ButtonGroupWidget */
-	private $buttonGroupWidget;
+	private ButtonGroupWidget $buttonGroupWidget;
 
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
+	private UserOptionsLookup $userOptionsLookup;
 
-	/** @var NavigationWidgetFactory */
-	private $navigationWidgetFactory;
+	private ?NavigationWidgetFactory $navigationWidgetFactory = null;
 
-	/** @var LinkRecommendationFilter */
-	private $linkRecommendationFilter;
-	/**
-	 * @var ImageRecommendationFilter
-	 */
-	private $imageRecommendationFilter;
-	/**
-	 * @var CampaignConfig
-	 */
-	private $campaignConfig;
+	private LinkRecommendationFilter $linkRecommendationFilter;
+
+	private ImageRecommendationFilter $imageRecommendationFilter;
+
+	private CampaignConfig $campaignConfig;
 
 	/**
 	 * @param IContextSource $context
@@ -185,7 +168,6 @@ class SuggestedEdits extends BaseModule {
 		ImageRecommendationFilter $imageRecommendationFilter
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
-		$this->experimentUserManager = $experimentUserManager;
 		$this->pageViewService = $pageViewService;
 		$this->configurationLoader = $configurationLoader;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
