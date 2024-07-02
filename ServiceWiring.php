@@ -1,7 +1,6 @@
 <?php
 
 use CirrusSearch\CirrusSearch;
-use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
@@ -9,7 +8,6 @@ use GrowthExperiments\Config\Validation\StructuredMentorListValidator;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
-use GrowthExperiments\EditInfoService;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -210,16 +208,6 @@ return [
 			$geServices->getWikiPageConfigLoader(),
 			$services->getMainConfig()->get( 'GEWikiConfigPageTitle' ),
 			defined( 'MW_PHPUNIT_TEST' ) && $services->isStorageDisabled()
-		);
-	},
-
-	'GrowthExperimentsEditInfoService' => static function ( MediaWikiServices $services ): EditInfoService {
-		$project = $services->get( '_GrowthExperimentsAQSConfig' )->project;
-
-		return new AqsEditInfoService(
-			$services->getHttpRequestFactory(),
-			$services->getMainWANObjectCache(),
-			$project
 		);
 	},
 

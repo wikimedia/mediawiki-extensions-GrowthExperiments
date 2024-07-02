@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use GrowthExperiments\EditInfoService;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\StaticMentorManager;
@@ -26,11 +25,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		$this->setService( 'GrowthExperimentsEditInfoService', new class extends EditInfoService {
-			public function getEditsPerDay() {
-				return 0;
-			}
-		} );
 		$this->setService( 'GrowthExperimentsMentorManager', new StaticMentorManager( [] ) );
 
 		// Needed to avoid errors in DeferredUpdates from the SpecialHomepageLogger

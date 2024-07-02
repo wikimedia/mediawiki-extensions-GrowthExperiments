@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -107,7 +106,6 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			->willReturn( $requestMock );
 		$contextMock->method( 'msg' )
 			->willReturn( $this->getMockMessage() );
-		$editInfoServiceMock = $this->createMock( EditInfoService::class );
 		$experimentUserManagerMock = $this->createMock( ExperimentUserManager::class );
 		$experimentUserManagerMock->method( 'getVariant' )
 			->willReturn( 'X' );
@@ -149,7 +147,6 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$contextMock,
 			GlobalVarConfig::newInstance(),
 			$campaignConfig,
-			$editInfoServiceMock,
 			$experimentUserManagerMock,
 			$pageViewServiceMock,
 			$staticConfigLoader,

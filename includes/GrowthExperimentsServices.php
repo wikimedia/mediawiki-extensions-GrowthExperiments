@@ -117,10 +117,6 @@ class GrowthExperimentsServices {
 		}
 	}
 
-	public function getEditInfoService(): EditInfoService {
-		return $this->coreServices->get( 'GrowthExperimentsEditInfoService' );
-	}
-
 	public function getExperimentUserManager(): ExperimentUserManager {
 		return $this->coreServices->get( 'GrowthExperimentsExperimentUserManager' );
 	}

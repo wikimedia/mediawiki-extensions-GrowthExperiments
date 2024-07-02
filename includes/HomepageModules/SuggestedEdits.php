@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
@@ -108,9 +107,6 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public const ADD_SECTION_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addsectionimage-caption-onboarding';
 
-	/** @var EditInfoService */
-	private $editInfoService;
-
 	/** @var ExperimentUserManager */
 	private $experimentUserManager;
 
@@ -162,7 +158,6 @@ class SuggestedEdits extends BaseModule {
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
 	 * @param CampaignConfig $campaignConfig
-	 * @param EditInfoService $editInfoService
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
 	 * @param ConfigurationLoader $configurationLoader
@@ -178,7 +173,6 @@ class SuggestedEdits extends BaseModule {
 		IContextSource $context,
 		Config $wikiConfig,
 		CampaignConfig $campaignConfig,
-		EditInfoService $editInfoService,
 		ExperimentUserManager $experimentUserManager,
 		?PageViewService $pageViewService,
 		ConfigurationLoader $configurationLoader,
@@ -191,7 +185,6 @@ class SuggestedEdits extends BaseModule {
 		ImageRecommendationFilter $imageRecommendationFilter
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
-		$this->editInfoService = $editInfoService;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->pageViewService = $pageViewService;
 		$this->configurationLoader = $configurationLoader;
