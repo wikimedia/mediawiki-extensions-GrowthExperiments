@@ -1,5 +1,5 @@
 var TaskPreviewWidget = require( './TaskPreviewWidget.js' ),
-	LastDayEditsWidget = require( './LastDayEditsWidget.js' );
+	MobileNoTasksWidget = require( './MobileNoTasksWidget.js' );
 
 /**
  * Mobile-summary view of the suggested edits module
@@ -22,7 +22,7 @@ function SuggestedEditsMobileSummary( config, rootStore ) {
 	this.rootStore = rootStore;
 	this.tasksStore = rootStore.newcomerTasks;
 	this.$element = config.$element;
-	this.$content = this.$element.find( '.growthexperiments-task-preview-widget, .growthexperiments-last-day-edits-widget' );
+	this.$content = this.$element.find( '.growthexperiments-task-preview-widget, .growthexperiments-suggestededits-mobilesummary-notasks-widget' );
 }
 
 OO.inheritClass( SuggestedEditsMobileSummary, OO.ui.Widget );
@@ -100,9 +100,7 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 		}.bind( this ) );
 
 	} else if ( tasksStore.getTaskCount() === 0 ) {
-		this.replaceContent( new LastDayEditsWidget( {
-			editCount: tasksStore.editCount
-		} ) );
+		this.replaceContent( new MobileNoTasksWidget() );
 		promise.resolve();
 
 	} else if ( taskPreviewData && taskPreviewData.error ) {
@@ -141,7 +139,7 @@ SuggestedEditsMobileSummary.prototype.enableSuggestedEditsActivation = function 
 
 /**
  * Update the module based on the latest store state.
- * Show the preview card if there is a task shown or the LastDayEditsWidget if there is no task
+ * Show the preview card if there is a task shown or the MobileNotTasksWidget if there is no task
  * (in SuggestedEditsModule, the user can navigate past the end of the queue)
  */
 SuggestedEditsMobileSummary.prototype.updateUiBasedOnState = function () {
@@ -149,9 +147,7 @@ SuggestedEditsMobileSummary.prototype.updateUiBasedOnState = function () {
 	if ( currentTask ) {
 		this.showPreviewForCurrentTask();
 	} else {
-		this.replaceContent( new LastDayEditsWidget( {
-			editCount: this.tasksStore.editCount
-		} ) );
+		this.replaceContent( new MobileNoTasksWidget() );
 	}
 };
 
