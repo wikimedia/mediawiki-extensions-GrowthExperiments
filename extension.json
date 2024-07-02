@@ -746,7 +746,10 @@
 						"type": "wikipage",
 						"args": [
 							"MediaWiki:GrowthMentors.json"
-						]
+						],
+						"options": {
+							"extraTags": [ "mentor list change" ]
+						}
 					},
 					"validator": {
 						"type": "noop"
