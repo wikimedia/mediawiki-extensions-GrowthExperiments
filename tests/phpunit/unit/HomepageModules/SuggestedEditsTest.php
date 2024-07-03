@@ -17,6 +17,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use Language;
+use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Config\HashConfig;
@@ -156,7 +157,8 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$protectionFilter,
 			$userOptionsLookupMock,
 			$linkRecommendationFilter,
-			$imageRecommendationFilter
+			$imageRecommendationFilter,
+			$this->createMock( StatsdDataFactoryInterface::class )
 		) extends SuggestedEdits
 		{
 
