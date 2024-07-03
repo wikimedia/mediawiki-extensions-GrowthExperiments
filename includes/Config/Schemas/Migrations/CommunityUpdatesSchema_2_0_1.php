@@ -2,16 +2,17 @@
 
 namespace GrowthExperiments\Config\Schemas;
 
-use GrowthExperiments\Config\Schemas\Converters\CommunityUpdatesConverter_2_0_2;
+use GrowthExperiments\Config\Schemas\Converters\CommunityUpdatesConverter_2_0_1;
 use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefinitions;
 
+// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
-class CommunityUpdatesSchema extends JsonSchema {
+class CommunityUpdatesSchema_2_0_1 extends JsonSchema {
 
-	public const SCHEMA_PREVIOUS_VERSION = '2.0.1';
-	public const VERSION = '2.0.2';
-	public const SCHEMA_CONVERTER = CommunityUpdatesConverter_2_0_2::class;
+	public const SCHEMA_PREVIOUS_VERSION = '2.0.0';
+	public const VERSION = '2.0.1';
+	public const SCHEMA_CONVERTER = CommunityUpdatesConverter_2_0_1::class;
 
 	public const GEHomepageCommunityUpdatesEnabled = [
 		self::TYPE => self::TYPE_BOOLEAN,

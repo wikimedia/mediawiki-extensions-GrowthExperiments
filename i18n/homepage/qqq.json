@@ -650,5 +650,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Text shown in label of primary link in a notification sent to new editors.\n\n{{doc-growthexperiments-homepage}}",
 	"echo-category-title-ge-newcomer": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-ge-newcomer}}",
 	"echo-pref-tooltip-ge-newcomer": "{{doc-echo-pref-tooltip|title=Echo-category-title-ge-newcomer}}",
-	"growthexperiments-homepage-community-updates-header": "Header title text for the community updates module"
+	"growthexperiments-homepage-community-updates-header": "Header title text for the community updates module",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Text for the call to action button of the community updates module when there is no value set in the configuration"
 }

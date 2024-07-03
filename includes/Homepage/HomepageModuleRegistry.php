@@ -253,7 +253,9 @@ class HomepageModuleRegistry {
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getExperimentUserManager(),
 					CommunityConfigurationServices::wrap( $services )->getConfigurationProviderFactory(),
-					$services->getUserEditTracker()
+					$services->getUserEditTracker(),
+					$services->getLinkRenderer(),
+					$services->getTitleFactory()
 				);
 			},
 		];

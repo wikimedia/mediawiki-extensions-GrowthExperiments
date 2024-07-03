@@ -8,6 +8,8 @@ use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Html\Html;
+use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserEditTracker;
 use stdClass;
 
@@ -15,6 +17,8 @@ class CommunityUpdates extends BaseModule {
 	private ?IConfigurationProvider $provider = null;
 	private ConfigurationProviderFactory $providerFactory;
 	private UserEditTracker $userEditTracker;
+	private LinkRenderer $linkRenderer;
+	private TitleFactory $titleFactory;
 
 	/**
 	 * @param IContextSource $context
@@ -22,17 +26,23 @@ class CommunityUpdates extends BaseModule {
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param ConfigurationProviderFactory $providerFactory
 	 * @param UserEditTracker $userEditTracker
+	 * @param LinkRenderer $linkRenderer
+	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
 		ConfigurationProviderFactory $providerFactory,
-		UserEditTracker $userEditTracker
+		UserEditTracker $userEditTracker,
+		LinkRenderer $linkRenderer,
+		TitleFactory $titleFactory
 	) {
 		parent::__construct( 'community-updates', $context, $wikiConfig, $experimentUserManager );
 		$this->providerFactory = $providerFactory;
 		$this->userEditTracker = $userEditTracker;
+		$this->linkRenderer = $linkRenderer;
+		$this->titleFactory = $titleFactory;
 	}
 
 	private function initializeProvider() {
@@ -95,8 +105,18 @@ class CommunityUpdates extends BaseModule {
 		$config = $this->provider->loadValidConfiguration()->getValue();
 		$contentTitle = $config->GEHomepageCommunityUpdatesContentTitle;
 		$contentBody = $config->GEHomepageCommunityUpdatesContentBody;
-		// TODO: Replace hardcoded text with configurable message as per T367223
-		$buttonText = 'Learn More';
+		$callToAction = $config->GEHomepageCommunityUpdatesCallToAction;
+
+		$pageTitle = $this->titleFactory->newFromText( $callToAction->pageTitle );
+		$link = '';
+		if ( $pageTitle ) {
+			$buttonText = $callToAction->buttonText ?: $this->getContext()->msg(
+				'growthexperiments-homepage-communityupdates-calltoaction-button'
+			)->text();
+			$link = $this->linkRenderer->makeLink( $pageTitle, $buttonText, [
+				'class' => 'ext-growthExperiments-CommunityUpdates__CallToAction__link'
+			] );
+		}
 
 		return Html::rawElement( 'div', [ 'class' => 'cdx-card-content' ],
 			Html::rawElement( 'div', [ 'class' => 'cdx-card-content-row-1' ],
@@ -105,10 +125,13 @@ class CommunityUpdates extends BaseModule {
 			) .
 			Html::rawElement( 'div', [ 'class' => 'cdx-card-content-row-2' ],
 				Html::rawElement( 'div', [ 'class' => 'cdx-card__text__description' ], $contentBody ) .
-				Html::rawElement(
-					'button', [ 'class' => 'cdx-button cdx-button--action-progressive' ], $buttonText )
+				$link
 			)
 		);
+	}
+
+	public function shouldWrapModuleWithLink(): bool {
+		return false;
 	}
 
 	/**
