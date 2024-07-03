@@ -295,12 +295,9 @@ class SpecialHomepage extends SpecialPage {
 					$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_DESKTOP );
 					$out->addHTML( $html );
 
-					$this->perDbNameStatsdDataFactory->timing(
-						implode( '.', [
-							'timing.growthExperiments.specialHomepage.ssr',
-							$moduleName,
-							$this->isMobile ? 'mobile' : 'desktop'
-						] ),
+					$this->recordModuleRenderingTime(
+						$moduleName,
+						IDashboardModule::RENDER_DESKTOP,
 						microtime( true ) - $startTime
 					);
 				}
@@ -308,6 +305,17 @@ class SpecialHomepage extends SpecialPage {
 			}
 			$out->addHTML( Html::closeElement( 'div' ) );
 		}
+	}
+
+	private function recordModuleRenderingTime( string $moduleName, string $mode, float $timeToRecord ): void {
+		$this->perDbNameStatsdDataFactory->timing(
+			implode( '.', [
+				'timing.growthExperiments.specialHomepage.ssr',
+				$moduleName,
+				$mode,
+			] ),
+			$timeToRecord
+		);
 	}
 
 	/**
@@ -329,9 +337,17 @@ class SpecialHomepage extends SpecialPage {
 			$isOpeningOverlay ? 'growthexperiments-homepage-mobile-summary--opening-overlay' : ''
 		] );
 		foreach ( $modules as $moduleName => $module ) {
+			$startTime = microtime( true );
+
 			$module->setPageURL( $this->getPageTitle()->getLinkURL() );
 			$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_MOBILE_SUMMARY );
 			$this->getOutput()->addHTML( $html );
+
+			$this->recordModuleRenderingTime(
+				$moduleName,
+				IDashboardModule::RENDER_MOBILE_SUMMARY,
+				microtime( true ) - $startTime
+			);
 		}
 	}
 
