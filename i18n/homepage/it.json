@@ -213,7 +213,6 @@
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Aggiorna filtro",
 	"growthexperiments-homepage-suggestededits-footer": "Altri utenti hanno notato che queste voci necessitano miglioramenti. Aiuta a rendere '''{{SITENAME}}''' migliore per i suoi '''$1 lettori''' ogni giorno.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Altri utenti hanno notato che queste voci necessitano miglioramenti. Aiuta a rendere '''{{SITENAME}}''' migliore.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|modifica|modifiche}} nell'ultimo giorno",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Volontari come te hanno contribuito per migliorare {{SITENAME}}. Unisciti!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Vedi tutti i suggerimenti",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Correggi ortografia, grammatica e stile",

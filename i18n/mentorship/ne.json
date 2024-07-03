@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bada Kaji",
+			"पर्वत सुबेदी",
 			"बडा काजी"
 		]
 	},
@@ -99,6 +100,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "रद्द गर्नुहोस्",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "परिचय सन्देश",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|तपाईँको}} परिचय सन्देश \" $1 \"मा परिवर्तन गरियो।",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "रद्द गर्नुहोस्",
 	"growthexperiments-mentor-list-missing-key": "कुञ्जी <code>$1</code> हराइरहेको छ",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "सल्लाहकार $1 सल्लाहकार सूचीमा छैन",
 	"growthexperiments-manage-mentors-title": "सल्लाहकारहरू प्रबन्ध गर्नुहोस्",

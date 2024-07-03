@@ -167,7 +167,6 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Vælg andre interesser eller sværhedsgrader for at finde foreslåede redigeringer.",
 	"growthexperiments-homepage-suggestededits-footer": "Andre brugere har mærket disse artikler fordi de behøver forbedring. Hjælp til at gøre '''{{SITENAME}}''' bedre for de over '''$1''' daglige læsere.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Andre brugere har bemærket at disse artikler kan forbedres. Hjælp til med at forbedre '''{{SITENAME}}'''.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "redigeringer det seneste døgn",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Frivillige som dig har bidraget til at forbedre {{SITENAME}} i dag. Vær med!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Se alle forslag",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Ret stavefejl, grammatik og tone",

@@ -95,7 +95,6 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 vitjingar (dei siste 60 dagane)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Førre tilrådde endring",
 	"growthexperiments-homepage-suggestededits-next-card": "Neste tilrådde endring",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|endring|endringar}} det siste døgnet",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3–5 minutt",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5–10 minutt",
 	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15–20 minutt",

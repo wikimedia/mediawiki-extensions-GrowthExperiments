@@ -152,7 +152,6 @@
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Фильтрҙы яңыртырға",
 	"growthexperiments-homepage-suggestededits-footer": "Башҡа ҡулланыусылар был мәҡәләләрҙе яҡшыртыу кәрәк тип билдәләгән. Көн һайын уҡыусы \"$1\" кеше өсөн '''{{grammar:accusative|{{SITENAME}}}}''' яҡшыртырға ярҙам итегеҙ.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Башҡа ҡулланыусылар был мәҡәләләрҙе яҡшыртыу кәрәк тип билдәләгән. '''{{grammar:accusative|{{SITENAME}}}}''' яҡшыртырға ярҙам итегеҙ.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "Һуңғы көндәге {{PLURAL:$1|төҙәтеү}}",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Һеҙҙең кеүек ирекмәндәр бөгөн {{grammar:accusative|{{SITENAME}}}} яҡшыртыуға үҙ өлөшөн индерҙе. Ҡушылығыҙ!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Бөтә тәҡдимдәрҙе ҡарарға",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Орфография, грамматика һәм стиль хаталарын төҙәтеү",

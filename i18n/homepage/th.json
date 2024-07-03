@@ -164,7 +164,6 @@
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "ปรับปรุงตัวกรอง",
 	"growthexperiments-homepage-suggestededits-footer": "ผู้ใช้อื่นได้ทำเครื่องหมายว่าบทความนี้ต้องมีการปรับปรุง มาร่วมกันทำให้'''{{SITENAME}}'''ดียิ่งขึ้นสำหรับนักอ่านที่มีถึง '''$1 คน'''ต่อวัน",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "ผู้ใช้อื่นได้ทำเครื่องหมายว่าบทความนี้ต้องมีการปรับปรุง มาร่วมกันทำให้'''{{SITENAME}}'''ดียิ่งขึ้น",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|แก้ไข}}ในวันล่าสุด",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "ดูคำแนะนำทั้งหมด",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "แก้ไขการสะกด ไวยากรณ์และการใช้ภาษา",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "เพิ่มแหล่งที่มาเพื่อยืนยันความถูกต้องของบทความบนวิกิพีเดีย",

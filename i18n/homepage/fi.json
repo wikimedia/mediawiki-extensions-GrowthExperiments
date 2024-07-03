@@ -201,7 +201,6 @@
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1 000",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 milj.",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 mrd.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|muokkaus|muokkausta}} viimeisen päivän aikana",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Katso kaikki ehdotukset",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Korjaa oikeinkirjoitusta, kielioppia ja tyyliä",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Lisää lähteitä Wikipedia-artikkelien todentamiseksi",

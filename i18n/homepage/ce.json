@@ -117,7 +117,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 млн",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 млрд",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 трлн",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|нисдар}} тӀаьххьарчу дийнахь",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Тахана хьо санначу волонтёраш дакъалаьцна {{grammar:accusative|{{SITENAME}}}} кечйеш. Дакъалаца!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Хьажа дерриге кховдийнарш",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Орфографи а, грамматика а, стиль а нисйан",

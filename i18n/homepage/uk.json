@@ -228,7 +228,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 млн",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 млрд",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 трлн",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|редагування|редагування|редагувань}} за минулий день",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Такі ж волонтери, як і Ви, зробили сьогодні свій внесок у покращення сайту {{SITENAME}}. Приєднуйтесь!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Переглянути всі пропозиції",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Виправлення помилок, граматики та стилю викладення.",

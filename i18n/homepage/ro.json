@@ -221,7 +221,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1B",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|editare|editări}} în ultima zi",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntari ca dvs. au contribuit azi la a îmbunătăți {{SITENAME}}. Alăturați-vă!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Vedeți toate sugestiile",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Corectați ortografia, gramatica și tonul",

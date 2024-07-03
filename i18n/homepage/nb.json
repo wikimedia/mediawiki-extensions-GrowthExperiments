@@ -216,7 +216,6 @@
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Oppdater filter",
 	"growthexperiments-homepage-suggestededits-footer": "Andre brukere har merket disse artiklene fordi de trenger forbedring. Hjelp til å gjøre '''{{SITENAME}}''' bedre for de over '''$1''' daglige leserne.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Andre brukere har merket disse artiklene fordi de trenger forbedring. Hjelp til med å forbedre '''{{SITENAME}}'''.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|redigering|redigeringer}} det siste døgnet",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Bidragsytere som deg har bidratt til å forbedre {{SITENAME}} i dag. Bli med!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Se alle forslag",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Fiks skrivefeil, grammatikk og tone",

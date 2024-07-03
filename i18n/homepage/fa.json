@@ -229,7 +229,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 میلیون",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 میلیارد",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 بیلیون",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|ویرایش|ویرایش‌ها}} در روز گذشته",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "امروز داوطب‌هایی مانند شما در بهبود {{SITENAME}} مشارکت داشته‌اند. شما هم به آن‌ها بپیوندید!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "مشاهده همهٔ پیشنهادها",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "اصلاح املا، دستور زبان، و لحن",

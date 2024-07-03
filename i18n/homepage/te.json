@@ -189,7 +189,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1B",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "కిందటి రోజు చేసిన {{PLURAL:$1|దిద్దుబాTu|దిద్దుబాట్లు}}",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "మీవంటి స్వచ్ఛంద సేవకులు {{SITENAME}}ను ఈరోజు మెరుగుపరచడంలో తోడ్పడ్డారు. మీరు చేరండి!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "సూచనలన్నీ చూడండి",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "అక్షరక్రమం, వ్యాకరణం, ధ్వని లను సవరించండి",

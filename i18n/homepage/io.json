@@ -12,7 +12,6 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Me komprenas",
 	"growthexperiments-homepage-enable-preference": "To enable the newcomer homepage, visit your \"Newcomer homepage\" settings in [[Special:Preferences#mw-prefsection-personal-homepage|Preferences]].",
 	"growthexperiments-homepage-discovery-banner-header": "Bonveno a {{GENDER:$1|vua}} personala pagino!",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|redakturo|redakturi}} ye la lasta dio",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "Adjuntez imaji al artikli",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Lernez pluse",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 til 10 minuti",

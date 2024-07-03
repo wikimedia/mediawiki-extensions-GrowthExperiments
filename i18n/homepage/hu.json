@@ -194,7 +194,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1Mrd",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1B",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|szerkesztés}} tegnap",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Az olyan önkéntesek, mint te, hozzájárultak a {{SITENAME}} jobbá tételében. Csatlakozz!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Mutasd az összes javaslatot",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Javítsd ki a helyesírási, nyelvtani és stilisztikai hibákat",

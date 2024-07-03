@@ -228,7 +228,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1B",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|redigering|redigeringar}} senaste dagen",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Användare som du har bidragit genom att förbättra {{SITENAME}} idag. Gör det du med!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Se alla förslag",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Fixa stavfel, grammatik och ton",

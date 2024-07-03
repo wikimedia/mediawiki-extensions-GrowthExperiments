@@ -229,7 +229,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "{{PLURAL:$1|מיליון|$1 מיליונים}}",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "{{PLURAL:$1|מיליארד|$1 מיליארדים}}",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "{{PLURAL:$1|טריליון|$1 טריליונים}}",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|עריכה|עריכות}} במהלך יום האחרון",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "מתנדבים כמוך תרמו לשיפור {{SITENAME}} היום. {{GENDER:|בוא תצטרף|בואי תצטרפי}}!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "הצגת כל ההצעות",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "תיקון איות, דקדוק, ונימה",

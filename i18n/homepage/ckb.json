@@ -151,7 +151,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1ملیۆن",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1ملیار",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|دەستکاریی|دەستکارییەکانی}} ڕۆژی ڕابردوو",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "ئەمڕۆ خۆبەخشانی وەک تۆ بەشدارییان کردووە بۆ پێشخستنی {{SITENAME}}. بەشدار بە!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "هەموو پێشنیارەکان ببینە",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "چاککردنی ڕێنووس، ڕێزمان و تۆن",

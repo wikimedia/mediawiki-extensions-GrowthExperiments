@@ -164,7 +164,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 mil.",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 mlrd.",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 bil.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|izmena|izmene}} u proteklom danu",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Dobrovoljci poput vas danas su doprineli poboljšanju projekta {{SITENAME}}. Pridružite se.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Prikaži sve predloge",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Ispravite pravopisne i gramatičke greške i ton",

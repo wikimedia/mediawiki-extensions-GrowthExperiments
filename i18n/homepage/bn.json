@@ -233,7 +233,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 মিলিয়ন",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 বিলিয়ন",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 ট্রিলিয়ন",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "গত দিনের {{PLURAL:$1|সম্পাদনা}}",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "আপনার মতন স্বেচ্ছাসেবকেরাই {{SITENAME}}-এর উন্নতিতে অবদান রাখছে। যুক্ত হোন!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "সকল পরামর্শকৃত সম্পাদনা দেখুন",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "বানান, ব্যাকরণ এবং ভঙ্গি সংশোধন করুন",

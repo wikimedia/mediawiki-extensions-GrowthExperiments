@@ -145,7 +145,6 @@
 	"growthexperiments-homepage-suggestededits-footer": "Teised kasutajad on leidnud, et nende artiklitega tuleb tööd teha. {{GRAMMAR:partitive|{{SITENAME}}}} loeb iga päev '''$1 inimest'''. Aita teha {{SITENAME}} nende jaoks paremaks.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Teised kasutajad on leidnud, et nende artiklitega tuleb tööd teha. Aita teha {{GRAMMAR:partitive|{{SITENAME}}}} paremaks.",
 	"growthexperiments-homepage-suggestededits-footer-suffix": "-",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|muudatus|muudatust}} viimase päeva jooksul",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Sinusugused vabatahtlikud on aidanud täna {{GRAMMAR:partitive|{{SITENAME}}}} täiendada. Löö kaasa!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Vaata kõiki soovitusi",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Paranda tähevigu, grammatikat ja stiili.",

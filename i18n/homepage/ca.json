@@ -115,7 +115,6 @@
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> de <strong>$2</strong> {{PLURAL:$2| suggeriment|suggeriments}}",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 visites (darrers 60 dies)",
 	"growthexperiments-homepage-suggestededits-footer": "Altres usuaris han indicat que aquests articles necessiten millores. Ajuda a millorar '''{{SITENAME}}''' pels seus '''$1 lectors''' cada dia.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edicions el darrer dia",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntaris com tu han contribuït a millorar {{SITENAME}} avui. Uneix-t'hi!",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Enllaçar paraules d'un article cap a un altre article",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-link-recommendation": "Enllaçar paraules d'un article cap a un altre article.",

@@ -221,7 +221,6 @@
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Atualizar filtro",
 	"growthexperiments-homepage-suggestededits-footer": "Outros utilizadores notaram que estes artigos precisam de trabalho. Ajude a tornar a wiki '''{{SITENAME}}''' melhor para os seus '''$1 leitores''' todos os dias.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Outros utilizadores notaram que estes artigos precisam de trabalho. Ajude a melhorar a wiki '''{{SITENAME}}'''.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|edição|edições}} no último dia",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntários como você contribuíram para melhorar a wiki {{SITENAME}} hoje. Junte-se a eles!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Ver todas as sugestões",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Corrija ortografia, gramática e tom",

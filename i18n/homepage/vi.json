@@ -175,7 +175,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1tr",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 tỷ",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 nghìn tỷ",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1}}sửa đổi vào ngày qua",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Ngày hôm nay đã có những tình nguyện viên giống như bạn đóng góp để giúp cải thiện {{SITENAME}}. Hãy cùng tham gia nhé!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Xem tất cả gợi ý",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Sửa lỗi chính tả, ngữ pháp và văn phong của bài viết",

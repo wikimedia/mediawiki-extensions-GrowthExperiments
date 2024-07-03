@@ -188,7 +188,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 दश लाख",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 अरब",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 खर्ब",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "पछिल्लो {{PLURAL:$1|सम्पादन|सम्पादनहरू}} हेर्नुहोस्",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "तपाईं जस्ता स्वयंसेवकहरूले आज {{SITENAME}} लाई सुधार्न योगदान गरेका छन्। सामेल हुनुहोस्!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "सबै सुझावहरू हेर्नुहोस्",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "हिज्जे, व्याकरण र भाषाको स्वर ठीक गर्नुहोस्",

@@ -210,7 +210,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 juta",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 miliar",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 triliun",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|suntingan}} dalam hari terakhir",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Sukarelawan seperti Anda telah berkontrubusi untuk mengembangkan {{SITENAME}} hari ini. Mari bergabung!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Lihat semua saranan",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Perbaiki ejaan, tata bahasa, dan nada bahasa",

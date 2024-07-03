@@ -226,7 +226,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 εκατομμύρια",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 δισεκατομμύρια",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 τρισεκατομμύρια",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|επεξεργασία|επεξεργασίες}} την τελευταία μέρα",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Εθελοντές όπως εσείς συνέβαλαν στη βελτίωση της {{SITENAME}} σήμερα. Συμμετάσχετε!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Δείτε όλες τις προτάσεις",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Διόρθωση ορθογραφίας, γραμματικής, και τόνου",

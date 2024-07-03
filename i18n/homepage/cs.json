@@ -230,7 +230,6 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 mil.",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 mld.",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 bil.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|editace|editace|editací}} za poslední den",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Dobrovolníci, jako jste vy, dnes přispěli do {{GRAMMAR:2sg|{{SITENAME}}}}. Připojte se!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Zobrazit všechny tipy",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Oprava pravopisu, gramatiky a stylu",
