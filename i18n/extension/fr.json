@@ -107,5 +107,10 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Ces modèles sont nécessaires pour la fonctionnalité de tâche de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggestions d’images]] pour les nouveaux arrivants. Les articles contenant ces modèles ne seront pas répertoriés comme des tâches de suggestion d’image.",
 	"growthexperiments-edit-config-delayed": "Les modifications apportées à ce paramètre ne prendront pas effet immédiatement (voir [[mw:Growth/FAQ#add-link-config|FAQ]]).",
 	"growthexperiments-info-tooltip-close-label": "Fermer",
-	"specialpages-group-growth-tools": "Outils de croissance"
+	"specialpages-group-growth-tools": "Outils de croissance",
+	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Nombre maximum de modifications qu'un nouvel arrivant peut effectuer pour pouvoir recevoir cette notification. Si défini sur 0, aucun nouveaux arrivants</br> ne recevra cette notification. Plus le nombre est élevé, plus les nouveaux arrivants recevront cette notification.<br> Cette notification n'est envoyée qu'aux nouveaux arrivants qui n'ont pas effectué les modifications suggérées.",
+	"communityconfiguration-mentorship-title": "Mentorat",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Nombre minimal de jours pendant lesquels l’utilisateur doit avoir été inscrit pour s’inscrire comme mentor",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Nombre minimum de modifications que l’utilisateur doit avoir effectuées (sur n’importe quel espace de noms) pour s’inscrire comme mentor",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Les mentors peuvent modifier cette option pour leur propre utilisateur dans le tableau de bord du mentor."
 }
