@@ -239,6 +239,8 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1Mn",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1Mr",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 trilyon",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title": "Şu anda yapılandırılmış görev yok.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "Daha fazla konu ve görev türü seçmeyi deneyin ya da daha sonra yeniden denetleyin.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Sizin gibi gönüllüler bugün {{SITENAME}} sitesinin geliştirilmesine katkıda bulundular. Sen de katıl!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Tüm önerilere bak",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Yazım, dil bilgisi ve üslubu düzelt",

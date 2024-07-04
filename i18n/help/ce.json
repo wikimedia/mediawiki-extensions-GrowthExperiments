@@ -70,5 +70,11 @@
 	"growthexperiments-help-panel-button-header-ask-help": "ГӀоьнан агӀонгахь хаттар ло",
 	"growthexperiments-help-panel-button-header-ask-help-mentor": "ГӀо деха {{GENDER:$1|хьайн Ӏуьналче}}",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Чехка стартан хьехам",
-	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|нисдар}} · $2"
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|нисдар}} · $2",
+	"growthexperiments-help-panel-general-help-title": "Йукъара хийцаран гӀо",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Кховдийна нисдарех хаам",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Ахьа}} лелош йу кодан редактор. И редакцин хьехамаш уггаре а пайдехьа бу бӀаьра редакторца.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "БӀаьра редактор хӀоттайе",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Ахьа}} лелош йу бӀаьра редактор. ХӀара хьехамаш лерина бу кодан редакторна.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Кодан редактор хӀоттайе"
 }

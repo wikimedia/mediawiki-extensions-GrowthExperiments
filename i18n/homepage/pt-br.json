@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Albertoleoncio",
+			"Andrekowacs",
 			"Cottonhead",
 			"Duke of Wikipädia",
 			"Eduardo Addad de Oliveira",
@@ -221,6 +222,7 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1B",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "Tente selecionar mais tópicos e tipos de tarefas ou volte mais tarde.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntários como você contribuíram para melhorar {{SITENAME}} hoje. Junte-se!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Veja todas as sugestões",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Corrigir ortografia, gramática e tom",

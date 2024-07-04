@@ -122,7 +122,7 @@
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "被回退的编辑",
 	"growthexperiments-homepage-impact-scores-thanks-count": "收到的感谢",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "有关感谢功能如何工作的更多信息",
-	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}}由像{{GENDER:$1|您}}一样的编者组成的社群所建立。其他贡献者可能因{{GENDER:$1|您的}}编辑而感谢{{GENDER:$1|您}}，{{GENDER:$1|您}}也可以感谢他人的编辑。该指标仅包含{{GENDER:|你的}}最近$2编辑所收到的感谢。",
+	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}}由像{{GENDER:$1|您}}一样的编者组成的社区所建立。其他贡献者可能因{{GENDER:$1|您的}}编辑而感谢{{GENDER:$1|您}}，{{GENDER:$1|您}}也可以感谢他人的编辑。该指标仅包含{{GENDER:|您}}最近$2笔编辑所收到的感谢。",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}}由编者社群所建立。每位贡献者都可能因为自己的编辑而收到他人的感谢。收到的感谢数量显示于此。该指标仅包含最近$1编辑所收到的感谢。",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "这是{{GENDER:$1|您}}连续作出至少一次编辑的最长天数。该指标仅会反映您最近$2次编辑内的连续记录。",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "这是连续作出至少一次编辑的最长天数。该指标仅会反映最近$1次编辑内的连续记录。",

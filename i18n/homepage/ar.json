@@ -233,6 +233,8 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 مليون",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 مليار",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 تريليون",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title": "لا توجد مهام مُهيكلة متاحة حالياً.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "حاولوا اختيار المزيد من الموضوعات وأنواع المهام أو تحققوا لاحقاً.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "لقد ساهم متطوعون ومتطوعات مثلك في تحسين {{SITENAME}} اليوم، {{GENDER:|انضم|انضمي}} إليهم!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "{{GENDER:|شاهد|شاهدي}} كل الاقتراحات",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "{{GENDER:|أصلح|أصلحي}} الإملاء والنحو ونمط المقالة",

@@ -241,6 +241,8 @@
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Filter aktualisieren",
 	"growthexperiments-homepage-suggestededits-footer": "Andere Benutzer haben festgestellt, dass diese Artikel einer Überarbeitung bedürfen. Hilf uns, '''{{SITENAME}}''' besser zu machen für die täglich '''$1 Leser'''.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Andere Nutzer haben diese Artikel als verbesserungswürdig gekennzeichnet. Hilf mit, '''{{SITENAME}}''' besser zu machen.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title": "Derzeit sind keine strukturierten Aufgaben verfügbar.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "{{#FORMAL:Versuche|Versuchen Sie}}, weitere Themen und Aufgabentypen auszuwählen, oder {{#FORMAL:schaue|schauen Sie}} später noch einmal vorbei.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Freiwillige wie Du haben heute dazu beigetragen, {{SITENAME}} besser zu machen. Mach mit!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Zeige alle Vorschläge",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Korrigiere Rechtschreibung, Grammatik und Stil",
