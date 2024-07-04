@@ -251,7 +251,8 @@ class HomepageModuleRegistry {
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getExperimentUserManager(),
-					CommunityConfigurationServices::wrap( $services )->getConfigurationProviderFactory()
+					CommunityConfigurationServices::wrap( $services )->getConfigurationProviderFactory(),
+					$services->getUserEditTracker()
 				);
 			},
 		];

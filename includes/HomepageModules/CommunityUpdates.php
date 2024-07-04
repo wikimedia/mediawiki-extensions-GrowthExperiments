@@ -8,31 +8,44 @@ use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Html\Html;
+use MediaWiki\User\UserEditTracker;
+use stdClass;
 
 class CommunityUpdates extends BaseModule {
 	private ?IConfigurationProvider $provider = null;
 	private ConfigurationProviderFactory $providerFactory;
+	private UserEditTracker $userEditTracker;
 
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param ConfigurationProviderFactory $providerFactory
+	 * @param UserEditTracker $userEditTracker
 	 */
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
-		ConfigurationProviderFactory $providerFactory
+		ConfigurationProviderFactory $providerFactory,
+		UserEditTracker $userEditTracker
 	) {
 		parent::__construct( 'community-updates', $context, $wikiConfig, $experimentUserManager );
 		$this->providerFactory = $providerFactory;
+		$this->userEditTracker = $userEditTracker;
 	}
 
 	private function initializeProvider() {
 		if ( !$this->provider ) {
 			$this->provider = $this->providerFactory->newProvider( 'CommunityUpdates' );
 		}
+	}
+
+	private function shouldShowCommunityUpdatesModule( stdClass $config ): bool {
+		return $config->GEHomepageCommunityUpdatesContentTitle !== '' &&
+			$config->GEHomepageCommunityUpdatesContentBody !== '' &&
+			( $this->userEditTracker->getUserEditCount( $this->getUser() ) >=
+				$config->GEHomepageCommunityUpdatesMinEdits );
 	}
 
 	/**
@@ -53,8 +66,7 @@ class CommunityUpdates extends BaseModule {
 			return false;
 		}
 		$config = $configStatus->getValue();
-		return $config->GEHomepageCommunityUpdatesEnabled && isset( $config->GEHomepageCommunityUpdatesContentTitle ) &&
-			isset( $config->GEHomepageCommunityUpdatesContentBody );
+		return $config->GEHomepageCommunityUpdatesEnabled && $this->shouldShowCommunityUpdatesModule( $config );
 	}
 
 	/**
