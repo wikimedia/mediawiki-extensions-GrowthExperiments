@@ -102,5 +102,6 @@
 	"growthexperiments-edit-config-delayed": "এই সেটিংয়ে পরিবর্তনগুলো অবিলম্বে কার্যকর হবে না (দেখুন [[mw:Growth/FAQ#add-link-config|FAQ]])।",
 	"growthexperiments-info-tooltip-close-label": "বন্ধ করুন",
 	"specialpages-group-growth-tools": "গ্রোথ সরঞ্জাম",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "শিরোনাম",
 	"communityconfiguration-growthhomepage-title": "নবাগতদের নীড়পাতা"
 }
