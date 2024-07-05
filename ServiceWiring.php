@@ -607,15 +607,20 @@ return [
 		}
 
 		if ( Util::useCommunityConfiguration() ) {
+			$providerFactory = CommunityConfigurationServices::wrap( $services )
+				->getConfigurationProviderFactory();
+			$suggestedEditsProvider = in_array( 'GrowthSuggestedEdits', $providerFactory->getSupportedKeys() ) ?
+				$providerFactory->newProvider( 'GrowthSuggestedEdits' ) : null;
+
 			$configurationLoader = new CommunityConfigurationLoader(
 				$growthServices->getNewcomerTasksConfigurationValidator(),
 				$growthServices->getTaskTypeHandlerRegistry(),
 				$topicType,
-				CommunityConfigurationServices::wrap( $services )
-					->getConfigurationProviderFactory()->newProvider( 'GrowthSuggestedEdits' ),
+				$suggestedEditsProvider,
 				$services->getTitleFactory(),
 				$growthServices->getWikiPageConfigLoader(),
-				$topicConfigTitle
+				$topicConfigTitle,
+				LoggerFactory::getInstance( 'GrowthExperiments' ),
 			);
 		} else {
 			$configurationLoader = new PageConfigurationLoader(
