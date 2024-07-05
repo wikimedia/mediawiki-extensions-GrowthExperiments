@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use ExtensionRegistry;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -9,6 +10,8 @@ use GrowthExperiments\Specials\SpecialManageMentors;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\UserIdentity;
 use PermissionsError;
+use ReflectionMethod;
+use SpecialPage;
 use SpecialPageTestBase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -56,6 +59,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	 */
 	protected function newSpecialPage() {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mainConfig = $this->getServiceContainer()->getMainConfig();
 
 		return new SpecialManageMentors(
 			$this->getServiceContainer()->getUserIdentityLookup(),
@@ -63,7 +67,8 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$geServices->getMentorProvider(),
 			$geServices->getMentorWriter(),
 			$geServices->getMentorStatusManager(),
-			$geServices->getMentorRemover()
+			$geServices->getMentorRemover(),
+			$mainConfig
 		);
 	}
 
@@ -269,5 +274,53 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			'20110501120000',
 			$mentorStatusManager->getMentorBackTimestamp( $this->mentorUser )
 		);
+	}
+
+	/**
+	 * Data provider for testDisplayMentorshipWarningMessage
+	 *
+	 * @return array
+	 */
+	public function configProvider(): array {
+		return [
+			[ false, SpecialPage::getTitleFor( 'EditGrowthConfig' )->getPrefixedText() ],
+			[ true, SpecialPage::getTitleFor(
+				'CommunityConfiguration', 'Mentorship' )->getPrefixedText() ]
+		];
+	}
+
+	/**
+	 * @dataProvider configProvider
+	 * @covers ::displayMentorshipWarningMessage
+	 */
+	public function testDisplayMentorshipWarningMessage( $useCommunityConfig, $expectedConfigPage ) {
+		$this->setMwGlobals( [
+			'wgGEMentorshipEnabled' => false,
+			'wgGEUseCommunityConfiguration' => $useCommunityConfig
+		] );
+		$extensionRegistry = $this->getMockBuilder( ExtensionRegistry::class )
+			->disableOriginalConstructor()
+			->getMock();
+		// Simulate CC extension is loaded
+		$extensionRegistry->method( 'isLoaded' )
+			->willReturn( true );
+		$this->overrideConfigValue( 'GEUseCommunityConfigurationExtension', $useCommunityConfig );
+		$this->getMockBuilder( GrowthExperimentsServices::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$specialPage = $this->newSpecialPage();
+		$reflectionMethod = new ReflectionMethod(
+			SpecialManageMentors::class, 'displayMentorshipWarningMessage' );
+		$reflectionMethod->setAccessible( true );
+		$result = $reflectionMethod->invoke( $specialPage );
+
+		$expectedMessage = wfMessage( 'growthexperiments-mentor-dashboard-mentorship-disabled-with-link' )
+			->params( $expectedConfigPage )
+			->parse();
+
+		$this->assertIsString( $result );
+		$this->assertStringContainsString( 'cdx-message cdx-message--block cdx-message--warning', $result );
+		$this->assertStringContainsString( $expectedMessage, $result );
+		$this->assertStringContainsString( $expectedConfigPage, $result );
 	}
 }

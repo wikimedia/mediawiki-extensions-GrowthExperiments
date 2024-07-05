@@ -2940,7 +2940,8 @@
 				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorWriter",
 				"GrowthExperimentsMentorStatusManager",
-				"GrowthExperimentsMentorRemover"
+				"GrowthExperimentsMentorRemover",
+				"GrowthExperimentsCommunityConfig"
 			]
 		},
 		"EnrollAsMentor": {

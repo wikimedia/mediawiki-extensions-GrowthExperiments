@@ -11,7 +11,9 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm;
 use GrowthExperiments\Specials\Forms\ManageMentorsEditMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
+use GrowthExperiments\Util;
 use LogicException;
+use MediaWiki\Config\Config;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\Linker;
@@ -32,6 +34,7 @@ class SpecialManageMentors extends SpecialPage {
 	private IMentorWriter $mentorWriter;
 	private MentorStatusManager $mentorStatusManager;
 	private MentorRemover $mentorRemover;
+	private Config $wikiConfig;
 
 	/**
 	 * @param UserIdentityLookup $userIdentityLookup
@@ -40,6 +43,7 @@ class SpecialManageMentors extends SpecialPage {
 	 * @param IMentorWriter $mentorWriter
 	 * @param MentorStatusManager $mentorStatusManager
 	 * @param MentorRemover $mentorRemover
+	 * @param Config $wikiConfig
 	 */
 	public function __construct(
 		UserIdentityLookup $userIdentityLookup,
@@ -47,7 +51,8 @@ class SpecialManageMentors extends SpecialPage {
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter,
 		MentorStatusManager $mentorStatusManager,
-		MentorRemover $mentorRemover
+		MentorRemover $mentorRemover,
+		Config $wikiConfig
 	) {
 		parent::__construct( 'ManageMentors' );
 
@@ -57,6 +62,7 @@ class SpecialManageMentors extends SpecialPage {
 		$this->mentorWriter = $mentorWriter;
 		$this->mentorStatusManager = $mentorStatusManager;
 		$this->mentorRemover = $mentorRemover;
+		$this->wikiConfig = $wikiConfig;
 	}
 
 	/** @inheritDoc */
@@ -407,6 +413,33 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
+	 * Display the mentorship warning message if Mentorship is not enabled.
+	 * @return string Display HTML for the warning message.
+	 */
+	private function displayMentorshipWarningMessage(): string {
+		$configPage = Util::useCommunityConfiguration()
+			? SpecialPage::getTitleFor( 'CommunityConfiguration', 'Mentorship' )->getPrefixedText()
+			: SpecialPage::getTitleFor( 'EditGrowthConfig' )->getPrefixedText();
+
+		return Html::rawElement( 'div', [
+			'class' => 'cdx-message cdx-message--block cdx-message--warning'
+		],
+			implode( "\n", [
+				Html::rawElement( 'span', [
+					'class' => 'cdx-message__icon'
+				], ),
+				Html::rawElement( 'span', [
+					'class' => 'cdx-message__content'
+					],
+				$this->msg( 'growthexperiments-mentor-dashboard-mentorship-disabled-with-link' )
+					->params( $configPage )
+					->parse() )
+				]
+			)
+		);
+	}
+
+	/**
 	 * @return string
 	 */
 	private function makePreHTML(): string {
@@ -470,6 +503,12 @@ class SpecialManageMentors extends SpecialPage {
 		if ( $this->canManageMentors() ) {
 			$out->enableOOUI();
 		}
+
+		if ( !$this->wikiConfig->get( 'GEMentorshipEnabled' ) ) {
+			$out->addModuleStyles( [ 'codex-styles' ] );
+			$out->addHTML( $this->displayMentorshipWarningMessage() );
+		}
+
 		$out->addHTML( implode( "\n", [
 			$this->makePreHTML(),
 			$this->makeHeadlineElement( $this->msg( 'growthexperiments-manage-mentors-auto-assigned' )->text() ),
