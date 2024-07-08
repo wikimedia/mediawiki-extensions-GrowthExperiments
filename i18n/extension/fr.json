@@ -109,6 +109,7 @@
 	"growthexperiments-info-tooltip-close-label": "Fermer",
 	"specialpages-group-growth-tools": "Outils de croissance",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Nombre maximum de modifications qu'un nouvel arrivant peut effectuer pour pouvoir recevoir cette notification. Si défini sur 0, aucun nouveaux arrivants</br> ne recevra cette notification. Plus le nombre est élevé, plus les nouveaux arrivants recevront cette notification.<br> Cette notification n'est envoyée qu'aux nouveaux arrivants qui n'ont pas effectué les modifications suggérées.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Titre",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Pages de discussion du mentor",
 	"communityconfiguration-helppanel-gehelppanellinks-title-label": "Page de destination",
 	"communityconfiguration-helppanel-gehelppanellinks-title-placeholder": "Aide:Comment rédiger un bon article",
@@ -121,5 +122,6 @@
 	"communityconfiguration-mentorship-gementorshipenabled-control-label": "Les fonctionnalités de mentorat sont activées",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Nombre minimal de jours pendant lesquels l’utilisateur doit avoir été inscrit pour s’inscrire comme mentor",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Nombre minimum de modifications que l’utilisateur doit avoir effectuées (sur n’importe quel espace de noms) pour s’inscrire comme mentor",
-	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Les mentors peuvent modifier cette option pour leur propre utilisateur dans le tableau de bord du mentor."
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Les mentors peuvent modifier cette option pour leur propre utilisateur dans le tableau de bord du mentor.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Les mentors peuvent modifier cette option pour eux-mêmes dans le tableau de bord du mentor."
 }

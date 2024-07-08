@@ -220,6 +220,8 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 M",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 G",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 T",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title": "Trenutno ni strukturiranih nalog.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "Poskusite izbrati več tem in vrst nalog ali se vrnite pozneje.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Prostovoljci, kot ste vi, so danes prispevali k izboljšanju projekta {{SITENAME}}. Pridružite se!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Ogled vseh predlogov",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Popravljajte črkovanje, slovnico in ton",

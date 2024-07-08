@@ -92,7 +92,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Questi template sono utilizzati per il [https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image suggerimento delle immagini] ai nuovi utenti. Le pagine contenenti questi template non saranno indicate come elementi che necessitano di immagini.",
 	"growthexperiments-info-tooltip-close-label": "Chiudi",
 	"specialpages-group-growth-tools": "Strumenti Growth",
-	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-help-text": "Un messaggio informativo breve e amichevole per suscitare interesse.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "Un messaggio informativo breve e amichevole per suscitare interesse.",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-label": "Dove vanno dirette le domande provenienti dal pannello introduttivo?",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-label": "Dove vanno pubblicate le nuove domande allo sportello informazioni?",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-top-label": "In cima alla pagina",

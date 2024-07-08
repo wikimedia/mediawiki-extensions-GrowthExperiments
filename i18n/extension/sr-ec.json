@@ -43,6 +43,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблони за инфокутије",
 	"growthexperiments-info-tooltip-close-label": "Затвори",
 	"specialpages-group-growth-tools": "Менторство",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Наслов",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-help-desk-page-label": "Помоћ",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-top-label": "Врх странице",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-bottom-label": "Дно странице",
@@ -62,8 +63,8 @@
 	"communityconfiguration-growthsuggestededits-references-disabled-control-label": "Задатак је онемогућен.",
 	"communityconfiguration-growthsuggestededits-update-label": "Ажурирање чланака",
 	"communityconfiguration-growthsuggestededits-expand-disabled-control-label": "Овај задатак је онемогућен.",
-	"communityconfiguration-growthsuggestededits-image_recommendation-label": "Додај слику у неилустрован чланак",
+	"communityconfiguration-growthsuggestededits-image_recommendation-label": "Додај слику у неилустрован чланак (Структуирани задатак)",
 	"communityconfiguration-growthsuggestededits-image_recommendation-disabled-control-label": "Задатак је онемогућен.",
-	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Додај везу",
+	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Додај везу (Структуирани задатак)",
 	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Одредишна страница за информисање о задатку „Додај везу”"
 }

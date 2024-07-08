@@ -229,5 +229,6 @@
 	"growthexperiments-mentorship-enrollasmentor-summary": "Vpisujem se kot mentor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Kot mentorji se lahko vpišejo samo uporabniki z najmanj {{PLURAL:$1|$1 urejanjem|$1 urejanjema|$1 urejanji}} in {{$2|$2 dnevom prisotnosti|$2 dnevoma|$2 dnevi prisotnosti}}.",
 	"tag-mentor list change": "Sprememba seznama mentorjev",
-	"tag-mentor list change-description": "Oznaka, uporabljena za urejanja strukturiranega seznama mentorjev z GrowthExperiments"
+	"tag-mentor list change-description": "Oznaka, uporabljena za urejanja strukturiranega seznama mentorjev z GrowthExperiments",
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorstvo je trenutno izklopljeno. Administratorji lahko vklopijo mentorstvo na  [[$1]]."
 }
