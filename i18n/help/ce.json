@@ -45,8 +45,12 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "Йаззамаш хан мел йолу ширло, керла хиламаш йуьйлу. {{GENDER:|Ахьа}} мега текст карлайаккха а, нийса деталаш тӀетоха а, {{SITENAME}} тӀехь гуттара дика информаци хилийта.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-example-value": "Зонд Марс тӀе <mark class=\"negative\">хуур йу</mark> <mark class=\"negative\">2018 шарахь</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-text-publish": "[[$1|Карлайаккхарх кхин сов хаа]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Хьажоргаш тӀетоьхча, нахана сиха Ӏамо гӀо хир ду.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Куьйгалла",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Масаллин йоза",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "Кховдийна суьрте хьажа",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "Хьажахьа йаззаме",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "Сацам бе, мегаш дуй сурт",
 	"growthexperiments-help-panel-questioncomplete-title": "Хаттар ло",
 	"growthexperiments-help-panel-questioncomplete-header": "Хьан хаттар дӀайаздина!",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "хийца",
@@ -61,5 +65,11 @@
 	"growthexperiments-help-panel-button-header-ask-help": "ГӀоьнан агӀонгахь хаттар ло",
 	"growthexperiments-help-panel-button-header-ask-help-mentor": "ГӀо деха {{GENDER:$1|хьайн Ӏуьналче}}",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Чехка стартан хьехам",
-	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|нисдар}} · $2"
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|нисдар}} · $2",
+	"growthexperiments-help-panel-general-help-title": "Йукъара хийцаран гӀо",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Кховдийна нисдарех хаам",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Ахьа}} лелош йу кодан редактор. И редакцин хьехамаш уггаре а пайдехьа бу бӀаьра редакторца.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "БӀаьра редактор хӀоттайе",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Ахьа}} лелош йу бӀаьра редактор. ХӀара хьехамаш лерина бу кодан редакторна.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Кодан редактор хӀоттайе"
 }

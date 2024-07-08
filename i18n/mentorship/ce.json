@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Умар"
+			"Умар",
+			"Исмаил Садуев"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Ӏуьналчан панель",
@@ -71,5 +72,7 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Баркалла {{GENDER:|хьуна}}, хьо {{grammar:genitive|{{SITENAME}}}} чохь {{GENDER:|Ӏуьналча}} хиларна. {{GENDER:|Хьан}} аьтту бу {{GENDER:|Ӏуьналча}} хила, хӀара форма тӀейуьзина.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Маршаллин хаам",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Маршаллин хаамо, хьо {{GENDER:|Ӏуьналча}} хилар хаам бо. Дехар до, 240 хьаьркал сов ма даккха. Викийоза магийна дац.",
-	"growthexperiments-mentorship-enrollasmentor-enroll": "ДӀайазло"
+	"growthexperiments-mentorship-enrollasmentor-enroll": "ДӀайазло",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Ӏуьналчашна хьой тӀетохар",
+	"tag-mentor list change": "Ӏуьналчийн могӀам хийцар"
 }
