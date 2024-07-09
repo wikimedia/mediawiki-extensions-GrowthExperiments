@@ -53,10 +53,10 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 		int $minAge,
 		int $minEditcount
 	) {
-		$this->setMwGlobals( [
-			'wgGEMentorshipAutomaticEligibility' => true,
-			'wgGEMentorshipMinimumAge' => $minAge,
-			'wgGEMentorshipMinimumEditcount' => $minEditcount
+		$this->overrideConfigValues( [
+			'GEMentorshipAutomaticEligibility' => true,
+			'GEMentorshipMinimumAge' => $minAge,
+			'GEMentorshipMinimumEditcount' => $minEditcount,
 		] );
 		// Pin time to avoid failure when next second starts - T316154
 		$now = strtotime( '2011-04-01T12:00Z' );

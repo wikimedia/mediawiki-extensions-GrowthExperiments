@@ -294,9 +294,9 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	 * @covers ::displayMentorshipWarningMessage
 	 */
 	public function testDisplayMentorshipWarningMessage( $useCommunityConfig, $expectedConfigPage ) {
-		$this->setMwGlobals( [
-			'wgGEMentorshipEnabled' => false,
-			'wgGEUseCommunityConfiguration' => $useCommunityConfig
+		$this->overrideConfigValues( [
+			'GEMentorshipEnabled' => false,
+			'GEUseCommunityConfiguration' => $useCommunityConfig,
 		] );
 		$extensionRegistry = $this->getMockBuilder( ExtensionRegistry::class )
 			->disableOriginalConstructor()

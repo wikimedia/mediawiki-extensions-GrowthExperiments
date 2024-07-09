@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxResponse;
 use MediaWiki\SpecialPage\SpecialPage;
 use PermissionsError;
@@ -40,9 +41,9 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 		$this->expectException( PermissionsError::class );
 		$this->expectExceptionMessage( 'You are not allowed to execute the action you have requested' );
 
-		$this->setMwGlobals( [
-			'wgRevokePermissions' => [ '*' => [ 'enrollasmentor' => true ] ],
-			'wgGEMentorshipAutomaticEligibility' => false,
+		$this->overrideConfigValues( [
+			MainConfigNames::RevokePermissions => [ '*' => [ 'enrollasmentor' => true ] ],
+			'GEMentorshipAutomaticEligibility' => false,
 		] );
 		$user = $this->getTestUser()->getUser();
 		$this->executeSpecialPage( '', null, null, $user );

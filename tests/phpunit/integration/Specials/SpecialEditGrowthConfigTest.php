@@ -52,7 +52,7 @@ class SpecialEditGrowthConfigTest extends SpecialPageTestBase {
 	 * @dataProvider provideConfigOverrides
 	 */
 	public function testExecutes( array $configOverrides ) {
-		$this->setMwGlobals( $configOverrides );
+		$this->overrideConfigValues( $configOverrides );
 
 		/** @var string $html */
 		[ $html, ] = $this->executeSpecialPage();

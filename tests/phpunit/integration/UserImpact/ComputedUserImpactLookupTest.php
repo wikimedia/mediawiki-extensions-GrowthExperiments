@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Title\Title;
 use StatusValue;
@@ -97,8 +98,10 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->getServiceContainer()->getUserOptionsManager()->setOption( $userIdentity, 'timecorrection',
 			'ZoneInfo|600|Australia/Sydney' );
 		// UTC+2
-		$this->setMwGlobals( 'wgLocaltimezone', 'UTC' );
-		$this->setMwGlobals( 'wgLocalTZoffset', 120 );
+		$this->overrideConfigValues( [
+			MainConfigNames::Localtimezone => 'UTC',
+			MainConfigNames::LocalTZoffset => 120,
+		] );
 		// Days should be computed using wikis defaults rather than user preference to avoid sensitive user data leak
 		ConvertibleTimestamp::setFakeTime( '20221001040000' );
 		$status->merge( $this->editPage( 'Test 1', 'test edit', '', NS_MAIN, $user ) );

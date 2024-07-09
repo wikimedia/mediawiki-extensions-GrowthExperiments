@@ -60,7 +60,7 @@ class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 		$this->expectException( ErrorPageError::class );
 		$this->expectExceptionMessage( 'growthexperiments-quit-mentorship-disabled' );
 
-		$this->setMwGlobals( 'wgGEMentorDashboardEnabled', false );
+		$this->overrideConfigValue( 'GEMentorDashboardEnabled', false );
 		$this->executeSpecialPage();
 	}
 

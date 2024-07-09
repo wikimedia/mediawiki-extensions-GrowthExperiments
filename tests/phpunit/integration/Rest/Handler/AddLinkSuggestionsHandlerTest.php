@@ -23,7 +23,7 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler::run
 	 */
 	public function testRun() {
-		$this->setMwGlobals( 'wgGENewcomerTasksLinkRecommendationsEnabled', true );
+		$this->overrideConfigValue( 'GENewcomerTasksLinkRecommendationsEnabled', true );
 		$goodTitle = new TitleValue( NS_USER, 'Foo' );
 		$badTitle = new TitleValue( NS_USER, 'Bar' );
 		$currentTime = 1577865600;

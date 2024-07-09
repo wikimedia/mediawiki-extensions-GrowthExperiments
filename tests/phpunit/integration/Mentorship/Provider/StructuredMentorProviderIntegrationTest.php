@@ -22,7 +22,7 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 	 */
 	public function testNoMentorList() {
 		// ensure the mentor list indeed doesn't exist at this point
-		$this->setMwGlobals( 'wgGEStructuredMentorList', 'MediaWiki:DoesNotExist.json' );
+		$this->overrideConfigValue( 'GEStructuredMentorList', 'MediaWiki:DoesNotExist.json' );
 		$this->assertFalse( Title::newFromText( 'MediaWiki:DoesNotExist.json' )->exists() );
 
 		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )

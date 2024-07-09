@@ -76,9 +76,9 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 	public function testGetPraiseworthyMenteesForMentor() {
 		$minEdits = 2;
 		$this->mockPageviews();
-		$this->setMwGlobals( [
-			'wgGEPersonalizedPraiseBackendEnabled' => true,
-			'wgGEPersonalizedPraiseMinEdits' => $minEdits,
+		$this->overrideConfigValues( [
+			'GEPersonalizedPraiseBackendEnabled' => true,
+			'GEPersonalizedPraiseMinEdits' => $minEdits,
 		] );
 
 		$mentor = $this->getTestSysop()->getUserIdentity();

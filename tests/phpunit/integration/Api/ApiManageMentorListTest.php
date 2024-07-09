@@ -7,6 +7,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -56,9 +57,9 @@ class ApiManageMentorListTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testNoPermissions() {
-		$this->setMwGlobals( [
-			'wgRevokePermissions' => [ '*' => [ 'enrollasmentor' => true ] ],
-			'wgGEMentorshipAutomaticEligibility' => false,
+		$this->overrideConfigValues( [
+			MainConfigNames::RevokePermissions => [ '*' => [ 'enrollasmentor' => true ] ],
+			'GEMentorshipAutomaticEligibility' => false,
 		] );
 		$user = $this->getMutableTestUser()->getUser();
 
@@ -80,9 +81,9 @@ class ApiManageMentorListTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testNoPermissionsChange() {
-		$this->setMwGlobals( [
-			'wgGEMentorshipMinimumAge' => 0,
-			'wgGEMentorshipMinimumEditcount' => 0,
+		$this->overrideConfigValues( [
+			'GEMentorshipMinimumAge' => 0,
+			'GEMentorshipMinimumEditcount' => 0,
 		] );
 		$user = $this->getMutableTestUser()->getUser();
 

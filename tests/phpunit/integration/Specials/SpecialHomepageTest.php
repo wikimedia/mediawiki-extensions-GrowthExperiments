@@ -81,7 +81,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	) {
 		// Make sure that the title ID is valid
 		$titleId = $this->getExistingTestPage()->getId();
-		$this->setMwGlobals( [ 'wgGEDeveloperSetup' => true ] );
+		$this->overrideConfigValue( 'GEDeveloperSetup', true );
 		$user = $this->enableHomepageForTesting();
 		$request = new FauxRequest( $params );
 		$this->expectException( InvalidArgumentException::class );
@@ -94,9 +94,9 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	}
 
 	private function enableHomepageForTesting(): User {
-		$this->setMwGlobals( [
-			'wgGEHomepageEnabled' => true,
-			'wgGEHelpPanelHelpDeskTitle' => 'HelpDeskTitle',
+		$this->overrideConfigValues( [
+			'GEHomepageEnabled' => true,
+			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTitle',
 		] );
 		$user = $this->getMutableTestUser()->getUser()->getInstanceForUpdate();
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();

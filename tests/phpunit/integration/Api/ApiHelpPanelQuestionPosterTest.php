@@ -6,6 +6,7 @@ use ApiUsageException;
 use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
 use IDBAccessObject;
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Status\Status;
@@ -30,9 +31,9 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->mUser = $this->getMutableTestUser()->getUser();
-		$this->setMwGlobals( [
-			'wgEnableEmail' => true,
-			'wgGEHelpPanelHelpDeskTitle' => 'HelpDeskTest',
+		$this->overrideConfigValues( [
+			MainConfigNames::EnableEmail => true,
+			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTest',
 		] );
 		$this->editPage( 'HelpDeskTest', 'Content' );
 	}
