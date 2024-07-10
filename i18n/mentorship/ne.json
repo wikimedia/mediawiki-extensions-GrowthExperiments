@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Bada Kaji",
-			"बडा काजी"
+			"बडा काजी",
+			"पर्वत सुबेदी"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "सल्लाहकार गृह पृष्ठ",
@@ -50,6 +51,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "कुनै विद्यार्थी भेटिएनन्",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "विद्यार्थीहरू फेला पार्न आफ्नो छनौटहरू परिवर्तन गर्नुहोस्।",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "{{GENDER:|तपाईं}}का विद्यार्थीद्वारा हालैका परिवर्तनहरू",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|तपाई}} सबै {{GENDER:|तपाईको}} सदस्यहरूले यस [हालका परिवर्तनहरूको $1 फिल्टर] गरिएको दृश्यमा गएर सम्पादनहरू हेर्न सक्नुहुन्छ।",
 	"growthexperiments-mentor-dashboard-resources-headline": "स्रोतसाधनहरू",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "सल्लाहकारहरू प्रबन्ध गर्नुहोस्",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "सल्लाहकारहरूको सूची हेर्नुहोस्",
@@ -99,6 +101,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "रद्द गर्नुहोस्",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "परिचय सन्देश",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|तपाईँको}} परिचय सन्देश \" $1 \"मा परिवर्तन गरियो।",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "रद्द गर्नुहोस्",
 	"growthexperiments-mentor-list-missing-key": "कुञ्जी <code>$1</code> हराइरहेको छ",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "सल्लाहकार $1 सल्लाहकार सूचीमा छैन",
 	"growthexperiments-manage-mentors-title": "सल्लाहकारहरू प्रबन्ध गर्नुहोस्",

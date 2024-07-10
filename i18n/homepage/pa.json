@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Kuldeepburjbhalaike",
-			"Cabal"
+			"Cabal",
+			"Jagseer S Sidhu"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ਜੀ}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "ਮੁੱਖ ਸਫ਼ਾ",
 	"tooltip-pt-homepage": "{{GENDER:|ਤੁਹਾਡਾ}} ਮੁੱਖ ਸਫ਼ਾ",
 	"prefs-homepage": "ਨਵੇਂ ਆਏ ਸੰਪਾਦਕ ਦੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ",
-	"growthexperiments-homepage-enable": "ਨਵੇਂ ਆਉਣ ਵਾਲਿਆਂ ਦਾ ਮੁੱਖ ਸਫ਼ਾ ਵਿਖਾਓ",
+	"growthexperiments-homepage-enable": "ਨਵੇਂ ਆਏ ਵਰਤੋਂਕਾਰਾਂ ਦਾ ਮੁੱਖ ਸਫ਼ਾ ਵਿਖਾਓ",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|ਤੁਹਾਡਾ}} ਈਮੇਲ ਜੋੜੋ",
 	"growthexperiments-homepage-email-header-unconfirmed": "ਤਸਦੀਕ ਕਰੋ {{GENDER:$1|ਤੁਹਾਡਾ}} ਈਮੇਲ",
 	"growthexperiments-homepage-email-header-confirmed": "ਈਮੇਲ ਜੋੜਿਆ ਗਿਆ",
