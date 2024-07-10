@@ -161,6 +161,19 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 					$warnings['gesectionimagerecommendationdailytasksexceeded'] = true;
 				}
 			}
+			// Reduce the likelihood that the user encounters the task they were undecided about again.
+			if ( in_array( $accepted, self::REJECTION_REASONS_UNDECIDED ) ) {
+				// Refresh the user's TaskSet cache in a deferred update, since this can be kind of slow.
+				DeferredUpdates::addCallableUpdate( static function () use ( $taskSuggester, $user, $taskSet ) {
+					$taskSuggester->suggest(
+						$user,
+						$taskSet->getFilters(),
+						null,
+						null,
+						[ 'resetCache' => true ]
+					);
+				} );
+			}
 		}
 
 		$subType = self::LOG_SUBTYPES[ $taskType->getId() ];
@@ -182,19 +195,6 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		// be inspected or patrolled.
 		$logEntry->publish( $logId, 'udp' );
 
-		// Reduce the likelihood that the user encounters the task they were undecided about again.
-		if ( in_array( $accepted, self::REJECTION_REASONS_UNDECIDED ) ) {
-			// Refresh the user's TaskSet cache in a deferred update, since this can be kind of slow.
-			DeferredUpdates::addCallableUpdate( static function () use ( $taskSuggester, $user, $taskSet ) {
-				$taskSuggester->suggest(
-					$user,
-					$taskSet->getFilters(),
-					null,
-					null,
-					[ 'resetCache' => true ]
-				);
-			} );
-		}
 		return StatusValue::newGood( [ 'logId' => $logId, 'warnings' => $warnings ] );
 	}
 
