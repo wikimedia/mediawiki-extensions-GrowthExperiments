@@ -77,6 +77,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "{{GENDER:$1|თქვენ}} მიერ რედაქტირებული სტატიების ნახვები",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "რედაქტირებული სტატიების ნახვები",
 	"growthexperiments-homepage-impact-scores-edit-count": "სულ რედაქტირებები",
+	"growthexperiments-homepage-impact-scores-reverted-edit-count": "გაუქმებული რედაქტირებები",
 	"growthexperiments-homepage-impact-scores-thanks-count": "მიღებული მადლობები",
 	"growthexperiments-homepage-impact-scores-over-limit": "999+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "მეტი ინფორმაცია იმის შესახებ, თუ როგორ მუშაობს მადლობა",
