@@ -16,7 +16,6 @@ use RuntimeException;
 use stdClass;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Rdbms\OrExpressionGroup;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
@@ -177,7 +176,7 @@ class LinkRecommendationStore {
 		return array_map( 'intval', $dbr->newSelectQueryBuilder()
 			->select( 'gelr_page' )
 			->from( 'growthexperiments_link_recommendations' )
-			->where( new OrExpressionGroup( ...$conds ) )
+			->where( $dbr->orExpr( $conds ) )
 			->caller( __METHOD__ )
 			->fetchFieldValues() );
 	}
