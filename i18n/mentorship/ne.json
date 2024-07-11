@@ -51,6 +51,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "कुनै विद्यार्थी भेटिएनन्",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "विद्यार्थीहरू फेला पार्न आफ्नो छनौटहरू परिवर्तन गर्नुहोस्।",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "{{GENDER:|तपाईं}}का विद्यार्थीद्वारा हालैका परिवर्तनहरू",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|तपाई}} सबै {{GENDER:|तपाईको}} सदस्यहरूले यस [हालका परिवर्तनहरूको $1 फिल्टर] गरिएको दृश्यमा गएर सम्पादनहरू हेर्न सक्नुहुन्छ।",
 	"growthexperiments-mentor-dashboard-resources-headline": "स्रोतसाधनहरू",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "सल्लाहकारहरू प्रबन्ध गर्नुहोस्",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "सल्लाहकारहरूको सूची हेर्नुहोस्",

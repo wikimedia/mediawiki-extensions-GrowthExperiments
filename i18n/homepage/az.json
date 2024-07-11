@@ -3,7 +3,8 @@
 		"authors": [
 			"NMW03",
 			"Serkanland",
-			"Toghrul Rahimli"
+			"Toghrul Rahimli",
+			"Nemoralis"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salam}}, {{bidi:$1}}!",
@@ -563,10 +564,10 @@
 	"growthexperiments-addimage-reason-wikidata-section-alignment-languages": "{{PLURAL:$1|Digər dildə|$1 digər dildə}} ekvivalent məqalə bölməsində istifadə olunub: $2",
 	"growthexperiments-addimage-reason-wikidata-section-alignment-project": "$1 dilində ekvivalent məqalə bölməsində istifadə olunur.",
 	"growthexperiments-addimage-reason-wikidata-section-intersection-single": "$1 dilindəki ekvivalent məqalə bölməsində istifadə olunur və bu məqalə bölməsinə aid ola biləcək Vikidata elementinə aiddir.",
-	"growthexperiments-addimage-reason-wikidata-section-intersection-multiple": "$1 və {{PLURAL:$2|əlavə digər dildəki|əlavə $2 dildəki}} ekvivalent məqalənin bölməsində istifadə olunur və bu məqalə bölməsinə aid ola biləcək Vikiverilənlər elementi ilə əlaqələndirilib.",
-	"growthexperiments-addimage-reason-wikidata-section-intersection-languages": "{{PLURAL:$1|Digər bir dildəki|Digər $1 dildəki}} ekvivalent məqalənin bölməsində istifadə olunur və bu məqalə bölməsinə aid ola biləcək Vikiverilənlər elementi ilə əlaqələndirilib.",
-	"growthexperiments-addimage-reason-wikidata": "Bu məqalənin Vikiverilənlər elementində tapıldı (güclü uyğunluq).",
-	"growthexperiments-addimage-reason-commons": "Bu məqalə üçün Vikiverilənlər elementi ilə əlaqələndirilmiş bir neçə şəkildən biri.",
+	"growthexperiments-addimage-reason-wikidata-section-intersection-multiple": "$1 və {{PLURAL:$2|əlavə digər dildəki|əlavə $2 dildəki}} ekvivalent məqalənin bölməsində istifadə olunur və bu məqalə bölməsinə aid ola biləcək Vikidata elementi ilə əlaqələndirilib.",
+	"growthexperiments-addimage-reason-wikidata-section-intersection-languages": "{{PLURAL:$1|Digər bir dildəki|Digər $1 dildəki}} ekvivalent məqalənin bölməsində istifadə olunur və bu məqalə bölməsinə aid ola biləcək Vikidata elementi ilə əlaqələndirilib.",
+	"growthexperiments-addimage-reason-wikidata": "Bu məqalənin Vikidata elementində tapıldı (güclü uyğunluq).",
+	"growthexperiments-addimage-reason-commons": "Bu məqalə üçün Vikidata elementi ilə əlaqələndirilmiş bir neçə şəkildən biri.",
 	"growthexperiments-addimage-reason-wikidata-section-topics": "Bu məqalə bölməsinə aid ola biləcək Vikidata elementi ilə əlaqələndirilib.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Siz}} bugünkü bütün şəkil təkliflərini tamamladınız.\n\nDigər redaktə növlərinə baxmaq üçün çətinlik səviyyənizi tənzimləyin və ya daha çox şəkil təklifləri üçün sabah geri qayıdın.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Başa düşdüm",

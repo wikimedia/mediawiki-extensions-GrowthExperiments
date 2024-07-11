@@ -137,7 +137,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> modification{{PLURAL:$1||s}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Affiche les modifications récentes (60 derniers jours) :",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Surveiller les vues des articles que vous avez modifiés",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "Aucune modification jusqu’à présent",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "Aucune modification aux articles jusqu’à présent",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Aidez à étendre la connaissance libre dans le monde en modifiant les sujets qui {{GENDER:$1|}}vous importent le plus.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Voir les modifications suggérées",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Démarrez avec quelques <strong>modifications suggérées</strong>, puis voyez combien de personnes visualisent {{GENDER:$1|}}vos contributions ici.",

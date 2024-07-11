@@ -112,5 +112,6 @@
 	"communityconfiguration-mentorship-title": "Mentorat",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Nombre minimal de jours pendant lesquels l’utilisateur doit avoir été inscrit pour s’inscrire comme mentor",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Nombre minimum de modifications que l’utilisateur doit avoir effectuées (sur n’importe quel espace de noms) pour s’inscrire comme mentor",
-	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Les mentors peuvent modifier cette option pour leur propre utilisateur dans le tableau de bord du mentor."
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Les mentors peuvent modifier cette option pour leur propre utilisateur dans le tableau de bord du mentor.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Les mentors peuvent modifier cette option pour eux-mêmes dans le tableau de bord du mentor."
 }

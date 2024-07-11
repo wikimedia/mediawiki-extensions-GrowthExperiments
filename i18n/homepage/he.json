@@ -196,7 +196,7 @@
 	"growthexperiments-homepage-contributions-zero-subtitle": "{{GENDER:$1|בקר|בקרי}} בדף הבית שלך כדי להתחיל לערוך!",
 	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|עבור|עברי|מעבר}} לדף הבית שלך",
 	"growthexperiments-tour-welcome-title": "{{GENDER:$1|ברוך הבא|ברוכה הבאה|ברוך בואך}} לדף הבית שלך!",
-	"growthexperiments-tour-welcome-description": "{{GENDER:$1|אתה תמיד יכול|את תמיד יכולה}} ללחוץ על שם המשתמש שלך כדי לחוזר הנה.",
+	"growthexperiments-tour-welcome-description": "{{GENDER:$1|אתה תמיד יכול|את תמיד יכולה}} ללחוץ על שם המשתמש שלך כדי לחזור הנה.",
 	"growthexperiments-tour-discovery-title": "{{GENDER:|תתחיל|תתחילי}} כאן!",
 	"growthexperiments-tour-discovery-description": "{{GENDER:$1|לחץ על שם המשתמש שלך|לחצי על שם המשתמשת שלך}} כדי לבקר בדף הבית שלך",
 	"growthexperiments-homepage-welcomesurvey-default-close": "{{GENDER:$1|עבור|עברי|מעבר}} לדף הבית שלך",

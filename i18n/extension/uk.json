@@ -108,6 +108,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Сповіщення «Продовжуйте»",
 	"growthexperiments-edit-config-keep-going-notification-description": "Максимальна кількість пропонованих редагувань, яку новачок може виконати, щоб отримати це сповіщення. Якщо встановлено значення 0, ніхто з новачків<br/> не отримає це сповіщення. Чим вище число, тим більше новачків отримають це сповіщення.<br> Це сповіщення надсилається лише новачкам, які уже виконали хоча б одне пропоноване редагування.",
 	"communityconfiguration-mentorship-title": "Наставництво",
+	"communityconfiguration-mentorship-description": "Налаштуйте параметри наставництва та вимоги до участі, зокрема регулюючи мінімум редагувань та часові рамки для наставників і гідних похвали підопічних.",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Мінімальна кількість днів, яка має пройти з часу реєстрації, щоб користувач міг записатися наставником",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Мінімальна кількість редагувань, які користувач має зробити (у будь-якому просторі назв), щоб могти записатися наставником",
 	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Кількість днів, які враховуються під час оцінювання підопічних",

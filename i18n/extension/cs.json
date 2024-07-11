@@ -104,5 +104,14 @@
 	"growthexperiments-edit-config-level-up-notifications": "Notifikace funkcí týmu Growth",
 	"growthexperiments-edit-config-level-up-notifications-description": "Tyto notifikace jsou nováčkům zasílány 48 hodin po vytvoření jejich uživatelského účtu. Jejich cílem je zvýšit pravděpodobnost, že nováček bude v týdnu po odeslání notifikace editovat.",
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Upozornění \"Vyzkoušejte editační tipy\"",
-	"growthexperiments-edit-config-keep-going-notification-title": "Upozornění \"Jen tak dál\""
+	"growthexperiments-edit-config-keep-going-notification-title": "Upozornění \"Jen tak dál\"",
+	"communityconfiguration-mentorship-title": "Mentorství",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "Minimální počet dní od registrace, který musí uplynout, aby měl uživatel možnost zapsat se jako mentor",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Minimální počet editací, který uživatel musí mít, aby měl uživatel možnost zapsat se jako mentor",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Počet dní, které se berou v úvahu při posuzování chvályhodnosti nováčků",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "Mentoři si toto nastavení mohou pro sebe přizpůsobit prostřednictvím Nástěnky mentora.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "Mentoři si toto nastavení mohou pro sebe přizpůsobit prostřednictvím Nástěnky mentora.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Maximální počet editací, který nováček může mít, aby byl považován za ocenitelný",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Výchozí minimální počet editací, které nováčci musí mít, aby byli považovaní za ocenitelné",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentoři si toto nastavení mohou pro sebe přizpůsobit prostřednictvím Nástěnky mentora."
 }
