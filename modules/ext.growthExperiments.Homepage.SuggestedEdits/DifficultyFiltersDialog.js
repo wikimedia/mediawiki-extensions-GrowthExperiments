@@ -90,6 +90,23 @@ DifficultyFiltersDialog.prototype.updateFiltersFromState = function () {
 	this.taskTypeSelector.setSelected( this.filtersStore.preferences.taskTypes );
 };
 
+/**
+ * The parent method only checks the task counter. Due to API request issues (T369742),
+ * the counter is not reliable as it is returning task counts greater than 0 when no task types
+ * are selected, which should not be possible. Override and disable the primary button
+ * when "enabled filters" has 0 elements.
+ *
+ * @override
+ */
+DifficultyFiltersDialog.prototype.updateLoadingState = function ( state ) {
+	FiltersDialog.prototype.updateLoadingState.call( this, state );
+	var actions = this.actions.get();
+	var primaryAction = actions.length && actions[ 0 ];
+	if ( primaryAction && !state.isLoading ) {
+		primaryAction.setDisabled( state.count === 0 || this.getEnabledFilters().length === 0 );
+	}
+};
+
 /** @inheritDoc **/
 DifficultyFiltersDialog.prototype.getSetupProcess = function ( data ) {
 	return DifficultyFiltersDialog.super.prototype.getSetupProcess.call( this, data )
