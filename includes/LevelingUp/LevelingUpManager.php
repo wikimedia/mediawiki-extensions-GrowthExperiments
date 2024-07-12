@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\LevelingUp;
 
+use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -11,6 +13,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use GrowthExperiments\VariantHooks;
 use IDBAccessObject;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ServiceOptions;
@@ -106,6 +109,31 @@ class LevelingUpManager {
 	public static function isEnabledForAnyone( Config $config ): bool {
 		return SuggestedEdits::isEnabledForAnyone( $config )
 			&& $config->get( 'GELevelingUpFeaturesEnabled' );
+	}
+
+	/**
+	 * Whether leveling up features are available. This does not include any checks based on
+	 * the user's contribution history, just site configuration and A/B test cohorts.
+	 * @param UserIdentity $user
+	 * @param Config $config Site configuration.
+	 * @param ExperimentUserManager $experimentUserManager
+	 * @return bool
+	 */
+	public static function isEnabledForUser(
+		UserIdentity $user,
+		Config $config,
+		ExperimentUserManager $experimentUserManager
+	): bool {
+		// Leveling up should only be shown if
+		// 1) suggested edits are available on this wiki, as we'll direct the user there
+		// 2) the user's homepage is enabled, which maybe SuggestedEdits::isEnabled should
+		//    check, but it doesn't (this also excludes autocreated potentially-experienced
+		//    users who probably shouldn't get invites)
+		// 3) (for now) the wiki is a pilot wiki and the user is in the experiment group
+		return self::isEnabledForAnyone( $config )
+			&& SuggestedEdits::isEnabled( $config )
+			&& HomepageHooks::isHomepageEnabled( $user )
+			&& $experimentUserManager->isUserInVariant( $user, VariantHooks::VARIANT_CONTROL );
 	}
 
 	/**
