@@ -721,7 +721,7 @@ class HomepageHooks implements
 			'type' => 'api'
 		];
 
-		if ( $this->config->get( 'GELevelingUpFeaturesEnabled' ) ) {
+		if ( LevelingUpManager::isEnabledForAnyone( $this->config ) ) {
 			$preferences[LevelingUpManager::TASK_TYPE_PROMPT_OPT_OUTS_PREF] = [
 				'type' => 'api'
 			];
@@ -918,7 +918,7 @@ class HomepageHooks implements
 				} );
 
 				$jobQueue = $this->jobQueueGroup->get( NotificationKeepGoingJob::JOB_NAME );
-				if ( $this->config->get( 'GELevelingUpFeaturesEnabled' ) &&
+				if ( LevelingUpManager::isEnabledForAnyone( $this->config ) &&
 					$this->experimentUserManager->isUserInVariant( $user, VariantHooks::VARIANT_CONTROL ) &&
 					$jobQueue->delayedJobsEnabled() ) {
 					$this->jobQueueGroup->lazyPush(

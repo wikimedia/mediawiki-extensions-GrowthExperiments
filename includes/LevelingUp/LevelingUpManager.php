@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\LevelingUp;
 
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -94,6 +95,17 @@ class LevelingUpManager {
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->logger = $logger;
 		$this->growthConfig = $growthConfig;
+	}
+
+	/**
+	 * Are Levelling up features enabled for anyone?
+	 *
+	 * @param Config $config
+	 * @return bool
+	 */
+	public static function isEnabledForAnyone( Config $config ): bool {
+		return SuggestedEdits::isEnabledForAnyone( $config )
+			&& $config->get( 'GELevelingUpFeaturesEnabled' );
 	}
 
 	/**
