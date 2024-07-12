@@ -186,7 +186,7 @@ class LevelingUpHooks implements
 		//    check, but it doesn't (this also excludes autocreated potentially-experienced
 		//    users who probably shouldn't get invites)
 		// 3) (for now) the wiki is a pilot wiki and the user is in the experiment group
-		return $config->get( 'GELevelingUpFeaturesEnabled' )
+		return LevelingUpManager::isEnabledForAnyone( $config )
 			&& SuggestedEdits::isEnabled( $config )
 			&& HomepageHooks::isHomepageEnabled( $user )
 			&& $experimentUserManager->isUserInVariant( $user, VariantHooks::VARIANT_CONTROL );

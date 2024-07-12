@@ -9,6 +9,7 @@ use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\EventLogging\SpecialEditGrowthConfigLogger;
 use GrowthExperiments\HomepageModules\Banner;
+use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -559,7 +560,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 		}
 
-		if ( $this->getConfig()->get( 'GELevelingUpFeaturesEnabled' ) ) {
+		if ( LevelingUpManager::isEnabledForAnyone( $this->getConfig() ) ) {
 			$levelUpDescriptors = [
 				'geconfig-level-up-notifications-description' => [
 					'type' => 'info',
@@ -789,7 +790,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 		}
 
-		if ( $this->getConfig()->get( 'GELevelingUpFeaturesEnabled' ) ) {
+		if ( LevelingUpManager::isEnabledForAnyone( $this->getConfig() ) ) {
 			$descriptors['geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum']['default'] =
 				$this->growthWikiConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' )[1];
 		}
