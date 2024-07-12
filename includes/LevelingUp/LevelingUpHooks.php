@@ -3,10 +3,7 @@
 namespace GrowthExperiments\LevelingUp;
 
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\HomepageHooks;
-use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\VariantHooks;
 use GrowthExperiments\VisualEditorHooks;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\Notifications\AttributeManager;
@@ -76,7 +73,7 @@ class LevelingUpHooks implements
 		// (shouldInviteUserAfterNormalEdit() would discard that case anyway).
 		if ( $page->getNamespace() !== NS_MAIN
 			|| $isSuggestedEdit
-			|| !self::isLevelingUpEnabledForUser( $user, $this->config, $this->experimentUserManager )
+			|| !LevelingUpManager::isEnabledForUser( $user, $this->config, $this->experimentUserManager )
 			|| !$this->levelingUpManager->shouldInviteUserAfterNormalEdit( $user )
 		) {
 			return;
@@ -104,7 +101,7 @@ class LevelingUpHooks implements
 			// an article, and the user just passed the threshold for the invite.
 			!$isPostEditReload
 			|| ( !$out->getTitle() || !$out->getTitle()->inNamespace( NS_MAIN ) )
-			|| !self::isLevelingUpEnabledForUser( $out->getUser(), $this->config, $this->experimentUserManager )
+			|| !LevelingUpManager::isEnabledForUser( $out->getUser(), $this->config, $this->experimentUserManager )
 			|| !$this->levelingUpManager->shouldInviteUserAfterNormalEdit( $out->getUser() )
 		) {
 			return;
@@ -165,31 +162,6 @@ class LevelingUpHooks implements
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		$defaultOptions['echo-subscriptions-email-ge-newcomer'] = true;
 		$defaultOptions['echo-subscriptions-web-ge-newcomer'] = true;
-	}
-
-	/**
-	 * Whether leveling up features are available. This does not include any checks based on
-	 * the user's contribution history, just site configuration and A/B test cohorts.
-	 * @param UserIdentity $user
-	 * @param Config $config Site configuration.
-	 * @param ExperimentUserManager $experimentUserManager
-	 * @return bool
-	 */
-	public static function isLevelingUpEnabledForUser(
-		UserIdentity $user,
-		Config $config,
-		ExperimentUserManager $experimentUserManager
-	): bool {
-		// Leveling up should only be shown if
-		// 1) suggested edits are available on this wiki, as we'll direct the user there
-		// 2) the user's homepage is enabled, which maybe SuggestedEdits::isEnabled should
-		//    check, but it doesn't (this also excludes autocreated potentially-experienced
-		//    users who probably shouldn't get invites)
-		// 3) (for now) the wiki is a pilot wiki and the user is in the experiment group
-		return LevelingUpManager::isEnabledForAnyone( $config )
-			&& SuggestedEdits::isEnabled( $config )
-			&& HomepageHooks::isHomepageEnabled( $user )
-			&& $experimentUserManager->isUserInVariant( $user, VariantHooks::VARIANT_CONTROL );
 	}
 
 }
