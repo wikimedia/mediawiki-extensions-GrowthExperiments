@@ -2,10 +2,20 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use LogEntry;
 use LogFormatter;
-use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleParser;
 
 class MentorChangeLogFormatter extends LogFormatter {
+	private TitleParser $titleParser;
+
+	public function __construct(
+		LogEntry $entry,
+		TitleParser $titleParser
+	) {
+		parent::__construct( $entry );
+		$this->titleParser = $titleParser;
+	}
 
 	/**
 	 * @inheritDoc
@@ -56,13 +66,22 @@ class MentorChangeLogFormatter extends LogFormatter {
 		$links = [];
 		switch ( $this->entry->getSubtype() ) {
 			case 'claimmentee':
-				$links[] = Title::makeTitle( NS_USER, $params[3] );
+				$title = $this->titleParser->makeTitleValueSafe( NS_USER, $params[3] );
+				if ( $title ) {
+					$links[] = $title;
+				}
 				break;
 			case 'setmentor':
-				$links[] = Title::makeTitle( NS_USER, $params[3] );
+				$title = $this->titleParser->makeTitleValueSafe( NS_USER, $params[3] );
+				if ( $title ) {
+					$links[] = $title;
+				}
 				// no break here
 			case 'setmentor-no-previous-mentor':
-				$links[] = Title::makeTitle( NS_USER, $params[4] );
+				$title = $this->titleParser->makeTitleValueSafe( NS_USER, $params[4] );
+				if ( $title ) {
+					$links[] = $title;
+				}
 				break;
 		}
 		return $links;

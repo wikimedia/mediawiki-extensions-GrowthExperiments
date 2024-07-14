@@ -2971,10 +2971,30 @@
 		"growthexperiments": "growthexperiments-log-header"
 	},
 	"LogActionsHandlers": {
-		"growthexperiments/setmentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
-		"growthexperiments/claimmentee": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
-		"growthexperiments/setmentor-no-previous-mentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
-		"growthexperiments/claimmentee-no-previous-mentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
+		"growthexperiments/setmentor": {
+			"class": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
+			"services": [
+				"TitleParser"
+			]
+		},
+		"growthexperiments/claimmentee": {
+			"class": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
+			"services": [
+				"TitleParser"
+			]
+		},
+		"growthexperiments/setmentor-no-previous-mentor": {
+			"class": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
+			"services": [
+				"TitleParser"
+			]
+		},
+		"growthexperiments/claimmentee-no-previous-mentor": {
+			"class": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
+			"services": [
+				"TitleParser"
+			]
+		},
 		"growthexperiments/addlink": "LogFormatter",
 		"growthexperiments/addimage": "GrowthExperiments\\NewcomerTasks\\AddImage\\AddImageLogFormatter",
 		"growthexperiments/addsectionimage": "GrowthExperiments\\NewcomerTasks\\AddSectionImage\\AddSectionImageLogFormatter"
