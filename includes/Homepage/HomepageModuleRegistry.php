@@ -135,7 +135,8 @@ class HomepageModuleRegistry {
 					$growthServices->getProtectionFilter(),
 					$services->getUserOptionsLookup(),
 					$growthServices->getLinkRecommendationFilter(),
-					$growthServices->getImageRecommendationFilter()
+					$growthServices->getImageRecommendationFilter(),
+					$services->getPerDbNameStatsdDataFactory(),
 				);
 			},
 

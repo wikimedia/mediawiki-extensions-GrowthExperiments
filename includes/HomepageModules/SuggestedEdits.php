@@ -21,11 +21,13 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
+use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Html\Html;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Status\Status;
@@ -137,6 +139,8 @@ class SuggestedEdits extends BaseModule {
 
 	private CampaignConfig $campaignConfig;
 
+	private StatsdDataFactoryInterface $perDbNameStatsdDataFactory;
+
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
@@ -165,7 +169,8 @@ class SuggestedEdits extends BaseModule {
 		ProtectionFilter $protectionFilter,
 		UserOptionsLookup $userOptionsLookup,
 		LinkRecommendationFilter $linkRecommendationFilter,
-		ImageRecommendationFilter $imageRecommendationFilter
+		ImageRecommendationFilter $imageRecommendationFilter,
+		StatsdDataFactoryInterface $perDbNameStatsdDataFactory
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
 		$this->pageViewService = $pageViewService;
@@ -178,6 +183,7 @@ class SuggestedEdits extends BaseModule {
 		$this->linkRecommendationFilter = $linkRecommendationFilter;
 		$this->imageRecommendationFilter = $imageRecommendationFilter;
 		$this->campaignConfig = $campaignConfig;
+		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 	}
 
 	/** @inheritDoc */
@@ -324,6 +330,32 @@ class SuggestedEdits extends BaseModule {
 		return $this->htmlCache[$key];
 	}
 
+	/**
+	 * @param string $mode one of the self::RENDER_* constants
+	 * @param string $status one of ['ok', 'empty', 'error']
+	 * @return void
+	 */
+	private function trackQueueStatus( string $mode, string $status ): void {
+		if ( !in_array( $status, [ 'ok', 'empty', 'error' ] ) ) {
+			// Should never happen
+			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+				__METHOD__ . ' called with unexpected status: {status}',
+				[
+					'status' => $status,
+					'exception' => new \RuntimeException
+				]
+			);
+
+			return;
+		}
+		$this->perDbNameStatsdDataFactory->increment( implode( '.', [
+			'growthExperiments.suggestedEdits',
+			( $mode === self::RENDER_DESKTOP ? 'desktop' : 'mobile' ),
+			'queue',
+			$status,
+		] ) );
+	}
+
 	/** @inheritDoc */
 	public function getJsData( $mode ) {
 		$data = parent::getJsData( $mode );
@@ -336,8 +368,10 @@ class SuggestedEdits extends BaseModule {
 				$data['task-preview'] = [
 					'error' => Status::wrap( $tasks )->getMessage( false, false, 'en' )->parse(),
 				];
+				$this->trackQueueStatus( $mode, 'error' );
 			} elseif ( $tasks->count() === 0 ) {
 				$data['task-preview'] = [ 'noresults' => true ];
+				$this->trackQueueStatus( $mode, 'empty' );
 			} else {
 				$formattedTasks = [];
 				foreach ( $tasks as $task ) {
@@ -364,6 +398,7 @@ class SuggestedEdits extends BaseModule {
 				}
 				$data['task-queue'] = $formattedTasks;
 				$data['task-preview'] = current( $formattedTasks );
+				$this->trackQueueStatus( $mode, 'ok' );
 			}
 		}
 
