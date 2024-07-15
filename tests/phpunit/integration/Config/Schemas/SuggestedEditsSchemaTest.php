@@ -3,7 +3,7 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
-use MediaWikiIntegrationTestCase;
+use MediaWiki\Extension\CommunityConfiguration\Tests\SchemaProviderTestCase;
 use MockMessageLocalizer;
 use StatusValue;
 
@@ -15,11 +15,20 @@ use StatusValue;
  *
  * @group Database
  */
-class SuggestedEditsSchemaTest extends MediaWikiIntegrationTestCase {
+class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
+
+	protected function getExtensionName(): string {
+		return 'GrowthExperiments';
+	}
+
+	protected function getProviderId(): string {
+		return 'GrowthSuggestedEdits';
+	}
 
 	public function setUp(): void {
 		parent::setUp();
-		$this->markTestSkippedIfExtensionNotLoaded( 'CommunityConfiguration' );
+
+		$this->overrideConfigValue( 'GEHomepageSuggestedEditsEnabled', true );
 	}
 
 	public function testDefaultTaskTypesDataWithEmptyConfig(): void {
