@@ -11,7 +11,8 @@
 			"LordProfo",
 			"Mardetanha",
 			"Mohammad ebz",
-			"Reza1615"
+			"Reza1615",
+			"Ebrahim"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|درود}}، {{bidi:$1}}!",
@@ -110,7 +111,7 @@
 	"tag-newcomer_task": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|وظیفه تازه‌وارد]]",
 	"tag-newcomer_task-description": "ویرایش‌هایی که از طریق پودمان ویرایش‌های پیشنهادی در صفحهٔ اصلی کاربران تازه‌وارد انجام شده‌اند",
 	"tag-newcomer_task_copyedit": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|وظیفه تازه‌وارد: ویرایستاری]]",
-	"tag-newcomer_task_copyedit-description": "وظیفهٔ «ویرایستاری» پیشنهادی توسط پودمان ویرایش‌های پیشنهادی در صفحهٔ اصلی تازه‌واردان",
+	"tag-newcomer_task_copyedit-description": "وظیفهٔ «ویراستاری» پیشنهادی توسط پودمان ویرایش‌های پیشنهادی در صفحهٔ اصلی تازه‌واردان",
 	"tag-newcomer_task_references": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|وظیفه تازه‌وارد: منبع‌دهی]]",
 	"tag-newcomer_task_references-description": "وظیفهٔ «منبع‌دهی» پیشنهادی توسط پودمان ویرایش‌های پیشنهادی در صفحهٔ اصلی تازه‌واردان",
 	"tag-newcomer_task_update": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|وظیفه تازه‌وارد: به‌روزرسانی]]",

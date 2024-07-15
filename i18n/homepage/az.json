@@ -3,7 +3,8 @@
 		"authors": [
 			"NMW03",
 			"Serkanland",
-			"Toghrul Rahimli"
+			"Toghrul Rahimli",
+			"Nemoralis"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salam}}, {{bidi:$1}}!",
@@ -479,8 +480,8 @@
 	"growthexperiments-addimage-reason-wikipedia-languages": "{{PLURAL:$1|Digər $1 dildə}} eyni məqalədə istifadə olunub: $2",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "{{PLURAL:$1|digər}} $1",
 	"growthexperiments-addimage-reason-wikipedia-project": "$1 layihəsində eyni məqalədə istifadə olunub.",
-	"growthexperiments-addimage-reason-wikidata": "Bu məqalənin Vikiverilənlər elementində tapıldı (güclü uyğunluq).",
-	"growthexperiments-addimage-reason-commons": "Bu məqalə üçün Vikiverilənlər elementi ilə əlaqələndirilmiş bir neçə şəkildən biri.",
+	"growthexperiments-addimage-reason-wikidata": "Bu məqalənin Vikidata elementində tapıldı (güclü uyğunluq).",
+	"growthexperiments-addimage-reason-commons": "Bu məqalə üçün Vikidata elementi ilə əlaqələndirilmiş bir neçə şəkildən biri.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Siz}} bugünkü bütün şəkil təkliflərini tamamladınız.\n\nDigər redaktə növlərinə baxmaq üçün çətinlik səviyyənizi tənzimləyin və ya daha çox şəkil təklifləri üçün sabah geri qayıdın.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Başa düşdüm",
 	"growthexperiments-addimage-caption-warning-tooshort": "Başlıqların uzunluğu $1 və ya daha uzun {{PLURAL:$1|simvoldan}} ibarət olmalıdır.",
