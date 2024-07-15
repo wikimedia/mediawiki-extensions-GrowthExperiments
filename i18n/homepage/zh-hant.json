@@ -552,5 +552,6 @@
 	"growthexperiments-tour-newimpact-discovery-description": "更多關於{{GENDER:|您}}的編輯活動已經新增！",
 	"growthexperiments-tour-newimpact-discovery-response-button-okay": "了解",
 	"growthexperiments-homepage-newimpact-contributions-link": "檢視全部編輯",
-	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|您已經}}進行了$3個{{PLURAL:$3|建議編輯}}，繼續學習更多新技能。"
+	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|您已經}}進行了$3個{{PLURAL:$3|建議編輯}}，繼續學習更多新技能。",
+	"growthexperiments-homepage-community-updates-header": "社群更新"
 }

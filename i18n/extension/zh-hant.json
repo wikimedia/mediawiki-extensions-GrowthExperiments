@@ -100,6 +100,9 @@
 	"growthexperiments-edit-config-delayed": "對此設定的變更不會立刻生效（請參閱[https://www.mediawiki.org/wiki/Growth/FAQ#add-link-config 常見問題]）。",
 	"growthexperiments-info-tooltip-close-label": "關閉",
 	"specialpages-group-growth-tools": "Growth 工具",
+	"communityconfiguration-communityupdates-title": "社群更新",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesenabled-control-label": "已開啟",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "標題",
 	"communityconfiguration-mentorship-title": "導師計畫",
 	"communityconfiguration-growthhomepage-title": "新手上路"
 }

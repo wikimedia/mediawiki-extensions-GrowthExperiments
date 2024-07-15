@@ -638,5 +638,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "עשית {{PLURAL:$3|עריכה מוצעת אחת|$3 עריכות מוצעות}}. {{GENDER:$2|תמשיך|תמשיכי}} ללמוד עוד מיומנויות חדשות.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "לעשות עריכה מוצעת",
 	"echo-category-title-ge-newcomer": "אפשרויות צמיחה",
-	"echo-pref-tooltip-ge-newcomer": "להודיע לי על משימות לעורכים חדשים ותכונות אחרות שנועדו לעזור למשתמשים חדשים."
+	"echo-pref-tooltip-ge-newcomer": "להודיע לי על משימות לעורכים חדשים ותכונות אחרות שנועדו לעזור למשתמשים חדשים.",
+	"growthexperiments-homepage-community-updates-header": "עדכוני קהילה"
 }
