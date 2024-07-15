@@ -49,6 +49,9 @@ class ApiSetMenteeStatus extends ApiBase {
 		if ( !$this->wikiConfig->get( 'GEMentorshipEnabled' ) ) {
 			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
 		}
+		if ( !$this->getUser()->isNamed() ) {
+			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
+		}
 
 		$params = $this->extractRequestParams();
 		$user = $this->getAuthority()->getUser();
