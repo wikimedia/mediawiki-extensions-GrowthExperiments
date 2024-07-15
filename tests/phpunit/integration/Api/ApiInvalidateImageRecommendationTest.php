@@ -52,6 +52,8 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 	}
 
 	public function testPageNotInTaskSet() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
 		$this->insertConfigPage();
 		$pageName = 'Title1';
 		$this->insertPage( $pageName );

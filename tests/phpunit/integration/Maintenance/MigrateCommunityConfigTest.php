@@ -7,7 +7,6 @@ namespace GrowthExperiments\Tests;
 // files in maintenance/ are not autoloaded to avoid accidental usage, so load explicitly
 require_once __DIR__ . '/../../../../maintenance/migrateCommunityConfig.php';
 
-use ExtensionRegistry;
 use GrowthExperiments\Maintenance\MigrateCommunityConfig;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
@@ -19,9 +18,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 
 	public function setUp(): void {
 		parent::setUp();
-		if ( !ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) ) {
-			$this->markTestSkipped( 'These tests require CommunityConfiguration.' );
-		}
+		$this->markTestSkippedIfExtensionNotLoaded( 'CommunityConfiguration' );
 	}
 
 	protected function getMaintenanceClass(): string {
