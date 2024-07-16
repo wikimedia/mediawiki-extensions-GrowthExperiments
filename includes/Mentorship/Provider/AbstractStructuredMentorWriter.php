@@ -22,7 +22,12 @@ use StatusValue;
 abstract class AbstractStructuredMentorWriter implements IMentorWriter {
 	use LoggerAwareTrait;
 
-	/** @var string Change tag to tag structured mentor list edits with */
+	/**
+	 * @var string Change tag to tag structured mentor list edits with
+	 *
+	 * @note Keep in sync with extension.json (GrowthMentorList provider of
+	 * CommunityConfiguration).
+	 */
 	public const CHANGE_TAG = 'mentor list change';
 
 	/** @var string */
