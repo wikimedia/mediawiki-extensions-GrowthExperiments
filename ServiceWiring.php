@@ -31,6 +31,8 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorProvider;
+use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorProvider;
+use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorWriter;
@@ -493,14 +495,24 @@ return [
 	): AbstractStructuredMentorProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		$provider = new LegacyStructuredMentorProvider(
-			$services->getUserIdentityLookup(),
-			new DerivativeContext( RequestContext::getMain() ),
-			$geServices->getWikiPageConfigLoader(),
-			$services->getTitleFactory()->newFromText(
-				$services->getMainConfig()->get( 'GEStructuredMentorList' )
-			)
-		);
+		if ( Util::useCommunityConfiguration() ) {
+			$provider = new CommunityStructuredMentorProvider(
+				$services->getUserIdentityLookup(),
+				new DerivativeContext( RequestContext::getMain() ),
+				CommunityConfigurationServices::wrap( $services )
+					->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' )
+			);
+		} else {
+			$provider = new LegacyStructuredMentorProvider(
+				$services->getUserIdentityLookup(),
+				new DerivativeContext( RequestContext::getMain() ),
+				$geServices->getWikiPageConfigLoader(),
+				$services->getTitleFactory()->newFromText(
+					$services->getMainConfig()->get( 'GEStructuredMentorList' )
+				)
+			);
+		}
+
 		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $provider;
 	},
@@ -555,16 +567,28 @@ return [
 	): IMentorWriter {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		$writer = new LegacyStructuredMentorWriter(
-			$geServices->getMentorProvider(),
-			$services->getUserIdentityLookup(),
-			$services->getUserFactory(),
-			$geServices->getWikiPageConfigLoader(),
-			$geServices->getWikiPageConfigWriterFactory(),
-			$services->getTitleFactory()->newFromText(
-				$services->getMainConfig()->get( 'GEStructuredMentorList' )
-			)
-		);
+		if ( Util::useCommunityConfiguration() ) {
+			$writer = new CommunityStructuredMentorWriter(
+				$geServices->getMentorProvider(),
+				$services->getUserIdentityLookup(),
+				$services->getUserFactory(),
+				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+				CommunityConfigurationServices::wrap( $services )
+					->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' )
+			);
+		} else {
+			$writer = new LegacyStructuredMentorWriter(
+				$geServices->getMentorProvider(),
+				$services->getUserIdentityLookup(),
+				$services->getUserFactory(),
+				$geServices->getWikiPageConfigLoader(),
+				$geServices->getWikiPageConfigWriterFactory(),
+				$services->getTitleFactory()->newFromText(
+					$services->getMainConfig()->get( 'GEStructuredMentorList' )
+				)
+			);
+		}
+
 		$writer->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $writer;
 	},
