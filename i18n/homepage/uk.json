@@ -638,5 +638,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Ви}} зробили $3 {{PLURAL:$3|пропоноване редагування|пропоновані редагування|пропонованих редагувань}}. Продовжуйте, і здобуватимете нові навички.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Зробіть пропоноване редагування",
 	"echo-category-title-ge-newcomer": "Функції зростання",
-	"echo-pref-tooltip-ge-newcomer": "Повідомляти мене про завдання для новачків та інші функції, розроблені для нових користувачів."
+	"echo-pref-tooltip-ge-newcomer": "Повідомляти мене про завдання для новачків та інші функції, розроблені для нових користувачів.",
+	"growthexperiments-homepage-community-updates-header": "Новини спільноти"
 }

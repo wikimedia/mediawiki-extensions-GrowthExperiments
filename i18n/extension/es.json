@@ -12,6 +12,7 @@
 			"LORDZRAWN",
 			"MarcoAurelio",
 			"Mnivar",
+			"Qwrop",
 			"SpikeShroom",
 			"Zapipedia (WMF)",
 			"ZebaX2010"
@@ -116,6 +117,7 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Número máximo de ediciones que una persona novata puede tener para ser candidata a recibir notificaciones. Si es 0, ninguna de ellas  </br> recibirá esta notificación. Cuanto más alto sea el valor, más personas recibirán la notificación.<br>  Esta notificación solo se envía a principantes que no hayan realizado ediciones sugeridas.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Notificación de Sigue adelante",
 	"growthexperiments-edit-config-keep-going-notification-description": "Número máximo de ediciones sugeridas que una persona puede completar para ser apta para recibir esta notificación. Si es 9, <br> nadie recibirá esta notificación. Cuanto más alto sea el valor, más principiantes recibirán esta notificación.<br> La notificación solo se enviará a principiantes que hayan completado al menos una edición sugerida.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Título",
 	"communityconfiguration-helppanel-title": "Panel de ayuda",
 	"communityconfiguration-helppanel-description": "Personaliza la configuración del panel de ayuda para que se ajuste a los requisitos de tu comunidad y define los recursos que contiene para ayudar y orientar a quienes comienzan a editar.",
 	"communityconfiguration-helppanel-info-text": "El panel de ayuda puede estar disponible en cualquier espacio de nombre, en modo lectura o edición, tal y como se configura a continuación. Incluye la posibilidad de buscar ayuda, hacer clic en los enlaces de ayuda y formular preguntas a las personas mentoras o al servicio de ayuda. Muestra cinco enlaces y un enlace ''ver más''. Estos pueden ser configurados para ser cualquier enlace en la wiki, pero las recomendaciones se incluyen a continuación.",
