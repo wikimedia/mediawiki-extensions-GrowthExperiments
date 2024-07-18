@@ -9,7 +9,8 @@
 			"Krinkle",
 			"Mainframe98",
 			"McDutchie",
-			"Romaine"
+			"Romaine",
+			"Sjoerddebruin"
 		]
 	},
 	"growthexperiments-desc": "Deze uitbreiding bevat experimenten uitgevoerd door het Growth-team.",
@@ -147,7 +148,7 @@
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Standaard minimumaantal bewerkingen dat een leerling moet hebben om lovenswaardig te zijn",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentoren kunnen deze optie voor hun eigen gebruiker wijzigen in het Mentor-dashboard.",
 	"communityconfiguration-growthhomepage-title": "Inwerken van nieuwkomers",
-	"communityconfiguration-growthhomepage-description": "Personaliseer het inwerken van nieuwe accounthouders via hulp na registrati en meldingen over het behalen van niveaus.",
+	"communityconfiguration-growthhomepage-description": "Personaliseer het inwerken van nieuwe accounthouders via hulp na registratie en meldingen over het behalen van niveaus.",
 	"communityconfiguration-growthhomepage-info-text": "De startpagina voor nieuwkomers ([[Special:Homepage]]) geeft begeleiding aan nieuwe accounthouders. Als een nieuwe accounthouder bij registratie aangeeft een artikel te willen maken of een nieuwe afbeelding aan Wikipedia te willen toevoegen, raden we aan eerst een kleinere bewerking uit te voeren om aan de slag te gaan en een link op te geven voor verdere begeleiding.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-label": "Links naar de startpagina van nieuwkomers",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Bestemmingshulp voor een koppeling over het maken van een nieuw artikel",

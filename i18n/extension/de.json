@@ -121,6 +121,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-description": "Ein kurzer Titel, der die hervorgehobene Kampagne, das Projekt, die Veranstaltung oder die Community-Initiative am besten repräsentiert.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-label": "Hauptteil",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "Eine kurze und freundliche Informationsnachricht, um Interesse zu wecken.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesminedits-label": "Mindestanzahl von Bearbeitungen, die ein Benutzer haben muss, damit dieses Banner angezeigt wird",
 	"communityconfiguration-helppanel-title": "Hilfebereich",
 	"communityconfiguration-helppanel-description": "Passe die Einstellungen des Hilfebereichs an die Anforderungen deiner Community an und definiere darin Ressourcen, die neuen Benutzern helfen und sie anleiten.",
 	"communityconfiguration-helppanel-info-text": "Das Hilfefenster kann in jedem Namensraum im Lese- oder Bearbeitungsmodus verfügbar sein, wie unten konfiguriert. Es bietet die Möglichkeit, nach Hilfe zu suchen, Hilfelinks anzuklicken und Fragen an Lotsen oder das Helpdesk zu stellen. Links können als beliebige Links im Wiki konfiguriert werden; unten finden sich Empfehlungen.",
