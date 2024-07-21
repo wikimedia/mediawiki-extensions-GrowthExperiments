@@ -169,7 +169,7 @@ class FixSuggestedEditChangeTags extends Maintenance {
 		// We can choose between paginating by revision ID, which is a filesort, or paginating
 		// by RC id, which makes the --from flag less useful. For now we go with the first
 		// as the number of tagged revisions is expected to be small.
-		$queryBuilder->conds( 'ct_rev_id >= ' . $fromRevision );
+		$queryBuilder->conds( $dbr->expr( 'ct_rev_id', '>=', $fromRevision ) );
 		$queryBuilder->orderBy( 'ct_tag_id ASC, ct_rev_id ASC' );
 		$queryBuilder->limit( $limit );
 
