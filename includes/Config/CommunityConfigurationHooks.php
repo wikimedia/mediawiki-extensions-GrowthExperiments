@@ -38,6 +38,11 @@ class CommunityConfigurationHooks implements
 				}
 				break;
 			case 'GrowthSuggestedEdits':
+				if ( !$this->config->get( 'GELinkRecommendationsFrontendEnabled' ) ) {
+					// HACK: for T370611. This should be removed asap, ideally before end of August 2024.
+					$rootSchema['properties']['link_recommendation']
+						['properties']['disabled']['disabled-true-hack-T370611'] = true;
+				}
 				if ( !$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 					unset( $rootSchema['properties']['link_recommendation'] );
 				}
