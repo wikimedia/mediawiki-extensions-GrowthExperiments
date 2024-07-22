@@ -310,6 +310,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "添加条目之间的链接",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "添加条目间的链接",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "为无插图的条目添加图像",
+	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "将图片添加到条目章节中",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "机器建议",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "选择“匹配所有选定的主题”选项以获得更具体的结果",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "匹配所有选定的主题",

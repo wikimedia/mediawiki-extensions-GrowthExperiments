@@ -52,6 +52,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "下一个编辑建议：",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "下一个编辑建议：",
 	"growthexperiments-help-panel-postedit-footer": "查看全部编辑建议",
+	"growthexperiments-help-panel-postedit-suggestededits-title": "编辑建议",
 	"growthexperiments-help-panel-postedit-suggestededits-info": "{{SITENAME}}上的其他用户发现了需要改进的条目。浏览这些编辑建议，继续{{GENDER:|您}}的编辑。",
 	"growthexperiments-help-panel-postedit-trynewtask-toast-message": "祝贺您发布了另一个建议的编辑！",
 	"growthexperiments-help-panel-postedit-trynewtask-try-button-text": "尝试新任务",

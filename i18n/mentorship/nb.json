@@ -230,5 +230,6 @@
 	"growthexperiments-mentorship-enrollasmentor-summary": "Legger til meg selv som fadder",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Kun brukere med minst $1 {{PLURAL:$1|redigering|redigeringer}} og $2 {{PLURAL:$1|dags|dagers}} tilstedeværelse kan melde seg som faddere.",
 	"tag-mentor list change": "Endring av fadderlisten",
-	"tag-mentor list change-description": "Tagg som gjelder redigeringer til den strukturerte lista over faddere via GrowthExperiments"
+	"tag-mentor list change-description": "Tagg som gjelder redigeringer til den strukturerte lista over faddere via GrowthExperiments",
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Fadderfunksjonene er slått av. Administratorer kan slå på fadderfunksjoner via [[$1]]."
 }

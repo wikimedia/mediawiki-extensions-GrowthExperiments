@@ -178,7 +178,7 @@
 	"growthexperiments-specialimpact-title": "Påvirkning",
 	"growthexperiments-specialimpact-showing-for-other-user": "Viser påvirkningsdata for $1",
 	"growthexperiments-specialimpact-invalid-username": "Manglende eller ugyldig brukernavn.",
-	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Manglende brukernavnparameter på den inkluderte spesialsiden Impact.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Når man inkluderer spesialsiden «Innvirkning» må et brukernavn angis som første parameter.",
 	"growthexperiments-homepage-claimmentee-no-user": "Fadderbarnet finnes ikke",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Du}} er allerede fadder for {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} har valgt å ikke ha fadder",
@@ -216,6 +216,8 @@
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Oppdater filter",
 	"growthexperiments-homepage-suggestededits-footer": "Andre brukere har merket disse artiklene fordi de trenger forbedring. Hjelp til å gjøre '''{{SITENAME}}''' bedre for de over '''$1''' daglige leserne.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Andre brukere har merket disse artiklene fordi de trenger forbedring. Hjelp til med å forbedre '''{{SITENAME}}'''.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title": "Ingen strukturerte oppgaver er tilgjengelige for tiden.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "Prøv å velge flere emner og oppgavetyper, eller kom tilbake senere.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Bidragsytere som deg har bidratt til å forbedre {{SITENAME}} i dag. Bli med!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Se alle forslag",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Fiks skrivefeil, grammatikk og tone",
@@ -623,5 +625,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du}} har gjort $3 {{PLURAL:$3|foreslått redigering|foreslåtte redigeringer}}. Fortsett for å utvikle ferdighetene dine.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Gjør en foreslått redigering",
 	"echo-category-title-ge-newcomer": "Growth-funksjoner",
-	"echo-pref-tooltip-ge-newcomer": "Varsle meg om nybegynneroppgaver og andre funksjoner som er laget for å hjelpe nye brukere."
+	"echo-pref-tooltip-ge-newcomer": "Varsle meg om nybegynneroppgaver og andre funksjoner som er laget for å hjelpe nye brukere.",
+	"growthexperiments-homepage-community-updates-header": "Oppdateringer fra fellesskapet"
 }

@@ -82,7 +82,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Si vous ne pouvez pas être tut{{GENDER:|eur|rice}} pendant une période donnée (plus d’une semaine), {{GENDER:|}}vous pouvez {{GENDER:|}}vous mettre à l’écart. Pendant cette période, un autre tuteur ou une autre tutrice recevra les questions posées par vos apprentis.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Vous serez absent{{GENDER:|e|(e)}} durant :",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "jours",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "La valeur saisie dans « Vous serez absent{{GENDER:||e|(e)}} pendant » est trop élevée. Le nombre maximum de jours où un(e) mentor(e) peut s’absenter ne peut excéder $1 (un an).",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "La valeur saisie dans « Vous serez absent{{GENDER:|e|(e)}} pendant » est trop élevée. Le nombre maximum de jours où {{GENDER:|un mentor|une mentore}} peut s’absenter ne peut excéder $1 (un an).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Une erreur inconnue s’est produite. Veuillez essayer à nouveau ultérieurement.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Votre statut a été changé en « Acti{{GENDER:|f|ve|f(ve)}} ».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Votre statut a été changé en « Absent{{GENDER:||e|(e)}} ».",
@@ -149,6 +149,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Soumettre",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Annuler",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Une erreur inconnue s’est produite. Veuillez essayer à nouveau ultérieurement.",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success": "Merci d'avoir envoyé votre message à votre  {{GENDER:$1|tuteur|tutrice}} ! Revenir au [[Special:MentorDashboard|tableau de bord des tuteurs]].",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Ouvrir la boîte de dialogue des paramètres",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Paramètres",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Indicateurs des apprentis dignes de félicitation",
@@ -235,5 +236,6 @@
 	"growthexperiments-mentorship-enrollasmentor-summary": "M’ajoute moi-même en tant que tuteur ou tutrice",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Seuls les utilisateurs avec au moins $1 modification{{PLURAL:$1||s}} et $2 jour{{PLURAL:$2||s}} de présence peuvent s’inscrire en tant que mentors.",
 	"tag-mentor list change": "Modification de la liste des mentors",
-	"tag-mentor list change-description": "Balise appliquée aux modifications apportées à la liste structurée des tuteurs via GrowthExperiments"
+	"tag-mentor list change-description": "Balise appliquée aux modifications apportées à la liste structurée des tuteurs via GrowthExperiments",
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Le tutorat n'est actuellement pas disponible. Les administrateurs peuvent l'activer via [[$1]]."
 }
