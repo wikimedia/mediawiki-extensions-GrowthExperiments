@@ -383,7 +383,7 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "ბმულები შეიძლება შემოთავაზებული იყოს იმ სიტყვებისათვის, რომელთაც ისინი არ სჭირდება. {{GENDER:$1|თავად}} გადაწყვიტეთ, საჭიროა თუ არა თითოეულ შემთხვევაში.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "გაიგეთ მეტი მანქანური შემოთავაზებების შესახებ",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "სახელმძღვანელო",
-	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>გაუკეთეთ ბმულები ისეთ მცნებებს, რომელზეც მკითხველს შეიძლება მეტის გაგება მოუნდეს.</li><li>დარწმუნდით, რომ ბმული სწორ სტატიაზე გადადის.</li><li>არ გაუკეთოთ ბმულები საზოგადოდ ცნობილ მცნებებს, წლებს ან თარიღებს.</li><li>თუკი დარწმუნებული არ {{GENDER:$1|ხართ}}, გამოტოვეთ.</li>",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>გაუკეთეთ ბმულები ისეთ ცნებებს, რომელზეც მკითხველს შეიძლება მეტის გაგება მოუნდეს.</li><li>დარწმუნდით, რომ ბმული სწორ სტატიაზე გადადის.</li><li>არ გაუკეთოთ ბმულები საზოგადოდ ცნობილ ცნებებს, წლებს ან თარიღებს.</li><li>თუკი დარწმუნებული არ {{GENDER:$1|ხართ}}, გამოტოვეთ.</li>",
 	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "ყველას გამოტოვება",
 	"growthexperiments-structuredtask-onboarding-dialog-title": "შესავალი",
 	"growthexperiments-structuredtask-onboarding-dialog-progress": "$1 / $2",

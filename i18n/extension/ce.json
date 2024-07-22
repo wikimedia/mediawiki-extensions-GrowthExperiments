@@ -4,10 +4,15 @@
 			"Умар"
 		]
 	},
+	"growthexperiments-desc": "ХӀара шордар «Кхиаран» тобано бинчу талламийн жамӀ ду.",
 	"growthexperiments-config-validator-error": "Таллам $1 гӀалатца чекхдели: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "Хьоьжу, <code>$1</code> хӀокхуьнга <code>$2</code>, иза ду <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Чулацаман модель нийса ца хилар: GrowthExperiments конфигурацин файлан хила йеза JSON чулацаман модель, $1 карийна",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ТӀедиллинчун тайпанан идентификатор нийса йац: <code>$1</code> нийса доцу маьӀна",
+	"growthexperiments-config-validator-array-toobig": "$1 тӀех дукха элементаш йу (максимум терахь $2 ду)",
+	"growthexperiments-edit-config-disabled": "Конфигураци карарчу хенахь дӀайайина йу.",
 	"growthexperiments-edit-config-title": "\"Кхиаран\" конфигураци хийца",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: ТӀаьхьара карлайаккхар [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: ТӀаьхьара карлайаккхар [[User:$1|$1]] $2 ([$4 башхалла]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: ТӀаьхьара карлайаккхар $1 декъашхочо.",
 	"growthexperiments-edit-config-pretext": "ХӀокху агӀоно аьтту бо [[:mw:Special:MyLanguage/Growth|\"Кхиаран\"]] командан гӀирсан конфигурацина хийцамаш бан. Цо хийцамаш бира бу $1 тӀехь хьан цӀарах. Хийцамаш хьажа йиш йу агӀонан истори тӀехь.",
 	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Хьан}} кхин йиш йу керлачу декъашхочун коьрта агӀонга баннер хьотто, цо латтайе керла декъашхочуна хилламан кхайкхамаш. Иза кхочушдан декъашхо куьйга [[$1]] йукъатоха. Цигахь тӀетоьхна болу чулацам гуш хира бу можа басахь баннерца [[Special:Homepage]] агӀонан лакхарчу декъехь.",

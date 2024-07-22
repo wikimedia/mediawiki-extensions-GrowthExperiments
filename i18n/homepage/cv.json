@@ -7,5 +7,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Каялла",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Сӗнӳсем ил",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Хатӗр",
-	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Хатӗр"
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Хатӗр",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Ҫӑмӑл",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Вӑтам",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Йывӑр"
 }

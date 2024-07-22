@@ -32,7 +32,8 @@
 			"Verdy p",
 			"Wladek92",
 			"Framawiki",
-			"SleaY"
+			"SleaY",
+			"MacOS Weed"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Bonjour, {{GENDER:$1|}}{{bidi:$1}} !",
@@ -412,7 +413,7 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "Les suggestions pourraient porter sur des mots qui n’en ont pas besoin ou proposer un lien vers le mauvais article. Utilisez {{GENDER:$1|}}votre jugement pour décider si elles sont correctes ou pas.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "En savoir plus sur les suggestions automatisées",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Lignes directrices",
-	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Liez des concepts au sujets desquels un lecteur pourrait vouloir en savoir plus.</li>\n<li>Assurez-vous que le lien mène vers le bon article.</li>\n<li>Ne liez pas les mots courants, les années ou les dates.</li>\n<li>Si {{GENDER:$1|}}vous n’êtes pas sûr{{GENDER:||e}}, ignorez la suggestion et passez à la suivante.</li>",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Liez des concepts au sujets desquels un lecteur pourrait vouloir en savoir plus.</li><li>Assurez-vous que le lien mène vers le bon article.</li><li>Ne liez pas les mots courants, les années ou les dates.</li><li>Si {{GENDER:$1|}}vous n’êtes pas sûr{{GENDER:||e}}, ignorez la suggestion et passez à la suivante.</li>",
 	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "Passer tout",
 	"growthexperiments-structuredtask-onboarding-dialog-title": "Introduction",
 	"growthexperiments-structuredtask-onboarding-dialog-progress": "$1 sur $2",
