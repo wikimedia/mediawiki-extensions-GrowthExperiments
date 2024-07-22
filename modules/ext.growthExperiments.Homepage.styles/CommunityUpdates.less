@@ -8,33 +8,27 @@
 
 .cdx-card-content {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 
-	.cdx-card__thumbnail {
-		margin-right: 1em;
-	}
-
-	.ext-growthExperiments-CommunityUpdates__card__thumbnail {
-		.ext-growthExperiments-CommunityUpdates__thumbnail__image {
-			// TODO: To enable to use an Icon
-			background-image: url( https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/64_365_Color_Macro_%285498808099%29.jpg/200px-64_365_Color_Macro_%285498808099%29.jpg );
-		}
-	}
-
-	.cdx-card__text {
+	&-row-1 {
 		display: flex;
-		flex-direction: column;
 
-		&__title {
+		.cdx-card__thumbnail {
+			margin-right: 1em;
+		}
+
+		.cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image {
+			// stylelint-disable-next-line declaration-property-value-disallowed-list
+			border: none;
+			background-size: contain;
+		}
+
+		.cdx-card__text__title {
 			font-weight: bold;
 		}
+	}
 
-		&__description {
-			margin-bottom: @spacing-50;
-		}
-
-		.cdx-button--action-progressive {
-			align-self: flex-start;
-		}
+	.cdx-card__text__description {
+		margin-bottom: @spacing-50;
 	}
 }

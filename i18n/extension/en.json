@@ -110,6 +110,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-label": "Body text",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "A short and friendly informational message to spark interest.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesminedits-label": "Minimum number of edits a user must have to be shown this banner",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Image",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Choose an appropriate image that relates to the event or initiative you want to highlight, e.g. a logo.",
 	"communityconfiguration-helppanel-title": "Help panel",
 	"communityconfiguration-helppanel-description": "Customize Help panel settings to align with your community's requirements and define resources within it to assist and guide new editors.",
 	"communityconfiguration-helppanel-info-text": "The help panel can be available in any namespace, in reading or edit mode, as configured below. It includes the ability to search for help, click help links, and ask questions to either mentors or to the help desk. Links can be configured to be any links in the wiki, but recommendations are included below.",

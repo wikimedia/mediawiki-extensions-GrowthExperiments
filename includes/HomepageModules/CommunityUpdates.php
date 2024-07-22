@@ -69,6 +69,21 @@ class CommunityUpdates extends BaseModule {
 		return $config->GEHomepageCommunityUpdatesEnabled && $this->shouldShowCommunityUpdatesModule( $config );
 	}
 
+	private function getThumbnail( string $url ): string {
+		$thumbnailContent = Html::rawElement( 'span', [ 'class' => 'cdx-thumbnail__placeholder' ],
+			Html::rawElement( 'span', [
+				'class' => 'cdx-thumbnail__placeholder__icon',
+			] )
+		);
+		if ( $url !== '' ) {
+			$thumbnailContent = Html::rawElement( 'div', [
+				'class' => 'cdx-thumbnail__image ext-growthExperiments-CommunityUpdates__thumbnail__image',
+				'style' => 'background-image: url( ' . $url . ');'
+			] );
+		}
+		return Html::rawElement( 'div', [ 'class' => 'cdx-card__thumbnail' ], $thumbnailContent );
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -84,14 +99,11 @@ class CommunityUpdates extends BaseModule {
 		$buttonText = 'Learn More';
 
 		return Html::rawElement( 'div', [ 'class' => 'cdx-card-content' ],
-			Html::rawElement( 'div', [
-				'class' => 'cdx-card__thumbnail ext-growthExperiments-CommunityUpdates__card__thumbnail' ],
-				Html::rawElement( 'div', [
-					'class' => 'cdx-thumbnail__image ext-growthExperiments-CommunityUpdates__thumbnail__image'
-				] )
+			Html::rawElement( 'div', [ 'class' => 'cdx-card-content-row-1' ],
+				$this->getThumbnail( $config->GEHomepageCommunityUpdatesThumbnailFile->url ) .
+				Html::rawElement( 'div', [ 'class' => 'cdx-card__text__title' ], $contentTitle )
 			) .
-			Html::rawElement( 'div', [ 'class' => 'cdx-card__text' ],
-				Html::rawElement( 'div', [ 'class' => 'cdx-card__text__title' ], $contentTitle ) .
+			Html::rawElement( 'div', [ 'class' => 'cdx-card-content-row-2' ],
 				Html::rawElement( 'div', [ 'class' => 'cdx-card__text__description' ], $contentBody ) .
 				Html::rawElement(
 					'button', [ 'class' => 'cdx-button cdx-button--action-progressive' ], $buttonText )
