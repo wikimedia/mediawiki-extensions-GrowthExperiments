@@ -332,11 +332,11 @@ class SuggestedEdits extends BaseModule {
 
 	/**
 	 * @param string $mode one of the self::RENDER_* constants
-	 * @param string $status one of ['ok', 'empty', 'error']
+	 * @param string $status one of ['ok', 'empty', 'error', 'total']
 	 * @return void
 	 */
 	private function trackQueueStatus( string $mode, string $status ): void {
-		if ( !in_array( $status, [ 'ok', 'empty', 'error' ] ) ) {
+		if ( !in_array( $status, [ 'ok', 'empty', 'error', 'total' ] ) ) {
 			// Should never happen
 			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
 				__METHOD__ . ' called with unexpected status: {status}',
@@ -364,6 +364,7 @@ class SuggestedEdits extends BaseModule {
 		// Preload task card and queue for users who have the module activated
 		if ( $this->canRender() ) {
 			$tasks = $this->getTaskSet();
+			$this->trackQueueStatus( $mode, 'total' );
 			if ( $tasks instanceof StatusValue ) {
 				$data['task-preview'] = [
 					'error' => Status::wrap( $tasks )->getMessage( false, false, 'en' )->parse(),
