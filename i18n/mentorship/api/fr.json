@@ -5,7 +5,8 @@
 			"DreZhsh",
 			"Gomoko",
 			"SleaY",
-			"Verdy p"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"apihelp-growthstarmentee-summary": "Marquer ou supprimer le marquage d’un tutoré tel que signalé d’une étoile par l’utilisateur courant (stocké de façon confidentielle et non journalisé)",
@@ -30,7 +31,7 @@
 	"apihelp-growthmanagementorlist-param-message": "Message d’introduction (utilisez une chaîne vide pour le message par défaut du tuteur)",
 	"apihelp-growthmanagementorlist-param-weight": "Poids",
 	"apihelp-growthmanagementorlist-param-isaway": "Le tuteur est-il actuellement absent ? Doit être défini (faux par défaut).",
-	"apihelp-growthmanagementorlist-param-awaytimestamp": "Jusqu’à quand le tuteur est-il absent ? Le maximum est un an à partir d’aujourd’hui. Ignoré sauf si isaway est vrai.",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "Jusqu’à quand le tuteur est-il absent ? Le maximum est de un an à partir d’aujourd’hui. Ignoré sauf si ''isaway'' est vrai.",
 	"apihelp-growthmanagementorlist-param-summary": "Motif du changement",
 	"apihelp-growthmanagementorlist-param-username": "Nom du tuteur affecté par le changement. S’il n’est pas fourni, l’utilisateur actuellement connecté sera utilisé. Ceci ne peut être utilisé que par des utilisateurs privilégiés.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Si « isaway » (est absent(e)) vaut « true » (vrai), alors le paramètre « awaytimestamp » (horodatage d’absence) doit être fourni.",

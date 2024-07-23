@@ -651,5 +651,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Einen Bearbeitungsvorschlag machen",
 	"echo-category-title-ge-newcomer": "Engagement-Funktionen",
 	"echo-pref-tooltip-ge-newcomer": "Benachrichtigen Sie mich über Aufgaben für Neueinsteiger und andere Funktionen, die neuen Benutzern helfen sollen.",
-	"growthexperiments-homepage-community-updates-header": "Community-Updates"
+	"growthexperiments-homepage-community-updates-header": "Community-Updates",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Weitere Informationen"
 }

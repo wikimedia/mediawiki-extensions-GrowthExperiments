@@ -125,6 +125,9 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesminedits-label": "Label for the Community updates module field setting the minimum number of edits a user must have to be shown the Community updates banner",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Label for the Community updates module field setting an image for the update banner",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Label for the Community updates module field description setting an image for the update banner",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Field label for Call to action in Community configuration",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Label for the destination page link field in the Community Updates configuration form.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Label for the call to action button text field in the Community Updates configuration form.",
 	"communityconfiguration-helppanel-title": "Headline of the Community configuration module for the help panel",
 	"communityconfiguration-helppanel-description": "Description of the Community configuration module for the help panel",
 	"communityconfiguration-helppanel-info-text": "The message describes that the Help panel is a feature available in any namespace, both in reading and edit mode. It provides useful functionality, including search for help, clickable help links, and the ability to ask questions to mentors or the help desk. The panel displays links which can be configured to point to any relevant wiki pages.\n\nThe words \"view more\" are a shortened form of {{msg-mw|Growthexperiments-help-panel-editing-help-links-widget-view-more-link}}.",
@@ -228,8 +231,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-label": "Field label for Suggested Edits in Community configuration. \"Underlinked\" means that an article doesn't have enough links.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Help text for Suggested Edits in Community configuration.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Field label for Suggested Edits in Community configuration",
-	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Help text for Suggested Edits in Community configuration.",
-	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Field label for Call to action in Community configuration",
-	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Label for the destination page link field in the Community Updates configuration form.",
-	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Label for the call to action button text field in the Community Updates configuration form."
+	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Help text for Suggested Edits in Community configuration."
 }
