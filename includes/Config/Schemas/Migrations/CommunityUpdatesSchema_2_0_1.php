@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Config\Schemas;
+namespace GrowthExperiments\Config\Schemas\Migrations;
 
 use GrowthExperiments\Config\Schemas\Converters\CommunityUpdatesConverter_2_0_1;
 use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
