@@ -10,6 +10,7 @@ use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 class CommunityUpdatesSchema_2_0_0 extends JsonSchema {
 
 	public const SCHEMA_PREVIOUS_VERSION = '1.0.0';
+	public const SCHEMA_NEXT_VERSION = '2.0.1';
 	public const VERSION = '2.0.0';
 	public const SCHEMA_CONVERTER = CommunityUpdatesConverter_2_0_0::class;
 
