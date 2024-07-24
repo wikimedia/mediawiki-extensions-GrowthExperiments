@@ -644,5 +644,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "{{GENDER:|قم|قومي}} بإجراء تعديل مقترح",
 	"echo-category-title-ge-newcomer": "ميزات النمو",
 	"echo-pref-tooltip-ge-newcomer": "إعلامي بالمهام الخاصة بالوافدين الجدد والميزات الأخرى المصممة لمساعدة المستخدمين الجدد.",
-	"growthexperiments-homepage-community-updates-header": "تحديثات المجتمع"
+	"growthexperiments-homepage-community-updates-header": "تحديثات المجتمع",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "معرفة المزيد"
 }
