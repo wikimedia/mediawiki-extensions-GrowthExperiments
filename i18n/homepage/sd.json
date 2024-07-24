@@ -65,7 +65,7 @@
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "ڊگهي ترين اسٽريڪ",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|ڏينھن}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|سنوار|سنوارون}}",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "{{GENDER:$1|توھان پاران}} سنواريل مضمونن جو ڏيٺون",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "{{GENDER:$1|توھان پاران}} سنواريل مضمونن جون ڏيٺون",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "سنواريل مضمونن جون ڏيٺون",
 	"growthexperiments-homepage-impact-scores-edit-count": "ڪُل سنوارون",
 	"growthexperiments-homepage-impact-scores-thanks-count": "مليل مھربانيون",
