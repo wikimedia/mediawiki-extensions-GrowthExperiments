@@ -60,6 +60,9 @@ class HelpPanel {
 		$helpPanelLinks = Html::openElement( 'ul', [ 'class' => 'mw-ge-help-panel-links' ] );
 		foreach ( $wikiConfig->get( 'GEHelpPanelLinks' ) as $link ) {
 			$link = (array)$link;
+			if ( !isset( $link[ 'title' ] ) ) {
+				continue;
+			}
 			$title = Title::newFromText( $link['title'] );
 			if ( $title ) {
 				$helpPanelLinks .= Html::rawElement(
