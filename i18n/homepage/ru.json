@@ -599,5 +599,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2| Вы}} сделали $3 {{PLURAL:$3|предложенную правку|предложенные правки|предложенных правок}}. Продолжайте осваивать новые навыки.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Внесите предложенную правку",
 	"echo-category-title-ge-newcomer": "Функции «Роста»",
-	"echo-pref-tooltip-ge-newcomer": "Уведомлять меня о задачах для новичков и других функциях, призванных помочь новым участникам."
+	"echo-pref-tooltip-ge-newcomer": "Уведомлять меня о задачах для новичков и других функциях, призванных помочь новым участникам.",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Узнать больше"
 }

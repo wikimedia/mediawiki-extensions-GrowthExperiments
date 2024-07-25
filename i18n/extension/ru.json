@@ -101,6 +101,8 @@
 	"communityconfiguration-communityupdates-title": "Обновления сообщества",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-description": "Короткое название, которое лучше всего отражает кампанию, проект, событие или общественную инициативу, о которой идет речь.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "Короткое и дружелюбное информационное сообщение, вызывающее интерес.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Изображение",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Метка",
 	"communityconfiguration-growthsuggestededits-title": "Предложенные правки",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Шаблоны-карточки",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Эти шаблоны необходимы для функции предложения изображений для новичков. Статьи, содержащие эти шаблоны, не будут указаны как задачи по предложению изображений.",
