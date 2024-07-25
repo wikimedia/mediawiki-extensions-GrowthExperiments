@@ -18,4 +18,9 @@ class CommunityUpdatesConverter_2_0_0 implements ISchemaConverter {
 		unset( $data->GEHomepageCommunityUpdatesMinEdits );
 		return $data;
 	}
+
+	public function downgradeToPrevious( stdClass $data ): stdClass {
+		unset( $data->GEHomepageCommunityUpdatesMinEdits );
+		return $data;
+	}
 }
