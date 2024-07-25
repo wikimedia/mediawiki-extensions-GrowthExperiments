@@ -193,8 +193,8 @@ class LinkRecommendationUpdater {
 				->join( 'change_tag', null, [ 'rev_id = ct_rev_id' ] )
 				->where( [
 					'rev_page' => $title->getArticleID(),
-					'rev_id <=' . (int)$revertTagData['newestRevertedRevId'],
-					'rev_id >=' . (int)$revertTagData['oldestRevertedRevId'],
+					$dbr->expr( 'rev_id', '<=', (int)$revertTagData['newestRevertedRevId'] ),
+					$dbr->expr( 'rev_id', '>=', (int)$revertTagData['oldestRevertedRevId'] ),
 					'ct_tag_id' => $linkRecommendationChangeTagId,
 				] )
 				->caller( __METHOD__ )
