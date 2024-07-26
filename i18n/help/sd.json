@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Charoo",
 			"Mehtab ahmed"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "سنواريندڙ جو مدد پينل فعال ڪريو",
+	"growthexperiments-help-panel-cta-button-text": "سنوارڻ ۾ مدد وٺو",
 	"growthexperiments-help-panel-question-button-text": "جاري رکو",
 	"growthexperiments-help-panel-submit-question-button-text": "ڇاپيو",
 	"growthexperiments-help-panel-return-home-button-text": "ٿي ويو",
@@ -13,6 +15,7 @@
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "اڳيون مشورو:",
 	"growthexperiments-help-panel-postedit-footer": "سڀ صلاح ڏنل سنوارون ڏسو",
 	"growthexperiments-help-panel-postedit-suggestededits-title": "ڏسيل سنوارون",
+	"growthexperiments-help-panel-questionreview-title-mentor": "سکيا ڏيندڙ کان پڇو",
 	"growthexperiments-help-panel-question-subject-template": "مدد پينل لاءِ سوال",
 	"growthexperiments-help-panel-question-subject-template-with-title": "مدد پينل لاءِ [[:$1|$1]] تي سوال",
 	"growthexperiments-help-panel-suggestededits-title": "ڏسيل سنوارون",
@@ -21,7 +24,17 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-publish": "[[$1|حوالن بابت وڌيڪ ڄاڻيو]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-text-publish": "[[$1|تجديد ڪرڻ بابت وڌيڪ ڄاڻيو]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|مضمون وڌائڻ بابت وڌيڪ ڄاڻيو]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "ڳنڍڻا شامل ڪرڻ سان ماڻھن کي تيزي سان سکڻ ۾ مدد ملندي.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|توھان}} طئي ڪندو تہ {{SITENAME}} جو مضمون {{SITENAME}} جي ٻئي مضمونن سان ڳنڍجي.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "چنڊ واحد  <mark class=\"positive\">قدرتي سيٽلائيٽ</mark> آھي، جيڪو <mark class=\"positive\">زمين</mark> جي <mark class=\"positive\">چوگرد</mark> گھمي ٿو.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "ھن ڪم کي پورو ڪرڻ لاءِ مضمون جي باري ۾ ڄاڻ ھجڻ ضروري ناھي.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "ھي ڳنڍڻا مشين پاران تجويز ڪيل آھن، تجويز ۾ غلطي جي گنجائش ٿي سگهي ٿي.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "مشين پاران ڪو اھڙو لفظ تجويز ٿي سگهي ٿو جنھن ۾ ڳڍڻو ڏيڻ لازمي ناھي، يا غلط لفظ ڏي ڳنڍڻو وٺي وڃي. ان لاءِ {{GENDER:$1|توھان}} کي پڪ ڪرڻي آھي تہ تجويز ڪيل سنوار درست آھي يا نہ.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|مشين جي صلاحن بابت وڌيڪ ڄاڻيو]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "ھدايتون",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* ڳنڍڻا شامل ڪرڻ ضروري آھن، جيئن ڪو پڙھندڙ ان مضمون بابت وڌيڪ ڄاڻڻ چاھي.\n* پڪ ڪري وٺو ڳنڍڻا درست مضمون ڏانھن وڃن ٿا.\n* عام لفظ جيئن سال، يا مھيني ۾ ڳنڍڻو شامل ڪرڻ ضروري ناھي.\n* جيڪڏھن {{GENDER:$1|توھان}} کي پڪ ناھي تہ ان اکر کي ڇڏي ڏيو.",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "جملي جو مثال",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "مضمون ڏي ڏسو",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "بدلايو",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "مدد پينل بابت",
 	"tag-help_panel_question": "مدد پينل لاءِ سوال",

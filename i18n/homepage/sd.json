@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Charoo",
 			"KaleemBhatti",
 			"Mehtab ahmed"
 		]
@@ -108,6 +109,7 @@
 	"growthexperiments-homepage-help-mobilebody": "مدد ڊيسڪ کان پڇو يا مدد صفحا پڙھو.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|اوھان جا}} ھاڻوڪا سوال",
 	"growthexperiments-homepage-recent-questions-posted-on": "$1 اڳ لڳل",
+	"growthexperiments-homepage-mentorship-preintro": "اسان {{GENDER:|توھان جي}} سکيا لاءِ ھڪ {{GENDER:$1|تجربيڪار واپرائيندڙ}} مقرر ڪيو آھي، جنھن کان اوھان سنوارڻ بابت سوال پڇي سگهو ٿا.",
 	"growthexperiments-homepage-mentorship-learn-more": "رھنمائن بابت وڌيڪ ڄاڻيو.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|سنوار|سنوارون}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "اڄ {{GENDER:$1|سرگرم}}",
@@ -156,6 +158,7 @@
 	"growthexperiments-addlink-context-text-label": "متن",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "مشين جي صلاحن بابت وڌيڪ ڄاڻيو",
 	"growthexperiments-addlink-summary-column-header-suggestion": "مشورو",
+	"growthexperiments-addlink-summary-summary": "ڳنڍڻا تجويز ڪرڻ واري خصوصيت ذريعي $1 {{PLURAL:$1|ڳنڍڻو|ڳنڍڻا}} شامل ڪيا.",
 	"newcomertasksinfo": "نون-ايندڙن جا ڪم",
 	"newcomertasksinfo-config-form-info": "نون-ايندڙن جي ڪمن جي ڪنفيگيوريشن [[Special:EditGrowthConfig]] تي ڏسي ۽ بدلائي سگهجي ٿي.",
 	"newcomertasksinfo-table-header-task-type": "ڪم جو قسم",

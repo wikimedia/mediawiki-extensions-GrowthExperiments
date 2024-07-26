@@ -13,7 +13,7 @@
 	},
 	"welcomesurvey": "Bienvenue, {{GENDER:$1|}}$1 !",
 	"welcomesurvey-save-confirmation-title": "Merci ! {{GENDER:|}}Vos réponses ont été enregistrées.",
-	"welcomesurvey-save-confirmation-text": "{{GENDER:|}}Vos réponses nous aideront à vous offrir des moyens utiles pour bien démarrer sur Wikipédia.",
+	"welcomesurvey-save-confirmation-text": "{{GENDER:|}}Vos réponses nous aideront à vous offrir des moyens utiles pour bien débuter sur Wikipédia.",
 	"welcomesurvey-subtitle": "Aidez-nous à améliorer {{GENDER:|}}votre expérience de Wikipédia en répondant à quelques questions facultatives.",
 	"welcomesurvey-save-btn": "Terminer",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|}}Ne pas répondre à cette enquête",

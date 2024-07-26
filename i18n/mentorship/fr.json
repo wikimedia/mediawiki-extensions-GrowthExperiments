@@ -117,7 +117,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|}}Votre charge a été modifiée en « $1 ».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "Une erreur inconnue s’est produite. Veuillez essayer à nouveau ultérieurement.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Les apprentis sont affectés aléatoirement aux tuteurs quand leurs comptes sont créés. Vous pouvez gérer combien d’apprentis vous sont affectés, mais certains apprentis peuvent poser des questions plus fréquemment que d’autres.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Il est recommandé de démarrer avec le paramétrage « La moyenne » pour jauger votre capacité d’assistance, avant de l’augmenter ou le diminuer.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Il est recommandé de commencer avec le paramétrage « moyen » pour jauger de votre capacité d'assistance, avant de l'augmenter ou de le diminuer.",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Modifier {{GENDER:|}}votre message d’introduction",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Enregistrer",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Annuler",

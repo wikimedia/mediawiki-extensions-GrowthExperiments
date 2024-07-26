@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ella Lachow"
+			"Ella Lachow",
+			"Malaalaa"
 		]
 	},
-	"growthexperiments-mentor-dashboard-mentee-overview-talk": "haasayaa",
+	"growthexperiments-mentor-dashboard-mentee-overview-talk": "tobbiya",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Galataa yedda",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$1ppe $2 galatettiya {{PLURAL:$2|zoriyagaa|zoriyageeta}}",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation": "Galataa yedda",
