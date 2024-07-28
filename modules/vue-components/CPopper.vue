@@ -63,12 +63,12 @@ module.exports = exports = {
 			};
 			if ( props.placement === 'above' ) {
 				styles.top = 'unset';
-				styles.bottom = `${props.triggerRef.clientHeight}px`;
+				styles.bottom = `${ props.triggerRef.clientHeight }px`;
 			}
 			if ( maxWidth.value ) {
 				// Leave 16px of horizontal gutter between the content and
 				// the end of the viewport
-				styles[ 'max-width' ] = `${maxWidth.value + 16}px`;
+				styles[ 'max-width' ] = `${ maxWidth.value + 16 }px`;
 			}
 			return styles;
 		} );

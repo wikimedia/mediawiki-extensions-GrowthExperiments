@@ -9,20 +9,61 @@ const Page = require( 'wdio-mediawiki/Page' ),
 	ip = path.resolve( __dirname + '/../../../../../' );
 
 class HomepagePage extends Page {
-	get homepage() { return $( '#ca-homepage' ); }
-	get firstheading() { return $( '#firstHeading' ); }
-	get suggestedEditsCard() { return $( '.suggested-edits-card' ); }
-	get suggestedEditsCardTitle() { return $( '.se-card-title' ); }
-	get suggestedEditsCardUrl() { return $( '.suggested-edits-card a' ); }
-	get suggestedEditsPreviousButton() { return $( '.suggested-edits-previous .oo-ui-buttonElement-button' ); }
-	get suggestedEditsNextButton() { return $( '.suggested-edits-next .oo-ui-buttonElement-button' ); }
-	get newcomerTaskArticleEditButton() { return $( '#ca-ve-edit' ); }
-	get newcomerTaskArticleSaveButton() { return $( '.ve-ui-mwSaveDialog .oo-ui-processDialog-actions-primary' ); }
-	get helpPanelCloseButton() { return $( '.mw-ge-help-panel-processdialog .oo-ui-processDialog-actions-primary .oo-ui-buttonElement-button' ); }
-	get savePageDots() { return $( '.ve-ui-toolbar-saveButton' ); }
-	get articleBodyContent() { return $( '.mw-body-content.ve-ui-surface' ); }
-	get postEditDialog() { return $( '.mw-ge-postEditDrawer' ); }
-	get postEditDialogSmallTaskCard() { return $( '.mw-ge-postEditDrawer .mw-ge-small-task-card' ); }
+	get homepage() {
+		return $( '#ca-homepage' );
+	}
+
+	get firstheading() {
+		return $( '#firstHeading' );
+	}
+
+	get suggestedEditsCard() {
+		return $( '.suggested-edits-card' );
+	}
+
+	get suggestedEditsCardTitle() {
+		return $( '.se-card-title' );
+	}
+
+	get suggestedEditsCardUrl() {
+		return $( '.suggested-edits-card a' );
+	}
+
+	get suggestedEditsPreviousButton() {
+		return $( '.suggested-edits-previous .oo-ui-buttonElement-button' );
+	}
+
+	get suggestedEditsNextButton() {
+		return $( '.suggested-edits-next .oo-ui-buttonElement-button' );
+	}
+
+	get newcomerTaskArticleEditButton() {
+		return $( '#ca-ve-edit' );
+	}
+
+	get newcomerTaskArticleSaveButton() {
+		return $( '.ve-ui-mwSaveDialog .oo-ui-processDialog-actions-primary' );
+	}
+
+	get helpPanelCloseButton() {
+		return $( '.mw-ge-help-panel-processdialog .oo-ui-processDialog-actions-primary .oo-ui-buttonElement-button' );
+	}
+
+	get savePageDots() {
+		return $( '.ve-ui-toolbar-saveButton' );
+	}
+
+	get articleBodyContent() {
+		return $( '.mw-body-content.ve-ui-surface' );
+	}
+
+	get postEditDialog() {
+		return $( '.mw-ge-postEditDrawer' );
+	}
+
+	get postEditDialogSmallTaskCard() {
+		return $( '.mw-ge-postEditDrawer .mw-ge-small-task-card' );
+	}
 
 	open( query, fragment ) {
 		query = query || {};
@@ -31,18 +72,16 @@ class HomepagePage extends Page {
 	}
 
 	async assertCardTitleIs( titleText ) {
-		await browser.waitUntil( async () => {
-			return await this.suggestedEditsCardTitle.getText() === titleText;
-		} );
+		await browser.waitUntil(
+			async () => await this.suggestedEditsCardTitle.getText() === titleText
+		);
 		assert.strictEqual( await this.suggestedEditsCardTitle.getText(), titleText );
 	}
 
 	async waitForInteractiveTaskFeed() {
 		// The previous/next buttons start out as disabled, and then are switched to
 		// enabled/disabled depending on where in the task queue the user is.
-		await browser.waitUntil( async () => {
-			return await this.suggestedEditsNextButton.getAttribute( 'aria-disabled' ) !== 'true';
-		} );
+		await browser.waitUntil( async () => await this.suggestedEditsNextButton.getAttribute( 'aria-disabled' ) !== 'true' );
 		await this.suggestedEditsNextButton.waitForClickable();
 		assert.strictEqual( await this.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'true' );
 		assert.notEqual( await this.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'true' );
@@ -50,21 +89,19 @@ class HomepagePage extends Page {
 
 	async advanceToNextCard() {
 		const oldTitle = await this.suggestedEditsCardTitle.getText();
-		await browser.waitUntil( async () => {
-			return await this.suggestedEditsNextButton.isClickable();
-		} );
+		await browser.waitUntil( async () => await this.suggestedEditsNextButton.isClickable() );
 		await this.suggestedEditsNextButton.click();
-		await browser.waitUntil( async () => {
-			return await this.suggestedEditsCardTitle.getText() !== oldTitle;
-		} );
+		await browser.waitUntil(
+			async () => await this.suggestedEditsCardTitle.getText() !== oldTitle
+		);
 	}
 
 	async goBackToPreviousCard() {
 		const oldTitle = await this.suggestedEditsCardTitle.getText();
 		await this.suggestedEditsPreviousButton.click();
-		await browser.waitUntil( async () => {
-			return await this.suggestedEditsCardTitle.getText() !== oldTitle;
-		} );
+		await browser.waitUntil(
+			async () => await this.suggestedEditsCardTitle.getText() !== oldTitle
+		);
 		await this.suggestedEditsNextButton.isClickable();
 	}
 

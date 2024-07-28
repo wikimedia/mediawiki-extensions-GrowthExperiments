@@ -20,9 +20,7 @@
 	// - first paint
 	if ( window.performance && window.performance.getEntriesByType ) {
 		var navigationEntries = window.performance.getEntriesByType( 'navigation' ),
-			performanceEntries = window.performance.getEntries().filter( function ( entry ) {
-				return entry.name === 'first-contentful-paint';
-			} );
+			performanceEntries = window.performance.getEntries().filter( ( entry ) => entry.name === 'first-contentful-paint' );
 		if ( navigationEntries.length ) {
 			mw.track(
 				'timing.growthExperiments.specialHomepage.navigationDuration',

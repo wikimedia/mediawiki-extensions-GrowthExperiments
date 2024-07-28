@@ -7,26 +7,22 @@ const AddImageUtils = require( pathToWidget );
  * @param {Object} overrides
  * @return { mw.libs.ge.RecommendedImageMetadata}
  */
-const getMetadata = ( overrides = {} ) => {
-	return {
-		descriptionUrl: 'https://commons.wikimedia.org/wiki/File:HMS_Pandora.jpg',
-		thumbUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/HMS_Pandora.jpg/300px-HMS_Pandora.jpg',
-		fullUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/HMS_Pandora.jpg',
-		originalWidth: 1024,
-		originalHeight: 768,
-		mustRender: false,
-		isVectorized: false,
-		...overrides
-	};
-};
+const getMetadata = ( overrides = {} ) => ( {
+	descriptionUrl: 'https://commons.wikimedia.org/wiki/File:HMS_Pandora.jpg',
+	thumbUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/HMS_Pandora.jpg/300px-HMS_Pandora.jpg',
+	fullUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/HMS_Pandora.jpg',
+	originalWidth: 1024,
+	originalHeight: 768,
+	mustRender: false,
+	isVectorized: false,
+	...overrides
+} );
 
 /**
  * @param {number} size Thumbnail size
  * @return {string}
  */
-const getThumbUrl = ( size ) => {
-	return 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/HMS_Pandora.jpg/' + size + 'px-HMS_Pandora.jpg';
-};
+const getThumbUrl = ( size ) => 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/HMS_Pandora.jpg/' + size + 'px-HMS_Pandora.jpg';
 
 QUnit.module( 'ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js', {
 	beforeEach() {
@@ -34,7 +30,7 @@ QUnit.module( 'ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js', 
 	}
 } );
 
-QUnit.test( 'getRenderData: target width < original width', function ( assert ) {
+QUnit.test( 'getRenderData: target width < original width', ( assert ) => {
 	const viewport = {
 		innerHeight: 629,
 		innerWidth: 375,
@@ -48,7 +44,7 @@ QUnit.test( 'getRenderData: target width < original width', function ( assert ) 
 	);
 } );
 
-QUnit.test( 'getRenderData: the image file needs to be re-rasterized', function ( assert ) {
+QUnit.test( 'getRenderData: the image file needs to be re-rasterized', ( assert ) => {
 	const viewport = {
 		innerHeight: 629,
 		innerWidth: 375,
@@ -63,7 +59,7 @@ QUnit.test( 'getRenderData: the image file needs to be re-rasterized', function 
 	);
 } );
 
-QUnit.test( 'getRenderData: the image file needs to be re-rasterized, renderWidth > originalWidth', function ( assert ) {
+QUnit.test( 'getRenderData: the image file needs to be re-rasterized, renderWidth > originalWidth', ( assert ) => {
 	const viewport = {
 		innerHeight: 629,
 		innerWidth: 375,
@@ -78,7 +74,7 @@ QUnit.test( 'getRenderData: the image file needs to be re-rasterized, renderWidt
 	);
 } );
 
-QUnit.test( 'getRenderData: the image file needs to be re-rasterized, renderWidth < originalWidth', function ( assert ) {
+QUnit.test( 'getRenderData: the image file needs to be re-rasterized, renderWidth < originalWidth', ( assert ) => {
 	const viewport = {
 		innerHeight: 629,
 		innerWidth: 375,
@@ -93,7 +89,7 @@ QUnit.test( 'getRenderData: the image file needs to be re-rasterized, renderWidt
 	);
 } );
 
-QUnit.test( 'getRenderData: vector image', function ( assert ) {
+QUnit.test( 'getRenderData: vector image', ( assert ) => {
 	const viewport = {
 		innerHeight: 629,
 		innerWidth: 375,
@@ -108,7 +104,7 @@ QUnit.test( 'getRenderData: vector image', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'getRenderData: target width > original width', function ( assert ) {
+QUnit.test( 'getRenderData: target width > original width', ( assert ) => {
 	const viewport = {
 		innerHeight: 629,
 		innerWidth: 375,
@@ -123,7 +119,7 @@ QUnit.test( 'getRenderData: target width > original width', function ( assert ) 
 	);
 } );
 
-QUnit.test( 'getRenderData: target width > original width due to px ratio', function ( assert ) {
+QUnit.test( 'getRenderData: target width > original width due to px ratio', ( assert ) => {
 	const viewport = {
 		innerHeight: 629,
 		innerWidth: 375,
@@ -138,7 +134,7 @@ QUnit.test( 'getRenderData: target width > original width due to px ratio', func
 	);
 } );
 
-QUnit.test( 'getRenderData: 3x target width', function ( assert ) {
+QUnit.test( 'getRenderData: 3x target width', ( assert ) => {
 	const viewport = {
 		innerHeight: 629,
 		innerWidth: 375,
@@ -153,7 +149,7 @@ QUnit.test( 'getRenderData: 3x target width', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'getRenderData: 2.5x target width', function ( assert ) {
+QUnit.test( 'getRenderData: 2.5x target width', ( assert ) => {
 	const viewport = {
 		innerHeight: 629,
 		innerWidth: 375,
@@ -168,7 +164,7 @@ QUnit.test( 'getRenderData: 2.5x target width', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'getRenderData: vertical image with landscape viewport', function ( assert ) {
+QUnit.test( 'getRenderData: vertical image with landscape viewport', ( assert ) => {
 	const viewport = {
 		innerWidth: 629,
 		innerHeight: 375,
@@ -184,7 +180,7 @@ QUnit.test( 'getRenderData: vertical image with landscape viewport', function ( 
 	);
 } );
 
-QUnit.test( 'getRenderData: with specified render width', function ( assert ) {
+QUnit.test( 'getRenderData: with specified render width', ( assert ) => {
 	const viewport = {
 		innerWidth: 629,
 		innerHeight: 375,

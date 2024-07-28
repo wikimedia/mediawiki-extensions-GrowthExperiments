@@ -47,7 +47,7 @@
 	AwaySettingsDialog.prototype.getSetupProcess = function ( data ) {
 		const dialog = this;
 		return AwaySettingsDialog.super.prototype.getSetupProcess.call( this, data )
-			.next( function () {
+			.next( () => {
 				dialog.getActions().setAbilities( {
 					save: false
 				} );
@@ -66,7 +66,7 @@
 		if ( action === '' ) {
 			this.emit( 'cancel' );
 		} else if ( action === 'save' ) {
-			return new OO.ui.Process( function () {
+			return new OO.ui.Process( () => {
 				const backAtTimestamp = new Date();
 				backAtTimestamp.setDate(
 					backAtTimestamp.getDate() + Number( dialog.awayForDays.getValue() )
@@ -77,14 +77,14 @@
 					geaction: 'change',
 					isaway: true,
 					awaytimestamp: backAtTimestamp.toISOString()
-				} ).then( function ( data ) {
+				} ).then( ( data ) => {
 					mw.notify(
 						mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away' ),
 						{ type: 'info' }
 					);
 					dialog.emit( 'awayset', data.growthmanagementorlist.mentor.awayTimestampHuman );
 					dialog.close( { action: action } );
-				} ).catch( function ( errorCode ) {
+				} ).catch( ( errorCode ) => {
 					let msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown';
 					if ( errorCode === 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh' ) {
 						msgCode = errorCode;

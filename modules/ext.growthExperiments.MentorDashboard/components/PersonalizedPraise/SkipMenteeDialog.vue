@@ -73,24 +73,18 @@ module.exports = exports = {
 		const skipMenteesForDays = Number( mw.config.get( 'GEPersonalizedPraiseSkipMenteesForDays' ) );
 		const $i18n = inject( 'i18n' );
 		const log = inject( '$log' );
-		const menteeGender = computed( () => {
-			return mw.config.get( 'GEMenteeGenders' )[ props.mentee.userId ];
-		} );
-		const reasonItems = computed( () => {
-			return SKIP_REASONS.map( ( x ) => {
-				return {
-					label: $i18n(
-						// Giving grep a chance to find usages:
-						// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised
-						// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy
-						// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now
-						// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other
-						'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-' + x,
-						[ menteeGender.value ] ).text(),
-					value: x
-				};
-			} );
-		} );
+		const menteeGender = computed( () => mw.config.get( 'GEMenteeGenders' )[ props.mentee.userId ] );
+		const reasonItems = computed( () => SKIP_REASONS.map( ( x ) => ( {
+			label: $i18n(
+				// Giving grep a chance to find usages:
+				// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised
+				// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy
+				// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now
+				// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other
+				'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-' + x,
+				[ menteeGender.value ] ).text(),
+			value: x
+		} ) ) );
 
 		function onSkipButtonClicked() {
 			open.value = true;

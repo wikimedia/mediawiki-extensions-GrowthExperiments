@@ -53,7 +53,7 @@ module.exports = exports = {
 		const plot = () => {
 			// Add 2px of right padding for the circle (r = 1px) rendered on top of the last point
 			const paddingRight = props.withCircle ? 2 : 0;
-			chart.attr( 'viewBox', `0 0 ${props.dimensions.width + paddingRight} ${props.dimensions.height}` );
+			chart.attr( 'viewBox', `0 0 ${ props.dimensions.width + paddingRight } ${ props.dimensions.height }` );
 			const xDomain = d3.extent( props.data, props.xAccessor );
 			const xScale = d3.scaleTime()
 				.domain( xDomain )
@@ -101,7 +101,7 @@ module.exports = exports = {
 		};
 
 		onMounted( () => {
-			chart = d3.select( `#sparkline-${props.id}` );
+			chart = d3.select( `#sparkline-${ props.id }` );
 			// Append order is relevant. Render the line over the area
 			area = chart.append( 'path' ).attr( 'class', 'ext-growthExperiments-CSparkline__area' );
 			sparkline = chart.append( 'path' ).attr( 'class', 'ext-growthExperiments-CSparkline__line' );

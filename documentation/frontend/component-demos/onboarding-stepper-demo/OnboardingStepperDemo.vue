@@ -60,9 +60,9 @@ export default {
 			{ value: 8 }
 		];
 
-		const filteredNumbers = computed( () => {
-			return numbers.filter( ( x ) => x.value <= totalSteps.value );
-		} );
+		const filteredNumbers = computed( () => numbers.filter(
+			( x ) => x.value <= totalSteps.value
+		) );
 		return {
 			filteredNumbers,
 			modelValue,

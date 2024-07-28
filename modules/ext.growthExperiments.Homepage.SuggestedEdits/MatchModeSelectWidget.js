@@ -16,7 +16,7 @@
  */
 function MatchModeSelectWidget( config ) {
 	var defaultClasses = [ 'mw-ge-MatchModeSelectWidget' ];
-	config = $.extend( {}, config );
+	config = Object.assign( {}, config );
 	config.classes = defaultClasses.concat( config.classes );
 	MatchModeSelectWidget.super.call( this, config );
 
@@ -66,9 +66,7 @@ OO.inheritClass( MatchModeSelectWidget, OO.ui.Widget );
  * @return {OO.ui.MenuOptionWidget[]}
  */
 MatchModeSelectWidget.prototype.configOptionsToItems = function ( options ) {
-	return options.map( function ( opt ) {
-		return new OO.ui.MenuOptionWidget( opt );
-	} );
+	return options.map( ( opt ) => new OO.ui.MenuOptionWidget( opt ) );
 };
 
 /**

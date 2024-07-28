@@ -81,7 +81,7 @@
 			return defaultTaskTypes;
 		}
 
-		Object.keys( defaultTaskTypes ).forEach( function ( taskTypeId ) {
+		Object.keys( defaultTaskTypes ).forEach( ( taskTypeId ) => {
 			if ( !( taskTypeId in conversionMap ) ) {
 				taskTypes[ taskTypeId ] = defaultTaskTypes[ taskTypeId ];
 			}
@@ -124,12 +124,10 @@
 	 */
 	function convertTaskTypes( taskTypeIds ) {
 		var map = getConversionMap();
-		return taskTypeIds.map( function ( taskTypeId ) {
-			return ( taskTypeId in map ) ? map[ taskTypeId ] : taskTypeId;
-		} ).filter( function ( element, index, self ) {
+		return taskTypeIds.map( ( taskTypeId ) => ( taskTypeId in map ) ? map[ taskTypeId ] : taskTypeId ).filter(
 			// filter duplicates and false
-			return element !== false && index === self.indexOf( element );
-		} );
+			( element, index, self ) => element !== false && index === self.indexOf( element )
+		);
 	}
 
 	/**

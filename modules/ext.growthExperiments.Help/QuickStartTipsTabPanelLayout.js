@@ -11,7 +11,7 @@
 	 */
 	function QuickStartTipsTabPanelLayout( name, config ) {
 		QuickStartTipsTabPanelLayout.super.call( this, name,
-			$.extend( { scrollable: false, expanded: false }, config )
+			Object.assign( { scrollable: false, expanded: false }, config )
 		);
 		this.stackLayout = new OO.ui.StackLayout( {
 			continuous: true,

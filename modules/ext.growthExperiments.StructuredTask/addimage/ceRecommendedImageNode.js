@@ -35,7 +35,7 @@ function CERecommendedImageNode() {
 	}
 	this.setupLoadingOverlay();
 	this.showImageLoadingState();
-	setTimeout( function () {
+	setTimeout( () => {
 		// If the image loads before the delay, show it when the delay is over.
 		if ( this.isImageReady ) {
 			this.showImage();
@@ -43,7 +43,7 @@ function CERecommendedImageNode() {
 			// Show the image right after it's done loading since the delay is over the delay
 			this.shouldShowImageAfterLoad = true;
 		}
-	}.bind( this ), this.loadingDelay );
+	}, this.loadingDelay );
 	this.$a.addClass( 'mw-ge-recommendedImage-imageWrapper' );
 }
 
@@ -64,7 +64,7 @@ CERecommendedImageNode.prototype.setupHeader = function () {
 		$header = $( '<div>' ).addClass( 'mw-ge-recommendedImage-header' ).text(
 			mw.message( 'growthexperiments-addimage-caption-title' ).text()
 		).append( deleteButton.$element );
-	deleteButton.on( 'click', function () {
+	deleteButton.on( 'click', () => {
 		router.back();
 	} );
 	this.$element.prepend( $header );
@@ -112,7 +112,7 @@ CERecommendedImageNode.prototype.showImage = function () {
 	this.$loadingOverlay.addClass( 'mw-ge-recommendedImage-loading-overlay--image-shown' );
 	this.isImageShown = true;
 	this.setupDetailsButton( this.$a );
-	setTimeout( function () {
+	setTimeout( () => {
 		if ( OO.ui.isMobile() ) {
 			// Scroll the page so that the details button is near the top of the screen.
 			// This helps keep the key elements (the caption edit area and the details button)
@@ -141,7 +141,7 @@ CERecommendedImageNode.prototype.showImage = function () {
 				scrollContainer: this.articleTarget.surface.$scrollContainer[ 0 ]
 			} );
 		}
-	}.bind( this ), 300 );
+	}, 300 );
 };
 
 /**
@@ -161,7 +161,7 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 			mw.message( 'growthexperiments-addimage-inspector-details-button' ).escaped()
 		] );
 	// Clicking anywhere in the image brings up the details dialog.
-	$container.on( 'click', function () {
+	$container.on( 'click', () => {
 		var surface = this.getRoot().getSurface().getSurface(),
 			recommendation = this.getModel().getAttribute( 'recommendation' ),
 			recommendationIndex = this.getModel().getAttribute( 'recommendationIndex' );
@@ -170,7 +170,7 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 			logSource: 'caption_entry',
 			imageIndex: recommendationIndex
 		} );
-	}.bind( this ) );
+	} );
 	$container.append( this.$detailsButton );
 };
 

@@ -10,9 +10,7 @@
 	 * @return {jQuery.Promise}
 	 */
 	function saveOptions( prefData ) {
-		return mw.loader.using( 'mediawiki.api' ).then( function () {
-			return new mw.Api().saveOptions( prefData );
-		} );
+		return mw.loader.using( 'mediawiki.api' ).then( () => new mw.Api().saveOptions( prefData ) );
 	}
 
 	/**
@@ -23,11 +21,11 @@
 	 * @return {jQuery.Promise}
 	 */
 	function updateTaskPreference( prefData ) {
-		return $.when( saveOptions( prefData ), mw.loader.using( 'mediawiki.util' ) ).then( function () {
+		return $.when( saveOptions( prefData ), mw.loader.using( 'mediawiki.util' ) ).then(
 			// Do a cache reset as a variant switch will mess up caching.
 			// FIXME T278123 remove when done.
-			return $.get( mw.util.getUrl( 'Special:Homepage', { resetTaskCache: 1 } ) );
-		} ).then( function () {
+			() => $.get( mw.util.getUrl( 'Special:Homepage', { resetTaskCache: 1 } ) )
+		).then( () => {
 			window.location.reload();
 		} );
 	}
@@ -51,9 +49,7 @@
 
 		if ( typeof data === 'object' ) {
 			return Object.keys( data )
-				.map( function ( key ) {
-					return key + '=' + data[ key ];
-				} )
+				.map( ( key ) => key + '=' + data[ key ] )
 				.join( ';' );
 		}
 
@@ -82,7 +78,7 @@
 		if ( !queryParams.length ) {
 			return;
 		}
-		queryParams.forEach( function ( param ) {
+		queryParams.forEach( ( param ) => {
 			delete url.query[ param ];
 		} );
 

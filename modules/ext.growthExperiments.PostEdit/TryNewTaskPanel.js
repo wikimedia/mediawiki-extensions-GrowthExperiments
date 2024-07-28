@@ -107,7 +107,7 @@ TryNewTaskPanel.prototype.logImpression = function ( actionData ) {
 		'next-suggested-task-type': this.nextSuggestedTaskType,
 		savedTaskType: this.activeTaskType
 	};
-	data = $.extend( data, actionData || {} );
+	data = Object.assign( data, actionData || {} );
 	this.helpPanelLogger.log( 'trynewtask-impression', data );
 };
 
@@ -133,19 +133,17 @@ TryNewTaskPanel.prototype.getMainArea = function () {
 		selected: false,
 		value: 'optOutForTaskType'
 	} );
-	this.optOutButton.on( 'change', function ( isSelected ) {
+	this.optOutButton.on( 'change', ( isSelected ) => {
 		if ( isSelected ) {
 			this.tryNewTaskOptOuts.push( this.activeTaskType );
 		} else {
-			this.tryNewTaskOptOuts = this.tryNewTaskOptOuts.filter( function ( taskType ) {
-				return taskType !== this.activeTaskType;
-			}.bind( this ) );
+			this.tryNewTaskOptOuts = this.tryNewTaskOptOuts.filter( ( taskType ) => taskType !== this.activeTaskType );
 		}
 		new mw.Api().saveOption(
 			'growthexperiments-levelingup-tasktype-prompt-optouts',
 			JSON.stringify( this.tryNewTaskOptOuts )
 		);
-	}.bind( this ) );
+	} );
 
 	var dismissField = new OO.ui.FieldLayout( this.optOutButton, {
 		label: mw.message(

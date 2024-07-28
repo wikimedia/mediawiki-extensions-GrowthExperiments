@@ -40,15 +40,13 @@ export default {
 		const initialX = ref( null );
 		const initialY = ref( null );
 		const currentNavigation = ref( null );
-		const currentSlotName = computed( () => `step${wrappedCurrentStep.value}` );
+		const currentSlotName = computed( () => `step${ wrappedCurrentStep.value }` );
 		const isRtl = computed( () => computedDir.value === 'rtl' );
-		const computedTransitionSet = computed( () => {
-			return isRtl.value ?
-				{ next: TRANSITION_NAMES.LEFT, prev: TRANSITION_NAMES.RIGHT } :
-				{ next: TRANSITION_NAMES.RIGHT, prev: TRANSITION_NAMES.LEFT };
-		} );
-		const computedTransitionName = computed( () =>
-			computedTransitionSet.value[ currentNavigation.value ]
+		const computedTransitionSet = computed( () => isRtl.value ?
+			{ next: TRANSITION_NAMES.LEFT, prev: TRANSITION_NAMES.RIGHT } :
+			{ next: TRANSITION_NAMES.RIGHT, prev: TRANSITION_NAMES.LEFT } );
+		const computedTransitionName = computed(
+			() => computedTransitionSet.value[ currentNavigation.value ]
 		);
 
 		function navigate( actionName ) {

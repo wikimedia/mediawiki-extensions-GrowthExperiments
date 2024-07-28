@@ -108,7 +108,7 @@ TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 	} );
 	// Prevent 'search' events from being fired by performSearchUpdateActions()
 	this.updating = true;
-	this.topicSelector.suggestions.forEach( function ( suggestion ) {
+	this.topicSelector.suggestions.forEach( ( suggestion ) => {
 		suggestion.toggleSuggestion(
 			presets.getTopics().indexOf( suggestion.suggestionData.id ) > -1
 		);

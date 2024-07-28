@@ -10,54 +10,84 @@ const Page = require( 'wdio-mediawiki/Page' ),
 
 class AddImageArticlePage extends Page {
 
-	get imageInspector() { return $( '.mw-ge-recommendedImageToolbarDialog' ); }
+	get imageInspector() {
+		return $( '.mw-ge-recommendedImageToolbarDialog' );
+	}
 
-	get yesButton() { return $( '.mw-ge-recommendedImageToolbarDialog-buttons-yes' ); }
+	get yesButton() {
+		return $( '.mw-ge-recommendedImageToolbarDialog-buttons-yes' );
+	}
 
-	get noButton() { return $( '.mw-ge-recommendedImageToolbarDialog-buttons-no' ); }
+	get noButton() {
+		return $( '.mw-ge-recommendedImageToolbarDialog-buttons-no' );
+	}
 
-	get publishButton() { return $( '.oo-ui-tool-name-machineSuggestionsSave ' ); }
+	get publishButton() {
+		return $( '.oo-ui-tool-name-machineSuggestionsSave ' );
+	}
 
-	get saveDialog() { return $( '.ge-structuredTask-mwSaveDialog' ); }
+	get saveDialog() {
+		return $( '.ge-structuredTask-mwSaveDialog' );
+	}
 
-	get saveChangesButton() { return $( '.ge-structuredTask-mwSaveDialog .oo-ui-processDialog-actions-primary' ); }
+	get saveChangesButton() {
+		return $( '.ge-structuredTask-mwSaveDialog .oo-ui-processDialog-actions-primary' );
+	}
 
-	get captionNode() { return $( '.ve-ce-activeNode mw-ge-recommendedImageCaption' ); }
+	get captionNode() {
+		return $( '.ve-ce-activeNode mw-ge-recommendedImageCaption' );
+	}
 
-	get captionNodePlaceholder() { return $( '.mw-ge-recommendedImageCaption-placeholder' ); }
+	get captionNodePlaceholder() {
+		return $( '.mw-ge-recommendedImageCaption-placeholder' );
+	}
 
-	get imageInfoButton() { return $( '.mw-ge-recommendedImageToolbarDialog-details-button' ); }
+	get imageInfoButton() {
+		return $( '.mw-ge-recommendedImageToolbarDialog-details-button' );
+	}
 
-	get imageDetailsButton() { return $( '.mw-ge-recommendedImage-detailsButton' ); }
+	get imageDetailsButton() {
+		return $( '.mw-ge-recommendedImage-detailsButton' );
+	}
 
-	get messageDialogActionCloseButton() { return $( '.oo-ui-messageDialog-actions .oo-ui-buttonElement-button' ); }
+	get messageDialogActionCloseButton() {
+		return $( '.oo-ui-messageDialog-actions .oo-ui-buttonElement-button' );
+	}
 
-	get captionHelpButton() { return $( '.mw-ge-recommendedImageCaption-help-button .oo-ui-buttonElement-button' ); }
+	get captionHelpButton() {
+		return $( '.mw-ge-recommendedImageCaption-help-button .oo-ui-buttonElement-button' );
+	}
 
-	get messageDialogText() { return $( '.oo-ui-messageDialog-text' ); }
+	get messageDialogText() {
+		return $( '.oo-ui-messageDialog-text' );
+	}
 
-	get messageDialogMessage() { return $( '.oo-ui-messageDialog-message' ); }
+	get messageDialogMessage() {
+		return $( '.oo-ui-messageDialog-message' );
+	}
 
-	get addImageDetailsDialog() { return $( '.mw-ge-addImageDetailsDialog-fields' ); }
+	get addImageDetailsDialog() {
+		return $( '.mw-ge-addImageDetailsDialog-fields' );
+	}
 
-	get readButton() { return $( '#ca-view' ); }
+	get readButton() {
+		return $( '#ca-view' );
+	}
 
-	get discardEditsButton() { return $( '.ve-ui-overlay-global .oo-ui-flaggedElement-destructive' ); }
+	get discardEditsButton() {
+		return $( '.ve-ui-overlay-global .oo-ui-flaggedElement-destructive' );
+	}
 
 	async setup( articleTitle, useMobile ) {
 		await this.setupSuggestions( articleTitle );
 		Util.waitForModuleState( 'mediawiki.api', 'ready', 5000 );
-		await browser.execute( function () {
-			return new mw.Api().saveOptions( {
-				'growthexperiments-addimage-onboarding': 1,
-				'growthexperiments-addimage-caption-onboarding': 1
-			} );
-		} );
-		await browser.execute( function () {
-			return new mw.Api().saveOptions( {
-				'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] )
-			} );
-		} );
+		await browser.execute( () => new mw.Api().saveOptions( {
+			'growthexperiments-addimage-onboarding': 1,
+			'growthexperiments-addimage-caption-onboarding': 1
+		} ) );
+		await browser.execute( () => new mw.Api().saveOptions( {
+			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] )
+		} ) );
 		let query = {};
 		let fragment = '';
 		if ( useMobile ) {
@@ -128,9 +158,7 @@ class AddImageArticlePage extends Page {
 	async fillCaption( captionText ) {
 		await this.waitForDisplayedAndClickable( this.captionNode );
 		await this.captionNode.click();
-		await browser.waitUntil( async () => {
-			return this.captionNodePlaceholder[ 0 ].classList[ 1 ] === 'oo-ui-element-hidden';
-		} );
+		await browser.waitUntil( async () => this.captionNodePlaceholder[ 0 ].classList[ 1 ] === 'oo-ui-element-hidden' );
 		await this.captionNode.setValue( captionText );
 	}
 

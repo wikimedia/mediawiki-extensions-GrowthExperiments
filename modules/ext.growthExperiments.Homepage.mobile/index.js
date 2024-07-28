@@ -48,7 +48,7 @@ var mobile = require( 'mobile.startup' );
 			currentModule = null,
 			// Matches routes like /homepage/moduleName or /homepage/moduleName/action
 			// FIXME or describe why it is okay
-			// eslint-disable-next-line security/detect-unsafe-regex
+
 			routeRegex = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/;
 
 		/**
@@ -68,14 +68,10 @@ var mobile = require( 'mobile.startup' );
 			return $( getModuleData( moduleName ).overlay )
 				.find( '.growthexperiments-homepage-module' )
 				.toArray()
-				.map( function ( moduleElement ) {
-					return $( moduleElement ).data( 'module-name' );
-				} )
+				.map( ( moduleElement ) => $( moduleElement ).data( 'module-name' ) )
 				// With the current HTML structure, this shouldn't return the module itself,
 				// but filter it out just to be sure
-				.filter( function ( submodule ) {
-					return submodule !== moduleName;
-				} );
+				.filter( ( submodule ) => submodule !== moduleName );
 		}
 
 		function handleRouteChange( path ) {
@@ -99,7 +95,7 @@ var mobile = require( 'mobile.startup' );
 					homepageModuleLogger.log( newModule, 'mobile-overlay', 'impression' );
 
 					// Find submodules in the new module, and log impressions for them
-					getSubmodules( newModule ).forEach( function ( submodule ) {
+					getSubmodules( newModule ).forEach( ( submodule ) => {
 						homepageModuleLogger.log( submodule, 'mobile-overlay', 'impression' );
 					} );
 					if ( newModule === 'impact' && mw.config.get( 'wgGEUseNewImpactModule' ) ) {
@@ -111,7 +107,7 @@ var mobile = require( 'mobile.startup' );
 			currentModule = newModule;
 		}
 
-		overlayManager.add( routeRegex, function ( moduleName ) {
+		overlayManager.add( routeRegex, ( moduleName ) => {
 			if ( overlays[ moduleName ] === undefined ) {
 				var moduleData = getModuleData( moduleName );
 				var overlay = new MobileOverlay( {
@@ -123,14 +119,14 @@ var mobile = require( 'mobile.startup' );
 				overlays[ moduleName ] = overlay;
 
 				// Fire an event when the overlay closes that other modules can react to the closing
-				overlay.on( 'hide', function () {
+				overlay.on( 'hide', () => {
 					mw.hook( 'growthExperiments.mobileOverlayClosed.' + moduleName ).fire();
 				} );
 			}
 			return overlays[ moduleName ];
 		} );
 
-		router.on( 'route', function ( ev ) {
+		router.on( 'route', ( ev ) => {
 			handleRouteChange( ev.path );
 		} );
 
@@ -170,7 +166,7 @@ var mobile = require( 'mobile.startup' );
 			);
 		} );
 
-		setTimeout( function () {
+		setTimeout( () => {
 			mw.loader.load( lazyLoadModules );
 		}, 250 );
 	}
@@ -248,7 +244,7 @@ var mobile = require( 'mobile.startup' );
 			}
 		} );
 		document.body.appendChild( welcomeDrawer.$el[ 0 ] );
-		welcomeDrawer.$el.find( '.homepage-welcome-notice' ).on( 'click', function () {
+		welcomeDrawer.$el.find( '.homepage-welcome-notice' ).on( 'click', () => {
 			buttonClicked = true;
 			markAsSeen();
 			homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close', {
@@ -323,7 +319,7 @@ var mobile = require( 'mobile.startup' );
 		} );
 
 		$overlayModules.find( '[data-module-name="impact"]' ).append( newImpactDiscoveryDrawer.$el[ 0 ] );
-		newImpactDiscoveryDrawer.$el.find( '.homepage-newimpact-discovery' ).on( 'click', function () {
+		newImpactDiscoveryDrawer.$el.find( '.homepage-newimpact-discovery' ).on( 'click', () => {
 			buttonClicked = true;
 			// FIXME: when the click target is the Drawer surface the onBeforeHide hook is also
 			// triggered making an unnecessary repeated post request to the options API
@@ -344,7 +340,7 @@ var mobile = require( 'mobile.startup' );
 	 */
 	function setUpSuggestedEdits() {
 		$summaryModules.filter( '.growthexperiments-homepage-module-suggested-edits' )
-			.each( function ( i, module ) {
+			.each( ( i, module ) => {
 				var suggestedEditsMobileSummary = new SuggestedEditsMobileSummary( {
 					$element: $( module ),
 					newcomerTaskLogger: newcomerTaskLogger,
@@ -357,7 +353,7 @@ var mobile = require( 'mobile.startup' );
 				}
 
 				// Update the suggested edits module on the homepage when the overlay closes
-				mw.hook( 'growthExperiments.mobileOverlayClosed.suggested-edits' ).add( function () {
+				mw.hook( 'growthExperiments.mobileOverlayClosed.suggested-edits' ).add( () => {
 					suggestedEditsMobileSummary.updateUiBasedOnState();
 				} );
 			} );
@@ -370,7 +366,7 @@ var mobile = require( 'mobile.startup' );
 	if ( mw.loader.getState( 'mobile.init' ) ) {
 		beforeMobileInit();
 
-		mw.loader.using( 'mobile.init' ).done( function () {
+		mw.loader.using( 'mobile.init' ).done( () => {
 			onMobileInit();
 		} );
 	}

@@ -134,7 +134,7 @@
 		var startTime = mw.now(),
 			self = this,
 			url = new mw.Uri( window.location.href );
-		config = $.extend( {
+		config = Object.assign( {
 			getDescription: false,
 			size: this.pageSize,
 			thumbnailWidth: this.thumbnailWidth
@@ -176,7 +176,7 @@
 		}
 
 		var actionApiPromise = new mw.Api().get( apiParams );
-		var finalPromise = actionApiPromise.then( function ( data ) {
+		var finalPromise = actionApiPromise.then( ( data ) => {
 			var tasks = [];
 
 			/**
@@ -215,13 +215,11 @@
 			}
 			if ( data.query && data.query.pages ) {
 				tasks = data.query.pages
-					.sort( function ( l, r ) {
-						return l.order - r.order;
-					} )
+					.sort( ( l, r ) => l.order - r.order )
 					.map( cleanUpData );
 			}
 			if ( data.growthtasks.debug && data.growthtasks.debug.searchDebugUrls ) {
-				Object.keys( data.growthtasks.debug.searchDebugUrls ).forEach( function ( type ) {
+				Object.keys( data.growthtasks.debug.searchDebugUrls ).forEach( ( type ) => {
 					var debugUrl = data.growthtasks.debug.searchDebugUrls[ type ],
 						// eslint-disable-next-line no-console
 						consoleInfo = console && console.info && console.info.bind( console ) ||
@@ -268,7 +266,7 @@
 			startTime = mw.now(),
 			apiUrlBase = this.suggestedEditsConfig.GERestbaseUrl;
 
-		config = $.extend( {
+		config = Object.assign( {
 			thumbnailWidth: this.thumbnailWidth
 		}, config || {} );
 
@@ -284,7 +282,7 @@
 			return $.Deferred().resolve( task ).promise();
 		}
 		var encodedTitle = formatTitle( title );
-		return $.get( apiUrlBase + '/page/summary/' + encodedTitle ).then( function ( data ) {
+		return $.get( apiUrlBase + '/page/summary/' + encodedTitle ).then( ( data ) => {
 			task.extract = data.extract || null;
 			task.description = data.description || null;
 			// Normally we use the thumbnail source from the action API, this is only a fallback.
@@ -349,16 +347,16 @@
 			this.aqsConfig.project + '/all-access/user/' + encodedTitle + '/daily/' +
 			firstPageviewDay + '/' + lastPageviewDay;
 
-		return $.get( pageviewsApiUrl ).then( function ( data ) {
+		return $.get( pageviewsApiUrl ).then( ( data ) => {
 			var pageviews = 0;
-			( data.items || [] ).forEach( function ( item ) {
+			( data.items || [] ).forEach( ( item ) => {
 				pageviews += item.views;
 			} );
 			// This will skip on 0 views. That's OK, we don't want to show that to the user.
 			task.pageviews = pageviews || null;
 			self.logTiming( 'getExtraDataFromAqs', startTime, config.context );
 			return task;
-		}, function () {
+		}, () => {
 			// AQS returns a 404 when the page has 0 view. Even for real errors, it's
 			// not worth replacing the task card with an error message just because we
 			// could not put a pageview count on it.
@@ -400,9 +398,7 @@
 		// T278123: map the two versions of link tasks to each other - FIXME remove when done
 		taskTypes = require( './TaskTypesAbFilter.js' ).convertTaskTypes( taskTypes );
 		// The list of valid task types can change over time, discard invalid ones.
-		taskTypes = taskTypes.filter( function ( taskType ) {
-			return taskType in this.taskTypes;
-		}.bind( this ) );
+		taskTypes = taskTypes.filter( ( taskType ) => taskType in this.taskTypes );
 		return {
 			taskTypes: taskTypes,
 			topicFilters: topicFilters

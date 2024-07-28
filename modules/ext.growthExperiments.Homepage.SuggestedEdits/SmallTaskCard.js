@@ -133,9 +133,9 @@
 				'mw-ge-small-task-card-mobile' : 'mw-ge-small-task-card-desktop' )
 			.attr( 'href', this.taskUrl )
 			.append( $image, $cardTextContainer );
-		this.$element.on( 'click', function () {
+		this.$element.on( 'click', () => {
 			this.emit( 'click' );
-		}.bind( this ) );
+		} );
 	};
 
 	module.exports = SmallTaskCard;

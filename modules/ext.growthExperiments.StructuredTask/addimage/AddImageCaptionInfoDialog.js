@@ -70,7 +70,7 @@ AddImageCaptionInfoDialog.static.message = function () {
 		).parse();
 	}
 	guidelineItems.push( languageGuideline );
-	guidelineItems.forEach( function ( guidelineItemText ) {
+	guidelineItems.forEach( ( guidelineItemText ) => {
 		$guidelines.append( $( '<li>' ).html( guidelineItemText ) );
 	} );
 	return $( '<div>' ).append( [
@@ -109,7 +109,7 @@ AddImageCaptionInfoDialog.prototype.setupDismissField = function ( data ) {
 		selected: false,
 		value: 'dismissCaptionOnboarding'
 	} );
-	this.checkBoxInput.on( 'change', function ( isSelected ) {
+	this.checkBoxInput.on( 'change', ( isSelected ) => {
 		new mw.Api().saveOption( self.CAPTION_ONBOARDING_PREF, isSelected ? '1' : '0' );
 	} );
 	// Set up the FieldLayout here instead of during initialization so that if the field doesn't

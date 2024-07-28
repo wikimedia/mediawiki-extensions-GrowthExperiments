@@ -12,28 +12,26 @@ const ScoreCards = require( './CScoreCards.vue' );
 const { useUserImpact } = require( '../ext.growthExperiments.Homepage.NewImpact/composables/useUserImpact.js' );
 const jsonData = require( './__mocks__/serverExportedData.json' );
 
-const renderComponent = ( { props = {}, provide = {} } = {} ) => {
-	return mount( ScoreCards, {
-		props: Object.assign( {
-			userName: 'Alice',
-			renderThirdPerson: false,
-			hasIntl: true
-		}, props ),
+const renderComponent = ( { props = {}, provide = {} } = {} ) => mount( ScoreCards, {
+	props: Object.assign( {
+		userName: 'Alice',
+		renderThirdPerson: false,
+		hasIntl: true
+	}, props ),
+	provide: Object.assign( {
+		RENDER_MODE: 'desktop'
+	}, provide ),
+	global: {
 		provide: Object.assign( {
-			RENDER_MODE: 'desktop'
+			$log: jest.fn()
 		}, provide ),
-		global: {
-			provide: Object.assign( {
-				$log: jest.fn()
-			}, provide ),
-			mocks: {
-				$filters: {
-					convertNumber: jest.fn( ( x ) => `${x}` )
-				}
+		mocks: {
+			$filters: {
+				convertNumber: jest.fn( ( x ) => `${ x }` )
 			}
 		}
-	} );
-};
+	}
+} );
 
 describe( 'ScoreCards', () => {
 	beforeAll( () => {

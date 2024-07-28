@@ -133,7 +133,7 @@ module.exports = exports = {
 			).text();
 		},
 		contributionsUrl() {
-			return mw.util.getUrl( `Special:Contributions/${this.userName}` );
+			return mw.util.getUrl( `Special:Contributions/${ this.userName }` );
 		},
 		countLabelText() {
 			return this.renderThirdPerson ?

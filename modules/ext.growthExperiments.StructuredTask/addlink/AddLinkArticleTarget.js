@@ -135,18 +135,14 @@ AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
 	return Object.keys( recommendationRanges )
 		// Object.keys() is not guaranteed to return keys in insertion order, so sort the ranges
 		// by start offset
-		.sort( function ( a, b ) {
-			return recommendationRanges[ a ][ 0 ] - recommendationRanges[ b ][ 0 ];
-		} )
-		.map( function ( recommendationWikitextOffset ) {
-			return {
-				recommendationWikitextOffset: recommendationWikitextOffset,
-				fragment: surfaceModel.getLinearFragment( new ve.Range(
-					recommendationRanges[ recommendationWikitextOffset ][ 0 ],
-					recommendationRanges[ recommendationWikitextOffset ][ 1 ]
-				) )
-			};
-		} );
+		.sort( ( a, b ) => recommendationRanges[ a ][ 0 ] - recommendationRanges[ b ][ 0 ] )
+		.map( ( recommendationWikitextOffset ) => ( {
+			recommendationWikitextOffset: recommendationWikitextOffset,
+			fragment: surfaceModel.getLinearFragment( new ve.Range(
+				recommendationRanges[ recommendationWikitextOffset ][ 0 ],
+				recommendationRanges[ recommendationWikitextOffset ][ 1 ]
+			) )
+		} ) );
 };
 
 /**
@@ -178,7 +174,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	 */
 	function buildRegex( phrases ) {
 		// FIXME or describe why it is okay
-		// eslint-disable-next-line security/detect-non-literal-regexp
+
 		return new RegExp( phrases.map( mw.util.escapeRegExp ).join( '|' ), 'g' );
 	}
 
@@ -277,9 +273,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	// Sort the annotations by highest accuracy (suggestion score) to show the
 	// most relevant links. We might review this decision in the future, see
 	// https://phabricator.wikimedia.org/T301095#7739231
-	annotations.sort( function ( a, b ) {
-		return b.suggestion.score - a.suggestion.score;
-	} );
+	annotations.sort( ( a, b ) => b.suggestion.score - a.suggestion.score );
 	// Annotate suggestions until the number of links to show is
 	// reached or the are not more annotations found left
 	while ( annotations.length > 0 && numberOfLinksShown < this.maximumLinksToShow ) {
@@ -290,7 +284,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	if ( phraseMapKeys.length > 0 ) {
 		// If any items are remaining in the phrase map, that means we failed to locate them
 		// in the document.
-		phraseMapKeys.forEach( function ( phraseItem ) {
+		phraseMapKeys.forEach( ( phraseItem ) => {
 			mw.log.error( 'Failed to locate "' + phraseItem + '" (occurrences seen: ' +
 				phraseMap[ phraseItem ].occurrencesSeen + ') in document.' );
 		} );
@@ -375,9 +369,7 @@ AddLinkArticleTarget.prototype.checkAnnotationStates = function ( checkFn ) {
 		// FIXME need to re-check this if we fix restoring abandoned edits.
 		return false;
 	}
-	return this.getAnnotationStates().some( function ( state ) {
-		return checkFn( state );
-	} );
+	return this.getAnnotationStates().some( ( state ) => checkFn( state ) );
 };
 
 /**
@@ -386,9 +378,7 @@ AddLinkArticleTarget.prototype.checkAnnotationStates = function ( checkFn ) {
  * @override
  */
 AddLinkArticleTarget.prototype.hasEdits = function () {
-	return this.checkAnnotationStates( function ( state ) {
-		return state.accepted;
-	} );
+	return this.checkAnnotationStates( ( state ) => state.accepted );
 };
 
 /**
@@ -397,9 +387,7 @@ AddLinkArticleTarget.prototype.hasEdits = function () {
  * @return {boolean}
  */
 AddLinkArticleTarget.prototype.hasRejectedSuggestions = function () {
-	return this.checkAnnotationStates( function ( state ) {
-		return state.rejected;
-	} );
+	return this.checkAnnotationStates( ( state ) => state.rejected );
 };
 
 /**
@@ -417,7 +405,7 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 		rejectedTargets = [],
 		skippedTargets = [],
 		annotationStates = this.getAnnotationStates();
-	annotationStates.forEach( function ( state ) {
+	annotationStates.forEach( ( state ) => {
 		if ( state.accepted ) {
 			acceptedTargets.push( state.title );
 		} else if ( state.rejected ) {
@@ -435,14 +423,12 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	} );
 	options.plugins = 'ge-task-link-recommendation';
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
-		.done( function () {
-			var hasAccepts = annotationStates.some( function ( state ) {
-				return state.accepted;
-			} );
+		.done( () => {
+			var hasAccepts = annotationStates.some( ( state ) => state.accepted );
 			if ( !hasAccepts ) {
 				this.madeNullEdit = true;
 			}
-		}.bind( this ) );
+		} );
 };
 
 /** @inheritDoc **/
@@ -470,7 +456,7 @@ AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
 	$( window ).off( 'beforeunload' );
 	OO.ui.alert( mw.message( 'growthexperiments-addlink-suggestions-outdated' ).text(), {
 		actions: [ { action: 'accept', label: mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
-	} ).done( function () {
+	} ).done( () => {
 		window.location.href = mw.Title.newFromText( 'Special:Homepage' ).getUrl();
 	} );
 };
@@ -486,7 +472,7 @@ AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
  */
 AddLinkArticleTarget.prototype.getAnnotationStates = function () {
 	var states = [];
-	this.getSurface().linkRecommendationFragments.forEach( function ( recommendation ) {
+	this.getSurface().linkRecommendationFragments.forEach( ( recommendation ) => {
 		var annotations = recommendation.fragment
 			.getAnnotations()
 			.getAnnotationsByName( 'mwGeRecommendedLink' );
@@ -508,9 +494,7 @@ AddLinkArticleTarget.prototype.getAnnotationStates = function () {
 		var state = {
 			title: annotation.getDisplayTitle(),
 			text: annotation.getOriginalDomElements( annotation.getStore() )
-				.map( function ( element ) {
-					return element.textContent;
-				} ).join( '' )
+				.map( ( element ) => element.textContent ).join( '' )
 		};
 		if ( annotation.isAccepted() ) {
 			state.accepted = true;
@@ -530,7 +514,7 @@ AddLinkArticleTarget.prototype.onSaveComplete = function ( data ) {
 	var linkRecWarningKey = 'gelinkrecommendationdailytasksexceeded',
 		geWarnings = data.gewarnings || [];
 
-	geWarnings.forEach( function ( warning ) {
+	geWarnings.forEach( ( warning ) => {
 		if ( warning[ linkRecWarningKey ] ) {
 			suggestedEditSession.qualityGateConfig[ 'link-recommendation' ] = { dailyLimit: true };
 			suggestedEditSession.save();

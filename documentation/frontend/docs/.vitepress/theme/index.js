@@ -11,20 +11,18 @@ import { DEFAULT_LOCALE, messages } from '../i18n.js';
  * @param {Function} vueBananaI18n
  * @return {Function}
  */
-const i18nDecorator = ( vueBananaI18n ) => {
-	return function ( msg, ...params ) {
-		/**
-		 * Return an mw.Message partial object with just .text() method
-		 *
-		 * @typedef {Object} mw.growthDocs.MwMessageInterface
-		 *
-		 * @property {Function} text parses the given banana message (without html support)
-		 */
-		return {
-			text() {
-				return vueBananaI18n( msg, ...params );
-			}
-		};
+const i18nDecorator = ( vueBananaI18n ) => function ( msg, ...params ) {
+	/**
+	 * Return an mw.Message partial object with just .text() method
+	 *
+	 * @typedef {Object} mw.growthDocs.MwMessageInterface
+	 *
+	 * @property {Function} text parses the given banana message (without html support)
+	 */
+	return {
+		text() {
+			return vueBananaI18n( msg, ...params );
+		}
 	};
 };
 

@@ -15,10 +15,10 @@
 			 * @param {Help.HelpPanelLogger} logger
 			 */
 			registerDialogRoute = function ( router, route, windowManager, dialog, logger ) {
-				router.addRoute( route, function () {
+				router.addRoute( route, () => {
 					var lifecycle = windowManager.openWindow( dialog, { panel: 'ask-help' } );
 					logger.log( 'ask-help' );
-					lifecycle.closing.done( function () {
+					lifecycle.closing.done( () => {
 						if ( router.getPath() === route ) {
 							// The user clicked the "close" button on the dialog, go back to
 							// previous route.
@@ -36,7 +36,7 @@
 			 * @param {QuestionPosterDialog} dialog
 			 */
 			closeWindowOnHashChange = function ( router, route, windowManager, dialog ) {
-				$( window ).on( 'hashchange', function () {
+				$( window ).on( 'hashchange', () => {
 					if ( router.getPath() !== route ) {
 						windowManager.closeWindow( dialog );
 					}
@@ -64,7 +64,7 @@
 		);
 		var windowManagerInstance = new OO.ui.WindowManager( { modal: true } );
 		suggestedEditSession.helpPanelShouldBeLocked = true;
-		var dialogInstance = new QuestionPosterDialog( $.extend( {
+		var dialogInstance = new QuestionPosterDialog( Object.assign( {
 			size: 'medium',
 			logger: loggerInstance,
 			layoutType: 'dialog',
@@ -90,7 +90,7 @@
 			windowManagerInstance,
 			dialogInstance
 		);
-		ctaButton.on( 'click', function () {
+		ctaButton.on( 'click', () => {
 			routerInstance.navigate( '#' + questionRoute );
 		} );
 		// Open the dialog if the path is in the URL (for example, if the user reloads the page

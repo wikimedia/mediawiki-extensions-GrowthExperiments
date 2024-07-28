@@ -4,7 +4,7 @@ const Utils = require( '../../../modules/utils/Utils.js' );
 
 QUnit.module( 'ext.growthExperiments.Utils.js', QUnit.newMwEnvironment() );
 
-QUnit.test( 'serializeActionData', function ( assert ) {
+QUnit.test( 'serializeActionData', ( assert ) => {
 	assert.strictEqual( Utils.serializeActionData( null ), '' );
 	assert.strictEqual( Utils.serializeActionData( { foo: 'bar', blah: 1 } ), 'foo=bar;blah=1' );
 	assert.strictEqual( Utils.serializeActionData( [ 'abc', 'def', 'ghi' ] ), 'abc;def;ghi' );

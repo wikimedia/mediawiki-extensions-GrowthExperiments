@@ -22,9 +22,7 @@ QUnit.module( 'ext.growthExperiments.Homepage.mobile/SuggestedEditsMobileSummary
 		}
 	},
 	beforeEach() {
-		this.sandbox.stub( mw.language, 'convertNumber', function ( num ) {
-			return String( num );
-		} );
+		this.sandbox.stub( mw.language, 'convertNumber', ( num ) => String( num ) );
 	}
 } ) );
 
@@ -57,8 +55,8 @@ QUnit.test( 'should hide page views in SmallTaskCard if task preview is availabl
 		tasktype: 'copyedit',
 		pageviews: 200
 	};
-	this.sandbox.stub( store.newcomerTasks.api, 'getExtraDataFromPcs', function ( taskData ) {
-		$.extend( taskData, task );
+	this.sandbox.stub( store.newcomerTasks.api, 'getExtraDataFromPcs', ( taskData ) => {
+		Object.assign( taskData, task );
 		return $.Deferred().resolve( task ).promise();
 	} );
 	const module = new SuggestedEditsMobileSummary( {
@@ -74,7 +72,7 @@ QUnit.test( 'should hide page views in SmallTaskCard if task preview is availabl
 	} );
 } );
 
-QUnit.test( 'should show MobileNoTasksWidget for updateUiBasedOnState if there is no current task', function ( assert ) {
+QUnit.test( 'should show MobileNoTasksWidget for updateUiBasedOnState if there is no current task', ( assert ) => {
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
@@ -85,7 +83,7 @@ QUnit.test( 'should show MobileNoTasksWidget for updateUiBasedOnState if there i
 	assert.true( [ ...module.$content[ 0 ].classList ].includes( 'growthexperiments-suggestededits-mobilesummary-notasks-widget' ) );
 } );
 
-QUnit.test( 'should show the preview for the current task for updateUiBasedOnState', function ( assert ) {
+QUnit.test( 'should show the preview for the current task for updateUiBasedOnState', ( assert ) => {
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },

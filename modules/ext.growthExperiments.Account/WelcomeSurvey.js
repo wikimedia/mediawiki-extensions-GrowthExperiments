@@ -23,13 +23,13 @@
 			} );
 
 			if ( shouldUseLanguageInfoOverlay ) {
-				widgetInstance.on( 'inputFocus', function () {
+				widgetInstance.on( 'inputFocus', () => {
 					// FIXME: navigate is deprecated but navigateTo doesn't seem to trigger
 					// the language searcher overlay.
 					router.navigate( '/languages/all/no-suggestions' );
 				} );
 			}
-			mw.hook( 'mobileFrontend.languageSearcher.linkClick' ).add( function ( lang ) {
+			mw.hook( 'mobileFrontend.languageSearcher.linkClick' ).add( ( lang ) => {
 				widgetInstance.addLanguageByCode( lang );
 			} );
 

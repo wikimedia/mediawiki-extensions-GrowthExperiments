@@ -162,14 +162,12 @@ module.exports = exports = {
 		 */
 		scoreCards: {
 			type: Array,
-			default: () => {
-				return [
-					'edit-count',
-					'thanks-count',
-					'last-edit',
-					'best-streak'
-				];
-			}
+			default: () => [
+				'edit-count',
+				'thanks-count',
+				'last-edit',
+				'best-streak'
+			]
 		},
 		/**
 		 * JavaScript representation of the UserImpact PHP object
@@ -313,10 +311,10 @@ module.exports = exports = {
 			return null;
 		},
 		contributionsUrl() {
-			return mw.util.getUrl( `Special:Contributions/${this.userName}` );
+			return mw.util.getUrl( `Special:Contributions/${ this.userName }` );
 		},
 		revertsUrl() {
-			return mw.util.getUrl( `Special:Contributions/${this.userName}`, {
+			return mw.util.getUrl( `Special:Contributions/${ this.userName }`, {
 				tagfilter: 'mw-reverted'
 			} );
 		},

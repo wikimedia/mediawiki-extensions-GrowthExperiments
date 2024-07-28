@@ -21,7 +21,7 @@ function TaskPreviewWidget( config ) {
 		taskCount: 1,
 		taskPosition: 1
 	};
-	config = $.extend( defaultConfig, config, {
+	config = Object.assign( defaultConfig, config, {
 		classes: [ 'growthexperiments-task-preview-widget' ]
 	} );
 	TaskPreviewWidget.super.call( this, config );

@@ -27,7 +27,7 @@
 		return;
 	}
 
-	$( function () {
+	$( () => {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
 			$buttonWrapper = $buttonToInfuse.parent(),
@@ -138,7 +138,7 @@
 				// When closing the wikitext editor, the url is only updated some time after
 				// so there is a chance that we need to log an impression event but we'll
 				// only know for sure a little later ;)
-				setTimeout( function () {
+				setTimeout( () => {
 					if ( helpPanelProcessDialog.logger.getEditor() === 'reading' ) {
 						helpPanelProcessDialog.logger.log( 'impression', taskTypeLogData );
 					}
@@ -159,7 +159,7 @@
 				$buttonWrapper.toggleClass( 'animate-out', isContextItemVisible );
 			};
 			var onContextResizeDebounced = OO.ui.debounce( onContextResize, 200 );
-			mw.hook( 've.activationComplete' ).add( function () {
+			mw.hook( 've.activationComplete' ).add( () => {
 				window.ve.init.target.surface.context.on( 'resize', onContextResizeDebounced );
 			} );
 		}
@@ -214,7 +214,7 @@
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog, {
 				panel: panel
 			} );
-			lifecycle.opening.then( function () {
+			lifecycle.opening.then( () => {
 				logger.log( 'open' );
 				helpPanelProcessDialog.updateSuggestedEditSession( {
 					helpPanelShouldOpen: true
@@ -222,7 +222,7 @@
 				helpPanelProcessDialog.updateEditMode();
 				helpCtaButton.setOpen( true );
 			} );
-			lifecycle.closing.done( function () {
+			lifecycle.closing.done( () => {
 				if ( OO.ui.isMobile() ) {
 					$body.append( $mfOverlay, $veUiOverlay );
 				}
@@ -292,13 +292,13 @@
 						// was dismissed.
 						attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
 					}
-					setTimeout( function () {
+					setTimeout( () => {
 						helpCtaButton.toggle( true );
 						drawer.$el.remove();
 					}, 250 );
 				}
 			} );
-			mobilePeek.$el.find( '.suggested-edits-mobile-peek' ).on( 'click', function () {
+			mobilePeek.$el.find( '.suggested-edits-mobile-peek' ).on( 'click', () => {
 				tapped = true;
 				logger.log( 'peek-tap' );
 				mobilePeek.hide();
@@ -334,14 +334,14 @@
 					// help panel opens.
 					$overlay.addClass( 'mw-ge-help-panel-popup-guidance' );
 					openHelpPanel( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ).closing
-						.done( function () {
+						.done( () => {
 							$overlay.removeClass( 'mw-ge-help-panel-popup-guidance' );
 						} );
 				}
 			}
 		}
 
-		helpCtaButton.on( 'click', function () {
+		helpCtaButton.on( 'click', () => {
 			if ( lifecycle && !lifecycle.isClosed() ) {
 				helpPanelProcessDialog.executeAction( 'close' );
 			} else {
@@ -363,9 +363,9 @@
 				 */
 				$buttonWrapper.addClass( 'oo-ui-element-hidden' );
 				mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).add(
-					function ( helpPanelButton ) {
+					( helpPanelButton ) => {
 						var prevScrollPosition = $( document ).scrollTop();
-						openHelpPanel( 'suggested-edits' ).closing.done( function () {
+						openHelpPanel( 'suggested-edits' ).closing.done( () => {
 							// When help panel closes, article is scrolled to 0.
 							// Make sure annotation is visible.
 							$( document ).scrollTop( prevScrollPosition );
@@ -378,14 +378,14 @@
 			}
 
 			mw.hook( 'mobileFrontend.editorOpened' ).add(
-				function ( editor ) {
+				( editor ) => {
 					helpPanelProcessDialog.logger.setEditor( editor );
 					attachHelpButton( editor );
 
 				}
 			);
 			mw.hook( 'mobileFrontend.editorClosed' ).add(
-				function ( editor ) {
+				( editor ) => {
 					helpPanelProcessDialog.logger.setEditor( editor );
 					detachHelpButton();
 				}
@@ -411,7 +411,7 @@
 		}
 
 		// Allow the CTA to be hidden when there's a completing overlay (ex: post-edit dialog)
-		mw.hook( 'helpPanel.hideCta' ).add( function () {
+		mw.hook( 'helpPanel.hideCta' ).add( () => {
 			isCtaHidden = true;
 			toggleHelpButtonVisibility( false );
 		} );

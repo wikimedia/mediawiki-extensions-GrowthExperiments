@@ -33,7 +33,7 @@
 		uri = new mw.Uri(),
 		// Matches routes like /homepage/moduleName or /homepage/moduleName/action
 		// FIXME or describe why it is okay
-		// eslint-disable-next-line security/detect-unsafe-regex
+
 		routeMatches = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/.exec( uri.fragment ),
 		routeMatchesModule = routeMatches && $modules.filter( function () {
 			return $( this ).data( 'module-name' ) === routeMatches[ 1 ];
@@ -49,7 +49,7 @@
 		$modules.each( logImpression );
 	}
 
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( ( moduleName, $content ) => {
 		$content.find( '.growthexperiments-homepage-module' )
 			.on( 'click', '[data-link-id], [data-link-group-id] a', handleClick );
 	} );

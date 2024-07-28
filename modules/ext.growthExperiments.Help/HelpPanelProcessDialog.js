@@ -273,7 +273,7 @@
 			);
 		}
 
-		return links.reduce( function ( $list, button ) {
+		return links.reduce( ( $list, button ) => {
 			// This is a bit of a hack as these buttons are in no way progressive,
 			// but the progressive button style matches the intended visual style well.
 			button.setTarget( '_blank' ).toggleFramed( false ).setFlags( 'progressive' );
@@ -290,7 +290,7 @@
 		if ( this.guidanceEnabled && this.taskTypeId ) {
 			buttonIds.unshift( 'suggested-edits' );
 		}
-		buttonIds.forEach( function ( id ) {
+		buttonIds.forEach( ( id ) => {
 			var mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
 			// Asking the mentor needs a different button but the same panel / logging.
 			// FIXME find a nicer way to do this.
@@ -316,12 +316,12 @@
 						null,
 					subsubheader: ( buttonId === 'ask-help-mentor' ) ? mentorData.name : null
 				} ).$element
-					.on( 'click', function () {
+					.on( 'click', () => {
 						this.logger.log( id );
 						this.swapPanel( id );
-					}.bind( this ) )
+					} )
 			);
-		}.bind( this ) );
+		} );
 	};
 
 	/** @inheritDoc **/
@@ -378,7 +378,7 @@
 			relevantTitle: mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) )
 		} );
 		this.askhelpPanel.on( 'askHelpTextInputChange', this.onAskHelpTextInputChange.bind( this ) );
-		this.panelTitleMessages = $.extend(
+		this.panelTitleMessages = Object.assign(
 			this.panelTitleMessages,
 			this.askhelpPanel.getPanelTitleMessages()
 		);
@@ -468,13 +468,13 @@
 		this.$body.append( this.homePanel.$element, this.panels.$element );
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
 
-		guidanceTipsPromise.then( function ( helpPanelHasTips ) {
+		guidanceTipsPromise.then( ( helpPanelHasTips ) => {
 			if ( !helpPanelHasTips ) {
 				return;
 			}
 			// IndexLayout does not provide any way to differentiate between human and programmatic
 			// tab selection so we must go deeper.
-			this.suggestededitsPanel.tipsPanel.tabIndexLayout.getTabs().on( 'choose', function ( item ) {
+			this.suggestededitsPanel.tipsPanel.tabIndexLayout.getTabs().on( 'choose', ( item ) => {
 				var tabName = item.data;
 				this.updateSuggestedEditSession( {
 					helpPanelCurrentTip: tabName,
@@ -484,8 +484,8 @@
 					taskType: this.taskTypeId,
 					tabName: tabName
 				} );
-			}.bind( this ) );
-		}.bind( this ) );
+			} );
+		} );
 
 		// Disable pending effect in the header; it breaks the background transition when navigating
 		// back from the suggested-edits panel to the home panel. In getActionProcess(), we set the
@@ -598,7 +598,7 @@
 	 */
 	HelpPanelProcessDialog.prototype.updateSuggestedEditSession = function ( update ) {
 		if ( this.suggestedEditSession.active ) {
-			this.suggestedEditSession = $.extend( this.suggestedEditSession, update );
+			this.suggestedEditSession = Object.assign( this.suggestedEditSession, update );
 			this.suggestedEditSession.save();
 		}
 	};
@@ -665,7 +665,7 @@
 	/** @inheritDoc **/
 	HelpPanelProcessDialog.prototype.getActionProcess = function ( action ) {
 		return HelpPanelProcessDialog.super.prototype.getActionProcess.call( this, action )
-			.next( function () {
+			.next( () => {
 				if ( action === 'close' || !action ) {
 					this.logger.log( 'close' );
 					if ( this.askhelpPanel.shouldShowHomepageMentorTour() ) {
@@ -707,7 +707,7 @@
 					// A promise is returned to show the ProcessDialog's loading state.
 					return this.publishQuestionDeferred();
 				}
-			}.bind( this ) );
+			} );
 	};
 
 	/**
@@ -723,7 +723,7 @@
 		 * - ext.guidedTour.tour.helppanel
 		 */
 		if ( !mw.user.options.get( tourPreferenceKey ) ) {
-			mw.loader.using( 'ext.guidedTour.tour.' + tourName, function () {
+			mw.loader.using( 'ext.guidedTour.tour.' + tourName, () => {
 				mw.guidedTour.launchTour( tourName );
 				mw.user.options.set( tourPreferenceKey, '1' );
 				new mw.Api().saveOption(
@@ -785,7 +785,7 @@
 		// But only on desktop, since on mobile we usually want to fill the screen.
 		if ( !OO.ui.isMobile() && this.useHelpPanelLayout ) {
 			// Do not change the object, it is shared by all OOUI windows
-			dim = $.extend( {}, dim, {
+			dim = Object.assign( {}, dim, {
 				width: '360px',
 				height: '528px',
 				maxHeight: 'calc( 100vh - 180px )'
@@ -802,7 +802,7 @@
 	HelpPanelProcessDialog.prototype.setGuidanceAutoAdvance = function ( enable ) {
 		var self = this;
 		if ( enable && this.guidanceEnabled && !this.guidanceAutoAdvanceTimer ) {
-			this.guidanceAutoAdvanceTimer = window.setInterval( function () {
+			this.guidanceAutoAdvanceTimer = window.setInterval( () => {
 				// Skip if the panel is not active or not loaded yet.
 				if ( self.currentPanel !== 'suggested-edits' || !self.suggestededitsPanel.tipsPanel ) {
 					return;
@@ -880,9 +880,9 @@
 			mw.loader.load( 'ext.guidedTour.tour.helppanel' );
 		}
 		return new mw.Api().postWithToken( 'csrf', this.askhelpPanel.getPostData() )
-			.then( function ( data ) {
+			.then( ( data ) => {
 				this.logger.incrementUserEditCount();
-				this.logger.log( 'submit-success', $.extend(
+				this.logger.log( 'submit-success', Object.assign(
 					submitAttemptData,
 					/* eslint-disable camelcase */
 					{
@@ -917,7 +917,7 @@
 
 				mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).fire( data );
 				this.askhelpPanel.onQuestionPosted();
-			}.bind( this ), function ( errorCode, errorData ) {
+			}, ( errorCode, errorData ) => {
 				// Return a recoverable error. The user can either try again, or they
 				// can follow the instructions in the error message for how to post
 				// their message manually.
@@ -931,10 +931,10 @@
 							errorData.error.info
 					) )
 				).promise();
-			}.bind( this ) )
-			.always( function () {
+			} )
+			.always( () => {
 				this.setPendingElement( $( [] ) );
-			}.bind( this ) );
+			} );
 	};
 
 	module.exports = HelpPanelProcessDialog;

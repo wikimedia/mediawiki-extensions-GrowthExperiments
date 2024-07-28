@@ -110,13 +110,13 @@ function SuggestedEditsModule( config, logger, rootStore ) {
 	// React to changes to the task data in the store (the changes could be triggered by another
 	// component such as StartEditingDialog)
 	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, this.onNewcomerTasksDataChanged.bind( this ) );
-	this.tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, function ( isFetchingTasks ) {
+	this.tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, ( isFetchingTasks ) => {
 		if ( isFetchingTasks ) {
 			this.nextWidget.setDisabled( true );
 		} else {
 			this.nextWidget.setDisabled( this.tasksStore.isTaskQueueEmpty() );
 		}
-	}.bind( this ) );
+	} );
 
 }
 
@@ -164,14 +164,14 @@ SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogProcess
 	this.isFirstRender = true;
 	this.onFilterClose();
 	var apiPromise = this.tasksStore.fetchTasks( 'suggestedEditsModule.filterSelection' );
-	apiPromise.then( function () {
+	apiPromise.then( () => {
 		if ( filtersDialogProcess ) {
 			filtersDialogProcess.resolve();
 		}
 	} );
 
 	if ( filtersDialogProcess ) {
-		apiPromise.fail( function () {
+		apiPromise.fail( () => {
 			filtersDialogProcess.reject();
 		} );
 	}
@@ -184,10 +184,10 @@ SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogProcess
  * by rendering an error card.
  */
 SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function () {
-	return this.tasksStore.fetchTasks( 'suggestedEditsModule.fetchTasksAndUpdateView' ).then( function () {
+	return this.tasksStore.fetchTasks( 'suggestedEditsModule.fetchTasksAndUpdateView' ).then( () => {
 		this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
 		return $.Deferred().resolve().promise();
-	}.bind( this ) ).catch( function ( message ) {
+	} ).catch( ( message ) => {
 		if ( message === null ) {
 			// XHR abort, not a real error
 			return;
@@ -195,7 +195,7 @@ SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function () {
 		this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 			{ type: 'error', errorMessage: message } );
 		return this.showCard( new ErrorCardWidget() );
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -259,7 +259,7 @@ SuggestedEditsModule.prototype.onPreviousCard = function ( isSwipe ) {
  */
 SuggestedEditsModule.prototype.updateExtraDataForCurrentCard = function () {
 	this.currentCard = new EditCardWidget(
-		$.extend(
+		Object.assign(
 			{ extraDataLoaded: true, qualityGateConfig: this.tasksStore.getQualityGateConfig() },
 			this.tasksStore.getCurrentTask()
 		)
@@ -323,9 +323,9 @@ SuggestedEditsModule.prototype.logCardData = function () {
 SuggestedEditsModule.prototype.setMatchModeAndSave = function ( mode ) {
 	this.filters.topicFiltersDialog.topicSelector.matchModeSelector.setSelectedMode( mode );
 	this.filtersStore.setTopicsMatchMode( mode );
-	this.fetchTasksAndUpdateView().then( function () {
+	this.fetchTasksAndUpdateView().then( () => {
 		this.filtersStore.savePreferences();
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -360,7 +360,7 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 		this.currentCard = new EndOfQueueWidget( { topicMatching: this.filtersStore.topicsEnabled } );
 	} else {
 		this.currentCard = new EditCardWidget(
-			$.extend( { qualityGateConfig: this.tasksStore.getQualityGateConfig() }, this.tasksStore.getCurrentTask() )
+			Object.assign( { qualityGateConfig: this.tasksStore.getQualityGateConfig() }, this.tasksStore.getCurrentTask() )
 		);
 	}
 	if ( this.currentCard instanceof EditCardWidget ) {
@@ -416,13 +416,13 @@ SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapp
 	};
 
 	// A delay is added to make sure the fake card is shown and the real card is off screen.
-	setTimeout( function () {
+	setTimeout( () => {
 		$fakeCard.addClass( isGoingBack ? 'to-end' : 'to-start' );
 		$cardElement.empty().append( this.currentCard.$element );
 		$cardElement.on( 'transitionend transitioncancel', onTransitionEnd );
 		$cardElement.removeClass( [ 'no-transition', 'to-start', 'to-end' ] );
 		$overlayContent.removeClass( 'is-swiping' );
-	}.bind( this ), 100 );
+	}, 100 );
 
 	return promise;
 };
@@ -445,7 +445,7 @@ SuggestedEditsModule.prototype.updateCardElement = function ( shouldAnimateEditC
 			!this.isShowingPseudoCard;
 
 	if ( canAnimate ) {
-		this.animateCard( $cardElement, $cardWrapper ).then( function () {
+		this.animateCard( $cardElement, $cardWrapper ).then( () => {
 			promise.resolve();
 		} );
 	} else {
@@ -481,16 +481,16 @@ SuggestedEditsModule.prototype.setupSwipeNavigation = function () {
 		isRtl: document.documentElement.dir === 'rtl',
 		isHorizontal: true
 	} );
-	this.swipeCard.setToStartHandler( function () {
+	this.swipeCard.setToStartHandler( () => {
 		this.onNextCard( true );
-	}.bind( this ) );
-	this.swipeCard.setToEndHandler( function () {
+	} );
+	this.swipeCard.setToEndHandler( () => {
 		this.onPreviousCard( true );
-	}.bind( this ) );
+	} );
 
 	// Disable scrolling on the body when the overlay is shown
 	updateBodyClass( true );
-	router.on( 'route', function ( e ) {
+	router.on( 'route', ( e ) => {
 		updateBodyClass( !!e.path.match( /suggested-edits/ ) );
 	} );
 };
@@ -533,12 +533,12 @@ SuggestedEditsModule.prototype.setupClickLogging = function () {
 			'';
 	$link
 		.attr( 'href', newUrl )
-		.on( 'click', function () {
+		.on( 'click', () => {
 			if ( newUrl ) {
 				// Only log if this is a task card, not the skeleton loading card
 				this.logEditTaskClick( 'se-task-click' );
 			}
-		}.bind( this ) );
+		} );
 };
 
 /**
@@ -562,7 +562,7 @@ SuggestedEditsModule.prototype.setupEditTypeTracking = function () {
  * @param {jQuery} $element The element to bind click handling to.
  */
 SuggestedEditsModule.prototype.setupQualityGateClickHandling = function ( $element ) {
-	$element.on( 'click', function () {
+	$element.on( 'click', () => {
 		if ( this.currentCard instanceof EditCardWidget ) {
 			var qualityGate = new QualityGate( {
 				gates: this.currentCard.data.qualityGateIds || [],
@@ -594,7 +594,7 @@ SuggestedEditsModule.prototype.setupQualityGateClickHandling = function ( $eleme
 			} );
 			return qualityGate.checkAll( this.currentCard.data.tasktype );
 		}
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -614,13 +614,13 @@ SuggestedEditsModule.prototype.setupEditWidget = function ( $container ) {
 
 	// OO.ui.mixin.ButtonElement.onClick prevents the default action when the 'click'
 	// event handler is set via OOJS, use the jQuery event handling mechanism instead.
-	this.editWidget.$button.on( 'click', function () {
+	this.editWidget.$button.on( 'click', () => {
 		// The widget state needs to be checked since this click event is fired regardless.
 		if ( this.editWidget.isDisabled() ) {
 			return;
 		}
 		this.logEditTaskClick( 'se-edit-button-click' );
-	}.bind( this ) );
+	} );
 };
 
 /**

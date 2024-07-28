@@ -6,10 +6,10 @@
 		 * hide the warning if the user doesn't provide an email address
 		 */
 		maybeShowWarning: function () {
-			mw.hook( 'htmlform.enhance' ).add( function ( $root ) {
+			mw.hook( 'htmlform.enhance' ).add( ( $root ) => {
 				var $emailInput = $root.find( '#wpEmail' );
 				$emailInput
-					.on( 'focus', function () {
+					.on( 'focus', () => {
 						var $warningBox = $emailInput.next( '.mw-message-box-warning' );
 						if ( $warningBox.length === 0 ) {
 							$warningBox = $( '<div>' )
@@ -21,7 +21,7 @@
 						// eslint-disable-next-line no-jquery/no-slide
 						$warningBox.slideDown();
 					} )
-					.on( 'blur', function () {
+					.on( 'blur', () => {
 						// Hide the warning again if the user leaves the email input without
 						// typing anything
 						var $warningBox = $emailInput.next( '.mw-message-box-warning' );

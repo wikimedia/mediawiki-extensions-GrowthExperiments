@@ -43,7 +43,7 @@
 			].join( '/' ),
 			tipLabelNumber = 1;
 
-		return $.get( apiPath ).then( function ( quickStartTipsData ) {
+		return $.get( apiPath ).then( ( quickStartTipsData ) => {
 			for ( var key in quickStartTipsData ) {
 				tipPanel = new QuickStartTipsTabPanelLayout( 'tipset-' + String( tipLabelNumber ), {
 					taskType: taskTypeID,
@@ -70,7 +70,7 @@
 			// Used by the auto-advance logic in HelpPanelProcessDialog
 			stackLayout.tabIndexLayout = indexLayout;
 			return stackLayout;
-		}, function ( jqXHR, statusText, error ) {
+		}, ( jqXHR, statusText, error ) => {
 			mw.log.error( 'Unable to load quick start tips', statusText, error );
 			mw.errorLogger.logError( new Error( 'Unable to load quick start tips: ' +
 				statusText + ' / ' + error ), 'error.growthexperiments' );

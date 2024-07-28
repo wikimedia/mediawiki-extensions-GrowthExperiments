@@ -112,7 +112,7 @@ module.exports = ( function () {
 				label: mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-button' ).text(),
 				flags: 'primary'
 			} ]
-		} ).done( function () {
+		} ).done( () => {
 			// Allow redirecting user even if the document
 			// has unsaved changes, which we don't care about in this context.
 			$( window ).off( 'beforeunload' );
@@ -139,20 +139,18 @@ module.exports = ( function () {
 	 * Load platform-specific module for structured task editing flow
 	 */
 	function loadEditModule() {
-		mw.hook( 've.loadModules' ).add( function ( addPlugin ) {
+		mw.hook( 've.loadModules' ).add( ( addPlugin ) => {
 			// Either the desktop or the mobile module will be registered, but not both.
 			var module = mw.config.get( 'skin' ) === 'minerva' ?
 				'ext.growthExperiments.StructuredTask.mobile' :
 				'ext.growthExperiments.StructuredTask.desktop';
 
-			addPlugin( function () {
-				return mw.loader.using( module ).then( function () {
-					// eslint-disable-next-line security/detect-non-literal-require
-					require( module ).initializeTarget( taskType );
-				} ).catch( function ( e ) {
-					mw.log.error( e );
-				} );
-			} );
+			addPlugin( () => mw.loader.using( module ).then( () => {
+				// eslint-disable-next-line security/detect-non-literal-require
+				require( module ).initializeTarget( taskType );
+			} ).catch( ( e ) => {
+				mw.log.error( e );
+			} ) );
 		} );
 	}
 

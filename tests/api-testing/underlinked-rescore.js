@@ -100,7 +100,7 @@ const dataEntries = data.entries();
 describe( 'UnderlinkedFunctionScoreBuilder', () => {
 
 	for ( const [ i, { doc, expected } ] of dataEntries ) {
-		it( `should return the expected score (dataset #${i})`, () => {
+		it( `should return the expected score (dataset #${ i })`, () => {
 			const actual = testSubject( doc, defaultMinimumLength, defaultSmoothingFactor );
 			assert.approximately( actual, expected, 0.00001 );
 		} );

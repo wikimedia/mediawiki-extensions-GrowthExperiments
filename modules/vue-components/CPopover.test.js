@@ -10,12 +10,10 @@ const renderComponent = ( props = {
 }, slots = {
 	trigger: '<button>Click me</button>',
 	content: '<p>Some fancy content</p>'
-} ) => {
-	return shallowMount( CPopover, {
-		props,
-		slots
-	} );
-};
+} ) => shallowMount( CPopover, {
+	props,
+	slots
+} );
 
 describe( 'CPopover', () => {
 	it( 'should be closed by default', () => {

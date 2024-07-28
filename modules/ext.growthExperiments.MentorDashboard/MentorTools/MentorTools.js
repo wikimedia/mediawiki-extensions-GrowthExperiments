@@ -143,13 +143,13 @@
 				action: 'growthmanagementorlist',
 				geaction: 'change',
 				isaway: false
-			} ).then( function () {
+			} ).then( () => {
 				mw.notify(
 					mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active' ),
 					{ type: 'info' }
 				);
 				mentorTools.onMentorBackTimestampChanged( null );
-			} ).catch( function () {
+			} ).catch( () => {
 				mw.notify(
 					mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown' ),
 					{ type: 'error' }
@@ -173,7 +173,7 @@
 	MentorTools.prototype.onMentorWeightDropdownChanged = function () {
 		const selectedItem = this.mentorWeightDropdown.getMenu().findSelectedItem();
 
-		this.setMentorWeight( selectedItem ).then( function () {
+		this.setMentorWeight( selectedItem ).then( () => {
 			mw.notify(
 				mw.msg(
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed',
@@ -181,7 +181,7 @@
 				),
 				{ type: 'info' }
 			);
-		} ).catch( function () {
+		} ).catch( () => {
 			mw.notify(
 				mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown' ),
 				{ type: 'error' }

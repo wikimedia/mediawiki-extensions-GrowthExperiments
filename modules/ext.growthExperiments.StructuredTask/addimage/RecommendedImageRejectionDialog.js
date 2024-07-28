@@ -48,7 +48,7 @@ RecommendedImageRejectionDialog.static.rejectionReasons = [
 RecommendedImageRejectionDialog.prototype.initialize = function () {
 	RecommendedImageRejectionDialog.super.prototype.initialize.call( this );
 	this.message.$element.addClass( 'oo-ui-inline-help' );
-	var selectOptions = this.constructor.static.rejectionReasons.map( function ( reason ) {
+	var selectOptions = this.constructor.static.rejectionReasons.map( ( reason ) => {
 		var optionData = {
 			data: reason,
 			// Messages used:

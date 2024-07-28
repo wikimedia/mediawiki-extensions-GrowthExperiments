@@ -25,7 +25,7 @@ function displayDrawer() {
 	$( document.body ).append( drawer.$element );
 	drawer.open();
 
-	drawer.opened.then( function () {
+	drawer.opened.then( () => {
 		// Hide the drawer if the user opens the editor again.
 		// HACK ignore memorized previous ve.activationComplete events.
 		suppressClose = true;
@@ -34,7 +34,7 @@ function displayDrawer() {
 		drawer.logImpression();
 	} );
 
-	drawer.closed.then( function () {
+	drawer.closed.then( () => {
 		mw.hook( 've.activationComplete' ).remove( closeDrawer );
 		drawer.logClose();
 	} );

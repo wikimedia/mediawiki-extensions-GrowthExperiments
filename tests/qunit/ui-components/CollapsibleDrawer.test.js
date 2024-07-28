@@ -7,7 +7,7 @@ QUnit.module( 'ui-components/CollapsibleDrawer.js', QUnit.newMwEnvironment() );
 const promiseKeys = [ 'opening', 'opened', 'closing', 'closed' ];
 const jQueryElementKeys = [ '$content', '$element' ];
 
-QUnit.test( 'constructor with intro content', function ( assert ) {
+QUnit.test( 'constructor with intro content', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
 		$introContent: $( '<div>' ).text( 'Intro' ),
@@ -23,7 +23,7 @@ QUnit.test( 'constructor with intro content', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'constructor without intro content', function ( assert ) {
+QUnit.test( 'constructor without intro content', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
 		headerText: 'Header'
@@ -38,7 +38,7 @@ QUnit.test( 'constructor without intro content', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'should resolve opening promise when the drawer is opening', function ( assert ) {
+QUnit.test( 'should resolve opening promise when the drawer is opening', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
 		headerText: 'Header'
@@ -48,7 +48,7 @@ QUnit.test( 'should resolve opening promise when the drawer is opening', functio
 	assert.strictEqual( collapsibleDrawer.opened.state(), 'pending' );
 } );
 
-QUnit.test( 'should resolve closing promise when the drawer is closing', function ( assert ) {
+QUnit.test( 'should resolve closing promise when the drawer is closing', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
 		headerText: 'Header'
@@ -59,7 +59,7 @@ QUnit.test( 'should resolve closing promise when the drawer is closing', functio
 	assert.strictEqual( collapsibleDrawer.closed.state(), 'pending' );
 } );
 
-QUnit.test( 'should resolve closing and closed promises when close is called when the drawer is collapsed', function ( assert ) {
+QUnit.test( 'should resolve closing and closed promises when close is called when the drawer is collapsed', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
 		headerText: 'Header'
@@ -69,7 +69,7 @@ QUnit.test( 'should resolve closing and closed promises when close is called whe
 	assert.strictEqual( collapsibleDrawer.closed.state(), 'resolved' );
 } );
 
-QUnit.test( 'should set isContentHidden to true when it\'s collapsed', function ( assert ) {
+QUnit.test( 'should set isContentHidden to true when it\'s collapsed', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
 		headerText: 'Header'
@@ -79,7 +79,7 @@ QUnit.test( 'should set isContentHidden to true when it\'s collapsed', function 
 	assert.strictEqual( collapsibleDrawer.chevronIcon.getIcon(), 'collapse' );
 } );
 
-QUnit.test( 'should set isContentHidden to false when it\'s expanded', function ( assert ) {
+QUnit.test( 'should set isContentHidden to false when it\'s expanded', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
 		headerText: 'Header'

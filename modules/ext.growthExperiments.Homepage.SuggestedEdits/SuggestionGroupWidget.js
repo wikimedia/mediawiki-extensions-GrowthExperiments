@@ -91,7 +91,7 @@ SuggestionGroupWidget.prototype.onKeydown = function ( e ) {
  */
 SuggestionGroupWidget.prototype.onSelectAllButtonClick = function () {
 	var newState = !this.isEverythingSelected();
-	this.getItems().forEach( function ( suggestion ) {
+	this.getItems().forEach( ( suggestion ) => {
 		suggestion.toggleSuggestion( newState );
 	} );
 	this.emit( newState ? 'selectAll' : 'removeAll' );
@@ -126,9 +126,7 @@ SuggestionGroupWidget.prototype.updateSelectAllButtonLabel = function () {
  * @return {boolean} All suggestions are selected
  */
 SuggestionGroupWidget.prototype.isEverythingSelected = function () {
-	return this.getItems().every( function ( suggestion ) {
-		return suggestion.confirmed;
-	} );
+	return this.getItems().every( ( suggestion ) => suggestion.confirmed );
 };
 
 /**
@@ -138,12 +136,8 @@ SuggestionGroupWidget.prototype.isEverythingSelected = function () {
  */
 SuggestionGroupWidget.prototype.getSelectedSuggestions = function () {
 	return this.getItems()
-		.filter( function ( suggestion ) {
-			return suggestion.confirmed;
-		} )
-		.map( function ( suggestion ) {
-			return suggestion.suggestionData;
-		} );
+		.filter( ( suggestion ) => suggestion.confirmed )
+		.map( ( suggestion ) => suggestion.suggestionData );
 };
 
 module.exports = SuggestionGroupWidget;

@@ -56,7 +56,7 @@ module.exports = ( function () {
 	 */
 	function createPanel( id, title, paragraphs, subtleParagraphIndices ) {
 		subtleParagraphIndices = subtleParagraphIndices || [];
-		var $content = $( '<div>' ).append( paragraphs.map( function ( paragraphText, index ) {
+		var $content = $( '<div>' ).append( paragraphs.map( ( paragraphText, index ) => {
 			var $p = $( '<p>' ).text( paragraphText );
 			if ( subtleParagraphIndices.indexOf( index ) !== -1 ) {
 				$p.addClass( 'addsectionimage-onboarding-content--color-subtle' );

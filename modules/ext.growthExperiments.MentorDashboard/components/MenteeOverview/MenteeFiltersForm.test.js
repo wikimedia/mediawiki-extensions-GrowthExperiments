@@ -7,7 +7,7 @@ describe( 'MenteeFiltersForm', () => {
 			global: {
 				mocks: {
 					$filters: {
-						convertNumber: jest.fn( ( x ) => `localised-${x}` )
+						convertNumber: jest.fn( ( x ) => `localised-${ x }` )
 					}
 				}
 			}

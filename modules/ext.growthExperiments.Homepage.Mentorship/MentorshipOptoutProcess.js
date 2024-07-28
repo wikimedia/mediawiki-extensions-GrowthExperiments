@@ -35,13 +35,13 @@
 		var process = this;
 
 		// HACK: For some reason, opening the window without a delay does not work as intended.
-		setTimeout( function () {
+		setTimeout( () => {
 			var reasonDialog = process.windowManager.openWindow( process.reasonDialog );
-			reasonDialog.closed.then( function () {
+			reasonDialog.closed.then( () => {
 				new mw.Api().postWithToken( 'csrf', {
 					action: 'growthsetmenteestatus',
 					state: 'optout'
-				} ).then( function () {
+				} ).then( () => {
 					history.replaceState( null, '', mw.util.getUrl( 'Special:Homepage' ) );
 					window.location.reload();
 				} );

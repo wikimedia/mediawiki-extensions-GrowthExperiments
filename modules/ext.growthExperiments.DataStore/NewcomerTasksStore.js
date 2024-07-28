@@ -321,7 +321,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		this.filters.getTopicsQuery(),
 		apiConfig );
 
-	this.apiPromise.then( function ( data ) {
+	this.apiPromise.then( ( data ) => {
 		var filterByDailyTaskLimitNotExceeded = function ( task ) {
 			var qualityGate = task.qualityGateConfig[ task.tasktype ];
 			if ( !qualityGate ) {
@@ -340,9 +340,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		this.currentTaskIndex = 0;
 		if ( this.preloadedFirstTask ) {
 			var preloadedTask = this.preloadedFirstTask;
-			updatedTaskQueue = updatedTaskQueue.filter( function ( task ) {
-				return task.title !== preloadedTask.title;
-			} );
+			updatedTaskQueue = updatedTaskQueue.filter( ( task ) => task.title !== preloadedTask.title );
 			updatedTaskQueue = [ preloadedTask ].concat( updatedTaskQueue );
 			this.preloadedFirstTask = null;
 		}
@@ -365,7 +363,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		this.synchronizeExtraData();
 		this.apiPromise = null;
 		promise.resolve();
-	}.bind( this ) ).catch( function ( error ) {
+	} ).catch( ( error ) => {
 		// Don't update the loading state if the promise is aborted (the next promise is still in progress)
 		if ( this.abortedPromise ) {
 			this.abortedPromise = false;
@@ -375,7 +373,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		this.setTaskQueueLoadingError( new Error( error ) );
 		this.apiPromise = null;
 		promise.reject( error );
-	}.bind( this ) );
+	} );
 	return promise;
 };
 
@@ -389,9 +387,9 @@ NewcomerTasksStore.prototype.showNextTask = function () {
 	this.currentTaskIndex += 1;
 	if ( this.isEndOfTaskQueue() ) {
 		this.onFetchedMoreTasks( true );
-		this.fetchMoreTasks( 'suggestedEditsModule.fetchMoreTasksOnNextCard' ).then( function () {
+		this.fetchMoreTasks( 'suggestedEditsModule.fetchMoreTasksOnNextCard' ).then( () => {
 			this.onFetchedMoreTasks( false );
-		}.bind( this ) );
+		} );
 	}
 	this.preloadExtraDataForUpcomingTask();
 	this.onTaskQueueChanged();
@@ -425,9 +423,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 	}
 
 	this.setTaskQueueLoading( true );
-	var existingPageIds = this.taskQueue.map( function ( task ) {
-			return task.pageId;
-		} ) || [],
+	var existingPageIds = this.taskQueue.map( ( task ) => task.pageId ) || [],
 		config = { context: context },
 		currentPageId = mw.config.get( 'wgArticleId' ),
 		promise = $.Deferred();
@@ -446,7 +442,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 		config
 	);
 
-	this.apiFetchMoreTasksPromise.done( function ( data ) {
+	this.apiFetchMoreTasksPromise.done( ( data ) => {
 		var newTasks = data.tasks || [];
 		// accumulate the number of tasks fetched
 		this.tasksFetchedCount += newTasks.length;
@@ -459,9 +455,9 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 		this.addToTaskQueue( newTasks );
 		this.preloadExtraDataForUpcomingTask();
 		promise.resolve();
-	}.bind( this ) ).always( function () {
+	} ).always( () => {
 		this.setTaskQueueLoading( false );
-	}.bind( this ) );
+	} );
 
 	return promise;
 };
@@ -488,32 +484,32 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 		return $.Deferred().resolve().promise();
 	}
 
-	var pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig ).fail( function () {
+	var pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig ).fail( () => {
 		// Set the PCS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
 		this.taskQueue[ this.currentTaskIndex ].description = null;
 		this.taskQueue[ this.currentTaskIndex ].thumbnailSource = null;
-	}.bind( this ) );
-	var aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData, apiConfig ).fail( function () {
+	} );
+	var aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData, apiConfig ).fail( () => {
 		// Set the AQS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
 		this.taskQueue[ this.currentTaskIndex ].pageviews = null;
-	}.bind( this ) );
+	} );
 
 	var preloaded = this.preloadCardImage( suggestedEditData );
 	if ( !preloaded ) {
-		pcsPromise.done( function () {
+		pcsPromise.done( () => {
 			this.preloadCardImage( suggestedEditData );
-		}.bind( this ) );
+		} );
 	}
 
-	$.when( pcsPromise, aqsPromise ).then( function () {
+	$.when( pcsPromise, aqsPromise ).then( () => {
 		promise.resolve();
-	} ).always( function () {
+	} ).always( () => {
 		if ( taskIndex === this.currentTaskIndex ) {
 			this.onCurrentTaskExtraDataChanged();
 		}
-	}.bind( this ) );
+	} );
 
 	return promise;
 };

@@ -6,7 +6,7 @@ const assert = require( 'assert' ),
 	isQuibbleUsingApache = process.env.QUIBBLE_APACHE || false,
 	AddLinkArticlePage = require( '../pageobjects/addlink.article.page' );
 
-describe( 'add link', function () {
+describe( 'add link', () => {
 
 	it( 'link inspector can be used to accept/reject links and save an article.', async function () {
 		const addlinkArticle = 'Douglas Adams';
@@ -50,15 +50,13 @@ describe( 'add link', function () {
 		// Get the revision ID of the change that was just made.
 		const requests = await browser.getRequests();
 		let savedRevId;
-		requests.forEach( function ( request ) {
+		requests.forEach( ( request ) => {
 			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-link-recommendation' ] ) {
 				savedRevId = request.response.body.visualeditoredit.newrevid;
 			}
 		} );
 
-		const username = await browser.execute( function () {
-			return mw.user.getName();
-		} );
+		const username = await browser.execute( () => mw.user.getName() );
 		let result;
 		result = await HomepagePage.waitUntilRecentChangesItemExists( 'newcomer task add link', addlinkArticle, username );
 		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );

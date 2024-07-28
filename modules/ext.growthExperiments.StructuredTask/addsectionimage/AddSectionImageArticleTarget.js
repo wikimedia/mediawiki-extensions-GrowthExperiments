@@ -109,7 +109,7 @@ AddSectionImageArticleTarget.prototype.replacePlaceholderWithImage = function ( 
 
 	surfaceModel.setReadOnly( false );
 	var recommendedImageNodes = surfaceModel.getDocument().getNodesByType( 'mwGeRecommendedImagePlaceholder' );
-	recommendedImageNodes.forEach( function ( node ) {
+	recommendedImageNodes.forEach( ( node ) => {
 		self.approvalTransaction = ve.dm.TransactionBuilder.static.newFromReplacement(
 			surfaceModel.getDocument(),
 			node.getOuterRange(),
@@ -234,9 +234,9 @@ AddSectionImageArticleTarget.prototype.scrollToTargetSection = function () {
 		duration: 'slow',
 		padding: this.surface.padding,
 		direction: 'y'
-	} ).done( function () {
+	} ).done( () => {
 		this.suppressSurfaceSelectEvents( false );
-	}.bind( this ) );
+	} );
 };
 
 /**

@@ -7,7 +7,7 @@ const NewcomerTasksStore = require( '../../../modules/ext.growthExperiments.Data
 
 QUnit.module( 'ext.growthExperiments.PostEdit/PostEditPanel.js', QUnit.newMwEnvironment() );
 
-QUnit.test( 'should generate a task URL with task token and log an impression when calling getCard', function ( assert ) {
+QUnit.test( 'should generate a task URL with task token and log an impression when calling getCard', ( assert ) => {
 	const task = {
 		title: 'Some title',
 		token: '1234',
@@ -49,7 +49,7 @@ QUnit.test( 'should generate a task URL with task token and log an impression wh
 
 } );
 
-QUnit.test( 'should log an impression when calling logImpression', function ( assert ) {
+QUnit.test( 'should log an impression when calling logImpression', ( assert ) => {
 	const task = {
 		title: 'Some title',
 		token: '1234',
@@ -95,7 +95,7 @@ QUnit.test( 'should log an impression when calling logImpression', function ( as
 
 } );
 
-QUnit.test( 'should log postedit-task-navigation when calling onPrevButtonClicked and onNextButtonClicked', function ( assert ) {
+QUnit.test( 'should log postedit-task-navigation when calling onPrevButtonClicked and onNextButtonClicked', ( assert ) => {
 	const helpPanelLogger = new HelpPanelLogger();
 	const newcomerTaskLogger = new NewcomerTaskLogger();
 	sinon.spy( helpPanelLogger, 'log' );
@@ -221,7 +221,7 @@ QUnit.test( 'should return alternate header text when link recommendation daily 
 	assert.true( spy.calledWith( 'growthexperiments-help-panel-postedit-subheader-link-recommendation' ) );
 } );
 
-QUnit.test( 'should return generic header text for image recommendation if the daily limit has not been reached', function ( assert ) {
+QUnit.test( 'should return generic header text for image recommendation if the daily limit has not been reached', ( assert ) => {
 	const acceptedSuggestionPanel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',

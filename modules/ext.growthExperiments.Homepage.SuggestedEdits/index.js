@@ -14,7 +14,7 @@
 	 * Set up the suggested edits module within the given container.
 	 *
 	 * @param {jQuery} $container
-	 * @return {jQuery.Promise} Status promise.
+	 * @return {jQuery.Promise|undefined} Status promise.
 	 */
 	function initSuggestedTasks( $container ) {
 		var initTime = mw.now(),
@@ -99,7 +99,7 @@
 	StartEditing.initialize( $suggestedEditsContainer, filtersStore.shouldUseTopicMatchMode );
 
 	// Try setup for mobile overlay mode
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( ( moduleName, $content ) => {
 		if ( moduleName === 'suggested-edits' ) {
 			initSuggestedTasks( $content );
 		}

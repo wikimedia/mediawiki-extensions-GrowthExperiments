@@ -78,7 +78,7 @@
 				},
 				classes: [ 'suggested-edits-task-explanation-info-button' ]
 			} );
-		popupButtonWidget.$button.on( 'mouseenter', function () {
+		popupButtonWidget.$button.on( 'mouseenter', () => {
 			if ( 'ontouchstart' in document.documentElement ) {
 				// On touch devices mouseenter might fire on a click, just before the
 				// click handler, which would then re-close the popup.
@@ -86,7 +86,7 @@
 			}
 			popupButtonWidget.getPopup().toggle( true );
 		} );
-		popupButtonWidget.getPopup().$element.on( 'mouseleave', function () {
+		popupButtonWidget.getPopup().$element.on( 'mouseleave', () => {
 			popupButtonWidget.getPopup().toggle( false );
 		} );
 		popupButtonWidget.getPopup().connect( this, {
@@ -102,7 +102,7 @@
 						className: 'suggested-edits-taskexplanation-drawer',
 						onBeforeHide: function ( innerDrawer ) {
 							// Wait for the CSS animation before removing.
-							setTimeout( function () {
+							setTimeout( () => {
 								innerDrawer.$el.remove();
 							}, 250 );
 						}
@@ -150,10 +150,10 @@
 			.append( $( '<a>' )
 				.text( mw.message( 'growthexperiments-homepage-suggestededits-tasktype-learn-more' ).text() )
 				.attr( 'href', mw.util.getUrl( this.taskTypeData.learnMoreLink ) )
-				.on( 'click', function () {
+				.on( 'click', () => {
 					this.logger.log( 'suggested-edits', this.mode, 'se-explanation-link-click',
 						{ taskType: this.taskType } );
-				}.bind( this ) )
+				} )
 			);
 	};
 

@@ -19,7 +19,7 @@
 		var mode = $container.find( '.growthexperiments-homepage-module-mentorship-optin' ).data( 'mode' );
 
 		var ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
-		ctaButton.on( 'click', function () {
+		ctaButton.on( 'click', () => {
 			OO.ui.confirm(
 				mw.msg( 'growthexperiments-homepage-mentorship-confirm-dialog-text' ),
 				{
@@ -37,12 +37,12 @@
 						}
 					]
 				}
-			).then( function ( confirmed ) {
+			).then( ( confirmed ) => {
 				if ( confirmed ) {
 					return new mw.Api().postWithToken( 'csrf', {
 						action: 'growthsetmenteestatus',
 						state: 'enabled'
-					} ).then( function () {
+					} ).then( () => {
 						homepageModuleLogger.log( 'mentorship', mode, 'mentorship-optin' );
 						history.replaceState( null, '', mw.util.getUrl( 'Special:Homepage' ) );
 						window.location.reload();

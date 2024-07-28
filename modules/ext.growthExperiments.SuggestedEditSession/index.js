@@ -314,7 +314,7 @@
 		// Do this only if VE's init module was already going to be loaded; we don't want to trigger
 		// it if it wasn't going to be loaded otherwise
 		if ( veState === 'loading' || veState === 'loaded' || veState === 'ready' ) {
-			mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( function () {
+			mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( () => {
 				mw.libs.ve.disableWelcomeDialog();
 				mw.libs.ve.disableEducationPopups();
 			} );
@@ -349,16 +349,16 @@
 				}
 			};
 
-		mw.trackSubscribe( 'event.EditAttemptStep', function ( _, data ) {
+		mw.trackSubscribe( 'event.EditAttemptStep', ( _, data ) => {
 			saveEditorChanges( self, data.editor_interface );
 		} );
 		// MobileFrontend has its own schema wrapper
-		mw.trackSubscribe( 'mf.schemaEditAttemptStep', function ( _, data ) {
+		mw.trackSubscribe( 'mf.schemaEditAttemptStep', ( _, data ) => {
 			saveEditorChanges( self, data.editor_interface );
 		} );
 		// WikiEditor doesn't use mw.track. But it doesn't load dynamically either so
 		// we can check it at page load time.
-		$( function () {
+		$( () => {
 			var uri = new mw.Uri();
 			// "submit" can be in the URL query if the user switched from VE to source
 			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
@@ -378,7 +378,7 @@
 				'a#ca-ve-edit[href], .mw-editsection a[href]';
 
 		mw.config.set( 'wgWMESchemaEditAttemptStepSamplingRate', 1 );
-		$( function () {
+		$( () => {
 			$( linkSelector ).each( function () {
 				var linkUrl = new mw.Uri( this.href );
 				linkUrl.extend( {
@@ -404,10 +404,10 @@
 			meta: 'growthnextsuggestedtasktype',
 			gnsttactivetasktype: this.taskType
 		};
-		return new mw.Api().post( apiParams ).then( function ( result ) {
+		return new mw.Api().post( apiParams ).then( ( result ) => {
 			this.nextSuggestedTaskType = result.query.growthnextsuggestedtasktype;
 			this.editCountByTaskType = result.query.editcountbytasktype;
-		}.bind( this ) );
+		} );
 	};
 
 	/**
@@ -456,44 +456,42 @@
 			this.postEditDialogIsOpen = true;
 			mw.hook( 'helpPanel.hideCta' ).fire();
 
-			var postEditDialogClosePromise = mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
-				return require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( function ( tryNewTaskResult ) {
-					// Prepare for follow-up edits by loading the next suggested task
-					// type based on the edit just now made.
-					if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
-						self.getNextSuggestedTaskType().then( function () {
-							self.save();
-						} );
-					}
-
-					if ( tryNewTaskResult.shown && tryNewTaskResult.closeData === undefined ) {
-						// The user aborted the try new task dialog, probably by clicking on the edit link.
-						// Do not show the post-edit dialog.
-						return $.Deferred().resolve().promise();
-					}
-
-					var postEditDialogLifecycle = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
-						tryNewTaskResult.closeData,
-						!tryNewTaskResult.shown
-					);
-					postEditDialogLifecycle.openPromise.done( function () {
-						self.postEditDialogNeedsToBeShown = false;
+			var postEditDialogClosePromise = mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( ( require ) => require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( ( tryNewTaskResult ) => {
+				// Prepare for follow-up edits by loading the next suggested task
+				// type based on the edit just now made.
+				if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
+					self.getNextSuggestedTaskType().then( () => {
 						self.save();
-						if ( self.editorInterface !== 'visualeditor' ) {
-							// VisualEditor edits will receive change tags through
-							// ve.init.target.saveFields and VE's PostSave hook implementation
-							// in GrowthExperiments.
-							// For non-VisualEditor-edits, we'll query the revision that was just
-							// saved, and send a POST to the newcomertask/complete endpoint to apply
-							// the relevant change tags.
-							self.tagNonVisualEditorEditWithGrowthChangeTags( self.taskType );
-						}
 					} );
-					return postEditDialogLifecycle.closePromise;
-				} );
-			} );
+				}
 
-			postEditDialogClosePromise.done( function () {
+				if ( tryNewTaskResult.shown && tryNewTaskResult.closeData === undefined ) {
+					// The user aborted the try new task dialog, probably by clicking on the edit link.
+					// Do not show the post-edit dialog.
+					return $.Deferred().resolve().promise();
+				}
+
+				var postEditDialogLifecycle = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
+					tryNewTaskResult.closeData,
+					!tryNewTaskResult.shown
+				);
+				postEditDialogLifecycle.openPromise.done( () => {
+					self.postEditDialogNeedsToBeShown = false;
+					self.save();
+					if ( self.editorInterface !== 'visualeditor' ) {
+						// VisualEditor edits will receive change tags through
+						// ve.init.target.saveFields and VE's PostSave hook implementation
+						// in GrowthExperiments.
+						// For non-VisualEditor-edits, we'll query the revision that was just
+						// saved, and send a POST to the newcomertask/complete endpoint to apply
+						// the relevant change tags.
+						self.tagNonVisualEditorEditWithGrowthChangeTags( self.taskType );
+					}
+				} );
+				return postEditDialogLifecycle.closePromise;
+			} ) );
+
+			postEditDialogClosePromise.done( () => {
 				// Make sure we'll show the dialog again if the page is edited again in VE
 				// without a page reload.
 				self.postEditDialogIsOpen = false;
@@ -521,7 +519,7 @@
 			rvlimit: 1,
 			rvuser: mw.config.get( 'wgUserName' )
 		} );
-		return revIdPromise.done( function ( data ) {
+		return revIdPromise.done( ( data ) => {
 			// We didn't have the new revision ID already, so get it from the API response.
 			if ( !this.newRevId && data && data.query && data.query.pages ) {
 				var response = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
@@ -533,7 +531,7 @@
 			}
 			var apiUrl = '/growthexperiments/v0/newcomertask/complete';
 			return new mw.Rest().post( apiUrl + '?' + $.param( { taskTypeId: taskType, revId: this.newRevId } ) )
-				.fail( function ( err, errObject ) {
+				.fail( ( err, errObject ) => {
 					mw.log.error( errObject );
 					var errMessage = errObject.exception;
 					if ( errObject.xhr &&
@@ -544,7 +542,7 @@
 					}
 					mw.errorLogger.logError( new Error( errMessage ), 'error.growthexperiments' );
 				} );
-		}.bind( this ) );
+		} );
 	};
 
 	/**
@@ -595,7 +593,7 @@
 
 		// For unstructured tasks, do this even if we have just shown the dialog above.
 		// This is important when the user edits again right after dismissing the dialog.
-		mw.hook( 'postEdit' ).add( function () {
+		mw.hook( 'postEdit' ).add( () => {
 			self.setTaskState( states.SAVED );
 			self.showPostEditDialog( { resetSession: true } );
 		} );
@@ -605,7 +603,7 @@
 		 * @param {number|null} [data.newRevId] ID of the newly created revision, or null if it was
 		 *  a null edit.
 		 */
-		mw.hook( 'postEditMobile' ).add( function ( data ) {
+		mw.hook( 'postEditMobile' ).add( ( data ) => {
 			self.setTaskState( data.newRevId ? states.SAVED : states.SUBMITTED );
 			self.showPostEditDialog( {
 				resetSession: true,
@@ -718,7 +716,7 @@
 	 * Structured tasks already override VisualEditor's ArticleTarget and pass necessary metadata,
 	 * so we don't do anything for those.
 	 */
-	mw.hook( 've.activationComplete' ).add( function () {
+	mw.hook( 've.activationComplete' ).add( () => {
 		// HACK: Some VE edits end up with editorInterface set to null;
 		// set it here to avoid this.
 		ge.suggestedEditSession.editorInterface = ge.suggestedEditSession.editorInterface || 'visualeditor';

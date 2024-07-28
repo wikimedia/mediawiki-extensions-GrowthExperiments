@@ -212,13 +212,15 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 	} else {
 		this.$content.removeAttr( 'tabindex' );
 	}
-	data = $.extend( {
-		actions: this.constructor.static.actions.filter( function ( action ) {
-			// If activateWhenDone is true, remove 'done'; otherwise remove 'activate'
-			return action.action !== ( dialog.activateWhenDone ? 'done' : 'activate' ) &&
+	data = Object.assign( {
+		actions: this.constructor.static.actions.filter(
+			( action ) => (
+				// If activateWhenDone is true, remove 'done'; otherwise remove 'activate'
+				action.action !== ( dialog.activateWhenDone ? 'done' : 'activate' ) &&
 				// Remove 'close' in non-modal mode
-				( dialog.getManager().modal || action.action !== 'close' );
-		} )
+				( dialog.getManager().modal || action.action !== 'close' )
+			)
+		)
 	}, data );
 	return StartEditingDialog.super.prototype.getSetupProcess
 		.call( this, data )
@@ -242,7 +244,7 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 	this.filtersStore.setSelectedTaskTypes( taskTypes );
 	this.filtersStore.savePreferences();
 
-	this.tasksStore.fetchTasks( 'startEditingDialog' ).then( function () {
+	this.tasksStore.fetchTasks( 'startEditingDialog' ).then( () => {
 		var homepageModulesConfig = mw.config.get( 'homepagemodules' ),
 			taskCount = this.tasksStore.getTaskCount();
 		this.articleCounter.setCount( Number( taskCount ) );
@@ -250,7 +252,7 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 			homepageModulesConfig[ 'suggested-edits' ][ 'task-preview' ] = this.tasksStore.getCurrentTask();
 			homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ] = taskCount;
 		}
-	}.bind( this ) );
+	} );
 };
 
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
@@ -314,11 +316,11 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 					logData.taskTypes = this.taskTypeSelector.getSelected();
 				}
 				return new mw.Api().saveOptions( settings )
-					.then( function () {
+					.then( () => {
 						mw.user.options.set( settings );
 						this.logger.log( this.module, this.mode, 'se-activate', logData );
 						return this.setupSuggestedEditsModule();
-					}.bind( this ) ).then( function () {
+					} ).then( () => {
 						dialog.close( { action: 'activate' } );
 					} );
 			}
@@ -632,7 +634,7 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 		}, ALL_TASK_TYPES )
 			.connect( this, {
 				select: function ( topics ) {
-					this.actions.get( { actions: 'activate' } ).forEach( function ( button ) {
+					this.actions.get( { actions: 'activate' } ).forEach( ( button ) => {
 						button.setDisabled( topics.length === 0 );
 					} );
 					this.updateMatchCount();
@@ -650,7 +652,7 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 };
 
 StartEditingDialog.prototype.buildDifficultyLegend = function () {
-	return [ 'easy', 'medium', 'hard' ].map( function ( level ) {
+	return [ 'easy', 'medium', 'hard' ].map( ( level ) => {
 		var classPrefix = 'mw-ge-startediting-dialog-difficulty-',
 			labelMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
 				level + '-label',
@@ -763,7 +765,7 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		this.markSuggestedEditsModuleAsActivated( $suggestedEditsModule );
 	}
 
-	return mw.loader.using( moduleDependencies ).then( function () {
+	return mw.loader.using( moduleDependencies ).then( () => {
 		if ( this.mode === 'mobile-overlay' ) {
 			// Replace the current URL, so that when the user exits the overlay or hits the
 			// back button, they go to the main page. If we used router.navigate() here,
@@ -773,7 +775,7 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		} else if ( this.mode === 'mobile-summary' ) {
 			router.navigate( '#/homepage/suggested-edits' );
 		}
-	}.bind( this ) );
+	} );
 };
 
 module.exports = StartEditingDialog;

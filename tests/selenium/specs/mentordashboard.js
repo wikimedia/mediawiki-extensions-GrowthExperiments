@@ -3,19 +3,19 @@
 const assert = require( 'assert' ),
 	MentorDashboardPage = require( '../pageobjects/mentordashboard.page' );
 
-describe( 'Special:MentorDashboard', function () {
+describe( 'Special:MentorDashboard', () => {
 
-	it( 'Does not trigger errors when visited', async function () {
+	it( 'Does not trigger errors when visited', async () => {
 		await MentorDashboardPage.open();
 		assert.ok( true );
 	} );
 
-	it( 'Prompts to enroll as a mentor', async function () {
+	it( 'Prompts to enroll as a mentor', async () => {
 		await MentorDashboardPage.open();
 		await MentorDashboardPage.enrollButton.waitForExist();
 	} );
 
-	it( 'Allows enrolling as a mentor', async function () {
+	it( 'Allows enrolling as a mentor', async () => {
 		await MentorDashboardPage.open();
 		await MentorDashboardPage.enroll();
 		await MentorDashboardPage.awaitConfirmation();

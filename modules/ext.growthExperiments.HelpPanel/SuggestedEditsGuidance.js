@@ -19,7 +19,7 @@
 		StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' );
 
 	if ( StructuredTaskPreEdit.shouldInitializeStructuredTask() ) {
-		StructuredTaskPreEdit.checkTaskData().then( function () {
+		StructuredTaskPreEdit.checkTaskData().then( () => {
 			if ( !mw.config.get( 'wgIsProbablyEditable' ) ) {
 				// article is protected, show "no suggestions found" dialog
 				throw new Error( 'Page is protected, abandoning structured task' );
@@ -39,7 +39,7 @@
 				sourceEditingLinkWrapper.remove();
 			}
 			StructuredTaskPreEdit.loadEditModule();
-		} ).catch( function ( error, shouldBeLogged ) {
+		} ).catch( ( error, shouldBeLogged ) => {
 			StructuredTaskPreEdit.showErrorDialogOnFailure( error, shouldBeLogged );
 		} );
 	}

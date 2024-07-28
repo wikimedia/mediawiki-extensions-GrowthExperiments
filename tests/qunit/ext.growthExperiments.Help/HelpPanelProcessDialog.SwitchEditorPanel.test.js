@@ -4,7 +4,7 @@ let SwitchEditorPanel;
 
 QUnit.module( 'ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.js', QUnit.newMwEnvironment() );
 
-QUnit.test( 'constructor', function ( assert ) {
+QUnit.test( 'constructor', ( assert ) => {
 	SwitchEditorPanel = require( pathToSwitchEditorPanel );
 
 	const switchEditorPanel = new SwitchEditorPanel( {

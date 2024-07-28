@@ -8,31 +8,57 @@ const Page = require( 'wdio-mediawiki/Page' ),
 
 class AddLinkArticlePage extends Page {
 
-	get onboardingDialog() { return $( '.structuredtask-onboarding-dialog' ); }
+	get onboardingDialog() {
+		return $( '.structuredtask-onboarding-dialog' );
+	}
 
-	get linkInspector() { return $( '.mw-ge-recommendedLinkToolbarDialog' ); }
+	get linkInspector() {
+		return $( '.mw-ge-recommendedLinkToolbarDialog' );
+	}
 
-	get yesButton() { return $( '.mw-ge-recommendedLinkToolbarDialog-buttons-yes' ); }
+	get yesButton() {
+		return $( '.mw-ge-recommendedLinkToolbarDialog-buttons-yes' );
+	}
 
-	get noButton() { return $( '.mw-ge-recommendedLinkToolbarDialog-buttons-no' ); }
+	get noButton() {
+		return $( '.mw-ge-recommendedLinkToolbarDialog-buttons-no' );
+	}
 
-	get nextButton() { return $( '.mw-ge-recommendedLinkToolbarDialog-buttons-next' ); }
+	get nextButton() {
+		return $( '.mw-ge-recommendedLinkToolbarDialog-buttons-next' );
+	}
 
-	get rejectionDialogDoneButton() { return $( '.mw-ge-recommendedLinkRejectionDialog .oo-ui-messageDialog-actions' ); }
+	get rejectionDialogDoneButton() {
+		return $( '.mw-ge-recommendedLinkRejectionDialog .oo-ui-messageDialog-actions' );
+	}
 
-	get publishButton() { return $( '.oo-ui-tool-name-machineSuggestionsSave ' ); }
+	get publishButton() {
+		return $( '.oo-ui-tool-name-machineSuggestionsSave ' );
+	}
 
-	get saveDialog() { return $( '.ge-structuredTask-mwSaveDialog' ); }
+	get saveDialog() {
+		return $( '.ge-structuredTask-mwSaveDialog' );
+	}
 
-	get saveChangesButton() { return $( '.ge-structuredTask-mwSaveDialog .oo-ui-processDialog-actions-primary' ); }
+	get saveChangesButton() {
+		return $( '.ge-structuredTask-mwSaveDialog .oo-ui-processDialog-actions-primary' );
+	}
 
-	get progressTitle() { return $( '.mw-ge-recommendedLinkToolbarDialog-progress-title' ); }
+	get progressTitle() {
+		return $( '.mw-ge-recommendedLinkToolbarDialog-progress-title' );
+	}
 
-	get skipOnboardingDialogButton() { return $( '.structuredtask-onboarding-dialog-skip-button' ); }
+	get skipOnboardingDialogButton() {
+		return $( '.structuredtask-onboarding-dialog-skip-button' );
+	}
 
-	get postEditDialogSmallTaskCard() { return $( '.mw-ge-postEditDrawer .mw-ge-small-task-card' ); }
+	get postEditDialogSmallTaskCard() {
+		return $( '.mw-ge-postEditDrawer .mw-ge-small-task-card' );
+	}
 
-	get postEditDialogSmallTaskCardTitle() { return $( '.mw-ge-small-task-card-title' ); }
+	get postEditDialogSmallTaskCardTitle() {
+		return $( '.mw-ge-small-task-card-title' );
+	}
 
 	async waitForLinkInspector() {
 		await this.waitForDisplayedAndClickable( this.linkInspector );
@@ -63,9 +89,7 @@ class AddLinkArticlePage extends Page {
 	}
 
 	async waitForProgressToNextSuggestion( oldProgress ) {
-		await browser.waitUntil( async () => {
-			return await this.progressTitle.getText() !== oldProgress;
-		} );
+		await browser.waitUntil( async () => await this.progressTitle.getText() !== oldProgress );
 	}
 
 	async saveChangesToArticle() {
@@ -82,9 +106,7 @@ class AddLinkArticlePage extends Page {
 	async waitForPostEditNextSuggestedTask() {
 		await this.waitForDisplayedAndClickable( this.postEditDialogSmallTaskCard );
 		await this.waitForDisplayedAndClickable( this.postEditDialogSmallTaskCardTitle );
-		await browser.waitUntil( async () => {
-			return await this.postEditDialogSmallTaskCardTitle.getText() === 'The Hitchhiker\'s Guide to the Galaxy';
-		} );
+		await browser.waitUntil( async () => await this.postEditDialogSmallTaskCardTitle.getText() === 'The Hitchhiker\'s Guide to the Galaxy' );
 	}
 
 	async waitForDisplayedAndClickable( element ) {

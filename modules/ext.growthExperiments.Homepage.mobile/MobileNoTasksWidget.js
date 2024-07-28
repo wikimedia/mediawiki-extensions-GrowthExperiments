@@ -3,7 +3,6 @@
  * Shown in the suggested edits module when there is no task preview
  * available
  *
- *
  * @class mw.libs.ge.MobileNoTasksWidget
  * @extends OO.ui.Widget
  * @constructor
@@ -22,19 +21,19 @@ function MobileNoTasksWidget() {
 	const footerText = mw.message( 'growthexperiments-homepage-suggestededits-mobilesummary-footer' ).text();
 
 	this.$widgetWrapper = new OO.ui.Element( {
-		classes: [ `${baseClass}__main` ],
+		classes: [ `${ baseClass }__main` ],
 		content: [
 			new OO.ui.Element( {
-				classes: [ `${baseClass}__icon` ]
+				classes: [ `${ baseClass }__icon` ]
 			} ),
 			new OO.ui.Element( {
 				content: [
 					new OO.ui.Element( {
-						classes: [ `${baseClass}__title` ],
+						classes: [ `${ baseClass }__title` ],
 						text: titleText
 					} ),
 					new OO.ui.Element( {
-						classes: [ `${baseClass}__subtitle` ],
+						classes: [ `${ baseClass }__subtitle` ],
 						text: subtitleText
 					} )
 				]
@@ -43,7 +42,7 @@ function MobileNoTasksWidget() {
 	} );
 
 	this.$footer = new OO.ui.Element( {
-		classes: [ `${baseClass}__footer` ],
+		classes: [ `${ baseClass }__footer` ],
 		text: footerText
 	} );
 

@@ -56,14 +56,14 @@ StructuredTaskOnboardingDialog.prototype.initialize = function () {
 		isHorizontal: true
 	} );
 
-	this.swipeCard.setToStartHandler( function () {
+	this.swipeCard.setToStartHandler( () => {
 		this.logNavigation( 'next', true );
 		this.showNextPanel();
-	}.bind( this ) );
-	this.swipeCard.setToEndHandler( function () {
+	} );
+	this.swipeCard.setToEndHandler( () => {
 		this.logNavigation( 'back', true );
 		this.showPrevPanel();
-	}.bind( this ) );
+	} );
 };
 
 /** @inheritdoc */
@@ -74,9 +74,9 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 	} );
 
 	if ( this.prefName ) {
-		this.checkBoxInput.on( 'change', function ( isSelected ) {
+		this.checkBoxInput.on( 'change', ( isSelected ) => {
 			new mw.Api().saveOption( this.prefName, isSelected ? '1' : '0' );
-		}.bind( this ) );
+		} );
 	}
 
 	this.$dismissField = new OO.ui.FieldLayout( this.checkBoxInput, {
@@ -91,10 +91,10 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 		invisibleLabel: true,
 		classes: [ 'structuredtask-onboarding-dialog-footer-widget' ]
 	} ).$element;
-	this.$prevButton.on( 'click', function () {
+	this.$prevButton.on( 'click', () => {
 		this.logNavigation( 'back' );
 		this.showPrevPanel();
-	}.bind( this ) );
+	} );
 
 	this.$nextButton = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-label-next' ).text(),
@@ -103,19 +103,19 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 		flags: [ 'progressive', 'primary' ],
 		classes: [ 'structuredtask-onboarding-dialog-footer-widget', 'align-end' ]
 	} ).$element;
-	this.$nextButton.on( 'click', function () {
+	this.$nextButton.on( 'click', () => {
 		this.logNavigation( 'next' );
 		this.showNextPanel();
-	}.bind( this ) );
+	} );
 
 	this.$getStartedButton = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-get-started-button' ).text(),
 		flags: [ 'progressive', 'primary' ],
 		classes: [ 'structuredtask-onboarding-dialog-footer-widget', 'align-end' ]
 	} ).$element;
-	this.$getStartedButton.on( 'click', function () {
+	this.$getStartedButton.on( 'click', () => {
 		this.closeDialog( 'get_started' );
-	}.bind( this ) );
+	} );
 
 	return new OO.ui.PanelLayout( {
 		padded: true,
@@ -143,7 +143,7 @@ StructuredTaskOnboardingDialog.prototype.getActionProcess = function ( action ) 
 /** @inheritdoc */
 StructuredTaskOnboardingDialog.prototype.getTeardownProcess = function ( data ) {
 	return StructuredTaskOnboardingDialog.super.prototype.getTeardownProcess.call( this, data )
-		.next( function () {
+		.next( () => {
 			// The window is now closed.
 			mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).fire();
 		}, this );
@@ -164,9 +164,9 @@ StructuredTaskOnboardingDialog.prototype.updateViewState = function () {
 		'.structuredtask-onboarding-content-link'
 	);
 	if ( $learnMoreLink ) {
-		$learnMoreLink.on( 'click', function () {
+		$learnMoreLink.on( 'click', () => {
 			this.logger.log( 'link_click', this.getLogActionData(), this.getLogMetadata() );
-		}.bind( this ) );
+		} );
 	}
 
 	if ( this.currentPanelIndex === this.panels.length - 1 ) {

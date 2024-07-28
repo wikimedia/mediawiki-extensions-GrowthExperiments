@@ -17,7 +17,7 @@ const renderComponent = ( props, slots ) => {
 		global: {
 			mocks: {
 				$i18n: vi.fn( ( x, ...params ) => ( {
-					text: vi.fn( () => `${params.join( ' of ' )}` )
+					text: vi.fn( () => `${ params.join( ' of ' ) }` )
 				} ) )
 			}
 		}
@@ -127,8 +127,7 @@ describe( 'Onboarding dialog', () => {
 		);
 		const buttonNext = wrapper.get( '[aria-label="next"]' );
 		buttonNext.trigger( 'click' )
-			.then( () =>
-				expect( wrapper.text() ).to.contain( 'This is step 2' ) );
+			.then( () => expect( wrapper.text() ).to.contain( 'This is step 2' ) );
 
 	} );
 
@@ -139,11 +138,9 @@ describe( 'Onboarding dialog', () => {
 		);
 		const buttonNext = wrapper.get( '[aria-label="previous"]' );
 		buttonNext.trigger( 'click' )
-			.then( () =>
-				expect( wrapper.text() ).not.to.contain( 'This is step 2' ) )
+			.then( () => expect( wrapper.text() ).not.to.contain( 'This is step 2' ) )
 
-			.then( () =>
-				expect( wrapper.text() ).to.contain( 'This is step 1' ) );
+			.then( () => expect( wrapper.text() ).to.contain( 'This is step 1' ) );
 
 	} );
 

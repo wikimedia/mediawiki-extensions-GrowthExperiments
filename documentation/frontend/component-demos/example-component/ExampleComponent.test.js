@@ -4,13 +4,11 @@ import { createTestingPinia } from '@pinia/testing';
 import { CdxButton } from '@wikimedia/codex';
 import ExampleComponent from './ExampleComponent.vue';
 
-const renderComponent = () => {
-	return mount( ExampleComponent, {
-		global: {
-			plugins: [ createTestingPinia( { stubActions: false } ) ]
-		}
-	} );
-};
+const renderComponent = () => mount( ExampleComponent, {
+	global: {
+		plugins: [ createTestingPinia( { stubActions: false } ) ]
+	}
+} );
 
 describe( 'ExampleComponent', () => {
 	it( 'renders correctly', () => {

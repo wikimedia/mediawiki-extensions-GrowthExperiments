@@ -92,18 +92,18 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 	windows.push( this.taskTypeFiltersDialog );
 
 	this.taskTypeFiltersDialog.$element
-		.on( 'click', '.suggested-edits-create-article-additional-msg a', function () {
+		.on( 'click', '.suggested-edits-create-article-additional-msg a', () => {
 			logger.log( 'suggested-edits', config.mode, 'link-click',
 				{ linkId: 'se-create-info' } );
 		} );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( 'body' ).append( windowManager.$element );
 	windowManager.addWindows( windows );
-	this.difficultyFilterButtonWidget.on( 'click', function () {
+	this.difficultyFilterButtonWidget.on( 'click', () => {
 		var lifecycle = windowManager.openWindow( this.taskTypeFiltersDialog );
 		logger.log( 'suggested-edits', config.mode, 'se-taskfilter-open' );
 		this.emit( 'open' );
-		lifecycle.closing.done( function ( data ) {
+		lifecycle.closing.done( ( data ) => {
 			if ( data && data.action === 'done' ) {
 				logger.log( 'suggested-edits', config.mode, 'se-taskfilter-done',
 					{ taskTypes: this.taskTypeFiltersDialog.getEnabledFilters() } );
@@ -111,11 +111,11 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 				logger.log( 'suggested-edits', config.mode, 'se-taskfilter-cancel',
 					{ taskTypes: this.taskTypeFiltersDialog.getEnabledFilters() } );
 			}
-		}.bind( this ) );
-	}.bind( this ) );
+		} );
+	} );
 
 	if ( this.topicFilterButtonWidget ) {
-		this.topicFilterButtonWidget.on( 'click', function () {
+		this.topicFilterButtonWidget.on( 'click', () => {
 			var lifecycle = windowManager.openWindow( this.topicFiltersDialog );
 			logger.log( 'suggested-edits', config.mode, 'se-topicfilter-open', {
 				topics: this.topicFiltersDialog.getEnabledFilters().getTopics()
@@ -124,7 +124,7 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 				logger.log( 'suggested-edits', config.mode, 'se-topicmatchmode-impression' );
 			}
 			this.emit( 'open' );
-			lifecycle.closing.done( function ( data ) {
+			lifecycle.closing.done( ( data ) => {
 				var closeExtraData = {
 					topics: this.topicFiltersDialog.getEnabledFilters().getTopics()
 				};
@@ -137,25 +137,25 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 				} else {
 					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-cancel', closeExtraData );
 				}
-			}.bind( this ) );
-		}.bind( this ) );
+			} );
+		} );
 	}
 
-	FiltersButtonGroupWidget.super.call( this, $.extend( {}, config, {
+	FiltersButtonGroupWidget.super.call( this, Object.assign( {}, config, {
 		items: buttonWidgets
 	} ) );
 
-	this.filtersStore.on( CONSTANTS.EVENTS.FILTER_SELECTION_CHANGED, function () {
+	this.filtersStore.on( CONSTANTS.EVENTS.FILTER_SELECTION_CHANGED, () => {
 		this.taskTypeFiltersDialog.taskTypeSelector.setSelected( this.filtersStore.getSelectedTaskTypes() );
 		this.topicFiltersDialog.topicSelector.setFilters( this.filtersStore.getTopicsQuery() );
-	}.bind( this ) );
+	} );
 
-	rootStore.newcomerTasks.on( CONSTANTS.EVENTS.TASK_QUEUE_LOADING, function ( isLoading ) {
+	rootStore.newcomerTasks.on( CONSTANTS.EVENTS.TASK_QUEUE_LOADING, ( isLoading ) => {
 		this.taskTypeFiltersDialog.updateLoadingState( { isLoading: isLoading, count: rootStore.newcomerTasks.getTaskCount() } );
 		if ( this.topicFiltersDialog ) {
 			this.topicFiltersDialog.updateLoadingState( { isLoading: isLoading, count: rootStore.newcomerTasks.getTaskCount() } );
 		}
-	}.bind( this ) );
+	} );
 }
 
 OO.inheritClass( FiltersButtonGroupWidget, OO.ui.ButtonGroupWidget );
@@ -219,7 +219,7 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 				progressive: !this.filtersStore.preferences.topicFilters
 			} );
 		} else {
-			topicSearch.getTopics().forEach( function ( topic ) {
+			topicSearch.getTopics().forEach( ( topic ) => {
 				if ( TOPIC_DATA[ topic ] && TOPIC_DATA[ topic ].name ) {
 					topicMessages.push( TOPIC_DATA[ topic ].name );
 				}
@@ -252,10 +252,10 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 		return;
 	}
 
-	taskTypeSearch.forEach( function ( taskType ) {
+	taskTypeSearch.forEach( ( taskType ) => {
 		levels[ ALL_TASK_TYPES[ taskType ].difficulty ] = true;
 	} );
-	[ 'easy', 'medium', 'hard' ].forEach( function ( level ) {
+	[ 'easy', 'medium', 'hard' ].forEach( ( level ) => {
 		if ( !levels[ level ] ) {
 			return;
 		}
@@ -268,7 +268,7 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 		messages.push( label );
 		// Icons: difficulty-easy, difficulty-medium, difficulty-hard
 		this.difficultyFilterButtonWidget.setIcon( 'difficulty-' + level );
-	}.bind( this ) );
+	} );
 	if ( messages.length > 1 ) {
 		this.difficultyFilterButtonWidget.setIcon( 'difficulty-outline' );
 	}

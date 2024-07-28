@@ -43,7 +43,7 @@
 	 * @param {Object} guider The guider configuration object
 	 */
 	function setupCloseButtonLogging( guider ) {
-		guider.elem.find( '.guidedtour-end-button, .guidedtour-next-button' ).click( function () {
+		guider.elem.find( '.guidedtour-end-button, .guidedtour-next-button' ).click( () => {
 			homepageModuleLogger.log( 'generic', 'desktop', 'welcome-close', { type: 'button' } );
 		} );
 	}

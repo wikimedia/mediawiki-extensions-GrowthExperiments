@@ -31,9 +31,9 @@ describe( 'GET quickstarttips', () => {
 	skins.forEach( ( skin ) => {
 		editors.forEach( ( editor ) => {
 			taskTypeIds.forEach( ( taskTypeId ) => {
-				it( `should get tips for ${skin} / ${editor} / ${taskTypeId} without an HTTP error`, async () => {
+				it( `should get tips for ${ skin } / ${ editor } / ${ taskTypeId } without an HTTP error`, async () => {
 					const { status: sourceStatus, body: sourceBody, error: error } =
-						await client.get( `/${skin}/${editor}/${taskTypeId}/en` );
+						await client.get( `/${ skin }/${ editor }/${ taskTypeId }/en` );
 
 					function expectedNumberOfTips( innerTaskTypeId ) {
 						return innerTaskTypeId === 'references' ? 7 : 6;

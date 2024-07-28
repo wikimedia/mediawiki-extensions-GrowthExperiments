@@ -98,7 +98,7 @@ CERecommendedLinkAnnotation.prototype.attachContents = function () {
 
 	if ( shouldAnimateIcons ) {
 		// Animate in the new icon shortly after the prior state is shown
-		setTimeout( function () {
+		setTimeout( () => {
 			$fromIcon.removeClass( 'current' ).addClass( isDeselect ? 'animate-from-bottom' : 'animate-from-top' );
 			$toIcon.removeClass( 'animate-from-bottom animate-from-top' ).addClass( 'current' );
 			AnnotationAnimation.clearLastState();

@@ -9,7 +9,7 @@ const getInitialSettings = () => {
 		);
 	} catch ( err ) {
 		if ( err instanceof SyntaxError ) {
-			mw.log.warn( `Failed parsing JSON stored preference ${PERSONALIZED_PRAISE_SETTINGS_PREF}` );
+			mw.log.warn( `Failed parsing JSON stored preference ${ PERSONALIZED_PRAISE_SETTINGS_PREF }` );
 		} else {
 			mw.log.error( err );
 		}

@@ -1,27 +1,25 @@
 const { mount } = require( '@vue/test-utils' );
 const TrendChart = require( './TrendChart.vue' );
 
-const renderComponent = ( { props = {}, provide = {} } = {} ) => {
-	return mount( TrendChart, {
-		props,
-		global: {
-			stubs: {
-				CSparkline: true
-			},
-			provide: Object.assign( {
-				RENDER_MODE: 'desktop',
-				RELEVANT_USER_USERNAME: 'Alice',
-				RENDER_IN_THIRD_PERSON: false,
-				BROWSER_HAS_INTL: true
-			}, provide ),
-			mocks: {
-				$filters: {
-					convertNumber: jest.fn( ( x ) => `${x}` )
-				}
+const renderComponent = ( { props = {}, provide = {} } = {} ) => mount( TrendChart, {
+	props,
+	global: {
+		stubs: {
+			CSparkline: true
+		},
+		provide: Object.assign( {
+			RENDER_MODE: 'desktop',
+			RELEVANT_USER_USERNAME: 'Alice',
+			RENDER_IN_THIRD_PERSON: false,
+			BROWSER_HAS_INTL: true
+		}, provide ),
+		mocks: {
+			$filters: {
+				convertNumber: jest.fn( ( x ) => `${ x }` )
 			}
 		}
-	} );
-};
+	}
+} );
 
 describe( 'TrendChart', () => {
 	it( 'shows pageviews in short number format', () => {

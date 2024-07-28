@@ -1,12 +1,10 @@
 const { mount } = require( '@vue/test-utils' );
 const CPopper = require( './CPopper.vue' );
 
-const renderComponent = ( { props, slots = { default: 'Some text' } } ) => {
-	return mount( CPopper, {
-		props,
-		slots
-	} );
-};
+const renderComponent = ( { props, slots = { default: 'Some text' } } ) => mount( CPopper, {
+	props,
+	slots
+} );
 
 /**
  * Mock the getBoundingClientRect and left
@@ -18,14 +16,11 @@ const renderComponent = ( { props, slots = { default: 'Some text' } } ) => {
  * with left and right properties.
  * @return {{ clientHeight: number, left: number, getBoundingClientRect: Function }}
  */
-const triggerRefMock = ( clientHeight, left, boundingRect ) => {
-
-	return {
-		clientHeight,
-		left,
-		getBoundingClientRect: jest.fn( () => boundingRect )
-	};
-};
+const triggerRefMock = ( clientHeight, left, boundingRect ) => ( {
+	clientHeight,
+	left,
+	getBoundingClientRect: jest.fn( () => boundingRect )
+} );
 
 describe( 'CPopper', () => {
 	it( 'should render without a close button', () => {

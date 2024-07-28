@@ -17,7 +17,7 @@
 			"files": [ "vite.components.config.js", "vitest.config.js" ],
 			"extends": [ "wikimedia/selenium", "wikimedia/language/es2020" ],
 			"rules": {
-				"node/no-missing-require": [
+				"n/no-missing-require": [
 					"error",
 					{ "allowModules": [ "vite", "@vitejs/plugin-vue" ] }
 				]

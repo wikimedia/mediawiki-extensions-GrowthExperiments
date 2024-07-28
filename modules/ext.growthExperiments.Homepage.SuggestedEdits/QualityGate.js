@@ -60,7 +60,7 @@ function QualityGate( config ) {
  * @return {boolean} Whether the task passed the gates.
  */
 QualityGate.prototype.checkAll = function ( taskType ) {
-	return this.config.gates.every( function ( gate ) {
+	return this.config.gates.every( ( gate ) => {
 		if ( this.checkHandlers[ taskType ][ gate ] ) {
 			if ( !this.checkHandlers[ taskType ][ gate ]() ) {
 				this.handleGateFailure( taskType, gate );
@@ -68,7 +68,7 @@ QualityGate.prototype.checkAll = function ( taskType ) {
 			}
 		}
 		return true;
-	}.bind( this ) );
+	} );
 };
 
 /**

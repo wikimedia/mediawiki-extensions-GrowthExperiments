@@ -12,7 +12,7 @@
 
 		mw.storage.session.remove( 'ge.midEditSignup' );
 		mw.cookie.set( 'ge.midEditSignup', null );
-		mw.loader.using( [ 'mediawiki.user', 'mediawiki.Title', 'oojs-ui-windows' ] ).then( function () {
+		mw.loader.using( [ 'mediawiki.user', 'mediawiki.Title', 'oojs-ui-windows' ] ).then( () => {
 			var MessageDialogWithVerticalButtons = require( '../ui-components/MessageDialogWithVerticalButtons.js' ),
 				messageDialog = new MessageDialogWithVerticalButtons(),
 				windowManager = new OO.ui.WindowManager();
@@ -29,10 +29,10 @@
 					{ action: 'close', label: OO.ui.deferMsg( 'welcomesurvey-mideditsignup-button-close' ) }
 				]
 			} );
-			lifecycle.opened.then( function () {
+			lifecycle.opened.then( () => {
 				helpPanelLogger.log( 'postsignup-impression' );
 			} );
-			lifecycle.closing.then( function ( data ) {
+			lifecycle.closing.then( ( data ) => {
 				if ( data.action === 'homepage' ) {
 					helpPanelLogger.log( 'postsignup-homepage' );
 					location.href = new mw.Title( 'Special:Homepage' ).getUrl();

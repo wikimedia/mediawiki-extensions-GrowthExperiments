@@ -59,7 +59,7 @@ module.exports = ( function () {
 	 * @return {Object[]}
 	 */
 	function updateEditModeTool( currentTools ) {
-		return currentTools.map( function ( tool ) {
+		return currentTools.map( ( tool ) => {
 			if ( tool.name === 'editMode' ) {
 				return getEditModeToolGroup();
 			}
@@ -74,9 +74,7 @@ module.exports = ( function () {
 	 * @return {Object[]}
 	 */
 	function getMobileTools( currentTools ) {
-		var activeTools = currentTools.filter( function ( tool ) {
-			return [ 'save', 'back' ].indexOf( tool.name ) !== -1;
-		} );
+		var activeTools = currentTools.filter( ( tool ) => [ 'save', 'back' ].indexOf( tool.name ) !== -1 );
 		activeTools.push(
 			{
 				name: 'machineSuggestionsPlaceholder',
@@ -94,10 +92,8 @@ module.exports = ( function () {
 	 * @return {Object[]}
 	 */
 	function getToolbarGroups( currentGroups ) {
-		var activeGroups = currentGroups.filter( function ( tool ) {
-			return tool.align !== 'after' ||
-				[ 'editMode', 'back' ].indexOf( tool.name ) !== -1;
-		} );
+		var activeGroups = currentGroups.filter( ( tool ) => tool.align !== 'after' ||
+				[ 'editMode', 'back' ].indexOf( tool.name ) !== -1 );
 		var saveGroup = {
 			name: 'save',
 			type: 'bar',
@@ -118,7 +114,7 @@ module.exports = ( function () {
 	function trackEditModeClick( $toolbar ) {
 		var $editModeToolbarGroup = $toolbar.find( '.ve-ui-toolbar-group-suggestionsEditMode' );
 		if ( $editModeToolbarGroup.length ) {
-			$editModeToolbarGroup.on( 'click', function () {
+			$editModeToolbarGroup.on( 'click', () => {
 				SuggestionInteractionLogger.log(
 					'editmode_click',
 					'',
@@ -160,7 +156,7 @@ module.exports = ( function () {
 	 * @param {ve.ui.Surface} surface
 	 */
 	function addSaveHook( surface ) {
-		mw.hook( 'growthExperiments.contextItem.saveArticle' ).add( function () {
+		mw.hook( 'growthExperiments.contextItem.saveArticle' ).add( () => {
 			surface.executeCommand( 'showSave' );
 		} );
 	}

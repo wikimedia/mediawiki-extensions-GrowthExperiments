@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 	if ( mw.config.get( 'wgGEMentorDashboardPersonalizedPraisePostEdit' ) ) {
-		mw.hook( 'postEdit' ).add( function () {
+		mw.hook( 'postEdit' ).add( () => {
 			mw.notify(
 				$( '<span>' ).html(
 					mw.message(

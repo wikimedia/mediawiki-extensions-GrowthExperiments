@@ -51,7 +51,7 @@ AddImageDesktopArticleTarget.prototype.prepareSaveWithoutShowingDialog = functio
 	} ).$element );
 	$element.addClass( 'mw-ge-addImageDesktopArticleTarget--overlay-shown' );
 	$container.append( $desktopLoadingOverlay );
-	promise.done( function () {
+	promise.done( () => {
 		$desktopLoadingOverlay.remove();
 		$element.removeClass( 'mw-ge-addImageDesktopArticleTarget--overlay-shown' );
 	} );

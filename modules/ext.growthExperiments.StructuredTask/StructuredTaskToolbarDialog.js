@@ -152,9 +152,9 @@ StructuredTaskToolbarDialog.prototype.setupHelpButton = function ( label ) {
 	this.helpButton = new HelpPanelButton( {
 		label: label
 	} );
-	this.helpButton.on( 'click', function () {
+	this.helpButton.on( 'click', () => {
 		mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).fire( this.helpButton );
-	}.bind( this ) );
+	} );
 	this.$element.append( this.helpButton.$element );
 };
 

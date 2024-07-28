@@ -140,7 +140,7 @@ MultiPaneDialog.prototype.showPanelIndex = function ( index ) {
  */
 MultiPaneDialog.prototype.updatePanelTransitionClasses = function () {
 	var currentIndex = this.currentPanelIndex;
-	this.panels.forEach( function ( panel, index ) {
+	this.panels.forEach( ( panel, index ) => {
 		panel.$element.toggleClass( 'offscreen-content-prev', index < currentIndex )
 			.toggleClass( 'offscreen-content-next', index > currentIndex );
 	} );

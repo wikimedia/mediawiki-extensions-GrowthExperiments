@@ -45,9 +45,7 @@
 
 		modalWindowManager.addWindows( [ dialog ] );
 		var lifecycle = modalWindowManager.openWindow( dialog );
-		return lifecycle.closing.then( function ( data ) {
-			return ( data && data.action === 'activate' );
-		} );
+		return lifecycle.closing.then( ( data ) => ( data && data.action === 'activate' ) );
 	}
 
 	/**
@@ -61,7 +59,7 @@
 		$container.find(
 			'#mw-ge-homepage-startediting-cta, ' +
 			'#mw-ge-homepage-suggestededits-info'
-		).each( function ( _, button ) {
+		).each( ( _, button ) => {
 			var trigger = 'info-icon',
 				$button = $( button ),
 				buttonType = $button.attr( 'id' ).slice( 'mw-ge-homepage-'.length ),
@@ -78,7 +76,7 @@
 			}
 			$button.data( 'mw-ge-homepage-startediting-cta-setup', true );
 
-			buttonWidget.on( 'click', function () {
+			buttonWidget.on( 'click', () => {
 				if (
 					buttonType === 'startediting-cta' &&
 					isSuggestedEditsActivated
@@ -132,7 +130,7 @@
 			useTopicMatchMode: useTopicMatchMode
 		}, logger, rootStore );
 
-		dialog.on( 'activation', function () {
+		dialog.on( 'activation', () => {
 			isSuggestedEditsActivated = true;
 			shouldSuggestedEditsAppearActivated = true;
 		} );
@@ -168,14 +166,14 @@
 	 * @param {string} data.moduleName The name of the module
 	 * @param {string} data.trigger The trigger to use in event logging
 	 */
-	mw.trackSubscribe( 'growthexperiments.startediting', function ( topic, data ) {
+	mw.trackSubscribe( 'growthexperiments.startediting', ( topic, data ) => {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var mode = $( '.growthexperiments-homepage-module' ).data( 'mode' );
 		launchCta( data.moduleName, mode, data.trigger );
 	} );
 
 	// Try setup for mobile overlay mode
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( ( moduleName, $content ) => {
 		if ( moduleName === 'suggested-edits' ) {
 			setupCtaButton( $content );
 		}

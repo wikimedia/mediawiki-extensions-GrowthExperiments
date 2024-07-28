@@ -13,7 +13,7 @@
 		var shouldUseLanguageOverlay = OO.ui.isMobile() &&
 			mw.loader.getState( 'mobile.startup' ) === 'loaded';
 		ULSTagMultiselectWidget.super.call( this, config );
-		this.$element.on( 'click', function ( e ) {
+		this.$element.on( 'click', ( e ) => {
 			// Intercept clicks to the built-in input widget which we don't
 			// care about, and redirect them to ULS.
 			e.stopPropagation();
@@ -29,7 +29,7 @@
 				this.initializeUls();
 				this.$uls.trigger( 'click' );
 			}
-		}.bind( this ) );
+		} );
 		// This is done here rather than when instantiating the widget so that
 		// we can get the display name for the content language, rather than the
 		// language code.
@@ -81,11 +81,9 @@
 		ULSTagMultiselectWidget.super.prototype.onChangeTags.apply( this, arguments );
 
 		// Update the hidden checkboxes in the form
-		var selectedLangCodes = items.map( function ( item ) {
-			return item.getData();
-		} );
+		var selectedLangCodes = items.map( ( item ) => item.getData() );
 		// eslint-disable-next-line no-jquery/no-global-selector
-		$( 'input[name="wplanguages[]"]' ).each( function ( index, checkbox ) {
+		$( 'input[name="wplanguages[]"]' ).each( ( index, checkbox ) => {
 			$( checkbox ).prop( 'checked', selectedLangCodes.indexOf( checkbox.value ) !== -1 );
 		} );
 
