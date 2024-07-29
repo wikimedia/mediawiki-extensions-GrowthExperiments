@@ -7,6 +7,8 @@ use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefinitions;
 
 class HelpPanelSchema extends JsonSchema {
+	public const VERSION = '1.0.0';
+
 	public const GEHelpPanelExcludedNamespaces = [
 		self::REF => [
 			'class' => MediaWikiDefinitions::class, 'field' => 'Namespaces'
