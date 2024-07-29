@@ -45,7 +45,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>{{GENDER:|Ахьа}} хьайн аккаунт кхоьллича, {{GENDER:|ахьа}} хаийтира хьайна болчу йаззамашна информаци тӀетоха йа хийца лаар.</strong> Кхузахь {{GENDER:|хьуна}} карор йу предложенеш, царна кегий нисдарш дан йиш йу. Нагахь санна {{GENDER:|хьуна}} нийсса билггал болу йаззам хийца лаахь, ахьа лаха мегар ду йаззам, тӀаккха \"{{int:vector-view-edit}}\" нуьйда тӀетаӀо.",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>{{GENDER:|Ахьа}} {{GENDER:|хьан}} аккаунт кхоьллича, {{GENDER:|ахьа}} хаийтира хьуна керла йаззам кхолла лаар.</strong> Иза мехала ду, делахь и тайпа редакци говзаллин чолхе йу, цундела оха хьехам бийр бара хьалха болуш болчу йаззамашна цхьацца жима редакци йан хьажар. Нагахь санна {{GENDER:|хьуна}} лаахь хӀинца керла йаззам кхолла, {{GENDER:|хьан}} йиш йу [$1 кхузахь и муха дан деза хаа].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "{{GENDER:|Хьуна}} хийца лууш йолу теманаш схьахаржа.",
-	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Темехь литтар",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Темехь фильтр",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "{{GENDER:|Хьайна}} товш йолу предложенеш схьаэца теманаш харжа. {{GENDER:|Хьан}} йиш йу цхьаъ йа масех тема харжа.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Йуха",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Кховдийнарш схьаэца",

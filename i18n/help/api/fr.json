@@ -11,12 +11,12 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Gérer les questions posées via le panneau d’aide pour l’utilisateur actuel.",
 	"apihelp-helppanelquestionposter-param-body": "Le texte de la question posée par l’utilisateur.",
-	"apihelp-helppanelquestionposter-param-source": "La méthode par laquelle la question a été posée.",
-	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Le panneau « Demander au centre d’assistance »",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Le panneau « Demander à votre tuteur » sur la page d’accueil du débutant",
+	"apihelp-helppanelquestionposter-param-source": "La méthode utilisée pour poser la question.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Le panneau « Demander au bureau d'aide »",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Le panneau « Demander à votre tuteur » sur la page d'accueil du nouvel arrivant",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "L’écran « Demander à votre tuteur » sur le panneau d’aide",
-	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Le panneau « Demander au centre d’assistance » (ancien nom)",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Le panneau « Demander à votre tuteur » sur la page d’accueil du débutant (ancien nom)",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Le panneau « Demander au bureau d'aide » (ancien nom)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Le panneau « Demander à votre tuteur » sur la page d’accueil du nouvel arrivant (ancien nom)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Le titre concerné, si sélectionné, à inclure avec la question.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Vous devez être connecté pour poser une question."
 }
