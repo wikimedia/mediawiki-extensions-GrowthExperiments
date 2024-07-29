@@ -196,12 +196,14 @@ module.exports = exports = {
 				background-image: url( ../../../../../../resources/src/jquery.tablesorter.styles/images/sort_down.svg );
 			}
 
-			// stylelint-disable-next-line selector-class-pattern
-			html.skin-theme-clientpref-night & {
-				filter: invert( 1 );
+			@media screen {
+				// stylelint-disable-next-line selector-class-pattern
+				html.skin-theme-clientpref-night & {
+					filter: invert( 1 );
+				}
 			}
 
-			@media ( prefers-color-scheme: dark ) {
+			@media screen and ( prefers-color-scheme: dark ) {
 				// stylelint-disable-next-line selector-class-pattern
 				html.skin-theme-clientpref-os & {
 					filter: invert( 1 );
