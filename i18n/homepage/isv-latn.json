@@ -13,5 +13,8 @@
 	"growthexperiments-homepage-email-header-noemail": "Dodajte {{GENDER:$1|svoj}} adres e-pošty",
 	"growthexperiments-homepage-email-header-unconfirmed": "Potvrdite {{GENDER:$1|svoj}} adres e-pošty",
 	"growthexperiments-homepage-email-header-confirmed": "Adres e-pošty dodany",
-	"growthexperiments-homepage-email-header-startemail": "E-pošta: $1"
+	"growthexperiments-homepage-email-header-startemail": "E-pošta: $1",
+	"growthexperiments-specialimpact-title": "Vliv",
+	"grant-managementorship": "Upravjenje mentorstvom",
+	"newcomertasksinfo": "Zadanja za novoprišelcev"
 }

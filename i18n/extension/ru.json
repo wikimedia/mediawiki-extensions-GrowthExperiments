@@ -103,6 +103,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "Короткое и дружелюбное информационное сообщение, вызывающее интерес.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Изображение",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Метка",
+	"communityconfiguration-growthhomepage-title": "Адаптация новичков",
+	"communityconfiguration-growthhomepage-description": "Персонализируйте процесс регистрации для владельцев новых учетных записей с помощью функций помощи после регистрации и уведомлений о повышении уровня.",
 	"communityconfiguration-growthsuggestededits-title": "Предложенные правки",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Шаблоны-карточки",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Эти шаблоны необходимы для функции предложения изображений для новичков. Статьи, содержащие эти шаблоны, не будут указаны как задачи по предложению изображений.",

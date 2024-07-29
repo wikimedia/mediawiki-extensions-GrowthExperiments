@@ -637,5 +637,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|আপনি}} $3টি {{PLURAL:$3|পরামর্শকৃত সম্পাদনা}} সম্পন্ন করেছেন। দক্ষতা বৃদ্ধির জন্য আরও পরামর্শকৃত সম্পাদনা নিয়ে কাজ করতে থাকুন।",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "একটি পরামর্শকৃত সম্পাদনা করুন",
 	"echo-category-title-ge-newcomer": "গ্রোথ বৈশিষ্ট্য",
-	"echo-pref-tooltip-ge-newcomer": "নবাগতদের জন্য এবং নবাগতদের সহায়তার জন্য তৈরি কাজের ব্যাপারে আমাকে জানাও।"
+	"echo-pref-tooltip-ge-newcomer": "নবাগতদের জন্য এবং নবাগতদের সহায়তার জন্য তৈরি কাজের ব্যাপারে আমাকে জানাও।",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "আরও জানুন"
 }
