@@ -11,6 +11,7 @@ use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefini
 class CommunityUpdatesSchema_2_0_1 extends JsonSchema {
 
 	public const SCHEMA_PREVIOUS_VERSION = '2.0.0';
+	public const SCHEMA_NEXT_VERSION = '2.0.2';
 	public const VERSION = '2.0.1';
 	public const SCHEMA_CONVERTER = CommunityUpdatesConverter_2_0_1::class;
 
