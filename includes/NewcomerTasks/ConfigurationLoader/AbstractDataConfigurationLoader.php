@@ -44,6 +44,8 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 
 	/** @var array */
 	private array $disabledTaskTypeIds = [];
+	/** @var string[] */
+	private array $enabledTaskTypeIds = [];
 
 	/** @var TaskType[]|StatusValue|null Cached task type set (or an error). */
 	private $taskTypes;
@@ -96,6 +98,21 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 	}
 
 	/**
+	 * Force enabling of the given task type. Must be called before task types are loaded.
+	 *
+	 * This overrides configuration defined in Community configuration; apply care before usage.
+	 * Intended for usage in maintenance scripts.
+	 */
+	public function enableTaskType( string $taskTypeId ): void {
+		if ( $this->taskTypes !== null ) {
+			throw new LogicException( __METHOD__ . ' must be called before task types are loaded' );
+		}
+		if ( !in_array( $taskTypeId, $this->enabledTaskTypeIds, true ) ) {
+			$this->enabledTaskTypeIds[] = $taskTypeId;
+		}
+	}
+
+	/**
 	 * @return array|StatusValue
 	 */
 	abstract protected function loadTaskTypesConfig();
@@ -122,6 +139,8 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 		} else {
 			$allTaskTypes = $this->parseTaskTypesFromConfig( $config );
 		}
+
+		$this->disabledTaskTypeIds = array_diff( $this->disabledTaskTypeIds, $this->enabledTaskTypeIds );
 
 		if ( !$allTaskTypes instanceof StatusValue ) {
 			$taskTypes = array_filter( $allTaskTypes,

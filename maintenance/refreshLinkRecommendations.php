@@ -7,6 +7,7 @@ use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
@@ -197,6 +198,12 @@ class RefreshLinkRecommendations extends Maintenance {
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+		if ( $newcomerTaskConfigurationLoader instanceof AbstractDataConfigurationLoader ) {
+			// Pretend link-recommendation is enabled (T371316)
+			// Task suggester cannot be adapted to query disabled task types, because it is also
+			// used in Homepage (where the disabled flag has to be honored).
+			$newcomerTaskConfigurationLoader->enableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
+		}
 		$this->configurationLoader = new TopicDecorator(
 			$newcomerTaskConfigurationLoader,
 			true,
