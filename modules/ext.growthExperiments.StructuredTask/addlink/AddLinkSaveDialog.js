@@ -92,7 +92,7 @@ AddLinkSaveDialog.prototype.initialize = function () {
  * @param {Object[]} annotationStates Suggestion states (acceptances/rejections/skips)
  */
 AddLinkSaveDialog.prototype.updateSummary = function ( annotationStates ) {
-	var $rows = annotationStates.map( function ( state ) {
+	var $rows = annotationStates.map( ( state ) => {
 		var $icon;
 		if ( state.accepted ) {
 			$icon = new OO.ui.IconWidget( { icon: 'check', flags: 'progressive' } ).$element;
@@ -122,7 +122,7 @@ AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
 		var acceptedCount, rejectedCount, skippedCount,
 			annotationStates = ve.init.target.getAnnotationStates();
 		acceptedCount = rejectedCount = skippedCount = 0;
-		annotationStates.forEach( function ( state ) {
+		annotationStates.forEach( ( state ) => {
 			// convert to  boolean to avoid NaNs
 			acceptedCount += !!state.accepted;
 			rejectedCount += !!state.rejected;

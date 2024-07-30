@@ -77,7 +77,7 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 
 	if ( taskPreviewData && taskPreviewData.title ) {
 		tasksStore.setPreloadedFirstTask( taskPreviewData );
-		tasksStore.fetchExtraDataForCurrentTask( 'mobilesummary' ).then( function () {
+		tasksStore.fetchExtraDataForCurrentTask( 'mobilesummary' ).then( () => {
 			var task = tasksStore.getCurrentTask();
 			newcomerTaskLogger.log( task, 0 );
 			homepageModuleLogger.log(
@@ -86,7 +86,7 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 				'se-task-impression',
 				{ newcomerTaskToken: task.token }
 			);
-		} ).catch( function ( jqXHR, textStatus, errorThrown ) {
+		} ).catch( ( jqXHR, textStatus, errorThrown ) => {
 			// Error loading extra data for the task
 			homepageModuleLogger.log(
 				'suggested-edits',
@@ -94,10 +94,10 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 				'se-task-pseudo-impression',
 				{ type: 'error', errorMessage: textStatus + ' ' + errorThrown }
 			);
-		} ).always( function () {
+		} ).always( () => {
 			this.showPreviewForCurrentTask();
 			promise.resolve();
-		}.bind( this ) );
+		} );
 
 	} else if ( tasksStore.getTaskCount() === 0 ) {
 		this.replaceContent( new MobileNoTasksWidget() );
@@ -127,7 +127,7 @@ SuggestedEditsMobileSummary.prototype.enableSuggestedEditsActivation = function 
 	// Tapping on the task card should be considered enough to activate the module, with no
 	// further onboarding dialogs shown.
 	$element.on( 'click', function onModuleClicked() {
-		new mw.Api().saveOptions( activationSettings ).then( function () {
+		new mw.Api().saveOptions( activationSettings ).then( () => {
 			mw.user.options.set( activationSettings );
 		} );
 		// Set state to activated so that HomepageLogger uses correct value for

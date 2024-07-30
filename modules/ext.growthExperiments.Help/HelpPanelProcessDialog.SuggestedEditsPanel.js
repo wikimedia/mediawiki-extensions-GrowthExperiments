@@ -21,7 +21,7 @@
 	 * @constructor
 	 */
 	function SuggestedEditsPanel( config ) {
-		SuggestedEditsPanel.super.call( this, $.extend( {
+		SuggestedEditsPanel.super.call( this, Object.assign( {
 			expanded: false,
 			scrollable: false,
 			continuous: true
@@ -81,7 +81,7 @@
 		} );
 		return quickStartTips.getTips(
 			this.taskTypeData.id, this.editorInterface, this.currentTip
-		).then( function ( tipsPanel ) {
+		).then( ( tipsPanel ) => {
 			this.headerAndTipsPanel.addItems( [ this.headerPanel, this.switchEditorPanel,
 				tipsPanel ] );
 			this.addItems( [ this.headerAndTipsPanel, this.footerPanel ] );
@@ -90,7 +90,7 @@
 			tipsPanel.tabIndexLayout.on( 'set', this.setScrolledClasses.bind( this ) );
 			this.setScrolledClasses();
 			return true;
-		}.bind( this ) );
+		} );
 	};
 
 	/**

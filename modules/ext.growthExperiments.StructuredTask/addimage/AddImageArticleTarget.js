@@ -55,7 +55,6 @@ var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEd
  * @property {string} filename Image file name
  * @property {string} caption Entered value for the image caption
  * @property {mw.libs.ge.RecommendedImageMetadata} metadata Image metadata
- *
  */
 
 /**
@@ -214,10 +213,12 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
 		this.insertOffset = insertRange.start;
 		// <offset>, 0 means start from that offset and only move if it is invalid.
 		// <offset>, 1 would always move.
-		relativeOffset = data.getRelativeOffset( this.insertOffset, 0, function ( offset ) {
+		relativeOffset = data.getRelativeOffset(
+			this.insertOffset,
+			0,
 			// This will update insertOffset.
-			return this.isEndOfMetadata( data, offset );
-		}.bind( this ) );
+			( offset ) => this.isEndOfMetadata( data, offset )
+		);
 		if ( this.insertOffset > insertRange.end ) {
 			relativeOffset = -1;
 		}
@@ -530,10 +531,10 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	// This data will be processed in VisualEditorHooks::onVisualEditorApiVisualEditorEditPostSave
 	options[ 'data-ge-task-' + this.TASK_TYPE_ID ] = JSON.stringify( this.getVEPluginData() );
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
-		.done( function () {
+		.done( () => {
 			this.madeNullEdit = !this.recommendationAccepted;
 			this.onSaveDone();
-		}.bind( this ) );
+		} );
 };
 
 /**
@@ -652,7 +653,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 	var dialogName = this.CAPTION_INFO_DIALOG_NAME,
 		logCaptionInfoDialog = function ( action, context, closeData ) {
 			/* eslint-disable camelcase */
-			var actionData = $.extend(
+			var actionData = Object.assign(
 				this.getSuggestionLogActionData(),
 				{ dialog_context: context }
 			);
@@ -666,10 +667,10 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 	var openDialogPromise;
 	if ( !shouldCheckPref ) {
 		openDialogPromise = this.surface.dialogs.openWindow( dialogName );
-		openDialogPromise.opening.then( function () {
+		openDialogPromise.opening.then( () => {
 			logCaptionInfoDialog( 'impression', 'help' );
 		} );
-		openDialogPromise.closed.then( function () {
+		openDialogPromise.closed.then( () => {
 			logCaptionInfoDialog( 'close', 'help' );
 		} );
 		return;
@@ -686,10 +687,10 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 			dialogName,
 			{ shouldShowDismissField: true }
 		);
-		openDialogPromise.opening.then( function () {
+		openDialogPromise.opening.then( () => {
 			logCaptionInfoDialog( 'impression', 'onboarding' );
 		} );
-		openDialogPromise.closed.then( function ( closeData ) {
+		openDialogPromise.closed.then( ( closeData ) => {
 			logCaptionInfoDialog( 'close', 'onboarding', closeData );
 		} );
 	}
@@ -731,7 +732,7 @@ AddImageArticleTarget.prototype.logSuggestionInteraction = function (
 	action, activeInterface, actionData ) {
 	this.logger.log(
 		action,
-		$.extend( actionData || {}, this.getSuggestionLogActionData() ),
+		Object.assign( actionData || {}, this.getSuggestionLogActionData() ),
 		// eslint-disable-next-line camelcase
 		{ active_interface: activeInterface }
 	);

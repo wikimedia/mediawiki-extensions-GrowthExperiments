@@ -45,7 +45,7 @@ AddSectionImageCaptionInfoDialog.static.message = function () {
 		).parse();
 	}
 	guidelineItems.push( languageGuideline );
-	guidelineItems.forEach( function ( guidelineItemText ) {
+	guidelineItems.forEach( ( guidelineItemText ) => {
 		$guidelines.append( $( '<li>' ).html( guidelineItemText ) );
 	} );
 	return $( '<div>' ).append( [

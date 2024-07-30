@@ -127,7 +127,7 @@ TargetInitializer.prototype.registerTaskArticleTarget = function () {
  * Register data models specific to the structured task
  */
 TargetInitializer.prototype.registerDataModels = function () {
-	this.dataModels.forEach( function ( dataModel ) {
+	this.dataModels.forEach( ( dataModel ) => {
 		ve.dm.modelRegistry.register( dataModel );
 	} );
 };
@@ -136,7 +136,7 @@ TargetInitializer.prototype.registerDataModels = function () {
  * Register annotation views specific to the structured task
  */
 TargetInitializer.prototype.registerAnnotationViews = function () {
-	this.annotationViews.forEach( function ( annotationView ) {
+	this.annotationViews.forEach( ( annotationView ) => {
 		ve.ce.annotationFactory.register( annotationView );
 	} );
 };
@@ -145,7 +145,7 @@ TargetInitializer.prototype.registerAnnotationViews = function () {
  * Register windows specific to the structured task
  */
 TargetInitializer.prototype.registerWindows = function () {
-	this.windows.forEach( function ( window ) {
+	this.windows.forEach( ( window ) => {
 		ve.ui.windowFactory.register( window );
 	} );
 };
@@ -154,7 +154,7 @@ TargetInitializer.prototype.registerWindows = function () {
  * Register commands specific to the structured task
  */
 TargetInitializer.prototype.registerCommands = function () {
-	this.commands.forEach( function ( command ) {
+	this.commands.forEach( ( command ) => {
 		ve.ui.commandRegistry.register( command );
 	} );
 };
@@ -163,7 +163,7 @@ TargetInitializer.prototype.registerCommands = function () {
  * Register tools specific to the structured task
  */
 TargetInitializer.prototype.registerTools = function () {
-	this.tools.forEach( function ( tool ) {
+	this.tools.forEach( ( tool ) => {
 		ve.ui.toolFactory.register( tool );
 	} );
 };
@@ -179,7 +179,7 @@ TargetInitializer.prototype.overrideBackTool = function () {
  * Register nodes specific to the structured task
  */
 TargetInitializer.prototype.registerNodes = function () {
-	this.nodes.forEach( function ( node ) {
+	this.nodes.forEach( ( node ) => {
 		ve.ce.nodeFactory.register( node );
 	} );
 };
@@ -189,7 +189,7 @@ TargetInitializer.prototype.registerNodes = function () {
  * See T280129
  */
 TargetInitializer.prototype.disableContextItems = function () {
-	Object.keys( ve.ui.contextItemFactory.registry ).forEach( function ( contextItem ) {
+	Object.keys( ve.ui.contextItemFactory.registry ).forEach( ( contextItem ) => {
 		ve.ui.contextItemFactory.unregister( contextItem );
 	} );
 };
@@ -201,9 +201,7 @@ TargetInitializer.prototype.disableContextItems = function () {
  */
 TargetInitializer.prototype.getToolsToDisable = function () {
 	var safeTools = this.safeTools;
-	return Object.keys( ve.ui.toolFactory.registry ).filter( function ( toolName ) {
-		return safeTools.indexOf( toolName ) === -1;
-	} );
+	return Object.keys( ve.ui.toolFactory.registry ).filter( ( toolName ) => safeTools.indexOf( toolName ) === -1 );
 };
 
 /**
@@ -213,7 +211,7 @@ TargetInitializer.prototype.getToolsToDisable = function () {
  * @param {string[]} toolsToDisable Names of tools that should be disabled
  */
 TargetInitializer.prototype.disableTools = function ( toolsToDisable ) {
-	toolsToDisable.forEach( function ( tool ) {
+	toolsToDisable.forEach( ( tool ) => {
 		ve.ui.toolFactory.unregister( tool );
 	} );
 };
@@ -224,7 +222,7 @@ TargetInitializer.prototype.disableTools = function ( toolsToDisable ) {
  */
 TargetInitializer.prototype.disableCommands = function () {
 	var safeCommands = this.safeCommands;
-	Object.keys( ve.ui.commandRegistry.registry ).forEach( function ( commandItem ) {
+	Object.keys( ve.ui.commandRegistry.registry ).forEach( ( commandItem ) => {
 		if ( safeCommands.indexOf( commandItem ) === -1 ) {
 			ve.ui.commandRegistry.unregister( commandItem );
 		}
@@ -256,7 +254,7 @@ TargetInitializer.prototype.disableDefaultEditModeToolsForRegularVeMode = functi
  * Register custom keydown handlers
  */
 TargetInitializer.prototype.registerKeyDownHandlers = function () {
-	this.keyDownHandlers.forEach( function ( handler ) {
+	this.keyDownHandlers.forEach( ( handler ) => {
 		ve.ce.keyDownHandlerFactory.register( handler );
 	} );
 };

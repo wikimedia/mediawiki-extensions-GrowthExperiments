@@ -14,18 +14,16 @@ const store = require( '../__mocks__/store.js' );
  *
  * @return {mw.libs.ge.TaskData}
  */
-const getTaskData = ( title, tasktype, pageId, qualityGateConfig ) => {
-	return {
-		title,
-		tasktype,
-		difficulty: 'easy',
-		qualityGateIds: [],
-		qualityGateConfig: qualityGateConfig || {},
-		url: null,
-		token: 'token-' + title,
-		pageId: pageId || Math.floor( Math.random() * 100 )
-	};
-};
+const getTaskData = ( title, tasktype, pageId, qualityGateConfig ) => ( {
+	title,
+	tasktype,
+	difficulty: 'easy',
+	qualityGateIds: [],
+	qualityGateConfig: qualityGateConfig || {},
+	url: null,
+	token: 'token-' + title,
+	pageId: pageId || Math.floor( Math.random() * 100 )
+} );
 
 /**
  * Generate random task set data
@@ -45,7 +43,7 @@ const randomTaskSet = ( n, qualityConfig = {} ) => {
 	];
 	return Array( n ).fill( 0 ).map( ( _, i ) => {
 		const taskType = taskTypes[ Math.floor( Math.random() * 100 ) % taskTypes.length ];
-		return { ...getTaskData( `task-${i}`, taskType ), ...qualityConfig };
+		return { ...getTaskData( `task-${ i }`, taskType ), ...qualityConfig };
 	} );
 };
 
@@ -192,7 +190,7 @@ QUnit.test( 'should emit an event when additional tasks are added to the task qu
 	assert.true( spy.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
 } );
 
-QUnit.test( 'should set the preloaded task in the task queue', function ( assert ) {
+QUnit.test( 'should set the preloaded task in the task queue', ( assert ) => {
 	const tasksStore = new NewcomerTasksStore( store );
 	const preloadedTask = getTaskData( '1', 'copyedit' );
 	const qualityGateConfig = { dailyLimit: 10 };
@@ -282,8 +280,8 @@ QUnit.test( 'should restore backed up states with restoreState', function ( asse
 	assert.deepEqual( tasksStore.getTaskQueue(), taskQueue );
 } );
 
-QUnit.module( 'Actions', function () {
-	QUnit.module( 'Fetch tasks', function () {
+QUnit.module( 'Actions', () => {
+	QUnit.module( 'Fetch tasks', () => {
 		QUnit.test( 'should fetch tasks and update state using API response values', function ( assert ) {
 			const done = assert.async();
 			this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
@@ -378,7 +376,7 @@ QUnit.module( 'Actions', function () {
 			} );
 	} );
 
-	QUnit.module( 'Fetch more tasks', function () {
+	QUnit.module( 'Fetch more tasks', () => {
 		QUnit.test( 'should fetch tasks and update the taskCount to the number of fetched tasks when the API response informs there are no more results', function ( assert ) {
 			const done = assert.async();
 			this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {

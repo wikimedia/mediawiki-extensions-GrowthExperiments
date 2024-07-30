@@ -22,7 +22,7 @@
 	// the overlay for the first time, so we can only attach the button once that has happened.
 	questionPosterAttachButton( questionPosterConfig, $homepageContainer );
 	optInAttachButton( optInConfig, $homepageContainer );
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( ( moduleName, $content ) => {
 		if ( moduleName === 'mentorship' ) {
 			questionPosterAttachButton( questionPosterConfig, $content );
 		}

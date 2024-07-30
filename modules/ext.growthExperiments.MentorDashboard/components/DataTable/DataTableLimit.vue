@@ -31,15 +31,13 @@ module.exports = exports = {
 	},
 	computed: {
 		menuItems() {
-			return this.limitOptions.map( ( optionValue ) => {
-				return {
-					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-mentee-overview-show-entries',
-						this.$filters.convertNumber( optionValue )
-					).text(),
-					value: optionValue
-				};
-			} );
+			return this.limitOptions.map( ( optionValue ) => ( {
+				label: this.$i18n(
+					'growthexperiments-mentor-dashboard-mentee-overview-show-entries',
+					this.$filters.convertNumber( optionValue )
+				).text(),
+				value: optionValue
+			} ) );
 		}
 	}
 };

@@ -13,14 +13,14 @@ QUnit.test( 'annotateSuggestions', function ( assert ) {
 
 	this.sandbox.stub( LinkSuggestionInteractionLogger.prototype, 'log' ).returns( true );
 
-	data.forEach( function ( fixture ) {
+	data.forEach( ( fixture ) => {
 		const articleTarget = new AddLinkArticleTarget(
 			new LinkSuggestionInteractionLogger()
 		);
 		articleTarget.maximumLinksToShow = MAX_LINKS_TO_SHOW;
 		const doc = document.implementation.createHTMLDocument();
 		const body = document.createElement( 'body' );
-		fixture.articleContent.forEach( function ( item ) {
+		fixture.articleContent.forEach( ( item ) => {
 			const newElement = document.createElement( item.element );
 			const newContent = document.createTextNode( item.content );
 			newElement.append( newContent );

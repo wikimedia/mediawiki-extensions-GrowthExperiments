@@ -60,14 +60,14 @@ MentorMessageChangeDialog.prototype.getActionProcess = function ( action ) {
 	const dialog = this;
 
 	if ( action === 'save' ) {
-		return new OO.ui.Process( function () {
+		return new OO.ui.Process( () => {
 			const newMessage = dialog.mentorMessageInput.getValue();
 
 			return new mw.Api().postWithToken( 'csrf', {
 				action: 'growthmanagementorlist',
 				geaction: 'change',
 				message: newMessage
-			} ).then( function () {
+			} ).then( () => {
 				mw.notify(
 					mw.msg(
 						'growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success',
@@ -78,7 +78,7 @@ MentorMessageChangeDialog.prototype.getActionProcess = function ( action ) {
 
 				dialog.emit( 'messageset', newMessage );
 				dialog.close( { action: action } );
-			} ).catch( function ( errorCode, data ) {
+			} ).catch( ( errorCode, data ) => {
 				mw.notify(
 					data.error.info,
 					{ type: 'error' }

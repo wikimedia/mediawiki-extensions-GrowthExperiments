@@ -160,10 +160,10 @@ RecommendedLinkToolbarDialogDesktop.prototype.showFirstRecommendation = function
 		return promise.reject();
 	}
 	this.fadeOut();
-	this.scrollToAnnotationView( annotationView ).always( function () {
+	this.scrollToAnnotationView( annotationView ).always( () => {
 		this.showRecommendationAtIndex( 0 );
 		this.fadeIn().then( promise.resolve );
-	}.bind( this ) );
+	} );
 	return promise;
 };
 
@@ -190,10 +190,10 @@ RecommendedLinkToolbarDialogDesktop.prototype.showRecommendationAtIndex = functi
 	this.toggleDialogVisibility( true, isOpeningNewSelection );
 	// Call scrollToAnnotationView right away instead of wait for fadeOut to resolve
 	// so that fade animation can be cancelled if scrolling isn't needed
-	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( index ) ).always( function () {
+	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( index ) ).always( () => {
 		updateContent();
 		this.fadeIn();
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -280,10 +280,10 @@ RecommendedLinkToolbarDialog.prototype.onToolbarDialogButtonClicked = function (
 		{ active_interface: 'machinesuggestions_mode' }
 	);
 	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( this.currentIndex ) ).then(
-		function () {
+		() => {
 			this.toggleDialogVisibility( true );
 			this.logger.log( 'impression', this.getSuggestionLogActionData() );
-		}.bind( this )
+		}
 	);
 };
 

@@ -52,11 +52,11 @@ RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
 	MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 	this.surface.getView().$documentNode.on( 'click', this.onDocumentNodeClick );
-	mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add( function () {
+	mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add( () => {
 		// If onboarding is completed after selecting first recommendation, the selection needs to
 		// be scrolled into view since it wasn't in the viewport when onboarding was open.
 		this.surface.scrollSelectionIntoView();
-	}.bind( this ) );
+	} );
 	this.setUpToolbarDialogButton(
 		mw.message( 'growthexperiments-addlink-context-button-show-suggestion' ).text()
 	);
@@ -80,11 +80,11 @@ RecommendedLinkToolbarDialogMobile.prototype.showRecommendationAtIndex = functio
 		this.isFirstRender = false;
 		return;
 	}
-	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( index ) ).always( function () {
+	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( index ) ).always( () => {
 		RecommendedLinkToolbarDialogMobile.super.prototype.showRecommendationAtIndex.call(
 			this, index, manualFocus
 		);
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -108,14 +108,14 @@ RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendati
 	if ( shouldAnimateContent ) {
 		this.isAnimating = true;
 		// Delay animation to account for ToggleButtonWidget's transition
-		setTimeout( function () {
+		setTimeout( () => {
 			this.animateNewContent( this.$labelPreviewTextContainer );
 			this.animateNewContent( this.$linkPreviewContainer );
-			this.animateNewContent( this.$acceptanceButtonsContainer ).then( function () {
+			this.animateNewContent( this.$acceptanceButtonsContainer ).then( () => {
 				this.isAnimating = false;
 				this.updateActionButtonsMode();
-			}.bind( this ) );
-		}.bind( this ), 150 );
+			} );
+		}, 150 );
 	}
 };
 
@@ -234,12 +234,12 @@ RecommendedLinkToolbarDialogMobile.prototype.setupSwipeNavigation = function () 
 		isRtl: document.documentElement.dir === 'rtl',
 		isHorizontal: true
 	} );
-	swipePane.setToStartHandler( function () {
+	swipePane.setToStartHandler( () => {
 		this.onNextButtonClicked( true );
-	}.bind( this ) );
-	swipePane.setToEndHandler( function () {
+	} );
+	swipePane.setToEndHandler( () => {
 		this.onPrevButtonClicked( true );
-	}.bind( this ) );
+	} );
 };
 
 /** @inheritDoc **/

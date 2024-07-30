@@ -175,9 +175,9 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 		/** @type {mw.libs.ge.AddSectionImageArticleTarget} */
 		var sectionImageArticleTarget = articleTarget;
 		sectionImageArticleTarget.insertImagePlaceholder( this.images[ 0 ] );
-		sectionImageArticleTarget.scrollToTargetSection().then( function () {
+		sectionImageArticleTarget.scrollToTargetSection().then( () => {
 			this.animateIn();
-		}.bind( this ) );
+		} );
 	} else {
 		this.animateIn();
 	}
@@ -224,7 +224,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 		metadataOverride = { active_interface: 'rejection_dialog' },
 		getLogActionData = function () {
 			var otherRejectionReason = ve.init.target.recommendationOtherRejectionReason;
-			return $.extend( this.getSuggestionLogActionData(), {
+			return Object.assign( this.getSuggestionLogActionData(), {
 				/* eslint-disable camelcase */
 				rejection_reasons: ve.init.target.recommendationRejectionReasons || [],
 				other_reason: otherRejectionReason ?
@@ -239,18 +239,18 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 	// Avoid showing an outline on the element if we cancel out of the rejection dialog.
 	this.noButton.$element.find( '.oo-ui-buttonElement-button' ).trigger( 'blur' );
 
-	rejectionDialogLifecycle.opening.then( function () {
+	rejectionDialogLifecycle.opening.then( () => {
 		this.logger.log( 'impression', getLogActionData(), metadataOverride );
-	}.bind( this ) );
+	} );
 
-	rejectionDialogLifecycle.closed.then( function ( data ) {
+	rejectionDialogLifecycle.closed.then( ( data ) => {
 		if ( data && data.action === 'done' ) {
 			this.setState( false, data.reasons, data.otherRejectionReason );
 			this.getArticleTarget().saveWithoutShowingDialog();
 			this.logger.log( 'confirm_reject_suggestion', getLogActionData(), metadataOverride );
 		}
 		this.logger.log( 'close', getLogActionData(), metadataOverride );
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -278,11 +278,11 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 			]
 		} );
 
-	openSkipDialogPromise.opening.then( function () {
+	openSkipDialogPromise.opening.then( () => {
 		this.logger.log( 'impression', this.getSuggestionLogActionData(), logMetadata );
-	}.bind( this ) );
+	} );
 
-	openSkipDialogPromise.closed.then( function ( data ) {
+	openSkipDialogPromise.closed.then( ( data ) => {
 		var actionData = this.getSuggestionLogActionData();
 		if ( data && data.action === 'confirm' ) {
 			this.logger.log( 'confirm_skip_suggestion', actionData, logMetadata );
@@ -291,7 +291,7 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 			this.logger.log( 'close', actionData, logMetadata );
 			this.regainFocus();
 		}
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -309,15 +309,15 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 		'recommendedImageViewer',
 		imageData.metadata
 	);
-	openImageViewerDialogPromise.opening.then( function () {
+	openImageViewerDialogPromise.opening.then( () => {
 		this.logger.log( 'impression', actionData, logMetadata );
-	}.bind( this ) );
+	} );
 
-	openImageViewerDialogPromise.closed.then( function () {
+	openImageViewerDialogPromise.closed.then( () => {
 		this.logger.log( 'close', actionData, logMetadata );
-	}.bind( this ) );
+	} );
 
-	this.showInternalRoute( 'imageviewer', function () {
+	this.showInternalRoute( 'imageviewer', () => {
 		var currentWindow = surface.dialogs.currentWindow;
 		if ( currentWindow ) {
 			currentWindow.close();
@@ -406,7 +406,7 @@ RecommendedImageToolbarDialog.prototype.getFilenameElement = function ( title ) 
  * @return {jQuery}
  */
 RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descriptionHtml ) {
-	var descriptionText = $.parseHTML( descriptionHtml ).map( function ( node ) {
+	var descriptionText = $.parseHTML( descriptionHtml ).map( ( node ) => {
 			if ( node.nodeType === Node.ELEMENT_NODE ) {
 				return node.innerText;
 			} else if ( node.nodeType === Node.TEXT_NODE ) {
@@ -524,7 +524,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 	this.canShowCaption = true;
 	articleTarget.showCaptionInfoDialog( true );
 
-	this.showInternalRoute( 'caption', function () {
+	this.showInternalRoute( 'caption', () => {
 		// The taskState is saved; the user pressed publish
 		if ( ge.suggestedEditSession.taskState === 'saved' ) {
 			return;
@@ -542,7 +542,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 		this.toggle( true );
 		this.animateIn();
 		this.canShowCaption = false;
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -585,10 +585,10 @@ RecommendedImageToolbarDialog.prototype.getSuggestionLogActionData = function ()
  * Animate in the dialog and log an impression event
  */
 RecommendedImageToolbarDialog.prototype.animateIn = function () {
-	setTimeout( function () {
+	setTimeout( () => {
 		this.$element.removeClass( 'animate-below' );
 		this.logger.log( 'impression', this.getSuggestionLogActionData() );
-	}.bind( this ), RENDER_DELAY );
+	}, RENDER_DELAY );
 };
 
 module.exports = RecommendedImageToolbarDialog;

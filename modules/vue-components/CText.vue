@@ -54,7 +54,7 @@ module.exports = exports = {
 		// the mode should be passed as a prop.
 		const mode = inject( 'RENDER_MODE' );
 		if ( typeof props.size === 'string' ) {
-			extraClasses.push( `ext-growthExperiments-CText--size-${props.size}` );
+			extraClasses.push( `ext-growthExperiments-CText--size-${ props.size }` );
 		}
 		if ( Array.isArray( props.size ) ) {
 			const breakpointIndex = props.breakpoints.indexOf( mode );
@@ -62,14 +62,14 @@ module.exports = exports = {
 			// If we can't find an specified size for the mode don't add any
 			// class so we use base font
 			if ( relevantSize.value ) {
-				extraClasses.push( `ext-growthExperiments-CText--size-${relevantSize.value}` );
+				extraClasses.push( `ext-growthExperiments-CText--size-${ relevantSize.value }` );
 			}
 		}
 		if ( props.color ) {
-			extraClasses.push( `ext-growthExperiments-CText--color-${props.color}` );
+			extraClasses.push( `ext-growthExperiments-CText--color-${ props.color }` );
 		}
 		if ( props.weight ) {
-			extraClasses.push( `ext-growthExperiments-CText--weight-${props.weight}` );
+			extraClasses.push( `ext-growthExperiments-CText--weight-${ props.weight }` );
 		}
 
 		return {

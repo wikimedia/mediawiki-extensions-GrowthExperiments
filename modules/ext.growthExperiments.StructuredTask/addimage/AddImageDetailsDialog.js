@@ -90,9 +90,9 @@ AddImageDetailsDialog.prototype.updateDialog = function ( recommendation ) {
 			.append(
 				new OO.ui.IconWidget( { icon: 'linkExternal', flags: 'progressive' } ).$element
 			)
-			.on( 'click', function () {
+			.on( 'click', () => {
 				this.logEvent( 'link_click' );
-			}.bind( this ) )
+			} )
 	);
 };
 
@@ -131,7 +131,7 @@ AddImageDetailsDialog.prototype.makeField = function ( field, recommendation ) {
 	}
 
 	// Strip all HTML.
-	fieldValue = $.parseHTML( fieldValue ).map( function ( node ) {
+	fieldValue = $.parseHTML( fieldValue ).map( ( node ) => {
 		if ( node.nodeType === Node.ELEMENT_NODE ) {
 			return node.innerText;
 		} else if ( node.nodeType === Node.TEXT_NODE ) {
@@ -159,9 +159,7 @@ AddImageDetailsDialog.prototype.addSpacers = function ( list ) {
 	var spacer = this.makeSpacer();
 
 	// remove missing fields
-	list = list.filter( function ( el ) {
-		return el !== null;
-	} );
+	list = list.filter( ( el ) => el !== null );
 	for ( var i = 0; i < list.length; i++ ) {
 		if ( list[ i ] === spacer && i > 0 && i < list.length - 1 ) {
 			var last = list[ i - 1 ];
@@ -170,9 +168,7 @@ AddImageDetailsDialog.prototype.addSpacers = function ( list ) {
 			}
 		}
 	}
-	return Array.prototype.concat.apply( [], list.filter( function ( el ) {
-		return el !== spacer;
-	} ) );
+	return Array.prototype.concat.apply( [], list.filter( ( el ) => el !== spacer ) );
 };
 
 /**

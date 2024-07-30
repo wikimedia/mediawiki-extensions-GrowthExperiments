@@ -26,7 +26,7 @@ function SelectWithTextInputWidget( config ) {
  * otherwise construct checkbox item
  *
  * @param {Object} itemData
- * @return {OO.ui.CheckboxMultioptionWidget|OO.ui.RadioOptionWidget}
+ * @return {OO.ui.CheckboxMultioptionWidget|OO.ui.RadioOptionWidget|undefined}
  */
 SelectWithTextInputWidget.prototype.constructItem = function ( itemData ) {
 	if ( !itemData.data && !itemData.label ) {
@@ -70,9 +70,7 @@ SelectWithTextInputWidget.prototype.constructWidget = function () {
 		OO.ui.RadioSelectWidget;
 
 	return new SelectWidgetClass( {
-		items: this.options.map( function ( itemData ) {
-			return this.constructItem( itemData );
-		}.bind( this ) )
+		items: this.options.map( ( itemData ) => this.constructItem( itemData ) )
 	} );
 };
 
@@ -111,9 +109,7 @@ SelectWithTextInputWidget.prototype.findSelection = function () {
 		var selectedItem = this.widget.findSelectedItem();
 		selectedItems = selectedItem ? [ selectedItem ] : [];
 	}
-	return selectedItems.map( function ( item ) {
-		return item.getData();
-	} );
+	return selectedItems.map( ( item ) => item.getData() );
 };
 
 /**

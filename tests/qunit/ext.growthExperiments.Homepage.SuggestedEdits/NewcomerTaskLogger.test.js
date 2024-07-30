@@ -4,7 +4,7 @@ const NewcomerTaskLogger = require( '../../../modules/ext.growthExperiments.Home
 
 QUnit.module( 'ext.growthExperiments.NewcomerTaskLogger.js', QUnit.newMwEnvironment() );
 
-QUnit.test( 'constructor', function ( assert ) {
+QUnit.test( 'constructor', ( assert ) => {
 	const logger = new NewcomerTaskLogger();
 	assert.true( logger instanceof NewcomerTaskLogger );
 } );
@@ -39,7 +39,7 @@ QUnit.test( 'should log impressions', function ( assert ) {
 	] );
 } );
 
-QUnit.test( 'should get log metadata', function ( assert ) {
+QUnit.test( 'should get log metadata', ( assert ) => {
 	const logger = new NewcomerTaskLogger();
 
 	const task = {

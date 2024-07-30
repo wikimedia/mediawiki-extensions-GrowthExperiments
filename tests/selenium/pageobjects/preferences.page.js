@@ -4,9 +4,17 @@ const Page = require( 'wdio-mediawiki/Page' );
 
 class PreferencesPage extends Page {
 
-	get homepage() { return $( '#mw-input-wpgrowthexperiments-homepage-enable' ); }
-	get save() { return $( '#prefcontrol' ); }
-	get homepageBox() { return $( '[name="wpgrowthexperiments-homepage-enable"]' ); }
+	get homepage() {
+		return $( '#mw-input-wpgrowthexperiments-homepage-enable' );
+	}
+
+	get save() {
+		return $( '#prefcontrol' );
+	}
+
+	get homepageBox() {
+		return $( '[name="wpgrowthexperiments-homepage-enable"]' );
+	}
 
 	open() {
 		super.openTitle( 'Special:Preferences' );

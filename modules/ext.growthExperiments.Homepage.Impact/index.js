@@ -30,16 +30,16 @@
 		},
 		mobileHandler = function () {
 			var button = OO.ui.infuse( this );
-			button.on( 'click', function () {
+			button.on( 'click', () => {
 				logToggle( true, button.$element );
-				OO.ui.alert( button.title, alertOptions ).then( function () {
+				OO.ui.alert( button.title, alertOptions ).then( () => {
 					logToggle( false, button.$element );
 				} );
 			} );
 		},
 		desktopHandler = function () {
 			var buttonConfig = $( this ).data( 'ooui' ),
-				buttonPopupWidget = new OO.ui.PopupButtonWidget( $.extend(
+				buttonPopupWidget = new OO.ui.PopupButtonWidget( Object.assign(
 					buttonConfig,
 					{
 						title: null,
@@ -77,7 +77,7 @@
 	// See comments in ext.growthExperiments.Homepage.Mentorship/index.js and
 	// ext.growthExperiments.Homepage.mobile/MobileOverlay.js
 	$( pageviewsIconSelector ).each( handler );
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( ( moduleName, $content ) => {
 		if ( moduleName === 'impact' ) {
 			$content.find( pageviewsIconSelector ).each( handler );
 			$content.find( seeSuggestedEditsButtonSelector ).on( 'click', onSuggestedEditsButtonClicked );

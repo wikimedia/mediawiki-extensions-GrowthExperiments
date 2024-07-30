@@ -22,7 +22,7 @@ var TargetInitializer = require( '../TargetInitializer.js' ),
  * @param {ve.ui.Tool[]} [platformConfig.tools]
  */
 function AddLinkTargetInitializer( platformConfig ) {
-	var config = $.extend( {}, platformConfig );
+	var config = Object.assign( {}, platformConfig );
 	config.safeCommands = [ 'recommendedLink' ];
 	config.dataModels = [ DMRecommendedLinkAnnotation, DMRecommendedLinkErrorAnnotation ];
 	config.annotationViews = [ CERecommendedLinkAnnotation, CERecommendedLinkErrorAnnotation ];

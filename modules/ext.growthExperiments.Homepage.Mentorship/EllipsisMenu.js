@@ -96,7 +96,7 @@
 		}
 
 		// connect to the #growthexperiments-homepage-mentorship-learn-more link, if available
-		$homepageContainer.find( '#growthexperiments-homepage-mentorship-learn-more' ).on( 'click', function ( e ) {
+		$homepageContainer.find( '#growthexperiments-homepage-mentorship-learn-more' ).on( 'click', ( e ) => {
 			e.preventDefault();
 
 			ellipsisMenu.showAboutMentorshipModal();

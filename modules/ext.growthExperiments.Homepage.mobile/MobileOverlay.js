@@ -7,6 +7,10 @@
 		initEllipsisMenu = require( '../ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js' );
 
 	/**
+	 * @typedef {Object} Overlay
+	 * @see MobileFrontend/src/mobile.startup/Overlay.js
+	 */
+	/**
 	 * Displays homepage module in an overlay.
 	 *
 	 * @class mw.libs.ge.MobileOverlay
@@ -43,7 +47,7 @@
 		}
 
 		if ( shouldShowInfoButton( options.moduleName ) ) {
-			this.headerPromise = mw.loader.using( 'oojs-ui' ).then( function () {
+			this.headerPromise = mw.loader.using( 'oojs-ui' ).then( () => {
 				var infoButton = new OO.ui.ButtonWidget( {
 					id: 'mw-ge-homepage-suggestededits-info',
 					icon: 'info-unpadded',
@@ -67,7 +71,7 @@
 			} );
 			headerActions = [ promisedView( this.headerPromise ) ];
 		} else if ( shouldShowEllipsisMenu( options.moduleName ) ) {
-			this.headerPromise = mw.loader.using( 'oojs-ui' ).then( function () {
+			this.headerPromise = mw.loader.using( 'oojs-ui' ).then( () => {
 				// eslint-disable-next-line no-jquery/no-global-selector
 				var ellipsisMenu = initEllipsisMenu( $( '.growthexperiments-homepage-container' ) );
 				return View.make(
@@ -129,12 +133,12 @@
 		// module. Then add the HTML to the DOM, then fire a hook so that the JS in the RL
 		// modules can operate on the HTML in the overlay.
 		mw.loader.using( resourceLoaderModules )
-			.then( function () {
+			.then( () => {
 				appendHtml( moduleHtml );
 				// Wait for the header promise to finish before firing the hook
 				return this.headerPromise;
-			}.bind( this ) )
-			.then( function () {
+			} )
+			.then( () => {
 				// It's important to always call the hook from a promise so it executes
 				// after postRender() has finished. It ensures the module content is in
 				// the overlay and can be manipulated.
@@ -143,7 +147,7 @@
 					this.$el
 				);
 				this.onOverlayShown();
-			}.bind( this ) );
+			} );
 	};
 
 	/**

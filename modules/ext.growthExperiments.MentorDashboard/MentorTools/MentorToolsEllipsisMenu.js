@@ -48,7 +48,7 @@
 					{
 						title: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-headline' )
 					}
-				).then( function ( confirmed ) {
+				).then( ( confirmed ) => {
 					if ( confirmed ) {
 						window.location.href = new mw.Title( 'Special:QuitMentorship' ).getUrl();
 					}

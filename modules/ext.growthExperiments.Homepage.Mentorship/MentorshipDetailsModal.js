@@ -2,7 +2,7 @@
 	'use strict';
 
 	function MentorshipDetailsModal( config ) {
-		MentorshipDetailsModal.super.call( this, $.extend( {}, config, {
+		MentorshipDetailsModal.super.call( this, Object.assign( {}, config, {
 			size: 'medium'
 		} ) );
 	}
@@ -20,7 +20,7 @@
 
 	MentorshipDetailsModal.prototype.onOptoutButtonClicked = function () {
 		var dialog = this;
-		setTimeout( function () {
+		setTimeout( () => {
 			dialog.emit( 'optout' );
 		}, 100 );
 
@@ -63,7 +63,7 @@
 	MentorshipDetailsModal.prototype.getActionProcess = function ( action ) {
 		var dialog = this;
 
-		return new OO.ui.Process( function () {
+		return new OO.ui.Process( () => {
 			dialog.close( { action: action } );
 		} );
 	};

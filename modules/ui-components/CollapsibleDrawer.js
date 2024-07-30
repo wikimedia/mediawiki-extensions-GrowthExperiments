@@ -140,14 +140,14 @@ CollapsibleDrawer.prototype.setupHeader = function ( headerText ) {
  * @return {CollapsibleDrawer}
  */
 CollapsibleDrawer.prototype.open = function ( delay ) {
-	this.$element.on( 'transitionend', function () {
+	this.$element.on( 'transitionend', () => {
 		this.isContentHidden = false;
 		this.opened.resolve();
 		this.$element.off( 'transitionend' );
-	}.bind( this ) );
-	setTimeout( function () {
+	} );
+	setTimeout( () => {
 		this.$element.removeClass( 'mw-ge-collapsibleDrawer--animate-in' );
-	}.bind( this ), delay );
+	}, delay );
 	this.opening.resolve();
 	return this;
 };
@@ -198,11 +198,11 @@ CollapsibleDrawer.prototype.hideIntroContent = function () {
 		return promise.resolve();
 	}
 	this.$introContent.addClass( 'mw-ge-collapsibleDrawer-introContent--hidden' );
-	setTimeout( function () {
+	setTimeout( () => {
 		this.isIntroContentHidden = true;
 		this.$introContent.detach();
 		promise.resolve();
-	}.bind( this ), this.contentAnimationDelay );
+	}, this.contentAnimationDelay );
 	return promise;
 };
 
@@ -217,10 +217,10 @@ CollapsibleDrawer.prototype.showIntroContent = function () {
 	this.$element.css( 'bottom', this.$introContent.outerHeight( true ) );
 	this.$introContent.removeClass( 'mw-ge-collapsibleDrawer-introContent--hidden' );
 	this.isIntroContentHidden = false;
-	setTimeout( function () {
+	setTimeout( () => {
 		this.$element.css( 'bottom', 0 );
 		promise.resolve();
-	}.bind( this ), 600 );
+	}, 600 );
 	return promise;
 };
 

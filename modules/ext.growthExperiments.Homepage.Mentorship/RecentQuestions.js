@@ -47,7 +47,7 @@
 			uselang: mw.config.get( 'wgUserLanguage' ),
 			formatversion: 2
 		} )
-			.done( function ( data ) {
+			.done( ( data ) => {
 				if ( !data.homepagequestionstore ) {
 					return;
 				}
@@ -61,7 +61,7 @@
 				if ( !data.homepagequestionstore.questions ) {
 					return;
 				}
-				data.homepagequestionstore.questions.forEach( function ( questionRecord ) {
+				data.homepagequestionstore.questions.forEach( ( questionRecord ) => {
 					if ( questionRecord.isArchived ) {
 						archivedCount++;
 					} else {
@@ -77,7 +77,7 @@
 			} );
 	}
 
-	mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).add( function () {
+	mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).add( () => {
 		updateRecentQuestions();
 	} );
 

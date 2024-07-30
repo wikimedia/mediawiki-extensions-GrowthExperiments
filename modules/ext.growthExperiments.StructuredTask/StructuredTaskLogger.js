@@ -33,7 +33,7 @@ function StructuredTaskLogger( schema, streamName, config ) {
  *   fields are set to some default value if omitted.
  */
 StructuredTaskLogger.prototype.log = function ( action, data, metadataOverride ) {
-	var event = $.extend( {
+	var event = Object.assign( {
 		action: action,
 		/* eslint-disable camelcase */
 		action_data: Utils.serializeActionData( data )
@@ -52,7 +52,7 @@ StructuredTaskLogger.prototype.log = function ( action, data, metadataOverride )
  * @return {Object} Default logging metadata
  */
 StructuredTaskLogger.prototype.getMetadata = function () {
-	return $.extend( this.config, {
+	return Object.assign( this.config, {
 		/* eslint-disable camelcase */
 		newcomer_task_token: suggestedEditSession.newcomerTaskToken,
 		page_id: mw.config.get( 'wgArticleId' ),

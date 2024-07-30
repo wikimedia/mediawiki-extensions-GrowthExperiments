@@ -33,21 +33,19 @@
 	 * @return {Promise} A promise that resolves with user impact API data or fails with a
 	 * fetch error.
 	 */
-	const fetchUserImpactData = ( userId ) => {
-		return new Promise( ( resolve, reject ) => {
-			const encodedUserId = encodeURIComponent( `#${userId}` );
-			const query = new URLSearchParams( { lang: mw.config.get( 'wgUserLanguage' ) } );
-			const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${encodedUserId}?${query.toString()}` );
-			watch( [ data, error ], ( [ dataValue, errorValue ] ) => {
-				if ( dataValue ) {
-					resolve( dataValue );
-				}
-				if ( errorValue ) {
-					reject( errorValue );
-				}
-			} );
+	const fetchUserImpactData = ( userId ) => new Promise( ( resolve, reject ) => {
+		const encodedUserId = encodeURIComponent( `#${ userId }` );
+		const query = new URLSearchParams( { lang: mw.config.get( 'wgUserLanguage' ) } );
+		const { data, error } = useMWRestApi( `/growthexperiments/v0/user-impact/${ encodedUserId }?${ query.toString() }` );
+		watch( [ data, error ], ( [ dataValue, errorValue ] ) => {
+			if ( dataValue ) {
+				resolve( dataValue );
+			}
+			if ( errorValue ) {
+				reject( errorValue );
+			}
 		} );
-	};
+	} );
 
 	/**
 	 * Maybe retrieve data from the following sources (in order):
@@ -156,7 +154,7 @@
 			default:
 				// This should not happen, mobile-overlay should not be used from the server,
 				// logging unrecgnized modes.
-				throw new Error( `Unrecognized homepage module render mode: ${renderMode}` );
+				throw new Error( `Unrecognized homepage module render mode: ${ renderMode }` );
 		}
 	};
 

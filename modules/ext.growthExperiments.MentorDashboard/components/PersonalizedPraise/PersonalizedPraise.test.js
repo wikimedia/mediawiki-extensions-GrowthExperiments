@@ -75,7 +75,7 @@ describe( 'PersonalizedPraise', () => {
 					log: jest.fn(),
 					$store: store,
 					$filters: {
-						convertNumber: jest.fn( ( x ) => `${x}` )
+						convertNumber: jest.fn( ( x ) => `${ x }` )
 					}
 				}
 			}
@@ -94,7 +94,7 @@ describe( 'PersonalizedPraise', () => {
 					log: jest.fn(),
 					$store: store,
 					$filters: {
-						convertNumber: jest.fn( ( x ) => `${x}` )
+						convertNumber: jest.fn( ( x ) => `${ x }` )
 					}
 				}
 			}

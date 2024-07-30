@@ -26,7 +26,7 @@ var TargetInitializer = require( '../TargetInitializer.js' ),
  * @param {ve.ui.Tool[]} [platformConfig.tools]
  */
 function AddImageTargetInitializer( platformConfig ) {
-	var config = $.extend( {}, platformConfig ),
+	var config = Object.assign( {}, platformConfig ),
 		toolbarDialogCommand = new ve.ui.Command(
 			'recommendedImage', 'window', 'toggle', { args: [ 'recommendedImage' ] }
 		);

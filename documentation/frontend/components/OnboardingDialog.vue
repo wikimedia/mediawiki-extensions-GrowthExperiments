@@ -135,7 +135,6 @@ import MultiPane from './MultiPane.vue';
  *
  * @description A multi-step dialog that gives the user detailed information
  * to complete a task. Different steps are are navigable with arrow buttons back and forth.
- *
  */
 
 export default {
@@ -195,7 +194,7 @@ export default {
 		const currentStep = ref( props.initialStep );
 		const greaterStepShown = ref( props.initialStep );
 		const closeSource = ref( undefined );
-		const currentSlotName = computed( () => `step${currentStep.value}` );
+		const currentSlotName = computed( () => `step${ currentStep.value }` );
 		const hasSteps = computed( () => !!slots.step1 );
 		const multiPaneRef = ref( null );
 

@@ -5,7 +5,7 @@ const OptionWithTextInputWidget = require( '../../../modules/ui-components/Optio
 
 QUnit.module( 'ui-components/SelectWithTextInputWidget.js', QUnit.newMwEnvironment() );
 
-QUnit.test( 'constructor based on isMultiSelect option ', function ( assert ) {
+QUnit.test( 'constructor based on isMultiSelect option ', ( assert ) => {
 	const options = [ {
 		data: 'option1',
 		label: 'Option 1'
@@ -19,7 +19,7 @@ QUnit.test( 'constructor based on isMultiSelect option ', function ( assert ) {
 	assert.true( selectWithTextInputMultiSelect.widget instanceof OO.ui.CheckboxMultiselectWidget );
 } );
 
-QUnit.test( 'should return the selected options for multi-select widget', function ( assert ) {
+QUnit.test( 'should return the selected options for multi-select widget', ( assert ) => {
 	const options = [ {
 		data: 'option1',
 		label: 'Option 1'
@@ -37,7 +37,7 @@ QUnit.test( 'should return the selected options for multi-select widget', functi
 	assert.deepEqual( multiSelectWidget.findSelection(), selection );
 } );
 
-QUnit.test( 'should return the selected option for single-select widget', function ( assert ) {
+QUnit.test( 'should return the selected option for single-select widget', ( assert ) => {
 	const options = [ {
 		data: 'option1',
 		label: 'Option 1'
@@ -54,7 +54,7 @@ QUnit.test( 'should return the selected option for single-select widget', functi
 	assert.deepEqual( selectWidget.findSelection(), [ 'option2' ] );
 } );
 
-QUnit.test( 'should support options with text input if hasTextInput is set for options in a multi-select widget', function ( assert ) {
+QUnit.test( 'should support options with text input if hasTextInput is set for options in a multi-select widget', ( assert ) => {
 	const options = [ {
 		data: 'option1',
 		label: 'Option 1'
@@ -70,12 +70,12 @@ QUnit.test( 'should support options with text input if hasTextInput is set for o
 	const multiSelectWidget = new SelectWithTextInputWidget( { options, isMultiSelect: true } );
 	const optionsWithTextInput = [ 'option2', 'option3' ];
 	assert.true( typeof multiSelectWidget.optionWithTextInputWidgets.option1 === 'undefined' );
-	optionsWithTextInput.forEach( function ( data ) {
+	optionsWithTextInput.forEach( ( data ) => {
 		assert.true( multiSelectWidget.optionWithTextInputWidgets[ data ] instanceof OptionWithTextInputWidget );
 	} );
 } );
 
-QUnit.test( 'should return the text input value if the option is selected', function ( assert ) {
+QUnit.test( 'should return the text input value if the option is selected', ( assert ) => {
 	const options = [ {
 		data: 'option1',
 		label: 'Option 1'
@@ -100,7 +100,7 @@ QUnit.test( 'should return the text input value if the option is selected', func
 	assert.strictEqual( multiSelectWidget.getTextInputValueForData( 'option3' ), textInput );
 } );
 
-QUnit.test( 'should disable the text input until the option is selected', function ( assert ) {
+QUnit.test( 'should disable the text input until the option is selected', ( assert ) => {
 	const options = [ {
 		data: 'option1',
 		label: 'Option 1'

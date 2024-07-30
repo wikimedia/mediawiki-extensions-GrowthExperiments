@@ -104,9 +104,9 @@ FiltersDialog.prototype.getActionProcess = function ( action ) {
 				var promise = $.Deferred();
 				this.savePreferences();
 				this.emit( 'done', promise );
-				promise.always( function () {
+				promise.always( () => {
 					this.close( { action: 'done' } );
-				}.bind( this ) );
+				} );
 				return promise;
 			}
 			if ( action === 'cancel' || !action ) {

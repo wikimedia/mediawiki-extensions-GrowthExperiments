@@ -32,12 +32,12 @@
 			mw.message( 'growthexperiments-help-panel-search-no-results' ).text()
 		);
 
-		this.searchInput.$input.on( 'focus', function ( event ) {
+		this.searchInput.$input.on( 'focus', ( event ) => {
 			if ( event.isTrigger === undefined ) {
 				// isTrigger will be undefined if it's a user-initiated action (click).
 				this.logger.log( 'search-focus' );
 			}
-		}.bind( this ) );
+		} );
 
 		this.searchInput.connect( this, { change: 'onSearchInputChange' } );
 		this.$element.append( this.searchInput.$element, this.searchResultsPanel.$element );
@@ -61,9 +61,9 @@
 	HelpPanelSearchWidget.prototype.getApi = function () {
 		if ( !this.apiPromise ) {
 			if ( this.foreignApi ) {
-				this.apiPromise = mw.loader.using( 'mediawiki.ForeignApi' ).then( function () {
+				this.apiPromise = mw.loader.using( 'mediawiki.ForeignApi' ).then( () => {
 					this.api = new mw.ForeignApi( this.foreignApi, { anonymous: true } );
-				}.bind( this ) );
+				} );
 			} else {
 				this.api = new mw.Api();
 				this.apiPromise = $.Deferred().resolve();
@@ -97,7 +97,7 @@
 
 		this.emit( 'enterSearch' );
 		this.setLoading( true );
-		this.getApi().then( function () {
+		this.getApi().then( () => {
 			this.api.get( {
 				action: 'query',
 				list: 'search',
@@ -105,7 +105,7 @@
 				srwhat: 'text',
 				srprop: 'snippet',
 				srsearch: query
-			} ).then( function ( response ) {
+			} ).then( ( response ) => {
 				this.logger.log( 'search', {
 					queryLength: query.length,
 					resultCount: response.query.search.length
@@ -118,10 +118,10 @@
 				} else {
 					this.searchResultsPanel.$element.append( this.$noResultsMessage );
 				}
-			}.bind( this ) ).always( function () {
+			} ).always( () => {
 				this.setLoading( false );
-			}.bind( this ) );
-		}.bind( this ) );
+			} );
+		} );
 	};
 
 	HelpPanelSearchWidget.prototype.buildSearchResult = function ( result, index ) {

@@ -30,11 +30,11 @@ AddSectionImageMobileArticleTarget.prototype.prepareSaveWithoutShowingDialog = f
 		$overlay = this.getSurface().getGlobalOverlay().$element;
 	// FIXME modify?
 	$overlay.addClass( 'mw-ge-addImageMobileArticleTarget--overlay-shown' );
-	promise.done( function () {
+	promise.done( () => {
 		this.restorePlaceholderTitle();
 		// FIXME modify?
 		$overlay.removeClass( 'mw-ge-addImageMobileArticleTarget--overlay-shown' );
-	}.bind( this ) );
+	} );
 	this.updatePlaceholderTitle(
 		// FIXME modify?
 		mw.message( 'growthexperiments-addimage-submitting-title' ).text(),

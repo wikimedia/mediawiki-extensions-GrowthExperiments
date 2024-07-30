@@ -24,14 +24,14 @@
 			icon: 'help',
 			indicator: 'up'
 		};
-		config = $.extend( {}, defaults, config );
+		config = Object.assign( {}, defaults, config );
 		HelpPanelButton.super.call( this, config );
 
 		this.state = { isOpened: isOpened };
 
-		this.on( 'click', function () {
+		this.on( 'click', () => {
 			this.setOpen( !this.state.isOpened );
-		}.bind( this ) );
+		} );
 	}
 
 	OO.inheritClass( HelpPanelButton, OO.ui.ButtonWidget );

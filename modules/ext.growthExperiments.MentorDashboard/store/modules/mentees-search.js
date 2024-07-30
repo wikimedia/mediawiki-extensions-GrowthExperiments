@@ -26,12 +26,10 @@ const actions = {
 		context.commit( 'setReady', false );
 		return $.getJSON( API_URL + '/' + options.query[ 0 ].toUpperCase() + options.query.slice( 1 ) + '?limit=' + LIMIT )
 			.then( ( resp ) => {
-				const aggregatedMentees = resp.usernames.map( ( username ) => {
-					return {
-						label: username,
-						value: username
-					};
-				} );
+				const aggregatedMentees = resp.usernames.map( ( username ) => ( {
+					label: username,
+					value: username
+				} ) );
 				context.commit( 'setMentees', aggregatedMentees );
 			} ).always( () => {
 				context.commit( 'setReady', true );

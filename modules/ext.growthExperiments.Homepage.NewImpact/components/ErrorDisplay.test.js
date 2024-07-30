@@ -9,20 +9,18 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 const { mount } = require( '@vue/test-utils' );
 const ErrorDisplay = require( './ErrorDisplay.vue' );
 
-const renderComponent = ( props, provide ) => {
-	return mount( ErrorDisplay, {
-		props,
-		components: {
-			CText: require( '../../vue-components/CText.vue' ),
-			CScoreCards: jest.fn( () => 'ScoreCardsMock' )
-		},
-		global: {
-			provide: Object.assign( {
-				RENDER_MODE: 'desktop'
-			}, provide )
-		}
-	} );
-};
+const renderComponent = ( props, provide ) => mount( ErrorDisplay, {
+	props,
+	components: {
+		CText: require( '../../vue-components/CText.vue' ),
+		CScoreCards: jest.fn( () => 'ScoreCardsMock' )
+	},
+	global: {
+		provide: Object.assign( {
+			RENDER_MODE: 'desktop'
+		}, provide )
+	}
+} );
 
 describe( 'ErrorDisplay', () => {
 	const INPUT_DATA = [
@@ -40,7 +38,7 @@ describe( 'ErrorDisplay', () => {
 		}
 	];
 	for ( const input of INPUT_DATA ) {
-		it( `displays appropriate text when disabled ( third person: ${input.provide.RENDER_IN_THIRD_PERSON})`, () => {
+		it( `displays appropriate text when disabled ( third person: ${ input.provide.RENDER_IN_THIRD_PERSON })`, () => {
 			const wrapper = renderComponent( {}, input.provide );
 			expect( wrapper.element ).toMatchSnapshot();
 		} );

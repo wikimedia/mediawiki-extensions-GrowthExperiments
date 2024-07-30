@@ -82,7 +82,7 @@ StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
 StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
 	return this.constructor.super.prototype.getActionProcess.call(
 		this, action
-	).next( function () {
+	).next( () => {
 		// The following actions are used here:
 		// * editsummary_save
 		// * editsummary_review
@@ -98,11 +98,11 @@ StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
 		}
 		// On cancel, return focus to the inspector
 		if ( action === '' ) {
-			this.manager.lifecycle.closed.done( function () {
+			this.manager.lifecycle.closed.done( () => {
 				mw.hook( 'inspector-regainfocus' ).fire();
 			} );
 		}
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -177,10 +177,8 @@ StructuredTaskSaveDialog.prototype.getDialogData = function ( data ) {
 		checkboxesByName = data.checkboxesByName || {},
 		allowList = [ checkboxesByName.wpWatchthis, checkboxesByName.wpWatchlistExpiry ];
 
-	checkboxFields = checkboxFields.filter( function ( fieldLayout ) {
-		return allowList.indexOf( fieldLayout.getField() ) !== -1;
-	} );
-	return $.extend( {}, data, {
+	checkboxFields = checkboxFields.filter( ( fieldLayout ) => allowList.indexOf( fieldLayout.getField() ) !== -1 );
+	return Object.assign( {}, data, {
 		checkboxFields: checkboxFields
 	} );
 };

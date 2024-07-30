@@ -130,7 +130,7 @@ module.exports = exports = {
 				action: 'growthinvalidatepersonalizedpraisesuggestion',
 				mentee: userName,
 				reason: 'praised'
-			} ).then( function () {
+			} ).then( () => {
 				// redirect the user
 				window.location.href = ( new mw.Title( userName, 3 ) ).getUrl() + '?' + $.param( {
 					action: 'edit',
@@ -144,7 +144,7 @@ module.exports = exports = {
 					],
 					gepersonalizedpraise: 1
 				} );
-			} ).catch( function ( error ) {
+			} ).catch( ( error ) => {
 				mw.notify(
 					mw.msg( 'growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown' ),
 					{ type: 'error' }

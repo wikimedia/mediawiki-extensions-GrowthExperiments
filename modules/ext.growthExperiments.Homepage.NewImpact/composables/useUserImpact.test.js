@@ -1,12 +1,8 @@
 const { quantizeViews } = require( './useUserImpact.js' );
 
-const createArticleViews = ( numberOfItems ) => {
-	return new Array( numberOfItems )
-		.fill( 0 )
-		.map( () => {
-			return { views: Math.ceil( Math.random() * 1000 ) };
-		} );
-};
+const createArticleViews = ( numberOfItems ) => new Array( numberOfItems )
+	.fill( 0 )
+	.map( () => ( { views: Math.ceil( Math.random() * 1000 ) } ) );
 
 describe( 'quantizeViews', () => {
 	it( 'should create 6 data points', () => {

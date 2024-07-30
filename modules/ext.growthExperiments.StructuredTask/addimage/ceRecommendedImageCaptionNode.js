@@ -117,7 +117,7 @@ CERecommendedImageCaptionNode.prototype.setupPlaceholder = function () {
 	this.$placeholder = $( '<p>' )
 		.addClass( 'mw-ge-recommendedImageCaption-placeholder' )
 		.html( this.getPlaceholderHtml() );
-	this.$element.on( 'click', function () {
+	this.$element.on( 'click', () => {
 		// Prevent the field height from changing when the placeholder node is hidden
 		this.$element.css( 'min-height', this.$element.height() );
 		this.$placeholder.addClass( 'oo-ui-element-hidden' );
@@ -125,7 +125,7 @@ CERecommendedImageCaptionNode.prototype.setupPlaceholder = function () {
 		this.$element.trigger( 'focus' );
 		this.$element.removeClass( 'mw-ge-recommendedImageCaption--with-placeholder' );
 		this.articleTarget.logSuggestionInteraction( 'focus', 'caption_entry' );
-	}.bind( this ) );
+	} );
 	this.$element.prepend( this.$placeholder );
 };
 
@@ -149,7 +149,7 @@ CERecommendedImageCaptionNode.prototype.setupHelpButton = function () {
 		invisibleLabel: true,
 		label: mw.message( 'growthexperiments-addimage-caption-help-button' ).text()
 	} );
-	this.helpButton.on( 'click', function () {
+	this.helpButton.on( 'click', () => {
 		articleTarget.logSuggestionInteraction( 'view_help', 'caption_entry' );
 		articleTarget.showCaptionInfoDialog();
 	} );
@@ -162,7 +162,7 @@ CERecommendedImageCaptionNode.prototype.setupHelpButton = function () {
  */
 CERecommendedImageCaptionNode.prototype.getWarningLabel = function () {
 	var $label = $( '<div>' );
-	this.warnings.forEach( function ( warningData ) {
+	this.warnings.forEach( ( warningData ) => {
 		$label.append( $( '<div>' ).text( warningData.text ) );
 	} );
 	return $label;
@@ -208,9 +208,7 @@ CERecommendedImageCaptionNode.prototype.showWarningIfNeeded = function () {
 		'caption_entry',
 		{
 			// eslint-disable-next-line camelcase
-			validation_rules: this.warnings.map( function ( warningData ) {
-				return warningData.id;
-			} )
+			validation_rules: this.warnings.map( ( warningData ) => warningData.id )
 		}
 	);
 };

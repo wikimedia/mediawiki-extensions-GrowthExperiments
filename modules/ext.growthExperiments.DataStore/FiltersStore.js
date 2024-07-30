@@ -187,9 +187,9 @@ FiltersStore.prototype.savePreferences = function () {
 	updatedPreferences[ topicPrefName ] = topicPrefValue;
 	mw.user.options.set( updatedPreferences );
 	this.onSelectionChanged();
-	return new mw.Api().saveOptions( updatedPreferences ).then( function () {
+	return new mw.Api().saveOptions( updatedPreferences ).then( () => {
 		this.preferences = this.api.getPreferences();
-	}.bind( this ) );
+	} );
 };
 
 /**

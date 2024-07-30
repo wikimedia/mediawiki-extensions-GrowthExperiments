@@ -62,7 +62,7 @@ function PostEditPanel( config ) {
 	this.togglePrevNavigation( false );
 	this.toggleNextNavigation( false );
 
-	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, function () {
+	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, () => {
 		var currentTask = this.tasksStore.getCurrentTask();
 		if ( currentTask ) {
 			this.updateNextTask( currentTask );
@@ -70,24 +70,24 @@ function PostEditPanel( config ) {
 		} else {
 			this.getMainArea();
 		}
-	}.bind( this ) );
-	this.tasksStore.on( CONSTANTS.EVENTS.CURRENT_TASK_EXTRA_DATA_CHANGED, function () {
+	} );
+	this.tasksStore.on( CONSTANTS.EVENTS.CURRENT_TASK_EXTRA_DATA_CHANGED, () => {
 		var currentTask = this.tasksStore.getCurrentTask();
 		if ( currentTask ) {
 			this.updateTask( currentTask );
 		}
-	}.bind( this ) );
+	} );
 
-	this.tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, function ( isLoading ) {
+	this.tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, ( isLoading ) => {
 		// Disable next navigation until more tasks are fetched or if there are no more tasks
 		var isNextEnabled = !isLoading && this.tasksStore.hasNextTask();
 		this.toggleNextNavigation( isNextEnabled );
 		this.nextButton.setIcon( isLoading ? 'ellipsis' : 'next' );
-	}.bind( this ) );
-	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_FAILED_LOADING, function () {
+	} );
+	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_FAILED_LOADING, () => {
 		this.toggleNavigation( false );
 		this.getMainArea();
-	}.bind( this ) );
+	} );
 }
 
 OO.initClass( PostEditPanel );

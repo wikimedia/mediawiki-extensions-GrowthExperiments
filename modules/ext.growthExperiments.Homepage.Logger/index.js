@@ -45,7 +45,7 @@
 			return;
 		}
 
-		var data = $.extend(
+		var data = Object.assign(
 			{},
 			mw.config.get( 'wgGEHomepageModuleActionData-' + module ),
 			extraData || {}

@@ -1,7 +1,7 @@
 ( function () {
 
 	function SuggestedEditsPreviousNextWidget( config ) {
-		SuggestedEditsPreviousNextWidget.super.call( this, $.extend( {}, config, {
+		SuggestedEditsPreviousNextWidget.super.call( this, Object.assign( {}, config, {
 			icon: 'arrow' + config.direction,
 			framed: false,
 			disabled: true,

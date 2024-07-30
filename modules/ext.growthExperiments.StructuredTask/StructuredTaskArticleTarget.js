@@ -146,16 +146,16 @@ StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMod
 	var promise = $.Deferred(),
 		confirmationDialogPromise = this.surface.dialogs.openWindow( 'editModeConfirmation' );
 
-	confirmationDialogPromise.opening.then( function () {
+	confirmationDialogPromise.opening.then( () => {
 		this.logger.log(
 			'impression',
 			'',
 			// eslint-disable-next-line camelcase
 			{ active_interface: 'editmode_confirmation_dialog' }
 		);
-	}.bind( this ) );
+	} );
 
-	confirmationDialogPromise.closed.then( function ( data ) {
+	confirmationDialogPromise.closed.then( ( data ) => {
 		var isConfirm = data && data.isConfirm;
 		this.logger.log(
 			isConfirm ? 'editmode_confirm_switch' : 'editmode_cancel_switch',
@@ -165,7 +165,7 @@ StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMod
 			/* eslint-enable camelcase */
 		);
 		return promise.resolve( isConfirm );
-	}.bind( this ) );
+	} );
 
 	return promise;
 };
@@ -174,11 +174,11 @@ StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMod
  * Show a confirmation dialog then switch only if the user confirms leaving with unsaved changes.
  */
 StructuredTaskArticleTarget.prototype.maybeSwitchToVisualWithSuggestions = function () {
-	this.confirmSwitchEditMode( 'visual' ).then( function ( shouldSwitch ) {
+	this.confirmSwitchEditMode( 'visual' ).then( ( shouldSwitch ) => {
 		if ( shouldSwitch ) {
 			this.switchToVisualWithSuggestions();
 		}
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -281,18 +281,18 @@ StructuredTaskArticleTarget.prototype.confirmLeavingSuggestionsMode = function (
 		// eslint-disable-next-line camelcase
 		metadataOverride = { active_interface: 'abandonedit_dialog' };
 
-	abandonEditDialogPromise.opening.then( function () {
+	abandonEditDialogPromise.opening.then( () => {
 		this.logger.log( 'impression', '', metadataOverride );
-	}.bind( this ) );
+	} );
 
-	abandonEditDialogPromise.closed.then( function ( data ) {
+	abandonEditDialogPromise.closed.then( ( data ) => {
 		if ( data && data.action === 'discard' ) {
 			this.logger.log( 'discard', '', metadataOverride );
 			return promise.resolve();
 		}
 		this.logger.log( 'keep', '', metadataOverride );
 		return promise.reject();
-	}.bind( this ) );
+	} );
 	return promise;
 };
 
@@ -313,9 +313,7 @@ StructuredTaskArticleTarget.prototype.tryTeardown = function ( noPrompt, trackMe
 		);
 	}
 	// Show a confirmation when the user hasn't made any edits (T300582)
-	return this.confirmLeavingSuggestionsMode().then( function () {
-		return this.teardownWithoutPrompt( trackMechanism );
-	}.bind( this ) );
+	return this.confirmLeavingSuggestionsMode().then( () => this.teardownWithoutPrompt( trackMechanism ) );
 };
 
 /**

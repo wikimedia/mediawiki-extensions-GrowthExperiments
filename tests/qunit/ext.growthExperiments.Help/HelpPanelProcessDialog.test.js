@@ -23,14 +23,14 @@ QUnit.module( 'ext.growthExperiments.Help/HelpPanelProcessDialog.js', QUnit.newM
 	}
 } ) );
 
-QUnit.test( 'getDefaultPanelForSuggestedEditSession for link-recommendation', function ( assert ) {
+QUnit.test( 'getDefaultPanelForSuggestedEditSession for link-recommendation', ( assert ) => {
 	const helpPanelProcessDialog = new HelpPanelProcessDialog( {
 		suggestedEditSession: linkRecommendationSuggestedEditSession
 	} );
 	assert.strictEqual( helpPanelProcessDialog.getDefaultPanelForSuggestedEditSession(), 'suggested-edits' );
 } );
 
-QUnit.test( 'getDefaultPanelForSuggestedEditSession for copyedit', function ( assert ) {
+QUnit.test( 'getDefaultPanelForSuggestedEditSession for copyedit', ( assert ) => {
 	const helpPanelProcessDialog = new HelpPanelProcessDialog( {
 		suggestedEditSession: copyEditRecommendationSuggestedEditSession
 	} );

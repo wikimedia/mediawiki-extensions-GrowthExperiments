@@ -55,7 +55,7 @@
 			return;
 		}
 
-		var eventData = $.extend(
+		var eventData = Object.assign(
 			{
 				action: action,
 				/* eslint-disable-next-line camelcase */
@@ -213,7 +213,7 @@
 	HelpPanelLogger.prototype.getPageRestrictions = function () {
 		// wgRestrictionCreate, wgRestrictionEdit, wgRestrictionMove
 		return [ 'create', 'edit', 'move' ]
-			.map( function ( action ) {
+			.map( ( action ) => {
 				var restrictions = mw.config.get(
 					'wgRestriction' +
 					action[ 0 ].toUpperCase() +
@@ -224,9 +224,7 @@
 				}
 				return null;
 			} )
-			.filter( function ( r ) {
-				return r;
-			} )
+			.filter( ( r ) => r )
 			.join( ';' );
 	};
 

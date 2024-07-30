@@ -1,12 +1,10 @@
 jest.mock( '../../../ext.growthExperiments.MentorDashboard/store/MenteeOverviewApi.js' );
-jest.mock( '../Tags.json', () => {
-	return {
-		questions: []
-	};
-}, { virtual: true } );
+jest.mock( '../Tags.json', () => ( {
+	questions: []
+} ), { virtual: true } );
 
-const jsonStoredPresets = ( { usersToShow, maxedits, minedits, onlystarred } = {} ) => {
-	return JSON.stringify( {
+const jsonStoredPresets =
+	( { usersToShow, maxedits, minedits, onlystarred } = {} ) => JSON.stringify( {
 		usersToShow,
 		filters: {
 			minedits,
@@ -14,7 +12,6 @@ const jsonStoredPresets = ( { usersToShow, maxedits, minedits, onlystarred } = {
 			onlystarred
 		}
 	} );
-};
 
 describe( 'utils', () => {
 	afterEach( () => {

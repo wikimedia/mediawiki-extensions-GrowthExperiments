@@ -12,7 +12,7 @@ const { config } = require( '@vue/test-utils' );
  */
 function $i18nMock( key, ...args ) {
 	function serializeArgs() {
-		return args.length ? `${key}:[${args.join( ',' )}]` : key;
+		return args.length ? `${ key }:[${ args.join( ',' ) }]` : key;
 	}
 	/**
 	 * mw.Message-like object with .text() and .parse() method
@@ -36,7 +36,7 @@ config.global.mocks = {
 };
 config.global.directives = {
 	'i18n-html': ( el, binding ) => {
-		el.innerHTML = `${binding.arg} (${binding.value})`;
+		el.innerHTML = `${ binding.arg } (${ binding.value })`;
 	}
 };
 

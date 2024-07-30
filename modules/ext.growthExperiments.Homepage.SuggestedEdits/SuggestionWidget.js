@@ -13,7 +13,7 @@ function SuggestionWidget( config ) {
 	this.suggestionData = config.suggestionData;
 	this.confirmed = this.suggestionData.confirmed;
 
-	SuggestionWidget.super.call( this, $.extend( {}, config ) );
+	SuggestionWidget.super.call( this, Object.assign( {}, config ) );
 
 	this.suggestionLabel = new OO.ui.LabelWidget( {
 		label: this.suggestionData.text

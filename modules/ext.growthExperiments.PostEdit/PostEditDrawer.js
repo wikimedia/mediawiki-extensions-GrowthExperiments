@@ -57,10 +57,10 @@ PostEditDrawer.prototype.showToastMessage = function ( delay ) {
 		).append( $toastMessageArea );
 	$( document.body ).append( $toastMessageOverlay );
 	$toastMessageArea.append( this.toastMessage.$element );
-	this.toastMessage.on( 'hide', function () {
+	this.toastMessage.on( 'hide', () => {
 		$toastMessageOverlay.detach();
 	} );
-	setTimeout( function () {
+	setTimeout( () => {
 		promise.resolve();
 	}, delay );
 	return promise;

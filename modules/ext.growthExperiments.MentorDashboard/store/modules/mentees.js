@@ -3,15 +3,13 @@ const tagsToFilterBy = require( '../Tags.json' );
 const userPreferences = require( './user-preferences.js' );
 const MENTEE_OVERVIEW_PRESETS_PREF = 'growthexperiments-mentee-overview-presets';
 
-const createDefaultPresets = () => {
-	return {
-		limit: 10,
-		editCountMin: 1,
-		editCountMax: 500,
-		onlyStarred: false,
-		activeDaysAgo: undefined
-	};
-};
+const createDefaultPresets = () => ( {
+	limit: 10,
+	editCountMin: 1,
+	editCountMax: 500,
+	onlyStarred: false,
+	activeDaysAgo: undefined
+} );
 
 const getInitialPresetsWithFallback = () => {
 	let initialPresets = createDefaultPresets();
@@ -28,7 +26,7 @@ const getInitialPresetsWithFallback = () => {
 		};
 	} catch ( err ) {
 		if ( err instanceof SyntaxError ) {
-			mw.log.warn( `Failed parsing JSON stored preference ${MENTEE_OVERVIEW_PRESETS_PREF}` );
+			mw.log.warn( `Failed parsing JSON stored preference ${ MENTEE_OVERVIEW_PRESETS_PREF }` );
 		} else {
 			mw.log.error( err );
 		}
@@ -92,31 +90,27 @@ const removeEmpty = ( obj ) => {
 
 const filtersToPresets = ( {
 	limit, editCountMin, editCountMax, onlyStarred, activeDaysAgo
-} ) => {
-	return {
-		usersToShow: limit,
-		filters: {
-			activedaysago: activeDaysAgo,
-			maxedits: editCountMax,
-			minedits: editCountMin,
-			onlystarred: onlyStarred
-		}
-	};
-};
-
-const filtersToParams = ( {
-	editCountMin, editCountMax, onlyStarred, activeDaysAgo, sortBy, order, prefix
-} ) => {
-	return {
-		order,
-		prefix,
+} ) => ( {
+	usersToShow: limit,
+	filters: {
 		activedaysago: activeDaysAgo,
 		maxedits: editCountMax,
 		minedits: editCountMin,
-		onlystarred: onlyStarred,
-		sortby: sortBy
-	};
-};
+		onlystarred: onlyStarred
+	}
+} );
+
+const filtersToParams = ( {
+	editCountMin, editCountMax, onlyStarred, activeDaysAgo, sortBy, order, prefix
+} ) => ( {
+	order,
+	prefix,
+	activedaysago: activeDaysAgo,
+	maxedits: editCountMax,
+	minedits: editCountMin,
+	onlystarred: onlyStarred,
+	sortby: sortBy
+} );
 
 // TODO validate should not commit changes, separate validation
 // from mutations
@@ -160,29 +154,29 @@ const validateAndApplyFilters = ( context, filters = {} ) => {
 	return true;
 };
 
-const mwLink = ( title, ...args ) => {
-	return {
-		href: mw.util.getUrl( title, ...args ),
-		text: title
-	};
-};
+const mwLink = ( title, ...args ) => ( {
+	href: mw.util.getUrl( title, ...args ),
+	text: title
+} );
 
-const aggregateMentees = ( mentees, starredMentees ) => mentees.map( ( mentee ) => {
-	return Object.assign( {}, mentee, {
+const aggregateMentees = ( mentees, starredMentees ) => mentees.map( ( mentee ) => Object.assign(
+	{},
+	mentee,
+	{
 		isStarred: starredMentees.indexOf( Number( mentee.user_id ) ) !== -1,
 		questions: {
 			value: mw.language.convertNumber( mentee.questions ),
-			link: mwLink( `Special:Contributions/${mentee.username}`, {
+			link: mwLink( `Special:Contributions/${ mentee.username }`, {
 				tagfilter: tagsToFilterBy.questions.join( '|' )
 			} )
 		},
 		editcount: {
 			value: mw.language.convertNumber( mentee.editcount ),
-			link: mwLink( `Special:Contributions/${mentee.username}` )
+			link: mwLink( `Special:Contributions/${ mentee.username }` )
 		},
 		reverted: {
 			value: mw.language.convertNumber( mentee.reverted ),
-			link: mwLink( `Special:Contributions/${mentee.username}`, {
+			link: mwLink( `Special:Contributions/${ mentee.username }`, {
 				tagfilter: tagsToFilterBy.reverted.join( '|' )
 			} )
 		},
@@ -192,8 +186,8 @@ const aggregateMentees = ( mentees, starredMentees ) => mentees.map( ( mentee ) 
 				page: 'User:' + mentee.username
 			} )
 		}
-	} );
-} );
+	}
+) );
 
 // actions
 const actions = {

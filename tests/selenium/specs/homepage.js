@@ -3,25 +3,23 @@
 const assert = require( 'assert' ),
 	HomepagePage = require( '../pageobjects/homepage.page' );
 
-describe( 'Homepage', function () {
+describe( 'Homepage', () => {
 
-	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', async function () {
+	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', async () => {
 		const copyeditArticle = 'Classical kemençe';
-		await browser.execute( ( done ) =>
-			mw.loader.using( 'mediawiki.api' ).then( () =>
-				new mw.Api().saveOptions( {
-					'growthexperiments-homepage-se-filters': JSON.stringify( [ 'copyedit' ] )
-				} ).done( () => done() )
-			) );
+		await browser.execute( ( done ) => mw.loader.using( 'mediawiki.api' ).then( () => new mw.Api().saveOptions( {
+			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'copyedit' ] )
+		} ).done( () => done() )
+		) );
 
 		await HomepagePage.open();
-		await browser.waitUntil( async () => {
-			return await HomepagePage.suggestedEditsCardTitle.getText() === copyeditArticle;
-		} );
-		await browser.waitUntil( async () => {
-			return await HomepagePage.suggestedEditsCardUrl.waitForExist() &&
-				await HomepagePage.suggestedEditsCardUrl.getAttribute( 'href' ) !== '#';
-		} );
+		await browser.waitUntil(
+			async () => await HomepagePage.suggestedEditsCardTitle.getText() === copyeditArticle
+		);
+		await browser.waitUntil(
+			async () => await HomepagePage.suggestedEditsCardUrl.waitForExist() &&
+				await HomepagePage.suggestedEditsCardUrl.getAttribute( 'href' ) !== '#'
+		);
 		await HomepagePage.suggestedEditsCard.waitForClickable();
 		await HomepagePage.suggestedEditsCard.click();
 
@@ -33,15 +31,13 @@ describe( 'Homepage', function () {
 		// Get the revision ID of the change that was just made.
 		let requests = await browser.getRequests();
 		let savedRevId;
-		requests.forEach( function ( request ) {
+		requests.forEach( ( request ) => {
 			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-copyedit' ] ) {
 				savedRevId = request.response.body.visualeditoredit.newrevid;
 			}
 		} );
 
-		const username = await browser.execute( function () {
-			return mw.user.getName();
-		} );
+		const username = await browser.execute( () => mw.user.getName() );
 		let result = await HomepagePage.waitUntilRecentChangesItemExists( 'newcomer task copyedit', copyeditArticle, username );
 		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
 
@@ -51,7 +47,7 @@ describe( 'Homepage', function () {
 		assert.ok( HomepagePage.postEditDialog.isDisplayed() );
 
 		requests = await browser.getRequests();
-		requests.forEach( function ( request ) {
+		requests.forEach( ( request ) => {
 			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-copyedit' ] ) {
 				savedRevId = request.response.body.visualeditoredit.newrevid;
 			}
@@ -59,7 +55,7 @@ describe( 'Homepage', function () {
 
 		result = await HomepagePage.waitUntilRecentChangesItemExists( 'newcomer task copyedit', copyeditArticle, username );
 		let found = false;
-		result.query.recentchanges.forEach( function ( rc ) {
+		result.query.recentchanges.forEach( ( rc ) => {
 			if ( rc.revid === savedRevId ) {
 				found = true;
 			}
@@ -77,7 +73,7 @@ describe( 'Homepage', function () {
 		await HomepagePage.runJobs( 'Calling runJobs.php for third edit' );
 
 		requests = await browser.getRequests();
-		requests.forEach( function ( request ) {
+		requests.forEach( ( request ) => {
 			if ( request.method === 'POST' && request.body && request.body[ 'data-ge-task-copyedit' ] ) {
 				savedRevId = request.response.body.visualeditoredit.newrevid;
 			}

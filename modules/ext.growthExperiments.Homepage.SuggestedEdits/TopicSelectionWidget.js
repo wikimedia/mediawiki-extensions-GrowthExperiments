@@ -33,7 +33,7 @@ var SuggestionWidget = require( './SuggestionWidget.js' ),
  * @param {Object} GROUPED_TOPICS Topics to show, organized by group
  */
 function TopicSelectionWidget( config, GROUPED_TOPICS ) {
-	config = $.extend( {
+	config = Object.assign( {
 		initialLimit: 12,
 		filters: new TopicFilters()
 	}, config );
@@ -63,13 +63,11 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 	this.suggestionGroupWidgets = [];
 	for ( var key in GROUPED_TOPICS ) {
 		var group = GROUPED_TOPICS[ key ];
-		var suggestionWidgets = group.topics.map( function ( topic ) {
-			return new SuggestionWidget( { suggestionData: {
-				id: topic.id,
-				text: topic.name,
-				confirmed: config.filters.getTopics().indexOf( topic.id ) !== -1
-			} } );
-		} );
+		var suggestionWidgets = group.topics.map( ( topic ) => new SuggestionWidget( { suggestionData: {
+			id: topic.id,
+			text: topic.name,
+			confirmed: config.filters.getTopics().indexOf( topic.id ) !== -1
+		} } ) );
 		var displayedSuggestionWidgets = suggestionWidgets;
 		var hiddenSuggestionWidgets = [];
 
@@ -83,9 +81,7 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 				hiddenSuggestionWidgets = suggestionWidgets.slice( config.initialLimit );
 			}
 			// If any of the suggestions we want to hide is selected, don't hide anything
-			var anyHiddenSelected = hiddenSuggestionWidgets.some( function ( suggestion ) {
-				return suggestion.confirmed;
-			} );
+			var anyHiddenSelected = hiddenSuggestionWidgets.some( ( suggestion ) => suggestion.confirmed );
 			if ( anyHiddenSelected ) {
 				displayedSuggestionWidgets = suggestionWidgets;
 				hiddenSuggestionWidgets = [];
@@ -125,19 +121,15 @@ OO.inheritClass( TopicSelectionWidget, OO.ui.Widget );
 TopicSelectionWidget.prototype.getSelectedTopics = function () {
 	// Get the state of all suggestion widgets, even the hidden ones!
 	return this.suggestions
-		.filter( function ( suggestion ) {
-			return suggestion.confirmed;
-		} )
-		.map( function ( suggestion ) {
-			return suggestion.suggestionData.id;
-		} );
+		.filter( ( suggestion ) => suggestion.confirmed )
+		.map( ( suggestion ) => suggestion.suggestionData.id );
 };
 
 /**
  * @param {string[]} topics IDs of topics to mark as selected
  */
 TopicSelectionWidget.prototype.setSelectedTopics = function ( topics ) {
-	this.suggestions.forEach( function ( suggestion ) {
+	this.suggestions.forEach( ( suggestion ) => {
 		suggestion.confirmed = topics.indexOf( suggestion.suggestionData.id ) !== -1;
 	} );
 };

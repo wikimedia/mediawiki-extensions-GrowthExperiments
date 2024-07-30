@@ -16,60 +16,58 @@ const ArticlesList = require( './ArticlesList.vue' );
 const { useUserImpact } = require( '../composables/useUserImpact.js' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( '../constants.js' );
 
-const impactServerData = () => {
-	return {
-		'@version': 5,
-		userId: 15,
-		userName: 'Newcomer12',
-		receivedThanksCount: 0,
-		editCountByNamespace: [
-			4
-		],
-		editCountByDay: {
-			'2022-12-14': 4
+const impactServerData = () => ( {
+	'@version': 5,
+	userId: 15,
+	userName: 'Newcomer12',
+	receivedThanksCount: 0,
+	editCountByNamespace: [
+		4
+	],
+	editCountByDay: {
+		'2022-12-14': 4
+	},
+	timeZone: [
+		'System|0',
+		0
+	],
+	newcomerTaskEditCount: 1,
+	lastEditTimestamp: 1671044060,
+	generatedAt: 1671099466,
+	longestEditingStreak: {
+		datePeriod: {
+			start: '2022-12-14',
+			end: '2022-12-14',
+			days: 1
 		},
-		timeZone: [
-			'System|0',
-			0
-		],
-		newcomerTaskEditCount: 1,
-		lastEditTimestamp: 1671044060,
-		generatedAt: 1671099466,
-		longestEditingStreak: {
-			datePeriod: {
-				start: '2022-12-14',
-				end: '2022-12-14',
-				days: 1
-			},
-			totalEditCountForPeriod: 4
+		totalEditCountForPeriod: 4
+	},
+	totalEditsCount: 4,
+	dailyTotalViews: {
+		'2022-12-14': 100
+	},
+	totalPageviewsCount: 100,
+	recentEditsWithoutPageviews: {
+		article1: {
+			firstEditDate: '2022-12-14',
+			newestEdit: '20221214185420'
 		},
-		totalEditsCount: 4,
-		dailyTotalViews: {
-			'2022-12-14': 100
+		article2: {
+			firstEditDate: '2022-12-14',
+			newestEdit: '20221214171252'
 		},
-		totalPageviewsCount: 100,
-		recentEditsWithoutPageviews: {
-			article1: {
-				firstEditDate: '2022-12-14',
-				newestEdit: '20221214185420'
-			},
-			article2: {
-				firstEditDate: '2022-12-14',
-				newestEdit: '20221214171252'
-			},
-			article3: {
-				firstEditDate: '2022-12-14',
-				newestEdit: '20221214171038'
-			},
-			article4: {
-				firstEditDate: '2022-12-14',
-				newestEdit: '20221214121242'
-			}
+		article3: {
+			firstEditDate: '2022-12-14',
+			newestEdit: '20221214171038'
 		},
-		topViewedArticles: [],
-		topViewedArticlesCount: 12
-	};
-};
+		article4: {
+			firstEditDate: '2022-12-14',
+			newestEdit: '20221214121242'
+		}
+	},
+	topViewedArticles: [],
+	topViewedArticlesCount: 12
+} );
 
 const NO_PERSON_KEYS = [
 	'growthexperiments-homepage-impact-edited-articles-trend-chart-title',
@@ -96,7 +94,7 @@ const renderComponent = ( { props = {}, provide = {} } = {} ) => {
 			mocks: {
 				$log: jest.fn(),
 				$filters: {
-					convertNumber: jest.fn( ( x ) => `${x}` )
+					convertNumber: jest.fn( ( x ) => `${ x }` )
 				}
 			}
 		}
@@ -137,7 +135,7 @@ describe( 'NewImpactVue', () => {
 			expect( wrapper.text() ).toContain( key );
 		}
 		for ( const key of THIRD_PERSON_KEYS ) {
-			expect( wrapper.text() ).toContain( `${key}-third-person` );
+			expect( wrapper.text() ).toContain( `${ key }-third-person` );
 		}
 	} );
 	it( 'hides the recent activity section if Intl is not present', () => {

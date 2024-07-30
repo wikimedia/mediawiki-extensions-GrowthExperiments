@@ -47,16 +47,14 @@
 	MentorshipOptoutReasonDialog.prototype.initialize = function () {
 		MentorshipOptoutReasonDialog.super.prototype.initialize.call( this );
 
-		var selectOptions = this.constructor.static.optoutReasons.map( function ( reason ) {
-			return {
-				data: reason,
-				// Messages used:
-				// * growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor
-				// * growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor
-				// * growthexperiments-homepage-mentorship-optout-confirmation-reason-other
-				label: mw.msg( 'growthexperiments-homepage-mentorship-optout-confirmation-reason-' + reason )
-			};
-		} );
+		var selectOptions = this.constructor.static.optoutReasons.map( ( reason ) => ( {
+			data: reason,
+			// Messages used:
+			// * growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor
+			// * growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor
+			// * growthexperiments-homepage-mentorship-optout-confirmation-reason-other
+			label: mw.msg( 'growthexperiments-homepage-mentorship-optout-confirmation-reason-' + reason )
+		} ) );
 		this.reasonSelect = new SelectWithTextInputWidget( {
 			options: selectOptions,
 			isMultiSelect: false

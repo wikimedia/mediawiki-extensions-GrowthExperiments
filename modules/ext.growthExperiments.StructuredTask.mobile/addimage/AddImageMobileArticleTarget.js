@@ -28,10 +28,10 @@ AddImageMobileArticleTarget.prototype.prepareSaveWithoutShowingDialog = function
 	var promise = ve.createDeferred(),
 		$overlay = this.getSurface().getGlobalOverlay().$element;
 	$overlay.addClass( 'mw-ge-addImageMobileArticleTarget--overlay-shown' );
-	promise.done( function () {
+	promise.done( () => {
 		this.restorePlaceholderTitle();
 		$overlay.removeClass( 'mw-ge-addImageMobileArticleTarget--overlay-shown' );
-	}.bind( this ) );
+	} );
 	this.updatePlaceholderTitle(
 		mw.message( 'growthexperiments-addimage-submitting-title' ).text(),
 		true

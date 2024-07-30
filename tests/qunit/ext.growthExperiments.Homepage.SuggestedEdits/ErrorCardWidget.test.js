@@ -4,7 +4,7 @@ const pathToWidget = '../../../modules/ext.growthExperiments.Homepage.SuggestedE
 
 QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/ErrorCardWidget.js', QUnit.newMwEnvironment() );
 
-QUnit.test( 'constructor', function ( assert ) {
+QUnit.test( 'constructor', ( assert ) => {
 	const ErrorCardWidget = require( pathToWidget );
 	const errorCardWidget = new ErrorCardWidget();
 	const title = '⧼growthexperiments-homepage-suggestededits-error-title⧽';

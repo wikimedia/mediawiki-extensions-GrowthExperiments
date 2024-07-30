@@ -6,7 +6,7 @@ const isQuibbleUsingApache = process.env.QUIBBLE_APACHE || false,
 	AddImageArticleMobilePage = require( '../pageobjects/addimage.article.mobile.page' ),
 	addImageArticleMobilePage = new AddImageArticleMobilePage();
 
-describe( 'add image', function () {
+describe( 'add image', () => {
 
 	beforeEach( async function () {
 		if ( !isQuibbleUsingApache ) {
@@ -14,7 +14,7 @@ describe( 'add image', function () {
 		}
 	} );
 
-	it( 'desktop: user can view image info and image details', async function () {
+	it( 'desktop: user can view image info and image details', async () => {
 		const addImageArticle = "Ma'amoul";
 		await addImageArticlePage.setup( addImageArticle );
 
@@ -30,7 +30,7 @@ describe( 'add image', function () {
 		await addImageArticlePage.discardEdits();
 	} );
 
-	it.skip( 'mobile: user can close the image suggestion UI', async function () {
+	it.skip( 'mobile: user can close the image suggestion UI', async () => {
 		const addImageArticle = "Ma'amoul";
 		await addImageArticlePage.setup( addImageArticle, 'mobile' );
 		await addImageArticleMobilePage.closeImageInspector();

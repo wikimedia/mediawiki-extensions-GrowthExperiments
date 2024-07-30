@@ -29,13 +29,13 @@
 	}
 
 	MenteeOverviewApi.prototype.applyApiParams = function ( params ) {
-		this.apiParams = $.extend( this.apiParams, params );
+		this.apiParams = Object.assign( this.apiParams, params );
 	};
 
 	MenteeOverviewApi.prototype.setFilters = function ( filters ) {
 		// First, delete all filtering API params
 		const menteeOverviewApi = this;
-		Object.keys( this.apiParams ).forEach( function ( key ) {
+		Object.keys( this.apiParams ).forEach( ( key ) => {
 			if ( menteeOverviewApi.nonFilterKeys.indexOf( key ) === -1 ) {
 				delete menteeOverviewApi.apiParams[ key ];
 			}
@@ -48,7 +48,7 @@
 	MenteeOverviewApi.prototype.hasFilters = function () {
 		const menteeOverviewApi = this;
 		let res = false;
-		Object.keys( this.apiParams ).every( function ( key ) {
+		Object.keys( this.apiParams ).every( ( key ) => {
 			if ( res ) {
 				return false;
 			}
@@ -97,7 +97,7 @@
 
 		this.apiParams.offset = this.page * this.apiParams.limit;
 		this.apiParams.uselang = mw.config.get( 'wgUserLanguage' );
-		return $.getJSON( this.apiUrl + '?' + $.param( this.apiParams ) ).then( function ( data ) {
+		return $.getJSON( this.apiUrl + '?' + $.param( this.apiParams ) ).then( ( data ) => {
 			menteeOverviewApi.totalRows = data.totalRows;
 			menteeOverviewApi.assignedMentees = data.assignedMentees;
 			return data.mentees;
@@ -116,7 +116,7 @@
 		if ( this.starredMentees !== null ) {
 			return $.Deferred().resolve( this.starredMentees ).promise();
 		} else {
-			return this.getStarredMenteesAPI().then( function ( mentees ) {
+			return this.getStarredMenteesAPI().then( ( mentees ) => {
 				menteeOverviewApi.starredMentees = mentees;
 				return mentees;
 			} );
@@ -127,7 +127,7 @@
 		return ( new mw.Api().get( {
 			action: 'query',
 			list: 'growthstarredmentees'
-		} ) ).then( function ( data ) {
+		} ) ).then( ( data ) => {
 			const mentees = [];
 			for ( let i = 0; i < data.growthstarredmentees.mentees.length; i++ ) {
 				const menteeId = Number( data.growthstarredmentees.mentees[ i ].id );
@@ -145,15 +145,15 @@
 			action: 'growthstarmentee',
 			gesaction: 'star',
 			gesmentee: '#' + userId
-		} ).then( function () {
+		} ).then(
 			// Do not use this.starredMentees directly, as that might not be inited yet
-			return menteeOverviewApi.getStarredMentees().then( function () {
+			() => menteeOverviewApi.getStarredMentees().then(
 				// REVIEW consider rephrasing the comment.
 				// In case GetStarredMentees fallbacked to API, this is actually
 				// not neeeded. Since this is a set, it doesn't matter much.
-				menteeOverviewApi.starredMentees.push( Number( userId ) );
-			} );
-		} );
+				() => menteeOverviewApi.starredMentees.push( Number( userId ) )
+			)
+		);
 	};
 
 	MenteeOverviewApi.prototype.unstarMentee = function ( userId ) {
@@ -162,24 +162,22 @@
 			action: 'growthstarmentee',
 			gesaction: 'unstar',
 			gesmentee: '#' + userId
-		} ).then( function () {
+		} ).then(
 			// Do not use this.starredMentees directly, as that might not be inited yet
-			return menteeOverviewApi.getStarredMentees().then( function () {
+			() => menteeOverviewApi.getStarredMentees().then( () => {
 				// Remove mentee ID from list of starred mentees; In case GetStarredMentees
 				// fallbacked to API, this is actually not necessary, but it shouldn't hurt.
 				menteeOverviewApi.starredMentees = menteeOverviewApi.starredMentees.filter(
-					function ( el ) {
-						return el !== Number( userId );
-					}
+					( el ) => el !== Number( userId )
 				);
-			} );
-		} );
+			} )
+		);
 	};
 
 	MenteeOverviewApi.prototype.isMenteeStarred = function ( userId ) {
-		return this.getStarredMentees().then( function ( mentees ) {
-			return mentees.indexOf( Number( userId ) ) !== -1;
-		} );
+		return this.getStarredMentees().then(
+			( mentees ) => mentees.indexOf( Number( userId ) ) !== -1
+		);
 	};
 
 	module.exports = new MenteeOverviewApi();

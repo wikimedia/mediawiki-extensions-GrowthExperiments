@@ -4,10 +4,10 @@
 		var that = this,
 			apiUrl = $( this ).data( 'ajax' ),
 			$form = $( this ).closest( 'form' );
-		$.post( apiUrl, $form.serialize() ).then( function () {
+		$.post( apiUrl, $form.serialize() ).then( () => {
 			$( that ).closest( '.growthexperiments-homepage-module-welcomesurveyreminder' )
 				.addClass( 'fadeout' );
-		}, function ( jqXHR ) {
+		}, ( jqXHR ) => {
 			var statusCode = jqXHR.status,
 				statusText = jqXHR.statusText,
 				data = jqXHR.responseJSON,

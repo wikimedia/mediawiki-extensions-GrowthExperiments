@@ -64,9 +64,9 @@ RecommendedLinkToolbarDialog.prototype.initialize = function () {
 	this.$body.append( [ introLabel.$element, this.setupLinkPreview() ] );
 
 	// Used by other dialogs to return focus.
-	mw.hook( 'inspector-regainfocus' ).add( function () {
+	mw.hook( 'inspector-regainfocus' ).add( () => {
 		this.regainFocus();
-	}.bind( this ) );
+	} );
 };
 
 /**
@@ -117,10 +117,10 @@ RecommendedLinkToolbarDialog.prototype.onAnnotationClicked = function (
 RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 	this.updateSurfacePadding();
 	this.setupProgressIndicators( this.linkRecommendationFragments.length );
-	this.showFirstRecommendation().then( function () {
+	this.showFirstRecommendation().then( () => {
 		this.updateActionButtonsMode();
 		this.logger.log( 'impression', this.getSuggestionLogActionData() );
-	}.bind( this ) );
+	} );
 
 	$( window ).on( 'resize',
 		OO.ui.debounce( this.updateActionButtonsMode.bind( this ), 250 )
@@ -135,7 +135,7 @@ RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
  * @param {boolean} [isSwipe] Whether the action is triggered via swipe gesture
  */
 RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function ( isSwipe ) {
-	this.logger.log( 'back', $.extend(
+	this.logger.log( 'back', Object.assign(
 		/* eslint-disable-next-line camelcase */
 		this.getSuggestionLogActionData(), { navigation_type: isSwipe ? 'swipe' : 'click' }
 	) );
@@ -153,7 +153,7 @@ RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function ( isSwipe 
  * @param {boolean} [isSwipe] Whether the action is triggered via swipe gesture
  */
 RecommendedLinkToolbarDialog.prototype.onNextButtonClicked = function ( isSwipe ) {
-	this.logger.log( 'next', $.extend(
+	this.logger.log( 'next', Object.assign(
 		/* eslint-disable-next-line camelcase */
 		this.getSuggestionLogActionData(), { navigation_type: isSwipe ? 'swipe' : 'click' }
 	) );
@@ -184,7 +184,7 @@ RecommendedLinkToolbarDialog.prototype.onYesButtonClicked = function () {
 		this.resetAcceptanceButtonStates();
 	}
 	if ( this.currentDataModel.isAccepted() ) {
-		this.logger.log( 'suggestion_mark_undecided', $.extend( this.getSuggestionLogActionData(), {
+		this.logger.log( 'suggestion_mark_undecided', Object.assign( this.getSuggestionLogActionData(), {
 			// eslint-disable-next-line camelcase
 			previous_acceptance_state: 'accepted'
 		} ) );
@@ -205,7 +205,7 @@ RecommendedLinkToolbarDialog.prototype.onNoButtonClicked = function () {
 		this.resetAcceptanceButtonStates();
 	}
 	if ( this.currentDataModel.isRejected() ) {
-		this.logger.log( 'suggestion_mark_undecided', $.extend( this.getSuggestionLogActionData(), {
+		this.logger.log( 'suggestion_mark_undecided', Object.assign( this.getSuggestionLogActionData(), {
 			// eslint-disable-next-line camelcase
 			previous_acceptance_state: 'rejected'
 		} ) );
@@ -222,13 +222,13 @@ RecommendedLinkToolbarDialog.prototype.onNoButtonClicked = function () {
  */
 RecommendedLinkToolbarDialog.prototype.autoAdvance = function () {
 	var isLastRecommendationSelected = this.isLastRecommendationSelected();
-	setTimeout( function () {
+	setTimeout( () => {
 		if ( isLastRecommendationSelected ) {
 			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
 		} else {
 			this.showRecommendationAtIndex( this.currentIndex + 1 );
 		}
-	}.bind( this ), this.autoAdvanceDelay );
+	}, this.autoAdvanceDelay );
 };
 
 /**
@@ -292,7 +292,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 			rejectionReason: undefined
 		},
 		getRejectionDialogLogActionData = function ( rejectionReason, otherReason ) {
-			return $.extend( this.getSuggestionLogActionData(), {
+			return Object.assign( this.getSuggestionLogActionData(), {
 				/* eslint-disable camelcase */
 				rejection_reason: rejectionReason,
 				other_reason: otherReason ? encodeURIComponent( otherReason ) : undefined
@@ -315,7 +315,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 			}
 		);
 
-		openRejectionDialogWindowPromise.opening.then( function () {
+		openRejectionDialogWindowPromise.opening.then( () => {
 			this.logger.log(
 				'impression',
 				getRejectionDialogLogActionData(
@@ -325,9 +325,9 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 				// eslint-disable-next-line camelcase
 				{ active_interface: 'rejection_dialog' }
 			);
-		}.bind( this ) );
+		} );
 
-		acceptancePromise = openRejectionDialogWindowPromise.closed.then( function ( closedData ) {
+		acceptancePromise = openRejectionDialogWindowPromise.closed.then( ( closedData ) => {
 			var rejectionReason = closedData && closedData.reason ||
 				this.currentDataModel.getRejectionReason();
 			this.logger.log(
@@ -337,10 +337,10 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 				{ active_interface: 'rejection_dialog' }
 			);
 			return closedData;
-		}.bind( this ) );
+		} );
 	}
 
-	acceptancePromise.then( function ( closedData ) {
+	acceptancePromise.then( ( closedData ) => {
 		closedData = closedData || {};
 
 		var rejectionReason = closedData.reason,
@@ -354,7 +354,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		}
 
 		return this.updateAnnotation( fragment, annotation, attributes );
-	}.bind( this ) ).then( function () {
+	} ).then( () => {
 		// Re-enable read-only mode (if it was previously enabled)
 		surfaceModel.setReadOnly( oldReadOnly );
 	} ).then( this.onAcceptanceChanged.bind( this ) );
@@ -392,13 +392,13 @@ RecommendedLinkToolbarDialog.prototype.getIndexForModel = function ( annotationM
  * to render the article text the recommended link is for
  */
 RecommendedLinkToolbarDialog.prototype.selectAnnotationView = function () {
-	this.surface.getView().selectAnnotation( function ( annotationView ) {
+	this.surface.getView().selectAnnotation( ( annotationView ) => {
 		if ( annotationView instanceof CeRecommendedLinkAnnotation ) {
 			this.annotationView = annotationView;
 			this.annotationView.updateActiveClass( true );
 			return true;
 		}
-	}.bind( this ) );
+	} );
 	this.regainFocus();
 };
 
@@ -436,7 +436,7 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function (
 	this.logger.log(
 		'suggestion_focus',
 		// eslint-disable-next-line camelcase
-		$.extend( this.getSuggestionLogActionData(), { manual_focus: manualFocus || false } )
+		Object.assign( this.getSuggestionLogActionData(), { manual_focus: manualFocus || false } )
 	);
 };
 
@@ -452,11 +452,11 @@ RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
 		this.toggle( false );
 		return promise.reject();
 	}
-	this.scrollToAnnotationView( annotationView ).then( function () {
+	this.scrollToAnnotationView( annotationView ).then( () => {
 		this.showRecommendationAtIndex( 0 );
 		this.$element.removeClass( 'animate-below' );
 		promise.resolve();
-	}.bind( this ) );
+	} );
 	return promise;
 };
 
@@ -487,7 +487,7 @@ RecommendedLinkToolbarDialog.prototype.getAnnotationViewAtIndex = function ( ind
  */
 RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el ) {
 	var promise = $.Deferred(),
-		resolveTimeout = setTimeout( function () {
+		resolveTimeout = setTimeout( () => {
 			promise.resolve();
 		}, this.scrollTimeout );
 	OO.ui.Element.static.scrollIntoView( $el, {
@@ -495,7 +495,7 @@ RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el )
 		duration: 'slow',
 		padding: this.surface.padding,
 		direction: 'y'
-	} ).then( function () {
+	} ).then( () => {
 		clearTimeout( resolveTimeout );
 		promise.resolve();
 	} );
@@ -536,7 +536,7 @@ RecommendedLinkToolbarDialog.prototype.getCurrentDataModel = function () {
  * @return {boolean}
  */
 RecommendedLinkToolbarDialog.prototype.allRecommendationsSkipped = function () {
-	return this.linkRecommendationFragments.every( function ( recommendation ) {
+	return this.linkRecommendationFragments.every( ( recommendation ) => {
 		var annotationSet = recommendation.fragment
 			.getAnnotations().getAnnotationsByName( 'mwGeRecommendedLink' );
 		return annotationSet.getLength() ? annotationSet.get( 0 ).isUndecided() : false;
@@ -656,9 +656,9 @@ RecommendedLinkToolbarDialog.prototype.getLinkForPreview = function () {
 			} );
 	linkCache.styleElement( title, $link, this.currentDataModel.getFragment() );
 	$link.removeClass( 'mw-selflink' );
-	$link.on( 'click', function () {
+	$link.on( 'click', () => {
 		this.logger.log( 'link_click', this.getSuggestionLogActionData() );
-	}.bind( this ) );
+	} );
 	return $link;
 };
 
@@ -680,7 +680,7 @@ RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
 		);
 
 	ve.init.platform.linkCache.get( this.currentDataModel.getAttribute( 'lookupTitle' ) )
-		.then( function ( linkData ) {
+		.then( ( linkData ) => {
 			if ( linkData.imageUrl ) {
 				icon.$element
 					.addClass( 'mw-ge-recommendedLinkToolbarDialog-linkPreview-hasImage mw-no-invert' )
@@ -697,7 +697,7 @@ RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
 			.append( [ this.getLinkForPreview(), $extract ] )
 	] );
 
-	this.fetchArticleExtract().then( function ( extract ) {
+	this.fetchArticleExtract().then( ( extract ) => {
 		$extract.text( extract );
 	} );
 
@@ -742,7 +742,7 @@ RecommendedLinkToolbarDialog.prototype.resetAcceptanceButtonStates = function ()
  */
 RecommendedLinkToolbarDialog.prototype.updateProgressIndicators = function () {
 	var currentIndex = this.currentIndex;
-	this.$progress.children().each( function ( index, indicator ) {
+	this.$progress.children().each( ( index, indicator ) => {
 		if ( index <= currentIndex ) {
 			indicator.classList.add( 'mw-ge-recommendedLinkToolbarDialog-progress-indicator-selected' );
 		} else {
@@ -852,7 +852,7 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 				label: mw.message( 'growthexperiments-addlink-skip-reject' ).text()
 			}
 		]
-	} ).closed.then( function ( data ) {
+	} ).closed.then( ( data ) => {
 		if ( data && data.action === 'accept' ) {
 			this.logger.log( 'confirm_skip_all_suggestions', {}, logMetadata );
 			this.goToSuggestedEdits();
@@ -861,7 +861,7 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 			this.showRecommendationAtIndex( 0 );
 			this.regainFocus();
 		}
-	}.bind( this ) );
+	} );
 };
 
 // Helpers
@@ -966,14 +966,14 @@ RecommendedLinkToolbarDialog.prototype.fetchArticleExtract = function () {
 		return promise;
 	}
 
-	$.get( apiUrlBase + '/page/summary/' + formatTitle( title ) ).then( function ( data ) {
+	$.get( apiUrlBase + '/page/summary/' + formatTitle( title ) ).then( ( data ) => {
 		if ( data && data.extract ) {
 			this.extracts[ title ] = data.extract;
 			promise.resolve( data.extract );
 		} else {
 			promise.reject();
 		}
-	}.bind( this ) ).catch( function () {
+	} ).catch( () => {
 		promise.reject();
 	} );
 	return promise;

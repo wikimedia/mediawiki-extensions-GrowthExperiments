@@ -14,10 +14,10 @@ function PostEditToastMessage( config ) {
 	this.isHidden = false;
 	if ( config.autoHideDuration ) {
 		var autohide = setTimeout( this.hide.bind( this ), config.autoHideDuration );
-		this.$element.on( 'click', function () {
+		this.$element.on( 'click', () => {
 			clearTimeout( autohide );
 			this.hide();
-		}.bind( this ) );
+		} );
 	}
 	this.$element.addClass( [
 		'mw-ge-postEditToastMessage',
@@ -26,9 +26,9 @@ function PostEditToastMessage( config ) {
 			'mw-ge-postEditToastMessage-mobile' :
 			'mw-ge-postEditToastMessage-desktop'
 	] );
-	setTimeout( function () {
+	setTimeout( () => {
 		this.toggleHiddenState( false );
-	}.bind( this ), 200 );
+	}, 200 );
 }
 
 OO.inheritClass( PostEditToastMessage, OO.ui.MessageWidget );

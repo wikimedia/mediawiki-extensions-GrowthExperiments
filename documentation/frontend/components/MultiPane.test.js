@@ -17,23 +17,19 @@ const renderComponent = ( props, slots ) => {
 	return wrapper;
 };
 
-const swipeToRight = ( wrapper ) => {
-	return wrapper.trigger( 'touchstart', {
-		touches: [ { clientX: 100, clientY: 400 } ]
-	} )
-		.then( () => wrapper.trigger( 'touchmove', {
-			touches: [ { clientX: 150, clientY: 400 } ]
-		} ) );
-};
+const swipeToRight = ( wrapper ) => wrapper.trigger( 'touchstart', {
+	touches: [ { clientX: 100, clientY: 400 } ]
+} )
+	.then( () => wrapper.trigger( 'touchmove', {
+		touches: [ { clientX: 150, clientY: 400 } ]
+	} ) );
 
-const swipeToLeft = ( wrapper ) => {
-	return wrapper.trigger( 'touchstart', {
-		touches: [ { clientX: 100, clientY: 400 } ]
-	} )
-		.then( () => wrapper.trigger( 'touchmove', {
-			touches: [ { clientX: 50, clientY: 400 } ]
-		} ) );
-};
+const swipeToLeft = ( wrapper ) => wrapper.trigger( 'touchstart', {
+	touches: [ { clientX: 100, clientY: 400 } ]
+} )
+	.then( () => wrapper.trigger( 'touchmove', {
+		touches: [ { clientX: 50, clientY: 400 } ]
+	} ) );
 
 describe( 'MultiPane', () => {
 	it( 'should render default slot content', () => {

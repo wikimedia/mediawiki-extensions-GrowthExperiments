@@ -105,11 +105,9 @@ module.exports = exports = {
 			rootStyle,
 			otherAttrs
 		} = useSplitAttributes( attrs, internalClasses );
-		const inputClasses = computed( () => {
-			return {
-				'ext-growthExperiments-NumberInput__input--has-value': !!wrappedModel.value
-			};
-		} );
+		const inputClasses = computed( () => ( {
+			'ext-growthExperiments-NumberInput__input--has-value': !!wrappedModel.value
+		} ) );
 
 		// Emit other events to the parent in case they're needed.
 		const onInput = ( event ) => {

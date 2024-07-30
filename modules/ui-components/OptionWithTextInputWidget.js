@@ -34,9 +34,9 @@ OptionWithTextInputWidget.prototype.setupTextInput = function ( textInputConfig 
 	}
 	this.textInputWidget = new OO.ui.TextInputWidget( widgetConfig );
 	this.optionWidget.$label.append( this.textInputWidget.$element );
-	this.optionWidget.on( 'change', function ( isSelected ) {
+	this.optionWidget.on( 'change', ( isSelected ) => {
 		this.textInputWidget.setDisabled( !isSelected );
-	}.bind( this ) );
+	} );
 };
 
 /**

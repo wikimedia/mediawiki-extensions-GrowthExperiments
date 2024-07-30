@@ -40,7 +40,7 @@
 		if ( !url ) {
 			// For the empty skeleton loading card on module load, don't allow
 			// clicks to go anywhere.
-			this.$element.on( 'click', function ( e ) {
+			this.$element.on( 'click', ( e ) => {
 				e.preventDefault();
 			} );
 		}
@@ -58,14 +58,14 @@
 		if ( this.data.thumbnailSource !== null ) {
 			$imageContent.addClass( 'skeleton' );
 			// Download the image but don't add to the DOM.
-			$imageForCaching.attr( 'src', this.data.thumbnailSource ).on( 'load', function () {
+			$imageForCaching.attr( 'src', this.data.thumbnailSource ).on( 'load', () => {
 				$imageForCaching.remove();
 				// Now that the image has downloaded, remove the loading animation.
 				$imageContent.removeClass( 'skeleton no-image' );
 				$imageContent.addClass( 'mw-no-invert' );
 				// The image was already downloaded, so doing this does not make another request.
 				$imageContent.css( 'background-image', 'url("' + this.data.thumbnailSource + '")' );
-			}.bind( this ) );
+			} );
 		}
 
 		return $imageContent;

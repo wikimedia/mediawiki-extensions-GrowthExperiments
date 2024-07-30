@@ -5,9 +5,17 @@ const Page = require( 'wdio-mediawiki/Page' ),
 
 class MentorDashboardPage extends Page {
 
-	get enrollButton() { return $( '.oo-ui-buttonInputWidget' ); }
-	get contentText() { return $( '#mw-content-text' ); }
-	get menteeOverviewModule() { return $( '.growthexperiments-mentor-dashboard-module-mentee-overview' ); }
+	get enrollButton() {
+		return $( '.oo-ui-buttonInputWidget' );
+	}
+
+	get contentText() {
+		return $( '#mw-content-text' );
+	}
+
+	get menteeOverviewModule() {
+		return $( '.growthexperiments-mentor-dashboard-module-mentee-overview' );
+	}
 
 	open( query, fragment ) {
 		query = query || {};

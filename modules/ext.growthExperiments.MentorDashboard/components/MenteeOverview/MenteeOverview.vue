@@ -261,7 +261,7 @@ module.exports = exports = {
 			request()
 				.then( apiClient.getStarredMentees.bind( apiClient ) )
 				.then( ( starredMentees ) => {
-					this.rows.forEach( function ( mentee ) {
+					this.rows.forEach( ( mentee ) => {
 						mentee.isStarred = starredMentees
 							.indexOf( Number( mentee.user_id ) ) !== -1;
 					} );

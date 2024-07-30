@@ -1,15 +1,15 @@
 <template>
 	<!-- necessary to make LTR/RTL demos work -->
 	<div>
-		<Layout>
+		<layout>
 			<!-- Show the language selector in all demo pages -->
 			<template v-if="page.relativePath !== 'index.md'" #nav-bar-content-before>
-				<LanguageSelector></LanguageSelector>
+				<language-selector></language-selector>
 			</template>
 			<!-- this is where markdown content will be rendered -->
 			<!-- eslint-disable-next-line vue/no-undef-components -->
 			<Content></Content>
-		</Layout>
+		</layout>
 	</div>
 </template>
 
@@ -27,9 +27,7 @@ const isServer = typeof window === 'undefined';
 // We need to call vue-banana-i18n's useIi18n() from a custom component
 // so Vue finds the registered plugin once an application instance exists.
 const banana = useI18n();
-banana.registerParserPlugin( 'sitename', () => {
-	return name;
-} );
+banana.registerParserPlugin( 'sitename', () => name );
 // Initialize a ref to the default locale reading direction
 const readingDirection = ref( LOCALE_READING_DIRECTION[ DEFAULT_LOCALE ] );
 const setReadingDirection = ( newVal ) => {
@@ -48,7 +46,7 @@ if ( !isServer ) {
 
 	if ( VALID_LOCALES.indexOf( locale ) === -1 ) {
 		// eslint-disable-next-line no-console
-		console.error( `Invalid locale ${locale}. Supported locales are: ${VALID_LOCALES.join( ', ' )}` );
+		console.error( `Invalid locale ${ locale }. Supported locales are: ${ VALID_LOCALES.join( ', ' ) }` );
 	}
 
 	// Set banana's locale (priorly initialized to i18n.js#DEFAULT_LOCALE in theme/index.js )

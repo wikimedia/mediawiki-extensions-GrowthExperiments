@@ -29,7 +29,7 @@ RecommendedImageViewer.prototype.initialize = function () {
 		invisibleLabel: true,
 		classes: [ 'mw-ge-recommendedImageViewer-image-close-button' ]
 	} );
-	this.closeButton.on( 'click', function () {
+	this.closeButton.on( 'click', () => {
 		router.back();
 	} );
 	this.$head.append( this.closeButton.$element );

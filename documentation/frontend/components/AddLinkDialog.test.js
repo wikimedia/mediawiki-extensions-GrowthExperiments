@@ -16,7 +16,7 @@ const renderComponent = ( props ) => {
 			},
 			mocks: {
 				$i18n: vi.fn( ( x, ...params ) => ( {
-					text: vi.fn( () => `${x}:[${params.join( ',' )}]` )
+					text: vi.fn( () => `${ x }:[${ params.join( ',' ) }]` )
 				} ) )
 			}
 		}

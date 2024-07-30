@@ -59,7 +59,7 @@
 		} else {
 			drawer.openWithIntroContent();
 		}
-		drawer.opened.done( function () {
+		drawer.opened.done( () => {
 			// Hide the drawer if the user opens the editor again.
 			// HACK ignore memorized previous ve.activationComplete events.
 			suppressClose = true;
@@ -71,7 +71,7 @@
 			}
 			suppressClose = false;
 		} );
-		drawer.closed.done( function () {
+		drawer.closed.done( () => {
 			if ( OO.ui.isMobile() ) {
 				mw.hook( 'mobileFrontend.editorOpened' ).remove( closeDrawer );
 			} else {
@@ -171,7 +171,7 @@
 			}
 
 			var setupResult;
-			tasksStore.fetchTasks( 'postEditDialog', fetchTasksConfig ).catch( function ( errorMessage ) {
+			tasksStore.fetchTasks( 'postEditDialog', fetchTasksConfig ).catch( ( errorMessage ) => {
 				if ( errorMessage ) {
 					mw.log.error( errorMessage );
 					mw.errorLogger.logError( new Error( errorMessage ), 'error.growthexperiments' );
@@ -211,7 +211,7 @@
 					tryNewTaskOptOuts: tryNewTaskOptOuts
 				} );
 				var displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger, true );
-				displayPanelPromises.openPromise.done( function () {
+				displayPanelPromises.openPromise.done( () => {
 					tryNewTaskPanel.logImpression( {
 						// Increment the count for the task type, because the try new task panel
 						// is triggered at GELevelingUpManagerTaskTypeCountThresholdMultiple - 1,
@@ -220,13 +220,11 @@
 						'edit-count-for-task-type': suggestedEditSession.editCountByTaskType[ suggestedEditSession.taskType ] + 1
 					} );
 				} );
-				return displayPanelPromises.closePromise.then( function ( closeData ) {
-					return {
-						accepted: typeof closeData === 'string',
-						closeData: closeData,
-						shown: true
-					};
-				} );
+				return displayPanelPromises.closePromise.then( ( closeData ) => ( {
+					accepted: typeof closeData === 'string',
+					closeData: closeData,
+					shown: true
+				} ) );
 			}
 
 			return $.Deferred().resolve( {

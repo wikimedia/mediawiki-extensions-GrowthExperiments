@@ -68,7 +68,7 @@ module.exports = exports = {
 		graphStyles() {
 			const minWidth = Math.floor( 160 / this.columns );
 			return {
-				'grid-template-columns': `repeat(${this.columns}, minmax(${minWidth}px, 1fr))`
+				'grid-template-columns': `repeat(${ this.columns }, minmax(${ minWidth }px, 1fr))`
 			};
 		}
 	},
@@ -76,7 +76,8 @@ module.exports = exports = {
 		getColumnStyle( index ) {
 			const contribPercentage = this.getColumnValueFn( index );
 			return {
-				'background-image': `linear-gradient(0deg, ${this.fillColor} ${contribPercentage}%, ${this.backgroundColor} 0)`
+				// eslint-disable-next-line vue/max-len
+				'background-image': `linear-gradient(0deg, ${ this.fillColor } ${ contribPercentage }%, ${ this.backgroundColor } 0)`
 			};
 		}
 	}

@@ -65,11 +65,9 @@ const quantizeViews = ( items, n = 6 ) => {
 	const result = new Array( Math.min( n, items.length ) )
 		.fill()
 		.map( () => items.splice( 0, chunkSize ) )
-		.map( ( chunk ) => {
-			return Object.assign( chunk[ 0 ], {
-				views: sum( chunk.map( ( item ) => item.views ) )
-			} );
-		} );
+		.map( ( chunk ) => Object.assign( chunk[ 0 ], {
+			views: sum( chunk.map( ( item ) => item.views ) )
+		} ) );
 	return result;
 };
 
@@ -106,14 +104,14 @@ function useUserImpact( timeFrame, initialData ) {
 			recentEditsWithoutPageviews
 		} = initialData;
 
-		const toPageviewsArray = ( viewsByDay ) => {
-			// Fall back to empty array if no page view data (clock icon scenario)
-			// Ensure datestring keys are alphanumerically ordered
-			return Object.keys( viewsByDay || [] ).sort().map( ( key ) => ( {
+		// Fall back to empty array if no page view data (clock icon scenario)
+		// Ensure datestring keys are alphanumerically ordered
+		const toPageviewsArray = ( viewsByDay ) => Object.keys( viewsByDay || [] )
+			.sort()
+			.map( ( key ) => ( {
 				date: new Date( key ),
 				views: viewsByDay[ key ]
 			} ) );
-		};
 
 		/**
 		 * Build an array of articles for use in NewImpact/App.vue.

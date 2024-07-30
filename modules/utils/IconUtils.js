@@ -16,7 +16,7 @@
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
 		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
 		var label = 'descriptionMessageKey' in iconData ? mw.message( iconData.descriptionMessageKey ).text() : '';
-		var iconWidget = new OO.ui.IconWidget( $.extend( config, {
+		var iconWidget = new OO.ui.IconWidget( Object.assign( config, {
 			icon: iconData.icon,
 			classes: [ 'suggested-edits-task-explanation-icon' ]
 		} ) );

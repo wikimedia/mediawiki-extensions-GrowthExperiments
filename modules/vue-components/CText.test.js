@@ -2,22 +2,20 @@ const { mount } = require( '@vue/test-utils' );
 const CText = require( './CText.vue' );
 
 // TODO assert for all render modes
-const renderComponent = ( { props, slots = { default: 'Some text' }, RENDER_MODE = 'desktop' } ) => {
-	return mount( CText, {
-		props,
-		slots,
-		global: {
-			provide: {
-				RENDER_MODE
-			},
-			mocks: {
-				$filters: {
-					convertNumber: jest.fn( ( x ) => `localised-${x}` )
-				}
+const renderComponent = ( { props, slots = { default: 'Some text' }, RENDER_MODE = 'desktop' } ) => mount( CText, {
+	props,
+	slots,
+	global: {
+		provide: {
+			RENDER_MODE
+		},
+		mocks: {
+			$filters: {
+				convertNumber: jest.fn( ( x ) => `localised-${ x }` )
 			}
 		}
-	} );
-};
+	}
+} );
 
 const TEST_INPUTS = [
 	{

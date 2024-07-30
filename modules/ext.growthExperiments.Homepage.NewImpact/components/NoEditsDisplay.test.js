@@ -11,22 +11,20 @@ const { mount } = require( '@vue/test-utils' );
 const NoEditsDisplay = require( './NoEditsDisplay.vue' );
 const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 
-const renderComponent = ( props, mocks = {}, renderMode = 'desktop' ) => {
-	return mount( NoEditsDisplay, {
-		props,
-		global: {
-			provide: {
-				RENDER_MODE: renderMode,
-				RENDER_IN_THIRD_PERSON: false
-			},
-			mocks: Object.assign( {
-				$filters: {
-					convertNumber: jest.fn( ( x ) => `${x}` )
-				}
-			}, mocks )
-		}
-	} );
-};
+const renderComponent = ( props, mocks = {}, renderMode = 'desktop' ) => mount( NoEditsDisplay, {
+	props,
+	global: {
+		provide: {
+			RENDER_MODE: renderMode,
+			RENDER_IN_THIRD_PERSON: false
+		},
+		mocks: Object.assign( {
+			$filters: {
+				convertNumber: jest.fn( ( x ) => `${ x }` )
+			}
+		}, mocks )
+	}
+} );
 
 describe( 'NoEditsDisplay', () => {
 	it( 'displays scorecards with thanks count ( desktop & overlay )', () => {

@@ -102,15 +102,13 @@ module.exports = exports = {
 			LIMIT_OPTIONS: LIMIT_OPTIONS,
 			sortBy: null,
 			order: null,
-			fields: this.columns.map( ( column ) => {
-				return Object.assign( {}, column, {
-					cellProps( mentee ) {
-						return Object.assign( {}, column.cellProps, {
-							value: column.data( mentee )
-						} );
-					}
-				} );
-			} )
+			fields: this.columns.map( ( column ) => Object.assign( {}, column, {
+				cellProps( mentee ) {
+					return Object.assign( {}, column.cellProps, {
+						value: column.data( mentee )
+					} );
+				}
+			} ) )
 		};
 	},
 	computed: {
