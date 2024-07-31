@@ -10,5 +10,6 @@
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Brig y dudalen",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Gwaelod y dudalen",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesenabled-control-label": "Ymlaen",
-	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Teitl"
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Teitl",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Delwedd"
 }

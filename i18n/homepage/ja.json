@@ -96,7 +96,7 @@
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "差し戻された編集",
 	"growthexperiments-homepage-impact-scores-thanks-count": "受け取った感謝の回数",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "感謝の仕組みに関するさらなる情報",
-	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}}は{{GENDER:$1|あなた}}のような編集者のコミュニティによって作成されています。{{GENDER:$1|あなた}}が行った編集に対して他の投稿者から感謝されるかもしれませんし、{{GENDER:$1|あなた}}が他の人の編集に対して感謝することもできます。この指標は{{GENDER:|あなたの}}最近 $2 回の編集に対して受け取った感謝のみを含みます。",
+	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}}は{{GENDER:$1|あなた}}のような編集者のコミュニティによって作成されています。{{GENDER:$1|あなた}}が行った編集に対して他の投稿者から感謝されるかもしれませんし、{{GENDER:$1|あなた}}が他の人の編集に対して感謝することもできます。この指標に含まれるのは{{GENDER:|あなたの}}直近 $2 回の編集に対して受け取った感謝に限定されます。",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}}は編集者のコミュニティによって作成されています。あらゆる投稿者は編集に対して他の人から感謝される場合があります。ここには受け取った感謝の数が表示されます。この指標は最近 $1 回の編集に対して受け取った感謝のみを含みます。",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "これは{{GENDER:$1|あなた}}が少なくとも1回の編集をした最高連続日数です。この指標は最近 $2 回の編集での連続日数のみ反映します。",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "これは少なくとも1回の編集をした最高連続日数です。この指標は最近 $1 回の編集での連続日数のみ反映します。",

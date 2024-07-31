@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Karmwiki",
 			"McDutchie"
 		]
 	},
@@ -111,6 +112,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-description": "Un curte titulo que melio representa le campania, projecto, evento o initiativa communitari que se mitte in evidentia.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-label": "Texto del articulo",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "Un message informative, curte e amical pro suscitar interesse.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Pagina de destination",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Etiquetta",
 	"communityconfiguration-helppanel-title": "Pannello de adjuta",
 	"communityconfiguration-helppanel-description": "Adaptar le parametros del pannello de adjuta al requisitos de tu communitate e definir le ressources in illo pro adjutar e orientar le nove redactores.",
 	"communityconfiguration-helppanel-info-text": "Le pannello de adjuta pote esser disponibile in qualcunque spatio de nomines, in modo de lectura o de modification, como configurate infra. Illo include le capacitate de cercar adjuta, cliccar sur ligamines de adjuta, e poner questiones a mentores o al servicio de adjuta. Le ligamines pote esser configurate a esser qualcunque ligamines in le wiki, ma infra se trova recommendationes.",
