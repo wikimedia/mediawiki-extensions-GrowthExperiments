@@ -756,7 +756,8 @@
 					},
 					"type": "data",
 					"options": {
-						"skipDashboardListing": true
+						"skipDashboardListing": true,
+						"excludeFromUI": true
 					}
 				}
 			}
