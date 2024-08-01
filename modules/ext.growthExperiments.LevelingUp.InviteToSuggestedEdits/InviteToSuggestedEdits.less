@@ -19,7 +19,7 @@
 		// Aspect ratio hack. Our grade A browser compatibility group includes ancient versions
 		// of iOS / Android so we can't use the aspect-ratio property.
 		height: 0;
-		padding-bottom: 128/360 * 100%;
+		padding-bottom: (128/360 * 100%);
 		margin-bottom: 16px;
 		border: @border-subtle;
 		background: url( ../../images/suggestededits/leveling-up-ltr.svg ) no-repeat top center;
@@ -62,8 +62,8 @@
 			padding: 11px 20px 13px;
 
 			.oo-ui-labelElement-label {
-				line-height: 16/14 * 1em;
-				font-size: 14/14 * 1em;
+				line-height: (16/14 * 1em);
+				font-size: (14/14 * 1em);
 			}
 		}
 	}
