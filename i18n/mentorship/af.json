@@ -5,5 +5,15 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Aantal teruggerolde wysigings",
-	"growthexperiments-notification-body-mentee-claimed": "Rede: $1"
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Ja, hertoewys my \"mentees\"",
+	"growthexperiments-notification-body-mentee-claimed": "Rede: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Voorstelling boodskap",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week": "Laas week",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks": "Afgelope 2 weke",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately": "Onmiddellik",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "Daagliks",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly": "Weekliks",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly": "Maandeliks",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never": "Nooit",
+	"growthexperiments-manage-mentors-none": "Geen"
 }
