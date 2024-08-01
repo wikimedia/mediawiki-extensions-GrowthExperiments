@@ -200,6 +200,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 
 		$this->assertExpectedToActualConfigWithOverrides(
 			[
+				'$version' => '1.0.0',
 				'GEHelpPanelAskMentor' => 'mentor-talk-page',
 				'GEHelpPanelExcludedNamespaces' => [],
 				'GEHelpPanelHelpDeskPostOnTop' => 'bottom',
@@ -351,7 +352,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 
 		// assert all the new config pages are empty ( === '{}')
 		$this->assertExpectedToActualConfigWithOverrides(
-			[],
+			[ '$version' => '1.0.0' ],
 			[],
 			'MediaWiki:GrowthExperimentsHelpPanel.json'
 		);
@@ -530,6 +531,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 		$this->maintenance->execute();
 
 		$defaultHelpPanelConfig = [
+			'$version' => '1.0.0',
 			'GEHelpPanelAskMentor' => 'mentor-talk-page',
 			'GEHelpPanelExcludedNamespaces' => [],
 			'GEHelpPanelHelpDeskPostOnTop' => 'bottom',
