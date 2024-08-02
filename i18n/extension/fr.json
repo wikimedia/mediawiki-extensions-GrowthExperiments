@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alien333",
 			"DreZhsh",
 			"Gomoko",
 			"JenyxGym",
@@ -178,7 +179,7 @@
 	"communityconfiguration-growthsuggestededits-description": "Personnaliser la fonctionnalité des Modifications suggérées de la page d'accueil des nouveaux venus.",
 	"communityconfiguration-growthsuggestededits-info-text": "Les Modifications suggérées aident les nouveaux venus à commencer leurs modifications. Qu'ils utilisent le web ou le web mobile, ils ont accès aux Modifications suggérées via leur page d'accueil des nouveaux venus. Ces Modifications suggérées reçoivent la balise ''Newcomer task''. Veuillez noter que les mises à jour sous cette forme n'impacteront pas les Modifications suggérées des applications  Wikipedia sous iOS et Android. Contactez l'équipe de ces applications via [https://www.mediawiki.org/wiki/Talk:Wikimedia_Apps Talk:Wikimedia Apps] si vous souhaitez discuter des fonctionnalités des applications pour mobile.\n\nCertains types de tâches pour les nouveaux venus sont affectés des modèles de maintenance.  Les articles contenant ces modèles sont ajoutés dans le flux des Modifications suggérées de la page d'accueil. Pour voir combien d'articles sont disponibles pour chaque type de tâche, voir [[Special:NewcomerTasksInfo]].",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Modèles de boîtes d'information",
-	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Ces modèles sont nécessaires pour la fonctionnalité de la tâche de suggestion  d'images du nouvel arrivant. Les articles contenant ces modèles ne seront pas répertoriés comme des tâches de suggestion d'images.",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Ces modèles sont nécessaires pour la fonctionnalité de la [[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add an image|tâche de suggestion  d'images]] du nouvel arrivant. Les articles contenant ces modèles ne seront pas répertoriés comme des tâches de suggestion d'images.",
 	"communityconfiguration-growthsuggestededits-copyedit-label": "Corriger",
 	"communityconfiguration-growthsuggestededits-copyedit-disabled-control-label": "La tâche est désactivée.",
 	"communityconfiguration-growthsuggestededits-copyedit-templates-label": "Correction : modèles pour trouver des articles qui nécessitent des corrections, comme les fautes d'orthographe, de grammaire ou de ponctuation.",

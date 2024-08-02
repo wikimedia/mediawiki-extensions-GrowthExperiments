@@ -116,6 +116,7 @@
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Ciljna stran za povezavo na stran o ustvaritvi novega članka",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Ciljna stran za povezavo na stran o dodajanju slik v vizualnem urejevalniku",
 	"communityconfiguration-growthsuggestededits-description": "Prilagoditev možnosti Predlagana urejanja domače strani novinca.",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Te predloge so potrebne za možnost opravila [[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add an image|predlaganja slik]] za začetnike. Članki, ki vsebujejo te predloge, ne bodo navedeni pri opravilih predlaganja slik.",
 	"communityconfiguration-growthsuggestededits-image_recommendation-label": "Dodajanje slike neilustriranemu članku (strukturirana naloga)",
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-label": "Dodajanje slike razdelku članka (strukturirana naloga)",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Dodajanje povezave (strukturirana naloga)"
