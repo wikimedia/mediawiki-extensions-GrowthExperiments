@@ -906,6 +906,7 @@
 				"ext.growthExperiments.Homepage.WelcomeSurveyReminder/index.js",
 				"ext.growthExperiments.Homepage.Impact/index.js",
 				"ext.growthExperiments.Homepage.Logger/index.js",
+				"ext.growthExperiments.Homepage.Logger/useEventLogging.js",
 				"ext.growthExperiments.Homepage.Logging/index.js",
 				"utils/Utils.js"
 			],
