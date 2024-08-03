@@ -3,5 +3,6 @@
 /tests/qunit/__mocks__/**
 /vendor/
 /coverage/
+/documentation/frontend/coverage
 /node_modules/
 /docs
