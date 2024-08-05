@@ -5,5 +5,7 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Aantal teruggerolde wysigings",
-	"growthexperiments-notification-body-mentee-claimed": "Rede: $1"
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Ja, hertoewys my \"mentees\"",
+	"growthexperiments-notification-body-mentee-claimed": "Rede: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Voorstelling boodskap"
 }

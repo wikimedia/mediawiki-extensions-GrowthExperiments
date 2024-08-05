@@ -19,7 +19,8 @@
 			"Verdy p",
 			"Wladek92",
 			"Naheulf",
-			"SleaY"
+			"SleaY",
+			"Escargot bleu"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activer le panneau d’aide du rédacteur",
@@ -27,7 +28,7 @@
 	"growthexperiments-help-panel-question-button-text": "Continuer",
 	"growthexperiments-help-panel-submit-question-button-text": "Publier",
 	"growthexperiments-help-panel-return-home-button-text": "Terminé",
-	"growthexperiments-help-panel-editing-help-links-widget-header": "Meilleures pages d’aide pour modifier",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Meilleures pages d’aide à la rédaction",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Voir davantage d’articles d’aide",
 	"growthexperiments-help-panel-question-widget-header": "Envoyer votre question au Bureau d'aide de la communauté",
 	"growthexperiments-help-panel-question-placeholder": "Dites bonjour et posez {{GENDER:$1|}}votre question.",

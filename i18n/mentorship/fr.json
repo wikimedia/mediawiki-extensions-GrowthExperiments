@@ -53,7 +53,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "Page précédente de résultats",
 	"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label": "Retirer l’étoile de l’apprenti",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Aucun apprenti récemment actif trouvé",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Le tableau de bord du mentor affiche seulement les apprentis récemment actifs. Plus d’informations peuvent être affichées via l’icône d’information. Si vous vous êtes récemment inscrit{{GENDER:|e}} en tant que mentor{{GENDER:||e}}, vous pouvez n’avoir encore aucun apprenti affecté.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Le tableau de bord du mentor affiche seulement les apprentis récemment actifs. Plus d’informations peuvent être affichées via l’icône d’information. Si vous vous êtes récemment inscrit{{GENDER:|e}} en tant que mentor{{GENDER:||e}}, vous pouvez n’avoir encore aucun apprenti d'affecté.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Aucun apprenti trouvé",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifier vos filtres pour trouver des apprentis.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressources",

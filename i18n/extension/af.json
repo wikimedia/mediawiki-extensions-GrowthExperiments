@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rooiratel"
+		]
+	},
+	"growthexperiments-edit-config-config-changed": "Konfigurasie is verander. Dit kan enkele minute duren tot die wysigings effek hê. Jy sal dalk vir 'n paar minute moet wag voor die veranderinge verskyn.",
+	"growthexperiments-edit-config-homepage": "Nuweling tuisblad",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Ja",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Nee",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Doelbladsy vir meer inligting oor die toevoeg van skakels."
+}
