@@ -60,6 +60,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Judul",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Halaman pembicaraan pembimbing",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-help-desk-page-label": "Meja bantuan",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Templat-templat ini dibutuhkan untuk fitur tugas [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|saranan gambar]] untuk pendatang baru. Artikel yang memiliki templat ini tidak akan dicantumkan sebagai tugas saranan gambar.",
 	"communityconfiguration-growthsuggestededits-copyedit-disabled-control-label": "Tugas telah dinonaktifkan.",
 	"communityconfiguration-growthsuggestededits-links-disabled-control-label": "Tugas telah dinonaktifkan.",
 	"communityconfiguration-growthsuggestededits-references-label": "Cari referensi",

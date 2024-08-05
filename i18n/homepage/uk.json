@@ -639,5 +639,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Зробіть пропоноване редагування",
 	"echo-category-title-ge-newcomer": "Функції зростання",
 	"echo-pref-tooltip-ge-newcomer": "Повідомляти мене про завдання для новачків та інші функції, розроблені для нових користувачів.",
-	"growthexperiments-homepage-community-updates-header": "Новини спільноти"
+	"growthexperiments-homepage-community-updates-header": "Новини спільноти",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Дізнатися більше"
 }

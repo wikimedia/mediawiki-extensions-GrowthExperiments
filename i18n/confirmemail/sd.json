@@ -6,5 +6,7 @@
 		]
 	},
 	"growthexperiments-confirmemail-emailhelp": "جيڪڏهن توهان جو ڳجهولفظ وڃائجي وڃي تہ توهان جي کاتي کي ٻيھر حاصل ڪرڻ لاءِ ايميل گهربل ھوندي آهي.",
-	"growthexperiments-confirmemail-emailrecommended": "ايميل پتو (سفارش ٿيل)"
+	"growthexperiments-confirmemail-emailrecommended": "ايميل پتو (سفارش ٿيل)",
+	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}} ۾ ڀليڪار: پنھنجي ايميل پتي جي تصديق ڪريو",
+	"growthexperiments-signupcampaign-bullet3": "ننڍن ۽ آسان سنوارن سان شروعات ڪيو"
 }
