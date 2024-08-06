@@ -452,7 +452,7 @@
 	"grant-managementorship": "Manage mentorship",
 	"newcomertasksinfo": "Newcomer Tasks",
 	"newcomertasksinfo-no-data": "No data is available.",
-	"newcomertasksinfo-config-form-info": "Configuration of newcomer tasks can be viewed and changed at [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Configuration of newcomer tasks can be viewed and changed at [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-task-count": "$1",
 	"newcomertasksinfo-table-header-task-type": "Task type",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
