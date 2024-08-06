@@ -11,6 +11,7 @@
 			"MrFraggle",
 			"Reinhard Kraasch",
 			"TMg",
+			"TomatoCake",
 			"Umherirrender"
 		]
 	},
@@ -114,7 +115,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Weiter mit der Benachrichtigung",
 	"growthexperiments-edit-config-keep-going-notification-description": "Maximale Anzahl vorgeschlagener Änderungen, die ein Neuling durchführen kann, um sich für den Erhalt dieser Benachrichtigung zu qualifizieren. Wenn auf 0 gesetzt, erhalten Neuankömmlinge diese Benachrichtigung nicht. Je höher die Zahl, desto mehr Neulinge erhalten diese Benachrichtigung. Diese Benachrichtigung wird nur an Neulinge gesendet, die bereits mindestens eine vorgeschlagene Änderung abgeschlossen haben.",
 	"communityconfiguration-communityupdates-description": "{{#FORMAL:Teile|Teilen Sie}} wichtige Community-Neuigkeiten, Kampagnen, Veranstaltungen oder Wiki-Projekte auf der Neulinge-Homepage.",
-	"communityconfiguration-communityupdates-info-text": "Das Modul [[mw:Special:MyLanguage/Growth/Community_Updates|Community-Updates]] wird auf der Homepage angezeigt und sollte verwendet werden, um wichtige Neuigkeiten, Kampagnen, Veranstaltungen oder Wiki-Projekte aus der Community zu teilen. Priorität sollten Updates erhalten, die die Empfehlung „Themen mit Einfluss“ der [https://meta.wikimedia.org/wiki/Movement_Strategy/Recommendations/Identify_Topics_for_Impact#Changes_and_Actions Movement-Strategie 2030] unterstützen.",
+	"communityconfiguration-communityupdates-info-text": "Das Modul [[mw:Special:MyLanguage/Growth/Community_Updates|Community-Updates]] wird auf der Startseite angezeigt und sollte verwendet werden, um wichtige Neuigkeiten, Kampagnen, Veranstaltungen oder Wiki-Projekte aus der Community zu teilen. Priorität sollten Updates erhalten, die die Empfehlung „Themen mit Einfluss“ der [https://meta.wikimedia.org/wiki/Movement_Strategy/Recommendations/Identify_Topics_for_Impact#Changes_and_Actions Movement-Strategie 2030] unterstützen.",
 	"communityconfiguration-communityupdates-title": "Community-Updates",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesenabled-control-label": "Eingeschaltet",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Titel",
