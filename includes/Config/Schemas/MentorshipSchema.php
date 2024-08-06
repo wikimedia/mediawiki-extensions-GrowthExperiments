@@ -6,13 +6,13 @@ use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
 class MentorshipSchema extends JsonSchema {
-	public const GEMentorshipAutomaticEligibility = [
-		self::TYPE => self::TYPE_BOOLEAN,
-		self::DEFAULT => true,
-	];
 	public const GEMentorshipEnabled = [
 		self::TYPE => self::TYPE_BOOLEAN,
 		self::DEFAULT => false,
+	];
+	public const GEMentorshipAutomaticEligibility = [
+		self::TYPE => self::TYPE_BOOLEAN,
+		self::DEFAULT => true,
 	];
 	public const GEMentorshipMinimumAge = [
 		self::TYPE => self::TYPE_INTEGER,
