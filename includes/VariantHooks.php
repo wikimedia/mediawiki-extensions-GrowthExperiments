@@ -313,9 +313,9 @@ class VariantHooks implements
 		if ( $special->getName() === 'CreateAccount'
 			&& $this->shouldShowNewLandingPageHtml( $special->getContext() )
 			&& $special->getSkin() instanceof SkinMinerva
-			&& $special->getRequest()->getVal( 'warning' ) === 'mobile-frontend-generic-login-new'
+			&& $special->getRequest()->getVal( 'notice' ) === 'mobile-frontend-generic-login-new'
 		) {
-			$special->getRequest()->setVal( 'warning', null );
+			$special->getRequest()->setVal( 'notice', null );
 		}
 	}
 }
