@@ -154,7 +154,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
           class="cdx-label__label"
           for="cdx-checkbox-0"
         >
-          <!---->
+          <!--v-if-->
           <span
             class="cdx-label__label__text"
           >
@@ -164,9 +164,9 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
             
             
           </span>
-          <!---->
+          <!--v-if-->
         </label>
-        <!---->
+        <!--v-if-->
       </div>
     </span>
   </section>

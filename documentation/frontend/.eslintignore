@@ -1,2 +1,3 @@
 !docs/.vitepress/
 docs/.vitepress/cache
+coverage/
