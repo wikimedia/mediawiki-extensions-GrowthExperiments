@@ -43,7 +43,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
           
           growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week
           
-          <!---->
+          <!--v-if-->
           <span
             class="cdx-icon cdx-icon--medium cdx-select-vue__indicator"
           >
@@ -55,7 +55,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
             >
-              <!---->
+              <!--v-if-->
               <g>
                 <path
                   d="m17.5 4.75-7.5 7.5-7.5-7.5L1 6.25l9 9 9-9z"
@@ -73,12 +73,11 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
             id="cdx-select-menu-0"
             role="listbox"
           >
-            <!---->
-            <!---->
+            <!--v-if-->
+            <!--v-if-->
             
             <li
               aria-disabled="false"
-              aria-selected="false"
               class="cdx-menu-item cdx-menu-item--enabled"
               id="cdx-menu-item-2"
               role="option"
@@ -87,7 +86,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               <span
                 class="cdx-menu-item__content"
               >
-                <!---->
+                <!--v-if-->
                 <span
                   class="cdx-menu-item__text"
                 >
@@ -98,9 +97,9 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
                       growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours
                     </bdi>
                   </span>
-                  <!---->
-                  <!---->
-                  <!---->
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if-->
                 </span>
               </span>
               
@@ -116,7 +115,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               <span
                 class="cdx-menu-item__content"
               >
-                <!---->
+                <!--v-if-->
                 <span
                   class="cdx-menu-item__text"
                 >
@@ -127,16 +126,15 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
                       growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week
                     </bdi>
                   </span>
-                  <!---->
-                  <!---->
-                  <!---->
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if-->
                 </span>
               </span>
               
             </li>
             <li
               aria-disabled="false"
-              aria-selected="false"
               class="cdx-menu-item cdx-menu-item--enabled"
               id="cdx-menu-item-4"
               role="option"
@@ -145,7 +143,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               <span
                 class="cdx-menu-item__content"
               >
-                <!---->
+                <!--v-if-->
                 <span
                   class="cdx-menu-item__text"
                 >
@@ -156,16 +154,15 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
                       growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks
                     </bdi>
                   </span>
-                  <!---->
-                  <!---->
-                  <!---->
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if-->
                 </span>
               </span>
               
             </li>
             <li
               aria-disabled="false"
-              aria-selected="false"
               class="cdx-menu-item cdx-menu-item--enabled"
               id="cdx-menu-item-5"
               role="option"
@@ -174,7 +171,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               <span
                 class="cdx-menu-item__content"
               >
-                <!---->
+                <!--v-if-->
                 <span
                   class="cdx-menu-item__text"
                 >
@@ -185,15 +182,15 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
                       growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month
                     </bdi>
                   </span>
-                  <!---->
-                  <!---->
-                  <!---->
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if-->
                 </span>
               </span>
               
             </li>
             
-            <!---->
+            <!--v-if-->
           </ul>
         </div>
       </div>
@@ -235,9 +232,9 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
         size="1"
         type="text"
       />
-      <!---->
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
     </div>
     <textarea
       class="ext-growthExperiments-PersonalizedPraiseSettings__input ext-growthExperiments-PersonalizedPraiseSettings__message_text"

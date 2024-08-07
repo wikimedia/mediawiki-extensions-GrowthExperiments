@@ -131,7 +131,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                   >
-                    <!---->
+                    <!--v-if-->
                     <path
                       d=""
                     />
@@ -265,7 +265,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                   >
-                    <!---->
+                    <!--v-if-->
                     <path
                       d=""
                     />
@@ -419,7 +419,7 @@ exports[`ScoreCards renders correctly without data 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                   >
-                    <!---->
+                    <!--v-if-->
                     <path
                       d=""
                     />
@@ -553,7 +553,7 @@ exports[`ScoreCards renders correctly without data 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                   >
-                    <!---->
+                    <!--v-if-->
                     <path
                       d=""
                     />
