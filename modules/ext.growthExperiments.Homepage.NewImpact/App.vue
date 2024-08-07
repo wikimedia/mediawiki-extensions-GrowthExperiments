@@ -57,21 +57,10 @@ module.exports = exports = {
 		const isModuleUnactivated = inject( 'RELEVANT_USER_MODULE_UNACTIVATED' );
 		const isSuggestedEditsEnabled = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED' );
 		const isSuggestedEditsActivated = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED' );
-		const renderInThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
 		const impactComponent = renderMode === 'mobile-summary' ? 'NewImpactSummary' : 'NewImpact';
 		const errorComponent = renderMode === 'mobile-summary' ? 'ErrorDisplaySummary' : 'ErrorDisplay';
 
 		const impactData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, initialUserImpactData );
-
-		// If the module is activated, and the user hasn't already seen it, then show the
-		// new impact discovery tour.
-		if ( !isModuleUnactivated &&
-			!mw.user.options.get( 'growthexperiments-tour-newimpact-discovery' ) &&
-			renderMode === 'desktop' &&
-			!renderInThirdPerson
-		) {
-			mw.loader.load( 'ext.guidedTour.tour.newimpact_discovery' );
-		}
 
 		return {
 			renderMode,

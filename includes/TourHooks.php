@@ -130,18 +130,6 @@ class TourHooks implements
 					'growthexperiments-tour-response-button-okay'
 				]
 			],
-			'ext.guidedTour.tour.newimpact_discovery' => $moduleTemplate + [
-				'packageFiles' => [
-					'tours/newImpactDiscovery.js',
-					"ext.growthExperiments.Homepage.Logger/index.js",
-					"utils/Utils.js"
-				],
-				'messages' => [
-					'growthexperiments-tour-newimpact-discovery-title',
-					'growthexperiments-tour-newimpact-discovery-description',
-					'growthexperiments-tour-newimpact-discovery-response-button-okay'
-				]
-			]
 		];
 		$resourceLoader->register( $modules );
 	}

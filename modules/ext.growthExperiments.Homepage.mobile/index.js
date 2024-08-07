@@ -98,9 +98,6 @@ var mobile = require( 'mobile.startup' );
 					getSubmodules( newModule ).forEach( ( submodule ) => {
 						homepageModuleLogger.log( submodule, 'mobile-overlay', 'impression' );
 					} );
-					if ( newModule === 'impact' && mw.config.get( 'wgGEUseNewImpactModule' ) ) {
-						maybeShowNewImpactDiscovery();
-					}
 				}
 			}
 
@@ -265,73 +262,6 @@ var mobile = require( 'mobile.startup' );
 		} );
 		welcomeDrawer.show().then( setPreventScrolling.bind( null, true ) );
 		homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-impression' );
-	}
-
-	/**
-	 * Show new impact module discovery tour for users who haven't seen it.
-	 */
-	function maybeShowNewImpactDiscovery() {
-		// Even though this drawer isn't really a tour, we reuse the preference
-		// set on desktop since if the user has seen the tour on desktop they
-		// should not see the drawer on mobile, and vice versa.
-		var newImpactDiscoverySeen = 'growthexperiments-tour-newimpact-discovery',
-			buttonClicked = false,
-			markAsSeen = function () {
-				new mw.Api().saveOption( newImpactDiscoverySeen, 1 );
-			};
-
-		if ( mw.user.options.get( newImpactDiscoverySeen ) ) {
-			return;
-		}
-
-		var newImpactDiscoveryDrawer = new Drawer( {
-			className: 'homepage-newimpact-discovery',
-			showCollapseIcon: false,
-			children: [
-				$( '<main>' )
-					.append(
-						$( '<h4>' ).text( mw.message( 'growthexperiments-tour-newimpact-discovery-title' )
-							.text() ),
-						$( '<p>' ).text( mw.message(
-							'growthexperiments-tour-newimpact-discovery-description'
-						).text() ),
-						$( '<footer>' )
-							.addClass( 'growthexperiments-homepage-newimpact-discovery-footer' )
-							.append(
-								$( '<a>' ).attr( {
-									href: '#/homepage/impact'
-								} ).text(
-									mw.msg(
-										'growthexperiments-tour-newimpact-discovery-response-button-okay'
-									)
-								)
-							)
-					)
-			],
-			onBeforeHide: function () {
-				markAsSeen();
-				setPreventScrolling( false );
-				if ( !buttonClicked ) {
-					homepageModuleLogger.log( 'generic', 'mobile-overlay', 'newimpactdiscovery-close',
-						{ type: 'outside-click' } );
-				}
-			}
-		} );
-
-		$overlayModules.find( '[data-module-name="impact"]' ).append( newImpactDiscoveryDrawer.$el[ 0 ] );
-		newImpactDiscoveryDrawer.$el.find( '.homepage-newimpact-discovery' ).on( 'click', () => {
-			buttonClicked = true;
-			// FIXME: when the click target is the Drawer surface the onBeforeHide hook is also
-			// triggered making an unnecessary repeated post request to the options API
-			markAsSeen();
-			homepageModuleLogger.log( 'generic', 'mobile-overlay', 'newimpactdiscovery-close', {
-				type: 'button'
-			} );
-			newImpactDiscoveryDrawer.hide();
-			setPreventScrolling( false );
-		} );
-		newImpactDiscoveryDrawer.show().then( setPreventScrolling.bind( null, true ) );
-		homepageModuleLogger.log( 'generic', 'mobile-overlay', 'newimpactdiscovery-impression' );
 	}
 
 	/**

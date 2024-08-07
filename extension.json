@@ -882,10 +882,7 @@
 				"growthexperiments-homepage-suggestededits-mobilesummary-footer-button",
 				"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title",
 				"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle",
-				"growthexperiments-homepage-suggestededits-mobilesummary-footer",
-				"growthexperiments-tour-newimpact-discovery-title",
-				"growthexperiments-tour-newimpact-discovery-description",
-				"growthexperiments-tour-newimpact-discovery-response-button-okay"
+				"growthexperiments-homepage-suggestededits-mobilesummary-footer"
 			],
 			"dependencies": [
 				"mobile.startup",
