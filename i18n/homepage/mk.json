@@ -194,7 +194,7 @@
 	"grant-managementorship": "Управување со подучување",
 	"newcomertasksinfo": "Задачи за новодојденци",
 	"newcomertasksinfo-no-data": "Нема достапни податоци.",
-	"newcomertasksinfo-config-form-info": "Поставките за задачи за новодојденци можат да се погледаат и изменат на [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Поставките за задачи за новодојденци можат да се погледаат и изменат на [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Вид задача",
 	"newcomertasksinfo-table-header-task-type-id": "Назнака",
 	"newcomertasksinfo-table-header-task-count": "Број",

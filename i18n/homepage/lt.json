@@ -420,7 +420,7 @@
 	"grant-managementorship": "Tvarkyti mentorystę",
 	"newcomertasksinfo": "Naujokų užduotys",
 	"newcomertasksinfo-no-data": "Nėra duomenų.",
-	"newcomertasksinfo-config-form-info": "Naujokų užduočių konfigūraciją galima peržiūrėti ir keisti [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Naujokų užduočių konfigūraciją galima peržiūrėti ir keisti [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Užduoties tipas",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Skaičius",

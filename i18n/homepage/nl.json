@@ -462,7 +462,7 @@
 	"grant-managementorship": "Mentorschap beheren",
 	"newcomertasksinfo": "Taken voor nieuwkomers",
 	"newcomertasksinfo-no-data": "Geen gegevens beschikbaar",
-	"newcomertasksinfo-config-form-info": "De instellingen voor nieuwkomertaken kunnen worden bekeken en gewijzigd via [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "De instellingen voor nieuwkomertaken kunnen worden bekeken en gewijzigd via [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Taaktype",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Aantal",

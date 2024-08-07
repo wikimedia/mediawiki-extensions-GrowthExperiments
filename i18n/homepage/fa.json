@@ -461,7 +461,7 @@
 	"grant-managementorship": "مدیریت مربی‌گری",
 	"newcomertasksinfo": "وظایف تازه‌وارد",
 	"newcomertasksinfo-no-data": "هیچ دادهای موجود نیست.",
-	"newcomertasksinfo-config-form-info": "پیکربندی وظایف تازه‌واردان را می‌توان در [[Special:EditGrowthConfig]] مشاهده کرد و تغییر داد.",
+	"newcomertasksinfo-config-form-info": "پیکربندی وظایف تازه‌واردان را می‌توان در [[Special:CommunityConfiguration/GrowthSuggestedEdits]] مشاهده کرد و تغییر داد.",
 	"newcomertasksinfo-table-header-task-type": "نوع کار",
 	"newcomertasksinfo-table-header-task-type-id": "شناسه",
 	"newcomertasksinfo-table-header-task-count": "تعداد",

@@ -296,7 +296,7 @@
 	"growthexperiments-addlink-skip-accept": "اڳتي وڌو",
 	"growthexperiments-addlink-skip-reject": "ٻيھر جائزو وٺو",
 	"newcomertasksinfo": "نون-ايندڙن جا ڪم",
-	"newcomertasksinfo-config-form-info": "نون-ايندڙن جي ڪمن جي ڪنفيگيوريشن [[Special:EditGrowthConfig]] تي ڏسي ۽ بدلائي سگهجي ٿي.",
+	"newcomertasksinfo-config-form-info": "نون-ايندڙن جي ڪمن جي ڪنفيگيوريشن [[Special:CommunityConfiguration/GrowthSuggestedEdits]] تي ڏسي ۽ بدلائي سگهجي ٿي.",
 	"newcomertasksinfo-table-header-task-type": "مشق جو قسم",
 	"newcomertasksinfo-table-header-task-type-id": "آئڊي",
 	"newcomertasksinfo-table-header-task-count": "ڳاڻيٽو",

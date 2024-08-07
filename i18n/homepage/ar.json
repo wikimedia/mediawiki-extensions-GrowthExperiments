@@ -468,7 +468,7 @@
 	"grant-managementorship": "إدارة الإرشاد",
 	"newcomertasksinfo": "مهام الوافدين الجدد",
 	"newcomertasksinfo-no-data": "بيانات غير متوفرة.",
-	"newcomertasksinfo-config-form-info": "يمكن الاطلاع على إعدادات مهامّ الوافدين الجدد أو تغييرها عبر [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "يمكن الاطلاع على إعدادات مهامّ الوافدين الجدد أو تغييرها عبر [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "نوع المهمة",
 	"newcomertasksinfo-table-header-task-type-id": "المُعرِّف",
 	"newcomertasksinfo-table-header-task-count": "العدد",

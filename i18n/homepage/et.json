@@ -332,7 +332,7 @@
 	"growthexperiments-addlink-skip-reject": "Vaata uuesti üle",
 	"grant-managementorship": "Mentorluse haldamine",
 	"newcomertasksinfo": "Uue kasutaja ülesanded",
-	"newcomertasksinfo-config-form-info": "Uue kasutaja ülesannete häälestust saab vaadata ja muuta leheküljel [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Uue kasutaja ülesannete häälestust saab vaadata ja muuta leheküljel [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Ülesande tüüp",
 	"newcomertasksinfo-table-header-task-type-id": "Identifikaator",
 	"newcomertasksinfo-table-header-task-count": "Kokku",

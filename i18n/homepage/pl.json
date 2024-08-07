@@ -463,7 +463,7 @@
 	"grant-managementorship": "Zarządzanie opieką nad nowicjuszami",
 	"newcomertasksinfo": "Zadania dla nowicjuszy",
 	"newcomertasksinfo-no-data": "Brak dostępnych danych.",
-	"newcomertasksinfo-config-form-info": "Konfiguracja zadań dla nowicjuszy może być przeglądana i zmieniana na [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Konfiguracja zadań dla nowicjuszy może być przeglądana i zmieniana na [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Rodzaj zadania",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Liczba",

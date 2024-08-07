@@ -429,7 +429,7 @@
 	"grant-managementorship": "Gieđahallat fáttarvuođa",
 	"newcomertasksinfo": "Easkaálgibargobihtát",
 	"newcomertasksinfo-no-data": "Eai leat olámuttos dieđut",
-	"newcomertasksinfo-config-form-info": "Easkaálgiid bargobihtáid konfigurašuvnnat sáhttet čájehuvvot ja rievdaduvvot  [[Special:EditGrowthConfig]]:s.",
+	"newcomertasksinfo-config-form-info": "Easkaálgiid bargobihtáid konfigurašuvnnat sáhttet čájehuvvot ja rievdaduvvot  [[Special:CommunityConfiguration/GrowthSuggestedEdits]]:s.",
 	"newcomertasksinfo-table-header-task-type": "Bargobihttášládja",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Lohku",

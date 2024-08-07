@@ -429,7 +429,7 @@
 	"grant-managementorship": "Atur bimbingan",
 	"newcomertasksinfo": "Tugas Pengguna Baru",
 	"newcomertasksinfo-no-data": "Tidak ada data yang tersedia.",
-	"newcomertasksinfo-config-form-info": "Konfigurasi tugas pengguna baru dapat dilihat dan diubah di [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Konfigurasi tugas pengguna baru dapat dilihat dan diubah di [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Jenis tugas",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Jumlah",

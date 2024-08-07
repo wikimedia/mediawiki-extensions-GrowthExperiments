@@ -386,7 +386,7 @@
 	"grant-managementorship": "Upravlja mentorstvima",
 	"newcomertasksinfo": "Zadatci za novake",
 	"newcomertasksinfo-no-data": "Podatci nedostupni.",
-	"newcomertasksinfo-config-form-info": "Konfiguracija zadataka za novake može se pogledati i promijeniti na [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Konfiguracija zadataka za novake može se pogledati i promijeniti na [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Vrsta zadatka",
 	"newcomertasksinfo-table-header-task-count": "Broj",
 	"newcomertasksinfo-table-header-topic-type": "ID teme",

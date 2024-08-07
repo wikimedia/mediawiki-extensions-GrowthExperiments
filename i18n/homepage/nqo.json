@@ -370,7 +370,7 @@
 	"grant-managementorship": "ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ߬ߦߊ ߢߊߓߐ߫",
 	"newcomertasksinfo": "ߣߊ߬ߓߊ߰ߕߐ߬ ߞߎߘߊ ߟߊ߫ ߘߊߞߎ߲ ߠߎ߬",
 	"newcomertasksinfo-no-data": "ߓߟߏߡߟߊ߫ ߛߌ߫ ߡߊߛߐ߬ߘߐ߲߬ߕߊ߫ ߕߍ߫.",
-	"newcomertasksinfo-config-form-info": "ߣߊ߬ߓߊ߰ߕߐ߫ ߞߎߘߊ ߟߎ߬ ߟߊ߫ ߘߊߞߎ߲ ߢߊߓߐߟߌ ߘߌ߫ ߛߋ߫ ߦߋ߫ ߟߊ߫ ߞߵߊ߬ ߡߊߦߟߍ߬ߡߊ߲߫ [[Special:EditGrowthConfig]] ߦߊ߲߬.",
+	"newcomertasksinfo-config-form-info": "ߣߊ߬ߓߊ߰ߕߐ߫ ߞߎߘߊ ߟߎ߬ ߟߊ߫ ߘߊߞߎ߲ ߢߊߓߐߟߌ ߘߌ߫ ߛߋ߫ ߦߋ߫ ߟߊ߫ ߞߵߊ߬ ߡߊߦߟߍ߬ߡߊ߲߫ [[Special:CommunityConfiguration/GrowthSuggestedEdits]] ߦߊ߲߬.",
 	"newcomertasksinfo-table-header-task-type": "ߘߊߞߎ߲ ߛߎ߯ߦߊ",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "ߦߙߌߞߊߟߊ߲",

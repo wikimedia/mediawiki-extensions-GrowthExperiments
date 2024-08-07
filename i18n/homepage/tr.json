@@ -474,7 +474,7 @@
 	"grant-managementorship": "Danışmanlığı yönet",
 	"newcomertasksinfo": "Yeni başlayan Görevleri",
 	"newcomertasksinfo-no-data": "Veri yok.",
-	"newcomertasksinfo-config-form-info": "Yeni gelen görevlerin konfigürasyonu [[Special:EditGrowthConfig]] kısmında görüntülenebilir ve değiştirilebilir",
+	"newcomertasksinfo-config-form-info": "Yeni gelen görevlerin konfigürasyonu [[Special:CommunityConfiguration/GrowthSuggestedEdits]] kısmında görüntülenebilir ve değiştirilebilir",
 	"newcomertasksinfo-table-header-task-type": "Görev türü",
 	"newcomertasksinfo-table-header-task-type-id": "Kimlik",
 	"newcomertasksinfo-table-header-task-count": "Adet",

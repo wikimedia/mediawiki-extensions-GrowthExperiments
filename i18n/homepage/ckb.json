@@ -327,7 +327,7 @@
 	"grant-managementorship": "بەڕێوەبردنی مامۆستایی.",
 	"newcomertasksinfo": "کارەکانی تازەکار",
 	"newcomertasksinfo-no-data": "هیچ داتایەک بەردەست نییە",
-	"newcomertasksinfo-config-form-info": "ڕێکخستنەکان بۆ ئەرکەکانی تازەکار دەتواندرێت ببیندرێن و بگۆڕدرێن لە [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "ڕێکخستنەکان بۆ ئەرکەکانی تازەکار دەتواندرێت ببیندرێن و بگۆڕدرێن لە [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "جۆری ئەرک",
 	"newcomertasksinfo-table-header-task-type-id": "ئایدی",
 	"newcomertasksinfo-table-header-task-count": "ژماردن",

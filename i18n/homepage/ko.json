@@ -423,7 +423,7 @@
 	"grant-managementorship": "멘토십 관리",
 	"newcomertasksinfo": "신입 사용자의 작업",
 	"newcomertasksinfo-no-data": "이용 가능한 데이터가 없습니다.",
-	"newcomertasksinfo-config-form-info": "신입 사용자의 작업 구성은 [[Special:EditGrowthConfig]]에서 보고 변경할 수 있습니다.",
+	"newcomertasksinfo-config-form-info": "신입 사용자의 작업 구성은 [[Special:CommunityConfiguration/GrowthSuggestedEdits]]에서 보고 변경할 수 있습니다.",
 	"newcomertasksinfo-table-header-task-type": "작업 유형",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "건수",

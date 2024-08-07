@@ -455,7 +455,7 @@
 	"grant-managementorship": "Upravljanje mentorstva",
 	"newcomertasksinfo": "Opravila za začetnike",
 	"newcomertasksinfo-no-data": "Podatki niso na voljo.",
-	"newcomertasksinfo-config-form-info": "Nastavitev nalog za začetnike si lahko ogledate in jo spreminjate na [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Nastavitev nalog za začetnike si lahko ogledate in jo spreminjate na [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Vrsta nalog",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Število",

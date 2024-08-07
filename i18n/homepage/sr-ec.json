@@ -398,7 +398,7 @@
 	"grant-managementorship": "управљање менторством",
 	"newcomertasksinfo": "Задаци за новајлије",
 	"newcomertasksinfo-no-data": "Нема доступних података.",
-	"newcomertasksinfo-config-form-info": "Задатке за новајлије можете подесити на [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Задатке за новајлије можете подесити на [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Врста задатка",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Број",

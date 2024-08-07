@@ -368,7 +368,7 @@
 	"grant-managementorship": "Остазлыҡты идаралау",
 	"newcomertasksinfo": "Яңы килеүселәргә эштәр",
 	"newcomertasksinfo-no-data": "Мәғлүмәт юҡ.",
-	"newcomertasksinfo-config-form-info": "Яңы килеүселәр өсөн булған эштәрҙең төҙөлөшөн ҡарау һәм үҙгәртеү өсөн ҡарағыҙ: [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Яңы килеүселәр өсөн булған эштәрҙең төҙөлөшөн ҡарау һәм үҙгәртеү өсөн ҡарағыҙ: [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Эш төрө",
 	"newcomertasksinfo-table-header-task-type-id": "Идентификатор",
 	"newcomertasksinfo-table-header-task-count": "Иҫәбе",

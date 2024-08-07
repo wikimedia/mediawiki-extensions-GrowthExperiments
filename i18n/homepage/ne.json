@@ -397,7 +397,7 @@
 	"grant-managementorship": "सल्लाहकारहरू प्रबन्ध गर्नुहोस्",
 	"newcomertasksinfo": "नवागन्तुक कार्यहरू",
 	"newcomertasksinfo-no-data": "कुनै डाटा उपलब्ध छैन।",
-	"newcomertasksinfo-config-form-info": "नयाँ आउने कार्यहरूको कन्फिगरेसन [[Special:EditGrowthConfig]] मा हेर्न र परिवर्तन गर्न सकिन्छ।",
+	"newcomertasksinfo-config-form-info": "नयाँ आउने कार्यहरूको कन्फिगरेसन [[Special:CommunityConfiguration/GrowthSuggestedEdits]] मा हेर्न र परिवर्तन गर्न सकिन्छ।",
 	"newcomertasksinfo-table-header-task-type": "कार्य प्रकार",
 	"newcomertasksinfo-table-header-task-type-id": "आईडी",
 	"newcomertasksinfo-table-header-task-count": "गणना",

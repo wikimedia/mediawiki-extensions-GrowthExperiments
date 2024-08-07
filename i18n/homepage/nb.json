@@ -450,7 +450,7 @@
 	"grant-managementorship": "Behandle fadderskap",
 	"newcomertasksinfo": "Nybegynneroppgaver",
 	"newcomertasksinfo-no-data": "Ingen data tilgjengelig.",
-	"newcomertasksinfo-config-form-info": "Konfigurasjonen av nybegynneroppgaver kan vises og endres på [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Konfigurasjonen av nybegynneroppgaver kan vises og endres på [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Oppgavetype",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Antall",

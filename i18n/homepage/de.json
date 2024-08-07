@@ -475,7 +475,7 @@
 	"grant-managementorship": "Lotse/Lotsin bearbeiten",
 	"newcomertasksinfo": "Einstiegs-Aufgabe",
 	"newcomertasksinfo-no-data": "Es sind keine Daten verfügbar.",
-	"newcomertasksinfo-config-form-info": "Die Konfiguration der Neulings-Startseite kann unter [[Special:EditGrowthConfig]] eingesehen und geändert werden.",
+	"newcomertasksinfo-config-form-info": "Die Konfiguration der Neulings-Startseite kann unter [[Special:CommunityConfiguration/GrowthSuggestedEdits]] eingesehen und geändert werden.",
 	"newcomertasksinfo-table-header-task-type": "Aufgabentyp",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Anzahl",

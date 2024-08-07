@@ -454,7 +454,7 @@
 	"grant-managementorship": "Administrare activitate de mentor",
 	"newcomertasksinfo": "Sarcini de nou-veniți",
 	"newcomertasksinfo-no-data": "Nu este disponibilă nicio dată.",
-	"newcomertasksinfo-config-form-info": "Configurația sarcinilor pentru nou-veniți poate fi vizualizată și schimbată la [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Configurația sarcinilor pentru nou-veniți poate fi vizualizată și schimbată la [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Tipul sarcinii",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Număr",

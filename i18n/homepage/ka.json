@@ -429,7 +429,7 @@
 	"grant-managementorship": "მენტორობის მართვა",
 	"newcomertasksinfo": "დავალებები ახალბედებისათვის",
 	"newcomertasksinfo-no-data": "ხელმისაწვდომი მონაცემები არ არის.",
-	"newcomertasksinfo-config-form-info": "ახალბედათა დავალებების კონფიგურაციის ნახვა და შეცვლა შესაძლებელია სპეციალურ გვერდზე — [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "ახალბედათა დავალებების კონფიგურაციის ნახვა და შეცვლა შესაძლებელია სპეციალურ გვერდზე — [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "დავალების ტიპი",
 	"newcomertasksinfo-table-header-task-type-id": "იდენტიფიკატორი",
 	"newcomertasksinfo-table-header-task-count": "რაოდენობა",

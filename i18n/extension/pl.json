@@ -129,6 +129,7 @@
 	"communityconfiguration-helppanel-gehelppanelviewmoretitle-label": "Strona docelowa linku \"Zobacz więcej stron pomocy\"",
 	"communityconfiguration-mentorship-title": "Wikiprzewodnicy",
 	"communityconfiguration-mentorship-description": "Dostosuj ustawienia mentoringu i uprawnienia, dostosowując minimalne wartości edycji i ramy czasowe dla mentorów i godnych pochwał podopiecznych.",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-control-label": "Redaktorzy, którzy spełniają wszystkie kryteria kwalifikacyjne, są automatycznie zapisywani jako przewodnicy",
 	"communityconfiguration-mentorship-gementorshipenabled-control-label": "Funkcje mentorskie są włączone",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Minimalna liczba dni od momentu rejestracji użytkownika, aby mógł zapisać się jako wikiprzewodnk",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Minimalna liczba edycji, które użytkownik musi zrobić (w dowolnej przestrzeni nazw), aby mógł zapisać się jako wikiprzewodnk",

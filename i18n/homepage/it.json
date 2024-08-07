@@ -431,7 +431,7 @@
 	"grant-managementorship": "Modifica tutor",
 	"newcomertasksinfo": "Attività per i nuovi utenti",
 	"newcomertasksinfo-no-data": "Nessun dato disponibile.",
-	"newcomertasksinfo-config-form-info": "La configurazione delle attività per i nuovi utenti può essere trovata e modificata in [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "La configurazione delle attività per i nuovi utenti può essere trovata e modificata in [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Tipo di attività",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Numero",

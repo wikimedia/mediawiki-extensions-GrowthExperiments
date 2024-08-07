@@ -286,7 +286,7 @@
 	"growthexperiments-addlink-skip-reject": "ထပ်မံပြန်လည်ဆန်းစစ်ရန်",
 	"newcomertasksinfo": "လူသစ် လုပ်ငန်းဆောင်တာများ",
 	"newcomertasksinfo-no-data": "ဒေတာမရရှိနိုင်ပါ",
-	"newcomertasksinfo-config-form-info": "လူသစ် လုပ်ငန်းဆောင်တာများ၏ အစီစဉ်စနစ်များကို [[Special:EditGrowthConfig]] တွင် ကြည့်ရှုနိုင်ပါသည်။",
+	"newcomertasksinfo-config-form-info": "လူသစ် လုပ်ငန်းဆောင်တာများ၏ အစီစဉ်စနစ်များကို [[Special:CommunityConfiguration/GrowthSuggestedEdits]] တွင် ကြည့်ရှုနိုင်ပါသည်။",
 	"newcomertasksinfo-table-header-task-type": "လုပ်ငန်းအမျိုးအစား",
 	"newcomertasksinfo-table-header-task-type-id": "အိုင်ဒီ",
 	"newcomertasksinfo-table-header-task-count": "အရေအတွက်",

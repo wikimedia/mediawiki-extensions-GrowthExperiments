@@ -425,7 +425,7 @@
 	"grant-managementorship": "管理導師計畫",
 	"newcomertasksinfo": "新手任務",
 	"newcomertasksinfo-no-data": "沒有可用資料。",
-	"newcomertasksinfo-config-form-info": "新手任務的設定可以在[[Special:EditGrowthConfig]]檢視和變更。",
+	"newcomertasksinfo-config-form-info": "新手任務的設定可以在[[Special:CommunityConfiguration/GrowthSuggestedEdits]]檢視和變更。",
 	"newcomertasksinfo-table-header-task-type": "任務類型",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "計數",

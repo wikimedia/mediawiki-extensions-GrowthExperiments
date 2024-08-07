@@ -457,7 +457,7 @@
 	"grant-managementorship": "Διαχείριση καθοδήγησης",
 	"newcomertasksinfo": "Αποστολές Νέων Χρηστών",
 	"newcomertasksinfo-no-data": "Δεν υπάρχουν διαθέσιμα δεδομένα.",
-	"newcomertasksinfo-config-form-info": "Μπορείτε να δείτε και να αλλάξετε τη διαμόρφωση των εργασιών νεοεισερχομένων στο [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Μπορείτε να δείτε και να αλλάξετε τη διαμόρφωση των εργασιών νεοεισερχομένων στο [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Είδος εργασίας",
 	"newcomertasksinfo-table-header-task-type-id": "Αναγνωριστικό",
 	"newcomertasksinfo-table-header-task-count": "Αριθμός",

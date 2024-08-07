@@ -446,7 +446,7 @@
 	"grant-managementorship": "Gerer mentorato",
 	"newcomertasksinfo": "Cargas de novicio",
 	"newcomertasksinfo-no-data": "Il non ha datos disponibile.",
-	"newcomertasksinfo-config-form-info": "Le configuration del cargas de novicio pote esser revidite e cambiate a [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Le configuration del cargas de novicio pote esser revidite e cambiate a [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Typo de carga",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Numero",

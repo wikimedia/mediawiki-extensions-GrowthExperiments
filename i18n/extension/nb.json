@@ -121,6 +121,7 @@
 	"communityconfiguration-helppanel-gehelppanelviewmoretitle-label": "Målside for «Vis flere hjelpeartikler»",
 	"communityconfiguration-mentorship-title": "Fadderskap",
 	"communityconfiguration-mentorship-info-text": "Faddere kan ha to roller. Som standard blir nybegynnere tildelt en fadder tilfeldig. Det er også mulig å være fadder kun for kurs- eller arrangementsdeltakere: Slike faddere får ikke tildelt tilfeldige nybegynnere, men kan gjøre krav på nybegynnere. Det ideelle antallet faddere er: Én fadder per 500 nye kontoer, med minst 3 faddere. [https://www.mediawiki.org/wiki/Help:Growth/Mentorship Lær mer om hvordan fadderskap fungerer].",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Bør brukere automatisk kvalifisere for fadderprogrammet?",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Minimalt antall dager en bruker må være registrert for å kunne melde seg som fadder",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Minimalt antall redigeringer en bruker må ha (i alle navnerom) for å kunne melde seg som fadder",
 	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "Antall dager som legges til grunn når man evaluerer fadderbarns rosverdighet",

@@ -480,7 +480,7 @@
 	"grant-managementorship": "管理导师",
 	"newcomertasksinfo": "新手任务",
 	"newcomertasksinfo-no-data": "没有可用数据。",
-	"newcomertasksinfo-config-form-info": "新手任务的参数可在[[Special:EditGrowthConfig]]查看或更改。",
+	"newcomertasksinfo-config-form-info": "新手任务的参数可在[[Special:CommunityConfiguration/GrowthSuggestedEdits]]查看或更改。",
 	"newcomertasksinfo-table-header-task-type": "任务类型",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "计数",

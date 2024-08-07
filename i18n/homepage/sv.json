@@ -460,7 +460,7 @@
 	"grant-managementorship": "Hantera mentorskap",
 	"newcomertasksinfo": "Nybörjaruppgifter",
 	"newcomertasksinfo-no-data": "Ingen tillgänglig data.",
-	"newcomertasksinfo-config-form-info": "Konfiguration av nykomlingsuppgifter kan ses och ändras på [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Konfiguration av nykomlingsuppgifter kan ses och ändras på [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Uppgiftstyp",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Antal",

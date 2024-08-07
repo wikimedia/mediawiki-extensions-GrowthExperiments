@@ -461,7 +461,7 @@
 	"grant-managementorship": "Настроить наставничество",
 	"newcomertasksinfo": "Задачи для новичков",
 	"newcomertasksinfo-no-data": "Нет доступных данных.",
-	"newcomertasksinfo-config-form-info": "Конфигурацию задач для новичков можно просмотреть и изменить на [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Конфигурацию задач для новичков можно просмотреть и изменить на [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Тип задачи",
 	"newcomertasksinfo-table-header-task-type-id": "Идентификатор",
 	"newcomertasksinfo-table-header-task-count": "Количество",

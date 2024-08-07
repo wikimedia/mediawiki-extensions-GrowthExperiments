@@ -421,7 +421,7 @@
 	"grant-managementorship": "Кіраванне настаўніцтвам",
 	"newcomertasksinfo": "Заданні для пачаткоўца",
 	"newcomertasksinfo-no-data": "Няма даступных даных.",
-	"newcomertasksinfo-config-form-info": "Налады заданняў для пачаткоўца можна паглядзець і змяніць на старонцы [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Налады заданняў для пачаткоўца можна паглядзець і змяніць на старонцы [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Тып задання",
 	"newcomertasksinfo-table-header-task-type-id": "Ідэнтыфікатар",
 	"newcomertasksinfo-table-header-task-count": "Колькасць",

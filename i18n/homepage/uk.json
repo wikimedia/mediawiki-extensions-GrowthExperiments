@@ -463,7 +463,7 @@
 	"grant-managementorship": "Керувати наставництвом",
 	"newcomertasksinfo": "Завдання новачку",
 	"newcomertasksinfo-no-data": "Немає доступних даних.",
-	"newcomertasksinfo-config-form-info": "Конфігурацію завдань для новачків можна переглянути і змінити на [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Конфігурацію завдань для новачків можна переглянути і змінити на [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Тип завдання",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Кількість",

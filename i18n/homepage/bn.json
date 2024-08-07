@@ -466,7 +466,7 @@
 	"grant-managementorship": "মেন্টরশিপ ব্যবস্থাপনা",
 	"newcomertasksinfo": "নবাগতদের কাজ",
 	"newcomertasksinfo-no-data": "কোনো উপাত্ত উপলব্ধ নয়।",
-	"newcomertasksinfo-config-form-info": "নবাগতদের কাজের কনফিগারেশন দেখা ও পরিবর্তন করা যাবে এখানে: [[Special:EditGrowthConfig]]।",
+	"newcomertasksinfo-config-form-info": "নবাগতদের কাজের কনফিগারেশন দেখা ও পরিবর্তন করা যাবে এখানে: [[Special:CommunityConfiguration/GrowthSuggestedEdits]]।",
 	"newcomertasksinfo-table-header-task-type": "কাজের ধরণ",
 	"newcomertasksinfo-table-header-task-type-id": "আইডি",
 	"newcomertasksinfo-table-header-task-count": "গণনা",

@@ -442,7 +442,7 @@
 	"grant-managementorship": "Gerenciar mentoria",
 	"newcomertasksinfo": "Tarefas para iniciante",
 	"newcomertasksinfo-no-data": "Nenhum dado está disponível.",
-	"newcomertasksinfo-config-form-info": "A configuração das tarefas do recém-chegado pode ser visualizada e alterada em [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "A configuração das tarefas do recém-chegado pode ser visualizada e alterada em [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Tipo de tarefa",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Contagem",

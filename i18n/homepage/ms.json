@@ -449,7 +449,7 @@
 	"grant-managementorship": "Urus sesi bimbingan",
 	"newcomertasksinfo": "Tugasan Pengguna Baharu",
 	"newcomertasksinfo-no-data": "Tiada data tersedia.",
-	"newcomertasksinfo-config-form-info": "Konfigurasi tugas pengguna baharu boleh dilihat dan diubah di [[Special:EditGrowthConfig]].",
+	"newcomertasksinfo-config-form-info": "Konfigurasi tugas pengguna baharu boleh dilihat dan diubah di [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Jenis tugasan",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Kiraan",
