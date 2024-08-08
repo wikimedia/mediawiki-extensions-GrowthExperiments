@@ -548,9 +548,6 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "退出導師計畫",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "如果{{GENDER:|您}}不希望現在就有一名特定的導師分配給{{GENDER:|您}}，請選擇下面的按鈕退出。若{{GENDER:|您}}改變了主意，{{GENDER:|您}}可隨時重新獲得一名新的導師。",
 	"growthexperiments-homepage-mentorship-about-done": "完成",
-	"growthexperiments-tour-newimpact-discovery-title": "更新的設計",
-	"growthexperiments-tour-newimpact-discovery-description": "更多關於{{GENDER:|您}}的編輯活動已經新增！",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "了解",
 	"growthexperiments-homepage-newimpact-contributions-link": "檢視全部編輯",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|您已經}}進行了$3個{{PLURAL:$3|建議編輯}}，繼續學習更多新技能。",
 	"growthexperiments-homepage-community-updates-header": "社群更新"

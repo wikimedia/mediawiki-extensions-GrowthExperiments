@@ -13,8 +13,5 @@
 	"growthexperiments-homepage-impact-error-data-not-found-subtext": "{{SITENAME}} бетде тюзетиуге эмда къошакъ информация алыргъа мадарны эсигизге алыгъыз, андан сора кечирек къайтыб, сизни {{GENDER:$1|сизни}} тюрлениуюгюз къаллай ауурлукъэтгенине къарагъыз.",
 	"growthexperiments-homepage-special-contribute-title": "Теджелген тюзетиуле",
 	"growthexperiments-homepage-special-contribute-description": "Статьяланы маджаллашдырыр ючюн гитче, бош тюрлендириле этигиз (с.ю., джибериу къошугъуз неда текстни тюзетигиз).",
-	"growthexperiments-homepage-special-contribute-cta": "Теджелген тюзетиулеге къара",
-	"growthexperiments-tour-newimpact-discovery-title": "Джангыртылгъан дизайн",
-	"growthexperiments-tour-newimpact-discovery-description": "{{GENDER:|Сизге}} тюзетиуге аслам амал къошулгъанды!",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Англашынды"
+	"growthexperiments-homepage-special-contribute-cta": "Теджелген тюзетиулеге къара"
 }
