@@ -39,9 +39,9 @@
 		"d3-time-format": "4.1.0",
 		"eslint-config-wikimedia": "0.28.2",
 		"grunt": "1.6.1",
-		"grunt-banana-checker": "0.11.1",
-		"grunt-eslint": "24.0.1",
-		"grunt-stylelint": "0.18.0",
+		"grunt-banana-checker": "0.13.0",
+		"grunt-eslint": "24.3.0",
+		"grunt-stylelint": "0.20.1",
 		"jest": "27.4.7",
 		"jest-fail-on-console": "^3.0.2",
 		"jquery": "3.7.1",
@@ -49,12 +49,12 @@
 		"postcss-html": "1.4.1",
 		"rollup": "3.2.5",
 		"stylelint-config-recommended-vue": "1.4.0",
-		"stylelint-config-wikimedia": "0.14.0",
+		"stylelint-config-wikimedia": "0.17.2",
 		"svgo": "3.2.0",
 		"vue": "3.4.27",
 		"vuex": "4.0.2",
 		"wdio-intercept-service": "4.2.2",
-		"wdio-mediawiki": "2.1.0"
+		"wdio-mediawiki": "2.5.0"
 	},
 	"engines": {
 		"npm": ">=7.21.0",

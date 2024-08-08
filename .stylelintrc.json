@@ -3,10 +3,8 @@
 	"rules": {
 		"selector-max-id": null,
 		"no-descending-specificity": null,
-		"function-comma-newline-after": "always-multi-line",
-		"function-comma-space-after": "always-single-line",
-		"function-parentheses-newline-inside": "always-multi-line",
-		"function-parentheses-space-inside": "always-single-line",
-		"declaration-property-unit-disallowed-list": null
+		"declaration-property-unit-disallowed-list": null,
+		"@stylistic/declaration-colon-space-after": null,
+		"@stylistic/indentation": null
 	}
 }

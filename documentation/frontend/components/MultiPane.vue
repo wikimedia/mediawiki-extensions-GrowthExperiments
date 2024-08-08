@@ -147,8 +147,7 @@ export default {
 
 .ext-growthExperiments-MultiPane {
 	position: relative;
-	overflow-y: hidden;
-	overflow-x: hidden;
+	overflow: hidden hidden;
 	// stylelint-disable selector-class-pattern
 	.right-enter-active,
 	.right-leave-active,

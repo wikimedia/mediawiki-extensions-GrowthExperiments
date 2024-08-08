@@ -305,8 +305,7 @@ export default {
 	// stylelint-enable selector-class-pattern
 
 	&__header {
-		padding-inline-start: @spacing-150;
-		padding-inline-end: @spacing-75;
+		padding-inline: @spacing-150 @spacing-75;
 		padding-top: @spacing-100;
 		padding-bottom: @spacing-100;
 
