@@ -410,8 +410,5 @@
 	"growthexperiments-addimage-summary-summary": "Tính năng gợi ý hình ảnh: Đã thêm $1 {{PLURAL:$1|hình ảnh}}.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
-	"growthexperiments-tour-newimpact-discovery-title": "cập nhật thiết kế",
-	"growthexperiments-tour-newimpact-discovery-description": "Nhiều hoạt động chỉnh sửa {{GENDER:|your}} đã được thêm vào!",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Hiểu rồi",
 	"growthexperiments-homepage-newimpact-contributions-link": "Xem tất cả các chỉnh sửa"
 }

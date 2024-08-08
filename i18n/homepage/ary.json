@@ -27,8 +27,5 @@
 	"growthexperiments-addlink-summary-summary": "لميزة د قتيراح الليانات: $1 {{PLURAL:$1|ليان تزاد|ليانات تزادو}}.",
 	"growthexperiments-structuredtask-editmode-selection-visual": "التبدال ب الشوفان",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "صافي!",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "صافي!",
-	"growthexperiments-tour-newimpact-discovery-title": "أپدييت د الديزاين",
-	"growthexperiments-tour-newimpact-discovery-description": "راه زدنا ف عرض لأنشطة د التبديل ديالك!",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "صافي!"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "صافي!"
 }

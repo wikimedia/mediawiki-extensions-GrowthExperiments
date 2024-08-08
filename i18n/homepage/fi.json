@@ -489,8 +489,6 @@
 	"growthexperiments-homepage-special-contribute-title": "Ehdotetut muokkaukset",
 	"growthexperiments-homepage-special-contribute-description": "Tee pieniä ja helppoja muokkauksia (esim. lisää linkki tai tee kielenhuoltoa) parantaaksesi olemassa olevia artikkeleita.",
 	"growthexperiments-homepage-special-contribute-cta": "Katso ehdotetut muokkaukset",
-	"growthexperiments-tour-newimpact-discovery-title": "Päivitetty muotoilu",
-	"growthexperiments-tour-newimpact-discovery-response-button-okay": "Selvä",
 	"growthexperiments-homepage-newimpact-contributions-link": "Näytä kaikki muokkaukset",
 	"growthexperiments-levelingup-getstarted-notification-header": "Kokeile ehdotettua muokkausta ja ala kehittämään {{GENDER:$2|muokkaustaitojasi}}",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Kokeile ehdotettuja muokkauksia",
