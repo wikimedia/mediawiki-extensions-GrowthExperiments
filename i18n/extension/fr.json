@@ -13,7 +13,9 @@
 			"Verdy p",
 			"Wladek92",
 			"SleaY",
-			"MacOS Weed"
+			"MacOS Weed",
+			"Alien333",
+			"Escargot bleu"
 		]
 	},
 	"growthexperiments-desc": "Cette extension contient des expériences faites par l’équipe Croissance (''Growth'').",
@@ -113,7 +115,7 @@
 	"growthexperiments-edit-config-level-up-notifications-description": "Ces notifications sont envoyées aux nouveaux arrivants 48 heures après la création du compte et on a montré qu'elles augmentaient la probabilité que les nouveaux compes fassent des modifications dans la semaine qui suivait.",
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Essayez la notification des modifications suggérées",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Nombre maximum de modifications qu'un nouvel arrivant peut effectuer pour pouvoir recevoir cette notification. Si défini sur 0, aucun nouveaux arrivants</br> ne recevra cette notification. Plus le nombre est élevé, plus les nouveaux arrivants recevront cette notification.<br> Cette notification n'est envoyée qu'aux nouveaux arrivants qui n'ont pas effectué les modifications suggérées.",
-	"growthexperiments-edit-config-keep-going-notification-title": "Continuez l'utisiser la notification",
+	"growthexperiments-edit-config-keep-going-notification-title": "Notification d'encouragement",
 	"communityconfiguration-mentorship-title": "Mentorat",
 	"communityconfiguration-mentorship-description": "Personnaliser les paramètres de tutorat et d'admissibilité, tout en ajustant les limites minimales des modifications et l'emploi du temps des mentors et des tutorés méritables.",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Nombre minimal de jours pendant lesquels l’utilisateur doit avoir été inscrit pour s’inscrire comme mentor",

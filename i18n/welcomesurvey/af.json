@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rooiratel"
+		]
+	},
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Ander",
+	"welcomesurvey-question-edited-option-yes-many-label": "Ja, baie keer",
+	"welcomesurvey-question-edited-option-yes-few-label": "Ja, een of twee keer",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Nee, ek het nie geweet dat ek Wikipedia kon wysig nie",
+	"welcomesurvey-question-edited-option-no-other-label": "Nee, vir ander rede",
+	"welcomesurvey-mideditsignup-body": "Dankie vir jou redigering! {{GENDER:|Jy}} kan nou die impak van jou bydrae sien en meer voorstelle op jou tuisblad sien.",
+	"welcomesurvey-mideditsignup-button-homepage": "Gaan na my tuisblad"
+}

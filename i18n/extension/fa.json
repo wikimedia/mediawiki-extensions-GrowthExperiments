@@ -7,10 +7,11 @@
 			"Mardetanha",
 			"Mohammad ebz",
 			"Mojtabakd",
-			"Reza1615"
+			"Reza1615",
+			"Ebrahim"
 		]
 	},
-	"growthexperiments-desc": "این افزونه شامل تجربیاتی است که توسط تیم رشد انجام شده.",
+	"growthexperiments-desc": "این افزونه شامل آزمایش‌هایی است که توسط تیم توسعه انجام شده.",
 	"growthexperiments-config-validator-datatype-mismatch": "انتظار می‌رفت که <code>$1</code> برابر <code>$2</code> باشد، اما <code>$3</code> بود",
 	"growthexperiments-config-validator-contentmodel-mismatch": "عدم تطابق مدل محتوا: فایل پیکربندی GrowthExperiments باید دارای مدل محتوای جی‌سان باشد، اما $1 شناسایی شد",
 	"growthexperiments-config-validator-array-toobig": "تعداد آیتم‌های $1 بیش از اندازه است (حداکثر $2 آیتم مجاز است)",
@@ -106,7 +107,16 @@
 	"growthexperiments-edit-config-level-up-notifications-description": "این آگاه‌سازی‌ها ۴۸ ساعت پس از ایجاد حساب برای تازه‌واردان ارسال می‌شوند و نشان داده‌اند که باعث افزایش احتمال انجام ویرایش توسط حساب‌های تازه در هفتهٔ پس از ارسال آگاه‌سازی می‌شوند.",
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "آکاه‌سازی امتحان کردن ویرایش‌های پیشنهادی",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "بیشترین تعداد ویرایش‌هایی که یک تازه‌وارد می‌تواند داشته باشد تا واجد شرایط دریافت این آگاه‌سازی باشد. اگر روی 0 تنظیم شود، هیچ تازه‌واردی<br/>این آگاه‌سازی را دریافت نخواهد کرد. هرچه رقم بالاتر باشد، تازه‌واردان بیشتری این آگاه‌سازی را دریافت خواهند کرد.<br/>این آگاه‌سازی تنها برای تازه‌واردانی ارسال می‌شود که هیچ ویرایش پیشنهادی انجام نداده باشند.",
-	"growthexperiments-edit-config-keep-going-notification-title": "آگاه‌سازی ادامه دهید",
+	"growthexperiments-edit-config-keep-going-notification-title": "آگاه‌سازیِ ادامه دهید",
 	"growthexperiments-edit-config-keep-going-notification-description": "بیشترین تعداد ویرایش‌هایی که یک تازه‌وارد می‌تواند داشته باشد تا واجد شرایط دریافت این آگاه‌سازی باشد. اگر روی 0 تنظیم شود،<br/>هیچ تازه‌واردی این آگاه‌سازی را دریافت نخواهد کرد. هرچه رقم بالاتر باشد، تازه‌واردان بیشتری این آگاه‌سازی را دریافت خواهند کرد.<br/>این آگاه‌سازی تنها برای تازه‌واردانی ارسال می‌شود که از پیش دست کم یک ویرایش پیشنهادی انجام داده باشند.",
-	"communityconfiguration-mentorship-title": "مربی‌گری"
+	"communityconfiguration-mentorship-title": "مربی‌گری",
+	"communityconfiguration-mentorship-description": "همزمان با تنظیم حداقل‌های ویرایشی و دوره‌های زمانی مربی‌ها و مربی‌های شایستهٔ تقدیر، تنظیمات و شرایط شایستگی مربی‌گری را تنظیم کنید.",
+	"communityconfiguration-mentorship-gementorshipminimumage-label": "حداقل عمر حساب کاربر برای ثبت نام به‌عنوان مربی",
+	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "حداقل تعداد ویرایش‌های مورد نیاز کاربر (در هر یک از فضاهای نام) برای ثبت نام به‌عنوان مربی",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "تعداد روزهایی که هنگام ارزیابی شایستگی کارآموز برای تشویق در نظر گرفته می‌شوند",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "مربیان می‌توانند از طریق پیشخوان مربی این گزینه را برای حساب خودشان تغییر دهند.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "مربیان می‌توانند از طریق پیشخوان مربی این گزینه را برای حساب خودشان تغییر دهند.",
+	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "بیشترین تعداد ویرایش‌هایی که یک کاربر باید داشته باشد تا شایستهٔ تشویق تلقی شود",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "کمترین تعداد پیش‌فرض ویرایش‌هایی که یک کارآموز باید داشته باشد تا شایستهٔ تشویق باشد",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "مربیان می‌توانند از طریق پیشخوان مربی این گزینه را برای حساب خودشان تغییر دهند."
 }

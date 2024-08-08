@@ -14,7 +14,8 @@
 			"Radmir Far",
 			"Smigles",
 			"Stjn",
-			"UniCollab"
+			"UniCollab",
+			"Yurina Tatiana"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
@@ -120,6 +121,12 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Ваше}} приветственное сообщение было изменено на «$1».",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "Подробнее",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "Предыдущая страница",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Следующая страница",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Отправить",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Отмена",
+	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Произошла неизвестная ошибка. Пожалуйста, повторите попытку позже.",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "Открыть диалог настроек",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Настройки",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately": "Немедленно",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "Ежедневно",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly": "Еженедельно",

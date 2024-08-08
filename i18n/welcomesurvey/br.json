@@ -4,5 +4,6 @@
 			"Huñvreüs"
 		]
 	},
+	"welcomesurvey": "{{GENDER:$1|Donemat}}, $1 !",
 	"welcomesurvey-save-confirmation-title": "Trugarez! Enrollet eo bet {{GENDER:|ho}} respontoù."
 }
