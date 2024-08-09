@@ -461,7 +461,7 @@
 	"grant-managementorship": "指導役の管理",
 	"newcomertasksinfo": "新規参加者タスク",
 	"newcomertasksinfo-no-data": "利用できるデータがありません。",
-	"newcomertasksinfo-config-form-info": "新規参加者タスクの構成は[[Special:CommunityConfiguration/GrowthSuggestedEdits]]で閲覧および変更することができます。",
+	"newcomertasksinfo-config-form-info": "新規参加者タスクの構成は[[Special:CommunityConfiguration/GrowthSuggestedEdits]]で閲覧および変更ができます。",
 	"newcomertasksinfo-table-header-task-type": "タスクの種別",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "件数",

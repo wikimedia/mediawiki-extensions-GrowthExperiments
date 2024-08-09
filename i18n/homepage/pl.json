@@ -188,7 +188,7 @@
 	"growthexperiments-specialimpact-title": "Wpływ",
 	"growthexperiments-specialimpact-showing-for-other-user": "Pokazywanie danych o wpływie działalności $1",
 	"growthexperiments-specialimpact-invalid-username": "Nie podana lub nieprawidłowa nazwa użytkownika.",
-	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Brak parametru z nazwą użytkownika na dołączonej stronie specjalnej Wpływ.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Gdy dołączasz stronę specjalną \"Wpływ\" na innej wikistronie, należy w pierwszym parametrze podać nazwę użytkownika.",
 	"growthexperiments-homepage-claimmentee-no-user": "Nowicjusz nie istnieje",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Jesteś już przewodni{{GENDER:$2|kiem|czką|kiem(-czką)}} {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "$1 {{GENDER:$1|zrezygnował|zrezygnowała}} z bycia wikiprzewodnikiem",
@@ -231,6 +231,8 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 mln",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 mld",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 {{PLURAL:$1|bilion|biliony|bilionów}}",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title": "Obecnie nie ma dostępnych żadnych zadań strukturyzowanych.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "Spróbuj wybrać więcej tematów lub rodzajów zadań albo wrócić tu później.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Wolontariusze tacy jak ty pomogli dziś w rozwoju {{SITENAME}}. Przyłącz się!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Zobacz wszystkie sugestie",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Popraw literówki, gramatykę i styl",
@@ -636,5 +638,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Dokonałeś|Dokonałaś}} $3 {{PLURAL:$3|sugerowaną edycję|sugerowane edycje|sugerowanych edycji}}. Kontynuuj, aby zdobywać nowe umiejętności.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Wykonaj sugerowaną edycję",
 	"echo-category-title-ge-newcomer": "Narzędzia Growth",
-	"echo-pref-tooltip-ge-newcomer": "Powiadamiaj mnie o zadaniach dla nowych użytkowników i innych funkcjach, które mają pomóc nowym użytkownikom."
+	"echo-pref-tooltip-ge-newcomer": "Powiadamiaj mnie o zadaniach dla nowych użytkowników i innych funkcjach, które mają pomóc nowym użytkownikom.",
+	"growthexperiments-homepage-community-updates-header": "Wiadomości społecznościowe",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Dowiedz się więcej"
 }
