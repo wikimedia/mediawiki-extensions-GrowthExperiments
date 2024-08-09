@@ -7,26 +7,17 @@ use MediaWiki\HTMLForm\OOUIHTMLForm;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
-use MediaWiki\User\UserIdentity;
 
 abstract class ManageMentorsAbstractForm extends OOUIHTMLForm {
 
-	/** @var UserIdentity */
-	protected UserIdentity $mentorUser;
-
 	/**
-	 * @param UserIdentity $mentorUser
 	 * @param IContextSource $context
 	 * @param string $messagePrefix
 	 */
 	public function __construct(
-		UserIdentity $mentorUser,
 		IContextSource $context,
 		string $messagePrefix = ''
 	) {
-		// must happen before calling getFormFields(), as that might make use of $mentorUser
-		$this->mentorUser = $mentorUser;
-
 		parent::__construct(
 			$this->getFormFields(),
 			$context,

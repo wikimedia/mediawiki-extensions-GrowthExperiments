@@ -16,6 +16,7 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 	private MentorProvider $mentorProvider;
 	private IMentorWriter $mentorWriter;
 	private MentorStatusManager $mentorStatusManager;
+	private UserIdentity $mentorUser;
 
 	/**
 	 * @param MentorProvider $mentorProvider
@@ -34,8 +35,9 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorWriter = $mentorWriter;
 		$this->mentorStatusManager = $mentorStatusManager;
+		$this->mentorUser = $mentorUser;
+
 		parent::__construct(
-			$mentorUser,
 			$context,
 			'growthexperiments-manage-mentors-'
 		);

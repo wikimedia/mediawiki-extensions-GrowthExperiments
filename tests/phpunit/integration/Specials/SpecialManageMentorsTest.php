@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Integration;
 
 use ExtensionRegistry;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialManageMentors;
@@ -16,7 +17,11 @@ use SpecialPageTestBase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Specials\SpecialManageMentors
+ * @covers \GrowthExperiments\Specials\SpecialManageMentors
+ * @covers \GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm
+ * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor
+ * @covers \GrowthExperiments\Specials\Forms\ManageMentorsAddMentor
+ * @covers \GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor
  * @group Database
  */
 class SpecialManageMentorsTest extends SpecialPageTestBase {
@@ -34,7 +39,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 
 		// add one mentor to the system
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
-		$this->mentorUser = $this->getMutableTestUser()->getUser();
+		$this->mentorUser = $this->getMutableTestUser()->getUserIdentity();
 		$mentor = $geServices->getMentorProvider()
 			->newMentorFromUserIdentity( $this->mentorUser );
 		$mentor->setIntroText( 'this is intro' );
@@ -72,12 +77,6 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 * @covers ::getMentorsTableBody
-	 * @covers ::getMentorsTable
-	 * @covers ::getMentorAsHtmlRow
-	 */
 	public function testNotAuthorizedRead() {
 		[ $html, ] = $this->executeSpecialPage();
 		$this->assertStringContainsString(
@@ -98,12 +97,6 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 * @covers ::getMentorsTableBody
-	 * @covers ::getMentorsTable
-	 * @covers ::getMentorAsHtmlRow
-	 */
 	public function testAuthorizedRead() {
 		$performer = $this->getTestSysop()->getUser();
 		[ $html, ] = $this->executeSpecialPage( '', null, null, $performer );
@@ -123,37 +116,55 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			'growthexperiments-manage-mentors-edit',
 			$html
 		);
+		$this->assertStringContainsStringIgnoringCase(
+			'growhtexperiments-manage-mentors-add-mentor',
+			$html
+		);
+	}
+
+	public static function provideNotAuthorizedWrite() {
+		return [
+			'remove' => [
+				'remove-mentor/%d',
+				[ 'wpreason' => 'foo' ],
+			],
+			'edit' => [
+				'edit-mentor/%d',
+				[
+					'wpmessage' => 'new intro',
+					'wpautomaticallyAssigned' => 1,
+					'wpweight' => 2,
+					'wpreason' => 'foo',
+					'wpisAway' => 0,
+				],
+			],
+			'add' => [
+				'add-mentor',
+				[
+					'wpusername' => 'Username',
+					'wpreason' => 'foo',
+				],
+			],
+		];
 	}
 
 	/**
-	 * @covers ::execute
-	 * @covers ::handleAction
-	 * @covers ::getFormByAction
-	 * @covers ::parseSubpage
+	 * @dataProvider provideNotAuthorizedWrite
 	 */
-	public function testNotAuthorizedRemoveMentor() {
+	public function testNotAuthorizedWrite( string $subpageTemplate, array $payload ) {
 		$this->expectException( PermissionsError::class );
 		$this->expectExceptionMessage( 'The action you have requested is limited to users in the group' );
 
 		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorProvider();
 
-		$this->assertTrue( $mentorProvider->isMentor( $this->mentorUser ) );
 		$this->executeSpecialPage(
-			'remove-mentor/' . $this->mentorUser->getId(),
-			new FauxRequest( [ 'wpreason' => 'foo' ], true )
+			sprintf( $subpageTemplate, $this->mentorUser->getId() ),
+			new FauxRequest( $payload, true )
 		);
 		$this->assertTrue( $mentorProvider->isMentor( $this->mentorUser ) );
 	}
 
-	/**
-	 * @covers ::execute
-	 * @covers ::handleAction
-	 * @covers ::getFormByAction
-	 * @covers ::parseSubpage
-	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor::onSubmit
-	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor::onSuccess
-	 */
 	public function testAuthorizedRemoveMentor() {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$mentorProvider = $geServices->getMentorProvider();
@@ -196,14 +207,6 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		$this->assertFalse( $mentorStore->hasAnyMentees( $this->mentorUser, MentorStore::ROLE_PRIMARY ) );
 	}
 
-	/**
-	 * @covers ::execute
-	 * @covers ::handleAction
-	 * @covers ::getFormByAction
-	 * @covers ::parseSubpage
-	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor::onSubmit
-	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor::onSuccess
-	 */
 	public function testAuthorizedEditMentor() {
 		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorProvider();
@@ -234,14 +237,6 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 * @covers ::handleAction
-	 * @covers ::getFormByAction
-	 * @covers ::parseSubpage
-	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor::onSubmit
-	 * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor::onSuccess
-	 */
 	public function testAuthorizedEditMentorMarkAway() {
 		$mentorStatusManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorStatusManager();
@@ -276,6 +271,32 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		);
 	}
 
+	public function testAuthorizedAddMentor() {
+		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorProvider();
+		$ordinaryUser = $this->getMutableTestUser()->getUserIdentity();
+
+		$this->assertFalse( $mentorProvider->isMentor( $ordinaryUser ) );
+		[ $html, ] = $this->executeSpecialPage(
+			'add-mentor',
+			new FauxRequest( [
+				'wpusername' => $ordinaryUser->getName(),
+				'wpreason' => 'foo',
+			], true ),
+			null,
+			$this->getTestSysop()->getUser()
+		);
+
+		$this->assertStringContainsString(
+			'growthexperiments-manage-mentors-add-mentor-success',
+			$html
+		);
+		$this->assertTrue( $mentorProvider->isMentor( $ordinaryUser ) );
+		$mentor = $mentorProvider->newMentorFromUserIdentity( $ordinaryUser );
+		$this->assertFalse( $mentor->hasCustomIntroText() );
+		$this->assertEquals( IMentorWeights::WEIGHT_NONE, $mentor->getWeight() );
+	}
+
 	/**
 	 * Data provider for testDisplayMentorshipWarningMessage
 	 *
@@ -285,13 +306,12 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		return [
 			[ false, SpecialPage::getTitleFor( 'EditGrowthConfig' )->getPrefixedText() ],
 			[ true, SpecialPage::getTitleFor(
-				'CommunityConfiguration', 'Mentorship' )->getPrefixedText() ]
+				'CommunityConfiguration', 'Mentorship' )->getPrefixedText() ],
 		];
 	}
 
 	/**
 	 * @dataProvider configProvider
-	 * @covers ::displayMentorshipWarningMessage
 	 */
 	public function testDisplayMentorshipWarningMessage( $useCommunityConfig, $expectedConfigPage ) {
 		$this->overrideConfigValues( [
@@ -322,5 +342,30 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( 'cdx-message cdx-message--block cdx-message--warning', $result );
 		$this->assertStringContainsString( $expectedMessage, $result );
 		$this->assertStringContainsString( $expectedConfigPage, $result );
+	}
+
+	public static function provideSubpageNoException() {
+		return [
+			[ 'add-mentor' ],
+			[ 'edit-mentor' ],
+			[ 'edit-mentor/1' ],
+			[ 'remove-mentor' ],
+			[ 'remove-mentor/1' ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideSubpageNoException
+	 * @param string $subpage
+	 * @return void
+	 */
+	public function testSubpageNoException( string $subpage ) {
+		[ $html, ] = $this->executeSpecialPage(
+			$subpage,
+			 new FauxRequest(),
+			null,
+			$this->getTestSysop()->getAuthority(),
+		);
+		$this->assertNotEmpty( $html );
 	}
 }
