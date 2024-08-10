@@ -41,6 +41,13 @@
 			}
 		} );
 
+		// Drop undefined/null filters because of T372164
+		Object.keys( filters ).forEach( ( key ) => {
+			if ( filters[ key ] === undefined || filters[ key ] === null ) {
+				delete filters[ key ];
+			}
+		} );
+
 		// Then, apply passed ones
 		this.applyApiParams( filters );
 	};
