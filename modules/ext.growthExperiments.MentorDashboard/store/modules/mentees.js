@@ -40,6 +40,7 @@ const initalPresets = getInitialPresetsWithFallback();
 // TODO: consider creating a filter store for all filters
 const storeState = {
 	all: [],
+	hasError: false,
 	isReady: false,
 	totalPages: 0,
 	page: 0,
@@ -68,6 +69,7 @@ const getters = {
 		activeDaysAgo
 	} ),
 	isReady: ( state ) => state.isReady,
+	hasError: ( state ) => state.hasError,
 	totalPages: ( state ) => state.totalPages,
 	doesFilterOutMentees: () => api.doesFilterOutMentees()
 };
@@ -210,12 +212,9 @@ const actions = {
 
 			context.commit( 'SET_PAGES', totalPages );
 			context.commit( 'SET_MENTEES', aggregatedMentees );
+			context.commit( 'SET_ERROR', false );
 		} ).catch( ( err ) => {
-			// eslint-disable-next-line no-console
-			console.log( 'failed', err );
-			// TODO add some error wrapper/data-structure
-			// to show user error + text notification
-			context.commit( 'hasError', true );
+			context.dispatch( 'recordError', err.responseJSON );
 		} ).always( () => {
 			context.commit( 'SET_READY', true );
 		} );
@@ -231,6 +230,20 @@ const actions = {
 			name: MENTEE_OVERVIEW_PRESETS_PREF,
 			value: cleanedPresets
 		}, { root: true } );
+	},
+	recordError: function ( context, errorDetails ) {
+		context.commit( 'SET_ERROR', true );
+
+		mw.notify(
+			mw.message( 'growthexperiments-mentor-dashboard-mentee-overview-error-notification' ).text(),
+			{ type: 'error' }
+		);
+
+		mw.log.error( 'Unable to fetch mentees: ' + JSON.stringify( errorDetails ) );
+		mw.errorLogger.logError(
+			new Error( 'Unable to fetch mentees: ' + JSON.stringify( errorDetails ) ),
+			'error.growthexperiments'
+		);
 	}
 };
 
@@ -268,6 +281,9 @@ const mutations = {
 	SET_API_FILTERS: function ( state, filters ) {
 		const params = filtersToParams( filters );
 		api.setFilters( params );
+	},
+	SET_ERROR: function ( state, hasError ) {
+		state.hasError = hasError;
 	}
 };
 

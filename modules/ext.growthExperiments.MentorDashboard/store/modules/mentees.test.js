@@ -164,6 +164,7 @@ describe( 'actions', () => {
 		const state = {
 			all: [],
 			isReady: false,
+			hasError: false,
 			totalPages: 0,
 			page: 0,
 			prefix: null,
@@ -203,6 +204,7 @@ describe( 'actions', () => {
 			} },
 			{ type: 'SET_PAGES', payload: 0 },
 			{ type: 'SET_MENTEES', payload: [] },
+			{ type: 'SET_ERROR', payload: false },
 			{ type: 'SET_READY', payload: true }
 		], done );
 	} );
@@ -218,6 +220,7 @@ describe( 'actions', () => {
 		const state = {
 			all: [],
 			isReady: false,
+			hasError: false,
 			totalPages: 0,
 			page: 0,
 			prefix: null,
@@ -256,6 +259,7 @@ describe( 'actions', () => {
 			} },
 			{ type: 'SET_PAGES', payload: 0 },
 			{ type: 'SET_MENTEES', payload: [] },
+			{ type: 'SET_ERROR', payload: false },
 			{ type: 'SET_READY', payload: true }
 		], done );
 	} );
@@ -271,6 +275,7 @@ describe( 'actions', () => {
 		const state = {
 			all: [],
 			isReady: false,
+			hasError: false,
 			totalPages: 0,
 			page: 0,
 			prefix: null,
@@ -309,6 +314,7 @@ describe( 'actions', () => {
 			} },
 			{ type: 'SET_PAGES', payload: 0 },
 			{ type: 'SET_MENTEES', payload: [] },
+			{ type: 'SET_ERROR', payload: false },
 			{ type: 'SET_READY', payload: true }
 		], done );
 	} );
