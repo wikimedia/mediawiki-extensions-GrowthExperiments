@@ -138,36 +138,41 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
     <span
       class="cdx-checkbox cdx-checkbox--status-default"
     >
-      <input
-        class="cdx-checkbox__input"
-        id="cdx-checkbox-0"
-        type="checkbox"
-        value="false"
-      />
-      <span
-        class="cdx-checkbox__icon"
-      />
       <div
-        class="cdx-label cdx-checkbox__label"
+        class="cdx-checkbox__wrapper"
       >
-        <label
-          class="cdx-label__label"
-          for="cdx-checkbox-0"
+        <input
+          class="cdx-checkbox__input"
+          id="cdx-checkbox-0"
+          type="checkbox"
+          value="false"
+        />
+        <span
+          class="cdx-checkbox__icon"
+        />
+        <div
+          class="cdx-label cdx-checkbox__label"
         >
-          <!--v-if-->
-          <span
-            class="cdx-label__label__text"
+          <label
+            class="cdx-label__label"
+            for="cdx-checkbox-0"
           >
-            
-            
-            growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred
-            
-            
-          </span>
+            <!--v-if-->
+            <span
+              class="cdx-label__label__text"
+            >
+              
+              
+              growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred
+              
+              
+            </span>
+            <!--v-if-->
+          </label>
           <!--v-if-->
-        </label>
-        <!--v-if-->
+        </div>
       </div>
+      <!--v-if-->
     </span>
   </section>
   <section
