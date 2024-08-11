@@ -159,8 +159,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$linkRecommendationFilter,
 			$imageRecommendationFilter,
 			$this->createMock( StatsdDataFactoryInterface::class )
-		) extends SuggestedEdits
-		{
+		) extends SuggestedEdits {
 
 			public function resetTaskCache(
 				UserIdentity $user, TaskSetFilters $taskSetFilters, array $suggesterOptions
