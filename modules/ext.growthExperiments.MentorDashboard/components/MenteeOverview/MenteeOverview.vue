@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		<data-table
-			v-if="hasData"
+			v-if="hasData && !menteesDataHasError"
 			class="ext-growthExperiments-MenteeOverview__table"
 			:limit="limit"
 			:columns="columns"
@@ -51,7 +51,7 @@
 			@update:sorting="updateSorting"
 		></data-table>
 		<no-results
-			v-else-if="menteesDataReady && doesFilterOutMentees"
+			v-else-if="menteesDataReady && !menteesDataHasError && doesFilterOutMentees"
 			class="ext-growthExperiments-MenteeOverview__no-results"
 			:icon="cdxIconError"
 			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline' ).text()"
@@ -59,12 +59,20 @@
 			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text' ).text()"
 		></no-results>
 		<no-results
-			v-else-if="menteesDataReady && !doesFilterOutMentees"
+			v-else-if="menteesDataReady && !menteesDataHasError && !doesFilterOutMentees"
 			class="ext-growthExperiments-MenteeOverview__no-results"
 			:icon="cdxIconClock"
 			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline' ).text()"
 			:icon-label="$i18n( 'tbd-no-results' ).text()"
 			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text' ).text()"
+		></no-results>
+		<no-results
+			v-else-if="menteesDataReady && menteesDataHasError"
+			class="ext-growthExperiments-MenteeOverview__no-results"
+			:icon="cdxIconError"
+			:text="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-error-title' ).text()"
+			:icon-label="$i18n( 'tbd-no-results' ).text()"
+			:description="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-error-description' ).text()"
 		></no-results>
 	</section>
 </template>
@@ -217,6 +225,9 @@ module.exports = exports = {
 		},
 		menteesDataReady() {
 			return this.$store.getters[ 'mentees/isReady' ];
+		},
+		menteesDataHasError() {
+			return this.$store.getters[ 'mentees/hasError' ];
 		},
 		menteeFilters() {
 			return this.$store.getters[ 'mentees/filters' ];
