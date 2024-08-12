@@ -7,10 +7,11 @@
 			"Mohammad ebz",
 			"Mojtabakd",
 			"Reza1615",
-			"Ebraminio"
+			"Ebraminio",
+			"Ebrahim"
 		]
 	},
-	"growthexperiments-desc": "این افزونه شامل تجربیاتی است که توسط تیم رشد انجام شده.",
+	"growthexperiments-desc": "این افزونه شامل آزمایش‌هایی است که توسط تیم توسعه انجام شده.",
 	"growthexperiments-config-validator-additional-fields": "پیکربندی جدید دارای کلیدهای پیکربندی است که نمی‌توان آن‌ها را در اینجا سفارشی‌سازی کرد.",
 	"growthexperiments-config-validator-error": "اعتبارسنجی $1 ناموفق بود: $2",
 	"growthexperiments-config-validator-datatype-mismatch": "انتظار می‌رفت که <code>$1</code> برابر <code>$2</code> باشد، اما <code>$3</code> بود",
