@@ -223,10 +223,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 		} elseif ( $value instanceof StatusValue ) {
 			return $value;
 		} else {
-			$type = gettype( $value );
-			if ( $type === 'object' ) {
-				$type = get_class( $value );
-			}
+			$type = get_debug_type( $value );
 			throw new LogicException( 'Unexpected type ' . $type );
 		}
 	}
