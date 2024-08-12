@@ -10,6 +10,7 @@
 			"Mainframe98",
 			"McDutchie",
 			"Romaine",
+			"SPQRobin",
 			"Sjoerddebruin"
 		]
 	},
@@ -112,6 +113,8 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Het maximale aantal bewerkingen dat een nieuwkomer kan hebben om in aanmerking te komen voor het ontvangen van deze melding. Als dit is ingesteld op 0, ontvangen nieuwkomers deze melding niet. Hoe hoger het getal, hoe meer nieuwkomers deze melding zullen ontvangen. Deze melding wordt alleen verstuurd naar nieuwkomers die nog geen Voorgestelde bewerkingen hebben voltooid.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Melding “Ga zo door”",
 	"growthexperiments-edit-config-keep-going-notification-description": "Het maximale aantal voorgestelde bewerkingen dat een nieuwkomer kan voltooien om in aanmerking te komen voor het ontvangen van deze melding. Als dit is ingesteld op 0, ontvangen nieuwkomers deze melding niet. Hoe hoger het getal, hoe meer nieuwkomers deze melding zullen ontvangen. Deze melding wordt alleen verstuurd naar nieuwkomers die al minstens één voorgestelde bewerking hebben voltooid.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Titel",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Afbeelding",
 	"communityconfiguration-helppanel-title": "Hulppaneel",
 	"communityconfiguration-helppanel-description": "Pas de instellingen van het hulppaneel zo aan dat ze aansluiten bij de vereisten van je gemeenschap. Definieer bronnen erin die nieuwe redacteuren kunnen helpen en begeleiden.",
 	"communityconfiguration-helppanel-info-text": "Het helppaneel kan beschikbaar zijn in elke naamruimte, in lees- of bewerkingsmodus, zoals hieronder geconfigureerd. Het omvat de mogelijkheid om hulp te zoeken, op helplinks te klikken en vragen te stellen aan mentoren of op de helpdesk. Links kunnen worden geconfigureerd als links in de wiki, maar aanbevelingen staan hieronder.",

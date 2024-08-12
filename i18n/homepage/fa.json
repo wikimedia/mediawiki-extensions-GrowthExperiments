@@ -174,7 +174,7 @@
 	"growthexperiments-homepage-mentorship-question-button": "سوالی از مربی‌تان {{GENDER:$1|}} {{GENDER:$2|}} بپرسید",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "دیگر مکالمه‌های {{GENDER:$1|مربی}} {{GENDER:$2|خود}} را مشاهده کنید",
 	"growthexperiments-homepage-mentorship-dialog-title": "از {{GENDER:$2|مربی}} {{GENDER:$1|خود}} بپرسید",
-	"growthexperiments-homepage-mentorship-questionreview-header": "هرگاه سؤالی بپرسید، آن سؤال با نام کاربری شما، «$2»، و <strong>به‌طور عمومی</strong> در $3، جایی که توسط {{GENDER:$1|او|او|ایشان}} قابل یافتن و پاسخ‌دادن خواهد بود، منتشر می‌شود.",
+	"growthexperiments-homepage-mentorship-questionreview-header": "هرگاه سؤالی بپرسید، آن سؤال با نام کاربری شما، «$2»، و <strong>به‌طور عمومی</strong> در $3، جایی که توسط {{GENDER:$1|او|او|ایشان}} قابل یافتن و پاسخ دادن خواهد بود، منتشر می‌شود.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "«[[User:$1|$1]]»، {{GENDER:$2|مربی}} اصلی {{GENDER:|شما}}، در حال حاضر تا $3 در دسترس نیست.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "«[[User:$1|$1]]»، {{GENDER:$2|مربی}} اصلی {{GENDER:|شما}}، در حال حاضر در دسترس نیست.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor": "یک {{GENDER:$2|مربی}}، «[[User:$1|$1]]»، فعلاً به پرسش‌های شما پاسخ خواهد داد.",
