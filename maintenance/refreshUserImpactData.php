@@ -12,7 +12,6 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use Maintenance;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -137,7 +136,7 @@ class RefreshUserImpactData extends Maintenance {
 	}
 
 	private function initServices(): void {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$this->actorStore = $services->getActorStore();
 		$this->userFactory = $services->getUserFactory();

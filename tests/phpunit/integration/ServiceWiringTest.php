@@ -11,7 +11,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -31,7 +30,7 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 		if ( in_array( $name, self::DEPRECATED_SERVICES, true ) ) {
 			$this->hideDeprecated( "$name service" );
 		}
-		MediaWikiServices::getInstance()->get( $name );
+		$this->getServiceContainer()->get( $name );
 		$this->addToAssertionCount( 1 );
 	}
 

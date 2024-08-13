@@ -8,7 +8,6 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\WikiConfigException;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use Maintenance;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -57,7 +56,7 @@ class UpdateMenteeData extends Maintenance {
 	}
 
 	private function initServices() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		$this->menteeOverviewDataUpdater = $geServices->getMenteeOverviewDataUpdater();

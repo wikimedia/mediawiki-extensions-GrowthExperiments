@@ -6,7 +6,6 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use MediaWiki\Config\GlobalVarConfig;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
 use PermissionsError;
@@ -30,7 +29,7 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 
 		return new SpecialClaimMentee(
 			$geServices->getMentorProvider(),

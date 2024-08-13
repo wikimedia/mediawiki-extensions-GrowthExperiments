@@ -10,7 +10,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use Maintenance;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
@@ -63,7 +62,7 @@ class FixSuggestedEditChangeTags extends Maintenance {
 	}
 
 	private function initialize() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 
 		$this->dbr = $this->getReplicaDB();

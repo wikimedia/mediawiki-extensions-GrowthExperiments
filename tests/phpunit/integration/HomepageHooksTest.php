@@ -13,7 +13,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\ResourceLoader as RL;
@@ -44,7 +43,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 				new TaskType( 'tt2', TaskType::DIFFICULTY_EASY ),
 			] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
-		$context = new RL\Context( MediaWikiServices::getInstance()->getResourceLoader(),
+		$context = new RL\Context( $this->getServiceContainer()->getResourceLoader(),
 			RequestContext::getMain()->getRequest() );
 		$configData = HomepageHooks::getTaskTypesJson( $context );
 		$this->assertSame( [ 'tt1', 'tt2' ], array_keys( $configData ) );
@@ -60,7 +59,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$configurationLoader->method( 'loadTaskTypes' )
 			->willReturn( StatusValue::newFatal( 'foo' ) );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
-		$context = new RL\Context( MediaWikiServices::getInstance()->getResourceLoader(),
+		$context = new RL\Context( $this->getServiceContainer()->getResourceLoader(),
 			RequestContext::getMain()->getRequest() );
 		$configData = HomepageHooks::getTaskTypesJson( $context );
 		$this->assertSame( [ '_error' => '(foo)' ], $configData );
@@ -193,7 +192,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		// use a data provider for the test cases.
 		$this->overrideConfigValue( 'GEHomepageSuggestedEditsEnabled', true );
 		$homepageHooks = $this->getHomepageHooks();
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		TestingAccessWrapper::newFromObject( $homepageHooks )
 			->userOptionsLookup = $services->getUserOptionsLookup();

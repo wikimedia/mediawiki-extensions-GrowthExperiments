@@ -10,7 +10,6 @@ use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\NewImpact;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 
@@ -25,7 +24,7 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::get
 	 */
 	public function testGet( $moduleId ) {
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
 		$context = RequestContext::getMain();
 		$this->assertInstanceOf( IDashboardModule::class, $moduleRegistry->get( $moduleId, $context ) );
@@ -48,7 +47,7 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 		string $userVariant,
 		string $expectedModuleClass
 	) {
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 
 		$this->overrideConfigValue( 'GEUseNewImpactModule', $configFlag );
 		$context = RequestContext::newExtraneousContext(
@@ -82,7 +81,7 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideGetCommunityUpdatesModule
 	 */
 	public function testGetCommunityUpdatesModule() {
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$context = RequestContext::getMain();
 
 		$moduleRegistry = $growthServices->getHomepageModuleRegistry();

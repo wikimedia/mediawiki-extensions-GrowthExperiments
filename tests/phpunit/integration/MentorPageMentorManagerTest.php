@@ -12,7 +12,6 @@ use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -303,7 +302,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @return MentorPageMentorManager
 	 */
 	private function getMentorManager( IContextSource $context = null ) {
-		$coreServices = MediaWikiServices::getInstance();
+		$coreServices = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
 		$context ??= RequestContext::getMain();
 

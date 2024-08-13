@@ -5,7 +5,6 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use Maintenance;
-use MediaWiki\MediaWikiServices;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -26,7 +25,7 @@ class InsertLinkRecommendation extends Maintenance {
 	}
 
 	public function init() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		if ( !$growthServices->getGrowthConfig()->get( 'GEDeveloperSetup' ) ) {
 			$this->fatalError( 'This script cannot be safely run in production.' );
@@ -35,7 +34,7 @@ class InsertLinkRecommendation extends Maintenance {
 
 	public function execute() {
 		$this->init();
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$json = file_get_contents( $this->getOption( 'json-file' ) );
 		$data = json_decode( $json, true );

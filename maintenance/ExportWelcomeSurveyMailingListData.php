@@ -6,7 +6,6 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\WelcomeSurvey;
 use Maintenance;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
@@ -66,7 +65,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			$this->fatalError( "--output-format must be one of 'text' or 'csv'" );
 		}
 
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$fromId = $this->getLastUserIdBeforeRegistrationDate( $dbr, $from );
 		$toId = $this->getLastUserIdBeforeRegistrationDate( $dbr, $to );
 		if ( $this->hasOption( 'debug' ) ) {

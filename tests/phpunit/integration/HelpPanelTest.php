@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanelHooks;
 use MediaWiki\Config\HashConfig;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\TitleValue;
@@ -23,7 +22,7 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::getHelpDeskTitle
 	 */
 	public function testGetHelpDeskTitle() {
-		$sitename = MediaWikiServices::getInstance()->getMainConfig()->get( 'Sitename' );
+		$sitename = $this->getServiceContainer()->getMainConfig()->get( 'Sitename' );
 		$config = new HashConfig( [
 			'GEHelpPanelHelpDeskTitle' => 'HelpDesk/{{SITENAME}}'
 		] );

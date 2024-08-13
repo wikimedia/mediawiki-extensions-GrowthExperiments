@@ -8,7 +8,6 @@ use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use GrowthExperiments\WelcomeSurvey;
 use IDBAccessObject;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Utils\MWTimestamp;
 use Psr\Log\NullLogger;
@@ -23,7 +22,7 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
 		return new SpecialWelcomeSurvey(
 			$services->getSpecialPageFactory(),
@@ -39,8 +38,8 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 	 */
 	public function testStoreResponsesForUserWithNONEgroup() {
 		$user = $this->getMutableTestUser()->getUser();
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+		$userOptionsLookup = $this->getServiceContainer()->getUserOptionsLookup();
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		$fakeTime = '20200505120000';
 		$userOptionsManager->setOption( $user, WelcomeSurvey::SURVEY_PROP, FormatJson::encode( [
 			'_group' => 'NONE',

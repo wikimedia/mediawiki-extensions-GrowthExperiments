@@ -7,7 +7,6 @@ use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
 use IDBAccessObject;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\Tests\Api\ApiTestCase;
@@ -130,7 +129,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		);
 		$this->assertSame( 'success', $ret[0]['helppanelquestionposter']['result'] );
 		$revisionId = $ret[0]['helppanelquestionposter']['revision'];
-		$revision = MediaWikiServices::getInstance()->getRevisionLookup()->getRevisionById(
+		$revision = $this->getServiceContainer()->getRevisionLookup()->getRevisionById(
 			$revisionId, IDBAccessObject::READ_LATEST );
 		$this->assertInstanceOf( RevisionRecord::class, $revision );
 		$this->assertSame( 'HelpDeskTest2', $revision->getPageAsLinkTarget()->getDBkey() );

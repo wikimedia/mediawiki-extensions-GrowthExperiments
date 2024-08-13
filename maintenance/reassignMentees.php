@@ -8,7 +8,6 @@ use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use Maintenance;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -52,7 +51,7 @@ class ReassignMentees extends Maintenance {
 	}
 
 	private function init() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$growthLb = $growthServices->getLoadBalancer();
 

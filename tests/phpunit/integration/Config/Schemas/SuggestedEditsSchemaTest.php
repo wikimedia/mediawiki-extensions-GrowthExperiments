@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use MockMessageLocalizer;
 use StatusValue;
@@ -33,7 +32,7 @@ class SuggestedEditsSchemaTest extends MediaWikiIntegrationTestCase {
 
 		$this->getNonexistingTestPage( 'MediaWiki:GrowthExperimentsSuggestedEdits.json' );
 
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
 		$configurationValidator->setMessageLocalizer( new MockMessageLocalizer() );
 		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
@@ -227,7 +226,7 @@ JSON;
 
 		$this->editPage( 'MediaWiki:GrowthExperimentsSuggestedEdits.json', $partialConfigJson );
 
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
 		$configurationValidator->setMessageLocalizer( new MockMessageLocalizer() );
 		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();

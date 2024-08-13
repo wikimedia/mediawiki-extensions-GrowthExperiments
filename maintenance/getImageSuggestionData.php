@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeH
 use Maintenance;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use StatusValue;
 
@@ -49,8 +48,8 @@ class GetImageSuggestionData extends Maintenance {
 
 	/** @inheritDoc */
 	public function execute() {
-		$services = MediaWikiServices::getInstance();
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$services = $this->getServiceContainer();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$serviceImageRecommendationProvider = $growthServices->getImageRecommendationProviderUncached();
 		if ( !$serviceImageRecommendationProvider instanceof ServiceImageRecommendationProvider ) {
 			// This isn't really necessary, but done to make phan happy.

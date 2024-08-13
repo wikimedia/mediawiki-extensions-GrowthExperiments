@@ -5,7 +5,6 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use Maintenance;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityLookup;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -35,7 +34,7 @@ class GetPraiseworthyMentees extends Maintenance {
 	}
 
 	private function initServices() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		$this->userIdentityLookup = $services->getUserIdentityLookup();

@@ -8,7 +8,6 @@ use GrowthExperiments\Util;
 use InvalidArgumentException;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use Maintenance;
-use MediaWiki\MediaWikiServices;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -36,7 +35,7 @@ class UpdateMetrics extends Maintenance {
 	 * Init all services
 	 */
 	private function initServices(): void {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 
 		$this->statsDataFactory = $services->getPerDbNameStatsdDataFactory();
 		$this->metricsFactory = GrowthExperimentsServices::wrap( $services )

@@ -12,7 +12,6 @@ use GrowthExperiments\WikiConfigException;
 use LogicException;
 use Maintenance;
 use MediaWiki\Config\Config;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -80,7 +79,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 	public function checkRequiredExtensions() {
 		// Hack: must be early enough for requireExtension to work but late enough for config
 		// to be available.
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		if ( $growthServices->getGrowthConfig()->get( 'GELinkRecommendationsUseEventGate' ) ) {
 			$this->requireExtension( 'EventBus' );
 		} else {
@@ -137,13 +136,13 @@ class RevalidateLinkRecommendations extends Maintenance {
 		// should run on a given wiki relies on this, but initServices/initConfig will break
 		// on some wikis where the script is not supposed to run and the task configuration
 		// is missing.
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$this->growthConfig = $growthServices->getGrowthConfig();
 	}
 
 	protected function initServices(): void {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();

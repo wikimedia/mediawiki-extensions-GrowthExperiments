@@ -7,7 +7,6 @@ use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use Maintenance;
-use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -30,7 +29,7 @@ class DeleteExpiredUserImpactData extends Maintenance {
 
 	/** @inheritDoc */
 	public function execute() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$dbw = $growthServices->getLoadBalancer()->getConnection( DB_PRIMARY );
 
