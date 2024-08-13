@@ -17,6 +17,7 @@
 	"requires": {
 		"MediaWiki": ">= 1.43.0",
 		"extensions": {
+			"CommunityConfiguration": "*",
 			"VisualEditor": "*"
 		}
 	},
