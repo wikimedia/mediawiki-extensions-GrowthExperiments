@@ -124,8 +124,8 @@
 	"growthexperiments-tour-response-button-okay": "Faham",
 	"tag-help_module_question": "Soalan modul bantuan",
 	"tag-help_module_question-description": "Suntingan dibuat daripada ciri \"Tanya satu soalan\" pada modul bantuan halaman utama",
-	"tag-mentorship_module_question": "Soalan modul bimbingan",
-	"tag-mentorship_module_question-description": "Suntingan dibuat daripada ciri \"Tanya mentor anda\" pada modul bimbingan halaman utama",
+	"tag-mentorship_module_question": "Soalan modul sesi bimbingan",
+	"tag-mentorship_module_question-description": "Suntingan dibuat daripada ciri \"Tanya mentor anda\" pada modul sesi bimbingan halaman utama",
 	"tag-mentorship_panel_question": "Soalan panel sesi bimbingan",
 	"tag-mentorship_panel_question-description": "Suntingan dibuat daripada ciri \"Tanya mentor anda\" pada panel bantuan",
 	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks Tugasan pengguna baharu]",
@@ -621,5 +621,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Anda telah}} membuat $3 {{PLURAL:$3|suntingan yang dicadangkan}}. Teruskan belajar lebih banyak kemahiran baharu.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Buat suntingan yang dicadangkan",
 	"echo-category-title-ge-newcomer": "Ciri-ciri pembelajaran",
-	"echo-pref-tooltip-ge-newcomer": "Beritahu saya tentang tugasan untuk pengguna baharu dan ciri lain yang direka untuk membantu pengguna baharu."
+	"echo-pref-tooltip-ge-newcomer": "Beritahu saya tentang tugasan untuk pengguna baharu dan ciri lain yang direka untuk membantu pengguna baharu.",
+	"growthexperiments-homepage-community-updates-header": "Kemas kini komuniti",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Ketahui lebih lanjut"
 }
