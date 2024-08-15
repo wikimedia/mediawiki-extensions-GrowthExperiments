@@ -15,7 +15,9 @@
 			"SleaY",
 			"MacOS Weed",
 			"Alien333",
-			"Escargot bleu"
+			"Escargot bleu",
+			"Méthodes Bulebe Hangi",
+			"Pols12"
 		]
 	},
 	"growthexperiments-desc": "Cette extension contient des expériences faites par l’équipe Croissance (''Growth'').",
@@ -48,7 +50,7 @@
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Espaces de noms à inclure dans la recherche d’aide en texte libre sur le panneau d’aide",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Où devraient être dirigées les questions du panneau d’aide ?",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Pages de discussion des tuteurs",
-	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Bureau d’aide",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Centre d’assistance",
 	"growthexperiments-edit-config-help-panel-links": "Liens sur le panneau d’aide",
 	"growthexperiments-edit-config-help-panel-links-description": "Le panneau d’aide affiche cinq liens et un lien « afficher plus ». Ils peuvent être configurés pour être n’importe quel lien du wiki, mais les recommandations sont incluses ci-dessous.",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "1) Page de destination pour le premier lien du panneau d’aide (recommandé : conventions de style)",
