@@ -1,12 +1,47 @@
 {
 	"@metadata": {
 		"authors": [
-			"O Breixo"
+			"O Breixo",
+			"Toliño"
 		]
 	},
+	"welcomesurvey": "{{GENDER:$1|Benvido|Benvida}}, $1!",
+	"welcomesurvey-save-confirmation-title": "Grazas! Gardáronse correctamente as {{GENDER:|túas}} respostas.",
+	"welcomesurvey-save-confirmation-text": "As {{GENDER:|túas}} respostas axúdannos a ofrecerche xeitos útiles de te iniciares na Wikipedia.",
+	"welcomesurvey-subtitle": "Axúdanos a mellorar a {{GENDER:|túa}} experiencia na Wikipedia respondendo unhas poucas preguntas opcionais.",
+	"welcomesurvey-save-btn": "Rematar",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Saltar}} a enquisa",
 	"welcomesurvey-close-btn": "Pechar e volver a $1",
-	"welcomesurvey-dropdown-option-select-label": "Por favor, seleccione...",
+	"welcomesurvey-privacy-policy-link-text": "Aprende máis sobre os datos dos editores novos",
+	"welcomesurvey-sidebar-editing-title": "Comezar a editar",
+	"welcomesurvey-sidebar-editing-text": "Calquera persoa pode editar a maioría das páxinas; ademais, fanse centos de cambios cada hora para engadir contidos, corrixir erros e mellorar a redacción. As seguintes páxinas poden axudarche se estás {{GENDER:$1|interesado|interesada}} en contribuír.",
+	"welcomesurvey-sidebar-editing-link1-text": "Titorial",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Titorial",
+	"welcomesurvey-sidebar-editing-link2-text": "Axuda",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Axuda",
+	"welcomesurvey-question-reason-label": "Por que {{GENDER:|creaches}} a conta?",
+	"welcomesurvey-dropdown-option-select-label": "Por favor, selecciona...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Para corrixir un falta de ortografía ou un erro nun artigo da Wikipedia",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Para engadir ou cambiar información dun artigo da Wikipedia",
-	"welcomesurvey-question-reason-other-placeholder": "Introducir outro motivo...{{GENDER:$1|}}",
-	"welcomesurvey-question-email-placeholder": "Introduce o seu enderezo de correo electrónico..."
+	"welcomesurvey-question-reason-option-add-image-label": "Para engadir unha foto ou unha imaxe a un artigo da Wikipedia",
+	"welcomesurvey-question-reason-option-new-page-label": "Para crear un artigo novo na Wikipedia",
+	"welcomesurvey-question-reason-option-program-participant-label": "Estou participando nun programa, clase ou evento",
+	"welcomesurvey-question-reason-option-read-label": "Para ler a Wikipedia",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Outro",
+	"welcomesurvey-question-reason-option-other-label": "Outro (especificar)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Escribe}} outro motivo...",
+	"welcomesurvey-question-edited-label": "Algunha vez {{GENDER:|editaches}} a Wikipedia?",
+	"welcomesurvey-question-edited-option-yes-many-label": "Si, moitas veces",
+	"welcomesurvey-question-edited-option-yes-few-label": "Si, unha ou dúas veces",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Non, non sabía que podía editar a Wikipedia",
+	"welcomesurvey-question-edited-option-no-other-label": "Non, por outros motivos",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Non me lembro",
+	"welcomesurvey-question-mailinglist-label": "Quero recibir consellos por correo electrónico sobre como comezar a editar.",
+	"welcomesurvey-question-mailinglist-help": "Ten en conta que esta lista de correo está xestionada mediante MailChimp, o que significa que o uso da {{GENDER:|túa}} información por parte de MailChimp está rexido pola súa [https://www.intuit.com/privacy/statement/ política de privacidade] e os seus [https://mailchimp.com/legal/terms/ termos de servizo].",
+	"welcomesurvey-question-email-label": "Enderezo de correo electrónico (opcional)",
+	"welcomesurvey-question-email-placeholder": "Escribe o {{GENDER:|teu}} enderezo de correo electrónico...",
+	"welcomesurvey-question-email-help": "Decatámonos de que non {{GENDER:|introduciches}} un correo electrónico ao creares a conta. É <strong>moi recomendable</strong> que o fagas, xa que se necesita un correo electrónico para recuperar a conta se algunha vez perdes o contrasinal. NOTA: O teu enderezo de correo electrónico non se revela cando outros usuarios se poñan en contacto contigo.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} está dispoñible en preto de 300 idiomas. {{GENDER:|Sabes}} ler e escribir noutras linguas?",
+	"welcomesurvey-question-languages-placeholder": "Engade ata {{PLURAL:$1|unha lingua|$1 linguas}}...",
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|Engadiches}} o número máximo de linguas."
 }
