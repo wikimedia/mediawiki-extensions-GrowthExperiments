@@ -3,6 +3,7 @@
 		"authors": [
 			"DreZhsh",
 			"Gomoko",
+			"Goombiis",
 			"Obscaeris",
 			"SleaY",
 			"Thibaut120094",
@@ -59,6 +60,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifier {{GENDER:|vos}} filtres pour trouver des apprentis.",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Changements récents par {{GENDER:|}}vos tutorés",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|}}Vous pouvez afficher les modifications apportées par tous {{GENDER:|}}vos apprentis en affichant cette [$1 vue filtrée des modifications récentes].",
+	"growthexperiments-mentor-dashboard-mentee-overview-error-title": "Une erreur inconnue s'est produite lors du chargement de la liste des mentorés",
+	"growthexperiments-mentor-dashboard-mentee-overview-error-notification": "Une erreur inconnue s’est produite. Veuillez essayer à nouveau ultérieurement.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressources",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gérer les tuteurs",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Afficher la liste des tuteurs",

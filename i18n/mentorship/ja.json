@@ -56,7 +56,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "最近活動した指導対象者が見つかりませんでした",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "指導役ダッシュボードには、最近活動した指導対象者のみが表示されます。詳細情報は情報アイコンから確認できます。最近指導役に登録した場合、{{GENDER:|あなた}}に指導対象者がまだ割り当てられていない可能性があります。",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "指導対象者が見つかりませんでした",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "絞り込み条件を変えて指導対象者を見つける。",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "{{GENDER:|}}絞り込み条件を変えて指導対象者を見つける。",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "{{GENDER:|あなたの}}指導対象者による最近の更新",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "すべての指導対象者が行った編集は、[$1 フィルターされた最近の更新]で見ることができます。",
 	"growthexperiments-mentor-dashboard-resources-headline": "リソース",
