@@ -8,10 +8,12 @@ use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Html\Html;
+use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserEditTracker;
 use stdClass;
+use WANObjectCache;
 
 class CommunityUpdates extends BaseModule {
 	private ?IConfigurationProvider $provider = null;
@@ -19,6 +21,8 @@ class CommunityUpdates extends BaseModule {
 	private UserEditTracker $userEditTracker;
 	private LinkRenderer $linkRenderer;
 	private TitleFactory $titleFactory;
+	private WANObjectCache $cache;
+	private HttpRequestFactory $httpRequestFactory;
 
 	/**
 	 * @param IContextSource $context
@@ -28,6 +32,8 @@ class CommunityUpdates extends BaseModule {
 	 * @param UserEditTracker $userEditTracker
 	 * @param LinkRenderer $linkRenderer
 	 * @param TitleFactory $titleFactory
+	 * @param WANObjectCache $cache
+	 * @param HttpRequestFactory $httpRequestFactory
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -36,13 +42,17 @@ class CommunityUpdates extends BaseModule {
 		ConfigurationProviderFactory $providerFactory,
 		UserEditTracker $userEditTracker,
 		LinkRenderer $linkRenderer,
-		TitleFactory $titleFactory
+		TitleFactory $titleFactory,
+		WANObjectCache $cache,
+		HttpRequestFactory $httpRequestFactory
 	) {
 		parent::__construct( 'community-updates', $context, $wikiConfig, $experimentUserManager );
 		$this->providerFactory = $providerFactory;
 		$this->userEditTracker = $userEditTracker;
 		$this->linkRenderer = $linkRenderer;
 		$this->titleFactory = $titleFactory;
+		$this->cache = $cache;
+		$this->httpRequestFactory = $httpRequestFactory;
 	}
 
 	private function initializeProvider() {
@@ -79,19 +89,99 @@ class CommunityUpdates extends BaseModule {
 		return $config->GEHomepageCommunityUpdatesEnabled && $this->shouldShowCommunityUpdatesModule( $config );
 	}
 
-	private function getThumbnail( string $url ): string {
+	private function getThumbnail( string $fileTitle ): string {
 		$thumbnailContent = Html::rawElement( 'span', [ 'class' => 'cdx-thumbnail__placeholder' ],
 			Html::rawElement( 'span', [
 				'class' => 'cdx-thumbnail__placeholder__icon',
 			] )
 		);
-		if ( $url !== '' ) {
-			$thumbnailContent = Html::rawElement( 'div', [
-				'class' => 'cdx-thumbnail__image ext-growthExperiments-CommunityUpdates__thumbnail__image',
-				'style' => 'background-image: url( ' . $url . ');'
-			] );
+
+		if ( $fileTitle === '' ) {
+			return Html::rawElement( 'div', [ 'class' => 'cdx-card__thumbnail' ], $thumbnailContent );
 		}
+
+		$cacheKey = $this->cache->makeKey( 'community-updates-thumburl', md5( $fileTitle ) );
+		$cachedThumbUrl = $this->cache->get( $cacheKey );
+
+		if ( $cachedThumbUrl ) {
+			return $this->generateThumbnailHtml( $cachedThumbUrl );
+		}
+
+		$thumbUrl = $this->getThumbnailUrlFromCommonsApi( $fileTitle );
+		if ( $thumbUrl ) {
+			$this->cache->set( $cacheKey, $thumbUrl, $this->cache::TTL_HOUR );
+			return $this->generateThumbnailHtml( $thumbUrl );
+		}
+
 		return Html::rawElement( 'div', [ 'class' => 'cdx-card__thumbnail' ], $thumbnailContent );
+	}
+
+	/**
+	 * Generates the HTML for a thumbnail image.
+	 *
+	 * This method generates HTML on each call rather than caching the full HTML.
+	 * This approach was chosen for the following reasons:
+	 * 1. Flexibility: Allows easy updates to HTML structure without invalidating caches.
+	 * 2. Separation of concerns: Keeps caching logic separate from presentation logic.
+	 * 3. Future-proofing: Facilitates easier implementation of responsive images or other
+	 *    advanced features in the future.
+	 *
+	 * Trade-offs and considerations:
+	 * - Performance: There's a small performance cost of generating HTML on each request.
+	 *   However, this is typically a lightweight operation compared to API calls or DB queries.
+	 * - Caching: We're still caching the thumbnail URL, which provides the main performance benefit
+	 *   by avoiding repeated API calls to Commons.
+	 * - Flexibility vs. Performance: We've prioritized flexibility and maintainability over the
+	 *   minor performance gain of caching full HTML.
+	 *
+	 * Future considerations:
+	 * - If performance becomes a critical issue, we can consider implementing a short-lived cache
+	 *   for the generated HTML in addition to caching the URL.
+	 * - Monitor performance metrics to ensure this approach meets performance requirements.
+	 *
+	 * @param string $thumbUrl The URL of the thumbnail image
+	 * @return string The generated HTML for the thumbnail
+	 */
+	private function generateThumbnailHtml( string $thumbUrl ): string {
+		$thumbnailContent = Html::rawElement( 'img', [
+			'class' => 'cdx-thumbnail__image ext-growthExperiments-CommunityUpdates__thumbnail__image',
+			'src' => $thumbUrl,
+			'alt' => ''
+		] );
+		return Html::rawElement( 'div', [ 'class' => 'cdx-card__thumbnail' ], $thumbnailContent );
+	}
+
+	private function getThumbnailUrlFromCommonsApi( string $fileTitle ): string {
+		$apiUrl = 'https://commons.wikimedia.org/w/api.php';
+		// The thumbnail width is set to 120px, which is 3x the standard Codex thumbnail size (40px).
+		// This provides a high-quality image that can be scaled down for various display sizes
+		// while maintaining clarity and allowing for high-DPI displays.
+		$thumbnailWidth = 120;
+		$params = [
+			'action' => 'query',
+			'format' => 'json',
+			'prop' => 'imageinfo',
+			'titles' => $fileTitle,
+			'iiprop' => 'url|size',
+			'iiurlwidth' => $thumbnailWidth
+		];
+
+		$url = wfAppendQuery( $apiUrl, $params );
+		$options = [ 'timeout' => 10 ];
+		$request = $this->httpRequestFactory->create( $url, $options );
+		$status = $request->execute();
+
+		if ( $status->isOK() ) {
+			$response = json_decode( $request->getContent(), true );
+
+			if ( isset( $response['query']['pages'] ) ) {
+				$page = reset( $response['query']['pages'] );
+				if ( isset( $page['imageinfo'][0]['thumburl'] ) ) {
+					return $page['imageinfo'][0]['thumburl'];
+				}
+			}
+		}
+		return '';
 	}
 
 	/**
@@ -120,7 +210,7 @@ class CommunityUpdates extends BaseModule {
 
 		return Html::rawElement( 'div', [ 'class' => 'cdx-card-content' ],
 			Html::rawElement( 'div', [ 'class' => 'cdx-card-content-row-1' ],
-				$this->getThumbnail( $config->GEHomepageCommunityUpdatesThumbnailFile->url ) .
+				$this->getThumbnail( $config->GEHomepageCommunityUpdatesThumbnailFile->title ) .
 				Html::rawElement( 'div', [ 'class' => 'cdx-card__text__title' ], $contentTitle )
 			) .
 			Html::rawElement( 'div', [ 'class' => 'cdx-card-content-row-2' ],

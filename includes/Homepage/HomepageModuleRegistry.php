@@ -255,7 +255,9 @@ class HomepageModuleRegistry {
 					CommunityConfigurationServices::wrap( $services )->getConfigurationProviderFactory(),
 					$services->getUserEditTracker(),
 					$services->getLinkRenderer(),
-					$services->getTitleFactory()
+					$services->getTitleFactory(),
+					$services->getMainWANObjectCache(),
+					$services->getHttpRequestFactory()
 				);
 			},
 		];
