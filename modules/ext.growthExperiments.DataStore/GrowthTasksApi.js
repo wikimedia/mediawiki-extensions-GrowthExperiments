@@ -134,11 +134,22 @@
 		var startTime = mw.now(),
 			self = this,
 			url = new mw.Uri( window.location.href );
-		config = Object.assign( {
+		var defaultConfig = {
 			getDescription: false,
 			size: this.pageSize,
 			thumbnailWidth: this.thumbnailWidth
-		}, config || {} );
+		};
+
+		// Filter out undefined values
+		var filteredConfig = {};
+		if ( config ) {
+			Object.keys( config ).forEach( ( key ) => {
+				if ( config[ key ] !== undefined ) {
+					filteredConfig[ key ] = config[ key ];
+				}
+			} );
+		}
+		config = Object.assign( {}, defaultConfig, filteredConfig );
 
 		if ( !taskTypes.length ) {
 			// No point in doing the query if no task types are allowed.
