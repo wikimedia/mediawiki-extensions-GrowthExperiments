@@ -186,7 +186,7 @@
 	"growthexperiments-manage-mentors-auto-assigned": "Mentors automatically assigned to new accounts",
 	"growthexperiments-manage-mentors-auto-assigned-text": "When a newcomer registers their {{SITENAME}} account, one of the following users is automatically assigned as their mentor.",
 	"growthexperiments-manage-mentors-manually-assigned": "Mentors who manually select their mentees",
-	"growthexperiments-manage-mentors-manually-assigned-text": "New accounts aren’t automatically assigned to these mentors. This list of mentors will only mentor accounts they personally select, making this feature ideal for workshop hosts who wish to continue mentoring participants.",
+	"growthexperiments-manage-mentors-manually-assigned-text": "New accounts aren’t automatically assigned to these mentors. Mentors in this list will only mentor accounts they personally select, making this feature ideal for workshop hosts who wish to continue mentoring participants.",
 	"growthexperiments-manage-mentors-none": "None",
 	"growthexperiments-manage-mentors-username": "Username",
 	"growthexperiments-manage-mentors-last-active": "Last active",
