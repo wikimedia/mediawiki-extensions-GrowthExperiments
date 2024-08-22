@@ -1,5 +1,5 @@
 'use strict';
-const FiltersWidget = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/FiltersButtonGroupWidget.js' );
+const FiltersWidget = require( 'ext.growthExperiments.Homepage.SuggestedEdits/FiltersButtonGroupWidget.js' );
 const HomepageModuleLogger = require( '../../../modules/ext.growthExperiments.Homepage.Logger/index.js' );
 const rootStore = require( '../__mocks__/store.js' );
 

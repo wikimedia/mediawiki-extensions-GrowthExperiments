@@ -1,6 +1,6 @@
 'use strict';
 
-const pathToWidget = '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js';
+const pathToWidget = 'ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js';
 const SuggestedEditPagerWidget = require( pathToWidget );
 
 let sandbox, suggestedEditPagerWidget;
@@ -42,7 +42,7 @@ QUnit.test( 'setMessage with currentPosition > totalCount', ( assert ) => {
 	assert.true( spy.getCall( 0 ).calledWithExactly( 'growthexperiments-homepage-suggestededits-pager-end' ) );
 	assert.true( spy.getCall( 1 ).calledWithExactly(
 		'growthexperiments-homepage-suggestededits-pager',
-		'⧼growthexperiments-homepage-suggestededits-pager-end⧽',
+		'(growthexperiments-homepage-suggestededits-pager-end)',
 		'2'
 	) );
 } );

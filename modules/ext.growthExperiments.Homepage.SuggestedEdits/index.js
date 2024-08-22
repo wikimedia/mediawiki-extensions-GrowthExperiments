@@ -89,6 +89,11 @@
 		return $.Deferred().resolve();
 	}
 
+	if ( window.QUnit ) {
+		// Let tests control the side-effects.
+		return;
+	}
+
 	// Try setup for desktop mode and server-side-rendered mobile mode.
 	// See also the comment in ext.growthExperiments.Homepage.Mentorship.js.
 	// Export setup state so the caller can wait for it when setting up the module

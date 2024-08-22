@@ -1,6 +1,6 @@
 'use strict';
 
-const NewcomerTaskLogger = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' );
+const NewcomerTaskLogger = require( 'ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' );
 
 QUnit.module( 'ext.growthExperiments.NewcomerTaskLogger.js', QUnit.newMwEnvironment() );
 
