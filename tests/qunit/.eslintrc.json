@@ -1,21 +1,6 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/server",
-		"wikimedia/jquery",
-		"wikimedia/mediawiki",
-		"wikimedia/qunit"
-	],
-	"globals": {
-		"sinon": "readonly"
-	},
-	"env": {
-		"browser": true
-	},
-	"rules": {
-		"max-len": "off",
-		"mediawiki/valid-package-file-require": "off",
-		"compat/compat": "off",
-		"qunit/no-loose-assertions": "warn"
-	}
+		"wikimedia/mediawiki/qunit"
+	]
 }
