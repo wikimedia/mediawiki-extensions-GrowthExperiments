@@ -24,7 +24,7 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 	} );
 
 	const responseMock = {
-		bacthcomplete: true,
+		batchcomplete: true,
 		query: {
 			pages: Array( 23 ).fill( 1 ).map( ( _, i ) => ( { pageid: i + 1 } ) )
 		},
@@ -81,7 +81,7 @@ QUnit.test( 'should send topic match mode even if topics are empty', function ( 
 	} );
 
 	const response = {
-		bacthcomplete: true,
+		batchcomplete: true,
 		query: {
 			pages: []
 		},
@@ -160,4 +160,56 @@ QUnit.test( 'should read topic filters and topics match mode preferences', funct
 	};
 	const actual3 = api.getPreferences();
 	assert.deepEqual( actual3, expectedPreferences3 );
+} );
+
+QUnit.test( 'should handle undefined values in config correctly', function ( assert ) {
+	const done = assert.async();
+	const api = new GrowthTasksApi( {
+		taskTypes: {
+			copyedit: { id: 'copyedit' }
+		},
+		suggestedEditsConfig: {
+			GENewcomerTasksTopicFiltersPref: 'preference-name',
+			GESearchTaskSuggesterDefaultLimit: 20
+		}
+	} );
+
+	const topicFilters = new TopicFilters( {
+		topics: [ 'art', 'music' ],
+		topicsMatchMode: TOPIC_MATCH_MODES.AND
+	} );
+
+	const responseMock = {
+		batchcomplete: true,
+		query: { pages: [] },
+		growthtasks: { totalCount: 0 }
+	};
+
+	this.sandbox.stub( mw.Api.prototype, 'get' ).returns(
+		$.Deferred().resolve( responseMock ).promise( { abort: function () {} } )
+	);
+
+	// Config with undefined value
+	const testConfig = {
+		getDescription: undefined,
+		size: 10,
+		thumbnailWidth: undefined
+	};
+
+	api.fetchTasks( [ 'copyedit' ], topicFilters, testConfig ).then( () => {
+		const apiCallArgs = mw.Api.prototype.get.getCall( 0 ).args[ 0 ];
+
+		assert.strictEqual(
+			apiCallArgs.ggtlimit, 15, 'size should be 10 (from config) + 5 (lookAheadSize)' );
+		assert.strictEqual( apiCallArgs.prop.indexOf( 'description' ), -1,
+			'description should not be in prop (getDescription should remain false)' );
+		assert.strictEqual( apiCallArgs.pithumbsize, 332,
+			'thumbnailWidth should retain default value when undefined is provided' );
+
+		done();
+	} ).catch( ( error ) => {
+		// eslint-disable-next-line qunit/no-loose-assertions
+		assert.ok( false, 'Promise should not be rejected: ' + error );
+		done();
+	} );
 } );
