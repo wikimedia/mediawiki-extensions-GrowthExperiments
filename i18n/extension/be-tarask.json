@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Red Winged Duck"
+			"Red Winged Duck",
+			"Renessaince"
 		]
 	},
-	"growthexperiments-desc": "Гэтае пашырэньне ўтрымлівае экспэрымэнты каманды Growth."
+	"growthexperiments-desc": "Гэтае пашырэньне ўтрымлівае экспэрымэнты каманды Growth.",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Неадпаведнасьць мадэлі зьместу: канфігурацыйны файл GrowthExperiments мусіць мець мадэль зьместу JSON, а выяўленая $1"
 }

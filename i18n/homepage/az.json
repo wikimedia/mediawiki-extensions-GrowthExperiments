@@ -380,7 +380,7 @@
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|Yeni}} {{GENDER:$2|mentorunuz}} haqqında daha çox öyrənin.",
 	"right-setmentor": "İstifadəçinin mentorunu təyin etmək",
 	"action-setmentor": "istifadəçinin mentorunu təyin etmək",
-	"right-managementors": "Mentorların siyahısını idarə edin",
+	"right-managementors": "Mentorların siyahısını idarə etmək",
 	"action-managementors": "mentorların siyahısını idarə etmək",
 	"right-enrollasmentor": "Mentor kimi qeydiyyatdan keçmək",
 	"action-enrollasmentor": "mentor kimi qeydiyyatdan keçmək",
