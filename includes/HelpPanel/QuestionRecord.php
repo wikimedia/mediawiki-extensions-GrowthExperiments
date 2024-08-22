@@ -5,14 +5,23 @@ namespace GrowthExperiments\HelpPanel;
 use JsonSerializable;
 
 class QuestionRecord implements JsonSerializable {
+	/** @var string */
 	private $questionText;
+	/** @var string */
 	private $sectionHeader;
+	/** @var mixed */
 	private $revId;
+	/** @var string */
 	private $resultUrl;
+	/** @var string */
 	private $archiveUrl;
+	/** @var int */
 	private $timestamp;
+	/** @var bool */
 	private $isArchived;
+	/** @var bool */
 	private $isVisible;
+	/** @var string */
 	private $contentModel;
 
 	/**
