@@ -135,7 +135,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
   <section
     class="ext-growthExperiments-MenteeFiltersForm__form-group"
   >
-    <span
+    <div
       class="cdx-checkbox cdx-checkbox--status-default"
     >
       <div
@@ -173,7 +173,7 @@ exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = 
         </div>
       </div>
       <!--v-if-->
-    </span>
+    </div>
   </section>
   <section
     class="ext-growthExperiments-MenteeFiltersForm__form-group ext-growthExperiments-MenteeFiltersForm__form-actions"
