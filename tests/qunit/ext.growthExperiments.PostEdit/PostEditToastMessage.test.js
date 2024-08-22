@@ -1,6 +1,6 @@
 'use strict';
 
-const PostEditToastMessage = require( '../../../modules/ext.growthExperiments.PostEdit/PostEditToastMessage.js' );
+const PostEditToastMessage = require( 'ext.growthExperiments.PostEdit/PostEditToastMessage.js' );
 
 QUnit.module( 'ext.growthExperiments.PostEdit/PostEditToastMessage.js', QUnit.newMwEnvironment() );
 
