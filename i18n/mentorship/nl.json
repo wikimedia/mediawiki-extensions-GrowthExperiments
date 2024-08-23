@@ -58,6 +58,9 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Wijzig uw filters om leerlingen te vinden.",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Recente wijzigingen van uw leerlingen",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "Om de bewerkingen van al uw leerlingen te bekijken, gaat u naar deze [$1 gefilterde weergave van de recente wijzigingen].",
+	"growthexperiments-mentor-dashboard-mentee-overview-error-title": "Er is een onbekende fout opgetreden bij het laden van de lijst met leerlingen",
+	"growthexperiments-mentor-dashboard-mentee-overview-error-description": "Als dit probleem zich blijft voordoen, meld het dan als een fout bij de ontwikkelaars.",
+	"growthexperiments-mentor-dashboard-mentee-overview-error-notification": "Er is een onbekende fout opgetreden. Probeer het later opnieuw.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Middelen",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Mentoren beheren",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Lijst met mentoren bekijken",
@@ -234,5 +237,6 @@
 	"growthexperiments-mentorship-enrollasmentor-summary": "Ik heb mezelf toegevoegd als mentor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Alleen gebruikers met tenminste $1 bewerking{{PLURAL:$1||en}} en $2 dag{{PLURAL:$2||en}} van aanwezigheid kunnen zich inschrijven als mentor.",
 	"tag-mentor list change": "Wijziging van de mentorlijst",
-	"tag-mentor list change-description": "Label toegepast op bewerkingen die zijn aangebracht in de gestructureerde mentorlijst via GrowthExperiments"
+	"tag-mentor list change-description": "Label toegepast op bewerkingen die zijn aangebracht in de gestructureerde mentorlijst via GrowthExperiments",
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorschap is momenteel uitgeschakeld. Moderators kunnen Mentorschap inschakelen via [[$1]]."
 }
