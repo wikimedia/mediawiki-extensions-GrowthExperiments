@@ -13,7 +13,6 @@ use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Language\FormatterFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleFactory;
@@ -103,7 +102,7 @@ class MigrateCommunityConfig extends LoggedUpdateMaintenance {
 	}
 
 	private function initServices() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 
 		$this->configurationProviderFactory = CommunityConfigurationServices::wrap( $services )
 			->getConfigurationProviderFactory();

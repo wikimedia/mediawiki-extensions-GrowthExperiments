@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\Maintenance\DeleteOldSurveys;
 use GrowthExperiments\WelcomeSurvey;
 use IDBAccessObject;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
@@ -96,7 +95,7 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 		ob_start();
 		$deleteOldSurveys = new DeleteOldSurveys();
 		$deleteOldSurveys->loadParamsAndArgs( 'deleteOldSurveys.php', $options, [] );
-		$deleteOldSurveys->setConfig( MediaWikiServices::getInstance()->getMainConfig() );
+		$deleteOldSurveys->setConfig( $this->getServiceContainer()->getMainConfig() );
 		$deleteOldSurveys->validateParamsAndArgs();
 		$deleteOldSurveys->execute();
 		$output = ob_get_contents();

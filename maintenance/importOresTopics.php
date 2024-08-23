@@ -10,7 +10,6 @@ use GrowthExperiments\Util;
 use LogicException;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -105,7 +104,7 @@ class ImportOresTopics extends Maintenance {
 	}
 
 	private function init() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		if ( !$growthServices->getGrowthConfig()->get( 'GEDeveloperSetup' ) ) {
 			$this->fatalError( 'This script cannot be safely run in production. (If the current '
@@ -381,7 +380,7 @@ class ImportOresTopics extends Maintenance {
 	 * @return mixed A JSON value
 	 */
 	private function getJsonData( string $url, array $parameters = [], bool $isMediaWikiApiUrl = false ) {
-		$requestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
+		$requestFactory = $this->getServiceContainer()->getHttpRequestFactory();
 		if ( $isMediaWikiApiUrl ) {
 			$result = Util::getApiUrl( $requestFactory, $url, $parameters + [ 'errorlang' => 'en' ] );
 		} else {
@@ -404,7 +403,7 @@ class ImportOresTopics extends Maintenance {
 	 * @return Title[]
 	 */
 	private function search( string $query, int $limit, int $offset ): array {
-		$searchEngine = MediaWikiServices::getInstance()->newSearchEngine();
+		$searchEngine = $this->getServiceContainer()->newSearchEngine();
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setNamespaces( [ NS_MAIN ] );
 		$searchEngine->setShowSuggestion( false );

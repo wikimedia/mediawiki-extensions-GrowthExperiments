@@ -8,7 +8,6 @@ use GrowthExperiments\GrowthExperimentsServices;
 use InvalidArgumentException;
 use Maintenance;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
@@ -70,7 +69,7 @@ class ChangeWikiConfig extends Maintenance {
 	}
 
 	private function initServices() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 
 		$this->wikiPageConfigWriterFactory = GrowthExperimentsServices::wrap( $services )
 			->getWikiPageConfigWriterFactory();

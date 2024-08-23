@@ -8,7 +8,6 @@ use GrowthExperiments\HelpPanel\QuestionStore;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWikiIntegrationTestCase;
 
@@ -22,7 +21,7 @@ class QuestionStoreTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionStore::__construct
 	 */
 	public function testValidConstructionDoesntCauseErrors() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$questionStore = new QuestionStore(
 			$this->getTestSysop()->getUser(),
 			'foo',

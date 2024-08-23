@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use Maintenance;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\MediaWikiServices;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -54,7 +53,7 @@ class ListTaskCounts extends Maintenance {
 			$this->fatalError( 'topictype must be one of: growth, ores' );
 		}
 
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$this->configurationLoader = new TopicDecorator(
 			$newcomerTaskConfigurationLoader,
@@ -104,7 +103,7 @@ class ListTaskCounts extends Maintenance {
 	 */
 	private function getStats( $taskTypes, $topics ): array {
 		$taskCounts = $taskTypeCounts = $topicCounts = [];
-		$mwServices = MediaWikiServices::getInstance();
+		$mwServices = $this->getServiceContainer();
 		$services = GrowthExperimentsServices::wrap( $mwServices );
 		// Cache stats for Growth topics since they're also used in SpecialNewcomerTasksInfo
 		$shouldCacheStats = $this->topicType === 'growth';
@@ -144,7 +143,7 @@ class ListTaskCounts extends Maintenance {
 	 * @param int[] $taskTypeCounts task type ID => total count
 	 */
 	private function reportTaskCounts( array $taskCounts, array $taskTypeCounts ): void {
-		$dataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
+		$dataFactory = $this->getServiceContainer()->getPerDbNameStatsdDataFactory();
 		foreach ( $taskTypeCounts as $taskTypeId => $taskTypeCount ) {
 			$dataFactory->updateCount( "growthexperiments.tasktypecount.$taskTypeId", $taskTypeCount );
 		}

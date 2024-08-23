@@ -9,7 +9,6 @@ use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\TestingAccessWrapper;
 
@@ -23,9 +22,9 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::__construct
 	 */
 	public function testConstruct() {
-		$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
-		$titleFactory = MediaWikiServices::getInstance()->getTitleFactory();
-		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
+		$wikiPageFactory = $this->getServiceContainer()->getWikiPageFactory();
+		$titleFactory = $this->getServiceContainer()->getTitleFactory();
+		$permissionManager = $this->getServiceContainer()->getPermissionManager();
 		$mentorManager = $this->createMock( MentorManager::class );
 		$mentorUser = $this->getTestSysop()->getUser();
 		$mentor = new Mentor( $mentorUser, '*', '', IMentorWeights::WEIGHT_NORMAL );
@@ -42,7 +41,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 				$titleFactory,
 				$mentorManager,
 				$permissionManager,
-				MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory(),
+				$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
 				ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 				ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 				$context,

@@ -19,7 +19,6 @@ use GrowthExperiments\WikiConfigException;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Config\Config;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -85,7 +84,7 @@ class RefreshLinkRecommendations extends Maintenance {
 	public function checkRequiredExtensions() {
 		// Hack: must be early enough for requireExtension to work but late enough for config
 		// to be available.
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		if ( $growthServices->getGrowthConfig()->get( 'GELinkRecommendationsUseEventGate' ) ) {
 			$this->requireExtension( 'EventBus' );
 		}
@@ -184,7 +183,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		// should run on a given wiki relies on this, but initServices/initConfig will break
 		// on some wikis where the script is not supposed to run and the task configuration
 		// is missing.
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$this->growthConfig = $growthServices->getGrowthConfig();
 	}
@@ -195,8 +194,8 @@ class RefreshLinkRecommendations extends Maintenance {
 		$linkRecommendationCandidateTaskType = NullTaskTypeHandler::getNullTaskType(
 			'_nolinkrecommendations', '-hasrecommendation:link' );
 
-		$services = MediaWikiServices::getInstance();
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$services = $this->getServiceContainer();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		if ( $newcomerTaskConfigurationLoader instanceof AbstractDataConfigurationLoader ) {
 			// Pretend link-recommendation is enabled (T371316)

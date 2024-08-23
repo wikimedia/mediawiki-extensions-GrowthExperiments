@@ -11,7 +11,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
 use MediaWiki\Status\Status;
@@ -96,7 +95,7 @@ class FixLinkRecommendationData extends Maintenance {
 	}
 
 	public function init() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		if ( $this->hasOption( 'db-table' )
 			&& !$this->hasOption( 'dry-run' )
@@ -201,7 +200,7 @@ class FixLinkRecommendationData extends Maintenance {
 	 * @return Title[]
 	 */
 	private function search( string $query, int $limit, int $offset, bool $randomize = false ): array {
-		$searchEngine = MediaWikiServices::getInstance()->newSearchEngine();
+		$searchEngine = $this->getServiceContainer()->newSearchEngine();
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setShowSuggestion( false );
 		if ( $randomize ) {
@@ -267,7 +266,7 @@ class FixLinkRecommendationData extends Maintenance {
 			return;
 		}
 		$fixWord = $this->hasOption( 'dry-run' ) ? 'fixable' : 'fixed';
-		$dataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
+		$dataFactory = $this->getServiceContainer()->getPerDbNameStatsdDataFactory();
 		$dataFactory->updateCount( "growthexperiments.$fixWord.link-recommendation.$type", $count );
 	}
 

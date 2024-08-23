@@ -7,7 +7,6 @@ use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\GrowthExperimentsServices;
 use LoggedUpdateMaintenance;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\TitleFactory;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -38,7 +37,7 @@ class MigrateServerConfig extends LoggedUpdateMaintenance {
 	}
 
 	private function initServices() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 
 		$this->wikiPageConfigWriterFactory = GrowthExperimentsServices::wrap( $services )
 			->getWikiPageConfigWriterFactory();

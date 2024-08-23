@@ -8,7 +8,6 @@ use GrowthExperiments\Specials\SpecialEditGrowthConfig;
 use GrowthExperiments\Util;
 use Maintenance;
 use MediaWiki\Http\HttpRequestFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageProps;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -60,7 +59,7 @@ class InitWikiConfig extends Maintenance {
 	}
 
 	private function initServices() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 
 		$this->wikiPageConfigWriterFactory = GrowthExperimentsServices::wrap( $services )
 			->getWikiPageConfigWriterFactory();

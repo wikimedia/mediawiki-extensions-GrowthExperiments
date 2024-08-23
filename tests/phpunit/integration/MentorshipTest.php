@@ -9,7 +9,6 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -32,7 +31,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testRenderNoMentorsAvailable() {
 		$context = new DerivativeContext( RequestContext::getMain() );
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$mentorshipModule = new Mentorship(
 			$context,
@@ -50,7 +49,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::render
 	 */
 	public function testRenderSuccess() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$this->assertStatusGood( $growthServices->getMentorWriter()->addMentor(
@@ -80,7 +79,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::getIntroText
 	 */
 	public function testGetIntroText() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$mentor = $growthServices->getMentorProvider()->newMentorFromUserIdentity(
 			$this->getTestUser( 'sysop' )->getUser()
@@ -101,7 +100,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$mentorshipModule = new Mentorship(
 			$context,

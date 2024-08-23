@@ -5,7 +5,6 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use Maintenance;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityLookup;
@@ -50,7 +49,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 	 * Init MediaWiki services
 	 */
 	private function initServices(): void {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		$this->userIdentityLookup = $services->getUserIdentityLookup();

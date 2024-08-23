@@ -5,7 +5,6 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\WelcomeSurvey;
 use IDBAccessObject;
 use Maintenance;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 use MediaWiki\Utils\MWTimestamp;
 
@@ -54,7 +53,7 @@ class DeleteOldSurveys extends Maintenance {
 		$dbw = $this->getPrimaryDB();
 		$fromUserId = 0;
 		$break = false;
-		$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		do {
 			$res = $dbr->newSelectQueryBuilder()
 				->select( [ 'user_id', 'up_value', 'user_registration' ] )
