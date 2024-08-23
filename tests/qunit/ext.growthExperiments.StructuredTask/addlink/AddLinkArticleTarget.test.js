@@ -29,7 +29,6 @@ QUnit.test( 'annotateSuggestions', function ( assert ) {
 		doc.body = body;
 		articleTarget.annotateSuggestions( doc, fixture.suggestions );
 		assert.strictEqual(
-			// eslint-disable-next-line es-x/no-string-prototype-replaceall
 			doc.body.innerHTML.replaceAll( '&lt;', '<' ).replaceAll( '&gt;', '>' ),
 			fixture.annotatedBody
 		);
