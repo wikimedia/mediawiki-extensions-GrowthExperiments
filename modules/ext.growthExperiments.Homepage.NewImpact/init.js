@@ -4,7 +4,7 @@
 	const { watch } = require( 'vue' );
 	const useMWRestApi = require( './composables/useMWRestApi.js' );
 	const { convertNumber } = require( '../utils/filters.js' );
-	const { hasIntl } = require( '../../utils/Utils.js' );
+	const { hasIntl } = require( '../utils/Utils.js' );
 	const HomepageLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' );
 	const logger = require( '../vue-components/plugins/logger.js' );
 	const relevantUserId = mw.config.get( 'GENewImpactRelevantUserId' );
