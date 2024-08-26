@@ -1,6 +1,6 @@
 'use strict';
 
-const PostEditPanel = require( '../../../modules/ext.growthExperiments.PostEdit/PostEditPanel.js' );
+const PostEditPanel = require( 'ext.growthExperiments.PostEdit/PostEditPanel.js' );
 const NewcomerTaskLogger = require( 'ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' );
 const HelpPanelLogger = require( '../../../modules/utils/HelpPanelLogger.js' );
 const NewcomerTasksStore = require( '../../../modules/ext.growthExperiments.DataStore/NewcomerTasksStore.js' );
@@ -234,10 +234,10 @@ QUnit.test( 'should return generic header text for image recommendation if the d
 	} );
 	assert.strictEqual(
 		acceptedSuggestionPanel.getHeaderText(),
-		'⧼growthexperiments-help-panel-postedit-subheader⧽'
+		'(growthexperiments-help-panel-postedit-subheader)'
 	);
 	assert.strictEqual(
 		reviewedSuggestionPanel.getHeaderText(),
-		'⧼growthexperiments-help-panel-postedit-subheader-notsaved⧽'
+		'(growthexperiments-help-panel-postedit-subheader-notsaved)'
 	);
 } );
