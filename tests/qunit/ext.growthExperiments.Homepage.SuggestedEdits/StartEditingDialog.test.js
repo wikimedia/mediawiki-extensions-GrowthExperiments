@@ -1,5 +1,5 @@
 'use strict';
-const StartEditingDialog = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js' );
+const StartEditingDialog = require( 'ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js' );
 const HomepageModuleLogger = require( '../../../modules/ext.growthExperiments.Homepage.Logger/index.js' );
 const rootStore = require( '../__mocks__/store.js' );
 

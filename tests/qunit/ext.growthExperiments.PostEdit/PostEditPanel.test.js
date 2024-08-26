@@ -1,7 +1,7 @@
 'use strict';
 
 const PostEditPanel = require( '../../../modules/ext.growthExperiments.PostEdit/PostEditPanel.js' );
-const NewcomerTaskLogger = require( '../../../modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' );
+const NewcomerTaskLogger = require( 'ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' );
 const HelpPanelLogger = require( '../../../modules/utils/HelpPanelLogger.js' );
 const NewcomerTasksStore = require( '../../../modules/ext.growthExperiments.DataStore/NewcomerTasksStore.js' );
 
