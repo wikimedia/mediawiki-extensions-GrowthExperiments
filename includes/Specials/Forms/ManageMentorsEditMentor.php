@@ -97,6 +97,7 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 			'awayTimestamp' => [
 				'type' => 'datetime',
 				'label-message' => 'growthexperiments-manage-mentors-edit-away-until',
+				'required' => true,
 				'hide-if' => [
 					'OR',
 					[ '!==', 'isAway', '1' ],
