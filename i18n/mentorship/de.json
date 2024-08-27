@@ -197,7 +197,7 @@
 	"growthexperiments-manage-mentors-auto-assigned": "Lotsen werden neuen Accounts automatisch zugewiesen",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Wenn ein Neuling sein {{SITENAME}}-Konto registriert, wird ihm automatisch einer der folgenden Benutzer als Lotse zugewiesen.",
 	"growthexperiments-manage-mentors-manually-assigned": "Lotsen, die ihre Mentees manuell auswählen",
-	"growthexperiments-manage-mentors-manually-assigned-text": "Neue Konten werden diesen Lotsen nicht automatisch zugewiesen. Diese Lotsenliste betreut nur Konten, die sie persönlich auswählen. Diese Funktion ist daher ideal für Workshop-Gastgeber, die Teilnehmer weiterhin betreuen möchten.",
+	"growthexperiments-manage-mentors-manually-assigned-text": "Neue Konten werden diesen Lotsen nicht automatisch zugewiesen. Lotsen auf dieser Liste betreuen nur Konten, die sie persönlich auswählen. Diese Funktion ist daher ideal für Workshop-Gastgeber, die Teilnehmer weiterhin betreuen möchten.",
 	"growthexperiments-manage-mentors-none": "Keine",
 	"growthexperiments-manage-mentors-username": "Benutzername",
 	"growthexperiments-manage-mentors-last-active": "Zuletzt aktiv",
