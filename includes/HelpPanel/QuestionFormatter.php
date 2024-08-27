@@ -12,9 +12,13 @@ class QuestionFormatter {
 	 * @var IContextSource
 	 */
 	private $contextSource;
+	/** @var string */
 	private $dataLinkId;
+	/** @var string */
 	private $postedOnMsgKey;
+	/** @var string */
 	private $archivedMsgKey;
+	/** @var string */
 	private $archivedTooltipMsgKey;
 	/**
 	 * @var QuestionRecord
