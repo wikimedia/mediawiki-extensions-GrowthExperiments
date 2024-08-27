@@ -157,3 +157,18 @@
 .ext-growthExperiments-utils__pull-right {
 	float: right;
 }
+
+.noDarkModeMixBlendMode() {
+	// TODO: figure out if we really need `mix-blend-mode` or if we can just replace it with the respective color
+	@media screen {
+		:root.skin-theme-clientpref-night & {
+			mix-blend-mode: unset;
+		}
+	}
+
+	@media screen and ( prefers-color-scheme: dark ) {
+		:root.skin-theme-clientpref-os & {
+			mix-blend-mode: unset;
+		}
+	}
+}
