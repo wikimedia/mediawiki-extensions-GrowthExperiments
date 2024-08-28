@@ -22,7 +22,9 @@
 			"羊羊32521",
 			"魔琴",
 			"LNDDYL",
-			"SCP-2000"
+			"SCP-2000",
+			"SupaplexTW",
+			"列维劳德"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -245,6 +247,8 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "一般",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "困難",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "選擇編輯類型",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "「建議編輯」旨在助{{GENDER:|您}}學習、提升編輯技巧，讓您更能應對較困難的編輯工作。",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "想要建立新條目？",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "選擇主題",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "完成",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "完成",
