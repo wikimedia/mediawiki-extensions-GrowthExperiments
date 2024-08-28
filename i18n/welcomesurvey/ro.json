@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"NGC 54"
+			"NGC 54",
+			"Paloi Sciurala"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Bun venit}}, $1!",
