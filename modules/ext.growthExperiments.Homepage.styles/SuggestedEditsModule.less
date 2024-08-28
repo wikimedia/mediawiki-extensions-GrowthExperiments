@@ -111,13 +111,13 @@
 }
 
 .drawer.homepage-welcome-notice {
-	// Needed to provide a solid background to the 50% fade on suggested
+	// Needed to provide a solid background to the 50% transparent on suggested
 	// edits background color used with main drawer contents.
 	background-color: @background-color-base;
 	padding: 16px;
 
 	main {
-		background-color: fade( @suggestedEditsBackgroundColor, 50 );
+		background-color: @suggestedEditsBackgroundColorLegacyLightOnly;
 		padding: 16px;
 		margin: -16px;
 
@@ -147,7 +147,7 @@
 body.mw-special-Homepage {
 	.overlay-content .growthexperiments-homepage-module-mobile-overlay.growthexperiments-homepage-module-suggested-edits {
 		padding: 0;
-		background-color: @suggestedEditsBackgroundColor;
+		background-color: @suggestedEditsBackgroundColorLegacyLightOnly;
 	}
 
 	.overlay.suggested-edits-module-mobile-overlay {
@@ -246,7 +246,7 @@ body.mw-special-Homepage {
 		// negate the padding on .growthexperiments-homepage-module in Homepage.less
 		margin: 16px -16px -16px -16px;
 		padding: 12px 24px 12px;
-		border: @border-width-thick @border-style-base fade( #eaf3ff, 50% );
+		border: @border-width-thick @border-style-base @suggestedEditsBackgroundColorLegacyLightOnly;
 		background-color: @background-color-base;
 		color: @color-subtle;
 		font-size: 0.9em;

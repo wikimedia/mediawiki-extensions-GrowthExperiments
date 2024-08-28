@@ -1,4 +1,5 @@
 @import 'mediawiki.skin.variables.less';
+@import '../utils/variables.less';
 
 // Copy of the @font-size-fieldset-header rule from OOUI.
 @font-size-fieldset-header: (16 / 16 / 0.875 / 1em);
@@ -18,10 +19,7 @@
 
 	&-suggested-edits {
 		border: @border-width-base @border-style-base @border-color-transparent;
-		// equivalent to fade( @background-color-progressive-subtle, 50%)
-		// The LESS mixin is used with a hardcoded value for now due to incompatbility with
-		// skins that use CSS variables (T357740).
-		background-color: fade( #eaf3ff, 50% );
+		background-color: @suggestedEditsBackgroundColorLegacyLightOnly;
 	}
 
 	&-text {

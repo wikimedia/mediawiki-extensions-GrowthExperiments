@@ -96,7 +96,7 @@
 	// then slides in (and back out) when needed. Because background positioning math is super weird,
 	// this requires using two backgrounds that each cover half the width, and doubling all the
 	// x position values.
-	@headBgColor: fade( @suggestedEditsBackgroundColor, 50% );
+	@headBgColor: @suggestedEditsBackgroundColorLegacyLightOnly;
 
 	// This background interferes with the pending effect in a really funky way, so don't apply it
 	// when the pending effect is being shown
