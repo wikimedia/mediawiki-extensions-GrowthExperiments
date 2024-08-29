@@ -184,10 +184,10 @@
 	"growthexperiments-manage-mentors-pretext-stored-at": "Mentorların siyahısı tarix daxil olmaqla [[$1|MediaWiki ad fəzasında]] saxlanılır.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Mentor kimi qeydiyyatdan keçmək üçün [[Special:EnrollAsMentor]] səhifəsinə gedin.",
 	"growthexperiments-manage-mentors-error-no-such-user": "Xəta: $1 ID-li istifadəçi mövcud deyil. Bu, yəqin ki, daxili səhvdir.",
-	"growthexperiments-manage-mentors-auto-assigned": "Avtomatik olaraq təyin edilmiş mentorlar",
-	"growthexperiments-manage-mentors-auto-assigned-text": "Yeni hesablar bu mentorlara təsadüfi olaraq təyin edilir.",
-	"growthexperiments-manage-mentors-manually-assigned": "Manual təyin edilmiş mentorlar",
-	"growthexperiments-manage-mentors-manually-assigned-text": "Yeni hesablar bu mentorlara təsadüfi olaraq təyin edilmir. Digər mentorlar kimi, bu mentorlar mentorluq etmək istədikləri hesabları manual seçə bilərlər. Bu bölmə əsasən tanıdıqları insanlara mentorluq etmək istəyənlər üçündür.",
+	"growthexperiments-manage-mentors-auto-assigned": "Yeni hesablara avtomatik olaraq təyin olunan mentorlar",
+	"growthexperiments-manage-mentors-auto-assigned-text": "Yeni gələn şəxs {{SITENAME}} hesabını qeydiyyatdan keçirdikdə, aşağıdakı istifadəçilərdən biri avtomatik olaraq onun mentoru təyin edilir.",
+	"growthexperiments-manage-mentors-manually-assigned": "İstifadəçiləri əl ilə seçən mentorlar",
+	"growthexperiments-manage-mentors-manually-assigned-text": "Yeni hesablar bu mentorlara avtomatik təyin edilmir. Bu siyahıdakı mentorlar yalnız şəxsən seçdikləri hesablara mentorluq edəcək və bu xüsusiyyəti iştirakçılara mentorluq etməyə davam etmək istəyən seminar aparıcıları üçün ideal hala gətirir.",
 	"growthexperiments-manage-mentors-none": "Yoxdur",
 	"growthexperiments-manage-mentors-username": "İstifadəçi adı",
 	"growthexperiments-manage-mentors-last-active": "Son aktivlik",
@@ -231,5 +231,6 @@
 	"growthexperiments-mentorship-enrollasmentor-summary": "Özümü mentor kimi əlavə edirəm",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Ən azı $1 {{PLURAL:$1|redaktə}} və $2 {{PLURAL:$2|gün}} fəaliyyəti olanlar mentor kimi qeydiyyatdan keçə bilər.",
 	"tag-mentor list change": "Mentor siyahısının dəyişdirilməsi",
-	"tag-mentor list change-description": "GrowthExperiments vasitəsilə strukturlaşdırılmış mentor siyahısına edilən redaktələrə tətbiq edilən teq"
+	"tag-mentor list change-description": "GrowthExperiments vasitəsilə strukturlaşdırılmış mentor siyahısına edilən redaktələrə tətbiq edilən teq",
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorluq hazırda söndürülüb. Administratorlar [[$1]] vasitəsilə Mentorluğu aktivləşdirə bilərlər."
 }
