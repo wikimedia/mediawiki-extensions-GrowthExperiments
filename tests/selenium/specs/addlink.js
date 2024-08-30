@@ -11,6 +11,7 @@ describe( 'add link', () => {
 	it( 'link inspector can be used to accept/reject links and save an article.', async function () {
 		const addlinkArticle = 'Douglas Adams';
 		if ( !isQuibbleUsingApache ) {
+			browser.log( 'Skipped: This test depends on using PHP-FPM and Apache as the backend.' );
 			this.skip( 'This test depends on using PHP-FPM and Apache as the backend.' );
 		}
 		await AddLinkArticlePage.insertLinkRecommendationsToDatabase();
@@ -18,9 +19,12 @@ describe( 'add link', () => {
 		await HomepagePage.open();
 		assert.strictEqual( await HomepagePage.suggestedEditsCardTitle.getText(), addlinkArticle );
 
+		browser.log( 'Waiting for HomepagePage.suggestedEditsCard' );
 		await HomepagePage.suggestedEditsCard.waitForDisplayed();
 		await HomepagePage.suggestedEditsCard.waitForClickable( { timeout: 30000 } );
-		await HomepagePage.suggestedEditsCard.click();
+		await browser.clickTillItGoesAway( HomepagePage.suggestedEditsCard, 'HomepagePage.suggestedEditsCard still showing' );
+
+		browser.log( 'HomepagePage.suggestedEditsCard clicked, waiting for AddLinkArticlePage.onboardingDialog' );
 
 		await AddLinkArticlePage.onboardingDialog.waitForDisplayed( { timeout: 30000 } );
 		await AddLinkArticlePage.closeOnboardingDialog();

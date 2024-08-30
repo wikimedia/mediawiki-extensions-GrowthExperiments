@@ -20,6 +20,38 @@ exports.config = { ...config,
 		await CreateAccountPage.createAccount( Util.getTestString( 'NewUser-' ), Util.getTestString() );
 	},
 	services: [ 'devtools', 'intercept' ],
+	before: function ( capabilities, specs, browser ) {
+		browser.log = function ( message, ...otherMessages ) {
+			console.log( `${ Date.now() - browser.config.startOfTestTime }: ${ message }`, ...otherMessages );
+		};
+
+		browser.clickTillItGoesAway = function ( clickTarget, timeoutMsg ) {
+			return browser.waitUntil(
+				async () => {
+					const awaitedTarget = await clickTarget;
+					browser.log( 'Checking if ' + awaitedTarget.selector + ' is still existing' );
+					if ( await clickTarget.isExisting() ) {
+						browser.log( awaitedTarget.selector + ' still exists. Clicking it.' );
+						await clickTarget.click();
+						return false;
+					}
+
+					return true;
+				},
+				{
+					timeout: 30000,
+					interval: 500,
+					timeoutMsg
+				}
+			);
+		};
+	},
+
+	beforeTest: function ( test, context ) {
+		config.beforeTest( test, context );
+		browser.config.startOfTestTime = Date.now();
+	},
+
 	onPrepare: async function () {
 		await LocalSettingsSetup.overrideLocalSettings();
 		await LocalSettingsSetup.restartPhpFpmService();
