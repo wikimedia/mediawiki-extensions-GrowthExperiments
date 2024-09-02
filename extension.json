@@ -764,6 +764,11 @@
 		}
 	},
 	"ResourceModules": {
+		"ext.growthExperiments.cssCustomProperties": {
+			"styles": [
+				"utils/customProperties.less"
+			]
+		},
 		"ext.growthExperiments.mobileMenu.icons": {
 			"class": "MediaWiki\\ResourceLoader\\ImageModule",
 			"selector": ".minerva-icon--{name}",

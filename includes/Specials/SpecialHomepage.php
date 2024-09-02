@@ -118,7 +118,10 @@ class SpecialHomepage extends SpecialPage {
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();
-		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
+		$out->addModuleStyles( [
+			'ext.growthExperiments.cssCustomProperties',
+			'ext.growthExperiments.Homepage.styles'
+		] );
 
 		$out->addHTML( Html::openElement( 'div', [
 			'class' => 'growthexperiments-homepage-container ' .
