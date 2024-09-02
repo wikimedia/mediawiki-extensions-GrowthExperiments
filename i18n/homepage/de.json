@@ -467,7 +467,7 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "Vorschlag",
 	"growthexperiments-addlink-summary-column-header-linked": "Verlinkt?",
 	"growthexperiments-addlink-summary-copyrightwarning": "Mit dem Veröffentlichen von Änderungen erklärst {{GENDER:|du}} dich mit den [https://foundation.wikimedia.org/wiki/Terms_of_Use/de Nutzungsbedingungen] einverstanden und lizenzierst deine Bearbeitung unter den Lizenzen [https://creativecommons.org/licenses/by-sa/4.0/ CC BY-SA 4.0] und [https://www.gnu.org/licenses/fdl-1.3.html GFDL 1.3].",
-	"growthexperiments-addlink-summary-summary": "Linkvorschlag-Funktion: $1 {{PLURAL:$1|link|links}} hinzugefügt.",
+	"growthexperiments-addlink-summary-summary": "Linkvorschlag-Funktion: $1 {{PLURAL:$1|Link|Links}} hinzugefügt.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Du}} hast alle Vorschläge für diesen Artikel übersprungen.",
 	"growthexperiments-addlink-skip-body": "Bist du {{GENDER:|dir}} sicher, dass du keine Vorschläge annehmen oder ablehnen willst?",
 	"growthexperiments-addlink-skip-accept": "Alle überspringen",
