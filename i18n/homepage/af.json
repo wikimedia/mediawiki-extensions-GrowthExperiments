@@ -48,6 +48,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Skep nuwe artikels en brei kort artikels uit.",
 	"growthexperiments-homepage-suggested-edits-header": "Voorgestelde wysigings",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Jou}} impak",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Jou}} impak",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Hierdie area sal wys hoeveel keer mense die artikels wat {{GENDER:$1|jy}} geskep of geredigeer het, bekyk het.",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Gaan na artikel",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Bladtrekke is nog nie bereken nie. Kom kyk môre weer!",

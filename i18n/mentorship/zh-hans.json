@@ -53,6 +53,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "未知",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "显示$1个",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "第$1页，共$2页",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label": "下一页结果",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "上一页结果",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "找不到最近活跃的学员",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "导师面板仅展示最近活跃的学员。更多信息可通过信息图标显示。如果{{GENDER:|您}}是最近加入的导师计划，{{GENDER:|您}}可能还没有被分配到任何学员。",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "找不到学员",

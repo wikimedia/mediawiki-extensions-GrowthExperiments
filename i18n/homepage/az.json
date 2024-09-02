@@ -12,7 +12,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Sənin}} ana səhifən",
 	"prefs-homepage": "Yeni istifadəçi redaktor özəllikləri",
 	"growthexperiments-homepage-enable": "Yeni istifadəçi ana səhifəsini göstər",
-	"growthexperiments-homepage-pt-link": "Şəxsi alətlərdəki istifadəçi adı keçidindən yeni istifadəçi ana səhifəsinə defoltdur.",
+	"growthexperiments-homepage-pt-link": "Şəxsi alətlərdəki istifadəçi adı keçidindən yeni istifadəçi ana səhifəsinə keçidi defolt et",
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|E-poçtunuzu}} əlavə edin",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|E-poçtunuzu}} təsdiqləyin",
 	"growthexperiments-homepage-email-header-confirmed": "E-poçt əlavə edildi",
