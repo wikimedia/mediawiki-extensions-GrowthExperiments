@@ -66,7 +66,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Yeni məqalələr yarat və qısa məqalələri genişləndir.",
 	"growthexperiments-homepage-suggested-edits-header": "Tövsiyə olunan redaktələr",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Sizin}} təsiriniz",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "Bu parçanı görmək üçün zəhmət olmasa JavaScripti aktivləşdirin.",
+	"growthexperiments-homepage-new-impact-no-js-fallback": "Bu parçanı görmək üçün zəhmət olmasa, JavaScripti aktivləşdirin.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Sizin}} təsiriniz",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Son aktivliyiniz}} (son $2 {{PLURAL:$2|gün}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Son aktivlik ($1 {{PLURAL:$1|gün}})",
