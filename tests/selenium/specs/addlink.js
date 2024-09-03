@@ -45,7 +45,7 @@ describe( 'add link', () => {
 		await browser.setupInterceptor();
 		await AddLinkArticlePage.saveChangesToArticle();
 
-		await Util.waitForModuleState( 'ext.growthExperiments.PostEdit' );
+		await Util.waitForModuleState( 'ext.growthExperiments.PostEdit', 'ready', 30000 );
 
 		await AddLinkArticlePage.waitForPostEditNextSuggestedTask();
 
