@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\ExperimentUserManager;
+use HtmlArmor;
 use IContextSource;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
@@ -211,11 +212,14 @@ class CommunityUpdates extends BaseModule {
 		return Html::rawElement( 'div', [ 'class' => 'cdx-card-content' ],
 			Html::rawElement( 'div', [ 'class' => 'cdx-card-content-row-1' ],
 				$this->getThumbnail( $config->GEHomepageCommunityUpdatesThumbnailFile->title ) .
-				Html::rawElement( 'div', [ 'class' => 'cdx-card__text__title' ], $contentTitle )
+				Html::rawElement(
+					'div', [ 'class' => 'cdx-card__text__title' ], HtmlArmor::getHtml( $contentTitle )
+				)
 			) .
 			Html::rawElement( 'div', [ 'class' => 'cdx-card-content-row-2' ],
-				Html::rawElement( 'div', [ 'class' => 'cdx-card__text__description' ], $contentBody ) .
-				$link
+				Html::rawElement(
+					'div', [ 'class' => 'cdx-card__text__description' ], HtmlArmor::getHtml( $contentBody )
+				) . $link
 			)
 		);
 	}
