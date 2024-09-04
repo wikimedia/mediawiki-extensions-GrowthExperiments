@@ -203,8 +203,11 @@ class CommunityUpdates extends BaseModule {
 			$buttonText = $callToAction->buttonText ?: $this->getContext()->msg(
 				'growthexperiments-homepage-communityupdates-calltoaction-button'
 			)->text();
+
 			$link = $this->linkRenderer->makeLink( $pageTitle, $buttonText, [
-				'class' => 'ext-growthExperiments-CommunityUpdates__CallToAction__link'
+				'class' => 'ext-growthExperiments-CommunityUpdates__CallToAction__link',
+				'data-link-id' => 'community-updates-cta',
+				'data-link-data' => $pageTitle->getDBkey()
 			] );
 		}
 
