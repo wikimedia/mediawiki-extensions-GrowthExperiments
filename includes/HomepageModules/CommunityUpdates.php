@@ -6,6 +6,7 @@ use GrowthExperiments\ExperimentUserManager;
 use HtmlArmor;
 use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Html\Html;
@@ -143,7 +144,10 @@ class CommunityUpdates extends BaseModule {
 	}
 
 	private function getThumbnailUrlFromCommonsApi( string $fileTitle ): string {
-		$apiUrl = 'https://commons.wikimedia.org/w/api.php';
+		$apiUrl = $this->getGrowthWikiConfig()->get( 'CommunityConfigurationCommonsApiURL' );
+		if ( !$apiUrl ) {
+			throw new ConfigException( 'Invalid CommunityConfigurationCommonsApiURL' );
+		}
 		// The thumbnail width is set to 120px, which is 3x the standard Codex thumbnail size (40px).
 		// This provides a high-quality image that can be scaled down for various display sizes
 		// while maintaining clarity and allowing for high-DPI displays.
