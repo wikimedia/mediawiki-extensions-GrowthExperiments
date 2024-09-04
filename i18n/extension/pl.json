@@ -7,7 +7,9 @@
 			"Rail",
 			"Railfail536",
 			"Tar Lócesilion",
-			"Woytecr"
+			"Woytecr",
+			"Sp5uhe",
+			"Tufor2"
 		]
 	},
 	"growthexperiments-desc": "To rozszerzenie zawiera eksperymentalne funkcje wykonane przez Zespół Growth.",
@@ -64,8 +66,8 @@
 	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Czy użytkownicy powinni automatycznie kwalifikować się do bycia wikiprzewodnikami?",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Tak, zezwól użytkownikom spełniającym wszystkie poniższe kryteria kwalifikacyjne na zapisywanie się jako wikiprzewodnicy.",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Nie, nie zezwalaj żadnym użytkownikom na zapisywanie się jako wikiprzewodnicy.",
-	"growthexperiments-edit-config-mentorship-minimum-age": "Minimalna liczba dni od momentu rejestracji użytkownika, aby mógł zapisać się jako wikiprzewodnk",
-	"growthexperiments-edit-config-mentorship-minimum-editcount": "Minimalna liczba edycji, które użytkownik musi zrobić (w dowolnej przestrzeni nazw), aby mógł zapisać się jako wikiprzewodnk",
+	"growthexperiments-edit-config-mentorship-minimum-age": "Minimalna liczba dni od momentu rejestracji, aby użytkownik mógł zapisać się jako wikiprzewodnik",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "Minimalna liczba edycji, które użytkownik musi wykonać (w dowolnej przestrzeni nazw), aby mógł zapisać się jako wikiprzewodnik",
 	"growthexperiments-edit-config-personalized-praise": "Spersonalizowana pochwała",
 	"growthexperiments-edit-config-personalized-praise-description": "Otrzymywanie zachęcających wiadomości od uznanych redaktorów może poprawić retencję nowych użytkowników. Spersonalizowany moduł pochwał przedstawia mentorom godnych pochwały nowych użytkowników, aby pomóc produktywnym nowym użytkownikom poczuć się bardziej zaangażowanym w społeczności.",
 	"growthexperiments-edit-config-personalized-praise-mentors-can-change": "Przewodnicy mogą zmienić sobie tę opcję w Panelu wikiprzewodnika.",

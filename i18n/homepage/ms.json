@@ -451,7 +451,7 @@
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Hantar...",
 	"growthexperiments-structuredtask-editmode-selection-label": "Tukar alat sunting",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Cadangan",
-	"growthexperiments-structuredtask-editmode-selection-visual": "Suntingan visual",
+	"growthexperiments-structuredtask-editmode-selection-visual": "Penyuntingan visual",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Tinggalkan cadangan?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Menukar mod akan membenarkan {{GENDER:$1| anda}} untuk membuat jenis suntingan lain. Selesaikan semakan anda untuk menyerahkan {{GENDER:$1| kemajuan anda}} setakat ini.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Tukar tanpa menyerahkan",
