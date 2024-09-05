@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"NMW03",
-			"Toghrul Rahimli"
+			"Toghrul Rahimli",
+			"Nemoralis"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Xoş gəlmisiniz}}, $1!",
@@ -29,7 +30,7 @@
 	"welcomesurvey-question-reason-option-program-participant-label": "Təlimdə iştirak edirəm",
 	"welcomesurvey-question-reason-option-read-label": "Vikipediyanı oxumaq üçün",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Digər",
-	"welcomesurvey-question-reason-option-other-label": "Digər (zəhmət olmasa açıqlayın)",
+	"welcomesurvey-question-reason-option-other-label": "Digər (zəhmət olmasa, açıqlayın)",
 	"welcomesurvey-question-reason-other-placeholder": "Digər səbəbi {{GENDER:$1|daxil edin}}...",
 	"welcomesurvey-question-edited-label": "Heç Vikipediyada redaktə etmisiniz?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Bəli, bir neçə dəfə",

@@ -10,6 +10,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Jou}} tuisblad",
 	"prefs-homepage": "Nuweling redakteur kenmerke",
 	"growthexperiments-homepage-enable": "Vertoon nuweling tuisblad",
+	"growthexperiments-homepage-email-header-startemail": "E-pos: $1",
 	"growthexperiments-homepage-email-button-unconfirmed": "Kry 'n nuwe skakel",
 	"growthexperiments-homepage-email-button-confirmed": "Voorkeure",
 	"growthexperiments-homepage-email-changelink": "wysig",
@@ -29,6 +30,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Gaan voort",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "Voorgestelde wysigings om mee te begin",
 	"growthexperiments-homepage-startediting-dialog-intro-header": "Wikipedia word gebou deur mense soos {{GENDER:|jy}} wat saamwerk.",
+	"growthexperiments-homepage-startediting-dialog-intro-subheader": "{{GENDER:|Jou}} wysigings help om Wikipedia te verbeter en bevorder die sending om gratis kennis met die wêreld te deel. Gaan voort om te begin met klein voorgestelde wysigings.",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Kies 'n paar onderwerpe waarin jy belangstel om te redigeer",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filter volgens onderwerp",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Gebruik onderwerpe om voorstelle te kry wat {{GENDER:|jy}} interessant vind. {{GENDER:|Jy}} kan net een onderwerp kies of baie kies.",
@@ -72,6 +74,7 @@
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Bladtrekke van onlangse wysigings (laaste 60 dae):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Monitor bladtrekke van artikels wat jy gewysig het",
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 wysigings aan artikels tot dusver",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Help om gratis kennis na die wêreld uit te brei deur onderwerpe te redigeer wat vir {{GENDER:$1|jou}} die meeste saak maak.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Sien voorgestelde wysigings",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Begin met 'n paar <strong>voorgestelde wysigings</strong> en bekyk vervolgens hoeveel mense {{GENDER:$1|jou}} bydraes hier bekyk.",
 	"growthexperiments-tour-response-button-okay": "Het dit",
@@ -296,5 +299,6 @@
 	"growthexperiments-addimage-reason-commons": "Een van verskeie beelde geskakel aan die Wikidata item vir hierdie artikel.",
 	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-language": "Skryf in die taal van hierdie artikel: $1.",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Ek wil glad nie 'n mentor hê nie",
+	"growthexperiments-homepage-newimpact-contributions-link": "Sien alle wysigings",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Leer meer"
 }
