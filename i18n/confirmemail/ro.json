@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Firilacroco",
 			"NGC 54",
 			"Paloi Sciurala"
 		]
@@ -9,7 +10,7 @@
 	"growthexperiments-confirmemail-emailhelp": "E-mail-ul este necesar pentru a vă recupera contul dacă vă pierdeți parola.",
 	"growthexperiments-confirmemail-emailrecommended": "Adresă de e-mail (recomandat)",
 	"growthexperiments-confirmemail-emailwarning": "Vă rugăm să vă uitați după un e-mail de la noi pentru a vă verifica adresa.",
-	"growthexperiments-confirmemail-confirm-subject": "Bun venit la {{SITENAME}}: Vă rugăm să vă confirmați adresa de e-mail",
+	"growthexperiments-confirmemail-confirm-subject": "Bun-venit la {{SITENAME}}: vă rugăm să vă confirmați adresa de e-mail",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Bună}}, $2,\n\nVă mulțumim pentru adăugarea unui e-mail la contul vostru {{SITENAME}}, înregistrat de pe adresa IP $1.\n\nVă rugăm să apăsați pe butonul de mai jos pentru a confirma că aceasta este adresa de e-mail pe care v-ar plăcea să o legați de contul dvs. „$2”:\n\n$3\n\nNotă: acest cod de confirmare <strong>expiră în $4</strong>.\n\nVă mulțumim,\n\n{{SITENAME}}\n\n----\n\nPentru a anula confirmarea adresei de e-mail (pentru că nu ați înregistrat contul pentru oricare alt motiv), apăsați pe această legătură de anulare:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Confirmați adresa de e-mail",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Bună}}, $2,\n\nVă mulțumim pentru adăugarea unui e-mail la contul vostru {{SITENAME}}, înregistrat de pe adresa IP $1.\n\nVă rugăm să apăsați pe butonul de mai jos pentru a confirma că aceasta este adresa de e-mail pe care v-ar plăcea să o legați de contul dvs. „$2”:\n\n$3\n\nNotă: acest cod de confirmare expiră în $4.\n\nVă mulțumim,\n\n{{SITENAME}}\n\n----\n\nPentru a anula confirmarea adresei de e-mail (pentru că nu ați înregistrat contul pentru oricare alt motiv), apăsați pe această legătură de anulare:\n\n$5",
@@ -23,7 +24,7 @@
 	"growthexperiments-signupcampaign-bullet3": "Începeți cu editări mici, ușoare",
 	"growthexperiments-recurringcampaign-title": "Vă mulțumim pentru că sunteți {{GENDER:|un susținător loial|o susținătoare loială}}. Contribuțiile de la cititori precum {{GENDER:|dvs.}} susțin Wikipedia.",
 	"growthexperiments-recurringcampaign-body": "Creați-vă un cont acum pentru a vă autentifica și a evita să vedeți bannere de strângere de fonduri. Odată ce aveți un {{GENDER:|cont}}, {{GENDER:|puteți}} de asemenea să învățați cum să editați Wikipedia cu schimbări mici care vor avea un impact mare pentru restul lumii. Vom fi aci să vă {{GENDER:|ghidăm}} pe măsură ce {{GENDER:|începeți}}!",
-	"growthexperiments-josacampaign-title": "Bun venit la celebrarea zilei de naștere a Wikipediei!\n\nOdată ce v-ați creat contul, puteți începe să contribuiți la enciclopedie.",
+	"growthexperiments-josacampaign-title": "Bun-venit la celebrarea zilei de naștere a Wikipediei!\n\nOdată ce v-ați creat contul, puteți începe să contribuiți la enciclopedie.",
 	"growthexperiments-josacampaign-body": "Acesta este un eveniment organizat de Jordanian Open Source Association și Wikimedia in the Levant pentru a vă ajuta să învățați despre Wikipedia și cum să contribuiți la ea.\n\nPentru a începe să contribuiți, tot ceea ce aveți de făcut este să completați acest formular și apoi să alegeți o sarcină la care să lucrați.\n\nDacă aveți nevoie de ajutor, vă rugăm să întrebați organizatorii evenimentului.",
 	"growthexperiments-thankyoupage-title": "Vă mulțumim pentru că sunteți un donator. Creați un cont pentru a începe să editați și îmbunătățiți Wikipedia.",
 	"growthexperiments-thankyoupage-body": "Wikipedia este construită de oameni precum {{GENDER:|dvs.}} ce lucrează împreună. Editarea unui articol este mai ușoară decât ați {{GENDER:|putea}} crede!\n\nCu contul dvs., veți avea acces la:",
