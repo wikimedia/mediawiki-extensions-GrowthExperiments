@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"NGC 54",
-			"Amire80"
+			"Amire80",
+			"Firilacroco",
+			"Paloi Sciurala"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|Bun venit}}, $1!",
+	"welcomesurvey": "{{GENDER:$1|Bun-venit}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Vă mulțumim! Răspunsurile dvs. au fost salvate.",
 	"welcomesurvey-save-confirmation-text": "Răspunsurile dvs. ne vor ajuta să vă acordăm căi folositoare pentru a începe pe Wikipedia.",
 	"welcomesurvey-subtitle": "Ajutați-ne să vă îmbunătățim experiența cu Wikipedia răspunzând la câteva întrebări opționale.",
