@@ -13,6 +13,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
 use RuntimeException;
 use StatusValue;
@@ -274,10 +275,11 @@ class ImportOresTopics extends Maintenance {
 			// Ensure we are not doing something unexpected, such as accidentally running in production
 			$this->fatalError( 'Could not guess production URL' );
 		}
-		$urlParts = wfParseUrl( $prodUrl );
+		$urlUtils = $this->getServiceContainer()->getUrlUtils();
+		$urlParts = $urlUtils->parse( $prodUrl ) ?? [];
 		$urlParts['path'] = '/w/api.php';
 		unset( $urlParts['query'] );
-		return wfAssembleUrl( $urlParts );
+		return UrlUtils::assemble( $urlParts );
 	}
 
 	/**
