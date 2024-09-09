@@ -105,7 +105,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "התראה שמזמינה להמשיך",
 	"growthexperiments-edit-config-keep-going-notification-description": "המספר המרבי של עריכות מוצעות שמשתמש חדש צריך להשלים כדי להיות זכאי לקבלת ההתראה הזאת. אם זה 0, שום משתמש חדש לא יקבל את ההתראה הזאת. ככל שהמספר גבוה יותר, כך יותר משתמשים חדשים יקבלו את ההתראה הזאת. ההתראה הזאת נשלחת רק למצטרפים חדשים שכבר השלימו לפחות עריכה מוצעת אחת.",
 	"communityconfiguration-communityupdates-description": "אפשר לשתף חדשות קהילה חשובות, מסעות פרסום, אירועים או מיזמים בדף הבית של העורכים חדשים.",
-	"communityconfiguration-communityupdates-info-text": "מודול [[mw:Special:MyLanguage/Growth/Community_Updates|עדכוני הקהילה]] הזה יוצג בדף הבית והוא אמור לשמש לשיתוף חדשות קהילה חשובות, מסעות פרסום, אירועים או מיזמים. יש לתת עדיפות לעדכונים התומכים בהמלצת [https://meta.wikimedia.org/wiki/Movement_Strategy/Recommendations/Identify_Topics_for_Impact#Changes_and_Actions 2030 \"נושאים משפיעים\"] של אסטרטגיית התנועה.",
+	"communityconfiguration-communityupdates-info-text": "מודול [[mw:Special:MyLanguage/Growth/Community_Updates|עדכוני הקהילה]] הזה יוצג בדף הבית והוא אמור לשמש לשיתוף חדשות קהילה חשובות, מסעות פרסום, אירועים או מיזמים. יש לתת עדיפות לעדכונים התומכים בהמלצת [https://meta.wikimedia.org/wiki/Special:MyLanguage/Movement_Strategy/Recommendations/Identify_Topics_for_Impact#Changes_and_Actions \"נושאים משפיעים\"] של אסטרטגיית התנועה.",
 	"communityconfiguration-communityupdates-title": "עדכוני קהילה",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesenabled-control-label": "מופעלים",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "כותרת",
