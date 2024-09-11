@@ -7,6 +7,11 @@
 		),
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$modules = $( '.growthexperiments-homepage-container .growthexperiments-homepage-module' ),
+		streamName = 'mediawiki.product_metrics.homepage_module_interaction',
+		schemaId = '/analytics/product_metrics/web/base/1.2.0',
+		analytics = useEventLogging( streamName, schemaId, {
+			enabled: mw.config.get( 'wgGEHomepageLoggingEnabled' ) } ),
+
 		handleClick = function ( e ) {
 			var $link = $( this ),
 				$module = $link.closest( '.growthexperiments-homepage-module' ),
@@ -21,6 +26,10 @@
 			}
 			logger.log( moduleName, mode, 'link-click', extraData );
 
+			if ( moduleName === 'community-updates' ) {
+				analytics.logEvent( 'click', null, moduleName, linkId, linkData );
+			}
+
 			// This is needed so this handler doesn't fire twice for links
 			// that are inside a module that is inside another module.
 			e.stopPropagation();
@@ -32,13 +41,6 @@
 			logger.log( moduleName, mode, 'impression' );
 			// TODO clarify if the scope can be expanded to all modules, T370177
 			if ( moduleName === 'community-updates' ) {
-				var analytics = useEventLogging(
-					'mediawiki.product_metrics.homepage_module_interaction',
-					'/analytics/product_metrics/web/base/1.2.0',
-					{
-						enabled: mw.config.get( 'wgGEHomepageLoggingEnabled' )
-					}
-				);
 				analytics.logEvent( 'impression', null, moduleName );
 			}
 		},
