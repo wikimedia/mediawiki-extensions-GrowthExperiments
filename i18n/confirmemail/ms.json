@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hakimi97"
+			"Hakimi97",
+			"Tofeiku"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|apa ini?]])",
 	"growthexperiments-confirmemail-emailhelp": "E-mel diperlukan untuk memulihkan akaun anda jika anda kehilangan kata laluan anda.",
-	"growthexperiments-confirmemail-emailrecommended": "Alamat surel (disarankan)",
+	"growthexperiments-confirmemail-emailrecommended": "Alamat e-mel (disarankan)",
 	"growthexperiments-confirmemail-emailwarning": "Sila lihat e-mel yang dihantar dari pihak kami untuk pengesahan alamat e-mel anda.",
 	"growthexperiments-confirmemail-confirm-subject": "Selamat datang ke {{SITENAME}}: Sila sahkan alamat e-mel anda",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Apa khabar}} $2,\n\nTerima kasih kerana menambahkan e-mel ke akaun {{SITENAME}} anda, yang didaftarkan daripada alamat IP $1 .\n\nSila klik pada butang di bawah untuk mengesahkan e-mel ini sebagai e-mel yang anda ingin pautkan ke akaun anda \"$2\":\n\n $3 \n\nNota: kod pengesahan ini <strong>akan tamat tempoh pada $4</strong>.\n\nTerima kasih,\n\n{{SITENAME}}\n\n----\nUntuk membatalkan pengesahan alamat e-mel (kerana anda tidak mendaftar akaun atau atas sebarang sebab lain), klik pada pautan pembatalan berikut:\n\n $5",
