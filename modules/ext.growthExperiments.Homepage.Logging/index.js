@@ -1,5 +1,6 @@
 ( function () {
 	var Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
+		useEventLogging = require( '../ext.growthExperiments.Homepage.Logger/useEventLogging.js' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
@@ -29,6 +30,17 @@
 				moduleName = $module.data( 'module-name' ),
 				mode = $module.data( 'mode' );
 			logger.log( moduleName, mode, 'impression' );
+			// TODO clarify if the scope can be expanded to all modules, T370177
+			if ( moduleName === 'community-updates' ) {
+				var analytics = useEventLogging(
+					'mediawiki.product_metrics.homepage_module_interaction',
+					'/analytics/product_metrics/web/base/1.2.0',
+					{
+						enabled: mw.config.get( 'wgGEHomepageLoggingEnabled' )
+					}
+				);
+				analytics.logEvent( 'impression', null, moduleName );
+			}
 		},
 		uri = new mw.Uri(),
 		// Matches routes like /homepage/moduleName or /homepage/moduleName/action
