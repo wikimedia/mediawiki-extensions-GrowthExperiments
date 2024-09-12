@@ -452,7 +452,8 @@
 			"services": [
 				"UserOptionsManager",
 				"GrowthExperimentsCampaignConfig",
-				"SpecialPageFactory"
+				"SpecialPageFactory",
+				"MainConfig"
 			]
 		},
 		"visualeditor": {
@@ -607,6 +608,7 @@
 			"mentoruseroptions",
 			"personalizedpraise",
 			"tour",
+			"variant",
 			"levelingup"
 		],
 		"UserGetRights": "mentor",
