@@ -25,9 +25,10 @@
 				extraData.linkData = linkData;
 			}
 			logger.log( moduleName, mode, 'link-click', extraData );
-
+			// Special casing for the SDS2.1.3 objective, T365889
 			if ( moduleName === 'community-updates' ) {
-				analytics.logEvent( 'click', null, moduleName, linkId, linkData );
+				var actionData = mw.config.get( 'wgGEHomepageModuleActionData-community-updates' );
+				analytics.logEvent( 'click', linkId, moduleName, actionData ? actionData.context : null );
 			}
 
 			// This is needed so this handler doesn't fire twice for links
@@ -39,9 +40,10 @@
 				moduleName = $module.data( 'module-name' ),
 				mode = $module.data( 'mode' );
 			logger.log( moduleName, mode, 'impression' );
-			// TODO clarify if the scope can be expanded to all modules, T370177
+			// Special casing for the SDS2.1.3 objective, T365889
 			if ( moduleName === 'community-updates' ) {
-				analytics.logEvent( 'impression', null, moduleName );
+				var actionData = mw.config.get( 'wgGEHomepageModuleActionData-community-updates' );
+				analytics.logEvent( 'impression', null, moduleName, actionData ? actionData.context : null );
 			}
 		},
 		uri = new mw.Uri(),
