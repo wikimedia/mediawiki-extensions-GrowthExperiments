@@ -4,7 +4,8 @@
 			"Bugoslav",
 			"MaGa",
 			"Neptune, the Mystic",
-			"Ponor"
+			"Ponor",
+			"N0one"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Pozdrav, {{bidi:$1}}!",
@@ -402,6 +403,7 @@
 	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "Unesite razlog (nije obavezno)",
 	"growthexperiments-addimage-rejectiondialog-header": "Zašto ne?",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "Dovršili ste sve današnje prijedloge za slike.\n\nPrilagodite {{GENDER:|svoje}} razine težine kako biste vidjeli druge vrste uređivanja ili se vratite sutra po još prijedloga za slike.",
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "U redu",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "Dovršili ste sve današnje prijedloge za poveznice.\n\nPrilagodite {{GENDER:|svoje}} razine težine kako biste vidjeli druge vrste uređivanja ili se vratite sutra po još prijedloga za poveznice.",
 	"growthexperiments-homepage-mentorship-optin-text": "Ako imate pitanja o uređivanju, sustav Vam može dodijeliti mentora koji će Vam pomagati.",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Pritisnite donju tipku ako želite napustiti sustav mentorstva. Poslije mu se uvijek možete vratiti.",
