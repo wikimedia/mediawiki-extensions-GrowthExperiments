@@ -153,7 +153,7 @@ class TipLoader {
 			return [ new TipNode( $tipTypeId, $messageKey, $steps[$stepName][$tipTypeId] ?? [] ) ];
 		}, $tipSteps->getTipTypes() ) );
 
-		return array_merge( [], ...array_values( $nodesPerTip ) );
+		return array_merge( ...array_values( $nodesPerTip ) );
 	}
 
 	/**
