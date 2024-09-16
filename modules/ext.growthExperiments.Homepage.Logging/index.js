@@ -8,7 +8,7 @@
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$modules = $( '.growthexperiments-homepage-container .growthexperiments-homepage-module' ),
 		streamName = 'mediawiki.product_metrics.homepage_module_interaction',
-		schemaId = '/analytics/product_metrics/web/base/1.2.0',
+		schemaId = '/analytics/product_metrics/web/base/1.3.0',
 		analytics = useEventLogging( streamName, schemaId, {
 			enabled: mw.config.get( 'wgGEHomepageLoggingEnabled' ) } ),
 

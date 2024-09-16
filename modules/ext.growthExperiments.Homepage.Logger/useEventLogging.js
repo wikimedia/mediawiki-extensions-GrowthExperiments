@@ -1,4 +1,6 @@
 'use strict';
+var Utils = require( '../utils/Utils.js' );
+
 /**
  * @typedef {Object} EventLogger
  * @property {Function} logEvent
@@ -26,7 +28,20 @@ const useEventLogging = ( streamName, schemaId, options = {} ) => {
 			return;
 		}
 
-		const interactionData = {};
+		const interactionData = {
+			// Fill fragment/analytics/product_metrics/experiments data
+			// There's no multi experiment capability, experiments manager
+			// assumes a single current experiment is always in course. Named
+			// as 'growth-experiments' for the T365889 experiment.
+			experiments: {
+				assigned: {
+					'growth-experiments': Utils.getUserVariant()
+				},
+				enrolled: [
+					'growth-experiments'
+				]
+			}
+		};
 		if ( actionSubtype ) {
 			// eslint-disable-next-line camelcase
 			interactionData.action_subtype = actionSubtype;
