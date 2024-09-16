@@ -227,6 +227,22 @@ class CommunityUpdates extends BaseModule {
 		);
 	}
 
+	public function getActionData(): array {
+		$result = $this->provider->loadValidConfiguration();
+		if ( !$result->isOK() ) {
+			return parent::getActionData();
+		}
+		$config = $result->getValue();
+		$cleanTitle = preg_replace( '/[^a-zA-Z0-9_ -]/s', '',
+			$config->GEHomepageCommunityUpdatesContentTitle
+		);
+		$updateTitle = strtolower( implode( "_", explode( " ", $cleanTitle ) ) );
+
+		return array_merge( parent::getActionData(), [
+			'context' => $updateTitle
+		] );
+	}
+
 	public function shouldWrapModuleWithLink(): bool {
 		return false;
 	}
