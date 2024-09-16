@@ -64,9 +64,13 @@
 	"communityconfiguration-growthsuggestededits-references-label": "Проналажење референци",
 	"communityconfiguration-growthsuggestededits-references-disabled-control-label": "Задатак је онемогућен.",
 	"communityconfiguration-growthsuggestededits-update-label": "Ажурирање чланака",
-	"communityconfiguration-growthsuggestededits-expand-disabled-control-label": "Овај задатак је онемогућен.",
+	"communityconfiguration-growthsuggestededits-update-disabled-control-label": "Задатак је онемогућен.",
+	"communityconfiguration-growthsuggestededits-expand-label": "Допуна кратких чланака",
+	"communityconfiguration-growthsuggestededits-expand-disabled-control-label": "Задатак је онемогућен.",
 	"communityconfiguration-growthsuggestededits-image_recommendation-label": "Додај слику у неилустрован чланак (Структуирани задатак)",
 	"communityconfiguration-growthsuggestededits-image_recommendation-disabled-control-label": "Задатак је онемогућен.",
+	"communityconfiguration-growthsuggestededits-section_image_recommendation-disabled-control-label": "Задатак је онемогућен.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Додај везу (Структуирани задатак)",
+	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "Задатак је онемогућен.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Одредишна страница за информисање о задатку „Додај везу”"
 }
