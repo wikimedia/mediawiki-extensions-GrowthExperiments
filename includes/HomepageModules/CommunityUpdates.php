@@ -91,16 +91,6 @@ class CommunityUpdates extends BaseModule {
 	}
 
 	private function getThumbnail( string $fileTitle ): string {
-		$thumbnailContent = Html::rawElement( 'span', [ 'class' => 'cdx-thumbnail__placeholder' ],
-			Html::rawElement( 'span', [
-				'class' => 'cdx-thumbnail__placeholder__icon',
-			] )
-		);
-
-		if ( $fileTitle === '' ) {
-			return Html::rawElement( 'div', [ 'class' => 'cdx-card__thumbnail' ], $thumbnailContent );
-		}
-
 		$cacheKey = $this->cache->makeKey( 'community-updates-thumburl', md5( $fileTitle ) );
 		$cachedThumbUrl = $this->cache->get( $cacheKey );
 
@@ -114,7 +104,7 @@ class CommunityUpdates extends BaseModule {
 			return $this->generateThumbnailHtml( $thumbUrl );
 		}
 
-		return Html::rawElement( 'div', [ 'class' => 'cdx-card__thumbnail' ], $thumbnailContent );
+		return '';
 	}
 
 	/**
@@ -212,9 +202,14 @@ class CommunityUpdates extends BaseModule {
 			] );
 		}
 
+		$thumbnail = '';
+		if ( $config->GEHomepageCommunityUpdatesThumbnailFile->title !== '' ) {
+			$thumbnail = $this->getThumbnail( $config->GEHomepageCommunityUpdatesThumbnailFile->title );
+		}
+
 		return Html::rawElement( 'div', [ 'class' => 'cdx-card-content' ],
 			Html::rawElement( 'div', [ 'class' => 'cdx-card-content-row-1' ],
-				$this->getThumbnail( $config->GEHomepageCommunityUpdatesThumbnailFile->title ) .
+				$thumbnail .
 				Html::rawElement(
 					'div', [ 'class' => 'cdx-card__text__title' ], HtmlArmor::getHtml( $contentTitle )
 				)

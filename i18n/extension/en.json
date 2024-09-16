@@ -111,7 +111,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "A short and friendly informational message to spark interest.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesminedits-label": "Minimum number of edits a user must have to be shown this banner",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Image",
-	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Choose an appropriate image that relates to the event or initiative you want to highlight, e.g. a logo.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Search for an image on Wikimedia Commons by typing its name and selecting it from the list. For the best display, choose an image with a square aspect ratio.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Call to action",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Destination page",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Label",
