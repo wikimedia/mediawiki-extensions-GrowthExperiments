@@ -46,7 +46,6 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
-use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddSectionImage\SectionImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -259,10 +258,6 @@ class GrowthExperimentsServices {
 
 	public function getReassignMenteesFactory(): ReassignMenteesFactory {
 		return $this->coreServices->get( 'GrowthExperimentsReassignMenteesFactory' );
-	}
-
-	public function getSearchIndexUpdater(): SearchIndexUpdater {
-		return $this->coreServices->get( 'GrowthExperimentsSearchIndexUpdater' );
 	}
 
 	public function getStarredMenteesStore(): StarredMenteesStore {

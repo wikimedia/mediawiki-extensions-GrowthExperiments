@@ -1,6 +1,6 @@
 <?php
 
-use CirrusSearch\CirrusSearch;
+use CirrusSearch\CirrusSearchServices;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
@@ -61,9 +61,6 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFacto
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\AddLink\PruningLinkRecommendationProvider;
-use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\CirrusSearchIndexUpdater;
-use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\EventGateSearchIndexUpdater;
-use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddSectionImage\SectionImageRecommendationSubmissionLogFactory;
@@ -111,7 +108,6 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
-use MediaWiki\Extension\EventBus\EventBusFactory;
 use MediaWiki\Extension\Thanks\ThanksServices;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -122,12 +118,13 @@ return [
 	'GrowthExperimentsAddImageSubmissionHandler' => static function (
 		MediaWikiServices $services
 	): AddImageSubmissionHandler {
-		$cirrusSearchFactory = static function () {
-			return new CirrusSearch();
-		};
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new AddImageSubmissionHandler(
-			$cirrusSearchFactory,
+			static function () use ( $services ) {
+				$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+
+				return $cirrusSearchServices->getWeightedTagsUpdater();
+			},
 			$geServices->getTaskSuggesterFactory(),
 			$geServices->getNewcomerTasksUserOptionsLookup(),
 			$services->getMainWANObjectCache(),
@@ -298,14 +295,15 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationHelper {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$cirrusSearchFactory = static function () {
-			return new CirrusSearch();
-		};
 		return new LinkRecommendationHelper(
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getLinkRecommendationProvider(),
 			$growthServices->getLinkRecommendationStore(),
-			$cirrusSearchFactory
+			static function () use ( $services ) {
+				$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+
+				return $cirrusSearchServices->getWeightedTagsUpdater();
+			}
 		);
 	},
 
@@ -395,7 +393,11 @@ return [
 			$services->getNameTableStoreFactory()->getChangeTagDef(),
 			$services->getPageProps(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
-			$growthServices->getSearchIndexUpdater(),
+			static function () use ( $services ) {
+				$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+
+				return $cirrusSearchServices->getWeightedTagsUpdater();
+			},
 			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' ),
 			$growthServices->getLinkRecommendationStore()
 		);
@@ -819,19 +821,6 @@ return [
 			$services->getJobQueueGroupFactory(),
 			$services->getFormatterFactory()
 		);
-	},
-
-	'GrowthExperimentsSearchIndexUpdater' => static function (
-		MediaWikiServices $services
-	): SearchIndexUpdater {
-		$growthServices = GrowthExperimentsServices::wrap( $services );
-		if ( $growthServices->getGrowthConfig()->get( 'GELinkRecommendationsUseEventGate' ) ) {
-			/** @var EventBusFactory $eventBusFactory */
-			$eventBusFactory = $services->get( 'EventBus.EventBusFactory' );
-			return new EventGateSearchIndexUpdater( $eventBusFactory );
-		} else {
-			return new CirrusSearchIndexUpdater();
-		}
 	},
 
 	'GrowthExperimentsStarredMenteesStore' => static function (

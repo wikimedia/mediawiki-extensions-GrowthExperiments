@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use CirrusSearch\CirrusSearch;
+use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -23,14 +23,12 @@ use WANObjectCache;
 class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 
 	public function testValidateAccepted() {
-		$cirrusSearchFactoryMock = function () {
-			return $this->createMock( CirrusSearch::class );
-		};
+		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
 		$userIdentityUtilsMock = $this->createMock( UserIdentityUtils::class );
 		$userIdentityUtilsMock->method( 'isNamed' )->willReturn( true );
 		$imageTaskType = new ImageRecommendationTaskType( 'image', TaskType::DIFFICULTY_EASY );
 		$handler = new AddImageSubmissionHandler(
-			$cirrusSearchFactoryMock,
+			static fn () => $weightedTagsUpdaterMock,
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
 			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createMock( WANObjectCache::class ),
@@ -115,9 +113,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testValidateAcceptedSectionImage() {
-		$cirrusSearchFactoryMock = function () {
-			return $this->createMock( CirrusSearch::class );
-		};
+		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
 		$sectionImageTaskType = new SectionImageRecommendationTaskType(
 			'section-image-recommendation',
 			TaskType::DIFFICULTY_EASY
@@ -127,7 +123,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			->method( 'isNamed' )
 			->willReturn( true );
 		$handler = new AddImageSubmissionHandler(
-			$cirrusSearchFactoryMock,
+			static fn () => $weightedTagsUpdaterMock,
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
 			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createMock( WANObjectCache::class ),
