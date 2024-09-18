@@ -11,9 +11,12 @@
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|mikä tämä on?]])",
 	"growthexperiments-confirmemail-emailhelp": "Sähköpostiosoitetta tarvitaan käyttäjätilisi palauttamiseksi, jos unohdat salasanasi.",
 	"growthexperiments-confirmemail-emailrecommended": "Sähköpostiosoite (suositeltava)",
-	"growthexperiments-confirmemail-emailwarning": "Ole hyvä ja etsi meidän lähettämämme sähköposti vahvistaaksesi osoitteesi.",
-	"growthexperiments-confirmemail-confirm-subject": "Tervetuloa {{GRAMMAR:illative|{{SITENAME}}}}: Vahvista sähköpostiosoitteesi",
+	"growthexperiments-confirmemail-emailwarning": "Ole hyvä ja etsi lähettämämme sähköposti varmentaaksesi osoitteesi.",
+	"growthexperiments-confirmemail-confirm-subject": "Tervetuloa {{GRAMMAR:illative|{{SITENAME}}}}: Varmenna sähköpostiosoitteesi",
+	"growthexperiments-confirmemail-confirm-body-html": "Hei $2,\n\nKiitos sähköpostin lisäämisestä {{SITENAME}}-tunnukseesi; rekistöity IP-osoitteesta $1.\n\nKlikkaa alla olevaa painiketta varmentaaksesi tämän sähköpostiosoitteeksi, jonka haluat yhdistää tunnukseesi ”$2”:\n\n$3\n\nHuom. tämä vahvistuskoodi <strong>vanhenee $4</strong>.\n\nTerveisin,\n\n{{SITENAME}}\n\n----\n\nPeruuttaaksesi sähköpostiosoitteen vahvistuksen (koska et rekisteröinyt tunnusta tai jostain muusta syystä) klikkaa tätä peruutuslinkkiä:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Varmenna sähköpostiosoite",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "Hei $2,\n\nKiitos sähköpostin lisäämisestä {{SITENAME}}-tunnukseesi; rekistöity IP-osoitteesta $1.\n\nKlikkaa alla olevaa painiketta varmentaaksesi tämän sähköpostiosoitteeksi, jonka haluat yhdistää tunnukseesi ”$2”:\n\n$3\n\nHuom. tämä vahvistuskoodi vanhenee $4.\n\nTerveisin,\n\n{{SITENAME}}\n\n----\n\nPeruuttaaksesi sähköpostiosoitteen vahvistuksen (koska et rekisteröinyt tunnusta tai jostain muusta syystä) klikkaa tätä peruutuslinkkiä:\n\n$5",
+	"growthexperiments-signupcampaign-title": "Kiitos lahjoituksesta! Liity Wikipediaa parantavien muokkaajien yhteisöön nyt",
 	"growthexperiments-signupcampaign-bullet2": "Pyydä apua kokeneelta muokkaajalta",
 	"growthexperiments-signupcampaign-bullet3": "Aloita pienistä ja helpoista muokkauksista"
 }

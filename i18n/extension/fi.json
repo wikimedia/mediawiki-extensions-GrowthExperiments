@@ -7,6 +7,9 @@
 			"Samoasambia"
 		]
 	},
+	"growthexperiments-desc": "Tämä laajennus sisältää Growth-tiimin tekemiä kokeellisia ominaisuuksia.",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> odotetaan olevan <code>$2</code>, mutta se on <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Sisältömallin ristiriita: GrowthExperiments-määritystiedostossa on oltava JSON-sisältömalli, $1 havaittu",
 	"growthexperiments-config-validator-array-toobig": "Kentässä $1 on liian monta kohdetta (enintään $2 sallittu)",
 	"growthexperiments-edit-config-disabled": "Yhteisöasetukset ovat tällä hetkellä pois käytöstä.",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Viimeksi muokannut käyttäjä [[User:$1|$1]] $2 ([$4 linkki]).",
