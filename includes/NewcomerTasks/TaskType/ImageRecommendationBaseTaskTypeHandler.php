@@ -8,7 +8,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use LogicException;
 use MediaWiki\Title\TitleParser;
 use StatusValue;
-use Wikimedia\Assert\Assert;
 
 abstract class ImageRecommendationBaseTaskTypeHandler extends StructuredTaskTypeHandler {
 
@@ -34,8 +33,6 @@ abstract class ImageRecommendationBaseTaskTypeHandler extends StructuredTaskType
 		AddImageSubmissionHandler $submissionHandler
 	) {
 		parent::__construct( $configurationValidator, $titleParser );
-		Assert::parameterType( ImageRecommendationProvider::class, $recommendationProvider,
-			'$recommendationProvider' );
 		$this->recommendationProvider = $recommendationProvider;
 		$this->submissionHandler = $submissionHandler;
 	}
