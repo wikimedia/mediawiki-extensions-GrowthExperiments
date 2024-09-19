@@ -159,7 +159,7 @@ class CommunityUpdates extends BaseModule {
 
 		$url = wfAppendQuery( $apiUrl, $params );
 		$options = [ 'timeout' => 10 ];
-		$request = $this->httpRequestFactory->create( $url, $options );
+		$request = $this->httpRequestFactory->create( $url, $options, __METHOD__ );
 		$status = $request->execute();
 
 		if ( $status->isOK() ) {
