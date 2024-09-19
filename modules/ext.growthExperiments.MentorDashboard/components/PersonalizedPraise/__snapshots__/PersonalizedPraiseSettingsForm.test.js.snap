@@ -101,6 +101,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
                   <!--v-if-->
                   <!--v-if-->
                 </span>
+                <!--v-if-->
               </span>
               
             </li>
@@ -130,6 +131,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
                   <!--v-if-->
                   <!--v-if-->
                 </span>
+                <!--v-if-->
               </span>
               
             </li>
@@ -158,6 +160,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
                   <!--v-if-->
                   <!--v-if-->
                 </span>
+                <!--v-if-->
               </span>
               
             </li>
@@ -186,6 +189,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
                   <!--v-if-->
                   <!--v-if-->
                 </span>
+                <!--v-if-->
               </span>
               
             </li>
