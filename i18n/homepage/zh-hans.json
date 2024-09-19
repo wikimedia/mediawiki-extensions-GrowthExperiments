@@ -45,7 +45,9 @@
 			"科劳",
 			"羊羊32521",
 			"落花有意12138",
-			"魔琴"
+			"魔琴",
+			"Huajing",
+			"SCP-2000"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -299,6 +301,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "一般",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "困难",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "选择编辑类型",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "“建议编辑”旨在帮助{{GENDER:|您}}学习、提升编辑技巧，让您更能应对较困难的编辑工作。",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "想要建立新条目？",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "选择主题",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "完成",
