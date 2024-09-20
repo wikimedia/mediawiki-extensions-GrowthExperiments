@@ -8,7 +8,17 @@
 	"growthexperiments-homepage-pt-link": "Baku gasan laman tatambaian pamakai hanyar matan tautan ngaran pamakai dalam pakakas paribadi",
 	"growthexperiments-homepage-startediting-header": "Mulai mambabak",
 	"growthexperiments-tour-response-tip-text": "Wayah patakunan {{GENDER:$1|Pian}} tajawab, {{GENDER:$1|Pian}} pacangan manarima pamadahan di sini.",
+	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks Tugas pamakai hanyar]",
+	"tag-newcomer_task_references": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#addref Tugas pamakai hanyar: bahan acuan]",
+	"tag-newcomer_task_update": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#update Tugas pamakai hanyar: hanyari]",
+	"tag-newcomer_task_expand": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#expand Tugas pamakai hanyar: kambangakan]",
+	"tag-newcomer_task_expand-description": "Babakan gawian \"kambangakan\" nang dianjurakan ulih modul anjuran pambabakan gasan laman palataran pandatang hanyar",
+	"tag-newcomer_task_links": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#addlink Tugas pamakai hanyar: tautan]",
+	"tag-newcomer_task_add_link": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link Dianjurakan: tambah tautan]",
+	"tag-newcomer_task_add_link-description": "Babakan gawian \"manambahakan tautan\" nang dianjurakan ulih modul anjuran pambabakan gasan laman palataran pandatang hanyar",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Palajari salangkapnya",
 	"growthexperiments-log-header": "Ini log tindakan nang diulah dalam éksténsi GrowthExperiments.",
+	"newcomertasksinfo": "Tugas Pamakai Hanyar",
+	"newcomertasksinfo-config-form-info": "Konfigurasi tugas pamakai hanyar kawa dijanak wan diubah di [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"growthexperiments-structuredtask-user-error": "Kami kada kawa manaikakan babakan {{GENDER:|Pian}} maraga {{GENDER:|Pian}} sudah kada babuat log. Silakan babuat log wan cuba pulang."
 }
