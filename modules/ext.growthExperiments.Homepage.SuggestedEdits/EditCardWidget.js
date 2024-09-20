@@ -7,7 +7,7 @@
 	 * @constructor
 	 */
 	function SuggestedEditCardWidget( data ) {
-		var url;
+		let url;
 		SuggestedEditCardWidget.super.call( this, data );
 		this.data = data;
 		if ( data.url ) {
@@ -19,7 +19,7 @@
 			url = new mw.Title( data.title ).getUrl();
 		}
 		// Get the new-onboarding query and pass it to the url
-		var uri = new mw.Uri();
+		const uri = new mw.Uri();
 		if ( uri.query[ 'new-onboarding' ] ) {
 			url = new mw.Uri( url );
 			url = url.extend( { 'new-onboarding': uri.query[ 'new-onboarding' ] } );
@@ -50,7 +50,7 @@
 
 	SuggestedEditCardWidget.prototype.getImageContent = function () {
 		// eslint-disable-next-line mediawiki/class-doc
-		var $imageContent = $( '<div>' )
+		const $imageContent = $( '<div>' )
 				// FIXME it would be nicer to place the task type class on the card wrapper div,
 				//   but with the current structure of the LESS file that wouldn't be useful.
 				.addClass( 'se-card-image no-image mw-ge-tasktype-' + this.getTaskType() ),
@@ -73,7 +73,7 @@
 
 	SuggestedEditCardWidget.prototype.getTextContent = function () {
 		// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-class-state
-		var siteDir = $( 'body' ).hasClass( 'sitedir-rtl' ) ? 'rtl' : 'ltr',
+		let siteDir = $( 'body' ).hasClass( 'sitedir-rtl' ) ? 'rtl' : 'ltr',
 			$pageViews = $( '<div>' ).addClass( 'se-card-pageviews' ),
 			$textContent = $( '<div>' )
 				.addClass( 'se-card-text' )

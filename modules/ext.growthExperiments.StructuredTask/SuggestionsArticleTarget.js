@@ -1,4 +1,4 @@
-var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' );
+const MachineSuggestionsMode = require( './MachineSuggestionsMode.js' );
 
 /**
  * Mixin for a ve.init.mw.ArticleTarget instance. Used by SuggestionsDesktopArticleTarget and
@@ -18,7 +18,7 @@ function SuggestionsArticleTarget() {
  * Switch to machine suggestions mode of Visual Editor
  */
 SuggestionsArticleTarget.prototype.switchToMachineSuggestions = function () {
-	var uri = new mw.Uri(),
+	const uri = new mw.Uri(),
 		fragment = uri.fragment;
 	delete uri.query.hideMachineSuggestions;
 	uri.fragment = '';

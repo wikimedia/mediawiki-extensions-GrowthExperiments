@@ -13,7 +13,7 @@
  * @constructor
  */
 function CollapsibleDrawer( config ) {
-	var panelLayoutConfig = {
+	const panelLayoutConfig = {
 			expanded: false,
 			padded: typeof config.padded === 'boolean' ? config.padded : true,
 			content: config.content
@@ -159,7 +159,7 @@ CollapsibleDrawer.prototype.open = function ( delay ) {
  * @return {CollapsibleDrawer}
  */
 CollapsibleDrawer.prototype.close = function ( closeData ) {
-	var onDialogHidden = function () {
+	const onDialogHidden = function () {
 		this.closed.resolve( closeData );
 		this.$element.detach();
 	}.bind( this );
@@ -193,7 +193,7 @@ CollapsibleDrawer.prototype.openWithIntroContent = function () {
  * @return {jQuery.Promise} Promise that resolves when the intro content has been hidden
  */
 CollapsibleDrawer.prototype.hideIntroContent = function () {
-	var promise = $.Deferred();
+	const promise = $.Deferred();
 	if ( !this.$introContent || this.isIntroContentHidden ) {
 		return promise.resolve();
 	}
@@ -212,7 +212,7 @@ CollapsibleDrawer.prototype.hideIntroContent = function () {
  * @return {jQuery.Promise} Promise that resolves when the intro content has been shown
  */
 CollapsibleDrawer.prototype.showIntroContent = function () {
-	var promise = $.Deferred();
+	const promise = $.Deferred();
 	// Show only the intro content (including its margin)
 	this.$element.css( 'bottom', this.$introContent.outerHeight( true ) );
 	this.$introContent.removeClass( 'mw-ge-collapsibleDrawer-introContent--hidden' );

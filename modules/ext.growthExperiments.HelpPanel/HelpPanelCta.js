@@ -1,5 +1,5 @@
 ( function () {
-	var Help = require( 'ext.growthExperiments.Help' ),
+	const Help = require( 'ext.growthExperiments.Help' ),
 		HelpPanelButton = require( '../ui-components/HelpPanelButton.js' ),
 		Utils = require( '../utils/Utils.js' ),
 		TASK_TYPES = require( 'ext.growthExperiments.DataStore' ).CONSTANTS.ALL_TASK_TYPES,
@@ -18,9 +18,9 @@
 	) {
 		require( './SuggestedEditsGuidance.js' );
 	}
-	var taskTypeId = suggestedEditSession.taskType;
-	var taskTypeLogData = taskTypeId ? { taskType: taskTypeId } : null;
-	var guidanceAvailable = guidanceEnabled && taskTypeId && TASK_TYPES[ taskTypeId ];
+	const taskTypeId = suggestedEditSession.taskType;
+	const taskTypeLogData = taskTypeId ? { taskType: taskTypeId } : null;
+	const guidanceAvailable = guidanceEnabled && taskTypeId && TASK_TYPES[ taskTypeId ];
 
 	// This shouldn't happen, but just to be sure
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
@@ -29,7 +29,7 @@
 
 	$( () => {
 		// eslint-disable-next-line no-jquery/no-global-selector
-		var $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
+		let $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
 			$buttonWrapper = $buttonToInfuse.parent(),
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$body = $( 'body' ),
@@ -91,7 +91,7 @@
 		 * the first time (vs re-attached when the editor loads)
 		 */
 		function attachHelpButton( editor, isFirstTime ) {
-			var metadataOverride = {};
+			const metadataOverride = {};
 			helpPanelProcessDialog.updateEditMode();
 			// wikipage.editform gives us an object here, not a string.
 			if ( typeof editor === 'object' && editor !== null ) {
@@ -154,11 +154,11 @@
 		 * Hide the CTA when VE's context item is opened and show it when the context item is closed
 		 */
 		function setupHelpButtonToggle() {
-			var onContextResize = function () {
-				var isContextItemVisible = window.ve.init.target.surface.context.isVisible();
+			const onContextResize = function () {
+				const isContextItemVisible = window.ve.init.target.surface.context.isVisible();
 				$buttonWrapper.toggleClass( 'animate-out', isContextItemVisible );
 			};
-			var onContextResizeDebounced = OO.ui.debounce( onContextResize, 200 );
+			const onContextResizeDebounced = OO.ui.debounce( onContextResize, 200 );
 			mw.hook( 've.activationComplete' ).add( () => {
 				window.ve.init.target.surface.context.on( 'resize', onContextResizeDebounced );
 			} );
@@ -171,7 +171,7 @@
 		$body.append( $overlay );
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
-		var helpCtaButton;
+		let helpCtaButton;
 		if ( $buttonToInfuse.length ) {
 			helpCtaButton = mw.libs.ge.HelpPanelButton.static.infuse( $buttonToInfuse );
 			// The button is already on the page, but it won't be visible until we add the -ready
@@ -190,7 +190,7 @@
 		toggleHelpButtonVisibility( true );
 
 		function openHelpPanel( panel ) {
-			var $mfOverlay, $veUiOverlay;
+			let $mfOverlay, $veUiOverlay;
 			if ( OO.ui.isMobile() ) {
 				// HACK: Detach the MobileFrontend overlay for both VE and source edit modes.
 				// Per T212967, leaving them enabled results in a phantom text input that the
@@ -253,7 +253,7 @@
 		 * @param {Object} taskTypeData
 		 */
 		function maybeAddMobilePeek( taskTypeData ) {
-			var // Drawer.onBeforeHide fires whether the drawer was dismissed or tapped on
+			let // Drawer.onBeforeHide fires whether the drawer was dismissed or tapped on
 				// (and replaced with the full help panel). Use this flag to differentiate.
 				tapped = false;
 
@@ -264,7 +264,7 @@
 				return;
 			}
 
-			var mobilePeek = new Drawer( {
+			const mobilePeek = new Drawer( {
 				className: 'suggested-edits-mobile-peek',
 				showCollapseIcon: false,
 				children: [
@@ -364,7 +364,7 @@
 				$buttonWrapper.addClass( 'oo-ui-element-hidden' );
 				mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).add(
 					( helpPanelButton ) => {
-						var prevScrollPosition = $( document ).scrollTop();
+						const prevScrollPosition = $( document ).scrollTop();
 						openHelpPanel( 'suggested-edits' ).closing.done( () => {
 							// When help panel closes, article is scrolled to 0.
 							// Make sure annotation is visible.

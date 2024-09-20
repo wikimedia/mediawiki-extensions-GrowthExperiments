@@ -1,4 +1,4 @@
-var ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
+const ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
 	StructuredTaskSaveDialog = require( '../StructuredTaskSaveDialog.js' ),
 	IMAGE_PREVIEW_ASPECT_RATIO = 328 / 180;
 
@@ -86,7 +86,7 @@ AddImageSaveDialog.prototype.updateSummaryBody = function () {
  * @return {jQuery}
  */
 AddImageSaveDialog.prototype.getImageSummary = function ( fileName ) {
-	var $imageInfo = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imageInfo' ).append( [
+	const $imageInfo = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imageInfo' ).append( [
 		new OO.ui.IconWidget( { icon: 'image' } ).$element,
 		$( '<span>' )
 			.addClass( 'mw-ge-addImageSaveDialog-imageInfo-filename' )
@@ -105,7 +105,7 @@ AddImageSaveDialog.prototype.getImageSummary = function ( fileName ) {
  * @return {jQuery}
  */
 AddImageSaveDialog.prototype.getImagePreview = function ( summaryData ) {
-	var AddImageUtils = require( './AddImageUtils.js' ),
+	const AddImageUtils = require( './AddImageUtils.js' ),
 		$imagePreview = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imagePreview' ),
 		// Ideally this would be the width of the save dialog's content, but at this point the
 		// element is not yet attached to the DOM (getReadyProcess would give us the element width
@@ -126,7 +126,7 @@ AddImageSaveDialog.prototype.getImagePreview = function ( summaryData ) {
  * @return {jQuery}
  */
 AddImageSaveDialog.prototype.getAcceptedContent = function ( summaryData ) {
-	var $caption = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-caption' );
+	const $caption = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-caption' );
 	$caption.text( summaryData.caption );
 	return $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-bodyContent' ).append( [
 		this.getImagePreview( summaryData ), $caption

@@ -1,6 +1,6 @@
 'use strict';
 
-var FiltersStore = require( './FiltersStore.js' ),
+const FiltersStore = require( './FiltersStore.js' ),
 	NewcomerTasksStore = require( './NewcomerTasksStore.js' );
 
 /**
@@ -11,7 +11,7 @@ var FiltersStore = require( './FiltersStore.js' ),
  */
 ( function () {
 	/** @type {mw.libs.ge.DataStore.store} **/
-	var store = {};
+	const store = {};
 	store.filters = new FiltersStore();
 	store.newcomerTasks = new NewcomerTasksStore( store );
 	module.exports = store;

@@ -1,7 +1,7 @@
 module.exports = ( function () {
 	'use strict';
 
-	var hasHeroImage = false,
+	let hasHeroImage = false,
 		userName = mw.user.getName(),
 		CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 		taskTypeData = CONSTANTS.ALL_TASK_TYPES[ 'link-recommendation' ] || {},
@@ -35,7 +35,7 @@ module.exports = ( function () {
 		if ( !hasHeroImage ) {
 			return '';
 		}
-		var panelMap = {
+		const panelMap = {
 			1: 'intro',
 			2: 'about',
 			3: 'linking'
@@ -69,7 +69,7 @@ module.exports = ( function () {
 	 * @return {OO.ui.PanelLayout}
 	 */
 	function createIntroPanel() {
-		var messages = getIntroPanelMessages(),
+		const messages = getIntroPanelMessages(),
 			$content = $( '<div>' ).append( [
 				$( '<p>' ).text( messages.paragraph1 ),
 				$( '<div>' ).attr( 'class', 'addlink-onboarding-content-example-label' ).text( messages.exampleLabel ),
@@ -101,7 +101,7 @@ module.exports = ( function () {
 	 * @return {OO.ui.PanelLayout}
 	 */
 	function createAboutSuggestedLinksPanel() {
-		var messages = getAboutSuggestedLinksPanelMessages(),
+		const messages = getAboutSuggestedLinksPanelMessages(),
 			$content = $( '<div>' ).append( $( '<p>' ).text( messages.paragraph1 ) );
 
 		if ( messages.learnMoreLinkText && messages.learnMoreLinkUrl ) {
@@ -135,7 +135,7 @@ module.exports = ( function () {
 	 * @return {OO.ui.PanelLayout}
 	 */
 	function createLinkingGuidelinesPanel() {
-		var messages = getLinkingGuidelinesPanelMessages(),
+		let messages = getLinkingGuidelinesPanelMessages(),
 			$content = $( '<div>' ),
 			$list;
 		$list = $( '<ul>' ).html( messages.body ).addClass( 'addlink-onboarding-content-list' );

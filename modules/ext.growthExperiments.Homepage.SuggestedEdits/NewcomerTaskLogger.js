@@ -24,7 +24,7 @@
 		}
 
 		task.isTaskLogged = true;
-		var data = this.getLogData( task, position );
+		const data = this.getLogData( task, position );
 		mw.track( 'event.NewcomerTask', data );
 	};
 
@@ -37,7 +37,7 @@
 	 */
 	NewcomerTaskLogger.prototype.getLogData = function ( task, position ) {
 		/* eslint-disable camelcase */
-		var logData = {
+		const logData = {
 			newcomer_task_token: task.token,
 			task_type: task.tasktype,
 			maintenance_templates: [],

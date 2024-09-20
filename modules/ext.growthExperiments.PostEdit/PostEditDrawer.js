@@ -1,4 +1,4 @@
-var CollapsibleDrawer = require( '../ui-components/CollapsibleDrawer.js' ),
+const CollapsibleDrawer = require( '../ui-components/CollapsibleDrawer.js' ),
 	TryNewTaskPanel = require( './TryNewTaskPanel.js' );
 
 /**
@@ -50,7 +50,7 @@ PostEditDrawer.prototype.onClose = function ( closeData ) {
  * @return {jQuery.Promise} Promise that resolves when the notification has been shown
  */
 PostEditDrawer.prototype.showToastMessage = function ( delay ) {
-	var promise = $.Deferred(),
+	const promise = $.Deferred(),
 		$toastMessageArea = $( '<div>' ).addClass( 'mw-ge-postEditDrawer-toastMessageArea' ),
 		$toastMessageOverlay = $( '<div>' ).addClass(
 			'mw-ge-postEditDrawer-toastMessageOverlay'

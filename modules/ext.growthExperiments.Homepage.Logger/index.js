@@ -9,7 +9,7 @@
  */
 ( function () {
 
-	var Utils = require( '../utils/Utils.js' );
+	const Utils = require( '../utils/Utils.js' );
 
 	/**
 	 * @param {boolean} enabled
@@ -45,13 +45,13 @@
 			return;
 		}
 
-		var data = Object.assign(
+		const data = Object.assign(
 			{},
 			mw.config.get( 'wgGEHomepageModuleActionData-' + module ),
 			extraData || {}
 		);
 
-		var event = {
+		const event = {
 			/* eslint-disable camelcase */
 			action: action,
 			action_data: Utils.serializeActionData( data ),
@@ -64,7 +64,7 @@
 			homepage_pageview_token: this.homepagePageviewToken
 			/* eslint-enable camelcase */
 		};
-		var state = mw.config.get( 'wgGEHomepageModuleState-' + module );
+		const state = mw.config.get( 'wgGEHomepageModuleState-' + module );
 		if ( state ) {
 			// Don't pass things like event.state = '', that causes validation errors
 			event.state = state;

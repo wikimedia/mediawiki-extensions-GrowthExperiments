@@ -1,4 +1,4 @@
-var TargetInitializer = require( '../TargetInitializer.js' ),
+const TargetInitializer = require( '../TargetInitializer.js' ),
 	RecommendedImageRejectionDialog = require( './RecommendedImageRejectionDialog.js' ),
 	RecommendedImageViewer = require( './RecommendedImageViewer.js' ),
 	AddImageDetailsDialog = require( './AddImageDetailsDialog.js' ),
@@ -26,7 +26,7 @@ var TargetInitializer = require( '../TargetInitializer.js' ),
  * @param {ve.ui.Tool[]} [platformConfig.tools]
  */
 function AddImageTargetInitializer( platformConfig ) {
-	var config = Object.assign( {}, platformConfig ),
+	const config = Object.assign( {}, platformConfig ),
 		toolbarDialogCommand = new ve.ui.Command(
 			'recommendedImage', 'window', 'toggle', { args: [ 'recommendedImage' ] }
 		);

@@ -1,5 +1,5 @@
 'use strict';
-var Utils = require( '../utils/Utils.js' );
+const Utils = require( '../utils/Utils.js' );
 
 /**
  * @typedef {Object} EventLogger

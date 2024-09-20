@@ -1,4 +1,4 @@
-var SuggestionInteractionLogger = require( './SuggestionInteractionLogger.js' );
+const SuggestionInteractionLogger = require( './SuggestionInteractionLogger.js' );
 
 /**
  * Tool for switching to regular mode of VisualEditor with machine suggestions mode.
@@ -24,7 +24,7 @@ EditModeVisualWithSuggestions.static.editMode = 'visual';
  * Switch to regular VE mode
  */
 EditModeVisualWithSuggestions.prototype.switch = function () {
-	var editMode = this.constructor.static.editMode;
+	const editMode = this.constructor.static.editMode;
 	SuggestionInteractionLogger.log(
 		'editmode_select',
 		/* eslint-disable camelcase */

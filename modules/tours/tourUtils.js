@@ -12,7 +12,7 @@
 	 * @return {number|null}
 	 */
 	function getLeftOffset( targetSelector ) {
-		var offset,
+		let offset,
 			availableSpace,
 			$targetSelector = $( targetSelector ).first();
 
@@ -47,7 +47,7 @@
 		 */
 		adjustPersonalToolbarTourStep: function ( tourStep ) {
 			// eslint-disable-next-line no-jquery/no-global-selector
-			var isVectorCompactPersonalToolbar = $( '.vector-user-links' ).length,
+			const isVectorCompactPersonalToolbar = $( '.vector-user-links' ).length,
 				targetSelector = tourStep.attachTo;
 
 			if ( tourStep.position === 'bottom' && isVectorCompactPersonalToolbar ) {

@@ -1,4 +1,4 @@
-var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+const suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS;
 
 /**
@@ -58,7 +58,7 @@ CERecommendedImageCaptionNode.static.name = 'mwGeRecommendedImageCaption';
  */
 CERecommendedImageCaptionNode.prototype.getCaptionLength = function () {
 	// The caption content is held in VeDmParagraphNode.
-	var paragraphNode = this.model.getChildren()[ 0 ];
+	const paragraphNode = this.model.getChildren()[ 0 ];
 	return paragraphNode ? paragraphNode.getLength() : 0;
 };
 
@@ -141,7 +141,7 @@ CERecommendedImageCaptionNode.prototype.reshowPlaceholder = function () {
  * Set up button for re-opening caption onboarding dialog
  */
 CERecommendedImageCaptionNode.prototype.setupHelpButton = function () {
-	var articleTarget = this.articleTarget;
+	const articleTarget = this.articleTarget;
 	this.helpButton = new OO.ui.ButtonWidget( {
 		icon: 'helpNotice',
 		framed: false,
@@ -161,7 +161,7 @@ CERecommendedImageCaptionNode.prototype.setupHelpButton = function () {
  * @return {jQuery}
  */
 CERecommendedImageCaptionNode.prototype.getWarningLabel = function () {
-	var $label = $( '<div>' );
+	const $label = $( '<div>' );
 	this.warnings.forEach( ( warningData ) => {
 		$label.append( $( '<div>' ).text( warningData.text ) );
 	} );
@@ -188,7 +188,7 @@ CERecommendedImageCaptionNode.prototype.showWarningIfNeeded = function () {
 	if ( this.isValid() || this.isEmpty() ) {
 		return;
 	}
-	var $warningLabel = this.getWarningLabel();
+	const $warningLabel = this.getWarningLabel();
 	this.toggleInputWarningState( true );
 
 	if ( this.warningWidget ) {

@@ -1,4 +1,4 @@
-var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
+const MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 /**
@@ -56,7 +56,7 @@ StructuredTaskArticleTarget.prototype.formatSaveOptions = function ( defaultSave
  * @inheritDoc
  */
 StructuredTaskArticleTarget.prototype.getSaveOptions = function () {
-	var saveOptions = this.constructor.super.super.prototype.getSaveOptions.call( this );
+	const saveOptions = this.constructor.super.super.prototype.getSaveOptions.call( this );
 	// Don't add the article to the user's watchlist if no edits were made
 	if ( !this.hasEdits() ) {
 		saveOptions.watchlist = 'nochange';
@@ -143,7 +143,7 @@ StructuredTaskArticleTarget.prototype.initAutosave = function () {
  * @return {jQuery.Promise} Promise that resolves when the user has confirmed or cancelled
  */
 StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMode ) {
-	var promise = $.Deferred(),
+	const promise = $.Deferred(),
 		confirmationDialogPromise = this.surface.dialogs.openWindow( 'editModeConfirmation' );
 
 	confirmationDialogPromise.opening.then( () => {
@@ -156,7 +156,7 @@ StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMod
 	} );
 
 	confirmationDialogPromise.closed.then( ( data ) => {
-		var isConfirm = data && data.isConfirm;
+		const isConfirm = data && data.isConfirm;
 		this.logger.log(
 			isConfirm ? 'editmode_confirm_switch' : 'editmode_cancel_switch',
 			/* eslint-disable camelcase */
@@ -192,7 +192,7 @@ StructuredTaskArticleTarget.prototype.switchToVisualWithSuggestions = function (
 		$( window ).off( 'beforeunload' );
 	}
 
-	var uri = new mw.Uri(),
+	const uri = new mw.Uri(),
 		fragment = uri.fragment;
 	this.hasSwitched = true;
 	// Only include veaction so VE is loaded regardless of the default editor preference.
@@ -227,7 +227,7 @@ StructuredTaskArticleTarget.prototype.getPlaceholderTool = function () {
  * @param {boolean} [isLoading] Whether the toolbar is in a loading state
  */
 StructuredTaskArticleTarget.prototype.updatePlaceholderTitle = function ( title, isLoading ) {
-	var placeholderTool = this.getPlaceholderTool();
+	const placeholderTool = this.getPlaceholderTool();
 	if ( placeholderTool ) {
 		placeholderTool.updateTitleText( title, isLoading );
 	}
@@ -237,7 +237,7 @@ StructuredTaskArticleTarget.prototype.updatePlaceholderTitle = function ( title,
  * Restore the original title text in the MachineSuggestionsPlaceholder tool
  */
 StructuredTaskArticleTarget.prototype.restorePlaceholderTitle = function () {
-	var placeholderTool = this.getPlaceholderTool();
+	const placeholderTool = this.getPlaceholderTool();
 	if ( placeholderTool ) {
 		placeholderTool.restoreOriginalTitleText();
 	}
@@ -251,7 +251,7 @@ StructuredTaskArticleTarget.prototype.restorePlaceholderTitle = function () {
  * @param {boolean} isInternalRoutingEnabled
  */
 StructuredTaskArticleTarget.prototype.toggleInternalRouting = function ( isInternalRoutingEnabled ) {
-	var backTool = this.getToolbar().tools.back;
+	const backTool = this.getToolbar().tools.back;
 	if ( backTool && typeof backTool.toggleInternalRouting === 'function' ) {
 		backTool.toggleInternalRouting( isInternalRoutingEnabled );
 	}
@@ -263,7 +263,7 @@ StructuredTaskArticleTarget.prototype.toggleInternalRouting = function ( isInter
  * @override
  */
 StructuredTaskArticleTarget.prototype.saveErrorNewUser = function ( username ) {
-	var saveDialog = this.surface.getDialogs().currentWindow;
+	const saveDialog = this.surface.getDialogs().currentWindow;
 	saveDialog.showUserError( username );
 	// HACK: Resolve in order to stop the ProcessDialog's loading state instead of rejecting
 	// with an error in order to show a custom message instead
@@ -276,8 +276,8 @@ StructuredTaskArticleTarget.prototype.saveErrorNewUser = function ( username ) {
  * @return {jQuery.Promise} Promise that resolves when the user has confirmed or cancelled
  */
 StructuredTaskArticleTarget.prototype.confirmLeavingSuggestionsMode = function () {
-	var promise = $.Deferred();
-	var abandonEditDialogPromise = this.getSurface().dialogs.openWindow( 'abandonedit' ),
+	const promise = $.Deferred();
+	const abandonEditDialogPromise = this.getSurface().dialogs.openWindow( 'abandonedit' ),
 		// eslint-disable-next-line camelcase
 		metadataOverride = { active_interface: 'abandonedit_dialog' };
 
@@ -327,7 +327,7 @@ StructuredTaskArticleTarget.prototype.saveComplete = function ( data ) {
 	this.hasSaved = true;
 	suggestedEditSession.onStructuredTaskSaved();
 
-	var uri = new mw.Uri();
+	const uri = new mw.Uri();
 	delete uri.query.gesuggestededit;
 	delete uri.query.veaction;
 	if ( this.saveDialog && this.saveDialog.isOpened() ) {

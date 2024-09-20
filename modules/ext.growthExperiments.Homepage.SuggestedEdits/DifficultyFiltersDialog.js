@@ -1,6 +1,6 @@
 'use strict';
 
-var FiltersDialog = require( './FiltersDialog.js' ),
+const FiltersDialog = require( './FiltersDialog.js' ),
 	TaskTypeSelectionWidget = require( './TaskTypeSelectionWidget.js' ),
 	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 	SUGGESTED_EDITS_CONFIG = CONSTANTS.SUGGESTED_EDITS_CONFIG,
@@ -70,7 +70,7 @@ DifficultyFiltersDialog.prototype.getEnabledFilters = function () {
  * @param {string[]} selected
  */
 DifficultyFiltersDialog.prototype.onTaskTypeSelect = function ( selected ) {
-	var actions = this.actions.get();
+	const actions = this.actions.get();
 	if ( actions.length && actions[ 0 ] ) {
 		actions[ 0 ].setDisabled( selected.length === 0 );
 	}
@@ -100,8 +100,8 @@ DifficultyFiltersDialog.prototype.updateFiltersFromState = function () {
  */
 DifficultyFiltersDialog.prototype.updateLoadingState = function ( state ) {
 	FiltersDialog.prototype.updateLoadingState.call( this, state );
-	var actions = this.actions.get();
-	var primaryAction = actions.length && actions[ 0 ];
+	const actions = this.actions.get();
+	const primaryAction = actions.length && actions[ 0 ];
 	if ( primaryAction && !state.isLoading ) {
 		primaryAction.setDisabled( state.count === 0 || this.getEnabledFilters().length === 0 );
 	}

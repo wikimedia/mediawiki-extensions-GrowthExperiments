@@ -14,7 +14,7 @@ function StructuredTaskOnboardingContent( baseClass ) {
 StructuredTaskOnboardingContent.prototype.createPanel = function (
 	title, $content, heroImageClassName, heroImageAltText
 ) {
-	var $heroElement = heroImageClassName ?
+	const $heroElement = heroImageClassName ?
 		// eslint-disable-next-line mediawiki/class-doc
 		$( '<div>' ).addClass( [
 			heroImageClassName,

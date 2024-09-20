@@ -19,7 +19,7 @@
 	// - navigation transfer size
 	// - first paint
 	if ( window.performance && window.performance.getEntriesByType ) {
-		var navigationEntries = window.performance.getEntriesByType( 'navigation' ),
+		const navigationEntries = window.performance.getEntriesByType( 'navigation' ),
 			performanceEntries = window.performance.getEntries().filter( ( entry ) => entry.name === 'first-contentful-paint' );
 		if ( navigationEntries.length ) {
 			mw.track(

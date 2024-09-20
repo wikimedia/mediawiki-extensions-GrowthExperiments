@@ -1,6 +1,6 @@
 'use strict';
 
-var CollapsibleDrawer = require( '../ui-components/CollapsibleDrawer.js' ),
+const CollapsibleDrawer = require( '../ui-components/CollapsibleDrawer.js' ),
 	InviteToSuggestedEditsPanel = require( './InviteToSuggestedEditsPanel.js' );
 
 /**

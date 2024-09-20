@@ -1,4 +1,4 @@
-var ceRecommendedImageCaptionNode = require( './ceRecommendedImageCaptionNode.js' );
+const ceRecommendedImageCaptionNode = require( './ceRecommendedImageCaptionNode.js' );
 
 /**
  * @class mw.libs.ge.ce.AddImageLinearDeleteKeyDownHandler
@@ -13,7 +13,7 @@ OO.inheritClass( AddImageLinearDeleteKeyDownHandler, ve.ce.LinearDeleteKeyDownHa
 
 /** @inheritDoc **/
 AddImageLinearDeleteKeyDownHandler.static.execute = function ( surface, e ) {
-	var activeNode = surface.getActiveNode();
+	const activeNode = surface.getActiveNode();
 	// Don't delete caption node even when it's empty
 	if ( activeNode instanceof ceRecommendedImageCaptionNode && activeNode.isEmpty() ) {
 		e.preventDefault();

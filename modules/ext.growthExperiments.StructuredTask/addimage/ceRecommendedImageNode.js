@@ -55,7 +55,7 @@ CERecommendedImageNode.static.name = 'mwGeRecommendedImage';
  * Append header and delete button
  */
 CERecommendedImageNode.prototype.setupHeader = function () {
-	var router = require( 'mediawiki.router' ),
+	const router = require( 'mediawiki.router' ),
 		deleteButton = new OO.ui.ButtonWidget( {
 			icon: 'trash',
 			framed: false,
@@ -82,7 +82,7 @@ CERecommendedImageNode.prototype.setupLoadingOverlay = function () {
  * Show loading state with the actual image height
  */
 CERecommendedImageNode.prototype.showImageLoadingState = function () {
-	var imageWidth = this.model.getAttribute( 'width' ),
+	const imageWidth = this.model.getAttribute( 'width' ),
 		$img = this.$element.find( 'img' ),
 		onImageLoad = function () {
 			this.isImageReady = true;
@@ -162,7 +162,7 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 		] );
 	// Clicking anywhere in the image brings up the details dialog.
 	$container.on( 'click', () => {
-		var surface = this.getRoot().getSurface().getSurface(),
+		const surface = this.getRoot().getSurface().getSurface(),
 			recommendation = this.getModel().getAttribute( 'recommendation' ),
 			recommendationIndex = this.getModel().getAttribute( 'recommendationIndex' );
 		surface.dialogs.openWindow( 'addImageDetails', {

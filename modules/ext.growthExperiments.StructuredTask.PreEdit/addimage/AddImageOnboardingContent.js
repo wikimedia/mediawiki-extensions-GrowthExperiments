@@ -1,7 +1,7 @@
 module.exports = ( function () {
 	'use strict';
 
-	var hasHeroImage = false,
+	let hasHeroImage = false,
 		StructuredTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),
 		content = new StructuredTaskOnboardingContent( 'addimage-onboarding-content' ),
 		panelData = {};
@@ -18,7 +18,7 @@ module.exports = ( function () {
 		// The following classes are used here:
 		// * addimage-onboarding-content-paragraph
 		// * addimage-onboarding-content-paragraph--italic
-		var $paragraph = $( '<p>' ).addClass( [ 'addimage-onboarding-content-paragraph' ].concat( extraClasses ) );
+		const $paragraph = $( '<p>' ).addClass( [ 'addimage-onboarding-content-paragraph' ].concat( extraClasses ) );
 		if ( typeof text === 'string' ) {
 			$paragraph.text( text );
 		} else {
@@ -33,7 +33,7 @@ module.exports = ( function () {
 	 * @return {jQuery}
 	 */
 	function getIntroContent() {
-		var paragraphs = [
+		const paragraphs = [
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-intro-body-paragraph1'
 			).text() ),
@@ -103,7 +103,7 @@ module.exports = ( function () {
 	 * Construct localized title and content for each panel
 	 */
 	function constructPanelData() {
-		var heroImageModifier = OO.ui.isMobile() ? '' : '--desktop';
+		const heroImageModifier = OO.ui.isMobile() ? '' : '--desktop';
 		panelData = {
 			intro: {
 				title: mw.message(
@@ -147,8 +147,8 @@ module.exports = ( function () {
 	 * @return {OO.ui.PanelLayout}
 	 */
 	function createPanelFromData( data ) {
-		var heroImageClassName = hasHeroImage ? data.heroImageClassName : '';
-		var heroImageAltText = hasHeroImage ? data.heroImageAltText : '';
+		const heroImageClassName = hasHeroImage ? data.heroImageClassName : '';
+		const heroImageAltText = hasHeroImage ? data.heroImageAltText : '';
 		return content.createPanel( data.title, data.$content, heroImageClassName, heroImageAltText );
 	}
 

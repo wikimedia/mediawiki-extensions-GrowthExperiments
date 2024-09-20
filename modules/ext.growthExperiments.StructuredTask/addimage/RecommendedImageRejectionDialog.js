@@ -1,4 +1,4 @@
-var SelectWithTextInputWidget = require( '../../ui-components/SelectWithTextInputWidget.js' );
+const SelectWithTextInputWidget = require( '../../ui-components/SelectWithTextInputWidget.js' );
 
 /**
  * Dialog with a list of reasons for rejecting a suggestions
@@ -48,8 +48,8 @@ RecommendedImageRejectionDialog.static.rejectionReasons = [
 RecommendedImageRejectionDialog.prototype.initialize = function () {
 	RecommendedImageRejectionDialog.super.prototype.initialize.call( this );
 	this.message.$element.addClass( 'oo-ui-inline-help' );
-	var selectOptions = this.constructor.static.rejectionReasons.map( ( reason ) => {
-		var optionData = {
+	const selectOptions = this.constructor.static.rejectionReasons.map( ( reason ) => {
+		const optionData = {
 			data: reason,
 			// Messages used:
 			// * growthexperiments-addimage-rejectiondialog-reason-notrelevant
@@ -92,7 +92,7 @@ RecommendedImageRejectionDialog.prototype.getActionProcess = function ( action )
 	}
 
 	return new OO.ui.Process( function () {
-		var selectedItems = ( action === 'cancel' ) ? [] : this.reasonSelect.findSelection();
+		const selectedItems = ( action === 'cancel' ) ? [] : this.reasonSelect.findSelection();
 		this.close( {
 			action: action,
 			reasons: selectedItems,

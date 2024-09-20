@@ -1,5 +1,5 @@
 ( function () {
-	var Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
+	const Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
@@ -7,7 +7,7 @@
 		pageviewsIconSelector = '.empty-pageviews',
 		seeSuggestedEditsButtonSelector = '.see-suggested-edits-button',
 		logToggle = function ( toggle, $sourceElement ) {
-			var mode = $sourceElement
+			const mode = $sourceElement
 				.closest( '.growthexperiments-homepage-module' )
 				.data( 'mode' );
 			logger.log(
@@ -29,7 +29,7 @@
 			} ]
 		},
 		mobileHandler = function () {
-			var button = OO.ui.infuse( this );
+			const button = OO.ui.infuse( this );
 			button.on( 'click', () => {
 				logToggle( true, button.$element );
 				OO.ui.alert( button.title, alertOptions ).then( () => {
@@ -38,7 +38,7 @@
 			} );
 		},
 		desktopHandler = function () {
-			var buttonConfig = $( this ).data( 'ooui' ),
+			const buttonConfig = $( this ).data( 'ooui' ),
 				buttonPopupWidget = new OO.ui.PopupButtonWidget( Object.assign(
 					buttonConfig,
 					{
@@ -59,7 +59,7 @@
 		},
 		handler = OO.ui.isMobile() ? mobileHandler : desktopHandler,
 		onSuggestedEditsButtonClicked = function ( event ) {
-			var modulePath = $( this ).data( 'link-module-path' );
+			const modulePath = $( this ).data( 'link-module-path' );
 			event.preventDefault();
 			// "launchCta" isn't a real path, it's our cue to run the launchCta method
 			// in the start editing module.

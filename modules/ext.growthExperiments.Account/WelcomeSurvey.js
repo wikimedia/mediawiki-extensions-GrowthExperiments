@@ -3,7 +3,7 @@
 
 	module.exports = {
 		setupLanguageSelector: function () {
-			var ULSTagMultiselectWidget = require( './ULSTagMultiselectWidget.js' ),
+			const ULSTagMultiselectWidget = require( './ULSTagMultiselectWidget.js' ),
 				shouldUseLanguageInfoOverlay = OO.ui.isMobile() &&
 					mw.loader.getState( 'mobile.startup' ) === 'loaded',
 				/** @type {OO.Router} */
@@ -11,7 +11,7 @@
 				langCodeMap = $.uls.data.getAutonyms(),
 				languageMax = 10;
 
-			var widgetInstance = new ULSTagMultiselectWidget( {
+			const widgetInstance = new ULSTagMultiselectWidget( {
 				placeholder: mw.message( 'welcomesurvey-question-languages-placeholder' )
 					.params( [ mw.language.convertNumber( languageMax ) ] )
 					.text(),
@@ -33,7 +33,7 @@
 				widgetInstance.addLanguageByCode( lang );
 			} );
 
-			var $warning = $( '<div>' )
+			const $warning = $( '<div>' )
 				.addClass( 'warning' )
 				.text( mw.message( 'welcomesurvey-question-languages-maximum' ).text() )
 				.css( 'display', 'none' );

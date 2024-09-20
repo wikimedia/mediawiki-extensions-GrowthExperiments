@@ -1,4 +1,4 @@
-var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/' +
+const SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/' +
 	'SmallTaskCard.js' ),
 	SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
 	PagerWidget = require( '../ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js' ),
@@ -63,7 +63,7 @@ function PostEditPanel( config ) {
 	this.toggleNextNavigation( false );
 
 	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, () => {
-		var currentTask = this.tasksStore.getCurrentTask();
+		const currentTask = this.tasksStore.getCurrentTask();
 		if ( currentTask ) {
 			this.updateNextTask( currentTask );
 			this.updateNavigation();
@@ -72,7 +72,7 @@ function PostEditPanel( config ) {
 		}
 	} );
 	this.tasksStore.on( CONSTANTS.EVENTS.CURRENT_TASK_EXTRA_DATA_CHANGED, () => {
-		var currentTask = this.tasksStore.getCurrentTask();
+		const currentTask = this.tasksStore.getCurrentTask();
 		if ( currentTask ) {
 			this.updateTask( currentTask );
 		}
@@ -80,7 +80,7 @@ function PostEditPanel( config ) {
 
 	this.tasksStore.on( CONSTANTS.EVENTS.FETCHED_MORE_TASKS, ( isLoading ) => {
 		// Disable next navigation until more tasks are fetched or if there are no more tasks
-		var isNextEnabled = !isLoading && this.tasksStore.hasNextTask();
+		const isNextEnabled = !isLoading && this.tasksStore.hasNextTask();
 		this.toggleNextNavigation( isNextEnabled );
 		this.nextButton.setIcon( isLoading ? 'ellipsis' : 'next' );
 	} );
@@ -99,9 +99,9 @@ OO.mixinClass( PostEditPanel, OO.EventEmitter );
  * @return {OO.ui.MessageWidget}
  */
 PostEditPanel.prototype.getPostEditToastMessage = function () {
-	var hasSavedTask = this.taskState === SuggestedEditSession.static.STATES.SAVED;
+	const hasSavedTask = this.taskState === SuggestedEditSession.static.STATES.SAVED;
 
-	var type;
+	let type;
 	if ( hasSavedTask ) {
 		type = mw.config.get( 'wgEditSubmitButtonLabelPublish' ) ? 'published' : 'saved';
 		if ( mw.config.get( 'wgStableRevisionId' ) &&
@@ -121,7 +121,7 @@ PostEditPanel.prototype.getPostEditToastMessage = function () {
 	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation
 	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation
 	// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation
-	var messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
+	let messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
 	if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
 		messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation';
 	} else if ( this.taskType === 'section-image-recommendation' && this.sectionImageRecommendationDailyTasksExceeded ) {
@@ -144,7 +144,7 @@ PostEditPanel.prototype.getPostEditToastMessage = function () {
  * @return {Array<jQuery>} A list of footer elements.
  */
 PostEditPanel.prototype.getFooterButtons = function () {
-	var footer = new OO.ui.ButtonWidget( {
+	const footer = new OO.ui.ButtonWidget( {
 		href: Utils.getSuggestedEditsFeedUrl( 'postedit-panel' ),
 		label: mw.message( 'growthexperiments-help-panel-postedit-footer' ).text(),
 		framed: false,
@@ -179,7 +179,7 @@ PostEditPanel.prototype.getHeaderText = function () {
  *   Null if the panel should not have a main area (as no task should be displayed).
  */
 PostEditPanel.prototype.getMainArea = function () {
-	var $subHeader = null;
+	let $subHeader = null;
 	if ( !this.$mainArea ) {
 		this.$mainArea = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-main' );
 	} else {
@@ -220,9 +220,9 @@ PostEditPanel.prototype.getMainArea = function () {
  * @return {jQuery} A jQuery object wrapping the card element.
  */
 PostEditPanel.prototype.getFallbackCard = function () {
-	var $fallbackCard = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard' );
+	const $fallbackCard = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-fallbackCard' );
 
-	var postEditFallbackCardIconClass, postEditFallbackCardTitleMessage, postEditFallbackCardInfoMessage;
+	let postEditFallbackCardIconClass, postEditFallbackCardTitleMessage, postEditFallbackCardInfoMessage;
 	if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
 		postEditFallbackCardIconClass = 'mw-ge-help-panel-postedit-fallbackCard-icon-levelingup';
 		postEditFallbackCardTitleMessage = 'growthexperiments-help-panel-postedit-suggestededits-levelingup-title';
@@ -264,7 +264,7 @@ PostEditPanel.prototype.getFallbackCard = function () {
  * @return {jQuery} A jQuery object wrapping the card element.
  */
 PostEditPanel.prototype.getCard = function ( task ) {
-	var params, url, taskCard;
+	let params, url, taskCard;
 
 	if ( !task ) {
 		return new SmallTaskCard( {} ).$element;
@@ -303,7 +303,7 @@ PostEditPanel.prototype.getCard = function ( task ) {
  * @param {mw.libs.ge.TaskData} task
  */
 PostEditPanel.prototype.updateTask = function ( task ) {
-	var $newTaskCard = this.getCard( task );
+	const $newTaskCard = this.getCard( task );
 	this.$taskCard.replaceWith( $newTaskCard );
 	// Reference to the DOM node has to be updated since the old one has been replaced.
 	this.$taskCard = $newTaskCard;
@@ -344,7 +344,7 @@ PostEditPanel.prototype.toggleNavigation = function ( show ) {
  *   only if the impression involved showing a task
  */
 PostEditPanel.prototype.logImpression = function ( extraData ) {
-	var data;
+	let data;
 
 	if ( this.nextTask ) {
 		data = {
@@ -441,7 +441,7 @@ PostEditPanel.prototype.onPrevButtonClicked = function () {
  * @return {jQuery}
  */
 PostEditPanel.prototype.getTaskNavigation = function () {
-	var $navigation = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigation' ),
+	const $navigation = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigation' ),
 		$indicator = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigationIndicator' ),
 		$buttons = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigationButtons' );
 	$indicator.append( this.pager.$element );

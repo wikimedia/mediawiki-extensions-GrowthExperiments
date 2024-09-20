@@ -1,7 +1,7 @@
-var mobile = require( 'mobile.startup' );
+const mobile = require( 'mobile.startup' );
 ( function () {
 	'use strict';
-	var HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
+	const HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
@@ -27,12 +27,12 @@ var mobile = require( 'mobile.startup' );
 	 * between the homepage and the mobile overlay via mediawiki.router.
 	 */
 	function beforeMobileInit() {
-		var uri = new mw.Uri(),
+		const uri = new mw.Uri(),
 			query = uri.query || {};
 		if ( !query.overlay && !query.source ) {
 			return;
 		}
-		var Utils = require( '../utils/Utils.js' );
+		const Utils = require( '../utils/Utils.js' );
 		Utils.removeQueryParam( uri, [ 'overlay', 'source' ], true );
 	}
 
@@ -40,7 +40,7 @@ var mobile = require( 'mobile.startup' );
 	 * Set up mobile overlays for each mobile summary module
 	 */
 	function onMobileInit() {
-		var MobileOverlay = require( './MobileOverlay.js' ),
+		let MobileOverlay = require( './MobileOverlay.js' ),
 			router = require( 'mediawiki.router' ),
 			overlayManager = mobile.getOverlayManager(),
 			lazyLoadModules = [],
@@ -58,7 +58,7 @@ var mobile = require( 'mobile.startup' );
 		 * @return {Object}
 		 */
 		function getModuleData( moduleName ) {
-			var data = mw.config.get( 'homepagemodules' )[ moduleName ];
+			const data = mw.config.get( 'homepagemodules' )[ moduleName ];
 			data.$overlay = $overlayModules.find( '[data-module-name="' + moduleName + '"]' );
 			return data;
 		}
@@ -75,7 +75,7 @@ var mobile = require( 'mobile.startup' );
 		}
 
 		function handleRouteChange( path ) {
-			var matches = path.match( routeRegex ),
+			const matches = path.match( routeRegex ),
 				newModule = matches ? matches[ 1 ] : null;
 
 			// Log mobile-overlay open/close when navigating to / away from a module
@@ -106,8 +106,8 @@ var mobile = require( 'mobile.startup' );
 
 		overlayManager.add( routeRegex, ( moduleName ) => {
 			if ( overlays[ moduleName ] === undefined ) {
-				var moduleData = getModuleData( moduleName );
-				var overlay = new MobileOverlay( {
+				const moduleData = getModuleData( moduleName );
+				const overlay = new MobileOverlay( {
 					moduleName: moduleName,
 					html: moduleData.$overlay,
 					rlModules: moduleData.rlModules,
@@ -142,7 +142,7 @@ var mobile = require( 'mobile.startup' );
 			// Start loading the ResourceLoader modules so that tapping on one will load
 			// instantly. We don't load these with page delivery so as to speed up the
 			// initial page load.
-			var moduleName = $( this ).data( 'module-name' ),
+			const moduleName = $( this ).data( 'module-name' ),
 				rlModules = getModuleData( moduleName ).rlModules;
 			if ( rlModules ) {
 				lazyLoadModules = lazyLoadModules.concat( rlModules );
@@ -183,7 +183,7 @@ var mobile = require( 'mobile.startup' );
 		// Even though this drawer isn't really a tour, we reuse the preference
 		// set on desktop since if the user has seen the tour on desktop they
 		// should not see the drawer on mobile, and vice versa.
-		var welcomeNoticeSeenPreference = 'growthexperiments-tour-homepage-welcome',
+		let welcomeNoticeSeenPreference = 'growthexperiments-tour-homepage-welcome',
 			buttonClicked = false,
 			markAsSeen = function () {
 				new mw.Api().saveOption( welcomeNoticeSeenPreference, 1 );
@@ -196,7 +196,7 @@ var mobile = require( 'mobile.startup' );
 			return;
 		}
 
-		var welcomeDrawer = new Drawer( {
+		const welcomeDrawer = new Drawer( {
 			className: 'homepage-welcome-notice',
 			showCollapseIcon: false,
 			children: [
@@ -271,7 +271,7 @@ var mobile = require( 'mobile.startup' );
 	function setUpSuggestedEdits() {
 		$summaryModules.filter( '.growthexperiments-homepage-module-suggested-edits' )
 			.each( ( i, module ) => {
-				var suggestedEditsMobileSummary = new SuggestedEditsMobileSummary( {
+				const suggestedEditsMobileSummary = new SuggestedEditsMobileSummary( {
 					$element: $( module ),
 					newcomerTaskLogger: newcomerTaskLogger,
 					homepageModuleLogger: homepageModuleLogger

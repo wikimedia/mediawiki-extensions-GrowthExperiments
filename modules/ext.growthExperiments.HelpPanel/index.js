@@ -1,5 +1,5 @@
 ( function () {
-	var veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' ),
+	const veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {

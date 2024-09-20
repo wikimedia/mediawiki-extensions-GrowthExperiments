@@ -1,5 +1,5 @@
 module.exports = ( function () {
-	var SuggestionInteractionLogger = require( './SuggestionInteractionLogger.js' ),
+	const SuggestionInteractionLogger = require( './SuggestionInteractionLogger.js' ),
 		// The order of the tools here correspond to the order they are shown in editMode dropdown.
 		editModeToolNames = [ 'editModeMachineSuggestions', 'editModeVisualWithSuggestions' ];
 
@@ -37,7 +37,7 @@ module.exports = ( function () {
 	 * @return {Object}
 	 */
 	function getEditModeToolGroup() {
-		var editModeToolGroup = {
+		const editModeToolGroup = {
 			name: 'suggestionsEditMode',
 			type: 'list',
 			icon: 'edit',
@@ -74,7 +74,7 @@ module.exports = ( function () {
 	 * @return {Object[]}
 	 */
 	function getMobileTools( currentTools ) {
-		var activeTools = currentTools.filter( ( tool ) => [ 'save', 'back' ].indexOf( tool.name ) !== -1 );
+		const activeTools = currentTools.filter( ( tool ) => [ 'save', 'back' ].indexOf( tool.name ) !== -1 );
 		activeTools.push(
 			{
 				name: 'machineSuggestionsPlaceholder',
@@ -92,9 +92,9 @@ module.exports = ( function () {
 	 * @return {Object[]}
 	 */
 	function getToolbarGroups( currentGroups ) {
-		var activeGroups = currentGroups.filter( ( tool ) => tool.align !== 'after' ||
+		const activeGroups = currentGroups.filter( ( tool ) => tool.align !== 'after' ||
 				[ 'editMode', 'back' ].indexOf( tool.name ) !== -1 );
-		var saveGroup = {
+		const saveGroup = {
 			name: 'save',
 			type: 'bar',
 			include: [ 'machineSuggestionsSave' ]
@@ -112,7 +112,7 @@ module.exports = ( function () {
 	 * @param {jQuery} $toolbar Toolbar element
 	 */
 	function trackEditModeClick( $toolbar ) {
-		var $editModeToolbarGroup = $toolbar.find( '.ve-ui-toolbar-group-suggestionsEditMode' );
+		const $editModeToolbarGroup = $toolbar.find( '.ve-ui-toolbar-group-suggestionsEditMode' );
 		if ( $editModeToolbarGroup.length ) {
 			$editModeToolbarGroup.on( 'click', () => {
 				SuggestionInteractionLogger.log(
@@ -178,7 +178,7 @@ module.exports = ( function () {
 	 * @param {ve.ui.Surface} surface
 	 */
 	function enableSurfacePaste( surface ) {
-		var surfaceView = surface.getView();
+		const surfaceView = surface.getView();
 		surfaceView.$attachedRootNode.on( 'paste', surfaceView.onPaste.bind( surfaceView ) );
 	}
 

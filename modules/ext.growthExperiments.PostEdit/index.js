@@ -1,7 +1,7 @@
 'use strict';
 
 ( function () {
-	var PostEditDrawer = require( './PostEditDrawer.js' ),
+	const PostEditDrawer = require( './PostEditDrawer.js' ),
 		PostEditPanel = require( './PostEditPanel.js' ),
 		TryNewTaskPanel = require( './TryNewTaskPanel.js' ),
 		HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
@@ -39,9 +39,9 @@
 	 *   - closePromise {jQuery.Promise} A promise that resolves when the dialog has been closed.
 	 */
 	function displayPanel( postEditPanel, logger, showToast ) {
-		var suppressClose = false;
-		var drawer = new PostEditDrawer( postEditPanel, logger );
-		var closeDrawer = function () {
+		let suppressClose = false;
+		const drawer = new PostEditDrawer( postEditPanel, logger );
+		const closeDrawer = function () {
 			if ( !suppressClose ) {
 				drawer.close();
 			}
@@ -99,7 +99,7 @@
 	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
 	function setup( showToast ) {
-		var imageRecommendationQualityGates =
+		const imageRecommendationQualityGates =
 				suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
 			imageRecommendationDailyTasksExceeded =
 				imageRecommendationQualityGates.dailyLimit || false,
@@ -112,7 +112,7 @@
 			linkRecommendationDailyTasksExceeded =
 				linkRecommendationQualityGates.dailyLimit || false;
 
-		var postEditPanel = new PostEditPanel( {
+		const postEditPanel = new PostEditPanel( {
 			taskType: suggestedEditSession.taskType,
 			taskState: suggestedEditSession.taskState,
 			taskTypes: ALL_TASK_TYPES,
@@ -124,7 +124,7 @@
 			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded
 		} );
 
-		var displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger, showToast );
+		const displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger, showToast );
 
 		return {
 			panel: postEditPanel,
@@ -152,7 +152,7 @@
 		 *   - closePromise: A promise that resolves when the dialog has been closed.
 		 */
 		setupPanel: function ( nextSuggestedTaskType, showToast ) {
-			var fetchTasksConfig = {
+			const fetchTasksConfig = {
 					excludePageId: mw.config.get( 'wgArticleId' ),
 					excludeExceededQuotaTaskTypes: true
 				},
@@ -170,7 +170,7 @@
 				fetchTasksConfig.newTaskTypes = [ nextSuggestedTaskType ];
 			}
 
-			var setupResult;
+			let setupResult;
 			tasksStore.fetchTasks( 'postEditDialog', fetchTasksConfig ).catch( ( errorMessage ) => {
 				if ( errorMessage ) {
 					mw.log.error( errorMessage );
@@ -197,20 +197,20 @@
 		 * can happen when the user clicks on the VE "Edit" link while the panel is open
 		 */
 		setupTryNewTaskPanel: function () {
-			var tryNewTaskOptOuts = mw.config.get( 'wgGELevelingUpTryNewTaskOptOuts', [] );
+			const tryNewTaskOptOuts = mw.config.get( 'wgGELevelingUpTryNewTaskOptOuts', [] );
 			if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() &&
 				// A next suggested task type is available for the user
 				suggestedEditSession.nextSuggestedTaskType &&
 				// The user hasn't opted out of seeing the prompt for this task type
 				tryNewTaskOptOuts.indexOf( suggestedEditSession.taskType ) === -1
 			) {
-				var tryNewTaskPanel = new TryNewTaskPanel( {
+				const tryNewTaskPanel = new TryNewTaskPanel( {
 					nextSuggestedTaskType: suggestedEditSession.nextSuggestedTaskType,
 					activeTaskType: suggestedEditSession.taskType,
 					helpPanelLogger: tryNewTaskHelpPanelLogger,
 					tryNewTaskOptOuts: tryNewTaskOptOuts
 				} );
-				var displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger, true );
+				const displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger, true );
 				displayPanelPromises.openPromise.done( () => {
 					tryNewTaskPanel.logImpression( {
 						// Increment the count for the task type, because the try new task panel

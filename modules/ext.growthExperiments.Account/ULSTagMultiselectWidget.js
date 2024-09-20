@@ -9,8 +9,8 @@
 	 * @param {Object} config
 	 * @constructor
 	 */
-	var ULSTagMultiselectWidget = function UlsTagMultiselectWidget( config ) {
-		var shouldUseLanguageOverlay = OO.ui.isMobile() &&
+	const ULSTagMultiselectWidget = function UlsTagMultiselectWidget( config ) {
+		const shouldUseLanguageOverlay = OO.ui.isMobile() &&
 			mw.loader.getState( 'mobile.startup' ) === 'loaded';
 		ULSTagMultiselectWidget.super.call( this, config );
 		this.$element.on( 'click', ( e ) => {
@@ -45,15 +45,15 @@
 	 * we can get meaningful information about the offset.
 	 */
 	ULSTagMultiselectWidget.prototype.initializeUls = function () {
-		var widget = this;
+		const widget = this;
 
 		if ( this.$uls ) {
 			return;
 		}
 		this.$uls = this.$element.closest( '.oo-ui-fieldLayout' );
 
-		var $inputWidget = this.input.$element;
-		var offset = $inputWidget.offset();
+		const $inputWidget = this.input.$element;
+		const offset = $inputWidget.offset();
 
 		this.$uls.uls( {
 			ulsPurpose: 'welcomesurvey-languages-picker',
@@ -81,7 +81,7 @@
 		ULSTagMultiselectWidget.super.prototype.onChangeTags.apply( this, arguments );
 
 		// Update the hidden checkboxes in the form
-		var selectedLangCodes = items.map( ( item ) => item.getData() );
+		const selectedLangCodes = items.map( ( item ) => item.getData() );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( 'input[name="wplanguages[]"]' ).each( ( index, checkbox ) => {
 			$( checkbox ).prop( 'checked', selectedLangCodes.indexOf( checkbox.value ) !== -1 );

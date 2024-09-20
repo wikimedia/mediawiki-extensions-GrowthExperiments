@@ -20,7 +20,7 @@
 	MessageDialogWithVerticalButtons.prototype.fitActions = function () {
 		// Overriding a private method is not nice, but other methods of wrangling
 		// MessageDialog's buttons to be vertical wouldn't be nice either.
-		var previous = this.verticalActionLayout;
+		const previous = this.verticalActionLayout;
 		this.toggleVerticalActionLayout( true );
 		this.$body.css( 'bottom', this.$foot.outerHeight( true ) );
 		if ( this.verticalActionLayout !== previous ) {

@@ -13,8 +13,7 @@ module.exports = function ( grunt ) {
 		eslint: {
 			options: {
 				cache: true,
-				fix: grunt.option( 'fix' ),
-				maxWarnings: 0
+				fix: grunt.option( 'fix' )
 			},
 			all: [
 				'.'

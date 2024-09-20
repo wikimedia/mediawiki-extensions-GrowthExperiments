@@ -1,7 +1,7 @@
 ( function () {
 
 	function updateQuestionsCountInModuleActionData( moduleName, unarchivedCount, archivedCount ) {
-		var key = 'wgGEHomepageModuleActionData-' + moduleName,
+		const key = 'wgGEHomepageModuleActionData-' + moduleName,
 			moduleActionData = mw.config.get( key ) || {};
 		moduleActionData.unarchivedQuestions = unarchivedCount;
 		moduleActionData.archivedQuestions = archivedCount;
@@ -16,7 +16,7 @@
 	 * for {moduleName}
 	 */
 	function updateHomepageModuleHtml( moduleName, questionsSelector, updatedHtml ) {
-		var moduleData = mw.config.get( 'homepagemodules' ),
+		let moduleData = mw.config.get( 'homepagemodules' ),
 			$moduleHtml;
 		if ( !moduleData || !moduleData[ moduleName ] ) {
 			return;
@@ -28,7 +28,7 @@
 	}
 
 	function updateRecentQuestions() {
-		var sourceName = 'mentor',
+		let sourceName = 'mentor',
 			moduleName = 'mentorship',
 			storage = 'growthexperiments-' + sourceName + '-questions',
 			$overlay = mw.loader.getState( 'ext.growthExperiments.Homepage.mobile' ) === 'ready' ?
@@ -51,7 +51,7 @@
 				if ( !data.homepagequestionstore ) {
 					return;
 				}
-				var questionStoreHtml = data.homepagequestionstore.html || '';
+				const questionStoreHtml = data.homepagequestionstore.html || '';
 				if ( questionStoreHtml.length ) {
 					$container.find( questionsSelector )
 						.replaceWith( questionStoreHtml );

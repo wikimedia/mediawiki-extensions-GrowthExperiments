@@ -1,6 +1,6 @@
 ( function () {
-	var attachButton = function ( config, $container ) {
-		var appendWindowManagerToBody = function ( windowManager, dialog ) {
+	const attachButton = function ( config, $container ) {
+		const appendWindowManagerToBody = function ( windowManager, dialog ) {
 				// eslint-disable-next-line no-jquery/no-global-selector
 				$( 'body' ).append( windowManager.$element );
 				windowManager.addWindows( [ dialog ] );
@@ -16,7 +16,7 @@
 			 */
 			registerDialogRoute = function ( router, route, windowManager, dialog, logger ) {
 				router.addRoute( route, () => {
-					var lifecycle = windowManager.openWindow( dialog, { panel: 'ask-help' } );
+					const lifecycle = windowManager.openWindow( dialog, { panel: 'ask-help' } );
 					logger.log( 'ask-help' );
 					lifecycle.closing.done( () => {
 						if ( router.getPath() === route ) {
@@ -52,19 +52,19 @@
 			return;
 		}
 
-		var routerInstance = require( 'mediawiki.router' );
-		var Help = require( 'ext.growthExperiments.Help' );
-		var QuestionPosterDialog = Help.HelpPanelProcessDialog;
-		var loggerInstance = new Help.HelpPanelLogger(
+		const routerInstance = require( 'mediawiki.router' );
+		const Help = require( 'ext.growthExperiments.Help' );
+		const QuestionPosterDialog = Help.HelpPanelProcessDialog;
+		const loggerInstance = new Help.HelpPanelLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			{
 				context: config.context,
 				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' )
 			}
 		);
-		var windowManagerInstance = new OO.ui.WindowManager( { modal: true } );
+		const windowManagerInstance = new OO.ui.WindowManager( { modal: true } );
 		suggestedEditSession.helpPanelShouldBeLocked = true;
-		var dialogInstance = new QuestionPosterDialog( Object.assign( {
+		const dialogInstance = new QuestionPosterDialog( Object.assign( {
 			size: 'medium',
 			logger: loggerInstance,
 			layoutType: 'dialog',
@@ -74,7 +74,7 @@
 			askSource: 'mentor-homepage',
 			isQuestionPoster: true
 		}, config.dialog ) );
-		var ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
+		const ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
 
 		appendWindowManagerToBody( windowManagerInstance, dialogInstance );
 		registerDialogRoute(

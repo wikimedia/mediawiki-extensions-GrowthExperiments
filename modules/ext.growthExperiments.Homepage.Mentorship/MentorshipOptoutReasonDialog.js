@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 
-	var SelectWithTextInputWidget = require( '../ui-components/SelectWithTextInputWidget.js' ),
+	const SelectWithTextInputWidget = require( '../ui-components/SelectWithTextInputWidget.js' ),
 		HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
@@ -47,7 +47,7 @@
 	MentorshipOptoutReasonDialog.prototype.initialize = function () {
 		MentorshipOptoutReasonDialog.super.prototype.initialize.call( this );
 
-		var selectOptions = this.constructor.static.optoutReasons.map( ( reason ) => ( {
+		const selectOptions = this.constructor.static.optoutReasons.map( ( reason ) => ( {
 			data: reason,
 			// Messages used:
 			// * growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor

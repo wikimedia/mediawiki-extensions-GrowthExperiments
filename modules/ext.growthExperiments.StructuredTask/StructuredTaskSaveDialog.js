@@ -1,4 +1,4 @@
-var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
+const SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
 	SuggestionInteractionLogger = require( './SuggestionInteractionLogger.js' );
 
 /**
@@ -53,7 +53,7 @@ StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
 	return this.constructor.super.prototype.getTeardownProcess.call(
 		this, data
 	).next( function () {
-		var suggestedEditSession = SuggestedEditSession.getInstance();
+		const suggestedEditSession = SuggestedEditSession.getInstance();
 
 		// T283765: use the stored pageview token. The real one might have been reset at
 		// this point by a showPostEditDialog call from the postEdit hook.
@@ -119,7 +119,7 @@ StructuredTaskSaveDialog.prototype.setVisualDiffPreference = function () {
  * @param {string|null} username Name of newly logged-in user, or null if anonymous
  */
 StructuredTaskSaveDialog.prototype.setupUserErrorContent = function ( username ) {
-	var errorMessage = new OO.ui.MessageWidget( {
+	const errorMessage = new OO.ui.MessageWidget( {
 			type: 'error',
 			label: mw.message( 'growthexperiments-structuredtask-user-error' )
 				.params( [ username ] ).escaped()
@@ -173,7 +173,7 @@ StructuredTaskSaveDialog.prototype.onLoginButtonClicked = function () {
  * @return {Object}
  */
 StructuredTaskSaveDialog.prototype.getDialogData = function ( data ) {
-	var checkboxFields = data.checkboxFields || [],
+	let checkboxFields = data.checkboxFields || [],
 		checkboxesByName = data.checkboxesByName || {},
 		allowList = [ checkboxesByName.wpWatchthis, checkboxesByName.wpWatchlistExpiry ];
 

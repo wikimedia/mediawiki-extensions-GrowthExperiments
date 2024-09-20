@@ -1,10 +1,10 @@
-var TOPIC_MATCH_MODE_OR = 'OR';
-var TOPIC_MATCH_MODE_AND = 'AND';
-var TOPIC_MATCH_MODES = {
+const TOPIC_MATCH_MODE_OR = 'OR';
+const TOPIC_MATCH_MODE_AND = 'AND';
+const TOPIC_MATCH_MODES = {
 	OR: TOPIC_MATCH_MODE_OR,
 	AND: TOPIC_MATCH_MODE_AND
 };
-var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' );
+const TaskTypesAbFilter = require( './TaskTypesAbFilter.js' );
 
 module.exports = {
 	/** @property {string[]} TOPIC_MATCH_MODES Available topic match modes */

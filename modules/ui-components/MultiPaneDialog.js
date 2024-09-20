@@ -10,7 +10,7 @@
  * @constructor
  */
 function MultiPaneDialog( config ) {
-	var processDialogClasses = [
+	const processDialogClasses = [
 		'growthexperiments-multi-pane-dialog',
 		OO.ui.isMobile() ? 'growthexperiments-multi-pane-dialog-mobile' : 'growthexperiments-multi-pane-dialog-desktop'
 	];
@@ -83,8 +83,8 @@ MultiPaneDialog.prototype.getFooterElement = function () {
  * @return {jQuery}
  */
 MultiPaneDialog.prototype.getProgressDots = function () {
-	var dots = [];
-	for ( var i = 0; i < this.panels.length; i++ ) {
+	const dots = [];
+	for ( let i = 0; i < this.panels.length; i++ ) {
 		dots.push( $( '<span>' ).addClass( 'growthexperiments-multi-pane-dialog-dot' ) );
 	}
 	return $( '<div>' ).addClass( 'growthexperiments-multi-pane-dialog-dots-container' ).append( dots );
@@ -94,14 +94,14 @@ MultiPaneDialog.prototype.getProgressDots = function () {
  * Update dot states and text (if applicable) for progress indicator
  */
 MultiPaneDialog.prototype.updateProgressIndicator = function () {
-	var currentIndex = this.currentPanelIndex,
+	const currentIndex = this.currentPanelIndex,
 		$progressIndicator = this.progressIndicator.$element;
 
 	if ( this.progressMessageKey ) {
 		// The following keys are used here:
 		// * growthexperiments-addlink-onboarding-dialog-progress
 		// * other keys can be added when MultiPaneDialog is used in more places
-		var progressText = mw.msg( this.progressMessageKey,
+		const progressText = mw.msg( this.progressMessageKey,
 			mw.language.convertNumber( currentIndex + 1 ),
 			mw.language.convertNumber( this.panels.length )
 		);
@@ -139,7 +139,7 @@ MultiPaneDialog.prototype.showPanelIndex = function ( index ) {
  * Add classes to panels for slide transition
  */
 MultiPaneDialog.prototype.updatePanelTransitionClasses = function () {
-	var currentIndex = this.currentPanelIndex;
+	const currentIndex = this.currentPanelIndex;
 	this.panels.forEach( ( panel, index ) => {
 		panel.$element.toggleClass( 'offscreen-content-prev', index < currentIndex )
 			.toggleClass( 'offscreen-content-next', index > currentIndex );

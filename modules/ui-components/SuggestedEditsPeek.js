@@ -1,5 +1,5 @@
 ( function () {
-	var IconUtils = require( '../utils/IconUtils.js' );
+	const IconUtils = require( '../utils/IconUtils.js' );
 
 	/**
 	 * @param {string} difficulty

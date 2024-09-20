@@ -84,7 +84,7 @@
 	};
 
 	HelpPanelSearchWidget.prototype.onSearchInputChange = function () {
-		var query = this.searchInput.getValue();
+		const query = this.searchInput.getValue();
 		if ( this.api ) {
 			this.api.abort();
 		}
@@ -125,7 +125,7 @@
 	};
 
 	HelpPanelSearchWidget.prototype.buildSearchResult = function ( result, index ) {
-		var title = mw.Title.newFromText( result.title ),
+		const title = mw.Title.newFromText( result.title ),
 			$link = $( '<a>' )
 				.text( result.title )
 				.attr( {

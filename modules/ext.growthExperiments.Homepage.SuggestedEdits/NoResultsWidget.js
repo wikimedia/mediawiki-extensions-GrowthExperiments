@@ -3,16 +3,16 @@
 
 	function NoResultsWidget( config ) {
 		NoResultsWidget.super.call( this, config );
-		var topicMatchAnd = config.topicMatching && config.topicMatchModeIsAND;
-		var $card = $( '<div>' ).addClass( 'se-card-no-results' );
-		var noResultsDescriptionText = 'growthexperiments-homepage-suggestededits-select-other-difficulty';
+		const topicMatchAnd = config.topicMatching && config.topicMatchModeIsAND;
+		const $card = $( '<div>' ).addClass( 'se-card-no-results' );
+		let noResultsDescriptionText = 'growthexperiments-homepage-suggestededits-select-other-difficulty';
 		if ( config.topicMatching ) {
 			noResultsDescriptionText = 'growthexperiments-homepage-suggestededits-select-other-topics-difficulty';
 			if ( topicMatchAnd ) {
 				noResultsDescriptionText = 'growthexperiments-homepage-suggestededits-select-other-topic-mode';
 			}
 		}
-		var content = [
+		const content = [
 			$( '<h3>' ).addClass( 'se-card-title' ).text(
 				mw.message( 'growthexperiments-homepage-suggestededits-no-results' ).text() ),
 			$( '<div>' ).addClass( 'se-card-image' ),
@@ -24,7 +24,7 @@
 				.text( mw.message( noResultsDescriptionText, mw.user.getName() ).text() )
 		];
 		if ( topicMatchAnd ) {
-			var cta = new OO.ui.ButtonWidget( {
+			const cta = new OO.ui.ButtonWidget( {
 				classes: [
 					'se-card-link'
 				],

@@ -1,7 +1,7 @@
 module.exports = ( function () {
 	'use strict';
 
-	var Utils = require( '../utils/Utils.js' ),
+	let Utils = require( '../utils/Utils.js' ),
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
 		addSectionImageOnboardingPrefName = 'growthexperiments-addsectionimage-onboarding',
@@ -63,7 +63,7 @@ module.exports = ( function () {
 		if ( !shouldShowOnboarding ) {
 			return;
 		}
-		var uri = new mw.Uri();
+		const uri = new mw.Uri();
 		if ( uri.query[ 'new-onboarding' ] === '1' ) {
 			/**
 			 * TODO use the Vue version of the dialog
@@ -130,7 +130,7 @@ module.exports = ( function () {
 	 * @param {string|number} section Zero-based index of the section to edit or "all"
 	 */
 	function updateEditLinkSection( $editLink, section ) {
-		var editUri = new mw.Uri( $editLink.attr( 'href' ) );
+		const editUri = new mw.Uri( $editLink.attr( 'href' ) );
 		editUri.query.section = section;
 		$editLink.attr( 'href', editUri.toString() );
 	}
@@ -141,7 +141,7 @@ module.exports = ( function () {
 	function loadEditModule() {
 		mw.hook( 've.loadModules' ).add( ( addPlugin ) => {
 			// Either the desktop or the mobile module will be registered, but not both.
-			var module = mw.config.get( 'skin' ) === 'minerva' ?
+			const module = mw.config.get( 'skin' ) === 'minerva' ?
 				'ext.growthExperiments.StructuredTask.mobile' :
 				'ext.growthExperiments.StructuredTask.desktop';
 
@@ -175,7 +175,7 @@ module.exports = ( function () {
 	 *   "should be logged" flag if there isn't.
 	 */
 	function checkTaskData() {
-		var promise = $.Deferred();
+		const promise = $.Deferred();
 		if ( !suggestedEditSession.taskData ) {
 			promise.reject( 'Missing task data', true );
 		} else if ( suggestedEditSession.taskData.error ) {

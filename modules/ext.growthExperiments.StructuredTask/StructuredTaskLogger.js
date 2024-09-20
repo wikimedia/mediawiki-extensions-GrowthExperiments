@@ -1,4 +1,4 @@
-var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+const suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 	Utils = require( '../utils/Utils.js' );
 
 /**
@@ -33,7 +33,7 @@ function StructuredTaskLogger( schema, streamName, config ) {
  *   fields are set to some default value if omitted.
  */
 StructuredTaskLogger.prototype.log = function ( action, data, metadataOverride ) {
-	var event = Object.assign( {
+	const event = Object.assign( {
 		action: action,
 		/* eslint-disable camelcase */
 		action_data: Utils.serializeActionData( data )

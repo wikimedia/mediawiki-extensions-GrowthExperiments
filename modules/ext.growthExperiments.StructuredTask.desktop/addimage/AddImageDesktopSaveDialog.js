@@ -1,4 +1,4 @@
-var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	AddImageClasses = StructuredTask.addImage(),
 	AddImageSaveDialog = AddImageClasses.AddImageSaveDialog,
 	AddImageUtils = AddImageClasses.AddImageUtils,
@@ -26,7 +26,7 @@ OO.mixinClass( AddImageDesktopSaveDialog, AddImageSaveDialog );
 
 /** @inheritDoc **/
 AddImageDesktopSaveDialog.prototype.getImagePreview = function ( summaryData ) {
-	var $imagePreview = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imagePreview' ),
+	const $imagePreview = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imagePreview' ),
 		imageRenderData = AddImageUtils.getImageRenderData(
 			summaryData.metadata,
 			window,

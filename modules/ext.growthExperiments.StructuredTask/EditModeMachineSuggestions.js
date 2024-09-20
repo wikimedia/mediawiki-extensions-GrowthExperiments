@@ -1,4 +1,4 @@
-var SuggestionInteractionLogger = require( './SuggestionInteractionLogger.js' );
+const SuggestionInteractionLogger = require( './SuggestionInteractionLogger.js' );
 
 /**
  * Tool for switching to machine suggestions mode
@@ -23,7 +23,7 @@ EditModeMachineSuggestions.static.editMode = 'machineSuggestions';
  * @inheritdoc
  */
 EditModeMachineSuggestions.prototype.switch = function () {
-	var editMode = this.constructor.static.editMode;
+	const editMode = this.constructor.static.editMode;
 	SuggestionInteractionLogger.log(
 		'editmode_select',
 		/* eslint-disable camelcase */

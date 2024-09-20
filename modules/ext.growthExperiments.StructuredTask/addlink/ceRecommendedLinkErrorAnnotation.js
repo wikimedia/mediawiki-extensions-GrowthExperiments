@@ -3,7 +3,7 @@
  * @extends ve.ce.Annotation
  * @constructor
  */
-var CERecommendedLinkErrorAnnotation = function GeCeRecommendedLinkErrorAnnotation() {
+const CERecommendedLinkErrorAnnotation = function GeCeRecommendedLinkErrorAnnotation() {
 	// Parent constructor
 	CERecommendedLinkErrorAnnotation.super.apply( this, arguments );
 

@@ -1,5 +1,5 @@
 ( function ( gt ) {
-	var dashboardTour,
+	let dashboardTour,
 		tourUtils = require( './tourUtils.js' );
 
 	dashboardTour = new gt.TourBuilder( {

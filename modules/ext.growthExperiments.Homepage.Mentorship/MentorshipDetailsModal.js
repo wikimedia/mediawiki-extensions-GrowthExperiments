@@ -19,7 +19,7 @@
 	];
 
 	MentorshipDetailsModal.prototype.onOptoutButtonClicked = function () {
-		var dialog = this;
+		const dialog = this;
 		setTimeout( () => {
 			dialog.emit( 'optout' );
 		}, 100 );
@@ -30,14 +30,14 @@
 	MentorshipDetailsModal.prototype.initialize = function () {
 		MentorshipDetailsModal.super.prototype.initialize.call( this );
 
-		var optoutBtn = new OO.ui.ButtonWidget( {
+		const optoutBtn = new OO.ui.ButtonWidget( {
 			label: mw.msg( 'growthexperiments-homepage-mentorship-ellipsis-menu-optout' )
 		} );
 		optoutBtn.connect( this, {
 			click: [ 'onOptoutButtonClicked' ]
 		} );
 
-		var mentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
+		const mentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
 		this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
 		this.content.$element.append(
 			$( '<div>' )
@@ -61,7 +61,7 @@
 	};
 
 	MentorshipDetailsModal.prototype.getActionProcess = function ( action ) {
-		var dialog = this;
+		const dialog = this;
 
 		return new OO.ui.Process( () => {
 			dialog.close( { action: action } );

@@ -1,4 +1,4 @@
-var OptionWithTextInputWidget = require( './OptionWithTextInputWidget.js' );
+const OptionWithTextInputWidget = require( './OptionWithTextInputWidget.js' );
 
 /**
  * Wrapper around OOUI's select widgets for converting a list of options into a widget
@@ -32,11 +32,11 @@ SelectWithTextInputWidget.prototype.constructItem = function ( itemData ) {
 	if ( !itemData.data && !itemData.label ) {
 		return;
 	}
-	var OptionWidgetClass = this.isMultiSelect ?
+	const OptionWidgetClass = this.isMultiSelect ?
 		OO.ui.CheckboxMultioptionWidget :
 		OO.ui.RadioOptionWidget;
 	// eslint-disable-next-line mediawiki/class-doc
-	var optionWidget = new OptionWidgetClass( {
+	const optionWidget = new OptionWidgetClass( {
 		data: itemData.data,
 		label: itemData.label,
 		classes: itemData.classes || []
@@ -65,7 +65,7 @@ SelectWithTextInputWidget.prototype.constructItem = function ( itemData ) {
  * @return {OO.ui.CheckboxMultiselectWidget|OO.ui.RadioSelectWidget}
  */
 SelectWithTextInputWidget.prototype.constructWidget = function () {
-	var SelectWidgetClass = this.isMultiSelect ?
+	const SelectWidgetClass = this.isMultiSelect ?
 		OO.ui.CheckboxMultiselectWidget :
 		OO.ui.RadioSelectWidget;
 
@@ -102,11 +102,11 @@ SelectWithTextInputWidget.prototype.updateSelection = function ( data ) {
  * @return {*[]}
  */
 SelectWithTextInputWidget.prototype.findSelection = function () {
-	var selectedItems;
+	let selectedItems;
 	if ( this.isMultiSelect ) {
 		selectedItems = this.widget.findSelectedItems();
 	} else {
-		var selectedItem = this.widget.findSelectedItem();
+		const selectedItem = this.widget.findSelectedItem();
 		selectedItems = selectedItem ? [ selectedItem ] : [];
 	}
 	return selectedItems.map( ( item ) => item.getData() );
@@ -119,7 +119,7 @@ SelectWithTextInputWidget.prototype.findSelection = function () {
  * @return {string}
  */
 SelectWithTextInputWidget.prototype.getTextInputValueForData = function ( data ) {
-	var widgetForData = this.optionWithTextInputWidgets[ data ];
+	const widgetForData = this.optionWithTextInputWidgets[ data ];
 	if ( widgetForData instanceof OptionWithTextInputWidget ) {
 		return widgetForData.getTextInputValue();
 	}
@@ -133,7 +133,7 @@ SelectWithTextInputWidget.prototype.getTextInputValueForData = function ( data )
  * @param {string} value Text input value
  */
 SelectWithTextInputWidget.prototype.updateTextInputValueForData = function ( data, value ) {
-	var widgetForData = this.optionWithTextInputWidgets[ data ];
+	const widgetForData = this.optionWithTextInputWidgets[ data ];
 	if ( widgetForData instanceof OptionWithTextInputWidget ) {
 		widgetForData.setTextInputValue( value );
 	}

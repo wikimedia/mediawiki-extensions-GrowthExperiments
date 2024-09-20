@@ -16,7 +16,7 @@
 	 * @param {string} config.taskTypeId The ID of the suggested edit task type.
 	 * @param {boolean} [config.isQuestionPoster] Whether the dialog from QuestionPoster (Special:Homepage)
 	 */
-	var configData = require( './data.json' ),
+	const configData = require( './data.json' ),
 		SuggestedEditsPanel = require( './HelpPanelProcessDialog.SuggestedEditsPanel.js' ),
 		TASK_TYPES = require( 'ext.growthExperiments.DataStore' ).CONSTANTS.ALL_TASK_TYPES,
 		linksConfig = configData.GEHelpPanelLinks,
@@ -106,7 +106,7 @@
 	 * @throws {Error} Unknown panel.
 	 */
 	HelpPanelProcessDialog.prototype.swapPanel = function ( panelToSwitchTo ) {
-		var panelObj = this[ panelToSwitchTo.replace( '-', '' ) + 'Panel' ],
+		const panelObj = this[ panelToSwitchTo.replace( '-', '' ) + 'Panel' ],
 			titleMsg = this.panelTitleMessages[ panelToSwitchTo ] || this.panelTitleMessages.home;
 
 		this.title.setLabel( titleMsg );
@@ -158,12 +158,12 @@
 	};
 
 	HelpPanelProcessDialog.prototype.setNotificationLabelText = function () {
-		var $messageList = $( '<dl>' ).addClass( 'mw-ge-help-panel-notifications' );
+		const $messageList = $( '<dl>' ).addClass( 'mw-ge-help-panel-notifications' );
 
-		var emailMessage, button;
+		let emailMessage, button;
 		if ( this.userEmail ) {
 			if ( this.userEmailConfirmed ) {
-				var $link = $( '<a>' )
+				const $link = $( '<a>' )
 					.attr( {
 						href: mw.util.getUrl( 'Special:ChangeEmail' ),
 						target: '_blank',
@@ -234,7 +234,7 @@
 	 * @return {jQuery}
 	 */
 	HelpPanelProcessDialog.prototype.getInfoLinks = function () {
-		var links = [];
+		const links = [];
 
 		links.push(
 			new OO.ui.ButtonWidget( {
@@ -283,7 +283,7 @@
 	};
 
 	HelpPanelProcessDialog.prototype.buildHomePanelButtons = function () {
-		var buttonIds = [ 'general-help' ];
+		const buttonIds = [ 'general-help' ];
 		if ( this.askHelpEnabled || mw.config.get( 'wgGEHelpPanelAskMentor' ) ) {
 			buttonIds.unshift( 'ask-help' );
 		}
@@ -291,10 +291,10 @@
 			buttonIds.unshift( 'suggested-edits' );
 		}
 		buttonIds.forEach( ( id ) => {
-			var mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
+			const mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
 			// Asking the mentor needs a different button but the same panel / logging.
 			// FIXME find a nicer way to do this.
-			var buttonId = id;
+			let buttonId = id;
 			if ( id === 'ask-help' && mw.config.get( 'wgGEHelpPanelAskMentor' ) &&
 				// Do not try to use mentor data when it is not present. This is the case on the
 				// homepage when the help panel is disabled. Home button widgets are not used
@@ -370,7 +370,7 @@
 				this.suggestedEditSession.taskType
 			]
 		} );
-		var guidanceTipsPromise = this.suggestededitsPanel.build();
+		const guidanceTipsPromise = this.suggestededitsPanel.build();
 
 		this.askhelpPanel = new AskHelpPanel( {
 			askSource: this.askSource,
@@ -475,7 +475,7 @@
 			// IndexLayout does not provide any way to differentiate between human and programmatic
 			// tab selection so we must go deeper.
 			this.suggestededitsPanel.tipsPanel.tabIndexLayout.getTabs().on( 'choose', ( item ) => {
-				var tabName = item.data;
+				const tabName = item.data;
 				this.updateSuggestedEditSession( {
 					helpPanelCurrentTip: tabName,
 					helpPanelSuggestedEditsInteractionHappened: true
@@ -531,7 +531,7 @@
 	 */
 	HelpPanelProcessDialog.prototype.shouldAutoAdvanceUponInit = function () {
 		// Only auto advance if the help panel is open and the user hasn't interacted with it
-		var helpPanelShouldOpen = this.suggestedEditSession.helpPanelShouldOpen;
+		let helpPanelShouldOpen = this.suggestedEditSession.helpPanelShouldOpen;
 		if ( OO.ui.isMobile() ) {
 			// If mobile peek needs to be shown, the help panel shouldn't open.
 			helpPanelShouldOpen = helpPanelShouldOpen && this.suggestedEditSession.mobilePeekShown;
@@ -544,7 +544,7 @@
 	 * @param {Object} event
 	 */
 	HelpPanelProcessDialog.prototype.logLinkClick = function ( event ) {
-		var linkId = $( event.currentTarget ).data( 'link-id' );
+		const linkId = $( event.currentTarget ).data( 'link-id' );
 		if ( linkId ) {
 			this.logger.log( 'link-click', linkId );
 		}
@@ -756,7 +756,7 @@
 	 */
 	HelpPanelProcessDialog.prototype.getBodyHeight = function () {
 		if ( !this.homeHeight ) {
-			var homePanelHeight = this.homePanel.$element.outerHeight( true );
+			const homePanelHeight = this.homePanel.$element.outerHeight( true );
 			// HACK: If the dialog is used in the context of QuestionPoster, the home panel is never
 			// shown but its height is still used to determine the dialog height since the subpanels
 			// are absolutely positioned and thus don't have a natural height. Ideally the dialog
@@ -777,7 +777,7 @@
 	 * @return {Object} Size properties ([min|max|][width|height]).
 	 */
 	HelpPanelProcessDialog.prototype.getSizeProperties = function () {
-		var dim = HelpPanelProcessDialog.super.prototype.getSizeProperties.call( this );
+		let dim = HelpPanelProcessDialog.super.prototype.getSizeProperties.call( this );
 		// Override default size calculation of OO.ui.Window, so that the help panel's size
 		// doesn't change depending on the number of buttons / sub-panels in it, and it doesn't
 		// overlap the personal toolbar (which has a higher z-index, and that would be difficult
@@ -800,7 +800,7 @@
 	 * @param {boolean} enable
 	 */
 	HelpPanelProcessDialog.prototype.setGuidanceAutoAdvance = function ( enable ) {
-		var self = this;
+		const self = this;
 		if ( enable && this.guidanceEnabled && !this.guidanceAutoAdvanceTimer ) {
 			this.guidanceAutoAdvanceTimer = window.setInterval( () => {
 				// Skip if the panel is not active or not loaded yet.
@@ -808,10 +808,10 @@
 					return;
 				}
 				// This seems to be the least insane method of finding the next tab :/
-				var tabIndexLayout = self.suggestededitsPanel.tipsPanel.tabIndexLayout;
-				var tabs = tabIndexLayout.getTabs();
-				var currentTab = tabs.findItemFromData( tabIndexLayout.getCurrentTabPanelName() );
-				var nextTab = tabs.getItems()[
+				const tabIndexLayout = self.suggestededitsPanel.tipsPanel.tabIndexLayout;
+				const tabs = tabIndexLayout.getTabs();
+				const currentTab = tabs.findItemFromData( tabIndexLayout.getCurrentTabPanelName() );
+				const nextTab = tabs.getItems()[
 					( tabs.getItemIndex( currentTab ) + 1 ) % tabs.getItemCount()
 				];
 				if ( nextTab ) {
@@ -831,7 +831,7 @@
 	 */
 	HelpPanelProcessDialog.prototype.getDefaultPanelForSuggestedEditSession = function () {
 		function shouldDefaultToSuggestedEdits( suggestedEditSession ) {
-			var targetTaskTypes = [ 'link-recommendation' ];
+			const targetTaskTypes = [ 'link-recommendation' ];
 			return targetTaskTypes.indexOf( suggestedEditSession.taskType ) !== -1;
 		}
 		if ( shouldDefaultToSuggestedEdits( this.suggestedEditSession ) ) {
@@ -861,7 +861,7 @@
 		// submitting a question.
 		this.setPendingElement( this.$backupPendingElement );
 
-		var shouldShowHelpPanelTour = this.askhelpPanel.shouldShowHelpPanelTour(),
+		const shouldShowHelpPanelTour = this.askhelpPanel.shouldShowHelpPanelTour(),
 			submitAttemptData = {
 				/* eslint-disable camelcase */
 				question_length: this.askhelpPanel.getQuestion().length,

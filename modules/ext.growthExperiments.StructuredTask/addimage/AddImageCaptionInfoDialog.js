@@ -1,4 +1,4 @@
-var StructuredTaskMessageDialog = require( '../StructuredTaskMessageDialog.js' ),
+const StructuredTaskMessageDialog = require( '../StructuredTaskMessageDialog.js' ),
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 /**
@@ -42,7 +42,7 @@ AddImageCaptionInfoDialog.static.title = mw.message(
 AddImageCaptionInfoDialog.static.size = OO.ui.isMobile() ? 'small' : 'medium';
 
 AddImageCaptionInfoDialog.static.message = function () {
-	var articleTitle = suggestedEditSession.getCurrentTitle().getNameText(),
+	const articleTitle = suggestedEditSession.getCurrentTitle().getNameText(),
 		/** @type {mw.libs.ge.AddImageArticleTarget} **/
 		articleTarget = ve.init.target,
 		contentLanguageName = articleTarget.getSelectedSuggestion().metadata.contentLanguageName,
@@ -59,7 +59,7 @@ AddImageCaptionInfoDialog.static.message = function () {
 			).parse()
 		];
 
-	var languageGuideline;
+	let languageGuideline;
 	if ( contentLanguageName ) {
 		languageGuideline = mw.message(
 			'growthexperiments-addimage-caption-info-dialog-guidelines-language'
@@ -97,7 +97,7 @@ AddImageCaptionInfoDialog.static.actions = [
  * @param {boolean} [data.shouldShowDismissField] Whether the checkbox should be shown
  */
 AddImageCaptionInfoDialog.prototype.setupDismissField = function ( data ) {
-	var self = this,
+	const self = this,
 		shouldShowDismissField = !!data.shouldShowDismissField;
 
 	if ( this.dismissField ) {
@@ -136,7 +136,7 @@ AddImageCaptionInfoDialog.prototype.getSetupProcess = function ( data ) {
 /** @inheritDoc **/
 AddImageCaptionInfoDialog.prototype.getActionProcess = function () {
 	return new OO.ui.Process( function () {
-		var closeData = {};
+		const closeData = {};
 		if ( this.checkBoxInput ) {
 			closeData.dialogDismissed = this.checkBoxInput.isSelected();
 		}

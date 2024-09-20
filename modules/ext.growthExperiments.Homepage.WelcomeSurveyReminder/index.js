@@ -1,14 +1,14 @@
 ( function () {
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '.welcomesurvey-reminder-dismiss' ).on( 'click', function ( e ) {
-		var that = this,
+		const that = this,
 			apiUrl = $( this ).data( 'ajax' ),
 			$form = $( this ).closest( 'form' );
 		$.post( apiUrl, $form.serialize() ).then( () => {
 			$( that ).closest( '.growthexperiments-homepage-module-welcomesurveyreminder' )
 				.addClass( 'fadeout' );
 		}, ( jqXHR ) => {
-			var statusCode = jqXHR.status,
+			const statusCode = jqXHR.status,
 				statusText = jqXHR.statusText,
 				data = jqXHR.responseJSON,
 				errorDetail = data ? data.message : ( statusCode + ' ' + statusText ),

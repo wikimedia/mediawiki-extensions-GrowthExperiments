@@ -1,4 +1,4 @@
-var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
+const StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
 	DmRecommendedLinkAnnotation = require( './dmRecommendedLinkAnnotation.js' ),
 	CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
 	AnnotationAnimation = require( '../AnnotationAnimation.js' ),
@@ -49,7 +49,7 @@ RecommendedLinkToolbarDialog.static.name = 'recommendedLink';
  * @inheritdoc
  */
 RecommendedLinkToolbarDialog.prototype.initialize = function () {
-	var introLabel = new OO.ui.LabelWidget( {
+	const introLabel = new OO.ui.LabelWidget( {
 		label: mw.msg( 'growthexperiments-addlink-context-intro' ),
 		classes: [ 'mw-ge-recommendedLinkToolbarDialog-introLabel' ]
 	} );
@@ -221,7 +221,7 @@ RecommendedLinkToolbarDialog.prototype.onNoButtonClicked = function () {
  * Auto-advance after animation for the current recommendation is done
  */
 RecommendedLinkToolbarDialog.prototype.autoAdvance = function () {
-	var isLastRecommendationSelected = this.isLastRecommendationSelected();
+	const isLastRecommendationSelected = this.isLastRecommendationSelected();
 	setTimeout( () => {
 		if ( isLastRecommendationSelected ) {
 			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
@@ -282,7 +282,7 @@ RecommendedLinkToolbarDialog.prototype.reopenRejectionDialog = function () {
  * (the yes/no button has been toggled).
  */
 RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
-	var acceptancePromise = $.Deferred().resolve(),
+	let acceptancePromise = $.Deferred().resolve(),
 		fragment = this.getCurrentFragment(),
 		annotation = this.getCurrentDataModel(),
 		surfaceModel = this.surface.getModel(),
@@ -308,7 +308,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		// impression and close events.
 		this.updateAnnotation( fragment, annotation, attributes );
 
-		var openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
+		const openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
 			'recommendedLinkRejection', {
 				selection: this.currentDataModel.getRejectionReason(),
 				otherRejectionReason: this.currentDataModel.getOtherRejectionReason()
@@ -328,7 +328,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		} );
 
 		acceptancePromise = openRejectionDialogWindowPromise.closed.then( ( closedData ) => {
-			var rejectionReason = closedData && closedData.reason ||
+			const rejectionReason = closedData && closedData.reason ||
 				this.currentDataModel.getRejectionReason();
 			this.logger.log(
 				'close',
@@ -343,7 +343,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 	acceptancePromise.then( ( closedData ) => {
 		closedData = closedData || {};
 
-		var rejectionReason = closedData.reason,
+		const rejectionReason = closedData.reason,
 			otherRejectionReason = closedData.otherRejectionReason;
 		if ( rejectionReason ) {
 			attributes.rejectionReason = rejectionReason;
@@ -368,7 +368,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
  * @return {number} Zero-based index of the suggestion in the linkRecommendationFragments array
  */
 RecommendedLinkToolbarDialog.prototype.getIndexForModel = function ( annotationModel ) {
-	var modelRecommendationWikiTextOffset = annotationModel.getAttribute( 'recommendationWikitextOffset' ),
+	let modelRecommendationWikiTextOffset = annotationModel.getAttribute( 'recommendationWikitextOffset' ),
 		currentIndex = this.currentIndex,
 		fragment = this.linkRecommendationFragments[ currentIndex ];
 
@@ -376,8 +376,8 @@ RecommendedLinkToolbarDialog.prototype.getIndexForModel = function ( annotationM
 		return currentIndex;
 	}
 
-	var modelIndex;
-	for ( var i = 0; i < this.linkRecommendationFragments.length; i++ ) {
+	let modelIndex;
+	for ( let i = 0; i < this.linkRecommendationFragments.length; i++ ) {
 		fragment = this.linkRecommendationFragments[ i ];
 		if ( modelRecommendationWikiTextOffset === fragment.recommendationWikitextOffset ) {
 			modelIndex = i;
@@ -415,7 +415,7 @@ RecommendedLinkToolbarDialog.prototype.selectAnnotationView = function () {
 RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function (
 	index, manualFocus
 ) {
-	var isUpdatingCurrentRecommendation = this.isUpdatingCurrentRecommendation;
+	const isUpdatingCurrentRecommendation = this.isUpdatingCurrentRecommendation;
 	if ( !isUpdatingCurrentRecommendation && ( index === this.currentIndex || index < 0 ) ) {
 		return;
 	}
@@ -446,7 +446,7 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function (
  * @return {jQuery.Promise} Promise which resolves when the link inspector is shown
  */
 RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
-	var promise = $.Deferred(),
+	const promise = $.Deferred(),
 		annotationView = this.getAnnotationViewAtIndex( 0 );
 	if ( !annotationView ) {
 		this.toggle( false );
@@ -468,7 +468,7 @@ RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
  * @return {jQuery}
  */
 RecommendedLinkToolbarDialog.prototype.getAnnotationViewAtIndex = function ( index ) {
-	var annotationView = this.surface.getView().$documentNode
+	const annotationView = this.surface.getView().$documentNode
 		.find( '.mw-ge-recommendedLinkAnnotation' )[ index ];
 	if ( !annotationView ) {
 		StructuredTaskPreEdit.showErrorDialogOnFailure(
@@ -486,7 +486,7 @@ RecommendedLinkToolbarDialog.prototype.getAnnotationViewAtIndex = function ( ind
  * when scrollTimeout is reached
  */
 RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el ) {
-	var promise = $.Deferred(),
+	const promise = $.Deferred(),
 		resolveTimeout = setTimeout( () => {
 			promise.resolve();
 		}, this.scrollTimeout );
@@ -511,7 +511,7 @@ RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el )
  * @throws Will throw an error if there is no link recommendation
  */
 RecommendedLinkToolbarDialog.prototype.getCurrentFragment = function () {
-	var currentRecommendation = this.linkRecommendationFragments[ this.currentIndex ];
+	const currentRecommendation = this.linkRecommendationFragments[ this.currentIndex ];
 	if ( !currentRecommendation ) {
 		throw new Error( 'No recommendation' );
 	}
@@ -525,7 +525,7 @@ RecommendedLinkToolbarDialog.prototype.getCurrentFragment = function () {
  * @return {mw.libs.ge.dm.RecommendedLinkAnnotation}
  */
 RecommendedLinkToolbarDialog.prototype.getCurrentDataModel = function () {
-	var selectedAnnotations = this.getCurrentFragment().getAnnotations();
+	const selectedAnnotations = this.getCurrentFragment().getAnnotations();
 	return selectedAnnotations.getAnnotationsByName( 'mwGeRecommendedLink' ).get( 0 );
 };
 
@@ -537,7 +537,7 @@ RecommendedLinkToolbarDialog.prototype.getCurrentDataModel = function () {
  */
 RecommendedLinkToolbarDialog.prototype.allRecommendationsSkipped = function () {
 	return this.linkRecommendationFragments.every( ( recommendation ) => {
-		var annotationSet = recommendation.fragment
+		const annotationSet = recommendation.fragment
 			.getAnnotations().getAnnotationsByName( 'mwGeRecommendedLink' );
 		return annotationSet.getLength() ? annotationSet.get( 0 ).isUndecided() : false;
 	} );
@@ -613,8 +613,8 @@ RecommendedLinkToolbarDialog.prototype.setupButtons = function () {
  * @param {number} total Total number of indicators to build
  */
 RecommendedLinkToolbarDialog.prototype.setupProgressIndicators = function ( total ) {
-	for ( var i = 0; i < total; i++ ) {
-		var $indicator = $( '<span>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-indicator' );
+	for ( let i = 0; i < total; i++ ) {
+		const $indicator = $( '<span>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-indicator' );
 		this.$progress.append( $indicator );
 	}
 };
@@ -641,7 +641,7 @@ RecommendedLinkToolbarDialog.prototype.setupLinkPreview = function () {
  * @return {jQuery}
  */
 RecommendedLinkToolbarDialog.prototype.getLinkForPreview = function () {
-	var linkCache = ve.init.platform.linkCache,
+	const linkCache = ve.init.platform.linkCache,
 		title = this.currentDataModel.getAttribute( 'lookupTitle' ),
 		normalizedTitle = this.currentDataModel.getAttribute( 'normalizedTitle' ),
 		href = this.currentDataModel.getHref(),
@@ -668,7 +668,7 @@ RecommendedLinkToolbarDialog.prototype.getLinkForPreview = function () {
  * @return {jQuery}
  */
 RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
-	var icon = new OO.ui.IconWidget( {
+	const icon = new OO.ui.IconWidget( {
 			icon: 'image',
 			classes: [ 'mw-ge-recommendedLinkToolbarDialog-linkPreview-icon' ]
 		} ),
@@ -741,7 +741,7 @@ RecommendedLinkToolbarDialog.prototype.resetAcceptanceButtonStates = function ()
  * Update states of progress indicator dots based on current progress
  */
 RecommendedLinkToolbarDialog.prototype.updateProgressIndicators = function () {
-	var currentIndex = this.currentIndex;
+	const currentIndex = this.currentIndex;
 	this.$progress.children().each( ( index, indicator ) => {
 		if ( index <= currentIndex ) {
 			indicator.classList.add( 'mw-ge-recommendedLinkToolbarDialog-progress-indicator-selected' );
@@ -768,7 +768,7 @@ RecommendedLinkToolbarDialog.prototype.updateProgressIndicators = function () {
  * - Acceptance buttons separated, center aligned (overflow if aligned w/description)
  */
 RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
-	var acceptanceButtonsWidth = this.acceptanceButtonsWidth || this.$acceptanceButtonGroup.width(),
+	let acceptanceButtonsWidth = this.acceptanceButtonsWidth || this.$acceptanceButtonGroup.width(),
 		$nextButton = this.nextButton.$element,
 		nextButtonLeft = $nextButton.position().left,
 		$linkPreviewText = this.$linkPreview.find(
@@ -786,7 +786,7 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 		acceptanceButtonsWidth += this.reopenRejectionDialogButton.$element.outerWidth();
 	}
 
-	var availableWidth;
+	let availableWidth;
 	// Use document dir rather than surface dir since this corresponds to the direction of the UI
 	if ( document.documentElement.dir === 'rtl' ) {
 		availableWidth = $linkPreviewText.width() - $nextButton.width();
@@ -814,12 +814,12 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
  * the annotation and the link inspector are in the viewport
  */
 RecommendedLinkToolbarDialog.prototype.updateSurfacePadding = function () {
-	var bottomPadding = Math.max( this.$element.height(), this.minHeight ) + this.scrollOffset,
+	const bottomPadding = Math.max( this.$element.height(), this.minHeight ) + this.scrollOffset,
 		topOffset = this.topOffset || 0;
 	if ( !this.originalTopPadding ) {
 		this.originalTopPadding = this.surface.padding.top;
 	}
-	var topPadding = this.originalTopPadding + topOffset;
+	const topPadding = this.originalTopPadding + topOffset;
 	this.surface.setPadding( { top: topPadding, bottom: bottomPadding } );
 };
 
@@ -837,7 +837,7 @@ RecommendedLinkToolbarDialog.prototype.updateDimensions = function () {
  */
 RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 	// eslint-disable-next-line camelcase
-	var logMetadata = { active_interface: 'skipall_dialog' };
+	const logMetadata = { active_interface: 'skipall_dialog' };
 	this.logger.log( 'impression', {}, logMetadata );
 	this.surface.dialogs.openWindow( 'structuredTaskMessage', {
 		title: mw.message( 'growthexperiments-addlink-skip-title' ).text(),
@@ -894,7 +894,7 @@ RecommendedLinkToolbarDialog.prototype.updateAnnotation = function (
  * @param {boolean|undefined} isDeselect Whether the annotation state is being un-applied
  */
 RecommendedLinkToolbarDialog.prototype.setLastAnnotationState = function ( isDeselect ) {
-	var annotation = this.getCurrentDataModel();
+	const annotation = this.getCurrentDataModel();
 	AnnotationAnimation.setLastState( {
 		oldState: annotation.getState(),
 		recommendationWikitextOffset: annotation.getAttribute( 'recommendationWikitextOffset' ),
@@ -926,7 +926,7 @@ RecommendedLinkToolbarDialog.prototype.isLastRecommendationSelected = function (
  * }}
  */
 RecommendedLinkToolbarDialog.prototype.getSuggestionLogActionData = function () {
-	var suggestion = this.getCurrentDataModel().element.attributes,
+	let suggestion = this.getCurrentDataModel().element.attributes,
 		acceptanceState = 'undecided';
 	if ( this.getCurrentDataModel().isAccepted() ) {
 		acceptanceState = 'accepted';
@@ -952,7 +952,7 @@ RecommendedLinkToolbarDialog.prototype.getSuggestionLogActionData = function () 
  * @return {jQuery.Promise} Promise that resolves when the extract has been fetched
  */
 RecommendedLinkToolbarDialog.prototype.fetchArticleExtract = function () {
-	var promise = $.Deferred(),
+	const promise = $.Deferred(),
 		apiUrlBase = SUGGESTED_EDITS_CONFIG.GERestbaseUrl,
 		title = this.currentDataModel.getAttribute( 'lookupTitle' );
 

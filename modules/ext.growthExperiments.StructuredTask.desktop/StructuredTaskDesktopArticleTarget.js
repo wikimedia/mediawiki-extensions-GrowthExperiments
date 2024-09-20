@@ -1,4 +1,4 @@
-var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskArticleTarget = StructuredTask.StructuredTaskArticleTarget,
 	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
 	Utils = require( '../utils/Utils.js' );

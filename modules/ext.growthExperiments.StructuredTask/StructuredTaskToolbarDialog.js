@@ -1,4 +1,4 @@
-var HelpPanelButton = require( '../ui-components/HelpPanelButton.js' );
+const HelpPanelButton = require( '../ui-components/HelpPanelButton.js' );
 
 /**
  * @class mw.libs.ge.StructuredTaskToolbarDialog
@@ -114,7 +114,7 @@ StructuredTaskToolbarDialog.prototype.showDialog = function () {
  * @param {string} [label] Text to use for the button's invisible label
  */
 StructuredTaskToolbarDialog.prototype.setUpToolbarDialogButton = function ( label ) {
-	var $header = this.$head;
+	const $header = this.$head;
 	this.chevronIcon = new OO.ui.IconWidget( {
 		classes: [ 'mw-ge-structuredTaskToolbarDialog-chevron' ],
 		framed: false,
@@ -170,7 +170,7 @@ StructuredTaskToolbarDialog.prototype.regainFocus = function () {
  * This can be used when the editing mode doesn't show the title by default.
  */
 StructuredTaskToolbarDialog.prototype.addArticleTitle = function () {
-	var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
+	const SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
 	this.surface.getView().$documentNode.prepend( $( '<h1>' ).text(
 		SuggestedEditSession.getInstance().getCurrentTitle().getNameText()
 	) );
@@ -193,7 +193,7 @@ StructuredTaskToolbarDialog.prototype.goToSuggestedEdits = function () {
 	// has unsaved changes but we don't care about those in this context.
 	$( window ).off( 'beforeunload' );
 	window.onbeforeunload = null;
-	var Utils = require( '../utils/Utils.js' );
+	const Utils = require( '../utils/Utils.js' );
 	window.location.href = Utils.getSuggestedEditsFeedUrl( 'suggestion-skip' );
 };
 

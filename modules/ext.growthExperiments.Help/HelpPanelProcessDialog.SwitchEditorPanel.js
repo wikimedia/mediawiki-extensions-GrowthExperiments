@@ -21,12 +21,12 @@
 	 * @param {string} currentEditor
 	 */
 	SwitchEditorPanel.prototype.toggle = function ( inEditMode, currentEditor ) {
-		var currentTitle = new mw.Title( mw.config.get( 'wgPageName' ) );
+		const currentTitle = new mw.Title( mw.config.get( 'wgPageName' ) );
 		this.currentEditor = currentEditor;
 		if ( this.currentEditor === 'wikitext-2017' ) {
 			this.currentEditor = 'wikitext';
 		}
-		var shouldShow = inEditMode && !this.isCurrentEditorPreferred() && !currentTitle.isTalkPage();
+		const shouldShow = inEditMode && !this.isCurrentEditorPreferred() && !currentTitle.isTalkPage();
 		this.$element.toggle( shouldShow );
 	};
 
@@ -36,7 +36,7 @@
 	 * @private
 	 */
 	SwitchEditorPanel.prototype.build = function () {
-		var $content = $( '<div>' )
+		const $content = $( '<div>' )
 				.addClass( 'suggested-edits-panel-switch-editor-panel' )
 				.append(
 					$( '<p>' ).html( mw.message(
@@ -116,7 +116,7 @@
 	 * @return {boolean}
 	 */
 	SwitchEditorPanel.prototype.isCurrentEditorPreferred = function () {
-		var editorModes = {
+		const editorModes = {
 			visualeditor: [ 'machineSuggestions' ]
 		};
 		if ( this.currentEditor === this.preferredEditor ) {

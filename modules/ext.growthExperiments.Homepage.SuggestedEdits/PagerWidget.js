@@ -22,13 +22,13 @@ OO.inheritClass( SuggestedEditPagerWidget, OO.ui.Widget );
  */
 SuggestedEditPagerWidget.prototype.setMessage = function ( currentPosition, totalCount ) {
 
-	var currentPositionText;
+	let currentPositionText;
 	if ( currentPosition > totalCount ) {
 		currentPositionText = mw.message( 'growthexperiments-homepage-suggestededits-pager-end' ).text();
 	} else {
 		currentPositionText = mw.language.convertNumber( currentPosition );
 	}
-	var totalCountText = mw.language.convertNumber( totalCount );
+	const totalCountText = mw.language.convertNumber( totalCount );
 
 	this.$element.html( mw.message(
 		'growthexperiments-homepage-suggestededits-pager', currentPositionText, totalCountText

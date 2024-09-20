@@ -1,4 +1,4 @@
-var RecommendedImageRejectionDialog = require( '../addimage/RecommendedImageRejectionDialog.js' );
+const RecommendedImageRejectionDialog = require( '../addimage/RecommendedImageRejectionDialog.js' );
 
 /**
  * Dialog with a list of reasons for rejecting a suggestions

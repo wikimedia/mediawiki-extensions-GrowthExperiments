@@ -15,7 +15,7 @@
  * @param {string[]} config.classes
  */
 function MatchModeSelectWidget( config ) {
-	var defaultClasses = [ 'mw-ge-MatchModeSelectWidget' ];
+	const defaultClasses = [ 'mw-ge-MatchModeSelectWidget' ];
 	config = Object.assign( {}, config );
 	config.classes = defaultClasses.concat( config.classes );
 	MatchModeSelectWidget.super.call( this, config );

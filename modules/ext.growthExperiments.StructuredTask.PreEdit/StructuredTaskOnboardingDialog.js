@@ -1,5 +1,5 @@
-var MultiPaneDialog = require( '../ui-components/MultiPaneDialog.js' );
-var SwipePane = require( '../ui-components/SwipePane.js' );
+const MultiPaneDialog = require( '../ui-components/MultiPaneDialog.js' );
+const SwipePane = require( '../ui-components/SwipePane.js' );
 
 /**
  * Overlay onboarding dialog for structured tasks
@@ -151,7 +151,7 @@ StructuredTaskOnboardingDialog.prototype.getTeardownProcess = function ( data ) 
 
 /** @inheritdoc */
 StructuredTaskOnboardingDialog.prototype.updateViewState = function () {
-	var $skipButton = this.$head.find( '.structuredtask-onboarding-dialog-skip-button' );
+	const $skipButton = this.$head.find( '.structuredtask-onboarding-dialog-skip-button' );
 
 	StructuredTaskOnboardingDialog.super.prototype.updateViewState.call( this );
 
@@ -160,7 +160,7 @@ StructuredTaskOnboardingDialog.prototype.updateViewState = function () {
 
 	$skipButton.show();
 
-	var $learnMoreLink = this.panels[ this.currentPanelIndex ].$element.find(
+	const $learnMoreLink = this.panels[ this.currentPanelIndex ].$element.find(
 		'.structuredtask-onboarding-content-link'
 	);
 	if ( $learnMoreLink ) {
@@ -229,7 +229,7 @@ StructuredTaskOnboardingDialog.prototype.getLogMetadata = function () {
  * @param {boolean} [isSwipe] Whether the navigation was triggered via swiping
  */
 StructuredTaskOnboardingDialog.prototype.logNavigation = function ( action, isSwipe ) {
-	var navigationType = isSwipe ? 'swipe' : 'click';
+	const navigationType = isSwipe ? 'swipe' : 'click';
 	// eslint-disable-next-line camelcase
 	this.logger.log( action, { navigation_type: navigationType }, this.getLogMetadata() );
 };

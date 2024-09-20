@@ -1,6 +1,6 @@
 ( function () {
-	var Utils = require( '../utils/Utils.js' );
-	var states = {
+	const Utils = require( '../utils/Utils.js' );
+	const states = {
 		/** Initial task state when the user opens a task. */
 		STARTED: 'started',
 		/** Task state after the user makes a real edit. */
@@ -10,7 +10,7 @@
 		/** Task state after the user leaves the workflow without saving or submitting anything. */
 		CANCELLED: 'cancelled'
 	};
-	var allStates = [ states.STARTED, states.SAVED, states.SUBMITTED, states.CANCELLED ];
+	const allStates = [ states.STARTED, states.SAVED, states.SUBMITTED, states.CANCELLED ];
 
 	/**
 	 * Class for tracking suggested edit sessions and triggering actions related to them.
@@ -163,7 +163,7 @@
 	 * @return {mw.Title}
 	 */
 	SuggestedEditSession.prototype.getCurrentTitle = function () {
-		var pageName = mw.config.get( 'wgPageName' );
+		const pageName = mw.config.get( 'wgPageName' );
 		return new mw.Title( pageName );
 	};
 
@@ -172,7 +172,7 @@
 	 * browser tab) and also cache it in the current execution context.
 	 */
 	SuggestedEditSession.prototype.save = function () {
-		var session = {
+		const session = {
 			clickId: this.clickId,
 			title: this.title.getPrefixedText(),
 			taskType: this.taskType,
@@ -210,14 +210,14 @@
 	 * @return {boolean} Whether an active session was successfully restored.
 	 */
 	SuggestedEditSession.prototype.maybeRestore = function () {
-		var data = mw.storage.session.getObject( 'ge-suggestededit-session' );
+		const data = mw.storage.session.getObject( 'ge-suggestededit-session' );
 
 		if ( this.active ) {
 			throw new Error( 'Trying to load an already started suggested edit session' );
 		}
 
 		if ( data ) {
-			var currentTitle, savedTitle;
+			let currentTitle, savedTitle;
 			try {
 				currentTitle = this.getCurrentTitle();
 				savedTitle = new mw.Title( data.title );
@@ -263,7 +263,7 @@
 	 * @return {boolean} Whether the session has been initiated.
 	 */
 	SuggestedEditSession.prototype.maybeStart = function () {
-		var url = new mw.Uri();
+		const url = new mw.Uri();
 
 		if ( this.active ) {
 			throw new Error( 'Trying to start an already started active edit session' );
@@ -305,7 +305,7 @@
 	 * Suppress the core post-edit notice and VE welcome/onboarding dialogs.
 	 */
 	SuggestedEditSession.prototype.suppressNotices = function () {
-		var veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' );
+		const veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' );
 
 		// Prevent the default post-edit notice. This would logically belong to the
 		// PostEdit module, but that would load too late.
@@ -338,7 +338,7 @@
 	 * Make the self.editorInterface property keep track of editing mode switches.
 	 */
 	SuggestedEditSession.prototype.updateEditorInterface = function () {
-		var self = this,
+		const self = this,
 			saveEditorChanges = function ( suggestedEditSession, editorInterface ) {
 				if ( suggestedEditSession.active &&
 					suggestedEditSession.editorInterface !== editorInterface &&
@@ -359,7 +359,7 @@
 		// WikiEditor doesn't use mw.track. But it doesn't load dynamically either so
 		// we can check it at page load time.
 		$( () => {
-			var uri = new mw.Uri();
+			const uri = new mw.Uri();
 			// "submit" can be in the URL query if the user switched from VE to source
 			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
 			if ( [ 'edit', 'submit' ].indexOf( uri.query.action ) !== -1 && $( '#wpTextbox1:visible' ).length ) {
@@ -373,14 +373,14 @@
 	 * as well as the 'gesuggestededit' parameter that indicates the user is doing a suggested edit.
 	 */
 	SuggestedEditSession.prototype.updateEditLinkUrls = function () {
-		var self = this,
+		const self = this,
 			linkSelector = '#ca-edit a[href], a#ca-edit[href], #ca-ve-edit a[href], ' +
 				'a#ca-ve-edit[href], .mw-editsection a[href]';
 
 		mw.config.set( 'wgWMESchemaEditAttemptStepSamplingRate', 1 );
 		$( () => {
 			$( linkSelector ).each( function () {
-				var linkUrl = new mw.Uri( this.href );
+				const linkUrl = new mw.Uri( this.href );
 				linkUrl.extend( {
 					editingStatsId: self.clickId,
 					editingStatsOversample: 1,
@@ -399,7 +399,7 @@
 	 * growthnextsuggestedtasktype query module completes.
 	 */
 	SuggestedEditSession.prototype.getNextSuggestedTaskType = function () {
-		var apiParams = {
+		const apiParams = {
 			action: 'query',
 			meta: 'growthnextsuggestedtasktype',
 			gnsttactivetasktype: this.taskType
@@ -426,7 +426,7 @@
 	 *   Will only be set for edits done via mobile.
 	 */
 	SuggestedEditSession.prototype.showPostEditDialog = function ( config ) {
-		var self = this,
+		const self = this,
 			uri = new mw.Uri();
 
 		config = config || {};
@@ -456,7 +456,7 @@
 			this.postEditDialogIsOpen = true;
 			mw.hook( 'helpPanel.hideCta' ).fire();
 
-			var postEditDialogClosePromise = mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( ( require ) => require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( ( tryNewTaskResult ) => {
+			const postEditDialogClosePromise = mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( ( require ) => require( 'ext.growthExperiments.PostEdit' ).setupTryNewTaskPanel().then( ( tryNewTaskResult ) => {
 				// Prepare for follow-up edits by loading the next suggested task
 				// type based on the edit just now made.
 				if ( SuggestedEditSession.static.shouldShowLevelingUpFeatures() ) {
@@ -471,7 +471,7 @@
 					return $.Deferred().resolve().promise();
 				}
 
-				var postEditDialogLifecycle = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
+				const postEditDialogLifecycle = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
 					tryNewTaskResult.closeData,
 					!tryNewTaskResult.shown
 				);
@@ -511,7 +511,7 @@
 	SuggestedEditSession.prototype.tagNonVisualEditorEditWithGrowthChangeTags = function (
 		taskType
 	) {
-		var revIdPromise = this.newRevId ? $.Deferred().resolve().promise() : new mw.Api().get( {
+		const revIdPromise = this.newRevId ? $.Deferred().resolve().promise() : new mw.Api().get( {
 			action: 'query',
 			prop: 'revisions',
 			pageids: mw.config.get( 'wgRelevantArticleId' ),
@@ -522,18 +522,18 @@
 		return revIdPromise.done( ( data ) => {
 			// We didn't have the new revision ID already, so get it from the API response.
 			if ( !this.newRevId && data && data.query && data.query.pages ) {
-				var response = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
+				const response = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
 				this.newRevId = response.revisions[ 0 ].revid;
 			}
 			if ( !this.newRevId ) {
 				mw.log.error( 'Unable to find a revision to apply edit tags to, no edit tags will be applied.' );
 				mw.errorLogger.logError( new Error( 'Unable to find a revision to apply edit tags to, no edit tags will be applied.' ), 'error.growthexperiments' );
 			}
-			var apiUrl = '/growthexperiments/v0/newcomertask/complete';
+			const apiUrl = '/growthexperiments/v0/newcomertask/complete';
 			return new mw.Rest().post( apiUrl + '?' + $.param( { taskTypeId: taskType, revId: this.newRevId } ) )
 				.fail( ( err, errObject ) => {
 					mw.log.error( errObject );
-					var errMessage = errObject.exception;
+					let errMessage = errObject.exception;
 					if ( errObject.xhr &&
 						errObject.xhr.responseJSON &&
 						errObject.xhr.responseJSON.messageTranslations
@@ -568,7 +568,7 @@
 		if ( mw.config.get( 'wgAction' ) === 'history' ) {
 			return;
 		}
-		var self = this,
+		const self = this,
 			currentTitle = this.getCurrentTitle(),
 			uri = new mw.Uri(),
 			hasSwitchedFromMachineSuggestions = uri.query.hideMachineSuggestions;
@@ -669,7 +669,7 @@
 	 * @return {mw.libs.ge.SuggestedEditSession}
 	 */
 	SuggestedEditSession.getInstance = function () {
-		var session = mw.config.get( 'ge-suggestededit-session' );
+		let session = mw.config.get( 'ge-suggestededit-session' );
 
 		if ( session ) {
 			return session;
@@ -725,7 +725,7 @@
 			SuggestedEditSession.static.isStructuredTask( ge.suggestedEditSession.taskType ) ) {
 			return;
 		}
-		var pluginName = 'ge-task-' + ge.suggestedEditSession.taskType,
+		const pluginName = 'ge-task-' + ge.suggestedEditSession.taskType,
 			pluginDataKey = 'data-' + pluginName;
 		if ( !ve.init.target.saveFields[ pluginDataKey ] ) {
 			ve.init.target.saveFields[ pluginDataKey ] = function () {
@@ -733,7 +733,7 @@
 				// hooks won't execute, and refactoring that to not check for plugin data is not so straightforward.
 				return JSON.stringify( { taskType: ge.suggestedEditSession.taskType } );
 			};
-			var plugins = ve.init.target.saveFields.plugins ? ve.init.target.saveFields.plugins() : [];
+			const plugins = ve.init.target.saveFields.plugins ? ve.init.target.saveFields.plugins() : [];
 			plugins.push( pluginName );
 			ve.init.target.saveFields.plugins = function () {
 				return plugins;

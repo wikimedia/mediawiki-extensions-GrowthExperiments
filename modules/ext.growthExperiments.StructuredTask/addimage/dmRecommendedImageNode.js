@@ -21,7 +21,7 @@ DMRecommendedImageNode.static.matchFunction = function ( element ) {
 	// DMRecommendedImageNode inherits matchTagNames from ve.dm.MWBlockImageNode so figure elements
 	// already in the article will be a match candidate. Additional class name check ensures that
 	// existing images in the article don't get treated as a suggested image.
-	var hasImage = ve.dm.BlockImageNode.static.matchFunction( element );
+	const hasImage = ve.dm.BlockImageNode.static.matchFunction( element );
 	return hasImage && element.classList.indexOf( 'mw-ge-recommendedImage' ) !== -1;
 };
 

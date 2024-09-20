@@ -1,5 +1,5 @@
 ( function () {
-	var mobile = require( 'mobile.startup' ),
+	const mobile = require( 'mobile.startup' ),
 		View = mobile.View,
 		header = mobile.overlayHeader,
 		promisedView = mobile.promisedView,
@@ -35,7 +35,7 @@
 	 * @instance
 	 */
 	MobileOverlay.prototype.preRender = function () {
-		var options = this.options,
+		let options = this.options,
 			headerActions = [];
 
 		function shouldShowInfoButton( moduleName ) {
@@ -48,7 +48,7 @@
 
 		if ( shouldShowInfoButton( options.moduleName ) ) {
 			this.headerPromise = mw.loader.using( 'oojs-ui' ).then( () => {
-				var infoButton = new OO.ui.ButtonWidget( {
+				const infoButton = new OO.ui.ButtonWidget( {
 					id: 'mw-ge-homepage-suggestededits-info',
 					icon: 'info-unpadded',
 					framed: false,
@@ -73,7 +73,7 @@
 		} else if ( shouldShowEllipsisMenu( options.moduleName ) ) {
 			this.headerPromise = mw.loader.using( 'oojs-ui' ).then( () => {
 				// eslint-disable-next-line no-jquery/no-global-selector
-				var ellipsisMenu = initEllipsisMenu( $( '.growthexperiments-homepage-container' ) );
+				const ellipsisMenu = initEllipsisMenu( $( '.growthexperiments-homepage-container' ) );
 				return View.make(
 					{ class: 'homepage-module-overlay-ellipsis-menu' },
 					[ ellipsisMenu.$element ]
@@ -122,7 +122,7 @@
 	 * @instance
 	 */
 	MobileOverlay.prototype.postRender = function () {
-		var resourceLoaderModules = this.options.rlModules,
+		const resourceLoaderModules = this.options.rlModules,
 			moduleName = this.options.moduleName,
 			moduleHtml = this.options.html,
 			appendHtml = function ( html ) {

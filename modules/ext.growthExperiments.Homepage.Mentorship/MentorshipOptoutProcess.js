@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 
-	var MentorshipOptoutDialog = require( './MentorshipOptoutDialog.js' ),
+	const MentorshipOptoutDialog = require( './MentorshipOptoutDialog.js' ),
 		MentorshipOptoutReasonDialog = require( './MentorshipOptoutReasonDialog.js' );
 
 	/**
@@ -32,11 +32,11 @@
 	};
 
 	MentorshipOptoutProcess.prototype.onOptoutConfirmed = function () {
-		var process = this;
+		const process = this;
 
 		// HACK: For some reason, opening the window without a delay does not work as intended.
 		setTimeout( () => {
-			var reasonDialog = process.windowManager.openWindow( process.reasonDialog );
+			const reasonDialog = process.windowManager.openWindow( process.reasonDialog );
 			reasonDialog.closed.then( () => {
 				new mw.Api().postWithToken( 'csrf', {
 					action: 'growthsetmenteestatus',

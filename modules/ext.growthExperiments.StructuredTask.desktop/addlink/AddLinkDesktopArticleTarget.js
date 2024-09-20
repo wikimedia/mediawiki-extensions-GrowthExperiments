@@ -1,4 +1,4 @@
-var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskDesktopArticleTarget = require( '../StructuredTaskDesktopArticleTarget.js' ),
 	AddLinkArticleTarget = StructuredTask.addLink().AddLinkArticleTarget,
 	LinkSuggestionInteractionLogger = StructuredTask.addLink().LinkSuggestionInteractionLogger;
@@ -12,7 +12,7 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
  * @constructor
  */
 function AddLinkDesktopArticleTarget() {
-	var logger = new LinkSuggestionInteractionLogger( {
+	const logger = new LinkSuggestionInteractionLogger( {
 		// eslint-disable-next-line camelcase
 		is_mobile: false
 	} );

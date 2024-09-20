@@ -1,4 +1,4 @@
-var scrollingDeferred,
+let scrollingDeferred,
 	AddImageArticleTarget = require( '../addimage/AddImageArticleTarget.js' );
 
 /**
@@ -43,7 +43,7 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
 	// short to be a good candidate, or its content changed to such an extent that its topic is
 	// now different), but those are rare and would be hard or impossible to detect here.
 
-	var imageNodes = [],
+	let imageNodes = [],
 		surfaceModel = this.getSurface().getModel(),
 		// We break our unused abstraction here. If we actually used multiple image recommendations,
 		// they could belong to different sections, and then validity would have to be determined
@@ -55,7 +55,7 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
 		return false;
 	}
 
-	var insertRange = this.getInsertRange( imageData );
+	const insertRange = this.getInsertRange( imageData );
 	if ( !insertRange ) {
 		// The error was already logged in getInsertRange().
 		return false;
@@ -64,13 +64,13 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
 	/** @type {ve.dm.Node[]} imageNodes */
 	imageNodes = imageNodes.concat( surfaceModel.getDocument().getNodesByType( 'mwBlockImage' ) );
 	imageNodes = imageNodes.concat( surfaceModel.getDocument().getNodesByType( 'mwInlineImage' ) );
-	for ( var i = 0; i < imageNodes.length; i++ ) {
+	for ( let i = 0; i < imageNodes.length; i++ ) {
 		if ( insertRange.containsOffset( imageNodes[ i ].getOffset() ) ) {
 			mw.log.error( 'Section ' + imageData.sectionNumber + ' already contains an image: ' +
 				imageNodes[ i ].getAttribute( 'resource' ) );
 			return false;
 		}
-		var imageTitle = mw.Title.newFromText(
+		const imageTitle = mw.Title.newFromText(
 			// Parsoid filename attributes start with "./".
 			imageNodes[ i ].getAttribute( 'resource' ).slice( 2 )
 		);
@@ -88,7 +88,7 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
  * @param {mw.libs.ge.ImageRecommendationImage} imageData
  */
 AddSectionImageArticleTarget.prototype.insertImagePlaceholder = function ( imageData ) {
-	var dimensions = this.getImageDimensions( imageData );
+	const dimensions = this.getImageDimensions( imageData );
 	this.insertLinearModelAtRecommendationLocation( [
 		{
 			type: 'mwGeRecommendedImagePlaceholder',
@@ -104,11 +104,11 @@ AddSectionImageArticleTarget.prototype.insertImagePlaceholder = function ( image
  * @inheritDoc
  */
 AddSectionImageArticleTarget.prototype.replacePlaceholderWithImage = function ( imageData ) {
-	var self = this,
+	const self = this,
 		surfaceModel = this.getSurface().getModel();
 
 	surfaceModel.setReadOnly( false );
-	var recommendedImageNodes = surfaceModel.getDocument().getNodesByType( 'mwGeRecommendedImagePlaceholder' );
+	const recommendedImageNodes = surfaceModel.getDocument().getNodesByType( 'mwGeRecommendedImagePlaceholder' );
 	recommendedImageNodes.forEach( ( node ) => {
 		self.approvalTransaction = ve.dm.TransactionBuilder.static.newFromReplacement(
 			surfaceModel.getDocument(),
@@ -125,14 +125,14 @@ AddSectionImageArticleTarget.prototype.replacePlaceholderWithImage = function ( 
 
 /** @inheritDoc */
 AddSectionImageArticleTarget.prototype.getInsertRange = function ( imageData ) {
-	var surface = this.getSurface(),
+	const surface = this.getSurface(),
 		surfaceModel = surface.getModel(),
 		surfaceView = surface.getView(),
 		headingNodes = surfaceModel.getDocument().getNodesByType( 'mwHeading' );
 
-	var heading, nextHeading;
-	var h2Count = 0;
-	for ( var i = 0; i < headingNodes.length; i++ ) {
+	let heading, nextHeading;
+	let h2Count = 0;
+	for ( let i = 0; i < headingNodes.length; i++ ) {
 		if ( headingNodes[ i ].getAttribute( 'level' ) !== 2 ) {
 			// Currently only recommending for top-level headings.
 			continue;
@@ -191,13 +191,13 @@ AddSectionImageArticleTarget.prototype.isSameSection = function ( node, sectionN
 	// The article might have been edited since. Double-check that the title text matches.
 	// imageData.sectionTitle is wikitext so this will be somewhat fragile.
 	// The API format will change (T333333), so make sure the check works with old and new format.
-	var expectedTitleText = imageData.sectionTitle.replace( /_/g, ' ' );
-	var domElements = node.getOriginalDomElements( node.getStore() );
-	var actualTitleText = $( '<div>' ).append( $( domElements ).clone() ).prop( 'innerText' );
+	const expectedTitleText = imageData.sectionTitle.replace( /_/g, ' ' );
+	const domElements = node.getOriginalDomElements( node.getStore() );
+	const actualTitleText = $( '<div>' ).append( $( domElements ).clone() ).prop( 'innerText' );
 	// Also compare with the HTML ID of the heading (after underscore conversion) as a fallback.
 	// Note that the ID can have a numeric postfix like '_1' if there are multiple sections with
 	// the same wikitext. This is rare enough that we just ignore it.
-	var actualIdText = domElements[ 0 ] instanceof HTMLHeadingElement ?
+	const actualIdText = domElements[ 0 ] instanceof HTMLHeadingElement ?
 		domElements[ 0 ].id.replace( /_/g, ' ' ) :
 		'';
 
@@ -275,12 +275,12 @@ AddSectionImageArticleTarget.prototype.suppressSurfaceSelectEvents = function ( 
  * @return {Object}
  */
 AddSectionImageArticleTarget.prototype.getSuggestionLogActionData = function ( index ) {
-	var imageIndex = typeof index === 'number' ? index : this.selectedImageIndex,
+	const imageIndex = typeof index === 'number' ? index : this.selectedImageIndex,
 		imageData = this.images[ imageIndex ],
 		sectionNumber = imageData.sectionNumber,
 		sectionTitle = imageData.sectionTitle;
 
-	var actionData = AddSectionImageArticleTarget.super.prototype.getSuggestionLogActionData.call( this, index );
+	const actionData = AddSectionImageArticleTarget.super.prototype.getSuggestionLogActionData.call( this, index );
 	/* eslint-disable camelcase */
 	actionData.section_ordinal = sectionNumber;
 	actionData.section_title = sectionTitle;

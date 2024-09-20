@@ -6,7 +6,7 @@
  * - HomepageHooks::getDefaultTaskTypesJson() as ./DefaultTaskTypes.json
  */
 ( function () {
-	var OLD_LINK_TASK_TYPE = 'links',
+	const OLD_LINK_TASK_TYPE = 'links',
 		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
 		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
 		SECTION_IMAGE_RECOMMENDATION_TASK_TYPE = 'section-image-recommendation';
@@ -20,7 +20,7 @@
 	 * @return {string|false}
 	 */
 	function taskTypeOrFalse( taskTypeId ) {
-		var taskTypes = require( './TaskTypes.json' );
+		const taskTypes = require( './TaskTypes.json' );
 		return ( taskTypeId in taskTypes ) ? taskTypeId : false;
 	}
 
@@ -32,7 +32,7 @@
 	 * @return {boolean}
 	 */
 	function areLinkRecommendationsEnabled() {
-		var config = require( './config.json' ),
+		const config = require( './config.json' ),
 			taskTypes = require( './TaskTypes.json' );
 		return config.GELinkRecommendationsEnabled &&
 			LINK_RECOMMENDATION_TASK_TYPE in taskTypes;
@@ -46,7 +46,7 @@
 	 * @return {boolean}
 	 */
 	function areImageRecommendationsEnabled() {
-		var config = require( './config.json' ),
+		const config = require( './config.json' ),
 			taskTypes = require( './TaskTypes.json' );
 		return config.GEImageRecommendationsEnabled &&
 			IMAGE_RECOMMENDATION_TASK_TYPE in taskTypes;
@@ -60,7 +60,7 @@
 	 * @return {boolean}
 	 */
 	function areSectionImageRecommendationsEnabled() {
-		var config = require( './config.json' ),
+		const config = require( './config.json' ),
 			taskTypes = require( './TaskTypes.json' );
 		return config.GENewcomerTasksSectionImageRecommendationsEnabled &&
 			SECTION_IMAGE_RECOMMENDATION_TASK_TYPE in taskTypes;
@@ -72,7 +72,7 @@
 	 * @return {Object} The same task type data, without the task types the user shouldn't see.
 	 */
 	function getTaskTypes() {
-		var defaultTaskTypes = require( './TaskTypes.json' ),
+		const defaultTaskTypes = require( './TaskTypes.json' ),
 			conversionMap = getConversionMap(),
 			taskTypes = {};
 
@@ -98,7 +98,7 @@
 	 * @return {Object} A map of old task type ID => new task type ID or false.
 	 */
 	function getConversionMap() {
-		var map = {};
+		const map = {};
 		if ( areLinkRecommendationsEnabled() ) {
 			map[ OLD_LINK_TASK_TYPE ] = LINK_RECOMMENDATION_TASK_TYPE;
 		} else {
@@ -123,7 +123,7 @@
 	 * @return {Array<string>}
 	 */
 	function convertTaskTypes( taskTypeIds ) {
-		var map = getConversionMap();
+		const map = getConversionMap();
 		return taskTypeIds.map( ( taskTypeId ) => ( taskTypeId in map ) ? map[ taskTypeId ] : taskTypeId ).filter(
 			// filter duplicates and false
 			( element, index, self ) => element !== false && index === self.indexOf( element )

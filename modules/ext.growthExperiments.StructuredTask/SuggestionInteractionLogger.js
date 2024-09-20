@@ -33,7 +33,7 @@
 		if ( this.loggerInstance ) {
 			this.loggerInstance.log.apply( this.loggerInstance, arguments );
 		} else {
-			var error = new Error(
+			const error = new Error(
 				'SuggestionInteractionLogger.log called before logger instance is set'
 			);
 			mw.log.error( error );

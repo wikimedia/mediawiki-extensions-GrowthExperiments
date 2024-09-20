@@ -1,4 +1,4 @@
-var StructuredTaskMessageDialog = require( '../StructuredTaskMessageDialog.js' ),
+const StructuredTaskMessageDialog = require( '../StructuredTaskMessageDialog.js' ),
 	SuggestionInteractionLogger = require( '../SuggestionInteractionLogger.js' );
 
 /**
@@ -112,13 +112,13 @@ AddImageDetailsDialog.prototype.makeField = function ( field, recommendation ) {
 	// * growthexperiments-addimage-detailsdialog-date
 	// * growthexperiments-addimage-detailsdialog-author
 	// * growthexperiments-addimage-detailsdialog-categories
-	var fieldLabel = mw.message( 'growthexperiments-addimage-detailsdialog-' + field ).text();
+	const fieldLabel = mw.message( 'growthexperiments-addimage-detailsdialog-' + field ).text();
 
-	var fieldValue;
+	let fieldValue;
 	if ( field === 'image' ) {
 		fieldValue = recommendation.displayFilename;
 	} else if ( field === 'categories' ) {
-		var categories = recommendation.metadata.categories;
+		const categories = recommendation.metadata.categories;
 		fieldValue = ( categories && categories.length ) ?
 			categories.join( mw.message( 'comma-separator' ).text() ) :
 			null;
@@ -156,13 +156,13 @@ AddImageDetailsDialog.prototype.makeField = function ( field, recommendation ) {
  * @return {jQuery[]}
  */
 AddImageDetailsDialog.prototype.addSpacers = function ( list ) {
-	var spacer = this.makeSpacer();
+	const spacer = this.makeSpacer();
 
 	// remove missing fields
 	list = list.filter( ( el ) => el !== null );
-	for ( var i = 0; i < list.length; i++ ) {
+	for ( let i = 0; i < list.length; i++ ) {
 		if ( list[ i ] === spacer && i > 0 && i < list.length - 1 ) {
-			var last = list[ i - 1 ];
+			const last = list[ i - 1 ];
 			if ( last !== spacer ) {
 				last.addClass( 'mw-ge-spacer' );
 			}
@@ -184,7 +184,7 @@ AddImageDetailsDialog.prototype.makeSpacer = function () {
  * @param {string} event
  */
 AddImageDetailsDialog.prototype.logEvent = function ( event ) {
-	var actionData = ve.init.target.getSuggestionLogActionData( this.imageIndex );
+	const actionData = ve.init.target.getSuggestionLogActionData( this.imageIndex );
 	actionData.source = this.logSource;
 	// eslint-disable-next-line camelcase
 	SuggestionInteractionLogger.log( event, actionData, { active_interface: 'imagedetails_dialog' } );

@@ -26,7 +26,7 @@ function SwipePane( $element, config ) {
  * @param {Object} event Touchstart event
  */
 SwipePane.prototype.onTouchStart = function ( event ) {
-	var touchEvent = event.touches.item( 0 );
+	const touchEvent = event.touches.item( 0 );
 	this.initialX = touchEvent.clientX;
 	this.initialY = touchEvent.clientY;
 };
@@ -62,7 +62,7 @@ SwipePane.prototype.onTouchMove = function ( event ) {
  * @return {boolean}
  */
 SwipePane.prototype.isSwipeToStart = function ( touchEvent ) {
-	var newX = touchEvent.clientX,
+	const newX = touchEvent.clientX,
 		newY = touchEvent.clientY,
 		isToLeft = this.initialX > newX;
 	if ( this.isHorizontal ) {
@@ -107,7 +107,7 @@ SwipePane.prototype.setToEndHandler = function ( handler ) {
  * @return {boolean}
  */
 SwipePane.prototype.shouldHandleTouchMove = function ( event ) {
-	var touchEvent = event.touches.item( 0 ),
+	const touchEvent = event.touches.item( 0 ),
 		xDelta = Math.abs( this.initialX - touchEvent.clientX ),
 		yDelta = Math.abs( this.initialY - touchEvent.clientY );
 	if ( this.isHorizontal ) {

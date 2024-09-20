@@ -1,6 +1,6 @@
 'use strict';
 
-var Utils = require( '../utils/Utils.js' );
+const Utils = require( '../utils/Utils.js' );
 
 /**
  * Panel that invites the user to try out suggested edits.
@@ -39,11 +39,11 @@ InviteToSuggestedEditsPanel.prototype.getMainArea = function () {
  * @return {Array<jQuery>} A list of footer elements.
  */
 InviteToSuggestedEditsPanel.prototype.getFooterButtons = function () {
-	var trySuggestedEditsButtonWidget = new OO.ui.ButtonWidget( {
+	const trySuggestedEditsButtonWidget = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-help-panel-postedit-nonsuggested-try-button-text' ).text(),
 		flags: [ 'primary', 'progressive' ]
 	} );
-	var noThanksButtonWidget = new OO.ui.ButtonWidget( {
+	const noThanksButtonWidget = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text' ).text(),
 		framed: false,
 		flags: [ 'progressive' ]

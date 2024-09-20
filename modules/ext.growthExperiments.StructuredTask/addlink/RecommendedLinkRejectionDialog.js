@@ -1,4 +1,4 @@
-var SelectWithTextInputWidget = require( '../../ui-components/SelectWithTextInputWidget.js' );
+const SelectWithTextInputWidget = require( '../../ui-components/SelectWithTextInputWidget.js' );
 
 /**
  * Dialog with a list of reasons for rejecting a suggestions
@@ -35,7 +35,7 @@ RecommendedLinkRejectionDialog.prototype.initialize = function () {
 	// Parent method
 	RecommendedLinkRejectionDialog.super.prototype.initialize.call( this );
 	this.message.$element.addClass( 'oo-ui-inline-help' );
-	var selectOptions = [ {
+	const selectOptions = [ {
 		data: 'everyday',
 		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-everyday' )
 	}, {
@@ -80,7 +80,7 @@ RecommendedLinkRejectionDialog.prototype.getActionProcess = function ( action ) 
 	}
 
 	return new OO.ui.Process( function () {
-		var selectedItems = this.reasonSelect.findSelection();
+		const selectedItems = this.reasonSelect.findSelection();
 		this.close( {
 			action: action,
 			reason: selectedItems,

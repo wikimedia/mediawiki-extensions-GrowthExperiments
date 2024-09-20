@@ -14,7 +14,7 @@
  * callback to get the taskTypes parameter.
  */
 ( function () {
-	var IconUtils = require( '../utils/IconUtils.js' );
+	const IconUtils = require( '../utils/IconUtils.js' );
 
 	/**
 	 * @class mw.libs.ge.SmallTaskCard
@@ -55,7 +55,7 @@
 	SmallTaskCard.prototype.buildCard = function () {
 		// Keep HTML structure in sync with SuggestedEdits::getTaskCard().
 
-		var $image = $( '<div>' ).addClass( 'mw-ge-small-task-card-image mw-ge-small-task-card-image-skeleton' ),
+		let $image = $( '<div>' ).addClass( 'mw-ge-small-task-card-image mw-ge-small-task-card-image-skeleton' ),
 			$title = $( '<span>' ).addClass( 'mw-ge-small-task-card-title skeleton' ),
 			$description = $( '<span>' ).addClass( 'mw-ge-small-task-card-description skeleton' ),
 			$pageviews = $( '<span>' ).addClass( 'mw-ge-small-task-card-pageviews skeleton' ),

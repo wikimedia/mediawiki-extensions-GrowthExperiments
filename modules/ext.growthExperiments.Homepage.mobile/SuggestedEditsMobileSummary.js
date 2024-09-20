@@ -1,4 +1,4 @@
-var TaskPreviewWidget = require( './TaskPreviewWidget.js' ),
+const TaskPreviewWidget = require( './TaskPreviewWidget.js' ),
 	MobileNoTasksWidget = require( './MobileNoTasksWidget.js' );
 
 /**
@@ -33,7 +33,7 @@ OO.inheritClass( SuggestedEditsMobileSummary, OO.ui.Widget );
  * @param {OO.ui.Widget} contentWidget
  */
 SuggestedEditsMobileSummary.prototype.replaceContent = function ( contentWidget ) {
-	var $newContentElement = contentWidget.$element;
+	const $newContentElement = contentWidget.$element;
 	this.$content.replaceWith( $newContentElement );
 	this.$content = $newContentElement;
 };
@@ -42,7 +42,7 @@ SuggestedEditsMobileSummary.prototype.replaceContent = function ( contentWidget 
  * Show the TaskPreviewWidget for the current task in the task queue
  */
 SuggestedEditsMobileSummary.prototype.showPreviewForCurrentTask = function () {
-	var currentTask = this.tasksStore.getCurrentTask();
+	const currentTask = this.tasksStore.getCurrentTask();
 	if ( !currentTask ) {
 		return;
 	}
@@ -69,7 +69,7 @@ SuggestedEditsMobileSummary.prototype.showPreviewForCurrentTask = function () {
  * @return {jQuery.Deferred}
  */
 SuggestedEditsMobileSummary.prototype.initialize = function () {
-	var taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ],
+	const taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ],
 		tasksStore = this.tasksStore,
 		newcomerTaskLogger = this.newcomerTaskLogger,
 		homepageModuleLogger = this.homepageModuleLogger,
@@ -78,7 +78,7 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 	if ( taskPreviewData && taskPreviewData.title ) {
 		tasksStore.setPreloadedFirstTask( taskPreviewData );
 		tasksStore.fetchExtraDataForCurrentTask( 'mobilesummary' ).then( () => {
-			var task = tasksStore.getCurrentTask();
+			const task = tasksStore.getCurrentTask();
 			newcomerTaskLogger.log( task, 0 );
 			homepageModuleLogger.log(
 				'suggested-edits',
@@ -121,7 +121,7 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
  * Activate suggested edits when the user interacts with the module
  */
 SuggestedEditsMobileSummary.prototype.enableSuggestedEditsActivation = function () {
-	var activationSettings = { 'growthexperiments-homepage-suggestededits-activated': 1 },
+	const activationSettings = { 'growthexperiments-homepage-suggestededits-activated': 1 },
 		$element = this.$element;
 
 	// Tapping on the task card should be considered enough to activate the module, with no
@@ -143,7 +143,7 @@ SuggestedEditsMobileSummary.prototype.enableSuggestedEditsActivation = function 
  * (in SuggestedEditsModule, the user can navigate past the end of the queue)
  */
 SuggestedEditsMobileSummary.prototype.updateUiBasedOnState = function () {
-	var currentTask = this.tasksStore.getCurrentTask();
+	const currentTask = this.tasksStore.getCurrentTask();
 	if ( currentTask ) {
 		this.showPreviewForCurrentTask();
 	} else {

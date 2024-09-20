@@ -1,5 +1,5 @@
 ( function ( gt ) {
-	var welcomeTour, step,
+	let welcomeTour, step,
 		HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		tourUtils = require( './tourUtils.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
@@ -24,7 +24,7 @@
 	 * @param {string} closeMethod Guider close method: 'xButton', 'escapeKey', 'clickOutside'
 	 */
 	function logTourCloseAndMarkAsComplete( guider, isAlternativeClose, closeMethod ) {
-		var type = {
+		const type = {
 			xButton: 'close-icon',
 			escapeKey: 'should-not-happen',
 			clickOutside: 'outside-click'

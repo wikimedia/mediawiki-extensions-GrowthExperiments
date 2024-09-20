@@ -6,8 +6,8 @@
 	 *
 	 * @return {Object} Suggested edits topics, used in FiltersWidget and TopicSelectionWidget
 	 */
-	var getFormattedTopics = function () {
-		var topicData = require( './Topics.json' ),
+	const getFormattedTopics = function () {
+		const topicData = require( './Topics.json' ),
 			topicsToExclude = mw.config.get( 'wgGETopicsToExclude' ) || [];
 		topicsToExclude.forEach( ( topic ) => {
 			delete topicData[ topic ];

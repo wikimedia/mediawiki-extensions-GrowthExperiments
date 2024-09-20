@@ -1,5 +1,5 @@
 module.exports = ( function () {
-	var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+	const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 		MachineSuggestionsSaveTool = require( './MachineSuggestionsSaveTool.js' ),
 		SuggestionsDesktopArticleTarget = require( './SuggestionsDesktopArticleTarget.js' );
 
@@ -11,7 +11,7 @@ module.exports = ( function () {
 	 */
 	function initializeTarget( taskTypeId ) {
 		if ( taskTypeId === 'link-recommendation' ) {
-			var AddLinkTargetInitializer = StructuredTask.addLink().AddLinkTargetInitializer,
+			const AddLinkTargetInitializer = StructuredTask.addLink().AddLinkTargetInitializer,
 				addLinkTargetInitializer = new AddLinkTargetInitializer( {
 					tools: [ MachineSuggestionsSaveTool ],
 					windows: [
@@ -23,7 +23,7 @@ module.exports = ( function () {
 				} );
 			addLinkTargetInitializer.initialize();
 		} else if ( taskTypeId === 'image-recommendation' ) {
-			var AddImageTargetInitializer = StructuredTask.addImage().AddImageTargetInitializer,
+			const AddImageTargetInitializer = StructuredTask.addImage().AddImageTargetInitializer,
 				addImageTargetInitializer = new AddImageTargetInitializer( {
 					tools: [ MachineSuggestionsSaveTool ],
 					windows: [
@@ -35,7 +35,7 @@ module.exports = ( function () {
 				} );
 			addImageTargetInitializer.initialize();
 		} else if ( taskTypeId === 'section-image-recommendation' ) {
-			var AddSectionImageTargetInitializer = StructuredTask.addSectionImage().AddSectionImageTargetInitializer,
+			const AddSectionImageTargetInitializer = StructuredTask.addSectionImage().AddSectionImageTargetInitializer,
 				addSectionImageTargetInitializer = new AddSectionImageTargetInitializer( {
 					tools: [ MachineSuggestionsSaveTool ],
 					windows: [

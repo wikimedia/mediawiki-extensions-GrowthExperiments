@@ -6,7 +6,7 @@
  */
 ( function () {
 
-	var Utils = require( './Utils.js' );
+	const Utils = require( './Utils.js' );
 
 	/**
 	 * Logging helper for the HelpPanel EventLogging schema (analytics/legacy/helppanel).
@@ -55,7 +55,7 @@
 			return;
 		}
 
-		var eventData = Object.assign(
+		const eventData = Object.assign(
 			{
 				action: action,
 				/* eslint-disable-next-line camelcase */
@@ -71,7 +71,7 @@
 	};
 
 	HelpPanelLogger.prototype.getMetaData = function () {
-		var defaultEditor = this.getEditor(),
+		const defaultEditor = this.getEditor(),
 			defaultContext = this.getContext(),
 			editingModes = [ 'editing', 'postedit', 'postedit-nonsuggested' ],
 			readingMode = ( editingModes.indexOf( defaultContext ) === -1 );
@@ -101,7 +101,7 @@
 	 * @return {boolean}
 	 */
 	HelpPanelLogger.prototype.isEditing = function () {
-		var uri = new mw.Uri();
+		const uri = new mw.Uri();
 
 		if ( mw.config.get( 'wgCanonicalSpecialPageName' ) ) {
 			// Good enough for now; at some point special editing interfaces like ContentTranslate
@@ -166,11 +166,11 @@
 			return this.editor;
 		} else {
 			// Desktop: VE in visual or source mode
-			var veTarget = OO.getProp( window, 've', 'init', 'target' );
+			const veTarget = OO.getProp( window, 've', 'init', 'target' );
 			if ( veTarget ) {
-				var surface = veTarget.getSurface();
+				const surface = veTarget.getSurface();
 				if ( surface ) {
-					var mode = surface.getMode();
+					const mode = surface.getMode();
 					if ( mode === 'source' ) {
 						return 'wikitext-2017';
 					}
@@ -214,7 +214,7 @@
 		// wgRestrictionCreate, wgRestrictionEdit, wgRestrictionMove
 		return [ 'create', 'edit', 'move' ]
 			.map( ( action ) => {
-				var restrictions = mw.config.get(
+				const restrictions = mw.config.get(
 					'wgRestriction' +
 					action[ 0 ].toUpperCase() +
 					action.slice( 1 ).toLowerCase()

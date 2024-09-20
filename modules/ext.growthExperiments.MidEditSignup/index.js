@@ -7,19 +7,19 @@
  */
 ( function () {
 	function showMidEditSignupDialog() {
-		var HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
+		const HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
 			helpPanelLogger = new HelpPanelLogger();
 
 		mw.storage.session.remove( 'ge.midEditSignup' );
 		mw.cookie.set( 'ge.midEditSignup', null );
 		mw.loader.using( [ 'mediawiki.user', 'mediawiki.Title', 'oojs-ui-windows' ] ).then( () => {
-			var MessageDialogWithVerticalButtons = require( '../ui-components/MessageDialogWithVerticalButtons.js' ),
+			const MessageDialogWithVerticalButtons = require( '../ui-components/MessageDialogWithVerticalButtons.js' ),
 				messageDialog = new MessageDialogWithVerticalButtons(),
 				windowManager = new OO.ui.WindowManager();
 
 			$( document.body ).append( windowManager.$element );
 			windowManager.addWindows( [ messageDialog ] );
-			var lifecycle = windowManager.openWindow( messageDialog, {
+			const lifecycle = windowManager.openWindow( messageDialog, {
 				title: mw.message( 'welcomesurvey-mideditsignup-title' )
 					.params( [ mw.user.getName() ] )
 					.text(),

@@ -139,7 +139,7 @@ QualityGate.prototype.showSectionImageRecommendationDailyLimitAlertDialog = func
  * @return {OO.ui.WindowInstance}
  */
 QualityGate.prototype.showAlertDialog = function ( qualityGateId, message, action ) {
-	var messageDialog = new OO.ui.MessageDialog();
+	const messageDialog = new OO.ui.MessageDialog();
 	messageDialog.$element
 		.addClass( 'ge-qualitygate-alert-dialog' )
 		// The following classes are used here:

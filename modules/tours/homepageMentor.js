@@ -1,5 +1,5 @@
 ( function ( gt ) {
-	var mentorTour,
+	let mentorTour,
 		tourUtils = require( './tourUtils.js' ),
 		mentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
 

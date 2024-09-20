@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 
-	var MentorshipOptoutProcess = require( './MentorshipOptoutProcess.js' ),
+	const MentorshipOptoutProcess = require( './MentorshipOptoutProcess.js' ),
 		MentorshipDetailsModal = require( './MentorshipDetailsModal.js' );
 
 	/**
@@ -83,7 +83,7 @@
 		this.optoutProcess.showOptoutDialog();
 	};
 
-	var ellipsisMenu;
+	let ellipsisMenu;
 	/**
 	 * @param {jQuery} $homepageContainer
 	 * @return {mw.libs.ge.EllipsisMenu}
@@ -103,7 +103,7 @@
 		} );
 
 		// add the ellipsis menu to the page, if applicable
-		var $ellipsis = $homepageContainer.find( '#mw-ge-homepage-mentorship-ellipsis' );
+		const $ellipsis = $homepageContainer.find( '#mw-ge-homepage-mentorship-ellipsis' );
 		if ( $ellipsis.length ) {
 			$ellipsis.replaceWith( ellipsisMenu.$element );
 		}

@@ -1,4 +1,4 @@
-var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskDesktopArticleTarget = require( '../StructuredTaskDesktopArticleTarget.js' ),
 	SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
 	suggestedEditSession = SuggestedEditSession.getInstance(),
@@ -39,7 +39,7 @@ AddSectionImageDesktopArticleTarget.prototype.onSaveDone = function () {
 
 /** @override **/
 AddSectionImageDesktopArticleTarget.prototype.prepareSaveWithoutShowingDialog = function () {
-	var promise = ve.createDeferred(),
+	const promise = ve.createDeferred(),
 		$desktopLoadingOverlay = $( '<div>' ).addClass(
 			// FIXME modify?
 			'mw-ge-addImageDesktopArticleTarget-loadingOverlay'

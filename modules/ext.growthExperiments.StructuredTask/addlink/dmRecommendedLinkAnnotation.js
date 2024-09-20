@@ -3,7 +3,7 @@
  * @extends ve.dm.MWInternalLinkAnnotation
  * @constructor
  */
-var DMRecommendedLinkAnnotation = function GeDmRecommendedLinkAnnotation() {
+const DMRecommendedLinkAnnotation = function GeDmRecommendedLinkAnnotation() {
 	// Parent constructor
 	DMRecommendedLinkAnnotation.super.apply( this, arguments );
 
@@ -20,7 +20,7 @@ DMRecommendedLinkAnnotation.static.matchRdfaTypes = [ 'mw:RecommendedLink' ];
 DMRecommendedLinkAnnotation.static.allowedRdfaTypes = [];
 
 DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements ) {
-	var target = domElements[ 0 ].getAttribute( 'data-target' ),
+	const target = domElements[ 0 ].getAttribute( 'data-target' ),
 		text = domElements[ 0 ].getAttribute( 'data-text' ),
 		wikitextOffset = domElements[ 0 ].getAttribute( 'data-wikitext-offset' ),
 		score = domElements[ 0 ].getAttribute( 'data-score' ),
@@ -34,7 +34,7 @@ DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements ) {
 		return { type: 'mwGeRecommendedLinkError' };
 	}
 	// Let the parent class build the attributes as if this is a real link
-	var dataElement = this.dataElementFromTitle( title, target );
+	const dataElement = this.dataElementFromTitle( title, target );
 	// true means accepted; false means explicitly rejected; null means no selection made yet
 	dataElement.attributes.recommendationAccepted = null;
 	// undefined means no reason supplied, otherwise this is a string.

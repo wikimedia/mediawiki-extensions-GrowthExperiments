@@ -1,5 +1,5 @@
 ( function () {
-	var Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
+	const Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		useEventLogging = require( '../ext.growthExperiments.Homepage.Logger/useEventLogging.js' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
@@ -13,7 +13,7 @@
 			enabled: mw.config.get( 'wgGEHomepageLoggingEnabled' ) } ),
 
 		handleClick = function ( e ) {
-			var $link = $( this ),
+			const $link = $( this ),
 				$module = $link.closest( '.growthexperiments-homepage-module' ),
 				linkId = $link.data( 'link-id' ) ||
 					$link.closest( '[data-link-group-id]' ).data( 'link-group-id' ),
@@ -27,7 +27,7 @@
 			logger.log( moduleName, mode, 'link-click', extraData );
 			// Special casing for the SDS2.1.3 objective, T365889
 			if ( moduleName === 'community-updates' ) {
-				var actionData = mw.config.get( 'wgGEHomepageModuleActionData-community-updates' );
+				const actionData = mw.config.get( 'wgGEHomepageModuleActionData-community-updates' );
 				analytics.logEvent( 'click', linkId, moduleName, actionData ? actionData.context : null );
 			}
 
@@ -36,13 +36,13 @@
 			e.stopPropagation();
 		},
 		logImpression = function () {
-			var $module = $( this ),
+			const $module = $( this ),
 				moduleName = $module.data( 'module-name' ),
 				mode = $module.data( 'mode' );
 			logger.log( moduleName, mode, 'impression' );
 			// Special casing for the SDS2.1.3 objective, T365889
 			if ( moduleName === 'community-updates' ) {
-				var actionData = mw.config.get( 'wgGEHomepageModuleActionData-community-updates' );
+				const actionData = mw.config.get( 'wgGEHomepageModuleActionData-community-updates' );
 				analytics.logEvent( 'impression', null, moduleName, actionData ? actionData.context : null );
 			}
 		},

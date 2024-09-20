@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 
-	var mobileStatus = mw.loader.getState( 'mobile.startup' ),
+	const mobileStatus = mw.loader.getState( 'mobile.startup' ),
 		suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
 		Drawer = mobileStatus && mobileStatus !== 'registered' ? require( 'mobile.startup' ).Drawer : undefined,
 		IconUtils = require( '../utils/IconUtils.js' );
@@ -44,7 +44,7 @@
 	OO.inheritClass( TaskExplanationWidget, OO.ui.Widget );
 
 	TaskExplanationWidget.prototype.getInfoRow = function () {
-		var $infoRow = $( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' );
+		const $infoRow = $( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' );
 		$infoRow.append(
 			// Use a span so that wrapped second line text appears in the same
 			// line with the info icon.
@@ -66,7 +66,7 @@
 	};
 
 	TaskExplanationWidget.prototype.getInfo = function () {
-		var $name = this.getName( '<h4>' ),
+		const $name = this.getName( '<h4>' ),
 			popupButtonWidget = new OO.ui.PopupButtonWidget( {
 				icon: 'info-unpadded',
 				framed: false,
@@ -92,7 +92,7 @@
 		popupButtonWidget.getPopup().connect( this, {
 			toggle: function ( show ) {
 				if ( show && OO.ui.isMobile() ) {
-					var drawer = new Drawer( {
+					const drawer = new Drawer( {
 						children: [
 							this.getName( '<h4>' ),
 							$( '<div>' )

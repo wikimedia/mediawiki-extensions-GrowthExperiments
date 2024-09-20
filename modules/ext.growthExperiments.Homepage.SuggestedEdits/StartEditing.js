@@ -1,5 +1,5 @@
 ( function () {
-	var StartEditingDialog = require( './StartEditingDialog.js' ),
+	let StartEditingDialog = require( './StartEditingDialog.js' ),
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
@@ -25,7 +25,7 @@
 	 *   initiation was successful or cancelled.
 	 */
 	function launchCta( module, mode, trigger ) {
-		var dialog = new StartEditingDialog( {
+		const dialog = new StartEditingDialog( {
 			module: module,
 			mode: mode,
 			trigger: trigger,
@@ -44,7 +44,7 @@
 		logger.log( module, mode, 'se-cta-click', { trigger: trigger } );
 
 		modalWindowManager.addWindows( [ dialog ] );
-		var lifecycle = modalWindowManager.openWindow( dialog );
+		const lifecycle = modalWindowManager.openWindow( dialog );
 		return lifecycle.closing.then( ( data ) => ( data && data.action === 'activate' ) );
 	}
 
@@ -60,7 +60,7 @@
 			'#mw-ge-homepage-startediting-cta, ' +
 			'#mw-ge-homepage-suggestededits-info'
 		).each( ( _, button ) => {
-			var trigger = 'info-icon',
+			const trigger = 'info-icon',
 				$button = $( button ),
 				buttonType = $button.attr( 'id' ).slice( 'mw-ge-homepage-'.length ),
 				// From the mobile overlay header one cannot traverse the DOM tree upwards to find a
@@ -109,7 +109,7 @@
 	 */
 	function setupEmbeddedDialog( $container, useTopicMatchMode ) {
 		// Only do this for the start-startediting module on desktop
-		var $startEditingModule = $container.find(
+		const $startEditingModule = $container.find(
 			'.growthexperiments-homepage-module-start-startediting' +
 			'.growthexperiments-homepage-module-desktop'
 		);
@@ -117,8 +117,8 @@
 			return;
 		}
 
-		var mode = $startEditingModule.data( 'mode' );
-		var dialog = new StartEditingDialog( {
+		const mode = $startEditingModule.data( 'mode' );
+		const dialog = new StartEditingDialog( {
 			// For technical reasons we implement this dialog with the StartEditing module,
 			// but conceptually it is the pre-initiation view of the SuggestedEdits module.
 			module: 'suggested-edits',
@@ -134,7 +134,7 @@
 			isSuggestedEditsActivated = true;
 			shouldSuggestedEditsAppearActivated = true;
 		} );
-		var windowManager = new OO.ui.WindowManager( { modal: false } );
+		const windowManager = new OO.ui.WindowManager( { modal: false } );
 		$startEditingModule.append( windowManager.$element );
 		windowManager.addWindows( [ dialog ] );
 		windowManager.openWindow( dialog );
@@ -168,7 +168,7 @@
 	 */
 	mw.trackSubscribe( 'growthexperiments.startediting', ( topic, data ) => {
 		// eslint-disable-next-line no-jquery/no-global-selector
-		var mode = $( '.growthexperiments-homepage-module' ).data( 'mode' );
+		const mode = $( '.growthexperiments-homepage-module' ).data( 'mode' );
 		launchCta( data.moduleName, mode, data.trigger );
 	} );
 

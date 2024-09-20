@@ -1,4 +1,4 @@
-var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	AddLinkSaveDialog = StructuredTask.addLink().AddLinkSaveDialog;
 
 /**

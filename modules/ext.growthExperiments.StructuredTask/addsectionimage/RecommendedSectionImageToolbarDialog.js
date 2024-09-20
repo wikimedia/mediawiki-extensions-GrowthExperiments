@@ -1,4 +1,4 @@
-var RecommendedImageToolbarDialog = require( '../addimage/RecommendedImageToolbarDialog.js' );
+const RecommendedImageToolbarDialog = require( '../addimage/RecommendedImageToolbarDialog.js' );
 
 /**
  * @class mw.libs.ge.RecommendedSectionImageToolbarDialog

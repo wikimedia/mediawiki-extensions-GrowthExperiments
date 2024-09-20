@@ -1,4 +1,4 @@
-var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskMobileArticleTarget = require( '../StructuredTaskMobileArticleTarget.js' ),
 	AddImageArticleTarget = StructuredTask.addImage().AddImageArticleTarget,
 	ImageSuggestionInteractionLogger = StructuredTask.addImage().ImageSuggestionInteractionLogger;
@@ -25,7 +25,7 @@ OO.mixinClass( AddImageMobileArticleTarget, AddImageArticleTarget );
 
 /** @override **/
 AddImageMobileArticleTarget.prototype.prepareSaveWithoutShowingDialog = function () {
-	var promise = ve.createDeferred(),
+	const promise = ve.createDeferred(),
 		$overlay = this.getSurface().getGlobalOverlay().$element;
 	$overlay.addClass( 'mw-ge-addImageMobileArticleTarget--overlay-shown' );
 	promise.done( () => {

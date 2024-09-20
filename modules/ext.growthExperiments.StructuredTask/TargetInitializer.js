@@ -1,4 +1,4 @@
-var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
+const MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
 	EditModeMachineSuggestions = require( './EditModeMachineSuggestions.js' ),
 	EditModeVisualWithSuggestions = require( './EditModeVisualWithSuggestions.js' ),
 	EditModeConfirmationDialog = require( './EditModeConfirmationDialog.js' ),
@@ -35,7 +35,7 @@ var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
  * @param {boolean} [config.shouldOverrideBackTool] Whether MachineSuggestionsBack tool should be used
  */
 function TargetInitializer( config ) {
-	var safeTools = config.safeTools || [],
+	const safeTools = config.safeTools || [],
 		safeCommands = config.safeCommands || [],
 		customWindows = config.windows || [];
 	this.taskArticleTarget = config.taskArticleTarget;
@@ -200,7 +200,7 @@ TargetInitializer.prototype.disableContextItems = function () {
  * @return {string[]}
  */
 TargetInitializer.prototype.getToolsToDisable = function () {
-	var safeTools = this.safeTools;
+	const safeTools = this.safeTools;
 	return Object.keys( ve.ui.toolFactory.registry ).filter( ( toolName ) => safeTools.indexOf( toolName ) === -1 );
 };
 
@@ -221,7 +221,7 @@ TargetInitializer.prototype.disableTools = function ( toolsToDisable ) {
  * See T281434
  */
 TargetInitializer.prototype.disableCommands = function () {
-	var safeCommands = this.safeCommands;
+	const safeCommands = this.safeCommands;
 	Object.keys( ve.ui.commandRegistry.registry ).forEach( ( commandItem ) => {
 		if ( safeCommands.indexOf( commandItem ) === -1 ) {
 			ve.ui.commandRegistry.unregister( commandItem );

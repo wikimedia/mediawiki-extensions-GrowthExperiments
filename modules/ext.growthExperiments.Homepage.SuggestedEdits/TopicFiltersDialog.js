@@ -1,6 +1,6 @@
 'use strict';
 
-var FiltersDialog = require( './FiltersDialog.js' ),
+const FiltersDialog = require( './FiltersDialog.js' ),
 	TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
 	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 	TOPIC_MATCH_MODES = CONSTANTS.TOPIC_MATCH_MODES,
@@ -82,7 +82,7 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 			this.emit( 'toggleMatchMode', mode );
 		}
 	} );
-	var $topicSelectorWrapper = $( '<div>' )
+	const $topicSelectorWrapper = $( '<div>' )
 		.addClass( 'suggested-edits-topic-filters-topic-selector' )
 		.append(
 			$( '<h4>' )
@@ -103,7 +103,7 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
  */
 TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 	// filtersStore.preferences.topicFilters could be null ((e.g. user just initiated the module, see T238611#5800350)
-	var presets = this.filtersStore.preferences.topicFilters || new TopicFilters( {
+	const presets = this.filtersStore.preferences.topicFilters || new TopicFilters( {
 		topicsMatchMode: TOPIC_MATCH_MODES.OR
 	} );
 	// Prevent 'search' events from being fired by performSearchUpdateActions()

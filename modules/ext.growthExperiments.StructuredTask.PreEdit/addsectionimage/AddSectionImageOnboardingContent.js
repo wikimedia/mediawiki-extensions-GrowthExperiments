@@ -1,7 +1,7 @@
 module.exports = ( function () {
 	'use strict';
 
-	var hasHeroImage = false,
+	let hasHeroImage = false,
 		userName = mw.user.getName(),
 		StructurtedTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),
 		content = new StructurtedTaskOnboardingContent( 'addsectionimage-onboarding-content' );
@@ -13,7 +13,7 @@ module.exports = ( function () {
 	 * @return {string}
 	 */
 	function getHeroClass( panelNumber ) {
-		var heroImageModifier = OO.ui.isMobile() ? '' : '--desktop';
+		const heroImageModifier = OO.ui.isMobile() ? '' : '--desktop';
 		if ( !hasHeroImage ) {
 			return '';
 		}
@@ -56,8 +56,8 @@ module.exports = ( function () {
 	 */
 	function createPanel( id, title, paragraphs, subtleParagraphIndices ) {
 		subtleParagraphIndices = subtleParagraphIndices || [];
-		var $content = $( '<div>' ).append( paragraphs.map( ( paragraphText, index ) => {
-			var $p = $( '<p>' ).text( paragraphText );
+		const $content = $( '<div>' ).append( paragraphs.map( ( paragraphText, index ) => {
+			const $p = $( '<p>' ).text( paragraphText );
 			if ( subtleParagraphIndices.indexOf( index ) !== -1 ) {
 				$p.addClass( 'addsectionimage-onboarding-content--color-subtle' );
 			}

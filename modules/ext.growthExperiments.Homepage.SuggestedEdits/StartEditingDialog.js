@@ -1,4 +1,4 @@
-var TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
+const TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
 	TaskTypeSelectionWidget = require( './TaskTypeSelectionWidget.js' ),
 	ArticleCountWidget = require( './ArticleCountWidget.js' ),
 	TopicFilters = require( '../ext.growthExperiments.DataStore/TopicFilters.js' ),
@@ -175,7 +175,7 @@ StartEditingDialog.prototype.swapPanel = function ( panel ) {
 };
 
 StartEditingDialog.prototype.attachActions = function () {
-	var actionWidgets = this.actions.get();
+	const actionWidgets = this.actions.get();
 
 	// Parent method
 	StartEditingDialog.super.prototype.attachActions.call( this );
@@ -195,7 +195,7 @@ StartEditingDialog.prototype.attachActions = function () {
 		this.$desktopActions.find( '.oo-ui-actionWidget' ).removeClass( 'oo-ui-actionWidget' );
 	}
 
-	for ( var i = 0, len = actionWidgets.length; i < len; i++ ) {
+	for ( let i = 0, len = actionWidgets.length; i < len; i++ ) {
 		// Find the 'activate' button so that we can make it the pending element later
 		// (see getActionProcess)
 		if ( actionWidgets[ i ].action === 'activate' ) {
@@ -205,7 +205,7 @@ StartEditingDialog.prototype.attachActions = function () {
 };
 
 StartEditingDialog.prototype.getSetupProcess = function ( data ) {
-	var dialog = this;
+	const dialog = this;
 	// HACK: Don't make the content div focusable in non-modal mode. This avoids scrolling (T265751)
 	if ( this.getManager().modal ) {
 		this.$content.attr( 'tabindex', -1 );
@@ -233,7 +233,7 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 };
 
 StartEditingDialog.prototype.updateMatchCount = function () {
-	var enabledFilters = this.topicSelector ? this.topicSelector.getFilters() : {},
+	const enabledFilters = this.topicSelector ? this.topicSelector.getFilters() : {},
 		topicFilters = new TopicFilters( enabledFilters ),
 		taskTypes = this.taskTypeSelector ?
 			this.taskTypeSelector.getSelected() :
@@ -245,7 +245,7 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 	this.filtersStore.savePreferences();
 
 	this.tasksStore.fetchTasks( 'startEditingDialog' ).then( () => {
-		var homepageModulesConfig = mw.config.get( 'homepagemodules' ),
+		const homepageModulesConfig = mw.config.get( 'homepagemodules' ),
 			taskCount = this.tasksStore.getTaskCount();
 		this.articleCounter.setCount( Number( taskCount ) );
 		if ( taskCount ) {
@@ -256,7 +256,7 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 };
 
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
-	var dialog = this;
+	const dialog = this;
 
 	// Don't allow the dialog to be closed by the user in non-modal mode
 	if ( !this.getManager().modal && ( !action || action === 'close' || action === 'done' ) ) {
@@ -297,10 +297,10 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				// initialization to avoid brief flashes of pending state when switching panels
 				// or closing the dialog.
 				this.setPendingElement( this.$activateButton );
-				var settings = {
+				const settings = {
 					'growthexperiments-homepage-suggestededits-activated': 1
 				};
-				var logData = { trigger: this.trigger };
+				const logData = { trigger: this.trigger };
 				if ( this.topicSelector ) {
 					settings[ SUGGESTED_EDITS_CONFIG.GENewcomerTasksTopicFiltersPref ] =
 						this.topicSelector.getSelectedTopics().length > 0 ?
@@ -329,12 +329,12 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 
 StartEditingDialog.prototype.getSize = function () {
 	// Make the dialog always be full size in non-modal mode
-	var parentSize = StartEditingDialog.super.prototype.getSize.apply( this, arguments );
+	const parentSize = StartEditingDialog.super.prototype.getSize.apply( this, arguments );
 	return this.getManager().modal ? parentSize : 'full';
 };
 
 StartEditingDialog.prototype.getSizeProperties = function () {
-	var parentResult = StartEditingDialog.super.prototype.getSizeProperties
+	const parentResult = StartEditingDialog.super.prototype.getSizeProperties
 		.apply( this, arguments );
 	// Custom width: 640px instead of 700px when not full size (T258016#6495190)
 	return this.getSize() === 'full' ? parentResult : { width: 640 };
@@ -344,13 +344,13 @@ StartEditingDialog.prototype.getBodyHeight = function () {
 	// When the dialog is displayed modally, give it a consistent height
 	// Measure the height of each panel, and find the tallest one
 	// (Non-modal mode behaves like fullscreen mode, and this method isn't called)
-	var maxHeight = 0;
-	var panels = this.panels.getItems();
-	for ( var i = 0; i < panels.length; i++ ) {
+	let maxHeight = 0;
+	const panels = this.panels.getItems();
+	for ( let i = 0; i < panels.length; i++ ) {
 		// Make the panel visible so we can measure it
-		var oldVisibility = panels[ i ].isVisible();
+		const oldVisibility = panels[ i ].isVisible();
 		panels[ i ].toggle( true );
-		var panelHeight = panels[ i ].$element[ 0 ].scrollHeight;
+		const panelHeight = panels[ i ].$element[ 0 ].scrollHeight;
 		panels[ i ].toggle( oldVisibility );
 
 		if ( panelHeight > maxHeight ) {
@@ -362,7 +362,7 @@ StartEditingDialog.prototype.getBodyHeight = function () {
 };
 
 StartEditingDialog.prototype.buildIntroPanel = function () {
-	var imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
+	const imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
 		introLinks = SUGGESTED_EDITS_CONFIG.GEHomepageSuggestedEditsIntroLinks,
 		responseMap = {
 			'add-image': {
@@ -424,7 +424,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		},
 		introPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
 
-	var surveyData;
+	let surveyData;
 	try {
 		surveyData = JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) ) || {};
 	} catch ( e ) {
@@ -438,17 +438,17 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		$overlay: true
 	}, this.filtersStore.getGroupedTopics() ) : false;
 
-	var generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.png';
+	const generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.png';
 
-	var responseData = responseMap[ surveyData.reason ];
-	var imageUrl;
+	const responseData = responseMap[ surveyData.reason ];
+	let imageUrl;
 	if ( responseData ) {
-		var imageData = responseData.image[ this.topicsAvailable() ? 'withTopics' : 'withoutTopics' ];
+		const imageData = responseData.image[ this.topicsAvailable() ? 'withTopics' : 'withoutTopics' ];
 		imageUrl = typeof imageData === 'string' ? imageData : imageData[ this.getDir() ];
 	}
 
 	if ( this.topicsAvailable() ) {
-		var $topicMessage = $( '<div>' )
+		const $topicMessage = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic-message notheme skin-invert' )
 			.append( responseData ?
 				responseData.labelHtml :
@@ -460,7 +460,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				]
 			);
 
-		var $topicIntro = $( '<div>' )
+		const $topicIntro = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic' )
 			.append(
 				$( '<div>' )
@@ -511,7 +511,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 					);
 				}
 			} );
-			var $topicSelectorWrapper = $( '<div>' )
+			const $topicSelectorWrapper = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )
 				.append(
 					$( '<p>' )
@@ -527,9 +527,9 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				$topicSelectorWrapper
 			);
 		} else {
-			var descriptionImage = OO.ui.isMobile() ? 'intro-topic-description-landscape.svg' :
+			const descriptionImage = OO.ui.isMobile() ? 'intro-topic-description-landscape.svg' :
 				'intro-topic-description-square.svg';
-			var $topicDescription = $( '<div>' )
+			const $topicDescription = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-topic-description' )
 				.append(
 					$( '<img>' )
@@ -556,11 +556,11 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 			);
 		}
 	} else {
-		var $generalImage = $( '<img>' )
+		const $generalImage = $( '<img>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
 			.attr( { src: imagePath + '/' + generalImageUrl } );
 
-		var $generalIntro = $( '<div>' )
+		const $generalIntro = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-general' )
 			.append(
 				// Put the image after the first paragraph in general mode (when it isn't floated);
@@ -582,7 +582,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() )
 			);
 
-		var $responseIntro;
+		let $responseIntro;
 		if ( responseData ) {
 			$responseIntro = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-response' )
@@ -610,7 +610,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 };
 
 StartEditingDialog.prototype.buildDifficultyPanel = function () {
-	var difficultyPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
+	const difficultyPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
 
 	difficultyPanel.$element.append(
 		this.buildProgressIndicator( 2, 2 ),
@@ -653,7 +653,7 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 
 StartEditingDialog.prototype.buildDifficultyLegend = function () {
 	return [ 'easy', 'medium', 'hard' ].map( ( level ) => {
-		var classPrefix = 'mw-ge-startediting-dialog-difficulty-',
+		const classPrefix = 'mw-ge-startediting-dialog-difficulty-',
 			labelMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
 				level + '-label',
 			headerMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
@@ -700,8 +700,8 @@ StartEditingDialog.prototype.buildDifficultyLegend = function () {
 };
 
 StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, totalPages ) {
-	var $indicator = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-progress' );
-	for ( var i = 0; i < totalPages; i++ ) {
+	const $indicator = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-progress' );
+	for ( let i = 0; i < totalPages; i++ ) {
 		$indicator.append( $( '<span>' )
 			.addClass( 'mw-ge-startediting-dialog-progress-indicator' )
 			.addClass( i < currentPage ? 'mw-ge-startediting-dialog-progress-indicator-completed' : '' )
@@ -744,16 +744,16 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 	}
 
 	// eslint-disable-next-line no-jquery/no-global-selector
-	var $homepage = $( '.growthexperiments-homepage-container:not(.homepage-module-overlay)' );
-	var $suggestedEditsModule = $homepage.find( '.growthexperiments-homepage-module-suggested-edits' );
-	var moduleDependencies = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ].rlModules;
+	const $homepage = $( '.growthexperiments-homepage-container:not(.homepage-module-overlay)' );
+	const $suggestedEditsModule = $homepage.find( '.growthexperiments-homepage-module-suggested-edits' );
+	const moduleDependencies = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ].rlModules;
 
 	// Rearrange the homepage.
 	// FIXME needs to be kept in sync with the PHP code. Maybe the homepage layout
 	//   (module containers) should be templated and made available via an API or JSON config.
 	if ( this.mode === 'desktop' ) {
 		// Remove StartEditing module
-		var $startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' );
+		const $startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' );
 		$startEditingModule.remove();
 		this.markSuggestedEditsModuleAsActivated( $suggestedEditsModule );
 		this.emit( 'activation' );

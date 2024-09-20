@@ -13,7 +13,7 @@ function PostEditToastMessage( config ) {
 	PostEditToastMessage.super.call( this, config );
 	this.isHidden = false;
 	if ( config.autoHideDuration ) {
-		var autohide = setTimeout( this.hide.bind( this ), config.autoHideDuration );
+		const autohide = setTimeout( this.hide.bind( this ), config.autoHideDuration );
 		this.$element.on( 'click', () => {
 			clearTimeout( autohide );
 			this.hide();

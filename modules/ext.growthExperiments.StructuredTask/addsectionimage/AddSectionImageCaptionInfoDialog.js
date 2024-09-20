@@ -1,4 +1,4 @@
-var AddImageCaptionInfoDialog = require( '../addimage/AddImageCaptionInfoDialog.js' ),
+const AddImageCaptionInfoDialog = require( '../addimage/AddImageCaptionInfoDialog.js' ),
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 /** @inheritDoc */
@@ -15,7 +15,7 @@ AddSectionImageCaptionInfoDialog.static.title = mw.message(
 ).text();
 
 AddSectionImageCaptionInfoDialog.static.message = function () {
-	var articleTitle = suggestedEditSession.getCurrentTitle().getNameText(),
+	let articleTitle = suggestedEditSession.getCurrentTitle().getNameText(),
 		/** @type {mw.libs.ge.AddSectionImageArticleTarget} **/
 		articleTarget = ve.init.target,
 		contentLanguageName = articleTarget.getSelectedSuggestion().metadata.contentLanguageName,

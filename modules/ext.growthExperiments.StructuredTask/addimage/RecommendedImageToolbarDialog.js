@@ -1,4 +1,4 @@
-var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
+const StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
 	MachineSuggestionsMode = require( '../MachineSuggestionsMode.js' ),
 	ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
 	AddImageUtils = require( './AddImageUtils.js' ),
@@ -122,7 +122,7 @@ RecommendedImageToolbarDialog.static.position = 'below';
 /** @inheritDoc **/
 RecommendedImageToolbarDialog.prototype.initialize = function () {
 	RecommendedImageToolbarDialog.super.prototype.initialize.call( this );
-	var $title = $( '<span>' ).addClass( 'mw-ge-recommendedImageToolbarDialog-title' )
+	const $title = $( '<span>' ).addClass( 'mw-ge-recommendedImageToolbarDialog-title' )
 			.text(
 				mw.message( 'growthexperiments-addimage-inspector-title' ).text()
 			),
@@ -152,7 +152,7 @@ RecommendedImageToolbarDialog.prototype.getSetupProcess = function ( data ) {
  * Initialize elements after this.surface is set
  */
 RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
-	var articleTarget = this.getArticleTarget();
+	const articleTarget = this.getArticleTarget();
 
 	this.images = articleTarget.images;
 	this.setUpToolbarDialogButton(
@@ -173,7 +173,7 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 	this.showRecommendationAtIndex( 0 );
 	if ( articleTarget.isSectionLevelTask() ) {
 		/** @type {mw.libs.ge.AddSectionImageArticleTarget} */
-		var sectionImageArticleTarget = articleTarget;
+		const sectionImageArticleTarget = articleTarget;
 		sectionImageArticleTarget.insertImagePlaceholder( this.images[ 0 ] );
 		sectionImageArticleTarget.scrollToTargetSection().then( () => {
 			this.animateIn();
@@ -217,13 +217,13 @@ RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
  * Show the rejection dialog
  */
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
-	var rejectionReasons = ve.init.target.recommendationRejectionReasons,
+	const rejectionReasons = ve.init.target.recommendationRejectionReasons,
 		rejectionDialogLifecycle = this.surface.dialogs.openWindow(
 			'recommendedImageRejection', rejectionReasons ),
 		// eslint-disable-next-line camelcase
 		metadataOverride = { active_interface: 'rejection_dialog' },
 		getLogActionData = function () {
-			var otherRejectionReason = ve.init.target.recommendationOtherRejectionReason;
+			const otherRejectionReason = ve.init.target.recommendationOtherRejectionReason;
 			return Object.assign( this.getSuggestionLogActionData(), {
 				/* eslint-disable camelcase */
 				rejection_reasons: ve.init.target.recommendationRejectionReasons || [],
@@ -260,7 +260,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 	this.logger.log( 'suggestion_skip', this.getSuggestionLogActionData() );
 	// eslint-disable-next-line camelcase
-	var logMetadata = { active_interface: 'skip_dialog' },
+	const logMetadata = { active_interface: 'skip_dialog' },
 		openSkipDialogPromise = this.surface.dialogs.openWindow( 'structuredTaskMessage', {
 			title: mw.message( 'growthexperiments-addimage-skip-dialog-title' ).text(),
 			message: mw.message( 'growthexperiments-addimage-skip-dialog-body' ).text(),
@@ -283,7 +283,7 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 	} );
 
 	openSkipDialogPromise.closed.then( ( data ) => {
-		var actionData = this.getSuggestionLogActionData();
+		const actionData = this.getSuggestionLogActionData();
 		if ( data && data.action === 'confirm' ) {
 			this.logger.log( 'confirm_skip_suggestion', actionData, logMetadata );
 			this.goToSuggestedEdits();
@@ -298,7 +298,7 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
  * Open the image viewer dialog
  */
 RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () {
-	var imageData = this.images[ this.currentIndex ],
+	let imageData = this.images[ this.currentIndex ],
 		surface = this.surface,
 		// eslint-disable-next-line camelcase
 		logMetadata = { active_interface: 'imageviewer_dialog' },
@@ -318,7 +318,7 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 	} );
 
 	this.showInternalRoute( 'imageviewer', () => {
-		var currentWindow = surface.dialogs.currentWindow;
+		const currentWindow = surface.dialogs.currentWindow;
 		if ( currentWindow ) {
 			currentWindow.close();
 		}
@@ -326,7 +326,7 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 };
 
 RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function () {
-	var surface = this.surface,
+	const surface = this.surface,
 		imageData = this.images[ this.currentIndex ];
 	surface.dialogs.openWindow( 'addImageDetails', {
 		recommendation: imageData,
@@ -339,7 +339,7 @@ RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function () {
  * Add event lissteners for Yes and No buttons and append them to this.$buttons
  */
 RecommendedImageToolbarDialog.prototype.setupButtons = function () {
-	var $acceptanceButtons = $( '<div>' ).addClass(
+	const $acceptanceButtons = $( '<div>' ).addClass(
 		'mw-ge-recommendedImageToolbarDialog-buttons-acceptance-group'
 	);
 	$acceptanceButtons.append( [ this.yesButton.$element, this.noButton.$element ] );
@@ -352,7 +352,7 @@ RecommendedImageToolbarDialog.prototype.setupButtons = function () {
  * @return {jQuery}
  */
 RecommendedImageToolbarDialog.prototype.getBodyContent = function () {
-	var $bodyContent = $( '<div>' ).addClass(
+	const $bodyContent = $( '<div>' ).addClass(
 		'mw-ge-recommendedImageToolbarDialog-bodyContent'
 	);
 	this.setupImagePreview();
@@ -406,7 +406,7 @@ RecommendedImageToolbarDialog.prototype.getFilenameElement = function ( title ) 
  * @return {jQuery}
  */
 RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descriptionHtml ) {
-	var descriptionText = $.parseHTML( descriptionHtml ).map( ( node ) => {
+	let descriptionText = $.parseHTML( descriptionHtml ).map( ( node ) => {
 			if ( node.nodeType === Node.ELEMENT_NODE ) {
 				return node.innerText;
 			} else if ( node.nodeType === Node.TEXT_NODE ) {
@@ -434,7 +434,7 @@ RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descr
  * Update content specific to the current suggestion
  */
 RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
-	var imageData = this.images[ this.currentIndex ],
+	const imageData = this.images[ this.currentIndex ],
 		metadata = imageData.metadata,
 		thumbWidth = window.innerWidth > COMPACT_VIEW_BREAKPOINT ? 160 : 120,
 		imageRenderData = AddImageUtils.getImageRenderData( metadata, window, thumbWidth );
@@ -481,7 +481,7 @@ RecommendedImageToolbarDialog.prototype.imageCaptionReadyHandler = function () {
 	if ( !this.canShowCaption ) {
 		return;
 	}
-	var articleTarget = this.getArticleTarget(),
+	const articleTarget = this.getArticleTarget(),
 		surface = this.surface;
 	MachineSuggestionsMode.enableVirtualKeyboard( surface, true );
 	MachineSuggestionsMode.disableSurfacePaste( surface );
@@ -504,7 +504,7 @@ RecommendedImageToolbarDialog.prototype.imageCaptionReadyHandler = function () {
  * Set up loading states for the caption step & handler when returning from the step
  */
 RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
-	var articleTarget = this.getArticleTarget(),
+	const articleTarget = this.getArticleTarget(),
 		surface = this.surface,
 		$inspector = this.$element,
 		$documentNode = surface.getView().$documentNode;
@@ -558,13 +558,13 @@ RecommendedImageToolbarDialog.prototype.showInternalRoute = function (
 	// On mobile, hashchange event with #/editor hash loads the editor. When opening the dialog,
 	// add another history entry with the same hash so that going back (via browser) doesn't load
 	// the editor again (since the hashchange event isn't triggered).
-	var hash = OO.ui.isMobile() ? '#/editor/all' : '#' + routeName;
+	const hash = OO.ui.isMobile() ? '#/editor/all' : '#' + routeName;
 	router.navigateTo( routeName, {
 		path: location.pathname + location.search + hash,
 		useReplaceState: false
 	} );
 
-	var onPopstate = function onPopstate() {
+	const onPopstate = function onPopstate() {
 		popstateHandler();
 		router.off( 'popstate', onPopstate );
 	};

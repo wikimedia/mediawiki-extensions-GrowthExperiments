@@ -66,7 +66,7 @@ TaskTypeSelectionWidget.prototype.getSelected = function () {
 };
 
 TaskTypeSelectionWidget.prototype.onSelect = function () {
-	var selected = this.getSelected();
+	const selected = this.getSelected();
 	this.errorMessage.toggle( selected.length === 0 );
 	this.emit( 'select', selected );
 };
@@ -105,7 +105,7 @@ TaskTypeSelectionWidget.prototype.makeHeadersForDifficulty = function ( difficul
 	// * difficulty-easy
 	// * difficulty-medium
 	// * difficulty-hard
-	var iconWidget = new OO.ui.IconWidget( { icon: 'difficulty-' + difficulty } ),
+	const iconWidget = new OO.ui.IconWidget( { icon: 'difficulty-' + difficulty } ),
 		$label = $( '<h4>' )
 			.addClass( 'mw-ge-homepage-taskTypeSelectionWidget-difficulty-level-label' )
 			.text( mw.message(
@@ -146,8 +146,8 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
 	difficulty,
 	selectedTaskTypes
 ) {
-	var checkboxes = [];
-	for ( var taskType in this.TASK_TYPES ) {
+	const checkboxes = [];
+	for ( const taskType in this.TASK_TYPES ) {
 		if ( this.TASK_TYPES[ taskType ].difficulty === difficulty ) {
 			checkboxes.push( this.makeCheckbox(
 				this.TASK_TYPES[ taskType ],
@@ -164,14 +164,14 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
  * @return {OO.ui.CheckboxMultioptionWidget}
  */
 TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, selected ) {
-	var device = OO.ui.isMobile() ? 'mobile' : 'desktop',
+	const device = OO.ui.isMobile() ? 'mobile' : 'desktop',
 		$label = $( '<span>' ).text( taskTypeData.messages.label );
 	if ( 'filterIcon' in taskTypeData.iconData ) {
 		// Messages that can be used here:
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
 		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
-		var descriptionMessage = mw.message( taskTypeData.iconData.descriptionMessageKey ).escaped();
-		var $additionalMessage = new OO.ui.Element( { classes: [
+		const descriptionMessage = mw.message( taskTypeData.iconData.descriptionMessageKey ).escaped();
+		const $additionalMessage = new OO.ui.Element( { classes: [
 			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg',
 			// The following classes are used here:
 			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-copyedit
@@ -185,7 +185,7 @@ TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, select
 			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + taskTypeData.id,
 			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + device
 		] } ).$element;
-		var $additionalMessageContent = $( '<span>' ).append(
+		const $additionalMessageContent = $( '<span>' ).append(
 			new OO.ui.IconWidget( { icon: taskTypeData.iconData.filterIcon } ).$element,
 			descriptionMessage
 		);

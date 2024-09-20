@@ -17,7 +17,7 @@ function HelpPanelHomeButtonWidget( config ) {
 OO.inheritClass( HelpPanelHomeButtonWidget, OO.ui.Widget );
 
 HelpPanelHomeButtonWidget.prototype.build = function () {
-	var $button = $( '<div>' )
+	const $button = $( '<div>' )
 		.addClass( [
 			'mw-ge-help-panel-home-button',
 			// The following classes are used here:
@@ -40,7 +40,7 @@ HelpPanelHomeButtonWidget.prototype.build = function () {
 };
 
 HelpPanelHomeButtonWidget.prototype.getIcon = function () {
-	var iconKeyMap = {
+	const iconKeyMap = {
 			'ask-help': 'userTalk',
 			'ask-help-mentor': 'mentor',
 			'general-help': 'help',
@@ -83,7 +83,7 @@ HelpPanelHomeButtonWidget.prototype.getPreHeader = function () {
 };
 
 HelpPanelHomeButtonWidget.prototype.getHeader = function () {
-	var headerText;
+	let headerText;
 	if ( this.config.id === 'suggested-edits' ) {
 		// The following messages are used here:
 		// * growthexperiments-homepage-suggestededits-tasktype-name-copyedit
@@ -107,7 +107,7 @@ HelpPanelHomeButtonWidget.prototype.getHeader = function () {
 };
 
 HelpPanelHomeButtonWidget.prototype.getSubheader = function () {
-	var text;
+	let text;
 
 	if ( this.config.customSubheader ) {
 		text = this.config.customSubheader;

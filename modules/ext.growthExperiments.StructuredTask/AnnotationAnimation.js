@@ -13,7 +13,7 @@
 	 *
 	 * @type {Object}
 	 */
-	var state = {};
+	let state = {};
 
 	/**
 	 * Get the prior state of the selected annotation

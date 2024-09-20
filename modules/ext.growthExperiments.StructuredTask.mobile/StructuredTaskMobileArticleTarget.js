@@ -1,4 +1,4 @@
-var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskArticleTarget = StructuredTask.StructuredTaskArticleTarget,
 	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
 	router = require( 'mediawiki.router' );
@@ -35,7 +35,7 @@ StructuredTaskMobileArticleTarget.prototype.setupToolbar = function () {
 		 * Using a placeholder tool instead of appending to this.$element like desktop
 		 * so that the position of the existing tools can be taken into account
 		 */
-		var $newElement = MachineSuggestionsMode.getTitleElement(),
+		const $newElement = MachineSuggestionsMode.getTitleElement(),
 			placeholderTool = this.toolbar.tools.machineSuggestionsPlaceholder;
 		if ( placeholderTool ) {
 			placeholderTool.$element = $newElement;

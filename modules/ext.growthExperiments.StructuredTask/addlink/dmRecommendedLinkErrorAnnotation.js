@@ -3,7 +3,7 @@
  * @extends ve.dm.Annotation
  * @constructor
  */
-var DMRecommendedLinkErrorAnnotation = function GeDmRecommendedLinkErrorAnnotation() {
+const DMRecommendedLinkErrorAnnotation = function GeDmRecommendedLinkErrorAnnotation() {
 	// Parent constructor
 	DMRecommendedLinkErrorAnnotation.super.apply( this, arguments );
 

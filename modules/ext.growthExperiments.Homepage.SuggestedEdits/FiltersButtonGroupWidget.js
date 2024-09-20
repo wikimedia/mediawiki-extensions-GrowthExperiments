@@ -1,4 +1,4 @@
-var CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
+const CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 	TOPIC_MATCH_MODES = CONSTANTS.TOPIC_MATCH_MODES,
 	TOPIC_DATA = CONSTANTS.TOPIC_DATA,
 	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES;
@@ -15,7 +15,7 @@ var CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
  * @constructor
  */
 function FiltersButtonGroupWidget( config, logger, rootStore ) {
-	var DifficultyFiltersDialog = require( './DifficultyFiltersDialog.js' ),
+	const DifficultyFiltersDialog = require( './DifficultyFiltersDialog.js' ),
 		TopicFiltersDialog = require( './TopicFiltersDialog.js' ),
 		windowManager = new OO.ui.WindowManager( { modal: true } ),
 		windows = [],
@@ -26,7 +26,7 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 	this.filtersStore = rootStore.newcomerTasks.filters;
 
 	if ( this.topicMatching ) {
-		var shouldShowFunnelAddIcon = config.useTopicMatchMode && this.filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND;
+		const shouldShowFunnelAddIcon = config.useTopicMatchMode && this.filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND;
 		this.topicFilterButtonWidget = new OO.ui.ButtonWidget( {
 			icon: shouldShowFunnelAddIcon ? 'funnel-add' : 'funnel',
 			classes: [ 'topic-matching', 'topic-filter-button' ],
@@ -100,7 +100,7 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 	$( 'body' ).append( windowManager.$element );
 	windowManager.addWindows( windows );
 	this.difficultyFilterButtonWidget.on( 'click', () => {
-		var lifecycle = windowManager.openWindow( this.taskTypeFiltersDialog );
+		const lifecycle = windowManager.openWindow( this.taskTypeFiltersDialog );
 		logger.log( 'suggested-edits', config.mode, 'se-taskfilter-open' );
 		this.emit( 'open' );
 		lifecycle.closing.done( ( data ) => {
@@ -116,7 +116,7 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 
 	if ( this.topicFilterButtonWidget ) {
 		this.topicFilterButtonWidget.on( 'click', () => {
-			var lifecycle = windowManager.openWindow( this.topicFiltersDialog );
+			const lifecycle = windowManager.openWindow( this.topicFiltersDialog );
 			logger.log( 'suggested-edits', config.mode, 'se-topicfilter-open', {
 				topics: this.topicFiltersDialog.getEnabledFilters().getTopics()
 			} );
@@ -125,7 +125,7 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 			}
 			this.emit( 'open' );
 			lifecycle.closing.done( ( data ) => {
-				var closeExtraData = {
+				const closeExtraData = {
 					topics: this.topicFiltersDialog.getEnabledFilters().getTopics()
 				};
 				if ( config.useTopicMatchMode ) {
@@ -200,7 +200,7 @@ FiltersButtonGroupWidget.prototype.updateLoadingState = function ( state ) {
 FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 	taskTypeSearch, topicSearch
 ) {
-	var levels = {},
+	let levels = {},
 		topicMessages = [],
 		topicLabel = '',
 		separator = '',
@@ -263,7 +263,7 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 		// * growthexperiments-homepage-suggestededits-difficulty-filter-label-easy
 		// * growthexperiments-homepage-suggestededits-difficulty-filter-label-medium
 		// * growthexperiments-homepage-suggestededits-difficulty-filter-label-hard
-		var label = mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label-' +
+		const label = mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label-' +
 			level ).text();
 		messages.push( label );
 		// Icons: difficulty-easy, difficulty-medium, difficulty-hard

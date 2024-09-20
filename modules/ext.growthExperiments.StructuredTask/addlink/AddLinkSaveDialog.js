@@ -1,4 +1,4 @@
-var LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' ),
+const LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' ),
 	StructuredTaskSaveDialog = require( '../StructuredTaskSaveDialog.js' );
 
 /**
@@ -45,7 +45,7 @@ AddLinkSaveDialog.prototype.getSuggestionStateHeader = function () {
  * @return {jQuery[]} Table header elements
  */
 AddLinkSaveDialog.prototype.getSummaryTableHeader = function () {
-	var $suggestionCol = $( '<th>' ).append(
+	const $suggestionCol = $( '<th>' ).append(
 		new OO.ui.IconWidget( { icon: 'robot-black' } ).$element,
 		$( '<span>' ).addClass( 'aligner' ).text(
 			mw.message( 'growthexperiments-addlink-summary-column-header-suggestion' ).text()
@@ -92,8 +92,8 @@ AddLinkSaveDialog.prototype.initialize = function () {
  * @param {Object[]} annotationStates Suggestion states (acceptances/rejections/skips)
  */
 AddLinkSaveDialog.prototype.updateSummary = function ( annotationStates ) {
-	var $rows = annotationStates.map( ( state ) => {
-		var $icon;
+	const $rows = annotationStates.map( ( state ) => {
+		let $icon;
 		if ( state.accepted ) {
 			$icon = new OO.ui.IconWidget( { icon: 'check', flags: 'progressive' } ).$element;
 		} else if ( state.rejected ) {
@@ -119,7 +119,7 @@ AddLinkSaveDialog.prototype.updateSummary = function ( annotationStates ) {
 /** @inheritDoc */
 AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
 	return StructuredTaskSaveDialog.prototype.getSetupProcess.call( this, data ).next( function () {
-		var acceptedCount, rejectedCount, skippedCount,
+		let acceptedCount, rejectedCount, skippedCount,
 			annotationStates = ve.init.target.getAnnotationStates();
 		acceptedCount = rejectedCount = skippedCount = 0;
 		annotationStates.forEach( ( state ) => {

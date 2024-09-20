@@ -24,7 +24,7 @@ function OptionWithTextInputWidget( optionWidget, config ) {
  * @param {number} [textInputConfig.maxLength] Maximum number of characters allowed in the input
  */
 OptionWithTextInputWidget.prototype.setupTextInput = function ( textInputConfig ) {
-	var widgetConfig = {
+	const widgetConfig = {
 		disabled: !this.optionWidget.isSelected(),
 		placeholder: textInputConfig.placeholder,
 		classes: [ 'mw-ge-optionWithTextInputWidget-textInput' ]

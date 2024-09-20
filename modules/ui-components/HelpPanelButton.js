@@ -12,8 +12,8 @@
 	 * @constructor
 	 */
 	function HelpPanelButton( config ) {
-		var isOpened = typeof config.isOpened === 'boolean' ? config.isOpened : false;
-		var defaults = {
+		const isOpened = typeof config.isOpened === 'boolean' ? config.isOpened : false;
+		const defaults = {
 			id: 'mw-ge-help-panel-cta-button',
 			invisibleLabel: true,
 			flags: [ 'progressive' ],

@@ -1,4 +1,4 @@
-var SuggestionWidget = require( './SuggestionWidget.js' ),
+const SuggestionWidget = require( './SuggestionWidget.js' ),
 	SuggestionGroupWidget = require( './SuggestionGroupWidget.js' ),
 	MatchModeSelectWidget = require( './MatchModeSelectWidget.js' ),
 	TopicFilters = require( '../ext.growthExperiments.DataStore/TopicFilters.js' ),
@@ -61,15 +61,15 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 
 	this.suggestions = [];
 	this.suggestionGroupWidgets = [];
-	for ( var key in GROUPED_TOPICS ) {
-		var group = GROUPED_TOPICS[ key ];
-		var suggestionWidgets = group.topics.map( ( topic ) => new SuggestionWidget( { suggestionData: {
+	for ( const key in GROUPED_TOPICS ) {
+		const group = GROUPED_TOPICS[ key ];
+		const suggestionWidgets = group.topics.map( ( topic ) => new SuggestionWidget( { suggestionData: {
 			id: topic.id,
 			text: topic.name,
 			confirmed: config.filters.getTopics().indexOf( topic.id ) !== -1
 		} } ) );
-		var displayedSuggestionWidgets = suggestionWidgets;
-		var hiddenSuggestionWidgets = [];
+		let displayedSuggestionWidgets = suggestionWidgets;
+		let hiddenSuggestionWidgets = [];
 
 		// If there are no topic groups, all topics are in one group whose ID is null
 		if ( group.id === null ) {
@@ -81,14 +81,14 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 				hiddenSuggestionWidgets = suggestionWidgets.slice( config.initialLimit );
 			}
 			// If any of the suggestions we want to hide is selected, don't hide anything
-			var anyHiddenSelected = hiddenSuggestionWidgets.some( ( suggestion ) => suggestion.confirmed );
+			const anyHiddenSelected = hiddenSuggestionWidgets.some( ( suggestion ) => suggestion.confirmed );
 			if ( anyHiddenSelected ) {
 				displayedSuggestionWidgets = suggestionWidgets;
 				hiddenSuggestionWidgets = [];
 			}
 		}
 
-		var groupWidget = new SuggestionGroupWidget( {
+		const groupWidget = new SuggestionGroupWidget( {
 			items: displayedSuggestionWidgets,
 			hiddenItems: hiddenSuggestionWidgets,
 			header: group.id === null ? undefined : group.name,

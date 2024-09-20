@@ -1,5 +1,5 @@
 module.exports = ( function () {
-	var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+	const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 		MachineSuggestionsPlaceholderTool = require( './MachineSuggestionsPlaceholderTool.js' ),
 		SuggestionsMobileArticleTarget = require( './SuggestionsMobileArticleTarget.js' );
 
@@ -11,7 +11,7 @@ module.exports = ( function () {
 	 */
 	function initializeTarget( taskTypeId ) {
 		if ( taskTypeId === 'link-recommendation' ) {
-			var AddLinkTargetInitializer = StructuredTask.addLink().AddLinkTargetInitializer,
+			const AddLinkTargetInitializer = StructuredTask.addLink().AddLinkTargetInitializer,
 				addLinkTargetInitializer = new AddLinkTargetInitializer( {
 					tools: [ MachineSuggestionsPlaceholderTool ],
 					windows: [
@@ -24,7 +24,7 @@ module.exports = ( function () {
 			addLinkTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
 			addLinkTargetInitializer.initialize();
 		} else if ( taskTypeId === 'image-recommendation' ) {
-			var AddImageTargetInitializer = StructuredTask.addImage().AddImageTargetInitializer,
+			const AddImageTargetInitializer = StructuredTask.addImage().AddImageTargetInitializer,
 				addImageTargetInitializer = new AddImageTargetInitializer( {
 					tools: [ MachineSuggestionsPlaceholderTool ],
 					windows: [
@@ -37,7 +37,7 @@ module.exports = ( function () {
 			addImageTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
 			addImageTargetInitializer.initialize();
 		} else if ( taskTypeId === 'section-image-recommendation' ) {
-			var AddSectionImageTargetInitializer = StructuredTask.addSectionImage().AddSectionImageTargetInitializer,
+			const AddSectionImageTargetInitializer = StructuredTask.addSectionImage().AddSectionImageTargetInitializer,
 				addSectionImageTargetInitializer = new AddSectionImageTargetInitializer( {
 					tools: [ MachineSuggestionsPlaceholderTool ],
 					windows: [

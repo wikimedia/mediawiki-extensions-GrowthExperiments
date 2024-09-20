@@ -68,7 +68,7 @@
 	 *   Whether to keep the fragment as is (instead of encoding it)
 	 */
 	function removeQueryParam( url, queryParam, useLiteralFragment ) {
-		var queryParams;
+		let queryParams;
 		if ( Array.isArray( queryParam ) ) {
 			queryParams = queryParam;
 		} else {
@@ -82,7 +82,7 @@
 			delete url.query[ param ];
 		} );
 
-		var newUrl;
+		let newUrl;
 		if ( Object.keys( url.query ).length === 1 && url.query.title ) {
 			// After removing the param only title remains. Rewrite to a prettier URL.
 			newUrl = mw.util.getUrl( url.query.title );
@@ -90,7 +90,7 @@
 			newUrl = url;
 		}
 
-		var fragment = '';
+		let fragment = '';
 		// mw.uri.toString encodes fragment by default.
 		if ( useLiteralFragment && url.fragment ) {
 			fragment = '#' + url.fragment;
@@ -123,7 +123,7 @@
 	 * @return {string}
 	 */
 	function getUserVariant() {
-		var variant = mw.user.options.get( 'growthexperiments-homepage-variant' );
+		let variant = mw.user.options.get( 'growthexperiments-homepage-variant' );
 		if ( variant === null ||
 			mw.config.get( 'wgGEUserVariants' ).indexOf( variant ) === -1
 		) {
@@ -162,7 +162,7 @@
 	 *  @return {string}
 	 */
 	function getSuggestedEditsFeedUrl( source ) {
-		var titleHash = '',
+		let titleHash = '',
 			queryParams = {};
 		if ( source ) {
 			queryParams.source = source;
@@ -197,7 +197,7 @@
 	function getIntlLocale() {
 		// Only specify user language and leave locale resolution to Intl instead of
 		// using the MediaWiki fallback chain. This might or might not be a good idea.
-		var language = mw.config.get( 'wgUserLanguage' ),
+		const language = mw.config.get( 'wgUserLanguage' ),
 			languageOptions = mw.config.get( 'wgTranslateNumerals' ) ? {} : { numberingSystem: 'latn' };
 		// eslint-disable-next-line compat/compat
 		return new Intl.Locale( language, languageOptions );

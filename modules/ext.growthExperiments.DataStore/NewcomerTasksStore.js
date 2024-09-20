@@ -1,4 +1,4 @@
-var GrowthTasksApi = require( './GrowthTasksApi.js' ),
+const GrowthTasksApi = require( './GrowthTasksApi.js' ),
 	aqsConfig = require( './AQSConfig.json' ),
 	suggestedEditsConfig = require( './config.json' ),
 	CONSTANTS = require( './constants.js' );
@@ -15,7 +15,7 @@ var GrowthTasksApi = require( './GrowthTasksApi.js' ),
 function NewcomerTasksStore( root ) {
 	OO.EventEmitter.call( this );
 	// States
-	var initialState = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ) || {};
+	const initialState = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ) || {};
 	/** @property {mw.libs.ge.TaskData[]} taskQueue Fetched task data */
 	this.taskQueue = [];
 	/** @property {boolean} taskQueueLoading Whether the API request to fetch tasks is in progress */
@@ -166,7 +166,7 @@ NewcomerTasksStore.prototype.getQualityGateConfig = function () {
  * @return {string}
  */
 NewcomerTasksStore.prototype.getNewcomerTaskToken = function () {
-	var currentTask = this.getCurrentTask();
+	const currentTask = this.getCurrentTask();
 	if ( !currentTask ) {
 		throw new Error( 'Trying to get newcomertask token but there is no task' );
 	}
@@ -302,7 +302,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		this.abortedPromise = true;
 	}
 
-	var promise = $.Deferred(),
+	const promise = $.Deferred(),
 		apiConfig = { context: context };
 
 	if ( config && config.excludePageId ) {
@@ -322,15 +322,15 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		apiConfig );
 
 	this.apiPromise.then( ( data ) => {
-		var filterByDailyTaskLimitNotExceeded = function ( task ) {
-			var qualityGate = task.qualityGateConfig[ task.tasktype ];
+		const filterByDailyTaskLimitNotExceeded = function ( task ) {
+			const qualityGate = task.qualityGateConfig[ task.tasktype ];
 			if ( !qualityGate ) {
 				return true;
 			}
 			return qualityGate.dailyLimit === false;
 		};
 
-		var updatedTaskQueue = data.tasks.slice();
+		let updatedTaskQueue = data.tasks.slice();
 		if ( config && config.excludeExceededQuotaTaskTypes === true ) {
 			updatedTaskQueue = updatedTaskQueue.filter( filterByDailyTaskLimitNotExceeded );
 		}
@@ -339,7 +339,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		this.tasksFetchedCount = data.tasks.length;
 		this.currentTaskIndex = 0;
 		if ( this.preloadedFirstTask ) {
-			var preloadedTask = this.preloadedFirstTask;
+			const preloadedTask = this.preloadedFirstTask;
 			updatedTaskQueue = updatedTaskQueue.filter( ( task ) => task.title !== preloadedTask.title );
 			updatedTaskQueue = [ preloadedTask ].concat( updatedTaskQueue );
 			this.preloadedFirstTask = null;
@@ -423,7 +423,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 	}
 
 	this.setTaskQueueLoading( true );
-	var existingPageIds = this.taskQueue.map( ( task ) => task.pageId ) || [],
+	const existingPageIds = this.taskQueue.map( ( task ) => task.pageId ) || [],
 		config = { context: context },
 		currentPageId = mw.config.get( 'wgArticleId' ),
 		promise = $.Deferred();
@@ -443,7 +443,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 	);
 
 	this.apiFetchMoreTasksPromise.done( ( data ) => {
-		var newTasks = data.tasks || [];
+		const newTasks = data.tasks || [];
 		// accumulate the number of tasks fetched
 		this.tasksFetchedCount += newTasks.length;
 		// When the API response informs the last batch of tasks has been served,
@@ -474,7 +474,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
  *   this.taskQueue will be updated.
  */
 NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, context ) {
-	var apiConfig = {
+	const apiConfig = {
 			context: context || 'suggestedEditsModule.getExtraDataAndUpdateQueue'
 		},
 		suggestedEditData = this.taskQueue[ taskIndex ],
@@ -484,19 +484,19 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 		return $.Deferred().resolve().promise();
 	}
 
-	var pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig ).fail( () => {
+	const pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig ).fail( () => {
 		// Set the PCS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
 		this.taskQueue[ this.currentTaskIndex ].description = null;
 		this.taskQueue[ this.currentTaskIndex ].thumbnailSource = null;
 	} );
-	var aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData, apiConfig ).fail( () => {
+	const aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData, apiConfig ).fail( () => {
 		// Set the AQS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
 		this.taskQueue[ this.currentTaskIndex ].pageviews = null;
 	} );
 
-	var preloaded = this.preloadCardImage( suggestedEditData );
+	const preloaded = this.preloadCardImage( suggestedEditData );
 	if ( !preloaded ) {
 		pcsPromise.done( () => {
 			this.preloadCardImage( suggestedEditData );
@@ -518,7 +518,7 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
  * Fetch extra data for the next task in the queue
  */
 NewcomerTasksStore.prototype.preloadExtraDataForUpcomingTask = function () {
-	var nextTask = this.taskQueue[ this.currentTaskIndex + 1 ];
+	const nextTask = this.taskQueue[ this.currentTaskIndex + 1 ];
 	if ( nextTask && !nextTask.extract ) {
 		this.fetchExtraDataForTaskIndex( this.currentTaskIndex + 1 );
 	}
@@ -531,7 +531,7 @@ NewcomerTasksStore.prototype.preloadExtraDataForUpcomingTask = function () {
  * @return {jQuery.Promise}
  */
 NewcomerTasksStore.prototype.fetchExtraDataForCurrentTask = function ( context ) {
-	var currentTask = this.getCurrentTask();
+	const currentTask = this.getCurrentTask();
 	if ( currentTask && currentTask.extract ) {
 		return $.Deferred().resolve();
 	}
@@ -615,7 +615,7 @@ NewcomerTasksStore.prototype.lessResultsThanRequested = function ( count ) {
  */
 NewcomerTasksStore.prototype.synchronizeExtraData = function () {
 	// HomepageModuleLogger adds this to the log data automatically
-	var extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' );
+	let extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' );
 	if ( !extraData ) {
 		// when initializing the module on the client side, this is not set
 		extraData = {};

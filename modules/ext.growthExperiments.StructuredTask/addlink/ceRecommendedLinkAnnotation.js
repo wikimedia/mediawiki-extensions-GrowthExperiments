@@ -1,4 +1,4 @@
-var AnnotationAnimation = require( '../AnnotationAnimation.js' );
+const AnnotationAnimation = require( '../AnnotationAnimation.js' );
 
 /**
  * @class mw.libs.ge.ce.RecommendedLinkAnnotation
@@ -63,7 +63,7 @@ CERecommendedLinkAnnotation.prototype.onClick = function ( e ) {
  */
 CERecommendedLinkAnnotation.prototype.attachContents = function () {
 	CERecommendedLinkAnnotation.super.prototype.attachContents.apply( this, arguments );
-	var shouldAnimateIcons = false,
+	let shouldAnimateIcons = false,
 		newState = this.model.getState(),
 		stateData = AnnotationAnimation.getLastState(),
 		icons = [];
@@ -72,12 +72,12 @@ CERecommendedLinkAnnotation.prototype.attachContents = function () {
 	// * mw-ge-recommendedLinkAnnotation-icon-accepted
 	// * mw-ge-recommendedLinkAnnotation-icon-rejected
 	// * mw-ge-recommendedLinkAnnotation-icon-undecided
-	var $toIcon = $( '<span>' ).addClass( 'mw-ge-recommendedLinkAnnotation-icon-' + newState );
+	const $toIcon = $( '<span>' ).addClass( 'mw-ge-recommendedLinkAnnotation-icon-' + newState );
 	icons.push( $toIcon );
 
-	var $fromIcon, isDeselect;
+	let $fromIcon, isDeselect;
 	if ( this.isRenderingUpdatedAnnotation() ) {
-		var oldState = stateData.oldState;
+		const oldState = stateData.oldState;
 		isDeselect = stateData.isDeselect;
 		shouldAnimateIcons = oldState !== newState;
 		// The following classes are used here:
@@ -93,7 +93,7 @@ CERecommendedLinkAnnotation.prototype.attachContents = function () {
 		$toIcon.addClass( 'current' );
 	}
 
-	var $icon = $( '<span>' ).addClass( 'mw-ge-recommendedLinkAnnotation-iconContainer' ).append( icons );
+	const $icon = $( '<span>' ).addClass( 'mw-ge-recommendedLinkAnnotation-iconContainer' ).append( icons );
 	this.$element.append( $icon );
 
 	if ( shouldAnimateIcons ) {

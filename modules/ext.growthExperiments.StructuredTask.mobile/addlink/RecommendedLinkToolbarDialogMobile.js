@@ -1,4 +1,4 @@
-var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	RecommendedLinkToolbarDialog = StructuredTask.addLink().RecommendedLinkToolbarDialog,
 	LinkSuggestionInteractionLogger = StructuredTask.addLink().LinkSuggestionInteractionLogger,
 	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
@@ -91,7 +91,7 @@ RecommendedLinkToolbarDialogMobile.prototype.showRecommendationAtIndex = functio
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendation = function () {
-	var shouldAnimateContent = !this.isFirstRender;
+	const shouldAnimateContent = !this.isFirstRender;
 	if ( shouldAnimateContent ) {
 		this.prepareAnimatedContent( this.$labelPreviewTextContainer );
 		this.prepareAnimatedContent( this.$linkPreviewContainer );
@@ -141,7 +141,7 @@ RecommendedLinkToolbarDialogMobile.prototype.setupLabelPreview = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogMobile.prototype.setupLinkPreview = function () {
-	var $linkPreview = RecommendedLinkToolbarDialogMobile.super.prototype.setupLinkPreview.apply(
+	const $linkPreview = RecommendedLinkToolbarDialogMobile.super.prototype.setupLinkPreview.apply(
 		this, arguments
 	);
 	this.$linkPreviewContainer = this.setUpAnimationContainer( $linkPreview );
@@ -189,7 +189,7 @@ RecommendedLinkToolbarDialogMobile.prototype.setUpAnimationContainer = function 
 RecommendedLinkToolbarDialogMobile.prototype.prepareAnimatedContent = function (
 	$container, isContentAbsolutelyPositioned
 ) {
-	var $realCurrent = $container.find( '.current' ),
+	const $realCurrent = $container.find( '.current' ),
 		$fakeCurrent = $realCurrent.clone().addClass( 'fake-current' ).removeClass( 'current' );
 	// Explicitly set container height to hide content that's animating in
 	if ( !isContentAbsolutelyPositioned ) {
@@ -210,7 +210,7 @@ RecommendedLinkToolbarDialogMobile.prototype.prepareAnimatedContent = function (
  */
 RecommendedLinkToolbarDialogMobile.prototype.animateNewContent = function ( $container ) {
 	// Animate in new content
-	var $fakeCurrent = $container.find( '.fake-current' ),
+	const $fakeCurrent = $container.find( '.fake-current' ),
 		$realCurrent = $container.find( '.current' ),
 		promise = $.Deferred();
 
@@ -230,7 +230,7 @@ RecommendedLinkToolbarDialogMobile.prototype.animateNewContent = function ( $con
  * Enable navigation via swipe gestures
  */
 RecommendedLinkToolbarDialogMobile.prototype.setupSwipeNavigation = function () {
-	var swipePane = new SwipePane( this.$body, {
+	const swipePane = new SwipePane( this.$body, {
 		isRtl: document.documentElement.dir === 'rtl',
 		isHorizontal: true
 	} );

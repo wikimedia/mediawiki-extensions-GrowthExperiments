@@ -1,4 +1,4 @@
-var GrowthTasksApi = require( './GrowthTasksApi.js' ),
+const GrowthTasksApi = require( './GrowthTasksApi.js' ),
 	TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 	aqsConfig = require( './AQSConfig.json' ),
 	suggestedEditsConfig = require( './config.json' ),
@@ -84,7 +84,7 @@ FiltersStore.prototype.getGroupedTopics = function () {
  */
 FiltersStore.prototype.getTopicsQuery = function () {
 	if ( this.topicsEnabled ) {
-		var topicFiltersConfig = {
+		const topicFiltersConfig = {
 			topics: this.getSelectedTopics()
 		};
 		if ( this.shouldUseTopicMatchMode ) {
@@ -166,13 +166,13 @@ FiltersStore.prototype.onSelectionChanged = function () {
  * @return {jQuery.Promise}
  */
 FiltersStore.prototype.savePreferences = function () {
-	var updatedPreferences = {},
+	const updatedPreferences = {},
 		topicPrefName = suggestedEditsConfig.GENewcomerTasksTopicFiltersPref,
 		prefValueHasBeenSetBefore = mw.user.options.get( topicPrefName ),
 		selectedTopics = this.getSelectedTopics(),
 		topicFilters = this.getTopicsQuery();
 
-	var topicPrefValue;
+	let topicPrefValue;
 	if ( selectedTopics.length ) {
 		topicPrefValue = JSON.stringify( selectedTopics );
 	} else {
@@ -234,9 +234,9 @@ FiltersStore.prototype.formatTopicGroups = function ( topicData ) {
 	}
 	/* eslint-enable no-underscore-dangle */
 
-	var grouped = {};
-	for ( var key in topicData ) {
-		var topic = topicData[ key ];
+	const grouped = {};
+	for ( const key in topicData ) {
+		const topic = topicData[ key ];
 		if ( grouped[ topic.groupId ] === undefined ) {
 			grouped[ topic.groupId ] = {
 				id: topic.groupId,

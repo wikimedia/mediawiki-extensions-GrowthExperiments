@@ -1,4 +1,4 @@
-var addLinkModules, addImageModules, addSectionImageModules;
+let addLinkModules, addImageModules, addSectionImageModules;
 
 function addLink() {
 	if ( !addLinkModules ) {

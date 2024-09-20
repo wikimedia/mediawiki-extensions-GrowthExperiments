@@ -18,8 +18,8 @@
 			expanded: false,
 			scrollable: false
 		} );
-		for ( var key in config.data ) {
-			var panel = new OO.ui.PanelLayout( {
+		for ( const key in config.data ) {
+			const panel = new OO.ui.PanelLayout( {
 				padded: false,
 				expanded: false
 			} );

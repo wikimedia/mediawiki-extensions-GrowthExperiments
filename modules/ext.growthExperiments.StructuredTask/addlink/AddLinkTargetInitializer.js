@@ -1,4 +1,4 @@
-var TargetInitializer = require( '../TargetInitializer.js' ),
+const TargetInitializer = require( '../TargetInitializer.js' ),
 	DMRecommendedLinkAnnotation = require( './dmRecommendedLinkAnnotation.js' ),
 	DMRecommendedLinkErrorAnnotation = require( './dmRecommendedLinkErrorAnnotation.js' ),
 	CERecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
@@ -22,7 +22,7 @@ var TargetInitializer = require( '../TargetInitializer.js' ),
  * @param {ve.ui.Tool[]} [platformConfig.tools]
  */
 function AddLinkTargetInitializer( platformConfig ) {
-	var config = Object.assign( {}, platformConfig );
+	const config = Object.assign( {}, platformConfig );
 	config.safeCommands = [ 'recommendedLink' ];
 	config.dataModels = [ DMRecommendedLinkAnnotation, DMRecommendedLinkErrorAnnotation ];
 	config.annotationViews = [ CERecommendedLinkAnnotation, CERecommendedLinkErrorAnnotation ];

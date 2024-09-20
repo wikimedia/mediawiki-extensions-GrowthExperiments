@@ -1,4 +1,4 @@
-var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js' );
+const SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/SmallTaskCard.js' );
 
 /**
  * Widget that displays a pagination text in the form "1 of 2 suggestions"
@@ -17,7 +17,7 @@ var SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/S
  * 1 based index, default is 1
  */
 function TaskPreviewWidget( config ) {
-	var defaultConfig = {
+	const defaultConfig = {
 		taskCount: 1,
 		taskPosition: 1
 	};

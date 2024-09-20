@@ -90,7 +90,7 @@ SuggestionGroupWidget.prototype.onKeydown = function ( e ) {
  * Handle clicks on the select all / unselect all button
  */
 SuggestionGroupWidget.prototype.onSelectAllButtonClick = function () {
-	var newState = !this.isEverythingSelected();
+	const newState = !this.isEverythingSelected();
 	this.getItems().forEach( ( suggestion ) => {
 		suggestion.toggleSuggestion( newState );
 	} );

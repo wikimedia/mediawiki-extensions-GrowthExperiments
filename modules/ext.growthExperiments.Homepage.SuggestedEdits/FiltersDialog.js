@@ -1,6 +1,6 @@
 'use strict';
 
-var ArticleCountWidget = require( './ArticleCountWidget.js' );
+const ArticleCountWidget = require( './ArticleCountWidget.js' );
 
 /**
  * Dialog for filtering tasks in the suggested edits feed
@@ -80,8 +80,8 @@ FiltersDialog.prototype.updateMatchCount = function ( count ) {
  * @param {number} state.count The number of tasks in the store queue
  */
 FiltersDialog.prototype.updateLoadingState = function ( state ) {
-	var actions = this.actions.get();
-	var primaryAction = actions.length && actions[ 0 ];
+	const actions = this.actions.get();
+	const primaryAction = actions.length && actions[ 0 ];
 	if ( state.isLoading ) {
 		this.pushPending();
 		if ( primaryAction ) {
@@ -101,7 +101,7 @@ FiltersDialog.prototype.getActionProcess = function ( action ) {
 		.next( function () {
 			if ( action === 'close' ) {
 				// Show the loading state of the ProcessDialog while tasks are fetched
-				var promise = $.Deferred();
+				const promise = $.Deferred();
 				this.savePreferences();
 				this.emit( 'done', promise );
 				promise.always( () => {

@@ -1,4 +1,4 @@
-var PostEditToastMessage = require( './PostEditToastMessage.js' );
+const PostEditToastMessage = require( './PostEditToastMessage.js' );
 
 /**
  * @class mw.libs.ge.TryNewTaskPanel
@@ -46,13 +46,13 @@ TryNewTaskPanel.prototype.getPostEditToastMessage = function () {
  * @return {Array<jQuery>} A list of footer elements.
  */
 TryNewTaskPanel.prototype.getFooterButtons = function () {
-	var tryNewTaskButtonWidget = new OO.ui.ButtonWidget( {
+	const tryNewTaskButtonWidget = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-help-panel-postedit-trynewtask-try-button-text' ).text(),
 		flags: [ 'primary', 'progressive' ],
 		classes: [ 'mw-ge-help-panel-postedit-footer', 'mw-ge-help-panel-postedit-footer-trynewtask' ]
 	} );
 	tryNewTaskButtonWidget.connect( this, { click: 'openPostEditDialogWithNewTask' } );
-	var noThanksButtonWidget = new OO.ui.ButtonWidget( {
+	const noThanksButtonWidget = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text' ).text(),
 		framed: false,
 		classes: [ 'mw-ge-help-panel-postedit-footer', 'mw-ge-help-panel-postedit-footer-nothanks' ]
@@ -103,7 +103,7 @@ TryNewTaskPanel.prototype.logClose = function () {
  * @param {Object|undefined} actionData Additional data to pass as action_data to the logger.
  */
 TryNewTaskPanel.prototype.logImpression = function ( actionData ) {
-	var data = {
+	let data = {
 		'next-suggested-task-type': this.nextSuggestedTaskType,
 		savedTaskType: this.activeTaskType
 	};
@@ -128,7 +128,7 @@ TryNewTaskPanel.prototype.logAction = function ( linkName ) {
  *   Null if the panel should not have a main area (as no task should be displayed).
  */
 TryNewTaskPanel.prototype.getMainArea = function () {
-	var $mainArea = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-main' );
+	const $mainArea = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-main' );
 	this.optOutButton = new OO.ui.CheckboxInputWidget( {
 		selected: false,
 		value: 'optOutForTaskType'
@@ -145,7 +145,7 @@ TryNewTaskPanel.prototype.getMainArea = function () {
 		);
 	} );
 
-	var dismissField = new OO.ui.FieldLayout( this.optOutButton, {
+	const dismissField = new OO.ui.FieldLayout( this.optOutButton, {
 		label: mw.message(
 			'growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox'
 		).text(),
@@ -162,18 +162,18 @@ TryNewTaskPanel.prototype.getMainArea = function () {
 	// * growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation
 	// * growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation
 	// * growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation
-	var taskTypeName = mw.message(
+	const taskTypeName = mw.message(
 		'growthexperiments-homepage-suggestededits-tasktype-name-' + this.nextSuggestedTaskType
 	).parse();
-	var taskTypeSpecificText = mw.message(
+	const taskTypeSpecificText = mw.message(
 		'growthexperiments-help-panel-postedit-trynewtask-subheader-tasktype',
 		taskTypeName
 	).parse();
-	var $subHeader = $( '<div>' )
+	const $subHeader = $( '<div>' )
 		.addClass( 'mw-ge-help-panel-postedit-subheader2' )
 		.append( taskTypeSpecificText );
 
-	var $image = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-trynewtask-image' );
+	const $image = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-trynewtask-image' );
 
 	return $mainArea.append( $subHeader, $image, dismissField.$element );
 };

@@ -4,7 +4,7 @@
 	// We can't use $( 'li#ca-ve-edit, li#ca-edit, li#page-actions-edit' ).first() here,
 	// because that returns the one that appears first in the DOM. Instead, we want to use
 	// #ca-ve-edit if it exists, and only if that doesn't exist fall back to #ca-edit (T261001)
-	var veEditLinkWrapper = $( 'li#ca-ve-edit' )[ 0 ],
+	const veEditLinkWrapper = $( 'li#ca-ve-edit' )[ 0 ],
 		sourceEditingLinkWrapper = $( 'li#ca-edit' )[ 0 ],
 		pageActionsEditWrapper = $( 'li#page-actions-edit' )[ 0 ],
 		editLinkWrapper = veEditLinkWrapper ||
@@ -44,7 +44,7 @@
 		} );
 	}
 
-	var guidancePrefValue;
+	let guidancePrefValue;
 	try {
 		guidancePrefValue = JSON.parse( mw.user.options.get( guidancePrefName ) || {} );
 	} catch ( e ) {

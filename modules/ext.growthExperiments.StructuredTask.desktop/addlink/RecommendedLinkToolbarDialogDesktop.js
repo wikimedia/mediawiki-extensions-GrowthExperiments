@@ -1,4 +1,4 @@
-var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
+const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	RecommendedLinkToolbarDialog = StructuredTask.addLink().RecommendedLinkToolbarDialog,
 	LinkSuggestionInteractionLogger = StructuredTask.addLink().LinkSuggestionInteractionLogger,
 	MinimizedToolbarDialogButton = require( '../MinimizedToolbarDialogButton.js' );
@@ -46,7 +46,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.afterSetupProcess = function () {
 	this.isRtl = this.surface.getDir() === 'rtl';
 	this.setupMinification();
 	this.moveDialogToSurfaceView();
-	var ceSurface = this.surface.getView();
+	const ceSurface = this.surface.getView();
 	// Prevent virtual keyboard from showing up when desktop site is loaded on tablet
 	ceSurface.$documentNode.attr( 'inputMode', 'none' );
 	// Handle Esc keydown even if the user clicks on the surface (otherwise onDialogKeyDown
@@ -76,7 +76,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.updateContentForCurrentRecommendat
  * if not, it is aligned to the right edge.
  */
 RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
-	var $surfaceView = this.surface.getView().$element,
+	let $surfaceView = this.surface.getView().$element,
 		surfaceOffset = $surfaceView.offset(),
 		surfaceWidth = $surfaceView.width(),
 		$annotationView = this.annotationView.$element,
@@ -89,7 +89,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 		positionName = this.isRtl ? 'right' : 'left',
 		isStartAnchored = true;
 
-	var startPosition;
+	let startPosition;
 	if ( this.isRtl ) {
 		// Offset is the surface's right edge and the annotation's right edge.
 		startPosition = surfaceOffset.left + surfaceWidth -
@@ -131,7 +131,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.teardown = function () {
  * @return {jQuery.Promise} Promise which resolves when the transition is complete
  */
 RecommendedLinkToolbarDialogDesktop.prototype.fadeOut = function () {
-	var promise = $.Deferred();
+	const promise = $.Deferred();
 	this.$element.on( 'transitionend', promise.resolve );
 	this.$element.addClass( 'fade-out' );
 	return promise;
@@ -143,7 +143,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.fadeOut = function () {
  * @return {jQuery.Promise} Promise which resolves when the transition is complete
  */
 RecommendedLinkToolbarDialogDesktop.prototype.fadeIn = function () {
-	var promise = $.Deferred();
+	const promise = $.Deferred();
 	this.$element.on( 'transitionend', promise.resolve );
 	this.$element.removeClass( 'fade-out' );
 	return promise;
@@ -153,7 +153,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.fadeIn = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogDesktop.prototype.showFirstRecommendation = function () {
-	var promise = $.Deferred(),
+	const promise = $.Deferred(),
 		annotationView = this.getAnnotationViewAtIndex( 0 );
 	if ( !annotationView ) {
 		this.toggle( false );
@@ -173,7 +173,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.showFirstRecommendation = function
 RecommendedLinkToolbarDialogDesktop.prototype.showRecommendationAtIndex = function (
 	index, manualFocus
 ) {
-	var updateContent = function () {
+	const updateContent = function () {
 		RecommendedLinkToolbarDialogDesktop.super.prototype.showRecommendationAtIndex.call(
 			this, index, manualFocus
 		);
@@ -186,7 +186,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.showRecommendationAtIndex = functi
 	}
 
 	this.fadeOut();
-	var isOpeningNewSelection = this.isHidden && manualFocus && this.currentIndex !== index;
+	const isOpeningNewSelection = this.isHidden && manualFocus && this.currentIndex !== index;
 	this.toggleDialogVisibility( true, isOpeningNewSelection );
 	// Call scrollToAnnotationView right away instead of wait for fadeOut to resolve
 	// so that fade animation can be cancelled if scrolling isn't needed
@@ -231,7 +231,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.toggleDialogVisibility = function 
 	isVisible,
 	disableTransition
 ) {
-	var $dialog = this.$element,
+	let $dialog = this.$element,
 		transformVal = 'none';
 
 	$dialog.toggleClass(
@@ -243,7 +243,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.toggleDialogVisibility = function 
 		// This is done via a transformation that repositions the element and scales it down.
 		// Transformation is used instead of changing the element position directly so that the
 		// element can animate back to its original position when the dialog is re-opened.
-		var boundingClientRect = $dialog.get( 0 ).getBoundingClientRect(),
+		let boundingClientRect = $dialog.get( 0 ).getBoundingClientRect(),
 			offset = 48, // account for the help panel button
 			y = this.viewportHeight - boundingClientRect.bottom + offset,
 			x;

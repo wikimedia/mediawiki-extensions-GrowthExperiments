@@ -1,5 +1,5 @@
 ( function () {
-	var questionPosterAttachButton = require( './QuestionPoster.js' ),
+	const questionPosterAttachButton = require( './QuestionPoster.js' ),
 		optInAttachButton = require( './OptIn.js' ),
 		initEllipsisMenu = require( './EllipsisMenu.js' ),
 		questionPosterConfig = {

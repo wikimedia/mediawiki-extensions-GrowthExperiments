@@ -9,9 +9,9 @@
  */
 ( function () {
 
-	var formatTitle = require( '../utils/Utils.js' ).formatTitle;
-	var TopicFilters = require( './TopicFilters.js' );
-	var DEFAULT_LOOKAHEAD_SIZE = 5;
+	const formatTitle = require( '../utils/Utils.js' ).formatTitle;
+	const TopicFilters = require( './TopicFilters.js' );
+	const DEFAULT_LOOKAHEAD_SIZE = 5;
 
 	/**
 	 * @typedef {Object} mw.libs.ge.TaskData
@@ -131,17 +131,17 @@
 	 *   - tasks: a list of task data objects
 	 */
 	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, topicFilters, config ) {
-		var startTime = mw.now(),
+		const startTime = mw.now(),
 			self = this,
 			url = new mw.Uri( window.location.href );
-		var defaultConfig = {
+		const defaultConfig = {
 			getDescription: false,
 			size: this.pageSize,
 			thumbnailWidth: this.thumbnailWidth
 		};
 
 		// Filter out undefined values
-		var filteredConfig = {};
+		const filteredConfig = {};
 		if ( config ) {
 			Object.keys( config ).forEach( ( key ) => {
 				if ( config[ key ] !== undefined ) {
@@ -161,7 +161,7 @@
 			} );
 		}
 
-		var apiParams = {
+		const apiParams = {
 			action: 'query',
 			prop: 'info|revisions|pageimages' + ( config.getDescription ? '|description' : '' ),
 			rvprop: 'ids',
@@ -186,19 +186,19 @@
 			apiParams.ggtdebug = 1;
 		}
 
-		var actionApiPromise = new mw.Api().get( apiParams );
-		var finalPromise = actionApiPromise.then( ( data ) => {
-			var tasks = [];
+		const actionApiPromise = new mw.Api().get( apiParams );
+		const finalPromise = actionApiPromise.then( ( data ) => {
+			let tasks = [];
 
 			/**
 			 * @param {Object} item Single item from query API resultset
 			 * @return {mw.libs.ge.TaskData}
 			 */
 			function cleanUpData( item ) {
-				var imageOrSectionImage = item.tasktype === 'image-recommendation' ||
+				const imageOrSectionImage = item.tasktype === 'image-recommendation' ||
 						item.tasktype === 'section-image-recommendation';
 
-				var task = {
+				const task = {
 					title: item.title,
 					pageId: item.pageid || null,
 					revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
@@ -231,7 +231,7 @@
 			}
 			if ( data.growthtasks.debug && data.growthtasks.debug.searchDebugUrls ) {
 				Object.keys( data.growthtasks.debug.searchDebugUrls ).forEach( ( type ) => {
-					var debugUrl = data.growthtasks.debug.searchDebugUrls[ type ],
+					const debugUrl = data.growthtasks.debug.searchDebugUrls[ type ],
 						// eslint-disable-next-line no-console
 						consoleInfo = console && console.info && console.info.bind( console ) ||
 							mw.log;
@@ -272,7 +272,7 @@
 	 * @see https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
 	 */
 	GrowthTasksApi.prototype.getExtraDataFromPcs = function ( task, config ) {
-		var self = this,
+		const self = this,
 			title = task.title,
 			startTime = mw.now(),
 			apiUrlBase = this.suggestedEditsConfig.GERestbaseUrl;
@@ -292,7 +292,7 @@
 			task.imageWidth = task.imageWidth || null;
 			return $.Deferred().resolve( task ).promise();
 		}
-		var encodedTitle = formatTitle( title );
+		const encodedTitle = formatTitle( title );
 		return $.get( apiUrlBase + '/page/summary/' + encodedTitle ).then( ( data ) => {
 			task.extract = data.extract || null;
 			task.description = data.description || null;
@@ -333,7 +333,7 @@
 	 * @see https://w.wiki/J8K
 	 */
 	GrowthTasksApi.prototype.getExtraDataFromAqs = function ( task, config ) {
-		var self = this,
+		const self = this,
 			startTime = mw.now(),
 			title = task.title;
 
@@ -346,20 +346,20 @@
 			return $.Deferred().resolve( task ).promise();
 		}
 
-		var encodedTitle = formatTitle( title );
+		const encodedTitle = formatTitle( title );
 		// Get YYYYMMDD timestamps of 2 days ago (typically the last day that has full
 		// data in AQS) and 60+2 days ago, using Javascript's somewhat cumbersome date API
-		var day = new Date();
+		const day = new Date();
 		day.setDate( day.getDate() - 2 );
-		var lastPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
+		const lastPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
 		day.setDate( day.getDate() - 60 );
-		var firstPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
-		var pageviewsApiUrl = 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' +
+		const firstPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
+		const pageviewsApiUrl = 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' +
 			this.aqsConfig.project + '/all-access/user/' + encodedTitle + '/daily/' +
 			firstPageviewDay + '/' + lastPageviewDay;
 
 		return $.get( pageviewsApiUrl ).then( ( data ) => {
-			var pageviews = 0;
+			let pageviews = 0;
 			( data.items || [] ).forEach( ( item ) => {
 				pageviews += item.views;
 			} );
@@ -398,7 +398,7 @@
 			} );
 		}
 
-		var topicFiltersPref = this.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref,
+		let topicFiltersPref = this.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref,
 			savedTaskTypes = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
 			savedTopics = mw.user.options.get( topicFiltersPref ),
 			taskTypes = savedTaskTypes ? JSON.parse( savedTaskTypes ) : this.defaultTaskTypes,
@@ -430,9 +430,9 @@
 	 * @private
 	 */
 	GrowthTasksApi.prototype.handleError = function ( error, details ) {
-		var isRealError = true;
+		let isRealError = true;
 
-		var message;
+		let message;
 		if ( error === 'http' && details && details.textStatus === 'abort' ) {
 			// XHR abort, not a real error
 			message = null;
@@ -508,7 +508,7 @@
 	 */
 	GrowthTasksApi.prototype.fixThumbnailWidth = function ( task, newWidth ) {
 		if ( task.thumbnailSource && task.imageWidth ) {
-			var data = mw.util.parseImageUrl( task.thumbnailSource );
+			const data = mw.util.parseImageUrl( task.thumbnailSource );
 			if ( data && data.resizeUrl && data.width < newWidth && task.imageWidth > newWidth ) {
 				task.thumbnailSource = data.resizeUrl( newWidth );
 			}

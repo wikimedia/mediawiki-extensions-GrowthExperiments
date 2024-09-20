@@ -1,5 +1,5 @@
 ( function () {
-	var ErrorCardWidget = require( './ErrorCardWidget.js' ),
+	let ErrorCardWidget = require( './ErrorCardWidget.js' ),
 		NoResultsWidget = require( './NoResultsWidget.js' ),
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		SuggestedEditsModule = require( './SuggestedEditsModule.js' ),
@@ -17,7 +17,7 @@
 	 * @return {jQuery.Promise|undefined} Status promise.
 	 */
 	function initSuggestedTasks( $container ) {
-		var initTime = mw.now(),
+		const initTime = mw.now(),
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
 			suggestedEditsData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ] || {},
@@ -99,7 +99,7 @@
 	// Export setup state so the caller can wait for it when setting up the module
 	// on the client side.
 	// eslint-disable-next-line no-jquery/no-global-selector
-	var $suggestedEditsContainer = $( '.growthexperiments-homepage-container' );
+	const $suggestedEditsContainer = $( '.growthexperiments-homepage-container' );
 	initSuggestedTasks( $suggestedEditsContainer );
 	StartEditing.initialize( $suggestedEditsContainer, filtersStore.shouldUseTopicMatchMode );
 

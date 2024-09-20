@@ -1,4 +1,4 @@
-var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' ),
+const StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' ),
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 	MAX_IMAGE_DISPLAY_WIDTH = 500;
 
@@ -177,7 +177,7 @@ AddImageArticleTarget.prototype.hasReviewedSuggestions = function () {
  * @return {boolean}
  */
 AddImageArticleTarget.prototype.isValidTask = function () {
-	var surfaceModel = this.getSurface().getModel();
+	const surfaceModel = this.getSurface().getModel();
 
 	if ( surfaceModel.getDocument().getNodesByType( 'mwBlockImage' ).length ||
 		surfaceModel.getDocument().getNodesByType( 'mwInlineImage' ).length
@@ -200,13 +200,13 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
 	linearModel,
 	imageData
 ) {
-	var surface = this.getSurface(),
+	const surface = this.getSurface(),
 		surfaceModel = surface.getModel(),
 		data = surfaceModel.getDocument().data;
 
 	// Find the position between the initial templates and text.
-	var insertRange = this.getInsertRange( imageData );
-	var relativeOffset;
+	const insertRange = this.getInsertRange( imageData );
+	let relativeOffset;
 	if ( insertRange === null ) {
 		relativeOffset = -1;
 	} else {
@@ -236,7 +236,7 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
 
 	// Actually insert the image.
 	surfaceModel.setReadOnly( false );
-	var transaction = ve.dm.TransactionBuilder.static.newFromInsertion(
+	const transaction = ve.dm.TransactionBuilder.static.newFromInsertion(
 		surfaceModel.getDocument(),
 		this.insertOffset,
 		linearModel
@@ -255,16 +255,16 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
  * @return {{width:number, height: number}}
  */
 AddImageArticleTarget.prototype.getImageDimensions = function ( imageData ) {
-	var surface = this.getSurface();
+	const surface = this.getSurface();
 
-	var originalDimensions = {
+	const originalDimensions = {
 		width: imageData.metadata.originalWidth,
 		height: imageData.metadata.originalHeight
 	};
 
 	// On mobile, the image is rendered full width (with max width set to account for tablets).
 	// On desktop, the default thumbnail size is used.
-	var targetWidth = surface.getContext().isMobile() ?
+	const targetWidth = surface.getContext().isMobile() ?
 		Math.min(
 			originalDimensions.width,
 			// Use the editor overlay element instead of the surface since its width is not
@@ -290,12 +290,12 @@ AddImageArticleTarget.prototype.getImageDimensions = function ( imageData ) {
  * @return {Array}
  */
 AddImageArticleTarget.prototype.getImageLinearModel = function ( imageData ) {
-	var NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
+	const NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
 		imageTitle = new mw.Title( imageData.image, NS_FILE ),
 		AddImageUtils = require( './AddImageUtils.js' );
 
-	var dimensions = this.getImageDimensions( imageData );
-	var imageRenderData = AddImageUtils.getImageRenderData( imageData.metadata, window, dimensions.width );
+	const dimensions = this.getImageDimensions( imageData );
+	const imageRenderData = AddImageUtils.getImageRenderData( imageData.metadata, window, dimensions.width );
 	return [
 		{
 			type: 'mwGeRecommendedImage',
@@ -409,7 +409,7 @@ AddImageArticleTarget.prototype.isEndOfMetadata = function ( data, offset ) {
 		return false;
 	}
 
-	var right = data.getData( offset );
+	const right = data.getData( offset );
 	if ( typeof right === 'string' ) {
 		// If we found text content, exit, except for whitespace, which can be between
 		// top-of-the-article templates.
@@ -456,7 +456,7 @@ AddImageArticleTarget.prototype.replacePlaceholderWithImage = function () {
  * Undo the last change. Can be used to undo insertImage() or replacePlaceholderWithImage().
  */
 AddImageArticleTarget.prototype.rollback = function () {
-	var surfaceModel = this.getSurface().getModel();
+	const surfaceModel = this.getSurface().getModel();
 	if ( !this.approvalTransaction ) {
 		return;
 	}
@@ -477,13 +477,13 @@ AddImageArticleTarget.prototype.rollback = function () {
  * @param {string} captionText
  */
 AddImageArticleTarget.prototype.insertCaption = function ( captionText ) {
-	var surfaceModel = this.getSurface().getModel(),
+	const surfaceModel = this.getSurface().getModel(),
 		documentModel = surfaceModel.getDocument(),
 		captionNode = documentModel.getNodesByType( 'mwGeRecommendedImageCaption' )[ 0 ],
 		captionNodeRange = captionNode.getRange( false ),
 		selection = surfaceModel.getSelection().getRange();
 
-	var insertOffset;
+	let insertOffset;
 	if ( captionNodeRange.containsRange( selection ) ) {
 		insertOffset = selection;
 	} else {
@@ -509,7 +509,7 @@ AddImageArticleTarget.prototype.onPaste = function ( e ) {
 	}
 	e.preventDefault();
 	e.stopPropagation();
-	var text = ( e.originalEvent.clipboardData || window.clipboardData ).getData( 'text' );
+	const text = ( e.originalEvent.clipboardData || window.clipboardData ).getData( 'text' );
 	this.insertCaption( text );
 };
 
@@ -519,7 +519,7 @@ AddImageArticleTarget.prototype.onPaste = function ( e ) {
  * @return {string}
  */
 AddImageArticleTarget.prototype.getCaptionText = function () {
-	var surfaceModel = this.getSurface().getModel(),
+	const surfaceModel = this.getSurface().getModel(),
 		documentDataModel = surfaceModel.getDocument(),
 		captionNode = documentDataModel.getNodesByType( 'mwGeRecommendedImageCaption' )[ 0 ];
 	return surfaceModel.getLinearFragment( captionNode.getRange() ).getText() || '';
@@ -569,7 +569,7 @@ AddImageArticleTarget.prototype.onSaveDone = function () {
  * @return {mw.libs.ge.ImageRecommendationSummary}
  */
 AddImageArticleTarget.prototype.getSummaryData = function () {
-	var imageData = this.getSelectedSuggestion(),
+	const imageData = this.getSelectedSuggestion(),
 		/** @type {mw.libs.ge.ImageRecommendationSummary} */
 		summaryData = {
 			filename: imageData.displayFilename,
@@ -607,7 +607,7 @@ AddImageArticleTarget.prototype.getEditModeToolGroup = function () {
  * @param {boolean} shouldShow Whether the save tool should be shown
  */
 AddImageArticleTarget.prototype.toggleSaveTool = function ( shouldShow ) {
-	var saveToolGroup = this.getSaveToolGroup();
+	const saveToolGroup = this.getSaveToolGroup();
 	if ( saveToolGroup ) {
 		saveToolGroup.toggle( shouldShow );
 	}
@@ -619,7 +619,7 @@ AddImageArticleTarget.prototype.toggleSaveTool = function ( shouldShow ) {
  * @param {boolean} shouldDisable Whether the save tool should be disabled
  */
 AddImageArticleTarget.prototype.setDisabledSaveTool = function ( shouldDisable ) {
-	var saveToolGroup = this.getSaveToolGroup();
+	const saveToolGroup = this.getSaveToolGroup();
 	if ( saveToolGroup ) {
 		saveToolGroup.setDisabled( shouldDisable );
 	}
@@ -631,7 +631,7 @@ AddImageArticleTarget.prototype.setDisabledSaveTool = function ( shouldDisable )
  * @param {boolean} shouldShow Whether the edit mode tool should be shown
  */
 AddImageArticleTarget.prototype.toggleEditModeTool = function ( shouldShow ) {
-	var editModeToolGroup = this.getEditModeToolGroup();
+	const editModeToolGroup = this.getEditModeToolGroup();
 	if ( editModeToolGroup ) {
 		editModeToolGroup.toggle( shouldShow );
 	}
@@ -650,10 +650,10 @@ AddImageArticleTarget.prototype.toggleEditModeTool = function ( shouldShow ) {
  * @param {boolean} [shouldCheckPref] Whether the dialog preference should be taken into account
  */
 AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPref ) {
-	var dialogName = this.CAPTION_INFO_DIALOG_NAME,
+	const dialogName = this.CAPTION_INFO_DIALOG_NAME,
 		logCaptionInfoDialog = function ( action, context, closeData ) {
 			/* eslint-disable camelcase */
-			var actionData = Object.assign(
+			const actionData = Object.assign(
 				this.getSuggestionLogActionData(),
 				{ dialog_context: context }
 			);
@@ -664,7 +664,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 			/* eslint-enable camelcase */
 		}.bind( this );
 
-	var openDialogPromise;
+	let openDialogPromise;
 	if ( !shouldCheckPref ) {
 		openDialogPromise = this.surface.dialogs.openWindow( dialogName );
 		openDialogPromise.opening.then( () => {
@@ -704,7 +704,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
  * @return {Object}
  */
 AddImageArticleTarget.prototype.getSuggestionLogActionData = function ( index ) {
-	var imageIndex = typeof index === 'number' ? index : this.selectedImageIndex,
+	const imageIndex = typeof index === 'number' ? index : this.selectedImageIndex,
 		imageData = this.images[ imageIndex ],
 		isUndecided = typeof this.recommendationAccepted !== 'boolean',
 		acceptanceState = this.recommendationAccepted ? 'accepted' : 'rejected';
@@ -767,7 +767,7 @@ AddImageArticleTarget.prototype.getSelectedSuggestion = function () {
 
 /** @inheritDoc **/
 AddImageArticleTarget.prototype.onSaveComplete = function ( data ) {
-	var imageRecWarningKey = this.QUALITY_GATE_WARNING_KEY,
+	const imageRecWarningKey = this.QUALITY_GATE_WARNING_KEY,
 		geWarnings = data.gewarnings || [];
 
 	geWarnings.forEach( function ( warning ) {
@@ -784,7 +784,7 @@ AddImageArticleTarget.prototype.onSaveComplete = function ( data ) {
  * @return {number}
  */
 AddImageArticleTarget.prototype.getDefaultThumbSize = function () {
-	var veConfig = mw.config.get( 'wgVisualEditorConfig' ) || {},
+	const veConfig = mw.config.get( 'wgVisualEditorConfig' ) || {},
 		thumbLimits = veConfig.thumbLimits || {};
 	return thumbLimits[ mw.user.options.get( 'thumbsize' ) ] || 300;
 };
@@ -804,7 +804,7 @@ AddImageArticleTarget.prototype.prepareSaveWithoutShowingDialog = null;
 AddImageArticleTarget.prototype.saveWithoutShowingDialog = function () {
 	// When the save dialog is shown, the promise is from the ProcessDialog.
 	// In this case, the promise is used to control the loading state.
-	var promise = this.prepareSaveWithoutShowingDialog();
+	const promise = this.prepareSaveWithoutShowingDialog();
 	this.onSaveDialogSave( promise );
 };
 
@@ -820,7 +820,7 @@ AddImageArticleTarget.prototype.formatSaveOptions = function ( saveOptions ) {
  * the invalid task in their task queues.
  */
 AddImageArticleTarget.prototype.invalidateRecommendation = function () {
-	var imageData = this.getSelectedSuggestion();
+	const imageData = this.getSelectedSuggestion();
 	new mw.Api().postWithToken( 'csrf', {
 		action: 'growthinvalidateimagerecommendation',
 		title: suggestedEditSession.getCurrentTitle().getNameText(),

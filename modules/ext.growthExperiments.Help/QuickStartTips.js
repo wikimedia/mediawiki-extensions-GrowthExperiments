@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 
-	var QuickStartTipsTabPanelLayout = require( './QuickStartTipsTabPanelLayout.js' );
+	const QuickStartTipsTabPanelLayout = require( './QuickStartTipsTabPanelLayout.js' );
 
 	/**
 	 * @param {string} taskTypeID The task type ID
@@ -10,7 +10,7 @@
 	 * @return {jQuery.Promise} Promise that resolves with an OO.ui.StackLayout
 	 */
 	function getTips( taskTypeID, editorInterface, currentTabPanel ) {
-		var indexLayout = new OO.ui.IndexLayout( {
+		let indexLayout = new OO.ui.IndexLayout( {
 				framed: false,
 				expanded: false,
 				classes: [ 'suggested-edits-panel-quick-start-tips-pager' ]
@@ -44,7 +44,7 @@
 			tipLabelNumber = 1;
 
 		return $.get( apiPath ).then( ( quickStartTipsData ) => {
-			for ( var key in quickStartTipsData ) {
+			for ( const key in quickStartTipsData ) {
 				tipPanel = new QuickStartTipsTabPanelLayout( 'tipset-' + String( tipLabelNumber ), {
 					taskType: taskTypeID,
 					label: String( mw.language.convertNumber( tipLabelNumber ) ),

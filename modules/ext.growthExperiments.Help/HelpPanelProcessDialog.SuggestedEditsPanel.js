@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 
-	var suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
+	const suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
 		quickStartTips = require( './QuickStartTips.js' ),
 		SwitchEditorPanel = require( './HelpPanelProcessDialog.SwitchEditorPanel.js' );
 
@@ -155,7 +155,7 @@
 	 * position).
 	 */
 	SuggestedEditsPanel.prototype.setScrolledClasses = function () {
-		var panel = this.headerAndTipsPanel.$element.get( 0 ),
+		const panel = this.headerAndTipsPanel.$element.get( 0 ),
 			header = this.$scrollHeader.get( 0 ),
 			footer = this.footerPanel.$element.get( 0 ),
 			topObscured = ( panel.scrollTop !== 0 ),

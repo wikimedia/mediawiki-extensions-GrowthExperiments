@@ -1,4 +1,4 @@
-var router = require( 'mediawiki.router' ),
+const router = require( 'mediawiki.router' ),
 	AddImageUtils = require( './AddImageUtils.js' );
 
 /**
@@ -43,7 +43,7 @@ RecommendedImageViewer.prototype.initialize = function () {
  */
 RecommendedImageViewer.prototype.updateImage = function ( metadata ) {
 	// TODO: image caption as alt text?
-	var renderData = AddImageUtils.getImageRenderData( metadata, window );
+	const renderData = AddImageUtils.getImageRenderData( metadata, window );
 	this.$image.attr( { src: renderData.src } );
 	this.$image.css( 'max-width', 'min(100%,' + renderData.maxWidth + 'px)' );
 };

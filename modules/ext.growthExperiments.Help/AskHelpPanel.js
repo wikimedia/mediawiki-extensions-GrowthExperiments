@@ -31,7 +31,7 @@ OO.inheritClass( AskHelpPanel, OO.ui.PanelLayout );
  * Build the panel content
  */
 AskHelpPanel.prototype.buildContent = function () {
-	var content = new OO.ui.FieldsetLayout();
+	const content = new OO.ui.FieldsetLayout();
 
 	this.askhelpTextInput = new OO.ui.MultilineTextInputWidget( {
 		placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' )
@@ -93,7 +93,7 @@ AskHelpPanel.prototype.buildContent = function () {
  * to the help desk page (see GEHelpPanelAskMentor)
  */
 AskHelpPanel.prototype.initializeHelpDeskProperties = function () {
-	var configData = require( './data.json' ),
+	const configData = require( './data.json' ),
 		linksConfig = configData.GEHelpPanelLinks;
 
 	this.panelTitleMessages[ 'ask-help' ] =
@@ -115,9 +115,9 @@ AskHelpPanel.prototype.initializeHelpDeskProperties = function () {
  * to the mentor's talk page (see GEHelpPanelAskMentor)
  */
 AskHelpPanel.prototype.initializeMentorProperties = function () {
-	var userName = mw.user.getName();
+	const userName = mw.user.getName();
 
-	var mentorName, mentorGender, primaryMentorName, primaryMentorGender, backAt;
+	let mentorName, mentorGender, primaryMentorName, primaryMentorGender, backAt;
 	if ( this.askSource === 'mentor-homepage' ) {
 		mentorName = mw.config.get( 'GEHomepageMentorshipEffectiveMentorName' );
 		mentorGender = mw.config.get( 'GEHomepageMentorshipEffectiveMentorGender' );
@@ -126,7 +126,7 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 		backAt = mw.config.get( 'GEHomepageMentorshipBackAt' );
 	} else {
 		// mentor-helppanel
-		var mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
+		const mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
 		mentorName = mentorData.effectiveName;
 		mentorGender = mentorData.effectiveGender;
 		primaryMentorName = mentorData.name;
@@ -141,10 +141,10 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 	this.panelTitleMessages.questioncomplete =
 		mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text();
 
-	var mentorTalkLinkText = mw.message(
+	const mentorTalkLinkText = mw.message(
 		'growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text',
 		mentorName, userName ).text();
-	var $mentorTalkLink = $( '<a>' )
+	const $mentorTalkLink = $( '<a>' )
 		.attr( {
 			href: mw.Title.newFromText( mentorName, 3 ).getUrl(),
 			target: '_blank',
@@ -204,7 +204,7 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
  * Initialize properties based on this.askSource
  */
 AskHelpPanel.prototype.initializePanelProperties = function () {
-	var askFromMentor = this.askSource !== 'helpdesk',
+	const askFromMentor = this.askSource !== 'helpdesk',
 		configData = require( './data.json' );
 	this.storageKey = askFromMentor ?
 		'homepage-questionposter-question-text-mentorship' :
@@ -238,7 +238,7 @@ AskHelpPanel.prototype.getPanelTitleMessages = function () {
  * @fires AskHelpPanel#askHelpTextInputChange
  */
 AskHelpPanel.prototype.onTextInputChange = function () {
-	var reviewTextInputValue = this.askhelpTextInput.getValue();
+	const reviewTextInputValue = this.askhelpTextInput.getValue();
 	// Log when the user first enters a question
 	if ( !this.previousQuestionText && reviewTextInputValue.length ) {
 		this.logger.log( 'enter-question-text' );
