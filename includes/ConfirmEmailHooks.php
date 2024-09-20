@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\ConfirmEdit\FancyCaptcha\HTMLFancyCaptchaField;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
@@ -56,7 +57,7 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 			$formDescriptor['email']['helpInline'] = true;
 		}
 
-		if ( ( $formDescriptor['captchaWord']['class'] ?? null ) === 'HTMLFancyCaptchaField' ) {
+		if ( ( $formDescriptor['captchaWord']['class'] ?? null ) === HTMLFancyCaptchaField::class ) {
 			// Remove long-winded CAPTCHA explanation message
 			unset( $formDescriptor['captchaWord']['label-message'] );
 
