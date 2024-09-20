@@ -63,8 +63,8 @@ CERecommendedLinkAnnotation.prototype.onClick = function ( e ) {
  */
 CERecommendedLinkAnnotation.prototype.attachContents = function () {
 	CERecommendedLinkAnnotation.super.prototype.attachContents.apply( this, arguments );
-	let shouldAnimateIcons = false,
-		newState = this.model.getState(),
+	let shouldAnimateIcons = false;
+	const newState = this.model.getState(),
 		stateData = AnnotationAnimation.getLastState(),
 		icons = [];
 

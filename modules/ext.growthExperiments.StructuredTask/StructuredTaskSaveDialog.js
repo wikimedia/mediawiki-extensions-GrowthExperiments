@@ -173,8 +173,8 @@ StructuredTaskSaveDialog.prototype.onLoginButtonClicked = function () {
  * @return {Object}
  */
 StructuredTaskSaveDialog.prototype.getDialogData = function ( data ) {
-	let checkboxFields = data.checkboxFields || [],
-		checkboxesByName = data.checkboxesByName || {},
+	let checkboxFields = data.checkboxFields || [];
+	const checkboxesByName = data.checkboxesByName || {},
 		allowList = [ checkboxesByName.wpWatchthis, checkboxesByName.wpWatchlistExpiry ];
 
 	checkboxFields = checkboxFields.filter( ( fieldLayout ) => allowList.indexOf( fieldLayout.getField() ) !== -1 );

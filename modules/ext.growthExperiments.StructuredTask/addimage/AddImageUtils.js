@@ -20,9 +20,9 @@
 	 * @return {mw.libs.ge.RecommendedImageRenderData} renderData
 	 */
 	function getImageRenderData( metadata, viewport, renderWidth ) {
-		let thumb = mw.util.parseImageUrl( metadata.thumbUrl ) || {},
-			imageSrc = metadata.fullUrl,
-			originalWidth = metadata.originalWidth,
+		const thumb = mw.util.parseImageUrl( metadata.thumbUrl ) || {},
+			originalWidth = metadata.originalWidth;
+		let imageSrc = metadata.fullUrl,
 			maxWidth = renderWidth || originalWidth;
 
 		// The file is a thumbnail and can be resized.

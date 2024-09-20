@@ -106,8 +106,8 @@ AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
  * @return {{ recommendationWikitextOffset: number, fragment: ve.dm.SurfaceFragment }[]}
  */
 AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
-	let lastRecommendationWikitextOffset = null,
-		surfaceModel = this.getSurface().getModel(),
+	let lastRecommendationWikitextOffset = null;
+	const surfaceModel = this.getSurface().getModel(),
 		data = surfaceModel.getDocument().data,
 		dataLength = data.getLength(),
 		recommendationRanges = {};
@@ -160,11 +160,11 @@ AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
  * @param {LinkRecommendationLink[]} suggestions Description of suggested links
  */
 AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions ) {
-	let phraseMap = {},
-		phraseMapKeys = [],
+	const phraseMap = {},
 		annotations = [],
-		numberOfLinksShown = 0,
 		treeWalker = this.getTreeWalker( doc );
+	let phraseMapKeys = [],
+		numberOfLinksShown = 0;
 	/**
 	 * Build a regex that matches any of the given phrases.
 	 *

@@ -1,8 +1,7 @@
 ( function ( gt ) {
-	let dashboardTour,
-		tourUtils = require( './tourUtils.js' );
+	const tourUtils = require( './tourUtils.js' );
 
-	dashboardTour = new gt.TourBuilder( {
+	const dashboardTour = new gt.TourBuilder( {
 		name: 'helppanel',
 		isSinglePage: true,
 		shouldLog: true

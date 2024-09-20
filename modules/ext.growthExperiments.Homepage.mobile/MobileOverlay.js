@@ -35,8 +35,8 @@
 	 * @instance
 	 */
 	MobileOverlay.prototype.preRender = function () {
-		let options = this.options,
-			headerActions = [];
+		const options = this.options;
+		let headerActions = [];
 
 		function shouldShowInfoButton( moduleName ) {
 			return moduleName === 'suggested-edits';

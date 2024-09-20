@@ -282,8 +282,8 @@ RecommendedLinkToolbarDialog.prototype.reopenRejectionDialog = function () {
  * (the yes/no button has been toggled).
  */
 RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
-	let acceptancePromise = $.Deferred().resolve(),
-		fragment = this.getCurrentFragment(),
+	let acceptancePromise = $.Deferred().resolve();
+	const fragment = this.getCurrentFragment(),
 		annotation = this.getCurrentDataModel(),
 		surfaceModel = this.surface.getModel(),
 		oldReadOnly = surfaceModel.isReadOnly(),
@@ -368,9 +368,9 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
  * @return {number} Zero-based index of the suggestion in the linkRecommendationFragments array
  */
 RecommendedLinkToolbarDialog.prototype.getIndexForModel = function ( annotationModel ) {
-	let modelRecommendationWikiTextOffset = annotationModel.getAttribute( 'recommendationWikitextOffset' ),
-		currentIndex = this.currentIndex,
-		fragment = this.linkRecommendationFragments[ currentIndex ];
+	const modelRecommendationWikiTextOffset = annotationModel.getAttribute( 'recommendationWikitextOffset' ),
+		currentIndex = this.currentIndex;
+	let fragment = this.linkRecommendationFragments[ currentIndex ];
 
 	if ( modelRecommendationWikiTextOffset === fragment.recommendationWikitextOffset ) {
 		return currentIndex;
@@ -769,13 +769,13 @@ RecommendedLinkToolbarDialog.prototype.updateProgressIndicators = function () {
  */
 RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 	let acceptanceButtonsWidth = this.acceptanceButtonsWidth || this.$acceptanceButtonGroup.width(),
-		$nextButton = this.nextButton.$element,
+		canOverflowStateAlign = false;
+	const $nextButton = this.nextButton.$element,
 		nextButtonLeft = $nextButton.position().left,
 		$linkPreviewText = this.$linkPreview.find(
 			'.mw-ge-recommendedLinkToolbarDialog-linkPreview-content'
 		),
 		linkPreviewTextLeft = this.linkPreviewTextLeft || $linkPreviewText.position().left,
-		canOverflowStateAlign = false,
 		imageOffset = 68; // @imageThumbnailSize + @gutterSize in RecommendedLinkToolbarDialog.less
 
 	// This doesn't have to be re-computed (doesn't change upon window resize).
@@ -926,8 +926,8 @@ RecommendedLinkToolbarDialog.prototype.isLastRecommendationSelected = function (
  * }}
  */
 RecommendedLinkToolbarDialog.prototype.getSuggestionLogActionData = function () {
-	let suggestion = this.getCurrentDataModel().element.attributes,
-		acceptanceState = 'undecided';
+	const suggestion = this.getCurrentDataModel().element.attributes;
+	let acceptanceState = 'undecided';
 	if ( this.getCurrentDataModel().isAccepted() ) {
 		acceptanceState = 'accepted';
 	} else if ( this.getCurrentDataModel().isRejected() ) {

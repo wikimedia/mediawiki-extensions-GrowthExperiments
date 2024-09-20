@@ -1,8 +1,8 @@
 'use strict';
 
-let InviteToSuggestedEditsDrawer = require( './InviteToSuggestedEditsDrawer.js' ),
-	HelpPanelLogger = require( '../utils/HelpPanelLogger.js' ),
-	drawerPromise;
+const InviteToSuggestedEditsDrawer = require( './InviteToSuggestedEditsDrawer.js' ),
+	HelpPanelLogger = require( '../utils/HelpPanelLogger.js' );
+let drawerPromise;
 
 /**
  * Display the invite to suggested edits.

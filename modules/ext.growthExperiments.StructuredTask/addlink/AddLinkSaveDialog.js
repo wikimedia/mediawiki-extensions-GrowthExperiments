@@ -119,8 +119,8 @@ AddLinkSaveDialog.prototype.updateSummary = function ( annotationStates ) {
 /** @inheritDoc */
 AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
 	return StructuredTaskSaveDialog.prototype.getSetupProcess.call( this, data ).next( function () {
-		let acceptedCount, rejectedCount, skippedCount,
-			annotationStates = ve.init.target.getAnnotationStates();
+		let acceptedCount, rejectedCount, skippedCount;
+		const annotationStates = ve.init.target.getAnnotationStates();
 		acceptedCount = rejectedCount = skippedCount = 0;
 		annotationStates.forEach( ( state ) => {
 			// convert to  boolean to avoid NaNs

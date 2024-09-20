@@ -1,5 +1,5 @@
-let scrollingDeferred,
-	AddImageArticleTarget = require( '../addimage/AddImageArticleTarget.js' );
+const AddImageArticleTarget = require( '../addimage/AddImageArticleTarget.js' );
+let scrollingDeferred;
 
 /**
  * Mixin for a ve.init.mw.ArticleTarget instance. Used by AddSectionImageDesktopArticleTarget and
@@ -43,7 +43,7 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
 	// short to be a good candidate, or its content changed to such an extent that its topic is
 	// now different), but those are rare and would be hard or impossible to detect here.
 
-	let imageNodes = [],
+	const imageNodes = [],
 		surfaceModel = this.getSurface().getModel(),
 		// We break our unused abstraction here. If we actually used multiple image recommendations,
 		// they could belong to different sections, and then validity would have to be determined
@@ -62,8 +62,8 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
 	}
 
 	/** @type {ve.dm.Node[]} imageNodes */
-	imageNodes = imageNodes.concat( surfaceModel.getDocument().getNodesByType( 'mwBlockImage' ) );
-	imageNodes = imageNodes.concat( surfaceModel.getDocument().getNodesByType( 'mwInlineImage' ) );
+	imageNodes.push( ...surfaceModel.getDocument().getNodesByType( 'mwBlockImage' ) );
+	imageNodes.push( ...surfaceModel.getDocument().getNodesByType( 'mwInlineImage' ) );
 	for ( let i = 0; i < imageNodes.length; i++ ) {
 		if ( insertRange.containsOffset( imageNodes[ i ].getOffset() ) ) {
 			mw.log.error( 'Section ' + imageData.sectionNumber + ' already contains an image: ' +

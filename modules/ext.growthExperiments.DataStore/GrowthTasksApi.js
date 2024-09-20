@@ -398,13 +398,13 @@
 			} );
 		}
 
-		let topicFiltersPref = this.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref,
+		const topicFiltersPref = this.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref,
 			savedTaskTypes = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
 			savedTopics = mw.user.options.get( topicFiltersPref ),
-			taskTypes = savedTaskTypes ? JSON.parse( savedTaskTypes ) : this.defaultTaskTypes,
 			topics = savedTopics ? JSON.parse( savedTopics ) : null,
 			savedTopicsMatchMode = mw.user.options.get( 'growthexperiments-homepage-se-topic-filters-mode' ),
 			topicFilters = preferencesToFilters( topics, savedTopicsMatchMode );
+		let taskTypes = savedTaskTypes ? JSON.parse( savedTaskTypes ) : this.defaultTaskTypes;
 
 		// T278123: map the two versions of link tasks to each other - FIXME remove when done
 		taskTypes = require( './TaskTypesAbFilter.js' ).convertTaskTypes( taskTypes );

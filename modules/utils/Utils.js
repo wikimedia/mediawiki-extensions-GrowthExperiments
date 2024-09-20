@@ -162,8 +162,8 @@
 	 *  @return {string}
 	 */
 	function getSuggestedEditsFeedUrl( source ) {
-		let titleHash = '',
-			queryParams = {};
+		let titleHash = '';
+		const queryParams = {};
 		if ( source ) {
 			queryParams.source = source;
 		}

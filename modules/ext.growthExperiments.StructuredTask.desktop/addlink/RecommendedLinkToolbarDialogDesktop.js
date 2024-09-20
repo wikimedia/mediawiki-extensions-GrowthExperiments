@@ -76,7 +76,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.updateContentForCurrentRecommendat
  * if not, it is aligned to the right edge.
  */
 RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
-	let $surfaceView = this.surface.getView().$element,
+	const $surfaceView = this.surface.getView().$element,
 		surfaceOffset = $surfaceView.offset(),
 		surfaceWidth = $surfaceView.width(),
 		$annotationView = this.annotationView.$element,
@@ -86,8 +86,8 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 		newPosition = {
 			top: annotationOffset.top - surfaceOffset.top + 30
 		},
-		positionName = this.isRtl ? 'right' : 'left',
-		isStartAnchored = true;
+		positionName = this.isRtl ? 'right' : 'left';
+	let isStartAnchored = true;
 
 	let startPosition;
 	if ( this.isRtl ) {
@@ -231,8 +231,8 @@ RecommendedLinkToolbarDialogDesktop.prototype.toggleDialogVisibility = function 
 	isVisible,
 	disableTransition
 ) {
-	let $dialog = this.$element,
-		transformVal = 'none';
+	const $dialog = this.$element;
+	let transformVal = 'none';
 
 	$dialog.toggleClass(
 		'mw-ge-recommendedLinkToolbarDialog-desktop--no-transition',
@@ -243,11 +243,10 @@ RecommendedLinkToolbarDialogDesktop.prototype.toggleDialogVisibility = function 
 		// This is done via a transformation that repositions the element and scales it down.
 		// Transformation is used instead of changing the element position directly so that the
 		// element can animate back to its original position when the dialog is re-opened.
-		let boundingClientRect = $dialog.get( 0 ).getBoundingClientRect(),
+		const boundingClientRect = $dialog.get( 0 ).getBoundingClientRect(),
 			offset = 48, // account for the help panel button
-			y = this.viewportHeight - boundingClientRect.bottom + offset,
-			x;
-
+			y = this.viewportHeight - boundingClientRect.bottom + offset;
+		let x;
 		if ( this.isRtl ) {
 			x = -1 * ( boundingClientRect.left + offset );
 		} else {

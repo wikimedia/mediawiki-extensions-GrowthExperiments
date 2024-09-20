@@ -1,16 +1,16 @@
 ( function () {
-	let StartEditingDialog = require( './StartEditingDialog.js' ),
+	const StartEditingDialog = require( './StartEditingDialog.js' ),
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
-		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ),
+		rootStore = require( 'ext.growthExperiments.DataStore' );
+	let isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ),
 		// We pretend the module is activated on mobile for the purposes of the start editing
 		// dialog interactions
 		shouldSuggestedEditsAppearActivated = OO.ui.isMobile() ? true : isSuggestedEditsActivated,
-		modalWindowManager,
-		rootStore = require( 'ext.growthExperiments.DataStore' );
+		modalWindowManager;
 
 	/**
 	 * Launch the suggested edits initiation dialog.
