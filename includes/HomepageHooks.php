@@ -887,17 +887,15 @@ class HomepageHooks implements
 
 			// Place an empty user impact object in the database table cache, to avoid
 			// making an extra HTTP request on first visit to Special:Homepage.
-			if ( $this->config->get( 'GEUseNewImpactModule' ) ) {
-				DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-					$userImpact = $this->userImpactLookup->getExpensiveUserImpact(
-						$user,
-						IDBAccessObject::READ_LATEST
-					);
-					if ( $userImpact ) {
-						$this->userImpactStore->setUserImpact( $userImpact );
-					}
-				} );
-			}
+			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+				$userImpact = $this->userImpactLookup->getExpensiveUserImpact(
+					$user,
+					IDBAccessObject::READ_LATEST
+				);
+				if ( $userImpact ) {
+					$this->userImpactStore->setUserImpact( $userImpact );
+				}
+			} );
 
 			if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 				// Populate the cache of tasks with default task/topic selections

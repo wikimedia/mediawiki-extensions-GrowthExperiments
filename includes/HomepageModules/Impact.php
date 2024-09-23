@@ -15,9 +15,9 @@ use MediaWiki\Html\Html;
 use MediaWiki\User\UserIdentity;
 
 /**
- * Class for the new Impact module.
+ * Class for the Impact module.
  */
-class NewImpact extends BaseModule {
+class Impact extends BaseModule {
 
 	private UserIdentity $userIdentity;
 	private UserImpactStore $userImpactStore;
@@ -198,7 +198,7 @@ class NewImpact extends BaseModule {
 	 * RecentActivity server markup. Uses only styles from Skeleton.less, mimics
 	 * RecentActivity.vue content
 	 *
-	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue
+	 * @see modules/ext.growthExperiments.Homepage.Impact/components/RecentActivity.vue
 	 * @return string HTML content of the recent activity section
 	 */
 	private function getRecentActivityMarkup(): string {
@@ -225,11 +225,11 @@ class NewImpact extends BaseModule {
 	}
 
 	/**
-	 * ArticlesList server markup. Uses only styles from Skeleton.less, NewImpact.less and App.less.
+	 * ArticlesList server markup. Uses only styles from Skeleton.less, Impact.less and App.less.
 	 *
 	 * @param int $numberOfArticles The number of article skeletons to render
 	 * @return string HTML content of the articles list section
-	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/{App,NewImpact}.less
+	 * @see modules/ext.growthExperiments.Homepage.Impact/components/{App,Impact}.less
 	 */
 	private function getArticlesListMarkup( int $numberOfArticles = 5 ): string {
 		// Articles list
@@ -272,10 +272,10 @@ class NewImpact extends BaseModule {
 	}
 
 	/**
-	 * NewImpact application server markup. Does not use any styles from the CSS classes added.
-	 * Should be kept in sync with Vue application component tree (App.vue > Layout.vue > NewImpact.vue).
+	 * Impact application server markup. Does not use any styles from the CSS classes added.
+	 * Should be kept in sync with Vue application component tree (App.vue > Layout.vue > Impact.vue).
 	 *
-	 * @see modules/ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less
+	 * @see modules/ext.growthExperiments.Homepage.Impact/components/Impact.less
 	 * @return string HTML content of the recent activity section
 	 */
 	private function getBaseMarkup(): string {
@@ -314,7 +314,7 @@ class NewImpact extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getModules() {
-		return [ 'ext.growthExperiments.Homepage.NewImpact' ];
+		return [ 'ext.growthExperiments.Homepage.Impact' ];
 	}
 
 	/**

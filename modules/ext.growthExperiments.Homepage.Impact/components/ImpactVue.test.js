@@ -8,7 +8,7 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconInfoFilled: ''
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
-const NewImpact = require( './NewImpact.vue' );
+const Impact = require( './Impact.vue' );
 const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
 const TrendChart = require( './TrendChart.vue' );
@@ -82,7 +82,7 @@ const ALL_KEYS = [ ...NO_PERSON_KEYS, ...THIRD_PERSON_KEYS ];
 
 const renderComponent = ( { props = {}, provide = {} } = {} ) => {
 	const mockData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, impactServerData() );
-	return mount( NewImpact, {
+	return mount( Impact, {
 		props: Object.assign( { userName: 'Alice', data: mockData.value }, props ),
 		global: {
 			provide: Object.assign( {
@@ -101,7 +101,7 @@ const renderComponent = ( { props = {}, provide = {} } = {} ) => {
 	} );
 };
 
-describe( 'NewImpactVue', () => {
+describe( 'ImpactVue', () => {
 	beforeEach( () => {
 		global.mw.config.get = jest.fn();
 		global.mw.config.get.mockImplementation( ( key ) => {
