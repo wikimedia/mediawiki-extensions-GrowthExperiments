@@ -12,7 +12,6 @@ use LogicException;
 use MediaWiki\Title\TitleParser;
 use MessageLocalizer;
 use MessageSpecifier;
-use Wikimedia\Assert\Assert;
 
 class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 
@@ -31,17 +30,15 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/**
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param TitleParser $titleParser
-	 * @param RecommendationProvider $recommendationProvider
+	 * @param LinkRecommendationProvider $recommendationProvider
 	 * @param AddLinkSubmissionHandler $submissionHandler
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,
-		RecommendationProvider $recommendationProvider,
+		LinkRecommendationProvider $recommendationProvider,
 		AddLinkSubmissionHandler $submissionHandler
 	) {
-		Assert::parameterType( LinkRecommendationProvider::class, $recommendationProvider,
-			'$recommendationProvider' );
 		parent::__construct( $configurationValidator, $titleParser );
 		$this->recommendationProvider = $recommendationProvider;
 		$this->submissionHandler = $submissionHandler;
