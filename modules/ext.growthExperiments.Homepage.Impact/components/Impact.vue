@@ -129,7 +129,7 @@ module.exports = exports = {
 		},
 		contributionsLinkText() {
 			return this.$i18n(
-				'growthexperiments-homepage-newimpact-contributions-link'
+				'growthexperiments-homepage-impact-contributions-link'
 			).text();
 		},
 		contributionsUrl() {

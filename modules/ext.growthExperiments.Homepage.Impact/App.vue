@@ -88,7 +88,7 @@ module.exports = exports = {
 // Hack to render the background in gray for the unactivated state after data is
 // fecthed and the skeleton disappears
 /* stylelint-disable-next-line selector-class-pattern */
-.growthexperiments-homepage-module-new-impact-unactivated {
+.growthexperiments-homepage-module-impact-unactivated {
 	&-mobile-overlay,
 	&-mobile-summary {
 		background-color: @background-color-interactive-subtle;

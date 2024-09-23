@@ -71,7 +71,7 @@ const impactServerData = () => ( {
 
 const NO_PERSON_KEYS = [
 	'growthexperiments-homepage-impact-edited-articles-trend-chart-title',
-	'growthexperiments-homepage-newimpact-contributions-link'
+	'growthexperiments-homepage-impact-contributions-link'
 ];
 const THIRD_PERSON_KEYS = [
 	'growthexperiments-homepage-impact-recent-activity-title',

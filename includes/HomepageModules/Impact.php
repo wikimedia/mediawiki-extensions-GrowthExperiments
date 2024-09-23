@@ -85,7 +85,7 @@ class Impact extends BaseModule {
 		// * growthexperiments-homepage-module-new-impact-unactivated-mobile-details
 		// * growthexperiments-homepage-module-new-impact-unactivated-mobile-overlay
 		// * growthexperiments-homepage-module-new-impact-unactivated-mobile-summary
-		return 'growthexperiments-homepage-module-new-impact-unactivated-' . $this->getMode();
+		return 'growthexperiments-homepage-module-impact-unactivated-' . $this->getMode();
 	}
 
 	/**
@@ -98,7 +98,7 @@ class Impact extends BaseModule {
 		}
 		return array_merge(
 			// TODO: When the old impact module is retired, we can remove this additional CSS class.
-			parent::getCssClasses() + [ 'growthexperiments-homepage-module-new-impact' ],
+			parent::getCssClasses() + [ 'growthexperiments-homepage-module-impact' ],
 			$unactivatedClasses
 		);
 	}
@@ -123,7 +123,7 @@ class Impact extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getHeaderText() {
-		$headerText = 'growthexperiments-homepage-new-impact-header';
+		$headerText = 'growthexperiments-homepage-impact-header';
 		if ( $this->shouldShowForOtherUser() ) {
 			$headerText = 'growthexperiments-specialimpact-showing-for-other-user';
 		}
@@ -143,8 +143,8 @@ class Impact extends BaseModule {
 				$this->getBaseMarkup()
 			) .
 			Html::element( 'p',
-				[ 'class' => 'growthexperiments-homepage-new-impact-no-js-fallback' ],
-				$this->msg( 'growthexperiments-homepage-new-impact-no-js-fallback' )->text()
+				[ 'class' => 'growthexperiments-homepage-impact-no-js-fallback' ],
+				$this->msg( 'growthexperiments-homepage-impact-no-js-fallback' )->text()
 			);
 	}
 
@@ -161,8 +161,8 @@ class Impact extends BaseModule {
 				$this->getRecentActivityMarkup()
 			) .
 			Html::element( 'p',
-				[ 'class' => 'growthexperiments-homepage-new-impact-no-js-fallback' ],
-				$this->msg( 'growthexperiments-homepage-new-impact-no-js-fallback' )->text()
+				[ 'class' => 'growthexperiments-homepage-impact-no-js-fallback' ],
+				$this->msg( 'growthexperiments-homepage-impact-no-js-fallback' )->text()
 			);
 	}
 
