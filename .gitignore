@@ -7,4 +7,7 @@
 /.eslintcache
 /tests/selenium/log
 /.api-testing.config.json
+/cypress/videos
+/cypress/screenshots
+/cypress/.cache
 .DS_Store
