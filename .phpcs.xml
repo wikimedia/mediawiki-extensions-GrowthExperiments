@@ -6,6 +6,7 @@
 	<exclude-pattern type="relative-root">./documentation/frontend/node_modules/*</exclude-pattern>
 	<file>.</file>
 	<exclude-pattern>.phan/*</exclude-pattern>
+	<exclude-pattern>cypress/*</exclude-pattern>
 	<arg name="extensions" value="php"/>
 	<arg name="encoding" value="UTF-8"/>
 </ruleset>
