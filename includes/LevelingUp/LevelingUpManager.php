@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\LevelingUp;
 
-use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -61,7 +61,7 @@ class LevelingUpManager {
 	private UserImpactLookup $userImpactLookup;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
-	private ExperimentUserManager $experimentUserManager;
+	private AbstractExperimentManager $experimentUserManager;
 	private LoggerInterface $logger;
 	private Config $growthConfig;
 	private const KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM = 1;
@@ -78,7 +78,7 @@ class LevelingUpManager {
 		UserImpactLookup $userImpactLookup,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		LoggerInterface $logger,
 		Config $growthConfig
 	) {

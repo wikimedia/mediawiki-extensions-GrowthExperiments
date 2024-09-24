@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use DateInterval;
-use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
@@ -48,7 +48,7 @@ class Mentorship extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		IMentorManager $mentorManager,
 		MentorStatusManager $mentorStatusManager,
 		GenderCache $genderCache,

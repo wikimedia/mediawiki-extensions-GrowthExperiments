@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\DashboardModule\DashboardModule;
-use GrowthExperiments\ExperimentUserManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
@@ -24,7 +24,7 @@ abstract class BaseModule extends DashboardModule {
 	protected const MODULE_STATE_NOTRENDERED = 'notrendered';
 
 	/**
-	 * @var ExperimentUserManager
+	 * @var AbstractExperimentManager
 	 */
 	private $experimentUserManager;
 
@@ -45,14 +45,14 @@ abstract class BaseModule extends DashboardModule {
 	 * @param string $name Name of the module
 	 * @param IContextSource $ctx
 	 * @param Config $wikiConfig
-	 * @param ExperimentUserManager $experimentUserManager
+	 * @param AbstractExperimentManager $experimentUserManager
 	 * @param bool $shouldWrapModuleWithLink
 	 */
 	public function __construct(
 		string $name,
 		IContextSource $ctx,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		bool $shouldWrapModuleWithLink = true
 	) {
 		parent::__construct( $name, $ctx );

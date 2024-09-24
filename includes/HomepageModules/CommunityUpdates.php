@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\Util;
 use HtmlArmor;
 use MediaWiki\Config\Config;
@@ -33,7 +33,7 @@ class CommunityUpdates extends BaseModule {
 		LoggerInterface $logger,
 		IContextSource $context,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		ConfigurationProviderFactory $providerFactory,
 		UserEditTracker $userEditTracker,
 		LinkRenderer $linkRenderer,

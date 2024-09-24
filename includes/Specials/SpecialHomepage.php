@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Specials;
 
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
-use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
@@ -31,7 +31,7 @@ use Wikimedia\Stats\StatsFactory;
 class SpecialHomepage extends SpecialPage {
 
 	private HomepageModuleRegistry $moduleRegistry;
-	private ExperimentUserManager $experimentUserManager;
+	private AbstractExperimentManager $experimentUserManager;
 	private IMentorManager $mentorManager;
 	private Config $wikiConfig;
 	private UserOptionsManager $userOptionsManager;
@@ -48,7 +48,7 @@ class SpecialHomepage extends SpecialPage {
 	public function __construct(
 		HomepageModuleRegistry $moduleRegistry,
 		StatsFactory $statsFactory,
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		IMentorManager $mentorManager,
 		Config $wikiConfig,
 		UserOptionsManager $userOptionsManager,

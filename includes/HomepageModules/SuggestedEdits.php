@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
@@ -145,7 +145,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
 	 * @param CampaignConfig $campaignConfig
-	 * @param ExperimentUserManager $experimentUserManager
+	 * @param AbstractExperimentManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
@@ -162,7 +162,7 @@ class SuggestedEdits extends BaseModule {
 		IContextSource $context,
 		Config $wikiConfig,
 		CampaignConfig $campaignConfig,
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		?PageViewService $pageViewService,
 		ConfigurationLoader $configurationLoader,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,

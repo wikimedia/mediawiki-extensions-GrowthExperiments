@@ -137,7 +137,7 @@ class HomepageHooks implements
 	private TitleFactory $titleFactory;
 	private ConfigurationLoader $configurationLoader;
 	private CampaignConfig $campaignConfig;
-	private ExperimentUserManager $experimentUserManager;
+	private AbstractExperimentManager $experimentUserManager;
 	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
@@ -168,7 +168,7 @@ class HomepageHooks implements
 		JobQueueGroup $jobQueueGroup,
 		ConfigurationLoader $configurationLoader,
 		CampaignConfig $campaignConfig,
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,

@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use Exception;
-use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
@@ -36,7 +36,7 @@ class Impact extends BaseModule {
 	/**
 	 * @param IContextSource $ctx
 	 * @param Config $wikiConfig
-	 * @param ExperimentUserManager $experimentUserManager
+	 * @param AbstractExperimentManager $experimentUserManager
 	 * @param UserIdentity $userIdentity
 	 * @param UserImpactStore $userImpactStore
 	 * @param UserImpactFormatter $userImpactFormatter
@@ -47,7 +47,7 @@ class Impact extends BaseModule {
 	public function __construct(
 		IContextSource $ctx,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		UserIdentity $userIdentity,
 		UserImpactStore $userImpactStore,
 		UserImpactFormatter $userImpactFormatter,

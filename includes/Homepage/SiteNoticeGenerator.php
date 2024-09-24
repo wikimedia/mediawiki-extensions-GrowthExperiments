@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Homepage;
 
-use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
 use MediaWiki\Html\Html;
@@ -16,18 +16,18 @@ use UserOptionsUpdateJob;
 
 class SiteNoticeGenerator {
 
-	private ExperimentUserManager $experimentUserManager;
+	private AbstractExperimentManager $experimentUserManager;
 	private UserOptionsLookup $userOptionsLookup;
 	private JobQueueGroup $jobQueueGroup;
 	private ?bool $homepageDiscoveryNoticeSeen = null;
 
 	/**
-	 * @param ExperimentUserManager $experimentUserManager
+	 * @param AbstractExperimentManager $experimentUserManager
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param JobQueueGroup $jobQueueGroup
 	 */
 	public function __construct(
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		UserOptionsLookup $userOptionsLookup,
 		JobQueueGroup $jobQueueGroup
 	) {

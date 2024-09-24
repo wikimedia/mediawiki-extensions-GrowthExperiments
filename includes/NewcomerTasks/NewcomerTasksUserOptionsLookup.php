@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -21,7 +21,7 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * This property isn't used, but we want to preserve the ability to run A/B tests where
 	 * user options depend on the user's experiment group.
-	 * @var ExperimentUserManager
+	 * @var AbstractExperimentManager
 	 */
 	private $experimentUserManager;
 
@@ -35,13 +35,13 @@ class NewcomerTasksUserOptionsLookup {
 	private $configurationLoader;
 
 	/**
-	 * @param ExperimentUserManager $experimentUserManager
+	 * @param AbstractExperimentManager $experimentUserManager
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param Config $config
 	 * @param ConfigurationLoader $configurationLoader
 	 */
 	public function __construct(
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		UserOptionsLookup $userOptionsLookup,
 		Config $config,
 		ConfigurationLoader $configurationLoader

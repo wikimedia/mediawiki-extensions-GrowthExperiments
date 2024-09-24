@@ -1,6 +1,7 @@
 <?php
 
 use CirrusSearch\CirrusSearchServices;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
@@ -213,7 +214,7 @@ return [
 
 	'GrowthExperimentsExperimentUserManager' => static function (
 		MediaWikiServices $services
-	): ExperimentUserManager {
+	): AbstractExperimentManager {
 		return new ExperimentUserManager(
 			GrowthExperimentsServices::wrap( $services )->getLogger(),
 			new ServiceOptions(

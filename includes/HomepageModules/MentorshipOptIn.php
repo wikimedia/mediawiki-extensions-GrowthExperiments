@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
@@ -17,13 +17,13 @@ class MentorshipOptIn extends BaseModule {
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
-	 * @param ExperimentUserManager $experimentUserManager
+	 * @param AbstractExperimentManager $experimentUserManager
 	 * @param IMentorManager $mentorManager
 	 */
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager,
+		AbstractExperimentManager $experimentUserManager,
 		IMentorManager $mentorManager
 	) {
 		parent::__construct( 'mentorship-optin', $context, $wikiConfig, $experimentUserManager );

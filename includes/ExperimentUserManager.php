@@ -12,7 +12,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Service for handling experiment / variant related functions for users.
  */
-class ExperimentUserManager {
+class ExperimentUserManager extends AbstractExperimentManager {
 
 	private LoggerInterface $logger;
 	private ServiceOptions $options;
@@ -69,15 +69,6 @@ class ExperimentUserManager {
 			VariantHooks::USER_PREFERENCE,
 			$variant
 		);
-	}
-
-	/**
-	 * @param UserIdentity $user
-	 * @param string|string[] $variant
-	 * @return bool
-	 */
-	public function isUserInVariant( UserIdentity $user, $variant ): bool {
-		return in_array( $this->getVariant( $user ), (array)$variant );
 	}
 
 	public function isValidVariant( string $variant ): bool {
