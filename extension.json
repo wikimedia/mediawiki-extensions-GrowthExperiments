@@ -17,7 +17,6 @@
 	"requires": {
 		"MediaWiki": ">= 1.43.0",
 		"extensions": {
-			"CommunityConfiguration": "*",
 			"VisualEditor": "*"
 		}
 	},
@@ -2934,7 +2933,7 @@
 			}
 		},
 		"GECommunityUpdatesEnabled": {
-			"description": "Are Community Updates enabled?",
+			"description": "Are Community Updates enabled? NOTE: For this setting to work, GEUseCommunityConfigurationExtension needs to be true and CommunityConfiguration extension must be present.",
 			"value": true
 		}
 	},
