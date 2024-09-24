@@ -2,10 +2,12 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\Skin\Skin;
@@ -82,13 +84,19 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 	}
 
 	private function getVariantHooksMock(): VariantHooks {
+		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
+		$extensionRegistry->method( 'isLoaded' )
+			->with( 'MetricsPlatform', '*' )
+			->willReturn( false );
 		return new VariantHooks(
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$this->createNoOpMock( CampaignConfig::class ),
 			$this->createNoOpMock( SpecialPageFactory::class ),
 			new HashConfig( [
 				'GEHomepageDefaultVariant' => 'control',
-			] )
+			] ),
+			$extensionRegistry,
+			$this->createNoOpMock( AbstractExperimentManager::class ),
 		);
 	}
 

@@ -390,4 +390,17 @@ class Util {
 			$extensionRegistry->isLoaded( 'CirrusSearch' ) &&
 			$extensionRegistry->isLoaded( 'VisualEditor' );
 	}
+
+	/**
+	 * Should MetricsPlatform extension be used?
+	 *
+	 * @return bool
+	 */
+	public static function useMetricsPlatform(): bool {
+		$services = MediaWikiServices::getInstance();
+		$extensionRegistry = $services->getExtensionRegistry();
+		return $extensionRegistry->isLoaded( 'MetricsPlatform' ) &&
+			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+				->getGrowthConfig()->get( 'GEUseMetricsPlatformExtension' );
+	}
 }

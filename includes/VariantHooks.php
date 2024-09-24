@@ -84,16 +84,23 @@ class VariantHooks implements
 	private SpecialPageFactory $specialPageFactory;
 	private Config $config;
 
+	private ExtensionRegistry $extensionRegistry;
+	private AbstractExperimentManager $experimentManager;
+
 	public function __construct(
 		UserOptionsManager $userOptionsManager,
 		CampaignConfig $campaignConfig,
 		SpecialPageFactory $specialPageFactory,
-		Config $config
+		Config $config,
+		ExtensionRegistry $extensionRegistry,
+		AbstractExperimentManager $experimentManager,
 	) {
 		$this->userOptionsManager = $userOptionsManager;
 		$this->campaignConfig = $campaignConfig;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->config = $config;
+		$this->extensionRegistry = $extensionRegistry;
+		$this->experimentManager = $experimentManager;
 	}
 
 	/** @inheritDoc */
@@ -127,6 +134,11 @@ class VariantHooks implements
 		] );
 	}
 
+	private function useMetricsPlatform(): bool {
+		return $this->extensionRegistry->isLoaded( 'MetricsPlatform' ) &&
+			$this->config->get( 'GEUseMetricsPlatformExtension' );
+	}
+
 	// Note: we intentionally do not make $wgGEHomepageDefaultVariant the default value in the
 	// UserGetDefaultOptions sense. That would result in the variant not being recorded if it's
 	// the same as the default, and thus changing when the default is changed, and in an A/B test
@@ -136,6 +148,9 @@ class VariantHooks implements
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$vars['wgGEUserVariants'] = self::VARIANTS;
 		$vars['wgGEDefaultUserVariant'] = $config->get( 'GEHomepageDefaultVariant' );
+		if ( $this->useMetricsPlatform() && $this->experimentManager instanceof ExperimentXLabManager ) {
+			$vars['wgGEUserVariants'] = $this->experimentManager->getValidVariants();
+		}
 	}
 
 	/**

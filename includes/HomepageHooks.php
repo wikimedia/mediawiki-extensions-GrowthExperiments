@@ -786,8 +786,10 @@ class HomepageHooks implements
 		DeferredUpdates::addCallableUpdate( function () use ( $user, $geForceVariant, $wiki ) {
 			// Get the variant assigned by ExperimentUserDefaultsManager
 			$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
-			// Maybe override variant with query parameter
-			if ( $geForceVariant !== null
+			if ( Util::useMetricsPlatform() ) {
+				$variant = $this->experimentUserManager->getVariant( $user );
+				// Maybe override variant with query parameter
+			} elseif ( $geForceVariant !== null
 				&& $this->experimentUserManager->isValidVariant( $geForceVariant )
 				&& $geForceVariant !== $variant
 			) {

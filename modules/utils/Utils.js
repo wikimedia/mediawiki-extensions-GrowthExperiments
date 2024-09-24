@@ -114,10 +114,21 @@
 	 * @return {string}
 	 */
 	function getUserVariant() {
-		let variant = mw.user.options.get( 'growthexperiments-homepage-variant' );
-		if ( variant === null ||
-			!mw.config.get( 'wgGEUserVariants' ).includes( variant )
-		) {
+		const growthVariants = mw.config.get( 'wgGEUserVariants' );
+		let variant = null;
+		if ( mw.config.get( 'wgGEUseMetricsPlatformExtension' ) ) {
+			const assignments = mw.xLab.getAssignments();
+			const growthFormattedAssignments = Object.keys( assignments )
+				.map( ( k ) => `${ k }_${ assignments[ k ] }` );
+			// Should only be one
+			const geExperimentVariants = growthFormattedAssignments
+				.filter( ( value ) => growthVariants.includes( value ) );
+			variant = geExperimentVariants.pop() || null;
+		} else {
+			variant = mw.user.options.get( 'growthexperiments-homepage-variant' );
+		}
+
+		if ( variant === null || !growthVariants.includes( variant ) ) {
 			variant = mw.config.get( 'wgGEDefaultUserVariant' );
 		}
 		return variant;
@@ -206,9 +217,23 @@
 	 * @return {JQuery.Promise<unknown>}
 	 */
 	function setUserVariant( variant ) {
-		return updateTaskPreference( {
-			'growthexperiments-homepage-variant': variant
-		} );
+		if ( mw.config.get( 'wgGEUseMetricsPlatformExtension' ) ) {
+			const growthVariants = mw.config.get( 'wgGEUserVariants' );
+			if ( growthVariants.includes( variant ) ) {
+				mw.xLab.overrideExperimentGroup( ...variant.split( '_' ) );
+				return $.Deferred().resolve( true ).promise();
+			} else {
+				const warnMsg =
+					'Failed attempt to set unrecognized variant. See allowed values in wgGEUserVariants';
+				mw.log.warn( warnMsg );
+				return $.Deferred().reject( warnMsg ).promise();
+			}
+		} else {
+			return updateTaskPreference( {
+				'growthexperiments-homepage-variant': variant
+			} );
+
+		}
 	}
 
 	/**

@@ -15,7 +15,6 @@ use Psr\Log\LoggerInterface;
 class ExperimentUserManager extends AbstractExperimentManager {
 
 	private LoggerInterface $logger;
-	private ServiceOptions $options;
 	private UserOptionsLookup $userOptionsLookup;
 	private UserOptionsManager $userOptionsManager;
 	private UserFactory $userFactory;
@@ -31,9 +30,8 @@ class ExperimentUserManager extends AbstractExperimentManager {
 		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory
 	) {
-		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
+		parent::__construct( $options );
 		$this->logger = $logger;
-		$this->options = $options;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userFactory = $userFactory;

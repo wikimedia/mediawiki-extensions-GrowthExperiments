@@ -496,7 +496,9 @@
 				"UserOptionsManager",
 				"GrowthExperimentsCampaignConfig",
 				"SpecialPageFactory",
-				"MainConfig"
+				"MainConfig",
+				"ExtensionRegistry",
+				"GrowthExperimentsExperimentUserManager"
 			]
 		},
 		"visualeditor": {
@@ -2878,6 +2880,10 @@
 		"GENotificationsTrackingEnabled": {
 			"value": false,
 			"description": "Enable GrowthExperiments notification tracking"
+		},
+		"GEUseMetricsPlatformExtension": {
+			"description": "MetricsPlatform/xLab as enrollment authority for experiments",
+			"value": false
 		}
 	},
 	"SpecialPages": {

@@ -92,7 +92,8 @@ class SpecialHomepage extends SpecialPage {
 		$this->isMobile = Util::isMobile( $out->getSkin() );
 		$userVariant = $this->experimentUserManager->getVariant( $this->getUser() );
 		$out->addJsConfigVars( [
-			'wgGEHomepagePageviewToken' => $this->pageviewToken
+			'wgGEHomepagePageviewToken' => $this->pageviewToken,
+			'wgGEUseMetricsPlatformExtension' => Util::useMetricsPlatform(),
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();

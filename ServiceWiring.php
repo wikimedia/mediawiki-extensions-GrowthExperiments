@@ -7,6 +7,7 @@ use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\ExperimentUserDefaultsManager;
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\ExperimentXLabManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
@@ -217,6 +218,16 @@ return [
 	'GrowthExperimentsExperimentUserManager' => static function (
 		MediaWikiServices $services
 	): AbstractExperimentManager {
+		if ( Util::useMetricsPlatform() ) {
+			return new ExperimentXLabManager(
+				new ServiceOptions(
+					ExperimentUserManager::CONSTRUCTOR_OPTIONS,
+					$services->getMainConfig()
+				),
+				GrowthExperimentsServices::wrap( $services )->getLogger(),
+				$services->getService( 'MetricsPlatform.XLab.ExperimentManager' ),
+			);
+		}
 		return new ExperimentUserManager(
 			GrowthExperimentsServices::wrap( $services )->getLogger(),
 			new ServiceOptions(
