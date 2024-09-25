@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
-use GrowthExperiments\HomepageModules\CommunityUpdates;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\NewImpact;
 use GrowthExperiments\VariantHooks;
@@ -72,26 +71,6 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 			[ true, [], VariantHooks::VARIANT_OLDIMPACT, Impact::class ],
 			[ true, [ 'new-impact' => '1' ], VariantHooks::VARIANT_OLDIMPACT, NewImpact::class ],
 			[ true, [ 'new-impact' => '0' ], VariantHooks::VARIANT_CONTROL, Impact::class ],
-		];
-	}
-
-	/**
-	 * @covers ::get
-	 * @covers ::getWiring
-	 * @dataProvider provideGetCommunityUpdatesModule
-	 */
-	public function testGetCommunityUpdatesModule() {
-		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
-		$context = RequestContext::getMain();
-
-		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
-		$this->assertInstanceOf(
-			CommunityUpdates::class, $moduleRegistry->get( 'community-updates', $context ) );
-	}
-
-	public static function provideGetCommunityUpdatesModule() {
-		return [
-			[ 'community-updates' ]
 		];
 	}
 
