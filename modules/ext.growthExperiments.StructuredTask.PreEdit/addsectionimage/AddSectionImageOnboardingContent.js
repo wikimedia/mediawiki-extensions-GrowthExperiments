@@ -1,8 +1,8 @@
 module.exports = ( function () {
 	'use strict';
 
-	let hasHeroImage = false,
-		userName = mw.user.getName(),
+	let hasHeroImage = false;
+	const userName = mw.user.getName(),
 		StructurtedTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),
 		content = new StructurtedTaskOnboardingContent( 'addsectionimage-onboarding-content' );
 

@@ -55,12 +55,12 @@
 	SmallTaskCard.prototype.buildCard = function () {
 		// Keep HTML structure in sync with SuggestedEdits::getTaskCard().
 
-		let $image = $( '<div>' ).addClass( 'mw-ge-small-task-card-image mw-ge-small-task-card-image-skeleton' ),
+		const $image = $( '<div>' ).addClass( 'mw-ge-small-task-card-image mw-ge-small-task-card-image-skeleton' ),
 			$title = $( '<span>' ).addClass( 'mw-ge-small-task-card-title skeleton' ),
 			$description = $( '<span>' ).addClass( 'mw-ge-small-task-card-description skeleton' ),
-			$pageviews = $( '<span>' ).addClass( 'mw-ge-small-task-card-pageviews skeleton' ),
-			$taskType, $cardTextContainer, $glue, $cardMetadataContainer;
+			$pageviews = $( '<span>' ).addClass( 'mw-ge-small-task-card-pageviews skeleton' );
 
+		let $taskType;
 		if ( this.task ) {
 			$title.removeClass( 'skeleton' ).text( this.task.title );
 			$image.removeClass( 'mw-ge-small-task-card-image-skeleton' );
@@ -115,12 +115,12 @@
 			);
 		}
 
-		$glue = $( '<div>' )
+		const $glue = $( '<div>' )
 			.addClass( 'mw-ge-small-task-card-glue' );
-		$cardMetadataContainer = $( '<div>' )
+		const $cardMetadataContainer = $( '<div>' )
 			.addClass( 'mw-ge-small-task-card-metadata-container' )
 			.append( $pageviews, $taskType );
-		$cardTextContainer = $( '<div>' )
+		const $cardTextContainer = $( '<div>' )
 			.addClass( 'mw-ge-small-task-card-text-container' )
 			// Distribute the flex growth to empty glue divs. This will center the
 			// title + description within the empty area above the metadata.

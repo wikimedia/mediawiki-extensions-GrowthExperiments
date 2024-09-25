@@ -1,5 +1,5 @@
 ( function () {
-	let ErrorCardWidget = require( './ErrorCardWidget.js' ),
+	const ErrorCardWidget = require( './ErrorCardWidget.js' ),
 		NoResultsWidget = require( './NoResultsWidget.js' ),
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		SuggestedEditsModule = require( './SuggestedEditsModule.js' ),
@@ -7,8 +7,8 @@
 		rootStore = require( 'ext.growthExperiments.DataStore' ),
 		TOPIC_MATCH_MODES = rootStore.CONSTANTS.TOPIC_MATCH_MODES,
 		tasksStore = rootStore.newcomerTasks,
-		filtersStore = rootStore.newcomerTasks.filters,
-		suggestedEditsModule;
+		filtersStore = rootStore.newcomerTasks.filters;
+	let suggestedEditsModule;
 
 	/**
 	 * Set up the suggested edits module within the given container.

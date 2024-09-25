@@ -40,16 +40,15 @@ const mobile = require( 'mobile.startup' );
 	 * Set up mobile overlays for each mobile summary module
 	 */
 	function onMobileInit() {
-		let MobileOverlay = require( './MobileOverlay.js' ),
+		const MobileOverlay = require( './MobileOverlay.js' ),
 			router = require( 'mediawiki.router' ),
 			overlayManager = mobile.getOverlayManager(),
 			lazyLoadModules = [],
 			overlays = {},
-			currentModule = null,
 			// Matches routes like /homepage/moduleName or /homepage/moduleName/action
 			// FIXME or describe why it is okay
-
 			routeRegex = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/;
+		let currentModule = null;
 
 		/**
 		 * Extract module detail HTML, heading and RL modules config var.
@@ -145,7 +144,7 @@ const mobile = require( 'mobile.startup' );
 			const moduleName = $( this ).data( 'module-name' ),
 				rlModules = getModuleData( moduleName ).rlModules;
 			if ( rlModules ) {
-				lazyLoadModules = lazyLoadModules.concat( rlModules );
+				lazyLoadModules.push( ...rlModules );
 			}
 
 			/**
@@ -183,14 +182,14 @@ const mobile = require( 'mobile.startup' );
 		// Even though this drawer isn't really a tour, we reuse the preference
 		// set on desktop since if the user has seen the tour on desktop they
 		// should not see the drawer on mobile, and vice versa.
-		let welcomeNoticeSeenPreference = 'growthexperiments-tour-homepage-welcome',
-			buttonClicked = false,
+		const welcomeNoticeSeenPreference = 'growthexperiments-tour-homepage-welcome',
 			markAsSeen = function () {
 				new mw.Api().saveOption( welcomeNoticeSeenPreference, 1 );
 			},
 			// FIXME: in a follow-up, convert these messages to something besides variant
 			//   C/D, e.g. "se-activated" / "se-unactivated"
 			variantKey = isSuggestedEditsActivated ? 'd' : 'c';
+		let buttonClicked = false;
 
 		if ( mw.user.options.get( welcomeNoticeSeenPreference ) ) {
 			return;

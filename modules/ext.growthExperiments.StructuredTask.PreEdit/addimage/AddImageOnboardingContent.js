@@ -2,9 +2,9 @@ module.exports = ( function () {
 	'use strict';
 
 	let hasHeroImage = false,
-		StructuredTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),
-		content = new StructuredTaskOnboardingContent( 'addimage-onboarding-content' ),
 		panelData = {};
+	const StructuredTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),
+		content = new StructuredTaskOnboardingContent( 'addimage-onboarding-content' );
 
 	/**
 	 * Make a paragraph element

@@ -200,13 +200,13 @@ FiltersButtonGroupWidget.prototype.updateLoadingState = function ( state ) {
 FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 	taskTypeSearch, topicSearch
 ) {
-	let levels = {},
+	const levels = {},
 		topicMessages = [],
-		topicLabel = '',
-		separator = '',
 		isMatchModeAND = topicSearch &&
 			topicSearch.getTopicsMatchMode() === TOPIC_MATCH_MODES.AND,
 		messages = [];
+	let topicLabel = '',
+		separator = '';
 
 	if ( this.topicFilterButtonWidget ) {
 		if ( !topicSearch.hasFilters() ) {

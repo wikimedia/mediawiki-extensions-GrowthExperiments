@@ -15,7 +15,7 @@ AddSectionImageCaptionInfoDialog.static.title = mw.message(
 ).text();
 
 AddSectionImageCaptionInfoDialog.static.message = function () {
-	let articleTitle = suggestedEditSession.getCurrentTitle().getNameText(),
+	const articleTitle = suggestedEditSession.getCurrentTitle().getNameText(),
 		/** @type {mw.libs.ge.AddSectionImageArticleTarget} **/
 		articleTarget = ve.init.target,
 		contentLanguageName = articleTarget.getSelectedSuggestion().metadata.contentLanguageName,
@@ -33,8 +33,8 @@ AddSectionImageCaptionInfoDialog.static.message = function () {
 			mw.message(
 				'growthexperiments-addsectionimage-caption-info-dialog-guidelines-neutral'
 			).parse()
-		],
-		languageGuideline;
+		];
+	let languageGuideline;
 	if ( contentLanguageName ) {
 		languageGuideline = mw.message(
 			'growthexperiments-addsectionimage-caption-info-dialog-guidelines-language'

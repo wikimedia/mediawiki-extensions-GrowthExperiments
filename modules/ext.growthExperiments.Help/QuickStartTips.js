@@ -10,7 +10,7 @@
 	 * @return {jQuery.Promise} Promise that resolves with an OO.ui.StackLayout
 	 */
 	function getTips( taskTypeID, editorInterface, currentTabPanel ) {
-		let indexLayout = new OO.ui.IndexLayout( {
+		const indexLayout = new OO.ui.IndexLayout( {
 				framed: false,
 				expanded: false,
 				classes: [ 'suggested-edits-panel-quick-start-tips-pager' ]
@@ -22,7 +22,6 @@
 				expanded: false
 			} ),
 			tipPanels = [],
-			tipPanel,
 			contentPanel = new OO.ui.PanelLayout( {
 				padded: false,
 				expanded: false
@@ -40,7 +39,8 @@
 				editorInterface,
 				taskTypeID,
 				mw.config.get( 'wgUserLanguage' )
-			].join( '/' ),
+			].join( '/' );
+		let tipPanel,
 			tipLabelNumber = 1;
 
 		return $.get( apiPath ).then( ( quickStartTipsData ) => {

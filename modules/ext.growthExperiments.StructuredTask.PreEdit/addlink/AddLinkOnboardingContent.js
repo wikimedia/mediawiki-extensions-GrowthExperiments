@@ -1,8 +1,8 @@
 module.exports = ( function () {
 	'use strict';
 
-	let hasHeroImage = false,
-		userName = mw.user.getName(),
+	let hasHeroImage = false;
+	const userName = mw.user.getName(),
 		CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 		taskTypeData = CONSTANTS.ALL_TASK_TYPES[ 'link-recommendation' ] || {},
 		StructurtedTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),
@@ -135,10 +135,9 @@ module.exports = ( function () {
 	 * @return {OO.ui.PanelLayout}
 	 */
 	function createLinkingGuidelinesPanel() {
-		let messages = getLinkingGuidelinesPanelMessages(),
-			$content = $( '<div>' ),
-			$list;
-		$list = $( '<ul>' ).html( messages.body ).addClass( 'addlink-onboarding-content-list' );
+		const messages = getLinkingGuidelinesPanelMessages(),
+			$content = $( '<div>' );
+		const $list = $( '<ul>' ).html( messages.body ).addClass( 'addlink-onboarding-content-list' );
 		$list.find( 'li' ).addClass( 'addlink-onboarding-content-list-item' );
 		$content.append( $list );
 		return content.createPanel( messages.title, $content, getHeroClass( 3 ), getImageAltText( 3 ) );

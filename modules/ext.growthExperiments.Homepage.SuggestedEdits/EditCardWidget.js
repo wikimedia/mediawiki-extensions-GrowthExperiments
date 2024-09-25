@@ -73,7 +73,7 @@
 
 	SuggestedEditCardWidget.prototype.getTextContent = function () {
 		// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-class-state
-		let siteDir = $( 'body' ).hasClass( 'sitedir-rtl' ) ? 'rtl' : 'ltr',
+		const siteDir = $( 'body' ).hasClass( 'sitedir-rtl' ) ? 'rtl' : 'ltr',
 			$pageViews = $( '<div>' ).addClass( 'se-card-pageviews' ),
 			$textContent = $( '<div>' )
 				.addClass( 'se-card-text' )
@@ -84,8 +84,7 @@
 						.addClass( 'se-card-extract' )
 						.addClass( !this.data.extraDataLoaded ? 'skeleton' : '' )
 						.html( this.data.extract || '' )
-				),
-			pageViewsMessage;
+				);
 		if ( !this.data.extraDataLoaded ) {
 			$pageViews.addClass( 'skeleton' );
 		}
@@ -93,7 +92,7 @@
 			// No pageview data found for this item.
 			return $textContent;
 		}
-		pageViewsMessage = this.data.pageviews ? mw.message(
+		const pageViewsMessage = this.data.pageviews ? mw.message(
 			'growthexperiments-homepage-suggestededits-pageviews',
 			mw.language.convertNumber( this.data.pageviews )
 		).escaped() : '';

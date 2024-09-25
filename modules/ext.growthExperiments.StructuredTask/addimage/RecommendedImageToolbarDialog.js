@@ -298,14 +298,13 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
  * Open the image viewer dialog
  */
 RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () {
-	let imageData = this.images[ this.currentIndex ],
+	const imageData = this.images[ this.currentIndex ],
 		surface = this.surface,
 		// eslint-disable-next-line camelcase
 		logMetadata = { active_interface: 'imageviewer_dialog' },
-		actionData = this.getSuggestionLogActionData(),
-		openImageViewerDialogPromise;
+		actionData = this.getSuggestionLogActionData();
 
-	openImageViewerDialogPromise = surface.dialogs.openWindow(
+	const openImageViewerDialogPromise = surface.dialogs.openWindow(
 		'recommendedImageViewer',
 		imageData.metadata
 	);
@@ -407,15 +406,15 @@ RecommendedImageToolbarDialog.prototype.getFilenameElement = function ( title ) 
  */
 RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descriptionHtml ) {
 	let descriptionText = $.parseHTML( descriptionHtml ).map( ( node ) => {
-			if ( node.nodeType === Node.ELEMENT_NODE ) {
-				return node.innerText;
-			} else if ( node.nodeType === Node.TEXT_NODE ) {
-				return node.textContent;
-			} else {
-				return '';
-			}
-		} ).join( '' ),
-		hasDescription = descriptionText.length > 0;
+		if ( node.nodeType === Node.ELEMENT_NODE ) {
+			return node.innerText;
+		} else if ( node.nodeType === Node.TEXT_NODE ) {
+			return node.textContent;
+		} else {
+			return '';
+		}
+	} ).join( '' );
+	const hasDescription = descriptionText.length > 0;
 
 	if ( !hasDescription ) {
 		descriptionText = mw.message(

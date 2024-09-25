@@ -1,9 +1,8 @@
 ( function ( gt ) {
-	let mentorTour,
-		tourUtils = require( './tourUtils.js' ),
+	const tourUtils = require( './tourUtils.js' ),
 		mentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
 
-	mentorTour = new gt.TourBuilder( {
+	const mentorTour = new gt.TourBuilder( {
 		name: 'homepage_mentor',
 		isSinglePage: true,
 		shouldLog: true

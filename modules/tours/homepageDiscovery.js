@@ -1,8 +1,7 @@
 ( function ( gt ) {
-	let discoveryTour,
-		tourUtils = require( './tourUtils.js' );
+	const tourUtils = require( './tourUtils.js' );
 
-	discoveryTour = new gt.TourBuilder( {
+	const discoveryTour = new gt.TourBuilder( {
 		name: 'homepage_discovery',
 		isSinglePage: true,
 		shouldLog: true

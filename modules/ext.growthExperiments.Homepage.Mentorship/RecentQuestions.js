@@ -16,19 +16,18 @@
 	 * for {moduleName}
 	 */
 	function updateHomepageModuleHtml( moduleName, questionsSelector, updatedHtml ) {
-		let moduleData = mw.config.get( 'homepagemodules' ),
-			$moduleHtml;
+		const moduleData = mw.config.get( 'homepagemodules' );
 		if ( !moduleData || !moduleData[ moduleName ] ) {
 			return;
 		}
-		$moduleHtml = $( moduleData[ moduleName ].overlay );
+		const $moduleHtml = $( moduleData[ moduleName ].overlay );
 		$moduleHtml.find( questionsSelector ).replaceWith( updatedHtml );
 		moduleData[ moduleName ].overlay = $moduleHtml.prop( 'outerHTML' );
 		mw.config.set( 'homepagemodules', moduleData );
 	}
 
 	function updateRecentQuestions() {
-		let sourceName = 'mentor',
+		const sourceName = 'mentor',
 			moduleName = 'mentorship',
 			storage = 'growthexperiments-' + sourceName + '-questions',
 			$overlay = mw.loader.getState( 'ext.growthExperiments.Homepage.mobile' ) === 'ready' ?
@@ -37,8 +36,8 @@
 				// eslint-disable-next-line no-jquery/no-global-selector
 				$( 'body' ),
 			questionsSelector = '.recent-questions-growthexperiments-' + sourceName + '-questions',
-			$container = $overlay.find( '.growthexperiments-homepage-module-' + moduleName ),
-			archivedCount = 0,
+			$container = $overlay.find( '.growthexperiments-homepage-module-' + moduleName );
+		let archivedCount = 0,
 			unarchivedCount = 0;
 
 		new mw.Api().get( {

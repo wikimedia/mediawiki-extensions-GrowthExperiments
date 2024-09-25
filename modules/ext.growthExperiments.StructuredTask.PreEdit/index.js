@@ -1,7 +1,7 @@
 module.exports = ( function () {
 	'use strict';
 
-	let Utils = require( '../utils/Utils.js' ),
+	const Utils = require( '../utils/Utils.js' ),
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
 		addSectionImageOnboardingPrefName = 'growthexperiments-addsectionimage-onboarding',
@@ -12,13 +12,13 @@ module.exports = ( function () {
 		isAddLink = taskType === 'link-recommendation' && taskType in TASK_TYPES,
 		isAddImage = taskType === 'image-recommendation' && taskType in TASK_TYPES,
 		isAddSectionImage = taskType === 'section-image-recommendation' && taskType in TASK_TYPES,
-		dialogName,
+		windows = {};
+	let dialogName,
 		logger,
 		shouldShowOnboarding,
 		StructuredTaskOnboardingDialog,
 		LinkSuggestionInteractionLogger,
 		ImageSuggestionInteractionLogger,
-		windows = {},
 		windowManager;
 
 	/**

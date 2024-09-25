@@ -264,19 +264,18 @@ PostEditPanel.prototype.getFallbackCard = function () {
  * @return {jQuery} A jQuery object wrapping the card element.
  */
 PostEditPanel.prototype.getCard = function ( task ) {
-	let params, url, taskCard;
-
 	if ( !task ) {
 		return new SmallTaskCard( {} ).$element;
 	}
 
 	this.newcomerTaskLogger.log( task );
-	params = {
+	const params = {
 		geclickid: this.helpPanelLogger.helpPanelSessionId,
 		getasktype: task.tasktype,
 		genewcomertasktoken: task.token,
 		gesuggestededit: 1
 	};
+	let url;
 	if ( task.url ) {
 		// Override for developer setups
 		url = task.url;
@@ -288,7 +287,7 @@ PostEditPanel.prototype.getCard = function ( task ) {
 	// Prevents SmallTaskCard component to render the pageviews section or the loading skeleton
 	task.pageviews = null;
 
-	taskCard = new SmallTaskCard( {
+	const taskCard = new SmallTaskCard( {
 		task: task,
 		taskTypes: this.taskTypes,
 		taskUrl: url

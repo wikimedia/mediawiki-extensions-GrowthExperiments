@@ -29,8 +29,7 @@
 
 	$( () => {
 		// eslint-disable-next-line no-jquery/no-global-selector
-		let $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
-			$buttonWrapper = $buttonToInfuse.parent(),
+		const $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$body = $( 'body' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
@@ -62,7 +61,8 @@
 				askHelpEnabled: askHelpEnabled,
 				taskTypeId: taskTypeId,
 				suggestedEditSession: suggestedEditSession
-			} ),
+			} );
+		let $buttonWrapper = $buttonToInfuse.parent(),
 			isCtaHidden = true,
 			lifecycle;
 

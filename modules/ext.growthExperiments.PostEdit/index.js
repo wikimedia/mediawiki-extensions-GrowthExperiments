@@ -170,7 +170,7 @@
 				fetchTasksConfig.newTaskTypes = [ nextSuggestedTaskType ];
 			}
 
-			let setupResult;
+			let setupResult = null;
 			tasksStore.fetchTasks( 'postEditDialog', fetchTasksConfig ).catch( ( errorMessage ) => {
 				if ( errorMessage ) {
 					mw.log.error( errorMessage );

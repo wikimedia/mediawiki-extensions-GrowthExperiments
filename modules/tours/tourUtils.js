@@ -12,9 +12,7 @@
 	 * @return {number|null}
 	 */
 	function getLeftOffset( targetSelector ) {
-		let offset,
-			availableSpace,
-			$targetSelector = $( targetSelector ).first();
+		const $targetSelector = $( targetSelector ).first();
 
 		// Do not use any offset if the target does not exist (in which case the guider will show up
 		// in the middle of the screen).
@@ -25,12 +23,12 @@
 		// The guider tip block is 42px wide and 21px away from the edge of the guider. Shift it
 		// 21+(42/2) px to the right so the tip points at the right edge of the target, then
 		// shift back <target width>/2.
-		offset = Math.floor( 42 - $targetSelector.width() / 2 );
+		let offset = Math.floor( 42 - $targetSelector.width() / 2 );
 
 		// Avoid offsetting beyond right viewport edge and causing a horizontal scrollbar.
 		// The guider library tries to align right edges but it does not take the guider border
 		// into account in the calculation so it ends up 2px off, which we need to adjust for.
-		availableSpace = document.documentElement.clientWidth -
+		const availableSpace = document.documentElement.clientWidth -
 			$targetSelector[ 0 ].getBoundingClientRect().right - 2;
 		offset = Math.min( offset, availableSpace );
 

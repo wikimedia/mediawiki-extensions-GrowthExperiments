@@ -13,7 +13,6 @@
 		"commonjs": true
 	},
 	"rules": {
-		"prefer-const": "warn",
 		"max-len": "off"
 	},
 	"settings": {

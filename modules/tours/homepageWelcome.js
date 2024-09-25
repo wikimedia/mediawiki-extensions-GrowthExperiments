@@ -1,6 +1,5 @@
 ( function ( gt ) {
-	let welcomeTour, step,
-		HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
+	const HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		tourUtils = require( './tourUtils.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
@@ -48,7 +47,8 @@
 		} );
 	}
 
-	welcomeTour = new gt.TourBuilder( {
+	let step;
+	const welcomeTour = new gt.TourBuilder( {
 		name: 'homepage_welcome',
 		isSinglePage: true,
 		shouldLog: true
