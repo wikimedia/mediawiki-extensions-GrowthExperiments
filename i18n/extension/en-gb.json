@@ -6,5 +6,6 @@
 		]
 	},
 	"growthexperiments-edit-config-personalized-praise": "Personalised praise",
-	"growthexperiments-edit-config-personalized-praise-description": "Receiving encouraging messages from established editors can improve new editor retention. The Personalised praise module surfaces praiseworthy new editors to their mentor, to help productive new editors feel more engaged and involved in the community."
+	"growthexperiments-edit-config-personalized-praise-description": "Receiving encouraging messages from established editors can improve new editor retention. The Personalised praise module surfaces praiseworthy new editors to their mentor, to help productive new editors feel more engaged and involved in the community.",
+	"communityconfiguration-mentorship-info-text": "Newcomers are automatically assigned to mentors who are categorised as \"Automatically assigned mentors\" in the [[Special:ManageMentors|list of mentors]]. A mentor can also update their settings in the Mentor dashboard to only claim mentees manually, and then they are categorised there as \"Manually assigned mentors\". The ideal number of mentors is: one mentor for each group of 500 new accounts, with a minimum of 3 mentors. Mentees can also receive encouraging messages from established editors, which can improve new editor retention.\n\nThe Personalised praise module surfaces praiseworthy new editors to their mentor, to help productive new editors feel more engaged and involved in the community."
 }
