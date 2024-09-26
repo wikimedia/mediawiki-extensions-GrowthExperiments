@@ -27,25 +27,27 @@ class LinkRecommendationHelper {
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	/** @var callable */
-	private $cirrusSearchFactory;
+	/**
+	 * @var callable returning {@link \CirrusSearch\WeightedTagsUpdater}
+	 */
+	private $weightedTagsUpdaterProvider;
 
 	/**
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param LinkRecommendationProvider $linkRecommendationProvider
 	 * @param LinkRecommendationStore $linkRecommendationStore
-	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
+	 * @param callable(): \CirrusSearch\WeightedTagsUpdater $weightedTagsUpdaterProvider
 	 */
 	public function __construct(
 		ConfigurationLoader $configurationLoader,
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkRecommendationStore $linkRecommendationStore,
-		callable $cirrusSearchFactory
+		callable $weightedTagsUpdaterProvider
 	) {
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
 		$this->linkRecommendationStore = $linkRecommendationStore;
-		$this->cirrusSearchFactory = $cirrusSearchFactory;
+		$this->weightedTagsUpdaterProvider = $weightedTagsUpdaterProvider;
 	}
 
 	/**
@@ -83,9 +85,9 @@ class LinkRecommendationHelper {
 			$this->linkRecommendationStore->deleteByPageIds( [ $pageIdentity->getId() ] );
 		} );
 		if ( $deleteFromSearchIndex ) {
-			$cirrusSearch = ( $this->cirrusSearchFactory )();
-			$cirrusSearch->resetWeightedTags( $pageIdentity,
-				LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
+			( $this->weightedTagsUpdaterProvider )()->resetWeightedTags(
+				$pageIdentity, [ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ]
+			);
 		}
 	}
 

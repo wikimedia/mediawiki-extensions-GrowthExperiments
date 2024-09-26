@@ -2,8 +2,9 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use CirrusSearch\CirrusSearch;
+use CirrusSearch\CirrusSearchServices;
 use CirrusSearch\Query\ArticleTopicFeature;
+use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -39,8 +40,8 @@ class FixLinkRecommendationData extends Maintenance {
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	/** @var CirrusSearch */
-	private $cirrusSearch;
+	/** @var WeightedTagsUpdater */
+	private $weightedTagsUpdater;
 
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
@@ -110,7 +111,7 @@ class FixLinkRecommendationData extends Maintenance {
 		}
 		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
-		$this->cirrusSearch = new CirrusSearch();
+		$this->weightedTagsUpdater = CirrusSearchServices::wrap( $services )->getWeightedTagsUpdater();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
 		$this->pageStore = $services->getPageStore();
 		$this->titleFormatter = $services->getTitleFormatter();
@@ -153,7 +154,7 @@ class FixLinkRecommendationData extends Maintenance {
 						"    $fixing " . $this->titleFormatter->getPrefixedText( $pageRecord ) . "\n"
 					);
 					if ( !$this->hasOption( 'dry-run' ) ) {
-						$this->cirrusSearch->resetWeightedTags( $pageRecord, 'recommendation.link' );
+						$this->weightedTagsUpdater->resetWeightedTags( $pageRecord, [ 'recommendation.link' ] );
 					}
 					$pageIdsFixed[] = $pageRecord->getId();
 				}

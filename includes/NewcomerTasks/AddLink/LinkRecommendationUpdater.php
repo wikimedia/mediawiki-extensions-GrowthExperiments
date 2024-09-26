@@ -3,13 +3,14 @@
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use ChangeTags;
-use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
+use Exception;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\WikiConfigException;
 use IDBAccessObject;
 use MediaWiki\Language\RawMessage;
+use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Page\PageProps;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
@@ -36,7 +37,10 @@ class LinkRecommendationUpdater {
 	private NameTableStore $changeDefNameTableStore;
 	private PageProps $pageProps;
 	private ConfigurationLoader $configurationLoader;
-	private SearchIndexUpdater $searchIndexUpdater;
+	/**
+	 * @var callable returning {@link \CirrusSearch\WeightedTagsUpdater}
+	 */
+	private $weightedTagsUpdaterProvider;
 	private LinkRecommendationStore $linkRecommendationStore;
 	private LinkRecommendationProvider $linkRecommendationProvider;
 	private ?LinkRecommendationTaskType $linkRecommendationTaskType = null;
@@ -47,7 +51,7 @@ class LinkRecommendationUpdater {
 	 * @param NameTableStore $changeDefNameTableStore
 	 * @param PageProps $pageProps
 	 * @param ConfigurationLoader $configurationLoader
-	 * @param SearchIndexUpdater $searchIndexUpdater
+	 * @param callable(): \CirrusSearch\WeightedTagsUpdater $weightedTagsUpdaterProvider
 	 * @param LinkRecommendationProvider $linkRecommendationProvider Note that this needs to be
 	 *   the uncached provider, as caching is done by LinkRecommendationUpdater.
 	 * @param LinkRecommendationStore $linkRecommendationStore
@@ -58,7 +62,7 @@ class LinkRecommendationUpdater {
 		NameTableStore $changeDefNameTableStore,
 		PageProps $pageProps,
 		ConfigurationLoader $configurationLoader,
-		SearchIndexUpdater $searchIndexUpdater,
+		callable $weightedTagsUpdaterProvider,
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkRecommendationStore $linkRecommendationStore
 	) {
@@ -67,7 +71,7 @@ class LinkRecommendationUpdater {
 		$this->changeDefNameTableStore = $changeDefNameTableStore;
 		$this->pageProps = $pageProps;
 		$this->configurationLoader = $configurationLoader;
-		$this->searchIndexUpdater = $searchIndexUpdater;
+		$this->weightedTagsUpdaterProvider = $weightedTagsUpdaterProvider;
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
 	}
@@ -121,11 +125,29 @@ class LinkRecommendationUpdater {
 		$db = $this->linkRecommendationStore->getDB( DB_PRIMARY );
 		$db->startAtomic( __METHOD__, IDatabase::ATOMIC_CANCELABLE );
 		$this->linkRecommendationStore->insert( $recommendation );
-		$status = $this->searchIndexUpdater->update( $lastRevision );
-		if ( !$status->isOK() ) {
+
+		$pageIdentity = new PageIdentityValue(
+			$lastRevision->getPageId( $lastRevision->getWikiId() ),
+			$lastRevision->getPage()->getNamespace(),
+			$lastRevision->getPage()->getDBkey(),
+			$lastRevision->getWikiId()
+		);
+
+		try {
+			( $this->weightedTagsUpdaterProvider )()->updateWeightedTags(
+				$pageIdentity,
+				LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
+			);
+		} catch ( Exception $e ) {
 			$db->cancelAtomic( __METHOD__ );
-			return $status;
+
+			return Status::newFatal(
+				'Failed to request weighted tags update',
+				LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX,
+				$e
+			);
 		}
+
 		$db->endAtomic( __METHOD__ );
 		return StatusValue::newGood();
 	}

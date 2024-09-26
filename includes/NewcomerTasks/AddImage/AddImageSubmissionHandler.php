@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
-use CirrusSearch\CirrusSearch;
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
@@ -58,9 +57,10 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID => 'addsectionimage',
 	];
 
-	/** @var callable */
-	private $cirrusSearchFactory;
-
+	/**
+	 * @var callable returning {@link \CirrusSearch\WeightedTagsUpdater}
+	 */
+	private $weightedTagsUpdaterProvider;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 	private WANObjectCache $cache;
@@ -69,7 +69,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	private ?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater;
 
 	/**
-	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
+	 * @param callable(): \CirrusSearch\WeightedTagsUpdater $weightedTagsUpdaterProvider
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param WANObjectCache $cache
@@ -77,14 +77,14 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	 * @param EventGateImageSuggestionFeedbackUpdater|null $eventGateImageFeedbackUpdater
 	 */
 	public function __construct(
-		callable $cirrusSearchFactory,
+		callable $weightedTagsUpdaterProvider,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		WANObjectCache $cache,
 		UserIdentityUtils $userIdentityUtils,
 		?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
 	) {
-		$this->cirrusSearchFactory = $cirrusSearchFactory;
+		$this->weightedTagsUpdaterProvider = $weightedTagsUpdaterProvider;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->cache = $cache;
@@ -335,21 +335,16 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		?int $sectionNumber,
 		array $rejectionReasons = []
 	) {
-		/** @var CirrusSearch $cirrusSearch */
-		$cirrusSearch = ( $this->cirrusSearchFactory )();
 		if ( $taskType->getId() === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
-			$cirrusSearch->resetWeightedTags(
-				$page,
-				ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
+			( $this->weightedTagsUpdaterProvider )()->resetWeightedTags(
+				$page, [ ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ]
 			);
 		} elseif ( $taskType->getId() === SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
-			$cirrusSearch->resetWeightedTags(
-				$page,
-				SectionImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
-			);
-			$cirrusSearch->resetWeightedTags(
-				$page,
-				ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
+			( $this->weightedTagsUpdaterProvider )()->resetWeightedTags(
+				$page, [
+					SectionImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX,
+					ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
+				]
 			);
 		}
 		// Mark the task as "invalid" in a temporary cache, until the weighted tags in the search
