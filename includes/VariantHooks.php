@@ -20,6 +20,7 @@ use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsManager;
 use Skin;
 
@@ -36,7 +37,8 @@ class VariantHooks implements
 	ResourceLoaderGetConfigVarsHook,
 	SkinAddFooterLinksHook,
 	SpecialCreateAccountBenefitsHook,
-	SpecialPageBeforeExecuteHook
+	SpecialPageBeforeExecuteHook,
+	UserGetDefaultOptionsHook
 {
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
@@ -78,6 +80,7 @@ class VariantHooks implements
 	private UserOptionsManager $userOptionsManager;
 	private CampaignConfig $campaignConfig;
 	private SpecialPageFactory $specialPageFactory;
+	private Config $config;
 
 	/**
 	 * @param UserOptionsManager $userOptionsManager
@@ -87,11 +90,13 @@ class VariantHooks implements
 	public function __construct(
 		UserOptionsManager $userOptionsManager,
 		CampaignConfig $campaignConfig,
-		SpecialPageFactory $specialPageFactory
+		SpecialPageFactory $specialPageFactory,
+		Config $config
 	) {
 		$this->userOptionsManager = $userOptionsManager;
 		$this->campaignConfig = $campaignConfig;
 		$this->specialPageFactory = $specialPageFactory;
+		$this->config = $config;
 	}
 
 	/** @inheritDoc */
@@ -101,6 +106,17 @@ class VariantHooks implements
 		];
 		$preferences[self::GROWTH_CAMPAIGN] = [
 			'type' => 'api',
+		];
+	}
+
+	/**
+	 * Register defaults for variant-related preferences.
+	 *
+	 * @param array &$defaultOptions
+	 */
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
+		$defaultOptions += [
+			self::USER_PREFERENCE => $this->config->get( 'GEHomepageDefaultVariant' ),
 		];
 	}
 

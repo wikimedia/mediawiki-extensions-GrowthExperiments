@@ -83,7 +83,10 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 		return new VariantHooks(
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$this->createNoOpMock( CampaignConfig::class ),
-			$this->createNoOpMock( SpecialPageFactory::class )
+			$this->createNoOpMock( SpecialPageFactory::class ),
+			new HashConfig( [
+				'GEHomepageDefaultVariant' => 'control',
+			] )
 		);
 	}
 
