@@ -116,7 +116,8 @@ class DatabaseMentorStore extends MentorStore {
 			->newSelectQueryBuilder()
 			->registered()
 			->named()
-			->whereUserIds( $ids );
+			// Ensure $ids are all numerical, otherwise the query might take forever (T375784)
+			->whereUserIds( array_map( 'intval', $ids ) );
 
 		if ( !$includeHiddenUsers ) {
 			$builder->hidden( false );
